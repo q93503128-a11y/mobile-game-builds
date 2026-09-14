@@ -6,7 +6,7 @@
 
 ## 기술 기준
 
-- 엔진: `Unity 6.3 LTS`
+- 엔진: `Unity 6000.3.16f1 (Unity 6.3 LTS)`
 - 언어: `C#`
 - 우선 플랫폼: `Android`
 - 후속 플랫폼: `iOS`
@@ -76,6 +76,8 @@ UI/반복/소셜:
 - [`tools/balance/gacha_sim.py`](./tools/balance/gacha_sim.py) — S 확률/천장/픽업/고정 소환 예산 Monte Carlo
 - [`tools/balance/progression_sim.py`](./tools/balance/progression_sim.py) — 대표 세트/목표 부품/조율 데이터 포함 장기 획득 Monte Carlo
 - [`tools/data/validate_static_data.py`](./tools/data/validate_static_data.py) — JSON 파싱/ID/참조/수치/확률 기본 정적 검증
+- [`tools/source/validate_runtime_source.py`](./tools/source/validate_runtime_source.py) — Runtime 임시/디버그/개발문구/위험한 구현 패턴 검사
+- [`.github/workflows/stackfall-mobile-static.yml`](../../.github/workflows/stackfall-mobile-static.yml) — 정적 데이터/소스 위생/도구 구문 검사
 
 도구 출력은 참고/검증 결과이며 Design Bible과 밸런스 정본을 자동으로 대체하지 않는다.
 
@@ -98,25 +100,21 @@ UI/반복/소셜:
 
 ## 현재 단계
 
-`Phase 0 complete → Phase 1 combat prototype ready`
+`Phase 1 source implementation complete → Unity validation gate`
 
-Phase 0 완료 범위:
-- 공용 모바일 저장소 구조/규칙 고정
-- Unity 6.3 LTS 확정
-- 플레이어 노출 문구에서 개발/디버그/진행상황 표현 금지 고정
-- 기존 웹 Stackfall 공격/패시브/이벤트/초월체 모바일 전환 분류
-- 모바일 전투 기반 V0
-- 전투 공격 12종/지원 16종/일반 영구 부품 18종 후보
-- 12개 공격의 6단 진화
-- 6부품 영구 성장 V0
-- 첫 S 프로토타입 4세트 × 6부품 효과/외형
-- 표준 회수/프로토타입 공명/목표 부품 조율
-- 챕터 10스테이지 제작 규칙 + 초기 8챕터/보스
-- 30/90/180일 성장경제 중심값
-- 홈/격납고 UI 정보구조
-- 던전/보스/탑/아레나 반복 콘텐츠
-- 길드/글로벌·국가 채팅 구조
-- 초기 데이터 스키마와 정적 검증기
-- 가챠/목표부품 Monte Carlo 도구
+Phase 0는 완료되었다. Phase 1 첫 전투 프로토타입의 소스 구현도 완료되어 현재는 Unity 실제 검증을 기다린다.
 
-다음 작업은 `Phase 1 — Unity 전투 프로토타입`이다. 최초 구현 범위는 이동, 자동조준, 적 스폰, 경험치/레벨업, 서로 다른 공격 방식 최소 3종, 엘리트 1종, 보스 1종, 5~10분 스테이지 완주다.
+현재 Phase 1 소스 범위:
+- 모바일 드래그 이동 + PC 확인용 키보드 이동
+- 자동 조준
+- 풀링 기반 적/경험치/투사체/중력장
+- 일반 적 압력 + 엘리트 3회 + 5분 최종 보스
+- 엘리트 예고 돌진
+- 보스 광역 펄스/돌진 패턴
+- 경험치/레벨업 + 실제 3택 강화 선택
+- 코어 펄스 / 펄스 블레이드 / 중력 우물
+- 선체/동력/보스 타이머/보스 체력 HUD
+- 클리어/실패 상태
+- 위험 범위 시각표현과 실제 판정 반경 정합
+
+다음 게이트는 Unity Editor import/compile, Play Mode 5분 실플레이, Console error 0, 이후 Android 테스트 빌드다. 이 검증 전에는 Phase 1을 완료로 판정하지 않는다.
