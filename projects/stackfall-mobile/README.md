@@ -43,26 +43,30 @@
 5. [`docs/PC_DNA_MAP.md`](./docs/PC_DNA_MAP.md) — 기존 Stackfall 기능 전수 분류
 6. [`docs/COMBAT_FOUNDATION.md`](./docs/COMBAT_FOUNDATION.md) — 스테이지/조작/레벨업/적 밀도/보스 전투 기준
 7. [`docs/CONTENT_CATALOG_V0.md`](./docs/CONTENT_CATALOG_V0.md) — 첫 공격/지원/일반 부품 제작 후보
-8. [`docs/CHAPTER_ENEMY_BOSS_RULES.md`](./docs/CHAPTER_ENEMY_BOSS_RULES.md) — 챕터/적/엘리트/보스 제작 규칙
+8. [`docs/SKILL_EVOLUTION_V0.md`](./docs/SKILL_EVOLUTION_V0.md) — 12개 공격의 Rank 1~6 전투 진화
+9. [`docs/CHAPTER_ENEMY_BOSS_RULES.md`](./docs/CHAPTER_ENEMY_BOSS_RULES.md) — 챕터/적/엘리트/보스 제작 규칙
+10. [`docs/CHAPTER_CATALOG_V0.md`](./docs/CHAPTER_CATALOG_V0.md) — 초기 8챕터 실제 적/엘리트/보스 카탈로그
 
 성장/경제:
 
-9. [`docs/PARTS_SYSTEM.md`](./docs/PARTS_SYSTEM.md) — 코어/프레임/드라이브/임팩터/오비터/리액터 영구 성장
-10. [`docs/S_PROTOTYPES_V0.md`](./docs/S_PROTOTYPES_V0.md) — 첫 S 프로토타입 4세트 × 6부품
-11. [`docs/BENCHMARKS.md`](./docs/BENCHMARKS.md) — 외부 성공작 구조/수치 조사
-12. [`docs/BALANCE_V0.md`](./docs/BALANCE_V0.md) — 첫 가챠/등급/중복/전투 수치 범위와 Monte Carlo 결과
-13. [`docs/GACHA_BANNERS_V0.md`](./docs/GACHA_BANNERS_V0.md) — 표준/픽업/목표 부품/천장/중복 규칙
+11. [`docs/PARTS_SYSTEM.md`](./docs/PARTS_SYSTEM.md) — 코어/프레임/드라이브/임팩터/오비터/리액터 영구 성장
+12. [`docs/S_PROTOTYPES_V0.md`](./docs/S_PROTOTYPES_V0.md) — 첫 S 프로토타입 4세트 × 6부품
+13. [`docs/BENCHMARKS.md`](./docs/BENCHMARKS.md) — 외부 성공작 구조/수치 조사
+14. [`docs/BALANCE_V0.md`](./docs/BALANCE_V0.md) — 첫 가챠/등급/중복/전투 수치 범위와 Monte Carlo 결과
+15. [`docs/GACHA_BANNERS_V0.md`](./docs/GACHA_BANNERS_V0.md) — 표준/픽업/목표 부품/천장/중복 규칙
+16. [`docs/ECONOMY_V0.md`](./docs/ECONOMY_V0.md) — 30/90/180일 무료/유료 성장 목표
 
 기술/서버:
 
-14. [`docs/SERVER_ARCHITECTURE.md`](./docs/SERVER_ARCHITECTURE.md) — 서버 권위 경계
-15. [`docs/ENGINE_WORKFLOW.md`](./docs/ENGINE_WORKFLOW.md) — Unity 작업/검증 방식
+17. [`docs/SERVER_ARCHITECTURE.md`](./docs/SERVER_ARCHITECTURE.md) — 서버 권위 경계
+18. [`docs/ENGINE_WORKFLOW.md`](./docs/ENGINE_WORKFLOW.md) — Unity 작업/검증 방식
 
 공용 개발 규칙은 저장소 루트의 [`RULES.md`](../../RULES.md)를 따른다.
 
 ## 밸런스 도구
 
-- [`tools/balance/gacha_sim.py`](./tools/balance/gacha_sim.py) — S 확률/천장/픽업/고정 소환 예산 Monte Carlo 시뮬레이터
+- [`tools/balance/gacha_sim.py`](./tools/balance/gacha_sim.py) — S 확률/천장/픽업/고정 소환 예산 Monte Carlo
+- [`tools/balance/progression_sim.py`](./tools/balance/progression_sim.py) — 대표 세트/목표 부품/조율 데이터 포함 장기 획득 Monte Carlo
 
 밸런스 도구의 출력은 참고 결과이며 Design Bible/밸런스 정본을 자동으로 대체하지 않는다.
 
@@ -85,7 +89,7 @@
 
 ## 현재 단계
 
-`Pre-production / Phase 0`
+`Pre-production / Phase 0 late`
 
 현재까지:
 - 공용 모바일 저장소 구조/규칙 고정
@@ -94,11 +98,13 @@
 - 기존 웹 Stackfall 공격/패시브/이벤트/초월체의 모바일 전환 분류 완료
 - 모바일 전투 기반 V0 고정
 - 전투 공격 12종/지원 16종/일반 영구 부품 18종 후보 정리
+- 12개 공격의 6단 진화 정리
 - 6부품 영구 성장 V0 고정
 - 첫 S 프로토타입 4세트 × 6부품 효과/외형 설계
 - 표준 회수/프로토타입 공명/목표 부품 조율 구조 설계
 - 챕터 10스테이지 단위와 적/엘리트/보스 제작 규칙 설계
-- 가챠/등급/중복/기본 전투 수치의 첫 시뮬레이션 범위 고정
-- 가챠 Monte Carlo 도구화 및 1차 분포 확인
+- 초기 8챕터와 8종 챕터 보스 카탈로그 설계
+- 30/90/180일 성장경제 중심값 설계
+- 가챠 Monte Carlo + 목표부품 장기진행 Monte Carlo 도구화
 
-Phase 0의 다음 핵심은 `전투 내 스킬의 단계별 진화표`, `초기 8개 챕터의 실제 적/보스 카탈로그`, `30/90/180일 경제 시뮬레이션`이다. 이 세 축이 충분히 고정되면 Phase 1 Unity 전투 프로토타입으로 이동한다.
+Phase 0에서 남은 큰 설계는 `홈/격납고 UI 정보구조`, `던전·보스랭킹·탑·아레나의 실제 보상/입장 구조`, `길드/채팅 상세 규칙`, `초기 메타 데이터 스키마`다. 이 영역을 고정한 뒤 Phase 1 Unity 전투 프로토타입으로 이동한다.
