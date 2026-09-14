@@ -4,6 +4,18 @@
 
 이 프로젝트는 웹판의 단순 포팅이 아니다. 전투 정체성은 참고하되 입력, 카메라, 적 밀도, 스테이지 길이, UI, 성장, 경제, 서버, 소셜, 라이브서비스 구조는 모바일 기준으로 재설계한다.
 
+## 기술 기준
+
+- 엔진: `Unity 6.3 LTS`
+- 언어: `C#`
+- 우선 플랫폼: `Android`
+- 후속 플랫폼: `iOS`
+- 기존 웹 Stackfall은 참고 원본/전투 연구 자료로 유지
+- 실제 모바일 클라이언트는 `projects/stackfall-mobile/client/`을 Unity 프로젝트 루트로 사용
+- 매 작업마다 Unity Editor를 열지 않는다. 코드·데이터·문서는 GitHub 정본에서 계속 개발하고, 기능 묶음/테스트 마일스톤에서 Unity import·compile·Play Mode·모바일 빌드 검증을 수행한다.
+
+세부 규칙은 [`docs/ENGINE_WORKFLOW.md`](./docs/ENGINE_WORKFLOW.md)를 따른다.
+
 ## 핵심 방향
 
 - 한 스테이지 약 5~15분
@@ -22,6 +34,8 @@
 2. [`docs/MOBILE_CONVERSION.md`](./docs/MOBILE_CONVERSION.md)
 3. [`docs/BENCHMARKS.md`](./docs/BENCHMARKS.md)
 4. [`docs/ROADMAP.md`](./docs/ROADMAP.md)
+5. [`docs/ENGINE_WORKFLOW.md`](./docs/ENGINE_WORKFLOW.md)
+6. [`docs/SERVER_ARCHITECTURE.md`](./docs/SERVER_ARCHITECTURE.md)
 
 공용 개발 규칙은 저장소 루트의 [`RULES.md`](../../RULES.md)를 따른다.
 
