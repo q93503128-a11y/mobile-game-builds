@@ -99,12 +99,12 @@ namespace StackfallMobile.Runtime.UI
 
             var top = new VisualElement();
             top.style.flexDirection = FlexDirection.Column;
-            top.style.gap = 8;
             root.Add(top);
 
             var statusRow = new VisualElement();
             statusRow.style.flexDirection = FlexDirection.Row;
             statusRow.style.justifyContent = Justify.SpaceBetween;
+            statusRow.style.marginBottom = 8;
             top.Add(statusRow);
 
             _levelLabel = MakeLabel("Lv.1", 28, FontStyle.Bold);
@@ -113,6 +113,7 @@ namespace StackfallMobile.Runtime.UI
             statusRow.Add(_timerLabel);
 
             _healthBar = MakeProgressBar("선체", 100f);
+            _healthBar.style.marginBottom = 8;
             _experienceBar = MakeProgressBar("동력", 100f);
             top.Add(_healthBar);
             top.Add(_experienceBar);
@@ -215,7 +216,7 @@ namespace StackfallMobile.Runtime.UI
         {
             if (_upgrades.Choose(index))
             {
-                _choiceOverlay.style.display = DisplayStyle.None;
+                _choiceOverlay.style.display = _upgrades.HasPendingChoice ? DisplayStyle.Flex : DisplayStyle.None;
             }
         }
 
