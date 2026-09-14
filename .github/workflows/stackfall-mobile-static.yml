@@ -1,0 +1,37 @@
+name: Stackfall Mobile Static Checks
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'projects/stackfall-mobile/**'
+      - '.github/workflows/stackfall-mobile-static.yml'
+  pull_request:
+    paths:
+      - 'projects/stackfall-mobile/**'
+      - '.github/workflows/stackfall-mobile-static.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Validate static game data
+        run: python projects/stackfall-mobile/tools/data/validate_static_data.py
+
+      - name: Validate runtime source hygiene
+        run: python projects/stackfall-mobile/tools/source/validate_runtime_source.py
+
+      - name: Compile Python balance tools
+        run: python -m py_compile projects/stackfall-mobile/tools/balance/*.py projects/stackfall-mobile/tools/data/*.py projects/stackfall-mobile/tools/source/*.py
