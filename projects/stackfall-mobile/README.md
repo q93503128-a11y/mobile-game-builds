@@ -56,19 +56,28 @@
 15. [`docs/GACHA_BANNERS_V0.md`](./docs/GACHA_BANNERS_V0.md) — 표준/픽업/목표 부품/천장/중복 규칙
 16. [`docs/ECONOMY_V0.md`](./docs/ECONOMY_V0.md) — 30/90/180일 무료/유료 성장 목표
 
-기술/서버:
+UI/반복/소셜:
 
-17. [`docs/SERVER_ARCHITECTURE.md`](./docs/SERVER_ARCHITECTURE.md) — 서버 권위 경계
-18. [`docs/ENGINE_WORKFLOW.md`](./docs/ENGINE_WORKFLOW.md) — Unity 작업/검증 방식
+17. [`docs/HOME_HANGAR_UI.md`](./docs/HOME_HANGAR_UI.md) — 홈/격납고/기체/회수/도전 정보구조
+18. [`docs/CHALLENGE_MODES_V0.md`](./docs/CHALLENGE_MODES_V0.md) — 던전/보스랭킹/탑/아레나/길드보스 보상 루프
+19. [`docs/GUILD_CHAT_V0.md`](./docs/GUILD_CHAT_V0.md) — 길드/국가·글로벌 채팅/모더레이션 규칙
+
+기술/서버/데이터:
+
+20. [`docs/SERVER_ARCHITECTURE.md`](./docs/SERVER_ARCHITECTURE.md) — 서버 권위 경계
+21. [`docs/ENGINE_WORKFLOW.md`](./docs/ENGINE_WORKFLOW.md) — Unity 작업/검증 방식
+22. [`docs/DATA_SCHEMA_V0.md`](./docs/DATA_SCHEMA_V0.md) — 정적/계정/전투 세션 데이터 구조
+23. [`data/README.md`](./data/README.md) — 정적 데이터 정본 폴더 규칙
 
 공용 개발 규칙은 저장소 루트의 [`RULES.md`](../../RULES.md)를 따른다.
 
-## 밸런스 도구
+## 검증/밸런스 도구
 
 - [`tools/balance/gacha_sim.py`](./tools/balance/gacha_sim.py) — S 확률/천장/픽업/고정 소환 예산 Monte Carlo
 - [`tools/balance/progression_sim.py`](./tools/balance/progression_sim.py) — 대표 세트/목표 부품/조율 데이터 포함 장기 획득 Monte Carlo
+- [`tools/data/validate_static_data.py`](./tools/data/validate_static_data.py) — JSON 파싱/ID/참조/수치/확률 기본 정적 검증
 
-밸런스 도구의 출력은 참고 결과이며 Design Bible/밸런스 정본을 자동으로 대체하지 않는다.
+도구 출력은 참고/검증 결과이며 Design Bible과 밸런스 정본을 자동으로 대체하지 않는다.
 
 ## 기존 Stackfall과의 관계
 
@@ -89,22 +98,25 @@
 
 ## 현재 단계
 
-`Pre-production / Phase 0 late`
+`Phase 0 complete → Phase 1 combat prototype ready`
 
-현재까지:
+Phase 0 완료 범위:
 - 공용 모바일 저장소 구조/규칙 고정
 - Unity 6.3 LTS 확정
 - 플레이어 노출 문구에서 개발/디버그/진행상황 표현 금지 고정
-- 기존 웹 Stackfall 공격/패시브/이벤트/초월체의 모바일 전환 분류 완료
-- 모바일 전투 기반 V0 고정
-- 전투 공격 12종/지원 16종/일반 영구 부품 18종 후보 정리
-- 12개 공격의 6단 진화 정리
-- 6부품 영구 성장 V0 고정
-- 첫 S 프로토타입 4세트 × 6부품 효과/외형 설계
-- 표준 회수/프로토타입 공명/목표 부품 조율 구조 설계
-- 챕터 10스테이지 단위와 적/엘리트/보스 제작 규칙 설계
-- 초기 8챕터와 8종 챕터 보스 카탈로그 설계
-- 30/90/180일 성장경제 중심값 설계
-- 가챠 Monte Carlo + 목표부품 장기진행 Monte Carlo 도구화
+- 기존 웹 Stackfall 공격/패시브/이벤트/초월체 모바일 전환 분류
+- 모바일 전투 기반 V0
+- 전투 공격 12종/지원 16종/일반 영구 부품 18종 후보
+- 12개 공격의 6단 진화
+- 6부품 영구 성장 V0
+- 첫 S 프로토타입 4세트 × 6부품 효과/외형
+- 표준 회수/프로토타입 공명/목표 부품 조율
+- 챕터 10스테이지 제작 규칙 + 초기 8챕터/보스
+- 30/90/180일 성장경제 중심값
+- 홈/격납고 UI 정보구조
+- 던전/보스/탑/아레나 반복 콘텐츠
+- 길드/글로벌·국가 채팅 구조
+- 초기 데이터 스키마와 정적 검증기
+- 가챠/목표부품 Monte Carlo 도구
 
-Phase 0에서 남은 큰 설계는 `홈/격납고 UI 정보구조`, `던전·보스랭킹·탑·아레나의 실제 보상/입장 구조`, `길드/채팅 상세 규칙`, `초기 메타 데이터 스키마`다. 이 영역을 고정한 뒤 Phase 1 Unity 전투 프로토타입으로 이동한다.
+다음 작업은 `Phase 1 — Unity 전투 프로토타입`이다. 최초 구현 범위는 이동, 자동조준, 적 스폰, 경험치/레벨업, 서로 다른 공격 방식 최소 3종, 엘리트 1종, 보스 1종, 5~10분 스테이지 완주다.
