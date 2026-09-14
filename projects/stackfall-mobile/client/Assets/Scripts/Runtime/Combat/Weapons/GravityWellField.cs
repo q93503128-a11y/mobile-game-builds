@@ -30,7 +30,10 @@ namespace StackfallMobile.Runtime.Combat.Weapons
             _tickInterval = Mathf.Max(0.05f, tickInterval);
             _tickTimer = 0f;
             _release = release;
-            transform.localScale = Vector3.one * (_radius * 1.55f);
+
+            // RuntimeSpriteFactory.Circle has a 1-unit local radius, so scale == radius keeps
+            // the visible edge aligned with the actual pull/damage boundary.
+            transform.localScale = Vector3.one * _radius;
         }
 
         private void Update()
