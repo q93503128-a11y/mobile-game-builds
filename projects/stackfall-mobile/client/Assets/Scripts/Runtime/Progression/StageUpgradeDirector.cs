@@ -22,6 +22,8 @@ namespace StackfallMobile.Runtime.Progression
         private PulseBladeWeapon _pulseBlade;
         private GravityWellWeapon _gravityWell;
         private bool _automaticChoice;
+        private int _pendingLevelGains;
+        private int _choiceSequence;
 
         public IReadOnlyList<StageUpgradeId> CurrentChoices => _currentChoices;
         public bool HasPendingChoice => _currentChoices.Count > 0;
@@ -62,21 +64,44 @@ namespace StackfallMobile.Runtime.Progression
             var choice = _currentChoices[index];
             _currentChoices.Clear();
             Apply(choice);
-            Time.timeScale = 1f;
+
+            if (_pendingLevelGains > 0)
+            {
+                _pendingLevelGains--;
+                OfferNextChoice();
+            }
+            else
+            {
+                Time.timeScale = 1f;
+            }
+
             return true;
         }
 
         private void OnLevelGained(int level)
         {
-            BuildChoices(level);
+            if (HasPendingChoice)
+            {
+                _pendingLevelGains++;
+                return;
+            }
+
+            _choiceSequence = Mathf.Max(_choiceSequence, level - 1);
+            OfferNextChoice();
+        }
+
+        private void OfferNextChoice()
+        {
+            BuildChoices(++_choiceSequence);
             if (_currentChoices.Count == 0)
             {
+                Time.timeScale = 1f;
                 return;
             }
 
             if (_automaticChoice)
             {
-                Choose((level - 2) % _currentChoices.Count);
+                Choose((_choiceSequence - 1) % _currentChoices.Count);
                 return;
             }
 
@@ -84,7 +109,7 @@ namespace StackfallMobile.Runtime.Progression
             ChoicesOffered?.Invoke(_currentChoices);
         }
 
-        private void BuildChoices(int level)
+        private void BuildChoices(int sequence)
         {
             _available.Clear();
             _currentChoices.Clear();
@@ -98,7 +123,7 @@ namespace StackfallMobile.Runtime.Progression
                 return;
             }
 
-            var offset = Mathf.Abs(level * 7) % _available.Count;
+            var offset = Mathf.Abs(sequence * 7) % _available.Count;
             for (var i = 0; i < Mathf.Min(3, _available.Count); i++)
             {
                 _currentChoices.Add(_available[(offset + i) % _available.Count]);
