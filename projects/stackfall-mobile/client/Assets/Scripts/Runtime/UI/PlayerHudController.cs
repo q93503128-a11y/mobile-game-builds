@@ -17,6 +17,7 @@ namespace StackfallMobile.Runtime.UI
         private StageSessionController _session;
         private ProgressBar _healthBar;
         private ProgressBar _experienceBar;
+        private ProgressBar _bossHealthBar;
         private Label _levelLabel;
         private Label _timerLabel;
         private VisualElement _choiceOverlay;
@@ -63,6 +64,8 @@ namespace StackfallMobile.Runtime.UI
             {
                 return;
             }
+
+            UpdateBossUi();
 
             if (_spawner.BossSpawned)
             {
@@ -115,8 +118,12 @@ namespace StackfallMobile.Runtime.UI
             _healthBar = MakeProgressBar("선체", 100f);
             _healthBar.style.marginBottom = 8;
             _experienceBar = MakeProgressBar("동력", 100f);
+            _experienceBar.style.marginBottom = 10;
+            _bossHealthBar = MakeProgressBar("보스", 100f);
+            _bossHealthBar.style.display = DisplayStyle.None;
             top.Add(_healthBar);
             top.Add(_experienceBar);
+            top.Add(_bossHealthBar);
 
             BuildChoiceOverlay(root);
             BuildResultOverlay(root);
@@ -180,6 +187,21 @@ namespace StackfallMobile.Runtime.UI
             _resultLabel = MakeLabel(string.Empty, 56, FontStyle.Bold);
             _resultLabel.style.unityTextAlign = TextAnchor.MiddleCenter;
             _resultOverlay.Add(_resultLabel);
+        }
+
+        private void UpdateBossUi()
+        {
+            var boss = _spawner.ActiveBoss;
+            if (boss == null || !boss.IsAlive)
+            {
+                _bossHealthBar.style.display = DisplayStyle.None;
+                return;
+            }
+
+            _bossHealthBar.style.display = DisplayStyle.Flex;
+            _bossHealthBar.highValue = Mathf.Max(1f, boss.MaxHealth);
+            _bossHealthBar.value = boss.Health;
+            _bossHealthBar.title = $"보스 {Mathf.CeilToInt(boss.Health)} / {Mathf.CeilToInt(boss.MaxHealth)}";
         }
 
         private void OnHealthChanged(float current, float max)
