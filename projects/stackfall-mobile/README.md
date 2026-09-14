@@ -40,19 +40,26 @@
 3. [`docs/MOBILE_CONVERSION.md`](./docs/MOBILE_CONVERSION.md) — PC/Web → 모바일 변환 규칙
 4. [`docs/PC_DNA_MAP.md`](./docs/PC_DNA_MAP.md) — 기존 Stackfall 기능 전수 분류
 5. [`docs/COMBAT_FOUNDATION.md`](./docs/COMBAT_FOUNDATION.md) — 스테이지/조작/레벨업/적 밀도/보스 전투 기준
+6. [`docs/CONTENT_CATALOG_V0.md`](./docs/CONTENT_CATALOG_V0.md) — 첫 공격/지원/일반 부품 제작 후보
 
 성장/경제:
 
-6. [`docs/PARTS_SYSTEM.md`](./docs/PARTS_SYSTEM.md) — 코어/프레임/드라이브/임팩터/오비터/리액터 영구 성장
-7. [`docs/BENCHMARKS.md`](./docs/BENCHMARKS.md) — 외부 성공작 구조/수치 조사
-8. [`docs/BALANCE_V0.md`](./docs/BALANCE_V0.md) — 첫 가챠/등급/중복/전투 수치 범위
+7. [`docs/PARTS_SYSTEM.md`](./docs/PARTS_SYSTEM.md) — 코어/프레임/드라이브/임팩터/오비터/리액터 영구 성장
+8. [`docs/BENCHMARKS.md`](./docs/BENCHMARKS.md) — 외부 성공작 구조/수치 조사
+9. [`docs/BALANCE_V0.md`](./docs/BALANCE_V0.md) — 첫 가챠/등급/중복/전투 수치 범위와 Monte Carlo 결과
 
 기술/서버:
 
-9. [`docs/SERVER_ARCHITECTURE.md`](./docs/SERVER_ARCHITECTURE.md) — 서버 권위 경계
-10. [`docs/ENGINE_WORKFLOW.md`](./docs/ENGINE_WORKFLOW.md) — Unity 작업/검증 방식
+10. [`docs/SERVER_ARCHITECTURE.md`](./docs/SERVER_ARCHITECTURE.md) — 서버 권위 경계
+11. [`docs/ENGINE_WORKFLOW.md`](./docs/ENGINE_WORKFLOW.md) — Unity 작업/검증 방식
 
 공용 개발 규칙은 저장소 루트의 [`RULES.md`](../../RULES.md)를 따른다.
+
+## 밸런스 도구
+
+- [`tools/balance/gacha_sim.py`](./tools/balance/gacha_sim.py) — S 확률/천장/픽업/고정 소환 예산 Monte Carlo 시뮬레이터
+
+밸런스 도구의 출력은 참고 결과이며 Design Bible/밸런스 정본을 자동으로 대체하지 않는다.
 
 ## 기존 Stackfall과의 관계
 
@@ -80,7 +87,9 @@
 - Unity 6.3 LTS 확정
 - 기존 웹 Stackfall 공격/패시브/이벤트/초월체의 모바일 전환 분류 완료
 - 모바일 전투 기반 V0 고정
+- 전투 공격 12종/지원 16종/일반 영구 부품 18종 후보 정리
 - 6부품 영구 성장 V0 고정
 - 가챠/등급/중복/기본 전투 수치의 첫 시뮬레이션 범위 고정
+- 가챠 Monte Carlo 도구화 및 1차 분포 확인
 
-Phase 0의 다음 핵심은 실제 경제 시뮬레이션과 첫 부품/스킬 카탈로그 확정이다. 그 뒤 Phase 1 Unity 전투 프로토타입으로 이동한다.
+Phase 0의 다음 핵심은 첫 S 프로토타입 세트의 세부 효과, 가챠 풀/픽업 구조, 챕터·적·보스 제작 규칙을 더 구체화하는 것이다. 그 뒤 Phase 1 Unity 전투 프로토타입으로 이동한다.
