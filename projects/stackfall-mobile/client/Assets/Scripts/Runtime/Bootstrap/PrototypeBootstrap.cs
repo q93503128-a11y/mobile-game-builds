@@ -4,6 +4,7 @@ using StackfallMobile.Runtime.Player;
 using StackfallMobile.Runtime.Progression;
 using StackfallMobile.Runtime.Rendering;
 using StackfallMobile.Runtime.Stage;
+using StackfallMobile.Runtime.UI;
 using UnityEngine;
 
 namespace StackfallMobile.Runtime.Bootstrap
@@ -52,7 +53,10 @@ namespace StackfallMobile.Runtime.Bootstrap
             enemySpawner.Initialize(player.transform, health, orbSpawner, session.ClearStage);
 
             var upgradeDirector = gameObject.AddComponent<StageUpgradeDirector>();
-            upgradeDirector.Initialize(progression, corePulse, pulseBlade, gravityWell, true);
+            upgradeDirector.Initialize(progression, corePulse, pulseBlade, gravityWell, false);
+
+            var hud = gameObject.AddComponent<PlayerHudController>();
+            hud.Initialize(health, progression, enemySpawner, upgradeDirector, session);
         }
 
         private static void EnsureCamera()
