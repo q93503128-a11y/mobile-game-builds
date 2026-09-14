@@ -70,11 +70,13 @@ namespace StackfallMobile.Runtime.Enemies
                 _nextEliteIndex++;
             }
 
-            if (Time.time >= _nextNormalSpawn && _activeEnemies < 60)
+            var activeCap = _bossSpawned ? 24 : 60;
+            if (Time.time >= _nextNormalSpawn && _activeEnemies < activeCap)
             {
                 SpawnEnemy(EnemyKind.Normal);
                 var pressure = Mathf.Clamp01(_elapsed / BossTime);
-                _nextNormalSpawn = Time.time + Mathf.Lerp(0.62f, 0.24f, pressure);
+                var interval = _bossSpawned ? 0.82f : Mathf.Lerp(0.62f, 0.24f, pressure);
+                _nextNormalSpawn = Time.time + interval;
             }
         }
 
