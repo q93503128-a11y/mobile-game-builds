@@ -246,7 +246,7 @@ namespace StackfallMobile.Runtime.Enemies
             _specialState = SpecialState.BossPulseWindup;
             _stateUntil = Time.time + 0.95f;
             _telegraph.gameObject.SetActive(true);
-            _telegraph.localScale = Vector3.one * 0.2f;
+            SetTelegraphWorldRadius(0.25f);
         }
 
         private void UpdateBossPulseTelegraph()
@@ -255,7 +255,7 @@ namespace StackfallMobile.Runtime.Enemies
             const float pulseRadius = 3.15f;
             var remaining = Mathf.Max(0f, _stateUntil - Time.time);
             var progress = 1f - remaining / 0.95f;
-            _telegraph.localScale = Vector3.one * Mathf.Lerp(0.2f, pulseRadius * 2f, progress);
+            SetTelegraphWorldRadius(Mathf.Lerp(0.25f, pulseRadius, progress));
             var alpha = Mathf.Lerp(0.14f, 0.38f, progress);
             _telegraphRenderer.color = new Color(1f, 0.35f, 0.12f, alpha);
         }
@@ -317,6 +317,19 @@ namespace StackfallMobile.Runtime.Enemies
             _telegraphRenderer.color = new Color(1f, 0.35f, 0.12f, 0.2f);
             _telegraphRenderer.sortingOrder = 0;
             gameObject.SetActive(false);
+        }
+
+        private void SetTelegraphWorldRadius(float worldRadius)
+        {
+            if (_telegraph == null)
+            {
+                return;
+            }
+
+            // RuntimeSpriteFactory.Circle has a 1-unit local radius. Counter the parent scale so
+            // the visible edge matches the actual pulse hit radius in world space.
+            var parentScale = Mathf.Max(0.001f, Mathf.Abs(transform.lossyScale.x));
+            _telegraph.localScale = Vector3.one * (worldRadius / parentScale);
         }
 
         private void HideTelegraph()
