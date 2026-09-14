@@ -27,6 +27,7 @@ namespace StackfallMobile.Runtime.Enemies
         public float BossSpawnTime => BossTime;
         public bool BossSpawned => _bossSpawned;
         public int ActiveEnemies => _activeEnemies;
+        public EnemyActor ActiveBoss { get; private set; }
 
         public void Initialize(
             Transform player,
@@ -138,6 +139,11 @@ namespace StackfallMobile.Runtime.Enemies
                 _experienceOrbs.Spawn,
                 ReleaseEnemy,
                 OnEnemyDefeated);
+
+            if (kind == EnemyKind.Boss)
+            {
+                ActiveBoss = enemy;
+            }
         }
 
         private Vector2 PickSpawnPosition(EnemyKind kind)
@@ -170,10 +176,13 @@ namespace StackfallMobile.Runtime.Enemies
         private void OnEnemyDefeated(EnemyActor enemy)
         {
             _activeEnemies = Mathf.Max(0, _activeEnemies - 1);
-            if (enemy.Kind == EnemyKind.Boss)
+            if (enemy.Kind != EnemyKind.Boss)
             {
-                _bossDefeated?.Invoke();
+                return;
             }
+
+            ActiveBoss = null;
+            _bossDefeated?.Invoke();
         }
 
         private void ReleaseEnemy(EnemyActor enemy)
