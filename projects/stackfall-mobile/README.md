@@ -30,12 +30,27 @@
 
 ## 기획 정본
 
-1. [`docs/DESIGN_BIBLE.md`](./docs/DESIGN_BIBLE.md)
-2. [`docs/MOBILE_CONVERSION.md`](./docs/MOBILE_CONVERSION.md)
-3. [`docs/BENCHMARKS.md`](./docs/BENCHMARKS.md)
-4. [`docs/ROADMAP.md`](./docs/ROADMAP.md)
-5. [`docs/ENGINE_WORKFLOW.md`](./docs/ENGINE_WORKFLOW.md)
-6. [`docs/SERVER_ARCHITECTURE.md`](./docs/SERVER_ARCHITECTURE.md)
+최상위:
+
+1. [`docs/DESIGN_BIBLE.md`](./docs/DESIGN_BIBLE.md) — 전체 게임 방향
+2. [`docs/ROADMAP.md`](./docs/ROADMAP.md) — 구현 순서/게이트
+
+전투/모바일 변환:
+
+3. [`docs/MOBILE_CONVERSION.md`](./docs/MOBILE_CONVERSION.md) — PC/Web → 모바일 변환 규칙
+4. [`docs/PC_DNA_MAP.md`](./docs/PC_DNA_MAP.md) — 기존 Stackfall 기능 전수 분류
+5. [`docs/COMBAT_FOUNDATION.md`](./docs/COMBAT_FOUNDATION.md) — 스테이지/조작/레벨업/적 밀도/보스 전투 기준
+
+성장/경제:
+
+6. [`docs/PARTS_SYSTEM.md`](./docs/PARTS_SYSTEM.md) — 코어/프레임/드라이브/임팩터/오비터/리액터 영구 성장
+7. [`docs/BENCHMARKS.md`](./docs/BENCHMARKS.md) — 외부 성공작 구조/수치 조사
+8. [`docs/BALANCE_V0.md`](./docs/BALANCE_V0.md) — 첫 가챠/등급/중복/전투 수치 범위
+
+기술/서버:
+
+9. [`docs/SERVER_ARCHITECTURE.md`](./docs/SERVER_ARCHITECTURE.md) — 서버 권위 경계
+10. [`docs/ENGINE_WORKFLOW.md`](./docs/ENGINE_WORKFLOW.md) — Unity 작업/검증 방식
 
 공용 개발 규칙은 저장소 루트의 [`RULES.md`](../../RULES.md)를 따른다.
 
@@ -58,6 +73,14 @@
 
 ## 현재 단계
 
-`Pre-production / Design Bible 0.x`
+`Pre-production / Phase 0`
 
-코드를 성급히 늘리기보다 먼저 전투, 스테이지, 부품, 성장, 경제, 가챠, 콘텐츠 해금, 서버 권위 경계를 문서로 고정한다.
+현재까지:
+- 공용 모바일 저장소 구조/규칙 고정
+- Unity 6.3 LTS 확정
+- 기존 웹 Stackfall 공격/패시브/이벤트/초월체의 모바일 전환 분류 완료
+- 모바일 전투 기반 V0 고정
+- 6부품 영구 성장 V0 고정
+- 가챠/등급/중복/기본 전투 수치의 첫 시뮬레이션 범위 고정
+
+Phase 0의 다음 핵심은 실제 경제 시뮬레이션과 첫 부품/스킬 카탈로그 확정이다. 그 뒤 Phase 1 Unity 전투 프로토타입으로 이동한다.
