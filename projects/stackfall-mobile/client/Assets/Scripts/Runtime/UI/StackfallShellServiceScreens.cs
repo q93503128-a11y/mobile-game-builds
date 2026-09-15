@@ -157,6 +157,7 @@ namespace StackfallMobile.Runtime.UI
             info.Add(Label("S 1.50% · 영웅 6.00% · 희귀 22.50% · 고급 35.00% · 일반 35.00%", 15, FontStyle.Normal, Muted));
             info.Add(Label("50회 S 확정 · S 등장 시 픽업 세트 60% · 픽업 실패 후 다음 S 픽업 확정", 14, FontStyle.Normal, Muted));
             body.Add(info);
+            AddBottomNavigation(root, "회수");
         }
 
         public void ShowSettings()

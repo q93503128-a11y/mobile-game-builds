@@ -102,11 +102,16 @@ namespace StackfallMobile.Runtime.UI
 
             var quickGrid = Row();
             quickGrid.style.marginTop = 10;
+            quickGrid.Add(FeatureTile("gift", "출석", "7일 보급", _app.ShowAttendance, "!"));
             quickGrid.Add(FeatureTile("trophy", "임무", "일일 2/5", _app.ShowMissions, "3"));
             quickGrid.Add(FeatureTile("gift", "우편", "보상 도착", _app.ShowMailbox, "3"));
-            quickGrid.Add(FeatureTile("market", "상점", "일일 상품", _app.ShowStore, null));
-            quickGrid.Add(FeatureTile("pouch", "소환", "공명 신호", _app.ShowSummon, null));
             body.Add(quickGrid);
+            var quickGrid2 = Row();
+            quickGrid2.style.marginTop = 10;
+            quickGrid2.Add(FeatureTile("market", "상점", "일일 상품", _app.ShowStore, null));
+            quickGrid2.Add(FeatureTile("pouch", "소환", "공명 신호", _app.ShowSummon, null));
+            quickGrid2.Add(FeatureTile("news", "이벤트", "심우주 작전", _app.ShowEvents, null));
+            body.Add(quickGrid2);
 
             var eventBanner = Card(new Color(0.055f, 0.075f, 0.16f, 1f));
             eventBanner.style.marginTop = 16;
@@ -121,6 +126,7 @@ namespace StackfallMobile.Runtime.UI
             eventText.Add(Label("메인 작전 클리어로 회수 신호를 추적하세요.", 15, FontStyle.Normal, Muted));
             eventBanner.Add(eventText);
             eventBanner.Add(Chip("7일", Gold));
+            eventBanner.AddManipulator(new Clickable(_app.ShowEvents));
             body.Add(eventBanner);
 
             var mission = Card();
@@ -143,11 +149,19 @@ namespace StackfallMobile.Runtime.UI
                 mission.Add(Label($"다음 해금 · Stage {nextUnlock.Stage} {nextUnlock.Name}", 17, FontStyle.Bold, Accent));
             }
 
+            var missionActions = Row();
+            missionActions.style.marginTop = 18;
+            var chapters = Button("챕터 선택", _app.ShowChapters, false);
+            chapters.style.width = 260;
+            chapters.style.height = 94;
+            missionActions.Add(chapters);
             var sortie = Button("출격", () => _app.OpenLoadout(stage), true);
+            sortie.style.flexGrow = 1;
             sortie.style.height = 94;
             sortie.style.fontSize = 34;
-            sortie.style.marginTop = 18;
-            mission.Add(sortie);
+            sortie.style.marginLeft = 10;
+            missionActions.Add(sortie);
+            mission.Add(missionActions);
             body.Add(mission);
             AddBottomNavigation(root, "전투");
         }
@@ -282,12 +296,37 @@ namespace StackfallMobile.Runtime.UI
             bay.Add(Label($"전투력 {_app.CombatPower:N0}", 18, FontStyle.Bold, Accent));
             body.Add(bay);
 
+            var presets = Row();
+            presets.style.marginTop = 14;
+            presets.Add(TabChip("메인", true));
+            presets.Add(TabChip("보스", false));
+            presets.Add(TabChip("아레나", false));
+            body.Add(presets);
+
+            var partsHeader = Row();
+            partsHeader.style.marginTop = 18;
+            partsHeader.style.justifyContent = Justify.SpaceBetween;
+            partsHeader.style.alignItems = Align.Center;
+            partsHeader.Add(Label("장착 부품", 24, FontStyle.Bold));
+            var inventory = Button("부품 보관함", _app.ShowPartInventory, false);
+            inventory.style.width = 230;
+            inventory.style.height = 58;
+            partsHeader.Add(inventory);
+            body.Add(partsHeader);
+
             AddPart(body, "CORE", "펄서 코어", "Lv.1");
             AddPart(body, "FRAME", "바스티온 프레임", "Lv.1");
             AddPart(body, "DRIVE", "벡터 드라이브", "Lv.1");
             AddPart(body, "IMPACTOR", "절단 엣지", "Lv.1");
             AddPart(body, "ORBITER", "정찰 오비터", "Lv.1");
             AddPart(body, "REACTOR", "가속 리액터", "Lv.1");
+
+            var setSummary = Card(PanelBright);
+            setSummary.style.marginTop = 14;
+            Pad(setSummary, 20, 18);
+            setSummary.Add(Label("현재 구성", 18, FontStyle.Bold, Accent));
+            setSummary.Add(Label("6슬롯 혼합 구성 · 슬롯 강화는 부품 교체 후에도 유지", 15, FontStyle.Normal, Muted));
+            body.Add(setSummary);
             AddBottomNavigation(root, "기체");
         }
     }

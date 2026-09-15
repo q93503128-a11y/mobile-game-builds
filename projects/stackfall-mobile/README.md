@@ -99,7 +99,7 @@ UI/반복/소셜:
 
 ## 현재 단계
 
-`Phase 1B full presentation shell integrated → Unity verification pending`
+`Phase 1B full presentation + meta hubs integrated → Unity verification pending`
 
 전투 코어 위에 모바일 제품 껍데기 소스가 연결되었다.
 
@@ -117,5 +117,11 @@ UI/반복/소셜:
 - 설정 / 우편 / 임무 / 상점 / 소환 외형 화면
 - 홈의 라이브서비스형 빠른 진입/이벤트 배너
 - 외부 CC0 기능 아이콘 8종
+- 파일럿 프로필 / 7일 출석 / 이벤트 허브
+- 초기 8챕터 선택/미리보기
+- 부품 보관함 / 기체 프리셋 외형
+- 도전 콘텐츠 허브
+- 길드 기능 허브
+- 하단 회수/도전/길드 탭의 최종 정보구조 미리보기
 
 다만 Unity Editor import/compile 및 실제 Play Mode 화면 검증은 아직 하지 않았으므로 사용자 첫 플레이 테스트는 계속 보류한다. Unity 6000.3.19f1에서 오류 0과 전체 화면 흐름을 확인한 뒤 첫 테스트 게이트를 연다.

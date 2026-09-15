@@ -59,6 +59,13 @@ namespace StackfallMobile.Runtime.App
         public void ShowStore() => ShowShellSection(_shell.ShowStore);
         public void ShowSummon() => ShowShellSection(_shell.ShowSummon);
         public void ShowSettings() => ShowShellSection(_shell.ShowSettings);
+        public void ShowProfile() => ShowShellSection(_shell.ShowProfile);
+        public void ShowAttendance() => ShowShellSection(_shell.ShowAttendance);
+        public void ShowEvents() => ShowShellSection(_shell.ShowEvents);
+        public void ShowChapters() => ShowShellSection(_shell.ShowChapters);
+        public void ShowPartInventory() => ShowShellSection(_shell.ShowPartInventory);
+        public void ShowChallenges() => ShowShellSection(_shell.ShowChallenges);
+        public void ShowGuild() => ShowShellSection(_shell.ShowGuild);
 
         private void ShowShellSection(System.Action show)
         {

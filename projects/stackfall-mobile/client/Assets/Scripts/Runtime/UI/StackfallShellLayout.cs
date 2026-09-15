@@ -66,8 +66,16 @@ namespace StackfallMobile.Runtime.UI
             Pad(top, 24, 14);
             top.style.backgroundColor = new Color(0.018f, 0.042f, 0.078f, 0.98f);
 
-            var profile = Row();
+            var profile = new Button(_app.ShowProfile);
+            profile.style.flexDirection = FlexDirection.Row;
             profile.style.alignItems = Align.Center;
+            profile.style.backgroundColor = Color.clear;
+            profile.style.borderTopWidth = 0;
+            profile.style.borderBottomWidth = 0;
+            profile.style.borderLeftWidth = 0;
+            profile.style.borderRightWidth = 0;
+            profile.style.paddingLeft = 0;
+            profile.style.paddingRight = 6;
             var avatar = new VisualElement();
             avatar.style.width = 52;
             avatar.style.height = 52;
@@ -172,9 +180,9 @@ namespace StackfallMobile.Runtime.UI
             Pad(nav, 8, 8);
             AddNavButton(nav, "전투", active == "전투", _app.ShowHome);
             AddNavButton(nav, "기체", active == "기체", _app.ShowShip);
-            AddNavButton(nav, "회수", active == "회수", () => _app.ShowLockedSection("회수", 3));
-            AddNavButton(nav, "도전", active == "도전", () => _app.ShowLockedSection("도전", 5));
-            AddNavButton(nav, "길드", active == "길드", () => _app.ShowLockedSection("길드", 25));
+            AddNavButton(nav, "회수", active == "회수", _app.ShowSummon);
+            AddNavButton(nav, "도전", active == "도전", _app.ShowChallenges);
+            AddNavButton(nav, "길드", active == "길드", _app.ShowGuild);
             root.Add(nav);
         }
 
