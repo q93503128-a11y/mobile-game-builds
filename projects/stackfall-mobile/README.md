@@ -80,6 +80,7 @@ UI/반복/소셜:
 - `tools/balance/progression_sim.py`
 - `tools/data/validate_static_data.py`
 - `tools/source/validate_runtime_source.py`
+- `tools/source/validate_first_test_readiness.py`
 - `.github/workflows/stackfall-mobile-static.yml`
 
 ## 기존 Stackfall과의 관계
@@ -123,6 +124,10 @@ UI/반복/소셜:
 - 도전 콘텐츠 허브
 - 길드 기능 허브
 - 하단 회수/도전/길드 탭의 최종 정보구조 미리보기
+- 짧은 앱 스타트업/브랜드 화면
+- 360×640급 소형 화면용 compact UI 분기
+- 우편/임무/출석/무료 보급 상태에 연동되는 홈 알림 배지
+- 첫 Unity 테스트용 정적 프리플라이트 검사
 - 표준 회수 / 프로토타입 공명 / 목표 부품 조율 회수 허브
 - 우편 개별/전체 수령 및 임무 보상 수령 상태
 - 임무 일일/주간/업적, 상점 추천/일일/재화, 부품 6슬롯 실제 탭 전환

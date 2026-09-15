@@ -68,7 +68,7 @@ namespace StackfallMobile.Runtime.UI
             body.Add(heading);
 
             var hangar = Card(new Color(0.035f, 0.085f, 0.145f, 1f));
-            hangar.style.minHeight = 430;
+            hangar.style.minHeight = IsCompactDevice ? 360 : 430;
             hangar.style.marginTop = 18;
             hangar.style.overflow = Overflow.Hidden;
             Pad(hangar, 26, 24);
@@ -84,10 +84,10 @@ namespace StackfallMobile.Runtime.UI
             hangar.Add(hangarHeader);
 
             var shipWrap = new VisualElement();
-            shipWrap.style.height = 280;
+            shipWrap.style.height = IsCompactDevice ? 225 : 280;
             shipWrap.style.alignItems = Align.Center;
             shipWrap.style.justifyContent = Justify.Center;
-            shipWrap.Add(ShipVisualFactory.BuildUiShip(290f));
+            shipWrap.Add(ShipVisualFactory.BuildUiShip(IsCompactDevice ? 240f : 290f));
             hangar.Add(shipWrap);
             hangar.Add(Label("CORE · FRAME · DRIVE · IMPACTOR · ORBITER · REACTOR", 13, FontStyle.Bold, Muted));
             body.Add(hangar);
@@ -102,13 +102,13 @@ namespace StackfallMobile.Runtime.UI
 
             var quickGrid = Row();
             quickGrid.style.marginTop = 10;
-            quickGrid.Add(FeatureTile("gift", "출석", "7일 보급", _app.ShowAttendance, "!"));
-            quickGrid.Add(FeatureTile("trophy", "임무", "일일 2/5", _app.ShowMissions, "3"));
-            quickGrid.Add(FeatureTile("gift", "우편", "보상 도착", _app.ShowMailbox, "3"));
+            quickGrid.Add(FeatureTile("gift", "출석", _state.HasAttendanceReward ? "오늘 보급" : "수령 완료", _app.ShowAttendance, _state.HasAttendanceReward ? "!" : null));
+            quickGrid.Add(FeatureTile("trophy", "임무", _state.ClaimableMissionCount > 0 ? $"보상 {_state.ClaimableMissionCount}개" : "임무 확인", _app.ShowMissions, BadgeText(_state.ClaimableMissionCount)));
+            quickGrid.Add(FeatureTile("gift", "우편", _state.UnclaimedMailCount > 0 ? $"보상 {_state.UnclaimedMailCount}개" : "모두 수령", _app.ShowMailbox, BadgeText(_state.UnclaimedMailCount)));
             body.Add(quickGrid);
             var quickGrid2 = Row();
             quickGrid2.style.marginTop = 10;
-            quickGrid2.Add(FeatureTile("market", "상점", "일일 상품", _app.ShowStore, null));
+            quickGrid2.Add(FeatureTile("market", "상점", _state.HasFreeDailySupply ? "무료 보급" : "일일 상품", _app.ShowStore, _state.HasFreeDailySupply ? "!" : null));
             quickGrid2.Add(FeatureTile("pouch", "회수", "부품 신호", _app.ShowRecovery, null));
             quickGrid2.Add(FeatureTile("news", "이벤트", "심우주 작전", _app.ShowEvents, null));
             body.Add(quickGrid2);

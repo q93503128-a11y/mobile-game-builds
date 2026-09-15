@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 namespace StackfallMobile.Runtime.UI
@@ -19,6 +20,23 @@ namespace StackfallMobile.Runtime.UI
         public bool SfxEnabled = true;
         public bool VibrationEnabled = true;
         public bool PowerSaveEnabled;
+
+        public int UnclaimedMailCount => Math.Max(0, 3 - ClaimedMail.Count);
+
+        public int ClaimableMissionCount
+        {
+            get
+            {
+                var count = 0;
+                if (!ClaimedMissions.Contains("daily_sortie")) count++;
+                if (!ClaimedMissions.Contains("daily_hangar")) count++;
+                if (!ClaimedMissions.Contains("achievement_first_sortie")) count++;
+                return count;
+            }
+        }
+
+        public bool HasAttendanceReward => !AttendanceClaimed;
+        public bool HasFreeDailySupply => !FreeDailySupplyClaimed;
 
         public readonly string[] EquippedParts =
         {

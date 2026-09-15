@@ -35,6 +35,16 @@ namespace StackfallMobile.Runtime.App
 
             _shell = gameObject.AddComponent<StackfallShellController>();
             _shell.Initialize(this);
+            SetCameraForShell();
+            _shell.ShowStartup();
+            _transitionRoutine = StartCoroutine(FinishStartup());
+        }
+
+        private IEnumerator FinishStartup()
+        {
+            yield return null;
+            yield return new WaitForSecondsRealtime(0.38f);
+            _transitionRoutine = null;
             ShowHome();
         }
 

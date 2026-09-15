@@ -33,5 +33,8 @@ jobs:
       - name: Validate runtime source hygiene
         run: python projects/stackfall-mobile/tools/source/validate_runtime_source.py
 
+      - name: Validate first-test source preflight
+        run: python projects/stackfall-mobile/tools/source/validate_first_test_readiness.py
+
       - name: Compile Python balance tools
         run: python -m py_compile projects/stackfall-mobile/tools/balance/*.py projects/stackfall-mobile/tools/data/*.py projects/stackfall-mobile/tools/source/*.py

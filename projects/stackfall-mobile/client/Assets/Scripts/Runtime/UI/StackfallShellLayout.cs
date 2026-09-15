@@ -8,6 +8,13 @@ namespace StackfallMobile.Runtime.UI
 {
     public sealed partial class StackfallShellController
     {
+        private static bool IsCompactDevice => Screen.width <= 390 || Screen.height <= 700;
+
+        private static string BadgeText(int count)
+        {
+            return count > 0 ? count.ToString() : null;
+        }
+
         private VisualElement BeginScreen(bool addAmbient = true)
         {
             var documentRoot = _document.rootVisualElement;
@@ -37,10 +44,11 @@ namespace StackfallMobile.Runtime.UI
         {
             VisualElement body = scroll ? new ScrollView(ScrollViewMode.Vertical) : new VisualElement();
             body.style.flexGrow = 1;
-            body.style.paddingLeft = 32;
-            body.style.paddingRight = 32;
-            body.style.paddingTop = 18;
-            body.style.paddingBottom = 18;
+            var horizontalPadding = IsCompactDevice ? 22f : 32f;
+            body.style.paddingLeft = horizontalPadding;
+            body.style.paddingRight = horizontalPadding;
+            body.style.paddingTop = IsCompactDevice ? 12 : 18;
+            body.style.paddingBottom = IsCompactDevice ? 12 : 18;
             root.Add(body);
             return body;
         }
@@ -61,9 +69,10 @@ namespace StackfallMobile.Runtime.UI
         private void AddTopStatus(VisualElement root)
         {
             var top = Row();
-            top.style.alignItems = Align.Center;
+            top.style.alignItems = IsCompactDevice ? Align.Stretch : Align.Center;
             top.style.justifyContent = Justify.SpaceBetween;
-            Pad(top, 24, 14);
+            top.style.flexDirection = IsCompactDevice ? FlexDirection.Column : FlexDirection.Row;
+            Pad(top, IsCompactDevice ? 18 : 24, IsCompactDevice ? 10 : 14);
             top.style.backgroundColor = new Color(0.018f, 0.042f, 0.078f, 0.98f);
 
             var profile = new Button(_app.ShowProfile);
@@ -99,10 +108,12 @@ namespace StackfallMobile.Runtime.UI
 
             var resources = Row();
             resources.style.alignItems = Align.Center;
+            resources.style.justifyContent = IsCompactDevice ? Justify.SpaceBetween : Justify.FlexEnd;
+            if (IsCompactDevice) resources.style.marginTop = 8;
             resources.Add(Resource("크레딧", "2,450"));
             resources.Add(Resource("크리스탈", "120"));
-            resources.Add(IconButton("gift", _app.ShowMailbox, 48, "3"));
-            resources.Add(IconButton("gear", _app.ShowSettings, 48));
+            resources.Add(IconButton("gift", _app.ShowMailbox, IsCompactDevice ? 44 : 48, BadgeText(_state.UnclaimedMailCount)));
+            resources.Add(IconButton("gear", _app.ShowSettings, IsCompactDevice ? 44 : 48));
             top.Add(resources);
             root.Add(top);
         }
@@ -111,20 +122,20 @@ namespace StackfallMobile.Runtime.UI
         {
             var header = Row();
             header.style.alignItems = Align.Center;
-            Pad(header, 24, 18);
+            Pad(header, IsCompactDevice ? 18 : 24, IsCompactDevice ? 12 : 18);
             header.style.backgroundColor = new Color(0.018f, 0.042f, 0.078f, 0.98f);
             var backButton = Button("‹", back, false);
-            backButton.style.width = 72;
-            backButton.style.height = 62;
-            backButton.style.fontSize = 38;
+            backButton.style.width = IsCompactDevice ? 62 : 72;
+            backButton.style.height = IsCompactDevice ? 54 : 62;
+            backButton.style.fontSize = IsCompactDevice ? 32 : 38;
             header.Add(backButton);
             if (!string.IsNullOrEmpty(iconName))
             {
-                var icon = Icon(iconName, 42);
-                icon.style.marginLeft = 18;
+                var icon = Icon(iconName, IsCompactDevice ? 36 : 42);
+                icon.style.marginLeft = IsCompactDevice ? 12 : 18;
                 header.Add(icon);
             }
-            var label = Label(title, 32, FontStyle.Bold);
+            var label = Label(title, IsCompactDevice ? 27 : 32, FontStyle.Bold);
             label.style.marginLeft = 14;
             header.Add(label);
             root.Add(header);
@@ -149,7 +160,7 @@ namespace StackfallMobile.Runtime.UI
                     var unlocked = StackfallContentCatalog.IsUnlocked(ability, _app.HighestClearedStage);
                     var card = Card(unlocked ? PanelSoft : new Color(0.03f, 0.05f, 0.08f, 1f));
                     card.style.width = Length.Percent(24f);
-                    card.style.height = 144;
+                    card.style.height = IsCompactDevice ? 132 : 144;
                     card.style.marginLeft = column == 0 ? 0 : 5;
                     card.style.marginRight = column == 3 ? 0 : 5;
                     card.style.alignItems = Align.Center;
@@ -159,7 +170,7 @@ namespace StackfallMobile.Runtime.UI
                     {
                         card.Add(Icon("lock", 28));
                     }
-                    var name = Label(ability.Name, 16, FontStyle.Bold, unlocked ? Color.white : Muted);
+                    var name = Label(ability.Name, IsCompactDevice ? 14 : 16, FontStyle.Bold, unlocked ? Color.white : Muted);
                     name.style.whiteSpace = WhiteSpace.Normal;
                     name.style.unityTextAlign = TextAnchor.MiddleCenter;
                     card.Add(name);
@@ -173,7 +184,7 @@ namespace StackfallMobile.Runtime.UI
         private void AddBottomNavigation(VisualElement root, string active)
         {
             var nav = Row();
-            nav.style.height = 112;
+            nav.style.height = IsCompactDevice ? 96 : 112;
             nav.style.flexShrink = 0;
             nav.style.alignItems = Align.Stretch;
             nav.style.backgroundColor = new Color(0.018f, 0.04f, 0.075f, 1f);
@@ -192,7 +203,7 @@ namespace StackfallMobile.Runtime.UI
             button.style.flexGrow = 1;
             button.style.marginLeft = 4;
             button.style.marginRight = 4;
-            button.style.fontSize = 18;
+            button.style.fontSize = IsCompactDevice ? 16 : 18;
             button.style.color = active ? Accent : new Color(0.7f, 0.76f, 0.84f, 1f);
             button.style.backgroundColor = active ? new Color(0.055f, 0.18f, 0.25f, 1f) : new Color(0.025f, 0.052f, 0.09f, 1f);
             parent.Add(button);
