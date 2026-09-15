@@ -21,8 +21,6 @@ namespace StackfallMobile.Runtime.UI
         private Label _levelLabel;
         private Label _timerLabel;
         private VisualElement _choiceOverlay;
-        private VisualElement _resultOverlay;
-        private Label _resultLabel;
         private Button[] _choiceButtons;
         private PanelSettings _panelSettings;
 
@@ -126,7 +124,6 @@ namespace StackfallMobile.Runtime.UI
             top.Add(_bossHealthBar);
 
             BuildChoiceOverlay(root);
-            BuildResultOverlay(root);
         }
 
         private void BuildChoiceOverlay(VisualElement root)
@@ -172,21 +169,6 @@ namespace StackfallMobile.Runtime.UI
                 _choiceButtons[i] = button;
                 panel.Add(button);
             }
-        }
-
-        private void BuildResultOverlay(VisualElement root)
-        {
-            _resultOverlay = new VisualElement();
-            FillScreen(_resultOverlay);
-            _resultOverlay.style.backgroundColor = new Color(0.015f, 0.02f, 0.05f, 0.9f);
-            _resultOverlay.style.alignItems = Align.Center;
-            _resultOverlay.style.justifyContent = Justify.Center;
-            _resultOverlay.style.display = DisplayStyle.None;
-            root.Add(_resultOverlay);
-
-            _resultLabel = MakeLabel(string.Empty, 56, FontStyle.Bold);
-            _resultLabel.style.unityTextAlign = TextAnchor.MiddleCenter;
-            _resultOverlay.Add(_resultLabel);
         }
 
         private void UpdateBossUi()
@@ -245,8 +227,6 @@ namespace StackfallMobile.Runtime.UI
         private void OnSessionStateChanged(StageSessionState state)
         {
             _choiceOverlay.style.display = DisplayStyle.None;
-            _resultLabel.text = state == StageSessionState.Cleared ? "스테이지 클리어" : "기체 파괴";
-            _resultOverlay.style.display = DisplayStyle.Flex;
         }
 
         private static string ChoiceText(StageUpgradeId id)

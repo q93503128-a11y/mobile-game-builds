@@ -98,20 +98,19 @@ UI/반복/소셜:
 
 ## 현재 단계
 
-`Phase 1 combat core complete → mobile shell integration`
+`Phase 1B mobile shell source integrated → Unity verification pending`
 
-전투 코어 소스는 구현되어 있지만 사용자 첫 테스트는 보류한다.
+전투 코어 위에 모바일 제품 껍데기 소스가 연결되었다.
 
-다음 작업은 모바일 게임으로서 최소 구색을 만드는 것이다.
-
+현재 연결:
 - 홈/격납고 메인 화면
 - 상단 프로필/전투력/재화
 - 중앙 조립 기체 전시
 - 하단 탭
 - 메인 스테이지 카드/출격 CTA
 - 액티브 8 + 지원 8 출격 덱 편성
-- 전투 연결
+- 전투 런타임 진입/정리
 - 결과 화면
 - 홈/다음 스테이지 복귀
 
-이 흐름이 실제 Unity에서 연결된 뒤에만 사용자에게 첫 플레이 테스트를 요청한다.
+다만 Unity Editor import/compile 및 실제 Play Mode 화면 검증은 아직 하지 않았으므로 사용자 첫 플레이 테스트는 계속 보류한다. Unity 6000.3.19f1에서 오류 0과 전체 화면 흐름을 확인한 뒤 첫 테스트 게이트를 연다.
