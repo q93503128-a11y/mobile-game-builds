@@ -105,6 +105,8 @@ def main() -> int:
             fail(f"app invariant missing: {fragment}", failures)
 
     layout_text = read(UI_ROOT / "StackfallShellLayout.cs")
+    if "using StackfallMobile.Runtime.App;" not in layout_text:
+        fail("shell layout is missing the App namespace required by AbilityPreview", failures)
     if "Screen.width <= 390 || Screen.height <= 700" not in layout_text:
         fail("compact-device layout gate is missing", failures)
     if "BadgeText(_state.UnclaimedMailCount)" not in layout_text:
