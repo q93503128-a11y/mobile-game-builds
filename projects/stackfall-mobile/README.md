@@ -99,7 +99,7 @@ UI/반복/소셜:
 
 ## 현재 단계
 
-`Phase 1B full presentation + meta hubs integrated → Unity verification pending`
+`Phase 1B interactive presentation shell integrated → Unity verification pending`
 
 전투 코어 위에 모바일 제품 껍데기 소스가 연결되었다.
 
@@ -123,5 +123,12 @@ UI/반복/소셜:
 - 도전 콘텐츠 허브
 - 길드 기능 허브
 - 하단 회수/도전/길드 탭의 최종 정보구조 미리보기
+- 표준 회수 / 프로토타입 공명 / 목표 부품 조율 회수 허브
+- 우편 개별/전체 수령 및 임무 보상 수령 상태
+- 임무 일일/주간/업적, 상점 추천/일일/재화, 부품 6슬롯 실제 탭 전환
+- 출석 보급 수령, 무료 일일 보급, 크리스탈 부족 소환 안내
+- 설정 토글/그래픽 품질 선택 상태 유지
+- 부품 선택/장착 후 기체 화면·출격 편성 요약 즉시 반영
+- 공용 보상 모달 / 안내 모달 / 토스트 피드백
 
 다만 Unity Editor import/compile 및 실제 Play Mode 화면 검증은 아직 하지 않았으므로 사용자 첫 플레이 테스트는 계속 보류한다. Unity 6000.3.19f1에서 오류 0과 전체 화면 흐름을 확인한 뒤 첫 테스트 게이트를 연다.

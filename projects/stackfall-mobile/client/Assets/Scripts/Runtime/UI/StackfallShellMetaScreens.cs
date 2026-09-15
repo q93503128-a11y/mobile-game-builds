@@ -86,14 +86,28 @@ namespace StackfallMobile.Runtime.UI
             {
                 var row = Row();
                 row.style.marginTop = 14;
-                var start = rowIndex == 0 ? 0 : 4;
-                var end = rowIndex == 0 ? 4 : 7;
-                for (var i = start; i < end; i++)
+                var startIndex = rowIndex == 0 ? 0 : 4;
+                var endIndex = rowIndex == 0 ? 4 : 7;
+                for (var i = startIndex; i < endIndex; i++)
                 {
-                    row.Add(AttendanceCard(rewards[i].Item1, rewards[i].Item2, rewards[i].Item3, i == 0));
+                    row.Add(AttendanceCard(rewards[i].Item1, rewards[i].Item2, rewards[i].Item3, i == 0, i == 0 && _state.AttendanceClaimed));
                 }
                 body.Add(row);
             }
+
+            var claim = Button(_state.AttendanceClaimed ? "오늘 보급 수령 완료" : "오늘 보급 수령", () =>
+            {
+                if (_state.AttendanceClaimed)
+                {
+                    return;
+                }
+                _state.AttendanceClaimed = true;
+                ShowModal(root, "출석 보급 수령", "DAY 1 항해 보급을 수령했습니다.", "확인", ShowAttendance, "gift", Success);
+            }, !_state.AttendanceClaimed);
+            claim.style.height = 72;
+            claim.style.marginTop = 16;
+            claim.SetEnabled(!_state.AttendanceClaimed);
+            body.Add(claim);
 
             var streak = Card(PanelBright);
             streak.style.marginTop = 16;
@@ -116,7 +130,7 @@ namespace StackfallMobile.Runtime.UI
             hero.Add(Label("심우주 회수 작전", 34, FontStyle.Bold));
             hero.Add(Label("메인 작전을 클리어하고 회수 신호를 추적해 이벤트 보급을 확보하세요.", 17, FontStyle.Normal, Muted));
             hero.Add(ProgressBar(28f, Accent));
-            var action = Button("작전 현황", () => { }, true);
+            var action = Button("작전 현황", () => ShowModal(root, "심우주 회수 작전", "회수 신호 추적률 28% · 메인 작전 진행과 함께 이벤트 진척도가 상승합니다.", null, null, "news", Accent), true);
             action.style.height = 70;
             action.style.marginTop = 18;
             hero.Add(action);
@@ -155,43 +169,156 @@ namespace StackfallMobile.Runtime.UI
             }
         }
 
+        public void ShowRecovery()
+        {
+            var root = BeginScreen();
+            AddTopStatus(root);
+            var body = AddBody(root, true);
+
+            var heading = Row();
+            heading.style.justifyContent = Justify.SpaceBetween;
+            heading.style.alignItems = Align.Center;
+            var title = new VisualElement();
+            title.Add(Label("회수", 42, FontStyle.Bold));
+            title.Add(Label("SALVAGE NETWORK · 부품 신호 탐지", 15, FontStyle.Bold, Muted));
+            heading.Add(title);
+            heading.Add(Chip("S 1.50%", Gold));
+            body.Add(heading);
+
+            var standard = Card(new Color(0.035f, 0.085f, 0.135f, 1f));
+            standard.style.marginTop = 18;
+            Pad(standard, 24, 22);
+            standard.Add(Label("STANDARD SALVAGE", 13, FontStyle.Bold, Accent));
+            standard.Add(Label("표준 회수", 28, FontStyle.Bold));
+            standard.Add(Label("상시 일반~영웅 부품과 상시 S 프로토타입을 폭넓게 회수합니다.", 15, FontStyle.Normal, Muted));
+            var standardInfo = Row();
+            standardInfo.style.marginTop = 12;
+            standardInfo.Add(Chip("S 1.5%", Gold));
+            standardInfo.Add(Chip("50회 S 확정", Accent));
+            standard.Add(standardInfo);
+            var standardButton = Button("표준 회수", () => ShowModal(root, "회수 키 부족", "표준 회수에 필요한 회수 키가 없습니다.", "상점 보기", _app.ShowStore, "pouch", Gold), false);
+            standardButton.style.height = 68;
+            standardButton.style.marginTop = 16;
+            standard.Add(standardButton);
+            body.Add(standard);
+
+            var resonance = Card(new Color(0.075f, 0.055f, 0.17f, 1f));
+            resonance.style.marginTop = 14;
+            Pad(resonance, 24, 22);
+            resonance.Add(Label("PROTOTYPE RESONANCE", 13, FontStyle.Bold, Gold));
+            resonance.Add(Label("프로토타입 공명", 28, FontStyle.Bold));
+            resonance.Add(Label("대표 S 세트 60% · 픽업 실패 후 다음 S 대표 세트 확정", 15, FontStyle.Normal, Muted));
+            var resonanceButton = Button("공명 배너 보기", _app.ShowSummon, true);
+            resonanceButton.style.height = 70;
+            resonanceButton.style.marginTop = 16;
+            resonance.Add(resonanceButton);
+            body.Add(resonance);
+
+            var tuning = Card();
+            tuning.style.marginTop = 14;
+            Pad(tuning, 22, 20);
+            var tuningHead = Row();
+            tuningHead.style.justifyContent = Justify.SpaceBetween;
+            var tuningText = new VisualElement();
+            tuningText.Add(Label("목표 부품 조율", 23, FontStyle.Bold));
+            tuningText.Add(Label("대표 세트의 6부품 중 목표 부품을 지정", 14, FontStyle.Normal, Muted));
+            tuningHead.Add(tuningText);
+            tuningHead.Add(Chip("조율 데이터 0", Accent));
+            tuning.Add(tuningHead);
+            tuning.Add(Label("대표 세트 S 등장 시 목표 부품 50% · 목표 실패 S 1회마다 조율 데이터 1", 14, FontStyle.Normal, Muted));
+            var tuneButton = Button("조율 규칙", () => ShowModal(root, "목표 부품 조율", "대표 세트의 목표 부품을 정하고, 목표 부품을 얻지 못한 S 획득마다 조율 데이터를 모읍니다. 조율 데이터 3개로 현재 대표 세트의 목표 부품을 확정 교환할 수 있습니다.", null, null, "news", Accent), false);
+            tuneButton.style.height = 60;
+            tuneButton.style.marginTop = 14;
+            tuning.Add(tuneButton);
+            body.Add(tuning);
+
+            var pity = Card(PanelBright);
+            pity.style.marginTop = 14;
+            Pad(pity, 22, 18);
+            var pityHead = Row();
+            pityHead.style.justifyContent = Justify.SpaceBetween;
+            pityHead.Add(Label("프로토타입 공명 S 천장", 18, FontStyle.Bold));
+            pityHead.Add(Label("0 / 50", 18, FontStyle.Bold, Gold));
+            pity.Add(pityHead);
+            pity.Add(ProgressBar(0f, Gold));
+            pity.Add(Label("공명 계열 배너가 교체되어도 S 천장과 대표 세트 보장 상태가 이어집니다.", 14, FontStyle.Normal, Muted));
+            body.Add(pity);
+
+            AddBottomNavigation(root, "회수");
+        }
+
         public void ShowPartInventory()
         {
+            ShowPartInventoryTab(_state.PartTab, _state.SelectedPartIndex);
+        }
+
+        private void ShowPartInventoryTab(int selectedTab, int selectedPart)
+        {
+            _state.PartTab = Mathf.Clamp(selectedTab, 0, 5);
+            var options = PartOptions(_state.PartTab);
+            _state.SelectedPartIndex = Mathf.Clamp(selectedPart, 0, options.Length - 1);
+
             var root = BeginScreen();
             AddCompactHeader(root, "부품 보관함", _app.ShowShip);
             var body = AddBody(root, true);
 
             var tabs = Row();
-            tabs.Add(TabChip("CORE", true));
-            tabs.Add(TabChip("FRAME", false));
-            tabs.Add(TabChip("DRIVE", false));
+            tabs.Add(SelectableTab("CORE", _state.PartTab == 0, () => SelectPartTab(0)));
+            tabs.Add(SelectableTab("FRAME", _state.PartTab == 1, () => SelectPartTab(1)));
+            tabs.Add(SelectableTab("DRIVE", _state.PartTab == 2, () => SelectPartTab(2)));
             body.Add(tabs);
             var tabs2 = Row();
             tabs2.style.marginTop = 8;
-            tabs2.Add(TabChip("IMPACTOR", false));
-            tabs2.Add(TabChip("ORBITER", false));
-            tabs2.Add(TabChip("REACTOR", false));
+            tabs2.Add(SelectableTab("IMPACTOR", _state.PartTab == 3, () => SelectPartTab(3)));
+            tabs2.Add(SelectableTab("ORBITER", _state.PartTab == 4, () => SelectPartTab(4)));
+            tabs2.Add(SelectableTab("REACTOR", _state.PartTab == 5, () => SelectPartTab(5)));
             body.Add(tabs2);
 
             var equipped = Card(PanelBright);
             equipped.style.marginTop = 16;
             Pad(equipped, 22, 18);
             equipped.Add(Label("현재 장착", 15, FontStyle.Bold, Accent));
-            equipped.Add(Label("펄서 코어", 25, FontStyle.Bold));
-            equipped.Add(Label("슬롯 강화 Lv.1 · 기본 출력 계통", 15, FontStyle.Normal, Muted));
+            equipped.Add(Label(_state.EquippedParts[_state.PartTab], 25, FontStyle.Bold));
+            equipped.Add(Label("슬롯 강화 Lv.1 · 강화 레벨 공유", 15, FontStyle.Normal, Muted));
             body.Add(equipped);
 
-            var row = Row();
-            row.style.marginTop = 14;
-            row.Add(PartInventoryCard("펄서 코어", "장착 중", "일반", Accent));
-            row.Add(PartInventoryCard("중력핵 코어", "중력 계통", "S 프로토타입", Gold));
-            body.Add(row);
+            for (var rowIndex = 0; rowIndex < 2; rowIndex++)
+            {
+                var row = Row();
+                row.style.marginTop = rowIndex == 0 ? 14 : 12;
+                var first = rowIndex * 2;
+                for (var i = first; i < Mathf.Min(first + 2, options.Length); i++)
+                {
+                    var index = i;
+                    var option = options[i];
+                    row.Add(PartInventoryCard(option.Name, option.Role, option.Rarity, option.Color, i == _state.SelectedPartIndex, () =>
+                    {
+                        _state.SelectedPartIndex = index;
+                        ShowPartInventory();
+                    }));
+                }
+                body.Add(row);
+            }
 
-            var row2 = Row();
-            row2.style.marginTop = 12;
-            row2.Add(PartInventoryCard("과부하 코어", "연속 처치 계통", "영웅", new Color(0.75f, 0.45f, 1f, 1f)));
-            row2.Add(PartInventoryCard("요새 코어", "보호막 계통", "희귀", new Color(0.3f, 0.65f, 1f, 1f)));
-            body.Add(row2);
+            var selected = options[_state.SelectedPartIndex];
+            var detail = Card(new Color(0.04f, 0.075f, 0.13f, 1f));
+            detail.style.marginTop = 16;
+            Pad(detail, 22, 20);
+            var detailHead = Row();
+            detailHead.style.justifyContent = Justify.SpaceBetween;
+            var detailText = new VisualElement();
+            detailText.Add(Label(selected.Name, 24, FontStyle.Bold));
+            detailText.Add(Label(selected.Role, 15, FontStyle.Normal, Muted));
+            detailHead.Add(detailText);
+            detailHead.Add(Chip(selected.Rarity, selected.Color));
+            detail.Add(detailHead);
+            var isEquipped = _state.EquippedParts[_state.PartTab] == selected.Name;
+            var equip = Button(isEquipped ? "장착 중" : "장착", () => EquipSelectedPart(root, selected.Name), !isEquipped);
+            equip.style.height = 68;
+            equip.style.marginTop = 14;
+            equip.SetEnabled(!isEquipped);
+            detail.Add(equip);
+            body.Add(detail);
 
             var note = Card();
             note.style.marginTop = 16;
@@ -199,6 +326,19 @@ namespace StackfallMobile.Runtime.UI
             note.Add(Label("슬롯 강화 공유", 20, FontStyle.Bold));
             note.Add(Label("새 부품으로 교체해도 해당 슬롯의 강화 레벨은 유지됩니다.", 15, FontStyle.Normal, Muted));
             body.Add(note);
+        }
+
+        private void SelectPartTab(int tab)
+        {
+            _state.PartTab = tab;
+            _state.SelectedPartIndex = 0;
+            ShowPartInventory();
+        }
+
+        private void EquipSelectedPart(VisualElement root, string partName)
+        {
+            _state.EquippedParts[_state.PartTab] = partName;
+            ShowModal(root, "부품 장착", $"{partName} 장착이 완료되었습니다.", "확인", ShowPartInventory, "market", Success);
         }
 
         public void ShowChallenges()
@@ -284,7 +424,7 @@ namespace StackfallMobile.Runtime.UI
             return card;
         }
 
-        private static VisualElement AttendanceCard(string day, string reward, string icon, bool today)
+        private static VisualElement AttendanceCard(string day, string reward, string icon, bool today, bool claimed)
         {
             var card = Card(today ? PanelBright : Panel);
             card.style.flexGrow = 1;
@@ -295,13 +435,13 @@ namespace StackfallMobile.Runtime.UI
             Pad(card, 10, 14);
             card.Add(Label(day, 13, FontStyle.Bold, today ? Gold : Muted));
             card.Add(Icon(icon, 50));
-            var rewardLabel = Label(reward, 14, FontStyle.Bold);
+            var rewardLabel = Label(reward, 14, FontStyle.Bold, claimed ? Muted : Color.white);
             rewardLabel.style.whiteSpace = WhiteSpace.Normal;
             rewardLabel.style.unityTextAlign = TextAnchor.MiddleCenter;
             card.Add(rewardLabel);
             if (today)
             {
-                card.Add(Chip("오늘", Success));
+                card.Add(Chip(claimed ? "수령 완료" : "오늘", claimed ? Muted : Success));
             }
             return card;
         }
@@ -360,9 +500,15 @@ namespace StackfallMobile.Runtime.UI
             return card;
         }
 
-        private static VisualElement PartInventoryCard(string title, string role, string rarity, Color rarityColor)
+        private static VisualElement PartInventoryCard(
+            string title,
+            string role,
+            string rarity,
+            Color rarityColor,
+            bool selected,
+            System.Action click)
         {
-            var card = Card();
+            var card = Card(selected ? PanelBright : Panel);
             card.style.flexGrow = 1;
             card.style.marginRight = 6;
             card.style.minHeight = 220;
@@ -376,7 +522,66 @@ namespace StackfallMobile.Runtime.UI
             preview.style.backgroundColor = new Color(rarityColor.r * 0.12f, rarityColor.g * 0.12f, rarityColor.b * 0.12f, 1f);
             SetRadius(preview, 16);
             card.Add(preview);
+            card.AddManipulator(new Clickable(click ?? (() => { })));
             return card;
+        }
+
+        private static (string Name, string Role, string Rarity, Color Color)[] PartOptions(int slot)
+        {
+            var s = Gold;
+            var epic = new Color(0.75f, 0.45f, 1f, 1f);
+            var rare = new Color(0.3f, 0.65f, 1f, 1f);
+            switch (slot)
+            {
+                case 0:
+                    return new[]
+                    {
+                        ("펄서 코어", "기본 출력 계통", "일반", Accent),
+                        ("레드라인 코어", "과열 · 연속 공격", "S 프로토타입", s),
+                        ("특이점 코어", "중력 · 질량 표식", "S 프로토타입", s),
+                        ("이지스 코어", "보호막 · 생존", "S 프로토타입", s)
+                    };
+                case 1:
+                    return new[]
+                    {
+                        ("바스티온 프레임", "기본 방어 계통", "일반", Accent),
+                        ("방열 프레임", "열 축적 제어", "S 프로토타입", s),
+                        ("고밀도 프레임", "질량 · 내구", "S 프로토타입", s),
+                        ("적층 프레임", "비상 장갑", "S 프로토타입", s)
+                    };
+                case 2:
+                    return new[]
+                    {
+                        ("벡터 드라이브", "기본 기동 계통", "희귀", rare),
+                        ("슬링 드라이브", "중력 기동", "S 프로토타입", s),
+                        ("앵커 드라이브", "위치 고정 · 생존", "S 프로토타입", s),
+                        ("블링크 드라이브", "위상 이동", "S 프로토타입", s)
+                    };
+                case 3:
+                    return new[]
+                    {
+                        ("절단 엣지", "기본 충돌 계통", "영웅", epic),
+                        ("램제트 임팩터", "고속 충돌", "S 프로토타입", s),
+                        ("사건지평 임팩터", "중력 붕괴", "S 프로토타입", s),
+                        ("보복 임팩터", "반격 · 생존", "S 프로토타입", s)
+                    };
+                case 4:
+                    return new[]
+                    {
+                        ("정찰 오비터", "기본 보조 사격", "희귀", rare),
+                        ("펄스 오비터", "집중 표적 보조", "S 프로토타입", s),
+                        ("조석 오비터", "조석선 · 범위 제어", "S 프로토타입", s),
+                        ("인터셉터 오비터", "요격 · 방어", "S 프로토타입", s)
+                    };
+                default:
+                    return new[]
+                    {
+                        ("가속 리액터", "기본 에너지 계통", "영웅", epic),
+                        ("레드라인 리액터", "과열 · 출력", "S 프로토타입", s),
+                        ("붕괴 리액터", "중력 반응", "S 프로토타입", s),
+                        ("백업 리액터", "비상 회복", "S 프로토타입", s)
+                    };
+            }
         }
 
         private static VisualElement ChallengeCard(string icon, string title, string detail, string tag)

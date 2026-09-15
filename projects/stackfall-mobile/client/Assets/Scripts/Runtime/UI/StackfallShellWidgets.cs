@@ -6,8 +6,16 @@ namespace StackfallMobile.Runtime.UI
 {
     public sealed partial class StackfallShellController
     {
-        private void AddMail(VisualElement parent, string sender, string title, string reward, string expiry)
+        private void AddMail(
+            VisualElement root,
+            VisualElement parent,
+            string id,
+            string sender,
+            string title,
+            string reward,
+            string expiry)
         {
+            var claimed = _state.ClaimedMail.Contains(id);
             var card = Card();
             card.style.marginTop = 12;
             Pad(card, 20, 18);
@@ -18,25 +26,40 @@ namespace StackfallMobile.Runtime.UI
             text.style.flexGrow = 1;
             text.style.marginLeft = 16;
             text.Add(Label(sender, 13, FontStyle.Bold, Accent));
-            text.Add(Label(title, 20, FontStyle.Bold));
+            text.Add(Label(title, 20, FontStyle.Bold, claimed ? Muted : Color.white));
             text.Add(Label(reward, 15, FontStyle.Normal, Muted));
             row.Add(text);
             row.Add(Label(expiry, 13, FontStyle.Normal, MutedDark));
             card.Add(row);
-            var claim = Button("수령", null, true);
+            var claim = Button(claimed ? "수령 완료" : "수령", null, !claimed);
             claim.style.height = 62;
             claim.style.marginTop = 14;
-            claim.clicked += () =>
+            claim.SetEnabled(!claimed);
+            if (!claimed)
             {
-                claim.text = "수령 완료";
-                claim.SetEnabled(false);
-            };
+                claim.clicked += () =>
+                {
+                    _state.ClaimedMail.Add(id);
+                    claim.text = "수령 완료";
+                    claim.SetEnabled(false);
+                    ShowModal(root, "우편 보상 수령", $"{reward}\n보급을 수령했습니다.", "확인", ShowMailbox, "gift", Success);
+                };
+            }
             card.Add(claim);
             parent.Add(card);
         }
 
-        private static void AddMission(VisualElement parent, string title, int current, int target, string reward, bool claimable)
+        private void AddMission(
+            VisualElement root,
+            VisualElement parent,
+            string id,
+            string title,
+            int current,
+            int target,
+            string reward,
+            bool claimable)
         {
+            var claimed = _state.ClaimedMissions.Contains(id);
             var card = Card();
             card.style.marginTop = 12;
             Pad(card, 20, 18);
@@ -51,41 +74,41 @@ namespace StackfallMobile.Runtime.UI
             bottom.style.alignItems = Align.Center;
             bottom.style.marginTop = 8;
             bottom.Add(Label(reward, 15, FontStyle.Bold, Gold));
-            var action = Button(claimable ? "수령" : "진행 중", null, claimable);
+            var actionText = claimed ? "완료" : claimable ? "수령" : "진행 중";
+            var action = Button(actionText, null, claimable && !claimed);
             action.style.width = 150;
             action.style.height = 54;
-            if (claimable)
+            action.SetEnabled(claimable && !claimed);
+            if (claimable && !claimed)
             {
                 action.clicked += () =>
                 {
+                    _state.ClaimedMissions.Add(id);
                     action.text = "완료";
                     action.SetEnabled(false);
+                    ShowToast(root, $"{reward} 수령", Success);
                 };
-            }
-            else
-            {
-                action.SetEnabled(false);
             }
             bottom.Add(action);
             card.Add(bottom);
             parent.Add(card);
         }
 
-        private static VisualElement StoreAction(string price, string note)
+        private static VisualElement StoreAction(string text, string note, Action click, bool primary = true)
         {
             var row = Row();
             row.style.marginTop = 18;
             row.style.justifyContent = Justify.SpaceBetween;
             row.style.alignItems = Align.Center;
             row.Add(Label(note, 15, FontStyle.Bold, Gold));
-            var button = Button(price, () => { }, true);
+            var button = Button(text, click, primary);
             button.style.width = 240;
             button.style.height = 62;
             row.Add(button);
             return row;
         }
 
-        private static VisualElement StoreCard(string iconName, string title, string detail, string price)
+        private static VisualElement StoreCard(string iconName, string title, string detail, string buttonText, Action click, bool primary = false, bool enabled = true)
         {
             var card = Card();
             card.style.flexGrow = 1;
@@ -95,8 +118,12 @@ namespace StackfallMobile.Runtime.UI
             Pad(card, 14, 18);
             card.Add(Icon(iconName, 62));
             card.Add(Label(title, 19, FontStyle.Bold));
-            card.Add(Label(detail, 14, FontStyle.Normal, Muted));
-            var buy = Button(price, () => { }, price == "무료");
+            var detailLabel = Label(detail, 14, FontStyle.Normal, Muted);
+            detailLabel.style.whiteSpace = WhiteSpace.Normal;
+            detailLabel.style.unityTextAlign = TextAnchor.MiddleCenter;
+            card.Add(detailLabel);
+            var buy = Button(buttonText, click, primary);
+            buy.SetEnabled(enabled);
             buy.style.width = Length.Percent(100f);
             buy.style.height = 54;
             buy.style.marginTop = 12;
@@ -104,7 +131,7 @@ namespace StackfallMobile.Runtime.UI
             return card;
         }
 
-        private static VisualElement SettingToggle(string title, bool initial)
+        private static VisualElement SettingToggle(string title, bool initial, Action<bool> changed)
         {
             var row = Card();
             row.style.marginTop = 12;
@@ -116,6 +143,7 @@ namespace StackfallMobile.Runtime.UI
             var toggle = new Toggle { value = initial };
             toggle.style.width = 84;
             toggle.style.height = 42;
+            toggle.RegisterValueChangedCallback(evt => changed?.Invoke(evt.newValue));
             row.Add(toggle);
             return row;
         }

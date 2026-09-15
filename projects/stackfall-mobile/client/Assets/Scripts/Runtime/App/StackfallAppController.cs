@@ -57,6 +57,7 @@ namespace StackfallMobile.Runtime.App
         public void ShowMailbox() => ShowShellSection(_shell.ShowMailbox);
         public void ShowMissions() => ShowShellSection(_shell.ShowMissions);
         public void ShowStore() => ShowShellSection(_shell.ShowStore);
+        public void ShowRecovery() => ShowShellSection(_shell.ShowRecovery);
         public void ShowSummon() => ShowShellSection(_shell.ShowSummon);
         public void ShowSettings() => ShowShellSection(_shell.ShowSettings);
         public void ShowProfile() => ShowShellSection(_shell.ShowProfile);

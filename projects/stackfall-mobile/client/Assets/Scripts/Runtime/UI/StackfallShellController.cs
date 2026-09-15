@@ -109,7 +109,7 @@ namespace StackfallMobile.Runtime.UI
             var quickGrid2 = Row();
             quickGrid2.style.marginTop = 10;
             quickGrid2.Add(FeatureTile("market", "상점", "일일 상품", _app.ShowStore, null));
-            quickGrid2.Add(FeatureTile("pouch", "소환", "공명 신호", _app.ShowSummon, null));
+            quickGrid2.Add(FeatureTile("pouch", "회수", "부품 신호", _app.ShowRecovery, null));
             quickGrid2.Add(FeatureTile("news", "이벤트", "심우주 작전", _app.ShowEvents, null));
             body.Add(quickGrid2);
 
@@ -197,7 +197,7 @@ namespace StackfallMobile.Runtime.UI
             partsHeader.Add(Label("기체 부품", 22, FontStyle.Bold));
             partsHeader.Add(Label("6 / 6", 18, FontStyle.Bold, Accent));
             parts.Add(partsHeader);
-            var partsText = Label("펄서 코어 · 바스티온 프레임 · 벡터 드라이브\n절단 엣지 · 정찰 오비터 · 가속 리액터", 17, FontStyle.Normal, Muted);
+            var partsText = Label(JoinEquippedParts(_state.EquippedParts), 17, FontStyle.Normal, Muted);
             partsText.style.whiteSpace = WhiteSpace.Normal;
             parts.Add(partsText);
             body.Add(parts);
@@ -314,12 +314,12 @@ namespace StackfallMobile.Runtime.UI
             partsHeader.Add(inventory);
             body.Add(partsHeader);
 
-            AddPart(body, "CORE", "펄서 코어", "Lv.1");
-            AddPart(body, "FRAME", "바스티온 프레임", "Lv.1");
-            AddPart(body, "DRIVE", "벡터 드라이브", "Lv.1");
-            AddPart(body, "IMPACTOR", "절단 엣지", "Lv.1");
-            AddPart(body, "ORBITER", "정찰 오비터", "Lv.1");
-            AddPart(body, "REACTOR", "가속 리액터", "Lv.1");
+            AddPart(body, "CORE", _state.EquippedParts[0], "Lv.1");
+            AddPart(body, "FRAME", _state.EquippedParts[1], "Lv.1");
+            AddPart(body, "DRIVE", _state.EquippedParts[2], "Lv.1");
+            AddPart(body, "IMPACTOR", _state.EquippedParts[3], "Lv.1");
+            AddPart(body, "ORBITER", _state.EquippedParts[4], "Lv.1");
+            AddPart(body, "REACTOR", _state.EquippedParts[5], "Lv.1");
 
             var setSummary = Card(PanelBright);
             setSummary.style.marginTop = 14;

@@ -180,7 +180,7 @@ namespace StackfallMobile.Runtime.UI
             Pad(nav, 8, 8);
             AddNavButton(nav, "전투", active == "전투", _app.ShowHome);
             AddNavButton(nav, "기체", active == "기체", _app.ShowShip);
-            AddNavButton(nav, "회수", active == "회수", _app.ShowSummon);
+            AddNavButton(nav, "회수", active == "회수", _app.ShowRecovery);
             AddNavButton(nav, "도전", active == "도전", _app.ShowChallenges);
             AddNavButton(nav, "길드", active == "길드", _app.ShowGuild);
             root.Add(nav);
