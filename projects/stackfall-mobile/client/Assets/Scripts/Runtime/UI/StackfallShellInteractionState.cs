@@ -14,6 +14,7 @@ namespace StackfallMobile.Runtime.UI
         public int StoreTab;
         public int PartTab;
         public int SelectedPartIndex;
+        public int ActivePreset;
         public int GraphicsQuality = 2;
 
         public bool BgmEnabled = true;

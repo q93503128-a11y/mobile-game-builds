@@ -17,6 +17,7 @@ CLIENT_ROOT = PROJECT_ROOT / "client"
 RUNTIME_ROOT = CLIENT_ROOT / "Assets" / "Scripts" / "Runtime"
 UI_ROOT = RUNTIME_ROOT / "UI"
 RESOURCE_ROOT = CLIENT_ROOT / "Assets" / "Resources" / "StackfallExternal"
+EDITOR_BOOTSTRAP = CLIENT_ROOT / "Assets" / "Editor" / "StackfallProjectBootstrapEditor.cs"
 
 EXPECTED_UNITY = "6000.3.19f1"
 EXPECTED_REVISION = "7689f4515d75"
@@ -63,6 +64,17 @@ def main() -> int:
     if EXPECTED_REVISION not in version_text:
         fail(f"Unity changeset must include {EXPECTED_REVISION}", failures)
 
+    editor_bootstrap_text = read(EDITOR_BOOTSTRAP)
+    editor_bootstrap_fragments = (
+        'private const string BootstrapScenePath = "Assets/Scenes/Bootstrap.unity";',
+        "[InitializeOnLoadMethod]",
+        "EditorSceneManager.NewScene(NewSceneSetup.EmptyScene, NewSceneMode.Additive)",
+        "EditorBuildSettings.scenes = remaining.ToArray();",
+    )
+    for fragment in editor_bootstrap_fragments:
+        if fragment not in editor_bootstrap_text:
+            fail(f"editor bootstrap invariant missing: {fragment}", failures)
+
     existing_sources = {path.name for path in UI_ROOT.glob("*.cs")}
     missing_sources = sorted(REQUIRED_SHELL_SOURCES - existing_sources)
     if missing_sources:
@@ -86,6 +98,8 @@ def main() -> int:
         fail("compact-device layout gate is missing", failures)
     if "BadgeText(_state.UnclaimedMailCount)" not in layout_text:
         fail("top-bar mail badge is not state-driven", failures)
+    if "var panelScale = 1080f / width;" not in layout_text:
+        fail("shell safe-area mapping is not aligned to width-match panel scale", failures)
 
     controller_text = read(UI_ROOT / "StackfallShellController.cs")
     state_driven_fragments = (
@@ -97,6 +111,26 @@ def main() -> int:
     for fragment in state_driven_fragments:
         if fragment not in controller_text:
             fail(f"home notification state missing: {fragment}", failures)
+    panel_fragments = (
+        "_panelSettings.screenMatchMode = PanelScreenMatchMode.MatchWidthOrHeight;",
+        "_panelSettings.match = 0f;",
+        "_panelSettings.sortingOrder = 50f;",
+        'SelectableTab("메인", _state.ActivePreset == 0',
+    )
+    for fragment in panel_fragments:
+        if fragment not in controller_text:
+            fail(f"shell runtime UI invariant missing: {fragment}", failures)
+
+    hud_text = read(UI_ROOT / "PlayerHudController.cs")
+    hud_fragments = (
+        "_panelSettings.screenMatchMode = PanelScreenMatchMode.MatchWidthOrHeight;",
+        "_panelSettings.match = 0f;",
+        "_panelSettings.sortingOrder = 100f;",
+        "ApplySafeArea(root);",
+    )
+    for fragment in hud_fragments:
+        if fragment not in hud_text:
+            fail(f"combat HUD runtime UI invariant missing: {fragment}", failures)
 
     png_signature = b"\x89PNG\r\n\x1a\n"
     existing_icons = {path.name for path in RESOURCE_ROOT.glob("*.png")}
@@ -131,7 +165,7 @@ def main() -> int:
     print(
         "first-test source preflight OK "
         f"(Unity {EXPECTED_UNITY}, {len(REQUIRED_SHELL_SOURCES)} shell sources, "
-        f"{len(EXPECTED_ICONS)} external icons)"
+        f"{len(EXPECTED_ICONS)} external icons, editor bootstrap + panel safety)"
     )
     print("Unity Editor import/compile and Play Mode verification are still required.")
     return 0

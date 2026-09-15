@@ -30,9 +30,12 @@ namespace StackfallMobile.Runtime.UI
             _panelSettings = ScriptableObject.CreateInstance<PanelSettings>();
             _panelSettings.scaleMode = PanelScaleMode.ScaleWithScreenSize;
             _panelSettings.referenceResolution = new Vector2Int(1080, 1920);
+            _panelSettings.screenMatchMode = PanelScreenMatchMode.MatchWidthOrHeight;
+            _panelSettings.match = 0f;
+            _panelSettings.sortingOrder = 50f;
             _document = gameObject.AddComponent<UIDocument>();
             _document.panelSettings = _panelSettings;
-            _document.sortingOrder = 50;
+            _document.sortingOrder = 0f;
         }
 
         private void OnDestroy()
@@ -298,9 +301,9 @@ namespace StackfallMobile.Runtime.UI
 
             var presets = Row();
             presets.style.marginTop = 14;
-            presets.Add(TabChip("메인", true));
-            presets.Add(TabChip("보스", false));
-            presets.Add(TabChip("아레나", false));
+            presets.Add(SelectableTab("메인", _state.ActivePreset == 0, () => SelectShipPreset(0)));
+            presets.Add(SelectableTab("보스", _state.ActivePreset == 1, () => SelectShipPreset(1)));
+            presets.Add(SelectableTab("아레나", _state.ActivePreset == 2, () => SelectShipPreset(2)));
             body.Add(presets);
 
             var partsHeader = Row();
@@ -324,7 +327,7 @@ namespace StackfallMobile.Runtime.UI
             var setSummary = Card(PanelBright);
             setSummary.style.marginTop = 14;
             Pad(setSummary, 20, 18);
-            setSummary.Add(Label("현재 구성", 18, FontStyle.Bold, Accent));
+            setSummary.Add(Label($"현재 구성 · {PresetName(_state.ActivePreset)}", 18, FontStyle.Bold, Accent));
             setSummary.Add(Label("6슬롯 혼합 구성 · 슬롯 강화는 부품 교체 후에도 유지", 15, FontStyle.Normal, Muted));
             body.Add(setSummary);
             AddBottomNavigation(root, "기체");

@@ -26,9 +26,9 @@ namespace StackfallMobile.Runtime.UI
         {
             var toast = Card(new Color(0.015f, 0.035f, 0.06f, 0.98f));
             toast.style.position = Position.Absolute;
-            toast.style.left = 72;
-            toast.style.right = 72;
-            toast.style.bottom = 138;
+            toast.style.left = IsCompactDevice ? 42 : 72;
+            toast.style.right = IsCompactDevice ? 42 : 72;
+            toast.style.bottom = IsCompactDevice ? 116 : 138;
             toast.style.minHeight = 72;
             toast.style.alignItems = Align.Center;
             toast.style.justifyContent = Justify.Center;
@@ -119,6 +119,23 @@ namespace StackfallMobile.Runtime.UI
             var row = SettingRow(title, detail);
             row.AddManipulator(new Clickable(click ?? (() => { })));
             return row;
+        }
+
+
+        private void SelectShipPreset(int preset)
+        {
+            _state.ActivePreset = Mathf.Clamp(preset, 0, 2);
+            ShowShip();
+        }
+
+        private static string PresetName(int preset)
+        {
+            return preset switch
+            {
+                1 => "보스",
+                2 => "아레나",
+                _ => "메인"
+            };
         }
 
         private static string JoinEquippedParts(string[] equipped)

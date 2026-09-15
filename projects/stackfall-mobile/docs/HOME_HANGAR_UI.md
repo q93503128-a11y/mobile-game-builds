@@ -1,6 +1,6 @@
 # Stackfall Mobile 홈/격납고 UI 정본
 
-상태: `v0.6 — interactive presentation shell integrated, Unity verification pending`
+상태: `v0.7 — first-test source gate hardened, Unity verification next`
 
 목적: 전투 프로토타입만 덩그러니 실행하는 테스트를 피하고, 실제 양산형 모바일 RPG의 첫인상에 가까운 `홈 → 편성 → 스테이지 → 전투 → 결과` 흐름을 먼저 만든다. 외부 성공작의 정보구조와 사용감을 참고하되 고유 아트·배치·표현으로 재설계한다.
 
@@ -330,3 +330,18 @@ Unity 첫 사용자 테스트 전에 모바일 게임의 빈 화면처럼 보이
 - 공용 모달과 토스트로 보상/부족 재화/정보 확인 피드백 제공
 
 이 상태는 실제 계정·서버·영구 저장 구현이 아니다. 영구 경제/가챠 결과/인벤토리 권위는 기존 로드맵의 서버·데이터 단계에서 구현한다. 현재 목적은 첫 Unity 테스트 전에 플레이어가 누르는 주요 셸 요소가 무반응 장식으로 남지 않게 하는 것이다.
+
+
+## 17. 첫 Unity 검증 직전 하드닝
+
+첫 사용자 테스트 직전에는 화면 수를 더 늘리지 않고 실제 Unity import/Play Mode에서 문제가 되기 쉬운 런타임 UI 경계를 먼저 고정한다.
+
+- Shell PanelSettings는 `1080×1920`, `ScaleWithScreenSize`, `MatchWidthOrHeight`, width match(`match = 0`)를 명시한다.
+- Shell 패널 정렬값은 50, 전투 HUD 패널 정렬값은 100으로 분리한다. 서로 다른 PanelSettings를 사용하므로 패널 자체의 sorting order도 명시한다.
+- Safe Area 좌표 변환은 width-match와 같은 단일 스케일을 사용한다.
+- 전투 HUD에도 Safe Area 패딩을 적용해 노치/상단 카메라 홀과 선체·타이머 HUD가 겹치지 않게 한다.
+- 기체 화면의 `메인 / 보스 / 아레나` 프리셋 표시는 무반응 장식이 아니라 실제 선택 상태를 바꾼다.
+- 프로젝트 첫 import 시 Editor bootstrap이 빈 `Assets/Scenes/Bootstrap.unity`를 생성하고 Build Settings의 유일한 시작 Scene으로 등록한다. 실제 런타임은 기존 `RuntimeInitializeOnLoadMethod`가 구성한다.
+- 이 자동 생성은 Unity Editor가 실제로 실행될 때 수행되므로, source preflight 통과만으로 Scene import 성공을 주장하지 않는다.
+
+이 단계 이후 source-only 검사로 얻을 수 있는 정보의 한계에 도달하면 첫 사용자 Unity 검증 게이트를 연다.

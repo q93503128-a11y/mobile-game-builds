@@ -124,6 +124,10 @@ UI/반복/소셜:
 - 도전 콘텐츠 허브
 - 길드 기능 허브
 - 하단 회수/도전/길드 탭의 최종 정보구조 미리보기
+- 첫 Unity import 시 `Assets/Scenes/Bootstrap.unity`와 Build Settings 진입점을 자동 정본화하는 Editor bootstrap
+- Shell/HUD 공통 1080×1920 width-match 패널 스케일과 Safe Area 적용
+- 기체 프리셋 탭 실제 전환 상태
+- 첫 테스트 프리플라이트에 Editor bootstrap / panel ordering / HUD Safe Area 검사 포함
 - 짧은 앱 스타트업/브랜드 화면
 - 360×640급 소형 화면용 compact UI 분기
 - 우편/임무/출석/무료 보급 상태에 연동되는 홈 알림 배지

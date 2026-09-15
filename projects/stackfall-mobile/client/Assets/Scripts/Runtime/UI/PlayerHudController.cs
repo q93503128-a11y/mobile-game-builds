@@ -82,10 +82,13 @@ namespace StackfallMobile.Runtime.UI
             _panelSettings = ScriptableObject.CreateInstance<PanelSettings>();
             _panelSettings.scaleMode = PanelScaleMode.ScaleWithScreenSize;
             _panelSettings.referenceResolution = new Vector2Int(1080, 1920);
+            _panelSettings.screenMatchMode = PanelScreenMatchMode.MatchWidthOrHeight;
+            _panelSettings.match = 0f;
+            _panelSettings.sortingOrder = 100f;
 
             var document = gameObject.AddComponent<UIDocument>();
             document.panelSettings = _panelSettings;
-            document.sortingOrder = 100;
+            document.sortingOrder = 0f;
 
             var root = document.rootVisualElement;
             root.style.position = Position.Absolute;
@@ -93,10 +96,7 @@ namespace StackfallMobile.Runtime.UI
             root.style.right = 0;
             root.style.top = 0;
             root.style.bottom = 0;
-            root.style.paddingLeft = 26;
-            root.style.paddingRight = 26;
-            root.style.paddingTop = 34;
-            root.style.paddingBottom = 34;
+            ApplySafeArea(root);
 
             var top = new VisualElement();
             top.style.flexDirection = FlexDirection.Column;
@@ -238,6 +238,18 @@ namespace StackfallMobile.Runtime.UI
                 StageUpgradeId.GravityWell => "중력 우물\n흡인장 강화",
                 _ => throw new ArgumentOutOfRangeException(nameof(id), id, null)
             };
+        }
+
+        private static void ApplySafeArea(VisualElement root)
+        {
+            var safeArea = Screen.safeArea;
+            var width = Mathf.Max(1f, Screen.width);
+            var height = Mathf.Max(1f, Screen.height);
+            var panelScale = 1080f / width;
+            root.style.paddingLeft = 26f + safeArea.xMin * panelScale;
+            root.style.paddingRight = 26f + (width - safeArea.xMax) * panelScale;
+            root.style.paddingTop = 34f + (height - safeArea.yMax) * panelScale;
+            root.style.paddingBottom = 34f + safeArea.yMin * panelScale;
         }
 
         private static ProgressBar MakeProgressBar(string title, float highValue)

@@ -58,12 +58,11 @@ namespace StackfallMobile.Runtime.UI
             var safeArea = Screen.safeArea;
             var width = Mathf.Max(1f, Screen.width);
             var height = Mathf.Max(1f, Screen.height);
-            var scaleX = 1080f / width;
-            var scaleY = 1920f / height;
-            root.style.paddingLeft = 12f + safeArea.xMin * scaleX;
-            root.style.paddingRight = 12f + (width - safeArea.xMax) * scaleX;
-            root.style.paddingBottom = 12f + safeArea.yMin * scaleY;
-            root.style.paddingTop = 12f + (height - safeArea.yMax) * scaleY;
+            var panelScale = 1080f / width;
+            root.style.paddingLeft = 12f + safeArea.xMin * panelScale;
+            root.style.paddingRight = 12f + (width - safeArea.xMax) * panelScale;
+            root.style.paddingBottom = 12f + safeArea.yMin * panelScale;
+            root.style.paddingTop = 12f + (height - safeArea.yMax) * panelScale;
         }
 
         private void AddTopStatus(VisualElement root)
