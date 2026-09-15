@@ -1,6 +1,6 @@
 # Stackfall Mobile 엔진 및 Unity 작업 규칙
 
-상태: `LOCKED — pre-production`
+상태: `LOCKED`
 
 이 문서는 Stackfall Mobile의 엔진 선택과 Unity 적용/검증 주기를 고정한다.
 
@@ -16,7 +16,7 @@
 
 ## 2. Unity 프로젝트 위치
 
-실제 클라이언트가 생성되면 아래 구조를 사용한다.
+실제 클라이언트는 아래 구조를 사용한다.
 
 ```text
 projects/stackfall-mobile/
@@ -121,12 +121,20 @@ Unity가 생성하는 `Library/`, `Temp/`, `Logs/`, `obj/`, 빌드 산출물 등
 
 1. ChatGPT가 GitHub 정본에서 작업
 2. 일정 기능 묶음까지 `main`에 축적
-3. 테스트 시점에 최신 정본을 사용자 Unity 프로젝트로 동기화
-4. Unity Editor에서 import/compile
+3. 테스트/인계 시점에 최신 프로젝트 폴더를 ZIP으로 이 채팅에 직접 전달
+4. 사용자는 전달받은 폴더의 `client/`를 Unity Hub에서 열어 import/compile
 5. 수동 플레이/모바일 테스트
 6. 발견된 문제를 같은 정본에서 수정
 
-향후 실제 사용자 적용 패키지가 필요하면 가능한 한 반복 수동 복사를 요구하지 않는 동기화/업데이트 절차를 만든다.
+### 6.1 채팅 전달 패키지 규칙
+
+- 사용자가 테스트해야 하는 시점에는 GitHub 링크만 던지지 않는다.
+- `projects/stackfall-mobile/` 최신 정본을 짧은 이름의 ZIP으로 채팅에 첨부한다.
+- 기본 파일명: `STACKFALL_MOBILE.zip`
+- `Library/`, `Temp/`, `Logs/`, `obj/`, 빌드 산출물, 로컬 캐시, 백업은 ZIP에서 제외한다.
+- 테스트 설명과 개발 진행상황은 ZIP 내부 게임 UI에 넣지 않고 채팅에서만 전달한다.
+- 게임 안에는 개발자 메모/진행률/테스트 문구를 넣지 않는다.
+- 사용자가 별도로 전체 저장소를 요구하지 않는 한 `.git`과 공용 저장소의 다른 프로젝트는 전달하지 않는다.
 
 ## 7. 완료 판정 원칙
 
