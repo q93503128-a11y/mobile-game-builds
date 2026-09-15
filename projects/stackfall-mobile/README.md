@@ -13,6 +13,7 @@
 - 기존 웹 Stackfall은 참고 원본/전투 연구 자료로 유지
 - 실제 모바일 클라이언트는 `projects/stackfall-mobile/client/`을 Unity 프로젝트 루트로 사용
 - 매 작업마다 Unity Editor를 열지 않는다. 코드·데이터·문서는 GitHub 정본에서 계속 개발하고, 기능 묶음/테스트 마일스톤에서 Unity import·compile·Play Mode·모바일 빌드 검증을 수행한다.
+- 테스트/인계 시점에는 최신 `projects/stackfall-mobile/` 폴더를 ZIP으로 채팅에 직접 전달한다.
 
 세부 규칙은 [`docs/ENGINE_WORKFLOW.md`](./docs/ENGINE_WORKFLOW.md)를 따른다.
 
@@ -20,6 +21,7 @@
 
 - 한 스테이지 약 5~15분
 - 뱀서류/생존 액션 기반 자동 공격 + 모바일 이동 중심 조작
+- 공격/지원 능력은 메인 스테이지 진행에 따라 순차 해금
 - 영구 성장의 핵심은 전통 RPG 장비가 아닌 `기체 부품`
 - 부품 장착·등급·돌파에 따라 실제 인게임 기체의 형태와 실루엣 변화
 - 메인 스테이지 + 던전 + 보스 + 무한 콘텐츠 + 비동기 경쟁 + 랭킹
@@ -44,30 +46,31 @@
 6. [`docs/COMBAT_FOUNDATION.md`](./docs/COMBAT_FOUNDATION.md) — 스테이지/조작/레벨업/적 밀도/보스 전투 기준
 7. [`docs/CONTENT_CATALOG_V0.md`](./docs/CONTENT_CATALOG_V0.md) — 첫 공격/지원/일반 부품 제작 후보
 8. [`docs/SKILL_EVOLUTION_V0.md`](./docs/SKILL_EVOLUTION_V0.md) — 12개 공격의 Rank 1~6 전투 진화
-9. [`docs/CHAPTER_ENEMY_BOSS_RULES.md`](./docs/CHAPTER_ENEMY_BOSS_RULES.md) — 챕터/적/엘리트/보스 제작 규칙
-10. [`docs/CHAPTER_CATALOG_V0.md`](./docs/CHAPTER_CATALOG_V0.md) — 초기 8챕터 실제 적/엘리트/보스 카탈로그
+9. [`docs/UNLOCK_PROGRESSION_V0.md`](./docs/UNLOCK_PROGRESSION_V0.md) — Stage 1~50 공격/지원 순차 해금과 출격 풀 편성
+10. [`docs/CHAPTER_ENEMY_BOSS_RULES.md`](./docs/CHAPTER_ENEMY_BOSS_RULES.md) — 챕터/적/엘리트/보스 제작 규칙
+11. [`docs/CHAPTER_CATALOG_V0.md`](./docs/CHAPTER_CATALOG_V0.md) — 초기 8챕터 실제 적/엘리트/보스 카탈로그
 
 성장/경제:
 
-11. [`docs/PARTS_SYSTEM.md`](./docs/PARTS_SYSTEM.md) — 코어/프레임/드라이브/임팩터/오비터/리액터 영구 성장
-12. [`docs/S_PROTOTYPES_V0.md`](./docs/S_PROTOTYPES_V0.md) — 첫 S 프로토타입 4세트 × 6부품
-13. [`docs/BENCHMARKS.md`](./docs/BENCHMARKS.md) — 외부 성공작 구조/수치 조사
-14. [`docs/BALANCE_V0.md`](./docs/BALANCE_V0.md) — 첫 가챠/등급/중복/전투 수치 범위와 Monte Carlo 결과
-15. [`docs/GACHA_BANNERS_V0.md`](./docs/GACHA_BANNERS_V0.md) — 표준/픽업/목표 부품/천장/중복 규칙
-16. [`docs/ECONOMY_V0.md`](./docs/ECONOMY_V0.md) — 30/90/180일 무료/유료 성장 목표
+12. [`docs/PARTS_SYSTEM.md`](./docs/PARTS_SYSTEM.md) — 코어/프레임/드라이브/임팩터/오비터/리액터 영구 성장
+13. [`docs/S_PROTOTYPES_V0.md`](./docs/S_PROTOTYPES_V0.md) — 첫 S 프로토타입 4세트 × 6부품
+14. [`docs/BENCHMARKS.md`](./docs/BENCHMARKS.md) — 외부 성공작 구조/수치 조사
+15. [`docs/BALANCE_V0.md`](./docs/BALANCE_V0.md) — 첫 가챠/등급/중복/전투 수치 범위와 Monte Carlo 결과
+16. [`docs/GACHA_BANNERS_V0.md`](./docs/GACHA_BANNERS_V0.md) — 표준/픽업/목표 부품/천장/중복 규칙
+17. [`docs/ECONOMY_V0.md`](./docs/ECONOMY_V0.md) — 30/90/180일 무료/유료 성장 목표
 
 UI/반복/소셜:
 
-17. [`docs/HOME_HANGAR_UI.md`](./docs/HOME_HANGAR_UI.md) — 홈/격납고/기체/회수/도전 정보구조
-18. [`docs/CHALLENGE_MODES_V0.md`](./docs/CHALLENGE_MODES_V0.md) — 던전/보스랭킹/탑/아레나/길드보스 보상 루프
-19. [`docs/GUILD_CHAT_V0.md`](./docs/GUILD_CHAT_V0.md) — 길드/국가·글로벌 채팅/모더레이션 규칙
+18. [`docs/HOME_HANGAR_UI.md`](./docs/HOME_HANGAR_UI.md) — 홈/격납고/기체/회수/도전 정보구조
+19. [`docs/CHALLENGE_MODES_V0.md`](./docs/CHALLENGE_MODES_V0.md) — 던전/보스랭킹/탑/아레나/길드보스 보상 루프
+20. [`docs/GUILD_CHAT_V0.md`](./docs/GUILD_CHAT_V0.md) — 길드/국가·글로벌 채팅/모더레이션 규칙
 
 기술/서버/데이터:
 
-20. [`docs/SERVER_ARCHITECTURE.md`](./docs/SERVER_ARCHITECTURE.md) — 서버 권위 경계
-21. [`docs/ENGINE_WORKFLOW.md`](./docs/ENGINE_WORKFLOW.md) — Unity 작업/검증 방식
-22. [`docs/DATA_SCHEMA_V0.md`](./docs/DATA_SCHEMA_V0.md) — 정적/계정/전투 세션 데이터 구조
-23. [`data/README.md`](./data/README.md) — 정적 데이터 정본 폴더 규칙
+21. [`docs/SERVER_ARCHITECTURE.md`](./docs/SERVER_ARCHITECTURE.md) — 서버 권위 경계
+22. [`docs/ENGINE_WORKFLOW.md`](./docs/ENGINE_WORKFLOW.md) — Unity 작업/검증/채팅 ZIP 전달 방식
+23. [`docs/DATA_SCHEMA_V0.md`](./docs/DATA_SCHEMA_V0.md) — 정적/계정/전투 세션 데이터 구조
+24. [`data/README.md`](./data/README.md) — 정적 데이터 정본 폴더 규칙
 
 공용 개발 규칙은 저장소 루트의 [`RULES.md`](../../RULES.md)를 따른다.
 
