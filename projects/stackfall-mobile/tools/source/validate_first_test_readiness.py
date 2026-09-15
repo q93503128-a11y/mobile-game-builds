@@ -7,6 +7,7 @@ source/package invariants that can be checked without the Unity Editor.
 
 from __future__ import annotations
 
+import json
 import re
 import sys
 from collections import Counter
@@ -56,6 +57,16 @@ def read(path: Path) -> str:
 
 def main() -> int:
     failures: list[str] = []
+
+    manifest_file = CLIENT_ROOT / "Packages" / "manifest.json"
+    try:
+        manifest = json.loads(read(manifest_file))
+    except json.JSONDecodeError as exc:
+        fail(f"invalid Packages/manifest.json: {exc}", failures)
+        manifest = {}
+    dependencies = manifest.get("dependencies", {}) if isinstance(manifest, dict) else {}
+    if dependencies.get("com.unity.modules.uielements") != "1.0.0":
+        fail("Unity UIElements built-in module dependency is missing", failures)
 
     version_file = CLIENT_ROOT / "ProjectSettings" / "ProjectVersion.txt"
     version_text = read(version_file)
@@ -165,7 +176,7 @@ def main() -> int:
     print(
         "first-test source preflight OK "
         f"(Unity {EXPECTED_UNITY}, {len(REQUIRED_SHELL_SOURCES)} shell sources, "
-        f"{len(EXPECTED_ICONS)} external icons, editor bootstrap + panel safety)"
+        f"{len(EXPECTED_ICONS)} external icons, UIElements module + editor bootstrap + panel safety)"
     )
     print("Unity Editor import/compile and Play Mode verification are still required.")
     return 0
