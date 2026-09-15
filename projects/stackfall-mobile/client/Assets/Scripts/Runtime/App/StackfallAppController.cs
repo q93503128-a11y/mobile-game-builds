@@ -1,3 +1,4 @@
+using System.Collections;
 using StackfallMobile.Runtime.Combat.Weapons;
 using StackfallMobile.Runtime.Enemies;
 using StackfallMobile.Runtime.Player;
@@ -18,6 +19,7 @@ namespace StackfallMobile.Runtime.App
         private StageSessionController _session;
         private PlayerProgression _combatProgression;
         private int _activeStage;
+        private Coroutine _transitionRoutine;
 
         public int HighestClearedStage { get; private set; }
         public int CurrentStage => Mathf.Clamp(HighestClearedStage + 1, 1, PlayableStageCap);
@@ -38,6 +40,7 @@ namespace StackfallMobile.Runtime.App
 
         public void ShowHome()
         {
+            CancelTransition();
             EndCombatRuntime();
             SetCameraForShell();
             _shell.ShowHome(CurrentStage);
@@ -45,13 +48,29 @@ namespace StackfallMobile.Runtime.App
 
         public void ShowShip()
         {
+            CancelTransition();
             EndCombatRuntime();
             SetCameraForShell();
             _shell.ShowShip();
         }
 
+        public void ShowMailbox() => ShowShellSection(_shell.ShowMailbox);
+        public void ShowMissions() => ShowShellSection(_shell.ShowMissions);
+        public void ShowStore() => ShowShellSection(_shell.ShowStore);
+        public void ShowSummon() => ShowShellSection(_shell.ShowSummon);
+        public void ShowSettings() => ShowShellSection(_shell.ShowSettings);
+
+        private void ShowShellSection(System.Action show)
+        {
+            CancelTransition();
+            EndCombatRuntime();
+            SetCameraForShell();
+            show();
+        }
+
         public void ShowLockedSection(string section, int unlockStage)
         {
+            CancelTransition();
             EndCombatRuntime();
             SetCameraForShell();
             _shell.ShowLockedSection(section, unlockStage);
@@ -59,6 +78,7 @@ namespace StackfallMobile.Runtime.App
 
         public void OpenLoadout(int stage)
         {
+            CancelTransition();
             EndCombatRuntime();
             SetCameraForShell();
             _shell.ShowLoadout(Mathf.Clamp(stage, 1, PlayableStageCap));
@@ -66,11 +86,33 @@ namespace StackfallMobile.Runtime.App
 
         public void BeginCombat(int stage)
         {
+            CancelTransition();
+            _transitionRoutine = StartCoroutine(BeginCombatAfterLoading(stage));
+        }
+
+        private IEnumerator BeginCombatAfterLoading(int stage)
+        {
             EndCombatRuntime();
             _activeStage = Mathf.Clamp(stage, 1, PlayableStageCap);
+            SetCameraForShell();
+            _shell.ShowLoading(_activeStage);
+            yield return null;
+            yield return new WaitForSecondsRealtime(0.45f);
             _shell.Hide();
             SetCameraForCombat();
             BuildCombatRuntime();
+            _transitionRoutine = null;
+        }
+
+        private void CancelTransition()
+        {
+            if (_transitionRoutine == null)
+            {
+                return;
+            }
+
+            StopCoroutine(_transitionRoutine);
+            _transitionRoutine = null;
         }
 
         private void BuildCombatRuntime()

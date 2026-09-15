@@ -62,14 +62,15 @@
 
 UI/반복/소셜:
 19. [`docs/HOME_HANGAR_UI.md`](./docs/HOME_HANGAR_UI.md) — 첫 테스트 전 홈/편성/전투/결과 제품 껍데기 기준
-20. [`docs/CHALLENGE_MODES_V0.md`](./docs/CHALLENGE_MODES_V0.md)
-21. [`docs/GUILD_CHAT_V0.md`](./docs/GUILD_CHAT_V0.md)
+20. [`docs/EXTERNAL_UI_ASSETS.md`](./docs/EXTERNAL_UI_ASSETS.md) — 외부 CC0 UI/아이콘 출처·라이선스·체크섬
+21. [`docs/CHALLENGE_MODES_V0.md`](./docs/CHALLENGE_MODES_V0.md)
+22. [`docs/GUILD_CHAT_V0.md`](./docs/GUILD_CHAT_V0.md)
 
 기술/서버/데이터:
-22. [`docs/SERVER_ARCHITECTURE.md`](./docs/SERVER_ARCHITECTURE.md)
-23. [`docs/ENGINE_WORKFLOW.md`](./docs/ENGINE_WORKFLOW.md)
-24. [`docs/DATA_SCHEMA_V0.md`](./docs/DATA_SCHEMA_V0.md)
-25. [`data/README.md`](./data/README.md)
+23. [`docs/SERVER_ARCHITECTURE.md`](./docs/SERVER_ARCHITECTURE.md)
+24. [`docs/ENGINE_WORKFLOW.md`](./docs/ENGINE_WORKFLOW.md)
+25. [`docs/DATA_SCHEMA_V0.md`](./docs/DATA_SCHEMA_V0.md)
+26. [`data/README.md`](./data/README.md)
 
 공용 개발 규칙은 저장소 루트의 [`RULES.md`](../../RULES.md)를 따른다.
 
@@ -98,7 +99,7 @@ UI/반복/소셜:
 
 ## 현재 단계
 
-`Phase 1B mobile shell source integrated → Unity verification pending`
+`Phase 1B full presentation shell integrated → Unity verification pending`
 
 전투 코어 위에 모바일 제품 껍데기 소스가 연결되었다.
 
@@ -112,5 +113,9 @@ UI/반복/소셜:
 - 전투 런타임 진입/정리
 - 결과 화면
 - 홈/다음 스테이지 복귀
+- 우주 로딩 화면
+- 설정 / 우편 / 임무 / 상점 / 소환 외형 화면
+- 홈의 라이브서비스형 빠른 진입/이벤트 배너
+- 외부 CC0 기능 아이콘 8종
 
 다만 Unity Editor import/compile 및 실제 Play Mode 화면 검증은 아직 하지 않았으므로 사용자 첫 플레이 테스트는 계속 보류한다. Unity 6000.3.19f1에서 오류 0과 전체 화면 흐름을 확인한 뒤 첫 테스트 게이트를 연다.

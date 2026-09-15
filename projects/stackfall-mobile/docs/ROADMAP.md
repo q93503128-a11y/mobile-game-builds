@@ -1,6 +1,6 @@
 # Stackfall Mobile 개발 로드맵
 
-현재 단계: `Phase 1 combat core complete → mobile shell integration`
+현재 단계: `Phase 1 combat core complete → full mobile presentation shell integration`
 
 엔진: `Unity 6000.3.19f1 / C#`
 
@@ -60,6 +60,14 @@
 13. 홈/전투 공용 조립 기체 실루엣
 14. Safe Area 기반 화면 패딩
 15. 첫 플레이 범위 Stage 1~2 진행 경계 — Stage 3+ 신규 액티브가 실제 전투 구현보다 먼저 노출되지 않도록 제한
+16. 우주 항로 로딩 화면
+17. 설정 화면
+18. 우편함 화면
+19. 일일/주간/업적 임무 화면
+20. 상점 외형 화면
+21. 프로토타입 공명 소환 외형 화면 — V0 경제/가챠 정본 수치 사용
+22. 홈 임무/우편/상점/소환 빠른 진입 및 이벤트 배너
+23. 외부 CC0 기능 아이콘 8종 통합 + 라이선스/체크섬 문서화
 
 남은 게이트는 Unity 6000.3.19f1에서 실제 import/compile 및 Play Mode 화면 검증이다. 이 검증 전에는 Phase 1B를 최종 완료로 판정하지 않는다.
 
