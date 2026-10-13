@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea85a5ebaf6f62646a87d747548e1a2f, type: 3}
+  m_Name: WorkbenchPlacement
+  m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.PlaceableDefinition
+  Item: {fileID: 11400000, guid: a50ff5ee6519b404a9e96c12b81d4578, type: 2}
+  Prefab: {fileID: 3385274447091358857, guid: def524a147fbf934d88f769c2b38c926, type: 3}
+  Vitality: {fileID: 11400000, guid: 85641e5369e46494eb3fe19aaa28ff71, type: 2}
+  Footprint: {x: 1.8, y: 1.15}
+  MaximumDistance: 2.8
+  Station: 1

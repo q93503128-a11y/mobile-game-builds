@@ -19,6 +19,9 @@ GameObject:
   - component: {fileID: 1047555241206377397}
   - component: {fileID: 7080438054753028775}
   - component: {fileID: 6778675890933867473}
+  - component: {fileID: 2551374756638748636}
+  - component: {fileID: 7957096156132211969}
+  - component: {fileID: 4937408309816132337}
   - component: {fileID: 6968116465940275041}
   m_Layer: 0
   m_Name: Player
@@ -217,7 +220,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.PlayerInventory
   Settings: {fileID: 11400000, guid: fd43ec9cd9385eb4eb69f64792c98535, type: 2}
-  Loadout: {fileID: 11400000, guid: 40a2b5b6bb067b540aded9903a9f8a3f, type: 2}
 --- !u!114 &6778675890933867473
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -233,6 +235,62 @@ MonoBehaviour:
   Inventory: {fileID: 7080438054753028775}
   Combat: {fileID: 765404324439809981}
   HeldVisual: {fileID: 7730738901740521711}
+--- !u!114 &2551374756638748636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 226757985403581487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a0af38e328d11c4dbf5f53ae769e626, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.PlayerCrafting
+  Catalog: {fileID: 11400000, guid: 54b1dfaee877c2e4ba4d568f8c99ab1e, type: 2}
+  Inventory: {fileID: 7080438054753028775}
+  Session: {fileID: 0}
+  Settings: {fileID: 11400000, guid: fd43ec9cd9385eb4eb69f64792c98535, type: 2}
+--- !u!114 &7957096156132211969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 226757985403581487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10c51f2037ec2ea4f98272b228169cdc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.PlayerPlacement
+  Equipment: {fileID: 6778675890933867473}
+  Inventory: {fileID: 7080438054753028775}
+  Session: {fileID: 0}
+  Facing: {fileID: 3886187564385862800}
+  Settings: {fileID: 11400000, guid: fd43ec9cd9385eb4eb69f64792c98535, type: 2}
+  Ground: {fileID: 0}
+  Preview: {fileID: 0}
+  PreviewVisual: {fileID: 0}
+  PreviewFootprint: {fileID: 0}
+--- !u!114 &4937408309816132337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 226757985403581487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e6ccd9978f027c4eac6100e5744ce8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.PlayerAction
+  Equipment: {fileID: 6778675890933867473}
+  Combat: {fileID: 765404324439809981}
+  Placement: {fileID: 7957096156132211969}
+  Crafting: {fileID: 2551374756638748636}
+  Session: {fileID: 0}
+  Settings: {fileID: 11400000, guid: fd43ec9cd9385eb4eb69f64792c98535, type: 2}
+  Facing: {fileID: 3886187564385862800}
 --- !u!114 &6968116465940275041
 MonoBehaviour:
   m_ObjectHideFlags: 0

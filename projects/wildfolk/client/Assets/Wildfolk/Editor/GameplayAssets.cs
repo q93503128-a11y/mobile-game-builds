@@ -12,7 +12,7 @@ namespace Wildfolk.Editor
         internal VitalityDefinition EnemyVitality;
         internal ResourceDefinition Tree;
         internal ResourceDefinition Stone;
-        internal StartingLoadout StartingEquipment;
+        internal CraftingAssets Crafting;
         internal InputActionAsset UIActions;
         internal InputActionReference Point;
         internal InputActionReference Click;
@@ -30,7 +30,8 @@ namespace Wildfolk.Editor
                 s.EnemySpeed=2.2f; s.EnemyDetectionRange=4; s.EnemyLoseRange=8;
                 s.EnemyStopDistance=1.35f; s.EnemySeparation=1.12f; s.EnemyAttackReach=1.55f;
                 s.EnemyDamage=8; s.EnemyWindup=.38f; s.EnemyCooldown=1.15f;
-                s.InventorySlots=16; s.PickupRadius=.95f; s.DropScatter=.85f; s.DropTravelTime=.3f; s.DropPickupDelay=.7f;
+                s.InventorySlots=36;s.StationInteractionRange=2.6f;s.PlacementDistance=2.1f;
+                s.PickupRadius=.95f; s.DropScatter=.85f; s.DropTravelTime=.3f; s.DropPickupDelay=.7f;
             });
             assets.PlayerVitality=Asset<VitalityDefinition>("PlayerVitality",v=>v.MaximumHealth=100);
             assets.EnemyVitality=Asset<VitalityDefinition>("EnemyVitality",v=>v.MaximumHealth=40);
@@ -44,32 +45,31 @@ namespace Wildfolk.Editor
             assets.Stone=Asset<ResourceDefinition>("StoneResource",r=>{r.Vitality=stoneHealth;r.DropItem=stone;r.DropCount=3;r.Kind=ResourceKind.Stone;});
             var axeTool=Tool("AxeTool","axe",.44f,.62f,65,3,.5f);
             var pickaxeTool=Tool("PickaxeTool","pickaxe",.52f,.72f,55,.5f,2.5f);
-            var axe=ToolItem("Axe","axe",axeTool);
-            var pickaxe=ToolItem("Pickaxe","pickaxe",pickaxeTool);
-            assets.StartingEquipment=Asset<StartingLoadout>("StartingEquipment",l=>l.Items=new[]
-            {new StartingItem {Item=axe,Count=1},new StartingItem {Item=pickaxe,Count=1}});
+            var axe=ToolItem("Axe","axe","Wood Axe",axeTool);
+            var pickaxe=ToolItem("Pickaxe","pickaxe","Wood Pickaxe",pickaxeTool);
+            assets.Crafting=CraftingAssets.Load(wood,axe,pickaxe);
             assets.LoadInput();
             AssetDatabase.SaveAssets();
             return assets;
         }
 
-        private static ToolDefinition Tool(string name,string sprite,float duration,float cooldown,float arc,float wood,float stone)
+        internal static ToolDefinition Tool(string name,string sprite,float duration,float cooldown,float arc,float wood,float stone,int damage=10)
         {
             return Asset<ToolDefinition>(name,t=>
             {
-                t.HeldSprite=VisualArtImporter.Sprite(sprite);t.Damage=10;t.Reach=1.6f;
+                t.HeldSprite=VisualArtImporter.Sprite(sprite);t.Damage=damage;t.Reach=1.6f;
                 t.Duration=duration;t.Cooldown=cooldown;t.HandExtension=.25f;t.SwingArc=arc;
                 t.Efficiencies=new[]{new ResourceEfficiency {Kind=ResourceKind.Wood,Multiplier=wood},
                     new ResourceEfficiency {Kind=ResourceKind.Stone,Multiplier=stone}};
             });
         }
-        private static ItemDefinition ToolItem(string name,string id,ToolDefinition tool)
+        private static ItemDefinition ToolItem(string name,string id,string display,ToolDefinition tool)
         {
             return Asset<ItemDefinition>(name,i=>
-            {i.Id=id;i.DisplayName=name;i.Icon=VisualArtImporter.Sprite(id);i.Category=ItemCategory.Tool;i.MaxStack=1;i.Tool=tool;});
+            {i.Id=id;i.DisplayName=display;i.Icon=VisualArtImporter.Sprite(id);i.Category=ItemCategory.Tool;i.MaxStack=1;i.Tool=tool;});
         }
 
-        private static T Asset<T>(string name,System.Action<T> initialize) where T:ScriptableObject
+        internal static T Asset<T>(string name,System.Action<T> initialize) where T:ScriptableObject
         {
             var path=DataPath+name+".asset";
             var asset=AssetDatabase.LoadAssetAtPath<T>(path);

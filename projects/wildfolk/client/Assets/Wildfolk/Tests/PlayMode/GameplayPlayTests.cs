@@ -1,8 +1,6 @@
 using System.Collections;
 using NUnit.Framework;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.LowLevel;
 using UnityEngine.SceneManagement;
 using UnityEngine.TestTools;
 using UnityEngine.UI;
@@ -11,64 +9,43 @@ namespace Wildfolk.Tests
 {
     public sealed class GameplayPlayTests
     {
-        private Mouse mouse;
+        private PlayPointerDriver driver;
         private PlayerMotor player;
         private PlayerInventory inventory;
         private GameplayHud hud;
         private GameplaySettings settings;
         private float leftPunchTravel;
         private float rightPunchTravel;
-        private InputSettings.BackgroundBehavior originalBackground;
-#if UNITY_EDITOR
-        private InputSettings.EditorInputBehaviorInPlayMode originalEditorInput;
-#endif
 
         [UnitySetUp] public IEnumerator LoadFreshGame()
         {
             Time.timeScale=1;
-            originalBackground=InputSystem.settings.backgroundBehavior;
-            InputSystem.settings.backgroundBehavior=InputSettings.BackgroundBehavior.IgnoreFocus;
-#if UNITY_EDITOR
-            originalEditorInput=InputSystem.settings.editorInputBehaviorInPlayMode;
-            InputSystem.settings.editorInputBehaviorInPlayMode=InputSettings.EditorInputBehaviorInPlayMode.AllDeviceInputAlwaysGoesToGameView;
-#endif
+            driver=new PlayPointerDriver();
             yield return SceneManager.LoadSceneAsync("Wildfolk");
             yield return null;
-            mouse=InputSystem.AddDevice<Mouse>();
             player=Object.FindFirstObjectByType<PlayerMotor>();
             inventory=player.GetComponent<PlayerInventory>();
             hud=Object.FindFirstObjectByType<GameplayHud>();
             settings=player.Settings;
-            inventory.SelectSlot(2); // Bare-hand fixture; the actual starter tools remain in slots 0 and 1.
+            for(var i=0;i<inventory.Model.Capacity;i++) Assert.That(inventory.Model.GetSlot(i).IsEmpty,Is.True);
+            // Scope the prior tool regression to test fixtures; the real new game starts empty.
+            foreach(var recipe in player.GetComponent<PlayerCrafting>().Catalog.Recipes)
+                if(recipe.Result.Id=="axe" || recipe.Result.Id=="pickaxe") inventory.Model.Add(recipe.Result,1);
+            inventory.SelectSlot(2);
             player.Avatar.Facing.Face(Vector2.up);
             yield return new WaitForSeconds(.2f);
         }
 
         [UnityTearDown] public IEnumerator ReleaseInput()
         {
-            if(mouse!=null) InputSystem.RemoveDevice(mouse);
-            InputSystem.settings.backgroundBehavior=originalBackground;
-#if UNITY_EDITOR
-            InputSystem.settings.editorInputBehaviorInPlayMode=originalEditorInput;
-#endif
+            driver?.Dispose();
             Time.timeScale=1;
             yield return null;
         }
 
-        private static Vector2 ScreenPoint(Component component) => RectTransformUtility.WorldToScreenPoint(null,component.transform.position);
-        private void Pointer(Vector2 position,bool pressed)
-        {
-            var state=new MouseState {position=position};
-            if(pressed) state=state.WithButton(MouseButton.Left);
-            InputSystem.QueueStateEvent(mouse,state);
-        }
-
-        private IEnumerator Click(Component component)
-        {
-            var point=ScreenPoint(component);
-            Pointer(point,true);yield return null;
-            Pointer(point,false);yield return null;yield return null;
-        }
+        private static Vector2 ScreenPoint(Component component) => PlayPointerDriver.Point(component);
+        private void Pointer(Vector2 position,bool pressed) => driver.Pointer(position,pressed);
+        private IEnumerator Click(Component component) => driver.Click(component);
 
         private IEnumerator Walk(Vector2 direction,float seconds)
         {
@@ -126,11 +103,12 @@ namespace Wildfolk.Tests
             var panel=Object.FindFirstObjectByType<InventoryPanel>();
             Assert.That(panel.View.activeSelf,Is.False);
             yield return Click(hud.InventoryButton);
-            Assert.That(panel.View.activeSelf,Is.True);Assert.That(Time.timeScale,Is.Zero);
+            Assert.That(panel.View.activeSelf,Is.True);Assert.That(Time.timeScale,Is.EqualTo(1));
             var position=player.transform.position;
             yield return Click(hud.Attack);
             Assert.That(player.Combat.IsAttacking,Is.False);
-            Assert.That(player.transform.position,Is.EqualTo(position));
+            Assert.That(Vector2.Distance(position,player.transform.position),Is.LessThan(.005f));
+            Assert.That(player.GetComponent<Rigidbody2D>().linearVelocity.sqrMagnitude,Is.LessThan(.001f));
             yield return Click(panel.Slots[0].GetComponent<Button>());
             Assert.That(panel.Slots[0].Selection.enabled,Is.True);
             yield return Click(panel.View.transform.Find("Inventory Panel/Close").GetComponent<Button>());
@@ -269,9 +247,8 @@ namespace Wildfolk.Tests
             Assert.That(session.PlayerHealth.Current,Is.EqualTo(session.PlayerHealth.Maximum));
             Assert.That(Time.timeScale,Is.EqualTo(1));
             var restarted=Object.FindFirstObjectByType<PlayerEquipment>();
-            Assert.That(restarted.Inventory.Model.GetSlot(0).Item.Id,Is.EqualTo("axe"));
-            Assert.That(restarted.Inventory.Model.GetSlot(1).Item.Id,Is.EqualTo("pickaxe"));
-            Assert.That(restarted.ActiveTool,Is.SameAs(restarted.Inventory.SelectedStack.Item.Tool));
+            for(var i=0;i<restarted.Inventory.Model.Capacity;i++) Assert.That(restarted.Inventory.Model.GetSlot(i).IsEmpty,Is.True);
+            Assert.That(restarted.ActiveTool,Is.Null);
         }
 
         [UnityTest] public IEnumerator FacingMovesEyesAndHandsWithoutRotatingBodyAndKeepsLastDirection()
@@ -331,7 +308,7 @@ namespace Wildfolk.Tests
             yield return UseToolOnce();Assert.That(stone.Health.Current,Is.EqualTo(45),"Axe is inefficient on stone.");
             yield return Click(hud.InventoryButton);yield return Click(panel.Slots[1].GetComponent<Button>());
             Assert.That(inventory.SelectedIndex,Is.EqualTo(1));Assert.That(bar.Slots[1].Selection.enabled,Is.True);
-            Assert.That(panel.SelectedName.text,Is.EqualTo("Pickaxe"));Assert.That(panel.SelectedCategory.text,Is.EqualTo("Tool"));
+            Assert.That(panel.SelectedName.text,Is.EqualTo("Wood Pickaxe"));Assert.That(panel.SelectedCategory.text,Is.EqualTo("Tool"));
             yield return Click(hud.InventoryButton);
             Assert.That(equipment.HeldVisual.sprite,Is.SameAs(inventory.Model.GetSlot(1).Item.Tool.HeldSprite));
             yield return UseToolOnce();Assert.That(stone.Health.Current,Is.EqualTo(20));

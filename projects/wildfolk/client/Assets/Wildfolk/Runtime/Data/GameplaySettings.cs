@@ -22,6 +22,8 @@ namespace Wildfolk
         [Min(.01f)] public float EnemyWindup;
         [Min(.01f)] public float EnemyCooldown;
         [Min(1)] public int InventorySlots;
+        [Min(.1f)] public float StationInteractionRange;
+        [Min(.1f)] public float PlacementDistance;
         [Min(.1f)] public float PickupRadius;
         [Min(.01f)] public float DropScatter;
         [Min(.01f)] public float DropTravelTime;

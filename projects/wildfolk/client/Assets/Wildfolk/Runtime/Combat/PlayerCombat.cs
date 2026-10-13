@@ -59,6 +59,7 @@ namespace Wildfolk
         private void Update()
         {
             if (!IsAttacking) return;
+            if (!Session.IsRunning) { CancelAttack(); return; }
             var progress = Mathf.Clamp01((Time.time - started) / duration);
             var extension = Mathf.Sin(progress * Mathf.PI);
             if (attackTool == null)

@@ -10,6 +10,8 @@ namespace Wildfolk
         public HoldAttackInput Attack;
         public CanvasGroup Controls;
         public Button InventoryButton;
+        public Button PauseButton;
+        public GameObject PausePanel;
         public GameObject DefeatPanel;
 
         private void OnEnable() => Session.StateChanged+=Refresh;
@@ -23,7 +25,9 @@ namespace Wildfolk
             Controls.alpha=Session.IsRunning ? 1 : .35f;
             Joystick.ResetInput();
             Attack.ResetInput();
-            InventoryButton.interactable=Session.State!=SessionState.Defeated;
+            InventoryButton.interactable=Session.State==SessionState.Running || Session.State==SessionState.Inventory;
+            PauseButton.interactable=Session.State!=SessionState.Defeated && Session.State!=SessionState.Paused;
+            PausePanel.SetActive(Session.State==SessionState.Paused);
             DefeatPanel.SetActive(Session.State==SessionState.Defeated);
         }
     }

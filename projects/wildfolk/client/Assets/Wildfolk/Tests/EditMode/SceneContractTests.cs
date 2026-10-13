@@ -28,7 +28,11 @@ namespace Wildfolk.Tests
                 Assert.That(player,Is.Not.Null);Assert.That(player.Session,Is.Not.Null);Assert.That(player.Joystick,Is.Not.Null);
                 Assert.That(player.Combat.Session,Is.SameAs(player.Session));
                 Assert.That(player.Combat.Equipment,Is.Not.Null);Assert.That(player.Avatar.Facing,Is.Not.Null);
-                Assert.That(player.GetComponent<PlayerInventory>().Loadout.Items.Length,Is.EqualTo(2));
+                Assert.That(player.GetComponent<PlayerInventory>().Settings.InventorySlots,Is.EqualTo(36));
+                Assert.That(player.GetComponent<PlayerAction>().Placement,Is.Not.Null);
+                Assert.That(player.GetComponent<PlayerCrafting>().Catalog.Recipes.Length,Is.EqualTo(4));
+                Assert.That(player.Session.GetComponent<WorldPauseController>(),Is.Not.Null);
+                Assert.That(Object.FindFirstObjectByType<InventoryPanel>().Slots.Length,Is.EqualTo(36));
                 Assert.That(enemy,Is.Not.Null);Assert.That(enemy.Session,Is.SameAs(player.Session));
                 Assert.That(enemy.PlayerHealth,Is.SameAs(player.GetComponent<Health>()));
                 Assert.That(enemy.GetComponent<Collider2D>().isTrigger,Is.True);
@@ -43,7 +47,7 @@ namespace Wildfolk.Tests
             finally { if(!wasLoaded) EditorSceneManager.CloseScene(scene,true); }
         }
 
-        [Test] public void BalanceDataHasValidCombatRangesAndFourActualItems()
+        [Test] public void BalanceDataHasValidCombatRangesAndSixActualItems()
         {
             var settings=AssetDatabase.LoadAssetAtPath<GameplaySettings>("Assets/Wildfolk/Data/GameplaySettings.asset");
             Assert.That(settings.PunchCooldown,Is.GreaterThanOrEqualTo(settings.PunchDuration));
@@ -57,14 +61,14 @@ namespace Wildfolk.Tests
             }
             Assert.That(settings.EnemyLoseRange,Is.GreaterThanOrEqualTo(settings.EnemyDetectionRange));
             Assert.That(settings.InventorySlots,Is.GreaterThanOrEqualTo(PlayerInventory.HotbarSize));
-            Assert.That(AssetDatabase.FindAssets("t:ItemDefinition",new[]{"Assets/Wildfolk/Data"}).Length,Is.EqualTo(4));
+            Assert.That(AssetDatabase.FindAssets("t:ItemDefinition",new[]{"Assets/Wildfolk/Data"}).Length,Is.EqualTo(6));
             var ids=new HashSet<string>();
             foreach(var guid in AssetDatabase.FindAssets("t:ItemDefinition",new[]{"Assets/Wildfolk/Data"}))
             {
                 var item=AssetDatabase.LoadAssetAtPath<ItemDefinition>(AssetDatabase.GUIDToAssetPath(guid));
                 Assert.That(item.MaxStack,Is.GreaterThan(0));Assert.That(item.Icon,Is.Not.Null);Assert.That(item.Id,Is.Not.Empty);
                 Assert.That(ids.Add(item.Id),Is.True,"Duplicate item ID: "+item.Id);
-                if(item.Category==ItemCategory.Tool)
+                if(item.Category==ItemCategory.Tool || item.Category==ItemCategory.Weapon)
                 {
                     Assert.That(item.MaxStack,Is.EqualTo(1));Assert.That(item.Tool,Is.Not.Null);
                     Assert.That(item.Tool.HeldSprite,Is.Not.Null);Assert.That(item.Tool.Damage,Is.GreaterThan(0));
@@ -76,6 +80,18 @@ namespace Wildfolk.Tests
                     Assert.That(kinds.Count,Is.EqualTo(2));
                 }
             }
+            var recipeIds=new HashSet<string>();
+            foreach(var guid in AssetDatabase.FindAssets("t:RecipeDefinition",new[]{"Assets/Wildfolk/Data"}))
+            {
+                var recipe=AssetDatabase.LoadAssetAtPath<RecipeDefinition>(AssetDatabase.GUIDToAssetPath(guid));
+                Assert.That(recipeIds.Add(recipe.Id),Is.True);Assert.That(recipe.Id,Is.Not.Empty);
+                Assert.That(recipe.Result,Is.Not.Null);Assert.That(recipe.ResultCount,Is.GreaterThan(0));
+                var ingredients=new HashSet<string>();
+                foreach(var cost in recipe.Ingredients)
+                {Assert.That(cost.Item,Is.Not.Null);Assert.That(cost.Count,Is.GreaterThan(0));Assert.That(ingredients.Add(cost.Item.Id),Is.True);}
+            }
+            Assert.That(recipeIds.Count,Is.EqualTo(4));
+            Assert.That(System.IO.File.Exists("Assets/Wildfolk/Data/StartingEquipment.asset"),Is.False);
             foreach(var guid in AssetDatabase.FindAssets("t:VitalityDefinition",new[]{"Assets/Wildfolk/Data"}))
             {
                 var vitality=AssetDatabase.LoadAssetAtPath<VitalityDefinition>(AssetDatabase.GUIDToAssetPath(guid));

@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Wildfolk
 {
-    public enum ItemCategory { Material, Tool }
+    public enum ItemCategory { Material, Tool, Placeable, Weapon }
 
     [CreateAssetMenu(menuName = "Wildfolk/Item")]
     public sealed class ItemDefinition : ScriptableObject
@@ -13,5 +13,6 @@ namespace Wildfolk
         [Min(1)] public int MaxStack;
         public ItemCategory Category;
         public ToolDefinition Tool;
+        public PlaceableDefinition Placement;
     }
 }

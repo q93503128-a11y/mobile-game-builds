@@ -32,9 +32,11 @@ namespace Wildfolk.Editor
                 index=(int)groupType.GetMethod("GetTotalCount",Flags).Invoke(group,null)-1;
             }
             var gameViewType=assembly.GetType("UnityEditor.GameView",true);
-            var window=EditorWindow.GetWindow(gameViewType);
+            var windows=UnityEngine.Resources.FindObjectsOfTypeAll(gameViewType);
+            if(windows.Length==0)
+                throw new InvalidOperationException("Open a Game View tab before selecting its resolution.");
+            var window=(EditorWindow)windows[0];
             gameViewType.GetProperty("selectedSizeIndex",Flags).SetValue(window,index);
-            window.Focus();
             window.Repaint();
         }
     }

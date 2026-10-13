@@ -33,7 +33,7 @@ namespace Wildfolk
 
         private void Update()
         {
-            if (!Session.IsRunning || !OwnHealth.IsAlive || !PlayerHealth.IsAlive) return;
+            if (!Session.WorldIsRunning || !OwnHealth.IsAlive || !PlayerHealth.IsAlive) return;
             var delta = (Vector2)PlayerHealth.transform.position - body.position;
             var distance = delta.magnitude;
             if (State == EnemyState.Windup || State == EnemyState.Recovery) Facing.Face(strikeDirection);
@@ -70,7 +70,7 @@ namespace Wildfolk
 
         private void FixedUpdate()
         {
-            if (!Session.IsRunning || !OwnHealth.IsAlive || !PlayerHealth.IsAlive) return;
+            if (!Session.WorldIsRunning || !OwnHealth.IsAlive || !PlayerHealth.IsAlive) return;
             var delta = body.position - (Vector2)PlayerHealth.transform.position;
             // Move the enemy away from overlap. Its trigger collider cannot push the player.
             if (delta.magnitude < Settings.EnemySeparation)

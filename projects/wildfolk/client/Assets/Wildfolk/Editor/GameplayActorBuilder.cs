@@ -36,11 +36,39 @@ namespace Wildfolk.Editor
             avatar.Facing=facing;avatar.Body=body.transform;
             var combat=root.gameObject.AddComponent<PlayerCombat>();combat.Settings=assets.Settings;combat.Avatar=avatar;combat.OwnHealth=health;
             var motor=root.gameObject.AddComponent<PlayerMotor>();motor.Settings=assets.Settings;motor.Avatar=avatar;motor.Combat=combat;avatar.Motor=motor;
-            var inventory=root.gameObject.AddComponent<PlayerInventory>();inventory.Settings=assets.Settings;inventory.Loadout=assets.StartingEquipment;
+            var inventory=root.gameObject.AddComponent<PlayerInventory>();inventory.Settings=assets.Settings;
             var equipment=root.gameObject.AddComponent<PlayerEquipment>();equipment.Inventory=inventory;equipment.Combat=combat;equipment.HeldVisual=held;combat.Equipment=equipment;
+            var crafting=root.gameObject.AddComponent<PlayerCrafting>();crafting.Inventory=inventory;crafting.Catalog=assets.Crafting.Catalog;crafting.Settings=assets.Settings;
+            var placement=root.gameObject.AddComponent<PlayerPlacement>();placement.Equipment=equipment;placement.Inventory=inventory;placement.Settings=assets.Settings;placement.Facing=facing;
+            var action=root.gameObject.AddComponent<PlayerAction>();action.Equipment=equipment;action.Combat=combat;action.Placement=placement;action.Crafting=crafting;action.Settings=assets.Settings;action.Facing=facing;
             HealthBar(health,1.35f,true,1.65f);
             Feedback(health,reaction,HitReaction.Creature);
             return SavePrefab(root,"Player");
+        }
+
+        internal static void Workbench(PlaceableDefinition definition)
+        {
+            var root=Group("Workbench",null);
+            Shadow(root,2.1f,.62f);
+            var visual=Sprite("Table","workbench",root,Vector2.zero,.8f,0);
+            var group=root.gameObject.AddComponent<SortingGroup>();root.gameObject.AddComponent<DepthSort>().Visual=group;
+            root.gameObject.AddComponent<BoxCollider2D>().size=definition.Footprint;
+            var health=root.gameObject.AddComponent<Health>();health.Definition=definition.Vitality;
+            var placeable=root.gameObject.AddComponent<WorldPlaceable>();placeable.Definition=definition;placeable.Health=health;placeable.Visual=visual;
+            var station=root.gameObject.AddComponent<CraftingStation>();station.Definition=definition;station.Health=health;
+            Feedback(health,visual.transform,HitReaction.Tree);HealthBar(health,1.0f,false);
+            var prefab=PrefabUtility.SaveAsPrefabAsset(root.gameObject,"Assets/Wildfolk/Prefabs/Workbench.prefab");
+            definition.Prefab=prefab.GetComponent<WorldPlaceable>();EditorUtility.SetDirty(definition);
+            Object.DestroyImmediate(root.gameObject);
+        }
+
+        internal static void PlacementPreview(PlayerPlacement placement,Transform parent,SpriteRenderer ground)
+        {
+            var root=Group("Placement Preview",parent);
+            placement.Preview=root.gameObject;placement.Ground=ground;
+            placement.PreviewFootprint=Sprite("Footprint","white",root,Vector2.zero,1,350);
+            placement.PreviewVisual=Sprite("Ghost","workbench",root,Vector2.zero,.8f,351);
+            root.gameObject.SetActive(false);
         }
 
         internal static GameObject Enemy(Transform parent,GameplayAssets assets)

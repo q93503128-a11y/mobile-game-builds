@@ -26,11 +26,16 @@ namespace Wildfolk.Editor
             if(WorldArt.SpriteMaterial==null) throw new System.InvalidOperationException("World sprite material is required.");
             var scene=EditorSceneManager.NewScene(NewSceneSetup.EmptyScene,NewSceneMode.Single);
             var session=new GameObject("Game Session").AddComponent<GameplaySession>();
+            session.gameObject.AddComponent<WorldPauseController>().Session=session;
+            GameplayActorBuilder.Workbench(assets.Crafting.Workbench);
             var actors=new GameObject("Actors").transform;
             var playerObject=GameplayActorBuilder.Player(actors,assets);
             player=playerObject.GetComponent<PlayerInventory>();
             var motor=playerObject.GetComponent<PlayerMotor>();motor.Session=session;
             var combat=playerObject.GetComponent<PlayerCombat>();combat.Session=session;
+            playerObject.GetComponent<PlayerAction>().Session=session;
+            playerObject.GetComponent<PlayerPlacement>().Session=session;
+            playerObject.GetComponent<PlayerCrafting>().Session=session;
             session.PlayerHealth=playerObject.GetComponent<Health>();
             var enemyObject=GameplayActorBuilder.Enemy(actors,assets);
             var enemy=enemyObject.GetComponent<EnemyController>();enemy.Session=session;enemy.PlayerHealth=session.PlayerHealth;
@@ -42,6 +47,7 @@ namespace Wildfolk.Editor
             var light=new GameObject("Global Light 2D").AddComponent<Light2D>();light.lightType=Light2D.LightType.Global;light.intensity=1;
             var terrain=new GameObject("Terrain").transform;
             var ground=Sprite("Forest Floor","ground",terrain,Vector2.zero,1,-1000);
+            GameplayActorBuilder.PlacementPreview(playerObject.GetComponent<PlayerPlacement>(),actors,ground);
             var follow=camera.gameObject.AddComponent<CameraFollow>();follow.Target=playerObject.transform;follow.Ground=ground;follow.Settings=assets.Settings;
             Boundaries(terrain);
             var scenery=new GameObject("Environment").transform;
@@ -62,7 +68,7 @@ namespace Wildfolk.Editor
                 var type=i%4==0 ? "fern" : "grass";
                 Sprite(type=="fern" ? "Fern" : "Grass Tuft",type,scenery,new Vector2(x,y),.42f+(float)random.NextDouble()*.25f,100-Mathf.RoundToInt(y*20));
             }
-            GameplayHudBuilder.Build(assets,session,motor,combat,player);
+            GameplayHudBuilder.Build(assets,session,motor,player);
             RecordInstance(playerObject);RecordInstance(enemyObject);
             PlayerSettings.productName="Wildfolk";PlayerSettings.defaultScreenWidth=1920;PlayerSettings.defaultScreenHeight=1080;
             PlayerSettings.defaultInterfaceOrientation=UIOrientation.LandscapeLeft;
@@ -72,7 +78,6 @@ namespace Wildfolk.Editor
             EditorSceneManager.SaveScene(scene,ScenePath);
             EditorBuildSettings.scenes=new[]{new EditorBuildSettingsScene(ScenePath,true)};
             AssetDatabase.SaveAssets();
-            VisualGameView.ShowReference();
         }
 
         private static void Tree(Transform parent,float x,float y,float scale,bool olive)

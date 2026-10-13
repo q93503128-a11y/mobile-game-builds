@@ -8,6 +8,7 @@ namespace Wildfolk
         public Image Icon;
         public Text Count;
         public Image Selection;
+        public Image DropMarker;
 
         public void Show(ItemStack stack,bool selected)
         {

@@ -23,20 +23,26 @@ check('WildfolkVisual' not in build,'Replaced visual scene still enabled')
 check('SampleScene' not in build,'Replaced sample scene is still enabled')
 manifest=json.loads((root/'Packages/manifest.json').read_text())
 check(manifest['dependencies'].get('com.unity.render-pipelines.universal')=='17.3.0','Unexpected URP version')
-for name in ['Player','Enemy','WorldPickup']:
+for name in ['Player','Enemy','WorldPickup','Workbench']:
     check((root/f'Assets/Wildfolk/Prefabs/{name}.prefab').is_file(),f'Missing playable prefab: {name}')
 for name in ['PlayerVisual','EnemyVisual']:
     check(not (root/f'Assets/Wildfolk/Prefabs/{name}.prefab').exists(),f'Unused visual prefab remains: {name}')
 check(not (root/'Assets/Wildfolk/Art/icon_food.png').exists(),'Unused food icon remains')
-for name in ['player_eye','zombie_eye','zombie_hand','axe','pickaxe']:
+for name in ['player_eye','zombie_eye','zombie_hand','axe','pickaxe','wood_sword','workbench','icon_pause']:
     check((root/f'Assets/Wildfolk/Art/{name}.png').is_file(),f'Missing character/tool art: {name}')
-for name in ['Axe','Pickaxe','AxeTool','PickaxeTool','StartingEquipment']:
-    check((root/f'Assets/Wildfolk/Data/{name}.asset').is_file(),f'Missing tool/loadout definition: {name}')
+for name in ['Axe','Pickaxe','AxeTool','PickaxeTool','WoodSword','WoodSwordTool','Workbench','WorkbenchPlacement','Recipes','WorkbenchRecipe','AxeRecipe','PickaxeRecipe','WoodSwordRecipe']:
+    check((root/f'Assets/Wildfolk/Data/{name}.asset').is_file(),f'Missing item/crafting definition: {name}')
+for name in ['Data/StartingEquipment.asset','Runtime/Data/StartingLoadout.cs']:
+    check(not (root/f'Assets/Wildfolk/{name}').exists(),f'Removed starting loadout remains: {name}')
 check(not (root/'Assets/Wildfolk/Runtime/Combat/FistCombat.cs').exists(),'Replaced fist-only combat remains')
-for name in ['Presentation/CharacterFacing','Player/PlayerEquipment','Combat/PlayerCombat','UI/HotbarView']:
+for name in ['Presentation/CharacterFacing','Player/PlayerEquipment','Combat/PlayerCombat','UI/HotbarView','Player/PlayerAction','Crafting/PlayerCrafting','World/PlayerPlacement','UI/InventoryDragController','Core/WorldPauseController']:
     check((root/f'Assets/Wildfolk/Runtime/{name}.cs').is_file(),f'Missing shared character/tool runtime: {name}')
 for name in ['VisualPrototypeBuilder','VisualHudBuilder']:
     check(not (root/f'Assets/Wildfolk/Editor/{name}.cs').exists(),f'Replaced builder remains: {name}')
+gameplay=(root/'Assets/Wildfolk/Data/GameplaySettings.asset').read_text()
+check('InventorySlots: 36' in gameplay,'Inventory is not 36 slots')
+view=(root/'Assets/Wildfolk/Editor/VisualGameView.cs').read_text()
+check('window.Focus(' not in view and 'GetWindow(' not in view,'Resolution tool can steal window focus')
 
 guids={}
 for meta in (root/'Assets').rglob('*.meta'):

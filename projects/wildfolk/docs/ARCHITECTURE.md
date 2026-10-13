@@ -1,26 +1,28 @@
 # 현재 코드 연결
 
-Runtime(Input System/UGUI), Editor 생성 도구, Test 어셈블리를 분리한다. 씬 전체를 런타임에 생성하지 않는다.
+Runtime(Input System/UGUI), Editor 구성 도구, Test 어셈블리를 분리한다. 런타임에 씬 전체를 재생성하지 않는다.
 
-| 영역 | 연결 |
+| 책임 | 연결 |
 |---|---|
-| 입력/이동 | UI.inputactions → InputSystemUIInputModule → VirtualJoystick/HoldAttackInput → PlayerMotor/PlayerCombat |
-| 방향/외형 | 공통 CharacterFacing이 눈/양손 위치·손 회전을 담당. PlayerAvatar는 몸통의 약한 이동 bob만 담당 |
-| 슬롯 정본 | InventoryModel의 16슬롯 하나 + PlayerInventory의 SelectedIndex 하나 |
-| Hotbar/인벤토리 | HotbarView는 슬롯 0~8을 읽고 InventoryPanel은 전체를 읽음. 모두 PlayerInventory.SelectSlot/변경 이벤트 사용 |
-| 장착 | 선택 ItemDefinition.Tool → PlayerEquipment → 오른손 HeldVisual/공격 버튼 아이콘 |
-| 전투 | PlayerCombat이 시작 시 도구 프로필 고정, 모션 중간 범위 재검사와 실제 피해, 선택 도구 변경 시 공격 취소 |
-| 효율 | ResourceDefinition.Kind + ToolDefinition.Efficiencies → 데이터로 자원 피해 계산 |
-| 시작 장비 | StartingLoadout 에셋 → PlayerInventory.Awake 지급. InventoryModel에 시작 장비 하드코딩 없음 |
-| Health/드랍 | 공통 Health/WorldHealthBar/HitFeedback → ResourceNode 사망 → WorldPickup → InventoryModel.Add |
-| 세션/적 | 기존 GameplaySession/EnemyController/CameraFollow/BossIdentity/BossHud 유지 |
+| 이동/방향 | VirtualJoystick → PlayerMotor, 공통 CharacterFacing과 PlayerAvatar |
+| 선택/장착 | InventoryModel 36칸 + SelectedIndex → PlayerEquipment |
+| Action | PlayerAction이 선택 Placeable/가까운 시설/일반 공격 중 하나를 선택 |
+| 공격 | 기존 PlayerCombat/ToolDefinition 공유, 검도 같은 사용 프로필 |
+| 설치 | PlayerPlacement 검사/Preview → WorldPlaceable prefab → 선택 슬롯 소비 |
+| 제작 | RecipeCatalog/RecipeDefinition → PlayerCrafting 시설 자격 → InventoryModel.TryExchange |
+| 시설 | CraftingStation.CanInteract로 Health/중심 거리 공유, 멀어짐/제거 시 자격 해제 |
+| UI | InventoryPanel/HotbarView/RecipeCardView 이벤트 갱신, SlotDrag/DragController의 Pointer 흐름 |
+| 상태 | GameplaySession UI/입력 상태, WorldPauseController 싱글플레이 동결 정책 |
+| 기존 월드 | Health/WorldHealthBar/HitFeedback, ResourceNode/WorldPickup, EnemyController, CameraFollow, Boss HUD |
 
-FistCombat을 PlayerCombat으로 이름/구현을 교체하고 구 파일을 제거했다. 맨손 전투와 도구 전투를 별도 중복 시스템으로 만들지 않았다. CharacterFacing은 플레이어/Zombie가 공유한다. Body가 회전하지 않고 눈/손만 방향을 표시한다.
+PlayerAction이 사용 버튼의 공격/배치/시설 상호작용과 아이콘을 중앙에서 결정한다. Item ID별 if/else를 여러 런타임에 흩뿌리지 않는다. 입력 HoldAttackInput은 공격만 반복하며 배치/상호작용은 단일 사용이다. PlayerEquipment는 슬롯 변경 즉시 도구/설치물 상태를 갱신하고 진행 중 사용을 취소한다.
 
-GameplaySettings/VitalityDefinition/ResourceDefinition/ItemDefinition/ToolDefinition/StartingLoadout 에셋이 실제 데이터 정본이다. 생성 도구는 기존 에셋을 보존한다. 기존 StoneResource에 Stone 종류를 기록했고 새 데이터 기본값도 같은 종류로 생성한다. 도끼/곡괭이의 자원 효율에 아이템 ID 조건문을 사용하지 않는다.
+InventoryModel의 MoveStack은 이동/합치기/교환 한 곳이며 TryExchange는 임시 배열에서 검증한 뒤 한 번 확정한다. 비용 소비/결과 추가 중간 상태를 UI에 노출하지 않는다. 모든 UI는 하나의 인벤토리를 읽으며 Ghost가 별도 아이템 정본이 되지 않는다.
 
-저장된 Wildfolk.unity와 Player/Enemy/WorldPickup 프리팹을 사용한다. 세션/목표/UI 참조를 연결하고 Prefab 인스턴스 변경을 기록해 저장한다. WorldArt/GameplayUiFactory와 슬롯 생성 코드가 반복 구성을 공유한다.
+GameplaySession에는 Time.timeScale 쓰기가 없다. 적은 플레이어 입력 상태가 아닌 WorldIsRunning을 사용한다. 플레이어의 인벤토리가 열려도 세계가 계속 진행한다. 실제 동결은 별도 WorldPauseController의 현재 로컬 정책이다. 실제 네트워크 동기화는 없다.
 
-Hotbar는 별도 인벤토리/복제 ItemStack 배열을 갖지 않는다. UI의 SlotView 배열은 표시 참조뿐이다. 도구는 인벤토리 슬롯에 실제 존재하며 시작 지급 설정에서 Axe 1/Pickaxe 1을 제공한다. 빈 슬롯/재료 선택 시 장착을 해제한다. 선택 도구가 바뀌면 진행 중 공격을 취소하고 기존 쿨다운을 유지한다. 인벤토리의 다른 재료 수량이 바뀌어도 같은 도구의 공격을 불필요하게 취소하지 않는다.
+StartingLoadout과 StartingEquipment 에셋/참조를 제거했다. 실제 수치/아이템/레시피/설치물은 Data의 ScriptableObject가 단일 정본이고 생성 도구는 기존 데이터를 보존한다. Workbench는 공통 Health와 별도의 WorldPlaceable/CraftingStation 책임을 사용한다.
 
-이벤트는 종료 시 해제한다. UI 포커스 설정은 자동 테스트 범위에서만 변경/복원하고 런타임에서는 우회하지 않는다. 실제 보스/개발자 버튼은 없다. 적 길찾기는 단순 장애물 좌우 검사이며 네트워크/저장/제작/아이템 이동/도구 내구도는 없다.
+Editor GameplayUiFactory가 슬롯 표시를 공유하고 InventoryUiBuilder가 36칸/제작/Ghost를 구성한다. 씬 참조를 프리팹 인스턴스 변경으로 기록한 뒤 저장한다. 해상도 도구는 이미 열린 Game View만 갱신하고 Focus/GetWindow 호출이나 씬 생성 후 자동 전환을 하지 않는다.
+
+이벤트는 종료 시 해제하고 Ghost는 UI 상태 변경에 취소한다. 테스트는 공유 PlayPointerDriver로 Unity 내부 장치 이벤트를 전달하며 사용자 Windows 입력을 조작하지 않는다. 검증 복사본/로그는 Git에서 제외한다. 저장/멀티플레이/고급 시설/회수·수리/풀링 최적화 완료를 주장하지 않는다.
