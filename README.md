@@ -28,7 +28,7 @@ mobile-game-builds/
 
 ## 현재 프로젝트
 
-현재 등록된 프로젝트가 없습니다.
+- [`Wildfolk`](./projects/wildfolk/README.md): Unity 6000.3.19f1 LTS / Universal 2D, 모바일 가로형 탑다운 생존 게임의 첫 비주얼 시안.
 
 ## 정본 우선순위
 
