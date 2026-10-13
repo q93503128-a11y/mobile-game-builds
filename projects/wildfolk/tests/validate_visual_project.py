@@ -1,4 +1,4 @@
-"""Validate the committed Unity visual prototype without requiring the Editor."""
+"""Validate the committed playable Unity source without requiring the Editor."""
 from pathlib import Path
 import json
 import re
@@ -9,8 +9,8 @@ errors=[]
 def check(condition,message):
     if not condition: errors.append(message)
 
-scene=root/'Assets/Wildfolk/Scenes/WildfolkVisual.unity'
-check(scene.is_file(),'Visual scene is missing')
+scene=root/'Assets/Wildfolk/Scenes/Wildfolk.unity'
+check(scene.is_file(),'Playable scene is missing')
 required=['Assets','Packages','ProjectSettings']
 for name in required: check((root/name).is_dir(),f'Missing Unity directory: {name}')
 check('6000.3.19f1' in (root/'ProjectSettings/ProjectVersion.txt').read_text(),'Unexpected Unity version')
@@ -18,10 +18,18 @@ settings=(root/'ProjectSettings/ProjectSettings.asset').read_text()
 for token in ['defaultScreenOrientation: 3','defaultScreenWidth: 1920','defaultScreenHeight: 1080','allowedAutorotateToPortrait: 0','allowedAutorotateToPortraitUpsideDown: 0','allowedAutorotateToLandscapeLeft: 1','allowedAutorotateToLandscapeRight: 1']:
     check(token in settings,f'Mobile setting missing: {token}')
 build=(root/'ProjectSettings/EditorBuildSettings.asset').read_text()
-check('Assets/Wildfolk/Scenes/WildfolkVisual.unity' in build,'Visual scene absent from build settings')
+check('Assets/Wildfolk/Scenes/Wildfolk.unity' in build,'Playable scene absent from build settings')
+check('WildfolkVisual' not in build,'Replaced visual scene still enabled')
 check('SampleScene' not in build,'Replaced sample scene is still enabled')
 manifest=json.loads((root/'Packages/manifest.json').read_text())
 check(manifest['dependencies'].get('com.unity.render-pipelines.universal')=='17.3.0','Unexpected URP version')
+for name in ['Player','Enemy','WorldPickup']:
+    check((root/f'Assets/Wildfolk/Prefabs/{name}.prefab').is_file(),f'Missing playable prefab: {name}')
+for name in ['PlayerVisual','EnemyVisual']:
+    check(not (root/f'Assets/Wildfolk/Prefabs/{name}.prefab').exists(),f'Unused visual prefab remains: {name}')
+check(not (root/'Assets/Wildfolk/Art/icon_food.png').exists(),'Unused food icon remains')
+for name in ['VisualPrototypeBuilder','VisualHudBuilder']:
+    check(not (root/f'Assets/Wildfolk/Editor/{name}.cs').exists(),f'Replaced builder remains: {name}')
 
 guids={}
 for meta in (root/'Assets').rglob('*.meta'):

@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fed1ca97dce3214e8ef920e00983bf4, type: 3}
+  m_Name: TreeResource
+  m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.ResourceDefinition
+  Vitality: {fileID: 11400000, guid: 8b0064eae848f9d42a869f9724fd17e8, type: 2}
+  DropItem: {fileID: 11400000, guid: 431287b464f63f4408828d4053bac6eb, type: 2}
+  DropCount: 3

@@ -1,40 +1,34 @@
 # Wildfolk
 
-Unity **6000.3.19f1 LTS**, **Universal 2D** 기반의 모바일 가로형 탑다운 생존 게임 프로젝트다. 현재 단계는 실제 Game View에서 화면 방향을 판단하기 위한 **첫 비주얼 프로토타입**이다. 최종 아트 또는 게임 시스템 완성본이 아니다.
+Unity **6000.3.19f1 LTS / Universal 2D**, 모바일 Landscape 탑다운 생존 게임의 **첫 플레이 가능 버전**이다. 이동→맨손 공격→나무/돌 파괴→바닥 아이템 획득→인벤토리 확인 흐름을 제공한다. 최종 아트와 완성된 생존 게임은 아니다.
 
-![현재 화면](docs/images/visual-1920.png)
+![플레이 화면](docs/images/play-1920.png)
 
-## 실행
+## 실행과 조작
 
-1. Unity Hub에서 이 폴더의 `client/`를 Unity 프로젝트로 추가한다.
-2. Unity 6000.3.19f1로 연다. `Packages/manifest.json`과 `packages-lock.json`에 기록된 패키지가 필요하다.
-3. `Assets/Wildfolk/Scenes/WildfolkVisual.unity`를 연다.
-4. 에디터 메뉴 `Wildfolk > View 1920x1080`을 선택하고 Play를 누른다.
+1. Unity Hub에서 `client/`를 프로젝트로 추가하고 Unity 6000.3.19f1로 연다.
+2. `Assets/Wildfolk/Scenes/Wildfolk.unity`를 연다. Build Settings의 첫 씬이다.
+3. `Wildfolk > View 1920x1080`으로 기준 화면을 선택하고 Play를 누른다.
+4. 좌하단 조이스틱으로 이동하고 가까운 나무·돌·적 앞에서 우하단 주먹을 누르거나 유지한다.
+5. 바닥 아이템에 가까이 가면 획득한다. 우상단 가방으로 인벤토리를 열고 슬롯을 선택한다. 가방을 다시 누르거나 X로 닫는다.
 
-기준 해상도는 1920×1080이다. `Wildfolk > View 2400x1080`으로 더 긴 화면비도 볼 수 있다. 이 메뉴는 에디터 보조 도구이며 게임 화면에 노출되지 않는다. 메뉴는 Unity 6000.3.19f1의 내부 Game View API를 사용하므로 다른 Unity 버전에서는 확인이 필요하다.
+WASD와 Space는 에디터 보조 입력이다. 인벤토리를 열면 게임이 일시 정지되고 이동·공격을 차단한다. 사망하면 Try again으로 새 필드를 시작한다. 저장과 이어하기는 없다. 상단 중앙은 실제 보스가 등록될 때만 표시되는 HUD 기반이다.
 
-현재 화면은 정적 시안이다. 조이스틱·주먹·인벤토리 아이콘은 배치 확인용이며 입력, 이동, 공격, 인벤토리 동작을 제공하지 않는다. 자원 수와 HP는 고정 표시값이다.
+`Wildfolk > View 2400x1080`은 긴 화면비 확인용이다. 해당 Unity 버전의 내부 Game View API를 사용한다. `Wildfolk > Build Playable Scene`은 기본 씬/프리팹을 재생성하므로 수작업 배치를 보존해야 할 때는 사용하지 않는다. 기존 데이터 에셋은 덮어쓰지 않는다.
 
-## 구성
+## 구성과 검증
 
-- `client/`: 실제 Unity 소스, 씬, 프리팹, 아트, 패키지와 프로젝트 설정.
-- `docs/DESIGN_BIBLE.md`: 확정된 환경과 현재 방향.
-- `docs/BENCHMARKS.md`: 참고 범위와 출처.
-- `docs/VISUAL_REVIEW.md`: 실제 검수, 수정 내용과 남은 한계.
-- `tools/generate_visual_assets.py`: 외부 게임 자산을 사용하지 않는 결정적 아트 생성 원본. Pillow 필요.
-- `tests/validate_visual_project.py`: 소스 누락, 잘못된 씬 참조, 모바일 설정, 금지 UI 문구를 검사하는 소스 검증 도구.
+- `client/Assets/Wildfolk/Runtime/`: 입력·이동·전투·Health·자원·드랍·인벤토리·적·HUD.
+- `client/Assets/Wildfolk/Data/`: 실제 수치와 Wood/Stone 정의의 단일 정본.
+- `client/Assets/Wildfolk/Editor/`: 아트 임포트와 데이터/프리팹/씬/HUD 생성 도구.
+- `client/Assets/Wildfolk/Tests/`: EditMode와 PlayMode 자동 검증.
+- `docs/DESIGN_BIBLE.md`, `BALANCE.md`, `ARCHITECTURE.md`: 현재 기획·수치·코드 연결.
+- `docs/PLAY_REVIEW.md`: 실제 입력/화면 검수와 미검증 범위. VISUAL_REVIEW는 이전 정적 시안의 역사 기록.
+- `tools/generate_visual_assets.py`: 독립적으로 만든 PNG 아트 생성 원본. Pillow 12.3.0 필요.
+- `tests/validate_visual_project.py`: 에디터 없이 소스 구조·참조·모바일 설정·금지 UI 문구 검사.
 
-사용하는 아트는 이번 시안을 위해 만든 PNG 스프라이트다. 몸통과 양손을 분리하고 장비·머리 장식용 빈 Transform을 둔 `PlayerVisual` 프리팹을 사용한다. 에디터 구성 코드는 아트 임포트, HUD, 씬, Game View 설정으로 분리했으며 실행 시 씬 전체를 다시 생성하지 않는다. 런타임 스크립트는 Safe Area 배치만 담당한다.
+아트 재생성: `python tools/generate_visual_assets.py client/Assets/Wildfolk/Art`.
+소스 검사: `python tests/validate_visual_project.py client`.
+Unity Test Runner에서 Wildfolk.Tests.EditMode/PlayMode를 실행한다. 이번에는 주 에디터를 보존하는 별도 복사본에서 Unity -batchmode -nographics -runTests로 검증했다. PlayMode 테스트는 Input System 장치 이벤트를 실제 UI 모듈로 전달한다.
 
-`Wildfolk > Build Visual Scene`은 저장된 씬을 재생성한다. 씬을 수작업으로 수정했다면 먼저 보존 여부를 판단해야 한다. 수정되지 않은 초기 배치를 재현할 때만 사용한다.
-
-## 아트 재생성
-
-```powershell
-python tools/generate_visual_assets.py client/Assets/Wildfolk/Art
-python tests/validate_visual_project.py client
-```
-
-아트 재생성 후 Unity에서 임포트를 마치고, 저장된 씬을 유지하거나 위 에디터 메뉴로 기본 배치를 재생성한다. 이 작업에서 실행한 Pillow 버전은 12.3.0이며 `tools/requirements.txt`에 기록했다.
-
-`Library`, `Temp`, 로그, 개인 에디터 설정과 로컬 캡처는 정본에 포함하지 않는다. 서버·데이터 시스템은 아직 없으며 빈 폴더로 예고하지 않는다.
+Library/Temp/로그/로컬 검증 프로젝트는 정본에서 제외한다. 협동·저장·제작·건축·장비·실제 보스·직업·계정·상점은 구현하지 않았다.
