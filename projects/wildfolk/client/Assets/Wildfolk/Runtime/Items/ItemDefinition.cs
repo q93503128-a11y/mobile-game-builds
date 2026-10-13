@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Wildfolk
 {
-    public enum ItemCategory { Material, Tool, Placeable, Weapon, Consumable }
+    public enum ItemCategory { Material, Tool, Placeable, Weapon, Consumable, Armor }
 
     [CreateAssetMenu(menuName = "Wildfolk/Item")]
     public sealed class ItemDefinition : ScriptableObject
@@ -15,5 +15,7 @@ namespace Wildfolk
         public ToolDefinition Tool;
         public PlaceableDefinition Placement;
         public ConsumableDefinition Consumable;
+        public ArmorDefinition Armor;
+        public EquipmentTier Tier => Tool!=null ? Tool.Tier : Placement!=null ? Placement.Tier : Armor!=null ? Armor.Tier : null;
     }
 }

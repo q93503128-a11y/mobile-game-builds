@@ -9,10 +9,11 @@ namespace Wildfolk.Editor
     {
         internal static void Build(GameObject root,Transform safe,GameplaySession session,PlayerInventory owner,PlayerCrafting crafting,int count)
         {
-            var panel=root.AddComponent<InventoryPanel>();panel.Session=session;panel.Owner=owner;
-            var drag=root.AddComponent<InventoryDragController>();drag.Owner=owner;drag.Session=session;drag.CanvasRect=(RectTransform)safe;
+            var panel=root.AddComponent<InventoryPanel>();panel.Session=session;panel.Owner=owner;panel.Storage=owner.GetComponent<PlayerStorage>();
+            var drag=root.AddComponent<InventoryDragController>();drag.Owner=owner;drag.Session=session;drag.Storage=panel.Storage;drag.CanvasRect=(RectTransform)safe;
             var overlay=Scrim("Inventory Overlay",safe);panel.View=overlay.gameObject;
             var surface=Image("Inventory Panel",overlay.transform,"panel",new Vector2(.5f,.5f),Vector2.zero,new Vector2(1520,850),true);
+            var fit=surface.gameObject.AddComponent<ModalLayout>();fit.SafeArea=(RectTransform)safe;fit.ReferenceSize=new Vector2(1520,850);
             Text("Title",surface.transform,"Inventory",new Vector2(-562,363),new Vector2(296,52),34,TextAnchor.MiddleLeft);
             var close=Image("Close",surface.transform,"panel",new Vector2(.5f,.5f),new Vector2(680,363),new Vector2(64,64),true);
             Text("Close Symbol",close.transform,"×",Vector2.zero,new Vector2(58,58),40);
@@ -34,6 +35,7 @@ namespace Wildfolk.Editor
             panel.SelectedCategory=Text("Category",surface.transform,string.Empty,new Vector2(-409,-319),new Vector2(320,28),20,TextAnchor.MiddleLeft);
             BuildCrafting(root,surface.transform,crafting);
             overlay.gameObject.SetActive(false);
+            ChestUiBuilder.Build(root,safe,owner,panel.Storage,drag);
             var ghost=Rect("Dragged Item",safe,new Vector2(.5f,.5f),Vector2.zero,new Vector2(94,94));
             var group=ghost.gameObject.AddComponent<CanvasGroup>();group.blocksRaycasts=false;group.interactable=false;
             Image("Frame",ghost,"panel",new Vector2(.5f,.5f),Vector2.zero,new Vector2(94,94));
@@ -43,7 +45,7 @@ namespace Wildfolk.Editor
             ghost.gameObject.SetActive(false);
         }
 
-        private static RectTransform Grid(string name,Transform parent,Vector2 position,Vector2 size)
+        internal static RectTransform Grid(string name,Transform parent,Vector2 position,Vector2 size)
         {
             var grid=Rect(name,parent,new Vector2(.5f,.5f),position,size);
             var layout=grid.gameObject.AddComponent<GridLayoutGroup>();
@@ -56,7 +58,14 @@ namespace Wildfolk.Editor
         {
             var panel=root.AddComponent<CraftingPanel>();panel.Owner=owner;
             panel.Title=Text("Crafting Title",surface,"Hand crafting",new Vector2(488,312),new Vector2(416,44),28,TextAnchor.MiddleLeft);
-            var list=Rect("Recipes",surface,new Vector2(.5f,.5f),new Vector2(488,-24),new Vector2(416,600));
+            var viewport=Image("Recipes",surface,"white",new Vector2(.5f,.5f),new Vector2(488,-24),new Vector2(416,600),true);viewport.color=new Color(0,0,0,0);viewport.gameObject.AddComponent<RectMask2D>();
+            var list=Rect("Recipe List",viewport.transform,new Vector2(.5f,1),Vector2.zero,new Vector2(416,600));list.pivot=new Vector2(.5f,1);
+            var scroll=viewport.gameObject.AddComponent<ScrollRect>();scroll.viewport=(RectTransform)viewport.transform;scroll.content=list;scroll.horizontal=false;scroll.vertical=true;scroll.inertia=false;scroll.movementType=ScrollRect.MovementType.Clamped;scroll.scrollSensitivity=60;panel.Scroll=scroll;
+            list.gameObject.AddComponent<ContentSizeFitter>().verticalFit=ContentSizeFitter.FitMode.PreferredSize;
+            var track=Image("Recipe Scroll",surface,"white",new Vector2(.5f,.5f),new Vector2(712,-24),new Vector2(10,600),true);track.color=new Color32(34,50,40,255);
+            var handle=Image("Handle",track.transform,"white",new Vector2(.5f,.5f),Vector2.zero,Vector2.zero);handle.color=new Color32(133,147,109,255);
+            var scrollbar=track.gameObject.AddComponent<Scrollbar>();scrollbar.handleRect=(RectTransform)handle.transform;scrollbar.targetGraphic=handle;scrollbar.direction=Scrollbar.Direction.BottomToTop;scrollbar.navigation=new Navigation{mode=Navigation.Mode.None};
+            scroll.verticalScrollbar=scrollbar;scroll.verticalScrollbarVisibility=ScrollRect.ScrollbarVisibility.AutoHide;
             var layout=list.gameObject.AddComponent<VerticalLayoutGroup>();layout.spacing=18;layout.childControlHeight=false;layout.childControlWidth=false;layout.childForceExpandHeight=false;layout.childForceExpandWidth=false;
             panel.Cards=new RecipeCardView[owner.Catalog.Recipes.Length];
             for(var i=0;i<panel.Cards.Length;i++)
@@ -66,8 +75,9 @@ namespace Wildfolk.Editor
                 view.Icon=Image("Result",card.transform,"white",new Vector2(.5f,.5f),new Vector2(-148,22),new Vector2(64,64));view.Icon.preserveAspect=true;
                 view.Name=Text("Name",card.transform,string.Empty,new Vector2(46,33),new Vector2(254,38),24,TextAnchor.MiddleLeft);
                 view.Materials=Text("Materials",card.transform,string.Empty,new Vector2(-12,-6),new Vector2(350,32),21,TextAnchor.MiddleLeft);
+                if(view.Recipe.Ingredients.Length>1)view.Materials.fontSize=17;
                 view.InputIcon=Image("Ingredient",card.transform,"white",new Vector2(.5f,.5f),new Vector2(-168,-25),new Vector2(28,28));view.InputIcon.preserveAspect=true;
-                if(view.Recipe.CookingSeconds>0) {((RectTransform)view.Materials.transform).anchoredPosition=new Vector2(28,-15);((RectTransform)view.Materials.transform).sizeDelta=new Vector2(286,28);view.Materials.fontSize=18;}
+                if(view.Recipe.ProcessingSeconds>0) {((RectTransform)view.Materials.transform).anchoredPosition=new Vector2(28,-15);((RectTransform)view.Materials.transform).sizeDelta=new Vector2(286,28);view.Materials.fontSize=18;}
                 view.InputIcon.gameObject.SetActive(false);
                 view.Status=Text("Availability",card.transform,string.Empty,new Vector2(-59,-44),new Vector2(240,28),18,TextAnchor.MiddleLeft);
                 var craft=Image("Craft",card.transform,"panel",new Vector2(.5f,.5f),new Vector2(121,-38),new Vector2(130,48),true);

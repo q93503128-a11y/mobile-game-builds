@@ -150,7 +150,8 @@ namespace Wildfolk.Tests
 
         private IEnumerator Harvest(ResourceNode node)
         {
-            Position((Vector2)node.transform.position+Vector2.down*2,Vector2.up);
+            node.transform.position=new Vector2(0,3);Physics2D.SyncTransforms();
+            Position(new Vector2(0,1),Vector2.up);
             yield return new WaitForSeconds(.3f);
             var point=PlayPointerDriver.Point(hud.Attack);input.Pointer(point,true);yield return null;
             var timeout=Time.time+5;

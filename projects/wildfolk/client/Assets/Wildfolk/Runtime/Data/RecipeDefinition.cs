@@ -1,9 +1,11 @@
 using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Wildfolk
 {
-    public enum StationKind { None, Workbench, Campfire }
+    public enum StationKind { None, Workbench, Campfire, Furnace }
+    public enum ProcessingKind { None, Cooking, Smelting }
     [Serializable] public struct ItemAmount
     {
         public ItemDefinition Item;
@@ -18,6 +20,8 @@ namespace Wildfolk
         [Min(1)] public int ResultCount;
         public ItemAmount[] Ingredients;
         public StationKind RequiredStation;
-        [Min(0)] public float CookingSeconds;
+        [FormerlySerializedAs("CookingSeconds"), Min(0)] public float ProcessingSeconds;
+        public ProcessingKind Processing;
+        public EquipmentTier Tier;
     }
 }

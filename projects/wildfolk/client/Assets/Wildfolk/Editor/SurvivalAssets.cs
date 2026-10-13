@@ -29,7 +29,7 @@ namespace Wildfolk.Editor
             a.FireRecipe=GameplayAssets.Asset<RecipeDefinition>("CampfireRecipe",r=>
             {r.Id="campfire";r.Result=fire;r.ResultCount=1;r.RequiredStation=StationKind.None;r.Ingredients=new[]{new ItemAmount{Item=wood,Count=4},new ItemAmount{Item=stone,Count=3}};});
             a.CookingRecipe=GameplayAssets.Asset<RecipeDefinition>("CookedMeatRecipe",r=>
-            {r.Id="cooked_meat";r.Result=a.Cooked;r.ResultCount=1;r.RequiredStation=StationKind.Campfire;r.CookingSeconds=5;r.Ingredients=new[]{new ItemAmount{Item=a.Raw,Count=1}};});
+            {r.Id="cooked_meat";r.Result=a.Cooked;r.ResultCount=1;r.RequiredStation=StationKind.Campfire;r.ProcessingSeconds=5;r.Ingredients=new[]{new ItemAmount{Item=a.Raw,Count=1}};});
             return a;
         }
         private static ItemDefinition Food(string name,string id,string display,float hunger,float thirst)

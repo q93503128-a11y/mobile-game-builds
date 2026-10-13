@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea85a5ebaf6f62646a87d747548e1a2f, type: 3}
+  m_Name: WoodWallPlacement
+  m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.PlaceableDefinition
+  Item: {fileID: 11400000, guid: 0ce049f44cbdaea4bab941f0dffd3497, type: 2}
+  Prefab: {fileID: 8849826400484160991, guid: 4294881afadcc0640b88945186d6b4d7, type: 3}
+  Vitality: {fileID: 11400000, guid: 131f93382f2b56746aa4a2a092e47de2, type: 2}
+  Footprint: {x: 1.8, y: 0.45}
+  MaximumDistance: 2.8
+  Station: 0
+  Tier: {fileID: 11400000, guid: b632d88d6c00461418a7100d186ff69c, type: 2}
+  IsBarrier: 1
+  IsDoor: 0
+  StorageSlots: 0
+  StationTitle: WoodWall

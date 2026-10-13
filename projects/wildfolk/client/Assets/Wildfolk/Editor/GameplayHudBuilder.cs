@@ -28,6 +28,10 @@ namespace Wildfolk.Editor
             var attack=attackImage.gameObject.AddComponent<HoldAttackInput>();attack.Action=action;attack.Session=session;attack.Surface=attackImage;
             BuildHotbar(controls,session,inventory);
             BuildBoss(safe);
+            var time=Image("World Time",safe,"panel",new Vector2(0,1),new Vector2(150,-183),new Vector2(244,54));
+            var timeHud=time.gameObject.AddComponent<TimeHud>();timeHud.Clock=session.GetComponent<WorldClock>();
+            timeHud.Icon=Image("Time Icon",time.transform,"sun",new Vector2(.5f,.5f),new Vector2(-92,0),new Vector2(30,30));
+            timeHud.Label=Text("Time",time.transform,"Day 1 · Day",new Vector2(19,0),new Vector2(172,36),20);
             InventoryUiBuilder.Build(root,safe,session,inventory,motor.GetComponent<PlayerCrafting>(),assets.Settings.InventorySlots);
             var defeat=BuildDefeat(safe,session);
             var pause=SurvivalUiBuilder.Pause(safe,session);

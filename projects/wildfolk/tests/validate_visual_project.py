@@ -23,19 +23,19 @@ check('WildfolkVisual' not in build,'Replaced visual scene still enabled')
 check('SampleScene' not in build,'Replaced sample scene is still enabled')
 manifest=json.loads((root/'Packages/manifest.json').read_text())
 check(manifest['dependencies'].get('com.unity.render-pipelines.universal')=='17.3.0','Unexpected URP version')
-for name in ['Player','Enemy','WorldPickup','Workbench','Campfire','WaterSource','Boar']:
+for name in ['Player','Enemy','WorldPickup','Workbench','Campfire','WaterSource','Boar','Chicken','IronOreNode','Furnace','WoodWall','WoodDoor','StorageChest']:
     check((root/f'Assets/Wildfolk/Prefabs/{name}.prefab').is_file(),f'Missing playable prefab: {name}')
 for name in ['PlayerVisual','EnemyVisual']:
     check(not (root/f'Assets/Wildfolk/Prefabs/{name}.prefab').exists(),f'Unused visual prefab remains: {name}')
 check(not (root/'Assets/Wildfolk/Art/icon_food.png').exists(),'Unused food icon remains')
-for name in ['player_eye','zombie_eye','zombie_hand','axe','pickaxe','wood_sword','workbench','icon_pause','raw_meat','cooked_meat','water','pond','campfire','boar']:
+for name in ['player_eye','zombie_eye','zombie_hand','axe','pickaxe','wood_sword','workbench','icon_pause','raw_meat','cooked_meat','water','pond','campfire','boar','chicken','furnace','wood_wall','wood_door','storage_chest','iron_ore_node','iron_ore','iron_ingot','stone_axe','stone_pickaxe','stone_sword','iron_axe','iron_pickaxe','iron_sword','sun','moon']:
     check((root/f'Assets/Wildfolk/Art/{name}.png').is_file(),f'Missing character/tool art: {name}')
-for name in ['Axe','Pickaxe','AxeTool','PickaxeTool','WoodSword','WoodSwordTool','Workbench','WorkbenchPlacement','Recipes','WorkbenchRecipe','AxeRecipe','PickaxeRecipe','WoodSwordRecipe','Campfire','CampfirePlacement','CampfireRecipe','RawMeat','CookedMeat','Water','Survival','NaturalWater','CookedMeatRecipe']:
+for name in ['Axe','Pickaxe','AxeTool','PickaxeTool','WoodSword','WoodSwordTool','Workbench','WorkbenchPlacement','Recipes','WorkbenchRecipe','AxeRecipe','PickaxeRecipe','WoodSwordRecipe','Campfire','CampfirePlacement','CampfireRecipe','RawMeat','CookedMeat','Water','Survival','NaturalWater','CookedMeatRecipe','WoodTier','StoneTier','IronTier','IronOre','IronIngot','Furnace','StorageChest','WoodWall','WoodDoor','DayNight','ZombieSpawn','AnimalMovement']:
     check((root/f'Assets/Wildfolk/Data/{name}.asset').is_file(),f'Missing item/crafting definition: {name}')
 for name in ['Data/StartingEquipment.asset','Runtime/Data/StartingLoadout.cs']:
     check(not (root/f'Assets/Wildfolk/{name}').exists(),f'Removed starting loadout remains: {name}')
 check(not (root/'Assets/Wildfolk/Runtime/Combat/FistCombat.cs').exists(),'Replaced fist-only combat remains')
-for name in ['Presentation/CharacterFacing','Player/PlayerEquipment','Combat/PlayerCombat','UI/HotbarView','Player/PlayerAction','Crafting/PlayerCrafting','World/PlayerPlacement','UI/InventoryDragController','Core/WorldPauseController']:
+for name in ['Presentation/CharacterFacing','Player/PlayerEquipment','Combat/PlayerCombat','UI/HotbarView','Player/PlayerAction','Crafting/PlayerCrafting','World/PlayerPlacement','UI/InventoryDragController','Core/WorldPauseController','Crafting/StationProcessing','World/WorldClock','World/WorldTimeModel','World/WorldSpawnRegion','World/StorageChest','World/WorldDoor','World/NeutralAnimal','Enemies/ZombieSpawner','Player/PlayerStorage','UI/ChestPanel']:
     check((root/f'Assets/Wildfolk/Runtime/{name}.cs').is_file(),f'Missing shared character/tool runtime: {name}')
 for name in ['VisualPrototypeBuilder','VisualHudBuilder']:
     check(not (root/f'Assets/Wildfolk/Editor/{name}.cs').exists(),f'Replaced builder remains: {name}')
@@ -43,6 +43,10 @@ gameplay=(root/'Assets/Wildfolk/Data/GameplaySettings.asset').read_text()
 check('InventorySlots: 36' in gameplay,'Inventory is not 36 slots')
 view=(root/'Assets/Wildfolk/Editor/VisualGameView.cs').read_text()
 check('window.Focus(' not in view and 'GetWindow(' not in view,'Resolution tool can steal window focus')
+
+check('PlayUnfocused' in view,'Game View can request focused Play')
+check(not (root/'Assets/Wildfolk/Audio/action.wav').exists(),'Unsuitable generic beep remains')
+check(not (root/'Assets/Wildfolk/Runtime/Crafting/StationCooking.cs').exists(),'Replaced cooking-only processor remains')
 
 guids={}
 for meta in (root/'Assets').rglob('*.meta'):

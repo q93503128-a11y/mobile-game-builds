@@ -63,6 +63,7 @@ namespace Wildfolk.Editor
             Object.DestroyImmediate(root.gameObject);
             var instance=(GameObject)PrefabUtility.InstantiatePrefab(prefab,parent);
             instance.transform.position=position;
+            PrefabUtility.RecordPrefabInstancePropertyModifications(instance.transform);
             return instance;
         }
     }

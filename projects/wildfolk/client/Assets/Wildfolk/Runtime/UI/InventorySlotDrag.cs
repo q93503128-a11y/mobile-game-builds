@@ -9,11 +9,12 @@ namespace Wildfolk
         public InventoryDragController Controller;
         public InventorySlotView View;
         public int Index;
-        public void OnBeginDrag(PointerEventData data) => Controller.Begin(Index,View,data);
+        public bool IsChest;
+        public void OnBeginDrag(PointerEventData data) => Controller.Begin(Index,View,data,IsChest);
         public void OnDrag(PointerEventData data) => Controller.Move(data);
         public void OnEndDrag(PointerEventData data) => Controller.End(data);
-        public void OnDrop(PointerEventData data) => Controller.Drop(Index,data);
-        public void OnPointerEnter(PointerEventData data) => Controller.Hover(Index,View);
+        public void OnDrop(PointerEventData data) => Controller.Drop(Index,data,IsChest);
+        public void OnPointerEnter(PointerEventData data) => Controller.Hover(Index,View,IsChest);
         public void OnPointerExit(PointerEventData data) => Controller.Leave(View);
     }
 }

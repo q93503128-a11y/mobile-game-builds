@@ -74,3 +74,56 @@ AxeTool/PickaxeTool 기존 프로필과 새 WoodSwordTool을 사용하며 Resour
 | Master / BGM / SFX 기본 | 100 / 65 / 85% |
 
 수치 감소/조리는 scaled time이다. Inventory·Multiplayer 메뉴에서는 진행하고 Singleplayer Pause에서는 정지한다. 각 수치는 0/Max로 제한하며 음식/물은 해당 회복이 필요할 때만 사용한다. 물 획득은 소모품 사용과 별개로 보관 공간이 있으면 가능하다. 멧돼지 재생성과 음식 장기 공급은 없다. Campfire 설치/상호작용 거리·방향은 Workbench와 같다. 초기 생존 시간·회복량·Campfire 비용은 기능 검증을 위한 자체 초기값으로 Mine Survival의 관측 수치가 아니다.
+
+## Wood → Stone → Iron
+
+Wood 기존 프로필/비용은 유지했다. 이 단계 수치는 기능 검증에 맞춘 자체 초기값이며 상대 게임의 관측 수치가 아니다.
+
+| 장비 | 기본 피해 | Wood/Stone/Ore 배율 | 모션/쿨다운 초 |
+|---|---:|---|---|
+| Stone Axe | 12 | 3.5 / 0.5 / 0.25 | 0.36 / 0.50 |
+| Stone Pickaxe | 12 | 0.5 / 3.5 / 2.5 | 0.44 / 0.60 |
+| Stone Sword | 28 | 0.25 / 0.25 / 0.25 | 0.31 / 0.42 |
+| Iron Axe | 15 | 4 / 0.5 / 0.25 | 0.30 / 0.42 |
+| Iron Pickaxe | 15 | 0.5 / 4 / 3 | 0.36 / 0.50 |
+| Iron Sword | 36 | 0.25 / 0.25 / 0.25 | 0.28 / 0.38 |
+
+사거리1.6/손 확장0.25, Arc Axe65/Pickaxe55/Sword75도 유지. 철 광석은 HP75/드랍Ore3/노드3개, Pickaxe+Tier Rank≥2만 채굴한다. Stone Pickaxe Ore피해30(3타), Iron Pickaxe45(2타)다. Axe/Sword의 Ore 배율이 있더라도 채굴 자격이 없어 피해를 주지 않는다. Wood Pickaxe/맨손도 불가. 현재 자원량은 나무24×Wood3=72, 돌10×Stone3=30, Ore3×3=9로 작은 필드의 한 진행을 지원한다. 재생성은 없다.
+
+| 새 Recipe | 비용 |
+|---|---|
+| Stone Axe / Pickaxe | 각각 Wood3 + Stone4 |
+| Stone Sword | Wood2 + Stone5 |
+| Furnace | Stone8 + Wood4 |
+| Iron Ingot | Iron Ore1, 6초, 연료 없음 |
+| Iron Axe / Pickaxe / Sword | 각각 Wood3 + Ingot3 |
+| Wood Wall / Wood Door / Storage Chest | 각각 Wood2 / Wood3 / Wood6 |
+
+| 시설 | HP | Footprint | 스택/슬롯 |
+|---|---:|---|---|
+| Wood Wall | 100 | 1.8×0.45 | 스택10 |
+| Wood Door | 80 | 1.8×0.45 | 스택10 |
+| Storage Chest | 70 | 1.5×1.1 | 스택10 / 저장18 |
+| Furnace | 100 | 1.8×1.6 | 스택10 |
+
+배치2.1/최대2.8/상호작용2.6유닛 유지. 벽/문 회전0/90도, 문 닫기 점유 검사85% Footprint. Zombie 건축 타격도 기존 피해8/준비0.38/쿨다운1.15/사거리1.55를 사용한다.
+
+## 낮밤·생성·동물
+
+| 항목 | 초기값 |
+|---|---|
+| Day / Evening / Night / Dawn | 240 / 60 / 150 / 30초, 총480초 |
+| 낮 / 저녁 / 밤 조명 intensity | 1 / 0.9 / 0.48 |
+| 저녁 RGB / 밤 RGB | (1,0.88,0.72) / (0.78,0.83,0.76) |
+| 낮 생성 간격 / 상한 | 90초 / 1 |
+| 밤 생성 간격 / 상한 | 15초 / 6 |
+| 최소 플레이어 / 건축물 거리 | 12 / 5유닛 |
+| 카메라 바깥 여유 / 후보 횟수 | 화면5% / 32 |
+| 외곽 SpawnRegion | 44×24유닛 |
+| 생성 Footprint 반경 | 0.65유닛 |
+| 닭 / 멧돼지 HP·Raw Meat | 20·1 / 20·2 |
+| 동물 Wander / Flee 속도 | 0.55 / 2.4유닛·초 |
+| 근접 위협 거리 / 도망 시간 | 2.4유닛 / 2.2초 |
+| 방향 변경 / Home 반경 | 4초 / 4유닛 |
+
+밤 원거리 추적은 같은 Zombie에 적용하고 새 스펙/종류를 만들지 않았다. 맑은 낮·단순 밤만 있고 특수밤/Wave는 없다. 모닥불/용광로 따뜻한 빛 반경3.5, intensity=(1−ambient)×1.2다. Armor는 실제 아이템 없이 슬롯/데이터/시각 소켓만 있어 출시 방어 수치표가 없다. 장착 방어는 일반 피해에서 정수 감산(최소1), 생존 소진 피해는 방어 무시다. 현재 모든 실제 플레이는 빈 Armor 슬롯이다.

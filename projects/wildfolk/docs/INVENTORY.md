@@ -35,3 +35,13 @@ Pause 상태와 동결 정책을 분리했다. GameplaySession은 UI/입력 상�
 소비품은 선택 슬롯에서 Use하여 1개를 줄이며 수치가 이미 Max이면 거부한다. 조리는 TryConsumeCosts가 비용을 원자적으로 시설로 넘기고 완성 후 Take로 결과를 원자적으로 수령한다. 결과 공간이 없으면 시설에 남는다.
 
 가방 바로가기는 일반 플레이에서 Hotbar 왼쪽, 인벤토리가 열린 동안은 패널 바깥 좌하단에 표시하며 다시 눌러 닫을 수 있다.
+
+## Storage Chest
+
+각 StorageChest는 독립 InventoryModel18칸을 Awake에서 생성한다. PlayerStorage는 살아 있고 가까운 상자를 열고, 떠나거나 파괴/사망/Pause하면 닫는다. 상자 UI와 일반 Inventory UI는 동시에 표시하지 않는다. 상자 상단18/하단PlayerStorage27+Hotbar9를 표시하고 기존 Drag/Ghost를 공유한다.
+
+InventoryModel.Transfer(source,index,target,index)는 동일 모델 내부와 서로 다른 모델 사이의 전체 이동/한도 합치기/교환을 모두 처리한다. 두 배열을 먼저 수정한 다음 각 Changed 이벤트를 한 번 발생시켜 중간 상태/아이템 복제를 막는다. 실패/바깥 Drop은 변경하지 않는다. 선택 Hotbar 물품이 빠지면 장착도 갱신한다. 상자마다 내용을 닫기/재접근 동안 유지하고 파괴 시 월드 드랍으로 보존한다. 월드 Save가 없어 앱 재실행에는 보존되지 않는다.
+
+상자를 열어도 Time.timeScale을 바꾸지 않고 적/시간/허기·갈증/시설 작업은 진행한다. 슬롯 분할/빠른 이동/잠금/멀티 권한/상자 저장 시스템은 없다.
+
+Inventory/Chest의 모달 패널은 생존·시간 HUD 아래에 표시하며 좁은/넓은 화면의 남은 폭·높이에 맞춘다. 가방 바로가기는 패널 바깥 좌하단에 남고, 세계 상태 HUD는 계속 읽을 수 있다.

@@ -8,6 +8,8 @@ namespace Wildfolk
         public PlayerCrafting Owner;
         public Text Title;
         public RecipeCardView[] Cards;
+        public ScrollRect Scroll;
+        private StationKind previousStation=(StationKind)(-1);
         private void Start()
         {
             Owner.Inventory.Model.Changed+=Refresh;
@@ -27,13 +29,14 @@ namespace Wildfolk
         private void Refresh()
         {
             var station=Owner.AvailableStation;
-            Title.text=station==StationKind.None ? "Hand crafting" : station==StationKind.Campfire ? "Campfire cooking" : "Workbench";
+            Title.text=station==StationKind.None ? "Hand crafting" : Owner.Station.Definition.StationTitle;
             foreach(var card in Cards)
             {
                 var available=card.Recipe.RequiredStation==station;
                 card.gameObject.SetActive(available);
                 if(available) card.Refresh();
             }
+            if(station!=previousStation){previousStation=station;LayoutRebuilder.ForceRebuildLayoutImmediate(Scroll.content);Scroll.verticalNormalizedPosition=1;}
         }
     }
 }

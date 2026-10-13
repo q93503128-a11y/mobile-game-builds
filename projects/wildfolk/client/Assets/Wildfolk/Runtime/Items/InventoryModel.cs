@@ -29,25 +29,26 @@ namespace Wildfolk
             if (accepted > 0) Changed?.Invoke();
             return accepted;
         }
-        public bool CanMoveStack(int from, int to)
+        public bool CanMoveStack(int from,int to) => CanTransfer(this,from,this,to);
+        public bool MoveStack(int from,int to) => Transfer(this,from,this,to);
+        public static bool CanTransfer(InventoryModel source,int from,InventoryModel target,int to)
         {
-            var source = slots[from]; var target = slots[to];
-            return from != to && !source.IsEmpty &&
-                (target.IsEmpty || target.Item.Id != source.Item.Id || target.Count < target.Item.MaxStack);
+            if(source==null || target==null || (source==target && from==to)) return false;
+            var stack=source.slots[from];var destination=target.slots[to];
+            return !stack.IsEmpty && (destination.IsEmpty || destination.Item.Id!=stack.Item.Id || destination.Count<destination.Item.MaxStack);
         }
-        public bool MoveStack(int from, int to)
+        public static bool Transfer(InventoryModel source,int from,InventoryModel target,int to)
         {
-            if (!CanMoveStack(from, to)) return false;
-            var source = slots[from]; var target = slots[to];
-            if (!target.IsEmpty && target.Item.Id == source.Item.Id)
+            if(!CanTransfer(source,from,target,to)) return false;
+            var stack=source.slots[from];var destination=target.slots[to];
+            if(!destination.IsEmpty && destination.Item.Id==stack.Item.Id)
             {
-                var moved = Math.Min(source.Count, target.Item.MaxStack - target.Count);
-                slots[to] = new ItemStack(target.Item, target.Count + moved);
-                slots[from] = moved == source.Count ? default : new ItemStack(source.Item, source.Count - moved);
+                var moved=Math.Min(stack.Count,destination.Item.MaxStack-destination.Count);
+                target.slots[to]=new ItemStack(destination.Item,destination.Count+moved);
+                source.slots[from]=moved==stack.Count ? default : new ItemStack(stack.Item,stack.Count-moved);
             }
-            else { slots[to] = source; slots[from] = target; }
-            Changed?.Invoke();
-            return true;
+            else { target.slots[to]=stack;source.slots[from]=destination; }
+            source.Changed?.Invoke();if(target!=source) target.Changed?.Invoke();return true;
         }
         public bool ConsumeSlot(int index, ItemDefinition expected, int count)
         {

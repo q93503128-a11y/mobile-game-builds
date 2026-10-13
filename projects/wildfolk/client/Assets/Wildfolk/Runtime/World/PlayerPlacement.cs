@@ -24,7 +24,7 @@ namespace Wildfolk
             if (definition == null) return;
             PreviewPosition = (Vector2)transform.position + Facing.Direction * Settings.PlacementDistance;
             PreviewValid = CanPlaceAt(definition, PreviewPosition);
-            Preview.transform.position = PreviewPosition;
+            Preview.transform.SetPositionAndRotation(PreviewPosition,RotationFor(definition));
             PreviewVisual.sprite = definition.Prefab.Visual.sprite;
             PreviewVisual.transform.localScale = definition.Prefab.Visual.transform.localScale;
             PreviewFootprint.transform.localScale = new Vector3(definition.Footprint.x/.08f, definition.Footprint.y/.08f, 1);
@@ -35,19 +35,22 @@ namespace Wildfolk
         {
             if (definition == null || definition.Prefab == null) return false;
             if (Vector2.Distance(transform.position, position) > definition.MaximumDistance) return false;
-            var half = definition.Footprint*.5f;
+            var angle=RotationFor(definition).eulerAngles.z;
+            var footprint=angle>45 && angle<135 ? new Vector2(definition.Footprint.y,definition.Footprint.x) : definition.Footprint;
+            var half = footprint*.5f;
             var bounds = Ground.bounds;
             if (!bounds.Contains(position-half) || !bounds.Contains(position+half)) return false;
             var filter = new ContactFilter2D { useTriggers = true };
-            return Physics2D.OverlapBox(position, definition.Footprint, 0, filter, overlaps) == 0;
+            return Physics2D.OverlapBox(position, definition.Footprint, angle, filter, overlaps) == 0;
         }
+        private Quaternion RotationFor(PlaceableDefinition definition) => definition.IsBarrier && Mathf.Abs(Facing.Direction.x)>Mathf.Abs(Facing.Direction.y) ? Quaternion.Euler(0,0,90) : Quaternion.identity;
         public bool TryPlace()
         {
             if (!Session.IsRunning) return false;
             var definition = Equipment.ActivePlaceable;
             var position = (Vector2)transform.position + Facing.Direction * Settings.PlacementDistance;
             if (!CanPlaceAt(definition, position)) return false;
-            var placed = Instantiate(definition.Prefab, position, Quaternion.identity);
+            var placed = Instantiate(definition.Prefab, position, RotationFor(definition));
             if (Inventory.Model.ConsumeSlot(Inventory.SelectedIndex, definition.Item, 1)) return true;
             Destroy(placed.gameObject);
             return false;

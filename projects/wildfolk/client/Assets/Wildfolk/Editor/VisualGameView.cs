@@ -36,6 +36,7 @@ namespace Wildfolk.Editor
             if(windows.Length==0)
                 throw new InvalidOperationException("Open a Game View tab before selecting its resolution.");
             var window=(EditorWindow)windows[0];
+            gameViewType.GetProperty("enterPlayModeBehavior",Flags).SetValue(window,Enum.Parse(gameViewType.GetProperty("enterPlayModeBehavior",Flags).PropertyType,"PlayUnfocused"));
             gameViewType.GetProperty("selectedSizeIndex",Flags).SetValue(window,index);
             window.Repaint();
         }

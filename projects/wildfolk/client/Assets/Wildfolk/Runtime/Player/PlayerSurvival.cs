@@ -13,7 +13,7 @@ namespace Wildfolk
         {
             if(!Health.IsAlive || !Session.WorldIsRunning) return;
             var damage=Model.Advance(Time.deltaTime);
-            if(damage>0) Health.ApplyDamage(damage);
+            if(damage>0) Health.ApplyDamage(damage,true);
         }
         public bool TryConsume()
         {

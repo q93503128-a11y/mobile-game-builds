@@ -81,7 +81,7 @@ namespace Wildfolk
                     var damage = attackTool == null ? Settings.PunchDamage : attackTool.Damage;
                     var node = target.GetComponent<ResourceNode>();
                     if (attackTool != null && node != null) damage = attackTool.DamageFor(node.Definition.Kind);
-                    target.ApplyDamage(damage);
+                    if(node==null || node.Definition.CanHarvest(attackTool)) target.ApplyDamage(damage);
                 }
             }
             if (progress >= 1) CancelAttack();

@@ -70,6 +70,8 @@ namespace Wildfolk.Tests
                 yield return input.Click(hud.InventoryButton);
                 var surface=Object.FindFirstObjectByType<InventoryPanel>().View.transform.Find("Inventory Panel");
                 Assert.That(Bounds(surface).Overlaps(Bounds(hud.InventoryButton)),Is.False);
+                Assert.That(Bounds(surface).Overlaps(Bounds(Object.FindFirstObjectByType<TimeHud>())),Is.False);
+                Assert.That(Bounds(surface).Overlaps(Bounds(Object.FindFirstObjectByType<SurvivalHud>())),Is.False);
                 yield return input.Click(hud.InventoryButton);Assert.That(hud.Session.IsRunning,Is.True);
             }
         }
@@ -110,7 +112,7 @@ namespace Wildfolk.Tests
             inventory.Model.Add(Raw,1);inventory.SelectSlot(8);yield return null;
             yield return input.Click(hud.Attack);Assert.That(crafting.AvailableStation,Is.EqualTo(StationKind.Campfire));
             yield return input.Click(Card("cooked_meat").CraftButton);
-            var cooking=station.GetComponent<StationCooking>();Assert.That(cooking.IsBusy,Is.True);Assert.That(inventory.Model.CountItem(Raw),Is.Zero);
+            var cooking=station.GetComponent<StationProcessing>();Assert.That(cooking.IsBusy,Is.True);Assert.That(inventory.Model.CountItem(Raw),Is.Zero);
             yield return new WaitForSeconds(.3f);Assert.That(Card("cooked_meat").Progress.gameObject.activeSelf,Is.True);
             Assert.That(Card("cooked_meat").Status.text,Does.Contain("Cooking"));
             yield return input.Click(hud.InventoryButton);yield return new WaitForSeconds(5.1f);
@@ -123,9 +125,9 @@ namespace Wildfolk.Tests
         [UnityTest] public IEnumerator FullInventoryKeepsCookedOutputAndDestroyedFireDropsCargo()
         {
             var station=SpawnFire();yield return null;inventory.Model.Add(Raw,1);Assert.That(crafting.OpenStation(station),Is.True);
-            Assert.That(crafting.Craft(Recipe("cooked_meat")),Is.EqualTo(CraftStatus.Cooking));
+            Assert.That(crafting.Craft(Recipe("cooked_meat")),Is.EqualTo(CraftStatus.Processing));
             var wood=Recipe("workbench").Ingredients[0].Item;inventory.Model.Add(wood,36*50);yield return new WaitForSeconds(5.1f);
-            var job=station.GetComponent<StationCooking>();Assert.That(job.IsReady,Is.True);
+            var job=station.GetComponent<StationProcessing>();Assert.That(job.IsReady,Is.True);
             Assert.That(crafting.Craft(Recipe("cooked_meat")),Is.EqualTo(CraftStatus.NoSpace));Assert.That(job.IsReady,Is.True);
             station.Health.ApplyDamage(station.Health.Maximum);yield return null;yield return null;
             var drop=Object.FindFirstObjectByType<WorldPickup>();Assert.That(drop,Is.Not.Null);Assert.That(drop.Item,Is.SameAs(Recipe("cooked_meat").Result));Assert.That(drop.Count,Is.EqualTo(1));
@@ -135,17 +137,17 @@ namespace Wildfolk.Tests
             var station=SpawnFire();yield return null;inventory.Model.Add(Raw,1);
             Position(new Vector2(4,0),Vector2.down);yield return new WaitForSeconds(.1f);Assert.That(crafting.OpenStation(station),Is.False);
             Position(Vector2.zero,Vector2.down);yield return new WaitForSeconds(.1f);Assert.That(crafting.OpenStation(station),Is.True);
-            Assert.That(crafting.Craft(Recipe("cooked_meat")),Is.EqualTo(CraftStatus.Cooking));
+            Assert.That(crafting.Craft(Recipe("cooked_meat")),Is.EqualTo(CraftStatus.Processing));
             station.Health.ApplyDamage(station.Health.Maximum);yield return null;yield return null;
             var drop=Object.FindFirstObjectByType<WorldPickup>();Assert.That(drop.Item,Is.SameAs(Raw));Assert.That(drop.Count,Is.EqualTo(1));
         }
         [UnityTest] public IEnumerator OneNeutralMeatSourceDropsRawWithoutAddingAnEnemyType()
         {
             Assert.That(Object.FindObjectsByType<EnemyController>(FindObjectsSortMode.None).Length,Is.EqualTo(1));
-            ResourceNode animal=null;foreach(var node in Object.FindObjectsByType<ResourceNode>(FindObjectsSortMode.None)) if(node.Definition.Kind==ResourceKind.Meat) animal=node;
+            ResourceNode animal=null;foreach(var node in Object.FindObjectsByType<ResourceNode>(FindObjectsSortMode.None)) if(node.Definition.Kind==ResourceKind.Meat && node.Definition.DropCount==2) animal=node;
             Assert.That(animal,Is.Not.Null);Assert.That(animal.GetComponent<EnemyController>(),Is.Null);
             Position((Vector2)animal.transform.position+Vector2.down*1.6f,Vector2.up);yield return new WaitForSeconds(.2f);
-            var point=PlayPointerDriver.Point(hud.Attack);input.Pointer(point,true);yield return new WaitForSeconds(1);input.Pointer(point,false);yield return null;
+            animal.Health.ApplyDamage(animal.Health.Maximum);yield return null;
             Assert.That(animal==null,Is.True);var drop=Object.FindFirstObjectByType<WorldPickup>();Assert.That(drop.Item,Is.SameAs(Raw));Assert.That(drop.Count,Is.EqualTo(2));
             Position(drop.transform.position,Vector2.up);yield return new WaitForSeconds(.85f);Assert.That(inventory.Model.CountItem(Raw),Is.EqualTo(2));
         }

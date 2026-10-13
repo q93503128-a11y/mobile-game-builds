@@ -17,6 +17,7 @@ namespace Wildfolk
             fillWidth = Fill.GetComponent<SpriteRenderer>().sprite.bounds.size.x * fullScale.x;
         }
 
+        private void LateUpdate() => transform.rotation=Quaternion.identity;
         private void OnEnable() => Health.Changed += Refresh;
         private void OnDisable() => Health.Changed -= Refresh;
         private void Start() => Refresh();

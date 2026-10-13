@@ -1,8 +1,8 @@
 # Wildfolk
 
-Unity **6000.3.19f1 LTS / Universal 2D**, 모바일 Landscape 탑다운 생존 게임의 극초반 플레이 버전이다. **맨손 채집 → 작업대/도구 → 물과 생존 수치 관리 → 모닥불 조리**을 제공한다. 최종 아트나 완성된 생존 게임은 아니다.
+Unity **6000.3.19f1 LTS / Universal 2D**, 모바일 Landscape 탑다운 생존 게임의 극초반 플레이 버전이다. **맨손 → Wood/Stone 도구 → 철 광석·제련·Iron 장비 → 낮밤과 기지 보관/방어**를 제공한다. 최종 아트나 완성된 생존 게임은 아니다.
 
-![새 게임](docs/images/needs-start.png)
+![새 게임](docs/images/progression-day.png)
 
 ## 실행과 초반 진행
 
@@ -21,19 +21,29 @@ Unity **6000.3.19f1 LTS / Universal 2D**, 모바일 Landscape 탑다운 생존 �
 
 필드 북서쪽 수원 3유닛 이내에서 바라보고 Use하면 Water 1개를 얻는다. 별도 용기 없이 추상화한 물 한 회분이며 오염/정수는 없다. Consumable을 선택했다면 Use는 선택 음식/물 섭취가 우선이다. 물을 더 얻거나 시설을 열 때는 빈 슬롯/도구를 선택한다. 최대 수치에서는 해당 소비품을 쓰지 않는다.
 
-Hand crafting에서 Wood 4 + Stone 3으로 Campfire를 만든 뒤 작업대와 같은 Preview/Use 방식으로 설치한다. 필드의 중립 멧돼지 1마리는 Raw Meat 2개를 드랍한다. 공격/드랍만 있으며 이동 AI·적 공격·재생성은 없다. 모닥불 가까이에서 빈 슬롯/도구를 선택하고 Use → Cook → 5초 후 Take로 Cooked Meat를 얻는다. 가방을 닫아도 조리는 계속되며 결과는 모닥불에 남는다.
+Hand crafting에서 Wood 4 + Stone 3으로 Campfire를 만든 뒤 작업대와 같은 Preview/Use 방식으로 설치한다. 필드의 중립 멧돼지 1마리는 Raw Meat 2개를 드랍한다. 닭과 공통 중립 동물 이동을 사용하며 적 공격·재생성은 없다. 모닥불 가까이에서 빈 슬롯/도구를 선택하고 Use → Cook → 5초 후 Take로 Cooked Meat를 얻는다. 가방을 닫아도 조리는 계속되며 결과는 모닥불에 남는다.
 
-Pause → Settings에서 Control Size 80~140%, Master/BGM/SFX를 조절한다. 기본 100/100/65/85%, 로컬 PlayerPrefs 저장이다. BGM 곡은 아직 없지만 Music/SFX AudioSource 채널의 Master 곱 음량은 실제 연결됐다. 성공한 Use에는 자체 제작한 짧은 SFX가 있다.
+Pause → Settings에서 Control Size 80~140%, Master/BGM/SFX를 조절한다. 기본 100/100/65/85%, 로컬 PlayerPrefs 저장이다. BGM 곡은 아직 없지만 Music/SFX AudioSource 채널의 Master 곱 음량은 실제 연결됐다. 기존 sine 계열 전자음을 제거했고 현재 SFX/BGM 에셋은 비워두었다. 음량 채널은 유지한다.
+
+## 낮밤, 장비 진행, 건축·상자
+
+하루는 Day 240초 → Evening 60초 → Night 150초 → Dawn 30초다. 세계 조명과 좌상단 작은 Day/Phase 표시가 바뀐다. 낮은 최대 Zombie1/90초, 밤은 최대6/15초 정책이다. 밤에는 기존 Zombie가 적극적으로 접근하며 카메라 밖·플레이어12유닛 이상·필드 외곽·건축물5유닛 밖의 빈 위치에서 생성한다. 낮이 되어도 이미 있는 적이 즉시 사라지지는 않는다.
+
+Workbench에서 Stone Axe/Pickaxe/Sword와 시설을 제작한다. Stone Pickaxe부터 Iron Ore를 채굴하고 Furnace에서 Ore1→6초→Ingot1을 Take로 수령한다. 현재 연료는 없다. Ingot를 사용해 Workbench에서 Iron 도구/검을 제작한다. 각 티어의 실제 수치와 17 Recipe는 BALANCE/CRAFTING을 따른다.
+
+Wood Wall/Door/Storage Chest도 Workbench 제작→기존 Preview→배치다. 벽/문은 바라보는 축에 맞춰 0/90도로 설치하며 실제 충돌·체력·좀비 공격/파괴가 있다. 문은 Use로 열고 닫으며 사람이 있으면 닫히지 않는다. 상자는 각각 독립18칸, 위 상자·아래 플레이어 Storage27+Hotbar9로 표시하고 기존 드래그로 양쪽 이동/합치기/교환한다. 상자를 열어도 세계는 진행한다. 닫힌 상자의 물품은 해당 플레이 세션 동안 남고 파괴 시 드랍되지만 앱 재실행 보존은 아직 없다.
+
+닭1마리를 추가했고 닭/멧돼지는 주변 이동·근접/피격 도망을 공유하며 공격하지 않는다. Raw Meat 드랍은 닭1/멧돼지2다. Armor 카테고리/방어 수치/빈 장비 슬롯/외형 소켓 기반만 있고 실제 방어구 아이템·장착 UI는 없다.
 
 ## 에디터 도구와 검증
 
-`Wildfolk > View 1920x1080/2400x1080`은 이미 열린 Game View의 해상도만 바꾸며 창을 열거나 포커스를 주지 않는다. Game View 탭이 없다면 먼저 수동으로 연다. `Build Playable Scene`은 기본 씬/프리팹을 재생성하므로 수작업 배치를 보존할 때는 사용하지 않는다. 기존 데이터 에셋은 덮어쓰지 않고 자동 Game View 전환도 하지 않는다.
+`Wildfolk > View 1920x1080/2400x1080`은 이미 열린 Game View의 해상도만 바꾸며 창을 열거나 포커스를 주지 않는다. Play 진입 설정도 Play Unfocused로 맞춘다. Game View 탭이 없다면 먼저 수동으로 연다. `Build Playable Scene`은 기본 씬/프리팹을 재생성하므로 수작업 배치를 보존할 때는 사용하지 않는다. 기존 데이터 에셋은 덮어쓰지 않고 자동 Game View 전환도 하지 않는다.
 
 - Runtime: 입력/전투/인벤토리/제작/설치/세션을 책임별로 분리한다.
-- Data: 실제 아이템 10종, Recipe 6종, None/Workbench/Campfire 시설 요구와 수치의 단일 정본이다.
+- Data: 실제 아이템 22종, Recipe 17종, None/Workbench/Campfire/Furnace 시설 요구와 수치의 단일 정본이다.
 - Editor: 아트/데이터/프리팹/씬/UI 생성 도구다.
-- Tests: 검증 결과는 docs/NEEDS_SETTINGS_REVIEW.md 참고. 별도 복사본의 hidden headless Unity에서 실행했다.
-- 문서: DESIGN_BIBLE, INVENTORY, CRAFTING, BALANCE, ARCHITECTURE, NEEDS_SETTINGS_REVIEW, SURVIVAL_REVIEW(이전 단계).
+- Tests: 검증 결과는 docs/PROGRESSION_REVIEW.md 참고. 별도 복사본의 hidden headless Unity에서 실행했다.
+- 문서: DESIGN_BIBLE, INVENTORY, CRAFTING, BALANCE, ARCHITECTURE, PROGRESSION_REVIEW, NEEDS_SETTINGS_REVIEW/SURVIVAL_REVIEW(이전 단계).
 - 이전 VISUAL_REVIEW/PLAY_REVIEW/HOTBAR_TOOLS_REVIEW는 당시 상태의 역사 기록이다.
 
 아트 원본은 외부 게임 에셋을 사용하지 않는 `tools/generate_visual_assets.py`이며 Pillow 12.3.0이 필요하다. 소스 검사는 `python tests/validate_visual_project.py client`로 실행한다. Library/Temp/로그/로컬 검증 복사본은 정본에서 제외한다.

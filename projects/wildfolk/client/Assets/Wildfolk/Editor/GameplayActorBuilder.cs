@@ -39,9 +39,11 @@ namespace Wildfolk.Editor
             var inventory=root.gameObject.AddComponent<PlayerInventory>();inventory.Settings=assets.Settings;
             var needs=root.gameObject.AddComponent<PlayerSurvival>();needs.Definition=assets.Survival.Needs;needs.Health=health;needs.Inventory=inventory;
             var equipment=root.gameObject.AddComponent<PlayerEquipment>();equipment.Inventory=inventory;equipment.Combat=combat;equipment.HeldVisual=held;combat.Equipment=equipment;
+            var armor=Group("Armor Socket",reaction).gameObject.AddComponent<SpriteRenderer>();armor.sharedMaterial=SpriteMaterial;armor.sortingOrder=1;armor.transform.localScale=Vector3.one*1.1f;armor.enabled=false;equipment.ArmorVisual=armor;
+            var storage=root.gameObject.AddComponent<PlayerStorage>();storage.Settings=assets.Settings;
             var crafting=root.gameObject.AddComponent<PlayerCrafting>();crafting.Inventory=inventory;crafting.Catalog=assets.Crafting.Catalog;crafting.Settings=assets.Settings;
             var placement=root.gameObject.AddComponent<PlayerPlacement>();placement.Equipment=equipment;placement.Inventory=inventory;placement.Settings=assets.Settings;placement.Facing=facing;
-            var action=root.gameObject.AddComponent<PlayerAction>();action.Equipment=equipment;action.Combat=combat;action.Placement=placement;action.Crafting=crafting;action.Settings=assets.Settings;action.Facing=facing;action.Survival=needs;
+            var action=root.gameObject.AddComponent<PlayerAction>();action.Equipment=equipment;action.Combat=combat;action.Placement=placement;action.Crafting=crafting;action.Settings=assets.Settings;action.Facing=facing;action.Survival=needs;action.Storage=storage;
             HealthBar(health,1.35f,true,1.65f);
             Feedback(health,reaction,HitReaction.Creature);
             return SavePrefab(root,"Player");
@@ -54,14 +56,27 @@ namespace Wildfolk.Editor
             Shadow(root,2.1f,.62f);
             var visual=Sprite("Facility",definition.Item.Id,root,Vector2.zero,.8f,0);
             var group=root.gameObject.AddComponent<SortingGroup>();root.gameObject.AddComponent<DepthSort>().Visual=group;
-            root.gameObject.AddComponent<BoxCollider2D>().size=definition.Footprint;
+            var collider=root.gameObject.AddComponent<BoxCollider2D>();collider.size=definition.Footprint;
             var health=root.gameObject.AddComponent<Health>();health.Definition=definition.Vitality;
             var placeable=root.gameObject.AddComponent<WorldPlaceable>();placeable.Definition=definition;placeable.Health=health;placeable.Visual=visual;
-            var station=root.gameObject.AddComponent<CraftingStation>();station.Definition=definition;station.Health=health;
-            if(definition.Station==StationKind.Campfire)
-            {var cooking=root.gameObject.AddComponent<StationCooking>();cooking.Station=station;cooking.RecoveryPickup=pickup;cooking.Settings=settings;}
+            if(definition.Station!=StationKind.None)
+            {
+                var station=root.gameObject.AddComponent<CraftingStation>();station.Definition=definition;station.Health=health;
+                if(definition.Station==StationKind.Campfire || definition.Station==StationKind.Furnace)
+                {
+                    var process=root.gameObject.AddComponent<StationProcessing>();process.Station=station;process.RecoveryPickup=pickup;process.Settings=settings;
+                    var glow=Group("Firelight",root).gameObject.AddComponent<UnityEngine.Rendering.Universal.Light2D>();glow.lightType=UnityEngine.Rendering.Universal.Light2D.LightType.Point;glow.pointLightOuterRadius=3.5f;glow.pointLightInnerRadius=.8f;glow.color=new Color(1,.73f,.4f);glow.intensity=0;
+                    root.gameObject.AddComponent<FacilityGlow>().Light=glow;
+                }
+            }
+            if(definition.IsDoor)
+            {
+                var interaction=root.gameObject.AddComponent<CircleCollider2D>();interaction.isTrigger=true;interaction.radius=.25f;
+                var door=root.gameObject.AddComponent<WorldDoor>();door.Placeable=placeable;door.Barrier=collider;door.Interaction=interaction;
+            }
+            if(definition.StorageSlots>0){var chest=root.gameObject.AddComponent<StorageChest>();chest.Placeable=placeable;chest.RecoveryPickup=pickup;chest.Settings=settings;}
             Feedback(health,visual.transform,HitReaction.Tree);HealthBar(health,1.0f,false);
-            var prefab=PrefabUtility.SaveAsPrefabAsset(root.gameObject,"Assets/Wildfolk/Prefabs/"+name+".prefab");
+            var prefab=PrefabUtility.SaveAsPrefabAsset(root.gameObject,"Assets/Wildfolk/Prefabs/"+name.Replace(" ","")+".prefab");
             definition.Prefab=prefab.GetComponent<WorldPlaceable>();EditorUtility.SetDirty(definition);
             Object.DestroyImmediate(root.gameObject);
         }
