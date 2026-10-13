@@ -12,11 +12,11 @@ namespace Wildfolk
         public Image SelectedIcon;
         public Text SelectedName;
         public Text SelectedCategory;
-        private int selected=-1;
 
         private void Start()
         {
             Owner.Model.Changed+=Refresh;
+            Owner.SelectionChanged+=Refresh;
             Session.StateChanged+=Refresh;
             Refresh();
         }
@@ -24,20 +24,22 @@ namespace Wildfolk
         private void OnDestroy()
         {
             if(Owner != null && Owner.Model != null) Owner.Model.Changed-=Refresh;
+            if(Owner != null) Owner.SelectionChanged-=Refresh;
             if(Session != null) Session.StateChanged-=Refresh;
         }
 
-        public void Select(int index) { selected=index; Refresh(); }
+        public void Select(int index) => Owner.SelectSlot(index);
 
         private void Refresh()
         {
             View.SetActive(Session.State==SessionState.Inventory);
+            var selected=Owner.SelectedIndex;
             for(var i=0;i<Slots.Length;i++) Slots[i].Show(Owner.Model.GetSlot(i),i==selected);
-            var stack=selected>=0 ? Owner.Model.GetSlot(selected) : default;
+            var stack=Owner.SelectedStack;
             SelectedIcon.enabled=!stack.IsEmpty;
             SelectedIcon.sprite=stack.IsEmpty ? null : stack.Item.Icon;
             SelectedName.text=stack.IsEmpty ? "Select an item" : stack.Item.DisplayName;
-            SelectedCategory.text=stack.IsEmpty ? string.Empty : "Material";
+            SelectedCategory.text=stack.IsEmpty ? string.Empty : stack.Item.Category.ToString();
         }
     }
 }

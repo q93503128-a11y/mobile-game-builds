@@ -10,7 +10,7 @@ namespace Wildfolk.Editor
 {
     internal static class GameplayHudBuilder
     {
-        internal static void Build(GameplayAssets assets,GameplaySession session,PlayerMotor motor,FistCombat combat,PlayerInventory inventory)
+        internal static void Build(GameplayAssets assets,GameplaySession session,PlayerMotor motor,PlayerCombat combat,PlayerInventory inventory)
         {
             var root=new GameObject("Mobile HUD",typeof(RectTransform),typeof(Canvas),typeof(CanvasScaler),typeof(GraphicRaycaster));
             root.GetComponent<Canvas>().renderMode=RenderMode.ScreenSpaceOverlay;
@@ -28,10 +28,12 @@ namespace Wildfolk.Editor
             var thumb=Image("Thumb",joystickImage.transform,"joystick_thumb",new Vector2(.5f,.5f),Vector2.zero,new Vector2(95,95));
             var joystick=joystickImage.gameObject.AddComponent<VirtualJoystick>();
             joystick.Thumb=(RectTransform)thumb.transform;joystick.Session=session;motor.Joystick=joystick;
-            var attackImage=Image("Bare Hand Attack",controls,"attack_button",new Vector2(1,0),new Vector2(-162,150),new Vector2(174,174),true);
-            Image("Fist",attackImage.transform,"icon_fist",new Vector2(.5f,.5f),Vector2.zero,new Vector2(86,86));
+            var attackImage=Image("Attack or Use",controls,"attack_button",new Vector2(1,0),new Vector2(-162,150),new Vector2(174,174),true);
+            var attackIcon=Image("Item Icon",attackImage.transform,"icon_fist",new Vector2(.5f,.5f),Vector2.zero,new Vector2(92,100));attackIcon.preserveAspect=true;
+            var iconView=attackImage.gameObject.AddComponent<AttackIconView>();iconView.Icon=attackIcon;iconView.FistIcon=VisualArtImporter.Sprite("icon_fist");iconView.Equipment=motor.GetComponent<PlayerEquipment>();
             var attack=attackImage.gameObject.AddComponent<HoldAttackInput>();
             attack.Combat=combat;attack.Session=session;attack.Surface=attackImage;
+            BuildHotbar(controls,session,inventory);
             BuildBoss(safe);
             BuildInventory(root, safe,session,inventory,assets.Settings.InventorySlots);
             var defeat=BuildDefeat(safe,session);
@@ -54,33 +56,57 @@ namespace Wildfolk.Editor
             var panel=root.AddComponent<InventoryPanel>();
             panel.Session=session;panel.Owner=inventory;
             var scrim=Scrim("Inventory Overlay",safe);panel.View=scrim.gameObject;
-            var surface=Image("Inventory Panel",scrim.transform,"panel",new Vector2(.5f,.5f),Vector2.zero,new Vector2(720,760),true);
-            Text("Title",surface.transform,"Inventory",new Vector2(-220,324),new Vector2(220,52),36,TextAnchor.MiddleLeft);
-            var close=Image("Close",surface.transform,"panel",new Vector2(.5f,.5f),new Vector2(296,324),new Vector2(64,64),true);
+            var surface=Image("Inventory Panel",scrim.transform,"panel",new Vector2(.5f,.5f),Vector2.zero,new Vector2(1040,660),true);
+            Text("Title",surface.transform,"Inventory",new Vector2(-355,265),new Vector2(240,52),36,TextAnchor.MiddleLeft);
+            var close=Image("Close",surface.transform,"panel",new Vector2(.5f,.5f),new Vector2(440,265),new Vector2(64,64),true);
             Text("Close Symbol",close.transform,"×",Vector2.zero,new Vector2(58,58),40);
             UnityEventTools.AddPersistentListener(Button(close).onClick,session.CloseInventory);
-            var grid=Rect("Slots",surface.transform,new Vector2(.5f,.5f),new Vector2(0,10),new Vector2(550,550));
+            Text("Hotbar Label",surface.transform,"Hotbar",new Vector2(-365,194),new Vector2(180,30),22,TextAnchor.MiddleLeft);
+            var quick=Rect("Hotbar Slots",surface.transform,new Vector2(.5f,.5f),new Vector2(0,110),new Vector2(918,94));
+            var quickLayout=quick.gameObject.AddComponent<GridLayoutGroup>();quickLayout.cellSize=new Vector2(94,94);quickLayout.spacing=new Vector2(8,8);quickLayout.constraint=GridLayoutGroup.Constraint.FixedColumnCount;quickLayout.constraintCount=9;quickLayout.childAlignment=TextAnchor.UpperCenter;
+            Text("Storage Label",surface.transform,"Storage",new Vector2(-365,8),new Vector2(180,30),22,TextAnchor.MiddleLeft);
+            var grid=Rect("Storage Slots",surface.transform,new Vector2(.5f,.5f),new Vector2(0,-76),new Vector2(918,94));
             var layout=grid.gameObject.AddComponent<GridLayoutGroup>();
-            layout.cellSize=new Vector2(125,125);layout.spacing=new Vector2(15,15);
-            layout.constraint=GridLayoutGroup.Constraint.FixedColumnCount;layout.constraintCount=4;
-            layout.childAlignment=TextAnchor.UpperCenter;
+            layout.cellSize=new Vector2(94,94);layout.spacing=new Vector2(8,8);
+            layout.constraint=GridLayoutGroup.Constraint.FixedColumnCount;layout.constraintCount=7;
+            layout.childAlignment=TextAnchor.UpperLeft;
             panel.Slots=new InventorySlotView[count];
             for(var i=0;i<count;i++)
             {
-                var slot=Image("Slot "+(i+1),grid,"panel",new Vector2(.5f,.5f),Vector2.zero,new Vector2(125,125),true);
-                var view=slot.gameObject.AddComponent<InventorySlotView>();
-                var selection=Image("Selection",slot.transform,"panel",new Vector2(.5f,.5f),Vector2.zero,new Vector2(123,123));
-                selection.color=new Color32(164,167,103,150);selection.enabled=false;view.Selection=selection;
-                view.Icon=Image("Icon",slot.transform,"white",new Vector2(.5f,.5f),new Vector2(0,8),new Vector2(73,73));
-                view.Icon.enabled=false;
-                view.Count=Text("Stack Count",slot.transform,string.Empty,new Vector2(28,-37),new Vector2(64,30),25,TextAnchor.MiddleRight);
+                var slot=BuildSlot(i<PlayerInventory.HotbarSize ? quick : grid,i,94,i<PlayerInventory.HotbarSize);
+                var view=slot.GetComponent<InventorySlotView>();
                 UnityEventTools.AddIntPersistentListener(Button(slot).onClick,panel.Select,i);
                 panel.Slots[i]=view;
             }
-            panel.SelectedIcon=Image("Selected Icon",surface.transform,"white",new Vector2(.5f,.5f),new Vector2(-260,-316),new Vector2(58,58));
-            panel.SelectedName=Text("Selected Name",surface.transform,string.Empty,new Vector2(-60,-307),new Vector2(320,36),28,TextAnchor.MiddleLeft);
-            panel.SelectedCategory=Text("Category",surface.transform,string.Empty,new Vector2(-60,-337),new Vector2(320,28),20,TextAnchor.MiddleLeft);
+            panel.SelectedIcon=Image("Selected Icon",surface.transform,"white",new Vector2(.5f,.5f),new Vector2(-405,-236),new Vector2(60,70));panel.SelectedIcon.preserveAspect=true;
+            panel.SelectedName=Text("Selected Name",surface.transform,string.Empty,new Vector2(-180,-224),new Vector2(320,36),28,TextAnchor.MiddleLeft);
+            panel.SelectedCategory=Text("Category",surface.transform,string.Empty,new Vector2(-180,-258),new Vector2(320,28),20,TextAnchor.MiddleLeft);
             scrim.gameObject.SetActive(false);
+        }
+
+        private static void BuildHotbar(Transform controls,GameplaySession session,PlayerInventory inventory)
+        {
+            var holder=Rect("Hotbar",controls,new Vector2(.5f,0),new Vector2(0,102),new Vector2(918,106));
+            var view=holder.gameObject.AddComponent<HotbarView>();view.Owner=inventory;view.Session=session;view.Slots=new InventorySlotView[PlayerInventory.HotbarSize];
+            for(var i=0;i<view.Slots.Length;i++)
+            {
+                var slot=BuildSlot(holder,i,94,true);((RectTransform)slot.transform).anchoredPosition=new Vector2((i-4)*102,0);
+                view.Slots[i]=slot.GetComponent<InventorySlotView>();
+                UnityEventTools.AddIntPersistentListener(Button(slot).onClick,view.Select,i);
+            }
+        }
+
+        private static UnityEngine.UI.Image BuildSlot(Transform parent,int index,float size,bool quick)
+        {
+            var slot=Image("Slot "+(index+1),parent,"panel",new Vector2(.5f,.5f),Vector2.zero,new Vector2(size,size),true);
+            var view=slot.gameObject.AddComponent<InventorySlotView>();
+            var selection=Image("Selection",slot.transform,"white",new Vector2(.5f,.5f),Vector2.zero,new Vector2(size+6,size+6));
+            selection.color=new Color32(210,183,117,255);view.Selection=selection;
+            var inset=Image("Inset",selection.transform,"white",new Vector2(.5f,.5f),Vector2.zero,new Vector2(size-2,size-2));inset.color=new Color32(24,40,33,255);selection.enabled=false;
+            view.Icon=Image("Icon",slot.transform,"white",new Vector2(.5f,.5f),new Vector2(0,2),new Vector2(size*.68f,size*.72f));view.Icon.enabled=false;view.Icon.preserveAspect=true;
+            view.Count=Text("Stack Count",slot.transform,string.Empty,new Vector2(size*.24f,-size*.31f),new Vector2(42,26),21,TextAnchor.MiddleRight);
+            if(quick) Text("Quick Slot",slot.transform,(index+1).ToString(),new Vector2(-size*.31f,size*.32f),new Vector2(24,24),15);
+            return slot;
         }
 
         private static void BuildBoss(Transform safe)

@@ -7,7 +7,7 @@ namespace Wildfolk
 {
     public sealed class HoldAttackInput : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     {
-        public FistCombat Combat;
+        public PlayerCombat Combat;
         public GameplaySession Session;
         public Image Surface;
         private int? pointer;

@@ -30,7 +30,7 @@ namespace Wildfolk.Editor
             var playerObject=GameplayActorBuilder.Player(actors,assets);
             player=playerObject.GetComponent<PlayerInventory>();
             var motor=playerObject.GetComponent<PlayerMotor>();motor.Session=session;
-            var combat=playerObject.GetComponent<FistCombat>();combat.Session=session;
+            var combat=playerObject.GetComponent<PlayerCombat>();combat.Session=session;
             session.PlayerHealth=playerObject.GetComponent<Health>();
             var enemyObject=GameplayActorBuilder.Enemy(actors,assets);
             var enemy=enemyObject.GetComponent<EnemyController>();enemy.Session=session;enemy.PlayerHealth=session.PlayerHealth;

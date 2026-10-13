@@ -27,17 +27,23 @@ namespace Wildfolk.Tests
                 }
                 Assert.That(player,Is.Not.Null);Assert.That(player.Session,Is.Not.Null);Assert.That(player.Joystick,Is.Not.Null);
                 Assert.That(player.Combat.Session,Is.SameAs(player.Session));
+                Assert.That(player.Combat.Equipment,Is.Not.Null);Assert.That(player.Avatar.Facing,Is.Not.Null);
+                Assert.That(player.GetComponent<PlayerInventory>().Loadout.Items.Length,Is.EqualTo(2));
                 Assert.That(enemy,Is.Not.Null);Assert.That(enemy.Session,Is.SameAs(player.Session));
                 Assert.That(enemy.PlayerHealth,Is.SameAs(player.GetComponent<Health>()));
                 Assert.That(enemy.GetComponent<Collider2D>().isTrigger,Is.True);
                 Assert.That(enemy.GetComponent<Rigidbody2D>().bodyType,Is.EqualTo(RigidbodyType2D.Kinematic));
+                Assert.That(enemy.Facing,Is.Not.Null);
+                var hotbar=Object.FindFirstObjectByType<HotbarView>();
+                Assert.That(hotbar.Slots.Length,Is.EqualTo(PlayerInventory.HotbarSize));
+                Assert.That(hotbar.Owner,Is.SameAs(player.GetComponent<PlayerInventory>()));
                 Assert.That(nodes,Is.GreaterThan(0));
                 Assert.That(Object.FindObjectsByType<ParticleSystem>(FindObjectsSortMode.None),Is.Empty);
             }
             finally { if(!wasLoaded) EditorSceneManager.CloseScene(scene,true); }
         }
 
-        [Test] public void BalanceDataHasValidCombatRangesAndOnlyTwoActualItems()
+        [Test] public void BalanceDataHasValidCombatRangesAndFourActualItems()
         {
             var settings=AssetDatabase.LoadAssetAtPath<GameplaySettings>("Assets/Wildfolk/Data/GameplaySettings.asset");
             Assert.That(settings.PunchCooldown,Is.GreaterThanOrEqualTo(settings.PunchDuration));
@@ -50,13 +56,25 @@ namespace Wildfolk.Tests
                 if(field.FieldType==typeof(int)) Assert.That((int)field.GetValue(settings),Is.GreaterThan(0),field.Name);
             }
             Assert.That(settings.EnemyLoseRange,Is.GreaterThanOrEqualTo(settings.EnemyDetectionRange));
-            Assert.That(AssetDatabase.FindAssets("t:ItemDefinition",new[]{"Assets/Wildfolk/Data"}).Length,Is.EqualTo(2));
+            Assert.That(settings.InventorySlots,Is.GreaterThanOrEqualTo(PlayerInventory.HotbarSize));
+            Assert.That(AssetDatabase.FindAssets("t:ItemDefinition",new[]{"Assets/Wildfolk/Data"}).Length,Is.EqualTo(4));
             var ids=new HashSet<string>();
             foreach(var guid in AssetDatabase.FindAssets("t:ItemDefinition",new[]{"Assets/Wildfolk/Data"}))
             {
                 var item=AssetDatabase.LoadAssetAtPath<ItemDefinition>(AssetDatabase.GUIDToAssetPath(guid));
                 Assert.That(item.MaxStack,Is.GreaterThan(0));Assert.That(item.Icon,Is.Not.Null);Assert.That(item.Id,Is.Not.Empty);
                 Assert.That(ids.Add(item.Id),Is.True,"Duplicate item ID: "+item.Id);
+                if(item.Category==ItemCategory.Tool)
+                {
+                    Assert.That(item.MaxStack,Is.EqualTo(1));Assert.That(item.Tool,Is.Not.Null);
+                    Assert.That(item.Tool.HeldSprite,Is.Not.Null);Assert.That(item.Tool.Damage,Is.GreaterThan(0));
+                    Assert.That(item.Tool.Reach,Is.GreaterThan(0));Assert.That(item.Tool.Duration,Is.GreaterThan(0));
+                    Assert.That(item.Tool.Cooldown,Is.GreaterThanOrEqualTo(item.Tool.Duration));
+                    var kinds=new HashSet<ResourceKind>();
+                    foreach(var efficiency in item.Tool.Efficiencies)
+                    {Assert.That(kinds.Add(efficiency.Kind),Is.True);Assert.That(efficiency.Multiplier,Is.GreaterThan(0));}
+                    Assert.That(kinds.Count,Is.EqualTo(2));
+                }
             }
             foreach(var guid in AssetDatabase.FindAssets("t:VitalityDefinition",new[]{"Assets/Wildfolk/Data"}))
             {
@@ -68,6 +86,7 @@ namespace Wildfolk.Tests
                 var resource=AssetDatabase.LoadAssetAtPath<ResourceDefinition>(AssetDatabase.GUIDToAssetPath(guid));
                 Assert.That(resource.Vitality,Is.Not.Null);Assert.That(resource.DropItem,Is.Not.Null);
                 Assert.That(resource.DropCount,Is.InRange(1,resource.DropItem.MaxStack));
+                Assert.That(resource.Kind,Is.EqualTo(resource.DropItem.Id=="wood" ? ResourceKind.Wood : ResourceKind.Stone));
             }
         }
     }

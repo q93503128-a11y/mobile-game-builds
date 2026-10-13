@@ -12,6 +12,7 @@ namespace Wildfolk
         public Health OwnHealth;
         public Health PlayerHealth;
         public Transform AttackPose;
+        public CharacterFacing Facing;
         public EnemyState State { get; private set; }
         private Rigidbody2D body;
         private Vector3 restPosition;
@@ -35,6 +36,8 @@ namespace Wildfolk
             if (!Session.IsRunning || !OwnHealth.IsAlive || !PlayerHealth.IsAlive) return;
             var delta = (Vector2)PlayerHealth.transform.position - body.position;
             var distance = delta.magnitude;
+            if (State == EnemyState.Windup || State == EnemyState.Recovery) Facing.Face(strikeDirection);
+            else if (State == EnemyState.Chase) Facing.Face(delta);
             switch (State)
             {
                 case EnemyState.Idle:

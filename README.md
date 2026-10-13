@@ -28,7 +28,7 @@ mobile-game-builds/
 
 ## 현재 프로젝트
 
-- [`Wildfolk`](./projects/wildfolk/README.md): Unity 6000.3.19f1 LTS / Universal 2D, 모바일 가로형 탑다운 생존 게임의 첫 플레이 가능 버전. 이동·맨손 전투·채집·월드 드랍·인벤토리를 제공한다.
+- [`Wildfolk`](./projects/wildfolk/README.md): Unity 6000.3.19f1 LTS / Universal 2D, 모바일 가로형 탑다운 생존 게임의 초기 플레이 버전. 원형 캐릭터 Facing·9칸 Hotbar·도끼/곡괭이와 이동·전투·채집·드랍·인벤토리를 제공한다.
 
 ## 정본 우선순위
 

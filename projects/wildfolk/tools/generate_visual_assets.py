@@ -74,35 +74,52 @@ def rock(seed):
 
 def body():
     im=canvas(160,160)
-    # Cloth-colored, rounded survivor torso: no stone rim or pale disc.
-    ellipse(im,(18,14,143,147),'#31556b','#243b42',4)
-    ellipse(im,(22,17,139,139),'#4e86a1')
-    poly(im,[(26,97),(46,118),(83,127),(121,114),(138,91),(135,126),(111,142),(56,143),(30,127)],'#3b6c87')
-    poly(im,[(35,44),(49,29),(77,22),(109,29),(121,41),(101,36),(78,32),(52,39)],'#70a4b7')
-    # Restrained fabric collar/hem cues keep it a character rather than an object.
-    line(im,[(57,27),(64,37),(79,41),(94,37),(102,28)],'#345970',2)
-    line(im,[(49,124),(79,131),(111,123)],'#2e5267',2)
-    ellipse(im,(55,70,65,81),'#202e31')
-    ellipse(im,(94,70,104,81),'#202e31')
+    # Facing eyes are separate sprites; the simple body never rotates.
+    ellipse(im,(19,19,141,141),'#b48765','#634c3b',3)
+    ellipse(im,(21,20,139,135),'#d6aa84')
     return im
 
 def hand():
     im=canvas(64,64)
-    poly(im,[(16,15),(34,10),(48,18),(53,38),(43,51),(22,53),(11,43),(9,27)],'#b6956b','#39352b',3)
-    poly(im,[(15,22),(23,15),(36,15),(44,22),(43,30),(16,30)],'#dfc29a')
-    line(im,[(21,35),(29,37),(38,34)],'#967649',2)
+    ellipse(im,(10,10,54,54),'#ba8d68','#634c3b',3)
+    ellipse(im,(13,12,51,47),'#dbb08a')
     return im
 
 def enemy():
-    im=canvas(180,180)
-    poly(im,[(22,121),(30,81),(19,70),(45,68),(48,48),(64,52),(77,28),(91,39),(110,26),(122,48),(146,43),(140,71),(160,85),(147,119),(131,147),(95,157),(52,145)],'#4b544b','#263a32',4)
-    poly(im,[(45,68),(63,52),(83,49),(101,40),(119,53),(137,72),(125,104),(68,112),(44,93)],'#74816b')
-    poly(im,[(53,114),(82,128),(119,112),(140,98),(131,147),(95,157),(52,145)],'#394b40')
-    line(im,[(57,81),(74,84)],'#c3a16c',4)
-    line(im,[(105,84),(121,79)],'#c3a16c',4)
-    line(im,[(55,74),(75,77)],'#35473b',3)
-    line(im,[(103,77),(123,71)],'#35473b',3)
+    im=canvas(160,160)
+    ellipse(im,(19,19,141,141),'#485e4c','#2a3d31',3)
+    ellipse(im,(21,20,139,134),'#75816b')
+    poly(im,[(26,63),(31,49),(39,53),(36,68)],'#596c54')
+    poly(im,[(115,105),(127,99),(134,111),(128,122),(117,118)],'#596c54')
     return im
+
+def character_details():
+    im=canvas(32,32)
+    ellipse(im,(9,9,23,23),'#2b302c')
+    save(im,'player_eye.png')
+    im=canvas(32,32)
+    poly(im,[(5,10),(27,13),(25,22),(8,20)],'#2c3b30')
+    line(im,[(10,16),(22,17)],'#b1aa78',2)
+    save(im,'zombie_eye.png')
+    im=canvas(64,64)
+    ellipse(im,(10,10,54,54),'#556c53','#2a3d31',3)
+    ellipse(im,(13,12,51,47),'#829077')
+    save(im,'zombie_hand.png')
+
+def tools():
+    im=canvas(128,192)
+    poly(im,[(57,54),(72,54),(71,174),(58,177)],'#8b6b43','#343a2d',3)
+    line(im,[(62,70),(62,162)],'#b39760',3)
+    poly(im,[(36,24),(69,19),(78,30),(108,19),(116,38),(110,67),(80,73),(69,56),(36,54)],'#677a7a','#2d3c36',3)
+    poly(im,[(81,31),(108,23),(112,38),(106,64),(81,67)],'#b3b9a7')
+    line(im,[(40,31),(62,28)],'#95a398',2)
+    save(im,'axe.png')
+    im=canvas(128,192)
+    poly(im,[(57,41),(72,42),(71,174),(58,177)],'#8b6b43','#343a2d',3)
+    line(im,[(62,64),(62,162)],'#b39760',3)
+    poly(im,[(12,45),(31,23),(60,15),(86,19),(109,35),(119,62),(98,43),(81,35),(58,34),(34,37)],'#768782','#2d3c36',3)
+    line(im,[(26,35),(53,23),(78,25),(103,40)],'#b5bba9',4)
+    save(im,'pickaxe.png')
 
 def grass(seed):
     rng=random.Random(seed); im=canvas(128,96)
@@ -236,5 +253,6 @@ if __name__=='__main__':
     save(rock(1),'rock_wide.png');save(rock(2),'rock_split.png')
     save(body(),'player_body.png');save(hand(),'player_hand.png')
     save(enemy(),'enemy.png');save(grass(21),'grass.png');save(fern(),'fern.png');save(log(),'fallen_log.png')
+    character_details();tools()
     icons();ui()
     print(f'Wrote {len(list(OUT.glob("*.png")))} original sprites to {OUT}')

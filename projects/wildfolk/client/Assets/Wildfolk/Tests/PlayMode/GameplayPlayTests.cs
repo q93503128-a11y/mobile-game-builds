@@ -39,7 +39,9 @@ namespace Wildfolk.Tests
             inventory=player.GetComponent<PlayerInventory>();
             hud=Object.FindFirstObjectByType<GameplayHud>();
             settings=player.Settings;
-            yield return null;
+            inventory.SelectSlot(2); // Bare-hand fixture; the actual starter tools remain in slots 0 and 1.
+            player.Avatar.Facing.Face(Vector2.up);
+            yield return new WaitForSeconds(.2f);
         }
 
         [UnityTearDown] public IEnumerator ReleaseInput()
@@ -139,15 +141,15 @@ namespace Wildfolk.Tests
 
         private IEnumerator PunchOnce()
         {
-            var left=player.Avatar.LeftHand.localPosition;var right=player.Avatar.RightHand.localPosition;
+            var left=player.Avatar.Facing.LeftHand.localPosition;var right=player.Avatar.Facing.RightHand.localPosition;
             leftPunchTravel=rightPunchTravel=0;
             var point=ScreenPoint(hud.Attack);
             Pointer(point,true);yield return null;
             var end=Time.time+settings.PunchDuration;
             while(Time.time<end)
             {
-                leftPunchTravel=Mathf.Max(leftPunchTravel,Vector3.Distance(left,player.Avatar.LeftHand.localPosition));
-                rightPunchTravel=Mathf.Max(rightPunchTravel,Vector3.Distance(right,player.Avatar.RightHand.localPosition));
+                leftPunchTravel=Mathf.Max(leftPunchTravel,Vector3.Distance(left,player.Avatar.Facing.LeftHand.localPosition));
+                rightPunchTravel=Mathf.Max(rightPunchTravel,Vector3.Distance(right,player.Avatar.Facing.RightHand.localPosition));
                 yield return null;
             }
             Pointer(point,false);yield return null;
@@ -205,13 +207,13 @@ namespace Wildfolk.Tests
             stone=Resource("stone",-13.5f,-2.1f);
             PositionPlayer(new Vector2(-13.5f,-4.1f));yield return new WaitForFixedUpdate();yield return null;
             yield return DestroyNode(stone);yield return Collect("stone",6);
-            Assert.That(inventory.Model.GetSlot(1).Count,Is.EqualTo(6));
+            Assert.That(inventory.Model.GetSlot(3).Count,Is.EqualTo(6));
             var panel=Object.FindFirstObjectByType<InventoryPanel>();
             yield return Click(hud.InventoryButton);
-            Assert.That(panel.Slots[0].Count.text,Is.EqualTo("3"));Assert.That(panel.Slots[1].Count.text,Is.EqualTo("6"));
-            yield return Click(panel.Slots[1].GetComponent<Button>());
+            Assert.That(panel.Slots[2].Count.text,Is.EqualTo("3"));Assert.That(panel.Slots[3].Count.text,Is.EqualTo("6"));
+            yield return Click(panel.Slots[3].GetComponent<Button>());
             Assert.That(panel.SelectedName.text,Is.EqualTo("Stone"));
-            Assert.That(panel.Slots[1].Selection.enabled,Is.True);
+            Assert.That(panel.Slots[3].Selection.enabled,Is.True);
             yield return Click(hud.InventoryButton);
         }
 
@@ -266,6 +268,83 @@ namespace Wildfolk.Tests
             Assert.That(session.State,Is.EqualTo(SessionState.Running));
             Assert.That(session.PlayerHealth.Current,Is.EqualTo(session.PlayerHealth.Maximum));
             Assert.That(Time.timeScale,Is.EqualTo(1));
+            var restarted=Object.FindFirstObjectByType<PlayerEquipment>();
+            Assert.That(restarted.Inventory.Model.GetSlot(0).Item.Id,Is.EqualTo("axe"));
+            Assert.That(restarted.Inventory.Model.GetSlot(1).Item.Id,Is.EqualTo("pickaxe"));
+            Assert.That(restarted.ActiveTool,Is.SameAs(restarted.Inventory.SelectedStack.Item.Tool));
+        }
+
+        [UnityTest] public IEnumerator FacingMovesEyesAndHandsWithoutRotatingBodyAndKeepsLastDirection()
+        {
+            var facing=player.Avatar.Facing;
+            var rotation=player.Avatar.Body.localRotation;
+            foreach(var direction in new[]{Vector2.up,Vector2.right,Vector2.down,Vector2.left,new Vector2(-1,-1).normalized})
+            {
+                facing.Face(direction);yield return new WaitForSeconds(.22f);
+                var eyes=(facing.LeftEye.localPosition+facing.RightEye.localPosition)*.5f;
+                var hands=(facing.LeftHand.localPosition+facing.RightHand.localPosition)*.5f;
+                Assert.That(Vector2.Dot(((Vector2)eyes).normalized,direction),Is.GreaterThan(.99f));
+                Assert.That(Vector2.Dot(((Vector2)hands).normalized,direction),Is.GreaterThan(.99f));
+                Assert.That(player.Avatar.Body.localRotation,Is.EqualTo(rotation));
+                Assert.That(Vector2.Distance(facing.LeftHand.localPosition,facing.RightHand.localPosition),Is.EqualTo(facing.HandSeparation*2).Within(.01f));
+            }
+            var last=facing.Direction;facing.Face(Vector2.zero);yield return null;
+            Assert.That(facing.Direction,Is.EqualTo(last));
+        }
+
+        private IEnumerator UseToolOnce()
+        {
+            var tool=player.GetComponent<PlayerEquipment>().ActiveTool;
+            var point=ScreenPoint(hud.Attack);
+            var rest=player.Avatar.Facing.RightHand.localRotation;
+            var maxArc=0f;
+            Pointer(point,true);yield return null;
+            var end=Time.time+tool.Duration+.03f;
+            while(Time.time<end)
+            {
+                maxArc=Mathf.Max(maxArc,Quaternion.Angle(rest,player.Avatar.Facing.RightHand.localRotation));
+                yield return null;
+            }
+            Pointer(point,false);yield return null;
+            Assert.That(maxArc,Is.GreaterThan(20));
+            yield return new WaitForSeconds(tool.Cooldown);
+        }
+
+        [UnityTest] public IEnumerator HotbarInventoryAndToolsShareRealSlotsAndApplyResourceEfficiencies()
+        {
+            var bar=Object.FindFirstObjectByType<HotbarView>();
+            var equipment=player.GetComponent<PlayerEquipment>();
+            var panel=Object.FindFirstObjectByType<InventoryPanel>();
+            Assert.That(bar.Owner,Is.SameAs(inventory));Assert.That(panel.Owner,Is.SameAs(inventory));
+            Assert.That(Total("axe"),Is.EqualTo(1));Assert.That(Total("pickaxe"),Is.EqualTo(1));
+            yield return Click(bar.Slots[0].GetComponent<Button>());
+            Assert.That(inventory.SelectedIndex,Is.Zero);Assert.That(bar.Slots[0].Selection.enabled,Is.True);
+            Assert.That(equipment.HeldVisual.enabled,Is.True);Assert.That(equipment.HeldVisual.sprite,Is.SameAs(equipment.ActiveTool.HeldSprite));
+            var tree=Resource("wood",-3,1.8f);PositionPlayer(new Vector2(-3,-.2f));
+            player.Avatar.Facing.Face(Vector2.up);yield return new WaitForSeconds(.3f);
+            yield return UseToolOnce();Assert.That(tree==null,Is.True,"Axe must harvest this tree in one use.");
+            yield return Collect("wood",3);
+            Assert.That(bar.Slots[2].Count.text,Is.EqualTo("3"));
+            Assert.That(bar.Slots[2].Icon.sprite,Is.SameAs(inventory.Model.GetSlot(2).Item.Icon));
+            var stone=Resource("stone",-6.5f,1.5f);PositionPlayer(new Vector2(-6.5f,-.4f));
+            player.Avatar.Facing.Face(Vector2.up);yield return new WaitForSeconds(.3f);
+            yield return UseToolOnce();Assert.That(stone.Health.Current,Is.EqualTo(45),"Axe is inefficient on stone.");
+            yield return Click(hud.InventoryButton);yield return Click(panel.Slots[1].GetComponent<Button>());
+            Assert.That(inventory.SelectedIndex,Is.EqualTo(1));Assert.That(bar.Slots[1].Selection.enabled,Is.True);
+            Assert.That(panel.SelectedName.text,Is.EqualTo("Pickaxe"));Assert.That(panel.SelectedCategory.text,Is.EqualTo("Tool"));
+            yield return Click(hud.InventoryButton);
+            Assert.That(equipment.HeldVisual.sprite,Is.SameAs(inventory.Model.GetSlot(1).Item.Tool.HeldSprite));
+            yield return UseToolOnce();Assert.That(stone.Health.Current,Is.EqualTo(20));
+            yield return UseToolOnce();Assert.That(stone==null,Is.True);yield return Collect("stone",3);
+            yield return Click(bar.Slots[2].GetComponent<Button>());
+            Assert.That(equipment.HeldVisual.enabled,Is.False,"Selecting a material restores bare hands.");
+            yield return Click(bar.Slots[8].GetComponent<Button>());
+            Assert.That(equipment.ActiveTool,Is.Null);Assert.That(bar.Slots[8].Selection.enabled,Is.True);
+            yield return Click(bar.Slots[1].GetComponent<Button>());
+            tree=Resource("wood",-10.1f,3.5f);PositionPlayer((Vector2)tree.transform.position+Vector2.down*2);
+            player.Avatar.Facing.Face(Vector2.up);yield return new WaitForSeconds(.3f);
+            yield return UseToolOnce();Assert.That(tree.Health.Current,Is.EqualTo(25),"Pickaxe is inefficient on wood.");
+            Assert.That(Object.FindObjectsByType<ParticleSystem>(FindObjectsSortMode.None),Is.Empty);
         }
     }
 }

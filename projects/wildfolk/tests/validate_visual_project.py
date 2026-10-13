@@ -28,6 +28,13 @@ for name in ['Player','Enemy','WorldPickup']:
 for name in ['PlayerVisual','EnemyVisual']:
     check(not (root/f'Assets/Wildfolk/Prefabs/{name}.prefab').exists(),f'Unused visual prefab remains: {name}')
 check(not (root/'Assets/Wildfolk/Art/icon_food.png').exists(),'Unused food icon remains')
+for name in ['player_eye','zombie_eye','zombie_hand','axe','pickaxe']:
+    check((root/f'Assets/Wildfolk/Art/{name}.png').is_file(),f'Missing character/tool art: {name}')
+for name in ['Axe','Pickaxe','AxeTool','PickaxeTool','StartingEquipment']:
+    check((root/f'Assets/Wildfolk/Data/{name}.asset').is_file(),f'Missing tool/loadout definition: {name}')
+check(not (root/'Assets/Wildfolk/Runtime/Combat/FistCombat.cs').exists(),'Replaced fist-only combat remains')
+for name in ['Presentation/CharacterFacing','Player/PlayerEquipment','Combat/PlayerCombat','UI/HotbarView']:
+    check((root/f'Assets/Wildfolk/Runtime/{name}.cs').is_file(),f'Missing shared character/tool runtime: {name}')
 for name in ['VisualPrototypeBuilder','VisualHudBuilder']:
     check(not (root/f'Assets/Wildfolk/Editor/{name}.cs').exists(),f'Replaced builder remains: {name}')
 
