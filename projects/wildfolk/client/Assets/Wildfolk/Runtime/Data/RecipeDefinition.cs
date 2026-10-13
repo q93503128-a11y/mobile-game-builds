@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Wildfolk
 {
-    public enum StationKind { None, Workbench }
+    public enum StationKind { None, Workbench, Campfire }
     [Serializable] public struct ItemAmount
     {
         public ItemDefinition Item;
@@ -18,5 +18,6 @@ namespace Wildfolk
         [Min(1)] public int ResultCount;
         public ItemAmount[] Ingredients;
         public StationKind RequiredStation;
+        [Min(0)] public float CookingSeconds;
     }
 }

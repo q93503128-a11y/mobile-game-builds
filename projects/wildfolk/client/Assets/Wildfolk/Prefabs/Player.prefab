@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 765404324439809981}
   - component: {fileID: 1047555241206377397}
   - component: {fileID: 7080438054753028775}
+  - component: {fileID: 19052881427358656}
   - component: {fileID: 6778675890933867473}
   - component: {fileID: 2551374756638748636}
   - component: {fileID: 7957096156132211969}
@@ -220,6 +221,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.PlayerInventory
   Settings: {fileID: 11400000, guid: fd43ec9cd9385eb4eb69f64792c98535, type: 2}
+--- !u!114 &19052881427358656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 226757985403581487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83043d539198a5a4696218f54f26c7fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.PlayerSurvival
+  Definition: {fileID: 11400000, guid: 1e8dfc02fb8da7d4aa11d53839590cb4, type: 2}
+  Health: {fileID: 3265022589470090829}
+  Session: {fileID: 0}
+  Inventory: {fileID: 7080438054753028775}
 --- !u!114 &6778675890933867473
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -288,6 +305,8 @@ MonoBehaviour:
   Combat: {fileID: 765404324439809981}
   Placement: {fileID: 7957096156132211969}
   Crafting: {fileID: 2551374756638748636}
+  Survival: {fileID: 19052881427358656}
+  Audio: {fileID: 0}
   Session: {fileID: 0}
   Settings: {fileID: 11400000, guid: fd43ec9cd9385eb4eb69f64792c98535, type: 2}
   Facing: {fileID: 3886187564385862800}

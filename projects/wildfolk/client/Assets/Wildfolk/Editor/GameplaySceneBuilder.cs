@@ -27,19 +27,26 @@ namespace Wildfolk.Editor
             var scene=EditorSceneManager.NewScene(NewSceneSetup.EmptyScene,NewSceneMode.Single);
             var session=new GameObject("Game Session").AddComponent<GameplaySession>();
             session.gameObject.AddComponent<WorldPauseController>().Session=session;
-            GameplayActorBuilder.Workbench(assets.Crafting.Workbench);
+            var preferences=session.gameObject.AddComponent<UserPreferences>();
+            var audio=session.gameObject.AddComponent<GameAudio>();audio.Preferences=preferences;
+            audio.Music=new GameObject("Music Channel").AddComponent<AudioSource>();audio.Music.transform.SetParent(session.transform);audio.Music.playOnAwake=false;audio.Music.loop=true;
+            audio.Sfx=new GameObject("SFX Channel").AddComponent<AudioSource>();audio.Sfx.transform.SetParent(session.transform);audio.Sfx.playOnAwake=false;
+            audio.ActionClip=AssetDatabase.LoadAssetAtPath<AudioClip>("Assets/Wildfolk/Audio/action.wav");
+            pickup=GameplayActorBuilder.Pickup();
+            GameplayActorBuilder.Facility(assets.Crafting.Workbench,pickup,assets.Settings);
+            GameplayActorBuilder.Facility(assets.Survival.Campfire,pickup,assets.Settings);
             var actors=new GameObject("Actors").transform;
             var playerObject=GameplayActorBuilder.Player(actors,assets);
             player=playerObject.GetComponent<PlayerInventory>();
             var motor=playerObject.GetComponent<PlayerMotor>();motor.Session=session;
             var combat=playerObject.GetComponent<PlayerCombat>();combat.Session=session;
-            playerObject.GetComponent<PlayerAction>().Session=session;
+            playerObject.GetComponent<PlayerAction>().Session=session;playerObject.GetComponent<PlayerAction>().Audio=audio;
+            playerObject.GetComponent<PlayerSurvival>().Session=session;
             playerObject.GetComponent<PlayerPlacement>().Session=session;
             playerObject.GetComponent<PlayerCrafting>().Session=session;
             session.PlayerHealth=playerObject.GetComponent<Health>();
             var enemyObject=GameplayActorBuilder.Enemy(actors,assets);
             var enemy=enemyObject.GetComponent<EnemyController>();enemy.Session=session;enemy.PlayerHealth=session.PlayerHealth;
-            pickup=GameplayActorBuilder.Pickup();
             var camera=new GameObject("Main Camera",typeof(Camera),typeof(AudioListener)).GetComponent<Camera>();
             camera.tag="MainCamera";camera.transform.position=new Vector3(0,-.35f,-10);
             camera.orthographic=true;camera.orthographicSize=9;camera.clearFlags=CameraClearFlags.SolidColor;
@@ -68,6 +75,7 @@ namespace Wildfolk.Editor
                 var type=i%4==0 ? "fern" : "grass";
                 Sprite(type=="fern" ? "Fern" : "Grass Tuft",type,scenery,new Vector2(x,y),.42f+(float)random.NextDouble()*.25f,100-Mathf.RoundToInt(y*20));
             }
+            SurvivalWorldBuilder.Build(assets,scenery,player,pickup);
             GameplayHudBuilder.Build(assets,session,motor,player);
             RecordInstance(playerObject);RecordInstance(enemyObject);
             PlayerSettings.productName="Wildfolk";PlayerSettings.defaultScreenWidth=1920;PlayerSettings.defaultScreenHeight=1080;

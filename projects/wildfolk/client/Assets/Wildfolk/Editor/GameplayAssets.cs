@@ -13,6 +13,7 @@ namespace Wildfolk.Editor
         internal ResourceDefinition Tree;
         internal ResourceDefinition Stone;
         internal CraftingAssets Crafting;
+        internal SurvivalAssets Survival;
         internal InputActionAsset UIActions;
         internal InputActionReference Point;
         internal InputActionReference Click;
@@ -47,7 +48,8 @@ namespace Wildfolk.Editor
             var pickaxeTool=Tool("PickaxeTool","pickaxe",.52f,.72f,55,.5f,2.5f);
             var axe=ToolItem("Axe","axe","Wood Axe",axeTool);
             var pickaxe=ToolItem("Pickaxe","pickaxe","Wood Pickaxe",pickaxeTool);
-            assets.Crafting=CraftingAssets.Load(wood,axe,pickaxe);
+            assets.Survival=SurvivalAssets.Load(wood,stone);
+            assets.Crafting=CraftingAssets.Load(wood,axe,pickaxe,assets.Survival);
             assets.LoadInput();
             AssetDatabase.SaveAssets();
             return assets;

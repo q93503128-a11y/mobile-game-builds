@@ -1,20 +1,20 @@
 using UnityEngine;
-
 namespace Wildfolk
 {
     public sealed class WorldPauseController : MonoBehaviour
     {
         public GameplaySession Session;
-        public bool FreezeWorldForPause = true;
-        public bool FreezeWorldForDefeat = true;
+        private bool ownsFreeze;
         private void OnEnable() => Session.StateChanged += Refresh;
         private void Start() => Refresh();
-        private void OnDisable() { Session.StateChanged -= Refresh; Time.timeScale = 1; }
+        private void OnDisable() { Session.StateChanged -= Refresh; Release(); }
+        private void Release() { if (ownsFreeze) Time.timeScale = 1; ownsFreeze = false; }
         private void Refresh()
         {
-            var freeze = (FreezeWorldForPause && Session.State == SessionState.Paused) ||
-                (FreezeWorldForDefeat && Session.State == SessionState.Defeated);
-            Time.timeScale = freeze ? 0 : 1;
+            if (Session.Mode == SessionMode.Multiplayer) { Release(); return; }
+            var freeze = Session.State == SessionState.Paused || Session.State == SessionState.Defeated;
+            if (freeze) { Time.timeScale = 0; ownsFreeze = true; }
+            else Release();
         }
     }
 }

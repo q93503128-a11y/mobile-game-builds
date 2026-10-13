@@ -37,27 +37,31 @@ namespace Wildfolk.Editor
             var combat=root.gameObject.AddComponent<PlayerCombat>();combat.Settings=assets.Settings;combat.Avatar=avatar;combat.OwnHealth=health;
             var motor=root.gameObject.AddComponent<PlayerMotor>();motor.Settings=assets.Settings;motor.Avatar=avatar;motor.Combat=combat;avatar.Motor=motor;
             var inventory=root.gameObject.AddComponent<PlayerInventory>();inventory.Settings=assets.Settings;
+            var needs=root.gameObject.AddComponent<PlayerSurvival>();needs.Definition=assets.Survival.Needs;needs.Health=health;needs.Inventory=inventory;
             var equipment=root.gameObject.AddComponent<PlayerEquipment>();equipment.Inventory=inventory;equipment.Combat=combat;equipment.HeldVisual=held;combat.Equipment=equipment;
             var crafting=root.gameObject.AddComponent<PlayerCrafting>();crafting.Inventory=inventory;crafting.Catalog=assets.Crafting.Catalog;crafting.Settings=assets.Settings;
             var placement=root.gameObject.AddComponent<PlayerPlacement>();placement.Equipment=equipment;placement.Inventory=inventory;placement.Settings=assets.Settings;placement.Facing=facing;
-            var action=root.gameObject.AddComponent<PlayerAction>();action.Equipment=equipment;action.Combat=combat;action.Placement=placement;action.Crafting=crafting;action.Settings=assets.Settings;action.Facing=facing;
+            var action=root.gameObject.AddComponent<PlayerAction>();action.Equipment=equipment;action.Combat=combat;action.Placement=placement;action.Crafting=crafting;action.Settings=assets.Settings;action.Facing=facing;action.Survival=needs;
             HealthBar(health,1.35f,true,1.65f);
             Feedback(health,reaction,HitReaction.Creature);
             return SavePrefab(root,"Player");
         }
 
-        internal static void Workbench(PlaceableDefinition definition)
+        internal static void Facility(PlaceableDefinition definition,WorldPickup pickup,GameplaySettings settings)
         {
-            var root=Group("Workbench",null);
+            var name=definition.Item.DisplayName;
+            var root=Group(name,null);
             Shadow(root,2.1f,.62f);
-            var visual=Sprite("Table","workbench",root,Vector2.zero,.8f,0);
+            var visual=Sprite("Facility",definition.Item.Id,root,Vector2.zero,.8f,0);
             var group=root.gameObject.AddComponent<SortingGroup>();root.gameObject.AddComponent<DepthSort>().Visual=group;
             root.gameObject.AddComponent<BoxCollider2D>().size=definition.Footprint;
             var health=root.gameObject.AddComponent<Health>();health.Definition=definition.Vitality;
             var placeable=root.gameObject.AddComponent<WorldPlaceable>();placeable.Definition=definition;placeable.Health=health;placeable.Visual=visual;
             var station=root.gameObject.AddComponent<CraftingStation>();station.Definition=definition;station.Health=health;
+            if(definition.Station==StationKind.Campfire)
+            {var cooking=root.gameObject.AddComponent<StationCooking>();cooking.Station=station;cooking.RecoveryPickup=pickup;cooking.Settings=settings;}
             Feedback(health,visual.transform,HitReaction.Tree);HealthBar(health,1.0f,false);
-            var prefab=PrefabUtility.SaveAsPrefabAsset(root.gameObject,"Assets/Wildfolk/Prefabs/Workbench.prefab");
+            var prefab=PrefabUtility.SaveAsPrefabAsset(root.gameObject,"Assets/Wildfolk/Prefabs/"+name+".prefab");
             definition.Prefab=prefab.GetComponent<WorldPlaceable>();EditorUtility.SetDirty(definition);
             Object.DestroyImmediate(root.gameObject);
         }

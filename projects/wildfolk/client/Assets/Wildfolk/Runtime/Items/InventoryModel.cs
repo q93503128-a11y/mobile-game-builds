@@ -74,6 +74,18 @@ namespace Wildfolk
             Validate(output, count);
             if (costs == null) throw new ArgumentNullException(nameof(costs));
             next = (ItemStack[])slots.Clone();
+            if (!RemoveCosts(next,costs)) return ExchangeResult.MissingMaterials;
+            return AddTo(next, output, count) == count ? ExchangeResult.Success : ExchangeResult.NoSpace;
+        }
+        public bool TryConsumeCosts(ItemAmount[] costs)
+        {
+            if(costs==null) throw new ArgumentNullException(nameof(costs));
+            var next=(ItemStack[])slots.Clone();
+            if(!RemoveCosts(next,costs)) return false;
+            Array.Copy(next,slots,slots.Length);Changed?.Invoke();return true;
+        }
+        private static bool RemoveCosts(ItemStack[] next,ItemAmount[] costs)
+        {
             foreach (var cost in costs)
             {
                 Validate(cost.Item, cost.Count);
@@ -86,9 +98,9 @@ namespace Wildfolk
                     remaining -= consumed;
                     next[i] = slot.Count == consumed ? default : new ItemStack(slot.Item, slot.Count - consumed);
                 }
-                if (remaining > 0) return ExchangeResult.MissingMaterials;
+                if (remaining > 0) return false;
             }
-            return AddTo(next, output, count) == count ? ExchangeResult.Success : ExchangeResult.NoSpace;
+            return true;
         }
         private static int AddTo(ItemStack[] target, ItemDefinition item, int count)
         {

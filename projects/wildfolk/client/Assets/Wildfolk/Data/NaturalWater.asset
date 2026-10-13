@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5717fd43bc98ad04a91f447a1aaf7c1b, type: 3}
+  m_Name: NaturalWater
+  m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.WaterSourceDefinition
+  Water: {fileID: 11400000, guid: 4562aee192638584992a771c4c2cbfcc, type: 2}
+  InteractionRange: 3
+  CollectionCooldown: 1
+  PortionCount: 1

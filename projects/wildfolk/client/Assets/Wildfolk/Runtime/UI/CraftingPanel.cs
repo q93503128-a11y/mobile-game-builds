@@ -27,10 +27,10 @@ namespace Wildfolk
         private void Refresh()
         {
             var station=Owner.AvailableStation;
-            Title.text=station==StationKind.None ? "Hand crafting" : "Workbench";
+            Title.text=station==StationKind.None ? "Hand crafting" : station==StationKind.Campfire ? "Campfire cooking" : "Workbench";
             foreach(var card in Cards)
             {
-                var available=card.Recipe.RequiredStation==StationKind.None || card.Recipe.RequiredStation==station;
+                var available=card.Recipe.RequiredStation==station;
                 card.gameObject.SetActive(available);
                 if(available) card.Refresh();
             }

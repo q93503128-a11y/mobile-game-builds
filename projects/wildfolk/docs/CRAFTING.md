@@ -1,32 +1,24 @@
-# 제작과 작업대
+# 제작·시설·조리
 
-RecipeDefinition/RecipeCatalog가 ID, 결과 아이템/수량, ItemAmount 재료 목록, StationKind 요구를 보유한다. 제작 가능 여부는 현재 인벤토리/시설로 계산하며 UI에 레시피를 하드코딩하지 않는다. 실제 시설 종류는 None/Workbench만 있다.
+RecipeDefinition/Catalog가 재료·결과·StationKind·CookingSeconds의 정본이다. UI는 시설에 해당하는 레시피만 표시한다. 기본 가방은 Hand, 가까운 시설 Use는 Workbench 또는 Campfire다.
 
-| 레시피 ID | 시설 | 비용 | 결과 |
+| 레시피 | 시설 | 비용 | 결과·시간 |
 |---|---|---|---|
-| workbench | None (Hand crafting) | Wood 6 | Workbench 1 |
-| axe | Workbench | Wood 5 | Wood Axe 1 |
-| pickaxe | Workbench | Wood 5 | Wood Pickaxe 1 |
-| wood_sword | Workbench | Wood 5 | Wood Sword 1 |
+| workbench | None | Wood6 | Workbench1 즉시 |
+| campfire | None | Wood4 + Stone3 | Campfire1 즉시 |
+| axe | Workbench | Wood5 | Wood Axe1 즉시 |
+| pickaxe | Workbench | Wood5 | Wood Pickaxe1 즉시 |
+| wood_sword | Workbench | Wood5 | Wood Sword1 즉시 |
+| cooked_meat | Campfire | Raw Meat1 | Cooked Meat1, 5초 |
 
-Axe/Pickaxe 기존 아이템 ID/정의/효율 프로필을 재사용했다. Wood Sword만 새 무기이며 Workbench는 Placeable이다. None 레시피는 작업대에서도 사용할 수 있다. 기본 가방에서는 Workbench 레시피만 표시한다.
+PlayerCrafting은 공통 CraftingStation.CanInteract(살아 있음/중심 2.6유닛)을 검사한다. Action 대상은 앞 방향 dot≥0.35도 확인한다. 멀어지거나 시설이 제거되면 Hand로 돌아간다. None 레시피의 데이터상 자격은 시설 불필요지만 작업대 UI는 도구/검만 보여준다.
 
-## 제작 안전성
+즉시 제작은 InventoryModel.TryExchange로 비용/결과를 한 번에 확정한다. 부족한 재료/공간/시설이면 변경하지 않는다. Timed recipe는 StationCooking에 한 작업만 보관한다. 시작 시 TryConsumeCosts가 재료를 먼저 원자적으로 소비하고, scaled time으로 진행한 뒤 Take로 결과를 가져온다. 인벤토리를 닫거나 멀어져도 진행/결과는 시설에 남으며 다시 접근해 수령한다. 공간 부족이면 Inventory full로 알려주고 결과를 보존한다. 시설 파괴 시 조리 중 원재료 또는 완성 결과를 공통 WorldPickup으로 드랍한다.
 
-PlayerCrafting이 시설 자격을 확인하고 InventoryModel.TryExchange가 재료 소비/결과 추가를 원자적으로 처리한다. 부족한 재료/공간/시설이면 실패하며 재료가 사라지지 않는다. 결과가 Storage에 들어가도 즉시 표시하고 Drag로 Hotbar에 옮길 수 있다. 공간 부족이면 Craft를 비활성화하고 Inventory full을 표시한다. 부족한 재료는 보유량/필요량과 색으로 알린다.
+입력/결과 아이콘·이름·재료·Cook/Take·남은 초·진행 게이지를 기존 RecipeCardView에 표시한다. 손/작업대/모닥불의 별도 중복 인벤토리나 건축 시스템은 없다.
 
-## 설치
+ItemDefinition.Placement→PlaceableDefinition→WorldPlaceable prefab과 기존 PlayerPlacement를 재사용한다. Preview 2.1/최대2.8유닛, Collider/Footprint/필드 경계 검사 후 선택 슬롯1개만 소비한다. Workbench 1.8×1.15, Campfire1.5×1.15 Footprint, 각 HP60/스택10이다. 설치/수집/섭취/시설 Use는 단일 입력이고 공격만 반복한다.
 
-ItemDefinition.Placement → PlaceableDefinition → Workbench.prefab을 사용한다. PlayerPlacement가 마지막 Facing 앞쪽 Preview를 표시하고 Collider/Footprint/월드 경계/최대 거리를 검사한다. PlayerAction이 공격 대신 배치를 선택하며 단일 사용으로 1개를 설치한다. 계속 누른다고 자동으로 여러 작업대를 설치하지 않는다.
+Raw Meat는 한 중립 멧돼지에서 2개 나온다. Zombie 드랍/개발자 지급 버튼은 없다. 물은 재사용 수원에서 한 회분씩 얻는다. 소비품이 선택되어 있으면 섭취가 시설/물 상호작용보다 우선이므로 빈 슬롯/도구를 선택해 시설을 연다.
 
-현재 값: Preview 거리 2.1, 최대 2.8유닛, Footprint 1.8×1.15유닛, 최대 스택 10, 설치물 HP 60. 설치 후 아이템이 남아 있으면 계속 배치 선택 상태고 마지막 1개였다면 선택 슬롯이 비어 맨손으로 돌아간다.
-
-## 시설 접근
-
-시설 중심 2.6유닛 이내, 살아 있는 작업대를 바라보면 사용 버튼이 상호작용 아이콘으로 바뀐다. 바라보기는 현재 Facing과 대상 방향 dot ≥ 0.35다. CraftingStation.CanInteract의 중심 거리/Health 판정을 표시와 제작 권한이 공유한다. Collider 표면이 원형 검색 범위에 걸쳤다는 이유만으로 상호작용을 허용하지 않는다.
-
-멀어지거나 시설이 제거되면 Hand crafting으로 전환하고 작업대 레시피를 사용할 수 없다. Inventory UI가 떠 있어도 월드가 계속 진행한다. Workbench는 WorldPlaceable/공통 Health/Collider/그림자/피격 반응을 가진다. 회수·수리·철거 UX와 Hammer/Wrench는 구현하지 않았다.
-
-## 범위
-
-새 게임의 StartingLoadout을 제거했다. 기본 진행은 맨손 채집 → Wood 6 → Workbench → Wood 각 5 → 도구/검이다. 시설/재료 타입을 데이터로 구분하며 미래 시설/요리/생존 수치/금속 티어를 이번에 생성하지 않았다.
+Furnace/고급 작업대/포탑/복잡한 조리 Queue/용기/정수/설치물 회수·수리/무한 식량 공급은 없다.

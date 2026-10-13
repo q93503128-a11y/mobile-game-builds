@@ -7,7 +7,7 @@ namespace Wildfolk.Editor
         internal RecipeCatalog Catalog;
         internal PlaceableDefinition Workbench;
 
-        internal static CraftingAssets Load(ItemDefinition wood,ItemDefinition axe,ItemDefinition pickaxe)
+        internal static CraftingAssets Load(ItemDefinition wood,ItemDefinition axe,ItemDefinition pickaxe,SurvivalAssets survival)
         {
             var assets=new CraftingAssets();
             var vitality=GameplayAssets.Asset<VitalityDefinition>("WorkbenchVitality",v=>v.MaximumHealth=60);
@@ -24,7 +24,7 @@ namespace Wildfolk.Editor
             var axeRecipe=Recipe("AxeRecipe","axe",axe,wood,5,StationKind.Workbench);
             var pickRecipe=Recipe("PickaxeRecipe","pickaxe",pickaxe,wood,5,StationKind.Workbench);
             var swordRecipe=Recipe("WoodSwordRecipe","wood_sword",sword,wood,5,StationKind.Workbench);
-            assets.Catalog=GameplayAssets.Asset<RecipeCatalog>("Recipes",c=>c.Recipes=new[]{hand,axeRecipe,pickRecipe,swordRecipe});
+            assets.Catalog=GameplayAssets.Asset<RecipeCatalog>("Recipes",c=>c.Recipes=new[]{hand,survival.FireRecipe,axeRecipe,pickRecipe,swordRecipe,survival.CookingRecipe});
             return assets;
         }
         private static RecipeDefinition Recipe(string name,string id,ItemDefinition result,ItemDefinition wood,int cost,StationKind station)

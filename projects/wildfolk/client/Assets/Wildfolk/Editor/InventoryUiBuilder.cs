@@ -66,9 +66,15 @@ namespace Wildfolk.Editor
                 view.Icon=Image("Result",card.transform,"white",new Vector2(.5f,.5f),new Vector2(-148,22),new Vector2(64,64));view.Icon.preserveAspect=true;
                 view.Name=Text("Name",card.transform,string.Empty,new Vector2(46,33),new Vector2(254,38),24,TextAnchor.MiddleLeft);
                 view.Materials=Text("Materials",card.transform,string.Empty,new Vector2(-12,-6),new Vector2(350,32),21,TextAnchor.MiddleLeft);
+                view.InputIcon=Image("Ingredient",card.transform,"white",new Vector2(.5f,.5f),new Vector2(-168,-25),new Vector2(28,28));view.InputIcon.preserveAspect=true;
+                if(view.Recipe.CookingSeconds>0) {((RectTransform)view.Materials.transform).anchoredPosition=new Vector2(28,-15);((RectTransform)view.Materials.transform).sizeDelta=new Vector2(286,28);view.Materials.fontSize=18;}
+                view.InputIcon.gameObject.SetActive(false);
                 view.Status=Text("Availability",card.transform,string.Empty,new Vector2(-59,-44),new Vector2(240,28),18,TextAnchor.MiddleLeft);
                 var craft=Image("Craft",card.transform,"panel",new Vector2(.5f,.5f),new Vector2(121,-38),new Vector2(130,48),true);
-                Text("Label",craft.transform,"Craft",Vector2.zero,new Vector2(118,40),23);
+                view.ButtonLabel=Text("Label",craft.transform,"Craft",Vector2.zero,new Vector2(118,40),23);
+                view.Progress=Image("Progress",card.transform,"white",new Vector2(.5f,.5f),new Vector2(-61,-62),new Vector2(242,4));
+                view.Progress.type=UnityEngine.UI.Image.Type.Filled;view.Progress.fillMethod=UnityEngine.UI.Image.FillMethod.Horizontal;view.Progress.color=new Color32(194,153,88,255);
+                view.Progress.gameObject.SetActive(false);
                 view.CraftButton=Button(craft);UnityEventTools.AddPersistentListener(view.CraftButton.onClick,view.Craft);
                 panel.Cards[i]=view;
             }

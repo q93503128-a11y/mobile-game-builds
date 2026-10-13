@@ -30,13 +30,17 @@ namespace Wildfolk.Editor
             BuildBoss(safe);
             InventoryUiBuilder.Build(root,safe,session,inventory,motor.GetComponent<PlayerCrafting>(),assets.Settings.InventorySlots);
             var defeat=BuildDefeat(safe,session);
-            var pause=BuildPause(safe,session);
+            var pause=SurvivalUiBuilder.Pause(safe,session);
+            SurvivalUiBuilder.Hud(safe,motor.GetComponent<PlayerSurvival>());
             var backpack=Image("Inventory",safe,"panel",new Vector2(.5f,0),new Vector2(-459,102),new Vector2(94,94),true);
             Image("Backpack",backpack.transform,"icon_inventory",new Vector2(.5f,.5f),Vector2.zero,new Vector2(62,62));
             var inventoryButton=Button(backpack);UnityEventTools.AddPersistentListener(inventoryButton.onClick,session.ToggleInventory);
             var pauseImage=Image("Pause",safe,"panel",new Vector2(1,1),new Vector2(-72,-66),new Vector2(76,76),true);
             Image("Icon",pauseImage.transform,"icon_pause",new Vector2(.5f,.5f),Vector2.zero,new Vector2(38,42));
             var pauseButton=Button(pauseImage);UnityEventTools.AddPersistentListener(pauseButton.onClick,session.OpenPause);
+            var sizes=root.AddComponent<ControlSizeLayout>();sizes.Preferences=session.GetComponent<UserPreferences>();sizes.Session=session;
+            sizes.Joystick=(RectTransform)joystickImage.transform;sizes.Action=(RectTransform)attackImage.transform;
+            sizes.Hotbar=(RectTransform)controls.Find("Hotbar");sizes.InventoryButton=(RectTransform)backpack.transform;
             var hud=root.AddComponent<GameplayHud>();hud.Session=session;hud.Joystick=joystick;hud.Attack=attack;hud.Controls=controlsGroup;
             hud.InventoryButton=inventoryButton;hud.PauseButton=pauseButton;hud.PausePanel=pause;hud.DefeatPanel=defeat;
             var eventSystem=new GameObject("EventSystem",typeof(EventSystem),typeof(InputSystemUIInputModule));eventSystem.GetComponent<EventSystem>().sendNavigationEvents=false;
@@ -67,13 +71,6 @@ namespace Wildfolk.Editor
             Text("Title",panel.transform,"You have fallen",new Vector2(0,60),new Vector2(430,60),36);
             var restart=Image("Restart",panel.transform,"panel",new Vector2(.5f,.5f),new Vector2(0,-55),new Vector2(240,72),true);Text("Label",restart.transform,"Try again",Vector2.zero,new Vector2(220,62),27);
             UnityEventTools.AddPersistentListener(Button(restart).onClick,session.Restart);scrim.gameObject.SetActive(false);return scrim.gameObject;
-        }
-        private static GameObject BuildPause(Transform safe,GameplaySession session)
-        {
-            var scrim=Scrim("Pause Overlay",safe);var panel=Image("Pause Panel",scrim.transform,"panel",new Vector2(.5f,.5f),Vector2.zero,new Vector2(440,260),true);
-            Text("Title",panel.transform,"Paused",new Vector2(0,57),new Vector2(380,58),34);
-            var resume=Image("Continue",panel.transform,"panel",new Vector2(.5f,.5f),new Vector2(0,-48),new Vector2(244,74),true);Text("Label",resume.transform,"Continue",Vector2.zero,new Vector2(224,64),27);
-            UnityEventTools.AddPersistentListener(Button(resume).onClick,session.Resume);scrim.gameObject.SetActive(false);return scrim.gameObject;
         }
     }
 }

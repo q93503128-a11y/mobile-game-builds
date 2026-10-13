@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Wildfolk
 {
-    public enum ResourceKind { Wood, Stone }
+    public enum ResourceKind { Wood, Stone, Meat }
     [Serializable] public struct ResourceEfficiency
     {
         public ResourceKind Kind;

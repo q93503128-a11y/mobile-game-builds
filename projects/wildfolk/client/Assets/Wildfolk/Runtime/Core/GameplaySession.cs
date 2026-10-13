@@ -4,14 +4,16 @@ using UnityEngine.SceneManagement;
 
 namespace Wildfolk
 {
+    public enum SessionMode { Singleplayer, Multiplayer }
     public enum SessionState { Running, Inventory, Paused, Defeated }
 
     public sealed class GameplaySession : MonoBehaviour
     {
         public Health PlayerHealth;
+        public SessionMode Mode = SessionMode.Singleplayer;
         public SessionState State { get; private set; }
         public bool IsRunning => State == SessionState.Running;
-        public bool WorldIsRunning => State != SessionState.Defeated && Time.timeScale > 0;
+        public bool WorldIsRunning => (Mode == SessionMode.Multiplayer || State != SessionState.Defeated) && Time.timeScale > 0;
         public event Action StateChanged;
 
         private void Awake() => State = SessionState.Running;

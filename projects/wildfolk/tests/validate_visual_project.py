@@ -23,14 +23,14 @@ check('WildfolkVisual' not in build,'Replaced visual scene still enabled')
 check('SampleScene' not in build,'Replaced sample scene is still enabled')
 manifest=json.loads((root/'Packages/manifest.json').read_text())
 check(manifest['dependencies'].get('com.unity.render-pipelines.universal')=='17.3.0','Unexpected URP version')
-for name in ['Player','Enemy','WorldPickup','Workbench']:
+for name in ['Player','Enemy','WorldPickup','Workbench','Campfire','WaterSource','Boar']:
     check((root/f'Assets/Wildfolk/Prefabs/{name}.prefab').is_file(),f'Missing playable prefab: {name}')
 for name in ['PlayerVisual','EnemyVisual']:
     check(not (root/f'Assets/Wildfolk/Prefabs/{name}.prefab').exists(),f'Unused visual prefab remains: {name}')
 check(not (root/'Assets/Wildfolk/Art/icon_food.png').exists(),'Unused food icon remains')
-for name in ['player_eye','zombie_eye','zombie_hand','axe','pickaxe','wood_sword','workbench','icon_pause']:
+for name in ['player_eye','zombie_eye','zombie_hand','axe','pickaxe','wood_sword','workbench','icon_pause','raw_meat','cooked_meat','water','pond','campfire','boar']:
     check((root/f'Assets/Wildfolk/Art/{name}.png').is_file(),f'Missing character/tool art: {name}')
-for name in ['Axe','Pickaxe','AxeTool','PickaxeTool','WoodSword','WoodSwordTool','Workbench','WorkbenchPlacement','Recipes','WorkbenchRecipe','AxeRecipe','PickaxeRecipe','WoodSwordRecipe']:
+for name in ['Axe','Pickaxe','AxeTool','PickaxeTool','WoodSword','WoodSwordTool','Workbench','WorkbenchPlacement','Recipes','WorkbenchRecipe','AxeRecipe','PickaxeRecipe','WoodSwordRecipe','Campfire','CampfirePlacement','CampfireRecipe','RawMeat','CookedMeat','Water','Survival','NaturalWater','CookedMeatRecipe']:
     check((root/f'Assets/Wildfolk/Data/{name}.asset').is_file(),f'Missing item/crafting definition: {name}')
 for name in ['Data/StartingEquipment.asset','Runtime/Data/StartingLoadout.cs']:
     check(not (root/f'Assets/Wildfolk/{name}').exists(),f'Removed starting loadout remains: {name}')

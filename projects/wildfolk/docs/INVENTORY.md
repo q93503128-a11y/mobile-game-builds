@@ -28,6 +28,10 @@ Add는 수용량을 반환하고 바닥 드랍 잔량을 유지한다. 제작은
 
 Inventory 상태는 플레이어 이동/공격/도구/배치 입력을 차단한다. Time.timeScale을 변경하지 않는다. 적/드랍/월드는 계속 움직이며 공격받을 수 있다.
 
-Pause 상태와 동결 정책을 분리했다. GameplaySession은 UI/입력 상태를 관리하고 WorldPauseController만 현재 싱글플레이 Pause/Defeat 정책에 따라 Time.timeScale을 변경한다. FreezeWorldForPause=false이면 메뉴 상태에서 월드를 동결하지 않는 정책을 사용할 수 있지만 실제 멀티플레이는 없다. Continue는 일반 플레이로 돌아가며 Inventory를 자동 재개하지 않는다.
+Pause 상태와 동결 정책을 분리했다. GameplaySession은 UI/입력 상태를 관리하고 WorldPauseController만 현재 싱글플레이 Pause/Defeat 정책에 따라 Time.timeScale을 변경한다. SessionMode.Multiplayer에서는 Pause와 로컬 Defeat가 전역 동결을 만들지 않는다. 실제 멀티플레이는 없다. Continue는 일반 플레이로 돌아가며 Inventory를 자동 재개하지 않는다.
 
-가방은 Hotbar 왼쪽의 별도 버튼이고 우상단은 Pause다. 없는 Settings/테스트 버튼은 없다.
+가방은 Hotbar 왼쪽의 별도 버튼이고 우상단은 Pause다. Settings는 Pause 메뉴 안에 실제 슬라이더로 제공하며 테스트 버튼은 없다.
+
+소비품은 선택 슬롯에서 Use하여 1개를 줄이며 수치가 이미 Max이면 거부한다. 조리는 TryConsumeCosts가 비용을 원자적으로 시설로 넘기고 완성 후 Take로 결과를 원자적으로 수령한다. 결과 공간이 없으면 시설에 남는다.
+
+가방 바로가기는 일반 플레이에서 Hotbar 왼쪽, 인벤토리가 열린 동안은 패널 바깥 좌하단에 표시하며 다시 눌러 닫을 수 있다.

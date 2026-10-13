@@ -1,8 +1,8 @@
 # Wildfolk
 
-Unity **6000.3.19f1 LTS / Universal 2D**, 모바일 Landscape 탑다운 생존 게임의 극초반 플레이 버전이다. **맨손 채집 → 작업대 제작/설치 → 도구·검 제작 → Hotbar 장착/사용**을 제공한다. 최종 아트나 완성된 생존 게임은 아니다.
+Unity **6000.3.19f1 LTS / Universal 2D**, 모바일 Landscape 탑다운 생존 게임의 극초반 플레이 버전이다. **맨손 채집 → 작업대/도구 → 물과 생존 수치 관리 → 모닥불 조리**을 제공한다. 최종 아트나 완성된 생존 게임은 아니다.
 
-![새 게임](docs/images/survival-start.png)
+![새 게임](docs/images/needs-start.png)
 
 ## 실행과 초반 진행
 
@@ -15,19 +15,27 @@ Unity **6000.3.19f1 LTS / Universal 2D**, 모바일 Landscape 탑다운 생존 �
 
 도끼는 나무, 곡괭이는 돌, 검은 적에 효율적이다. 기존 Axe/Pickaxe 정의를 재사용한다. 빈 슬롯/재료는 맨손이다. 전체 36슬롯(위 Storage 27칸, 아래 Hotbar 9칸)을 공유하며 슬롯 이동/합치기/교환이 가능하다. 같은 아이템은 한도까지만 합치고 잔량을 원래 슬롯에 남긴다.
 
-인벤토리를 열면 **플레이어 입력만 차단하고 월드는 계속 진행**한다. 적이 공격할 수 있다. 우상단 Pause는 별도 Continue 메뉴이며 현재 싱글플레이 정책에서 월드를 정지한다. 사망 후 Try again은 빈 상태의 새 필드다. WASD/Space는 에디터 보조 입력이고 숫자키 선택은 없다.
+인벤토리를 열면 **플레이어 입력만 차단하고 월드는 계속 진행**한다. 적이 공격할 수 있다. 우상단 Pause는 Continue/Settings를 제공한다. Singleplayer는 월드를 정지하고 Multiplayer 정책에서는 로컬 입력만 차단한다. 실제 네트워크는 없다. 사망 후 Try again은 빈 상태의 새 필드다. WASD/Space는 에디터 보조 입력이고 숫자키 선택은 없다.
+
+## 물, 모닥불, 설정
+
+필드 북서쪽 수원 3유닛 이내에서 바라보고 Use하면 Water 1개를 얻는다. 별도 용기 없이 추상화한 물 한 회분이며 오염/정수는 없다. Consumable을 선택했다면 Use는 선택 음식/물 섭취가 우선이다. 물을 더 얻거나 시설을 열 때는 빈 슬롯/도구를 선택한다. 최대 수치에서는 해당 소비품을 쓰지 않는다.
+
+Hand crafting에서 Wood 4 + Stone 3으로 Campfire를 만든 뒤 작업대와 같은 Preview/Use 방식으로 설치한다. 필드의 중립 멧돼지 1마리는 Raw Meat 2개를 드랍한다. 공격/드랍만 있으며 이동 AI·적 공격·재생성은 없다. 모닥불 가까이에서 빈 슬롯/도구를 선택하고 Use → Cook → 5초 후 Take로 Cooked Meat를 얻는다. 가방을 닫아도 조리는 계속되며 결과는 모닥불에 남는다.
+
+Pause → Settings에서 Control Size 80~140%, Master/BGM/SFX를 조절한다. 기본 100/100/65/85%, 로컬 PlayerPrefs 저장이다. BGM 곡은 아직 없지만 Music/SFX AudioSource 채널의 Master 곱 음량은 실제 연결됐다. 성공한 Use에는 자체 제작한 짧은 SFX가 있다.
 
 ## 에디터 도구와 검증
 
 `Wildfolk > View 1920x1080/2400x1080`은 이미 열린 Game View의 해상도만 바꾸며 창을 열거나 포커스를 주지 않는다. Game View 탭이 없다면 먼저 수동으로 연다. `Build Playable Scene`은 기본 씬/프리팹을 재생성하므로 수작업 배치를 보존할 때는 사용하지 않는다. 기존 데이터 에셋은 덮어쓰지 않고 자동 Game View 전환도 하지 않는다.
 
 - Runtime: 입력/전투/인벤토리/제작/설치/세션을 책임별로 분리한다.
-- Data: 실제 아이템 6종, Recipe 4종, None/Workbench 시설 요구와 수치의 단일 정본이다.
+- Data: 실제 아이템 10종, Recipe 6종, None/Workbench/Campfire 시설 요구와 수치의 단일 정본이다.
 - Editor: 아트/데이터/프리팹/씬/UI 생성 도구다.
-- Tests: EditMode 18개, PlayMode 14개 검증. 별도 복사본의 hidden headless Unity에서 실행했다.
-- 문서: DESIGN_BIBLE, INVENTORY, CRAFTING, BALANCE, ARCHITECTURE, SURVIVAL_REVIEW.
+- Tests: 검증 결과는 docs/NEEDS_SETTINGS_REVIEW.md 참고. 별도 복사본의 hidden headless Unity에서 실행했다.
+- 문서: DESIGN_BIBLE, INVENTORY, CRAFTING, BALANCE, ARCHITECTURE, NEEDS_SETTINGS_REVIEW, SURVIVAL_REVIEW(이전 단계).
 - 이전 VISUAL_REVIEW/PLAY_REVIEW/HOTBAR_TOOLS_REVIEW는 당시 상태의 역사 기록이다.
 
 아트 원본은 외부 게임 에셋을 사용하지 않는 `tools/generate_visual_assets.py`이며 Pillow 12.3.0이 필요하다. 소스 검사는 `python tests/validate_visual_project.py client`로 실행한다. Library/Temp/로그/로컬 검증 복사본은 정본에서 제외한다.
 
-실제 모바일 사용감은 사용자가 테스트한다. 협동/저장/새 적/바이옴/절차 월드/고급 시설/생존 수치/회수·수리/계정·상점은 없다.
+실제 모바일 사용감은 사용자가 테스트한다. 협동/저장/새 적/바이옴/절차 월드/고급 시설/회수·수리/계정·상점은 없다.

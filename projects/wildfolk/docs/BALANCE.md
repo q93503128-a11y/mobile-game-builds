@@ -1,6 +1,6 @@
 # 현재 초기 플레이 수치
 
-기준일: 2026-10-13. 단일 정본은 client/Assets/Wildfolk/Data/ 에셋이다. 사용자가 지정한 Recipe 비용과 허용한 초기 수치이며 상대 게임의 수치를 측정/복제하지 않았다. 재미와 세부 밸런스는 사용자 직접 테스트로 판단한다.
+기준일: 2026-10-13. 단일 정본은 client/Assets/Wildfolk/Data/ 에셋이다. 이전 사용자 지정 Recipe 비용과 이번 기능 검증에 허용된 여유 있는 초기 수치이며 상대 게임의 수치를 측정/복제하지 않았다. 재미와 세부 밸런스는 사용자 직접 테스트로 판단한다.
 
 | 항목 | 값 |
 |---|---:|
@@ -46,9 +46,31 @@ AxeTool/PickaxeTool 기존 프로필과 새 WoodSwordTool을 사용하며 Resour
 | Wood Axe | Workbench | Wood 5 |
 | Wood Pickaxe | Workbench | Wood 5 |
 | Wood Sword | Workbench | Wood 5 |
+| Campfire | None | Wood 4 + Stone 3 |
+| Cooked Meat | Campfire | Raw Meat 1, 5초 |
 
 최초 작업대와 세 장비에는 총 Wood 21개(현재 나무 7개 드랍)가 필요하다. 무료 시작 장비를 제거했고 새 게임/재시작은 빈 인벤토리와 맨손이다.
 
 설치 Preview 거리 2.1, 최대 거리 2.8유닛, Footprint 1.8×1.15유닛, Workbench HP 60. 시설 상호작용 중심 거리 2.6유닛, 앞 방향 dot ≥ 0.35다. 겹침/경계/거리 실패는 설치물을 소비하지 않는다. 제작 공간 부족은 재료를 소비하지 않는다.
 
 확률/성장/경제/도구 내구도/수리 비용/회수 규칙은 없다. 이 수치는 출시 밸런스 확정값이 아니다.
+
+## 생존·물·모닥불·설정
+
+| 항목 | 실제 초기값 |
+|---|---:|
+| Hunger / Thirst 최대·시작 | 100 / 100 |
+| Hunger 감소 | 0.08/초 (최대→0 약 20분50초) |
+| Thirst 감소 | 0.12/초 (최대→0 약 13분53초) |
+| 각 0 상태 피해 | 5초마다 HP 2; 둘 다 0이면 HP 4 |
+| Raw Meat / Cooked Meat | Hunger +8 / +35 |
+| Water | Thirst +30 |
+| 소비품 최대 스택 | 20 |
+| 수원 수집 / 재사용 간격 / 중심 거리 | Water 1 / 1초 / 3유닛 |
+| 멧돼지 수 / HP / 드랍 | 1 / 20 / Raw Meat 2 |
+| Campfire HP / 스택 / Footprint | 60 / 10 / 1.5×1.15유닛 |
+| 조리 투입 / 시간 / 결과 | Raw Meat1 / 5초 / Cooked Meat1 |
+| Control Size 범위 / 기본 | 80~140% / 100% |
+| Master / BGM / SFX 기본 | 100 / 65 / 85% |
+
+수치 감소/조리는 scaled time이다. Inventory·Multiplayer 메뉴에서는 진행하고 Singleplayer Pause에서는 정지한다. 각 수치는 0/Max로 제한하며 음식/물은 해당 회복이 필요할 때만 사용한다. 물 획득은 소모품 사용과 별개로 보관 공간이 있으면 가능하다. 멧돼지 재생성과 음식 장기 공급은 없다. Campfire 설치/상호작용 거리·방향은 Workbench와 같다. 초기 생존 시간·회복량·Campfire 비용은 기능 검증을 위한 자체 초기값으로 Mine Survival의 관측 수치가 아니다.

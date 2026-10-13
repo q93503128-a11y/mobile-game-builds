@@ -9,16 +9,31 @@ namespace Wildfolk
         public RecipeDefinition Recipe;
         public PlayerCrafting Crafting;
         public Image Icon;
+        public Image InputIcon;
         public Text Name;
         public Text Materials;
         public Text Status;
         public Button CraftButton;
+        public Text ButtonLabel;
+        public Image Progress;
+        private int previousSeconds=-2;
+        private void Update()
+        {
+            if(Recipe.CookingSeconds<=0) return;
+            var job=Crafting.Cooking;
+            if(job!=null && job.Recipe==Recipe) Progress.fillAmount=job.Progress;
+            var seconds=job!=null && job.Recipe==Recipe ? Mathf.CeilToInt(job.Remaining) : -1;
+            if(seconds==previousSeconds) return;
+            previousSeconds=seconds;Refresh();
+        }
 
         public void Craft() => Crafting.Craft(Recipe);
         public void Refresh()
         {
             Icon.sprite=Recipe.Result.Icon;
-            Name.text=Recipe.Result.DisplayName;
+            Name.text=Recipe.Result.DisplayName+(Recipe.CookingSeconds>0 ? " ×"+Recipe.ResultCount : string.Empty);
+            InputIcon.gameObject.SetActive(Recipe.CookingSeconds>0);
+            if(Recipe.CookingSeconds>0) InputIcon.sprite=Recipe.Ingredients[0].Item.Icon;
             var requirements=new StringBuilder();
             var enough=true;
             foreach(var ingredient in Recipe.Ingredients)
@@ -31,8 +46,19 @@ namespace Wildfolk
             Materials.text=requirements.ToString();
             Materials.color=enough ? new Color32(197,206,155,255) : new Color32(197,135,106,255);
             var state=Crafting.GetStatus(Recipe);
-            CraftButton.interactable=state==CraftStatus.Ready && Crafting.Session.State==SessionState.Inventory;
-            Status.text=state==CraftStatus.NoSpace ? "Inventory full" : string.Empty;
+            CraftButton.interactable=(state==CraftStatus.Ready || state==CraftStatus.Collect) && Crafting.Session.State==SessionState.Inventory;
+            var job=Crafting.Cooking;
+            var active=Recipe.CookingSeconds>0 && job!=null && job.Recipe==Recipe;
+            if(active)
+            {
+                Materials.text=Recipe.Ingredients[0].Item.DisplayName+" ×"+Recipe.Ingredients[0].Count;
+                Materials.fontSize=18;Materials.color=new Color32(197,206,155,255);
+            }
+            ButtonLabel.text=state==CraftStatus.Collect ? "Take" : Recipe.CookingSeconds>0 ? "Cook" : "Craft";
+            Progress.gameObject.SetActive(active);Progress.fillAmount=active ? job.Progress : 0;
+            Status.text=state==CraftStatus.NoSpace ? "Inventory full" : active ?
+                job.IsReady ? "Ready" : "Cooking · "+Mathf.CeilToInt(job.Remaining)+" s" :
+                Recipe.CookingSeconds>0 ? Recipe.CookingSeconds.ToString("0")+" s" : string.Empty;
         }
     }
 }

@@ -80,7 +80,7 @@ namespace Wildfolk.Tests
             var pausedHp=hp.Current;yield return new WaitForSecondsRealtime(.35f);Assert.That(hp.Current,Is.EqualTo(pausedHp));
             yield return input.Click(hud.PausePanel.transform.Find("Pause Panel/Continue"));
             Assert.That(Time.timeScale,Is.EqualTo(1));Assert.That(hud.Session.State,Is.EqualTo(SessionState.Running));
-            hud.Session.GetComponent<WorldPauseController>().FreezeWorldForPause=false;
+            hud.Session.Mode=SessionMode.Multiplayer;
             yield return input.Click(hud.PauseButton);Assert.That(Time.timeScale,Is.EqualTo(1));
             Assert.That(hud.Session.State,Is.EqualTo(SessionState.Paused));
             yield return input.Click(hud.PausePanel.transform.Find("Pause Panel/Continue"));
