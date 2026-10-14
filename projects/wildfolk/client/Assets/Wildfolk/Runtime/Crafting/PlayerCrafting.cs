@@ -16,6 +16,12 @@ namespace Wildfolk
         public StationProcessing Processor => Station==null ? null : Station.GetComponent<StationProcessing>();
         public event Action StationChanged;
         private bool stationOpen;
+        public bool ScreenOpen {get;private set;}
+        public RecipeDefinition SelectedRecipe {get;private set;}
+        public void SetSelected(RecipeDefinition recipe,bool notify=true){SelectedRecipe=recipe;if(notify){MarkSeen(recipe);StationChanged?.Invoke();}}
+        public void OpenHandCrafting(){if(Session.State!=SessionState.Inventory)return;Station=null;stationOpen=false;ScreenOpen=true;StationChanged?.Invoke();}
+        public void CloseCrafting(){ScreenOpen=false;ClearStation();Session.CloseInventory();StationChanged?.Invoke();}
+        public void OpenBag(){ScreenOpen=false;ClearStation();StationChanged?.Invoke();}
         private readonly System.Collections.Generic.HashSet<string> seen=new System.Collections.Generic.HashSet<string>();
         public string[] CaptureSeen(){var a=new string[seen.Count];seen.CopyTo(a);Array.Sort(a,StringComparer.Ordinal);return a;}
         public void RestoreSeen(string[] ids){seen.Clear();foreach(var id in ids)seen.Add(id);StationChanged?.Invoke();}
@@ -28,7 +34,7 @@ namespace Wildfolk
             if(!Inventory.Model.TryConsumeCosts(definition.UpgradeCosts))return false;
             var next=Instantiate(definition.UpgradeTo.Prefab,old.transform.position,old.transform.rotation);next.SaveId=old.SaveId;next.Health.RestoreHealth(Mathf.Max(1,Mathf.RoundToInt(old.Health.Ratio*next.Health.Maximum)));old.gameObject.SetActive(false);Destroy(old.gameObject);Station=next.GetComponent<CraftingStation>();StationChanged?.Invoke();return true;
         }
-        public void UpgradeFromUI(){if(!UpgradeWorkbench())PlayerFeedback.Show("Gather the upgrade materials");}
+        public void UpgradeFromUI(){if(!UpgradeWorkbench())PlayerFeedback.ShowKey("feedback.upgrade");}
 
         private void OnEnable() => Session.StateChanged += SessionChanged;
         private void OnDisable() => Session.StateChanged -= SessionChanged;
@@ -40,14 +46,14 @@ namespace Wildfolk
         public bool OpenStation(CraftingStation station)
         {
             if (!Session.IsRunning || station == null || !InRange(station)) return false;
-            Station = station; stationOpen = true;
+            Station = station; stationOpen = true;ScreenOpen=true;
             Session.OpenInventory();
             StationChanged?.Invoke();
             return true;
         }
         private void SessionChanged()
         {
-            if (Session.State != SessionState.Inventory) ClearStation();
+            if (Session.State != SessionState.Inventory){ScreenOpen=false;ClearStation();StationChanged?.Invoke();}
         }
         private void ClearStation()
         {
@@ -59,6 +65,7 @@ namespace Wildfolk
         {
             if (recipe.RequiredStation != StationKind.None && recipe.RequiredStation != AvailableStation) return CraftStatus.StationRequired;
             if(recipe.RequiredStation==StationKind.Workbench && Station.Definition.WorkbenchTier<recipe.RequiredWorkbenchTier)return CraftStatus.StationRequired;
+            if(recipe.ProcessingSeconds>0 && Processor!=null && Processor.Sequential){return Processor.BatchSize(recipe,Inventory.Model)>0 ? CraftStatus.Ready : CraftStatus.MissingMaterials;}
             if(recipe.ProcessingSeconds>0 && Processor!=null && Processor.IsBusy)
             {
                 if(Processor.Recipe!=recipe || !Processor.IsReady) return CraftStatus.Processing;

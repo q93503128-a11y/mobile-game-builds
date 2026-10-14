@@ -15,9 +15,11 @@
 | Workbench | Wall/Door/Chest | Wood2/3/6 |
 | Campfire | Cooked Meat1 | Raw Meat1 /5초 |
 | Campfire | Clean Water Cup1 | Raw Water Cup1 /5초 |
-| Furnace | Ingot1~3 | Ore1~3 /6초 |
+| Furnace | Ingot1 | Ore1 /2초, 순차 처리 |
 
-기존 StationProcessing을 고기/물/제련에 공유한다. ParallelCapacity와 ProcessingSpeed를 가진다. Campfire1/Speed1, Furnace3/Speed1이다. 한 Batch를 예약하고 끝나면 Take한다. 다른 Recipe를 동시에 처리하거나 Queue/연료/자동 수령하지 않는다. 수령 공간 부족은 결과를 유지하고 시설 파괴 시 완료 결과 또는 예약 재료를 월드에 돌려놓는다. Recipe/Batch/남은 시간을 Save에 포함한다.
+StationProcessing은 시설 데이터의 Batch/Sequential Mode와 Speed를 읽는다. Campfire의 단일 예약 Batch/5초/Take는 유지한다. Furnace는 Recipe별 한 단위를 처리하고 다음 대기 단위를 자동 시작한다. +1/Add all/대기 −1/결과 Take를 제공한다. 투입 단위/대기/현재 Ore→Result/완료 수량/남은 시간과 Progress를 표시한다. 현재 Input50/Output100 단위 보관 한계는 초기값이다. 대기 재료 회수와 결과 수령은 atomic inventory transaction이며 공간 부족이면 예약/완료 결과를 유지한다. Output 보관 한계에서는 완료된 현재 단위를 보존하고 결과 수령 후 재개한다. 시설 파괴 시 완료 결과와 현재·대기 재료를 Stack 한계에 맞춰 바닥으로 반환한다. 연료/자동 Inventory 수령은 없다.
+
+ProcessingQueue는 Recipe 참조/예약 순서/단위 시간/ResultCount/Output을 사용한다. Iron Item 이름 분기가 없다. 혼합 Recipe 순서도 저장·복원하며 향후 Ore/Metal/Alloy/Crystal과 시설별 처리기를 같은 경계에서 확장한다. 이번 실제 광물은 Iron만 유지한다.
 
 물은 용기 포함 상태를 교환한다. 빈 컵→Raw Cup→Clean Cup→빈 컵이다. 빈 컵20 Stack, 채운 컵1 Stack으로 각 상태를 구분한다. 채우기/마시기는 공간을 확인한 atomic inventory exchange이며 물이나 용기를 유실하지 않는다.
 
@@ -37,6 +39,9 @@ General Workbench가 향후 Tier Progression의 중심이다. RequiredWorkbenchT
 
 업그레이드는 기존 설치물을 교체하며 위치/회전/Save ID/HP 비율을 유지한다. 별도 Workbench II 제작 Recipe는 없고 II 아이템 참조는 설치/저장/Editor Profile용이다. I의 모든 Recipe를 유지한다. Armor Bench/빈 전문 시설은 없다.
 
-Category는Survival/Tools/Weapons/Armor/Building/Facilities이고 현재 Station에 실제 Recipe가 있는 항목만 메뉴에 나타난다. Show all/Craftable only와 조합한다. Tier(Rank)→고정SortOrder→ID 순이며 NEW/재료 보유량은 정렬에 영향을 주지 않는다. II 잠금 Recipe는 I에서도 위치를 유지하고 조건을 표시한다. 해금 후 NEW는 카드 확인/제작 때 해제되며 SeenRecipe IDs를 저장한다. 잠금 상태에서 확인해도 미래 NEW를 소모하지 않는다.
+Category는Survival/Tools/Weapons/Armor/Building/Facilities이고 현재 Station에 실제 Recipe가 있는 항목만 즉시 선택 Tab에 나타난다. Show all/Craftable only와 조합한다. All은 Category Section을 우선하고 각 Section에서 Tier(Rank)→고정SortOrder→ID 순이며 NEW/재료 보유량은 정렬에 영향을 주지 않는다. II 잠금 Recipe는 I에서도 위치를 유지하고 조건을 표시한다. 해금 후 NEW는 카드 확인/제작 때 해제되며 SeenRecipe IDs를 저장한다. 잠금 상태에서 확인해도 미래 NEW를 소모하지 않는다.
 
 Leather의 미래 사용 후보는Backpack/Strap/Quiver/Tent/Bedding 등이며 이번에는 Armor 이외 생활 장비를 만들지 않았다.
+
+
+제작은 별도 Recipe 중심 화면이다. 36칸 Inventory를 함께 펼치지 않는다. Category별 두 열 목록과 선택 결과의 보유량/실제 공격력·방어력·시설 HP/보관 용량을 표시한다. Inventory 버튼으로 Item 관리에 돌아간다. 재료 각각의 보유/필요 수량과 충분한 녹색·부족한 적색을 독립 표시하며 NEW는 순서를 바꾸지 않는다. English/Korean은 Localization Key를 사용한다.

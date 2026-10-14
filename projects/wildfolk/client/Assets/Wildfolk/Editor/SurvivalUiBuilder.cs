@@ -13,38 +13,41 @@ namespace Wildfolk.Editor
             var menu=scrim.gameObject.AddComponent<PauseMenu>();menu.Preferences=preferences;
             var panel=Image("Pause Panel",scrim.transform,"panel",new Vector2(.5f,.5f),Vector2.zero,new Vector2(440,580),true);
             menu.Menu=panel.gameObject;
-            Text("Title",panel.transform,"Paused",new Vector2(0,220),new Vector2(380,58),34);
+            Text("Title",panel.transform,"ui.pause.title",new Vector2(0,220),new Vector2(380,58),34);
             var resume=Image("Continue",panel.transform,"panel",new Vector2(.5f,.5f),new Vector2(0,130),new Vector2(280,70),true);
-            Text("Label",resume.transform,"Continue",Vector2.zero,new Vector2(260,60),27);
+            Text("Label",resume.transform,"ui.action.continue",Vector2.zero,new Vector2(260,60),27);
             UnityEventTools.AddPersistentListener(Button(resume).onClick,session.Resume);
             var settings=Image("Settings",panel.transform,"panel",new Vector2(.5f,.5f),new Vector2(0,-150),new Vector2(280,70),true);
-            Text("Label",settings.transform,"Settings",Vector2.zero,new Vector2(260,60),27);
+            Text("Label",settings.transform,"ui.settings.title",Vector2.zero,new Vector2(260,60),27);
             UnityEventTools.AddPersistentListener(Button(settings).onClick,menu.OpenSettings);
-            var save=Image("Save Game",panel.transform,"panel",new Vector2(.5f,.5f),new Vector2(0,35),new Vector2(280,70),true);Text("Label",save.transform,"Save game",Vector2.zero,new Vector2(260,60),27);UnityEventTools.AddPersistentListener(Button(save).onClick,session.GetComponent<WorldSaveService>().SaveFromMenu);
-            var load=Image("Load Game",panel.transform,"panel",new Vector2(.5f,.5f),new Vector2(0,-60),new Vector2(280,70),true);Text("Label",load.transform,"Load game",Vector2.zero,new Vector2(260,60),27);UnityEventTools.AddPersistentListener(Button(load).onClick,session.GetComponent<WorldSaveService>().LoadFromMenu);
+            var save=Image("Save Game",panel.transform,"panel",new Vector2(.5f,.5f),new Vector2(0,35),new Vector2(280,70),true);Text("Label",save.transform,"ui.pause.save",Vector2.zero,new Vector2(260,60),27);UnityEventTools.AddPersistentListener(Button(save).onClick,session.GetComponent<WorldSaveService>().SaveFromMenu);
+            var load=Image("Load Game",panel.transform,"panel",new Vector2(.5f,.5f),new Vector2(0,-60),new Vector2(280,70),true);Text("Label",load.transform,"ui.pause.load",Vector2.zero,new Vector2(260,60),27);UnityEventTools.AddPersistentListener(Button(load).onClick,session.GetComponent<WorldSaveService>().LoadFromMenu);
             menu.Settings=Settings(scrim.transform,preferences,menu);
             menu.Settings.SetActive(false);scrim.gameObject.SetActive(false);return scrim.gameObject;
         }
         private static GameObject Settings(Transform parent,UserPreferences preferences,PauseMenu menu)
         {
-            var panel=Image("Settings Panel",parent,"panel",new Vector2(.5f,.5f),Vector2.zero,new Vector2(790,690),true);
+            var panel=Image("Settings Panel",parent,"panel",new Vector2(.5f,.5f),Vector2.zero,new Vector2(790,790),true);
             var settings=panel.gameObject.AddComponent<SettingsPanel>();settings.Preferences=preferences;
-            Text("Title",panel.transform,"Settings",new Vector2(-247,283),new Vector2(180,44),34,TextAnchor.MiddleLeft);
-            Text("Controls Label",panel.transform,"Controls",new Vector2(-237,222),new Vector2(200,32),23,TextAnchor.MiddleLeft);
-            settings.Control=SliderRow(panel.transform,"Control Size",161,.8f,1.4f,out settings.ControlValue);
-            Text("Audio Label",panel.transform,"Audio",new Vector2(-237,83),new Vector2(200,32),23,TextAnchor.MiddleLeft);
-            settings.Master=SliderRow(panel.transform,"Master Volume",22,0,1,out settings.MasterValue);
-            settings.Music=SliderRow(panel.transform,"BGM Volume",-66,0,1,out settings.MusicValue);
-            settings.Sfx=SliderRow(panel.transform,"SFX Volume",-154,0,1,out settings.SfxValue);
+            Text("Title",panel.transform,"ui.settings.title",new Vector2(-247,338),new Vector2(180,44),34,TextAnchor.MiddleLeft);
+            Text("Controls Label",panel.transform,"setting.controls",new Vector2(-237,222),new Vector2(200,32),23,TextAnchor.MiddleLeft);
+            settings.Control=SliderRow(panel.transform,"setting.control_size",161,.8f,1.4f,out settings.ControlValue);
+            Text("Audio Label",panel.transform,"setting.audio",new Vector2(-237,83),new Vector2(200,32),23,TextAnchor.MiddleLeft);
+            settings.Master=SliderRow(panel.transform,"setting.master",22,0,1,out settings.MasterValue);
+            settings.Music=SliderRow(panel.transform,"setting.music",-66,0,1,out settings.MusicValue);
+            settings.Sfx=SliderRow(panel.transform,"setting.sfx",-154,0,1,out settings.SfxValue);
             UnityEventTools.AddPersistentListener(settings.Control.onValueChanged,preferences.SetControl);
             UnityEventTools.AddPersistentListener(settings.Master.onValueChanged,preferences.SetMaster);
             UnityEventTools.AddPersistentListener(settings.Music.onValueChanged,preferences.SetMusic);
             UnityEventTools.AddPersistentListener(settings.Sfx.onValueChanged,preferences.SetSfx);
-            var reset=Image("Reset",panel.transform,"panel",new Vector2(.5f,.5f),new Vector2(-122,-268),new Vector2(272,62),true);
-            Text("Label",reset.transform,"Reset to default",Vector2.zero,new Vector2(260,54),24);
+            Text("Language",panel.transform,"setting.language",new Vector2(-210,-227),new Vector2(248,42),24,TextAnchor.MiddleLeft);
+            var languageImage=Image("Language Selector",panel.transform,"panel",new Vector2(.5f,.5f),new Vector2(162,-227),new Vector2(308,58),true);
+            settings.LanguageLabel=Text("Language Name",languageImage.transform,"",Vector2.zero,new Vector2(290,52),24);UnityEventTools.AddPersistentListener(Button(languageImage).onClick,settings.NextLanguage);
+            var reset=Image("Reset",panel.transform,"panel",new Vector2(.5f,.5f),new Vector2(-122,-328),new Vector2(272,62),true);
+            Text("Label",reset.transform,"setting.reset",Vector2.zero,new Vector2(260,54),24);
             UnityEventTools.AddPersistentListener(Button(reset).onClick,preferences.ResetDefaults);
-            var back=Image("Back",panel.transform,"panel",new Vector2(.5f,.5f),new Vector2(190,-268),new Vector2(190,62),true);
-            Text("Label",back.transform,"Back",Vector2.zero,new Vector2(178,54),25);
+            var back=Image("Back",panel.transform,"panel",new Vector2(.5f,.5f),new Vector2(190,-328),new Vector2(190,62),true);
+            Text("Label",back.transform,"ui.action.back",Vector2.zero,new Vector2(178,54),25);
             UnityEventTools.AddPersistentListener(Button(back).onClick,menu.Back);
             return panel.gameObject;
         }

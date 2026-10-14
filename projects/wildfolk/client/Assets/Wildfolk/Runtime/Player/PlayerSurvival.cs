@@ -28,7 +28,7 @@ namespace Wildfolk
             if(!Session.IsRunning || stack.IsEmpty || !Model.CanRestore(stack.Item.Consumable)) return false;
             var food=stack.Item.Consumable;
             if(stack.Item.Container!=null)
-            {if(!Inventory.Model.ReplaceConsumedSlot(Inventory.SelectedIndex,stack.Item,stack.Item.Container.Empty)){PlayerFeedback.Show("Make room for your empty cup");return false;}}
+            {if(!Inventory.Model.ReplaceConsumedSlot(Inventory.SelectedIndex,stack.Item,stack.Item.Container.Empty)){PlayerFeedback.ShowKey("feedback.cup_space");return false;}}
             else if(!Inventory.Model.ConsumeSlot(Inventory.SelectedIndex,stack.Item,1))return false;
             Model.Restore(food);return true;
         }

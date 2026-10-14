@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Linq;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -59,17 +60,20 @@ namespace Wildfolk.Tests
             Assert.That(saves.Load(),Is.True);yield return null;yield return null;yield return null;saves=Object.FindFirstObjectByType<WorldSaveService>();saves.AutoSaveEnabled=false;player=saves.Player;
             Assert.That(player.GetComponent<Health>().Current,Is.EqualTo(73));Assert.That(player.GetComponent<PlayerProgression>().Experience,Is.EqualTo(123));Assert.That(player.GetComponent<PlayerProgression>().Gold,Is.EqualTo(17));Assert.That(player.Model.CountItem(saves.Catalog.Item("empty_cup")),Is.EqualTo(1));Assert.That(player.GetComponent<PlayerSurvival>().Model.RecoveryBlockRemaining,Is.GreaterThan(57));
             Assert.That(Object.FindObjectsByType<WorldPlaceable>(FindObjectsSortMode.None).Length,Is.EqualTo(6));foreach(var identity in Object.FindObjectsByType<ResourceIdentity>(FindObjectsSortMode.None))Assert.That(identity.Id,Is.Not.EqualTo(treeId));
-            foreach(var placed in Object.FindObjectsByType<WorldPlaceable>(FindObjectsSortMode.None)){if(placed.Definition.Item.Id=="storage_chest")Assert.That(placed.GetComponent<StorageChest>().Model.CountItem(saves.Catalog.Item("clean_water_cup")),Is.EqualTo(1));if(placed.Definition.IsDoor)Assert.That(placed.GetComponent<WorldDoor>().IsOpen,Is.True);if(placed.Definition.Station==StationKind.Furnace){Assert.That(placed.GetComponent<StationProcessing>().BatchCount,Is.EqualTo(3));Assert.That(placed.GetComponent<StationProcessing>().Remaining,Is.InRange(4.2f,4.9f));}}
+            foreach(var placed in Object.FindObjectsByType<WorldPlaceable>(FindObjectsSortMode.None)){if(placed.Definition.Item.Id=="storage_chest")Assert.That(placed.GetComponent<StorageChest>().Model.CountItem(saves.Catalog.Item("clean_water_cup")),Is.EqualTo(1));if(placed.Definition.IsDoor)Assert.That(placed.GetComponent<WorldDoor>().IsOpen,Is.True);if(placed.Definition.Station==StationKind.Furnace){Assert.That(placed.GetComponent<StationProcessing>().BatchCount,Is.EqualTo(1));Assert.That(placed.GetComponent<StationProcessing>().Remaining,Is.InRange(.2f,.9f));}}
         }
-        [UnityTest]public IEnumerator ResourceAndAnimalRenewalRetainTimersAndSpawnOutsideCamera()
+        [UnityTest]public IEnumerator RegionalRecoveryKeepsDestroyedIdentityAndExclusionsAcrossSave()
         {
-            ResourceIdentity tree=null,stone=null,ore=null;foreach(var identity in Object.FindObjectsByType<ResourceIdentity>(FindObjectsSortMode.None)){if(identity.Rule==0 && tree==null)tree=identity;if(identity.Rule==1 && stone==null)stone=identity;if(identity.Rule==2 && ore==null)ore=identity;}
-            tree.Node.Health.ApplyDamage(tree.Node.Health.Maximum);stone.Node.Health.ApplyDamage(stone.Node.Health.Maximum);ore.Node.Health.ApplyDamage(ore.Node.Health.Maximum);var animal=Object.FindFirstObjectByType<AnimalIdentity>();animal.Animal.Health.ApplyDamage(animal.Animal.Health.Maximum);yield return null;
-            Position(new Vector2(-75,-50),Vector2.right);var camera=Camera.main;camera.GetComponent<CameraFollow>().enabled=false;camera.transform.position=player.transform.position+Vector3.back*10;
-            saves.Clock.Model.Advance(301);Assert.That(saves.World.Renewal.Tick(),Is.EqualTo(1));Assert.That(saves.World.Animals.Tick(),Is.EqualTo(1));var before=saves.Capture();var restored=SaveRepository.Decode(SaveRepository.Encode(before));saves.Validate(restored);saves.Apply(restored);yield return null;
-            var pending=saves.World.Renewal.Capture();var waiting=0;foreach(var state in pending)if(state.Destroyed)waiting++;Assert.That(waiting,Is.EqualTo(2));
-            saves.Clock.Model.Advance(900);Assert.That(saves.World.Renewal.Tick(),Is.EqualTo(1));saves.Clock.Model.Advance(1200);Assert.That(saves.World.Renewal.Tick(),Is.EqualTo(1));
-            foreach(var state in saves.World.Renewal.Capture()){Assert.That(state.Destroyed,Is.False);Assert.That(saves.GetComponent<WorldNavigation>().OutsideCamera(state.Position),Is.True);Assert.That(saves.World.Map.IsWater(state.Position),Is.False);}
+            var ores=Object.FindObjectsByType<ResourceIdentity>(FindObjectsSortMode.None).Where(x=>saves.World.Definition.Resources[x.Rule].Rarity==ResourceRarity.Rare).Take(2).ToArray();var ids=ores.Select(x=>x.Id).ToArray();var positions=ores.Select(x=>(Vector2)x.transform.position).ToArray();foreach(var ore in ores)ore.Node.Health.ApplyDamage(ore.Node.Health.Maximum);yield return null;
+            saves.Clock.Model.Advance(721);Assert.That(saves.World.Renewal.Tick(),Is.EqualTo(1));var states=saves.World.Renewal.Capture();Assert.That(states.Count(x=>x.Destroyed),Is.EqualTo(2));var recovered=states.Single(x=>x.Id.StartsWith("p"));foreach(var point in positions)Assert.That(Vector2.Distance(recovered.Position,point),Is.GreaterThanOrEqualTo(28));Assert.That(saves.GetComponent<WorldNavigation>().OutsideCamera(recovered.Position),Is.True);
+            var snapshot=SaveRepository.Decode(SaveRepository.Encode(saves.Capture()));saves.Apply(snapshot);yield return null;Assert.That(saves.World.Renewal.Population.Harvests.Count,Is.EqualTo(2));foreach(var id in ids)Assert.That(Object.FindObjectsByType<ResourceIdentity>(FindObjectsSortMode.None).Any(x=>x.Id==id),Is.False);Assert.That(Object.FindObjectsByType<ResourceIdentity>(FindObjectsSortMode.None).Any(x=>x.Id==recovered.Id),Is.True);
+        }
+        [UnityTest]public IEnumerator AnimalRenewalStillRetainsSlotTimerAndSpawnsOutsideCamera()
+        {
+            var animal=Object.FindFirstObjectByType<AnimalIdentity>();var id=animal.State.Id;var rule=animal.State.Rule;animal.Animal.Health.ApplyDamage(animal.Animal.Health.Maximum);yield return null;
+            Position(new Vector2(-75,-50),Vector2.right);Camera.main.GetComponent<CameraFollow>().enabled=false;Camera.main.transform.position=player.transform.position+Vector3.back*10;
+            var before=saves.Capture();saves.Apply(SaveRepository.Decode(SaveRepository.Encode(before)));yield return null;Assert.That(saves.World.Animals.Capture().Single(x=>x.Id==id).Missing,Is.True);
+            saves.Clock.Model.Advance(saves.World.Animals.Definition.Rules[rule].RespawnSeconds+1);Assert.That(saves.World.Animals.Tick(),Is.EqualTo(1));var restored=saves.World.Animals.Capture().Single(x=>x.Id==id);Assert.That(restored.Missing,Is.False);Assert.That(saves.GetComponent<WorldNavigation>().OutsideCamera(restored.Position),Is.True);
         }
         [UnityTest]public IEnumerator LongPressSplitHoldsChosenAmountUntilExplicitPlacementOrCancel()
         {

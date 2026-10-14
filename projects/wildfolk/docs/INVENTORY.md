@@ -16,4 +16,4 @@ PlayerItemDrop은 물/장애물 없는 근처 지점을 확인한 뒤 WorldPicku
 
 가방/Chest 입력 잠금은 세계 정지와 분리한다. 실제 Multiplayer 네트워크와 Player 전달은 아직 없다. Friendly Fire는 관계 필터 기반 OFF이며 Team 시설을 일반 공격으로 파괴하지 않는다.
 
-Character의Equipment 탭에서Head/Body Armor를장착·교체·해제한다. 장착물은Inventory에서빠지고해제/교체시반환하며공간없으면해제를거절한다. Armor/Skill은별도Snapshot으로저장한다. Reinforced Chest는독립32칸이며기존Storage Chest24는유지한다. Chest UI는용량에맞춰3/4행을표시하고기존Transfer/Split/Drop을공유한다.
+Inventory의 작은 캐릭터 Preview와 실제 Head/Body 슬롯에서 Armor를 장착·교체·해제한다. 슬롯을 누르면 보유한 호환 장비를 강조하고, 선택 장비의 슬롯별 Defense 비교와 Equip을 제공한다. 장착 슬롯 선택에서는 Unequip을 제공한다. Profile에는 장비 조작을 중복 구현하지 않는다. 아직 없는 Accessory/Back 슬롯은 노출하지 않는다. 장착물은Inventory에서빠지고해제/교체시반환하며공간없으면해제를거절한다. Armor/Skill은별도Snapshot으로저장한다. Reinforced Chest는독립32칸이며기존Storage Chest24는유지한다. Chest UI는용량에맞춰3/4행을표시하고기존Transfer/Split/Drop을공유한다.

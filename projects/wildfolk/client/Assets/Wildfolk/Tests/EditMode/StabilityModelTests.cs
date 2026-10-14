@@ -38,7 +38,7 @@ namespace Wildfolk.Tests
         [Test]public void AtomicSaveBackupRecoversCorruptionAndIgnoresInterruptedTemporaryFile()
         {
             var root=Path.Combine(Path.GetTempPath(),"wildfolk-save-"+Guid.NewGuid().ToString("N"));var repo=new SaveRepository(Path.Combine(root,"world.json"));
-            Action<SavedGame> validate=g=>{if(g.Version!=2)throw new InvalidDataException();};
+            Action<SavedGame> validate=g=>{if(g.Version!=3)throw new InvalidDataException();};
             try
             {
                 repo.Write(new SavedGame{Seed=1},validate);repo.Write(new SavedGame{Seed=2},validate);
@@ -55,7 +55,7 @@ namespace Wildfolk.Tests
         }
         [Test]public void RenewalAndTerrainDataKeepDifferentResourceTimes()
         {
-            var world=Data<WorldGenerationDefinition>("WorldGeneration");Assert.That(world.ShallowMoveMultiplier,Is.EqualTo(.7f));Assert.That(world.Resources[0].RespawnSeconds,Is.EqualTo(300));Assert.That(world.Resources[1].RespawnSeconds,Is.EqualTo(1200));Assert.That(world.Resources[2].RespawnSeconds,Is.EqualTo(2400));Assert.That(world.Resources[4].RespawnSeconds,Is.EqualTo(90));
+            var world=Data<WorldGenerationDefinition>("WorldGeneration");Assert.That(world.ShallowMoveMultiplier,Is.EqualTo(.7f));Assert.That(world.Resources[0].RespawnSeconds,Is.EqualTo(300));Assert.That(world.Resources[1].RespawnSeconds,Is.EqualTo(600));Assert.That(world.Resources[2].RespawnSeconds,Is.EqualTo(720));Assert.That(world.Resources[4].RespawnSeconds,Is.EqualTo(90));
         }
         [Test]public void HostileRelationIsNotAPlayerTeamDespiteDefaultNumericId()
         {

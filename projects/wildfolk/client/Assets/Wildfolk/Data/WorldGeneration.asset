@@ -30,6 +30,15 @@ MonoBehaviour:
     RockPreference: 0
     ScaleRange: {x: 0.9, y: 1.15}
     RespawnSeconds: 300
+    RecoveryConfigured: 1
+    NaturalRecovery: 1
+    WorldRecoveryScope: 0
+    Family: 0
+    Rarity: 0
+    TargetDensityRatio: 0.9
+    HarvestExclusionRadius: 8
+    HarvestExclusionSeconds: 600
+    ClusterSpacing: 4
   - Prefab: {fileID: 491692840929374458, guid: 7bb5da8c441dbf84b8e2d8ab2da93537, type: 3}
     AlternateSprite: {fileID: 21300000, guid: 335164a7898e0904da646ee9bb891aee, type: 3}
     Count: 55
@@ -40,7 +49,16 @@ MonoBehaviour:
     ForestPreference: 0
     RockPreference: 0.85
     ScaleRange: {x: 0.9, y: 1.15}
-    RespawnSeconds: 1200
+    RespawnSeconds: 600
+    RecoveryConfigured: 1
+    NaturalRecovery: 1
+    WorldRecoveryScope: 0
+    Family: 1
+    Rarity: 0
+    TargetDensityRatio: 0.9
+    HarvestExclusionRadius: 8
+    HarvestExclusionSeconds: 1200
+    ClusterSpacing: 3.4
   - Prefab: {fileID: 345223046635816646, guid: 8c3e86a12118573498c742472853f3f9, type: 3}
     AlternateSprite: {fileID: 0}
     Count: 16
@@ -51,7 +69,16 @@ MonoBehaviour:
     ForestPreference: 0
     RockPreference: 0.9
     ScaleRange: {x: 0.9, y: 1.15}
-    RespawnSeconds: 2400
+    RespawnSeconds: 720
+    RecoveryConfigured: 1
+    NaturalRecovery: 1
+    WorldRecoveryScope: 1
+    Family: 2
+    Rarity: 2
+    TargetDensityRatio: 0.9
+    HarvestExclusionRadius: 28
+    HarvestExclusionSeconds: 1800
+    ClusterSpacing: 12
   - Prefab: {fileID: 1625575656928400717, guid: e2f94784991aab041a5012acb75f50a8, type: 3}
     AlternateSprite: {fileID: 0}
     Count: 12
@@ -62,7 +89,16 @@ MonoBehaviour:
     ForestPreference: 0.4
     RockPreference: 0
     ScaleRange: {x: 0.9, y: 1.15}
-    RespawnSeconds: 300
+    RespawnSeconds: 480
+    RecoveryConfigured: 1
+    NaturalRecovery: 1
+    WorldRecoveryScope: 0
+    Family: 0
+    Rarity: 0
+    TargetDensityRatio: 0.9
+    HarvestExclusionRadius: 8
+    HarvestExclusionSeconds: 960
+    ClusterSpacing: 3.2
   - Prefab: {fileID: 4176823704456685323, guid: 1d79d349184c7af4e97be5afdd4a6db2, type: 3}
     AlternateSprite: {fileID: 0}
     Count: 36
@@ -74,5 +110,14 @@ MonoBehaviour:
     RockPreference: 0
     ScaleRange: {x: 0.9, y: 1.15}
     RespawnSeconds: 90
+    RecoveryConfigured: 1
+    NaturalRecovery: 1
+    WorldRecoveryScope: 0
+    Family: 3
+    Rarity: 0
+    TargetDensityRatio: 0.9
+    HarvestExclusionRadius: 8
+    HarvestExclusionSeconds: 180
+    ClusterSpacing: 2.4
   DecorationCount: 480
   ShallowMoveMultiplier: 0.7

@@ -16,6 +16,7 @@ namespace Wildfolk
             Icon.sprite=stack.IsEmpty ? null : stack.Item.Icon;
             Count.text=stack.IsEmpty ? string.Empty : stack.Count.ToString();
             Selection.enabled=selected;
+            Selection.gameObject.SetActive(selected);
         }
     }
 }

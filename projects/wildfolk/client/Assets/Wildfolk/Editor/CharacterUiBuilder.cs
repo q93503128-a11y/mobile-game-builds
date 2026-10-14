@@ -20,49 +20,46 @@ namespace Wildfolk.Editor
             var needsHolder=Rect("Survival Indicators",safe,new Vector2(0,1),new Vector2(303,-146),new Vector2(350,40));var needs=needsHolder.gameObject.AddComponent<SurvivalHud>();needs.Player=player.GetComponent<PlayerSurvival>();
             needs.Hunger=Need(needsHolder,"Hunger","cooked_meat",new Vector2(-87,0),new Color32(181,154,96,255),out needs.HungerValue);
             needs.Thirst=Need(needsHolder,"Thirst","water",new Vector2(87,0),new Color32(110,162,166,255),out needs.ThirstValue);
-            var stamina=Rect("Stamina",safe,new Vector2(0,1),new Vector2(286,-186),new Vector2(260,20));hud.StaminaGroup=stamina.gameObject.AddComponent<CanvasGroup>();hud.StaminaGroup.alpha=0;hud.StaminaGroup.blocksRaycasts=false;
-            hud.Stamina=Bar(stamina,"Fill",Vector2.zero,new Vector2(260,8),new Color32(167,163,111,255),new Vector2(.5f,.5f));
+            var meter=Rect("Player Stamina",safe,new Vector2(.5f,.5f),Vector2.zero,new Vector2(140,140));var gauge=root.AddComponent<PlayerStaminaHud>();gauge.Player=player.GetComponent<PlayerLocomotion>();gauge.Session=session;gauge.Anchor=meter;gauge.CanvasRect=(RectTransform)safe;gauge.Group=meter.gameObject.AddComponent<CanvasGroup>();gauge.Group.alpha=0;gauge.Group.blocksRaycasts=false;gauge.Arc=meter.gameObject.AddComponent<StaminaArc>();gauge.Arc.raycastTarget=false;gauge.Arc.color=new Color32(196,175,105,255);
             var screen=root.AddComponent<CharacterScreen>();screen.Player=player;screen.Session=session;
-            var scrim=Scrim("Character Overlay",safe);screen.View=scrim.gameObject;
-            var surface=Image("Character Screen",scrim.transform,"panel",new Vector2(.5f,.5f),Vector2.zero,new Vector2(1240,740),true);
-            var fit=surface.gameObject.AddComponent<ModalLayout>();fit.SafeArea=(RectTransform)safe;fit.ReferenceSize=new Vector2(1240,740);fit.TopReserve=130;fit.BottomReserve=40;
-            screen.Title=Text("Title",surface.transform,"Survivor",new Vector2(-275,308),new Vector2(540,50),32,TextAnchor.MiddleLeft);
-            var close=Image("Close",surface.transform,"panel",new Vector2(.5f,.5f),new Vector2(555,308),new Vector2(70,62),true);Text("Label",close.transform,"×",Vector2.zero,new Vector2(66,56),38);UnityEventTools.AddPersistentListener(Button(close).onClick,screen.Close);
-            var portrait=Rect("Survivor Portrait",surface.transform,new Vector2(.5f,.5f),new Vector2(-419,45),new Vector2(260,300));
-            var ring=Image("Backdrop",portrait,"joystick_base",new Vector2(.5f,.5f),Vector2.zero,new Vector2(274,274));ring.color=new Color32(150,158,127,255);
-            Image("Skin",portrait,"player_body",new Vector2(.5f,.5f),Vector2.zero,new Vector2(132,132));
-            screen.PortraitBody=Image("Body Armor",portrait,"white",new Vector2(.5f,.5f),Vector2.zero,new Vector2(182,182));
-            Image("Left Hand",portrait,"player_hand",new Vector2(.5f,.5f),new Vector2(-85,-38),new Vector2(36,36));Image("Right Hand",portrait,"player_hand",new Vector2(.5f,.5f),new Vector2(85,-38),new Vector2(36,36));
-            screen.PortraitLeftHand=Image("Left Gear",portrait,"white",new Vector2(.5f,.5f),new Vector2(-85,-38),new Vector2(34,38));screen.PortraitRightHand=Image("Right Gear",portrait,"white",new Vector2(.5f,.5f),new Vector2(85,-38),new Vector2(34,38));
-            screen.PortraitHead=Image("Head Gear",portrait,"white",new Vector2(.5f,.5f),Vector2.zero,new Vector2(182,182));
-            Image("Left Eye",portrait,"player_eye",new Vector2(.5f,.5f),new Vector2(-18,-28),new Vector2(10,13));Image("Right Eye",portrait,"player_eye",new Vector2(.5f,.5f),new Vector2(18,-28),new Vector2(10,13));
-            Text("Equipment Hint",surface.transform,"Field equipment",new Vector2(-419,-141),new Vector2(274,34),24);
-            Text("Profile Caption",surface.transform,"Build your survivor",new Vector2(-419,-188),new Vector2(274,32),21);
-            var tabs=new[]{"Information","Equipment","Skills"};screen.Tabs=new GameObject[3];screen.TabButtons=new Button[3];
-            for(var i=0;i<3;i++)
-            {var index=i;var button=Image(tabs[i],surface.transform,"panel",new Vector2(.5f,.5f),new Vector2(-50+i*231,233),new Vector2(215,54),true);Text("Label",button.transform,tabs[i],Vector2.zero,new Vector2(201,48),23);screen.TabButtons[i]=Button(button);UnityEventTools.AddIntPersistentListener(screen.TabButtons[i].onClick,screen.SelectTab,index);screen.Tabs[i]=Rect(tabs[i]+" Content",surface.transform,new Vector2(.5f,.5f),new Vector2(182,-48),new Vector2(735,478)).gameObject;}
-            screen.Information=Text("Information",screen.Tabs[0].transform,"",new Vector2(0,0),new Vector2(708,470),24,TextAnchor.UpperLeft);
-            screen.Weapon=Text("Current Tool",screen.Tabs[1].transform,"",new Vector2(0,201),new Vector2(710,44),24,TextAnchor.MiddleLeft);
-            var ids=new[]{"LeatherHead","LeatherBody","IronHead","IronBody"};screen.ArmorItems=new ItemDefinition[4];screen.ArmorNames=new Text[4];screen.ArmorActions=new Text[4];screen.ArmorButtons=new Button[4];
-            for(var i=0;i<4;i++)
+            var surface=QualityUiBuilder.Surface(safe,"Character Information",new Vector2(1120,740),out screen.View);
+            Text("Title",surface.transform,"ui.character.title",new Vector2(-223,310),new Vector2(590,50),32,TextAnchor.MiddleLeft);
+            QualityUiBuilder.Action(surface.transform,"Close","ui.action.close",new Vector2(450,310),new Vector2(152,62),screen.Close,out var closeLabel);
+            QualityUiBuilder.Portrait(surface.transform,player,new Vector2(-330,115),1.15f);
+            screen.Level=Text("Level",surface.transform,"",new Vector2(-330,-78),new Vector2(330,42),28);
+            screen.Points=Text("Points",surface.transform,"",new Vector2(-330,-150),new Vector2(330,65),23);
+            screen.TreeButton=QualityUiBuilder.Action(surface.transform,"Skill Tree","ui.skill.title",new Vector2(-330,-249),new Vector2(320,70),screen.OpenTree,out var treeLabel);
+            QualityUiBuilder.Line(surface.transform,new Vector2(-105,230),new Vector2(-105,-286),2);
+            screen.Information=Text("Information",surface.transform,"",new Vector2(210,8),new Vector2(540,540),26,TextAnchor.UpperLeft);
+            Text("Condition",surface.transform,"ui.character.condition",new Vector2(210,-294),new Vector2(540,32),18,TextAnchor.MiddleLeft);
+            screen.View.SetActive(false);BuildTree(root,safe,session,player.GetComponent<PlayerProgression>());
+        }
+        private static void BuildTree(GameObject root,Transform safe,GameplaySession session,PlayerProgression growth)
+        {
+            var tree=root.AddComponent<SkillTreeScreen>();tree.Session=session;tree.Growth=growth;
+            var surface=QualityUiBuilder.Surface(safe,"Skill Tree",new Vector2(1380,800),out tree.View);
+            Text("Title",surface.transform,"ui.skill.title",new Vector2(-424,340),new Vector2(440,50),34,TextAnchor.MiddleLeft);
+            tree.Points=Text("Points",surface.transform,"",new Vector2(20,340),new Vector2(400,50),24,TextAnchor.MiddleRight);
+            QualityUiBuilder.Action(surface.transform,"Back","ui.action.back",new Vector2(505,340),new Vector2(160,62),tree.Back,out var back);
+            var field=Rect("Tree",surface.transform,new Vector2(.5f,.5f),new Vector2(-225,-5),new Vector2(850,580));
+            var origin=new Vector2(-350,10);Image("Origin",field,"profile",new Vector2(.5f,.5f),origin,new Vector2(66,66));Text("Origin Caption",field,"ui.skill.origin",origin+new Vector2(0,-63),new Vector2(150,30),19);
+            tree.Nodes=new Button[growth.Definition.Skills.Length];tree.Ranks=new Text[tree.Nodes.Length];tree.Names=new Text[tree.Nodes.Length];tree.NodeStates=new Text[tree.Nodes.Length];tree.Links=new Image[tree.Nodes.Length];
+            for(var i=0;i<tree.Nodes.Length;i++)
             {
-                var item=UnityEditor.AssetDatabase.LoadAssetAtPath<ItemDefinition>("Assets/Wildfolk/Data/"+ids[i]+".asset");screen.ArmorItems[i]=item;
-                var card=Image("Armor",screen.Tabs[1].transform,"panel",new Vector2(.5f,.5f),new Vector2(i%2==0 ? -185 : 185,i<2 ? 85 : -113),new Vector2(350,174));
-                var icon=Image("Icon",card.transform,"white",new Vector2(.5f,.5f),new Vector2(-122,29),new Vector2(72,72));icon.sprite=item.Icon;icon.preserveAspect=true;
-                screen.ArmorNames[i]=Text("Name",card.transform,"",new Vector2(40,28),new Vector2(222,74),22,TextAnchor.MiddleLeft);
-                var equip=Image("Equip",card.transform,"panel",new Vector2(.5f,.5f),new Vector2(35,-52),new Vector2(238,50),true);screen.ArmorActions[i]=Text("Label",equip.transform,"Equip",Vector2.zero,new Vector2(226,44),22);screen.ArmorButtons[i]=Button(equip);UnityEventTools.AddIntPersistentListener(screen.ArmorButtons[i].onClick,screen.Equip,i);
+                var skill=growth.Definition.Skills[i];var from=origin;for(var j=0;j<tree.Nodes.Length;j++)if(growth.Definition.Skills[j].Id==skill.Prerequisite)from=growth.Definition.Skills[j].NodePosition;
+                var direction=(skill.NodePosition-from).normalized;tree.Links[i]=QualityUiBuilder.Line(field,from+direction*(from==origin ? 39 : 62),skill.NodePosition-direction*62,4);
             }
-            screen.Points=Text("Skill Points",screen.Tabs[2].transform,"",new Vector2(0,210),new Vector2(710,42),24,TextAnchor.MiddleLeft);
-            var growth=CharacterPassAssets.Growth();screen.SkillNames=new Text[4];screen.SkillDetails=new Text[4];screen.SkillActions=new Text[4];screen.SkillButtons=new Button[4];
-            for(var i=0;i<4;i++)
+            for(var i=0;i<tree.Nodes.Length;i++)
             {
-                var card=Image("Skill",screen.Tabs[2].transform,"panel",new Vector2(.5f,.5f),new Vector2(i%2==0 ? -185 : 185,i<2 ? 81 : -124),new Vector2(350,188));
-                var icon=Image("Icon",card.transform,"white",new Vector2(.5f,.5f),new Vector2(-135,50),new Vector2(48,48));icon.sprite=growth.Skills[i].Icon;
-                screen.SkillNames[i]=Text("Name",card.transform,"",new Vector2(28,51),new Vector2(259,52),23,TextAnchor.MiddleLeft);
-                screen.SkillDetails[i]=Text("Effect",card.transform,"",new Vector2(0,-1),new Vector2(316,50),20,TextAnchor.MiddleLeft);
-                var learn=Image("Learn",card.transform,"panel",new Vector2(.5f,.5f),new Vector2(0,-62),new Vector2(310,50),true);screen.SkillActions[i]=Text("Label",learn.transform,"",Vector2.zero,new Vector2(294,44),22);screen.SkillButtons[i]=Button(learn);UnityEventTools.AddIntPersistentListener(screen.SkillButtons[i].onClick,screen.Invest,i);
+                var skill=growth.Definition.Skills[i];var node=Image("Skill Node",field,"panel",new Vector2(.5f,.5f),skill.NodePosition,new Vector2(112,112),true);tree.Nodes[i]=Button(node);UnityEventTools.AddIntPersistentListener(tree.Nodes[i].onClick,tree.Select,i);
+                var icon=Image("Icon",node.transform,"white",new Vector2(.5f,.5f),new Vector2(0,7),new Vector2(58,58));icon.sprite=skill.Icon;icon.preserveAspect=true;
+                tree.Ranks[i]=Text("Rank",node.transform,"",new Vector2(0,-36),new Vector2(108,25),19);tree.Names[i]=Text("Name",field,"",skill.NodePosition+new Vector2(0,-88),new Vector2(242,35),22);tree.NodeStates[i]=Text("State",field,"",skill.NodePosition+new Vector2(0,-119),new Vector2(240,28),16);tree.NodeStates[i].color=new Color32(167,178,141,255);
             }
-            scrim.gameObject.SetActive(false);
+            QualityUiBuilder.Line(surface.transform,new Vector2(246,267),new Vector2(246,-340),2);
+            tree.SelectedName=Text("Selected Node",surface.transform,"",new Vector2(456,220),new Vector2(358,52),30,TextAnchor.MiddleLeft);
+            tree.State=Text("Node State",surface.transform,"",new Vector2(456,158),new Vector2(358,40),22,TextAnchor.MiddleLeft);tree.State.color=new Color32(197,185,124,255);
+            tree.Detail=Text("Node Detail",surface.transform,"",new Vector2(456,-13),new Vector2(358,260),25,TextAnchor.UpperLeft);
+            tree.InvestButton=QualityUiBuilder.Action(surface.transform,"Invest","",new Vector2(456,-280),new Vector2(350,76),tree.Invest,out tree.Action);tree.View.SetActive(false);
         }
         private static Image Need(Transform safe,string name,string art,Vector2 p,Color color,out Text value)
         {

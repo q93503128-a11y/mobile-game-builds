@@ -6,12 +6,13 @@ namespace Wildfolk
     {
         public UserPreferences Preferences;
         public Slider Control,Master,Music,Sfx;
-        public Text ControlValue,MasterValue,MusicValue,SfxValue;
+        public Text ControlValue,MasterValue,MusicValue,SfxValue,LanguageLabel;
+        public void NextLanguage(){var index=System.Array.FindIndex(L.Catalog.Languages,x=>x.Id==Preferences.Values.Language);Preferences.SetLanguage((index+1)%L.Catalog.Languages.Length);}
         private void OnEnable() { Preferences.Changed+=Refresh;Refresh(); }
         private void OnDisable() => Preferences.Changed-=Refresh;
         private void Refresh()
         {
-            var values=Preferences.Values;
+            var values=Preferences.Values;LanguageLabel.text=System.Array.Find(L.Catalog.Languages,x=>x.Id==values.Language).Name;
             Control.SetValueWithoutNotify(values.ControlSize);Master.SetValueWithoutNotify(values.Master);
             Music.SetValueWithoutNotify(values.Music);Sfx.SetValueWithoutNotify(values.Sfx);
             ControlValue.text=Mathf.RoundToInt(values.ControlSize*100)+"%";

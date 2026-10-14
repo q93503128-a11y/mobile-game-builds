@@ -1,0 +1,20 @@
+# 품질 교정 Asset 출처
+
+기본 세계/캐릭터/Item Icon은 기존 자체 제작 아트를 유지했다. 이번에는 Worn Overlay 네 PNG와 Dash, 글꼴만 교체했다. 최종 파일은 client/Assets/Wildfolk/Art 및 Resources에 있다. 기존 손/눈/아이템 Icon은 유지한다. Asset Generator는 큐레이션된 Overlay/Dash를 덮어쓰지 않는다.
+
+Armor는 imagegen built-in 편집 모드로 제작했다. 기존 해당 Worn PNG를 편집 대상으로, 이번 작업에서 직접 캡처한 quality-baseline-equipment.png를 스타일 참고로 사용했다. 모두 투명 배경이다. 생성 픽셀을 다시 그리지 않고 투명 여백/기존150×150 Sprite Canvas에 맞추는 Import packaging만 수행했다. 원본은 로컬 generated_images에 보존한다.
+
+공통 Prompt: direct overhead top-down, front/down; circular peach base and two small eyes visible through transparent open center/front; standalone wearable overlay only, no face/body/eyes/hands in output; natural dark outline, matte readable broad planes, no band/ring/front-view RPG chestplate, no neon/candy/pastel/text/horns.
+
+| Asset | Prompt 차이 | 원본 생성 파일 |
+|---|---|---|
+| iron_head_worn | 넓은 round domed rear steel crown, substantial stepped side/cheek guards, transparent lower face opening, 2~3 large seams; grey headband 제거 | exec-ae17673e-5274-4d80-8d0e-9fabc4f5768d.png |
+| iron_body_worn | broad steel shoulder plates and rear upper back plate, angular stepped silhouette, thicker than leather, open center/front, three steel-gray planes | exec-baab6edd-a9c3-4549-be01-6ab2d86ae658.png |
+| leather_head_worn | stitched chestnut brown soft cap, three large leather segments, slim tapered sideguards, clear difference from domed steel, open lower center | exec-3cd003cd-98f5-4530-ad22-f084ef5f7822.png |
+| leather_body_worn | thin brown upper back yoke, small layered shoulder flaps, narrow uneven tapered segments, sparse broad straps/stitches, open center | exec-c38098da-784c-4efe-91f2-a1bcdf218ca1.png |
+
+원본 디렉터리: C:/Users/User/.codex/generated_images/01a132a7-29f9-7291-8050-442ea921a350/. 표는 사용한 디자인 Prompt 요약이며 같은 결과를 픽셀 단위로 재생성한다는 보장은 하지 않는다.
+
+Dash는 [Lucide chevrons-right](https://github.com/lucide-icons/lucide/blob/main/icons/chevrons-right.svg)의 stroke를 무광 자연색으로 조정한96×96 PNG다. Art/dash-source.svg와 Lucide-LICENSE.txt에 원본/ISC 및 Feather MIT 고지를 보존한다. 외부 게임 Icon을 추출하지 않았다.
+
+Font는 [Google Fonts Noto Sans KR](https://github.com/google/fonts/tree/main/ofl/notosanskr)의 wght500 static instance다. Resources/NotoSansKR.ttf와 NotoSansKR-OFL.txt를 함께 제공한다. 다른 앱/Windows 시스템 글꼴은 배포하지 않는다. 세부 최종 아트 품질·실기 가독성은 후속 사용자 검수 대상이다.

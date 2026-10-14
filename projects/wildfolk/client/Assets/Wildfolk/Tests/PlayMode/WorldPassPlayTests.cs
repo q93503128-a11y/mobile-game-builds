@@ -71,13 +71,12 @@ namespace Wildfolk.Tests
             yield return input.Click(drag.ChestSplitButton);yield return input.Click(drag.SplitPanel.ConfirmButton);yield return input.Click(chestPanel.ChestSlots[1]);Assert.That(chest.Model.GetSlot(0).Count,Is.EqualTo(15));Assert.That(chest.Model.GetSlot(1).Count,Is.EqualTo(15));
             yield return input.Drag(chestPanel.ChestSlots[1],PlayPointerDriver.Point(chestPanel.PlayerSlots[9]));Assert.That(inventory.Model.CountItem(wood),Is.EqualTo(45));Assert.That(chest.Model.CountItem(wood),Is.EqualTo(15));
         }
-        [UnityTest]public IEnumerator FurnaceProcessesThreeOrTwoInOneCycleAndPreservesCargoWhenDestroyed()
+        [UnityTest]public IEnumerator FurnaceSequentialQueuePreservesFinishedAndReservedCargoWhenDestroyed()
         {
             ClearStart();var furnace=Place("furnace",new Vector2(0,-2.1f)).GetComponent<CraftingStation>();yield return null;var recipe=Recipe("iron_ingot");var process=furnace.GetComponent<StationProcessing>();
-            inventory.Model.Add(recipe.Ingredients[0].Item,5);Assert.That(crafting.OpenStation(furnace),Is.True);Assert.That(crafting.Craft(recipe),Is.EqualTo(CraftStatus.Processing));
-            Assert.That(process.BatchCount,Is.EqualTo(3));Assert.That(inventory.Model.CountItem(recipe.Ingredients[0].Item),Is.EqualTo(2));
-            yield return new WaitForSeconds(6.1f);Assert.That(crafting.Craft(recipe),Is.EqualTo(CraftStatus.Collect));Assert.That(inventory.Model.CountItem(recipe.Result),Is.EqualTo(3));
-            Assert.That(crafting.Craft(recipe),Is.EqualTo(CraftStatus.Processing));Assert.That(process.BatchCount,Is.EqualTo(2));furnace.Health.ApplyDamage(furnace.Health.Maximum);yield return null;
+            inventory.Model.Add(recipe.Ingredients[0].Item,5);Assert.That(crafting.OpenStation(furnace),Is.True);yield return null;var panel=Object.FindFirstObjectByType<CraftingPanel>();for(var i=0;i<3;i++)yield return input.Click(panel.AddOne);
+            Assert.That(process.BatchCount,Is.EqualTo(1));Assert.That(process.Queue.WaitingCount,Is.EqualTo(2));Assert.That(inventory.Model.CountItem(recipe.Ingredients[0].Item),Is.EqualTo(2));
+            process.Advance(6.1f);yield return new WaitUntil(()=>panel.Collect.interactable);yield return input.Click(panel.Collect);Assert.That(inventory.Model.CountItem(recipe.Result),Is.EqualTo(3));yield return input.Click(panel.AddAll);Assert.That(process.Queue.WaitingCount,Is.EqualTo(1));furnace.Health.ApplyDamage(furnace.Health.Maximum);yield return null;
             var drop=Object.FindFirstObjectByType<WorldPickup>();Assert.That(drop.Item,Is.SameAs(recipe.Ingredients[0].Item));Assert.That(drop.Count,Is.EqualTo(2));
         }
         [UnityTest]public IEnumerator SurvivalRegeneratesOnlyAfterDelayAndWhenBothMetersAreHigh()

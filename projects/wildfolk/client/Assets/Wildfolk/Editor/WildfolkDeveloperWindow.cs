@@ -10,6 +10,7 @@ namespace Wildfolk.Editor
         private int quantity=30,hp=100,day=1,seed=9472026,level=3,points=2;
         private float hunger=90,thirst=90,time=30,stamina=100;
         private long xp,gold;
+        private float recoverySeconds=60;
         [MenuItem("Wildfolk/Developer/Open Test Console")]
         private static void Open(){var window=CreateInstance<WildfolkDeveloperWindow>();window.titleContent=new GUIContent("Wildfolk Test Console");window.Show();}
         private void Execute(Action action){try{action();message="Applied";}catch(Exception error){message=error.Message;}Repaint();}
@@ -31,6 +32,7 @@ namespace Wildfolk.Editor
             Section("World");day=EditorGUILayout.IntField("Day",day);time=EditorGUILayout.FloatField("Cycle Time",time);if(GUILayout.Button("Set Day / Time"))Execute(()=>DeveloperHarness.SetTime(day,time));
             spawnPosition=EditorGUILayout.Vector2Field("Position",spawnPosition);if(GUILayout.Button("Teleport"))Execute(()=>DeveloperHarness.Teleport(spawnPosition));foreach(var kind in new[]{"Zombie","Goblin","Chicken","Boar"})if(GUILayout.Button("Spawn "+kind))Execute(()=>DeveloperHarness.Spawn(kind,spawnPosition));
             if(GUILayout.Button("Clear Nearby Enemies"))Execute(()=>DeveloperHarness.ClearEnemies());seed=EditorGUILayout.IntField("Seed",seed);if(GUILayout.Button("Generate With Seed"))Execute(()=>DeveloperHarness.GenerateWorld(seed));
+            Section("Resource Population");if(GUILayout.Button("Force Recovery Tick"))Execute(()=>DeveloperHarness.ForceResourceRecovery());foreach(var seconds in new[]{60,300,600}){var delta=seconds;if(GUILayout.Button("Advance +"+delta/60+"m"))Execute(()=>DeveloperHarness.AdvanceResourceRecovery(delta));}recoverySeconds=EditorGUILayout.FloatField("Custom seconds",recoverySeconds);if(GUILayout.Button("Advance custom"))Execute(()=>DeveloperHarness.AdvanceResourceRecovery(recoverySeconds));if(GUILayout.Button("Show Population / Targets / Pending / Exclusions")){try{message=DeveloperHarness.ResourcePopulationReport();}catch(System.Exception error){message=error.Message;}}
             Section("Save");if(GUILayout.Button("Save"))Execute(()=>{var s=DeveloperHarness.Context();if(!s.Save())throw new InvalidOperationException(s.LastError);});if(GUILayout.Button("Load"))Execute(()=>DeveloperHarness.Context().Load());if(GUILayout.Button("New Test State"))Execute(DeveloperHarness.NewTestState);
             Section("Validation");if(GUILayout.Button("Validate Data"))Execute(()=>{var errors=ProjectDataValidator.Validate();if(errors.Count>0)throw new InvalidOperationException(string.Join("\n",errors));});
             if(EditorApplication.isPlaying){var combat=UnityEngine.Object.FindFirstObjectByType<PlayerCombat>();if(combat!=null)EditorGUILayout.LabelField("Last attack",combat.LastHitCount+" targets / "+combat.LastDamage+" damage");}

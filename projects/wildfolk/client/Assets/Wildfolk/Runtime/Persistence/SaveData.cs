@@ -14,17 +14,22 @@ namespace Wildfolk
     [Serializable] public sealed class AnimalSnapshot
     {public string Id;public int Rule,HP;public Vector2 Position,Home;public bool Missing;public double RespawnAt;}
     [Serializable] public sealed class ProcessingSnapshot
-    {public string Recipe;public int Batch;public float Remaining;}
+    {public string Recipe;public int Batch;public float Remaining;public bool Sequential;public ProcessingEntry[] Waiting=Array.Empty<ProcessingEntry>();public ProcessingEntry[] Output=Array.Empty<ProcessingEntry>();}
+    [Serializable] public sealed class RecoveryTicket {public int Rule,Region;public double Due;}
+    [Serializable] public sealed class HarvestExclusion {public int Rule;public Vector2 Position;public double Until;}
+    [Serializable] public sealed class ResourceRecoverySnapshot {public int Serial,CandidateCursor;public RecoveryTicket[] Pending=Array.Empty<RecoveryTicket>();public HarvestExclusion[] Harvests=Array.Empty<HarvestExclusion>();}
+    [Serializable] public sealed class ProcessingEntry {public string Recipe;public int Count;}
     [Serializable] public sealed class PlaceableSnapshot
     {public string Id,Item;public Vector2 Position;public float Rotation;public int HP;public bool DoorOpen;public SavedStack[] Inventory;public ProcessingSnapshot Processing;}
     [Serializable] public sealed class PickupSnapshot
     {public string Item;public int Count;public Vector2 Position;}
     [Serializable] public sealed class SavedGame
     {
-        public int Version=2,Seed;
+        public int Version=3,Seed;
         public double Elapsed;
         public PlayerSnapshot Player;
         public ResourceSnapshot[] Resources=Array.Empty<ResourceSnapshot>();
+        public ResourceRecoverySnapshot Recovery;
         public AnimalSnapshot[] Animals=Array.Empty<AnimalSnapshot>();
         public PlaceableSnapshot[] Placeables=Array.Empty<PlaceableSnapshot>();
         public PickupSnapshot[] Pickups=Array.Empty<PickupSnapshot>();

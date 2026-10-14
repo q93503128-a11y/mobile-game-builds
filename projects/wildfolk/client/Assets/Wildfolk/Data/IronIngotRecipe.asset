@@ -21,8 +21,9 @@ MonoBehaviour:
   - Item: {fileID: 11400000, guid: 09ce652ce3ddf0b44b9f075dbd0674e4, type: 2}
     Count: 1
   RequiredStation: 3
-  ProcessingSeconds: 6
+  ProcessingSeconds: 2
   Processing: 2
+  LegacyProcessingSeconds: 6
   Tier: {fileID: 0}
   RequiredWorkbenchTier: 1
   FutureUnlocks: []

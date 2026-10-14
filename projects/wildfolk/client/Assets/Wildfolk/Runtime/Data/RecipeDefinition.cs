@@ -27,6 +27,7 @@ namespace Wildfolk
         public StationKind RequiredStation;
         [FormerlySerializedAs("CookingSeconds"), Min(0)] public float ProcessingSeconds;
         public ProcessingKind Processing;
+        public float LegacyProcessingSeconds;
         public EquipmentTier Tier;
         [Min(1)]public int RequiredWorkbenchTier=1;
         public UnlockRequirement[] FutureUnlocks=Array.Empty<UnlockRequirement>();

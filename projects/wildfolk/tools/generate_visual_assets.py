@@ -443,21 +443,7 @@ def character_growth_art():
         edge='#3e382e' if material=='leather' else '#344342'
         dark='#70543b' if material=='leather' else '#61716e'
         light='#94734e' if material=='leather' else '#9ba89d'
-        im=canvas(150,150)
-        # Hollow, broad top-down perimeter leaves the base skin and eyes visible.
-        ellipse(im,(20,20,130,130),dark,edge,3)
-        ellipse(im,(32,30,118,124),(0,0,0,0),edge,2)
-        poly(im,[(17,55),(28,42),(38,48),(34,78),(20,84)],light,edge,3)
-        poly(im,[(133,55),(122,42),(112,48),(116,78),(130,84)],light,edge,3)
-        if material=='iron':
-            line(im,[(25,56),(27,75)],'#b2b8a6',3);line(im,[(123,56),(121,75)],'#b2b8a6',3)
-        save(im,material+'_body_worn.png')
-        im=canvas(150,150)
-        # Open face helmet/cap; opening follows Facing, body itself does not rotate.
-        poly(im,[(22,80),(20,54),(35,29),(57,17),(91,17),(116,31),(130,58),(128,80),(115,77),(105,50),(75,40),(45,50),(35,78)],dark,edge,3)
-        poly(im,[(27,53),(42,32),(65,23),(85,23),(105,34),(115,51),(103,45),(78,34),(51,42)],light)
-        line(im,[(77,20),(77,34)],edge,2)
-        save(im,material+'_head_worn.png')
+        # Head/body overlays are curated imagegen outputs; do not regenerate them as rings.
         im=canvas(34,38)
         poly(im,[(4,6),(30,6),(32,19),(27,25),(7,25),(2,19)],dark,edge,2)
         poly(im,[(6,7),(27,7),(27,12),(6,12)],light)
@@ -478,9 +464,7 @@ def character_growth_art():
     ellipse(im,(34,31,106,106),'#c99c74','#3f4230',2)
     ellipse(im,(57,78,62,84),'#2c3a32');ellipse(im,(79,78,84,84),'#2c3a32')
     save(im,'profile.png')
-    im=canvas(96,96)
-    poly(im,[(15,48),(38,26),(38,40),(71,40),(71,24),(89,48),(71,72),(71,56),(38,56),(38,70)],'#c5c4a4',INK,3)
-    save(im,'icon_dash.png')
+    # icon_dash.png is rasterized from the licensed Lucide chevrons-right source.
     for name in ('vitality','endurance','recovery','stride'):
         im=canvas(96,96)
         ellipse(im,(8,8,88,88),'#405647','#7d8967',2)

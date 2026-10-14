@@ -26,7 +26,7 @@ namespace Wildfolk.Editor
             var preferences=session.gameObject.AddComponent<UserPreferences>();var audio=session.gameObject.AddComponent<GameAudio>();audio.Preferences=preferences;
             audio.Music=new GameObject("Music Channel").AddComponent<AudioSource>();audio.Music.transform.SetParent(session.transform);audio.Music.playOnAwake=false;audio.Music.loop=true;
             audio.Sfx=new GameObject("SFX Channel").AddComponent<AudioSource>();audio.Sfx.transform.SetParent(session.transform);audio.Sfx.playOnAwake=false;
-            var pickup=GameplayActorBuilder.Pickup();WorldContentBuilder.Build(assets,pickup);
+            var pickup=GameplayActorBuilder.Pickup();WorldContentBuilder.Build(assets,pickup);QualityAssets.Configure(assets);
             foreach(var facility in new[]{assets.Crafting.Workbench,assets.Survival.Campfire,assets.Progression.Furnace,assets.Progression.Wall,assets.Progression.Door,assets.Progression.Chest})GameplayActorBuilder.Facility(facility,pickup,assets.Settings);
             foreach(var facility in CharacterPassAssets.Load(assets))GameplayActorBuilder.Facility(facility,pickup,assets.Settings);
             var actors=new GameObject("Actors").transform;var playerObject=GameplayActorBuilder.Player(actors,assets);var player=playerObject.GetComponent<PlayerInventory>();

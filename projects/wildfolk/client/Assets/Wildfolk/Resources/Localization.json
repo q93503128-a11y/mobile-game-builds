@@ -1,0 +1,1106 @@
+{
+  "Languages": [
+    {
+      "Id": "en",
+      "Name": "English"
+    },
+    {
+      "Id": "ko",
+      "Name": "한국어"
+    }
+  ],
+  "Entries": [
+    {
+      "Key": "ui.inventory.title",
+      "Values": [
+        "Inventory",
+        "인벤토리"
+      ]
+    },
+    {
+      "Key": "ui.inventory.storage",
+      "Values": [
+        "Storage",
+        "보관함"
+      ]
+    },
+    {
+      "Key": "ui.inventory.hotbar",
+      "Values": [
+        "Hotbar",
+        "빠른 슬롯"
+      ]
+    },
+    {
+      "Key": "ui.inventory.select",
+      "Values": [
+        "Select an item",
+        "아이템을 선택하세요"
+      ]
+    },
+    {
+      "Key": "ui.inventory.equipment",
+      "Values": [
+        "Equipment",
+        "장비"
+      ]
+    },
+    {
+      "Key": "ui.inventory.compare",
+      "Values": [
+        "Defense {0} → {1} ({2:+#;-#;0})",
+        "방어력 {0} → {1} ({2:+#;-#;0})"
+      ]
+    },
+    {
+      "Key": "ui.inventory.armor_detail",
+      "Values": [
+        "{0} · Defense +{1}",
+        "{0} · 방어력 +{1}"
+      ]
+    },
+    {
+      "Key": "ui.inventory.slot_hint",
+      "Values": [
+        "Tap a slot to find compatible armor in your bag.",
+        "슬롯을 누르면 장착 가능한 보유 장비를 확인합니다."
+      ]
+    },
+    {
+      "Key": "ui.inventory.empty",
+      "Values": [
+        "Unequipped",
+        "미장착"
+      ]
+    },
+    {
+      "Key": "ui.inventory.drop",
+      "Values": [
+        "Drop to ground",
+        "바닥에 버리기"
+      ]
+    },
+    {
+      "Key": "ui.action.equip",
+      "Values": [
+        "Equip",
+        "장착"
+      ]
+    },
+    {
+      "Key": "ui.action.unequip",
+      "Values": [
+        "Unequip",
+        "해제"
+      ]
+    },
+    {
+      "Key": "ui.action.split",
+      "Values": [
+        "Split",
+        "나누기"
+      ]
+    },
+    {
+      "Key": "ui.action.take",
+      "Values": [
+        "Take",
+        "꺼내기"
+      ]
+    },
+    {
+      "Key": "ui.action.cancel",
+      "Values": [
+        "Cancel",
+        "취소"
+      ]
+    },
+    {
+      "Key": "ui.action.back",
+      "Values": [
+        "Back",
+        "뒤로"
+      ]
+    },
+    {
+      "Key": "ui.action.close",
+      "Values": [
+        "Close",
+        "닫기"
+      ]
+    },
+    {
+      "Key": "ui.action.add_all",
+      "Values": [
+        "Add all",
+        "모두 넣기"
+      ]
+    },
+    {
+      "Key": "ui.action.craft",
+      "Values": [
+        "Craft",
+        "제작"
+      ]
+    },
+    {
+      "Key": "ui.action.cook",
+      "Values": [
+        "Cook",
+        "요리"
+      ]
+    },
+    {
+      "Key": "ui.action.smelt",
+      "Values": [
+        "Smelt",
+        "제련"
+      ]
+    },
+    {
+      "Key": "ui.action.continue",
+      "Values": [
+        "Continue",
+        "계속하기"
+      ]
+    },
+    {
+      "Key": "ui.pause.title",
+      "Values": [
+        "Paused",
+        "일시 정지"
+      ]
+    },
+    {
+      "Key": "ui.pause.save",
+      "Values": [
+        "Save game",
+        "게임 저장"
+      ]
+    },
+    {
+      "Key": "ui.pause.load",
+      "Values": [
+        "Load game",
+        "게임 불러오기"
+      ]
+    },
+    {
+      "Key": "ui.settings.title",
+      "Values": [
+        "Settings",
+        "설정"
+      ]
+    },
+    {
+      "Key": "setting.controls",
+      "Values": [
+        "Controls",
+        "조작"
+      ]
+    },
+    {
+      "Key": "setting.control_size",
+      "Values": [
+        "Control Size",
+        "조작 버튼 크기"
+      ]
+    },
+    {
+      "Key": "setting.audio",
+      "Values": [
+        "Audio",
+        "소리"
+      ]
+    },
+    {
+      "Key": "setting.master",
+      "Values": [
+        "Master Volume",
+        "전체 음량"
+      ]
+    },
+    {
+      "Key": "setting.music",
+      "Values": [
+        "BGM Volume",
+        "배경음 음량"
+      ]
+    },
+    {
+      "Key": "setting.sfx",
+      "Values": [
+        "SFX Volume",
+        "효과음 음량"
+      ]
+    },
+    {
+      "Key": "setting.language",
+      "Values": [
+        "Language",
+        "언어"
+      ]
+    },
+    {
+      "Key": "setting.reset",
+      "Values": [
+        "Reset to default",
+        "기본값으로 초기화"
+      ]
+    },
+    {
+      "Key": "ui.character.title",
+      "Values": [
+        "Character information",
+        "캐릭터 정보"
+      ]
+    },
+    {
+      "Key": "ui.character.level",
+      "Values": [
+        "Level {0}",
+        "레벨 {0}"
+      ]
+    },
+    {
+      "Key": "ui.character.progress",
+      "Values": [
+        "PROGRESS",
+        "성장"
+      ]
+    },
+    {
+      "Key": "ui.character.vitals",
+      "Values": [
+        "VITALS",
+        "생존 능력"
+      ]
+    },
+    {
+      "Key": "ui.character.health",
+      "Values": [
+        "Health   {0} / {1}",
+        "체력   {0} / {1}"
+      ]
+    },
+    {
+      "Key": "ui.character.defense",
+      "Values": [
+        "Defense   {0}",
+        "방어력   {0}"
+      ]
+    },
+    {
+      "Key": "ui.character.stamina",
+      "Values": [
+        "Stamina   {0} / {1}",
+        "기력   {0} / {1}"
+      ]
+    },
+    {
+      "Key": "ui.character.xp",
+      "Values": [
+        "XP   {0} / {1}",
+        "경험치   {0} / {1}"
+      ]
+    },
+    {
+      "Key": "ui.character.recovery",
+      "Values": [
+        "Recovery   {0:0.#} / s",
+        "기력 회복   초당 {0:0.#}"
+      ]
+    },
+    {
+      "Key": "ui.character.drain",
+      "Values": [
+        "Sprint drain   {0:0.#} / s",
+        "질주 소모   초당 {0:0.#}"
+      ]
+    },
+    {
+      "Key": "ui.character.condition",
+      "Values": [
+        "Rates at full condition",
+        "수치는 최상의 생존 상태 기준입니다"
+      ]
+    },
+    {
+      "Key": "ui.character.needs",
+      "Values": [
+        "Hunger {0:0} · Thirst {1:0}",
+        "배고픔 {0:0} · 갈증 {1:0}"
+      ]
+    },
+    {
+      "Key": "ui.skill.title",
+      "Values": [
+        "Skill tree",
+        "스킬 트리"
+      ]
+    },
+    {
+      "Key": "ui.skill.points",
+      "Values": [
+        "Skill points available: {0}",
+        "사용 가능한 스킬 포인트 {0}"
+      ]
+    },
+    {
+      "Key": "ui.skill.learn",
+      "Values": [
+        "Invest · {0} SP",
+        "투자 · {0} 포인트"
+      ]
+    },
+    {
+      "Key": "ui.skill.rank",
+      "Values": [
+        "Rank {0} / {1}",
+        "단계 {0} / {1}"
+      ]
+    },
+    {
+      "Key": "ui.skill.locked",
+      "Values": [
+        "Locked",
+        "잠김"
+      ]
+    },
+    {
+      "Key": "ui.skill.available",
+      "Values": [
+        "Available",
+        "투자 가능"
+      ]
+    },
+    {
+      "Key": "ui.skill.learned",
+      "Values": [
+        "Learned",
+        "습득"
+      ]
+    },
+    {
+      "Key": "ui.skill.complete",
+      "Values": [
+        "Complete",
+        "최대 단계"
+      ]
+    },
+    {
+      "Key": "ui.skill.insufficient",
+      "Values": [
+        "Not enough points",
+        "포인트 부족"
+      ]
+    },
+    {
+      "Key": "ui.skill.requires",
+      "Values": [
+        "Requires {0} rank {1}",
+        "{0} {1}단계 필요"
+      ]
+    },
+    {
+      "Key": "ui.skill.origin",
+      "Values": [
+        "SURVIVOR",
+        "생존자"
+      ]
+    },
+    {
+      "Key": "ui.skill.vitality.name",
+      "Values": [
+        "Vitality",
+        "활력"
+      ]
+    },
+    {
+      "Key": "ui.skill.endurance.name",
+      "Values": [
+        "Endurance",
+        "지구력"
+      ]
+    },
+    {
+      "Key": "ui.skill.recovery.name",
+      "Values": [
+        "Recovery",
+        "회복"
+      ]
+    },
+    {
+      "Key": "ui.skill.stride.name",
+      "Values": [
+        "Steady Stride",
+        "안정된 발걸음"
+      ]
+    },
+    {
+      "Key": "ui.skill.MaximumHealth.effect",
+      "Values": [
+        "+{0:0} maximum health per rank",
+        "단계마다 최대 체력 +{0:0}"
+      ]
+    },
+    {
+      "Key": "ui.skill.MaximumStamina.effect",
+      "Values": [
+        "+{0:0} maximum stamina per rank",
+        "단계마다 최대 기력 +{0:0}"
+      ]
+    },
+    {
+      "Key": "ui.skill.StaminaRecovery.effect",
+      "Values": [
+        "+{0:0}% stamina recovery per rank",
+        "단계마다 기력 회복 +{0:0}%"
+      ]
+    },
+    {
+      "Key": "ui.skill.SprintEfficiency.effect",
+      "Values": [
+        "+{0:0}% sprint efficiency per rank",
+        "단계마다 질주 효율 +{0:0}%"
+      ]
+    },
+    {
+      "Key": "ui.crafting.title",
+      "Values": [
+        "Crafting",
+        "제작"
+      ]
+    },
+    {
+      "Key": "ui.crafting.hand",
+      "Values": [
+        "Hand crafting",
+        "맨손 제작"
+      ]
+    },
+    {
+      "Key": "ui.crafting.all",
+      "Values": [
+        "All",
+        "전체"
+      ]
+    },
+    {
+      "Key": "ui.crafting.ready_only",
+      "Values": [
+        "Craftable only",
+        "제작 가능한 것만"
+      ]
+    },
+    {
+      "Key": "ui.crafting.show_all",
+      "Values": [
+        "Show all",
+        "모두 보기"
+      ]
+    },
+    {
+      "Key": "ui.crafting.upgrade",
+      "Values": [
+        "Upgrade II · {0}",
+        "II로 개량 · {0}"
+      ]
+    },
+    {
+      "Key": "ui.crafting.material",
+      "Values": [
+        "{0} {1} / {2}",
+        "{0} {1} / {2}"
+      ]
+    },
+    {
+      "Key": "ui.crafting.new",
+      "Values": [
+        "NEW",
+        "신규"
+      ]
+    },
+    {
+      "Key": "ui.crafting.seconds",
+      "Values": [
+        "{0:0} s",
+        "{0:0}초"
+      ]
+    },
+    {
+      "Key": "ui.crafting.processing",
+      "Values": [
+        "Processing · {0:0} s",
+        "처리 중 · {0:0}초"
+      ]
+    },
+    {
+      "Key": "ui.crafting.ready",
+      "Values": [
+        "Ready",
+        "완료"
+      ]
+    },
+    {
+      "Key": "ui.crafting.station",
+      "Values": [
+        "Requires {0}",
+        "{0} 필요"
+      ]
+    },
+    {
+      "Key": "ui.crafting.full",
+      "Values": [
+        "Inventory full",
+        "인벤토리가 가득 찼습니다"
+      ]
+    },
+    {
+      "Key": "ui.crafting.queue",
+      "Values": [
+        "Input {0} · Waiting {1}\nOutput {2}",
+        "투입 {0} · 대기 {1}\n완료 {2}"
+      ]
+    },
+    {
+      "Key": "ui.crafting.current",
+      "Values": [
+        "Current: {0} · {1:0.#} s",
+        "처리 중: {0} · {1:0.#}초"
+      ]
+    },
+    {
+      "Key": "ui.crafting.idle",
+      "Values": [
+        "No active item",
+        "처리 중인 아이템 없음"
+      ]
+    },
+    {
+      "Key": "ui.crafting.blocked_output",
+      "Values": [
+        "Output full · collect results to continue",
+        "결과 보관함 가득 참 · 결과를 꺼내면 재개합니다"
+      ]
+    },
+    {
+      "Key": "ui.hud.level",
+      "Values": [
+        "Lv. {0}",
+        "Lv. {0}"
+      ]
+    },
+    {
+      "Key": "ui.hud.day",
+      "Values": [
+        "Day {0} · {1}",
+        "{0}일 · {1}"
+      ]
+    },
+    {
+      "Key": "ui.phase.Dawn",
+      "Values": [
+        "Dawn",
+        "새벽"
+      ]
+    },
+    {
+      "Key": "ui.phase.Day",
+      "Values": [
+        "Day",
+        "낮"
+      ]
+    },
+    {
+      "Key": "ui.phase.Evening",
+      "Values": [
+        "Evening",
+        "해질녘"
+      ]
+    },
+    {
+      "Key": "ui.phase.Night",
+      "Values": [
+        "Night",
+        "밤"
+      ]
+    },
+    {
+      "Key": "ui.game.defeat",
+      "Values": [
+        "You fell in the wild",
+        "야생에서 쓰러졌습니다"
+      ]
+    },
+    {
+      "Key": "ui.game.restart",
+      "Values": [
+        "Restart",
+        "다시 시작"
+      ]
+    },
+    {
+      "Key": "feedback.empty_cup",
+      "Values": [
+        "Bring an empty cup",
+        "빈 컵이 필요합니다"
+      ]
+    },
+    {
+      "Key": "feedback.bag_full",
+      "Values": [
+        "Make room in your bag",
+        "인벤토리에 빈 공간이 필요합니다"
+      ]
+    },
+    {
+      "Key": "feedback.cup_space",
+      "Values": [
+        "Make room for your empty cup",
+        "빈 컵을 위한 공간이 필요합니다"
+      ]
+    },
+    {
+      "Key": "feedback.slot_space",
+      "Values": [
+        "Choose a slot with room",
+        "공간이 있는 슬롯을 선택하세요"
+      ]
+    },
+    {
+      "Key": "feedback.upgrade",
+      "Values": [
+        "Gather the upgrade materials",
+        "개량 재료가 부족합니다"
+      ]
+    },
+    {
+      "Key": "feedback.saved",
+      "Values": [
+        "Game saved",
+        "게임을 저장했습니다"
+      ]
+    },
+    {
+      "Key": "feedback.save_failed",
+      "Values": [
+        "Couldn't save. Please try again",
+        "저장하지 못했습니다. 다시 시도하세요"
+      ]
+    },
+    {
+      "Key": "feedback.load_failed",
+      "Values": [
+        "Couldn't load your saved game",
+        "저장한 게임을 불러오지 못했습니다"
+      ]
+    },
+    {
+      "Key": "ui.slot.Head",
+      "Values": [
+        "Head",
+        "머리"
+      ]
+    },
+    {
+      "Key": "ui.slot.Body",
+      "Values": [
+        "Body",
+        "몸통"
+      ]
+    },
+    {
+      "Key": "ui.category.Survival",
+      "Values": [
+        "Survival",
+        "생존"
+      ]
+    },
+    {
+      "Key": "ui.category.Tools",
+      "Values": [
+        "Tools",
+        "도구"
+      ]
+    },
+    {
+      "Key": "ui.category.Weapons",
+      "Values": [
+        "Weapons",
+        "무기"
+      ]
+    },
+    {
+      "Key": "ui.category.Armor",
+      "Values": [
+        "Armor",
+        "방어구"
+      ]
+    },
+    {
+      "Key": "ui.category.Building",
+      "Values": [
+        "Building",
+        "건축"
+      ]
+    },
+    {
+      "Key": "ui.category.Facilities",
+      "Values": [
+        "Facilities",
+        "시설"
+      ]
+    },
+    {
+      "Key": "ui.item_category.Material",
+      "Values": [
+        "Material",
+        "재료"
+      ]
+    },
+    {
+      "Key": "ui.item_category.Tool",
+      "Values": [
+        "Tool",
+        "도구"
+      ]
+    },
+    {
+      "Key": "ui.item_category.Placeable",
+      "Values": [
+        "Placeable",
+        "설치물"
+      ]
+    },
+    {
+      "Key": "ui.item_category.Weapon",
+      "Values": [
+        "Weapon",
+        "무기"
+      ]
+    },
+    {
+      "Key": "ui.item_category.Consumable",
+      "Values": [
+        "Consumable",
+        "소모품"
+      ]
+    },
+    {
+      "Key": "ui.item_category.Armor",
+      "Values": [
+        "Armor",
+        "방어구"
+      ]
+    },
+    {
+      "Key": "ui.item_category.Container",
+      "Values": [
+        "Container",
+        "용기"
+      ]
+    },
+    {
+      "Key": "item.axe.name",
+      "Values": [
+        "Wood Axe",
+        "나무 도끼"
+      ]
+    },
+    {
+      "Key": "item.campfire.name",
+      "Values": [
+        "Campfire",
+        "모닥불"
+      ]
+    },
+    {
+      "Key": "item.cooked_meat.name",
+      "Values": [
+        "Cooked Meat",
+        "구운 고기"
+      ]
+    },
+    {
+      "Key": "item.furnace.name",
+      "Values": [
+        "Furnace",
+        "용광로"
+      ]
+    },
+    {
+      "Key": "item.iron_axe.name",
+      "Values": [
+        "Iron Axe",
+        "철 도끼"
+      ]
+    },
+    {
+      "Key": "item.iron_body.name",
+      "Values": [
+        "Iron Guard",
+        "철 보호구"
+      ]
+    },
+    {
+      "Key": "item.iron_head.name",
+      "Values": [
+        "Iron Helmet",
+        "철 투구"
+      ]
+    },
+    {
+      "Key": "item.iron_ingot.name",
+      "Values": [
+        "Iron Ingot",
+        "철괴"
+      ]
+    },
+    {
+      "Key": "item.iron_ore.name",
+      "Values": [
+        "Iron Ore",
+        "철광석"
+      ]
+    },
+    {
+      "Key": "item.iron_pickaxe.name",
+      "Values": [
+        "Iron Pickaxe",
+        "철 곡괭이"
+      ]
+    },
+    {
+      "Key": "item.iron_sword.name",
+      "Values": [
+        "Iron Sword",
+        "철 검"
+      ]
+    },
+    {
+      "Key": "item.leather.name",
+      "Values": [
+        "Leather",
+        "가죽"
+      ]
+    },
+    {
+      "Key": "item.leather_body.name",
+      "Values": [
+        "Leather Guard",
+        "가죽 보호구"
+      ]
+    },
+    {
+      "Key": "item.leather_head.name",
+      "Values": [
+        "Leather Cap",
+        "가죽 모자"
+      ]
+    },
+    {
+      "Key": "item.pickaxe.name",
+      "Values": [
+        "Wood Pickaxe",
+        "나무 곡괭이"
+      ]
+    },
+    {
+      "Key": "item.raw_meat.name",
+      "Values": [
+        "Raw Meat",
+        "생고기"
+      ]
+    },
+    {
+      "Key": "item.reinforced_chest.name",
+      "Values": [
+        "Reinforced Chest",
+        "강화 상자"
+      ]
+    },
+    {
+      "Key": "item.stone.name",
+      "Values": [
+        "Stone",
+        "돌"
+      ]
+    },
+    {
+      "Key": "item.stone_axe.name",
+      "Values": [
+        "Stone Axe",
+        "돌 도끼"
+      ]
+    },
+    {
+      "Key": "item.stone_pickaxe.name",
+      "Values": [
+        "Stone Pickaxe",
+        "돌 곡괭이"
+      ]
+    },
+    {
+      "Key": "item.stone_sword.name",
+      "Values": [
+        "Stone Sword",
+        "돌 검"
+      ]
+    },
+    {
+      "Key": "item.stone_wall.name",
+      "Values": [
+        "Stone Wall",
+        "돌 벽"
+      ]
+    },
+    {
+      "Key": "item.wood.name",
+      "Values": [
+        "Wood",
+        "목재"
+      ]
+    },
+    {
+      "Key": "item.wood_door.name",
+      "Values": [
+        "Wood Door",
+        "나무 문"
+      ]
+    },
+    {
+      "Key": "item.wood_sword.name",
+      "Values": [
+        "Wood Sword",
+        "나무 검"
+      ]
+    },
+    {
+      "Key": "item.wood_wall.name",
+      "Values": [
+        "Wood Wall",
+        "나무 벽"
+      ]
+    },
+    {
+      "Key": "item.workbench.name",
+      "Values": [
+        "Workbench I",
+        "제작대 I"
+      ]
+    },
+    {
+      "Key": "item.workbench_ii.name",
+      "Values": [
+        "Workbench II",
+        "제작대 II"
+      ]
+    },
+    {
+      "Key": "item.clean_water_cup.name",
+      "Values": [
+        "Cup of Clean Water",
+        "정수 물 컵"
+      ]
+    },
+    {
+      "Key": "item.empty_cup.name",
+      "Values": [
+        "Wooden Cup",
+        "나무 컵"
+      ]
+    },
+    {
+      "Key": "item.feather.name",
+      "Values": [
+        "Feather",
+        "깃털"
+      ]
+    },
+    {
+      "Key": "item.raw_water_cup.name",
+      "Values": [
+        "Cup of Raw Water",
+        "미정수 물 컵"
+      ]
+    },
+    {
+      "Key": "item.storage_chest.name",
+      "Values": [
+        "Storage Chest",
+        "보관 상자"
+      ]
+    },
+    {
+      "Key": "ui.crafting.smelting",
+      "Values": [
+        "Smelting · {0:0} s",
+        "제련 중 · {0:0}초"
+      ]
+    },
+    {
+      "Key": "ui.crafting.cooking",
+      "Values": [
+        "Cooking · {0:0} s",
+        "요리 중 · {0:0}초"
+      ]
+    },
+    {
+      "Key": "ui.split.instruction",
+      "Values": [
+        "Choose how many to move",
+        "이동할 수량을 선택하세요"
+      ]
+    },
+    {
+      "Key": "ui.split.half",
+      "Values": [
+        "Half",
+        "절반"
+      ]
+    },
+    {
+      "Key": "ui.split.confirm",
+      "Values": [
+        "Confirm",
+        "확인"
+      ]
+    },
+    {
+      "Key": "ui.crafting.owned",
+      "Values": [
+        "In bag: {0}",
+        "보유 수량: {0}"
+      ]
+    },
+    {
+      "Key": "ui.crafting.damage",
+      "Values": [
+        "Damage: {0}",
+        "공격력: {0}"
+      ]
+    },
+    {
+      "Key": "ui.crafting.health",
+      "Values": [
+        "Structure health: {0}",
+        "구조물 체력: {0}"
+      ]
+    },
+    {
+      "Key": "ui.crafting.storage",
+      "Values": [
+        "Storage: {0} slots",
+        "보관 공간: {0}칸"
+      ]
+    },
+    {
+      "Key": "ui.crafting.input_output",
+      "Values": [
+        "{0} → {1}",
+        "{0} → {1}"
+      ]
+    }
+  ]
+}

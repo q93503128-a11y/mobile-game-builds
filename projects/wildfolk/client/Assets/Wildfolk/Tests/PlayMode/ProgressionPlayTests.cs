@@ -90,7 +90,7 @@ namespace Wildfolk.Tests
             Assert.That(Card("cooked_meat").gameObject.activeSelf,Is.False);yield return input.Click(Card("iron_ingot").CraftButton);
             var processor=furnace.GetComponent<StationProcessing>();Assert.That(processor.IsBusy,Is.True);Assert.That(inventory.Model.CountItem(smelt.Ingredients[0].Item),Is.Zero);
             yield return new WaitForSeconds(.3f);Assert.That(Card("iron_ingot").Status.text,Does.Contain("Smelting"));
-            yield return new WaitForSeconds(6.1f);yield return input.Click(Card("iron_ingot").CraftButton);Assert.That(inventory.Model.CountItem(smelt.Result),Is.EqualTo(1));
+            yield return new WaitForSeconds(2.1f);yield return input.Click(Object.FindFirstObjectByType<CraftingPanel>().Collect);Assert.That(inventory.Model.CountItem(smelt.Result),Is.EqualTo(1));
             hud.Session.CloseInventory();Object.Destroy(furnace.gameObject);yield return null;var bench=Place("workbench",new Vector2(0,-2.45f)).GetComponent<CraftingStation>();yield return null;
             var iron=Recipe("iron_sword");foreach(var cost in iron.Ingredients)inventory.Model.Add(cost.Item,cost.Count);Assert.That(crafting.OpenStation(bench),Is.True);Assert.That(crafting.Craft(iron),Is.EqualTo(CraftStatus.Ready));
             Assert.That(inventory.Model.CountItem(iron.Result),Is.EqualTo(1));Assert.That(iron.Result.Tool.Tier.Rank,Is.EqualTo(3));
@@ -104,8 +104,8 @@ namespace Wildfolk.Tests
             Assert.That(scroll.content.rect.height,Is.GreaterThan(scroll.viewport.rect.height));
             yield return input.Drag(scroll,PlayPointerDriver.Point(scroll)+Vector2.up*220);
             Assert.That(scroll.verticalNormalizedPosition,Is.LessThan(1));
-            var target=(RectTransform)Card("storage_chest").transform;
-            var offset=Mathf.Max(0,-target.anchoredPosition.y-scroll.viewport.rect.height*.5f);
+            var target=(RectTransform)Card("storage_chest").CraftButton.transform;
+            var bounds=RectTransformUtility.CalculateRelativeRectTransformBounds(scroll.content,target);var offset=Mathf.Max(0,-bounds.center.y-scroll.viewport.rect.height*.5f);
             scroll.verticalNormalizedPosition=Mathf.Clamp01(1-offset/(scroll.content.rect.height-scroll.viewport.rect.height));yield return null;yield return null;
             yield return input.Click(Card("storage_chest").CraftButton);Assert.That(inventory.Model.CountItem(Recipe("storage_chest").Result),Is.EqualTo(1));
         }
@@ -124,7 +124,7 @@ namespace Wildfolk.Tests
             var armor=ScriptableObject.CreateInstance<ArmorDefinition>();var item=ScriptableObject.CreateInstance<ItemDefinition>();
             try
             {
-                armor.Defense=3;armor.WornSprite=Recipe("workbench").Result.Icon;item.Id="armor_fixture";item.DisplayName="Armor";item.MaxStack=1;item.Category=ItemCategory.Armor;item.Armor=armor;item.Icon=armor.WornSprite;
+                armor.Defense=3;armor.WornSprite=Recipe("workbench").Result.Icon;item.Id="leather_body";item.DisplayName="Armor";item.MaxStack=1;item.Category=ItemCategory.Armor;item.Armor=armor;item.Icon=armor.WornSprite;
                 inventory.Model.Add(item,1);inventory.SelectSlot(0);yield return null;
                 var equipment=player.GetComponent<PlayerEquipment>();Assert.That(equipment.TryEquipSelectedArmor(),Is.True);Assert.That(inventory.Model.CountItem(item),Is.Zero);Assert.That(equipment.Defense,Is.EqualTo(3));Assert.That(equipment.ArmorVisual.enabled,Is.True);
                 var health=player.GetComponent<Health>();var before=health.Current;health.ApplyDamage(8);Assert.That(before-health.Current,Is.EqualTo(5));before=health.Current;health.ApplyDamage(2,true);Assert.That(before-health.Current,Is.EqualTo(2));

@@ -28,9 +28,10 @@ namespace Wildfolk.Editor
         internal static Text Text(string name,Transform parent,string value,Vector2 position,Vector2 size,int fontSize,TextAnchor alignment=TextAnchor.MiddleCenter)
         {
             var text=Rect(name,parent,new Vector2(.5f,.5f),position,size).gameObject.AddComponent<Text>();
-            text.font=Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
-            text.text=value;
-            text.fontSize=fontSize;
+            text.font=Resources.Load<Font>("NotoSansKR");
+            text.text=L.Has(value) ? L.Text(value) : value;
+            if(L.Has(value)){var localized=text.gameObject.AddComponent<LocalizedLabel>();localized.Key=value;}
+            text.fontSize=fontSize;text.verticalOverflow=VerticalWrapMode.Overflow;text.lineSpacing=.92f;
             text.alignment=alignment;
             text.color=new Color32(226,222,193,255);
             text.raycastTarget=false;

@@ -17,6 +17,17 @@ namespace Wildfolk.Editor
         {var service=Context();if(!service.World.Map.IsWalkable(p,.6f))throw new ArgumentException("Choose traversable terrain.");var body=service.Player.GetComponent<Rigidbody2D>();body.position=p;body.linearVelocity=Vector2.zero;service.Player.transform.position=p;Physics2D.SyncTransforms();}
         public static void GenerateWorld(int seed){var service=Context();foreach(var placed in UnityEngine.Object.FindObjectsByType<WorldPlaceable>(FindObjectsSortMode.None)){placed.gameObject.SetActive(false);UnityEngine.Object.Destroy(placed.gameObject);}ClearEnemies(10000);service.World.Generate(seed);}
         public static void Regenerate()=>GenerateWorld(Context().World.Seed);
+        public static int ForceResourceRecovery()=>Context().World.Renewal.Tick();
+        public static int AdvanceResourceRecovery(float seconds)
+        {var s=Context();s.Clock.Model.SetElapsed(s.Clock.Model.Elapsed+Mathf.Max(0,seconds));return s.World.Renewal.Tick();}
+        public static string ResourcePopulationReport()
+        {
+            var s=Context();var population=s.World.Renewal.Population;var text=new System.Text.StringBuilder();
+            for(var r=0;r<s.World.Definition.Resources.Length;r++){var count=0;var target=0;for(var region=0;region<ResourcePopulation.Columns*ResourcePopulation.Rows;region++){count+=population.Count(r,region);target+=population.Target(r,region);}text.AppendLine(s.World.Definition.Resources[r].Prefab.name+": "+count+" / regional target "+target);}
+            text.AppendLine("Pending regions: "+population.Pending.Count+" · Harvest exclusions: "+population.Harvests.Count);
+            foreach(var ticket in population.Pending)text.AppendLine("Rule "+ticket.Rule+" / region "+ticket.Region+" / remaining "+Math.Max(0,ticket.Due-s.Clock.Model.Elapsed).ToString("0")+"s");
+            foreach(var h in population.Harvests)text.AppendLine("Harvest rule "+h.Rule+" at "+h.Position+" / exclusion remaining "+Math.Max(0,h.Until-s.Clock.Model.Elapsed).ToString("0")+"s");return text.ToString();
+        }
         public static void ClearEnemies(float radius=30)
         {var player=Context().Player.transform;foreach(var health in UnityEngine.Object.FindObjectsByType<Health>(FindObjectsSortMode.None))if((health.GetComponent<EnemyController>()!=null || health.GetComponent<GoblinController>()!=null) && Vector2.Distance(health.transform.position,player.position)<=radius)PrefabPool.Release(health.gameObject);}
         public static Component Spawn(string kind,Vector2 p)

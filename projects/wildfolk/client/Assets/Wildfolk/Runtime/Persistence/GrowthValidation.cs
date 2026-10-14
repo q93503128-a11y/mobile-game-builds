@@ -17,7 +17,7 @@ namespace Wildfolk
             long earned=state.CurrentXP;for(var level=1;level<state.Level;level++)earned+=data.RequiredXP(level);
             if(earned!=xp || state.Level<data.MaximumLevel && state.CurrentXP>=data.RequiredXP(state.Level))throw new InvalidDataException("Invalid XP curve state");
             var spent=0;var ids=new HashSet<string>();foreach(var skill in state.Skills)
-            {if(skill==null || !ids.Add(skill.Id))throw new InvalidDataException("Invalid skill ID");CharacterSkill definition=null;foreach(var s in data.Skills)if(s.Id==skill.Id)definition=s;if(definition==null || skill.Rank<0 || skill.Rank>definition.MaximumRank)throw new InvalidDataException("Invalid skill rank");spent+=skill.Rank;}
+            {if(skill==null || !ids.Add(skill.Id))throw new InvalidDataException("Invalid skill ID");CharacterSkill definition=null;foreach(var s in data.Skills)if(s.Id==skill.Id)definition=s;if(definition==null || skill.Rank<0 || skill.Rank>definition.MaximumRank)throw new InvalidDataException("Invalid skill rank");spent+=skill.Rank*definition.PointCost;}
             if(spent+state.Points!=(state.Level-1)*data.PointsPerLevel)throw new InvalidDataException("Invalid skill points");
         }
         public static float Bonus(GrowthSnapshot state,CharacterGrowthDefinition data,SkillEffect effect)

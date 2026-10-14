@@ -4,11 +4,13 @@
 
 Level1~20, 필요XP35+(Level−1)×20,Up마다Point1. 남은XP를유지하며상한이후XP는같은Level에쌓는다. 현재Zombie5/Goblin8 XP보상을변경하지않았다. Rank3인Vitality(MaxHP+10)/Endurance(MaxStamina+15)/Recovery(+15%)/Steady Stride(+12%)를Point1로투자한다. 부족/최대Rank면거절하고Respec은없다. HP투자는최대량만증가하며무료즉시회복을추가하지않았다.
 
-Profile는큰외곽패널없이원형초상/Level/HP/얇은XP/Hunger·Thirst/Point알림을둔다. Character의Information/Equipment/Skills는게임세계는진행하고플레이입력은막는다. Equipment에서Head/Body교체·해제,현재Weapon/Tool을확인한다. 가방공간없으면해제하지않는다.
+Profile Icon은 Character Information을 연다. Level/XP/HP/Defense/Stamina/회복·소모 수치와 보유 Point를 보여주고 독립 Skill Tree로 이동한다. 세 탭과 Profile 장비 목록은 제거했다. 장착/비교/해제는 Inventory의 Head/Body 슬롯 한 곳에서만 수행한다. 메뉴에서는 플레이 입력을 차단하고 세계 진행은 유지한다.
 
-Skin과Gear는별도렌더러다. Base Skin/Head Gear/Body 외곽/Hand Gear/단일Back Slot/Optional FX로구분한다. 기본몸통은회전하지않으며Eyes/Hands와외곽Gear가Facing을읽게한다. Backpack/Cape/영구Skin/Transmog는콘텐츠가없고Back Slot은향후한개만장착하는방향이다.
+실제 노드 4개와 연결선을 사용한다. Vitality와 Endurance는 처음부터 투자 가능하며 Recovery/Steady Stride는 Endurance Rank1이 선행 조건이다. Rank당 Point1/최대3은 유지한다. Locked/Available/Learned/현재 Rank/비용/상세/투자 불가 사유를 표시한다. v2에서 이미 습득한 Rank는 선행 조건이 없더라도 보존하고 추가 Rank 투자를 허용한다. Sprint/Dash 자체는 처음부터 사용 가능하다. 가짜 미래 노드는 없다.
 
-Stamina는Sprint/Dash공통이다. 보행은무료,Joystick0.9이상0.4초로Sprint,유지0.72,정지/고갈/심한허기·갈증에서Walk로전환한다. 고갈후20회복과새Hold가필요하다. Dash는이동입력또는Facing으로Cost24/거리2.6/시간0.18/Cooldown0.55다. 장애물/깊은물/모든메뉴입력차단을유지하고무적·타격은없다. Full이면Hud를숨기며사용후회복/0.7초대기뒤fade한다.
+Skin과Gear는별도렌더러다. 모두 공통 Motion Root 아래에서 Walking Bob/Scale을 공유하고 Hand Gear는 실제 Hand의 자식이다. Base Skin/Head Gear/Body 외곽/Hand Gear/단일Back Slot/Optional FX로구분한다. 기본몸통은회전하지않으며Eyes/Hands와외곽Gear가Facing을읽게한다. Backpack/Cape/영구Skin/Transmog는콘텐츠가없고Back Slot은향후한개만장착하는방향이다.
+
+Stamina는Sprint/Dash공통이다. 보행은무료,Joystick0.9이상0.4초로Sprint,유지0.72,정지/고갈/심한허기·갈증에서Walk로전환한다. 고갈후20회복과새Hold가필요하다. Dash는이동입력또는Facing으로Cost24/거리2.6/시간0.18/Cooldown0.55다. 장애물/깊은물/모든메뉴입력차단을유지하고무적·타격은없다. Stamina는 Player 아래쪽 120도 Arc로 표시하며 몸통/손/머리 위 HP를 피한다. 좌상단 Stamina는 제거했다. Full 회복 후0.7초 뒤fade하고 메뉴 중에는 숨긴다. Dash Icon은 전진 Double Chevron이다.
 
 Developer Test Console은Editor전용이고Early/Stone/Iron/Workbench II프로필을공유한다. Main Menu/World Select/계정Pet/MetaCoin/영구Skin/번식/고티어/전문Bench/Turret/Dungeon/NewBiome는구현하지않았다.
 

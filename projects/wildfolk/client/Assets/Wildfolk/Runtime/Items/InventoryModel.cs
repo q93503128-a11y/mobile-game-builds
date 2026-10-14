@@ -112,6 +112,12 @@ namespace Wildfolk
             if(!RemoveCosts(next,costs)) return false;
             Array.Copy(next,slots,slots.Length);Changed?.Invoke();return true;
         }
+        public bool TryAddAmounts(ItemAmount[] amounts)
+        {
+            var next=(ItemStack[])slots.Clone();
+            foreach(var amount in amounts){Validate(amount.Item,amount.Count);if(AddTo(next,amount.Item,amount.Count)!=amount.Count)return false;}
+            Array.Copy(next,slots,slots.Length);Changed?.Invoke();return true;
+        }
         private static bool RemoveCosts(ItemStack[] next,ItemAmount[] costs)
         {
             foreach (var cost in costs)

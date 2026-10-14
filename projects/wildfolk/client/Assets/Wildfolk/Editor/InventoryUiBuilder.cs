@@ -9,36 +9,39 @@ namespace Wildfolk.Editor
     {
         internal static void Build(GameObject root,Transform safe,GameplaySession session,PlayerInventory owner,PlayerCrafting crafting,int count)
         {
-            var panel=root.AddComponent<InventoryPanel>();panel.Session=session;panel.Owner=owner;panel.Storage=owner.GetComponent<PlayerStorage>();
+            var panel=root.AddComponent<InventoryPanel>();panel.Session=session;panel.Owner=owner;panel.Storage=owner.GetComponent<PlayerStorage>();panel.Crafting=crafting;
             var drag=root.AddComponent<InventoryDragController>();drag.Owner=owner;drag.Session=session;drag.Storage=panel.Storage;drag.CanvasRect=(RectTransform)safe;
             var overlay=Scrim("Inventory Overlay",safe);panel.View=overlay.gameObject;
-            var surface=Image("Inventory Panel",overlay.transform,"panel",new Vector2(.5f,.5f),Vector2.zero,new Vector2(1520,850),true);
-            var fit=surface.gameObject.AddComponent<ModalLayout>();fit.SafeArea=(RectTransform)safe;fit.TopReserve=CharacterUiBuilder.ProfileBottomReserve;fit.ReferenceSize=new Vector2(1520,850);
-            Text("Title",surface.transform,"Inventory",new Vector2(-562,363),new Vector2(296,52),34,TextAnchor.MiddleLeft);
-            var close=Image("Close",surface.transform,"panel",new Vector2(.5f,.5f),new Vector2(680,363),new Vector2(64,64),true);
+            var surface=Image("Inventory Panel",overlay.transform,"panel",new Vector2(.5f,.5f),Vector2.zero,new Vector2(1520,740),true);
+            QualityUiBuilder.Matte(surface.transform,new Vector2(1520,740));var fit=surface.gameObject.AddComponent<ModalLayout>();fit.SafeArea=(RectTransform)safe;fit.TopReserve=CharacterUiBuilder.ProfileBottomReserve;fit.ReferenceSize=new Vector2(1520,740);
+            Text("Title",surface.transform,"ui.inventory.title",new Vector2(-556,312),new Vector2(296,52),34,TextAnchor.MiddleLeft);
+            var close=Image("Close",surface.transform,"panel",new Vector2(.5f,.5f),new Vector2(680,312),new Vector2(64,64),true);
             Text("Close Symbol",close.transform,"×",Vector2.zero,new Vector2(58,58),40);
             UnityEventTools.AddPersistentListener(Button(close).onClick,session.CloseInventory);
-            Text("Storage Label",surface.transform,"Storage",new Vector2(-604,299),new Vector2(180,32),23,TextAnchor.MiddleLeft);
-            var storage=Grid("Storage Slots",surface.transform,new Vector2(-248,114),new Vector2(892,292));
-            Text("Hotbar Label",surface.transform,"Hotbar",new Vector2(-604,-67),new Vector2(180,32),23,TextAnchor.MiddleLeft);
-            var quick=Grid("Hotbar Slots",surface.transform,new Vector2(-248,-154),new Vector2(892,92));
+            Text("Storage Label",surface.transform,"ui.inventory.storage",new Vector2(-292,245),new Vector2(180,32),23,TextAnchor.MiddleLeft);
+            var storage=Grid("Storage Slots",surface.transform,new Vector2(-16,92),new Vector2(752,252));
+            Text("Hotbar Label",surface.transform,"ui.inventory.hotbar",new Vector2(-292,-55),new Vector2(180,32),23,TextAnchor.MiddleLeft);
+            var quick=Grid("Hotbar Slots",surface.transform,new Vector2(-16,-127),new Vector2(752,78));
             panel.Slots=new InventorySlotView[count];
             for(var i=0;i<count;i++)
             {
-                var slot=Slot(i<PlayerInventory.HotbarSize ? quick : storage,i,92,i<PlayerInventory.HotbarSize);
+                var slot=Slot(i<PlayerInventory.HotbarSize ? quick : storage,i,78,i<PlayerInventory.HotbarSize);
                 var view=slot.GetComponent<InventorySlotView>();panel.Slots[i]=view;
                 UnityEventTools.AddIntPersistentListener(Button(slot).onClick,panel.Select,i);
                 var handler=slot.gameObject.AddComponent<InventorySlotDrag>();handler.Controller=drag;handler.View=view;handler.Index=i;
             }
-            panel.SelectedIcon=Image("Selected Icon",surface.transform,"white",new Vector2(.5f,.5f),new Vector2(-646,-300),new Vector2(58,72));panel.SelectedIcon.preserveAspect=true;
-            panel.SelectedName=Text("Selected Name",surface.transform,string.Empty,new Vector2(-409,-284),new Vector2(320,36),28,TextAnchor.MiddleLeft);
-            panel.SelectedCategory=Text("Category",surface.transform,string.Empty,new Vector2(-409,-319),new Vector2(320,28),20,TextAnchor.MiddleLeft);
-            BuildCrafting(root,surface.transform,crafting);
+            storage.GetComponent<GridLayoutGroup>().cellSize=quick.GetComponent<GridLayoutGroup>().cellSize=new Vector2(78,78);storage.GetComponent<GridLayoutGroup>().spacing=quick.GetComponent<GridLayoutGroup>().spacing=new Vector2(6,6);
+            panel.SelectedIcon=Image("Selected Icon",surface.transform,"white",new Vector2(.5f,.5f),new Vector2(415,205),new Vector2(58,72));panel.SelectedIcon.preserveAspect=true;
+            panel.SelectedName=Text("Selected Name",surface.transform,string.Empty,new Vector2(556,205),new Vector2(222,90),28,TextAnchor.MiddleLeft);
+            panel.SelectedCategory=Text("Category",surface.transform,string.Empty,new Vector2(545,115),new Vector2(320,28),20,TextAnchor.MiddleLeft);
+            BuildEquipment(root,surface.transform,owner,panel);
+            panel.CraftingButton=QualityUiBuilder.Action(surface.transform,"Crafting","ui.crafting.title",new Vector2(479,312),new Vector2(250,64),crafting.OpenHandCrafting,out var craftLabel);
+            CraftingUiBuilder.Build(root,safe,crafting);
             overlay.gameObject.SetActive(false);
-            var split=Image("Split",surface.transform,"panel",new Vector2(.5f,.5f),new Vector2(-10,-300),new Vector2(168,58),true);Text("Label",split.transform,"Split",Vector2.zero,new Vector2(156,50),22);drag.SplitButton=Button(split);UnityEventTools.AddPersistentListener(drag.SplitButton.onClick,drag.OpenSplit);
+            var split=Image("Split",surface.transform,"panel",new Vector2(.5f,.5f),new Vector2(541,-281),new Vector2(168,58),true);Text("Label",split.transform,"ui.action.split",Vector2.zero,new Vector2(156,50),22);drag.SplitButton=Button(split);UnityEventTools.AddPersistentListener(drag.SplitButton.onClick,drag.OpenSplit);
             drag.ItemDrop=owner.GetComponent<PlayerItemDrop>();
             ChestUiBuilder.Build(root,safe,owner,panel.Storage,drag);
-            var dropZone=Image("Drop Zone",safe,"panel",new Vector2(.5f,1),new Vector2(0,-128),new Vector2(320,88),true);dropZone.color=new Color32(155,108,72,255);Text("Label",dropZone.transform,"Drop to ground",Vector2.zero,new Vector2(300,68),27);
+            var dropZone=Image("Drop Zone",safe,"panel",new Vector2(.5f,1),new Vector2(0,-128),new Vector2(320,88),true);dropZone.color=new Color32(155,108,72,255);Text("Label",dropZone.transform,"ui.inventory.drop",Vector2.zero,new Vector2(300,68),27);
             dropZone.gameObject.AddComponent<InventoryDropZone>().Controller=drag;drag.DropZone=dropZone.gameObject;drag.DropZone.SetActive(false);
             var ghost=Rect("Dragged Item",safe,new Vector2(.5f,.5f),Vector2.zero,new Vector2(94,94));
             var group=ghost.gameObject.AddComponent<CanvasGroup>();group.blocksRaycasts=false;group.interactable=false;
@@ -58,49 +61,18 @@ namespace Wildfolk.Editor
             return grid;
         }
 
-        private static void BuildCrafting(GameObject root,Transform surface,PlayerCrafting owner)
+        private static void BuildEquipment(GameObject root,Transform surface,PlayerInventory player,InventoryPanel panel)
         {
-            var panel=root.AddComponent<CraftingPanel>();panel.Owner=owner;
-            panel.Title=Text("Crafting Title",surface,"Hand crafting",new Vector2(488,312),new Vector2(416,44),28,TextAnchor.MiddleLeft);
-            var viewport=Image("Recipes",surface,"white",new Vector2(.5f,.5f),new Vector2(488,-76),new Vector2(416,472),true);viewport.color=new Color(0,0,0,0);viewport.gameObject.AddComponent<RectMask2D>();
-            var list=Rect("Recipe List",viewport.transform,new Vector2(.5f,1),Vector2.zero,new Vector2(416,600));list.pivot=new Vector2(.5f,1);
-            var scroll=viewport.gameObject.AddComponent<ScrollRect>();scroll.viewport=(RectTransform)viewport.transform;scroll.content=list;scroll.horizontal=false;scroll.vertical=true;scroll.inertia=false;scroll.movementType=ScrollRect.MovementType.Clamped;scroll.scrollSensitivity=60;panel.Scroll=scroll;
-            var category=Image("Recipe Categories",surface,"panel",new Vector2(.5f,.5f),new Vector2(429,258),new Vector2(288,48),true);panel.CategoryLabel=Text("Label",category.transform,"All categories ›",Vector2.zero,new Vector2(272,44),22);UnityEventTools.AddPersistentListener(Button(category).onClick,panel.ToggleCategories);
-            var filter=Image("Filter",surface,"panel",new Vector2(.5f,.5f),new Vector2(640,258),new Vector2(126,48),true);panel.FilterLabel=Text("Label",filter.transform,"Show all",Vector2.zero,new Vector2(118,42),17);UnityEventTools.AddPersistentListener(Button(filter).onClick,panel.ToggleFilter);
-            var upgrade=Image("Upgrade",surface,"panel",new Vector2(.5f,.5f),new Vector2(488,208),new Vector2(416,44),true);panel.UpgradeLabel=Text("Label",upgrade.transform,"",Vector2.zero,new Vector2(402,40),17);panel.UpgradeButton=Button(upgrade);UnityEventTools.AddPersistentListener(panel.UpgradeButton.onClick,owner.UpgradeFromUI);
-            list.gameObject.AddComponent<ContentSizeFitter>().verticalFit=ContentSizeFitter.FitMode.PreferredSize;
-            var track=Image("Recipe Scroll",surface,"white",new Vector2(.5f,.5f),new Vector2(712,-76),new Vector2(10,472),true);track.color=new Color32(34,50,40,255);
-            var handle=Image("Handle",track.transform,"white",new Vector2(.5f,.5f),Vector2.zero,Vector2.zero);handle.color=new Color32(133,147,109,255);
-            var scrollbar=track.gameObject.AddComponent<Scrollbar>();scrollbar.handleRect=(RectTransform)handle.transform;scrollbar.targetGraphic=handle;scrollbar.direction=Scrollbar.Direction.BottomToTop;scrollbar.navigation=new Navigation{mode=Navigation.Mode.None};
-            scroll.verticalScrollbar=scrollbar;scroll.verticalScrollbarVisibility=ScrollRect.ScrollbarVisibility.AutoHide;
-            var layout=list.gameObject.AddComponent<VerticalLayoutGroup>();layout.spacing=18;layout.childControlHeight=false;layout.childControlWidth=false;layout.childForceExpandHeight=false;layout.childForceExpandWidth=false;
-            var popup=Image("Category Menu",surface,"panel",new Vector2(.5f,.5f),new Vector2(429,48),new Vector2(288,360),true);panel.CategoryPopup=popup.gameObject;
-            var popLayout=popup.gameObject.AddComponent<VerticalLayoutGroup>();popLayout.padding=new RectOffset(8,8,8,8);popLayout.spacing=4;popLayout.childControlWidth=false;popLayout.childControlHeight=false;popLayout.childForceExpandHeight=false;popLayout.childForceExpandWidth=false;
-            popup.gameObject.AddComponent<ContentSizeFitter>().verticalFit=ContentSizeFitter.FitMode.PreferredSize;((RectTransform)popup.transform).pivot=new Vector2(.5f,1);((RectTransform)popup.transform).anchoredPosition=new Vector2(429,231);
-            panel.CategoryButtons=new Button[7];for(var c=0;c<7;c++){var entry=Image("Category",popup.transform,"panel",new Vector2(.5f,.5f),Vector2.zero,new Vector2(272,46),true);Text("Label",entry.transform,c==0 ? "All categories" : ((RecipeCategory)(c-1)).ToString(),Vector2.zero,new Vector2(260,40),22);panel.CategoryButtons[c]=Button(entry);UnityEventTools.AddIntPersistentListener(panel.CategoryButtons[c].onClick,panel.SelectCategory,c-1);}popup.gameObject.SetActive(false);
-            panel.Cards=new RecipeCardView[owner.Catalog.Recipes.Length];
-            var sorted=RecipePresentation.Sorted(owner.Catalog);
-            for(var i=0;i<panel.Cards.Length;i++)
-            {
-                var card=Image("Recipe",list,"panel",new Vector2(.5f,.5f),Vector2.zero,new Vector2(416,132),true);
-                var view=card.gameObject.AddComponent<RecipeCardView>();view.Recipe=sorted[i];view.Crafting=owner;
-                view.NewLabel=Text("New",card.transform,"NEW",new Vector2(155,55),new Vector2(72,22),13);view.NewLabel.color=new Color32(196,183,109,255);
-                view.Icon=Image("Result",card.transform,"white",new Vector2(.5f,.5f),new Vector2(-148,22),new Vector2(64,64));view.Icon.preserveAspect=true;
-                view.Name=Text("Name",card.transform,string.Empty,new Vector2(46,33),new Vector2(254,38),24,TextAnchor.MiddleLeft);
-                view.Materials=Text("Materials",card.transform,string.Empty,new Vector2(-12,-6),new Vector2(350,32),21,TextAnchor.MiddleLeft);
-                if(view.Recipe.Ingredients.Length>1)view.Materials.fontSize=17;
-                view.InputIcon=Image("Ingredient",card.transform,"white",new Vector2(.5f,.5f),new Vector2(-168,-25),new Vector2(28,28));view.InputIcon.preserveAspect=true;
-                if(view.Recipe.ProcessingSeconds>0) {((RectTransform)view.Materials.transform).anchoredPosition=new Vector2(28,2);((RectTransform)view.Materials.transform).sizeDelta=new Vector2(286,28);view.Materials.fontSize=18;}
-                view.InputIcon.gameObject.SetActive(false);
-                view.Status=Text("Availability",card.transform,string.Empty,new Vector2(-59,-44),new Vector2(240,28),18,TextAnchor.MiddleLeft);
-                var craft=Image("Craft",card.transform,"panel",new Vector2(.5f,.5f),new Vector2(121,-38),new Vector2(130,48),true);
-                view.ButtonLabel=Text("Label",craft.transform,"Craft",Vector2.zero,new Vector2(118,40),23);
-                view.Progress=Image("Progress",card.transform,"white",new Vector2(.5f,.5f),new Vector2(-61,-62),new Vector2(242,4));
-                view.Progress.type=UnityEngine.UI.Image.Type.Filled;view.Progress.fillMethod=UnityEngine.UI.Image.FillMethod.Horizontal;view.Progress.color=new Color32(194,153,88,255);
-                view.Progress.gameObject.SetActive(false);
-                view.CraftButton=Button(craft);UnityEventTools.AddPersistentListener(view.CraftButton.onClick,view.Craft);
-                panel.Cards[i]=view;
-            }
+            var equipment=root.AddComponent<InventoryEquipment>();equipment.Player=player;equipment.Panel=panel;equipment.Equipment=player.GetComponent<PlayerEquipment>();
+            Text("Equipment Title",surface,"ui.inventory.equipment",new Vector2(-554,238),new Vector2(280,38),24);
+            QualityUiBuilder.Portrait(surface,player,new Vector2(-554,94),.9f);
+            for(var i=0;i<2;i++){var slot=Image("Equipment Slot",surface,"panel",new Vector2(.5f,.5f),new Vector2(-618+i*127,-112),new Vector2(100,100),true);var slotButton=Button(slot);if(i==0)equipment.HeadButton=slotButton;else equipment.BodyButton=slotButton;UnityEventTools.AddIntPersistentListener(slotButton.onClick,equipment.SelectSlot,(int)(i==0 ? ArmorSlot.Head : ArmorSlot.Body));var icon=Image("Equipped Item",slot.transform,"white",new Vector2(.5f,.5f),Vector2.zero,new Vector2(68,72));icon.preserveAspect=true;if(i==0)equipment.HeadIcon=icon;else equipment.BodyIcon=icon;Text("Slot Name",surface,i==0 ? "ui.slot.Head" : "ui.slot.Body",new Vector2(-618+i*127,-186),new Vector2(122,32),21);}
+            Text("Slot Hint",surface,"ui.inventory.slot_hint",new Vector2(-554,-262),new Vector2(290,94),20);
+            equipment.Details=Text("Armor Details",surface,"",new Vector2(544,23),new Vector2(324,72),23,TextAnchor.MiddleLeft);
+            equipment.Comparison=Text("Comparison",surface,"",new Vector2(544,-57),new Vector2(324,74),22,TextAnchor.MiddleLeft);
+            equipment.EquipButton=QualityUiBuilder.Action(surface,"Equip","ui.action.equip",new Vector2(541,-144),new Vector2(310,64),equipment.Equip,out equipment.EquipLabel);
+            equipment.UnequipButton=QualityUiBuilder.Action(surface,"Unequip","ui.action.unequip",new Vector2(541,-213),new Vector2(310,58),equipment.Unequip,out var unequip);
+            QualityUiBuilder.Line(surface,new Vector2(-395,255),new Vector2(-395,-312),2);QualityUiBuilder.Line(surface,new Vector2(366,255),new Vector2(366,-312),2);
         }
     }
 }

@@ -2,6 +2,7 @@ using UnityEngine;
 
 namespace Wildfolk
 {
+    public enum ProcessingMode { Batch, Sequential }
     [CreateAssetMenu(menuName = "Wildfolk/Placeable")]
     public sealed class PlaceableDefinition : ScriptableObject
     {
@@ -15,8 +16,9 @@ namespace Wildfolk
         public bool IsBarrier;
         public bool IsDoor;
         [Min(0)] public int StorageSlots;
-        public string StationTitle;
         [Min(1)]public int ParallelCapacity=1;
+        public ProcessingMode ProcessingMode;
+        [Min(1)]public int InputCapacity=50,OutputCapacity=100;
         [Min(.1f)]public float ProcessingSpeed=1;
         [Min(1)]public int WorkbenchTier=1;
         public PlaceableDefinition UpgradeTo;

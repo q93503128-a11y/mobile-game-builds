@@ -100,7 +100,7 @@ namespace Wildfolk
         }
         public void BeginHeld(PointerEventData data){if(IsHoldingPartial){pointer=data.pointerId;Move(data);}}
         public bool PlaceHeld(int index,bool chest)
-        {if(!IsHoldingPartial)return false;if(!InventoryModel.Transfer(sourceModel,SourceIndex,Model(chest),index,HeldAmount)){PlayerFeedback.Show("Choose a slot with room");return false;}Cancel();return true;}
+        {if(!IsHoldingPartial)return false;if(!InventoryModel.Transfer(sourceModel,SourceIndex,Model(chest),index,HeldAmount)){PlayerFeedback.ShowKey("feedback.slot_space");return false;}Cancel();return true;}
         public void DropHeldWorld(){if(IsHoldingPartial && ItemDrop.Drop(sourceModel,SourceIndex,HeldAmount))Cancel();}
         private void UpdateSplit()
         {

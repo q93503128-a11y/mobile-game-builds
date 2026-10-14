@@ -22,8 +22,10 @@ MonoBehaviour:
   IsBarrier: 0
   IsDoor: 0
   StorageSlots: 0
-  StationTitle: Furnace smelting
   ParallelCapacity: 3
+  ProcessingMode: 1
+  InputCapacity: 50
+  OutputCapacity: 100
   ProcessingSpeed: 1
   WorkbenchTier: 1
   UpgradeTo: {fileID: 0}

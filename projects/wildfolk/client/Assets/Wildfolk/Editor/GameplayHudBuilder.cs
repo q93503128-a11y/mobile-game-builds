@@ -35,7 +35,7 @@ namespace Wildfolk.Editor
             var time=Image("World Time",safe,"panel",new Vector2(0,1),new Vector2(148,-229),new Vector2(232,44));
             var timeHud=time.gameObject.AddComponent<TimeHud>();timeHud.Clock=session.GetComponent<WorldClock>();
             timeHud.Icon=Image("Time Icon",time.transform,"sun",new Vector2(.5f,.5f),new Vector2(-92,0),new Vector2(30,30));
-            timeHud.Label=Text("Time",time.transform,"Day 1 · Day",new Vector2(19,0),new Vector2(172,36),20);
+            timeHud.Label=Text("Time",time.transform,"",new Vector2(19,0),new Vector2(172,36),20);
             InventoryUiBuilder.Build(root,safe,session,inventory,motor.GetComponent<PlayerCrafting>(),assets.Settings.InventorySlots);
             var defeat=BuildDefeat(safe,session);
             var pause=SurvivalUiBuilder.Pause(safe,session);
@@ -78,8 +78,8 @@ namespace Wildfolk.Editor
         private static GameObject BuildDefeat(Transform safe,GameplaySession session)
         {
             var scrim=Scrim("Defeat Overlay",safe);var panel=Image("Defeat Panel",scrim.transform,"panel",new Vector2(.5f,.5f),Vector2.zero,new Vector2(500,280),true);
-            Text("Title",panel.transform,"You have fallen",new Vector2(0,60),new Vector2(430,60),36);
-            var restart=Image("Restart",panel.transform,"panel",new Vector2(.5f,.5f),new Vector2(0,-55),new Vector2(240,72),true);Text("Label",restart.transform,"Try again",Vector2.zero,new Vector2(220,62),27);
+            Text("Title",panel.transform,"ui.game.defeat",new Vector2(0,60),new Vector2(430,60),36);
+            var restart=Image("Restart",panel.transform,"panel",new Vector2(.5f,.5f),new Vector2(0,-55),new Vector2(240,72),true);Text("Label",restart.transform,"ui.game.restart",Vector2.zero,new Vector2(220,62),27);
             UnityEventTools.AddPersistentListener(Button(restart).onClick,session.Restart);scrim.gameObject.SetActive(false);return scrim.gameObject;
         }
     }

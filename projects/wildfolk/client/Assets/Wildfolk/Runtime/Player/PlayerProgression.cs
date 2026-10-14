@@ -16,8 +16,11 @@ namespace Wildfolk
         private void Awake()=>ranks=new int[Definition.Skills.Length];
         public int Rank(int index)=>ranks[index];
         public float Bonus(SkillEffect effect){var result=0f;for(var i=0;i<ranks.Length;i++)if(Definition.Skills[i].Effect==effect)result+=ranks[i]*Definition.Skills[i].PerRank;return result;}
+        public bool Unlocked(int index)
+        {var skill=Definition.Skills[index];if(ranks[index]>0 || string.IsNullOrEmpty(skill.Prerequisite))return true;for(var i=0;i<ranks.Length;i++)if(Definition.Skills[i].Id==skill.Prerequisite)return ranks[i]>=skill.PrerequisiteRank;return false;}
+        public bool CanInvest(int index)=>index>=0 && index<ranks.Length && Unlocked(index) && SkillPoints>=Definition.Skills[index].PointCost && ranks[index]<Definition.Skills[index].MaximumRank;
         public bool Invest(int index)
-        {if(index<0 || index>=ranks.Length || SkillPoints<=0 || ranks[index]>=Definition.Skills[index].MaximumRank)return false;SkillPoints--;ranks[index]++;Changed?.Invoke();return true;}
+        {if(!CanInvest(index))return false;SkillPoints-=Definition.Skills[index].PointCost;ranks[index]++;Changed?.Invoke();return true;}
         public void SetValues(long experience,long gold)
         {
             if(experience<0 || gold<0)throw new ArgumentOutOfRangeException();

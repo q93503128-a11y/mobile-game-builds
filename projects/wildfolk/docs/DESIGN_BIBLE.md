@@ -16,7 +16,7 @@
 
 빈 Inventory36/Hotbar9, 맨손 시작이다. 일반 나무HP150/Wood6, 큰 FallenLog HP50/Wood4. Wood Axe는 일반 나무5회, Stone4회, Iron3회다. Workbench Wood6을 설치하고 Wood 도구·검각Wood5를 제작한다. Stone 업그레이드는 이전 Wood 장비1개+Stone4(검5), Iron은 이전 Stone 장비1개+Ingot3다. 직접 얻은 상위 장비가 하위 장비를 자동으로 지우지 않는다. 도구·무기 내구도는 사용하지 않는다.
 
-Iron Ore는 Stone 이상의 Pickaxe가 필요하다. Furnace는 Stone8+Wood4, Ore최대3→6초→Ingot최대3. Campfire는 Wood4+Stone3, Raw1→5초→Cooked1. 현재 연료·처리 Queue·자동화는 없다. 결과는 Take로 수령하고 공간 부족이면 남겨둔다.
+Iron Ore는 Stone 이상의 Pickaxe가 필요하다. Furnace는 Stone8+Wood4, Ore1→2초→Ingot1 순차 대기열. Campfire는 Wood4+Stone3, Raw1→5초→Cooked1. Furnace는 +1/대기 회수/Add all/완료 Take를 제공하며 연료·자동 Inventory 수령은 없다. 결과는 Take로 수령하고 공간 부족이면 남겨둔다.
 
 Workbench에서 Wall(Wood2/HP100), Door(Wood3/HP80), Chest(Wood6/HP70)를 제작한다. 기존 Placement의 거리/Footprint/충돌 검사와0/90도 벽·문 배치를 사용한다. 문은 열기/닫기, 점유된 닫기 거절, 좀비 차단/공격/파괴가 있다. 설치물 회수·수리·완성된 철거 UX는 없다.
 
@@ -58,9 +58,9 @@ Gold는 월드/캐릭터용 일반 재화다. 향후 Merchant/서비스 등이 �
 
 Editor Developer Harness와 Early/Stone/Iron Profile, Combat Sandbox를 제공한다. 제품 HUD/Release UI에는 개발 도구를 넣지 않는다. 실제 기능/수치를 검사하며 재미·손맛을 자동 합격 처리하지 않는다.
 
-Save/Load v2는 Player와 Seed/게임 시간, 변경 자원·재생 대기·시설·Chest·처리 상태를 저장한다. Version/검증/temporary/atomic replace/backup을 사용한다. Cloud Save/Account/실제 Multiplayer 권위 저장은 없다.
+Save/Load v3(v1/v2 호환)는 Player와 Seed/게임 시간, 변경 자원·재생 대기·시설·Chest·처리 상태를 저장한다. Version/검증/temporary/atomic replace/backup을 사용한다. Cloud Save/Account/실제 Multiplayer 권위 저장은 없다.
 
-Tree/Log300초, Stone1200초, Ore2400초, Chicken180초/Boar300초의 자연 재생을 제공한다. 카메라/플레이어 밖의 적합한 지역에서 시도하며 Timer는 저장한다. Animal Breeding/먹이/새끼/성장/농축산은 향후 별도 패스다. 작은 관목36개는 HP12/Wood1/90초 재생의 실제 자원이다. Sapling/Young Tree 성장은 아직 없다.
+Tree300/Log480초, Stone600초, Ore720초, Chicken180초/Boar300초의 자연 재생을 제공한다. 카메라/플레이어 밖의 적합한 지역에서 시도하며 Timer는 저장한다. Animal Breeding/먹이/새끼/성장/농축산은 향후 별도 패스다. 작은 관목36개는 HP12/Wood1/90초 재생의 실제 자원이다. Sapling/Young Tree 성장은 아직 없다.
 
 일반 기본 공격은 Single Target이다. 공격 데이터는 Cleave/MaxTargets/Arc/Range/Pierce/AoE/선택 규칙을 확장할 수 있지만 실제 현재 장비는 MaxTargets1이다. Point Blank 버그를 가정하지 않고 실제 거리별 타격을 검증한다. Friendly Fire OFF/Team Structure 보호 관계 필터를 둔다. Friendly가 앞에 있어도 Hostile 후보를 막지 않는다. 실제 Greatsword/Spear/AoE Skill은 없다.
 
@@ -74,10 +74,17 @@ General Workbench가 Progression Spine이라는 방향을 유지한다. Required
 
 ## 캐릭터 성장·이동·제작 패스
 
-Profile는 좌상단에 원형 초상/Level/HP/얇은 XP/작은 Hunger·Thirst/미사용 Point 알림을 개별 요소로 배치한다. 터치하면 Information/Equipment/Skills 화면을 연다. Character는 입력만 차단하고 세계는 진행한다.
+Profile는 좌상단에 원형 초상/Level/HP/얇은 XP/작은 Hunger·Thirst/미사용 Point 알림을 개별 요소로 배치한다. 터치하면 Character Information을 열고 독립 Node Skill Tree로 이동한다. Head/Body 장착과 비교는 Inventory 한 곳에서 수행한다. Character는 입력만 차단하고 세계는 진행한다.
 
 Level1~20, 필요 XP35에서 레벨마다20 증가, Up마다Point1. Vitality/Endurance/Recovery/Steady Stride 각3Rank를 제공한다. CharacterGrowth 데이터 정본이며 영구 계정 성장과 분리한다.
 
-Stamina100은 Sprint/Dash가 공유한다. Joystick0.9를0.4초 유지하면 Sprint,유지0.72. 허기/갈증30% 미만 Sprint 제한,나쁜 상태에서 회복/효율 감소. Dash는 오른쪽 중간 버튼,입력 또는Facing 방향으로2.6유닛/0.18초 이동하며 물·벽·장애물을 통과하지 않는다. 무적/타격/순간이동은 없다. Stamina Full 미만에서 표시하고 회복 후 숨는다.
+Stamina100은 Sprint/Dash가 공유한다. Joystick0.9를0.4초 유지하면 Sprint,유지0.72. 허기/갈증30% 미만 Sprint 제한,나쁜 상태에서 회복/효율 감소. Dash는 오른쪽 중간 버튼,입력 또는Facing 방향으로2.6유닛/0.18초 이동하며 물·벽·장애물을 통과하지 않는다. 무적/타격/순간이동은 없다. Player 주변 Arc로 Stamina를 표시하고 Full 회복 후 숨긴다. 좌상단 Stamina는 없으며 Dash는 전진 Double Chevron이다.
 
-제작 Category/전체·제작 가능 Filter/고정 Tier 정렬을 제공한다. II 잠금 Recipe는 조건을 표시하고 해금 후 원래 자리에서 NEW를 표시한다. 카드 확인/제작 때 해제하고 저장한다. 재미·엄지 접근·진행 속도는 사용자 테스트 대상이다.
+독립 Recipe 화면에서 즉시 Category Tab/전체·제작 가능 Filter/Category Section 안의 고정 Tier 정렬을 제공한다. 재료별 보유/필요 수량과 색상을 독립 표시한다. II 잠금 Recipe는 조건을 표시하고 해금 후 원래 자리에서 NEW를 표시한다. 카드 확인/제작 때 해제하고 저장한다. 재미·엄지 접근·진행 속도는 사용자 테스트 대상이다.
+
+
+## UI/UX·회복 품질 교정
+
+Profile은 성장 정보/Skill Tree 진입, Inventory는 Item/Head·Body 장착을 담당한다. Skin/Head/Body/Hand/Back/FX는 공통 Motion Root와 실제 Hand 모션을 공유한다. 노드는 현재 Skill4개만 쓰며 Endurance→Recovery/Stride 선행과 투자 조건을 표시한다. 미래 슬롯/스킬/Status/Class 버튼을 가짜로 노출하지 않는다.
+
+English 기본/한국어를 Settings에서 즉시 전환한다. Localization Key/수치 Placeholder/Local User Preference를 사용한다. 지역 Population/Soft Target/최근 Harvest 제외로 자원을 회복하며 Rare는 넓은 월드 후보를 사용한다. 파괴 개체의 원래 ID를 부활시키지 않는다. 세부 수치는 BALANCE/WORLD_GENERATION, 조사와 검수는 UI_RESEARCH/QUALITY_REVIEW가 정본이다. 미래 다수 광물/합금/결정은 데이터 경계 확장 방향이며 이번 실제 콘텐츠를 추가하지 않았다. Diamond를 최종 Tier로 고정하지 않는다.

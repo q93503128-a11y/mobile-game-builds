@@ -40,12 +40,12 @@
 | 자원 | 개수 | HP/드랍 | 재생 대기 |
 |---|---:|---|---|
 | Tree |140|150 /Wood6|300초|
-| Fallen Log |12|50 /Wood4|300초|
-| Stone |55|50 /Stone3|1200초|
-| Iron Ore |16|75 /Ore3|2400초|
+| Fallen Log |12|50 /Wood4|480초|
+| Stone |55|50 /Stone3|600초|
+| Iron Ore |16|75 /Ore3|720초|
 | Small Plant |36|12 /Wood1|90초|
 
-성숙 Tree: Wood Axe5타 /Stone Axe4타 /Iron Axe3타. 재생은 원점 주변6~26유닛에서 검사하며 Player12유닛 안/Camera 안/물/길/장애물/기지 내부 후보를 제외한다. 막히면5초 뒤 재시도한다. 작은 풀은 현재 비충돌 장식이다. Small Plant 관목36개는 비차단 자원으로 HP12/Wood1,90초 재생이다. Chicken1 Slot/180초, Boar1 Slot/300초로 자연 재생한다. 실제 번식/성장 시스템은 없다. Save에는 대기 시간을 게임 시간 기준으로 기록하고 오프라인 시간을 더하지 않는다.
+성숙 Tree: Wood Axe5타 /Stone Axe4타 /Iron Axe3타. 회복은 지역 밀도 Target0.9 미만에서 새로운 ID로 해당 Region 후보를 검사한다. Rare는 월드 범위 후보이며 Player24/Harvest28유닛·1800초/Cluster12유닛 제외를 사용한다. 흔한 자원은 Player12/Harvest8유닛·Delay×2다. Camera/물/길/장애물/기지 내부 후보를 제외한다. 막히면5초 뒤 재시도한다. 작은 풀은 현재 비충돌 장식이다. Small Plant 관목36개는 비차단 자원으로 HP12/Wood1,90초 재생이다. Chicken1 Slot/180초, Boar1 Slot/300초로 자연 재생한다. 실제 번식/성장 시스템은 없다. Save에는 대기 시간을 게임 시간 기준으로 기록하고 오프라인 시간을 더하지 않는다.
 
 Land1 /Shallow0.7 /Deep 도보 불가. River 폭6, 여울 길이4.4, 월드192×144유닛이다.
 
@@ -62,7 +62,7 @@ Land1 /Shallow0.7 /Deep 도보 불가. River 폭6, 여울 길이4.4, 월드192×
 | Wooden Cup 제작 |Wood2,Hand crafting|
 | 수원 |Empty Cup1→Raw Cup1,재사용1초,중심거리3|
 | Campfire 고기/물 |각1개/5초|
-| Furnace |최대3개/6초,Speed1|
+| Furnace |1개/2초 순차,Input50/Output100,Speed1|
 | HP Regen |두 게이지≥70%,최근 전투8초 뒤0.5HP/초|
 
 기존 Raw 불이익은 Clean을 마셔도 즉시 치료하지 않는다. 조건 미충족/Raw 불이익 중에는 Regen0이다. 두 수치의 최소 비율30% 미만 CanSprint=false,30~70% SprintEfficiency0.55~1,70% 이상1. 실제 Sprint 조건에 연결한다. 최소 비율15% 미만 일반 이동0.9배다. Singleplayer Pause는 시간을 정지하고 Inventory는 세계 진행을 유지한다.
@@ -121,3 +121,6 @@ Long Press0.45초. Split1~N−1,Half/±1,Confirm 후 목적지 선택. 일반 Dr
 | Reinforced Chest |32칸,기존 Chest24 유지|
 
 첫35XP는Zombie7마리 또는Goblin5마리(남은5XP)다. 첫 두 레벨35/55는XP90이며 기능 검증을 위한 초기 곡선이다. Leather는Zombie8을5,Iron은2로 줄인다. 가죽 세트Leather3,철 세트Ingot5+Leather2를 기존Boar1Leather/kill,Ore3/drop와 비교했다. 성장 만족도/실제 획득 속도는 사용자 테스트 대상이며 출시 밸런스를 주장하지 않는다.
+
+
+현재 재생 수치는 최초 개수를 항상 복원하는 규칙이 아니라 부족한 Region의 회복 대기 초기값이다. 글로벌 Count 합×1.25는 성능용 상한이다. Tree/Log/Stone/Iron/Plant 회복 속도와 지역 고갈 체감은 사용자 밸런스 검수 대상이다. Sprint/Dash는 기본 조작이고 Skill은 성능을 강화한다. Recovery/Stride 선행은 Endurance Rank1이며 v2 기존 Rank를 보존한다.

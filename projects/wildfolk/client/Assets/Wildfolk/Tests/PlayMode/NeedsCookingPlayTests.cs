@@ -106,7 +106,7 @@ namespace Wildfolk.Tests
         [UnityTest] public IEnumerator CampfireRecipePlacementCookingProgressAndTakeUseActualButtons()
         {
             var recipe=Recipe("campfire");foreach(var cost in recipe.Ingredients) inventory.Model.Add(cost.Item,cost.Count);
-            yield return input.Click(hud.InventoryButton);yield return input.Click(Card("campfire").CraftButton);
+            yield return input.Click(hud.InventoryButton);yield return input.Click(Object.FindFirstObjectByType<InventoryPanel>().CraftingButton);yield return input.Click(Card("campfire").CraftButton);
             Assert.That(inventory.Model.GetSlot(0).Item,Is.SameAs(recipe.Result));
             yield return input.Click(hud.InventoryButton);Position(new Vector2(0,-.35f),Vector2.down);yield return new WaitForSeconds(.2f);
             yield return input.Click(hud.Attack);yield return null;

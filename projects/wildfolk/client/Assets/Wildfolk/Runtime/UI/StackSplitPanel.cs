@@ -16,9 +16,9 @@ namespace Wildfolk
         public int Amount {get;private set;}
         private int total,index;private bool chest;private InventorySlotView source;
         public void Open(int slot,InventorySlotView view,bool fromChest,int count,ItemDefinition item)
-        {if(count<2)return;index=slot;source=view;chest=fromChest;total=count;Amount=count/2;Title.text=item.DisplayName;Icon.sprite=item.Icon;View.SetActive(true);Refresh();}
+        {if(count<2)return;index=slot;source=view;chest=fromChest;total=count;Amount=count/2;Title.text=item.LocalizedName;Icon.sprite=item.Icon;View.SetActive(true);Refresh();}
         public void OpenActions(int slot,InventorySlotView view,bool fromChest,int count,ItemDefinition item)
-        {if(count<2)return;Open(slot,view,fromChest,count,item);View.SetActive(false);ActionTitle.text=item.DisplayName;ActionIcon.sprite=item.Icon;Actions.SetActive(true);}
+        {if(count<2)return;Open(slot,view,fromChest,count,item);View.SetActive(false);ActionTitle.text=item.LocalizedName;ActionIcon.sprite=item.Icon;Actions.SetActive(true);}
         public void ChooseSplit(){Actions.SetActive(false);View.SetActive(true);Refresh();}
         public void Decrease(){Amount=Mathf.Max(1,Amount-1);Refresh();}
         public void Increase(){Amount=Mathf.Min(total-1,Amount+1);Refresh();}

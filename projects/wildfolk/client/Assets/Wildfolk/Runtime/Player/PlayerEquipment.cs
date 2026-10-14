@@ -26,7 +26,7 @@ namespace Wildfolk
         public bool Unequip(ArmorSlot slot)
         {
             var item=slot==ArmorSlot.Head ? HeadArmor : BodyArmor;if(item==null)return false;
-            if(Inventory.Model.Add(item,1)!=1){PlayerFeedback.Show("Make room in your bag");return false;}
+            if(Inventory.Model.Add(item,1)!=1){PlayerFeedback.ShowKey("feedback.bag_full");return false;}
             if(slot==ArmorSlot.Head)HeadArmor=null;else BodyArmor=null;RefreshArmor();return true;
         }
         public void RestoreArmor(ItemDefinition head,ItemDefinition body)

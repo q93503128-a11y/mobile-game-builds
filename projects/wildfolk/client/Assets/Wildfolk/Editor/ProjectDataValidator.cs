@@ -68,7 +68,7 @@ namespace Wildfolk.Editor
                 var saveIds=new HashSet<string>();foreach(var placed in UnityEngine.Object.FindObjectsByType<WorldPlaceable>(FindObjectsSortMode.None))check(!string.IsNullOrEmpty(placed.SaveId) && saveIds.Add(placed.SaveId),"Save ID collision");
                 foreach(var resource in UnityEngine.Object.FindObjectsByType<ResourceIdentity>(FindObjectsSortMode.None))check(saveIds.Add(resource.Id),"Resource save ID collision");
             }
-            return errors;
+            QualityDataValidator.Validate(errors);return errors;
         }
         private static void Attack(AttackProfile attack,Action<bool,string> check,string id)=>check(attack!=null && attack.MaxTargets>0 && attack.MaxTargets<=32 && attack.Range>0 && attack.ArcAngle>0 && attack.ArcAngle<=360 && attack.PierceCount>=0 && attack.AoERadius>=0,"Invalid attack profile: "+id);
         private static bool Cycle(ItemDefinition node,Dictionary<ItemDefinition,List<ItemDefinition>> graph,HashSet<ItemDefinition> visited,HashSet<ItemDefinition> visiting)

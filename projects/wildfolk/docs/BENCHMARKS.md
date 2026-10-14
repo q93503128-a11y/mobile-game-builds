@@ -1,5 +1,7 @@
 # 비교군과 참고 범위
 
+최신 품질 교정 조사는 [UI_RESEARCH](UI_RESEARCH.md)를 따른다. 아래 각 날짜의 내용은 해당 패스 당시의 참고 기록이다. 세 탭/네 Skill Card는 최신 구현에서 대체했다.
+
 ## 2026-10-14 Character / Armor 참고
 
 [Kefir 공식 Last Day on Earth Gear Score 안내](https://kefirgames.helpshift.com/hc/en/5-last-day-on-earth/faq/353-gear-score-gs/)는 캐릭터 Inventory의 장비 슬롯 옆에 비교 수치를 제공한다. Wildfolk는 슬롯/Defense를 같은 화면에서 읽는 정보 구조만 참고한다. 상대 UI 좌표/스킨/아이콘/GS 계산식/성장 수치를 측정하거나 복제하지 않았다. 떠 있는 Profile/세 탭/4 Skill Card/고정 Recipe Sort는 사용자 요구와 자체 구성이다.
@@ -12,7 +14,7 @@
 - 참고 범위: 생존 정보 표시, 모바일 조작 위치, 작은 화면의 오브젝트 구분, 야외 생존 분위기, UI가 플레이 영역을 가리지 않는 정보 위계.
 - 현재 적용: 맨손 채집→Wood로 작업대 제작/설치→작업대 도구/검 제작이라는 초반 흐름을 강하게 참고한다. Wood/Stone은 월드 드랍→인벤토리 재료다. 좌하단 이동, 하단 Hotbar 왼쪽 가방, 우하단 사용, 우상단 Pause를 두며 상단 중앙은 평상시 비운다. 자연색 UI/아이콘/단순 Recipe를 자체 구현한다.
 - 확실도: 비교군 선정과 원하는 참고 범위는 사용자 요청으로 확정됐다. 이 작업에서 상대 게임의 정확한 UI 좌표·터치 크기·게임 수치를 측정하거나 품질 우열을 검증하지 않았다.
-- 복제 금지: 캐릭터·아이콘·배경·애니메이션·문구·맵과 게임 수치를 가져오지 않는다. 현재 시안의 원본은 `tools/generate_visual_assets.py`다.
+- 복제 금지: 캐릭터·아이콘·배경·애니메이션·문구·맵과 게임 수치를 가져오지 않는다. 초기 시안의 원본은 `tools/generate_visual_assets.py`다. 현재 Armor Overlay/imagegen, Dash/Lucide, 한국어/Noto는 SOURCE_ART를 함께 따른다.
 
 ## surviv.io 계열 실루엣
 

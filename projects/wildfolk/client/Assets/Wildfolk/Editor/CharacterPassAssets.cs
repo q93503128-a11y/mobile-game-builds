@@ -29,7 +29,7 @@ namespace Wildfolk.Editor
             }
             var bench=Facility("WorkbenchII","workbench_ii","Workbench II",StationKind.Workbench,assets.Progression.StoneTier,120,new Vector2(1.8f,1.15f));
             bench.WorkbenchTier=2;EditorUtility.SetDirty(bench);
-            assets.Crafting.Workbench.StationTitle="Workbench I";assets.Crafting.Workbench.UpgradeTo=bench;assets.Crafting.Workbench.UpgradeCosts=new[]{Cost(wood,8),Cost(stone,6),Cost(ingot,2)};EditorUtility.SetDirty(assets.Crafting.Workbench);
+            assets.Crafting.Workbench.UpgradeTo=bench;assets.Crafting.Workbench.UpgradeCosts=new[]{Cost(wood,8),Cost(stone,6),Cost(ingot,2)};EditorUtility.SetDirty(assets.Crafting.Workbench);
             var chest=Facility("ReinforcedChest","reinforced_chest","Reinforced Chest",StationKind.None,assets.Progression.StoneTier,140,new Vector2(1.6f,1.15f),32);
             var wall=Facility("StoneWall","stone_wall","Stone Wall",StationKind.None,assets.Progression.StoneTier,220,new Vector2(1.8f,.5f),barrier:true);
             AddRecipe(list,"ReinforcedChest",chest.Item,new[]{Cost(wood,8),Cost(ingot,2)},2);
@@ -48,7 +48,7 @@ namespace Wildfolk.Editor
         private static PlaceableDefinition Facility(string name,string id,string display,StationKind station,EquipmentTier tier,int hp,Vector2 footprint,int storage=0,bool barrier=false)
         {
             var vitality=GameplayAssets.Asset<VitalityDefinition>(name+"Vitality",d=>d.MaximumHealth=hp);
-            var placed=GameplayAssets.Asset<PlaceableDefinition>(name+"Placement",d=>{d.Station=station;d.StationTitle=display;d.Tier=tier;d.Vitality=vitality;d.Footprint=footprint;d.MaximumDistance=2.8f;d.StorageSlots=storage;d.IsBarrier=barrier;});
+            var placed=GameplayAssets.Asset<PlaceableDefinition>(name+"Placement",d=>{d.Station=station;d.Tier=tier;d.Vitality=vitality;d.Footprint=footprint;d.MaximumDistance=2.8f;d.StorageSlots=storage;d.IsBarrier=barrier;});
             var item=GameplayAssets.Asset<ItemDefinition>(name,d=>{d.Id=id;d.DisplayName=display;d.Placement=placed;d.MaxStack=10;d.Category=ItemCategory.Placeable;d.Icon=VisualArtImporter.Sprite(id);});placed.Item=item;EditorUtility.SetDirty(placed);return placed;
         }
     }

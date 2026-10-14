@@ -9,6 +9,7 @@ namespace Wildfolk
     {
         public string Id;
         public string DisplayName;
+        public string LocalizedName=>L.Text("item."+Id+".name");
         public Sprite Icon;
         [Min(1)] public int MaxStack;
         public ItemCategory Category;

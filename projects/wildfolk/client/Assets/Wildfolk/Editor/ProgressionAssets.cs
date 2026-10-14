@@ -51,8 +51,8 @@ namespace Wildfolk.Editor
             foreach(var recipe in recipes)if(!catalog.Contains(recipe))catalog.Add(recipe);
             if(catalog.Count!=crafting.Catalog.Recipes.Length){crafting.Catalog.Recipes=catalog.ToArray();EditorUtility.SetDirty(crafting.Catalog);}
             foreach(var recipe in catalog)if(recipe.Tier==null && recipe.Result.Tier!=null){recipe.Tier=recipe.Result.Tier;EditorUtility.SetDirty(recipe);}
-            crafting.Workbench.Tier=a.WoodTier;if(string.IsNullOrEmpty(crafting.Workbench.StationTitle))crafting.Workbench.StationTitle="Workbench";EditorUtility.SetDirty(crafting.Workbench);
-            survival.Campfire.Tier=a.WoodTier;if(string.IsNullOrEmpty(survival.Campfire.StationTitle))survival.Campfire.StationTitle="Campfire cooking";EditorUtility.SetDirty(survival.Campfire);
+            crafting.Workbench.Tier=a.WoodTier;EditorUtility.SetDirty(crafting.Workbench);
+            survival.Campfire.Tier=a.WoodTier;EditorUtility.SetDirty(survival.Campfire);
             if(survival.CookingRecipe.Processing==ProcessingKind.None){survival.CookingRecipe.Processing=ProcessingKind.Cooking;EditorUtility.SetDirty(survival.CookingRecipe);}
             a.Animal=GameplayAssets.Asset<AnimalMovementDefinition>("AnimalMovement",d=>{});
             var chickenHealth=GameplayAssets.Asset<VitalityDefinition>("ChickenVitality",v=>v.MaximumHealth=20);
@@ -83,7 +83,7 @@ namespace Wildfolk.Editor
         private static PlaceableDefinition Facility(string name,string id,StationKind station,Vector2 footprint,int hp,EquipmentTier tier,bool barrier=false,bool door=false,int storage=0)
         {
             var vitality=GameplayAssets.Asset<VitalityDefinition>(name+"Vitality",v=>v.MaximumHealth=hp);
-            var definition=GameplayAssets.Asset<PlaceableDefinition>(name+"Placement",p=>{p.Vitality=vitality;p.Footprint=footprint;p.MaximumDistance=2.8f;p.Station=station;p.Tier=tier;p.IsBarrier=barrier;p.IsDoor=door;p.StorageSlots=storage;p.ParallelCapacity=station==StationKind.Furnace ? 3 : 1;p.StationTitle=station==StationKind.Furnace ? "Furnace smelting" : name;});
+            var definition=GameplayAssets.Asset<PlaceableDefinition>(name+"Placement",p=>{p.Vitality=vitality;p.Footprint=footprint;p.MaximumDistance=2.8f;p.Station=station;p.Tier=tier;p.IsBarrier=barrier;p.IsDoor=door;p.StorageSlots=storage;p.ParallelCapacity=station==StationKind.Furnace ? 3 : 1;});
             var display=name=="StorageChest" ? "Storage Chest" : name=="WoodWall" ? "Wood Wall" : name=="WoodDoor" ? "Wood Door" : name;
             var item=Item(name,id,display,ItemCategory.Placeable,10);if(item.Placement==null){item.Placement=definition;EditorUtility.SetDirty(item);}
             definition.Item=item;EditorUtility.SetDirty(definition);return definition;

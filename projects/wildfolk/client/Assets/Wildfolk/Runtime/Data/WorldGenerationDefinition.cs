@@ -2,6 +2,8 @@ using System;
 using UnityEngine;
 namespace Wildfolk
 {
+    public enum ResourceFamily { Timber, Stone, Mineral, Plant }
+    public enum ResourceRarity { Common, Uncommon, Rare }
     [Serializable] public struct ResourceGenerationRule
     {
         public ResourceNode Prefab;
@@ -12,6 +14,11 @@ namespace Wildfolk
         [Range(0,1)]public float ForestPreference,RockPreference;
         public Vector2 ScaleRange;
         [Min(1)] public float RespawnSeconds;
+        public bool RecoveryConfigured,NaturalRecovery,WorldRecoveryScope;
+        public ResourceFamily Family;
+        public ResourceRarity Rarity;
+        [Range(.1f,1.2f)]public float TargetDensityRatio;
+        [Min(0)]public float HarvestExclusionRadius,HarvestExclusionSeconds,ClusterSpacing;
     }
     [CreateAssetMenu(menuName="Wildfolk/World Generation")]
     public sealed class WorldGenerationDefinition : ScriptableObject
