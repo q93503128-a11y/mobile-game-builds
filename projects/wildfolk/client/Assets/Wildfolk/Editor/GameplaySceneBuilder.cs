@@ -21,6 +21,7 @@ namespace Wildfolk.Editor
             var assets=GameplayAssets.Load();SpriteMaterial=AssetDatabase.LoadAssetAtPath<Material>("Assets/Wildfolk/Art/WorldSprite.mat");
             SpriteMaterial.shader=Shader.Find("Universal Render Pipeline/2D/Sprite-Lit-Default");EditorUtility.SetDirty(SpriteMaterial);
             var session=new GameObject("Game Session").AddComponent<GameplaySession>();session.gameObject.AddComponent<WorldPauseController>().Session=session;
+            session.gameObject.AddComponent<PrefabPool>();var saves=session.gameObject.AddComponent<WorldSaveService>();
             var clock=session.gameObject.AddComponent<WorldClock>();clock.Definition=assets.Progression.DayNight;clock.Session=session;
             var preferences=session.gameObject.AddComponent<UserPreferences>();var audio=session.gameObject.AddComponent<GameAudio>();audio.Preferences=preferences;
             audio.Music=new GameObject("Music Channel").AddComponent<AudioSource>();audio.Music.transform.SetParent(session.transform);audio.Music.playOnAwake=false;audio.Music.loop=true;
@@ -29,7 +30,7 @@ namespace Wildfolk.Editor
             foreach(var facility in new[]{assets.Crafting.Workbench,assets.Survival.Campfire,assets.Progression.Furnace,assets.Progression.Wall,assets.Progression.Door,assets.Progression.Chest})GameplayActorBuilder.Facility(facility,pickup,assets.Settings);
             var actors=new GameObject("Actors").transform;var playerObject=GameplayActorBuilder.Player(actors,assets);var player=playerObject.GetComponent<PlayerInventory>();
             var motor=playerObject.GetComponent<PlayerMotor>();motor.Session=session;playerObject.GetComponent<PlayerCombat>().Session=session;
-            playerObject.GetComponent<PlayerPrimaryAction>().Session=session;playerObject.GetComponent<PlayerInteraction>().Session=session;
+            playerObject.GetComponent<PlayerInputCommands>().Session=session;playerObject.GetComponent<PlayerPrimaryAction>().Session=session;playerObject.GetComponent<PlayerInteraction>().Session=session;
             playerObject.GetComponent<PlayerSurvival>().Session=session;playerObject.GetComponent<PlayerPlacement>().Session=session;playerObject.GetComponent<PlayerCrafting>().Session=session;playerObject.GetComponent<PlayerStorage>().Session=session;
             session.PlayerHealth=playerObject.GetComponent<Health>();
             var enemyObject=GameplayActorBuilder.Enemy(null,assets);Object.DestroyImmediate(enemyObject);
@@ -41,8 +42,12 @@ namespace Wildfolk.Editor
             var size=ground.sprite.bounds.size;ground.transform.localScale=new Vector3(assets.World.Generation.Size.x/size.x,assets.World.Generation.Size.y/size.y,1);
             GameplayActorBuilder.PlacementPreview(playerObject.GetComponent<PlayerPlacement>(),actors,ground);
             var follow=camera.gameObject.AddComponent<CameraFollow>();follow.Target=playerObject.transform;follow.Ground=ground;follow.Settings=assets.Settings;
-            var world=session.gameObject.AddComponent<WorldGenerator>();world.Definition=assets.World.Generation;world.Region=region;world.Environment=new GameObject("Generated Environment").transform;world.Player=player;world.Session=session;world.Pickup=pickup;world.Settings=assets.Settings;world.Water=assets.Survival.Source;world.SpriteMaterial=SpriteMaterial;world.Grass=VisualArtImporter.Sprite("grass");world.Fern=VisualArtImporter.Sprite("fern");world.Chicken=Prefab<NeutralAnimal>("Chicken");world.Boar=Prefab<NeutralAnimal>("Boar");
+            var world=session.gameObject.AddComponent<WorldGenerator>();world.Definition=assets.World.Generation;world.Region=region;world.Environment=new GameObject("Generated Environment").transform;world.Player=player;world.Session=session;world.Pickup=pickup;world.Settings=assets.Settings;world.Water=assets.Survival.Source;world.SpriteMaterial=SpriteMaterial;world.Grass=VisualArtImporter.Sprite("grass");world.Fern=VisualArtImporter.Sprite("fern");
             world.Terrain=terrain.gameObject.AddComponent<WorldTerrainRenderer>();world.Terrain.Ground=ground;
+            var navigation=session.gameObject.AddComponent<WorldNavigation>();navigation.World=world;navigation.Camera=camera;navigation.Player=player.transform;motor.Terrain=navigation;playerObject.GetComponent<PlayerPlacement>().Terrain=navigation;
+            var renewal=session.gameObject.AddComponent<ResourceRegeneration>();renewal.World=world;renewal.Clock=clock;renewal.Navigation=navigation;world.Renewal=renewal;
+            var animals=session.gameObject.AddComponent<AnimalPopulation>();animals.World=world;animals.Clock=clock;animals.Navigation=navigation;animals.Definition=StabilityAssets.Animals();world.Animals=animals;
+            saves.World=world;saves.Clock=clock;saves.Player=player;saves.Catalog=StabilityAssets.Catalog();
             var drop=playerObject.GetComponent<PlayerItemDrop>();drop.Session=session;drop.World=world;drop.Prefab=pickup;
             var spawner=session.gameObject.AddComponent<ZombieSpawner>();spawner.Definition=assets.Progression.Spawn;spawner.Prefab=Prefab<EnemyController>("Enemy");spawner.Clock=clock;spawner.Session=session;spawner.Player=session.PlayerHealth;spawner.Camera=camera;spawner.Region=region;spawner.World=world;
             var goblins=session.gameObject.AddComponent<GoblinSpawner>();goblins.Definition=assets.World.Goblin;goblins.Prefab=Prefab<GoblinController>("Goblin");goblins.Clock=clock;goblins.Session=session;goblins.Player=session.PlayerHealth;goblins.Camera=camera;goblins.World=world;

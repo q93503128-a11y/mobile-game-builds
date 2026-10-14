@@ -20,7 +20,7 @@ namespace Wildfolk.Editor
             var controlsGroup=controls.gameObject.AddComponent<CanvasGroup>();
             var joystickImage=Image("Joystick",controls,"joystick_base",Vector2.zero,new Vector2(166,160),new Vector2(222,222),true);
             var thumb=Image("Thumb",joystickImage.transform,"joystick_thumb",new Vector2(.5f,.5f),Vector2.zero,new Vector2(95,95));
-            var joystick=joystickImage.gameObject.AddComponent<VirtualJoystick>();joystick.Thumb=(RectTransform)thumb.transform;joystick.Session=session;motor.Joystick=joystick;
+            var joystick=joystickImage.gameObject.AddComponent<VirtualJoystick>();joystick.Thumb=(RectTransform)thumb.transform;joystick.Session=session;motor.Joystick=joystick;motor.GetComponent<PlayerInputAdapter>().Joystick=joystick;
             var action=motor.GetComponent<PlayerPrimaryAction>();
             var attackImage=Image("Primary Action",controls,"attack_button",new Vector2(1,0),new Vector2(-162,150),new Vector2(204,204),true);
             var attackIcon=Image("Item Icon",attackImage.transform,"icon_fist",new Vector2(.5f,.5f),Vector2.zero,new Vector2(92,100));attackIcon.preserveAspect=true;
@@ -29,6 +29,7 @@ namespace Wildfolk.Editor
             var interactSurface=Image("Interact",controls,"attack_button",new Vector2(1,0),new Vector2(-162,310),new Vector2(108,108),true);
             var interact=interactSurface.gameObject.AddComponent<InteractButtonView>();interact.Interaction=motor.GetComponent<PlayerInteraction>();interact.Surface=interactSurface;interact.Button=Button(interactSurface);interact.DefaultIcon=VisualArtImporter.Sprite("icon_interact");
             interact.Icon=Image("Icon",interactSurface.transform,"icon_interact",new Vector2(.5f,.5f),Vector2.zero,new Vector2(64,64));interact.Icon.preserveAspect=true;
+            var feedback=root.AddComponent<PlayerFeedback>();feedback.Label=Text("Message",safe,string.Empty,new Vector2(0,363),new Vector2(640,52),26);feedback.Label.raycastTarget=false;
             BuildHotbar(controls,session,inventory);
             BuildBoss(safe);
             var time=Image("World Time",safe,"panel",new Vector2(0,1),new Vector2(150,-183),new Vector2(244,54));

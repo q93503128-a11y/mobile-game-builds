@@ -6,6 +6,8 @@ namespace Wildfolk
 {
     public enum StationKind { None, Workbench, Campfire, Furnace }
     public enum ProcessingKind { None, Cooking, Smelting }
+    public enum UnlockKind { PlayerLevel, Skill, DiscoveredItem, Blueprint, SpecialContent }
+    [Serializable]public struct UnlockRequirement {public UnlockKind Kind;public string Id;[Min(1)]public int Rank;}
     [Serializable] public struct ItemAmount
     {
         public ItemDefinition Item;
@@ -24,5 +26,6 @@ namespace Wildfolk
         public ProcessingKind Processing;
         public EquipmentTier Tier;
         [Min(1)]public int RequiredWorkbenchTier=1;
+        public UnlockRequirement[] FutureUnlocks=Array.Empty<UnlockRequirement>();
     }
 }

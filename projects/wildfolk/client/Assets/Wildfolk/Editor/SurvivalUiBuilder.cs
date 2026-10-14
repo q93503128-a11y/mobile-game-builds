@@ -11,15 +11,17 @@ namespace Wildfolk.Editor
             var preferences=session.GetComponent<UserPreferences>();
             var scrim=Scrim("Pause Overlay",safe);
             var menu=scrim.gameObject.AddComponent<PauseMenu>();menu.Preferences=preferences;
-            var panel=Image("Pause Panel",scrim.transform,"panel",new Vector2(.5f,.5f),Vector2.zero,new Vector2(440,350),true);
+            var panel=Image("Pause Panel",scrim.transform,"panel",new Vector2(.5f,.5f),Vector2.zero,new Vector2(440,580),true);
             menu.Menu=panel.gameObject;
-            Text("Title",panel.transform,"Paused",new Vector2(0,111),new Vector2(380,58),34);
-            var resume=Image("Continue",panel.transform,"panel",new Vector2(.5f,.5f),new Vector2(0,10),new Vector2(280,70),true);
+            Text("Title",panel.transform,"Paused",new Vector2(0,220),new Vector2(380,58),34);
+            var resume=Image("Continue",panel.transform,"panel",new Vector2(.5f,.5f),new Vector2(0,130),new Vector2(280,70),true);
             Text("Label",resume.transform,"Continue",Vector2.zero,new Vector2(260,60),27);
             UnityEventTools.AddPersistentListener(Button(resume).onClick,session.Resume);
-            var settings=Image("Settings",panel.transform,"panel",new Vector2(.5f,.5f),new Vector2(0,-80),new Vector2(280,70),true);
+            var settings=Image("Settings",panel.transform,"panel",new Vector2(.5f,.5f),new Vector2(0,-150),new Vector2(280,70),true);
             Text("Label",settings.transform,"Settings",Vector2.zero,new Vector2(260,60),27);
             UnityEventTools.AddPersistentListener(Button(settings).onClick,menu.OpenSettings);
+            var save=Image("Save Game",panel.transform,"panel",new Vector2(.5f,.5f),new Vector2(0,35),new Vector2(280,70),true);Text("Label",save.transform,"Save game",Vector2.zero,new Vector2(260,60),27);UnityEventTools.AddPersistentListener(Button(save).onClick,session.GetComponent<WorldSaveService>().SaveFromMenu);
+            var load=Image("Load Game",panel.transform,"panel",new Vector2(.5f,.5f),new Vector2(0,-60),new Vector2(280,70),true);Text("Label",load.transform,"Load game",Vector2.zero,new Vector2(260,60),27);UnityEventTools.AddPersistentListener(Button(load).onClick,session.GetComponent<WorldSaveService>().LoadFromMenu);
             menu.Settings=Settings(scrim.transform,preferences,menu);
             menu.Settings.SetActive(false);scrim.gameObject.SetActive(false);return scrim.gameObject;
         }

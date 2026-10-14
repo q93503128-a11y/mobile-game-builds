@@ -11,8 +11,14 @@ namespace Wildfolk
         public Health OwnHealth;
         public bool IsAttacking { get; private set; }
         private readonly Collider2D[] candidates = new Collider2D[32];
-        private Health target;
-        private Collider2D targetCollider;
+        private readonly Health[] targets=new Health[32];
+        private readonly Collider2D[] targetColliders=new Collider2D[32];
+        private readonly float[] scores=new float[32];
+        private int targetCount;
+        private AttackProfile profile;
+        private Vector2 strikeFacing;
+        public int LastHitCount {get;private set;}
+        public int LastDamage {get;private set;}
         private ToolDefinition attackTool;
         private float started;
         private float nextAttack;
@@ -26,9 +32,10 @@ namespace Wildfolk
             if (!Session.IsRunning || !OwnHealth.IsAlive || IsAttacking || Time.time < nextAttack) return false;
             attackTool = Equipment.ActiveTool;
             duration = attackTool == null ? Settings.PunchDuration : attackTool.Duration;
-            reach = attackTool == null ? Settings.PunchReach : attackTool.Reach;
+            profile=attackTool==null ? Settings.PunchAttack : attackTool.Attack;
+            reach=profile.Range;strikeFacing=Avatar.Facing.Direction;LastHitCount=LastDamage=0;
             FindTarget();
-            if (target != null) Avatar.Facing.Face((Vector2)target.transform.position - (Vector2)transform.position);
+            if(targetCount>0)Avatar.Facing.Face((Vector2)targets[0].transform.position-(Vector2)transform.position);
             handIndex = attackTool == null ? 1 - handIndex : 1;
             started = Time.time;
             nextAttack = started + (attackTool == null ? Settings.PunchCooldown : attackTool.Cooldown);
@@ -38,23 +45,32 @@ namespace Wildfolk
             return true;
         }
 
+        private bool InSector(Collider2D collider,out float distance,out float alignment)
+        {
+            var origin=(Vector2)transform.position;
+            var delta=(Vector2)collider.bounds.center-origin;
+            distance=Vector2.Distance(origin,collider.ClosestPoint(origin));
+            alignment=delta.sqrMagnitude<.0001f ? 1 : Vector2.Dot(strikeFacing,delta.normalized);
+            return distance<=reach+.001f && alignment>=Mathf.Cos(profile.ArcAngle*.5f*Mathf.Deg2Rad);
+        }
         private void FindTarget()
         {
-            target = null;
-            targetCollider = null;
-            var filter = new ContactFilter2D { useTriggers = true };
-            var count = Physics2D.OverlapCircle(transform.position, reach, filter, candidates);
-            var best = float.MaxValue;
-            for (var i = 0; i < count; i++)
+            targetCount=0;
+            var count=Physics2D.OverlapCircle(transform.position,reach,new ContactFilter2D{useTriggers=true},candidates);
+            for(var i=0;i<count;i++)
             {
-                var health = candidates[i].GetComponentInParent<Health>();
-                if (health == null || health == OwnHealth || !health.IsAlive) continue;
-                if(health.GetComponent<WorldPlaceable>()!=null)continue;
-                var distance = ((Vector2)transform.position - candidates[i].ClosestPoint(transform.position)).sqrMagnitude;
-                if (distance >= best) continue;
-                best = distance;
-                target = health;
-                targetCollider = candidates[i];
+                var health=candidates[i].GetComponentInParent<Health>();
+                if(!CombatAffiliation.CanDamage(OwnHealth,health) || !InSector(candidates[i],out var distance,out var alignment))continue;
+                var node=health.GetComponent<ResourceNode>();
+                if(node!=null && !node.Definition.CanHarvest(attackTool))continue;
+                var duplicate=false;for(var j=0;j<targetCount;j++)if(targets[j]==health)duplicate=true;
+                if(duplicate)continue;
+                var score=distance/reach+(profile.SelectionRule==TargetSelectionRule.Nearest ? 0 : (1-alignment)*.75f);
+                var at=0;while(at<targetCount && scores[at]<=score)at++;
+                var limit=Mathf.Min(profile.MaxTargets,targets.Length);if(at>=limit)continue;
+                var last=Mathf.Min(targetCount,limit-1);
+                for(var j=last;j>at;j--){targets[j]=targets[j-1];targetColliders[j]=targetColliders[j-1];scores[j]=scores[j-1];}
+                targets[at]=health;targetColliders[at]=candidates[i];scores[at]=score;targetCount=Mathf.Min(targetCount+1,limit);
             }
         }
 
@@ -77,13 +93,14 @@ namespace Wildfolk
             if (!hitApplied && progress >= .5f)
             {
                 hitApplied = true;
-                if (target != null && target.IsAlive && targetCollider != null &&
-                    Vector2.Distance(transform.position, targetCollider.ClosestPoint(transform.position)) <= reach)
+                for(var i=0;i<targetCount;i++)
                 {
-                    var damage = attackTool == null ? Settings.PunchDamage : attackTool.Damage;
-                    var node = target.GetComponent<ResourceNode>();
-                    if (attackTool != null && node != null) damage = attackTool.DamageFor(node.Definition.Kind);
-                    if(node==null || node.Definition.CanHarvest(attackTool)) target.ApplyDamage(damage,false,Equipment.Inventory);
+                    var target=targets[i];var collider=targetColliders[i];
+                    if(collider==null || !collider.enabled || !CombatAffiliation.CanDamage(OwnHealth,target) || !InSector(collider,out _,out _))continue;
+                    var node=target.GetComponent<ResourceNode>();
+                    var damage=attackTool==null ? Settings.PunchDamage : node==null ? attackTool.Damage : attackTool.DamageFor(node.Definition.Kind);
+                    if(node!=null && !node.Definition.CanHarvest(attackTool))continue;
+                    LastDamage+=target.ApplyDamage(damage,false,Equipment.Inventory);LastHitCount++;
                 }
             }
             if (progress >= 1) CancelAttack();
@@ -92,8 +109,7 @@ namespace Wildfolk
         public void CancelAttack()
         {
             IsAttacking = false;
-            target = null;
-            targetCollider = null;
+            targetCount=0;
             if (Avatar != null && Avatar.Facing != null) Avatar.Facing.ResetPose();
         }
         private void OnDisable() => CancelAttack();

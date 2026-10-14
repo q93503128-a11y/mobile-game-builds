@@ -16,6 +16,9 @@ namespace Wildfolk
         public bool IsBusy => Recipe!=null;
         public float Progress => Recipe==null ? 0 : 1-Mathf.Clamp01(Remaining/Duration);
         private PlayerInventory owner;
+        public ProcessingSnapshot Capture()=>Recipe==null ? null : new ProcessingSnapshot{Recipe=Recipe.Id,Batch=BatchCount,Remaining=Remaining};
+        public void Restore(ProcessingSnapshot state,ContentCatalog catalog,PlayerInventory player)
+        {if(state==null || string.IsNullOrEmpty(state.Recipe)){Recipe=null;owner=null;BatchCount=0;Remaining=0;return;}Recipe=catalog.Recipe(state.Recipe);BatchCount=state.Batch;Remaining=state.Remaining;owner=player;}
         private void OnEnable() => Station.Health.Died+=ReleaseCargo;
         private void OnDisable() => Station.Health.Died-=ReleaseCargo;
         private void Update()
@@ -50,7 +53,7 @@ namespace Wildfolk
         }
         private void Drop(ItemDefinition item,int count)
         {
-            var pickup=Instantiate(RecoveryPickup,transform.position,Quaternion.identity);
+            var pickup=PrefabPool.Spawn(RecoveryPickup,transform.position,Quaternion.identity);
             pickup.Initialize(item,count,owner,Settings);
         }
     }

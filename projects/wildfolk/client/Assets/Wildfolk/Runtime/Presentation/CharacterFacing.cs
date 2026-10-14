@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Wildfolk
 {
-    public sealed class CharacterFacing : MonoBehaviour
+    public sealed class CharacterFacing : MonoBehaviour,IPoolReset
     {
         public Transform LeftEye;
         public Transform RightEye;
@@ -37,6 +37,7 @@ namespace Wildfolk
             leftOffset = rightOffset = Vector2.zero;
             leftArc = rightArc = 0;
         }
+        public void ResetForSpawn(){ResetPose();Direction=DisplayDirection=Vector2.down;displayAngle=-90;}
 
         private void LateUpdate()
         {

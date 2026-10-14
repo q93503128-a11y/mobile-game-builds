@@ -15,7 +15,7 @@ namespace Wildfolk
 
         private void Break()
         {
-            var pickup = Instantiate(PickupPrefab, transform.position, Quaternion.identity);
+            var pickup = PrefabPool.Spawn(PickupPrefab, transform.position, Quaternion.identity);
             pickup.Initialize(Definition.DropItem, Definition.DropCount, Player, Settings);
             Destroy(gameObject);
         }

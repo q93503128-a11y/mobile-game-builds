@@ -36,6 +36,10 @@ namespace Wildfolk
             return applied;
         }
         public void MarkCombat()=>LastCombatTime=Time.time;
+        public void RestoreHealth(int health)
+        {if(health<0 || health>Maximum)throw new ArgumentOutOfRangeException(nameof(health));Current=health;LastAttacker=null;Changed?.Invoke();}
+        public void ResetForSpawn(){RestoreHealth(Maximum);LastCombatTime=float.NegativeInfinity;}
+        public void RestoreCombatTime(float remaining,float delay)=>LastCombatTime=remaining<=0 ? float.NegativeInfinity : Time.time-delay+remaining;
         public int Heal(int amount)
         {
             if(amount<0)throw new ArgumentOutOfRangeException(nameof(amount));

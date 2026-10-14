@@ -11,6 +11,7 @@ namespace Wildfolk
         [Min(1)]public float StartRadius,SpawnClearance,Spacing;
         [Range(0,1)]public float ForestPreference,RockPreference;
         public Vector2 ScaleRange;
+        [Min(1)] public float RespawnSeconds;
     }
     [CreateAssetMenu(menuName="Wildfolk/World Generation")]
     public sealed class WorldGenerationDefinition : ScriptableObject
@@ -23,5 +24,6 @@ namespace Wildfolk
         [Min(64)]public int TextureWidth=1024;
         public ResourceGenerationRule[] Resources=Array.Empty<ResourceGenerationRule>();
         [Min(0)]public int DecorationCount=240;
+        [Range(.1f,1)]public float ShallowMoveMultiplier=.7f;
     }
 }

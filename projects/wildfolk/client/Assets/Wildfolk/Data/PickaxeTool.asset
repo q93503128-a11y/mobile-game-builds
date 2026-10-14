@@ -16,7 +16,13 @@ MonoBehaviour:
   Tier: {fileID: 11400000, guid: b632d88d6c00461418a7100d186ff69c, type: 2}
   Kind: 1
   Damage: 10
-  Reach: 1.6
+  Attack:
+    MaxTargets: 1
+    ArcAngle: 120
+    Range: 1.6
+    PierceCount: 0
+    AoERadius: 0
+    SelectionRule: 0
   Duration: 0.52
   Cooldown: 0.72
   HandExtension: 0.25

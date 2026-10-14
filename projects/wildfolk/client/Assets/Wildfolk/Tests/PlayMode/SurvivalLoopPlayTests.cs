@@ -207,9 +207,9 @@ namespace Wildfolk.Tests
             yield return new WaitForSeconds(.3f);
             var point=PlayPointerDriver.Point(hud.Attack);input.Pointer(point,true);yield return null;
             var timeout=Time.time+4;
-            while(enemy!=null && Time.time<timeout) yield return null;
+            while(enemy!=null && enemy.gameObject.activeInHierarchy && Time.time<timeout) yield return null;
             input.Pointer(point,false);yield return null;
-            Assert.That(enemy==null,Is.True);Assert.That(player.GetComponent<Health>().IsAlive,Is.True);
+            Assert.That(enemy==null || !enemy.gameObject.activeInHierarchy,Is.True);Assert.That(player.GetComponent<Health>().IsAlive,Is.True);
             Assert.That(Object.FindObjectsByType<ParticleSystem>(FindObjectsSortMode.None),Is.Empty);
         }
     }

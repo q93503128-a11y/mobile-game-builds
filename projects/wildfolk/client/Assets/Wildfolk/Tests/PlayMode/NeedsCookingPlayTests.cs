@@ -92,15 +92,15 @@ namespace Wildfolk.Tests
         }
         [UnityTest] public IEnumerator WaterInteractionAndSelectedConsumptionDoNotWasteFullMeters()
         {
-            var source=Object.FindFirstObjectByType<WaterSource>();var water=source.Definition.Water;
+            var source=Object.FindFirstObjectByType<WaterSource>();var water=source.Definition.Container.Raw;
             Position((Vector2)source.transform.position+Vector2.down*2.2f,Vector2.up);yield return new WaitForSeconds(.2f);
             Assert.That(player.GetComponent<PlayerInteraction>().TargetWater,Is.SameAs(source));
-            yield return input.Click(hud.Interact);Assert.That(inventory.Model.CountItem(water),Is.EqualTo(1));
+            inventory.Model.Add(source.Definition.Container.Empty,1);yield return input.Click(hud.Interact);Assert.That(inventory.Model.CountItem(water),Is.EqualTo(1));
             inventory.SelectSlot(0);yield return null;
             needs.Model.Restore(water.Consumable);
             Assert.That(player.GetComponent<PlayerPrimaryAction>().TryUse(),Is.False);Assert.That(inventory.Model.CountItem(water),Is.EqualTo(1));
             needs.Model.Advance(100);yield return input.Click(hud.Attack);
-            Assert.That(inventory.Model.CountItem(water),Is.Zero);Assert.That(needs.Model.Thirst,Is.GreaterThan(99));
+            Assert.That(inventory.Model.CountItem(water),Is.Zero);Assert.That(inventory.Model.CountItem(source.Definition.Container.Empty),Is.EqualTo(1));Assert.That(needs.Model.Thirst,Is.GreaterThan(99));
             Position(Vector2.zero,Vector2.up);yield return null;Assert.That(source.Collect(inventory),Is.False);
         }
         [UnityTest] public IEnumerator CampfireRecipePlacementCookingProgressAndTakeUseActualButtons()

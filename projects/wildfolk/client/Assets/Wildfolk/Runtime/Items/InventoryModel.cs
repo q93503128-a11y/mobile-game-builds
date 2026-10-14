@@ -16,6 +16,20 @@ namespace Wildfolk
             slots = new ItemStack[capacity];
         }
         public ItemStack GetSlot(int index) => slots[index];
+        public SavedStack[] Capture()
+        {var result=new SavedStack[Capacity];for(var i=0;i<Capacity;i++)result[i]=new SavedStack{Item=slots[i].IsEmpty ? null : slots[i].Item.Id,Count=slots[i].Count};return result;}
+        public void Restore(SavedStack[] state,ContentCatalog catalog)
+        {
+            if(state==null || state.Length!=Capacity)throw new ArgumentException("Inventory capacity mismatch");
+            var next=new ItemStack[Capacity];
+            for(var i=0;i<Capacity;i++)
+            {
+                if(state[i]==null || state[i].Count<0)throw new ArgumentException("Invalid saved stack");
+                if(state[i].Count==0){if(!string.IsNullOrEmpty(state[i].Item))throw new ArgumentException("Invalid empty stack");continue;}
+                var item=catalog.Item(state[i].Item);if(state[i].Count>item.MaxStack)throw new ArgumentException("Invalid stack size");next[i]=new ItemStack(item,state[i].Count);
+            }
+            Array.Copy(next,slots,Capacity);Changed?.Invoke();
+        }
         public long CountItem(ItemDefinition item)
         {
             long total = 0;
@@ -62,11 +76,15 @@ namespace Wildfolk
             Changed?.Invoke();
             return true;
         }
-        public bool SplitHalf(int from)
+        public bool ReplaceConsumedSlot(int index,ItemDefinition expected,ItemDefinition returned)
         {
-            var stack=slots[from];if(stack.IsEmpty || stack.Count<2)return false;
-            for(var to=0;to<slots.Length;to++)if(slots[to].IsEmpty)return Transfer(this,from,this,to,stack.Count/2);
-            return false;
+            Validate(expected,1);Validate(returned,1);
+            var stack=slots[index];if(stack.IsEmpty || stack.Item.Id!=expected.Id)return false;
+            var next=(ItemStack[])slots.Clone();
+            next[index]=stack.Count==1 ? default : new ItemStack(stack.Item,stack.Count-1);
+            if(next[index].IsEmpty)next[index]=new ItemStack(returned,1);
+            else if(AddTo(next,returned,1)!=1)return false;
+            Array.Copy(next,slots,slots.Length);Changed?.Invoke();return true;
         }
         public ExchangeResult GetExchangeStatus(ItemAmount[] costs, ItemDefinition output, int count)
             => PrepareExchange(costs, output, count, out _);

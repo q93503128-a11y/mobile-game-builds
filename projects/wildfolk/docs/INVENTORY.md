@@ -1,15 +1,17 @@
-# 인벤토리·상자·드랍·소분
+# Inventory / Hotbar / Storage
 
-PlayerInventory.Model은36칸,0~8Hotbar/9~35Storage다. Hotbar/UI/장착은 같은 배열과SelectedIndex를 읽는다. Chest는 PlaceableDefinition.StorageSlots=24의 독립 모델이며 UI 위3×8, 아래PlayerStorage27+Hotbar9다. 닫아도 세션 동안 내용이 남고 파괴 시 월드 드랍한다. 앱 재실행 보존은 없다.
+PlayerInventory는36칸(Hotbar9+Storage27), Wood Chest는24칸이다. Item ID를 기준으로 합치고 MaxStack은 ItemDefinition이 정본이다. 재료50, 도구/검1, 빈 Wooden Cup20, Raw/Clean Cup1이다.
 
-InventorySlotDrag/InventoryDragController가 동일한 포인터 흐름으로 Player↔Chest↔Hotbar 이동한다. 빈 슬롯 전체 이동, 같은 아이템 한도 합치기와 잔량 유지, 다른 아이템 전체 교환, 가득 찬 동일 대상/빈Source/동일슬롯은 변화 없음이다. 두 모델을 모두 변경한 뒤 이벤트를 보내므로 UI에 중간 상태를 노출하지 않는다.
+일반 Drag는 전체 Stack을 옮긴다. 빈 슬롯/같은 Item 합치기/전체 교환을 지원하고 Inventory↔Hotbar↔Chest에 같은 InventoryModel.Transfer를 사용한다. 부분 수량을 다른 Item 위에 놓아 교환하지 않는다. 빈 화면 드랍은 취소이며 삭제하지 않는다.
 
-상자에서 탭한 스택도 테두리로 선택 표시한다. 스택을 탭하고 Split half를 누르면 같은 모델의 첫 빈 슬롯에 floor(count/2)를 옮긴다. Wood30→15/15,31→16/15다. 빈 슬롯이 없거나1개이면 변경하지 않는다. 나눠진 스택은 기존 드래그로 Inventory/Chest/Hotbar/바닥에 옮길 수 있다. Right Click/수량 입력 UI는 사용하지 않는다. 모델은 부분 수량 전송 API도 제공하지만 현재 제품 UX는Split half다.
+## 모바일 소분
 
-드래그 중에만 상단 중앙 Drop to ground 영역이 나타난다. 거기에 놓아야 PlayerItemDrop이 가까운 빈 육지에 WorldPickup을 생성하고 Source 스택을 소비한다. 주변에 안전한 공간이 없으면 원래 스택을 유지한다. UI 밖 아무 곳에 놓는 것은 취소이며 아이템을 삭제하지 않는다. 플레이어가 버린 아이템은 제자리에 짧게 떨어지고 바로 재흡수하지 않으며 나중에 접근해 줍는다.
+슬롯 Long Press0.45초→Item Actions→Split. 선택한 슬롯의 Split 버튼으로도 연다. 현재/선택 수량, −1/+1/Half/Confirm/Cancel을 제공한다. 선택 범위1~현재수량−1이며 채운 컵과 단일 장비에는 소분을 제공하지 않는다.
 
-Ghost는 데이터 복사본이 아닌 표시이며 Raycast를 막지 않는다. 원본 아이콘을 흐리게 표시하고 가능한 대상/불가능 대상을 색으로 구분한다. UI닫힘/Pause/사망/Chest 변경으로 드래그와 선택을 취소한다. 동시 포인터가 진행 중 드래그를 탈취하지 못한다.
+Confirm은 임의의 빈 슬롯에 분배하지 않는다. 선택 수량을 Ghost로 들고 있는 상태를 만든다. 원하는 Inventory/Hotbar/Chest 슬롯을 누르거나 드래그하여 배치하고, 명확한 Drop to ground에 놓으면 선택 수량만 버린다. 원본 모델은 배치 성공 전까지 유지한다. 원본 슬롯에는 예약 후 남을 수량을 표시한다. 상단 Cancel 또는 가방 닫기는 원본 수량을 보존한다. 상자 대상에는 선택 테두리를 표시한다.
 
-제작은 임시 배열에서 재료와 결과 공간을 검증하고 한 번에 확정한다. 배치는 성공 시 선택 슬롯1개를 소비한다. 장비 업그레이드는 Recipe에 적힌 이전 장비만 소비하며 직접 얻은 상위 장비는 하위 장비를 자동 삭제하지 않는다. XP/Gold는 별도PlayerProgression이므로 슬롯을 차지하지 않는다.
+PlayerItemDrop은 물/장애물 없는 근처 지점을 확인한 뒤 WorldPickup을 만들고 정확한 수량만 소비한다. 실패하면 원본을 유지한다. 버린 아이템은 즉시 자동 회수하지 않는다. WorldPickup은 Pool을 재사용한다.
 
-가방/상자는 로컬 이동·공격·상호작용만 막고 세계/적/시간/생존/처리를 진행한다. Singleplayer Pause/Defeat의 세계 동결은 별도 정책이다. 실제 네트워크는 없다. ModalLayout은 생존·시간HUD/가방 영역을 피하도록 패널을 맞춘다. 작은 화면의 실제 터치 적합성은 사용자가 판단한다.
+빈 컵이 있어야 자연 수원에서 Raw Cup을 얻는다. 마시면 Empty Cup을 반환한다. 상태별 Item ID와 모든 슬롯을 Save/Load하고 Chest의 용기 상태도 유지한다. 소분 중인 UI 포인터 상태는 저장하지 않으며 원본 아이템은 저장에 남는다.
+
+가방/Chest 입력 잠금은 세계 정지와 분리한다. 실제 Multiplayer 네트워크와 Player 전달은 아직 없다. Friendly Fire는 관계 필터 기반 OFF이며 Team 시설을 일반 공격으로 파괴하지 않는다.

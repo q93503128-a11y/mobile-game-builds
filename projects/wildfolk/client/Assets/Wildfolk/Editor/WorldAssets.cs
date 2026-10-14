@@ -9,7 +9,7 @@ namespace Wildfolk.Editor
         internal GameplayLightDefinition Light;
         internal GoblinDefinition Goblin;
         internal LootTable ZombieLoot,GoblinLoot,ChickenLoot,BoarLoot;
-        internal ResourceDefinition Log;
+        internal ResourceDefinition Log,Shrub;
         internal static WorldAssets Load(GameplayAssets a)
         {
             var w=new WorldAssets();
@@ -24,6 +24,8 @@ namespace Wildfolk.Editor
             w.GoblinLoot=Loot("GoblinLoot",Array.Empty<LootEntry>(),8,3);
             var logHealth=GameplayAssets.Asset<VitalityDefinition>("FallenLogVitality",v=>v.MaximumHealth=50);
             w.Log=GameplayAssets.Asset<ResourceDefinition>("FallenLogResource",r=>{r.Kind=ResourceKind.Wood;r.DropItem=a.Tree.DropItem;r.DropCount=4;r.Vitality=logHealth;});
+            var shrubHealth=GameplayAssets.Asset<VitalityDefinition>("SmallPlantVitality",v=>v.MaximumHealth=12);
+            w.Shrub=GameplayAssets.Asset<ResourceDefinition>("SmallPlantResource",r=>{r.Kind=ResourceKind.Wood;r.DropItem=a.Tree.DropItem;r.DropCount=1;r.Vitality=shrubHealth;});
             return w;
         }
         private static ItemDefinition Material(string name,string id,string display)=>GameplayAssets.Asset<ItemDefinition>(name,i=>{i.Id=id;i.DisplayName=display;i.Icon=VisualArtImporter.Sprite(id);i.MaxStack=50;i.Category=ItemCategory.Material;});

@@ -15,7 +15,13 @@ MonoBehaviour:
   MoveSpeed: 4.2
   CameraSmoothTime: 0.18
   PunchDamage: 10
-  PunchReach: 1.6
+  PunchAttack:
+    MaxTargets: 1
+    ArcAngle: 120
+    Range: 1.6
+    PierceCount: 0
+    AoERadius: 0
+    SelectionRule: 0
   PunchDuration: 0.28
   PunchCooldown: 0.44
   PunchExtension: 1.05

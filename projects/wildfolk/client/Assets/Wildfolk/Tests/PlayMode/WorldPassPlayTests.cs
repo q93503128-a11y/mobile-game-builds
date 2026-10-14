@@ -28,7 +28,7 @@ namespace Wildfolk.Tests
         }
         [UnityTest]public IEnumerator ActualGeneratedWorldHasWaterCollisionsFordAndGroundSorting()
         {
-            Assert.That(world.Map.Resources.Count,Is.EqualTo(223));Assert.That(world.Map.IsWalkable(player.transform.position,2),Is.True);
+            Assert.That(world.Map.Resources.Count,Is.EqualTo(259));Assert.That(world.Map.IsWalkable(player.transform.position,2),Is.True);
             var colliders=new Collider2D[8];var deep=world.Map.LakeCenter;
             Assert.That(Physics2D.OverlapCircle(deep,.4f,new ContactFilter2D{useTriggers=false},colliders),Is.GreaterThan(0));
             var ford=new Vector2(world.Map.RiverAt(world.Map.FordY),world.Map.FordY);Assert.That(Physics2D.OverlapCircle(ford,.4f,new ContactFilter2D{useTriggers=false},colliders),Is.Zero);
@@ -44,7 +44,7 @@ namespace Wildfolk.Tests
             yield return new WaitForSeconds(.7f);Assert.That(life.Phase,Is.EqualTo(ZombiePhase.Active));
             var clock=enemy.Clock;var cycle=clock.Definition.CycleSeconds;clock.Model.Advance(clock.Definition.DaySeconds+clock.Definition.EveningSeconds+clock.Definition.NightSeconds-(float)(clock.Model.Elapsed%cycle)+.01f);
             yield return null;Assert.That(life.Phase,Is.EqualTo(ZombiePhase.Burrowing));hp=player.GetComponent<Health>().Current;
-            yield return new WaitForSeconds(1.25f);Assert.That(enemy==null,Is.True);Assert.That(player.GetComponent<Health>().Current,Is.EqualTo(hp));
+            yield return new WaitForSeconds(1.25f);Assert.That(enemy==null || !enemy.gameObject.activeInHierarchy,Is.True);Assert.That(player.GetComponent<Health>().Current,Is.EqualTo(hp));
             Assert.That(inventory.GetComponent<PlayerProgression>().Experience,Is.Zero);Assert.That(inventory.GetComponent<PlayerProgression>().Gold,Is.Zero);Assert.That(Object.FindObjectsByType<WorldPickup>(FindObjectsSortMode.None),Is.Empty);
         }
         [UnityTest]public IEnumerator SafeLightBlocksNewAggroAndEndsExistingPursuitAfterGrace()
@@ -60,7 +60,7 @@ namespace Wildfolk.Tests
         {
             ClearStart();var wood=Recipe("workbench").Ingredients[0].Item;inventory.Model.Add(wood,30);yield return input.Click(hud.InventoryButton);
             var panel=Object.FindFirstObjectByType<InventoryPanel>();var drag=Object.FindFirstObjectByType<InventoryDragController>();
-            yield return input.Click(panel.Slots[0]);yield return input.Click(drag.SplitButton);Assert.That(inventory.Model.GetSlot(0).Count,Is.EqualTo(15));Assert.That(inventory.Model.GetSlot(1).Count,Is.EqualTo(15));
+            yield return input.Click(panel.Slots[0]);yield return input.Click(drag.SplitButton);yield return input.Click(drag.SplitPanel.ConfirmButton);Assert.That(inventory.Model.GetSlot(0).Count,Is.EqualTo(30));yield return input.Click(panel.Slots[1]);Assert.That(inventory.Model.GetSlot(0).Count,Is.EqualTo(15));Assert.That(inventory.Model.GetSlot(1).Count,Is.EqualTo(15));
             yield return input.Drag(panel.Slots[1],new Vector2(5,Screen.height*.5f));Assert.That(inventory.Model.CountItem(wood),Is.EqualTo(30));
             yield return input.Drag(panel.Slots[1],PlayPointerDriver.Point(drag.DropZone.transform),()=>Assert.That(drag.DropZone.activeSelf,Is.True));
             Assert.That(inventory.Model.CountItem(wood),Is.EqualTo(15));var pickup=Object.FindFirstObjectByType<WorldPickup>();Assert.That(pickup.Count,Is.EqualTo(15));Assert.That(drag.DropZone.activeSelf,Is.False);
@@ -68,7 +68,7 @@ namespace Wildfolk.Tests
             hud.Session.CloseInventory();var chest=Place("storage_chest",(Vector2)player.transform.position+Vector2.down*2.1f).GetComponent<StorageChest>();chest.Model.Add(wood,30);yield return null;
             Assert.That(inventory.GetComponent<PlayerStorage>().OpenChest(chest),Is.True);yield return null;var chestPanel=Object.FindFirstObjectByType<ChestPanel>();
             yield return input.Click(chestPanel.ChestSlots[0]);Assert.That(chestPanel.ChestSlots[0].Selection.enabled,Is.True);
-            yield return input.Click(drag.ChestSplitButton);Assert.That(chest.Model.GetSlot(0).Count,Is.EqualTo(15));Assert.That(chest.Model.GetSlot(1).Count,Is.EqualTo(15));
+            yield return input.Click(drag.ChestSplitButton);yield return input.Click(drag.SplitPanel.ConfirmButton);yield return input.Click(chestPanel.ChestSlots[1]);Assert.That(chest.Model.GetSlot(0).Count,Is.EqualTo(15));Assert.That(chest.Model.GetSlot(1).Count,Is.EqualTo(15));
             yield return input.Drag(chestPanel.ChestSlots[1],PlayPointerDriver.Point(chestPanel.PlayerSlots[9]));Assert.That(inventory.Model.CountItem(wood),Is.EqualTo(45));Assert.That(chest.Model.CountItem(wood),Is.EqualTo(15));
         }
         [UnityTest]public IEnumerator FurnaceProcessesThreeOrTwoInOneCycleAndPreservesCargoWhenDestroyed()

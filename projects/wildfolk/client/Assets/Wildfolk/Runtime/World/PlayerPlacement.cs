@@ -10,6 +10,7 @@ namespace Wildfolk
         public CharacterFacing Facing;
         public GameplaySettings Settings;
         public SpriteRenderer Ground;
+        public WorldNavigation Terrain;
         public GameObject Preview;
         public SpriteRenderer PreviewVisual;
         public SpriteRenderer PreviewFootprint;
@@ -40,6 +41,7 @@ namespace Wildfolk
             var half = footprint*.5f;
             var bounds = Ground.bounds;
             if (!bounds.Contains(position-half) || !bounds.Contains(position+half)) return false;
+            if(Terrain!=null && (Terrain.Surface(position)!=TerrainSurface.Land || Terrain.Surface(position-half)!=TerrainSurface.Land || Terrain.Surface(position+half)!=TerrainSurface.Land))return false;
             var filter = new ContactFilter2D { useTriggers = true };
             return Physics2D.OverlapBox(position, definition.Footprint, angle, filter, overlaps) == 0;
         }

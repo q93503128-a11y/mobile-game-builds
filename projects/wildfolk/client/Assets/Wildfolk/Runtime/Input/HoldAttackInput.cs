@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 namespace Wildfolk
@@ -25,10 +24,6 @@ namespace Wildfolk
         {
             if(!Session.IsRunning) {ResetInput();return;}
             if(pointer.HasValue && repeat && Action.Kind==PrimaryActionKind.Attack) Action.TryUse();
-            var keyboard=Keyboard.current;
-            if(keyboard==null) return;
-            if(keyboard.spaceKey.wasPressedThisFrame) Action.TryUse();
-            else if(keyboard.spaceKey.isPressed && Action.Kind==PrimaryActionKind.Attack) Action.TryUse();
         }
         public void ResetInput() {pointer=null;repeat=false;Surface.color=Color.white;}
         private void OnDisable()=>ResetInput();

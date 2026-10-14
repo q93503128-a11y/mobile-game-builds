@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8977702331665899035}
   - component: {fileID: 1549365668361513300}
   - component: {fileID: 1452434310428902743}
+  - component: {fileID: 3880484953059686921}
   - component: {fileID: 5385403036820921997}
   - component: {fileID: 3662479209855703199}
   - component: {fileID: 6989536581757573593}
@@ -130,6 +131,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.Health
   Definition: {fileID: 11400000, guid: 40b9f38ec50150a438ac1f7afc0a5eea, type: 2}
+--- !u!114 &3880484953059686921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 711006582165635482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2203564f23f60b84c9b8b1475ad410c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.CombatAffiliation
+  Relation: 4
+  TeamId: 0
 --- !u!114 &5385403036820921997
 MonoBehaviour:
   m_ObjectHideFlags: 0

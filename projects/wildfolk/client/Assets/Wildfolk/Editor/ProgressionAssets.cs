@@ -71,7 +71,7 @@ namespace Wildfolk.Editor
             var tool=GameplayAssets.Asset<ToolDefinition>(name+"Tool",t=>
             {
                 t.Tier=tier;t.Kind=kind;t.HeldSprite=VisualArtImporter.Sprite(id);t.Damage=sword ? iron ? 36 : 28 : iron ? 15 : 12;
-                t.Reach=1.6f;t.Duration=sword ? iron ? .28f : .31f : axe ? iron ? .3f : .36f : iron ? .36f : .44f;
+                t.Attack.Range=1.6f;t.Duration=sword ? iron ? .28f : .31f : axe ? iron ? .3f : .36f : iron ? .36f : .44f;
                 t.Cooldown=sword ? iron ? .38f : .42f : axe ? iron ? .42f : .5f : iron ? .5f : .6f;
                 t.SwingArc=sword ? 75 : axe ? 65 : 55;t.HandExtension=.25f;
                 var efficient=iron ? 4 : 3.5f;

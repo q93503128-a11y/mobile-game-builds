@@ -26,6 +26,9 @@ GameObject:
   - component: {fileID: 4937408309816132337}
   - component: {fileID: 717414266980193881}
   - component: {fileID: 7060060883895486171}
+  - component: {fileID: 8043958602653948693}
+  - component: {fileID: 459331300772413484}
+  - component: {fileID: 580560555834153176}
   - component: {fileID: 8809118978345452038}
   - component: {fileID: 6968116465940275041}
   m_Layer: 0
@@ -213,6 +216,8 @@ MonoBehaviour:
   Avatar: {fileID: 5753439367606979303}
   Combat: {fileID: 765404324439809981}
   Survival: {fileID: 19052881427358656}
+  Input: {fileID: 459331300772413484}
+  Terrain: {fileID: 0}
 --- !u!114 &7080438054753028775
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -306,6 +311,7 @@ MonoBehaviour:
   Facing: {fileID: 3886187564385862800}
   Settings: {fileID: 11400000, guid: fd43ec9cd9385eb4eb69f64792c98535, type: 2}
   Ground: {fileID: 0}
+  Terrain: {fileID: 0}
   Preview: {fileID: 0}
   PreviewVisual: {fileID: 0}
   PreviewFootprint: {fileID: 0}
@@ -356,6 +362,49 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 465adb2f2dd839047bb196e3c36413c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.PlayerProgression
+--- !u!114 &8043958602653948693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 226757985403581487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2203564f23f60b84c9b8b1475ad410c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.CombatAffiliation
+  Relation: 0
+  TeamId: 0
+--- !u!114 &459331300772413484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 226757985403581487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 234a3af347089084394ec357048567f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.PlayerInputCommands
+  Primary: {fileID: 4937408309816132337}
+  Interaction: {fileID: 717414266980193881}
+  Session: {fileID: 0}
+--- !u!114 &580560555834153176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 226757985403581487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 170653e370882da4092bd8c8b3f8aebc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.PlayerInputAdapter
+  Commands: {fileID: 459331300772413484}
+  Joystick: {fileID: 0}
 --- !u!114 &8809118978345452038
 MonoBehaviour:
   m_ObjectHideFlags: 0

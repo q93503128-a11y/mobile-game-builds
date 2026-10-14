@@ -20,6 +20,7 @@ namespace Wildfolk
             }
         }
         public WorldTimeModel(DayNightDefinition definition) => Definition=definition;
+        public void SetElapsed(double seconds){if(double.IsNaN(seconds) || double.IsInfinity(seconds) || seconds<0)throw new ArgumentOutOfRangeException(nameof(seconds));Elapsed=seconds;}
         public void Advance(float seconds) {if(seconds<0)throw new ArgumentOutOfRangeException(nameof(seconds));Elapsed+=seconds;}
         public void Lighting(out Color color,out float intensity)
         {

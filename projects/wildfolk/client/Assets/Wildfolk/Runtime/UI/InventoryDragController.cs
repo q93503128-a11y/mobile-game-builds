@@ -12,6 +12,10 @@ namespace Wildfolk
         public PlayerItemDrop ItemDrop;
         public GameObject DropZone;
         public Button SplitButton,ChestSplitButton;
+        public StackSplitPanel SplitPanel;
+        public GameObject HeldCancel;
+        public int HeldAmount {get;private set;}
+        public bool IsHoldingPartial {get;private set;}
         private InventoryModel selectedModel;
         private int selectedIndex=-1;
         public event System.Action SelectionChanged;
@@ -26,6 +30,8 @@ namespace Wildfolk
         public bool IsDragging { get; private set; }
         public int SourceIndex { get; private set; }
         private int pointer;
+        private string remainder;
+        private void LateUpdate(){if(IsHoldingPartial && sourceView!=null && sourceView.Count.text!=remainder)sourceView.Count.text=remainder;}
         private InventorySlotView sourceView;
         private InventorySlotView hoveredView;
         private int hoveredIndex;
@@ -44,6 +50,7 @@ namespace Wildfolk
             if (IsDragging || Session.State != SessionState.Inventory || model==null || model.GetSlot(index).IsEmpty) return;
             sourceModel=model;if(model!=Owner.Model)model.Changed+=Refresh;
             IsDragging=true;SourceIndex=index;pointer=data.pointerId;sourceView=view;
+            HeldAmount=model.GetSlot(index).Count;IsHoldingPartial=false;
             data.eligibleForClick=false;
             sourceView.Icon.color=new Color(1,1,1,.35f);
             var color=sourceView.Count.color;color.a=.35f;sourceView.Count.color=color;
@@ -60,48 +67,71 @@ namespace Wildfolk
             if (!IsDragging) return;
             ClearHover();hoveredView=view;hoveredIndex=index;hoveredChest=chest;
             view.DropMarker.enabled=true;
-            view.DropMarker.color=InventoryModel.CanTransfer(sourceModel,SourceIndex,Model(chest),index) ? new Color(.57f,.75f,.49f,.38f) : new Color(.75f,.36f,.27f,.38f);
+            view.DropMarker.color=InventoryModel.CanTransfer(sourceModel,SourceIndex,Model(chest),index,HeldAmount) ? new Color(.57f,.75f,.49f,.38f) : new Color(.75f,.36f,.27f,.38f);
         }
         public void Leave(InventorySlotView view) { if (hoveredView==view) ClearHover(); }
         private void ClearHover() { if (hoveredView!=null) hoveredView.DropMarker.enabled=false;hoveredView=null; }
         public void Drop(int index,PointerEventData data,bool chest=false)
         {
             if (!IsDragging || data.pointerId!=pointer) return;
-            InventoryModel.Transfer(sourceModel,SourceIndex,Model(chest),index);
+            InventoryModel.Transfer(sourceModel,SourceIndex,Model(chest),index,HeldAmount);
             Cancel();
         }
-        public void End(PointerEventData data) { if (IsDragging && data.pointerId==pointer) Cancel(); }
+        public void End(PointerEventData data) { if (IsDragging && data.pointerId==pointer && !IsHoldingPartial) Cancel(); }
         public void Select(int index,bool chest)
         {selectedModel=Model(chest);selectedIndex=index;UpdateSplit();SelectionChanged?.Invoke();}
-        public void SplitHalf(){if(Session.State==SessionState.Inventory && selectedModel!=null && selectedIndex>=0)selectedModel.SplitHalf(selectedIndex);UpdateSplit();}
+        public void OpenSplit()=>OpenSelected(false);
+        public void OpenItemActions()=>OpenSelected(true);
+        private void OpenSelected(bool actions)
+        {
+            if(Session.State!=SessionState.Inventory || IsDragging || selectedModel==null || selectedIndex<0)return;
+            var chest=Storage.Chest!=null && selectedModel==Storage.Chest.Model;
+            var view=chest ? GetComponent<ChestPanel>().ChestSlots[selectedIndex] : Storage.IsOpen ? GetComponent<ChestPanel>().PlayerSlots[selectedIndex] : GetComponent<InventoryPanel>().Slots[selectedIndex];
+            var stack=selectedModel.GetSlot(selectedIndex);if(stack.IsEmpty)return;
+            if(actions)SplitPanel.OpenActions(selectedIndex,view,chest,stack.Count,stack.Item);else SplitPanel.Open(selectedIndex,view,chest,stack.Count,stack.Item);
+        }
+        public void HoldPartial(int index,InventorySlotView view,bool chest,int amount)
+        {
+            if(Session.State!=SessionState.Inventory)return;
+            var model=Model(chest);if(model==null || model.GetSlot(index).Count<=amount || amount<1)return;
+            var scale=CanvasRect.GetComponentInParent<Canvas>().scaleFactor;
+            var data=new PointerEventData(EventSystem.current){pointerId=-734,position=RectTransformUtility.WorldToScreenPoint(null,view.transform.position)+new Vector2(95,95)*scale};
+            Begin(index,view,data,chest);IsHoldingPartial=true;HeldAmount=amount;HeldCancel.SetActive(true);Refresh();
+        }
+        public void BeginHeld(PointerEventData data){if(IsHoldingPartial){pointer=data.pointerId;Move(data);}}
+        public bool PlaceHeld(int index,bool chest)
+        {if(!IsHoldingPartial)return false;if(!InventoryModel.Transfer(sourceModel,SourceIndex,Model(chest),index,HeldAmount)){PlayerFeedback.Show("Choose a slot with room");return false;}Cancel();return true;}
+        public void DropHeldWorld(){if(IsHoldingPartial && ItemDrop.Drop(sourceModel,SourceIndex,HeldAmount))Cancel();}
         private void UpdateSplit()
         {
-            var valid=Session.State==SessionState.Inventory && selectedModel!=null && selectedIndex>=0 && !selectedModel.GetSlot(selectedIndex).IsEmpty && selectedModel.GetSlot(selectedIndex).Count>1;
+            var valid=Session.State==SessionState.Inventory && !IsDragging && selectedModel!=null && selectedIndex>=0 && !selectedModel.GetSlot(selectedIndex).IsEmpty && selectedModel.GetSlot(selectedIndex).Count>1;
             SplitButton.interactable=ChestSplitButton.interactable=valid;
         }
         public void DropWorld(PointerEventData data)
-        {if(!IsDragging || data.pointerId!=pointer)return;ItemDrop.Drop(sourceModel,SourceIndex);Cancel();}
+        {if(!IsDragging || data.pointerId!=pointer)return;ItemDrop.Drop(sourceModel,SourceIndex,HeldAmount);Cancel();}
         private void Refresh()
         {
             UpdateSplit();
             if (!IsDragging) return;
             var stack=sourceModel.GetSlot(SourceIndex);
-            if (stack.IsEmpty) { Cancel();return; }
-            GhostIcon.sprite=stack.Item.Icon;GhostCount.text=stack.Count.ToString();
+            if (stack.IsEmpty || stack.Count<HeldAmount) { Cancel();return; }
+            GhostIcon.sprite=stack.Item.Icon;GhostCount.text=HeldAmount.ToString();remainder=(stack.Count-HeldAmount).ToString();
             if (hoveredView!=null) Hover(hoveredIndex,hoveredView,hoveredChest);
         }
-        private void StateChanged() { if (Session.State!=SessionState.Inventory){selectedModel=null;selectedIndex=-1;Cancel();}UpdateSplit(); }
+        private void StateChanged() { if (Session.State!=SessionState.Inventory){selectedModel=null;selectedIndex=-1;Cancel();SplitPanel.Cancel();}UpdateSplit(); }
         private void StorageChanged(){selectedModel=null;selectedIndex=-1;Cancel();UpdateSplit();SelectionChanged?.Invoke();}
         public void Cancel()
         {
+            if(sourceView!=null && sourceModel!=null){var stack=sourceModel.GetSlot(SourceIndex);sourceView.Count.text=stack.IsEmpty ? string.Empty : stack.Count.ToString();}
             if(sourceModel!=null && sourceModel!=Owner.Model)sourceModel.Changed-=Refresh;
-            sourceModel=null;IsDragging=false;Ghost.gameObject.SetActive(false);DropZone.SetActive(false);ClearHover();
+            sourceModel=null;IsDragging=IsHoldingPartial=false;HeldAmount=0;Ghost.gameObject.SetActive(false);DropZone.SetActive(false);if(HeldCancel!=null)HeldCancel.SetActive(false);ClearHover();
             if (sourceView!=null)
             {
                 sourceView.Icon.color=Color.white;
                 var color=sourceView.Count.color;color.a=1;sourceView.Count.color=color;
             }
             sourceView=null;
+            UpdateSplit();
         }
     }
 }

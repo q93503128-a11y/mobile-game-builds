@@ -373,6 +373,8 @@ GameObject:
   - component: {fileID: 6161596831870490256}
   - component: {fileID: 1977931621692743597}
   - component: {fileID: 7483728843801981833}
+  - component: {fileID: 3534516607455219838}
+  - component: {fileID: 3436646498270535420}
   - component: {fileID: 788767769927240154}
   - component: {fileID: 3209134432340514765}
   - component: {fileID: 7237561006637450731}
@@ -531,6 +533,35 @@ MonoBehaviour:
   AttackPose: {fileID: 4856264083512464284}
   Facing: {fileID: 1977931621692743597}
   Lifecycle: {fileID: 788767769927240154}
+  Steering: {fileID: 3534516607455219838}
+--- !u!114 &3534516607455219838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2477312199630843718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 537fbcfad19b0fd438c2d9af7df9d5d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.EnemySteering
+  Definition: {fileID: 11400000, guid: da9f695e0b5b0c844a8132c95627e0e1, type: 2}
+  Navigation: {fileID: 0}
+--- !u!114 &3436646498270535420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2477312199630843718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2203564f23f60b84c9b8b1475ad410c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.CombatAffiliation
+  Relation: 3
+  TeamId: 0
 --- !u!114 &788767769927240154
 MonoBehaviour:
   m_ObjectHideFlags: 0

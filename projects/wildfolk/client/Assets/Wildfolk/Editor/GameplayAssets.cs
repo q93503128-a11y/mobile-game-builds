@@ -29,7 +29,7 @@ namespace Wildfolk.Editor
             assets.Settings=Asset<GameplaySettings>("GameplaySettings",s=>
             {
                 s.MoveSpeed=4.2f; s.CameraSmoothTime=.18f;
-                s.PunchDamage=10; s.PunchReach=1.6f; s.PunchDuration=.28f; s.PunchCooldown=.44f; s.PunchExtension=1.05f;
+                s.PunchDamage=10; s.PunchAttack.Range=1.6f; s.PunchDuration=.28f; s.PunchCooldown=.44f; s.PunchExtension=1.05f;
                 s.EnemySpeed=2.2f; s.EnemyDetectionRange=4; s.EnemyLoseRange=8;
                 s.EnemyStopDistance=1.35f; s.EnemySeparation=1.12f; s.EnemyAttackReach=1.55f;
                 s.EnemyDamage=8; s.EnemyWindup=.38f; s.EnemyCooldown=1.15f;
@@ -63,7 +63,7 @@ namespace Wildfolk.Editor
         {
             return Asset<ToolDefinition>(name,t=>
             {
-                t.HeldSprite=VisualArtImporter.Sprite(sprite);t.Damage=damage;t.Reach=1.6f;
+                t.HeldSprite=VisualArtImporter.Sprite(sprite);t.Damage=damage;t.Attack.Range=1.6f;
                 t.Duration=duration;t.Cooldown=cooldown;t.HandExtension=.25f;t.SwingArc=arc;
                 t.Efficiencies=new[]{new ResourceEfficiency {Kind=ResourceKind.Wood,Multiplier=wood},
                     new ResourceEfficiency {Kind=ResourceKind.Stone,Multiplier=stone}};

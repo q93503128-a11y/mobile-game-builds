@@ -414,6 +414,29 @@ def world_pass_art():
     poly(im,[(24,59),(24,41),(32,37),(39,43),(39,19),(47,14),(54,19),(54,38),(60,32),(68,35),(72,31),(80,34),(83,64),(72,83),(41,84)],'#c5c3a3',INK,3)
     line(im,[(55,42),(55,60)],'#788574',2);line(im,[(69,42),(68,58)],'#788574',2);save(im,'icon_interact.png')
 
+
+def water_container_art():
+    for name,water in [('empty_cup',None),('raw_water_cup','#69795e'),('clean_water_cup','#73a5a6')]:
+        im=canvas(128,128)
+        poly(im,[(25,42),(99,42),(94,105),(83,116),(41,116),(30,103)],'#846844',INK,4)
+        poly(im,[(35,59),(87,59),(83,105),(42,105)],'#a98a58')
+        for x in [44,65,83]:line(im,[(x,62),(x-3,105)],'#705638',2)
+        ellipse(im,(23,29,101,64),'#b49969',INK,4)
+        ellipse(im,(32,37,93,56),water or '#453d2e',INK,2)
+        if water:
+            line(im,[(43,44),(73,44)],'#adc0a3' if name=='clean_water_cup' else '#879575',2)
+            poly(im,[(64,66),(50,87),(52,98),(63,104),(75,98),(78,87)],water,INK,2)
+        save(im,name+'.png')
+
+
+def small_plant_art():
+    im=canvas(150,100)
+    for pts in [[(68,88),(59,53),(40,40)],[(72,89),(82,50),(111,33)],[(72,89),(72,44),(67,23)]]:
+        line(im,pts,'#705738',6)
+    for pts in [[(34,49),(24,32),(42,25),(58,38),(55,57)],[(61,37),(50,19),(69,9),(86,19),(83,42)],[(81,60),(86,34),(109,23),(123,39),(112,61)],[(51,73),(34,61),(39,44),(60,43),(70,63)],[(75,81),(70,58),(94,48),(112,65),(101,81)]]:
+        poly(im,pts,'#637848',INK,3)
+    line(im,[(61,78),(68,57)],'#8f794b',3);save(im,'small_shrub.png')
+
 if __name__=='__main__':
     p=argparse.ArgumentParser();p.add_argument('output',type=Path);a=p.parse_args()
     OUT=a.output;OUT.mkdir(parents=True,exist_ok=True)
@@ -423,5 +446,5 @@ if __name__=='__main__':
     save(body(),'player_body.png');save(hand(),'player_hand.png')
     save(enemy(),'enemy.png');save(grass(21),'grass.png');save(fern(),'fern.png');save(log(),'fallen_log.png')
     character_details();tools();workbench()
-    icons();ui();survival_art();progression_art();world_pass_art()
+    icons();ui();survival_art();progression_art();world_pass_art();water_container_art();small_plant_art()
     print(f'Wrote {len(list(OUT.glob("*.png")))} original sprites to {OUT}')

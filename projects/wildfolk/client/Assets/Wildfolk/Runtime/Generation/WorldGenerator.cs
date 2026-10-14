@@ -14,7 +14,8 @@ namespace Wildfolk
         public WaterSourceDefinition Water;
         public Material SpriteMaterial;
         public Sprite Grass,Fern;
-        public NeutralAnimal Chicken,Boar;
+        public ResourceRegeneration Renewal;
+        public AnimalPopulation Animals;
         public WorldMap Map { get; private set; }
         public int Seed=>Map.Seed;
         public float GenerationMilliseconds { get; private set; }
@@ -25,26 +26,21 @@ namespace Wildfolk
         {
             var started=System.Diagnostics.Stopwatch.StartNew();
             for(var i=Environment.childCount-1;i>=0;i--){var child=Environment.GetChild(i).gameObject;child.SetActive(false);Destroy(child);}
-            Map=new WorldMap(Definition,seed);Region.Size=Definition.Size-Vector2.one*3;Terrain.Build(Map);
+            Map=new WorldMap(Definition,seed);Renewal.ResetWorld();Region.Size=Definition.Size-Vector2.one*3;Terrain.Build(Map);
             Player.GetComponent<Rigidbody2D>().position=Map.Spawn;Player.transform.position=Map.Spawn;
-            var index=0;foreach(var placement in Map.Resources)
-            {
-                var resource=Instantiate(Definition.Resources[placement.Rule].Prefab,placement.Position,Quaternion.identity,Environment);
-                resource.transform.localScale=Vector3.one*placement.Scale;resource.Player=Player;resource.PickupPrefab=Pickup;resource.Settings=Settings;
-                if(Definition.Resources[placement.Rule].AlternateSprite!=null && index++%3==0)resource.Visual.sprite=Definition.Resources[placement.Rule].AlternateSprite;
-            }
-            WaterGeometry();Decorations(seed);Animal(Chicken,new Vector2(-12,-5));Animal(Boar,new Vector2(14,-6));
+            for(var index=0;index<Map.Resources.Count;index++)
+            {var placement=Map.Resources[index];CreateResource("r"+index,placement.Rule,placement.Position,placement.Scale);}
+            WaterGeometry();Decorations(seed);Animals.Generate();
             started.Stop();GenerationMilliseconds=(float)started.Elapsed.TotalMilliseconds;
         }
-        private void Animal(NeutralAnimal prefab,Vector2 preferred)
+        public ResourceNode CreateResource(string id,int rule,Vector2 position,float scale)
         {
-            var position=preferred;
-            for(var i=0;i<24 && (!Map.IsWalkable(position,1.2f) || Occupied(position,1.4f));i++)position=preferred+new Vector2((i%6)*2,(i/6)*2);
-            var actor=Instantiate(prefab,position,Quaternion.identity,Environment);actor.Player=Player.transform;actor.Session=Session;actor.Region=Region;
-            var loot=actor.GetComponent<LootOnDeath>();loot.Player=Player;loot.Pickup=Pickup;loot.Settings=Settings;
+            var resource=Instantiate(Definition.Resources[rule].Prefab,position,Quaternion.identity,Environment);
+            resource.transform.localScale=Vector3.one*scale;resource.Player=Player;resource.PickupPrefab=Pickup;resource.Settings=Settings;
+            var number=int.Parse(id.Substring(1));
+            if(Definition.Resources[rule].AlternateSprite!=null && number%3==0)resource.Visual.sprite=Definition.Resources[rule].AlternateSprite;
+            Renewal.Register(resource,id,rule);return resource;
         }
-        private readonly Collider2D[] obstacles=new Collider2D[8];
-        private bool Occupied(Vector2 position,float radius)=>Physics2D.OverlapCircle(position,radius,new ContactFilter2D{useTriggers=false},obstacles)>0;
         private GameObject Child(string name){var child=new GameObject(name);child.transform.SetParent(Environment,false);return child;}
         private void Polygon(string name,Vector2[] points){Child(name).AddComponent<PolygonCollider2D>().points=points;}
         private void RiverPart(float from,float to)

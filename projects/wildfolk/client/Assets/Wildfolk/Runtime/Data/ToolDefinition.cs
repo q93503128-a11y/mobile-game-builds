@@ -18,7 +18,7 @@ namespace Wildfolk
         public EquipmentTier Tier;
         public ToolKind Kind;
         [Min(1)] public int Damage;
-        [Min(.1f)] public float Reach;
+        public AttackProfile Attack=new AttackProfile();
         [Min(.01f)] public float Duration;
         [Min(.01f)] public float Cooldown;
         [Min(0)] public float HandExtension;

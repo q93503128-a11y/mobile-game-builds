@@ -8,7 +8,7 @@ namespace Wildfolk
         [Min(.1f)] public float MoveSpeed;
         [Min(.01f)] public float CameraSmoothTime;
         [Min(1)] public int PunchDamage;
-        [Min(.1f)] public float PunchReach;
+        public AttackProfile PunchAttack=new AttackProfile();
         [Min(.01f)] public float PunchDuration;
         [Min(.01f)] public float PunchCooldown;
         [Min(.1f)] public float PunchExtension;

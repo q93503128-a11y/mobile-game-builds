@@ -35,7 +35,7 @@ namespace Wildfolk.Editor
             panel.SelectedCategory=Text("Category",surface.transform,string.Empty,new Vector2(-409,-319),new Vector2(320,28),20,TextAnchor.MiddleLeft);
             BuildCrafting(root,surface.transform,crafting);
             overlay.gameObject.SetActive(false);
-            var split=Image("Split Half",surface.transform,"panel",new Vector2(.5f,.5f),new Vector2(-10,-300),new Vector2(168,58),true);Text("Label",split.transform,"Split half",Vector2.zero,new Vector2(156,50),22);drag.SplitButton=Button(split);UnityEventTools.AddPersistentListener(drag.SplitButton.onClick,drag.SplitHalf);
+            var split=Image("Split",surface.transform,"panel",new Vector2(.5f,.5f),new Vector2(-10,-300),new Vector2(168,58),true);Text("Label",split.transform,"Split",Vector2.zero,new Vector2(156,50),22);drag.SplitButton=Button(split);UnityEventTools.AddPersistentListener(drag.SplitButton.onClick,drag.OpenSplit);
             drag.ItemDrop=owner.GetComponent<PlayerItemDrop>();
             ChestUiBuilder.Build(root,safe,owner,panel.Storage,drag);
             var dropZone=Image("Drop Zone",safe,"panel",new Vector2(.5f,1),new Vector2(0,-128),new Vector2(320,88),true);dropZone.color=new Color32(155,108,72,255);Text("Label",dropZone.transform,"Drop to ground",Vector2.zero,new Vector2(300,68),27);
@@ -46,7 +46,7 @@ namespace Wildfolk.Editor
             drag.Ghost=ghost;
             drag.GhostIcon=Image("Icon",ghost,"white",new Vector2(.5f,.5f),Vector2.zero,new Vector2(78,78));drag.GhostIcon.preserveAspect=true;
             drag.GhostCount=Text("Stack Count",ghost,string.Empty,new Vector2(25,-32),new Vector2(50,28),23,TextAnchor.MiddleRight);
-            ghost.gameObject.SetActive(false);
+            ghost.gameObject.SetActive(false);StackSplitUiBuilder.Build(safe,drag);
         }
 
         internal static RectTransform Grid(string name,Transform parent,Vector2 position,Vector2 size)
@@ -81,7 +81,7 @@ namespace Wildfolk.Editor
                 view.Materials=Text("Materials",card.transform,string.Empty,new Vector2(-12,-6),new Vector2(350,32),21,TextAnchor.MiddleLeft);
                 if(view.Recipe.Ingredients.Length>1)view.Materials.fontSize=17;
                 view.InputIcon=Image("Ingredient",card.transform,"white",new Vector2(.5f,.5f),new Vector2(-168,-25),new Vector2(28,28));view.InputIcon.preserveAspect=true;
-                if(view.Recipe.ProcessingSeconds>0) {((RectTransform)view.Materials.transform).anchoredPosition=new Vector2(28,-15);((RectTransform)view.Materials.transform).sizeDelta=new Vector2(286,28);view.Materials.fontSize=18;}
+                if(view.Recipe.ProcessingSeconds>0) {((RectTransform)view.Materials.transform).anchoredPosition=new Vector2(28,2);((RectTransform)view.Materials.transform).sizeDelta=new Vector2(286,28);view.Materials.fontSize=18;}
                 view.InputIcon.gameObject.SetActive(false);
                 view.Status=Text("Availability",card.transform,string.Empty,new Vector2(-59,-44),new Vector2(240,28),18,TextAnchor.MiddleLeft);
                 var craft=Image("Craft",card.transform,"panel",new Vector2(.5f,.5f),new Vector2(121,-38),new Vector2(130,48),true);

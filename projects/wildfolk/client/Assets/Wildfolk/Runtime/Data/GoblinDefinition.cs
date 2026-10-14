@@ -8,5 +8,6 @@ namespace Wildfolk
         [Min(1)]public int Damage=6,Population=3;
         [Min(1)]public float SpawnInterval=35;
         [Range(0,1)]public float EncounterChance=.3f;
+        [Min(.1f)]public float OuterTerritory=5,PersonalSpace=1.8f;
     }
 }

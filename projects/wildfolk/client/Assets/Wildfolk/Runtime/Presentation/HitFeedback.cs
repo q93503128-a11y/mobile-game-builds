@@ -4,7 +4,7 @@ namespace Wildfolk
 {
     public enum HitReaction { Creature, Tree, Stone }
 
-    public sealed class HitFeedback : MonoBehaviour
+    public sealed class HitFeedback : MonoBehaviour,IPoolReset
     {
         public Health Health;
         public Transform Visual;
@@ -29,6 +29,7 @@ namespace Wildfolk
 
         private void OnEnable() => Health.Damaged += React;
         private void OnDisable() => Health.Damaged -= React;
+        public void ResetForSpawn(){elapsed=Duration;Visual.localPosition=restPosition;Visual.localScale=restScale;Visual.localRotation=restRotation;for(var i=0;i<renderers.Length;i++)renderers[i].color=colors[i];}
         private void React() => elapsed = 0;
 
         private void Update()

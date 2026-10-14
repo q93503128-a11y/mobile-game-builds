@@ -1,0 +1,59 @@
+using System;
+using System.Collections.Generic;
+using System.IO;
+using UnityEngine;
+namespace Wildfolk
+{
+    public static class SaveValidation
+    {
+        private static void Require(bool valid,string reason){if(!valid)throw new InvalidDataException(reason);}
+        private static bool Finite(double value)=>!double.IsNaN(value) && !double.IsInfinity(value);
+        public static void Validate(SavedGame game,ContentCatalog catalog,WorldGenerationDefinition definition,AnimalPopulationDefinition animals,int playerCapacity,int maximumHP,SurvivalDefinition survival)
+        {
+            Require(game!=null && game.Version==1,"Unsupported save version");Require(Finite(game.Elapsed) && game.Elapsed>=0,"Invalid world time");
+            var map=new WorldMap(definition,game.Seed);var player=game.Player;
+            Require(player!=null && player.HP>0 && player.HP<=maximumHP && player.Selected>=0 && player.Selected<playerCapacity,"Invalid player");
+            Position(map,player.Position);Require(map.IsWalkable(player.Position,0),"Player is outside traversable terrain");
+            Require(player.XP>=0 && player.Gold>=0 && Finite(player.CombatRecovery) && player.CombatRecovery>=0 && player.CombatRecovery<=survival.RegenDelay,"Invalid progression");
+            new InventoryModel(playerCapacity).Restore(player.Inventory,catalog);
+            var needs=player.Survival;Require(needs!=null,"Missing survival state");
+            foreach(var value in new[]{needs.Hunger,needs.Thirst,needs.HungerClock,needs.ThirstClock,needs.RecoveryBlock,needs.DrainPenalty,needs.DrainMultiplier})Require(Finite(value) && value>=0,"Invalid survival value");
+            Require(needs.Hunger<=survival.MaximumHunger && needs.Thirst<=survival.MaximumThirst && needs.DrainMultiplier>=1 && needs.HungerClock<survival.DamageInterval && needs.ThirstClock<survival.DamageInterval,"Invalid survival state");
+            Require(game.Resources!=null && game.Animals!=null && game.Placeables!=null && game.Pickups!=null,"Missing world state");
+            var ids=new HashSet<string>();
+            for(var i=0;i<map.Resources.Count;i++)ids.Add("r"+i);
+            var resourceIds=new HashSet<string>();
+            foreach(var state in game.Resources)
+            {
+                Require(state!=null && resourceIds.Add(state.Id) && !string.IsNullOrEmpty(state.Id) && state.Id.StartsWith("r"),"Resource ID collision");
+                Require(int.TryParse(state.Id.Substring(1),out var index) && index>=0 && index<map.Resources.Count,"Unknown resource ID");
+                Require(state.Rule==map.Resources[index].Rule,"Resource rule mismatch");Position(map,state.Position);
+                Require(Finite(state.Scale) && state.Scale>=definition.Resources[state.Rule].ScaleRange.x && state.Scale<=definition.Resources[state.Rule].ScaleRange.y && Finite(state.RespawnAt) && state.RespawnAt>=0,"Invalid resource state");
+                Require(state.Destroyed ? state.HP==0 : state.HP>0 && state.HP<=definition.Resources[state.Rule].Prefab.Health.Maximum,"Invalid resource HP");
+            }
+            var expectedAnimals=0;foreach(var rule in animals.Rules)expectedAnimals+=rule.Population;
+            Require(game.Animals.Length==expectedAnimals,"Animal population mismatch");
+            foreach(var state in game.Animals)
+            {
+                Require(state!=null && !string.IsNullOrEmpty(state.Id) && ids.Add(state.Id) && state.Rule>=0 && state.Rule<animals.Rules.Length,"Invalid animal ID");
+                Require(state.Id.StartsWith("a"+state.Rule+"_") && int.TryParse(state.Id.Substring(state.Id.IndexOf('_')+1),out var slot) && slot>=0 && slot<animals.Rules[state.Rule].Population,"Unknown animal slot");
+                Position(map,state.Position);Position(map,state.Home);Require(Finite(state.RespawnAt) && state.RespawnAt>=0,"Invalid animal timer");
+                Require(state.Missing ? state.HP==0 : state.HP>0 && state.HP<=animals.Rules[state.Rule].Prefab.Health.Maximum,"Invalid animal HP");
+            }
+            foreach(var state in game.Placeables)
+            {
+                Require(state!=null && !string.IsNullOrEmpty(state.Id) && ids.Add(state.Id),"Placeable ID collision");Position(map,state.Position);Require(Finite(state.Rotation),"Invalid rotation");
+                var item=catalog.Item(state.Item);var placed=item.Placement;Require(placed!=null && state.HP>0 && state.HP<=placed.Vitality.MaximumHealth,"Invalid facility");
+                Require(!state.DoorOpen || placed.IsDoor,"Invalid door state");
+                if(placed.StorageSlots>0)new InventoryModel(placed.StorageSlots).Restore(state.Inventory,catalog);else Require(state.Inventory==null || state.Inventory.Length==0,"Unexpected chest contents");
+                if(state.Processing==null)continue;
+                if(string.IsNullOrEmpty(state.Processing.Recipe)){Require(state.Processing.Batch==0 && state.Processing.Remaining==0,"Invalid empty processing state");continue;}
+                var recipe=catalog.Recipe(state.Processing.Recipe);
+                Require(recipe.RequiredStation==placed.Station && recipe.ProcessingSeconds>0 && state.Processing.Batch>0 && state.Processing.Batch<=placed.ParallelCapacity,"Invalid processing batch");
+                Require(Finite(state.Processing.Remaining) && state.Processing.Remaining>=0 && state.Processing.Remaining<=recipe.ProcessingSeconds/placed.ProcessingSpeed,"Invalid processing timer");
+            }
+            foreach(var pickup in game.Pickups){Require(pickup!=null,"Missing pickup");Position(map,pickup.Position);Require(pickup.Count>0 && pickup.Count<=catalog.Item(pickup.Item).MaxStack,"Invalid pickup");}
+        }
+        private static void Position(WorldMap map,Vector2 p)=>Require(Finite(p.x) && Finite(p.y) && map.Bounds.Contains(p),"Position outside world");
+    }
+}

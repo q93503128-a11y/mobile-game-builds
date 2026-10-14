@@ -46,6 +46,9 @@ namespace Wildfolk.Editor
             var action=root.gameObject.AddComponent<PlayerPrimaryAction>();action.Equipment=equipment;action.Combat=combat;action.Placement=placement;action.Survival=needs;
             var interaction=root.gameObject.AddComponent<PlayerInteraction>();interaction.Equipment=equipment;interaction.Crafting=crafting;interaction.Settings=assets.Settings;interaction.Facing=facing;interaction.Storage=storage;
             root.gameObject.AddComponent<PlayerProgression>();motor.Survival=needs;
+            root.gameObject.AddComponent<CombatAffiliation>().Relation=EntityRelation.PlayerTeam;
+            var commands=root.gameObject.AddComponent<PlayerInputCommands>();commands.Primary=action;commands.Interaction=interaction;motor.Input=commands;
+            root.gameObject.AddComponent<PlayerInputAdapter>().Commands=commands;
             var itemDrop=root.gameObject.AddComponent<PlayerItemDrop>();itemDrop.Inventory=inventory;itemDrop.Settings=assets.Settings;
             HealthBar(health,1.35f,true,1.65f);
             Feedback(health,reaction,HitReaction.Creature);
@@ -61,6 +64,7 @@ namespace Wildfolk.Editor
             var group=root.gameObject.AddComponent<SortingGroup>();root.gameObject.AddComponent<DepthSort>().Visual=group;
             var collider=root.gameObject.AddComponent<BoxCollider2D>();collider.size=definition.Footprint;
             var health=root.gameObject.AddComponent<Health>();health.Definition=definition.Vitality;
+            root.gameObject.AddComponent<CombatAffiliation>().Relation=EntityRelation.TeamStructure;
             var placeable=root.gameObject.AddComponent<WorldPlaceable>();placeable.Definition=definition;placeable.Health=health;placeable.Visual=visual;
             if(definition.Station!=StationKind.None)
             {
@@ -113,6 +117,7 @@ namespace Wildfolk.Editor
             facing.LeftEye=Sprite("Left Eye","zombie_eye",reaction,new Vector2(-.18f,-.28f),.8f,2).transform;
             facing.RightEye=Sprite("Right Eye","zombie_eye",reaction,new Vector2(.18f,-.28f),.8f,2).transform;
             var controller=root.gameObject.AddComponent<EnemyController>();controller.Settings=assets.Settings;controller.OwnHealth=health;controller.AttackPose=pose;controller.Facing=facing;
+            controller.Steering=root.gameObject.AddComponent<EnemySteering>();controller.Steering.Definition=StabilityAssets.Steering();root.gameObject.AddComponent<CombatAffiliation>().Relation=EntityRelation.Hostile;
             var lifecycle=root.gameObject.AddComponent<ZombieLifecycle>();lifecycle.Controller=controller;lifecycle.Visual=visual;lifecycle.Hitbox=collider;lifecycle.Definition=assets.Progression.Spawn;controller.Lifecycle=lifecycle;
             WorldContentBuilder.Loot(root.gameObject,health,assets.World.ZombieLoot,assets,pickup:AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Wildfolk/Prefabs/WorldPickup.prefab").GetComponent<WorldPickup>());
             Feedback(health,reaction,HitReaction.Creature);

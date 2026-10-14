@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Wildfolk
 {
-    public sealed class WorldPickup : MonoBehaviour
+    public sealed class WorldPickup : MonoBehaviour,IPoolReset
     {
         public SpriteRenderer Icon;
         public Transform FloatingVisual;
@@ -16,6 +16,8 @@ namespace Wildfolk
         private float age;
         private float nextPickupAttempt;
         private bool waitForExit;
+        private void Awake()=>restVisual=FloatingVisual.localPosition;
+        public void ResetForSpawn(){Item=null;Count=0;player=null;age=nextPickupAttempt=0;waitForExit=false;FloatingVisual.localPosition=restVisual;}
 
         public void Initialize(ItemDefinition item, int count, PlayerInventory owner, GameplaySettings configuration,bool playerDropped=false)
         {
@@ -28,7 +30,7 @@ namespace Wildfolk
             var direction = Random.insideUnitCircle.normalized;
             if (direction.sqrMagnitude < .1f) direction = Vector2.right;
             destination = playerDropped ? origin : origin + (Vector3)(direction * settings.DropScatter);
-            restVisual = FloatingVisual.localPosition;
+            FloatingVisual.localPosition=restVisual;nextPickupAttempt=0;
             age = 0;
             waitForExit=playerDropped;
         }
@@ -47,7 +49,7 @@ namespace Wildfolk
             nextPickupAttempt = Time.time + .15f;
             var accepted = player.Model.Add(Item, Count);
             Count -= accepted;
-            if (Count == 0) Destroy(gameObject);
+            if (Count == 0) PrefabPool.Release(gameObject);
         }
     }
 }

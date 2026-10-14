@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a31576c7caba53a488f7ad026774e0c3, type: 3}
+  m_Name: DeveloperProfile1
+  m_EditorClassIdentifier: Assembly-CSharp-Editor::Wildfolk.Editor.DeveloperTestProfile
+  ProfileName: Early Game
+  Items:
+  - Item: {fileID: 11400000, guid: 40a5c8945c86303418782c074bf0df1b, type: 2}
+    Count: 1
+  - Item: {fileID: 11400000, guid: 5a3e33d479dac6843bb02efc1665a27d, type: 2}
+    Count: 1
+  - Item: {fileID: 11400000, guid: 0e4f7d7bd8a14b942b82b3a378682c4e, type: 2}
+    Count: 3
+  - Item: {fileID: 11400000, guid: f33b09e33d6b28c4eba9618966e93a99, type: 2}
+    Count: 3
+  - Item: {fileID: 11400000, guid: ea6225aea97d52640936634d9bccf11f, type: 2}
+    Count: 1
+  - Item: {fileID: 11400000, guid: c8f4006e56add364e95debbfa940bd04, type: 2}
+    Count: 1
+  - Item: {fileID: 11400000, guid: 30904e05765ac844ab5bb28b855a15db, type: 2}
+    Count: 30
+  - Item: {fileID: 11400000, guid: 7bb36cf4ce2c183498975f4810b84c3a, type: 2}
+    Count: 1
+  - Item: {fileID: 11400000, guid: 431287b464f63f4408828d4053bac6eb, type: 2}
+    Count: 30
+  - Item: {fileID: 11400000, guid: 339d21307ef4bc54a8f91086caf80e98, type: 2}
+    Count: 1
+  - Item: {fileID: 11400000, guid: a17fa3949d325264fbc674f9cfab5ee0, type: 2}
+    Count: 1
+  - Item: {fileID: 11400000, guid: 0ce049f44cbdaea4bab941f0dffd3497, type: 2}
+    Count: 1
+  - Item: {fileID: 11400000, guid: a50ff5ee6519b404a9e96c12b81d4578, type: 2}
+    Count: 1
+  Hunger: 90
+  Thirst: 90
+  XP: 0
+  Gold: 0

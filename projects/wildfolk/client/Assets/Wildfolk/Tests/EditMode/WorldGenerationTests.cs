@@ -69,13 +69,13 @@ namespace Wildfolk.Tests
             var deep=WorldTerrainRenderer.Sample(map,new Vector2(map.RiverAt(map.FordY+12),map.FordY+12));
             Assert.That(ford.g,Is.GreaterThan(deep.g+.02f));
         }
-        [Test]public void SplitHalfAndPartialTransferPreserveTotalsOnFullOrDifferentTargets()
+        [Test]public void PartialTransferPreservesTotalsOnFullOrDifferentTargets()
         {
             var wood=Data<ItemDefinition>("Wood");var stone=Data<ItemDefinition>("Stone");var a=new InventoryModel(3);var b=new InventoryModel(2);a.Add(wood,31);
-            Assert.That(a.SplitHalf(0),Is.True);Assert.That(a.GetSlot(0).Count,Is.EqualTo(16));Assert.That(a.GetSlot(1).Count,Is.EqualTo(15));
+            Assert.That(InventoryModel.Transfer(a,0,a,1,15),Is.True);Assert.That(a.GetSlot(0).Count,Is.EqualTo(16));Assert.That(a.GetSlot(1).Count,Is.EqualTo(15));
             b.Add(stone,1);Assert.That(InventoryModel.Transfer(a,0,b,0,4),Is.False);Assert.That(a.GetSlot(0).Count,Is.EqualTo(16));
             Assert.That(InventoryModel.Transfer(a,0,b,1,4),Is.True);Assert.That(a.CountItem(wood)+b.CountItem(wood),Is.EqualTo(31));
-            a.Add(stone,1);Assert.That(a.SplitHalf(0),Is.False);
+            a.Add(stone,1);Assert.That(InventoryModel.Transfer(a,0,a,2,4),Is.False);
         }
         [Test]public void PopulationAndLootDataAreBoundedAndOnlyOneBiomeExists()
         {

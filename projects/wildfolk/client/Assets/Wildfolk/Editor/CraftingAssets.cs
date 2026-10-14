@@ -24,7 +24,10 @@ namespace Wildfolk.Editor
             var axeRecipe=Recipe("AxeRecipe","axe",axe,wood,5,StationKind.Workbench);
             var pickRecipe=Recipe("PickaxeRecipe","pickaxe",pickaxe,wood,5,StationKind.Workbench);
             var swordRecipe=Recipe("WoodSwordRecipe","wood_sword",sword,wood,5,StationKind.Workbench);
-            assets.Catalog=GameplayAssets.Asset<RecipeCatalog>("Recipes",c=>c.Recipes=new[]{hand,survival.FireRecipe,axeRecipe,pickRecipe,swordRecipe,survival.CookingRecipe});
+            assets.Catalog=GameplayAssets.Asset<RecipeCatalog>("Recipes",c=>c.Recipes=new[]{hand,survival.FireRecipe,axeRecipe,pickRecipe,swordRecipe,survival.CookingRecipe,survival.CupRecipe,survival.BoilingRecipe});
+            var list=new System.Collections.Generic.List<RecipeDefinition>(assets.Catalog.Recipes);
+            foreach(var recipe in new[]{survival.CupRecipe,survival.BoilingRecipe})if(!list.Contains(recipe))list.Add(recipe);
+            assets.Catalog.Recipes=list.ToArray();UnityEditor.EditorUtility.SetDirty(assets.Catalog);
             return assets;
         }
         private static RecipeDefinition Recipe(string name,string id,ItemDefinition result,ItemDefinition wood,int cost,StationKind station)

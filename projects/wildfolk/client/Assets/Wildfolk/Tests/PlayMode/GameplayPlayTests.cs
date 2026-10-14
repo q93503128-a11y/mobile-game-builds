@@ -211,14 +211,15 @@ namespace Wildfolk.Tests
             Assert.That(own.Current,Is.LessThan(hp));
             Assert.That(Vector2.Distance(position,player.GetComponent<Rigidbody2D>().position),Is.LessThan(.015f));
             Assert.That(Vector2.Distance(player.transform.position,enemy.transform.position),Is.GreaterThanOrEqualTo(settings.EnemySeparation-.02f));
+            player.Avatar.Facing.Face((Vector2)enemy.transform.position-(Vector2)player.transform.position);
             yield return PunchOnce();Assert.That(bar.View.activeSelf,Is.True);
             Assert.That(enemy.OwnHealth.Current,Is.LessThan(enemy.OwnHealth.Maximum));
             yield return new WaitForSeconds(settings.PunchCooldown);
             var point=ScreenPoint(hud.Attack);Pointer(point,true);yield return null;
             timeout=Time.time+5;
-            while(enemy!=null && Time.time<timeout) yield return null;
+            while(enemy!=null && enemy.gameObject.activeInHierarchy && Time.time<timeout) yield return null;
             Pointer(point,false);yield return null;
-            Assert.That(enemy==null,Is.True);
+            Assert.That(enemy==null || !enemy.gameObject.activeInHierarchy,Is.True);
             Assert.That(Object.FindObjectsByType<ParticleSystem>(FindObjectsSortMode.None),Is.Empty);
             Assert.That(own.IsAlive,Is.True);
         }

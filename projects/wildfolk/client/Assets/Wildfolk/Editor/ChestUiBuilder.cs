@@ -24,7 +24,7 @@ namespace Wildfolk.Editor
             panel.ChestSlots=new InventorySlotView[definition.StorageSlots];panel.PlayerSlots=new InventorySlotView[owner.Settings.InventorySlots];
             for(var i=0;i<panel.ChestSlots.Length;i++)panel.ChestSlots[i]=Create(chest,i,false,true,drag,panel);
             for(var i=0;i<panel.PlayerSlots.Length;i++)panel.PlayerSlots[i]=Create(i<PlayerInventory.HotbarSize ? quick : inventory,i,i<PlayerInventory.HotbarSize,false,drag,panel);
-            var split=Image("Split Half",surface.transform,"panel",new Vector2(.5f,.5f),new Vector2(0,-446),new Vector2(168,58),true);Text("Label",split.transform,"Split half",Vector2.zero,new Vector2(156,50),22);drag.ChestSplitButton=Button(split);UnityEventTools.AddPersistentListener(drag.ChestSplitButton.onClick,drag.SplitHalf);
+            var split=Image("Split",surface.transform,"panel",new Vector2(.5f,.5f),new Vector2(0,-446),new Vector2(168,58),true);Text("Label",split.transform,"Split",Vector2.zero,new Vector2(156,50),22);drag.ChestSplitButton=Button(split);UnityEventTools.AddPersistentListener(drag.ChestSplitButton.onClick,drag.OpenSplit);
             overlay.gameObject.SetActive(false);
         }
         private static InventorySlotView Create(Transform parent,int index,bool quick,bool chest,InventoryDragController drag,ChestPanel panel)

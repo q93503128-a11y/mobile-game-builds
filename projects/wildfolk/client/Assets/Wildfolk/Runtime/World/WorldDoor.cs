@@ -20,8 +20,8 @@ namespace Wildfolk
                 var count=Physics2D.OverlapBox(transform.position,Placeable.Definition.Footprint*.85f,transform.eulerAngles.z,new ContactFilter2D{useTriggers=true},occupants);
                 for(var i=0;i<count;i++) if(occupants[i]!=Barrier && occupants[i]!=Interaction) return false;
             }
-            IsOpen=!IsOpen;Barrier.enabled=!IsOpen;
-            Placeable.Visual.transform.localRotation=Quaternion.Euler(0,0,IsOpen ? 90 : 0);return true;
+            RestoreOpen(!IsOpen);return true;
         }
+        public void RestoreOpen(bool open){IsOpen=open;Barrier.enabled=!open;Placeable.Visual.transform.localRotation=Quaternion.Euler(0,0,open ? 90 : 0);}
     }
 }

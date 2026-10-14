@@ -12,6 +12,9 @@ namespace Wildfolk
         [Min(.1f)]public float FootprintRadius=.65f;
         [Min(.01f)]public float CameraMargin=.05f;
         [Min(1)]public int Attempts=48;
+        [Min(1)]public float LocalThreatRadius=45,InactiveDistance=60,InactiveSeconds=20;
+        [Min(1)]public float DetectionRadius=36,LoseRange=50,LostTargetSeconds=15;
+        [Range(.1f,1)]public float DimDetectionMultiplier=.8f,SafeSpeedMultiplier=.75f;
         public int PopulationFor(int night)=>Mathf.Min(HardCap,InitialPopulation+Mathf.Max(0,(night-1)/NightsPerStep)*PopulationStep);
     }
 }

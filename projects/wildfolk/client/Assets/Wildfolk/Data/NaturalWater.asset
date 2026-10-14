@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5717fd43bc98ad04a91f447a1aaf7c1b, type: 3}
   m_Name: NaturalWater
   m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.WaterSourceDefinition
-  Water: {fileID: 11400000, guid: 4562aee192638584992a771c4c2cbfcc, type: 2}
+  Container: {fileID: 11400000, guid: 4544411a779979340a2c1821db1f29fa, type: 2}
   InteractionRange: 3
   CollectionCooldown: 1
-  PortionCount: 1

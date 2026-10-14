@@ -10,13 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 21d11bab9581bdf4c8f70c3d4992c713, type: 3}
-  m_Name: Water
+  m_Name: EmptyCup
   m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.ItemDefinition
-  Id: water
-  DisplayName: Water
-  Icon: {fileID: 21300000, guid: 0fc80511d4fab364c8b05703c78e0054, type: 3}
+  Id: empty_cup
+  DisplayName: Wooden Cup
+  Icon: {fileID: 21300000, guid: dfb28b034ce5ab74bbbc7a81904589ab, type: 3}
   MaxStack: 20
-  Category: 4
+  Category: 6
   Tool: {fileID: 0}
   Placement: {fileID: 0}
-  Consumable: {fileID: 11400000, guid: 2bd393429f3ece24f880f1faea52bbb9, type: 2}
+  Consumable: {fileID: 0}
+  Armor: {fileID: 0}
+  Container: {fileID: 11400000, guid: 4544411a779979340a2c1821db1f29fa, type: 2}
+  Liquid: 0
