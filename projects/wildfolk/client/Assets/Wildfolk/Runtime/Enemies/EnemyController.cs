@@ -11,29 +11,35 @@ namespace Wildfolk
         public Health OwnHealth,PlayerHealth;
         public Transform AttackPose;
         public CharacterFacing Facing;
+        public ZombieLifecycle Lifecycle;
         public EnemyState State { get; private set; }
         private Rigidbody2D body;
         private Vector3 restPosition,restScale;
         private float stateStarted;
+        private float safeSince=-1;
         private Vector2 strikeDirection;
         private Health strikeTarget;
         private Collider2D strikeCollider;
         private readonly RaycastHit2D[] obstacles=new RaycastHit2D[8];
         private void Awake() {body=GetComponent<Rigidbody2D>();restPosition=AttackPose.localPosition;restScale=AttackPose.localScale;}
-        private void OnEnable() => OwnHealth.Died+=Die;
-        private void OnDisable() => OwnHealth.Died-=Die;
-        private void Die() => Destroy(gameObject);
         private bool NightHunt => Clock!=null && Clock.Model.Phase==DayPhase.Night;
         private void Update()
         {
-            if(!Session.WorldIsRunning || !OwnHealth.IsAlive || !PlayerHealth.IsAlive)return;
+            if(!CanAct)return;
+            if(GameplayLight.IsSafe(PlayerHealth.transform.position))
+            {
+                if(State==EnemyState.Idle)return;
+                if(safeSince<0)safeSince=Time.time;
+                if(Time.time-safeSince>=GameplayLight.Grace(PlayerHealth.transform.position)){CancelPursuit();return;}
+            }
+            else safeSince=-1;
             var delta=(Vector2)PlayerHealth.transform.position-body.position;var distance=delta.magnitude;
             if(State==EnemyState.Windup || State==EnemyState.Recovery)Facing.Face(strikeDirection);
             else if(State==EnemyState.Chase)Facing.Face(delta);
             switch(State)
             {
                 case EnemyState.Idle:
-                    if(NightHunt || distance<=Settings.EnemyDetectionRange)SetState(EnemyState.Chase);
+                    if(!GameplayLight.IsSafe(PlayerHealth.transform.position) && (NightHunt || distance<=Settings.EnemyDetectionRange))SetState(EnemyState.Chase);
                     break;
                 case EnemyState.Chase:
                     if(!NightHunt && distance>Settings.EnemyLoseRange)SetState(EnemyState.Idle);
@@ -63,7 +69,7 @@ namespace Wildfolk
         }
         private void FixedUpdate()
         {
-            if(!Session.WorldIsRunning || !OwnHealth.IsAlive || !PlayerHealth.IsAlive)return;
+            if(!CanAct)return;
             var delta=body.position-(Vector2)PlayerHealth.transform.position;
             if(delta.magnitude<Settings.EnemySeparation)
             {
@@ -99,6 +105,8 @@ namespace Wildfolk
             return barrier;
         }
         private bool Clear(Vector2 direction,float step) => Physics2D.CircleCast(body.position,.4f,direction,new ContactFilter2D{useTriggers=false},obstacles,step+.12f)==0;
+        private bool CanAct=>Session.WorldIsRunning && OwnHealth.IsAlive && PlayerHealth.IsAlive && NightHunt && (Lifecycle==null || Lifecycle.Phase==ZombiePhase.Active);
+        public void CancelPursuit(){safeSince=-1;SetState(EnemyState.Idle);strikeTarget=null;strikeCollider=null;}
         private void BeginStrike(Health target,Collider2D collider)
         {
             strikeTarget=target;strikeCollider=collider;

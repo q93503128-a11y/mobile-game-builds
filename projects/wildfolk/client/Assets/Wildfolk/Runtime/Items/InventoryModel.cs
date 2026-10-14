@@ -31,22 +31,25 @@ namespace Wildfolk
         }
         public bool CanMoveStack(int from,int to) => CanTransfer(this,from,this,to);
         public bool MoveStack(int from,int to) => Transfer(this,from,this,to);
-        public static bool CanTransfer(InventoryModel source,int from,InventoryModel target,int to)
+        public static bool CanTransfer(InventoryModel source,int from,InventoryModel target,int to,int amount=0)
         {
             if(source==null || target==null || (source==target && from==to)) return false;
             var stack=source.slots[from];var destination=target.slots[to];
+            if(amount<0 || amount>stack.Count || amount>0 && !destination.IsEmpty && destination.Item.Id!=stack.Item.Id && amount!=stack.Count)return false;
             return !stack.IsEmpty && (destination.IsEmpty || destination.Item.Id!=stack.Item.Id || destination.Count<destination.Item.MaxStack);
         }
-        public static bool Transfer(InventoryModel source,int from,InventoryModel target,int to)
+        public static bool Transfer(InventoryModel source,int from,InventoryModel target,int to,int amount=0)
         {
-            if(!CanTransfer(source,from,target,to)) return false;
+            if(!CanTransfer(source,from,target,to,amount)) return false;
             var stack=source.slots[from];var destination=target.slots[to];
+            var requested=amount==0 ? stack.Count : amount;
             if(!destination.IsEmpty && destination.Item.Id==stack.Item.Id)
             {
-                var moved=Math.Min(stack.Count,destination.Item.MaxStack-destination.Count);
+                var moved=Math.Min(requested,destination.Item.MaxStack-destination.Count);
                 target.slots[to]=new ItemStack(destination.Item,destination.Count+moved);
                 source.slots[from]=moved==stack.Count ? default : new ItemStack(stack.Item,stack.Count-moved);
             }
+            else if(destination.IsEmpty){target.slots[to]=new ItemStack(stack.Item,requested);source.slots[from]=requested==stack.Count ? default : new ItemStack(stack.Item,stack.Count-requested);}
             else { target.slots[to]=stack;source.slots[from]=destination; }
             source.Changed?.Invoke();if(target!=source) target.Changed?.Invoke();return true;
         }
@@ -58,6 +61,12 @@ namespace Wildfolk
             slots[index] = slot.Count == count ? default : new ItemStack(slot.Item, slot.Count - count);
             Changed?.Invoke();
             return true;
+        }
+        public bool SplitHalf(int from)
+        {
+            var stack=slots[from];if(stack.IsEmpty || stack.Count<2)return false;
+            for(var to=0;to<slots.Length;to++)if(slots[to].IsEmpty)return Transfer(this,from,this,to,stack.Count/2);
+            return false;
         }
         public ExchangeResult GetExchangeStatus(ItemAmount[] costs, ItemDefinition output, int count)
             => PrepareExchange(costs, output, count, out _);

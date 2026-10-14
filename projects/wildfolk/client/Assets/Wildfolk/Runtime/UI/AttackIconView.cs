@@ -5,7 +5,7 @@ namespace Wildfolk
 {
     public sealed class AttackIconView : MonoBehaviour
     {
-        public PlayerAction Action;
+        public PlayerPrimaryAction Action;
         public Image Icon;
         public Sprite FistIcon;
         private void Start() {Action.Changed+=Refresh;Refresh();}

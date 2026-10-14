@@ -15,8 +15,9 @@ namespace Wildfolk
         private Vector3 restVisual;
         private float age;
         private float nextPickupAttempt;
+        private bool waitForExit;
 
-        public void Initialize(ItemDefinition item, int count, PlayerInventory owner, GameplaySettings configuration)
+        public void Initialize(ItemDefinition item, int count, PlayerInventory owner, GameplaySettings configuration,bool playerDropped=false)
         {
             Item = item;
             Count = count;
@@ -26,9 +27,10 @@ namespace Wildfolk
             origin = transform.position;
             var direction = Random.insideUnitCircle.normalized;
             if (direction.sqrMagnitude < .1f) direction = Vector2.right;
-            destination = origin + (Vector3)(direction * settings.DropScatter);
+            destination = playerDropped ? origin : origin + (Vector3)(direction * settings.DropScatter);
             restVisual = FloatingVisual.localPosition;
             age = 0;
+            waitForExit=playerDropped;
         }
 
         private void Update()
@@ -39,6 +41,7 @@ namespace Wildfolk
             transform.position = Vector3.Lerp(origin, destination, 1 - (1-t)*(1-t));
             var height = t < 1 ? Mathf.Sin(t * Mathf.PI) * .4f : Mathf.Sin(age * 3) * .035f;
             FloatingVisual.localPosition = restVisual + Vector3.up * height;
+            if(waitForExit){if(Vector2.Distance(transform.position,player.transform.position)>settings.PickupRadius+.5f)waitForExit=false;return;}
             if (age < settings.DropPickupDelay || Time.time < nextPickupAttempt) return;
             if (Vector2.Distance(transform.position, player.transform.position) > settings.PickupRadius) return;
             nextPickupAttempt = Time.time + .15f;

@@ -45,10 +45,11 @@ namespace Wildfolk
         public CraftStatus GetStatus(RecipeDefinition recipe)
         {
             if (recipe.RequiredStation != StationKind.None && recipe.RequiredStation != AvailableStation) return CraftStatus.StationRequired;
+            if(recipe.RequiredStation==StationKind.Workbench && Station.Definition.WorkbenchTier<recipe.RequiredWorkbenchTier)return CraftStatus.StationRequired;
             if(recipe.ProcessingSeconds>0 && Processor!=null && Processor.IsBusy)
             {
                 if(Processor.Recipe!=recipe || !Processor.IsReady) return CraftStatus.Processing;
-                return Inventory.Model.GetExchangeStatus(Array.Empty<ItemAmount>(),recipe.Result,recipe.ResultCount)==ExchangeResult.Success ? CraftStatus.Collect : CraftStatus.NoSpace;
+                return Inventory.Model.GetExchangeStatus(Array.Empty<ItemAmount>(),recipe.Result,Processor.OutputCount)==ExchangeResult.Success ? CraftStatus.Collect : CraftStatus.NoSpace;
             }
             var result = Inventory.Model.GetExchangeStatus(recipe.Ingredients, recipe.Result, recipe.ResultCount);
             return result == ExchangeResult.Success ? CraftStatus.Ready :

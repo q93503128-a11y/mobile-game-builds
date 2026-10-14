@@ -28,7 +28,7 @@ namespace Wildfolk.Editor
 
         internal static void Shadow(Transform parent,float width,float height)
         {
-            var shadow=Sprite("Contact Shadow","contact_shadow",parent,new Vector2(.12f,-.35f),1,-900);
+            var shadow=Sprite("Contact Shadow","contact_shadow",parent,new Vector2(.12f,-.35f),1,WorldSorting.Shadow);
             shadow.transform.localScale=new Vector3(width/2.56f,height/1.28f,1);
         }
 
@@ -38,10 +38,10 @@ namespace Wildfolk.Editor
             var bar=root.gameObject.AddComponent<WorldHealthBar>();
             bar.Health=health;bar.AlwaysVisible=persistent;
             var view=Group("View",root);bar.View=view.gameObject;
-            var track=Sprite("Track","white",view,Vector2.zero,1,500);
+            var track=Sprite("Track","white",view,Vector2.zero,1,WorldSorting.Overlay);
             track.transform.localScale=new Vector3(width/.08f,.17f/.08f,1);
             track.color=new Color32(26,38,29,255);
-            var fill=Sprite("Fill","white",view,Vector2.zero,1,501);
+            var fill=Sprite("Fill","white",view,Vector2.zero,1,WorldSorting.Overlay+1);
             fill.transform.localScale=new Vector3((width-.12f)/.08f,.085f/.08f,1);
             fill.color=persistent ? new Color32(175,183,109,255) : new Color32(185,134,85,255);
             bar.Fill=fill.transform;

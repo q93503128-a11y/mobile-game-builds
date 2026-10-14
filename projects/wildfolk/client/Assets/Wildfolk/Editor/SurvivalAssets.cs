@@ -7,7 +7,7 @@ namespace Wildfolk.Editor
         internal SurvivalDefinition Needs;
         internal ItemDefinition Raw, Cooked, Water;
         internal WaterSourceDefinition Source;
-        internal ResourceDefinition Meat;
+        internal VitalityDefinition Boar;
         internal PlaceableDefinition Campfire;
         internal RecipeDefinition FireRecipe, CookingRecipe;
         internal static SurvivalAssets Load(ItemDefinition wood,ItemDefinition stone)
@@ -19,7 +19,7 @@ namespace Wildfolk.Editor
             a.Water=Food("Water","water","Water",0,30);
             a.Source=GameplayAssets.Asset<WaterSourceDefinition>("NaturalWater",s=>{s.Water=a.Water;});
             var animalHealth=GameplayAssets.Asset<VitalityDefinition>("BoarVitality",v=>v.MaximumHealth=20);
-            a.Meat=GameplayAssets.Asset<ResourceDefinition>("MeatResource",r=>{r.Kind=ResourceKind.Meat;r.Vitality=animalHealth;r.DropItem=a.Raw;r.DropCount=2;});
+            a.Boar=animalHealth;
             var fireHealth=GameplayAssets.Asset<VitalityDefinition>("CampfireVitality",v=>v.MaximumHealth=60);
             a.Campfire=GameplayAssets.Asset<PlaceableDefinition>("CampfirePlacement",p=>
             {p.Vitality=fireHealth;p.Footprint=new Vector2(1.5f,1.15f);p.MaximumDistance=2.8f;p.Station=StationKind.Campfire;});

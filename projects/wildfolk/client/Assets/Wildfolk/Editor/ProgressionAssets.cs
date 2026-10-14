@@ -7,7 +7,8 @@ namespace Wildfolk.Editor
     {
         internal EquipmentTier WoodTier,StoneTier,IronTier;
         internal PlaceableDefinition Furnace,Wall,Door,Chest;
-        internal ResourceDefinition Ore,Chicken;
+        internal ResourceDefinition Ore;
+        internal VitalityDefinition Chicken;
         internal AnimalMovementDefinition Animal;
         internal DayNightDefinition DayNight;
         internal ZombieSpawnDefinition Spawn;
@@ -27,14 +28,19 @@ namespace Wildfolk.Editor
             a.Furnace=Facility("Furnace","furnace",StationKind.Furnace,new Vector2(1.8f,1.6f),100,a.StoneTier);
             a.Wall=Facility("WoodWall","wood_wall",StationKind.None,new Vector2(1.8f,.45f),100,a.WoodTier,barrier:true);
             a.Door=Facility("WoodDoor","wood_door",StationKind.None,new Vector2(1.8f,.45f),80,a.WoodTier,barrier:true,door:true);
-            a.Chest=Facility("StorageChest","storage_chest",StationKind.None,new Vector2(1.5f,1.1f),70,a.WoodTier,storage:18);
+            a.Chest=Facility("StorageChest","storage_chest",StationKind.None,new Vector2(1.5f,1.1f),70,a.WoodTier,storage:24);
             var recipes=new List<RecipeDefinition>();
             foreach(var tier in new[]{a.StoneTier,a.IronTier})
             {
                 var metal=tier==a.StoneTier ? stone : ingot;
-                recipes.Add(Recipe(tier.DisplayName+"Axe",Equipment(tier,ToolKind.Axe),StationKind.Workbench,new[]{Cost(wood,3),Cost(metal,tier==a.StoneTier ? 4 : 3)}));
-                recipes.Add(Recipe(tier.DisplayName+"Pickaxe",Equipment(tier,ToolKind.Pickaxe),StationKind.Workbench,new[]{Cost(wood,3),Cost(metal,tier==a.StoneTier ? 4 : 3)}));
-                recipes.Add(Recipe(tier.DisplayName+"Sword",Equipment(tier,ToolKind.Sword),StationKind.Workbench,new[]{Cost(wood,tier==a.StoneTier ? 2 : 3),Cost(metal,tier==a.StoneTier ? 5 : 3)}));
+                foreach(var kind in new[]{ToolKind.Axe,ToolKind.Pickaxe,ToolKind.Sword})
+                {
+                    ItemDefinition previous=null;
+                    foreach(var candidate in crafting.Catalog.Recipes)if(candidate.Result.Tool!=null && candidate.Result.Tool.Kind==kind && candidate.Result.Tool.Tier.Rank==tier.Rank-1)previous=candidate.Result;
+                    foreach(var candidate in recipes)if(candidate.Result.Tool!=null && candidate.Result.Tool.Kind==kind && candidate.Result.Tool.Tier.Rank==tier.Rank-1)previous=candidate.Result;
+                    if(previous==null)throw new System.InvalidOperationException("Equipment predecessor is required.");
+                    recipes.Add(Recipe(tier.DisplayName+kind,Equipment(tier,kind),StationKind.Workbench,new[]{Cost(previous,1),Cost(metal,tier==a.StoneTier ? kind==ToolKind.Sword ? 5 : 4 : 3)}));
+                }
             }
             recipes.Add(Recipe("Furnace",a.Furnace.Item,StationKind.Workbench,new[]{Cost(stone,8),Cost(wood,4)}));
             recipes.Add(Recipe("WoodWall",a.Wall.Item,StationKind.Workbench,new[]{Cost(wood,2)}));
@@ -50,7 +56,7 @@ namespace Wildfolk.Editor
             if(survival.CookingRecipe.Processing==ProcessingKind.None){survival.CookingRecipe.Processing=ProcessingKind.Cooking;EditorUtility.SetDirty(survival.CookingRecipe);}
             a.Animal=GameplayAssets.Asset<AnimalMovementDefinition>("AnimalMovement",d=>{});
             var chickenHealth=GameplayAssets.Asset<VitalityDefinition>("ChickenVitality",v=>v.MaximumHealth=20);
-            a.Chicken=GameplayAssets.Asset<ResourceDefinition>("ChickenResource",r=>{r.Kind=ResourceKind.Meat;r.Vitality=chickenHealth;r.DropItem=survival.Raw;r.DropCount=1;});
+            a.Chicken=chickenHealth;
             a.DayNight=GameplayAssets.Asset<DayNightDefinition>("DayNight",d=>{d.SunIcon=VisualArtImporter.Sprite("sun");d.MoonIcon=VisualArtImporter.Sprite("moon");});
             a.Spawn=GameplayAssets.Asset<ZombieSpawnDefinition>("ZombieSpawn",d=>{});
             return a;
@@ -77,7 +83,7 @@ namespace Wildfolk.Editor
         private static PlaceableDefinition Facility(string name,string id,StationKind station,Vector2 footprint,int hp,EquipmentTier tier,bool barrier=false,bool door=false,int storage=0)
         {
             var vitality=GameplayAssets.Asset<VitalityDefinition>(name+"Vitality",v=>v.MaximumHealth=hp);
-            var definition=GameplayAssets.Asset<PlaceableDefinition>(name+"Placement",p=>{p.Vitality=vitality;p.Footprint=footprint;p.MaximumDistance=2.8f;p.Station=station;p.Tier=tier;p.IsBarrier=barrier;p.IsDoor=door;p.StorageSlots=storage;p.StationTitle=station==StationKind.Furnace ? "Furnace smelting" : name;});
+            var definition=GameplayAssets.Asset<PlaceableDefinition>(name+"Placement",p=>{p.Vitality=vitality;p.Footprint=footprint;p.MaximumDistance=2.8f;p.Station=station;p.Tier=tier;p.IsBarrier=barrier;p.IsDoor=door;p.StorageSlots=storage;p.ParallelCapacity=station==StationKind.Furnace ? 3 : 1;p.StationTitle=station==StationKind.Furnace ? "Furnace smelting" : name;});
             var display=name=="StorageChest" ? "Storage Chest" : name=="WoodWall" ? "Wood Wall" : name=="WoodDoor" ? "Wood Door" : name;
             var item=Item(name,id,display,ItemCategory.Placeable,10);if(item.Placement==null){item.Placement=definition;EditorUtility.SetDirty(item);}
             definition.Item=item;EditorUtility.SetDirty(definition);return definition;

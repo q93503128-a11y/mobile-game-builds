@@ -9,14 +9,13 @@ namespace Wildfolk
         public InventoryModel Model { get; private set; }
         public Transform Location => transform;
         public Sprite Icon => Placeable.Definition.Item.Icon;
-        public PlayerActionKind ActionKind => PlayerActionKind.Interact;
         private PlayerInventory visitor;
         private void Awake() => Model=new InventoryModel(Placeable.Definition.StorageSlots);
         private void OnEnable() => Placeable.Health.Died+=DropContents;
         private void OnDisable() => Placeable.Health.Died-=DropContents;
-        public bool CanInteract(PlayerAction actor) => InRange(actor.transform.position,actor.Settings.StationInteractionRange);
+        public bool CanInteract(PlayerInteraction actor) => InRange(actor.transform.position,actor.Settings.StationInteractionRange);
         public bool InRange(Vector2 actor,float range) => Placeable.Health.IsAlive && Vector2.Distance(actor,transform.position)<=range;
-        public bool Use(PlayerAction actor) => actor.Storage.OpenChest(this);
+        public bool Use(PlayerInteraction actor) => actor.Storage.OpenChest(this);
         public void BindVisitor(PlayerInventory player) => visitor=player;
         private void DropContents()
         {

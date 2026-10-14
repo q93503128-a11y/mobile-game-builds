@@ -9,6 +9,7 @@ namespace Wildfolk
         public WorldPickup PickupPrefab;
         public PlayerInventory Player;
         public GameplaySettings Settings;
+        public SpriteRenderer Visual;
         private void OnEnable() => Health.Died += Break;
         private void OnDisable() => Health.Died -= Break;
 

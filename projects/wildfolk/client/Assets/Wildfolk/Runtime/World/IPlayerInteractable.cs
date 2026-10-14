@@ -5,8 +5,7 @@ namespace Wildfolk
     {
         Transform Location { get; }
         Sprite Icon { get; }
-        PlayerActionKind ActionKind { get; }
-        bool CanInteract(PlayerAction actor);
-        bool Use(PlayerAction actor);
+        bool CanInteract(PlayerInteraction actor);
+        bool Use(PlayerInteraction actor);
     }
 }

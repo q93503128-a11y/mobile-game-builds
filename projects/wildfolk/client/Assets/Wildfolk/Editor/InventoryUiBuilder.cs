@@ -35,7 +35,11 @@ namespace Wildfolk.Editor
             panel.SelectedCategory=Text("Category",surface.transform,string.Empty,new Vector2(-409,-319),new Vector2(320,28),20,TextAnchor.MiddleLeft);
             BuildCrafting(root,surface.transform,crafting);
             overlay.gameObject.SetActive(false);
+            var split=Image("Split Half",surface.transform,"panel",new Vector2(.5f,.5f),new Vector2(-10,-300),new Vector2(168,58),true);Text("Label",split.transform,"Split half",Vector2.zero,new Vector2(156,50),22);drag.SplitButton=Button(split);UnityEventTools.AddPersistentListener(drag.SplitButton.onClick,drag.SplitHalf);
+            drag.ItemDrop=owner.GetComponent<PlayerItemDrop>();
             ChestUiBuilder.Build(root,safe,owner,panel.Storage,drag);
+            var dropZone=Image("Drop Zone",safe,"panel",new Vector2(.5f,1),new Vector2(0,-128),new Vector2(320,88),true);dropZone.color=new Color32(155,108,72,255);Text("Label",dropZone.transform,"Drop to ground",Vector2.zero,new Vector2(300,68),27);
+            dropZone.gameObject.AddComponent<InventoryDropZone>().Controller=drag;drag.DropZone=dropZone.gameObject;drag.DropZone.SetActive(false);
             var ghost=Rect("Dragged Item",safe,new Vector2(.5f,.5f),Vector2.zero,new Vector2(94,94));
             var group=ghost.gameObject.AddComponent<CanvasGroup>();group.blocksRaycasts=false;group.interactable=false;
             Image("Frame",ghost,"panel",new Vector2(.5f,.5f),Vector2.zero,new Vector2(94,94));

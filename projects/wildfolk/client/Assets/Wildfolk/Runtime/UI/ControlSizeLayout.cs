@@ -5,21 +5,22 @@ namespace Wildfolk
     {
         public UserPreferences Preferences;
         public GameplaySession Session;
-        public RectTransform Joystick, Action, Hotbar, InventoryButton;
+        public RectTransform Joystick, Action, Interact, Hotbar, InventoryButton;
         private void OnEnable() {Preferences.Changed+=Apply;Session.StateChanged+=Apply;}
         private void Start() => Apply();
         private void OnDisable() {Preferences.Changed-=Apply;Session.StateChanged-=Apply;}
         private void Apply()
         {
             var scale=Preferences.Values.ControlSize;
-            Joystick.localScale=Action.localScale=Hotbar.localScale=InventoryButton.localScale=new Vector3(scale,scale,1);
+            Joystick.localScale=Action.localScale=Interact.localScale=Hotbar.localScale=InventoryButton.localScale=new Vector3(scale,scale,1);
             Hotbar.anchoredPosition=new Vector2(51*scale,70*scale);
             var inventoryOpen=Session.State==SessionState.Inventory;
             InventoryButton.anchorMin=InventoryButton.anchorMax=inventoryOpen ? Vector2.zero : new Vector2(.5f,0);
             InventoryButton.anchoredPosition=inventoryOpen ? new Vector2(40+47*scale,70*scale) : new Vector2(-459*scale,70*scale);
             var extra=Mathf.Clamp01((scale-1)/.4f);
-            Joystick.anchoredPosition=new Vector2(40+111*scale,160+165*extra);
-            Action.anchoredPosition=new Vector2(-40-87*scale,150+145*extra);
+            Joystick.anchoredPosition=new Vector2(40+111*scale,160+185*extra);
+            Action.anchoredPosition=new Vector2(-40-102*scale,160+185*extra);
+            Interact.anchoredPosition=Action.anchoredPosition+new Vector2(0,164*scale);
         }
     }
 }

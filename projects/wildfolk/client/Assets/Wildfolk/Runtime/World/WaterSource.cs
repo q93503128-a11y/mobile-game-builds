@@ -7,9 +7,8 @@ namespace Wildfolk
         private float availableAt;
         public Transform Location => transform;
         public Sprite Icon => Definition.Water.Icon;
-        public PlayerActionKind ActionKind => PlayerActionKind.CollectWater;
-        public bool CanInteract(PlayerAction actor) => CanInteract(actor.transform.position);
-        public bool Use(PlayerAction actor) => Collect(actor.Equipment.Inventory);
+        public bool CanInteract(PlayerInteraction actor) => CanInteract(actor.transform.position);
+        public bool Use(PlayerInteraction actor) => Collect(actor.Equipment.Inventory);
         public bool CanInteract(Vector2 actor) => Vector2.Distance(actor,transform.position)<=Definition.InteractionRange;
         public bool Collect(PlayerInventory player)
         {

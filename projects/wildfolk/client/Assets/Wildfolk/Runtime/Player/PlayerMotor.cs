@@ -11,6 +11,7 @@ namespace Wildfolk
         public VirtualJoystick Joystick;
         public PlayerAvatar Avatar;
         public PlayerCombat Combat;
+        public PlayerSurvival Survival;
         private Rigidbody2D body;
         private Vector2 input;
         public bool IsMoving => body != null && body.linearVelocity.sqrMagnitude > .02f;
@@ -30,7 +31,7 @@ namespace Wildfolk
             if (input.sqrMagnitude > .01f && !Combat.IsAttacking) Avatar.Facing.Face(input);
         }
 
-        private void FixedUpdate() => body.linearVelocity = Session.IsRunning ? input * Settings.MoveSpeed : Vector2.zero;
+        private void FixedUpdate() => body.linearVelocity = Session.IsRunning ? input * Settings.MoveSpeed * Survival.MovementCondition : Vector2.zero;
         private void OnDisable() { if (body != null) body.linearVelocity = Vector2.zero; }
     }
 }

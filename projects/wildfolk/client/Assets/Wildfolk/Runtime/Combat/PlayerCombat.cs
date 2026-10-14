@@ -34,6 +34,7 @@ namespace Wildfolk
             nextAttack = started + (attackTool == null ? Settings.PunchCooldown : attackTool.Cooldown);
             hitApplied = false;
             IsAttacking = true;
+            OwnHealth.MarkCombat();
             return true;
         }
 
@@ -48,6 +49,7 @@ namespace Wildfolk
             {
                 var health = candidates[i].GetComponentInParent<Health>();
                 if (health == null || health == OwnHealth || !health.IsAlive) continue;
+                if(health.GetComponent<WorldPlaceable>()!=null)continue;
                 var distance = ((Vector2)transform.position - candidates[i].ClosestPoint(transform.position)).sqrMagnitude;
                 if (distance >= best) continue;
                 best = distance;
@@ -81,7 +83,7 @@ namespace Wildfolk
                     var damage = attackTool == null ? Settings.PunchDamage : attackTool.Damage;
                     var node = target.GetComponent<ResourceNode>();
                     if (attackTool != null && node != null) damage = attackTool.DamageFor(node.Definition.Kind);
-                    if(node==null || node.Definition.CanHarvest(attackTool)) target.ApplyDamage(damage);
+                    if(node==null || node.Definition.CanHarvest(attackTool)) target.ApplyDamage(damage,false,Equipment.Inventory);
                 }
             }
             if (progress >= 1) CancelAttack();

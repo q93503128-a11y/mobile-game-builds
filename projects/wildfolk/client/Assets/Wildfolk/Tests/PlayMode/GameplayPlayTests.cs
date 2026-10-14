@@ -21,7 +21,7 @@ namespace Wildfolk.Tests
         {
             Time.timeScale=1;
             driver=new PlayPointerDriver();
-            yield return SceneManager.LoadSceneAsync("Wildfolk");
+            WorldGenerator.SelectedSeed=9472026;yield return SceneManager.LoadSceneAsync("Wildfolk");
             yield return null;
             player=Object.FindFirstObjectByType<PlayerMotor>();
             inventory=player.GetComponent<PlayerInventory>();
@@ -60,6 +60,7 @@ namespace Wildfolk.Tests
         {
             var body=player.GetComponent<Rigidbody2D>();
             body.position=position;body.linearVelocity=Vector2.zero;
+            player.transform.position=position;
             Physics2D.SyncTransforms();
         }
 
@@ -73,7 +74,7 @@ namespace Wildfolk.Tests
                 if(distance>=closest) continue;
                 selected=node;closest=distance;
             }
-            return selected;
+            WorldTestScene.MoveResource(selected,new Vector2(x,y));return selected;
         }
 
         private int Total(string id)
@@ -157,8 +158,8 @@ namespace Wildfolk.Tests
 
         [UnityTest] public IEnumerator PunchesAlternateAndResourcesDropBeforeInventoryPickupAndStack()
         {
-            var tree=Resource("wood",-3,1.8f);
-            PositionPlayer(new Vector2(-3,-.2f));yield return new WaitForFixedUpdate();yield return null;
+            var tree=WorldTestScene.MatureTree();
+            WorldTestScene.MoveResource(tree,new Vector2(-3,1.8f));PositionPlayer(new Vector2(-3,-.2f));yield return new WaitForFixedUpdate();yield return null;
             var bar=tree.GetComponentInChildren<WorldHealthBar>();
             Assert.That(bar.View.activeSelf,Is.False);
             yield return PunchOnce();
@@ -173,7 +174,7 @@ namespace Wildfolk.Tests
             yield return DestroyNode(tree);
             Assert.That(Total("wood"),Is.Zero);
             Assert.That(Object.FindFirstObjectByType<WorldPickup>(),Is.Not.Null);
-            yield return Collect("wood",3);
+            yield return Collect("wood",6);
             var stone=Resource("stone",-6.5f,1.5f);
             PositionPlayer(new Vector2(-6.5f,-.4f));yield return new WaitForFixedUpdate();yield return null;
             var stoneBar=stone.GetComponentInChildren<WorldHealthBar>();
@@ -188,7 +189,7 @@ namespace Wildfolk.Tests
             Assert.That(inventory.Model.GetSlot(3).Count,Is.EqualTo(6));
             var panel=Object.FindFirstObjectByType<InventoryPanel>();
             yield return Click(hud.InventoryButton);
-            Assert.That(panel.Slots[2].Count.text,Is.EqualTo("3"));Assert.That(panel.Slots[3].Count.text,Is.EqualTo("6"));
+            Assert.That(panel.Slots[2].Count.text,Is.EqualTo("6"));Assert.That(panel.Slots[3].Count.text,Is.EqualTo("6"));
             yield return Click(panel.Slots[3].GetComponent<Button>());
             Assert.That(panel.SelectedName.text,Is.EqualTo("Stone"));
             Assert.That(panel.Slots[3].Selection.enabled,Is.True);
@@ -197,7 +198,7 @@ namespace Wildfolk.Tests
 
         [UnityTest] public IEnumerator EnemyTelegraphsDamagesWithoutPhysicsPushAndDiesToAttackInput()
         {
-            var enemy=Object.FindFirstObjectByType<EnemyController>();
+            var enemy=WorldTestScene.SpawnZombie();yield return new WaitForSeconds(1.3f);
             var bar=enemy.GetComponentInChildren<WorldHealthBar>();
             Assert.That(bar.View.activeSelf,Is.False);
             PositionPlayer((Vector2)enemy.transform.position+Vector2.left*1.9f);yield return null;
@@ -226,7 +227,7 @@ namespace Wildfolk.Tests
         {
             var hud=Object.FindFirstObjectByType<BossHud>();Assert.That(hud.View.activeSelf,Is.False);
             var fixture=new GameObject("Boss fixture");fixture.SetActive(false);
-            var health=fixture.AddComponent<Health>();health.Definition=Object.FindFirstObjectByType<EnemyController>().OwnHealth.Definition;
+            var health=fixture.AddComponent<Health>();health.Definition=Object.FindFirstObjectByType<ZombieSpawner>().Prefab.OwnHealth.Definition;
             var boss=fixture.AddComponent<BossIdentity>();boss.DisplayName="Guardian";
             fixture.SetActive(true);yield return null;
             Assert.That(hud.View.activeSelf,Is.True);Assert.That(hud.Name.text,Is.EqualTo("Guardian"));
@@ -297,11 +298,12 @@ namespace Wildfolk.Tests
             yield return Click(bar.Slots[0].GetComponent<Button>());
             Assert.That(inventory.SelectedIndex,Is.Zero);Assert.That(bar.Slots[0].Selection.enabled,Is.True);
             Assert.That(equipment.HeldVisual.enabled,Is.True);Assert.That(equipment.HeldVisual.sprite,Is.SameAs(equipment.ActiveTool.HeldSprite));
-            var tree=Resource("wood",-3,1.8f);PositionPlayer(new Vector2(-3,-.2f));
+            var tree=WorldTestScene.MatureTree();WorldTestScene.MoveResource(tree,new Vector2(-3,1.8f));PositionPlayer(new Vector2(-3,-.2f));
             player.Avatar.Facing.Face(Vector2.up);yield return new WaitForSeconds(.3f);
-            yield return UseToolOnce();Assert.That(tree==null,Is.True,"Axe must harvest this tree in one use.");
-            yield return Collect("wood",3);
-            Assert.That(bar.Slots[2].Count.text,Is.EqualTo("3"));
+            yield return UseToolOnce();Assert.That(tree.Health.Current,Is.EqualTo(120));
+            for(var hit=1;hit<5;hit++)yield return UseToolOnce();Assert.That(tree==null,Is.True,"Wood Axe must harvest a mature tree in five uses.");
+            yield return Collect("wood",6);
+            Assert.That(bar.Slots[2].Count.text,Is.EqualTo("6"));
             Assert.That(bar.Slots[2].Icon.sprite,Is.SameAs(inventory.Model.GetSlot(2).Item.Icon));
             var stone=Resource("stone",-6.5f,1.5f);PositionPlayer(new Vector2(-6.5f,-.4f));
             player.Avatar.Facing.Face(Vector2.up);yield return new WaitForSeconds(.3f);
@@ -320,7 +322,7 @@ namespace Wildfolk.Tests
             yield return Click(bar.Slots[1].GetComponent<Button>());
             tree=Resource("wood",-10.1f,3.5f);PositionPlayer((Vector2)tree.transform.position+Vector2.down*2);
             player.Avatar.Facing.Face(Vector2.up);yield return new WaitForSeconds(.3f);
-            yield return UseToolOnce();Assert.That(tree.Health.Current,Is.EqualTo(25),"Pickaxe is inefficient on wood.");
+            var before=tree.Health.Current;yield return UseToolOnce();Assert.That(tree.Health.Current,Is.EqualTo(before-5),"Pickaxe is inefficient on wood.");
             Assert.That(Object.FindObjectsByType<ParticleSystem>(FindObjectsSortMode.None),Is.Empty);
         }
     }

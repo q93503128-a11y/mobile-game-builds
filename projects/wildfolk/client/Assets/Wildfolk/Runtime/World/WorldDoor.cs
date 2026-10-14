@@ -10,9 +10,8 @@ namespace Wildfolk
         private readonly Collider2D[] occupants=new Collider2D[16];
         public Transform Location => transform;
         public Sprite Icon => Placeable.Definition.Item.Icon;
-        public PlayerActionKind ActionKind => PlayerActionKind.Interact;
-        public bool CanInteract(PlayerAction actor) => Placeable.Health.IsAlive && Vector2.Distance(actor.transform.position,transform.position)<=actor.Settings.StationInteractionRange;
-        public bool Use(PlayerAction actor) => CanInteract(actor) && Toggle();
+        public bool CanInteract(PlayerInteraction actor) => Placeable.Health.IsAlive && Vector2.Distance(actor.transform.position,transform.position)<=actor.Settings.StationInteractionRange;
+        public bool Use(PlayerInteraction actor) => CanInteract(actor) && Toggle();
         public bool Toggle()
         {
             if(!Placeable.Health.IsAlive) return false;

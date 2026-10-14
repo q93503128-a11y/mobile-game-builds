@@ -1,51 +1,32 @@
 # Wildfolk
 
-Unity **6000.3.19f1 LTS / Universal 2D**, 모바일 Landscape 탑다운 생존 게임의 극초반 플레이 버전이다. **맨손 → Wood/Stone 도구 → 철 광석·제련·Iron 장비 → 낮밤과 기지 보관/방어**를 제공한다. 최종 아트나 완성된 생존 게임은 아니다.
+Unity **6000.3.19f1 LTS / Universal 2D**, 모바일 Landscape(기준1920×1080) 탑다운 생존 게임의 초기 플레이 버전이다. 현재는 **Seed 기반 온대 월드 → 채집/기지/장비 업그레이드 → 낮 Road Goblin / 밤 Zombie → 새벽 잠복**의 기반을 제공한다. 최종 월드 생성·아트·밸런스가 아니다.
 
-![새 게임](docs/images/progression-day.png)
+![새 게임](docs/images/worldgen-start.png)
 
-## 실행과 초반 진행
+## 실행과 진행
 
-1. Unity Hub에서 `client/`를 Unity 6000.3.19f1 프로젝트로 열고 `Assets/Wildfolk/Scenes/Wildfolk.unity`에서 Play한다.
-2. 빈 인벤토리/Hotbar와 맨손으로 시작한다. 좌하단 조이스틱으로 나무에 접근하고 우하단 공격 버튼을 누르거나 유지한다.
-3. 나무 2개를 파괴하고 바닥 Wood를 주우면 6개다. Hotbar 왼쪽 가방을 열고 Hand crafting의 Workbench를 제작한다.
-4. 제작된 Workbench 슬롯을 선택하고 가방을 닫는다. 플레이어 앞 Preview가 녹색이면 사용 버튼으로 설치한다. 적색이면 겹침/거리/필드 경계 조건을 해결한다.
-5. 설치된 작업대의 2.6유닛 이내에서 그쪽을 바라보고 사용 버튼을 눌러 Workbench 제작 화면을 연다.
-6. Wood 각 5개로 Wood Axe, Wood Pickaxe, Wood Sword를 제작한다. 필요하면 슬롯을 드래그해 Hotbar에 옮기고 선택한다.
+Unity Hub에서 client/를 열고 Assets/Wildfolk/Scenes/Wildfolk.unity에서 Play한다. 시작 Seed는 기본9472026, 맵192×144유닛이다. 같은 Seed는 같은 지형/물/길/기본 자원 배치를 재현한다. 죽은 뒤 Try again은 무작위 Seed의 빈 새 게임이다. 변경된 자원·시설·상자·재화 상태를 영구 저장하지 않는다.
 
-도끼는 나무, 곡괭이는 돌, 검은 적에 효율적이다. 기존 Axe/Pickaxe 정의를 재사용한다. 빈 슬롯/재료는 맨손이다. 전체 36슬롯(위 Storage 27칸, 아래 Hotbar 9칸)을 공유하며 슬롯 이동/합치기/교환이 가능하다. 같은 아이템은 한도까지만 합치고 잔량을 원래 슬롯에 남긴다.
+시작 주변의 큰 쓰러진 통나무(HP50, Wood4) 또는 나무(HP150, Wood6)를 맨손으로 채집하고 드랍을 줍는다. Wood6으로 Hand crafting의 Workbench를 만든다. 선택 시설을 앞쪽 녹색 Preview에 큰 Primary 버튼으로 설치한다. 작은 Interact 버튼으로 시설을 연다. Wood Axe/Pickaxe/Sword는 각각 Wood5다. 이후 이전 장비+Stone→Stone 장비, 이전 Stone 장비+Ingot→Iron 장비를 제작한다. 내구도/자동 진화는 없다.
 
-인벤토리를 열면 **플레이어 입력만 차단하고 월드는 계속 진행**한다. 적이 공격할 수 있다. 우상단 Pause는 Continue/Settings를 제공한다. Singleplayer는 월드를 정지하고 Multiplayer 정책에서는 로컬 입력만 차단한다. 실제 네트워크는 없다. 사망 후 Try again은 빈 상태의 새 필드다. WASD/Space는 에디터 보조 입력이고 숫자키 선택은 없다.
+큰 버튼은 공격/도구/설치/선택 소비품 섭취만, 작은 버튼은 작업대·모닥불·제련로·문·상자·물 수집만 담당한다. 작업대 앞에서도 공격 때문에 UI가 열리지 않는다. 플레이어 공격은 자신의 설치물도 자동 타격하지 않는다. 조이스틱과 Hotbar9칸을 유지하며 가방은36칸(Hotbar9+Storage27)이다.
 
-## 물, 모닥불, 설정
+물가에서 Interact로 Water를 얻는다. 깊은 물은 막히고 강의 여울은 건널 수 있다. Campfire는 Raw1→5초→Cooked1. Furnace는 충분한 재료가 있으면 Ore 최대3개→6초→Ingot 최대3개, Take로 수령한다. 현재 연료는 없다. 상자는 각각24칸이며 위3×8 상자, 아래 플레이어27+9칸이다. 양쪽 드래그/합치기/교환과 Split half를 제공한다. 드래그 중 표시되는 Drop to ground 영역에 놓을 때만 월드 아이템으로 버린다.
 
-필드 북서쪽 수원 3유닛 이내에서 바라보고 Use하면 Water 1개를 얻는다. 별도 용기 없이 추상화한 물 한 회분이며 오염/정수는 없다. Consumable을 선택했다면 Use는 선택 음식/물 섭취가 우선이다. 물을 더 얻거나 시설을 열 때는 빈 슬롯/도구를 선택한다. 최대 수치에서는 해당 소비품을 쓰지 않는다.
+가방/상자를 열면 플레이어 입력만 막고 세계는 진행한다. 우상단 Pause/Settings는 Singleplayer를 정지한다. Control Size80~140%, Master/BGM/SFX 설정은 로컬 PlayerPrefs로 보존한다. 실제 네트워크는 없다. 현재 SFX/BGM 에셋은 비어 있으며 음량 채널만 유지한다.
 
-Hand crafting에서 Wood 4 + Stone 3으로 Campfire를 만든 뒤 작업대와 같은 Preview/Use 방식으로 설치한다. 필드의 중립 멧돼지 1마리는 Raw Meat 2개를 드랍한다. 닭과 공통 중립 동물 이동을 사용하며 적 공격·재생성은 없다. 모닥불 가까이에서 빈 슬롯/도구를 선택하고 Use → Cook → 5초 후 Take로 Cooked Meat를 얻는다. 가방을 닫아도 조리는 계속되며 결과는 모닥불에 남는다.
+낮 Zombie는0, 밤은 땅에서 올라와 활동하고 새벽엔 추적/공격을 멈추고 잠복한다. 자연 잠복에는 보상이 없다. 낮 Goblin은 드물게 길에 등장하고 깊은 영역 접근/선공에 반응한다. 닭/멧돼지는 중립이며 고기+Feather/Leather를 드랍한다. 적 직접 처치 시 세션 XP/Gold를 별도 지갑에 기록하고 Inventory를 채우지 않는다. 레벨/Skill/Shop/Meta Coin은 없다.
 
-Pause → Settings에서 Control Size 80~140%, Master/BGM/SFX를 조절한다. 기본 100/100/65/85%, 로컬 PlayerPrefs 저장이다. BGM 곡은 아직 없지만 Music/SFX AudioSource 채널의 Master 곱 음량은 실제 연결됐다. 기존 sine 계열 전자음을 제거했고 현재 SFX/BGM 에셋은 비워두었다. 음량 채널은 유지한다.
+## 정본과 검증
 
-## 낮밤, 장비 진행, 건축·상자
+- 실제 아이템24종, Recipe17종, EquipmentTier3종, 실제 Biome1종이다.
+- Runtime은 생성 데이터/지형 표시/자원/적 생활주기/입력/모델/UI를 분리한다. Editor는 프리팹·초기 데이터·씬 구성 도구다.
+- [기획](docs/DESIGN_BIBLE.md), [월드](docs/WORLD_GENERATION.md), [수치](docs/BALANCE.md), [제작](docs/CRAFTING.md), [인벤토리](docs/INVENTORY.md), [구조](docs/ARCHITECTURE.md), [검수](docs/WORLD_GENERATION_REVIEW.md).
+- 이전 *_REVIEW는 당시 단계의 역사 기록이다.
+- 소스 검사: python tests/validate_visual_project.py client. Unity Tests는 Assets/Wildfolk/Tests의 EditMode/PlayMode다.
+- 아트는 tools/generate_visual_assets.py(Pillow)의 프로젝트 원본이며 외부 게임 에셋을 사용하지 않는다.
 
-하루는 Day 240초 → Evening 60초 → Night 150초 → Dawn 30초다. 세계 조명과 좌상단 작은 Day/Phase 표시가 바뀐다. 낮은 최대 Zombie1/90초, 밤은 최대6/15초 정책이다. 밤에는 기존 Zombie가 적극적으로 접근하며 카메라 밖·플레이어12유닛 이상·필드 외곽·건축물5유닛 밖의 빈 위치에서 생성한다. 낮이 되어도 이미 있는 적이 즉시 사라지지는 않는다.
+Wildfolk > View 메뉴는 기존 Game View의 해상도만 갱신하고 Play Unfocused를 적용한다. Focus/GetWindow를 호출하지 않는다. Build Playable Scene은 씬·프리팹을 재생성하므로 수작업 씬 배치가 필요한 경우 주의한다. 기존 수치 데이터는 보존한다.
 
-Workbench에서 Stone Axe/Pickaxe/Sword와 시설을 제작한다. Stone Pickaxe부터 Iron Ore를 채굴하고 Furnace에서 Ore1→6초→Ingot1을 Take로 수령한다. 현재 연료는 없다. Ingot를 사용해 Workbench에서 Iron 도구/검을 제작한다. 각 티어의 실제 수치와 17 Recipe는 BALANCE/CRAFTING을 따른다.
-
-Wood Wall/Door/Storage Chest도 Workbench 제작→기존 Preview→배치다. 벽/문은 바라보는 축에 맞춰 0/90도로 설치하며 실제 충돌·체력·좀비 공격/파괴가 있다. 문은 Use로 열고 닫으며 사람이 있으면 닫히지 않는다. 상자는 각각 독립18칸, 위 상자·아래 플레이어 Storage27+Hotbar9로 표시하고 기존 드래그로 양쪽 이동/합치기/교환한다. 상자를 열어도 세계는 진행한다. 닫힌 상자의 물품은 해당 플레이 세션 동안 남고 파괴 시 드랍되지만 앱 재실행 보존은 아직 없다.
-
-닭1마리를 추가했고 닭/멧돼지는 주변 이동·근접/피격 도망을 공유하며 공격하지 않는다. Raw Meat 드랍은 닭1/멧돼지2다. Armor 카테고리/방어 수치/빈 장비 슬롯/외형 소켓 기반만 있고 실제 방어구 아이템·장착 UI는 없다.
-
-## 에디터 도구와 검증
-
-`Wildfolk > View 1920x1080/2400x1080`은 이미 열린 Game View의 해상도만 바꾸며 창을 열거나 포커스를 주지 않는다. Play 진입 설정도 Play Unfocused로 맞춘다. Game View 탭이 없다면 먼저 수동으로 연다. `Build Playable Scene`은 기본 씬/프리팹을 재생성하므로 수작업 배치를 보존할 때는 사용하지 않는다. 기존 데이터 에셋은 덮어쓰지 않고 자동 Game View 전환도 하지 않는다.
-
-- Runtime: 입력/전투/인벤토리/제작/설치/세션을 책임별로 분리한다.
-- Data: 실제 아이템 22종, Recipe 17종, None/Workbench/Campfire/Furnace 시설 요구와 수치의 단일 정본이다.
-- Editor: 아트/데이터/프리팹/씬/UI 생성 도구다.
-- Tests: 검증 결과는 docs/PROGRESSION_REVIEW.md 참고. 별도 복사본의 hidden headless Unity에서 실행했다.
-- 문서: DESIGN_BIBLE, INVENTORY, CRAFTING, BALANCE, ARCHITECTURE, PROGRESSION_REVIEW, NEEDS_SETTINGS_REVIEW/SURVIVAL_REVIEW(이전 단계).
-- 이전 VISUAL_REVIEW/PLAY_REVIEW/HOTBAR_TOOLS_REVIEW는 당시 상태의 역사 기록이다.
-
-아트 원본은 외부 게임 에셋을 사용하지 않는 `tools/generate_visual_assets.py`이며 Pillow 12.3.0이 필요하다. 소스 검사는 `python tests/validate_visual_project.py client`로 실행한다. Library/Temp/로그/로컬 검증 복사본은 정본에서 제외한다.
-
-실제 모바일 사용감은 사용자가 테스트한다. 협동/저장/새 적/바이옴/절차 월드/고급 시설/회수·수리/계정·상점은 없다.
+실기 터치·손맛·장시간 생존·성능은 사용자가 확인한다. 여러 Biome/POI/Dungeon/무한 Chunk/World Save/실제 Multiplayer/전체 Armor/Skill Tree/전문 제작대는 아직 없다.

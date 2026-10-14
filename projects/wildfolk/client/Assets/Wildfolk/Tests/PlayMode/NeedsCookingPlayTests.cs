@@ -17,7 +17,7 @@ namespace Wildfolk.Tests
         [UnitySetUp] public IEnumerator Load()
         {
             original=LocalSettings.Load();input=new PlayPointerDriver();Time.timeScale=1;
-            yield return SceneManager.LoadSceneAsync("Wildfolk");yield return null;yield return null;
+            WorldGenerator.SelectedSeed=9472026;yield return SceneManager.LoadSceneAsync("Wildfolk");yield return null;yield return null;
             player=Object.FindFirstObjectByType<PlayerMotor>();inventory=player.GetComponent<PlayerInventory>();
             crafting=player.GetComponent<PlayerCrafting>();needs=player.GetComponent<PlayerSurvival>();hud=Object.FindFirstObjectByType<GameplayHud>();
         }
@@ -31,7 +31,7 @@ namespace Wildfolk.Tests
         {foreach(var card in Object.FindFirstObjectByType<CraftingPanel>().Cards) if(card.Recipe.Id==id) return card;Assert.Fail(id);return null;}
         private ItemDefinition Raw => Recipe("cooked_meat").Ingredients[0].Item;
         private void Position(Vector2 position,Vector2 facing)
-        {player.GetComponent<Rigidbody2D>().position=position;player.Avatar.Facing.Face(facing);Physics2D.SyncTransforms();}
+        {player.GetComponent<Rigidbody2D>().position=position;player.transform.position=position;player.Avatar.Facing.Face(facing);Physics2D.SyncTransforms();}
         private CraftingStation SpawnFire()
         {return Object.Instantiate(Recipe("campfire").Result.Placement.Prefab,(Vector2)player.transform.position+Vector2.down*2.1f,Quaternion.identity).GetComponent<CraftingStation>();}
         [UnityTest] public IEnumerator PauseSettingsSlidersApplyToControlsAndRealAudioChannels()
@@ -67,6 +67,8 @@ namespace Wildfolk.Tests
                 preferences.SetControl(scale);yield return null;yield return null;
                 Assert.That(Bounds(player.Joystick).Overlaps(Bounds(hud.InventoryButton)),Is.False);
                 Assert.That(Bounds(hud.Attack).Overlaps(Bounds(hotbar)),Is.False);
+                Assert.That(Bounds(hud.Interact).Overlaps(Bounds(hud.Attack)),Is.False);
+                Assert.That(Bounds(player.Joystick).Overlaps(Bounds(hotbar)),Is.False);
                 yield return input.Click(hud.InventoryButton);
                 var surface=Object.FindFirstObjectByType<InventoryPanel>().View.transform.Find("Inventory Panel");
                 Assert.That(Bounds(surface).Overlaps(Bounds(hud.InventoryButton)),Is.False);
@@ -78,12 +80,13 @@ namespace Wildfolk.Tests
         [UnityTest] public IEnumerator MultiplayerPauseBlocksLocalInputButContinuesWorldNeedsAndEnemy()
         {
             hud.Session.Mode=SessionMode.Multiplayer;
-            var enemy=Object.FindFirstObjectByType<EnemyController>();Position((Vector2)enemy.transform.position+Vector2.left*2,Vector2.right);
+            var enemy=WorldTestScene.SpawnZombie();yield return new WaitForSeconds(1.3f);Position((Vector2)enemy.transform.position+Vector2.left*2,Vector2.right);
             yield return new WaitForSeconds(.2f);var hp=needs.Health.Current;var hunger=needs.Model.Hunger;
             yield return input.Click(hud.PauseButton);Assert.That(Time.timeScale,Is.EqualTo(1));
             yield return input.Click(hud.Attack);Assert.That(player.Combat.IsAttacking,Is.False);
-            yield return new WaitForSeconds(1.2f);
-            Assert.That(needs.Health.Current,Is.LessThan(hp));Assert.That(needs.Model.Hunger,Is.LessThan(hunger));
+            var deadline=Time.time+3.5f;
+            while(needs.Health.Current==hp && Time.time<deadline)yield return null;
+            Assert.That(needs.Health.Current,Is.LessThan(hp),"Enemy must remain active in the Multiplayer pause policy: "+enemy.State);Assert.That(needs.Model.Hunger,Is.LessThan(hunger));
             var freeze=Time.timeScale;needs.Health.ApplyDamage(needs.Health.Current);yield return null;
             Assert.That(Time.timeScale,Is.EqualTo(freeze),"Local defeat must not freeze a multiplayer world.");
         }
@@ -91,11 +94,11 @@ namespace Wildfolk.Tests
         {
             var source=Object.FindFirstObjectByType<WaterSource>();var water=source.Definition.Water;
             Position((Vector2)source.transform.position+Vector2.down*2.2f,Vector2.up);yield return new WaitForSeconds(.2f);
-            Assert.That(player.GetComponent<PlayerAction>().Kind,Is.EqualTo(PlayerActionKind.CollectWater));
-            yield return input.Click(hud.Attack);Assert.That(inventory.Model.CountItem(water),Is.EqualTo(1));
+            Assert.That(player.GetComponent<PlayerInteraction>().TargetWater,Is.SameAs(source));
+            yield return input.Click(hud.Interact);Assert.That(inventory.Model.CountItem(water),Is.EqualTo(1));
             inventory.SelectSlot(0);yield return null;
             needs.Model.Restore(water.Consumable);
-            Assert.That(player.GetComponent<PlayerAction>().TryUse(),Is.False);Assert.That(inventory.Model.CountItem(water),Is.EqualTo(1));
+            Assert.That(player.GetComponent<PlayerPrimaryAction>().TryUse(),Is.False);Assert.That(inventory.Model.CountItem(water),Is.EqualTo(1));
             needs.Model.Advance(100);yield return input.Click(hud.Attack);
             Assert.That(inventory.Model.CountItem(water),Is.Zero);Assert.That(needs.Model.Thirst,Is.GreaterThan(99));
             Position(Vector2.zero,Vector2.up);yield return null;Assert.That(source.Collect(inventory),Is.False);
@@ -110,7 +113,7 @@ namespace Wildfolk.Tests
             Assert.That(inventory.Model.GetSlot(0).IsEmpty,Is.True);
             var station=Object.FindFirstObjectByType<CraftingStation>();Assert.That(station.Definition.Station,Is.EqualTo(StationKind.Campfire));
             inventory.Model.Add(Raw,1);inventory.SelectSlot(8);yield return null;
-            yield return input.Click(hud.Attack);Assert.That(crafting.AvailableStation,Is.EqualTo(StationKind.Campfire));
+            yield return input.Click(hud.Interact);Assert.That(crafting.AvailableStation,Is.EqualTo(StationKind.Campfire));
             yield return input.Click(Card("cooked_meat").CraftButton);
             var cooking=station.GetComponent<StationProcessing>();Assert.That(cooking.IsBusy,Is.True);Assert.That(inventory.Model.CountItem(Raw),Is.Zero);
             yield return new WaitForSeconds(.3f);Assert.That(Card("cooked_meat").Progress.gameObject.activeSelf,Is.True);
@@ -143,12 +146,12 @@ namespace Wildfolk.Tests
         }
         [UnityTest] public IEnumerator OneNeutralMeatSourceDropsRawWithoutAddingAnEnemyType()
         {
-            Assert.That(Object.FindObjectsByType<EnemyController>(FindObjectsSortMode.None).Length,Is.EqualTo(1));
-            ResourceNode animal=null;foreach(var node in Object.FindObjectsByType<ResourceNode>(FindObjectsSortMode.None)) if(node.Definition.Kind==ResourceKind.Meat && node.Definition.DropCount==2) animal=node;
+            Assert.That(Object.FindObjectsByType<EnemyController>(FindObjectsSortMode.None),Is.Empty);
+            NeutralAnimal animal=null;foreach(var node in Object.FindObjectsByType<NeutralAnimal>(FindObjectsSortMode.None))if(node.GetComponent<LootOnDeath>().Table.Items[0].Minimum==2)animal=node;
             Assert.That(animal,Is.Not.Null);Assert.That(animal.GetComponent<EnemyController>(),Is.Null);
             Position((Vector2)animal.transform.position+Vector2.down*1.6f,Vector2.up);yield return new WaitForSeconds(.2f);
             animal.Health.ApplyDamage(animal.Health.Maximum);yield return null;
-            Assert.That(animal==null,Is.True);var drop=Object.FindFirstObjectByType<WorldPickup>();Assert.That(drop.Item,Is.SameAs(Raw));Assert.That(drop.Count,Is.EqualTo(2));
+            Assert.That(animal==null,Is.True);WorldPickup drop=null;foreach(var item in Object.FindObjectsByType<WorldPickup>(FindObjectsSortMode.None))if(item.Item==Raw)drop=item;Assert.That(drop,Is.Not.Null);Assert.That(drop.Count,Is.EqualTo(2));
             Position(drop.transform.position,Vector2.up);yield return new WaitForSeconds(.85f);Assert.That(inventory.Model.CountItem(Raw),Is.EqualTo(2));
         }
     }

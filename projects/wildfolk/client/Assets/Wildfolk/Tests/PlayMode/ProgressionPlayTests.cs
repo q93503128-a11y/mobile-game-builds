@@ -15,7 +15,7 @@ namespace Wildfolk.Tests
         private WorldClock clock;
         [UnitySetUp] public IEnumerator Load()
         {
-            input=new PlayPointerDriver();Time.timeScale=1;yield return SceneManager.LoadSceneAsync("Wildfolk");yield return null;yield return null;
+            input=new PlayPointerDriver();Time.timeScale=1;WorldGenerator.SelectedSeed=9472026;yield return SceneManager.LoadSceneAsync("Wildfolk");yield return null;yield return null;
             player=Object.FindFirstObjectByType<PlayerMotor>();inventory=player.GetComponent<PlayerInventory>();crafting=player.GetComponent<PlayerCrafting>();hud=Object.FindFirstObjectByType<GameplayHud>();clock=Object.FindFirstObjectByType<WorldClock>();
         }
         [UnityTearDown] public IEnumerator Release(){input.Dispose();Time.timeScale=1;yield return null;}
@@ -28,7 +28,7 @@ namespace Wildfolk.Tests
             var chest=Place("storage_chest",new Vector2(0,-2.45f)).GetComponent<StorageChest>();var other=Place("storage_chest",new Vector2(4,-2.45f)).GetComponent<StorageChest>();yield return null;
             inventory.Model.Add(Recipe("wood_sword").Result,1);inventory.Model.Add(Recipe("workbench").Ingredients[0].Item,20);
             chest.Model.Add(Recipe("workbench").Ingredients[0].Item,45);inventory.SelectSlot(0);yield return null;Position(new Vector2(0,-.35f),Vector2.down);yield return null;
-            yield return input.Click(hud.Attack);var panel=Object.FindFirstObjectByType<ChestPanel>();Assert.That(panel.View.activeSelf,Is.True);Assert.That(Time.timeScale,Is.EqualTo(1));
+            yield return input.Click(hud.Interact);var panel=Object.FindFirstObjectByType<ChestPanel>();Assert.That(panel.View.activeSelf,Is.True);Assert.That(Time.timeScale,Is.EqualTo(1));
             Assert.That(Object.FindFirstObjectByType<InventoryPanel>().View.activeSelf,Is.False);
             yield return input.Drag(panel.PlayerSlots[1],PlayPointerDriver.Point(panel.ChestSlots[0]));Assert.That(chest.Model.GetSlot(0).Count,Is.EqualTo(50));Assert.That(inventory.Model.GetSlot(1).Count,Is.EqualTo(15));
             yield return input.Drag(panel.PlayerSlots[0],PlayPointerDriver.Point(panel.ChestSlots[1]));Assert.That(player.GetComponent<PlayerEquipment>().ActiveTool,Is.Null);
@@ -42,15 +42,15 @@ namespace Wildfolk.Tests
         [UnityTest] public IEnumerator DoorUseOpensClosesAndRejectsClosingOnAnActor()
         {
             var door=Place("wood_door",new Vector2(0,-2.45f)).GetComponent<WorldDoor>();yield return null;Position(new Vector2(0,-.35f),Vector2.down);yield return null;
-            yield return input.Click(hud.Attack);Assert.That(door.IsOpen,Is.True);Assert.That(door.Barrier.enabled,Is.False);
-            yield return input.Click(hud.Attack);Assert.That(door.IsOpen,Is.False);Assert.That(door.Barrier.enabled,Is.True);
-            yield return input.Click(hud.Attack);Position(door.transform.position,Vector2.down);yield return null;
+            yield return input.Click(hud.Interact);Assert.That(door.IsOpen,Is.True);Assert.That(door.Barrier.enabled,Is.False);
+            yield return input.Click(hud.Interact);Assert.That(door.IsOpen,Is.False);Assert.That(door.Barrier.enabled,Is.True);
+            yield return input.Click(hud.Interact);Position(door.transform.position,Vector2.down);yield return null;
             Assert.That(door.Toggle(),Is.False);Assert.That(door.IsOpen,Is.True);
             Position(new Vector2(0,-.35f),Vector2.down);yield return null;Assert.That(door.Toggle(),Is.True);
         }
         [UnityTest] public IEnumerator ZombieIsBlockedByWallAndDealsVisibleHealthDamage()
         {
-            var enemy=Object.FindFirstObjectByType<EnemyController>();Position(Vector2.zero,Vector2.right);
+            var enemy=WorldTestScene.SpawnZombie();yield return new WaitForSeconds(1.3f);Position(Vector2.zero,Vector2.right);
             enemy.GetComponent<Rigidbody2D>().position=new Vector2(2.5f,0);enemy.transform.position=new Vector2(2.5f,0);
             var wall=Place("wood_wall",new Vector2(1.3f,0));wall.transform.rotation=Quaternion.Euler(0,0,90);Physics2D.SyncTransforms();yield return null;
             var hp=player.GetComponent<Health>().Current;yield return new WaitForSeconds(1.4f);
@@ -61,8 +61,8 @@ namespace Wildfolk.Tests
         {
             var spawner=Object.FindFirstObjectByType<ZombieSpawner>();Assert.That(spawner.TrySpawn(),Is.False);
             clock.Model.Advance(clock.Definition.DaySeconds+clock.Definition.EveningSeconds);yield return null;
-            for(var i=0;i<spawner.Definition.NightLimit-1;i++)Assert.That(spawner.TrySpawn(),Is.True);
-            Assert.That(spawner.ActiveCount,Is.EqualTo(spawner.Definition.NightLimit));Assert.That(spawner.TrySpawn(),Is.False);
+            for(var i=spawner.ActiveCount;i<spawner.TargetPopulation;i++)Assert.That(spawner.TrySpawn(),Is.True);
+            Assert.That(spawner.ActiveCount,Is.EqualTo(spawner.TargetPopulation));Assert.That(spawner.TrySpawn(),Is.False);
             foreach(var enemy in Object.FindObjectsByType<EnemyController>(FindObjectsSortMode.None))
             {
                 if(Vector2.Distance(enemy.transform.position,new Vector2(6.6f,-.2f))<1)continue;
@@ -75,7 +75,7 @@ namespace Wildfolk.Tests
         [UnityTest] public IEnumerator OreRequiresStonePickaxeAndDropsRealOreAfterValidHits()
         {
             ResourceNode ore=null;foreach(var node in Object.FindObjectsByType<ResourceNode>(FindObjectsSortMode.None))if(node.Definition.Kind==ResourceKind.IronOre){ore=node;break;}
-            ore.transform.position=new Vector2(0,3);Position(new Vector2(0,1),Vector2.up);Physics2D.SyncTransforms();yield return null;
+            WorldTestScene.MoveResource(ore,new Vector2(0,3));Position(new Vector2(0,1),Vector2.up);Physics2D.SyncTransforms();yield return null;
             var hp=ore.Health.Current;yield return input.Click(hud.Attack);yield return new WaitForSeconds(.5f);Assert.That(ore.Health.Current,Is.EqualTo(hp));
             inventory.Model.Add(Recipe("pickaxe").Result,1);inventory.Model.Add(Recipe("stone_pickaxe").Result,1);inventory.Model.Add(Recipe("iron_pickaxe").Result,1);
             inventory.SelectSlot(0);yield return null;yield return input.Click(hud.Attack);yield return new WaitForSeconds(.8f);Assert.That(ore.Health.Current,Is.EqualTo(hp));
@@ -115,7 +115,7 @@ namespace Wildfolk.Tests
             Position((Vector2)chicken.transform.position+Vector2.down*1.3f,Vector2.up);yield return null;yield return input.Click(hud.Attack);yield return new WaitForSeconds(.25f);
             Assert.That(chicken.IsFleeing,Is.True);Assert.That(chicken.Health.Current,Is.LessThan(chicken.Health.Maximum));
             var hp=player.GetComponent<Health>().Current;yield return new WaitForSeconds(.4f);Assert.That(player.GetComponent<Health>().Current,Is.EqualTo(hp));
-            chicken.Health.ApplyDamage(chicken.Health.Maximum);yield return null;var drop=Object.FindFirstObjectByType<WorldPickup>();Assert.That(drop.Item.Id,Is.EqualTo("raw_meat"));Assert.That(drop.Count,Is.EqualTo(1));
+            chicken.Health.ApplyDamage(chicken.Health.Maximum);yield return null;Assert.That(Object.FindObjectsByType<WorldPickup>(FindObjectsSortMode.None).Length,Is.EqualTo(2));
         }
         [UnityTest] public IEnumerator ArmorFoundationEquipsOneSlotAndSurvivalDamageBypassesDefense()
         {

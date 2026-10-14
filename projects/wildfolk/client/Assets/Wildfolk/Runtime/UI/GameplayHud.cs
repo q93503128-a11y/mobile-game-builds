@@ -8,6 +8,7 @@ namespace Wildfolk
         public GameplaySession Session;
         public VirtualJoystick Joystick;
         public HoldAttackInput Attack;
+        public InteractButtonView Interact;
         public CanvasGroup Controls;
         public Button InventoryButton;
         public Button PauseButton;

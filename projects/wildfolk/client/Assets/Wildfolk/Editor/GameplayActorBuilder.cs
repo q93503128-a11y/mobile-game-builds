@@ -43,7 +43,10 @@ namespace Wildfolk.Editor
             var storage=root.gameObject.AddComponent<PlayerStorage>();storage.Settings=assets.Settings;
             var crafting=root.gameObject.AddComponent<PlayerCrafting>();crafting.Inventory=inventory;crafting.Catalog=assets.Crafting.Catalog;crafting.Settings=assets.Settings;
             var placement=root.gameObject.AddComponent<PlayerPlacement>();placement.Equipment=equipment;placement.Inventory=inventory;placement.Settings=assets.Settings;placement.Facing=facing;
-            var action=root.gameObject.AddComponent<PlayerAction>();action.Equipment=equipment;action.Combat=combat;action.Placement=placement;action.Crafting=crafting;action.Settings=assets.Settings;action.Facing=facing;action.Survival=needs;action.Storage=storage;
+            var action=root.gameObject.AddComponent<PlayerPrimaryAction>();action.Equipment=equipment;action.Combat=combat;action.Placement=placement;action.Survival=needs;
+            var interaction=root.gameObject.AddComponent<PlayerInteraction>();interaction.Equipment=equipment;interaction.Crafting=crafting;interaction.Settings=assets.Settings;interaction.Facing=facing;interaction.Storage=storage;
+            root.gameObject.AddComponent<PlayerProgression>();motor.Survival=needs;
+            var itemDrop=root.gameObject.AddComponent<PlayerItemDrop>();itemDrop.Inventory=inventory;itemDrop.Settings=assets.Settings;
             HealthBar(health,1.35f,true,1.65f);
             Feedback(health,reaction,HitReaction.Creature);
             return SavePrefab(root,"Player");
@@ -65,8 +68,8 @@ namespace Wildfolk.Editor
                 if(definition.Station==StationKind.Campfire || definition.Station==StationKind.Furnace)
                 {
                     var process=root.gameObject.AddComponent<StationProcessing>();process.Station=station;process.RecoveryPickup=pickup;process.Settings=settings;
-                    var glow=Group("Firelight",root).gameObject.AddComponent<UnityEngine.Rendering.Universal.Light2D>();glow.lightType=UnityEngine.Rendering.Universal.Light2D.LightType.Point;glow.pointLightOuterRadius=3.5f;glow.pointLightInnerRadius=.8f;glow.color=new Color(1,.73f,.4f);glow.intensity=0;
-                    root.gameObject.AddComponent<FacilityGlow>().Light=glow;
+                    var glow=Group("Firelight",root).gameObject.AddComponent<UnityEngine.Rendering.Universal.Light2D>();glow.lightType=UnityEngine.Rendering.Universal.Light2D.LightType.Point;glow.pointLightOuterRadius=5.5f;glow.pointLightInnerRadius=3;glow.color=new Color(1,.73f,.4f);glow.intensity=0;
+                    root.gameObject.AddComponent<FacilityGlow>().Light=glow;root.gameObject.AddComponent<GameplayLight>().Definition=AssetDatabase.LoadAssetAtPath<GameplayLightDefinition>("Assets/Wildfolk/Data/FacilityLight.asset");
                 }
             }
             if(definition.IsDoor)
@@ -85,8 +88,8 @@ namespace Wildfolk.Editor
         {
             var root=Group("Placement Preview",parent);
             placement.Preview=root.gameObject;placement.Ground=ground;
-            placement.PreviewFootprint=Sprite("Footprint","white",root,Vector2.zero,1,350);
-            placement.PreviewVisual=Sprite("Ghost","workbench",root,Vector2.zero,.8f,351);
+            placement.PreviewFootprint=Sprite("Footprint","white",root,Vector2.zero,1,WorldSorting.Overlay-2);
+            placement.PreviewVisual=Sprite("Ghost","workbench",root,Vector2.zero,.8f,WorldSorting.Overlay-1);
             root.gameObject.SetActive(false);
         }
 
@@ -110,6 +113,8 @@ namespace Wildfolk.Editor
             facing.LeftEye=Sprite("Left Eye","zombie_eye",reaction,new Vector2(-.18f,-.28f),.8f,2).transform;
             facing.RightEye=Sprite("Right Eye","zombie_eye",reaction,new Vector2(.18f,-.28f),.8f,2).transform;
             var controller=root.gameObject.AddComponent<EnemyController>();controller.Settings=assets.Settings;controller.OwnHealth=health;controller.AttackPose=pose;controller.Facing=facing;
+            var lifecycle=root.gameObject.AddComponent<ZombieLifecycle>();lifecycle.Controller=controller;lifecycle.Visual=visual;lifecycle.Hitbox=collider;lifecycle.Definition=assets.Progression.Spawn;controller.Lifecycle=lifecycle;
+            WorldContentBuilder.Loot(root.gameObject,health,assets.World.ZombieLoot,assets,pickup:AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Wildfolk/Prefabs/WorldPickup.prefab").GetComponent<WorldPickup>());
             Feedback(health,reaction,HitReaction.Creature);
             HealthBar(health,1.18f,false);
             return SavePrefab(root,"Enemy");
@@ -121,7 +126,7 @@ namespace Wildfolk.Editor
             Shadow(root,.63f,.23f);
             var floating=Group("Floating Visual",root,0,.08f);
             var icon=Sprite("Item","icon_wood",floating,Vector2.zero,.55f,150);
-            var pickup=root.gameObject.AddComponent<WorldPickup>();pickup.Icon=icon;pickup.FloatingVisual=floating;
+            var pickup=root.gameObject.AddComponent<WorldPickup>();pickup.Icon=icon;pickup.FloatingVisual=floating;icon.sortingOrder=WorldSorting.Drop;
             var prefab=PrefabUtility.SaveAsPrefabAsset(root.gameObject,"Assets/Wildfolk/Prefabs/WorldPickup.prefab");
             Object.DestroyImmediate(root.gameObject);
             return prefab.GetComponent<WorldPickup>();

@@ -23,5 +23,6 @@ namespace Wildfolk
         [FormerlySerializedAs("CookingSeconds"), Min(0)] public float ProcessingSeconds;
         public ProcessingKind Processing;
         public EquipmentTier Tier;
+        [Min(1)]public int RequiredWorkbenchTier=1;
     }
 }

@@ -79,7 +79,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -900
+  m_SortingOrder: -10000
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 40f3386dab1e99946812def56091b002, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -245,8 +245,8 @@ MonoBehaviour:
     m_Extent: {x: 0, y: 0, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
-  m_PointLightInnerRadius: 0.8
-  m_PointLightOuterRadius: 3.5
+  m_PointLightInnerRadius: 3
+  m_PointLightOuterRadius: 5.5
   m_ShapeLightParametricSides: 5
   m_ShapeLightParametricAngleOffset: 0
   m_ShapeLightParametricRadius: 1
@@ -336,7 +336,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 500
+  m_SortingOrder: 12000
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 01c9408c00331b744b6f7545e69c9790, type: 3}
   m_Color: {r: 0.101960786, g: 0.14901961, b: 0.11372549, a: 1}
@@ -365,6 +365,7 @@ GameObject:
   - component: {fileID: 9137672404376754633}
   - component: {fileID: 654927442136389365}
   - component: {fileID: 6725074041591957777}
+  - component: {fileID: 2278936508153042639}
   - component: {fileID: 7222032176630171423}
   m_Layer: 0
   m_Name: Campfire
@@ -534,6 +535,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.FacilityGlow
   Light: {fileID: 1884678690370531222}
+--- !u!114 &2278936508153042639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5582389578481865724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 254c3a48106ff1b409c2a585e7b529fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.GameplayLight
+  Definition: {fileID: 11400000, guid: 30958a3ec8bd307418e5c591d597a459, type: 2}
 --- !u!114 &7222032176630171423
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -719,7 +733,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 501
+  m_SortingOrder: 12001
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 01c9408c00331b744b6f7545e69c9790, type: 3}
   m_Color: {r: 0.7254902, g: 0.5254902, b: 0.33333334, a: 1}

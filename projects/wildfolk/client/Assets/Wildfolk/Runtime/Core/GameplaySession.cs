@@ -37,6 +37,6 @@ namespace Wildfolk
             State = value;
             StateChanged?.Invoke();
         }
-        public void Restart() => SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        public void Restart(){WorldGenerator.SelectedSeed=WorldGenerator.RandomSeed();SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);}
     }
 }

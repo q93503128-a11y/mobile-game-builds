@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 8019505004516839738}
   - component: {fileID: 9173073829120181285}
   - component: {fileID: 369511394393707219}
-  - component: {fileID: 6837555669645509234}
   - component: {fileID: 6093698111049186242}
+  - component: {fileID: 949842591823247114}
   - component: {fileID: 1633444973336837312}
   m_Layer: 0
   m_Name: Boar
@@ -31,7 +31,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1296655929990336751}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -130,23 +130,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.Health
   Definition: {fileID: 11400000, guid: 3313e06d65767eb4d90b81ca906ee1ac, type: 2}
---- !u!114 &6837555669645509234
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1296655929990336751}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1aa2eb2431777684c8a54964238ad54f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.ResourceNode
-  Health: {fileID: 369511394393707219}
-  Definition: {fileID: 11400000, guid: 52e815a200ceb3247ac20dcb30f350af, type: 2}
-  PickupPrefab: {fileID: 460157505685859054, guid: 13d811d9b0ff6834ea370f69d47a2a12, type: 3}
-  Player: {fileID: 0}
-  Settings: {fileID: 11400000, guid: fd43ec9cd9385eb4eb69f64792c98535, type: 2}
 --- !u!114 &6093698111049186242
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -165,6 +148,23 @@ MonoBehaviour:
   Visual: {fileID: 8623754542835686924}
   Region: {fileID: 0}
   Health: {fileID: 369511394393707219}
+--- !u!114 &949842591823247114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1296655929990336751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d033f103e0db4ea4ca9eb22bd7ba8ba1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.LootOnDeath
+  Health: {fileID: 369511394393707219}
+  Table: {fileID: 11400000, guid: beb833c4ae5276c4498566d453d42df8, type: 2}
+  Player: {fileID: 0}
+  Pickup: {fileID: 460157505685859054, guid: 13d811d9b0ff6834ea370f69d47a2a12, type: 3}
+  Settings: {fileID: 11400000, guid: fd43ec9cd9385eb4eb69f64792c98535, type: 2}
 --- !u!114 &1633444973336837312
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -259,7 +259,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 500
+  m_SortingOrder: 12000
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 01c9408c00331b744b6f7545e69c9790, type: 3}
   m_Color: {r: 0.101960786, g: 0.14901961, b: 0.11372549, a: 1}
@@ -350,7 +350,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 501
+  m_SortingOrder: 12001
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 01c9408c00331b744b6f7545e69c9790, type: 3}
   m_Color: {r: 0.7254902, g: 0.5254902, b: 0.33333334, a: 1}
@@ -523,7 +523,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -900
+  m_SortingOrder: -10000
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 40f3386dab1e99946812def56091b002, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

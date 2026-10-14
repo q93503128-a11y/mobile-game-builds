@@ -21,11 +21,14 @@ namespace Wildfolk.Editor
             var joystickImage=Image("Joystick",controls,"joystick_base",Vector2.zero,new Vector2(166,160),new Vector2(222,222),true);
             var thumb=Image("Thumb",joystickImage.transform,"joystick_thumb",new Vector2(.5f,.5f),Vector2.zero,new Vector2(95,95));
             var joystick=joystickImage.gameObject.AddComponent<VirtualJoystick>();joystick.Thumb=(RectTransform)thumb.transform;joystick.Session=session;motor.Joystick=joystick;
-            var action=motor.GetComponent<PlayerAction>();
-            var attackImage=Image("Attack or Use",controls,"attack_button",new Vector2(1,0),new Vector2(-162,150),new Vector2(174,174),true);
+            var action=motor.GetComponent<PlayerPrimaryAction>();
+            var attackImage=Image("Primary Action",controls,"attack_button",new Vector2(1,0),new Vector2(-162,150),new Vector2(204,204),true);
             var attackIcon=Image("Item Icon",attackImage.transform,"icon_fist",new Vector2(.5f,.5f),Vector2.zero,new Vector2(92,100));attackIcon.preserveAspect=true;
             var icon=attackImage.gameObject.AddComponent<AttackIconView>();icon.Icon=attackIcon;icon.FistIcon=VisualArtImporter.Sprite("icon_fist");icon.Action=action;
             var attack=attackImage.gameObject.AddComponent<HoldAttackInput>();attack.Action=action;attack.Session=session;attack.Surface=attackImage;
+            var interactSurface=Image("Interact",controls,"attack_button",new Vector2(1,0),new Vector2(-162,310),new Vector2(108,108),true);
+            var interact=interactSurface.gameObject.AddComponent<InteractButtonView>();interact.Interaction=motor.GetComponent<PlayerInteraction>();interact.Surface=interactSurface;interact.Button=Button(interactSurface);interact.DefaultIcon=VisualArtImporter.Sprite("icon_interact");
+            interact.Icon=Image("Icon",interactSurface.transform,"icon_interact",new Vector2(.5f,.5f),Vector2.zero,new Vector2(64,64));interact.Icon.preserveAspect=true;
             BuildHotbar(controls,session,inventory);
             BuildBoss(safe);
             var time=Image("World Time",safe,"panel",new Vector2(0,1),new Vector2(150,-183),new Vector2(244,54));
@@ -43,9 +46,9 @@ namespace Wildfolk.Editor
             Image("Icon",pauseImage.transform,"icon_pause",new Vector2(.5f,.5f),Vector2.zero,new Vector2(38,42));
             var pauseButton=Button(pauseImage);UnityEventTools.AddPersistentListener(pauseButton.onClick,session.OpenPause);
             var sizes=root.AddComponent<ControlSizeLayout>();sizes.Preferences=session.GetComponent<UserPreferences>();sizes.Session=session;
-            sizes.Joystick=(RectTransform)joystickImage.transform;sizes.Action=(RectTransform)attackImage.transform;
+            sizes.Joystick=(RectTransform)joystickImage.transform;sizes.Action=(RectTransform)attackImage.transform;sizes.Interact=(RectTransform)interactSurface.transform;
             sizes.Hotbar=(RectTransform)controls.Find("Hotbar");sizes.InventoryButton=(RectTransform)backpack.transform;
-            var hud=root.AddComponent<GameplayHud>();hud.Session=session;hud.Joystick=joystick;hud.Attack=attack;hud.Controls=controlsGroup;
+            var hud=root.AddComponent<GameplayHud>();hud.Session=session;hud.Joystick=joystick;hud.Attack=attack;hud.Interact=interact;hud.Controls=controlsGroup;
             hud.InventoryButton=inventoryButton;hud.PauseButton=pauseButton;hud.PausePanel=pause;hud.DefeatPanel=defeat;
             var eventSystem=new GameObject("EventSystem",typeof(EventSystem),typeof(InputSystemUIInputModule));eventSystem.GetComponent<EventSystem>().sendNavigationEvents=false;
             var module=eventSystem.GetComponent<InputSystemUIInputModule>();module.UnassignActions();module.actionsAsset=assets.UIActions;module.point=assets.Point;module.leftClick=assets.Click;

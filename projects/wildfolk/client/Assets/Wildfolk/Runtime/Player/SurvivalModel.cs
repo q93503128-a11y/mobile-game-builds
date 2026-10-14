@@ -7,6 +7,10 @@ namespace Wildfolk
         public SurvivalDefinition Definition { get; }
         public float Hunger { get; private set; }
         public float Thirst { get; private set; }
+        public float ConditionRatio=>Mathf.Min(Hunger/Definition.MaximumHunger,Thirst/Definition.MaximumThirst);
+        public bool CanSprint=>ConditionRatio>=Definition.CriticalThreshold;
+        public float SprintEfficiency=>CanSprint ? Mathf.Lerp(.55f,1,Mathf.InverseLerp(Definition.CriticalThreshold,Definition.RegenThreshold,ConditionRatio)) : 0;
+        public float MovementCondition=>ConditionRatio<Definition.MovementPenaltyThreshold ? Definition.CriticalMoveMultiplier : 1;
         private float hungerClock, thirstClock;
         public SurvivalModel(SurvivalDefinition definition)
         { Definition=definition; Hunger=definition.MaximumHunger; Thirst=definition.MaximumThirst; }

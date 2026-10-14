@@ -9,6 +9,8 @@ namespace Wildfolk
         public int Current { get; private set; }
         public int Maximum => Definition.MaximumHealth;
         public int DamageReduction { get; set; }
+        public PlayerInventory LastAttacker { get; private set; }
+        public float LastCombatTime { get; private set; }=float.NegativeInfinity;
         public bool IsAlive => Current > 0;
         public float Ratio => Maximum > 0 ? (float)Current / Maximum : 0;
         public event Action Changed;
@@ -21,16 +23,24 @@ namespace Wildfolk
             Current = Maximum;
         }
 
-        public int ApplyDamage(int amount,bool ignoreDefense=false)
+        public int ApplyDamage(int amount,bool ignoreDefense=false,PlayerInventory attacker=null)
         {
             if (amount <= 0) throw new ArgumentOutOfRangeException(nameof(amount));
             if (!IsAlive) return 0;
             var applied = Math.Min(Current, ignoreDefense ? amount : Math.Max(1,amount-DamageReduction));
             Current -= applied;
+            LastAttacker=attacker;LastCombatTime=Time.time;
             Changed?.Invoke();
             Damaged?.Invoke();
             if (!IsAlive) Died?.Invoke();
             return applied;
+        }
+        public void MarkCombat()=>LastCombatTime=Time.time;
+        public int Heal(int amount)
+        {
+            if(amount<0)throw new ArgumentOutOfRangeException(nameof(amount));
+            if(!IsAlive)return 0;var restored=Math.Min(amount,Maximum-Current);Current+=restored;
+            if(restored>0)Changed?.Invoke();return restored;
         }
     }
 }

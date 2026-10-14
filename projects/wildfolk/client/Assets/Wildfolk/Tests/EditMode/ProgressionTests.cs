@@ -49,7 +49,7 @@ namespace Wildfolk.Tests
             var cook=Data<RecipeDefinition>("CookedMeatRecipe");var smelt=Data<RecipeDefinition>("IronIngotRecipe");
             Assert.That(cook.Processing,Is.EqualTo(ProcessingKind.Cooking));Assert.That(smelt.Processing,Is.EqualTo(ProcessingKind.Smelting));Assert.That(smelt.RequiredStation,Is.EqualTo(StationKind.Furnace));
             Assert.That(smelt.Ingredients.Length,Is.EqualTo(1));Assert.That(smelt.Ingredients[0].Item.Id,Is.EqualTo("iron_ore"));Assert.That(smelt.ProcessingSeconds,Is.EqualTo(6));
-            Assert.That(Data<PlaceableDefinition>("StorageChestPlacement").StorageSlots,Is.EqualTo(18));Assert.That(Data<PlaceableDefinition>("WoodWallPlacement").IsBarrier,Is.True);
+            Assert.That(Data<PlaceableDefinition>("StorageChestPlacement").StorageSlots,Is.EqualTo(24));Assert.That(Data<PlaceableDefinition>("WoodWallPlacement").IsBarrier,Is.True);
             Assert.That(System.IO.File.Exists("Assets/Wildfolk/Audio/action.wav"),Is.False);Assert.That(System.IO.File.Exists("Assets/Wildfolk/Runtime/Crafting/StationCooking.cs"),Is.False);
         }
     }

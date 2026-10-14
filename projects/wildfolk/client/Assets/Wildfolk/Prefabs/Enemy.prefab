@@ -115,7 +115,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 501
+  m_SortingOrder: 12001
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 01c9408c00331b744b6f7545e69c9790, type: 3}
   m_Color: {r: 0.7254902, g: 0.5254902, b: 0.33333334, a: 1}
@@ -255,7 +255,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -900
+  m_SortingOrder: -10000
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 40f3386dab1e99946812def56091b002, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -373,6 +373,8 @@ GameObject:
   - component: {fileID: 6161596831870490256}
   - component: {fileID: 1977931621692743597}
   - component: {fileID: 7483728843801981833}
+  - component: {fileID: 788767769927240154}
+  - component: {fileID: 3209134432340514765}
   - component: {fileID: 7237561006637450731}
   m_Layer: 0
   m_Name: Enemy
@@ -389,7 +391,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2477312199630843718}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -528,6 +530,41 @@ MonoBehaviour:
   PlayerHealth: {fileID: 0}
   AttackPose: {fileID: 4856264083512464284}
   Facing: {fileID: 1977931621692743597}
+  Lifecycle: {fileID: 788767769927240154}
+--- !u!114 &788767769927240154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2477312199630843718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d73effcb63712e4ea1e1efaf04b8190, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.ZombieLifecycle
+  Clock: {fileID: 0}
+  Definition: {fileID: 11400000, guid: ced8b33a0cdc5804db903c61de3fec44, type: 2}
+  Controller: {fileID: 7483728843801981833}
+  Visual: {fileID: 5960489874181935352}
+  Hitbox: {fileID: 7319807371841823784}
+--- !u!114 &3209134432340514765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2477312199630843718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d033f103e0db4ea4ca9eb22bd7ba8ba1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.LootOnDeath
+  Health: {fileID: 811805190820430746}
+  Table: {fileID: 11400000, guid: ac3fa8028ac7a634281ed0f1980c4c9e, type: 2}
+  Player: {fileID: 0}
+  Pickup: {fileID: 460157505685859054, guid: 13d811d9b0ff6834ea370f69d47a2a12, type: 3}
+  Settings: {fileID: 11400000, guid: fd43ec9cd9385eb4eb69f64792c98535, type: 2}
 --- !u!114 &7237561006637450731
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -622,7 +659,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 500
+  m_SortingOrder: 12000
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 01c9408c00331b744b6f7545e69c9790, type: 3}
   m_Color: {r: 0.101960786, g: 0.14901961, b: 0.11372549, a: 1}

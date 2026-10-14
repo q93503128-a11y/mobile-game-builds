@@ -7,7 +7,7 @@ namespace Wildfolk
 {
     public sealed class HoldAttackInput : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     {
-        public PlayerAction Action;
+        public PlayerPrimaryAction Action;
         public GameplaySession Session;
         public Image Surface;
         private int? pointer;
@@ -16,7 +16,7 @@ namespace Wildfolk
         {
             if(!Session.IsRunning || pointer.HasValue) return;
             pointer=data.pointerId;
-            repeat=Action.Kind==PlayerActionKind.Attack;
+            repeat=Action.Kind==PrimaryActionKind.Attack;
             Action.TryUse();
             Surface.color=new Color(.82f,.85f,.75f,1);
         }
@@ -24,11 +24,11 @@ namespace Wildfolk
         private void Update()
         {
             if(!Session.IsRunning) {ResetInput();return;}
-            if(pointer.HasValue && repeat && Action.Kind==PlayerActionKind.Attack) Action.TryUse();
+            if(pointer.HasValue && repeat && Action.Kind==PrimaryActionKind.Attack) Action.TryUse();
             var keyboard=Keyboard.current;
             if(keyboard==null) return;
             if(keyboard.spaceKey.wasPressedThisFrame) Action.TryUse();
-            else if(keyboard.spaceKey.isPressed && Action.Kind==PlayerActionKind.Attack) Action.TryUse();
+            else if(keyboard.spaceKey.isPressed && Action.Kind==PrimaryActionKind.Attack) Action.TryUse();
         }
         public void ResetInput() {pointer=null;repeat=false;Surface.color=Color.white;}
         private void OnDisable()=>ResetInput();

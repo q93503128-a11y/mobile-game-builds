@@ -29,23 +29,21 @@ namespace Wildfolk.Tests
                 Assert.That(player.Combat.Session,Is.SameAs(player.Session));
                 Assert.That(player.Combat.Equipment,Is.Not.Null);Assert.That(player.Avatar.Facing,Is.Not.Null);
                 Assert.That(player.GetComponent<PlayerInventory>().Settings.InventorySlots,Is.EqualTo(36));
-                Assert.That(player.GetComponent<PlayerAction>().Placement,Is.Not.Null);
+                Assert.That(player.GetComponent<PlayerPrimaryAction>().Placement,Is.Not.Null);
                 Assert.That(player.GetComponent<PlayerCrafting>().Catalog.Recipes.Length,Is.EqualTo(17));
                 Assert.That(player.Session.GetComponent<WorldPauseController>(),Is.Not.Null);
                 Assert.That(Object.FindFirstObjectByType<InventoryPanel>().Slots.Length,Is.EqualTo(36));
-                Assert.That(enemy,Is.Not.Null);Assert.That(enemy.Session,Is.SameAs(player.Session));
-                Assert.That(enemy.PlayerHealth,Is.SameAs(player.GetComponent<Health>()));
+                Assert.That(enemy,Is.Null,"The saved daytime scene must have no active Zombie.");
+                enemy=AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Wildfolk/Prefabs/Enemy.prefab").GetComponent<EnemyController>();
                 Assert.That(enemy.GetComponent<Collider2D>().isTrigger,Is.True);
                 Assert.That(enemy.GetComponent<Rigidbody2D>().bodyType,Is.EqualTo(RigidbodyType2D.Kinematic));
                 Assert.That(enemy.Facing,Is.Not.Null);
                 var hotbar=Object.FindFirstObjectByType<HotbarView>();
                 Assert.That(hotbar.Slots.Length,Is.EqualTo(PlayerInventory.HotbarSize));
                 Assert.That(hotbar.Owner,Is.SameAs(player.GetComponent<PlayerInventory>()));
-                Assert.That(nodes,Is.GreaterThan(0));
-                var orePositions=new HashSet<Vector2>();
-                foreach(var rootObject in scene.GetRootGameObjects())foreach(var node in rootObject.GetComponentsInChildren<ResourceNode>())
-                    if(node.Definition.Kind==ResourceKind.IronOre){Assert.That(orePositions.Add(node.transform.position),Is.True);Assert.That(Vector2.Distance(node.transform.position,player.transform.position),Is.GreaterThan(8));}
-                Assert.That(orePositions.Count,Is.EqualTo(3));
+                Assert.That(nodes,Is.Zero,"Resources are generated from Seed rather than stored as manual instances.");
+                var generator=player.Session.GetComponent<WorldGenerator>();Assert.That(generator,Is.Not.Null);Assert.That(generator.Player,Is.SameAs(player.GetComponent<PlayerInventory>()));
+                Assert.That(generator.Definition.Resources.Length,Is.EqualTo(4));Assert.That(generator.Definition.Biome.Id,Is.EqualTo("temperate"));
                 Assert.That(Object.FindObjectsByType<ParticleSystem>(FindObjectsSortMode.None),Is.Empty);
             }
             finally { if(!wasLoaded) EditorSceneManager.CloseScene(scene,true); }
@@ -65,7 +63,7 @@ namespace Wildfolk.Tests
             }
             Assert.That(settings.EnemyLoseRange,Is.GreaterThanOrEqualTo(settings.EnemyDetectionRange));
             Assert.That(settings.InventorySlots,Is.GreaterThanOrEqualTo(PlayerInventory.HotbarSize));
-            Assert.That(AssetDatabase.FindAssets("t:ItemDefinition",new[]{"Assets/Wildfolk/Data"}).Length,Is.EqualTo(22));
+            Assert.That(AssetDatabase.FindAssets("t:ItemDefinition",new[]{"Assets/Wildfolk/Data"}).Length,Is.EqualTo(24));
             var ids=new HashSet<string>();
             foreach(var guid in AssetDatabase.FindAssets("t:ItemDefinition",new[]{"Assets/Wildfolk/Data"}))
             {

@@ -15,6 +15,7 @@ namespace Wildfolk.Editor
         internal CraftingAssets Crafting;
         internal SurvivalAssets Survival;
         internal ProgressionAssets Progression;
+        internal WorldAssets World;
         internal InputActionAsset UIActions;
         internal InputActionReference Point;
         internal InputActionReference Click;
@@ -41,9 +42,9 @@ namespace Wildfolk.Editor
             { i.Id="wood";i.DisplayName="Wood";i.MaxStack=50;i.Category=ItemCategory.Material;i.Icon=VisualArtImporter.Sprite("icon_wood"); });
             var stone=Asset<ItemDefinition>("Stone",i=>
             { i.Id="stone";i.DisplayName="Stone";i.MaxStack=50;i.Category=ItemCategory.Material;i.Icon=VisualArtImporter.Sprite("icon_stone"); });
-            var treeHealth=Asset<VitalityDefinition>("TreeVitality",v=>v.MaximumHealth=30);
+            var treeHealth=Asset<VitalityDefinition>("TreeVitality",v=>v.MaximumHealth=150);
             var stoneHealth=Asset<VitalityDefinition>("StoneVitality",v=>v.MaximumHealth=50);
-            assets.Tree=Asset<ResourceDefinition>("TreeResource",r=>{r.Vitality=treeHealth;r.DropItem=wood;r.DropCount=3;r.Kind=ResourceKind.Wood;});
+            assets.Tree=Asset<ResourceDefinition>("TreeResource",r=>{r.Vitality=treeHealth;r.DropItem=wood;r.DropCount=6;r.Kind=ResourceKind.Wood;});
             assets.Stone=Asset<ResourceDefinition>("StoneResource",r=>{r.Vitality=stoneHealth;r.DropItem=stone;r.DropCount=3;r.Kind=ResourceKind.Stone;});
             var axeTool=Tool("AxeTool","axe",.44f,.62f,65,3,.5f);
             var pickaxeTool=Tool("PickaxeTool","pickaxe",.52f,.72f,55,.5f,2.5f);
@@ -52,6 +53,7 @@ namespace Wildfolk.Editor
             assets.Survival=SurvivalAssets.Load(wood,stone);
             assets.Crafting=CraftingAssets.Load(wood,axe,pickaxe,assets.Survival);
             assets.Progression=ProgressionAssets.Load(wood,stone,assets.Crafting,assets.Survival);
+            assets.World=WorldAssets.Load(assets);
             assets.LoadInput();
             AssetDatabase.SaveAssets();
             return assets;
