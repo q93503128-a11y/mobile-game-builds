@@ -1,6 +1,6 @@
 # Seed 기반 월드 생성1차
 
-WorldGenerationDefinition/TemperateBiome와 ResourceGenerationRule이 정본이다. 현재192×144유닛 유한 월드, 기본Seed9472026. WorldGenerator.SelectedSeed로 같은 Seed를 다시 선택할 수 있고 RandomSeed/사망 후 Try again은 무작위 새 월드를 만든다. 같은Seed는 기본 지형·물·Road·자원 위치/스케일을 재현한다. 동물 이동·적 Encounter는 기본 생성 재현 보장과 별도다. 변경된 자원/시설/상자/생존 상태는 Save/Load v1 Delta로 복원한다.
+WorldGenerationDefinition/TemperateBiome와 ResourceGenerationRule이 정본이다. 현재192×144유닛 유한 월드, 기본Seed9472026. WorldGenerator.SelectedSeed로 같은 Seed를 다시 선택할 수 있고 RandomSeed/사망 후 Try again은 무작위 새 월드를 만든다. 같은Seed는 기본 지형·물·Road·자원 위치/스케일을 재현한다. 동물 이동·적 Encounter는 기본 생성 재현 보장과 별도다. 변경된 자원/시설/상자/생존 상태는 Save/Load v2(v1 호환) Delta로 복원한다.
 
 WorldMap은 System.Random(seed)만 사용하여 생성하며 UnityEngine.Random 상태를 바꾸지 않는다. Perlin 기반 숲/돌 밀도는 하나의 Temperate 내부 변화다. WorldGenerator는 런타임 초기화 시 생성 데이터를 프리팹에 연결한다. WorldTerrainRenderer가 하나의1024×768 RGB 텍스처로 자연색 지면/길/물/수변을 표시한다. 명확한 사각 타일·체커 경계를 만들지 않는다. 무한 Chunk Streaming은 없다.
 
@@ -22,6 +22,6 @@ Player Spawn은(0,0)이며 물·광석·큰 자원에 갇히지 않는다. 장�
 
 정렬은 WorldSorting의 Ground→GroundDecoration→Drop→Y 기반 Actor/TallObject→Overlay를 사용한다. 캐릭터/나무/시설은 BaseY의SortingGroup 기준이며 자원마다 임의 깊이 숫자를 박지 않는다. 작은 풀은 Player 위를 덮지 않는다.
 
-ResourceIdentity는 안정적인 r<index> ID를 부여하고 손상/파괴/재생 상태만 저장한다. Tree/Log300초, Stone1200초, Ore2400초 뒤 주변6~26유닛의 적합한 Land를 검사한다. Camera 안/Player12유닛 안/물/길/충돌/기지 내부 후보는 제외한다. 막히면 다음 시도까지 대기하며 즉시 같은 좌표에 솟지 않는다. 작은 풀은 비충돌 장식이다. 별도의 작은 관목36개는 HP12/Wood1의 비차단 자원이며90초 재생을 사용한다. Sapling/Young Tree 성장은 향후 콘텐츠다. 닭/멧돼지 각1 Population Slot은180/300초 후 적합한 화면 밖 지역에 재생한다. 재생 Timer와 지역 Slot도 저장한다. 설치·상자·처리·시간·XP/Gold는 Save/Load v1에 포함한다. Animal Breeding은 아직 없다. 첫 생성은 동기식이며 모바일 로딩/성능 프로파일링은 다음 검증이 필요하다. 광범위한 물리 NavMesh/복잡한 기지 길찾기/임의 형태 기지의 완전한 내부 판정은 없다. 여러Biome/던전/POI/최종 World Generator도 아니다.
+ResourceIdentity는 안정적인 r<index> ID를 부여하고 손상/파괴/재생 상태만 저장한다. Tree/Log300초, Stone1200초, Ore2400초 뒤 주변6~26유닛의 적합한 Land를 검사한다. Camera 안/Player12유닛 안/물/길/충돌/기지 내부 후보는 제외한다. 막히면 다음 시도까지 대기하며 즉시 같은 좌표에 솟지 않는다. 작은 풀은 비충돌 장식이다. 별도의 작은 관목36개는 HP12/Wood1의 비차단 자원이며90초 재생을 사용한다. Sapling/Young Tree 성장은 향후 콘텐츠다. 닭/멧돼지 각1 Population Slot은180/300초 후 적합한 화면 밖 지역에 재생한다. 재생 Timer와 지역 Slot도 저장한다. 설치·상자·처리·시간·XP/Gold는 Save/Load v2(v1 호환)에 포함한다. Animal Breeding은 아직 없다. 첫 생성은 동기식이며 모바일 로딩/성능 프로파일링은 다음 검증이 필요하다. 광범위한 물리 NavMesh/복잡한 기지 길찾기/임의 형태 기지의 완전한 내부 판정은 없다. 여러Biome/던전/POI/최종 World Generator도 아니다.
 
 Shallow는 WorldNavigation의 Terrain Movement Modifier0.7을 사용하고 Deep은 도보 이동을 막는다. Boat는 향후 Vehicle별 이동 판정으로 확장할 방향이며 실제 탑승/수상 이동은 없다.

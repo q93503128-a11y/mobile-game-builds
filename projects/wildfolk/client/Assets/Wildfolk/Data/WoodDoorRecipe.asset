@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: WoodDoorRecipe
   m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.RecipeDefinition
   Id: wood_door
+  Category: 4
+  SortOrder: 14
   Result: {fileID: 11400000, guid: 339d21307ef4bc54a8f91086caf80e98, type: 2}
   ResultCount: 1
   Ingredients:
@@ -22,3 +24,5 @@ MonoBehaviour:
   ProcessingSeconds: 0
   Processing: 0
   Tier: {fileID: 11400000, guid: b632d88d6c00461418a7100d186ff69c, type: 2}
+  RequiredWorkbenchTier: 1
+  FutureUnlocks: []

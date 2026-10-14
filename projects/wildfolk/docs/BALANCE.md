@@ -65,7 +65,7 @@ Land1 /Shallow0.7 /Deep 도보 불가. River 폭6, 여울 길이4.4, 월드192×
 | Furnace |최대3개/6초,Speed1|
 | HP Regen |두 게이지≥70%,최근 전투8초 뒤0.5HP/초|
 
-기존 Raw 불이익은 Clean을 마셔도 즉시 치료하지 않는다. 조건 미충족/Raw 불이익 중에는 Regen0이다. 두 수치의 최소 비율30% 미만 CanSprint=false,30~70% SprintEfficiency0.55~1,70% 이상1. 실제 Sprint는 없다. 최소 비율15% 미만 일반 이동0.9배다. Singleplayer Pause는 시간을 정지하고 Inventory는 세계 진행을 유지한다.
+기존 Raw 불이익은 Clean을 마셔도 즉시 치료하지 않는다. 조건 미충족/Raw 불이익 중에는 Regen0이다. 두 수치의 최소 비율30% 미만 CanSprint=false,30~70% SprintEfficiency0.55~1,70% 이상1. 실제 Sprint 조건에 연결한다. 최소 비율15% 미만 일반 이동0.9배다. Singleplayer Pause는 시간을 정지하고 Inventory는 세계 진행을 유지한다.
 
 ## 적·빛·보상
 
@@ -91,10 +91,33 @@ Land1 /Shallow0.7 /Deep 도보 불가. River 폭6, 여울 길이4.4, 월드192×
 | Zombie/Goblin 처치 |XP5·Gold1 /XP8·Gold3|
 | Chicken/Boar 처치 |Raw1·Feather1 /Raw2·Leather1|
 
-Friendly Fire 기본 OFF. 자연 Despawn에는 보상이 없다. XP/Gold는 별도 Wallet이며 Save 대상이다. Level/Skill/Shop/Meta Coin은 없다. 실제 인원별 Scaling은 없다.
+Friendly Fire 기본 OFF. 자연 Despawn에는 보상이 없다. XP/Gold는 별도 Wallet이며 Save 대상이다. Level/초기 Skill은 제공하며 Shop/Meta Coin은 없다. 실제 인원별 Scaling은 없다.
 
 ## 시설과 UI
 
-Workbench HP60,Campfire60,Furnace100,Chest70,Wall100,Door80. 실제 비용은 CRAFTING을 따른다. General Workbench Tier1, Campfire Capacity1, Furnace Capacity3다. 시설 Cargo는 처리 중 재료/완료 결과를 보존한다.
+Workbench HP60,Campfire60,Furnace100,Chest70,Wall100,Door80. 실제 비용은 CRAFTING을 따른다. General Workbench I Tier1/II Tier2, Campfire Capacity1, Furnace Capacity3다. 시설 Cargo는 처리 중 재료/완료 결과를 보존한다.
 
 Long Press0.45초. Split1~N−1,Half/±1,Confirm 후 목적지 선택. 일반 Drag는 전체 수량이다. 실제 손가락 터치 크기/세부 압박/장시간 프레임·발열·메모리는 별도 실기 검증 대상이다.
+
+## Armor / Character / Stamina 초기값
+
+| 항목 | 값 |
+|---|---|
+| Leather Cap / Guard 방어 |1 /2 (합3)|
+| Iron Helmet / Guard 방어 |2 /4 (합6)|
+| 일반 피해 |max(1,피해−Head−Body),생존 피해는 우회|
+| Level |1~20,필요 XP=35+(Level−1)×20,Up마다Point1,남은 XP 유지|
+| Vitality / Endurance |Rank당MaxHP+10 /MaxStamina+15,각3Rank|
+| Recovery /Steady Stride |Rank당Recovery+15% /SprintEfficiency+12%,각3Rank|
+| Sprint 비용 |14/초 ×1/(1+Skill효율Bonus) /생존SprintEfficiency|
+| Stamina |100,회복16/초,사용 후1.2초 대기|
+| 나쁜 상태 회복 |Condition0→45%,70%→100% 보간|
+| Sprint 입력 |진입0.9/0.4초,유지0.72,정지/CanSprint=false/고갈 시 Walk|
+| 고갈 후 재진입 |Stamina20 회복 후 새 Hold|
+| Sprint 속도 |최대1.55배,생존Efficiency로1~1.55 보간|
+| Dash |Cost24,2.6유닛/0.18초,재입력0.55초,Footprint0.55|
+| Stamina 숨김 |Full 후0.7초,fade0.2초|
+| Workbench II /Reinforced Chest /Stone Wall HP |120 /140 /220|
+| Reinforced Chest |32칸,기존 Chest24 유지|
+
+첫35XP는Zombie7마리 또는Goblin5마리(남은5XP)다. 첫 두 레벨35/55는XP90이며 기능 검증을 위한 초기 곡선이다. Leather는Zombie8을5,Iron은2로 줄인다. 가죽 세트Leather3,철 세트Ingot5+Leather2를 기존Boar1Leather/kill,Ore3/drop와 비교했다. 성장 만족도/실제 획득 속도는 사용자 테스트 대상이며 출시 밸런스를 주장하지 않는다.

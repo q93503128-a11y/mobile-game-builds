@@ -1,6 +1,6 @@
 # Wildfolk
 
-Unity **6000.3.19f1 LTS / Universal 2D**, 모바일 Landscape(기준1920×1080) 탑다운 생존 게임의 초기 플레이 버전이다. 현재 Seed 월드, 낮 채집/시설/장비 업그레이드, 낮 Road Goblin, 밤 Zombie, 물 용기와 생존, Save/Load v1을 제공한다. 최종 아트·월드 생성·출시 밸런스가 아니다.
+Unity **6000.3.19f1 LTS / Universal 2D**, 모바일 Landscape(기준1920×1080) 탑다운 생존 게임의 초기 플레이 버전이다. 현재 Seed 월드, 낮 채집/시설/장비 업그레이드, 낮 Road Goblin, 밤 Zombie, 물 용기와 생존, Save/Load v2(v1 호환)을 제공한다. 최종 아트·월드 생성·출시 밸런스가 아니다.
 
 ![플레이 화면](docs/images/worldgen-start.png)
 
@@ -20,11 +20,11 @@ Campfire의 고기는1개/5초, Furnace는 Ore 최대3개/6초→Ingot 최대3�
 
 작은 관목90초, Tree/Log300초, Stone1200초, Ore2400초 뒤 적합한 화면 밖 지역에서 재생을 시도한다. 닭/멧돼지는 각각180/300초의 Population Slot 재생을 사용한다. 저장 중단 시간은 게임 시간에 더하지 않는다. 닭은 Raw1+Feather1, 멧돼지는 Raw2+Leather1을 드랍한다.
 
-Zombie는 밤에 올라와 활동하고 새벽에는 보상 없이 잠복한다. Local Threat와 Global Cap18을 나누며 멀리 남은 비추적 적은 대기 후 Slot을 반환한다. 낮 Goblin은 영역/개인 공간 침범 또는 선공에 반응한다. XP/Gold는 별도 세션 지갑이며 Save/Load에 포함된다. Level/Skill/Shop/Meta Coin은 아직 없다.
+Zombie는 밤에 올라와 활동하고 새벽에는 보상 없이 잠복한다. Local Threat와 Global Cap18을 나누며 멀리 남은 비추적 적은 대기 후 Slot을 반환한다. 낮 Goblin은 영역/개인 공간 침범 또는 선공에 반응한다. XP/Gold는 별도 세션 지갑이며 Save/Load에 포함된다. Level/초기Skill은 제공하며 Shop/Meta Coin은 아직 없다.
 
 ## 정본과 검증
 
-- 실제 Item26종, Recipe19종, Equipment Tier3종, Biome1종이다.
+- 실제 Item33종, Recipe25종, Equipment Tier3종, Biome1종이다.
 - [기획](docs/DESIGN_BIBLE.md), [월드](docs/WORLD_GENERATION.md), [저장](docs/SAVE_PERSISTENCE.md), [전투/이동](docs/COMBAT_NAVIGATION.md), [수치](docs/BALANCE.md), [제작](docs/CRAFTING.md), [가방](docs/INVENTORY.md), [구조](docs/ARCHITECTURE.md).
 - [Developer Tools](docs/DEVELOPER_TOOLS.md)는 Editor 전용이며 게임 HUD/Release에 노출되지 않는다.
 - [이번 검수](docs/STABILITY_REVIEW.md). 이전 *_REVIEW는 당시 단계의 기록이다.
@@ -34,3 +34,5 @@ Zombie는 밤에 올라와 활동하고 새벽에는 보상 없이 잠복한다.
 Wildfolk > View 메뉴는 기존 Game View의 해상도만 갱신하고 Play Unfocused를 적용한다. 자동 Focus/GetWindow 호출은 없다. Build Playable Scene은 씬/프리팹을 재생성한다. 수작업 씬 편집이 필요하면 먼저 보존한다.
 
 실제 터치·손맛·장시간 생존·Android 성능은 사용자 검증 대상이다. 여러 Biome/POI/Dungeon/무한 Chunk, 실제 Multiplayer/Cloud Save, Animal Breeding, Boat, 전체 Armor/Skill Tree, 전문 제작대는 아직 없다. Settings Control Size80~140%와 음량 채널을 유지하며 현재 실제 BGM/SFX 콘텐츠는 비어 있다.
+
+이번 캐릭터 패스는 Leather/Iron Head·Body Armor,Level/4종Skill,Profile→Character,Joystick Sprint/Stamina/오른쪽Dash,Workbench I→II 업그레이드,Reinforced Chest32/Stone Wall,제작Category/Filter/고정Sort/NEW를 제공한다. 자세한 정본은 docs/CHARACTER_PROGRESSION.md와 docs/SAVE_PERSISTENCE.md다. 기능 검증과 외형·이동·진행의 사용자 체감 검증을 구분한다.

@@ -104,7 +104,9 @@ namespace Wildfolk.Tests
             Assert.That(scroll.content.rect.height,Is.GreaterThan(scroll.viewport.rect.height));
             yield return input.Drag(scroll,PlayPointerDriver.Point(scroll)+Vector2.up*220);
             Assert.That(scroll.verticalNormalizedPosition,Is.LessThan(1));
-            scroll.verticalNormalizedPosition=0;yield return null;yield return null;
+            var target=(RectTransform)Card("storage_chest").transform;
+            var offset=Mathf.Max(0,-target.anchoredPosition.y-scroll.viewport.rect.height*.5f);
+            scroll.verticalNormalizedPosition=Mathf.Clamp01(1-offset/(scroll.content.rect.height-scroll.viewport.rect.height));yield return null;yield return null;
             yield return input.Click(Card("storage_chest").CraftButton);Assert.That(inventory.Model.CountItem(Recipe("storage_chest").Result),Is.EqualTo(1));
         }
         [UnityTest] public IEnumerator ChickenWandersFleesOnApproachAndDoesNotAttack()

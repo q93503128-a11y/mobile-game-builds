@@ -35,7 +35,7 @@ StationProcessing은 ParallelCapacity/Speed로 Batch 재료를 원자적으로 �
 
 Inventory는 한 배열, Chest는 상자별 한 배열이다. Transfer는 두 모델을 변경한 뒤 알린다. 소분은 선택 수량을 들고 있는 UI 상태를 거쳐 명시적인 목적지로 부분 이동하고, Drop은 안전한 위치에 생성이 성공한 뒤 소비한다. Drag Ghost는 표시일 뿐 데이터 정본이 아니다. 상자 소분 선택도 테두리로 표시하고 이벤트는 종료 시 해제한다. UI 상태/Chest 변경 시 선택과 드래그를 취소한다.
 
-세계 진행은 플레이어 입력 Running과 분리한다. Inventory는 세계를 진행하고, Singleplayer Pause/Defeat는 동결하며, Multiplayer 정책은 전역 동결을 하지 않는다. 실제 네트워크는 없다. 월드 Seed/Delta와 재화는 Save/Load v1이며 사용자 설정 PlayerPrefs 및 미구현 Account 저장과 구분한다.
+세계 진행은 플레이어 입력 Running과 분리한다. Inventory는 세계를 진행하고, Singleplayer Pause/Defeat는 동결하며, Multiplayer 정책은 전역 동결을 하지 않는다. 실제 네트워크는 없다. 월드 Seed/Delta와 재화는 Save/Load v2(v1 migration)이며 사용자 설정 PlayerPrefs 및 미구현 Account 저장과 구분한다.
 
 해상도 도구는 기존 Game View만 Repaint하고 Play Unfocused를 적용한다. Focus/GetWindow/Windows 입력 호출은 하지 않는다. 자동 테스트는 별도 hidden headless Unity와 내부 가상 포인터를 사용한다. 로그/검증 복사본은 Git에서 제외한다. 검수 사진의 시설/아이템/시간 fixture는 Play 종료 때 버린다.
 
@@ -51,4 +51,17 @@ Inventory는 한 배열, Chest는 상자별 한 배열이다. Transfer는 두 �
 - PrefabPool/IPoolReset: 반복되는 적/WorldPickup의 생명주기·HP·피격·AI·수량 초기화.
 - Editor DeveloperHarness/Profile/Window/ProjectDataValidator: 제품 Runtime/HUD와 분리한 도구와 데이터 검사.
 
-Save/Load는 영구 저장 v1이며 Cloud/계정/실제 네트워크 권위를 구현하지 않는다. 미래 Unlock/무기 공격 방식/Vehicle/Animal Breeding은 데이터 확장 방향과 실제 제공 기능을 구분한다.
+Save/Load는 영구 저장 v2(v1 호환)이며 Cloud/계정/실제 네트워크 권위를 구현하지 않는다. 미래 Unlock/무기 공격 방식/Vehicle/Animal Breeding은 데이터 확장 방향과 실제 제공 기능을 구분한다.
+
+## 캐릭터 패스 책임
+
+- CharacterGrowthDefinition/PlayerProgression: XP Curve/Level/Point/Rank/이벤트. Experience는 누적 획득,CurrentXP는 현재Level의 남은 XP다.
+- CharacterStats: Skill로 계산되는 HP/Stamina 최대·회복·효율 Modifier의 집계 지점. 향후 Status Modifier를 이 경계에서 합성할 방향이며 빈 범용 Framework는 만들지 않는다.
+- PlayerEquipment: Head/Body 장착,교체/해제 Inventory 교환,Defense/표현 이벤트. Health는 최소 피해/생존 우회를 유지한다.
+- CharacterVisualLayers: Base Skin/Head/Body/Hand/단일Back Slot/Optional FX. 얼굴/손Facing과 기본몸통을 유지하며 외곽 장비만 방향을 따른다. 장비가 Skin Sprite를 덮어쓰지 않는다. Backpack/Cape/Premium/Transmog는 없다.
+- LocomotionDefinition/StaminaModel/PlayerLocomotion: 설정/순수Stamina·Sprint/물리Dash. PlayerMotor가 이동을 연결하고 WorldNavigation은 자기Collider를 제외한 Sweep/지형을 검사한다.
+- ProfileHud/CharacterScreen: HUD와세탭UI. Character 상태는입력차단/세계진행이며 Inventory/Pause와구분한다.
+- RecipePresentation/CraftingPanel: 고정정렬/Category/Filter/잠금/NEW. PlayerCrafting은 비용 소비/시설 Upgrade를 담당한다.
+- GrowthValidation/WorldSaveService: XP총합·Point Budget·Rank·Armor Slot·Stamina 검증,v1→v2변환.
+
+Health의 피해/회복,SurvivalModel의Hunger/Thirst와Raw Water 불이익,CharacterStats+Locomotion의이동/회복,CombatAffiliation+PlayerCombat의관계/타격 경계를 유지한다. 향후Poison/Bleed/Burn/Slow/Weakness/Curse/Defense Down,Cold/Dehydration/Food Poisoning/Water Sickness,Regeneration/Movement/Gathering Buff를 해당Modifier 경계로 확장한다. 확률 질병/주기피해/상태아이콘 콘텐츠는 없으며 Raw Water 동작은 유지했다.

@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: IronSwordRecipe
   m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.RecipeDefinition
   Id: iron_sword
+  Category: 2
+  SortOrder: 11
   Result: {fileID: 11400000, guid: bf5103f9925a9cb43a24b6666901ce25, type: 2}
   ResultCount: 1
   Ingredients:
@@ -25,3 +27,4 @@ MonoBehaviour:
   Processing: 0
   Tier: {fileID: 11400000, guid: 057fd09036d88d04892dc37aec3d850d, type: 2}
   RequiredWorkbenchTier: 1
+  FutureUnlocks: []

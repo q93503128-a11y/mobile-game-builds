@@ -6,11 +6,11 @@
 
 탑다운 생존 게임이다. Mine Survival의 낮 채집/밤 방어/생존 수치/제작/보관/기지라는 극초반 흐름을 강하게 참고한다. 캐릭터·맵·아트·UI·코드·고유 수치를 복제하지 않는다. 자연색·무광·원형 플레이어 양손/작은 눈·절제된 외곽선/그림자를 유지하고 볼터치/큰 눈/네온/장난감/어린이 마스코트 표현을 피한다. 현재 아트는 초기 시안이다.
 
-1~4인 실제 협동·무한 생존의 완성·직업 특성은 향후 방향이다. 현재 단일 플레이 Save/Load v1과 자연 재생 기반을 제공한다. 영구 능력치 성장 비중은 낮게 고려한다.
+1~4인 실제 협동·무한 생존의 완성·직업 특성은 향후 방향이다. 현재 단일 플레이 Save/Load v2(v1 호환)과 자연 재생 기반을 제공한다. 영구 능력치 성장 비중은 낮게 고려한다.
 
 ## 실제 월드 생성1차
 
-192×144유닛 유한 월드, 실제 Biome는 Temperate 하나다. Seed가 강/호수/연못/길/숲·돌 밀도/자원 배치를 결정한다. 시작점은 빈 육지이며 근처 Wood/Stone과 수원을 보장한다. 깊은 물 충돌과 강 여울을 제공한다. Tree140/Stone55/Ore16/FallenLog12/SmallPlant36, 장식 최대480, Chicken1/Boar1을 생성한다. 자원/동물의 자연 재생과 Seed+Delta Save/Load v1을 제공한다. 무한 Streaming은 없다. 세부 규칙은 WORLD_GENERATION을 따른다.
+192×144유닛 유한 월드, 실제 Biome는 Temperate 하나다. Seed가 강/호수/연못/길/숲·돌 밀도/자원 배치를 결정한다. 시작점은 빈 육지이며 근처 Wood/Stone과 수원을 보장한다. 깊은 물 충돌과 강 여울을 제공한다. Tree140/Stone55/Ore16/FallenLog12/SmallPlant36, 장식 최대480, Chicken1/Boar1을 생성한다. 자원/동물의 자연 재생과 Seed+Delta Save/Load v2(v1 호환)을 제공한다. 무한 Streaming은 없다. 세부 규칙은 WORLD_GENERATION을 따른다.
 
 ## 실제 극초반 진행
 
@@ -38,15 +38,15 @@ Goblin은 낮 Road 기반 기본형1종, 최대3,35초마다30% Encounter 시도
 
 ## 생존·Loot·진행 기반
 
-Hunger/Thirst 각각Max100, 초당.08/.12 감소, 0에서각5초마다HP2 피해. 두 수치가70% 이상이고 최근 전투8초가 지나면HP.5/초 회복한다. 그 아래는 자연 회복하지 않는다. 치명적 상태15% 미만은 일반 이동90%; 향후 Sprint용 CanSprint/SprintEfficiency를 제공하되 실제Sprint/버튼은 없다.
+Hunger/Thirst 각각Max100, 초당.08/.12 감소, 0에서각5초마다HP2 피해. 두 수치가70% 이상이고 최근 전투8초가 지나면HP.5/초 회복한다. 그 아래는 자연 회복하지 않는다. 치명적 상태15% 미만은 일반 이동90%; CanSprint/SprintEfficiency를 실제 Sprint·Stamina에 연결한다.
 
-닭/멧돼지는 중립 이동·도망, 공격 없음. LootTable로 닭Raw1+Feather1, 멧돼지Raw2+Leather1. Feather/Leather를 소비하는 Recipe는 없다. Enemy 직접 처치 시 ZombieXP5/Gold1, GoblinXP8/Gold3을 별도 세션 PlayerProgression에 기록한다. 아이템 스택이 아니며 현재 레벨/Skill/Shop/영구 계정 저장은 없다.
+닭/멧돼지는 중립 이동·도망, 공격 없음. LootTable로 닭Raw1+Feather1, 멧돼지Raw2+Leather1. Leather는 실제 초기 Armor 재료이며 Feather의 소비 Recipe는 없다. Enemy 직접 처치 시 ZombieXP5/Gold1, GoblinXP8/Gold3을 별도 세션 PlayerProgression에 기록한다. 아이템 스택이 아니며 Level/Character Skill을 월드에 저장하며 Shop/영구 계정 능력치 저장은 없다.
 
-Armor 카테고리/방어 수치/빈 슬롯/외형 소켓만 있고 실제 Armor 아이템·장착 UI는 없다. 방어는 일반 피해 최소1을 유지하고 허기/갈증 피해는 우회한다.
+Leather Cap/Guard와 Iron Helmet/Guard를 제작·장착한다. Head/Body 방어력을 합산하며 Inventory 교환으로 교체/해제한다. 방어는 일반 피해 최소1을 유지하고 허기/갈증 피해는 우회한다.
 
 ## 향후 Progression 방향
 
-General Workbench가 메인 제작 Progression Spine이다. WorkbenchTier/RequiredWorkbenchTier 기반을 두었으며 현재 실제 Tier1에서Wood/Stone/Iron을 만든다. 향후Workbench II/III 등이 일반 Recipe와 새로운 전문 제작대의 Recipe를 해금한다. 일반 재료 장비는 적절한 범용 작업대에서 Diamond 수준까지 확장할 방향이다. 실제Diamond는 없다.
+General Workbench가 메인 제작 Progression Spine이다. WorkbenchTier/RequiredWorkbenchTier 기반을 두었으며 Tier I에서Wood/Stone/Iron·초기 Armor를 만든다. 설치 Workbench I을 II로 업그레이드하고 기존 Recipe를 유지하며 Reinforced Chest32/Stone Wall을 해금한다. III/전문 제작대는 미래 방향이다. 일반 재료 장비는 적절한 범용 작업대에서 Diamond 수준까지 확장할 방향이다. 실제Diamond는 없다.
 
 후반 Weapon/Armor/Tool/Engineering/Defense 전문 제작대는 전문 장비·포탑·특수 능력/공격 방식/채집/방어 효과·던전 재료와 연결할 방향이다. 현재 실제 전문 제작대를 만들지 않았다.
 
@@ -58,7 +58,7 @@ Gold는 월드/캐릭터용 일반 재화다. 향후 Merchant/서비스 등이 �
 
 Editor Developer Harness와 Early/Stone/Iron Profile, Combat Sandbox를 제공한다. 제품 HUD/Release UI에는 개발 도구를 넣지 않는다. 실제 기능/수치를 검사하며 재미·손맛을 자동 합격 처리하지 않는다.
 
-Save/Load v1은 Player와 Seed/게임 시간, 변경 자원·재생 대기·시설·Chest·처리 상태를 저장한다. Version/검증/temporary/atomic replace/backup을 사용한다. Cloud Save/Account/실제 Multiplayer 권위 저장은 없다.
+Save/Load v2는 Player와 Seed/게임 시간, 변경 자원·재생 대기·시설·Chest·처리 상태를 저장한다. Version/검증/temporary/atomic replace/backup을 사용한다. Cloud Save/Account/실제 Multiplayer 권위 저장은 없다.
 
 Tree/Log300초, Stone1200초, Ore2400초, Chicken180초/Boar300초의 자연 재생을 제공한다. 카메라/플레이어 밖의 적합한 지역에서 시도하며 Timer는 저장한다. Animal Breeding/먹이/새끼/성장/농축산은 향후 별도 패스다. 작은 관목36개는 HP12/Wood1/90초 재생의 실제 자원이다. Sapling/Young Tree 성장은 아직 없다.
 
@@ -70,4 +70,14 @@ Zombie는 Local Threat/Global Cap/Active Pursuer를 나누고 멀어진 비추�
 
 Long Press→Item Actions→수량 선택→들고 있는 Stack→목적지 배치의 모바일 소분을 제공한다. 일반 드래그는 전체 수량이다. Pooling은 Zombie/Goblin/WorldPickup부터 적용한다. Input Commands/Device Adapter와 Editor Data Validator를 둔다.
 
-General Workbench가 Progression Spine이라는 방향을 유지한다. RequiredWorkbenchTier와 추가 Unlock 조건의 데이터 모양을 준비하되 실제 추가 Unlock Tree/Player Level/Skill/Blueprint는 아직 없다. 전문 제작대/Armor/Defense/POI/Dungeon/여러 Biome는 별도 콘텐츠 패스다. 사망/Respawn/패널티/Revive 정책은 임의로 새로 구현하지 않는다.
+General Workbench가 Progression Spine이라는 방향을 유지한다. RequiredWorkbenchTier와 추가 Unlock 조건의 데이터 모양을 준비하되 Recipe 추가 Unlock Tree/Blueprint는 아직 없다. Player Level/초기 Skill4종/Armor4종은 실제 제공한다. 전문 제작대/Defense/POI/Dungeon/여러 Biome는 별도 패스다. 사망/Respawn/패널티/Revive 정책은 임의로 새로 구현하지 않는다.
+
+## 캐릭터 성장·이동·제작 패스
+
+Profile는 좌상단에 원형 초상/Level/HP/얇은 XP/작은 Hunger·Thirst/미사용 Point 알림을 개별 요소로 배치한다. 터치하면 Information/Equipment/Skills 화면을 연다. Character는 입력만 차단하고 세계는 진행한다.
+
+Level1~20, 필요 XP35에서 레벨마다20 증가, Up마다Point1. Vitality/Endurance/Recovery/Steady Stride 각3Rank를 제공한다. CharacterGrowth 데이터 정본이며 영구 계정 성장과 분리한다.
+
+Stamina100은 Sprint/Dash가 공유한다. Joystick0.9를0.4초 유지하면 Sprint,유지0.72. 허기/갈증30% 미만 Sprint 제한,나쁜 상태에서 회복/효율 감소. Dash는 오른쪽 중간 버튼,입력 또는Facing 방향으로2.6유닛/0.18초 이동하며 물·벽·장애물을 통과하지 않는다. 무적/타격/순간이동은 없다. Stamina Full 미만에서 표시하고 회복 후 숨는다.
+
+제작 Category/전체·제작 가능 Filter/고정 Tier 정렬을 제공한다. II 잠금 Recipe는 조건을 표시하고 해금 후 원래 자리에서 NEW를 표시한다. 카드 확인/제작 때 해제하고 저장한다. 재미·엄지 접근·진행 속도는 사용자 테스트 대상이다.

@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: StorageChestRecipe
   m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.RecipeDefinition
   Id: storage_chest
+  Category: 5
+  SortOrder: 15
   Result: {fileID: 11400000, guid: 7bb36cf4ce2c183498975f4810b84c3a, type: 2}
   ResultCount: 1
   Ingredients:
@@ -22,3 +24,5 @@ MonoBehaviour:
   ProcessingSeconds: 0
   Processing: 0
   Tier: {fileID: 11400000, guid: b632d88d6c00461418a7100d186ff69c, type: 2}
+  RequiredWorkbenchTier: 1
+  FutureUnlocks: []

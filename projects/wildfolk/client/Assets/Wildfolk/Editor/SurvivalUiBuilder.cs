@@ -63,19 +63,5 @@ namespace Wildfolk.Editor
             component.fillRect=(RectTransform)fill.transform;component.handleRect=(RectTransform)handle.transform;component.targetGraphic=handle;
             component.navigation=new Navigation{mode=Navigation.Mode.None};return component;
         }
-        internal static void Hud(Transform safe,PlayerSurvival player)
-        {
-            var holder=Image("Survival",safe,"panel",new Vector2(0,1),new Vector2(150,-82),new Vector2(244,112));
-            var hud=holder.gameObject.AddComponent<SurvivalHud>();hud.Player=player;
-            hud.Hunger=Meter(holder.transform,"Hunger","cooked_meat",24,out hud.HungerValue);
-            hud.Thirst=Meter(holder.transform,"Thirst","water",-24,out hud.ThirstValue);
-        }
-        private static Image Meter(Transform parent,string name,string art,float y,out Text value)
-        {
-            var icon=Image(name+" Icon",parent,art,new Vector2(.5f,.5f),new Vector2(-89,y),new Vector2(36,38));icon.preserveAspect=true;
-            var track=Image(name+" Track",parent,"panel",new Vector2(.5f,.5f),new Vector2(0,y),new Vector2(112,16));
-            var fill=Image(name+" Fill",track.transform,"white",new Vector2(.5f,.5f),Vector2.zero,new Vector2(106,8));fill.type=UnityEngine.UI.Image.Type.Filled;fill.fillMethod=UnityEngine.UI.Image.FillMethod.Horizontal;
-            value=Text(name+" Value",parent,"100",new Vector2(83,y),new Vector2(50,34),20);return fill;
-        }
     }
 }

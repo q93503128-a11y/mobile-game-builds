@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f03294302f9ef1f44a76d86d8553bfbb, type: 3}
+  m_Name: CharacterGrowth
+  m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.CharacterGrowthDefinition
+  FirstLevelXP: 35
+  AdditionalXPPerLevel: 20
+  MaximumLevel: 20
+  PointsPerLevel: 1
+  Skills:
+  - Id: vitality
+    Name: Vitality
+    Icon: {fileID: 21300000, guid: 8e940446cf0564c4db6afeb112cc67f2, type: 3}
+    MaximumRank: 3
+    Effect: 0
+    PerRank: 10
+  - Id: endurance
+    Name: Endurance
+    Icon: {fileID: 21300000, guid: 40b8c6795fa2f344493ed4bd4fbded9c, type: 3}
+    MaximumRank: 3
+    Effect: 1
+    PerRank: 15
+  - Id: recovery
+    Name: Recovery
+    Icon: {fileID: 21300000, guid: 11f7a4e7725e7894ea059f9fa7d77a12, type: 3}
+    MaximumRank: 3
+    Effect: 2
+    PerRank: 0.15
+  - Id: stride
+    Name: Steady Stride
+    Icon: {fileID: 21300000, guid: 04dca1c2ad98939499daddc8f544bc08, type: 3}
+    MaximumRank: 3
+    Effect: 3
+    PerRank: 0.12

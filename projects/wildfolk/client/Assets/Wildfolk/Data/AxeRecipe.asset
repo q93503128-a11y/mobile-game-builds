@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: AxeRecipe
   m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.RecipeDefinition
   Id: axe
+  Category: 1
+  SortOrder: 2
   Result: {fileID: 11400000, guid: 40a5c8945c86303418782c074bf0df1b, type: 2}
   ResultCount: 1
   Ingredients:
@@ -22,3 +24,5 @@ MonoBehaviour:
   ProcessingSeconds: 0
   Processing: 0
   Tier: {fileID: 11400000, guid: b632d88d6c00461418a7100d186ff69c, type: 2}
+  RequiredWorkbenchTier: 1
+  FutureUnlocks: []

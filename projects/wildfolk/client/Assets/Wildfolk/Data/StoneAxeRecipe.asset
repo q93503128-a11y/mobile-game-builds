@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: StoneAxeRecipe
   m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.RecipeDefinition
   Id: stone_axe
+  Category: 1
+  SortOrder: 6
   Result: {fileID: 11400000, guid: 6d0f31d03dce54e43ad74fddf275f983, type: 2}
   ResultCount: 1
   Ingredients:
@@ -25,3 +27,4 @@ MonoBehaviour:
   Processing: 0
   Tier: {fileID: 11400000, guid: 5945e678712f7744cbe23200644f4d02, type: 2}
   RequiredWorkbenchTier: 1
+  FutureUnlocks: []

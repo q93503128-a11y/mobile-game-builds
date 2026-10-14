@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: WoodSwordRecipe
   m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.RecipeDefinition
   Id: wood_sword
+  Category: 2
+  SortOrder: 4
   Result: {fileID: 11400000, guid: a17fa3949d325264fbc674f9cfab5ee0, type: 2}
   ResultCount: 1
   Ingredients:
@@ -22,3 +24,5 @@ MonoBehaviour:
   ProcessingSeconds: 0
   Processing: 0
   Tier: {fileID: 11400000, guid: b632d88d6c00461418a7100d186ff69c, type: 2}
+  RequiredWorkbenchTier: 1
+  FutureUnlocks: []

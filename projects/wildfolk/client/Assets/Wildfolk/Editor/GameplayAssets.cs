@@ -54,6 +54,7 @@ namespace Wildfolk.Editor
             assets.Crafting=CraftingAssets.Load(wood,axe,pickaxe,assets.Survival);
             assets.Progression=ProgressionAssets.Load(wood,stone,assets.Crafting,assets.Survival);
             assets.World=WorldAssets.Load(assets);
+            CharacterPassAssets.Load(assets);
             assets.LoadInput();
             AssetDatabase.SaveAssets();
             return assets;

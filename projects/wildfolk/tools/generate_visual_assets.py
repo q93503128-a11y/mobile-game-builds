@@ -437,6 +437,87 @@ def small_plant_art():
         poly(im,pts,'#637848',INK,3)
     line(im,[(61,78),(68,57)],'#8f794b',3);save(im,'small_shrub.png')
 
+
+def character_growth_art():
+    for material in ('leather','iron'):
+        edge='#3e382e' if material=='leather' else '#344342'
+        dark='#70543b' if material=='leather' else '#61716e'
+        light='#94734e' if material=='leather' else '#9ba89d'
+        im=canvas(150,150)
+        # Hollow, broad top-down perimeter leaves the base skin and eyes visible.
+        ellipse(im,(20,20,130,130),dark,edge,3)
+        ellipse(im,(32,30,118,124),(0,0,0,0),edge,2)
+        poly(im,[(17,55),(28,42),(38,48),(34,78),(20,84)],light,edge,3)
+        poly(im,[(133,55),(122,42),(112,48),(116,78),(130,84)],light,edge,3)
+        if material=='iron':
+            line(im,[(25,56),(27,75)],'#b2b8a6',3);line(im,[(123,56),(121,75)],'#b2b8a6',3)
+        save(im,material+'_body_worn.png')
+        im=canvas(150,150)
+        # Open face helmet/cap; opening follows Facing, body itself does not rotate.
+        poly(im,[(22,80),(20,54),(35,29),(57,17),(91,17),(116,31),(130,58),(128,80),(115,77),(105,50),(75,40),(45,50),(35,78)],dark,edge,3)
+        poly(im,[(27,53),(42,32),(65,23),(85,23),(105,34),(115,51),(103,45),(78,34),(51,42)],light)
+        line(im,[(77,20),(77,34)],edge,2)
+        save(im,material+'_head_worn.png')
+        im=canvas(34,38)
+        poly(im,[(4,6),(30,6),(32,19),(27,25),(7,25),(2,19)],dark,edge,2)
+        poly(im,[(6,7),(27,7),(27,12),(6,12)],light)
+        save(im,material+'_hand_worn.png')
+        im=canvas(112,112)
+        poly(im,[(26,21),(45,15),(53,23),(61,23),(68,15),(86,21),(96,44),(85,55),(80,92),(32,92),(27,55),(16,44)],dark,edge,3)
+        poly(im,[(33,27),(45,23),(53,32),(62,32),(72,23),(80,28),(78,79),(35,79)],light)
+        line(im,[(56,36),(56,82)],edge,3)
+        save(im,material+'_body.png')
+        im=canvas(112,112)
+        ellipse(im,(19,17,94,95),dark,edge,3)
+        poly(im,[(20,64),(28,40),(47,28),(67,28),(86,41),(94,64)],light,edge,2)
+        poly(im,[(33,67),(79,67),(78,85),(33,85)],'#bca284',edge,2)
+        line(im,[(55,24),(55,47)],edge,3)
+        save(im,material+'_head.png')
+    im=canvas(140,140)
+    ellipse(im,(3,3,137,137),'#253b32','#9c9b73',4)
+    ellipse(im,(34,31,106,106),'#c99c74','#3f4230',2)
+    ellipse(im,(57,78,62,84),'#2c3a32');ellipse(im,(79,78,84,84),'#2c3a32')
+    save(im,'profile.png')
+    im=canvas(96,96)
+    poly(im,[(15,48),(38,26),(38,40),(71,40),(71,24),(89,48),(71,72),(71,56),(38,56),(38,70)],'#c5c4a4',INK,3)
+    save(im,'icon_dash.png')
+    for name in ('vitality','endurance','recovery','stride'):
+        im=canvas(96,96)
+        ellipse(im,(8,8,88,88),'#405647','#7d8967',2)
+        if name=='vitality':poly(im,[(40,24),(56,24),(56,40),(72,40),(72,56),(56,56),(56,72),(40,72),(40,56),(24,56),(24,40),(40,40)],'#bead7e')
+        elif name=='endurance':poly(im,[(53,20),(30,50),(46,50),(39,77),(69,41),(52,41)],'#bead7e')
+        elif name=='recovery':
+            line(im,[(69,63),(59,73),(39,73),(24,60),(24,39),(37,24),(60,24),(71,35)],'#bead7e',5)
+            poly(im,[(71,21),(73,45),(52,39)],'#bead7e')
+        else:
+            poly(im,[(31,22),(50,24),(51,51),(73,61),(73,74),(26,74),(21,63),(31,55)],'#bead7e')
+        save(im,'skill_'+name+'.png')
+    # Tier II facility silhouettes remain wood/stone, with restrained metal joinery.
+    im=canvas(240,200)
+    poly(im,[(26,58),(176,26),(220,66),(69,104)],'#a18b5b',INK,4)
+    poly(im,[(26,58),(69,104),(69,132),(26,86)],'#6d593c',INK,3)
+    poly(im,[(69,104),(220,66),(220,96),(69,132)],'#735c3c',INK,3)
+    for x,y in ((36,88),(183,101),(76,126)):
+        poly(im,[(x,y),(x+17,y),(x+14,y+59),(x-3,y+59)],'#66533b',INK,3)
+        poly(im,[(x-2,y+24),(x+16,y+24),(x+15,y+34),(x-3,y+34)],'#849086',INK,2)
+    poly(im,[(139,40),(175,32),(189,51),(153,60)],'#74837b',INK,3)
+    poly(im,[(97,66),(117,61),(118,77),(97,82)],'#434e47',INK,2)
+    save(im,'workbench_ii.png')
+    im=canvas(180,155)
+    poly(im,[(22,46),(143,31),(165,52),(43,70)],'#9b875b',INK,3)
+    poly(im,[(22,46),(43,70),(43,135),(22,112)],'#6f5a3d',INK,3)
+    poly(im,[(43,70),(165,52),(165,112),(43,135)],'#816c46',INK,3)
+    for x in (61,132):poly(im,[(x,65),(x+14,63),(x+14,121),(x,123)],'#74847a',INK,2)
+    poly(im,[(93,75),(109,73),(109,94),(93,96)],'#b4af8c',INK,2)
+    save(im,'reinforced_chest.png')
+    im=canvas(210,110)
+    poly(im,[(13,45),(157,14),(198,40),(53,73)],'#9ca69a',INK,3)
+    poly(im,[(13,45),(53,73),(53,98),(13,69)],'#64736c',INK,3)
+    poly(im,[(53,73),(198,40),(198,66),(53,98)],'#748279',INK,3)
+    for x,y in ((58,70),(111,59),(157,48)):line(im,[(x,y),(x,y+24)],'#43564c',3)
+    line(im,[(52,70),(178,44)],'#b4b8a4',3)
+    save(im,'stone_wall.png')
+
 if __name__=='__main__':
     p=argparse.ArgumentParser();p.add_argument('output',type=Path);a=p.parse_args()
     OUT=a.output;OUT.mkdir(parents=True,exist_ok=True)
@@ -445,6 +526,6 @@ if __name__=='__main__':
     save(rock(1),'rock_wide.png');save(rock(2),'rock_split.png')
     save(body(),'player_body.png');save(hand(),'player_hand.png')
     save(enemy(),'enemy.png');save(grass(21),'grass.png');save(fern(),'fern.png');save(log(),'fallen_log.png')
-    character_details();tools();workbench()
+    character_details();tools();workbench();character_growth_art()
     icons();ui();survival_art();progression_art();world_pass_art();water_container_art();small_plant_art()
     print(f'Wrote {len(list(OUT.glob("*.png")))} original sprites to {OUT}')

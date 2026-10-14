@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 namespace Wildfolk
 {
     public enum SessionMode { Singleplayer, Multiplayer }
-    public enum SessionState { Running, Inventory, Paused, Defeated }
+    public enum SessionState { Running, Inventory, Paused, Defeated, Character }
 
     public sealed class GameplaySession : MonoBehaviour
     {
@@ -26,6 +26,8 @@ namespace Wildfolk
         }
         public void OpenInventory() { if (State == SessionState.Running) SetState(SessionState.Inventory); }
         public void CloseInventory() { if (State == SessionState.Inventory) SetState(SessionState.Running); }
+        public void OpenCharacter(){if(State==SessionState.Running)SetState(SessionState.Character);}
+        public void CloseCharacter(){if(State==SessionState.Character)SetState(SessionState.Running);}
         public void OpenPause()
         {
             if (State != SessionState.Defeated && State != SessionState.Paused) SetState(SessionState.Paused);

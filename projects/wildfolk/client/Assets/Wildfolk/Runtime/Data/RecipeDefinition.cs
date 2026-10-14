@@ -5,6 +5,7 @@ using UnityEngine.Serialization;
 namespace Wildfolk
 {
     public enum StationKind { None, Workbench, Campfire, Furnace }
+    public enum RecipeCategory { Survival, Tools, Weapons, Armor, Building, Facilities }
     public enum ProcessingKind { None, Cooking, Smelting }
     public enum UnlockKind { PlayerLevel, Skill, DiscoveredItem, Blueprint, SpecialContent }
     [Serializable]public struct UnlockRequirement {public UnlockKind Kind;public string Id;[Min(1)]public int Rank;}
@@ -18,6 +19,8 @@ namespace Wildfolk
     public sealed class RecipeDefinition : ScriptableObject
     {
         public string Id;
+        public RecipeCategory Category;
+        public int SortOrder=-1;
         public ItemDefinition Result;
         [Min(1)] public int ResultCount;
         public ItemAmount[] Ingredients;

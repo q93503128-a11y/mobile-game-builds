@@ -34,9 +34,21 @@ namespace Wildfolk.Editor
         }
         public static void LoadProfile(DeveloperTestProfile profile)
         {
-            var service=Context();var empty=new SavedStack[service.Player.Model.Capacity];for(var i=0;i<empty.Length;i++)empty[i]=new SavedStack();service.Player.Model.Restore(empty,service.Catalog);
-            foreach(var stack in profile.Items)service.Player.Model.Add(stack.Item,stack.Count);service.Player.SelectSlot(0);SetHealth(service.Player.GetComponent<Health>().Maximum);SetNeeds(profile.Hunger,profile.Thirst);SetProgression(profile.XP,profile.Gold);
+            var service=Context();service.Player.GetComponent<PlayerEquipment>().RestoreArmor(null,null);var empty=new SavedStack[service.Player.Model.Capacity];for(var i=0;i<empty.Length;i++)empty[i]=new SavedStack();service.Player.Model.Restore(empty,service.Catalog);
+            foreach(var stack in profile.Items)service.Player.Model.Add(stack.Item,stack.Count);service.Player.SelectSlot(0);SetHealth(service.Player.GetComponent<Health>().Maximum);SetNeeds(profile.Hunger,profile.Thirst);SetProgression(profile.XP,profile.Gold);SetStamina(service.Player.GetComponent<PlayerLocomotion>().Stamina.Maximum);
         }
+        public static void SetLevel(int level)
+        {var p=Context().Player.GetComponent<PlayerProgression>();level=Mathf.Clamp(level,1,p.Definition.MaximumLevel);long xp=0;for(var i=1;i<level;i++)xp+=p.Definition.RequiredXP(i);p.SetValues(xp,p.Gold);}
+        public static void SetSkillPoints(int points)
+        {var p=Context().Player.GetComponent<PlayerProgression>();SetLevel(Mathf.Clamp(points/p.Definition.PointsPerLevel+1,1,p.Definition.MaximumLevel));}
+        public static void SetStamina(float current){var move=Context().Player.GetComponent<PlayerLocomotion>();move.Restore(Mathf.Clamp(current,0,move.Stamina.Maximum),0);}
+        public static void GiveArmorSet(bool iron,bool equip)
+        {var s=Context();foreach(var slot in new[]{"head","body"}){var item=s.Catalog.Item((iron ? "iron_" : "leather_")+slot);s.Player.Model.Add(item,1);if(equip)s.Player.GetComponent<PlayerEquipment>().TryEquip(item);}}
+        public static void ClearArmor()
+        {var e=Context().Player.GetComponent<PlayerEquipment>();e.Unequip(ArmorSlot.Head);e.Unequip(ArmorSlot.Body);}
+        public static void WorkbenchIIProfile()
+        {var s=Context();LoadProfile(AssetDatabase.LoadAssetAtPath<DeveloperTestProfile>("Assets/Wildfolk/Data/DeveloperProfile4.asset"));var bench=UnityEngine.Object.Instantiate(s.Catalog.Item("workbench_ii").Placement.Prefab,s.Player.transform.position+new Vector3(2,0),Quaternion.identity);}
+        public static void NewTestState()=>UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
         [MenuItem("Wildfolk/Developer/Open Combat Sandbox")]
         public static void OpenCombatSandbox()
         {

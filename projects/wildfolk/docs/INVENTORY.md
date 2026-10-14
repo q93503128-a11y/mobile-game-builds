@@ -15,3 +15,5 @@ PlayerItemDrop은 물/장애물 없는 근처 지점을 확인한 뒤 WorldPicku
 빈 컵이 있어야 자연 수원에서 Raw Cup을 얻는다. 마시면 Empty Cup을 반환한다. 상태별 Item ID와 모든 슬롯을 Save/Load하고 Chest의 용기 상태도 유지한다. 소분 중인 UI 포인터 상태는 저장하지 않으며 원본 아이템은 저장에 남는다.
 
 가방/Chest 입력 잠금은 세계 정지와 분리한다. 실제 Multiplayer 네트워크와 Player 전달은 아직 없다. Friendly Fire는 관계 필터 기반 OFF이며 Team 시설을 일반 공격으로 파괴하지 않는다.
+
+Character의Equipment 탭에서Head/Body Armor를장착·교체·해제한다. 장착물은Inventory에서빠지고해제/교체시반환하며공간없으면해제를거절한다. Armor/Skill은별도Snapshot으로저장한다. Reinforced Chest는독립32칸이며기존Storage Chest24는유지한다. Chest UI는용량에맞춰3/4행을표시하고기존Transfer/Split/Drop을공유한다.

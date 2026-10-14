@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea85a5ebaf6f62646a87d747548e1a2f, type: 3}
+  m_Name: WorkbenchIIPlacement
+  m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.PlaceableDefinition
+  Item: {fileID: 11400000, guid: 2e666233cdfdf3441bec2b510276cd7d, type: 2}
+  Prefab: {fileID: 1610150635453931034, guid: c73fc72548859ca4b8f6f6cc775d6998, type: 3}
+  Vitality: {fileID: 11400000, guid: 242d49b002185f44f8205255afa31736, type: 2}
+  Footprint: {x: 1.8, y: 1.15}
+  MaximumDistance: 2.8
+  Station: 1
+  Tier: {fileID: 11400000, guid: 5945e678712f7744cbe23200644f4d02, type: 2}
+  IsBarrier: 0
+  IsDoor: 0
+  StorageSlots: 0
+  StationTitle: Workbench II
+  ParallelCapacity: 1
+  ProcessingSpeed: 1
+  WorkbenchTier: 2
+  UpgradeTo: {fileID: 0}
+  UpgradeCosts: []

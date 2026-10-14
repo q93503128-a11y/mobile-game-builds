@@ -7,7 +7,9 @@ namespace Wildfolk
     {
         public VitalityDefinition Definition;
         public int Current { get; private set; }
-        public int Maximum => Definition.MaximumHealth;
+        public int Maximum => Definition.MaximumHealth+maximumBonus;
+        private int maximumBonus;
+        public void SetMaximumBonus(int bonus){maximumBonus=Math.Max(0,bonus);Current=Math.Min(Current,Maximum);Changed?.Invoke();}
         public int DamageReduction { get; set; }
         public PlayerInventory LastAttacker { get; private set; }
         public float LastCombatTime { get; private set; }=float.NegativeInfinity;

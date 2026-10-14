@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea85a5ebaf6f62646a87d747548e1a2f, type: 3}
+  m_Name: StoneWallPlacement
+  m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.PlaceableDefinition
+  Item: {fileID: 11400000, guid: c38fa8c530b6187458d976559263f845, type: 2}
+  Prefab: {fileID: 4925190960920588024, guid: 9b84b2cbb7d49f443b2714a87dc9cd77, type: 3}
+  Vitality: {fileID: 11400000, guid: 07805f880f43913468323ec402985917, type: 2}
+  Footprint: {x: 1.8, y: 0.5}
+  MaximumDistance: 2.8
+  Station: 0
+  Tier: {fileID: 11400000, guid: 5945e678712f7744cbe23200644f4d02, type: 2}
+  IsBarrier: 1
+  IsDoor: 0
+  StorageSlots: 0
+  StationTitle: Stone Wall
+  ParallelCapacity: 1
+  ProcessingSpeed: 1
+  WorkbenchTier: 1
+  UpgradeTo: {fileID: 0}
+  UpgradeCosts: []

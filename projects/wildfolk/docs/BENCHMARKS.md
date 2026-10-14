@@ -1,5 +1,9 @@
 # 비교군과 참고 범위
 
+## 2026-10-14 Character / Armor 참고
+
+[Kefir 공식 Last Day on Earth Gear Score 안내](https://kefirgames.helpshift.com/hc/en/5-last-day-on-earth/faq/353-gear-score-gs/)는 캐릭터 Inventory의 장비 슬롯 옆에 비교 수치를 제공한다. Wildfolk는 슬롯/Defense를 같은 화면에서 읽는 정보 구조만 참고한다. 상대 UI 좌표/스킨/아이콘/GS 계산식/성장 수치를 측정하거나 복제하지 않았다. 떠 있는 Profile/세 탭/4 Skill Card/고정 Recipe Sort는 사용자 요구와 자체 구성이다.
+
 ## Mine Survival
 
 - 결정 근거: 사용자가 2026-10-13에 주요 UI/UX 비교군으로 지정했다.

@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 578d71997af1690458035a5ef005f3d6, type: 3}
+  m_Name: Locomotion
+  m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.LocomotionDefinition
+  MaximumStamina: 100
+  Recovery: 16
+  RecoveryDelay: 1.2
+  SprintDrain: 14
+  DashCost: 24
+  SprintEnter: 0.9
+  SprintMaintain: 0.72
+  SprintHold: 0.4
+  SprintSpeed: 1.55
+  DashDistance: 2.6
+  DashDuration: 0.18
+  DashCooldown: 0.55
+  ExhaustedRestart: 20
+  FullHideDelay: 0.7
+  PoorRecoveryMultiplier: 0.45

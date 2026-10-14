@@ -14,8 +14,8 @@ namespace Wildfolk
         public float MovementMultiplier(Vector2 p)=>Surface(p)==TerrainSurface.Deep ? 0 : Surface(p)==TerrainSurface.Shallow ? World.Definition.ShallowMoveMultiplier : 1;
         public bool OutsideCamera(Vector2 p,float margin=.05f){var v=Camera.WorldToViewportPoint(p);return v.x< -margin || v.x>1+margin || v.y< -margin || v.y>1+margin;}
         public bool Traversable(Vector2 p,float radius)=>World.Map.IsWalkable(p,radius);
-        public bool CanMove(Vector2 origin,Vector2 direction,float distance,float radius)
-        {return Traversable(origin+direction*distance,radius) && Physics2D.CircleCast(origin,radius,direction,new ContactFilter2D{useTriggers=false},hits,distance+.08f)==0;}
+        public bool CanMove(Vector2 origin,Vector2 direction,float distance,float radius,Collider2D ignore=null)
+        {if(!Traversable(origin+direction*distance,radius))return false;var count=Physics2D.CircleCast(origin,radius,direction,new ContactFilter2D{useTriggers=false},hits,distance+.08f);for(var i=0;i<count;i++)if(hits[i].collider!=ignore)return false;return true;}
         public bool CanSpawn(Vector2 p,float radius,float playerDistance,bool outside=true)
         {
             if(!Traversable(p,radius) || World.Map.IsWater(p,radius) || Vector2.Distance(p,Player.position)<playerDistance || outside && !OutsideCamera(p))return false;

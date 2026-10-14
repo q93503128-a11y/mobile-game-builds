@@ -32,14 +32,14 @@ namespace Wildfolk.Editor
             var feedback=root.AddComponent<PlayerFeedback>();feedback.Label=Text("Message",safe,string.Empty,new Vector2(0,363),new Vector2(640,52),26);feedback.Label.raycastTarget=false;
             BuildHotbar(controls,session,inventory);
             BuildBoss(safe);
-            var time=Image("World Time",safe,"panel",new Vector2(0,1),new Vector2(150,-183),new Vector2(244,54));
+            var time=Image("World Time",safe,"panel",new Vector2(0,1),new Vector2(148,-229),new Vector2(232,44));
             var timeHud=time.gameObject.AddComponent<TimeHud>();timeHud.Clock=session.GetComponent<WorldClock>();
             timeHud.Icon=Image("Time Icon",time.transform,"sun",new Vector2(.5f,.5f),new Vector2(-92,0),new Vector2(30,30));
             timeHud.Label=Text("Time",time.transform,"Day 1 · Day",new Vector2(19,0),new Vector2(172,36),20);
             InventoryUiBuilder.Build(root,safe,session,inventory,motor.GetComponent<PlayerCrafting>(),assets.Settings.InventorySlots);
             var defeat=BuildDefeat(safe,session);
             var pause=SurvivalUiBuilder.Pause(safe,session);
-            SurvivalUiBuilder.Hud(safe,motor.GetComponent<PlayerSurvival>());
+            CharacterUiBuilder.Build(root,safe,session,inventory);
             var backpack=Image("Inventory",safe,"panel",new Vector2(.5f,0),new Vector2(-459,102),new Vector2(94,94),true);
             Image("Backpack",backpack.transform,"icon_inventory",new Vector2(.5f,.5f),Vector2.zero,new Vector2(62,62));
             var inventoryButton=Button(backpack);UnityEventTools.AddPersistentListener(inventoryButton.onClick,session.ToggleInventory);
@@ -48,6 +48,8 @@ namespace Wildfolk.Editor
             var pauseButton=Button(pauseImage);UnityEventTools.AddPersistentListener(pauseButton.onClick,session.OpenPause);
             var sizes=root.AddComponent<ControlSizeLayout>();sizes.Preferences=session.GetComponent<UserPreferences>();sizes.Session=session;
             sizes.Joystick=(RectTransform)joystickImage.transform;sizes.Action=(RectTransform)attackImage.transform;sizes.Interact=(RectTransform)interactSurface.transform;
+            var dash=Image("Dash",controls,"attack_button",new Vector2(1,0),new Vector2(-335,265),new Vector2(138,138),true);
+            Image("Icon",dash.transform,"icon_dash",new Vector2(.5f,.5f),Vector2.zero,new Vector2(70,70));UnityEventTools.AddPersistentListener(Button(dash).onClick,motor.Locomotion.DashFromUI);sizes.Dash=(RectTransform)dash.transform;
             sizes.Hotbar=(RectTransform)controls.Find("Hotbar");sizes.InventoryButton=(RectTransform)backpack.transform;
             var hud=root.AddComponent<GameplayHud>();hud.Session=session;hud.Joystick=joystick;hud.Attack=attack;hud.Interact=interact;hud.Controls=controlsGroup;
             hud.InventoryButton=inventoryButton;hud.PauseButton=pauseButton;hud.PausePanel=pause;hud.DefeatPanel=defeat;

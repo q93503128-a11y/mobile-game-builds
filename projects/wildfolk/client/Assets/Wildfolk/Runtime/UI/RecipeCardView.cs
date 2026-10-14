@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace Wildfolk
 {
-    public sealed class RecipeCardView : MonoBehaviour
+    public sealed class RecipeCardView : MonoBehaviour,UnityEngine.EventSystems.IPointerClickHandler
     {
         public RecipeDefinition Recipe;
         public PlayerCrafting Crafting;
@@ -15,6 +15,7 @@ namespace Wildfolk
         public Text Status;
         public Button CraftButton;
         public Text ButtonLabel;
+        public Text NewLabel;
         public Image Progress;
         private int previousSeconds=-2;
         private void Update()
@@ -27,9 +28,11 @@ namespace Wildfolk
             previousSeconds=seconds;Refresh();
         }
 
-        public void Craft() => Crafting.Craft(Recipe);
+        public void OnPointerClick(UnityEngine.EventSystems.PointerEventData data)=>Crafting.MarkSeen(Recipe);
+        public void Craft(){Crafting.MarkSeen(Recipe);Crafting.Craft(Recipe);Refresh();}
         public void Refresh()
         {
+            if(NewLabel!=null)NewLabel.gameObject.SetActive(Crafting.IsNew(Recipe));
             Icon.sprite=Recipe.Result.Icon;
             Name.text=Recipe.Result.DisplayName+(Recipe.ProcessingSeconds>0 ? " ×"+Recipe.ResultCount : string.Empty);
             InputIcon.gameObject.SetActive(Recipe.ProcessingSeconds>0);
@@ -58,7 +61,7 @@ namespace Wildfolk
             }
             ButtonLabel.text=state==CraftStatus.Collect ? "Take" : Recipe.ProcessingSeconds>0 ? Recipe.Processing==ProcessingKind.Smelting ? "Smelt" : "Cook" : "Craft";
             Progress.gameObject.SetActive(active);Progress.fillAmount=active ? job.Progress : 0;
-            Status.text=state==CraftStatus.NoSpace ? "Inventory full" : active ?
+            Status.text=state==CraftStatus.StationRequired ? "Workbench II required" : state==CraftStatus.NoSpace ? "Inventory full" : active ?
                 job.IsReady ? "Ready" : (Recipe.Processing==ProcessingKind.Smelting ? "Smelting · " : "Cooking · ")+Mathf.CeilToInt(job.Remaining)+" s" :
                 Recipe.ProcessingSeconds>0 ? Recipe.ProcessingSeconds.ToString("0")+" s" : string.Empty;
             if(Recipe.ProcessingSeconds>0 && job!=null)

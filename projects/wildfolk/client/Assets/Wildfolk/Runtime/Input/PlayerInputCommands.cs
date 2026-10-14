@@ -6,6 +6,8 @@ namespace Wildfolk
         public PlayerPrimaryAction Primary;
         public PlayerInteraction Interaction;
         public GameplaySession Session;
+        public PlayerLocomotion Locomotion;
+        public bool Dash()=>Locomotion.TryDash();
         public Vector2 Move {get;private set;}
         public void SetMove(Vector2 move)=>Move=Session.IsRunning ? Vector2.ClampMagnitude(move,1) : Vector2.zero;
         public bool Attack()=>Primary.TryUse();

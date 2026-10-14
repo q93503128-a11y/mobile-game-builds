@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea85a5ebaf6f62646a87d747548e1a2f, type: 3}
+  m_Name: ReinforcedChestPlacement
+  m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.PlaceableDefinition
+  Item: {fileID: 11400000, guid: 034dc0c170161be4a9bed7298c9eb842, type: 2}
+  Prefab: {fileID: 5151198320160700257, guid: 8bbd4e17c8fc52e43abb677bde1f7b9d, type: 3}
+  Vitality: {fileID: 11400000, guid: 12185f04b145b6540add5c8ee1f798cd, type: 2}
+  Footprint: {x: 1.6, y: 1.15}
+  MaximumDistance: 2.8
+  Station: 0
+  Tier: {fileID: 11400000, guid: 5945e678712f7744cbe23200644f4d02, type: 2}
+  IsBarrier: 0
+  IsDoor: 0
+  StorageSlots: 32
+  StationTitle: Reinforced Chest
+  ParallelCapacity: 1
+  ProcessingSpeed: 1
+  WorkbenchTier: 1
+  UpgradeTo: {fileID: 0}
+  UpgradeCosts: []

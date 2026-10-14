@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: IronIngotRecipe
   m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.RecipeDefinition
   Id: iron_ingot
+  Category: 0
+  SortOrder: 16
   Result: {fileID: 11400000, guid: c5b679876e2427346848b9e6432a186c, type: 2}
   ResultCount: 1
   Ingredients:
@@ -22,3 +24,5 @@ MonoBehaviour:
   ProcessingSeconds: 6
   Processing: 2
   Tier: {fileID: 0}
+  RequiredWorkbenchTier: 1
+  FutureUnlocks: []

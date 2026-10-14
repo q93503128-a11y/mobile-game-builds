@@ -19,5 +19,7 @@ namespace Wildfolk
         [Min(1)]public int ParallelCapacity=1;
         [Min(.1f)]public float ProcessingSpeed=1;
         [Min(1)]public int WorkbenchTier=1;
+        public PlaceableDefinition UpgradeTo;
+        public ItemAmount[] UpgradeCosts=System.Array.Empty<ItemAmount>();
     }
 }

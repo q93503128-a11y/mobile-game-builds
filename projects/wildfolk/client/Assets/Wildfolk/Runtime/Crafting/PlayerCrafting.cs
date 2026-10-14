@@ -16,6 +16,19 @@ namespace Wildfolk
         public StationProcessing Processor => Station==null ? null : Station.GetComponent<StationProcessing>();
         public event Action StationChanged;
         private bool stationOpen;
+        private readonly System.Collections.Generic.HashSet<string> seen=new System.Collections.Generic.HashSet<string>();
+        public string[] CaptureSeen(){var a=new string[seen.Count];seen.CopyTo(a);Array.Sort(a,StringComparer.Ordinal);return a;}
+        public void RestoreSeen(string[] ids){seen.Clear();foreach(var id in ids)seen.Add(id);StationChanged?.Invoke();}
+        public bool IsNew(RecipeDefinition recipe)=>recipe.RequiredWorkbenchTier>1 && AvailableStation==StationKind.Workbench && Station.Definition.WorkbenchTier>=recipe.RequiredWorkbenchTier && !seen.Contains(recipe.Id);
+        public void MarkSeen(RecipeDefinition recipe){if(IsNew(recipe) && seen.Add(recipe.Id))StationChanged?.Invoke();}
+        public bool UpgradeWorkbench()
+        {
+            if(Session.State!=SessionState.Inventory || AvailableStation!=StationKind.Workbench || Station.Definition.UpgradeTo==null)return false;
+            var old=Station.GetComponent<WorldPlaceable>();var definition=Station.Definition;
+            if(!Inventory.Model.TryConsumeCosts(definition.UpgradeCosts))return false;
+            var next=Instantiate(definition.UpgradeTo.Prefab,old.transform.position,old.transform.rotation);next.SaveId=old.SaveId;next.Health.RestoreHealth(Mathf.Max(1,Mathf.RoundToInt(old.Health.Ratio*next.Health.Maximum)));old.gameObject.SetActive(false);Destroy(old.gameObject);Station=next.GetComponent<CraftingStation>();StationChanged?.Invoke();return true;
+        }
+        public void UpgradeFromUI(){if(!UpgradeWorkbench())PlayerFeedback.Show("Gather the upgrade materials");}
 
         private void OnEnable() => Session.StateChanged += SessionChanged;
         private void OnDisable() => Session.StateChanged -= SessionChanged;

@@ -31,7 +31,7 @@ namespace Wildfolk.Editor
             Group("Left Equipment Socket",left.transform);
             var equipmentSocket=Group("Right Equipment Socket",right.transform);
             var held=Sprite("Held Tool","axe",equipmentSocket,new Vector2(0,.55f),.72f,3);held.enabled=false;
-            Group("Headwear Socket",reaction,0,.48f);
+            var layers=root.gameObject.AddComponent<CharacterVisualLayers>();layers.BaseSkin=body.transform;layers.BackSlot=Group("Back Slot",reaction);layers.OptionalFX=Group("Optional FX",reaction);
             var avatar=root.gameObject.AddComponent<PlayerAvatar>();
             avatar.Facing=facing;avatar.Body=body.transform;
             var combat=root.gameObject.AddComponent<PlayerCombat>();combat.Settings=assets.Settings;combat.Avatar=avatar;combat.OwnHealth=health;
@@ -39,21 +39,27 @@ namespace Wildfolk.Editor
             var inventory=root.gameObject.AddComponent<PlayerInventory>();inventory.Settings=assets.Settings;
             var needs=root.gameObject.AddComponent<PlayerSurvival>();needs.Definition=assets.Survival.Needs;needs.Health=health;needs.Inventory=inventory;
             var equipment=root.gameObject.AddComponent<PlayerEquipment>();equipment.Inventory=inventory;equipment.Combat=combat;equipment.HeldVisual=held;combat.Equipment=equipment;
-            var armor=Group("Armor Socket",reaction).gameObject.AddComponent<SpriteRenderer>();armor.sharedMaterial=SpriteMaterial;armor.sortingOrder=1;armor.transform.localScale=Vector3.one*1.1f;armor.enabled=false;equipment.ArmorVisual=armor;
+            var armor=Group("Armor Socket",reaction).gameObject.AddComponent<SpriteRenderer>();armor.sharedMaterial=SpriteMaterial;armor.sortingOrder=1;armor.transform.localScale=Vector3.one*1.1f;armor.enabled=false;equipment.ArmorVisual=armor;layers.BodyArmor=armor.transform;
+            equipment.HeadVisual=Gear("Head Gear",reaction,1.1f,1);layers.HeadGear=equipment.HeadVisual.transform;
+            equipment.LeftHandGear=Gear("Left Hand Gear",left.transform,1,2);equipment.RightHandGear=Gear("Right Hand Gear",right.transform,1,2);layers.LeftHandGear=equipment.LeftHandGear.transform;layers.RightHandGear=equipment.RightHandGear.transform;
             var storage=root.gameObject.AddComponent<PlayerStorage>();storage.Settings=assets.Settings;
             var crafting=root.gameObject.AddComponent<PlayerCrafting>();crafting.Inventory=inventory;crafting.Catalog=assets.Crafting.Catalog;crafting.Settings=assets.Settings;
             var placement=root.gameObject.AddComponent<PlayerPlacement>();placement.Equipment=equipment;placement.Inventory=inventory;placement.Settings=assets.Settings;placement.Facing=facing;
             var action=root.gameObject.AddComponent<PlayerPrimaryAction>();action.Equipment=equipment;action.Combat=combat;action.Placement=placement;action.Survival=needs;
             var interaction=root.gameObject.AddComponent<PlayerInteraction>();interaction.Equipment=equipment;interaction.Crafting=crafting;interaction.Settings=assets.Settings;interaction.Facing=facing;interaction.Storage=storage;
-            root.gameObject.AddComponent<PlayerProgression>();motor.Survival=needs;
+            var growth=root.gameObject.AddComponent<PlayerProgression>();growth.Definition=CharacterPassAssets.Growth();
+            var stats=root.gameObject.AddComponent<CharacterStats>();stats.Progression=growth;stats.Health=health;
+            var locomotion=root.gameObject.AddComponent<PlayerLocomotion>();locomotion.Definition=CharacterPassAssets.Locomotion();locomotion.Stats=stats;locomotion.Motor=motor;motor.Locomotion=locomotion;motor.Survival=needs;
             root.gameObject.AddComponent<CombatAffiliation>().Relation=EntityRelation.PlayerTeam;
-            var commands=root.gameObject.AddComponent<PlayerInputCommands>();commands.Primary=action;commands.Interaction=interaction;motor.Input=commands;
+            var commands=root.gameObject.AddComponent<PlayerInputCommands>();commands.Primary=action;commands.Interaction=interaction;motor.Input=commands;commands.Locomotion=locomotion;
             root.gameObject.AddComponent<PlayerInputAdapter>().Commands=commands;
             var itemDrop=root.gameObject.AddComponent<PlayerItemDrop>();itemDrop.Inventory=inventory;itemDrop.Settings=assets.Settings;
             HealthBar(health,1.35f,true,1.65f);
             Feedback(health,reaction,HitReaction.Creature);
             return SavePrefab(root,"Player");
         }
+
+        private static SpriteRenderer Gear(string name,Transform parent,float scale,int order){var visual=Group(name,parent).gameObject.AddComponent<SpriteRenderer>();visual.sharedMaterial=SpriteMaterial;visual.sortingOrder=order;visual.transform.localScale=Vector3.one*scale;visual.enabled=false;return visual;}
 
         internal static void Facility(PlaceableDefinition definition,WorldPickup pickup,GameplaySettings settings)
         {

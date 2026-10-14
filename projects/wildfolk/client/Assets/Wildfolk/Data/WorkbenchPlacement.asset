@@ -22,7 +22,15 @@ MonoBehaviour:
   IsBarrier: 0
   IsDoor: 0
   StorageSlots: 0
-  StationTitle: Workbench
+  StationTitle: Workbench I
   ParallelCapacity: 1
   ProcessingSpeed: 1
   WorkbenchTier: 1
+  UpgradeTo: {fileID: 11400000, guid: ebd7916adefaa1c448b978852a202cb5, type: 2}
+  UpgradeCosts:
+  - Item: {fileID: 11400000, guid: 431287b464f63f4408828d4053bac6eb, type: 2}
+    Count: 8
+  - Item: {fileID: 11400000, guid: 30904e05765ac844ab5bb28b855a15db, type: 2}
+    Count: 6
+  - Item: {fileID: 11400000, guid: c5b679876e2427346848b9e6432a186c, type: 2}
+    Count: 2

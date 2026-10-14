@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: CleanWaterCupRecipe
   m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.RecipeDefinition
   Id: clean_water_cup
+  Category: 0
+  SortOrder: 18
   Result: {fileID: 11400000, guid: bc7cfdcc45321784f8eb22a45b55bd67, type: 2}
   ResultCount: 1
   Ingredients:
@@ -23,3 +25,4 @@ MonoBehaviour:
   Processing: 1
   Tier: {fileID: 0}
   RequiredWorkbenchTier: 1
+  FutureUnlocks: []

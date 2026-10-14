@@ -17,3 +17,9 @@ WorldNavigation은 생성 지형/깊은 물/시설/자원 충돌과 Spawn 적합
 PrefabPool은 Zombie/Goblin/WorldPickup을 재사용한다. HP/피격/AI/생활주기/아이템 수량/지연 상태를 초기화하고 자연 Despawn은 사망 보상을 호출하지 않는다. 자원·시설·동물까지 무조건 Pooling하지 않는다. Projectile/VFX는 실제 콘텐츠가 생길 때 확장한다.
 
 PlayerMotor는 PlayerInputCommands.Move를 사용한다. 터치/키보드는 PlayerInputAdapter에 모으고 IPlayerInputSource로 자동 입력을 주입할 수 있다. 이동/Primary/Interact/Inventory/Pause 명령은 기기 API를 몰라도 호출할 수 있다.
+
+## Sprint / Dash / Armor
+
+Armor Head/Body가Health.DamageReduction으로합산된다. 기존Friendly Fire/Single Target/생존피해우회는유지한다. CharacterStats는HP/Stamina/회복/효율의Skill집계경계다.
+
+보행은Stamina를소비하지않는다. Sprint는Joystick Hold/Hysteresis와기존CanSprint/SprintEfficiency를사용한다. Dash는현재Move또는Facing,즉시Stamina소비,0.18초물리이동이다. 0.08유닛Substep별Map walkable+CircleCast를검사하고자기Collider는제외한다. 깊은물/기지벽/자원장애물을통과하지않고무적/공격판정은없다. UI열림/사망/고갈/짧은Cooldown은재입력을거절한다. Android최종체감은사용자테스트다.

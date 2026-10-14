@@ -1,6 +1,6 @@
 # 제작과 처리
 
-현재19 Recipe, 실제 Workbench Tier1, Equipment Tier Wood/Stone/Iron이다. 정본은 RecipeDefinition/RecipeCatalog/ContentCatalog이며 이름별 Runtime 분기는 없다.
+현재25 Recipe, 실제 Workbench Tier1/2, Equipment Tier Wood/Stone/Iron이다. 정본은 RecipeDefinition/RecipeCatalog/ContentCatalog이며 이름별 Runtime 분기는 없다.
 
 | 시설 | 결과 | 비용/처리 |
 |---|---|---|
@@ -23,4 +23,20 @@
 
 장비 Upgrade는 이전 장비를 명시적인 Recipe 재료로 소비한다. 상위 장비 Drop은 하위 장비를 자동 제거하지 않는다. 내구도는 없다.
 
-General Workbench가 향후 Tier Progression의 중심이다. RequiredWorkbenchTier는 현재 사용하며 FutureUnlocks는 PlayerLevel/Skill/DiscoveredItem/Blueprint/SpecialContent를 표현할 확장 데이터다. 현재 추가 Unlock 조건은 모두 비어 있으며 실제 Level/Skill/Blueprint 기능은 없다. Workbench II/III, Diamond, 전문 제작대/Defense 제작 계층은 기획 방향만 기록한다.
+General Workbench가 향후 Tier Progression의 중심이다. RequiredWorkbenchTier는 현재 사용하며 FutureUnlocks는 PlayerLevel/Skill/DiscoveredItem/Blueprint/SpecialContent를 표현할 확장 데이터다. FutureUnlocks는 비어 있으며 Recipe의 추가 Level/Skill/Blueprint 조건은 활성화하지 않는다. Character Level/Skill은 별도 제공한다. Workbench II는 실제이며 III/Diamond/전문 제작대/Defense는 미래 방향이다.
+
+## Armor와 Workbench II
+
+| 작업 | 비용 | 조건 |
+|---|---|---|
+| Leather Cap /Guard |Leather1+Wood2 /Leather2+Wood3|Workbench I 또는II|
+| Iron Helmet /Guard |Ingot2+Leather1 /Ingot3+Leather1|Workbench I 또는II|
+| 설치 Workbench I→II |Wood8+Stone6+Ingot2|가까이Interact→Upgrade II|
+| Reinforced Chest32 |Wood8+Ingot2|Workbench II|
+| Stone Wall HP220 |Stone3+Wood1|Workbench II|
+
+업그레이드는 기존 설치물을 교체하며 위치/회전/Save ID/HP 비율을 유지한다. 별도 Workbench II 제작 Recipe는 없고 II 아이템 참조는 설치/저장/Editor Profile용이다. I의 모든 Recipe를 유지한다. Armor Bench/빈 전문 시설은 없다.
+
+Category는Survival/Tools/Weapons/Armor/Building/Facilities이고 현재 Station에 실제 Recipe가 있는 항목만 메뉴에 나타난다. Show all/Craftable only와 조합한다. Tier(Rank)→고정SortOrder→ID 순이며 NEW/재료 보유량은 정렬에 영향을 주지 않는다. II 잠금 Recipe는 I에서도 위치를 유지하고 조건을 표시한다. 해금 후 NEW는 카드 확인/제작 때 해제되며 SeenRecipe IDs를 저장한다. 잠금 상태에서 확인해도 미래 NEW를 소모하지 않는다.
+
+Leather의 미래 사용 후보는Backpack/Strap/Quiver/Tent/Bedding 등이며 이번에는 Armor 이외 생활 장비를 만들지 않았다.

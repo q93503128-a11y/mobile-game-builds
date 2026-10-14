@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: FurnaceRecipe
   m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.RecipeDefinition
   Id: furnace
+  Category: 5
+  SortOrder: 12
   Result: {fileID: 11400000, guid: ea6225aea97d52640936634d9bccf11f, type: 2}
   ResultCount: 1
   Ingredients:
@@ -24,3 +26,5 @@ MonoBehaviour:
   ProcessingSeconds: 0
   Processing: 0
   Tier: {fileID: 11400000, guid: 5945e678712f7744cbe23200644f4d02, type: 2}
+  RequiredWorkbenchTier: 1
+  FutureUnlocks: []

@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: CampfireRecipe
   m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.RecipeDefinition
   Id: campfire
+  Category: 5
+  SortOrder: 1
   Result: {fileID: 11400000, guid: 5a3e33d479dac6843bb02efc1665a27d, type: 2}
   ResultCount: 1
   Ingredients:
@@ -24,3 +26,5 @@ MonoBehaviour:
   ProcessingSeconds: 0
   Processing: 0
   Tier: {fileID: 11400000, guid: b632d88d6c00461418a7100d186ff69c, type: 2}
+  RequiredWorkbenchTier: 1
+  FutureUnlocks: []
