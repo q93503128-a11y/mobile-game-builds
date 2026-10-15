@@ -4,7 +4,7 @@ namespace Wildfolk
 {
     public static class SceneFlow
     {
-        public const string HomeScene="MainMenu",GameplayScene="Wildfolk";
+        public const string HomeScene="MainMenu",GameplayScene="Wildfolk",MultiplayerScene="Multiplayer";
         private static SavedGame pending;
         private static SaveRepository repository;
         public static bool IsTransitioning {get;private set;}
@@ -20,5 +20,6 @@ namespace Wildfolk
         private static void Go(string scene){IsTransitioning=true;Time.timeScale=1;SceneManager.LoadScene(scene);}
         public static SavedGame TakePending(){var value=pending;pending=null;IsTransitioning=false;return value;}
         public static void HomeReady(){pending=null;IsTransitioning=false;}
+        public static void MultiplayerReady(){pending=null;IsTransitioning=false;Time.timeScale=1;}
     }
 }

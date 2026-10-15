@@ -1,0 +1,349 @@
+{
+  "checks": [
+    {
+      "check": "two-spawn",
+      "passed": true
+    },
+    {
+      "check": "host-walk",
+      "passed": true
+    },
+    {
+      "check": "client-walk",
+      "passed": true
+    },
+    {
+      "check": "host-sprint",
+      "passed": true
+    },
+    {
+      "check": "host-dash",
+      "passed": true
+    },
+    {
+      "check": "client-sprint",
+      "passed": true
+    },
+    {
+      "check": "client-dash",
+      "passed": true
+    },
+    {
+      "check": "host-appearance",
+      "passed": true
+    },
+    {
+      "check": "client-appearance",
+      "passed": true
+    },
+    {
+      "check": "two-images",
+      "passed": true
+    },
+    {
+      "check": "client-left-host-continues",
+      "passed": true
+    },
+    {
+      "check": "latejoin-existing-state",
+      "passed": true
+    },
+    {
+      "check": "host-left-client-ended",
+      "passed": true
+    }
+  ],
+  "snapshots": {
+    "proof-final-near-host": {
+      "Role": "host",
+      "Scene": "Multiplayer",
+      "Session": "Playing",
+      "Message": "",
+      "Failure": "",
+      "Sequence": 10,
+      "Frame": 58783,
+      "PlayTime": 383.7817687988281,
+      "Actors": [
+        {
+          "Owner": 0,
+          "Local": true,
+          "Server": true,
+          "Position": {
+            "x": -4.60399866104126,
+            "y": 3.5027999877929688
+          },
+          "Facing": {
+            "x": 0.0,
+            "y": -1.0
+          },
+          "Motion": 0,
+          "HP": 73,
+          "MaxHP": 100,
+          "Head": "iron_head",
+          "Body": "iron_body",
+          "Held": "wood_sword",
+          "HeadSprite": "iron_head_worn",
+          "BodySprite": "iron_body_worn",
+          "HeldSprite": "wood_sword"
+        },
+        {
+          "Owner": 1,
+          "Local": false,
+          "Server": true,
+          "Position": {
+            "x": 3.175999641418457,
+            "y": -2.729997396469116
+          },
+          "Facing": {
+            "x": 0.0,
+            "y": 1.0
+          },
+          "Motion": 0,
+          "HP": 58,
+          "MaxHP": 100,
+          "Head": "leather_head",
+          "Body": "leather_body",
+          "Held": "axe",
+          "HeadSprite": "leather_head_worn",
+          "BodySprite": "leather_body_worn",
+          "HeldSprite": "axe"
+        }
+      ]
+    },
+    "proof-final-near-client": {
+      "Role": "client",
+      "Scene": "Multiplayer",
+      "Session": "Playing",
+      "Message": "",
+      "Failure": "",
+      "Sequence": 8,
+      "Frame": 71215,
+      "PlayTime": 313.73919677734375,
+      "Actors": [
+        {
+          "Owner": 1,
+          "Local": true,
+          "Server": false,
+          "Position": {
+            "x": 3.1759982109069824,
+            "y": -2.786339282989502
+          },
+          "Facing": {
+            "x": 0.0,
+            "y": 1.0
+          },
+          "Motion": 0,
+          "HP": 58,
+          "MaxHP": 100,
+          "Head": "leather_head",
+          "Body": "leather_body",
+          "Held": "axe",
+          "HeadSprite": "leather_head_worn",
+          "BodySprite": "leather_body_worn",
+          "HeldSprite": "axe"
+        },
+        {
+          "Owner": 0,
+          "Local": false,
+          "Server": false,
+          "Position": {
+            "x": -4.6039958000183105,
+            "y": 3.548638343811035
+          },
+          "Facing": {
+            "x": 0.0,
+            "y": -1.0
+          },
+          "Motion": 0,
+          "HP": 73,
+          "MaxHP": 100,
+          "Head": "iron_head",
+          "Body": "iron_body",
+          "Held": "wood_sword",
+          "HeadSprite": "iron_head_worn",
+          "BodySprite": "iron_body_worn",
+          "HeldSprite": "wood_sword"
+        }
+      ]
+    },
+    "proof-client-left-host": {
+      "Role": "host",
+      "Scene": "Multiplayer",
+      "Session": "Playing",
+      "Message": "",
+      "Failure": "",
+      "Sequence": 10,
+      "Frame": 63234,
+      "PlayTime": 414.2494812011719,
+      "Actors": [
+        {
+          "Owner": 0,
+          "Local": true,
+          "Server": true,
+          "Position": {
+            "x": -4.60399866104126,
+            "y": 3.5027999877929688
+          },
+          "Facing": {
+            "x": 0.0,
+            "y": -1.0
+          },
+          "Motion": 0,
+          "HP": 73,
+          "MaxHP": 100,
+          "Head": "iron_head",
+          "Body": "iron_body",
+          "Held": "wood_sword",
+          "HeadSprite": "iron_head_worn",
+          "BodySprite": "iron_body_worn",
+          "HeldSprite": "wood_sword"
+        }
+      ]
+    },
+    "proof-client-left-client": {
+      "Role": "client",
+      "Scene": "MainMenu",
+      "Session": "Idle",
+      "Message": "",
+      "Failure": "",
+      "Sequence": 9,
+      "Frame": 78000,
+      "PlayTime": 344.30145263671875,
+      "Actors": []
+    },
+    "proof-latejoin-host": {
+      "Role": "host",
+      "Scene": "Multiplayer",
+      "Session": "Playing",
+      "Message": "",
+      "Failure": "",
+      "Sequence": 10,
+      "Frame": 85484,
+      "PlayTime": 578.1930541992188,
+      "Actors": [
+        {
+          "Owner": 0,
+          "Local": true,
+          "Server": true,
+          "Position": {
+            "x": -4.60399866104126,
+            "y": 3.5027999877929688
+          },
+          "Facing": {
+            "x": 0.0,
+            "y": -1.0
+          },
+          "Motion": 0,
+          "HP": 73,
+          "MaxHP": 100,
+          "Head": "iron_head",
+          "Body": "iron_body",
+          "Held": "wood_sword",
+          "HeadSprite": "iron_head_worn",
+          "BodySprite": "iron_body_worn",
+          "HeldSprite": "wood_sword"
+        },
+        {
+          "Owner": 2,
+          "Local": false,
+          "Server": true,
+          "Position": {
+            "x": 1.5,
+            "y": 0.0
+          },
+          "Facing": {
+            "x": 0.0,
+            "y": -1.0
+          },
+          "Motion": 0,
+          "HP": 100,
+          "MaxHP": 100,
+          "Head": "",
+          "Body": "",
+          "Held": "",
+          "HeadSprite": "",
+          "BodySprite": "",
+          "HeldSprite": ""
+        }
+      ]
+    },
+    "proof-latejoin-client": {
+      "Role": "client",
+      "Scene": "Multiplayer",
+      "Session": "Playing",
+      "Message": "",
+      "Failure": "",
+      "Sequence": 0,
+      "Frame": 15912,
+      "PlayTime": 80.79618072509766,
+      "Actors": [
+        {
+          "Owner": 0,
+          "Local": false,
+          "Server": false,
+          "Position": {
+            "x": -4.60399866104126,
+            "y": 3.5027999877929688
+          },
+          "Facing": {
+            "x": 0.0,
+            "y": -1.0
+          },
+          "Motion": 0,
+          "HP": 73,
+          "MaxHP": 100,
+          "Head": "iron_head",
+          "Body": "iron_body",
+          "Held": "wood_sword",
+          "HeadSprite": "iron_head_worn",
+          "BodySprite": "iron_body_worn",
+          "HeldSprite": "wood_sword"
+        },
+        {
+          "Owner": 2,
+          "Local": true,
+          "Server": false,
+          "Position": {
+            "x": 1.5,
+            "y": 0.0
+          },
+          "Facing": {
+            "x": 0.0,
+            "y": -1.0
+          },
+          "Motion": 0,
+          "HP": 100,
+          "MaxHP": 100,
+          "Head": "",
+          "Body": "",
+          "Held": "",
+          "HeadSprite": "",
+          "BodySprite": "",
+          "HeldSprite": ""
+        }
+      ]
+    },
+    "proof-host-left-host": {
+      "Role": "host",
+      "Scene": "MainMenu",
+      "Session": "Idle",
+      "Message": "",
+      "Failure": "",
+      "Sequence": 10,
+      "Frame": 85513,
+      "PlayTime": 579.096435546875,
+      "Actors": []
+    },
+    "proof-host-left-client": {
+      "Role": "client",
+      "Scene": "MainMenu",
+      "Session": "Idle",
+      "Message": "net.host_left",
+      "Failure": "",
+      "Sequence": 0,
+      "Frame": 17113,
+      "PlayTime": 85.71788024902344,
+      "Actors": []
+    }
+  }
+}

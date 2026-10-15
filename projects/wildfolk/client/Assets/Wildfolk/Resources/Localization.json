@@ -2013,20 +2013,6 @@
       ]
     },
     {
-      "Key": "home.multi_title",
-      "Values": [
-        "Beyond the campfire",
-        "모닥불 너머의 동료"
-      ]
-    },
-    {
-      "Key": "home.multi_body",
-      "Values": [
-        "Online sessions are unavailable in this version. Explore the wild in Single Player.",
-        "이 버전에서는 온라인 세션을 이용할 수 없습니다. 싱글 플레이로 야생을 탐험하세요."
-      ]
-    },
-    {
       "Key": "home.save_unavailable",
       "Values": [
         "Your saved world could not be opened.",
@@ -2052,6 +2038,181 @@
       "Values": [
         "At the camp",
         "야영지에서"
+      ]
+    },
+    {
+      "Key": "net.internet",
+      "Values": [
+        "Internet · Room Code",
+        "인터넷 · 참가 코드"
+      ]
+    },
+    {
+      "Key": "net.local",
+      "Values": [
+        "Local Network",
+        "로컬 네트워크"
+      ]
+    },
+    {
+      "Key": "net.room_code",
+      "Values": [
+        "Room Code",
+        "참가 코드"
+      ]
+    },
+    {
+      "Key": "net.address",
+      "Values": [
+        "Host IPv4 address",
+        "호스트 IPv4 주소"
+      ]
+    },
+    {
+      "Key": "net.code_placeholder",
+      "Values": [
+        "Enter a Room Code",
+        "참가 코드 입력"
+      ]
+    },
+    {
+      "Key": "net.address_placeholder",
+      "Values": [
+        "127.0.0.1:7777",
+        "127.0.0.1:7777"
+      ]
+    },
+    {
+      "Key": "net.host",
+      "Values": [
+        "Host Game",
+        "방 만들기"
+      ]
+    },
+    {
+      "Key": "net.join",
+      "Values": [
+        "Join",
+        "참가"
+      ]
+    },
+    {
+      "Key": "net.enter",
+      "Values": [
+        "Enter Game",
+        "게임 입장"
+      ]
+    },
+    {
+      "Key": "net.leave",
+      "Values": [
+        "Leave session",
+        "세션 나가기"
+      ]
+    },
+    {
+      "Key": "net.camp",
+      "Values": [
+        "Lowfire · Cooperative camp",
+        "Lowfire · 협동 야영지"
+      ]
+    },
+    {
+      "Key": "net.health",
+      "Values": [
+        "Health  {0} / {1}",
+        "체력  {0} / {1}"
+      ]
+    },
+    {
+      "Key": "net.intro",
+      "Values": [
+        "Meet at the camp. Choose Internet or Local Network.",
+        "야영지에서 만나세요. 인터넷 또는 로컬 네트워크를 선택하세요."
+      ]
+    },
+    {
+      "Key": "net.connecting",
+      "Values": [
+        "Connecting…",
+        "연결 중…"
+      ]
+    },
+    {
+      "Key": "net.host_ready",
+      "Values": [
+        "Your camp is open. Share the code, then enter together.",
+        "야영지가 열렸습니다. 참가 정보를 공유하고 입장하세요."
+      ]
+    },
+    {
+      "Key": "net.waiting_host",
+      "Values": [
+        "Connected. Waiting for the host to enter the camp.",
+        "연결되었습니다. 호스트가 입장할 때까지 기다려 주세요."
+      ]
+    },
+    {
+      "Key": "net.entering",
+      "Values": [
+        "Entering the camp…",
+        "야영지 입장 중…"
+      ]
+    },
+    {
+      "Key": "net.code_value",
+      "Values": [
+        "Room Code   {0}",
+        "참가 코드   {0}"
+      ]
+    },
+    {
+      "Key": "net.local_ready",
+      "Values": [
+        "Local network · Port 7777",
+        "로컬 네트워크 · 포트 7777"
+      ]
+    },
+    {
+      "Key": "net.invalid_code",
+      "Values": [
+        "Check the Room Code and try again.",
+        "참가 코드를 확인하고 다시 시도하세요."
+      ]
+    },
+    {
+      "Key": "net.invalid_address",
+      "Values": [
+        "Enter the host’s IPv4 address and optional port.",
+        "호스트의 IPv4 주소를 입력하세요. 포트도 지정할 수 있습니다."
+      ]
+    },
+    {
+      "Key": "net.connection_failed",
+      "Values": [
+        "Could not join the camp. Check the connection and try again.",
+        "야영지에 참가하지 못했습니다. 연결을 확인하고 다시 시도하세요."
+      ]
+    },
+    {
+      "Key": "net.online_unavailable",
+      "Values": [
+        "Online play could not be reached. Try again or choose Local Network.",
+        "온라인 연결을 이용할 수 없습니다. 다시 시도하거나 로컬 네트워크를 선택하세요."
+      ]
+    },
+    {
+      "Key": "net.room_full",
+      "Values": [
+        "This camp is full.",
+        "이 야영지는 인원이 가득 찼습니다."
+      ]
+    },
+    {
+      "Key": "net.host_left",
+      "Values": [
+        "The host has left. This session has ended.",
+        "호스트가 나가 세션이 종료되었습니다."
       ]
     }
   ]

@@ -20,7 +20,7 @@ Krita MCP의 native path/ellipse/line/polygon으로 글자 로고와 수첩 패�
 
 앱 시작 MainMenu → Home Continue / Single Player / Multiplayer / Settings → Gameplay(Wildfolk)를 유지한다. Continue는 SaveRepository.Read와 SaveGameRules.Validate를 공유해 primary/backup/체크섬/내용을 확인하고 선택 시 다시 검사한다. Snapshot은 SceneFlow를 통해 한 번 전달한다. Single Player는 파일이 있으면 교체 확인을 받고 시작 시 파일을 삭제하지 않으며 다음 정상 저장이 기존 atomic/backup 규칙으로 교체한다.
 
-Home/Pause Settings는 같은 SurvivalUiBuilder.Settings와 SettingsPanel/UserPreferences/LocalSettings를 사용한다. EN/KO, Control Size, Master/Music/SFX와 Flush 동선을 유지한다. 실제 BGM/SFX 콘텐츠는 기존처럼 비어 있다. Multiplayer는 이용 불가 안내와 뒤로/싱글 진입만 제공하며 실제 네트워크는 없다.
+Home/Pause Settings는 같은 SurvivalUiBuilder.Settings와 SettingsPanel/UserPreferences/LocalSettings를 사용한다. EN/KO, Control Size, Master/Music/SFX와 Flush 동선을 유지한다. 실제 BGM/SFX 콘텐츠는 기존처럼 비어 있다. Multiplayer는 후속 Foundation 1에서 실제 Host/Join과 별도 협동 야영지로 연결했다. 현재 구현은 [MULTIPLAYER_FOUNDATION](MULTIPLAYER_FOUNDATION.md)을 따른다. 이 문서의 아래 Lowfire 최초 Home 재디자인 검수/시간은 당시 기록이다.
 
 Pause의 플레이어용 Load Game 오브젝트/콜백/문구 키를 제거했다. Continue/Save game/Settings/Save & return home 네 행동을 간격에 맞게 재배치하고 패널 높이를 줄였다. WorldSaveService.Load와 Editor Developer Save/Load는 보존했다. 사용되지 않는 LoadFromMenu wrapper만 정리했다. ConfigurePauseActions는 Editor authoring 단계에서 기존 씬과 재생성 경로를 함께 갱신한다. Runtime의 임시 숨김/우회 컴포넌트가 아니다.
 
@@ -74,3 +74,8 @@ EditMode는 시작 씬/기존 Content 참조/양 언어/브랜드 키다. PlayMo
 | 최소 자동검사 결과·문서·최종 검토 | 20:24:47 | 20:29:03 | 4분16초 |
 
 Git 마무리 시작은 20:29:03이며 그 전까지 총25분이다. EditMode는 20:24경 최종 시각 확인과 병행했고 PlayMode는 20:25:09에 시작해 문서 작업과 병행했다. Test Runner 내부 시간은 위 표와 같으며 기동/Import/종료 시간을 포함하지 않는다. commit/push/원격 확인 구간과 전체 경과는 완료 보고에 실제 종료 시각으로 추가한다.
+
+
+## Home 소수정 / Multiplayer Foundation 1
+
+Single Player/Multiplayer/Settings의 Image는 기본 tint를 투명하게 하고 hover/focus/press 때만 낮은 농도의 강조를 준다. raycast 영역과 버튼 callback은 유지하며 Continue의 박스와 야전 수첩/배경은 바꾸지 않았다. 기존 이용 불가 페이지는 동일 수첩 재질의 Host/Join, Internet/Local Network, 참가 입력, 실제 발급 코드, Enter/Back 화면으로 대체했다. 이전 home.multi_title/body 미사용 번역 키는 제거했다. 새 UI/검수는 MULTIPLAYER_FOUNDATION.md에 기록한다.

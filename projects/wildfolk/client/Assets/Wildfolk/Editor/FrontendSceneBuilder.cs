@@ -56,19 +56,14 @@ namespace Wildfolk.Editor
             home.SettingsButton=JournalAction(panel.transform,"Settings","ui.settings.title",new Vector2(-44,-255),new Vector2(300,66),home.OpenSettings,false);
             home.Status=Text("Save Status",panel.transform,"",new Vector2(26,-321),new Vector2(422,42),18,TextAnchor.MiddleLeft);home.Status.color=new Color32(106,57,38,255);
             home.Settings=SurvivalUiBuilder.Settings(safe,prefs,home.ShowHome);home.Settings.SetActive(false);
-            var multi=QualityUiBuilder.Surface(safe,"Multiplayer",new Vector2(900,630),out home.Multiplayer);
-            var icon=Image("Camp",multi.transform,"campfire",new Vector2(.5f,.5f),new Vector2(0,173),new Vector2(100,100));icon.preserveAspect=true;
-            Text("Title",multi.transform,"home.multi_title",new Vector2(0,72),new Vector2(770,70),38);
-            Text("Availability",multi.transform,"home.multi_body",new Vector2(0,-34),new Vector2(740,120),26);
-            Action(multi.transform,"Single Player","home.single",new Vector2(-140,-219),new Vector2(360,72),home.SinglePlayer,true);
-            Action(multi.transform,"Back","ui.action.back",new Vector2(250,-219),new Vector2(250,72),home.ShowHome,false);home.Multiplayer.SetActive(false);
+            home.Multiplayer=MultiplayerUiBuilder.Build(safe,home);home.Multiplayer.SetActive(false);
             var confirm=QualityUiBuilder.Surface(safe,"New World Confirmation",new Vector2(940,500),out home.Confirm);
             Text("Title",confirm.transform,"home.confirm_title",new Vector2(0,153),new Vector2(820,70),38);
             Text("Message",confirm.transform,"home.confirm_body",new Vector2(0,26),new Vector2(810,142),26);
             Action(confirm.transform,"Cancel","ui.action.cancel",new Vector2(-230,-160),new Vector2(340,72),home.ShowHome,false);
             Action(confirm.transform,"Start New World","home.new_action",new Vector2(190,-160),new Vector2(400,72),home.BeginNew,true);home.Confirm.SetActive(false);
             var events=new GameObject("EventSystem",typeof(EventSystem),typeof(InputSystemUIInputModule));events.GetComponent<EventSystem>().sendNavigationEvents=false;var input=events.GetComponent<InputSystemUIInputModule>();input.UnassignActions();input.actionsAsset=uiActions;input.point=point;input.leftClick=click;
-            EditorSceneManager.SaveScene(scene,ScenePath);EditorBuildSettings.scenes=new[]{new EditorBuildSettingsScene(ScenePath,true),new EditorBuildSettingsScene(GameplaySceneBuilder.ScenePath,true)};AssetDatabase.SaveAssets();
+            EditorSceneManager.SaveScene(scene,ScenePath);EditorBuildSettings.scenes=new[]{new EditorBuildSettingsScene(ScenePath,true),new EditorBuildSettingsScene(GameplaySceneBuilder.ScenePath,true),new EditorBuildSettingsScene(MultiplayerSceneBuilder.ScenePath,true)};AssetDatabase.SaveAssets();
         }
         private static readonly Color32 Ink=new Color32(49,63,48,255);
         private static Button JournalAction(Transform parent,string name,string key,Vector2 position,Vector2 size,UnityEngine.Events.UnityAction action,bool primary)
@@ -78,7 +73,7 @@ namespace Wildfolk.Editor
             if(primary){var arrow=Text("Arrow",image.transform,"›",new Vector2(size.x*.5f-28,0),new Vector2(32,44),34);arrow.color=label.color;}
             var button=Button(image);var colors=button.colors;
             if(primary){colors.normalColor=image.color;image.color=Color.white;colors.highlightedColor=new Color32(156,106,71,255);colors.pressedColor=new Color32(100,68,46,255);colors.disabledColor=new Color32(143,140,118,255);}
-            else{colors.highlightedColor=new Color(1,.95f,.85f,1);colors.pressedColor=new Color(.66f,.72f,.59f,1);}
+            else{image.color=Color.white;colors.normalColor=Color.clear;colors.highlightedColor=colors.selectedColor=new Color(.28f,.34f,.22f,.055f);colors.pressedColor=new Color(.28f,.34f,.22f,.12f);}
             button.colors=colors;
             UnityEventTools.AddPersistentListener(button.onClick,action);return button;
         }

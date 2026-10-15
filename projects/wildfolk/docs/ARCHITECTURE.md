@@ -35,7 +35,7 @@ StationProcessing은 데이터의 Mode를 읽어 Campfire Batch 또는 순수 Pr
 
 Inventory는 한 배열, Chest는 상자별 한 배열이다. Transfer는 두 모델을 변경한 뒤 알린다. 소분은 선택 수량을 들고 있는 UI 상태를 거쳐 명시적인 목적지로 부분 이동하고, Drop은 안전한 위치에 생성이 성공한 뒤 소비한다. Drag Ghost는 표시일 뿐 데이터 정본이 아니다. 상자 소분 선택도 테두리로 표시하고 이벤트는 종료 시 해제한다. UI 상태/Chest 변경 시 선택과 드래그를 취소한다.
 
-세계 진행은 플레이어 입력 Running과 분리한다. Inventory는 세계를 진행하고, Singleplayer Pause/Defeat는 동결하며, Multiplayer 정책은 전역 동결을 하지 않는다. 실제 네트워크는 없다. 월드 Seed/Delta와 재화는 Save/Load v4(v1~v3 migration)이며 사용자 설정 PlayerPrefs 및 미구현 Account 저장과 구분한다.
+세계 진행은 플레이어 입력 Running과 분리한다. Inventory는 세계를 진행하고, Singleplayer Pause/Defeat는 동결하며, Multiplayer 정책은 전역 동결을 하지 않는다. Player 상태의 실제 네트워크는 Multiplayer 별도 야영지에서 제공한다. 기존 생존 World의 네트워크화는 아직 없다. 월드 Seed/Delta와 재화는 Save/Load v4(v1~v3 migration)이며 사용자 설정 PlayerPrefs 및 미구현 Account 저장과 구분한다.
 
 해상도 도구는 기존 Game View만 Repaint하고 Play Unfocused를 적용한다. Focus/GetWindow/Windows 입력 호출은 하지 않는다. 자동 테스트는 별도 hidden headless Unity와 내부 가상 포인터를 사용한다. 로그/검증 복사본은 Git에서 제외한다. 검수 사진의 시설/아이템/시간 fixture는 Play 종료 때 버린다.
 
@@ -51,7 +51,7 @@ Inventory는 한 배열, Chest는 상자별 한 배열이다. Transfer는 두 �
 - PrefabPool/IPoolReset: 반복되는 적/WorldPickup의 생명주기·HP·피격·AI·수량 초기화.
 - Editor DeveloperHarness/Profile/Window/ProjectDataValidator: 제품 Runtime/HUD와 분리한 도구와 데이터 검사.
 
-Save/Load는 영구 저장 v4(v1~v3 호환)이며 Cloud/계정/실제 네트워크 권위를 구현하지 않는다. 미래 Unlock/무기 공격 방식/Vehicle/Animal Breeding은 데이터 확장 방향과 실제 제공 기능을 구분한다.
+Save/Load는 영구 저장 v4(v1~v3 호환)이며 Cloud/계정 저장을 구현하지 않는다. 멀티 이동/Player 상태 권위는 별도 NetworkSession에서 제공하며 이 저장 파일을 사용하지 않는다. 미래 Unlock/무기 공격 방식/Vehicle/Animal Breeding은 데이터 확장 방향과 실제 제공 기능을 구분한다.
 
 ## 캐릭터 패스 책임
 
@@ -87,7 +87,7 @@ L/LanguageCatalog/LocalizedLabel은 Resources Localization 데이터와 즉시 R
 
 ## Home / 씬 전환
 
-Build Settings는 MainMenu→Wildfolk다. FrontendSceneBuilder는 기존 Gameplay 씬/Prefab을 재생성하지 않고 공유 Rules 참조, Pause 행동 정리, 초상화 손 비율을 갱신한 뒤 MainMenu를 저장한다. Build Playable Scene의 마지막에도 Home 빌더를 호출하므로 재생성 후 시작 씬이 사라지지 않는다.
+Build Settings는 MainMenu/싱글 Wildfolk/멀티 Multiplayer다. FrontendSceneBuilder는 기존 Gameplay 씬/Prefab을 재생성하지 않고 공유 Rules 참조, Pause 행동 정리, 초상화 손 비율을 갱신한 뒤 MainMenu를 저장한다. Build Playable Scene의 마지막에도 Home 빌더를 호출하므로 재생성 후 시작 씬이 사라지지 않는다.
 
 - SceneFlow: NewGame/Continue/Home/Restart/Load의 유일한 SceneManager.LoadScene 경계, 전환 중 중복 진입 차단, Time.timeScale 복원, 일회성 로드 Snapshot 전달.
 - SaveGameRules: 기존 migration/SaveValidation/적 검증 코드를 WorldSaveService에서 분리해 Home도 공유한다. authored Player Prefab/World/Catalog/종별 데이터 참조만 보관하며 세계 GameObject를 만들지 않는다.
@@ -100,3 +100,16 @@ Quiet Woodland는 SpriteRenderer/Light만 사용하며 WorldGenerator,CreatureMe
 
 
 Lowfire Home은 같은 FrontendSceneBuilder에서 제작한다. JournalAction은 이어하기/종이 위 보조 행동의 시각 표현만 담당하며 HomeScreen/SceneFlow/SaveRepository의 기존 기능을 재사용한다. ConfigurePauseActions는 Editor 씬 제작 시 이전 Load Game 오브젝트를 제거하고 네 행동을 재배치한다. Runtime 호환용 숨김/우회 컴포넌트는 추가하지 않는다. 쓰이지 않게 된 LoadFromMenu wrapper는 제거했으며 실제 WorldSaveService.Load는 유지한다. Krita 타이틀/수첩은 UI Sprite 두 개이고 월드 아트/시뮬레이션 코드는 변경하지 않았다.
+
+
+## Multiplayer Foundation 1
+
+- NetworkSession: 단일 NetworkManager/UnityTransport의 Host/Join/approval/NGO 씬 로드/접속 해제/종료 책임. prefab 등록은 양쪽 프로세스에서 연결 시작 전에 수행한다. Manager 및 Session 한 root만 DontDestroyOnLoad로 씬을 넘는다. Host 종료 시 모두 종료하며 migration은 없다.
+- IRoomConnection → RelayRoomConnection/LocalRoomConnection: 인터넷의 실제 Relay+DTLS 코드 발급/참가와 명시적인 IPv4 로컬 접속을 분리한다. IP를 Room Code로 표시하지 않는다. SDK의 익명 인증은 Relay 연결용이며 제품 Account/Login 기능이 아니다.
+- NetworkPlayer: owner 입력 RPC만 수락하고 Host에서 기존 PlayerMotor/PlayerLocomotion/StaminaModel/Health/PlayerEquipment를 실행한다. NGO server NetworkTransform/NetworkRigidbody2D가 위치를 전달하고 Motion/Status 두 상태는 server write만 허용한다.
+- PlayerInputCommands.MovementAuthority: 싱글은 기존 직접 적용, 멀티는 입력 전달 adapter. Primary/Interact가 없는 이동 전용 actor도 같은 입력 장치 adapter를 사용한다. 공통 Avatar의 읽기 전용 MovingOverride는 원격 표현용이며 이동 권위가 아니다.
+- NetworkPlayer는 기존 Player의 prefab variant다. movement/armor 코드를 복제하지 않고 이번 범위 밖인 상호작용 component를 authoring에서 제거했다. replica의 Motor/Locomotion/Stats/Survival은 실행하지 않는다.
+- MultiplayerArena/MultiplayerMenu는 상태·언어 이벤트로 UI를 갱신한다. 야영지는 static Sprite/경계이며 WorldGenerator/Population/Save/Creature AI/시설 시뮬레이션이 없다. WorldNavigation.StaticAreaSize는 같은 이동·대시 충돌 경계에 유한한 검수 구역을 제공한다.
+- 씬 전환의 정책은 SceneFlow를 유지하고 네트워크 씬 로드는 공식 NGO SceneManager가 전파한다. Single Player/Continue는 기존 SceneFlow/SaveRepository 경로다.
+
+전송 빈도·검증·제한과 미래 확장은 MULTIPLAYER_FOUNDATION.md를 따른다.

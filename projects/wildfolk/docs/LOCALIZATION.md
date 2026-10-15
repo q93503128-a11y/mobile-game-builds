@@ -17,3 +17,6 @@ Home은 home.* 키를 기존 en/ko Catalog에서 관리한다. Continue/Single P
 
 
 Lowfire 표시 이름은 brand.name(en/ko 공통 Lowfire)과 Home의 Krita wordmark PNG에 반영했다. home.camp(At the camp/야영지에서)를 사용하며 기존 eyebrow/tagline/CHOOSE YOUR PATH와 중복 Pause Load 문구 키를 제거했다. 저장 일차는 Day {0} · Saved world / {0}일차 · 저장된 세계로 간결하게 표시한다. 로고는 고정 영문 브랜드 자산이고 행동/안내는 기존 Noto Sans KR와 Localization을 사용한다. 내부 namespace, wildfolk.user.* 키와 저장 위치는 바꾸지 않았다. PlayerSettings.productName도 저장·배포 식별자에 영향이 없도록 이번 표시 UI 작업에서는 유지한다.
+
+
+Multiplayer Foundation 1의 net.*는 Internet/Local Network 구분, Host/Join/Enter/Leave, Room Code/IPv4 입력, 대기·잘못된 입력·접속 실패·정원 초과·Host 종료 안내, HP/야영지 문구의 en/ko 정본이다. raw SDK 오류는 제품 UI에 출력하지 않는다. 익명 Relay 인증 정보/각 기기의 로컬 언어는 다른 Player 상태로 동기화하지 않는다.

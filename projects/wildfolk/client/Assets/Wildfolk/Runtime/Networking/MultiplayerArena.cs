@@ -1,0 +1,28 @@
+using UnityEngine;
+using UnityEngine.UI;
+
+namespace Wildfolk
+{
+    public sealed class MultiplayerArena : MonoBehaviour
+    {
+        public CameraFollow Follow;
+        public VirtualJoystick Joystick;
+        public Text HealthLabel,CampLabel;
+        public Button DashButton;
+        public NetworkPlayer LocalPlayer {get;private set;}
+        private void Start(){SceneFlow.MultiplayerReady();if(NetworkSession.Instance!=null){NetworkSession.Instance.ArenaReady();NetworkSession.Instance.Changed+=RefreshCamp;}RefreshCamp();}
+        private void OnEnable()=>L.Changed+=RefreshText;
+        private void OnDisable()=>L.Changed-=RefreshText;
+        private void OnDestroy(){if(LocalPlayer!=null)LocalPlayer.Health.Changed-=RefreshHealth;if(NetworkSession.Instance!=null)NetworkSession.Instance.Changed-=RefreshCamp;}
+        public void BindLocal(NetworkPlayer player)
+        {
+            LocalPlayer=player;Follow.Target=player.transform;Joystick.Session=player.Commands.Session;player.GetComponent<PlayerInputAdapter>().Joystick=Joystick;Joystick.gameObject.SetActive(true);DashButton.interactable=true;
+            player.Health.Changed+=RefreshHealth;RefreshText();
+        }
+        public void Dash(){if(LocalPlayer!=null)LocalPlayer.Commands.Dash();}
+        public void Leave(){if(NetworkSession.Instance!=null){NetworkSession.Instance.Leave();}else SceneFlow.Home(SceneFlow.Repository);}
+        private void RefreshText(){RefreshHealth();RefreshCamp();}
+        private void RefreshHealth(){HealthLabel.text=LocalPlayer==null ? string.Empty : L.Format("net.health",LocalPlayer.Health.Current,LocalPlayer.Health.Maximum);}
+        private void RefreshCamp()=>CampLabel.text=L.Text("net.camp");
+    }
+}

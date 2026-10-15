@@ -16,7 +16,7 @@ namespace Wildfolk
             if(keyboard!=null)
             {
                 if(move.sqrMagnitude<.001f)move=new Vector2((keyboard.dKey.isPressed ? 1 : 0)-(keyboard.aKey.isPressed ? 1 : 0),(keyboard.wKey.isPressed ? 1 : 0)-(keyboard.sKey.isPressed ? 1 : 0));
-                if(keyboard.spaceKey.wasPressedThisFrame || keyboard.spaceKey.isPressed && Commands.Primary.Kind==PrimaryActionKind.Attack)Commands.Attack();
+                if(Commands.Primary!=null && (keyboard.spaceKey.wasPressedThisFrame || keyboard.spaceKey.isPressed && Commands.Primary.Kind==PrimaryActionKind.Attack))Commands.Attack();
                 if(keyboard.leftShiftKey.wasPressedThisFrame)Commands.Dash();
                 if(keyboard.eKey.wasPressedThisFrame)Commands.Interact();if(keyboard.tabKey.wasPressedThisFrame)Commands.Inventory();if(keyboard.escapeKey.wasPressedThisFrame)Commands.Pause();
             }

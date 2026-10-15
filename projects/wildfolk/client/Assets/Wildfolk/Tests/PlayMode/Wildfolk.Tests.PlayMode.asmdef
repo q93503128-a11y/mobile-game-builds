@@ -1,5 +1,12 @@
 {
   "name": "Wildfolk.Tests.PlayMode",
-  "references": ["Wildfolk.Runtime", "Unity.InputSystem", "UnityEngine.UI"],
-  "optionalUnityReferences": ["TestAssemblies"]
+  "references": [
+    "Wildfolk.Runtime",
+    "Unity.InputSystem",
+    "UnityEngine.UI",
+    "Unity.Netcode.Runtime"
+  ],
+  "optionalUnityReferences": [
+    "TestAssemblies"
+  ]
 }

@@ -50,6 +50,9 @@ namespace Wildfolk
         public PlaceableDefinition ActivePlaceable => SelectedItem == null ? null : SelectedItem.Placement;
         public event Action Changed;
 
+        public void ApplyReplicatedAppearance(ItemDefinition head,ItemDefinition body,ItemDefinition held)
+        {RestoreArmor(head,body);ShowHeldItem(held);}
+
         private void Start()
         {
             Inventory.Model.Changed += Refresh;
@@ -65,7 +68,11 @@ namespace Wildfolk
         {
             var stack = Inventory.SelectedStack;
             var item = stack.IsEmpty ? null : stack.Item;
-            var next = stack.IsEmpty ? null : stack.Item.Tool;
+            ShowHeldItem(item);
+        }
+        private void ShowHeldItem(ItemDefinition item)
+        {
+            var next = item==null ? null : item.Tool;
             if (item == SelectedItem && next == ActiveTool && HeldVisual.enabled == (next != null)) return;
             Combat.CancelAttack();
             SelectedItem = item;
