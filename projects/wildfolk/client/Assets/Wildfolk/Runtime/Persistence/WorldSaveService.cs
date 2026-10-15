@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 namespace Wildfolk
 {
     public sealed class WorldSaveService : MonoBehaviour
@@ -14,33 +13,11 @@ namespace Wildfolk
         public bool AutoSaveEnabled=true;
         public SaveRepository Repository {get;set;}
         public string LastError {get;private set;}
-        private static SavedGame pending;
+        public SaveGameRules Rules;
         private void Awake()
-        {
-#if UNITY_EDITOR
-            var directory=Path.GetFullPath(Path.Combine(Application.dataPath,"../UserData"));
-#else
-            var directory=Application.persistentDataPath;
-#endif
-            Repository=new SaveRepository(Path.Combine(directory,"world-v1.json"));
-        }
-        private void Start(){if(pending==null)return;var game=pending;pending=null;Apply(game);}
-        public void Validate(SavedGame game)
-        {
-            var growth=Player.GetComponent<PlayerProgression>().Definition;var locomotion=Player.GetComponent<PlayerLocomotion>().Definition;
-            if(game.Version==1)
-            {if(game.Player==null)throw new InvalidDataException("Missing player");game.Player.Growth=GrowthValidation.FromLegacy(game.Player.XP,growth);game.Player.HeadArmor=game.Player.BodyArmor=null;game.Player.Stamina=locomotion.MaximumStamina;game.Player.StaminaWait=0;game.Player.SeenRecipes=Array.Empty<string>();game.Version=2;}
-            if(game.Version==2){SaveValidation.Validate(game,Catalog,World.Definition,World.Animals.Definition,Player.Model.Capacity,Player.GetComponent<Health>().Definition.MaximumHealth,Player.GetComponent<PlayerSurvival>().Definition,growth,locomotion);SaveMigration.PopulationFromV2(game,World.Definition);}
-            if(game.Version==3){SaveValidation.Validate(game,Catalog,World.Definition,World.Animals.Definition,Player.Model.Capacity,Player.GetComponent<Health>().Definition.MaximumHealth,Player.GetComponent<PlayerSurvival>().Definition,growth,locomotion);SaveMigration.EcologyFromV3(game,World.Definition,World.Animals.Definition);}
-            SaveValidation.Validate(game,Catalog,World.Definition,World.Animals.Definition,Player.Model.Capacity,Player.GetComponent<Health>().Definition.MaximumHealth,Player.GetComponent<PlayerSurvival>().Definition,growth,locomotion);
-            ValidateEnemies(game);
-        }
-        private void ValidateEnemies(SavedGame game)
-        {
-            var spawner=GetComponent<ZombieSpawner>();if(game.NightCreatures==null || game.NightCreatures.Length>spawner.Definition.HardCap)throw new InvalidDataException("Invalid nocturnal population");
-            foreach(var state in game.NightCreatures){if(state==null)throw new InvalidDataException("Missing nocturnal actor");var prefab=spawner.SpeciesPrefab(state.Species);if(state.HP<=0 || state.HP>prefab.OwnHealth.Maximum || !World.Map.Bounds.Contains(state.Position) || float.IsNaN(state.Position.x) || float.IsNaN(state.Position.y) || !string.IsNullOrEmpty(state.Variant) && (prefab.Variant==null || prefab.Variant.Definition.Id!=state.Variant))throw new InvalidDataException("Invalid nocturnal actor");}
-            var goblins=GetComponent<GoblinSpawner>();if(game.GoblinEcology!=null){if(game.GoblinEcology.Actors.Length>goblins.CampDefinition.HardCap)throw new InvalidDataException("Faction cap exceeded");foreach(var actor in game.GoblinEcology.Actors)if(actor.HP>goblins.Prefab.OwnHealth.Maximum)throw new InvalidDataException("Invalid faction health");}
-        }
+        {Repository=SceneFlow.Repository;if(Rules==null)Rules=Resources.Load<SaveGameRules>("SaveGameRules");}
+        private void Start(){var game=SceneFlow.TakePending();if(game!=null)Apply(game);}
+        public void Validate(SavedGame game)=>Rules.Validate(game);
         public SavedGame Capture()
         {
             var health=Player.GetComponent<Health>();var needs=Player.GetComponent<PlayerSurvival>();var progression=Player.GetComponent<PlayerProgression>();
@@ -69,9 +46,10 @@ namespace Wildfolk
             SavedGame game;
             try{game=Repository.Read(Validate);LastError=null;}
             catch(Exception error)when(error is InvalidDataException || error is IOException || error is ArgumentException || error is InvalidOperationException){LastError=error.Message;PlayerFeedback.ShowKey("feedback.load_failed");return false;}
-            pending=game;WorldGenerator.SelectedSeed=game.Seed;Time.timeScale=1;SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);return true;
+            SceneFlow.Continue(game,Repository);return true;
         }
         public void LoadFromMenu()=>Load();
+        public void SaveAndHome(){if(!Save()){PlayerFeedback.ShowKey("feedback.save_failed");return;}GetComponent<UserPreferences>().Flush();AutoSaveEnabled=false;SceneFlow.Home(Repository);}
         public void Apply(SavedGame game)
         {
             Validate(game);World.Session.Resume();World.Session.CloseInventory();World.Session.CloseCharacter();World.Session.CloseSkillTree();if(World.Seed!=game.Seed || World.Renewal.HasChanges)World.Generate(game.Seed);

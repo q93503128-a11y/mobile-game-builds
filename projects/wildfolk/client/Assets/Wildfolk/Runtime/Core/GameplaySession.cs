@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace Wildfolk
 {
@@ -42,6 +41,6 @@ namespace Wildfolk
             State = value;
             StateChanged?.Invoke();
         }
-        public void Restart(){WorldGenerator.SelectedSeed=WorldGenerator.RandomSeed();SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);}
+        public void Restart()=>SceneFlow.NewGame();
     }
 }

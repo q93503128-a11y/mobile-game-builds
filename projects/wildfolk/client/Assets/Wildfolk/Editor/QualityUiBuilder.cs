@@ -19,7 +19,19 @@ namespace Wildfolk.Editor
             portrait.Body=Image("Body",root,"white",new Vector2(.5f,.5f),Vector2.zero,new Vector2(150,150));
             Image("Left Hand",root,"player_hand",new Vector2(.5f,.5f),new Vector2(-85,-38),new Vector2(36,36));Image("Right Hand",root,"player_hand",new Vector2(.5f,.5f),new Vector2(85,-38),new Vector2(36,36));
             portrait.LeftHand=Image("Left Hand Gear",root,"white",new Vector2(.5f,.5f),new Vector2(-85,-38),new Vector2(34,38));portrait.RightHand=Image("Right Hand Gear",root,"white",new Vector2(.5f,.5f),new Vector2(85,-38),new Vector2(34,38));
-            portrait.Head=Image("Head",root,"white",new Vector2(.5f,.5f),Vector2.zero,new Vector2(150,150));Image("Left Eye",root,"player_eye",new Vector2(.5f,.5f),new Vector2(-18,-28),new Vector2(10,13));Image("Right Eye",root,"player_eye",new Vector2(.5f,.5f),new Vector2(18,-28),new Vector2(10,13));return portrait;
+            portrait.Head=Image("Head",root,"white",new Vector2(.5f,.5f),Vector2.zero,new Vector2(150,150));Image("Left Eye",root,"player_eye",new Vector2(.5f,.5f),new Vector2(-18,-28),new Vector2(10,13));Image("Right Eye",root,"player_eye",new Vector2(.5f,.5f),new Vector2(18,-28),new Vector2(10,13));AlignHands(portrait,player);return portrait;
+        }
+        internal static void AlignHands(PlayerPortrait portrait,PlayerInventory player)
+        {
+            var facing=player.GetComponent<CharacterFacing>();var body=player.GetComponent<PlayerAvatar>().Body.Find("Body").GetComponent<SpriteRenderer>();
+            var ratio=150/(body.sprite.bounds.size.x*body.transform.localScale.x);
+            var size=(Vector2)facing.LeftHand.GetComponent<SpriteRenderer>().sprite.bounds.size*facing.LeftHand.localScale.x*ratio;
+            foreach(var side in new[]{-1,1})
+            {
+                var position=new Vector2(side*facing.HandSeparation,-facing.HandForward)*ratio;
+                var baseHand=(RectTransform)portrait.transform.Find(side<0 ? "Left Hand" : "Right Hand");baseHand.anchoredPosition=position;baseHand.sizeDelta=size;
+                var gear=(RectTransform)(side<0 ? portrait.LeftHand : portrait.RightHand).transform;gear.anchoredPosition=position;gear.sizeDelta=size;
+            }
         }
         internal static void Matte(Transform parent,Vector2 size)
         {var background=Image("Matte Surface",parent,"white",new Vector2(.5f,.5f),Vector2.zero,size-Vector2.one*6);background.color=new Color32(24,40,32,247);background.transform.SetAsFirstSibling();}

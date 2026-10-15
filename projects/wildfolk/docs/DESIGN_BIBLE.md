@@ -1,12 +1,12 @@
 # Wildfolk 기획 정본
 
-기준일2026-10-14. main의 실제 코드/데이터가 최우선 정본이다. Unity6000.3.19f1 LTS / Universal2D, 모바일 Landscape, 기준1920×1080.
+기준일2026-10-15. main의 실제 코드/데이터가 최우선 정본이다. Unity6000.3.19f1 LTS / Universal2D, 모바일 Landscape, 기준1920×1080.
 
 ## 방향과 아트
 
 탑다운 생존 게임이다. Mine Survival의 낮 채집/밤 방어/생존 수치/제작/보관/기지라는 극초반 흐름을 강하게 참고한다. 캐릭터·맵·아트·UI·코드·고유 수치를 복제하지 않는다. 자연색·무광·원형 플레이어 양손/작은 눈·절제된 외곽선/그림자를 유지하고 볼터치/큰 눈/네온/장난감/어린이 마스코트 표현을 피한다. 현재 아트는 초기 시안이다.
 
-1~4인 실제 협동·무한 생존의 완성·직업 특성은 향후 방향이다. 현재 단일 플레이 Save/Load v2(v1 호환)과 자연 재생 기반을 제공한다. 영구 능력치 성장 비중은 낮게 고려한다.
+1~4인 실제 협동·무한 생존의 완성·직업 특성은 향후 방향이다. 현재 단일 플레이 Save/Load v4(v1~v3 호환)과 자연 재생 기반을 제공한다. 영구 능력치 성장 비중은 낮게 고려한다.
 
 ## 실제 월드 생성1차
 
@@ -99,3 +99,9 @@ CreatureDefinition의 Family/Faction/Traits/Habitat와 CreatureMember의 Group/A
 큰 Modal은 단일 Canvas의 Gameplay Layer 뒤에 생성하는 Modal Layer에서 Safe Area 중심을 사용한다. 뒤 HUD의 Raycast/Input을 함께 차단한다. Inventory에서 Armor를 맞는 Head/Body 슬롯으로 Drag하고 장착 슬롯을 빈 가방 칸으로 Drag 해제한다. 교환/해제 실패 시 상태를 보존한다. 현재 Armor4개를 유지하며 새 Tier를 추가하지 않았다.
 
 Wood/Stone Wall은 상부·전면·재질과 연결 끝단을 구분한다. Door는 고정 Frame과 왼쪽 Hinge Leaf,0.32초 easing을 사용하고 통로가 충분히 열린 시점에 충돌을 해제한다. 새총은 Ready/Draw/Release/Recovery와 실제 Band 길이, 놓은 뒤 남는 당김 손, Release 시점의 Pebble 투사체를 사용한다. 재미·밀도·공격 체감과 세부 애니메이션 평가는 사용자 확인 대상이다.
+
+## Home / Frontend
+
+앱은 MainMenu 씬의 Wildfolk Home에서 시작한다. 정적 숲/야영 배경과 Continue 우선 메뉴를 제공한다. Continue는 기존 Repository의 체크섬·내용 검증/backup/이관을 공유한다. Single Player는 무작위 Seed의 새 월드이며 기존 파일이 있으면 새 저장으로 교체됨을 확인한다. 다중 World Slot은 없다. Settings는 같은 언어/음량/Control Size 정본이다. Pause의 저장/불러오기와 저장 후 Home 복귀를 지원한다.
+
+Multiplayer 화면은 현재 온라인 세션을 이용할 수 없다는 안내와 싱글/뒤로 동선만 제공한다. 1~4인 Host·우선2인·Room Code·Friend/Invite·Login/Cloud 소유권은 향후 방향이며 실제 네트워크/룸 생성/계정 기능은 없다. 연결 경계는 SceneFlow와 FrontendPage에 두고 사용 불가능한 방 입력을 플레이 가능하게 표시하지 않는다. 상세 구조·검수는 HOME_FRONTEND를 따른다.

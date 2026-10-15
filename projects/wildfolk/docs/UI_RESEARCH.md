@@ -26,3 +26,13 @@ Dash는 외부 게임 Icon을 추출하지 않고 [Lucide chevrons-right](https:
 | Modal/Equipment/Combat | 기존 Minecraft/Terraria Mobile/Diablo IV 출시 UI 자료 | Equipment를 소지품과 가깝게 두고 Drag/빠른 Use를 공통 API로 연결한다. 큰 Modal의 중심·차단 계층을 일관되게 유지한다. 밀착에서 Collider 기준으로 Arc를 완화하되 정상 거리의 방향과 Single Target은 유지한다. |
 
 외부 Sprite/Animation/Layout은 추출하지 않았다. 신규 생물·시설은 사용자 지시에 따라 기존 Python/Pillow 도형 제작을 확장했다. 생성 이미지2장은 폐기했고 Unity Asset에 적용하지 않았다. 상용 게임 영상의 프레임별 타이밍/모바일 실기 난이도/정확한 Spawn 수치를 측정했다고 주장하지 않는다.
+
+## Home / Frontend — 2026-10-15
+
+| 상용 게임·1차 자료 | 관찰 범위 | Wildfolk 적용 |
+|---|---|---|
+| [Minecraft Bedrock UI팀](https://www.minecraft.net/en-us/article/creating-create-new-world),[공식 Play/Server 진입](https://www.minecraft.net/en-us/article/how-play-minecraft-server) | Play를 먼저 두고 세계 생성·설정·친구 참여를 단계화하는 흐름과 UI팀의 명확한 의사결정/정보 위계 설명 | 단일 저장이므로 유효 Continue 우선, 새 세계는 별도 선택·교체 확인. Bedrock의 많은 옵션/Marketplace/배경을 복제하지 않음 |
+| [Terraria Mobile 공식505 가이드](https://support.505games.com/support/solutions/articles/150000147250-how-do-i-set-up-a-multiplayer-game-in-the-mobile-version-of-terraria-),[Single Player 저장 안내](https://support.505games.com/support/solutions/articles/150000147328-will-my-progress-on-the-server-get-saved-once-i-close-the-server-) | 모드 선택 뒤 Host/Join으로 나누는 모바일 흐름과 Single Player의 Main Menu 복귀 시 저장. 연결된2019 포럼 본문은 현재 루트 페이지로 Redirect되어 상세 좌표/현행 화면을 확인하지 못함 | Home의 Single/Multiplayer 구분, Pause의 저장 후 복귀. 실제 네트워크가 없는 이번 화면은 명확한 이용 불가 안내만 제공 |
+| [Don't Starve Together Mobile Host](https://playdigious.helpshift.com/hc/en/39-don-t-starve-together/faq/788-how-to-create-a-server/),[Solo](https://playdigious.helpshift.com/hc/en/39-don-t-starve-together/faq/795-can-i-play-solo/?p=all),[Klei Options](https://support.klei.com/hc/en-us/articles/5832923019668-DST-How-to-find-your-Klei-User-ID-KUID) | Main의 Host Game→세계/세션 설정, Local Only/1인과 함께 사용할 수 있는 분리, Options 경로 | Home과 gameplay 전환을 분리하되 향후 Host/Room 연결 경계를 유지. 계정/서버 준비 절차는 이번에 복제하지 않음 |
+
+세 자료의 CTA/이어하기 대 새 게임/설정/협동 진입 원칙을 비교했다. Safe Area·엄지 도달·배경 대비의 정확한 상대 게임 좌표는 측정하지 않았으며 Wildfolk에서1920×1080의 오른쪽 행동군/왼쪽 타이틀·정적 야영 배경/기존 SafeAreaLayout으로 설계했다. 상단 작은 Settings만 두지 않고 엄지로 접근할 수 있는 메뉴 하단 버튼을 제공한다. 외부 게임 Asset/Code/Layout을 복제하지 않았다.

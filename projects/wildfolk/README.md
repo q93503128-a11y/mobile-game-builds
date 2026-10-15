@@ -6,7 +6,7 @@ Unity **6000.3.19f1 LTS / Universal 2D**, 모바일 Landscape(기준1920×1080) 
 
 ## 실행과 기본 흐름
 
-Unity Hub에서 client/를 열고 Assets/Wildfolk/Scenes/Wildfolk.unity에서 Play한다. 기본 Seed9472026, 월드192×144유닛이다. 같은 Seed는 지형·물·길·기본 자원을 재현한다. Try again은 기존처럼 무작위 새 월드를 시작한다. 사망 드랍/XP·Gold 패널티/Revive는 새로 결정하지 않았다.
+Unity Hub에서 client/를 열고 Assets/Wildfolk/Scenes/MainMenu.unity에서 Play한다. 빌드도 Home에서 시작한다. Continue는 검증된 기존 저장을 복원하고 Single Player는 무작위 Seed의 새 월드를 연다. Gameplay 씬만 직접 열면 기존 기본 Seed9472026을 사용한다. 월드192×144유닛이다. 같은 Seed는 지형·물·길·기본 자원을 재현한다. Try again은 기존처럼 무작위 새 월드를 시작한다. 사망 드랍/XP·Gold 패널티/Revive는 새로 결정하지 않았다.
 
 큰 Primary는 공격·도구·설치·선택 소비품 사용·선택 Armor 장착, 작은 Interact는 선택 Armor 장착 또는 시설·상자·문·수원이다. 기본 공격은 Facing Sector의 유효 대상 하나만 타격하며 자신의 Team 시설을 공격하지 않는다. Joystick과 Hotbar9칸, 가방36칸(Hotbar9+Storage27)을 유지한다.
 
@@ -16,7 +16,7 @@ Hand crafting의 Wooden Cup은 Wood2다. 빈 컵이 있어야 수원에서 Raw W
 
 Campfire의 고기는1개/5초, Furnace는 Ore1개/2초→Ingot1개를 순차 처리한다. +1/대기 −1/Add all과 결과 Take를 제공한다. Chest는24칸이다. Stack을 길게 누르면 Item Actions→Split에서 수량을 고르고, Confirm 후 목적 슬롯 또는 Drop to ground를 고른다. 배치 전에는 원본 아이템이 유지되며 Cancel로 취소한다. 일반 드래그는 전체 수량이다.
 
-가방/상자에서는 플레이어 입력만 막고 세계는 계속 진행한다. Pause/Settings는 Singleplayer를 정지한다. Save game/Load game은 Pause 메뉴에 있다. 저장은 Seed+월드 Delta+플레이어/시설/상자/처리 상태를 기록한다. 기기 Pause/Background/Quit 자동 저장을 제공한다. Editor 저장은 프로젝트의 UserData, 빌드는 Application.persistentDataPath다. 기존 게임은 명시적 Load로 이어한다.
+가방/상자에서는 플레이어 입력만 막고 세계는 계속 진행한다. Pause/Settings는 Singleplayer를 정지한다. Save game/Load game은 Pause 메뉴에 있다. 저장은 Seed+월드 Delta+플레이어/시설/상자/처리 상태를 기록한다. 기기 Pause/Background/Quit 자동 저장을 제공한다. Editor 저장은 프로젝트의 UserData, 빌드는 Application.persistentDataPath다. 기존 게임은 Home Continue 또는 Pause의 명시적 Load로 이어한다. Pause의 Save & return home은 저장 성공 후 Home으로 돌아온다.
 
 자원은 지역 Population 기준으로 Plant90/Tree300/Log480/Stone600/Ore720초 뒤 새 후보를 검사한다. 동물은 Chicken/Boar/Rabbit/Deer/Sheep의 종·지역·서식지 부족량을 새 Group/ID로 보충한다. 저장 중단 시간은 게임 시간에 더하지 않는다. 닭은 Raw1+Feather1, 멧돼지는 Raw2+Leather1을 드랍한다.
 
@@ -27,7 +27,7 @@ Zombie는 밤에 올라와 활동하고 새벽에는 보상 없이 잠복한다.
 - 실제 Item34종, Recipe25종, Equipment Tier3종, Biome1종이다.
 - [기획](docs/DESIGN_BIBLE.md), [월드](docs/WORLD_GENERATION.md), [저장](docs/SAVE_PERSISTENCE.md), [전투/이동](docs/COMBAT_NAVIGATION.md), [수치](docs/BALANCE.md), [제작](docs/CRAFTING.md), [가방](docs/INVENTORY.md), [구조](docs/ARCHITECTURE.md).
 - [Developer Tools](docs/DEVELOPER_TOOLS.md)는 Editor 전용이며 게임 HUD/Release에 노출되지 않는다.
-- [이번 검수](docs/ECOLOGY_REVIEW.md). 이전 *_REVIEW는 당시 단계의 기록이다.
+- [Home/이번 검수](docs/HOME_FRONTEND.md). 이전 *_REVIEW는 당시 단계의 기록이다.
 - 소스 검사: python tests/validate_visual_project.py client. Unity Tests는 Assets/Wildfolk/Tests의 EditMode/PlayMode다.
 - 기본 캐릭터/환경과 이번 신규 생물·구조물은 tools/generate_visual_assets.py(Pillow) 원본이다. 기존 큐레이션 Armor/Dash/Font 출처는 docs/SOURCE_ART.md를 따른다. 외부 게임 에셋을 추출하지 않는다.
 
@@ -42,3 +42,5 @@ Wildfolk > View 메뉴는 기존 Game View의 해상도만 갱신하고 Play Unf
 
 
 생태·품질 패스: 큰 Modal의 중심/계층·뒤 입력 차단,Armor Drag/빠른 Use,밀착 Collider Arc 완화,동물 Soft Separation/그룹 경보,Rabbit/Deer/Sheep,Goblin Warband·Ally Assist·새총·작은 Camp,Skeleton/녹슨 검 Variant와 유용한 Loot를 제공한다. Wood/Stone Wall과 경첩 Door0.32초를 교정했다. 신규 스프라이트는 기존 Python/Pillow 도형 제작 방식이다. 실제 Armor4개/Inventory36/Hotbar9/Recipe25와 기존 시스템을 유지한다. 상세 정본은 [Creature/Loot](docs/CREATURES_AND_LOOT.md),[수치](docs/BALANCE.md),[검수](docs/ECOLOGY_REVIEW.md)에 있다.
+
+개발 전 [AGENTS.md](AGENTS.md)를 먼저 읽는다. Home은 기존 Sprite를 배치한 정적 야영 배경이며 World/AI/Population을 생성하지 않는다. Home Settings와 Pause Settings는 같은 UserPreferences/LocalSettings 및 화면 제작 코드를 공유한다. Multiplayer는 이용 불가 안내와 돌아가기/싱글 진입만 제공한다.

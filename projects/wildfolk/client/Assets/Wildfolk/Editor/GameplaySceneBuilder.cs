@@ -59,7 +59,7 @@ namespace Wildfolk.Editor
             foreach(var component in playerObject.GetComponentsInChildren<Component>(true))PrefabUtility.RecordPrefabInstancePropertyModifications(component);
             PlayerSettings.productName="Wildfolk";PlayerSettings.defaultScreenWidth=1920;PlayerSettings.defaultScreenHeight=1080;PlayerSettings.defaultInterfaceOrientation=UIOrientation.LandscapeLeft;
             PlayerSettings.allowedAutorotateToPortrait=false;PlayerSettings.allowedAutorotateToPortraitUpsideDown=false;PlayerSettings.allowedAutorotateToLandscapeLeft=true;PlayerSettings.allowedAutorotateToLandscapeRight=true;PlayerSettings.runInBackground=true;
-            EditorSceneManager.SaveScene(scene,ScenePath);EditorBuildSettings.scenes=new[]{new EditorBuildSettingsScene(ScenePath,true)};AssetDatabase.SaveAssets();
+            EditorSceneManager.SaveScene(scene,ScenePath);AssetDatabase.SaveAssets();FrontendSceneBuilder.Build();
         }
         private static T Prefab<T>(string name) where T:Component=>AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Wildfolk/Prefabs/"+name+".prefab").GetComponent<T>();
     }

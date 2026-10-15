@@ -1,6 +1,6 @@
 # Save / Load v4, v1~v3 호환
 
-정본은 WorldSaveService / SavedGame / SaveRepository / SaveValidation이다. 수동 Save game / Load game은 Pause 메뉴에 있다. 기기 Pause/Background/Quit에는 살아 있는 세션을 자동 저장한다. 새 게임의 첫 시작은 기존처럼 기본 Seed이며, 저장 게임은 명시적인 Load로 불러온다. 사망/재시작 규칙과 사망 보상 정책은 변경하지 않았다.
+정본은 WorldSaveService / SavedGame / SaveRepository / SaveValidation이다. 수동 Save game / Load game은 Pause 메뉴에 있다. 기기 Pause/Background/Quit에는 살아 있는 세션을 자동 저장한다. Home의 Single Player는 무작위 Seed로 시작하며, 저장 게임은 Home Continue 또는 Pause Load로 불러온다. Gameplay 씬 직접 실행의 기본 Seed는 유지한다. 사망/재시작 규칙과 사망 보상 정책은 변경하지 않았다.
 
 ## 저장 범위
 
@@ -15,7 +15,7 @@ Seed 기반 지형·물·길·전체 자원 생성 결과를 통째로 저장하
 
 ## 파일 안정성
 
-Version3 + JSON Payload + SHA256 검증값을 사용한다. Temporary 쓰기/Flush → 파일 재읽기 및 데이터 검증 → atomic replace 순서이며 이전 정상 파일은 backup으로 보존한다. 최초 저장은 같은 디렉터리의 rename이다. 손상된 primary를 덮어쓸 때 정상 backup을 덮지 않는다. 불완전한 temporary는 로드 대상으로 사용하지 않는다.
+Version4 + JSON Payload + SHA256 검증값을 사용한다. Temporary 쓰기/Flush → 파일 재읽기 및 데이터 검증 → atomic replace 순서이며 이전 정상 파일은 backup으로 보존한다. 최초 저장은 같은 디렉터리의 rename이다. 손상된 primary를 덮어쓸 때 정상 backup을 덮지 않는다. 불완전한 temporary는 로드 대상으로 사용하지 않는다.
 
 버전/체크섬/Item ID/수량/슬롯 수/위치/HP/Resource ID/시설 ID/Recipe/처리 수량/시간을 실제 적용 전에 검증한다. Primary가 손상되면 유효한 backup을 시도한다. v1~v3를 지원하며 미래 버전은 명시적인 Migration을 추가해야 한다.
 
@@ -29,7 +29,7 @@ Editor는 각 프로젝트의 UserData/world-v1.json, 빌드는 Application.pers
 
 기존 접근을 보존하려고 파일 경로 world-v1.json을 유지한다. 콘텐츠 Version은4다. Workbench II는 실제 Item/Placement ID로 저장하고 시설 ID/Cargo 정책을 유지한다. XP총합/Point 사용합/Skill ID·Rank/Armor Slot·ID/Stamina 범위/Recipe IDs를 적용 전에 검사한다. Dash 진행/Sprint Hold/UI 선택은 저장하지 않고 보행 상태로 재개한다. Skill Modifier를 HP보다 먼저 복원한다.
 
-Pause Save game/Load game과 Background/Quit AutoSave를 유지한다. 향후 Main/Home은 Continue/World Select/New World/Settings, Pause는 Continue/Settings/Save & Quit로 정리할 방향이며 이번에 Main Menu/World Select는 없다.
+Pause Save game/Load game과 Background/Quit AutoSave를 유지한다. Home Continue/Single Player/Settings와 Pause Save & return home을 제공한다. 다중 World Select는 없다.
 
 
 ## v2→v3 Migration
@@ -46,3 +46,5 @@ Language는 Control Size/Master/BGM/SFX와 같은 Local User Preference다. 월�
 v3에는 Camp와 저장된 적 개체가 없었으므로 기존 시설을 적용한 다음 작은 Camp를 안전 후보로 추가하고 Night 개체 목록은 비운다. v4부터 Camp 위치/RefillAt와 거주·로밍 Goblin ID/Group/Camp/Ranged/HP/Position/Home, Night 종/검 Variant/HP/Position을 저장한다. Load는 순간 전투 상태를 초기화하고 살아 있는 Night 개체를 복원한다. Armor Drag 중 Ghost는 정본이 아니며 성공한 Equip/Unequip 결과만 저장한다. 언어는 기존 Local Preference다.
 
 동물 Hard Cap/Species/Group/Region/대기 중복,적 종/Variant/HP/상한/좌표/Camp 참조를 적용 전에 검사한다. 기존 world-v1.json 경로·체크섬·atomic replace·backup은 유지한다. 오프라인 재생/멀티플레이/클라우드 저장은 없다.
+
+Home의 저장 검사와 게임의 Save/Load는 SaveGameRules.Validate를 공유한다. 기존 검증/이관을 이동했으며 Save Version/파일명/체크섬/atomic replace/backup 정책은 바꾸지 않았다. Home 진입 및 Continue 클릭에서 Repository.Read로 유효성/backup을 확인한다. 파일이 없거나 primary/backup 모두 유효하지 않으면 Continue를 비활성화한다. Single Player는 primary 또는 backup 파일이 있으면 확인을 받으며, 시작 버튼만으로 삭제하지 않고 다음 정상 저장이 기존 Repository 규칙으로 교체한다. 저장 후 Home 복귀는 저장이 실패하면 Pause에 남는다.

@@ -22,10 +22,18 @@ namespace Wildfolk.Editor
             UnityEventTools.AddPersistentListener(Button(settings).onClick,menu.OpenSettings);
             var save=Image("Save Game",panel.transform,"panel",new Vector2(.5f,.5f),new Vector2(0,35),new Vector2(280,70),true);Text("Label",save.transform,"ui.pause.save",Vector2.zero,new Vector2(260,60),27);UnityEventTools.AddPersistentListener(Button(save).onClick,session.GetComponent<WorldSaveService>().SaveFromMenu);
             var load=Image("Load Game",panel.transform,"panel",new Vector2(.5f,.5f),new Vector2(0,-60),new Vector2(280,70),true);Text("Label",load.transform,"ui.pause.load",Vector2.zero,new Vector2(260,60),27);UnityEventTools.AddPersistentListener(Button(load).onClick,session.GetComponent<WorldSaveService>().LoadFromMenu);
-            menu.Settings=Settings(scrim.transform,preferences,menu);
+            AddHomeAction(panel.transform,session.GetComponent<WorldSaveService>());
+            menu.Settings=Settings(scrim.transform,preferences,menu.Back);
             menu.Settings.SetActive(false);scrim.gameObject.SetActive(false);return scrim.gameObject;
         }
-        private static GameObject Settings(Transform parent,UserPreferences preferences,PauseMenu menu)
+        internal static void AddHomeAction(Transform panel,WorldSaveService save)
+        {
+            if(panel.Find("Save and Home")!=null)return;
+            var home=Image("Save and Home",panel,"panel",new Vector2(.5f,.5f),new Vector2(0,-245),new Vector2(280,70),true);
+            Text("Label",home.transform,"home.save_exit",Vector2.zero,new Vector2(270,60),24);
+            UnityEventTools.AddPersistentListener(Button(home).onClick,save.SaveAndHome);
+        }
+        internal static GameObject Settings(Transform parent,UserPreferences preferences,UnityEngine.Events.UnityAction backAction)
         {
             var panel=Image("Settings Panel",parent,"panel",new Vector2(.5f,.5f),Vector2.zero,new Vector2(790,790),true);
             var settings=panel.gameObject.AddComponent<SettingsPanel>();settings.Preferences=preferences;
@@ -48,7 +56,7 @@ namespace Wildfolk.Editor
             UnityEventTools.AddPersistentListener(Button(reset).onClick,preferences.ResetDefaults);
             var back=Image("Back",panel.transform,"panel",new Vector2(.5f,.5f),new Vector2(190,-328),new Vector2(190,62),true);
             Text("Label",back.transform,"ui.action.back",Vector2.zero,new Vector2(178,54),25);
-            UnityEventTools.AddPersistentListener(Button(back).onClick,menu.Back);
+            UnityEventTools.AddPersistentListener(Button(back).onClick,backAction);
             return panel.gameObject;
         }
         private static Slider SliderRow(Transform parent,string label,float y,float min,float max,out Text value)

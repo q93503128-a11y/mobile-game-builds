@@ -8,6 +8,15 @@ namespace Wildfolk
     public sealed class SaveRepository
     {
         [Serializable]private sealed class Envelope {public string Payload,Checksum;}
+        public static SaveRepository Default()
+        {
+#if UNITY_EDITOR
+            var directory=System.IO.Path.GetFullPath(System.IO.Path.Combine(Application.dataPath,"../UserData"));
+#else
+            var directory=Application.persistentDataPath;
+#endif
+            return new SaveRepository(System.IO.Path.Combine(directory,"world-v1.json"));
+        }
         public string Path {get;}
         public bool Exists=>File.Exists(Path) || File.Exists(Path+".backup");
         public bool UsedBackup {get;private set;}

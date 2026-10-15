@@ -12,3 +12,5 @@ Language는 wildfolk.user.language PlayerPrefs에 저장한다. Control Size/Mas
 
 
 Rabbit/Deer/Sheep/Skeleton/검 Skeleton/새총 Goblin/Camp/Rusted Sword와 Armor 실패 Feedback,Developer Console Section/설명/Tooltip/경고/필드 라벨은 같은 English/한국어 키 구조로 추가했다. 기본 English와 Local Preference를 유지한다. 종·Variant·Item의 authoring ID/Prefab 이름은 내부 식별자이며 플레이어 문구로 출력하지 않는다.
+
+Home은 home.* 15개 키를 기존 en/ko Catalog에 추가한다. Continue/Single Player/Multiplayer/저장 요약/덮어쓰기 확인/이용 불가 안내/Save & return home을 번역한다. Home/Pause Settings는 같은 Preferences 키를 저장하고 다음 씬에서도 유지한다. 숨겨진 Home Label은 기존 LocalizedLabel.OnEnable에서 다시 표시될 때 갱신하며 숨은 UI를 매 프레임 갱신하지 않는다.

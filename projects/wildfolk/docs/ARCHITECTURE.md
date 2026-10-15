@@ -51,7 +51,7 @@ Inventory는 한 배열, Chest는 상자별 한 배열이다. Transfer는 두 �
 - PrefabPool/IPoolReset: 반복되는 적/WorldPickup의 생명주기·HP·피격·AI·수량 초기화.
 - Editor DeveloperHarness/Profile/Window/ProjectDataValidator: 제품 Runtime/HUD와 분리한 도구와 데이터 검사.
 
-Save/Load는 영구 저장 v2(v1 호환)이며 Cloud/계정/실제 네트워크 권위를 구현하지 않는다. 미래 Unlock/무기 공격 방식/Vehicle/Animal Breeding은 데이터 확장 방향과 실제 제공 기능을 구분한다.
+Save/Load는 영구 저장 v4(v1~v3 호환)이며 Cloud/계정/실제 네트워크 권위를 구현하지 않는다. 미래 Unlock/무기 공격 방식/Vehicle/Animal Breeding은 데이터 확장 방향과 실제 제공 기능을 구분한다.
 
 ## 캐릭터 패스 책임
 
@@ -84,3 +84,16 @@ L/LanguageCatalog/LocalizedLabel은 Resources Localization 데이터와 즉시 R
 - GameplayUiLayers: 한 Canvas의 Gameplay→Modal→Modal Drag 순서/입력 차단. ModalLayout은 Safe Area 중심과 여백 안 Fit을 담당한다. 개별 sortingOrder 우회 없음.
 - WorldDoor/WallVisual: 고정 Frame·경첩 Leaf·시간 Pose/Collider,인접 끝단 연결. Debug 더미 두 개는 DeveloperHarness에서 제거했으며 실제 생물로 Sandbox를 구성한다.
 - WorldSaveService/SaveMigration: v4 종/Group/새 ID/동물 보충/Goblin Camp·Variant/Night 적 Variant를 저장하며 공격 중 Pose/Aggro/투사체는 재개하지 않는다.
+
+## Home / 씬 전환
+
+Build Settings는 MainMenu→Wildfolk다. FrontendSceneBuilder는 기존 Gameplay 씬/Prefab을 재생성하지 않고 공유 Rules 참조, Pause Home 버튼, 초상화 손 비율을 갱신한 뒤 MainMenu를 저장한다. Build Playable Scene의 마지막에도 Home 빌더를 호출하므로 재생성 후 시작 씬이 사라지지 않는다.
+
+- SceneFlow: NewGame/Continue/Home/Restart/Load의 유일한 SceneManager.LoadScene 경계, 전환 중 중복 진입 차단, Time.timeScale 복원, 일회성 로드 Snapshot 전달.
+- SaveGameRules: 기존 migration/SaveValidation/적 검증 코드를 WorldSaveService에서 분리해 Home도 공유한다. authored Player Prefab/World/Catalog/종별 데이터 참조만 보관하며 세계 GameObject를 만들지 않는다.
+- SaveRepository.Default: 기존 Editor UserData/기기 persistentDataPath의 단일 파일 위치. SceneFlow.Repository는 같은 파일 접근을 다음 씬에 전달하며 별도 Save 형식이나 영구 캐시를 만들지 않는다.
+- HomeScreen: Home/Settings/Multiplayer/ConfirmNew 상태와 버튼 동선, Home 재진입/Continue 클릭 때만 파일 검증. 언어 이벤트는 표시만 갱신한다. Update나 파일 polling은 없다.
+- UserPreferences/GameAudio/EventSystem은 씬 소유다. DontDestroyOnLoad 서비스를 추가하지 않으며 이전 씬은 Single 모드로 정리된다.
+- SurvivalUiBuilder.Settings는 Back 콜백을 받아 Home/Pause가 같은 SettingsPanel 제작 코드와 LocalSettings 키를 사용한다.
+
+Quiet Woodland는 SpriteRenderer/Light만 사용하며 WorldGenerator,CreatureMember,Health,PrefabPool,Population/Combat은 없다. SafeAreaLayout은 기존 크기 변화 guard를 사용한다. QualityUiBuilder.AlignHands는 실제 Player 몸통/손 크기와 Facing 간격으로 초상화 손과 장갑 비율을 계산한다. 월드 손 크기/공격 모션은 변경하지 않았다.

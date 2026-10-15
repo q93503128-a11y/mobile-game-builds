@@ -40,3 +40,5 @@ Mine Survival은 사용자 지정 극초반 비교 방향이다. 낮 채집·밤
 
 
 2026-10-15 생태·구조물·입력 조사: Minecraft 공식 Spawn/Herd/Density/Distance/Habitat 자료,Diablo Immortal 출시 Group 역할 협력,Project Zomboid 개발자 Door 비교,SimpleShot의 Frame/Band/Pouch·손 놓기 원칙을 조사했다. Wildfolk의 지역 부족 보충/직접 이웃 경보/재질·Hinge·Telegraph에 적용했으며 자세한 링크/관측 한계는 UI_RESEARCH의 해당 절을 따른다. 기존 Minecraft/Terraria Mobile/Diablo UI를 비교해 장비 Drag와 큰 Modal 중심/차단을 교정했다. 특정 상용 수치나 Layout/Asset을 복제하지 않았다.
+
+2026-10-15 Home: Minecraft Bedrock/모바일 Terraria/모바일 DST의 공식 메뉴·세션 안내를 비교해 Continue 우선/새 세계 확인/모드 선택 후 세션 동선/공유 설정을 적용했다. 정확한 모바일 좌표·성능 수치를 측정하지 않았고 자세한 출처와 접근 한계는 UI_RESEARCH를 따른다.
