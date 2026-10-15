@@ -12,6 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 213579090249d754e9b5bdf72d333110, type: 3}
   m_Name: ZombieLoot
   m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.LootTable
-  Items: []
+  Items:
+  - Item: {fileID: 11400000, guid: 431287b464f63f4408828d4053bac6eb, type: 2}
+    Chance: 0.6
+    Minimum: 1
+    Maximum: 2
+  - Item: {fileID: 11400000, guid: 6c8ade8d88abbee42b65fe778b0e7777, type: 2}
+    Chance: 0.2
+    Minimum: 1
+    Maximum: 1
+  RareItems: []
   Experience: 5
   Gold: 1

@@ -26,6 +26,8 @@ namespace Wildfolk
         private float reach;
         private bool hitApplied;
         private int handIndex = 1;
+        private Collider2D ownCollider;
+        private void Awake()=>ownCollider=GetComponent<Collider2D>();
 
         public bool TryAttack()
         {
@@ -51,7 +53,8 @@ namespace Wildfolk
             var delta=(Vector2)collider.bounds.center-origin;
             distance=Vector2.Distance(origin,collider.ClosestPoint(origin));
             alignment=delta.sqrMagnitude<.0001f ? 1 : Vector2.Dot(strikeFacing,delta.normalized);
-            return distance<=reach+.001f && alignment>=Mathf.Cos(profile.ArcAngle*.5f*Mathf.Deg2Rad);
+            var contact=ownCollider!=null && ownCollider.Distance(collider).distance<=.12f;
+            return distance<=reach+.001f && (contact || alignment>=Mathf.Cos(profile.ArcAngle*.5f*Mathf.Deg2Rad));
         }
         private void FindTarget()
         {

@@ -15,6 +15,9 @@ namespace Wildfolk.Editor
             {
                 var path = file.Replace('\\', '/');
                 var importer = (TextureImporter)AssetImporter.GetAtPath(path);
+                var ppu=Path.GetFileName(path)=="ground.png" ? 2560f/48f : 100f;
+                var border=Path.GetFileName(path)=="panel.png" ? new Vector4(18,18,18,18) : Vector4.zero;
+                if(importer.textureType==TextureImporterType.Sprite && importer.spriteImportMode==SpriteImportMode.Single && Mathf.Approximately(importer.spritePixelsPerUnit,ppu) && importer.alphaIsTransparency && !importer.mipmapEnabled && importer.filterMode==FilterMode.Bilinear && importer.wrapMode==TextureWrapMode.Clamp && importer.textureCompression==TextureImporterCompression.CompressedHQ && importer.maxTextureSize==4096 && importer.spriteBorder==border)continue;
                 importer.textureType = TextureImporterType.Sprite;
                 importer.spriteImportMode = SpriteImportMode.Single;
                 importer.spritePixelsPerUnit = Path.GetFileName(path) == "ground.png" ? 2560f / 48f : 100f;

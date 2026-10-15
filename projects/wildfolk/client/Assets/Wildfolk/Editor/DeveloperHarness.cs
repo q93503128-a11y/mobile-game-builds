@@ -19,7 +19,7 @@ namespace Wildfolk.Editor
         public static void Regenerate()=>GenerateWorld(Context().World.Seed);
         public static int ForceResourceRecovery()=>Context().World.Renewal.Tick();
         public static int AdvanceResourceRecovery(float seconds)
-        {var s=Context();s.Clock.Model.SetElapsed(s.Clock.Model.Elapsed+Mathf.Max(0,seconds));return s.World.Renewal.Tick();}
+        {var s=Context();var delta=Mathf.Max(0,seconds);foreach(var ticket in s.World.Renewal.Population.Pending)ticket.Due=Math.Max(0,ticket.Due-delta);foreach(var exclusion in s.World.Renewal.Population.Harvests)exclusion.Until=Math.Max(0,exclusion.Until-delta);return s.World.Renewal.Tick();}
         public static string ResourcePopulationReport()
         {
             var s=Context();var population=s.World.Renewal.Population;var text=new System.Text.StringBuilder();
@@ -30,19 +30,28 @@ namespace Wildfolk.Editor
         }
         public static void ClearEnemies(float radius=30)
         {var player=Context().Player.transform;foreach(var health in UnityEngine.Object.FindObjectsByType<Health>(FindObjectsSortMode.None))if((health.GetComponent<EnemyController>()!=null || health.GetComponent<GoblinController>()!=null) && Vector2.Distance(health.transform.position,player.position)<=radius)PrefabPool.Release(health.gameObject);}
-        public static Component Spawn(string kind,Vector2 p)
+        public static Component Spawn(string kind,Vector2 p,bool sword=false)
         {
-            var service=Context();if(!service.World.Map.IsWalkable(p,.7f))throw new ArgumentException("Choose traversable terrain.");
-            if(kind=="Zombie")
+            var s=Context();if(!s.World.Map.IsWalkable(p,.7f))throw new ArgumentException(L.Text("dev.error.terrain"));
+            var prefab=AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Wildfolk/Prefabs/"+(kind=="Zombie" ? "Enemy" : kind)+".prefab");if(prefab==null)throw new ArgumentException(L.Text("dev.error.creature"));
+            if(prefab.GetComponent<GoblinController>()!=null)return s.GetComponent<GoblinSpawner>().SpawnActor(prefab.GetComponent<GoblinController>().Ranged!=null,p,"dev_group",p);
+            if(prefab.GetComponent<EnemyController>()!=null)
             {
-                var spawner=service.GetComponent<ZombieSpawner>();SetTime(service.Clock.Model.Day,service.Clock.Definition.DaySeconds+service.Clock.Definition.EveningSeconds+1);
-                var enemy=PrefabPool.Spawn(spawner.Prefab,p,Quaternion.identity);enemy.Session=service.World.Session;enemy.PlayerHealth=service.Player.GetComponent<Health>();enemy.Clock=service.Clock;enemy.Lifecycle.Clock=service.Clock;enemy.Lifecycle.Definition=spawner.Definition;enemy.GetComponent<LootOnDeath>().Player=service.Player;spawner.Register(enemy);return enemy;
+                var spawner=s.GetComponent<ZombieSpawner>();SetTime(s.Clock.Model.Day,s.Clock.Definition.DaySeconds+s.Clock.Definition.EveningSeconds+1);
+                var enemy=PrefabPool.Spawn(prefab.GetComponent<EnemyController>(),p,Quaternion.identity);enemy.Session=s.World.Session;enemy.PlayerHealth=s.Player.GetComponent<Health>();enemy.Clock=s.Clock;enemy.Lifecycle.Clock=s.Clock;enemy.Lifecycle.Definition=spawner.Definition;enemy.GetComponent<LootOnDeath>().Player=s.Player;if(enemy.Variant!=null)enemy.Variant.SetEquipped(sword);spawner.Register(enemy);return enemy;
             }
-            if(kind=="Goblin")
-            {var spawner=service.GetComponent<GoblinSpawner>();var goblin=PrefabPool.Spawn(spawner.Prefab,p,Quaternion.identity);goblin.Session=service.World.Session;goblin.PlayerHealth=service.Player.GetComponent<Health>();goblin.GetComponent<LootOnDeath>().Player=service.Player;spawner.Register(goblin);return goblin;}
-            var prefab=AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Wildfolk/Prefabs/"+kind+".prefab");if(prefab==null || prefab.GetComponent<NeutralAnimal>()==null)throw new ArgumentException("Choose a current creature.");
-            var animal=UnityEngine.Object.Instantiate(prefab,p,Quaternion.identity).GetComponent<NeutralAnimal>();animal.Player=service.Player.transform;animal.Session=service.World.Session;animal.Region=service.World.Region;animal.GetComponent<LootOnDeath>().Player=service.Player;return animal;
+            if(prefab.GetComponent<NeutralAnimal>()==null)throw new ArgumentException(L.Text("dev.error.creature"));
+            var animal=UnityEngine.Object.Instantiate(prefab,p,Quaternion.identity).GetComponent<NeutralAnimal>();animal.Player=s.Player.transform;animal.Session=s.World.Session;animal.Region=s.World.Region;animal.Member.GroupId="dev_"+kind;animal.Member.Anchor=p;animal.GetComponent<LootOnDeath>().Player=s.Player;return animal;
         }
+        public static void RestoreVitals(){var s=Context();SetHealth(s.Player.GetComponent<Health>().Maximum);SetNeeds(90,90);SetStamina(s.Player.GetComponent<PlayerLocomotion>().Stamina.Maximum);}
+        public static void GiveCurrentTierGear(){var s=Context();var selected=s.Player.GetComponent<PlayerEquipment>().SelectedItem;var rank=selected!=null && selected.Tier!=null ? selected.Tier.Rank : 1;foreach(var item in s.Catalog.Items)if(item.Tool!=null && item.Tier.Rank==rank)s.Player.Model.Add(item,1);}
+        public static void AddSkillPoint(){var p=Context().Player.GetComponent<PlayerProgression>();if(p.Level<p.Definition.MaximumLevel)p.Reward(p.RequiredXP-(int)p.CurrentXP,0);}
+        public static int ForceAnimalPopulation()=>Context().World.Animals.Tick();
+        public static int ForceCampPopulation()=>Context().GetComponent<GoblinSpawner>().TickCamps();
+        public static void SpawnWarband(Vector2 p)=>Context().GetComponent<GoblinSpawner>().SpawnWarband(p,false);
+        public static void SpawnCamp(Vector2 p)=>Context().GetComponent<GoblinSpawner>().SpawnCamp(p);
+        public static void TriggerAllyAssist(){var s=Context();GoblinController nearest=null;var distance=float.MaxValue;foreach(var g in UnityEngine.Object.FindObjectsByType<GoblinController>(FindObjectsSortMode.None)){var d=Vector2.Distance(g.transform.position,s.Player.transform.position);if(d<distance){nearest=g;distance=d;}}if(nearest!=null)nearest.EnterCombat(s.Player.transform.position);}
+        public static void TriggerHerdFlee(){var s=Context();NeutralAnimal nearest=null;var distance=float.MaxValue;foreach(var animal in UnityEngine.Object.FindObjectsByType<NeutralAnimal>(FindObjectsSortMode.None)){var d=Vector2.Distance(animal.transform.position,s.Player.transform.position);if(d<distance){nearest=animal;distance=d;}}if(nearest!=null)nearest.FleeFrom(s.Player.transform.position);}
         public static void LoadProfile(DeveloperTestProfile profile)
         {
             var service=Context();service.Player.GetComponent<PlayerEquipment>().RestoreArmor(null,null);var empty=new SavedStack[service.Player.Model.Capacity];for(var i=0;i<empty.Length;i++)empty[i]=new SavedStack();service.Player.Model.Restore(empty,service.Catalog);
@@ -68,8 +77,8 @@ namespace Wildfolk.Editor
             var profiles=AssetDatabase.LoadAssetAtPath<DeveloperTestProfile>("Assets/Wildfolk/Data/DeveloperProfile3.asset");LoadProfile(profiles);
             for(var rule=0;rule<3;rule++)
             {var resource=UnityEngine.Object.Instantiate(service.World.Definition.Resources[rule].Prefab,new Vector2((rule-1)*4,3),Quaternion.identity);resource.Player=service.Player;}
-            for(var i=0;i<2;i++)
-            {var target=new GameObject("Combat Sandbox Target");target.SetActive(false);var health=target.AddComponent<Health>();health.Definition=service.Player.GetComponent<Health>().Definition;target.AddComponent<CircleCollider2D>().radius=.55f;var visual=target.AddComponent<SpriteRenderer>();visual.sprite=VisualArtImporter.Sprite("player_body");visual.color=new Color(.55f,.45f,.3f);visual.sharedMaterial=service.World.SpriteMaterial;target.transform.position=new Vector2(i*2,-3);target.SetActive(true);}
+            Spawn("Goblin",new Vector2(3,-3));
+
         }
     }
 }

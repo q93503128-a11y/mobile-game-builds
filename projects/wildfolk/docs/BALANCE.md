@@ -45,7 +45,7 @@
 | Iron Ore |16|75 /Ore3|720초|
 | Small Plant |36|12 /Wood1|90초|
 
-성숙 Tree: Wood Axe5타 /Stone Axe4타 /Iron Axe3타. 회복은 지역 밀도 Target0.9 미만에서 새로운 ID로 해당 Region 후보를 검사한다. Rare는 월드 범위 후보이며 Player24/Harvest28유닛·1800초/Cluster12유닛 제외를 사용한다. 흔한 자원은 Player12/Harvest8유닛·Delay×2다. Camera/물/길/장애물/기지 내부 후보를 제외한다. 막히면5초 뒤 재시도한다. 작은 풀은 현재 비충돌 장식이다. Small Plant 관목36개는 비차단 자원으로 HP12/Wood1,90초 재생이다. Chicken1 Slot/180초, Boar1 Slot/300초로 자연 재생한다. 실제 번식/성장 시스템은 없다. Save에는 대기 시간을 게임 시간 기준으로 기록하고 오프라인 시간을 더하지 않는다.
+성숙 Tree: Wood Axe5타 /Stone Axe4타 /Iron Axe3타. 회복은 지역 밀도 Target0.9 미만에서 새로운 ID로 해당 Region 후보를 검사한다. Rare는 월드 범위 후보이며 Player24/Harvest28유닛·1800초/Cluster12유닛 제외를 사용한다. 흔한 자원은 Player12/Harvest8유닛·Delay×2다. Camera/물/길/장애물/기지 내부 후보를 제외한다. 막히면5초 뒤 재시도한다. 작은 풀은 현재 비충돌 장식이다. Small Plant 관목36개는 비차단 자원으로 HP12/Wood1,90초 재생이다. Chicken10/180초,Boar6/300초,Rabbit12/180초,Deer8/420초,Sheep10/300초의 종별 목표를 지역에 분배해 부족분을 보충한다. 실제 번식/성장 시스템은 없다. Save에는 대기 시간을 게임 시간 기준으로 기록하고 오프라인 시간을 더하지 않는다.
 
 Land1 /Shallow0.7 /Deep 도보 불가. River 폭6, 여울 길이4.4, 월드192×144유닛이다.
 
@@ -86,7 +86,7 @@ Land1 /Shallow0.7 /Deep 도보 불가. River 폭6, 여울 길이4.4, 월드192×
 | Goblin HP/속도/순찰 |50 /2.4 /0.65|
 | Goblin Watch/Inner/Personal/Leash |5 /2.5 /1.8 /10|
 | Goblin 공격 |피해6/사거리1.5/준비0.45초/회복1.3초|
-| Goblin Encounter |낮35초마다30%,최대3|
+| Goblin Encounter |낮35초마다30%,3~5 Warband/로밍 Soft Cap3/전체Hard Cap24|
 | Enemy Soft Separation |Radius1.35/Strength0.8/Footprint0.45|
 | Zombie/Goblin 처치 |XP5·Gold1 /XP8·Gold3|
 | Chicken/Boar 처치 |Raw1·Feather1 /Raw2·Leather1|
@@ -124,3 +124,26 @@ Long Press0.45초. Split1~N−1,Half/±1,Confirm 후 목적지 선택. 일반 Dr
 
 
 현재 재생 수치는 최초 개수를 항상 복원하는 규칙이 아니라 부족한 Region의 회복 대기 초기값이다. 글로벌 Count 합×1.25는 성능용 상한이다. Tree/Log/Stone/Iron/Plant 회복 속도와 지역 고갈 체감은 사용자 밸런스 검수 대상이다. Sprint/Dash는 기본 조작이고 Skill은 성능을 강화한다. Recovery/Stride 선행은 Endurance Rank1이며 v2 기존 Rank를 보존한다.
+
+
+## 생태·전투 추가 초기값
+
+| 종류 | HP | 보행 / 도주 | 감지 | Group | Separation |
+|---|---:|---:|---:|---:|---:|
+| Chicken |20|0.55 /2.4|2.4|2~4|0.34|
+| Boar |20|0.55 /2.4|2.4|1~2|0.62|
+| Rabbit |20|0.6 /4.2|3.5|1~3|0.30|
+| Deer |55|0.75 /3.6|5.5|2~4|0.70|
+| Sheep |40|0.45 /2.0|3.0|2~5|0.60|
+
+종별 목표 합46/성능 상한80,Player14/Base8 회피. 지역 목표는 Soft Target이며 한 Group이 일부 지역 목표를 넘을 수 있으나 종별 목표와 Hard Cap을 넘지 않는다. 일반 보충 검사는5초마다 수행한다. 초기 배치에도 Player14/Base8를 적용한다. Recovery 후보는 카메라 밖이다.
+
+Skeleton HP32/속도2.65/피해6/Reach1.45/준비0.4/Swing0.14/회복1초. 기존 Zombie HP40/속도2.2보다 낮은 HP와 높은 이동 속도다. Night 생성 중 Skeleton 확률35%,그 중 검 Variant25%. 검은 피해+2/Reach+0.25,Rusted Sword Drop12%. 기본 Skeleton XP7/Gold2,검 Variant XP8/Gold2. 플레이어 Rusted Sword 피해11/Reach1.85/Arc110/Duration0.3/Cooldown0.48,Single Target.
+
+Zombie LightSensitive Dim 감지0.8/Safe 이동0.75, Skeleton0.7/0.65. 공통 Dim 이동0.9/안전빛 Aggro 억제/Grace 배수1. Light Damage 없음. Undead Family 자체는 이 계산 조건이 아니다.
+
+Goblin 시각 Separation0.85/Preferred Spacing2.7유닛. Goblin Ally Assist7유닛,원래 위협에서 최대12유닛,재전파 없음/Leash10. Warband3~5,새총 확률30%/상한2명. Camp1/거주3/보충480초/순찰4/Player18/Base12/전체Goblin 상한24. 로밍 Soft Cap3은 한 무리가3~5이므로 일부 초과할 수 있다.
+
+새총 피해4/최소2.4/선호4.8/최대7유닛. 재배치0.65초/재시도 간격2.5초. Ready0.12/Draw0.42/Hold0.10/Release0.08/Recovery0.28. 발사0.64초/속도10/수명1.4초. 끝없는 후퇴 대신 제한된 재배치 후 거리 안에서 공격한다.
+
+밀착 Arc 완화는 실제 Collider 간 거리≤0.12유닛이며 Range는 그대로 검사한다. 정상 거리는 기존 Facing Arc다. Door0.32초/eased Open70%에서 통로 Collider 해제. 기존 Armor 방어/제작 Tier는 그대로다. 초기 검증 수치이며 최종 난이도와 체감은 사용자가 테스트한다.

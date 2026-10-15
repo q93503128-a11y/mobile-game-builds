@@ -45,7 +45,7 @@ namespace Wildfolk.Tests
             var clock=enemy.Clock;var cycle=clock.Definition.CycleSeconds;clock.Model.Advance(clock.Definition.DaySeconds+clock.Definition.EveningSeconds+clock.Definition.NightSeconds-(float)(clock.Model.Elapsed%cycle)+.01f);
             yield return null;Assert.That(life.Phase,Is.EqualTo(ZombiePhase.Burrowing));hp=player.GetComponent<Health>().Current;
             yield return new WaitForSeconds(1.25f);Assert.That(enemy==null || !enemy.gameObject.activeInHierarchy,Is.True);Assert.That(player.GetComponent<Health>().Current,Is.EqualTo(hp));
-            Assert.That(inventory.GetComponent<PlayerProgression>().Experience,Is.Zero);Assert.That(inventory.GetComponent<PlayerProgression>().Gold,Is.Zero);Assert.That(Object.FindObjectsByType<WorldPickup>(FindObjectsSortMode.None),Is.Empty);
+            Assert.That(inventory.GetComponent<PlayerProgression>().Experience,Is.Zero);Assert.That(inventory.GetComponent<PlayerProgression>().Gold,Is.Zero);foreach(var drop in Object.FindObjectsByType<WorldPickup>(FindObjectsSortMode.None)){Assert.That(drop.Item,Is.Not.Null);Assert.That(drop.Count,Is.GreaterThan(0));}
         }
         [UnityTest]public IEnumerator SafeLightBlocksNewAggroAndEndsExistingPursuitAfterGrace()
         {
@@ -58,7 +58,7 @@ namespace Wildfolk.Tests
         }
         [UnityTest]public IEnumerator SplitHalfViaTouchButtonAndExplicitDropZonePreserveItems()
         {
-            ClearStart();var wood=Recipe("workbench").Ingredients[0].Item;inventory.Model.Add(wood,30);yield return input.Click(hud.InventoryButton);
+            ClearStart();var wood=Recipe("workbench").Ingredients[0].Item;inventory.Model.Add(wood,30);yield return input.Inventory(hud);
             var panel=Object.FindFirstObjectByType<InventoryPanel>();var drag=Object.FindFirstObjectByType<InventoryDragController>();
             yield return input.Click(panel.Slots[0]);yield return input.Click(drag.SplitButton);yield return input.Click(drag.SplitPanel.ConfirmButton);Assert.That(inventory.Model.GetSlot(0).Count,Is.EqualTo(30));yield return input.Click(panel.Slots[1]);Assert.That(inventory.Model.GetSlot(0).Count,Is.EqualTo(15));Assert.That(inventory.Model.GetSlot(1).Count,Is.EqualTo(15));
             yield return input.Drag(panel.Slots[1],new Vector2(5,Screen.height*.5f));Assert.That(inventory.Model.CountItem(wood),Is.EqualTo(30));
@@ -96,7 +96,7 @@ namespace Wildfolk.Tests
             Position(new Vector2(1,0),Vector2.right);goblin.OwnHealth.ApplyDamage(1,false,inventory);yield return null;Assert.That(goblin.InCombat,Is.True);
             var rewards=inventory.GetComponent<PlayerProgression>();goblin.OwnHealth.ApplyDamage(goblin.OwnHealth.Current,false,inventory);yield return null;Assert.That(rewards.Experience,Is.EqualTo(8));Assert.That(rewards.Gold,Is.EqualTo(3));
             var zombie=WorldTestScene.SpawnZombie();zombie.OwnHealth.ApplyDamage(zombie.OwnHealth.Current,false,inventory);yield return null;Assert.That(rewards.Experience,Is.EqualTo(13));Assert.That(rewards.Gold,Is.EqualTo(4));
-            Assert.That(Object.FindObjectsByType<WorldPickup>(FindObjectsSortMode.None),Is.Empty);
+            foreach(var drop in Object.FindObjectsByType<WorldPickup>(FindObjectsSortMode.None)){Assert.That(drop.Item,Is.Not.Null);Assert.That(drop.Count,Is.GreaterThan(0));}
         }
     }
 }

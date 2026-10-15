@@ -24,6 +24,7 @@ namespace Wildfolk
         private void Awake()=>Generate(SelectedSeed ?? Definition.DefaultSeed);
         public void Generate(int seed)
         {
+            var regenerate=Map!=null;
             var started=System.Diagnostics.Stopwatch.StartNew();
             for(var i=Environment.childCount-1;i>=0;i--){var child=Environment.GetChild(i).gameObject;child.SetActive(false);Destroy(child);}
             Map=new WorldMap(Definition,seed);Renewal.ResetWorld();Region.Size=Definition.Size-Vector2.one*3;Terrain.Build(Map);
@@ -31,6 +32,7 @@ namespace Wildfolk
             for(var index=0;index<Map.Resources.Count;index++)
             {var placement=Map.Resources[index];CreateResource("r"+index,placement.Rule,placement.Position,placement.Scale);}
             WaterGeometry();Decorations(seed);Animals.Generate();
+            if(regenerate)GetComponent<GoblinSpawner>().GenerateCamps();
             started.Stop();GenerationMilliseconds=(float)started.Elapsed.TotalMilliseconds;
         }
         public ResourceNode CreateResource(string id,int rule,Vector2 position,float scale)

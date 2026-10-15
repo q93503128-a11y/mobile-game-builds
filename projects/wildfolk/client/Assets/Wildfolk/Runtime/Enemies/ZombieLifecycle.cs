@@ -27,5 +27,6 @@ namespace Wildfolk
         }
         private void SetPose(float t){Visual.localPosition=restPosition+Vector3.down*((1-t)*.7f);Visual.localScale=new Vector3(restScale.x*(.45f+.55f*t),restScale.y*t,1);}
         public void Burrow(){Phase=ZombiePhase.Burrowing;elapsed=0;Hitbox.enabled=false;Controller.CancelPursuit();}
+        public void RestoreActive(){Phase=ZombiePhase.Active;elapsed=0;Hitbox.enabled=true;SetPose(1);Controller.CancelPursuit();}
     }
 }

@@ -87,6 +87,17 @@ namespace Wildfolk.Editor
             {
                 var interaction=root.gameObject.AddComponent<CircleCollider2D>();interaction.isTrigger=true;interaction.radius=.25f;
                 var door=root.gameObject.AddComponent<WorldDoor>();door.Placeable=placeable;door.Barrier=collider;door.Interaction=interaction;
+                visual.sprite=VisualArtImporter.Sprite("door_frame");visual.transform.localScale=Vector3.one*.9f;
+                door.Hinge=Group("Left Hinge",root,-.85f,0);
+                var leaf=Sprite("Door Leaf","door_leaf",door.Hinge,new Vector2(.85f,0),.84f,1);
+                // The frame remains fixed. Only the leaf rotates around its left edge.
+                leaf.transform.localPosition=new Vector3(.85f,0,0);
+            }
+            else if(definition.IsBarrier)
+            {
+                visual.transform.localScale=new Vector3(definition.Footprint.x/2.2f,.9f,1);
+                var wall=root.gameObject.AddComponent<WallVisual>();wall.Placeable=placeable;
+                if(definition.Item.Id=="wood_wall"){wall.LeftEnd=Sprite("Left End","wall_post",root,new Vector2(-definition.Footprint.x*.5f,0),.85f,1).gameObject;wall.RightEnd=Sprite("Right End","wall_post",root,new Vector2(definition.Footprint.x*.5f,0),.85f,1).gameObject;}
             }
             if(definition.StorageSlots>0){var chest=root.gameObject.AddComponent<StorageChest>();chest.Placeable=placeable;chest.RecoveryPickup=pickup;chest.Settings=settings;}
             Feedback(health,visual.transform,HitReaction.Tree);HealthBar(health,1.0f,false);
@@ -124,6 +135,7 @@ namespace Wildfolk.Editor
             facing.LeftEye=Sprite("Left Eye","zombie_eye",reaction,new Vector2(-.18f,-.28f),.8f,2).transform;
             facing.RightEye=Sprite("Right Eye","zombie_eye",reaction,new Vector2(.18f,-.28f),.8f,2).transform;
             var controller=root.gameObject.AddComponent<EnemyController>();controller.Settings=assets.Settings;controller.OwnHealth=health;controller.AttackPose=pose;controller.Facing=facing;
+            controller.Member=root.gameObject.AddComponent<CreatureMember>();controller.Member.Definition=EcologyAssets.Species("Zombie");
             controller.Steering=root.gameObject.AddComponent<EnemySteering>();controller.Steering.Definition=StabilityAssets.Steering();root.gameObject.AddComponent<CombatAffiliation>().Relation=EntityRelation.Hostile;
             var lifecycle=root.gameObject.AddComponent<ZombieLifecycle>();lifecycle.Controller=controller;lifecycle.Visual=visual;lifecycle.Hitbox=collider;lifecycle.Definition=assets.Progression.Spawn;controller.Lifecycle=lifecycle;
             WorldContentBuilder.Loot(root.gameObject,health,assets.World.ZombieLoot,assets,pickup:AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Wildfolk/Prefabs/WorldPickup.prefab").GetComponent<WorldPickup>());

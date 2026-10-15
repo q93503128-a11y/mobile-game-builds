@@ -7,6 +7,7 @@ namespace Wildfolk
     public sealed class LootTable : ScriptableObject
     {
         public LootEntry[] Items=Array.Empty<LootEntry>();
+        public LootEntry[] RareItems=Array.Empty<LootEntry>();
         [Min(0)]public int Experience,Gold;
     }
 }

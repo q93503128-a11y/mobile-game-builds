@@ -37,3 +37,6 @@
 ## 2026-10-14 월드/낮밤/입력 패스
 
 Mine Survival은 사용자 지정 극초반 비교 방향이다. 낮 채집·밤 방어·생존/장비 업그레이드/보관의 흐름을 참고하며 수치 측정이나 에셋/코드/UI 복제를 하지 않았다. Seed 월드·원형 캐릭터·분리된Primary/Interact·GameplayLight/인구Budget은 Wildfolk 자체 구현이다. 이번 초깃값은 사용자 테스트 전 자체 기능 검증 값이다.
+
+
+2026-10-15 생태·구조물·입력 조사: Minecraft 공식 Spawn/Herd/Density/Distance/Habitat 자료,Diablo Immortal 출시 Group 역할 협력,Project Zomboid 개발자 Door 비교,SimpleShot의 Frame/Band/Pouch·손 놓기 원칙을 조사했다. Wildfolk의 지역 부족 보충/직접 이웃 경보/재질·Hinge·Telegraph에 적용했으며 자세한 링크/관측 한계는 UI_RESEARCH의 해당 절을 따른다. 기존 Minecraft/Terraria Mobile/Diablo UI를 비교해 장비 Drag와 큰 Modal 중심/차단을 교정했다. 특정 상용 수치나 Layout/Asset을 복제하지 않았다.

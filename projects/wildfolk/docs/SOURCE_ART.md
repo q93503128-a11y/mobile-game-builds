@@ -18,3 +18,10 @@ Armor는 imagegen built-in 편집 모드로 제작했다. 기존 해당 Worn PNG
 Dash는 [Lucide chevrons-right](https://github.com/lucide-icons/lucide/blob/main/icons/chevrons-right.svg)의 stroke를 무광 자연색으로 조정한96×96 PNG다. Art/dash-source.svg와 Lucide-LICENSE.txt에 원본/ISC 및 Feather MIT 고지를 보존한다. 외부 게임 Icon을 추출하지 않았다.
 
 Font는 [Google Fonts Noto Sans KR](https://github.com/google/fonts/tree/main/ofl/notosanskr)의 wght500 static instance다. Resources/NotoSansKR.ttf와 NotoSansKR-OFL.txt를 함께 제공한다. 다른 앱/Windows 시스템 글꼴은 배포하지 않는다. 세부 최종 아트 품질·실기 가독성은 후속 사용자 검수 대상이다.
+
+
+## 2026-10-15 신규 생물·구조물
+
+사용자 지시에 따라 기존 tools/generate_visual_assets.py의 Pillow polygon/ellipse/line 제작을 ecology_art로 확장했다. rabbit/deer/sheep/skeleton/bone_hand/rusted_sword/wood_wall/stone_wall/wall_post/door_frame/door_leaf/wood_door/slingshot/goblin_tent/camp_box/pebble PNG가 실제 Art 폴더와 Prefab/Item에서 사용된다. --ecology-only로 이 부분만 재생성하며 기본 전체 실행도 같은 함수를 사용한다. 교체된 옛 벽·문 제작 블록은 제거했다.
+
+이번에 시도한 imagegen 시트2개는 사용자 요청으로 원본 파일까지 폐기했고 프로젝트에 Import하지 않았다. 기존 Armor4개는 이전 큐레이션 결과를 유지한다. 새 애니메이션은 기존 캐릭터 손 Transform·새 Frame/Leaf Sprite와 Band LineRenderer를 시간에 따라 조작하며 외부 게임 애니메이션을 추출하지 않았다.

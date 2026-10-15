@@ -1,6 +1,7 @@
 using UnityEngine;
 namespace Wildfolk
 {
+    [DefaultExecutionOrder(-100)]
     public sealed class WorldClock : MonoBehaviour
     {
         public DayNightDefinition Definition;

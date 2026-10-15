@@ -34,7 +34,7 @@ namespace Wildfolk.Tests
             yield return input.Drag(panel.PlayerSlots[0],PlayPointerDriver.Point(panel.ChestSlots[1]));Assert.That(player.GetComponent<PlayerEquipment>().ActiveTool,Is.Null);
             yield return input.Drag(panel.ChestSlots[1],PlayPointerDriver.Point(panel.PlayerSlots[1]));Assert.That(inventory.Model.GetSlot(1).Item.Id,Is.EqualTo("wood_sword"));Assert.That(chest.Model.GetSlot(1).Count,Is.EqualTo(15));
             yield return input.Drag(panel.ChestSlots[0],new Vector2(5,Screen.height*.5f));Assert.That(chest.Model.GetSlot(0).Count,Is.EqualTo(50));Assert.That(other.Model.GetSlot(0).IsEmpty,Is.True);
-            yield return input.Click(hud.InventoryButton);Assert.That(hud.Session.IsRunning,Is.True);
+            yield return input.Inventory(hud);Assert.That(hud.Session.IsRunning,Is.True);
             Assert.That(player.GetComponent<PlayerStorage>().OpenChest(chest),Is.True);yield return null;Assert.That(panel.ChestSlots[0].Count.text,Is.EqualTo("50"));
             chest.Placeable.Health.ApplyDamage(chest.Placeable.Health.Maximum);yield return null;yield return null;yield return null;
             Assert.That(panel.View.activeSelf,Is.False);Assert.That(hud.Session.IsRunning,Is.True);Assert.That(Object.FindObjectsByType<WorldPickup>(FindObjectsSortMode.None).Length,Is.EqualTo(2));
@@ -42,8 +42,8 @@ namespace Wildfolk.Tests
         [UnityTest] public IEnumerator DoorUseOpensClosesAndRejectsClosingOnAnActor()
         {
             var door=Place("wood_door",new Vector2(0,-2.45f)).GetComponent<WorldDoor>();yield return null;Position(new Vector2(0,-.35f),Vector2.down);yield return null;
-            yield return input.Click(hud.Interact);Assert.That(door.IsOpen,Is.True);Assert.That(door.Barrier.enabled,Is.False);
-            yield return input.Click(hud.Interact);Assert.That(door.IsOpen,Is.False);Assert.That(door.Barrier.enabled,Is.True);
+            yield return input.Click(hud.Interact);Assert.That(door.IsOpen,Is.True);yield return new WaitForSeconds(door.AnimationSeconds);Assert.That(door.Barrier.enabled,Is.False);
+            yield return input.Click(hud.Interact);Assert.That(door.IsOpen,Is.False);yield return new WaitForSeconds(door.AnimationSeconds);Assert.That(door.Barrier.enabled,Is.True);
             yield return input.Click(hud.Interact);Position(door.transform.position,Vector2.down);yield return null;
             Assert.That(door.Toggle(),Is.False);Assert.That(door.IsOpen,Is.True);
             Position(new Vector2(0,-.35f),Vector2.down);yield return null;Assert.That(door.Toggle(),Is.True);

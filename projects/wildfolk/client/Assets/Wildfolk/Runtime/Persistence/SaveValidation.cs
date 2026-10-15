@@ -10,7 +10,7 @@ namespace Wildfolk
         private static bool Finite(double value)=>!double.IsNaN(value) && !double.IsInfinity(value);
         public static void Validate(SavedGame game,ContentCatalog catalog,WorldGenerationDefinition definition,AnimalPopulationDefinition animals,int playerCapacity,int maximumHP,SurvivalDefinition survival,CharacterGrowthDefinition growth,LocomotionDefinition locomotion)
         {
-            Require(game!=null && (game.Version==2 || game.Version==3),"Unsupported save version");Require(Finite(game.Elapsed) && game.Elapsed>=0,"Invalid world time");
+            Require(game!=null && game.Version>=2 && game.Version<=4,"Unsupported save version");Require(Finite(game.Elapsed) && game.Elapsed>=0,"Invalid world time");
             var map=new WorldMap(definition,game.Seed);var player=game.Player;
             Require(player!=null,"Missing player");GrowthValidation.Validate(player.Growth,growth,player.XP);
             var hpBonus=Mathf.RoundToInt(GrowthValidation.Bonus(player.Growth,growth,SkillEffect.MaximumHealth));
@@ -39,15 +39,17 @@ namespace Wildfolk
                 Require(state.Destroyed ? state.HP==0 : state.HP>0 && state.HP<=definition.Resources[state.Rule].Prefab.Health.Maximum,"Invalid resource HP");
             }
             if(game.Recovery!=null)ValidateRecovery(game.Recovery,map,definition);
-            var expectedAnimals=0;foreach(var rule in animals.Rules)expectedAnimals+=rule.Population;
-            Require(game.Animals.Length==expectedAnimals,"Animal population mismatch");
+            var expectedAnimals=0;foreach(var amount in animals.LegacyPopulation)expectedAnimals+=amount;
+            Require(game.Version>=4 ? game.Animals.Length<=animals.HardCap : game.Animals.Length==expectedAnimals,"Animal population mismatch");
             foreach(var state in game.Animals)
             {
                 Require(state!=null && !string.IsNullOrEmpty(state.Id) && ids.Add(state.Id) && state.Rule>=0 && state.Rule<animals.Rules.Length,"Invalid animal ID");
-                Require(state.Id.StartsWith("a"+state.Rule+"_") && int.TryParse(state.Id.Substring(state.Id.IndexOf('_')+1),out var slot) && slot>=0 && slot<animals.Rules[state.Rule].Population,"Unknown animal slot");
+                if(game.Version<4)Require(state.Rule<animals.LegacyPopulation.Length && state.Id.StartsWith("a"+state.Rule+"_") && int.TryParse(state.Id.Substring(state.Id.IndexOf('_')+1),out var slot) && slot>=0 && slot<animals.LegacyPopulation[state.Rule],"Unknown animal slot");
+                else Require(!state.Missing && !string.IsNullOrEmpty(state.GroupId) && state.Species==animals.Rules[state.Rule].Prefab.Member.Definition.Id && state.Region>=0 && state.Region<12,"Invalid animal ecology");
                 Position(map,state.Position);Position(map,state.Home);Require(Finite(state.RespawnAt) && state.RespawnAt>=0,"Invalid animal timer");
                 Require(state.Missing ? state.HP==0 : state.HP>0 && state.HP<=animals.Rules[state.Rule].Prefab.Health.Maximum,"Invalid animal HP");
             }
+            if(game.Version>=4)ValidateEcology(game,map,animals);
             foreach(var state in game.Placeables)
             {
                 Require(state!=null && !string.IsNullOrEmpty(state.Id) && ids.Add(state.Id),"Placeable ID collision");Position(map,state.Position);Require(Finite(state.Rotation),"Invalid rotation");
@@ -62,6 +64,14 @@ namespace Wildfolk
                 Require(Finite(state.Processing.Remaining) && state.Processing.Remaining>=0 && state.Processing.Remaining<=(recipe.LegacyProcessingSeconds>0 ? recipe.LegacyProcessingSeconds : recipe.ProcessingSeconds)/placed.ProcessingSpeed,"Invalid processing timer");
             }
             foreach(var pickup in game.Pickups){Require(pickup!=null,"Missing pickup");Position(map,pickup.Position);Require(pickup.Count>0 && pickup.Count<=catalog.Item(pickup.Item).MaxStack,"Invalid pickup");}
+        }
+        private static void ValidateEcology(SavedGame game,WorldMap map,AnimalPopulationDefinition animals)
+        {
+            var ecology=game.AnimalEcology;Require(ecology!=null && ecology.Serial>=0 && ecology.GroupSerial>=0 && ecology.Cursor>=0 && ecology.Pending!=null,"Invalid animal population");var keys=new HashSet<string>();
+            foreach(var ticket in ecology.Pending)Require(ticket!=null && ticket.Rule>=0 && ticket.Rule<animals.Rules.Length && ticket.Region>=0 && ticket.Region<12 && Finite(ticket.Due) && ticket.Due>=0 && keys.Add(ticket.Rule+":"+ticket.Region),"Invalid animal recovery");
+            var goblins=game.GoblinEcology;if(goblins==null)return;Require(goblins.Serial>=0 && goblins.GroupSerial>=0 && goblins.Camps!=null && goblins.Actors!=null && goblins.Actors.Length<=128,"Invalid faction population");
+            var camps=new HashSet<string>();foreach(var camp in goblins.Camps){Require(camp!=null && !string.IsNullOrEmpty(camp.Id) && camps.Add(camp.Id) && Finite(camp.RefillAt) && camp.RefillAt>=0,"Invalid camp");Position(map,camp.Position);}
+            keys.Clear();foreach(var actor in goblins.Actors){Require(actor!=null && !string.IsNullOrEmpty(actor.Id) && keys.Add(actor.Id) && actor.HP>0 && actor.HP<=1000 && (string.IsNullOrEmpty(actor.CampId) || camps.Contains(actor.CampId)),"Invalid faction actor");Position(map,actor.Position);Position(map,actor.Home);}
         }
         private static void ValidateQueue(ProcessingSnapshot state,PlaceableDefinition placed,ContentCatalog catalog)
         {

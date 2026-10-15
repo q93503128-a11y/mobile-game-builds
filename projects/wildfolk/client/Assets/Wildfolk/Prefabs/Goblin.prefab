@@ -379,6 +379,8 @@ GameObject:
   - component: {fileID: 4283025949542933175}
   - component: {fileID: 3317315376045650040}
   - component: {fileID: 866644588458108740}
+  - component: {fileID: 4477700117388782057}
+  - component: {fileID: 1433397184755681230}
   - component: {fileID: 5977514798922440385}
   - component: {fileID: 8638274105840301003}
   - component: {fileID: 4370123174924569475}
@@ -537,6 +539,39 @@ MonoBehaviour:
   Facing: {fileID: 3317315376045650040}
   Pose: {fileID: 1155184606007972793}
   Steering: {fileID: 5977514798922440385}
+  Member: {fileID: 4477700117388782057}
+  Separation: {fileID: 1433397184755681230}
+  Ranged: {fileID: 0}
+--- !u!114 &4477700117388782057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3020494996801642478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e91da0d8745f14941b64645cb74e00c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.CreatureMember
+  Definition: {fileID: 11400000, guid: 3b81bd46061ddfc43a65295412023ae1, type: 2}
+  GroupId: 
+  Anchor: {x: 0, y: 0}
+  AdditionalTraits: 0
+--- !u!114 &1433397184755681230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3020494996801642478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8afbb33eddbc3834188e6be1dc4e1125, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.SoftSeparation
+  Member: {fileID: 4477700117388782057}
+  Player: {fileID: 0}
 --- !u!114 &5977514798922440385
 MonoBehaviour:
   m_ObjectHideFlags: 0

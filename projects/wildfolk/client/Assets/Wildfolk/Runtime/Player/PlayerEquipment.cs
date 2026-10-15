@@ -13,20 +13,26 @@ namespace Wildfolk
         public ItemDefinition BodyArmor {get;private set;}
         public ItemDefinition HeadArmor {get;private set;}
         public int Defense=>(BodyArmor==null ? 0 : BodyArmor.Armor.Defense)+(HeadArmor==null ? 0 : HeadArmor.Armor.Defense);
-        public bool TryEquipSelectedArmor()=>TryEquip(Inventory.SelectedStack.IsEmpty ? null : Inventory.SelectedStack.Item);
+        public bool TryEquipSelectedArmor()=>TryEquipFromSlot(Inventory.SelectedIndex);
         public bool TryEquip(ItemDefinition item)
         {
+            if(item==null)return false;
+            for(var i=0;i<Inventory.Model.Capacity;i++){var stack=Inventory.Model.GetSlot(i);if(!stack.IsEmpty && stack.Item==item)return TryEquipFromSlot(i);}return false;
+        }
+        public bool TryEquipFromSlot(int index)
+        {
+            var stack=Inventory.Model.GetSlot(index);var item=stack.IsEmpty ? null : stack.Item;
             if(item==null || item.Armor==null)return false;
             var previous=item.Armor.Slot==ArmorSlot.Head ? HeadArmor : BodyArmor;
             if(previous==item)return false;
-            if(previous==null){if(!Inventory.Model.TryConsumeCosts(new[]{new ItemAmount{Item=item,Count=1}}))return false;}
-            else if(Inventory.Model.TryExchange(new[]{new ItemAmount{Item=item,Count=1}},previous,1)!=ExchangeResult.Success)return false;
+            var accepted=previous==null ? Inventory.Model.ConsumeSlot(index,item,1) : Inventory.Model.ReplaceConsumedSlot(index,item,previous);
+            if(!accepted){PlayerFeedback.ShowKey("feedback.bag_full");return false;}
             if(item.Armor.Slot==ArmorSlot.Head)HeadArmor=item;else BodyArmor=item;RefreshArmor();return true;
         }
-        public bool Unequip(ArmorSlot slot)
+        public bool Unequip(ArmorSlot slot,int destination=-1)
         {
             var item=slot==ArmorSlot.Head ? HeadArmor : BodyArmor;if(item==null)return false;
-            if(Inventory.Model.Add(item,1)!=1){PlayerFeedback.ShowKey("feedback.bag_full");return false;}
+            if(!(destination<0 ? Inventory.Model.Add(item,1)==1 : Inventory.Model.TryAddAt(destination,item))){PlayerFeedback.ShowKey("feedback.bag_full");return false;}
             if(slot==ArmorSlot.Head)HeadArmor=null;else BodyArmor=null;RefreshArmor();return true;
         }
         public void RestoreArmor(ItemDefinition head,ItemDefinition body)

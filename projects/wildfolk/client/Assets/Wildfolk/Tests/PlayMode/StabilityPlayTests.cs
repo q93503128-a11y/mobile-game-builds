@@ -68,16 +68,18 @@ namespace Wildfolk.Tests
             saves.Clock.Model.Advance(721);Assert.That(saves.World.Renewal.Tick(),Is.EqualTo(1));var states=saves.World.Renewal.Capture();Assert.That(states.Count(x=>x.Destroyed),Is.EqualTo(2));var recovered=states.Single(x=>x.Id.StartsWith("p"));foreach(var point in positions)Assert.That(Vector2.Distance(recovered.Position,point),Is.GreaterThanOrEqualTo(28));Assert.That(saves.GetComponent<WorldNavigation>().OutsideCamera(recovered.Position),Is.True);
             var snapshot=SaveRepository.Decode(SaveRepository.Encode(saves.Capture()));saves.Apply(snapshot);yield return null;Assert.That(saves.World.Renewal.Population.Harvests.Count,Is.EqualTo(2));foreach(var id in ids)Assert.That(Object.FindObjectsByType<ResourceIdentity>(FindObjectsSortMode.None).Any(x=>x.Id==id),Is.False);Assert.That(Object.FindObjectsByType<ResourceIdentity>(FindObjectsSortMode.None).Any(x=>x.Id==recovered.Id),Is.True);
         }
-        [UnityTest]public IEnumerator AnimalRenewalStillRetainsSlotTimerAndSpawnsOutsideCamera()
+        [UnityTest]public IEnumerator AnimalRecoveryPersistsRegionalTimerAndCreatesNewIdentityOutsideCamera()
         {
-            var animal=Object.FindFirstObjectByType<AnimalIdentity>();var id=animal.State.Id;var rule=animal.State.Rule;animal.Animal.Health.ApplyDamage(animal.Animal.Health.Maximum);yield return null;
+            var population=saves.World.Animals;var chosen=Object.FindObjectsByType<AnimalIdentity>(FindObjectsSortMode.None).First();var id=chosen.State.Id;var rule=chosen.State.Rule;var region=chosen.State.Region;
+            foreach(var animal in Object.FindObjectsByType<AnimalIdentity>(FindObjectsSortMode.None).Where(a=>a.State.Rule==rule && a.State.Region==region))animal.Animal.Health.ApplyDamage(animal.Animal.Health.Maximum);yield return null;
             Position(new Vector2(-75,-50),Vector2.right);Camera.main.GetComponent<CameraFollow>().enabled=false;Camera.main.transform.position=player.transform.position+Vector3.back*10;
-            var before=saves.Capture();saves.Apply(SaveRepository.Decode(SaveRepository.Encode(before)));yield return null;Assert.That(saves.World.Animals.Capture().Single(x=>x.Id==id).Missing,Is.True);
-            saves.Clock.Model.Advance(saves.World.Animals.Definition.Rules[rule].RespawnSeconds+1);Assert.That(saves.World.Animals.Tick(),Is.EqualTo(1));var restored=saves.World.Animals.Capture().Single(x=>x.Id==id);Assert.That(restored.Missing,Is.False);Assert.That(saves.GetComponent<WorldNavigation>().OutsideCamera(restored.Position),Is.True);
+            var before=saves.Capture();saves.Apply(SaveRepository.Decode(SaveRepository.Encode(before)));yield return null;Assert.That(population.Capture().Any(a=>a.Id==id),Is.False);Assert.That(population.Pending.Any(t=>t.Rule==rule && t.Region==region),Is.True);
+            saves.Clock.Model.Advance(population.Definition.Rules[rule].RespawnSeconds+1);Assert.That(population.Tick(),Is.GreaterThan(0));Assert.That(population.Capture().Any(a=>a.Id==id),Is.False);
+            var recovered=population.Capture().Where(a=>!before.Animals.Any(old=>old.Id==a.Id)).ToArray();Assert.That(recovered.Length,Is.GreaterThan(0));foreach(var animal in recovered)Assert.That(saves.GetComponent<WorldNavigation>().OutsideCamera(animal.Position),Is.True);
         }
         [UnityTest]public IEnumerator LongPressSplitHoldsChosenAmountUntilExplicitPlacementOrCancel()
         {
-            ClearStart();player.Model.Add(saves.Catalog.Item("wood"),30);yield return input.Click(hud.InventoryButton);var panel=Object.FindFirstObjectByType<InventoryPanel>();var drag=Object.FindFirstObjectByType<InventoryDragController>();
+            ClearStart();player.Model.Add(saves.Catalog.Item("wood"),30);yield return input.Inventory(hud);var panel=Object.FindFirstObjectByType<InventoryPanel>();var drag=Object.FindFirstObjectByType<InventoryDragController>();
             var point=PlayPointerDriver.Point(panel.Slots[0]);input.Pointer(point,true);yield return new WaitForSecondsRealtime(.55f);input.Pointer(point,false);yield return null;Assert.That(drag.SplitPanel.Actions.activeSelf,Is.True);
             yield return input.Click(drag.SplitPanel.ActionSplitButton);Assert.That(drag.SplitPanel.Amount,Is.EqualTo(15));yield return input.Click(drag.SplitPanel.Plus);Assert.That(drag.SplitPanel.Amount,Is.EqualTo(16));yield return input.Click(drag.SplitPanel.ConfirmButton);
             Assert.That(drag.HeldAmount,Is.EqualTo(16));Assert.That(player.Model.GetSlot(0).Count,Is.EqualTo(30));Assert.That(player.Model.GetSlot(1).IsEmpty,Is.True);

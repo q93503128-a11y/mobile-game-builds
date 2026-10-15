@@ -20,7 +20,9 @@ namespace Wildfolk.Editor
             EditorUtility.SetDirty(a.World.Generation);
             Animal("Chicken","chicken",a.Progression.Chicken,a.World.ChickenLoot,a,pickup);
             Animal("Boar","boar",a.Survival.Boar,a.World.BoarLoot,a,pickup);
+            foreach(var name in new[]{"Rabbit","Deer","Sheep"})Animal(name,name.ToLowerInvariant(),GameplayAssets.Asset<VitalityDefinition>(name+"Vitality",v=>v.MaximumHealth=name=="Rabbit" ? 20 : name=="Deer" ? 55 : 40),EcologyAssets.Data<LootTable>(name+"Loot"),a,pickup);
             Goblin(a,pickup);
+            EcologyContentBuilder.RangedGoblin(a,pickup);EcologyContentBuilder.Camp();EcologyAssets.ConfigurePopulation();
         }
         private static ResourceGenerationRule Rule(ResourceNode prefab,int count,int start,float radius,float clearance,float spacing,float forest,float rock)=>new ResourceGenerationRule{Prefab=prefab,Count=count,StartCount=start,StartRadius=radius,SpawnClearance=clearance,Spacing=spacing,ForestPreference=forest,RockPreference=rock,ScaleRange=new Vector2(.9f,1.15f),RespawnSeconds=prefab.Definition.Kind==ResourceKind.IronOre ? 2400 : prefab.Definition.Kind==ResourceKind.Stone ? 1200 : 300};
         private static ResourceNode Resource(string name,string art,ResourceDefinition definition,Vector2 offset,float radius,float barHeight,HitReaction reaction,WorldPickup pickup,GameplaySettings settings,Vector2 box=default,bool nonBlocking=false)
@@ -42,6 +44,10 @@ namespace Wildfolk.Editor
             var health=root.gameObject.AddComponent<Health>();health.Definition=vitality;
             root.gameObject.AddComponent<CombatAffiliation>().Relation=EntityRelation.WildAnimal;
             var animal=root.gameObject.AddComponent<NeutralAnimal>();animal.Definition=a.Progression.Animal;animal.Health=health;animal.Visual=pose;
+            var creature=EcologyAssets.Species(name);animal.Member=root.gameObject.AddComponent<CreatureMember>();animal.Member.Definition=creature;animal.Separation=root.gameObject.AddComponent<SoftSeparation>();animal.Separation.Member=animal.Member;
+            var movement=EcologyAssets.Data<AnimalMovementDefinition>(name+"Movement");if(movement!=null)animal.Definition=movement;
+            root.GetComponent<CircleCollider2D>().radius=creature.SeparationRadius;
+            if(name=="Deer")pose.localScale=Vector3.one*1.05f;
             Loot(root.gameObject,health,table,a,pickup);Feedback(health,pose,HitReaction.Creature);HealthBar(health,1,false);
             PrefabUtility.SaveAsPrefabAsset(root.gameObject,"Assets/Wildfolk/Prefabs/"+name+".prefab");Object.DestroyImmediate(root.gameObject);
         }
@@ -56,6 +62,7 @@ namespace Wildfolk.Editor
             facing.LeftHand=Sprite("Left Hand","zombie_hand",visual,new Vector2(-.8f,-.42f),.72f,1).transform;facing.RightHand=Sprite("Right Hand","zombie_hand",visual,new Vector2(.8f,-.42f),.72f,1).transform;
             facing.LeftEye=Sprite("Left Eye","player_eye",visual,new Vector2(-.18f,-.28f),.8f,2).transform;facing.RightEye=Sprite("Right Eye","player_eye",visual,new Vector2(.18f,-.28f),.8f,2).transform;
             var goblin=root.gameObject.AddComponent<GoblinController>();goblin.Definition=a.World.Goblin;goblin.OwnHealth=health;goblin.Pose=visual;goblin.Facing=facing;
+            goblin.Member=root.gameObject.AddComponent<CreatureMember>();goblin.Member.Definition=EcologyAssets.Species("Goblin");goblin.Separation=root.gameObject.AddComponent<SoftSeparation>();goblin.Separation.Member=goblin.Member;
             goblin.Steering=root.gameObject.AddComponent<EnemySteering>();goblin.Steering.Definition=StabilityAssets.Steering();root.gameObject.AddComponent<CombatAffiliation>().Relation=EntityRelation.NeutralGoblin;
             Loot(root.gameObject,health,a.World.GoblinLoot,a,pickup);Feedback(health,visual,HitReaction.Creature);HealthBar(health,1.2f,false);
             PrefabUtility.SaveAsPrefabAsset(root.gameObject,"Assets/Wildfolk/Prefabs/Goblin.prefab");Object.DestroyImmediate(root.gameObject);

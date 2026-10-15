@@ -53,8 +53,22 @@ namespace Wildfolk.Editor
             sizes.Hotbar=(RectTransform)controls.Find("Hotbar");sizes.InventoryButton=(RectTransform)backpack.transform;
             var hud=root.AddComponent<GameplayHud>();hud.Session=session;hud.Joystick=joystick;hud.Attack=attack;hud.Interact=interact;hud.Controls=controlsGroup;
             hud.InventoryButton=inventoryButton;hud.PauseButton=pauseButton;hud.PausePanel=pause;hud.DefeatPanel=defeat;
+            OrganizeLayers(root,safe,session);
             var eventSystem=new GameObject("EventSystem",typeof(EventSystem),typeof(InputSystemUIInputModule));eventSystem.GetComponent<EventSystem>().sendNavigationEvents=false;
             var module=eventSystem.GetComponent<InputSystemUIInputModule>();module.UnassignActions();module.actionsAsset=assets.UIActions;module.point=assets.Point;module.leftClick=assets.Click;
+        }
+
+        private static void OrganizeLayers(GameObject root,RectTransform safe,GameplaySession session)
+        {
+            var children=new System.Collections.Generic.List<Transform>();foreach(Transform child in safe)children.Add(child);
+            var gameplay=Rect("Gameplay Layer",safe,Vector2.zero,Vector2.zero,Vector2.zero);gameplay.anchorMax=Vector2.one;gameplay.offsetMin=gameplay.offsetMax=Vector2.zero;
+            var modal=Rect("Modal Layer",safe,Vector2.zero,Vector2.zero,Vector2.zero);modal.anchorMax=Vector2.one;modal.offsetMin=modal.offsetMax=Vector2.zero;
+            var drag=root.GetComponent<InventoryDragController>();var split=drag.SplitPanel;var hud=root.GetComponent<GameplayHud>();
+            var modalRoots=new System.Collections.Generic.HashSet<Transform>{root.GetComponent<InventoryPanel>().View.transform,root.GetComponent<CraftingPanel>().View.transform,root.GetComponent<ChestPanel>().View.transform,root.GetComponent<CharacterScreen>().View.transform,root.GetComponent<SkillTreeScreen>().View.transform,hud.PausePanel.transform,hud.DefeatPanel.transform,drag.DropZone.transform,drag.Ghost,split.View.transform,split.Actions.transform,drag.HeldCancel.transform};
+            foreach(var child in children)child.SetParent(modalRoots.Contains(child) ? modal : gameplay,false);
+            var layers=root.AddComponent<GameplayUiLayers>();layers.Session=session;layers.Gameplay=gameplay.gameObject.AddComponent<CanvasGroup>();
+            // One ordered canvas hierarchy: gameplay, blocking modal surfaces, then their item drag overlay.
+            drag.Ghost.SetAsLastSibling();
         }
 
         private static void BuildHotbar(Transform controls,GameplaySession session,PlayerInventory inventory)

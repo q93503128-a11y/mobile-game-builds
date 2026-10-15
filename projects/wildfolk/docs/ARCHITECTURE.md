@@ -35,7 +35,7 @@ StationProcessing은 데이터의 Mode를 읽어 Campfire Batch 또는 순수 Pr
 
 Inventory는 한 배열, Chest는 상자별 한 배열이다. Transfer는 두 모델을 변경한 뒤 알린다. 소분은 선택 수량을 들고 있는 UI 상태를 거쳐 명시적인 목적지로 부분 이동하고, Drop은 안전한 위치에 생성이 성공한 뒤 소비한다. Drag Ghost는 표시일 뿐 데이터 정본이 아니다. 상자 소분 선택도 테두리로 표시하고 이벤트는 종료 시 해제한다. UI 상태/Chest 변경 시 선택과 드래그를 취소한다.
 
-세계 진행은 플레이어 입력 Running과 분리한다. Inventory는 세계를 진행하고, Singleplayer Pause/Defeat는 동결하며, Multiplayer 정책은 전역 동결을 하지 않는다. 실제 네트워크는 없다. 월드 Seed/Delta와 재화는 Save/Load v3(v1/v2 migration)이며 사용자 설정 PlayerPrefs 및 미구현 Account 저장과 구분한다.
+세계 진행은 플레이어 입력 Running과 분리한다. Inventory는 세계를 진행하고, Singleplayer Pause/Defeat는 동결하며, Multiplayer 정책은 전역 동결을 하지 않는다. 실제 네트워크는 없다. 월드 Seed/Delta와 재화는 Save/Load v4(v1~v3 migration)이며 사용자 설정 PlayerPrefs 및 미구현 Account 저장과 구분한다.
 
 해상도 도구는 기존 Game View만 Repaint하고 Play Unfocused를 적용한다. Focus/GetWindow/Windows 입력 호출은 하지 않는다. 자동 테스트는 별도 hidden headless Unity와 내부 가상 포인터를 사용한다. 로그/검증 복사본은 Git에서 제외한다. 검수 사진의 시설/아이템/시간 fixture는 Play 종료 때 버린다.
 
@@ -46,7 +46,7 @@ Inventory는 한 배열, Chest는 상자별 한 배열이다. Transfer는 두 �
 - WaterContainerDefinition/LiquidState/ConsumableDefinition: 컵 상태 관계/소비 효과/예측 가능한 불이익. 기존 InventoryModel exchange와 StationProcessing을 공유한다.
 - StackSplitPanel/InventoryDragController: 액션/수량 UI/가상 부분 Stack. 모델 변경은 목적지 배치가 성공할 때만 atomic하게 반영한다.
 - WorldSaveService/SavedGame/SaveRepository/SaveValidation: Snapshot 구성, Version/검증, 원자 파일 교체와 backup, Seed+Delta 적용. ContentCatalog는 Item/Recipe 정본 자산의 참조 목록이다.
-- ResourceIdentity/ResourceRegeneration: 안정 ID/변경 기록/게임 시간 재생. AnimalIdentity/AnimalPopulation: 지역 Slot/자연 재생/Timer 저장.
+- ResourceIdentity/ResourceRegeneration: 안정 ID/변경 기록/게임 시간 재생. AnimalIdentity/AnimalPopulation: 종별 지역 Population/Group/새 ID 보충/Timer 저장.
 - WorldNavigation/EnemySteering: 생성 지형/공통 장애물/Spawn 적합성/부드러운 분리/국소 우회.
 - PrefabPool/IPoolReset: 반복되는 적/WorldPickup의 생명주기·HP·피격·AI·수량 초기화.
 - Editor DeveloperHarness/Profile/Window/ProjectDataValidator: 제품 Runtime/HUD와 분리한 도구와 데이터 검사.
@@ -62,7 +62,7 @@ Save/Load는 영구 저장 v2(v1 호환)이며 Cloud/계정/실제 네트워크 
 - LocomotionDefinition/StaminaModel/PlayerLocomotion: 설정/순수Stamina·Sprint/물리Dash. PlayerMotor가 이동을 연결하고 WorldNavigation은 자기Collider를 제외한 Sweep/지형을 검사한다.
 - ProfileHud/CharacterScreen/SkillTreeScreen: Profile과 성장 정보/독립 Node Tree. InventoryEquipment만 장착·비교·해제를 담당하며 PlayerPortrait는 읽기 전용 표현을 공유한다. Character/SkillTree는 입력차단/세계진행이다.
 - RecipePresentation/CraftingPanel: 고정정렬/Category/Filter/잠금/NEW. PlayerCrafting은 비용 소비/시설 Upgrade를 담당한다.
-- GrowthValidation/WorldSaveService: XP총합·Point Budget·Rank·Armor Slot·Stamina 검증,v1→v2→v3변환.
+- GrowthValidation/WorldSaveService: XP총합·Point Budget·Rank·Armor Slot·Stamina 검증,v1→v2→v3→v4변환.
 
 Health의 피해/회복,SurvivalModel의Hunger/Thirst와Raw Water 불이익,CharacterStats+Locomotion의이동/회복,CombatAffiliation+PlayerCombat의관계/타격 경계를 유지한다. 향후Poison/Bleed/Burn/Slow/Weakness/Curse/Defense Down,Cold/Dehydration/Food Poisoning/Water Sickness,Regeneration/Movement/Gathering Buff를 해당Modifier 경계로 확장한다. 확률 질병/주기피해/상태아이콘 콘텐츠는 없으며 Raw Water 동작은 유지했다.
 
@@ -70,3 +70,17 @@ Health의 피해/회복,SurvivalModel의Hunger/Thirst와Raw Water 불이익,Char
 ResourcePopulation은 종류·Region Count/Target/Pending/Harvest/Candidate Cursor를 관리한다. ResourceRegeneration은 Physics/Camera/지형 검사를 적용하고 WorldGenerator에 신규 ID 생성만 요청한다. SaveMigration은 v2 Delta를 밀도 회복 상태로 이관한다. Shared Motion Root는 Avatar Bob을 모든 Gear에 전달하고 Hand child는 공격 모션을 상속한다.
 
 L/LanguageCatalog/LocalizedLabel은 Resources Localization 데이터와 즉시 Refresh를 담당한다. Catalog 행의 번역 수와 Placeholder를 검증한다. UserPreferences에 언어를 저장하며 WorldSave에는 넣지 않는다. 주요 동적 UI는 Model/언어 이벤트와 처리 중0.2초 Refresh를 사용한다. Runtime/Editor 경계는 유지하고 Resource 시간 가속·상태 확인 도구는 Developer Harness에만 둔다.
+
+
+## 생태 패스 책임
+
+- CreatureDefinition: Family/Faction/Traits/Habitat/LightSensitivity/Group·간격 데이터. CreatureMember: Group ID/Anchor/직접 이웃 경보/Cohesion. CampBound는 거주 개체의 AdditionalTraits로 지정한다.
+- SoftSeparation: 생물 간 및 Player 접근 시 생물 쪽 위치 보정. NeutralAnimal: 종별 이동/도주 결과. GoblinController: 순찰/전투/Leash/제한 재배치. 분류 이름으로 런타임 행동을 분기하지 않는다.
+- AnimalPopulation:4×3 서식지 목표/종별 Count/대기/후보/Group Spawn/새 ID. 고정 개별 Slot 부활 구현은 제거했다. WorldClock은 WorldGenerator보다 먼저 초기화한다.
+- GoblinSpawner/GoblinIdentity: Road Warband/Camp 거주 예산/보충/저장 정체성. GoblinCamp는 실제 작은 천막·불·상자 Prop와 위치/보충 상태다.
+- EnemyController: Zombie/Skeleton 공통 근접 준비→Swing→Hit→회복, Trait 기반 빛 계산. 기존 ZombieLifecycle 이름의 컴포넌트는 두 Night 종의 출현/잠복을 공유한다. CreatureVariant가 손의 Weapon/피해/Reach/Loot 차이를 담당한다.
+- SlingshotAttack/StoneProjectile: 손·프레임·Band Pose와0.64초 Release/단일 발사, 풀링된 돌의 실제 충돌 피해. AI 코드 복제 또는 Player 탄약 아이템을 추가하지 않았다.
+- PlayerEquipment.TryEquipFromSlot/Unequip: 버튼·Armor Drag·빠른 Use가 공유하는 슬롯 단위 교환. InventoryModel은 먼저 완전한 변경 가능성을 검사한다.
+- GameplayUiLayers: 한 Canvas의 Gameplay→Modal→Modal Drag 순서/입력 차단. ModalLayout은 Safe Area 중심과 여백 안 Fit을 담당한다. 개별 sortingOrder 우회 없음.
+- WorldDoor/WallVisual: 고정 Frame·경첩 Leaf·시간 Pose/Collider,인접 끝단 연결. Debug 더미 두 개는 DeveloperHarness에서 제거했으며 실제 생물로 Sandbox를 구성한다.
+- WorldSaveService/SaveMigration: v4 종/Group/새 ID/동물 보충/Goblin Camp·Variant/Night 적 Variant를 저장하며 공격 중 Pose/Aggro/투사체는 재개하지 않는다.

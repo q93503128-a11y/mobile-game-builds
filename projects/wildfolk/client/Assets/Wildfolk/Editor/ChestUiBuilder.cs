@@ -10,7 +10,7 @@ namespace Wildfolk.Editor
             var panel=root.AddComponent<ChestPanel>();panel.Owner=owner;panel.Storage=storage;panel.Drag=drag;
             var overlay=Scrim("Chest Overlay",safe);panel.View=overlay.gameObject;
             var surface=Image("Chest Panel",overlay.transform,"panel",new Vector2(.5f,.5f),Vector2.zero,new Vector2(1160,980),true);
-            var fit=surface.gameObject.AddComponent<ModalLayout>();fit.SafeArea=(RectTransform)safe;fit.TopReserve=CharacterUiBuilder.ProfileBottomReserve;fit.ReferenceSize=new Vector2(1160,980);
+            var fit=surface.gameObject.AddComponent<ModalLayout>();fit.SafeArea=(RectTransform)safe;fit.TopReserve=fit.BottomReserve=40;fit.ReferenceSize=new Vector2(1160,980);
             panel.Title=Text("Title",surface.transform,"item.storage_chest.name",new Vector2(-271,428),new Vector2(360,48),32,UnityEngine.TextAnchor.MiddleLeft);
             var close=Image("Close",surface.transform,"panel",new Vector2(.5f,.5f),new Vector2(497,428),new Vector2(64,64),true);
             Text("Symbol",close.transform,"×",Vector2.zero,new Vector2(58,58),40);UnityEventTools.AddPersistentListener(Button(close).onClick,storage.Session.CloseInventory);

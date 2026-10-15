@@ -26,7 +26,7 @@ namespace Wildfolk.Editor
             var preferences=session.gameObject.AddComponent<UserPreferences>();var audio=session.gameObject.AddComponent<GameAudio>();audio.Preferences=preferences;
             audio.Music=new GameObject("Music Channel").AddComponent<AudioSource>();audio.Music.transform.SetParent(session.transform);audio.Music.playOnAwake=false;audio.Music.loop=true;
             audio.Sfx=new GameObject("SFX Channel").AddComponent<AudioSource>();audio.Sfx.transform.SetParent(session.transform);audio.Sfx.playOnAwake=false;
-            var pickup=GameplayActorBuilder.Pickup();WorldContentBuilder.Build(assets,pickup);QualityAssets.Configure(assets);
+            EcologyAssets.Load(assets);var pickup=GameplayActorBuilder.Pickup();WorldContentBuilder.Build(assets,pickup);QualityAssets.Configure(assets);
             foreach(var facility in new[]{assets.Crafting.Workbench,assets.Survival.Campfire,assets.Progression.Furnace,assets.Progression.Wall,assets.Progression.Door,assets.Progression.Chest})GameplayActorBuilder.Facility(facility,pickup,assets.Settings);
             foreach(var facility in CharacterPassAssets.Load(assets))GameplayActorBuilder.Facility(facility,pickup,assets.Settings);
             var actors=new GameObject("Actors").transform;var playerObject=GameplayActorBuilder.Player(actors,assets);var player=playerObject.GetComponent<PlayerInventory>();
@@ -35,6 +35,7 @@ namespace Wildfolk.Editor
             playerObject.GetComponent<PlayerSurvival>().Session=session;playerObject.GetComponent<PlayerPlacement>().Session=session;playerObject.GetComponent<PlayerCrafting>().Session=session;playerObject.GetComponent<PlayerStorage>().Session=session;
             session.PlayerHealth=playerObject.GetComponent<Health>();
             var enemyObject=GameplayActorBuilder.Enemy(null,assets);Object.DestroyImmediate(enemyObject);
+            EcologyContentBuilder.Skeleton();
             var camera=new GameObject("Main Camera",typeof(Camera),typeof(AudioListener)).GetComponent<Camera>();camera.tag="MainCamera";camera.transform.position=new Vector3(0,0,-10);camera.orthographic=true;camera.orthographicSize=9;camera.clearFlags=CameraClearFlags.SolidColor;camera.backgroundColor=new Color32(106,126,73,255);camera.GetUniversalAdditionalCameraData().renderPostProcessing=false;
             var light=new GameObject("Global Light 2D").AddComponent<Light2D>();light.lightType=Light2D.LightType.Global;light.intensity=1;
             var lighting=session.gameObject.AddComponent<WorldLighting>();lighting.Clock=clock;lighting.Global=light;
@@ -51,7 +52,9 @@ namespace Wildfolk.Editor
             saves.World=world;saves.Clock=clock;saves.Player=player;saves.Catalog=StabilityAssets.Catalog();
             var drop=playerObject.GetComponent<PlayerItemDrop>();drop.Session=session;drop.World=world;drop.Prefab=pickup;
             var spawner=session.gameObject.AddComponent<ZombieSpawner>();spawner.Definition=assets.Progression.Spawn;spawner.Prefab=Prefab<EnemyController>("Enemy");spawner.Clock=clock;spawner.Session=session;spawner.Player=session.PlayerHealth;spawner.Camera=camera;spawner.Region=region;spawner.World=world;
+            spawner.SecondaryPrefab=Prefab<EnemyController>("Skeleton");
             var goblins=session.gameObject.AddComponent<GoblinSpawner>();goblins.Definition=assets.World.Goblin;goblins.Prefab=Prefab<GoblinController>("Goblin");goblins.Clock=clock;goblins.Session=session;goblins.Player=session.PlayerHealth;goblins.Camera=camera;goblins.World=world;
+            goblins.RangedPrefab=Prefab<GoblinController>("SlingshotGoblin");goblins.CampDefinition=EcologyAssets.Data<GoblinCampDefinition>("GoblinCamp");
             GameplayHudBuilder.Build(assets,session,motor,player);
             foreach(var component in playerObject.GetComponentsInChildren<Component>(true))PrefabUtility.RecordPrefabInstancePropertyModifications(component);
             PlayerSettings.productName="Wildfolk";PlayerSettings.defaultScreenWidth=1920;PlayerSettings.defaultScreenHeight=1080;PlayerSettings.defaultInterfaceOrientation=UIOrientation.LandscapeLeft;

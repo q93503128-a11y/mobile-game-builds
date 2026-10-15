@@ -31,7 +31,7 @@ namespace Wildfolk.Editor
         }
         internal static EnemySteeringDefinition Steering()=>GameplayAssets.Asset<EnemySteeringDefinition>("EnemySteering",d=>{});
         internal static AnimalPopulationDefinition Animals()=>GameplayAssets.Asset<AnimalPopulationDefinition>("AnimalPopulation",d=>d.Rules=new[]{
-            new AnimalPopulationRule{Prefab=AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Wildfolk/Prefabs/Chicken.prefab").GetComponent<NeutralAnimal>(),Home=new Vector2(-12,-5),Population=1,RespawnSeconds=180},
-            new AnimalPopulationRule{Prefab=AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Wildfolk/Prefabs/Boar.prefab").GetComponent<NeutralAnimal>(),Home=new Vector2(14,-6),Population=1,RespawnSeconds=300}});
+            new AnimalPopulationRule{Prefab=AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Wildfolk/Prefabs/Chicken.prefab").GetComponent<NeutralAnimal>(),Population=1,RespawnSeconds=180},
+            new AnimalPopulationRule{Prefab=AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Wildfolk/Prefabs/Boar.prefab").GetComponent<NeutralAnimal>(),Population=1,RespawnSeconds=300}});
     }
 }

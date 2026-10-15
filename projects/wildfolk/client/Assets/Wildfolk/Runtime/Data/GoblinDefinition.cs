@@ -9,5 +9,8 @@ namespace Wildfolk
         [Min(1)]public float SpawnInterval=35;
         [Range(0,1)]public float EncounterChance=.3f;
         [Min(.1f)]public float OuterTerritory=5,PersonalSpace=1.8f;
+        [Range(3,5)]public int MinimumWarband=3,MaximumWarband=5;
+        [Range(0,1)]public float RangedChance=.3f;
+        [Range(0,2)]public int MaximumRanged=2;
     }
 }

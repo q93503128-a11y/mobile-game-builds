@@ -24,7 +24,7 @@ namespace Wildfolk.Tests
         }
         [UnityTest]public IEnumerator SettingsSwitchRefreshesExistingLabelsAndUsesKoreanGlyphs()
         {
-            var preferences=save.GetComponent<UserPreferences>();var previous=preferences.Values.Language;try{preferences.SetLanguage(1);yield return null;Assert.That(L.Language,Is.EqualTo("ko"));var inventory=Object.FindFirstObjectByType<InventoryPanel>();save.World.Session.OpenInventory();yield return null;var title=inventory.View.GetComponentsInChildren<LocalizedLabel>(true).Single(x=>x.Key=="ui.inventory.title");Assert.That(title.GetComponent<Text>().text,Is.EqualTo("인벤토리"));Assert.That(title.GetComponent<Text>().font.HasCharacter('인'),Is.True);preferences.SetLanguage(0);yield return null;Assert.That(title.GetComponent<Text>().text,Is.EqualTo("Inventory"));Assert.That(save.Capture().Version,Is.EqualTo(3));}finally{preferences.SetLanguage(System.Array.FindIndex(L.Catalog.Languages,x=>x.Id==previous));preferences.Flush();}
+            var preferences=save.GetComponent<UserPreferences>();var previous=preferences.Values.Language;try{preferences.SetLanguage(1);yield return null;Assert.That(L.Language,Is.EqualTo("ko"));var inventory=Object.FindFirstObjectByType<InventoryPanel>();save.World.Session.OpenInventory();yield return null;var title=inventory.View.GetComponentsInChildren<LocalizedLabel>(true).Single(x=>x.Key=="ui.inventory.title");Assert.That(title.GetComponent<Text>().text,Is.EqualTo("인벤토리"));Assert.That(title.GetComponent<Text>().font.HasCharacter('인'),Is.True);preferences.SetLanguage(0);yield return null;Assert.That(title.GetComponent<Text>().text,Is.EqualTo("Inventory"));Assert.That(save.Capture().Version,Is.EqualTo(4));}finally{preferences.SetLanguage(System.Array.FindIndex(L.Catalog.Languages,x=>x.Id==previous));preferences.Flush();}
         }
         [UnityTest]public IEnumerator RecipeFirstScreenGroupsAllAndColorsEachIngredient()
         {
@@ -39,10 +39,10 @@ namespace Wildfolk.Tests
             var equipment=player.GetComponent<PlayerEquipment>();var armor=save.Catalog.Item("iron_head");player.Model.Add(armor,1);equipment.TryEquip(armor);player.GetComponent<PlayerProgression>().SetValues(90,11);
             var node=Object.FindFirstObjectByType<ResourceIdentity>();var id=node.Id;node.Node.Health.ApplyDamage(node.Node.Health.Maximum);yield return null;
             Object.Instantiate(save.Catalog.Item("furnace").Placement.Prefab,player.transform.position+Vector3.right*2,Quaternion.identity);yield return null;
-            var old=save.Capture();old.Version=2;old.Recovery=null;old.Player.Growth.Skills[2].Rank=1;old.Player.Growth.Points--;old.Resources.Single(x=>x.Id==id).RespawnAt=old.Elapsed+2400;
+            var old=save.Capture();old.Version=2;old.Recovery=null;old.Animals=new[]{new AnimalSnapshot{Id="a0_0",Rule=0,HP=10,Position=new Vector2(-12,-5),Home=new Vector2(-12,-5)},new AnimalSnapshot{Id="a1_0",Rule=1,HP=20,Position=new Vector2(14,-6),Home=new Vector2(14,-6)}};old.Player.Growth.Skills[2].Rank=1;old.Player.Growth.Points--;old.Resources.Single(x=>x.Id==id).RespawnAt=old.Elapsed+2400;
             old.Placeables.Single(x=>x.Item=="furnace").Processing=new ProcessingSnapshot{Recipe="iron_ingot",Batch=3,Remaining=4};
             save.Apply(SaveRepository.Decode(SaveRepository.Encode(old)));yield return null;Assert.That(equipment.HeadArmor.Id,Is.EqualTo("iron_head"));Assert.That(player.GetComponent<PlayerProgression>().Rank(2),Is.EqualTo(1));Assert.That(player.GetComponent<PlayerProgression>().Gold,Is.EqualTo(11));Assert.That(save.World.Renewal.Capture().Single(x=>x.Id==id).Destroyed,Is.True);Assert.That(save.World.Renewal.Population.Harvests.Count,Is.EqualTo(1));
-            var process=Object.FindFirstObjectByType<StationProcessing>();Assert.That(process.Queue.WaitingCount,Is.EqualTo(1));Assert.That(process.OutputCount,Is.EqualTo(1));Assert.That(save.Capture().Version,Is.EqualTo(3));save.Validate(save.Capture());
+            var process=Object.FindFirstObjectByType<StationProcessing>();Assert.That(process.Queue.WaitingCount,Is.EqualTo(1));Assert.That(process.OutputCount,Is.EqualTo(1));Assert.That(save.Capture().Version,Is.EqualTo(4));save.Validate(save.Capture());
         }
     }
 }

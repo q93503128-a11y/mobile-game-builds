@@ -12,7 +12,12 @@ namespace Wildfolk
     [Serializable] public sealed class ResourceSnapshot
     {public string Id;public int Rule,HP;public Vector2 Position;public float Scale;public bool Destroyed;public double RespawnAt;}
     [Serializable] public sealed class AnimalSnapshot
-    {public string Id;public int Rule,HP;public Vector2 Position,Home;public bool Missing;public double RespawnAt;}
+    {public string Id,Species,GroupId;public int Rule,HP,Region;public Vector2 Position,Home;public bool Missing;public double RespawnAt;}
+    [Serializable]public sealed class AnimalEcologySnapshot {public int Serial,GroupSerial,Cursor;public RecoveryTicket[] Pending=Array.Empty<RecoveryTicket>();}
+    [Serializable]public sealed class GoblinActorSnapshot {public string Id,GroupId,CampId;public bool Ranged;public Vector2 Position,Home;public int HP;}
+    [Serializable]public sealed class CampSnapshot {public string Id;public Vector2 Position;public double RefillAt;}
+    [Serializable]public sealed class GoblinEcologySnapshot {public int Serial,GroupSerial;public CampSnapshot[] Camps=Array.Empty<CampSnapshot>();public GoblinActorSnapshot[] Actors=Array.Empty<GoblinActorSnapshot>();}
+    [Serializable]public sealed class NightCreatureSnapshot {public string Species,Variant;public Vector2 Position;public int HP;}
     [Serializable] public sealed class ProcessingSnapshot
     {public string Recipe;public int Batch;public float Remaining;public bool Sequential;public ProcessingEntry[] Waiting=Array.Empty<ProcessingEntry>();public ProcessingEntry[] Output=Array.Empty<ProcessingEntry>();}
     [Serializable] public sealed class RecoveryTicket {public int Rule,Region;public double Due;}
@@ -25,12 +30,15 @@ namespace Wildfolk
     {public string Item;public int Count;public Vector2 Position;}
     [Serializable] public sealed class SavedGame
     {
-        public int Version=3,Seed;
+        public int Version=4,Seed;
         public double Elapsed;
         public PlayerSnapshot Player;
         public ResourceSnapshot[] Resources=Array.Empty<ResourceSnapshot>();
         public ResourceRecoverySnapshot Recovery;
         public AnimalSnapshot[] Animals=Array.Empty<AnimalSnapshot>();
+        public AnimalEcologySnapshot AnimalEcology;
+        public GoblinEcologySnapshot GoblinEcology;
+        public NightCreatureSnapshot[] NightCreatures=Array.Empty<NightCreatureSnapshot>();
         public PlaceableSnapshot[] Placeables=Array.Empty<PlaceableSnapshot>();
         public PickupSnapshot[] Pickups=Array.Empty<PickupSnapshot>();
     }

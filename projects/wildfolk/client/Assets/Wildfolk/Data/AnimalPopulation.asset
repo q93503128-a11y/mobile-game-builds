@@ -14,10 +14,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.AnimalPopulationDefinition
   Rules:
   - Prefab: {fileID: 8300660236168116533, guid: 64fdfe82ef5527c47b404255e0ed0963, type: 3}
-    Home: {x: -12, y: -5}
-    Population: 1
+    Home: {x: 0, y: 0}
+    Population: 10
     RespawnSeconds: 180
   - Prefab: {fileID: 6093698111049186242, guid: 30d479c61b4d57940a5bab9d42c59add, type: 3}
-    Home: {x: 14, y: -6}
-    Population: 1
+    Home: {x: 0, y: 0}
+    Population: 6
     RespawnSeconds: 300
+  - Prefab: {fileID: 6056661540184698363, guid: a96bb258551d66144a37dd0ab820d1b3, type: 3}
+    Home: {x: 0, y: 0}
+    Population: 12
+    RespawnSeconds: 180
+  - Prefab: {fileID: 7554119870305175797, guid: 8a3b9af0f295bee4ca37d02be32aaa71, type: 3}
+    Home: {x: 0, y: 0}
+    Population: 8
+    RespawnSeconds: 420
+  - Prefab: {fileID: 7754414801024710065, guid: 66cb43b761b13a140a5d9e9a612aef5a, type: 3}
+    Home: {x: 0, y: 0}
+    Population: 10
+    RespawnSeconds: 300
+  HardCap: 80
+  PlayerDistance: 14
+  BaseDistance: 8
+  RegionalConfigured: 1
+  LegacyPopulation: 0100000001000000

@@ -9,3 +9,6 @@ HUD, Character Information, Inventory Equipment, Skill Tree, Crafting/Workbench,
 Language는 wildfolk.user.language PlayerPrefs에 저장한다. Control Size/Master/BGM/SFX와 같은 Local User Preference이며 World Save/새 World/Load가 언어를 바꾸지 않는다. 기본값 초기화는 English로 돌아간다. 검수 Fixture의 언어는 검수 후 원래 설정으로 복원한다.
 
 한국어 Glyph는 [Google Fonts Noto Sans KR](https://github.com/google/fonts/tree/main/ofl/notosanskr)의 weight500 정적 인스턴스를 사용한다. 원본의 [SIL OFL](https://github.com/google/fonts/blob/main/ofl/notosanskr/OFL.txt)을 함께 제공한다. Windows 시스템 글꼴을 배포하지 않는다. 실제 Android 폰트 렌더링/터치 가독성은 실기 확인 대상이다.
+
+
+Rabbit/Deer/Sheep/Skeleton/검 Skeleton/새총 Goblin/Camp/Rusted Sword와 Armor 실패 Feedback,Developer Console Section/설명/Tooltip/경고/필드 라벨은 같은 English/한국어 키 구조로 추가했다. 기본 English와 Local Preference를 유지한다. 종·Variant·Item의 authoring ID/Prefab 이름은 내부 식별자이며 플레이어 문구로 출력하지 않는다.

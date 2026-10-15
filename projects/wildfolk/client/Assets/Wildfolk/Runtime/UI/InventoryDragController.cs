@@ -10,6 +10,8 @@ namespace Wildfolk
         public GameplaySession Session;
         public PlayerStorage Storage;
         public PlayerItemDrop ItemDrop;
+        public PlayerEquipment Equipment;
+        private ArmorSlot? equipmentSource;
         public GameObject DropZone;
         public Button SplitButton,ChestSplitButton;
         public StackSplitPanel SplitPanel;
@@ -56,6 +58,23 @@ namespace Wildfolk
             var color=sourceView.Count.color;color.a=.35f;sourceView.Count.color=color;
             Ghost.gameObject.SetActive(true);DropZone.SetActive(true);Refresh();Move(data);
         }
+        public void BeginEquipment(ArmorSlot slot,PointerEventData data)
+        {
+            if(IsDragging || Session.State!=SessionState.Inventory)return;
+            Equipment=Owner.GetComponent<PlayerEquipment>();
+            var item=slot==ArmorSlot.Head ? Equipment.HeadArmor : Equipment.BodyArmor;if(item==null)return;
+            equipmentSource=slot;sourceModel=Owner.Model;IsDragging=true;HeldAmount=1;pointer=data.pointerId;
+            data.eligibleForClick=false;Ghost.gameObject.SetActive(true);DropZone.SetActive(false);Refresh();Move(data);
+        }
+        public void DropEquipment(ArmorSlot slot,PointerEventData data)
+        {
+            if(!IsDragging || equipmentSource.HasValue || data.pointerId!=pointer || sourceModel!=Owner.Model)return;
+            var stack=sourceModel.GetSlot(SourceIndex);
+            if(!stack.IsEmpty && stack.Item.Armor!=null && stack.Item.Armor.Slot==slot)Owner.GetComponent<PlayerEquipment>().TryEquipFromSlot(SourceIndex);
+            else PlayerFeedback.ShowKey("feedback.armor_slot");Cancel();
+        }
+        public bool CanEquip(ArmorSlot slot)
+        {if(!IsDragging || equipmentSource.HasValue || sourceModel!=Owner.Model)return false;var stack=sourceModel.GetSlot(SourceIndex);return !stack.IsEmpty && stack.Item.Armor!=null && stack.Item.Armor.Slot==slot;}
         public void Move(PointerEventData data)
         {
             if (!IsDragging || data.pointerId != pointer) return;
@@ -67,14 +86,16 @@ namespace Wildfolk
             if (!IsDragging) return;
             ClearHover();hoveredView=view;hoveredIndex=index;hoveredChest=chest;
             view.DropMarker.enabled=true;
-            view.DropMarker.color=InventoryModel.CanTransfer(sourceModel,SourceIndex,Model(chest),index,HeldAmount) ? new Color(.57f,.75f,.49f,.38f) : new Color(.75f,.36f,.27f,.38f);
+            var destination=Model(chest);var compatible=equipmentSource.HasValue ? !chest && destination.GetSlot(index).IsEmpty : InventoryModel.CanTransfer(sourceModel,SourceIndex,destination,index,HeldAmount);
+            view.DropMarker.color=compatible ? new Color(.57f,.75f,.49f,.38f) : new Color(.75f,.36f,.27f,.38f);
         }
         public void Leave(InventorySlotView view) { if (hoveredView==view) ClearHover(); }
         private void ClearHover() { if (hoveredView!=null) hoveredView.DropMarker.enabled=false;hoveredView=null; }
         public void Drop(int index,PointerEventData data,bool chest=false)
         {
             if (!IsDragging || data.pointerId!=pointer) return;
-            InventoryModel.Transfer(sourceModel,SourceIndex,Model(chest),index,HeldAmount);
+            if(equipmentSource.HasValue){if(!chest)Equipment.Unequip(equipmentSource.Value,index);else PlayerFeedback.ShowKey("feedback.armor_bag");}
+            else InventoryModel.Transfer(sourceModel,SourceIndex,Model(chest),index,HeldAmount);
             Cancel();
         }
         public void End(PointerEventData data) { if (IsDragging && data.pointerId==pointer && !IsHoldingPartial) Cancel(); }
@@ -108,11 +129,12 @@ namespace Wildfolk
             SplitButton.interactable=ChestSplitButton.interactable=valid;
         }
         public void DropWorld(PointerEventData data)
-        {if(!IsDragging || data.pointerId!=pointer)return;ItemDrop.Drop(sourceModel,SourceIndex,HeldAmount);Cancel();}
+        {if(!IsDragging || data.pointerId!=pointer)return;if(!equipmentSource.HasValue)ItemDrop.Drop(sourceModel,SourceIndex,HeldAmount);Cancel();}
         private void Refresh()
         {
             UpdateSplit();
             if (!IsDragging) return;
+            if(equipmentSource.HasValue){var item=equipmentSource==ArmorSlot.Head ? Equipment.HeadArmor : Equipment.BodyArmor;if(item==null){Cancel();return;}GhostIcon.sprite=item.Icon;GhostCount.text="1";return;}
             var stack=sourceModel.GetSlot(SourceIndex);
             if (stack.IsEmpty || stack.Count<HeldAmount) { Cancel();return; }
             GhostIcon.sprite=stack.Item.Icon;GhostCount.text=HeldAmount.ToString();remainder=(stack.Count-HeldAmount).ToString();
@@ -124,7 +146,7 @@ namespace Wildfolk
         {
             if(sourceView!=null && sourceModel!=null){var stack=sourceModel.GetSlot(SourceIndex);sourceView.Count.text=stack.IsEmpty ? string.Empty : stack.Count.ToString();}
             if(sourceModel!=null && sourceModel!=Owner.Model)sourceModel.Changed-=Refresh;
-            sourceModel=null;IsDragging=IsHoldingPartial=false;HeldAmount=0;Ghost.gameObject.SetActive(false);DropZone.SetActive(false);if(HeldCancel!=null)HeldCancel.SetActive(false);ClearHover();
+            sourceModel=null;equipmentSource=null;IsDragging=IsHoldingPartial=false;HeldAmount=0;Ghost.gameObject.SetActive(false);DropZone.SetActive(false);if(HeldCancel!=null)HeldCancel.SetActive(false);ClearHover();
             if (sourceView!=null)
             {
                 sourceView.Icon.color=Color.white;

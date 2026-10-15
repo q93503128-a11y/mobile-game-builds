@@ -17,3 +17,6 @@ Developer Test Console은Editor전용이고Early/Stone/Iron/Workbench II프로�
 향후Status Effect는CharacterStats의Modifier집계와Health/Survival/Locomotion/Combat경계를사용한다. Raw Water현재불이익은유지하고확률Water Sickness/Raw Meat Food Poisoning은이번에없다. 구체적인원인·기간·주기·중첩은후속콘텐츠패스에서결정한다.
 
 현재Info/Skill/Armor시각과Sprint/Dash엄지위치·성장/제작속도는사용자테스트대상이다. 현재외형은자체초기아트시안이며최종상품품질을주장하지않는다.
+
+
+이번 생태 패스는 새 Armor Tier를 추가하지 않는다. 기존4개를 Inventory Drag/빠른 Use로 장착하고 동일 PlayerEquipment의 슬롯 교환을 공유한다. 큰 Character/Tree/Inventory는 Safe Area 중심이며 뒤 Gameplay UI는 입력이 차단된다. Save v4(v1~v3 이관)에도 성장/Armor/Skill/Seen/Stamina를 유지한다. Iron을 최종 Progression으로 고정하지 않는다.

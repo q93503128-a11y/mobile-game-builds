@@ -86,6 +86,12 @@ namespace Wildfolk
             else if(AddTo(next,returned,1)!=1)return false;
             Array.Copy(next,slots,slots.Length);Changed?.Invoke();return true;
         }
+        public bool TryAddAt(int index,ItemDefinition item)
+        {
+            Validate(item,1);var slot=slots[index];
+            if(!slot.IsEmpty && (slot.Item.Id!=item.Id || slot.Count>=item.MaxStack))return false;
+            slots[index]=new ItemStack(item,slot.IsEmpty ? 1 : slot.Count+1);Changed?.Invoke();return true;
+        }
         public ExchangeResult GetExchangeStatus(ItemAmount[] costs, ItemDefinition output, int count)
             => PrepareExchange(costs, output, count, out _);
 

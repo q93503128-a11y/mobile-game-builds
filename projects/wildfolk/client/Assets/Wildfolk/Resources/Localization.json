@@ -1101,6 +1101,867 @@
         "{0} → {1}",
         "{0} → {1}"
       ]
+    },
+    {
+      "Key": "feedback.armor_slot",
+      "Values": [
+        "Use the matching equipment slot.",
+        "맞는 장비 슬롯에 놓으세요."
+      ]
+    },
+    {
+      "Key": "feedback.armor_bag",
+      "Values": [
+        "Move equipped armor into your bag.",
+        "장착한 방어구를 가방으로 옮기세요."
+      ]
+    },
+    {
+      "Key": "item.rusted_sword.name",
+      "Values": [
+        "Rusted Sword",
+        "녹슨 검"
+      ]
+    },
+    {
+      "Key": "creature.rabbit.name",
+      "Values": [
+        "Rabbit",
+        "토끼"
+      ]
+    },
+    {
+      "Key": "creature.deer.name",
+      "Values": [
+        "Deer",
+        "사슴"
+      ]
+    },
+    {
+      "Key": "creature.sheep.name",
+      "Values": [
+        "Sheep",
+        "양"
+      ]
+    },
+    {
+      "Key": "creature.chicken.name",
+      "Values": [
+        "Chicken",
+        "닭"
+      ]
+    },
+    {
+      "Key": "creature.boar.name",
+      "Values": [
+        "Boar",
+        "멧돼지"
+      ]
+    },
+    {
+      "Key": "creature.zombie.name",
+      "Values": [
+        "Zombie",
+        "좀비"
+      ]
+    },
+    {
+      "Key": "creature.skeleton.name",
+      "Values": [
+        "Skeleton",
+        "스켈레톤"
+      ]
+    },
+    {
+      "Key": "creature.skeleton_sword.name",
+      "Values": [
+        "Rusted Sword Skeleton",
+        "녹슨 검 스켈레톤"
+      ]
+    },
+    {
+      "Key": "creature.goblin.name",
+      "Values": [
+        "Goblin",
+        "고블린"
+      ]
+    },
+    {
+      "Key": "creature.slingshot_goblin.name",
+      "Values": [
+        "Slingshot Goblin",
+        "새총 고블린"
+      ]
+    },
+    {
+      "Key": "creature.goblin_camp.name",
+      "Values": [
+        "Goblin Camp",
+        "고블린 야영지"
+      ]
+    },
+    {
+      "Key": "dev.title",
+      "Values": [
+        "Wildfolk Test Console",
+        "Wildfolk 테스트 콘솔"
+      ]
+    },
+    {
+      "Key": "dev.intro",
+      "Values": [
+        "Editor Play Mode only. Actions disable autosave. Explicit Save overwrites the world file.",
+        "에디터 플레이 모드 전용. 실행 시 자동 저장을 끕니다. Save는 월드 파일을 덮어씁니다."
+      ]
+    },
+    {
+      "Key": "dev.applied",
+      "Values": [
+        "Applied",
+        "적용됨"
+      ]
+    },
+    {
+      "Key": "dev.choose",
+      "Values": [
+        "Choose a control to see its purpose.",
+        "각 조작의 설명을 확인한 뒤 실행하세요."
+      ]
+    },
+    {
+      "Key": "dev.warning",
+      "Values": [
+        "This changes the current test world.",
+        "현재 테스트 월드가 변경됩니다."
+      ]
+    },
+    {
+      "Key": "dev.error.terrain",
+      "Values": [
+        "Choose traversable terrain.",
+        "이동 가능한 지면을 선택하세요."
+      ]
+    },
+    {
+      "Key": "dev.error.creature",
+      "Values": [
+        "Choose a listed creature.",
+        "목록에 있는 생물을 선택하세요."
+      ]
+    },
+    {
+      "Key": "dev.quick",
+      "Values": [
+        "Quick Test",
+        "빠른 테스트"
+      ]
+    },
+    {
+      "Key": "dev.quick.note",
+      "Values": [
+        "Shortcuts to the same Harness controls below.",
+        "아래 Harness 기능을 바로 실행하는 단축 영역입니다."
+      ]
+    },
+    {
+      "Key": "dev.player",
+      "Values": [
+        "Player",
+        "플레이어"
+      ]
+    },
+    {
+      "Key": "dev.player.note",
+      "Values": [
+        "Restore or adjust survival and progression.",
+        "생존 수치와 성장을 회복하거나 변경합니다."
+      ]
+    },
+    {
+      "Key": "dev.equipment",
+      "Values": [
+        "Equipment",
+        "장비"
+      ]
+    },
+    {
+      "Key": "dev.equipment.note",
+      "Values": [
+        "Give existing tools and armor without adding new tiers.",
+        "현재 도구와 방어구를 지급합니다."
+      ]
+    },
+    {
+      "Key": "dev.profiles",
+      "Values": [
+        "Test Profiles",
+        "테스트 프로필"
+      ]
+    },
+    {
+      "Key": "dev.profiles.note",
+      "Values": [
+        "Replace inventory and reset a reproducible test setup.",
+        "가방을 교체하고 재현 가능한 테스트 상태를 구성합니다."
+      ]
+    },
+    {
+      "Key": "dev.world",
+      "Values": [
+        "World",
+        "월드"
+      ]
+    },
+    {
+      "Key": "dev.world.note",
+      "Values": [
+        "Spawn creatures at Position, or move the player.",
+        "Position에 생물을 생성하거나 플레이어를 이동합니다."
+      ]
+    },
+    {
+      "Key": "dev.population",
+      "Values": [
+        "Population Recovery",
+        "개체수 보충"
+      ]
+    },
+    {
+      "Key": "dev.population.note",
+      "Values": [
+        "Attempt missing regional populations without waiting in real time.",
+        "실제 시간을 기다리지 않고 부족한 지역 개체수를 검사합니다."
+      ]
+    },
+    {
+      "Key": "dev.persistence",
+      "Values": [
+        "Save / Load",
+        "저장 / 불러오기"
+      ]
+    },
+    {
+      "Key": "dev.persistence.note",
+      "Values": [
+        "Explicitly preserve or replace test-world state.",
+        "테스트 월드 상태를 명시적으로 저장하거나 교체합니다."
+      ]
+    },
+    {
+      "Key": "dev.validation",
+      "Values": [
+        "Validation",
+        "검증"
+      ]
+    },
+    {
+      "Key": "dev.validation.note",
+      "Values": [
+        "Check authored data; no gameplay changes.",
+        "작성된 데이터를 검사합니다. 플레이 상태는 변경하지 않습니다."
+      ]
+    },
+    {
+      "Key": "dev.vitals",
+      "Values": [
+        "Full HP / Survival",
+        "HP / 생존 수치 회복"
+      ]
+    },
+    {
+      "Key": "dev.vitals.note",
+      "Values": [
+        "Restore health, hunger, thirst and stamina.",
+        "체력, 배고픔, 갈증, 스태미나를 회복합니다."
+      ]
+    },
+    {
+      "Key": "dev.gear",
+      "Values": [
+        "Give Current Tier Gear",
+        "현재 단계 장비 지급"
+      ]
+    },
+    {
+      "Key": "dev.gear.note",
+      "Values": [
+        "Give tools matching the selected gear tier; early tier if empty.",
+        "선택 장비와 같은 단계의 도구를 지급합니다. 빈손이면 초기 단계입니다."
+      ]
+    },
+    {
+      "Key": "dev.armor",
+      "Values": [
+        "Give Iron Armor",
+        "철 방어구 지급"
+      ]
+    },
+    {
+      "Key": "dev.armor.note",
+      "Values": [
+        "Place the current iron head/body items in the bag.",
+        "현재 철 머리/몸통 방어구를 가방에 지급합니다."
+      ]
+    },
+    {
+      "Key": "dev.point",
+      "Values": [
+        "+ Skill Point",
+        "스킬 포인트 추가"
+      ]
+    },
+    {
+      "Key": "dev.point.note",
+      "Values": [
+        "Grant XP to the next level while keeping learned skills.",
+        "배운 스킬을 유지하며 다음 레벨에 필요한 XP를 지급합니다."
+      ]
+    },
+    {
+      "Key": "dev.day",
+      "Values": [
+        "Day",
+        "낮"
+      ]
+    },
+    {
+      "Key": "dev.day.note",
+      "Values": [
+        "Set this day to daytime.",
+        "현재 날짜의 시각을 낮으로 설정합니다."
+      ]
+    },
+    {
+      "Key": "dev.night",
+      "Values": [
+        "Night",
+        "밤"
+      ]
+    },
+    {
+      "Key": "dev.night.note",
+      "Values": [
+        "Set this day to nighttime; nocturnal creatures may appear.",
+        "현재 날짜를 밤으로 설정합니다. 야행성 생물이 나타날 수 있습니다."
+      ]
+    },
+    {
+      "Key": "dev.sandbox",
+      "Values": [
+        "Combat Sandbox",
+        "전투 테스트 환경"
+      ]
+    },
+    {
+      "Key": "dev.sandbox.note",
+      "Values": [
+        "Arrange real resources and a goblin nearby; disable automatic spawners.",
+        "실제 자원과 고블린을 주변에 배치하고 자동 생성기를 끕니다."
+      ]
+    },
+    {
+      "Key": "dev.hp",
+      "Values": [
+        "Set HP",
+        "HP 설정"
+      ]
+    },
+    {
+      "Key": "dev.hp.note",
+      "Values": [
+        "HP zero defeats the player.",
+        "HP가 0이면 플레이어가 패배합니다."
+      ]
+    },
+    {
+      "Key": "dev.needs",
+      "Values": [
+        "Set Hunger / Thirst",
+        "배고픔 / 갈증 설정"
+      ]
+    },
+    {
+      "Key": "dev.needs.note",
+      "Values": [
+        "Replace both survival meters.",
+        "생존 수치 두 개를 변경합니다."
+      ]
+    },
+    {
+      "Key": "dev.xp",
+      "Values": [
+        "Set XP / Gold",
+        "XP / Gold 설정"
+      ]
+    },
+    {
+      "Key": "dev.xp.note",
+      "Values": [
+        "Replace progression and reset learned skills.",
+        "성장을 교체하고 배운 스킬을 초기화합니다."
+      ]
+    },
+    {
+      "Key": "dev.level",
+      "Values": [
+        "Set Level",
+        "레벨 설정"
+      ]
+    },
+    {
+      "Key": "dev.level.note",
+      "Values": [
+        "Set matching XP and reset learned skills.",
+        "해당 XP로 변경하고 배운 스킬을 초기화합니다."
+      ]
+    },
+    {
+      "Key": "dev.points",
+      "Values": [
+        "Set Skill Points",
+        "스킬 포인트 설정"
+      ]
+    },
+    {
+      "Key": "dev.points.note",
+      "Values": [
+        "Set matching level; resets learned skills.",
+        "대응 레벨을 설정하고 배운 스킬을 초기화합니다."
+      ]
+    },
+    {
+      "Key": "dev.stamina",
+      "Values": [
+        "Set Stamina",
+        "스태미나 설정"
+      ]
+    },
+    {
+      "Key": "dev.stamina.note",
+      "Values": [
+        "Replace current stamina.",
+        "현재 스태미나를 변경합니다."
+      ]
+    },
+    {
+      "Key": "dev.item",
+      "Values": [
+        "Give Item",
+        "아이템 지급"
+      ]
+    },
+    {
+      "Key": "dev.item.note",
+      "Values": [
+        "Add Item ID × Quantity to the bag; accepts available space only.",
+        "Item ID를 Quantity만큼 지급합니다. 가방의 남은 공간만큼만 받습니다."
+      ]
+    },
+    {
+      "Key": "dev.tools",
+      "Values": [
+        "Give All Tools",
+        "모든 도구 지급"
+      ]
+    },
+    {
+      "Key": "dev.tools.note",
+      "Values": [
+        "Add each usable tool or weapon to available bag space.",
+        "사용 가능한 도구와 무기를 가방에 지급합니다."
+      ]
+    },
+    {
+      "Key": "dev.leather",
+      "Values": [
+        "Give Leather Armor",
+        "가죽 방어구 지급"
+      ]
+    },
+    {
+      "Key": "dev.leather.note",
+      "Values": [
+        "Add the leather head/body set to the bag.",
+        "가죽 머리/몸통 방어구를 가방에 지급합니다."
+      ]
+    },
+    {
+      "Key": "dev.iron_equip",
+      "Values": [
+        "Give / Equip Iron Armor",
+        "철 방어구 지급 / 장착"
+      ]
+    },
+    {
+      "Key": "dev.iron_equip.note",
+      "Values": [
+        "Add and equip iron armor through the normal equipment API.",
+        "일반 장비 API로 철 방어구를 지급하고 장착합니다."
+      ]
+    },
+    {
+      "Key": "dev.leather_equip",
+      "Values": [
+        "Give / Equip Leather Armor",
+        "가죽 방어구 지급 / 장착"
+      ]
+    },
+    {
+      "Key": "dev.leather_equip.note",
+      "Values": [
+        "Add and equip leather armor through the normal equipment API.",
+        "일반 장비 API로 가죽 방어구를 지급하고 장착합니다."
+      ]
+    },
+    {
+      "Key": "dev.clear_armor",
+      "Values": [
+        "Unequip Into Bag",
+        "방어구를 가방으로 해제"
+      ]
+    },
+    {
+      "Key": "dev.clear_armor.note",
+      "Values": [
+        "Unequip head/body if the bag can accept them.",
+        "가방에 공간이 있을 때 머리/몸통 방어구를 해제합니다."
+      ]
+    },
+    {
+      "Key": "dev.profile",
+      "Values": [
+        "Load Profile {0}",
+        "프로필 {0} 적용"
+      ]
+    },
+    {
+      "Key": "dev.profile.note",
+      "Values": [
+        "Replace bag, armor, needs and progression with this profile.",
+        "프로필에 맞게 가방, 방어구, 생존 수치, 성장을 교체합니다."
+      ]
+    },
+    {
+      "Key": "dev.time",
+      "Values": [
+        "Set Day / Time",
+        "날짜 / 시각 설정"
+      ]
+    },
+    {
+      "Key": "dev.time.note",
+      "Values": [
+        "Replace the saved world clock, changing the day/night phase.",
+        "저장되는 월드 시각을 변경하여 낮/밤 단계도 바꿉니다."
+      ]
+    },
+    {
+      "Key": "dev.teleport",
+      "Values": [
+        "Teleport",
+        "순간 이동"
+      ]
+    },
+    {
+      "Key": "dev.teleport.note",
+      "Values": [
+        "Move the player to Position on valid land.",
+        "유효한 지면의 Position으로 이동합니다."
+      ]
+    },
+    {
+      "Key": "dev.position",
+      "Values": [
+        "Position",
+        "위치"
+      ]
+    },
+    {
+      "Key": "dev.spawn",
+      "Values": [
+        "Spawn {0}",
+        "{0} 생성"
+      ]
+    },
+    {
+      "Key": "dev.spawn.note",
+      "Values": [
+        "Create this creature at Position; night enemies also set nighttime.",
+        "Position에 생물을 생성합니다. 야행성 적은 밤 시각도 설정합니다."
+      ]
+    },
+    {
+      "Key": "dev.warband",
+      "Values": [
+        "Spawn Goblin Warband",
+        "고블린 전투 무리 생성"
+      ]
+    },
+    {
+      "Key": "dev.warband.note",
+      "Values": [
+        "Create 3–5 goblins with 0–2 slingshot members.",
+        "새총 개체 0~2명이 포함된 고블린 3~5명을 생성합니다."
+      ]
+    },
+    {
+      "Key": "dev.camp",
+      "Values": [
+        "Spawn Goblin Camp",
+        "고블린 야영지 생성"
+      ]
+    },
+    {
+      "Key": "dev.camp.note",
+      "Values": [
+        "Create a small shelter, fire, supply box and residents.",
+        "작은 천막, 화톳불, 상자와 거주 개체를 생성합니다."
+      ]
+    },
+    {
+      "Key": "dev.assist",
+      "Values": [
+        "Trigger Ally Assist",
+        "아군 지원 유발"
+      ]
+    },
+    {
+      "Key": "dev.assist.note",
+      "Values": [
+        "Alert nearby allies of the closest goblin; no map-wide propagation.",
+        "가장 가까운 고블린의 주변 아군에게 경보를 전달합니다."
+      ]
+    },
+    {
+      "Key": "dev.flee",
+      "Values": [
+        "Trigger Herd Flee",
+        "무리 도주 유발"
+      ]
+    },
+    {
+      "Key": "dev.flee.note",
+      "Values": [
+        "Scare the nearest animal and its nearby group.",
+        "가장 가까운 동물과 주변 무리를 도망치게 합니다."
+      ]
+    },
+    {
+      "Key": "dev.clear_enemies",
+      "Values": [
+        "Clear Nearby Enemies",
+        "주변 적 제거"
+      ]
+    },
+    {
+      "Key": "dev.clear_enemies.note",
+      "Values": [
+        "Return enemies within 30 units to the pool; camp deficits can refill later.",
+        "30 거리 안의 적을 풀로 반환합니다. 야영지 부족분은 나중에 보충될 수 있습니다."
+      ]
+    },
+    {
+      "Key": "dev.seed",
+      "Values": [
+        "Generate With Seed",
+        "시드로 월드 생성"
+      ]
+    },
+    {
+      "Key": "dev.seed.note",
+      "Values": [
+        "Replace generated terrain, resources and populations.",
+        "생성된 지형, 자원, 개체수를 교체합니다."
+      ]
+    },
+    {
+      "Key": "dev.resource",
+      "Values": [
+        "Force Resource Recovery Tick",
+        "자원 보충 검사"
+      ]
+    },
+    {
+      "Key": "dev.resource.note",
+      "Values": [
+        "Attempt one immediate recovery check for deficient resource regions.",
+        "부족한 자원 지역에 대해 즉시 보충 검사를 한 번 실행합니다."
+      ]
+    },
+    {
+      "Key": "dev.advance",
+      "Values": [
+        "Advance Regen +{0}m",
+        "자원 재생 +{0}분"
+      ]
+    },
+    {
+      "Key": "dev.advance.note",
+      "Values": [
+        "Advance only recovery/exclusion timers; the day/night clock stays unchanged.",
+        "자원 보충/제외 타이머만 앞당깁니다. 낮/밤 시각은 바뀌지 않습니다."
+      ]
+    },
+    {
+      "Key": "dev.custom",
+      "Values": [
+        "Advance Custom Regen",
+        "자원 재생 시간 지정"
+      ]
+    },
+    {
+      "Key": "dev.seconds",
+      "Values": [
+        "Seconds",
+        "초"
+      ]
+    },
+    {
+      "Key": "dev.report",
+      "Values": [
+        "Resource Population Report",
+        "자원 개체수 보고"
+      ]
+    },
+    {
+      "Key": "dev.report.note",
+      "Values": [
+        "List regional counts, targets, pending recovery and harvest exclusions.",
+        "지역별 개체수, 목표, 예정 보충, 채집 제외 영역을 표시합니다."
+      ]
+    },
+    {
+      "Key": "dev.animals",
+      "Values": [
+        "Force Animal Population Tick",
+        "동물 개체수 검사"
+      ]
+    },
+    {
+      "Key": "dev.animals.note",
+      "Values": [
+        "Try due regional species deficits; respects habitat, player/base distance and caps.",
+        "기한이 된 종별 지역 부족분을 검사합니다. 서식지/거리/상한을 지킵니다."
+      ]
+    },
+    {
+      "Key": "dev.camps",
+      "Values": [
+        "Force Camp Population Tick",
+        "야영지 개체수 검사"
+      ]
+    },
+    {
+      "Key": "dev.camps.note",
+      "Values": [
+        "Try due resident deficits outside the camera and away from the player.",
+        "기한이 된 거주 개체 부족분을 화면 밖, 플레이어와 떨어진 곳에서 보충합니다."
+      ]
+    },
+    {
+      "Key": "dev.save",
+      "Values": [
+        "Save",
+        "저장"
+      ]
+    },
+    {
+      "Key": "dev.save.note",
+      "Values": [
+        "Overwrite the current world file with this test state.",
+        "현재 테스트 상태로 월드 파일을 덮어씁니다."
+      ]
+    },
+    {
+      "Key": "dev.load",
+      "Values": [
+        "Load",
+        "불러오기"
+      ]
+    },
+    {
+      "Key": "dev.load.note",
+      "Values": [
+        "Reload the saved world; unsaved changes are discarded.",
+        "저장된 월드를 불러옵니다. 저장하지 않은 변경은 사라집니다."
+      ]
+    },
+    {
+      "Key": "dev.new",
+      "Values": [
+        "New Test State",
+        "새 테스트 상태"
+      ]
+    },
+    {
+      "Key": "dev.new.note",
+      "Values": [
+        "Reload this scene; discard unsaved test changes.",
+        "씬을 다시 불러오고 저장하지 않은 테스트 변경을 버립니다."
+      ]
+    },
+    {
+      "Key": "dev.validate",
+      "Values": [
+        "Validate Data",
+        "데이터 검증"
+      ]
+    },
+    {
+      "Key": "dev.validate.note",
+      "Values": [
+        "Check IDs, assets, probabilities, tags, groups, recipes and localization.",
+        "ID, 에셋, 확률, 분류, 무리, 제작법, 번역을 검사합니다."
+      ]
+    },
+    {
+      "Key": "dev.field.hunger",
+      "Values": [
+        "Hunger",
+        "배고픔"
+      ]
+    },
+    {
+      "Key": "dev.field.thirst",
+      "Values": [
+        "Thirst",
+        "갈증"
+      ]
+    },
+    {
+      "Key": "dev.field.quantity",
+      "Values": [
+        "Quantity",
+        "수량"
+      ]
+    },
+    {
+      "Key": "dev.field.item",
+      "Values": [
+        "Item ID",
+        "아이템 ID"
+      ]
+    },
+    {
+      "Key": "dev.field.seed",
+      "Values": [
+        "Seed",
+        "시드"
+      ]
+    },
+    {
+      "Key": "dev.field.xp",
+      "Values": [
+        "XP",
+        "XP"
+      ]
+    },
+    {
+      "Key": "dev.field.gold",
+      "Values": [
+        "Gold",
+        "골드"
+      ]
     }
   ]
 }

@@ -6,6 +6,7 @@ namespace Wildfolk
     {
         public ZombieSpawnDefinition Definition;
         public EnemyController Prefab;
+        public EnemyController SecondaryPrefab;
         public WorldClock Clock;
         public GameplaySession Session;
         public Health Player;
@@ -19,6 +20,16 @@ namespace Wildfolk
         private readonly Dictionary<EnemyController,float> inactive=new Dictionary<EnemyController,float>();
         private readonly List<EnemyController> enemies=new List<EnemyController>();
         public int TargetPopulation=>Definition.PopulationFor(Clock.Model.Day);
+        public EnemyController SpeciesPrefab(string id)
+        {foreach(var prefab in new[]{Prefab,SecondaryPrefab})if(prefab!=null && prefab.Member.Definition.Id==id)return prefab;throw new System.IO.InvalidDataException("Unknown nocturnal species");}
+        public void Restore(NightCreatureSnapshot[] states)
+        {
+            foreach(var state in states)
+            {
+                var enemy=PrefabPool.Spawn(SpeciesPrefab(state.Species),state.Position,Quaternion.identity);enemy.Session=Session;enemy.PlayerHealth=Player;enemy.Clock=Clock;enemy.Lifecycle.Clock=Clock;enemy.Lifecycle.Definition=Definition;enemy.Lifecycle.RestoreActive();enemy.OwnHealth.RestoreHealth(state.HP);enemy.GetComponent<LootOnDeath>().Player=World.Player;if(enemy.Variant!=null)enemy.Variant.SetEquipped(!string.IsNullOrEmpty(state.Variant));Register(enemy);
+            }
+            previous=Clock.Model.Phase;openingRemaining=0;elapsed=0;
+        }
         public void Register(EnemyController enemy){if(!enemies.Contains(enemy))enemies.Add(enemy);}
         private void Start(){previous=Clock.Model.Phase;enemies.AddRange(FindObjectsByType<EnemyController>(FindObjectsSortMode.None));openingRemaining=previous==DayPhase.Night ? Mathf.CeilToInt(TargetPopulation*Definition.InitialFraction) : 0;}
         private void Prune()
@@ -69,7 +80,8 @@ namespace Wildfolk
                 var angle=Random.value*Mathf.PI*2;var radius=Random.Range(Definition.SpawnNear,Definition.SpawnFar);
                 var point=(Vector2)Player.transform.position+new Vector2(Mathf.Cos(angle),Mathf.Sin(angle))*radius;
                 if(!IsValidPosition(point))continue;
-                var enemy=PrefabPool.Spawn(Prefab,point,Quaternion.identity);enemy.Session=Session;enemy.PlayerHealth=Player;enemy.Clock=Clock;
+                var enemy=PrefabPool.Spawn(SecondaryPrefab!=null && Random.value<Definition.SecondarySpeciesChance ? SecondaryPrefab : Prefab,point,Quaternion.identity);enemy.Session=Session;enemy.PlayerHealth=Player;enemy.Clock=Clock;
+                if(enemy.Variant!=null)enemy.Variant.SetEquipped(Random.value<Definition.SwordVariantChance);
                 var lifecycle=enemy.GetComponent<ZombieLifecycle>();lifecycle.Clock=Clock;lifecycle.Definition=Definition;
                 var loot=enemy.GetComponent<LootOnDeath>();loot.Player=Player.GetComponent<PlayerInventory>();Register(enemy);return true;
             }

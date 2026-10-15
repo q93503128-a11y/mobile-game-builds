@@ -24,6 +24,6 @@ namespace Wildfolk.Editor
         internal static void Matte(Transform parent,Vector2 size)
         {var background=Image("Matte Surface",parent,"white",new Vector2(.5f,.5f),Vector2.zero,size-Vector2.one*6);background.color=new Color32(24,40,32,247);background.transform.SetAsFirstSibling();}
         internal static Image Surface(Transform safe,string name,Vector2 size,out GameObject view)
-        {var scrim=Scrim(name+" Overlay",safe);view=scrim.gameObject;var surface=Image(name,scrim.transform,"panel",new Vector2(.5f,.5f),Vector2.zero,size,true);Matte(surface.transform,size);var layout=surface.gameObject.AddComponent<ModalLayout>();layout.SafeArea=(RectTransform)safe;layout.ReferenceSize=size;layout.TopReserve=CharacterUiBuilder.ProfileBottomReserve;layout.BottomReserve=40;return surface;}
+        {var scrim=Scrim(name+" Overlay",safe);view=scrim.gameObject;var surface=Image(name,scrim.transform,"panel",new Vector2(.5f,.5f),Vector2.zero,size,true);Matte(surface.transform,size);var layout=surface.gameObject.AddComponent<ModalLayout>();layout.SafeArea=(RectTransform)safe;layout.ReferenceSize=size;layout.TopReserve=layout.BottomReserve=40;return surface;}
     }
 }

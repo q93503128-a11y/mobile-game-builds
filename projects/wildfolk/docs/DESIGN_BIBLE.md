@@ -10,7 +10,7 @@
 
 ## 실제 월드 생성1차
 
-192×144유닛 유한 월드, 실제 Biome는 Temperate 하나다. Seed가 강/호수/연못/길/숲·돌 밀도/자원 배치를 결정한다. 시작점은 빈 육지이며 근처 Wood/Stone과 수원을 보장한다. 깊은 물 충돌과 강 여울을 제공한다. Tree140/Stone55/Ore16/FallenLog12/SmallPlant36, 장식 최대480, Chicken1/Boar1을 생성한다. 자원/동물의 자연 재생과 Seed+Delta Save/Load v2(v1 호환)을 제공한다. 무한 Streaming은 없다. 세부 규칙은 WORLD_GENERATION을 따른다.
+192×144유닛 유한 월드, 실제 Biome는 Temperate 하나다. Seed가 강/호수/연못/길/숲·돌 밀도/자원 배치를 결정한다. 시작점은 빈 육지이며 근처 Wood/Stone과 수원을 보장한다. 깊은 물 충돌과 강 여울을 제공한다. Tree140/Stone55/Ore16/FallenLog12/SmallPlant36, 장식 최대480, Chicken10/Boar6/Rabbit12/Deer8/Sheep10의 종별 목표와 작은 Goblin Camp1을 구성한다. 지역 부족분 보충과 Seed+Delta Save/Load v4(v1~v3 호환)을 제공한다. 무한 Streaming은 없다. 세부 규칙은 WORLD_GENERATION을 따른다.
 
 ## 실제 극초반 진행
 
@@ -22,7 +22,7 @@ Workbench에서 Wall(Wood2/HP100), Door(Wood3/HP80), Chest(Wood6/HP70)를 제작
 
 ## 입력·UI·Inventory
 
-큰 Primary는 맨손/장비 공격, 설치, 선택 소비품 섭취만 담당한다. 작은 Interact는 시설/상자/문/물만 담당한다. 공격으로 기지 UI가 열리지 않으며 설치물을 자동 타격하지 않는다. 조이스틱/Hotbar/독립 가방/Pause/생존 및 작은 시간 HUD를 유지하고 상단 중앙은 비워둔다.
+큰 Primary는 맨손/장비 공격, 설치, 선택 소비품 섭취 및 선택 Armor 장착을 담당한다. 작은 Interact는 선택 Armor의 빠른 장착 또는 시설/상자/문/물 상호작용을 담당한다. 공격으로 기지 UI가 열리지 않으며 설치물을 자동 타격하지 않는다. 조이스틱/Hotbar/독립 가방/Pause/생존 및 작은 시간 HUD를 유지하고 상단 중앙은 비워둔다.
 
 Player36칸 중0~8Hotbar,9~35Storage다. Chest는 독립24칸(3×8)이며 아래Player27+9와 함께 표시한다. 드래그 이동/합치기/교환, Long Press의 액션/수량 선택 및 목적지 지정 소분, 명시적인 Drop Zone에만 바닥 버리기를 제공한다. UI 밖 임의 드랍은 취소한다. Inventory/Chest는 입력만 막고 세계를 계속 진행한다.
 
@@ -34,7 +34,7 @@ Day240/Evening60/Night150/Dawn30초, URP2D 실제 조명을 부드럽게 바꾼�
 
 Night1~2 Local Target6,3~4=8,5~6=10,7~8=12, 이후2씩 증가하여18. 별도의 Global Hard Cap18은 성능 안전장치다. 초기65%를0.9초 간격으로 분산 출현시키고 절반 미만으로 줄었을 때15초 간격으로 천천히 보충한다. 등록 GameplayLight의 안전 반경4/Strength1/Threshold.65를 사용하며 새 Aggro를 막고 기존 추적은2초 유예 후 포기한다. 실제 픽셀 색을 읽지 않는다.
 
-Goblin은 낮 Road 기반 기본형1종, 최대3,35초마다30% Encounter 시도다. 경계/순찰하며 Outer5에서 주시, Territory2.5/PersonalSpace1.8 접근이나 선공에 반응하고 Leash10을 벗어나면 돌아간다. Evening/Night 신규 생성을 멈추고 화면 밖 비전투 개체를 보상 없이 정리한다. 변형/마을/POI는 없다.
+Goblin은 낮 Road 기반3~5 Warband(새총0~2)와 작은 Camp 거주 개체3을 제공한다. 경계/순찰/선공 반응과 Leash10을 유지한다. 주변 아군 경보는7유닛, 원래 위협 위치에서12유닛 안의 직접 이웃에게만 전달하며 재전파하지 않는다. Camp와 살아 있는 무리를 저장하고 부족 거주 개체는480초 후 안전 후보로 보충한다. Scout의 실제 콘텐츠/마을/요새는 없다.
 
 ## 생존·Loot·진행 기반
 
@@ -52,13 +52,13 @@ General Workbench가 메인 제작 Progression Spine이다. WorkbenchTier/Requir
 
 Gold는 월드/캐릭터용 일반 재화다. 향후 Merchant/서비스 등이 후보이며 현재 사용처는 없다. Meta Coin은 향후 Account 단위 Skin/Class Unlock/Horizontal Unlock 등의 별도 영구 재화 방향이며 현재 시스템/드랍/저장은 없다. 향후 Monster/Challenge의 낮은 확률·소량 보상도 후보이며 현재 지급하지 않는다. Gold와 합치지 않는다.
 
-월드 생성은 다른 핵심 콘텐츠/Armor/Skill/방어/POI 재료가 마련된 뒤 다시 다듬는다. 그때 여러Biome/Transition/Dungeon/Goblin Hut/Ruins/Camp/POI/Road망/자원Region/난이도 분포를 확장한다. 현재 하나의Biome 내부 밀도 변화를 여러Biome로 부르지 않는다.
+월드 생성은 다른 핵심 콘텐츠/Armor/Skill/방어/POI 재료가 마련된 뒤 다시 다듬는다. 그때 여러Biome/Transition/Dungeon/Goblin Village/Ruins/확장 Camp/POI/Road망/자원Region/난이도 분포를 확장한다. 현재 하나의Biome 내부 밀도 변화를 여러Biome로 부르지 않는다.
 
 ## 기반 안정화 현재 구현
 
 Editor Developer Harness와 Early/Stone/Iron Profile, Combat Sandbox를 제공한다. 제품 HUD/Release UI에는 개발 도구를 넣지 않는다. 실제 기능/수치를 검사하며 재미·손맛을 자동 합격 처리하지 않는다.
 
-Save/Load v3(v1/v2 호환)는 Player와 Seed/게임 시간, 변경 자원·재생 대기·시설·Chest·처리 상태를 저장한다. Version/검증/temporary/atomic replace/backup을 사용한다. Cloud Save/Account/실제 Multiplayer 권위 저장은 없다.
+Save/Load v4(v1~v3 호환)는 Player와 Seed/게임 시간, 변경 자원·재생 대기·시설·Chest·처리 상태를 저장한다. Version/검증/temporary/atomic replace/backup을 사용한다. Cloud Save/Account/실제 Multiplayer 권위 저장은 없다.
 
 Tree300/Log480초, Stone600초, Ore720초, Chicken180초/Boar300초의 자연 재생을 제공한다. 카메라/플레이어 밖의 적합한 지역에서 시도하며 Timer는 저장한다. Animal Breeding/먹이/새끼/성장/농축산은 향후 별도 패스다. 작은 관목36개는 HP12/Wood1/90초 재생의 실제 자원이다. Sapling/Young Tree 성장은 아직 없다.
 
@@ -88,3 +88,14 @@ Stamina100은 Sprint/Dash가 공유한다. Joystick0.9를0.4초 유지하면 Spr
 Profile은 성장 정보/Skill Tree 진입, Inventory는 Item/Head·Body 장착을 담당한다. Skin/Head/Body/Hand/Back/FX는 공통 Motion Root와 실제 Hand 모션을 공유한다. 노드는 현재 Skill4개만 쓰며 Endurance→Recovery/Stride 선행과 투자 조건을 표시한다. 미래 슬롯/스킬/Status/Class 버튼을 가짜로 노출하지 않는다.
 
 English 기본/한국어를 Settings에서 즉시 전환한다. Localization Key/수치 Placeholder/Local User Preference를 사용한다. 지역 Population/Soft Target/최근 Harvest 제외로 자원을 회복하며 Rare는 넓은 월드 후보를 사용한다. 파괴 개체의 원래 ID를 부활시키지 않는다. 세부 수치는 BALANCE/WORLD_GENERATION, 조사와 검수는 UI_RESEARCH/QUALITY_REVIEW가 정본이다. 미래 다수 광물/합금/결정은 데이터 경계 확장 방향이며 이번 실제 콘텐츠를 추가하지 않았다. Diamond를 최종 Tier로 고정하지 않는다.
+
+
+## 생태·입력·구조물 품질 패스
+
+CreatureDefinition의 Family/Faction/Traits/Habitat와 CreatureMember의 Group/Anchor/경보를 분리한다. Undead와 LightSensitive는 독립이다. Zombie의 Dim/Safe/Grace 규칙은 Trait에 연결하고 Skeleton은 HP32/이동2.65의 근접형으로 Night 예산을 함께 사용한다. 일부는 Rusted Sword Variant로 피해/Reach가 증가하고 검을 실제 손에 표시한다. Rusted Sword 드랍은 낮은 확률이며 플레이어가 실제 사용/공격/저장할 수 있다.
+
+동물은 기존 개별 Home Slot 부활을 제거한다. 4×3 논리 지역의 서식지/종별 부족량을 검사하며 새 ID와 느슨한 Group을 생성한다. Rabbit은 빠른 도주, Deer는 넓은 감지/무리 경보, Sheep은 느린 Flock이다. Chicken/Boar의 기존 도주와 Loot도 유지한다. 동물 중심 겹침은 비강체 이동 보정으로 풀며 플레이어를 물리 벽으로 막지 않는다. Wool/탄약/무용한 잡재료는 추가하지 않았다.
+
+큰 Modal은 단일 Canvas의 Gameplay Layer 뒤에 생성하는 Modal Layer에서 Safe Area 중심을 사용한다. 뒤 HUD의 Raycast/Input을 함께 차단한다. Inventory에서 Armor를 맞는 Head/Body 슬롯으로 Drag하고 장착 슬롯을 빈 가방 칸으로 Drag 해제한다. 교환/해제 실패 시 상태를 보존한다. 현재 Armor4개를 유지하며 새 Tier를 추가하지 않았다.
+
+Wood/Stone Wall은 상부·전면·재질과 연결 끝단을 구분한다. Door는 고정 Frame과 왼쪽 Hinge Leaf,0.32초 easing을 사용하고 통로가 충분히 열린 시점에 충돌을 해제한다. 새총은 Ready/Draw/Release/Recovery와 실제 Band 길이, 놓은 뒤 남는 당김 손, Release 시점의 Pebble 투사체를 사용한다. 재미·밀도·공격 체감과 세부 애니메이션 평가는 사용자 확인 대상이다.

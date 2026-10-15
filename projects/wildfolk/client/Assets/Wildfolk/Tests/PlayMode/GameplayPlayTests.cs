@@ -103,7 +103,7 @@ namespace Wildfolk.Tests
         {
             var panel=Object.FindFirstObjectByType<InventoryPanel>();
             Assert.That(panel.View.activeSelf,Is.False);
-            yield return Click(hud.InventoryButton);
+            yield return driver.Inventory(hud);
             Assert.That(panel.View.activeSelf,Is.True);Assert.That(Time.timeScale,Is.EqualTo(1));
             var position=player.transform.position;
             yield return Click(hud.Attack);
@@ -114,8 +114,8 @@ namespace Wildfolk.Tests
             Assert.That(panel.Slots[0].Selection.enabled,Is.True);
             yield return Click(panel.View.transform.Find("Inventory Panel/Close").GetComponent<Button>());
             Assert.That(panel.View.activeSelf,Is.False);Assert.That(Time.timeScale,Is.EqualTo(1));
-            yield return Click(hud.InventoryButton);yield return Click(hud.InventoryButton);
-            Assert.That(panel.View.activeSelf,Is.False);
+            yield return driver.Inventory(hud);yield return Click(hud.InventoryButton);
+            Assert.That(panel.View.activeSelf,Is.True);yield return driver.Inventory(hud);Assert.That(panel.View.activeSelf,Is.False);
         }
 
         private IEnumerator PunchOnce()
@@ -188,12 +188,12 @@ namespace Wildfolk.Tests
             yield return DestroyNode(stone);yield return Collect("stone",6);
             Assert.That(inventory.Model.GetSlot(3).Count,Is.EqualTo(6));
             var panel=Object.FindFirstObjectByType<InventoryPanel>();
-            yield return Click(hud.InventoryButton);
+            yield return driver.Inventory(hud);
             Assert.That(panel.Slots[2].Count.text,Is.EqualTo("6"));Assert.That(panel.Slots[3].Count.text,Is.EqualTo("6"));
             yield return Click(panel.Slots[3].GetComponent<Button>());
             Assert.That(panel.SelectedName.text,Is.EqualTo("Stone"));
             Assert.That(panel.Slots[3].Selection.enabled,Is.True);
-            yield return Click(hud.InventoryButton);
+            yield return driver.Inventory(hud);
         }
 
         [UnityTest] public IEnumerator EnemyTelegraphsDamagesWithoutPhysicsPushAndDiesToAttackInput()
@@ -309,10 +309,10 @@ namespace Wildfolk.Tests
             var stone=Resource("stone",-6.5f,1.5f);PositionPlayer(new Vector2(-6.5f,-.4f));
             player.Avatar.Facing.Face(Vector2.up);yield return new WaitForSeconds(.3f);
             yield return UseToolOnce();Assert.That(stone.Health.Current,Is.EqualTo(45),"Axe is inefficient on stone.");
-            yield return Click(hud.InventoryButton);yield return Click(panel.Slots[1].GetComponent<Button>());
+            yield return driver.Inventory(hud);yield return Click(panel.Slots[1].GetComponent<Button>());
             Assert.That(inventory.SelectedIndex,Is.EqualTo(1));Assert.That(bar.Slots[1].Selection.enabled,Is.True);
             Assert.That(panel.SelectedName.text,Is.EqualTo("Wood Pickaxe"));Assert.That(panel.SelectedCategory.text,Is.EqualTo("Tool"));
-            yield return Click(hud.InventoryButton);
+            yield return driver.Inventory(hud);
             Assert.That(equipment.HeldVisual.sprite,Is.SameAs(inventory.Model.GetSlot(1).Item.Tool.HeldSprite));
             yield return UseToolOnce();Assert.That(stone.Health.Current,Is.EqualTo(20));
             yield return UseToolOnce();Assert.That(stone==null,Is.True);yield return Collect("stone",3);

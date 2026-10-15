@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad9fca80c66890c4296ebfe4ecbb059a, type: 3}
+  m_Name: SlingshotAttack
+  m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.SlingshotDefinition
+  MinimumDistance: 2.4
+  PreferredDistance: 4.8
+  MaximumDistance: 7
+  RepositionSeconds: 0.65
+  RepositionCooldown: 2.5
+  Ready: 0.12
+  Draw: 0.42
+  Hold: 0.1
+  Release: 0.08
+  Recovery: 0.28
+  ProjectileSpeed: 10
+  ProjectileLifetime: 1.4
+  Damage: 4

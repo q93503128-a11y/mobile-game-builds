@@ -373,6 +373,7 @@ GameObject:
   - component: {fileID: 6161596831870490256}
   - component: {fileID: 1977931621692743597}
   - component: {fileID: 7483728843801981833}
+  - component: {fileID: 2920071556823948345}
   - component: {fileID: 3534516607455219838}
   - component: {fileID: 3436646498270535420}
   - component: {fileID: 788767769927240154}
@@ -534,6 +535,25 @@ MonoBehaviour:
   Facing: {fileID: 1977931621692743597}
   Lifecycle: {fileID: 788767769927240154}
   Steering: {fileID: 3534516607455219838}
+  Member: {fileID: 2920071556823948345}
+  Combat: {fileID: 0}
+  Variant: {fileID: 0}
+--- !u!114 &2920071556823948345
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2477312199630843718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e91da0d8745f14941b64645cb74e00c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.CreatureMember
+  Definition: {fileID: 11400000, guid: 05d0e12a810a7924292233e82029f402, type: 2}
+  GroupId: 
+  Anchor: {x: 0, y: 0}
+  AdditionalTraits: 0
 --- !u!114 &3534516607455219838
 MonoBehaviour:
   m_ObjectHideFlags: 0

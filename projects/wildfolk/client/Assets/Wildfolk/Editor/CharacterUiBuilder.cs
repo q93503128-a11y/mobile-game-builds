@@ -6,7 +6,6 @@ namespace Wildfolk.Editor
 {
     internal static class CharacterUiBuilder
     {
-        internal const float ProfileBottomReserve=270;
         internal static void Build(GameObject root,Transform safe,GameplaySession session,PlayerInventory player)
         {
             var hud=root.AddComponent<ProfileHud>();hud.Player=player;

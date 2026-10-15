@@ -32,6 +32,10 @@ for name in ['profile','icon_dash','leather_head','leather_body','leather_head_w
     check((root/f'Assets/Wildfolk/Art/{name}.png').is_file(),f'Missing character/tool art: {name}')
 for name in ['CharacterGrowth','Locomotion','LeatherHead','LeatherBody','IronHead','IronBody','WorkbenchIIPlacement','ReinforcedChestPlacement','StoneWallPlacement','Axe','Pickaxe','AxeTool','PickaxeTool','WoodSword','WoodSwordTool','Workbench','WorkbenchPlacement','Recipes','WorkbenchRecipe','AxeRecipe','PickaxeRecipe','WoodSwordRecipe','Campfire','CampfirePlacement','CampfireRecipe','RawMeat','CookedMeat','EmptyCup','RawWaterCup','CleanWaterCup','WoodenCupContainer','ContentCatalog','AnimalPopulation','EnemySteering','Survival','NaturalWater','CookedMeatRecipe','WoodTier','StoneTier','IronTier','IronOre','IronIngot','Furnace','StorageChest','WoodWall','WoodDoor','DayNight','ZombieSpawn','AnimalMovement','WorldGeneration','TemperateBiome','FacilityLight','Goblin','ChickenLoot','BoarLoot','ZombieLoot','GoblinLoot','Feather','Leather']:
     check((root/f'Assets/Wildfolk/Data/{name}.asset').is_file(),f'Missing item/crafting definition: {name}')
+for name in ['Rabbit','Deer','Sheep','Skeleton','SlingshotGoblin','GoblinCamp','Pebble']:
+    check((root/f'Assets/Wildfolk/Prefabs/{name}.prefab').is_file(),f'Missing creature/content prefab: {name}')
+for name in ['rabbit','deer','sheep','skeleton','bone_hand','rusted_sword','door_frame','door_leaf','slingshot','goblin_tent','camp_box','pebble']:
+    check((root/f'Assets/Wildfolk/Art/{name}.png').is_file(),f'Missing original ecology sprite: {name}')
 for name in ['Data/StartingEquipment.asset','Runtime/Data/StartingLoadout.cs']:
     check(not (root/f'Assets/Wildfolk/{name}').exists(),f'Removed starting loadout remains: {name}')
 check(not (root/'Assets/Wildfolk/Data/Water.asset').exists(),'Containerless Water asset remains')

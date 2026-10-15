@@ -15,6 +15,7 @@ namespace Wildfolk
         [Min(1)]public float LocalThreatRadius=45,InactiveDistance=60,InactiveSeconds=20;
         [Min(1)]public float DetectionRadius=36,LoseRange=50,LostTargetSeconds=15;
         [Range(.1f,1)]public float DimDetectionMultiplier=.8f,SafeSpeedMultiplier=.75f;
+        [Range(0,1)]public float SecondarySpeciesChance=.35f,SwordVariantChance=.25f;
         public int PopulationFor(int night)=>Mathf.Min(HardCap,InitialPopulation+Mathf.Max(0,(night-1)/NightsPerStep)*PopulationStep);
     }
 }

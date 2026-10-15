@@ -59,7 +59,7 @@ namespace Wildfolk.Tests
             for(var i=0;i<36;i++) Assert.That(inventory.Model.GetSlot(i).IsEmpty,Is.True);
             Assert.That(equipment.ActiveTool,Is.Null);Assert.That(equipment.HeldVisual.enabled,Is.False);
             Assert.That(hotbar.Slots.Length,Is.EqualTo(9));Assert.That(panel.Slots.Length,Is.EqualTo(36));
-            yield return input.Click(hud.InventoryButton);
+            yield return input.Inventory(hud);
             Assert.That(crafts.View.activeSelf,Is.False);yield return input.Click(panel.CraftingButton);Assert.That(Card("workbench").gameObject.activeInHierarchy,Is.True);
             Assert.That(Card("workbench").CraftButton.interactable,Is.False);
             Assert.That(Card("axe").gameObject.activeSelf,Is.False);Assert.That(Card("wood_sword").gameObject.activeSelf,Is.False);
@@ -72,12 +72,12 @@ namespace Wildfolk.Tests
             Position((Vector2)enemy.transform.position+Vector2.left*2.2f,Vector2.right);
             yield return new WaitForSeconds(.3f);
             var body=player.GetComponent<Rigidbody2D>();var origin=body.position;var hp=player.GetComponent<Health>();
-            yield return input.Click(hud.InventoryButton);
-            var before=hp.Current;yield return new WaitForSeconds(1.1f);
+            yield return input.Inventory(hud);
+            var before=hp.Current;var deadline=Time.time+3;while(hp.Current==before && Time.time<deadline)yield return null;
             Assert.That(Time.timeScale,Is.EqualTo(1));Assert.That(hp.Current,Is.LessThan(before));
             Assert.That(Vector2.Distance(origin,body.position),Is.LessThan(.02f));
             yield return input.Click(hud.Attack);Assert.That(player.Combat.IsAttacking,Is.False);
-            yield return input.Click(hud.PauseButton);Assert.That(hud.PausePanel.activeSelf,Is.True);Assert.That(Time.timeScale,Is.Zero);
+            yield return input.Inventory(hud);yield return input.Click(hud.PauseButton);Assert.That(hud.PausePanel.activeSelf,Is.True);Assert.That(Time.timeScale,Is.Zero);
             var pausedHp=hp.Current;yield return new WaitForSecondsRealtime(.35f);Assert.That(hp.Current,Is.EqualTo(pausedHp));
             yield return input.Click(hud.PausePanel.transform.Find("Pause Panel/Continue"));
             Assert.That(Time.timeScale,Is.EqualTo(1));Assert.That(hud.Session.State,Is.EqualTo(SessionState.Running));
@@ -94,7 +94,7 @@ namespace Wildfolk.Tests
             inventory.Model.Add(Recipe("axe").Result,1);inventory.Model.Add(Recipe("pickaxe").Result,1);
             inventory.SelectSlot(0);yield return null;
             Assert.That(equipment.ActiveTool,Is.SameAs(Recipe("axe").Result.Tool));
-            yield return input.Click(hud.InventoryButton);
+            yield return input.Inventory(hud);
             var drag=Object.FindFirstObjectByType<InventoryDragController>();
             yield return input.Drag(panel.Slots[20],PlayPointerDriver.Point(panel.Slots[1]),()=>
             {Assert.That(drag.IsDragging,Is.True);Assert.That(drag.Ghost.gameObject.activeSelf,Is.True);Assert.That(panel.Slots[20].Icon.color.a,Is.LessThan(.5f));});
@@ -117,12 +117,12 @@ namespace Wildfolk.Tests
         {
             var wood=Recipe("workbench").Ingredients[0].Item;
             inventory.Model.Add(wood,450);
-            yield return input.Click(hud.InventoryButton);yield return input.Click(panel.CraftingButton);yield return input.Click(Card("workbench").CraftButton);
+            yield return input.Inventory(hud);yield return input.Click(panel.CraftingButton);yield return input.Click(Card("workbench").CraftButton);
             Assert.That(inventory.Model.CountItem(wood),Is.EqualTo(444));
             Assert.That(inventory.Model.GetSlot(9).Item.Id,Is.EqualTo("workbench"));yield return input.Click(crafts.InventoryButton);
             Assert.That(panel.Slots[9].Icon.enabled,Is.True);Assert.That(panel.Slots[9].Count.text,Is.EqualTo("1"));
             yield return input.Drag(panel.Slots[9],PlayPointerDriver.Point(panel.Slots[8]));
-            yield return input.Click(panel.Slots[8]);yield return input.Click(hud.InventoryButton);
+            yield return input.Click(panel.Slots[8]);yield return input.Inventory(hud);
             yield return null;
             Assert.That(equipment.ActivePlaceable,Is.Not.Null);Assert.That(hotbar.Slots[8].Icon.sprite,Is.SameAs(Recipe("workbench").Result.Icon));
             Assert.That(player.GetComponent<PlayerPlacement>().Preview.activeSelf,Is.True);
@@ -175,9 +175,9 @@ namespace Wildfolk.Tests
             yield return Harvest(Tree());
             var wood=Recipe("workbench").Ingredients[0].Item;
             Assert.That(inventory.Model.CountItem(wood),Is.EqualTo(6));
-            yield return input.Click(hud.InventoryButton);yield return input.Click(panel.CraftingButton);yield return input.Click(Card("workbench").CraftButton);
+            yield return input.Inventory(hud);yield return input.Click(panel.CraftingButton);yield return input.Click(Card("workbench").CraftButton);
             Assert.That(inventory.Model.CountItem(wood),Is.Zero);Assert.That(inventory.Model.GetSlot(0).Item.Id,Is.EqualTo("workbench"));
-            yield return input.Click(hud.InventoryButton);
+            yield return input.Inventory(hud);
             var placement=player.GetComponent<PlayerPlacement>();
             Position(new Vector2(.7f,1.4f),Vector2.right);yield return new WaitForSeconds(.3f);
             var obstacle=WorldTestScene.MatureTree();WorldTestScene.MoveResource(obstacle,placement.PreviewPosition);yield return null;
@@ -191,7 +191,7 @@ namespace Wildfolk.Tests
             var bench=Object.FindFirstObjectByType<CraftingStation>();Assert.That(bench,Is.Not.Null);
             yield return input.Click(hud.Interact);
             Assert.That(crafting.AvailableStation,Is.EqualTo(StationKind.Workbench));Assert.That(crafts.View.activeSelf,Is.True);Assert.That(panel.View.activeSelf,Is.False);
-            yield return input.Click(hud.InventoryButton);yield return input.Click(hotbar.Slots[8]);
+            yield return input.Inventory(hud);yield return input.Click(hotbar.Slots[8]);
             for(var i=0;i<3;i++)yield return Harvest(Tree());
             Assert.That(inventory.Model.CountItem(wood),Is.EqualTo(18));
             Position(new Vector2(0,-.35f),Vector2.down);yield return new WaitForSeconds(.3f);
@@ -201,7 +201,7 @@ namespace Wildfolk.Tests
             Assert.That(inventory.Model.CountItem(Recipe("axe").Result),Is.EqualTo(1));
             Assert.That(inventory.Model.CountItem(Recipe("pickaxe").Result),Is.EqualTo(1));
             Assert.That(inventory.Model.GetSlot(3).Item.Id,Is.EqualTo("wood_sword"));
-            yield return input.Click(crafts.InventoryButton);yield return input.Click(panel.Slots[3]);yield return input.Click(hud.InventoryButton);
+            yield return input.Click(crafts.InventoryButton);yield return input.Click(panel.Slots[3]);yield return input.Inventory(hud);
             Assert.That(equipment.ActiveTool,Is.SameAs(Recipe("wood_sword").Result.Tool));Assert.That(equipment.HeldVisual.enabled,Is.True);
             var enemy=WorldTestScene.SpawnZombie();yield return new WaitForSeconds(1.3f);Position((Vector2)enemy.transform.position+Vector2.left*1.9f,Vector2.right);
             yield return new WaitForSeconds(.3f);

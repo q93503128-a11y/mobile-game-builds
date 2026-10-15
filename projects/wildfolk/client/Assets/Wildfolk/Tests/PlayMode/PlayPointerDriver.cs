@@ -40,6 +40,7 @@ namespace Wildfolk.Tests
             var point=Point(target);Pointer(point,true);yield return null;
             Pointer(point,false);yield return null;yield return null;
         }
+        internal IEnumerator Inventory(GameplayHud hud)=>Click(hud.Session.State==SessionState.Inventory ? WorldTestScene.ModalCloseButton() : hud.InventoryButton);
         internal IEnumerator Drag(Component source,Vector2 destination,Action inspect=null)
         {
             var start=Point(source);Pointer(start,true);yield return null;

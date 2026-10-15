@@ -47,6 +47,7 @@ namespace Wildfolk.Editor
             {
                 check(loot.Experience>=0 && loot.Gold>=0,"Negative loot reward: "+loot.name);
                 foreach(var drop in loot.Items)check(itemSet.Contains(drop.Item) && drop.Minimum>0 && drop.Maximum>=drop.Minimum && drop.Item!=null && drop.Maximum<=drop.Item.MaxStack && drop.Chance>=0 && drop.Chance<=1,"Invalid drop: "+loot.name);
+                foreach(var drop in loot.RareItems)check(itemSet.Contains(drop.Item) && drop.Minimum>0 && drop.Maximum>=drop.Minimum && drop.Item!=null && drop.Maximum<=drop.Item.MaxStack && drop.Chance>=0 && drop.Chance<=1,"Invalid rare drop: "+loot.name);
             }
             foreach(var resource in Assets<ResourceDefinition>())check(resource.DropItem!=null && itemSet.Contains(resource.DropItem) && resource.DropCount>0 && resource.DropCount<=resource.DropItem.MaxStack && (resource.MinimumTier==null || tiers.Contains(resource.MinimumTier)) && Enum.IsDefined(typeof(ToolKind),resource.RequiredTool),"Invalid resource/tier: "+resource.name);
             foreach(var definition in Assets<WorldGenerationDefinition>())
@@ -68,7 +69,7 @@ namespace Wildfolk.Editor
                 var saveIds=new HashSet<string>();foreach(var placed in UnityEngine.Object.FindObjectsByType<WorldPlaceable>(FindObjectsSortMode.None))check(!string.IsNullOrEmpty(placed.SaveId) && saveIds.Add(placed.SaveId),"Save ID collision");
                 foreach(var resource in UnityEngine.Object.FindObjectsByType<ResourceIdentity>(FindObjectsSortMode.None))check(saveIds.Add(resource.Id),"Resource save ID collision");
             }
-            QualityDataValidator.Validate(errors);return errors;
+            QualityDataValidator.Validate(errors);EcologyDataValidator.Validate(errors);return errors;
         }
         private static void Attack(AttackProfile attack,Action<bool,string> check,string id)=>check(attack!=null && attack.MaxTargets>0 && attack.MaxTargets<=32 && attack.Range>0 && attack.ArcAngle>0 && attack.ArcAngle<=360 && attack.PierceCount>=0 && attack.AoERadius>=0,"Invalid attack profile: "+id);
         private static bool Cycle(ItemDefinition node,Dictionary<ItemDefinition,List<ItemDefinition>> graph,HashSet<ItemDefinition> visited,HashSet<ItemDefinition> visiting)

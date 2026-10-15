@@ -58,7 +58,7 @@ namespace Wildfolk.Tests
             var corners=new Vector3[4];((RectTransform)component.transform).GetWorldCorners(corners);
             return Rect.MinMaxRect(corners[0].x,corners[0].y,corners[2].x,corners[2].y);
         }
-        [UnityTest] public IEnumerator ControlSizeLimitsKeepTouchControlsSeparateAndBagClearOfInventory()
+        [UnityTest] public IEnumerator ControlSizeLimitsKeepTouchControlsSeparateAndModalCentered()
         {
             var preferences=Object.FindFirstObjectByType<UserPreferences>();
             var hotbar=Object.FindFirstObjectByType<HotbarView>();
@@ -69,12 +69,11 @@ namespace Wildfolk.Tests
                 Assert.That(Bounds(hud.Attack).Overlaps(Bounds(hotbar)),Is.False);
                 Assert.That(Bounds(hud.Interact).Overlaps(Bounds(hud.Attack)),Is.False);
                 Assert.That(Bounds(player.Joystick).Overlaps(Bounds(hotbar)),Is.False);
-                yield return input.Click(hud.InventoryButton);
+                yield return input.Inventory(hud);
                 var surface=Object.FindFirstObjectByType<InventoryPanel>().View.transform.Find("Inventory Panel");
-                Assert.That(Bounds(surface).Overlaps(Bounds(hud.InventoryButton)),Is.False);
-                Assert.That(Bounds(surface).Overlaps(Bounds(Object.FindFirstObjectByType<TimeHud>())),Is.False);
-                Assert.That(Bounds(surface).Overlaps(Bounds(Object.FindFirstObjectByType<SurvivalHud>())),Is.False);
-                yield return input.Click(hud.InventoryButton);Assert.That(hud.Session.IsRunning,Is.True);
+                Assert.That(((RectTransform)surface).anchoredPosition,Is.EqualTo(Vector2.zero));
+                Assert.That(Object.FindFirstObjectByType<GameplayUiLayers>().Gameplay.blocksRaycasts,Is.False);
+                yield return input.Inventory(hud);Assert.That(hud.Session.IsRunning,Is.True);
             }
         }
         [UnityTest] public IEnumerator MultiplayerPauseBlocksLocalInputButContinuesWorldNeedsAndEnemy()
@@ -106,9 +105,9 @@ namespace Wildfolk.Tests
         [UnityTest] public IEnumerator CampfireRecipePlacementCookingProgressAndTakeUseActualButtons()
         {
             var recipe=Recipe("campfire");foreach(var cost in recipe.Ingredients) inventory.Model.Add(cost.Item,cost.Count);
-            yield return input.Click(hud.InventoryButton);yield return input.Click(Object.FindFirstObjectByType<InventoryPanel>().CraftingButton);yield return input.Click(Card("campfire").CraftButton);
+            yield return input.Inventory(hud);yield return input.Click(Object.FindFirstObjectByType<InventoryPanel>().CraftingButton);yield return input.Click(Card("campfire").CraftButton);
             Assert.That(inventory.Model.GetSlot(0).Item,Is.SameAs(recipe.Result));
-            yield return input.Click(hud.InventoryButton);Position(new Vector2(0,-.35f),Vector2.down);yield return new WaitForSeconds(.2f);
+            yield return input.Inventory(hud);Position(new Vector2(0,-.35f),Vector2.down);yield return new WaitForSeconds(.2f);
             yield return input.Click(hud.Attack);yield return null;
             Assert.That(inventory.Model.GetSlot(0).IsEmpty,Is.True);
             var station=Object.FindFirstObjectByType<CraftingStation>();Assert.That(station.Definition.Station,Is.EqualTo(StationKind.Campfire));
@@ -118,7 +117,7 @@ namespace Wildfolk.Tests
             var cooking=station.GetComponent<StationProcessing>();Assert.That(cooking.IsBusy,Is.True);Assert.That(inventory.Model.CountItem(Raw),Is.Zero);
             yield return new WaitForSeconds(.3f);Assert.That(Card("cooked_meat").Progress.gameObject.activeSelf,Is.True);
             Assert.That(Card("cooked_meat").Status.text,Does.Contain("Cooking"));
-            yield return input.Click(hud.InventoryButton);yield return new WaitForSeconds(5.1f);
+            yield return input.Inventory(hud);yield return new WaitForSeconds(5.1f);
             Assert.That(cooking.IsReady,Is.True);Assert.That(crafting.OpenStation(station),Is.True);yield return null;yield return null;
             yield return input.Click(Card("cooked_meat").CraftButton);
             var food=Recipe("cooked_meat").Result;Assert.That(inventory.Model.CountItem(food),Is.EqualTo(1));Assert.That(cooking.IsBusy,Is.False);

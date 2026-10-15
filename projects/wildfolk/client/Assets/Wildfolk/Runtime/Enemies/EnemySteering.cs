@@ -6,12 +6,14 @@ namespace Wildfolk
         public EnemySteeringDefinition Definition;
         public WorldNavigation Navigation;
         private Rigidbody2D body;
+        private SoftSeparation soft;
         private readonly Collider2D[] neighbors=new Collider2D[32];
         private readonly RaycastHit2D[] obstacles=new RaycastHit2D[16];
-        private void Awake()=>body=GetComponent<Rigidbody2D>();
+        private void Awake(){body=GetComponent<Rigidbody2D>();soft=GetComponent<SoftSeparation>();}
         private void Start(){if(Navigation==null)Navigation=FindFirstObjectByType<WorldNavigation>();}
         public Vector2 Separate(Vector2 desired)
         {
+            if(soft!=null)return Vector2.ClampMagnitude(desired+soft.Correction(1),1);
             var count=Physics2D.OverlapCircle(body.position,Definition.SeparationRadius,new ContactFilter2D{useTriggers=true},neighbors);var repel=Vector2.zero;
             for(var i=0;i<count;i++)
             {

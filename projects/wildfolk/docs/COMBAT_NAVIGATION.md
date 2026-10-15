@@ -23,3 +23,12 @@ PlayerMotor는 PlayerInputCommands.Move를 사용한다. 터치/키보드는 Pla
 Armor Head/Body가Health.DamageReduction으로합산된다. 기존Friendly Fire/Single Target/생존피해우회는유지한다. CharacterStats는HP/Stamina/회복/효율의Skill집계경계다.
 
 보행은Stamina를소비하지않는다. Sprint는Joystick Hold/Hysteresis와기존CanSprint/SprintEfficiency를사용한다. Dash는현재Move또는Facing,즉시Stamina소비,0.18초물리이동이다. 0.08유닛Substep별Map walkable+CircleCast를검사하고자기Collider는제외한다. 깊은물/기지벽/자원장애물을통과하지않고무적/공격판정은없다. UI열림/사망/고갈/짧은Cooldown은재입력을거절한다. Android최종체감은사용자테스트다.
+
+
+## 생태·밀착·문 품질 변경
+
+Target Collider와 Player Collider 간 실제 거리≤0.12이면 Facing Arc만 완화한다. Origin→ClosestPoint Range와 Single Target/Friendly Fire OFF는 그대로다. Fist/Axe/Pickaxe/Sword의 정면·측면·뒤 밀착,정상 정면·측면,Range 경계/밖을 자동 검사한다.
+
+NeutralAnimal은 Player Collider를 단단한 장애물로 검사하지 않고 SoftSeparation으로 생물 쪽을 보정한다. 종별 반경/느슨한 Group 간격은 CreatureDefinition 데이터다. Goblin도 공통 Group 경보/간격을 쓰며 직접 주변 Ally Assist,Leash와 제한된 새총 재배치를 사용한다. Skeleton은 공통 EnemyController의 준비/Swing/Hit/Recovery와 Variant Weapon을 따른다. 빛 효과 조건은 LightSensitive이며 Undead 이름/Family 자체가 아니다.
+
+Door는 왼쪽 Hinge/고정 Frame/0.32초 easing으로 열린다. Collider는 eased Open70%에서 해제하고 닫을 때 다시 활성화한다. 점유 상태의 닫기는 거절한다. 공격 중 transient Pose와 발사된 돌은 Save에서 재개하지 않는다. 실제 체감/난이도/경로 자연스러움은 사용자가 확인한다.

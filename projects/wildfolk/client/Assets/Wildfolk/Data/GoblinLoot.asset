@@ -12,6 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 213579090249d754e9b5bdf72d333110, type: 3}
   m_Name: GoblinLoot
   m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.LootTable
-  Items: []
+  Items:
+  - Item: {fileID: 11400000, guid: 30904e05765ac844ab5bb28b855a15db, type: 2}
+    Chance: 0.8
+    Minimum: 1
+    Maximum: 3
+  - Item: {fileID: 11400000, guid: 431287b464f63f4408828d4053bac6eb, type: 2}
+    Chance: 0.6
+    Minimum: 1
+    Maximum: 2
+  RareItems: []
   Experience: 8
   Gold: 3

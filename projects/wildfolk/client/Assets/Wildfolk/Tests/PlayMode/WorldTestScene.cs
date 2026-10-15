@@ -3,6 +3,12 @@ namespace Wildfolk.Tests
 {
     internal static class WorldTestScene
     {
+        internal static UnityEngine.UI.Button ModalCloseButton()
+        {
+            var roots=new[]{Object.FindFirstObjectByType<InventoryPanel>().View,Object.FindFirstObjectByType<CraftingPanel>().View,Object.FindFirstObjectByType<ChestPanel>().View};
+            foreach(var root in roots)if(root.activeSelf)foreach(var button in root.GetComponentsInChildren<UnityEngine.UI.Button>())if(button.name=="Close")return button;
+            throw new System.InvalidOperationException("An open inventory-family screen needs a visible close control.");
+        }
         internal static EnemyController SpawnZombie()
         {
             foreach(var node in Object.FindObjectsByType<ResourceNode>(FindObjectsSortMode.None))if(Vector2.Distance(node.transform.position,new Vector2(6.6f,-.2f))<7)node.gameObject.SetActive(false);

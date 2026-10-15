@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbef149f70fa39e46b2ba1b5ff76c58b, type: 3}
+  m_Name: GoblinCamp
+  m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.GoblinCampDefinition
+  Prefab: {fileID: 1134393239305963728, guid: a5b5efff645e8de4d9e24954385c4b92, type: 3}
+  InitialCamps: 1
+  Residents: 3
+  HardCap: 24
+  RefillSeconds: 480
+  PatrolRadius: 4
+  PlayerDistance: 18
+  BaseDistance: 12

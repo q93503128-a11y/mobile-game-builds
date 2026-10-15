@@ -15,6 +15,8 @@ GameObject:
   - component: {fileID: 369511394393707219}
   - component: {fileID: 6088154461094153820}
   - component: {fileID: 6093698111049186242}
+  - component: {fileID: 688030921472903544}
+  - component: {fileID: 8538591322214285287}
   - component: {fileID: 949842591823247114}
   - component: {fileID: 1633444973336837312}
   m_Layer: 0
@@ -117,7 +119,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.57
+  m_Radius: 0.62
 --- !u!114 &369511394393707219
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -163,6 +165,38 @@ MonoBehaviour:
   Visual: {fileID: 8623754542835686924}
   Region: {fileID: 0}
   Health: {fileID: 369511394393707219}
+  Member: {fileID: 688030921472903544}
+  Separation: {fileID: 8538591322214285287}
+--- !u!114 &688030921472903544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1296655929990336751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e91da0d8745f14941b64645cb74e00c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.CreatureMember
+  Definition: {fileID: 11400000, guid: 7fbe1750ded97324aafb84771fdc7e66, type: 2}
+  GroupId: 
+  Anchor: {x: 0, y: 0}
+  AdditionalTraits: 0
+--- !u!114 &8538591322214285287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1296655929990336751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8afbb33eddbc3834188e6be1dc4e1125, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.SoftSeparation
+  Member: {fileID: 688030921472903544}
+  Player: {fileID: 0}
 --- !u!114 &949842591823247114
 MonoBehaviour:
   m_ObjectHideFlags: 0

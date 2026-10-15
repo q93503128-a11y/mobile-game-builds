@@ -27,7 +27,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_LocalScale: {x: 0.81818175, y: 0.9, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2016560418138704873}
@@ -86,7 +86,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2.1, y: 1.1}
+  m_Size: {x: 2.4, y: 1.1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -461,6 +461,7 @@ GameObject:
   - component: {fileID: 1788938684771651304}
   - component: {fileID: 7817772507028270285}
   - component: {fileID: 4925190960920588024}
+  - component: {fileID: 3442959631249290620}
   - component: {fileID: 1348787332174370353}
   m_Layer: 0
   m_Name: StoneWall
@@ -601,6 +602,21 @@ MonoBehaviour:
   Definition: {fileID: 11400000, guid: 353a9d9a02e4b684386fbf2205b82838, type: 2}
   Health: {fileID: 1788938684771651304}
   Visual: {fileID: 3195145144342622233}
+--- !u!114 &3442959631249290620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6936464655545487945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0cee7705a49c154e87a8df13635c2f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.WallVisual
+  Placeable: {fileID: 4925190960920588024}
+  LeftEnd: {fileID: 0}
+  RightEnd: {fileID: 0}
 --- !u!114 &1348787332174370353
 MonoBehaviour:
   m_ObjectHideFlags: 0
