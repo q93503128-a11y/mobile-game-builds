@@ -36,3 +36,14 @@ Dash는 외부 게임 Icon을 추출하지 않고 [Lucide chevrons-right](https:
 | [Don't Starve Together Mobile Host](https://playdigious.helpshift.com/hc/en/39-don-t-starve-together/faq/788-how-to-create-a-server/),[Solo](https://playdigious.helpshift.com/hc/en/39-don-t-starve-together/faq/795-can-i-play-solo/?p=all),[Klei Options](https://support.klei.com/hc/en-us/articles/5832923019668-DST-How-to-find-your-Klei-User-ID-KUID) | Main의 Host Game→세계/세션 설정, Local Only/1인과 함께 사용할 수 있는 분리, Options 경로 | Home과 gameplay 전환을 분리하되 향후 Host/Room 연결 경계를 유지. 계정/서버 준비 절차는 이번에 복제하지 않음 |
 
 세 자료의 CTA/이어하기 대 새 게임/설정/협동 진입 원칙을 비교했다. Safe Area·엄지 도달·배경 대비의 정확한 상대 게임 좌표는 측정하지 않았으며 Wildfolk에서1920×1080의 오른쪽 행동군/왼쪽 타이틀·정적 야영 배경/기존 SafeAreaLayout으로 설계했다. 상단 작은 Settings만 두지 않고 엄지로 접근할 수 있는 메뉴 하단 버튼을 제공한다. 외부 게임 Asset/Code/Layout을 복제하지 않았다.
+
+
+## Lowfire Home 시각 재설계 — 2026-10-15
+
+이번 패스에서 위 Minecraft UI팀의 [Create New World 설계](https://www.minecraft.net/en-us/article/creating-create-new-world), [DST Mobile Host 안내](https://playdigious.helpshift.com/hc/en/39-don-t-starve-together/faq/788-how-to-create-a-server/)를 다시 확인했다. 행동 계층/모드 분리를 참고했고, [Valheim 공식 patch 1.0.14](https://www.valheimgame.com/news/patch-1-0-14/)의 Main Menu particle overdraw 개선은 배경 효과를 늘리지 않고 기존 정적 야영지를 유지하는 판단에 참고했다. 이 자료에서 특정 타이틀 글꼴·수첩 패널·터치 좌표를 도출했다고 주장하지 않는다. 성능 향상을 직접 측정한 결과도 아니다.
+
+Penpot MCP에 1920×1080 세 Board를 실제 작성하고 PNG export로 비교했다. [A 야영지 표지판](design/lowfire-home-a.svg)은 짙은 목재/큰 이어하기/보조 버튼이다. [B 야전 수첩](design/lowfire-home-b.svg)은 왼쪽 제목/오른쪽 제본 종이/큰 이어하기/구분선 아래 두 모드/하단 Settings다. [C 간결한 생존 메뉴](design/lowfire-home-c.svg)는 반투명 어두운 면과 가로 모드 두 개다. Safe Area 점선은 설계 참고선이며 제품에는 출력하지 않는다. 배경의 원/도형은 기존 배경의 자리만 표현하는 시안이고 게임용 신규 월드 아트가 아니다.
+
+B를 선택했다. 숲과 구분되는 밝은 종이가 버튼 계층을 읽게 하고, 제본/작은 불씨색으로 제목과 야영지의 재질감을 연결한다. A는 다시 어두운 상자/규칙적인 쌓기와 가까웠고 C는 두 모드의 폭과 일반 앱 메뉴 느낌이 남았다. 기존 allcaps와 홍보 문구를 없애고 Krita lettering 및 실제 UI Sprite로 적용했다. 최초 검수의 비활성 Continue가 짙은 갈색이어서 활성 상태와 구분이 약했으며, 최종본에서는 회색으로 구분했다.
+
+Penpot file 0f3fb038-01f9-8046-8008-cad21bd7de79 / page 4e37fba4-57b1-80c6-8008-cb14dda39fa0 (Lowfire · Home concepts). 원본 Board는 사용자 Penpot 파일에 남아 있고 저장소 SVG는 작성한 동일 시안의 휴대용 원본이다. 선택 B의 글꼴 자리표시는 Unity에서 Krita 로고로 교체했다. 출시 로고·실기 터치 접근성 확정이 아니다.

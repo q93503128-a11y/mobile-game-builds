@@ -11,7 +11,9 @@ namespace Wildfolk.Tests
         [Test]public void SaveRulesReferenceGameplayContentAndHomeKeysHaveBothLanguages()
         {
             var rules=Resources.Load<SaveGameRules>("SaveGameRules");Assert.That(rules,Is.Not.Null);Assert.That(rules.Catalog,Is.SameAs(AssetDatabase.LoadAssetAtPath<ContentCatalog>("Assets/Wildfolk/Data/ContentCatalog.asset")));Assert.That(rules.Player.Settings.InventorySlots,Is.EqualTo(36));Assert.That(rules.NightPrefabs.Length,Is.EqualTo(2));
-            var entries=L.Catalog.Entries.Where(e=>e.Key.StartsWith("home.")).ToArray();Assert.That(entries.Length,Is.GreaterThanOrEqualTo(15));foreach(var e in entries){Assert.That(e.Values.Length,Is.EqualTo(2));Assert.That(e.Values.All(v=>!string.IsNullOrWhiteSpace(v)),Is.True);}
+            foreach(var key in new[]{"brand.name","home.camp","home.continue","home.single","home.multi","home.confirm_body","home.saved_day"})Assert.That(L.Has(key),Is.True,key);
+            var brand=L.Catalog.Entries.Single(e=>e.Key=="brand.name");Assert.That(brand.Values,Is.EqualTo(new[]{"Lowfire","Lowfire"}));
+            var entries=L.Catalog.Entries.Where(e=>e.Key.StartsWith("home.")).ToArray();foreach(var e in entries){Assert.That(e.Values.Length,Is.EqualTo(2));Assert.That(e.Values.All(v=>!string.IsNullOrWhiteSpace(v)),Is.True);}
         }
     }
 }

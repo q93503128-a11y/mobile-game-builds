@@ -13,4 +13,7 @@ Language는 wildfolk.user.language PlayerPrefs에 저장한다. Control Size/Mas
 
 Rabbit/Deer/Sheep/Skeleton/검 Skeleton/새총 Goblin/Camp/Rusted Sword와 Armor 실패 Feedback,Developer Console Section/설명/Tooltip/경고/필드 라벨은 같은 English/한국어 키 구조로 추가했다. 기본 English와 Local Preference를 유지한다. 종·Variant·Item의 authoring ID/Prefab 이름은 내부 식별자이며 플레이어 문구로 출력하지 않는다.
 
-Home은 home.* 15개 키를 기존 en/ko Catalog에 추가한다. Continue/Single Player/Multiplayer/저장 요약/덮어쓰기 확인/이용 불가 안내/Save & return home을 번역한다. Home/Pause Settings는 같은 Preferences 키를 저장하고 다음 씬에서도 유지한다. 숨겨진 Home Label은 기존 LocalizedLabel.OnEnable에서 다시 표시될 때 갱신하며 숨은 UI를 매 프레임 갱신하지 않는다.
+Home은 home.* 키를 기존 en/ko Catalog에서 관리한다. Continue/Single Player/Multiplayer/저장 요약/덮어쓰기 확인/이용 불가 안내/Save & return home을 번역한다. Home/Pause Settings는 같은 Preferences 키를 저장하고 다음 씬에서도 유지한다. 숨겨진 Home Label은 기존 LocalizedLabel.OnEnable에서 다시 표시될 때 갱신하며 숨은 UI를 매 프레임 갱신하지 않는다.
+
+
+Lowfire 표시 이름은 brand.name(en/ko 공통 Lowfire)과 Home의 Krita wordmark PNG에 반영했다. home.camp(At the camp/야영지에서)를 사용하며 기존 eyebrow/tagline/CHOOSE YOUR PATH와 중복 Pause Load 문구 키를 제거했다. 저장 일차는 Day {0} · Saved world / {0}일차 · 저장된 세계로 간결하게 표시한다. 로고는 고정 영문 브랜드 자산이고 행동/안내는 기존 Noto Sans KR와 Localization을 사용한다. 내부 namespace, wildfolk.user.* 키와 저장 위치는 바꾸지 않았다. PlayerSettings.productName도 저장·배포 식별자에 영향이 없도록 이번 표시 UI 작업에서는 유지한다.

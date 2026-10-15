@@ -87,7 +87,7 @@ L/LanguageCatalog/LocalizedLabel은 Resources Localization 데이터와 즉시 R
 
 ## Home / 씬 전환
 
-Build Settings는 MainMenu→Wildfolk다. FrontendSceneBuilder는 기존 Gameplay 씬/Prefab을 재생성하지 않고 공유 Rules 참조, Pause Home 버튼, 초상화 손 비율을 갱신한 뒤 MainMenu를 저장한다. Build Playable Scene의 마지막에도 Home 빌더를 호출하므로 재생성 후 시작 씬이 사라지지 않는다.
+Build Settings는 MainMenu→Wildfolk다. FrontendSceneBuilder는 기존 Gameplay 씬/Prefab을 재생성하지 않고 공유 Rules 참조, Pause 행동 정리, 초상화 손 비율을 갱신한 뒤 MainMenu를 저장한다. Build Playable Scene의 마지막에도 Home 빌더를 호출하므로 재생성 후 시작 씬이 사라지지 않는다.
 
 - SceneFlow: NewGame/Continue/Home/Restart/Load의 유일한 SceneManager.LoadScene 경계, 전환 중 중복 진입 차단, Time.timeScale 복원, 일회성 로드 Snapshot 전달.
 - SaveGameRules: 기존 migration/SaveValidation/적 검증 코드를 WorldSaveService에서 분리해 Home도 공유한다. authored Player Prefab/World/Catalog/종별 데이터 참조만 보관하며 세계 GameObject를 만들지 않는다.
@@ -97,3 +97,6 @@ Build Settings는 MainMenu→Wildfolk다. FrontendSceneBuilder는 기존 Gamepla
 - SurvivalUiBuilder.Settings는 Back 콜백을 받아 Home/Pause가 같은 SettingsPanel 제작 코드와 LocalSettings 키를 사용한다.
 
 Quiet Woodland는 SpriteRenderer/Light만 사용하며 WorldGenerator,CreatureMember,Health,PrefabPool,Population/Combat은 없다. SafeAreaLayout은 기존 크기 변화 guard를 사용한다. QualityUiBuilder.AlignHands는 실제 Player 몸통/손 크기와 Facing 간격으로 초상화 손과 장갑 비율을 계산한다. 월드 손 크기/공격 모션은 변경하지 않았다.
+
+
+Lowfire Home은 같은 FrontendSceneBuilder에서 제작한다. JournalAction은 이어하기/종이 위 보조 행동의 시각 표현만 담당하며 HomeScreen/SceneFlow/SaveRepository의 기존 기능을 재사용한다. ConfigurePauseActions는 Editor 씬 제작 시 이전 Load Game 오브젝트를 제거하고 네 행동을 재배치한다. Runtime 호환용 숨김/우회 컴포넌트는 추가하지 않는다. 쓰이지 않게 된 LoadFromMenu wrapper는 제거했으며 실제 WorldSaveService.Load는 유지한다. Krita 타이틀/수첩은 UI Sprite 두 개이고 월드 아트/시뮬레이션 코드는 변경하지 않았다.

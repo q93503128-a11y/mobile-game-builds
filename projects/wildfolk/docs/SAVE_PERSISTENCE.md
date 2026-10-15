@@ -1,6 +1,6 @@
 # Save / Load v4, v1~v3 호환
 
-정본은 WorldSaveService / SavedGame / SaveRepository / SaveValidation이다. 수동 Save game / Load game은 Pause 메뉴에 있다. 기기 Pause/Background/Quit에는 살아 있는 세션을 자동 저장한다. Home의 Single Player는 무작위 Seed로 시작하며, 저장 게임은 Home Continue 또는 Pause Load로 불러온다. Gameplay 씬 직접 실행의 기본 Seed는 유지한다. 사망/재시작 규칙과 사망 보상 정책은 변경하지 않았다.
+정본은 WorldSaveService / SavedGame / SaveRepository / SaveValidation이다. 수동 Save game과 Save & return home은 Pause 메뉴에 있다. 플레이어용 Load game 버튼은 제거했고 WorldSaveService.Load 및 Editor Developer Load는 유지한다. 기기 Pause/Background/Quit에는 살아 있는 세션을 자동 저장한다. Home의 Single Player는 무작위 Seed로 시작하며, 저장 게임은 Home Continue로 불러온다. Gameplay 씬 직접 실행의 기본 Seed는 유지한다. 사망/재시작 규칙과 사망 보상 정책은 변경하지 않았다.
 
 ## 저장 범위
 

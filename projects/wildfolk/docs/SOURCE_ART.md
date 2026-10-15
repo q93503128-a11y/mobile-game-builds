@@ -25,3 +25,10 @@ Font는 [Google Fonts Noto Sans KR](https://github.com/google/fonts/tree/main/of
 사용자 지시에 따라 기존 tools/generate_visual_assets.py의 Pillow polygon/ellipse/line 제작을 ecology_art로 확장했다. rabbit/deer/sheep/skeleton/bone_hand/rusted_sword/wood_wall/stone_wall/wall_post/door_frame/door_leaf/wood_door/slingshot/goblin_tent/camp_box/pebble PNG가 실제 Art 폴더와 Prefab/Item에서 사용된다. --ecology-only로 이 부분만 재생성하며 기본 전체 실행도 같은 함수를 사용한다. 교체된 옛 벽·문 제작 블록은 제거했다.
 
 이번에 시도한 imagegen 시트2개는 사용자 요청으로 원본 파일까지 폐기했고 프로젝트에 Import하지 않았다. 기존 Armor4개는 이전 큐레이션 결과를 유지한다. 새 애니메이션은 기존 캐릭터 손 Transform·새 Frame/Leaf Sprite와 Band LineRenderer를 시간에 따라 조작하며 외부 게임 애니메이션을 추출하지 않았다.
+
+
+## 2026-10-15 Lowfire Home UI
+
+Krita MCP의 native path/ellipse/line/polygon으로 Lowfire 소문자 혼합 lettering(815×215), 불씨색 i 점과 제본·종이 가장자리·접힌 귀가 있는 수첩 패널(768×896)을 제작했다. Imagegen/Blender/외부 게임 Asset을 사용하지 않았다. 캐릭터 아트 제작 방식은 기존 코드/Pillow다.
+
+편집 원본: art-source/LowfireWordmark.kra, LowfireFieldJournal.kra. 실제 UI: client/Assets/Wildfolk/Art/lowfire_wordmark.png, lowfire_journal.png 및 Sprite import meta. Krita preview 뒤 Unity1920×1080 Home에서 확인했다. Krita의 기존 허용 폴더인 Documents/ChatGPT/테스트/LowfireHomeAssets로 저장/내보낸 다음 일반 파일 복사로 정본과 LIVE에 배치했다. 허용 루트/설정을 변경하지 않았다. 종이의 빈 중앙은 실제 Unity Button/Text를 배치하는 영역이며 메뉴 글자를 이미지에 굽지 않았다.

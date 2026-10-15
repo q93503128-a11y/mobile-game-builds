@@ -1,6 +1,8 @@
-# Wildfolk 기획 정본
+# Lowfire 기획 정본
 
 기준일2026-10-15. main의 실제 코드/데이터가 최우선 정본이다. Unity6000.3.19f1 LTS / Universal2D, 모바일 Landscape, 기준1920×1080.
+
+플레이어 표시 이름은 Lowfire다. 내부 Wildfolk 식별자와 프로젝트/저장 경로는 유지한다. Home 타이틀/메뉴를 재디자인했으며 전체 프로젝트 rename은 수행하지 않았다.
 
 ## 방향과 아트
 

@@ -29,7 +29,7 @@ namespace Wildfolk.Editor
             rules.Goblin=saves.GetComponent<GoblinSpawner>().Prefab;rules.Camps=saves.GetComponent<GoblinSpawner>().CampDefinition;
             saves.Rules=rules;EditorUtility.SetDirty(rules);
             foreach(var portrait in UnityEngine.Object.FindObjectsByType<PlayerPortrait>(FindObjectsInactive.Include,FindObjectsSortMode.None))QualityUiBuilder.AlignHands(portrait,saves.Player);
-            var pause=UnityEngine.Object.FindFirstObjectByType<PauseMenu>(FindObjectsInactive.Include);SurvivalUiBuilder.AddHomeAction(pause.Menu.transform,saves);
+            var pause=UnityEngine.Object.FindFirstObjectByType<PauseMenu>(FindObjectsInactive.Include);SurvivalUiBuilder.ConfigurePauseActions(pause.Menu.transform,saves);
             EditorSceneManager.SaveScene(SceneManager.GetActiveScene());
             var sourceInput=UnityEngine.Object.FindFirstObjectByType<InputSystemUIInputModule>();var uiActions=sourceInput.actionsAsset;var point=sourceInput.point;var click=sourceInput.leftClick;
             var scene=EditorSceneManager.NewScene(NewSceneSetup.EmptyScene,NewSceneMode.Single);
@@ -45,19 +45,16 @@ namespace Wildfolk.Editor
             var safe=Rect("Safe Area",canvas.transform,Vector2.zero,Vector2.zero,Vector2.zero);safe.anchorMax=Vector2.one;safe.offsetMin=safe.offsetMax=Vector2.zero;safe.gameObject.AddComponent<SafeAreaLayout>();
             var home=canvas.AddComponent<HomeScreen>();home.Rules=rules;home.Preferences=prefs;
             var menu=Rect("Home",safe,new Vector2(.5f,.5f),Vector2.zero,Vector2.zero);menu.anchorMin=Vector2.zero;menu.anchorMax=Vector2.one;menu.offsetMin=menu.offsetMax=Vector2.zero;home.Menu=menu.gameObject;
-            var eyebrow=Text("Eyebrow",menu,"home.eyebrow",new Vector2(-420,345),new Vector2(750,40),22,TextAnchor.MiddleLeft);eyebrow.color=new Color32(199,180,126,255);
-            Text("WILDFOLK",menu,"WILDFOLK",new Vector2(-420,260),new Vector2(780,145),96,TextAnchor.MiddleLeft).fontStyle=FontStyle.Bold;
-            Text("Tagline",menu,"home.tagline",new Vector2(-420,167),new Vector2(750,55),27,TextAnchor.MiddleLeft);
-            var rule=Image("Title Rule",menu,"white",new Vector2(.5f,.5f),new Vector2(-660,116),new Vector2(270,3));rule.color=new Color32(165,152,104,255);
-            var panel=Image("Trail Menu",menu,"white",new Vector2(.78f,.5f),Vector2.zero,new Vector2(540,650),true);panel.color=new Color32(25,43,34,244);
-            var line=Image("Top Edge",panel.transform,"white",new Vector2(.5f,1),Vector2.zero,new Vector2(540,3));line.color=new Color32(150,154,107,255);
-            Text("Menu Title",panel.transform,"home.menu_title",new Vector2(0,269),new Vector2(448,40),20,TextAnchor.MiddleLeft);
-            home.ContinueButton=Action(panel.transform,"Continue","home.continue",new Vector2(0,173),new Vector2(450,92),home.TryContinue,true);
-            home.SaveSummary=Text("Saved World",panel.transform,"",new Vector2(0,95),new Vector2(448,44),20,TextAnchor.MiddleLeft);home.SaveSummary.color=new Color32(170,184,153,255);
-            home.SingleButton=Action(panel.transform,"Single Player","home.single",new Vector2(0,12),new Vector2(450,78),home.SinglePlayer,false);
-            home.MultiplayerButton=Action(panel.transform,"Multiplayer","home.multi",new Vector2(0,-89),new Vector2(450,78),home.OpenMultiplayer,false);
-            home.SettingsButton=Action(panel.transform,"Settings","ui.settings.title",new Vector2(0,-206),new Vector2(450,66),home.OpenSettings,false);
-            home.Status=Text("Save Status",panel.transform,"",new Vector2(0,-280),new Vector2(450,52),18);home.Status.color=new Color32(208,172,132,255);
+            var brand=Image(L.Text("brand.name"),menu,"lowfire_wordmark",new Vector2(.5f,.5f),new Vector2(-405,255),new Vector2(660,174));brand.preserveAspect=true;
+            var panel=Image("Field Journal",menu,"lowfire_journal",new Vector2(.77f,.5f),Vector2.zero,new Vector2(610,730),true);
+            var heading=Text("Menu Title",panel.transform,"home.camp",new Vector2(26,237),new Vector2(422,40),22,TextAnchor.MiddleLeft);heading.color=Ink;
+            home.ContinueButton=JournalAction(panel.transform,"Continue","home.continue",new Vector2(23,139),new Vector2(434,100),home.TryContinue,true);
+            home.SaveSummary=Text("Saved World",panel.transform,"",new Vector2(26,51),new Vector2(414,66),21,TextAnchor.MiddleLeft);home.SaveSummary.color=Ink;
+            foreach(var y in new[]{-2f,-108f,-213f}){var rule=Image("Page Rule",panel.transform,"white",new Vector2(.5f,.5f),new Vector2(26,y),new Vector2(418,1));rule.color=new Color32(158,147,115,180);}
+            home.SingleButton=JournalAction(panel.transform,"Single Player","home.single",new Vector2(23,-49),new Vector2(434,82),home.SinglePlayer,false);
+            home.MultiplayerButton=JournalAction(panel.transform,"Multiplayer","home.multi",new Vector2(23,-154),new Vector2(434,82),home.OpenMultiplayer,false);
+            home.SettingsButton=JournalAction(panel.transform,"Settings","ui.settings.title",new Vector2(-44,-255),new Vector2(300,66),home.OpenSettings,false);
+            home.Status=Text("Save Status",panel.transform,"",new Vector2(26,-321),new Vector2(422,42),18,TextAnchor.MiddleLeft);home.Status.color=new Color32(106,57,38,255);
             home.Settings=SurvivalUiBuilder.Settings(safe,prefs,home.ShowHome);home.Settings.SetActive(false);
             var multi=QualityUiBuilder.Surface(safe,"Multiplayer",new Vector2(900,630),out home.Multiplayer);
             var icon=Image("Camp",multi.transform,"campfire",new Vector2(.5f,.5f),new Vector2(0,173),new Vector2(100,100));icon.preserveAspect=true;
@@ -72,6 +69,18 @@ namespace Wildfolk.Editor
             Action(confirm.transform,"Start New World","home.new_action",new Vector2(190,-160),new Vector2(400,72),home.BeginNew,true);home.Confirm.SetActive(false);
             var events=new GameObject("EventSystem",typeof(EventSystem),typeof(InputSystemUIInputModule));events.GetComponent<EventSystem>().sendNavigationEvents=false;var input=events.GetComponent<InputSystemUIInputModule>();input.UnassignActions();input.actionsAsset=uiActions;input.point=point;input.leftClick=click;
             EditorSceneManager.SaveScene(scene,ScenePath);EditorBuildSettings.scenes=new[]{new EditorBuildSettingsScene(ScenePath,true),new EditorBuildSettingsScene(GameplaySceneBuilder.ScenePath,true)};AssetDatabase.SaveAssets();
+        }
+        private static readonly Color32 Ink=new Color32(49,63,48,255);
+        private static Button JournalAction(Transform parent,string name,string key,Vector2 position,Vector2 size,UnityEngine.Events.UnityAction action,bool primary)
+        {
+            var image=Image(name,parent,"white",new Vector2(.5f,.5f),position,size,true);image.color=primary ? new Color32(137,88,56,255) : new Color32(91,99,72,14);
+            var label=Text("Label",image.transform,key,new Vector2(-8,0),size-new Vector2(54,12),primary ? 32 : 29,TextAnchor.MiddleLeft);label.color=primary ? new Color32(248,237,207,255) : Ink;
+            if(primary){var arrow=Text("Arrow",image.transform,"›",new Vector2(size.x*.5f-28,0),new Vector2(32,44),34);arrow.color=label.color;}
+            var button=Button(image);var colors=button.colors;
+            if(primary){colors.normalColor=image.color;image.color=Color.white;colors.highlightedColor=new Color32(156,106,71,255);colors.pressedColor=new Color32(100,68,46,255);colors.disabledColor=new Color32(143,140,118,255);}
+            else{colors.highlightedColor=new Color(1,.95f,.85f,1);colors.pressedColor=new Color(.66f,.72f,.59f,1);}
+            button.colors=colors;
+            UnityEventTools.AddPersistentListener(button.onClick,action);return button;
         }
         private static Button Action(Transform parent,string name,string key,Vector2 position,Vector2 size,UnityEngine.Events.UnityAction action,bool primary)
         {

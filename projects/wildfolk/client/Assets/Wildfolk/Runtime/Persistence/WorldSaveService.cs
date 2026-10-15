@@ -48,7 +48,6 @@ namespace Wildfolk
             catch(Exception error)when(error is InvalidDataException || error is IOException || error is ArgumentException || error is InvalidOperationException){LastError=error.Message;PlayerFeedback.ShowKey("feedback.load_failed");return false;}
             SceneFlow.Continue(game,Repository);return true;
         }
-        public void LoadFromMenu()=>Load();
         public void SaveAndHome(){if(!Save()){PlayerFeedback.ShowKey("feedback.save_failed");return;}GetComponent<UserPreferences>().Flush();AutoSaveEnabled=false;SceneFlow.Home(Repository);}
         public void Apply(SavedGame game)
         {

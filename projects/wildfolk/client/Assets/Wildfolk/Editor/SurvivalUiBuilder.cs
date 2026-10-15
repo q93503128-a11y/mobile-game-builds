@@ -21,15 +21,19 @@ namespace Wildfolk.Editor
             Text("Label",settings.transform,"ui.settings.title",Vector2.zero,new Vector2(260,60),27);
             UnityEventTools.AddPersistentListener(Button(settings).onClick,menu.OpenSettings);
             var save=Image("Save Game",panel.transform,"panel",new Vector2(.5f,.5f),new Vector2(0,35),new Vector2(280,70),true);Text("Label",save.transform,"ui.pause.save",Vector2.zero,new Vector2(260,60),27);UnityEventTools.AddPersistentListener(Button(save).onClick,session.GetComponent<WorldSaveService>().SaveFromMenu);
-            var load=Image("Load Game",panel.transform,"panel",new Vector2(.5f,.5f),new Vector2(0,-60),new Vector2(280,70),true);Text("Label",load.transform,"ui.pause.load",Vector2.zero,new Vector2(260,60),27);UnityEventTools.AddPersistentListener(Button(load).onClick,session.GetComponent<WorldSaveService>().LoadFromMenu);
-            AddHomeAction(panel.transform,session.GetComponent<WorldSaveService>());
+            ConfigurePauseActions(panel.transform,session.GetComponent<WorldSaveService>());
             menu.Settings=Settings(scrim.transform,preferences,menu.Back);
             menu.Settings.SetActive(false);scrim.gameObject.SetActive(false);return scrim.gameObject;
         }
-        internal static void AddHomeAction(Transform panel,WorldSaveService save)
+        internal static void ConfigurePauseActions(Transform panel,WorldSaveService save)
         {
-            if(panel.Find("Save and Home")!=null)return;
-            var home=Image("Save and Home",panel,"panel",new Vector2(.5f,.5f),new Vector2(0,-245),new Vector2(280,70),true);
+            var load=panel.Find("Load Game");if(load!=null)Object.DestroyImmediate(load.gameObject);
+            ((RectTransform)panel).sizeDelta=new Vector2(440,490);
+            ((RectTransform)panel.Find("Title")).anchoredPosition=new Vector2(0,188);
+            ((RectTransform)panel.Find("Settings")).anchoredPosition=new Vector2(0,-60);
+            var existing=panel.Find("Save and Home");
+            if(existing!=null){((RectTransform)existing).anchoredPosition=new Vector2(0,-155);return;}
+            var home=Image("Save and Home",panel,"panel",new Vector2(.5f,.5f),new Vector2(0,-155),new Vector2(280,70),true);
             Text("Label",home.transform,"home.save_exit",Vector2.zero,new Vector2(270,60),24);
             UnityEventTools.AddPersistentListener(Button(home).onClick,save.SaveAndHome);
         }
