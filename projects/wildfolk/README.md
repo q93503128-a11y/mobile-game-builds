@@ -26,7 +26,7 @@ Zombie는 밤에 올라와 활동하고 새벽에는 보상 없이 잠복한다.
 
 ## 정본과 검증
 
-- 실제 Item34종, Recipe25종, Equipment Tier3종, Biome1종이다.
+- 실제 Item41종, Recipe31종, Equipment Tier3종, Biome1종이다.
 - [기획](docs/DESIGN_BIBLE.md), [월드](docs/WORLD_GENERATION.md), [저장](docs/SAVE_PERSISTENCE.md), [전투/이동](docs/COMBAT_NAVIGATION.md), [수치](docs/BALANCE.md), [제작](docs/CRAFTING.md), [가방](docs/INVENTORY.md), [구조](docs/ARCHITECTURE.md).
 - [Developer Tools](docs/DEVELOPER_TOOLS.md)는 Editor 전용이며 게임 HUD/Release에 노출되지 않는다.
 - [Home/이번 검수](docs/HOME_FRONTEND.md). 이전 *_REVIEW는 당시 단계의 기록이다.
@@ -43,8 +43,10 @@ Wildfolk > View 메뉴는 기존 Game View의 해상도만 갱신하고 Play Unf
 품질 교정: Profile은 Character Information→독립4 Node Skill Tree, 장착/비교/해제는 Inventory Head/Body 슬롯으로 분리했다. Armor/손은 공통 Motion Root를 따르고 Stamina는 Player 주변 Arc다. 제작은 별도 두 열 Recipe/즉시 Category/All Section/재료별 수량·색상이다. English 기본과 한국어는 Settings의 Local Language로 전환한다. Resource는 Region Population/Soft Target/Harvest 제외로 다른 ID와 위치에서 회복한다. 조사·실제 검수·제약은 docs/UI_RESEARCH.md와 docs/QUALITY_REVIEW.md를 따른다. 이 단락은 직전 품질 교정 내용이다. 이번 생태 패스는 아래와 같다.
 
 
-생태·품질 패스: 큰 Modal의 중심/계층·뒤 입력 차단,Armor Drag/빠른 Use,밀착 Collider Arc 완화,동물 Soft Separation/그룹 경보,Rabbit/Deer/Sheep,Goblin Warband·Ally Assist·새총·작은 Camp,Skeleton/녹슨 검 Variant와 유용한 Loot를 제공한다. Wood/Stone Wall과 경첩 Door0.32초를 교정했다. 신규 스프라이트는 기존 Python/Pillow 도형 제작 방식이다. 실제 Armor4개/Inventory36/Hotbar9/Recipe25와 기존 시스템을 유지한다. 상세 정본은 [Creature/Loot](docs/CREATURES_AND_LOOT.md),[수치](docs/BALANCE.md),[검수](docs/ECOLOGY_REVIEW.md)에 있다.
+생태·품질 패스: 큰 Modal의 중심/계층·뒤 입력 차단,Armor Drag/빠른 Use,밀착 Collider Arc 완화,동물 Soft Separation/그룹 경보,Rabbit/Deer/Sheep,Goblin Warband·Ally Assist·새총·작은 Camp,Skeleton/녹슨 검 Variant와 유용한 Loot를 제공한다. Wood/Stone Wall과 경첩 Door0.32초를 교정했다. 신규 스프라이트는 기존 Python/Pillow 도형 제작 방식이다. 당시 실제 Armor4개/Inventory36/Hotbar9/Recipe25와 기존 시스템을 유지한다. 상세 정본은 [Creature/Loot](docs/CREATURES_AND_LOOT.md),[수치](docs/BALANCE.md),[검수](docs/ECOLOGY_REVIEW.md)에 있다.
 
 개발 전 [AGENTS.md](AGENTS.md)를 먼저 읽는다. Home은 Penpot 세 시안 중 야전 수첩형을 선택해 Krita 로고/종이 패널을 적용했다. 기존 Sprite를 배치한 정적 야영 배경이며 World/AI/Population을 생성하지 않는다. Home Settings와 Pause Settings는 같은 UserPreferences/LocalSettings 및 화면 제작 코드를 공유한다. Multiplayer는 실제 Relay Room Code 또는 명시적인 Local Network Host/Join으로 협동 야영지에 입장한다. 현재 Player/Creature/전투와 Host 권위 채집·자원 복구·Ground Item·개인 Inventory·Loot/근처 파티 XP·Gold를 연결했다. 관련 자동검사 단계이며 실제2인 통합 QA는 미수행이다. 공유 Chest24/32·Hand Crafting·Workbench I→II·Furnace/Campfire를 Host 권위로 연결했다. 기존 제작/가방 UI를 공유하며 시작 지점 근처 초기 시설5개를 제공한다. 기존9종 Building 설치와 Wall/Door, Host 권위 v5 월드 저장·재Host·로컬 식별자별 Player 복원 기반을 연결했다. 실제2인 Relay/재Join 통합 검수는 다음 Multiplayer Integration QA에서 수행한다. 플레이어 철거 UX·계정·Cloud·Host Migration은 없다. [현재 범위와 검수](docs/MULTIPLAYER_FOUNDATION.md)를 따른다.
 
 Home 수첩의 Single Player/Multiplayer/Settings는 기본 배경 박스를 없애고 종이 위 텍스트 메뉴로 표시한다. Continue의 Primary 박스와 기존 배경/타이틀은 유지한다.
+
+현재 금속 진행: Workbench의 구조적 범위는 I~VI이고 실제 콘텐츠는 I~II다. I→II 비용은 Wood8+Stone6+Iron Ingot2를 유지한다. Copper/Tin/Coal은 처음 월드 생성부터 존재하며 도구·시설의 사용 조건과 독립이다. Furnace의 Copper/Tin 제련·Bronze 합금과 II 지원 범위12유닛 내 Steel 가공, 기존 Chest/Wall의 대체 제작을 제공한다. III~VI 비용/콘텐츠와 다중 Biome 본체는 미구현이다. [진행/자원/조사/이번 검증](docs/METAL_PROGRESSION.md)을 따른다. 이번 직접 MCP/Game View 조작 테스트는 연결 제약으로 수행하지 못했다. 숨김 Unity 자동 검사와 자동 렌더를 구분해 기록했다.

@@ -20,7 +20,7 @@ namespace Wildfolk
         public PlayerEquipment Equipment {get;private set;}
         private PlayerInputAdapter input;
         private Vector2 pendingMove,lastSent;
-        private float sentAt,receivedAt;
+        private float sentAt,receivedAt,nextDenial;
 
         private void Awake()
         {
@@ -33,7 +33,7 @@ namespace Wildfolk
             players.Add(this);
             Commands.MovementAuthority=this;Commands.CombatAuthority=this;
             combat.CreatureTargetsOnly=false;combat.NetworkTargetsOnly=true;combat.enabled=IsServer;Health.IsReplica=!IsServer;
-            if(IsServer)combat.AttackStarted+=PublishAttack;
+            if(IsServer){combat.AttackStarted+=PublishAttack;combat.HarvestDenied+=PublishDenial;}
             Motor.Terrain=FindFirstObjectByType<WorldNavigation>();
             Motor.enabled=IsServer;Motor.Locomotion.enabled=IsServer;Equipment.enabled=IsServer;GetComponent<CharacterStats>().enabled=IsServer;
             input.enabled=IsOwner;LocalMarker.SetActive(IsOwner);
@@ -50,7 +50,7 @@ namespace Wildfolk
             players.Remove(this);
             if(NetworkManager!=null && NetworkManager.NetworkTickSystem!=null)NetworkManager.NetworkTickSystem.Tick-=Tick;
             Motion.OnValueChanged-=OnMotion;Status.OnValueChanged-=OnStatus;Health.Changed-=PublishStatus;Equipment.Changed-=PublishStatus;
-            combat.AttackStarted-=PublishAttack;Commands.MovementAuthority=null;Commands.CombatAuthority=null;
+            combat.AttackStarted-=PublishAttack;combat.HarvestDenied-=PublishDenial;Commands.MovementAuthority=null;Commands.CombatAuthority=null;
         }
         public void SetMove(Vector2 move){if(IsSpawned && IsOwner)pendingMove=NetworkInputRules.Sanitize(move);}
         public bool Dash()
@@ -65,6 +65,14 @@ namespace Wildfolk
         [Rpc(SendTo.Server,InvokePermission=RpcInvokePermission.Owner)]
         private void AttackRpc(RpcParams rpc=default)
         {if(rpc.Receive.SenderClientId==OwnerClientId && Health.IsAlive)combat.TryAttack();}
+        private void PublishDenial(ResourceDefinition resource)
+        {
+            if(Time.unscaledTime<nextDenial)return;nextDenial=Time.unscaledTime+2.5f;
+            var index=System.Array.FindIndex(Catalog.Items,i=>i==resource.DropItem);if(index>=0)HarvestDeniedRpc(index);
+        }
+        [Rpc(SendTo.Owner,InvokePermission=RpcInvokePermission.Server)]
+        private void HarvestDeniedRpc(int item)
+        {if(item<0 || item>=Catalog.Items.Length || NetworkCreatureWorld.Active==null)return;foreach(var rule in NetworkCreatureWorld.Active.World.Definition.Resources)if(rule.Prefab.Definition.DropItem==Catalog.Items[item]){PlayerFeedback.ShowRequirement(rule.Prefab.Definition);return;}}
         private void PublishAttack()
         {var previous=AttackState.Value;AttackState.Value=new PlayerAttackState{Sequence=(ushort)(previous.Sequence+1),Hand=(byte)combat.HandIndex,Tool=ItemIndex(Equipment.SelectedItem),Started=NetworkManager.ServerTime.Time};}
         private void Update()

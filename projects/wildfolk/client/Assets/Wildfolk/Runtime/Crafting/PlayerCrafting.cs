@@ -31,15 +31,26 @@ namespace Wildfolk
         public bool UpgradeWorkbench()
         {
             if(Authority!=null && !Authority.IsApplying)return Authority.Upgrade();
-            if(Session.State!=SessionState.Inventory || AvailableStation!=StationKind.Workbench || Station.Definition.UpgradeTo==null)return false;
+            if(Session.State!=SessionState.Inventory || AvailableStation!=StationKind.Workbench || !WorkbenchProgression.CanUpgrade(Station.Definition))return false;
             var old=Station.GetComponent<WorldPlaceable>();var definition=Station.Definition;
-            if(!Inventory.Model.TryConsumeCosts(definition.UpgradeCosts))return false;
-            Station.Changed-=NotifyStation;var next=Instantiate(definition.UpgradeTo.Prefab,old.transform.position,old.transform.rotation);next.SaveId=old.SaveId;next.Health.RestoreHealth(Mathf.Max(1,Mathf.RoundToInt(old.Health.Ratio*next.Health.Maximum)));old.gameObject.SetActive(false);Destroy(old.gameObject);Station=next.GetComponent<CraftingStation>();Station.Changed+=NotifyStation;StationChanged?.Invoke();return true;
+            WorldPlaceable next=null;
+            try
+            {
+                var success=Inventory.Model.TryConsumeCosts(definition.UpgradeCosts,()=>
+                {
+                    next=Instantiate(definition.UpgradeTo.Prefab,old.transform.position,old.transform.rotation);
+                    next.SaveId=old.SaveId;next.CreatorId=old.CreatorId;next.Health.RestoreHealth(Mathf.Max(1,Mathf.RoundToInt(old.Health.Ratio*next.Health.Maximum)));
+                    return next.GetComponent<CraftingStation>()!=null;
+                });
+                if(!success){if(next!=null)Destroy(next.gameObject);return false;}
+            }
+            catch(Exception){if(next!=null)Destroy(next.gameObject);return false;}
+            Station.Changed-=NotifyStation;old.gameObject.SetActive(false);Destroy(old.gameObject);Station=next.GetComponent<CraftingStation>();Station.Changed+=NotifyStation;StationChanged?.Invoke();return true;
         }
         public void UpgradeFromUI(){if(!UpgradeWorkbench())PlayerFeedback.ShowKey("feedback.upgrade");}
 
-        private void OnEnable() => Session.StateChanged += SessionChanged;
-        private void OnDisable() => Session.StateChanged -= SessionChanged;
+        private void OnEnable(){Session.StateChanged+=SessionChanged;CraftingStation.ProgressionChanged+=NotifyStation;}
+        private void OnDisable(){Session.StateChanged-=SessionChanged;CraftingStation.ProgressionChanged-=NotifyStation;}
         private void Update()
         {
             if (stationOpen && (Station == null || !InRange(Station))) ClearStation();
@@ -69,7 +80,7 @@ namespace Wildfolk
         public CraftStatus GetStatus(RecipeDefinition recipe)
         {
             if (recipe.RequiredStation != StationKind.None && recipe.RequiredStation != AvailableStation) return CraftStatus.StationRequired;
-            if(recipe.RequiredStation==StationKind.Workbench && Station.Definition.WorkbenchTier<recipe.RequiredWorkbenchTier)return CraftStatus.StationRequired;
+            if(!WorkbenchProgression.Allows(Station,recipe))return CraftStatus.StationRequired;
             if(recipe.ProcessingSeconds>0 && Processor!=null && Processor.Sequential){return Processor.BatchSize(recipe,Inventory.Model)>0 ? CraftStatus.Ready : CraftStatus.MissingMaterials;}
             if(recipe.ProcessingSeconds>0 && Processor!=null && Processor.IsBusy)
             {

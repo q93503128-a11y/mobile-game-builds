@@ -65,7 +65,7 @@ namespace Wildfolk
         {
             for(var pass=0;pass<2;pass++)for(var r=0;r<Definition.Resources.Length;r++)
             {
-                var rule=Definition.Resources[r];var count=0;var attempts=0;var required=pass==0 ? rule.StartCount : rule.Count-rule.StartCount;
+                var rule=Definition.Resources[r];if(rule.IndependentGeneration)continue;var count=0;var attempts=0;var required=pass==0 ? rule.StartCount : rule.Count-rule.StartCount;
                 while(count<required && attempts++<Mathf.Max(1,required)*250)
                 {
                     var near=pass==0;
@@ -85,6 +85,40 @@ namespace Wildfolk
                 }
                 if(count<required)throw new InvalidOperationException("World generation could not place required resources.");
             }
+            for(var r=0;r<Definition.Resources.Length;r++)
+            {
+                var rule=Definition.Resources[r];if(!rule.IndependentGeneration || !Supports(rule,Definition.Biome,ResourceSourceContext.Surface,0))continue;
+                var stream=new System.Random(unchecked(Seed*397 ^ rule.GenerationSalt));var count=0;var attempts=0;var anchor=Vector2.zero;
+                while(count<rule.Count && attempts++<Mathf.Max(1,rule.Count)*1000)
+                {
+                    var clustered=rule.ClusterSize>1 && count%rule.ClusterSize!=0 && anchor!=Vector2.zero;
+                    var p=clustered ? anchor+new Vector2((float)stream.NextDouble()*2-1,(float)stream.NextDouble()*2-1)*rule.ClusterRadius :
+                        new Vector2(((float)stream.NextDouble()-.5f)*(Definition.Size.x-6),((float)stream.NextDouble()-.5f)*(Definition.Size.y-6));
+                    if(!ResourceSiteAllowed(r,p) || stream.NextDouble()>ResourceDensity(r,p))continue;
+                    var clear=true;foreach(var placed in Resources)if(Vector2.Distance(placed.Position,p)<Mathf.Max(rule.Spacing,Definition.Resources[placed.Rule].Spacing)){clear=false;break;}
+                    if(!clear)continue;
+                    Resources.Add(new ResourcePlacement(r,p,Mathf.Lerp(rule.ScaleRange.x,rule.ScaleRange.y,(float)stream.NextDouble())));
+                    if(!clustered)anchor=p;count++;
+                }
+                if(count<rule.Count)throw new InvalidOperationException("World generation could not place configured resource rule "+r);
+            }
         }
+        public static bool Supports(ResourceGenerationRule rule,BiomeDefinition biome,ResourceSourceContext context,float depth)
+        {
+            if(rule.SourceContext!=context)return false;
+            if(rule.AllowedBiomes!=null && rule.AllowedBiomes.Length>0 && Array.IndexOf(rule.AllowedBiomes,biome)<0)return false;
+            return !rule.DistributionConfigured || depth>=rule.DepthRange.x && depth<=rule.DepthRange.y;
+        }
+        public bool ResourceSiteAllowed(int index,Vector2 p)
+        {
+            var rule=Definition.Resources[index];
+            if(!Supports(rule,Definition.Biome,ResourceSourceContext.Surface,0) || p.magnitude<rule.SpawnClearance || !IsWalkable(p,1.4f) || IsWater(p,1.4f) || IsRoad(p))return false;
+            if(!rule.DistributionConfigured)return true;
+            var water=WaterDistance(p);var road=RoadDistance(p);var forest=ForestDensity(p);var rock=RockDensity(p);
+            return Within(water,rule.WaterDistanceRange) && Within(road,rule.RoadDistanceRange) && Within(forest,rule.ForestDensityRange) && Within(rock,rule.RockDensityRange) && (rule.Terrain!=ResourceTerrain.Shore || water<=12);
+        }
+        public float ResourceDensity(int index,Vector2 p)
+        {var r=Definition.Resources[index];var density=r.ForestPreference*ForestDensity(p)+r.RockPreference*RockDensity(p)+(1-r.ForestPreference-r.RockPreference)*.6f;return Mathf.Clamp01(density*(r.DistributionConfigured ? r.BiomeAffinity : 1));}
+        private static bool Within(float value,Vector2 range)=>value>=range.x && value<=range.y;
     }
 }

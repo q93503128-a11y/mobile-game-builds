@@ -61,6 +61,15 @@ namespace Wildfolk.Tests
             Assert.That(Do(A,FacilityOperation.Craft,f,recipe),Is.True);Assert.That(Bag(player).CountItem(recipe.Result),Is.EqualTo(recipe.ResultCount));
             Assert.That(Do(A,FacilityOperation.Craft,f,cup),Is.False);yield return null;
         }
+        [UnityTest]public IEnumerator SteelGateUsesHostWorkbenchAndMultiIngredientReservationsSurviveQueueRestore()
+        {
+            var furnace=Facility("Furnace");var bench=Facility("Workbench");furnace.transform.position=bench.transform.position+Vector3.right*3;furnace.Processor.enabled=false;
+            var recipe=world.Catalog.Recipe("steel");foreach(var c in recipe.Ingredients)Bag(player).Add(c.Item,c.Count*2);Open(furnace);var revision=furnace.Revision.Value;
+            Assert.That(Do(A,FacilityOperation.AddOne,furnace,recipe),Is.False);Assert.That(furnace.Revision.Value,Is.EqualTo(revision));foreach(var c in recipe.Ingredients)Assert.That(Bag(player).CountItem(c.Item),Is.EqualTo(c.Count*2));
+            Open(bench);foreach(var c in bench.Station.Definition.UpgradeCosts)Bag(player).Add(c.Item,c.Count);Assert.That(Do(A,FacilityOperation.Upgrade,bench),Is.True);Assert.That(bench.Tier.Value,Is.EqualTo(2));
+            Open(furnace);revision=furnace.Revision.Value;Assert.That(Do(A,FacilityOperation.AddOne,furnace,recipe,facilityRevision:revision),Is.True);Assert.That(Do(B,FacilityOperation.AddOne,furnace,recipe,facilityRevision:revision),Is.False);
+            Assert.That(furnace.Processor.Recipe.Id,Is.EqualTo("steel"));foreach(var c in recipe.Ingredients)Assert.That(Bag(player).CountItem(c.Item),Is.EqualTo(c.Count));furnace.Processor.Advance(6);Assert.That(furnace.Processor.OutputCount,Is.EqualTo(1));Assert.That(Do(A,FacilityOperation.Collect,furnace),Is.True);Assert.That(Bag(player).CountItem(recipe.Result),Is.EqualTo(1));yield return null;
+        }
         [UnityTest]public IEnumerator FurnaceQueueAndCompletionRacesKeepOutputAndReservedInputs()
         {
             var f=Facility("Furnace");Open(f);f.Processor.enabled=false;var recipe=world.Catalog.Recipe("iron_ingot");var input=recipe.Ingredients[0].Item;Bag(player).Add(input,4);Bag(other).Add(input,4);var rev=f.Revision.Value;

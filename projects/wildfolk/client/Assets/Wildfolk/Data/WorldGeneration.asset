@@ -19,7 +19,21 @@ MonoBehaviour:
   RoadWidth: 2.1
   TextureWidth: 1024
   Resources:
-  - Prefab: {fileID: 2247735661859832986, guid: e7e73c2283b1d004883c072104fadf04, type: 3}
+  - IndependentGeneration: 0
+    DistributionConfigured: 0
+    GenerationSalt: 0
+    AllowedBiomes: []
+    SourceContext: 0
+    Terrain: 0
+    DepthRange: {x: 0, y: 0}
+    WaterDistanceRange: {x: 0, y: 0}
+    RoadDistanceRange: {x: 0, y: 0}
+    ForestDensityRange: {x: 0, y: 0}
+    RockDensityRange: {x: 0, y: 0}
+    BiomeAffinity: 0
+    ClusterRadius: 0
+    ClusterSize: 0
+    Prefab: {fileID: 2247735661859832986, guid: e7e73c2283b1d004883c072104fadf04, type: 3}
     AlternateSprite: {fileID: 21300000, guid: da7ebbf2715b89244a8f318609d34f62, type: 3}
     Count: 140
     StartCount: 4
@@ -39,7 +53,21 @@ MonoBehaviour:
     HarvestExclusionRadius: 8
     HarvestExclusionSeconds: 600
     ClusterSpacing: 4
-  - Prefab: {fileID: 491692840929374458, guid: 7bb5da8c441dbf84b8e2d8ab2da93537, type: 3}
+  - IndependentGeneration: 0
+    DistributionConfigured: 0
+    GenerationSalt: 0
+    AllowedBiomes: []
+    SourceContext: 0
+    Terrain: 0
+    DepthRange: {x: 0, y: 0}
+    WaterDistanceRange: {x: 0, y: 0}
+    RoadDistanceRange: {x: 0, y: 0}
+    ForestDensityRange: {x: 0, y: 0}
+    RockDensityRange: {x: 0, y: 0}
+    BiomeAffinity: 0
+    ClusterRadius: 0
+    ClusterSize: 0
+    Prefab: {fileID: 491692840929374458, guid: 7bb5da8c441dbf84b8e2d8ab2da93537, type: 3}
     AlternateSprite: {fileID: 21300000, guid: 335164a7898e0904da646ee9bb891aee, type: 3}
     Count: 55
     StartCount: 3
@@ -59,7 +87,21 @@ MonoBehaviour:
     HarvestExclusionRadius: 8
     HarvestExclusionSeconds: 1200
     ClusterSpacing: 3.4
-  - Prefab: {fileID: 345223046635816646, guid: 8c3e86a12118573498c742472853f3f9, type: 3}
+  - IndependentGeneration: 0
+    DistributionConfigured: 0
+    GenerationSalt: 0
+    AllowedBiomes: []
+    SourceContext: 0
+    Terrain: 0
+    DepthRange: {x: 0, y: 0}
+    WaterDistanceRange: {x: 0, y: 0}
+    RoadDistanceRange: {x: 0, y: 0}
+    ForestDensityRange: {x: 0, y: 0}
+    RockDensityRange: {x: 0, y: 0}
+    BiomeAffinity: 0
+    ClusterRadius: 0
+    ClusterSize: 0
+    Prefab: {fileID: 345223046635816646, guid: 8c3e86a12118573498c742472853f3f9, type: 3}
     AlternateSprite: {fileID: 0}
     Count: 16
     StartCount: 0
@@ -79,7 +121,21 @@ MonoBehaviour:
     HarvestExclusionRadius: 28
     HarvestExclusionSeconds: 1800
     ClusterSpacing: 12
-  - Prefab: {fileID: 1625575656928400717, guid: e2f94784991aab041a5012acb75f50a8, type: 3}
+  - IndependentGeneration: 0
+    DistributionConfigured: 0
+    GenerationSalt: 0
+    AllowedBiomes: []
+    SourceContext: 0
+    Terrain: 0
+    DepthRange: {x: 0, y: 0}
+    WaterDistanceRange: {x: 0, y: 0}
+    RoadDistanceRange: {x: 0, y: 0}
+    ForestDensityRange: {x: 0, y: 0}
+    RockDensityRange: {x: 0, y: 0}
+    BiomeAffinity: 0
+    ClusterRadius: 0
+    ClusterSize: 0
+    Prefab: {fileID: 1625575656928400717, guid: e2f94784991aab041a5012acb75f50a8, type: 3}
     AlternateSprite: {fileID: 0}
     Count: 12
     StartCount: 3
@@ -99,7 +155,21 @@ MonoBehaviour:
     HarvestExclusionRadius: 8
     HarvestExclusionSeconds: 960
     ClusterSpacing: 3.2
-  - Prefab: {fileID: 4176823704456685323, guid: 1d79d349184c7af4e97be5afdd4a6db2, type: 3}
+  - IndependentGeneration: 0
+    DistributionConfigured: 0
+    GenerationSalt: 0
+    AllowedBiomes: []
+    SourceContext: 0
+    Terrain: 0
+    DepthRange: {x: 0, y: 0}
+    WaterDistanceRange: {x: 0, y: 0}
+    RoadDistanceRange: {x: 0, y: 0}
+    ForestDensityRange: {x: 0, y: 0}
+    RockDensityRange: {x: 0, y: 0}
+    BiomeAffinity: 0
+    ClusterRadius: 0
+    ClusterSize: 0
+    Prefab: {fileID: 4176823704456685323, guid: 1d79d349184c7af4e97be5afdd4a6db2, type: 3}
     AlternateSprite: {fileID: 0}
     Count: 36
     StartCount: 0
@@ -119,5 +189,110 @@ MonoBehaviour:
     HarvestExclusionRadius: 8
     HarvestExclusionSeconds: 180
     ClusterSpacing: 2.4
+  - IndependentGeneration: 1
+    DistributionConfigured: 1
+    GenerationSalt: 701
+    AllowedBiomes:
+    - {fileID: 11400000, guid: 88ca94fbce62a574089c6b4c45a10282, type: 2}
+    SourceContext: 0
+    Terrain: 0
+    DepthRange: {x: 0, y: 0}
+    WaterDistanceRange: {x: 1.4, y: 1000}
+    RoadDistanceRange: {x: 2.2, y: 1000}
+    ForestDensityRange: {x: 0, y: 1}
+    RockDensityRange: {x: 0.38, y: 1}
+    BiomeAffinity: 1
+    ClusterRadius: 11
+    ClusterSize: 2
+    Prefab: {fileID: 7134087339382030015, guid: 6843cc72dc526724cb9d077d856a99c0, type: 3}
+    AlternateSprite: {fileID: 0}
+    Count: 14
+    StartCount: 0
+    StartRadius: 8
+    SpawnClearance: 18
+    Spacing: 3.4
+    ForestPreference: 0.1
+    RockPreference: 0.8
+    ScaleRange: {x: 0.9, y: 1.1}
+    RespawnSeconds: 600
+    RecoveryConfigured: 1
+    NaturalRecovery: 1
+    WorldRecoveryScope: 1
+    Family: 2
+    Rarity: 1
+    TargetDensityRatio: 0.9
+    HarvestExclusionRadius: 18
+    HarvestExclusionSeconds: 1200
+    ClusterSpacing: 9
+  - IndependentGeneration: 1
+    DistributionConfigured: 1
+    GenerationSalt: 709
+    AllowedBiomes:
+    - {fileID: 11400000, guid: 88ca94fbce62a574089c6b4c45a10282, type: 2}
+    SourceContext: 0
+    Terrain: 1
+    DepthRange: {x: 0, y: 0}
+    WaterDistanceRange: {x: 1.4, y: 12}
+    RoadDistanceRange: {x: 2.2, y: 1000}
+    ForestDensityRange: {x: 0, y: 1}
+    RockDensityRange: {x: 0, y: 1}
+    BiomeAffinity: 1
+    ClusterRadius: 0
+    ClusterSize: 1
+    Prefab: {fileID: 6003918020362347506, guid: 9cf35074ca92bf74eb581d17068f96d6, type: 3}
+    AlternateSprite: {fileID: 0}
+    Count: 10
+    StartCount: 0
+    StartRadius: 8
+    SpawnClearance: 18
+    Spacing: 3.4
+    ForestPreference: 0.1
+    RockPreference: 0.8
+    ScaleRange: {x: 0.9, y: 1.1}
+    RespawnSeconds: 720
+    RecoveryConfigured: 1
+    NaturalRecovery: 1
+    WorldRecoveryScope: 1
+    Family: 2
+    Rarity: 1
+    TargetDensityRatio: 0.9
+    HarvestExclusionRadius: 18
+    HarvestExclusionSeconds: 1200
+    ClusterSpacing: 9
+  - IndependentGeneration: 1
+    DistributionConfigured: 1
+    GenerationSalt: 719
+    AllowedBiomes:
+    - {fileID: 11400000, guid: 88ca94fbce62a574089c6b4c45a10282, type: 2}
+    SourceContext: 0
+    Terrain: 0
+    DepthRange: {x: 0, y: 0}
+    WaterDistanceRange: {x: 1.4, y: 1000}
+    RoadDistanceRange: {x: 2.2, y: 1000}
+    ForestDensityRange: {x: 0, y: 1}
+    RockDensityRange: {x: 0.48, y: 1}
+    BiomeAffinity: 1
+    ClusterRadius: 14
+    ClusterSize: 3
+    Prefab: {fileID: 7856505005916474875, guid: 9fc95645caa729049b8b06df3019d15d, type: 3}
+    AlternateSprite: {fileID: 0}
+    Count: 12
+    StartCount: 0
+    StartRadius: 8
+    SpawnClearance: 22
+    Spacing: 3.4
+    ForestPreference: 0.1
+    RockPreference: 0.8
+    ScaleRange: {x: 0.9, y: 1.1}
+    RespawnSeconds: 600
+    RecoveryConfigured: 1
+    NaturalRecovery: 1
+    WorldRecoveryScope: 1
+    Family: 2
+    Rarity: 1
+    TargetDensityRatio: 0.9
+    HarvestExclusionRadius: 18
+    HarvestExclusionSeconds: 1200
+    ClusterSpacing: 9
   DecorationCount: 480
   ShallowMoveMultiplier: 0.7

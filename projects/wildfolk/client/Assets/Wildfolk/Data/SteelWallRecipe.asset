@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20df6dd9b4c24af4889549b8f9dc4ce5, type: 3}
+  m_Name: SteelWallRecipe
+  m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.RecipeDefinition
+  Id: steel_wall
+  Category: 4
+  SortOrder: 200
+  Result: {fileID: 11400000, guid: c38fa8c530b6187458d976559263f845, type: 2}
+  ResultCount: 2
+  Ingredients:
+  - Item: {fileID: 11400000, guid: 30904e05765ac844ab5bb28b855a15db, type: 2}
+    Count: 4
+  - Item: {fileID: 11400000, guid: 7829ba341a701304a8ee1b5e2bf83611, type: 2}
+    Count: 1
+  RequiredStation: 1
+  ProcessingSeconds: 0
+  Processing: 0
+  LegacyProcessingSeconds: 0
+  Tier: {fileID: 0}
+  RequiredWorkbenchTier: 2
+  DisplayKey: recipe.steel_wall
+  FutureUnlocks: []

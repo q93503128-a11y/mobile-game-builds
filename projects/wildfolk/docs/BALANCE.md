@@ -147,3 +147,7 @@ Goblin 시각 Separation0.85/Preferred Spacing2.7유닛. Goblin Ally Assist7유�
 새총 피해4/최소2.4/선호4.8/최대7유닛. 재배치0.65초/재시도 간격2.5초. Ready0.12/Draw0.42/Hold0.10/Release0.08/Recovery0.28. 발사0.64초/속도10/수명1.4초. 끝없는 후퇴 대신 제한된 재배치 후 거리 안에서 공격한다.
 
 밀착 Arc 완화는 실제 Collider 간 거리≤0.12유닛이며 Range는 그대로 검사한다. 정상 거리는 기존 Facing Arc다. Door0.32초/eased Open70%에서 통로 Collider 해제. 기존 Armor 방어/제작 Tier는 그대로다. 초기 검증 수치이며 최종 난이도와 체감은 사용자가 테스트한다.
+
+## 초기 금속 패스 수치
+
+기존 Ore 열의 도구 피해/최소 Rank2는 Iron Ore다. Copper/Coal은 Wood Pickaxe Rank1, Tin은 Stone Pickaxe Rank2부터 가능하다. 신규 ResourceKind의 피해는 Tool.Damage 기본값을 사용한다(기존 Wood/Stone/Iron efficiency는 유지). Copper HP90/Drop4/Count14/회복600초, Tin75/3/10/720초, Coal90/4/12/600초다. 신규 제련/합금의 비용·시간은 METAL_PROGRESSION을 따른다. I→II 비용8Wood+6Stone+2Iron Ingot과 기존 Iron 제련1Ore/2초는 유지한다. 현재 콘텐츠는 I~II이고 VI는 구조적 상한이다. 출시 밸런스/장시간 scarcity는 미확정이다.

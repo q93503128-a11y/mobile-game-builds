@@ -27,3 +27,7 @@ Armor를 가방에서 맞는 Head/Body 슬롯으로 Drag하면 즉시 장착한�
 
 
 Foundation5는 Host의 v5 파일에 식별자별 Inventory/선택/장비/HP·생존/XP·Gold 등을 보존한다. 기기 생성 Guid는 계정 인증이 아니며 정상 재입장 시 새 actor spawn 전 복원한다. 실제 remote 재Join 검수는 남아 있다. 현재 저장 구조와 한계는 SAVE_PERSISTENCE/MULTIPLAYER_FOUNDATION을 따른다.
+
+## 초기 금속
+
+총 Item41종이다. Copper Ore/Tin Ore/Coal/Copper Ingot/Tin Ingot/Bronze/Steel은 각각50 Stack 재료다. 기존 Iron IDs/36·9 슬롯/Chest24·32/장착/드랍/소분을 유지한다. 합금의 모든 입력은 한 transaction으로 예약되며 하나라도 부족하면 소비0, output 공간 부족이면 cargo 유지다. SP 저장 복원과 Host 저장·재Host의 새 재료·예약 queue 검사는 METAL_PROGRESSION을 따른다.

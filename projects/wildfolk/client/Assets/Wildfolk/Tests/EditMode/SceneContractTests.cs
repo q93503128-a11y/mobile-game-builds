@@ -114,7 +114,7 @@ namespace Wildfolk.Tests
                 var resource=AssetDatabase.LoadAssetAtPath<ResourceDefinition>(AssetDatabase.GUIDToAssetPath(guid));
                 Assert.That(resource.Vitality,Is.Not.Null);Assert.That(resource.DropItem,Is.Not.Null);
                 Assert.That(resource.DropCount,Is.InRange(1,resource.DropItem.MaxStack));
-                Assert.That(resource.Kind,Is.EqualTo(resource.DropItem.Id=="wood" ? ResourceKind.Wood : resource.DropItem.Id=="stone" ? ResourceKind.Stone : resource.DropItem.Id=="iron_ore" ? ResourceKind.IronOre : ResourceKind.Meat));
+                Assert.That(resource.Kind,Is.EqualTo(resource.DropItem.Id=="wood" ? ResourceKind.Wood : resource.DropItem.Id=="stone" ? ResourceKind.Stone : resource.DropItem.Id=="iron_ore" ? ResourceKind.IronOre : resource.DropItem.Id=="copper_ore" ? ResourceKind.CopperOre : resource.DropItem.Id=="tin_ore" ? ResourceKind.TinOre : resource.DropItem.Id=="coal" ? ResourceKind.Coal : ResourceKind.Meat));
             }
         }
     }

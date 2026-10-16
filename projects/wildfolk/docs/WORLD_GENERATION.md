@@ -1,6 +1,6 @@
 # Seed 기반 월드 생성1차
 
-WorldGenerationDefinition/TemperateBiome와 ResourceGenerationRule이 정본이다. 현재192×144유닛 유한 월드, 기본Seed9472026. WorldGenerator.SelectedSeed로 같은 Seed를 다시 선택할 수 있고 RandomSeed/사망 후 Try again은 무작위 새 월드를 만든다. 같은Seed는 기본 지형·물·Road·자원 위치/스케일을 재현한다. 동물 이동·적 Encounter는 기본 생성 재현 보장과 별도다. 변경된 자원/시설/상자/생존 상태는 Save/Load v4(v1~v3 호환) Delta로 복원한다.
+WorldGenerationDefinition/TemperateBiome와 ResourceGenerationRule이 정본이다. 현재192×144유닛 유한 월드, 기본Seed9472026. WorldGenerator.SelectedSeed로 같은 Seed를 다시 선택할 수 있고 RandomSeed/사망 후 Try again은 무작위 새 월드를 만든다. 같은Seed는 기본 지형·물·Road·자원 위치/스케일을 재현한다. 동물 이동·적 Encounter는 기본 생성 재현 보장과 별도다. 변경된 자원/시설/상자/생존 상태는 Save/Load v5(v1~v4 호환) Delta로 복원한다.
 
 WorldMap은 System.Random(seed)만 사용하여 생성하며 UnityEngine.Random 상태를 바꾸지 않는다. Perlin 기반 숲/돌 밀도는 하나의 Temperate 내부 변화다. WorldGenerator는 런타임 초기화 시 생성 데이터를 프리팹에 연결한다. WorldTerrainRenderer가 하나의1024×768 RGB 텍스처로 자연색 지면/길/물/수변을 표시한다. 명확한 사각 타일·체커 경계를 만들지 않는다. 무한 Chunk Streaming은 없다.
 
@@ -26,7 +26,7 @@ Player Spawn은(0,0)이며 물·광석·큰 자원에 갇히지 않는다. 장�
 
 Tree300/Log480/Stone600/Ore720/Small Plant90초는 초기 밀도 회복 대기값이다. 흔한 자원은 해당 Region 전체에서 후보를 찾고, Rare Mineral은 전체 월드 후보를 사용한다. 같은 좌표·6~26유닛 주변을 중심으로 다시 생성하지 않는다. Camera/Player(흔한12, Rare24)/물·수변/길/충돌·기지 내부/종류별 ClusterSpacing과 최근 Harvest 제외를 검사한다. 흔한 Harvest 제외8유닛/대기시간×2, Rare28유닛/1800초 및 Cluster 간격12유닛이다. 5초마다 최대2개 회복 시도, 최초 Count 합의1.25배는 성능용 Hard Limit이다. Soft Target이 실제 의사결정 기준이며 막힌 후보는 다음 Tick까지 대기한다.
 
-Family/Rarity/NaturalRecovery/WorldRecoveryScope/TargetDensityRatio/Delay/Harvest Exclusion/ClusterSpacing은 Rule 데이터다. 생존 Recipe·RequiredTool/Tier와 별도 경계다. 미래의 Metal/Ore/Gem/Crystal/Alloy/특수·Biome·Dungeon 재료와 Surface/Cave/POI 공급처를 확장할 방향이며 현재 추가 광물·공급처는 없다. Diamond를 최종 Tier로 고정하지 않는다.
+Family/Rarity/NaturalRecovery/WorldRecoveryScope/TargetDensityRatio/Delay/Harvest Exclusion/ClusterSpacing은 Rule 데이터다. 생존 Recipe·RequiredTool/Tier와 별도 경계다. 미래의 Metal/Ore/Gem/Crystal/Alloy/특수·Biome·Dungeon 재료와 Surface/Cave/POI 공급처를 확장할 방향이며 현재 추가 광물은 Copper/Tin/Coal이며 실제 공급처는 Temperate Surface다. Cave/POI는 공급 문맥 데이터만 있고 실제 생성 시스템은 없다. Diamond를 최종 Tier로 고정하지 않는다.
 
 기본 손상·파괴 Delta, 살아 있는 회복 개체, Pending Region/시간, 최근 Harvest/만료, ID Serial과 후보 Cursor를 v3에 저장한다. v2의 파괴 상태는 유지하고 Region 부족량으로 이관하며 긴 과거 대기는 새 Delay 이내로 제한한다. 오프라인 경과를 더하지 않는다. 오래된 기본 Tombstone은 유지하고 회복 개체의 파괴 Tombstone은 제거해 Delta가 무한히 누적되지 않게 한다.
 
@@ -47,4 +47,12 @@ Night 예산은 Zombie와 Skeleton이 공유한다. 낮/밤·카메라·빛·시
 
 ## Multiplayer Foundation 3 자원
 
-지형/물은 같은 default seed로 구성하고 실제 자원은 Host만 기존 Rule/Population에서 생성한다. Client는 NetworkResource의 ID/Rule/HP/hit와 NGO 초기 위치/scale/Despawn을 표시한다. 기존 회복의 Region/Soft Target/제외/새 ID 규칙은 Host에서만 실행한다. Host의 Resource/Recovery Snapshot 형식은 유지하지만 Multiplayer persistence/reconnect 복원은 미구현이다. 검증은 MULTIPLAYER_FOUNDATION을 따른다.
+지형/물은 같은 default seed로 구성하고 실제 자원은 Host만 기존 Rule/Population에서 생성한다. Client는 NetworkResource의 ID/Rule/HP/hit와 NGO 초기 위치/scale/Despawn을 표시한다. 기존 회복의 Region/Soft Target/제외/새 ID 규칙은 Host에서만 실행한다. Host의 Resource/Recovery Snapshot 형식은 유지하지만 Foundation5의 공통 v5 snapshot과 Host 재Host/식별자별 복원을 사용한다. 실제 remote 재접속 QA는 남아 있다. 검증은 MULTIPLAYER_FOUNDATION을 따른다.
+
+## 초기 금속 분포 / Seed 호환
+
+기존 Rule0~4와 Seed 난수 소비·생성 순서는 유지한다. 추가 Rule5 Copper14,6 Tin10,7 Coal12는 기존 두 Pass가 모두 끝난 뒤 별도 Seed+GenerationSalt 난수 흐름에서 생성한다. 기존 r<index>의 Rule/위치/Scale과 p<serial> 체계는 바뀌지 않는다. 새 자원은 기술 조회 없이 생성되며 기존 저장을 로드할 때도 Seed의 새 공급층을 재구성한다. 기존 파괴 Tombstone은 보존한다. 새 Rule 인덱스/순서/GenerationSalt를 후속 콘텐츠 패스에서 임의로 바꾸지 않는다.
+
+Copper는 암석 밀도≥0.38, Tin은 물가1.4~12유닛, Coal은 암석 밀도≥0.48 육지다. 최소 Spawn 거리18/18/22, 기존 수변1.4·Road·Walkable·종간 Spacing 검사를 공유한다. Copper/Coal은 ClusterSize2/3, Radius11/14의 작은 분포군이며 Tin은 단독이다. 새 광석 회복은 Mineral Family/World scope/Target0.9·최근 채집 제외18/1200초·ClusterSpacing9를 사용한다. 초기 Count는 회복 강제 총량이 아니다.
+
+AllowedBiomes/BiomeAffinity/Surface·Cave·PointOfInterest/ResourceTerrain/DepthRange/Forest·Rock·Water·Road 범위/Rarity/Cluster/회복 데이터가 공급 경계다. ResourceSiteAllowed를 초기 신규 생성과 recovery가 공유한다. 단일 Temperate Surface만 실제 생성한다. [구체 수치와 다음 Biome 과제](METAL_PROGRESSION.md)를 따른다.

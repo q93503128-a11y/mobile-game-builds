@@ -32,3 +32,7 @@ Font는 [Google Fonts Noto Sans KR](https://github.com/google/fonts/tree/main/of
 Krita MCP의 native path/ellipse/line/polygon으로 Lowfire 소문자 혼합 lettering(815×215), 불씨색 i 점과 제본·종이 가장자리·접힌 귀가 있는 수첩 패널(768×896)을 제작했다. Imagegen/Blender/외부 게임 Asset을 사용하지 않았다. 캐릭터 아트 제작 방식은 기존 코드/Pillow다.
 
 편집 원본: art-source/LowfireWordmark.kra, LowfireFieldJournal.kra. 실제 UI: client/Assets/Wildfolk/Art/lowfire_wordmark.png, lowfire_journal.png 및 Sprite import meta. Krita preview 뒤 Unity1920×1080 Home에서 확인했다. Krita의 기존 허용 폴더인 Documents/ChatGPT/테스트/LowfireHomeAssets로 저장/내보낸 다음 일반 파일 복사로 정본과 LIVE에 배치했다. 허용 루트/설정을 변경하지 않았다. 종이의 빈 중앙은 실제 Unity Button/Text를 배치하는 영역이며 메뉴 글자를 이미지에 굽지 않았다.
+
+## 2026-10-16 초기 금속
+
+tools/generate_metal_art.py의 결정적인 Pillow polygon 제작으로10개 PNG를 만들었다. Copper는 낮고 넓은 산화색 광맥, Tin은 갈라진 높은 회색층과 밝은 수평 결, Coal은 어두운 납작한 층상 덩어리다. 재료 아이콘7개와 resource sprite3개를 실제 Item/Prefab에서 사용한다. 기존 접촉 그림자/Health/HitFeedback을 공유하고 새 이미지 생성 모델/외부 게임 Asset/오디오를 사용하지 않았다. 1920×1080 숨김 Unity 자동 렌더의 원본 위치를 사람이 시각 검수했으며 실제 MCP/Game View 조작 테스트는 미수행이다.

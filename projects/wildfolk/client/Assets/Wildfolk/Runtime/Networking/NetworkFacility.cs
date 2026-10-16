@@ -10,7 +10,7 @@ namespace Wildfolk
         public NetworkList<NetworkStack> Slots;
         public NetworkList<FacilityProcessEntry> Cargo;
         public readonly NetworkVariable<uint> Revision=new NetworkVariable<uint>();
-        public readonly NetworkVariable<bool> Upgraded=new NetworkVariable<bool>();
+        public readonly NetworkVariable<int> Tier=new NetworkVariable<int>(1);
         public readonly NetworkVariable<FacilityProcessState> Processing=new NetworkVariable<FacilityProcessState>(new FacilityProcessState{Recipe=-1});
         public StorageChest Chest {get;private set;}
         public CraftingStation Station {get;private set;}
@@ -22,21 +22,31 @@ namespace Wildfolk
         {
             if(Chest!=null){Chest.Model.IsReadOnly=!IsServer;if(IsServer)Chest.Model.Changed+=Publish;}
             if(Processor!=null){Processor.ReplicaRemaining=()=>Processing.Value.Running ? Mathf.Max(0,(float)(Processing.Value.Ends-NetworkManager.ServerTime.Time)) : 0;if(IsServer)Processor.Changed+=Publish;}
-            Slots.OnListChanged+=SlotsChanged;Cargo.OnListChanged+=CargoChanged;Processing.OnValueChanged+=ProcessChanged;Upgraded.OnValueChanged+=TierChanged;Revision.OnValueChanged+=RevisionChanged;
-            if(IsServer)Publish();else{ApplyTier();MirrorSlots();MirrorProcessing();}
+            Slots.OnListChanged+=SlotsChanged;Cargo.OnListChanged+=CargoChanged;Processing.OnValueChanged+=ProcessChanged;Tier.OnValueChanged+=TierChanged;Revision.OnValueChanged+=RevisionChanged;
+            if(IsServer){if(Station!=null && Station.Definition.Station==StationKind.Workbench)Tier.Value=Station.Definition.WorkbenchTier;Publish();}else{ApplyTier();MirrorSlots();MirrorProcessing();}
         }
         public bool InRange(NetworkPlayer player)=>IsSpawned && placeable.Health.IsAlive && Vector2.Distance(transform.position,player.transform.position)<=player.GetComponent<PlayerInventory>().Settings.StationInteractionRange;
         public bool Upgrade(PlayerInventory player)
         {
-            if(!IsServer || !IsSpawned || Station==null || Upgraded.Value || Station.Definition.UpgradeTo==null)return false;
-            if(!player.Model.TryConsumeCosts(Station.Definition.UpgradeCosts))return false;
-            Upgraded.Value=true;ApplyTier();Publish();return true;
+            if(!IsServer || !IsSpawned || Station==null || !WorkbenchProgression.CanUpgrade(Station.Definition))return false;
+            var old=Station.Definition;var hp=placeable.Health.Current;
+            try
+            {
+                if(!player.Model.TryConsumeCosts(old.UpgradeCosts,()=>{SetDefinition(old.UpgradeTo);Tier.Value=Station.Definition.WorkbenchTier;return true;}))return false;
+            }
+            catch(Exception){SetDefinition(old);placeable.Health.RestoreHealth(hp);Tier.Value=old.WorkbenchTier;return false;}
+            Publish();return true;
         }
         private void ApplyTier()
         {
-            if(!Upgraded.Value || Station==null || Station.Definition.UpgradeTo==null)return;
-            var next=Station.Definition.UpgradeTo;var ratio=placeable.Health.Ratio;
-            placeable.Definition=Station.Definition=next;placeable.Visual.sprite=next.Prefab.Visual.sprite;placeable.Health.Definition=next.Vitality;placeable.Health.RestoreHealth(Mathf.Max(1,Mathf.RoundToInt(ratio*placeable.Health.Maximum)));Station.NotifyChanged();
+            if(Station==null || Station.Definition.Station!=StationKind.Workbench || !WorkbenchProgression.IsValid(Tier.Value))return;
+            foreach(var item in Catalog.Items)if(item.Placement!=null && item.Placement.Station==StationKind.Workbench && item.Placement.WorkbenchTier==Tier.Value){SetDefinition(item.Placement);return;}
+        }
+        private void SetDefinition(PlaceableDefinition next)
+        {
+            var ratio=placeable.Health.Ratio;
+            placeable.Definition=Station.Definition=next;placeable.Visual.sprite=next.TierVisual!=null ? next.TierVisual : next.Prefab.Visual.sprite;placeable.Visual.transform.localScale=next.Prefab.Visual.transform.localScale;placeable.Health.Definition=next.Vitality;
+            if(IsServer)placeable.Health.RestoreHealth(Mathf.Max(1,Mathf.RoundToInt(ratio*placeable.Health.Maximum)));Station.NotifyChanged();
         }
         private void Publish()
         {
@@ -64,12 +74,12 @@ namespace Wildfolk
         }
         private void CargoChanged(NetworkListEvent<FacilityProcessEntry> change)=>MirrorProcessing();
         private void ProcessChanged(FacilityProcessState old,FacilityProcessState value)=>MirrorProcessing();
-        private void TierChanged(bool old,bool value){if(!IsServer)ApplyTier();}
+        private void TierChanged(int old,int value){if(!IsServer)ApplyTier();}
         private void RevisionChanged(uint old,uint value){if(!IsServer){MirrorProcessing();Station?.NotifyChanged();}}
         public override void OnNetworkDespawn()
         {
             if(Chest!=null)Chest.Model.Changed-=Publish;if(Processor!=null)Processor.Changed-=Publish;
-            Slots.OnListChanged-=SlotsChanged;Cargo.OnListChanged-=CargoChanged;Processing.OnValueChanged-=ProcessChanged;Upgraded.OnValueChanged-=TierChanged;Revision.OnValueChanged-=RevisionChanged;
+            Slots.OnListChanged-=SlotsChanged;Cargo.OnListChanged-=CargoChanged;Processing.OnValueChanged-=ProcessChanged;Tier.OnValueChanged-=TierChanged;Revision.OnValueChanged-=RevisionChanged;
         }
     }
 }

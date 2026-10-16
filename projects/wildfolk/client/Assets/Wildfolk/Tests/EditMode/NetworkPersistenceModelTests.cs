@@ -31,7 +31,7 @@ namespace Wildfolk.Tests
         [Test]public void EveryExistingPlaceableUsesOneSourceDefinitionAndServerBuildingState()
         {
             var world=AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Wildfolk/Prefabs/NetworkEcology.prefab").GetComponent<NetworkCreatureWorld>();var items=Rules.Catalog.Items.Where(i=>i.Placement!=null).ToArray();Assert.That(items.Length,Is.EqualTo(9));foreach(var item in items){var entry=world.Prefabs.Single(e=>e.Source==item.Placement.Prefab.gameObject);Assert.That(entry.NetworkPrefab.GetComponent<NetworkBuilding>(),Is.Not.Null);Assert.That(entry.NetworkPrefab.GetComponent<WorldPlaceable>().Definition,Is.SameAs(item.Placement));}
-            Assert.That(world.GetComponent<NetworkWorldState>(),Is.Not.Null);Assert.That(world.GetComponent<NetworkWorldPersistence>().Rules,Is.SameAs(Rules));Assert.That(AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Wildfolk/Prefabs/NetworkSession.prefab").GetComponent<NetworkManager>().NetworkConfig.ProtocolVersion,Is.EqualTo(5));
+            Assert.That(world.GetComponent<NetworkWorldState>(),Is.Not.Null);Assert.That(world.GetComponent<NetworkWorldPersistence>().Rules,Is.SameAs(Rules));Assert.That(AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Wildfolk/Prefabs/NetworkSession.prefab").GetComponent<NetworkManager>().NetworkConfig.ProtocolVersion,Is.EqualTo(6));
         }
     }
 }

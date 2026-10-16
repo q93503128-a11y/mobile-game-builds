@@ -130,13 +130,15 @@ namespace Wildfolk
             if (!RemoveCosts(next,costs)) return ExchangeResult.MissingMaterials;
             return AddTo(next, output, count) == count ? ExchangeResult.Success : ExchangeResult.NoSpace;
         }
-        public bool TryConsumeCosts(ItemAmount[] costs)
+        public bool TryConsumeCosts(ItemAmount[] costs)=>TryConsumeCosts(costs,()=>true);
+        public bool TryConsumeCosts(ItemAmount[] costs,Func<bool> commit)
         {
             if(IsReadOnly)return false;
             if(costs==null) throw new ArgumentNullException(nameof(costs));
             var next=(ItemStack[])slots.Clone();
             if(!RemoveCosts(next,costs)) return false;
-            Array.Copy(next,slots,slots.Length);Changed?.Invoke();return true;
+            var previous=(ItemStack[])slots.Clone();Array.Copy(next,slots,slots.Length);var success=false;
+            try{success=commit();return success;}finally{if(!success)Array.Copy(previous,slots,slots.Length);else Changed?.Invoke();}
         }
         public bool TryAddAmounts(ItemAmount[] amounts)
         {

@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Wildfolk
 {
-    public enum ResourceKind { Wood, Stone, Meat, IronOre }
+    public enum ResourceKind { Wood, Stone, Meat, IronOre, CopperOre, TinOre, Coal }
     public enum ToolKind { Axe, Pickaxe, Sword }
     [Serializable] public struct ResourceEfficiency
     {

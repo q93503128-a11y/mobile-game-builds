@@ -403,3 +403,9 @@ NetworkReviewHarness는 Editor 폴더에만 있으며 제품 빌드에 포함하
 문서 최종 검토:21:39:24→21:44:52,5분28초.
 
 Git 마무리는21:44:52부터다. commit/push/원격 확인과 전체 경과는 완료 보고에 실제 종료 시각으로 추가한다. 각 소요 시간은 한 줄에 한 단계만 표기한다.
+
+## 후속 초기 금속 / Workbench 진행 패스
+
+현재 Protocol6이다. 새 자원 Network variants3개를 기존26개 뒤에 등록하며 Player 포함 명시 prefab30개와 기존 in-scene ecology NetworkObject를 사용한다. Foundation1~5 권위 모델/지속 ID를 유지한다. 일회성 Upgraded bool을 server-write Tier1~6으로 교체했으며 구성된 단계만 변경한다. Upgrade는 양쪽 revision을 검증한 Host 요청과 공통 예약/commit transaction을 사용한다. 실패/예외 시 Inventory를 복구한다. Client의 Item ID 기반 Building 표현과 Tier를 함께 초기 동기화한다.
+
+Host ResourceNode.Harvest가 도구 타입/Rank/생존/authority를 다시 검사한다. 거절 시 HP·Hit sequence·loot를 변경하지 않고 짧은 Owner 전용 requirement 안내만2.5초 간격으로 보낸다. 성공 피해·파괴·drop·신규 recovery는 기존 NetworkResource/Population 경계를 따른다. Furnace 예약도 Host가 Workbench support tier를 검사하며 기존 cargo delta와 queue 저장을 재사용한다. 전체 상태 매-frame 전송/새 resource Update는 없다. 검사는 실제 한 Local Host와 서버 소유 fixture actor이며 실제2-process Relay/4인/remote 재Join을 수행한 것으로 해석하지 않는다. [이번 증거](METAL_PROGRESSION.md)를 따른다.

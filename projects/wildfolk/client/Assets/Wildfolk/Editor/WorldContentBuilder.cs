@@ -25,7 +25,7 @@ namespace Wildfolk.Editor
             EcologyContentBuilder.RangedGoblin(a,pickup);EcologyContentBuilder.Camp();EcologyAssets.ConfigurePopulation();
         }
         private static ResourceGenerationRule Rule(ResourceNode prefab,int count,int start,float radius,float clearance,float spacing,float forest,float rock)=>new ResourceGenerationRule{Prefab=prefab,Count=count,StartCount=start,StartRadius=radius,SpawnClearance=clearance,Spacing=spacing,ForestPreference=forest,RockPreference=rock,ScaleRange=new Vector2(.9f,1.15f),RespawnSeconds=prefab.Definition.Kind==ResourceKind.IronOre ? 2400 : prefab.Definition.Kind==ResourceKind.Stone ? 1200 : 300};
-        private static ResourceNode Resource(string name,string art,ResourceDefinition definition,Vector2 offset,float radius,float barHeight,HitReaction reaction,WorldPickup pickup,GameplaySettings settings,Vector2 box=default,bool nonBlocking=false)
+        internal static ResourceNode Resource(string name,string art,ResourceDefinition definition,Vector2 offset,float radius,float barHeight,HitReaction reaction,WorldPickup pickup,GameplaySettings settings,Vector2 box=default,bool nonBlocking=false)
         {
             var root=Group(name,null);Shadow(root,nonBlocking ? 1.25f : 3,nonBlocking ? .28f : .7f);
             var group=root.gameObject.AddComponent<SortingGroup>();root.gameObject.AddComponent<DepthSort>().Visual=group;

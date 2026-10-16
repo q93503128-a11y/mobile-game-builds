@@ -74,7 +74,7 @@ namespace Wildfolk.Editor
             var marker=WorldArt.Sprite("Local Survivor","joystick_base",actor.transform,Vector2.zero,1.15f,WorldSorting.GroundDecoration);marker.color=new Color32(186,170,115,130);player.LocalMarker=marker.gameObject;marker.gameObject.SetActive(false);actor.AddComponent<NetworkInventory>();actor.AddComponent<NetworkFacilityInteractor>();actor.AddComponent<NetworkConstruction>();
             PrefabUtility.SaveAsPrefabAsset(actor,PlayerPrefabPath);Object.DestroyImmediate(actor);
             var root=new GameObject("Network Session");var transport=root.AddComponent<UnityTransport>();transport.ConnectTimeoutMS=1000;transport.MaxConnectAttempts=5;transport.DisconnectTimeoutMS=4000;
-            var manager=root.AddComponent<NetworkManager>();manager.NetworkConfig=new NetworkConfig{NetworkTransport=transport,TickRate=20,ConnectionApproval=true,EnableSceneManagement=true,ProtocolVersion=5,ClientConnectionBufferTimeout=10};
+            var manager=root.AddComponent<NetworkManager>();manager.NetworkConfig=new NetworkConfig{NetworkTransport=transport,TickRate=20,ConnectionApproval=true,EnableSceneManagement=true,ProtocolVersion=6,ClientConnectionBufferTimeout=10};
             var prefab=AssetDatabase.LoadAssetAtPath<GameObject>(PlayerPrefabPath);
             var service=root.AddComponent<NetworkSession>();service.Manager=manager;service.PlayerPrefab=prefab;service.EcologyPrefab=ecology;
             PrefabUtility.SaveAsPrefabAsset(root,SessionPrefabPath);Object.DestroyImmediate(root);

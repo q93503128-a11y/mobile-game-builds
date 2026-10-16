@@ -43,8 +43,8 @@ namespace Wildfolk
             for(var attempt=0;attempt<96;attempt++)
             {
                 point=Population.Candidate(index,region);
-                if(World.Map.IsWater(point,1.4f) || World.Map.IsRoad(point) || Population.Excluded(index,point,Clock.Model.Elapsed) || !Navigation.CanSpawn(point,rule.Spacing*.55f,rule.Rarity==ResourceRarity.Rare ? 24 : 12))continue;
-                var density=rule.ForestPreference*World.Map.ForestDensity(point)+rule.RockPreference*World.Map.RockDensity(point)+(1-rule.ForestPreference-rule.RockPreference)*.6f;if(density<.25f)continue;
+                if(!World.Map.ResourceSiteAllowed(index,point) || Population.Excluded(index,point,Clock.Model.Elapsed) || !Navigation.CanSpawn(point,rule.Spacing*.55f,rule.Rarity==ResourceRarity.Rare ? 24 : 12))continue;
+                var density=World.Map.ResourceDensity(index,point);if(density<.25f)continue;
                 var clear=true;foreach(var other in live.Values)if(other!=null && World.Definition.Resources[other.Rule].Family==rule.Family && Vector2.Distance(other.transform.position,point)<rule.ClusterSpacing){clear=false;break;}if(clear)return true;
             }
             point=default;return false;

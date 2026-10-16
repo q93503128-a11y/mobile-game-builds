@@ -157,3 +157,9 @@ Lowfire Home은 같은 FrontendSceneBuilder에서 제작한다. JournalAction은
 - NetworkSession: 로컬 Guid approval/중복 거절/actor retire와 replay-safe spawn, 유효한 저장 Continue→새 connection, 저장 성공 후 Shutdown·실패 시 세션 유지. UserData/Account identity/Relay allocation을 혼합하지 않는다.
 
 정상 remote UI·scene/delta 수신/실제 rejoin·Relay 통합 QA는 다음 패스다. 이전 Foundation2~4의 제외 단락은 당시 범위이며 현재 정본은 MULTIPLAYER_FOUNDATION을 따른다.
+
+## Workbench / 자원 공급 경계
+
+WorkbenchProgression은1~6 검증·구성된 다음 단계·Recipe/전문 시설 지원 판정을 공유한다. CraftingStation registry/ProgressionChanged는 시설 간 지원 상태 UI를 갱신한다. InventoryModel.TryConsumeCosts(costs,commit)는 모든 재료 예약 후 시설 변경을 commit하며 실패/예외 시 슬롯을 복구한다. SP 교체와 NGO 동일 객체 전환은 기존 Save ID/Creator/HP 비율을 유지한다. NetworkFacility는 server-write int Tier를 사용하고 Protocol6으로 이전 bool layout과 세션 호환을 분리한다.
+
+ResourceDefinition의 Tool/Rank와 ResourceNode.Harvest, WorldMap의 공급 문맥/독립 생성 stream, StationProcessing의 Recipe prerequisite는 각각 별도 경계다. 기존 Seed 자원 ID를 보존하고 공통 v5 codec을 사용한다. MetalProgressionAssets는 신규 authored assets/variant/기존 제작 화면만 갱신하는 Editor 빌더다. 자동 렌더 증거는 MetalRenderPlayTests이며 실제 MCP/Game View 조작 테스트와 구분한다.

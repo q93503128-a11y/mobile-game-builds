@@ -4,8 +4,21 @@ namespace Wildfolk
 {
     public enum ResourceFamily { Timber, Stone, Mineral, Plant }
     public enum ResourceRarity { Common, Uncommon, Rare }
+    public enum ResourceSourceContext { Surface, Cave, PointOfInterest }
+    public enum ResourceTerrain { Land, Shore }
     [Serializable] public struct ResourceGenerationRule
     {
+        // Appended generation streams preserve all legacy r<index> placements and random draws.
+        public bool IndependentGeneration,DistributionConfigured;
+        public int GenerationSalt;
+        public BiomeDefinition[] AllowedBiomes;
+        public ResourceSourceContext SourceContext;
+        public ResourceTerrain Terrain;
+        public Vector2 DepthRange,WaterDistanceRange,RoadDistanceRange;
+        public Vector2 ForestDensityRange,RockDensityRange;
+        [Range(0,1)]public float BiomeAffinity;
+        [Min(0)]public float ClusterRadius;
+        [Min(1)]public int ClusterSize;
         public ResourceNode Prefab;
         public Sprite AlternateSprite;
         [Min(1)]public int Count;

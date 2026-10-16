@@ -10,6 +10,11 @@ namespace Wildfolk
         public PlayerInventory Player;
         public GameplaySettings Settings;
         public SpriteRenderer Visual;
+        public int Harvest(ToolDefinition tool,int damage,PlayerInventory actor)
+        {
+            if(!SimulationAuthority.Allows(this) || !Health.IsAlive || !Definition.CanHarvest(tool))return 0;
+            return Health.ApplyDamage(damage,false,actor);
+        }
         private void OnEnable() => Health.Died += Break;
         private void OnDisable() => Health.Died -= Break;
 

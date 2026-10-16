@@ -20,7 +20,10 @@ namespace Wildfolk
         public ProcessingMode ProcessingMode;
         [Min(1)]public int InputCapacity=50,OutputCapacity=100;
         [Min(.1f)]public float ProcessingSpeed=1;
-        [Min(1)]public int WorkbenchTier=1;
+        [Range(1,6)]public int WorkbenchTier=1;
+        [Min(1)]public float WorkbenchSupportRange=12;
+        public Sprite TierVisual;
+        public string TierDisplayKey;
         public PlaceableDefinition UpgradeTo;
         public ItemAmount[] UpgradeCosts=System.Array.Empty<ItemAmount>();
     }

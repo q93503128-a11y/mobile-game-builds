@@ -20,3 +20,7 @@ Developer Test Console은Editor전용이고Early/Stone/Iron/Workbench II프로�
 
 
 이번 생태 패스는 새 Armor Tier를 추가하지 않는다. 기존4개를 Inventory Drag/빠른 Use로 장착하고 동일 PlayerEquipment의 슬롯 교환을 공유한다. 큰 Character/Tree/Inventory는 Safe Area 중심이며 뒤 Gameplay UI는 입력이 차단된다. Save v4(v1~v3 이관)에도 성장/Armor/Skill/Seen/Stamina를 유지한다. Iron을 최종 Progression으로 고정하지 않는다.
+
+## 현재 제작 진행 범위
+
+일반 Workbench 구조는 I~VI, 실제 콘텐츠는 I~II이며 III~VI 비용은 미정이다. Equipment Tier Wood/Stone/Iron과 Armor4개는 유지한다. Copper/Tin/Coal/Bronze/Steel은 초기 제작/시설 재료이며 새 반복 장비 세트는 없다. 현재 Home/Multiplayer·Save v5 범위는 README/MULTIPLAYER_FOUNDATION/SAVE_PERSISTENCE를 따른다. 이 문서의 이전 패스 제외 목록은 당시 기록이다.

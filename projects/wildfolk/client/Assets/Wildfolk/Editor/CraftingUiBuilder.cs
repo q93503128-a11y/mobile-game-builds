@@ -34,8 +34,13 @@ namespace Wildfolk.Editor
             panel.InventoryButton=QualityUiBuilder.Action(surface.transform,"Inventory","ui.inventory.title",new Vector2(-263,-324),new Vector2(270,58),owner.OpenBag,out var bag);
             QualityUiBuilder.Line(surface.transform,new Vector2(288,218),new Vector2(288,-347),2);
             panel.SelectedTitle=Text("Selected Recipe",surface.transform,"",new Vector2(501,192),new Vector2(358,68),26,TextAnchor.MiddleLeft);
-            panel.SelectedIcon=Image("Selected Item",surface.transform,"white",new Vector2(.5f,.5f),new Vector2(501,73),new Vector2(122,136));panel.SelectedIcon.preserveAspect=true;panel.MaterialSummary=Text("Materials Summary",surface.transform,"",new Vector2(501,-101),new Vector2(358,174),23,TextAnchor.UpperLeft);
-            panel.UpgradeButton=QualityUiBuilder.Action(surface.transform,"Upgrade","",new Vector2(501,-287),new Vector2(358,92),owner.UpgradeFromUI,out panel.UpgradeLabel);
+            panel.SelectedIcon=Image("Selected Item",surface.transform,"white",new Vector2(.5f,.5f),new Vector2(501,73),new Vector2(122,136));panel.SelectedIcon.preserveAspect=true;panel.MaterialSummary=Text("Materials Summary",surface.transform,"",new Vector2(501,-101),new Vector2(358,130),23,TextAnchor.UpperLeft);
+            panel.UpgradeButton=QualityUiBuilder.Action(surface.transform,"Upgrade","",new Vector2(501,-307),new Vector2(358,62),owner.UpgradeFromUI,out panel.UpgradeLabel);
+            var requirements=Image("Upgrade Requirements",surface.transform,"white",new Vector2(.5f,.5f),new Vector2(501,-215),new Vector2(358,104),true);requirements.color=Color.clear;requirements.gameObject.AddComponent<RectMask2D>();
+            var requirementText=Text("Materials",requirements.transform,"",Vector2.zero,new Vector2(348,100),21,TextAnchor.UpperLeft);requirementText.supportRichText=true;requirementText.color=Color.white;requirementText.raycastTarget=false;
+            var rt=(RectTransform)requirementText.transform;rt.anchorMin=new Vector2(0,1);rt.anchorMax=new Vector2(1,1);rt.pivot=new Vector2(.5f,1);rt.anchoredPosition=Vector2.zero;rt.sizeDelta=new Vector2(-10,100);
+            requirementText.gameObject.AddComponent<ContentSizeFitter>().verticalFit=ContentSizeFitter.FitMode.PreferredSize;
+            panel.UpgradeScroll=requirements.gameObject.AddComponent<ScrollRect>();panel.UpgradeScroll.content=rt;panel.UpgradeScroll.viewport=(RectTransform)requirements.transform;panel.UpgradeScroll.horizontal=false;panel.UpgradeScroll.inertia=false;panel.UpgradeScroll.movementType=ScrollRect.MovementType.Clamped;panel.UpgradeScroll.scrollSensitivity=45;panel.UpgradeRequirements=requirementText;
             var queue=Rect("Processing Queue",surface.transform,new Vector2(.5f,.5f),new Vector2(501,-100),new Vector2(358,390));panel.QueueView=queue.gameObject;
             panel.QueueState=Text("Queue State",queue,"",new Vector2(0,108),new Vector2(358,92),23,TextAnchor.UpperLeft);
             panel.CurrentItem=Text("Current Item",queue,"",new Vector2(0,1),new Vector2(358,120),22,TextAnchor.UpperLeft);

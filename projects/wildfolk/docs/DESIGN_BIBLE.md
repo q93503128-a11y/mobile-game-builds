@@ -116,3 +116,7 @@ Multiplayer Foundation 2는 기존9종 Creature와 Skeleton 검 variant를 Host 
 
 
 Multiplayer Foundation 3는 Host 권위 Resource/Harvest/Recovery→공통 Ground Item→개인36/9 Inventory와 Creature Loot를 연결했다. XP/Gold는 처치 지점24유닛 안의 생존·접속 Player 각자에게1회 지급한다. Ground Item은 전량 수용 가능한 첫 획득자에게 들어간다. 변경 기반 Owner-only 가방 상태이며 계정 소유권이 아니다. Foundation 4에서 공유 Chest24/32와 Hand Crafting/Workbench I→II/Furnace/Campfire를 기존 모델·UI로 연결했다. 시작 지점 근처 기존 시설5개는 Host 초기 배치이며 Player Building placement/removal이 아니다. Foundation5에서 기존 Building/Wall/Door와 Host v5 저장·재Host·로컬 식별자별 Player 복원 기반을 연결했다. 플레이어 철거 UX/계정/Cloud/Host Migration은 추가하지 않았다. 다음은 실제2인 Multiplayer Integration QA이며 이번에는 수행하지 않았다. 이전 Foundation 2 제외 범위와 구분하며 현재 정본은 MULTIPLAYER_FOUNDATION을 따른다.
+
+## Workbench progression / 초기 금속 현재 범위
+
+구조적 일반 제작대 cap은 VI, 현재 실제 플레이는 I~II다. III~VI 실제 비용·Recipe는 미정이며 빈 Tier 진입/placeholder UI를 만들지 않는다. 비용은 임의 길이 목록으로 후반 요구 종류 수 증가를 지원한다. 자연 자원은 월드에 처음부터 존재하고 기술은 채굴·가공·사용을 제한한다. Copper/Tin/Coal과 주괴/Bronze/Steel을 실제 제공한다. 기존 Iron·Hand/Workbench/Furnace/Campfire 역할은 유지한다. 새 금속은 기존 강화 Chest/Stone Wall의 대체 Recipe에 쓰며 반복 장비 세트/새 전문 시설로 수를 늘리지 않는다. 현재 Temperate Surface 분포는 다음 Biome 패스에서 재조정할 초기값이다. 상세 정본은 METAL_PROGRESSION이다.

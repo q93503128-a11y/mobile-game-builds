@@ -494,13 +494,6 @@
       ]
     },
     {
-      "Key": "ui.crafting.upgrade",
-      "Values": [
-        "Upgrade II · {0}",
-        "II로 개량 · {0}"
-      ]
-    },
-    {
       "Key": "ui.crafting.material",
       "Values": [
         "{0} {1} / {2}",
@@ -2248,6 +2241,118 @@
       "Values": [
         "This player is already connected.",
         "이미 접속 중인 플레이어입니다."
+      ]
+    },
+    {
+      "Key": "ui.crafting.workbench_tier",
+      "Values": [
+        "Workbench {0}",
+        "제작대 {0}"
+      ]
+    },
+    {
+      "Key": "ui.crafting.upgrade_to",
+      "Values": [
+        "Upgrade to {0}",
+        "{0}로 업그레이드"
+      ]
+    },
+    {
+      "Key": "ui.crafting.missing_materials",
+      "Values": [
+        "Gather the missing materials",
+        "부족한 재료를 모으세요"
+      ]
+    },
+    {
+      "Key": "feedback.requires_tool",
+      "Values": [
+        "Requires {0} or better",
+        "{0} 이상이 필요합니다"
+      ]
+    },
+    {
+      "Key": "tool.Pickaxe",
+      "Values": [
+        "a Pickaxe",
+        "곡괭이"
+      ]
+    },
+    {
+      "Key": "tool.Axe",
+      "Values": [
+        "an Axe",
+        "도끼"
+      ]
+    },
+    {
+      "Key": "tool.Sword",
+      "Values": [
+        "a Sword",
+        "검"
+      ]
+    },
+    {
+      "Key": "recipe.bronze_chest",
+      "Values": [
+        "Chest · Bronze fittings",
+        "상자 · 청동 부속"
+      ]
+    },
+    {
+      "Key": "recipe.steel_wall",
+      "Values": [
+        "Walls · Steel ties",
+        "벽 · 강철 보강"
+      ]
+    },
+    {
+      "Key": "item.copper_ore.name",
+      "Values": [
+        "Copper Ore",
+        "구리 광석"
+      ]
+    },
+    {
+      "Key": "item.tin_ore.name",
+      "Values": [
+        "Tin Ore",
+        "주석 광석"
+      ]
+    },
+    {
+      "Key": "item.coal.name",
+      "Values": [
+        "Coal",
+        "석탄"
+      ]
+    },
+    {
+      "Key": "item.copper_ingot.name",
+      "Values": [
+        "Copper Ingot",
+        "구리 주괴"
+      ]
+    },
+    {
+      "Key": "item.tin_ingot.name",
+      "Values": [
+        "Tin Ingot",
+        "주석 주괴"
+      ]
+    },
+    {
+      "Key": "item.bronze.name",
+      "Values": [
+        "Bronze",
+        "청동"
+      ]
+    },
+    {
+      "Key": "item.steel.name",
+      "Values": [
+        "Steel",
+        "강철"
       ]
     }
   ]

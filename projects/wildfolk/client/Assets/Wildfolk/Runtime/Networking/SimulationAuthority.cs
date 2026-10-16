@@ -6,6 +6,7 @@ namespace Wildfolk
     {
         public static bool Allows(Component actor)
         {
+            var resource=actor.GetComponent<NetworkResource>();if(resource!=null)return resource.IsSpawned && resource.IsServer;
             var building=actor.GetComponent<NetworkBuilding>();if(building!=null)return building.IsSpawned && building.IsServer;
             var facility=actor.GetComponent<NetworkFacility>();
             if(facility!=null)return facility.IsSpawned && facility.IsServer;

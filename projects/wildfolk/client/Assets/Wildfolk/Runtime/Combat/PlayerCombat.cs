@@ -19,6 +19,8 @@ namespace Wildfolk
         private readonly Collider2D[] targetColliders=new Collider2D[32];
         private readonly float[] scores=new float[32];
         private int targetCount;
+        private ResourceNode denied;private float deniedScore;
+        public event System.Action<ResourceDefinition> HarvestDenied;
         private AttackProfile profile;
         private Vector2 strikeFacing;
         public int LastHitCount {get;private set;}
@@ -41,6 +43,7 @@ namespace Wildfolk
             profile=attackTool==null ? Settings.PunchAttack : attackTool.Attack;
             reach=profile.Range;strikeFacing=Avatar.Facing.Direction;LastHitCount=LastDamage=0;
             FindTarget();
+            if(targetCount==0 && denied!=null){HarvestDenied?.Invoke(denied.Definition);if(GetComponent<NetworkPlayer>()==null)PlayerFeedback.ShowRequirement(denied.Definition);}
             if(targetCount>0)Avatar.Facing.Face((Vector2)targets[0].transform.position-(Vector2)transform.position);
             handIndex = attackTool == null ? 1 - handIndex : 1;
             started = Time.time;
@@ -63,7 +66,7 @@ namespace Wildfolk
         }
         private void FindTarget()
         {
-            targetCount=0;
+            targetCount=0;denied=null;deniedScore=float.MaxValue;
             var count=Physics2D.OverlapCircle(transform.position,reach,new ContactFilter2D{useTriggers=true},candidates);
             for(var i=0;i<count;i++)
             {
@@ -72,7 +75,7 @@ namespace Wildfolk
                 if(CreatureTargetsOnly && (health==null || health.GetComponent<NetworkCreature>()==null))continue;
                 if(!CombatAffiliation.CanDamage(OwnHealth,health) || !InSector(candidates[i],out var distance,out var alignment))continue;
                 var node=health.GetComponent<ResourceNode>();
-                if(node!=null && !node.Definition.CanHarvest(attackTool))continue;
+                if(node!=null && !node.Definition.CanHarvest(attackTool)){var rejected=distance/reach+(1-alignment)*.75f;if(rejected<deniedScore){denied=node;deniedScore=rejected;}continue;}
                 var duplicate=false;for(var j=0;j<targetCount;j++)if(targets[j]==health)duplicate=true;
                 if(duplicate)continue;
                 var score=distance/reach+(profile.SelectionRule==TargetSelectionRule.Nearest ? 0 : (1-alignment)*.75f);
@@ -99,8 +102,8 @@ namespace Wildfolk
                     if(collider==null || !collider.enabled || !CombatAffiliation.CanDamage(OwnHealth,target) || !InSector(collider,out _,out _))continue;
                     var node=target.GetComponent<ResourceNode>();
                     var damage=attackTool==null ? Settings.PunchDamage : node==null ? attackTool.Damage : attackTool.DamageFor(node.Definition.Kind);
-                    if(node!=null && !node.Definition.CanHarvest(attackTool))continue;
-                    LastDamage+=target.ApplyDamage(damage,false,Equipment.Inventory);LastHitCount++;
+                    var applied=node!=null ? node.Harvest(attackTool,damage,Equipment.Inventory) : target.ApplyDamage(damage,false,Equipment.Inventory);
+                    LastDamage+=applied;if(applied>0)LastHitCount++;
                 }
             }
             if (progress >= 1) CancelAttack();

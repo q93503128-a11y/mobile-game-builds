@@ -29,7 +29,7 @@ namespace Wildfolk.Editor
                 check(!string.IsNullOrWhiteSpace(recipe.Id) && ids.Add("recipe:"+recipe.Id),"Duplicate recipe ID: "+recipe.name);
                 check(itemSet.Contains(recipe.Result) && recipe.ResultCount>0,"Unknown result: "+recipe.name);
                 check(Enum.IsDefined(typeof(RecipeCategory),recipe.Category),"Invalid recipe category");
-                check(Enum.IsDefined(typeof(StationKind),recipe.RequiredStation) && recipe.RequiredWorkbenchTier>=1,"Invalid station requirement: "+recipe.name);
+                check(Enum.IsDefined(typeof(StationKind),recipe.RequiredStation) && WorkbenchProgression.IsValid(recipe.RequiredWorkbenchTier),"Invalid station requirement: "+recipe.name);
                 check(recipe.FutureUnlocks!=null && recipe.FutureUnlocks.Length==0,"Additional unlock conditions are reserved, not active: "+recipe.name);
                 check(recipe.Tier==null || tiers.Contains(recipe.Tier),"Invalid recipe tier: "+recipe.name);
                 check(recipe.Ingredients!=null && recipe.Ingredients.Length>0,"Empty recipe: "+recipe.name);if(recipe.Ingredients==null)continue;
@@ -62,7 +62,8 @@ namespace Wildfolk.Editor
             foreach(var growth in Assets<CharacterGrowthDefinition>())
             {check(growth.FirstLevelXP>0 && growth.AdditionalXPPerLevel>=0 && growth.MaximumLevel>1 && growth.PointsPerLevel>0,"Invalid level curve");var skillIds=new HashSet<string>();foreach(var skill in growth.Skills)check(skill!=null && !string.IsNullOrEmpty(skill.Id) && skillIds.Add(skill.Id) && skill.Icon!=null && skill.MaximumRank>0 && skill.PerRank>0,"Invalid skill data");}
             foreach(var move in Assets<LocomotionDefinition>())check(move.MaximumStamina>0 && move.Recovery>0 && move.RecoveryDelay>=0 && move.SprintDrain>0 && move.DashCost>0 && move.DashCost<=move.MaximumStamina && move.SprintEnter>move.SprintMaintain && move.SprintMaintain>0 && move.SprintEnter<=1 && move.SprintHold>0 && move.SprintSpeed>1 && move.DashDistance>0 && move.DashDuration>0 && move.ExhaustedRestart>0 && move.ExhaustedRestart<=move.MaximumStamina,"Invalid locomotion data");
-            foreach(var placed in Assets<PlaceableDefinition>())if(placed.UpgradeTo!=null){check(placed.Station==StationKind.Workbench && placed.UpgradeTo.Station==StationKind.Workbench && placed.UpgradeTo.WorkbenchTier>placed.WorkbenchTier && placed.UpgradeCosts.Length>0,"Invalid workbench upgrade");foreach(var cost in placed.UpgradeCosts)check(itemSet.Contains(cost.Item) && cost.Count>0,"Invalid upgrade cost");}
+            foreach(var placed in Assets<PlaceableDefinition>())if(placed.UpgradeTo!=null){check(placed.Station==StationKind.Workbench && placed.UpgradeTo.Station==StationKind.Workbench && WorkbenchProgression.CanUpgrade(placed),"Invalid workbench upgrade");foreach(var cost in placed.UpgradeCosts)check(itemSet.Contains(cost.Item) && cost.Count>0,"Invalid upgrade cost");}
+            foreach(var placed in Assets<PlaceableDefinition>())if(placed.Station==StationKind.Workbench)check(WorkbenchProgression.IsValid(placed.WorkbenchTier),"Invalid workbench tier");
             var settings=Assets<GameplaySettings>();foreach(var setting in settings)Attack(setting.PunchAttack,check,"fist");
             if(EditorApplication.isPlaying)
             {

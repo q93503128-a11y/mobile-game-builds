@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fed1ca97dce3214e8ef920e00983bf4, type: 3}
+  m_Name: CoalNodeResource
+  m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.ResourceDefinition
+  Kind: 6
+  MinimumTier: {fileID: 11400000, guid: b632d88d6c00461418a7100d186ff69c, type: 2}
+  RequiredTool: 1
+  RequiredToolItem: {fileID: 11400000, guid: c8f4006e56add364e95debbfa940bd04, type: 2}
+  Vitality: {fileID: 11400000, guid: 6002c633b22248942a54a1fa11c81169, type: 2}
+  DropItem: {fileID: 11400000, guid: 745a86eb96e288b4abcf496de399103a, type: 2}
+  DropCount: 4

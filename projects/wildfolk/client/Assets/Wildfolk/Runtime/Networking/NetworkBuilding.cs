@@ -40,7 +40,7 @@ namespace Wildfolk
         private void Apply(BuildingState value)
         {
             var definition=NetworkCreatureWorld.Active.Catalog.Item(value.Item.ToString()).Placement;
-            Placeable.SaveId=value.Id.ToString();Placeable.CreatorId=value.Creator.ToString();Placeable.Definition=definition;Placeable.Visual.sprite=definition.Prefab.Visual.sprite;Placeable.Visual.transform.localScale=definition.Prefab.Visual.transform.localScale;Placeable.Health.Definition=definition.Vitality;Placeable.Health.ApplyReplica(value.HP);
+            Placeable.SaveId=value.Id.ToString();Placeable.CreatorId=value.Creator.ToString();Placeable.Definition=definition;Placeable.Visual.sprite=definition.TierVisual!=null ? definition.TierVisual : definition.Prefab.Visual.sprite;Placeable.Visual.transform.localScale=definition.Prefab.Visual.transform.localScale;Placeable.Health.Definition=definition.Vitality;Placeable.Health.ApplyReplica(value.HP);
             var station=GetComponent<CraftingStation>();if(station!=null){station.Definition=definition;station.NotifyChanged();}
             if(Door!=null)PresentDoor();
         }

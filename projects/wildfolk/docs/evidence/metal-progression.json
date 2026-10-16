@@ -1,0 +1,379 @@
+{
+  "date": "2026-10-16",
+  "baseline": "ee51701a4b59662e219ac247901c1b2ac8a21ca2",
+  "protocol": 6,
+  "save_version": 5,
+  "items": 41,
+  "recipes": 31,
+  "unique_editmode": 31,
+  "unique_playmode": 25,
+  "all_latest_passed": true,
+  "runs": [
+    {
+      "file": "metal-edit.xml",
+      "platform": "EditMode",
+      "total": 31,
+      "passed": 31,
+      "failed": 0,
+      "runner_duration_seconds": 1.6201099,
+      "tests": [
+        {
+          "name": "Wildfolk.Tests.MetalProgressionTests.AppendedOresAreDeterministicAndPreserveEveryLegacyPlacementAndId",
+          "result": "Passed"
+        },
+        {
+          "name": "Wildfolk.Tests.MetalProgressionTests.BronzeAndSteelReserveEveryIngredientAndPreserveBlockedOutputAndQueueSnapshot",
+          "result": "Passed"
+        },
+        {
+          "name": "Wildfolk.Tests.MetalProgressionTests.FourInputsReserveAtomicallyAndRollbackFailureOrException",
+          "result": "Passed"
+        },
+        {
+          "name": "Wildfolk.Tests.MetalProgressionTests.MiningToolPermissionHasNoFistFallbackAndMaterialKindsRemainDistinct",
+          "result": "Passed"
+        },
+        {
+          "name": "Wildfolk.Tests.MetalProgressionTests.OnlyConfiguredNextTierOpensAndLegacyUpgradeCostsRemain",
+          "result": "Passed"
+        },
+        {
+          "name": "Wildfolk.Tests.MetalProgressionTests.SupplyContextAndRecoveryAreIndependentOfTechnologyAndRespectMineralFamily",
+          "result": "Passed"
+        },
+        {
+          "name": "Wildfolk.Tests.MetalProgressionTests.WorkbenchRangeIsOneThroughSix(0,False)",
+          "result": "Passed"
+        },
+        {
+          "name": "Wildfolk.Tests.MetalProgressionTests.WorkbenchRangeIsOneThroughSix(1,True)",
+          "result": "Passed"
+        },
+        {
+          "name": "Wildfolk.Tests.MetalProgressionTests.WorkbenchRangeIsOneThroughSix(2,True)",
+          "result": "Passed"
+        },
+        {
+          "name": "Wildfolk.Tests.MetalProgressionTests.WorkbenchRangeIsOneThroughSix(6,True)",
+          "result": "Passed"
+        },
+        {
+          "name": "Wildfolk.Tests.MetalProgressionTests.WorkbenchRangeIsOneThroughSix(7,False)",
+          "result": "Passed"
+        },
+        {
+          "name": "Wildfolk.Tests.MetalProgressionTests.WorkbenchRangeIsOneThroughSix(-1,False)",
+          "result": "Passed"
+        },
+        {
+          "name": "Wildfolk.Tests.NetworkFacilityModelTests.CraftFailureKeepsAllIngredientsAndSameIngredientsOnlyCraftOnce",
+          "result": "Passed"
+        },
+        {
+          "name": "Wildfolk.Tests.NetworkFacilityModelTests.FacilityPrefabsAndInteractionComponentsAreRegisteredBeforeSessionStarts",
+          "result": "Passed"
+        },
+        {
+          "name": "Wildfolk.Tests.NetworkFacilityModelTests.QueueVersionOnlyChangesAtCompletionAndBlockedCargoIsConserved",
+          "result": "Passed"
+        },
+        {
+          "name": "Wildfolk.Tests.NetworkPersistenceModelTests.EveryExistingPlaceableUsesOneSourceDefinitionAndServerBuildingState",
+          "result": "Passed"
+        },
+        {
+          "name": "Wildfolk.Tests.NetworkPersistenceModelTests.ParticipantMetadataRejectsDuplicatesInvalidIdentityAndMismatchedHost",
+          "result": "Passed"
+        },
+        {
+          "name": "Wildfolk.Tests.NetworkPersistenceModelTests.SeparateRepositoriesAndDeadParticipantPolicyPreserveSingleplayerRules",
+          "result": "Passed"
+        },
+        {
+          "name": "Wildfolk.Tests.NetworkPersistenceModelTests.V4MigratesToV5WithoutChangingSingleplayerPayloadAndV5RoundTrips",
+          "result": "Passed"
+        },
+        {
+          "name": "Wildfolk.Tests.ProgressionTests.ChestsHaveIndependentStoresAndFailedTransfersPreserveBoth",
+          "result": "Passed"
+        },
+        {
+          "name": "Wildfolk.Tests.ProgressionTests.ChestTransferMergesPartiallyRejectsFullAndSwapsAtomically",
+          "result": "Passed"
+        },
+        {
+          "name": "Wildfolk.Tests.ProgressionTests.ProcessingRecipesUseSeparateStationsAndNoPlaceholderFuel",
+          "result": "Passed"
+        },
+        {
+          "name": "Wildfolk.Tests.ProgressionTests.TiersImproveTheirRolesAndGateOreByToolKindAndRank",
+          "result": "Passed"
+        },
+        {
+          "name": "Wildfolk.Tests.ProgressionTests.WorldTimeCrossesAllPhasesAndLightingIsContinuousAtBoundaries",
+          "result": "Passed"
+        },
+        {
+          "name": "Wildfolk.Tests.WorldGenerationTests.GroundActuallyShowsDirtRoadAndFordDiffersFromDeepWater",
+          "result": "Passed"
+        },
+        {
+          "name": "Wildfolk.Tests.WorldGenerationTests.ManySeedsHaveClearSpawnNearbySuppliesRareOreAndNoOverlaps",
+          "result": "Passed"
+        },
+        {
+          "name": "Wildfolk.Tests.WorldGenerationTests.PartialTransferPreservesTotalsOnFullOrDifferentTargets",
+          "result": "Passed"
+        },
+        {
+          "name": "Wildfolk.Tests.WorldGenerationTests.PopulationAndLootDataAreBoundedAndOnlyOneBiomeExists",
+          "result": "Passed"
+        },
+        {
+          "name": "Wildfolk.Tests.WorldGenerationTests.RiverHasWalkableCrossingAndLandRemainsConnected",
+          "result": "Passed"
+        },
+        {
+          "name": "Wildfolk.Tests.WorldGenerationTests.SeedRecreatesTerrainRoadsAndResourcesWithoutUsingUnityRandom",
+          "result": "Passed"
+        },
+        {
+          "name": "Wildfolk.Tests.WorldGenerationTests.TreeHitCountsUpgradeRecipesAndFurnaceCapacityMatchActualData",
+          "result": "Passed"
+        }
+      ]
+    },
+    {
+      "file": "metal-play.xml",
+      "platform": "PlayMode",
+      "total": 22,
+      "passed": 21,
+      "failed": 1,
+      "runner_duration_seconds": 80.8390877,
+      "tests": [
+        {
+          "name": "Wildfolk.Tests.MetalProgressionPlayTests.FurnaceRequiresNearbyLiveWorkbenchIIForSteelAndKeepsReservedCargoOnLoad",
+          "result": "Failed",
+          "failure": "Expected: in range (3.8,4)\n  But was:  3.66666675f"
+        },
+        {
+          "name": "Wildfolk.Tests.MetalProgressionPlayTests.RejectedMiningHasZeroDamageProgressLootOrSuccessSignalsAndValidToolHitsOnce",
+          "result": "Passed"
+        },
+        {
+          "name": "Wildfolk.Tests.MetalProgressionPlayTests.UpgradeUiScrollsArbitraryCostsAndPreservesTierAndMetalsAcrossSnapshotLoad",
+          "result": "Passed"
+        },
+        {
+          "name": "Wildfolk.Tests.NetworkFacilityPlayTests.CampfireMeatAndWaterRemainSharedAfterActorRetires",
+          "result": "Passed"
+        },
+        {
+          "name": "Wildfolk.Tests.NetworkFacilityPlayTests.ChestWithdrawDepositSplitStaleAndFullBagHaveNoLoss",
+          "result": "Passed"
+        },
+        {
+          "name": "Wildfolk.Tests.NetworkFacilityPlayTests.ExistingUiUsesSharedChestAndHandCraftingWithLocalActorBindings",
+          "result": "Passed"
+        },
+        {
+          "name": "Wildfolk.Tests.NetworkFacilityPlayTests.FurnaceQueueAndCompletionRacesKeepOutputAndReservedInputs",
+          "result": "Passed"
+        },
+        {
+          "name": "Wildfolk.Tests.NetworkFacilityPlayTests.HandCraftAtomicityAndWorkbenchUpgradeCommitOnce",
+          "result": "Passed"
+        },
+        {
+          "name": "Wildfolk.Tests.NetworkFacilityPlayTests.SteelGateUsesHostWorkbenchAndMultiIngredientReservationsSurviveQueueRestore",
+          "result": "Passed"
+        },
+        {
+          "name": "Wildfolk.Tests.NetworkItemPlayTests.CreatureLootAndNearbySessionRewardsCommitExactlyOnce",
+          "result": "Passed"
+        },
+        {
+          "name": "Wildfolk.Tests.NetworkItemPlayTests.ExistingInventoryUiSplitsMovesSelectsAndEquipsThroughHost",
+          "result": "Passed"
+        },
+        {
+          "name": "Wildfolk.Tests.NetworkItemPlayTests.OreValidationPublishesOnlyAcceptedHitsAndFinalHitSpawnsLootExactlyOnce",
+          "result": "Passed"
+        },
+        {
+          "name": "Wildfolk.Tests.NetworkItemPlayTests.PickupRaceFullBagDropReplayAndRetiredPlayerCannotDuplicate",
+          "result": "Passed"
+        },
+        {
+          "name": "Wildfolk.Tests.NetworkItemPlayTests.SharedResourceFinalHitDropsOnceAndRecoversWithNewIdentity",
+          "result": "Passed"
+        },
+        {
+          "name": "Wildfolk.Tests.NetworkPersistencePlayTests.HostSaveRehostRestoresWorldCargoGroundEcologyAndPlayerWithoutDuplicates",
+          "result": "Passed"
+        },
+        {
+          "name": "Wildfolk.Tests.NetworkPersistencePlayTests.PlacementRaceRollbackAndEveryCurrentBuildingUseExistingDefinitions",
+          "result": "Passed"
+        },
+        {
+          "name": "Wildfolk.Tests.NetworkPersistencePlayTests.RetireAndRejoinSameIdentityRestoreOnceAndRejectConcurrentIdentity",
+          "result": "Passed"
+        },
+        {
+          "name": "Wildfolk.Tests.NetworkPersistencePlayTests.SaveFailureKeepsHostSessionAndCorruptLoadCannotCreateReplacementWorld",
+          "result": "Passed"
+        },
+        {
+          "name": "Wildfolk.Tests.NetworkPersistencePlayTests.WallAdjacencyAndDoorDesiredStateRejectCompetingToggle",
+          "result": "Passed"
+        },
+        {
+          "name": "Wildfolk.Tests.ProgressionPlayTests.DoorUseOpensClosesAndRejectsClosingOnAnActor",
+          "result": "Passed"
+        },
+        {
+          "name": "Wildfolk.Tests.ProgressionPlayTests.ZombieIsBlockedByWallAndDealsVisibleHealthDamage",
+          "result": "Passed"
+        },
+        {
+          "name": "Wildfolk.Tests.StabilityPlayTests.SaveReloadRestoresPlayerContainersFacilitiesCargoAndResourceDeltas",
+          "result": "Passed"
+        }
+      ]
+    },
+    {
+      "file": "metal-render-play.xml",
+      "platform": "PlayMode",
+      "total": 3,
+      "passed": 2,
+      "failed": 1,
+      "runner_duration_seconds": 11.5394324,
+      "tests": [
+        {
+          "name": "Wildfolk.Tests.MetalProgressionPlayTests.FurnaceRequiresNearbyLiveWorkbenchIIForSteelAndKeepsReservedCargoOnLoad",
+          "result": "Failed",
+          "failure": "System.InvalidOperationException : Sequence contains more than one matching element"
+        },
+        {
+          "name": "Wildfolk.Tests.MetalRenderPlayTests.NaturalOreViewsAndFiveMaterialWorkbenchLayoutAt1920By1080",
+          "result": "Passed"
+        },
+        {
+          "name": "Wildfolk.Tests.NetworkFacilityPlayTests.SteelGateUsesHostWorkbenchAndMultiIngredientReservationsSurviveQueueRestore",
+          "result": "Passed"
+        }
+      ]
+    },
+    {
+      "file": "metal-final-play.xml",
+      "platform": "PlayMode",
+      "total": 3,
+      "passed": 2,
+      "failed": 1,
+      "runner_duration_seconds": 14.5426362,
+      "tests": [
+        {
+          "name": "Wildfolk.Tests.MetalProgressionPlayTests.FurnaceRequiresNearbyLiveWorkbenchIIForSteelAndKeepsReservedCargoOnLoad",
+          "result": "Passed"
+        },
+        {
+          "name": "Wildfolk.Tests.MetalRenderPlayTests.NaturalOreViewsAndFiveMaterialWorkbenchLayoutAt1920By1080",
+          "result": "Passed"
+        },
+        {
+          "name": "Wildfolk.Tests.NetworkPersistencePlayTests.HostSaveRehostRestoresWorldCargoGroundEcologyAndPlayerWithoutDuplicates",
+          "result": "Failed",
+          "failure": "Expected: 1\n  But was:  2"
+        }
+      ]
+    },
+    {
+      "file": "metal-regression-play.xml",
+      "platform": "PlayMode",
+      "total": 4,
+      "passed": 4,
+      "failed": 0,
+      "runner_duration_seconds": 20.0280988,
+      "tests": [
+        {
+          "name": "Wildfolk.Tests.NetworkItemPlayTests.OreValidationPublishesOnlyAcceptedHitsAndFinalHitSpawnsLootExactlyOnce",
+          "result": "Passed"
+        },
+        {
+          "name": "Wildfolk.Tests.NetworkPersistencePlayTests.HostSaveRehostRestoresWorldCargoGroundEcologyAndPlayerWithoutDuplicates",
+          "result": "Passed"
+        },
+        {
+          "name": "Wildfolk.Tests.ProgressionPlayTests.FurnaceSmeltsWithProgressAndWorkbenchMakesIronEquipment",
+          "result": "Passed"
+        },
+        {
+          "name": "Wildfolk.Tests.ProgressionPlayTests.OreRequiresStonePickaxeAndDropsRealOreAfterValidHits",
+          "result": "Passed"
+        }
+      ]
+    }
+  ],
+  "source_validator": "PASS: 655 unique asset GUIDs; Unity source/Landscape/sprites/visible text",
+  "direct_unity_test": {
+    "performed": false,
+    "reason": "Unity MCP tools unavailable, configured localhost:8080 connection refused; background MCP server startup rejected by automatic approval review (blocked by policy). No Computer Use/focus performed."
+  },
+  "automated_render": {
+    "resolution": [
+      1920,
+      1080
+    ],
+    "images": [
+      "coal.png",
+      "copperore.png",
+      "tinore.png",
+      "upgrade-five-materials-scroll.png",
+      "upgrade-five-materials.png"
+    ],
+    "note": "Offscreen render in the reused hidden Unity test project; five-material upgrade is a disposable layout fixture. No actual I→II price changes."
+  },
+  "user_save_sha256": "57d560f19e49507fbc7ac00b48e1dda5759732a181d1c0baa441ad4536da7970",
+  "phases_kst": [
+    {
+      "phase": "Audit/Research",
+      "start": "16:31:24",
+      "end": "16:37:33",
+      "seconds": 369
+    },
+    {
+      "phase": "Implementation",
+      "start": "16:37:33",
+      "end": "16:48:48",
+      "seconds": 675
+    },
+    {
+      "phase": "Automated Checks",
+      "start": "16:48:48",
+      "end": "16:58:24",
+      "seconds": 576
+    },
+    {
+      "phase": "Unity Direct Test / limitation and render review",
+      "start": "16:58:24",
+      "end": "16:59:01",
+      "seconds": 37,
+      "direct_input_seconds": 0
+    },
+    {
+      "phase": "Docs/Cleanup",
+      "start": "16:59:01",
+      "end": "17:05:58",
+      "seconds": 417
+    }
+  ],
+  "timing_note": "Sequential wall-clock phases; 34m34s through docs/cleanup. Git add/commit/push/final verification starts at 17:05:58 KST and is reported separately in final response, outside this pre-commit evidence.",
+  "live_sync": {
+    "changed_client_files": 121,
+    "live_mismatches": [],
+    "user_save_sha256": "57d560f19e49507fbc7ac00b48e1dda5759732a181d1c0baa441ad4536da7970",
+    "localization_entries": 335
+  },
+  "live_editor_compile_verified": false
+}

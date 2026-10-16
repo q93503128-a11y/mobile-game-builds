@@ -43,13 +43,13 @@ namespace Wildfolk
             var authority=player.GetComponent<NetworkFacilityInteractor>();if(authority!=null && !authority.IsApplying)return authority.Process(FacilityOperation.Craft,this,recipe);
             if(!SimulationAuthority.Allows(this))return false;
             if(Sequential)return Add(recipe,player,1);
-            if(IsBusy || recipe.ProcessingSeconds<=0 || recipe.RequiredStation!=Station.Definition.Station || !Station.Health.IsAlive) return false;
+            if(!WorkbenchProgression.Allows(Station,recipe) || IsBusy || recipe.ProcessingSeconds<=0 || recipe.RequiredStation!=Station.Definition.Station || !Station.Health.IsAlive) return false;
             var batch=BatchSize(recipe,player.Model);if(batch<=0)return false;
             var costs=ScaledCosts(recipe,batch);if(!player.Model.TryConsumeCosts(costs)) return false;
             owner=player;Recipe=recipe;BatchCount=batch;Remaining=Duration;Notify();return true;
         }
         public bool Add(RecipeDefinition recipe,PlayerInventory player,int count)
-        {var authority=player.GetComponent<NetworkFacilityInteractor>();if(authority!=null && !authority.IsApplying)return count==1 && authority.Process(FacilityOperation.AddOne,this,recipe);if(!SimulationAuthority.Allows(this))return false;if(!Sequential || recipe.RequiredStation!=Station.Definition.Station || recipe.ProcessingSeconds<=0 || !Station.Health.IsAlive)return false;var accepted=queue.Add(recipe,count,player.Model,Station.Definition.InputCapacity,Station.Definition.ProcessingSpeed);if(accepted){owner=player;Notify();}return accepted;}
+        {var authority=player.GetComponent<NetworkFacilityInteractor>();if(authority!=null && !authority.IsApplying)return count==1 && authority.Process(FacilityOperation.AddOne,this,recipe);if(!SimulationAuthority.Allows(this))return false;if(!WorkbenchProgression.Allows(Station,recipe) || !Sequential || recipe.RequiredStation!=Station.Definition.Station || recipe.ProcessingSeconds<=0 || !Station.Health.IsAlive)return false;var accepted=queue.Add(recipe,count,player.Model,Station.Definition.InputCapacity,Station.Definition.ProcessingSpeed);if(accepted){owner=player;Notify();}return accepted;}
         public int AddAll(RecipeDefinition recipe,PlayerInventory player)
         {var authority=player.GetComponent<NetworkFacilityInteractor>();if(authority!=null && !authority.IsApplying)return authority.Process(FacilityOperation.AddAll,this,recipe) ? 1 : 0;var count=BatchSize(recipe,player.Model);return Add(recipe,player,count) ? count : 0;}
         public bool Withdraw(RecipeDefinition recipe,PlayerInventory player)
@@ -57,7 +57,7 @@ namespace Wildfolk
         public void Advance(float seconds)
         {if(!SimulationAuthority.Allows(this))return;var before=queue.Version;var previous=Remaining;var wasReady=IsReady;if(Sequential){queue.Advance(seconds,Station.Definition.ProcessingSpeed,Station.Definition.OutputCapacity);if(before!=queue.Version || previous>0 && Remaining<=0)Notify();}else if(Recipe!=null && Remaining>0){Remaining=Mathf.Max(0,Remaining-seconds);if(!wasReady && IsReady)Notify();}}
         public int BatchSize(RecipeDefinition recipe,InventoryModel model)
-        {var batch=Sequential ? Station.Definition.InputCapacity-queue.WaitingCount-(queue.Current==null ? 0 : 1) : Station.Definition.ParallelCapacity;foreach(var cost in recipe.Ingredients)batch=(int)Math.Min(batch,model.CountItem(cost.Item)/cost.Count);return batch;}
+        {if(!WorkbenchProgression.Allows(Station,recipe))return 0;var batch=Sequential ? Station.Definition.InputCapacity-queue.WaitingCount-(queue.Current==null ? 0 : 1) : Station.Definition.ParallelCapacity;foreach(var cost in recipe.Ingredients)batch=(int)Math.Min(batch,model.CountItem(cost.Item)/cost.Count);return batch;}
         private static ItemAmount[] ScaledCosts(RecipeDefinition recipe,int batch)
         {var costs=new ItemAmount[recipe.Ingredients.Length];for(var i=0;i<costs.Length;i++)costs[i]=new ItemAmount{Item=recipe.Ingredients[i].Item,Count=checked(recipe.Ingredients[i].Count*batch)};return costs;}
         public bool Collect(PlayerInventory player)

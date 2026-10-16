@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20df6dd9b4c24af4889549b8f9dc4ce5, type: 3}
+  m_Name: BronzeChestRecipe
+  m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.RecipeDefinition
+  Id: bronze_chest
+  Category: 5
+  SortOrder: 200
+  Result: {fileID: 11400000, guid: 034dc0c170161be4a9bed7298c9eb842, type: 2}
+  ResultCount: 1
+  Ingredients:
+  - Item: {fileID: 11400000, guid: 431287b464f63f4408828d4053bac6eb, type: 2}
+    Count: 6
+  - Item: {fileID: 11400000, guid: f9d01f6ba03eb6844b137faebea8612b, type: 2}
+    Count: 2
+  RequiredStation: 1
+  ProcessingSeconds: 0
+  Processing: 0
+  LegacyProcessingSeconds: 0
+  Tier: {fileID: 0}
+  RequiredWorkbenchTier: 2
+  DisplayKey: recipe.bronze_chest
+  FutureUnlocks: []

@@ -29,7 +29,8 @@ namespace Wildfolk
         public ProcessingKind Processing;
         public float LegacyProcessingSeconds;
         public EquipmentTier Tier;
-        [Min(1)]public int RequiredWorkbenchTier=1;
+        [Range(1,6)]public int RequiredWorkbenchTier=1;
+        public string DisplayKey;
         public UnlockRequirement[] FutureUnlocks=Array.Empty<UnlockRequirement>();
     }
 }
