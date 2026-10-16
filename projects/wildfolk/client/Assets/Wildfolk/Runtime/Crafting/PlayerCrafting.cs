@@ -7,6 +7,7 @@ namespace Wildfolk
 
     public sealed class PlayerCrafting : MonoBehaviour
     {
+        public NetworkFacilityInteractor Authority {get;set;}
         public RecipeCatalog Catalog;
         public PlayerInventory Inventory;
         public GameplaySession Session;
@@ -19,9 +20,9 @@ namespace Wildfolk
         public bool ScreenOpen {get;private set;}
         public RecipeDefinition SelectedRecipe {get;private set;}
         public void SetSelected(RecipeDefinition recipe,bool notify=true){SelectedRecipe=recipe;if(notify){MarkSeen(recipe);StationChanged?.Invoke();}}
-        public void OpenHandCrafting(){if(Session.State!=SessionState.Inventory)return;Station=null;stationOpen=false;ScreenOpen=true;StationChanged?.Invoke();}
+        public void OpenHandCrafting(){if(Session.State!=SessionState.Inventory)return;Authority?.CloseFacilityView();ClearStation();Station=null;stationOpen=false;ScreenOpen=true;StationChanged?.Invoke();}
         public void CloseCrafting(){ScreenOpen=false;ClearStation();Session.CloseInventory();StationChanged?.Invoke();}
-        public void OpenBag(){ScreenOpen=false;ClearStation();StationChanged?.Invoke();}
+        public void OpenBag(){Authority?.CloseFacilityView();ScreenOpen=false;ClearStation();StationChanged?.Invoke();}
         private readonly System.Collections.Generic.HashSet<string> seen=new System.Collections.Generic.HashSet<string>();
         public string[] CaptureSeen(){var a=new string[seen.Count];seen.CopyTo(a);Array.Sort(a,StringComparer.Ordinal);return a;}
         public void RestoreSeen(string[] ids){seen.Clear();foreach(var id in ids)seen.Add(id);StationChanged?.Invoke();}
@@ -29,10 +30,11 @@ namespace Wildfolk
         public void MarkSeen(RecipeDefinition recipe){if(IsNew(recipe) && seen.Add(recipe.Id))StationChanged?.Invoke();}
         public bool UpgradeWorkbench()
         {
+            if(Authority!=null && !Authority.IsApplying)return Authority.Upgrade();
             if(Session.State!=SessionState.Inventory || AvailableStation!=StationKind.Workbench || Station.Definition.UpgradeTo==null)return false;
             var old=Station.GetComponent<WorldPlaceable>();var definition=Station.Definition;
             if(!Inventory.Model.TryConsumeCosts(definition.UpgradeCosts))return false;
-            var next=Instantiate(definition.UpgradeTo.Prefab,old.transform.position,old.transform.rotation);next.SaveId=old.SaveId;next.Health.RestoreHealth(Mathf.Max(1,Mathf.RoundToInt(old.Health.Ratio*next.Health.Maximum)));old.gameObject.SetActive(false);Destroy(old.gameObject);Station=next.GetComponent<CraftingStation>();StationChanged?.Invoke();return true;
+            Station.Changed-=NotifyStation;var next=Instantiate(definition.UpgradeTo.Prefab,old.transform.position,old.transform.rotation);next.SaveId=old.SaveId;next.Health.RestoreHealth(Mathf.Max(1,Mathf.RoundToInt(old.Health.Ratio*next.Health.Maximum)));old.gameObject.SetActive(false);Destroy(old.gameObject);Station=next.GetComponent<CraftingStation>();Station.Changed+=NotifyStation;StationChanged?.Invoke();return true;
         }
         public void UpgradeFromUI(){if(!UpgradeWorkbench())PlayerFeedback.ShowKey("feedback.upgrade");}
 
@@ -45,8 +47,9 @@ namespace Wildfolk
         private bool InRange(CraftingStation station) => station.CanInteract(transform.position,Settings.StationInteractionRange);
         public bool OpenStation(CraftingStation station)
         {
+            if(Authority!=null && !Authority.IsApplying)return station!=null && Authority.Open(station.GetComponent<NetworkFacility>());
             if (!Session.IsRunning || station == null || !InRange(station)) return false;
-            Station = station; stationOpen = true;ScreenOpen=true;
+            Station = station;Station.Changed+=NotifyStation; stationOpen = true;ScreenOpen=true;
             Session.OpenInventory();
             StationChanged?.Invoke();
             return true;
@@ -55,9 +58,11 @@ namespace Wildfolk
         {
             if (Session.State != SessionState.Inventory){ScreenOpen=false;ClearStation();StationChanged?.Invoke();}
         }
+        private void NotifyStation()=>StationChanged?.Invoke();
         private void ClearStation()
         {
             if (!stationOpen) return;
+            if(Station!=null)Station.Changed-=NotifyStation;
             Station = null; stationOpen = false;
             StationChanged?.Invoke();
         }
@@ -77,6 +82,7 @@ namespace Wildfolk
         }
         public CraftStatus Craft(RecipeDefinition recipe)
         {
+            if(Authority!=null && !Authority.IsApplying){var preview=GetStatus(recipe);return Authority.Craft(recipe) ? preview : CraftStatus.StationRequired;}
             if (Session.State != SessionState.Inventory) return CraftStatus.StationRequired;
             var status = GetStatus(recipe);
             if(status==CraftStatus.Collect) { Processor.Collect(Inventory);return status; }

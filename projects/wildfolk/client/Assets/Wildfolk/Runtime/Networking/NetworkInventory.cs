@@ -47,7 +47,7 @@ namespace Wildfolk
         private void RewardsChanged(SessionRewardState old,SessionRewardState value){if(!IsServer && IsOwner)ApplyRewards(value);}
         private void ApplyRewards(SessionRewardState value)=>progression.SetValues(value.Experience,value.Gold);
         private void RevisionChanged(uint old,uint value){if(pending!=0 && waitingRevision!=0 && value>=waitingRevision){pending=0;waitingRevision=0;}}
-        private void ViewChanged(){if(IsOwner && !IsServer)ViewRpc(Player.Commands.Session.State==SessionState.Inventory);}
+        private void ViewChanged(){if(IsOwner && !IsServer && !GetComponent<NetworkFacilityInteractor>().IsApplying)ViewRpc(Player.Commands.Session.State==SessionState.Inventory);}
         [Rpc(SendTo.Server,InvokePermission=RpcInvokePermission.Owner)]
         private void ViewRpc(bool open,RpcParams rpc=default)
         {if(rpc.Receive.SenderClientId!=OwnerClientId || !CanOperate)return;if(open)Player.Commands.Session.OpenInventory();else Player.Commands.Session.CloseInventory();}

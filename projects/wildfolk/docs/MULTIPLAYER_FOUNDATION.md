@@ -1,4 +1,78 @@
-# Multiplayer Foundation — 현재 Foundation 3
+# Multiplayer Foundation — 현재 Foundation 4
+
+2026-10-16. 기준 e4b6d1fb6a7f434b719fe39ddb8652994dc84e8f. 기존 Foundation 3 위에 **공유 Chest / Hand Crafting / Workbench I→II / Furnace / Campfire**를 Host 권위로 연결했다. 관련 컴파일·자동검사 단계이며 **실제 2인 Relay Play 통합 QA는 이번에도 수행하지 않았다**. Foundation 1의 실제 두 프로세스 Player 검수를 시설 검증으로 확대하지 않는다.
+
+## 시설과 상호작용
+
+기존 Storage Chest24/Reinforced Chest32/Workbench/Furnace/Campfire prefab의 NetworkFacility variant5개를 사용한다. 기존 고정 seed 필드의 시작 지점 근처에 Host가 시설별1개를 안전한 지면·비점유 후보에 생성한다. 후보가 없으면 해당 시설을 강제로 겹쳐 놓지 않는다. 이는 이번 시설 연결을 사용하는 세션의 초기 배치이며 Player Building placement/removal 기능이 아니다. 새로운 Recipe/Item/Facility 콘텐츠는 추가하지 않았다.
+
+Player의 기존 PlayerInteraction/PlayerStorage/PlayerCrafting과 Interact 버튼을 연결했다. 멀티 Interact 후보는 NetworkFacility로 제한하므로 아직 네트워크화하지 않은 수원/문 경로를 실행하지 않는다. 기존 가방/상자/Category/Filter/고정 Sort/NEW/제작·큐 화면을 그대로 authoring하고 로컬 owner actor와 callback을 활성화 전에 다시 바인딩한다. Inventory36/Hotbar9를 유지한다. UI를 열어도 월드는 계속 진행하며 해당 Player 입력만 제한한다. NEW 확인 상태는 현재 Player의 세션 표시이며 이번에 계정·멀티 영구 저장을 추가하지 않았다.
+
+ProtocolVersion4. Player 포함23 prefab을 시작 전 명시 등록한다. DefaultNetworkPrefabs는 Editor registry이고 Runtime의 NetworkSession 등록 목록이 정본이다. 동일 콘텐츠/Catalog 순서를 전제로 한다.
+
+## Chest 동기화와 경쟁 요청
+
+NetworkFacility의 Chest NetworkList는 Server write / Everyone read다. Host가 기존 InventoryModel을 유지하고 Changed 이벤트 때24/32칸을 비교해 달라진 슬롯만 dirty한다. 초기 snapshot 이후 Client는 읽기 전용 모델에 slot delta를 표시한다. 모든 현재 시설 observer에게 공유하며, 개별 열람자 구독/관심 영역 최적화는 추가하지 않았다. 전체 Chest를 매 Frame 전송하지 않는다.
+
+NetworkFacilityInteractor는 owner permission RPC와 sender/sequence, 연결·생존, 플레이어 가방 revision, 시설 존재·거리·revision, 실제 열어둔 시설 context, 슬롯 범위·수량·Recipe/Station을 Host에서 검사한다. Client는 로컬 수량을 선확정하지 않는다. Host의 한 메인 스레드 처리에서 기존 InventoryModel.Transfer로 양쪽 슬롯을 먼저 commit하고 각각 변경 이벤트를 발행한다. 전체 교환/부분 Stack/merge 규칙은 싱글과 같다. full 슬롯에 부분 교환을 시도하면 원본을 유지한다.
+
+두 Player가 같은 상자를 동시에 열 수 있다. A가 성공하면 시설 revision이 올라 B의 이전 revision 요청을 거절한다. B는 갱신 상태에서 다시 요청할 수 있다. 드래그/소분은 시작 시 가방·상자 revision을 보존하므로 들고 있는 중 내용이 바뀌면 오래된 요청을 새 revision으로 위장해 적용하지 않는다. 상자 내부 이동과 상자→바닥 Drop도 같은 경계를 사용한다. Drop은 기존 TryDropSlot 감소/생성 실패 rollback 및 NGO spawn 성공 확인을 재사용한다.
+
+가방/시설 명령은 별도 작은 담당 컴포넌트로 나누되 같은 개인 가방 revision으로 충돌을 검출한다. 한 owner의 시설 요청은 ack와 해당 가방·시설 revision 수신까지 대기한다. Client의 UI 표시를 Host로 반영할 때, Host가 승인한 시설 열기 ack를 다시 close/open RPC로 반향시키지 않는다. 제작→가방/Hand 전환도 Host의 시설 context를 해제하며 이후 시설 mutation을 거절한다.
+
+## Crafting과 Workbench
+
+Hand와 Workbench는 같은 요청/검증 경계와 기존 PlayerCrafting.GetStatus/Craft를 사용한다. RecipeCatalog/RequiredStation/RequiredWorkbenchTier가 정본이다. 즉시 제작은 기존 InventoryModel.TryExchange가 복사한 다음 슬롯 배열에서 재료 소비+결과 공간을 함께 확인한 뒤 한 번 commit한다. 공간/재료/상태가 맞지 않으면 양쪽 모두 변경하지 않는다.
+
+Workbench I→II는 Host가 기존 UpgradeCosts를 소비하고 동일 NetworkObject의 Definition/Visual/HP 비율을 II로 바꾼다. NetworkObject 교체로 두 Player의 열린 참조를 끊지 않는다. Upgraded state와 시설 revision, UpgradeTo가 없는 II 상태가 중복 업그레이드와 이중 비용을 거절한다. Client도 같은 Definition의 Tier와 Recipe 조건을 표시한다. 싱글의 기존 설치물 교체/Save ID 보존 업그레이드는 유지한다.
+
+## Furnace와 Campfire
+
+기존 StationProcessing/ProcessingQueue가 유일한 처리 로직이다. Furnace의 sequential current/waiting/output와 +1/대기 −1/Add all/Take는 Host가 검증·실행한다. 큐는 기존 예약 순서를 유지한 run과 결과 목록을 NetworkList delta로 전달한다. 현재 Recipe/Batch/완료 예정 server time/진행 여부는 상태 변경 때만 보낸다. timer 전체 RPC와 매 Frame 상태 전송은 없다.
+
+Host만 Advance를 호출해 큐를 소비한다. completion/출력 포화 경계도 revision을 올려 완료 직전 요청을 거절한다. Output full이면 완료된 현재 단위를 보존하고, 결과 Take가 성공하면 재개한다. 결과와 대기 재료 반환은 기존 TryAddAmounts의 atomic 공간 검사를 사용하며 full bag이면 큐/결과를 유지한다. 실제 수치 Input50/Output100/2초는 기존 데이터를 유지한다.
+
+Campfire는 기존 단일 Batch 예약, Meat cooking과 Raw Water Cup→Clean Water Cup5초, 명시적 Take를 유지한다. Furnace와 같은 NetworkFacility/요청 검증/진행 시각 경계를 사용하며 sequential queue로 억지로 바꾸지 않았다. Client는 Restore 경계로 Host snapshot을 표시하고 server time으로 Remaining을 계산할 뿐 큐/Batch를 독립 진행하지 않는다. 제작 화면은 상태 변화 때 목록을 갱신하며,0.2초의 진행 표시 갱신에서는 카드 진행률/남은 시간만 갱신한다.
+
+## Disconnect와 저장 범위
+
+시설 열기는 독점 lock/reservation을 만들지 않는다. 가공 투입 재료는 성공한 transaction에서 즉시 시설 cargo가 되므로 시작한 Player가 사라져도 Host queue는 계속 진행하고 다른 유효한 Player가 결과를 수령한다. NetworkDespawn은 actor의 열린 context/대기 요청/authority 참조/화면을 정리한다. 시설 cargo는 특정 Player의 UI나 생존에 묶이지 않는다. 연결 종료 Player의 가방 보존·재접속 복원·월드 저장은 이번에 결정/구현하지 않았다.
+
+## 검증과 한계
+
+[실행별 자동검사 증거](evidence/facility-network-foundation.json). 기존 cached Unity 프로젝트 하나에서 hidden batchmode 프로세스를 한 번에 하나만 실행했다. 새 clone/대화형 Editor/Computer Use/Focus/Show를 사용하지 않았다.
+
+- EditMode16/16(0.5122075초): 등록/Protocol/시설 컴포넌트, craft atomicity, completion version/blocked cargo, 기존 InventoryOperations와 큐 순서/legacy restore/공간 보존.
+- 고유 PlayMode8개 최종 통과. 첫 묶음3/8 후 새 검사5개가 fixture의 표시 이름/컵 Item ID 가정 때문에 본문 진입 전 실패했다. 데이터 참조/실제 ID로 고친 뒤 해당5개와 공통 Furnace1개6/6(12.4892733초) 통과했다. 이후 공통 Craft 경계/출력 포화·retired actor 보강3/3(6.6761345초), 시설 화면 전환 context 보강1/1(3.3313331초)을 수행했다. 반복 실행을 고유 사례로 합산하지 않는다.
+- Chest: 두 actor의 같은 stack withdraw/같은 slot deposit/merge/split stale/full bag/거리 거절/24·32칸. 기존 UI로 부분 배치/변경 중 held 요청 거절/Close를 확인했다.
+- Craft: 정확한 재료1회 소비/같은 revision 재요청 거절/공간 부족 원본 유지. Workbench 동시 upgrade1회/다른 Player 비용 보존/II Recipe와 잘못된 Station 거절.
+- Furnace: 동시 add/remove stale/완료 직전·직후 Take/중복 Take/full bag/Output100 포화와 해제/시작 actor 제거 뒤 진행·다른 actor 수령.
+- Campfire: 같은 Batch 시작·결과 Take 경쟁/시작 actor 제거/Meat와 Water의 실제 Recipe 상태 전이. 싱글은 기존 Furnace queue UI와 Campfire full bag/시설 파괴 cargo sanity2개를 수행했다. 기존 멀티 가방 UI/Armor/도구·자동 Pickup 검사1개도 통과했다.
+- Source/reference PASS:602 unique asset GUIDs/Landscape/참조/제품 표시 문구.
+
+두 actor는 단일 실제 Local Host 안의 서버 fixture다. **원격 Client의 owner 화면·공유 delta 수신/보간, 실제 transport disconnect, 두 프로세스 Relay, 양쪽 Game View, 터치·고지연/패킷 손실·4인·Android·bandwidth profiling은 검사하지 않았다.** retired actor의 NGO Despawn 검사와 실제 연결 단절 검수를 구분한다. 이번에는 별도 live Play 검수를 수행하지 않았다. 실제 통합 QA 완료/성능 합격을 주장하지 않는다.
+
+## 다음 범위
+
+Building placement/removal, Wall/Door/Building ownership, Multiplayer World persistence, Host save/reload, reconnect persistence/session recovery, Account/Login/Friend/Invite/Cloud Save/Host Migration/4인 stress와 실제2인 Relay 통합 QA는 남겨 둔다. 시설 초기 배치와 제작 결과 아이템을 얻는 기능을 Player 설치/건축 완료로 해석하지 않는다. 기존 기타 생존 행동/Skill 투자 전체가 네트워크화된 것도 아니다.
+
+## 이번 시간 기록(KST)
+
+정본 확인:13:39:04→13:42:01,2분57초.
+
+구현 및 첫 빌드:13:42:01→13:46:10,4분9초.
+
+관련 자동검사 및 보완:13:46:10→13:52:04,5분54초.
+
+마무리 검토와 정본 정리:13:52:04→13:53:59,1분55초.
+
+Git 마무리는13:53:59부터이며 실제 종료/전체 경과는 완료 보고에 기록한다. 단계에는 해당 Unity 기동/Import/컴파일 대기가 포함되며 병행한 시간을 중복 합산하지 않는다.
+
+열린 LIVE에 최종 변경60파일이 정본과 일치함을 확인했다. MCP에서 최종 컴파일 완료/Console error0·warning0/MainMenu/dirty=false/Play 중지/포커스 없음/Protocol4/등록 ecology22개·시설5개와 close context 함수 반영을 확인했다. 기존 사용자 world-v1.json SHA256은57d560f19e49507fbc7ac00b48e1dda5759732a181d1c0baa441ad4536da7970로 전후 동일하다.
+
+---
+
+## Foundation 3 기록 — 2026-10-16
 
 2026-10-16. 기준5eb5b989761aed7aad1c126e283db0d29831c3c9. 현재는 Player/Creature/Combat에 **Resource→Harvest→Ground Drop→Pickup→개인 Inventory 및 Creature Loot/XP·Gold**를 Host 권위로 연결한 단계다. 컴파일/관련 자동검사를 수행했으며 **이번에도 실제2인 Relay Play 통합 QA는 하지 않았다**. 이전 Foundation 1의 실제 Player 검수를 이번 Item/Resource 수신 검증으로 확대하지 않는다.
 

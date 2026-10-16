@@ -4,6 +4,7 @@ namespace Wildfolk
 {
     public sealed class PlayerStorage : MonoBehaviour
     {
+        public NetworkFacilityInteractor Authority {get;set;}
         public GameplaySession Session;
         public GameplaySettings Settings;
         public StorageChest Chest { get; private set; }
@@ -19,6 +20,7 @@ namespace Wildfolk
         private bool opened;
         public bool OpenChest(StorageChest chest)
         {
+            if(Authority!=null && !Authority.IsApplying)return chest!=null && Authority.Open(chest.GetComponent<NetworkFacility>());
             if(!Session.IsRunning || chest==null || !chest.InRange(transform.position,Settings.StationInteractionRange)) return false;
             chest.BindVisitor(GetComponent<PlayerInventory>());Chest=chest;opened=true;Changed?.Invoke();Session.OpenInventory();return true;
         }

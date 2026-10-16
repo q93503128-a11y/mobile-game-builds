@@ -130,7 +130,18 @@ Lowfire Home은 같은 FrontendSceneBuilder에서 제작한다. JournalAction은
 - NetworkGroundItem/WorldPickup: 공통 Drop 데이터/표현과 Host-only whole-stack claim. Trigger는 owner 후보만 등록하며 Inventory revision/범위 변화 때 요청을 허용한다. 로컬 pickup simulation은 실행하지 않는다.
 - NetworkInventory/IInventoryAuthority: owner RPC·sequence·revision 검증, 서버 공통 Model/Equipment/Drop 실행, Owner-only NetworkList delta/선택/XP·Gold. 초기 snapshot과 개별 변경은 읽기 전용 모델에 적용한다.
 - InventoryModel.TryDropSlot/PlayerItemDrop.BindWorld: 감소→생성 commit/rollback과 공통 월드 참조 경계다. 이전 OnSpawn local-owner만 바인딩하는 가정을 사용하지 않는다.
-- NetworkInventoryUi/InventoryUiBuilder: 기존 UI에 actor를 주입하며 시설 없는 멀티에서는 Chest/Crafting UI를 만들지 않는다. 새로운 가방 디자인/별도 가방 모델은 없다.
+- NetworkInventoryUi/InventoryUiBuilder: 기존 UI에 actor를 주입하며 Foundation 3 당시에는 시설 없는 멀티 UI를 제공했다. 현재 Foundation 4는 아래 시설 UI를 함께 연결한다. 새로운 가방 디자인/별도 가방 모델은 없다.
 - NetworkDeathResult.TryCommit/NetworkCreatureWorld.RecordDeath: 한 번 계산한 table 결과를 Ground와 근처24유닛 생존·접속 Player의 개인 지갑 지급으로 연결한다. 계정/Cloud ownership이 아니다.
 
 이전 Foundation 2의 Resource/Item 제외 단락은 당시 범위다. 현재 구현과 실제2인 검증 미수행은 MULTIPLAYER_FOUNDATION을 따른다.
+
+
+## Multiplayer Foundation 4
+
+- NetworkFacility: 서버 소유 Chest NetworkList slot delta, Workbench Upgraded, ordered processing cargo delta/현재 작업·server end time/revision. 공통 StorageChest/StationProcessing의 모델이 실제 truth이며 Client는 읽기 전용 snapshot/presentation이다.
+- NetworkFacilityInteractor: owner RPC/sender/sequence, 가방·시설 revision/연결·생존/거리/open context 검증. shared lock 없이 기존 Transfer/PlayerCrafting.Craft/StationProcessing을 Host에서 실행한다. Hand/Workbench 별도 제작 truth가 없다.
+- StationProcessing.Changed/ProcessingQueue.Version/CraftingStation.Changed: 완료/예약/수령/blocked 경계 이벤트. Client Advance/Restore 권위와 표시용 snapshot 적용을 분리한다. UI timer tick은 진행 표시만 갱신한다.
+- NetworkInventoryUi: PlayerStorage/PlayerCrafting/기존 Chest/Crafting/Interact와 모든 owner callback을 재바인딩한다. Host 승인 open의 view RPC 반향을 막고 Bag/Hand 전환에서도 Host facility context를 해제한다.
+- NetworkEcologyBuilder/NetworkCreatureWorld: 기존 시설 variants5개 등록/Host 초기 배치. Protocol4/Player 포함23 prefab. Building/문/멀티 persistence는 별도 후속 범위다.
+
+관련 자동검사와 실제2인 Relay 통합 QA 미수행은 MULTIPLAYER_FOUNDATION을 따른다.

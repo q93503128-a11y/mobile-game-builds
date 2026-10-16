@@ -23,4 +23,4 @@ Armor를 가방에서 맞는 Head/Body 슬롯으로 Drag하면 즉시 장착한�
 
 ## Multiplayer Foundation 3
 
-기존36/9 슬롯/Stack/Drag/Split/Item Actions/Armor UI를 재사용한다. 멀티 변경은 owner 요청→Host revision/slot/수량 검증→공통 Model mutation→Owner-only slot delta다. Client 모델은 읽기 전용이다. 멀티 Ground pickup은 한 stack을 전량 넣을 수 있을 때만 소비하고 full bag이면 그대로 남긴다. Player Drop은 예약 감소와 Ground 생성의 성공/실패를 묶는다. Chest/Crafting/시설/계정/멀티 persistence는 이번 범위가 아니다. 실제2인 검증은 미수행이며 자세한 규칙/자동검사는 MULTIPLAYER_FOUNDATION을 따른다.
+기존36/9 슬롯/Stack/Drag/Split/Item Actions/Armor UI를 재사용한다. 멀티 변경은 owner 요청→Host revision/slot/수량 검증→공통 Model mutation→Owner-only slot delta다. Client 모델은 읽기 전용이다. 멀티 Ground pickup은 한 stack을 전량 넣을 수 있을 때만 소비하고 full bag이면 그대로 남긴다. Player Drop은 예약 감소와 Ground 생성의 성공/실패를 묶는다. Foundation 3 당시 Chest/Crafting/시설은 제외했다. 현재 Foundation 4는 공용 Chest24/32의 server-write 슬롯 delta와 기존 split/merge/drag UI를 연결한다. 가방·시설 revision을 함께 검사하며 held split은 시작 revision을 유지한다. 두 Player 동시 열기에는 독점 lock을 만들지 않는다. 계정/멀티 persistence는 아직 없다. 실제2인 검증은 미수행이며 자세한 규칙/자동검사는 MULTIPLAYER_FOUNDATION을 따른다.

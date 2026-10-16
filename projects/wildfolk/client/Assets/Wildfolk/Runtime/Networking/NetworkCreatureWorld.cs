@@ -26,7 +26,18 @@ namespace Wildfolk
         private void Awake()
         {Active=this;Animals.enabled=Goblins.enabled=Night.enabled=Clock.enabled=IsAuthority;World.Renewal.enabled=IsAuthority;}
         private void Start()
-        {World.Generate(World.Definition.DefaultSeed);}
+        {World.Generate(World.Definition.DefaultSeed);if(IsAuthority)CreateFacilities();}
+        private void CreateFacilities()
+        {
+            var offset=0;foreach(var entry in Prefabs)if(entry.Source.GetComponent<WorldPlaceable>()!=null)
+            {
+                var center=World.Map.Spawn+new Vector2((offset-2)*3,4);offset++;
+                var found=false;var position=center;
+                for(var radius=0;radius<20 && !found;radius++)for(var x=-radius;x<=radius && !found;x++)for(var y=-radius;y<=radius;y++)
+                {var candidate=center+new Vector2(x,y);if(!World.Map.IsWalkable(candidate,1.2f) || Physics2D.OverlapCircle(candidate,1.2f)!=null)continue;position=candidate;found=true;break;}
+                if(found)Create(entry.Source.GetComponent<WorldPlaceable>(),position,Quaternion.identity);
+            }
+        }
         public T Create<T>(T source,Vector3 position,Quaternion rotation,Transform parent=null) where T:Component
         {
             if(!IsAuthority)throw new InvalidOperationException("Only the Host may spawn multiplayer actors.");

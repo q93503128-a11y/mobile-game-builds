@@ -14,7 +14,7 @@ namespace Wildfolk.Editor
         public static GameObject BuildPrefab()
         {
             var entries=new List<NetworkSpawnEntry>();
-            foreach(var name in new[]{"Chicken","Boar","Rabbit","Deer","Sheep","Enemy","Goblin","SlingshotGoblin","Skeleton","Pebble","GoblinCamp","Tree","Stone","IronOreNode","FallenLog","SmallPlant","WorldPickup"})
+            foreach(var name in new[]{"Chicken","Boar","Rabbit","Deer","Sheep","Enemy","Goblin","SlingshotGoblin","Skeleton","Pebble","GoblinCamp","Tree","Stone","IronOreNode","FallenLog","SmallPlant","WorldPickup","StorageChest","ReinforcedChest","Workbench","Furnace","Campfire"})
             {
                 var source=AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Wildfolk/Prefabs/"+name+".prefab");
                 var root=(GameObject)PrefabUtility.InstantiatePrefab(source);root.name="Network "+name;root.AddComponent<NetworkObject>();
@@ -24,6 +24,7 @@ namespace Wildfolk.Editor
                     root.AddComponent<NetworkRigidbody2D>();var creature=root.AddComponent<NetworkCreature>();
                     var animal=root.GetComponent<NeutralAnimal>();var enemy=root.GetComponent<EnemyController>();var goblin=root.GetComponent<GoblinController>();creature.Visual=animal!=null ? animal.Visual : enemy!=null ? enemy.AttackPose : goblin.Pose;
                 }
+                if(root.GetComponent<WorldPlaceable>()!=null)root.AddComponent<NetworkFacility>();
                 if(root.GetComponent<ResourceNode>()!=null)root.AddComponent<NetworkResource>();
                 if(root.GetComponent<WorldPickup>()!=null){root.AddComponent<NetworkGroundItem>();var trigger=root.AddComponent<CircleCollider2D>();trigger.isTrigger=true;trigger.radius=Data<GameplaySettings>("GameplaySettings").PickupRadius;var body=root.AddComponent<Rigidbody2D>();body.bodyType=RigidbodyType2D.Kinematic;body.gravityScale=0;}
                 if(root.GetComponent<StoneProjectile>()!=null)root.AddComponent<NetworkProjectile>();

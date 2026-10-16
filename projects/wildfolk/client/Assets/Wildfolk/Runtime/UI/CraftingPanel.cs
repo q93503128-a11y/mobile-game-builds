@@ -13,7 +13,7 @@ namespace Wildfolk
         public RecipeCardView[] Cards;public ScrollRect Scroll;
         private StationKind previousStation=(StationKind)(-1);private int category=-1;private bool craftable;private float nextRefresh;
         private RecipeDefinition Selected=>Owner.SelectedRecipe;
-        private void Update(){if(View.activeSelf && Owner.Processor!=null && Time.unscaledTime>=nextRefresh){nextRefresh=Time.unscaledTime+.2f;Refresh();}}
+        private void Update(){if(View.activeSelf && Owner.Processor!=null && Time.unscaledTime>=nextRefresh){nextRefresh=Time.unscaledTime+.2f;RefreshProgress();}}
         private void Start(){Owner.Inventory.Model.Changed+=Refresh;Owner.StationChanged+=Refresh;Owner.Session.StateChanged+=Refresh;L.Changed+=Refresh;Refresh();}
         private void OnDestroy(){Owner.Inventory.Model.Changed-=Refresh;Owner.StationChanged-=Refresh;Owner.Session.StateChanged-=Refresh;L.Changed-=Refresh;}
         public void SelectCategory(int index){category=index;Scroll.verticalNormalizedPosition=1;Refresh();}
@@ -22,6 +22,12 @@ namespace Wildfolk
         public void EnqueueAll(){if(Selected!=null)Owner.Processor.AddAll(Selected,Owner.Inventory);Refresh();}
         public void WithdrawOne(){if(Selected!=null)Owner.Processor.Withdraw(Selected,Owner.Inventory);Refresh();}
         public void CollectResults(){if(!Owner.Processor.Collect(Owner.Inventory))PlayerFeedback.ShowKey("feedback.bag_full");Refresh();}
+        private void RefreshProgress()
+        {
+            var job=Owner.Processor;if(job==null)return;
+            foreach(var card in Cards)if(card.gameObject.activeSelf && card.Recipe==job.Recipe)card.RefreshProgress();
+            if(job.Sequential)CurrentItem.text=job.Recipe==null ? L.Text("ui.crafting.idle") : job.Remaining<=0 ? L.Text("ui.crafting.blocked_output") : L.Format("ui.crafting.current",L.Format("ui.crafting.input_output",job.Recipe.Ingredients[0].Item.LocalizedName,job.Recipe.Result.LocalizedName),job.Remaining);
+        }
         public void Refresh()
         {
             View.SetActive(Owner.ScreenOpen && Owner.Session.State==SessionState.Inventory);if(!View.activeSelf)return;

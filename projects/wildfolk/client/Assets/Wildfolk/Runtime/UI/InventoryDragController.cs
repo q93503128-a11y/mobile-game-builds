@@ -50,7 +50,7 @@ namespace Wildfolk
         {
             var model=Model(chest);
             if (IsDragging || Session.State != SessionState.Inventory || model==null || model.GetSlot(index).IsEmpty) return;
-            sourceModel=model;if(model!=Owner.Model)model.Changed+=Refresh;
+            Storage?.Authority?.CaptureTransferState();sourceModel=model;if(model!=Owner.Model)model.Changed+=Refresh;
             IsDragging=true;SourceIndex=index;pointer=data.pointerId;sourceView=view;
             HeldAmount=model.GetSlot(index).Count;IsHoldingPartial=false;
             data.eligibleForClick=false;
@@ -124,7 +124,7 @@ namespace Wildfolk
         {if(!IsHoldingPartial)return false;if(!Transfer(sourceModel,SourceIndex,Model(chest),index,HeldAmount)){PlayerFeedback.ShowKey("feedback.slot_space");return false;}Cancel();return true;}
         public void DropHeldWorld(){if(IsHoldingPartial && ItemDrop.Drop(sourceModel,SourceIndex,HeldAmount))Cancel();}
         private bool Transfer(InventoryModel source,int from,InventoryModel target,int to,int amount)
-        {return source==Owner.Model && target==Owner.Model ? Owner.TransferSlots(from,to,amount) : InventoryModel.Transfer(source,from,target,to,amount);}
+        {return source==Owner.Model && target==Owner.Model ? Owner.TransferSlots(from,to,amount) : Storage!=null && Storage.Authority!=null ? Storage.Authority.Transfer(source,from,target,to,amount) : InventoryModel.Transfer(source,from,target,to,amount);}
         private void UpdateSplit()
         {
             var valid=Session.State==SessionState.Inventory && !IsDragging && selectedModel!=null && selectedIndex>=0 && !selectedModel.GetSlot(selectedIndex).IsEmpty && selectedModel.GetSlot(selectedIndex).Count>1;

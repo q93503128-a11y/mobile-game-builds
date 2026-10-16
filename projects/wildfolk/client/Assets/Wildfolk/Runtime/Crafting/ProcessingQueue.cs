@@ -7,6 +7,7 @@ namespace Wildfolk
     {
         private readonly List<RecipeDefinition> waiting=new List<RecipeDefinition>();
         private readonly Dictionary<RecipeDefinition,int> output=new Dictionary<RecipeDefinition,int>();
+        public uint Version {get;private set;}
         public RecipeDefinition Current {get;private set;}
         public float Remaining {get;private set;}
         public int WaitingCount=>waiting.Count;
@@ -28,7 +29,7 @@ namespace Wildfolk
             {
                 var consumed=Mathf.Min(seconds,Remaining);Remaining-=consumed;seconds-=consumed;
                 if(Remaining>0 || OutputCount+Current.ResultCount>capacity)return;
-                output[Current]=output.TryGetValue(Current,out var n) ? n+1 : 1;Current=null;StartNext(speed);if(seconds<=0)return;
+                Version++;output[Current]=output.TryGetValue(Current,out var n) ? n+1 : 1;Current=null;StartNext(speed);if(seconds<=0)return;
             }
         }
         private void StartNext(float speed)

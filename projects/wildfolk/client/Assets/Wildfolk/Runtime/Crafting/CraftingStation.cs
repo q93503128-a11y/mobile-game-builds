@@ -4,6 +4,8 @@ namespace Wildfolk
 {
     public sealed class CraftingStation : MonoBehaviour, IPlayerInteractable
     {
+        public event System.Action Changed;
+        public void NotifyChanged()=>Changed?.Invoke();
         public PlaceableDefinition Definition;
         public Health Health;
         public Transform Location => transform;

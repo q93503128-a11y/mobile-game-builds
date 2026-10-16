@@ -12,7 +12,9 @@ namespace Wildfolk
         public void BindWorld(WorldGenerator world){World=world;Prefab=world.Pickup;Settings=world.Settings;}
         public bool Drop(InventoryModel source,int index,int amount=0)
         {
-            if(Inventory.Authority!=null && !Inventory.Authority.IsApplying)return source==Inventory.Model && Inventory.Authority.Drop(index,amount);
+            var facility=GetComponent<NetworkFacilityInteractor>();
+            if(facility!=null && !facility.IsApplying && source!=Inventory.Model)return facility.Drop(index,amount);
+            if(Inventory.Authority!=null && !Inventory.Authority.IsApplying && (facility==null || !facility.IsApplying))return source==Inventory.Model && Inventory.Authority.Drop(index,amount);
             if(Session.State!=SessionState.Inventory || source==null || index<0 || index>=source.Capacity)return false;
             var stack=source.GetSlot(index);if(stack.IsEmpty)return false;
             if(amount==0)amount=stack.Count;if(amount<1 || amount>stack.Count)return false;

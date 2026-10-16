@@ -45,3 +45,12 @@ Leather의 미래 사용 후보는Backpack/Strap/Quiver/Tent/Bedding 등이며 �
 
 
 제작은 별도 Recipe 중심 화면이다. 36칸 Inventory를 함께 펼치지 않는다. Category별 두 열 목록과 선택 결과의 보유량/실제 공격력·방어력·시설 HP/보관 용량을 표시한다. Inventory 버튼으로 Item 관리에 돌아간다. 재료 각각의 보유/필요 수량과 충분한 녹색·부족한 적색을 독립 표시하며 NEW는 순서를 바꾸지 않는다. English/Korean은 Localization Key를 사용한다.
+
+
+## Multiplayer Foundation 4
+
+Host가 기존 PlayerCrafting.GetStatus/Craft와 InventoryModel.TryExchange를 사용해 Hand/Workbench의 Recipe·Station·Tier·재료·공간을 검증한다. Workbench I→II는 기존 비용을 한 번 소비하고 같은 NetworkObject의 Definition/Visual/HP 비율을 전환해 열린 참조를 유지한다. 싱글의 기존 교체 방식은 유지한다.
+
+Furnace sequential queue와 Campfire Meat/Raw→Clean Cup Batch는 기존 StationProcessing이 Host에서만 진행한다. 투입/회수/Take와 완료·출력 포화 경계가 facility revision을 올리며, 오래된 요청/full bag은 cargo를 유지한다. Client는 ordered cargo snapshot과 current/end time만 표시한다. 제작 UI Category/Filter/Sort/NEW를 유지하고 진행 tick은 목록 전체를 다시 만들지 않는다.
+
+세션 시작 근처에 기존 시설5개를 Host 초기 배치한다. Player 설치/철거·Wall/Door·멀티 save/reconnect와 실제2인 Relay QA는 이 구현에 포함하지 않았다. 자동검사/한계는 MULTIPLAYER_FOUNDATION을 따른다.

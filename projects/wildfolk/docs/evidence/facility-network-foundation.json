@@ -1,0 +1,292 @@
+{
+  "date": "2026-10-16",
+  "foundation": 4,
+  "baseline": "e4b6d1fb6a7f434b719fe39ddb8652994dc84e8f",
+  "protocol": 4,
+  "unique_final_tests": 24,
+  "unique_editmode": 16,
+  "unique_playmode": 8,
+  "runs": [
+    {
+      "file": "facility-play.xml",
+      "platform": "PlayMode",
+      "result": "Failed(Child)",
+      "total": 8,
+      "passed": 3,
+      "failed": 5,
+      "duration_seconds": 25.2347559,
+      "tests": [
+        {
+          "name": "Wildfolk.Tests.NeedsCookingPlayTests.FullInventoryKeepsCookedOutputAndDestroyedFireDropsCargo",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "Wildfolk.Tests.NetworkFacilityPlayTests.CampfireMeatAndWaterRemainSharedAfterActorRetires",
+          "result": "Failed",
+          "failure": "System.InvalidOperationException : Sequence contains no matching element"
+        },
+        {
+          "name": "Wildfolk.Tests.NetworkFacilityPlayTests.ChestWithdrawDepositSplitStaleAndFullBagHaveNoLoss",
+          "result": "Failed",
+          "failure": "System.InvalidOperationException : Sequence contains no matching element"
+        },
+        {
+          "name": "Wildfolk.Tests.NetworkFacilityPlayTests.ExistingUiUsesSharedChestAndHandCraftingWithLocalActorBindings",
+          "result": "Failed",
+          "failure": "System.InvalidOperationException : Sequence contains no matching element"
+        },
+        {
+          "name": "Wildfolk.Tests.NetworkFacilityPlayTests.FurnaceQueueAndCompletionRacesKeepOutputAndReservedInputs",
+          "result": "Failed",
+          "failure": "System.InvalidOperationException : Sequence contains no matching element"
+        },
+        {
+          "name": "Wildfolk.Tests.NetworkFacilityPlayTests.HandCraftAtomicityAndWorkbenchUpgradeCommitOnce",
+          "result": "Failed",
+          "failure": "System.InvalidOperationException : Sequence contains no matching element"
+        },
+        {
+          "name": "Wildfolk.Tests.NetworkItemPlayTests.ExistingInventoryUiSplitsMovesSelectsAndEquipsThroughHost",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "Wildfolk.Tests.QualityPlayTests.FurnaceQueueButtonsReserveReturnCollectAndPersist",
+          "result": "Passed",
+          "failure": null
+        }
+      ]
+    },
+    {
+      "file": "facility-race-play.xml",
+      "platform": "PlayMode",
+      "result": "Passed",
+      "total": 6,
+      "passed": 6,
+      "failed": 0,
+      "duration_seconds": 12.4892733,
+      "tests": [
+        {
+          "name": "Wildfolk.Tests.NetworkFacilityPlayTests.CampfireMeatAndWaterRemainSharedAfterActorRetires",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "Wildfolk.Tests.NetworkFacilityPlayTests.ChestWithdrawDepositSplitStaleAndFullBagHaveNoLoss",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "Wildfolk.Tests.NetworkFacilityPlayTests.ExistingUiUsesSharedChestAndHandCraftingWithLocalActorBindings",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "Wildfolk.Tests.NetworkFacilityPlayTests.FurnaceQueueAndCompletionRacesKeepOutputAndReservedInputs",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "Wildfolk.Tests.NetworkFacilityPlayTests.HandCraftAtomicityAndWorkbenchUpgradeCommitOnce",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "Wildfolk.Tests.QualityPlayTests.FurnaceQueueButtonsReserveReturnCollectAndPersist",
+          "result": "Passed",
+          "failure": null
+        }
+      ]
+    },
+    {
+      "file": "facility-final-play.xml",
+      "platform": "PlayMode",
+      "result": "Passed",
+      "total": 3,
+      "passed": 3,
+      "failed": 0,
+      "duration_seconds": 6.6761345,
+      "tests": [
+        {
+          "name": "Wildfolk.Tests.NetworkFacilityPlayTests.CampfireMeatAndWaterRemainSharedAfterActorRetires",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "Wildfolk.Tests.NetworkFacilityPlayTests.FurnaceQueueAndCompletionRacesKeepOutputAndReservedInputs",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "Wildfolk.Tests.NetworkFacilityPlayTests.HandCraftAtomicityAndWorkbenchUpgradeCommitOnce",
+          "result": "Passed",
+          "failure": null
+        }
+      ]
+    },
+    {
+      "file": "facility-edit.xml",
+      "platform": "EditMode",
+      "result": "Passed",
+      "total": 16,
+      "passed": 16,
+      "failed": 0,
+      "duration_seconds": 0.5122075,
+      "tests": [
+        {
+          "name": "Wildfolk.Tests.InventoryOperationsTests.DifferentItemsSwapWithoutChangingCounts",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "Wildfolk.Tests.InventoryOperationsTests.FullInventoryRejectsCraftAtomically",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "Wildfolk.Tests.InventoryOperationsTests.FullSameItemDestinationAndSameSlotDoNotMutateOrNotify",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "Wildfolk.Tests.InventoryOperationsTests.FullyConsumedMaterialSlotCanHoldCraftResult",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "Wildfolk.Tests.InventoryOperationsTests.MergeStopsAtMaxStackAndKeepsOverflowAtSource",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "Wildfolk.Tests.InventoryOperationsTests.MissingMaterialsNeverConsumeAnything",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "Wildfolk.Tests.InventoryOperationsTests.MultipleResultStacksCannotPartiallyConsumeIngredients",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "Wildfolk.Tests.InventoryOperationsTests.PlacementConsumptionRequiresMatchingSelectedItem",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "Wildfolk.Tests.InventoryOperationsTests.WholeStackMovesBetweenStorageAndHotbarWithOneNotification",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "Wildfolk.Tests.NetworkFacilityModelTests.CraftFailureKeepsAllIngredientsAndSameIngredientsOnlyCraftOnce",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "Wildfolk.Tests.NetworkFacilityModelTests.FacilityPrefabsAndInteractionComponentsAreRegisteredBeforeSessionStarts",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "Wildfolk.Tests.NetworkFacilityModelTests.QueueVersionOnlyChangesAtCompletionAndBlockedCargoIsConserved",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "Wildfolk.Tests.QualityModelTests.OutputCapacityAndInventorySpacePreserveReservedCargo",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "Wildfolk.Tests.QualityModelTests.QueueAndLegacyBatchRestoreWithoutMaterialDuplication",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "Wildfolk.Tests.QualityModelTests.QueueReservesInputProcessesSingleUnitsAndWithdrawsOnlyWaiting",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "Wildfolk.Tests.QualityModelTests.QueueSaveRetainsAlternatingRecipeOrder",
+          "result": "Passed",
+          "failure": null
+        }
+      ]
+    },
+    {
+      "file": "facility-close-play.xml",
+      "platform": "PlayMode",
+      "result": "Passed",
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "duration_seconds": 3.3313331,
+      "tests": [
+        {
+          "name": "Wildfolk.Tests.NetworkFacilityPlayTests.ExistingUiUsesSharedChestAndHandCraftingWithLocalActorBindings",
+          "result": "Passed",
+          "failure": null
+        }
+      ]
+    }
+  ],
+  "source_reference_validation": {
+    "result": "PASS",
+    "unique_asset_guids": 602
+  },
+  "fixture": "One real NGO Local Host and same-process server-owned actors; not two remote clients. Retired actor uses NetworkObject.Despawn, not transport disconnect.",
+  "live": {
+    "compilation_complete": true,
+    "console_errors": 0,
+    "console_warnings": 0,
+    "scene": "MainMenu",
+    "playing": false,
+    "scene_dirty": false,
+    "focused": false,
+    "protocol": 4,
+    "registered_ecology_prefabs": 22,
+    "facility_variants": 5,
+    "close_context_method_compiled": true,
+    "changed_client_files_matched": 60,
+    "user_save_sha256_before_after": "57d560f19e49507fbc7ac00b48e1dda5759732a181d1c0baa441ad4536da7970"
+  },
+  "not_run": [
+    "two-process Relay integration",
+    "remote owner UI/delta delivery",
+    "transport disconnect",
+    "latency/packet-loss",
+    "four-player stress",
+    "Android performance",
+    "live Game View design QA"
+  ],
+  "time_phases_kst": [
+    {
+      "phase": "정본 확인",
+      "start": "13:39:04",
+      "end": "13:42:01",
+      "seconds": 177
+    },
+    {
+      "phase": "구현 및 첫 빌드",
+      "start": "13:42:01",
+      "end": "13:46:10",
+      "seconds": 249
+    },
+    {
+      "phase": "관련 자동검사 및 보완",
+      "start": "13:46:10",
+      "end": "13:52:04",
+      "seconds": 354
+    },
+    {
+      "phase": "마무리 검토와 정본 정리",
+      "start": "13:52:04",
+      "end": "13:53:59",
+      "seconds": 115
+    }
+  ],
+  "git_started_kst": "13:53:59"
+}
