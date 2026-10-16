@@ -21,7 +21,7 @@ namespace Wildfolk
         private void LateUpdate()
         {
             var definition = Equipment.ActivePlaceable;
-            Preview.SetActive(definition != null && Session.IsRunning);
+            if(Preview==null)return;Preview.SetActive(definition != null && Session.IsRunning);
             if (definition == null) return;
             PreviewPosition = (Vector2)transform.position + Facing.Direction * Settings.PlacementDistance;
             PreviewValid = CanPlaceAt(definition, PreviewPosition);
@@ -45,9 +45,10 @@ namespace Wildfolk
             var filter = new ContactFilter2D { useTriggers = true };
             return Physics2D.OverlapBox(position, definition.Footprint, angle, filter, overlaps) == 0;
         }
-        private Quaternion RotationFor(PlaceableDefinition definition) => definition.IsBarrier && Mathf.Abs(Facing.Direction.x)>Mathf.Abs(Facing.Direction.y) ? Quaternion.Euler(0,0,90) : Quaternion.identity;
+        public Quaternion RotationFor(PlaceableDefinition definition) => definition.IsBarrier && Mathf.Abs(Facing.Direction.x)>Mathf.Abs(Facing.Direction.y) ? Quaternion.Euler(0,0,90) : Quaternion.identity;
         public bool TryPlace()
         {
+            var network=GetComponent<NetworkConstruction>();if(network!=null)return network.Place();
             if (!Session.IsRunning) return false;
             var definition = Equipment.ActivePlaceable;
             var position = (Vector2)transform.position + Facing.Direction * Settings.PlacementDistance;

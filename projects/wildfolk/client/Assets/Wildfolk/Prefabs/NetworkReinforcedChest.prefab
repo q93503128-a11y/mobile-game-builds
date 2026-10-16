@@ -61,6 +61,9 @@ PrefabInstance:
       addedObject: {fileID: 4652719885309656874}
     - targetCorrespondingSourceObject: {fileID: 4943541220809517333, guid: 8bbd4e17c8fc52e43abb677bde1f7b9d, type: 3}
       insertIndex: -1
+      addedObject: {fileID: 6594770515762864756}
+    - targetCorrespondingSourceObject: {fileID: 4943541220809517333, guid: 8bbd4e17c8fc52e43abb677bde1f7b9d, type: 3}
+      insertIndex: -1
       addedObject: {fileID: 7616475598615488829}
   m_SourcePrefab: {fileID: 100100000, guid: 8bbd4e17c8fc52e43abb677bde1f7b9d, type: 3}
 --- !u!1 &3635662057710355605 stripped
@@ -80,7 +83,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name:
   m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
-  GlobalObjectIdHash: 3659565996
+  GlobalObjectIdHash: 3572055137
   InScenePlacedSourceGlobalObjectIdHash: 0
   m_InScenePlacedDisabledByDefault: 0
   DeferredDespawnTick: 0
@@ -95,6 +98,19 @@ MonoBehaviour:
   AutoObjectParentSync: 1
   SyncOwnerTransformWhenParented: 1
   AllowOwnerToParent: 0
+--- !u!114 &6594770515762864756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3635662057710355605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d286698207d54a7db32dd8d0116db85a, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.NetworkBuilding
+  ShowTopMostFoldoutHeaderGroup: 1
 --- !u!114 &7616475598615488829
 MonoBehaviour:
   m_ObjectHideFlags: 0

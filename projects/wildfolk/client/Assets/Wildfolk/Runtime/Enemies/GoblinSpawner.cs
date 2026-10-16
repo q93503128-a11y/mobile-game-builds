@@ -20,7 +20,8 @@ namespace Wildfolk
         private float elapsed;
         public IReadOnlyList<GoblinCamp> Camps=>camps;
         public int ActiveCount{get{Prune();return actors.Count;}}
-        private void Start(){if(SimulationAuthority.Allows(this) && camps.Count==0)GenerateCamps();}
+        private bool restored;
+        private void Start(){if(!restored && SimulationAuthority.Allows(this) && camps.Count==0)GenerateCamps();}
         public void Register(GoblinController goblin)
         {
             foreach(var actor in actors.Values)if(actor.Actor==goblin)return;
@@ -89,8 +90,8 @@ namespace Wildfolk
         public void GenerateCamps()
         {
             if(!SimulationAuthority.Allows(this))return;
-            foreach(var actor in actors.Values)if(actor!=null)PrefabPool.Release(actor.gameObject);actors.Clear();
-            foreach(var camp in camps)if(camp!=null){camp.gameObject.SetActive(false);Destroy(camp.gameObject);}camps.Clear();serial=groupSerial=0;
+            restored=true;foreach(var actor in actors.Values)if(actor!=null)PrefabPool.Release(actor.gameObject);actors.Clear();
+            foreach(var camp in camps)if(camp!=null){PrefabPool.Release(camp.gameObject);}camps.Clear();serial=groupSerial=0;
             var random=new System.Random(World.Seed^19273);
             for(var i=0;i<CampDefinition.InitialCamps;i++)for(var attempt=0;attempt<200;attempt++)
             {var size=World.Definition.Size;var p=new Vector2(((float)random.NextDouble()-.5f)*(size.x-16),((float)random.NextDouble()-.5f)*(size.y-16));if(ClearCamp(p,false)){SpawnCamp(p);break;}}
@@ -122,7 +123,7 @@ namespace Wildfolk
         public void Restore(GoblinEcologySnapshot state)
         {
             if(!SimulationAuthority.Allows(this))return;
-            foreach(var actor in actors.Values)if(actor!=null)PrefabPool.Release(actor.gameObject);actors.Clear();foreach(var camp in camps)if(camp!=null){camp.gameObject.SetActive(false);Destroy(camp.gameObject);}camps.Clear();
+            restored=true;foreach(var actor in actors.Values)if(actor!=null)PrefabPool.Release(actor.gameObject);actors.Clear();foreach(var camp in camps)if(camp!=null){PrefabPool.Release(camp.gameObject);}camps.Clear();
             if(state==null){GenerateCamps();return;}serial=state.Serial;groupSerial=state.GroupSerial;
             foreach(var camp in state.Camps)SpawnCamp(camp.Position,camp.Id,camp.RefillAt,false);
             foreach(var actor in state.Actors)SpawnActor(actor.Ranged,actor.Position,actor.GroupId,actor.Home,actor.CampId,actor.Id,actor.HP);

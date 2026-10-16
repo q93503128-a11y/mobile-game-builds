@@ -35,7 +35,7 @@ StationProcessing은 데이터의 Mode를 읽어 Campfire Batch 또는 순수 Pr
 
 Inventory는 한 배열, Chest는 상자별 한 배열이다. Transfer는 두 모델을 변경한 뒤 알린다. 소분은 선택 수량을 들고 있는 UI 상태를 거쳐 명시적인 목적지로 부분 이동하고, Drop은 안전한 위치에 생성이 성공한 뒤 소비한다. Drag Ghost는 표시일 뿐 데이터 정본이 아니다. 상자 소분 선택도 테두리로 표시하고 이벤트는 종료 시 해제한다. UI 상태/Chest 변경 시 선택과 드래그를 취소한다.
 
-세계 진행은 플레이어 입력 Running과 분리한다. Inventory는 세계를 진행하고, Singleplayer Pause/Defeat는 동결하며, Multiplayer 정책은 전역 동결을 하지 않는다. Player 상태와 Creature/전투 권위는 별도 Multiplayer 씬에서 제공한다. 정적 default-seed 지형을 공유하지만 Resource/시설/Save 등 생존 World Interaction의 네트워크화는 아직 없다. 월드 Seed/Delta와 재화는 Save/Load v4(v1~v3 migration)이며 사용자 설정 PlayerPrefs 및 미구현 Account 저장과 구분한다.
+세계 진행은 플레이어 입력 Running과 분리한다. Inventory는 세계를 진행하고, Singleplayer Pause/Defeat는 동결하며, Multiplayer 정책은 전역 동결을 하지 않는다. Player 상태와 Creature/전투 권위는 별도 Multiplayer 씬에서 제공한다. 현재 Foundation5는 Host 권위 Resource/시설/Building/Door/저장·재Host를 연결하고 scene NetworkObject로 terrain seed를 전달한다. 실제2인 통합 QA는 남아 있다. 월드 Seed/Delta와 재화는 Save/Load v5(v1~v4 migration)이며 사용자 설정 PlayerPrefs 및 미구현 Account 저장과 구분한다.
 
 해상도 도구는 기존 Game View만 Repaint하고 Play Unfocused를 적용한다. Focus/GetWindow/Windows 입력 호출은 하지 않는다. 자동 테스트는 별도 hidden headless Unity와 내부 가상 포인터를 사용한다. 로그/검증 복사본은 Git에서 제외한다. 검수 사진의 시설/아이템/시간 fixture는 Play 종료 때 버린다.
 
@@ -51,7 +51,7 @@ Inventory는 한 배열, Chest는 상자별 한 배열이다. Transfer는 두 �
 - PrefabPool/IPoolReset: 반복되는 적/WorldPickup의 생명주기·HP·피격·AI·수량 초기화.
 - Editor DeveloperHarness/Profile/Window/ProjectDataValidator: 제품 Runtime/HUD와 분리한 도구와 데이터 검사.
 
-Save/Load는 영구 저장 v4(v1~v3 호환)이며 Cloud/계정 저장을 구현하지 않는다. 멀티 이동/Player 상태 권위는 별도 NetworkSession에서 제공하며 이 저장 파일을 사용하지 않는다. 미래 Unlock/무기 공격 방식/Vehicle/Animal Breeding은 데이터 확장 방향과 실제 제공 기능을 구분한다.
+Save/Load는 영구 저장 v5(v1~v4 호환)이며 Cloud/계정 저장을 구현하지 않는다. 멀티 권위는 별도 NetworkSession이며 SP/MP가 같은 Repository·snapshot codec을 별도 파일로 사용한다. 미래 Unlock/무기 공격 방식/Vehicle/Animal Breeding은 데이터 확장 방향과 실제 제공 기능을 구분한다.
 
 ## 캐릭터 패스 책임
 
@@ -145,3 +145,15 @@ Lowfire Home은 같은 FrontendSceneBuilder에서 제작한다. JournalAction은
 - NetworkEcologyBuilder/NetworkCreatureWorld: 기존 시설 variants5개 등록/Host 초기 배치. Protocol4/Player 포함23 prefab. Building/문/멀티 persistence는 별도 후속 범위다.
 
 관련 자동검사와 실제2인 Relay 통합 QA 미수행은 MULTIPLAYER_FOUNDATION을 따른다.
+
+
+## Multiplayer Foundation 5
+
+- NetworkConstruction/PlayerPlacement: owner 미리보기·공통 지면/거리/충돌/방향 검사, Host revision/slot/연결 검증과 감소/NGO spawn commit·실패 rollback.
+- NetworkBuilding/WorldDoor/WallVisual: server-write ID/type/HP/creator/door target·start/revision. 문은 timestamp 표현, Wall은 topology 변화 시 근처 연결 갱신. 플레이어 removal API는 기존에 없으므로 추가하지 않았다.
+- WorldSnapshotCodec/PlayerSnapshotCodec: 기존 SP Capture/Apply를 추출한 공통 truth. NGO spawn factory/Release를 사용해 Host restore의 이중 생성·pending actor 누수를 막는다. Resource/Animal/Camp release와 Night restore lifecycle을 공통화했다.
+- SavedGame v5/MultiplayerSaveRules: IsMultiplayer discriminant와 local participant snapshots,기존 player 검증/legacy migrations/checksum·atomic backup 재사용. SP world-v1.json과 Host multiplayer-world-v5.json을 구분한다.
+- NetworkWorldPersistence/NetworkWorldState: Host capture/save/load/참가자 기억, in-scene seed sync. World Ready 전 Player spawn을 대기하고 restored ecology를 Start에서 중복 생성하지 않는다.
+- NetworkSession: 로컬 Guid approval/중복 거절/actor retire와 replay-safe spawn, 유효한 저장 Continue→새 connection, 저장 성공 후 Shutdown·실패 시 세션 유지. UserData/Account identity/Relay allocation을 혼합하지 않는다.
+
+정상 remote UI·scene/delta 수신/실제 rejoin·Relay 통합 QA는 다음 패스다. 이전 Foundation2~4의 제외 단락은 당시 범위이며 현재 정본은 MULTIPLAYER_FOUNDATION을 따른다.

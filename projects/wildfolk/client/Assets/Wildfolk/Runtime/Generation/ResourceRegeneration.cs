@@ -54,7 +54,7 @@ namespace Wildfolk
             if(!SimulationAuthority.Allows(this))return;
             foreach(var state in states)
             {
-                if(live.TryGetValue(state.Id,out var old)){Population.Remove(old.Rule,old.transform.position,Clock.Model.Elapsed,false);old.gameObject.SetActive(false);Destroy(old.gameObject);live.Remove(state.Id);}
+                if(live.TryGetValue(state.Id,out var old)){Population.Remove(old.Rule,old.transform.position,Clock.Model.Elapsed,false);PrefabPool.Release(old.gameObject);live.Remove(state.Id);}
                 changes[state.Id]=state;
                 if(!state.Destroyed){var node=World.CreateResource(state.Id,state.Rule,state.Position,state.Scale);Population.Add(state.Rule,state.Position);node.Health.RestoreHealth(state.HP);}
                 else if(recovery==null)Population.Harvests.Add(new HarvestExclusion{Rule=state.Rule,Position=state.Position,Until=Clock.Model.Elapsed+World.Definition.Resources[state.Rule].HarvestExclusionSeconds});

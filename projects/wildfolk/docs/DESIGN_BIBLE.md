@@ -8,11 +8,11 @@
 
 탑다운 생존 게임이다. Mine Survival의 낮 채집/밤 방어/생존 수치/제작/보관/기지라는 극초반 흐름을 강하게 참고한다. 캐릭터·맵·아트·UI·코드·고유 수치를 복제하지 않는다. 자연색·무광·원형 플레이어 양손/작은 눈·절제된 외곽선/그림자를 유지하고 볼터치/큰 눈/네온/장난감/어린이 마스코트 표현을 피한다. 현재 아트는 초기 시안이다.
 
-1~4인 실제 협동·무한 생존의 완성·직업 특성은 향후 방향이다. 현재 단일 플레이 Save/Load v4(v1~v3 호환)과 자연 재생 기반을 제공한다. 영구 능력치 성장 비중은 낮게 고려한다.
+1~4인 실제 협동·무한 생존의 완성·직업 특성은 향후 방향이다. 현재 단일 플레이 Save/Load v5(v1~v4 호환)과 자연 재생 기반을 제공한다. 영구 능력치 성장 비중은 낮게 고려한다.
 
 ## 실제 월드 생성1차
 
-192×144유닛 유한 월드, 실제 Biome는 Temperate 하나다. Seed가 강/호수/연못/길/숲·돌 밀도/자원 배치를 결정한다. 시작점은 빈 육지이며 근처 Wood/Stone과 수원을 보장한다. 깊은 물 충돌과 강 여울을 제공한다. Tree140/Stone55/Ore16/FallenLog12/SmallPlant36, 장식 최대480, Chicken10/Boar6/Rabbit12/Deer8/Sheep10의 종별 목표와 작은 Goblin Camp1을 구성한다. 지역 부족분 보충과 Seed+Delta Save/Load v4(v1~v3 호환)을 제공한다. 무한 Streaming은 없다. 세부 규칙은 WORLD_GENERATION을 따른다.
+192×144유닛 유한 월드, 실제 Biome는 Temperate 하나다. Seed가 강/호수/연못/길/숲·돌 밀도/자원 배치를 결정한다. 시작점은 빈 육지이며 근처 Wood/Stone과 수원을 보장한다. 깊은 물 충돌과 강 여울을 제공한다. Tree140/Stone55/Ore16/FallenLog12/SmallPlant36, 장식 최대480, Chicken10/Boar6/Rabbit12/Deer8/Sheep10의 종별 목표와 작은 Goblin Camp1을 구성한다. 지역 부족분 보충과 Seed+Delta Save/Load v5(v1~v4 호환)을 제공한다. 무한 Streaming은 없다. 세부 규칙은 WORLD_GENERATION을 따른다.
 
 ## 실제 극초반 진행
 
@@ -60,7 +60,7 @@ Gold는 월드/캐릭터용 일반 재화다. 향후 Merchant/서비스 등이 �
 
 Editor Developer Harness와 Early/Stone/Iron Profile, Combat Sandbox를 제공한다. 제품 HUD/Release UI에는 개발 도구를 넣지 않는다. 실제 기능/수치를 검사하며 재미·손맛을 자동 합격 처리하지 않는다.
 
-Save/Load v4(v1~v3 호환)는 Player와 Seed/게임 시간, 변경 자원·재생 대기·시설·Chest·처리 상태를 저장한다. Version/검증/temporary/atomic replace/backup을 사용한다. Cloud Save/Account/실제 Multiplayer 권위 저장은 없다.
+Save/Load v5(v1~v4 호환)는 Player와 Seed/게임 시간, 변경 자원·재생 대기·시설·Chest·처리 상태를 저장한다. Version/검증/temporary/atomic replace/backup을 사용한다. Host 권위 멀티 저장은 별도 파일로 같은 codec을 공유한다. Cloud Save/Account는 없다.
 
 Tree300/Log480초, Stone600초, Ore720초, Chicken180초/Boar300초의 자연 재생을 제공한다. 카메라/플레이어 밖의 적합한 지역에서 시도하며 Timer는 저장한다. Animal Breeding/먹이/새끼/성장/농축산은 향후 별도 패스다. 작은 관목36개는 HP12/Wood1/90초 재생의 실제 자원이다. Sapling/Young Tree 성장은 아직 없다.
 
@@ -115,4 +115,4 @@ Multiplayer Foundation 1은 2인이 실제 같은 협동 야영지에 접속해 
 Multiplayer Foundation 2는 기존9종 Creature와 Skeleton 검 variant를 Host 권위로 생성·AI·전투·사망 처리하는 기반을 구현했다. Client는 표현만 수행하고, 멀티 Loot는 Host 결과 계산까지만 제공한다. 이번에는 자동검사만 수행했으며 실제2인 Creature 통합 QA는 아직 없다. 이전 Home 단계의 온라인 미제공/Player-only 단락은 당시 기록이다. 현재 실제 범위는 MULTIPLAYER_FOUNDATION을 따른다. Resource/Item/시설/건축/멀티 persistence와 보상 소유권은 미완료다.
 
 
-Multiplayer Foundation 3는 Host 권위 Resource/Harvest/Recovery→공통 Ground Item→개인36/9 Inventory와 Creature Loot를 연결했다. XP/Gold는 처치 지점24유닛 안의 생존·접속 Player 각자에게1회 지급한다. Ground Item은 전량 수용 가능한 첫 획득자에게 들어간다. 변경 기반 Owner-only 가방 상태이며 계정 소유권이 아니다. Foundation 4에서 공유 Chest24/32와 Hand Crafting/Workbench I→II/Furnace/Campfire를 기존 모델·UI로 연결했다. 시작 지점 근처 기존 시설5개는 Host 초기 배치이며 Player Building placement/removal이 아니다. 건축/Wall/Door/멀티 persistence와 실제2인 통합 QA는 아직 없다. 이전 Foundation 2 제외 범위와 구분하며 현재 정본은 MULTIPLAYER_FOUNDATION을 따른다.
+Multiplayer Foundation 3는 Host 권위 Resource/Harvest/Recovery→공통 Ground Item→개인36/9 Inventory와 Creature Loot를 연결했다. XP/Gold는 처치 지점24유닛 안의 생존·접속 Player 각자에게1회 지급한다. Ground Item은 전량 수용 가능한 첫 획득자에게 들어간다. 변경 기반 Owner-only 가방 상태이며 계정 소유권이 아니다. Foundation 4에서 공유 Chest24/32와 Hand Crafting/Workbench I→II/Furnace/Campfire를 기존 모델·UI로 연결했다. 시작 지점 근처 기존 시설5개는 Host 초기 배치이며 Player Building placement/removal이 아니다. Foundation5에서 기존 Building/Wall/Door와 Host v5 저장·재Host·로컬 식별자별 Player 복원 기반을 연결했다. 플레이어 철거 UX/계정/Cloud/Host Migration은 추가하지 않았다. 다음은 실제2인 Multiplayer Integration QA이며 이번에는 수행하지 않았다. 이전 Foundation 2 제외 범위와 구분하며 현재 정본은 MULTIPLAYER_FOUNDATION을 따른다.

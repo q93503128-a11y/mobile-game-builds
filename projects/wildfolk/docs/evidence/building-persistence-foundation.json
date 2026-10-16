@@ -1,0 +1,289 @@
+{
+  "foundation": 5,
+  "date": "2026-10-16",
+  "baseline": "361fd7f735561fee9b77b8af331e66b25d428380",
+  "protocol": 5,
+  "save_version": 5,
+  "unique_final_tests": 21,
+  "unique_editmode": 12,
+  "unique_playmode": 9,
+  "runs": [
+    {
+      "file": "building-play.xml",
+      "platform": "PlayMode",
+      "total": 8,
+      "passed": 4,
+      "failed": 4,
+      "duration_seconds": 22.8483435,
+      "tests": [
+        {
+          "name": "Wildfolk.Tests.EcologyPlayTests.V3LoadPreservesOldAnimalsEquipmentDoorAndWorld",
+          "result": "Failed",
+          "failure": "System.IO.InvalidDataException : Invalid cooperative world metadata."
+        },
+        {
+          "name": "Wildfolk.Tests.NetworkPersistencePlayTests.HostSaveRehostRestoresWorldCargoGroundEcologyAndPlayerWithoutDuplicates",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "Wildfolk.Tests.NetworkPersistencePlayTests.PlacementRaceRollbackAndEveryCurrentBuildingUseExistingDefinitions",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "Wildfolk.Tests.NetworkPersistencePlayTests.RetireAndRejoinSameIdentityRestoreOnceAndRejectConcurrentIdentity",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "Wildfolk.Tests.NetworkPersistencePlayTests.SaveFailureKeepsHostSessionAndCorruptLoadCannotCreateReplacementWorld",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "Wildfolk.Tests.NetworkPersistencePlayTests.WallAdjacencyAndDoorDesiredStateRejectCompetingToggle",
+          "result": "Failed",
+          "failure": "  Expected: 1\n  But was:  0.999296904f\n"
+        },
+        {
+          "name": "Wildfolk.Tests.QualityPlayTests.V2MigrationKeepsEquipmentLearnedSkillsDestroyedResourcesAndReservedBatch",
+          "result": "Failed",
+          "failure": "System.IO.InvalidDataException : Invalid cooperative world metadata."
+        },
+        {
+          "name": "Wildfolk.Tests.StabilityPlayTests.SaveReloadRestoresPlayerContainersFacilitiesCargoAndResourceDeltas",
+          "result": "Failed",
+          "failure": "  Invalid cooperative world metadata.\n  Expected: True\n  But was:  False\n"
+        }
+      ]
+    },
+    {
+      "file": "building-save-play.xml",
+      "platform": "PlayMode",
+      "total": 6,
+      "passed": 6,
+      "failed": 0,
+      "duration_seconds": 23.4617631,
+      "tests": [
+        {
+          "name": "Wildfolk.Tests.CharacterPassPlayTests.V1MigrationPreservesWorldInventoryAndOldXPWithoutForcingNewGame",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "Wildfolk.Tests.EcologyPlayTests.V3LoadPreservesOldAnimalsEquipmentDoorAndWorld",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "Wildfolk.Tests.NetworkPersistencePlayTests.HostSaveRehostRestoresWorldCargoGroundEcologyAndPlayerWithoutDuplicates",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "Wildfolk.Tests.NetworkPersistencePlayTests.WallAdjacencyAndDoorDesiredStateRejectCompetingToggle",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "Wildfolk.Tests.QualityPlayTests.V2MigrationKeepsEquipmentLearnedSkillsDestroyedResourcesAndReservedBatch",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "Wildfolk.Tests.StabilityPlayTests.SaveReloadRestoresPlayerContainersFacilitiesCargoAndResourceDeltas",
+          "result": "Passed",
+          "failure": null
+        }
+      ]
+    },
+    {
+      "file": "building-world-play.xml",
+      "platform": "PlayMode",
+      "total": 1,
+      "passed": 0,
+      "failed": 1,
+      "duration_seconds": 4.4550028,
+      "tests": [
+        {
+          "name": "Wildfolk.Tests.NetworkPersistencePlayTests.HostSaveRehostRestoresWorldCargoGroundEcologyAndPlayerWithoutDuplicates",
+          "result": "Failed",
+          "failure": "  Expected: not null\n  But was:  null\n"
+        }
+      ]
+    },
+    {
+      "file": "building-world-retry.xml",
+      "platform": "PlayMode",
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "duration_seconds": 6.3575898,
+      "tests": [
+        {
+          "name": "Wildfolk.Tests.NetworkPersistencePlayTests.HostSaveRehostRestoresWorldCargoGroundEcologyAndPlayerWithoutDuplicates",
+          "result": "Passed",
+          "failure": null
+        }
+      ]
+    },
+    {
+      "file": "building-edit.xml",
+      "platform": "EditMode",
+      "total": 12,
+      "passed": 11,
+      "failed": 1,
+      "duration_seconds": 0.6634589,
+      "tests": [
+        {
+          "name": "Wildfolk.Tests.NetworkFacilityModelTests.CraftFailureKeepsAllIngredientsAndSameIngredientsOnlyCraftOnce",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "Wildfolk.Tests.NetworkFacilityModelTests.FacilityPrefabsAndInteractionComponentsAreRegisteredBeforeSessionStarts",
+          "result": "Failed",
+          "failure": "  Expected: 6\n  But was:  9\n"
+        },
+        {
+          "name": "Wildfolk.Tests.NetworkFacilityModelTests.QueueVersionOnlyChangesAtCompletionAndBlockedCargoIsConserved",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "Wildfolk.Tests.NetworkFoundationTests.CommandsRejectNonFiniteAndClampUntrustedMagnitude",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "Wildfolk.Tests.NetworkFoundationTests.InternetCodeAndLocalAddressAreDifferentRoutes",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "Wildfolk.Tests.NetworkFoundationTests.PlayerStateIsServerWritableAndRpcInputsAreOwnerOnly",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "Wildfolk.Tests.NetworkPersistenceModelTests.EveryExistingPlaceableUsesOneSourceDefinitionAndServerBuildingState",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "Wildfolk.Tests.NetworkPersistenceModelTests.ParticipantMetadataRejectsDuplicatesInvalidIdentityAndMismatchedHost",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "Wildfolk.Tests.NetworkPersistenceModelTests.SeparateRepositoriesAndDeadParticipantPolicyPreserveSingleplayerRules",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "Wildfolk.Tests.NetworkPersistenceModelTests.V4MigratesToV5WithoutChangingSingleplayerPayloadAndV5RoundTrips",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "Wildfolk.Tests.StabilityModelTests.AtomicSaveBackupRecoversCorruptionAndIgnoresInterruptedTemporaryFile",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "Wildfolk.Tests.StabilityModelTests.ChecksumAndFutureVersionAreRejected",
+          "result": "Passed",
+          "failure": null
+        }
+      ]
+    },
+    {
+      "file": "building-ui-play.xml",
+      "platform": "PlayMode",
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "duration_seconds": 3.5629721,
+      "tests": [
+        {
+          "name": "Wildfolk.Tests.NetworkPersistencePlayTests.PlacementRaceRollbackAndEveryCurrentBuildingUseExistingDefinitions",
+          "result": "Passed",
+          "failure": null
+        }
+      ]
+    },
+    {
+      "file": "building-contract-edit.xml",
+      "platform": "EditMode",
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "duration_seconds": 0.2761959,
+      "tests": [
+        {
+          "name": "Wildfolk.Tests.NetworkFacilityModelTests.FacilityPrefabsAndInteractionComponentsAreRegisteredBeforeSessionStarts",
+          "result": "Passed",
+          "failure": null
+        }
+      ]
+    }
+  ],
+  "source_reference_validation": {
+    "result": "PASS",
+    "unique_asset_guids": 615
+  },
+  "fixture": "One real NGO Local Host. Competing actors and retire/rejoin enrollment use the same-process server fixture; no remote client or actual transport disconnect.",
+  "not_run": [
+    "two-process Relay",
+    "remote UI/scene delta delivery",
+    "actual transport reconnect",
+    "latency/loss",
+    "four-player stress",
+    "mobile network/performance",
+    "live Game View QA"
+  ],
+  "live": {
+    "compiled": true,
+    "console_errors": 0,
+    "console_warnings": 0,
+    "protocol": 5,
+    "ecology_prefabs": 26,
+    "building_variants": 9,
+    "world_state_and_rules_bound": true,
+    "save_version": 5,
+    "scene": "MainMenu",
+    "scene_dirty": false,
+    "playing": false,
+    "focused": false,
+    "matched_changed_client_files": 87,
+    "user_sp_save_sha256_before_after": "57d560f19e49507fbc7ac00b48e1dda5759732a181d1c0baa441ad4536da7970"
+  },
+  "time_phases_kst": [
+    {
+      "phase": "정본·구조 확인",
+      "start": "14:01:45",
+      "end": "14:03:44",
+      "seconds": 119
+    },
+    {
+      "phase": "구현·첫 빌드·검사 작성",
+      "start": "14:03:44",
+      "end": "14:12:36",
+      "seconds": 532
+    },
+    {
+      "phase": "관련 자동검사·보완",
+      "start": "14:12:36",
+      "end": "14:20:55",
+      "seconds": 499
+    },
+    {
+      "phase": "최종 계약검사 대기·검토·문서 정리",
+      "start": "14:20:55",
+      "end": "14:24:19",
+      "seconds": 204
+    }
+  ],
+  "git_started_kst": "14:24:19"
+}

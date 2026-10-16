@@ -7,6 +7,7 @@ namespace Wildfolk
         public event Action Changed;
         public Func<float> ReplicaRemaining {get;set;}
         private void Notify(){Changed?.Invoke();Station.NotifyChanged();}
+        internal void InitializeSnapshot(ProcessingSnapshot state,ContentCatalog catalog,PlayerInventory player)=>RestoreCore(state,catalog,player);
         internal void ApplyReplica(ProcessingSnapshot state,ContentCatalog catalog)=>RestoreCore(state,catalog,null);
         public CraftingStation Station;
         public WorldPickup RecoveryPickup;
@@ -71,8 +72,8 @@ namespace Wildfolk
         }
         private void ReleaseCargo()
         {
-            if(Sequential){if(owner!=null)foreach(var amount in queue.Release())Drop(amount.Item,amount.Count);return;}
-            if(Recipe==null || owner==null) return;
+            if(Sequential){foreach(var amount in queue.Release())Drop(amount.Item,amount.Count);return;}
+            if(Recipe==null) return;
             if(IsReady) Drop(Recipe.Result,OutputCount);
             else foreach(var ingredient in Recipe.Ingredients) Drop(ingredient.Item,ingredient.Count*BatchCount);
             Recipe=null;owner=null;

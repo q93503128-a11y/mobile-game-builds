@@ -17,6 +17,7 @@ namespace Wildfolk
 #endif
             return new SaveRepository(System.IO.Path.Combine(directory,"world-v1.json"));
         }
+        public static SaveRepository MultiplayerDefault()=>new SaveRepository(System.IO.Path.Combine(System.IO.Path.GetDirectoryName(Default().Path),"multiplayer-world-v5.json"));
         public string Path {get;}
         public bool Exists=>File.Exists(Path) || File.Exists(Path+".backup");
         public bool UsedBackup {get;private set;}
@@ -28,7 +29,7 @@ namespace Wildfolk
             var envelope=JsonUtility.FromJson<Envelope>(data);
             if(envelope==null || string.IsNullOrEmpty(envelope.Payload) || envelope.Checksum!=Hash(envelope.Payload))throw new InvalidDataException("Save checksum mismatch");
             var game=JsonUtility.FromJson<SavedGame>(envelope.Payload);
-            if(game==null || game.Version<1 || game.Version>4)throw new InvalidDataException("Unsupported save version");return game;
+            if(game==null || game.Version<1 || game.Version>5)throw new InvalidDataException("Unsupported save version");return game;
         }
         public void Write(SavedGame game,Action<SavedGame> validate)
         {

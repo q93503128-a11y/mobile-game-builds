@@ -24,6 +24,6 @@ namespace Wildfolk
         public void Leave(){if(NetworkSession.Instance!=null){NetworkSession.Instance.Leave();}else SceneFlow.Home(SceneFlow.Repository);}
         private void RefreshText(){RefreshHealth();RefreshCamp();}
         private void RefreshHealth(){HealthLabel.text=LocalPlayer==null ? string.Empty : L.Format("net.health",LocalPlayer.Health.Current,LocalPlayer.Health.Maximum);}
-        private void RefreshCamp()=>CampLabel.text=L.Text("net.camp");
+        private void RefreshCamp()=>CampLabel.text=L.Text(NetworkSession.Instance!=null && NetworkSession.Instance.MessageKey=="net.save_failed" ? "net.save_failed" : "net.camp");
     }
 }

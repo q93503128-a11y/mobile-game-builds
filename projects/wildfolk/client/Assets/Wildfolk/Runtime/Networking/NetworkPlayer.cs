@@ -7,6 +7,7 @@ namespace Wildfolk
     {
         private static readonly System.Collections.Generic.List<NetworkPlayer> players=new System.Collections.Generic.List<NetworkPlayer>();
         public static System.Collections.Generic.IReadOnlyList<NetworkPlayer> Active=>players;
+        public string ProfileId {get;internal set;}
         public ContentCatalog Catalog;
         public GameObject LocalMarker;
         public readonly NetworkVariable<PlayerMotionState> Motion=new NetworkVariable<PlayerMotionState>();
@@ -45,6 +46,7 @@ namespace Wildfolk
         }
         public override void OnNetworkDespawn()
         {
+            if(IsServer)NetworkWorldPersistence.Active?.Remember(this);
             players.Remove(this);
             if(NetworkManager!=null && NetworkManager.NetworkTickSystem!=null)NetworkManager.NetworkTickSystem.Tick-=Tick;
             Motion.OnValueChanged-=OnMotion;Status.OnValueChanged-=OnStatus;Health.Changed-=PublishStatus;Equipment.Changed-=PublishStatus;
@@ -58,7 +60,8 @@ namespace Wildfolk
             DashRpc(pendingMove);return true;
         }
         public bool Attack()
-        {if(!IsSpawned || !IsOwner || !Health.IsAlive)return false;if(IsServer)return combat.TryAttack();AttackRpc();return true;}
+        {if(!IsSpawned || !IsOwner || !Health.IsAlive)return false;if(Equipment.ActivePlaceable!=null)return GetComponent<NetworkConstruction>().Place();
+            if(IsServer)return combat.TryAttack();AttackRpc();return true;}
         [Rpc(SendTo.Server,InvokePermission=RpcInvokePermission.Owner)]
         private void AttackRpc(RpcParams rpc=default)
         {if(rpc.Receive.SenderClientId==OwnerClientId && Health.IsAlive)combat.TryAttack();}

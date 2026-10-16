@@ -109,6 +109,9 @@ GameObject:
   - component: {fileID: 3120962446745633437}
   - component: {fileID: 5557287145095367544}
   - component: {fileID: 2471586575450122075}
+  - component: {fileID: 3674155606820756992}
+  - component: {fileID: 7611654771057414980}
+  - component: {fileID: 5090963937599931888}
   - component: {fileID: 244430250233079259}
   m_Layer: 0
   m_Name: NetworkEcology
@@ -305,6 +308,59 @@ MonoBehaviour:
   Session: {fileID: 1441559718046138410}
   Player: {fileID: 3600377113405371908}
   Camera: {fileID: 0}
+--- !u!114 &3674155606820756992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7031309093746953857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
+  GlobalObjectIdHash: 1914007618
+  InScenePlacedSourceGlobalObjectIdHash: 0
+  m_InScenePlacedDisabledByDefault: 1
+  DeferredDespawnTick: 0
+  Ownership: 1
+  AlwaysReplicateAsRoot: 0
+  SynchronizeTransform: 1
+  m_InScenePlaced: 1
+  ActiveSceneSynchronization: 0
+  SceneMigrationSynchronization: 0
+  SpawnWithObservers: 1
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
+  SyncOwnerTransformWhenParented: 1
+  AllowOwnerToParent: 0
+--- !u!114 &7611654771057414980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7031309093746953857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 804624224714450788130a542c5a8297, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.NetworkWorldState
+  ShowTopMostFoldoutHeaderGroup: 1
+--- !u!114 &5090963937599931888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7031309093746953857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76fa266d0e0e4fbeab71dce4e51bc05d, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.NetworkWorldPersistence
+  Rules: {fileID: 11400000, guid: 7fe97172f66348144b4e03e96d8536ce, type: 2}
 --- !u!114 &244430250233079259
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -358,10 +414,18 @@ MonoBehaviour:
     NetworkPrefab: {fileID: 3635662057710355605, guid: 6745ead6b1a4e5f4ab1d328b85aa1c85, type: 3}
   - Source: {fileID: 9052956572469100118, guid: def524a147fbf934d88f769c2b38c926, type: 3}
     NetworkPrefab: {fileID: 3210709111567399711, guid: 1465d7a32af1b7540a082147c6739fe2, type: 3}
+  - Source: {fileID: 8658041461814157941, guid: c73fc72548859ca4b8f6f6cc775d6998, type: 3}
+    NetworkPrefab: {fileID: 6223415086427301421, guid: ccdcb9d8f2ea4ac409f57bdeb53a9563, type: 3}
   - Source: {fileID: 711006582165635482, guid: b1149232e9da2b7429020978e95eafba, type: 3}
     NetworkPrefab: {fileID: 3702366322292255548, guid: 7c70679d039084e4a9ea1b5be0cf575f, type: 3}
   - Source: {fileID: 5582389578481865724, guid: 0da867b3532837c49b651728c63d7d75, type: 3}
     NetworkPrefab: {fileID: 917081135644906088, guid: 4fc5d44e05efe8d44a1eb156d32615a7, type: 3}
+  - Source: {fileID: 6298580903892170830, guid: 4294881afadcc0640b88945186d6b4d7, type: 3}
+    NetworkPrefab: {fileID: 3603592217801724272, guid: d455c66afdcc94a40a408fe4a5fa74c1, type: 3}
+  - Source: {fileID: 6936464655545487945, guid: 9b84b2cbb7d49f443b2714a87dc9cd77, type: 3}
+    NetworkPrefab: {fileID: 3497480619563387129, guid: 5ded8c735be294f459b2f14ef7eaabe5, type: 3}
+  - Source: {fileID: 800676665494792286, guid: 98b46c759ea4bd84fa7d6fdae4516266, type: 3}
+    NetworkPrefab: {fileID: 2596239111216149071, guid: 6d2c8b049325c0e4585cb1eacc6c7535, type: 3}
   Catalog: {fileID: 11400000, guid: edf4df5213dc0bf4e96917b39fb19914, type: 2}
   World: {fileID: 4496810478940515493}
   Clock: {fileID: 2554870917964472763}

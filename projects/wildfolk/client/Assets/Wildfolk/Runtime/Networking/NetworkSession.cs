@@ -22,6 +22,13 @@ namespace Wildfolk
         public string RoomCode {get;private set;}=string.Empty;
         public string MessageKey {get;private set;}
         public string LastFailure {get;private set;}
+        public SaveRepository WorldRepository {get;set;}
+        public SavedGame PreparedWorld {get;private set;}
+        public string ProfileOverride {get;set;}
+        public string LocalProfile {get;private set;}
+        private readonly Dictionary<ulong,string> identities=new Dictionary<ulong,string>();
+        private readonly HashSet<ulong> spawning=new HashSet<ulong>();
+        private SaveGameRules SaveRules=>Resources.Load<SaveGameRules>("SaveGameRules");
         public event Action Changed;
         private int operation;
         private bool quitting;
@@ -29,7 +36,7 @@ namespace Wildfolk
         private void Awake()
         {
             if(Instance!=null && Instance!=this){Destroy(gameObject);return;}
-            Instance=this;DontDestroyOnLoad(gameObject);
+            Instance=this;DontDestroyOnLoad(gameObject);WorldRepository=SaveRepository.MultiplayerDefault();Application.wantsToQuit+=CanQuit;
             Manager.AddNetworkPrefab(PlayerPrefab);
             foreach(var entry in EcologyPrefab.GetComponent<NetworkCreatureWorld>().Prefabs)Manager.AddNetworkPrefab(entry.NetworkPrefab);
             Manager.OnClientConnectedCallback+=Connected;Manager.OnClientDisconnectCallback+=Disconnected;
@@ -38,17 +45,32 @@ namespace Wildfolk
         private void OnDestroy()
         {
             if(Instance!=this)return;
-            Manager.OnClientConnectedCallback-=Connected;Manager.OnClientDisconnectCallback-=Disconnected;Manager.OnTransportFailure-=TransportFailed;Instance=null;
+            Application.wantsToQuit-=CanQuit;Manager.OnClientConnectedCallback-=Connected;Manager.OnClientDisconnectCallback-=Disconnected;Manager.OnTransportFailure-=TransportFailed;Instance=null;
         }
+        private bool CanQuit(){return !Manager.IsHost || NetworkWorldPersistence.Active==null || !NetworkWorldPersistence.Active.Ready || TrySaveWorld();}
         private void OnApplicationQuit(){quitting=true;operation++;}
+        public bool TrySaveWorld()
+        {
+            if(!Manager.IsHost || NetworkWorldPersistence.Active==null || !NetworkWorldPersistence.Active.Ready)return true;
+            if(NetworkWorldPersistence.Active.Save())return true;
+            MessageKey="net.save_failed";Notify();return false;
+        }
+        private void ConfigureIdentity()
+        {LocalProfile=ProfileOverride??LocalPlayerIdentity.Get();if(!LocalPlayerIdentity.Valid(LocalProfile))throw new InvalidOperationException("Invalid local participant.");Manager.NetworkConfig.ConnectionData=System.Text.Encoding.UTF8.GetBytes(LocalProfile);}
         private IRoomConnection Connection(ConnectionRoute route)=>route==ConnectionRoute.Internet ? (IRoomConnection)new RelayRoomConnection() : new LocalRoomConnection();
         private void Notify()=>Changed?.Invoke();
-        public async Task<bool> Host(ConnectionRoute route)
+        public async Task<bool> Host(ConnectionRoute route,bool continueWorld=true)
         {
             if(State!=NetworkSessionState.Idle)return false;
             var ticket=++operation;Route=route;State=NetworkSessionState.Connecting;MessageKey="net.connecting";LastFailure=null;Notify();
             try
             {
+                ConfigureIdentity();PreparedWorld=null;identities.Clear();spawning.Clear();
+                if(continueWorld && WorldRepository.Exists)
+                {
+                    try{PreparedWorld=WorldRepository.Read(SaveRules.Validate);if(!PreparedWorld.IsMultiplayer || PreparedWorld.Multiplayer==null || PreparedWorld.Multiplayer.HostId!=LocalProfile)throw new InvalidOperationException("World belongs to a different local Host.");}
+                    catch(Exception error){ConnectionFailed(error,"net.load_failed");return false;}
+                }
                 var code=await Connection(route).Host(Transport,MaximumPlayers);
                 if(ticket!=operation || quitting)return false;
                 if(!Manager.StartHost())throw new InvalidOperationException("Host transport did not start.");
@@ -65,7 +87,7 @@ namespace Wildfolk
             var ticket=++operation;Route=route;State=NetworkSessionState.Connecting;MessageKey="net.connecting";LastFailure=null;Notify();
             try
             {
-                await Connection(route).Join(Transport,destination);
+                ConfigureIdentity();await Connection(route).Join(Transport,destination);
                 if(ticket!=operation || quitting)return false;
                 if(!Manager.StartClient())throw new InvalidOperationException("Client transport did not start.");
                 RoomCode=route==ConnectionRoute.Internet ? destination : string.Empty;StartCoroutine(JoinTimeout(ticket));return true;
@@ -78,9 +100,18 @@ namespace Wildfolk
         {LastFailure=error.GetType().Name+": "+error.Message;State=NetworkSessionState.Idle;MessageKey=key;RoomCode=string.Empty;Notify();}
         private void Approve(NetworkManager.ConnectionApprovalRequest request,NetworkManager.ConnectionApprovalResponse response)
         {
-            response.Approved=Manager.ConnectedClientsIds.Count<MaximumPlayers;response.CreatePlayerObject=false;
-            response.Pending=false;if(!response.Approved)response.Reason="net.room_full";
+            var id=System.Text.Encoding.UTF8.GetString(request.Payload??Array.Empty<byte>());
+            response.Approved=CanApprove(id,request.ClientNetworkId);response.CreatePlayerObject=false;
+            response.Pending=false;if(response.Approved)identities[request.ClientNetworkId]=id;else response.Reason=Manager.ConnectedClientsIds.Count>=MaximumPlayers ? "net.room_full" : LocalPlayerIdentity.Valid(id) ? "net.duplicate_player" : "net.connection_failed";
         }
+        public bool CanApprove(string profile,ulong clientId)
+        {
+            if(!LocalPlayerIdentity.Valid(profile) || Manager.ConnectedClientsIds.Count>=MaximumPlayers)return false;
+            foreach(var pair in identities)if(pair.Key!=clientId && pair.Value==profile)return false;
+            return true;
+        }
+        public bool TryRegisterParticipant(string profile,ulong clientId)
+        {if(!Manager.IsServer || !CanApprove(profile,clientId))return false;identities[clientId]=profile;return true;}
         private void Connected(ulong id)
         {
             if(!Manager.IsServer && id==Manager.LocalClientId){State=SceneManager.GetActiveScene().name==SceneFlow.MultiplayerScene ? NetworkSessionState.Playing : NetworkSessionState.Waiting;MessageKey="net.waiting_host";}
@@ -89,11 +120,11 @@ namespace Wildfolk
         private void Disconnected(ulong id)
         {
             if(quitting || State==NetworkSessionState.Closing || State==NetworkSessionState.Idle)return;
-            if(Manager.IsHost && id!=Manager.LocalClientId){Notify();return;}
-            MessageKey=State==NetworkSessionState.Connecting ? (Manager.DisconnectReason=="net.room_full" ? "net.room_full" : "net.connection_failed") : "net.host_left";
+            if(Manager.IsHost && id!=Manager.LocalClientId){RetireParticipant(id);Notify();return;}
+            MessageKey=State==NetworkSessionState.Connecting ? (Manager.DisconnectReason=="net.room_full" ? "net.room_full" : Manager.DisconnectReason=="net.duplicate_player" ? "net.duplicate_player" : "net.connection_failed") : "net.host_left";
             Leave(true);
         }
-        private void TransportFailed(){if(State==NetworkSessionState.Closing)return;MessageKey="net.connection_failed";Leave(true);}
+        private void TransportFailed(){if(State==NetworkSessionState.Closing)return;MessageKey="net.connection_failed";Leave(true,true);}
         private void AttachScenes()
         {Manager.SceneManager.OnLoadEventCompleted+=Loaded;Manager.SceneManager.OnSynchronizeComplete+=Synchronized;}
         public bool EnterGame()
@@ -104,25 +135,37 @@ namespace Wildfolk
             State=NetworkSessionState.Loading;MessageKey="net.entering";Notify();return true;
         }
         private void Loaded(string scene,LoadSceneMode mode,List<ulong> completed,List<ulong> timedOut)
-        {if(scene!=SceneFlow.MultiplayerScene || !Manager.IsServer)return;foreach(var id in completed)Spawn(id);}
-        private void Synchronized(ulong id){if(Manager.IsServer && SceneManager.GetActiveScene().name==SceneFlow.MultiplayerScene)Spawn(id);}
-        private void Spawn(ulong id)
+        {if(scene!=SceneFlow.MultiplayerScene || !Manager.IsServer)return;foreach(var id in completed)SpawnParticipant(id);}
+        private void Synchronized(ulong id){if(Manager.IsServer && SceneManager.GetActiveScene().name==SceneFlow.MultiplayerScene)SpawnParticipant(id);}
+        public void SpawnParticipant(ulong id)
         {
             var ecology=NetworkCreatureWorld.Active;
-            if(ecology!=null && ecology.World.Map==null){StartCoroutine(SpawnWhenReady(id));return;}
+            if(ecology==null || !ecology.Ready){if(spawning.Add(id))StartCoroutine(SpawnWhenReady(id));return;}
             if(!Manager.ConnectedClients.TryGetValue(id,out var client)||client.PlayerObject!=null)return;
             var order=0;foreach(var peer in Manager.ConnectedClientsIds){if(peer==id)break;order++;}var position=new Vector3((order%2)*3-1.5f,(order/2)*-3,0);
             var world=NetworkCreatureWorld.Active;if(world!=null)position+=(Vector3)world.World.Map.Spawn;
-            var actor=Instantiate(PlayerPrefab,position,Quaternion.identity);actor.GetComponent<NetworkObject>().SpawnAsPlayerObject(id,true);
+            if(!identities.TryGetValue(id,out var profile))return;
+            var actor=Instantiate(PlayerPrefab,position,Quaternion.identity);var player=actor.GetComponent<NetworkPlayer>();player.ProfileId=profile;NetworkWorldPersistence.Active.RestorePlayer(player);actor.GetComponent<NetworkObject>().SpawnAsPlayerObject(id,true);
         }
         private IEnumerator SpawnWhenReady(ulong id)
         {
-            while(Manager.IsListening && NetworkCreatureWorld.Active!=null && NetworkCreatureWorld.Active.World.Map==null)yield return null;
-            if(Manager.IsServer && Manager.IsListening && NetworkCreatureWorld.Active!=null)Spawn(id);
+            while(Manager.IsListening && (NetworkCreatureWorld.Active==null || !NetworkCreatureWorld.Active.Ready))yield return null;
+            spawning.Remove(id);
+            if(Manager.IsServer && Manager.IsListening && NetworkCreatureWorld.Active!=null)SpawnParticipant(id);
         }
         public void ArenaReady(){State=NetworkSessionState.Playing;MessageKey=null;SceneFlow.MultiplayerReady();Notify();}
-        public void Leave(bool returnHome=true)
-        {if(State==NetworkSessionState.Closing)return;operation++;State=NetworkSessionState.Closing;Notify();StartCoroutine(Close(returnHome));}
+        public void RetireParticipant(ulong id)
+        {
+            if(Manager.IsServer && Manager.ConnectedClients.TryGetValue(id,out var client) && client.PlayerObject!=null)
+            {var player=client.PlayerObject.GetComponent<NetworkPlayer>();NetworkWorldPersistence.Active?.Remember(player);if(client.PlayerObject.IsSpawned)client.PlayerObject.Despawn();client.PlayerObject=null;}
+            identities.Remove(id);spawning.Remove(id);
+        }
+        public void Leave(bool returnHome=true,bool force=false)
+        {
+            if(State==NetworkSessionState.Closing || State==NetworkSessionState.Idle)return;
+            if(Manager.IsHost && !TrySaveWorld() && !force)return;
+            operation++;State=NetworkSessionState.Closing;Notify();StartCoroutine(Close(returnHome));
+        }
         private IEnumerator Close(bool returnHome)
         {
             // Leave NGO callbacks before stopping or loading another scene.
@@ -130,7 +173,7 @@ namespace Wildfolk
             if(Manager.SceneManager!=null){Manager.SceneManager.OnLoadEventCompleted-=Loaded;Manager.SceneManager.OnSynchronizeComplete-=Synchronized;}
             if(Manager.IsListening)Manager.Shutdown();
             while(Manager.ShutdownInProgress)yield return null;
-            RoomCode=string.Empty;State=NetworkSessionState.Idle;Notify();
+            RoomCode=string.Empty;identities.Clear();spawning.Clear();PreparedWorld=null;State=NetworkSessionState.Idle;Notify();
             if(returnHome && SceneManager.GetActiveScene().name==SceneFlow.MultiplayerScene)
             {SceneFlow.Home(SceneFlow.Repository);yield return null;if(MessageKey=="net.host_left" || MessageKey=="net.connection_failed")FindFirstObjectByType<HomeScreen>()?.OpenMultiplayer();}
         }

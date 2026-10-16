@@ -24,7 +24,7 @@ namespace Wildfolk
             {
                 var candidate=candidates[i].GetComponentInParent<IPlayerInteractable>();
                 if(candidate==null || !candidate.CanInteract(this))continue;
-                if(GetComponent<NetworkPlayer>()!=null && candidate.Location.GetComponent<NetworkFacility>()==null)continue;
+                if(GetComponent<NetworkPlayer>()!=null && candidate.Location.GetComponent<NetworkBuilding>()==null)continue;
                 var delta=(Vector2)candidate.Location.position-(Vector2)transform.position;
                 if(delta.sqrMagnitude>.001f && Vector2.Dot(Facing.Direction,delta.normalized)<.35f)continue;
                 if(delta.sqrMagnitude>=nearest)continue;nearest=delta.sqrMagnitude;target=candidate;

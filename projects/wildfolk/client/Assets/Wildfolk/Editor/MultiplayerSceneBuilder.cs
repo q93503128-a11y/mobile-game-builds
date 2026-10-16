@@ -61,7 +61,8 @@ namespace Wildfolk.Editor
             var ecology=NetworkEcologyBuilder.BuildPrefab();
             var source=AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Wildfolk/Prefabs/Player.prefab");
             var actor=(GameObject)PrefabUtility.InstantiatePrefab(source);actor.name="NetworkPlayer";
-            foreach(var component in new Component[]{actor.GetComponent<PlayerPrimaryAction>(),actor.GetComponent<PlayerPlacement>()})Object.DestroyImmediate(component);
+            Object.DestroyImmediate(actor.GetComponent<PlayerPrimaryAction>());
+            var placement=actor.GetComponent<PlayerPlacement>();GameplayActorBuilder.PlacementPreview(placement,actor.transform,null);placement.Preview.transform.SetParent(actor.transform,false);placement.Preview.SetActive(false);placement.enabled=false;
             var session=actor.AddComponent<GameplaySession>();session.Mode=SessionMode.Multiplayer;session.PlayerHealth=actor.GetComponent<Health>();
             var commands=actor.GetComponent<PlayerInputCommands>();commands.Session=session;commands.Primary=null;commands.Interaction=actor.GetComponent<PlayerInteraction>();commands.AllowInventory=true;commands.AllowPause=false;
             var motor=actor.GetComponent<PlayerMotor>();motor.Session=session;actor.GetComponent<PlayerCombat>().Session=session;actor.GetComponent<PlayerSurvival>().Session=session;actor.GetComponent<PlayerSurvival>().enabled=false;
@@ -70,10 +71,10 @@ namespace Wildfolk.Editor
             var crafting=actor.GetComponent<PlayerCrafting>();crafting.Session=session;var storage=actor.GetComponent<PlayerStorage>();storage.Session=session;var interaction=actor.GetComponent<PlayerInteraction>();interaction.Session=session;interaction.enabled=false;
             var drop=actor.GetComponent<PlayerItemDrop>();drop.Session=session;
             actor.AddComponent<NetworkRigidbody2D>();var player=actor.AddComponent<NetworkPlayer>();player.Catalog=AssetDatabase.LoadAssetAtPath<ContentCatalog>("Assets/Wildfolk/Data/ContentCatalog.asset");
-            var marker=WorldArt.Sprite("Local Survivor","joystick_base",actor.transform,Vector2.zero,1.15f,WorldSorting.GroundDecoration);marker.color=new Color32(186,170,115,130);player.LocalMarker=marker.gameObject;marker.gameObject.SetActive(false);actor.AddComponent<NetworkInventory>();actor.AddComponent<NetworkFacilityInteractor>();
+            var marker=WorldArt.Sprite("Local Survivor","joystick_base",actor.transform,Vector2.zero,1.15f,WorldSorting.GroundDecoration);marker.color=new Color32(186,170,115,130);player.LocalMarker=marker.gameObject;marker.gameObject.SetActive(false);actor.AddComponent<NetworkInventory>();actor.AddComponent<NetworkFacilityInteractor>();actor.AddComponent<NetworkConstruction>();
             PrefabUtility.SaveAsPrefabAsset(actor,PlayerPrefabPath);Object.DestroyImmediate(actor);
             var root=new GameObject("Network Session");var transport=root.AddComponent<UnityTransport>();transport.ConnectTimeoutMS=1000;transport.MaxConnectAttempts=5;transport.DisconnectTimeoutMS=4000;
-            var manager=root.AddComponent<NetworkManager>();manager.NetworkConfig=new NetworkConfig{NetworkTransport=transport,TickRate=20,ConnectionApproval=true,EnableSceneManagement=true,ProtocolVersion=4,ClientConnectionBufferTimeout=10};
+            var manager=root.AddComponent<NetworkManager>();manager.NetworkConfig=new NetworkConfig{NetworkTransport=transport,TickRate=20,ConnectionApproval=true,EnableSceneManagement=true,ProtocolVersion=5,ClientConnectionBufferTimeout=10};
             var prefab=AssetDatabase.LoadAssetAtPath<GameObject>(PlayerPrefabPath);
             var service=root.AddComponent<NetworkSession>();service.Manager=manager;service.PlayerPrefab=prefab;service.EcologyPrefab=ecology;
             PrefabUtility.SaveAsPrefabAsset(root,SessionPrefabPath);Object.DestroyImmediate(root);

@@ -112,7 +112,7 @@ namespace Wildfolk
         public void Restore(AnimalSnapshot[] states,AnimalEcologySnapshot ecology=null)
         {
             if(!SimulationAuthority.Allows(this))return;
-            foreach(var identity in live.Values)if(identity!=null){identity.gameObject.SetActive(false);Destroy(identity.gameObject);}live.Clear();pending.Clear();Initialize();
+            foreach(var identity in live.Values)if(identity!=null){PrefabPool.Release(identity.gameObject);}live.Clear();pending.Clear();Initialize();
             serial=ecology==null ? 0 : ecology.Serial;groupSerial=ecology==null ? 0 : ecology.GroupSerial;cursor=ecology==null ? 0 : ecology.Cursor;
             if(ecology!=null)pending.AddRange(ecology.Pending);
             foreach(var state in states){if(state.Missing)continue;Spawn(state);}

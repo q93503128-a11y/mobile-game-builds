@@ -2221,6 +2221,34 @@
         "Level {0} · XP {1} · Gold {2}",
         "레벨 {0} · 경험치 {1} · 골드 {2}"
       ]
+    },
+    {
+      "Key": "net.host_continue",
+      "Values": [
+        "Host saved world",
+        "저장한 월드 호스트"
+      ]
+    },
+    {
+      "Key": "net.load_failed",
+      "Values": [
+        "The world could not be loaded. Your save has been kept.",
+        "월드를 불러오지 못했습니다. 기존 저장은 유지됩니다."
+      ]
+    },
+    {
+      "Key": "net.save_failed",
+      "Values": [
+        "Could not save. The session is still open. Please try leaving again.",
+        "저장하지 못해 세션을 유지합니다. 잠시 후 종료를 다시 시도하세요."
+      ]
+    },
+    {
+      "Key": "net.duplicate_player",
+      "Values": [
+        "This player is already connected.",
+        "이미 접속 중인 플레이어입니다."
+      ]
     }
   ]
 }

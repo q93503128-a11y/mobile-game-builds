@@ -25,12 +25,14 @@ namespace Wildfolk
     [Serializable] public sealed class ResourceRecoverySnapshot {public int Serial,CandidateCursor;public RecoveryTicket[] Pending=Array.Empty<RecoveryTicket>();public HarvestExclusion[] Harvests=Array.Empty<HarvestExclusion>();}
     [Serializable] public sealed class ProcessingEntry {public string Recipe;public int Count;}
     [Serializable] public sealed class PlaceableSnapshot
-    {public string Id,Item;public Vector2 Position;public float Rotation;public int HP;public bool DoorOpen;public SavedStack[] Inventory;public ProcessingSnapshot Processing;}
+    {public string Id,Item,Creator;public Vector2 Position;public float Rotation;public int HP;public bool DoorOpen;public SavedStack[] Inventory;public ProcessingSnapshot Processing;}
     [Serializable] public sealed class PickupSnapshot
     {public string Item;public int Count;public Vector2 Position;}
     [Serializable] public sealed class SavedGame
     {
-        public int Version=4,Seed;
+        public int Version=5,Seed;
+        public bool IsMultiplayer;
+        public MultiplayerSnapshot Multiplayer;
         public double Elapsed;
         public PlayerSnapshot Player;
         public ResourceSnapshot[] Resources=Array.Empty<ResourceSnapshot>();

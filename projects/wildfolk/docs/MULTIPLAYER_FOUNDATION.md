@@ -1,4 +1,84 @@
-# Multiplayer Foundation — 현재 Foundation 4
+# Multiplayer Foundation — 현재 Foundation 5
+
+2026-10-16. 기준361fd7f735561fee9b77b8af331e66b25d428380. **Building / Wall / Door / Host World Persistence와 재입장 기반**을 추가했다. Player, Creature/Combat, Resource/Item/Inventory, Facility/Crafting에 이어 이번 기반 구현을 마쳤다. **다음 단계는 별도 Multiplayer Integration QA다. 이번에 실제 두 프로세스 Relay 검수는 하지 않았다.** 자동검사를 실제 원격 플레이 합격으로 해석하지 않는다.
+
+## Building 권위와 transaction
+
+Catalog에 실제 있는 Placeable9종(Wood/Stone Wall, Wood Door, Chest24/32, Workbench I/II, Furnace, Campfire)의 기존 Definition/Prefab을 그대로 사용한다. NetworkBuilding variants를 등록하며 시설6종에는 기존 NetworkFacility도 유지한다. Protocol5, Player 포함 명시 등록 prefab27개와 별도의 in-scene ecology NetworkObject를 사용한다.
+
+선택 설치물은 기존 PlayerPlacement의 owner 전용 미리보기/footprint/회전과 Primary 입력을 사용한다. NetworkConstruction은 owner RPC/sender/sequence, 가방 revision/선택 slot/연결/생존/Running, 유한 좌표와 기존 최대 거리/지면·물/Bounds/충돌/구조물 overlap을 Host에서 검사한다. Rotation은 Host의 Facing과 기존0/90도 규칙으로 정한다. Client가 Building·수량을 선확정하지 않는다.
+
+Physics transform을 동기화한 뒤 같은 메인 스레드에서 InventoryModel.TryDropSlot로1개 예약 감소→등록된 variant 생성·creator 지정→NGO Spawn 성공 확인→가방 commit을 수행한다. 실패/exception이면 원본 slot을 복원하고 대기 객체를 정리한다. 다음 요청은 방금 생성한 collider와 갱신 가방 revision을 보므로 같은 위치 설치 경쟁에서 두 번째 요청을 거절한다. 매 Frame Building 전체 상태를 전송하지 않는다.
+
+현재 SP에는 플레이어 철거/회수 UX가 없으므로 이번에 새 removal/refund 명령을 만들지 않았다. 기존 피해로 파괴되는 WorldPlaceable은 공통 lifecycle을 통해 Host Despawn하고 기존 Chest/processing cargo를1회 방출한다. 플레이어 Friendly Fire 제한을 유지한다. 시작 근처 초기 시설5개는 새 세션에만 생성하며, 저장 월드를 열 때 다시 추가하지 않는다.
+
+## Wall / Door / 공동 소유
+
+Wall의 기존 위치·회전·sprite·collider를 사용한다. 인접 표현은 spawn/disable/despawn/복원 시 근처 Wall만 갱신하며 이전0.35초 polling을 제거했다. 전체 Wall network를 매 Frame 재계산하지 않는다.
+
+Door 요청은 target object/revision/**원하는 open 상태**다. Host가 연결·생존·Running·거리·존재·revision과 기존 점유된 닫기 거절 규칙을 검사한다. 두 요청이 같은 revision으로 open을 요구해도 한 번만 바뀐다. target/from amount/server start time만 상태 변화 때 보내고 Client는 기존 hinge/easing/collider 경계로 표시한다. 매 Frame 문 transform RPC는 없다. 저장은 기존처럼 target open/closed를 보존하며 로드 때 해당 끝 상태로 복원한다. 원격 navigation/collider 수신 일치는 실제 통합 QA 대상이다.
+
+현재 정상 참가자는 모든 구조물을 공동 설치/사용할 수 있다. 개인 토지·잠금·소유자만 사용 같은 제한은 없다. CreatorId는 기기 생성 식별자 metadata로 상태와 Save에 보존하며 권한·계정 entitlement로 사용하지 않는다.
+
+## 같은 저장 truth와 v5
+
+WorldSnapshotCodec/PlayerSnapshotCodec로 기존 WorldSaveService의 Capture/Apply를 추출해 SP와 Host가 같은 snapshot/복원 코드를 사용한다. SaveRepository의 checksum/temporary write+flush/재검증/atomic replace/정상 backup 정책을 재사용한다. 별도 멀티 전용 파일 포맷/복제한 World serializer를 만들지 않았다.
+
+SavedGame v5는 명시적 IsMultiplayer와 Multiplayer metadata(WorldId/HostId/식별자별 PlayerSnapshot), optional creator를 추가한다. Unity JsonUtility가 null nested reference를 빈 객체로 읽어도 SP를 멀티로 오판하지 않는다. v1→v2→v3→v4 이관을 유지하고, 검증된 v4는 v5로 전진한다. SP는 기존 world-v1.json, Host는 같은 UserData/persistentDataPath의 multiplayer-world-v5.json을 사용한다. 사용자 SP 저장을 멀티로 덮어쓰거나 자동 변환하지 않는다. 로드만으로 기존 파일을 다시 쓰지 않는다.
+
+Host snapshot은 Seed/Elapsed/자원 Delta·Recovery·후보 cursor·Harvest exclusion/동물 종·그룹·HP·anchor·보충 대기/Goblin Camp·주민·refill/Night 종·검 variant·HP/설치물 ID·type·position·rotation·HP·creator/Door target/Chest/Workbench II/Furnace 현재·예약 순서·완료 결과·남은 시간/Campfire Batch/Ground Item을 보존한다. Ground는 기존 SP와 같이 현재 Item/count/position을 지속 대상으로 삼고, spawn/드랍 trajectory나 과거 NetworkObject ID는 저장하지 않는다. Aggro/공격 순간 상태/투사체도 기존 정책대로 제외한다.
+
+Capture와 Write는 Unity 메인 스레드에서 동기적으로 수행하며 pending NGO 초기화를 먼저 flush한다. 다른 gameplay 요청과 timer Update가 capture 중간에 실행되지 않는다. 가공 시간과 회복 timer는 저장된 게임 시간부터 계속하며 오프라인 시간을 더하지 않는다. 실제 저장 stall/기기 파일 시스템 성능은 측정하지 않았다.
+
+## Host 종료 / 재Host / 실패
+
+정상 Host Leave는 snapshot 검증·atomic 저장 성공→Closing→NGO Shutdown→Client 종료→Home 순서다. 저장 실패는 Console에 오류 종류를 기록하고 자연스러운 안내를 표시하며 세션을 유지한다. 종료 버튼을 다시 눌러 재시도할 수 있다. Application.wantsToQuit도 저장 실패 시 종료를 거절하고 background pause에는 Host가 저장한다. transport failure로 연결 유지가 불가능한 경로는 저장을 시도한 뒤 강제 정리한다. OS 강제 kill/crash/모바일 lifecycle의 저장 보장은 주장하지 않는다.
+
+Home/Multiplayer의 Host 버튼은 기존 파일이 있으면 'Host saved world/저장한 월드 호스트'로 표시한다. 유효한 저장과 같은 로컬 Host 식별자를 확인한 후 새 Local/Relay session을 만든다. primary/backup 모두 불러올 수 없으면 로비에서 실패를 알리고 파일을 유지하며 새 월드를 대신 생성하지 않는다. 한 Host 월드 슬롯이며 별도 New World 삭제/선택 UX는 만들지 않았다. Relay allocation/Join Code는 Save에 넣지 않고 매 Host 시 새 connection을 만든다.
+
+NetworkWorldState의 scene NetworkObject가 저장된 terrain seed를 전달한다. Host는 Ready 전 Player spawn을 기다리고, saved world는 terrain/base resource→delta→시설/cargo→ecology/ground를 한 번 복원한다. 공통 Release는 NGO Despawn 및 미완료 spawn 취소를 사용한다. loaded world에 기본 동물/Camp/초기 시설을 다시 중복 생성하지 않으며, 복원한 Night budget을 Start에서 초기화하지 않는다.
+
+저장 불러오기 실패를 새 게임으로 대체하지 않는 원칙은 [Grounded 공식1.0 안내의 load failure 처리](https://grounded.obsidian.net/news/grounded/grounded-1-0-release)를 짧게 참고했다. Lowfire는 로컬 Host 저장이며 해당 게임의 Cloud Shared Worlds/호스트 이전 기능을 구현한 것이 아니다.
+
+## Player state와 재입장 기반
+
+기기에서 생성한 Guid를 별도 PlayerPrefs key에 보존하고 connection approval payload로 전달한다. 서버가 동일 식별자의 동시 연결과 room cap을 거절한다. 이 값은 **인증되지 않은 로컬 식별자**이며 다른 기기/재설치/초기화/위조에 대한 계정 소유권 보장이 아니다. Account/Login/영구 entitlement와 결합하지 않는다.
+
+Host가 식별자별 Inventory/선택/Head·Body/HP/Survival snapshot/XP·Gold·Growth/Stamina/위치/서버가 아는 SeenRecipe 상태를 저장한다. 기본 PlayerSnapshot 검증을 재사용하고 metadata·중복 식별자·Host snapshot 일치를 검사한다. 최대256명의 기억된 식별자를 검증한다. 멀티의 HP0 snapshot은 그대로 Defeated로 복원하며 임의 revive/패널티를 추가하지 않는다. SP의 HP>0 저장 규칙은 유지한다. 기존 멀티의 미연결 소비/Skill 투자 등 다른 생존 행동 전체를 이 저장 패스에서 새로 구현한 것은 아니다.
+
+서버 actor despawn/접속 종료에서 authoritative snapshot을 기억하고 연결 map/열린 context/PlayerObject를 정리한다. 같은 session에 정상 rejoin하면 동일 식별자의 snapshot을 새 actor spawn 전에 적용하며 기존 PlayerObject/대기 spawn을 검사해 중복 spawn을 막는다. Host 재생성 뒤에도 같은 파일의 참가자 상태를 연결한다. 실제 remote transport disconnect/rejoin은 아직 수행하지 않았다. 자동 retry/crash recovery/Host Migration은 없다.
+
+## 검증과 남은 작업
+
+[실행별 검사 증거](evidence/building-persistence-foundation.json). 기존 cached 프로젝트의 hidden batchmode Unity를 한 번에 하나만 사용했다. 새 clone/대화형 Editor/Computer Use/Focus/Show는 사용하지 않았다.
+
+- EditMode 고유12개 최종 통과: v4→v5/모드·payload 보존, participant ID/중복/Host 일치/HP0 규칙,9종 source Definition와 등록/권위, 기존 atomic backup/손상·future version 거절 및 시설/입력 계약. 첫11/12에서 이전 시설 검사에 Wall을 포함한 filter를 고쳐 해당1개만 재실행했다.
+- PlayMode 고유9개 최종 통과: 새5개와 기존 SP save/load/v1/v2/v3 이관4개. 설치 경쟁·stale·거리 거절·실패 rollback/9종 설치·owner 미리보기/아이콘/Primary 입력, Wall 연결/파괴1회, Door 경쟁/점유 닫기/hinge·collider, Host save/reHost, 같은 식별자 retire/rejoin, save 실패 유지/corrupt load 거절을 검사했다.
+- World roundtrip은 resource 손상/파괴/회복 대기, Animal ID·Group, Camp/refill, Night variant, wall 회전/open Door, Chest, Workbench II, Furnace current/waiting/output, Campfire 진행, Ground 수량, Player 장비/가방/HP/생존/XP·Gold와 중복 Resource/Building ID와 중복 Player가 없음을 확인했다.
+- 첫8개 묶음4/8 후 빈 nested metadata와 Door 끝값을 수정하고 관련6개를 검사했다. Night/타이머 보강 시400-frame 대기가 충분하지 않아 실제10초 deadline으로 바꾼 뒤 해당1개가 통과했다. 반복 실행은 고유 사례로 합산하지 않는다.
+- Source/reference PASS:615 unique GUIDs/Landscape/참조/표시 문구. 실제 duration과 각 실행의 실패·재실행은 증거 JSON에 보존한다.
+
+모두 단일 실제 Local Host와 같은 프로세스의 서버 fixture다. **실제 두 프로세스 Relay, 원격 owner UI/scene seed/delta/문 collider 수신, 실제 transport reconnect, latency/loss, 전체 gameplay loop,4인/mobile network·성능은 검사하지 않았다.** 별도 live Play/Game View 검수도 하지 않았다. 정상 실제 멀티 플레이 검증 완료라고 보고하지 않는다.
+
+다음 단계는 **Multiplayer Integration QA**다. Foundation1~5의 Player→전투→채집→아이템/가방→제작/시설→건축/문→저장/재Host/실제 재Join을 두 프로세스 Relay에서 함께 검수한다. Account/Login/Friend/Invite/Cloud/영구 entitlement/Host Migration/Dedicated Server/자동 reconnect/4인·모바일 stress는 별도 범위다.
+
+## 이번 시간 기록(KST)
+
+정본·구조 확인:14:01:45→14:03:44,1분59초.
+
+구현·첫 빌드·검사 작성:14:03:44→14:12:36,8분52초.
+
+관련 자동검사·보완:14:12:36→14:20:55,8분19초.
+
+최종 계약검사 대기·검토·문서:14:20:55→14:24:19,3분24초.
+
+Git 마무리는14:24:19부터이며 실제 종료와 총 경과는 완료 보고에 기록한다. Unity 기동/Import/컴파일 대기를 포함하며 병행 시간을 중복 합산하지 않는다.
+
+LIVE 변경87파일이 정본과 일치한다. MCP에서 최종 컴파일 완료/Console error0·warning0/Protocol5/ecology 등록26개·Building9개/scene WorldState와 SaveRules/v5/MainMenu/dirty=false/Play 중지/포커스 없음을 확인했다. 기존 사용자 SP world-v1.json SHA256은57d560f19e49507fbc7ac00b48e1dda5759732a181d1c0baa441ad4536da7970로 전후 동일하다.
+
+---
+
+## Foundation 4 기록 — 2026-10-16
 
 2026-10-16. 기준 e4b6d1fb6a7f434b719fe39ddb8652994dc84e8f. 기존 Foundation 3 위에 **공유 Chest / Hand Crafting / Workbench I→II / Furnace / Campfire**를 Host 권위로 연결했다. 관련 컴파일·자동검사 단계이며 **실제 2인 Relay Play 통합 QA는 이번에도 수행하지 않았다**. Foundation 1의 실제 두 프로세스 Player 검수를 시설 검증으로 확대하지 않는다.
 

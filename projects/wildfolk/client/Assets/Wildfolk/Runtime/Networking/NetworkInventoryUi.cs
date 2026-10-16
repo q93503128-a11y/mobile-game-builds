@@ -32,7 +32,7 @@ namespace Wildfolk
             Bag.onClick.AddListener(session.ToggleInventory);player.GetComponent<PlayerProgression>().Changed+=Refresh;player.Equipment.Changed+=Refresh;L.Changed+=Refresh;
             gameObject.SetActive(true);Refresh();
         }
-        private void Refresh(){if(owner==null)return;var p=owner.GetComponent<PlayerProgression>();Wallet.text=L.Format("net.wallet",p.Level,p.Experience,p.Gold);AttackIcon.sprite=owner.Equipment.ActiveTool==null ? fist : owner.Equipment.SelectedItem.Icon;}
+        private void Refresh(){if(owner==null)return;var p=owner.GetComponent<PlayerProgression>();Wallet.text=L.Format("net.wallet",p.Level,p.Experience,p.Gold);AttackIcon.sprite=owner.Equipment.ActiveTool==null && owner.Equipment.ActivePlaceable==null ? fist : owner.Equipment.SelectedItem.Icon;}
         private void OnDestroy(){if(owner!=null){owner.GetComponent<PlayerProgression>().Changed-=Refresh;owner.Equipment.Changed-=Refresh;}L.Changed-=Refresh;}
     }
 }

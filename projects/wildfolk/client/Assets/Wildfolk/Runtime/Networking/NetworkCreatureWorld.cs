@@ -18,6 +18,7 @@ namespace Wildfolk
         public GoblinSpawner Goblins;
         public ZombieSpawner Night;
         public GameplaySession Session;
+        public bool Ready {get;private set;}
         public bool IsAuthority=>NetworkManager.Singleton!=null && NetworkManager.Singleton.IsServer;
         public int DeathCount {get;private set;}
         public NetworkDeathResult LastDeath {get;private set;}
@@ -26,10 +27,11 @@ namespace Wildfolk
         private void Awake()
         {Active=this;Animals.enabled=Goblins.enabled=Night.enabled=Clock.enabled=IsAuthority;World.Renewal.enabled=IsAuthority;}
         private void Start()
-        {World.Generate(World.Definition.DefaultSeed);if(IsAuthority)CreateFacilities();}
-        private void CreateFacilities()
+        {if(IsAuthority){GetComponent<NetworkWorldPersistence>().InitializeWorld();Ready=true;}}
+        public void InitializeTerrain(int seed){if(IsAuthority || Ready && World.Seed==seed)return;World.Generate(seed,false);Ready=true;}
+        public void CreateFacilities()
         {
-            var offset=0;foreach(var entry in Prefabs)if(entry.Source.GetComponent<WorldPlaceable>()!=null)
+            var offset=0;foreach(var entry in Prefabs)if(entry.Source.GetComponent<WorldPlaceable>() is WorldPlaceable placed && (placed.Definition.StorageSlots>0 || placed.Definition.Station!=StationKind.None) && placed.Definition.WorkbenchTier<=1)
             {
                 var center=World.Map.Spawn+new Vector2((offset-2)*3,4);offset++;
                 var found=false;var position=center;
@@ -54,10 +56,11 @@ namespace Wildfolk
             if(!IsAuthority || !NetworkManager.Singleton.IsListening || actor==null || actor.IsSpawned)return false;
             pending.Remove(actor);actor.Spawn(true);return actor.IsSpawned;
         }
+        public void FlushPending(){if(!IsAuthority)return;foreach(var actor in pending)if(actor!=null && !actor.IsSpawned)actor.Spawn(true);pending.Clear();}
         private void LateUpdate()
         {
             if(!IsAuthority)return;
-            foreach(var actor in pending)if(actor!=null && !actor.IsSpawned)actor.Spawn(true);pending.Clear();
+            FlushPending();
             // Population uses one live anchor; combat selects among all connected living players.
             var player=SimulationAuthority.TargetForWorld();
             if(player==null)return;

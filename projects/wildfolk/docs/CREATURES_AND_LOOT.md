@@ -28,4 +28,4 @@ LootTable.Items/RareItems/Experience/Gold가 정본이며 종 이름 if문으로
 
 ## Multiplayer Foundation 3 Loot 연결
 
-Host의 기존 table roll 결과를 공통 NetworkGroundItem으로 생성한다. death result는1회 commit하며 natural despawn은 Loot/XP/Gold를 만들지 않는다. 멀티 XP/Gold는 유효한 Player 처치 지점24유닛 안의 살아 있는 접속 Player 각각에게 table 전체 값을1회 지급한다. Ground Item은 먼저 유효한 whole-stack pickup을 확정한 개인 Inventory에 속한다. 싱글의 마지막 직접 공격자 보상은 유지한다. 멀티 영구 저장/계정 entitlement는 없으며 실제2인 통합 QA는 남아 있다.
+Host의 기존 table roll 결과를 공통 NetworkGroundItem으로 생성한다. death result는1회 commit하며 natural despawn은 Loot/XP/Gold를 만들지 않는다. 멀티 XP/Gold는 유효한 Player 처치 지점24유닛 안의 살아 있는 접속 Player 각각에게 table 전체 값을1회 지급한다. Ground Item은 먼저 유효한 whole-stack pickup을 확정한 개인 Inventory에 속한다. 싱글의 마지막 직접 공격자 보상은 유지한다. Foundation5는 Host v5 월드에 기존 생물/그룹/Camp·보충/Night variant와 Ground·Player 보상을 보존한다. 계정 entitlement는 없으며 실제2인 통합 QA는 남아 있다.

@@ -10,21 +10,9 @@ namespace Wildfolk
         private static bool Finite(double value)=>!double.IsNaN(value) && !double.IsInfinity(value);
         public static void Validate(SavedGame game,ContentCatalog catalog,WorldGenerationDefinition definition,AnimalPopulationDefinition animals,int playerCapacity,int maximumHP,SurvivalDefinition survival,CharacterGrowthDefinition growth,LocomotionDefinition locomotion)
         {
-            Require(game!=null && game.Version>=2 && game.Version<=4,"Unsupported save version");Require(Finite(game.Elapsed) && game.Elapsed>=0,"Invalid world time");
+            Require(game!=null && game.Version>=2 && game.Version<=5,"Unsupported save version");Require(Finite(game.Elapsed) && game.Elapsed>=0,"Invalid world time");
             var map=new WorldMap(definition,game.Seed);var player=game.Player;
-            Require(player!=null,"Missing player");GrowthValidation.Validate(player.Growth,growth,player.XP);
-            var hpBonus=Mathf.RoundToInt(GrowthValidation.Bonus(player.Growth,growth,SkillEffect.MaximumHealth));
-            Require(player.HP>0 && player.HP<=maximumHP+hpBonus && player.Selected>=0 && player.Selected<playerCapacity,"Invalid player");
-            var staminaMax=locomotion.MaximumStamina+GrowthValidation.Bonus(player.Growth,growth,SkillEffect.MaximumStamina);
-            Require(Finite(player.Stamina) && player.Stamina>=0 && player.Stamina<=staminaMax && Finite(player.StaminaWait) && player.StaminaWait>=0 && player.StaminaWait<=locomotion.RecoveryDelay,"Invalid stamina");
-            Armor(player.HeadArmor,ArmorSlot.Head,catalog);Armor(player.BodyArmor,ArmorSlot.Body,catalog);
-            Require(player.SeenRecipes!=null,"Missing recipe state");var seen=new HashSet<string>();foreach(var id in player.SeenRecipes){Require(seen.Add(id),"Duplicate recipe state");catalog.Recipe(id);}
-            Position(map,player.Position);Require(map.IsWalkable(player.Position,0),"Player is outside traversable terrain");
-            Require(player.XP>=0 && player.Gold>=0 && Finite(player.CombatRecovery) && player.CombatRecovery>=0 && player.CombatRecovery<=survival.RegenDelay,"Invalid progression");
-            new InventoryModel(playerCapacity).Restore(player.Inventory,catalog);
-            var needs=player.Survival;Require(needs!=null,"Missing survival state");
-            foreach(var value in new[]{needs.Hunger,needs.Thirst,needs.HungerClock,needs.ThirstClock,needs.RecoveryBlock,needs.DrainPenalty,needs.DrainMultiplier})Require(Finite(value) && value>=0,"Invalid survival value");
-            Require(needs.Hunger<=survival.MaximumHunger && needs.Thirst<=survival.MaximumThirst && needs.DrainMultiplier>=1 && needs.HungerClock<survival.DamageInterval && needs.ThirstClock<survival.DamageInterval,"Invalid survival state");
+            ValidatePlayer(player,map,catalog,playerCapacity,maximumHP,survival,growth,locomotion,game.IsMultiplayer);
             Require(game.Resources!=null && game.Animals!=null && game.Placeables!=null && game.Pickups!=null,"Missing world state");
             Require(game.Version<3 || game.Recovery!=null,"Missing recovery state");
             var ids=new HashSet<string>();
@@ -52,7 +40,7 @@ namespace Wildfolk
             if(game.Version>=4)ValidateEcology(game,map,animals);
             foreach(var state in game.Placeables)
             {
-                Require(state!=null && !string.IsNullOrEmpty(state.Id) && ids.Add(state.Id),"Placeable ID collision");Position(map,state.Position);Require(Finite(state.Rotation),"Invalid rotation");
+                Require(state!=null && !string.IsNullOrEmpty(state.Id) && System.Text.Encoding.UTF8.GetByteCount(state.Id)<=61 && ids.Add(state.Id),"Placeable ID collision");Position(map,state.Position);Require(Finite(state.Rotation),"Invalid rotation");
                 var item=catalog.Item(state.Item);var placed=item.Placement;Require(placed!=null && state.HP>0 && state.HP<=placed.Vitality.MaximumHealth,"Invalid facility");
                 Require(!state.DoorOpen || placed.IsDoor,"Invalid door state");
                 if(placed.StorageSlots>0)new InventoryModel(placed.StorageSlots).Restore(state.Inventory,catalog);else Require(state.Inventory==null || state.Inventory.Length==0,"Unexpected chest contents");
@@ -64,6 +52,22 @@ namespace Wildfolk
                 Require(Finite(state.Processing.Remaining) && state.Processing.Remaining>=0 && state.Processing.Remaining<=(recipe.LegacyProcessingSeconds>0 ? recipe.LegacyProcessingSeconds : recipe.ProcessingSeconds)/placed.ProcessingSpeed,"Invalid processing timer");
             }
             foreach(var pickup in game.Pickups){Require(pickup!=null,"Missing pickup");Position(map,pickup.Position);Require(pickup.Count>0 && pickup.Count<=catalog.Item(pickup.Item).MaxStack,"Invalid pickup");}
+        }
+        public static void ValidatePlayer(PlayerSnapshot player,WorldMap map,ContentCatalog catalog,int playerCapacity,int maximumHP,SurvivalDefinition survival,CharacterGrowthDefinition growth,LocomotionDefinition locomotion,bool allowDead=false)
+        {
+            Require(player!=null,"Missing player");GrowthValidation.Validate(player.Growth,growth,player.XP);
+            var hpBonus=Mathf.RoundToInt(GrowthValidation.Bonus(player.Growth,growth,SkillEffect.MaximumHealth));
+            Require((allowDead ? player.HP>=0 : player.HP>0) && player.HP<=maximumHP+hpBonus && player.Selected>=0 && player.Selected<playerCapacity,"Invalid player");
+            var staminaMax=locomotion.MaximumStamina+GrowthValidation.Bonus(player.Growth,growth,SkillEffect.MaximumStamina);
+            Require(Finite(player.Stamina) && player.Stamina>=0 && player.Stamina<=staminaMax && Finite(player.StaminaWait) && player.StaminaWait>=0 && player.StaminaWait<=locomotion.RecoveryDelay,"Invalid stamina");
+            Armor(player.HeadArmor,ArmorSlot.Head,catalog);Armor(player.BodyArmor,ArmorSlot.Body,catalog);
+            Require(player.SeenRecipes!=null,"Missing recipe state");var seen=new HashSet<string>();foreach(var id in player.SeenRecipes){Require(seen.Add(id),"Duplicate recipe state");catalog.Recipe(id);}
+            Position(map,player.Position);Require(map.IsWalkable(player.Position,0),"Player is outside traversable terrain");
+            Require(player.XP>=0 && player.Gold>=0 && Finite(player.CombatRecovery) && player.CombatRecovery>=0 && player.CombatRecovery<=survival.RegenDelay,"Invalid progression");
+            new InventoryModel(playerCapacity).Restore(player.Inventory,catalog);
+            var needs=player.Survival;Require(needs!=null,"Missing survival state");
+            foreach(var value in new[]{needs.Hunger,needs.Thirst,needs.HungerClock,needs.ThirstClock,needs.RecoveryBlock,needs.DrainPenalty,needs.DrainMultiplier})Require(Finite(value) && value>=0,"Invalid survival value");
+            Require(needs.Hunger<=survival.MaximumHunger && needs.Thirst<=survival.MaximumThirst && needs.DrainMultiplier>=1 && needs.HungerClock<survival.DamageInterval && needs.ThirstClock<survival.DamageInterval,"Invalid survival state");
         }
         private static void ValidateEcology(SavedGame game,WorldMap map,AnimalPopulationDefinition animals)
         {

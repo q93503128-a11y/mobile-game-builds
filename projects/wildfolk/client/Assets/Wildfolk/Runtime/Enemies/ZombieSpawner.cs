@@ -13,6 +13,7 @@ namespace Wildfolk
         public Camera Camera;
         public WorldSpawnRegion Region;
         public WorldGenerator World;
+        private bool restored;
         private float elapsed;
         private DayPhase previous;
         private int openingRemaining;
@@ -29,10 +30,10 @@ namespace Wildfolk
             {
                 var enemy=PrefabPool.Spawn(SpeciesPrefab(state.Species),state.Position,Quaternion.identity);enemy.Session=Session;enemy.PlayerHealth=Player;enemy.Clock=Clock;enemy.Lifecycle.Clock=Clock;enemy.Lifecycle.Definition=Definition;enemy.Lifecycle.RestoreActive();enemy.OwnHealth.RestoreHealth(state.HP);enemy.GetComponent<LootOnDeath>().Player=World.Player;if(enemy.Variant!=null)enemy.Variant.SetEquipped(!string.IsNullOrEmpty(state.Variant));Register(enemy);
             }
-            previous=Clock.Model.Phase;openingRemaining=0;elapsed=0;
+            restored=true;previous=Clock.Model.Phase;openingRemaining=0;elapsed=0;
         }
         public void Register(EnemyController enemy){if(!enemies.Contains(enemy))enemies.Add(enemy);}
-        private void Start(){previous=Clock.Model.Phase;enemies.AddRange(FindObjectsByType<EnemyController>(FindObjectsSortMode.None));openingRemaining=previous==DayPhase.Night ? Mathf.CeilToInt(TargetPopulation*Definition.InitialFraction) : 0;}
+        private void Start(){if(restored)return;previous=Clock.Model.Phase;enemies.AddRange(FindObjectsByType<EnemyController>(FindObjectsSortMode.None));openingRemaining=previous==DayPhase.Night ? Mathf.CeilToInt(TargetPopulation*Definition.InitialFraction) : 0;}
         private void Prune()
         {for(var i=enemies.Count-1;i>=0;i--)if(enemies[i]==null || !enemies[i].gameObject.activeInHierarchy){if(!object.ReferenceEquals(enemies[i],null))inactive.Remove(enemies[i]);enemies.RemoveAt(i);}}
         public int ActiveCount {get{Prune();return enemies.Count;}}

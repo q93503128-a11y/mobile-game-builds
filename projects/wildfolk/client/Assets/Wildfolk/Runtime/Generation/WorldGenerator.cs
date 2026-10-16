@@ -23,17 +23,17 @@ namespace Wildfolk
         public static int RandomSeed()=>System.Guid.NewGuid().GetHashCode();
         public bool GenerateOnAwake=true;
         private void Awake(){if(GenerateOnAwake)Generate(SelectedSeed ?? Definition.DefaultSeed);}
-        public void Generate(int seed)
+        public void Generate(int seed,bool populate=true)
         {
             var regenerate=Map!=null;
             var started=System.Diagnostics.Stopwatch.StartNew();
             for(var i=Environment.childCount-1;i>=0;i--){var child=Environment.GetChild(i).gameObject;child.SetActive(false);Destroy(child);}
             Map=new WorldMap(Definition,seed);Renewal.ResetWorld();Region.Size=Definition.Size-Vector2.one*3;Terrain.Build(Map);
             var playerBody=Player.GetComponent<Rigidbody2D>();if(playerBody!=null)playerBody.position=Map.Spawn;Player.transform.position=Map.Spawn;
-            if(SimulationAuthority.Allows(this))for(var index=0;index<Map.Resources.Count;index++)
+            if(populate && SimulationAuthority.Allows(this))for(var index=0;index<Map.Resources.Count;index++)
             {var placement=Map.Resources[index];CreateResource("r"+index,placement.Rule,placement.Position,placement.Scale);}
-            WaterGeometry();Decorations(seed);if(SimulationAuthority.Allows(this))Animals.Generate();
-            if(regenerate)GetComponent<GoblinSpawner>().GenerateCamps();
+            WaterGeometry();Decorations(seed);if(populate && SimulationAuthority.Allows(this))Animals.Generate();
+            if(regenerate && populate && SimulationAuthority.Allows(this))GetComponent<GoblinSpawner>().GenerateCamps();
             started.Stop();GenerationMilliseconds=(float)started.Elapsed.TotalMilliseconds;
         }
         public ResourceNode CreateResource(string id,int rule,Vector2 position,float scale)

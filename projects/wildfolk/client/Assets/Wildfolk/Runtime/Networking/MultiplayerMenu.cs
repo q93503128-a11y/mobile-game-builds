@@ -28,6 +28,7 @@ namespace Wildfolk
         private void Refresh()
         {
             var idle=session.State==NetworkSessionState.Idle;var waiting=session.State==NetworkSessionState.Waiting;
+            HostButton.GetComponentInChildren<Text>().text=L.Text(session.WorldRepository.Exists ? "net.host_continue" : "net.host");
             HostButton.interactable=JoinButton.interactable=ModeButton.interactable=Destination.interactable=idle;
             EnterButton.gameObject.SetActive(waiting && session.Manager.IsHost);
             RouteLabel.text=L.Text(route==ConnectionRoute.Internet ? "net.internet" : "net.local");

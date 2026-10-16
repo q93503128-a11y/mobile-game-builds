@@ -24,6 +24,8 @@ namespace Wildfolk
             if(game.Version==3){SaveValidation.Validate(game,Catalog,World,Animals,Player.Settings.InventorySlots,Player.GetComponent<Health>().Definition.MaximumHealth,Player.GetComponent<PlayerSurvival>().Definition,growth,locomotion);SaveMigration.EcologyFromV3(game,World,Animals);}
             SaveValidation.Validate(game,Catalog,World,Animals,Player.Settings.InventorySlots,Player.GetComponent<Health>().Definition.MaximumHealth,Player.GetComponent<PlayerSurvival>().Definition,growth,locomotion);
             ValidateEnemies(game);
+            if(game.Version==4)game.Version=5;
+            MultiplayerSaveRules.Validate(game,this);
         }
         private void ValidateEnemies(SavedGame game)
         {

@@ -1,4 +1,4 @@
-# Save / Load v4, v1~v3 호환
+# Save / Load v5, v1~v4 호환
 
 정본은 WorldSaveService / SavedGame / SaveRepository / SaveValidation이다. 수동 Save game과 Save & return home은 Pause 메뉴에 있다. 플레이어용 Load game 버튼은 제거했고 WorldSaveService.Load 및 Editor Developer Load는 유지한다. 기기 Pause/Background/Quit에는 살아 있는 세션을 자동 저장한다. Home의 Single Player는 무작위 Seed로 시작하며, 저장 게임은 Home Continue로 불러온다. Gameplay 씬 직접 실행의 기본 Seed는 유지한다. 사망/재시작 규칙과 사망 보상 정책은 변경하지 않았다.
 
@@ -15,19 +15,19 @@ Seed 기반 지형·물·길·전체 자원 생성 결과를 통째로 저장하
 
 ## 파일 안정성
 
-Version4 + JSON Payload + SHA256 검증값을 사용한다. Temporary 쓰기/Flush → 파일 재읽기 및 데이터 검증 → atomic replace 순서이며 이전 정상 파일은 backup으로 보존한다. 최초 저장은 같은 디렉터리의 rename이다. 손상된 primary를 덮어쓸 때 정상 backup을 덮지 않는다. 불완전한 temporary는 로드 대상으로 사용하지 않는다.
+Version5 + JSON Payload + SHA256 검증값을 사용한다. Temporary 쓰기/Flush → 파일 재읽기 및 데이터 검증 → atomic replace 순서이며 이전 정상 파일은 backup으로 보존한다. 최초 저장은 같은 디렉터리의 rename이다. 손상된 primary를 덮어쓸 때 정상 backup을 덮지 않는다. 불완전한 temporary는 로드 대상으로 사용하지 않는다.
 
-버전/체크섬/Item ID/수량/슬롯 수/위치/HP/Resource ID/시설 ID/Recipe/처리 수량/시간을 실제 적용 전에 검증한다. Primary가 손상되면 유효한 backup을 시도한다. v1~v3를 지원하며 미래 버전은 명시적인 Migration을 추가해야 한다.
+버전/체크섬/Item ID/수량/슬롯 수/위치/HP/Resource ID/시설 ID/Recipe/처리 수량/시간을 실제 적용 전에 검증한다. Primary가 손상되면 유효한 backup을 시도한다. v1~v4를 지원하며 미래 버전은 명시적인 Migration을 추가해야 한다.
 
 Editor는 각 프로젝트의 UserData/world-v1.json, 빌드는 Application.persistentDataPath에 저장한다. 테스트 복사본과 열린 프로젝트의 Editor 저장 위치는 분리된다. Developer Harness의 변경은 자동 저장을 끄며 명시적인 Save만 테스트 상태를 보존한다.
 
-현재 오프라인 경과 시간을 재생/제련에 더하지 않는다. 저장한 게임 시간부터 계속한다. Cloud Save/Account Save/Multiplayer 권위 저장은 없다. 데이터·Seed 생성 알고리즘의 호환성이 변경될 때 Version/Migration을 함께 변경해야 한다. Android의 실제 강제 종료/파일 시스템 동작은 실기 검증 대상이다.
+현재 오프라인 경과 시간을 재생/제련에 더하지 않는다. 저장한 게임 시간부터 계속한다. Host 권위 멀티 저장은 아래 v5 경계를 사용한다. Cloud Save/Account Save는 없다. 데이터·Seed 생성 알고리즘의 호환성이 변경될 때 Version/Migration을 함께 변경해야 한다. Android의 실제 강제 종료/파일 시스템 동작은 실기 검증 대상이다.
 
 ## v1→v2 Migration
 
-체크섬 검증 후 Seed/시간/Inventory/자원/동물/시설/처리/Pickup/HP/생존/Gold를 유지한다. 누적 XP를 CharacterGrowth 곡선으로 Level/남은 XP로 나누고 해당 Level의 미사용 Point를 지급한다. v1에는 실제 Armor가 없었으므로 두 슬롯을 비우며 Stamina Full/회복 대기0/SeenRecipe 빈 상태로 시작한다. 로드만으로 파일을 덮어쓰지 않고 v1→v2→v3→v4로 이관하고 다음 정상 Save가 v4를 atomic write한다.
+체크섬 검증 후 Seed/시간/Inventory/자원/동물/시설/처리/Pickup/HP/생존/Gold를 유지한다. 누적 XP를 CharacterGrowth 곡선으로 Level/남은 XP로 나누고 해당 Level의 미사용 Point를 지급한다. v1에는 실제 Armor가 없었으므로 두 슬롯을 비우며 Stamina Full/회복 대기0/SeenRecipe 빈 상태로 시작한다. 로드만으로 파일을 덮어쓰지 않고 v1→v2→v3→v4→v5로 이관하고 다음 정상 Save가 v5를 atomic write한다.
 
-기존 접근을 보존하려고 파일 경로 world-v1.json을 유지한다. 콘텐츠 Version은4다. Workbench II는 실제 Item/Placement ID로 저장하고 시설 ID/Cargo 정책을 유지한다. XP총합/Point 사용합/Skill ID·Rank/Armor Slot·ID/Stamina 범위/Recipe IDs를 적용 전에 검사한다. Dash 진행/Sprint Hold/UI 선택은 저장하지 않고 보행 상태로 재개한다. Skill Modifier를 HP보다 먼저 복원한다.
+기존 접근을 보존하려고 파일 경로 world-v1.json을 유지한다. 현재 콘텐츠 Version은5다. Workbench II는 실제 Item/Placement ID로 저장하고 시설 ID/Cargo 정책을 유지한다. XP총합/Point 사용합/Skill ID·Rank/Armor Slot·ID/Stamina 범위/Recipe IDs를 적용 전에 검사한다. Dash 진행/Sprint Hold/UI 선택은 저장하지 않고 보행 상태로 재개한다. Skill Modifier를 HP보다 먼저 복원한다.
 
 Pause Save game/Load game과 Background/Quit AutoSave를 유지한다. Home Continue/Single Player/Settings와 Pause Save & return home을 제공한다. 다중 World Select는 없다.
 
@@ -45,6 +45,17 @@ Language는 Control Size/Master/BGM/SFX와 같은 Local User Preference다. 월�
 
 v3에는 Camp와 저장된 적 개체가 없었으므로 기존 시설을 적용한 다음 작은 Camp를 안전 후보로 추가하고 Night 개체 목록은 비운다. v4부터 Camp 위치/RefillAt와 거주·로밍 Goblin ID/Group/Camp/Ranged/HP/Position/Home, Night 종/검 Variant/HP/Position을 저장한다. Load는 순간 전투 상태를 초기화하고 살아 있는 Night 개체를 복원한다. Armor Drag 중 Ghost는 정본이 아니며 성공한 Equip/Unequip 결과만 저장한다. 언어는 기존 Local Preference다.
 
-동물 Hard Cap/Species/Group/Region/대기 중복,적 종/Variant/HP/상한/좌표/Camp 참조를 적용 전에 검사한다. 기존 world-v1.json 경로·체크섬·atomic replace·backup은 유지한다. 오프라인 재생/멀티플레이/클라우드 저장은 없다.
+동물 Hard Cap/Species/Group/Region/대기 중복,적 종/Variant/HP/상한/좌표/Camp 참조를 적용 전에 검사한다. 기존 world-v1.json 경로·체크섬·atomic replace·backup은 유지한다. 이 v4 단계에는 오프라인 재생/멀티플레이/클라우드 저장이 없었다. 현재 Host 저장은 아래 v5를 따른다.
 
 Home의 저장 검사와 게임의 Save/Load는 SaveGameRules.Validate를 공유한다. 기존 검증/이관을 이동했으며 Save Version/파일명/체크섬/atomic replace/backup 정책은 바꾸지 않았다. Home 진입 및 Continue 클릭에서 Repository.Read로 유효성/backup을 확인한다. 파일이 없거나 primary/backup 모두 유효하지 않으면 Continue를 비활성화한다. Single Player는 primary 또는 backup 파일이 있으면 확인을 받으며, 시작 버튼만으로 삭제하지 않고 다음 정상 저장이 기존 Repository 규칙으로 교체한다. 저장 후 Home 복귀는 저장이 실패하면 Pause에 남는다.
+
+
+## v4→v5 / Host persistence
+
+기존 v1→v2→v3→v4 이관·World/Player payload를 유지하며 검증한 v4를 v5로 전진한다. IsMultiplayer가 SP와 Host를 명시적으로 구분한다. optional Multiplayer(WorldId/HostId/식별자별 PlayerSnapshot)와 Placeable.Creator를 추가했다. nested null 객체의 JSON 처리에 mode 판정을 맡기지 않는다.
+
+SP는 world-v1.json, Host는 같은 저장 디렉터리의 multiplayer-world-v5.json이다. 같은 SaveRepository/checksum/temporary flush/재검증/atomic replace/정상 backup을 사용하고 사용자 SP 파일을 멀티로 덮어쓰지 않는다. WorldSnapshotCodec/PlayerSnapshotCodec는 SP와 Host가 공유한다. 저장된 seed·game time부터 자원/동물/Camp/Night/시설·Door/Chest/Workbench tier/가공 cargo/ground/Player 상태를 복원하며 offline 시간을 더하지 않는다.
+
+Host는 승인된 snapshot 저장 성공 후 NGO Session을 종료한다. 저장 실패는 자연스러운 안내와 함께 세션을 유지한다. load primary/backup 실패는 로비에 남고 새 월드를 대체 생성하지 않는다. 재Host는 저장을 먼저 확인하고 새 Relay/Local connection을 만든다. Join Code/Relay allocation/NetworkObject ID는 영구 Save가 아니다.
+
+기기 생성 Guid는 재입장 연결용이며 인증 계정이 아니다. Host가 참가자 상태를 기억하고 정상 reJoin에서 spawn 전 복원한다. 멀티 HP0은 Defeated를 유지하고 SP HP>0 규칙은 유지한다. 자동 retry/Host Migration/crash 보장은 없다. 검사·정확한 저장 범위·최종 통합 QA 한계는 MULTIPLAYER_FOUNDATION과 building-persistence-foundation 증거를 따른다.
