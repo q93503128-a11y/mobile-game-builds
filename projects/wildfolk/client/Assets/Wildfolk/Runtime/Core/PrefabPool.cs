@@ -11,7 +11,7 @@ namespace Wildfolk
         private void OnDestroy(){if(current==this)current=null;}
         public static T Spawn<T>(T prefab,Vector3 position,Quaternion rotation) where T:Component
         {
-            if(NetworkCreatureWorld.Active!=null && (prefab.GetComponent<CreatureMember>()!=null || prefab.GetComponent<StoneProjectile>()!=null))return NetworkSpawnFactory.Spawn(prefab,position,rotation);
+            if(NetworkCreatureWorld.Active!=null && (prefab.GetComponent<CreatureMember>()!=null || prefab.GetComponent<StoneProjectile>()!=null || prefab.GetComponent<WorldPickup>()!=null))return NetworkSpawnFactory.Spawn(prefab,position,rotation);
             if(current==null)return Object.Instantiate(prefab,position,rotation);
             var key=prefab.gameObject;
             if(!current.available.TryGetValue(key,out var stack)){stack=new Stack<GameObject>();current.available.Add(key,stack);}
@@ -30,7 +30,7 @@ namespace Wildfolk
         public static void Release(GameObject go)
         {
             var network=go.GetComponent<Unity.Netcode.NetworkObject>();
-            if(network!=null){if(network.IsSpawned && network.NetworkManager.IsServer)network.Despawn();return;}
+            if(network!=null){if(network.IsSpawned && network.NetworkManager.IsServer)network.Despawn();else if(!network.IsSpawned && NetworkCreatureWorld.Active!=null)NetworkCreatureWorld.Active.CancelPending(go);return;}
             var member=go.GetComponent<PoolMember>();
             if(member==null || member.Owner==null){Object.Destroy(go);return;}
             if(!go.activeSelf)return;go.SetActive(false);go.transform.SetParent(member.Owner.transform,false);

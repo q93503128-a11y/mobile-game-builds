@@ -11,6 +11,8 @@ namespace Wildfolk
     }
     public sealed class NetworkDeathResult
     {
+        private bool committed;
+        internal bool TryCommit(){if(committed)return false;committed=true;return true;}
         public ulong CreatureId {get;}
         public ulong AttackerId {get;}
         public IReadOnlyList<PendingLoot> Items {get;}

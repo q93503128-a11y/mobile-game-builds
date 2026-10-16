@@ -44,3 +44,7 @@ AnimalPopulationDefinition의 Rule 순서는 기존 Chicken/Boar 인덱스를 �
 작은 Camp 하나는 Seed 후보와 Player18/Base12·장애물 회피로 배치한다. 거주 개체3은 Group/Camp ID를 공유하며 죽은 개체의 원래 지점/ID를 부활시키지 않는다.480초 후 적합한 Camp 주변·카메라 밖에서 새 개체를 보충한다. 로밍 Warband는 낮 Road 후보에서3~5명(새총0~2)으로 생성한다. Camp/로밍 구분은 Camp ID와 Group/Traits 데이터다. 실제 Scout/Village/Fortress는 없다.
 
 Night 예산은 Zombie와 Skeleton이 공유한다. 낮/밤·카메라·빛·시설·Player 회피는 기존 규칙을 유지한다. 기존 살아 있는 Night 종/검 Variant는 v4 저장에서 복원하며 순간 공격 상태와 투사체는 저장하지 않는다. 재미·생태 밀도·장시간 모바일 성능은 별도 사용자 확인이다.
+
+## Multiplayer Foundation 3 자원
+
+지형/물은 같은 default seed로 구성하고 실제 자원은 Host만 기존 Rule/Population에서 생성한다. Client는 NetworkResource의 ID/Rule/HP/hit와 NGO 초기 위치/scale/Despawn을 표시한다. 기존 회복의 Region/Soft Target/제외/새 ID 규칙은 Host에서만 실행한다. Host의 Resource/Recovery Snapshot 형식은 유지하지만 Multiplayer persistence/reconnect 복원은 미구현이다. 검증은 MULTIPLAYER_FOUNDATION을 따른다.

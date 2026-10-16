@@ -50,7 +50,7 @@ namespace Wildfolk.Editor
             var renewal=session.gameObject.AddComponent<ResourceRegeneration>();renewal.World=world;renewal.Clock=clock;renewal.Navigation=navigation;world.Renewal=renewal;
             var animals=session.gameObject.AddComponent<AnimalPopulation>();animals.World=world;animals.Clock=clock;animals.Navigation=navigation;animals.Definition=StabilityAssets.Animals();world.Animals=animals;
             saves.World=world;saves.Clock=clock;saves.Player=player;saves.Catalog=StabilityAssets.Catalog();
-            var drop=playerObject.GetComponent<PlayerItemDrop>();drop.Session=session;drop.World=world;drop.Prefab=pickup;
+            var drop=playerObject.GetComponent<PlayerItemDrop>();drop.Session=session;drop.BindWorld(world);
             var spawner=session.gameObject.AddComponent<ZombieSpawner>();spawner.Definition=assets.Progression.Spawn;spawner.Prefab=Prefab<EnemyController>("Enemy");spawner.Clock=clock;spawner.Session=session;spawner.Player=session.PlayerHealth;spawner.Camera=camera;spawner.Region=region;spawner.World=world;
             spawner.SecondaryPrefab=Prefab<EnemyController>("Skeleton");
             var goblins=session.gameObject.AddComponent<GoblinSpawner>();goblins.Definition=assets.World.Goblin;goblins.Prefab=Prefab<GoblinController>("Goblin");goblins.Clock=clock;goblins.Session=session;goblins.Player=session.PlayerHealth;goblins.Camera=camera;goblins.World=world;

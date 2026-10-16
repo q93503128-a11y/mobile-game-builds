@@ -8,6 +8,19 @@ namespace Wildfolk
     {
         private readonly ItemStack[] slots;
         public int Capacity => slots.Length;
+        public bool IsReadOnly {get;set;}
+        internal void ApplyReplicaSlot(int index,ItemStack value){slots[index]=value;Changed?.Invoke();}
+        internal void ApplyReplicaSlots(ItemStack[] values){Array.Copy(values,slots,Capacity);Changed?.Invoke();}
+        public bool MoveStackAmount(int from,int to,int amount)=>Transfer(this,from,this,to,amount);
+        public bool TryDropSlot(int index,ItemDefinition expected,int count,Func<bool> createDrop)
+        {
+            if(IsReadOnly || index<0 || index>=Capacity || count<1 || createDrop==null)return false;
+            var original=slots[index];if(original.IsEmpty || original.Item!=expected || count>original.Count)return false;
+            slots[index]=count==original.Count ? default : new ItemStack(expected,original.Count-count);
+            var committed=false;
+            try{committed=createDrop();return committed;}
+            finally{if(!committed)slots[index]=original;else Changed?.Invoke();}
+        }
         public event Action Changed;
 
         public InventoryModel(int capacity)
@@ -20,6 +33,7 @@ namespace Wildfolk
         {var result=new SavedStack[Capacity];for(var i=0;i<Capacity;i++)result[i]=new SavedStack{Item=slots[i].IsEmpty ? null : slots[i].Item.Id,Count=slots[i].Count};return result;}
         public void Restore(SavedStack[] state,ContentCatalog catalog)
         {
+            if(IsReadOnly)throw new InvalidOperationException("Replica inventory is read-only.");
             if(state==null || state.Length!=Capacity)throw new ArgumentException("Inventory capacity mismatch");
             var next=new ItemStack[Capacity];
             for(var i=0;i<Capacity;i++)
@@ -39,6 +53,7 @@ namespace Wildfolk
         public int Add(ItemDefinition item, int count)
         {
             Validate(item, count);
+            if(IsReadOnly)return 0;
             var accepted = AddTo(slots, item, count);
             if (accepted > 0) Changed?.Invoke();
             return accepted;
@@ -54,7 +69,7 @@ namespace Wildfolk
         }
         public static bool Transfer(InventoryModel source,int from,InventoryModel target,int to,int amount=0)
         {
-            if(!CanTransfer(source,from,target,to,amount)) return false;
+            if(source==null || target==null || source.IsReadOnly || target.IsReadOnly || !CanTransfer(source,from,target,to,amount)) return false;
             var stack=source.slots[from];var destination=target.slots[to];
             var requested=amount==0 ? stack.Count : amount;
             if(!destination.IsEmpty && destination.Item.Id==stack.Item.Id)
@@ -70,6 +85,7 @@ namespace Wildfolk
         public bool ConsumeSlot(int index, ItemDefinition expected, int count)
         {
             Validate(expected, count);
+            if(IsReadOnly)return false;
             var slot = slots[index];
             if (slot.IsEmpty || slot.Item.Id != expected.Id || slot.Count < count) return false;
             slots[index] = slot.Count == count ? default : new ItemStack(slot.Item, slot.Count - count);
@@ -78,6 +94,7 @@ namespace Wildfolk
         }
         public bool ReplaceConsumedSlot(int index,ItemDefinition expected,ItemDefinition returned)
         {
+            if(IsReadOnly)return false;
             Validate(expected,1);Validate(returned,1);
             var stack=slots[index];if(stack.IsEmpty || stack.Item.Id!=expected.Id)return false;
             var next=(ItemStack[])slots.Clone();
@@ -88,6 +105,7 @@ namespace Wildfolk
         }
         public bool TryAddAt(int index,ItemDefinition item)
         {
+            if(IsReadOnly)return false;
             Validate(item,1);var slot=slots[index];
             if(!slot.IsEmpty && (slot.Item.Id!=item.Id || slot.Count>=item.MaxStack))return false;
             slots[index]=new ItemStack(item,slot.IsEmpty ? 1 : slot.Count+1);Changed?.Invoke();return true;
@@ -97,6 +115,7 @@ namespace Wildfolk
 
         public ExchangeResult TryExchange(ItemAmount[] costs, ItemDefinition output, int count)
         {
+            if(IsReadOnly)return ExchangeResult.NoSpace;
             var result = PrepareExchange(costs, output, count, out var next);
             if (result != ExchangeResult.Success) return result;
             Array.Copy(next, slots, slots.Length);
@@ -113,6 +132,7 @@ namespace Wildfolk
         }
         public bool TryConsumeCosts(ItemAmount[] costs)
         {
+            if(IsReadOnly)return false;
             if(costs==null) throw new ArgumentNullException(nameof(costs));
             var next=(ItemStack[])slots.Clone();
             if(!RemoveCosts(next,costs)) return false;
@@ -120,6 +140,7 @@ namespace Wildfolk
         }
         public bool TryAddAmounts(ItemAmount[] amounts)
         {
+            if(IsReadOnly)return false;
             var next=(ItemStack[])slots.Clone();
             foreach(var amount in amounts){Validate(amount.Item,amount.Count);if(AddTo(next,amount.Item,amount.Count)!=amount.Count)return false;}
             Array.Copy(next,slots,slots.Length);Changed?.Invoke();return true;

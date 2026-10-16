@@ -14,9 +14,13 @@ PlayerItemDrop은 물/장애물 없는 근처 지점을 확인한 뒤 WorldPicku
 
 빈 컵이 있어야 자연 수원에서 Raw Cup을 얻는다. 마시면 Empty Cup을 반환한다. 상태별 Item ID와 모든 슬롯을 Save/Load하고 Chest의 용기 상태도 유지한다. 소분 중인 UI 포인터 상태는 저장하지 않으며 원본 아이템은 저장에 남는다.
 
-가방/Chest 입력 잠금은 세계 정지와 분리한다. 실제 Multiplayer 네트워크와 Player 전달은 아직 없다. Friendly Fire는 관계 필터 기반 OFF이며 Team 시설을 일반 공격으로 파괴하지 않는다.
+가방/Chest 입력 잠금은 세계 정지와 분리한다. 멀티 가방 전달은 Foundation 3의 Host 권위 기반으로 제공하며 실제2인 통합 QA는 남아 있다. Friendly Fire는 관계 필터 기반 OFF이며 Team 시설을 일반 공격으로 파괴하지 않는다.
 
 Inventory의 작은 캐릭터 Preview와 실제 Head/Body 슬롯에서 Armor를 장착·교체·해제한다. 슬롯을 누르면 보유한 호환 장비를 강조하고, 선택 장비의 슬롯별 Defense 비교와 Equip을 제공한다. 장착 슬롯 선택에서는 Unequip을 제공한다. Profile에는 장비 조작을 중복 구현하지 않는다. 아직 없는 Accessory/Back 슬롯은 노출하지 않는다. 장착물은Inventory에서빠지고해제/교체시반환하며공간없으면해제를거절한다. Armor/Skill은별도Snapshot으로저장한다. Reinforced Chest는독립32칸이며기존Storage Chest24는유지한다. Chest UI는용량에맞춰3/4행을표시하고기존Transfer/Split/Drop을공유한다.
 
 
 Armor를 가방에서 맞는 Head/Body 슬롯으로 Drag하면 즉시 장착한다. 이미 장착된 방어구는 교환 시 소지품으로 돌아온다. 장착 슬롯에서 빈 가방 칸으로 Drag하면 해제하며 들어갈 공간이 없으면 원본을 유지하고 Feedback을 표시한다. 선택 Armor는 Primary 또는 Interact로 같은 PlayerEquipment API를 통해 장착한다. 도구/무기/설치/소비 입력과 구분한다. 큰 Modal 뒤 Bag/Hotbar/Attack/Dash/Interact/Pause는 입력을 받지 않는다. Modal 안 Close로 닫고,Split의 Cancel은 Modal 계층에서 작동한다.
+
+## Multiplayer Foundation 3
+
+기존36/9 슬롯/Stack/Drag/Split/Item Actions/Armor UI를 재사용한다. 멀티 변경은 owner 요청→Host revision/slot/수량 검증→공통 Model mutation→Owner-only slot delta다. Client 모델은 읽기 전용이다. 멀티 Ground pickup은 한 stack을 전량 넣을 수 있을 때만 소비하고 full bag이면 그대로 남긴다. Player Drop은 예약 감소와 Ground 생성의 성공/실패를 묶는다. Chest/Crafting/시설/계정/멀티 persistence는 이번 범위가 아니다. 실제2인 검증은 미수행이며 자세한 규칙/자동검사는 MULTIPLAYER_FOUNDATION을 따른다.

@@ -30,7 +30,7 @@ namespace Wildfolk
             for(var i=Environment.childCount-1;i>=0;i--){var child=Environment.GetChild(i).gameObject;child.SetActive(false);Destroy(child);}
             Map=new WorldMap(Definition,seed);Renewal.ResetWorld();Region.Size=Definition.Size-Vector2.one*3;Terrain.Build(Map);
             var playerBody=Player.GetComponent<Rigidbody2D>();if(playerBody!=null)playerBody.position=Map.Spawn;Player.transform.position=Map.Spawn;
-            for(var index=0;index<Map.Resources.Count;index++)
+            if(SimulationAuthority.Allows(this))for(var index=0;index<Map.Resources.Count;index++)
             {var placement=Map.Resources[index];CreateResource("r"+index,placement.Rule,placement.Position,placement.Scale);}
             WaterGeometry();Decorations(seed);if(SimulationAuthority.Allows(this))Animals.Generate();
             if(regenerate)GetComponent<GoblinSpawner>().GenerateCamps();
@@ -38,7 +38,7 @@ namespace Wildfolk
         }
         public ResourceNode CreateResource(string id,int rule,Vector2 position,float scale)
         {
-            var resource=Instantiate(Definition.Resources[rule].Prefab,position,Quaternion.identity,Environment);
+            var resource=NetworkSpawnFactory.Spawn(Definition.Resources[rule].Prefab,position,Quaternion.identity,Environment);
             resource.transform.localScale=Vector3.one*scale;resource.Player=Player;resource.PickupPrefab=Pickup;resource.Settings=Settings;
             var number=int.Parse(id.Substring(1));
             if(Definition.Resources[rule].AlternateSprite!=null && number%3==0)resource.Visual.sprite=Definition.Resources[rule].AlternateSprite;

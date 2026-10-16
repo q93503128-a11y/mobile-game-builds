@@ -25,3 +25,7 @@ LootTable.Items/RareItems/Experience/Gold가 정본이며 종 이름 if문으로
 ## Multiplayer Foundation 2 경계
 
 위 종/가족/진영/Trait/Habitat/Group/Warband/Camp와 LootTable 데이터는 그대로 공유한다. 멀티에서는 Host만 기존 Brain·Population·Group Alert/분리·공격·Projectile·사망을 실행한다. Client는 NGO replica 표현만 수행한다. 멀티 LootTable 결과는 Host가 한 번 계산하되 실제 pickup/XP/Gold 지급·소유권은 보류한다. 싱글의 Drop/처치 보상은 유지한다. 이 패스는 관련 자동검사 통과이며 실제2인 Creature Play 통합 QA는 미수행이다. 상세 권위·검증 한계는 MULTIPLAYER_FOUNDATION을 따른다.
+
+## Multiplayer Foundation 3 Loot 연결
+
+Host의 기존 table roll 결과를 공통 NetworkGroundItem으로 생성한다. death result는1회 commit하며 natural despawn은 Loot/XP/Gold를 만들지 않는다. 멀티 XP/Gold는 유효한 Player 처치 지점24유닛 안의 살아 있는 접속 Player 각각에게 table 전체 값을1회 지급한다. Ground Item은 먼저 유효한 whole-stack pickup을 확정한 개인 Inventory에 속한다. 싱글의 마지막 직접 공격자 보상은 유지한다. 멀티 영구 저장/계정 entitlement는 없으며 실제2인 통합 QA는 남아 있다.

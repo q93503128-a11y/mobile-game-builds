@@ -15,15 +15,17 @@ namespace Wildfolk
         {var identity=node.gameObject.AddComponent<ResourceIdentity>();identity.Id=id;identity.Rule=rule;identity.Node=node;identity.Owner=this;identity.Bind();live[id]=identity;}
         public void Record(ResourceIdentity identity,bool destroyed)
         {
+            if(!SimulationAuthority.Allows(this))return;
             var state=new ResourceSnapshot{Id=identity.Id,Rule=identity.Rule,Position=identity.transform.position,Scale=identity.transform.localScale.x,HP=identity.Node.Health.Current,Destroyed=destroyed};
             if(destroyed){if(!live.Remove(state.Id))return;Population.Remove(state.Rule,state.Position,Clock.Model.Elapsed,true);if(state.Id.StartsWith("p")){changes.Remove(state.Id);return;}}
             changes[state.Id]=state;
         }
         public ResourceSnapshot[] Capture()=>new List<ResourceSnapshot>(changes.Values).ToArray();
         public ResourceRecoverySnapshot CaptureRecovery()=>Population.Capture();
-        private void Update(){if(World.Session.WorldIsRunning && Clock.Model.Elapsed>=nextAttempt){nextAttempt=Clock.Model.Elapsed+5;Tick();}}
+        private void Update(){if(SimulationAuthority.Allows(this) && World.Session.WorldIsRunning && Clock.Model.Elapsed>=nextAttempt){nextAttempt=Clock.Model.Elapsed+5;Tick();}}
         public int Tick()
         {
+            if(!SimulationAuthority.Allows(this))return 0;
             var now=Clock.Model.Elapsed;Population.Expire(now);var spawned=0;var hardLimit=0;foreach(var rule in World.Definition.Resources)hardLimit+=Mathf.CeilToInt(rule.Count*1.25f);
             foreach(var ticket in Population.Pending.ToArray())
             {
@@ -49,6 +51,7 @@ namespace Wildfolk
         }
         public void Restore(ResourceSnapshot[] states,ResourceRecoverySnapshot recovery=null)
         {
+            if(!SimulationAuthority.Allows(this))return;
             foreach(var state in states)
             {
                 if(live.TryGetValue(state.Id,out var old)){Population.Remove(old.Rule,old.transform.position,Clock.Model.Elapsed,false);old.gameObject.SetActive(false);Destroy(old.gameObject);live.Remove(state.Id);}

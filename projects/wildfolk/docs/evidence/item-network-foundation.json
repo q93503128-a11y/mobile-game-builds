@@ -1,0 +1,229 @@
+{
+  "date": "2026-10-16",
+  "baseline": "5eb5b989761aed7aad1c126e283db0d29831c3c9",
+  "actual_two_process_relay_play": false,
+  "environment": "Existing cached Unity 6000.3.19f1 hidden batchmode, one test process at a time. Single Local Host and same-process server-owned actor fixtures; no remote Client.",
+  "unique_editmode_passed": 16,
+  "unique_playmode_passed": 7,
+  "runs": [
+    {
+      "file": "items-edit.xml",
+      "passed": 16,
+      "failed": 0,
+      "duration_seconds": 0.226255
+    },
+    {
+      "file": "items-play.xml",
+      "passed": 6,
+      "failed": 1,
+      "duration_seconds": 26.3238991
+    },
+    {
+      "file": "items-race-play.xml",
+      "passed": 1,
+      "failed": 0,
+      "duration_seconds": 5.8130457
+    },
+    {
+      "file": "items-ui-play.xml",
+      "passed": 1,
+      "failed": 0,
+      "duration_seconds": 5.6127176
+    },
+    {
+      "file": "items-transaction-play.xml",
+      "passed": 1,
+      "failed": 0,
+      "duration_seconds": 6.43812
+    }
+  ],
+  "latest_results": [
+    {
+      "name": "Wildfolk.Tests.InventoryOperationsTests.DifferentItemsSwapWithoutChangingCounts",
+      "result": "Passed",
+      "duration_seconds": 0.025755,
+      "source": "items-edit.xml"
+    },
+    {
+      "name": "Wildfolk.Tests.InventoryOperationsTests.FullInventoryRejectsCraftAtomically",
+      "result": "Passed",
+      "duration_seconds": 0.009699,
+      "source": "items-edit.xml"
+    },
+    {
+      "name": "Wildfolk.Tests.InventoryOperationsTests.FullSameItemDestinationAndSameSlotDoNotMutateOrNotify",
+      "result": "Passed",
+      "duration_seconds": 0.001207,
+      "source": "items-edit.xml"
+    },
+    {
+      "name": "Wildfolk.Tests.InventoryOperationsTests.FullyConsumedMaterialSlotCanHoldCraftResult",
+      "result": "Passed",
+      "duration_seconds": 0.000734,
+      "source": "items-edit.xml"
+    },
+    {
+      "name": "Wildfolk.Tests.InventoryOperationsTests.MergeStopsAtMaxStackAndKeepsOverflowAtSource",
+      "result": "Passed",
+      "duration_seconds": 0.000711,
+      "source": "items-edit.xml"
+    },
+    {
+      "name": "Wildfolk.Tests.InventoryOperationsTests.MissingMaterialsNeverConsumeAnything",
+      "result": "Passed",
+      "duration_seconds": 0.000607,
+      "source": "items-edit.xml"
+    },
+    {
+      "name": "Wildfolk.Tests.InventoryOperationsTests.MultipleResultStacksCannotPartiallyConsumeIngredients",
+      "result": "Passed",
+      "duration_seconds": 0.000368,
+      "source": "items-edit.xml"
+    },
+    {
+      "name": "Wildfolk.Tests.InventoryOperationsTests.PlacementConsumptionRequiresMatchingSelectedItem",
+      "result": "Passed",
+      "duration_seconds": 0.000683,
+      "source": "items-edit.xml"
+    },
+    {
+      "name": "Wildfolk.Tests.InventoryOperationsTests.WholeStackMovesBetweenStorageAndHotbarWithOneNotification",
+      "result": "Passed",
+      "duration_seconds": 0.001039,
+      "source": "items-edit.xml"
+    },
+    {
+      "name": "Wildfolk.Tests.NetworkCreatureContractTests.EveryEcologySpawnHasRegisteredServerPrefabAndSharedBrain",
+      "result": "Passed",
+      "duration_seconds": 0.104195,
+      "source": "items-edit.xml"
+    },
+    {
+      "name": "Wildfolk.Tests.NetworkCreatureContractTests.MultiplayerWorldHasNoPersistenceAndKeepsPopulationDefinitions",
+      "result": "Passed",
+      "duration_seconds": 0.001866,
+      "source": "items-edit.xml"
+    },
+    {
+      "name": "Wildfolk.Tests.NetworkCreatureContractTests.PlayerRequestsNeverContainTargetDamageOrClientHitResult",
+      "result": "Passed",
+      "duration_seconds": 0.00211,
+      "source": "items-edit.xml"
+    },
+    {
+      "name": "Wildfolk.Tests.NetworkCreatureContractTests.RangedReplicaEndsPresentationWithoutLaunchingAnotherStone",
+      "result": "Passed",
+      "duration_seconds": 0.010903,
+      "source": "items-edit.xml"
+    },
+    {
+      "name": "Wildfolk.Tests.NetworkItemModelTests.DropFailureAndExceptionRestoreOriginalStackWithoutPublishing",
+      "result": "Passed",
+      "duration_seconds": 0.007345,
+      "source": "items-edit.xml"
+    },
+    {
+      "name": "Wildfolk.Tests.NetworkItemModelTests.EveryResourceAndGroundDropUsesRegisteredNetworkPrefab",
+      "result": "Passed",
+      "duration_seconds": 0.002041,
+      "source": "items-edit.xml"
+    },
+    {
+      "name": "Wildfolk.Tests.NetworkItemModelTests.ReplicaInventoryRejectsMutationAndFullStackPickupIsAtomic",
+      "result": "Passed",
+      "duration_seconds": 0.001895,
+      "source": "items-edit.xml"
+    },
+    {
+      "name": "Wildfolk.Tests.NetworkCreaturePlayTests.HostSpawnGroupCombatAndDeathHaveOneAuthority",
+      "result": "Passed",
+      "duration_seconds": 6.473776,
+      "source": "items-play.xml"
+    },
+    {
+      "name": "Wildfolk.Tests.NetworkItemPlayTests.CreatureLootAndNearbySessionRewardsCommitExactlyOnce",
+      "result": "Passed",
+      "duration_seconds": 2.799052,
+      "source": "items-play.xml"
+    },
+    {
+      "name": "Wildfolk.Tests.NetworkItemPlayTests.ExistingInventoryUiSplitsMovesSelectsAndEquipsThroughHost",
+      "result": "Passed",
+      "duration_seconds": 5.578813,
+      "source": "items-ui-play.xml"
+    },
+    {
+      "name": "Wildfolk.Tests.NetworkItemPlayTests.PickupRaceFullBagDropReplayAndRetiredPlayerCannotDuplicate",
+      "result": "Passed",
+      "duration_seconds": 6.331863,
+      "source": "items-transaction-play.xml"
+    },
+    {
+      "name": "Wildfolk.Tests.NetworkItemPlayTests.SharedResourceFinalHitDropsOnceAndRecoversWithNewIdentity",
+      "result": "Passed",
+      "duration_seconds": 3.830678,
+      "source": "items-play.xml"
+    },
+    {
+      "name": "Wildfolk.Tests.StabilityPlayTests.LongPressSplitHoldsChosenAmountUntilExplicitPlacementOrCancel",
+      "result": "Passed",
+      "duration_seconds": 3.409401,
+      "source": "items-play.xml"
+    },
+    {
+      "name": "Wildfolk.Tests.StabilityPlayTests.PooledPickupsResetCountsAndReuseWithoutDuplicateRewards",
+      "result": "Passed",
+      "duration_seconds": 2.669243,
+      "source": "items-play.xml"
+    }
+  ],
+  "source_validation": {
+    "result": "PASS",
+    "unique_asset_guids": 592
+  },
+  "limitations": [
+    "No actual 2-peer Relay integration or remote owner UI/delta receive QA",
+    "No mobile, latency/loss, bandwidth profiling or 4-player stress",
+    "Singleplayer sanity is restricted to selected inventory/split/pool checks; no full regression",
+    "No facility/building/world/reconnect/account persistence"
+  ],
+  "live_editor": {
+    "compiled": true,
+    "console_errors": 0,
+    "console_warnings": 0,
+    "playing": false,
+    "focused": false,
+    "dirty": false,
+    "protocol": 3,
+    "registered_ecology_prefabs": 17,
+    "resource_rules": 5,
+    "synchronized_changed_client_files": 80,
+    "user_save_sha256_unchanged": "57d560f19e49507fbc7ac00b48e1dda5759732a181d1c0baa441ad4536da7970"
+  },
+  "timing_kst": [
+    {
+      "phase": "정본 및 사례 확인",
+      "start": "11:24:38",
+      "end": "11:29:07",
+      "seconds": 269
+    },
+    {
+      "phase": "구현 및 첫 빌드",
+      "start": "11:29:07",
+      "end": "11:40:23",
+      "seconds": 676
+    },
+    {
+      "phase": "관련 자동검사",
+      "start": "11:40:23",
+      "end": "11:49:37",
+      "seconds": 554
+    },
+    {
+      "phase": "마무리 검토와 정본 정리",
+      "start": "11:49:37",
+      "end": "11:57:28",
+      "seconds": 471
+    }
+  ]
+}

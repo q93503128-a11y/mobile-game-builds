@@ -10,6 +10,7 @@ namespace Wildfolk
         public PlayerEquipment Equipment;
         public Health OwnHealth;
         public bool CreatureTargetsOnly;
+        public bool NetworkTargetsOnly;
         public int HandIndex=>handIndex;
         public event System.Action AttackStarted;
         public bool IsAttacking { get; private set; }
@@ -67,6 +68,7 @@ namespace Wildfolk
             for(var i=0;i<count;i++)
             {
                 var health=candidates[i].GetComponentInParent<Health>();
+                if(NetworkTargetsOnly && (health==null || health.GetComponent<NetworkCreature>()==null && health.GetComponent<NetworkResource>()==null))continue;
                 if(CreatureTargetsOnly && (health==null || health.GetComponent<NetworkCreature>()==null))continue;
                 if(!CombatAffiliation.CanDamage(OwnHealth,health) || !InSector(candidates[i],out var distance,out var alignment))continue;
                 var node=health.GetComponent<ResourceNode>();

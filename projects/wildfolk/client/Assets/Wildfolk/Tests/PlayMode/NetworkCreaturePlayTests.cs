@@ -47,7 +47,7 @@ namespace Wildfolk.Tests
             var pickups=Object.FindObjectsByType<WorldPickup>(FindObjectsSortMode.None).Length;
             Assert.That(player.Commands.Attack(),Is.True);Assert.That(second.Commands.Attack(),Is.True);yield return new WaitForSeconds(.20f);
             Assert.That(a.Health.Current,Is.Zero);Assert.That(a.Health.ApplyDamage(999),Is.Zero);Assert.That(deaths,Is.EqualTo(1));Assert.That(world.DeathCount,Is.EqualTo(count+1));Assert.That(world.LastDeath.CreatureId,Is.EqualTo(id));Assert.That(world.LastDeath.Items.Count,Is.GreaterThan(0));
-            Assert.That(progression.Experience,Is.EqualTo(xp));Assert.That(progression.Gold,Is.EqualTo(gold));Assert.That(Object.FindObjectsByType<WorldPickup>(FindObjectsSortMode.None).Length,Is.EqualTo(pickups));
+            Assert.That(progression.Experience,Is.EqualTo(xp));Assert.That(progression.Gold,Is.EqualTo(gold));Assert.That(Object.FindObjectsByType<WorldPickup>(FindObjectsSortMode.None).Length,Is.GreaterThan(pickups));
             yield return new WaitForSeconds(.4f);Assert.That(NetworkSession.Instance.Manager.SpawnManager.SpawnedObjects.ContainsKey(id),Is.False);
         }
         [UnityTest]public IEnumerator HostTargetsLivingPlayersAndLaunchesOneAuthoritativeProjectile()

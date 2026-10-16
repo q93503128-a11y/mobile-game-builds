@@ -14,7 +14,7 @@ namespace Wildfolk.Tests
             var task=menu.Session.Host(ConnectionRoute.LocalNetwork);
             for(var i=0;i<300 && !task.IsCompleted;i++)yield return null;
             Assert.That(task.IsCompleted && task.Result,Is.True,menu.Session.LastFailure);
-            Assert.That(menu.Session.Manager.NetworkConfig.Prefabs.Prefabs.Count,Is.EqualTo(12));
+            Assert.That(menu.Session.Manager.NetworkConfig.Prefabs.Prefabs.Count,Is.EqualTo(18));
             Assert.That(menu.Session.EnterGame(),Is.True);
             NetworkPlayer player=null;
             for(var i=0;i<300;i++){yield return null;player=Object.FindFirstObjectByType<NetworkPlayer>();if(player!=null && player.IsSpawned)break;}

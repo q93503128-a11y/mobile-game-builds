@@ -6,6 +6,7 @@ namespace Wildfolk
     public sealed class MultiplayerArena : MonoBehaviour
     {
         public CameraFollow Follow;
+        public NetworkInventoryUi InventoryUi;
         public VirtualJoystick Joystick;
         public Text HealthLabel,CampLabel;
         public Button DashButton;
@@ -17,7 +18,7 @@ namespace Wildfolk
         public void BindLocal(NetworkPlayer player)
         {
             LocalPlayer=player;Follow.Target=player.transform;Joystick.Session=player.Commands.Session;player.GetComponent<PlayerInputAdapter>().Joystick=Joystick;Joystick.gameObject.SetActive(true);DashButton.interactable=true;
-            player.Health.Changed+=RefreshHealth;RefreshText();
+            InventoryUi.Bind(player);player.Health.Changed+=RefreshHealth;RefreshText();
         }
         public void Dash(){if(LocalPlayer!=null)LocalPlayer.Commands.Dash();}
         public void Leave(){if(NetworkSession.Instance!=null){NetworkSession.Instance.Leave();}else SceneFlow.Home(SceneFlow.Repository);}

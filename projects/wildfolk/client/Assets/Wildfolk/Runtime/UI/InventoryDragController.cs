@@ -24,7 +24,7 @@ namespace Wildfolk
         public bool IsSelected(int index,bool chest)=>selectedIndex==index && selectedModel!=null && selectedModel==Model(chest);
         private InventoryModel sourceModel;
         private bool hoveredChest;
-        private InventoryModel Model(bool chest) => chest ? Storage.Chest==null ? null : Storage.Chest.Model : Owner.Model;
+        private InventoryModel Model(bool chest) => chest ? Storage==null || Storage.Chest==null ? null : Storage.Chest.Model : Owner.Model;
         public RectTransform CanvasRect;
         public RectTransform Ghost;
         public Image GhostIcon;
@@ -38,7 +38,7 @@ namespace Wildfolk
         private InventorySlotView hoveredView;
         private int hoveredIndex;
 
-        private void Start() { Owner.Model.Changed += Refresh; Session.StateChanged += StateChanged;Storage.Changed+=StorageChanged; }
+        private void Start() { Owner.Model.Changed += Refresh; Session.StateChanged += StateChanged;if(Storage!=null)Storage.Changed+=StorageChanged; }
         private void OnDestroy()
         {
             if (Owner != null && Owner.Model != null) Owner.Model.Changed -= Refresh;
@@ -78,7 +78,7 @@ namespace Wildfolk
         public void Move(PointerEventData data)
         {
             if (!IsDragging || data.pointerId != pointer) return;
-            if (RectTransformUtility.ScreenPointToLocalPointInRectangle(CanvasRect,data.position,data.pressEventCamera,out var position))
+            if (RectTransformUtility.ScreenPointToLocalPointInRectangle(CanvasRect,data.position,data.pressEventCamera!=null ? data.pressEventCamera : CanvasRect.GetComponentInParent<Canvas>().worldCamera,out var position))
                 Ghost.anchoredPosition=position;
         }
         public void Hover(int index,InventorySlotView view,bool chest=false)
@@ -95,7 +95,7 @@ namespace Wildfolk
         {
             if (!IsDragging || data.pointerId!=pointer) return;
             if(equipmentSource.HasValue){if(!chest)Equipment.Unequip(equipmentSource.Value,index);else PlayerFeedback.ShowKey("feedback.armor_bag");}
-            else InventoryModel.Transfer(sourceModel,SourceIndex,Model(chest),index,HeldAmount);
+            else Transfer(sourceModel,SourceIndex,Model(chest),index,HeldAmount);
             Cancel();
         }
         public void End(PointerEventData data) { if (IsDragging && data.pointerId==pointer && !IsHoldingPartial) Cancel(); }
@@ -106,8 +106,8 @@ namespace Wildfolk
         private void OpenSelected(bool actions)
         {
             if(Session.State!=SessionState.Inventory || IsDragging || selectedModel==null || selectedIndex<0)return;
-            var chest=Storage.Chest!=null && selectedModel==Storage.Chest.Model;
-            var view=chest ? GetComponent<ChestPanel>().ChestSlots[selectedIndex] : Storage.IsOpen ? GetComponent<ChestPanel>().PlayerSlots[selectedIndex] : GetComponent<InventoryPanel>().Slots[selectedIndex];
+            var chest=Storage!=null && Storage.Chest!=null && selectedModel==Storage.Chest.Model;
+            var view=chest ? GetComponent<ChestPanel>().ChestSlots[selectedIndex] : Storage!=null && Storage.IsOpen ? GetComponent<ChestPanel>().PlayerSlots[selectedIndex] : GetComponent<InventoryPanel>().Slots[selectedIndex];
             var stack=selectedModel.GetSlot(selectedIndex);if(stack.IsEmpty)return;
             if(actions)SplitPanel.OpenActions(selectedIndex,view,chest,stack.Count,stack.Item);else SplitPanel.Open(selectedIndex,view,chest,stack.Count,stack.Item);
         }
@@ -115,18 +115,20 @@ namespace Wildfolk
         {
             if(Session.State!=SessionState.Inventory)return;
             var model=Model(chest);if(model==null || model.GetSlot(index).Count<=amount || amount<1)return;
-            var scale=CanvasRect.GetComponentInParent<Canvas>().scaleFactor;
-            var data=new PointerEventData(EventSystem.current){pointerId=-734,position=RectTransformUtility.WorldToScreenPoint(null,view.transform.position)+new Vector2(95,95)*scale};
+            var canvas=CanvasRect.GetComponentInParent<Canvas>();var scale=canvas.scaleFactor;
+            var data=new PointerEventData(EventSystem.current){pointerId=-734,position=RectTransformUtility.WorldToScreenPoint(canvas.worldCamera,view.transform.position)+new Vector2(95,95)*scale};
             Begin(index,view,data,chest);IsHoldingPartial=true;HeldAmount=amount;HeldCancel.SetActive(true);Refresh();
         }
         public void BeginHeld(PointerEventData data){if(IsHoldingPartial){pointer=data.pointerId;Move(data);}}
         public bool PlaceHeld(int index,bool chest)
-        {if(!IsHoldingPartial)return false;if(!InventoryModel.Transfer(sourceModel,SourceIndex,Model(chest),index,HeldAmount)){PlayerFeedback.ShowKey("feedback.slot_space");return false;}Cancel();return true;}
+        {if(!IsHoldingPartial)return false;if(!Transfer(sourceModel,SourceIndex,Model(chest),index,HeldAmount)){PlayerFeedback.ShowKey("feedback.slot_space");return false;}Cancel();return true;}
         public void DropHeldWorld(){if(IsHoldingPartial && ItemDrop.Drop(sourceModel,SourceIndex,HeldAmount))Cancel();}
+        private bool Transfer(InventoryModel source,int from,InventoryModel target,int to,int amount)
+        {return source==Owner.Model && target==Owner.Model ? Owner.TransferSlots(from,to,amount) : InventoryModel.Transfer(source,from,target,to,amount);}
         private void UpdateSplit()
         {
             var valid=Session.State==SessionState.Inventory && !IsDragging && selectedModel!=null && selectedIndex>=0 && !selectedModel.GetSlot(selectedIndex).IsEmpty && selectedModel.GetSlot(selectedIndex).Count>1;
-            SplitButton.interactable=ChestSplitButton.interactable=valid;
+            SplitButton.interactable=valid;if(ChestSplitButton!=null)ChestSplitButton.interactable=valid;
         }
         public void DropWorld(PointerEventData data)
         {if(!IsDragging || data.pointerId!=pointer)return;if(!equipmentSource.HasValue)ItemDrop.Drop(sourceModel,SourceIndex,HeldAmount);Cancel();}

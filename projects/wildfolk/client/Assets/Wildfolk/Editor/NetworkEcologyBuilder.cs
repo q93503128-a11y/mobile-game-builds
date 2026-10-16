@@ -14,7 +14,7 @@ namespace Wildfolk.Editor
         public static GameObject BuildPrefab()
         {
             var entries=new List<NetworkSpawnEntry>();
-            foreach(var name in new[]{"Chicken","Boar","Rabbit","Deer","Sheep","Enemy","Goblin","SlingshotGoblin","Skeleton","Pebble","GoblinCamp"})
+            foreach(var name in new[]{"Chicken","Boar","Rabbit","Deer","Sheep","Enemy","Goblin","SlingshotGoblin","Skeleton","Pebble","GoblinCamp","Tree","Stone","IronOreNode","FallenLog","SmallPlant","WorldPickup"})
             {
                 var source=AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Wildfolk/Prefabs/"+name+".prefab");
                 var root=(GameObject)PrefabUtility.InstantiatePrefab(source);root.name="Network "+name;root.AddComponent<NetworkObject>();
@@ -24,6 +24,8 @@ namespace Wildfolk.Editor
                     root.AddComponent<NetworkRigidbody2D>();var creature=root.AddComponent<NetworkCreature>();
                     var animal=root.GetComponent<NeutralAnimal>();var enemy=root.GetComponent<EnemyController>();var goblin=root.GetComponent<GoblinController>();creature.Visual=animal!=null ? animal.Visual : enemy!=null ? enemy.AttackPose : goblin.Pose;
                 }
+                if(root.GetComponent<ResourceNode>()!=null)root.AddComponent<NetworkResource>();
+                if(root.GetComponent<WorldPickup>()!=null){root.AddComponent<NetworkGroundItem>();var trigger=root.AddComponent<CircleCollider2D>();trigger.isTrigger=true;trigger.radius=Data<GameplaySettings>("GameplaySettings").PickupRadius;var body=root.AddComponent<Rigidbody2D>();body.bodyType=RigidbodyType2D.Kinematic;body.gravityScale=0;}
                 if(root.GetComponent<StoneProjectile>()!=null)root.AddComponent<NetworkProjectile>();
                 if(root.GetComponent<GoblinCamp>()!=null)root.AddComponent<NetworkCamp>();
                 var prefab=PrefabUtility.SaveAsPrefabAsset(root,"Assets/Wildfolk/Prefabs/Network"+name+".prefab");Object.DestroyImmediate(root);
@@ -43,7 +45,7 @@ namespace Wildfolk.Editor
             var animals=go.AddComponent<AnimalPopulation>();animals.Definition=Data<AnimalPopulationDefinition>("AnimalPopulation");animals.World=world;animals.Clock=clock;animals.Navigation=nav;world.Animals=animals;
             var night=go.AddComponent<ZombieSpawner>();night.World=world;night.Definition=Data<ZombieSpawnDefinition>("ZombieSpawn");night.Prefab=Actor<EnemyController>("Enemy");night.SecondaryPrefab=Actor<EnemyController>("Skeleton");night.Clock=clock;night.Session=session;night.Player=health;night.Region=region;
             var goblins=go.AddComponent<GoblinSpawner>();goblins.World=world;goblins.Definition=Data<GoblinDefinition>("Goblin");goblins.CampDefinition=Data<GoblinCampDefinition>("GoblinCamp");goblins.Prefab=Actor<GoblinController>("Goblin");goblins.RangedPrefab=Actor<GoblinController>("SlingshotGoblin");goblins.Clock=clock;goblins.Session=session;goblins.Player=health;
-            var service=go.AddComponent<NetworkCreatureWorld>();service.World=world;service.Session=session;service.Clock=clock;service.Animals=animals;service.Goblins=goblins;service.Night=night;service.Prefabs=entries.ToArray();
+            var service=go.AddComponent<NetworkCreatureWorld>();service.World=world;service.Catalog=Data<ContentCatalog>("ContentCatalog");service.Session=session;service.Clock=clock;service.Animals=animals;service.Goblins=goblins;service.Night=night;service.Prefabs=entries.ToArray();
             var result=PrefabUtility.SaveAsPrefabAsset(go,PrefabPath);Object.DestroyImmediate(go);return result;
         }
         // One hidden batch compile/asset build; no window activation or multi-peer Play.

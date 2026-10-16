@@ -15,6 +15,7 @@ namespace Wildfolk
 
         private void Break()
         {
+            var network=GetComponent<NetworkResource>();if(network!=null){network.Break();return;}
             var pickup = PrefabPool.Spawn(PickupPrefab, transform.position, Quaternion.identity);
             pickup.Initialize(Definition.DropItem, Definition.DropCount, Player, Settings);
             Destroy(gameObject);

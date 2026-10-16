@@ -1,8 +1,85 @@
-# Multiplayer Foundation — 현재 Foundation 2
+# Multiplayer Foundation — 현재 Foundation 3
+
+2026-10-16. 기준5eb5b989761aed7aad1c126e283db0d29831c3c9. 현재는 Player/Creature/Combat에 **Resource→Harvest→Ground Drop→Pickup→개인 Inventory 및 Creature Loot/XP·Gold**를 Host 권위로 연결한 단계다. 컴파일/관련 자동검사를 수행했으며 **이번에도 실제2인 Relay Play 통합 QA는 하지 않았다**. 이전 Foundation 1의 실제 Player 검수를 이번 Item/Resource 수신 검증으로 확대하지 않는다.
+
+## Resource / Harvest / Recovery
+
+기존 Tree/Fallen Log/Small Plant/Stone/Iron Ore의 Rule/ResourceDefinition과 도구·Tier 판정을 공유한다. WorldGenerator는 멀티에서 Host만 Resource를 만들고, Client는 정적 지형/물과 Host가 spawn한 자원 replica를 표시한다. 파괴한 나무가 Client의 로컬 월드 생성으로 다시 생기는 경로를 제거했다.
+
+NetworkResource는 기존 프리팹의 variant다. Host가 초기 ResourceIdentity ID/Rule/HP/hit sequence를 전달하고 Health.Changed/Damaged 때만 상태를 갱신한다. 정적 자원에 매 Frame Transform/RPC를 보내지 않는다. 초기 위치/scale은 NGO spawn transform을 사용한다. Client는 Health.IsReplica로 독립 피해를 거절하며 hit/HP/collider/alternate sprite를 표시한다.
+
+Primary의 기존 PlayerCombat을 재사용하며 멀티에서는 NetworkCreature 또는 NetworkResource만 선택한다. 도구 적합성/Required Tier/Range/Facing/Point-Blank/Single Target은 Host에서 판정한다. 같은 자원의 lethal hit는 기존 Health latch와 NetworkResource.Broken으로 한 번만 Drop/파괴한다. ResourceIdentity는 파괴를 기존 ResourceRegeneration/ResourcePopulation에 기록한 뒤 NGO Despawn한다.
+
+기존 Region Soft Target/후보 Cursor/Harvest Exclusion/자연 회복 지연/Hard Limit/최대2개 Tick 보충을 Host에서만 실행한다. 복구는 원래 ID 부활이 아니라 p-serial의 새 위치/ID를 가진 NetworkResource spawn이다. Host의 기존 Capture/Recovery Snapshot 형식은 유지하지만, 이 패스에서 멀티 Save/재접속 복원을 연결하지 않았다. Client의 Tick/Record/Restore 진입도 권위 검사로 막는다.
+
+## 공통 Ground Item과 Pickup
+
+Resource Drop, Creature Loot, Player Drop은 모두 기존 WorldPickup의 NetworkGroundItem variant를 사용한다. 같은 NetworkSpawnFactory 등록 목록으로 생성하며 별도 로컬 Drop truth를 만들지 않는다. Ground 상태는 item ID/count/origin/destination/start/dropper metadata를 Host가 지정한다. Client는 공통 WorldPickup 표현 함수로 산란/부유만 수행한다. Client가 피해·획득·수량을 확정하지 않는다.
+
+Ground trigger가 로컬 owner에게 가까운 후보를 등록한다. NetworkInventory는 가까운 후보만 확인하며, 같은 Item/Inventory revision에서 실패한 획득을 계속 RPC로 반복하지 않는다. 가방이 바뀌거나 범위를 나갔다 들어오거나 Item 상태가 달라지면 재시도할 수 있다. 전체 Ground Item 목록을 매 Frame 탐색/방송하지 않는다. 생성 후 기존 Pickup delay를 유지한다. Player Drop은 기존 안전한 근처 위치에 놓으므로 즉시 발밑으로 회수하지 않는다.
+
+Owner Pickup 요청→Host의 연결/생존/존재/거리/지연/가방 수용 검사→claim latch→InventoryModel.TryAddAmounts→Count0/Despawn 순서다. **멀티는 한 Ground stack을 전량 넣을 수 있을 때만 획득한다.** 공간이 부족하면 부분 수량을 미리 더하지 않고 Ground를 그대로 둔다. 두 요청이 같은 프레임에 들어와도 첫 성공만 소비하며 이미 소비/제거된 개체는 다시 획득하지 못한다. 싱글의 기존 부분 자동 획득 방식은 유지한다. Ground 자체는 Host 소유 NetworkObject이고, 확정 후 아이템은 획득자의 세션 Inventory에 속한다.
+
+## Inventory / 선택 / Armor / Player Drop
+
+기존 PlayerInventory/InventoryModel36칸(Hotbar9+Storage27)과 Stack/Drag/Split/Item Actions/Drop UI를 재사용한다. InventoryUiBuilder는 시설 참조가 없는 모드도 지원하며 멀티에 Crafting/Chest 버튼·패널을 생성하지 않는다. 새 가방 디자인을 만들지 않았다. Bag/Hotbar/장비/선택 도구 아이콘/세션 Level·XP·Gold를 연결했다. Inventory가 열려도 월드는 계속 진행하고 해당 Player의 이동·공격만 막는다.
+
+NetworkInventory의 NetworkList는 **Owner read / Server write**다. Model 변경 이벤트 때36칸을 비교해 달라진 index만 dirty한다. 선택 슬롯/Inventory revision/XP·Gold도 별도 owner-read 상태다. 초기 owner는 전체 snapshot을 받고 이후 슬롯 delta를 기존 읽기 전용 Model에 적용한다. 다른 Player의 전체 가방을 표시용으로 복제하지 않고 기존 public Armor/held 외형만 공유한다. 매 Frame Inventory 전체를 직렬화하지 않는다.
+
+UI는 IInventoryAuthority를 통해 Select/Transfer/Drop/Equip/Unequip 요청을 보낸다. Client Model은 읽기 전용이며 로컬에서 먼저 수량을 확정하지 않는다. Host는 owner RPC/sender/연결·생존/slot/수량/Inventory 열림/expected revision을 검증한다. 오래된 revision은 거절한다. 요청 sequence는 replay를 거절하고, Client는 한 요청의 결과와 해당 snapshot revision 반영까지 다음 mutation을 대기한다. 부분 이동/합치기/전체 교환/Armor 교체·반환은 기존 모델/Equipment 코드로 수행한다.
+
+Player Drop은 Host가 안전한 지형·장애물 없는 위치를 검사한 뒤 TryDropSlot에서 정확한 수량을 예약 감소→Ground 생성/초기화·NGO spawn 성공 확인→성공 알림을 처리한다. 생성이 false/exception이면 원래 slot을 복원하고 Changed를 발행하지 않는다. 실패 중 만들어진 대기 NetworkObject도 취소한다. PlayerItemDrop.BindWorld는 소유 여부와 무관하게 모든 멀티 actor에 월드/Pickup/설정을 연결하며 싱글 authoring도 같은 경계를 사용한다.
+
+## Creature Loot와 XP / Gold 규칙
+
+기존 LootTable/variant 선택과 Host-only roll은 유지한다. NetworkDeathResult의 payload는 한 번만 commit할 수 있고 NetworkCreature.DeathResolved와 함께 중복 Loot/보상을 차단한다. World가 commit한 결과를 공통 Ground Item으로 생성한다. 무한히 커지는 죽은 NetworkObject ID ledger를 추가하지 않았으므로 NGO ID 재사용과 충돌하지 않는다. 자연 잠복/단순 Despawn은 사망 보상을 만들지 않는다.
+
+**멀티 XP/Gold는 처치 지점24유닛 안의 살아 있는 접속 Player에게 각자 LootTable의 전체 값을1회 지급한다.** 유효한 Player 공격자로 발생한 처치만 대상이다. 멀리 있거나 사망/연결 종료된 Player는 받지 않는다. 금액을 인원수로 나누지 않고 각 개인 세션 지갑에 지급하며 Ground Item의 획득자와는 독립이다. 뒤늦게 참가한 Player에게 과거 보상을 재지급하지 않는다. 싱글은 기존 마지막 직접 공격자 보상을 유지한다.
+
+선택 이유: 기존 개인 PlayerProgression/Level/Gold 구조는 유지하면서 멀티 막타 경쟁을 줄이고 근처 지원 역할도 함께 성장하게 한다. 기여도/누적 피해/계정 entitlement를 계산하지 않는다.24는 이번 Lowfire의 초기 거리 규칙이며 실제 밸런스 합격 수치가 아니다. [Grounded 공식 설명](https://grounded.obsidian.net/news/grounded/time-for-the-backyard-to-get-hotter-and-hazier)의 party 공유 성장 자원 사례와 [Deep Rock Galactic 공식 업데이트](https://www.deeprockgalactic.com/updatesold)의 임무 완료 재화 보상 구조를 짧게 참고했다. 해당 게임의 XP/Gold 분배식을 Lowfire의 규칙으로 단정하거나 복사하지 않았다.
+
+여기서 ownership은 Player의 현재 세션 Inventory/XP/Gold와 획득 확정이다. 영구 계정 소유권/온라인 entitlement/Cloud Save가 아니다. 접속 종료 Inventory 보존/재접속 복원/사망 아이템 드랍 규칙은 아직 제공하지 않는다.
+
+## 검증과 한계
+
+[실행별 자동검사 증거](evidence/item-network-foundation.json). 기존 캐시 검수 프로젝트에서 hidden batchmode 프로세스를 한 번에 하나만 실행했다. 새 clone/대화형 Editor/Computer Use/Focus/Show 조작은 하지 않았다.
+
+- EditMode16/16(0.226255초): 관련 InventoryOperations/새 atomic drop·read-only/등록 Resource·Ground/기존 Creature 계약.
+- 고유 PlayMode7개 최종 통과. 첫 묶음6/7 후 실패한 Drop 월드 바인딩 사례1개만 재실행해 통과했다. 이후 같은 UI 사례에 선택 도구 아이콘과 실제 trigger 자동 획득 검사를 추가해 통과했다. 중복 실행을 새 사례로 합산하지 않았다.
+- 단일 실제 NGO Local Host에서 같은 자원 final hit2개→Drop/Despawn1회, 기존 Population 회복→새 ID/Network spawn, full Inventory 획득 거절, 두 actor의 같은 Ground 획득·제거 후 재요청 거절, quantity1 Drop/오래된 revision 재요청 거절, despawn한 actor의 요청 거절을 검사했다.
+- Skeleton sword variant의 기존 table roll→Ground 수량 일치, 같은 death result 재commit 거절, 근처 Player2명 지급/먼 Player 제외/각 지갑 중복 없음, 기존 Creature lethal path를 검사했다.
+- 기존36/9 가방 UI의 부분 Stack 배치/선택/Armor equip·unequip, 선택 도구 아이콘, trigger 기반 자동 획득을 검사했다. 싱글은 기존 Long Press Split과 pooled pickup 수량/보상 sanity2개만 수행했다.
+- Source/reference PASS:592 unique asset GUIDs/Landscape/참조/제품 표시 문구.
+
+두 actor는 같은 Host 안의 서버 fixture다. **실제 원격 Client의 owner UI/delta 수신, 실제 네트워크 pickup race/disconnect, Relay 두 프로세스, 양쪽 Game View, 모바일 터치·고지연/손실·4인·bandwidth profiling은 이번에 검사하지 않았다.** retired actor 검사와 실제 transport disconnect 검수를 구분한다. 재미/공유 거리24/whole-stack pickup의 체감은 사용자 및 이후 통합 QA 대상이다. 미측정 기기 성능 합격을 주장하지 않는다.
+
+## 다음 범위
+
+Chest sync, Crafting/Workbench/Furnace/Campfire processing, Building/Wall/Door, Multiplayer World/reconnect persistence, Account/Friend/Invite/Cloud Save/Host Migration/4인 stress와 실제2인 Relay 통합 QA는 미완료다. Consumable 사용/Skill 투자 등 다른 생존 행동을 이번 Item 전달 범위와 혼동하지 않는다.
+
+ProtocolVersion은3이며 Player 포함18개 prefab을 시작 전에 명시 등록한다. 같은 콘텐츠/Catalog 순서와 현재 protocol을 전제로 한다. 최종 atomic Drop 강화 후 해당 Pickup/Drop/replay/retired actor 검사1개를 다시 실행해1/1(6.43812초)을 확인했다. Drop 성공 반환 직후 이미 NGO spawn이 완료됐는지도 검사했다. 열린 LIVE 프로젝트에 변경80파일을 동기화하고 MCP에서 컴파일 완료/Console error0·warning0/Play 중지/dirty=false/포커스 없음/Protocol3/등록 ecology prefab17개·Resource Rule5개를 확인했다. 사용자 world-v1.json SHA256은57d560f19e49507fbc7ac00b48e1dda5759732a181d1c0baa441ad4536da7970로 전후 동일하다.
+
+## 이번 시간 기록(KST)
+
+2026-10-16의 실제 wall clock이다. Unity 배치 기동/Import/컴파일 대기를 포함하며 병행한 문서 작업 시간을 중복 합산하지 않는다. 관련 실패/변경 사례만 재실행했다. 실제2인 Relay 대기는 없다.
+
+정본 및 사례 확인:11:24:38→11:29:07,4분29초.
+
+구현 및 첫 빌드:11:29:07→11:40:23,11분16초.
+
+관련 자동검사:11:40:23→11:49:37,9분14초.
+
+마무리 검토와 정본 정리:11:49:37→11:57:28,7분51초.
+
+Git 마무리는11:57:28부터이며 실제 종료 시각/전체 경과는 완료 보고에 기록한다.
+
+---
+
+## Foundation 2 기록 — 2026-10-16
 
 2026-10-16. 기준 bfc18d46a740b73fb898495ae84be2e86f365c9c. 현재 변경은 **Creature + Combat 네트워크 기반 구현**이다. 이번 패스는 컴파일과 최소 자동검사로 검증했으며 **실제 2인 Relay Play 통합 QA는 수행하지 않았다**. 아래 Foundation 1의 실제 두 프로세스 검수 기록은 이전 Player slice의 증거이며 이번 Creature 검증으로 확대 해석하지 않는다.
 
-## 현재 완료한 구현
+### 현재 완료한 구현
 
 - Host만 Creature Spawn/Despawn, Animal Population, Night Spawn, Goblin Warband/Camp 보충, AI/그룹 반응/Soft Separation, 대상 선택과 피해·사망을 결정한다.
 - Chicken/Boar/Rabbit/Deer/Sheep, Zombie/Goblin/Slingshot Goblin/Skeleton과 Rusted Sword Skeleton variant를 기존 프리팹의 네트워크 variant로 제공한다. 별도 종 이름별 네트워크 AI를 만들지 않았다.
@@ -10,7 +87,7 @@
 - Host의 기존 Creature Brain이 살아 있는 NetworkPlayer 중 가까운 대상을 선택한다. 근접 준비/타격 동안 대상을 고정하고 대상 사망 시 추적을 초기화해 다시 선택한다. 실제 타격과 새총 Projectile 충돌은 Host에서만 수행한다. Player HP/기존 Armor 방어는 공통 Health를 사용한다. Player 사망은 자신의 입력을 막으며 월드를 전역 정지하지 않는다. Revive/PvP/보상 소유권은 없다.
 - Health는 lethal 판정을 이벤트 전 latch하고 HP를0까지 clamp한다. NetworkCreature.DeathResolved가 사망 결과를 한 번만 만들며, 짧은 눕힘 표현 뒤 Host Despawn한다. 자연 잠복/세션 종료는 Loot/Death를 만들지 않는다.
 
-## 씬과 Spawn 경계
+### 씬과 Spawn 경계
 
 Multiplayer 씬은 기존 단색 야영지에서 **기존 WorldGenerationDefinition의 고정 default seed를 사용하는 필드**로 확장했다. 기존 서식지·Road·지역 Population을 공유하기 위한 지형이다. 각 peer는 동일 정본/seed의 정적 지면·물·자원 장애물을 생성한다. 이것은 Tree/Stone 파괴·재생이나 Resource/World Interaction 네트워크화가 아니다. 멀티의 Primary는 Creature만 타격하며 ResourceRegeneration은 비활성, Save/시설/Inventory UI는 생성하지 않는다. 기존 Singleplayer 씬과 사용자 저장을 멀티 세션에 사용하지 않는다.
 
@@ -22,7 +99,7 @@ NetworkCreatureWorld는 Host에서만 기존 Population/Clock/Spawner를 활성�
 
 동물의 가까운 동일 그룹 flee propagation/cohesion과 Goblin의 직접 이웃 assist/Warband3~5·새총0~2/leash/camp resident/refill을 공통 코드로 유지한다. Soft Separation은 Host의 모든 살아 있는 Player를 고려한다. 새 Group 전수 비교를 추가하지 않았고 기존 Group 순회 구조를 유지한다. Spawn의 Player 안전 거리는 모든 접속 Player 위치를 검사한다. Population/야간 spawn의 기준 anchor는 첫 생존 Player다. 여러 지역을 흩어져 탐험할 때의 population scaling/관심 영역 최적화는 이번에 완성하지 않았다.
 
-## 표현과 트래픽
+### 표현과 트래픽
 
 Root XY는 server-authoritative NGO NetworkTransform/NetworkRigidbody2D, 보간과0.04 threshold/unreliable delta를 사용한다.20Hz tick에서 quantized facing/pose/HP/hit sequence/target/brain/lifecycle frame을 비교하고 달라진 경우만 server-write NetworkVariable을 dirty한다. Species/Group/Camp/Variant 등 identity는 별도 상태로 분리했다. 매 렌더 Frame마다 모든 개체의 전체 RPC를 방송하지 않는다. HP와 pose가 함께 들어가는 frame의 변경 시 전체 구조가 직렬화되는 비용은 남아 있으며 실제 bandwidth/지연 profiling은 하지 않았다.
 
@@ -30,15 +107,15 @@ Client는 Brain 없이 root interpolation, 손/시선·Visual pose, HealthBar/hi
 
 Player는 기존 이동/상태 외에 server attack timestamp/sequence/hand/tool index로 같은 PlayerCombat.Present를 재사용한다. 오른쪽 Fist hold 버튼과 기존 Dash를 배치했다. 무기 획득/선택 Inventory 동기화는 아직 없으며 서버가 가진 무기 stats를 판정하는 구조까지만 제공한다.
 
-## Death와 Loot의 정확한 범위
+### Death와 Loot의 정확한 범위
 
 LootOnDeath는 멀티 개체에서 로컬 WorldPickup/XP/Gold 지급을 실행하지 않는다. Host가 현재 LootTable.Items/RareItems를 한 번 roll해 immutable NetworkDeathResult(개체/공격자 NetworkObject ID, Item/Count, XP/Gold)를 만들고 NetworkCreatureWorld.LootGenerated 이벤트/LastDeath로 노출한다. 이는 다음 패스 연결 경계이며 실제 아이템 획득/보상 소유권/대기 아이템 persistence가 아니다. LastDeath는 최신 결과 검사 용도이며 모든 사망의 영구 ledger가 아니다. Client는 Died authoritative event를 호출하거나 독립 roll하지 않는다. 싱글은 기존 공격자 보상·바닥 Drop을 유지한다.
 
-## 미완료 범위
+### 미완료 범위
 
 Ground pickup/drop, Inventory/Item ownership, Chest/Crafting/Furnace/Workbench, Resource harvesting·파괴/복구, Building/Door, Multiplayer persistence, reward ownership 세부 규칙, Friend/Account/Cloud Save/Host Migration/4인 stress와 **통합 실제 멀티 QA**는 미완료다. 이번 코드를 실제 두 Client 수신·화면 동기화·재접속/서비스/실기까지 검증한 것으로 표현하지 않는다.
 
-## 이번 검증
+### 이번 검증
 
 [자동검사 결과와 실행별 증거](evidence/creature-network-foundation.json). 기존 tests/artifacts/unity를 재사용했고 새 clone이나 대화형 Editor를 만들지 않았다. 한 번에 한 hidden batchmode 검수 프로세스만 실행했다. Windows/Computer Use/Focus/Show 조작은 하지 않았다.
 
@@ -51,7 +128,7 @@ Ground pickup/drop, Inventory/Item ownership, Chest/Crafting/Furnace/Workbench, 
 
 첫 자동 실행에서 static ecology anchor의 Rigidbody 가정과 scene 완료/World.Start 초기화 순서를 수정했다. 검수 fixture의 lazy Multiplayer 진입 누락과 leash 밖 assist 조건도 고쳤다. 통과한 전체 회귀를 매번 반복하지 않았다. 실제 두 프로세스 Relay/양쪽 Game View, 모바일 터치/디자인/재미·밸런스/고지연/4인·대규모 성능은 이번에 검사하지 않았다. 최종 대기 spawn 정리 이후 기존 Local Host 생성/이동/Dash/종료 자동검사1개를 다시 수행해1/1(6.0071142초)을 확인했다. 열린 LIVE Editor에도 변경81파일을 동기화했고 MCP에서 컴파일 완료/Console error0·warning0/MainMenu/Play 중지/dirty=false/포커스 없음, Protocol2/등록 ecology prefab11개를 확인했다. 사용자 world-v1.json SHA256은57d560f19e49507fbc7ac00b48e1dda5759732a181d1c0baa441ad4536da7970로 전후 동일하다.
 
-## 이번 시간 기록(KST)
+### 이번 시간 기록(KST)
 
 2026-10-16의 실제 wall clock이다. 배치 기동/컴파일·Import 대기를 포함하며 문서 작업과 겹친 대기 시간을 중복 합산하지 않는다. 실제2인 접속 대기는 없다. 같은 기존 검수 프로젝트를 재사용했고 실패한 관련 사례만 선별해 재실행했다.
 

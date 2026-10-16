@@ -21,6 +21,7 @@ namespace Wildfolk
 
         public void Initialize(ItemDefinition item, int count, PlayerInventory owner, GameplaySettings configuration,bool playerDropped=false)
         {
+            var network=GetComponent<NetworkGroundItem>();if(network!=null){network.Configure(item,count,owner,configuration,playerDropped);return;}
             Item = item;
             Count = count;
             player = owner;
@@ -35,6 +36,12 @@ namespace Wildfolk
             waitForExit=playerDropped;
         }
 
+        public void ApplyNetwork(ItemDefinition item,int count){Item=item;Count=count;Icon.sprite=item.Icon;}
+        public void PresentNetwork(Vector2 from,Vector2 to,float elapsed,GameplaySettings config)
+        {
+            var t=Mathf.Clamp01(elapsed/config.DropTravelTime);transform.position=Vector2.Lerp(from,to,1-(1-t)*(1-t));
+            FloatingVisual.localPosition=restVisual+Vector3.up*(t<1 ? Mathf.Sin(t*Mathf.PI)*.4f : Mathf.Sin(elapsed*3)*.035f);
+        }
         private void Update()
         {
             if (Item == null || player == null || Time.timeScale == 0) return;

@@ -21,6 +21,7 @@ namespace Wildfolk
         }
         public bool TryEquipFromSlot(int index)
         {
+            if(Inventory.Authority!=null && !Inventory.Authority.IsApplying)return Inventory.Authority.Equip(index);
             var stack=Inventory.Model.GetSlot(index);var item=stack.IsEmpty ? null : stack.Item;
             if(item==null || item.Armor==null)return false;
             var previous=item.Armor.Slot==ArmorSlot.Head ? HeadArmor : BodyArmor;
@@ -31,6 +32,7 @@ namespace Wildfolk
         }
         public bool Unequip(ArmorSlot slot,int destination=-1)
         {
+            if(Inventory.Authority!=null && !Inventory.Authority.IsApplying)return Inventory.Authority.Unequip(slot,destination);
             var item=slot==ArmorSlot.Head ? HeadArmor : BodyArmor;if(item==null)return false;
             if(!(destination<0 ? Inventory.Model.Add(item,1)==1 : Inventory.Model.TryAddAt(destination,item))){PlayerFeedback.ShowKey("feedback.bag_full");return false;}
             if(slot==ArmorSlot.Head)HeadArmor=null;else BodyArmor=null;RefreshArmor();return true;

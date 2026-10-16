@@ -123,3 +123,14 @@ Lowfire Home은 같은 FrontendSceneBuilder에서 제작한다. JournalAction은
 - Health/NetworkDeathResult: lethal latch와 replica health를 분리한다. LootOnDeath는 멀티에서 Host-only 결과 이벤트만 만들고 local pickup/reward를 지급하지 않는다. Ground Item/소유권/보상 지급은 다음 범위다.
 
 이전 Foundation 1의 static 야영지 설명은 당시 구조다. 현재 Multiplayer는 기존 default-seed 지형 위 Host ecology를 사용한다. 구현/자동검사와 미수행 실제2인 통합 검증은 MULTIPLAYER_FOUNDATION을 따른다.
+
+## Multiplayer Foundation 3
+
+- NetworkResource: 기존 ResourceIdentity/Health/ResourceRegeneration의 Host 권위 상태와 static NGO spawn/Despawn. Client는 초기 자원을 자체 생성하지 않는다. 기존 Recovery Snapshot/새 p-ID를 유지하며 멀티 Save는 연결하지 않았다.
+- NetworkGroundItem/WorldPickup: 공통 Drop 데이터/표현과 Host-only whole-stack claim. Trigger는 owner 후보만 등록하며 Inventory revision/범위 변화 때 요청을 허용한다. 로컬 pickup simulation은 실행하지 않는다.
+- NetworkInventory/IInventoryAuthority: owner RPC·sequence·revision 검증, 서버 공통 Model/Equipment/Drop 실행, Owner-only NetworkList delta/선택/XP·Gold. 초기 snapshot과 개별 변경은 읽기 전용 모델에 적용한다.
+- InventoryModel.TryDropSlot/PlayerItemDrop.BindWorld: 감소→생성 commit/rollback과 공통 월드 참조 경계다. 이전 OnSpawn local-owner만 바인딩하는 가정을 사용하지 않는다.
+- NetworkInventoryUi/InventoryUiBuilder: 기존 UI에 actor를 주입하며 시설 없는 멀티에서는 Chest/Crafting UI를 만들지 않는다. 새로운 가방 디자인/별도 가방 모델은 없다.
+- NetworkDeathResult.TryCommit/NetworkCreatureWorld.RecordDeath: 한 번 계산한 table 결과를 Ground와 근처24유닛 생존·접속 Player의 개인 지갑 지급으로 연결한다. 계정/Cloud ownership이 아니다.
+
+이전 Foundation 2의 Resource/Item 제외 단락은 당시 범위다. 현재 구현과 실제2인 검증 미수행은 MULTIPLAYER_FOUNDATION을 따른다.

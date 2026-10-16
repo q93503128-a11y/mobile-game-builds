@@ -31,7 +31,7 @@ namespace Wildfolk
         {
             players.Add(this);
             Commands.MovementAuthority=this;Commands.CombatAuthority=this;
-            combat.CreatureTargetsOnly=true;combat.enabled=IsServer;Health.IsReplica=!IsServer;
+            combat.CreatureTargetsOnly=false;combat.NetworkTargetsOnly=true;combat.enabled=IsServer;Health.IsReplica=!IsServer;
             if(IsServer)combat.AttackStarted+=PublishAttack;
             Motor.Terrain=FindFirstObjectByType<WorldNavigation>();
             Motor.enabled=IsServer;Motor.Locomotion.enabled=IsServer;Equipment.enabled=IsServer;GetComponent<CharacterStats>().enabled=IsServer;
@@ -41,7 +41,7 @@ namespace Wildfolk
             if(IsServer){Health.Changed+=PublishStatus;Equipment.Changed+=PublishStatus;PublishStatus();receivedAt=Time.unscaledTime;}
             else ApplyStatus(Status.Value);
             ApplyMotion(Motion.Value);
-            if(IsOwner)FindFirstObjectByType<MultiplayerArena>()?.BindLocal(this);
+            if(IsOwner && NetworkObject.IsPlayerObject)FindFirstObjectByType<MultiplayerArena>()?.BindLocal(this);
         }
         public override void OnNetworkDespawn()
         {

@@ -10,6 +10,8 @@ namespace Wildfolk
     {
         public static NetworkCreatureWorld Active {get;private set;}
         public NetworkSpawnEntry[] Prefabs;
+        public ContentCatalog Catalog;
+        public const float RewardRadius=24;
         public WorldGenerator World;
         public WorldClock Clock;
         public AnimalPopulation Animals;
@@ -22,7 +24,7 @@ namespace Wildfolk
         public event Action<NetworkDeathResult> LootGenerated;
         private readonly List<NetworkObject> pending=new List<NetworkObject>();
         private void Awake()
-        {Active=this;Animals.enabled=Goblins.enabled=Night.enabled=Clock.enabled=IsAuthority;World.Renewal.enabled=false;}
+        {Active=this;Animals.enabled=Goblins.enabled=Night.enabled=Clock.enabled=IsAuthority;World.Renewal.enabled=IsAuthority;}
         private void Start()
         {World.Generate(World.Definition.DefaultSeed);}
         public T Create<T>(T source,Vector3 position,Quaternion rotation,Transform parent=null) where T:Component
@@ -35,6 +37,12 @@ namespace Wildfolk
             }
             throw new InvalidOperationException("Unregistered multiplayer actor: "+source.name);
         }
+        public void CancelPending(GameObject actor){var obj=actor.GetComponent<NetworkObject>();pending.Remove(obj);actor.SetActive(false);Destroy(actor);}
+        public bool SpawnPendingNow(NetworkObject actor)
+        {
+            if(!IsAuthority || !NetworkManager.Singleton.IsListening || actor==null || actor.IsSpawned)return false;
+            pending.Remove(actor);actor.Spawn(true);return actor.IsSpawned;
+        }
         private void LateUpdate()
         {
             if(!IsAuthority)return;
@@ -46,7 +54,14 @@ namespace Wildfolk
             var nav=World.GetComponent<WorldNavigation>();nav.Player=player.transform;
         }
         public void RecordDeath(NetworkDeathResult result)
-        {if(!IsAuthority)return;DeathCount++;LastDeath=result;LootGenerated?.Invoke(result);}
+        {
+            if(!IsAuthority || !result.TryCommit())return;DeathCount++;LastDeath=result;
+            var manager=NetworkManager.Singleton;if(!manager.SpawnManager.SpawnedObjects.TryGetValue(result.CreatureId,out var creature))return;
+            foreach(var item in result.Items)NetworkGroundItem.Drop(item.Item,item.Count,creature.transform.position,null,false);
+            if(manager.SpawnManager.SpawnedObjects.TryGetValue(result.AttackerId,out var attacker) && attacker.GetComponent<NetworkPlayer>()!=null)
+                foreach(var player in NetworkPlayer.Active)if(player.Health.IsAlive && manager.ConnectedClients.ContainsKey(player.OwnerClientId) && Vector2.Distance(player.transform.position,creature.transform.position)<=RewardRadius)player.GetComponent<PlayerProgression>().Reward(result.Experience,result.Gold);
+            LootGenerated?.Invoke(result);
+        }
         private void OnDestroy()
         {foreach(var actor in pending)if(actor!=null && !actor.IsSpawned)Destroy(actor.gameObject);pending.Clear();if(Active==this)Active=null;}
     }

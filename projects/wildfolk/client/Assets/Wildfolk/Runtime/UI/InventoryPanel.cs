@@ -20,7 +20,7 @@ namespace Wildfolk
         {
             Owner.Model.Changed+=Refresh;
             Owner.SelectionChanged+=Refresh;
-            Session.StateChanged+=Refresh;Crafting.StationChanged+=Refresh;L.Changed+=Refresh;Storage.Changed+=Refresh;
+            Session.StateChanged+=Refresh;if(Crafting!=null)Crafting.StationChanged+=Refresh;L.Changed+=Refresh;if(Storage!=null)Storage.Changed+=Refresh;
             Refresh();
         }
 
@@ -28,7 +28,7 @@ namespace Wildfolk
         {
             if(Owner != null && Owner.Model != null) Owner.Model.Changed-=Refresh;
             if(Owner != null) Owner.SelectionChanged-=Refresh;
-            if(Session != null) Session.StateChanged-=Refresh;Crafting.StationChanged-=Refresh;L.Changed-=Refresh;
+            if(Session != null) Session.StateChanged-=Refresh;if(Crafting!=null)Crafting.StationChanged-=Refresh;L.Changed-=Refresh;
             if(Storage!=null) Storage.Changed-=Refresh;
         }
 
@@ -37,7 +37,7 @@ namespace Wildfolk
 
         private void Refresh()
         {
-            View.SetActive(Session.State==SessionState.Inventory && !Storage.IsOpen && !Crafting.ScreenOpen);
+            View.SetActive(Session.State==SessionState.Inventory && (Storage==null || !Storage.IsOpen) && (Crafting==null || !Crafting.ScreenOpen));
             var selected=Owner.SelectedIndex;
             for(var i=0;i<Slots.Length;i++) Slots[i].Show(Owner.Model.GetSlot(i),i==selected);
             var stack=Owner.SelectedStack;

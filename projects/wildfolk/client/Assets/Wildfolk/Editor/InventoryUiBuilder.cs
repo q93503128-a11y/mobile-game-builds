@@ -35,12 +35,12 @@ namespace Wildfolk.Editor
             panel.SelectedName=Text("Selected Name",surface.transform,string.Empty,new Vector2(556,205),new Vector2(222,90),28,TextAnchor.MiddleLeft);
             panel.SelectedCategory=Text("Category",surface.transform,string.Empty,new Vector2(545,115),new Vector2(320,28),20,TextAnchor.MiddleLeft);
             BuildEquipment(root,surface.transform,owner,panel);
-            panel.CraftingButton=QualityUiBuilder.Action(surface.transform,"Crafting","ui.crafting.title",new Vector2(479,312),new Vector2(250,64),crafting.OpenHandCrafting,out var craftLabel);
-            CraftingUiBuilder.Build(root,safe,crafting);
+            if(crafting!=null){panel.CraftingButton=QualityUiBuilder.Action(surface.transform,"Crafting","ui.crafting.title",new Vector2(479,312),new Vector2(250,64),crafting.OpenHandCrafting,out var craftLabel);
+            CraftingUiBuilder.Build(root,safe,crafting);}
             overlay.gameObject.SetActive(false);
             var split=Image("Split",surface.transform,"panel",new Vector2(.5f,.5f),new Vector2(541,-281),new Vector2(168,58),true);Text("Label",split.transform,"ui.action.split",Vector2.zero,new Vector2(156,50),22);drag.SplitButton=Button(split);UnityEventTools.AddPersistentListener(drag.SplitButton.onClick,drag.OpenSplit);
             drag.ItemDrop=owner.GetComponent<PlayerItemDrop>();
-            ChestUiBuilder.Build(root,safe,owner,panel.Storage,drag);
+            if(panel.Storage!=null)ChestUiBuilder.Build(root,safe,owner,panel.Storage,drag);
             var dropZone=Image("Drop Zone",safe,"panel",new Vector2(.5f,1),new Vector2(0,-128),new Vector2(320,88),true);dropZone.color=new Color32(155,108,72,255);Text("Label",dropZone.transform,"ui.inventory.drop",Vector2.zero,new Vector2(300,68),27);
             dropZone.gameObject.AddComponent<InventoryDropZone>().Controller=drag;drag.DropZone=dropZone.gameObject;drag.DropZone.SetActive(false);
             var ghost=Rect("Dragged Item",safe,new Vector2(.5f,.5f),Vector2.zero,new Vector2(94,94));

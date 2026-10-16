@@ -127,10 +127,6 @@ PrefabInstance:
       propertyPath: Interaction
       value:
       objectReference: {fileID: 0}
-    - target: {fileID: 459331300772413484, guid: 2e39c5feaa7d80b438125df9889b639e, type: 3}
-      propertyPath: AllowInventory
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 580560555834153176, guid: 2e39c5feaa7d80b438125df9889b639e, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -191,13 +187,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8809118978345452038, guid: 2e39c5feaa7d80b438125df9889b639e, type: 3}
+      propertyPath: Session
+      value:
+      objectReference: {fileID: 7564107769141678363}
     m_RemovedComponents:
     - {fileID: 4937408309816132337, guid: 2e39c5feaa7d80b438125df9889b639e, type: 3}
     - {fileID: 717414266980193881, guid: 2e39c5feaa7d80b438125df9889b639e, type: 3}
     - {fileID: 7957096156132211969, guid: 2e39c5feaa7d80b438125df9889b639e, type: 3}
     - {fileID: 2551374756638748636, guid: 2e39c5feaa7d80b438125df9889b639e, type: 3}
     - {fileID: 3188559041709401587, guid: 2e39c5feaa7d80b438125df9889b639e, type: 3}
-    - {fileID: 8809118978345452038, guid: 2e39c5feaa7d80b438125df9889b639e, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 6983442542126811550, guid: 2e39c5feaa7d80b438125df9889b639e, type: 3}
@@ -219,6 +218,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 226757985403581487, guid: 2e39c5feaa7d80b438125df9889b639e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 9195730886088986995}
+    - targetCorrespondingSourceObject: {fileID: 226757985403581487, guid: 2e39c5feaa7d80b438125df9889b639e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3589098610822510503}
   m_SourcePrefab: {fileID: 100100000, guid: 2e39c5feaa7d80b438125df9889b639e, type: 3}
 --- !u!4 &784863009935437005 stripped
 Transform:
@@ -267,7 +269,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name:
   m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
-  GlobalObjectIdHash: 2615142241
+  GlobalObjectIdHash: 204425632
   InScenePlacedSourceGlobalObjectIdHash: 0
   m_InScenePlacedDisabledByDefault: 0
   DeferredDespawnTick: 0
@@ -360,3 +362,20 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   Catalog: {fileID: 11400000, guid: edf4df5213dc0bf4e96917b39fb19914, type: 2}
   LocalMarker: {fileID: 7003249994911694747}
+--- !u!114 &3589098610822510503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7578384368933851516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69d51fa1a57648898683584f6a3296be, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.NetworkInventory
+  ShowTopMostFoldoutHeaderGroup: 1
+  Slots:
+    UpdateTraits:
+      MinSecondsBetweenUpdates: 0
+      MaxSecondsBetweenUpdates: 0
