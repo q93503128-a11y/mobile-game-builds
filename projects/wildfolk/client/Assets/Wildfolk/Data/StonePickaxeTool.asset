@@ -15,6 +15,7 @@ MonoBehaviour:
   HeldSprite: {fileID: 21300000, guid: 52a5bd690e15ada49bee99dd7a9a3825, type: 3}
   Tier: {fileID: 11400000, guid: 5945e678712f7744cbe23200644f4d02, type: 2}
   Kind: 1
+  HarvestMethod: 0
   Damage: 12
   Attack:
     MaxTargets: 1
@@ -33,4 +34,8 @@ MonoBehaviour:
   - Kind: 1
     Multiplier: 3.5
   - Kind: 3
+    Multiplier: 2.5
+  - Kind: 4
+    Multiplier: 2.5
+  - Kind: 6
     Multiplier: 2.5

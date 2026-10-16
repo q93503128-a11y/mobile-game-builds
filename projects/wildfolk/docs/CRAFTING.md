@@ -1,6 +1,6 @@
 # 제작과 처리
 
-현재31 Recipe, 실제 플레이 Workbench Tier1/2(구조적 cap VI), Equipment Tier Wood/Stone/Iron이다. 정본은 RecipeDefinition/RecipeCatalog/ContentCatalog이며 이름별 Runtime 분기는 없다.
+현재36 Recipe, 실제 플레이 Workbench Tier1/2(구조적 cap VI), Equipment Tier Wood/Stone/Iron/Steel이다. 정본은 RecipeDefinition/RecipeCatalog/ContentCatalog이며 이름별 Runtime 분기는 없다.
 
 | 시설 | 결과 | 비용/처리 |
 |---|---|---|
@@ -34,7 +34,7 @@ General Workbench가 향후 Tier Progression의 중심이다. RequiredWorkbenchT
 | Leather Cap /Guard |Leather1+Wood2 /Leather2+Wood3|Workbench I 또는II|
 | Iron Helmet /Guard |Ingot2+Leather1 /Ingot3+Leather1|Workbench I 또는II|
 | 설치 Workbench I→II |Wood8+Stone6+Ingot2|가까이Interact→Upgrade II|
-| Reinforced Chest32 |Wood8+Ingot2|Workbench II|
+| Reinforced Chest36 |Wood8+Ingot2|Workbench II|
 | Stone Wall HP220 |Stone3+Wood1|Workbench II|
 
 업그레이드는 기존 설치물을 교체하며 위치/회전/Save ID/HP 비율을 유지한다. 별도 Workbench II 제작 Recipe는 없고 II 아이템 참조는 설치/저장/Editor Profile용이다. I의 모든 Recipe를 유지한다. Armor Bench/빈 전문 시설은 없다.
@@ -57,6 +57,4 @@ Furnace sequential queue와 Campfire Meat/Raw→Clean Cup Batch는 기존 Statio
 
 ## 초기 금속 진행
 
-현재 신규 Recipe6종과 시설 지원/원자 소비/업그레이드 UI는 [METAL_PROGRESSION](METAL_PROGRESSION.md)이 정본이다. General Workbench는 int Tier1~6·UpgradeTo·임의 길이 UpgradeCosts·선택 TierVisual/TierDisplayKey를 사용한다. Recipe.RequiredWorkbenchTier는 일반 제작과 전문 시설의 선행 조건이다. Furnace Steel은 살아 있는 II 이상 Workbench가 시설의 WorkbenchSupportRange(현재12유닛) 안에 있어야 신규 예약 가능하다. 지원 제작대를 잃어도 이미 예약된 cargo는 완료·회수·저장을 유지한다. 시설 registry와 변경 이벤트를 사용하고 전수 매-frame 검색을 추가하지 않았다.
-
-현재 Tier를 Roman 표기로 표시하고 구성된 다음 단계만 연다. 비용은 재료별 보유/필요·녹색/적색으로 표시하며 별도 ScrollRect가 임의 개수의 행을 수용한다. 실제 I→II는 기존3종 비용이다. 검수 이미지의5종은 레이아웃 fixture이며 제품 비용이 아니다. 신규 장비 세트/새 시설은 만들지 않았다.
+정본은 [METAL_PROGRESSION](METAL_PROGRESSION.md)이다. I은 Iron까지, II는 Pan/Blast Furnace/Steel 장비다. Furnace는 Iron/Copper/Tin/Bronze, Blast Furnace는 Steel, Campfire는 음식·물을 담당한다. 반경 Workbench 지원 gate는 제거했다. 자연 자원 생성은 제작대와 독립이다. 비용은 임의 길이 ScrollRect, 현재 I→II는 Wood8+Stone6+Iron2다. III는 미구성이라 진입할 수 없다.

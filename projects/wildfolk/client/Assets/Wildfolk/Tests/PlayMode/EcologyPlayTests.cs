@@ -99,7 +99,7 @@ namespace Wildfolk.Tests
         {
             var armor=save.Catalog.Item("iron_head");player.Model.Add(armor,1);player.GetComponent<PlayerEquipment>().TryEquip(armor);var door=Object.Instantiate(save.Catalog.Item("wood_door").Placement.Prefab,new Vector2(3,0),Quaternion.identity).GetComponent<WorldDoor>();yield return null;door.RestoreOpen(true);
             var old=save.Capture();old.Version=3;old.AnimalEcology=null;old.GoblinEcology=null;old.Animals=new[]{new AnimalSnapshot{Id="a0_0",Rule=0,HP=10,Position=new Vector2(-12,-5),Home=new Vector2(-12,-5)},new AnimalSnapshot{Id="a1_0",Rule=1,HP=20,Position=new Vector2(14,-6),Home=new Vector2(14,-6)}};save.Apply(SaveRepository.Decode(SaveRepository.Encode(old)));yield return null;
-            Assert.That(save.Capture().Version,Is.EqualTo(5));Assert.That(save.World.Seed,Is.EqualTo(old.Seed));Assert.That(player.GetComponent<PlayerEquipment>().HeadArmor,Is.SameAs(armor));Assert.That(save.World.Animals.Capture().Single(a=>a.Id=="a0_0").HP,Is.EqualTo(10));Assert.That(Object.FindFirstObjectByType<WorldDoor>().IsOpen,Is.True);Assert.That(save.GetComponent<GoblinSpawner>().Camps.Count,Is.EqualTo(1));save.Validate(save.Capture());
+            Assert.That(save.Capture().Version,Is.EqualTo(6));Assert.That(save.World.Seed,Is.EqualTo(old.Seed));Assert.That(player.GetComponent<PlayerEquipment>().HeadArmor,Is.SameAs(armor));Assert.That(save.World.Animals.Capture().Single(a=>a.Id=="a0_0").HP,Is.EqualTo(10));Assert.That(Object.FindFirstObjectByType<WorldDoor>().IsOpen,Is.True);Assert.That(save.GetComponent<GoblinSpawner>().Camps.Count,Is.EqualTo(1));save.Validate(save.Capture());
         }
         [UnityTest]public IEnumerator CombatSandboxDoesNotCreateDetachedBrownBodyRenderers()
         {

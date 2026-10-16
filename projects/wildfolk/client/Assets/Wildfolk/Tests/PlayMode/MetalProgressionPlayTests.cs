@@ -28,7 +28,7 @@ namespace Wildfolk.Tests
             var combat=player.GetComponent<PlayerCombat>();var denied=0;combat.HarvestDenied+=r=>denied++;
             Assert.That(combat.TryAttack(),Is.True);yield return new WaitForSeconds(.8f);
             Assert.That(node.Health.Current,Is.EqualTo(health));Assert.That(combat.LastHitCount,Is.Zero);Assert.That(combat.LastDamage,Is.Zero);Assert.That(damageSignals,Is.Zero);Assert.That(denied,Is.EqualTo(1));Assert.That(save.World.Renewal.Capture(),Is.Empty);Assert.That(Object.FindObjectsByType<WorldPickup>(FindObjectsSortMode.None).Length,Is.EqualTo(before));
-            var pick=save.Catalog.Item("stone_pickaxe");player.Model.Add(pick,1);player.SelectSlot(1);Assert.That(combat.TryAttack(),Is.True);yield return new WaitForSeconds(.8f);
+            var pick=save.Catalog.Item("prospecting_pan");player.Model.Add(pick,1);player.SelectSlot(1);Assert.That(combat.TryAttack(),Is.True);yield return new WaitForSeconds(1.3f);
             Assert.That(combat.LastHitCount,Is.EqualTo(1));Assert.That(node.Health.Current,Is.EqualTo(health-pick.Tool.DamageFor(ResourceKind.TinOre)));Assert.That(damageSignals,Is.EqualTo(1));
             var drop=node.Definition.DropItem;node.Harvest(pick.Tool,1000,player);node.Harvest(pick.Tool,1000,player);Assert.That(deaths,Is.EqualTo(1));yield return null;Assert.That(Object.FindObjectsByType<WorldPickup>(FindObjectsSortMode.None).Count(p=>p.Item==drop),Is.EqualTo(1));
         }
@@ -46,17 +46,25 @@ namespace Wildfolk.Tests
             Assert.That(Object.FindObjectsByType<WorldPlaceable>(FindObjectsSortMode.None).Single(p=>p.SaveId==stable).Definition.WorkbenchTier,Is.EqualTo(2));Assert.That(player.Model.CountItem(save.Catalog.Item("bronze")),Is.EqualTo(4));Assert.That(player.Model.CountItem(save.Catalog.Item("steel")),Is.EqualTo(3));Assert.That(Object.FindObjectsByType<ResourceIdentity>(FindObjectsSortMode.None).Any(r=>r.Id==destroyedId),Is.False);Assert.That(save.World.Renewal.Capture().Single(r=>r.Id==destroyedId).Destroyed,Is.True);
             Object.Destroy(clone);
         }
-        [UnityTest]public IEnumerator FurnaceRequiresNearbyLiveWorkbenchIIForSteelAndKeepsReservedCargoOnLoad()
+        [UnityTest]public IEnumerator BasicRejectsSteelAdvancedNeedsNoNearbyBenchAndCargoSurvivesLoad()
         {
-            var bench=Place("workbench",new Vector2(0,-2));var furnace=Place("furnace",new Vector2(2,-2));var process=furnace.GetComponent<StationProcessing>();yield return null;process.enabled=false;
-            var steel=save.Catalog.Recipe("steel");foreach(var c in steel.Ingredients)player.Model.Add(c.Item,c.Count*3);
-            Assert.That(process.Add(steel,player,1),Is.False);Assert.That(process.BatchSize(steel,player.Model),Is.Zero);foreach(var c in steel.Ingredients)Assert.That(player.Model.CountItem(c.Item),Is.EqualTo(c.Count*3));
-            Position(Vector2.zero);crafting.OpenStation(bench);foreach(var c in bench.Definition.UpgradeCosts)player.Model.Add(c.Item,c.Count);Assert.That(crafting.UpgradeWorkbench(),Is.True);yield return null;
-            Assert.That(process.Add(steel,player,2),Is.True);process.Advance(2);var id=furnace.GetComponent<WorldPlaceable>().SaveId;var snapshot=save.Capture();save.Validate(snapshot);save.Apply(SaveRepository.Decode(SaveRepository.Encode(snapshot)));
+            var basic=Place("furnace",new Vector2(0,-2));var advanced=Place("blast_furnace",new Vector2(2,-2));yield return null;
+            var process=advanced.GetComponent<StationProcessing>();process.enabled=false;var steel=save.Catalog.Recipe("steel");foreach(var c in steel.Ingredients)player.Model.Add(c.Item,c.Count*3);
+            Assert.That(basic.GetComponent<StationProcessing>().Add(steel,player,1),Is.False);Assert.That(process.Add(steel,player,2),Is.True);process.Advance(2);
+            Assert.That(process.Add(save.Catalog.Recipe("cooked_meat"),player,1),Is.False);Assert.That(basic.GetComponent<StationProcessing>().Add(save.Catalog.Recipe("cooked_meat"),player,1),Is.False);
+            var id=advanced.GetComponent<WorldPlaceable>().SaveId;var snapshot=save.Capture();save.Validate(snapshot);save.Apply(SaveRepository.Decode(SaveRepository.Encode(snapshot)));
             foreach(var restored in Object.FindObjectsByType<StationProcessing>(FindObjectsSortMode.None))restored.enabled=false;yield return null;
             process=Object.FindObjectsByType<WorldPlaceable>(FindObjectsSortMode.None).Single(p=>p.SaveId==id).GetComponent<StationProcessing>();
-            Assert.That(process.Recipe.Id,Is.EqualTo("steel"));Assert.That(process.Queue.WaitingCount,Is.EqualTo(1));Assert.That(process.Remaining,Is.EqualTo(snapshot.Placeables.Single(p=>p.Id==id).Processing.Remaining));process.Advance(20);Assert.That(process.OutputCount,Is.EqualTo(2));Assert.That(process.Collect(player),Is.True);Assert.That(player.Model.CountItem(steel.Result),Is.EqualTo(2));
-            var two=Object.FindObjectsByType<CraftingStation>(FindObjectsSortMode.None).Single(s=>s.Definition.Station==StationKind.Workbench);two.transform.position+=Vector3.right*30;foreach(var c in steel.Ingredients)player.Model.Add(c.Item,c.Count);Assert.That(process.Add(steel,player,1),Is.False);
+            Assert.That(process.Recipe.Id,Is.EqualTo("steel"));Assert.That(process.Queue.WaitingCount,Is.EqualTo(1));process.Advance(20);Assert.That(process.OutputCount,Is.EqualTo(2));Assert.That(process.Collect(player),Is.True);Assert.That(player.Model.CountItem(steel.Result),Is.EqualTo(2));
+        }
+        [UnityTest]public IEnumerator ChestScrollWheelTouchAndBottomSlotDragPreserveContents()
+        {
+            var chest=Object.Instantiate(save.Catalog.Item("reinforced_chest").Placement.Prefab,new Vector2(0,-2),Quaternion.identity).GetComponent<StorageChest>();yield return null;Position(Vector2.zero);
+            var stacks=Enumerable.Range(0,36).Select(i=>new SavedStack()).ToArray();stacks[35]=new SavedStack{Item="wood",Count=7};chest.Model.Restore(stacks,save.Catalog);Assert.That(player.GetComponent<PlayerStorage>().OpenChest(chest),Is.True);yield return null;Canvas.ForceUpdateCanvases();
+            var ui=Object.FindFirstObjectByType<ChestPanel>();Assert.That(ui.ChestSlots.Count(v=>v.gameObject.activeSelf),Is.EqualTo(36));Assert.That(ui.Scroll.content.rect.height,Is.GreaterThan(ui.Scroll.viewport.rect.height));
+            Assert.That(ui.Scroll.verticalScrollbar.handleRect.rect.height,Is.LessThanOrEqualTo(ui.Scroll.viewport.rect.height));var wheel=new UnityEngine.EventSystems.PointerEventData(UnityEngine.EventSystems.EventSystem.current){scrollDelta=new Vector2(0,-10)};ui.Scroll.OnScroll(wheel);Canvas.ForceUpdateCanvases();Assert.That(ui.Scroll.verticalNormalizedPosition,Is.LessThan(1));ui.Scroll.verticalScrollbar.value=0;yield return null;
+            var slot=ui.ChestSlots[35];var handler=slot.GetComponent<InventorySlotDrag>();var point=RectTransformUtility.WorldToScreenPoint(null,slot.transform.position);var data=new UnityEngine.EventSystems.PointerEventData(UnityEngine.EventSystems.EventSystem.current){pointerId=-1,position=point,button=UnityEngine.EventSystems.PointerEventData.InputButton.Left};handler.OnPointerDown(data);data.position+=Vector2.right*40;handler.OnBeginDrag(data);Assert.That(ui.Drag.IsDragging,Is.True);ui.PlayerSlots[20].GetComponent<InventorySlotDrag>().OnDrop(data);handler.OnEndDrag(data);Assert.That(player.Model.GetSlot(20).Count,Is.EqualTo(7));Assert.That(chest.Model.GetSlot(35).IsEmpty,Is.True);
+            stacks[0]=new SavedStack{Item="wood",Count=3};stacks[35]=new SavedStack();chest.Model.Restore(stacks,save.Catalog);ui.Scroll.verticalNormalizedPosition=1;yield return null;var source=ui.ChestSlots[0].GetComponent<InventorySlotDrag>();point=RectTransformUtility.WorldToScreenPoint(null,source.transform.position);var touch=new UnityEngine.InputSystem.UI.ExtendedPointerEventData(UnityEngine.EventSystems.EventSystem.current){pointerId=1,pointerType=UnityEngine.InputSystem.UI.UIPointerType.Touch,position=point,button=UnityEngine.EventSystems.PointerEventData.InputButton.Left};source.OnPointerDown(touch);touch.position+=Vector2.up*30;source.OnBeginDrag(touch);touch.position+=Vector2.up*100;source.OnDrag(touch);source.OnEndDrag(touch);Assert.That(ui.Drag.IsDragging,Is.False);Assert.That(chest.Model.GetSlot(0).Count,Is.EqualTo(3));Assert.That(ui.Scroll.verticalNormalizedPosition,Is.LessThan(1));
         }
     }
 }

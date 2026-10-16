@@ -404,8 +404,6 @@ NetworkReviewHarness는 Editor 폴더에만 있으며 제품 빌드에 포함하
 
 Git 마무리는21:44:52부터다. commit/push/원격 확인과 전체 경과는 완료 보고에 실제 종료 시각으로 추가한다. 각 소요 시간은 한 줄에 한 단계만 표기한다.
 
-## 후속 초기 금속 / Workbench 진행 패스
+## 초기 금속 교정 / 현재 Protocol7
 
-현재 Protocol6이다. 새 자원 Network variants3개를 기존26개 뒤에 등록하며 Player 포함 명시 prefab30개와 기존 in-scene ecology NetworkObject를 사용한다. Foundation1~5 권위 모델/지속 ID를 유지한다. 일회성 Upgraded bool을 server-write Tier1~6으로 교체했으며 구성된 단계만 변경한다. Upgrade는 양쪽 revision을 검증한 Host 요청과 공통 예약/commit transaction을 사용한다. 실패/예외 시 Inventory를 복구한다. Client의 Item ID 기반 Building 표현과 Tier를 함께 초기 동기화한다.
-
-Host ResourceNode.Harvest가 도구 타입/Rank/생존/authority를 다시 검사한다. 거절 시 HP·Hit sequence·loot를 변경하지 않고 짧은 Owner 전용 requirement 안내만2.5초 간격으로 보낸다. 성공 피해·파괴·drop·신규 recovery는 기존 NetworkResource/Population 경계를 따른다. Furnace 예약도 Host가 Workbench support tier를 검사하며 기존 cargo delta와 queue 저장을 재사용한다. 전체 상태 매-frame 전송/새 resource Update는 없다. 검사는 실제 한 Local Host와 서버 소유 fixture actor이며 실제2-process Relay/4인/remote 재Join을 수행한 것으로 해석하지 않는다. [이번 증거](METAL_PROGRESSION.md)를 따른다.
+Player 포함 명시 prefab31개와 in-scene ecology NetworkObject를 사용한다. 기존 자원3 variant에 Blast Furnace variant를 추가했다. Host는 HarvestMethod/ToolKind/Rank를 함께 검증한다. Tin은 Pan만 허용한다. II에서 만드는 별도 Blast Furnace만 Steel을 처리하며 근처 Workbench 지원 gate는 없다. Reinforced Chest36과 가변 스크롤 UI는 기존 양쪽 revision transfer를 사용한다. Save v6으로 구 Steel cargo/Chest32를 이관한다. 실제 Local Host 직접 검사와 관련 자동검사는 METAL_PROGRESSION을 따른다. 새 Protocol의 실제 remote Client·Relay·4인 검수는 이번에 하지 않았다. 시작 시설5개에는 Blast Furnace가 없다.

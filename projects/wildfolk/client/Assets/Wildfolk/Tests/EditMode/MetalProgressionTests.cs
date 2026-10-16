@@ -64,9 +64,9 @@ namespace Wildfolk.Tests
         [Test]public void MiningToolPermissionHasNoFistFallbackAndMaterialKindsRemainDistinct()
         {
             foreach(var name in new[]{"CopperOreNode","TinOreNode","CoalNode"})
-            {var r=Data<ResourceDefinition>(name+"Resource");Assert.That(r.CanHarvest(null),Is.False);Assert.That(r.CanHarvest(Data<ToolDefinition>("IronSwordTool")),Is.False);Assert.That(r.CanHarvest(Data<ToolDefinition>("IronPickaxeTool")),Is.True);Assert.That(r.RequiredToolItem,Is.Not.Null);}
+            {var r=Data<ResourceDefinition>(name+"Resource");Assert.That(r.CanHarvest(null),Is.False);Assert.That(r.CanHarvest(Data<ToolDefinition>("IronSwordTool")),Is.False);Assert.That(r.CanHarvest(Data<ToolDefinition>(name=="TinOreNode" ? "ProspectingPanTool" : "IronPickaxeTool")),Is.True);Assert.That(r.RequiredToolItem,Is.Not.Null);}
             Assert.That(Data<ResourceDefinition>("TinOreNodeResource").CanHarvest(Data<ToolDefinition>("PickaxeTool")),Is.False);
-            Assert.That(Catalog.Items.Length,Is.EqualTo(41));Assert.That(Catalog.Recipes.Length,Is.EqualTo(31));Assert.That(AssetDatabase.FindAssets("t:BiomeDefinition").Length,Is.EqualTo(1));
+            Assert.That(Catalog.Items.Length,Is.EqualTo(48));Assert.That(Catalog.Recipes.Length,Is.EqualTo(36));Assert.That(AssetDatabase.FindAssets("t:BiomeDefinition").Length,Is.EqualTo(1));
         }
     }
 }

@@ -15,9 +15,9 @@ namespace Wildfolk.Tests
             var rules=Rules;var map=new WorldMap(rules.World,rules.World.DefaultSeed);var player=rules.Player;var slots=new SavedStack[player.Settings.InventorySlots];for(var i=0;i<slots.Length;i++)slots[i]=new SavedStack();var growth=player.GetComponent<PlayerProgression>().Definition;
             return new SavedGame{Seed=map.Seed,Player=new PlayerSnapshot{Position=map.Spawn,HP=player.GetComponent<Health>().Definition.MaximumHealth,Inventory=slots,Survival=new SurvivalModel(player.GetComponent<PlayerSurvival>().Definition).Capture(),Growth=GrowthValidation.FromLegacy(0,growth),Stamina=player.GetComponent<PlayerLocomotion>().Definition.MaximumStamina},Recovery=new ResourcePopulation(map).Capture(),AnimalEcology=new AnimalEcologySnapshot(),GoblinEcology=new GoblinEcologySnapshot()};
         }
-        [Test]public void V4MigratesToV5WithoutChangingSingleplayerPayloadAndV5RoundTrips()
+        [Test]public void V4MigratesToV6WithoutChangingSingleplayerPayloadAndV5RoundTrips()
         {
-            var game=ValidGame();game.Version=4;var before=JsonUtility.ToJson(game.Player);Rules.Validate(game);Assert.That(game.Version,Is.EqualTo(5));Assert.That(JsonUtility.ToJson(game.Player),Is.EqualTo(before));Assert.That(game.Multiplayer,Is.Null);var restored=SaveRepository.Decode(SaveRepository.Encode(game));Rules.Validate(restored);Assert.That(restored.Seed,Is.EqualTo(game.Seed));Assert.That(restored.Player.Inventory.Length,Is.EqualTo(36));
+            var game=ValidGame();game.Version=4;var before=JsonUtility.ToJson(game.Player);Rules.Validate(game);Assert.That(game.Version,Is.EqualTo(6));Assert.That(JsonUtility.ToJson(game.Player),Is.EqualTo(before));Assert.That(game.Multiplayer,Is.Null);var restored=SaveRepository.Decode(SaveRepository.Encode(game));Rules.Validate(restored);Assert.That(restored.Seed,Is.EqualTo(game.Seed));Assert.That(restored.Player.Inventory.Length,Is.EqualTo(36));
         }
         [Test]public void ParticipantMetadataRejectsDuplicatesInvalidIdentityAndMismatchedHost()
         {
@@ -30,8 +30,8 @@ namespace Wildfolk.Tests
         }
         [Test]public void EveryExistingPlaceableUsesOneSourceDefinitionAndServerBuildingState()
         {
-            var world=AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Wildfolk/Prefabs/NetworkEcology.prefab").GetComponent<NetworkCreatureWorld>();var items=Rules.Catalog.Items.Where(i=>i.Placement!=null).ToArray();Assert.That(items.Length,Is.EqualTo(9));foreach(var item in items){var entry=world.Prefabs.Single(e=>e.Source==item.Placement.Prefab.gameObject);Assert.That(entry.NetworkPrefab.GetComponent<NetworkBuilding>(),Is.Not.Null);Assert.That(entry.NetworkPrefab.GetComponent<WorldPlaceable>().Definition,Is.SameAs(item.Placement));}
-            Assert.That(world.GetComponent<NetworkWorldState>(),Is.Not.Null);Assert.That(world.GetComponent<NetworkWorldPersistence>().Rules,Is.SameAs(Rules));Assert.That(AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Wildfolk/Prefabs/NetworkSession.prefab").GetComponent<NetworkManager>().NetworkConfig.ProtocolVersion,Is.EqualTo(6));
+            var world=AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Wildfolk/Prefabs/NetworkEcology.prefab").GetComponent<NetworkCreatureWorld>();var items=Rules.Catalog.Items.Where(i=>i.Placement!=null).ToArray();Assert.That(items.Length,Is.EqualTo(10));foreach(var item in items){var entry=world.Prefabs.Single(e=>e.Source==item.Placement.Prefab.gameObject);Assert.That(entry.NetworkPrefab.GetComponent<NetworkBuilding>(),Is.Not.Null);Assert.That(entry.NetworkPrefab.GetComponent<WorldPlaceable>().Definition,Is.SameAs(item.Placement));}
+            Assert.That(world.GetComponent<NetworkWorldState>(),Is.Not.Null);Assert.That(world.GetComponent<NetworkWorldPersistence>().Rules,Is.SameAs(Rules));Assert.That(AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Wildfolk/Prefabs/NetworkSession.prefab").GetComponent<NetworkManager>().NetworkConfig.ProtocolVersion,Is.EqualTo(7));
         }
     }
 }

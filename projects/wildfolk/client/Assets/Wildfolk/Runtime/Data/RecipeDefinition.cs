@@ -4,7 +4,7 @@ using UnityEngine.Serialization;
 
 namespace Wildfolk
 {
-    public enum StationKind { None, Workbench, Campfire, Furnace }
+    public enum StationKind { None, Workbench, Campfire, Furnace, BlastFurnace }
     public enum RecipeCategory { Survival, Tools, Weapons, Armor, Building, Facilities }
     public enum ProcessingKind { None, Cooking, Smelting }
     public enum UnlockKind { PlayerLevel, Skill, DiscoveredItem, Blueprint, SpecialContent }

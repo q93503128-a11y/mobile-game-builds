@@ -43,7 +43,7 @@ namespace Wildfolk.Tests
                 Assert.That(hotbar.Owner,Is.SameAs(player.GetComponent<PlayerInventory>()));
                 Assert.That(nodes,Is.Zero,"Resources are generated from Seed rather than stored as manual instances.");
                 var generator=player.Session.GetComponent<WorldGenerator>();Assert.That(generator,Is.Not.Null);Assert.That(generator.Player,Is.SameAs(player.GetComponent<PlayerInventory>()));
-                Assert.That(generator.Definition.Resources.Length,Is.EqualTo(5));Assert.That(generator.Definition.Biome.Id,Is.EqualTo("temperate"));
+                Assert.That(generator.Definition.Resources.Length,Is.EqualTo(8));Assert.That(generator.Definition.Biome.Id,Is.EqualTo("temperate"));
                 Assert.That(Object.FindObjectsByType<ParticleSystem>(FindObjectsSortMode.None),Is.Empty);
             }
             finally { if(!wasLoaded) EditorSceneManager.CloseScene(scene,true); }

@@ -1,6 +1,6 @@
 # Seed 기반 월드 생성1차
 
-WorldGenerationDefinition/TemperateBiome와 ResourceGenerationRule이 정본이다. 현재192×144유닛 유한 월드, 기본Seed9472026. WorldGenerator.SelectedSeed로 같은 Seed를 다시 선택할 수 있고 RandomSeed/사망 후 Try again은 무작위 새 월드를 만든다. 같은Seed는 기본 지형·물·Road·자원 위치/스케일을 재현한다. 동물 이동·적 Encounter는 기본 생성 재현 보장과 별도다. 변경된 자원/시설/상자/생존 상태는 Save/Load v5(v1~v4 호환) Delta로 복원한다.
+WorldGenerationDefinition/TemperateBiome와 ResourceGenerationRule이 정본이다. 현재192×144유닛 유한 월드, 기본Seed9472026. WorldGenerator.SelectedSeed로 같은 Seed를 다시 선택할 수 있고 RandomSeed/사망 후 Try again은 무작위 새 월드를 만든다. 같은Seed는 기본 지형·물·Road·자원 위치/스케일을 재현한다. 동물 이동·적 Encounter는 기본 생성 재현 보장과 별도다. 변경된 자원/시설/상자/생존 상태는 Save/Load v6(v1~v5 호환) Delta로 복원한다.
 
 WorldMap은 System.Random(seed)만 사용하여 생성하며 UnityEngine.Random 상태를 바꾸지 않는다. Perlin 기반 숲/돌 밀도는 하나의 Temperate 내부 변화다. WorldGenerator는 런타임 초기화 시 생성 데이터를 프리팹에 연결한다. WorldTerrainRenderer가 하나의1024×768 RGB 텍스처로 자연색 지면/길/물/수변을 표시한다. 명확한 사각 타일·체커 경계를 만들지 않는다. 무한 Chunk Streaming은 없다.
 

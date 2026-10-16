@@ -1,5 +1,6 @@
 using UnityEditor.Events;
 using UnityEngine;
+using UnityEngine.UI;
 using static Wildfolk.Editor.GameplayUiFactory;
 namespace Wildfolk.Editor
 {
@@ -14,13 +15,19 @@ namespace Wildfolk.Editor
             panel.Title=Text("Title",surface.transform,"item.storage_chest.name",new Vector2(-271,428),new Vector2(360,48),32,UnityEngine.TextAnchor.MiddleLeft);
             var close=Image("Close",surface.transform,"panel",new Vector2(.5f,.5f),new Vector2(497,428),new Vector2(64,64),true);
             Text("Symbol",close.transform,"×",Vector2.zero,new Vector2(58,58),40);UnityEventTools.AddPersistentListener(Button(close).onClick,storage.Session.CloseInventory);
-            var chest=InventoryUiBuilder.Grid("Chest Slots",surface.transform,new Vector2(0,215),new Vector2(792,352));
+            var scrollArea=Rect("Chest Scroll",surface.transform,new Vector2(.5f,.5f),new Vector2(0,240),new Vector2(820,300));
+            var viewport=Image("Viewport",scrollArea,"white",new Vector2(.5f,.5f),new Vector2(-12,0),new Vector2(792,300),true);viewport.color=Color.clear;viewport.gameObject.AddComponent<RectMask2D>();
+            var chest=InventoryUiBuilder.Grid("Chest Slots",viewport.transform,Vector2.zero,new Vector2(792,300));chest.anchorMin=chest.anchorMax=new Vector2(.5f,1);chest.pivot=new Vector2(.5f,1);chest.anchoredPosition=Vector2.zero;
             chest.GetComponent<UnityEngine.UI.GridLayoutGroup>().constraintCount=8;chest.GetComponent<UnityEngine.UI.GridLayoutGroup>().cellSize=new Vector2(80,80);
+            chest.GetComponent<GridLayoutGroup>().padding=new RectOffset(48,48,0,0);chest.gameObject.AddComponent<ContentSizeFitter>().verticalFit=ContentSizeFitter.FitMode.PreferredSize;
+            panel.Scroll=scrollArea.gameObject.AddComponent<ScrollRect>();panel.Scroll.content=panel.SlotsRoot=chest;panel.Scroll.viewport=(RectTransform)viewport.transform;panel.Scroll.horizontal=false;panel.Scroll.inertia=false;panel.Scroll.scrollSensitivity=50;panel.Scroll.movementType=ScrollRect.MovementType.Clamped;
+            var track=Image("Scrollbar",scrollArea,"panel",new Vector2(.5f,.5f),new Vector2(402,0),new Vector2(16,300),true);track.color=new Color32(43,61,47,255);var handle=Image("Handle",track.transform,"panel",new Vector2(.5f,.5f),Vector2.zero,new Vector2(14,0),true);handle.color=new Color32(142,151,111,255);
+            var bar=track.gameObject.AddComponent<Scrollbar>();bar.direction=Scrollbar.Direction.BottomToTop;bar.handleRect=(RectTransform)handle.transform;bar.targetGraphic=handle;panel.Scroll.verticalScrollbar=bar;panel.Scroll.verticalScrollbarVisibility=ScrollRect.ScrollbarVisibility.AutoHide;
             Text("Player Label",surface.transform,"ui.inventory.title",new Vector2(-356,54),new Vector2(180,32),23,UnityEngine.TextAnchor.MiddleLeft);
             var inventory=InventoryUiBuilder.Grid("Player Storage",surface.transform,new Vector2(0,-114),new Vector2(892,292));
             Text("Hotbar Label",surface.transform,"ui.inventory.hotbar",new Vector2(-356,-283),new Vector2(180,32),23,UnityEngine.TextAnchor.MiddleLeft);
             var quick=InventoryUiBuilder.Grid("Player Hotbar",surface.transform,new Vector2(0,-355),new Vector2(892,92));
-            panel.ChestSlots=new InventorySlotView[32];panel.PlayerSlots=new InventorySlotView[owner.Settings.InventorySlots];
+            panel.ChestSlots=new InventorySlotView[36];panel.PlayerSlots=new InventorySlotView[owner.Settings.InventorySlots];
             for(var i=0;i<panel.ChestSlots.Length;i++)panel.ChestSlots[i]=Create(chest,i,false,true,drag,panel);
             for(var i=0;i<panel.PlayerSlots.Length;i++)panel.PlayerSlots[i]=Create(i<PlayerInventory.HotbarSize ? quick : inventory,i,i<PlayerInventory.HotbarSize,false,drag,panel);
             var split=Image("Split",surface.transform,"panel",new Vector2(.5f,.5f),new Vector2(0,-446),new Vector2(168,58),true);Text("Label",split.transform,"ui.action.split",Vector2.zero,new Vector2(156,50),22);drag.ChestSplitButton=Button(split);UnityEventTools.AddPersistentListener(drag.ChestSplitButton.onClick,drag.OpenSplit);

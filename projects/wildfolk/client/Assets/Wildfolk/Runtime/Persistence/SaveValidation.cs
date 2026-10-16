@@ -10,7 +10,7 @@ namespace Wildfolk
         private static bool Finite(double value)=>!double.IsNaN(value) && !double.IsInfinity(value);
         public static void Validate(SavedGame game,ContentCatalog catalog,WorldGenerationDefinition definition,AnimalPopulationDefinition animals,int playerCapacity,int maximumHP,SurvivalDefinition survival,CharacterGrowthDefinition growth,LocomotionDefinition locomotion)
         {
-            Require(game!=null && game.Version>=2 && game.Version<=5,"Unsupported save version");Require(Finite(game.Elapsed) && game.Elapsed>=0,"Invalid world time");
+            Require(game!=null && game.Version>=2 && game.Version<=6,"Unsupported save version");Require(Finite(game.Elapsed) && game.Elapsed>=0,"Invalid world time");
             var map=new WorldMap(definition,game.Seed);var player=game.Player;
             ValidatePlayer(player,map,catalog,playerCapacity,maximumHP,survival,growth,locomotion,game.IsMultiplayer);
             Require(game.Resources!=null && game.Animals!=null && game.Placeables!=null && game.Pickups!=null,"Missing world state");

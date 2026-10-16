@@ -60,6 +60,6 @@ Host는 승인된 snapshot 저장 성공 후 NGO Session을 종료한다. 저장
 
 기기 생성 Guid는 재입장 연결용이며 인증 계정이 아니다. Host가 참가자 상태를 기억하고 정상 reJoin에서 spawn 전 복원한다. 멀티 HP0은 Defeated를 유지하고 SP HP>0 규칙은 유지한다. 자동 retry/Host Migration/crash 보장은 없다. 검사·정확한 저장 범위·최종 통합 QA 한계는 MULTIPLAYER_FOUNDATION과 building-persistence-foundation 증거를 따른다.
 
-## Workbench / 초기 금속
+## v5→v6 / 금속 교정
 
-Version5를 유지한다. 시설 Item ID(workbench/workbench_ii)가 구성된 Tier를 가리키므로 별도 숫자 필드나 VI 목적의 schema bump가 필요하지 않았다. 후속 Tier는 실제 Item/Placement 정의가 있을 때만 기존 codec으로 저장할 수 있다. 새 재료는 문자열 Item ID, Furnace는 Recipe ID/예약 순서/남은 시간/완료 결과로 저장한다. 구리/주석 자원의 손상·파괴와 신규 Rule 회복 개체도 기존 Resource/Recovery 형식을 쓴다. 기존 r ID를 지키는 생성 방법과 실제 SP 복원/Host exit→재Host 자동 검사 결과는 METAL_PROGRESSION을 따른다. 실제 remote 재Join·강제 종료·모바일 파일 시스템 검수는 남아 있다.
+MetalSaveMigration은 기존 Reinforced Chest32를 내용물 위치 그대로36칸으로 확장하고 사라진 대체 Recipe Seen ID를 제거한다. 기존 일반 Furnace의 Steel 현재/대기 cargo는 Iron+Coal 재료 Pickup으로, 완료 결과는 Steel Pickup으로 보존한다. 새 Blast Furnace queue는 시설 Item/Recipe ID와 기존 codec으로 저장한다. v6은 기본 Furnace의 Steel cargo를 거절한다. SP/Host 파일명(world-v1.json/multiplayer-world-v5.json), 체크섬·atomic backup 정책은 유지한다. v1~v5 이관과 실제 SP Load/Local Host 재Host 증거는 METAL_PROGRESSION을 따른다.

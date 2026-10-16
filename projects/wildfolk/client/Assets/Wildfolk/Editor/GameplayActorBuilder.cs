@@ -76,7 +76,7 @@ namespace Wildfolk.Editor
             if(definition.Station!=StationKind.None)
             {
                 var station=root.gameObject.AddComponent<CraftingStation>();station.Definition=definition;station.Health=health;
-                if(definition.Station==StationKind.Campfire || definition.Station==StationKind.Furnace)
+                if(definition.Station==StationKind.Campfire || definition.Station==StationKind.Furnace || definition.Station==StationKind.BlastFurnace)
                 {
                     var process=root.gameObject.AddComponent<StationProcessing>();process.Station=station;process.RecoveryPickup=pickup;process.Settings=settings;
                     var glow=Group("Firelight",root).gameObject.AddComponent<UnityEngine.Rendering.Universal.Light2D>();glow.lightType=UnityEngine.Rendering.Universal.Light2D.LightType.Point;glow.pointLightOuterRadius=5.5f;glow.pointLightInnerRadius=3;glow.color=new Color(1,.73f,.4f);glow.intensity=0;

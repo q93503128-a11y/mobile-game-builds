@@ -49,8 +49,8 @@ namespace Wildfolk
         }
         public void UpgradeFromUI(){if(!UpgradeWorkbench())PlayerFeedback.ShowKey("feedback.upgrade");}
 
-        private void OnEnable(){Session.StateChanged+=SessionChanged;CraftingStation.ProgressionChanged+=NotifyStation;}
-        private void OnDisable(){Session.StateChanged-=SessionChanged;CraftingStation.ProgressionChanged-=NotifyStation;}
+        private void OnEnable(){Session.StateChanged+=SessionChanged;}
+        private void OnDisable(){Session.StateChanged-=SessionChanged;}
         private void Update()
         {
             if (stationOpen && (Station == null || !InRange(Station))) ClearStation();

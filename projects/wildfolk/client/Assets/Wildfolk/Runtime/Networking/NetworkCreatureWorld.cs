@@ -31,7 +31,7 @@ namespace Wildfolk
         public void InitializeTerrain(int seed){if(IsAuthority || Ready && World.Seed==seed)return;World.Generate(seed,false);Ready=true;}
         public void CreateFacilities()
         {
-            var offset=0;foreach(var entry in Prefabs)if(entry.Source.GetComponent<WorldPlaceable>() is WorldPlaceable placed && (placed.Definition.StorageSlots>0 || placed.Definition.Station!=StationKind.None) && placed.Definition.WorkbenchTier<=1)
+            var offset=0;foreach(var entry in Prefabs)if(entry.Source.GetComponent<WorldPlaceable>() is WorldPlaceable placed && (placed.Definition.StorageSlots>0 || placed.Definition.Station!=StationKind.None) && placed.Definition.WorkbenchTier<=1 && placed.Definition.Station!=StationKind.BlastFurnace)
             {
                 var center=World.Map.Spawn+new Vector2((offset-2)*3,4);offset++;
                 var found=false;var position=center;

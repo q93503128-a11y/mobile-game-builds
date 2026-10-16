@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: CoalNodeResource
   m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.ResourceDefinition
   Kind: 6
-  MinimumTier: {fileID: 11400000, guid: b632d88d6c00461418a7100d186ff69c, type: 2}
+  MinimumTier: {fileID: 11400000, guid: 5945e678712f7744cbe23200644f4d02, type: 2}
   RequiredTool: 1
-  RequiredToolItem: {fileID: 11400000, guid: c8f4006e56add364e95debbfa940bd04, type: 2}
+  HarvestMethod: 0
+  RequiredToolItem: {fileID: 11400000, guid: be8267d4db211b542b9be7763a7d317b, type: 2}
   Vitality: {fileID: 11400000, guid: 6002c633b22248942a54a1fa11c81169, type: 2}
   DropItem: {fileID: 11400000, guid: 745a86eb96e288b4abcf496de399103a, type: 2}
   DropCount: 4

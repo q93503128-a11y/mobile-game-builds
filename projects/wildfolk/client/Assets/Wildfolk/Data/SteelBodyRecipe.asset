@@ -10,23 +10,25 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 20df6dd9b4c24af4889549b8f9dc4ce5, type: 3}
-  m_Name: BronzeChestRecipe
+  m_Name: SteelBodyRecipe
   m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.RecipeDefinition
-  Id: bronze_chest
-  Category: 5
+  Id: steel_body
+  Category: 3
   SortOrder: 200
-  Result: {fileID: 11400000, guid: 034dc0c170161be4a9bed7298c9eb842, type: 2}
+  Result: {fileID: 11400000, guid: 259fb4d89d96ca842adad42fe6afc909, type: 2}
   ResultCount: 1
   Ingredients:
-  - Item: {fileID: 11400000, guid: 431287b464f63f4408828d4053bac6eb, type: 2}
-    Count: 6
-  - Item: {fileID: 11400000, guid: f9d01f6ba03eb6844b137faebea8612b, type: 2}
-    Count: 2
+  - Item: {fileID: 11400000, guid: c0a36437be3fc7046bfd64cb93091b82, type: 2}
+    Count: 1
+  - Item: {fileID: 11400000, guid: 7829ba341a701304a8ee1b5e2bf83611, type: 2}
+    Count: 3
+  - Item: {fileID: 11400000, guid: 6c8ade8d88abbee42b65fe778b0e7777, type: 2}
+    Count: 1
   RequiredStation: 1
   ProcessingSeconds: 0
   Processing: 0
   LegacyProcessingSeconds: 0
-  Tier: {fileID: 0}
+  Tier: {fileID: 11400000, guid: be3c17177552c5b49aaf9593cea187c3, type: 2}
   RequiredWorkbenchTier: 2
-  DisplayKey: recipe.bronze_chest
+  DisplayKey:
   FutureUnlocks: []

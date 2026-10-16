@@ -75,6 +75,7 @@ namespace Wildfolk
                 if(CreatureTargetsOnly && (health==null || health.GetComponent<NetworkCreature>()==null))continue;
                 if(!CombatAffiliation.CanDamage(OwnHealth,health) || !InSector(candidates[i],out var distance,out var alignment))continue;
                 var node=health.GetComponent<ResourceNode>();
+                if(attackTool!=null && attackTool.HarvestMethod!=HarvestMethod.Strike && node==null)continue;
                 if(node!=null && !node.Definition.CanHarvest(attackTool)){var rejected=distance/reach+(1-alignment)*.75f;if(rejected<deniedScore){denied=node;deniedScore=rejected;}continue;}
                 var duplicate=false;for(var j=0;j<targetCount;j++)if(targets[j]==health)duplicate=true;
                 if(duplicate)continue;
@@ -112,6 +113,11 @@ namespace Wildfolk
         public void Present(float progress,ToolDefinition tool,int hand)
         {
             var extension = Mathf.Sin(progress * Mathf.PI);
+            if(tool!=null && tool.HarvestMethod==HarvestMethod.Panning)
+            {
+                var sway=Mathf.Sin(progress*Mathf.PI*6)*.1f*extension;
+                Avatar.Facing.SetHandPose(1,new Vector2(sway,.32f*extension),Mathf.Sin(progress*Mathf.PI*6)*8);return;
+            }
             if (tool == null)
             {
                 var towardCenter = (hand == 0 ? 1 : -1) * Avatar.Facing.HandSeparation * .55f * extension;

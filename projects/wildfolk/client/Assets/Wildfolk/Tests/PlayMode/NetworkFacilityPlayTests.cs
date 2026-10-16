@@ -48,7 +48,7 @@ namespace Wildfolk.Tests
             Assert.That(Do(A,FacilityOperation.Transfer,f,from:0,to:1,amount:2,sides:3),Is.True);Assert.That(Do(B,FacilityOperation.Transfer,f,from:0,to:2,amount:2,sides:3,facilityRevision:revision),Is.False);
             Assert.That(Bag(player).CountItem(wood)+Bag(other).CountItem(wood)+f.Chest.Model.CountItem(wood),Is.EqualTo(total));
             Place(other,(Vector2)f.transform.position+Vector2.right*20);Assert.That(Do(B,FacilityOperation.Transfer,f,from:0,to:2,sides:1),Is.False);
-            Assert.That(f.Slots.Count,Is.EqualTo(24));Assert.That(Facility("ReinforcedChest").Slots.Count,Is.EqualTo(32));yield return null;
+            Assert.That(f.Slots.Count,Is.EqualTo(24));Assert.That(Facility("ReinforcedChest").Slots.Count,Is.EqualTo(36));yield return null;
         }
         [UnityTest]public IEnumerator HandCraftAtomicityAndWorkbenchUpgradeCommitOnce()
         {
@@ -61,13 +61,13 @@ namespace Wildfolk.Tests
             Assert.That(Do(A,FacilityOperation.Craft,f,recipe),Is.True);Assert.That(Bag(player).CountItem(recipe.Result),Is.EqualTo(recipe.ResultCount));
             Assert.That(Do(A,FacilityOperation.Craft,f,cup),Is.False);yield return null;
         }
-        [UnityTest]public IEnumerator SteelGateUsesHostWorkbenchAndMultiIngredientReservationsSurviveQueueRestore()
+        [UnityTest]public IEnumerator SteelUsesSeparateHostFacilityAndReservationsCommitOnce()
         {
             var furnace=Facility("Furnace");var bench=Facility("Workbench");furnace.transform.position=bench.transform.position+Vector3.right*3;furnace.Processor.enabled=false;
             var recipe=world.Catalog.Recipe("steel");foreach(var c in recipe.Ingredients)Bag(player).Add(c.Item,c.Count*2);Open(furnace);var revision=furnace.Revision.Value;
             Assert.That(Do(A,FacilityOperation.AddOne,furnace,recipe),Is.False);Assert.That(furnace.Revision.Value,Is.EqualTo(revision));foreach(var c in recipe.Ingredients)Assert.That(Bag(player).CountItem(c.Item),Is.EqualTo(c.Count*2));
             Open(bench);foreach(var c in bench.Station.Definition.UpgradeCosts)Bag(player).Add(c.Item,c.Count);Assert.That(Do(A,FacilityOperation.Upgrade,bench),Is.True);Assert.That(bench.Tier.Value,Is.EqualTo(2));
-            Open(furnace);revision=furnace.Revision.Value;Assert.That(Do(A,FacilityOperation.AddOne,furnace,recipe,facilityRevision:revision),Is.True);Assert.That(Do(B,FacilityOperation.AddOne,furnace,recipe,facilityRevision:revision),Is.False);
+            Assert.That(furnace.Processor.Add(recipe,A.Bag.Inventory,1),Is.False);furnace=world.Create(world.Catalog.Item("blast_furnace").Placement.Prefab,bench.transform.position+Vector3.right*25,Quaternion.identity).GetComponent<NetworkFacility>();furnace.Processor.enabled=false;yield return null;Open(furnace);revision=furnace.Revision.Value;Assert.That(Do(A,FacilityOperation.AddOne,furnace,recipe,facilityRevision:revision),Is.True);Assert.That(Do(B,FacilityOperation.AddOne,furnace,recipe,facilityRevision:revision),Is.False);
             Assert.That(furnace.Processor.Recipe.Id,Is.EqualTo("steel"));foreach(var c in recipe.Ingredients)Assert.That(Bag(player).CountItem(c.Item),Is.EqualTo(c.Count));furnace.Processor.Advance(6);Assert.That(furnace.Processor.OutputCount,Is.EqualTo(1));Assert.That(Do(A,FacilityOperation.Collect,furnace),Is.True);Assert.That(Bag(player).CountItem(recipe.Result),Is.EqualTo(1));yield return null;
         }
         [UnityTest]public IEnumerator FurnaceQueueAndCompletionRacesKeepOutputAndReservedInputs()
@@ -98,7 +98,7 @@ namespace Wildfolk.Tests
         {
             var ui=Object.FindFirstObjectByType<NetworkInventoryUi>();ui.Bag.onClick.Invoke();yield return null;var inventory=ui.GetComponent<InventoryPanel>();inventory.CraftingButton.onClick.Invoke();yield return null;Assert.That(ui.GetComponent<CraftingPanel>().View.activeSelf,Is.True);Assert.That(inventory.Crafting,Is.SameAs(A.Crafting));
             ui.GetComponent<CraftingPanel>().InventoryButton.onClick.Invoke();Assert.That(inventory.View.activeSelf,Is.True);player.Commands.Session.CloseInventory();
-            var f=Facility("ReinforcedChest");Place(player,(Vector2)f.transform.position+Vector2.down);Assert.That(A.Open(f),Is.True);yield return null;var chest=ui.GetComponent<ChestPanel>();Assert.That(chest.View.activeSelf,Is.True);Assert.That(chest.ChestSlots.Count(s=>s.gameObject.activeSelf),Is.EqualTo(32));
+            var f=Facility("ReinforcedChest");Place(player,(Vector2)f.transform.position+Vector2.down);Assert.That(A.Open(f),Is.True);yield return null;var chest=ui.GetComponent<ChestPanel>();Assert.That(chest.View.activeSelf,Is.True);Assert.That(chest.ChestSlots.Count(s=>s.gameObject.activeSelf),Is.EqualTo(36));
             var wood=world.Catalog.Item("wood");f.Chest.Model.Add(wood,9);var drag=ui.GetComponent<InventoryDragController>();drag.HoldPartial(0,chest.ChestSlots[0],true,4);Assert.That(drag.PlaceHeld(20,false),Is.True);Assert.That(Bag(player).GetSlot(20).Count,Is.EqualTo(4));Assert.That(f.Chest.Model.GetSlot(0).Count,Is.EqualTo(5));
             drag.HoldPartial(0,chest.ChestSlots[0],true,2);f.Chest.Model.Add(wood,1);Assert.That(drag.PlaceHeld(21,false),Is.False);Assert.That(Bag(player).GetSlot(21).IsEmpty,Is.True);drag.Cancel();
             foreach(var button in chest.View.GetComponentsInChildren<UnityEngine.UI.Button>(true))if(button.name=="Close")button.onClick.Invoke();Assert.That(player.Commands.Session.State,Is.EqualTo(SessionState.Running));yield return null;

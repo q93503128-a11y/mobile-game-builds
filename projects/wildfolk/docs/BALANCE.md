@@ -118,7 +118,7 @@ Long Press0.45초. Split1~N−1,Half/±1,Confirm 후 목적지 선택. 일반 Dr
 | Dash |Cost24,2.6유닛/0.18초,재입력0.55초,Footprint0.55|
 | Stamina 숨김 |Full 후0.7초,fade0.2초|
 | Workbench II /Reinforced Chest /Stone Wall HP |120 /140 /220|
-| Reinforced Chest |32칸,기존 Chest24 유지|
+| Reinforced Chest |36칸,기존 Chest24 유지|
 
 첫35XP는Zombie7마리 또는Goblin5마리(남은5XP)다. 첫 두 레벨35/55는XP90이며 기능 검증을 위한 초기 곡선이다. Leather는Zombie8을5,Iron은2로 줄인다. 가죽 세트Leather3,철 세트Ingot5+Leather2를 기존Boar1Leather/kill,Ore3/drop와 비교했다. 성장 만족도/실제 획득 속도는 사용자 테스트 대상이며 출시 밸런스를 주장하지 않는다.
 
@@ -150,4 +150,4 @@ Goblin 시각 Separation0.85/Preferred Spacing2.7유닛. Goblin Ally Assist7유�
 
 ## 초기 금속 패스 수치
 
-기존 Ore 열의 도구 피해/최소 Rank2는 Iron Ore다. Copper/Coal은 Wood Pickaxe Rank1, Tin은 Stone Pickaxe Rank2부터 가능하다. 신규 ResourceKind의 피해는 Tool.Damage 기본값을 사용한다(기존 Wood/Stone/Iron efficiency는 유지). Copper HP90/Drop4/Count14/회복600초, Tin75/3/10/720초, Coal90/4/12/600초다. 신규 제련/합금의 비용·시간은 METAL_PROGRESSION을 따른다. I→II 비용8Wood+6Stone+2Iron Ingot과 기존 Iron 제련1Ore/2초는 유지한다. 현재 콘텐츠는 I~II이고 VI는 구조적 상한이다. 출시 밸런스/장시간 scarcity는 미확정이다.
+기존 Ore 열은 Iron이다. Copper는 Iron Pickaxe 이상, Coal은 Stone Pickaxe 이상, Tin은 Panning Pan만 허용한다. Copper/Coal의 채집 효율은 Stone Pickaxe2.5배(단 Copper는 gate로 불가), Iron3배, Steel3.5배다. Steel Axe/Pickaxe 기본피해18·Wood/Stone 전문효율4.5배, Sword43, 모션/간격 Axe0.29/0.40·Pickaxe0.34/0.48·Sword0.28/0.38초다. Steel Head/Body Defense3/5(기존 Iron2/4)다. Pan 진행25·1.1/1.4초, Tin75/3드랍이다. Copper90/4/14개, Coal90/4/12개, Tin10개이며 복구 Copper·Coal600초/Tin720초다. 비용·시설 역할은 METAL_PROGRESSION을 따른다. 출시 밸런스/장시간 scarcity는 미확정이다.

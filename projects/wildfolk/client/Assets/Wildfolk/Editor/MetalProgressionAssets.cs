@@ -11,9 +11,9 @@ namespace Wildfolk.Editor
         private static T Data<T>(string name)where T:UnityEngine.Object=>AssetDatabase.LoadAssetAtPath<T>("Assets/Wildfolk/Data/"+name+".asset");
         private static ItemAmount Cost(ItemDefinition item,int count)=>new ItemAmount{Item=item,Count=count};
         private static ItemDefinition Item(string name,string id)=>GameplayAssets.Asset<ItemDefinition>(name,i=>{i.Id=id;i.DisplayName=id;i.Category=ItemCategory.Material;i.MaxStack=50;i.Icon=VisualArtImporter.Sprite(id);});
-        private static RecipeDefinition Recipe(string name,ItemDefinition result,int amount,int tier,ItemAmount[] costs,float seconds=0,string display=null)
+        private static RecipeDefinition Recipe(string name,ItemDefinition result,int amount,int tier,ItemAmount[] costs,float seconds=0,string display=null,StationKind processingStation=StationKind.Furnace)
         {
-            return GameplayAssets.Asset<RecipeDefinition>(name+"Recipe",r=>{r.Id=display==null ? result.Id : display.Substring("recipe.".Length);r.Result=result;r.ResultCount=amount;r.Ingredients=costs;r.RequiredStation=seconds>0 ? StationKind.Furnace : StationKind.Workbench;r.RequiredWorkbenchTier=tier;r.ProcessingSeconds=seconds;r.Processing=seconds>0 ? ProcessingKind.Smelting : ProcessingKind.None;r.Category=seconds>0 ? RecipeCategory.Survival : result.Placement.IsBarrier ? RecipeCategory.Building : RecipeCategory.Facilities;r.SortOrder=200;r.DisplayKey=display;});
+            return GameplayAssets.Asset<RecipeDefinition>(name+"Recipe",r=>{r.Id=display==null ? result.Id : display.Substring("recipe.".Length);r.Result=result;r.ResultCount=amount;r.Ingredients=costs;r.RequiredStation=seconds>0 ? processingStation : StationKind.Workbench;r.RequiredWorkbenchTier=tier;r.ProcessingSeconds=seconds;r.Processing=seconds>0 ? ProcessingKind.Smelting : ProcessingKind.None;r.Category=seconds>0 ? RecipeCategory.Survival : result.Placement.IsBarrier ? RecipeCategory.Building : RecipeCategory.Facilities;r.SortOrder=200;r.DisplayKey=display;});
         }
         public static void BuildBatch()
         {
@@ -22,12 +22,12 @@ namespace Wildfolk.Editor
             var copper=Item("CopperOre","copper_ore");var tin=Item("TinOre","tin_ore");var coal=Item("Coal","coal");var copperBar=Item("CopperIngot","copper_ingot");var tinBar=Item("TinIngot","tin_ingot");var bronze=Item("Bronze","bronze");var steel=Item("Steel","steel");
             var items=new List<ItemDefinition>(catalog.Items);foreach(var item in new[]{copper,tin,coal,copperBar,tinBar,bronze,steel})if(!items.Contains(item))items.Add(item);catalog.Items=items.ToArray();
             var list=new List<RecipeDefinition>(recipes.Recipes);var contentRecipes=new List<RecipeDefinition>(catalog.Recipes);
-            foreach(var r in new[]{Recipe("CopperIngot",copperBar,1,1,new[]{Cost(copper,1),Cost(coal,1)},3),Recipe("TinIngot",tinBar,1,1,new[]{Cost(tin,1),Cost(coal,1)},3),Recipe("Bronze",bronze,3,1,new[]{Cost(copperBar,2),Cost(tinBar,1)},5),Recipe("Steel",steel,1,2,new[]{Cost(Data<ItemDefinition>("IronIngot"),1),Cost(coal,1)},6),Recipe("BronzeChest",Data<ItemDefinition>("ReinforcedChest"),1,2,new[]{Cost(Data<ItemDefinition>("Wood"),6),Cost(bronze,2)},display:"recipe.bronze_chest"),Recipe("SteelWall",Data<ItemDefinition>("StoneWall"),2,2,new[]{Cost(Data<ItemDefinition>("Stone"),4),Cost(steel,1)},display:"recipe.steel_wall")}){if(!list.Contains(r))list.Add(r);if(!contentRecipes.Contains(r))contentRecipes.Add(r);}
+            foreach(var r in new[]{Recipe("CopperIngot",copperBar,1,1,new[]{Cost(copper,1),Cost(coal,1)},3),Recipe("TinIngot",tinBar,1,1,new[]{Cost(tin,1),Cost(coal,1)},3),Recipe("Bronze",bronze,3,1,new[]{Cost(copperBar,2),Cost(tinBar,1)},5),Recipe("Steel",steel,1,1,new[]{Cost(Data<ItemDefinition>("IronIngot"),1),Cost(coal,1)},6,processingStation:StationKind.BlastFurnace)}){if(!list.Contains(r))list.Add(r);if(!contentRecipes.Contains(r))contentRecipes.Add(r);}
             recipes.Recipes=list.ToArray();catalog.Recipes=contentRecipes.ToArray();EditorUtility.SetDirty(catalog);EditorUtility.SetDirty(recipes);
             var rules=new List<ResourceGenerationRule>(world.Resources);
-            AddResource(rules,"CopperOreNode","copper_ore_node",copper,ResourceKind.CopperOre,"Pickaxe",90,4,14,18,701,ResourceTerrain.Land,.38f,600,2,11);
+            AddResource(rules,"CopperOreNode","copper_ore_node",copper,ResourceKind.CopperOre,"IronPickaxe",90,4,14,18,701,ResourceTerrain.Land,.38f,600,2,11);
             AddResource(rules,"TinOreNode","tin_ore_node",tin,ResourceKind.TinOre,"StonePickaxe",75,3,10,18,709,ResourceTerrain.Shore,0,720,1,0);
-            AddResource(rules,"CoalNode","coal_node",coal,ResourceKind.Coal,"Pickaxe",90,4,12,22,719,ResourceTerrain.Land,.48f,600,3,14);
+            AddResource(rules,"CoalNode","coal_node",coal,ResourceKind.Coal,"StonePickaxe",90,4,12,22,719,ResourceTerrain.Land,.48f,600,3,14);
             world.Resources=rules.ToArray();EditorUtility.SetDirty(world);
             foreach(var rule in world.Resources)
             {
@@ -44,11 +44,12 @@ namespace Wildfolk.Editor
                 var prefab=PrefabUtility.SaveAsPrefabAsset(go,"Assets/Wildfolk/Prefabs/Network"+name+".prefab");UnityEngine.Object.DestroyImmediate(go);entries.Add(new NetworkSpawnEntry{Source=source,NetworkPrefab=prefab});
             }
             ecology.Prefabs=entries.ToArray();PrefabUtility.SaveAsPrefabAsset(root,NetworkEcologyBuilder.PrefabPath);PrefabUtility.UnloadPrefabContents(root);
-            var session=PrefabUtility.LoadPrefabContents(MultiplayerSceneBuilder.SessionPrefabPath);session.GetComponent<Unity.Netcode.NetworkManager>().NetworkConfig.ProtocolVersion=6;PrefabUtility.SaveAsPrefabAsset(session,MultiplayerSceneBuilder.SessionPrefabPath);PrefabUtility.UnloadPrefabContents(session);
+            SteelProgressionAssets.Configure();entries=new List<NetworkSpawnEntry>(AssetDatabase.LoadAssetAtPath<GameObject>(NetworkEcologyBuilder.PrefabPath).GetComponent<NetworkCreatureWorld>().Prefabs);
             foreach(var path in new[]{GameplaySceneBuilder.ScenePath,MultiplayerSceneBuilder.ScenePath})
             {
                 EditorSceneManager.OpenScene(path);var panel=UnityEngine.Object.FindFirstObjectByType<CraftingPanel>(FindObjectsInactive.Include);var owner=panel.Owner;var ui=panel.gameObject;var safe=panel.View.transform.parent;
                 UnityEngine.Object.DestroyImmediate(panel.View);UnityEngine.Object.DestroyImmediate(panel);CraftingUiBuilder.Build(ui,safe,owner);
+                var chest=ui.GetComponent<ChestPanel>();var storage=chest.Storage;var drag=chest.Drag;UnityEngine.Object.DestroyImmediate(chest.View);UnityEngine.Object.DestroyImmediate(chest);ChestUiBuilder.Build(ui,safe,owner.Inventory,storage,drag);
                 var service=UnityEngine.Object.FindFirstObjectByType<NetworkCreatureWorld>();if(service!=null){service.Prefabs=entries.ToArray();EditorUtility.SetDirty(service);}
                 EditorSceneManager.SaveScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene());
             }

@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20df6dd9b4c24af4889549b8f9dc4ce5, type: 3}
+  m_Name: SteelPickaxeRecipe
+  m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.RecipeDefinition
+  Id: steel_pickaxe
+  Category: 1
+  SortOrder: 200
+  Result: {fileID: 11400000, guid: 15c1b5002bf60a34083d04ae354717e6, type: 2}
+  ResultCount: 1
+  Ingredients:
+  - Item: {fileID: 11400000, guid: dd120d821e21ccb489c1908904a7916e, type: 2}
+    Count: 1
+  - Item: {fileID: 11400000, guid: 7829ba341a701304a8ee1b5e2bf83611, type: 2}
+    Count: 3
+  - Item: {fileID: 11400000, guid: 431287b464f63f4408828d4053bac6eb, type: 2}
+    Count: 2
+  RequiredStation: 1
+  ProcessingSeconds: 0
+  Processing: 0
+  LegacyProcessingSeconds: 0
+  Tier: {fileID: 11400000, guid: be3c17177552c5b49aaf9593cea187c3, type: 2}
+  RequiredWorkbenchTier: 2
+  DisplayKey:
+  FutureUnlocks: []

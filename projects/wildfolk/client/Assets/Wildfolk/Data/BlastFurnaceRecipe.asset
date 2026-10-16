@@ -10,23 +10,27 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 20df6dd9b4c24af4889549b8f9dc4ce5, type: 3}
-  m_Name: SteelWallRecipe
+  m_Name: BlastFurnaceRecipe
   m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.RecipeDefinition
-  Id: steel_wall
-  Category: 4
+  Id: blast_furnace
+  Category: 5
   SortOrder: 200
-  Result: {fileID: 11400000, guid: c38fa8c530b6187458d976559263f845, type: 2}
-  ResultCount: 2
+  Result: {fileID: 11400000, guid: 29c6da3d3a34e0344af6ba5e3de25c95, type: 2}
+  ResultCount: 1
   Ingredients:
+  - Item: {fileID: 11400000, guid: f9d01f6ba03eb6844b137faebea8612b, type: 2}
+    Count: 3
+  - Item: {fileID: 11400000, guid: c5b679876e2427346848b9e6432a186c, type: 2}
+    Count: 3
   - Item: {fileID: 11400000, guid: 30904e05765ac844ab5bb28b855a15db, type: 2}
+    Count: 8
+  - Item: {fileID: 11400000, guid: 431287b464f63f4408828d4053bac6eb, type: 2}
     Count: 4
-  - Item: {fileID: 11400000, guid: 7829ba341a701304a8ee1b5e2bf83611, type: 2}
-    Count: 1
   RequiredStation: 1
   ProcessingSeconds: 0
   Processing: 0
   LegacyProcessingSeconds: 0
-  Tier: {fileID: 0}
+  Tier: {fileID: 11400000, guid: be3c17177552c5b49aaf9593cea187c3, type: 2}
   RequiredWorkbenchTier: 2
-  DisplayKey: recipe.steel_wall
+  DisplayKey:
   FutureUnlocks: []

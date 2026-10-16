@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 9145363202800934993}
   - component: {fileID: 4175018400622040675}
   - component: {fileID: 6003918020362347506}
-  - component: {fileID: 2064674660871210899}
   m_Layer: 0
   m_Name: TinOreNode
   m_TagString: Untagged
@@ -96,7 +95,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -133,21 +132,6 @@ MonoBehaviour:
   Player: {fileID: 0}
   Settings: {fileID: 11400000, guid: fd43ec9cd9385eb4eb69f64792c98535, type: 2}
   Visual: {fileID: 3258674403580192094}
---- !u!114 &2064674660871210899
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2860455876632632}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a978af72c4e505b4bbd2d9f62a806ba9, type: 3}
-  m_Name:
-  m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.HitFeedback
-  Health: {fileID: 4175018400622040675}
-  Visual: {fileID: 2381265426104638223}
-  Reaction: 2
 --- !u!1 &504095280940711077
 GameObject:
   m_ObjectHideFlags: 0
@@ -498,7 +482,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.76, y: 1.72}
+  m_Size: {x: 2.24, y: 1.14}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

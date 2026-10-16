@@ -4,7 +4,8 @@ using UnityEngine;
 namespace Wildfolk
 {
     public enum ResourceKind { Wood, Stone, Meat, IronOre, CopperOre, TinOre, Coal }
-    public enum ToolKind { Axe, Pickaxe, Sword }
+    public enum ToolKind { Axe, Pickaxe, Sword, Pan }
+    public enum HarvestMethod { Strike, Panning, Interaction }
     [Serializable] public struct ResourceEfficiency
     {
         public ResourceKind Kind;
@@ -17,6 +18,7 @@ namespace Wildfolk
         public Sprite HeldSprite;
         public EquipmentTier Tier;
         public ToolKind Kind;
+        public HarvestMethod HarvestMethod;
         [Min(1)] public int Damage;
         public AttackProfile Attack=new AttackProfile();
         [Min(.01f)] public float Duration;

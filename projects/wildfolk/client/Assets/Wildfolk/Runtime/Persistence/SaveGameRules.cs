@@ -17,6 +17,8 @@ namespace Wildfolk
         public GoblinCampDefinition Camps;
         public void Validate(SavedGame game)
         {
+            if(game==null || game.Version<1 || game.Version>6)throw new InvalidDataException("Unsupported save version");
+            if(game.Version<=5)MetalSaveMigration.NormalizeLegacyContent(game,Catalog);
             var growth=Player.GetComponent<PlayerProgression>().Definition;var locomotion=Player.GetComponent<PlayerLocomotion>().Definition;
             if(game.Version==1)
             {if(game.Player==null)throw new InvalidDataException("Missing player");game.Player.Growth=GrowthValidation.FromLegacy(game.Player.XP,growth);game.Player.HeadArmor=game.Player.BodyArmor=null;game.Player.Stamina=locomotion.MaximumStamina;game.Player.StaminaWait=0;game.Player.SeenRecipes=Array.Empty<string>();game.Version=2;}
@@ -24,7 +26,7 @@ namespace Wildfolk
             if(game.Version==3){SaveValidation.Validate(game,Catalog,World,Animals,Player.Settings.InventorySlots,Player.GetComponent<Health>().Definition.MaximumHealth,Player.GetComponent<PlayerSurvival>().Definition,growth,locomotion);SaveMigration.EcologyFromV3(game,World,Animals);}
             SaveValidation.Validate(game,Catalog,World,Animals,Player.Settings.InventorySlots,Player.GetComponent<Health>().Definition.MaximumHealth,Player.GetComponent<PlayerSurvival>().Definition,growth,locomotion);
             ValidateEnemies(game);
-            if(game.Version==4)game.Version=5;
+            if(game.Version==4 || game.Version==5)game.Version=6;
             MultiplayerSaveRules.Validate(game,this);
         }
         private void ValidateEnemies(SavedGame game)

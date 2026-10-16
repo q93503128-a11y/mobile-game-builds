@@ -30,7 +30,7 @@ namespace Wildfolk.Editor
             var bench=Facility("WorkbenchII","workbench_ii","Workbench II",StationKind.Workbench,assets.Progression.StoneTier,120,new Vector2(1.8f,1.15f));
             bench.WorkbenchTier=2;EditorUtility.SetDirty(bench);
             assets.Crafting.Workbench.UpgradeTo=bench;assets.Crafting.Workbench.UpgradeCosts=new[]{Cost(wood,8),Cost(stone,6),Cost(ingot,2)};EditorUtility.SetDirty(assets.Crafting.Workbench);
-            var chest=Facility("ReinforcedChest","reinforced_chest","Reinforced Chest",StationKind.None,assets.Progression.StoneTier,140,new Vector2(1.6f,1.15f),32);
+            var chest=Facility("ReinforcedChest","reinforced_chest","Reinforced Chest",StationKind.None,assets.Progression.StoneTier,140,new Vector2(1.6f,1.15f),36);
             var wall=Facility("StoneWall","stone_wall","Stone Wall",StationKind.None,assets.Progression.StoneTier,220,new Vector2(1.8f,.5f),barrier:true);
             AddRecipe(list,"ReinforcedChest",chest.Item,new[]{Cost(wood,8),Cost(ingot,2)},2);
             AddRecipe(list,"StoneWall",wall.Item,new[]{Cost(stone,3),Cost(wood,1)},2);

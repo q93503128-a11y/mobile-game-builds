@@ -30,7 +30,7 @@ namespace Wildfolk
     {public string Item;public int Count;public Vector2 Position;}
     [Serializable] public sealed class SavedGame
     {
-        public int Version=5,Seed;
+        public int Version=6,Seed;
         public bool IsMultiplayer;
         public MultiplayerSnapshot Multiplayer;
         public double Elapsed;

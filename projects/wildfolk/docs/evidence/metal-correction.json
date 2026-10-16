@@ -1,0 +1,704 @@
+{
+  "baseline": "b30c27a36dc57dc2e62aed85c9c5659b573ced3d",
+  "date": "2026-10-16",
+  "unity": "6000.3.19f1",
+  "instance": "Wildfolk@1367f605af2f8ba4",
+  "actualMcp": true,
+  "windowsInput": false,
+  "focusCalls": false,
+  "resolution": [
+    1920,
+    1080
+  ],
+  "freshWorld": {
+    "seed": 9472026,
+    "workbenches": 0,
+    "IronOre": 16,
+    "CopperOre": 14,
+    "TinOre": 10,
+    "Coal": 12
+  },
+  "fixturePolicy": "실제 Editor Play에서 MCP로 게임 명령/UI 이벤트/모델 API를 호출했다. 순간 이동·재료 지급·일부 시설/서버 소유 두 번째 actor·가공 시간 전진을 사용했다. 원격 2인/물리 입력/자연 진행의 주장은 아니다.",
+  "mcpTrace": [
+    {
+      "success": true,
+      "message": "Code executed successfully.",
+      "data": {
+        "result": {
+          "step": "Stone Pickaxe -> Iron",
+          "before": 75,
+          "command": true
+        },
+        "compiler": "codedom"
+      }
+    },
+    {
+      "success": true,
+      "message": "Code executed successfully.",
+      "data": {
+        "result": {
+          "previous": {
+            "step": "Stone Pickaxe -> Iron result",
+            "before": 75,
+            "after": 45,
+            "hits": 1,
+            "damage": 30
+          },
+          "step": "Stone Pickaxe -> Copper rejected",
+          "before": 90,
+          "command": true
+        },
+        "compiler": "codedom"
+      }
+    },
+    {
+      "success": true,
+      "message": "Code executed successfully.",
+      "data": {
+        "result": {
+          "previous": {
+            "step": "Stone Pickaxe -> Copper rejected result",
+            "before": 90,
+            "after": 90,
+            "hits": 0,
+            "damage": 0,
+            "successSignals": 0
+          },
+          "step": "Iron Pickaxe -> Copper",
+          "command": true
+        },
+        "compiler": "codedom"
+      }
+    },
+    {
+      "success": true,
+      "message": "Code executed successfully.",
+      "data": {
+        "result": {
+          "previous": {
+            "step": "Iron Pickaxe -> Copper result",
+            "after": 45,
+            "hits": 1,
+            "damage": 45
+          },
+          "step": "Stone Pickaxe -> Coal",
+          "before": 90,
+          "command": true
+        },
+        "compiler": "codedom"
+      }
+    },
+    {
+      "success": true,
+      "message": "Code executed successfully.",
+      "data": {
+        "result": {
+          "previous": {
+            "step": "Stone Pickaxe -> Coal result",
+            "after": 60,
+            "hits": 1,
+            "damage": 30
+          },
+          "step": "Iron Pickaxe -> Tin rejected",
+          "before": 75,
+          "command": true
+        },
+        "compiler": "codedom"
+      }
+    },
+    {
+      "success": true,
+      "message": "Code executed successfully.",
+      "data": {
+        "result": {
+          "previous": {
+            "step": "Iron Pickaxe -> Tin rejected result",
+            "after": 75,
+            "hits": 0,
+            "damage": 0
+          },
+          "step": "Prospecting Pan -> Tin",
+          "command": true
+        },
+        "compiler": "codedom"
+      }
+    },
+    {
+      "success": true,
+      "message": "Code executed successfully.",
+      "data": {
+        "result": {
+          "step": "Prospecting Pan -> Tin result",
+          "after": 50,
+          "hits": 1,
+          "damage": 25,
+          "removedMiningShake": true,
+          "screen": [
+            1920,
+            1080
+          ]
+        },
+        "compiler": "codedom"
+      }
+    },
+    {
+      "success": true,
+      "message": "Code executed successfully.",
+      "data": {
+        "result": {
+          "step": "Tin final + Workbench I",
+          "tinGround": 3,
+          "tinInBag": 0,
+          "tinNodeRemoved": true,
+          "upgradeAllowed": true,
+          "needs": 3
+        },
+        "compiler": "codedom"
+      }
+    },
+    {
+      "success": false,
+      "message": "Compilation failed",
+      "data": {
+        "errors": [
+          "Line 1: Cannot implicitly convert type `long' to `int'. An explicit conversion exists (are you missing a cast?)"
+        ],
+        "compiler": "codedom"
+      }
+    },
+    {
+      "success": true,
+      "message": "Code executed successfully.",
+      "data": {
+        "result": {
+          "step": "Workbench I -> II UI click",
+          "tier": 2,
+          "remaining": {
+            "wood": 0,
+            "stone": 0,
+            "iron_ingot": 0
+          },
+          "thirdUpgrade": false,
+          "thirdButtonVisible": false
+        },
+        "compiler": "codedom"
+      }
+    },
+    {
+      "success": true,
+      "message": "Code executed successfully.",
+      "data": {
+        "result": {
+          "step": "Workbench II tech crafting",
+          "crafted": [
+            {
+              "id": "prospecting_pan",
+              "status": "Ready",
+              "owned": 2
+            },
+            {
+              "id": "blast_furnace",
+              "status": "Ready",
+              "owned": 1
+            }
+          ]
+        },
+        "compiler": "codedom"
+      }
+    },
+    {
+      "success": true,
+      "message": "Code executed successfully.",
+      "data": {
+        "result": {
+          "step": "Place crafted Blast Furnace via primary action",
+          "placed": true,
+          "position": "(3.00, 2.10)",
+          "remaining": 0
+        },
+        "compiler": "codedom"
+      }
+    },
+    {
+      "success": true,
+      "message": "Code executed successfully.",
+      "data": {
+        "result": {
+          "step": "Basic Furnace low processing and Bronze",
+          "products": [
+            {
+              "id": "iron_ingot",
+              "owned": 1
+            },
+            {
+              "id": "copper_ingot",
+              "owned": 1
+            },
+            {
+              "id": "tin_ingot",
+              "owned": 1
+            },
+            {
+              "id": "bronze",
+              "owned": 3
+            }
+          ],
+          "steelRejected": true,
+          "meatRejected": true
+        },
+        "compiler": "codedom"
+      }
+    },
+    {
+      "success": true,
+      "message": "Code executed successfully.",
+      "data": {
+        "result": {
+          "step": "Blast Furnace Steel processing",
+          "opened": true,
+          "steel": 1,
+          "meatRejected": true
+        },
+        "compiler": "codedom"
+      }
+    },
+    {
+      "success": true,
+      "message": "Code executed successfully.",
+      "data": {
+        "result": {
+          "step": "Steel equipment crafting and primary equip",
+          "crafted": [
+            {
+              "id": "steel_axe",
+              "status": "Ready",
+              "owned": 1
+            },
+            {
+              "id": "steel_pickaxe",
+              "status": "Ready",
+              "owned": 1
+            },
+            {
+              "id": "steel_sword",
+              "status": "Ready",
+              "owned": 1
+            },
+            {
+              "id": "steel_head",
+              "status": "Ready",
+              "owned": 1
+            },
+            {
+              "id": "steel_body",
+              "status": "Ready",
+              "owned": 1
+            },
+            {
+              "id": "reinforced_chest",
+              "status": "Ready",
+              "owned": 1
+            }
+          ],
+          "head": "steel_head",
+          "body": "steel_body",
+          "defense": 8
+        },
+        "compiler": "codedom"
+      }
+    },
+    {
+      "success": true,
+      "message": "Code executed successfully.",
+      "data": {
+        "result": {
+          "step": "Campfire food regression",
+          "start": "Processing",
+          "collected": true,
+          "cooked": 1
+        },
+        "compiler": "codedom"
+      }
+    },
+    {
+      "success": true,
+      "message": "Code executed successfully.",
+      "data": {
+        "result": {
+          "step": "Crafted Reinforced Chest placement/open",
+          "placed": true,
+          "opened": true,
+          "capacity": 36
+        },
+        "compiler": "codedom"
+      }
+    },
+    {
+      "success": true,
+      "message": "Code executed successfully.",
+      "data": {
+        "result": {
+          "step": "Chest wheel and scrollbar",
+          "before": 1,
+          "after": 0,
+          "slots": 36,
+          "content": 432,
+          "viewport": 300,
+          "bottomCount": 36
+        },
+        "compiler": "codedom"
+      }
+    },
+    {
+      "success": true,
+      "message": "Code executed successfully.",
+      "data": {
+        "result": {
+          "step": "Bottom slot PC drag/drop",
+          "dragStarted": true,
+          "to": 20,
+          "bagCount": 36,
+          "chestBottomEmpty": true
+        },
+        "compiler": "codedom"
+      }
+    },
+    {
+      "success": true,
+      "message": "Code executed successfully.",
+      "data": {
+        "result": {
+          "step": "Populated chest slot touch swipe",
+          "position": 0.24242425,
+          "itemDrag": false,
+          "count0": 1
+        },
+        "compiler": "codedom"
+      }
+    },
+    {
+      "success": true,
+      "message": "Code executed successfully.",
+      "data": {
+        "result": {
+          "step": "SP Save -> Apply Load",
+          "saved": true,
+          "version": 6,
+          "armor": "steel_head",
+          "chestSlots": 36,
+          "tier": 5,
+          "resourceStates": 4,
+          "destroyedTin": true,
+          "steelQueue": "steel"
+        },
+        "compiler": "codedom"
+      }
+    },
+    {
+      "success": true,
+      "message": "Code executed successfully.",
+      "data": {
+        "result": {
+          "step": "Door/building sanity",
+          "doorUsed": true,
+          "isOpen": true,
+          "wallHP": 100,
+          "creatures": 49
+        },
+        "compiler": "codedom"
+      }
+    },
+    {
+      "success": true,
+      "message": "Code executed successfully.",
+      "data": {
+        "result": {
+          "step": "Door close sanity",
+          "openAnimation": 1,
+          "closeUsed": true,
+          "closed": true
+        },
+        "compiler": "codedom"
+      }
+    },
+    {
+      "success": false,
+      "message": "Runtime error: Object reference not set to an instance of an object",
+      "data": {
+        "exceptionType": "NullReferenceException",
+        "stackTrace": "  at MCPDynamicCode.Execute () [0x00055] in <aea5471777294347ae8bc9f217dfc4ee>:0 \r\n  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)\r\n  at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x0006a] in <41d29b352f6a475ab1bf7c6628b82790>:0 ",
+        "compiler": "codedom"
+      }
+    },
+    {
+      "success": true,
+      "message": "Code executed successfully.",
+      "data": {
+        "result": {
+          "step": "Live Host tier and advanced queue",
+          "initialFacilities": 5,
+          "open": true,
+          "upgrade": true,
+          "tier": 2,
+          "steelAdded": true,
+          "queue": "steel",
+          "remaining": 5
+        },
+        "compiler": "codedom"
+      }
+    },
+    {
+      "success": true,
+      "message": "Code executed successfully.",
+      "data": {
+        "result": {
+          "step": "Live Host lower chest concurrency fixture",
+          "first": true,
+          "staleSecond": false,
+          "remaining": 6,
+          "bag": 4
+        },
+        "compiler": "codedom"
+      }
+    },
+    {
+      "success": true,
+      "message": "Code executed successfully.",
+      "data": {
+        "result": {
+          "step": "Live Host Save",
+          "saved": true,
+          "version": 6,
+          "facilities": 7,
+          "destroyed": true,
+          "worldId": "21041bdf8b7840b1a34fe5cc8880da48"
+        },
+        "compiler": "codedom"
+      }
+    },
+    {
+      "success": true,
+      "message": "Code executed successfully.",
+      "data": {
+        "result": {
+          "step": "Live re-host restored",
+          "sameWorld": true,
+          "sameSeed": true,
+          "placeables": [
+            {
+              "item": "campfire",
+              "queue": null,
+              "slots": 0,
+              "door": false
+            },
+            {
+              "item": "storage_chest",
+              "queue": null,
+              "slots": 24,
+              "door": false
+            },
+            {
+              "item": "workbench_ii",
+              "queue": null,
+              "slots": 0,
+              "door": false
+            },
+            {
+              "item": "reinforced_chest",
+              "queue": null,
+              "slots": 36,
+              "door": false
+            },
+            {
+              "item": "blast_furnace",
+              "queue": null,
+              "slots": 0,
+              "door": false
+            },
+            {
+              "item": "furnace",
+              "queue": null,
+              "slots": 0,
+              "door": false
+            },
+            {
+              "item": "wood_door",
+              "queue": null,
+              "slots": 0,
+              "door": true
+            }
+          ],
+          "wood": 4,
+          "steelSword": 1,
+          "destroyedTin": true
+        },
+        "compiler": "codedom"
+      }
+    },
+    {
+      "success": true,
+      "message": "Code executed successfully.",
+      "data": {
+        "result": {
+          "step": "Host processing cargo retained through elapsed time",
+          "previousOutput": [
+            {
+              "Recipe": "steel",
+              "Count": 1
+            }
+          ],
+          "added": 1,
+          "saved": true,
+          "current": "steel",
+          "waiting": 21,
+          "output": 1
+        },
+        "compiler": "codedom"
+      }
+    },
+    {
+      "success": true,
+      "message": "Code executed successfully.",
+      "data": {
+        "result": {
+          "step": "Live re-host reserved cargo verification",
+          "recipe": "steel",
+          "waiting": [
+            {
+              "Recipe": "steel",
+              "Count": 21
+            }
+          ],
+          "output": [
+            {
+              "Recipe": "steel",
+              "Count": 1
+            }
+          ],
+          "totalBatches": 23,
+          "expected": 23
+        },
+        "compiler": "codedom"
+      }
+    }
+  ],
+  "userSaveSha256": "57d560f19e49507fbc7ac00b48e1dda5759732a181d1c0baa441ad4536da7970",
+  "observedEditorError": "씬 전환 중 Unity PlayerLoop recursive internal 오류 1건. 이후 Host 재Host와 제품 상태 검사는 완료했다. MCP 임시 코드의 컴파일/대상 활성상태/준비대기 실패와 분리한다.",
+  "limits": [
+    "physical phone touch",
+    "new Protocol7 remote Client/Relay/4-player",
+    "long-running balance/performance",
+    "multi-resolution"
+  ],
+  "timings": {
+    "audit": {
+      "start": "17:20:18",
+      "end": "17:23:33"
+    },
+    "implementation": {
+      "start": "17:23:33",
+      "end": "17:37:29"
+    },
+    "automatedChecks": {
+      "start": "17:37:29",
+      "end": "17:42:46",
+      "overlapsDirect": true
+    },
+    "directMcp": {
+      "start": "17:39:26",
+      "end": "17:52:05"
+    },
+    "finalReview": {
+      "start": "17:52:05",
+      "end": "17:57:29"
+    },
+    "git": {
+      "start": "17:57:29"
+    }
+  },
+  "automatedRuns": [
+    {
+      "name": "steel-edit",
+      "result": "Passed",
+      "total": "22",
+      "passed": "22",
+      "failed": "0",
+      "start-time": "2026-10-16 08:37:55Z",
+      "end-time": "2026-10-16 08:37:55Z",
+      "duration": "0.3992542",
+      "failures": []
+    },
+    {
+      "name": "steel-play",
+      "result": "Failed(Child)",
+      "total": "16",
+      "passed": "15",
+      "failed": "1",
+      "start-time": "2026-10-16 08:39:41Z",
+      "end-time": "2026-10-16 08:40:34Z",
+      "duration": "52.8269553",
+      "failures": [
+        {
+          "name": "Wildfolk.Tests.NetworkPersistencePlayTests.HostSaveRehostRestoresWorldCargoGroundEcologyAndPlayerWithoutDuplicates",
+          "message": "  Expected: True\n  But was:  False\n"
+        }
+      ]
+    },
+    {
+      "name": "steel-rehost",
+      "result": "Passed",
+      "total": "1",
+      "passed": "1",
+      "failed": "0",
+      "start-time": "2026-10-16 08:42:38Z",
+      "end-time": "2026-10-16 08:42:46Z",
+      "duration": "7.9216063",
+      "failures": []
+    },
+    {
+      "name": "steel-scroll",
+      "result": "Passed",
+      "total": "1",
+      "passed": "1",
+      "failed": "0",
+      "start-time": "2026-10-16 08:53:38Z",
+      "end-time": "2026-10-16 08:53:40Z",
+      "duration": "2.493201",
+      "failures": []
+    }
+  ],
+  "sourceValidation": "PASS 691 unique GUIDs, Landscape, sprite references, visible text",
+  "finalUniqueAutomatedCases": {
+    "EditMode": 22,
+    "PlayMode": 16
+  },
+  "screenshots": [
+    "docs/images/metal-correction/02-tin-gameview-ui.png",
+    "docs/images/metal-correction/03-workbench-requirements.png",
+    "docs/images/metal-correction/04-blast-furnace-steel.png",
+    "docs/images/metal-correction/05-steel-equipment-world.png",
+    "docs/images/metal-correction/09-chest-corrected-scrollbar.png",
+    "docs/images/metal-correction/10-natural-copper.png",
+    "docs/images/metal-correction/11-natural-coal.png",
+    "docs/images/metal-correction/13-local-host-rehost.png"
+  ],
+  "existingUserSaveCopyMigration": {
+    "result": "Passed",
+    "version": 6,
+    "seed": 2074058223,
+    "inventorySlots": 36,
+    "facilities": 0,
+    "originalFileUnchanged": true
+  },
+  "postRefreshConsoleErrors": 0,
+  "finalEditor": {
+    "recipes": 36,
+    "focused": false,
+    "playing": false,
+    "chestSlots": 36,
+    "scene": "MainMenu",
+    "protocol": 7,
+    "items": 48,
+    "consoleErrors": 0
+  }
+}

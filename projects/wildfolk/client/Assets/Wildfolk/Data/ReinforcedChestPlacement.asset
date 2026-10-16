@@ -21,12 +21,14 @@ MonoBehaviour:
   Tier: {fileID: 11400000, guid: 5945e678712f7744cbe23200644f4d02, type: 2}
   IsBarrier: 0
   IsDoor: 0
-  StorageSlots: 32
+  StorageSlots: 36
   ParallelCapacity: 1
   ProcessingMode: 0
   InputCapacity: 50
   OutputCapacity: 100
   ProcessingSpeed: 1
   WorkbenchTier: 1
+  TierVisual: {fileID: 0}
+  TierDisplayKey:
   UpgradeTo: {fileID: 0}
   UpgradeCosts: []

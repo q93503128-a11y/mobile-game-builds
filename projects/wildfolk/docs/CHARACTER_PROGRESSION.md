@@ -23,4 +23,4 @@ Developer Test Console은Editor전용이고Early/Stone/Iron/Workbench II프로�
 
 ## 현재 제작 진행 범위
 
-일반 Workbench 구조는 I~VI, 실제 콘텐츠는 I~II이며 III~VI 비용은 미정이다. Equipment Tier Wood/Stone/Iron과 Armor4개는 유지한다. Copper/Tin/Coal/Bronze/Steel은 초기 제작/시설 재료이며 새 반복 장비 세트는 없다. 현재 Home/Multiplayer·Save v5 범위는 README/MULTIPLAYER_FOUNDATION/SAVE_PERSISTENCE를 따른다. 이 문서의 이전 패스 제외 목록은 당시 기록이다.
+일반 Workbench 구조는 I~VI, 실제 콘텐츠는 I~II이며 III~VI 비용은 미정이다. Equipment Tier는 Wood/Stone/Iron/Steel, Armor는 Leather/Iron/Steel의 Head/Body6개다. Copper/Tin/Bronze는 풀 장비 Tier가 아니며 Coal은 기술·제련 재료다. 현재 Home/Multiplayer·Save v6 범위는 README/MULTIPLAYER_FOUNDATION/SAVE_PERSISTENCE를 따른다. 이 문서의 이전 패스 제외 목록은 당시 기록이다.

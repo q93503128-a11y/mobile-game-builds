@@ -23,10 +23,7 @@ namespace Wildfolk
             if(recipe.RequiredStation==StationKind.None)return recipe.RequiredWorkbenchTier==1;
             if(station==null || !station.Health.IsAlive || station.Definition.Station!=recipe.RequiredStation)return false;
             if(recipe.RequiredStation==StationKind.Workbench)return IsValid(station.Definition.WorkbenchTier) && station.Definition.WorkbenchTier>=recipe.RequiredWorkbenchTier;
-            if(recipe.RequiredWorkbenchTier==1)return true;
-            foreach(var bench in CraftingStation.Active)
-                if(bench!=null && bench.Definition.Station==StationKind.Workbench && IsValid(bench.Definition.WorkbenchTier) && bench.Definition.WorkbenchTier>=recipe.RequiredWorkbenchTier && bench.Health.IsAlive && Vector2.Distance(bench.transform.position,station.transform.position)<=station.Definition.WorkbenchSupportRange)return true;
-            return false;
+            return true;
         }
     }
 }

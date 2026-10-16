@@ -14,7 +14,7 @@ namespace Wildfolk.Editor
         public static GameObject BuildPrefab()
         {
             var entries=new List<NetworkSpawnEntry>();
-            foreach(var name in new[]{"Chicken","Boar","Rabbit","Deer","Sheep","Enemy","Goblin","SlingshotGoblin","Skeleton","Pebble","GoblinCamp","Tree","Stone","IronOreNode","FallenLog","SmallPlant","WorldPickup","StorageChest","ReinforcedChest","Workbench","WorkbenchII","Furnace","Campfire","WoodWall","StoneWall","WoodDoor","CopperOreNode","TinOreNode","CoalNode"})
+            foreach(var name in new[]{"Chicken","Boar","Rabbit","Deer","Sheep","Enemy","Goblin","SlingshotGoblin","Skeleton","Pebble","GoblinCamp","Tree","Stone","IronOreNode","FallenLog","SmallPlant","WorldPickup","StorageChest","ReinforcedChest","Workbench","WorkbenchII","Furnace","Campfire","WoodWall","StoneWall","WoodDoor","CopperOreNode","TinOreNode","CoalNode","BlastFurnace"})
             {
                 var source=AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Wildfolk/Prefabs/"+name+".prefab");
                 var root=(GameObject)PrefabUtility.InstantiatePrefab(source);root.name="Network "+name;root.AddComponent<NetworkObject>();
