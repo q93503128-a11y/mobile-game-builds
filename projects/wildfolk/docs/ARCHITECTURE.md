@@ -35,7 +35,7 @@ StationProcessing은 데이터의 Mode를 읽어 Campfire Batch 또는 순수 Pr
 
 Inventory는 한 배열, Chest는 상자별 한 배열이다. Transfer는 두 모델을 변경한 뒤 알린다. 소분은 선택 수량을 들고 있는 UI 상태를 거쳐 명시적인 목적지로 부분 이동하고, Drop은 안전한 위치에 생성이 성공한 뒤 소비한다. Drag Ghost는 표시일 뿐 데이터 정본이 아니다. 상자 소분 선택도 테두리로 표시하고 이벤트는 종료 시 해제한다. UI 상태/Chest 변경 시 선택과 드래그를 취소한다.
 
-세계 진행은 플레이어 입력 Running과 분리한다. Inventory는 세계를 진행하고, Singleplayer Pause/Defeat는 동결하며, Multiplayer 정책은 전역 동결을 하지 않는다. Player 상태의 실제 네트워크는 Multiplayer 별도 야영지에서 제공한다. 기존 생존 World의 네트워크화는 아직 없다. 월드 Seed/Delta와 재화는 Save/Load v4(v1~v3 migration)이며 사용자 설정 PlayerPrefs 및 미구현 Account 저장과 구분한다.
+세계 진행은 플레이어 입력 Running과 분리한다. Inventory는 세계를 진행하고, Singleplayer Pause/Defeat는 동결하며, Multiplayer 정책은 전역 동결을 하지 않는다. Player 상태와 Creature/전투 권위는 별도 Multiplayer 씬에서 제공한다. 정적 default-seed 지형을 공유하지만 Resource/시설/Save 등 생존 World Interaction의 네트워크화는 아직 없다. 월드 Seed/Delta와 재화는 Save/Load v4(v1~v3 migration)이며 사용자 설정 PlayerPrefs 및 미구현 Account 저장과 구분한다.
 
 해상도 도구는 기존 Game View만 Repaint하고 Play Unfocused를 적용한다. Focus/GetWindow/Windows 입력 호출은 하지 않는다. 자동 테스트는 별도 hidden headless Unity와 내부 가상 포인터를 사용한다. 로그/검증 복사본은 Git에서 제외한다. 검수 사진의 시설/아이템/시간 fixture는 Play 종료 때 버린다.
 
@@ -113,3 +113,13 @@ Lowfire Home은 같은 FrontendSceneBuilder에서 제작한다. JournalAction은
 - 씬 전환의 정책은 SceneFlow를 유지하고 네트워크 씬 로드는 공식 NGO SceneManager가 전파한다. Single Player/Continue는 기존 SceneFlow/SaveRepository 경로다.
 
 전송 빈도·검증·제한과 미래 확장은 MULTIPLAYER_FOUNDATION.md를 따른다.
+
+## Multiplayer Foundation 2
+
+- NetworkCreatureWorld/NetworkSpawnFactory: 공통 World/AnimalPopulation/GoblinSpawner/ZombieSpawner의 Host 전용 시뮬레이션과 초기화 후 NGO Spawn 경계. Client는 정적 terrain과 replica만 제공한다. NetworkEcologyBuilder가 기존 prefab variants와 공유 데이터 참조를 authoring한다.
+- SimulationAuthority/NetworkPlayer.Active: 기존 싱글 진입을 유지하면서 멀티 AI·group·population·damage 실행을 거절하고 Host에서 생존 Player를 선택한다. Windup target이 죽으면 추적을 초기화한다.
+- NetworkCreature/CreatureIdentityState/CreatureFrame: Host transform, identity/pose/health/target/lifecycle 변경 상태와 client-only presentation. NetworkCamp는 camp/refill 읽기 상태, NetworkProjectile은 단일 Host 돌과 client trajectory visual이다.
+- PlayerInputCommands.CombatAuthority/NetworkPlayer.AttackRpc: 소유자 공격 요청→Host의 공통 PlayerCombat 판정. Client가 damage/target/hit 결과를 보내는 경로는 없다. PlayerCombat.Present와 SlingshotAttack.PresentReplica는 피해 없는 공통 표현 경계다.
+- Health/NetworkDeathResult: lethal latch와 replica health를 분리한다. LootOnDeath는 멀티에서 Host-only 결과 이벤트만 만들고 local pickup/reward를 지급하지 않는다. Ground Item/소유권/보상 지급은 다음 범위다.
+
+이전 Foundation 1의 static 야영지 설명은 당시 구조다. 현재 Multiplayer는 기존 default-seed 지형 위 Host ecology를 사용한다. 구현/자동검사와 미수행 실제2인 통합 검증은 MULTIPLAYER_FOUNDATION을 따른다.

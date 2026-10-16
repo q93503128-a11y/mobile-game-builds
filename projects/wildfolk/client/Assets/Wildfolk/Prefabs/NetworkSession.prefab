@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6960e84d07fb87f47956e7a81d71c4e6, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.Transports.UTP.UnityTransport
   m_ProtocolType: 0
   m_UseWebSockets: 0
@@ -59,7 +59,7 @@ MonoBehaviour:
     Address: 127.0.0.1
     Port: 7777
     WebSocketPath: /
-    ServerListenAddress: 
+    ServerListenAddress:
     ClientBindPort: 0
   DebugSimulator:
     PacketDelayMS: 0
@@ -75,11 +75,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 593a2fe42fa9d37498c96f9a383b6521, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkManager
   NetworkManagerExpanded: 0
   NetworkConfig:
-    ProtocolVersion: 1
+    ProtocolVersion: 2
     NetworkTransport: {fileID: 8932130796188687994}
     PlayerPrefab: {fileID: 0}
     Prefabs:
@@ -87,7 +87,7 @@ MonoBehaviour:
     TickRate: 20
     ClientConnectionBufferTimeout: 10
     ConnectionApproval: 1
-    ConnectionData: 
+    ConnectionData:
     EnableTimeResync: 0
     TimeResyncInterval: 30
     EnsureNetworkVariableLengthSafety: 0
@@ -116,7 +116,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 55dca43011a889d46b23351386a2080a, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.NetworkSession
   Manager: {fileID: 188372542163769489}
   PlayerPrefab: {fileID: 7578384368933851516, guid: fdec448a62dc7324a90d97523f78541d, type: 3}
+  EcologyPrefab: {fileID: 7031309093746953857, guid: af3991127bf87b94eb669fd8e7b110e8, type: 3}

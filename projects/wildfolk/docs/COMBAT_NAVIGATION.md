@@ -4,7 +4,7 @@
 
 AttackProfile은 MaxTargets/ArcAngle/Range/PierceCount/AoERadius/SelectionRule을 표현한다. 현재 Arc120도/Range1.6/MaxTargets1/Pierce0/AoE0이다. MaxTargets를 늘린 Sector 선택은 검증 가능하지만 출시 장비는 모두1이다. 실제 Pierce/AoE 공격 방식, Greatsword/Spear/Sweep/광역 Skill은 아직 없다.
 
-CombatAffiliation의 PlayerTeam/TeamStructure와 TeamId를 사용한다. 같은 Team의 Player/길들인 개체/시설은 일반 공격으로 손상되지 않는다. WildAnimal/NeutralGoblin은 공격 가능하며 Goblin은 피격으로 Aggro한다. Friendly는 후보에서 제외되므로 뒤의 Hostile을 막지 않는다. 실제 네트워크나 아군 길들이기 기능은 없다. 철거/회수는 향후 별도 명시적 기능이다.
+CombatAffiliation의 PlayerTeam/TeamStructure와 TeamId를 사용한다. 같은 Team의 Player/길들인 개체/시설은 일반 공격으로 손상되지 않는다. WildAnimal/NeutralGoblin은 공격 가능하며 Goblin은 피격으로 Aggro한다. Friendly는 후보에서 제외되므로 뒤의 Hostile을 막지 않는다. 현재 Multiplayer Foundation 2는 Host 권위 Creature 전투 기반을 제공하며 실제2인 통합 QA는 남아 있다. 아군 길들이기는 없다. 철거/회수는 향후 별도 명시적 기능이다.
 
 Goblin은 OuterTerritory5에서 주시, InnerTerritory2.5 또는 PersonalSpace1.8에서 Aggro, 선공에는 즉시 Aggro한다. 기존 Leash10을 유지한다.
 
@@ -32,3 +32,7 @@ Target Collider와 Player Collider 간 실제 거리≤0.12이면 Facing Arc만 
 NeutralAnimal은 Player Collider를 단단한 장애물로 검사하지 않고 SoftSeparation으로 생물 쪽을 보정한다. 종별 반경/느슨한 Group 간격은 CreatureDefinition 데이터다. Goblin도 공통 Group 경보/간격을 쓰며 직접 주변 Ally Assist,Leash와 제한된 새총 재배치를 사용한다. Skeleton은 공통 EnemyController의 준비/Swing/Hit/Recovery와 Variant Weapon을 따른다. 빛 효과 조건은 LightSensitive이며 Undead 이름/Family 자체가 아니다.
 
 Door는 왼쪽 Hinge/고정 Frame/0.32초 easing으로 열린다. Collider는 eased Open70%에서 해제하고 닫을 때 다시 활성화한다. 점유 상태의 닫기는 거절한다. 공격 중 transient Pose와 발사된 돌은 Save에서 재개하지 않는다. 실제 체감/난이도/경로 자연스러움은 사용자가 확인한다.
+
+## 멀티 전투 기반
+
+공격 입력은 owner RPC로 요청만 전달하고 Host의 같은 PlayerCombat/AttackProfile이 쿨다운·Range/Facing/Point-Blank/Single Target/weapon stats를 판정한다. 멀티 Primary는 NetworkCreature만 대상으로 하며 채집/시설 피해와 PvP를 열지 않는다. Creature는 Host가 생존 Player를 선택하고 준비/타격 때 고정한다. 대상 사망은 추적 초기화와 재선택으로 처리한다. 사망은 Health lethal latch와 NetworkCreature.DeathResolved로 한 번만 처리하고 Client Died/로컬 reward roll은 실행하지 않는다. Ground Loot/Inventory/건축/World persistence는 이번 범위가 아니다. 구체적인 자동검사와 실제2인 검증 미수행은 MULTIPLAYER_FOUNDATION을 따른다.

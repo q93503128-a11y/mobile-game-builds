@@ -24,6 +24,7 @@ namespace Wildfolk
         {foreach(var prefab in new[]{Prefab,SecondaryPrefab})if(prefab!=null && prefab.Member.Definition.Id==id)return prefab;throw new System.IO.InvalidDataException("Unknown nocturnal species");}
         public void Restore(NightCreatureSnapshot[] states)
         {
+            if(!SimulationAuthority.Allows(this))return;
             foreach(var state in states)
             {
                 var enemy=PrefabPool.Spawn(SpeciesPrefab(state.Species),state.Position,Quaternion.identity);enemy.Session=Session;enemy.PlayerHealth=Player;enemy.Clock=Clock;enemy.Lifecycle.Clock=Clock;enemy.Lifecycle.Definition=Definition;enemy.Lifecycle.RestoreActive();enemy.OwnHealth.RestoreHealth(state.HP);enemy.GetComponent<LootOnDeath>().Player=World.Player;if(enemy.Variant!=null)enemy.Variant.SetEquipped(!string.IsNullOrEmpty(state.Variant));Register(enemy);
@@ -51,7 +52,7 @@ namespace Wildfolk
         }
         private void Update()
         {
-            if(!Session.WorldIsRunning || !Player.IsAlive)return;
+            if(!SimulationAuthority.Allows(this) || !Session.WorldIsRunning || !Player.IsAlive)return;
             Prune();RetireInactive();
             var phase=Clock.Model.Phase;
             if(phase!=previous){previous=phase;elapsed=0;openingRemaining=phase==DayPhase.Night ? Mathf.CeilToInt(TargetPopulation*Definition.InitialFraction) : 0;}
@@ -74,7 +75,7 @@ namespace Wildfolk
         }
         public bool TrySpawn()
         {
-            if(!Session.WorldIsRunning || !Player.IsAlive || Clock.Model.Phase!=DayPhase.Night || ActiveCount>=Definition.HardCap || LocalThreatCount>=TargetPopulation)return false;
+            if(!SimulationAuthority.Allows(this) || !Session.WorldIsRunning || !Player.IsAlive || Clock.Model.Phase!=DayPhase.Night || ActiveCount>=Definition.HardCap || LocalThreatCount>=TargetPopulation)return false;
             for(var i=0;i<Definition.Attempts;i++)
             {
                 var angle=Random.value*Mathf.PI*2;var radius=Random.Range(Definition.SpawnNear,Definition.SpawnFar);

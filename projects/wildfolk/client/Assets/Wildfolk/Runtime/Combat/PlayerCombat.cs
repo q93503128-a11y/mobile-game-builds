@@ -9,6 +9,9 @@ namespace Wildfolk
         public PlayerAvatar Avatar;
         public PlayerEquipment Equipment;
         public Health OwnHealth;
+        public bool CreatureTargetsOnly;
+        public int HandIndex=>handIndex;
+        public event System.Action AttackStarted;
         public bool IsAttacking { get; private set; }
         private readonly Collider2D[] candidates = new Collider2D[32];
         private readonly Health[] targets=new Health[32];
@@ -31,7 +34,7 @@ namespace Wildfolk
 
         public bool TryAttack()
         {
-            if (!Session.IsRunning || !OwnHealth.IsAlive || IsAttacking || Time.time < nextAttack) return false;
+            if (!SimulationAuthority.Allows(this) || !Session.IsRunning || !OwnHealth.IsAlive || IsAttacking || Time.time < nextAttack) return false;
             attackTool = Equipment.ActiveTool;
             duration = attackTool == null ? Settings.PunchDuration : attackTool.Duration;
             profile=attackTool==null ? Settings.PunchAttack : attackTool.Attack;
@@ -43,6 +46,7 @@ namespace Wildfolk
             nextAttack = started + (attackTool == null ? Settings.PunchCooldown : attackTool.Cooldown);
             hitApplied = false;
             IsAttacking = true;
+            AttackStarted?.Invoke();
             OwnHealth.MarkCombat();
             return true;
         }
@@ -63,6 +67,7 @@ namespace Wildfolk
             for(var i=0;i<count;i++)
             {
                 var health=candidates[i].GetComponentInParent<Health>();
+                if(CreatureTargetsOnly && (health==null || health.GetComponent<NetworkCreature>()==null))continue;
                 if(!CombatAffiliation.CanDamage(OwnHealth,health) || !InSector(candidates[i],out var distance,out var alignment))continue;
                 var node=health.GetComponent<ResourceNode>();
                 if(node!=null && !node.Definition.CanHarvest(attackTool))continue;
@@ -82,17 +87,7 @@ namespace Wildfolk
             if (!IsAttacking) return;
             if (!Session.IsRunning) { CancelAttack(); return; }
             var progress = Mathf.Clamp01((Time.time - started) / duration);
-            var extension = Mathf.Sin(progress * Mathf.PI);
-            if (attackTool == null)
-            {
-                var towardCenter = (handIndex == 0 ? 1 : -1) * Avatar.Facing.HandSeparation * .55f * extension;
-                Avatar.Facing.SetHandPose(handIndex, new Vector2(towardCenter, extension * Settings.PunchExtension));
-            }
-            else
-            {
-                var arc = -Mathf.Sin(progress * Mathf.PI * 2) * attackTool.SwingArc;
-                Avatar.Facing.SetHandPose(1, new Vector2(-.2f * extension, attackTool.HandExtension * extension), arc);
-            }
+            Present(progress,attackTool,handIndex);
             if (!hitApplied && progress >= .5f)
             {
                 hitApplied = true;
@@ -107,6 +102,21 @@ namespace Wildfolk
                 }
             }
             if (progress >= 1) CancelAttack();
+        }
+
+        public void Present(float progress,ToolDefinition tool,int hand)
+        {
+            var extension = Mathf.Sin(progress * Mathf.PI);
+            if (tool == null)
+            {
+                var towardCenter = (hand == 0 ? 1 : -1) * Avatar.Facing.HandSeparation * .55f * extension;
+                Avatar.Facing.SetHandPose(hand, new Vector2(towardCenter, extension * Settings.PunchExtension));
+            }
+            else
+            {
+                var arc = -Mathf.Sin(progress * Mathf.PI * 2) * tool.SwingArc;
+                Avatar.Facing.SetHandPose(1, new Vector2(-.2f * extension, tool.HandExtension * extension), arc);
+            }
         }
 
         public void CancelAttack()

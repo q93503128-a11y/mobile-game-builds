@@ -16,6 +16,10 @@ namespace Wildfolk
         public Vector2 Direction { get; private set; } = Vector2.down;
         public Vector2 DisplayDirection { get; private set; } = Vector2.down;
         private float displayAngle = -90;
+        public Vector2 LeftOffset=>leftOffset;
+        public Vector2 RightOffset=>rightOffset;
+        public float LeftArc=>leftArc;
+        public float RightArc=>rightArc;
         private Vector2 leftOffset;
         private Vector2 rightOffset;
         private float leftArc;

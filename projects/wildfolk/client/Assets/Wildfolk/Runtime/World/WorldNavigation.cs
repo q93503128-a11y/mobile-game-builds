@@ -19,6 +19,7 @@ namespace Wildfolk
         {if(!Traversable(origin+direction*distance,radius))return false;var count=Physics2D.CircleCast(origin,radius,direction,new ContactFilter2D{useTriggers=false},hits,distance+.08f);for(var i=0;i<count;i++)if(hits[i].collider!=ignore)return false;return true;}
         public bool CanSpawn(Vector2 p,float radius,float playerDistance,bool outside=true)
         {
+            if(NetworkCreatureWorld.Active!=null)foreach(var player in NetworkPlayer.Active)if(Vector2.Distance(p,player.transform.position)<playerDistance)return false;
             if(!Traversable(p,radius) || World.Map.IsWater(p,radius) || Vector2.Distance(p,Player.position)<playerDistance || outside && !OutsideCamera(p))return false;
             if(Physics2D.OverlapCircle(p,radius,new ContactFilter2D{useTriggers=true},overlaps)>0)return false;
             foreach(var direction in directions)

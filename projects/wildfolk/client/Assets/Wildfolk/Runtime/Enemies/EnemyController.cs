@@ -37,6 +37,9 @@ namespace Wildfolk
         private bool NightHunt => Clock!=null && Clock.Model.Phase==DayPhase.Night;
         private void Update()
         {
+            if(!SimulationAuthority.Allows(this))return;
+            if(PlayerHealth==null || !PlayerHealth.IsAlive)CancelPursuit();
+            if(State==EnemyState.Idle || State==EnemyState.Chase)PlayerHealth=SimulationAuthority.Target(this,PlayerHealth);
             if(!CanAct)return;
             if(Sensitive && Member.Definition.Light.SuppressSafeAggro && GameplayLight.IsSafe(PlayerHealth.transform.position))
             {
@@ -95,6 +98,9 @@ namespace Wildfolk
         }
         private void FixedUpdate()
         {
+            if(!SimulationAuthority.Allows(this))return;
+            if(PlayerHealth==null || !PlayerHealth.IsAlive)CancelPursuit();
+            if(State==EnemyState.Idle || State==EnemyState.Chase)PlayerHealth=SimulationAuthority.Target(this,PlayerHealth);
             if(!CanAct)return;
             var delta=body.position-(Vector2)PlayerHealth.transform.position;
             if(delta.magnitude<Settings.EnemySeparation)
@@ -134,7 +140,7 @@ namespace Wildfolk
             return barrier;
         }
         private bool Clear(Vector2 direction,float step) => Steering!=null ? Steering.Clear(direction,step) : Physics2D.CircleCast(body.position,.4f,direction,new ContactFilter2D{useTriggers=false},obstacles,step+.12f)==0;
-        private bool CanAct=>Session.WorldIsRunning && OwnHealth.IsAlive && PlayerHealth.IsAlive && NightHunt && (Lifecycle==null || Lifecycle.Phase==ZombiePhase.Active);
+        private bool CanAct=>SimulationAuthority.Allows(this) && Session.WorldIsRunning && OwnHealth.IsAlive && PlayerHealth!=null && PlayerHealth.IsAlive && NightHunt && (Lifecycle==null || Lifecycle.Phase==ZombiePhase.Active);
         public void CancelPursuit(){safeSince=-1;SetState(EnemyState.Idle);strikeTarget=null;strikeCollider=null;Facing.ResetPose();}
         private void BeginStrike(Health target,Collider2D collider)
         {

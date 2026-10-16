@@ -35,6 +35,7 @@ namespace Wildfolk
             if (State != SessionState.Defeated && State != SessionState.Paused) SetState(SessionState.Paused);
         }
         public void Resume() { if (State == SessionState.Paused) SetState(SessionState.Running); }
+        internal void ReplicateDefeat(){if(State!=SessionState.Defeated)SetState(SessionState.Defeated);}
         private void Defeat() => SetState(SessionState.Defeated);
         private void SetState(SessionState value)
         {

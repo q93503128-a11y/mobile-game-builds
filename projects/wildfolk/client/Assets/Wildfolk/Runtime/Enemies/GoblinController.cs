@@ -20,17 +20,21 @@ namespace Wildfolk
         private Rigidbody2D body;private Vector2 home,direction,strike;private float timer,nextPatrol;
         private readonly RaycastHit2D[] obstacles=new RaycastHit2D[8];
         private void Awake()=>body=GetComponent<Rigidbody2D>();
-        private void Start(){if(string.IsNullOrEmpty(Member.GroupId))home=body.position;else home=Member.Anchor;direction=Vector2.right;Separation.Player=PlayerHealth.transform;}
+        private void Start(){if(string.IsNullOrEmpty(Member.GroupId))home=body.position;else home=Member.Anchor;direction=Vector2.right;if(PlayerHealth!=null)Separation.Player=PlayerHealth.transform;}
         public void SetHome(Vector2 anchor){home=anchor;Member.Anchor=anchor;}
         public void ResetForSpawn(){State=GoblinState.Patrol;home=body.position;direction=Vector2.right;timer=nextPatrol=0;Pose.localScale=Vector3.one;}
         private void OnEnable(){OwnHealth.Damaged+=Aggro;Member.Alerted+=Assist;}
         private void OnDisable(){OwnHealth.Damaged-=Aggro;Member.Alerted-=Assist;if(Ranged!=null)Ranged.Cancel();Facing.ResetPose();}
-        private void Aggro(){if(OwnHealth.LastAttacker!=null)EnterCombat(PlayerHealth.transform.position,true);}
+        private void Aggro(){if(!SimulationAuthority.Allows(this) || OwnHealth.LastAttacker==null)return;PlayerHealth=OwnHealth.LastAttacker.GetComponent<Health>();if(PlayerHealth!=null)EnterCombat(PlayerHealth.transform.position,true);}
         private void Assist(Vector2 origin,CreatureAlert alert){if(alert==CreatureAlert.Fight && PlayerHealth!=null && Vector2.Distance(origin,home)<=Definition.Leash)EnterCombat(origin,false);}
-        public void EnterCombat(Vector2 origin,bool broadcast=true){if(InCombat)return;State=GoblinState.Chase;timer=0;if(broadcast)Member.Broadcast(origin,CreatureAlert.Fight);}
+        public void EnterCombat(Vector2 origin,bool broadcast=true){if(!SimulationAuthority.Allows(this) || InCombat)return;State=GoblinState.Chase;timer=0;if(broadcast)Member.Broadcast(origin,CreatureAlert.Fight);}
         private void Update()
         {
-            if(!Session.WorldIsRunning || !OwnHealth.IsAlive || !PlayerHealth.IsAlive)return;
+            if(!SimulationAuthority.Allows(this))return;
+            if(PlayerHealth==null || !PlayerHealth.IsAlive){if(Ranged!=null)Ranged.Cancel();State=GoblinState.Patrol;timer=0;Facing.ResetPose();}
+            if(State!=GoblinState.Windup && !(Ranged!=null && Ranged.IsBusy))PlayerHealth=SimulationAuthority.Target(this,PlayerHealth);
+            if(!Session.WorldIsRunning || !OwnHealth.IsAlive || PlayerHealth==null || !PlayerHealth.IsAlive)return;
+            Separation.Player=PlayerHealth.transform;
             timer+=Time.deltaTime;var delta=(Vector2)PlayerHealth.transform.position-body.position;
             if(State==GoblinState.Patrol || State==GoblinState.Watch)
             {
@@ -56,7 +60,11 @@ namespace Wildfolk
         }
         private void FixedUpdate()
         {
-            if(!Session.WorldIsRunning || !OwnHealth.IsAlive || !PlayerHealth.IsAlive)return;
+            if(!SimulationAuthority.Allows(this))return;
+            if(PlayerHealth==null || !PlayerHealth.IsAlive){if(Ranged!=null)Ranged.Cancel();State=GoblinState.Patrol;timer=0;Facing.ResetPose();}
+            if(State!=GoblinState.Windup && !(Ranged!=null && Ranged.IsBusy))PlayerHealth=SimulationAuthority.Target(this,PlayerHealth);
+            if(!Session.WorldIsRunning || !OwnHealth.IsAlive || PlayerHealth==null || !PlayerHealth.IsAlive)return;
+            Separation.Player=PlayerHealth.transform;
             var speed=Definition.WanderSpeed;
             if(State==GoblinState.Chase){direction=((Vector2)PlayerHealth.transform.position-body.position).normalized;speed=Definition.Speed;
                 if(Ranged!=null){if(Ranged.IsBusy){Steering.Move(Vector2.zero,.5f);return;}if(Time.time<repositionUntil)direction=-direction;else if(Vector2.Distance(body.position,PlayerHealth.transform.position)<=Ranged.Definition.PreferredDistance)direction=Vector2.zero;}}

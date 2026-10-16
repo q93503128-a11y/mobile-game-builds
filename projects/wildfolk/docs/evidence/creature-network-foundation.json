@@ -1,0 +1,241 @@
+{
+  "date": "2026-10-16",
+  "baseline": "bfc18d46a740b73fb898495ae84be2e86f365c9c",
+  "actual_two_peer_play": false,
+  "editor_mcp_play": false,
+  "test_environment": "Existing cached hidden batchmode Unity 6000.3.19f1; one process at a time; local Host and server-controlled actor fixtures, no remote peer",
+  "unique_editmode_passed": 13,
+  "unique_playmode_passed": 9,
+  "runs": [
+    {
+      "file": "creature-edit.xml",
+      "passed": 12,
+      "failed": 0,
+      "duration_seconds": 0.2602423
+    },
+    {
+      "file": "creature-play.xml",
+      "passed": 5,
+      "failed": 4,
+      "duration_seconds": 30.9450498
+    },
+    {
+      "file": "creature-network-play.xml",
+      "passed": 2,
+      "failed": 3,
+      "duration_seconds": 7.9834721
+    },
+    {
+      "file": "creature-authority-play.xml",
+      "passed": 2,
+      "failed": 1,
+      "duration_seconds": 14.525395
+    },
+    {
+      "file": "creature-final-play.xml",
+      "passed": 2,
+      "failed": 0,
+      "duration_seconds": 11.1348592
+    },
+    {
+      "file": "creature-close-play.xml",
+      "passed": 1,
+      "failed": 0,
+      "duration_seconds": 6.0071142
+    },
+    {
+      "file": "creature-presentation-edit.xml",
+      "passed": 1,
+      "failed": 0,
+      "duration_seconds": 0.1235574
+    }
+  ],
+  "latest_results": [
+    {
+      "name": "Wildfolk.Tests.EcologyModelTests.AllFiveSpeciesHaveUsableLootGroupsHabitatsAndBoundedPopulation",
+      "result": "Passed",
+      "duration_seconds": 0.045749,
+      "source": "creature-edit.xml"
+    },
+    {
+      "name": "Wildfolk.Tests.EcologyModelTests.FamilyAndLightTraitAreIndependentData",
+      "result": "Passed",
+      "duration_seconds": 0.002372,
+      "source": "creature-edit.xml"
+    },
+    {
+      "name": "Wildfolk.Tests.EcologyModelTests.FullInventoryReplacementFailureIsAtomic",
+      "result": "Passed",
+      "duration_seconds": 0.004697,
+      "source": "creature-edit.xml"
+    },
+    {
+      "name": "Wildfolk.Tests.EcologyModelTests.RustedSwordIsUsableSingleTargetLocalizedSaveItemAndRareVariantLoot",
+      "result": "Passed",
+      "duration_seconds": 0.031102,
+      "source": "creature-edit.xml"
+    },
+    {
+      "name": "Wildfolk.Tests.EcologyModelTests.SlingshotHasRealDrawReleaseAndRecoveryIntervals",
+      "result": "Passed",
+      "duration_seconds": 0.000677,
+      "source": "creature-edit.xml"
+    },
+    {
+      "name": "Wildfolk.Tests.EcologyModelTests.V3AnimalMigrationRetainsLivingIdentityPositionHPAndRecoveryDeadline",
+      "result": "Passed",
+      "duration_seconds": 0.060108,
+      "source": "creature-edit.xml"
+    },
+    {
+      "name": "Wildfolk.Tests.NetworkCreatureContractTests.EveryEcologySpawnHasRegisteredServerPrefabAndSharedBrain",
+      "result": "Passed",
+      "duration_seconds": 0.046336,
+      "source": "creature-edit.xml"
+    },
+    {
+      "name": "Wildfolk.Tests.NetworkCreatureContractTests.MultiplayerWorldHasNoPersistenceAndKeepsPopulationDefinitions",
+      "result": "Passed",
+      "duration_seconds": 0.000699,
+      "source": "creature-edit.xml"
+    },
+    {
+      "name": "Wildfolk.Tests.NetworkCreatureContractTests.PlayerRequestsNeverContainTargetDamageOrClientHitResult",
+      "result": "Passed",
+      "duration_seconds": 0.001456,
+      "source": "creature-edit.xml"
+    },
+    {
+      "name": "Wildfolk.Tests.NetworkFoundationTests.CommandsRejectNonFiniteAndClampUntrustedMagnitude",
+      "result": "Passed",
+      "duration_seconds": 0.002541,
+      "source": "creature-edit.xml"
+    },
+    {
+      "name": "Wildfolk.Tests.NetworkFoundationTests.InternetCodeAndLocalAddressAreDifferentRoutes",
+      "result": "Passed",
+      "duration_seconds": 0.003693,
+      "source": "creature-edit.xml"
+    },
+    {
+      "name": "Wildfolk.Tests.NetworkFoundationTests.PlayerStateIsServerWritableAndRpcInputsAreOwnerOnly",
+      "result": "Passed",
+      "duration_seconds": 0.001128,
+      "source": "creature-edit.xml"
+    },
+    {
+      "name": "Wildfolk.Tests.EcologyPlayTests.RegionalAnimalRecoveryUsesNewIdsAndRoundTripsGroups",
+      "result": "Passed",
+      "duration_seconds": 3.46573,
+      "source": "creature-play.xml"
+    },
+    {
+      "name": "Wildfolk.Tests.EcologyPlayTests.WarbandAssistIsBoundedAndRangedCountVaries",
+      "result": "Passed",
+      "duration_seconds": 2.685871,
+      "source": "creature-play.xml"
+    },
+    {
+      "name": "Wildfolk.Tests.NetworkCreaturePlayTests.HostSpawnGroupCombatAndDeathHaveOneAuthority",
+      "result": "Passed",
+      "duration_seconds": 5.882943,
+      "source": "creature-authority-play.xml"
+    },
+    {
+      "name": "Wildfolk.Tests.NetworkCreaturePlayTests.HostTargetsLivingPlayersAndLaunchesOneAuthoritativeProjectile",
+      "result": "Passed",
+      "duration_seconds": 7.575289,
+      "source": "creature-final-play.xml"
+    },
+    {
+      "name": "Wildfolk.Tests.NetworkCreaturePlayTests.LethalReentrantDamageFiresDeathOnceAndPoolResetRestoresSingleplayerHealth",
+      "result": "Passed",
+      "duration_seconds": 0.427171,
+      "source": "creature-network-play.xml"
+    },
+    {
+      "name": "Wildfolk.Tests.NetworkCreaturePlayTests.UnspawnedReplicaCannotRunBrainDamageAlertsOrSpawnPopulation",
+      "result": "Passed",
+      "duration_seconds": 3.520326,
+      "source": "creature-final-play.xml"
+    },
+    {
+      "name": "Wildfolk.Tests.NetworkFoundationPlayTests.LocalHostSpawnsAuthoritativePlayerAndHostEcologyWithoutSave",
+      "result": "Passed",
+      "duration_seconds": 5.949752,
+      "source": "creature-close-play.xml"
+    },
+    {
+      "name": "Wildfolk.Tests.StabilityPlayTests.EveryBasicWeaponHitsExactlyOneForwardTarget",
+      "result": "Passed",
+      "duration_seconds": 11.208882,
+      "source": "creature-play.xml"
+    },
+    {
+      "name": "Wildfolk.Tests.StabilityPlayTests.PointBlankNormalEdgeAndOutsideRespectRange",
+      "result": "Passed",
+      "duration_seconds": 5.763892,
+      "source": "creature-play.xml"
+    },
+    {
+      "name": "Wildfolk.Tests.NetworkCreatureContractTests.RangedReplicaEndsPresentationWithoutLaunchingAnotherStone",
+      "result": "Passed",
+      "duration_seconds": 0.057344,
+      "source": "creature-presentation-edit.xml"
+    }
+  ],
+  "source_validation": {
+    "result": "PASS",
+    "asset_guids": 578
+  },
+  "limitations": [
+    "No actual two-process Relay integration QA",
+    "Unspawned replica authority guards are not remote Client receive/render verification",
+    "No mobile, latency, bandwidth profiling, 4-player stress or fun/balance validation"
+  ],
+  "live_editor": {
+    "compiled": true,
+    "errors": 0,
+    "warnings": 0,
+    "playing": false,
+    "focused": false,
+    "dirty": false,
+    "scene": "Assets/Wildfolk/Scenes/MainMenu.unity",
+    "protocol": 2,
+    "ecology_prefabs": 11,
+    "synchronized_changed_files": 81,
+    "user_save_sha256_unchanged": "57d560f19e49507fbc7ac00b48e1dda5759732a181d1c0baa441ad4536da7970"
+  },
+  "timing_kst": [
+    {
+      "phase": "정본 확인",
+      "start": "08:55:18",
+      "end": "08:57:09",
+      "seconds": 111
+    },
+    {
+      "phase": "구현 및 첫 컴파일",
+      "start": "08:57:09",
+      "end": "09:07:16",
+      "seconds": 607
+    },
+    {
+      "phase": "관련 자동검사와 수정",
+      "start": "09:07:16",
+      "end": "09:15:00",
+      "seconds": 464
+    },
+    {
+      "phase": "프로젝트 반영과 정본 정리",
+      "start": "09:15:00",
+      "end": "09:19:15",
+      "seconds": 255
+    },
+    {
+      "phase": "마지막 표현 교정",
+      "start": "09:19:15",
+      "end": "09:21:31",
+      "seconds": 136
+    }
+  ]
+}

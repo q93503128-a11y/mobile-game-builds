@@ -19,9 +19,11 @@ namespace Wildfolk
         }
         public Vector2 Correction(float seconds)
         {
-            if(Member==null || Member.Definition==null)return Vector2.zero;
+            if(!SimulationAuthority.Allows(this) || Member==null || Member.Definition==null)return Vector2.zero;
             var force=Vector2.zero;
-            if(Player!=null)force+=Away(Player.position,Radius+.55f,Player.GetInstanceID())*2.8f;
+            if(GetComponent<NetworkCreature>()!=null)
+            {foreach(var player in NetworkPlayer.Active)if(player.Health.IsAlive)force+=Away(player.transform.position,Radius+.55f,player.GetInstanceID())*2.8f;}
+            else if(Player!=null)force+=Away(Player.position,Radius+.55f,Player.GetInstanceID())*2.8f;
             foreach(var actor in actors)if(actor!=this && actor.Member!=null && actor.Member.Definition!=null)force+=Away(actor.transform.position,Radius+actor.Radius,actor.GetInstanceID())*1.8f;
             return Vector2.ClampMagnitude(force,3)*seconds;
         }

@@ -39,6 +39,7 @@ namespace Wildfolk
         }
         public void Generate()
         {
+            if(!SimulationAuthority.Allows(this))return;
             live.Clear();pending.Clear();serial=groupSerial=cursor=0;nextAttempt=0;Initialize();
             for(var rule=0;rule<Definition.Rules.Length;rule++)for(var region=0;region<12;region++)
             {while(Count(rule,region)<Target(rule,region) && ActiveCount<Definition.HardCap){if(SpawnGroup(rule,region,false)==0)break;}Schedule(rule,region,Clock.Model.Elapsed);}
@@ -77,7 +78,7 @@ namespace Wildfolk
         }
         private void Spawn(AnimalSnapshot state)
         {
-            var actor=Instantiate(Definition.Rules[state.Rule].Prefab,state.Position,Quaternion.identity,World.Environment);
+            var actor=NetworkSpawnFactory.Spawn(Definition.Rules[state.Rule].Prefab,state.Position,Quaternion.identity,World.Environment);
             actor.Player=World.Player.transform;actor.Session=World.Session;actor.Region=World.Region;actor.Member.Anchor=state.Home;actor.Member.GroupId=state.GroupId;actor.Separation.Player=actor.Player;
             var loot=actor.GetComponent<LootOnDeath>();loot.Player=World.Player;loot.Pickup=World.Pickup;loot.Settings=World.Settings;
             state.Missing=false;if(state.HP>0)actor.Health.RestoreHealth(state.HP);state.HP=actor.Health.Current;state.RespawnAt=0;
@@ -87,9 +88,10 @@ namespace Wildfolk
         {live.Remove(identity.State.Id);Schedule(identity.State.Rule,identity.State.Region,Clock.Model.Elapsed);}
         private void Schedule(int rule,int region,double now)
         {if(Count(rule,region)<Target(rule,region) && SpeciesCount(rule)<Definition.Rules[rule].Population && !pending.Exists(t=>t.Rule==rule && t.Region==region))pending.Add(new RecoveryTicket{Rule=rule,Region=region,Due=now+Definition.Rules[rule].RespawnSeconds});}
-        private void Update(){if(World.Session.WorldIsRunning && Clock.Model.Elapsed>=nextAttempt){nextAttempt=Clock.Model.Elapsed+5;Tick();}}
+        private void Update(){if(SimulationAuthority.Allows(this) && World.Session.WorldIsRunning && Clock.Model.Elapsed>=nextAttempt){nextAttempt=Clock.Model.Elapsed+5;Tick();}}
         public int Tick()
         {
+            if(!SimulationAuthority.Allows(this))return 0;
             var count=0;var now=Clock.Model.Elapsed;
             for(var i=pending.Count-1;i>=0;i--)
             {
@@ -109,6 +111,7 @@ namespace Wildfolk
         {var tickets=new RecoveryTicket[pending.Count];for(var i=0;i<tickets.Length;i++){var t=pending[i];tickets[i]=new RecoveryTicket{Rule=t.Rule,Region=t.Region,Due=t.Due};}return new AnimalEcologySnapshot{Serial=serial,GroupSerial=groupSerial,Cursor=cursor,Pending=tickets};}
         public void Restore(AnimalSnapshot[] states,AnimalEcologySnapshot ecology=null)
         {
+            if(!SimulationAuthority.Allows(this))return;
             foreach(var identity in live.Values)if(identity!=null){identity.gameObject.SetActive(false);Destroy(identity.gameObject);}live.Clear();pending.Clear();Initialize();
             serial=ecology==null ? 0 : ecology.Serial;groupSerial=ecology==null ? 0 : ecology.GroupSerial;cursor=ecology==null ? 0 : ecology.Cursor;
             if(ecology!=null)pending.AddRange(ecology.Pending);

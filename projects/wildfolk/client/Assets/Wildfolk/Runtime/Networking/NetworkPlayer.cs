@@ -3,12 +3,16 @@ using UnityEngine;
 
 namespace Wildfolk
 {
-    public sealed class NetworkPlayer : NetworkBehaviour,IPlayerMovementAuthority
+    public sealed class NetworkPlayer : NetworkBehaviour,IPlayerMovementAuthority,IPlayerCombatAuthority
     {
+        private static readonly System.Collections.Generic.List<NetworkPlayer> players=new System.Collections.Generic.List<NetworkPlayer>();
+        public static System.Collections.Generic.IReadOnlyList<NetworkPlayer> Active=>players;
         public ContentCatalog Catalog;
         public GameObject LocalMarker;
         public readonly NetworkVariable<PlayerMotionState> Motion=new NetworkVariable<PlayerMotionState>();
         public readonly NetworkVariable<PlayerStatusState> Status=new NetworkVariable<PlayerStatusState>();
+        public readonly NetworkVariable<PlayerAttackState> AttackState=new NetworkVariable<PlayerAttackState>();
+        private PlayerCombat combat;
         public PlayerInputCommands Commands {get;private set;}
         public PlayerMotor Motor {get;private set;}
         public Health Health {get;private set;}
@@ -20,11 +24,15 @@ namespace Wildfolk
         private void Awake()
         {
             Commands=GetComponent<PlayerInputCommands>();Motor=GetComponent<PlayerMotor>();Health=GetComponent<Health>();Equipment=GetComponent<PlayerEquipment>();input=GetComponent<PlayerInputAdapter>();
+            combat=GetComponent<PlayerCombat>();combat.enabled=false;Health.IsReplica=true;
             input.enabled=false;Motor.enabled=false;Motor.Locomotion.enabled=false;Equipment.enabled=false;GetComponent<CharacterStats>().enabled=false;
         }
         public override void OnNetworkSpawn()
         {
-            Commands.MovementAuthority=this;
+            players.Add(this);
+            Commands.MovementAuthority=this;Commands.CombatAuthority=this;
+            combat.CreatureTargetsOnly=true;combat.enabled=IsServer;Health.IsReplica=!IsServer;
+            if(IsServer)combat.AttackStarted+=PublishAttack;
             Motor.Terrain=FindFirstObjectByType<WorldNavigation>();
             Motor.enabled=IsServer;Motor.Locomotion.enabled=IsServer;Equipment.enabled=IsServer;GetComponent<CharacterStats>().enabled=IsServer;
             input.enabled=IsOwner;LocalMarker.SetActive(IsOwner);
@@ -37,9 +45,10 @@ namespace Wildfolk
         }
         public override void OnNetworkDespawn()
         {
+            players.Remove(this);
             if(NetworkManager!=null && NetworkManager.NetworkTickSystem!=null)NetworkManager.NetworkTickSystem.Tick-=Tick;
             Motion.OnValueChanged-=OnMotion;Status.OnValueChanged-=OnStatus;Health.Changed-=PublishStatus;Equipment.Changed-=PublishStatus;
-            Commands.MovementAuthority=null;
+            combat.AttackStarted-=PublishAttack;Commands.MovementAuthority=null;Commands.CombatAuthority=null;
         }
         public void SetMove(Vector2 move){if(IsSpawned && IsOwner)pendingMove=NetworkInputRules.Sanitize(move);}
         public bool Dash()
@@ -47,6 +56,21 @@ namespace Wildfolk
             if(!IsSpawned || !IsOwner)return false;
             if(IsServer){AcceptMove(pendingMove);return Motor.Locomotion.TryDash();}
             DashRpc(pendingMove);return true;
+        }
+        public bool Attack()
+        {if(!IsSpawned || !IsOwner || !Health.IsAlive)return false;if(IsServer)return combat.TryAttack();AttackRpc();return true;}
+        [Rpc(SendTo.Server,InvokePermission=RpcInvokePermission.Owner)]
+        private void AttackRpc(RpcParams rpc=default)
+        {if(rpc.Receive.SenderClientId==OwnerClientId && Health.IsAlive)combat.TryAttack();}
+        private void PublishAttack()
+        {var previous=AttackState.Value;AttackState.Value=new PlayerAttackState{Sequence=(ushort)(previous.Sequence+1),Hand=(byte)combat.HandIndex,Tool=ItemIndex(Equipment.SelectedItem),Started=NetworkManager.ServerTime.Time};}
+        private void Update()
+        {
+            if(!IsSpawned || IsServer)return;
+            var attack=AttackState.Value;if(attack.Sequence==0)return;
+            var item=Item(attack.Tool);var tool=item==null ? null : item.Tool;var duration=tool==null ? combat.Settings.PunchDuration : tool.Duration;
+            var elapsed=(float)(NetworkManager.ServerTime.Time-attack.Started);
+            if(elapsed>=0 && elapsed<duration)combat.Present(elapsed/duration,tool,attack.Hand);else Motor.Avatar.Facing.ResetPose();
         }
         [Rpc(SendTo.Server,Delivery=RpcDelivery.Unreliable,InvokePermission=RpcInvokePermission.Owner)]
         private void MoveRpc(Vector2 move,RpcParams rpc=default)
@@ -85,7 +109,7 @@ namespace Wildfolk
         private void ApplyStatus(PlayerStatusState state)
         {
             if(state.MaximumHP<=0)return;
-            Health.SetMaximumBonus(Mathf.Max(0,state.MaximumHP-Health.Definition.MaximumHealth));Health.RestoreHealth(Mathf.Clamp(state.HP,0,Health.Maximum));
+            Health.SetMaximumBonus(Mathf.Max(0,state.MaximumHP-Health.Definition.MaximumHealth));Health.ApplyReplica(state.HP);if(state.HP<=0)Commands.Session.ReplicateDefeat();
             Equipment.ApplyReplicatedAppearance(Item(state.Head),Item(state.Body),Item(state.Held));
         }
     }

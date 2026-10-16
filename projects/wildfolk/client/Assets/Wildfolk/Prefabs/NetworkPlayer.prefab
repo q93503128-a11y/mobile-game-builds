@@ -101,7 +101,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 19052881427358656, guid: 2e39c5feaa7d80b438125df9889b639e, type: 3}
       propertyPath: Session
-      value: 
+      value:
       objectReference: {fileID: 7564107769141678363}
     - target: {fileID: 19052881427358656, guid: 2e39c5feaa7d80b438125df9889b639e, type: 3}
       propertyPath: m_Enabled
@@ -113,11 +113,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 459331300772413484, guid: 2e39c5feaa7d80b438125df9889b639e, type: 3}
       propertyPath: Primary
-      value: 
+      value:
       objectReference: {fileID: 0}
     - target: {fileID: 459331300772413484, guid: 2e39c5feaa7d80b438125df9889b639e, type: 3}
       propertyPath: Session
-      value: 
+      value:
       objectReference: {fileID: 7564107769141678363}
     - target: {fileID: 459331300772413484, guid: 2e39c5feaa7d80b438125df9889b639e, type: 3}
       propertyPath: AllowPause
@@ -125,7 +125,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 459331300772413484, guid: 2e39c5feaa7d80b438125df9889b639e, type: 3}
       propertyPath: Interaction
-      value: 
+      value:
       objectReference: {fileID: 0}
     - target: {fileID: 459331300772413484, guid: 2e39c5feaa7d80b438125df9889b639e, type: 3}
       propertyPath: AllowInventory
@@ -137,11 +137,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 765404324439809981, guid: 2e39c5feaa7d80b438125df9889b639e, type: 3}
       propertyPath: Session
-      value: 
+      value:
       objectReference: {fileID: 7564107769141678363}
     - target: {fileID: 1047555241206377397, guid: 2e39c5feaa7d80b438125df9889b639e, type: 3}
       propertyPath: Session
-      value: 
+      value:
       objectReference: {fileID: 7564107769141678363}
     - target: {fileID: 1047555241206377397, guid: 2e39c5feaa7d80b438125df9889b639e, type: 3}
       propertyPath: m_Enabled
@@ -234,7 +234,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d7f0ec9e19b23b74ca69f030c5c64078, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.Health
 --- !u!1 &7578384368933851516 stripped
 GameObject:
@@ -251,7 +251,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fa89c7e90b9cd1b47b5dbcafdd5b5929, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.GameplaySession
   PlayerHealth: {fileID: 5134666519865180958}
   Mode: 1
@@ -265,9 +265,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
-  GlobalObjectIdHash: 1088978433
+  GlobalObjectIdHash: 2615142241
   InScenePlacedSourceGlobalObjectIdHash: 0
   m_InScenePlacedDisabledByDefault: 0
   DeferredDespawnTick: 0
@@ -292,7 +292,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e96cb6065543e43c4a752faaa1468eb1, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.Components.NetworkTransform
   ShowTopMostFoldoutHeaderGroup: 1
   NetworkTransformExpanded: 0
@@ -338,7 +338,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 80d7c879794dfda4687da0e400131852, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.Components.NetworkRigidbody2D
   ShowTopMostFoldoutHeaderGroup: 1
   NetworkRigidbodyBaseExpanded: 0
@@ -355,7 +355,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fa6ed87e03bb38140a3554f50bf0b008, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.NetworkPlayer
   ShowTopMostFoldoutHeaderGroup: 1
   Catalog: {fileID: 11400000, guid: edf4df5213dc0bf4e96917b39fb19914, type: 2}

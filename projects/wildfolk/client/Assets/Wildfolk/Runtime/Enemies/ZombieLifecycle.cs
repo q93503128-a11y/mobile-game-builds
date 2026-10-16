@@ -16,7 +16,7 @@ namespace Wildfolk
         public void ResetForSpawn(){Phase=ZombiePhase.Emerging;elapsed=0;Hitbox.enabled=false;SetPose(0);}
         private void Update()
         {
-            if(!Controller.Session.WorldIsRunning)return;
+            if(!SimulationAuthority.Allows(this) || !Controller.Session.WorldIsRunning)return;
             if(Clock.Model.Phase!=DayPhase.Night && Phase!=ZombiePhase.Burrowing)Burrow();
             if(Phase==ZombiePhase.Active)return;
             elapsed+=Time.deltaTime;var seconds=Phase==ZombiePhase.Emerging ? Definition.EmergeSeconds : Definition.BurrowSeconds;

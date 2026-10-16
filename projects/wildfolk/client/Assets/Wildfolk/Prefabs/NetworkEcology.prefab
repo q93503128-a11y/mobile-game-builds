@@ -1,0 +1,439 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3602260451368608269
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7414471339365359032}
+  m_Layer: 0
+  m_Name: Generated Environment
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7414471339365359032
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3602260451368608269}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8780847072988882153}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4161237477044333027
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 982114623618018841}
+  - component: {fileID: 3600377113405371908}
+  - component: {fileID: 3583904074605638348}
+  m_Layer: 0
+  m_Name: Ecology Anchor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &982114623618018841
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4161237477044333027}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8780847072988882153}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3600377113405371908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4161237477044333027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7f0ec9e19b23b74ca69f030c5c64078, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.Health
+  Definition: {fileID: 11400000, guid: eee7d8c602949a14db88b015d6f50842, type: 2}
+--- !u!114 &3583904074605638348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4161237477044333027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc3a1e9faa21f8143bc5209a5d2ce3b6, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.PlayerInventory
+  Settings: {fileID: 11400000, guid: fd43ec9cd9385eb4eb69f64792c98535, type: 2}
+--- !u!1 &7031309093746953857
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8780847072988882153}
+  - component: {fileID: 1441559718046138410}
+  - component: {fileID: 2554870917964472763}
+  - component: {fileID: 6320279033400318151}
+  - component: {fileID: 7895465506580533883}
+  - component: {fileID: 4496810478940515493}
+  - component: {fileID: 5498284721663869418}
+  - component: {fileID: 4456147602622536825}
+  - component: {fileID: 3120962446745633437}
+  - component: {fileID: 5557287145095367544}
+  - component: {fileID: 2471586575450122075}
+  - component: {fileID: 244430250233079259}
+  m_Layer: 0
+  m_Name: NetworkEcology
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &8780847072988882153
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7031309093746953857}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 982114623618018841}
+  - {fileID: 6566874858841675678}
+  - {fileID: 7414471339365359032}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1441559718046138410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7031309093746953857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa89c7e90b9cd1b47b5dbcafdd5b5929, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.GameplaySession
+  PlayerHealth: {fileID: 3600377113405371908}
+  Mode: 1
+--- !u!114 &2554870917964472763
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7031309093746953857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 808d0cd4578cecb408f4ff7b420da073, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.WorldClock
+  Definition: {fileID: 11400000, guid: 26b7e1cfcee4bce44826e92698b03040, type: 2}
+  Session: {fileID: 1441559718046138410}
+--- !u!114 &6320279033400318151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7031309093746953857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adea870b7ab3bf84182dadc3c78c74f7, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.WorldSpawnRegion
+  Size: {x: 44, y: 24}
+--- !u!114 &7895465506580533883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7031309093746953857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e45579159ce32734b839ff37acdc0be2, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.WorldTerrainRenderer
+  Ground: {fileID: 6478415900555487053}
+--- !u!114 &4496810478940515493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7031309093746953857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2537f30bec3e814b893ce3bbe3005ee, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.WorldGenerator
+  Definition: {fileID: 11400000, guid: 474a373c8520e98439d770ebdf62dec3, type: 2}
+  Terrain: {fileID: 7895465506580533883}
+  Region: {fileID: 6320279033400318151}
+  Environment: {fileID: 7414471339365359032}
+  Player: {fileID: 3583904074605638348}
+  Session: {fileID: 1441559718046138410}
+  Pickup: {fileID: 460157505685859054, guid: 13d811d9b0ff6834ea370f69d47a2a12, type: 3}
+  Settings: {fileID: 11400000, guid: fd43ec9cd9385eb4eb69f64792c98535, type: 2}
+  Water: {fileID: 11400000, guid: 4b79e1db6813ba247a3daec55582a173, type: 2}
+  SpriteMaterial: {fileID: 2100000, guid: 7fa963618cbd947419fafaba8620d300, type: 2}
+  Grass: {fileID: 21300000, guid: 9d999d544d6843e439b469cd2cdce549, type: 3}
+  Fern: {fileID: 21300000, guid: b43621cdb441dc64ab0d1257e575558e, type: 3}
+  Renewal: {fileID: 4456147602622536825}
+  Animals: {fileID: 3120962446745633437}
+  GenerateOnAwake: 0
+--- !u!114 &5498284721663869418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7031309093746953857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 317b7760872fce448a422b829f73e0a9, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.WorldNavigation
+  World: {fileID: 4496810478940515493}
+  Camera: {fileID: 0}
+  Player: {fileID: 982114623618018841}
+  StaticAreaSize: {x: 0, y: 0}
+--- !u!114 &4456147602622536825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7031309093746953857}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfdbc623876d9a1408406a73a0fee04e, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.ResourceRegeneration
+  World: {fileID: 4496810478940515493}
+  Clock: {fileID: 2554870917964472763}
+  Navigation: {fileID: 5498284721663869418}
+--- !u!114 &3120962446745633437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7031309093746953857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ce186c3f0073b540ab6ae666609c6b5, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.AnimalPopulation
+  Definition: {fileID: 11400000, guid: ed2e1972adc9b7e4e99863d9b28e09f9, type: 2}
+  World: {fileID: 4496810478940515493}
+  Clock: {fileID: 2554870917964472763}
+  Navigation: {fileID: 5498284721663869418}
+--- !u!114 &5557287145095367544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7031309093746953857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 336293d0ef6ca2c4eb9d47eb81cc66e8, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.ZombieSpawner
+  Definition: {fileID: 11400000, guid: ced8b33a0cdc5804db903c61de3fec44, type: 2}
+  Prefab: {fileID: 7483728843801981833, guid: 996e7cb1c42ede041abcb20fd8471e5c, type: 3}
+  SecondaryPrefab: {fileID: 3178893350470064847, guid: e48d7c35caf360c4b8755a2db73ac197, type: 3}
+  Clock: {fileID: 2554870917964472763}
+  Session: {fileID: 1441559718046138410}
+  Player: {fileID: 3600377113405371908}
+  Camera: {fileID: 0}
+  Region: {fileID: 6320279033400318151}
+  World: {fileID: 4496810478940515493}
+--- !u!114 &2471586575450122075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7031309093746953857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a19b3af31d528af469f6d917da9a3084, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.GoblinSpawner
+  Definition: {fileID: 11400000, guid: 9d659cc738ec9d64a8abd8660ab3911c, type: 2}
+  Prefab: {fileID: 866644588458108740, guid: 5f24ecf2590ce924fb763646888cc09f, type: 3}
+  RangedPrefab: {fileID: 1363739383505832509, guid: 47c6682af4c9ca644a1b83af26ee07cb, type: 3}
+  CampDefinition: {fileID: 11400000, guid: c8a1ac1a1fd83cd41b259e9bc486b9de, type: 2}
+  World: {fileID: 4496810478940515493}
+  Clock: {fileID: 2554870917964472763}
+  Session: {fileID: 1441559718046138410}
+  Player: {fileID: 3600377113405371908}
+  Camera: {fileID: 0}
+--- !u!114 &244430250233079259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7031309093746953857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 496f2204896b4f398b14f9df8cc8d1fc, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.NetworkCreatureWorld
+  Prefabs:
+  - Source: {fileID: 2814135094593060299, guid: 64fdfe82ef5527c47b404255e0ed0963, type: 3}
+    NetworkPrefab: {fileID: 5413793635048189473, guid: d58bab2e9df558b4ba7adc06eb9d147f, type: 3}
+  - Source: {fileID: 1296655929990336751, guid: 30d479c61b4d57940a5bab9d42c59add, type: 3}
+    NetworkPrefab: {fileID: 5763400648758663732, guid: a4ed7269c38e4a54d84cd79a1b5f8edc, type: 3}
+  - Source: {fileID: 5847966933242800407, guid: a96bb258551d66144a37dd0ab820d1b3, type: 3}
+    NetworkPrefab: {fileID: 6592219751268304172, guid: f83ab2c6655bb8647b8296aafadf9420, type: 3}
+  - Source: {fileID: 6131256866842147992, guid: 8a3b9af0f295bee4ca37d02be32aaa71, type: 3}
+    NetworkPrefab: {fileID: 8440041327408803025, guid: 8615e1c23e363ca46b21524dd31f28b3, type: 3}
+  - Source: {fileID: 3999107195942510959, guid: 66cb43b761b13a140a5d9e9a612aef5a, type: 3}
+    NetworkPrefab: {fileID: 4369893541615446604, guid: dc68465d2307bca4c92a843f63e0b13e, type: 3}
+  - Source: {fileID: 2477312199630843718, guid: 996e7cb1c42ede041abcb20fd8471e5c, type: 3}
+    NetworkPrefab: {fileID: 4289512661532431278, guid: d7ecc839073a69d4f922c73d33addf62, type: 3}
+  - Source: {fileID: 3020494996801642478, guid: 5f24ecf2590ce924fb763646888cc09f, type: 3}
+    NetworkPrefab: {fileID: 3312381774261120142, guid: a30efa9b5c31ca349bd263c816d115a4, type: 3}
+  - Source: {fileID: 8242167345538259558, guid: 47c6682af4c9ca644a1b83af26ee07cb, type: 3}
+    NetworkPrefab: {fileID: 5330493115486987998, guid: 855f3f7bfa0beaf4d9bb5130cc9052df, type: 3}
+  - Source: {fileID: 2789703364261314827, guid: e48d7c35caf360c4b8755a2db73ac197, type: 3}
+    NetworkPrefab: {fileID: 260920566742848968, guid: 4c98627b3ed5ec844b00fdd8e57cf6cb, type: 3}
+  - Source: {fileID: 3317434911013305091, guid: 775b670f04475e745add2fa253237933, type: 3}
+    NetworkPrefab: {fileID: 3043004257752654315, guid: b87bb0ee25ccce648846f26cd8debaac, type: 3}
+  - Source: {fileID: 6810812668951358376, guid: a5b5efff645e8de4d9e24954385c4b92, type: 3}
+    NetworkPrefab: {fileID: 7191294015556113494, guid: 4041a68d34b85404f92bff631de9aa3d, type: 3}
+  World: {fileID: 4496810478940515493}
+  Clock: {fileID: 2554870917964472763}
+  Animals: {fileID: 3120962446745633437}
+  Goblins: {fileID: 2471586575450122075}
+  Night: {fileID: 5557287145095367544}
+  Session: {fileID: 1441559718046138410}
+--- !u!1 &8273339019419819849
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6566874858841675678}
+  - component: {fileID: 6478415900555487053}
+  m_Layer: 0
+  m_Name: Forest Floor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6566874858841675678
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8273339019419819849}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8780847072988882153}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &6478415900555487053
+SpriteRenderer:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8273339019419819849}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 7fa963618cbd947419fafaba8620d300, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: -12000
+  m_MaskInteraction: 0
+  m_Sprite: {fileID: 21300000, guid: 4abfdac951cbfbb4cbb0f111450ca6b7, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 48, y: 27}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_SpriteSortPoint: 0

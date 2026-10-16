@@ -16,15 +16,16 @@ namespace Wildfolk
         public float Elapsed {get;private set;}
         public int Shots {get;private set;}
         public Vector2 Direction {get;private set;}
+        public double NetworkStarted {get;private set;}
         private Vector3 restScale;
         private void Awake()=>restScale=Pose.localScale;
         public void ResetForSpawn(){Cancel();Shots=0;}
         public bool Begin(Health target)
-        {if(IsBusy || target==null || !target.IsAlive)return false;Target=target;Direction=((Vector2)target.transform.position-(Vector2)transform.position).normalized;Facing.Face(Direction);IsBusy=true;Released=false;Elapsed=0;return true;}
+        {if(!SimulationAuthority.Allows(this) || IsBusy || target==null || !target.IsAlive)return false;Target=target;Direction=((Vector2)target.transform.position-(Vector2)transform.position).normalized;Facing.Face(Direction);IsBusy=true;Released=false;Elapsed=0;NetworkStarted=Unity.Netcode.NetworkManager.Singleton==null ? Time.timeAsDouble : Unity.Netcode.NetworkManager.Singleton.ServerTime.Time;return true;}
         public void Cancel(){IsBusy=false;Released=false;Elapsed=0;Facing.ResetPose();if(Pose!=null)Pose.localScale=restScale;PouchStone.enabled=false;Band.enabled=false;}
         private void Update()
         {
-            if(!IsBusy)return;Elapsed+=Time.deltaTime;ApplyHands(Elapsed);
+            if(!SimulationAuthority.Allows(this) || !IsBusy)return;Elapsed+=Time.deltaTime;ApplyHands(Elapsed);
             if(!Owner.IsAlive || Target==null || !Target.IsAlive){Cancel();return;}
             if(!Released && Elapsed>=Definition.LaunchAt)
             {
@@ -32,6 +33,12 @@ namespace Wildfolk
                 var stone=PrefabPool.Spawn(Projectile,Frame.TransformPoint(new Vector3(0,.37f,0)),Quaternion.identity);stone.Launch(Owner,Target,Direction,Definition);
             }
             if(Elapsed>=Definition.Duration)Cancel();
+        }
+        public void PresentReplica(bool busy,float elapsed,Vector2 direction)
+        {
+            Elapsed=Mathf.Max(0,elapsed);IsBusy=busy && Elapsed<Definition.Duration;Direction=direction;
+            if(!IsBusy){PouchStone.enabled=false;Band.enabled=false;return;}
+            ApplyHands(Elapsed);
         }
         public float DrawAmount(float time)
         {

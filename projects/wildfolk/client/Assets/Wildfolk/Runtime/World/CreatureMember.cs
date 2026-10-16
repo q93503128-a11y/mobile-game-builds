@@ -18,6 +18,7 @@ namespace Wildfolk
         private void OnDisable()=>members.Remove(this);
         public int Broadcast(Vector2 origin,CreatureAlert alert)
         {
+            if(!SimulationAuthority.Allows(this))return 0;
             var notified=0;
             foreach(var member in members)
             {
@@ -30,7 +31,7 @@ namespace Wildfolk
         }
         public Vector2 Cohesion()
         {
-            if(Definition==null || string.IsNullOrEmpty(GroupId))return Vector2.zero;
+            if(!SimulationAuthority.Allows(this) || Definition==null || string.IsNullOrEmpty(GroupId))return Vector2.zero;
             var center=Vector2.zero;var count=0;
             foreach(var member in members)if(member!=this && member.GroupId==GroupId && Vector2.Distance(member.transform.position,transform.position)<Definition.RoamRadius){center+=(Vector2)member.transform.position;count++;}
             if(count==0)return Vector2.zero;var delta=center/count-(Vector2)transform.position;

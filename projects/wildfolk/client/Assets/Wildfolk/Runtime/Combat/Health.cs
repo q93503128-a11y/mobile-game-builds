@@ -9,6 +9,10 @@ namespace Wildfolk
         public int Current { get; private set; }
         public int Maximum => Definition.MaximumHealth+maximumBonus;
         private int maximumBonus;
+        public bool IsReplica {get;internal set;}
+        private bool deathNotified;
+        public void ApplyReplica(int value,bool hit=false)
+        {var previous=Current;Current=Mathf.Clamp(value,0,Maximum);if(previous!=Current)Changed?.Invoke();if(Current<previous || hit)Damaged?.Invoke();}
         public void SetMaximumBonus(int bonus){maximumBonus=Math.Max(0,bonus);Current=Math.Min(Current,Maximum);Changed?.Invoke();}
         public int DamageReduction { get; set; }
         public PlayerInventory LastAttacker { get; private set; }
@@ -28,24 +32,24 @@ namespace Wildfolk
         public int ApplyDamage(int amount,bool ignoreDefense=false,PlayerInventory attacker=null)
         {
             if (amount <= 0) throw new ArgumentOutOfRangeException(nameof(amount));
-            if (!IsAlive) return 0;
+            if (IsReplica || !IsAlive || deathNotified) return 0;
             var applied = Math.Min(Current, ignoreDefense ? amount : Math.Max(1,amount-DamageReduction));
-            Current -= applied;
+            Current -= applied;var died=Current==0;if(died)deathNotified=true;
             LastAttacker=attacker;LastCombatTime=Time.time;
             Changed?.Invoke();
             Damaged?.Invoke();
-            if (!IsAlive) Died?.Invoke();
+            if (died) Died?.Invoke();
             return applied;
         }
         public void MarkCombat()=>LastCombatTime=Time.time;
         public void RestoreHealth(int health)
-        {if(health<0 || health>Maximum)throw new ArgumentOutOfRangeException(nameof(health));Current=health;LastAttacker=null;Changed?.Invoke();}
+        {if(health<0 || health>Maximum)throw new ArgumentOutOfRangeException(nameof(health));Current=health;deathNotified=health==0;LastAttacker=null;Changed?.Invoke();}
         public void ResetForSpawn(){RestoreHealth(Maximum);LastCombatTime=float.NegativeInfinity;}
         public void RestoreCombatTime(float remaining,float delay)=>LastCombatTime=remaining<=0 ? float.NegativeInfinity : Time.time-delay+remaining;
         public int Heal(int amount)
         {
             if(amount<0)throw new ArgumentOutOfRangeException(nameof(amount));
-            if(!IsAlive)return 0;var restored=Math.Min(amount,Maximum-Current);Current+=restored;
+            if(IsReplica || !IsAlive)return 0;var restored=Math.Min(amount,Maximum-Current);Current+=restored;
             if(restored>0)Changed?.Invoke();return restored;
         }
     }

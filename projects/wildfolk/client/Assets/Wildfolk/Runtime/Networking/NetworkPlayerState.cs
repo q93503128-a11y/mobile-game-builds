@@ -23,6 +23,16 @@ namespace Wildfolk
         {serializer.SerializeValue(ref HP);serializer.SerializeValue(ref MaximumHP);serializer.SerializeValue(ref Head);serializer.SerializeValue(ref Body);serializer.SerializeValue(ref Held);}
         public bool Equals(PlayerStatusState other)=>HP==other.HP && MaximumHP==other.MaximumHP && Head==other.Head && Body==other.Body && Held==other.Held;
     }
+    public struct PlayerAttackState : INetworkSerializable,IEquatable<PlayerAttackState>
+    {
+        public ushort Sequence;
+        public byte Hand;
+        public short Tool;
+        public double Started;
+        public void NetworkSerialize<T>(BufferSerializer<T> s) where T:IReaderWriter
+        {s.SerializeValue(ref Sequence);s.SerializeValue(ref Hand);s.SerializeValue(ref Tool);s.SerializeValue(ref Started);}
+        public bool Equals(PlayerAttackState o)=>Sequence==o.Sequence&&Hand==o.Hand&&Tool==o.Tool&&Started==o.Started;
+    }
     public static class NetworkInputRules
     {
         public static Vector2 Sanitize(Vector2 value)=>float.IsNaN(value.x)||float.IsNaN(value.y)||float.IsInfinity(value.x)||float.IsInfinity(value.y) ? Vector2.zero : Vector2.ClampMagnitude(value,1);

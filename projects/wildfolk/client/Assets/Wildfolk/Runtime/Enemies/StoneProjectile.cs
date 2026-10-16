@@ -3,6 +3,7 @@ namespace Wildfolk
 {
     public sealed class StoneProjectile : MonoBehaviour,IPoolReset
     {
+        public Vector2 Velocity=>velocity;
         private Health owner,target;
         private Vector2 velocity;
         private float remaining;
@@ -13,6 +14,7 @@ namespace Wildfolk
         {owner=source;target=destination;velocity=direction.normalized*definition.ProjectileSpeed;remaining=definition.ProjectileLifetime;damage=definition.Damage;}
         private void Update()
         {
+            var network=GetComponent<NetworkProjectile>();if(network!=null && (!network.IsSpawned || !network.IsServer))return;
             if(remaining<=0){PrefabPool.Release(gameObject);return;}
             var step=velocity*Time.deltaTime;var origin=(Vector2)transform.position;
             var count=Physics2D.CircleCast(origin,.08f,velocity.normalized,new ContactFilter2D{useTriggers=true},hits,step.magnitude);

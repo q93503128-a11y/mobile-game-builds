@@ -21,3 +21,7 @@ Skeleton은 Zombie와 공통 EnemyController의 준비/Swing/Hit/Recovery를 사
 | 검 Skeleton |8 /2|Stone1~2 75%,Iron Ore1 20%|Rusted Sword1 12%|
 
 LootTable.Items/RareItems/Experience/Gold가 정본이며 종 이름 if문으로 드랍을 고르지 않는다. 실제 공격자의 PlayerProgression에 처치 보상을 지급하며 자연 소멸은 보상을 만들지 않는다. 새 Wool/Bone/Scrap/Pebble Ammo 아이템은 없다. 현재 Armor는 기존 Leather/Iron Head/Body4개이며 철이 최종 장비 단계라는 의미가 아니다. 자세한 초기 수치는 BALANCE에 기록한다.
+
+## Multiplayer Foundation 2 경계
+
+위 종/가족/진영/Trait/Habitat/Group/Warband/Camp와 LootTable 데이터는 그대로 공유한다. 멀티에서는 Host만 기존 Brain·Population·Group Alert/분리·공격·Projectile·사망을 실행한다. Client는 NGO replica 표현만 수행한다. 멀티 LootTable 결과는 Host가 한 번 계산하되 실제 pickup/XP/Gold 지급·소유권은 보류한다. 싱글의 Drop/처치 보상은 유지한다. 이 패스는 관련 자동검사 통과이며 실제2인 Creature Play 통합 QA는 미수행이다. 상세 권위·검증 한계는 MULTIPLAYER_FOUNDATION을 따른다.

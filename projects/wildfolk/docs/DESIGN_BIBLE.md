@@ -106,7 +106,10 @@ Wood/Stone Wall은 상부·전면·재질과 연결 끝단을 구분한다. Door
 
 앱은 MainMenu 씬의 Wildfolk Home에서 시작한다. 정적 숲/야영 배경과 Continue 우선 메뉴를 제공한다. Continue는 기존 Repository의 체크섬·내용 검증/backup/이관을 공유한다. Single Player는 무작위 Seed의 새 월드이며 기존 파일이 있으면 새 저장으로 교체됨을 확인한다. 다중 World Slot은 없다. Settings는 같은 언어/음량/Control Size 정본이다. Pause의 저장/불러오기와 저장 후 Home 복귀를 지원한다.
 
-Multiplayer 화면은 현재 온라인 세션을 이용할 수 없다는 안내와 싱글/뒤로 동선만 제공한다. 1~4인 Host·우선2인·Room Code·Friend/Invite·Login/Cloud 소유권은 향후 방향이며 실제 네트워크/룸 생성/계정 기능은 없다. 연결 경계는 SceneFlow와 FrontendPage에 두고 사용 불가능한 방 입력을 플레이 가능하게 표시하지 않는다. 상세 구조·검수는 HOME_FRONTEND를 따른다.
+Multiplayer는 실제 Relay Room Code/Local Network Host·Join과 Player 권위를 제공한다. Creature/Combat 기반은 Foundation 2의 자동검사 단계이며 실제2인 통합 QA를 남겨 둔다. Friend/Invite·Account/Login/Cloud 소유권은 미구현이다. 상세 현재 범위·검증은 MULTIPLAYER_FOUNDATION을 따른다.
 
 
 Multiplayer Foundation 1은 2인이 실제 같은 협동 야영지에 접속해 이동/방향/Sprint/Dash/HP/Head·Body·held 외형을 공유하는 첫 slice다. 4명 admission을 수용하는 구조지만 이번 실제 검증은 2명이다. 기존 생존 콘텐츠의 멀티화/월드 저장/계정·친구·초대는 제공하지 않는다. Host 기기가 권위이며 Host 종료 시 세션도 끝나고 migration/dedicated server는 없다.
+
+
+Multiplayer Foundation 2는 기존9종 Creature와 Skeleton 검 variant를 Host 권위로 생성·AI·전투·사망 처리하는 기반을 구현했다. Client는 표현만 수행하고, 멀티 Loot는 Host 결과 계산까지만 제공한다. 이번에는 자동검사만 수행했으며 실제2인 Creature 통합 QA는 아직 없다. 이전 Home 단계의 온라인 미제공/Player-only 단락은 당시 기록이다. 현재 실제 범위는 MULTIPLAYER_FOUNDATION을 따른다. Resource/Item/시설/건축/멀티 persistence와 보상 소유권은 미완료다.

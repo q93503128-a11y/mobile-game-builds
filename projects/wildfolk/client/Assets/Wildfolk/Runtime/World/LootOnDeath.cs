@@ -12,6 +12,7 @@ namespace Wildfolk
         private void OnDisable()=>Health.Died-=Drop;
         private void Drop()
         {
+            var network=GetComponent<NetworkCreature>();if(network!=null){network.ResolveDeath(Table);return;}
             DropItems(Table.Items);DropItems(Table.RareItems);
             if(Health.LastAttacker!=null){var reward=Health.LastAttacker.GetComponent<PlayerProgression>();if(reward!=null)reward.Reward(Table.Experience,Table.Gold);}
             PrefabPool.Release(gameObject);

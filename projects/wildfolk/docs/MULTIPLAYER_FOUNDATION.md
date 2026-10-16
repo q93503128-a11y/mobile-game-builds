@@ -1,4 +1,75 @@
-# Multiplayer Foundation 1 — 2026-10-15
+# Multiplayer Foundation — 현재 Foundation 2
+
+2026-10-16. 기준 bfc18d46a740b73fb898495ae84be2e86f365c9c. 현재 변경은 **Creature + Combat 네트워크 기반 구현**이다. 이번 패스는 컴파일과 최소 자동검사로 검증했으며 **실제 2인 Relay Play 통합 QA는 수행하지 않았다**. 아래 Foundation 1의 실제 두 프로세스 검수 기록은 이전 Player slice의 증거이며 이번 Creature 검증으로 확대 해석하지 않는다.
+
+## 현재 완료한 구현
+
+- Host만 Creature Spawn/Despawn, Animal Population, Night Spawn, Goblin Warband/Camp 보충, AI/그룹 반응/Soft Separation, 대상 선택과 피해·사망을 결정한다.
+- Chicken/Boar/Rabbit/Deer/Sheep, Zombie/Goblin/Slingshot Goblin/Skeleton과 Rusted Sword Skeleton variant를 기존 프리팹의 네트워크 variant로 제공한다. 별도 종 이름별 네트워크 AI를 만들지 않았다.
+- Client owner의 공격 요청에는 target ID·damage·hit 결과가 없다. owner permission RPC와 sender 검증 후 Host의 기존 PlayerCombat에서 생존·입력 상태·쿨다운·무기·Single Target/Facing Arc/Point-Blank/Range를 검사한다.
+- Host의 기존 Creature Brain이 살아 있는 NetworkPlayer 중 가까운 대상을 선택한다. 근접 준비/타격 동안 대상을 고정하고 대상 사망 시 추적을 초기화해 다시 선택한다. 실제 타격과 새총 Projectile 충돌은 Host에서만 수행한다. Player HP/기존 Armor 방어는 공통 Health를 사용한다. Player 사망은 자신의 입력을 막으며 월드를 전역 정지하지 않는다. Revive/PvP/보상 소유권은 없다.
+- Health는 lethal 판정을 이벤트 전 latch하고 HP를0까지 clamp한다. NetworkCreature.DeathResolved가 사망 결과를 한 번만 만들며, 짧은 눕힘 표현 뒤 Host Despawn한다. 자연 잠복/세션 종료는 Loot/Death를 만들지 않는다.
+
+## 씬과 Spawn 경계
+
+Multiplayer 씬은 기존 단색 야영지에서 **기존 WorldGenerationDefinition의 고정 default seed를 사용하는 필드**로 확장했다. 기존 서식지·Road·지역 Population을 공유하기 위한 지형이다. 각 peer는 동일 정본/seed의 정적 지면·물·자원 장애물을 생성한다. 이것은 Tree/Stone 파괴·재생이나 Resource/World Interaction 네트워크화가 아니다. 멀티의 Primary는 Creature만 타격하며 ResourceRegeneration은 비활성, Save/시설/Inventory UI는 생성하지 않는다. 기존 Singleplayer 씬과 사용자 저장을 멀티 세션에 사용하지 않는다.
+
+NetworkEcologyBuilder는 기존 프리팹의 variant9개와 Pebble/Camp를 생성한다. NetworkSession.EcologyPrefab 참조 목록을 양쪽에서 StartHost/Client 전에 명시 등록한다. Player 포함12개다. NGO ProtocolVersion은2이며 같은 콘텐츠 버전을 전제로 한다. World 초기화가 NGO scene 완료 콜백보다 늦으면 Player spawn을 Map 준비까지 기다린다.
+
+NetworkSpawnFactory는 기존 AnimalPopulation의 Instantiate와 Goblin/Night/Projectile의 PrefabPool 생성 경계를 연결한다. 기존 initializer가 Group/Home/Camp/Variant/Target을 지정한 뒤 같은 프레임 LateUpdate에서 Host가 NetworkObject.Spawn한다. 네트워크 개체는 기존 로컬 pool로 반환하지 않고 Host Despawn하며, 종료 시 아직 Spawn되지 않은 대기 개체도 정리한다. Singleplayer는 기존 Instantiate/pool 경로를 유지한다.
+
+NetworkCreatureWorld는 Host에서만 기존 Population/Clock/Spawner를 활성화한다. Client는 같은 Brain/Lifecycle/Slingshot simulation을 비활성화하고 public 행동·경보·Population/Restore 진입도 권위 검사로 차단한다. Host의 기존 AnimalIdentity/GoblinIdentity와 Group ID/Anchor, Faction/Traits/Habitat 데이터가 정본이다. Client에는 NetworkObject ID와 species/group/camp/anchor/additional traits/variant를 읽기 상태로 전달한다. NetworkCamp는 Camp ID와 refill 예정 시각을 전달하되 Client가 보충하지 않는다.
+
+동물의 가까운 동일 그룹 flee propagation/cohesion과 Goblin의 직접 이웃 assist/Warband3~5·새총0~2/leash/camp resident/refill을 공통 코드로 유지한다. Soft Separation은 Host의 모든 살아 있는 Player를 고려한다. 새 Group 전수 비교를 추가하지 않았고 기존 Group 순회 구조를 유지한다. Spawn의 Player 안전 거리는 모든 접속 Player 위치를 검사한다. Population/야간 spawn의 기준 anchor는 첫 생존 Player다. 여러 지역을 흩어져 탐험할 때의 population scaling/관심 영역 최적화는 이번에 완성하지 않았다.
+
+## 표현과 트래픽
+
+Root XY는 server-authoritative NGO NetworkTransform/NetworkRigidbody2D, 보간과0.04 threshold/unreliable delta를 사용한다.20Hz tick에서 quantized facing/pose/HP/hit sequence/target/brain/lifecycle frame을 비교하고 달라진 경우만 server-write NetworkVariable을 dirty한다. Species/Group/Camp/Variant 등 identity는 별도 상태로 분리했다. 매 렌더 Frame마다 모든 개체의 전체 RPC를 방송하지 않는다. HP와 pose가 함께 들어가는 frame의 변경 시 전체 구조가 직렬화되는 비용은 남아 있으며 실제 bandwidth/지연 profiling은 하지 않았다.
+
+Client는 Brain 없이 root interpolation, 손/시선·Visual pose, HealthBar/hit/death를 표시한다. 새총은 Host network timestamp와 기존 DrawAmount/손/Band 함수를 이용해 Ready→Draw→Hold→Release→Band Snap→Recovery를 표시한다. 실제 돌은 Host가 한 개만 생성한다. NetworkProjectile은 origin/velocity/start를 spawn 상태로 전달하고 Client는 직선 visual만 진행한다. 충돌·Damage·최종 Despawn은 Host다. 고지연 발사 타이밍/보간 품질은 통합 QA에 남긴다.
+
+Player는 기존 이동/상태 외에 server attack timestamp/sequence/hand/tool index로 같은 PlayerCombat.Present를 재사용한다. 오른쪽 Fist hold 버튼과 기존 Dash를 배치했다. 무기 획득/선택 Inventory 동기화는 아직 없으며 서버가 가진 무기 stats를 판정하는 구조까지만 제공한다.
+
+## Death와 Loot의 정확한 범위
+
+LootOnDeath는 멀티 개체에서 로컬 WorldPickup/XP/Gold 지급을 실행하지 않는다. Host가 현재 LootTable.Items/RareItems를 한 번 roll해 immutable NetworkDeathResult(개체/공격자 NetworkObject ID, Item/Count, XP/Gold)를 만들고 NetworkCreatureWorld.LootGenerated 이벤트/LastDeath로 노출한다. 이는 다음 패스 연결 경계이며 실제 아이템 획득/보상 소유권/대기 아이템 persistence가 아니다. LastDeath는 최신 결과 검사 용도이며 모든 사망의 영구 ledger가 아니다. Client는 Died authoritative event를 호출하거나 독립 roll하지 않는다. 싱글은 기존 공격자 보상·바닥 Drop을 유지한다.
+
+## 미완료 범위
+
+Ground pickup/drop, Inventory/Item ownership, Chest/Crafting/Furnace/Workbench, Resource harvesting·파괴/복구, Building/Door, Multiplayer persistence, reward ownership 세부 규칙, Friend/Account/Cloud Save/Host Migration/4인 stress와 **통합 실제 멀티 QA**는 미완료다. 이번 코드를 실제 두 Client 수신·화면 동기화·재접속/서비스/실기까지 검증한 것으로 표현하지 않는다.
+
+## 이번 검증
+
+[자동검사 결과와 실행별 증거](evidence/creature-network-foundation.json). 기존 tests/artifacts/unity를 재사용했고 새 clone이나 대화형 Editor를 만들지 않았다. 한 번에 한 hidden batchmode 검수 프로세스만 실행했다. Windows/Computer Use/Focus/Show 조작은 하지 않았다.
+
+- EditMode NetworkCreatureContractTests + NetworkFoundationTests + EcologyModelTests:12/12,0.2602423초. 이후 새총 replica가 완료 시 Busy/Band를 해제하고 추가 발사하지 않는 표현 검사1/1(0.1235574초)을 추가해 고유13개 통과다.
+- 고유 PlayMode9개 최종 통과(실패 관련 사례만 수정 후 선별 재실행). Network Creature4개, 기존 Network Foundation1개, Singleplayer sanity4개다. 서로 다른 실행의 중복 사례를 합산하지 않았다. 개별 XML/duration은 증거 JSON에 기록한다.
+- 실제 NGO Local Host spawn/기존 이동·Dash/종료,5종 Animal/그룹 정보, 서버 공격 쿨다운/Single Target/밀착 판정, 동일 대상 두 서버 actor 공격의 단일 death/loot/despawn, 실제 Projectile 단일 생성/피해, Warband/assist, Skeleton variant/근접/죽은 target 재선택을 자동검사했다. 두 번째 actor는 같은 Host 안의 서버 fixture이며 원격 Client가 아니다.
+- 별도 unspawned replica에서 Brain 비활성/피해·경보·분리·Population 생성/복원·Spawn 거절을 검사했다. 이것은 실제 연결된 Client 수신 검증을 대체하지 않는다.
+- Singleplayer는 기존 모든 기본 무기의 Single Target, Range/Point-Blank, Warband/assist 수/지역 Animal 보충·저장 round-trip의4개 사례만 수행했다. 전체 회귀/모든 저장 migration은 아니다.
+- source/reference validator PASS:578 unique asset GUIDs/Landscape/참조/표시 문구.
+
+첫 자동 실행에서 static ecology anchor의 Rigidbody 가정과 scene 완료/World.Start 초기화 순서를 수정했다. 검수 fixture의 lazy Multiplayer 진입 누락과 leash 밖 assist 조건도 고쳤다. 통과한 전체 회귀를 매번 반복하지 않았다. 실제 두 프로세스 Relay/양쪽 Game View, 모바일 터치/디자인/재미·밸런스/고지연/4인·대규모 성능은 이번에 검사하지 않았다. 최종 대기 spawn 정리 이후 기존 Local Host 생성/이동/Dash/종료 자동검사1개를 다시 수행해1/1(6.0071142초)을 확인했다. 열린 LIVE Editor에도 변경81파일을 동기화했고 MCP에서 컴파일 완료/Console error0·warning0/MainMenu/Play 중지/dirty=false/포커스 없음, Protocol2/등록 ecology prefab11개를 확인했다. 사용자 world-v1.json SHA256은57d560f19e49507fbc7ac00b48e1dda5759732a181d1c0baa441ad4536da7970로 전후 동일하다.
+
+## 이번 시간 기록(KST)
+
+2026-10-16의 실제 wall clock이다. 배치 기동/컴파일·Import 대기를 포함하며 문서 작업과 겹친 대기 시간을 중복 합산하지 않는다. 실제2인 접속 대기는 없다. 같은 기존 검수 프로젝트를 재사용했고 실패한 관련 사례만 선별해 재실행했다.
+
+정본 확인:08:55:18→08:57:09,1분51초.
+
+구현 및 첫 컴파일:08:57:09→09:07:16,10분07초.
+
+관련 자동검사와 수정:09:07:16→09:15:00,7분44초.
+
+프로젝트 반영과 정본 정리:09:15:00→09:19:15,4분15초.
+
+마지막 표현 교정:09:19:15→09:21:31,2분16초.
+
+Git 마무리는09:21:31부터이며 실제 종료 시각과 전체 경과는 완료 보고에 기록한다.
+
+---
+
+## Foundation 1 기록 — 2026-10-15
 
 기준 663c0cfb7e33bd9e50a50c4c675afe5a9e6577ee. 이번 범위는 Home 보조 메뉴 소수정과 실제 2인 Player 상태 slice다. 기존 생존 게임 전체를 멀티로 전환한 패스가 아니다.
 
@@ -6,7 +77,7 @@
 
 [Home 텍스트 메뉴](images/network-home-text-menus.png) / [실제 Relay Host 메뉴](images/network-host-menu.png) / [두 프로세스 검수 데이터](evidence/network-foundation.json)
 
-## 실제 제공 흐름
+### 실제 제공 흐름
 
 Home → Multiplayer → Internet(Room Code) 또는 Local Network → Host Game / Join → Host의 Enter Game → 협동 야영지(Multiplayer 씬)다. 기존 Single Player/Continue/Settings는 보존한다. 수첩 안 Single Player/Multiplayer/Settings는 기본 배경 박스를 제거하고 hover/focus/press 때만 약한 tint를 준다. Continue의 Primary 박스/배경/로고는 유지한다.
 
@@ -16,7 +87,7 @@ Local Network는 별도로 표시하며 IPv4[:port] 입력을 사용한다. 기�
 
 Host는 혼자 먼저 입장할 수 있고 접속 중인 Client/늦게 참가한 Client를 NGO SceneManager가 같은 씬으로 동기화한다. Host가 종료하면 Client도 연결을 정리하고 Home으로 돌아가 세션 종료 안내를 제공한다. Client만 나가면 해당 Player가 despawn되고 Host는 계속한다. Host migration, dedicated server, 자동 재접속은 없다.
 
-## Networking stack와 외부 설정
+### Networking stack와 외부 설정
 
 - Netcode for GameObjects2.13.3
 - Unity Transport2.7.4
@@ -29,7 +100,7 @@ Unity 공식 Registry의 Unity6000.0 호환 버전을 확인하고 manifest/lock
 
 IRoomConnection이 RelayRoomConnection/LocalRoomConnection을 분리한다. 향후 Account/Friend/Invite/Room 경로를 바꾸더라도 Player 권위/이동 코드를 다시 구현하는 구조가 아니다.
 
-## 권위와 동기화
+### 권위와 동기화
 
 NetworkSession root의 NetworkManager/UnityTransport 한 개만 씬을 넘는다. Home 진입마다 중복 생성하지 않는다. prefab은 양쪽 프로세스에서 StartHost/StartClient 전에 같은 PlayerPrefab 참조로 명시 등록한다. SDK가 자동 생성한 DefaultNetworkPrefabs.asset은 Editor authoring용 기본 목록이며 Runtime 등록의 정본은 NetworkSession.PlayerPrefab이다.
 
@@ -47,13 +118,13 @@ Host는 owner 입력 RPC만 수락하며 sender/ownership을 확인하고 유한
 
 네트워크 tick은20Hz다. 입력은 변경 또는0.15초 heartbeat만 전송하고 Dash는 행동 시 reliable owner RPC다. HP/Armor/held는 매 프레임 polling하거나 Inventory 배열을 보내지 않는다. Transform 외 모든 데이터를 매 프레임 전체 전송하지 않는다. 상태 replica는 표시용이며 별도 Inventory/Save 정본이 아니다. 고지연 예측/재조정/장거리 부하 최적화 완료를 주장하지 않는다.
 
-## 야영지와 제외 범위
+### 야영지와 제외 범위
 
 Multiplayer 씬은 기존 ground/tree/campfire/log Sprite와 유한한 경계, 카메라, joystick/dash/HP/Leave UI만 제공한다. WorldNavigation.StaticAreaSize를 통해 기존 이동·대시의 지형/충돌 경계를 재사용한다. WorldGenerator/WorldSaveService/AnimalPopulation/Creature AI/Resource/시설 작업은 생성하지 않는다. Creature 전투/플레이어 PvP/채집/파괴·복구/바닥 아이템/전체 Inventory/제작/Chest/가공/건축/Door/Loot/멀티 World persistence는 없다.
 
 4명 admission을 수용하는 구조지만 실제 이번 검증은2명이다. 친구/초대/로그인/계정/Cloud Save/Host Migration/Dedicated Server/4인 부하 테스트는 미래 범위다. 살아 있는 전체 싱글 월드를 접속자마다 중복 실행하는 방식이 아니다.
 
-## 실제 두 프로세스 Play 검수
+### 실제 두 프로세스 Play 검수
 
 기존 LIVE Unity Editor = Host A, 기존 tests/artifacts/unity를 재사용한 hidden batchmode 그래픽 Unity Editor = Client B로 실제 동시에 실행했다. 새 clone/대화형 Editor 창을 만들지 않았고 OS 입력/Unity Focus/Show 호출은 하지 않았다. 일반 NUnit 자동검사와 별도의 실제 NGO+Relay 접속이다. Editor 전용 NetworkReviewHarness가 기존 입력 source를 주입하고 양쪽의 실제 Player 상태를 읽었다.
 
@@ -72,7 +143,7 @@ Multiplayer 씬은 기존 ground/tree/campfire/log Sprite와 유한한 경계, �
 
 싱글 sanity는 별도 검수 Repository에서 실제 New Game→이동→Inventory→Pause Save & return home을 확인했다. mode=Singleplayer, movement authority adapter=null, network Player0/Manager not listening, Preferences1이었다. Home Continue 가능 상태와 원래 KO/Control1.20191717/Master1/Music1/SFX1을 유지했다. 실제 UserData/world-v1.json 전후 SHA256은57D560F19E49507FBC7AC00B48E1DDA5759732A181D1C0BAA441AD4536DA7970로 동일했다. 이 파일의 이전 패스 해시와 다름은 이번 작업 시작 전 사용자 저장 상태이며 이번 검수로 덮지 않았다.
 
-## 최소 자동검사
+### 최소 자동검사
 
 - EditMode NetworkFoundationTests + FrontendContractTests:5/5 통과,0.1539864초.
 - PlayMode NetworkFoundationPlayTests + FrontendPlayTests:5/5 통과,10.5900562초.
@@ -84,7 +155,7 @@ NetworkReviewHarness는 Editor 폴더에만 있으며 제품 빌드에 포함하
 
 실제 Android/서로 다른 기기·회선/고지연/패킷 손실/장시간/4인 부하/서비스 한도/공격·전체 생존 동기화는 미검증이다. UI를 포함한 양쪽 모바일 실기 합격이나 완성된 멀티 생존 게임으로 표현하지 않는다.
 
-## 시간 기록(KST)
+### 시간 기록(KST)
 
 실제 시각의 경과 시간이며 생각/코드/컴파일·기동 대기를 포함한다. 중복 실행 시간을 두 번 합산하지 않았다. 가장 긴 구간은 실제 두 프로세스의 초기 접속/프리팹 등록/백그라운드 Play 보정과 검수다. 최초 그래픽 Client는 새 networking 패키지 Import/컴파일·기동에 수 분이 걸렸고 같은 검수 프로젝트를 재사용했다. 종료 동선 및 수정 확인 때문에 Client 프로세스를 재시작했으며 새 clone을 만들지 않았다.
 

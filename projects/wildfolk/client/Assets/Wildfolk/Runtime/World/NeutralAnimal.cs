@@ -22,9 +22,10 @@ namespace Wildfolk
         private void OnDisable(){Health.Damaged-=Flee;Member.Alerted-=ReceiveAlert;}
         private void ReceiveAlert(Vector2 origin,CreatureAlert alert){if(alert==CreatureAlert.Flee)FleeFrom(origin,false);}
         private void Flee()
-        {FleeFrom(Player.position,true);}
+        {var threat=Health.LastAttacker==null ? Player : Health.LastAttacker.transform;if(threat!=null)FleeFrom(threat.position,true);}
         public void FleeFrom(Vector2 origin,bool broadcast=true)
         {
+            if(!SimulationAuthority.Allows(this))return;
             var wasFleeing=IsFleeing;var away=body.position-origin;direction=away.sqrMagnitude>.01f ? away.normalized : Vector2.right;
             fleeUntil=Time.time+Definition.FleeSeconds;
             if(!wasFleeing && broadcast && Member.Definition.Has(CreatureTrait.FleeTogether))Member.Broadcast(origin,CreatureAlert.Flee);
@@ -37,7 +38,8 @@ namespace Wildfolk
         }
         private void FixedUpdate()
         {
-            if(!Session.WorldIsRunning || !Health.IsAlive)return;
+            if(!SimulationAuthority.Allows(this) || !Session.WorldIsRunning || !Health.IsAlive)return;
+            if(GetComponent<NetworkCreature>()!=null){var target=SimulationAuthority.Target(this,null);if(target==null)return;Player=target.transform;}
             if(Vector2.Distance(body.position,Player.position)<Definition.DangerRange)Flee();
             else if(!IsFleeing && Time.time>=nextWander)ChooseDirection();
             Separation.Player=Player;

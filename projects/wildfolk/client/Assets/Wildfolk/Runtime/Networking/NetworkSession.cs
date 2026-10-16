@@ -16,6 +16,7 @@ namespace Wildfolk
         public static NetworkSession Instance {get;private set;}
         public NetworkManager Manager;
         public GameObject PlayerPrefab;
+        public GameObject EcologyPrefab;
         public NetworkSessionState State {get;private set;}
         public ConnectionRoute Route {get;private set;}
         public string RoomCode {get;private set;}=string.Empty;
@@ -30,6 +31,7 @@ namespace Wildfolk
             if(Instance!=null && Instance!=this){Destroy(gameObject);return;}
             Instance=this;DontDestroyOnLoad(gameObject);
             Manager.AddNetworkPrefab(PlayerPrefab);
+            foreach(var entry in EcologyPrefab.GetComponent<NetworkCreatureWorld>().Prefabs)Manager.AddNetworkPrefab(entry.NetworkPrefab);
             Manager.OnClientConnectedCallback+=Connected;Manager.OnClientDisconnectCallback+=Disconnected;
             Manager.OnTransportFailure+=TransportFailed;Manager.ConnectionApprovalCallback=Approve;
         }
@@ -106,9 +108,17 @@ namespace Wildfolk
         private void Synchronized(ulong id){if(Manager.IsServer && SceneManager.GetActiveScene().name==SceneFlow.MultiplayerScene)Spawn(id);}
         private void Spawn(ulong id)
         {
+            var ecology=NetworkCreatureWorld.Active;
+            if(ecology!=null && ecology.World.Map==null){StartCoroutine(SpawnWhenReady(id));return;}
             if(!Manager.ConnectedClients.TryGetValue(id,out var client)||client.PlayerObject!=null)return;
             var order=0;foreach(var peer in Manager.ConnectedClientsIds){if(peer==id)break;order++;}var position=new Vector3((order%2)*3-1.5f,(order/2)*-3,0);
+            var world=NetworkCreatureWorld.Active;if(world!=null)position+=(Vector3)world.World.Map.Spawn;
             var actor=Instantiate(PlayerPrefab,position,Quaternion.identity);actor.GetComponent<NetworkObject>().SpawnAsPlayerObject(id,true);
+        }
+        private IEnumerator SpawnWhenReady(ulong id)
+        {
+            while(Manager.IsListening && NetworkCreatureWorld.Active!=null && NetworkCreatureWorld.Active.World.Map==null)yield return null;
+            if(Manager.IsServer && Manager.IsListening && NetworkCreatureWorld.Active!=null)Spawn(id);
         }
         public void ArenaReady(){State=NetworkSessionState.Playing;MessageKey=null;SceneFlow.MultiplayerReady();Notify();}
         public void Leave(bool returnHome=true)
