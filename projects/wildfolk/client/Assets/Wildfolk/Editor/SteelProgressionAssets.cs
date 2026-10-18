@@ -44,7 +44,7 @@ namespace Wildfolk.Editor
             var ecologyRoot=PrefabUtility.LoadPrefabContents(NetworkEcologyBuilder.PrefabPath);var ecology=ecologyRoot.GetComponent<NetworkCreatureWorld>();var entries=new List<NetworkSpawnEntry>(ecology.Prefabs);var source=furnace.Prefab.gameObject;
             if(!entries.Exists(e=>e.Source==source)){var go=(GameObject)PrefabUtility.InstantiatePrefab(source);go.AddComponent<Unity.Netcode.NetworkObject>();go.AddComponent<NetworkBuilding>();go.AddComponent<NetworkFacility>();var prefab=PrefabUtility.SaveAsPrefabAsset(go,"Assets/Wildfolk/Prefabs/NetworkBlastFurnace.prefab");UnityEngine.Object.DestroyImmediate(go);entries.Add(new NetworkSpawnEntry{Source=source,NetworkPrefab=prefab});}
             ecology.Prefabs=entries.ToArray();PrefabUtility.SaveAsPrefabAsset(ecologyRoot,NetworkEcologyBuilder.PrefabPath);PrefabUtility.UnloadPrefabContents(ecologyRoot);
-            var session=PrefabUtility.LoadPrefabContents(MultiplayerSceneBuilder.SessionPrefabPath);session.GetComponent<Unity.Netcode.NetworkManager>().NetworkConfig.ProtocolVersion=7;PrefabUtility.SaveAsPrefabAsset(session,MultiplayerSceneBuilder.SessionPrefabPath);PrefabUtility.UnloadPrefabContents(session);
+            var session=PrefabUtility.LoadPrefabContents(MultiplayerSceneBuilder.SessionPrefabPath);session.GetComponent<Unity.Netcode.NetworkManager>().NetworkConfig.ProtocolVersion=NetworkProtocol.Current;PrefabUtility.SaveAsPrefabAsset(session,MultiplayerSceneBuilder.SessionPrefabPath);PrefabUtility.UnloadPrefabContents(session);
         }
     }
 }

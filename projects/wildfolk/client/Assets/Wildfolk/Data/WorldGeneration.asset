@@ -13,6 +13,31 @@ MonoBehaviour:
   m_Name: WorldGeneration
   m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.WorldGenerationDefinition
   Biome: {fileID: 11400000, guid: 88ca94fbce62a574089c6b4c45a10282, type: 2}
+  SurfaceEnvironments:
+  - {fileID: 11400000, guid: 409be376a42d34b44b079a795e85e987, type: 2}
+  - {fileID: 11400000, guid: 8aa73ba0985407a48a982d9d7cbea519, type: 2}
+  - {fileID: 11400000, guid: 6efceaf59f1c0ef4a9e70576a2a6bdb3, type: 2}
+  - {fileID: 11400000, guid: 8fb96233068f525439707b0e9724d05c, type: 2}
+  NaturalSources:
+  - {fileID: 11400000, guid: b01b73736fe81e34ea60219b4d5b4df7, type: 2}
+  - {fileID: 11400000, guid: e63b2132fe4a16947a0e09ebee857275, type: 2}
+  - {fileID: 11400000, guid: 5825da4918249e444bc2b2fe5a92e467, type: 2}
+  - {fileID: 11400000, guid: 71f1cd2a62fc6a744a34193d32fa5828, type: 2}
+  - {fileID: 11400000, guid: 7ea9f54f07e566647a5beb7abb5ebdf7, type: 2}
+  - {fileID: 11400000, guid: c871c94b2ba229d469e1b1601a8d0b9c, type: 2}
+  - {fileID: 11400000, guid: ba1fec0d37809d24ca4c3dd356be9912, type: 2}
+  - {fileID: 11400000, guid: 59ac52b48730d1d4486198268aa08108, type: 2}
+  - {fileID: 11400000, guid: fd37ae220a364fb489292b6b40a147d1, type: 2}
+  - {fileID: 11400000, guid: f01cbbfbba49be54f81f55ce8e32ba2e, type: 2}
+  - {fileID: 11400000, guid: e0c6368811c23d04eb84f3ce4e0dde99, type: 2}
+  - {fileID: 11400000, guid: 7416319fd5788b54c9eded354dbfe71e, type: 2}
+  ProgressionCatalog: {fileID: 11400000, guid: edf4df5213dc0bf4e96917b39fb19914, type: 2}
+  WalkingSpeed: 4.2
+  TravelMinutesAcross: 52
+  PoiTravelMinutes: 2.5
+  ProgressionSafetyFactor: 1.5
+  ChunkSize: 64
+  ChunkTexturePixels: 128
   DefaultSeed: 9472026
   Size: {x: 192, y: 144}
   RiverWidth: 3

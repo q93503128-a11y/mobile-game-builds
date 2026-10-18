@@ -41,6 +41,8 @@ namespace Wildfolk
         }
         public override void OnNetworkSpawn()
         {
+            // The view component is disabled to suppress its SP Update, but the network item is live.
+            if(!WorldPickup.Active.Contains(view))WorldPickup.Active.Add(view);
             settings=NetworkCreatureWorld.Active.World.Settings;if(IsServer)State.Value=initial;
             State.OnValueChanged+=Changed;Apply(State.Value);
         }
@@ -62,6 +64,6 @@ namespace Wildfolk
         private void OnTriggerExit2D(Collider2D other)
         {var inventory=other.GetComponentInParent<NetworkInventory>();if(inventory==null)return;visitors.Remove(inventory);inventory.Untrack(this);}
         public override void OnNetworkDespawn()
-        {State.OnValueChanged-=Changed;foreach(var visitor in visitors)visitor.Untrack(this);visitors.Clear();}
+        {WorldPickup.Active.Remove(view);State.OnValueChanged-=Changed;foreach(var visitor in visitors)visitor.Untrack(this);visitors.Clear();}
     }
 }

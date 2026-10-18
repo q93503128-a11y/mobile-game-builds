@@ -36,3 +36,7 @@ Krita MCP의 native path/ellipse/line/polygon으로 Lowfire 소문자 혼합 let
 ## 2026-10-16 초기 금속
 
 tools/generate_metal_art.py의 결정적인 Pillow polygon 제작으로10개 PNG를 만들었다. Copper는 낮고 넓은 산화색 광맥, Tin은 갈라진 높은 회색층과 밝은 수평 결, Coal은 어두운 납작한 층상 덩어리다. 재료 아이콘7개와 resource sprite3개를 실제 Item/Prefab에서 사용한다. 기존 접촉 그림자/Health/HitFeedback을 공유하고 새 이미지 생성 모델/외부 게임 Asset/오디오를 사용하지 않았다. 1920×1080 숨김 Unity 자동 렌더의 원본 위치를 사람이 시각 검수했으며 실제 MCP/Game View 조작 테스트는 미수행이다.
+
+## 2026-10-17 World Foundation v2
+
+tools/generate_world_art.py의 Pillow polygon으로 cave/ruin/well/quarry/graveyard/campsite/mine 7개 landmark PNG를 제작했다. 기존 자연색/윤곽/접촉 그림자 계열이며 외부 게임 Asset이나 이미지 생성 모델을 사용하지 않았다. 실제 Unity MCP Game View 검수 화면은 docs/images/world-v2/에 보존한다. 환경 profile/terrain texture는 runtime world-coordinate sampling이며 이미지로 구운 거대 월드를 사용하지 않는다.

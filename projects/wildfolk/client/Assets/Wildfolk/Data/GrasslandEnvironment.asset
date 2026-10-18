@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 657e9dd66b384d1694d6cdbf2ab362dd, type: 3}
+  m_Name: GrasslandEnvironment
+  m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.SurfaceEnvironmentDefinition
+  Biome: 0
+  Ground: {r: 0.45490196, g: 0.50980395, b: 0.28235295, a: 1}
+  DenseGround: {r: 0.35686275, g: 0.4392157, b: 0.25490198, a: 1}
+  Detail: {r: 0, g: 0, b: 0, a: 0}
+  PreferredMoisture: {x: 0.25, y: 0.65}
+  PreferredForestation: {x: 0.15, y: 0.48}
+  PreferredRockiness: {x: 0.1, y: 0.5}
+  PreferredHeight: {x: 0.3, y: 0.7}
+  MoistureWeight: 1
+  ForestWeight: 1
+  RockWeight: 1
+  HeightWeight: 1

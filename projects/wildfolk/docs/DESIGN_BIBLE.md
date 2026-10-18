@@ -12,7 +12,7 @@
 
 ## 실제 월드 생성1차
 
-192×144유닛 유한 월드, 실제 Biome는 Temperate 하나다. Seed가 강/호수/연못/길/숲·돌 밀도/자원 배치를 결정한다. 시작점은 빈 육지이며 근처 Wood/Stone과 수원을 보장한다. 깊은 물 충돌과 강 여울을 제공한다. Tree140/Stone55/Ore16/FallenLog12/SmallPlant36, 장식 최대480, Chicken10/Boar6/Rabbit12/Deer8/Sheep10의 종별 목표와 작은 Goblin Camp1을 구성한다. 지역 부족분 보충과 Seed+Delta Save/Load v6(v1~v5 호환)을 제공한다. 무한 Streaming은 없다. 세부 규칙은 WORLD_GENERATION을 따른다.
+신규13120×13120유닛 큰 유한 대륙,Grassland/Forest/Wetlands/Rocky4종과 별도 Caverns다. 구 generation1만192×144 Temperate를 유지한다. Seed가 강/호수/연못/길/숲·돌 밀도/자원 배치를 결정한다. 시작점은 빈 육지이며 근처 Wood/Stone과 수원을 보장한다. 깊은 물 충돌과 강 여울을 제공한다. Tree140/Stone55/Ore16/FallenLog12/SmallPlant36, 장식 최대480, Chicken10/Boar6/Rabbit12/Deer8/Sheep10의 종별 목표와 작은 Goblin Camp1을 구성한다. 지역 부족분 보충과 Seed+BaseGenerationVersion+Delta Save/Load v7(v1~v6 호환)을 제공한다. 유한 대륙의64unit 청크를 플레이어 주변 합집합으로 활성화한다. 세부 규칙은 WORLD_GENERATION을 따른다.
 
 ## 실제 극초반 진행
 
@@ -119,4 +119,4 @@ Multiplayer Foundation 3는 Host 권위 Resource/Harvest/Recovery→공통 Groun
 
 ## Workbench progression / 초기 금속 현재 범위
 
-구조적 일반 제작대 cap은 VI, 현재 실제 플레이는 I~II다. III~VI 실제 비용·Recipe는 미정이며 빈 Tier 진입/placeholder UI를 만들지 않는다. 비용은 임의 길이 목록으로 후반 요구 종류 수 증가를 지원한다. 자연 자원은 월드에 처음부터 존재하고 기술은 채굴·가공·사용을 제한한다. Copper/Tin/Coal과 주괴/Bronze/Steel을 실제 제공한다. 기존 Iron·Hand/Workbench/Furnace/Campfire 역할은 유지한다. Wood→Stone→Iron→Steel 장비 진행을 제공한다. Copper를 활용한 Prospecting Pan으로 수변 Tin을 얻고 Bronze 부품으로 실제 Blast Furnace를 제작해 Steel을 처리한다. Copper/Tin/Bronze 풀 세트는 없다. II에서도 Wood/Stone/Leather/Iron을 계속 사용한다. 현재 Temperate Surface 분포는 다음 Biome 패스에서 재조정할 초기값이다. 상세 정본은 METAL_PROGRESSION이다.
+구조적 일반 제작대 cap은 VI, 현재 실제 플레이는 I~II다. III~VI 실제 비용·Recipe는 미정이며 빈 Tier 진입/placeholder UI를 만들지 않는다. 비용은 임의 길이 목록으로 후반 요구 종류 수 증가를 지원한다. 자연 자원은 월드에 처음부터 존재하고 기술은 채굴·가공·사용을 제한한다. Copper/Tin/Coal과 주괴/Bronze/Steel을 실제 제공한다. 기존 Iron·Hand/Workbench/Furnace/Campfire 역할은 유지한다. Wood→Stone→Iron→Steel 장비 진행을 제공한다. Copper를 활용한 Prospecting Pan으로 수변 Tin을 얻고 Bronze 부품으로 실제 Blast Furnace를 제작해 Steel을 처리한다. Copper/Tin/Bronze 풀 세트는 없다. II에서도 Wood/Stone/Leather/Iron을 계속 사용한다. 현재 환경 tag/Source 기반 분포와 비재생 광물은 WORLD_GENERATION을 따른다. 상세 정본은 METAL_PROGRESSION이다.

@@ -11,7 +11,7 @@ namespace Wildfolk.Tests
         private WorldSaveService save;private PlayerInventory player;private PlayerCrafting crafting;
         [UnitySetUp]public IEnumerator Load()
         {
-            Time.timeScale=1;WorldGenerator.SelectedSeed=9472026;yield return SceneManager.LoadSceneAsync("Wildfolk");yield return null;yield return null;
+            Time.timeScale=1;WorldGenerator.SelectedGenerationVersion=1;WorldGenerator.SelectedSeed=9472026;yield return SceneManager.LoadSceneAsync("Wildfolk");yield return null;yield return null;
             save=Object.FindFirstObjectByType<WorldSaveService>();save.AutoSaveEnabled=false;player=save.Player;crafting=player.GetComponent<PlayerCrafting>();
             save.Clock.enabled=save.World.Animals.enabled=save.World.Renewal.enabled=false;save.World.GetComponent<GoblinSpawner>().enabled=false;save.World.GetComponent<ZombieSpawner>().enabled=false;
             player.GetComponent<PlayerInputAdapter>().enabled=false;player.GetComponent<PlayerMotor>().enabled=false;

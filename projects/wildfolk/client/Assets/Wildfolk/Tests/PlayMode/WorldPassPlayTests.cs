@@ -9,7 +9,7 @@ namespace Wildfolk.Tests
     {
         private PlayPointerDriver input;private PlayerInventory inventory;private PlayerMotor player;private GameplayHud hud;private WorldGenerator world;private PlayerCrafting crafting;
         [UnitySetUp]public IEnumerator Load()
-        {input=new PlayPointerDriver();Time.timeScale=1;WorldGenerator.SelectedSeed=9472026;yield return SceneManager.LoadSceneAsync("Wildfolk");yield return null;yield return null;inventory=Object.FindFirstObjectByType<PlayerInventory>();player=inventory.GetComponent<PlayerMotor>();hud=Object.FindFirstObjectByType<GameplayHud>();world=Object.FindFirstObjectByType<WorldGenerator>();crafting=inventory.GetComponent<PlayerCrafting>();}
+        {input=new PlayPointerDriver();Time.timeScale=1;WorldGenerator.SelectedGenerationVersion=1;WorldGenerator.SelectedSeed=9472026;yield return SceneManager.LoadSceneAsync("Wildfolk");yield return null;yield return null;inventory=Object.FindFirstObjectByType<PlayerInventory>();player=inventory.GetComponent<PlayerMotor>();hud=Object.FindFirstObjectByType<GameplayHud>();world=Object.FindFirstObjectByType<WorldGenerator>();crafting=inventory.GetComponent<PlayerCrafting>();}
         [UnityTearDown]public IEnumerator Release(){input.Dispose();Time.timeScale=1;yield return null;}
         private RecipeDefinition Recipe(string id){foreach(var r in crafting.Catalog.Recipes)if(r.Id==id)return r;throw new System.InvalidOperationException(id);}
         private WorldPlaceable Place(string id,Vector2 p)=>Object.Instantiate(Recipe(id).Result.Placement.Prefab,p,Quaternion.identity);
@@ -28,7 +28,7 @@ namespace Wildfolk.Tests
         }
         [UnityTest]public IEnumerator ActualGeneratedWorldHasWaterCollisionsFordAndGroundSorting()
         {
-            Assert.That(world.Map.Resources.Count,Is.EqualTo(259));Assert.That(world.Map.IsWalkable(player.transform.position,2),Is.True);
+            var expected=0;foreach(var rule in world.Definition.Resources)expected+=rule.Count;Assert.That(world.Map.Resources.Count,Is.EqualTo(expected));Assert.That(world.Map.IsWalkable(player.transform.position,2),Is.True);
             var colliders=new Collider2D[8];var deep=world.Map.LakeCenter;
             Assert.That(Physics2D.OverlapCircle(deep,.4f,new ContactFilter2D{useTriggers=false},colliders),Is.GreaterThan(0));
             var ford=new Vector2(world.Map.RiverAt(world.Map.FordY),world.Map.FordY);Assert.That(Physics2D.OverlapCircle(ford,.4f,new ContactFilter2D{useTriggers=false},colliders),Is.Zero);
@@ -68,7 +68,7 @@ namespace Wildfolk.Tests
             hud.Session.CloseInventory();var chest=Place("storage_chest",(Vector2)player.transform.position+Vector2.down*2.1f).GetComponent<StorageChest>();chest.Model.Add(wood,30);yield return null;
             Assert.That(inventory.GetComponent<PlayerStorage>().OpenChest(chest),Is.True);yield return null;var chestPanel=Object.FindFirstObjectByType<ChestPanel>();
             yield return input.Click(chestPanel.ChestSlots[0]);Assert.That(chestPanel.ChestSlots[0].Selection.enabled,Is.True);
-            yield return input.Click(drag.ChestSplitButton);yield return input.Click(drag.SplitPanel.ConfirmButton);yield return input.Click(chestPanel.ChestSlots[1]);Assert.That(chest.Model.GetSlot(0).Count,Is.EqualTo(15));Assert.That(chest.Model.GetSlot(1).Count,Is.EqualTo(15));
+            yield return input.Click(drag.ChestSplitButton);Assert.That(drag.SplitPanel.View.activeSelf,Is.True,"Chest split dialog opens");yield return input.Click(drag.SplitPanel.ConfirmButton);Assert.That(drag.IsHoldingPartial,Is.True,"Chest split holds partial stack");yield return input.Click(chestPanel.ChestSlots[1]);Assert.That(chest.Model.GetSlot(0).Count,Is.EqualTo(15));Assert.That(chest.Model.GetSlot(1).Count,Is.EqualTo(15));
             yield return input.Drag(chestPanel.ChestSlots[1],PlayPointerDriver.Point(chestPanel.PlayerSlots[9]));Assert.That(inventory.Model.CountItem(wood),Is.EqualTo(45));Assert.That(chest.Model.CountItem(wood),Is.EqualTo(15));
         }
         [UnityTest]public IEnumerator FurnaceSequentialQueuePreservesFinishedAndReservedCargoWhenDestroyed()

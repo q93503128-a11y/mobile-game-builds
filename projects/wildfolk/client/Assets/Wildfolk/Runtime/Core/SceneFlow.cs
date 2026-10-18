@@ -12,9 +12,9 @@ namespace Wildfolk
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
         private static void Reset(){pending=null;repository=null;IsTransitioning=false;}
         public static void NewGame()
-        {if(IsTransitioning)return;pending=null;WorldGenerator.SelectedSeed=WorldGenerator.RandomSeed();Go(GameplayScene);}
+        {if(IsTransitioning)return;pending=null;WorldGenerator.SelectedGenerationVersion=WorldGenerationVersion.Current;WorldGenerator.SelectedSeed=WorldGenerator.RandomSeed();Go(GameplayScene);}
         public static void Continue(SavedGame game,SaveRepository source)
-        {if(IsTransitioning)return;pending=game;Repository=source;WorldGenerator.SelectedSeed=game.Seed;Go(GameplayScene);}
+        {if(IsTransitioning)return;pending=game;Repository=source;WorldGenerator.SelectedSeed=game.Seed;WorldGenerator.SelectedGenerationVersion=game.BaseGenerationVersion;Go(GameplayScene);}
         public static void Home(SaveRepository source)
         {if(IsTransitioning)return;pending=null;Repository=source;Go(HomeScene);}
         private static void Go(string scene){IsTransitioning=true;Time.timeScale=1;SceneManager.LoadScene(scene);}

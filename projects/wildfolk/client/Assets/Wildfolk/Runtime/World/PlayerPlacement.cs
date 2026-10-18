@@ -39,7 +39,7 @@ namespace Wildfolk
             var angle=RotationFor(definition).eulerAngles.z;
             var footprint=angle>45 && angle<135 ? new Vector2(definition.Footprint.y,definition.Footprint.x) : definition.Footprint;
             var half = footprint*.5f;
-            var bounds = Ground.bounds;
+            var bounds = Terrain!=null && Terrain.World.Map.Streamed ? Terrain.World.Map.RegionBounds(position) : Ground.bounds;
             if (!bounds.Contains(position-half) || !bounds.Contains(position+half)) return false;
             if(Terrain!=null && (Terrain.Surface(position)!=TerrainSurface.Land || Terrain.Surface(position-half)!=TerrainSurface.Land || Terrain.Surface(position+half)!=TerrainSurface.Land))return false;
             var filter = new ContactFilter2D { useTriggers = true };

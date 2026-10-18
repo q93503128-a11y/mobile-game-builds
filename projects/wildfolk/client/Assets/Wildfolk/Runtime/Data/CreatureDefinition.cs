@@ -27,6 +27,7 @@ namespace Wildfolk
         public bool Matches(WorldMap map,Vector2 p)
         {
             if(!map.IsWalkable(p,.8f) || map.IsWater(p,1) || map.IsRoad(p))return false;
+            if(map.Streamed){var e=map.Continental.Environment(p);if(map.Continental.Underground(p) || e.Rockiness>.9f || e.WaterDistance<2)return false;}
             var density=map.ForestDensity(p);
             return (Habitat&CreatureHabitat.Grassland)!=0 && density<.52f || (Habitat&CreatureHabitat.Forest)!=0 && density>=.6f || (Habitat&CreatureHabitat.ForestEdge)!=0 && density>=.36f && density<.66f;
         }

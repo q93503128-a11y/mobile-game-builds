@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 namespace Wildfolk
 {
-    public sealed class GoblinSpawner : MonoBehaviour
+    public sealed partial class GoblinSpawner : MonoBehaviour
     {
         public GoblinDefinition Definition;
         public GoblinController Prefab,RangedPrefab;
@@ -68,7 +68,7 @@ namespace Wildfolk
             if(roaming>=Definition.Population || ActiveCount+Definition.MinimumWarband>CampDefinition.HardCap)return false;
             for(var attempt=0;attempt<64;attempt++)
             {
-                var road=World.Map.Roads[UnityEngine.Random.Range(0,World.Map.Roads.Count)];var segment=UnityEngine.Random.Range(1,road.Length);var p=Vector2.Lerp(road[segment-1],road[segment],UnityEngine.Random.value);
+                Vector2 p;if(World.Map.Streamed){if(!World.Map.Continental.TryRoadPoint(Player.transform.position,UnityEngine.Random.value,out p))return false;}else{var road=World.Map.Roads[UnityEngine.Random.Range(0,World.Map.Roads.Count)];var segment=UnityEngine.Random.Range(1,road.Length);p=Vector2.Lerp(road[segment-1],road[segment],UnityEngine.Random.value);}
                 if(Vector2.Distance(p,Player.transform.position)>45 || !World.GetComponent<WorldNavigation>().CanSpawn(p,2.8f,18,true))continue;
                 return SpawnWarband(p).Length>0;
             }
@@ -77,7 +77,7 @@ namespace Wildfolk
         private bool ClearCamp(Vector2 p,bool outside)
         {
             if(!World.GetComponent<WorldNavigation>().CanSpawn(p,4,CampDefinition.PlayerDistance,outside))return false;
-            foreach(var building in FindObjectsByType<WorldPlaceable>(FindObjectsSortMode.None))if(Vector2.Distance(p,building.transform.position)<CampDefinition.BaseDistance)return false;
+            foreach(var building in WorldPlaceable.Active)if(Vector2.Distance(p,building.transform.position)<CampDefinition.BaseDistance)return false;
             return true;
         }
         public GoblinCamp SpawnCamp(Vector2 position,string id=null,double refill=0,bool populate=true)
@@ -92,6 +92,7 @@ namespace Wildfolk
             if(!SimulationAuthority.Allows(this))return;
             restored=true;foreach(var actor in actors.Values)if(actor!=null)PrefabPool.Release(actor.gameObject);actors.Clear();
             foreach(var camp in camps)if(camp!=null){PrefabPool.Release(camp.gameObject);}camps.Clear();serial=groupSerial=0;
+            if(World.Map.Streamed){sleepingCamps.Clear();sleepingGoblins.Clear();initializedCamps.Clear();return;}
             var random=new System.Random(World.Seed^19273);
             for(var i=0;i<CampDefinition.InitialCamps;i++)for(var attempt=0;attempt<200;attempt++)
             {var size=World.Definition.Size;var p=new Vector2(((float)random.NextDouble()-.5f)*(size.x-16),((float)random.NextDouble()-.5f)*(size.y-16));if(ClearCamp(p,false)){SpawnCamp(p);break;}}
@@ -118,13 +119,13 @@ namespace Wildfolk
         public GoblinEcologySnapshot Capture()
         {
             Prune();var saved=new List<GoblinActorSnapshot>();foreach(var actor in actors.Values){var s=actor.State;saved.Add(new GoblinActorSnapshot{Id=s.Id,GroupId=s.GroupId,CampId=s.CampId,Ranged=s.Ranged,Position=actor.transform.position,Home=actor.Actor.Home,HP=actor.Actor.OwnHealth.Current});}
-            var locations=new List<CampSnapshot>();foreach(var camp in camps)locations.Add(new CampSnapshot{Id=camp.State.Id,Position=camp.State.Position,RefillAt=camp.State.RefillAt});return new GoblinEcologySnapshot{Serial=serial,GroupSerial=groupSerial,Camps=locations.ToArray(),Actors=saved.ToArray()};
+            var locations=new List<CampSnapshot>();foreach(var camp in camps)locations.Add(new CampSnapshot{Id=camp.State.Id,Position=camp.State.Position,RefillAt=camp.State.RefillAt});var state=new GoblinEcologySnapshot{Serial=serial,GroupSerial=groupSerial,Camps=locations.ToArray(),Actors=saved.ToArray()};return World.Map.Streamed ? CaptureStreamed(state) : state;
         }
         public void Restore(GoblinEcologySnapshot state)
         {
             if(!SimulationAuthority.Allows(this))return;
             restored=true;foreach(var actor in actors.Values)if(actor!=null)PrefabPool.Release(actor.gameObject);actors.Clear();foreach(var camp in camps)if(camp!=null){PrefabPool.Release(camp.gameObject);}camps.Clear();
-            if(state==null){GenerateCamps();return;}serial=state.Serial;groupSerial=state.GroupSerial;
+            if(World.Map.Streamed){RestoreStreamed(state);return;}if(state==null){GenerateCamps();return;}serial=state.Serial;groupSerial=state.GroupSerial;
             foreach(var camp in state.Camps)SpawnCamp(camp.Position,camp.Id,camp.RefillAt,false);
             foreach(var actor in state.Actors)SpawnActor(actor.Ranged,actor.Position,actor.GroupId,actor.Home,actor.CampId,actor.Id,actor.HP);
         }

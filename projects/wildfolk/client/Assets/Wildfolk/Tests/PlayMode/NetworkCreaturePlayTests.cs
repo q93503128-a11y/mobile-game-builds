@@ -15,6 +15,8 @@ namespace Wildfolk.Tests
             SceneFlow.Home(SaveRepository.Default());yield return null;yield return null;
             Object.FindFirstObjectByType<HomeScreen>().OpenMultiplayer();
             var session=NetworkSession.Instance;
+            // Existing small-world combat fixture; generation2 streaming is covered by WorldFoundationHostTests.
+            session.NewWorldGenerationVersion=1;session.WorldRepository=new SaveRepository(System.IO.Path.Combine(Application.temporaryCachePath,"lowfire-legacy-creature-"+System.Guid.NewGuid().ToString("N"),"world.json"));session.ProfileOverride=System.Guid.NewGuid().ToString("N");
             var task=session.Host(ConnectionRoute.LocalNetwork);for(var i=0;i<300 && !task.IsCompleted;i++)yield return null;
             Assert.That(task.IsCompleted && task.Result,Is.True,session.LastFailure);Assert.That(session.EnterGame(),Is.True);
             for(var i=0;i<300;i++){yield return null;player=Object.FindFirstObjectByType<NetworkPlayer>();if(player!=null && player.IsSpawned)break;}

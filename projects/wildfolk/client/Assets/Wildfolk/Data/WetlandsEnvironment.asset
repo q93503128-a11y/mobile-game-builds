@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 657e9dd66b384d1694d6cdbf2ab362dd, type: 3}
+  m_Name: WetlandsEnvironment
+  m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.SurfaceEnvironmentDefinition
+  Biome: 2
+  Ground: {r: 0.31764707, g: 0.4, b: 0.30588236, a: 1}
+  DenseGround: {r: 0.22745098, g: 0.3254902, b: 0.27058825, a: 1}
+  Detail: {r: 0, g: 0, b: 0, a: 0}
+  PreferredMoisture: {x: 0.7, y: 1}
+  PreferredForestation: {x: 0.15, y: 0.48}
+  PreferredRockiness: {x: 0.1, y: 0.5}
+  PreferredHeight: {x: 0, y: 0.4}
+  MoistureWeight: 1.7
+  ForestWeight: 1
+  RockWeight: 1
+  HeightWeight: 1.8

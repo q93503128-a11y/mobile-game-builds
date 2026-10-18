@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 namespace Wildfolk
 {
-    public sealed class AnimalPopulation : MonoBehaviour
+    public sealed partial class AnimalPopulation : MonoBehaviour
     {
         public AnimalPopulationDefinition Definition;
         public WorldGenerator World;
@@ -17,11 +17,11 @@ namespace Wildfolk
         public int ActiveCount=>live.Count;
         public IReadOnlyList<RecoveryTicket> Pending=>pending;
         public static int Region(WorldMap map,Vector2 p)
-        {var size=map.Definition.Size;return Mathf.Clamp(Mathf.FloorToInt((p.x/size.x+.5f)*4),0,3)+4*Mathf.Clamp(Mathf.FloorToInt((p.y/size.y+.5f)*3),0,2);}
+        {if(map.Streamed)return map.PopulationRegion(p);var size=map.Definition.Size;return Mathf.Clamp(Mathf.FloorToInt((p.x/size.x+.5f)*4),0,3)+4*Mathf.Clamp(Mathf.FloorToInt((p.y/size.y+.5f)*3),0,2);}
         public int Count(int rule,int region)
         {var count=0;foreach(var actor in live.Values)if(actor!=null && actor.State.Rule==rule && actor.State.Region==region)count++;return count;}
-        public int Target(int rule,int region)=>targets[rule,region];
-        public int SpeciesCount(int rule){var count=0;for(var i=0;i<12;i++)count+=Count(rule,i);return count;}
+        public int Target(int rule,int region)=>World.Map.Streamed ? 2 : targets[rule,region];
+        public int SpeciesCount(int rule){var count=0;if(World.Map.Streamed){foreach(var a in live.Values)if(a!=null && a.State.Rule==rule)count++;return count;}for(var i=0;i<12;i++)count+=Count(rule,i);return count;}
         private Vector2 Candidate(int region,System.Random random)=>Candidate(World.Definition.Size,region,random);
         private static Vector2 Candidate(Vector2 size,int region,System.Random random)
         {return new Vector2(((region%4+(float)random.NextDouble())/4-.5f)*size.x,((region/4+(float)random.NextDouble())/3-.5f)*size.y);}
@@ -40,6 +40,7 @@ namespace Wildfolk
         public void Generate()
         {
             if(!SimulationAuthority.Allows(this))return;
+            if(World.Map.Streamed){ResetStreamed();return;}
             live.Clear();pending.Clear();serial=groupSerial=cursor=0;nextAttempt=0;Initialize();
             for(var rule=0;rule<Definition.Rules.Length;rule++)for(var region=0;region<12;region++)
             {while(Count(rule,region)<Target(rule,region) && ActiveCount<Definition.HardCap){if(SpawnGroup(rule,region,false)==0)break;}Schedule(rule,region,Clock.Model.Elapsed);}
@@ -57,7 +58,7 @@ namespace Wildfolk
         private bool CanSpawn(CreatureDefinition creature,Vector2 position,bool outside)
         {
             if(!creature.Matches(World.Map,position) || !Navigation.CanSpawn(position,creature.SeparationRadius+.15f,Definition.PlayerDistance,outside))return false;
-            foreach(var placed in FindObjectsByType<WorldPlaceable>(FindObjectsSortMode.None))if(Vector2.Distance(placed.transform.position,position)<Definition.BaseDistance)return false;
+            foreach(var placed in WorldPlaceable.Active)if(Vector2.Distance(placed.transform.position,position)<Definition.BaseDistance)return false;
             return true;
         }
         private int SpawnGroup(int rule,int region,bool outside)
@@ -91,7 +92,7 @@ namespace Wildfolk
         private void Update(){if(SimulationAuthority.Allows(this) && World.Session.WorldIsRunning && Clock.Model.Elapsed>=nextAttempt){nextAttempt=Clock.Model.Elapsed+5;Tick();}}
         public int Tick()
         {
-            if(!SimulationAuthority.Allows(this))return 0;
+            if(!SimulationAuthority.Allows(this))return 0;if(World.Map.Streamed)return TickStreamed();
             var count=0;var now=Clock.Model.Elapsed;
             for(var i=pending.Count-1;i>=0;i--)
             {
@@ -105,14 +106,14 @@ namespace Wildfolk
         }
         public AnimalSnapshot[] Capture()
         {
-            var result=new List<AnimalSnapshot>();foreach(var identity in live.Values)if(identity!=null && identity.Animal.Health.IsAlive){var s=identity.State;result.Add(new AnimalSnapshot{Id=s.Id,Species=s.Species,Rule=s.Rule,GroupId=s.GroupId,Region=s.Region,HP=identity.Animal.Health.Current,Position=identity.transform.position,Home=s.Home});}return result.ToArray();
+            if(World.Map.Streamed)return CaptureStreamed();var result=new List<AnimalSnapshot>();foreach(var identity in live.Values)if(identity!=null && identity.Animal.Health.IsAlive){var s=identity.State;result.Add(new AnimalSnapshot{Id=s.Id,Species=s.Species,Rule=s.Rule,GroupId=s.GroupId,Region=s.Region,HP=identity.Animal.Health.Current,Position=identity.transform.position,Home=s.Home});}return result.ToArray();
         }
         public AnimalEcologySnapshot CaptureEcology()
-        {var tickets=new RecoveryTicket[pending.Count];for(var i=0;i<tickets.Length;i++){var t=pending[i];tickets[i]=new RecoveryTicket{Rule=t.Rule,Region=t.Region,Due=t.Due};}return new AnimalEcologySnapshot{Serial=serial,GroupSerial=groupSerial,Cursor=cursor,Pending=tickets};}
+        {var tickets=new RecoveryTicket[pending.Count];for(var i=0;i<tickets.Length;i++){var t=pending[i];tickets[i]=new RecoveryTicket{Rule=t.Rule,Region=t.Region,Due=t.Due};}return new AnimalEcologySnapshot{Serial=serial,GroupSerial=groupSerial,Cursor=cursor,Pending=tickets,InitializedRegions=new List<int>(initializedRegions).ToArray()};}
         public void Restore(AnimalSnapshot[] states,AnimalEcologySnapshot ecology=null)
         {
             if(!SimulationAuthority.Allows(this))return;
-            foreach(var identity in live.Values)if(identity!=null){PrefabPool.Release(identity.gameObject);}live.Clear();pending.Clear();Initialize();
+            foreach(var identity in live.Values)if(identity!=null){PrefabPool.Release(identity.gameObject);}live.Clear();pending.Clear();if(World.Map.Streamed){RestoreStreamed(states,ecology);return;}Initialize();
             serial=ecology==null ? 0 : ecology.Serial;groupSerial=ecology==null ? 0 : ecology.GroupSerial;cursor=ecology==null ? 0 : ecology.Cursor;
             if(ecology!=null)pending.AddRange(ecology.Pending);
             foreach(var state in states){if(state.Missing)continue;Spawn(state);}

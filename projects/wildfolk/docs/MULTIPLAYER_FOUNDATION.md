@@ -1,5 +1,6 @@
 # Multiplayer Foundation — 현재 Foundation 5
 
+2026-10-17 현재: 신규 generation2/Save7/Protocol8. BaseGenerationVersion과 청크 logical state·시설 timestamp·동굴 state를 저장한다. v1~v6 저장은 generation1 지형/시설 위치를 유지한다. 아래 v5/v6/Protocol7 내용은 해당 단계의 구조/이관 기록이며 현재 월드 정책은 [WORLD_GENERATION](WORLD_GENERATION.md)을 따른다.
 2026-10-16. 기준361fd7f735561fee9b77b8af331e66b25d428380. **Building / Wall / Door / Host World Persistence와 재입장 기반**을 추가했다. Player, Creature/Combat, Resource/Item/Inventory, Facility/Crafting에 이어 이번 기반 구현을 마쳤다. **다음 단계는 별도 Multiplayer Integration QA다. 이번에 실제 두 프로세스 Relay 검수는 하지 않았다.** 자동검사를 실제 원격 플레이 합격으로 해석하지 않는다.
 
 ## Building 권위와 transaction

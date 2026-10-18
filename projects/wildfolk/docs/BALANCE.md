@@ -47,7 +47,7 @@
 
 성숙 Tree: Wood Axe5타 /Stone Axe4타 /Iron Axe3타. 회복은 지역 밀도 Target0.9 미만에서 새로운 ID로 해당 Region 후보를 검사한다. Rare는 월드 범위 후보이며 Player24/Harvest28유닛·1800초/Cluster12유닛 제외를 사용한다. 흔한 자원은 Player12/Harvest8유닛·Delay×2다. Camera/물/길/장애물/기지 내부 후보를 제외한다. 막히면5초 뒤 재시도한다. 작은 풀은 현재 비충돌 장식이다. Small Plant 관목36개는 비차단 자원으로 HP12/Wood1,90초 재생이다. Chicken10/180초,Boar6/300초,Rabbit12/180초,Deer8/420초,Sheep10/300초의 종별 목표를 지역에 분배해 부족분을 보충한다. 실제 번식/성장 시스템은 없다. Save에는 대기 시간을 게임 시간 기준으로 기록하고 오프라인 시간을 더하지 않는다.
 
-Land1 /Shallow0.7 /Deep 도보 불가. River 폭6, 여울 길이4.4, 월드192×144유닛이다.
+Land1 /Shallow0.7 /Deep 도보 불가. generation1만192×144/River 폭6/여울4.4를 유지한다. 신규 generation2는13120²/64unit chunk,main channel 반폭5/tributary3.5/약240unit 여울 후보다. 탐험시간/밀도와4인 공급은 WORLD_GENERATION을 따른다.
 
 ## 생존과 물
 

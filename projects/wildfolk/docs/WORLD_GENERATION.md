@@ -1,58 +1,80 @@
-# Seed 기반 월드 생성1차
+# World Generation / Biome Foundation v2
 
-WorldGenerationDefinition/TemperateBiome와 ResourceGenerationRule이 정본이다. 현재192×144유닛 유한 월드, 기본Seed9472026. WorldGenerator.SelectedSeed로 같은 Seed를 다시 선택할 수 있고 RandomSeed/사망 후 Try again은 무작위 새 월드를 만든다. 같은Seed는 기본 지형·물·Road·자원 위치/스케일을 재현한다. 동물 이동·적 Encounter는 기본 생성 재현 보장과 별도다. 변경된 자원/시설/상자/생존 상태는 Save/Load v6(v1~v5 호환) Delta로 복원한다.
+2026-10-17. 표시명 Lowfire / 내부 Wildfolk. 신규 BaseGenerationVersion2 / Save7 / Protocol8. Item48, Recipe36, 장비 Tier4 유지.
 
-WorldMap은 System.Random(seed)만 사용하여 생성하며 UnityEngine.Random 상태를 바꾸지 않는다. Perlin 기반 숲/돌 밀도는 하나의 Temperate 내부 변화다. WorldGenerator는 런타임 초기화 시 생성 데이터를 프리팹에 연결한다. WorldTerrainRenderer가 하나의1024×768 RGB 텍스처로 자연색 지면/길/물/수변을 표시한다. 명확한 사각 타일·체커 경계를 만들지 않는다. 무한 Chunk Streaming은 없다.
+## 크기 / 생성
 
-강은 남북을 잇는 곡선이며 폭6유닛이고 Seed로 굽음/위치가 변한다. 강 y=-27.36 부근에 폭4.4유닛의 통과 여울을 제공한다. 주 호수는 서북 지역에서 Seed로 중심/크기가 달라지고 기복 있는 폐곡선으로 표시한다. 시작점 약11유닛의 작은 연못은 초기 물 접근을 보장한다. 물 표현과 깊은 물 Collider는 같은 WorldMap 경계 계산을 사용한다. 여울은 물이지만 이동 가능하다. 수변의 여러 WaterSource는 기존 수집 규칙을 사용한다.
+실제 MoveSpeed4.2 unit/s, Sprint1.55배, Stamina100/소비14/s를 읽었다. 52분 기본 도보×4.2×60을64단위로 올려 **13120×13120** 유한 영역을 정했다. 실제 대륙은 불규칙한 해안 반경 약5900~6300, 시작지→해안 약23~25분, 해안간 약47~50분 직선 도보다. Sprint/우회/채집을 포함한 실측 탐험 시간은 아니다. Forest anchor 약210unit/50초, Rocky 약650unit/2.6분, main river 약2~3분이다.
 
-Road2줄은 월드 일부와 여울을 연결하는 기본 Dirt Path다. IsRoad/RoadDistance로 실제 판별 가능하며 낮 Goblin의 후보 위치에 사용한다. 마을/POI 연결망은 아직 없다.
+Root Seed에서 Continental101 / Terrain211 / Hydrology307 / Biome401 / Cave503 / Resource601 / POI701 / Road809 / Vegetation907 / Creature1009 domain을 deterministic hash로 파생한다. SourceId stable hash/청크 좌표를 추가한다. 광물 후보를 먼저 놓고 식생을 뒤에 놓으므로 식생 후보 변경이 수계/광맥을 함께 이동시키지 않는다.
 
-| 자원 | 총 개수 | 시작 근처 보장 | 시작 회피 반경 | 최소 배치 간격 |
-|---|---:|---:|---:|---:|
-| Tree |140|4(±8 범위)|3.5|4|
-| Stone |55|3(±9 범위)|3.5|3.4|
-| Iron Ore |16|0|18|4|
-| Fallen Log |12|3(±8 범위)|3.5|3.2|
-| Small Plant |36|0|3.5|2.4|
+크기·대륙→연속 환경장/수계→128unit macro biome scoring/작은 component 병합/전이→진행 anchor/동굴→중요·일반 POI→일부 길→보장 공급/한정 후보 보정→검증→청크별 자연 공급·식생·서식지 materialization 순서다. Moisture/Forestation/Rockiness/Height/Roughness/Water Influence를 사용한다. 전체 월드 무한 reroll은 없다. 공급처 최대1200후보, 입구 최대96후보에서 보정하며 필수조건 실패는 명시적 예외다.
 
-시작 자원을 먼저 모든 Rule에 대해 배치하고 나머지를 채운다. 물/확장 수변/길/Spawn 회피·종류 간 큰 최소 간격을 검사한다. Count를 채울 수 없는 설정은 실패를 숨기지 않는다. 자원 이름별 런타임 분기가 없고 Prefab/Count/StartCount/Radius/Spacing/밀도선호/Scale/선택 대체Sprite를 Rule로 관리한다.
+## 환경 / 물
 
-Player Spawn은(0,0)이며 물·광석·큰 자원에 갇히지 않는다. 장식 최대480개 중 첫40개는 시작 화면 주변에 분포한다. Grass/Fern은 Collider가 없고 항상 캐릭터 아래다. 큰 FallenLog는 BoxCollider/Resource Health/Wood 드랍을 가진다. Tree/Stone 변형은 기존 프로젝트 아트다.
+SurfaceBiome은 **Grassland / Forest / Wetlands / Rocky** 네 개다. SurfaceEnvironmentDefinition의 여러 field 선호도와 가중 score를 정규화하고 macro fragment를 합친 뒤 bilinear weight로 지면을 연결한다. 128unit macro grid는 화면 타일이 아니다.
 
-정렬은 WorldSorting의 Ground→GroundDecoration→Drop→Y 기반 Actor/TallObject→Overlay를 사용한다. 캐릭터/나무/시설은 BaseY의SortingGroup 기준이며 자원마다 임의 깊이 숫자를 박지 않는다. 작은 풀은 Player 위를 덮지 않는다.
+- Grassland: 평탄한 시야/기지 후보, Wood·Stone·Plant, 근처 Pond, 별도 StarterSupply Iron3개.
+- Forest: 산림도에 따라 수목 밀도 증가. Deep Forest는 같은 Forest 내부 밀도 단계다. 기존 Deer/Boar/Rabbit/Camp를 사용한다.
+- Wetlands: 높은 수분·낮은 높이·수계 영향의 조합. River 자체와 다르다. 젖은 땅·수변 식생·퇴적층을 제공한다.
+- Rocky: 돌/광맥 증가, 식생 감소, 지층 표현과 거친 ridge 통행 제한, Quarry/Mine/입구 선호.
 
-자원 회복은 ResourcePopulation과 ResourceRegeneration이 담당한다. 기본 r<index>는 손상/파괴 Delta이고, 파괴된 ID를 부활시키지 않는다. 회복 개체는 단조 증가하는 p<serial> ID로 다른 위치에 생성한다. 4×3 논리 Region의 종류별 Population과 최초 Seed 분포 기반 TargetDensityRatio0.9를 비교한다. 이 Region 경계는 화면에 타일로 표시하지 않는다. 현재 수량이 Target보다 부족한 Region만 대기 후 한 개체씩 회복한다. 초기 Count140/55/16/12/36은 최초 생성 값이며 항상 같은 총량을 복원하는 Runtime 목표가 아니다.
+River는 Hydrology Feature다. main channel/tributary/Lake/Pond/river bank/gravel/shallow/deep water를 제공하고 여러 바이옴을 지난다. 깊은 물은 이동 전 지형 검사로 차단하며 얕은 물은 기존 감속을 사용한다. 약240unit 교차 여울 후보와 주 강/연못/호수 수원을 제공한다. 외곽은 대륙→coast→shallow sea→deep ocean이며 새 월드에 사각 투명벽을 만들지 않는다.
 
-Tree300/Log480/Stone600/Ore720/Small Plant90초는 초기 밀도 회복 대기값이다. 흔한 자원은 해당 Region 전체에서 후보를 찾고, Rare Mineral은 전체 월드 후보를 사용한다. 같은 좌표·6~26유닛 주변을 중심으로 다시 생성하지 않는다. Camera/Player(흔한12, Rare24)/물·수변/길/충돌·기지 내부/종류별 ClusterSpacing과 최근 Harvest 제외를 검사한다. 흔한 Harvest 제외8유닛/대기시간×2, Rare28유닛/1800초 및 Cluster 간격12유닛이다. 5초마다 최대2개 회복 시도, 최초 Count 합의1.25배는 성능용 Hard Limit이다. Soft Target이 실제 의사결정 기준이며 막힌 후보는 다음 Tick까지 대기한다.
+## Caverns
 
-Family/Rarity/NaturalRecovery/WorldRecoveryScope/TargetDensityRatio/Delay/Harvest Exclusion/ClusterSpacing은 Rule 데이터다. 생존 Recipe·RequiredTool/Tier와 별도 경계다. 미래의 Metal/Ore/Gem/Crystal/Alloy/특수·Biome·Dungeon 재료와 Surface/Cave/POI 공급처를 확장할 방향이며 현재 추가 광물은 Copper/Tin/Coal이며 실제 공급처는 Temperate Surface다. Cave/POI는 공급 문맥 데이터만 있고 실제 생성 시스템은 없다. Diamond를 최종 Tier로 고정하지 않는다.
+별도 Underground Region이며 SurfaceBiome 추가가 아니다. 면적과18분 도보 권역 밀도에서 현재8 network/12 surface입구를 산출한다. 절반은 두 입구가 같은 network에 연결된다. 12개 비대칭 타원 chamber/corridor,8방 loop,두 심부 dead-end branch가 있다. Entry/Chamber/LargeCavern/OrePocket/WaterChamber/Nest/DeepRuin 구성을 사용한다.
 
-기본 손상·파괴 Delta, 살아 있는 회복 개체, Pending Region/시간, 최근 Harvest/만료, ID Serial과 후보 Cursor를 v3에 저장한다. v2의 파괴 상태는 유지하고 Region 부족량으로 이관하며 긴 과거 대기는 새 Delay 이내로 제한한다. 오프라인 경과를 더하지 않는다. 오래된 기본 Tombstone은 유지하고 회복 개체의 파괴 Tombstone은 제거해 Delta가 무한히 누적되지 않게 한다.
+Depth는 가장 가까운 실제 입구에서 graph 경로 거리의 정규화 값이다. Deep Caverns는 다른 ID가 아닌 심부 단계다. 넓은 branch/방 구성, source depth, Skeleton/검 Skeleton encounter, ambient .64→.3 hook으로 차이를 만든다. HP 팽창은 없다. Underground Water는 방 한쪽 pool로 중심 통로를 보존한다. 기존 Interact로 진입/귀환하며 Host가 생존/Running/거리/목적지 지형을 검사한다. 같은 scene의 분리 좌표대에 표시한다. GameplayLight의 ambient/local/exposure만 제공하고 Torch/Lantern item/연료 UX는 없다.
 
-작은 풀은 비충돌 장식, Small Plant36은 HP12/Wood1의 비차단 자원이다. Sapling/Young Tree 성장은 없다. Chicken/Boar와 신규3종은 종별 지역 Population/Group 보충과 저장을 사용한다. Animal Breeding은 없다. 첫 월드 생성은 동기식이며 Android 로딩/성능은 실기 검증 대상이다. 임의 기지 내부의 완전한 판정, 전체 NavMesh, 여러 Biome/던전/POI/무한 World Generator는 아직 없다.
+## 자연 공급 / 진행
 
-Shallow는 WorldNavigation의 Terrain Movement Modifier0.7을 사용하고 Deep은 도보 이동을 막는다. Boat는 향후 Vehicle별 이동 판정으로 확장할 방향이며 실제 탑승/수상 이동은 없다.
+NaturalSourceDefinition은 환경 tag,Surface·Cave,depth/moisture/rock 범위,확률/밀도/간격,자연 회복,StarterSupply를 가진다. HarvestDefinition은 ResourceDefinition 안에서 tool kind/tier/method/mode를 분리한다. Workbench 해금은 공급처 존재를 바꾸지 않는다.
 
+환경 tag: GrassSurface/ForestFloor/RockFace/ExposedRock/RockRidge/RiverBank/RiverGravel/WetGround/ShallowWaterEdge/CaveFloor/CaveWall/DeepCave/CrystalPocket/UndergroundWater/CoalSeam. UndergroundWater tag는 확장 정의이며 실제 수중 판정은 cave pool geometry다.
 
-## 동물·Goblin Population
+Copper는 노출 암석/동굴+Iron Pickaxe 이상,Coal은 seam/동굴+Stone Pickaxe 이상,Iron은 초반 일부와 암석/동굴이다. Tin은 실제 main channel의 적합한 RiverGravel+Prospecting Pan이다. Wetlands 이름만으로 생성하지 않는다. Bronze/별도 Blast Furnace/Steel/장비와 Reinforced Chest36의 기존 흐름을 유지한다.
 
-AnimalPopulationDefinition의 Rule 순서는 기존 Chicken/Boar 인덱스를 유지하고 Rabbit/Deer/Sheep을 추가한다. Creature Habitat를 논리 지역별로 샘플링해 종별 목표를 분배한다. ForestDensity<0.52 Grassland,≥0.6 Forest,0.36~0.66 ForestEdge이며 실제 새 Biome가 아니다. 적합한 육지/비물/비Road/장애물·기지 내부 제외/Player14/Base8 조건을 사용한다. 초기46목표/Hard Cap80이다.
+generation2 Mineral은 모두 비재생이며 파괴 stable ID tombstone을 유지한다. Tree/Plant/Log 등은 게임 시간 뒤 환경 후보에서 새 pID/다른 위치로 회복한다. unload/save/load로 광물을 재생시키지 않는다. generation1만 구 population/recovery를 유지한다.
 
-초기 배치와 보충은 Group 규모를 사용한다. 집단은 지역 Soft Target을 일부 넘을 수 있지만 종별 총목표와 Hard Cap은 넘지 않는다. 죽은 개체 ID를 다시 사용하지 않고 살아 있는 동물만 Capture한다. 종/Region의 부족 타이머,ID Serial/Group Serial/Candidate Cursor를 별도 저장한다. v3의 살아 있는 개체는 위치/HP/ID/Home Anchor를 유지하고 죽은 Slot은 부족 지역의 대기로 이관한다. 새로운 종 부족량은 Load 후 보충 일정으로 등록한다.
+실제 Catalog recipe를 재귀 계산해4인 Steel 도구·방어구,4인 Pan,공유 Blast Furnace/Workbench upgrade 재료에1.5배 여유를 적용한다. drop yield에 따른 node수,광물별 최소9 node와3개 이상128unit cluster를 검증한다. 시작점→Forest/보장 공급처는 bounded16unit flood+2unit edge/1unit endpoint 지형 검사를 한다. 임의 미래 지역 전체/동적 건축물까지 검증하는 navigation은 아니다.
 
-작은 Camp 하나는 Seed 후보와 Player18/Base12·장애물 회피로 배치한다. 거주 개체3은 Group/Camp ID를 공유하며 죽은 개체의 원래 지점/ID를 부활시키지 않는다.480초 후 적합한 Camp 주변·카메라 밖에서 새 개체를 보충한다. 로밍 Warband는 낮 Road 후보에서3~5명(새총0~2)으로 생성한다. Camp/로밍 구분은 Camp ID와 Group/Traits 데이터다. 실제 Scout/Village/Fortress는 없다.
+DiamondPocketSource는 disabled/ResourceRule=-1/depth .8~1의 미래 hook뿐이다. Diamond item/drop/equipment/보장량은 없고 최종 tier로 고정하지 않는다.
 
-Night 예산은 Zombie와 Skeleton이 공유한다. 낮/밤·카메라·빛·시설·Player 회피는 기존 규칙을 유지한다. 기존 살아 있는 Night 종/검 Variant는 v4 저장에서 복원하며 순간 공격 상태와 투사체는 저장하지 않는다. 재미·생태 밀도·장시간 모바일 성능은 별도 사용자 확인이다.
+## POI / 길 / 생물
 
-## Multiplayer Foundation 3 자원
+도보2.5분/630unit 격자 후보에 환경/통행/물 거리/시작지 제외를 적용한다. Campsite/Ruin/Well/Quarry/Graveyard/Mine/GoblinCamp/CaveEntrance를 제공한다. Camp는 실제 기존 Goblin state에 연결하며 다른 landmark는 시각적 탐험 표시다. 새 보상 상자/퀘스트/건물 실내는 없다. tools/generate_world_art.py는7개 신규 landmark 원본이다.
 
-지형/물은 같은 default seed로 구성하고 실제 자원은 Host만 기존 Rule/Population에서 생성한다. Client는 NetworkResource의 ID/Rule/HP/hit와 NGO 초기 위치/scale/Despawn을 표시한다. 기존 회복의 Region/Soft Target/제외/새 ID 규칙은 Host에서만 실행한다. Host의 Resource/Recovery Snapshot 형식은 유지하지만 Foundation5의 공통 v5 snapshot과 Host 재Host/식별자별 복원을 사용한다. 실제 remote 재접속 QA는 남아 있다. 검증은 MULTIPLAYER_FOUNDATION을 따른다.
+terrain과 anchor 이후 시작지→Forest/Rocky/여울,일부 중요한 POI 주변 trail을 만든다. 모든 POI를 연결하지 않는다.256unit road index를 기존 낮 Goblin candidate도 사용한다. 모든 trail을 A*로 재작성한 것은 아니다.
 
-## 초기 금속 분포 / Seed 호환
+기존 CreatureDefinition/habitat/Family/Faction/Traits와 AI를 사용한다. Host만 최초 방문 청크 무리를 결정하고 HP/Home/Group/ID를 sleep state로 보관한다. cap80을 wanted chunk quota로 나눠 특정 지역 독점을 피한다. 기존 야간 cap18/Camp,동굴 encounter marker와 살아 있는 적을 저장한다. 새 종은 없다.
 
-기존 Rule0~4와 Seed 난수 소비·생성 순서는 유지한다. 추가 Rule5 Copper14,6 Tin10,7 Coal12는 기존 두 Pass가 모두 끝난 뒤 별도 Seed+GenerationSalt 난수 흐름에서 생성한다. 기존 r<index>의 Rule/위치/Scale과 p<serial> 체계는 바뀌지 않는다. 새 자원은 기술 조회 없이 생성되며 기존 저장을 로드할 때도 Seed의 새 공급층을 재구성한다. 기존 파괴 Tombstone은 보존한다. 새 Rule 인덱스/순서/GenerationSalt를 후속 콘텐츠 패스에서 임의로 바꾸지 않는다.
+## 청크 / 저장 / 성능
 
-Copper는 암석 밀도≥0.38, Tin은 물가1.4~12유닛, Coal은 암석 밀도≥0.48 육지다. 최소 Spawn 거리18/18/22, 기존 수변1.4·Road·Walkable·종간 Spacing 검사를 공유한다. Copper/Coal은 ClusterSize2/3, Radius11/14의 작은 분포군이며 Tin은 단독이다. 새 광석 회복은 Mineral Family/World scope/Target0.9·최근 채집 제외18/1200초·ClusterSpacing9를 사용한다. 초기 Count는 회복 강제 총량이 아니다.
+64unit 청크는 약15.2초 도보다. 중앙 scheduler 하나가0.25초에 살아 있는 NetworkPlayer 주변3×3 합집합을 계산한다.1인9개/떨어진4인 최대36개다. 최초 화면은 첫 update에 채우고 이후 frame당1개 대기를 materialize한다. 청크마다 Update는 없다. Client는 local owner 주변 지형만 만들며 자원/AI/시설 state는 Host canonical이다.
 
-AllowedBiomes/BiomeAffinity/Surface·Cave·PointOfInterest/ResourceTerrain/DepthRange/Forest·Rock·Water·Road 범위/Rarity/Cluster/회복 데이터가 공급 경계다. ResourceSiteAllowed를 초기 신규 생성과 recovery가 공유한다. 단일 Temperate Surface만 실제 생성한다. [구체 수치와 다음 Biome 과제](METAL_PROGRESSION.md)를 따른다.
+128² sample+1texel halo=130² RGB24 texture/청크,세계 좌표 샘플/bilinear 연결이다. 거대한 단일 world texture는 없다. camera-relative Y sorting으로 큰 좌표에서 지면 뒤에 가려지는 문제를 방지한다. 생성/activation spike와 모바일60fps는 실기 profiling 대상이며 달성을 선언하지 않는다.
+
+Host는 가까운 actor/object만 NGO spawn하고 client 청크 interest로 Show/Hide한다. 매 frame 전체 snapshot 전송은 없다. 먼 resource/시설/chest/pickup/creature의 논리 상태는 남긴다. 시설 SimulatedAt과 게임 시간으로 재활성화/저장 때 queue를 계산한다. 오프라인 시간은 더하지 않는다. remote observer hide/show/재접속은 release QA 대상이다.
+
+Save7:Root Seed/BaseGenerationVersion/g·c·p deltas/비재생 tombstone/멀리 있는 시설·상자·아이템/생물·동굴 적·feature state. v1~v6를 읽고 v6이하는 generation1로 고정한다. 구192×144/1024×768/Rule0~7을 재배치하지 않는다. 새 저장 필드와 NetworkRegionTravel/생성 version handshake 때문에 Protocol8이 필요하며 Protocol7 peer와 혼합하지 않는다. 파일명 world-v1.json/multiplayer-world-v5.json 유지.
+
+## 공개 자료에서 취한 원칙
+
+타 게임의 내부 알고리즘을 추정하거나 asset/code/layout을 복제하지 않았다.
+
+- [Terraria 공식 소개](https://store.steampowered.com/app/105600/Terraria/): 무작위 세계의 지하/재료 탐사를 진행에 연결.
+- [Minecraft 공식1.18](https://feedback.minecraft.net/hc/en-us/articles/4415128577293-Minecraft-Java-Edition-1-18): simulation distance와 표시 범위를 구분.
+- [DST 공식 Cave 안내](https://support.klei.com/hc/en-us/articles/360029557132-Does-Don-t-Starve-Together-have-caves-or-ruins-content): 지상과 동굴의 별도 영역. 별도 server shard는 구현하지 않음.
+- [Vintage Story WorldGen](https://wiki.vintagestory.at/Modding:WorldGen_Concept/en): 환경/지질/공급 조건 분리.
+- [Core Keeper 공식 소개](https://store.steampowered.com/app/1621690/Core_Keeper/): 지하 환경·위험·재료 발견의 연결.
+- [Valheim 공식 FAQ](https://www.valheimgame.com/faq/): 기존 탐험/건축 지역을 보호하는 업데이트 정책.
+- [Grounded 공식1.0](https://grounded.obsidian.net/news/grounded/grounded-1-0-release): landmark와 지하/상부 탐험 지역의 구분.
+- [Necesse 개발사 소개](https://store.steampowered.com/app/1169040/Necesse/): 무한 절차 탐험과 비교해 큰 유한 대륙 선택.
+- [7 Days to Die 개발사 소개](https://store.steampowered.com/app/251570/7_Days_to_Die/): 환경과 POI가 함께 있는 탐험 밀도.
+
+## 검증 / 후속
+
+결과는 [WORLD_FOUNDATION_REVIEW](WORLD_FOUNDATION_REVIEW.md)에 기록한다. fixture의 순간 이동/재료 지급/시간 전진은 자연 진행과 구분한다. 모바일/remote Relay/4인 stress/장시간 탐험·부족도·성능은 미확인이다.
+
+Workbench III/Diamond progression/IV~VI/새 biome·섬·Boat/Torch·Lantern gameplay/지도·Compass·HomeMarker·waypoint·팀 위치는 후속이다. 미래 확장은 additive content/unexplored backfill/외곽 확장/새 지하 layer와 별도 version을 검토하며 기존 base terrain을 자동 교체하지 않는다.

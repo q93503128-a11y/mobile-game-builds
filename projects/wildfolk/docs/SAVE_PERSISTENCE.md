@@ -1,5 +1,6 @@
-# Save / Load v5, v1~v4 호환
+# Save / Load v7, v1~v6 호환
 
+2026-10-17 현재: 신규 generation2/Save7/Protocol8. BaseGenerationVersion과 청크 logical state·시설 timestamp·동굴 state를 저장한다. v1~v6 저장은 generation1 지형/시설 위치를 유지한다. 아래 v5/v6/Protocol7 내용은 해당 단계의 구조/이관 기록이며 현재 월드 정책은 [WORLD_GENERATION](WORLD_GENERATION.md)을 따른다.
 정본은 WorldSaveService / SavedGame / SaveRepository / SaveValidation이다. 수동 Save game과 Save & return home은 Pause 메뉴에 있다. 플레이어용 Load game 버튼은 제거했고 WorldSaveService.Load 및 Editor Developer Load는 유지한다. 기기 Pause/Background/Quit에는 살아 있는 세션을 자동 저장한다. Home의 Single Player는 무작위 Seed로 시작하며, 저장 게임은 Home Continue로 불러온다. Gameplay 씬 직접 실행의 기본 Seed는 유지한다. 사망/재시작 규칙과 사망 보상 정책은 변경하지 않았다.
 
 ## 저장 범위

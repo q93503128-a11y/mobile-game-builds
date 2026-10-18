@@ -13,6 +13,12 @@ MonoBehaviour:
   m_Name: StoneResource
   m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.ResourceDefinition
   Kind: 1
+  Harvest:
+    Mode: 2
+    Method: 0
+    MinimumTier: {fileID: 0}
+    RequiredTool: 1
+    RequiredToolItem: {fileID: 0}
   Vitality: {fileID: 11400000, guid: 9ec45b73babb7c342b1e32a7f0f38b1f, type: 2}
   DropItem: {fileID: 11400000, guid: 30904e05765ac844ab5bb28b855a15db, type: 2}
   DropCount: 3

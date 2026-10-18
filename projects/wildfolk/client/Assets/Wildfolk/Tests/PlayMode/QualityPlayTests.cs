@@ -12,7 +12,7 @@ namespace Wildfolk.Tests
         private WorldSaveService save;private PlayerInventory player;
         private sealed class MoveSource:IPlayerInputSource {public Vector2 Move=>Vector2.right;public bool Primary=>false;public bool Interact=>false;public bool Inventory=>false;public bool Pause=>false;}
         [UnitySetUp]public IEnumerator Setup()
-        {Time.timeScale=1;WorldGenerator.SelectedSeed=9472026;yield return SceneManager.LoadSceneAsync("Wildfolk");yield return null;yield return null;save=Object.FindFirstObjectByType<WorldSaveService>();save.AutoSaveEnabled=false;player=save.Player;save.Clock.enabled=false;save.GetComponent<ZombieSpawner>().enabled=false;save.GetComponent<GoblinSpawner>().enabled=false;}
+        {Time.timeScale=1;WorldGenerator.SelectedGenerationVersion=1;WorldGenerator.SelectedSeed=9472026;yield return SceneManager.LoadSceneAsync("Wildfolk");yield return null;yield return null;save=Object.FindFirstObjectByType<WorldSaveService>();save.AutoSaveEnabled=false;player=save.Player;save.Clock.enabled=false;save.GetComponent<ZombieSpawner>().enabled=false;save.GetComponent<GoblinSpawner>().enabled=false;}
         [UnityTest]public IEnumerator ArmorAndHandsShareActualWalkingMotionRoot()
         {
             var equipment=player.GetComponent<PlayerEquipment>();foreach(var id in new[]{"iron_head","iron_body"}){var item=save.Catalog.Item(id);player.Model.Add(item,1);equipment.TryEquip(item);}var avatar=player.GetComponent<PlayerAvatar>();Assert.That(equipment.HeadVisual.transform.IsChildOf(avatar.Body),Is.True);Assert.That(equipment.ArmorVisual.transform.IsChildOf(avatar.Body),Is.True);Assert.That(equipment.RightHandGear.transform.IsChildOf(avatar.Facing.RightHand),Is.True);
@@ -24,7 +24,7 @@ namespace Wildfolk.Tests
         }
         [UnityTest]public IEnumerator SettingsSwitchRefreshesExistingLabelsAndUsesKoreanGlyphs()
         {
-            var preferences=save.GetComponent<UserPreferences>();var previous=preferences.Values.Language;try{preferences.SetLanguage(1);yield return null;Assert.That(L.Language,Is.EqualTo("ko"));var inventory=Object.FindFirstObjectByType<InventoryPanel>();save.World.Session.OpenInventory();yield return null;var title=inventory.View.GetComponentsInChildren<LocalizedLabel>(true).Single(x=>x.Key=="ui.inventory.title");Assert.That(title.GetComponent<Text>().text,Is.EqualTo("인벤토리"));Assert.That(title.GetComponent<Text>().font.HasCharacter('인'),Is.True);preferences.SetLanguage(0);yield return null;Assert.That(title.GetComponent<Text>().text,Is.EqualTo("Inventory"));Assert.That(save.Capture().Version,Is.EqualTo(6));}finally{preferences.SetLanguage(System.Array.FindIndex(L.Catalog.Languages,x=>x.Id==previous));preferences.Flush();}
+            var preferences=save.GetComponent<UserPreferences>();var previous=preferences.Values.Language;try{preferences.SetLanguage(1);yield return null;Assert.That(L.Language,Is.EqualTo("ko"));var inventory=Object.FindFirstObjectByType<InventoryPanel>();save.World.Session.OpenInventory();yield return null;var title=inventory.View.GetComponentsInChildren<LocalizedLabel>(true).Single(x=>x.Key=="ui.inventory.title");Assert.That(title.GetComponent<Text>().text,Is.EqualTo("인벤토리"));Assert.That(title.GetComponent<Text>().font.HasCharacter('인'),Is.True);preferences.SetLanguage(0);yield return null;Assert.That(title.GetComponent<Text>().text,Is.EqualTo("Inventory"));Assert.That(save.Capture().Version,Is.EqualTo(7));}finally{preferences.SetLanguage(System.Array.FindIndex(L.Catalog.Languages,x=>x.Id==previous));preferences.Flush();}
         }
         [UnityTest]public IEnumerator RecipeFirstScreenGroupsAllAndColorsEachIngredient()
         {
@@ -42,7 +42,7 @@ namespace Wildfolk.Tests
             var old=save.Capture();old.Version=2;old.Recovery=null;old.Animals=new[]{new AnimalSnapshot{Id="a0_0",Rule=0,HP=10,Position=new Vector2(-12,-5),Home=new Vector2(-12,-5)},new AnimalSnapshot{Id="a1_0",Rule=1,HP=20,Position=new Vector2(14,-6),Home=new Vector2(14,-6)}};old.Player.Growth.Skills[2].Rank=1;old.Player.Growth.Points--;old.Resources.Single(x=>x.Id==id).RespawnAt=old.Elapsed+2400;
             old.Placeables.Single(x=>x.Item=="furnace").Processing=new ProcessingSnapshot{Recipe="iron_ingot",Batch=3,Remaining=4};
             save.Apply(SaveRepository.Decode(SaveRepository.Encode(old)));yield return null;Assert.That(equipment.HeadArmor.Id,Is.EqualTo("iron_head"));Assert.That(player.GetComponent<PlayerProgression>().Rank(2),Is.EqualTo(1));Assert.That(player.GetComponent<PlayerProgression>().Gold,Is.EqualTo(11));Assert.That(save.World.Renewal.Capture().Single(x=>x.Id==id).Destroyed,Is.True);Assert.That(save.World.Renewal.Population.Harvests.Count,Is.EqualTo(1));
-            var process=Object.FindFirstObjectByType<StationProcessing>();Assert.That(process.Queue.WaitingCount,Is.EqualTo(1));Assert.That(process.OutputCount,Is.EqualTo(1));Assert.That(save.Capture().Version,Is.EqualTo(6));save.Validate(save.Capture());
+            var process=Object.FindFirstObjectByType<StationProcessing>();Assert.That(process.Queue.WaitingCount,Is.EqualTo(1));Assert.That(process.OutputCount,Is.EqualTo(1));Assert.That(save.Capture().Version,Is.EqualTo(7));save.Validate(save.Capture());
         }
     }
 }

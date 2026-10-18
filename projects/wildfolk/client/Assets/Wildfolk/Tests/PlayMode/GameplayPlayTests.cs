@@ -21,7 +21,7 @@ namespace Wildfolk.Tests
         {
             Time.timeScale=1;
             driver=new PlayPointerDriver();
-            WorldGenerator.SelectedSeed=9472026;yield return SceneManager.LoadSceneAsync("Wildfolk");
+            WorldGenerator.SelectedGenerationVersion=1;WorldGenerator.SelectedSeed=9472026;yield return SceneManager.LoadSceneAsync("Wildfolk");
             yield return null;
             player=Object.FindFirstObjectByType<PlayerMotor>();
             inventory=player.GetComponent<PlayerInventory>();

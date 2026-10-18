@@ -56,7 +56,7 @@ namespace Wildfolk
             data.eligibleForClick=false;
             sourceView.Icon.color=new Color(1,1,1,.35f);
             var color=sourceView.Count.color;color.a=.35f;sourceView.Count.color=color;
-            Ghost.gameObject.SetActive(true);DropZone.SetActive(true);Refresh();Move(data);
+            DropZone.transform.SetAsLastSibling();Ghost.SetAsLastSibling();Ghost.gameObject.SetActive(true);DropZone.SetActive(true);Refresh();Move(data);
         }
         public void BeginEquipment(ArmorSlot slot,PointerEventData data)
         {
@@ -64,7 +64,7 @@ namespace Wildfolk
             Equipment=Owner.GetComponent<PlayerEquipment>();
             var item=slot==ArmorSlot.Head ? Equipment.HeadArmor : Equipment.BodyArmor;if(item==null)return;
             equipmentSource=slot;sourceModel=Owner.Model;IsDragging=true;HeldAmount=1;pointer=data.pointerId;
-            data.eligibleForClick=false;Ghost.gameObject.SetActive(true);DropZone.SetActive(false);Refresh();Move(data);
+            data.eligibleForClick=false;Ghost.SetAsLastSibling();Ghost.gameObject.SetActive(true);DropZone.SetActive(false);Refresh();Move(data);
         }
         public void DropEquipment(ArmorSlot slot,PointerEventData data)
         {
@@ -117,7 +117,7 @@ namespace Wildfolk
             var model=Model(chest);if(model==null || model.GetSlot(index).Count<=amount || amount<1)return;
             var canvas=CanvasRect.GetComponentInParent<Canvas>();var scale=canvas.scaleFactor;
             var data=new PointerEventData(EventSystem.current){pointerId=-734,position=RectTransformUtility.WorldToScreenPoint(canvas.worldCamera,view.transform.position)+new Vector2(95,95)*scale};
-            Begin(index,view,data,chest);IsHoldingPartial=true;HeldAmount=amount;HeldCancel.SetActive(true);Refresh();
+            Begin(index,view,data,chest);IsHoldingPartial=true;HeldAmount=amount;HeldCancel.transform.SetAsLastSibling();HeldCancel.SetActive(true);Refresh();
         }
         public void BeginHeld(PointerEventData data){if(IsHoldingPartial){pointer=data.pointerId;Move(data);}}
         public bool PlaceHeld(int index,bool chest)

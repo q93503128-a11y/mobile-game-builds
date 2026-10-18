@@ -1,0 +1,1467 @@
+{
+  "automated_runs": [
+    {
+      "file": "world-v2-model.xml",
+      "id": "2",
+      "testcasecount": "8",
+      "result": "Failed(Child)",
+      "total": "8",
+      "passed": "3",
+      "failed": "5",
+      "inconclusive": "0",
+      "skipped": "0",
+      "asserts": "0",
+      "engine-version": "3.5.0.0",
+      "clr-version": "4.0.30319.42000",
+      "start-time": "2026-10-17 01:11:56Z",
+      "end-time": "2026-10-17 01:11:57Z",
+      "duration": "0.4700636",
+      "failed_cases": [
+        {
+          "name": "Wildfolk.Tests.WorldFoundationTests.OceanAndHydrologyHaveNaturalBoundariesAndContinuousTransitions",
+          "failure": "Expected: greater than 1\n  But was:  1\n\n                at Wildfolk.Tests.WorldFoundationTests.OceanAndHydrologyHaveNaturalBoundariesAndContinuousTransitions () [0x000bd] in C:\\Users\\User\\Documents\\ChatGPT\\문승준 모바일\\canonical\\projects\\wildfolk\\tests\\artifacts\\unity\\Assets\\Wildfolk\\Tests\\EditMode\\WorldFoundationTests.cs:39"
+        },
+        {
+          "name": "Wildfolk.Tests.WorldFoundationTests.SeedHasConnectedCavesValidSourcesFourPlayerYieldAndBiomeFamilies(9472026)",
+          "failure": "Expected: 4\n  But was:  1\n\n                  at Wildfolk.Tests.WorldFoundationTests.SeedHasConnectedCavesValidSourcesFourPlayerYieldAndBiomeFamilies (System.Int32 seed) [0x00107] in C:\\Users\\User\\Documents\\ChatGPT\\문승준 모바일\\canonical\\projects\\wildfolk\\tests\\artifacts\\unity\\Assets\\Wildfolk\\Tests\\EditMode\\WorldFoundationTests.cs:16"
+        },
+        {
+          "name": "Wildfolk.Tests.WorldFoundationTests.SeedHasConnectedCavesValidSourcesFourPlayerYieldAndBiomeFamilies(17491)",
+          "failure": "Expected: 4\n  But was:  1\n\n                  at Wildfolk.Tests.WorldFoundationTests.SeedHasConnectedCavesValidSourcesFourPlayerYieldAndBiomeFamilies (System.Int32 seed) [0x00107] in C:\\Users\\User\\Documents\\ChatGPT\\문승준 모바일\\canonical\\projects\\wildfolk\\tests\\artifacts\\unity\\Assets\\Wildfolk\\Tests\\EditMode\\WorldFoundationTests.cs:16"
+        },
+        {
+          "name": "Wildfolk.Tests.WorldFoundationTests.SeedHasConnectedCavesValidSourcesFourPlayerYieldAndBiomeFamilies(-81027)",
+          "failure": "Expected: 4\n  But was:  1\n\n                  at Wildfolk.Tests.WorldFoundationTests.SeedHasConnectedCavesValidSourcesFourPlayerYieldAndBiomeFamilies (System.Int32 seed) [0x00107] in C:\\Users\\User\\Documents\\ChatGPT\\문승준 모바일\\canonical\\projects\\wildfolk\\tests\\artifacts\\unity\\Assets\\Wildfolk\\Tests\\EditMode\\WorldFoundationTests.cs:16"
+        },
+        {
+          "name": "Wildfolk.Tests.WorldFoundationTests.SeedHasConnectedCavesValidSourcesFourPlayerYieldAndBiomeFamilies(193080127)",
+          "failure": "Expected: 4\n  But was:  1\n\n                  at Wildfolk.Tests.WorldFoundationTests.SeedHasConnectedCavesValidSourcesFourPlayerYieldAndBiomeFamilies (System.Int32 seed) [0x00107] in C:\\Users\\User\\Documents\\ChatGPT\\문승준 모바일\\canonical\\projects\\wildfolk\\tests\\artifacts\\unity\\Assets\\Wildfolk\\Tests\\EditMode\\WorldFoundationTests.cs:16"
+        }
+      ]
+    },
+    {
+      "file": "world-v2-model2.xml",
+      "id": "2",
+      "testcasecount": "8",
+      "result": "Passed",
+      "total": "8",
+      "passed": "8",
+      "failed": "0",
+      "inconclusive": "0",
+      "skipped": "0",
+      "asserts": "0",
+      "engine-version": "3.5.0.0",
+      "clr-version": "4.0.30319.42000",
+      "start-time": "2026-10-17 01:16:22Z",
+      "end-time": "2026-10-17 01:16:23Z",
+      "duration": "0.4625836",
+      "failed_cases": []
+    },
+    {
+      "file": "world-v2-play.xml",
+      "id": "2",
+      "testcasecount": "3",
+      "result": "Passed",
+      "total": "3",
+      "passed": "3",
+      "failed": "0",
+      "inconclusive": "0",
+      "skipped": "0",
+      "asserts": "0",
+      "engine-version": "3.5.0.0",
+      "clr-version": "4.0.30319.42000",
+      "start-time": "2026-10-17 01:18:48Z",
+      "end-time": "2026-10-17 01:18:59Z",
+      "duration": "11.460098",
+      "failed_cases": []
+    },
+    {
+      "file": "world-v2-play2.xml",
+      "id": "2",
+      "testcasecount": "4",
+      "result": "Failed(Child)",
+      "total": "4",
+      "passed": "0",
+      "failed": "4",
+      "inconclusive": "0",
+      "skipped": "0",
+      "asserts": "0",
+      "engine-version": "3.5.0.0",
+      "clr-version": "4.0.30319.42000",
+      "start-time": "2026-10-17 01:27:22Z",
+      "end-time": "2026-10-17 01:27:33Z",
+      "duration": "11.6330353",
+      "failed_cases": [
+        {
+          "name": "Wildfolk.Tests.WorldFoundationHostTests.CurrentHostKeepsRemoteChunksCargoOreAndCaveAcrossRehost",
+          "failure": "Expected: True\n  But was:  False\n\nTearDown : System.IO.InvalidDataException : Invalid animal HP\n                at Wildfolk.Tests.WorldFoundationHostTests+<CurrentHostKeepsRemoteChunksCargoOreAndCaveAcrossRehost>d__6.MoveNext () [0x003b8] in C:\\Users\\User\\Documents\\ChatGPT\\문승준 모바일\\canonical\\projects\\wildfolk\\tests\\artifacts\\unity\\Assets\\Wildfolk\\Tests\\PlayMode\\WorldFoundationHostTests.cs:27\nat UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\\Library\\PackageCache\\com.unity.test-framework@bd7f943e9647\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:44\n\n--TearDown\n  at Wildfolk.SaveValidation.Require (System.Boolean valid, System.String reason) [0x0000a] in C:\\Users\\User\\Documents\\ChatGPT\\문승준 모바일\\canonical\\projects\\wildfolk\\tests\\artifacts\\unity\\Assets\\Wildfolk\\Runtime\\Persistence\\SaveValidation.cs:9 \n  at Wildfolk.SaveValidation.Validate (Wildfolk.SavedGame game, Wildfolk.ContentCatalog catalog, Wildfolk.WorldGenerationDefinition definition, Wildfolk.AnimalPopulationDefinition animals, System.Int32 playerCapacity, System.Int32 maximumHP, Wildfolk.SurvivalDefinition survival, Wildfolk.CharacterGrowthDefinition growth, Wildfolk.LocomotionDefinition locomotion) [0x00596] in C:\\Users\\User\\Documents\\ChatGPT\\문승준 모바일\\canonical\\projects\\wildfolk\\tests\\artifacts\\unity\\Assets\\Wildfolk\\Runtime\\Persistence\\SaveValidation.cs:42 \n  at Wildfolk.SaveGameRules.Validate (Wildfolk.SavedGame game) [0x001ed] in C:\\Users\\User\\Documents\\ChatGPT\\문승준 모바일\\canonical\\projects\\wildfolk\\tests\\artifacts\\unity\\Assets\\Wildfolk\\Runtime\\Persistence\\SaveGameRules.cs:30 \n  at Wildfolk.NetworkWorldPersistence.Capture () [0x00156] in C:\\Users\\User\\Documents\\ChatGPT\\문승준 모바일\\canonical\\projects\\wildfolk\\tests\\artifacts\\unity\\Assets\\Wildfolk\\Runtime\\Networking\\NetworkWorldPersistence.cs:39 \n  at Wildfolk.NetworkWorldPersistence.Save () [0x00018] in C:\\Users\\User\\Documents\\ChatGPT\\문승준 모바일\\canonical\\projects\\wildfolk\\tests\\artifacts\\unity\\Assets\\Wildfolk\\Runtime\\Networking\\NetworkWorldPersistence.cs:44 \n  at Wildfolk.NetworkSession.TrySaveWorld () [0x00028] in C:\\Users\\User\\Documents\\ChatGPT\\문승준 모바일\\canonical\\projects\\wildfolk\\tests\\artifacts\\unity\\Assets\\Wildfolk\\Runtime\\Networking\\NetworkSession.cs:56 \n  at Wildfolk.NetworkSession.Leave (System.Boolean returnHome, System.Boolean force) [0x00012] in C:\\Users\\User\\Documents\\ChatGPT\\문승준 모바일\\canonical\\projects\\wildfolk\\tests\\artifacts\\unity\\Assets\\Wildfolk\\Runtime\\Networking\\NetworkSession.cs:167 \n  at Wildfolk.Tests.WorldFoundationHostTests+<Close>d__7.MoveNext () [0x00039] in C:\\Users\\User\\Documents\\ChatGPT\\문승준 모바일\\canonical\\projects\\wildfolk\\tests\\artifacts\\unity\\Assets\\Wildfolk\\Tests\\PlayMode\\WorldFoundationHostTests.cs:37 \n  at UnityEngine.TestTools.EnumeratorHelper+<ProgressOnEnumerator>d__5.MoveNext () [0x00017] in .\\Library\\PackageCache\\com.unity.test-framework@bd7f943e9647\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\EnumeratorHelper.cs:35 \n  at UnityEngine.TestTools.BeforeAfterTestCommandBase`1+<ExecuteEnumerable>d__16[T].MoveNext () [0x0043e] in .\\Library\\PackageCache\\com.unity.test-framework@bd7f943e9647\\UnityEngine.TestRunner\\NUnitExtensions\\Commands\\BeforeAfterTestCommandBase.cs:248"
+        },
+        {
+          "name": "Wildfolk.Tests.WorldFoundationPlayTests.CavernPortalConnectsSurfaceRoomGraphDeepBranchAndReturn",
+          "failure": "System.IO.InvalidDataException : Invalid animal HP\n                  at Wildfolk.SaveValidation.Require (System.Boolean valid, System.String reason) [0x0000a] in C:\\Users\\User\\Documents\\ChatGPT\\문승준 모바일\\canonical\\projects\\wildfolk\\tests\\artifacts\\unity\\Assets\\Wildfolk\\Runtime\\Persistence\\SaveValidation.cs:9 \n  at Wildfolk.SaveValidation.Validate (Wildfolk.SavedGame game, Wildfolk.ContentCatalog catalog, Wildfolk.WorldGenerationDefinition definition, Wildfolk.AnimalPopulationDefinition animals, System.Int32 playerCapacity, System.Int32 maximumHP, Wildfolk.SurvivalDefinition survival, Wildfolk.CharacterGrowthDefinition growth, Wildfolk.LocomotionDefinition locomotion) [0x00596] in C:\\Users\\User\\Documents\\ChatGPT\\문승준 모바일\\canonical\\projects\\wildfolk\\tests\\artifacts\\unity\\Assets\\Wildfolk\\Runtime\\Persistence\\SaveValidation.cs:42 \n  at Wildfolk.SaveGameRules.Validate (Wildfolk.SavedGame game) [0x001ed] in C:\\Users\\User\\Documents\\ChatGPT\\문승준 모바일\\canonical\\projects\\wildfolk\\tests\\artifacts\\unity\\Assets\\Wildfolk\\Runtime\\Persistence\\SaveGameRules.cs:30 \n  at Wildfolk.WorldSaveService.Validate (Wildfolk.SavedGame game) [0x00000] in C:\\Users\\User\\Documents\\ChatGPT\\문승준 모바일\\canonical\\projects\\wildfolk\\tests\\artifacts\\unity\\Assets\\Wildfolk\\Runtime\\Persistence\\WorldSaveService.cs:20 \n  at Wildfolk.Tests.WorldFoundationPlayTests+<CavernPortalConnectsSurfaceRoomGraphDeepBranchAndReturn>d__6.MoveNext () [0x00253] in C:\\Users\\User\\Documents\\ChatGPT\\문승준 모바일\\canonical\\projects\\wildfolk\\tests\\artifacts\\unity\\Assets\\Wildfolk\\Tests\\PlayMode\\WorldFoundationPlayTests.cs:32 \n  at UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\\Library\\PackageCache\\com.unity.test-framework@bd7f943e9647\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:44"
+        },
+        {
+          "name": "Wildfolk.Tests.WorldFoundationPlayTests.ChunkUnloadPreservesFiniteOreCargoChestAndSaveVersion",
+          "failure": "System.IO.InvalidDataException : Invalid animal HP\n                  at Wildfolk.SaveValidation.Require (System.Boolean valid, System.String reason) [0x0000a] in C:\\Users\\User\\Documents\\ChatGPT\\문승준 모바일\\canonical\\projects\\wildfolk\\tests\\artifacts\\unity\\Assets\\Wildfolk\\Runtime\\Persistence\\SaveValidation.cs:9 \n  at Wildfolk.SaveValidation.Validate (Wildfolk.SavedGame game, Wildfolk.ContentCatalog catalog, Wildfolk.WorldGenerationDefinition definition, Wildfolk.AnimalPopulationDefinition animals, System.Int32 playerCapacity, System.Int32 maximumHP, Wildfolk.SurvivalDefinition survival, Wildfolk.CharacterGrowthDefinition growth, Wildfolk.LocomotionDefinition locomotion) [0x00596] in C:\\Users\\User\\Documents\\ChatGPT\\문승준 모바일\\canonical\\projects\\wildfolk\\tests\\artifacts\\unity\\Assets\\Wildfolk\\Runtime\\Persistence\\SaveValidation.cs:42 \n  at Wildfolk.SaveGameRules.Validate (Wildfolk.SavedGame game) [0x001ed] in C:\\Users\\User\\Documents\\ChatGPT\\문승준 모바일\\canonical\\projects\\wildfolk\\tests\\artifacts\\unity\\Assets\\Wildfolk\\Runtime\\Persistence\\SaveGameRules.cs:30 \n  at Wildfolk.WorldSaveService.Validate (Wildfolk.SavedGame game) [0x00000] in C:\\Users\\User\\Documents\\ChatGPT\\문승준 모바일\\canonical\\projects\\wildfolk\\tests\\artifacts\\unity\\Assets\\Wildfolk\\Runtime\\Persistence\\WorldSaveService.cs:20 \n  at Wildfolk.Tests.WorldFoundationPlayTests+<ChunkUnloadPreservesFiniteOreCargoChestAndSaveVersion>d__5.MoveNext () [0x00326] in C:\\Users\\User\\Documents\\ChatGPT\\문승준 모바일\\canonical\\projects\\wildfolk\\tests\\artifacts\\unity\\Assets\\Wildfolk\\Tests\\PlayMode\\WorldFoundationPlayTests.cs:24 \n  at UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\\Library\\PackageCache\\com.unity.test-framework@bd7f943e9647\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:44"
+        },
+        {
+          "name": "Wildfolk.Tests.WorldFoundationPlayTests.CurrentMetalLoopAndLegacyLayoutRemainSeparate",
+          "failure": "System.IO.InvalidDataException : Invalid animal HP\n                  at Wildfolk.SaveValidation.Require (System.Boolean valid, System.String reason) [0x0000a] in C:\\Users\\User\\Documents\\ChatGPT\\문승준 모바일\\canonical\\projects\\wildfolk\\tests\\artifacts\\unity\\Assets\\Wildfolk\\Runtime\\Persistence\\SaveValidation.cs:9 \n  at Wildfolk.SaveValidation.Validate (Wildfolk.SavedGame game, Wildfolk.ContentCatalog catalog, Wildfolk.WorldGenerationDefinition definition, Wildfolk.AnimalPopulationDefinition animals, System.Int32 playerCapacity, System.Int32 maximumHP, Wildfolk.SurvivalDefinition survival, Wildfolk.CharacterGrowthDefinition growth, Wildfolk.LocomotionDefinition locomotion) [0x00596] in C:\\Users\\User\\Documents\\ChatGPT\\문승준 모바일\\canonical\\projects\\wildfolk\\tests\\artifacts\\unity\\Assets\\Wildfolk\\Runtime\\Persistence\\SaveValidation.cs:42 \n  at Wildfolk.SaveGameRules.Validate (Wildfolk.SavedGame game) [0x001ed] in C:\\Users\\User\\Documents\\ChatGPT\\문승준 모바일\\canonical\\projects\\wildfolk\\tests\\artifacts\\unity\\Assets\\Wildfolk\\Runtime\\Persistence\\SaveGameRules.cs:30 \n  at Wildfolk.WorldSaveService.Validate (Wildfolk.SavedGame game) [0x00000] in C:\\Users\\User\\Documents\\ChatGPT\\문승준 모바일\\canonical\\projects\\wildfolk\\tests\\artifacts\\unity\\Assets\\Wildfolk\\Runtime\\Persistence\\WorldSaveService.cs:20 \n  at Wildfolk.Tests.WorldFoundationPlayTests+<CurrentMetalLoopAndLegacyLayoutRemainSeparate>d__7.MoveNext () [0x001ac] in C:\\Users\\User\\Documents\\ChatGPT\\문승준 모바일\\canonical\\projects\\wildfolk\\tests\\artifacts\\unity\\Assets\\Wildfolk\\Tests\\PlayMode\\WorldFoundationPlayTests.cs:36 \n  at UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\\Library\\PackageCache\\com.unity.test-framework@bd7f943e9647\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:44"
+        }
+      ]
+    },
+    {
+      "file": "world-v2-play3.xml",
+      "id": "2",
+      "testcasecount": "4",
+      "result": "Failed(Child)",
+      "total": "4",
+      "passed": "3",
+      "failed": "1",
+      "inconclusive": "0",
+      "skipped": "0",
+      "asserts": "0",
+      "engine-version": "3.5.0.0",
+      "clr-version": "4.0.30319.42000",
+      "start-time": "2026-10-17 01:28:45Z",
+      "end-time": "2026-10-17 01:28:59Z",
+      "duration": "13.9616047",
+      "failed_cases": [
+        {
+          "name": "Wildfolk.Tests.WorldFoundationHostTests.CurrentHostKeepsRemoteChunksCargoOreAndCaveAcrossRehost",
+          "failure": "Expected: True\n  But was:  False\n\n                at Wildfolk.Tests.WorldFoundationHostTests+<CurrentHostKeepsRemoteChunksCargoOreAndCaveAcrossRehost>d__6.MoveNext () [0x00422] in C:\\Users\\User\\Documents\\ChatGPT\\문승준 모바일\\canonical\\projects\\wildfolk\\tests\\artifacts\\unity\\Assets\\Wildfolk\\Tests\\PlayMode\\WorldFoundationHostTests.cs:27\nat UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\\Library\\PackageCache\\com.unity.test-framework@bd7f943e9647\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:44"
+        }
+      ]
+    },
+    {
+      "file": "world-v2-model3.xml",
+      "id": "2",
+      "testcasecount": "8",
+      "result": "Passed",
+      "total": "8",
+      "passed": "8",
+      "failed": "0",
+      "inconclusive": "0",
+      "skipped": "0",
+      "asserts": "0",
+      "engine-version": "3.5.0.0",
+      "clr-version": "4.0.30319.42000",
+      "start-time": "2026-10-17 01:30:27Z",
+      "end-time": "2026-10-17 01:30:34Z",
+      "duration": "6.4470847",
+      "failed_cases": []
+    },
+    {
+      "file": "world-v2-host.xml",
+      "id": "2",
+      "testcasecount": "1",
+      "result": "Failed(Child)",
+      "total": "1",
+      "passed": "0",
+      "failed": "1",
+      "inconclusive": "0",
+      "skipped": "0",
+      "asserts": "0",
+      "engine-version": "3.5.0.0",
+      "clr-version": "4.0.30319.42000",
+      "start-time": "2026-10-17 01:31:31Z",
+      "end-time": "2026-10-17 01:31:57Z",
+      "duration": "26.5302534",
+      "failed_cases": [
+        {
+          "name": "Wildfolk.Tests.WorldFoundationHostTests.CurrentHostKeepsRemoteChunksCargoOreAndCaveAcrossRehost",
+          "failure": "Expected: True\n  But was:  False\n\n                at Wildfolk.Tests.WorldFoundationHostTests+<CurrentHostKeepsRemoteChunksCargoOreAndCaveAcrossRehost>d__6.MoveNext () [0x00735] in C:\\Users\\User\\Documents\\ChatGPT\\문승준 모바일\\canonical\\projects\\wildfolk\\tests\\artifacts\\unity\\Assets\\Wildfolk\\Tests\\PlayMode\\WorldFoundationHostTests.cs:32\nat UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\\Library\\PackageCache\\com.unity.test-framework@bd7f943e9647\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:44"
+        }
+      ]
+    },
+    {
+      "file": "world-v2-host2.xml",
+      "id": "2",
+      "testcasecount": "1",
+      "result": "Passed",
+      "total": "1",
+      "passed": "1",
+      "failed": "0",
+      "inconclusive": "0",
+      "skipped": "0",
+      "asserts": "0",
+      "engine-version": "3.5.0.0",
+      "clr-version": "4.0.30319.42000",
+      "start-time": "2026-10-17 01:35:09Z",
+      "end-time": "2026-10-17 01:35:22Z",
+      "duration": "12.4091613",
+      "failed_cases": []
+    },
+    {
+      "file": "world-v2-integrated-edit.xml",
+      "id": "2",
+      "testcasecount": "110",
+      "result": "Failed(Child)",
+      "total": "110",
+      "passed": "104",
+      "failed": "6",
+      "inconclusive": "0",
+      "skipped": "0",
+      "asserts": "0",
+      "engine-version": "3.5.0.0",
+      "clr-version": "4.0.30319.42000",
+      "start-time": "2026-10-17 01:35:53Z",
+      "end-time": "2026-10-17 01:36:02Z",
+      "duration": "9.35741",
+      "failed_cases": [
+        {
+          "name": "Wildfolk.Tests.NetworkCreatureContractTests.EveryEcologySpawnHasRegisteredServerPrefabAndSharedBrain",
+          "failure": "Expected: 17\n  But was:  30\n\n                at Wildfolk.Tests.NetworkCreatureContractTests.EveryEcologySpawnHasRegisteredServerPrefabAndSharedBrain () [0x0001f] in C:\\Users\\User\\Documents\\ChatGPT\\문승준 모바일\\canonical\\projects\\wildfolk\\tests\\artifacts\\unity\\Assets\\Wildfolk\\Tests\\EditMode\\NetworkCreatureContractTests.cs:26"
+        },
+        {
+          "name": "Wildfolk.Tests.NetworkFoundationTests.PlayerStateIsServerWritableAndRpcInputsAreOwnerOnly",
+          "failure": "Expected: Owner\n  But was:  Server\n\n                at Wildfolk.Tests.NetworkFoundationTests.PlayerStateIsServerWritableAndRpcInputsAreOwnerOnly () [0x0007a] in C:\\Users\\User\\Documents\\ChatGPT\\문승준 모바일\\canonical\\projects\\wildfolk\\tests\\artifacts\\unity\\Assets\\Wildfolk\\Tests\\EditMode\\NetworkFoundationTests.cs:17"
+        },
+        {
+          "name": "Wildfolk.Tests.ProgressionTests.TiersImproveTheirRolesAndGateOreByToolKindAndRank",
+          "failure": "Expected: 3\n  But was:  4\n\n                at Wildfolk.Tests.ProgressionTests.TiersImproveTheirRolesAndGateOreByToolKindAndRank () [0x00196] in C:\\Users\\User\\Documents\\ChatGPT\\문승준 모바일\\canonical\\projects\\wildfolk\\tests\\artifacts\\unity\\Assets\\Wildfolk\\Tests\\EditMode\\ProgressionTests.cs:21"
+        },
+        {
+          "name": "Wildfolk.Tests.SceneContractTests.BalanceDataHasValidCombatRangesAndProgressionItems",
+          "failure": "Expected: 34\n  But was:  48\n\n                at Wildfolk.Tests.SceneContractTests.BalanceDataHasValidCombatRangesAndProgressionItems () [0x00159] in C:\\Users\\User\\Documents\\ChatGPT\\문승준 모바일\\canonical\\projects\\wildfolk\\tests\\artifacts\\unity\\Assets\\Wildfolk\\Tests\\EditMode\\SceneContractTests.cs:66"
+        },
+        {
+          "name": "Wildfolk.Tests.SceneContractTests.SavedSceneRetainsPlayableConnectionsAndNonPushingEnemy",
+          "failure": "Expected: 25\n  But was:  36\n\n                at Wildfolk.Tests.SceneContractTests.SavedSceneRetainsPlayableConnectionsAndNonPushingEnemy () [0x0016f] in C:\\Users\\User\\Documents\\ChatGPT\\문승준 모바일\\canonical\\projects\\wildfolk\\tests\\artifacts\\unity\\Assets\\Wildfolk\\Tests\\EditMode\\SceneContractTests.cs:33"
+        },
+        {
+          "name": "Wildfolk.Tests.StabilityModelTests.EveryCurrentBasicAttackHasOneTargetAndExtensibleShape",
+          "failure": "Expected: 34\n  But was:  48\n\n                at Wildfolk.Tests.StabilityModelTests.EveryCurrentBasicAttackHasOneTargetAndExtensibleShape () [0x0000a] in C:\\Users\\User\\Documents\\ChatGPT\\문승준 모바일\\canonical\\projects\\wildfolk\\tests\\artifacts\\unity\\Assets\\Wildfolk\\Tests\\EditMode\\StabilityModelTests.cs:13"
+        }
+      ]
+    },
+    {
+      "file": "world-v2-integrated-play.xml",
+      "id": "2",
+      "testcasecount": "113",
+      "result": "Failed(Child)",
+      "total": "113",
+      "passed": "86",
+      "failed": "27",
+      "inconclusive": "0",
+      "skipped": "0",
+      "asserts": "0",
+      "engine-version": "3.5.0.0",
+      "clr-version": "4.0.30319.42000",
+      "start-time": "2026-10-17 01:38:11Z",
+      "end-time": "2026-10-17 01:44:57Z",
+      "duration": "405.0720904",
+      "failed_cases": [
+        {
+          "name": "Wildfolk.Tests.EcologyPlayTests.DoorHingeEasesAndColliderMatchesPassageAndSave",
+          "failure": "Expected: True\n  But was:  False\n\n                at Wildfolk.Tests.EcologyPlayTests+<DoorHingeEasesAndColliderMatchesPassageAndSave>d__10.MoveNext () [0x0029d] in C:\\Users\\User\\Documents\\ChatGPT\\문승준 모바일\\canonical\\projects\\wildfolk\\tests\\artifacts\\unity\\Assets\\Wildfolk\\Tests\\PlayMode\\EcologyPlayTests.cs:58\nat UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\\Library\\PackageCache\\com.unity.test-framework@bd7f943e9647\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:44"
+        },
+        {
+          "name": "Wildfolk.Tests.EcologyPlayTests.SkeletonUsesNightMeleeVariantAndIndependentLightTrait",
+          "failure": "System.InvalidOperationException : Sequence contains no elements\n                  at System.Linq.Enumerable.Single[TSource] (System.Collections.Generic.IEnumerable`1[T] source) [0x0002d] in <80564d689e48448fa2a7101993ee7201>:0 \n  at Wildfolk.Tests.EcologyPlayTests+<SkeletonUsesNightMeleeVariantAndIndependentLightTrait>d__15.MoveNext () [0x0029b] in C:\\Users\\User\\Documents\\ChatGPT\\문승준 모바일\\canonical\\projects\\wildfolk\\tests\\artifacts\\unity\\Assets\\Wildfolk\\Tests\\PlayMode\\EcologyPlayTests.cs:90 \n  at UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\\Library\\PackageCache\\com.unity.test-framework@bd7f943e9647\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:44"
+        },
+        {
+          "name": "Wildfolk.Tests.GameplayPlayTests.HotbarInventoryAndToolsShareRealSlotsAndApplyResourceEfficiencies",
+          "failure": "Expected: 120\n  But was:  150\n\n                at Wildfolk.Tests.GameplayPlayTests+<HotbarInventoryAndToolsShareRealSlotsAndApplyResourceEfficiencies>d__27.MoveNext () [0x00234] in C:\\Users\\User\\Documents\\ChatGPT\\문승준 모바일\\canonical\\projects\\wildfolk\\tests\\artifacts\\unity\\Assets\\Wildfolk\\Tests\\PlayMode\\GameplayPlayTests.cs:304\nat UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\\Library\\PackageCache\\com.unity.test-framework@bd7f943e9647\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:44"
+        },
+        {
+          "name": "Wildfolk.Tests.GameplayPlayTests.PunchesAlternateAndResourcesDropBeforeInventoryPickupAndStack",
+          "failure": "Expected: 140\n  But was:  150\n\n                at Wildfolk.Tests.GameplayPlayTests+<PunchesAlternateAndResourcesDropBeforeInventoryPickupAndStack>d__21.MoveNext () [0x00128] in C:\\Users\\User\\Documents\\ChatGPT\\문승준 모바일\\canonical\\projects\\wildfolk\\tests\\artifacts\\unity\\Assets\\Wildfolk\\Tests\\PlayMode\\GameplayPlayTests.cs:166\nat UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\\Library\\PackageCache\\com.unity.test-framework@bd7f943e9647\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:44"
+        },
+        {
+          "name": "Wildfolk.Tests.MetalRenderPlayTests.NaturalOreViewsAndFiveMaterialWorkbenchLayoutAt1920By1080",
+          "failure": "Expected: not equal to Null\n  But was:  Null\n\n                at Wildfolk.Tests.MetalRenderPlayTests+<NaturalOreViewsAndFiveMaterialWorkbenchLayoutAt1920By1080>d__1.MoveNext () [0x00032] in C:\\Users\\User\\Documents\\ChatGPT\\문승준 모바일\\canonical\\projects\\wildfolk\\tests\\artifacts\\unity\\Assets\\Wildfolk\\Tests\\PlayMode\\MetalRenderPlayTests.cs:29\nat UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\\Library\\PackageCache\\com.unity.test-framework@bd7f943e9647\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:44"
+        },
+        {
+          "name": "Wildfolk.Tests.NetworkCreaturePlayTests.HostSpawnGroupCombatAndDeathHaveOneAuthority",
+          "failure": "Unhandled log message: '[Error] Failed to bind UDP socket because the address is already in use. Likely because there is another process using port 7777.'. Use UnityEngine.TestTools.LogAssert.Expect\n                Unity.Networking.Transport.UDPNetworkInterface:CreateSocket (int,int,Unity.Networking.Transport.NetworkEndpoint,Unity.Baselib.LowLevel.Binding/Baselib_RegisteredNetwork_Socket_UDP&,bool) (at ./Library/PackageCache/com.unity.transport@98ef8bfec34d/Runtime/UDPNetworkInterface.cs:567)\nUnity.Networking.Transport.UDPNetworkInterface:Bind (Unity.Networking.Transport.NetworkEndpoint) (at ./Library/PackageCache/com.unity.transport@98ef8bfec34d/Runtime/UDPNetworkInterface.cs:525)\nUnity.Networking.Transport.NetworkInterfaceLayer`1<Unity.Networking.Transport.UDPNetworkInterface>:Bind (Unity.Networking.Transport.NetworkEndpoint&) (at ./Library/PackageCache/com.unity.transport@98ef8bfec34d/Runtime/Layers/NetworkInterfaceLayer.cs:45)\nUnity.Networking.Transport.NetworkStack/NetworkInterfaceFunctions:BindWrapper<Unity.Networking.Transport.UDPNetworkInterface> (void*,int) (at ./Library/PackageCache/com.unity.transport@98ef8bfec34d/Runtime/NetworkStack.cs:72)\nUnity.Networking.Transport.ManagedCallWrapper:Method (void*,void*,int) (at ./Library/PackageCache/com.unity.transport@98ef8bfec34d/Runtime/Utilities/ManagedCallWrapper.cs:23)\nUnity.Networking.Transport.ManagedCallWrapper:Invoke (void*,int) (at ./Library/PackageCache/com.unity.transport@98ef8bfec34d/Runtime/Utilities/ManagedCallWrapper.cs:72)\nUnity.Networking.Transport.ManagedCallWrapper:Invoke<Unity.Networking.Transport.NetworkStack/NetworkInterfaceFunctions/BindArguments> (Unity.Networking.Transport.NetworkStack/NetworkInterfaceFunctions/BindArguments&) (at ./Library/PackageCache/com.unity.transport@98ef8bfec34d/Runtime/Utilities/ManagedCallWrapper.cs:79)\nUnity.Networking.Transport.NetworkStack/NetworkInterfaceFunctions:Bind (Unity.Networking.Transport.NetworkStack&,Unity.Networking.Transport.NetworkEndpoint&) (at ./Library/PackageCache/com.unity.transport@98ef8bfec34d/Runtime/NetworkStack.cs:36)\nUnity.Networking.Transport.NetworkStack:Bind (Unity.Networking.Transport.NetworkEndpoint&) (at ./Library/PackageCache/com.unity.transport@98ef8bfec34d/Runtime/NetworkStack.cs:319)\nUnity.Networking.Transport.NetworkDriver:Bind (Unity.Networking.Transport.NetworkEndpoint) (at ./Library/PackageCache/com.unity.transport@98ef8bfec34d/Runtime/NetworkDriver.cs:909)\nUnity.Netcode.Transports.UTP.UnityTransport:ServerBindAndListen (Unity.Networking.Transport.NetworkEndpoint) (at ./Library/PackageCache/com.unity.netcode.gameobjects@277a288a1cea/Runtime/Transports/UTP/UnityTransport.cs:797)\nUnity.Netcode.Transports.UTP.UnityTransport:StartServer () (at ./Library/PackageCache/com.unity.netcode.gameobjects@277a288a1cea/Runtime/Transports/UTP/UnityTransport.cs:1700)\nUnity.Netcode.NetworkManager:StartHost () (at ./Library/PackageCache/com.unity.netcode.gameobjects@277a288a1cea/Runtime/Core/NetworkManager.cs:1474)\nWildfolk.NetworkSession/<Host>d__67:MoveNext () (at Assets/Wildfolk/Runtime/Networking/NetworkSession.cs:77)\nSystem.Runtime.CompilerServices.AsyncTaskMethodBuilder`1<bool>:Start<Wildfolk.NetworkSession/<Host>d__67> (Wildfolk.NetworkSession/<Host>d__67&)\nWildfolk.NetworkSession:Host (Wildfolk.ConnectionRoute,bool)\nWildfolk.Tests.NetworkCreaturePlayTests/<Host>d__2:MoveNext () (at Assets/Wildfolk/Tests/PlayMode/NetworkCreaturePlayTests.cs:18)\nUnityEngine.SetupCoroutine:InvokeMoveNext (System.Collections.IEnumerator,intptr)"
+        },
+        {
+          "name": "Wildfolk.Tests.NetworkCreaturePlayTests.HostTargetsLivingPlayersAndLaunchesOneAuthoritativeProjectile",
+          "failure": "Unhandled log message: '[Error] Failed to bind UDP socket because the address is already in use. Likely because there is another process using port 7777.'. Use UnityEngine.TestTools.LogAssert.Expect\n                Unity.Networking.Transport.UDPNetworkInterface:CreateSocket (int,int,Unity.Networking.Transport.NetworkEndpoint,Unity.Baselib.LowLevel.Binding/Baselib_RegisteredNetwork_Socket_UDP&,bool) (at ./Library/PackageCache/com.unity.transport@98ef8bfec34d/Runtime/UDPNetworkInterface.cs:567)\nUnity.Networking.Transport.UDPNetworkInterface:Bind (Unity.Networking.Transport.NetworkEndpoint) (at ./Library/PackageCache/com.unity.transport@98ef8bfec34d/Runtime/UDPNetworkInterface.cs:525)\nUnity.Networking.Transport.NetworkInterfaceLayer`1<Unity.Networking.Transport.UDPNetworkInterface>:Bind (Unity.Networking.Transport.NetworkEndpoint&) (at ./Library/PackageCache/com.unity.transport@98ef8bfec34d/Runtime/Layers/NetworkInterfaceLayer.cs:45)\nUnity.Networking.Transport.NetworkStack/NetworkInterfaceFunctions:BindWrapper<Unity.Networking.Transport.UDPNetworkInterface> (void*,int) (at ./Library/PackageCache/com.unity.transport@98ef8bfec34d/Runtime/NetworkStack.cs:72)\nUnity.Networking.Transport.ManagedCallWrapper:Method (void*,void*,int) (at ./Library/PackageCache/com.unity.transport@98ef8bfec34d/Runtime/Utilities/ManagedCallWrapper.cs:23)\nUnity.Networking.Transport.ManagedCallWrapper:Invoke (void*,int) (at ./Library/PackageCache/com.unity.transport@98ef8bfec34d/Runtime/Utilities/ManagedCallWrapper.cs:72)\nUnity.Networking.Transport.ManagedCallWrapper:Invoke<Unity.Networking.Transport.NetworkStack/NetworkInterfaceFunctions/BindArguments> (Unity.Networking.Transport.NetworkStack/NetworkInterfaceFunctions/BindArguments&) (at ./Library/PackageCache/com.unity.transport@98ef8bfec34d/Runtime/Utilities/ManagedCallWrapper.cs:79)\nUnity.Networking.Transport.NetworkStack/NetworkInterfaceFunctions:Bind (Unity.Networking.Transport.NetworkStack&,Unity.Networking.Transport.NetworkEndpoint&) (at ./Library/PackageCache/com.unity.transport@98ef8bfec34d/Runtime/NetworkStack.cs:36)\nUnity.Networking.Transport.NetworkStack:Bind (Unity.Networking.Transport.NetworkEndpoint&) (at ./Library/PackageCache/com.unity.transport@98ef8bfec34d/Runtime/NetworkStack.cs:319)\nUnity.Networking.Transport.NetworkDriver:Bind (Unity.Networking.Transport.NetworkEndpoint) (at ./Library/PackageCache/com.unity.transport@98ef8bfec34d/Runtime/NetworkDriver.cs:909)\nUnity.Netcode.Transports.UTP.UnityTransport:ServerBindAndListen (Unity.Networking.Transport.NetworkEndpoint) (at ./Library/PackageCache/com.unity.netcode.gameobjects@277a288a1cea/Runtime/Transports/UTP/UnityTransport.cs:797)\nUnity.Netcode.Transports.UTP.UnityTransport:StartServer () (at ./Library/PackageCache/com.unity.netcode.gameobjects@277a288a1cea/Runtime/Transports/UTP/UnityTransport.cs:1700)\nUnity.Netcode.NetworkManager:StartHost () (at ./Library/PackageCache/com.unity.netcode.gameobjects@277a288a1cea/Runtime/Core/NetworkManager.cs:1474)\nWildfolk.NetworkSession/<Host>d__67:MoveNext () (at Assets/Wildfolk/Runtime/Networking/NetworkSession.cs:77)\nSystem.Runtime.CompilerServices.AsyncTaskMethodBuilder`1<bool>:Start<Wildfolk.NetworkSession/<Host>d__67> (Wildfolk.NetworkSession/<Host>d__67&)\nWildfolk.NetworkSession:Host (Wildfolk.ConnectionRoute,bool)\nWildfolk.Tests.NetworkCreaturePlayTests/<Host>d__2:MoveNext () (at Assets/Wildfolk/Tests/PlayMode/NetworkCreaturePlayTests.cs:18)\nUnityEngine.SetupCoroutine:InvokeMoveNext (System.Collections.IEnumerator,intptr)"
+        },
+        {
+          "name": "Wildfolk.Tests.NetworkFacilityPlayTests.CampfireMeatAndWaterRemainSharedAfterActorRetires",
+          "failure": "SetUp :   Expected: True\n  But was:  False\n\n                at Wildfolk.Tests.NetworkFacilityPlayTests+<Host>d__8.MoveNext () [0x00151] in C:\\Users\\User\\Documents\\ChatGPT\\문승준 모바일\\canonical\\projects\\wildfolk\\tests\\artifacts\\unity\\Assets\\Wildfolk\\Tests\\PlayMode\\NetworkFacilityPlayTests.cs:22\nat UnityEngine.TestTools.EnumeratorHelper+<ProgressOnEnumerator>d__5.MoveNext () [0x00017] in .\\Library\\PackageCache\\com.unity.test-framework@bd7f943e9647\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\EnumeratorHelper.cs:35\nat UnityEngine.TestTools.BeforeAfterTestCommandBase`1+<ExecuteEnumerable>d__16[T].MoveNext () [0x00132] in .\\Library\\PackageCache\\com.unity.test-framework@bd7f943e9647\\UnityEngine.TestRunner\\NUnitExtensions\\Commands\\BeforeAfterTestCommandBase.cs:155"
+        },
+        {
+          "name": "Wildfolk.Tests.NetworkFacilityPlayTests.ChestWithdrawDepositSplitStaleAndFullBagHaveNoLoss",
+          "failure": "SetUp :   Expected: True\n  But was:  False\n\n                at Wildfolk.Tests.NetworkFacilityPlayTests+<Host>d__8.MoveNext () [0x00151] in C:\\Users\\User\\Documents\\ChatGPT\\문승준 모바일\\canonical\\projects\\wildfolk\\tests\\artifacts\\unity\\Assets\\Wildfolk\\Tests\\PlayMode\\NetworkFacilityPlayTests.cs:22\nat UnityEngine.TestTools.EnumeratorHelper+<ProgressOnEnumerator>d__5.MoveNext () [0x00017] in .\\Library\\PackageCache\\com.unity.test-framework@bd7f943e9647\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\EnumeratorHelper.cs:35\nat UnityEngine.TestTools.BeforeAfterTestCommandBase`1+<ExecuteEnumerable>d__16[T].MoveNext () [0x00132] in .\\Library\\PackageCache\\com.unity.test-framework@bd7f943e9647\\UnityEngine.TestRunner\\NUnitExtensions\\Commands\\BeforeAfterTestCommandBase.cs:155"
+        },
+        {
+          "name": "Wildfolk.Tests.NetworkFacilityPlayTests.ExistingUiUsesSharedChestAndHandCraftingWithLocalActorBindings",
+          "failure": "SetUp :   Expected: True\n  But was:  False\n\n                at Wildfolk.Tests.NetworkFacilityPlayTests+<Host>d__8.MoveNext () [0x00151] in C:\\Users\\User\\Documents\\ChatGPT\\문승준 모바일\\canonical\\projects\\wildfolk\\tests\\artifacts\\unity\\Assets\\Wildfolk\\Tests\\PlayMode\\NetworkFacilityPlayTests.cs:22\nat UnityEngine.TestTools.EnumeratorHelper+<ProgressOnEnumerator>d__5.MoveNext () [0x00017] in .\\Library\\PackageCache\\com.unity.test-framework@bd7f943e9647\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\EnumeratorHelper.cs:35\nat UnityEngine.TestTools.BeforeAfterTestCommandBase`1+<ExecuteEnumerable>d__16[T].MoveNext () [0x00132] in .\\Library\\PackageCache\\com.unity.test-framework@bd7f943e9647\\UnityEngine.TestRunner\\NUnitExtensions\\Commands\\BeforeAfterTestCommandBase.cs:155"
+        },
+        {
+          "name": "Wildfolk.Tests.NetworkFacilityPlayTests.FurnaceQueueAndCompletionRacesKeepOutputAndReservedInputs",
+          "failure": "SetUp :   Expected: True\n  But was:  False\n\n                at Wildfolk.Tests.NetworkFacilityPlayTests+<Host>d__8.MoveNext () [0x00151] in C:\\Users\\User\\Documents\\ChatGPT\\문승준 모바일\\canonical\\projects\\wildfolk\\tests\\artifacts\\unity\\Assets\\Wildfolk\\Tests\\PlayMode\\NetworkFacilityPlayTests.cs:22\nat UnityEngine.TestTools.EnumeratorHelper+<ProgressOnEnumerator>d__5.MoveNext () [0x00017] in .\\Library\\PackageCache\\com.unity.test-framework@bd7f943e9647\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\EnumeratorHelper.cs:35\nat UnityEngine.TestTools.BeforeAfterTestCommandBase`1+<ExecuteEnumerable>d__16[T].MoveNext () [0x00132] in .\\Library\\PackageCache\\com.unity.test-framework@bd7f943e9647\\UnityEngine.TestRunner\\NUnitExtensions\\Commands\\BeforeAfterTestCommandBase.cs:155"
+        },
+        {
+          "name": "Wildfolk.Tests.NetworkFacilityPlayTests.HandCraftAtomicityAndWorkbenchUpgradeCommitOnce",
+          "failure": "SetUp :   Expected: True\n  But was:  False\n\n                at Wildfolk.Tests.NetworkFacilityPlayTests+<Host>d__8.MoveNext () [0x00151] in C:\\Users\\User\\Documents\\ChatGPT\\문승준 모바일\\canonical\\projects\\wildfolk\\tests\\artifacts\\unity\\Assets\\Wildfolk\\Tests\\PlayMode\\NetworkFacilityPlayTests.cs:22\nat UnityEngine.TestTools.EnumeratorHelper+<ProgressOnEnumerator>d__5.MoveNext () [0x00017] in .\\Library\\PackageCache\\com.unity.test-framework@bd7f943e9647\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\EnumeratorHelper.cs:35\nat UnityEngine.TestTools.BeforeAfterTestCommandBase`1+<ExecuteEnumerable>d__16[T].MoveNext () [0x00132] in .\\Library\\PackageCache\\com.unity.test-framework@bd7f943e9647\\UnityEngine.TestRunner\\NUnitExtensions\\Commands\\BeforeAfterTestCommandBase.cs:155"
+        },
+        {
+          "name": "Wildfolk.Tests.NetworkFacilityPlayTests.SteelUsesSeparateHostFacilityAndReservationsCommitOnce",
+          "failure": "SetUp :   Expected: True\n  But was:  False\n\n                at Wildfolk.Tests.NetworkFacilityPlayTests+<Host>d__8.MoveNext () [0x00151] in C:\\Users\\User\\Documents\\ChatGPT\\문승준 모바일\\canonical\\projects\\wildfolk\\tests\\artifacts\\unity\\Assets\\Wildfolk\\Tests\\PlayMode\\NetworkFacilityPlayTests.cs:22\nat UnityEngine.TestTools.EnumeratorHelper+<ProgressOnEnumerator>d__5.MoveNext () [0x00017] in .\\Library\\PackageCache\\com.unity.test-framework@bd7f943e9647\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\EnumeratorHelper.cs:35\nat UnityEngine.TestTools.BeforeAfterTestCommandBase`1+<ExecuteEnumerable>d__16[T].MoveNext () [0x00132] in .\\Library\\PackageCache\\com.unity.test-framework@bd7f943e9647\\UnityEngine.TestRunner\\NUnitExtensions\\Commands\\BeforeAfterTestCommandBase.cs:155"
+        },
+        {
+          "name": "Wildfolk.Tests.NetworkFoundationPlayTests.LocalHostSpawnsAuthoritativePlayerWithoutSingleplayerSaveService",
+          "failure": "Unhandled log message: '[Error] Failed to bind UDP socket because the address is already in use. Likely because there is another process using port 7777.'. Use UnityEngine.TestTools.LogAssert.Expect\n                Unity.Networking.Transport.UDPNetworkInterface:CreateSocket (int,int,Unity.Networking.Transport.NetworkEndpoint,Unity.Baselib.LowLevel.Binding/Baselib_RegisteredNetwork_Socket_UDP&,bool) (at ./Library/PackageCache/com.unity.transport@98ef8bfec34d/Runtime/UDPNetworkInterface.cs:567)\nUnity.Networking.Transport.UDPNetworkInterface:Bind (Unity.Networking.Transport.NetworkEndpoint) (at ./Library/PackageCache/com.unity.transport@98ef8bfec34d/Runtime/UDPNetworkInterface.cs:525)\nUnity.Networking.Transport.NetworkInterfaceLayer`1<Unity.Networking.Transport.UDPNetworkInterface>:Bind (Unity.Networking.Transport.NetworkEndpoint&) (at ./Library/PackageCache/com.unity.transport@98ef8bfec34d/Runtime/Layers/NetworkInterfaceLayer.cs:45)\nUnity.Networking.Transport.NetworkStack/NetworkInterfaceFunctions:BindWrapper<Unity.Networking.Transport.UDPNetworkInterface> (void*,int) (at ./Library/PackageCache/com.unity.transport@98ef8bfec34d/Runtime/NetworkStack.cs:72)\nUnity.Networking.Transport.ManagedCallWrapper:Method (void*,void*,int) (at ./Library/PackageCache/com.unity.transport@98ef8bfec34d/Runtime/Utilities/ManagedCallWrapper.cs:23)\nUnity.Networking.Transport.ManagedCallWrapper:Invoke (void*,int) (at ./Library/PackageCache/com.unity.transport@98ef8bfec34d/Runtime/Utilities/ManagedCallWrapper.cs:72)\nUnity.Networking.Transport.ManagedCallWrapper:Invoke<Unity.Networking.Transport.NetworkStack/NetworkInterfaceFunctions/BindArguments> (Unity.Networking.Transport.NetworkStack/NetworkInterfaceFunctions/BindArguments&) (at ./Library/PackageCache/com.unity.transport@98ef8bfec34d/Runtime/Utilities/ManagedCallWrapper.cs:79)\nUnity.Networking.Transport.NetworkStack/NetworkInterfaceFunctions:Bind (Unity.Networking.Transport.NetworkStack&,Unity.Networking.Transport.NetworkEndpoint&) (at ./Library/PackageCache/com.unity.transport@98ef8bfec34d/Runtime/NetworkStack.cs:36)\nUnity.Networking.Transport.NetworkStack:Bind (Unity.Networking.Transport.NetworkEndpoint&) (at ./Library/PackageCache/com.unity.transport@98ef8bfec34d/Runtime/NetworkStack.cs:319)\nUnity.Networking.Transport.NetworkDriver:Bind (Unity.Networking.Transport.NetworkEndpoint) (at ./Library/PackageCache/com.unity.transport@98ef8bfec34d/Runtime/NetworkDriver.cs:909)\nUnity.Netcode.Transports.UTP.UnityTransport:ServerBindAndListen (Unity.Networking.Transport.NetworkEndpoint) (at ./Library/PackageCache/com.unity.netcode.gameobjects@277a288a1cea/Runtime/Transports/UTP/UnityTransport.cs:797)\nUnity.Netcode.Transports.UTP.UnityTransport:StartServer () (at ./Library/PackageCache/com.unity.netcode.gameobjects@277a288a1cea/Runtime/Transports/UTP/UnityTransport.cs:1700)\nUnity.Netcode.NetworkManager:StartHost () (at ./Library/PackageCache/com.unity.netcode.gameobjects@277a288a1cea/Runtime/Core/NetworkManager.cs:1474)\nWildfolk.NetworkSession/<Host>d__67:MoveNext () (at Assets/Wildfolk/Runtime/Networking/NetworkSession.cs:77)\nSystem.Runtime.CompilerServices.AsyncTaskMethodBuilder`1<bool>:Start<Wildfolk.NetworkSession/<Host>d__67> (Wildfolk.NetworkSession/<Host>d__67&)\nWildfolk.NetworkSession:Host (Wildfolk.ConnectionRoute,bool)\nWildfolk.Tests.NetworkFoundationPlayTests/<LocalHostSpawnsAuthoritativePlayerWithoutSingleplayerSaveService>d__0:MoveNext () (at Assets/Wildfolk/Tests/PlayMode/NetworkFoundationPlayTests.cs:14)\nUnityEngine.SetupCoroutine:InvokeMoveNext (System.Collections.IEnumerator,intptr)"
+        },
+        {
+          "name": "Wildfolk.Tests.NetworkItemPlayTests.CreatureLootAndNearbySessionRewardsCommitExactlyOnce",
+          "failure": "SetUp :   Expected: True\n  But was:  False\n\n                at Wildfolk.Tests.NetworkItemPlayTests+<Host>d__2.MoveNext () [0x00151] in C:\\Users\\User\\Documents\\ChatGPT\\문승준 모바일\\canonical\\projects\\wildfolk\\tests\\artifacts\\unity\\Assets\\Wildfolk\\Tests\\PlayMode\\NetworkItemPlayTests.cs:15\nat UnityEngine.TestTools.EnumeratorHelper+<ProgressOnEnumerator>d__5.MoveNext () [0x00017] in .\\Library\\PackageCache\\com.unity.test-framework@bd7f943e9647\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\EnumeratorHelper.cs:35\nat UnityEngine.TestTools.BeforeAfterTestCommandBase`1+<ExecuteEnumerable>d__16[T].MoveNext () [0x00132] in .\\Library\\PackageCache\\com.unity.test-framework@bd7f943e9647\\UnityEngine.TestRunner\\NUnitExtensions\\Commands\\BeforeAfterTestCommandBase.cs:155"
+        },
+        {
+          "name": "Wildfolk.Tests.NetworkItemPlayTests.ExistingInventoryUiSplitsMovesSelectsAndEquipsThroughHost",
+          "failure": "SetUp :   Expected: True\n  But was:  False\n\n                at Wildfolk.Tests.NetworkItemPlayTests+<Host>d__2.MoveNext () [0x00151] in C:\\Users\\User\\Documents\\ChatGPT\\문승준 모바일\\canonical\\projects\\wildfolk\\tests\\artifacts\\unity\\Assets\\Wildfolk\\Tests\\PlayMode\\NetworkItemPlayTests.cs:15\nat UnityEngine.TestTools.EnumeratorHelper+<ProgressOnEnumerator>d__5.MoveNext () [0x00017] in .\\Library\\PackageCache\\com.unity.test-framework@bd7f943e9647\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\EnumeratorHelper.cs:35\nat UnityEngine.TestTools.BeforeAfterTestCommandBase`1+<ExecuteEnumerable>d__16[T].MoveNext () [0x00132] in .\\Library\\PackageCache\\com.unity.test-framework@bd7f943e9647\\UnityEngine.TestRunner\\NUnitExtensions\\Commands\\BeforeAfterTestCommandBase.cs:155"
+        },
+        {
+          "name": "Wildfolk.Tests.NetworkItemPlayTests.OreValidationPublishesOnlyAcceptedHitsAndFinalHitSpawnsLootExactlyOnce",
+          "failure": "SetUp :   Expected: True\n  But was:  False\n\n                at Wildfolk.Tests.NetworkItemPlayTests+<Host>d__2.MoveNext () [0x00151] in C:\\Users\\User\\Documents\\ChatGPT\\문승준 모바일\\canonical\\projects\\wildfolk\\tests\\artifacts\\unity\\Assets\\Wildfolk\\Tests\\PlayMode\\NetworkItemPlayTests.cs:15\nat UnityEngine.TestTools.EnumeratorHelper+<ProgressOnEnumerator>d__5.MoveNext () [0x00017] in .\\Library\\PackageCache\\com.unity.test-framework@bd7f943e9647\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\EnumeratorHelper.cs:35\nat UnityEngine.TestTools.BeforeAfterTestCommandBase`1+<ExecuteEnumerable>d__16[T].MoveNext () [0x00132] in .\\Library\\PackageCache\\com.unity.test-framework@bd7f943e9647\\UnityEngine.TestRunner\\NUnitExtensions\\Commands\\BeforeAfterTestCommandBase.cs:155"
+        },
+        {
+          "name": "Wildfolk.Tests.NetworkItemPlayTests.PickupRaceFullBagDropReplayAndRetiredPlayerCannotDuplicate",
+          "failure": "SetUp :   Expected: True\n  But was:  False\n\n                at Wildfolk.Tests.NetworkItemPlayTests+<Host>d__2.MoveNext () [0x00151] in C:\\Users\\User\\Documents\\ChatGPT\\문승준 모바일\\canonical\\projects\\wildfolk\\tests\\artifacts\\unity\\Assets\\Wildfolk\\Tests\\PlayMode\\NetworkItemPlayTests.cs:15\nat UnityEngine.TestTools.EnumeratorHelper+<ProgressOnEnumerator>d__5.MoveNext () [0x00017] in .\\Library\\PackageCache\\com.unity.test-framework@bd7f943e9647\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\EnumeratorHelper.cs:35\nat UnityEngine.TestTools.BeforeAfterTestCommandBase`1+<ExecuteEnumerable>d__16[T].MoveNext () [0x00132] in .\\Library\\PackageCache\\com.unity.test-framework@bd7f943e9647\\UnityEngine.TestRunner\\NUnitExtensions\\Commands\\BeforeAfterTestCommandBase.cs:155"
+        },
+        {
+          "name": "Wildfolk.Tests.NetworkItemPlayTests.SharedResourceFinalHitDropsOnceAndRecoversWithNewIdentity",
+          "failure": "SetUp :   Expected: True\n  But was:  False\n\n                at Wildfolk.Tests.NetworkItemPlayTests+<Host>d__2.MoveNext () [0x00151] in C:\\Users\\User\\Documents\\ChatGPT\\문승준 모바일\\canonical\\projects\\wildfolk\\tests\\artifacts\\unity\\Assets\\Wildfolk\\Tests\\PlayMode\\NetworkItemPlayTests.cs:15\nat UnityEngine.TestTools.EnumeratorHelper+<ProgressOnEnumerator>d__5.MoveNext () [0x00017] in .\\Library\\PackageCache\\com.unity.test-framework@bd7f943e9647\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\EnumeratorHelper.cs:35\nat UnityEngine.TestTools.BeforeAfterTestCommandBase`1+<ExecuteEnumerable>d__16[T].MoveNext () [0x00132] in .\\Library\\PackageCache\\com.unity.test-framework@bd7f943e9647\\UnityEngine.TestRunner\\NUnitExtensions\\Commands\\BeforeAfterTestCommandBase.cs:155"
+        },
+        {
+          "name": "Wildfolk.Tests.NetworkPersistencePlayTests.HostSaveRehostRestoresWorldCargoGroundEcologyAndPlayerWithoutDuplicates",
+          "failure": "SetUp :   Expected: True\n  But was:  False\n\n                at Wildfolk.Tests.NetworkPersistencePlayTests+<Enter>d__8.MoveNext () [0x0008a] in C:\\Users\\User\\Documents\\ChatGPT\\문승준 모바일\\canonical\\projects\\wildfolk\\tests\\artifacts\\unity\\Assets\\Wildfolk\\Tests\\PlayMode\\NetworkPersistencePlayTests.cs:25\nat UnityEngine.TestTools.EnumeratorHelper+<ProgressOnEnumerator>d__5.MoveNext () [0x00017] in .\\Library\\PackageCache\\com.unity.test-framework@bd7f943e9647\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\EnumeratorHelper.cs:35\nat UnityEngine.TestTools.BeforeAfterTestCommandBase`1+<ExecuteEnumerable>d__16[T].MoveNext () [0x00132] in .\\Library\\PackageCache\\com.unity.test-framework@bd7f943e9647\\UnityEngine.TestRunner\\NUnitExtensions\\Commands\\BeforeAfterTestCommandBase.cs:155"
+        },
+        {
+          "name": "Wildfolk.Tests.NetworkPersistencePlayTests.PlacementRaceRollbackAndEveryCurrentBuildingUseExistingDefinitions",
+          "failure": "SetUp :   Expected: True\n  But was:  False\n\n                at Wildfolk.Tests.NetworkPersistencePlayTests+<Enter>d__8.MoveNext () [0x0008a] in C:\\Users\\User\\Documents\\ChatGPT\\문승준 모바일\\canonical\\projects\\wildfolk\\tests\\artifacts\\unity\\Assets\\Wildfolk\\Tests\\PlayMode\\NetworkPersistencePlayTests.cs:25\nat UnityEngine.TestTools.EnumeratorHelper+<ProgressOnEnumerator>d__5.MoveNext () [0x00017] in .\\Library\\PackageCache\\com.unity.test-framework@bd7f943e9647\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\EnumeratorHelper.cs:35\nat UnityEngine.TestTools.BeforeAfterTestCommandBase`1+<ExecuteEnumerable>d__16[T].MoveNext () [0x00132] in .\\Library\\PackageCache\\com.unity.test-framework@bd7f943e9647\\UnityEngine.TestRunner\\NUnitExtensions\\Commands\\BeforeAfterTestCommandBase.cs:155"
+        },
+        {
+          "name": "Wildfolk.Tests.NetworkPersistencePlayTests.RetireAndRejoinSameIdentityRestoreOnceAndRejectConcurrentIdentity",
+          "failure": "SetUp :   Expected: True\n  But was:  False\n\n                at Wildfolk.Tests.NetworkPersistencePlayTests+<Enter>d__8.MoveNext () [0x0008a] in C:\\Users\\User\\Documents\\ChatGPT\\문승준 모바일\\canonical\\projects\\wildfolk\\tests\\artifacts\\unity\\Assets\\Wildfolk\\Tests\\PlayMode\\NetworkPersistencePlayTests.cs:25\nat UnityEngine.TestTools.EnumeratorHelper+<ProgressOnEnumerator>d__5.MoveNext () [0x00017] in .\\Library\\PackageCache\\com.unity.test-framework@bd7f943e9647\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\EnumeratorHelper.cs:35\nat UnityEngine.TestTools.BeforeAfterTestCommandBase`1+<ExecuteEnumerable>d__16[T].MoveNext () [0x00132] in .\\Library\\PackageCache\\com.unity.test-framework@bd7f943e9647\\UnityEngine.TestRunner\\NUnitExtensions\\Commands\\BeforeAfterTestCommandBase.cs:155"
+        },
+        {
+          "name": "Wildfolk.Tests.NetworkPersistencePlayTests.SaveFailureKeepsHostSessionAndCorruptLoadCannotCreateReplacementWorld",
+          "failure": "SetUp :   Expected: True\n  But was:  False\n\n                at Wildfolk.Tests.NetworkPersistencePlayTests+<Enter>d__8.MoveNext () [0x0008a] in C:\\Users\\User\\Documents\\ChatGPT\\문승준 모바일\\canonical\\projects\\wildfolk\\tests\\artifacts\\unity\\Assets\\Wildfolk\\Tests\\PlayMode\\NetworkPersistencePlayTests.cs:25\nat UnityEngine.TestTools.EnumeratorHelper+<ProgressOnEnumerator>d__5.MoveNext () [0x00017] in .\\Library\\PackageCache\\com.unity.test-framework@bd7f943e9647\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\EnumeratorHelper.cs:35\nat UnityEngine.TestTools.BeforeAfterTestCommandBase`1+<ExecuteEnumerable>d__16[T].MoveNext () [0x00132] in .\\Library\\PackageCache\\com.unity.test-framework@bd7f943e9647\\UnityEngine.TestRunner\\NUnitExtensions\\Commands\\BeforeAfterTestCommandBase.cs:155"
+        },
+        {
+          "name": "Wildfolk.Tests.NetworkPersistencePlayTests.WallAdjacencyAndDoorDesiredStateRejectCompetingToggle",
+          "failure": "SetUp :   Expected: True\n  But was:  False\n\n                at Wildfolk.Tests.NetworkPersistencePlayTests+<Enter>d__8.MoveNext () [0x0008a] in C:\\Users\\User\\Documents\\ChatGPT\\문승준 모바일\\canonical\\projects\\wildfolk\\tests\\artifacts\\unity\\Assets\\Wildfolk\\Tests\\PlayMode\\NetworkPersistencePlayTests.cs:25\nat UnityEngine.TestTools.EnumeratorHelper+<ProgressOnEnumerator>d__5.MoveNext () [0x00017] in .\\Library\\PackageCache\\com.unity.test-framework@bd7f943e9647\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\EnumeratorHelper.cs:35\nat UnityEngine.TestTools.BeforeAfterTestCommandBase`1+<ExecuteEnumerable>d__16[T].MoveNext () [0x00132] in .\\Library\\PackageCache\\com.unity.test-framework@bd7f943e9647\\UnityEngine.TestRunner\\NUnitExtensions\\Commands\\BeforeAfterTestCommandBase.cs:155"
+        },
+        {
+          "name": "Wildfolk.Tests.StabilityPlayTests.EveryBasicWeaponHitsExactlyOneForwardTarget",
+          "failure": "prospecting_pan\n  Expected: 75\n  But was:  100\n\n                at Wildfolk.Tests.StabilityPlayTests+<EveryBasicWeaponHitsExactlyOneForwardTarget>d__13.MoveNext () [0x001d9] in C:\\Users\\User\\Documents\\ChatGPT\\문승준 모바일\\canonical\\projects\\wildfolk\\tests\\artifacts\\unity\\Assets\\Wildfolk\\Tests\\PlayMode\\StabilityPlayTests.cs:27\nat UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\\Library\\PackageCache\\com.unity.test-framework@bd7f943e9647\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:44"
+        },
+        {
+          "name": "Wildfolk.Tests.WorldPassPlayTests.ActualGeneratedWorldHasWaterCollisionsFordAndGroundSorting",
+          "failure": "Expected: 259\n  But was:  295\n\n                at Wildfolk.Tests.WorldPassPlayTests+<ActualGeneratedWorldHasWaterCollisionsFordAndGroundSorting>d__13.MoveNext () [0x00029] in C:\\Users\\User\\Documents\\ChatGPT\\문승준 모바일\\canonical\\projects\\wildfolk\\tests\\artifacts\\unity\\Assets\\Wildfolk\\Tests\\PlayMode\\WorldPassPlayTests.cs:31\nat UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\\Library\\PackageCache\\com.unity.test-framework@bd7f943e9647\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:44"
+        },
+        {
+          "name": "Wildfolk.Tests.WorldPassPlayTests.SplitHalfViaTouchButtonAndExplicitDropZonePreserveItems",
+          "failure": "Expected: 15\n  But was:  30\n\n                at Wildfolk.Tests.WorldPassPlayTests+<SplitHalfViaTouchButtonAndExplicitDropZonePreserveItems>d__16.MoveNext () [0x005a9] in C:\\Users\\User\\Documents\\ChatGPT\\문승준 모바일\\canonical\\projects\\wildfolk\\tests\\artifacts\\unity\\Assets\\Wildfolk\\Tests\\PlayMode\\WorldPassPlayTests.cs:71\nat UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\\Library\\PackageCache\\com.unity.test-framework@bd7f943e9647\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:44"
+        }
+      ]
+    },
+    {
+      "file": "world-v2-edit-recheck.xml",
+      "id": "2",
+      "testcasecount": "15",
+      "result": "Failed(Child)",
+      "total": "15",
+      "passed": "14",
+      "failed": "1",
+      "inconclusive": "0",
+      "skipped": "0",
+      "asserts": "0",
+      "engine-version": "3.5.0.0",
+      "clr-version": "4.0.30319.42000",
+      "start-time": "2026-10-17 01:47:16Z",
+      "end-time": "2026-10-17 01:47:22Z",
+      "duration": "6.8636459",
+      "failed_cases": [
+        {
+          "name": "Wildfolk.Tests.SceneContractTests.BalanceDataHasValidCombatRangesAndProgressionItems",
+          "failure": "Expected: collection containing Wood\n  But was:  <empty>\n\n                at Wildfolk.Tests.SceneContractTests.BalanceDataHasValidCombatRangesAndProgressionItems () [0x0042c] in C:\\Users\\User\\Documents\\ChatGPT\\문승준 모바일\\canonical\\projects\\wildfolk\\tests\\artifacts\\unity\\Assets\\Wildfolk\\Tests\\EditMode\\SceneContractTests.cs:89"
+        }
+      ]
+    },
+    {
+      "file": "world-v2-play-recheck.xml",
+      "id": "2",
+      "testcasecount": "31",
+      "result": "Failed(Child)",
+      "total": "31",
+      "passed": "29",
+      "failed": "2",
+      "inconclusive": "0",
+      "skipped": "0",
+      "asserts": "0",
+      "engine-version": "3.5.0.0",
+      "clr-version": "4.0.30319.42000",
+      "start-time": "2026-10-17 01:48:33Z",
+      "end-time": "2026-10-17 01:50:59Z",
+      "duration": "146.2358821",
+      "failed_cases": [
+        {
+          "name": "Wildfolk.Tests.EcologyPlayTests.DoorHingeEasesAndColliderMatchesPassageAndSave",
+          "failure": "Restored close action\n  Expected: True\n  But was:  False\n\n                at Wildfolk.Tests.EcologyPlayTests+<DoorHingeEasesAndColliderMatchesPassageAndSave>d__10.MoveNext () [0x002b1] in C:\\Users\\User\\Documents\\ChatGPT\\문승준 모바일\\canonical\\projects\\wildfolk\\tests\\artifacts\\unity\\Assets\\Wildfolk\\Tests\\PlayMode\\EcologyPlayTests.cs:58\nat UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\\Library\\PackageCache\\com.unity.test-framework@bd7f943e9647\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:44"
+        },
+        {
+          "name": "Wildfolk.Tests.WorldPassPlayTests.SplitHalfViaTouchButtonAndExplicitDropZonePreserveItems",
+          "failure": "Expected: 15\n  But was:  30\n\n                at Wildfolk.Tests.WorldPassPlayTests+<SplitHalfViaTouchButtonAndExplicitDropZonePreserveItems>d__16.MoveNext () [0x005a9] in C:\\Users\\User\\Documents\\ChatGPT\\문승준 모바일\\canonical\\projects\\wildfolk\\tests\\artifacts\\unity\\Assets\\Wildfolk\\Tests\\PlayMode\\WorldPassPlayTests.cs:71\nat UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\\Library\\PackageCache\\com.unity.test-framework@bd7f943e9647\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:44"
+        }
+      ]
+    },
+    {
+      "file": "world-v2-last-play.xml",
+      "id": "2",
+      "testcasecount": "2",
+      "result": "Failed(Child)",
+      "total": "2",
+      "passed": "1",
+      "failed": "1",
+      "inconclusive": "0",
+      "skipped": "0",
+      "asserts": "0",
+      "engine-version": "3.5.0.0",
+      "clr-version": "4.0.30319.42000",
+      "start-time": "2026-10-17 01:52:49Z",
+      "end-time": "2026-10-17 01:52:57Z",
+      "duration": "8.2003153",
+      "failed_cases": [
+        {
+          "name": "Wildfolk.Tests.WorldPassPlayTests.SplitHalfViaTouchButtonAndExplicitDropZonePreserveItems",
+          "failure": "Chest split holds partial stack\n  Expected: True\n  But was:  False\n\n                at Wildfolk.Tests.WorldPassPlayTests+<SplitHalfViaTouchButtonAndExplicitDropZonePreserveItems>d__16.MoveNext () [0x005a8] in C:\\Users\\User\\Documents\\ChatGPT\\문승준 모바일\\canonical\\projects\\wildfolk\\tests\\artifacts\\unity\\Assets\\Wildfolk\\Tests\\PlayMode\\WorldPassPlayTests.cs:71\nat UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\\Library\\PackageCache\\com.unity.test-framework@bd7f943e9647\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:44"
+        }
+      ]
+    },
+    {
+      "file": "world-v2-last-edit.xml",
+      "id": "2",
+      "testcasecount": "1",
+      "result": "Passed",
+      "total": "1",
+      "passed": "1",
+      "failed": "0",
+      "inconclusive": "0",
+      "skipped": "0",
+      "asserts": "0",
+      "engine-version": "3.5.0.0",
+      "clr-version": "4.0.30319.42000",
+      "start-time": "2026-10-17 01:54:17Z",
+      "end-time": "2026-10-17 01:54:17Z",
+      "duration": "0.0841987",
+      "failed_cases": []
+    },
+    {
+      "file": "world-v2-resumed-split.xml",
+      "id": "2",
+      "testcasecount": "1",
+      "result": "Passed",
+      "total": "1",
+      "passed": "1",
+      "failed": "0",
+      "inconclusive": "0",
+      "skipped": "0",
+      "asserts": "0",
+      "engine-version": "3.5.0.0",
+      "clr-version": "4.0.30319.42000",
+      "start-time": "2026-10-18 00:23:22Z",
+      "end-time": "2026-10-18 00:23:26Z",
+      "duration": "3.8753024",
+      "failed_cases": []
+    }
+  ],
+  "actual_mcp": {
+    "seeds": [
+      9472026,
+      17491,
+      -81027,
+      193080127
+    ],
+    "surface": [
+      "Grassland",
+      "Forest",
+      "Wetlands",
+      "Rocky"
+    ],
+    "features": [
+      "River",
+      "Lake",
+      "Coast",
+      "POI",
+      "Cavern entrance",
+      "Cavern chamber",
+      "Cavern corridor",
+      "DeepRuin"
+    ],
+    "sp_save_load": {
+      "schema": 7,
+      "generation": 2,
+      "seed": 193080127
+    },
+    "host_rehost": {
+      "same_world_id": true,
+      "far_chest_copies": 1,
+      "far_chest_wood": 7,
+      "active_chunks": 9
+    },
+    "legacy_read_only": {
+      "original_schema": 4,
+      "migrated_schema": 7,
+      "generation": 1,
+      "size": [
+        192,
+        144
+      ],
+      "player_position_preserved": true
+    },
+    "input_method": "Unity MCP C# fixtures and Game View ScreenCapture; no Computer Use/Windows input/Focus/Show",
+    "cave_graph_review": {
+      "networks": 8,
+      "blocked_graph_samples_after_pool_fix": 0
+    },
+    "resumed_chest_split": {
+      "date": "2026-10-18",
+      "resolution": [
+        1920,
+        1080
+      ],
+      "popup_above_chest": true,
+      "confirm_is_top_pointer_target": true,
+      "pointer_click_confirm": true,
+      "held_amount": 15,
+      "chest_slots_after_placement": [
+        15,
+        15
+      ],
+      "method": "MCP fixture opens UI, checks EventSystem raycast and dispatches pointer-click, then places held stack via shared controller; OS input not used."
+    }
+  },
+  "user_save_sha256": "57d560f19e49507fbc7ac00b48e1dda5759732a181d1c0baa441ad4536da7970",
+  "latest_case_aggregate": {
+    "EditMode": {
+      "total": 110,
+      "passed": 110,
+      "cases": {
+        "Wildfolk.Tests.CharacterPassModelTests.ArmorCostsSlotsAndSilhouettesAreActualData": {
+          "result": "Passed",
+          "run": "world-v2-integrated-edit.xml"
+        },
+        "Wildfolk.Tests.CharacterPassModelTests.CategoriesAndStableTierSortDoNotDependOnNewFlags": {
+          "result": "Passed",
+          "run": "world-v2-integrated-edit.xml"
+        },
+        "Wildfolk.Tests.CharacterPassModelTests.DashSpendingIsAtomicAndRecoveryHonorsDelayAndCondition": {
+          "result": "Passed",
+          "run": "world-v2-integrated-edit.xml"
+        },
+        "Wildfolk.Tests.CharacterPassModelTests.InvalidPointsRanksAndXPAreRejected": {
+          "result": "Passed",
+          "run": "world-v2-integrated-edit.xml"
+        },
+        "Wildfolk.Tests.CharacterPassModelTests.LevelCurveCarriesRemainderAndAwardsPoints": {
+          "result": "Passed",
+          "run": "world-v2-integrated-edit.xml"
+        },
+        "Wildfolk.Tests.CharacterPassModelTests.SkillsSpendPointsRespectRanksAndRestoreEffects": {
+          "result": "Passed",
+          "run": "world-v2-integrated-edit.xml"
+        },
+        "Wildfolk.Tests.CharacterPassModelTests.SprintUsesHoldHysteresisAndExhaustionRecovery": {
+          "result": "Passed",
+          "run": "world-v2-integrated-edit.xml"
+        },
+        "Wildfolk.Tests.CharacterPassModelTests.SurvivalPreventsCriticalSprintAndChangesEfficiency": {
+          "result": "Passed",
+          "run": "world-v2-integrated-edit.xml"
+        },
+        "Wildfolk.Tests.CharacterPassModelTests.V1EnvelopeStillDecodesAndFutureVersionsFail": {
+          "result": "Passed",
+          "run": "world-v2-integrated-edit.xml"
+        },
+        "Wildfolk.Tests.EcologyModelTests.AllFiveSpeciesHaveUsableLootGroupsHabitatsAndBoundedPopulation": {
+          "result": "Passed",
+          "run": "world-v2-integrated-edit.xml"
+        },
+        "Wildfolk.Tests.EcologyModelTests.FamilyAndLightTraitAreIndependentData": {
+          "result": "Passed",
+          "run": "world-v2-integrated-edit.xml"
+        },
+        "Wildfolk.Tests.EcologyModelTests.FullInventoryReplacementFailureIsAtomic": {
+          "result": "Passed",
+          "run": "world-v2-integrated-edit.xml"
+        },
+        "Wildfolk.Tests.EcologyModelTests.RustedSwordIsUsableSingleTargetLocalizedSaveItemAndRareVariantLoot": {
+          "result": "Passed",
+          "run": "world-v2-integrated-edit.xml"
+        },
+        "Wildfolk.Tests.EcologyModelTests.SlingshotHasRealDrawReleaseAndRecoveryIntervals": {
+          "result": "Passed",
+          "run": "world-v2-integrated-edit.xml"
+        },
+        "Wildfolk.Tests.EcologyModelTests.V3AnimalMigrationRetainsLivingIdentityPositionHPAndRecoveryDeadline": {
+          "result": "Passed",
+          "run": "world-v2-integrated-edit.xml"
+        },
+        "Wildfolk.Tests.FrontendContractTests.AppStartsAtHomeAndGameplayRemainsEnabled": {
+          "result": "Passed",
+          "run": "world-v2-integrated-edit.xml"
+        },
+        "Wildfolk.Tests.FrontendContractTests.SaveRulesReferenceGameplayContentAndHomeKeysHaveBothLanguages": {
+          "result": "Passed",
+          "run": "world-v2-integrated-edit.xml"
+        },
+        "Wildfolk.Tests.InventoryOperationsTests.DifferentItemsSwapWithoutChangingCounts": {
+          "result": "Passed",
+          "run": "world-v2-integrated-edit.xml"
+        },
+        "Wildfolk.Tests.InventoryOperationsTests.FullInventoryRejectsCraftAtomically": {
+          "result": "Passed",
+          "run": "world-v2-integrated-edit.xml"
+        },
+        "Wildfolk.Tests.InventoryOperationsTests.FullSameItemDestinationAndSameSlotDoNotMutateOrNotify": {
+          "result": "Passed",
+          "run": "world-v2-integrated-edit.xml"
+        },
+        "Wildfolk.Tests.InventoryOperationsTests.FullyConsumedMaterialSlotCanHoldCraftResult": {
+          "result": "Passed",
+          "run": "world-v2-integrated-edit.xml"
+        },
+        "Wildfolk.Tests.InventoryOperationsTests.MergeStopsAtMaxStackAndKeepsOverflowAtSource": {
+          "result": "Passed",
+          "run": "world-v2-integrated-edit.xml"
+        },
+        "Wildfolk.Tests.InventoryOperationsTests.MissingMaterialsNeverConsumeAnything": {
+          "result": "Passed",
+          "run": "world-v2-integrated-edit.xml"
+        },
+        "Wildfolk.Tests.InventoryOperationsTests.MultipleResultStacksCannotPartiallyConsumeIngredients": {
+          "result": "Passed",
+          "run": "world-v2-integrated-edit.xml"
+        },
+        "Wildfolk.Tests.InventoryOperationsTests.PlacementConsumptionRequiresMatchingSelectedItem": {
+          "result": "Passed",
+          "run": "world-v2-integrated-edit.xml"
+        },
+        "Wildfolk.Tests.InventoryOperationsTests.WholeStackMovesBetweenStorageAndHotbarWithOneNotification": {
+          "result": "Passed",
+          "run": "world-v2-integrated-edit.xml"
+        },
+        "Wildfolk.Tests.InventoryTests.DifferentMaterialsDoNotMerge": {
+          "result": "Passed",
+          "run": "world-v2-integrated-edit.xml"
+        },
+        "Wildfolk.Tests.InventoryTests.FullInventoryReturnsUnacceptedAmountWithoutLosingExistingItems": {
+          "result": "Passed",
+          "run": "world-v2-integrated-edit.xml"
+        },
+        "Wildfolk.Tests.InventoryTests.InvalidAmountsCannotMutateInventory": {
+          "result": "Passed",
+          "run": "world-v2-integrated-edit.xml"
+        },
+        "Wildfolk.Tests.InventoryTests.MaxStackOverflowUsesNextSlot": {
+          "result": "Passed",
+          "run": "world-v2-integrated-edit.xml"
+        },
+        "Wildfolk.Tests.InventoryTests.NotifiesOnceForAnAcceptedBatchAndNeverForRejectedBatch": {
+          "result": "Passed",
+          "run": "world-v2-integrated-edit.xml"
+        },
+        "Wildfolk.Tests.InventoryTests.SameItemMergesBeforeUsingAnotherSlot": {
+          "result": "Passed",
+          "run": "world-v2-integrated-edit.xml"
+        },
+        "Wildfolk.Tests.InventoryTests.StartsEmpty": {
+          "result": "Passed",
+          "run": "world-v2-integrated-edit.xml"
+        },
+        "Wildfolk.Tests.MetalProgressionTests.AppendedOresAreDeterministicAndPreserveEveryLegacyPlacementAndId": {
+          "result": "Passed",
+          "run": "world-v2-integrated-edit.xml"
+        },
+        "Wildfolk.Tests.MetalProgressionTests.BronzeAndSteelReserveEveryIngredientAndPreserveBlockedOutputAndQueueSnapshot": {
+          "result": "Passed",
+          "run": "world-v2-integrated-edit.xml"
+        },
+        "Wildfolk.Tests.MetalProgressionTests.FourInputsReserveAtomicallyAndRollbackFailureOrException": {
+          "result": "Passed",
+          "run": "world-v2-integrated-edit.xml"
+        },
+        "Wildfolk.Tests.MetalProgressionTests.MiningToolPermissionHasNoFistFallbackAndMaterialKindsRemainDistinct": {
+          "result": "Passed",
+          "run": "world-v2-integrated-edit.xml"
+        },
+        "Wildfolk.Tests.MetalProgressionTests.OnlyConfiguredNextTierOpensAndLegacyUpgradeCostsRemain": {
+          "result": "Passed",
+          "run": "world-v2-integrated-edit.xml"
+        },
+        "Wildfolk.Tests.MetalProgressionTests.SupplyContextAndRecoveryAreIndependentOfTechnologyAndRespectMineralFamily": {
+          "result": "Passed",
+          "run": "world-v2-integrated-edit.xml"
+        },
+        "Wildfolk.Tests.MetalProgressionTests.WorkbenchRangeIsOneThroughSix(0,False)": {
+          "result": "Passed",
+          "run": "world-v2-integrated-edit.xml"
+        },
+        "Wildfolk.Tests.MetalProgressionTests.WorkbenchRangeIsOneThroughSix(1,True)": {
+          "result": "Passed",
+          "run": "world-v2-integrated-edit.xml"
+        },
+        "Wildfolk.Tests.MetalProgressionTests.WorkbenchRangeIsOneThroughSix(2,True)": {
+          "result": "Passed",
+          "run": "world-v2-integrated-edit.xml"
+        },
+        "Wildfolk.Tests.MetalProgressionTests.WorkbenchRangeIsOneThroughSix(6,True)": {
+          "result": "Passed",
+          "run": "world-v2-integrated-edit.xml"
+        },
+        "Wildfolk.Tests.MetalProgressionTests.WorkbenchRangeIsOneThroughSix(7,False)": {
+          "result": "Passed",
+          "run": "world-v2-integrated-edit.xml"
+        },
+        "Wildfolk.Tests.MetalProgressionTests.WorkbenchRangeIsOneThroughSix(-1,False)": {
+          "result": "Passed",
+          "run": "world-v2-integrated-edit.xml"
+        },
+        "Wildfolk.Tests.NetworkCreatureContractTests.EveryEcologySpawnHasRegisteredServerPrefabAndSharedBrain": {
+          "result": "Passed",
+          "run": "world-v2-edit-recheck.xml"
+        },
+        "Wildfolk.Tests.NetworkCreatureContractTests.MultiplayerWorldHasNoPersistenceAndKeepsPopulationDefinitions": {
+          "result": "Passed",
+          "run": "world-v2-integrated-edit.xml"
+        },
+        "Wildfolk.Tests.NetworkCreatureContractTests.PlayerRequestsNeverContainTargetDamageOrClientHitResult": {
+          "result": "Passed",
+          "run": "world-v2-integrated-edit.xml"
+        },
+        "Wildfolk.Tests.NetworkCreatureContractTests.RangedReplicaEndsPresentationWithoutLaunchingAnotherStone": {
+          "result": "Passed",
+          "run": "world-v2-integrated-edit.xml"
+        },
+        "Wildfolk.Tests.NetworkFacilityModelTests.CraftFailureKeepsAllIngredientsAndSameIngredientsOnlyCraftOnce": {
+          "result": "Passed",
+          "run": "world-v2-integrated-edit.xml"
+        },
+        "Wildfolk.Tests.NetworkFacilityModelTests.FacilityPrefabsAndInteractionComponentsAreRegisteredBeforeSessionStarts": {
+          "result": "Passed",
+          "run": "world-v2-integrated-edit.xml"
+        },
+        "Wildfolk.Tests.NetworkFacilityModelTests.QueueVersionOnlyChangesAtCompletionAndBlockedCargoIsConserved": {
+          "result": "Passed",
+          "run": "world-v2-integrated-edit.xml"
+        },
+        "Wildfolk.Tests.NetworkFoundationTests.CommandsRejectNonFiniteAndClampUntrustedMagnitude": {
+          "result": "Passed",
+          "run": "world-v2-integrated-edit.xml"
+        },
+        "Wildfolk.Tests.NetworkFoundationTests.InternetCodeAndLocalAddressAreDifferentRoutes": {
+          "result": "Passed",
+          "run": "world-v2-integrated-edit.xml"
+        },
+        "Wildfolk.Tests.NetworkFoundationTests.PlayerStateIsServerWritableAndRpcInputsAreOwnerOnly": {
+          "result": "Passed",
+          "run": "world-v2-edit-recheck.xml"
+        },
+        "Wildfolk.Tests.NetworkItemModelTests.DropFailureAndExceptionRestoreOriginalStackWithoutPublishing": {
+          "result": "Passed",
+          "run": "world-v2-integrated-edit.xml"
+        },
+        "Wildfolk.Tests.NetworkItemModelTests.EveryResourceAndGroundDropUsesRegisteredNetworkPrefab": {
+          "result": "Passed",
+          "run": "world-v2-integrated-edit.xml"
+        },
+        "Wildfolk.Tests.NetworkItemModelTests.ReplicaInventoryRejectsMutationAndFullStackPickupIsAtomic": {
+          "result": "Passed",
+          "run": "world-v2-integrated-edit.xml"
+        },
+        "Wildfolk.Tests.NetworkPersistenceModelTests.EveryExistingPlaceableUsesOneSourceDefinitionAndServerBuildingState": {
+          "result": "Passed",
+          "run": "world-v2-integrated-edit.xml"
+        },
+        "Wildfolk.Tests.NetworkPersistenceModelTests.ParticipantMetadataRejectsDuplicatesInvalidIdentityAndMismatchedHost": {
+          "result": "Passed",
+          "run": "world-v2-integrated-edit.xml"
+        },
+        "Wildfolk.Tests.NetworkPersistenceModelTests.SeparateRepositoriesAndDeadParticipantPolicyPreserveSingleplayerRules": {
+          "result": "Passed",
+          "run": "world-v2-integrated-edit.xml"
+        },
+        "Wildfolk.Tests.NetworkPersistenceModelTests.V4MigratesToV6WithoutChangingSingleplayerPayloadAndV5RoundTrips": {
+          "result": "Passed",
+          "run": "world-v2-integrated-edit.xml"
+        },
+        "Wildfolk.Tests.ProgressionTests.ChestsHaveIndependentStoresAndFailedTransfersPreserveBoth": {
+          "result": "Passed",
+          "run": "world-v2-integrated-edit.xml"
+        },
+        "Wildfolk.Tests.ProgressionTests.ChestTransferMergesPartiallyRejectsFullAndSwapsAtomically": {
+          "result": "Passed",
+          "run": "world-v2-integrated-edit.xml"
+        },
+        "Wildfolk.Tests.ProgressionTests.ProcessingRecipesUseSeparateStationsAndNoPlaceholderFuel": {
+          "result": "Passed",
+          "run": "world-v2-integrated-edit.xml"
+        },
+        "Wildfolk.Tests.ProgressionTests.TiersImproveTheirRolesAndGateOreByToolKindAndRank": {
+          "result": "Passed",
+          "run": "world-v2-edit-recheck.xml"
+        },
+        "Wildfolk.Tests.ProgressionTests.WorldTimeCrossesAllPhasesAndLightingIsContinuousAtBoundaries": {
+          "result": "Passed",
+          "run": "world-v2-integrated-edit.xml"
+        },
+        "Wildfolk.Tests.QualityModelTests.LanguagePersistsAsLocalPreferenceAndRefreshesCatalog": {
+          "result": "Passed",
+          "run": "world-v2-integrated-edit.xml"
+        },
+        "Wildfolk.Tests.QualityModelTests.LocalizationHasTwoCompleteLanguagesAndEquivalentPlaceholders": {
+          "result": "Passed",
+          "run": "world-v2-integrated-edit.xml"
+        },
+        "Wildfolk.Tests.QualityModelTests.OutputCapacityAndInventorySpacePreserveReservedCargo": {
+          "result": "Passed",
+          "run": "world-v2-integrated-edit.xml"
+        },
+        "Wildfolk.Tests.QualityModelTests.PopulationUsesRegionalDeficitsAndWorldScopeForRareRules": {
+          "result": "Passed",
+          "run": "world-v2-integrated-edit.xml"
+        },
+        "Wildfolk.Tests.QualityModelTests.QueueAndLegacyBatchRestoreWithoutMaterialDuplication": {
+          "result": "Passed",
+          "run": "world-v2-integrated-edit.xml"
+        },
+        "Wildfolk.Tests.QualityModelTests.QueueReservesInputProcessesSingleUnitsAndWithdrawsOnlyWaiting": {
+          "result": "Passed",
+          "run": "world-v2-integrated-edit.xml"
+        },
+        "Wildfolk.Tests.QualityModelTests.QueueSaveRetainsAlternatingRecipeOrder": {
+          "result": "Passed",
+          "run": "world-v2-integrated-edit.xml"
+        },
+        "Wildfolk.Tests.QualityModelTests.RecoverySaveKeepsExclusionsAndCandidateSequence": {
+          "result": "Passed",
+          "run": "world-v2-integrated-edit.xml"
+        },
+        "Wildfolk.Tests.QualityModelTests.SkillPrerequisiteAndLegacyLearnedRankAreBothRespected": {
+          "result": "Passed",
+          "run": "world-v2-integrated-edit.xml"
+        },
+        "Wildfolk.Tests.SceneContractTests.BalanceDataHasValidCombatRangesAndProgressionItems": {
+          "result": "Passed",
+          "run": "world-v2-last-edit.xml"
+        },
+        "Wildfolk.Tests.SceneContractTests.SavedSceneRetainsPlayableConnectionsAndNonPushingEnemy": {
+          "result": "Passed",
+          "run": "world-v2-edit-recheck.xml"
+        },
+        "Wildfolk.Tests.StabilityModelTests.AtomicSaveBackupRecoversCorruptionAndIgnoresInterruptedTemporaryFile": {
+          "result": "Passed",
+          "run": "world-v2-integrated-edit.xml"
+        },
+        "Wildfolk.Tests.StabilityModelTests.ChecksumAndFutureVersionAreRejected": {
+          "result": "Passed",
+          "run": "world-v2-integrated-edit.xml"
+        },
+        "Wildfolk.Tests.StabilityModelTests.CupStateChangesAreAtomicAndConserveContainersOnFullBags": {
+          "result": "Passed",
+          "run": "world-v2-integrated-edit.xml"
+        },
+        "Wildfolk.Tests.StabilityModelTests.EditorValidatorAcceptsCurrentDataAndDeveloperToolsStayInEditorAssembly": {
+          "result": "Passed",
+          "run": "world-v2-integrated-edit.xml"
+        },
+        "Wildfolk.Tests.StabilityModelTests.EveryCurrentBasicAttackHasOneTargetAndExtensibleShape": {
+          "result": "Passed",
+          "run": "world-v2-edit-recheck.xml"
+        },
+        "Wildfolk.Tests.StabilityModelTests.HostileRelationIsNotAPlayerTeamDespiteDefaultNumericId": {
+          "result": "Passed",
+          "run": "world-v2-integrated-edit.xml"
+        },
+        "Wildfolk.Tests.StabilityModelTests.InventoryRestoreRejectsUnknownAndOversizedStacksWithoutPartialMutation": {
+          "result": "Passed",
+          "run": "world-v2-integrated-edit.xml"
+        },
+        "Wildfolk.Tests.StabilityModelTests.RawWaterPenaltyExpiresPreciselyAndSurvivesStateRoundTrip": {
+          "result": "Passed",
+          "run": "world-v2-integrated-edit.xml"
+        },
+        "Wildfolk.Tests.StabilityModelTests.RenewalAndTerrainDataKeepDifferentResourceTimes": {
+          "result": "Passed",
+          "run": "world-v2-integrated-edit.xml"
+        },
+        "Wildfolk.Tests.SteelProgressionTests.HarvestMethodsAndMinimumToolsAreIndependent": {
+          "result": "Passed",
+          "run": "world-v2-integrated-edit.xml"
+        },
+        "Wildfolk.Tests.SteelProgressionTests.LegacyCargoAndChestMigrationPreserveContentsExactlyOnce": {
+          "result": "Passed",
+          "run": "world-v2-integrated-edit.xml"
+        },
+        "Wildfolk.Tests.SteelProgressionTests.TechnologyUsesSeparateFacilityAndKeepsLegacyMaterials": {
+          "result": "Passed",
+          "run": "world-v2-integrated-edit.xml"
+        },
+        "Wildfolk.Tests.SurvivalSettingsTests.BothEmptyMetersDealIndependentPeriodicDamage": {
+          "result": "Passed",
+          "run": "world-v2-integrated-edit.xml"
+        },
+        "Wildfolk.Tests.SurvivalSettingsTests.CookingReservationRejectsPartialCostWithoutChangingInventory": {
+          "result": "Passed",
+          "run": "world-v2-integrated-edit.xml"
+        },
+        "Wildfolk.Tests.SurvivalSettingsTests.EmptyMetersDamageAtIntervalsAndFoodClampsWithoutWastingAtMax": {
+          "result": "Passed",
+          "run": "world-v2-integrated-edit.xml"
+        },
+        "Wildfolk.Tests.SurvivalSettingsTests.LocalPreferencesClampAndRoundTripThroughSeparateKeys": {
+          "result": "Passed",
+          "run": "world-v2-integrated-edit.xml"
+        },
+        "Wildfolk.Tests.WorldFoundationTests.OceanAndHydrologyHaveNaturalBoundariesAndContinuousTransitions": {
+          "result": "Passed",
+          "run": "world-v2-edit-recheck.xml"
+        },
+        "Wildfolk.Tests.WorldFoundationTests.SameSeedReplaysMacroHydrologySourceAnchorsAndChunks": {
+          "result": "Passed",
+          "run": "world-v2-edit-recheck.xml"
+        },
+        "Wildfolk.Tests.WorldFoundationTests.SeedHasConnectedCavesValidSourcesFourPlayerYieldAndBiomeFamilies(9472026)": {
+          "result": "Passed",
+          "run": "world-v2-edit-recheck.xml"
+        },
+        "Wildfolk.Tests.WorldFoundationTests.SeedHasConnectedCavesValidSourcesFourPlayerYieldAndBiomeFamilies(17491)": {
+          "result": "Passed",
+          "run": "world-v2-edit-recheck.xml"
+        },
+        "Wildfolk.Tests.WorldFoundationTests.SeedHasConnectedCavesValidSourcesFourPlayerYieldAndBiomeFamilies(-81027)": {
+          "result": "Passed",
+          "run": "world-v2-edit-recheck.xml"
+        },
+        "Wildfolk.Tests.WorldFoundationTests.SeedHasConnectedCavesValidSourcesFourPlayerYieldAndBiomeFamilies(193080127)": {
+          "result": "Passed",
+          "run": "world-v2-edit-recheck.xml"
+        },
+        "Wildfolk.Tests.WorldFoundationTests.SourcesUseEnvironmentalTagsAndMineralsAreFinite": {
+          "result": "Passed",
+          "run": "world-v2-edit-recheck.xml"
+        },
+        "Wildfolk.Tests.WorldFoundationTests.SubSeedsAreIsolatedAndLegacyLayoutIsVersionBound": {
+          "result": "Passed",
+          "run": "world-v2-edit-recheck.xml"
+        },
+        "Wildfolk.Tests.WorldFoundationTests.VegetationDensityDoesNotMoveOreRiverOrPoi": {
+          "result": "Passed",
+          "run": "world-v2-edit-recheck.xml"
+        },
+        "Wildfolk.Tests.WorldGenerationTests.GroundActuallyShowsDirtRoadAndFordDiffersFromDeepWater": {
+          "result": "Passed",
+          "run": "world-v2-integrated-edit.xml"
+        },
+        "Wildfolk.Tests.WorldGenerationTests.ManySeedsHaveClearSpawnNearbySuppliesRareOreAndNoOverlaps": {
+          "result": "Passed",
+          "run": "world-v2-integrated-edit.xml"
+        },
+        "Wildfolk.Tests.WorldGenerationTests.PartialTransferPreservesTotalsOnFullOrDifferentTargets": {
+          "result": "Passed",
+          "run": "world-v2-integrated-edit.xml"
+        },
+        "Wildfolk.Tests.WorldGenerationTests.PopulationAndLootDataAreBoundedAndOnlyOneBiomeExists": {
+          "result": "Passed",
+          "run": "world-v2-integrated-edit.xml"
+        },
+        "Wildfolk.Tests.WorldGenerationTests.RiverHasWalkableCrossingAndLandRemainsConnected": {
+          "result": "Passed",
+          "run": "world-v2-integrated-edit.xml"
+        },
+        "Wildfolk.Tests.WorldGenerationTests.SeedRecreatesTerrainRoadsAndResourcesWithoutUsingUnityRandom": {
+          "result": "Passed",
+          "run": "world-v2-integrated-edit.xml"
+        },
+        "Wildfolk.Tests.WorldGenerationTests.TreeHitCountsUpgradeRecipesAndFurnaceCapacityMatchActualData": {
+          "result": "Passed",
+          "run": "world-v2-integrated-edit.xml"
+        }
+      },
+      "method": "One integrated baseline, followed only by failed or changed focused cases; not a fresh all-green full-suite execution."
+    },
+    "PlayMode": {
+      "total": 113,
+      "passed": 113,
+      "cases": {
+        "Wildfolk.Tests.CharacterPassPlayTests.ArmorBothSlotsReduceDamagePreserveMinimumAndSurvivalBypass": {
+          "result": "Passed",
+          "run": "world-v2-integrated-play.xml"
+        },
+        "Wildfolk.Tests.CharacterPassPlayTests.CraftingCategoriesAndCraftableFilterReflectActualRecipes": {
+          "result": "Passed",
+          "run": "world-v2-integrated-play.xml"
+        },
+        "Wildfolk.Tests.CharacterPassPlayTests.DashCannotCrossDeepWaterAndCannotRunWithInventoryOrPauseOpen": {
+          "result": "Passed",
+          "run": "world-v2-integrated-play.xml"
+        },
+        "Wildfolk.Tests.CharacterPassPlayTests.DashUsesFacingAndMovementDirectionCostsStaminaAndStopsAtWall": {
+          "result": "Passed",
+          "run": "world-v2-integrated-play.xml"
+        },
+        "Wildfolk.Tests.CharacterPassPlayTests.DeveloperProfilesUseCurrentDataRemainEditorOnlyAndDashButtonRuns": {
+          "result": "Passed",
+          "run": "world-v2-integrated-play.xml"
+        },
+        "Wildfolk.Tests.CharacterPassPlayTests.GrowthSkillsEquipmentAndStaminaSurviveValidatedSaveRoundTrip": {
+          "result": "Passed",
+          "run": "world-v2-integrated-play.xml"
+        },
+        "Wildfolk.Tests.CharacterPassPlayTests.ProfileOpensIndependentTreeAndInventoryOwnsEquipment": {
+          "result": "Passed",
+          "run": "world-v2-integrated-play.xml"
+        },
+        "Wildfolk.Tests.CharacterPassPlayTests.SprintThroughInputDrainsStopsAtCriticalNeedsAndHUDHidesAfterRecovery": {
+          "result": "Passed",
+          "run": "world-v2-integrated-play.xml"
+        },
+        "Wildfolk.Tests.CharacterPassPlayTests.V1MigrationPreservesWorldInventoryAndOldXPWithoutForcingNewGame": {
+          "result": "Passed",
+          "run": "world-v2-integrated-play.xml"
+        },
+        "Wildfolk.Tests.CharacterPassPlayTests.WorkbenchUpgradeKeepsTierIRecipesAndPersistsTierIIChestContents": {
+          "result": "Passed",
+          "run": "world-v2-integrated-play.xml"
+        },
+        "Wildfolk.Tests.EcologyPlayTests.ActualPointerArmorDragSwapUnequipAndUse": {
+          "result": "Passed",
+          "run": "world-v2-integrated-play.xml"
+        },
+        "Wildfolk.Tests.EcologyPlayTests.AnimalsSeparateSoftlyAndHerdAlertStaysLocal": {
+          "result": "Passed",
+          "run": "world-v2-integrated-play.xml"
+        },
+        "Wildfolk.Tests.EcologyPlayTests.CampPopulationRefillsNewResidentsAndPersists": {
+          "result": "Passed",
+          "run": "world-v2-integrated-play.xml"
+        },
+        "Wildfolk.Tests.EcologyPlayTests.CombatSandboxDoesNotCreateDetachedBrownBodyRenderers": {
+          "result": "Passed",
+          "run": "world-v2-integrated-play.xml"
+        },
+        "Wildfolk.Tests.EcologyPlayTests.DoorHingeEasesAndColliderMatchesPassageAndSave": {
+          "result": "Passed",
+          "run": "world-v2-last-play.xml"
+        },
+        "Wildfolk.Tests.EcologyPlayTests.ModalLayerIsCenteredAndBlocksBagAndGameplay": {
+          "result": "Passed",
+          "run": "world-v2-integrated-play.xml"
+        },
+        "Wildfolk.Tests.EcologyPlayTests.PointBlankAndFacingMatrixForFistAxePickaxeSword": {
+          "result": "Passed",
+          "run": "world-v2-integrated-play.xml"
+        },
+        "Wildfolk.Tests.EcologyPlayTests.RegionalAnimalRecoveryUsesNewIdsAndRoundTripsGroups": {
+          "result": "Passed",
+          "run": "world-v2-integrated-play.xml"
+        },
+        "Wildfolk.Tests.EcologyPlayTests.SkeletonUsesNightMeleeVariantAndIndependentLightTrait": {
+          "result": "Passed",
+          "run": "world-v2-play-recheck.xml"
+        },
+        "Wildfolk.Tests.EcologyPlayTests.SlingshotDrawReleaseProjectileDamageAndBoundedReposition": {
+          "result": "Passed",
+          "run": "world-v2-integrated-play.xml"
+        },
+        "Wildfolk.Tests.EcologyPlayTests.V3LoadPreservesOldAnimalsEquipmentDoorAndWorld": {
+          "result": "Passed",
+          "run": "world-v2-integrated-play.xml"
+        },
+        "Wildfolk.Tests.EcologyPlayTests.WarbandAssistIsBoundedAndRangedCountVaries": {
+          "result": "Passed",
+          "run": "world-v2-integrated-play.xml"
+        },
+        "Wildfolk.Tests.FrontendPlayTests.ActualButtonsStartSaveReturnConfirmCancelAndContinueWithoutDuplicateServices": {
+          "result": "Passed",
+          "run": "world-v2-integrated-play.xml"
+        },
+        "Wildfolk.Tests.FrontendPlayTests.EmptyAndCorruptSaveDisableContinueAndBackupIsValidated": {
+          "result": "Passed",
+          "run": "world-v2-integrated-play.xml"
+        },
+        "Wildfolk.Tests.FrontendPlayTests.HomeIdleKeepsStaticUiAndNoGameplaySimulation": {
+          "result": "Passed",
+          "run": "world-v2-integrated-play.xml"
+        },
+        "Wildfolk.Tests.FrontendPlayTests.SharedSettingsAndBilingualLabelsSurviveSceneChanges": {
+          "result": "Passed",
+          "run": "world-v2-integrated-play.xml"
+        },
+        "Wildfolk.Tests.GameplayPlayTests.BossHudBindsRealHealthAndUnbindsWithoutLeavingFakeBoss": {
+          "result": "Passed",
+          "run": "world-v2-integrated-play.xml"
+        },
+        "Wildfolk.Tests.GameplayPlayTests.DefeatCanRestartThroughActualUIButton": {
+          "result": "Passed",
+          "run": "world-v2-integrated-play.xml"
+        },
+        "Wildfolk.Tests.GameplayPlayTests.EnemyTelegraphsDamagesWithoutPhysicsPushAndDiesToAttackInput": {
+          "result": "Passed",
+          "run": "world-v2-integrated-play.xml"
+        },
+        "Wildfolk.Tests.GameplayPlayTests.FacingMovesEyesAndHandsWithoutRotatingBodyAndKeepsLastDirection": {
+          "result": "Passed",
+          "run": "world-v2-integrated-play.xml"
+        },
+        "Wildfolk.Tests.GameplayPlayTests.HotbarInventoryAndToolsShareRealSlotsAndApplyResourceEfficiencies": {
+          "result": "Passed",
+          "run": "world-v2-play-recheck.xml"
+        },
+        "Wildfolk.Tests.GameplayPlayTests.InventoryButtonsOpenCloseAndModalBlocksGameplayInput": {
+          "result": "Passed",
+          "run": "world-v2-integrated-play.xml"
+        },
+        "Wildfolk.Tests.GameplayPlayTests.PointerDragMovesDiagonallyReturnsThumbAndCameraFollows": {
+          "result": "Passed",
+          "run": "world-v2-integrated-play.xml"
+        },
+        "Wildfolk.Tests.GameplayPlayTests.PunchesAlternateAndResourcesDropBeforeInventoryPickupAndStack": {
+          "result": "Passed",
+          "run": "world-v2-play-recheck.xml"
+        },
+        "Wildfolk.Tests.MetalProgressionPlayTests.BasicRejectsSteelAdvancedNeedsNoNearbyBenchAndCargoSurvivesLoad": {
+          "result": "Passed",
+          "run": "world-v2-integrated-play.xml"
+        },
+        "Wildfolk.Tests.MetalProgressionPlayTests.ChestScrollWheelTouchAndBottomSlotDragPreserveContents": {
+          "result": "Passed",
+          "run": "world-v2-integrated-play.xml"
+        },
+        "Wildfolk.Tests.MetalProgressionPlayTests.RejectedMiningHasZeroDamageProgressLootOrSuccessSignalsAndValidToolHitsOnce": {
+          "result": "Passed",
+          "run": "world-v2-integrated-play.xml"
+        },
+        "Wildfolk.Tests.MetalProgressionPlayTests.UpgradeUiScrollsArbitraryCostsAndPreservesTierAndMetalsAcrossSnapshotLoad": {
+          "result": "Passed",
+          "run": "world-v2-integrated-play.xml"
+        },
+        "Wildfolk.Tests.MetalRenderPlayTests.NaturalOreViewsAndFiveMaterialWorkbenchLayoutAt1920By1080": {
+          "result": "Passed",
+          "run": "world-v2-play-recheck.xml"
+        },
+        "Wildfolk.Tests.NeedsCookingPlayTests.CampfireRecipePlacementCookingProgressAndTakeUseActualButtons": {
+          "result": "Passed",
+          "run": "world-v2-integrated-play.xml"
+        },
+        "Wildfolk.Tests.NeedsCookingPlayTests.ControlSizeLimitsKeepTouchControlsSeparateAndModalCentered": {
+          "result": "Passed",
+          "run": "world-v2-integrated-play.xml"
+        },
+        "Wildfolk.Tests.NeedsCookingPlayTests.DestroyedFireReturnsUncookedInputAndRangeCannotStartCooking": {
+          "result": "Passed",
+          "run": "world-v2-integrated-play.xml"
+        },
+        "Wildfolk.Tests.NeedsCookingPlayTests.FullInventoryKeepsCookedOutputAndDestroyedFireDropsCargo": {
+          "result": "Passed",
+          "run": "world-v2-integrated-play.xml"
+        },
+        "Wildfolk.Tests.NeedsCookingPlayTests.MultiplayerPauseBlocksLocalInputButContinuesWorldNeedsAndEnemy": {
+          "result": "Passed",
+          "run": "world-v2-integrated-play.xml"
+        },
+        "Wildfolk.Tests.NeedsCookingPlayTests.OneNeutralMeatSourceDropsRawWithoutAddingAnEnemyType": {
+          "result": "Passed",
+          "run": "world-v2-integrated-play.xml"
+        },
+        "Wildfolk.Tests.NeedsCookingPlayTests.PauseSettingsSlidersApplyToControlsAndRealAudioChannels": {
+          "result": "Passed",
+          "run": "world-v2-integrated-play.xml"
+        },
+        "Wildfolk.Tests.NeedsCookingPlayTests.WaterInteractionAndSelectedConsumptionDoNotWasteFullMeters": {
+          "result": "Passed",
+          "run": "world-v2-integrated-play.xml"
+        },
+        "Wildfolk.Tests.NetworkCreaturePlayTests.HostSpawnGroupCombatAndDeathHaveOneAuthority": {
+          "result": "Passed",
+          "run": "world-v2-play-recheck.xml"
+        },
+        "Wildfolk.Tests.NetworkCreaturePlayTests.HostTargetsLivingPlayersAndLaunchesOneAuthoritativeProjectile": {
+          "result": "Passed",
+          "run": "world-v2-play-recheck.xml"
+        },
+        "Wildfolk.Tests.NetworkCreaturePlayTests.LethalReentrantDamageFiresDeathOnceAndPoolResetRestoresSingleplayerHealth": {
+          "result": "Passed",
+          "run": "world-v2-integrated-play.xml"
+        },
+        "Wildfolk.Tests.NetworkCreaturePlayTests.UnspawnedReplicaCannotRunBrainDamageAlertsOrSpawnPopulation": {
+          "result": "Passed",
+          "run": "world-v2-integrated-play.xml"
+        },
+        "Wildfolk.Tests.NetworkFacilityPlayTests.CampfireMeatAndWaterRemainSharedAfterActorRetires": {
+          "result": "Passed",
+          "run": "world-v2-play-recheck.xml"
+        },
+        "Wildfolk.Tests.NetworkFacilityPlayTests.ChestWithdrawDepositSplitStaleAndFullBagHaveNoLoss": {
+          "result": "Passed",
+          "run": "world-v2-play-recheck.xml"
+        },
+        "Wildfolk.Tests.NetworkFacilityPlayTests.ExistingUiUsesSharedChestAndHandCraftingWithLocalActorBindings": {
+          "result": "Passed",
+          "run": "world-v2-play-recheck.xml"
+        },
+        "Wildfolk.Tests.NetworkFacilityPlayTests.FurnaceQueueAndCompletionRacesKeepOutputAndReservedInputs": {
+          "result": "Passed",
+          "run": "world-v2-play-recheck.xml"
+        },
+        "Wildfolk.Tests.NetworkFacilityPlayTests.HandCraftAtomicityAndWorkbenchUpgradeCommitOnce": {
+          "result": "Passed",
+          "run": "world-v2-play-recheck.xml"
+        },
+        "Wildfolk.Tests.NetworkFacilityPlayTests.SteelUsesSeparateHostFacilityAndReservationsCommitOnce": {
+          "result": "Passed",
+          "run": "world-v2-play-recheck.xml"
+        },
+        "Wildfolk.Tests.NetworkFoundationPlayTests.LocalHostSpawnsAuthoritativePlayerWithoutSingleplayerSaveService": {
+          "result": "Passed",
+          "run": "world-v2-play-recheck.xml"
+        },
+        "Wildfolk.Tests.NetworkItemPlayTests.CreatureLootAndNearbySessionRewardsCommitExactlyOnce": {
+          "result": "Passed",
+          "run": "world-v2-play-recheck.xml"
+        },
+        "Wildfolk.Tests.NetworkItemPlayTests.ExistingInventoryUiSplitsMovesSelectsAndEquipsThroughHost": {
+          "result": "Passed",
+          "run": "world-v2-play-recheck.xml"
+        },
+        "Wildfolk.Tests.NetworkItemPlayTests.OreValidationPublishesOnlyAcceptedHitsAndFinalHitSpawnsLootExactlyOnce": {
+          "result": "Passed",
+          "run": "world-v2-play-recheck.xml"
+        },
+        "Wildfolk.Tests.NetworkItemPlayTests.PickupRaceFullBagDropReplayAndRetiredPlayerCannotDuplicate": {
+          "result": "Passed",
+          "run": "world-v2-play-recheck.xml"
+        },
+        "Wildfolk.Tests.NetworkItemPlayTests.SharedResourceFinalHitDropsOnceAndRecoversWithNewIdentity": {
+          "result": "Passed",
+          "run": "world-v2-play-recheck.xml"
+        },
+        "Wildfolk.Tests.NetworkPersistencePlayTests.HostSaveRehostRestoresWorldCargoGroundEcologyAndPlayerWithoutDuplicates": {
+          "result": "Passed",
+          "run": "world-v2-play-recheck.xml"
+        },
+        "Wildfolk.Tests.NetworkPersistencePlayTests.PlacementRaceRollbackAndEveryCurrentBuildingUseExistingDefinitions": {
+          "result": "Passed",
+          "run": "world-v2-play-recheck.xml"
+        },
+        "Wildfolk.Tests.NetworkPersistencePlayTests.RetireAndRejoinSameIdentityRestoreOnceAndRejectConcurrentIdentity": {
+          "result": "Passed",
+          "run": "world-v2-play-recheck.xml"
+        },
+        "Wildfolk.Tests.NetworkPersistencePlayTests.SaveFailureKeepsHostSessionAndCorruptLoadCannotCreateReplacementWorld": {
+          "result": "Passed",
+          "run": "world-v2-play-recheck.xml"
+        },
+        "Wildfolk.Tests.NetworkPersistencePlayTests.WallAdjacencyAndDoorDesiredStateRejectCompetingToggle": {
+          "result": "Passed",
+          "run": "world-v2-play-recheck.xml"
+        },
+        "Wildfolk.Tests.ProgressionPlayTests.ArmorFoundationEquipsOneSlotAndSurvivalDamageBypassesDefense": {
+          "result": "Passed",
+          "run": "world-v2-integrated-play.xml"
+        },
+        "Wildfolk.Tests.ProgressionPlayTests.ChestUITransfersMergesSwapsAndRefreshesEquippedHotbar": {
+          "result": "Passed",
+          "run": "world-v2-integrated-play.xml"
+        },
+        "Wildfolk.Tests.ProgressionPlayTests.ChickenWandersFleesOnApproachAndDoesNotAttack": {
+          "result": "Passed",
+          "run": "world-v2-integrated-play.xml"
+        },
+        "Wildfolk.Tests.ProgressionPlayTests.DoorUseOpensClosesAndRejectsClosingOnAnActor": {
+          "result": "Passed",
+          "run": "world-v2-integrated-play.xml"
+        },
+        "Wildfolk.Tests.ProgressionPlayTests.FurnaceSmeltsWithProgressAndWorkbenchMakesIronEquipment": {
+          "result": "Passed",
+          "run": "world-v2-integrated-play.xml"
+        },
+        "Wildfolk.Tests.ProgressionPlayTests.NightSpawnUsesSameZombieOutsideCameraAndStopsAtCap": {
+          "result": "Passed",
+          "run": "world-v2-integrated-play.xml"
+        },
+        "Wildfolk.Tests.ProgressionPlayTests.OreRequiresStonePickaxeAndDropsRealOreAfterValidHits": {
+          "result": "Passed",
+          "run": "world-v2-integrated-play.xml"
+        },
+        "Wildfolk.Tests.ProgressionPlayTests.RecipeScrollCanReachAndCraftStorageChestThroughPointerInput": {
+          "result": "Passed",
+          "run": "world-v2-integrated-play.xml"
+        },
+        "Wildfolk.Tests.ProgressionPlayTests.ZombieIsBlockedByWallAndDealsVisibleHealthDamage": {
+          "result": "Passed",
+          "run": "world-v2-integrated-play.xml"
+        },
+        "Wildfolk.Tests.QualityPlayTests.ArmorAndHandsShareActualWalkingMotionRoot": {
+          "result": "Passed",
+          "run": "world-v2-integrated-play.xml"
+        },
+        "Wildfolk.Tests.QualityPlayTests.FurnaceQueueButtonsReserveReturnCollectAndPersist": {
+          "result": "Passed",
+          "run": "world-v2-integrated-play.xml"
+        },
+        "Wildfolk.Tests.QualityPlayTests.NearStaminaTracksPlayerAndFadesAtFull": {
+          "result": "Passed",
+          "run": "world-v2-integrated-play.xml"
+        },
+        "Wildfolk.Tests.QualityPlayTests.RecipeFirstScreenGroupsAllAndColorsEachIngredient": {
+          "result": "Passed",
+          "run": "world-v2-integrated-play.xml"
+        },
+        "Wildfolk.Tests.QualityPlayTests.SettingsSwitchRefreshesExistingLabelsAndUsesKoreanGlyphs": {
+          "result": "Passed",
+          "run": "world-v2-integrated-play.xml"
+        },
+        "Wildfolk.Tests.QualityPlayTests.V2MigrationKeepsEquipmentLearnedSkillsDestroyedResourcesAndReservedBatch": {
+          "result": "Passed",
+          "run": "world-v2-integrated-play.xml"
+        },
+        "Wildfolk.Tests.StabilityPlayTests.AnimalRecoveryPersistsRegionalTimerAndCreatesNewIdentityOutsideCamera": {
+          "result": "Passed",
+          "run": "world-v2-integrated-play.xml"
+        },
+        "Wildfolk.Tests.StabilityPlayTests.CupCollectionRawPenaltyBoilingAndReturnedCupWorkTogether": {
+          "result": "Passed",
+          "run": "world-v2-integrated-play.xml"
+        },
+        "Wildfolk.Tests.StabilityPlayTests.EveryBasicWeaponHitsExactlyOneForwardTarget": {
+          "result": "Passed",
+          "run": "world-v2-play-recheck.xml"
+        },
+        "Wildfolk.Tests.StabilityPlayTests.FriendlyFilteringAndMultiTargetProfileDoNotBlockHostiles": {
+          "result": "Passed",
+          "run": "world-v2-integrated-play.xml"
+        },
+        "Wildfolk.Tests.StabilityPlayTests.GoblinPersonalSpaceAndSoftSeparationWorkWithoutPlayerPush": {
+          "result": "Passed",
+          "run": "world-v2-integrated-play.xml"
+        },
+        "Wildfolk.Tests.StabilityPlayTests.LongPressSplitHoldsChosenAmountUntilExplicitPlacementOrCancel": {
+          "result": "Passed",
+          "run": "world-v2-integrated-play.xml"
+        },
+        "Wildfolk.Tests.StabilityPlayTests.PointBlankNormalEdgeAndOutsideRespectRange": {
+          "result": "Passed",
+          "run": "world-v2-integrated-play.xml"
+        },
+        "Wildfolk.Tests.StabilityPlayTests.PooledPickupsResetCountsAndReuseWithoutDuplicateRewards": {
+          "result": "Passed",
+          "run": "world-v2-integrated-play.xml"
+        },
+        "Wildfolk.Tests.StabilityPlayTests.RegionalRecoveryKeepsDestroyedIdentityAndExclusionsAcrossSave": {
+          "result": "Passed",
+          "run": "world-v2-integrated-play.xml"
+        },
+        "Wildfolk.Tests.StabilityPlayTests.RemoteIdleZombiesReturnSlotsAfterGraceAndThreatMovesToNewRegion": {
+          "result": "Passed",
+          "run": "world-v2-integrated-play.xml"
+        },
+        "Wildfolk.Tests.StabilityPlayTests.SaveReloadRestoresPlayerContainersFacilitiesCargoAndResourceDeltas": {
+          "result": "Passed",
+          "run": "world-v2-integrated-play.xml"
+        },
+        "Wildfolk.Tests.StabilityPlayTests.ShallowTerrainModifierUsesDeviceIndependentMoveCommands": {
+          "result": "Passed",
+          "run": "world-v2-integrated-play.xml"
+        },
+        "Wildfolk.Tests.SurvivalLoopPlayTests.BareHandsToPlacedWorkbenchToCraftedToolsAndSwordThroughActualUI": {
+          "result": "Passed",
+          "run": "world-v2-integrated-play.xml"
+        },
+        "Wildfolk.Tests.SurvivalLoopPlayTests.CraftIntoStorageThenDragToHotbarUpdatesPlacementImmediately": {
+          "result": "Passed",
+          "run": "world-v2-integrated-play.xml"
+        },
+        "Wildfolk.Tests.SurvivalLoopPlayTests.InventoryKeepsEnemyAliveWhilePauseHasSeparateWorldPolicy": {
+          "result": "Passed",
+          "run": "world-v2-integrated-play.xml"
+        },
+        "Wildfolk.Tests.SurvivalLoopPlayTests.NewGameStartsWith36EmptySlotsAndOnlyHandCrafting": {
+          "result": "Passed",
+          "run": "world-v2-integrated-play.xml"
+        },
+        "Wildfolk.Tests.SurvivalLoopPlayTests.PointerDragMovesMergesSwapsAndRefreshesEquipmentWithoutReopening": {
+          "result": "Passed",
+          "run": "world-v2-integrated-play.xml"
+        },
+        "Wildfolk.Tests.SurvivalLoopPlayTests.WorkbenchRecipesRequireLiveStationWithinRangeAndCannotLoseItems": {
+          "result": "Passed",
+          "run": "world-v2-integrated-play.xml"
+        },
+        "Wildfolk.Tests.WorldFoundationHostTests.CurrentHostKeepsRemoteChunksCargoOreAndCaveAcrossRehost": {
+          "result": "Passed",
+          "run": "world-v2-play-recheck.xml"
+        },
+        "Wildfolk.Tests.WorldFoundationPlayTests.CavernPortalConnectsSurfaceRoomGraphDeepBranchAndReturn": {
+          "result": "Passed",
+          "run": "world-v2-play-recheck.xml"
+        },
+        "Wildfolk.Tests.WorldFoundationPlayTests.ChunkUnloadPreservesFiniteOreCargoChestAndSaveVersion": {
+          "result": "Passed",
+          "run": "world-v2-play-recheck.xml"
+        },
+        "Wildfolk.Tests.WorldFoundationPlayTests.CurrentMetalLoopAndLegacyLayoutRemainSeparate": {
+          "result": "Passed",
+          "run": "world-v2-play-recheck.xml"
+        },
+        "Wildfolk.Tests.WorldPassPlayTests.ActualGeneratedWorldHasWaterCollisionsFordAndGroundSorting": {
+          "result": "Passed",
+          "run": "world-v2-play-recheck.xml"
+        },
+        "Wildfolk.Tests.WorldPassPlayTests.AttackNeverOpensStationOrChestAndInteractDoes": {
+          "result": "Passed",
+          "run": "world-v2-integrated-play.xml"
+        },
+        "Wildfolk.Tests.WorldPassPlayTests.DawnBurrowsWithoutRewardsAndEmergenceCannotAttack": {
+          "result": "Passed",
+          "run": "world-v2-integrated-play.xml"
+        },
+        "Wildfolk.Tests.WorldPassPlayTests.FurnaceSequentialQueuePreservesFinishedAndReservedCargoWhenDestroyed": {
+          "result": "Passed",
+          "run": "world-v2-integrated-play.xml"
+        },
+        "Wildfolk.Tests.WorldPassPlayTests.GoblinPatrolsAggrosOnlyOnTerritoryOrHitAndGivesSeparateRewards": {
+          "result": "Passed",
+          "run": "world-v2-integrated-play.xml"
+        },
+        "Wildfolk.Tests.WorldPassPlayTests.SafeLightBlocksNewAggroAndEndsExistingPursuitAfterGrace": {
+          "result": "Passed",
+          "run": "world-v2-integrated-play.xml"
+        },
+        "Wildfolk.Tests.WorldPassPlayTests.SplitHalfViaTouchButtonAndExplicitDropZonePreserveItems": {
+          "result": "Passed",
+          "run": "world-v2-resumed-split.xml"
+        },
+        "Wildfolk.Tests.WorldPassPlayTests.SurvivalRegeneratesOnlyAfterDelayAndWhenBothMetersAreHigh": {
+          "result": "Passed",
+          "run": "world-v2-integrated-play.xml"
+        }
+      },
+      "method": "One integrated baseline, followed only by failed or changed focused cases; not a fresh all-green full-suite execution."
+    }
+  },
+  "timing": {
+    "first_session": {
+      "start_utc": "2026-10-17T00:53:05Z",
+      "stop_utc": "2026-10-17T01:54:42Z",
+      "elapsed_seconds": 3697
+    },
+    "resume_start_utc": "2026-10-18T00:22:23Z",
+    "resume_automated_case": {
+      "start_utc": "2026-10-18T00:23:22Z",
+      "end_utc": "2026-10-18T00:23:26Z",
+      "runner_seconds": 3.8753024
+    },
+    "resume_direct_ui_completed_utc": "2026-10-18T00:25:03Z",
+    "documentation_started_utc": "2026-10-18T00:25:03Z",
+    "note": "First-session phase windows overlap. Pause between sessions is excluded. Import/compile/startup is outside the NUnit runner duration."
+  },
+  "finalized_before_commit_utc": "2026-10-18T00:25:46.586780+00:00"
+}

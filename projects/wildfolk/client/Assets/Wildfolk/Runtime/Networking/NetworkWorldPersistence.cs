@@ -16,7 +16,7 @@ namespace Wildfolk
         public void InitializeWorld()
         {
             if(!world.IsAuthority)return;var game=NetworkSession.Instance.PreparedWorld;
-            if(game==null){WorldId=Guid.NewGuid().ToString("N");world.World.Generate(world.World.Definition.DefaultSeed);world.CreateFacilities();}
+            if(game==null){WorldId=Guid.NewGuid().ToString("N");world.World.Generate(world.World.Definition.DefaultSeed,true,NetworkSession.Instance.NewWorldGenerationVersion);world.CreateFacilities();}
             else
             {
                 Rules.Validate(game);WorldId=game.Multiplayer.WorldId;

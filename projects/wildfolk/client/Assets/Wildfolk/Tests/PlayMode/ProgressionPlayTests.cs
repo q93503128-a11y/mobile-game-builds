@@ -15,7 +15,7 @@ namespace Wildfolk.Tests
         private WorldClock clock;
         [UnitySetUp] public IEnumerator Load()
         {
-            input=new PlayPointerDriver();Time.timeScale=1;WorldGenerator.SelectedSeed=9472026;yield return SceneManager.LoadSceneAsync("Wildfolk");yield return null;yield return null;
+            input=new PlayPointerDriver();Time.timeScale=1;WorldGenerator.SelectedGenerationVersion=1;WorldGenerator.SelectedSeed=9472026;yield return SceneManager.LoadSceneAsync("Wildfolk");yield return null;yield return null;
             player=Object.FindFirstObjectByType<PlayerMotor>();inventory=player.GetComponent<PlayerInventory>();crafting=player.GetComponent<PlayerCrafting>();hud=Object.FindFirstObjectByType<GameplayHud>();clock=Object.FindFirstObjectByType<WorldClock>();
         }
         [UnityTearDown] public IEnumerator Release(){input.Dispose();Time.timeScale=1;yield return null;}

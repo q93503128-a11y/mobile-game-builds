@@ -16,6 +16,9 @@ namespace Wildfolk
         public Sprite Grass,Fern;
         public ResourceRegeneration Renewal;
         public AnimalPopulation Animals;
+        public Sprite[] PoiSprites;
+        public WorldChunkRuntime Chunks {get;private set;}
+        public static int SelectedGenerationVersion=WorldGenerationVersion.Current;
         public WorldMap Map { get; private set; }
         public int Seed=>Map.Seed;
         public float GenerationMilliseconds { get; private set; }
@@ -23,24 +26,26 @@ namespace Wildfolk
         public static int RandomSeed()=>System.Guid.NewGuid().GetHashCode();
         public bool GenerateOnAwake=true;
         private void Awake(){if(GenerateOnAwake)Generate(SelectedSeed ?? Definition.DefaultSeed);}
-        public void Generate(int seed,bool populate=true)
+        public void Generate(int seed,bool populate=true,int generationVersion=0)
         {
-            var regenerate=Map!=null;
+            var regenerate=Map!=null;if(regenerate)GetComponent<ZombieSpawner>().ReleaseWorld();
             var started=System.Diagnostics.Stopwatch.StartNew();
             for(var i=Environment.childCount-1;i>=0;i--){var child=Environment.GetChild(i).gameObject;child.SetActive(false);Destroy(child);}
-            Map=new WorldMap(Definition,seed);Renewal.ResetWorld();Region.Size=Definition.Size-Vector2.one*3;Terrain.Build(Map);
+            Map=new WorldMap(Definition,seed,generationVersion==0 ? (Map?.GenerationVersion??SelectedGenerationVersion) : generationVersion);Renewal.ResetWorld();Region.Size=Map.Size-Vector2.one*3;Terrain.Build(Map);
             var playerBody=Player.GetComponent<Rigidbody2D>();if(playerBody!=null)playerBody.position=Map.Spawn;Player.transform.position=Map.Spawn;
+            if(Map.Streamed){if(Chunks==null)Chunks=gameObject.GetComponent<WorldChunkRuntime>()??gameObject.AddComponent<WorldChunkRuntime>();Chunks.Initialize(this);if(populate && SimulationAuthority.Allows(this)){Animals.Generate();GetComponent<GoblinSpawner>().GenerateCamps();}Chunks.Reconcile();started.Stop();GenerationMilliseconds=(float)started.Elapsed.TotalMilliseconds;return;}
+            if(Chunks!=null)Chunks.enabled=false;
             if(populate && SimulationAuthority.Allows(this))for(var index=0;index<Map.Resources.Count;index++)
             {var placement=Map.Resources[index];CreateResource("r"+index,placement.Rule,placement.Position,placement.Scale);}
             WaterGeometry();Decorations(seed);if(populate && SimulationAuthority.Allows(this))Animals.Generate();
             if(regenerate && populate && SimulationAuthority.Allows(this))GetComponent<GoblinSpawner>().GenerateCamps();
             started.Stop();GenerationMilliseconds=(float)started.Elapsed.TotalMilliseconds;
         }
-        public ResourceNode CreateResource(string id,int rule,Vector2 position,float scale)
+        public ResourceNode CreateResource(string id,int rule,Vector2 position,float scale,Transform parent=null)
         {
-            var resource=NetworkSpawnFactory.Spawn(Definition.Resources[rule].Prefab,position,Quaternion.identity,Environment);
+            var resource=NetworkSpawnFactory.Spawn(Definition.Resources[rule].Prefab,position,Quaternion.identity,parent??Environment);
             resource.transform.localScale=Vector3.one*scale;resource.Player=Player;resource.PickupPrefab=Pickup;resource.Settings=Settings;
-            var number=int.Parse(id.Substring(1));
+            var number=int.TryParse(id.Substring(1),out var parsed) ? parsed : WorldSeeds.Derive(Seed,SeedDomain.Vegetation,Mathf.RoundToInt(position.x),Mathf.RoundToInt(position.y));
             if(Definition.Resources[rule].AlternateSprite!=null && number%3==0)resource.Visual.sprite=Definition.Resources[rule].AlternateSprite;
             Renewal.Register(resource,id,rule);return resource;
         }

@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 namespace Wildfolk
 {
-    public sealed class ZombieSpawner : MonoBehaviour
+    public sealed partial class ZombieSpawner : MonoBehaviour
     {
         public ZombieSpawnDefinition Definition;
         public EnemyController Prefab;
@@ -26,6 +26,7 @@ namespace Wildfolk
         public void Restore(NightCreatureSnapshot[] states)
         {
             if(!SimulationAuthority.Allows(this))return;
+            if(World.Map.Streamed){ReleaseWorld();sleepingNight.AddRange(states);restored=true;return;}
             foreach(var state in states)
             {
                 var enemy=PrefabPool.Spawn(SpeciesPrefab(state.Species),state.Position,Quaternion.identity);enemy.Session=Session;enemy.PlayerHealth=Player;enemy.Clock=Clock;enemy.Lifecycle.Clock=Clock;enemy.Lifecycle.Definition=Definition;enemy.Lifecycle.RestoreActive();enemy.OwnHealth.RestoreHealth(state.HP);enemy.GetComponent<LootOnDeath>().Player=World.Player;if(enemy.Variant!=null)enemy.Variant.SetEquipped(!string.IsNullOrEmpty(state.Variant));Register(enemy);
@@ -44,7 +45,7 @@ namespace Wildfolk
             var navigation=World.GetComponent<WorldNavigation>();
             foreach(var enemy in enemies)
             {
-                if(enemy==null || !enemy.gameObject.activeInHierarchy || enemy.Lifecycle.Phase!=ZombiePhase.Active)continue;
+                if(enemy==null || !enemy.gameObject.activeInHierarchy || enemy.Lifecycle.Phase!=ZombiePhase.Active || World.Map.Streamed && World.Map.Continental.Underground(enemy.transform.position))continue;
                 var eligible=enemy.State==EnemyState.Idle && Vector2.Distance(enemy.transform.position,Player.transform.position)>Definition.InactiveDistance && navigation.OutsideCamera(enemy.transform.position);
                 if(!eligible){inactive.Remove(enemy);continue;}
                 if(!inactive.TryGetValue(enemy,out var since))inactive[enemy]=Time.time;
@@ -66,7 +67,7 @@ namespace Wildfolk
         }
         public bool IsValidPosition(Vector2 position)
         {
-            if(!Region.Bounds.Contains(position) || !World.GetComponent<WorldNavigation>().CanSpawn(position,Definition.FootprintRadius,Definition.PlayerDistance,false) || Vector2.Distance(position,Player.transform.position)<Definition.PlayerDistance || GameplayLight.IsSafe(position))return false;
+            if(!World.Map.Contains(position) || !World.GetComponent<WorldNavigation>().CanSpawn(position,Definition.FootprintRadius,Definition.PlayerDistance,false) || Vector2.Distance(position,Player.transform.position)<Definition.PlayerDistance || GameplayLight.IsSafe(position))return false;
             var viewport=Camera.WorldToViewportPoint(position);var margin=Definition.CameraMargin;
             if(viewport.z<=0 || viewport.x>=-margin && viewport.x<=1+margin && viewport.y>=-margin && viewport.y<=1+margin)return false;
             if(Physics2D.OverlapCircle(position,Definition.FootprintRadius,new ContactFilter2D{useTriggers=true},obstacles)>0)return false;
@@ -76,7 +77,7 @@ namespace Wildfolk
         }
         public bool TrySpawn()
         {
-            if(!SimulationAuthority.Allows(this) || !Session.WorldIsRunning || !Player.IsAlive || Clock.Model.Phase!=DayPhase.Night || ActiveCount>=Definition.HardCap || LocalThreatCount>=TargetPopulation)return false;
+            if(!SimulationAuthority.Allows(this) || World.Map.Streamed && World.Map.Continental.Underground(Player.transform.position) || !Session.WorldIsRunning || !Player.IsAlive || Clock.Model.Phase!=DayPhase.Night || ActiveCount>=Definition.HardCap || LocalThreatCount>=TargetPopulation)return false;
             for(var i=0;i<Definition.Attempts;i++)
             {
                 var angle=Random.value*Mathf.PI*2;var radius=Random.Range(Definition.SpawnNear,Definition.SpawnFar);

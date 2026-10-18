@@ -1,14 +1,15 @@
 using UnityEngine;
 namespace Wildfolk
 {
-    public sealed class WorldTerrainRenderer : MonoBehaviour
+    public sealed partial class WorldTerrainRenderer : MonoBehaviour
     {
         public SpriteRenderer Ground;
         private Texture2D texture;
         private Sprite sprite;
         public void Build(WorldMap map)
         {
-            if(sprite!=null)Destroy(sprite);if(texture!=null)Destroy(texture);
+            ClearChunks();Ground.enabled=!map.Streamed;
+            if(sprite!=null)Destroy(sprite);if(texture!=null)Destroy(texture);if(map.Streamed)return;
             var d=map.Definition;var width=d.TextureWidth;var height=Mathf.RoundToInt(width*d.Size.y/d.Size.x);
             texture=new Texture2D(width,height,TextureFormat.RGB24,false);texture.name="Temperate Ground";texture.filterMode=FilterMode.Bilinear;texture.wrapMode=TextureWrapMode.Clamp;
             var pixels=new Color32[width*height];
@@ -24,6 +25,7 @@ namespace Wildfolk
         private static float Blend(float from,float to,float value)=>Mathf.SmoothStep(0,1,Mathf.InverseLerp(from,to,value));
         public static Color Sample(WorldMap map,Vector2 p)
         {
+            if(map.Streamed)return SampleContinental(map,p);
             var d=map.Definition;var b=d.Biome;
             var forest=map.ForestDensity(p);var grain=Mathf.PerlinNoise(p.x*1.7f+map.Seed%713,p.y*1.7f+133)*.12f;
             var color=Color.Lerp(b.Grass,b.Forest,Mathf.SmoothStep(0,1,(forest-.35f)*2.2f));color*=.90f+grain;
@@ -42,6 +44,6 @@ namespace Wildfolk
             }
             return color;
         }
-        private void OnDestroy(){if(sprite!=null)Destroy(sprite);if(texture!=null)Destroy(texture);}
+        private void OnDestroy(){ClearChunks();if(sprite!=null)Destroy(sprite);if(texture!=null)Destroy(texture);}
     }
 }

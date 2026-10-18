@@ -27,7 +27,7 @@ namespace Wildfolk
         }
         public void Add(int rule,Vector2 p)=>counts[rule,Region(rule,p)]++;
         public void Schedule(int rule,int region,double now)
-        {if(!map.Definition.Resources[rule].NaturalRecovery || counts[rule,region]>=targets[rule,region] || Pending.Exists(t=>t.Rule==rule && t.Region==region))return;Pending.Add(new RecoveryTicket{Rule=rule,Region=region,Due=now+map.Definition.Resources[rule].RespawnSeconds});}
+        {if(!map.Renewable(rule) || counts[rule,region]>=targets[rule,region] || Pending.Exists(t=>t.Rule==rule && t.Region==region))return;Pending.Add(new RecoveryTicket{Rule=rule,Region=region,Due=now+map.Definition.Resources[rule].RespawnSeconds});}
         public void Expire(double now)=>Harvests.RemoveAll(h=>h.Until<=now);
         public bool Excluded(int rule,Vector2 p,double now)
         {var data=map.Definition.Resources[rule];foreach(var h in Harvests)if(h.Until>now && map.Definition.Resources[h.Rule].Family==data.Family && Vector2.Distance(h.Position,p)<Mathf.Max(data.HarvestExclusionRadius,map.Definition.Resources[h.Rule].HarvestExclusionRadius))return true;return false;}

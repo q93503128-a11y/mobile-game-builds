@@ -28,7 +28,7 @@ namespace Wildfolk
         {Active=this;Animals.enabled=Goblins.enabled=Night.enabled=Clock.enabled=IsAuthority;World.Renewal.enabled=IsAuthority;}
         private void Start()
         {if(IsAuthority){GetComponent<NetworkWorldPersistence>().InitializeWorld();Ready=true;}}
-        public void InitializeTerrain(int seed){if(IsAuthority || Ready && World.Seed==seed)return;World.Generate(seed,false);Ready=true;}
+        public void InitializeTerrain(int seed,int generationVersion=2){if(IsAuthority || Ready && World.Seed==seed && World.Map.GenerationVersion==generationVersion)return;World.Generate(seed,false,generationVersion);Ready=true;}
         public void CreateFacilities()
         {
             var offset=0;foreach(var entry in Prefabs)if(entry.Source.GetComponent<WorldPlaceable>() is WorldPlaceable placed && (placed.Definition.StorageSlots>0 || placed.Definition.Station!=StationKind.None) && placed.Definition.WorkbenchTier<=1 && placed.Definition.Station!=StationKind.BlastFurnace)
@@ -54,9 +54,9 @@ namespace Wildfolk
         public bool SpawnPendingNow(NetworkObject actor)
         {
             if(!IsAuthority || !NetworkManager.Singleton.IsListening || actor==null || actor.IsSpawned)return false;
-            pending.Remove(actor);actor.Spawn(true);return actor.IsSpawned;
+            pending.Remove(actor);actor.CheckObjectVisibility=client=>WorldChunkInterest.Visible(this,client,actor.transform.position);actor.Spawn(true);return actor.IsSpawned;
         }
-        public void FlushPending(){if(!IsAuthority)return;foreach(var actor in pending)if(actor!=null && !actor.IsSpawned)actor.Spawn(true);pending.Clear();}
+        public void FlushPending(){if(!IsAuthority)return;foreach(var actor in pending)if(actor!=null && !actor.IsSpawned){actor.CheckObjectVisibility=client=>WorldChunkInterest.Visible(this,client,actor.transform.position);actor.Spawn(true);}pending.Clear();}
         private void LateUpdate()
         {
             if(!IsAuthority)return;

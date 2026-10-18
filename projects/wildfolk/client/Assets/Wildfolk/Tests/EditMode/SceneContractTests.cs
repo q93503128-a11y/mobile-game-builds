@@ -30,7 +30,7 @@ namespace Wildfolk.Tests
                 Assert.That(player.Combat.Equipment,Is.Not.Null);Assert.That(player.Avatar.Facing,Is.Not.Null);
                 Assert.That(player.GetComponent<PlayerInventory>().Settings.InventorySlots,Is.EqualTo(36));
                 Assert.That(player.GetComponent<PlayerPrimaryAction>().Placement,Is.Not.Null);
-                Assert.That(player.GetComponent<PlayerCrafting>().Catalog.Recipes.Length,Is.EqualTo(25));
+                Assert.That(player.GetComponent<PlayerCrafting>().Catalog.Recipes.Length,Is.EqualTo(36));
                 Assert.That(player.Session.GetComponent<WorldPauseController>(),Is.Not.Null);
                 Assert.That(Object.FindFirstObjectByType<InventoryPanel>().Slots.Length,Is.EqualTo(36));
                 Assert.That(enemy,Is.Null,"The saved daytime scene must have no active Zombie.");
@@ -63,7 +63,7 @@ namespace Wildfolk.Tests
             }
             Assert.That(settings.EnemyLoseRange,Is.GreaterThanOrEqualTo(settings.EnemyDetectionRange));
             Assert.That(settings.InventorySlots,Is.GreaterThanOrEqualTo(PlayerInventory.HotbarSize));
-            Assert.That(AssetDatabase.FindAssets("t:ItemDefinition",new[]{"Assets/Wildfolk/Data"}).Length,Is.EqualTo(34));
+            Assert.That(AssetDatabase.FindAssets("t:ItemDefinition",new[]{"Assets/Wildfolk/Data"}).Length,Is.EqualTo(48));
             var ids=new HashSet<string>();
             foreach(var guid in AssetDatabase.FindAssets("t:ItemDefinition",new[]{"Assets/Wildfolk/Data"}))
             {
@@ -86,7 +86,8 @@ namespace Wildfolk.Tests
                     var kinds=new HashSet<ResourceKind>();
                     foreach(var efficiency in item.Tool.Efficiencies)
                     {Assert.That(kinds.Add(efficiency.Kind),Is.True);Assert.That(efficiency.Multiplier,Is.GreaterThan(0));}
-                    Assert.That(kinds,Does.Contain(ResourceKind.Wood));Assert.That(kinds,Does.Contain(ResourceKind.Stone));
+                    if(item.Tool.HarvestMethod==HarvestMethod.Strike){Assert.That(kinds,Does.Contain(ResourceKind.Wood));Assert.That(kinds,Does.Contain(ResourceKind.Stone));}
+                    else{Assert.That(item.Tool.HarvestMethod,Is.EqualTo(HarvestMethod.Panning));Assert.That(kinds,Is.Empty);}
                     Assert.That(item.Tool.Tier,Is.Not.Null);
                 }
             }
@@ -102,7 +103,7 @@ namespace Wildfolk.Tests
                 foreach(var cost in recipe.Ingredients)
                 {Assert.That(cost.Item,Is.Not.Null);Assert.That(cost.Count,Is.GreaterThan(0));Assert.That(ingredients.Add(cost.Item.Id),Is.True);}
             }
-            Assert.That(recipeIds.Count,Is.EqualTo(25));
+            Assert.That(recipeIds.Count,Is.EqualTo(36));
             Assert.That(System.IO.File.Exists("Assets/Wildfolk/Data/StartingEquipment.asset"),Is.False);
             foreach(var guid in AssetDatabase.FindAssets("t:VitalityDefinition",new[]{"Assets/Wildfolk/Data"}))
             {

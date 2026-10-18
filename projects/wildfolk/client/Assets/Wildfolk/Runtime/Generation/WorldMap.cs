@@ -5,120 +5,59 @@ namespace Wildfolk
 {
     public readonly struct ResourcePlacement
     {
-        public readonly int Rule;public readonly Vector2 Position;public readonly float Scale;
-        public ResourcePlacement(int rule,Vector2 position,float scale){Rule=rule;Position=position;Scale=scale;}
+        public readonly int Rule;public readonly Vector2 Position;public readonly float Scale;public readonly string Id;
+        public ResourcePlacement(int rule,Vector2 position,float scale,string id=null){Rule=rule;Position=position;Scale=scale;Id=id;}
     }
+    // Version dispatch is explicit. Only version-one saved worlds use the frozen layout reader.
     public sealed class WorldMap
     {
-        public WorldGenerationDefinition Definition { get; }
-        public int Seed { get; }
-        public Bounds Bounds => new Bounds(Vector3.zero,new Vector3(Definition.Size.x,Definition.Size.y,1));
-        public Vector2 Spawn => Vector2.zero;
-        public Vector2 LakeCenter { get; }
-        public Vector2 LakeRadius { get; }
-        public Vector2 PondCenter { get; }
-        public Vector2 PondRadius => new Vector2(3.5f,2.7f);
-        public float RiverX,CurveOffset,FordY;
-        public readonly List<Vector2[]> Roads=new List<Vector2[]>();
-        public readonly List<ResourcePlacement> Resources=new List<ResourcePlacement>();
-        private readonly float noiseX,noiseY;
-        public WorldMap(WorldGenerationDefinition definition,int seed)
-        {
-            Definition=definition;Seed=seed;var random=new System.Random(seed);
-            noiseX=(float)random.NextDouble()*1000;noiseY=(float)random.NextDouble()*1000;
-            RiverX=definition.Size.x*(.15f+(float)random.NextDouble()*.07f);CurveOffset=(float)random.NextDouble()*6;
-            FordY=-definition.Size.y*.19f;
-            LakeCenter=new Vector2(-definition.Size.x*(.22f+(float)random.NextDouble()*.07f),definition.Size.y*.2f);
-            LakeRadius=new Vector2(10+(float)random.NextDouble()*3,7+(float)random.NextDouble()*2);
-            PondCenter=new Vector2(-9+(float)random.NextDouble()*2,8+(float)random.NextDouble()*1.5f);
-            Roads.Add(new[]{new Vector2(-definition.Size.x*.48f,FordY-7),new Vector2(-24,FordY+3),new Vector2(0,-8),new Vector2(RiverAt(FordY),FordY),new Vector2(definition.Size.x*.48f,FordY-10)});
-            Roads.Add(new[]{new Vector2(-definition.Size.x*.35f,-definition.Size.y*.48f),new Vector2(-22,-10),new Vector2(-16,12),new Vector2(-24,definition.Size.y*.48f)});
-            GenerateResources(random);
-        }
-        public float RiverAt(float y)=>RiverX+Mathf.Sin(y*.045f+CurveOffset)*8+Mathf.Sin(y*.11f+CurveOffset)*2;
-        public float RiverDistance(Vector2 p)=>Mathf.Abs(p.x-RiverAt(p.y));
+        public WorldGenerationDefinition Definition {get;}
+        public int Seed {get;}
+        public int GenerationVersion {get;}
+        public ContinentalWorldLayout Continental {get;}
+        private readonly LegacyWorldLayout legacy;
+        public bool Streamed=>GenerationVersion>=2;
+        public Vector2 Size=>Streamed ? Continental.Size : Definition.Size;
+        public Bounds Bounds=>new Bounds(Vector3.zero,new Vector3(Size.x,Size.y,1));
+        public Vector2 Spawn=>Vector2.zero;
+        public Vector2 LakeCenter=>Streamed ? Continental.LakeCenter : legacy.LakeCenter;
+        public Vector2 LakeRadius=>Streamed ? new Vector2(105,70) : legacy.LakeRadius;
+        public Vector2 PondCenter=>Streamed ? new Vector2(-18,12) : legacy.PondCenter;
+        public Vector2 PondRadius=>Streamed ? new Vector2(7,5) : legacy.PondRadius;
+        public float RiverX=>Streamed ? 600 : legacy.RiverX;
+        public float CurveOffset=>Streamed ? Continental.Phase : legacy.CurveOffset;
+        public float FordY=>Streamed ? 0 : legacy.FordY;
         public const float FordHalfWidth=2.2f;
-        public bool IsFord(Vector2 p)=>Mathf.Abs(p.y-FordY)<FordHalfWidth;
-        private float ShoreFactor(float angle)=>1+Mathf.Sin(angle*3+CurveOffset)*.08f+Mathf.Sin(angle*5-CurveOffset)*.045f;
-        public Vector2 ShorePoint(Vector2 center,Vector2 radius,float angle)=>center+new Vector2(Mathf.Cos(angle)*radius.x,Mathf.Sin(angle)*radius.y)*ShoreFactor(angle);
-        public float LakeDistance(Vector2 p,Vector2 center,Vector2 radius)
+        public List<Vector2[]> Roads=>Streamed ? Continental.Roads : legacy.Roads;
+        public List<ResourcePlacement> Resources=>Streamed ? Continental.GuaranteedResources : legacy.Resources;
+        public WorldMap(WorldGenerationDefinition definition,int seed,int generationVersion=1,bool validateGeneration=true)
         {
-            var v=p-center;var outside=Mathf.Max(Mathf.Abs(v.x)-radius.x*1.14f,Mathf.Abs(v.y)-radius.y*1.14f);
-            if(outside>3)return outside;
-            var normalized=new Vector2(v.x/radius.x,v.y/radius.y);return (normalized.magnitude-ShoreFactor(Mathf.Atan2(normalized.y,normalized.x)))*Mathf.Min(radius.x,radius.y);
+            if(!WorldGenerationVersion.Valid(generationVersion))throw new ArgumentOutOfRangeException(nameof(generationVersion));
+            Definition=definition;Seed=seed;GenerationVersion=generationVersion;
+            if(Streamed)Continental=new ContinentalWorldLayout(definition,seed,validateGeneration);else legacy=new LegacyWorldLayout(definition,seed);
         }
-        public float WaterDistance(Vector2 p)=>Mathf.Min(RiverDistance(p)-Definition.RiverWidth,Mathf.Min(LakeDistance(p,LakeCenter,LakeRadius),LakeDistance(p,PondCenter,PondRadius)));
-        public bool IsWater(Vector2 p,float margin=0)=>WaterDistance(p)<margin;
-        public bool IsDeepWater(Vector2 p)=>RiverDistance(p)<Definition.RiverWidth && !IsFord(p) || LakeDistance(p,LakeCenter,LakeRadius)<0 || LakeDistance(p,PondCenter,PondRadius)<0;
-        public bool IsWalkable(Vector2 p,float margin=.7f)=>Bounds.Contains(p-Vector2.one*margin) && Bounds.Contains(p+Vector2.one*margin) && !IsDeepWater(p) && (!IsWater(p,margin) || IsFord(p) && RiverDistance(p)<Definition.RiverWidth+margin);
-        public float ForestDensity(Vector2 p)=>Mathf.PerlinNoise(noiseX+p.x*Definition.Biome.DensityFrequency,noiseY+p.y*Definition.Biome.DensityFrequency);
-        public float RockDensity(Vector2 p)=>Mathf.PerlinNoise(noiseX+370+p.x*.045f,noiseY+480+p.y*.045f);
-        public float RoadDistance(Vector2 p)
-        {
-            var best=float.MaxValue;
-            foreach(var road in Roads)for(var i=1;i<road.Length;i++)
-            {var a=road[i-1];var d=road[i]-a;var t=Mathf.Clamp01(Vector2.Dot(p-a,d)/d.sqrMagnitude);best=Mathf.Min(best,Vector2.Distance(p,a+d*t));}
-            return best;
-        }
+        public bool Contains(Vector2 p)=>Streamed ? Continental.Contains(p) : Bounds.Contains(p);
+        public Bounds RegionBounds(Vector2 p)=>Streamed && Continental.Underground(p) ? new Bounds(Continental.CaveAt(p).Origin,new Vector3(400,400,1)) : Bounds;
+        public float RiverAt(float y)=>Streamed ? Continental.RiverAt(y) : legacy.RiverAt(y);
+        public float RiverDistance(Vector2 p)=>Streamed ? Mathf.Abs(p.x-RiverAt(p.y)) : legacy.RiverDistance(p);
+        public bool IsFord(Vector2 p)=>Streamed ? Continental.Ford(p) : legacy.IsFord(p);
+        public Vector2 ShorePoint(Vector2 c,Vector2 r,float a)=>Streamed ? c+new Vector2(Mathf.Cos(a)*r.x,Mathf.Sin(a)*r.y) : legacy.ShorePoint(c,r,a);
+        public float LakeDistance(Vector2 p,Vector2 c,Vector2 r)=>Streamed ? (new Vector2((p.x-c.x)/r.x,(p.y-c.y)/r.y).magnitude-1)*Mathf.Min(r.x,r.y) : legacy.LakeDistance(p,c,r);
+        public float WaterDistance(Vector2 p)=>Streamed ? Continental.WaterDistance(p) : legacy.WaterDistance(p);
+        public bool IsWater(Vector2 p,float margin=0)=>Streamed ? WaterDistance(p)<margin : legacy.IsWater(p,margin);
+        public bool IsDeepWater(Vector2 p)=>Streamed ? Continental.DeepWater(p) : legacy.IsDeepWater(p);
+        public bool IsWalkable(Vector2 p,float margin=.7f)=>Streamed ? Continental.Walkable(p,margin) : legacy.IsWalkable(p,margin);
+        public float ForestDensity(Vector2 p)=>Streamed ? Continental.Environment(p).Forestation : legacy.ForestDensity(p);
+        public float RockDensity(Vector2 p)=>Streamed ? Continental.Environment(p).Rockiness : legacy.RockDensity(p);
+        public float RoadDistance(Vector2 p)=>Streamed ? Continental.RoadDistance(p) : legacy.RoadDistance(p);
         public bool IsRoad(Vector2 p)=>RoadDistance(p)<=Definition.RoadWidth;
-        private void GenerateResources(System.Random random)
-        {
-            for(var pass=0;pass<2;pass++)for(var r=0;r<Definition.Resources.Length;r++)
-            {
-                var rule=Definition.Resources[r];if(rule.IndependentGeneration)continue;var count=0;var attempts=0;var required=pass==0 ? rule.StartCount : rule.Count-rule.StartCount;
-                while(count<required && attempts++<Mathf.Max(1,required)*250)
-                {
-                    var near=pass==0;
-                    var p=near ? new Vector2((float)random.NextDouble()*2-1,(float)random.NextDouble()*2-1)*rule.StartRadius :
-                        new Vector2(((float)random.NextDouble()-.5f)*(Definition.Size.x-6),((float)random.NextDouble()-.5f)*(Definition.Size.y-6));
-                    if(p.magnitude<rule.SpawnClearance || !IsWalkable(p,1.4f) || IsWater(p,1.4f) || IsRoad(p))continue;
-                    if(!near)
-                    {
-                        var density=rule.ForestPreference*ForestDensity(p)+rule.RockPreference*RockDensity(p)+(1-rule.ForestPreference-rule.RockPreference)*.6f;
-                        if(random.NextDouble()>Mathf.Clamp01(density))continue;
-                    }
-                    var clear=true;
-                    foreach(var placed in Resources)
-                    {var gap=Mathf.Max(rule.Spacing,Definition.Resources[placed.Rule].Spacing);if(Vector2.Distance(placed.Position,p)<gap){clear=false;break;}}
-                    if(!clear)continue;
-                    Resources.Add(new ResourcePlacement(r,p,Mathf.Lerp(rule.ScaleRange.x,rule.ScaleRange.y,(float)random.NextDouble())));count++;
-                }
-                if(count<required)throw new InvalidOperationException("World generation could not place required resources.");
-            }
-            for(var r=0;r<Definition.Resources.Length;r++)
-            {
-                var rule=Definition.Resources[r];if(!rule.IndependentGeneration || !Supports(rule,Definition.Biome,ResourceSourceContext.Surface,0))continue;
-                var stream=new System.Random(unchecked(Seed*397 ^ rule.GenerationSalt));var count=0;var attempts=0;var anchor=Vector2.zero;
-                while(count<rule.Count && attempts++<Mathf.Max(1,rule.Count)*1000)
-                {
-                    var clustered=rule.ClusterSize>1 && count%rule.ClusterSize!=0 && anchor!=Vector2.zero;
-                    var p=clustered ? anchor+new Vector2((float)stream.NextDouble()*2-1,(float)stream.NextDouble()*2-1)*rule.ClusterRadius :
-                        new Vector2(((float)stream.NextDouble()-.5f)*(Definition.Size.x-6),((float)stream.NextDouble()-.5f)*(Definition.Size.y-6));
-                    if(!ResourceSiteAllowed(r,p) || stream.NextDouble()>ResourceDensity(r,p))continue;
-                    var clear=true;foreach(var placed in Resources)if(Vector2.Distance(placed.Position,p)<Mathf.Max(rule.Spacing,Definition.Resources[placed.Rule].Spacing)){clear=false;break;}
-                    if(!clear)continue;
-                    Resources.Add(new ResourcePlacement(r,p,Mathf.Lerp(rule.ScaleRange.x,rule.ScaleRange.y,(float)stream.NextDouble())));
-                    if(!clustered)anchor=p;count++;
-                }
-                if(count<rule.Count)throw new InvalidOperationException("World generation could not place configured resource rule "+r);
-            }
-        }
-        public static bool Supports(ResourceGenerationRule rule,BiomeDefinition biome,ResourceSourceContext context,float depth)
-        {
-            if(rule.SourceContext!=context)return false;
-            if(rule.AllowedBiomes!=null && rule.AllowedBiomes.Length>0 && Array.IndexOf(rule.AllowedBiomes,biome)<0)return false;
-            return !rule.DistributionConfigured || depth>=rule.DepthRange.x && depth<=rule.DepthRange.y;
-        }
-        public bool ResourceSiteAllowed(int index,Vector2 p)
-        {
-            var rule=Definition.Resources[index];
-            if(!Supports(rule,Definition.Biome,ResourceSourceContext.Surface,0) || p.magnitude<rule.SpawnClearance || !IsWalkable(p,1.4f) || IsWater(p,1.4f) || IsRoad(p))return false;
-            if(!rule.DistributionConfigured)return true;
-            var water=WaterDistance(p);var road=RoadDistance(p);var forest=ForestDensity(p);var rock=RockDensity(p);
-            return Within(water,rule.WaterDistanceRange) && Within(road,rule.RoadDistanceRange) && Within(forest,rule.ForestDensityRange) && Within(rock,rule.RockDensityRange) && (rule.Terrain!=ResourceTerrain.Shore || water<=12);
-        }
-        public float ResourceDensity(int index,Vector2 p)
-        {var r=Definition.Resources[index];var density=r.ForestPreference*ForestDensity(p)+r.RockPreference*RockDensity(p)+(1-r.ForestPreference-r.RockPreference)*.6f;return Mathf.Clamp01(density*(r.DistributionConfigured ? r.BiomeAffinity : 1));}
-        private static bool Within(float value,Vector2 range)=>value>=range.x && value<=range.y;
+        public bool ResourceSiteAllowed(int index,Vector2 p)=>Streamed ? Continental.SourceAllowed(index,p) : legacy.ResourceSiteAllowed(index,p);
+        public float ResourceDensity(int index,Vector2 p)=>Streamed ? 1 : legacy.ResourceDensity(index,p);
+        public static bool Supports(ResourceGenerationRule r,BiomeDefinition b,ResourceSourceContext context,float depth)=>LegacyWorldLayout.Supports(r,b,context,depth);
+        public bool Renewable(int rule)=>!Streamed ? Definition.Resources[rule].NaturalRecovery : Continental.Renewable(rule);
+        public int PopulationRegion(Vector2 p)=>Streamed ? Encode(WorldChunk.At(p,Definition.ChunkSize)) : 0;
+        public static int Encode(WorldChunk k)=>(k.X+2048)*8192+k.Y+2048;
+        public static WorldChunk Decode(int region)=>new WorldChunk(region/8192-2048,region%8192-2048);
+        public bool ValidPopulationRegion(int region)=>Streamed ? region>=0 && Continental.ContainsChunk(Decode(region)) : region>=0 && region<12;
     }
 }

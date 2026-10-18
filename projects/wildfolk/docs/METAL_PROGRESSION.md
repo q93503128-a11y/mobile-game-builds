@@ -1,6 +1,6 @@
 # 초기 금속 progression 교정
 
-2026-10-16. 기준 main b30c27a36dc57dc2e62aed85c9c5659b573ced3d. 표시명 Lowfire, 내부 Wildfolk 유지. 실제 Item48 / Recipe36 / Equipment Tier4 / Biome1 / Save v6 / Protocol7이다.
+2026-10-17 현재 Item48 / Recipe36 / Equipment Tier4 / Surface Biome4 / Save7 / Protocol8. 아래 금속 패스의 v6/Protocol7 검수는 당시 기록이다. 신규 자연 공급/비재생/4인 yield와 구 generation1 정책은 WORLD_GENERATION 정본을 따른다.
 
 ## 확정한 진행
 

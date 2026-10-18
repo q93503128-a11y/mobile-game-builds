@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 namespace Wildfolk
 {
-    public sealed class ResourceRegeneration : MonoBehaviour
+    public sealed partial class ResourceRegeneration : MonoBehaviour
     {
         public WorldGenerator World;public WorldClock Clock;public WorldNavigation Navigation;
         private readonly Dictionary<string,ResourceSnapshot> changes=new Dictionary<string,ResourceSnapshot>();
@@ -10,13 +10,14 @@ namespace Wildfolk
         public ResourcePopulation Population {get;private set;}
         private double nextAttempt;
         public bool HasChanges=>changes.Count>0;
-        public void ResetWorld(){changes.Clear();live.Clear();Population=new ResourcePopulation(World.Map);nextAttempt=0;}
+        public void ResetWorld(){changes.Clear();live.Clear();renewableAt.Clear();Population=new ResourcePopulation(World.Map);nextAttempt=0;}
         public void Register(ResourceNode node,string id,int rule)
         {var identity=node.gameObject.AddComponent<ResourceIdentity>();identity.Id=id;identity.Rule=rule;identity.Node=node;identity.Owner=this;identity.Bind();live[id]=identity;}
         public void Record(ResourceIdentity identity,bool destroyed)
         {
             if(!SimulationAuthority.Allows(this))return;
             var state=new ResourceSnapshot{Id=identity.Id,Rule=identity.Rule,Position=identity.transform.position,Scale=identity.transform.localScale.x,HP=identity.Node.Health.Current,Destroyed=destroyed};
+            if(World.Map.Streamed){RecordStreamed(identity,state,destroyed);return;}
             if(destroyed){if(!live.Remove(state.Id))return;Population.Remove(state.Rule,state.Position,Clock.Model.Elapsed,true);if(state.Id.StartsWith("p")){changes.Remove(state.Id);return;}}
             changes[state.Id]=state;
         }
@@ -26,6 +27,7 @@ namespace Wildfolk
         public int Tick()
         {
             if(!SimulationAuthority.Allows(this))return 0;
+            if(World.Map.Streamed)return TickStreamed();
             var now=Clock.Model.Elapsed;Population.Expire(now);var spawned=0;var hardLimit=0;foreach(var rule in World.Definition.Resources)hardLimit+=Mathf.CeilToInt(rule.Count*1.25f);
             foreach(var ticket in Population.Pending.ToArray())
             {
@@ -52,6 +54,7 @@ namespace Wildfolk
         public void Restore(ResourceSnapshot[] states,ResourceRecoverySnapshot recovery=null)
         {
             if(!SimulationAuthority.Allows(this))return;
+            if(World.Map.Streamed){changes.Clear();foreach(var state in states)changes.Add(state.Id,state);Population.Restore(recovery);return;}
             foreach(var state in states)
             {
                 if(live.TryGetValue(state.Id,out var old)){Population.Remove(old.Rule,old.transform.position,Clock.Model.Elapsed,false);PrefabPool.Release(old.gameObject);live.Remove(state.Id);}

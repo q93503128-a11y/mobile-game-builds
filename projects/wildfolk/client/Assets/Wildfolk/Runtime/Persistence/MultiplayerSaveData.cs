@@ -21,8 +21,8 @@ namespace Wildfolk
         public static void Validate(SavedGame game,SaveGameRules rules)
         {
             if(!game.IsMultiplayer){game.Multiplayer=null;return;}var multi=game.Multiplayer;
-            if(multi==null || game.Version!=6 || !LocalPlayerIdentity.Valid(multi.WorldId) || !LocalPlayerIdentity.Valid(multi.HostId) || multi.Players==null || multi.Players.Length<1 || multi.Players.Length>256)throw new InvalidDataException("Invalid cooperative world metadata.");
-            var ids=new HashSet<string>();var host=false;var map=new WorldMap(rules.World,game.Seed);var player=rules.Player;
+            if(multi==null || game.Version!=7 || !LocalPlayerIdentity.Valid(multi.WorldId) || !LocalPlayerIdentity.Valid(multi.HostId) || multi.Players==null || multi.Players.Length<1 || multi.Players.Length>256)throw new InvalidDataException("Invalid cooperative world metadata.");
+            var ids=new HashSet<string>();var host=false;var map=new WorldMap(rules.World,game.Seed,game.BaseGenerationVersion,false);var player=rules.Player;
             foreach(var entry in multi.Players)
             {
                 if(entry==null || !LocalPlayerIdentity.Valid(entry.Id) || !ids.Add(entry.Id))throw new InvalidDataException("Duplicate or invalid participant.");

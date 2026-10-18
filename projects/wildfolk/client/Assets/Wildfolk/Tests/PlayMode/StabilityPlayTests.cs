@@ -10,7 +10,7 @@ namespace Wildfolk.Tests
     {
         private WorldSaveService saves;private PlayerInventory player;private PlayerCombat combat;private GameplayHud hud;private PlayPointerDriver input;
         [UnitySetUp]public IEnumerator Load()
-        {Time.timeScale=1;input=new PlayPointerDriver();WorldGenerator.SelectedSeed=9472026;yield return SceneManager.LoadSceneAsync("Wildfolk");yield return null;yield return null;saves=Object.FindFirstObjectByType<WorldSaveService>();saves.AutoSaveEnabled=false;player=saves.Player;combat=player.GetComponent<PlayerCombat>();hud=Object.FindFirstObjectByType<GameplayHud>();saves.Clock.enabled=false;saves.GetComponent<ZombieSpawner>().enabled=false;saves.GetComponent<GoblinSpawner>().enabled=false;saves.World.Renewal.enabled=false;saves.World.Animals.enabled=false;}
+        {Time.timeScale=1;input=new PlayPointerDriver();WorldGenerator.SelectedGenerationVersion=1;WorldGenerator.SelectedSeed=9472026;yield return SceneManager.LoadSceneAsync("Wildfolk");yield return null;yield return null;saves=Object.FindFirstObjectByType<WorldSaveService>();saves.AutoSaveEnabled=false;player=saves.Player;combat=player.GetComponent<PlayerCombat>();hud=Object.FindFirstObjectByType<GameplayHud>();saves.Clock.enabled=false;saves.GetComponent<ZombieSpawner>().enabled=false;saves.GetComponent<GoblinSpawner>().enabled=false;saves.World.Renewal.enabled=false;saves.World.Animals.enabled=false;}
         [UnityTearDown]public IEnumerator Release(){input.Dispose();Time.timeScale=1;yield return null;}
         private void Position(Vector2 p,Vector2 facing){player.GetComponent<Rigidbody2D>().position=p;player.transform.position=p;player.GetComponent<PlayerAvatar>().Facing.Face(facing);Physics2D.SyncTransforms();}
         private void ClearStart(){foreach(var node in Object.FindObjectsByType<ResourceNode>(FindObjectsSortMode.None))if(node.transform.position.sqrMagnitude<144)node.gameObject.SetActive(false);}
@@ -23,7 +23,7 @@ namespace Wildfolk.Tests
         {
             ClearStart();Position(Vector2.zero,Vector2.right);var first=Target(new Vector2(1.2f,0));var second=Target(new Vector2(1.2f,.5f));var behind=Target(new Vector2(-.3f,0));
             yield return Strike();Assert.That(first.Current,Is.EqualTo(90));Assert.That(second.Current,Is.EqualTo(100));Assert.That(behind.Current,Is.EqualTo(100));
-            foreach(var item in saves.Catalog.Items)if(item.Tool!=null)
+            foreach(var item in saves.Catalog.Items)if(item.Tool!=null && item.Tool.HarvestMethod==HarvestMethod.Strike)
             {EmptyInventory();player.Model.Add(item,1);player.SelectSlot(0);first.RestoreHealth(100);second.RestoreHealth(100);Position(Vector2.zero,Vector2.right);yield return null;yield return Strike();Assert.That(first.Current,Is.EqualTo(100-item.Tool.Damage),item.Id);Assert.That(second.Current,Is.EqualTo(100),item.Id);Assert.That(combat.LastHitCount,Is.EqualTo(1));}
         }
         [UnityTest]public IEnumerator PointBlankNormalEdgeAndOutsideRespectRange()

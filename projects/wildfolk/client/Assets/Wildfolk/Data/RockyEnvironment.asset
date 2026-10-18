@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 657e9dd66b384d1694d6cdbf2ab362dd, type: 3}
+  m_Name: RockyEnvironment
+  m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.SurfaceEnvironmentDefinition
+  Biome: 3
+  Ground: {r: 0.4627451, g: 0.4627451, b: 0.39215687, a: 1}
+  DenseGround: {r: 0.36862746, g: 0.40392157, b: 0.3254902, a: 1}
+  Detail: {r: 0, g: 0, b: 0, a: 0}
+  PreferredMoisture: {x: 0.25, y: 0.65}
+  PreferredForestation: {x: 0.15, y: 0.48}
+  PreferredRockiness: {x: 0.7, y: 1}
+  PreferredHeight: {x: 0.3, y: 0.7}
+  MoistureWeight: 1
+  ForestWeight: 1
+  RockWeight: 2.4
+  HeightWeight: 1

@@ -27,7 +27,12 @@ namespace Wildfolk
         }
 
         private void FixedUpdate()
-        {if(Locomotion.MoveDash(Time.fixedDeltaTime))return;body.linearVelocity = Session.IsRunning ? input * Settings.MoveSpeed * Locomotion.SpeedMultiplier * Survival.MovementCondition*(Terrain==null ? 1 : Terrain.MovementMultiplier(body.position)) : Vector2.zero;}
+        {
+            if(Locomotion.MoveDash(Time.fixedDeltaTime))return;
+            var velocity=Session.IsRunning ? input*Settings.MoveSpeed*Locomotion.SpeedMultiplier*Survival.MovementCondition*(Terrain==null ? 1 : Terrain.MovementMultiplier(body.position)) : Vector2.zero;
+            if(Terrain!=null && !Terrain.Traversable(body.position+velocity*Time.fixedDeltaTime,.3f))velocity=Vector2.zero;body.linearVelocity=velocity;
+        }
+
         private void OnDisable() { if (body != null) body.linearVelocity = Vector2.zero; }
     }
 }

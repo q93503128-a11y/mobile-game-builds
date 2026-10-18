@@ -23,6 +23,7 @@ namespace Wildfolk
         public string MessageKey {get;private set;}
         public string LastFailure {get;private set;}
         public SaveRepository WorldRepository {get;set;}
+        public int NewWorldGenerationVersion {get;set;}=WorldGenerationVersion.Current;
         public SavedGame PreparedWorld {get;private set;}
         public string ProfileOverride {get;set;}
         public string LocalProfile {get;private set;}

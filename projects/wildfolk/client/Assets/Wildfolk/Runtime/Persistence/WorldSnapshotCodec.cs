@@ -8,29 +8,30 @@ namespace Wildfolk
             =>Capture(World,Clock,PlayerSnapshotCodec.Capture(Player));
         public static SavedGame Capture(WorldGenerator World,WorldClock Clock,PlayerSnapshot player)
         {
-            var game=new SavedGame{Seed=World.Seed,Elapsed=Clock.Model.Elapsed,Player=player,Resources=World.Renewal.Capture(),Recovery=World.Renewal.CaptureRecovery(),Animals=World.Animals.Capture()};
+            var game=new SavedGame{Seed=World.Seed,BaseGenerationVersion=World.Map.GenerationVersion,Features=World.Chunks!=null && World.Map.Streamed ? World.Chunks.CaptureFeatures() : System.Array.Empty<WorldFeatureSnapshot>(),Elapsed=Clock.Model.Elapsed,Player=player,Resources=World.Renewal.Capture(),Recovery=World.Renewal.CaptureRecovery(),Animals=World.Animals.Capture()};
             game.AnimalEcology=World.Animals.CaptureEcology();game.GoblinEcology=World.GetComponent<GoblinSpawner>().Capture();
-            var night=new List<NightCreatureSnapshot>();if(Clock.Model.Phase==DayPhase.Night)foreach(var enemy in Object.FindObjectsByType<EnemyController>(FindObjectsSortMode.None))if(enemy.OwnHealth.IsAlive && enemy.Lifecycle.Phase!=ZombiePhase.Burrowing)night.Add(new NightCreatureSnapshot{Species=enemy.Member.Definition.Id,Variant=enemy.Variant!=null && enemy.Variant.Equipped ? enemy.Variant.Definition.Id : null,Position=enemy.transform.position,HP=enemy.OwnHealth.Current});game.NightCreatures=night.ToArray();
+            game.NightCreatures=World.GetComponent<ZombieSpawner>().CaptureWorld();
             var placed=new List<PlaceableSnapshot>();
-            foreach(var facility in Object.FindObjectsByType<WorldPlaceable>(FindObjectsSortMode.None))
+            foreach(var facility in WorldPlaceable.Active)
             {
                 if(!facility.Health.IsAlive)continue;var chest=facility.GetComponent<StorageChest>();var process=facility.GetComponent<StationProcessing>();var door=facility.GetComponent<WorldDoor>();
-                placed.Add(new PlaceableSnapshot{Id=facility.SaveId,Item=facility.Definition.Item.Id,Position=facility.transform.position,Rotation=facility.transform.eulerAngles.z,HP=facility.Health.Current,Inventory=chest==null ? null : chest.Model.Capture(),Processing=process==null ? null : process.Capture(),DoorOpen=door!=null && door.IsOpen,Creator=facility.CreatorId});
+                placed.Add(new PlaceableSnapshot{Id=facility.SaveId,Item=facility.Definition.Item.Id,Position=facility.transform.position,Rotation=facility.transform.eulerAngles.z,HP=facility.Health.Current,Inventory=chest==null ? null : chest.Model.Capture(),Processing=process==null ? null : process.Capture(),DoorOpen=door!=null && door.IsOpen,Creator=facility.CreatorId,SimulatedAt=Clock.Model.Elapsed});
             }
-            game.Placeables=placed.ToArray();var pickups=new List<PickupSnapshot>();
-            foreach(var pickup in Object.FindObjectsByType<WorldPickup>(FindObjectsSortMode.None))if(pickup.Item!=null && pickup.Count>0)pickups.Add(new PickupSnapshot{Item=pickup.Item.Id,Count=pickup.Count,Position=pickup.transform.position});
-            game.Pickups=pickups.ToArray();return game;
+            if(World.Map.Streamed)placed.AddRange(World.Chunks.DormantPlaces());game.Placeables=placed.ToArray();var pickups=new List<PickupSnapshot>();
+            foreach(var pickup in WorldPickup.Active)if(pickup.Item!=null && pickup.Count>0)pickups.Add(new PickupSnapshot{Item=pickup.Item.Id,Count=pickup.Count,Position=pickup.transform.position});
+            if(World.Map.Streamed)pickups.AddRange(World.Chunks.DormantPickups());game.Pickups=pickups.ToArray();return game;
 
         }
         public static void Apply(WorldGenerator World,WorldClock Clock,ContentCatalog Catalog,SavedGame game,PlayerInventory Player)
         {
             if(!SimulationAuthority.Allows(World))throw new System.InvalidOperationException("Only the world authority can restore snapshots.");
             // Remove previous network actors through their real lifecycle, including pending spawns.
-            foreach(var resource in Object.FindObjectsByType<ResourceIdentity>(FindObjectsSortMode.None))PrefabPool.Release(resource.gameObject);
-            foreach(var enemy in Object.FindObjectsByType<EnemyController>(FindObjectsSortMode.None))PrefabPool.Release(enemy.gameObject);
-            foreach(var pickup in Object.FindObjectsByType<WorldPickup>(FindObjectsSortMode.None))PrefabPool.Release(pickup.gameObject);
-            foreach(var facility in Object.FindObjectsByType<WorldPlaceable>(FindObjectsSortMode.None))PrefabPool.Release(facility.gameObject);
-            World.Generate(game.Seed,false);Clock.Model.SetElapsed(game.Elapsed);
+            World.Renewal.ReleaseWorld();
+            World.GetComponent<ZombieSpawner>().ReleaseWorld();
+            for(var i=WorldPickup.Active.Count-1;i>=0;i--)PrefabPool.Release(WorldPickup.Active[i].gameObject);
+            for(var i=WorldPlaceable.Active.Count-1;i>=0;i--)PrefabPool.Release(WorldPlaceable.Active[i].gameObject);
+            World.Generate(game.Seed,false,game.BaseGenerationVersion);Clock.Model.SetElapsed(game.Elapsed);
+            if(World.Map.Streamed){World.Renewal.Restore(game.Resources,game.Recovery);World.Chunks.RestoreDormant(game);World.Animals.Restore(game.Animals,game.AnimalEcology);World.GetComponent<GoblinSpawner>().Restore(game.GoblinEcology);World.GetComponent<ZombieSpawner>().Restore(game.NightCreatures);World.Chunks.Reconcile();return;}
             for(var i=0;i<World.Map.Resources.Count;i++){var p=World.Map.Resources[i];World.CreateResource("r"+i,p.Rule,p.Position,p.Scale);}
             World.Renewal.Restore(game.Resources,game.Recovery);
             foreach(var state in game.Placeables)

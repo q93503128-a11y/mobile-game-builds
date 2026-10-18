@@ -44,6 +44,7 @@ namespace Wildfolk.Tests
         internal IEnumerator Drag(Component source,Vector2 destination,Action inspect=null)
         {
             var start=Point(source);Pointer(start,true);yield return null;
+            if(source.GetComponentInParent<UnityEngine.UI.ScrollRect>()!=null)yield return new UnityEngine.WaitForSeconds(.2f);
             Pointer(start+new Vector2(20,20),true);yield return null;yield return null;
             inspect?.Invoke();
             for(var i=1;i<=5;i++){Pointer(Vector2.Lerp(start,destination,i/5f),true);yield return null;}

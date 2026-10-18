@@ -18,7 +18,7 @@ namespace Wildfolk.Tests
             Assert.That(Data<ToolDefinition>("IronPickaxeTool").DamageFor(ResourceKind.IronOre),Is.GreaterThan(Data<ToolDefinition>("StonePickaxeTool").DamageFor(ResourceKind.IronOre)));
             Assert.That(Data<ToolDefinition>("IronSwordTool").Damage,Is.GreaterThan(Data<ToolDefinition>("StoneSwordTool").Damage));
             Assert.That(Data<ToolDefinition>("StoneSwordTool").Damage,Is.GreaterThan(Data<ToolDefinition>("WoodSwordTool").Damage));
-            Assert.That(AssetDatabase.FindAssets("t:EquipmentTier",new[]{"Assets/Wildfolk/Data"}).Length,Is.EqualTo(3));
+            Assert.That(AssetDatabase.FindAssets("t:EquipmentTier",new[]{"Assets/Wildfolk/Data"}).Length,Is.EqualTo(4));
         }
         [Test] public void ChestTransferMergesPartiallyRejectsFullAndSwapsAtomically()
         {

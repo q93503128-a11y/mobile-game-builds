@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: TreeResource
   m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.ResourceDefinition
   Kind: 0
-  MinimumTier: {fileID: 0}
-  RequiredTool: 0
+  Harvest:
+    Mode: 1
+    Method: 0
+    MinimumTier: {fileID: 0}
+    RequiredTool: 0
+    RequiredToolItem: {fileID: 0}
   Vitality: {fileID: 11400000, guid: 8b0064eae848f9d42a869f9724fd17e8, type: 2}
   DropItem: {fileID: 11400000, guid: 431287b464f63f4408828d4053bac6eb, type: 2}
   DropCount: 6

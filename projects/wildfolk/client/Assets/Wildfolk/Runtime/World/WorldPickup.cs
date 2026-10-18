@@ -4,6 +4,9 @@ namespace Wildfolk
 {
     public sealed class WorldPickup : MonoBehaviour,IPoolReset
     {
+        public static readonly System.Collections.Generic.List<WorldPickup> Active=new System.Collections.Generic.List<WorldPickup>();
+        private void OnEnable(){if(!Active.Contains(this))Active.Add(this);}
+        private void OnDisable()=>Active.Remove(this);
         public SpriteRenderer Icon;
         public Transform FloatingVisual;
         public ItemDefinition Item { get; private set; }
