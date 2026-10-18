@@ -4,7 +4,7 @@ using UnityEngine.Serialization;
 
 namespace Wildfolk
 {
-    public enum StationKind { None, Workbench, Campfire, Furnace, BlastFurnace }
+    public enum StationKind { None, Workbench, Campfire, Furnace, BlastFurnace, CookingPot }
     public enum RecipeCategory { Survival, Tools, Weapons, Armor, Building, Facilities }
     public enum ProcessingKind { None, Cooking, Smelting }
     public enum UnlockKind { PlayerLevel, Skill, DiscoveredItem, Blueprint, SpecialContent }
@@ -13,6 +13,8 @@ namespace Wildfolk
     {
         public ItemDefinition Item;
         [Min(1)] public int Count;
+        public int Charges;
+        public LiquidState Quality;
     }
 
     [CreateAssetMenu(menuName = "Wildfolk/Recipe")]
@@ -23,6 +25,9 @@ namespace Wildfolk
         public int SortOrder=-1;
         public ItemDefinition Result;
         [Min(1)] public int ResultCount;
+        public int ProgressionPerPlayer,ProgressionShared;
+        public int ResultCharges;
+        public LiquidState ResultQuality;
         public ItemAmount[] Ingredients;
         public StationKind RequiredStation;
         [FormerlySerializedAs("CookingSeconds"), Min(0)] public float ProcessingSeconds;

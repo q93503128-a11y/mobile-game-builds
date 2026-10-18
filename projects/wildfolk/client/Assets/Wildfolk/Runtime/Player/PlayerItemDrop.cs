@@ -27,7 +27,7 @@ namespace Wildfolk
                 {
                     var committed=source.TryDropSlot(index,stack.Item,amount,()=>
                     {
-                        pickup=PrefabPool.Spawn(Prefab,point,Quaternion.identity);pickup.Initialize(stack.Item,amount,Inventory,Settings,true);
+                        pickup=PrefabPool.Spawn(Prefab,point,Quaternion.identity);pickup.Initialize(stack.Item,amount,Inventory,Settings,true,stack.Charges,stack.Quality);
                         var network=pickup.GetComponent<NetworkGroundItem>();return network==null || NetworkCreatureWorld.Active.SpawnPendingNow(network.NetworkObject);
                     });
                     if(!committed && pickup!=null)PrefabPool.Release(pickup.gameObject);return committed;

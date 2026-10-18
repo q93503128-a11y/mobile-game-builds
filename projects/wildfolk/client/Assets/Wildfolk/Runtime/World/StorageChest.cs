@@ -23,7 +23,7 @@ namespace Wildfolk
             {
                 var stack=Model.GetSlot(i);if(stack.IsEmpty) continue;
                 var pickup=PrefabPool.Spawn(RecoveryPickup,transform.position,Quaternion.identity);
-                pickup.Initialize(stack.Item,stack.Count,visitor,Settings);
+                pickup.Initialize(stack.Item,stack.Count,visitor,Settings,false,stack.Charges,stack.Quality);
                 Model.ConsumeSlot(i,stack.Item,stack.Count);
             }
         }

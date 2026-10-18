@@ -31,8 +31,9 @@ namespace Wildfolk
         [Min(0)]public int StarterSupply;
         public bool NaturalRecovery;
         public bool Enabled=true;
+        public SurfaceBiome[] SurfaceBiomes=Array.Empty<SurfaceBiome>();
         public bool Matches(EnvironmentSample e,bool underground,float depth)
-            =>Enabled && ResourceRule>=0 && (Context==ResourceSourceContext.Cave)==underground && (AnyTags==EnvironmentTag.None || (e.Tags&AnyTags)!=0) && depth>=DepthRange.x && depth<=DepthRange.y && e.Moisture>=MoistureRange.x && e.Moisture<=MoistureRange.y && e.Rockiness>=RockRange.x && e.Rockiness<=RockRange.y;
+            =>Enabled && (SurfaceBiomes==null || SurfaceBiomes.Length==0 || Array.IndexOf(SurfaceBiomes,e.Biome)>=0) && ResourceRule>=0 && (Context==ResourceSourceContext.Cave)==underground && (AnyTags==EnvironmentTag.None || (e.Tags&AnyTags)!=0) && depth>=DepthRange.x && depth<=DepthRange.y && e.Moisture>=MoistureRange.x && e.Moisture<=MoistureRange.y && e.Rockiness>=RockRange.x && e.Rockiness<=RockRange.y;
         public float Density(EnvironmentSample e)=>DensityField==SourceDensityField.None ? 1 : Mathf.Lerp(DensityRange.x,DensityRange.y,DensityField==SourceDensityField.Forestation ? e.Forestation : e.Rockiness);
     }
     public enum SurfaceBiome { Grassland,Forest,Wetlands,Rocky }

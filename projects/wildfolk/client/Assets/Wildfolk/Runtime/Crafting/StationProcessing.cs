@@ -57,30 +57,30 @@ namespace Wildfolk
         public void Advance(float seconds)
         {if(!SimulationAuthority.Allows(this))return;var before=queue.Version;var previous=Remaining;var wasReady=IsReady;if(Sequential){queue.Advance(seconds,Station.Definition.ProcessingSpeed,Station.Definition.OutputCapacity);if(before!=queue.Version || previous>0 && Remaining<=0)Notify();}else if(Recipe!=null && Remaining>0){Remaining=Mathf.Max(0,Remaining-seconds);if(!wasReady && IsReady)Notify();}}
         public int BatchSize(RecipeDefinition recipe,InventoryModel model)
-        {if(!WorkbenchProgression.Allows(Station,recipe))return 0;var batch=Sequential ? Station.Definition.InputCapacity-queue.WaitingCount-(queue.Current==null ? 0 : 1) : Station.Definition.ParallelCapacity;foreach(var cost in recipe.Ingredients)batch=(int)Math.Min(batch,model.CountItem(cost.Item)/cost.Count);return batch;}
+        {if(!WorkbenchProgression.Allows(Station,recipe))return 0;var batch=Sequential ? Station.Definition.InputCapacity-queue.WaitingCount-(queue.Current==null ? 0 : 1) : Station.Definition.ParallelCapacity;foreach(var cost in recipe.Ingredients)batch=(int)Math.Min(batch,model.CountAmount(cost)/cost.Count);return batch;}
         private static ItemAmount[] ScaledCosts(RecipeDefinition recipe,int batch)
-        {var costs=new ItemAmount[recipe.Ingredients.Length];for(var i=0;i<costs.Length;i++)costs[i]=new ItemAmount{Item=recipe.Ingredients[i].Item,Count=checked(recipe.Ingredients[i].Count*batch)};return costs;}
+        {var costs=new ItemAmount[recipe.Ingredients.Length];for(var i=0;i<costs.Length;i++)costs[i]=new ItemAmount{Item=recipe.Ingredients[i].Item,Count=checked(recipe.Ingredients[i].Count*batch),Charges=recipe.Ingredients[i].Charges,Quality=recipe.Ingredients[i].Quality};return costs;}
         public bool Collect(PlayerInventory player)
         {
             var authority=player.GetComponent<NetworkFacilityInteractor>();if(authority!=null && !authority.IsApplying)return authority.Process(FacilityOperation.Collect,this);
             if(!SimulationAuthority.Allows(this))return false;
             if(Sequential){var accepted=queue.Collect(player.Model);if(accepted){queue.Advance(0,Station.Definition.ProcessingSpeed,Station.Definition.OutputCapacity);Notify();}return accepted;}
             if(!IsReady) return false;
-            if(player.Model.GetExchangeStatus(Array.Empty<ItemAmount>(),Recipe.Result,OutputCount)!=ExchangeResult.Success) return false;
-            player.Model.TryExchange(Array.Empty<ItemAmount>(),Recipe.Result,OutputCount);
+            if(player.Model.GetExchangeStatus(Array.Empty<ItemAmount>(),Recipe.Result,OutputCount,Recipe.ResultCharges,Recipe.ResultQuality)!=ExchangeResult.Success) return false;
+            player.Model.TryExchange(Array.Empty<ItemAmount>(),Recipe.Result,OutputCount,Recipe.ResultCharges,Recipe.ResultQuality);
             Recipe=null;owner=null;Notify();return true;
         }
         private void ReleaseCargo()
         {
-            if(Sequential){foreach(var amount in queue.Release())Drop(amount.Item,amount.Count);return;}
+            if(Sequential){foreach(var amount in queue.Release())Drop(amount.Item,amount.Count,amount.Charges,amount.Quality);return;}
             if(Recipe==null) return;
-            if(IsReady) Drop(Recipe.Result,OutputCount);
-            else foreach(var ingredient in Recipe.Ingredients) Drop(ingredient.Item,ingredient.Count*BatchCount);
+            if(IsReady) Drop(Recipe.Result,OutputCount,Recipe.ResultCharges,Recipe.ResultQuality);
+            else foreach(var ingredient in Recipe.Ingredients) Drop(ingredient.Item,ingredient.Count*BatchCount,ingredient.Charges,ingredient.Quality);
             Recipe=null;owner=null;
         }
-        private void Drop(ItemDefinition item,int count)
+        private void Drop(ItemDefinition item,int count,int charges=0,LiquidState quality=LiquidState.Empty)
         {
-            while(count>0){var portion=Mathf.Min(count,item.MaxStack);var pickup=PrefabPool.Spawn(RecoveryPickup,transform.position,Quaternion.identity);pickup.Initialize(item,portion,owner,Settings);count-=portion;}
+            while(count>0){var portion=Mathf.Min(count,item.MaxStack);var pickup=PrefabPool.Spawn(RecoveryPickup,transform.position,Quaternion.identity);pickup.Initialize(item,portion,owner,Settings,false,charges,quality);count-=portion;}
         }
     }
 }

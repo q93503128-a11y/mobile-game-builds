@@ -18,10 +18,10 @@ namespace Wildfolk
     public struct PlayerStatusState : INetworkSerializable,IEquatable<PlayerStatusState>
     {
         public int HP,MaximumHP;
-        public short Head,Body,Held;
+        public short Head,Body,Held,Utility;
         public void NetworkSerialize<T>(BufferSerializer<T> serializer) where T:IReaderWriter
-        {serializer.SerializeValue(ref HP);serializer.SerializeValue(ref MaximumHP);serializer.SerializeValue(ref Head);serializer.SerializeValue(ref Body);serializer.SerializeValue(ref Held);}
-        public bool Equals(PlayerStatusState other)=>HP==other.HP && MaximumHP==other.MaximumHP && Head==other.Head && Body==other.Body && Held==other.Held;
+        {serializer.SerializeValue(ref HP);serializer.SerializeValue(ref MaximumHP);serializer.SerializeValue(ref Head);serializer.SerializeValue(ref Body);serializer.SerializeValue(ref Held);serializer.SerializeValue(ref Utility);}
+        public bool Equals(PlayerStatusState other)=>HP==other.HP && MaximumHP==other.MaximumHP && Head==other.Head && Body==other.Body && Held==other.Held && Utility==other.Utility;
     }
     public struct PlayerAttackState : INetworkSerializable,IEquatable<PlayerAttackState>
     {

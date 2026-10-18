@@ -11,7 +11,7 @@ namespace Wildfolk.Tests
         [Test]public void FacilityPrefabsAndInteractionComponentsAreRegisteredBeforeSessionStarts()
         {
             var world=AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Wildfolk/Prefabs/NetworkEcology.prefab").GetComponent<NetworkCreatureWorld>();
-            var facilities=world.Prefabs.Where(e=>e.Source.GetComponent<CraftingStation>()!=null || e.Source.GetComponent<StorageChest>()!=null).ToArray();Assert.That(facilities.Length,Is.EqualTo(7));
+            var facilities=world.Prefabs.Where(e=>e.Source.GetComponent<CraftingStation>()!=null || e.Source.GetComponent<StorageChest>()!=null).ToArray();Assert.That(facilities.Length,Is.EqualTo(8));
             foreach(var entry in facilities){Assert.That(entry.NetworkPrefab.GetComponent<NetworkFacility>(),Is.Not.Null);Assert.That(entry.NetworkPrefab.GetComponent<NetworkObject>(),Is.Not.Null);}
             var player=AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Wildfolk/Prefabs/NetworkPlayer.prefab");Assert.That(player.GetComponent<PlayerStorage>(),Is.Not.Null);Assert.That(player.GetComponent<PlayerCrafting>(),Is.Not.Null);Assert.That(player.GetComponent<PlayerInteraction>(),Is.Not.Null);Assert.That(player.GetComponent<NetworkFacilityInteractor>(),Is.Not.Null);Assert.That(player.GetComponent<PlayerPlacement>(),Is.Not.Null);
             Assert.That(AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Wildfolk/Prefabs/NetworkSession.prefab").GetComponent<NetworkManager>().NetworkConfig.ProtocolVersion,Is.EqualTo(NetworkProtocol.Current));

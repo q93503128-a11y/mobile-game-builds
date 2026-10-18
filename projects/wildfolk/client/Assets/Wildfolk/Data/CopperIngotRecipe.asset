@@ -17,11 +17,19 @@ MonoBehaviour:
   SortOrder: 200
   Result: {fileID: 11400000, guid: 1a7d210755c56c74aa67450babf3e657, type: 2}
   ResultCount: 1
+  ProgressionPerPlayer: 0
+  ProgressionShared: 0
+  ResultCharges: 0
+  ResultQuality: 0
   Ingredients:
   - Item: {fileID: 11400000, guid: a667e22f5c67d31499f18e20b91b2f04, type: 2}
     Count: 1
+    Charges: 0
+    Quality: 0
   - Item: {fileID: 11400000, guid: 745a86eb96e288b4abcf496de399103a, type: 2}
     Count: 1
+    Charges: 0
+    Quality: 0
   RequiredStation: 3
   ProcessingSeconds: 3
   Processing: 2

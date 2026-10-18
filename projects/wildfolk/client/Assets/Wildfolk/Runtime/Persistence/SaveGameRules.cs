@@ -17,7 +17,7 @@ namespace Wildfolk
         public GoblinCampDefinition Camps;
         public void Validate(SavedGame game)
         {
-            if(game==null || game.Version<1 || game.Version>8)throw new InvalidDataException("Unsupported save version");
+            if(game==null || game.Version<1 || game.Version>9)throw new InvalidDataException("Unsupported save version");
             if(game.Version<=5)MetalSaveMigration.NormalizeLegacyContent(game,Catalog);
             if(game.Version<=6)game.BaseGenerationVersion=WorldGenerationVersion.Legacy;
             if(game.Features==null)game.Features=Array.Empty<WorldFeatureSnapshot>();
@@ -29,7 +29,7 @@ namespace Wildfolk
             if(game.Version==3){SaveValidation.Validate(game,Catalog,World,Animals,Player.Settings.InventorySlots,Player.GetComponent<Health>().Definition.MaximumHealth,Player.GetComponent<PlayerSurvival>().Definition,growth,locomotion);SaveMigration.EcologyFromV3(game,World,Animals);}
             SaveValidation.Validate(game,Catalog,World,Animals,Player.Settings.InventorySlots,Player.GetComponent<Health>().Definition.MaximumHealth,Player.GetComponent<PlayerSurvival>().Definition,growth,locomotion);
             ValidateEnemies(game);
-            if(game.Version>=4 && game.Version<=7)game.Version=8;
+            if(game.Version>=4 && game.Version<=8)game.Version=9;
             MultiplayerSaveRules.Validate(game,this);
         }
         private void ValidateEnemies(SavedGame game)

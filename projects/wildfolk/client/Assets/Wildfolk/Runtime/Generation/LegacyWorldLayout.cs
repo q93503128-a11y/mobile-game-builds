@@ -100,7 +100,7 @@ namespace Wildfolk
         }
         public static bool Supports(ResourceGenerationRule rule,BiomeDefinition biome,ResourceSourceContext context,float depth)
         {
-            if(rule.SourceContext!=context)return false;
+            if(rule.Generation2Only || rule.SourceContext!=context)return false;
             if(rule.AllowedBiomes!=null && rule.AllowedBiomes.Length>0 && Array.IndexOf(rule.AllowedBiomes,biome)<0)return false;
             return !rule.DistributionConfigured || depth>=rule.DepthRange.x && depth<=rule.DepthRange.y;
         }

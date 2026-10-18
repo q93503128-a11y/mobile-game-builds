@@ -1,5 +1,8 @@
 # World Generation / Biome Foundation v2
 
+2026-10-18 현재 콘텐츠 확장: **Save9 / Protocol10, Item86 / Recipe71**. [현재 정본](CONTENT_EXPANSION.md). 아래 이전 버전 설명은 해당 패스의 기록이다.
+
+
 2026-10-18 현재: generation2 지형 유지 / **Save8 / Protocol9**, Item50 / Recipe38. Torch·Compass·제작대 Home·동굴 Exit·제한 지형 cache/분할 생성을 제공한다. [탐험 정본](EXPLORATION_FOUNDATION.md)과 [실제 검수/성능](EXPLORATION_REVIEW.md)를 따른다. 아래 이전 날짜/Version 설명은 각 단계의 기록이다.
 
 2026-10-17. 표시명 Lowfire / 내부 Wildfolk. 신규 BaseGenerationVersion2 / Save7 / Protocol8. Item48, Recipe36, 장비 Tier4 유지.
@@ -84,3 +87,7 @@ Workbench III/Diamond progression/IV~VI/새 biome·섬·Boat/Torch·Lantern game
 ## Exploration Foundation 1 확장 (2026-10-18)
 
 현재 Save8/Protocol9. 위 v2 생성 알고리즘·Seed domain·자원 ID는 바꾸지 않았다. [탐험 정본](EXPLORATION_FOUNDATION.md)에 조명/Compass/Home, 중앙 scheduler의4unit hysteresis, 지형 row 분할2.5ms 목표/LRU24를 기록했다. 안정된1/2/4지역9/18/36, 경계 retention 최대16/player·4인64다. 이전 단락의 매번 texture 폐기/1인9 고정 설명은 이 확장 이전 기록이다. 측정값/단말 한계는 [검수](EXPLORATION_REVIEW.md)를 따른다.
+
+## Workbench I–II Content Expansion (2026-10-18)
+
+기존 지형 generation2와 구 generation1을 유지한다. Small Plant는 Fiber2. Berry/Mushroom은 독립 SourceId로 뒤에 추가하며 generation2에만 생성한다. 4인 광물 예산은 실제 I~II Recipe 그래프/안전 여유로 계산하고 부족량을 기존 위치를 밀지 않는 e ID로 보충한다. 기존 광물 고갈/청크/캐시 정책은 유지한다. [현재 예산과 호환](CONTENT_EXPANSION.md).

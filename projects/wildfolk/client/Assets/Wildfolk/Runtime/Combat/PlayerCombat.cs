@@ -38,6 +38,7 @@ namespace Wildfolk
         public bool TryAttack()
         {
             if (!SimulationAuthority.Allows(this) || !Session.IsRunning || !OwnHealth.IsAlive || IsAttacking || Time.time < nextAttack) return false;
+            if(Equipment.SelectedItem!=null && (Equipment.SelectedItem.Ranged!=null || Equipment.SelectedItem.FishingRod) || GetComponent<PlayerRanged>()!=null && GetComponent<PlayerRanged>().IsBusy)return false;
             attackTool = Equipment.ActiveTool;
             duration = attackTool == null ? Settings.PunchDuration : attackTool.Duration;
             profile=attackTool==null ? Settings.PunchAttack : attackTool.Attack;
@@ -125,7 +126,7 @@ namespace Wildfolk
             }
             else
             {
-                var arc = -Mathf.Sin(progress * Mathf.PI * 2) * tool.SwingArc;
+                var arc = tool.Kind==ToolKind.Spear ? 0 : -Mathf.Sin(progress * Mathf.PI * 2) * tool.SwingArc;
                 Avatar.Facing.SetHandPose(1, new Vector2(-.2f * extension, tool.HandExtension * extension), arc);
             }
         }

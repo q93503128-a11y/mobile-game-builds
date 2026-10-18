@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea85a5ebaf6f62646a87d747548e1a2f, type: 3}
+  m_Name: ReinforcedGatePlacement
+  m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.PlaceableDefinition
+  Item: {fileID: 11400000, guid: e2b276bb2f861ca4fb7052d6f9e18d33, type: 2}
+  Prefab: {fileID: 2783250104737554734, guid: d401a2d1c47816349a51068c28e86f34, type: 3}
+  Vitality: {fileID: 11400000, guid: fb568262ce0c56e40a41fa360bcad019, type: 2}
+  Footprint: {x: 3.4, y: 0.6}
+  MaximumDistance: 3.5
+  Station: 0
+  Tier: {fileID: 0}
+  IsBarrier: 1
+  IsDoor: 1
+  StorageSlots: 0
+  ParallelCapacity: 1
+  ProcessingMode: 1
+  InputCapacity: 30
+  OutputCapacity: 60
+  ProcessingSpeed: 1
+  WorkbenchTier: 1
+  TierVisual: {fileID: 0}
+  TierDisplayKey:
+  UpgradeTo: {fileID: 0}
+  UpgradeCosts: []

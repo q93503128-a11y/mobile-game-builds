@@ -9,3 +9,7 @@ SP는 InventoryModel.TryDropSlot 예약→Instantiate 성공→commit이며 실�
 WorldPlaceable.SaveId가 저장 ID다. chunk sleep은 PlaceableSnapshot, Load/re-host는 같은 ID를 복원한다. Workbench I→II도 위치/ID/HP 비율을 보존한다. Home은 그 제작대 ID를 참조하고 별도 building ownership을 만들지 않는다. 설치 Torch는 하나의 휴대 Torch item을 소비하며 기존 설치·저장·동기화 구조를 공유한다.
 
 먼 시설은 active GameObject/조명 없이 sleep snapshot과 게임 시간으로 처리하고, 재방문/Save 때 cargo를 계산한다. 실제 오프라인 시간은 더하지 않는다. 설치물 회수/개인 lock/새 건축 tier/Workbench III는 이번 범위에 추가하지 않았다. 권위와 검수 한계는 [멀티](MULTIPLAYER_FOUNDATION.md), [탐험](EXPLORATION_FOUNDATION.md), [저장](SAVE_PERSISTENCE.md)을 따른다.
+
+## Workbench I–II Content Expansion (2026-10-18)
+
+현재 설치물24종. Wood Fence/Fence Gate/Gate, Stone Door/Fence/Fence Gate/Gate, Cooking Pot, Reinforced Wall/Door/Gate, Spike Trap, Brazier를 추가했다. Door는2.1unit, Gate는3.4unit 출입구다. 공통 WorldDoor의 충돌·애니메이션·닫힘 점유 검사/Host 권위/Save ID를 사용한다. 보강 Wall/Door/Gate HP360/320/420. Trap은 HP100, 피해16/1.2초이며 같은 팀 플레이어/시설과 자원을 공격하지 않는다. 세부 비용은 [콘텐츠 표](CONTENT_EXPANSION.md).

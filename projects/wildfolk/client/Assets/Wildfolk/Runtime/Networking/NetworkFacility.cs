@@ -51,7 +51,7 @@ namespace Wildfolk
         private void Publish()
         {
             if(!IsServer || !IsSpawned)return;
-            if(Chest!=null)for(var i=0;i<Chest.Model.Capacity;i++){var slot=Chest.Model.GetSlot(i);var value=new NetworkStack{Item=slot.IsEmpty ? (short)-1 : (short)Array.IndexOf(Catalog.Items,slot.Item),Count=slot.Count};if(i>=Slots.Count)Slots.Add(value);else if(!Slots[i].Equals(value))Slots[i]=value;}
+            if(Chest!=null)for(var i=0;i<Chest.Model.Capacity;i++){var slot=Chest.Model.GetSlot(i);var value=new NetworkStack{Item=slot.IsEmpty ? (short)-1 : (short)Array.IndexOf(Catalog.Items,slot.Item),Count=slot.Count,Charges=slot.Charges,Quality=slot.Quality};if(i>=Slots.Count)Slots.Add(value);else if(!Slots[i].Equals(value))Slots[i]=value;}
             if(Processor!=null)
             {
                 var snapshot=Processor.Capture();var current=Processor.Recipe;
@@ -64,8 +64,8 @@ namespace Wildfolk
             }
             Revision.Value++;
         }
-        private void MirrorSlots(){if(Chest==null || IsServer)return;var values=new ItemStack[Chest.Model.Capacity];for(var i=0;i<Slots.Count && i<values.Length;i++){var s=Slots[i];values[i]=s.Count==0 ? default : new ItemStack(Catalog.Items[s.Item],s.Count);}Chest.Model.ApplyReplicaSlots(values);}
-        private void SlotsChanged(NetworkListEvent<NetworkStack> change){if(IsServer || Chest==null)return;if(change.Type==NetworkListEvent<NetworkStack>.EventType.Value){var s=change.Value;Chest.Model.ApplyReplicaSlot(change.Index,s.Count==0 ? default : new ItemStack(Catalog.Items[s.Item],s.Count));}else MirrorSlots();}
+        private void MirrorSlots(){if(Chest==null || IsServer)return;var values=new ItemStack[Chest.Model.Capacity];for(var i=0;i<Slots.Count && i<values.Length;i++){var s=Slots[i];values[i]=s.Count==0 ? default : new ItemStack(Catalog.Items[s.Item],s.Count,s.Charges,s.Quality);}Chest.Model.ApplyReplicaSlots(values);}
+        private void SlotsChanged(NetworkListEvent<NetworkStack> change){if(IsServer || Chest==null)return;if(change.Type==NetworkListEvent<NetworkStack>.EventType.Value){var s=change.Value;Chest.Model.ApplyReplicaSlot(change.Index,s.Count==0 ? default : new ItemStack(Catalog.Items[s.Item],s.Count,s.Charges,s.Quality));}else MirrorSlots();}
         private void MirrorProcessing()
         {
             if(IsServer || Processor==null)return;var value=Processing.Value;var waiting=new List<ProcessingEntry>();var output=new List<ProcessingEntry>();

@@ -11,6 +11,8 @@ namespace Wildfolk
         public Transform FloatingVisual;
         public ItemDefinition Item { get; private set; }
         public int Count { get; private set; }
+        public int Charges {get;private set;}
+        public LiquidState Quality {get;private set;}
         private PlayerInventory player;
         private GameplaySettings settings;
         private Vector3 origin;
@@ -22,11 +24,11 @@ namespace Wildfolk
         private void Awake()=>restVisual=FloatingVisual.localPosition;
         public void ResetForSpawn(){Item=null;Count=0;player=null;age=nextPickupAttempt=0;waitForExit=false;FloatingVisual.localPosition=restVisual;}
 
-        public void Initialize(ItemDefinition item, int count, PlayerInventory owner, GameplaySettings configuration,bool playerDropped=false)
+        public void Initialize(ItemDefinition item, int count, PlayerInventory owner, GameplaySettings configuration,bool playerDropped=false,int charges=0,LiquidState quality=LiquidState.Empty)
         {
-            var network=GetComponent<NetworkGroundItem>();if(network!=null){network.Configure(item,count,owner,configuration,playerDropped);return;}
+            var network=GetComponent<NetworkGroundItem>();if(network!=null){network.Configure(item,count,owner,configuration,playerDropped,charges,quality);return;}
             Item = item;
-            Count = count;
+            Count = count;Charges=charges;Quality=quality;
             player = owner;
             settings = configuration;
             Icon.sprite = item.Icon;
@@ -39,7 +41,7 @@ namespace Wildfolk
             waitForExit=playerDropped;
         }
 
-        public void ApplyNetwork(ItemDefinition item,int count){Item=item;Count=count;Icon.sprite=item.Icon;}
+        public void ApplyNetwork(ItemDefinition item,int count,int charges=0,LiquidState quality=LiquidState.Empty){Item=item;Count=count;Charges=charges;Quality=quality;Icon.sprite=item.Icon;}
         public void PresentNetwork(Vector2 from,Vector2 to,float elapsed,GameplaySettings config)
         {
             var t=Mathf.Clamp01(elapsed/config.DropTravelTime);transform.position=Vector2.Lerp(from,to,1-(1-t)*(1-t));
@@ -57,7 +59,7 @@ namespace Wildfolk
             if (age < settings.DropPickupDelay || Time.time < nextPickupAttempt) return;
             if (Vector2.Distance(transform.position, player.transform.position) > settings.PickupRadius) return;
             nextPickupAttempt = Time.time + .15f;
-            var accepted = player.Model.Add(Item, Count);
+            var accepted = player.Model.Add(Item, Count,Charges,Quality);
             Count -= accepted;
             if (Count == 0) PrefabPool.Release(gameObject);
         }

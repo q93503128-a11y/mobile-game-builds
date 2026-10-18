@@ -1,0 +1,1459 @@
+{
+  "startedUtc": "2026-10-18T08:10:35Z",
+  "baseCommit": "318ddd6b14eb89bbc526c96239d23c8067de76e6",
+  "status": "Implementation, related checks, direct MCP QA and final review completed; Git delivery tracked by main history",
+  "mcp": [
+    {
+      "success": true,
+      "message": "Code executed successfully.",
+      "error": null,
+      "data": {
+        "result": {
+          "phase": "fiber-bow",
+          "drop": "plant_fiber",
+          "hit": 12,
+          "bow": 1,
+          "arrow": 12,
+          "rod": 1,
+          "fired": true,
+          "before": 55,
+          "ammo": 12,
+          "qa": "C:\\UnityProjects\\Wildfolk\\Captures\\Codex_QA_ContentExpansion_20261018\\world-v1.json"
+        },
+        "compiler": "codedom"
+      },
+      "hint": null
+    },
+    {
+      "success": true,
+      "message": "Code executed successfully.",
+      "error": null,
+      "data": {
+        "result": {
+          "phase": "bow-hit-wood-spear",
+          "hp": 55,
+          "ammo": 11,
+          "wood": 1,
+          "use": true,
+          "range": 2.55
+        },
+        "compiler": "codedom"
+      },
+      "hint": null
+    },
+    {
+      "success": true,
+      "message": "Code executed successfully.",
+      "error": null,
+      "data": {
+        "result": "{ phase = stone-spear, last = 12, count = 1, use = True, player = (-8.00, -10.00, 0.00), camera = (-8.00, -10.00, -10.00), target = Player, playerActive = True }",
+        "compiler": "codedom"
+      },
+      "hint": null
+    },
+    {
+      "success": true,
+      "message": "Code executed successfully.",
+      "error": null,
+      "data": {
+        "result": {
+          "phase": "iron-spear",
+          "stoneDamage": 20,
+          "count": 1,
+          "use": true,
+          "range": 2.8
+        },
+        "compiler": "codedom"
+      },
+      "hint": null
+    },
+    {
+      "success": true,
+      "message": "Code executed successfully.",
+      "error": null,
+      "data": {
+        "result": {
+          "phase": "bow-clear-line",
+          "ironDamage": 29,
+          "fired": true,
+          "before": 55
+        },
+        "compiler": "codedom"
+      },
+      "hint": null
+    },
+    {
+      "success": true,
+      "message": "Code executed successfully.",
+      "error": null,
+      "data": {
+        "result": "{ phase = fishing-cast, bowHitHp = 41, cast = True, water = (734.29, 1000.00) }",
+        "compiler": "codedom"
+      },
+      "hint": null
+    },
+    {
+      "success": true,
+      "message": "Code executed successfully.",
+      "error": null,
+      "data": {
+        "result": {
+          "phase": "fishing-scheduled",
+          "Phase": 1
+        },
+        "compiler": "codedom"
+      },
+      "hint": null
+    },
+    {
+      "success": true,
+      "message": "Code executed successfully.",
+      "error": null,
+      "data": {
+        "result": {
+          "phase": "gather-cooking",
+          "berryDrop": 18,
+          "mushroomDrop": 12,
+          "pot": 1,
+          "skin": 1,
+          "queued": 0,
+          "collected": true,
+          "consumed": true,
+          "hunger": 75,
+          "thirst": 28
+        },
+        "compiler": "codedom"
+      },
+      "hint": null
+    },
+    {
+      "success": true,
+      "message": "Code executed successfully.",
+      "error": null,
+      "data": {
+        "result": {
+          "phase": "campfire-waterskin",
+          "fish": true,
+          "mushroom": true,
+          "fill": true,
+          "purified": true,
+          "drink": true,
+          "charges": 2,
+          "quality": "Clean"
+        },
+        "compiler": "codedom"
+      },
+      "hint": null
+    },
+    {
+      "success": true,
+      "message": "Code executed successfully.",
+      "error": null,
+      "data": {
+        "result": {
+          "phase": "tier2",
+          "drink2": true,
+          "charge": 1,
+          "before": 1,
+          "upgraded": 1,
+          "after": 0,
+          "arrow": 12,
+          "crossbow": 1,
+          "bolt": 12,
+          "steel": 8,
+          "lantern": 1,
+          "equip": true,
+          "mount": "Equipped",
+          "held": "iron_sword"
+        },
+        "compiler": "codedom"
+      },
+      "hint": null
+    },
+    {
+      "success": true,
+      "message": "Code executed successfully.",
+      "error": null,
+      "data": {
+        "result": {
+          "phase": "waterskin-third-utility-ui",
+          "drink3": true,
+          "empty": 0,
+          "fourth": false,
+          "utility": "lantern"
+        },
+        "compiler": "codedom"
+      },
+      "hint": null
+    },
+    {
+      "success": true,
+      "message": "Code executed successfully.",
+      "error": null,
+      "data": {
+        "result": {
+          "phase": "build-trap",
+          "refill": true,
+          "gate": 1,
+          "trap": 1,
+          "light": 1,
+          "opened": true,
+          "targetBefore": 55,
+          "gateId": "81969645e56f4a4c92180f54ef4812d0"
+        },
+        "compiler": "codedom"
+      },
+      "hint": null
+    },
+    {
+      "success": true,
+      "message": "Code executed successfully.",
+      "error": null,
+      "data": {
+        "result": {
+          "head": "(-618.00, -112.00)",
+          "body": "(-491.00, -112.00)",
+          "utility": "(-491.00, -234.00)",
+          "size": "(100.00, 100.00)",
+          "parent": "(1520.00, 740.00)",
+          "triggers": 4,
+          "targetAlive": false,
+          "frame": 49036
+        },
+        "compiler": "codedom"
+      },
+      "hint": null
+    },
+    {
+      "success": true,
+      "message": "Code executed successfully.",
+      "error": null,
+      "data": {
+        "result": {
+          "phase": "crossbow-save",
+          "fired": true,
+          "duplicate": false,
+          "saved": true,
+          "charges": 2,
+          "utility": "lantern",
+          "version": 9,
+          "buildings": 9,
+          "saveBytes": 83807
+        },
+        "compiler": "codedom"
+      },
+      "hint": null
+    },
+    {
+      "success": true,
+      "message": "Code executed successfully.",
+      "error": null,
+      "data": {
+        "result": {
+          "phase": "steel-bolt",
+          "normalRemaining": 11,
+          "fired": true,
+          "steelBefore": 8
+        },
+        "compiler": "codedom"
+      },
+      "hint": null
+    },
+    {
+      "success": true,
+      "message": "Code executed successfully.",
+      "error": null,
+      "data": {
+        "result": {
+          "phase": "economy-save",
+          "one": {
+            "iron_ore": 57,
+            "copper_ore": 36,
+            "tin_ore": 17,
+            "coal": 84
+          },
+          "four": {
+            "iron_ore": 197,
+            "copper_ore": 72,
+            "tin_ore": 31,
+            "coal": 220
+          },
+          "supply": {
+            "iron_ore": 198,
+            "copper_ore": 72,
+            "tin_ore": 33,
+            "coal": 220
+          },
+          "steel": 7,
+          "saved": true,
+          "saveBytes": 83808
+        },
+        "compiler": "codedom"
+      },
+      "hint": null
+    },
+    {
+      "success": true,
+      "message": "Code executed successfully.",
+      "error": null,
+      "data": {
+        "result": {
+          "phase": "small-crafting",
+          "recipes": 71,
+          "selected": "Crossbow"
+        },
+        "compiler": "codedom"
+      },
+      "hint": null
+    },
+    {
+      "success": true,
+      "message": "Code executed successfully.",
+      "error": null,
+      "data": {
+        "result": {
+          "phase": "lantern-cave",
+          "mount": "Equipped",
+          "held": "iron_pickaxe",
+          "utility": "lantern",
+          "ambient": 0.18,
+          "chunks": 9,
+          "cache": 9,
+          "resources": 89
+        },
+        "compiler": "codedom"
+      },
+      "hint": null
+    },
+    {
+      "success": true,
+      "message": "Code executed successfully.",
+      "error": null,
+      "data": {
+        "result": {
+          "phase": "host-fishing",
+          "cast": true,
+          "primary": true,
+          "facilities": 5
+        },
+        "compiler": "codedom"
+      },
+      "hint": null
+    },
+    {
+      "success": true,
+      "message": "Code executed successfully.",
+      "error": null,
+      "data": {
+        "result": {
+          "phase": "host-authority-save",
+          "drink": true,
+          "charge": 1,
+          "equipped": true,
+          "statusUtility": 80,
+          "placed": true,
+          "replay": false,
+          "id": "638f667879104594b48d65c5189d2847",
+          "saved": true,
+          "bytes": 81962
+        },
+        "compiler": "codedom"
+      },
+      "hint": null
+    },
+    {
+      "success": true,
+      "message": "Code executed successfully.",
+      "error": null,
+      "data": {
+        "result": {
+          "phase": "host-buildings",
+          "report": [
+            "wood_fence:True:False",
+            "wood_fence_gate:True:True",
+            "wood_gate:True:True",
+            "stone_door:True:True",
+            "stone_fence:True:False",
+            "stone_fence_gate:True:True",
+            "stone_gate:True:True",
+            "reinforced_wall:True:False",
+            "reinforced_door:True:True",
+            "reinforced_gate:True:True",
+            "spike_trap:True:False",
+            "brazier:True:False",
+            "cooking_pot:True:False"
+          ],
+          "active": 9
+        },
+        "compiler": "codedom"
+      },
+      "hint": null
+    },
+    {
+      "success": true,
+      "message": "Code executed successfully.",
+      "error": null,
+      "data": {
+        "result": {
+          "phase": "host-food-gates-save",
+          "opened": true,
+          "status": "Ready",
+          "collected": true,
+          "consumed": true,
+          "hunger": 75,
+          "doors": 7,
+          "passable": 7,
+          "saved": true,
+          "buildings": 19,
+          "utility": "lantern"
+        },
+        "compiler": "codedom"
+      },
+      "hint": null
+    },
+    {
+      "success": true,
+      "message": "Code executed successfully.",
+      "error": null,
+      "data": {
+        "result": {
+          "phase": "host-trap",
+          "before": 0,
+          "hp": 55
+        },
+        "compiler": "codedom"
+      },
+      "hint": null
+    },
+    {
+      "success": true,
+      "message": "Code executed successfully.",
+      "error": null,
+      "data": {
+        "result": {
+          "phase": "host-cave-lantern",
+          "held": "iron_sword",
+          "utility": "lantern",
+          "mount": "Equipped",
+          "hp": 100
+        },
+        "compiler": "codedom"
+      },
+      "hint": null
+    },
+    {
+      "success": true,
+      "message": "Code executed successfully.",
+      "error": null,
+      "data": {
+        "result": {
+          "phase": "host-rehost",
+          "found": true,
+          "charges": 1,
+          "quality": "Clean",
+          "utility": "lantern",
+          "buildings": 19,
+          "gateIdPreserved": true
+        },
+        "compiler": "codedom"
+      },
+      "hint": null
+    }
+  ],
+  "limits": [
+    "MCP fixtures grant materials and teleport; not a full natural playthrough",
+    "No Android/iOS, Relay or four real peers",
+    "No FPS comparison is claimed from overlapping Editor/test processes"
+  ],
+  "runs": [
+    {
+      "name": "content-edit",
+      "mode": "EditMode",
+      "total": 123,
+      "passed": 116,
+      "failed": 7,
+      "seconds": 19.2087215,
+      "start": "2026-10-18 08:31:39Z",
+      "end": "2026-10-18 08:31:58Z",
+      "failures": [
+        {
+          "case": "Wildfolk.Tests.ExplorationModelTests.EarlyTorchAndCompassUseExistingMaterialsAndOnePlacementItem",
+          "message": "  Expected: False\n  But was:  True\n"
+        },
+        {
+          "case": "Wildfolk.Tests.NetworkCreatureContractTests.EveryEcologySpawnHasRegisteredServerPrefabAndSharedBrain",
+          "message": "  Expected: 31\n  But was:  46\n"
+        },
+        {
+          "case": "Wildfolk.Tests.NetworkFacilityModelTests.FacilityPrefabsAndInteractionComponentsAreRegisteredBeforeSessionStarts",
+          "message": "  Expected: 7\n  But was:  8\n"
+        },
+        {
+          "case": "Wildfolk.Tests.NetworkPersistenceModelTests.EveryExistingPlaceableUsesOneSourceDefinitionAndServerBuildingState",
+          "message": "  Expected: 11\n  But was:  24\n"
+        },
+        {
+          "case": "Wildfolk.Tests.SceneContractTests.BalanceDataHasValidCombatRangesAndProgressionItems",
+          "message": "  Expected: Meat\n  But was:  Wood\n"
+        },
+        {
+          "case": "Wildfolk.Tests.StabilityModelTests.EditorValidatorAcceptsCurrentDataAndDeveloperToolsStayInEditorAssembly",
+          "message": "  Invalid generation/renewal rule\nInvalid generation/renewal rule\n  Expected: <empty>\n  But was:  < \"Invalid generation/renewal rule\", \"Invalid generation/renewal rule\" >\n"
+        },
+        {
+          "case": "Wildfolk.Tests.WorldGenerationTests.TreeHitCountsUpgradeRecipesAndFurnaceCapacityMatchActualData",
+          "message": "  Expected: 2\n  But was:  1\n"
+        }
+      ]
+    },
+    {
+      "name": "content-edit-recheck",
+      "mode": "EditMode",
+      "total": 7,
+      "passed": 7,
+      "failed": 0,
+      "seconds": 0.218838,
+      "start": "2026-10-18 08:46:48Z",
+      "end": "2026-10-18 08:46:48Z",
+      "failures": []
+    },
+    {
+      "name": "content-play",
+      "mode": "PlayMode",
+      "total": 44,
+      "passed": 22,
+      "failed": 22,
+      "seconds": 138.155343,
+      "start": "2026-10-18 08:35:15Z",
+      "end": "2026-10-18 08:37:33Z",
+      "failures": [
+        {
+          "case": "Wildfolk.Tests.ContentExpansionHostTests.FishingContainerUtilityAndNewBuildingsPersistThroughHostAuthority",
+          "message": "Unhandled log message: '[Exception] NullReferenceException: Object reference not set to an instance of an object'. Use UnityEngine.TestTools.LogAssert.Expect"
+        },
+        {
+          "case": "Wildfolk.Tests.ContentExpansionPlayTests.BowCrossbowConsumeMatchingAmmoAndHitEnemyWithoutMelee",
+          "message": "UnityEngine.MissingReferenceException : The object of type 'Wildfolk.NeutralAnimal' has been destroyed but you are still trying to access it.\nYour script should either check if it is null or you should not destroy the object."
+        },
+        {
+          "case": "Wildfolk.Tests.ContentExpansionPlayTests.GatesCollideOpenAndTrapRespectsTeamAndCooldown",
+          "message": "UnityEngine.MissingReferenceException : The object of type 'Wildfolk.NeutralAnimal' has been destroyed but you are still trying to access it.\nYour script should either check if it is null or you should not destroy the object."
+        },
+        {
+          "case": "Wildfolk.Tests.ContentExpansionPlayTests.LanternHandsFreeAndCookingPotQueueSurviveValidatedSaveLoad",
+          "message": "  Expected: Ready\n  But was:  Processing\n"
+        },
+        {
+          "case": "Wildfolk.Tests.ContentExpansionPlayTests.WaterskinThreeUsesChestDropAndSavePreserveQuality",
+          "message": "  Expected: Ready\n  But was:  Processing\n"
+        },
+        {
+          "case": "Wildfolk.Tests.ExplorationHostTests.TorchAuthorityAtomicityFourRegionUnionAndHomeRehost",
+          "message": "Unhandled log message: '[Exception] NullReferenceException: Object reference not set to an instance of an object'. Use UnityEngine.TestTools.LogAssert.Expect"
+        },
+        {
+          "case": "Wildfolk.Tests.NetworkFacilityPlayTests.CampfireMeatAndWaterRemainSharedAfterActorRetires",
+          "message": "SetUp :   Expected: not null\n  But was:  null\n\nTearDown : Unhandled log message: '[Error] Cooperative world save failed: InvalidOperationException'. Use UnityEngine.TestTools.LogAssert.Expect"
+        },
+        {
+          "case": "Wildfolk.Tests.NetworkFacilityPlayTests.ChestWithdrawDepositSplitStaleAndFullBagHaveNoLoss",
+          "message": "SetUp :   Expected: True\n  But was:  False\n"
+        },
+        {
+          "case": "Wildfolk.Tests.NetworkFacilityPlayTests.ExistingUiUsesSharedChestAndHandCraftingWithLocalActorBindings",
+          "message": "SetUp :   Expected: not null\n  But was:  null\n"
+        },
+        {
+          "case": "Wildfolk.Tests.NetworkFacilityPlayTests.FurnaceQueueAndCompletionRacesKeepOutputAndReservedInputs",
+          "message": "SetUp :   Expected: not null\n  But was:  null\n"
+        },
+        {
+          "case": "Wildfolk.Tests.NetworkFacilityPlayTests.HandCraftAtomicityAndWorkbenchUpgradeCommitOnce",
+          "message": "SetUp :   Expected: not null\n  But was:  null\n"
+        },
+        {
+          "case": "Wildfolk.Tests.NetworkFacilityPlayTests.SteelUsesSeparateHostFacilityAndReservationsCommitOnce",
+          "message": "SetUp :   Expected: 5\n  But was:  6\n"
+        },
+        {
+          "case": "Wildfolk.Tests.NetworkItemPlayTests.CreatureLootAndNearbySessionRewardsCommitExactlyOnce",
+          "message": "SetUp : Unhandled log message: '[Exception] NullReferenceException: Object reference not set to an instance of an object'. Use UnityEngine.TestTools.LogAssert.Expect"
+        },
+        {
+          "case": "Wildfolk.Tests.NetworkItemPlayTests.ExistingInventoryUiSplitsMovesSelectsAndEquipsThroughHost",
+          "message": "SetUp : Unhandled log message: '[Exception] NullReferenceException: Object reference not set to an instance of an object'. Use UnityEngine.TestTools.LogAssert.Expect"
+        },
+        {
+          "case": "Wildfolk.Tests.NetworkItemPlayTests.OreValidationPublishesOnlyAcceptedHitsAndFinalHitSpawnsLootExactlyOnce",
+          "message": "SetUp : Unhandled log message: '[Exception] NullReferenceException: Object reference not set to an instance of an object'. Use UnityEngine.TestTools.LogAssert.Expect"
+        },
+        {
+          "case": "Wildfolk.Tests.NetworkItemPlayTests.PickupRaceFullBagDropReplayAndRetiredPlayerCannotDuplicate",
+          "message": "SetUp : Unhandled log message: '[Exception] NullReferenceException: Object reference not set to an instance of an object'. Use UnityEngine.TestTools.LogAssert.Expect"
+        },
+        {
+          "case": "Wildfolk.Tests.NetworkItemPlayTests.SharedResourceFinalHitDropsOnceAndRecoversWithNewIdentity",
+          "message": "SetUp : Unhandled log message: '[Exception] NullReferenceException: Object reference not set to an instance of an object'. Use UnityEngine.TestTools.LogAssert.Expect"
+        },
+        {
+          "case": "Wildfolk.Tests.NetworkPersistencePlayTests.HostSaveRehostRestoresWorldCargoGroundEcologyAndPlayerWithoutDuplicates",
+          "message": "SetUp : Unhandled log message: '[Exception] NullReferenceException: Object reference not set to an instance of an object'. Use UnityEngine.TestTools.LogAssert.Expect"
+        },
+        {
+          "case": "Wildfolk.Tests.NetworkPersistencePlayTests.PlacementRaceRollbackAndEveryCurrentBuildingUseExistingDefinitions",
+          "message": "SetUp : Unhandled log message: '[Exception] NullReferenceException: Object reference not set to an instance of an object'. Use UnityEngine.TestTools.LogAssert.Expect"
+        },
+        {
+          "case": "Wildfolk.Tests.NetworkPersistencePlayTests.RetireAndRejoinSameIdentityRestoreOnceAndRejectConcurrentIdentity",
+          "message": "SetUp : Unhandled log message: '[Exception] NullReferenceException: Object reference not set to an instance of an object'. Use UnityEngine.TestTools.LogAssert.Expect"
+        },
+        {
+          "case": "Wildfolk.Tests.NetworkPersistencePlayTests.SaveFailureKeepsHostSessionAndCorruptLoadCannotCreateReplacementWorld",
+          "message": "SetUp : Unhandled log message: '[Exception] NullReferenceException: Object reference not set to an instance of an object'. Use UnityEngine.TestTools.LogAssert.Expect"
+        },
+        {
+          "case": "Wildfolk.Tests.NetworkPersistencePlayTests.WallAdjacencyAndDoorDesiredStateRejectCompetingToggle",
+          "message": "SetUp : Unhandled log message: '[Exception] NullReferenceException: Object reference not set to an instance of an object'. Use UnityEngine.TestTools.LogAssert.Expect"
+        }
+      ]
+    },
+    {
+      "name": "content-play-recheck",
+      "mode": "PlayMode",
+      "total": 22,
+      "passed": 16,
+      "failed": 6,
+      "seconds": 109.455228,
+      "start": "2026-10-18 08:47:55Z",
+      "end": "2026-10-18 08:49:44Z",
+      "failures": [
+        {
+          "case": "Wildfolk.Tests.ContentExpansionHostTests.FishingContainerUtilityAndNewBuildingsPersistThroughHostAuthority",
+          "message": "  Expected: True\n  But was:  False\n"
+        },
+        {
+          "case": "Wildfolk.Tests.ContentExpansionPlayTests.BowCrossbowConsumeMatchingAmmoAndHitEnemyWithoutMelee",
+          "message": "UnityEngine.MissingReferenceException : The object of type 'Wildfolk.NeutralAnimal' has been destroyed but you are still trying to access it.\nYour script should either check if it is null or you should not destroy the object."
+        },
+        {
+          "case": "Wildfolk.Tests.ContentExpansionPlayTests.GatesCollideOpenAndTrapRespectsTeamAndCooldown",
+          "message": "UnityEngine.MissingReferenceException : The object of type 'Wildfolk.NeutralAnimal' has been destroyed but you are still trying to access it.\nYour script should either check if it is null or you should not destroy the object."
+        },
+        {
+          "case": "Wildfolk.Tests.ContentExpansionPlayTests.WaterskinThreeUsesChestDropAndSavePreserveQuality",
+          "message": "System.InvalidOperationException : Unknown item ID: chest"
+        },
+        {
+          "case": "Wildfolk.Tests.NetworkFacilityPlayTests.CampfireMeatAndWaterRemainSharedAfterActorRetires",
+          "message": "System.InvalidOperationException : Sequence contains more than one matching element"
+        },
+        {
+          "case": "Wildfolk.Tests.NetworkItemPlayTests.SharedResourceFinalHitDropsOnceAndRecoversWithNewIdentity",
+          "message": "  Expected: 1\n  But was:  2\n"
+        }
+      ]
+    },
+    {
+      "name": "content-play-final",
+      "mode": "PlayMode",
+      "total": 6,
+      "passed": 4,
+      "failed": 2,
+      "seconds": 36.4902763,
+      "start": "2026-10-18 08:53:01Z",
+      "end": "2026-10-18 08:53:37Z",
+      "failures": [
+        {
+          "case": "Wildfolk.Tests.ContentExpansionHostTests.FishingContainerUtilityAndNewBuildingsPersistThroughHostAuthority",
+          "message": "  Expected: not null\n  But was:  null\n"
+        },
+        {
+          "case": "Wildfolk.Tests.NetworkFacilityPlayTests.CampfireMeatAndWaterRemainSharedAfterActorRetires",
+          "message": "SetUp :   Expected: True\n  But was:  False\n"
+        }
+      ]
+    },
+    {
+      "name": "content-host-final",
+      "mode": "PlayMode",
+      "total": 2,
+      "passed": 0,
+      "failed": 2,
+      "seconds": 0.9990108,
+      "start": "2026-10-18 08:55:59Z",
+      "end": "2026-10-18 08:56:00Z",
+      "failures": [
+        {
+          "case": "Wildfolk.Tests.ContentExpansionHostTests.FishingContainerUtilityAndNewBuildingsPersistThroughHostAuthority",
+          "message": "Unhandled log message: '[Error] Failed to bind UDP socket because the address is already in use. Likely because there is another process using port 7777.'. Use UnityEngine.TestTools.LogAssert.Expect"
+        },
+        {
+          "case": "Wildfolk.Tests.NetworkFacilityPlayTests.CampfireMeatAndWaterRemainSharedAfterActorRetires",
+          "message": "SetUp :   Expected: True\n  But was:  False\n"
+        }
+      ]
+    },
+    {
+      "name": "content-final-check",
+      "mode": "PlayMode",
+      "total": 3,
+      "passed": 3,
+      "failed": 0,
+      "seconds": 34.9754396,
+      "start": "2026-10-18 09:04:50Z",
+      "end": "2026-10-18 09:05:25Z",
+      "failures": []
+    },
+    {
+      "name": "content-projectile-host",
+      "mode": "PlayMode",
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "seconds": 30.2069054,
+      "start": "2026-10-18 09:08:51Z",
+      "end": "2026-10-18 09:09:22Z",
+      "failures": []
+    }
+  ],
+  "latestCaseResults": {
+    "EditMode": {
+      "Wildfolk.Tests.CharacterPassModelTests.ArmorCostsSlotsAndSilhouettesAreActualData": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.CharacterPassModelTests.CategoriesAndStableTierSortDoNotDependOnNewFlags": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.CharacterPassModelTests.DashSpendingIsAtomicAndRecoveryHonorsDelayAndCondition": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.CharacterPassModelTests.InvalidPointsRanksAndXPAreRejected": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.CharacterPassModelTests.LevelCurveCarriesRemainderAndAwardsPoints": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.CharacterPassModelTests.SkillsSpendPointsRespectRanksAndRestoreEffects": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.CharacterPassModelTests.SprintUsesHoldHysteresisAndExhaustionRecovery": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.CharacterPassModelTests.SurvivalPreventsCriticalSprintAndChangesEfficiency": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.CharacterPassModelTests.V1EnvelopeStillDecodesAndFutureVersionsFail": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.ContentExpansionModelTests.AddedSourcesAndBudgetDoNotMoveExistingSourceIds(9472026)": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.ContentExpansionModelTests.AddedSourcesAndBudgetDoNotMoveExistingSourceIds(17491)": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.ContentExpansionModelTests.CatalogHasRealRecipesFourWeaponFamiliesAndSustainableBasicAmmo": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.ContentExpansionModelTests.ContainerStateTransfersAndRollsBackWithoutBecomingNewItems": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.ContentExpansionModelTests.CookingRecipesRestoreMoreThanSimpleFoodAndBuildingRolesAreReal": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.ContentExpansionModelTests.PurificationReservesOnlyFullRawAndRestoresChargesAfterQueueSave": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.EcologyModelTests.AllFiveSpeciesHaveUsableLootGroupsHabitatsAndBoundedPopulation": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.EcologyModelTests.FamilyAndLightTraitAreIndependentData": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.EcologyModelTests.FullInventoryReplacementFailureIsAtomic": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.EcologyModelTests.RustedSwordIsUsableSingleTargetLocalizedSaveItemAndRareVariantLoot": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.EcologyModelTests.SlingshotHasRealDrawReleaseAndRecoveryIntervals": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.EcologyModelTests.V3AnimalMigrationRetainsLivingIdentityPositionHPAndRecoveryDeadline": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.ExplorationModelTests.AtomicPlacementReservationRollsBackFailedSpawn": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.ExplorationModelTests.BoundaryHysteresisRetainsThenReleasesWithoutUnboundedHistory": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.ExplorationModelTests.CaveExitGuidanceStaysOnItsChamberGraphAndBrightnessHasAFloor": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.ExplorationModelTests.ChunkUnionDeduplicatesOneTwoAndFourDistantRegions": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.ExplorationModelTests.CompassProjectsNorthAndLargeDistanceIndependentlyOfFacing": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.ExplorationModelTests.EarlyTorchAndCompassUseExistingMaterialsAndOnePlacementItem": {
+        "result": "Passed",
+        "run": "content-edit-recheck"
+      },
+      "Wildfolk.Tests.ExplorationModelTests.HostClockSampleKeepsSurfaceLightTimeAcrossJoinAndPause": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.FrontendContractTests.AppStartsAtHomeAndGameplayRemainsEnabled": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.FrontendContractTests.SaveRulesReferenceGameplayContentAndHomeKeysHaveBothLanguages": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.InventoryOperationsTests.DifferentItemsSwapWithoutChangingCounts": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.InventoryOperationsTests.FullInventoryRejectsCraftAtomically": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.InventoryOperationsTests.FullSameItemDestinationAndSameSlotDoNotMutateOrNotify": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.InventoryOperationsTests.FullyConsumedMaterialSlotCanHoldCraftResult": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.InventoryOperationsTests.MergeStopsAtMaxStackAndKeepsOverflowAtSource": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.InventoryOperationsTests.MissingMaterialsNeverConsumeAnything": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.InventoryOperationsTests.MultipleResultStacksCannotPartiallyConsumeIngredients": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.InventoryOperationsTests.PlacementConsumptionRequiresMatchingSelectedItem": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.InventoryOperationsTests.WholeStackMovesBetweenStorageAndHotbarWithOneNotification": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.InventoryTests.DifferentMaterialsDoNotMerge": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.InventoryTests.FullInventoryReturnsUnacceptedAmountWithoutLosingExistingItems": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.InventoryTests.InvalidAmountsCannotMutateInventory": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.InventoryTests.MaxStackOverflowUsesNextSlot": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.InventoryTests.NotifiesOnceForAnAcceptedBatchAndNeverForRejectedBatch": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.InventoryTests.SameItemMergesBeforeUsingAnotherSlot": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.InventoryTests.StartsEmpty": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.MetalProgressionTests.AppendedOresAreDeterministicAndPreserveEveryLegacyPlacementAndId": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.MetalProgressionTests.BronzeAndSteelReserveEveryIngredientAndPreserveBlockedOutputAndQueueSnapshot": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.MetalProgressionTests.FourInputsReserveAtomicallyAndRollbackFailureOrException": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.MetalProgressionTests.MiningToolPermissionHasNoFistFallbackAndMaterialKindsRemainDistinct": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.MetalProgressionTests.OnlyConfiguredNextTierOpensAndLegacyUpgradeCostsRemain": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.MetalProgressionTests.SupplyContextAndRecoveryAreIndependentOfTechnologyAndRespectMineralFamily": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.MetalProgressionTests.WorkbenchRangeIsOneThroughSix(0,False)": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.MetalProgressionTests.WorkbenchRangeIsOneThroughSix(1,True)": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.MetalProgressionTests.WorkbenchRangeIsOneThroughSix(2,True)": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.MetalProgressionTests.WorkbenchRangeIsOneThroughSix(6,True)": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.MetalProgressionTests.WorkbenchRangeIsOneThroughSix(7,False)": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.MetalProgressionTests.WorkbenchRangeIsOneThroughSix(-1,False)": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.NetworkCreatureContractTests.EveryEcologySpawnHasRegisteredServerPrefabAndSharedBrain": {
+        "result": "Passed",
+        "run": "content-edit-recheck"
+      },
+      "Wildfolk.Tests.NetworkCreatureContractTests.MultiplayerWorldHasNoPersistenceAndKeepsPopulationDefinitions": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.NetworkCreatureContractTests.PlayerRequestsNeverContainTargetDamageOrClientHitResult": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.NetworkCreatureContractTests.RangedReplicaEndsPresentationWithoutLaunchingAnotherStone": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.NetworkFacilityModelTests.CraftFailureKeepsAllIngredientsAndSameIngredientsOnlyCraftOnce": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.NetworkFacilityModelTests.FacilityPrefabsAndInteractionComponentsAreRegisteredBeforeSessionStarts": {
+        "result": "Passed",
+        "run": "content-edit-recheck"
+      },
+      "Wildfolk.Tests.NetworkFacilityModelTests.QueueVersionOnlyChangesAtCompletionAndBlockedCargoIsConserved": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.NetworkFoundationTests.CommandsRejectNonFiniteAndClampUntrustedMagnitude": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.NetworkFoundationTests.InternetCodeAndLocalAddressAreDifferentRoutes": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.NetworkFoundationTests.PlayerStateIsServerWritableAndRpcInputsAreOwnerOnly": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.NetworkItemModelTests.DropFailureAndExceptionRestoreOriginalStackWithoutPublishing": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.NetworkItemModelTests.EveryResourceAndGroundDropUsesRegisteredNetworkPrefab": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.NetworkItemModelTests.ReplicaInventoryRejectsMutationAndFullStackPickupIsAtomic": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.NetworkPersistenceModelTests.EveryExistingPlaceableUsesOneSourceDefinitionAndServerBuildingState": {
+        "result": "Passed",
+        "run": "content-edit-recheck"
+      },
+      "Wildfolk.Tests.NetworkPersistenceModelTests.ParticipantMetadataRejectsDuplicatesInvalidIdentityAndMismatchedHost": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.NetworkPersistenceModelTests.SeparateRepositoriesAndDeadParticipantPolicyPreserveSingleplayerRules": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.NetworkPersistenceModelTests.V4MigratesToV6WithoutChangingSingleplayerPayloadAndV5RoundTrips": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.ProgressionTests.ChestsHaveIndependentStoresAndFailedTransfersPreserveBoth": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.ProgressionTests.ChestTransferMergesPartiallyRejectsFullAndSwapsAtomically": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.ProgressionTests.ProcessingRecipesUseSeparateStationsAndNoPlaceholderFuel": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.ProgressionTests.TiersImproveTheirRolesAndGateOreByToolKindAndRank": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.ProgressionTests.WorldTimeCrossesAllPhasesAndLightingIsContinuousAtBoundaries": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.QualityModelTests.LanguagePersistsAsLocalPreferenceAndRefreshesCatalog": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.QualityModelTests.LocalizationHasTwoCompleteLanguagesAndEquivalentPlaceholders": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.QualityModelTests.OutputCapacityAndInventorySpacePreserveReservedCargo": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.QualityModelTests.PopulationUsesRegionalDeficitsAndWorldScopeForRareRules": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.QualityModelTests.QueueAndLegacyBatchRestoreWithoutMaterialDuplication": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.QualityModelTests.QueueReservesInputProcessesSingleUnitsAndWithdrawsOnlyWaiting": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.QualityModelTests.QueueSaveRetainsAlternatingRecipeOrder": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.QualityModelTests.RecoverySaveKeepsExclusionsAndCandidateSequence": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.QualityModelTests.SkillPrerequisiteAndLegacyLearnedRankAreBothRespected": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.SceneContractTests.BalanceDataHasValidCombatRangesAndProgressionItems": {
+        "result": "Passed",
+        "run": "content-edit-recheck"
+      },
+      "Wildfolk.Tests.SceneContractTests.SavedSceneRetainsPlayableConnectionsAndNonPushingEnemy": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.StabilityModelTests.AtomicSaveBackupRecoversCorruptionAndIgnoresInterruptedTemporaryFile": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.StabilityModelTests.ChecksumAndFutureVersionAreRejected": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.StabilityModelTests.CupStateChangesAreAtomicAndConserveContainersOnFullBags": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.StabilityModelTests.EditorValidatorAcceptsCurrentDataAndDeveloperToolsStayInEditorAssembly": {
+        "result": "Passed",
+        "run": "content-edit-recheck"
+      },
+      "Wildfolk.Tests.StabilityModelTests.EveryCurrentBasicAttackHasOneTargetAndExtensibleShape": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.StabilityModelTests.HostileRelationIsNotAPlayerTeamDespiteDefaultNumericId": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.StabilityModelTests.InventoryRestoreRejectsUnknownAndOversizedStacksWithoutPartialMutation": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.StabilityModelTests.RawWaterPenaltyExpiresPreciselyAndSurvivesStateRoundTrip": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.StabilityModelTests.RenewalAndTerrainDataKeepDifferentResourceTimes": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.SteelProgressionTests.HarvestMethodsAndMinimumToolsAreIndependent": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.SteelProgressionTests.LegacyCargoAndChestMigrationPreserveContentsExactlyOnce": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.SteelProgressionTests.TechnologyUsesSeparateFacilityAndKeepsLegacyMaterials": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.SurvivalSettingsTests.BothEmptyMetersDealIndependentPeriodicDamage": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.SurvivalSettingsTests.CookingReservationRejectsPartialCostWithoutChangingInventory": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.SurvivalSettingsTests.EmptyMetersDamageAtIntervalsAndFoodClampsWithoutWastingAtMax": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.SurvivalSettingsTests.LocalPreferencesClampAndRoundTripThroughSeparateKeys": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.WorldFoundationTests.OceanAndHydrologyHaveNaturalBoundariesAndContinuousTransitions": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.WorldFoundationTests.SameSeedReplaysMacroHydrologySourceAnchorsAndChunks": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.WorldFoundationTests.SeedHasConnectedCavesValidSourcesFourPlayerYieldAndBiomeFamilies(9472026)": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.WorldFoundationTests.SeedHasConnectedCavesValidSourcesFourPlayerYieldAndBiomeFamilies(17491)": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.WorldFoundationTests.SeedHasConnectedCavesValidSourcesFourPlayerYieldAndBiomeFamilies(-81027)": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.WorldFoundationTests.SeedHasConnectedCavesValidSourcesFourPlayerYieldAndBiomeFamilies(193080127)": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.WorldFoundationTests.SourcesUseEnvironmentalTagsAndMineralsAreFinite": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.WorldFoundationTests.SubSeedsAreIsolatedAndLegacyLayoutIsVersionBound": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.WorldFoundationTests.VegetationDensityDoesNotMoveOreRiverOrPoi": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.WorldGenerationTests.GroundActuallyShowsDirtRoadAndFordDiffersFromDeepWater": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.WorldGenerationTests.ManySeedsHaveClearSpawnNearbySuppliesRareOreAndNoOverlaps": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.WorldGenerationTests.PartialTransferPreservesTotalsOnFullOrDifferentTargets": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.WorldGenerationTests.PopulationAndLootDataAreBoundedAndOnlyOneBiomeExists": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.WorldGenerationTests.RiverHasWalkableCrossingAndLandRemainsConnected": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.WorldGenerationTests.SeedRecreatesTerrainRoadsAndResourcesWithoutUsingUnityRandom": {
+        "result": "Passed",
+        "run": "content-edit"
+      },
+      "Wildfolk.Tests.WorldGenerationTests.TreeHitCountsUpgradeRecipesAndFurnaceCapacityMatchActualData": {
+        "result": "Passed",
+        "run": "content-edit-recheck"
+      }
+    },
+    "PlayMode": {
+      "Wildfolk.Tests.CharacterPassPlayTests.ArmorBothSlotsReduceDamagePreserveMinimumAndSurvivalBypass": {
+        "result": "Passed",
+        "run": "content-play"
+      },
+      "Wildfolk.Tests.CharacterPassPlayTests.CraftingCategoriesAndCraftableFilterReflectActualRecipes": {
+        "result": "Passed",
+        "run": "content-play"
+      },
+      "Wildfolk.Tests.CharacterPassPlayTests.DashCannotCrossDeepWaterAndCannotRunWithInventoryOrPauseOpen": {
+        "result": "Passed",
+        "run": "content-play"
+      },
+      "Wildfolk.Tests.CharacterPassPlayTests.DashUsesFacingAndMovementDirectionCostsStaminaAndStopsAtWall": {
+        "result": "Passed",
+        "run": "content-play"
+      },
+      "Wildfolk.Tests.CharacterPassPlayTests.DeveloperProfilesUseCurrentDataRemainEditorOnlyAndDashButtonRuns": {
+        "result": "Passed",
+        "run": "content-play"
+      },
+      "Wildfolk.Tests.CharacterPassPlayTests.GrowthSkillsEquipmentAndStaminaSurviveValidatedSaveRoundTrip": {
+        "result": "Passed",
+        "run": "content-play"
+      },
+      "Wildfolk.Tests.CharacterPassPlayTests.ProfileOpensIndependentTreeAndInventoryOwnsEquipment": {
+        "result": "Passed",
+        "run": "content-play"
+      },
+      "Wildfolk.Tests.CharacterPassPlayTests.SprintThroughInputDrainsStopsAtCriticalNeedsAndHUDHidesAfterRecovery": {
+        "result": "Passed",
+        "run": "content-play"
+      },
+      "Wildfolk.Tests.CharacterPassPlayTests.V1MigrationPreservesWorldInventoryAndOldXPWithoutForcingNewGame": {
+        "result": "Passed",
+        "run": "content-play"
+      },
+      "Wildfolk.Tests.CharacterPassPlayTests.WorkbenchUpgradeKeepsTierIRecipesAndPersistsTierIIChestContents": {
+        "result": "Passed",
+        "run": "content-play"
+      },
+      "Wildfolk.Tests.ContentExpansionHostTests.FishingContainerUtilityAndNewBuildingsPersistThroughHostAuthority": {
+        "result": "Passed",
+        "run": "content-projectile-host"
+      },
+      "Wildfolk.Tests.ContentExpansionPlayTests.BowCrossbowConsumeMatchingAmmoAndHitEnemyWithoutMelee": {
+        "result": "Passed",
+        "run": "content-final-check"
+      },
+      "Wildfolk.Tests.ContentExpansionPlayTests.FishingRequiresNaturalWaterBiteAndSingleAuthoritativeReward": {
+        "result": "Passed",
+        "run": "content-play"
+      },
+      "Wildfolk.Tests.ContentExpansionPlayTests.GatesCollideOpenAndTrapRespectsTeamAndCooldown": {
+        "result": "Passed",
+        "run": "content-play-final"
+      },
+      "Wildfolk.Tests.ContentExpansionPlayTests.LanternHandsFreeAndCookingPotQueueSurviveValidatedSaveLoad": {
+        "result": "Passed",
+        "run": "content-play-recheck"
+      },
+      "Wildfolk.Tests.ContentExpansionPlayTests.WaterskinThreeUsesChestDropAndSavePreserveQuality": {
+        "result": "Passed",
+        "run": "content-play-final"
+      },
+      "Wildfolk.Tests.ExplorationHostTests.TorchAuthorityAtomicityFourRegionUnionAndHomeRehost": {
+        "result": "Passed",
+        "run": "content-play-recheck"
+      },
+      "Wildfolk.Tests.ExplorationPlayTests.CaveReadableFloorTorchAndExitBearingRemainDistinctFromHome": {
+        "result": "Passed",
+        "run": "content-play"
+      },
+      "Wildfolk.Tests.ExplorationPlayTests.HomeAndPlacedTorchSurviveSleepSaveLoadAndWorkbenchUpgrade": {
+        "result": "Passed",
+        "run": "content-play"
+      },
+      "Wildfolk.Tests.ExplorationPlayTests.TerrainBudgetCacheAndMineralTombstoneRemainBounded": {
+        "result": "Passed",
+        "run": "content-play"
+      },
+      "Wildfolk.Tests.ExplorationPlayTests.TorchCraftHeldMovementPlacementAndValidationShareOneItem": {
+        "result": "Passed",
+        "run": "content-play"
+      },
+      "Wildfolk.Tests.MetalProgressionPlayTests.BasicRejectsSteelAdvancedNeedsNoNearbyBenchAndCargoSurvivesLoad": {
+        "result": "Passed",
+        "run": "content-play"
+      },
+      "Wildfolk.Tests.MetalProgressionPlayTests.ChestScrollWheelTouchAndBottomSlotDragPreserveContents": {
+        "result": "Passed",
+        "run": "content-play"
+      },
+      "Wildfolk.Tests.MetalProgressionPlayTests.RejectedMiningHasZeroDamageProgressLootOrSuccessSignalsAndValidToolHitsOnce": {
+        "result": "Passed",
+        "run": "content-play"
+      },
+      "Wildfolk.Tests.MetalProgressionPlayTests.UpgradeUiScrollsArbitraryCostsAndPreservesTierAndMetalsAcrossSnapshotLoad": {
+        "result": "Passed",
+        "run": "content-play"
+      },
+      "Wildfolk.Tests.NetworkFacilityPlayTests.CampfireMeatAndWaterRemainSharedAfterActorRetires": {
+        "result": "Passed",
+        "run": "content-final-check"
+      },
+      "Wildfolk.Tests.NetworkFacilityPlayTests.ChestWithdrawDepositSplitStaleAndFullBagHaveNoLoss": {
+        "result": "Passed",
+        "run": "content-play-recheck"
+      },
+      "Wildfolk.Tests.NetworkFacilityPlayTests.ExistingUiUsesSharedChestAndHandCraftingWithLocalActorBindings": {
+        "result": "Passed",
+        "run": "content-play-recheck"
+      },
+      "Wildfolk.Tests.NetworkFacilityPlayTests.FurnaceQueueAndCompletionRacesKeepOutputAndReservedInputs": {
+        "result": "Passed",
+        "run": "content-play-recheck"
+      },
+      "Wildfolk.Tests.NetworkFacilityPlayTests.HandCraftAtomicityAndWorkbenchUpgradeCommitOnce": {
+        "result": "Passed",
+        "run": "content-play-recheck"
+      },
+      "Wildfolk.Tests.NetworkFacilityPlayTests.SteelUsesSeparateHostFacilityAndReservationsCommitOnce": {
+        "result": "Passed",
+        "run": "content-play-recheck"
+      },
+      "Wildfolk.Tests.NetworkItemPlayTests.CreatureLootAndNearbySessionRewardsCommitExactlyOnce": {
+        "result": "Passed",
+        "run": "content-play-recheck"
+      },
+      "Wildfolk.Tests.NetworkItemPlayTests.ExistingInventoryUiSplitsMovesSelectsAndEquipsThroughHost": {
+        "result": "Passed",
+        "run": "content-play-recheck"
+      },
+      "Wildfolk.Tests.NetworkItemPlayTests.OreValidationPublishesOnlyAcceptedHitsAndFinalHitSpawnsLootExactlyOnce": {
+        "result": "Passed",
+        "run": "content-play-recheck"
+      },
+      "Wildfolk.Tests.NetworkItemPlayTests.PickupRaceFullBagDropReplayAndRetiredPlayerCannotDuplicate": {
+        "result": "Passed",
+        "run": "content-play-recheck"
+      },
+      "Wildfolk.Tests.NetworkItemPlayTests.SharedResourceFinalHitDropsOnceAndRecoversWithNewIdentity": {
+        "result": "Passed",
+        "run": "content-play-final"
+      },
+      "Wildfolk.Tests.NetworkPersistencePlayTests.HostSaveRehostRestoresWorldCargoGroundEcologyAndPlayerWithoutDuplicates": {
+        "result": "Passed",
+        "run": "content-play-recheck"
+      },
+      "Wildfolk.Tests.NetworkPersistencePlayTests.PlacementRaceRollbackAndEveryCurrentBuildingUseExistingDefinitions": {
+        "result": "Passed",
+        "run": "content-play-recheck"
+      },
+      "Wildfolk.Tests.NetworkPersistencePlayTests.RetireAndRejoinSameIdentityRestoreOnceAndRejectConcurrentIdentity": {
+        "result": "Passed",
+        "run": "content-play-recheck"
+      },
+      "Wildfolk.Tests.NetworkPersistencePlayTests.SaveFailureKeepsHostSessionAndCorruptLoadCannotCreateReplacementWorld": {
+        "result": "Passed",
+        "run": "content-play-recheck"
+      },
+      "Wildfolk.Tests.NetworkPersistencePlayTests.WallAdjacencyAndDoorDesiredStateRejectCompetingToggle": {
+        "result": "Passed",
+        "run": "content-play-recheck"
+      },
+      "Wildfolk.Tests.WorldFoundationPlayTests.CavernPortalConnectsSurfaceRoomGraphDeepBranchAndReturn": {
+        "result": "Passed",
+        "run": "content-play"
+      },
+      "Wildfolk.Tests.WorldFoundationPlayTests.ChunkUnloadPreservesFiniteOreCargoChestAndSaveVersion": {
+        "result": "Passed",
+        "run": "content-play"
+      },
+      "Wildfolk.Tests.WorldFoundationPlayTests.CurrentMetalLoopAndLegacyLayoutRemainSeparate": {
+        "result": "Passed",
+        "run": "content-play"
+      }
+    }
+  },
+  "latestCounts": {
+    "EditMode": {
+      "total": 123,
+      "passed": 123
+    },
+    "PlayMode": {
+      "total": 44,
+      "passed": 44
+    }
+  },
+  "runnerSeconds": 369.7097626,
+  "finalEditor": {
+    "scene": "MainMenu",
+    "playing": false,
+    "focused": false,
+    "compiling": false,
+    "consoleErrors": 0,
+    "isolatedProfileActive": false
+  },
+  "qaIsolation": {
+    "fileChecks": [
+      {
+        "file": "world-v1.json",
+        "hashUnchanged": true,
+        "mtimeUnchanged": true
+      },
+      {
+        "file": "world-v1.json.backup",
+        "hashUnchanged": true,
+        "mtimeUnchanged": true
+      }
+    ],
+    "defaultSettingsBypassed": true,
+    "qaIdentityBypassedPlayerPrefs": true,
+    "normalProfileRestoredAfterStopping": true,
+    "existingCachedProjectReused": true,
+    "noNewCloneOrWorktree": true
+  },
+  "compileFailureHistory": [
+    "Qualified UnityEditor.SessionState after gameplay enum name collision",
+    "Fixed focused test variable scope before its run executed"
+  ],
+  "fishing.txt": "bite=True;catch=True;duplicate=False;fish=1",
+  "host-fishing.txt": "caught=True;duplicate=False;fish=1",
+  "host-trap.txt": "damage=16;duplicateWithinCooldown=False;triggers=1",
+  "host-buildings.txt": "wood_fence:True:False\nwood_fence_gate:True:True\nwood_gate:True:True\nstone_door:True:True\nstone_fence:True:False\nstone_fence_gate:True:True\nstone_gate:True:True\nreinforced_wall:True:False\nreinforced_door:True:True\nreinforced_gate:True:True\nspike_trap:True:False\nbrazier:True:False\ncooking_pot:True:False\n",
+  "screenshots": [
+    "docs/images/content-expansion/03-spear.png",
+    "docs/images/content-expansion/09-utility-corrected-1280.png",
+    "docs/images/content-expansion/10-crafting-844.png",
+    "docs/images/content-expansion/12-host-lantern-cave.png"
+  ],
+  "timing": {
+    "startedUtc": "2026-10-18T08:10:35Z",
+    "auditResearchQaIsolationApproxMinutes": 6,
+    "initialGameplayArtAndAuthoringApproxMinutes": 15,
+    "unityMcpAndFocusedChecksApproxMinutes": 35,
+    "documentationAndReviewApproxMinutes": 16,
+    "phasesOverlapNotAdditive": true
+  },
+  "finalReviewUtc": "2026-10-18T09:10:56.249195+00:00",
+  "sourceValidation": {
+    "uniqueGuids": 985,
+    "passed": true,
+    "removedOriginalSceneIds": 0
+  }
+}

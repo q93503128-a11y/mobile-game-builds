@@ -124,3 +124,7 @@ Multiplayer Foundation 3는 Host 권위 Resource/Harvest/Recovery→공통 Groun
 ## 탐험 기반 현재 구현
 
 초기 Stone 단계의 Coal+Wood 묶음 Torch는 하나의 item으로 손 광원/협동 설치를 겸한다. WB I의 Compass를 가방에 지니면 북쪽과 지정 제작대 Home을 안내한다. 동굴에서는 Exit 방향으로 전환한다. 동굴은 완전 검정 대신 입구→심부 밝기 단계와 가까운 시야를 유지한다. 손 점유 없는 광원은 확장 hook만 있으며 실제 Lantern/Map/WB III/출시 progression은 미구현이다. [정본](EXPLORATION_FOUNDATION.md).
+
+## Workbench I–II Content Expansion (2026-10-18)
+
+Workbench I~II를 Item86/Recipe71로 확장했다. 자연재료4개, 단순 낚시,4개 무기군, 공통 요리/재사용 물부대, Utility Lantern, 방어 건축/Trap/고정 광원을 제공한다. III/Diamond/전문 제작대/포탑은 후속 범위다. [현재 콘텐츠](CONTENT_EXPANSION.md).

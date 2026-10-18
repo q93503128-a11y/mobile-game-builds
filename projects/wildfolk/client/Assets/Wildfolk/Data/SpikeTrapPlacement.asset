@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea85a5ebaf6f62646a87d747548e1a2f, type: 3}
+  m_Name: SpikeTrapPlacement
+  m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.PlaceableDefinition
+  Item: {fileID: 11400000, guid: 250cd01d504cc774a9e87e2abc31ce25, type: 2}
+  Prefab: {fileID: 4526185821349369520, guid: 6cddf65af2d806a4e80990bff381966d, type: 3}
+  Vitality: {fileID: 11400000, guid: c4c2fd3c16bd21a4eaf0aa325d945858, type: 2}
+  Footprint: {x: 1.7, y: 0.6}
+  MaximumDistance: 3.5
+  Station: 0
+  Tier: {fileID: 0}
+  IsBarrier: 0
+  IsDoor: 0
+  StorageSlots: 0
+  ParallelCapacity: 1
+  ProcessingMode: 1
+  InputCapacity: 30
+  OutputCapacity: 60
+  ProcessingSpeed: 1
+  WorkbenchTier: 1
+  TierVisual: {fileID: 0}
+  TierDisplayKey:
+  UpgradeTo: {fileID: 0}
+  UpgradeCosts: []

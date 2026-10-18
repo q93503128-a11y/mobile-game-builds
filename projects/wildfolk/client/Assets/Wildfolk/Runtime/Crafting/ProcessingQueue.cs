@@ -36,7 +36,7 @@ namespace Wildfolk
         {if(Current!=null || waiting.Count==0)return;Current=waiting[0];waiting.RemoveAt(0);Remaining=Current.ProcessingSeconds/speed;}
         public bool Collect(InventoryModel bag)
         {
-            var amounts=new List<ItemAmount>();foreach(var pair in output)amounts.Add(new ItemAmount{Item=pair.Key.Result,Count=pair.Value*pair.Key.ResultCount});
+            var amounts=new List<ItemAmount>();foreach(var pair in output)amounts.Add(new ItemAmount{Item=pair.Key.Result,Count=pair.Value*pair.Key.ResultCount,Charges=pair.Key.ResultCharges,Quality=pair.Key.ResultQuality});
             if(amounts.Count==0 || !bag.TryAddAmounts(amounts.ToArray()))return false;output.Clear();return true;
         }
         public ProcessingSnapshot Capture()
@@ -65,12 +65,10 @@ namespace Wildfolk
         }
         public ItemAmount[] Release()
         {
-            var amounts=new List<ItemAmount>();if(Current!=null)amounts.AddRange(Costs(Current,1));foreach(var recipe in waiting)amounts.AddRange(Costs(recipe,1));foreach(var pair in output)amounts.Add(new ItemAmount{Item=pair.Key.Result,Count=pair.Value*pair.Key.ResultCount});
-            var combined=new Dictionary<ItemDefinition,int>();foreach(var amount in amounts)combined[amount.Item]=combined.TryGetValue(amount.Item,out var count) ? checked(count+amount.Count) : amount.Count;
-            amounts.Clear();foreach(var pair in combined)amounts.Add(new ItemAmount{Item=pair.Key,Count=pair.Value});
+            var amounts=new List<ItemAmount>();if(Current!=null)amounts.AddRange(Costs(Current,1));foreach(var recipe in waiting)amounts.AddRange(Costs(recipe,1));foreach(var pair in output)amounts.Add(new ItemAmount{Item=pair.Key.Result,Count=pair.Value*pair.Key.ResultCount,Charges=pair.Key.ResultCharges,Quality=pair.Key.ResultQuality});
             Current=null;Remaining=0;waiting.Clear();output.Clear();return amounts.ToArray();
         }
         public static ItemAmount[] Costs(RecipeDefinition recipe,int count)
-        {var result=new ItemAmount[recipe.Ingredients.Length];for(var i=0;i<result.Length;i++)result[i]=new ItemAmount{Item=recipe.Ingredients[i].Item,Count=checked(recipe.Ingredients[i].Count*count)};return result;}
+        {var result=new ItemAmount[recipe.Ingredients.Length];for(var i=0;i<result.Length;i++)result[i]=new ItemAmount{Item=recipe.Ingredients[i].Item,Count=checked(recipe.Ingredients[i].Count*count),Charges=recipe.Ingredients[i].Charges,Quality=recipe.Ingredients[i].Quality};return result;}
     }
 }

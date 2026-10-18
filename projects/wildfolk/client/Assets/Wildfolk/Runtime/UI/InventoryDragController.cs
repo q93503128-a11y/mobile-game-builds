@@ -62,7 +62,7 @@ namespace Wildfolk
         {
             if(IsDragging || Session.State!=SessionState.Inventory)return;
             Equipment=Owner.GetComponent<PlayerEquipment>();
-            var item=slot==ArmorSlot.Head ? Equipment.HeadArmor : Equipment.BodyArmor;if(item==null)return;
+            var item=Equipment.Equipped(slot);if(item==null)return;
             equipmentSource=slot;sourceModel=Owner.Model;IsDragging=true;HeldAmount=1;pointer=data.pointerId;
             data.eligibleForClick=false;Ghost.SetAsLastSibling();Ghost.gameObject.SetActive(true);DropZone.SetActive(false);Refresh();Move(data);
         }
@@ -70,11 +70,11 @@ namespace Wildfolk
         {
             if(!IsDragging || equipmentSource.HasValue || data.pointerId!=pointer || sourceModel!=Owner.Model)return;
             var stack=sourceModel.GetSlot(SourceIndex);
-            if(!stack.IsEmpty && stack.Item.Armor!=null && stack.Item.Armor.Slot==slot)Owner.GetComponent<PlayerEquipment>().TryEquipFromSlot(SourceIndex);
+            if(!stack.IsEmpty && (stack.Item.Armor!=null || stack.Item.EquippedLight!=null) && PlayerEquipment.Slot(stack.Item)==slot)Owner.GetComponent<PlayerEquipment>().TryEquipFromSlot(SourceIndex);
             else PlayerFeedback.ShowKey("feedback.armor_slot");Cancel();
         }
         public bool CanEquip(ArmorSlot slot)
-        {if(!IsDragging || equipmentSource.HasValue || sourceModel!=Owner.Model)return false;var stack=sourceModel.GetSlot(SourceIndex);return !stack.IsEmpty && stack.Item.Armor!=null && stack.Item.Armor.Slot==slot;}
+        {if(!IsDragging || equipmentSource.HasValue || sourceModel!=Owner.Model)return false;var stack=sourceModel.GetSlot(SourceIndex);return !stack.IsEmpty && (stack.Item.Armor!=null || stack.Item.EquippedLight!=null) && PlayerEquipment.Slot(stack.Item)==slot;}
         public void Move(PointerEventData data)
         {
             if (!IsDragging || data.pointerId != pointer) return;
@@ -136,7 +136,7 @@ namespace Wildfolk
         {
             UpdateSplit();
             if (!IsDragging) return;
-            if(equipmentSource.HasValue){var item=equipmentSource==ArmorSlot.Head ? Equipment.HeadArmor : Equipment.BodyArmor;if(item==null){Cancel();return;}GhostIcon.sprite=item.Icon;GhostCount.text="1";return;}
+            if(equipmentSource.HasValue){var item=Equipment.Equipped(equipmentSource.Value);if(item==null){Cancel();return;}GhostIcon.sprite=item.Icon;GhostCount.text="1";return;}
             var stack=sourceModel.GetSlot(SourceIndex);
             if (stack.IsEmpty || stack.Count<HeldAmount) { Cancel();return; }
             GhostIcon.sprite=stack.Item.Icon;GhostCount.text=HeldAmount.ToString();remainder=(stack.Count-HeldAmount).ToString();

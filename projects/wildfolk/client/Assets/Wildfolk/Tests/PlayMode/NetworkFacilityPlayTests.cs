@@ -91,7 +91,7 @@ namespace Wildfolk.Tests
             Assert.That(Do(A,FacilityOperation.Craft,f,meat,facilityRevision:rev),Is.True);Assert.That(Do(B,FacilityOperation.Craft,f,meat,facilityRevision:rev),Is.False);Assert.That(Bag(other).CountItem(meat.Ingredients[0].Item),Is.EqualTo(1));
             var oldBag=A.Bag.Revision.Value;player.NetworkObject.Despawn(false);f.Processor.Advance(10);Assert.That(A.Execute(FacilityOperation.Collect,f.NetworkObjectId,oldBag,f.Revision.Value),Is.False);
             rev=f.Revision.Value;Assert.That(Do(B,FacilityOperation.Collect,f,facilityRevision:rev),Is.True);Assert.That(Do(B,FacilityOperation.Collect,f,facilityRevision:rev),Is.False);Assert.That(Bag(other).CountItem(meat.Result),Is.EqualTo(1));
-            var water=world.Catalog.Recipes.Single(r=>r.RequiredStation==StationKind.Campfire && r!=meat);Bag(other).Add(water.Ingredients[0].Item,1);Assert.That(Do(B,FacilityOperation.Craft,f,water),Is.True);rev=f.Revision.Value;f.Processor.Advance(10);Assert.That(Do(B,FacilityOperation.Collect,f,facilityRevision:rev),Is.False);Assert.That(Do(B,FacilityOperation.Collect,f),Is.True);Assert.That(Bag(other).CountItem(water.Result),Is.EqualTo(1));
+            var water=world.Catalog.Recipe("clean_water_cup");Bag(other).Add(water.Ingredients[0].Item,1);Assert.That(Do(B,FacilityOperation.Craft,f,water),Is.True);rev=f.Revision.Value;f.Processor.Advance(10);Assert.That(Do(B,FacilityOperation.Collect,f,facilityRevision:rev),Is.False);Assert.That(Do(B,FacilityOperation.Collect,f),Is.True);Assert.That(Bag(other).CountItem(water.Result),Is.EqualTo(1));
             Object.Destroy(player.gameObject);yield return null;
         }
         [UnityTest]public IEnumerator ExistingUiUsesSharedChestAndHandCraftingWithLocalActorBindings()

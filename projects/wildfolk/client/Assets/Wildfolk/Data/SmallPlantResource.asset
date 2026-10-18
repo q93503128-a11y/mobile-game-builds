@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fed1ca97dce3214e8ef920e00983bf4, type: 3}
   m_Name: SmallPlantResource
   m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.ResourceDefinition
-  Kind: 0
+  Kind: 7
   Harvest:
     Mode: 0
     Method: 0
@@ -20,5 +20,5 @@ MonoBehaviour:
     RequiredTool: 0
     RequiredToolItem: {fileID: 0}
   Vitality: {fileID: 11400000, guid: 901268a3c9464b44f9f6a7f94bf3089d, type: 2}
-  DropItem: {fileID: 11400000, guid: 431287b464f63f4408828d4053bac6eb, type: 2}
-  DropCount: 1
+  DropItem: {fileID: 11400000, guid: 9d46c4acb7fdb664292156668e68c7b6, type: 2}
+  DropCount: 2

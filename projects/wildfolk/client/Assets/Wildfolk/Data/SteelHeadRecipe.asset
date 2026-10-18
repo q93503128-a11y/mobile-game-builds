@@ -17,13 +17,23 @@ MonoBehaviour:
   SortOrder: 200
   Result: {fileID: 11400000, guid: db537be8e37e18a459e92566edb9132e, type: 2}
   ResultCount: 1
+  ProgressionPerPlayer: 0
+  ProgressionShared: 0
+  ResultCharges: 0
+  ResultQuality: 0
   Ingredients:
   - Item: {fileID: 11400000, guid: c3fcb075eb47574448654cb9df8c19ac, type: 2}
     Count: 1
+    Charges: 0
+    Quality: 0
   - Item: {fileID: 11400000, guid: 7829ba341a701304a8ee1b5e2bf83611, type: 2}
     Count: 2
+    Charges: 0
+    Quality: 0
   - Item: {fileID: 11400000, guid: 6c8ade8d88abbee42b65fe778b0e7777, type: 2}
     Count: 1
+    Charges: 0
+    Quality: 0
   RequiredStation: 1
   ProcessingSeconds: 0
   Processing: 0

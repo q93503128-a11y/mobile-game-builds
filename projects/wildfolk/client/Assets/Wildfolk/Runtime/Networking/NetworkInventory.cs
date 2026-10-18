@@ -35,14 +35,14 @@ namespace Wildfolk
         {
             if(!IsSpawned || !IsServer)return;
             for(var i=0;i<Inventory.Model.Capacity;i++)
-            {var stack=Inventory.Model.GetSlot(i);var value=new NetworkStack{Item=Index(stack.IsEmpty ? null : stack.Item),Count=stack.Count};if(i>=Slots.Count)Slots.Add(value);else if(!Slots[i].Equals(value))Slots[i]=value;}
+            {var stack=Inventory.Model.GetSlot(i);var value=new NetworkStack{Item=Index(stack.IsEmpty ? null : stack.Item),Count=stack.Count,Charges=stack.Charges,Quality=stack.Quality};if(i>=Slots.Count)Slots.Add(value);else if(!Slots[i].Equals(value))Slots[i]=value;}
             Revision.Value++;
         }
         private void PublishSelection(){if(!IsServer || !IsSpawned)return;Selected.Value=Inventory.SelectedIndex;Revision.Value++;}
         private void PublishRewards(){if(IsServer && IsSpawned)Rewards.Value=new SessionRewardState{Experience=progression.Experience,Gold=progression.Gold};}
-        private void MirrorAll(){var values=new ItemStack[Inventory.Model.Capacity];for(var i=0;i<Slots.Count && i<values.Length;i++){var stack=Slots[i];values[i]=stack.Count==0 ? default : new ItemStack(Item(stack.Item),stack.Count);}Inventory.Model.ApplyReplicaSlots(values);}
+        private void MirrorAll(){var values=new ItemStack[Inventory.Model.Capacity];for(var i=0;i<Slots.Count && i<values.Length;i++){var stack=Slots[i];values[i]=stack.Count==0 ? default : new ItemStack(Item(stack.Item),stack.Count,stack.Charges,stack.Quality);}Inventory.Model.ApplyReplicaSlots(values);}
         private void ListChanged(NetworkListEvent<NetworkStack> change)
-        {if(IsServer || !IsOwner)return;if(change.Type==NetworkListEvent<NetworkStack>.EventType.Value && change.Index>=0 && change.Index<Inventory.Model.Capacity){var value=change.Value;Inventory.Model.ApplyReplicaSlot(change.Index,value.Count==0 ? default : new ItemStack(Item(value.Item),value.Count));}else MirrorAll();}
+        {if(IsServer || !IsOwner)return;if(change.Type==NetworkListEvent<NetworkStack>.EventType.Value && change.Index>=0 && change.Index<Inventory.Model.Capacity){var value=change.Value;Inventory.Model.ApplyReplicaSlot(change.Index,value.Count==0 ? default : new ItemStack(Item(value.Item),value.Count,value.Charges,value.Quality));}else MirrorAll();}
         private void SelectionChanged(int old,int value){if(!IsServer && IsOwner)Inventory.ApplySelection(value);}
         private void RewardsChanged(SessionRewardState old,SessionRewardState value){if(!IsServer && IsOwner)ApplyRewards(value);}
         private void ApplyRewards(SessionRewardState value)=>progression.SetValues(value.Experience,value.Gold);
@@ -86,7 +86,7 @@ namespace Wildfolk
                     case InventoryOperation.Select:Inventory.ApplySelection(from);return true;
                     case InventoryOperation.Transfer:return to>=0 && to<capacity && Inventory.Model.MoveStackAmount(from,to,amount);
                     case InventoryOperation.Equip:return Player.Equipment.TryEquipFromSlot(from);
-                    case InventoryOperation.Unequip:return from>=0 && from<=1 && to>=-1 && to<capacity && Player.Equipment.Unequip((ArmorSlot)from,to);
+                    case InventoryOperation.Unequip:return from>=0 && from<=2 && to>=-1 && to<capacity && Player.Equipment.Unequip((ArmorSlot)from,to);
                     case InventoryOperation.Drop:return GetComponent<PlayerItemDrop>().Drop(Inventory.Model,from,amount);
                     case InventoryOperation.Pickup:return NetworkManager.SpawnManager.SpawnedObjects.TryGetValue(target,out var obj) && obj.TryGetComponent<NetworkGroundItem>(out var item) && item.TryPickup(this);
                     default:return false;

@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea85a5ebaf6f62646a87d747548e1a2f, type: 3}
+  m_Name: WoodFencePlacement
+  m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.PlaceableDefinition
+  Item: {fileID: 11400000, guid: 8f6bca55a70f9694dab648807c0df349, type: 2}
+  Prefab: {fileID: 3587918546924851315, guid: 248b8002001670e469a76ceceb93ac39, type: 3}
+  Vitality: {fileID: 11400000, guid: 13b39c9fbe1178848bb3f1e950b13376, type: 2}
+  Footprint: {x: 2.2, y: 0.6}
+  MaximumDistance: 3.5
+  Station: 0
+  Tier: {fileID: 0}
+  IsBarrier: 1
+  IsDoor: 0
+  StorageSlots: 0
+  ParallelCapacity: 1
+  ProcessingMode: 1
+  InputCapacity: 30
+  OutputCapacity: 60
+  ProcessingSpeed: 1
+  WorkbenchTier: 1
+  TierVisual: {fileID: 0}
+  TierDisplayKey:
+  UpgradeTo: {fileID: 0}
+  UpgradeCosts: []

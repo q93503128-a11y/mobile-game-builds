@@ -31,6 +31,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f01cbbfbba49be54f81f55ce8e32ba2e, type: 2}
   - {fileID: 11400000, guid: e0c6368811c23d04eb84f3ce4e0dde99, type: 2}
   - {fileID: 11400000, guid: 7416319fd5788b54c9eded354dbfe71e, type: 2}
+  - {fileID: 11400000, guid: 601a339fc408db342aa865a1cfd847f8, type: 2}
+  - {fileID: 11400000, guid: 0fdc435c4d16a3445a9911dc7ea32a23, type: 2}
+  - {fileID: 11400000, guid: 67ad05af9a77bb349867c5d5d41efebb, type: 2}
   ProgressionCatalog: {fileID: 11400000, guid: edf4df5213dc0bf4e96917b39fb19914, type: 2}
   WalkingSpeed: 4.2
   TravelMinutesAcross: 52
@@ -46,6 +49,7 @@ MonoBehaviour:
   Resources:
   - IndependentGeneration: 0
     DistributionConfigured: 0
+    Generation2Only: 0
     GenerationSalt: 0
     AllowedBiomes: []
     SourceContext: 0
@@ -80,6 +84,7 @@ MonoBehaviour:
     ClusterSpacing: 4
   - IndependentGeneration: 0
     DistributionConfigured: 0
+    Generation2Only: 0
     GenerationSalt: 0
     AllowedBiomes: []
     SourceContext: 0
@@ -114,6 +119,7 @@ MonoBehaviour:
     ClusterSpacing: 3.4
   - IndependentGeneration: 0
     DistributionConfigured: 0
+    Generation2Only: 0
     GenerationSalt: 0
     AllowedBiomes: []
     SourceContext: 0
@@ -148,6 +154,7 @@ MonoBehaviour:
     ClusterSpacing: 12
   - IndependentGeneration: 0
     DistributionConfigured: 0
+    Generation2Only: 0
     GenerationSalt: 0
     AllowedBiomes: []
     SourceContext: 0
@@ -182,6 +189,7 @@ MonoBehaviour:
     ClusterSpacing: 3.2
   - IndependentGeneration: 0
     DistributionConfigured: 0
+    Generation2Only: 0
     GenerationSalt: 0
     AllowedBiomes: []
     SourceContext: 0
@@ -216,6 +224,7 @@ MonoBehaviour:
     ClusterSpacing: 2.4
   - IndependentGeneration: 1
     DistributionConfigured: 1
+    Generation2Only: 0
     GenerationSalt: 701
     AllowedBiomes:
     - {fileID: 11400000, guid: 88ca94fbce62a574089c6b4c45a10282, type: 2}
@@ -251,6 +260,7 @@ MonoBehaviour:
     ClusterSpacing: 9
   - IndependentGeneration: 1
     DistributionConfigured: 1
+    Generation2Only: 0
     GenerationSalt: 709
     AllowedBiomes:
     - {fileID: 11400000, guid: 88ca94fbce62a574089c6b4c45a10282, type: 2}
@@ -286,6 +296,7 @@ MonoBehaviour:
     ClusterSpacing: 9
   - IndependentGeneration: 1
     DistributionConfigured: 1
+    Generation2Only: 0
     GenerationSalt: 719
     AllowedBiomes:
     - {fileID: 11400000, guid: 88ca94fbce62a574089c6b4c45a10282, type: 2}
@@ -319,5 +330,75 @@ MonoBehaviour:
     HarvestExclusionRadius: 18
     HarvestExclusionSeconds: 1200
     ClusterSpacing: 9
+  - IndependentGeneration: 1
+    DistributionConfigured: 1
+    Generation2Only: 1
+    GenerationSalt: 907
+    AllowedBiomes: []
+    SourceContext: 0
+    Terrain: 0
+    DepthRange: {x: 0, y: 1}
+    WaterDistanceRange: {x: 0, y: 1000}
+    RoadDistanceRange: {x: 0, y: 1000}
+    ForestDensityRange: {x: 0, y: 1}
+    RockDensityRange: {x: 0, y: 1}
+    BiomeAffinity: 0
+    ClusterRadius: 0
+    ClusterSize: 0
+    Prefab: {fileID: 2077305747430155710, guid: 11acbb141e6769c429af8fcd259b27a6, type: 3}
+    AlternateSprite: {fileID: 0}
+    Count: 0
+    StartCount: 0
+    StartRadius: 0
+    SpawnClearance: 0
+    Spacing: 4
+    ForestPreference: 0
+    RockPreference: 0
+    ScaleRange: {x: 0.9, y: 1.1}
+    RespawnSeconds: 180
+    RecoveryConfigured: 1
+    NaturalRecovery: 1
+    WorldRecoveryScope: 1
+    Family: 3
+    Rarity: 0
+    TargetDensityRatio: 1
+    HarvestExclusionRadius: 0
+    HarvestExclusionSeconds: 0
+    ClusterSpacing: 0
+  - IndependentGeneration: 1
+    DistributionConfigured: 1
+    Generation2Only: 1
+    GenerationSalt: 911
+    AllowedBiomes: []
+    SourceContext: 0
+    Terrain: 0
+    DepthRange: {x: 0, y: 1}
+    WaterDistanceRange: {x: 0, y: 1000}
+    RoadDistanceRange: {x: 0, y: 1000}
+    ForestDensityRange: {x: 0, y: 1}
+    RockDensityRange: {x: 0, y: 1}
+    BiomeAffinity: 0
+    ClusterRadius: 0
+    ClusterSize: 0
+    Prefab: {fileID: 6854717173864581813, guid: 838f85a86680f5545be64e629ef354fa, type: 3}
+    AlternateSprite: {fileID: 0}
+    Count: 0
+    StartCount: 0
+    StartRadius: 0
+    SpawnClearance: 0
+    Spacing: 4
+    ForestPreference: 0
+    RockPreference: 0
+    ScaleRange: {x: 0.9, y: 1.1}
+    RespawnSeconds: 240
+    RecoveryConfigured: 1
+    NaturalRecovery: 1
+    WorldRecoveryScope: 1
+    Family: 3
+    Rarity: 0
+    TargetDensityRatio: 1
+    HarvestExclusionRadius: 0
+    HarvestExclusionSeconds: 0
+    ClusterSpacing: 0
   DecorationCount: 480
   ShallowMoveMultiplier: 0.7

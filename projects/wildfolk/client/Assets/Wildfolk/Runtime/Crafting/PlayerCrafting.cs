@@ -85,9 +85,9 @@ namespace Wildfolk
             if(recipe.ProcessingSeconds>0 && Processor!=null && Processor.IsBusy)
             {
                 if(Processor.Recipe!=recipe || !Processor.IsReady) return CraftStatus.Processing;
-                return Inventory.Model.GetExchangeStatus(Array.Empty<ItemAmount>(),recipe.Result,Processor.OutputCount)==ExchangeResult.Success ? CraftStatus.Collect : CraftStatus.NoSpace;
+                return Inventory.Model.GetExchangeStatus(Array.Empty<ItemAmount>(),recipe.Result,Processor.OutputCount,recipe.ResultCharges,recipe.ResultQuality)==ExchangeResult.Success ? CraftStatus.Collect : CraftStatus.NoSpace;
             }
-            var result = Inventory.Model.GetExchangeStatus(recipe.Ingredients, recipe.Result, recipe.ResultCount);
+            var result = Inventory.Model.GetExchangeStatus(recipe.Ingredients, recipe.Result, recipe.ResultCount,recipe.ResultCharges,recipe.ResultQuality);
             return result == ExchangeResult.Success ? CraftStatus.Ready :
                 result == ExchangeResult.NoSpace ? CraftStatus.NoSpace : CraftStatus.MissingMaterials;
         }
@@ -100,7 +100,7 @@ namespace Wildfolk
             if (status != CraftStatus.Ready) return status;
             if(recipe.ProcessingSeconds>0)
                 return Processor!=null && Processor.Begin(recipe,Inventory) ? CraftStatus.Processing : CraftStatus.StationRequired;
-            var result = Inventory.Model.TryExchange(recipe.Ingredients, recipe.Result, recipe.ResultCount);
+            var result = Inventory.Model.TryExchange(recipe.Ingredients, recipe.Result, recipe.ResultCount,recipe.ResultCharges,recipe.ResultQuality);
             return result == ExchangeResult.Success ? CraftStatus.Ready :
                 result == ExchangeResult.NoSpace ? CraftStatus.NoSpace : CraftStatus.MissingMaterials;
         }

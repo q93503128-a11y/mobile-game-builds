@@ -155,3 +155,7 @@ Goblin 시각 Separation0.85/Preferred Spacing2.7유닛. Goblin Ally Assist7유�
 ## 탐험 기반 수치 (초기 검증값)
 
 Torch: Hand Wood1+Coal1→4, stack50/설치HP40/footprint.5×.5/거리3.5. 광원 반경7.5/강도.9/따뜻한 불색, ambient에 비례해 감쇠하고 낮1에서는0. 연료/내구도 소모는 없다. Torch는 적 aggro/언데드 피해/안전광원 효과를 추가하지 않는다. Cave ambient 입구.52→심부.18, 플레이어 가까운 읽기 광원 반경2.8/기본강도.28도 ambient에 따라 감쇠한다. Compass: WB I Wood2+Iron Ingot1→1, stack1/가방 소지형. 최종 제작 경제/암부 접근성/장기 희소성 밸런스 합격 선언은 아니다.
+
+## Workbench I–II Content Expansion (2026-10-18)
+
+이번 알파 수치는 [CONTENT_EXPANSION](CONTENT_EXPANSION.md)과 [FOOD_AND_FISHING](FOOD_AND_FISHING.md)을 따른다. 음식/낚시/탄약/무료 영구 조명의 장기 밸런스는 미확정이다.

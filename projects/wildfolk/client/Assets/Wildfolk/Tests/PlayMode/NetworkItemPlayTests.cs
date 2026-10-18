@@ -21,11 +21,11 @@ namespace Wildfolk.Tests
         private NetworkPlayer Other(Vector2 position){var actor=Object.Instantiate(NetworkSession.Instance.PlayerPrefab,position,Quaternion.identity).GetComponent<NetworkPlayer>();actor.NetworkObject.Spawn();Freeze(actor);return actor;}
         [UnityTest]public IEnumerator SharedResourceFinalHitDropsOnceAndRecoversWithNewIdentity()
         {
-            var identity=Object.FindObjectsByType<ResourceIdentity>(FindObjectsSortMode.None).First(r=>r.Node.name.Contains("SmallPlant"));var node=identity.Node;var rule=identity.Rule;var region=world.World.Renewal.Population.Region(rule,node.transform.position);var position=(Vector2)node.transform.position;var id=identity.Id;var netId=node.GetComponent<NetworkObject>().NetworkObjectId;
+            var identity=Object.FindObjectsByType<ResourceIdentity>(FindObjectsSortMode.None).First(r=>r.Node.name.Contains("SmallPlant"));var node=identity.Node;var dropCount=node.Definition.DropCount;var rule=identity.Rule;var region=world.World.Renewal.Population.Region(rule,node.transform.position);var position=(Vector2)node.transform.position;var id=identity.Id;var netId=node.GetComponent<NetworkObject>().NetworkObjectId;
             Place(player,position+Vector2.down*.7f);var other=Other(position+new Vector2(.1f,-.7f));node.Health.RestoreHealth(1);var deaths=0;node.Health.Died+=()=>deaths++;
             Assert.That(player.Commands.Attack(),Is.True);Assert.That(other.Commands.Attack(),Is.True);yield return new WaitForSeconds(.25f);
             Assert.That(deaths,Is.EqualTo(1));Assert.That(NetworkSession.Instance.Manager.SpawnManager.SpawnedObjects.ContainsKey(netId),Is.False);
-            Assert.That(Object.FindObjectsByType<NetworkGroundItem>(FindObjectsSortMode.None).Sum(g=>g.State.Value.Count),Is.EqualTo(1));
+            Assert.That(Object.FindObjectsByType<NetworkGroundItem>(FindObjectsSortMode.None).Sum(g=>g.State.Value.Count),Is.EqualTo(dropCount));
             foreach(var r in Object.FindObjectsByType<ResourceIdentity>(FindObjectsSortMode.None).Where(r=>r.Rule==rule && world.World.Renewal.Population.Region(rule,r.transform.position)==region).ToArray())
             {if(world.World.Renewal.Population.Count(rule,region)<world.World.Renewal.Population.Target(rule,region))break;r.Node.Health.ApplyDamage(r.Node.Health.Maximum);}
             yield return null;world.Clock.Model.SetElapsed(world.Clock.Model.Elapsed+world.World.Definition.Resources[rule].RespawnSeconds+1);

@@ -10,7 +10,7 @@ namespace Wildfolk
         private static bool Finite(double value)=>!double.IsNaN(value) && !double.IsInfinity(value);
         public static void Validate(SavedGame game,ContentCatalog catalog,WorldGenerationDefinition definition,AnimalPopulationDefinition animals,int playerCapacity,int maximumHP,SurvivalDefinition survival,CharacterGrowthDefinition growth,LocomotionDefinition locomotion)
         {
-            Require(game!=null && game.Version>=2 && game.Version<=8,"Unsupported save version");Require(Finite(game.Elapsed) && game.Elapsed>=0,"Invalid world time");
+            Require(game!=null && game.Version>=2 && game.Version<=9,"Unsupported save version");Require(Finite(game.Elapsed) && game.Elapsed>=0,"Invalid world time");
             var map=new WorldMap(definition,game.Seed,game.BaseGenerationVersion,false);var player=game.Player;
             ValidatePlayer(player,map,catalog,playerCapacity,maximumHP,survival,growth,locomotion,game.IsMultiplayer);
             Require(game.Resources!=null && game.Animals!=null && game.Placeables!=null && game.Pickups!=null,"Missing world state");
@@ -55,7 +55,7 @@ namespace Wildfolk
                 Require(recipe.RequiredStation==placed.Station && recipe.ProcessingSeconds>0 && state.Processing.Batch>0 && state.Processing.Batch<=placed.ParallelCapacity,"Invalid processing batch");
                 Require(Finite(state.Processing.Remaining) && state.Processing.Remaining>=0 && state.Processing.Remaining<=(recipe.LegacyProcessingSeconds>0 ? recipe.LegacyProcessingSeconds : recipe.ProcessingSeconds)/placed.ProcessingSpeed,"Invalid processing timer");
             }
-            foreach(var pickup in game.Pickups){Require(pickup!=null,"Missing pickup");Position(map,pickup.Position);Require(pickup.Count>0 && pickup.Count<=catalog.Item(pickup.Item).MaxStack,"Invalid pickup");}
+            foreach(var pickup in game.Pickups){Require(pickup!=null,"Missing pickup");Position(map,pickup.Position);InventoryModel.ValidateState(catalog.Item(pickup.Item),pickup.Count,pickup.Charges,pickup.Quality);Require(pickup.Count>0 && pickup.Count<=catalog.Item(pickup.Item).MaxStack,"Invalid pickup");}
         }
         private static void ValidateStreamedResources(SavedGame game,WorldMap map,WorldGenerationDefinition definition)
         {
@@ -76,7 +76,7 @@ namespace Wildfolk
             Require((allowDead ? player.HP>=0 : player.HP>0) && player.HP<=maximumHP+hpBonus && player.Selected>=0 && player.Selected<playerCapacity,"Invalid player");
             var staminaMax=locomotion.MaximumStamina+GrowthValidation.Bonus(player.Growth,growth,SkillEffect.MaximumStamina);
             Require(Finite(player.Stamina) && player.Stamina>=0 && player.Stamina<=staminaMax && Finite(player.StaminaWait) && player.StaminaWait>=0 && player.StaminaWait<=locomotion.RecoveryDelay,"Invalid stamina");
-            Armor(player.HeadArmor,ArmorSlot.Head,catalog);Armor(player.BodyArmor,ArmorSlot.Body,catalog);
+            Require(string.IsNullOrEmpty(player.Utility) || catalog.Item(player.Utility).EquippedLight!=null,"Invalid utility equipment");Armor(player.HeadArmor,ArmorSlot.Head,catalog);Armor(player.BodyArmor,ArmorSlot.Body,catalog);
             Require(player.SeenRecipes!=null,"Missing recipe state");var seen=new HashSet<string>();foreach(var id in player.SeenRecipes){Require(seen.Add(id),"Duplicate recipe state");catalog.Recipe(id);}
             Position(map,player.Position);Require(map.IsWalkable(player.Position,0),"Player is outside traversable terrain");
             Require(player.XP>=0 && player.Gold>=0 && Finite(player.CombatRecovery) && player.CombatRecovery>=0 && player.CombatRecovery<=survival.RegenDelay,"Invalid progression");

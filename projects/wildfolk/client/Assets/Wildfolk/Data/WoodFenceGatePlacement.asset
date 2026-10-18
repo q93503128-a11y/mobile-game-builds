@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea85a5ebaf6f62646a87d747548e1a2f, type: 3}
+  m_Name: WoodFenceGatePlacement
+  m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.PlaceableDefinition
+  Item: {fileID: 11400000, guid: 5dbb1f01775646e4d8cf233d568a4bec, type: 2}
+  Prefab: {fileID: 8417087985814275644, guid: 24f36b5864bd6cc42a8117ea78146c20, type: 3}
+  Vitality: {fileID: 11400000, guid: c1a3c92f331e0074e8317907c32b4a6b, type: 2}
+  Footprint: {x: 2.2, y: 0.6}
+  MaximumDistance: 3.5
+  Station: 0
+  Tier: {fileID: 0}
+  IsBarrier: 1
+  IsDoor: 1
+  StorageSlots: 0
+  ParallelCapacity: 1
+  ProcessingMode: 1
+  InputCapacity: 30
+  OutputCapacity: 60
+  ProcessingSpeed: 1
+  WorkbenchTier: 1
+  TierVisual: {fileID: 0}
+  TierDisplayKey:
+  UpgradeTo: {fileID: 0}
+  UpgradeCosts: []

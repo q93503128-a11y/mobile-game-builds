@@ -37,3 +37,7 @@ Foundation5는 Host의 v5 파일에 식별자별 Inventory/선택/장비/HP·생
 ## 탐험 아이템
 
 Torch는 기존 Hotbar 선택/held appearance/Primary placement를 쓴다. 선택하면 다른 손 도구는 사용하지 않으며 선택 해제로 portable light도 꺼진다. Compass는 손 선택과 무관하게 가방 어느 슬롯에 지니면 작은 navigation HUD를 보인다. 기존36칸/Hotbar9/Chest24·36/분할·이동·드랍을 유지한다. 무제한 waypoint/minimap은 없다. [탐험](EXPLORATION_FOUNDATION.md).
+
+## Workbench I–II Content Expansion (2026-10-18)
+
+Waterskin은 item 하나와 Charges/Quality를 가지는 MaxStack1 용기다. 슬롯·상자·드롭·픽업·저장·replica에서 상태를 보존한다. Utility 한 칸과 Lantern 장착/해제를 기존 equipment 요청에 연결했다. Head/Body와 같은 슬롯 행을 사용한다. [정본](CONTENT_EXPANSION.md).

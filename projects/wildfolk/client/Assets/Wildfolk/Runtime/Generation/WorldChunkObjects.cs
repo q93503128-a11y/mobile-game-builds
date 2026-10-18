@@ -23,7 +23,7 @@ namespace Wildfolk
         private void CullDistantObjects()
         {
             var now=World.Renewal.Clock.Model.Elapsed;for(var i=WorldPlaceable.Active.Count-1;i>=0;i--){var f=WorldPlaceable.Active[i];if(!f.Health.IsAlive || Wants(f.transform.position))continue;sleepingPlaces[f.SaveId]=CapturePlace(f,now);PrefabPool.Release(f.gameObject);}
-            for(var i=WorldPickup.Active.Count-1;i>=0;i--){var p=WorldPickup.Active[i];if(p.Item==null || p.Count<=0 || Wants(p.transform.position))continue;sleepingPickups.Add(new PickupSnapshot{Item=p.Item.Id,Count=p.Count,Position=p.transform.position});PrefabPool.Release(p.gameObject);}
+            for(var i=WorldPickup.Active.Count-1;i>=0;i--){var p=WorldPickup.Active[i];if(p.Item==null || p.Count<=0 || Wants(p.transform.position))continue;sleepingPickups.Add(new PickupSnapshot{Item=p.Item.Id,Count=p.Count,Charges=p.Charges,Quality=p.Quality,Position=p.transform.position});PrefabPool.Release(p.gameObject);}
         }
         private void AdvanceCargo(PlaceableSnapshot s,double now)
         {
@@ -39,7 +39,7 @@ namespace Wildfolk
                 var s=sleepingPlaces[id];AdvanceCargo(s,World.Renewal.Clock.Model.Elapsed);var f=NetworkSpawnFactory.Spawn(World.Definition.ProgressionCatalog.Item(s.Item).Placement.Prefab,s.Position,Quaternion.Euler(0,0,s.Rotation));f.SaveId=s.Id;f.CreatorId=s.Creator;f.Health.RestoreHealth(s.HP);
                 var chest=f.GetComponent<StorageChest>();if(chest!=null){chest.BindVisitor(World.Player);chest.Model.Restore(s.Inventory,World.Definition.ProgressionCatalog);}var process=f.GetComponent<StationProcessing>();if(process!=null)process.InitializeSnapshot(s.Processing,World.Definition.ProgressionCatalog,World.Player);var door=f.GetComponent<WorldDoor>();if(door!=null)door.RestoreOpen(s.DoorOpen);sleepingPlaces.Remove(id);
             }
-            for(var i=sleepingPickups.Count-1;i>=0;i--){var s=sleepingPickups[i];if(!WorldChunk.At(s.Position,World.Definition.ChunkSize).Equals(key))continue;var pickup=PrefabPool.Spawn(World.Pickup,s.Position,Quaternion.identity);pickup.Initialize(World.Definition.ProgressionCatalog.Item(s.Item),s.Count,World.Player,World.Settings,true);sleepingPickups.RemoveAt(i);}
+            for(var i=sleepingPickups.Count-1;i>=0;i--){var s=sleepingPickups[i];if(!WorldChunk.At(s.Position,World.Definition.ChunkSize).Equals(key))continue;var pickup=PrefabPool.Spawn(World.Pickup,s.Position,Quaternion.identity);pickup.Initialize(World.Definition.ProgressionCatalog.Item(s.Item),s.Count,World.Player,World.Settings,true,s.Charges,s.Quality);sleepingPickups.RemoveAt(i);}
         }
         private void MaterializeFeatures(WorldChunk key,Transform parent)
         {

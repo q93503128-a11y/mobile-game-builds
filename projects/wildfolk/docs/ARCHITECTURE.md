@@ -174,3 +174,7 @@ PlayerNavigation의 영속 truth는 PlayerSnapshot.HomeId 하나다. WorldPlacea
 WorldChunkRuntime 하나의 bounded scheduler/ChunkActivation4unit retention을 사용한다. WorldTerrainRenderer는 활성 tiles와 inactive LRU24를 분리하고 row work queue를2.5ms 목표로 처리한다. 전체42k Update/GO/Texture/새 chunk manager는 없다. 명시적인 DrainPending은 fixture 동기화다. Editor 전용 ExplorationProfiler는 ProfilerRecorder와 frame 샘플을 파일로 기록하고 게임 HUD에 붙지 않는다.
 
 멀티 야외 조명 시간은 기존 NetworkWorldState의 Host 시간 sample(Elapsed/Server timestamp/Advancing)을0.5초마다 전달하고 Client가 server time으로 보간한다. 멈춘 Client WorldClock 때문에 밤에도 낮 광원으로 표시되던 경계를 연결했다. 별도 매 frame light/position RPC는 없으며 실제 remote Relay 화면 동기화는 미검수다.
+
+## Workbench I–II Content Expansion (2026-10-18)
+
+ItemStack/SavedStack/NetworkStack/GroundItemState에 작은 Charges/Quality 값을 공통 전달한다. PlayerRanged는 기존 projectile, Spear는 기존 melee, Cooking Pot은 기존 처리기, Gate는 기존 WorldDoor를 재사용한다. Utility는 기존 equipment/PlayerLightSource, 새 자연 source는 기존 청크/자원 회복에 연결한다. Editor QA profile은 release에서 비활성이다.

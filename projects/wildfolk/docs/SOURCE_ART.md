@@ -44,3 +44,7 @@ tools/generate_world_art.py의 Pillow polygon으로 cave/ruin/well/quarry/gravey
 ## 탐험 광원/길찾기 원본
 
 tools/generate_exploration_art.py(Pillow)가 torch/torch_placed/compass/bearing_arrow 네 sprite를 직접 생성한다. 기존 코드 기반 캐릭터·자연색 아트 방식이며 외부 게임 image/code/asset을 추출하거나 AI 캐릭터 이미지를 추가하지 않았다.
+
+## Workbench I–II Content Expansion (2026-10-18)
+
+이번 신규 아이콘/무기/자연물/시설/문·울타리·Trap은 tools/generate_content_art.py(Pillow) 원본이다. 문은 동일 원본에서 고정 frame과 회전 leaf를 나누어 내보낸다. Krita bridge는 연결되지 않았으며 이미지 생성 도구나 외부 게임 asset은 사용하지 않았다.

@@ -21,6 +21,13 @@ namespace Wildfolk
         public GameplayLightDefinition PortableLight;
         public Sprite HeldSprite;
         public bool NavigationInstrument;
+        public int WaterCapacity;
+        public ConsumableDefinition RawDrink,CleanDrink;
+        public bool FishingRod;
+        public GameplayLightDefinition EquippedLight;
+        public RangedWeaponDefinition Ranged;
+        public AmmoKind Ammo;
+        public int AmmoDamage;
         public LiquidState Liquid;
         public EquipmentTier Tier => Tool!=null ? Tool.Tier : Placement!=null ? Placement.Tier : Armor!=null ? Armor.Tier : null;
     }

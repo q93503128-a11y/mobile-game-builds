@@ -10,6 +10,7 @@ namespace Wildfolk
     {
         // Appended generation streams preserve all legacy r<index> placements and random draws.
         public bool IndependentGeneration,DistributionConfigured;
+        public bool Generation2Only;
         public int GenerationSalt;
         public BiomeDefinition[] AllowedBiomes;
         public ResourceSourceContext SourceContext;

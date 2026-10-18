@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea85a5ebaf6f62646a87d747548e1a2f, type: 3}
+  m_Name: StoneFencePlacement
+  m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.PlaceableDefinition
+  Item: {fileID: 11400000, guid: 0ce1051e1bbbc1e4ba1fb9d12b9d920d, type: 2}
+  Prefab: {fileID: 2071068311998067545, guid: c8881b37a69bbaa4d8872c1454d4c4a7, type: 3}
+  Vitality: {fileID: 11400000, guid: 5ee48d54c5bccc34484e4cb06e6dbe84, type: 2}
+  Footprint: {x: 2.2, y: 0.6}
+  MaximumDistance: 3.5
+  Station: 0
+  Tier: {fileID: 0}
+  IsBarrier: 1
+  IsDoor: 0
+  StorageSlots: 0
+  ParallelCapacity: 1
+  ProcessingMode: 1
+  InputCapacity: 30
+  OutputCapacity: 60
+  ProcessingSpeed: 1
+  WorkbenchTier: 1
+  TierVisual: {fileID: 0}
+  TierDisplayKey:
+  UpgradeTo: {fileID: 0}
+  UpgradeCosts: []

@@ -56,7 +56,7 @@ namespace Wildfolk.Tests
             Assert.That(Mathf.CeilToInt((float)hp/Data<ToolDefinition>("IronAxeTool").DamageFor(ResourceKind.Wood)),Is.InRange(2,3));
             foreach(var r in Data<RecipeCatalog>("Recipes").Recipes)
             {
-                var tool=r.Result.Tool;if(tool==null || tool.HarvestMethod!=HarvestMethod.Strike || tool.Tier.Rank==1)continue;
+                var tool=r.Result.Tool;if(tool==null || r.Result.Ranged!=null || tool.HarvestMethod!=HarvestMethod.Strike || tool.Tier.Rank==1)continue;
                 Assert.That(r.Ingredients[0].Count,Is.EqualTo(1));Assert.That(r.Ingredients[0].Item.Tool.Kind,Is.EqualTo(tool.Kind));Assert.That(r.Ingredients[0].Item.Tool.Tier.Rank,Is.EqualTo(tool.Tier.Rank-1));
             }
             Assert.That(Data<PlaceableDefinition>("FurnacePlacement").ParallelCapacity,Is.EqualTo(3));Assert.That(Data<PlaceableDefinition>("CampfirePlacement").ParallelCapacity,Is.EqualTo(1));

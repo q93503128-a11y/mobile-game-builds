@@ -17,12 +17,20 @@ MonoBehaviour:
   SortOrder: 5
   Result: {fileID: 11400000, guid: 0e4f7d7bd8a14b942b82b3a378682c4e, type: 2}
   ResultCount: 1
+  ProgressionPerPlayer: 0
+  ProgressionShared: 0
+  ResultCharges: 0
+  ResultQuality: 0
   Ingredients:
   - Item: {fileID: 11400000, guid: 5b79b1bb26801e643a3a57016014e6f4, type: 2}
     Count: 1
+    Charges: 0
+    Quality: 0
   RequiredStation: 2
   ProcessingSeconds: 5
   Processing: 1
+  LegacyProcessingSeconds: 0
   Tier: {fileID: 0}
   RequiredWorkbenchTier: 1
+  DisplayKey:
   FutureUnlocks: []

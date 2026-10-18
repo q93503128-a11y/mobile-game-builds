@@ -8,8 +8,12 @@ namespace Wildfolk
         public PlayerInventory Inventory;
         public PlayerCombat Combat;
         public SpriteRenderer HeldVisual;
+        public SpriteRenderer UtilityVisual;
         public SpriteRenderer ArmorVisual;
         public SpriteRenderer HeadVisual,LeftHandGear,RightHandGear;
+        public ItemDefinition Utility {get;private set;}
+        public ItemDefinition Equipped(ArmorSlot slot)=>slot==ArmorSlot.Utility ? Utility : slot==ArmorSlot.Head ? HeadArmor : BodyArmor;
+        public static ArmorSlot Slot(ItemDefinition item)=>item.EquippedLight!=null ? ArmorSlot.Utility : item.Armor.Slot;
         public ItemDefinition BodyArmor {get;private set;}
         public ItemDefinition HeadArmor {get;private set;}
         public int Defense=>(BodyArmor==null ? 0 : BodyArmor.Armor.Defense)+(HeadArmor==null ? 0 : HeadArmor.Armor.Defense);
@@ -23,25 +27,27 @@ namespace Wildfolk
         {
             if(Inventory.Authority!=null && !Inventory.Authority.IsApplying)return Inventory.Authority.Equip(index);
             var stack=Inventory.Model.GetSlot(index);var item=stack.IsEmpty ? null : stack.Item;
-            if(item==null || item.Armor==null)return false;
-            var previous=item.Armor.Slot==ArmorSlot.Head ? HeadArmor : BodyArmor;
+            if(item==null || item.Armor==null && item.EquippedLight==null)return false;
+            var slot=Slot(item);var previous=Equipped(slot);
             if(previous==item)return false;
             var accepted=previous==null ? Inventory.Model.ConsumeSlot(index,item,1) : Inventory.Model.ReplaceConsumedSlot(index,item,previous);
             if(!accepted){PlayerFeedback.ShowKey("feedback.bag_full");return false;}
-            if(item.Armor.Slot==ArmorSlot.Head)HeadArmor=item;else BodyArmor=item;RefreshArmor();return true;
+            if(slot==ArmorSlot.Utility)Utility=item;else if(slot==ArmorSlot.Head)HeadArmor=item;else BodyArmor=item;RefreshArmor();return true;
         }
         public bool Unequip(ArmorSlot slot,int destination=-1)
         {
             if(Inventory.Authority!=null && !Inventory.Authority.IsApplying)return Inventory.Authority.Unequip(slot,destination);
-            var item=slot==ArmorSlot.Head ? HeadArmor : BodyArmor;if(item==null)return false;
+            var item=Equipped(slot);if(item==null)return false;
             if(!(destination<0 ? Inventory.Model.Add(item,1)==1 : Inventory.Model.TryAddAt(destination,item))){PlayerFeedback.ShowKey("feedback.bag_full");return false;}
-            if(slot==ArmorSlot.Head)HeadArmor=null;else BodyArmor=null;RefreshArmor();return true;
+            if(slot==ArmorSlot.Utility)Utility=null;else if(slot==ArmorSlot.Head)HeadArmor=null;else BodyArmor=null;RefreshArmor();return true;
         }
         public void RestoreArmor(ItemDefinition head,ItemDefinition body)
         {if(head!=null && (head.Armor==null || head.Armor.Slot!=ArmorSlot.Head) || body!=null && (body.Armor==null || body.Armor.Slot!=ArmorSlot.Body))throw new System.ArgumentException();HeadArmor=head;BodyArmor=body;RefreshArmor();}
+        public void RestoreUtility(ItemDefinition item){if(item!=null && item.EquippedLight==null)throw new ArgumentException();Utility=item;RefreshArmor();}
         private void RefreshArmor()
         {
-            GetComponent<Health>().DamageReduction=Defense;
+            if(UtilityVisual!=null){UtilityVisual.sprite=Utility==null ? null : Utility.Icon;UtilityVisual.enabled=Utility!=null;}
+            GetComponent<Health>().DamageReduction=Defense;GetComponent<PlayerLightSource>()?.SetEquipped(Utility==null ? null : Utility.EquippedLight);
             ArmorVisual.sprite=BodyArmor==null ? null : BodyArmor.Armor.WornSprite;ArmorVisual.enabled=ArmorVisual.sprite!=null;
             HeadVisual.sprite=HeadArmor==null ? null : HeadArmor.Armor.WornSprite;HeadVisual.enabled=HeadVisual.sprite!=null;
             LeftHandGear.sprite=RightHandGear.sprite=BodyArmor==null ? null : BodyArmor.Armor.HandSprite;

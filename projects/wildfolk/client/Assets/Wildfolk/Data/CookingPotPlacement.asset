@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea85a5ebaf6f62646a87d747548e1a2f, type: 3}
+  m_Name: CookingPotPlacement
+  m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.PlaceableDefinition
+  Item: {fileID: 11400000, guid: 18886fdf28e9f4841b34c2a31bc22efa, type: 2}
+  Prefab: {fileID: 7345149209235512602, guid: 52ea4f2bb58eda94cb62d3473bf3ee26, type: 3}
+  Vitality: {fileID: 11400000, guid: f39bdc97e32f5cb4d902029f751334ac, type: 2}
+  Footprint: {x: 1.7, y: 1.3}
+  MaximumDistance: 3.5
+  Station: 5
+  Tier: {fileID: 0}
+  IsBarrier: 0
+  IsDoor: 0
+  StorageSlots: 0
+  ParallelCapacity: 1
+  ProcessingMode: 1
+  InputCapacity: 30
+  OutputCapacity: 60
+  ProcessingSpeed: 1
+  WorkbenchTier: 1
+  TierVisual: {fileID: 0}
+  TierDisplayKey:
+  UpgradeTo: {fileID: 0}
+  UpgradeCosts: []

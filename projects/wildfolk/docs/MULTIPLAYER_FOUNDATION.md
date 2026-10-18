@@ -1,4 +1,7 @@
-# Multiplayer Foundation — 탐험 기반 / Protocol9
+# Multiplayer Foundation — 콘텐츠 확장 / Protocol10
+
+2026-10-18 현재 콘텐츠 확장: **Save9 / Protocol10, Item86 / Recipe71**. [현재 정본](CONTENT_EXPANSION.md). 아래 이전 버전 설명은 해당 패스의 기록이다.
+
 
 2026-10-18 현재: generation2 지형 유지 / **Save8 / Protocol9**, Item50 / Recipe38. Torch·Compass·제작대 Home·동굴 Exit·제한 지형 cache/분할 생성을 제공한다. [탐험 정본](EXPLORATION_FOUNDATION.md)과 [실제 검수/성능](EXPLORATION_REVIEW.md)를 따른다. 아래 이전 날짜/Version 설명은 각 단계의 기록이다.
 
@@ -418,3 +421,7 @@ Torch도 기존 NetworkConstruction/NetworkBuilding transaction과 stable Save I
 청크 합집합은 기존 살아 있는 NetworkPlayer들을 쓰고4unit 경계 retention을 추가한다. 멀리 떨어진 Local Host actor fixture와4 logical regions는 실제4 peer QA와 다르다. 이번 실제 검수 범위·숫자는 EXPLORATION_REVIEW를 따른다.
 
 멀티 야외 조명 시간은 기존 NetworkWorldState의 Host 시간 sample(Elapsed/Server timestamp/Advancing)을0.5초마다 전달하고 Client가 server time으로 보간한다. 멈춘 Client WorldClock 때문에 밤에도 낮 광원으로 표시되던 경계를 연결했다. 별도 매 frame light/position RPC는 없으며 실제 remote Relay 화면 동기화는 미검수다.
+
+## Workbench I–II Content Expansion (2026-10-18)
+
+현재 Save9/Protocol10, Item86/Recipe71, source variant46+Player1. 낚시 보상/물부대 변경/장비/탄약/Trap/시설/건축은 Host 권위다. Activity state는 시작/변경 시만 보내고 클라이언트가 시간으로 표시한다. 초기 공유 시설5개를 유지하며 Cooking Pot은 제작해야 한다. 실제 Relay/4기기 검수는 별도다. [현재 범위](CONTENT_EXPANSION.md).

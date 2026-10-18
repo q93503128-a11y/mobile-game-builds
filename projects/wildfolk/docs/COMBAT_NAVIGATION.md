@@ -36,3 +36,7 @@ Door는 왼쪽 Hinge/고정 Frame/0.32초 easing으로 열린다. Collider는 ea
 ## 멀티 전투 기반
 
 공격 입력은 owner RPC로 요청만 전달하고 Host의 같은 PlayerCombat/AttackProfile이 쿨다운·Range/Facing/Point-Blank/Single Target/weapon stats를 판정한다. 멀티 Primary는 NetworkCreature만 대상으로 하며 채집/시설 피해와 PvP를 열지 않는다. Creature는 Host가 생존 Player를 선택하고 준비/타격 때 고정한다. 대상 사망은 추적 초기화와 재선택으로 처리한다. 사망은 Health lethal latch와 NetworkCreature.DeathResolved로 한 번만 처리하고 Client Died/로컬 reward roll은 실행하지 않는다. Ground Loot/Inventory/건축/World persistence는 이번 범위가 아니다. 구체적인 자동검사와 실제2인 검증 미수행은 MULTIPLAYER_FOUNDATION을 따른다.
+
+## Workbench I–II Content Expansion (2026-10-18)
+
+출시 알파 무기군은 Sword/Spear/Bow/Crossbow 네 개다. Spear는 기존 melee의 긴 Range/좁은 Arc/큰 thrust 데이터다. Bow와 Crossbow는 하나의 PlayerRanged와 기존 projectile을 공유한다. Bow→Reinforced Bow는 이전 Bow를 소비하고 Crossbow는 별개다. 기본 Arrow/Bolt는 renewable 재료, 고급탄은 Bronze/Steel 선택 소비다. 실제 공격력·초당 공격·Range를 UI에 표시한다. [수치·Recipe](CONTENT_EXPANSION.md).

@@ -17,14 +17,24 @@ MonoBehaviour:
   SortOrder: 8
   Result: {fileID: 11400000, guid: 8ca08232b35c3d7468e6adacf52db6f0, type: 2}
   ResultCount: 1
+  ProgressionPerPlayer: 0
+  ProgressionShared: 0
+  ResultCharges: 0
+  ResultQuality: 0
   Ingredients:
   - Item: {fileID: 11400000, guid: a17fa3949d325264fbc674f9cfab5ee0, type: 2}
     Count: 1
+    Charges: 0
+    Quality: 0
   - Item: {fileID: 11400000, guid: 30904e05765ac844ab5bb28b855a15db, type: 2}
     Count: 5
+    Charges: 0
+    Quality: 0
   RequiredStation: 1
   ProcessingSeconds: 0
   Processing: 0
+  LegacyProcessingSeconds: 0
   Tier: {fileID: 11400000, guid: 5945e678712f7744cbe23200644f4d02, type: 2}
   RequiredWorkbenchTier: 1
+  DisplayKey:
   FutureUnlocks: []

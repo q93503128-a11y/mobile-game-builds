@@ -5,7 +5,7 @@ namespace Wildfolk
 {
     public static class WorldProgressionSupply
     {
-        public static Dictionary<int,int> RequiredYield(WorldGenerationDefinition data,int players=4)
+        private static Dictionary<int,int> BaseYield(WorldGenerationDefinition data,int players=4)
         {
             var budget=new Dictionary<ItemDefinition,int>();var catalog=data.ProgressionCatalog;
             if(catalog==null)throw new InvalidOperationException("World progression catalog is missing");
@@ -18,15 +18,39 @@ namespace Wildfolk
             foreach(var item in catalog.Items)if(item.Placement!=null && item.Placement.Station==StationKind.Workbench && item.Placement.UpgradeTo!=null)foreach(var cost in item.Placement.UpgradeCosts)Cost(cost.Item,cost.Count,catalog,budget,new HashSet<ItemDefinition>());
             var result=new Dictionary<int,int>();for(var i=0;i<data.Resources.Length;i++)if(budget.TryGetValue(data.Resources[i].Prefab.Definition.DropItem,out var count))result[i]=Mathf.CeilToInt(count*data.ProgressionSafetyFactor);return result;
         }
+        public static void Supplement(ContinentalWorldLayout world,WorldGenerationDefinition data)
+        {
+            var needed=RequiredYield(data);foreach(var pair in needed)
+            {
+                var rule=pair.Key;var r=data.Resources[rule];if(r.Family!=ResourceFamily.Mineral)continue;
+                var actual=0;foreach(var p in world.GuaranteedResources)if(p.Rule==rule)actual+=r.Prefab.Definition.DropCount;
+                var count=Mathf.Max(0,Mathf.CeilToInt((float)(pair.Value-actual)/r.Prefab.Definition.DropCount));
+                for(var i=0;i<count;i++)
+                {
+                    var center=r.Prefab.Definition.HarvestMethod==HarvestMethod.Panning ? new Vector2(world.RiverAt(i%3*240)+8,i%3*240) : world.RockyAnchor+new Vector2((i%3-1)*160,110);
+                    var found=false;for(var a=0;a<2000;a++){var angle=a*2.399963f;var radius=8+Mathf.Sqrt(a)*2.2f;var p=center+new Vector2(Mathf.Cos(angle),Mathf.Sin(angle))*radius;if(!world.SourceAllowed(rule,p))continue;var clear=true;foreach(var old in world.GuaranteedResources)if((p-old.Position).sqrMagnitude<16){clear=false;break;}if(!clear)continue;
+                        // Supplements may overlap a natural candidate; the supplement is skipped there, never the old source.
+                        var prior=world.GenerateChunk(WorldChunk.At(p,data.ChunkSize));foreach(var old in prior)if((p-old.Position).sqrMagnitude<16){clear=false;break;}if(!clear)continue;
+                        world.GuaranteedResources.Add(new ResourcePlacement(rule,p,1,"e"+rule+":"+i));found=true;break;}
+                    if(!found)throw new InvalidOperationException("No safe additive progression source site");
+                }
+            }
+        }
         private static void Cost(ItemDefinition item,int amount,ContentCatalog catalog,Dictionary<ItemDefinition,int> budget,HashSet<ItemDefinition> path)
         {
             RecipeDefinition recipe=null;foreach(var r in catalog.Recipes)if(r.Result==item){recipe=r;break;}
             if(recipe==null){budget.TryGetValue(item,out var value);budget[item]=value+amount;return;}
             if(!path.Add(item))throw new InvalidOperationException("Cyclic progression recipe");var units=Mathf.CeilToInt((float)amount/recipe.ResultCount);foreach(var c in recipe.Ingredients)Cost(c.Item,c.Count*units,catalog,budget,path);path.Remove(item);
         }
+        public static Dictionary<int,int> RequiredYield(WorldGenerationDefinition data,int players=4)
+        {
+            var result=BaseYield(data,players);var budget=new Dictionary<ItemDefinition,int>();var catalog=data.ProgressionCatalog;
+            foreach(var recipe in catalog.Recipes)if(recipe.ProgressionPerPlayer>0 || recipe.ProgressionShared>0)Cost(recipe.Result,recipe.ProgressionPerPlayer*players+recipe.ProgressionShared,catalog,budget,new HashSet<ItemDefinition>());
+            for(var i=0;i<data.Resources.Length;i++)if(budget.TryGetValue(data.Resources[i].Prefab.Definition.DropItem,out var count)){result.TryGetValue(i,out var old);result[i]=old+Mathf.CeilToInt(count*data.ProgressionSafetyFactor);}return result;
+        }
         public static void Build(ContinentalWorldLayout world,WorldGenerationDefinition data)
         {
-            var budget=RequiredYield(data);for(var rule=0;rule<data.Resources.Length;rule++)
+            var budget=BaseYield(data);for(var rule=0;rule<Mathf.Min(8,data.Resources.Length);rule++)
             {
                 var r=data.Resources[rule];var harvest=r.Prefab.Definition;var required=budget.TryGetValue(rule,out var need) ? need : 0;var mineral=r.Family==ResourceFamily.Mineral;
                 var count=mineral ? Mathf.Max(9,Mathf.CeilToInt((float)required/harvest.DropCount)) : r.StartCount+4;

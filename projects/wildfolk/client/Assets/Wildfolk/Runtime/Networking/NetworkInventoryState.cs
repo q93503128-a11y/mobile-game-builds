@@ -5,9 +5,9 @@ namespace Wildfolk
     public struct NetworkStack : INetworkSerializable,IEquatable<NetworkStack>
     {
         public short Item;
-        public int Count;
-        public void NetworkSerialize<T>(BufferSerializer<T> s) where T:IReaderWriter{s.SerializeValue(ref Item);s.SerializeValue(ref Count);}
-        public bool Equals(NetworkStack other)=>Item==other.Item&&Count==other.Count;
+        public int Count,Charges;public LiquidState Quality;
+        public void NetworkSerialize<T>(BufferSerializer<T> s) where T:IReaderWriter{s.SerializeValue(ref Item);s.SerializeValue(ref Count);s.SerializeValue(ref Charges);s.SerializeValue(ref Quality);}
+        public bool Equals(NetworkStack other)=>Item==other.Item&&Count==other.Count&&Charges==other.Charges&&Quality==other.Quality;
     }
     public struct SessionRewardState : INetworkSerializable,IEquatable<SessionRewardState>
     {

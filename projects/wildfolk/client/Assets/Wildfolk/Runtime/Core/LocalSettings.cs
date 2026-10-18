@@ -16,7 +16,7 @@ namespace Wildfolk
         public void SetSfx(float value) => Sfx=Mathf.Clamp01(value);
         public static LocalSettings Load(string prefix=Prefix)
         {
-            var settings=new LocalSettings();
+            var settings=new LocalSettings();if(DevelopmentProfile.Isolated && prefix==Prefix)return settings;
             settings.SetControl(PlayerPrefs.GetFloat(prefix+"controls",settings.ControlSize));
             settings.SetMaster(PlayerPrefs.GetFloat(prefix+"master",settings.Master));
             settings.SetMusic(PlayerPrefs.GetFloat(prefix+"music",settings.Music));
@@ -24,6 +24,7 @@ namespace Wildfolk
         }
         public void Store(string prefix=Prefix)
         {
+            if(DevelopmentProfile.Isolated && prefix==Prefix)return;
             PlayerPrefs.SetFloat(prefix+"controls",ControlSize);PlayerPrefs.SetFloat(prefix+"master",Master);
             PlayerPrefs.SetFloat(prefix+"music",Music);PlayerPrefs.SetFloat(prefix+"sfx",Sfx);
             PlayerPrefs.SetString(prefix+"language",Language);

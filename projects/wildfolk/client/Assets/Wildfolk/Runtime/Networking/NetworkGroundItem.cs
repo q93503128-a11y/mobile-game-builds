@@ -8,13 +8,13 @@ namespace Wildfolk
     public struct GroundItemState : INetworkSerializable,IEquatable<GroundItemState>
     {
         public FixedString64Bytes Item;
-        public int Count;
+        public int Count,Charges;public LiquidState Quality;
         public Vector2 Origin,Destination;
         public double Started;
         public ulong Dropper;
         public void NetworkSerialize<T>(BufferSerializer<T> s) where T:IReaderWriter
-        {s.SerializeValue(ref Item);s.SerializeValue(ref Count);s.SerializeValue(ref Origin);s.SerializeValue(ref Destination);s.SerializeValue(ref Started);s.SerializeValue(ref Dropper);}
-        public bool Equals(GroundItemState o)=>Item.Equals(o.Item)&&Count==o.Count&&Origin==o.Origin&&Destination==o.Destination&&Started==o.Started&&Dropper==o.Dropper;
+        {s.SerializeValue(ref Item);s.SerializeValue(ref Count);s.SerializeValue(ref Charges);s.SerializeValue(ref Quality);s.SerializeValue(ref Origin);s.SerializeValue(ref Destination);s.SerializeValue(ref Started);s.SerializeValue(ref Dropper);}
+        public bool Equals(GroundItemState o)=>Item.Equals(o.Item)&&Count==o.Count&&Charges==o.Charges&&Quality==o.Quality&&Origin==o.Origin&&Destination==o.Destination&&Started==o.Started&&Dropper==o.Dropper;
     }
     public sealed class NetworkGroundItem : NetworkBehaviour
     {
@@ -31,13 +31,13 @@ namespace Wildfolk
             var pickup=NetworkSpawnFactory.Spawn(world.World.Pickup,position,Quaternion.identity);
             pickup.Initialize(item,count,dropper==null ? null : dropper.GetComponent<PlayerInventory>(),world.World.Settings,playerDropped);return pickup.GetComponent<NetworkGroundItem>();
         }
-        public void Configure(ItemDefinition item,int count,PlayerInventory dropper,GameplaySettings config,bool playerDropped)
+        public void Configure(ItemDefinition item,int count,PlayerInventory dropper,GameplaySettings config,bool playerDropped,int charges=0,LiquidState quality=LiquidState.Empty)
         {
             if(item==null || count<1)throw new ArgumentException("Invalid ground stack.");
             settings=config;var origin=(Vector2)transform.position;var direction=UnityEngine.Random.insideUnitCircle.normalized;
             var actor=dropper==null ? null : dropper.GetComponent<NetworkObject>();
-            initial=new GroundItemState{Item=item.Id,Count=count,Origin=origin,Destination=playerDropped ? origin : origin+direction*config.DropScatter,Started=Unity.Netcode.NetworkManager.Singleton.ServerTime.Time,Dropper=playerDropped && actor!=null ? actor.NetworkObjectId : ulong.MaxValue};
-            view.ApplyNetwork(item,count);
+            initial=new GroundItemState{Item=item.Id,Count=count,Charges=charges,Quality=quality,Origin=origin,Destination=playerDropped ? origin : origin+direction*config.DropScatter,Started=Unity.Netcode.NetworkManager.Singleton.ServerTime.Time,Dropper=playerDropped && actor!=null ? actor.NetworkObjectId : ulong.MaxValue};
+            view.ApplyNetwork(item,count,charges,quality);
         }
         public override void OnNetworkSpawn()
         {
@@ -46,7 +46,7 @@ namespace Wildfolk
             settings=NetworkCreatureWorld.Active.World.Settings;if(IsServer)State.Value=initial;
             State.OnValueChanged+=Changed;Apply(State.Value);
         }
-        private void Apply(GroundItemState state){if(state.Count>0)view.ApplyNetwork(NetworkCreatureWorld.Active.Catalog.Item(state.Item.ToString()),state.Count);}
+        private void Apply(GroundItemState state){if(state.Count>0)view.ApplyNetwork(NetworkCreatureWorld.Active.Catalog.Item(state.Item.ToString()),state.Count,state.Charges,state.Quality);}
         private void Changed(GroundItemState old,GroundItemState next){Apply(next);foreach(var visitor in visitors)visitor.InvalidatePickup(this);}
         private void Update()
         {if(IsSpawned)view.PresentNetwork(State.Value.Origin,State.Value.Destination,(float)(NetworkManager.ServerTime.Time-State.Value.Started),settings);}
@@ -56,7 +56,7 @@ namespace Wildfolk
         {
             if(!IsServer || !recipient.CanOperate || !Ready(recipient.Player))return false;
             claimed=true;var stack=State.Value;var item=NetworkCreatureWorld.Active.Catalog.Item(stack.Item.ToString());
-            if(!recipient.Inventory.Model.TryAddAmounts(new[]{new ItemAmount{Item=item,Count=stack.Count}})){claimed=false;return false;}
+            if(!recipient.Inventory.Model.TryAddAmounts(new[]{new ItemAmount{Item=item,Count=stack.Count,Charges=stack.Charges,Quality=stack.Quality}})){claimed=false;return false;}
             stack.Count=0;State.Value=stack;NetworkObject.Despawn();return true;
         }
         private void OnTriggerEnter2D(Collider2D other)

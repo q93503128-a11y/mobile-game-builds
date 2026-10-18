@@ -18,7 +18,7 @@ namespace Wildfolk
                 placed.Add(new PlaceableSnapshot{Id=facility.SaveId,Item=facility.Definition.Item.Id,Position=facility.transform.position,Rotation=facility.transform.eulerAngles.z,HP=facility.Health.Current,Inventory=chest==null ? null : chest.Model.Capture(),Processing=process==null ? null : process.Capture(),DoorOpen=door!=null && door.IsOpen,Creator=facility.CreatorId,SimulatedAt=Clock.Model.Elapsed});
             }
             if(World.Map.Streamed)placed.AddRange(World.Chunks.DormantPlaces());game.Placeables=placed.ToArray();var pickups=new List<PickupSnapshot>();
-            foreach(var pickup in WorldPickup.Active)if(pickup.Item!=null && pickup.Count>0)pickups.Add(new PickupSnapshot{Item=pickup.Item.Id,Count=pickup.Count,Position=pickup.transform.position});
+            foreach(var pickup in WorldPickup.Active)if(pickup.Item!=null && pickup.Count>0)pickups.Add(new PickupSnapshot{Item=pickup.Item.Id,Count=pickup.Count,Charges=pickup.Charges,Quality=pickup.Quality,Position=pickup.transform.position});
             if(World.Map.Streamed)pickups.AddRange(World.Chunks.DormantPickups());game.Pickups=pickups.ToArray();return game;
 
         }
@@ -42,7 +42,7 @@ namespace Wildfolk
                 var door=facility.GetComponent<WorldDoor>();if(door!=null)door.RestoreOpen(state.DoorOpen);
             }
             World.Animals.Restore(game.Animals,game.AnimalEcology);World.GetComponent<GoblinSpawner>().Restore(game.GoblinEcology);World.GetComponent<ZombieSpawner>().Restore(game.NightCreatures);
-            foreach(var state in game.Pickups){var pickup=PrefabPool.Spawn(World.Pickup,state.Position,Quaternion.identity);pickup.Initialize(Catalog.Item(state.Item),state.Count,Player,World.Settings,true);}
+            foreach(var state in game.Pickups){var pickup=PrefabPool.Spawn(World.Pickup,state.Position,Quaternion.identity);pickup.Initialize(Catalog.Item(state.Item),state.Count,Player,World.Settings,true,state.Charges,state.Quality);}
             Physics2D.SyncTransforms();WallVisual.RefreshAll();
         }
     }

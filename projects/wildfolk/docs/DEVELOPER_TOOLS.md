@@ -29,3 +29,7 @@ Combat Sandbox의 무의미한 갈색 Player Body Renderer2개는 제거했다. 
 ## 탐험 성능 기록
 
 Editor 전용 ExplorationProfiler.Begin(stage, frameCount, moveX, moveY)는 Unity ProfilerRecorder의 Main Thread/GC Allocated In Frame과 frame delta, 활성 GO/chunk/resource/creature/terrain/cache 수치를 Captures/exploration/profile-*.json으로 기록한다. EditorApplication.update에서 한 rendered frame당 한 번만 수집하고 완료/Play 종료 시 해제한다. Scene/Prefab/게임 UI에는 probe를 저장하지 않는다. Editor·MCP·동시 batch 작업 overhead가 포함된 탐색 수치이며 standalone player allocation/FPS나 모바일 실기 수치가 아니다.
+
+## Workbench I–II Content Expansion (2026-10-18)
+
+ContentExpansionAssets는 기존 scene IDs를 보존하는 콘텐츠 authoring이다. RefreshBindings는 player 행동/Utility UI 참조만 갱신한다. IsolatedQaProfile.Begin은 Play 전에 별도 Captures 디렉터리를 선택하고 기본 설정/멀티 식별자를 격리한다. End는 Play 중지 후 호출한다. ContentExpansionQa는 격리 확인을 통과한 Editor fixture API다.

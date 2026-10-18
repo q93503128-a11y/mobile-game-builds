@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20df6dd9b4c24af4889549b8f9dc4ce5, type: 3}
+  m_Name: BronzeArrowRecipe
+  m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.RecipeDefinition
+  Id: bronze_arrow
+  Category: 2
+  SortOrder: 361
+  Result: {fileID: 11400000, guid: 88a4d3fc16c16eb4e81c628595b048bd, type: 2}
+  ResultCount: 12
+  ProgressionPerPlayer: 24
+  ProgressionShared: 0
+  ResultCharges: 0
+  ResultQuality: 0
+  Ingredients:
+  - Item: {fileID: 11400000, guid: 431287b464f63f4408828d4053bac6eb, type: 2}
+    Count: 2
+    Charges: 0
+    Quality: 0
+  - Item: {fileID: 11400000, guid: 9dc3a0dae203d654b88c31b904f348d4, type: 2}
+    Count: 1
+    Charges: 0
+    Quality: 0
+  - Item: {fileID: 11400000, guid: f9d01f6ba03eb6844b137faebea8612b, type: 2}
+    Count: 1
+    Charges: 0
+    Quality: 0
+  RequiredStation: 1
+  ProcessingSeconds: 0
+  Processing: 0
+  LegacyProcessingSeconds: 0
+  Tier: {fileID: 0}
+  RequiredWorkbenchTier: 2
+  DisplayKey:
+  FutureUnlocks: []

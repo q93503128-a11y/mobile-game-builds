@@ -61,10 +61,10 @@ namespace Wildfolk
         }
         public bool Attack()
         {if(!IsSpawned || !IsOwner || !Health.IsAlive)return false;if(Equipment.ActivePlaceable!=null)return GetComponent<NetworkConstruction>().Place();
-            if(IsServer)return combat.TryAttack();AttackRpc();return true;}
+            if(IsServer)return GetComponent<PlayerPrimaryAction>().TryUse();AttackRpc();return true;}
         [Rpc(SendTo.Server,InvokePermission=RpcInvokePermission.Owner)]
         private void AttackRpc(RpcParams rpc=default)
-        {if(rpc.Receive.SenderClientId==OwnerClientId && Health.IsAlive && Equipment.ActivePlaceable==null)combat.TryAttack();}
+        {if(rpc.Receive.SenderClientId==OwnerClientId && Health.IsAlive && Equipment.ActivePlaceable==null)GetComponent<PlayerPrimaryAction>().TryUse();}
         private void PublishDenial(ResourceDefinition resource)
         {
             if(Time.unscaledTime<nextDenial)return;nextDenial=Time.unscaledTime+2.5f;
@@ -107,7 +107,7 @@ namespace Wildfolk
         private void PublishStatus()
         {
             if(!IsSpawned || !IsServer)return;
-            var next=new PlayerStatusState{HP=Health.Current,MaximumHP=Health.Maximum,Head=ItemIndex(Equipment.HeadArmor),Body=ItemIndex(Equipment.BodyArmor),Held=ItemIndex(Equipment.SelectedItem)};
+            var next=new PlayerStatusState{HP=Health.Current,MaximumHP=Health.Maximum,Head=ItemIndex(Equipment.HeadArmor),Body=ItemIndex(Equipment.BodyArmor),Held=ItemIndex(Equipment.SelectedItem),Utility=ItemIndex(Equipment.Utility)};
             if(!Status.Value.Equals(next))Status.Value=next;
         }
         private void OnMotion(PlayerMotionState previous,PlayerMotionState next)=>ApplyMotion(next);
@@ -121,7 +121,7 @@ namespace Wildfolk
         {
             if(state.MaximumHP<=0)return;
             Health.SetMaximumBonus(Mathf.Max(0,state.MaximumHP-Health.Definition.MaximumHealth));Health.ApplyReplica(state.HP);if(state.HP<=0)Commands.Session.ReplicateDefeat();
-            Equipment.ApplyReplicatedAppearance(Item(state.Head),Item(state.Body),Item(state.Held));
+            Equipment.ApplyReplicatedAppearance(Item(state.Head),Item(state.Body),Item(state.Held));Equipment.RestoreUtility(Item(state.Utility));
         }
     }
 }

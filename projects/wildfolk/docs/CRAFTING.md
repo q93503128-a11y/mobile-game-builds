@@ -62,3 +62,7 @@ Furnace sequential queue와 Campfire Meat/Raw→Clean Cup Batch는 기존 Statio
 ## 탐험 제작 추가
 
 Hand Torch4 = Wood1+Coal1. WB I Compass1 = Wood2+Iron Ingot1. 기존 Coal은 Stone Pickaxe부터이며 WB II/III를 요구하지 않는다. 현재 Item50/Recipe38. Torch는 portable/placed 공통 item이며 별도 recipe나 Lantern placeholder는 없다. 제작대 화면의 `Set as home`은 가까운 해당 제작대를 개인 귀환 기준으로 지정한다. [탐험 정본](EXPLORATION_FOUNDATION.md).
+
+## Workbench I–II Content Expansion (2026-10-18)
+
+현재 Item86/Recipe71. Workbench I/II·Campfire/Cooking Pot/Furnace/Blast Furnace의 전체 표와 Category 수는 [CONTENT_EXPANSION](CONTENT_EXPANSION.md)을 따른다. 새 전문 제작대/III는 없다.

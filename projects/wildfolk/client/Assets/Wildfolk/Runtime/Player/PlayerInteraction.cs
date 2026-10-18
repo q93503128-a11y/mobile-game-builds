@@ -31,8 +31,8 @@ namespace Wildfolk
             }
             if(target==Target)return;Target=target;Changed?.Invoke();
         }
-        public bool CanEquipSelected=>Equipment.SelectedItem!=null && Equipment.SelectedItem.Armor!=null;
-        public bool TryInteract() {if(!Session.IsRunning)return false;if(CanEquipSelected)return Equipment.TryEquipSelectedArmor();Refresh();return Target!=null && Target.Use(this);}
+        public bool CanEquipSelected=>Equipment.SelectedItem!=null && (Equipment.SelectedItem.Armor!=null || Equipment.SelectedItem.EquippedLight!=null);
+        public bool TryInteract() {if(!Session.IsRunning)return false;if(Equipment.SelectedItem!=null && Equipment.SelectedItem.WaterCapacity>0){var net=GetComponent<NetworkContainer>();return net==null ? GetComponent<PlayerWaterskin>().Fill() : net.Fill();}if(CanEquipSelected)return Equipment.TryEquipSelectedArmor();Refresh();return Target!=null && Target.Use(this);}
         public void Use() => TryInteract();
     }
 }

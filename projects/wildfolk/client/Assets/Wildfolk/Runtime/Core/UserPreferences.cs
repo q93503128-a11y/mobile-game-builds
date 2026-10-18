@@ -16,7 +16,7 @@ namespace Wildfolk
         public void ResetDefaults() { Values=new LocalSettings();Notify(); }
         private void Notify() { Values.Store();L.SetLanguage(Values.Language);saveAt=Time.unscaledTime+.5f;Changed?.Invoke(); }
         private void Update() { if(saveAt>=0 && Time.unscaledTime>=saveAt) Flush(); }
-        public void Flush() { if(saveAt<0) return;PlayerPrefs.Save();saveAt=-1; }
+        public void Flush() { if(saveAt<0) return;if(!DevelopmentProfile.Isolated)PlayerPrefs.Save();saveAt=-1; }
         private void OnApplicationPause(bool paused) { if(paused) Flush(); }
         private void OnApplicationQuit() => Flush();
         private void OnDisable() => Flush();

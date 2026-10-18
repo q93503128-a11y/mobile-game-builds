@@ -12,6 +12,7 @@ namespace Wildfolk
         public static bool Valid(string id)=>id!=null && id.Length==32 && Guid.TryParseExact(id,"N",out _);
         public static string Get()
         {
+            if(DevelopmentProfile.Isolated)return "cccccccccccccccccccccccccccccccc";
             const string key="wildfolk.multiplayer.player";var id=PlayerPrefs.GetString(key,"");if(Valid(id))return id;
             id=Guid.NewGuid().ToString("N");PlayerPrefs.SetString(key,id);PlayerPrefs.Save();return id;
         }
@@ -21,7 +22,7 @@ namespace Wildfolk
         public static void Validate(SavedGame game,SaveGameRules rules)
         {
             if(!game.IsMultiplayer){game.Multiplayer=null;return;}var multi=game.Multiplayer;
-            if(multi==null || game.Version!=8 || !LocalPlayerIdentity.Valid(multi.WorldId) || !LocalPlayerIdentity.Valid(multi.HostId) || multi.Players==null || multi.Players.Length<1 || multi.Players.Length>256)throw new InvalidDataException("Invalid cooperative world metadata.");
+            if(multi==null || game.Version!=9 || !LocalPlayerIdentity.Valid(multi.WorldId) || !LocalPlayerIdentity.Valid(multi.HostId) || multi.Players==null || multi.Players.Length<1 || multi.Players.Length>256)throw new InvalidDataException("Invalid cooperative world metadata.");
             var ids=new HashSet<string>();var host=false;var map=new WorldMap(rules.World,game.Seed,game.BaseGenerationVersion,false);var player=rules.Player;
             foreach(var entry in multi.Players)
             {

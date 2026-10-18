@@ -2,7 +2,7 @@
 
 표시 이름은 **Lowfire**다. 내부 Wildfolk namespace, projects/wildfolk 경로와 기존 저장/설정 식별자는 유지한다. 이번 변경은 전체 프로젝트 rename이 아니다.
 
-Unity **6000.3.19f1 LTS / Universal 2D**, 모바일 Landscape(기준1920×1080) 탑다운 생존 게임의 초기 플레이 버전이다. 현재 Seed 월드, 낮 채집/시설/장비 업그레이드, Goblin 무리·작은 Camp,밤 Zombie/Skeleton, 물 용기와 생존, Save/Load v8(v1~v7 호환)을 제공한다. 최종 아트·월드 생성·출시 밸런스가 아니다.
+Unity **6000.3.19f1 LTS / Universal 2D**, 모바일 Landscape(기준1920×1080) 탑다운 생존 게임의 초기 플레이 버전이다. 현재 Seed 월드, 낮 채집/시설/장비 업그레이드, Goblin 무리·작은 Camp,밤 Zombie/Skeleton, 물 용기와 생존, Save/Load v9(v1~v8 호환)을 제공한다. 최종 아트·월드 생성·출시 밸런스가 아니다.
 
 ![플레이 화면](docs/images/world-v2/01-default-grassland.png)
 
@@ -26,7 +26,7 @@ Zombie는 밤에 올라와 활동하고 새벽에는 보상 없이 잠복한다.
 
 ## 정본과 검증
 
-- 실제 Item50종, Recipe38종, Equipment Tier4종, Surface Biome4종이다.
+- 실제 Item86종, Recipe71종, Equipment Tier4종, Surface Biome4종이다.
 - [기획](docs/DESIGN_BIBLE.md), [월드](docs/WORLD_GENERATION.md), [저장](docs/SAVE_PERSISTENCE.md), [전투/이동](docs/COMBAT_NAVIGATION.md), [수치](docs/BALANCE.md), [제작](docs/CRAFTING.md), [가방](docs/INVENTORY.md), [구조](docs/ARCHITECTURE.md).
 - [Developer Tools](docs/DEVELOPER_TOOLS.md)는 Editor 전용이며 게임 HUD/Release에 노출되지 않는다.
 - [Home/이번 검수](docs/HOME_FRONTEND.md). 이전 *_REVIEW는 당시 단계의 기록이다.
@@ -55,3 +55,5 @@ Home 수첩의 Single Player/Multiplayer/Settings는 기본 배경 박스를 없
 
 
 현재 Exploration Foundation 1: 하나의 Torch로 손/설치 광원, 초반 Compass, 제작대 지정 Home/동굴 Exit 안내, 청크 경계4unit retention·비활성 지형 LRU24·2.5ms 목표 row sampler를 제공한다. Save8/Protocol9이며 generation2 지형과 legacy generation1을 유지한다. [탐험 정본](docs/EXPLORATION_FOUNDATION.md)과 [검수/성능 수치](docs/EXPLORATION_REVIEW.md)를 따른다. WB III/실제 hands-free Lantern/지도/출시 progression은 아직 없다.
+
+현재 Workbench I–II Content Expansion: [전체 제작·예산 정본](docs/CONTENT_EXPANSION.md), [음식·낚시·물부대](docs/FOOD_AND_FISHING.md), [검수](docs/CONTENT_EXPANSION_REVIEW.md). Save9/Protocol10. III/Diamond/전문 제작대·포탑은 미구현이다.

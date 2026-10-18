@@ -1,7 +1,7 @@
 using UnityEngine;
 namespace Wildfolk
 {
-    public enum ArmorSlot { Body, Head }
+    public enum ArmorSlot { Body, Head, Utility }
     [CreateAssetMenu(menuName="Wildfolk/Armor")]
     public sealed class ArmorDefinition : ScriptableObject
     {

@@ -26,7 +26,7 @@ namespace Wildfolk
             Phase=WorldSeeds.Unit(seed,SeedDomain.Hydrology)*6.28f;LakeCenter=new Vector2(-1100+WorldSeeds.Unit(seed,SeedDomain.Hydrology,1)*180,-850);
             coastPhase=WorldSeeds.Unit(seed,SeedDomain.Continental)*6.28f;
             var angle=(WorldSeeds.Unit(seed,SeedDomain.Biome)-.5f)*1.1f;ForestAnchor=new Vector2(Mathf.Cos(angle)*210,Mathf.Sin(angle)*210);RockyAnchor=new Vector2(-650,-80+WorldSeeds.Unit(seed,SeedDomain.Terrain)*160);SedimentAnchor=new Vector2(RiverAt(100)+7,100);
-            Biomes=new SurfaceBiomeRegions(this,data);GenerateAnchors();GenerateRoads();WorldProgressionSupply.Build(this,data);if(validateGeneration)WorldGenerationValidator.Validate(this,data);
+            Biomes=new SurfaceBiomeRegions(this,data);GenerateAnchors();GenerateRoads();WorldProgressionSupply.Build(this,data);WorldProgressionSupply.Supplement(this,data);if(validateGeneration)WorldGenerationValidator.Validate(this,data);
         }
         public bool Underground(Vector2 p)=>p.x>Size.x;
         public CavernNetwork CaveAt(Vector2 p){CavernNetwork best=null;float d=float.MaxValue;foreach(var c in Caves){var n=(c.Origin-p).sqrMagnitude;if(n<d){d=n;best=c;}}return best;}
@@ -77,7 +77,7 @@ namespace Wildfolk
         public List<ResourcePlacement> GenerateChunk(WorldChunk chunk)
         {
             var result=new List<ResourcePlacement>();var origin=chunk.Origin(data.ChunkSize);
-            foreach(var p in GuaranteedResources)if(WorldChunk.At(p.Position,data.ChunkSize).Equals(chunk))result.Add(p);
+            foreach(var p in GuaranteedResources)if(!p.Id.StartsWith("e") && WorldChunk.At(p.Position,data.ChunkSize).Equals(chunk))result.Add(p);
             for(var phase=0;phase<2;phase++)for(var rule=0;rule<data.NaturalSources.Length;rule++)
             {
                 var source=data.NaturalSources[rule];if(!source.Enabled || source.ResourceRule<0 || source.NaturalRecovery!=(phase==1))continue;var rng=new System.Random(WorldSeeds.Derive(seed,source.NaturalRecovery ? SeedDomain.Vegetation : SeedDomain.Resource,chunk.X,chunk.Y,WorldSeeds.StableText(source.SourceId)));
@@ -87,6 +87,7 @@ namespace Wildfolk
                     var clear=true;foreach(var r in result)if((r.Position-p).sqrMagnitude<source.MinimumSpacing*source.MinimumSpacing){clear=false;break;}if(!clear)continue;
                     result.Add(new ResourcePlacement(source.ResourceRule,p,Mathf.Lerp(.9f,1.1f,(float)rng.NextDouble()),"c"+chunk.X+":"+chunk.Y+":"+source.SourceId+":"+i));}
             }
+            foreach(var p in GuaranteedResources)if(p.Id.StartsWith("e") && WorldChunk.At(p.Position,data.ChunkSize).Equals(chunk))result.Add(p);
             return result;
         }
         private void GenerateAnchors()

@@ -8,7 +8,7 @@ namespace Wildfolk
         public GameObject LeftEnd,RightEnd;
         private static readonly List<WallVisual> active=new List<WallVisual>();
         private readonly Collider2D[] neighbors=new Collider2D[24];
-        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]private static void Reset()=>active.Clear();
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]private static void ResetRegistry()=>active.Clear();
         private void OnEnable(){active.Add(this);RefreshNearby(transform.position);}
         private void OnDisable(){active.Remove(this);RefreshNearby(transform.position);}
         public static void RefreshNearby(Vector2 position){Physics2D.SyncTransforms();foreach(var wall in active)if(wall!=null && Vector2.Distance(wall.transform.position,position)<6)wall.Refresh();}

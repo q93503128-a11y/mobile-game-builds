@@ -94,3 +94,7 @@ SP 임시 파일 저장·Load와 Local Host 임시 파일 저장→Leave→재Ho
 ## 탐험 장비 연결
 
 이번 확장에서 Wood1+Coal1→Torch4(Hand), Wood2+Iron Ingot1→Compass1(WB I)을 추가했다. Coal의 기존 Stone Pickaxe gate와 WB I→II/금속 처리/Steel은 유지한다. WB III/Diamond 실제 진행은 이번에도 없다. [탐험 정본](EXPLORATION_FOUNDATION.md).
+
+## Workbench I–II Content Expansion (2026-10-18)
+
+Workbench I~II 콘텐츠 확장으로 Bronze9종 지속 사용처와 Feather 탄약 소비를 제공한다. Steel Bolt를 포함한 1인/4인 광물 필수·선택·안전 여유 표는 [CONTENT_EXPANSION](CONTENT_EXPANSION.md)이 현재 정본이다. III/Diamond 비용은 넣지 않았다.
