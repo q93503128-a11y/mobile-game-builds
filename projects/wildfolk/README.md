@@ -2,7 +2,7 @@
 
 표시 이름은 **Lowfire**다. 내부 Wildfolk namespace, projects/wildfolk 경로와 기존 저장/설정 식별자는 유지한다. 이번 변경은 전체 프로젝트 rename이 아니다.
 
-Unity **6000.3.19f1 LTS / Universal 2D**, 모바일 Landscape(기준1920×1080) 탑다운 생존 게임의 초기 플레이 버전이다. 현재 Seed 월드, 낮 채집/시설/장비 업그레이드, Goblin 무리·작은 Camp,밤 Zombie/Skeleton, 물 용기와 생존, Save/Load v7(v1~v6 호환)을 제공한다. 최종 아트·월드 생성·출시 밸런스가 아니다.
+Unity **6000.3.19f1 LTS / Universal 2D**, 모바일 Landscape(기준1920×1080) 탑다운 생존 게임의 초기 플레이 버전이다. 현재 Seed 월드, 낮 채집/시설/장비 업그레이드, Goblin 무리·작은 Camp,밤 Zombie/Skeleton, 물 용기와 생존, Save/Load v8(v1~v7 호환)을 제공한다. 최종 아트·월드 생성·출시 밸런스가 아니다.
 
 ![플레이 화면](docs/images/world-v2/01-default-grassland.png)
 
@@ -26,7 +26,7 @@ Zombie는 밤에 올라와 활동하고 새벽에는 보상 없이 잠복한다.
 
 ## 정본과 검증
 
-- 실제 Item48종, Recipe36종, Equipment Tier4종, Surface Biome4종이다.
+- 실제 Item50종, Recipe38종, Equipment Tier4종, Surface Biome4종이다.
 - [기획](docs/DESIGN_BIBLE.md), [월드](docs/WORLD_GENERATION.md), [저장](docs/SAVE_PERSISTENCE.md), [전투/이동](docs/COMBAT_NAVIGATION.md), [수치](docs/BALANCE.md), [제작](docs/CRAFTING.md), [가방](docs/INVENTORY.md), [구조](docs/ARCHITECTURE.md).
 - [Developer Tools](docs/DEVELOPER_TOOLS.md)는 Editor 전용이며 게임 HUD/Release에 노출되지 않는다.
 - [Home/이번 검수](docs/HOME_FRONTEND.md). 이전 *_REVIEW는 당시 단계의 기록이다.
@@ -51,4 +51,7 @@ Home 수첩의 Single Player/Multiplayer/Settings는 기본 배경 박스를 없
 
 현재 금속 진행은 Wood→Stone→Iron→Steel 장비와 Workbench I(Iron까지) / II(post-Iron 기술)다. Copper는 Iron Pickaxe, Coal은 Stone Pickaxe, 수변 Tin은 II에서 Copper로 만든 Prospecting Pan을 요구한다. Bronze 부품으로 별도 Blast Furnace를 제작해 Steel을 처리하며 기존 Furnace는 저단계 제련·Bronze를 담당한다. Reinforced Chest36과 가변 스크롤 UI, Save v6의 구 Chest/Steel cargo 이관을 제공한다. III~VI는 미구현이다. 지상4종/Caverns 기반은 WORLD_GENERATION 정본을 따른다. [진행과 이번 실제 MCP 검수](docs/METAL_PROGRESSION.md)를 따른다. 실제 연결된 Unity Game View에서 채집·제작·가공·장착·상자·SP Load·Local Host 재Host를 확인했으며 물리 기기/새 Protocol7 remote Relay 검수는 별도다.
 
-현재 World Foundation v2: 신규 대륙/4 Surface Biome/수계/동굴 graph/청크 sleep state/광물 고갈/Save7·Protocol8. [정본](docs/WORLD_GENERATION.md)과 [이번 검수](docs/WORLD_FOUNDATION_REVIEW.md)를 따른다. 위 이전 패스 검수의 v6/Protocol7은 당시 기록이다.
+직전 World Foundation v2: 신규 대륙/4 Surface Biome/수계/동굴 graph/청크 sleep state/광물 고갈/Save7·Protocol8. [정본](docs/WORLD_GENERATION.md)과 [이번 검수](docs/WORLD_FOUNDATION_REVIEW.md)를 따른다. 위 이전 패스 검수의 v6/Protocol7은 당시 기록이다.
+
+
+현재 Exploration Foundation 1: 하나의 Torch로 손/설치 광원, 초반 Compass, 제작대 지정 Home/동굴 Exit 안내, 청크 경계4unit retention·비활성 지형 LRU24·2.5ms 목표 row sampler를 제공한다. Save8/Protocol9이며 generation2 지형과 legacy generation1을 유지한다. [탐험 정본](docs/EXPLORATION_FOUNDATION.md)과 [검수/성능 수치](docs/EXPLORATION_REVIEW.md)를 따른다. WB III/실제 hands-free Lantern/지도/출시 progression은 아직 없다.

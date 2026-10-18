@@ -218,6 +218,7 @@ MonoBehaviour:
   Fern: {fileID: 21300000, guid: b43621cdb441dc64ab0d1257e575558e, type: 3}
   Renewal: {fileID: 4456147602622536825}
   Animals: {fileID: 3120962446745633437}
+  PoiSprites: []
   GenerateOnAwake: 0
 --- !u!114 &5498284721663869418
 MonoBehaviour:
@@ -434,6 +435,8 @@ MonoBehaviour:
     NetworkPrefab: {fileID: 1995647778862881807, guid: ac1e50bdb7247c4478c2b841c3fa1c1a, type: 3}
   - Source: {fileID: 1695445328312933717, guid: 4ae1cf8ce06fe3c4089a43aae1dc197e, type: 3}
     NetworkPrefab: {fileID: 1122866390087317063, guid: 6ac4df2809aa09e45bc28f8903d5c076, type: 3}
+  - Source: {fileID: 8769207439250950318, guid: 0958d9ea19da63048b7e3e49cd755895, type: 3}
+    NetworkPrefab: {fileID: 2041546589082768209, guid: 86b0fb104c2363845888d7f658e9c0f1, type: 3}
   Catalog: {fileID: 11400000, guid: edf4df5213dc0bf4e96917b39fb19914, type: 2}
   World: {fileID: 4496810478940515493}
   Clock: {fileID: 2554870917964472763}

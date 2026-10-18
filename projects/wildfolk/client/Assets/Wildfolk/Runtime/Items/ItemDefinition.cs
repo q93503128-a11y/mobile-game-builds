@@ -18,6 +18,9 @@ namespace Wildfolk
         public ConsumableDefinition Consumable;
         public ArmorDefinition Armor;
         public WaterContainerDefinition Container;
+        public GameplayLightDefinition PortableLight;
+        public Sprite HeldSprite;
+        public bool NavigationInstrument;
         public LiquidState Liquid;
         public EquipmentTier Tier => Tool!=null ? Tool.Tier : Placement!=null ? Placement.Tier : Armor!=null ? Armor.Tier : null;
     }

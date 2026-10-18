@@ -120,3 +120,7 @@ Multiplayer Foundation 3는 Host 권위 Resource/Harvest/Recovery→공통 Groun
 ## Workbench progression / 초기 금속 현재 범위
 
 구조적 일반 제작대 cap은 VI, 현재 실제 플레이는 I~II다. III~VI 실제 비용·Recipe는 미정이며 빈 Tier 진입/placeholder UI를 만들지 않는다. 비용은 임의 길이 목록으로 후반 요구 종류 수 증가를 지원한다. 자연 자원은 월드에 처음부터 존재하고 기술은 채굴·가공·사용을 제한한다. Copper/Tin/Coal과 주괴/Bronze/Steel을 실제 제공한다. 기존 Iron·Hand/Workbench/Furnace/Campfire 역할은 유지한다. Wood→Stone→Iron→Steel 장비 진행을 제공한다. Copper를 활용한 Prospecting Pan으로 수변 Tin을 얻고 Bronze 부품으로 실제 Blast Furnace를 제작해 Steel을 처리한다. Copper/Tin/Bronze 풀 세트는 없다. II에서도 Wood/Stone/Leather/Iron을 계속 사용한다. 현재 환경 tag/Source 기반 분포와 비재생 광물은 WORLD_GENERATION을 따른다. 상세 정본은 METAL_PROGRESSION이다.
+
+## 탐험 기반 현재 구현
+
+초기 Stone 단계의 Coal+Wood 묶음 Torch는 하나의 item으로 손 광원/협동 설치를 겸한다. WB I의 Compass를 가방에 지니면 북쪽과 지정 제작대 Home을 안내한다. 동굴에서는 Exit 방향으로 전환한다. 동굴은 완전 검정 대신 입구→심부 밝기 단계와 가까운 시야를 유지한다. 손 점유 없는 광원은 확장 hook만 있으며 실제 Lantern/Map/WB III/출시 progression은 미구현이다. [정본](EXPLORATION_FOUNDATION.md).

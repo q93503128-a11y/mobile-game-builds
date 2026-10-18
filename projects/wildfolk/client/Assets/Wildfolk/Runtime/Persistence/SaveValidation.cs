@@ -10,7 +10,7 @@ namespace Wildfolk
         private static bool Finite(double value)=>!double.IsNaN(value) && !double.IsInfinity(value);
         public static void Validate(SavedGame game,ContentCatalog catalog,WorldGenerationDefinition definition,AnimalPopulationDefinition animals,int playerCapacity,int maximumHP,SurvivalDefinition survival,CharacterGrowthDefinition growth,LocomotionDefinition locomotion)
         {
-            Require(game!=null && game.Version>=2 && game.Version<=7,"Unsupported save version");Require(Finite(game.Elapsed) && game.Elapsed>=0,"Invalid world time");
+            Require(game!=null && game.Version>=2 && game.Version<=8,"Unsupported save version");Require(Finite(game.Elapsed) && game.Elapsed>=0,"Invalid world time");
             var map=new WorldMap(definition,game.Seed,game.BaseGenerationVersion,false);var player=game.Player;
             ValidatePlayer(player,map,catalog,playerCapacity,maximumHP,survival,growth,locomotion,game.IsMultiplayer);
             Require(game.Resources!=null && game.Animals!=null && game.Placeables!=null && game.Pickups!=null,"Missing world state");
@@ -71,7 +71,7 @@ namespace Wildfolk
         }
         public static void ValidatePlayer(PlayerSnapshot player,WorldMap map,ContentCatalog catalog,int playerCapacity,int maximumHP,SurvivalDefinition survival,CharacterGrowthDefinition growth,LocomotionDefinition locomotion,bool allowDead=false)
         {
-            Require(player!=null,"Missing player");GrowthValidation.Validate(player.Growth,growth,player.XP);
+            Require(player!=null,"Missing player");Require(string.IsNullOrEmpty(player.HomeId) || System.Text.Encoding.UTF8.GetByteCount(player.HomeId)<=61,"Invalid home reference");GrowthValidation.Validate(player.Growth,growth,player.XP);
             var hpBonus=Mathf.RoundToInt(GrowthValidation.Bonus(player.Growth,growth,SkillEffect.MaximumHealth));
             Require((allowDead ? player.HP>=0 : player.HP>0) && player.HP<=maximumHP+hpBonus && player.Selected>=0 && player.Selected<playerCapacity,"Invalid player");
             var staminaMax=locomotion.MaximumStamina+GrowthValidation.Bonus(player.Growth,growth,SkillEffect.MaximumStamina);

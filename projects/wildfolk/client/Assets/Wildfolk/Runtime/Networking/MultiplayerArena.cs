@@ -18,6 +18,7 @@ namespace Wildfolk
         public void BindLocal(NetworkPlayer player)
         {
             LocalPlayer=player;Follow.Target=player.transform;Joystick.Session=player.Commands.Session;player.GetComponent<PlayerInputAdapter>().Joystick=Joystick;Joystick.gameObject.SetActive(true);DashButton.interactable=true;
+            var light=FindFirstObjectByType<WorldLighting>();if(light!=null)light.Player=player.transform;
             InventoryUi.Bind(player);player.Health.Changed+=RefreshHealth;RefreshText();
         }
         public void Dash(){if(LocalPlayer!=null)LocalPlayer.Commands.Dash();}

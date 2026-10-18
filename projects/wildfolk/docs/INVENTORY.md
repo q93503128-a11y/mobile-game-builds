@@ -33,3 +33,7 @@ Foundation5는 Host의 v5 파일에 식별자별 Inventory/선택/장비/HP·생
 총 Item48종이다. Copper Ore/Tin Ore/Coal/Copper Ingot/Tin Ingot/Bronze/Steel은 각각50 Stack 재료다. 기존 Iron IDs/36·9 슬롯/Chest24·36/장착/드랍/소분을 유지한다. 합금의 모든 입력은 한 transaction으로 예약되며 하나라도 부족하면 소비0, output 공간 부족이면 cargo 유지다. SP 저장 복원과 Host 저장·재Host의 새 재료·예약 queue 검사는 METAL_PROGRESSION을 따른다.
 
 2026-10-18 소분 계층 교정: 상자 재생성 순서와 무관하게 Split/Item Actions를 열 때 현재 UI 위에 올린다. Ghost/Drop Zone/Held Cancel도 사용 시 앞에 표시한다. 소분 모델/Host revision/예약 전 원본 보존 규칙은 동일하다. 실제 MCP raycast/확인/15+15와 focused pointer fixture로 검증했다.
+
+## 탐험 아이템
+
+Torch는 기존 Hotbar 선택/held appearance/Primary placement를 쓴다. 선택하면 다른 손 도구는 사용하지 않으며 선택 해제로 portable light도 꺼진다. Compass는 손 선택과 무관하게 가방 어느 슬롯에 지니면 작은 navigation HUD를 보인다. 기존36칸/Hotbar9/Chest24·36/분할·이동·드랍을 유지한다. 무제한 waypoint/minimap은 없다. [탐험](EXPLORATION_FOUNDATION.md).

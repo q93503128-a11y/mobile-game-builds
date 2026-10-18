@@ -1,5 +1,7 @@
 # World Generation / Biome Foundation v2
 
+2026-10-18 현재: generation2 지형 유지 / **Save8 / Protocol9**, Item50 / Recipe38. Torch·Compass·제작대 Home·동굴 Exit·제한 지형 cache/분할 생성을 제공한다. [탐험 정본](EXPLORATION_FOUNDATION.md)과 [실제 검수/성능](EXPLORATION_REVIEW.md)를 따른다. 아래 이전 날짜/Version 설명은 각 단계의 기록이다.
+
 2026-10-17. 표시명 Lowfire / 내부 Wildfolk. 신규 BaseGenerationVersion2 / Save7 / Protocol8. Item48, Recipe36, 장비 Tier4 유지.
 
 ## 크기 / 생성
@@ -78,3 +80,7 @@ Save7:Root Seed/BaseGenerationVersion/g·c·p deltas/비재생 tombstone/멀리 
 결과는 [WORLD_FOUNDATION_REVIEW](WORLD_FOUNDATION_REVIEW.md)에 기록한다. fixture의 순간 이동/재료 지급/시간 전진은 자연 진행과 구분한다. 모바일/remote Relay/4인 stress/장시간 탐험·부족도·성능은 미확인이다.
 
 Workbench III/Diamond progression/IV~VI/새 biome·섬·Boat/Torch·Lantern gameplay/지도·Compass·HomeMarker·waypoint·팀 위치는 후속이다. 미래 확장은 additive content/unexplored backfill/외곽 확장/새 지하 layer와 별도 version을 검토하며 기존 base terrain을 자동 교체하지 않는다.
+
+## Exploration Foundation 1 확장 (2026-10-18)
+
+현재 Save8/Protocol9. 위 v2 생성 알고리즘·Seed domain·자원 ID는 바꾸지 않았다. [탐험 정본](EXPLORATION_FOUNDATION.md)에 조명/Compass/Home, 중앙 scheduler의4unit hysteresis, 지형 row 분할2.5ms 목표/LRU24를 기록했다. 안정된1/2/4지역9/18/36, 경계 retention 최대16/player·4인64다. 이전 단락의 매번 texture 폐기/1인9 고정 설명은 이 확장 이전 기록이다. 측정값/단말 한계는 [검수](EXPLORATION_REVIEW.md)를 따른다.

@@ -64,7 +64,7 @@ namespace Wildfolk
             if(IsServer)return combat.TryAttack();AttackRpc();return true;}
         [Rpc(SendTo.Server,InvokePermission=RpcInvokePermission.Owner)]
         private void AttackRpc(RpcParams rpc=default)
-        {if(rpc.Receive.SenderClientId==OwnerClientId && Health.IsAlive)combat.TryAttack();}
+        {if(rpc.Receive.SenderClientId==OwnerClientId && Health.IsAlive && Equipment.ActivePlaceable==null)combat.TryAttack();}
         private void PublishDenial(ResourceDefinition resource)
         {
             if(Time.unscaledTime<nextDenial)return;nextDenial=Time.unscaledTime+2.5f;

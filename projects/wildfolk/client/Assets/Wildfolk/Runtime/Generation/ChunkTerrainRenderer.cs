@@ -1,21 +1,73 @@
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 namespace Wildfolk
 {
     public sealed partial class WorldTerrainRenderer
     {
-        private sealed class TerrainTile {public Texture2D Texture;public Sprite Sprite;}
+        private sealed class TerrainTile
+        {
+            public Texture2D Texture;public Sprite Sprite;public SpriteRenderer Renderer;
+            public WorldChunk Key;public WorldMap Map;public int Row;public Color32[] Colors;
+        }
+        public const int InactiveCacheCapacity=24;
         private readonly Dictionary<WorldChunk,TerrainTile> tiles=new Dictionary<WorldChunk,TerrainTile>();
+        private readonly Dictionary<WorldChunk,TerrainTile> cache=new Dictionary<WorldChunk,TerrainTile>();
+        private readonly LinkedList<WorldChunk> lru=new LinkedList<WorldChunk>();
+        private readonly LinkedList<TerrainTile> work=new LinkedList<TerrainTile>();
         public int TerrainTileCount=>tiles.Count;
+        public int CachedTileCount=>cache.Count;
+        public int TerrainWorkCount=>work.Count;
+        public int CacheHits {get;private set;}
+        public int GeneratedTiles {get;private set;}
+        public double LastTerrainSliceMs {get;private set;}
+        public double MaximumTerrainSliceMs {get;private set;}
+        public long TerrainTextureBytes
+        {get{long count=0;foreach(var t in tiles.Values)if(t.Texture!=null)count+=UnityEngine.Profiling.Profiler.GetRuntimeMemorySizeLong(t.Texture);foreach(var t in cache.Values)count+=UnityEngine.Profiling.Profiler.GetRuntimeMemorySizeLong(t.Texture);return count;}}
         public void BuildChunk(WorldMap map,WorldChunk chunk,Transform parent)
         {
-            var pixels=map.Definition.ChunkTexturePixels;var edge=pixels+2;var texture=new Texture2D(edge,edge,TextureFormat.RGB24,false){name="Local landscape",filterMode=FilterMode.Bilinear,wrapMode=TextureWrapMode.Clamp};var colors=new Color32[edge*edge];var origin=chunk.Origin(map.Definition.ChunkSize);var step=(float)map.Definition.ChunkSize/pixels;
-            // One-texel halo samples the same world coordinates as the neighboring tile.
-            for(var y=0;y<edge;y++)for(var x=0;x<edge;x++)colors[y*edge+x]=SampleContinental(map,origin+new Vector2(x-.5f,y-.5f)*step);
-            texture.SetPixels32(colors);texture.Apply(false,true);var sprite=Sprite.Create(texture,new Rect(1,1,pixels,pixels),Vector2.zero,1/step);var go=new GameObject("Terrain");go.transform.SetParent(parent,false);go.transform.position=origin;var sr=go.AddComponent<SpriteRenderer>();sr.sharedMaterial=Ground.sharedMaterial;sr.sprite=sprite;sr.sortingOrder=WorldSorting.Ground;tiles[chunk]=new TerrainTile{Texture=texture,Sprite=sprite};
+            if(tiles.ContainsKey(chunk))return;
+            TerrainTile tile;
+            if(cache.TryGetValue(chunk,out tile)){cache.Remove(chunk);lru.Remove(chunk);CacheHits++;}
+            else tile=new TerrainTile{Map=map,Key=chunk};
+            var go=new GameObject("Terrain");go.transform.SetParent(parent,false);go.transform.position=chunk.Origin(map.Definition.ChunkSize);
+            var sr=go.AddComponent<SpriteRenderer>();sr.sharedMaterial=Ground.sharedMaterial;sr.sortingOrder=WorldSorting.Ground;sr.sprite=tile.Sprite;tile.Renderer=sr;tiles.Add(chunk,tile);
+            if(tile.Texture==null)work.AddLast(tile);
         }
-        public void ReleaseChunk(WorldChunk key){if(!tiles.TryGetValue(key,out var tile))return;Destroy(tile.Sprite);Destroy(tile.Texture);tiles.Remove(key);}
-        private void ClearChunks(){foreach(var tile in tiles.Values){Destroy(tile.Sprite);Destroy(tile.Texture);}tiles.Clear();}
+        // Sample whole rows under a frame budget; upload only one small texture when its rows finish.
+        public void ProcessTerrainWork(double budgetMilliseconds)
+        {
+            var watch=Stopwatch.StartNew();
+            while(work.First!=null)
+            {
+                var t=work.First.Value;var pixels=t.Map.Definition.ChunkTexturePixels;var edge=pixels+2;
+                if(t.Colors==null)t.Colors=new Color32[edge*edge];
+                var origin=t.Key.Origin(t.Map.Definition.ChunkSize);var step=(float)t.Map.Definition.ChunkSize/pixels;
+                for(var x=0;x<edge;x++)t.Colors[t.Row*edge+x]=SampleContinental(t.Map,origin+new Vector2(x-.5f,t.Row-.5f)*step);
+                t.Row++;
+                if(t.Row==edge)
+                {
+                    t.Texture=new Texture2D(edge,edge,TextureFormat.RGB24,false){name="Local landscape",filterMode=FilterMode.Bilinear,wrapMode=TextureWrapMode.Clamp};
+                    t.Texture.SetPixels32(t.Colors);t.Texture.Apply(false,true);t.Colors=null;
+                    t.Sprite=Sprite.Create(t.Texture,new Rect(1,1,pixels,pixels),Vector2.zero,1/step);
+                    if(t.Renderer!=null)t.Renderer.sprite=t.Sprite;work.RemoveFirst();GeneratedTiles++;
+                }
+                if(watch.Elapsed.TotalMilliseconds>=budgetMilliseconds)break;
+            }
+            watch.Stop();LastTerrainSliceMs=watch.Elapsed.TotalMilliseconds;if(!double.IsPositiveInfinity(budgetMilliseconds))MaximumTerrainSliceMs=System.Math.Max(MaximumTerrainSliceMs,LastTerrainSliceMs);
+        }
+        public void ReleaseChunk(WorldChunk key)
+        {
+            if(!tiles.TryGetValue(key,out var tile))return;tiles.Remove(key);tile.Renderer=null;
+            if(tile.Texture==null){work.Remove(tile);tile.Colors=null;return;}
+            cache.Add(key,tile);lru.AddLast(key);
+            while(cache.Count>InactiveCacheCapacity){var oldest=lru.First.Value;lru.RemoveFirst();var old=cache[oldest];Destroy(old.Sprite);Destroy(old.Texture);cache.Remove(oldest);}
+        }
+        private void ClearChunks()
+        {
+            foreach(var t in tiles.Values){if(t.Sprite!=null)Destroy(t.Sprite);if(t.Texture!=null)Destroy(t.Texture);}
+            foreach(var t in cache.Values){Destroy(t.Sprite);Destroy(t.Texture);}tiles.Clear();cache.Clear();lru.Clear();work.Clear();CacheHits=GeneratedTiles=0;LastTerrainSliceMs=MaximumTerrainSliceMs=0;
+        }
         public static Color SampleContinental(WorldMap map,Vector2 p)
         {
             var layout=map.Continental;var e=layout.Environment(p);var grain=WorldSeeds.Field(map.Seed,SeedDomain.Vegetation,p,1.8f);

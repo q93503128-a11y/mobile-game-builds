@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea85a5ebaf6f62646a87d747548e1a2f, type: 3}
+  m_Name: TorchPlaceable
+  m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.PlaceableDefinition
+  Item: {fileID: 11400000, guid: 50df494cb3c442b478a85bf768889d80, type: 2}
+  Prefab: {fileID: 5067015521679372732, guid: 0958d9ea19da63048b7e3e49cd755895, type: 3}
+  Vitality: {fileID: 11400000, guid: 3845ab3173fed244fa71d44e1f2f86e2, type: 2}
+  Footprint: {x: 0.5, y: 0.5}
+  MaximumDistance: 3.5
+  Station: 0
+  Tier: {fileID: 0}
+  IsBarrier: 0
+  IsDoor: 0
+  StorageSlots: 0
+  ParallelCapacity: 1
+  ProcessingMode: 0
+  InputCapacity: 50
+  OutputCapacity: 100
+  ProcessingSpeed: 1
+  WorkbenchTier: 1
+  TierVisual: {fileID: 0}
+  TierDisplayKey:
+  UpgradeTo: {fileID: 0}
+  UpgradeCosts: []

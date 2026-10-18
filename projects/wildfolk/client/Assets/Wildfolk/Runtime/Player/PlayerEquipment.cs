@@ -75,12 +75,13 @@ namespace Wildfolk
         private void ShowHeldItem(ItemDefinition item)
         {
             var next = item==null ? null : item.Tool;
-            if (item == SelectedItem && next == ActiveTool && HeldVisual.enabled == (next != null)) return;
+            if (item == SelectedItem && next == ActiveTool && HeldVisual.enabled == (next != null || item!=null && item.HeldSprite!=null)) return;
             Combat.CancelAttack();
             SelectedItem = item;
             ActiveTool = next;
-            HeldVisual.sprite = ActiveTool == null ? null : ActiveTool.HeldSprite;
-            HeldVisual.enabled = ActiveTool != null;
+            HeldVisual.transform.localRotation=Quaternion.identity;
+            HeldVisual.sprite = item!=null && item.HeldSprite!=null ? item.HeldSprite : ActiveTool == null ? null : ActiveTool.HeldSprite;
+            HeldVisual.enabled = HeldVisual.sprite!=null;
             Changed?.Invoke();
         }
     }

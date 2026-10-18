@@ -58,3 +58,7 @@ Furnace sequential queue와 Campfire Meat/Raw→Clean Cup Batch는 기존 Statio
 ## 초기 금속 진행
 
 정본은 [METAL_PROGRESSION](METAL_PROGRESSION.md)이다. I은 Iron까지, II는 Pan/Blast Furnace/Steel 장비다. Furnace는 Iron/Copper/Tin/Bronze, Blast Furnace는 Steel, Campfire는 음식·물을 담당한다. 반경 Workbench 지원 gate는 제거했다. 자연 자원 생성은 제작대와 독립이다. 비용은 임의 길이 ScrollRect, 현재 I→II는 Wood8+Stone6+Iron2다. III는 미구성이라 진입할 수 없다.
+
+## 탐험 제작 추가
+
+Hand Torch4 = Wood1+Coal1. WB I Compass1 = Wood2+Iron Ingot1. 기존 Coal은 Stone Pickaxe부터이며 WB II/III를 요구하지 않는다. 현재 Item50/Recipe38. Torch는 portable/placed 공통 item이며 별도 recipe나 Lantern placeholder는 없다. 제작대 화면의 `Set as home`은 가까운 해당 제작대를 개인 귀환 기준으로 지정한다. [탐험 정본](EXPLORATION_FOUNDATION.md).

@@ -41,7 +41,7 @@ namespace Wildfolk
             var half = footprint*.5f;
             var bounds = Terrain!=null && Terrain.World.Map.Streamed ? Terrain.World.Map.RegionBounds(position) : Ground.bounds;
             if (!bounds.Contains(position-half) || !bounds.Contains(position+half)) return false;
-            if(Terrain!=null && (Terrain.Surface(position)!=TerrainSurface.Land || Terrain.Surface(position-half)!=TerrainSurface.Land || Terrain.Surface(position+half)!=TerrainSurface.Land))return false;
+            if(Terrain!=null)for(var y=-1;y<=1;y++)for(var x=-1;x<=1;x++){var sample=position+new Vector2(half.x*x,half.y*y);if(Terrain.Surface(sample)!=TerrainSurface.Land || !Terrain.World.Map.IsWalkable(sample,0))return false;}
             var filter = new ContactFilter2D { useTriggers = true };
             return Physics2D.OverlapBox(position, definition.Footprint, angle, filter, overlaps) == 0;
         }
@@ -53,10 +53,9 @@ namespace Wildfolk
             var definition = Equipment.ActivePlaceable;
             var position = (Vector2)transform.position + Facing.Direction * Settings.PlacementDistance;
             if (!CanPlaceAt(definition, position)) return false;
-            var placed = Instantiate(definition.Prefab, position, RotationFor(definition));
-            if (Inventory.Model.ConsumeSlot(Inventory.SelectedIndex, definition.Item, 1)) return true;
-            Destroy(placed.gameObject);
-            return false;
+            WorldPlaceable placed=null;
+            try{return Inventory.Model.TryDropSlot(Inventory.SelectedIndex,definition.Item,1,()=>{placed=Instantiate(definition.Prefab,position,RotationFor(definition));return placed!=null;});}
+            catch(System.Exception){if(placed!=null)Destroy(placed.gameObject);return false;}
         }
     }
 }

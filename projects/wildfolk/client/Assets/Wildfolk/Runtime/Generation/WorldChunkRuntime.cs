@@ -13,7 +13,7 @@ namespace Wildfolk
         private readonly List<WorldChunk> retiring=new List<WorldChunk>();
         private readonly List<Vector2> centers=new List<Vector2>(4);
         private float nextTick;
-        private bool initialPresentation;
+        private readonly HashSet<WorldChunk> queued=new HashSet<WorldChunk>();
         public int ActiveCount=>active.Count;
         public int PendingCount=>pending.Count;
         public int WantedCount=>wanted.Count;
@@ -22,26 +22,27 @@ namespace Wildfolk
         public bool Wants(Vector2 p)=>wanted.Contains(WorldChunk.At(p,World.Definition.ChunkSize));
         public void Initialize(WorldGenerator world)
         {
-            World=world;foreach(var root in active.Values)if(root!=null)Destroy(root);active.Clear();wanted.Clear();pending.Clear();sleepingPlaces.Clear();sleepingPickups.Clear();features.Clear();nextTick=0;initialPresentation=true;enabled=true;
+            World=world;foreach(var root in active.Values)if(root!=null)Destroy(root);active.Clear();wanted.Clear();pending.Clear();sleepingPlaces.Clear();sleepingPickups.Clear();features.Clear();nextTick=0;enabled=true;
         }
         private void Update()
         {
             if(World==null || World.Map==null || !World.Map.Streamed)return;
             if(Time.unscaledTime>=nextTick){nextTick=Time.unscaledTime+.25f;Reconcile();}
-            if(initialPresentation){initialPresentation=false;DrainPending();return;}
+
             if(pending.Count>0){var key=pending.Dequeue();if(wanted.Contains(key) && !active.ContainsKey(key))Activate(key);}
+            World.Terrain.ProcessTerrainWork(2.5);
         }
         public void Reconcile()
         {
             centers.Clear();var authority=SimulationAuthority.Allows(World);
             if(NetworkCreatureWorld.Active!=null){foreach(var p in NetworkPlayer.Active)if(p.IsSpawned && p.Health.IsAlive && (authority || p.IsOwner && p.NetworkObject.IsPlayerObject))centers.Add(p.transform.position);}
             if(centers.Count==0 && World.Player!=null)centers.Add(World.Player.transform.position);
-            wanted.Clear();foreach(var center in centers){var current=WorldChunk.At(center,World.Definition.ChunkSize);wanted.Add(current);for(var y=-1;y<=1;y++)for(var x=-1;x<=1;x++){var key=new WorldChunk(current.X+x,current.Y+y);if(World.Map.Continental.ContainsChunk(key))wanted.Add(key);}}
+            ChunkActivation.Build(World.Map,centers,active.Keys,wanted);
             retiring.Clear();foreach(var pair in active)if(!wanted.Contains(pair.Key))retiring.Add(pair.Key);foreach(var key in retiring)Deactivate(key);
-            pending.Clear();foreach(var center in centers){var key=WorldChunk.At(center,World.Definition.ChunkSize);if(wanted.Contains(key) && !active.ContainsKey(key))pending.Enqueue(key);}foreach(var key in wanted)if(!active.ContainsKey(key))pending.Enqueue(key);
+            pending.Clear();queued.Clear();foreach(var center in centers){var key=WorldChunk.At(center,World.Definition.ChunkSize);if(wanted.Contains(key) && !active.ContainsKey(key) && queued.Add(key))pending.Enqueue(key);}foreach(var key in wanted)if(!active.ContainsKey(key) && queued.Add(key))pending.Enqueue(key);
             if(authority){CullDistantObjects();World.Animals.StreamReconcile(this);World.GetComponent<GoblinSpawner>().StreamReconcile(this);World.GetComponent<ZombieSpawner>().StreamReconcile(this);if(NetworkCreatureWorld.Active!=null)WorldChunkInterest.Refresh(NetworkCreatureWorld.Active);}
         }
-        public void DrainPending(){var count=pending.Count;for(var i=0;i<count;i++){var key=pending.Dequeue();if(wanted.Contains(key) && !active.ContainsKey(key))Activate(key);}}
+        public void DrainPending(){var count=pending.Count;for(var i=0;i<count;i++){var key=pending.Dequeue();if(wanted.Contains(key) && !active.ContainsKey(key))Activate(key);}World.Terrain.ProcessTerrainWork(double.PositiveInfinity);}
         private void Activate(WorldChunk key)
         {
             var root=new GameObject("Landscape");root.transform.SetParent(World.Environment,false);active.Add(key,root);World.Terrain.BuildChunk(World.Map,key,root.transform);

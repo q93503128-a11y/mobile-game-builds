@@ -8,7 +8,7 @@ namespace Wildfolk
         {
             if(world.World.Map==null || !world.World.Map.Streamed || client==NetworkManager.ServerClientId)return true;
             foreach(var p in NetworkPlayer.Active)if(p.IsSpawned && p.OwnerClientId==client)
-            {var a=WorldChunk.At(p.transform.position,world.World.Definition.ChunkSize);var b=WorldChunk.At(position,world.World.Definition.ChunkSize);return Mathf.Abs(a.X-b.X)<=1 && Mathf.Abs(a.Y-b.Y)<=1;}return false;
+            {var b=WorldChunk.At(position,world.World.Definition.ChunkSize);return ChunkActivation.Retains(b,p.transform.position,world.World.Definition.ChunkSize);}return false;
         }
         public static void Refresh(NetworkCreatureWorld world)
         {

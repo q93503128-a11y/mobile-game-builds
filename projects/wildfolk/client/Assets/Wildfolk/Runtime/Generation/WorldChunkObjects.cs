@@ -9,6 +9,8 @@ namespace Wildfolk
         private readonly List<PickupSnapshot> sleepingPickups=new List<PickupSnapshot>();
         private readonly Dictionary<string,WorldFeatureSnapshot> features=new Dictionary<string,WorldFeatureSnapshot>();
         private readonly List<string> objectKeys=new List<string>();
+        public bool TryHome(string id,out Vector2 position)
+        {position=default;if(!sleepingPlaces.TryGetValue(id,out var state) || World.Definition.ProgressionCatalog.Item(state.Item).Placement.Station!=StationKind.Workbench || state.HP<=0)return false;position=state.Position;return true;}
         public PlaceableSnapshot[] DormantPlaces(){var result=new List<PlaceableSnapshot>();foreach(var s in sleepingPlaces.Values){AdvanceCargo(s,World.Renewal.Clock.Model.Elapsed);result.Add(s);}return result.ToArray();}
         public PickupSnapshot[] DormantPickups()=>sleepingPickups.ToArray();
         public WorldFeatureSnapshot[] CaptureFeatures()=>new List<WorldFeatureSnapshot>(features.Values).ToArray();

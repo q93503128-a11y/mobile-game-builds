@@ -40,3 +40,7 @@ tools/generate_metal_art.py의 결정적인 Pillow polygon 제작으로10개 PNG
 ## 2026-10-17 World Foundation v2
 
 tools/generate_world_art.py의 Pillow polygon으로 cave/ruin/well/quarry/graveyard/campsite/mine 7개 landmark PNG를 제작했다. 기존 자연색/윤곽/접촉 그림자 계열이며 외부 게임 Asset이나 이미지 생성 모델을 사용하지 않았다. 실제 Unity MCP Game View 검수 화면은 docs/images/world-v2/에 보존한다. 환경 profile/terrain texture는 runtime world-coordinate sampling이며 이미지로 구운 거대 월드를 사용하지 않는다.
+
+## 탐험 광원/길찾기 원본
+
+tools/generate_exploration_art.py(Pillow)가 torch/torch_placed/compass/bearing_arrow 네 sprite를 직접 생성한다. 기존 코드 기반 캐릭터·자연색 아트 방식이며 외부 게임 image/code/asset을 추출하거나 AI 캐릭터 이미지를 추가하지 않았다.

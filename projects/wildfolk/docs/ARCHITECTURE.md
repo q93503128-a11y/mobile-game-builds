@@ -164,3 +164,13 @@ Lowfire Home은 같은 FrontendSceneBuilder에서 제작한다. JournalAction은
 WorkbenchProgression은1~6 검증·구성된 다음 단계·Recipe/전문 시설 지원 판정을 공유한다. CraftingStation은 해당 시설의 상태 변경만 통지한다. 근접 Workbench 지원 registry는 제거했다. InventoryModel.TryConsumeCosts(costs,commit)는 모든 재료 예약 후 시설 변경을 commit하며 실패/예외 시 슬롯을 복구한다. SP 교체와 NGO 동일 객체 전환은 기존 Save ID/Creator/HP 비율을 유지한다. NetworkFacility는 server-write int Tier를 사용하고 Protocol7으로 이전 bool layout과 세션 호환을 분리한다.
 
 ResourceDefinition의 Tool/Rank와 ResourceNode.Harvest, WorldMap의 공급 문맥/독립 생성 stream, StationProcessing의 Recipe prerequisite는 각각 별도 경계다. 기존 Seed 자원 ID를 보존하고 공통 v6 codec을 사용한다. MetalProgressionAssets는 신규 authored assets/variant/기존 제작 화면만 갱신하는 Editor 빌더다. 자동 렌더 증거는 MetalRenderPlayTests이며 실제 MCP/Game View 조작 테스트와 구분한다.
+
+## Exploration Foundation 1
+
+ItemDefinition.PortableLight/HeldSprite→PlayerLightSource(held/equipped hook)→공유 LocalFirelight/GameplayLight. Torch는 DetersEnemies=false로 기존 AI의 시설 Safe/Dim 규칙과 분리한다. WorldLighting은 실제 Global Light를 참조하고 local player 영역의 cave ambient를 적용한다. 가까운 readability floor도 ambient에 따라 감쇠한다.
+
+PlayerNavigation의 영속 truth는 PlayerSnapshot.HomeId 하나다. WorldPlaceable/sleeping Places에서 위치를 해결한다. NetworkNavigation은 선택 검증과 owner-only 파생 위치 cache를 제공한다. NavigationHud는 카메라 축의 북쪽/기지, 동굴 graph의 다음 출구 안내 지점만 표시한다. 기존 placement/transaction/Save codec을 재사용한다.
+
+WorldChunkRuntime 하나의 bounded scheduler/ChunkActivation4unit retention을 사용한다. WorldTerrainRenderer는 활성 tiles와 inactive LRU24를 분리하고 row work queue를2.5ms 목표로 처리한다. 전체42k Update/GO/Texture/새 chunk manager는 없다. 명시적인 DrainPending은 fixture 동기화다. Editor 전용 ExplorationProfiler는 ProfilerRecorder와 frame 샘플을 파일로 기록하고 게임 HUD에 붙지 않는다.
+
+멀티 야외 조명 시간은 기존 NetworkWorldState의 Host 시간 sample(Elapsed/Server timestamp/Advancing)을0.5초마다 전달하고 Client가 server time으로 보간한다. 멈춘 Client WorldClock 때문에 밤에도 낮 광원으로 표시되던 경계를 연결했다. 별도 매 frame light/position RPC는 없으며 실제 remote Relay 화면 동기화는 미검수다.

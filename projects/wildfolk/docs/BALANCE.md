@@ -151,3 +151,7 @@ Goblin 시각 Separation0.85/Preferred Spacing2.7유닛. Goblin Ally Assist7유�
 ## 초기 금속 패스 수치
 
 기존 Ore 열은 Iron이다. Copper는 Iron Pickaxe 이상, Coal은 Stone Pickaxe 이상, Tin은 Panning Pan만 허용한다. Copper/Coal의 채집 효율은 Stone Pickaxe2.5배(단 Copper는 gate로 불가), Iron3배, Steel3.5배다. Steel Axe/Pickaxe 기본피해18·Wood/Stone 전문효율4.5배, Sword43, 모션/간격 Axe0.29/0.40·Pickaxe0.34/0.48·Sword0.28/0.38초다. Steel Head/Body Defense3/5(기존 Iron2/4)다. Pan 진행25·1.1/1.4초, Tin75/3드랍이다. Copper90/4/14개, Coal90/4/12개, Tin10개이며 복구 Copper·Coal600초/Tin720초다. 비용·시설 역할은 METAL_PROGRESSION을 따른다. 출시 밸런스/장시간 scarcity는 미확정이다.
+
+## 탐험 기반 수치 (초기 검증값)
+
+Torch: Hand Wood1+Coal1→4, stack50/설치HP40/footprint.5×.5/거리3.5. 광원 반경7.5/강도.9/따뜻한 불색, ambient에 비례해 감쇠하고 낮1에서는0. 연료/내구도 소모는 없다. Torch는 적 aggro/언데드 피해/안전광원 효과를 추가하지 않는다. Cave ambient 입구.52→심부.18, 플레이어 가까운 읽기 광원 반경2.8/기본강도.28도 ambient에 따라 감쇠한다. Compass: WB I Wood2+Iron Ingot1→1, stack1/가방 소지형. 최종 제작 경제/암부 접근성/장기 희소성 밸런스 합격 선언은 아니다.

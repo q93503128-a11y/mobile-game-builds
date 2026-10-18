@@ -10,7 +10,9 @@ namespace Wildfolk
         public Text Title,FilterLabel,UpgradeLabel,UpgradeRequirements,SelectedTitle,MaterialSummary,QueueState,CurrentItem;
         public ScrollRect UpgradeScroll;
         public Button UpgradeButton,AddOne,AddAll,Withdraw,Collect;public Button[] CategoryButtons;
-        public Button InventoryButton;
+        public Button InventoryButton,HomeButton;
+        public Text HomeLabel;
+        public void SetHome(){if(Owner.GetComponent<PlayerNavigation>().SelectHome(Owner.Station))PlayerFeedback.ShowKey("feedback.home_set");Refresh();}
         public RecipeCardView[] Cards;public ScrollRect Scroll;
         private StationKind previousStation=(StationKind)(-1);private int category=-1;private bool craftable;private float nextRefresh;
         private RecipeDefinition Selected=>Owner.SelectedRecipe;
@@ -33,7 +35,8 @@ namespace Wildfolk
         public void Refresh()
         {
             View.SetActive(Owner.ScreenOpen && Owner.Session.State==SessionState.Inventory);if(!View.activeSelf)return;
-            var station=Owner.AvailableStation;if(station!=previousStation){category=-1;craftable=false;previousStation=station;Scroll.verticalNormalizedPosition=1;}
+            var station=Owner.AvailableStation;
+            if(HomeButton!=null){HomeButton.gameObject.SetActive(station==StationKind.Workbench);HomeLabel.text=L.Text(Owner.GetComponent<PlayerNavigation>().HomeId==Owner.Station?.GetComponent<WorldPlaceable>().SaveId ? "ui.navigation.home_selected" : "ui.navigation.set_home");}if(station!=previousStation){category=-1;craftable=false;previousStation=station;Scroll.verticalNormalizedPosition=1;}
             Title.text=station==StationKind.None ? L.Text("ui.crafting.hand") : Owner.Station.Definition.Station==StationKind.Workbench ? (string.IsNullOrEmpty(Owner.Station.Definition.TierDisplayKey) ? WorkbenchProgression.Name(Owner.Station.Definition.WorkbenchTier) : L.Text(Owner.Station.Definition.TierDisplayKey)) : Owner.Station.Definition.Item.LocalizedName;
             for(var i=0;i<CategoryButtons.Length;i++){var available=i==0;foreach(var card in Cards)if(card.Recipe.RequiredStation==station && (int)card.Recipe.Category==i-1)available=true;CategoryButtons[i].gameObject.SetActive(available);CategoryButtons[i].image.color=i-1==category ? new Color32(152,145,96,255) : Color.white;}
             LayoutRebuilder.ForceRebuildLayoutImmediate((RectTransform)CategoryButtons[0].transform.parent);
@@ -54,7 +57,7 @@ namespace Wildfolk
             var recipe=Selected;if(recipe==null || recipe.RequiredStation!=station){foreach(var card in Cards)if(card.gameObject.activeSelf){recipe=card.Recipe;Owner.SetSelected(recipe,false);break;}}
             SelectedTitle.text=recipe==null ? "" : string.IsNullOrEmpty(recipe.DisplayKey) ? recipe.Result.LocalizedName : L.Text(recipe.DisplayKey);
             var job=Owner.Processor;var sequential=job!=null && job.Sequential;QueueView.SetActive(sequential);MaterialSummary.gameObject.SetActive(!sequential);SelectedIcon.gameObject.SetActive(!sequential);
-            if(!sequential && recipe!=null){var item=recipe.Result;SelectedIcon.sprite=item.Icon;var summary=L.Text("ui.item_category."+item.Category)+"\n"+L.Format("ui.crafting.owned",Owner.Inventory.Model.CountItem(item));if(item.Tool!=null)summary+="\n\n"+L.Format("ui.crafting.damage",item.Tool.Damage);if(item.Armor!=null)summary+="\n\n"+L.Format("ui.inventory.armor_detail",L.Text("ui.slot."+item.Armor.Slot),item.Armor.Defense);if(item.Placement!=null){summary+="\n\n"+L.Format("ui.crafting.health",item.Placement.Vitality.MaximumHealth);if(item.Placement.StorageSlots>0)summary+="\n"+L.Format("ui.crafting.storage",item.Placement.StorageSlots);}MaterialSummary.text=summary;}
+            if(!sequential && recipe!=null){var item=recipe.Result;var exploration=item.PortableLight!=null || item.NavigationInstrument;MaterialSummary.fontSize=exploration ? 20 : 23;MaterialSummary.rectTransform.sizeDelta=new Vector2(358,exploration ? 154 : 130);MaterialSummary.rectTransform.anchoredPosition=new Vector2(501,exploration ? -89 : -101);SelectedIcon.sprite=item.Icon;var summary=L.Text("ui.item_category."+item.Category)+"\n"+L.Format("ui.crafting.owned",Owner.Inventory.Model.CountItem(item));if(item.Tool!=null)summary+="\n\n"+L.Format("ui.crafting.damage",item.Tool.Damage);if(item.Armor!=null)summary+="\n\n"+L.Format("ui.inventory.armor_detail",L.Text("ui.slot."+item.Armor.Slot),item.Armor.Defense);if(item.Placement!=null){summary+="\n\n"+L.Format("ui.crafting.health",item.Placement.Vitality.MaximumHealth);if(item.Placement.StorageSlots>0)summary+="\n"+L.Format("ui.crafting.storage",item.Placement.StorageSlots);}if(item.PortableLight!=null)summary+="\n\n"+L.Text("ui.navigation.torch_info");if(item.NavigationInstrument)summary+="\n\n"+L.Text("ui.navigation.compass_info");MaterialSummary.text=summary;}
             if(sequential)
             {
                 QueueState.text=L.Format("ui.crafting.queue",job.Queue.WaitingCount+(job.Recipe==null ? 0 : 1),job.Queue.WaitingCount,job.OutputCount);

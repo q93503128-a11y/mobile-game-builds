@@ -9,6 +9,7 @@ namespace Wildfolk.Editor
         internal static void Build(GameObject root,Transform safe,PlayerCrafting owner)
         {
             var panel=root.AddComponent<CraftingPanel>();panel.Owner=owner;var surface=QualityUiBuilder.Surface(safe,"Crafting Screen",new Vector2(1500,770),out panel.View);
+            panel.HomeButton=QualityUiBuilder.Action(surface.transform,"Set Home","ui.navigation.set_home",new Vector2(310,320),new Vector2(350,62),panel.SetHome,out panel.HomeLabel);
             panel.Title=Text("Title",surface.transform,"",new Vector2(-393,320),new Vector2(620,52),32,TextAnchor.MiddleLeft);
             QualityUiBuilder.Action(surface.transform,"Close","ui.action.close",new Vector2(600,320),new Vector2(170,62),owner.CloseCrafting,out var close);
             var tabs=Rect("Categories",surface.transform,new Vector2(.5f,.5f),new Vector2(-219,249),new Vector2(962,62));var tabLayout=tabs.gameObject.AddComponent<HorizontalLayoutGroup>();tabLayout.spacing=8;tabLayout.childControlWidth=false;tabLayout.childControlHeight=false;tabLayout.childForceExpandWidth=false;tabLayout.childForceExpandHeight=false;

@@ -1,4 +1,6 @@
-# Multiplayer Foundation — 현재 Foundation 5
+# Multiplayer Foundation — 탐험 기반 / Protocol9
+
+2026-10-18 현재: generation2 지형 유지 / **Save8 / Protocol9**, Item50 / Recipe38. Torch·Compass·제작대 Home·동굴 Exit·제한 지형 cache/분할 생성을 제공한다. [탐험 정본](EXPLORATION_FOUNDATION.md)과 [실제 검수/성능](EXPLORATION_REVIEW.md)를 따른다. 아래 이전 날짜/Version 설명은 각 단계의 기록이다.
 
 2026-10-17 현재: 신규 generation2/Save7/Protocol8. BaseGenerationVersion과 청크 logical state·시설 timestamp·동굴 state를 저장한다. v1~v6 저장은 generation1 지형/시설 위치를 유지한다. 아래 v5/v6/Protocol7 내용은 해당 단계의 구조/이관 기록이며 현재 월드 정책은 [WORLD_GENERATION](WORLD_GENERATION.md)을 따른다.
 2026-10-16. 기준361fd7f735561fee9b77b8af331e66b25d428380. **Building / Wall / Door / Host World Persistence와 재입장 기반**을 추가했다. Player, Creature/Combat, Resource/Item/Inventory, Facility/Crafting에 이어 이번 기반 구현을 마쳤다. **다음 단계는 별도 Multiplayer Integration QA다. 이번에 실제 두 프로세스 Relay 검수는 하지 않았다.** 자동검사를 실제 원격 플레이 합격으로 해석하지 않는다.
@@ -408,3 +410,11 @@ Git 마무리는21:44:52부터다. commit/push/원격 확인과 전체 경과는
 ## 초기 금속 교정 / 현재 Protocol7
 
 Player 포함 명시 prefab31개와 in-scene ecology NetworkObject를 사용한다. 기존 자원3 variant에 Blast Furnace variant를 추가했다. Host는 HarvestMethod/ToolKind/Rank를 함께 검증한다. Tin은 Pan만 허용한다. II에서 만드는 별도 Blast Furnace만 Steel을 처리하며 근처 Workbench 지원 gate는 없다. Reinforced Chest36과 가변 스크롤 UI는 기존 양쪽 revision transfer를 사용한다. Save v6으로 구 Steel cargo/Chest32를 이관한다. 실제 Local Host 직접 검사와 관련 자동검사는 METAL_PROGRESSION을 따른다. 새 Protocol의 실제 remote Client·Relay·4인 검수는 이번에 하지 않았다. 시작 시설5개에는 Blast Furnace가 없다.
+
+## Exploration Foundation 1 / 현재 Protocol9
+
+Torch도 기존 NetworkConstruction/NetworkBuilding transaction과 stable Save ID를 쓴다. Source31 variant+Player1, 명시 prefab32다. owner held input→기존 appearance replication→local light presentation이며 별도 매 frame light RPC는 없다. NetworkNavigation은 근처 Workbench 지정 RPC를 검증하고 owner-only Home ID/파생 좌표·유효 여부를 변경 시 전송한다. 세부는 [탐험 정본](EXPLORATION_FOUNDATION.md).
+
+청크 합집합은 기존 살아 있는 NetworkPlayer들을 쓰고4unit 경계 retention을 추가한다. 멀리 떨어진 Local Host actor fixture와4 logical regions는 실제4 peer QA와 다르다. 이번 실제 검수 범위·숫자는 EXPLORATION_REVIEW를 따른다.
+
+멀티 야외 조명 시간은 기존 NetworkWorldState의 Host 시간 sample(Elapsed/Server timestamp/Advancing)을0.5초마다 전달하고 Client가 server time으로 보간한다. 멈춘 Client WorldClock 때문에 밤에도 낮 광원으로 표시되던 경계를 연결했다. 별도 매 frame light/position RPC는 없으며 실제 remote Relay 화면 동기화는 미검수다.

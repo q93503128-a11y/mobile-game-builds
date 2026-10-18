@@ -39,7 +39,7 @@ namespace Wildfolk
         }
         public CavernRoom Nearest(Vector2 p){CavernRoom found=null;var best=float.MaxValue;foreach(var r in Rooms){var d=(r.Center-p).sqrMagnitude;if(d<best){best=d;found=r;}}return found;}
         public Vector2 Entry(int index)=>Rooms[index==0 ? 0 : 2].Center;
-        public float Ambient(Vector2 p)=>Mathf.Lerp(.64f,.3f,Nearest(p).Depth);
+        public float Ambient(Vector2 p)=>Mathf.Lerp(.52f,.18f,Nearest(p).Depth);
         public bool Water(Vector2 p)
         {
             var r=Nearest(p);if(r.Kind!=CavernRoomKind.WaterChamber || Vector2.Distance(p,r.Center+Vector2.right*r.Radius.x*.65f)>=3)return false;

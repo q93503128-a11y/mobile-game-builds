@@ -90,3 +90,7 @@ SP 임시 파일 저장·Load와 Local Host 임시 파일 저장→Leave→재Ho
 위 구간은 검사/문서 병행이 있어 단순 합산하지 않는다. 관련 통합 검사는 한 묶음만 돌렸고 실패한 재호스트 한 건, 시각 수정 후 상자 한 건만 추가 확인했다. 숨김 Unity는 기존 캐시 프로젝트를 순차 재사용했으며 새 clone/새 visible Editor를 만들지 않았다. 최종 종료 시각은 evidence/metal-correction.json과 완료 보고에 기록한다.
 
 최종 문서·씬·검토 종료: 17:57:29 KST. main commit/push/원격 SHA 확인은 이 시각부터 진행하며 실제 종료는 완료 보고에 기록한다.
+
+## 탐험 장비 연결
+
+이번 확장에서 Wood1+Coal1→Torch4(Hand), Wood2+Iron Ingot1→Compass1(WB I)을 추가했다. Coal의 기존 Stone Pickaxe gate와 WB I→II/금속 처리/Steel은 유지한다. WB III/Diamond 실제 진행은 이번에도 없다. [탐험 정본](EXPLORATION_FOUNDATION.md).

@@ -25,3 +25,7 @@ Resource Population Section: Force Recovery Tick, World Regen Time +1m/+5m/+10m/
 Spawn은10종·Variant와 Warband/Camp를 지원한다. Trigger Ally Assist/Trigger Herd Flee는 가장 가까운 대상과 주변 Group에 적용한다. Force Animal Population Tick/Force Camp Population Tick은 기한·안전 후보·상한을 그대로 검사하며 실제 시간 대기는 하지 않는다. +Regen 시간 단축은 Resource Pending/Harvest 제외 타이머만 앞당기고 낮/밤 WorldClock은 바꾸지 않는다. 동물/Camp 기한은 Set Day/Time으로 앞당긴 뒤 Force Tick할 수 있다.
 
 Combat Sandbox의 무의미한 갈색 Player Body Renderer2개는 제거했다. 실제 자원과 Goblin을 배치한다. 기존 PlayerEquipment/Inventory/Spawn/Save API를 그대로 사용하는 단축 동작이며 Release HUD에 Console을 추가하지 않는다. 테스트 저장의 성공 여부와 프레임 캡처는 실제 수행한 것만 보고한다.
+
+## 탐험 성능 기록
+
+Editor 전용 ExplorationProfiler.Begin(stage, frameCount, moveX, moveY)는 Unity ProfilerRecorder의 Main Thread/GC Allocated In Frame과 frame delta, 활성 GO/chunk/resource/creature/terrain/cache 수치를 Captures/exploration/profile-*.json으로 기록한다. EditorApplication.update에서 한 rendered frame당 한 번만 수집하고 완료/Play 종료 시 해제한다. Scene/Prefab/게임 UI에는 probe를 저장하지 않는다. Editor·MCP·동시 batch 작업 overhead가 포함된 탐색 수치이며 standalone player allocation/FPS나 모바일 실기 수치가 아니다.

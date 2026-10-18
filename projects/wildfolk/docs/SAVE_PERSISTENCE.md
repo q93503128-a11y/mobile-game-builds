@@ -1,4 +1,6 @@
-# Save / Load v7, v1~v6 호환
+# Save / Load v8, v1~v7 호환
+
+2026-10-18 현재: generation2 지형 유지 / **Save8 / Protocol9**, Item50 / Recipe38. Torch·Compass·제작대 Home·동굴 Exit·제한 지형 cache/분할 생성을 제공한다. [탐험 정본](EXPLORATION_FOUNDATION.md)과 [실제 검수/성능](EXPLORATION_REVIEW.md)를 따른다. 아래 이전 날짜/Version 설명은 각 단계의 기록이다.
 
 2026-10-17 현재: 신규 generation2/Save7/Protocol8. BaseGenerationVersion과 청크 logical state·시설 timestamp·동굴 state를 저장한다. v1~v6 저장은 generation1 지형/시설 위치를 유지한다. 아래 v5/v6/Protocol7 내용은 해당 단계의 구조/이관 기록이며 현재 월드 정책은 [WORLD_GENERATION](WORLD_GENERATION.md)을 따른다.
 정본은 WorldSaveService / SavedGame / SaveRepository / SaveValidation이다. 수동 Save game과 Save & return home은 Pause 메뉴에 있다. 플레이어용 Load game 버튼은 제거했고 WorldSaveService.Load 및 Editor Developer Load는 유지한다. 기기 Pause/Background/Quit에는 살아 있는 세션을 자동 저장한다. Home의 Single Player는 무작위 Seed로 시작하며, 저장 게임은 Home Continue로 불러온다. Gameplay 씬 직접 실행의 기본 Seed는 유지한다. 사망/재시작 규칙과 사망 보상 정책은 변경하지 않았다.
@@ -64,3 +66,9 @@ Host는 승인된 snapshot 저장 성공 후 NGO Session을 종료한다. 저장
 ## v5→v6 / 금속 교정
 
 MetalSaveMigration은 기존 Reinforced Chest32를 내용물 위치 그대로36칸으로 확장하고 사라진 대체 Recipe Seen ID를 제거한다. 기존 일반 Furnace의 Steel 현재/대기 cargo는 Iron+Coal 재료 Pickup으로, 완료 결과는 Steel Pickup으로 보존한다. 새 Blast Furnace queue는 시설 Item/Recipe ID와 기존 codec으로 저장한다. v6은 기본 Furnace의 Steel cargo를 거절한다. SP/Host 파일명(world-v1.json/multiplayer-world-v5.json), 체크섬·atomic backup 정책은 유지한다. v1~v5 이관과 실제 SP Load/Local Host 재Host 증거는 METAL_PROGRESSION을 따른다.
+
+## v7→v8 / 탐험 기반
+
+현재 schema8, v1~v7 migration 지원. HomeId를 개인 PlayerSnapshot에 추가했다. v7 이전에는 지정 기지가 없으므로 빈 참조로 시작하며 스폰/첫 제작대로 임의 추정하지 않는다. v6 이하 generation1 보존, v7 generation2의 terrain/resource identity는 그대로다. Torch는 기존 PlaceableSnapshot stable ID와 Item/HP/위치/회전/Creator로 저장하고 NetworkObjectId는 저장 ID가 아니다.
+
+Home 좌표는 Save의 별도 중복 truth가 아니라 살아 있는 또는 dormant 제작대 ID에서 해결한다. 없어진 참조는 저장을 파괴하지 않고 HUD가 기지 지정 안내로 처리한다. Workbench upgrade가 ID를 보존하므로 Home도 이어진다. 지형 cache/job/네트워크 파생 좌표는 저장하지 않는다. [검수/실제 파일 크기](EXPLORATION_REVIEW.md). 기존 atomic/backup/checksum/파일명은 유지한다.

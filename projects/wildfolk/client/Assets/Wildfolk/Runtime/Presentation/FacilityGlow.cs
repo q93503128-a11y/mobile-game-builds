@@ -11,7 +11,7 @@ namespace Wildfolk
         {
             if(clock==null){Light.intensity=0;return;}
             clock.Model.Lighting(out _,out var ambient);
-            Light.intensity=(1-ambient)*1.2f;
+            var nav=clock.GetComponent<WorldNavigation>();ambient=WorldLighting.Ambient(nav==null ? null : nav.World,transform.position,ambient);Light.intensity=(1-ambient)*1.2f;
         }
     }
 }

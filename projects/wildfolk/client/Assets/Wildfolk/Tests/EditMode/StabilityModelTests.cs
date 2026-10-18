@@ -10,7 +10,7 @@ namespace Wildfolk.Tests
         private static T Data<T>(string name) where T:UnityEngine.Object=>AssetDatabase.LoadAssetAtPath<T>("Assets/Wildfolk/Data/"+name+".asset");
         [Test]public void EveryCurrentBasicAttackHasOneTargetAndExtensibleShape()
         {
-            var catalog=Data<ContentCatalog>("ContentCatalog");Assert.That(catalog.Items.Length,Is.EqualTo(48));Assert.That(catalog.Recipes.Length,Is.EqualTo(36));
+            var catalog=Data<ContentCatalog>("ContentCatalog");Assert.That(catalog.Items.Length,Is.EqualTo(50));Assert.That(catalog.Recipes.Length,Is.EqualTo(38));
             Assert.That(Data<GameplaySettings>("GameplaySettings").PunchAttack.MaxTargets,Is.EqualTo(1));
             foreach(var item in catalog.Items)if(item.Tool!=null){var p=item.Tool.Attack;Assert.That(p.MaxTargets,Is.EqualTo(1));Assert.That(p.Range,Is.GreaterThan(0));Assert.That(p.ArcAngle,Is.InRange(1,360));Assert.That(p.PierceCount,Is.Zero);Assert.That(p.AoERadius,Is.Zero);}
         }
@@ -38,7 +38,7 @@ namespace Wildfolk.Tests
         [Test]public void AtomicSaveBackupRecoversCorruptionAndIgnoresInterruptedTemporaryFile()
         {
             var root=Path.Combine(Path.GetTempPath(),"wildfolk-save-"+Guid.NewGuid().ToString("N"));var repo=new SaveRepository(Path.Combine(root,"world.json"));
-            Action<SavedGame> validate=g=>{if(g.Version!=7)throw new InvalidDataException();};
+            Action<SavedGame> validate=g=>{if(g.Version!=8)throw new InvalidDataException();};
             try
             {
                 repo.Write(new SavedGame{Seed=1},validate);repo.Write(new SavedGame{Seed=2},validate);
