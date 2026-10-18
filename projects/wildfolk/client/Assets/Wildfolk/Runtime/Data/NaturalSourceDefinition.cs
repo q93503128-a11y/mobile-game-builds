@@ -29,6 +29,8 @@ namespace Wildfolk
         public Vector2 DensityRange=new Vector2(1,1);
         [Min(1)]public float MinimumSpacing=4;
         [Min(0)]public int StarterSupply;
+        // Generation stream is independent of renewal policy so old c IDs keep their positions.
+        public bool VegetationStream;
         public bool NaturalRecovery;
         public bool Enabled=true;
         public SurfaceBiome[] SurfaceBiomes=Array.Empty<SurfaceBiome>();

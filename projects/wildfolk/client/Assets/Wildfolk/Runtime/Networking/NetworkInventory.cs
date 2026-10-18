@@ -57,6 +57,10 @@ namespace Wildfolk
         public bool Equip(int slot)=>Submit(InventoryOperation.Equip,slot,0,0,0);
         public bool Unequip(ArmorSlot slot,int destination)=>Submit(InventoryOperation.Unequip,(int)slot,destination,0,0);
         public bool Pickup(ulong objectId)=>Submit(InventoryOperation.Pickup,0,0,0,objectId);
+        public void NotifyPickup(ItemDefinition item,int count)
+        {if(IsServer && IsSpawned && count>0)PickupFeedbackRpc(Index(item),count);}
+        [Rpc(SendTo.Owner,InvokePermission=RpcInvokePermission.Server)]
+        private void PickupFeedbackRpc(short item,int count){if(IsOwner)PlayerFeedback.ShowPickup(Item(item),count);}
         private bool Submit(InventoryOperation operation,int from,int to,int amount,ulong target)
         {
             if(!IsSpawned || !IsOwner || !Player.Health.IsAlive || Pending)return false;

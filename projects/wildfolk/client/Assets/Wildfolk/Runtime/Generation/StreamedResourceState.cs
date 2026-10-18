@@ -5,32 +5,41 @@ namespace Wildfolk
     public sealed partial class ResourceRegeneration
     {
         private readonly List<string> streamKeys=new List<string>();
-        private readonly Dictionary<string,double> renewableAt=new Dictionary<string,double>();
+        private readonly Dictionary<WorldChunk,Dictionary<string,ResourceSnapshot>> chunkChanges=new Dictionary<WorldChunk,Dictionary<string,ResourceSnapshot>>();
+        private int recoveryCursor;
+        private readonly List<RecoveryTicket> activeTickets=new List<RecoveryTicket>();
+        public int LastRecoveryChecks {get;private set;}
+        public int LastCandidateChecks {get;private set;}
         public void ReleaseWorld(){foreach(var a in live.Values)if(a!=null)PrefabPool.Release(a.gameObject);live.Clear();}
+        private void Index(ResourceSnapshot state)
+        {var key=WorldChunk.At(state.Position,World.Definition.ChunkSize);if(!chunkChanges.TryGetValue(key,out var list))chunkChanges[key]=list=new Dictionary<string,ResourceSnapshot>();list[state.Id]=state;}
+        public void PrepareChunk(WorldChunk key,List<ResourcePlacement> sources)
+        {
+            var region=WorldMap.Encode(key);if(Population.HasRegion(region))return;chunkChanges.TryGetValue(key,out var changed);
+            Population.InitializeRegion(region,sources,changed?.Values,Clock.Model.Elapsed);
+        }
         public void Materialize(ResourcePlacement p,Transform parent)
         {
             if(live.ContainsKey(p.Id))return;
-            if(changes.TryGetValue(p.Id,out var state) && state.Destroyed)
-            {
-                if(!World.Map.Renewable(p.Rule))return;
-                if(!renewableAt.TryGetValue(p.Id,out var due))renewableAt[p.Id]=due=state.RespawnAt;
-                if(Clock.Model.Elapsed<due)return;
-                // A new recovery ID at a different position is reserved; the old tombstone remains.
-                var position=p.Position+new Vector2(3,4);if(!World.Map.ResourceSiteAllowed(p.Rule,position))return;
-                var id="p"+(++Population.Serial);var n=World.CreateResource(id,p.Rule,position,p.Scale,parent);changes[id]=new ResourceSnapshot{Id=id,Rule=p.Rule,Position=position,Scale=p.Scale,HP=n.Health.Maximum};renewableAt.Remove(p.Id);state.RespawnAt=double.MaxValue;return;
-            }
+            if(changes.TryGetValue(p.Id,out var state) && state.Destroyed)return;
             var node=World.CreateResource(p.Id,p.Rule,p.Position,p.Scale,parent);if(state!=null)node.Health.RestoreHealth(state.HP);
         }
         public void MaterializeRecovered(WorldChunk key,Transform parent)
         {
-            // Recovery can cross a chunk boundary. It must not depend on a base source in this chunk.
-            streamKeys.Clear();foreach(var s in changes.Values)if(!s.Destroyed && s.Id.StartsWith("p") && !live.ContainsKey(s.Id) && WorldChunk.At(s.Position,World.Definition.ChunkSize).Equals(key))streamKeys.Add(s.Id);
+            if(!chunkChanges.TryGetValue(key,out var entries))return;
+            streamKeys.Clear();foreach(var s in entries.Values)if(!s.Destroyed && s.Id.StartsWith("p") && !live.ContainsKey(s.Id))streamKeys.Add(s.Id);
             foreach(var id in streamKeys){var s=changes[id];var recovered=World.CreateResource(s.Id,s.Rule,s.Position,s.Scale,parent);recovered.Health.RestoreHealth(s.HP);}
         }
         private void RecordStreamed(ResourceIdentity identity,ResourceSnapshot state,bool destroyed)
         {
-            if(destroyed){live.Remove(state.Id);if(World.Map.Renewable(state.Rule)){state.RespawnAt=Clock.Model.Elapsed+World.Definition.Resources[state.Rule].RespawnSeconds;renewableAt[state.Id]=state.RespawnAt;}}
-            changes[state.Id]=state;
+            if(destroyed)
+            {
+                if(!live.Remove(state.Id))return;
+                Population.Remove(state.Rule,state.Position,Clock.Model.Elapsed,true);
+                // Only baseline c/g/e sources need permanent tombstones. A depleted p source becomes population debt.
+                if(state.Id.StartsWith("p")){changes.Remove(state.Id);var key=WorldChunk.At(state.Position,World.Definition.ChunkSize);if(chunkChanges.TryGetValue(key,out var list))list.Remove(state.Id);return;}
+            }
+            changes[state.Id]=state;Index(state);
         }
         public void UnloadChunk(WorldChunk chunk)
         {
@@ -39,11 +48,36 @@ namespace Wildfolk
         }
         private int TickStreamed()
         {
-            if(World.Chunks==null)return 0;var before=live.Count;
-            streamKeys.Clear();foreach(var pair in renewableAt)if(pair.Value<=Clock.Model.Elapsed && changes.TryGetValue(pair.Key,out var s) && World.Chunks.IsActive(s.Position))streamKeys.Add(pair.Key);
-            // A bounded recovery tick checks only scheduled active sources.
-            var due=streamKeys.ToArray();for(var i=0;i<due.Length && i<2;i++){var s=changes[due[i]];var key=WorldChunk.At(s.Position,World.Definition.ChunkSize);Materialize(new ResourcePlacement(s.Rule,s.Position,s.Scale,s.Id),World.Chunks.ActiveChunks[key].transform);}
-            return Mathf.Max(0,live.Count-before);
+            LastRecoveryChecks=LastCandidateChecks=0;if(World.Chunks==null)return 0;
+            var now=Clock.Model.Elapsed;Population.Expire(now);var spawned=0;activeTickets.Clear();
+            // Dormant history cannot delay a player's current region. Only active chunk/rule pairs are looked up.
+            foreach(var key in World.Chunks.ActiveChunks.Keys)for(var r=0;r<World.Definition.Resources.Length;r++){var t=Population.FindTicket(r,WorldMap.Encode(key));if(t!=null)activeTickets.Add(t);}
+            var limit=Mathf.Min(16,activeTickets.Count);
+            while(LastRecoveryChecks<limit && activeTickets.Count>0)
+            {
+                LastRecoveryChecks++;recoveryCursor%=activeTickets.Count;var ticket=activeTickets[recoveryCursor++];
+                var key=WorldMap.Decode(ticket.Region);if(!World.Chunks.ActiveChunks.TryGetValue(key,out var root))continue;
+                if(Population.Count(ticket.Rule,ticket.Region)>=Population.Target(ticket.Rule,ticket.Region)){Population.RemoveTicket(ticket);continue;}
+                if(ticket.Due>now || !FindStreamedPosition(ticket.Rule,ticket.Region,out var position))continue;
+                var rule=World.Definition.Resources[ticket.Rule];var scale=(rule.ScaleRange.x+rule.ScaleRange.y)*.5f;var id="p"+(++Population.Serial);
+                var node=World.CreateResource(id,ticket.Rule,position,scale,root.transform);Population.Add(ticket.Rule,position);
+                var state=new ResourceSnapshot{Id=id,Rule=ticket.Rule,Position=position,Scale=scale,HP=node.Health.Maximum};changes[id]=state;Index(state);
+                Population.RemoveTicket(ticket);Population.Schedule(ticket.Rule,ticket.Region,now);
+                if(++spawned>=2)break;
+            }
+            return spawned;
+        }
+        private bool FindStreamedPosition(int ruleIndex,int region,out Vector2 point)
+        {
+            var rule=World.Definition.Resources[ruleIndex];
+            for(var attempt=0;attempt<48;attempt++)
+            {
+                LastCandidateChecks++;point=Population.Candidate(ruleIndex,region);
+                if(!World.Map.ResourceSiteAllowed(ruleIndex,point) || Population.Excluded(ruleIndex,point,Clock.Model.Elapsed))continue;
+                // Physics uses the active spatial index, including nodes, creatures and player buildings.
+                if(Navigation.CanSpawn(point,Mathf.Max(rule.Spacing,rule.ClusterSpacing),18))return true;
+            }
+            point=default;return false;
         }
     }
 }

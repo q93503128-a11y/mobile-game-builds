@@ -1,6 +1,6 @@
 # World Generation / Biome Foundation v2
 
-2026-10-18 현재 콘텐츠 확장: **Save9 / Protocol10, Item86 / Recipe71**. [현재 정본](CONTENT_EXPANSION.md). 아래 이전 버전 설명은 해당 패스의 기록이다.
+2026-10-18 현재 자원 템포: **Save9 / Protocol11, Item86 / Recipe71**. [현재 정본](CONTENT_EXPANSION.md). 아래 이전 버전 설명은 해당 패스의 기록이다.
 
 
 2026-10-18 현재: generation2 지형 유지 / **Save8 / Protocol9**, Item50 / Recipe38. Torch·Compass·제작대 Home·동굴 Exit·제한 지형 cache/분할 생성을 제공한다. [탐험 정본](EXPLORATION_FOUNDATION.md)과 [실제 검수/성능](EXPLORATION_REVIEW.md)를 따른다. 아래 이전 날짜/Version 설명은 각 단계의 기록이다.
@@ -40,9 +40,9 @@ NaturalSourceDefinition은 환경 tag,Surface·Cave,depth/moisture/rock 범위,�
 
 Copper는 노출 암석/동굴+Iron Pickaxe 이상,Coal은 seam/동굴+Stone Pickaxe 이상,Iron은 초반 일부와 암석/동굴이다. Tin은 실제 main channel의 적합한 RiverGravel+Prospecting Pan이다. Wetlands 이름만으로 생성하지 않는다. Bronze/별도 Blast Furnace/Steel/장비와 Reinforced Chest36의 기존 흐름을 유지한다.
 
-generation2 Mineral은 모두 비재생이며 파괴 stable ID tombstone을 유지한다. Tree/Plant/Log 등은 게임 시간 뒤 환경 후보에서 새 pID/다른 위치로 회복한다. unload/save/load로 광물을 재생시키지 않는다. generation1만 구 population/recovery를 유지한다.
+generation2 Mineral/Stone과 식생은 지역 deficit에 따라 환경 후보에서 새 pID/다른 위치로 회복한다. 원본 stable ID tombstone은 유지하며, active chunk에만 보충한다. unload/save/load는 고갈 상태와 지역 Due를 보존한다. generation1은 구12지역 population layout을 유지하고 현재 수율/회복 설정을 사용한다. 상세 알고리즘·cap·저장 호환은 RESOURCE_TEMPO를 따른다.
 
-실제 Catalog recipe를 재귀 계산해4인 Steel 도구·방어구,4인 Pan,공유 Blast Furnace/Workbench upgrade 재료에1.5배 여유를 적용한다. drop yield에 따른 node수,광물별 최소9 node와3개 이상128unit cluster를 검증한다. 시작점→Forest/보장 공급처는 bounded16unit flood+2unit edge/1unit endpoint 지형 검사를 한다. 임의 미래 지역 전체/동적 건축물까지 검증하는 navigation은 아니다.
+실제 Catalog Essential/선택 root와 recipe graph, 공유 시설/upgrade를 계산해4인 예산에1.5배 여유를 적용한다. drop yield에 따른 node수,기존 g/e baseline 배치는 고정하고 현재 수율로3개 이상128unit cluster와 예산을 검증한다. 시작점→Forest/보장 공급처는 bounded16unit flood+2unit edge/1unit endpoint 지형 검사를 한다. 임의 미래 지역 전체/동적 건축물까지 검증하는 navigation은 아니다.
 
 DiamondPocketSource는 disabled/ResourceRule=-1/depth .8~1의 미래 hook뿐이다. Diamond item/drop/equipment/보장량은 없고 최종 tier로 고정하지 않는다.
 
@@ -90,4 +90,8 @@ Workbench III/Diamond progression/IV~VI/새 biome·섬·Boat/Torch·Lantern game
 
 ## Workbench I–II Content Expansion (2026-10-18)
 
-기존 지형 generation2와 구 generation1을 유지한다. Small Plant는 Fiber2. Berry/Mushroom은 독립 SourceId로 뒤에 추가하며 generation2에만 생성한다. 4인 광물 예산은 실제 I~II Recipe 그래프/안전 여유로 계산하고 부족량을 기존 위치를 밀지 않는 e ID로 보충한다. 기존 광물 고갈/청크/캐시 정책은 유지한다. [현재 예산과 호환](CONTENT_EXPANSION.md).
+기존 지형 generation2와 구 generation1을 유지한다. Small Plant는 Fiber2. Berry/Mushroom은 독립 SourceId로 뒤에 추가하며 generation2에만 생성한다. 4인 광물 예산은 실제 I~II Recipe 그래프/안전 여유로 계산하고 부족량을 기존 위치를 밀지 않는 e ID로 보충한다. 기존 청크/캐시는 유지하며 광물 고갈 후 회복 정책은 RESOURCE_TEMPO의 지역 보충으로 교체했다. [현재 예산과 호환](CONTENT_EXPANSION.md).
+
+## Resource Tempo / 현재 정책
+
+[RESOURCE_TEMPO](RESOURCE_TEMPO.md)에 현재 source당 수율, 지역 ticket, immutable generation baseline,4인 예산과 seed 결과를 기록한다. 기존 +3/+4 개별 복원은 제거했다.

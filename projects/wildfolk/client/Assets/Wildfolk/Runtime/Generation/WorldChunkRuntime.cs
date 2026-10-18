@@ -49,7 +49,7 @@ namespace Wildfolk
             MaterializeFeatures(key,root.transform);MaterializeWater(key,root.transform);
             if(SimulationAuthority.Allows(World))
             {
-                var resources=World.Map.Continental.GenerateChunk(key);foreach(var p in resources)World.Renewal.Materialize(p,root.transform);
+                var resources=World.Map.Continental.GenerateChunk(key);World.Renewal.PrepareChunk(key,resources);foreach(var p in resources)World.Renewal.Materialize(p,root.transform);
                 World.Renewal.MaterializeRecovered(key,root.transform);
                 RestoreObjects(key);World.Animals.ActivateChunk(key);World.GetComponent<GoblinSpawner>().ActivateChunk(key);
                 MaterializeCaveThreats(key);

@@ -49,6 +49,8 @@ MonoBehaviour:
   Resources:
   - IndependentGeneration: 0
     DistributionConfigured: 0
+    LayoutSourceCount: 8
+    LayoutSupplementCount: 0
     Generation2Only: 0
     GenerationSalt: 0
     AllowedBiomes: []
@@ -84,6 +86,8 @@ MonoBehaviour:
     ClusterSpacing: 4
   - IndependentGeneration: 0
     DistributionConfigured: 0
+    LayoutSourceCount: 7
+    LayoutSupplementCount: 0
     Generation2Only: 0
     GenerationSalt: 0
     AllowedBiomes: []
@@ -107,18 +111,20 @@ MonoBehaviour:
     ForestPreference: 0
     RockPreference: 0.85
     ScaleRange: {x: 0.9, y: 1.15}
-    RespawnSeconds: 600
+    RespawnSeconds: 75
     RecoveryConfigured: 1
     NaturalRecovery: 1
     WorldRecoveryScope: 0
     Family: 1
     Rarity: 0
-    TargetDensityRatio: 0.9
-    HarvestExclusionRadius: 8
-    HarvestExclusionSeconds: 1200
-    ClusterSpacing: 3.4
+    TargetDensityRatio: 0.85
+    HarvestExclusionRadius: 6
+    HarvestExclusionSeconds: 150
+    ClusterSpacing: 4
   - IndependentGeneration: 0
     DistributionConfigured: 0
+    LayoutSourceCount: 61
+    LayoutSupplementCount: 5
     Generation2Only: 0
     GenerationSalt: 0
     AllowedBiomes: []
@@ -142,18 +148,20 @@ MonoBehaviour:
     ForestPreference: 0
     RockPreference: 0.9
     ScaleRange: {x: 0.9, y: 1.15}
-    RespawnSeconds: 720
+    RespawnSeconds: 120
     RecoveryConfigured: 1
     NaturalRecovery: 1
     WorldRecoveryScope: 1
     Family: 2
     Rarity: 2
-    TargetDensityRatio: 0.9
-    HarvestExclusionRadius: 28
-    HarvestExclusionSeconds: 1800
-    ClusterSpacing: 12
+    TargetDensityRatio: 0.85
+    HarvestExclusionRadius: 6
+    HarvestExclusionSeconds: 240
+    ClusterSpacing: 4
   - IndependentGeneration: 0
     DistributionConfigured: 0
+    LayoutSourceCount: 7
+    LayoutSupplementCount: 0
     Generation2Only: 0
     GenerationSalt: 0
     AllowedBiomes: []
@@ -189,6 +197,8 @@ MonoBehaviour:
     ClusterSpacing: 3.2
   - IndependentGeneration: 0
     DistributionConfigured: 0
+    LayoutSourceCount: 4
+    LayoutSupplementCount: 0
     Generation2Only: 0
     GenerationSalt: 0
     AllowedBiomes: []
@@ -224,6 +234,8 @@ MonoBehaviour:
     ClusterSpacing: 2.4
   - IndependentGeneration: 1
     DistributionConfigured: 1
+    LayoutSourceCount: 9
+    LayoutSupplementCount: 9
     Generation2Only: 0
     GenerationSalt: 701
     AllowedBiomes:
@@ -248,18 +260,20 @@ MonoBehaviour:
     ForestPreference: 0.1
     RockPreference: 0.8
     ScaleRange: {x: 0.9, y: 1.1}
-    RespawnSeconds: 600
+    RespawnSeconds: 150
     RecoveryConfigured: 1
     NaturalRecovery: 1
     WorldRecoveryScope: 1
     Family: 2
     Rarity: 1
-    TargetDensityRatio: 0.9
-    HarvestExclusionRadius: 18
-    HarvestExclusionSeconds: 1200
-    ClusterSpacing: 9
+    TargetDensityRatio: 0.85
+    HarvestExclusionRadius: 6
+    HarvestExclusionSeconds: 300
+    ClusterSpacing: 4
   - IndependentGeneration: 1
     DistributionConfigured: 1
+    LayoutSourceCount: 9
+    LayoutSupplementCount: 2
     Generation2Only: 0
     GenerationSalt: 709
     AllowedBiomes:
@@ -284,18 +298,20 @@ MonoBehaviour:
     ForestPreference: 0.1
     RockPreference: 0.8
     ScaleRange: {x: 0.9, y: 1.1}
-    RespawnSeconds: 720
+    RespawnSeconds: 165
     RecoveryConfigured: 1
     NaturalRecovery: 1
     WorldRecoveryScope: 1
     Family: 2
     Rarity: 1
-    TargetDensityRatio: 0.9
-    HarvestExclusionRadius: 18
-    HarvestExclusionSeconds: 1200
-    ClusterSpacing: 9
+    TargetDensityRatio: 0.85
+    HarvestExclusionRadius: 4
+    HarvestExclusionSeconds: 330
+    ClusterSpacing: 4
   - IndependentGeneration: 1
     DistributionConfigured: 1
+    LayoutSourceCount: 27
+    LayoutSupplementCount: 28
     Generation2Only: 0
     GenerationSalt: 719
     AllowedBiomes:
@@ -320,18 +336,20 @@ MonoBehaviour:
     ForestPreference: 0.1
     RockPreference: 0.8
     ScaleRange: {x: 0.9, y: 1.1}
-    RespawnSeconds: 600
+    RespawnSeconds: 105
     RecoveryConfigured: 1
     NaturalRecovery: 1
     WorldRecoveryScope: 1
     Family: 2
     Rarity: 1
-    TargetDensityRatio: 0.9
-    HarvestExclusionRadius: 18
-    HarvestExclusionSeconds: 1200
-    ClusterSpacing: 9
+    TargetDensityRatio: 0.85
+    HarvestExclusionRadius: 6
+    HarvestExclusionSeconds: 210
+    ClusterSpacing: 4
   - IndependentGeneration: 1
     DistributionConfigured: 1
+    LayoutSourceCount: 0
+    LayoutSupplementCount: 0
     Generation2Only: 1
     GenerationSalt: 907
     AllowedBiomes: []
@@ -367,6 +385,8 @@ MonoBehaviour:
     ClusterSpacing: 0
   - IndependentGeneration: 1
     DistributionConfigured: 1
+    LayoutSourceCount: 0
+    LayoutSupplementCount: 0
     Generation2Only: 1
     GenerationSalt: 911
     AllowedBiomes: []

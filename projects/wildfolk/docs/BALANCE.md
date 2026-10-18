@@ -41,11 +41,11 @@
 |---|---:|---|---|
 | Tree |140|150 /Wood6|300초|
 | Fallen Log |12|50 /Wood4|480초|
-| Stone |55|50 /Stone3|600초|
-| Iron Ore |16|75 /Ore3|720초|
-| Small Plant |36|12 /Wood1|90초|
+| Stone |55|50 /Stone6|75초|
+| Iron Ore |16|75 /Ore6|120초|
+| Small Plant |36|12 /Fiber2|90초|
 
-성숙 Tree: Wood Axe5타 /Stone Axe4타 /Iron Axe3타. 회복은 지역 밀도 Target0.9 미만에서 새로운 ID로 해당 Region 후보를 검사한다. Rare는 월드 범위 후보이며 Player24/Harvest28유닛·1800초/Cluster12유닛 제외를 사용한다. 흔한 자원은 Player12/Harvest8유닛·Delay×2다. Camera/물/길/장애물/기지 내부 후보를 제외한다. 막히면5초 뒤 재시도한다. 작은 풀은 현재 비충돌 장식이다. Small Plant 관목36개는 비차단 자원으로 HP12/Wood1,90초 재생이다. Chicken10/180초,Boar6/300초,Rabbit12/180초,Deer8/420초,Sheep10/300초의 종별 목표를 지역에 분배해 부족분을 보충한다. 실제 번식/성장 시스템은 없다. Save에는 대기 시간을 게임 시간 기준으로 기록하고 오프라인 시간을 더하지 않는다.
+성숙 Tree: Wood Axe5타 /Stone Axe4타 /Iron Axe3타. 회복은 지역 밀도 Target0.9 미만에서 새로운 ID로 해당 Region 후보를 검사한다. Rare는 월드 범위 후보이며 Player24/현재 광물은 Harvest6유닛(Tin4)·delay×2/Cluster4유닛 제외를 사용한다. 흔한 자원은 Player12/Harvest8유닛·Delay×2다. Camera/물/길/장애물/기지 내부 후보를 제외한다. 막히면5초 뒤 재시도한다. 작은 풀은 현재 비충돌 장식이다. Small Plant 관목36개는 비차단 자원으로 HP12/Fiber2,90초 재생이다. Chicken10/180초,Boar6/300초,Rabbit12/180초,Deer8/420초,Sheep10/300초의 종별 목표를 지역에 분배해 부족분을 보충한다. 실제 번식/성장 시스템은 없다. Save에는 대기 시간을 게임 시간 기준으로 기록하고 오프라인 시간을 더하지 않는다.
 
 Land1 /Shallow0.7 /Deep 도보 불가. generation1만192×144/River 폭6/여울4.4를 유지한다. 신규 generation2는13120²/64unit chunk,main channel 반폭5/tributary3.5/약240unit 여울 후보다. 탐험시간/밀도와4인 공급은 WORLD_GENERATION을 따른다.
 
@@ -150,7 +150,7 @@ Goblin 시각 Separation0.85/Preferred Spacing2.7유닛. Goblin Ally Assist7유�
 
 ## 초기 금속 패스 수치
 
-기존 Ore 열은 Iron이다. Copper는 Iron Pickaxe 이상, Coal은 Stone Pickaxe 이상, Tin은 Panning Pan만 허용한다. Copper/Coal의 채집 효율은 Stone Pickaxe2.5배(단 Copper는 gate로 불가), Iron3배, Steel3.5배다. Steel Axe/Pickaxe 기본피해18·Wood/Stone 전문효율4.5배, Sword43, 모션/간격 Axe0.29/0.40·Pickaxe0.34/0.48·Sword0.28/0.38초다. Steel Head/Body Defense3/5(기존 Iron2/4)다. Pan 진행25·1.1/1.4초, Tin75/3드랍이다. Copper90/4/14개, Coal90/4/12개, Tin10개이며 복구 Copper·Coal600초/Tin720초다. 비용·시설 역할은 METAL_PROGRESSION을 따른다. 출시 밸런스/장시간 scarcity는 미확정이다.
+기존 Ore 열은 Iron이다. Copper는 Iron Pickaxe 이상, Coal은 Stone Pickaxe 이상, Tin은 Panning Pan만 허용한다. Copper/Coal의 채집 효율은 Stone Pickaxe2.5배(단 Copper는 gate로 불가), Iron3배, Steel3.5배다. Steel Axe/Pickaxe 기본피해18·Wood/Stone 전문효율4.5배, Sword43, 모션/간격 Axe0.29/0.40·Pickaxe0.34/0.48·Sword0.28/0.38초다. Steel Head/Body Defense3/5(기존 Iron2/4)다. Pan 진행25·1.1/1.4초, Tin50/5드랍이다. Copper90/6/legacy14개, Coal90/10/legacy12개, Tin legacy10개이며 지역 복구 Copper150/Coal105/Tin165초다. 비용·시설 역할은 METAL_PROGRESSION을 따른다. 출시 밸런스/장시간 scarcity는 미확정이다.
 
 ## 탐험 기반 수치 (초기 검증값)
 
@@ -159,3 +159,7 @@ Torch: Hand Wood1+Coal1→4, stack50/설치HP40/footprint.5×.5/거리3.5. 광�
 ## Workbench I–II Content Expansion (2026-10-18)
 
 이번 알파 수치는 [CONTENT_EXPANSION](CONTENT_EXPANSION.md)과 [FOOD_AND_FISHING](FOOD_AND_FISHING.md)을 따른다. 음식/낚시/탄약/무료 영구 조명의 장기 밸런스는 미확정이다.
+
+## Resource Tempo (2026-10-18)
+
+Stone6/75초, Iron6/120초, Coal10/105초, Copper6/150초, Tin5/165초(HP50/2 Pan hit). generation2는64unit chunk deficit,광물/Stone target0.85,5초마다활성지역조회·최대16ticket/2source/48후보다. Save9/Protocol11. 경제 전체 수치/분모와 검증 한계는 [RESOURCE_TEMPO](RESOURCE_TEMPO.md)를 따른다.

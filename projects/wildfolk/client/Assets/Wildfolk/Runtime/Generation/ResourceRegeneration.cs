@@ -10,7 +10,7 @@ namespace Wildfolk
         public ResourcePopulation Population {get;private set;}
         private double nextAttempt;
         public bool HasChanges=>changes.Count>0;
-        public void ResetWorld(){changes.Clear();live.Clear();renewableAt.Clear();Population=new ResourcePopulation(World.Map);nextAttempt=0;}
+        public void ResetWorld(){changes.Clear();live.Clear();chunkChanges.Clear();recoveryCursor=0;Population=new ResourcePopulation(World.Map);nextAttempt=0;}
         public void Register(ResourceNode node,string id,int rule)
         {var identity=node.gameObject.AddComponent<ResourceIdentity>();identity.Id=id;identity.Rule=rule;identity.Node=node;identity.Owner=this;identity.Bind();live[id]=identity;}
         public void Record(ResourceIdentity identity,bool destroyed)
@@ -31,11 +31,11 @@ namespace Wildfolk
             var now=Clock.Model.Elapsed;Population.Expire(now);var spawned=0;var hardLimit=0;foreach(var rule in World.Definition.Resources)hardLimit+=Mathf.CeilToInt(rule.Count*1.25f);
             foreach(var ticket in Population.Pending.ToArray())
             {
-                if(Population.Count(ticket.Rule,ticket.Region)>=Population.Target(ticket.Rule,ticket.Region)){Population.Pending.Remove(ticket);continue;}
+                if(Population.Count(ticket.Rule,ticket.Region)>=Population.Target(ticket.Rule,ticket.Region)){Population.RemoveTicket(ticket);continue;}
                 if(ticket.Due>now || live.Count>=hardLimit)continue;
                 var rule=World.Definition.Resources[ticket.Rule];if(!FindPosition(ticket.Rule,ticket.Region,out var position))continue;
                 var id="p"+(++Population.Serial);var scale=Mathf.Lerp(rule.ScaleRange.x,rule.ScaleRange.y,.5f);var node=World.CreateResource(id,ticket.Rule,position,scale);Population.Add(ticket.Rule,position);
-                changes[id]=new ResourceSnapshot{Id=id,Rule=ticket.Rule,Position=position,Scale=scale,HP=node.Health.Maximum};Population.Pending.Remove(ticket);Population.Schedule(ticket.Rule,ticket.Region,now);if(++spawned>=2)break;
+                changes[id]=new ResourceSnapshot{Id=id,Rule=ticket.Rule,Position=position,Scale=scale,HP=node.Health.Maximum};Population.RemoveTicket(ticket);Population.Schedule(ticket.Rule,ticket.Region,now);if(++spawned>=2)break;
             }
             return spawned;
         }
@@ -54,7 +54,7 @@ namespace Wildfolk
         public void Restore(ResourceSnapshot[] states,ResourceRecoverySnapshot recovery=null)
         {
             if(!SimulationAuthority.Allows(this))return;
-            if(World.Map.Streamed){changes.Clear();foreach(var state in states)changes.Add(state.Id,state);Population.Restore(recovery);return;}
+            if(World.Map.Streamed){changes.Clear();chunkChanges.Clear();Population=new ResourcePopulation(World.Map);foreach(var state in states){changes.Add(state.Id,state);Index(state);}Population.Restore(recovery);return;}
             foreach(var state in states)
             {
                 if(live.TryGetValue(state.Id,out var old)){Population.Remove(old.Rule,old.transform.position,Clock.Model.Elapsed,false);PrefabPool.Release(old.gameObject);live.Remove(state.Id);}

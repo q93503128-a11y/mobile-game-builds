@@ -1,6 +1,6 @@
 # Save / Load v9, v1~v8 호환
 
-2026-10-18 현재 콘텐츠 확장: **Save9 / Protocol10, Item86 / Recipe71**. [현재 정본](CONTENT_EXPANSION.md). 아래 이전 버전 설명은 해당 패스의 기록이다.
+2026-10-18 현재 자원 템포: **Save9 / Protocol11, Item86 / Recipe71**. [현재 정본](CONTENT_EXPANSION.md). 아래 이전 버전 설명은 해당 패스의 기록이다.
 
 
 2026-10-18 현재: generation2 지형 유지 / **Save8 / Protocol9**, Item50 / Recipe38. Torch·Compass·제작대 Home·동굴 Exit·제한 지형 cache/분할 생성을 제공한다. [탐험 정본](EXPLORATION_FOUNDATION.md)과 [실제 검수/성능](EXPLORATION_REVIEW.md)를 따른다. 아래 이전 날짜/Version 설명은 각 단계의 기록이다.
@@ -78,4 +78,6 @@ Home 좌표는 Save의 별도 중복 truth가 아니라 살아 있는 또는 dor
 
 ## Workbench I–II Content Expansion (2026-10-18)
 
-현재 Save9/Protocol10, v1~v8 호환. Waterskin Charges/Quality, Player Utility, Cooking Pot cargo와 신규 설치물은 기존 codec에 포함된다. 빈/구 stack은0/Empty, 이전 플레이어는 Utility 없음이다. 기존 지형 버전과 source ID를 유지한다. QA는 Play 전 IsolatedQaProfile을 사용하고 사용자 저장/백업을 fixture로 사용하지 않는다. [상태 의미](CONTENT_EXPANSION.md).
+현재 Save9/Protocol11, v1~v8 호환. Waterskin Charges/Quality, Player Utility, Cooking Pot cargo와 신규 설치물은 기존 codec에 포함된다. 빈/구 stack은0/Empty, 이전 플레이어는 Utility 없음이다. 기존 지형 버전과 source ID를 유지한다. QA는 Play 전 IsolatedQaProfile을 사용하고 사용자 저장/백업을 fixture로 사용하지 않는다. [상태 의미](CONTENT_EXPANSION.md).
+
+지역 회복도 기존 Save9 Recovery.Pending/Harvests/Serial/CandidateCursor와 ResourceSnapshot을 사용한다. g/c/e tombstone과 살아 있는 p를 기준으로 지역 목표를 재구성한다. old v2 depletion은 활성화 때 새 delay부터 시작하고 새 Due는 reload/rehost로 초기화하지 않는다. 현 정책은 [RESOURCE_TEMPO](RESOURCE_TEMPO.md)에 있다.

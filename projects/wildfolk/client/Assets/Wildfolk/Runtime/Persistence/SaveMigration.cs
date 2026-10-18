@@ -29,7 +29,7 @@ namespace Wildfolk
                 }
                 state.RespawnAt=0;
             }
-            population.Pending.RemoveAll(t=>population.Count(t.Rule,t.Region)>=population.Target(t.Rule,t.Region));game.Recovery=population.Capture();game.Version=3;
+            foreach(var ticket in population.Pending.ToArray())if(population.Count(ticket.Rule,ticket.Region)>=population.Target(ticket.Rule,ticket.Region))population.RemoveTicket(ticket);game.Recovery=population.Capture();game.Version=3;
         }
     }
 }

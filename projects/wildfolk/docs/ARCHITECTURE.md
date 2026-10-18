@@ -178,3 +178,7 @@ WorldChunkRuntime 하나의 bounded scheduler/ChunkActivation4unit retention을 
 ## Workbench I–II Content Expansion (2026-10-18)
 
 ItemStack/SavedStack/NetworkStack/GroundItemState에 작은 Charges/Quality 값을 공통 전달한다. PlayerRanged는 기존 projectile, Spear는 기존 melee, Cooking Pot은 기존 처리기, Gate는 기존 WorldDoor를 재사용한다. Utility는 기존 equipment/PlayerLightSource, 새 자연 source는 기존 청크/자원 회복에 연결한다. Editor QA profile은 release에서 비활성이다.
+
+## Resource Tempo (2026-10-18)
+
+현재 공유/개인 필수와 선택 예산은 canonical recipe metadata와 batch 잔량으로 계산한다. 비용/결과는 기존 processing save와 동일하다. 광물 source당 수율·chunk population 보충·Protocol11은 [RESOURCE_TEMPO](RESOURCE_TEMPO.md)를 따른다.

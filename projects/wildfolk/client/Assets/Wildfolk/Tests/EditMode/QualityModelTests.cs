@@ -40,7 +40,7 @@ namespace Wildfolk.Tests
         [Test]public void PopulationUsesRegionalDeficitsAndWorldScopeForRareRules()
         {
             var definition=Data<WorldGenerationDefinition>("WorldGeneration");var map=new WorldMap(definition,definition.DefaultSeed);var population=new ResourcePopulation(map);var rare=Array.FindIndex(definition.Resources,r=>r.Rarity==ResourceRarity.Rare);Assert.That(rare,Is.GreaterThanOrEqualTo(0));var ores=map.Resources.Where(p=>p.Rule==rare).ToArray();
-            Assert.That(population.Region(rare,ores[0].Position),Is.EqualTo(population.Region(rare,ores.Last().Position)));var target=population.Target(rare,0);Assert.That(target,Is.LessThan(ores.Length));population.Remove(rare,ores[0].Position,100,true);Assert.That(population.Pending,Is.Empty);population.Remove(rare,ores[1].Position,100,true);Assert.That(population.Pending.Count,Is.EqualTo(1));Assert.That(population.Excluded(rare,ores[0].Position,101),Is.True);
+            Assert.That(population.Region(rare,ores[0].Position),Is.EqualTo(population.Region(rare,ores.Last().Position)));var target=population.Target(rare,0);Assert.That(target,Is.LessThan(ores.Length));population.Remove(rare,ores[0].Position,100,true);Assert.That(population.Pending,Is.Empty);for(var i=1;population.Count(rare,0)>=target;i++)population.Remove(rare,ores[i].Position,100,true);Assert.That(population.Pending.Count,Is.EqualTo(1));Assert.That(population.Excluded(rare,ores[0].Position,101),Is.True);
             var distances=Enumerable.Range(0,40).Select(_=>Vector2.Distance(population.Candidate(rare,0),ores[0].Position));Assert.That(distances.Max(),Is.GreaterThan(50));
         }
         [Test]public void RecoverySaveKeepsExclusionsAndCandidateSequence()

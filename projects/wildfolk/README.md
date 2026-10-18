@@ -20,7 +20,7 @@ Campfire의 고기는1개/5초, Furnace는 Ore1개/2초→Ingot1개를 순차 �
 
 가방/상자에서는 플레이어 입력만 막고 세계는 계속 진행한다. Pause/Settings는 Singleplayer를 정지한다. Pause에는 Save game과 Save & return home이 있고 플레이어용 Load game 버튼은 제거했다. 저장은 Seed+월드 Delta+플레이어/시설/상자/처리 상태를 기록한다. 기기 Pause/Background/Quit 자동 저장을 제공한다. Editor 저장은 프로젝트의 UserData, 빌드는 Application.persistentDataPath다. 기존 게임은 Home Continue로 이어한다. 실제 Load 함수와 Editor Developer Save/Load는 유지한다. Pause의 Save & return home은 저장 성공 후 Home으로 돌아온다.
 
-새 월드 광물은 비재생이다. 식생만 게임 시간 뒤 새 위치/ID로 회복한다. 구 generation1은 이전 Population을 유지한다. 동물은 Chicken/Boar/Rabbit/Deer/Sheep의 종·지역·서식지 부족량을 새 Group/ID로 보충한다. 저장 중단 시간은 게임 시간에 더하지 않는다. 닭은 Raw1+Feather1, 멧돼지는 Raw2+Leather1을 드랍한다.
+새 월드 광물과 식생은 환경별 지역 population 부족량을 새 위치/ID로 회복한다. Stone75/Iron120/Coal105/Copper150/Tin165초이며 기존 좌표 timer respawn은 없다. 구 generation1은 이전 Population을 유지한다. 동물은 Chicken/Boar/Rabbit/Deer/Sheep의 종·지역·서식지 부족량을 새 Group/ID로 보충한다. 저장 중단 시간은 게임 시간에 더하지 않는다. 닭은 Raw1+Feather1, 멧돼지는 Raw2+Leather1을 드랍한다.
 
 Zombie는 밤에 올라와 활동하고 새벽에는 보상 없이 잠복한다. Local Threat와 Global Cap18을 나누며 멀리 남은 비추적 적은 대기 후 Slot을 반환한다. 낮 Goblin은 영역/개인 공간 침범 또는 선공에 반응한다. XP/Gold는 별도 세션 지갑이며 Save/Load에 포함된다. Level/초기Skill은 제공하며 Shop/Meta Coin은 아직 없다.
 
@@ -56,4 +56,6 @@ Home 수첩의 Single Player/Multiplayer/Settings는 기본 배경 박스를 없
 
 현재 Exploration Foundation 1: 하나의 Torch로 손/설치 광원, 초반 Compass, 제작대 지정 Home/동굴 Exit 안내, 청크 경계4unit retention·비활성 지형 LRU24·2.5ms 목표 row sampler를 제공한다. Save8/Protocol9이며 generation2 지형과 legacy generation1을 유지한다. [탐험 정본](docs/EXPLORATION_FOUNDATION.md)과 [검수/성능 수치](docs/EXPLORATION_REVIEW.md)를 따른다. WB III/실제 hands-free Lantern/지도/출시 progression은 아직 없다.
 
-현재 Workbench I–II Content Expansion: [전체 제작·예산 정본](docs/CONTENT_EXPANSION.md), [음식·낚시·물부대](docs/FOOD_AND_FISHING.md), [검수](docs/CONTENT_EXPANSION_REVIEW.md). Save9/Protocol10. III/Diamond/전문 제작대·포탑은 미구현이다.
+현재 Workbench I–II Content Expansion: [전체 제작·예산 정본](docs/CONTENT_EXPANSION.md), [음식·낚시·물부대](docs/FOOD_AND_FISHING.md), [검수](docs/CONTENT_EXPANSION_REVIEW.md). Save9/Protocol11. III/Diamond/전문 제작대·포탑은 미구현이다.
+
+현재 자원 템포 패스: [수율·1/4인 경제·지역 회복 정본](docs/RESOURCE_TEMPO.md), [86종 Source/Sink](docs/RESOURCE_ECONOMY_AUDIT.md), [실행 결과](docs/RESOURCE_TEMPO_REVIEW.md). 광물 보상과 지역 회복을 조정했고 기존 source 위치/ID와 저장 schema9를 유지한다.

@@ -16,6 +16,7 @@ namespace Wildfolk
             var reached=new HashSet<WorldChunk>{new WorldChunk(0,0)};var rejected=new HashSet<WorldChunk>();var queue=new Queue<WorldChunk>();queue.Enqueue(new WorldChunk(0,0));
             while(queue.Count>0){var at=queue.Dequeue();foreach(var d in Directions){var next=new WorldChunk(at.X+d.X,at.Y+d.Y);if(Mathf.Abs(next.X)>Limit || Mathf.Abs(next.Y)>Limit || reached.Contains(next) || rejected.Contains(next))continue;if(!world.Walkable(Point(next),.35f)){rejected.Add(next);continue;}if(!Segment(world,Point(at),Point(next),2))continue;reached.Add(next);queue.Enqueue(next);}}
             Check(world,world.ForestAnchor,reached);foreach(var p in world.GuaranteedResources)Check(world,p.Position,reached);
+            foreach(var entrance in world.Caves[0].SurfaceEntrances)Check(world,entrance,reached);
         }
         private static void Check(ContinentalWorldLayout world,Vector2 destination,HashSet<WorldChunk> reached)
         {

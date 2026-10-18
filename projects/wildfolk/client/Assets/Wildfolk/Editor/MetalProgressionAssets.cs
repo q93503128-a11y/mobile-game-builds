@@ -25,9 +25,9 @@ namespace Wildfolk.Editor
             foreach(var r in new[]{Recipe("CopperIngot",copperBar,1,1,new[]{Cost(copper,1),Cost(coal,1)},3),Recipe("TinIngot",tinBar,1,1,new[]{Cost(tin,1),Cost(coal,1)},3),Recipe("Bronze",bronze,3,1,new[]{Cost(copperBar,2),Cost(tinBar,1)},5),Recipe("Steel",steel,1,1,new[]{Cost(Data<ItemDefinition>("IronIngot"),1),Cost(coal,1)},6,processingStation:StationKind.BlastFurnace)}){if(!list.Contains(r))list.Add(r);if(!contentRecipes.Contains(r))contentRecipes.Add(r);}
             recipes.Recipes=list.ToArray();catalog.Recipes=contentRecipes.ToArray();EditorUtility.SetDirty(catalog);EditorUtility.SetDirty(recipes);
             var rules=new List<ResourceGenerationRule>(world.Resources);
-            AddResource(rules,"CopperOreNode","copper_ore_node",copper,ResourceKind.CopperOre,"IronPickaxe",90,4,14,18,701,ResourceTerrain.Land,.38f,600,2,11);
-            AddResource(rules,"TinOreNode","tin_ore_node",tin,ResourceKind.TinOre,"StonePickaxe",75,3,10,18,709,ResourceTerrain.Shore,0,720,1,0);
-            AddResource(rules,"CoalNode","coal_node",coal,ResourceKind.Coal,"StonePickaxe",90,4,12,22,719,ResourceTerrain.Land,.48f,600,3,14);
+            AddResource(rules,"CopperOreNode","copper_ore_node",copper,ResourceKind.CopperOre,"IronPickaxe",90,6,14,18,701,ResourceTerrain.Land,.38f,150,2,11);
+            AddResource(rules,"TinOreNode","tin_ore_node",tin,ResourceKind.TinOre,"StonePickaxe",50,5,10,18,709,ResourceTerrain.Shore,0,165,1,0);
+            AddResource(rules,"CoalNode","coal_node",coal,ResourceKind.Coal,"StonePickaxe",90,10,12,22,719,ResourceTerrain.Land,.48f,105,3,14);
             world.Resources=rules.ToArray();EditorUtility.SetDirty(world);
             foreach(var rule in world.Resources)
             {
@@ -62,7 +62,7 @@ namespace Wildfolk.Editor
             var resource=GameplayAssets.Asset<ResourceDefinition>(name+"Resource",d=>{d.Kind=kind;d.RequiredTool=ToolKind.Pickaxe;d.MinimumTier=tool.Tier;d.RequiredToolItem=Data<ItemDefinition>(toolName);d.Vitality=vitality;d.DropItem=drop;d.DropCount=count;});
             var prefab=WorldContentBuilder.Resource(name,art,resource,Vector2.zero,.7f,1.15f,HitReaction.Stone,AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Wildfolk/Prefabs/WorldPickup.prefab").GetComponent<WorldPickup>(),Data<GameplaySettings>("GameplaySettings"));
             if(rules.Exists(r=>r.Prefab==prefab))return;
-            rules.Add(new ResourceGenerationRule{Prefab=prefab,Count=population,StartRadius=8,SpawnClearance=clearance,Spacing=3.4f,ScaleRange=new Vector2(.9f,1.1f),RockPreference=.8f,ForestPreference=.1f,RecoveryConfigured=true,NaturalRecovery=true,WorldRecoveryScope=true,Family=ResourceFamily.Mineral,Rarity=ResourceRarity.Uncommon,TargetDensityRatio=.9f,RespawnSeconds=recovery,HarvestExclusionRadius=18,HarvestExclusionSeconds=1200,ClusterSpacing=9,IndependentGeneration=true,GenerationSalt=salt,DistributionConfigured=true,AllowedBiomes=new[]{Data<BiomeDefinition>("TemperateBiome")},BiomeAffinity=1,SourceContext=ResourceSourceContext.Surface,Terrain=terrain,DepthRange=Vector2.zero,WaterDistanceRange=new Vector2(1.4f,terrain==ResourceTerrain.Shore ? 12 : 1000),RoadDistanceRange=new Vector2(2.2f,1000),ForestDensityRange=new Vector2(0,1),RockDensityRange=new Vector2(rock,1),ClusterSize=clusterSize,ClusterRadius=clusterRadius});
+            rules.Add(new ResourceGenerationRule{Prefab=prefab,Count=population,StartRadius=8,SpawnClearance=clearance,Spacing=3.4f,ScaleRange=new Vector2(.9f,1.1f),RockPreference=.8f,ForestPreference=.1f,RecoveryConfigured=true,NaturalRecovery=true,WorldRecoveryScope=true,Family=ResourceFamily.Mineral,Rarity=ResourceRarity.Uncommon,TargetDensityRatio=.9f,RespawnSeconds=recovery,HarvestExclusionRadius=18,HarvestExclusionSeconds=recovery*2,ClusterSpacing=9,IndependentGeneration=true,GenerationSalt=salt,DistributionConfigured=true,AllowedBiomes=new[]{Data<BiomeDefinition>("TemperateBiome")},BiomeAffinity=1,SourceContext=ResourceSourceContext.Surface,Terrain=terrain,DepthRange=Vector2.zero,WaterDistanceRange=new Vector2(1.4f,terrain==ResourceTerrain.Shore ? 12 : 1000),RoadDistanceRange=new Vector2(2.2f,1000),ForestDensityRange=new Vector2(0,1),RockDensityRange=new Vector2(rock,1),ClusterSize=clusterSize,ClusterRadius=clusterRadius});
         }
     }
 }

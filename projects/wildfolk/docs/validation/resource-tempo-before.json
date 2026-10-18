@@ -1,0 +1,1509 @@
+{
+  "baseline": "71f18ad601908670be9382b76567eeb980409ef0",
+  "resources": [
+    [
+      "0",
+      "wood",
+      "150",
+      "6",
+      "300",
+      "8",
+      "0",
+      "True",
+      "",
+      "Strike"
+    ],
+    [
+      "1",
+      "stone",
+      "50",
+      "3",
+      "600",
+      "7",
+      "0",
+      "True",
+      "",
+      "Strike"
+    ],
+    [
+      "2",
+      "iron_ore",
+      "75",
+      "3",
+      "720",
+      "61",
+      "5",
+      "False",
+      "StoneTier (Wildfolk.EquipmentTier)",
+      "Strike"
+    ],
+    [
+      "3",
+      "wood",
+      "50",
+      "4",
+      "480",
+      "7",
+      "0",
+      "True",
+      "",
+      "Strike"
+    ],
+    [
+      "4",
+      "plant_fiber",
+      "12",
+      "2",
+      "90",
+      "4",
+      "0",
+      "True",
+      "",
+      "Strike"
+    ],
+    [
+      "5",
+      "copper_ore",
+      "90",
+      "4",
+      "600",
+      "9",
+      "9",
+      "False",
+      "IronTier (Wildfolk.EquipmentTier)",
+      "Strike"
+    ],
+    [
+      "6",
+      "tin_ore",
+      "75",
+      "3",
+      "720",
+      "9",
+      "2",
+      "False",
+      "IronTier (Wildfolk.EquipmentTier)",
+      "Panning"
+    ],
+    [
+      "7",
+      "coal",
+      "90",
+      "4",
+      "600",
+      "27",
+      "28",
+      "False",
+      "StoneTier (Wildfolk.EquipmentTier)",
+      "Strike"
+    ],
+    [
+      "8",
+      "berry",
+      "18",
+      "3",
+      "180",
+      "0",
+      "0",
+      "True",
+      "",
+      "Strike"
+    ],
+    [
+      "9",
+      "mushroom",
+      "12",
+      "2",
+      "240",
+      "0",
+      "0",
+      "True",
+      "",
+      "Strike"
+    ]
+  ],
+  "sources": [
+    [
+      "surface_wood",
+      "0",
+      "Surface",
+      "GrassSurface, ForestFloor",
+      "True",
+      "42",
+      "1"
+    ],
+    [
+      "surface_stone",
+      "1",
+      "Surface",
+      "GrassSurface, ExposedRock",
+      "True",
+      "48",
+      "0.8"
+    ],
+    [
+      "surface_iron_ore",
+      "2",
+      "Surface",
+      "GrassSurface, RockFace",
+      "False",
+      "4",
+      "0.22"
+    ],
+    [
+      "cave_iron_ore",
+      "2",
+      "Cave",
+      "ExposedRock, CaveWall",
+      "False",
+      "36",
+      "0.85"
+    ],
+    [
+      "surface_wood",
+      "3",
+      "Surface",
+      "GrassSurface, ForestFloor",
+      "True",
+      "3",
+      "0.7"
+    ],
+    [
+      "surface_wood",
+      "4",
+      "Surface",
+      "GrassSurface, WetGround",
+      "True",
+      "8",
+      "0.8"
+    ],
+    [
+      "surface_copper_ore",
+      "5",
+      "Surface",
+      "RockFace",
+      "False",
+      "18",
+      "0.55"
+    ],
+    [
+      "cave_copper_ore",
+      "5",
+      "Cave",
+      "ExposedRock, CaveWall",
+      "False",
+      "36",
+      "0.85"
+    ],
+    [
+      "surface_tin_ore",
+      "6",
+      "Surface",
+      "RiverGravel",
+      "False",
+      "8",
+      "0.8"
+    ],
+    [
+      "surface_coal",
+      "7",
+      "Surface",
+      "CoalSeam",
+      "False",
+      "18",
+      "0.6"
+    ],
+    [
+      "cave_coal",
+      "7",
+      "Cave",
+      "ExposedRock, CaveWall",
+      "False",
+      "36",
+      "0.85"
+    ],
+    [
+      "diamond_pocket",
+      "-1",
+      "Cave",
+      "DeepCave, CrystalPocket",
+      "False",
+      "4",
+      "1"
+    ],
+    [
+      "berry_bush_surface",
+      "8",
+      "Surface",
+      "GrassSurface",
+      "True",
+      "5",
+      "0.6"
+    ],
+    [
+      "mushroom_patch_surface",
+      "9",
+      "Surface",
+      "ForestFloor",
+      "True",
+      "5",
+      "0.6"
+    ],
+    [
+      "mushroom_patch_cave",
+      "9",
+      "Cave",
+      "CaveFloor",
+      "True",
+      "7",
+      "0.6"
+    ]
+  ],
+  "recipes": {
+    "axe": {
+      "id": "axe",
+      "out": 1,
+      "station": "Workbench",
+      "tier": 1,
+      "seconds": 0.0,
+      "optionalPlayer": 0,
+      "optionalShared": 0,
+      "cost": {
+        "wood": 5
+      }
+    },
+    "campfire": {
+      "id": "campfire",
+      "out": 1,
+      "station": "None",
+      "tier": 1,
+      "seconds": 0.0,
+      "optionalPlayer": 0,
+      "optionalShared": 0,
+      "cost": {
+        "wood": 4,
+        "stone": 3
+      }
+    },
+    "clean_water_cup": {
+      "id": "clean_water_cup",
+      "out": 1,
+      "station": "Campfire",
+      "tier": 1,
+      "seconds": 5.0,
+      "optionalPlayer": 0,
+      "optionalShared": 0,
+      "cost": {
+        "raw_water_cup": 1
+      }
+    },
+    "cooked_meat": {
+      "id": "cooked_meat",
+      "out": 1,
+      "station": "Campfire",
+      "tier": 1,
+      "seconds": 5.0,
+      "optionalPlayer": 0,
+      "optionalShared": 0,
+      "cost": {
+        "raw_meat": 1
+      }
+    },
+    "empty_cup": {
+      "id": "empty_cup",
+      "out": 1,
+      "station": "None",
+      "tier": 1,
+      "seconds": 0.0,
+      "optionalPlayer": 0,
+      "optionalShared": 0,
+      "cost": {
+        "wood": 2
+      }
+    },
+    "furnace": {
+      "id": "furnace",
+      "out": 1,
+      "station": "Workbench",
+      "tier": 1,
+      "seconds": 0.0,
+      "optionalPlayer": 0,
+      "optionalShared": 0,
+      "cost": {
+        "stone": 8,
+        "wood": 4
+      }
+    },
+    "iron_axe": {
+      "id": "iron_axe",
+      "out": 1,
+      "station": "Workbench",
+      "tier": 1,
+      "seconds": 0.0,
+      "optionalPlayer": 0,
+      "optionalShared": 0,
+      "cost": {
+        "stone_axe": 1,
+        "iron_ingot": 3
+      }
+    },
+    "iron_body": {
+      "id": "iron_body",
+      "out": 1,
+      "station": "Workbench",
+      "tier": 1,
+      "seconds": 0.0,
+      "optionalPlayer": 0,
+      "optionalShared": 0,
+      "cost": {
+        "iron_ingot": 3,
+        "leather": 1
+      }
+    },
+    "iron_head": {
+      "id": "iron_head",
+      "out": 1,
+      "station": "Workbench",
+      "tier": 1,
+      "seconds": 0.0,
+      "optionalPlayer": 0,
+      "optionalShared": 0,
+      "cost": {
+        "iron_ingot": 2,
+        "leather": 1
+      }
+    },
+    "iron_ingot": {
+      "id": "iron_ingot",
+      "out": 1,
+      "station": "Furnace",
+      "tier": 1,
+      "seconds": 2.0,
+      "optionalPlayer": 0,
+      "optionalShared": 0,
+      "cost": {
+        "iron_ore": 1
+      }
+    },
+    "iron_pickaxe": {
+      "id": "iron_pickaxe",
+      "out": 1,
+      "station": "Workbench",
+      "tier": 1,
+      "seconds": 0.0,
+      "optionalPlayer": 0,
+      "optionalShared": 0,
+      "cost": {
+        "stone_pickaxe": 1,
+        "iron_ingot": 3
+      }
+    },
+    "iron_sword": {
+      "id": "iron_sword",
+      "out": 1,
+      "station": "Workbench",
+      "tier": 1,
+      "seconds": 0.0,
+      "optionalPlayer": 0,
+      "optionalShared": 0,
+      "cost": {
+        "stone_sword": 1,
+        "iron_ingot": 3
+      }
+    },
+    "leather_body": {
+      "id": "leather_body",
+      "out": 1,
+      "station": "Workbench",
+      "tier": 1,
+      "seconds": 0.0,
+      "optionalPlayer": 0,
+      "optionalShared": 0,
+      "cost": {
+        "leather": 2,
+        "wood": 3
+      }
+    },
+    "leather_head": {
+      "id": "leather_head",
+      "out": 1,
+      "station": "Workbench",
+      "tier": 1,
+      "seconds": 0.0,
+      "optionalPlayer": 0,
+      "optionalShared": 0,
+      "cost": {
+        "leather": 1,
+        "wood": 2
+      }
+    },
+    "pickaxe": {
+      "id": "pickaxe",
+      "out": 1,
+      "station": "Workbench",
+      "tier": 1,
+      "seconds": 0.0,
+      "optionalPlayer": 0,
+      "optionalShared": 0,
+      "cost": {
+        "wood": 5
+      }
+    },
+    "reinforced_chest": {
+      "id": "reinforced_chest",
+      "out": 1,
+      "station": "Workbench",
+      "tier": 2,
+      "seconds": 0.0,
+      "optionalPlayer": 0,
+      "optionalShared": 0,
+      "cost": {
+        "wood": 8,
+        "iron_ingot": 2
+      }
+    },
+    "stone_axe": {
+      "id": "stone_axe",
+      "out": 1,
+      "station": "Workbench",
+      "tier": 1,
+      "seconds": 0.0,
+      "optionalPlayer": 0,
+      "optionalShared": 0,
+      "cost": {
+        "axe": 1,
+        "stone": 4
+      }
+    },
+    "stone_pickaxe": {
+      "id": "stone_pickaxe",
+      "out": 1,
+      "station": "Workbench",
+      "tier": 1,
+      "seconds": 0.0,
+      "optionalPlayer": 0,
+      "optionalShared": 0,
+      "cost": {
+        "pickaxe": 1,
+        "stone": 4
+      }
+    },
+    "stone_sword": {
+      "id": "stone_sword",
+      "out": 1,
+      "station": "Workbench",
+      "tier": 1,
+      "seconds": 0.0,
+      "optionalPlayer": 0,
+      "optionalShared": 0,
+      "cost": {
+        "wood_sword": 1,
+        "stone": 5
+      }
+    },
+    "stone_wall": {
+      "id": "stone_wall",
+      "out": 1,
+      "station": "Workbench",
+      "tier": 2,
+      "seconds": 0.0,
+      "optionalPlayer": 0,
+      "optionalShared": 0,
+      "cost": {
+        "stone": 3,
+        "wood": 1
+      }
+    },
+    "storage_chest": {
+      "id": "storage_chest",
+      "out": 1,
+      "station": "Workbench",
+      "tier": 1,
+      "seconds": 0.0,
+      "optionalPlayer": 0,
+      "optionalShared": 0,
+      "cost": {
+        "wood": 6
+      }
+    },
+    "wood_door": {
+      "id": "wood_door",
+      "out": 1,
+      "station": "Workbench",
+      "tier": 1,
+      "seconds": 0.0,
+      "optionalPlayer": 0,
+      "optionalShared": 0,
+      "cost": {
+        "wood": 3
+      }
+    },
+    "wood_sword": {
+      "id": "wood_sword",
+      "out": 1,
+      "station": "Workbench",
+      "tier": 1,
+      "seconds": 0.0,
+      "optionalPlayer": 0,
+      "optionalShared": 0,
+      "cost": {
+        "wood": 5
+      }
+    },
+    "wood_wall": {
+      "id": "wood_wall",
+      "out": 1,
+      "station": "Workbench",
+      "tier": 1,
+      "seconds": 0.0,
+      "optionalPlayer": 0,
+      "optionalShared": 0,
+      "cost": {
+        "wood": 2
+      }
+    },
+    "workbench": {
+      "id": "workbench",
+      "out": 1,
+      "station": "None",
+      "tier": 1,
+      "seconds": 0.0,
+      "optionalPlayer": 0,
+      "optionalShared": 0,
+      "cost": {
+        "wood": 6
+      }
+    },
+    "copper_ingot": {
+      "id": "copper_ingot",
+      "out": 1,
+      "station": "Furnace",
+      "tier": 1,
+      "seconds": 3.0,
+      "optionalPlayer": 0,
+      "optionalShared": 0,
+      "cost": {
+        "copper_ore": 1,
+        "coal": 1
+      }
+    },
+    "tin_ingot": {
+      "id": "tin_ingot",
+      "out": 1,
+      "station": "Furnace",
+      "tier": 1,
+      "seconds": 3.0,
+      "optionalPlayer": 0,
+      "optionalShared": 0,
+      "cost": {
+        "tin_ore": 1,
+        "coal": 1
+      }
+    },
+    "bronze": {
+      "id": "bronze",
+      "out": 3,
+      "station": "Furnace",
+      "tier": 1,
+      "seconds": 5.0,
+      "optionalPlayer": 0,
+      "optionalShared": 0,
+      "cost": {
+        "copper_ingot": 2,
+        "tin_ingot": 1
+      }
+    },
+    "steel": {
+      "id": "steel",
+      "out": 1,
+      "station": "BlastFurnace",
+      "tier": 1,
+      "seconds": 6.0,
+      "optionalPlayer": 0,
+      "optionalShared": 0,
+      "cost": {
+        "iron_ingot": 1,
+        "coal": 1
+      }
+    },
+    "prospecting_pan": {
+      "id": "prospecting_pan",
+      "out": 1,
+      "station": "Workbench",
+      "tier": 2,
+      "seconds": 0.0,
+      "optionalPlayer": 0,
+      "optionalShared": 0,
+      "cost": {
+        "copper_ingot": 2,
+        "wood": 2
+      }
+    },
+    "blast_furnace": {
+      "id": "blast_furnace",
+      "out": 1,
+      "station": "Workbench",
+      "tier": 2,
+      "seconds": 0.0,
+      "optionalPlayer": 0,
+      "optionalShared": 0,
+      "cost": {
+        "bronze": 3,
+        "iron_ingot": 3,
+        "stone": 8,
+        "wood": 4
+      }
+    },
+    "steel_axe": {
+      "id": "steel_axe",
+      "out": 1,
+      "station": "Workbench",
+      "tier": 2,
+      "seconds": 0.0,
+      "optionalPlayer": 0,
+      "optionalShared": 0,
+      "cost": {
+        "iron_axe": 1,
+        "steel": 3,
+        "wood": 2
+      }
+    },
+    "steel_pickaxe": {
+      "id": "steel_pickaxe",
+      "out": 1,
+      "station": "Workbench",
+      "tier": 2,
+      "seconds": 0.0,
+      "optionalPlayer": 0,
+      "optionalShared": 0,
+      "cost": {
+        "iron_pickaxe": 1,
+        "steel": 3,
+        "wood": 2
+      }
+    },
+    "steel_sword": {
+      "id": "steel_sword",
+      "out": 1,
+      "station": "Workbench",
+      "tier": 2,
+      "seconds": 0.0,
+      "optionalPlayer": 0,
+      "optionalShared": 0,
+      "cost": {
+        "iron_sword": 1,
+        "steel": 4,
+        "leather": 1
+      }
+    },
+    "steel_head": {
+      "id": "steel_head",
+      "out": 1,
+      "station": "Workbench",
+      "tier": 2,
+      "seconds": 0.0,
+      "optionalPlayer": 0,
+      "optionalShared": 0,
+      "cost": {
+        "iron_head": 1,
+        "steel": 2,
+        "leather": 1
+      }
+    },
+    "steel_body": {
+      "id": "steel_body",
+      "out": 1,
+      "station": "Workbench",
+      "tier": 2,
+      "seconds": 0.0,
+      "optionalPlayer": 0,
+      "optionalShared": 0,
+      "cost": {
+        "iron_body": 1,
+        "steel": 3,
+        "leather": 1
+      }
+    },
+    "torch": {
+      "id": "torch",
+      "out": 4,
+      "station": "None",
+      "tier": 1,
+      "seconds": 0.0,
+      "optionalPlayer": 0,
+      "optionalShared": 0,
+      "cost": {
+        "wood": 1,
+        "coal": 1
+      }
+    },
+    "compass": {
+      "id": "compass",
+      "out": 1,
+      "station": "Workbench",
+      "tier": 1,
+      "seconds": 0.0,
+      "optionalPlayer": 0,
+      "optionalShared": 0,
+      "cost": {
+        "wood": 2,
+        "iron_ingot": 1
+      }
+    },
+    "bow": {
+      "id": "bow",
+      "out": 1,
+      "station": "Workbench",
+      "tier": 1,
+      "seconds": 0.0,
+      "optionalPlayer": 0,
+      "optionalShared": 0,
+      "cost": {
+        "wood": 5,
+        "plant_fiber": 4
+      }
+    },
+    "arrow": {
+      "id": "arrow",
+      "out": 12,
+      "station": "Workbench",
+      "tier": 1,
+      "seconds": 0.0,
+      "optionalPlayer": 0,
+      "optionalShared": 0,
+      "cost": {
+        "wood": 2,
+        "feather": 1
+      }
+    },
+    "wood_spear": {
+      "id": "wood_spear",
+      "out": 1,
+      "station": "Workbench",
+      "tier": 1,
+      "seconds": 0.0,
+      "optionalPlayer": 0,
+      "optionalShared": 0,
+      "cost": {
+        "wood": 4,
+        "plant_fiber": 2
+      }
+    },
+    "stone_spear": {
+      "id": "stone_spear",
+      "out": 1,
+      "station": "Workbench",
+      "tier": 1,
+      "seconds": 0.0,
+      "optionalPlayer": 0,
+      "optionalShared": 0,
+      "cost": {
+        "wood_spear": 1,
+        "stone": 4
+      }
+    },
+    "iron_spear": {
+      "id": "iron_spear",
+      "out": 1,
+      "station": "Workbench",
+      "tier": 1,
+      "seconds": 0.0,
+      "optionalPlayer": 0,
+      "optionalShared": 0,
+      "cost": {
+        "stone_spear": 1,
+        "iron_ingot": 3
+      }
+    },
+    "fishing_rod": {
+      "id": "fishing_rod",
+      "out": 1,
+      "station": "Workbench",
+      "tier": 1,
+      "seconds": 0.0,
+      "optionalPlayer": 0,
+      "optionalShared": 0,
+      "cost": {
+        "wood": 4,
+        "plant_fiber": 3
+      }
+    },
+    "roasted_mushroom": {
+      "id": "roasted_mushroom",
+      "out": 1,
+      "station": "Campfire",
+      "tier": 1,
+      "seconds": 5.0,
+      "optionalPlayer": 0,
+      "optionalShared": 0,
+      "cost": {
+        "mushroom": 1
+      }
+    },
+    "cooked_fish": {
+      "id": "cooked_fish",
+      "out": 1,
+      "station": "Campfire",
+      "tier": 1,
+      "seconds": 5.0,
+      "optionalPlayer": 0,
+      "optionalShared": 0,
+      "cost": {
+        "raw_fish": 1
+      }
+    },
+    "cooking_pot": {
+      "id": "cooking_pot",
+      "out": 1,
+      "station": "Workbench",
+      "tier": 1,
+      "seconds": 0.0,
+      "optionalPlayer": 0,
+      "optionalShared": 1,
+      "cost": {
+        "stone": 6,
+        "iron_ingot": 2
+      }
+    },
+    "mushroom_stew": {
+      "id": "mushroom_stew",
+      "out": 1,
+      "station": "CookingPot",
+      "tier": 1,
+      "seconds": 7.0,
+      "optionalPlayer": 0,
+      "optionalShared": 0,
+      "cost": {
+        "mushroom": 2,
+        "berry": 2
+      }
+    },
+    "meat_stew": {
+      "id": "meat_stew",
+      "out": 1,
+      "station": "CookingPot",
+      "tier": 1,
+      "seconds": 8.0,
+      "optionalPlayer": 0,
+      "optionalShared": 0,
+      "cost": {
+        "raw_meat": 1,
+        "mushroom": 1,
+        "berry": 2
+      }
+    },
+    "fish_stew": {
+      "id": "fish_stew",
+      "out": 1,
+      "station": "CookingPot",
+      "tier": 1,
+      "seconds": 8.0,
+      "optionalPlayer": 0,
+      "optionalShared": 0,
+      "cost": {
+        "raw_fish": 1,
+        "mushroom": 1,
+        "berry": 2
+      }
+    },
+    "mixed_stew": {
+      "id": "mixed_stew",
+      "out": 1,
+      "station": "CookingPot",
+      "tier": 1,
+      "seconds": 10.0,
+      "optionalPlayer": 0,
+      "optionalShared": 0,
+      "cost": {
+        "raw_meat": 1,
+        "raw_fish": 1,
+        "mushroom": 1,
+        "berry": 2
+      }
+    },
+    "waterskin": {
+      "id": "purify_waterskin",
+      "out": 1,
+      "station": "Campfire",
+      "tier": 1,
+      "seconds": 10.0,
+      "optionalPlayer": 0,
+      "optionalShared": 0,
+      "cost": {
+        "waterskin": 1
+      }
+    },
+    "wood_fence": {
+      "id": "wood_fence",
+      "out": 2,
+      "station": "Workbench",
+      "tier": 1,
+      "seconds": 0.0,
+      "optionalPlayer": 0,
+      "optionalShared": 0,
+      "cost": {
+        "wood": 3,
+        "plant_fiber": 1
+      }
+    },
+    "wood_fence_gate": {
+      "id": "wood_fence_gate",
+      "out": 1,
+      "station": "Workbench",
+      "tier": 1,
+      "seconds": 0.0,
+      "optionalPlayer": 0,
+      "optionalShared": 0,
+      "cost": {
+        "wood": 3,
+        "plant_fiber": 2
+      }
+    },
+    "wood_gate": {
+      "id": "wood_gate",
+      "out": 1,
+      "station": "Workbench",
+      "tier": 1,
+      "seconds": 0.0,
+      "optionalPlayer": 0,
+      "optionalShared": 0,
+      "cost": {
+        "wood": 6,
+        "plant_fiber": 2
+      }
+    },
+    "stone_door": {
+      "id": "stone_door",
+      "out": 1,
+      "station": "Workbench",
+      "tier": 1,
+      "seconds": 0.0,
+      "optionalPlayer": 0,
+      "optionalShared": 0,
+      "cost": {
+        "stone": 4,
+        "wood": 2
+      }
+    },
+    "stone_fence": {
+      "id": "stone_fence",
+      "out": 2,
+      "station": "Workbench",
+      "tier": 1,
+      "seconds": 0.0,
+      "optionalPlayer": 0,
+      "optionalShared": 0,
+      "cost": {
+        "stone": 4,
+        "wood": 1
+      }
+    },
+    "stone_fence_gate": {
+      "id": "stone_fence_gate",
+      "out": 1,
+      "station": "Workbench",
+      "tier": 1,
+      "seconds": 0.0,
+      "optionalPlayer": 0,
+      "optionalShared": 0,
+      "cost": {
+        "stone": 4,
+        "wood": 2
+      }
+    },
+    "stone_gate": {
+      "id": "stone_gate",
+      "out": 1,
+      "station": "Workbench",
+      "tier": 1,
+      "seconds": 0.0,
+      "optionalPlayer": 0,
+      "optionalShared": 0,
+      "cost": {
+        "stone": 7,
+        "wood": 3
+      }
+    },
+    "reinforced_bow": {
+      "id": "reinforced_bow",
+      "out": 1,
+      "station": "Workbench",
+      "tier": 2,
+      "seconds": 0.0,
+      "optionalPlayer": 1,
+      "optionalShared": 0,
+      "cost": {
+        "bow": 1,
+        "bronze": 2,
+        "leather": 1
+      }
+    },
+    "bronze_arrow": {
+      "id": "bronze_arrow",
+      "out": 12,
+      "station": "Workbench",
+      "tier": 2,
+      "seconds": 0.0,
+      "optionalPlayer": 24,
+      "optionalShared": 0,
+      "cost": {
+        "wood": 2,
+        "feather": 1,
+        "bronze": 1
+      }
+    },
+    "crossbow": {
+      "id": "crossbow",
+      "out": 1,
+      "station": "Workbench",
+      "tier": 2,
+      "seconds": 0.0,
+      "optionalPlayer": 1,
+      "optionalShared": 0,
+      "cost": {
+        "wood": 6,
+        "bronze": 3,
+        "leather": 2
+      }
+    },
+    "crossbow_bolt": {
+      "id": "crossbow_bolt",
+      "out": 12,
+      "station": "Workbench",
+      "tier": 2,
+      "seconds": 0.0,
+      "optionalPlayer": 0,
+      "optionalShared": 0,
+      "cost": {
+        "wood": 2,
+        "feather": 1
+      }
+    },
+    "steel_bolt": {
+      "id": "steel_bolt",
+      "out": 8,
+      "station": "Workbench",
+      "tier": 2,
+      "seconds": 0.0,
+      "optionalPlayer": 16,
+      "optionalShared": 0,
+      "cost": {
+        "wood": 2,
+        "feather": 1,
+        "steel": 1
+      }
+    },
+    "lantern": {
+      "id": "lantern",
+      "out": 1,
+      "station": "Workbench",
+      "tier": 2,
+      "seconds": 0.0,
+      "optionalPlayer": 1,
+      "optionalShared": 0,
+      "cost": {
+        "bronze": 2,
+        "leather": 1,
+        "coal": 2
+      }
+    },
+    "reinforced_wall": {
+      "id": "reinforced_wall",
+      "out": 1,
+      "station": "Workbench",
+      "tier": 2,
+      "seconds": 0.0,
+      "optionalPlayer": 0,
+      "optionalShared": 6,
+      "cost": {
+        "stone": 3,
+        "wood": 2,
+        "bronze": 1
+      }
+    },
+    "reinforced_door": {
+      "id": "reinforced_door",
+      "out": 1,
+      "station": "Workbench",
+      "tier": 2,
+      "seconds": 0.0,
+      "optionalPlayer": 0,
+      "optionalShared": 1,
+      "cost": {
+        "stone": 3,
+        "wood": 2,
+        "bronze": 2
+      }
+    },
+    "reinforced_gate": {
+      "id": "reinforced_gate",
+      "out": 1,
+      "station": "Workbench",
+      "tier": 2,
+      "seconds": 0.0,
+      "optionalPlayer": 0,
+      "optionalShared": 1,
+      "cost": {
+        "stone": 5,
+        "wood": 4,
+        "bronze": 3
+      }
+    },
+    "spike_trap": {
+      "id": "spike_trap",
+      "out": 1,
+      "station": "Workbench",
+      "tier": 2,
+      "seconds": 0.0,
+      "optionalPlayer": 0,
+      "optionalShared": 1,
+      "cost": {
+        "wood": 4,
+        "stone": 2,
+        "bronze": 1
+      }
+    },
+    "brazier": {
+      "id": "brazier",
+      "out": 1,
+      "station": "Workbench",
+      "tier": 2,
+      "seconds": 0.0,
+      "optionalPlayer": 0,
+      "optionalShared": 1,
+      "cost": {
+        "bronze": 3,
+        "stone": 4,
+        "coal": 2
+      }
+    }
+  },
+  "personalRoots": [
+    "steel_axe",
+    "steel_pickaxe",
+    "steel_sword",
+    "steel_head",
+    "steel_body",
+    "prospecting_pan",
+    "compass",
+    "empty_cup"
+  ],
+  "sharedRoots": [
+    "workbench",
+    "campfire",
+    "furnace",
+    "blast_furnace",
+    "storage_chest"
+  ],
+  "upgrade": {
+    "wood": 8,
+    "stone": 6,
+    "iron_ingot": 2
+  },
+  "one": {
+    "shared": {
+      "wood": 32,
+      "stone": 25,
+      "copper_ore": 2,
+      "coal": 3,
+      "tin_ore": 1,
+      "iron_ore": 5
+    },
+    "personal": {
+      "coal": 17,
+      "copper_ore": 2,
+      "iron_ore": 30,
+      "leather": 5,
+      "stone": 13,
+      "wood": 25
+    },
+    "essential": {
+      "wood": 57,
+      "stone": 38,
+      "copper_ore": 4,
+      "coal": 20,
+      "tin_ore": 1,
+      "iron_ore": 35,
+      "leather": 5
+    },
+    "optional": {
+      "coal": 30,
+      "copper_ore": 16,
+      "feather": 4,
+      "iron_ore": 4,
+      "leather": 4,
+      "plant_fiber": 4,
+      "stone": 38,
+      "tin_ore": 8,
+      "wood": 41
+    },
+    "total": {
+      "wood": 98,
+      "stone": 76,
+      "copper_ore": 20,
+      "coal": 50,
+      "tin_ore": 9,
+      "iron_ore": 39,
+      "leather": 9,
+      "plant_fiber": 4,
+      "feather": 4
+    },
+    "gross": {
+      "workbench": 1,
+      "wood": 98,
+      "campfire": 1,
+      "stone": 76,
+      "furnace": 1,
+      "blast_furnace": 1,
+      "bronze": 20,
+      "copper_ingot": 20,
+      "copper_ore": 20,
+      "coal": 50,
+      "tin_ingot": 9,
+      "tin_ore": 9,
+      "iron_ingot": 39,
+      "iron_ore": 39,
+      "storage_chest": 1,
+      "steel_axe": 1,
+      "iron_axe": 1,
+      "stone_axe": 1,
+      "axe": 1,
+      "steel": 17,
+      "steel_pickaxe": 1,
+      "iron_pickaxe": 1,
+      "stone_pickaxe": 1,
+      "pickaxe": 1,
+      "steel_sword": 1,
+      "iron_sword": 1,
+      "stone_sword": 1,
+      "wood_sword": 1,
+      "leather": 9,
+      "steel_head": 1,
+      "iron_head": 1,
+      "steel_body": 1,
+      "iron_body": 1,
+      "prospecting_pan": 1,
+      "compass": 1,
+      "empty_cup": 1,
+      "cooking_pot": 1,
+      "reinforced_bow": 1,
+      "bow": 1,
+      "plant_fiber": 4,
+      "bronze_arrow": 24,
+      "feather": 4,
+      "crossbow": 1,
+      "steel_bolt": 16,
+      "lantern": 1,
+      "reinforced_wall": 6,
+      "reinforced_door": 1,
+      "reinforced_gate": 1,
+      "spike_trap": 1,
+      "brazier": 1
+    },
+    "surplus": {},
+    "oldNodes": {
+      "stone": 26,
+      "iron_ore": 13,
+      "copper_ore": 5,
+      "tin_ore": 3,
+      "coal": 13
+    }
+  },
+  "four": {
+    "shared": {
+      "wood": 32,
+      "stone": 25,
+      "copper_ore": 2,
+      "coal": 3,
+      "tin_ore": 1,
+      "iron_ore": 5
+    },
+    "personal": {
+      "coal": 68,
+      "copper_ore": 8,
+      "iron_ore": 120,
+      "leather": 20,
+      "stone": 52,
+      "wood": 100
+    },
+    "essential": {
+      "wood": 132,
+      "stone": 77,
+      "copper_ore": 10,
+      "coal": 71,
+      "tin_ore": 1,
+      "iron_ore": 125,
+      "leather": 20
+    },
+    "optional": {
+      "coal": 69,
+      "copper_ore": 34,
+      "feather": 16,
+      "iron_ore": 10,
+      "leather": 16,
+      "plant_fiber": 16,
+      "stone": 38,
+      "tin_ore": 17,
+      "wood": 98
+    },
+    "total": {
+      "wood": 230,
+      "stone": 115,
+      "copper_ore": 44,
+      "coal": 140,
+      "tin_ore": 18,
+      "iron_ore": 135,
+      "leather": 36,
+      "plant_fiber": 16,
+      "feather": 16
+    },
+    "gross": {
+      "workbench": 1,
+      "wood": 230,
+      "campfire": 1,
+      "stone": 115,
+      "furnace": 1,
+      "blast_furnace": 1,
+      "bronze": 47,
+      "copper_ingot": 44,
+      "copper_ore": 44,
+      "coal": 140,
+      "tin_ingot": 18,
+      "tin_ore": 18,
+      "iron_ingot": 135,
+      "iron_ore": 135,
+      "storage_chest": 1,
+      "steel_axe": 4,
+      "iron_axe": 4,
+      "stone_axe": 4,
+      "axe": 4,
+      "steel": 68,
+      "steel_pickaxe": 4,
+      "iron_pickaxe": 4,
+      "stone_pickaxe": 4,
+      "pickaxe": 4,
+      "steel_sword": 4,
+      "iron_sword": 4,
+      "stone_sword": 4,
+      "wood_sword": 4,
+      "leather": 36,
+      "steel_head": 4,
+      "iron_head": 4,
+      "steel_body": 4,
+      "iron_body": 4,
+      "prospecting_pan": 4,
+      "compass": 4,
+      "empty_cup": 4,
+      "cooking_pot": 1,
+      "reinforced_bow": 4,
+      "bow": 4,
+      "plant_fiber": 16,
+      "bronze_arrow": 96,
+      "feather": 16,
+      "crossbow": 4,
+      "steel_bolt": 64,
+      "lantern": 4,
+      "reinforced_wall": 6,
+      "reinforced_door": 1,
+      "reinforced_gate": 1,
+      "spike_trap": 1,
+      "brazier": 1
+    },
+    "surplus": {},
+    "oldNodes": {
+      "stone": 39,
+      "iron_ore": 45,
+      "copper_ore": 11,
+      "tin_ore": 6,
+      "coal": 35
+    }
+  },
+  "items": [
+    "axe",
+    "campfire",
+    "clean_water_cup",
+    "cooked_meat",
+    "empty_cup",
+    "feather",
+    "furnace",
+    "iron_axe",
+    "iron_body",
+    "iron_head",
+    "iron_ingot",
+    "iron_ore",
+    "iron_pickaxe",
+    "iron_sword",
+    "leather",
+    "leather_body",
+    "leather_head",
+    "pickaxe",
+    "raw_meat",
+    "raw_water_cup",
+    "reinforced_chest",
+    "rusted_sword",
+    "stone",
+    "stone_axe",
+    "stone_pickaxe",
+    "stone_sword",
+    "stone_wall",
+    "storage_chest",
+    "wood",
+    "wood_door",
+    "wood_sword",
+    "wood_wall",
+    "workbench",
+    "workbench_ii",
+    "copper_ore",
+    "tin_ore",
+    "coal",
+    "copper_ingot",
+    "tin_ingot",
+    "bronze",
+    "steel",
+    "prospecting_pan",
+    "blast_furnace",
+    "steel_axe",
+    "steel_pickaxe",
+    "steel_sword",
+    "steel_head",
+    "steel_body",
+    "torch",
+    "compass",
+    "plant_fiber",
+    "berry",
+    "mushroom",
+    "raw_fish",
+    "bow",
+    "arrow",
+    "wood_spear",
+    "stone_spear",
+    "iron_spear",
+    "fishing_rod",
+    "roasted_mushroom",
+    "cooked_fish",
+    "cooking_pot",
+    "mushroom_stew",
+    "meat_stew",
+    "fish_stew",
+    "mixed_stew",
+    "waterskin",
+    "wood_fence",
+    "wood_fence_gate",
+    "wood_gate",
+    "stone_door",
+    "stone_fence",
+    "stone_fence_gate",
+    "stone_gate",
+    "reinforced_bow",
+    "bronze_arrow",
+    "crossbow",
+    "crossbow_bolt",
+    "steel_bolt",
+    "lantern",
+    "reinforced_wall",
+    "reinforced_door",
+    "reinforced_gate",
+    "spike_trap",
+    "brazier"
+  ]
+}

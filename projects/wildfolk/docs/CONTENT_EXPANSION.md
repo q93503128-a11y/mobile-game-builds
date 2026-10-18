@@ -135,34 +135,25 @@ Purify Waterskin은 **가득 찬 Raw3/3 하나만** 예약하며 결과는 Clean
 |Stone|기존 지상 자원|초반 장비·Cooking Pot·Fence/Gate·보강 건축|
 |Leather|기존 동물 loot|Armor/Waterskin/Reinforced Bow/Crossbow/Lantern|
 |Feather|기존 Chicken loot,1개|Arrow12 또는 Bolt12의 묶음 제작,고급탄|
-|Iron|기존 비재생 광물→Furnace|Iron 장비·Cooking Pot·공유 시설·Steel|
+|Iron|지역 회복 광물→Furnace|Iron 장비·Cooking Pot·공유 시설·Steel|
 |Copper/Tin|기존 채굴/수변 Panning→Furnace|Bronze|
 |Bronze|Copper2+Tin1 가공→3|Reinforced Bow/Arrow/Crossbow/Lantern/보강 벽·문·대문/Trap/Brazier|
-|Coal|기존 Stone Pickaxe 이상 비재생 광물|Torch/금속 가공/Steel/Lantern/Brazier|
+|Coal|Stone Pickaxe 이상 지역 회복 광물|Torch/금속 가공/Steel/Lantern/Brazier|
 |Steel|Blast Furnace에서Iron+Coal|기존 Steel 장비·선택 Steel Bolt|
 
 기본 Arrow/Bolt는 Wood+Feather라 유한 광물 없이 계속 만들 수 있다. Feather1→기본12발이며 이번에 Chicken breeding을 요구하지 않는다. 고급탄은 선택 소비처다. 탄약은 가방 앞 슬롯의 맞는 종류를 먼저 사용한다. 고급탄을 우선 쓰려면 그 탄약 슬롯을 앞쪽으로 옮긴다. 탄약 선택을 새 무기 업그레이드와 혼동하지 않는다.
 
 ## 1인/4인 광물 예산
 
-필수는 플레이어별 기존 Steel Axe/Pickaxe/Sword/Head/Body와 그 이전 단계, Prospecting Pan, 공유 Workbench 및 I→II/Blast Furnace다. 선택은 플레이어별 Reinforced Bow/Crossbow/Lantern/Bronze Arrow24/Steel Bolt16, 공유 Cooking Pot1/보강 Wall6/Door1/Gate1/Trap1/Brazier1이다. 모든 선택 시설 수백 개나 미래 III 비용을 보장하지 않는다.
+현재 예산 정본은 [RESOURCE_TEMPO](RESOURCE_TEMPO.md)다. 공유 기초 시설/Compass/Cup까지 필수 root에 포함하고 Bronze batch 잔량을 재사용한다. 선택 포함1인 Iron39/Coal50/Copper20/Tin9,4인135/140/44/18이다.4인×1.5 목표203/210/66/27,기존 배치의 현재 수율 공급396/550/108/55다. 위 recipe 표의 비용은 바뀌지 않았다.
 
-|재료|1인 필수|1인 선택|4인 필수|4인 선택|1인 보장 목표|4인 보장 목표|Seed9472026 보장 공급|
-|---|---:|---:|---:|---:|---:|---:|---:|
-|iron_ore|34|4|121|10|57|197|198|
-|copper_ore|4|20|10|38|36|72|72|
-|tin_ore|1|10|1|19|17|31|33|
-|coal|20|36|71|75|84|220|220|
-
-필수/선택 수치는 recipe별 묶음 올림을 포함한 raw source 요구량이다. 보장 목표는 필수와 선택 각각1.5배 안전 여유와 올림을 적용한다. 한 번의 최적 일괄 가공보다 보수적일 수 있다. 실제 Recipe 그래프와 ProgressionPerPlayer/Shared 데이터를 읽어 계산한다. III 비용은 넣지 않았다.
-
-기존 g/source ID와 위치를 바꾸지 않고 부족한 광물만 e<rule>:<index>의 결정적 보충 anchor로 추가한다. 보충은 기존 모든 배치 뒤에 추가하고 기존 자연 source를 밀어내지 않는 위치를 고른다. 기존 generation2 저장에도 같은 additive 경로를 적용한다. 구 generation1 저장은 신규 자연 source를 생성하지 않으며 이전 지형/ID를 유지한다. 광물 무한 재생은 없다.
+g/c/e의 기존 ID·위치를 고정하는 layout baseline과 실제 recipe 경제를 분리했다. Iron/Coal/Copper/Tin은 해당 환경의 지역 deficit가 게임 시간 뒤 새로운 p ID와 위치로 회복된다. cap/예약/복원은 RESOURCE_TEMPO를 따른다.
 
 Berry/Mushroom은 별도 SourceId salt로 기존 source 뒤에 생성한다. 기존 식생/광물의 seed stream과 ID를 유지하고, 기존 chunk materialization/recovery를 사용한다. 별도 chunk manager/물 tile별 Update는 없다.
 
 ## 저장과 네트워크
 
-Save9 / Protocol10. v1~v8을 기존 이관 순서로 읽고9로 올린다. 이전 슬롯/드롭에는 charges0/Empty, Utility 없음이 기본이다. Waterskin은 한 item, MaxStack1, Charges0~3/Quality Empty·Raw·Clean을 저장한다. Empty는 반드시0charge다. 새로운 범용 RPG instance framework는 없다.
+Save9 / Protocol11. v1~v8을 기존 이관 순서로 읽고9로 올린다. 이전 슬롯/드롭에는 charges0/Empty, Utility 없음이 기본이다. Waterskin은 한 item, MaxStack1, Charges0~3/Quality Empty·Raw·Clean을 저장한다. Empty는 반드시0charge다. 새로운 범용 RPG instance framework는 없다.
 
 슬롯 이동/교환/상자/드롭·픽업/휴면/저장/시설 예약·반환은 동일 상태를 보존한다. 정수 중인 용기는 시설 cargo 안에 예약되며 완료 결과를 공간 부족으로 잃지 않는다. 가득 찬 Raw 물부대를 정수하고3회 마신 뒤 같은 item을 다시 채운다. Raw는 기존 Raw Cup의 불이익을 유지한다.
 

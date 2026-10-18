@@ -80,7 +80,7 @@ namespace Wildfolk
             foreach(var p in GuaranteedResources)if(!p.Id.StartsWith("e") && WorldChunk.At(p.Position,data.ChunkSize).Equals(chunk))result.Add(p);
             for(var phase=0;phase<2;phase++)for(var rule=0;rule<data.NaturalSources.Length;rule++)
             {
-                var source=data.NaturalSources[rule];if(!source.Enabled || source.ResourceRule<0 || source.NaturalRecovery!=(phase==1))continue;var rng=new System.Random(WorldSeeds.Derive(seed,source.NaturalRecovery ? SeedDomain.Vegetation : SeedDomain.Resource,chunk.X,chunk.Y,WorldSeeds.StableText(source.SourceId)));
+                var source=data.NaturalSources[rule];if(!source.Enabled || source.ResourceRule<0 || source.VegetationStream!=(phase==1))continue;var rng=new System.Random(WorldSeeds.Derive(seed,source.VegetationStream ? SeedDomain.Vegetation : SeedDomain.Resource,chunk.X,chunk.Y,WorldSeeds.StableText(source.SourceId)));
                 for(var i=0;i<source.CandidatesPerChunk;i++)
                 {var p=origin+new Vector2((float)rng.NextDouble(),(float)rng.NextDouble())*data.ChunkSize;var under=Underground(p);if(!Contains(p))continue;var e=Environment(p);var depth=under ? CaveAt(p).Nearest(p).Depth : 0;if(!source.Matches(e,under,depth) || !SourceAllowed(source.ResourceRule,p) || rng.NextDouble()>source.Probability)continue;
                     if(rng.NextDouble()>source.Density(e))continue;

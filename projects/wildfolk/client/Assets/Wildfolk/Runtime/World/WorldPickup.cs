@@ -60,6 +60,7 @@ namespace Wildfolk
             if (Vector2.Distance(transform.position, player.transform.position) > settings.PickupRadius) return;
             nextPickupAttempt = Time.time + .15f;
             var accepted = player.Model.Add(Item, Count,Charges,Quality);
+            if(accepted>0)PlayerFeedback.ShowPickup(Item,accepted);
             Count -= accepted;
             if (Count == 0) PrefabPool.Release(gameObject);
         }

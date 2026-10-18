@@ -57,6 +57,7 @@ namespace Wildfolk
             if(!IsServer || !recipient.CanOperate || !Ready(recipient.Player))return false;
             claimed=true;var stack=State.Value;var item=NetworkCreatureWorld.Active.Catalog.Item(stack.Item.ToString());
             if(!recipient.Inventory.Model.TryAddAmounts(new[]{new ItemAmount{Item=item,Count=stack.Count,Charges=stack.Charges,Quality=stack.Quality}})){claimed=false;return false;}
+            recipient.NotifyPickup(item,stack.Count);
             stack.Count=0;State.Value=stack;NetworkObject.Despawn();return true;
         }
         private void OnTriggerEnter2D(Collider2D other)

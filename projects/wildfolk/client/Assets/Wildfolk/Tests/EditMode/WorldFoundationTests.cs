@@ -29,9 +29,9 @@ namespace Wildfolk.Tests
         }
         [Test]public void SubSeedsAreIsolatedAndLegacyLayoutIsVersionBound()
         {var a=WorldSeeds.Derive(9472026,SeedDomain.Hydrology);Assert.That(a,Is.Not.EqualTo(WorldSeeds.Derive(9472026,SeedDomain.Vegetation)));Assert.That(a,Is.EqualTo(WorldSeeds.Derive(9472026,SeedDomain.Hydrology)));var legacy=new WorldMap(Data,9472026,1);Assert.That(legacy.Size,Is.EqualTo(new Vector2(192,144)));Assert.That(legacy.Resources.Count,Is.EqualTo(Data.Resources.Sum(r=>r.Count)));Assert.That(new WorldMap(Data,9472026,2).Size.x,Is.GreaterThan(legacy.Size.x*50));}
-        [Test]public void SourcesUseEnvironmentalTagsAndMineralsAreFinite()
+        [Test]public void SourcesUseEnvironmentalTagsAndRegionalRecovery()
         {
-            var map=new WorldMap(Data,9472026,2);for(var i=0;i<Data.Resources.Length;i++)Assert.That(map.Renewable(i),Is.EqualTo(Data.Resources[i].Family!=ResourceFamily.Mineral));
+            var map=new WorldMap(Data,9472026,2);for(var i=0;i<Data.Resources.Length;i++)Assert.That(map.Renewable(i),Is.True);
             var tin=Data.NaturalSources.Single(s=>s.Context==ResourceSourceContext.Surface && s.ResourceRule==6);Assert.That(tin.AnyTags,Is.EqualTo(EnvironmentTag.RiverGravel));Assert.That(Data.Resources[6].Prefab.Definition.Harvest.Mode,Is.EqualTo(HarvestMode.Pan));Assert.That(Data.Resources[6].Prefab.Definition.CanHarvest(Data.ProgressionCatalog.Item("steel_pickaxe").Tool),Is.False);
             var future=Data.NaturalSources.Single(s=>s.SourceId=="diamond_pocket");Assert.That(future.Enabled,Is.False);Assert.That(future.NaturalRecovery,Is.False);Assert.That(future.DepthRange.x,Is.GreaterThanOrEqualTo(.8));
         }

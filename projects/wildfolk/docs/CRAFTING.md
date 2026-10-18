@@ -66,3 +66,7 @@ Hand Torch4 = Wood1+Coal1. WB I Compass1 = Wood2+Iron Ingot1. 기존 Coal은 Sto
 ## Workbench I–II Content Expansion (2026-10-18)
 
 현재 Item86/Recipe71. Workbench I/II·Campfire/Cooking Pot/Furnace/Blast Furnace의 전체 표와 Category 수는 [CONTENT_EXPANSION](CONTENT_EXPANSION.md)을 따른다. 새 전문 제작대/III는 없다.
+
+## Resource Tempo (2026-10-18)
+
+현재 공유/개인 필수와 선택 예산은 canonical recipe metadata와 batch 잔량으로 계산한다. 비용/결과는 기존 processing save와 동일하다. 광물 source당 수율·chunk population 보충·Protocol11은 [RESOURCE_TEMPO](RESOURCE_TEMPO.md)를 따른다.

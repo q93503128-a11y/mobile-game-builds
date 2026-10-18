@@ -1,0 +1,57 @@
+realtime_seconds	game_seconds	phase	details
+0.005	27.561	guided-input	fresh seed=9472026; no teleport/material injection/time acceleration; exact source selection is scripted
+4.612	32.462	guided-input	harvested wood total=4
+8.580	36.437	guided-input	harvested wood total=8
+8.657	36.437	guided-input	crafted workbench
+17.602	45.459	guided-input	harvested wood total=8
+18.603	46.300	guided-input	crafted axe
+24.659	52.517	guided-input	harvested wood total=9
+28.516	54.324	guided-input	crafted pickaxe
+34.051	57.963	guided-input	harvested stone total=6
+35.722	59.616	guided-input	crafted stone_pickaxe
+35.723	59.616	stone-pickaxe	
+35.734	59.616	stone-pickaxe	first visible iron_ore distance=26.21995
+46.634	66.884	stone-pickaxe	harvested iron_ore total=6
+62.842	83.097	stone-pickaxe	harvested iron_ore total=12
+62.843	83.097	iron-secured	12+ iron from two nodes; natural input stage complete
+62.844	83.097	fixture-progression	following travel uses teleports; remaining ingredients explicitly injected; processing time advanced through StationProcessing.Advance
+62.900	83.097	fixture-progression	fixture teleport (13.32, -6.42)
+63.081	83.263	fixture-progression	fixture injection stone:6
+63.092	83.263	fixture-progression	crafted furnace
+63.110	83.263	fixture-progression	processed iron_ingot:12
+63.111	83.263	iron-ingots	
+63.148	83.263	iron-ingots	crafted iron_pickaxe
+63.182	83.263	iron-ingots	fixture upgrade injection wood:8
+63.191	83.263	iron-ingots	fixture upgrade injection stone:6
+63.213	83.263	workbench-II	
+63.731	83.263	workbench-II	fixture teleport (-807.25, -23.21)
+63.816	83.596	workbench-II	first visible coal distance=2.000002
+65.888	85.725	workbench-II	harvested coal total=10
+65.889	85.725	coal-secured	
+65.893	85.725	coal-secured	fixture teleport (-817.59, -20.06)
+67.890	87.726	coal-secured	harvested copper_ore total=6
+67.891	87.726	copper-secured	
+67.905	87.726	failed	UnityEngine.MissingReferenceException: The object of type 'Wildfolk.CraftingStation' has been destroyed but you are still trying to access it. Your script should either check if it is null or you should not destroy the object.   at UnityEngine.Object+MarshalledUnityObject.TryThrowEditorNullExceptionObject (UnityEngine.Object unityObj, System.String parameterName) [0x0006a] in <987aa4221989419a947e2c4ff5d6829c>:0    at UnityEngine.Bindings.ThrowHelper.ThrowNullReferenceException (System.Object obj) [0x00010] in <987aa4221989419a947e2c4ff5d6829c>:0    at UnityEngine.Component.get_transform () [0x00006] in <987aa4221989419a947e2c4ff5d6829c>:0    at Wildfolk.Editor.ResourceTempoQa+<Flow>d__22.MoveNext () [0x00451] in C:\UnityProjects\Wildfolk\Assets\Wildfolk\Editor\ResourceTempoQa.cs:83    at Wildfolk.Editor.ResourceTempoQa+<Guard>d__13.MoveNext () [0x00018] in C:\UnityProjects\Wildfolk\Assets\Wildfolk\Editor\ResourceTempoQa.cs:22 
+68.000	116.581	fixture-resume	QA runner resumed from isolated save; setup/import pause excluded from scenario time
+68.492	116.581	fixture-resume	fixture teleport (13.32, -6.42)
+68.624	116.915	fixture-resume	processed copper_ingot:4
+68.699	116.915	fixture-resume	fixture injection wood:2
+68.712	116.915	fixture-resume	crafted prospecting_pan
+69.171	116.915	fixture-resume	fixture teleport (599.68, -2.00)
+74.965	120.903	fixture-resume	harvested tin_ore total=5
+74.966	120.903	tin-secured	
+75.039	120.903	tin-secured	fixture teleport (15.32, -8.52)
+75.196	121.062	tin-secured	processed tin_ingot:1
+75.200	121.062	tin-secured	processed bronze:1
+75.201	121.062	bronze	
+75.203	121.062	bronze	fixture teleport (13.32, -6.42)
+75.263	121.158	bronze	fixture injection stone:8
+75.271	121.158	bronze	fixture injection wood:4
+75.282	121.158	bronze	crafted blast_furnace
+75.286	121.158	blast-furnace	
+75.288	121.158	blast-furnace	fixture teleport (17.42, -6.42)
+75.320	121.243	blast-furnace	processed steel:3
+75.321	121.243	first-steel	
+75.323	121.243	first-steel	fixture teleport (13.32, -6.42)
+75.364	121.281	failed	System.InvalidOperationException: Craft steel_pickaxe MissingMaterials   at Wildfolk.Editor.ResourceTempoQa.Craft (System.String id, Wildfolk.CraftingStation station, System.Boolean inject) [0x0014a] in C:\UnityProjects\Wildfolk\Assets\Wildfolk\Editor\ResourceTempoQa.cs:65    at Wildfolk.Editor.ResourceTempoQa+<Finish>d__26.MoveNext () [0x00246] in C:\UnityProjects\Wildfolk\Assets\Wildfolk\Editor\ResourceTempoQa.cs:99    at Wildfolk.Editor.ResourceTempoQa+<Guard>d__15.MoveNext () [0x00018] in C:\UnityProjects\Wildfolk\Assets\Wildfolk\Editor\ResourceTempoQa.cs:22 
+manual-final	162.638324514497	steel-pickaxe	fixture injection wood:2; real Craft=Ready; saved=True

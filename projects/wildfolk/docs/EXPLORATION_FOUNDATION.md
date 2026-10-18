@@ -1,6 +1,6 @@
 # Exploration Foundation 1
 
-2026-10-18 현재 콘텐츠 확장: **Save9 / Protocol10, Item86 / Recipe71**. [현재 정본](CONTENT_EXPANSION.md). 아래 이전 버전 설명은 해당 패스의 기록이다.
+2026-10-18 현재 자원 템포: **Save9 / Protocol11, Item86 / Recipe71**. [현재 정본](CONTENT_EXPANSION.md). 아래 이전 버전 설명은 해당 패스의 기록이다.
 
 
 2026-10-18. Lowfire 표시명 / Wildfolk 내부명. BaseGenerationVersion2 지형·Seed·광물 ID를 유지한다. 이번 변경은 탐험 장비/귀환 안내/청크 런타임 기반이며 Workbench III 또는 출시 progression 완성이 아니다.

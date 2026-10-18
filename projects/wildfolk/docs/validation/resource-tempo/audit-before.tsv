@@ -1,0 +1,185 @@
+RESOURCE	0	wood	150	6	300	8	0	True		Strike
+RESOURCE	1	stone	50	3	600	7	0	True		Strike
+RESOURCE	2	iron_ore	75	3	720	61	5	False	StoneTier (Wildfolk.EquipmentTier)	Strike
+RESOURCE	3	wood	50	4	480	7	0	True		Strike
+RESOURCE	4	plant_fiber	12	2	90	4	0	True		Strike
+RESOURCE	5	copper_ore	90	4	600	9	9	False	IronTier (Wildfolk.EquipmentTier)	Strike
+RESOURCE	6	tin_ore	75	3	720	9	2	False	IronTier (Wildfolk.EquipmentTier)	Panning
+RESOURCE	7	coal	90	4	600	27	28	False	StoneTier (Wildfolk.EquipmentTier)	Strike
+RESOURCE	8	berry	18	3	180	0	0	True		Strike
+RESOURCE	9	mushroom	12	2	240	0	0	True		Strike
+RECIPE	axe	axe	1	Workbench	1	0	0	0	wood:5
+RECIPE	campfire	campfire	1	None	1	0	0	0	wood:4	stone:3
+RECIPE	clean_water_cup	clean_water_cup	1	Campfire	1	5	0	0	raw_water_cup:1
+RECIPE	cooked_meat	cooked_meat	1	Campfire	1	5	0	0	raw_meat:1
+RECIPE	empty_cup	empty_cup	1	None	1	0	0	0	wood:2
+RECIPE	furnace	furnace	1	Workbench	1	0	0	0	stone:8	wood:4
+RECIPE	iron_axe	iron_axe	1	Workbench	1	0	0	0	stone_axe:1	iron_ingot:3
+RECIPE	iron_body	iron_body	1	Workbench	1	0	0	0	iron_ingot:3	leather:1
+RECIPE	iron_head	iron_head	1	Workbench	1	0	0	0	iron_ingot:2	leather:1
+RECIPE	iron_ingot	iron_ingot	1	Furnace	1	2	0	0	iron_ore:1
+RECIPE	iron_pickaxe	iron_pickaxe	1	Workbench	1	0	0	0	stone_pickaxe:1	iron_ingot:3
+RECIPE	iron_sword	iron_sword	1	Workbench	1	0	0	0	stone_sword:1	iron_ingot:3
+RECIPE	leather_body	leather_body	1	Workbench	1	0	0	0	leather:2	wood:3
+RECIPE	leather_head	leather_head	1	Workbench	1	0	0	0	leather:1	wood:2
+RECIPE	pickaxe	pickaxe	1	Workbench	1	0	0	0	wood:5
+RECIPE	reinforced_chest	reinforced_chest	1	Workbench	2	0	0	0	wood:8	iron_ingot:2
+RECIPE	stone_axe	stone_axe	1	Workbench	1	0	0	0	axe:1	stone:4
+RECIPE	stone_pickaxe	stone_pickaxe	1	Workbench	1	0	0	0	pickaxe:1	stone:4
+RECIPE	stone_sword	stone_sword	1	Workbench	1	0	0	0	wood_sword:1	stone:5
+RECIPE	stone_wall	stone_wall	1	Workbench	2	0	0	0	stone:3	wood:1
+RECIPE	storage_chest	storage_chest	1	Workbench	1	0	0	0	wood:6
+RECIPE	wood_door	wood_door	1	Workbench	1	0	0	0	wood:3
+RECIPE	wood_sword	wood_sword	1	Workbench	1	0	0	0	wood:5
+RECIPE	wood_wall	wood_wall	1	Workbench	1	0	0	0	wood:2
+RECIPE	workbench	workbench	1	None	1	0	0	0	wood:6
+RECIPE	copper_ingot	copper_ingot	1	Furnace	1	3	0	0	copper_ore:1	coal:1
+RECIPE	tin_ingot	tin_ingot	1	Furnace	1	3	0	0	tin_ore:1	coal:1
+RECIPE	bronze	bronze	3	Furnace	1	5	0	0	copper_ingot:2	tin_ingot:1
+RECIPE	steel	steel	1	BlastFurnace	1	6	0	0	iron_ingot:1	coal:1
+RECIPE	prospecting_pan	prospecting_pan	1	Workbench	2	0	0	0	copper_ingot:2	wood:2
+RECIPE	blast_furnace	blast_furnace	1	Workbench	2	0	0	0	bronze:3	iron_ingot:3	stone:8	wood:4
+RECIPE	steel_axe	steel_axe	1	Workbench	2	0	0	0	iron_axe:1	steel:3	wood:2
+RECIPE	steel_pickaxe	steel_pickaxe	1	Workbench	2	0	0	0	iron_pickaxe:1	steel:3	wood:2
+RECIPE	steel_sword	steel_sword	1	Workbench	2	0	0	0	iron_sword:1	steel:4	leather:1
+RECIPE	steel_head	steel_head	1	Workbench	2	0	0	0	iron_head:1	steel:2	leather:1
+RECIPE	steel_body	steel_body	1	Workbench	2	0	0	0	iron_body:1	steel:3	leather:1
+RECIPE	torch	torch	4	None	1	0	0	0	wood:1	coal:1
+RECIPE	compass	compass	1	Workbench	1	0	0	0	wood:2	iron_ingot:1
+RECIPE	bow	bow	1	Workbench	1	0	0	0	wood:5	plant_fiber:4
+RECIPE	arrow	arrow	12	Workbench	1	0	0	0	wood:2	feather:1
+RECIPE	wood_spear	wood_spear	1	Workbench	1	0	0	0	wood:4	plant_fiber:2
+RECIPE	stone_spear	stone_spear	1	Workbench	1	0	0	0	wood_spear:1	stone:4
+RECIPE	iron_spear	iron_spear	1	Workbench	1	0	0	0	stone_spear:1	iron_ingot:3
+RECIPE	fishing_rod	fishing_rod	1	Workbench	1	0	0	0	wood:4	plant_fiber:3
+RECIPE	roasted_mushroom	roasted_mushroom	1	Campfire	1	5	0	0	mushroom:1
+RECIPE	cooked_fish	cooked_fish	1	Campfire	1	5	0	0	raw_fish:1
+RECIPE	cooking_pot	cooking_pot	1	Workbench	1	0	0	1	stone:6	iron_ingot:2
+RECIPE	mushroom_stew	mushroom_stew	1	CookingPot	1	7	0	0	mushroom:2	berry:2
+RECIPE	meat_stew	meat_stew	1	CookingPot	1	8	0	0	raw_meat:1	mushroom:1	berry:2
+RECIPE	fish_stew	fish_stew	1	CookingPot	1	8	0	0	raw_fish:1	mushroom:1	berry:2
+RECIPE	mixed_stew	mixed_stew	1	CookingPot	1	10	0	0	raw_meat:1	raw_fish:1	mushroom:1	berry:2
+RECIPE	waterskin	waterskin	1	Workbench	1	0	0	0	leather:2	plant_fiber:3
+RECIPE	purify_waterskin	waterskin	1	Campfire	1	10	0	0	waterskin:1
+RECIPE	wood_fence	wood_fence	2	Workbench	1	0	0	0	wood:3	plant_fiber:1
+RECIPE	wood_fence_gate	wood_fence_gate	1	Workbench	1	0	0	0	wood:3	plant_fiber:2
+RECIPE	wood_gate	wood_gate	1	Workbench	1	0	0	0	wood:6	plant_fiber:2
+RECIPE	stone_door	stone_door	1	Workbench	1	0	0	0	stone:4	wood:2
+RECIPE	stone_fence	stone_fence	2	Workbench	1	0	0	0	stone:4	wood:1
+RECIPE	stone_fence_gate	stone_fence_gate	1	Workbench	1	0	0	0	stone:4	wood:2
+RECIPE	stone_gate	stone_gate	1	Workbench	1	0	0	0	stone:7	wood:3
+RECIPE	reinforced_bow	reinforced_bow	1	Workbench	2	0	1	0	bow:1	bronze:2	leather:1
+RECIPE	bronze_arrow	bronze_arrow	12	Workbench	2	0	24	0	wood:2	feather:1	bronze:1
+RECIPE	crossbow	crossbow	1	Workbench	2	0	1	0	wood:6	bronze:3	leather:2
+RECIPE	crossbow_bolt	crossbow_bolt	12	Workbench	2	0	0	0	wood:2	feather:1
+RECIPE	steel_bolt	steel_bolt	8	Workbench	2	0	16	0	wood:2	feather:1	steel:1
+RECIPE	lantern	lantern	1	Workbench	2	0	1	0	bronze:2	leather:1	coal:2
+RECIPE	reinforced_wall	reinforced_wall	1	Workbench	2	0	0	6	stone:3	wood:2	bronze:1
+RECIPE	reinforced_door	reinforced_door	1	Workbench	2	0	0	1	stone:3	wood:2	bronze:2
+RECIPE	reinforced_gate	reinforced_gate	1	Workbench	2	0	0	1	stone:5	wood:4	bronze:3
+RECIPE	spike_trap	spike_trap	1	Workbench	2	0	0	1	wood:4	stone:2	bronze:1
+RECIPE	brazier	brazier	1	Workbench	2	0	0	1	bronze:3	stone:4	coal:2
+SOURCE	surface_wood	0	Surface	GrassSurface, ForestFloor	True	42	1
+SOURCE	surface_stone	1	Surface	GrassSurface, ExposedRock	True	48	0.8
+SOURCE	surface_iron_ore	2	Surface	GrassSurface, RockFace	False	4	0.22
+SOURCE	cave_iron_ore	2	Cave	ExposedRock, CaveWall	False	36	0.85
+SOURCE	surface_wood	3	Surface	GrassSurface, ForestFloor	True	3	0.7
+SOURCE	surface_wood	4	Surface	GrassSurface, WetGround	True	8	0.8
+SOURCE	surface_copper_ore	5	Surface	RockFace	False	18	0.55
+SOURCE	cave_copper_ore	5	Cave	ExposedRock, CaveWall	False	36	0.85
+SOURCE	surface_tin_ore	6	Surface	RiverGravel	False	8	0.8
+SOURCE	surface_coal	7	Surface	CoalSeam	False	18	0.6
+SOURCE	cave_coal	7	Cave	ExposedRock, CaveWall	False	36	0.85
+SOURCE	diamond_pocket	-1	Cave	DeepCave, CrystalPocket	False	4	1
+SOURCE	berry_bush_surface	8	Surface	GrassSurface	True	5	0.6
+SOURCE	mushroom_patch_surface	9	Surface	ForestFloor	True	5	0.6
+SOURCE	mushroom_patch_cave	9	Cave	CaveFloor	True	7	0.6
+ITEM	axe	Axe	1
+ITEM	campfire	-	1
+ITEM	clean_water_cup	-	0
+ITEM	cooked_meat	-	0
+ITEM	empty_cup	-	0
+ITEM	feather	-	0
+ITEM	furnace	-	2
+ITEM	iron_axe	Axe	3
+ITEM	iron_body	-	3
+ITEM	iron_head	-	3
+ITEM	iron_ingot	-	0
+ITEM	iron_ore	-	0
+ITEM	iron_pickaxe	Pickaxe	3
+ITEM	iron_sword	Sword	3
+ITEM	leather	-	0
+ITEM	leather_body	-	1
+ITEM	leather_head	-	1
+ITEM	pickaxe	Pickaxe	1
+ITEM	raw_meat	-	0
+ITEM	raw_water_cup	-	0
+ITEM	reinforced_chest	-	2
+ITEM	rusted_sword	Sword	1
+ITEM	stone	-	0
+ITEM	stone_axe	Axe	2
+ITEM	stone_pickaxe	Pickaxe	2
+ITEM	stone_sword	Sword	2
+ITEM	stone_wall	-	2
+ITEM	storage_chest	-	1
+ITEM	wood	-	0
+ITEM	wood_door	-	1
+ITEM	wood_sword	Sword	1
+ITEM	wood_wall	-	1
+ITEM	workbench	-	1
+UPGRADE	workbench	wood	8
+UPGRADE	workbench	stone	6
+UPGRADE	workbench	iron_ingot	2
+ITEM	workbench_ii	-	2
+ITEM	copper_ore	-	0
+ITEM	tin_ore	-	0
+ITEM	coal	-	0
+ITEM	copper_ingot	-	0
+ITEM	tin_ingot	-	0
+ITEM	bronze	-	0
+ITEM	steel	-	0
+ITEM	prospecting_pan	Pan	3
+ITEM	blast_furnace	-	4
+ITEM	steel_axe	Axe	4
+ITEM	steel_pickaxe	Pickaxe	4
+ITEM	steel_sword	Sword	4
+ITEM	steel_head	-	4
+ITEM	steel_body	-	4
+ITEM	torch	-	0
+ITEM	compass	-	0
+ITEM	plant_fiber	-	0
+ITEM	berry	-	0
+ITEM	mushroom	-	0
+ITEM	raw_fish	-	0
+ITEM	bow	Bow	1
+ITEM	arrow	-	0
+ITEM	wood_spear	Spear	1
+ITEM	stone_spear	Spear	2
+ITEM	iron_spear	Spear	3
+ITEM	fishing_rod	-	0
+ITEM	roasted_mushroom	-	0
+ITEM	cooked_fish	-	0
+ITEM	cooking_pot	-	0
+ITEM	mushroom_stew	-	0
+ITEM	meat_stew	-	0
+ITEM	fish_stew	-	0
+ITEM	mixed_stew	-	0
+ITEM	waterskin	-	0
+ITEM	wood_fence	-	0
+ITEM	wood_fence_gate	-	0
+ITEM	wood_gate	-	0
+ITEM	stone_door	-	0
+ITEM	stone_fence	-	0
+ITEM	stone_fence_gate	-	0
+ITEM	stone_gate	-	0
+ITEM	reinforced_bow	Bow	3
+ITEM	bronze_arrow	-	0
+ITEM	crossbow	Crossbow	3
+ITEM	crossbow_bolt	-	0
+ITEM	steel_bolt	-	0
+ITEM	lantern	-	0
+ITEM	reinforced_wall	-	0
+ITEM	reinforced_door	-	0
+ITEM	reinforced_gate	-	0
+ITEM	spike_trap	-	0
+ITEM	brazier	-	0

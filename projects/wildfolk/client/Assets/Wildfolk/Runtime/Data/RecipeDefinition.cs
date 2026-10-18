@@ -26,6 +26,7 @@ namespace Wildfolk
         public ItemDefinition Result;
         [Min(1)] public int ResultCount;
         public int ProgressionPerPlayer,ProgressionShared;
+        [Min(0)]public int EssentialPerPlayer,EssentialShared;
         public int ResultCharges;
         public LiquidState ResultQuality;
         public ItemAmount[] Ingredients;

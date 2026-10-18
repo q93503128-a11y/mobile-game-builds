@@ -11,6 +11,8 @@ namespace Wildfolk
         // Appended generation streams preserve all legacy r<index> placements and random draws.
         public bool IndependentGeneration,DistributionConfigured;
         public bool Generation2Only;
+        // Immutable generation2 baseline counts; current yields and recipe costs must not move saved IDs.
+        [Min(0)]public int LayoutSourceCount,LayoutSupplementCount;
         public int GenerationSalt;
         public BiomeDefinition[] AllowedBiomes;
         public ResourceSourceContext SourceContext;

@@ -55,7 +55,7 @@ namespace Wildfolk.Tests
         }
         [Test]public void RenewalAndTerrainDataKeepDifferentResourceTimes()
         {
-            var world=Data<WorldGenerationDefinition>("WorldGeneration");Assert.That(world.ShallowMoveMultiplier,Is.EqualTo(.7f));Assert.That(world.Resources[0].RespawnSeconds,Is.EqualTo(300));Assert.That(world.Resources[1].RespawnSeconds,Is.EqualTo(600));Assert.That(world.Resources[2].RespawnSeconds,Is.EqualTo(720));Assert.That(world.Resources[4].RespawnSeconds,Is.EqualTo(90));
+            var world=Data<WorldGenerationDefinition>("WorldGeneration");Assert.That(world.ShallowMoveMultiplier,Is.EqualTo(.7f));Assert.That(world.Resources[0].RespawnSeconds,Is.EqualTo(300));Assert.That(world.Resources[1].RespawnSeconds,Is.EqualTo(75));Assert.That(world.Resources[2].RespawnSeconds,Is.EqualTo(120));Assert.That(world.Resources[4].RespawnSeconds,Is.EqualTo(90));
         }
         [Test]public void HostileRelationIsNotAPlayerTeamDespiteDefaultNumericId()
         {

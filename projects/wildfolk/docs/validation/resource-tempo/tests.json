@@ -1,0 +1,444 @@
+{
+  "runs": [
+    {
+      "name": "resource-tempo-edit",
+      "total": "67",
+      "passed": "46",
+      "failed": "21",
+      "duration": "3.4112491"
+    },
+    {
+      "name": "resource-tempo-edit-recheck",
+      "total": "8",
+      "passed": "7",
+      "failed": "1",
+      "duration": "9.682745"
+    },
+    {
+      "name": "resource-tempo-edit-final",
+      "total": "41",
+      "passed": "41",
+      "failed": "0",
+      "duration": "20.1283158"
+    },
+    {
+      "name": "resource-tempo-play",
+      "total": "10",
+      "passed": "9",
+      "failed": "1",
+      "duration": "68.8127434"
+    },
+    {
+      "name": "resource-tempo-play-recheck",
+      "total": "1",
+      "passed": "1",
+      "failed": "0",
+      "duration": "11.0457991"
+    },
+    {
+      "name": "resource-tempo-final-model",
+      "total": "41",
+      "passed": "41",
+      "failed": "0",
+      "duration": "19.0724745"
+    },
+    {
+      "name": "resource-tempo-final-recovery",
+      "total": "3",
+      "passed": "3",
+      "failed": "0",
+      "duration": "40.1906115"
+    }
+  ],
+  "latestCases": {
+    "Wildfolk.Tests.ContentExpansionModelTests.AddedSourcesAndBudgetDoNotMoveExistingSourceIds(9472026)": {
+      "result": "Passed",
+      "run": "resource-tempo-final-model",
+      "duration": "1.548976"
+    },
+    "Wildfolk.Tests.ContentExpansionModelTests.AddedSourcesAndBudgetDoNotMoveExistingSourceIds(17491)": {
+      "result": "Passed",
+      "run": "resource-tempo-final-model",
+      "duration": "0.945746"
+    },
+    "Wildfolk.Tests.ContentExpansionModelTests.CatalogHasRealRecipesFourWeaponFamiliesAndSustainableBasicAmmo": {
+      "result": "Passed",
+      "run": "resource-tempo-final-model",
+      "duration": "0.005964"
+    },
+    "Wildfolk.Tests.ContentExpansionModelTests.ContainerStateTransfersAndRollsBackWithoutBecomingNewItems": {
+      "result": "Passed",
+      "run": "resource-tempo-final-model",
+      "duration": "0.003947"
+    },
+    "Wildfolk.Tests.ContentExpansionModelTests.CookingRecipesRestoreMoreThanSimpleFoodAndBuildingRolesAreReal": {
+      "result": "Passed",
+      "run": "resource-tempo-final-model",
+      "duration": "0.002631"
+    },
+    "Wildfolk.Tests.ContentExpansionModelTests.PurificationReservesOnlyFullRawAndRestoresChargesAfterQueueSave": {
+      "result": "Passed",
+      "run": "resource-tempo-final-model",
+      "duration": "0.004362"
+    },
+    "Wildfolk.Tests.MetalProgressionTests.AppendedOresAreDeterministicAndPreserveEveryLegacyPlacementAndId": {
+      "result": "Passed",
+      "run": "resource-tempo-edit",
+      "duration": "0.124816"
+    },
+    "Wildfolk.Tests.MetalProgressionTests.BronzeAndSteelReserveEveryIngredientAndPreserveBlockedOutputAndQueueSnapshot": {
+      "result": "Passed",
+      "run": "resource-tempo-edit",
+      "duration": "0.002905"
+    },
+    "Wildfolk.Tests.MetalProgressionTests.FourInputsReserveAtomicallyAndRollbackFailureOrException": {
+      "result": "Passed",
+      "run": "resource-tempo-edit",
+      "duration": "0.001638"
+    },
+    "Wildfolk.Tests.MetalProgressionTests.MiningToolPermissionHasNoFistFallbackAndMaterialKindsRemainDistinct": {
+      "result": "Passed",
+      "run": "resource-tempo-edit",
+      "duration": "0.013360"
+    },
+    "Wildfolk.Tests.MetalProgressionTests.OnlyConfiguredNextTierOpensAndLegacyUpgradeCostsRemain": {
+      "result": "Passed",
+      "run": "resource-tempo-edit",
+      "duration": "0.001591"
+    },
+    "Wildfolk.Tests.MetalProgressionTests.SupplyContextAndRecoveryAreIndependentOfTechnologyAndRespectMineralFamily": {
+      "result": "Passed",
+      "run": "resource-tempo-edit",
+      "duration": "0.017628"
+    },
+    "Wildfolk.Tests.MetalProgressionTests.WorkbenchRangeIsOneThroughSix(0,False)": {
+      "result": "Passed",
+      "run": "resource-tempo-edit",
+      "duration": "0.000422"
+    },
+    "Wildfolk.Tests.MetalProgressionTests.WorkbenchRangeIsOneThroughSix(1,True)": {
+      "result": "Passed",
+      "run": "resource-tempo-edit",
+      "duration": "0.000092"
+    },
+    "Wildfolk.Tests.MetalProgressionTests.WorkbenchRangeIsOneThroughSix(2,True)": {
+      "result": "Passed",
+      "run": "resource-tempo-edit",
+      "duration": "0.000068"
+    },
+    "Wildfolk.Tests.MetalProgressionTests.WorkbenchRangeIsOneThroughSix(6,True)": {
+      "result": "Passed",
+      "run": "resource-tempo-edit",
+      "duration": "0.000048"
+    },
+    "Wildfolk.Tests.MetalProgressionTests.WorkbenchRangeIsOneThroughSix(7,False)": {
+      "result": "Passed",
+      "run": "resource-tempo-edit",
+      "duration": "0.000043"
+    },
+    "Wildfolk.Tests.MetalProgressionTests.WorkbenchRangeIsOneThroughSix(-1,False)": {
+      "result": "Passed",
+      "run": "resource-tempo-edit",
+      "duration": "0.000037"
+    },
+    "Wildfolk.Tests.NetworkFoundationTests.CommandsRejectNonFiniteAndClampUntrustedMagnitude": {
+      "result": "Passed",
+      "run": "resource-tempo-edit",
+      "duration": "0.000923"
+    },
+    "Wildfolk.Tests.NetworkFoundationTests.InternetCodeAndLocalAddressAreDifferentRoutes": {
+      "result": "Passed",
+      "run": "resource-tempo-edit",
+      "duration": "0.001252"
+    },
+    "Wildfolk.Tests.NetworkFoundationTests.PlayerStateIsServerWritableAndRpcInputsAreOwnerOnly": {
+      "result": "Passed",
+      "run": "resource-tempo-edit",
+      "duration": "0.013117"
+    },
+    "Wildfolk.Tests.NetworkPersistenceModelTests.EveryExistingPlaceableUsesOneSourceDefinitionAndServerBuildingState": {
+      "result": "Passed",
+      "run": "resource-tempo-edit",
+      "duration": "0.014569"
+    },
+    "Wildfolk.Tests.NetworkPersistenceModelTests.ParticipantMetadataRejectsDuplicatesInvalidIdentityAndMismatchedHost": {
+      "result": "Passed",
+      "run": "resource-tempo-edit",
+      "duration": "0.063534"
+    },
+    "Wildfolk.Tests.NetworkPersistenceModelTests.SeparateRepositoriesAndDeadParticipantPolicyPreserveSingleplayerRules": {
+      "result": "Passed",
+      "run": "resource-tempo-edit",
+      "duration": "0.024752"
+    },
+    "Wildfolk.Tests.NetworkPersistenceModelTests.V4MigratesToV6WithoutChangingSingleplayerPayloadAndV5RoundTrips": {
+      "result": "Passed",
+      "run": "resource-tempo-edit",
+      "duration": "0.022409"
+    },
+    "Wildfolk.Tests.QualityModelTests.LanguagePersistsAsLocalPreferenceAndRefreshesCatalog": {
+      "result": "Passed",
+      "run": "resource-tempo-final-model",
+      "duration": "0.031601"
+    },
+    "Wildfolk.Tests.QualityModelTests.LocalizationHasTwoCompleteLanguagesAndEquivalentPlaceholders": {
+      "result": "Passed",
+      "run": "resource-tempo-final-model",
+      "duration": "0.008512"
+    },
+    "Wildfolk.Tests.QualityModelTests.OutputCapacityAndInventorySpacePreserveReservedCargo": {
+      "result": "Passed",
+      "run": "resource-tempo-final-model",
+      "duration": "0.001922"
+    },
+    "Wildfolk.Tests.QualityModelTests.PopulationUsesRegionalDeficitsAndWorldScopeForRareRules": {
+      "result": "Passed",
+      "run": "resource-tempo-final-model",
+      "duration": "0.015988"
+    },
+    "Wildfolk.Tests.QualityModelTests.QueueAndLegacyBatchRestoreWithoutMaterialDuplication": {
+      "result": "Passed",
+      "run": "resource-tempo-final-model",
+      "duration": "0.001458"
+    },
+    "Wildfolk.Tests.QualityModelTests.QueueReservesInputProcessesSingleUnitsAndWithdrawsOnlyWaiting": {
+      "result": "Passed",
+      "run": "resource-tempo-final-model",
+      "duration": "0.001129"
+    },
+    "Wildfolk.Tests.QualityModelTests.QueueSaveRetainsAlternatingRecipeOrder": {
+      "result": "Passed",
+      "run": "resource-tempo-final-model",
+      "duration": "0.000293"
+    },
+    "Wildfolk.Tests.QualityModelTests.RecoverySaveKeepsExclusionsAndCandidateSequence": {
+      "result": "Passed",
+      "run": "resource-tempo-final-model",
+      "duration": "0.006529"
+    },
+    "Wildfolk.Tests.QualityModelTests.SkillPrerequisiteAndLegacyLearnedRankAreBothRespected": {
+      "result": "Passed",
+      "run": "resource-tempo-final-model",
+      "duration": "0.001654"
+    },
+    "Wildfolk.Tests.ResourceTempoTests.RecipeEconomyIncludesSharedFacilitiesAllUpgradeChainsAndBatchedFuel(1)": {
+      "result": "Passed",
+      "run": "resource-tempo-final-model",
+      "duration": "0.001333"
+    },
+    "Wildfolk.Tests.ResourceTempoTests.RecipeEconomyIncludesSharedFacilitiesAllUpgradeChainsAndBatchedFuel(4)": {
+      "result": "Passed",
+      "run": "resource-tempo-final-model",
+      "duration": "0.000225"
+    },
+    "Wildfolk.Tests.ResourceTempoTests.RecoveryDebtIsOneTicketPerChunkAndCandidatesStayInsideThatRegion": {
+      "result": "Passed",
+      "run": "resource-tempo-final-model",
+      "duration": "0.706623"
+    },
+    "Wildfolk.Tests.ResourceTempoTests.SourcesPayOnCompletionAndRecoverWithinRegionalTempo(1,6,75)": {
+      "result": "Passed",
+      "run": "resource-tempo-final-model",
+      "duration": "0.691561"
+    },
+    "Wildfolk.Tests.ResourceTempoTests.SourcesPayOnCompletionAndRecoverWithinRegionalTempo(2,6,120)": {
+      "result": "Passed",
+      "run": "resource-tempo-final-model",
+      "duration": "0.691209"
+    },
+    "Wildfolk.Tests.ResourceTempoTests.SourcesPayOnCompletionAndRecoverWithinRegionalTempo(5,6,150)": {
+      "result": "Passed",
+      "run": "resource-tempo-final-model",
+      "duration": "0.715900"
+    },
+    "Wildfolk.Tests.ResourceTempoTests.SourcesPayOnCompletionAndRecoverWithinRegionalTempo(6,5,165)": {
+      "result": "Passed",
+      "run": "resource-tempo-final-model",
+      "duration": "0.684794"
+    },
+    "Wildfolk.Tests.ResourceTempoTests.SourcesPayOnCompletionAndRecoverWithinRegionalTempo(7,10,105)": {
+      "result": "Passed",
+      "run": "resource-tempo-final-model",
+      "duration": "0.711551"
+    },
+    "Wildfolk.Tests.StabilityModelTests.AtomicSaveBackupRecoversCorruptionAndIgnoresInterruptedTemporaryFile": {
+      "result": "Passed",
+      "run": "resource-tempo-final-model",
+      "duration": "0.056655"
+    },
+    "Wildfolk.Tests.StabilityModelTests.ChecksumAndFutureVersionAreRejected": {
+      "result": "Passed",
+      "run": "resource-tempo-final-model",
+      "duration": "0.000747"
+    },
+    "Wildfolk.Tests.StabilityModelTests.CupStateChangesAreAtomicAndConserveContainersOnFullBags": {
+      "result": "Passed",
+      "run": "resource-tempo-final-model",
+      "duration": "0.001180"
+    },
+    "Wildfolk.Tests.StabilityModelTests.EditorValidatorAcceptsCurrentDataAndDeveloperToolsStayInEditorAssembly": {
+      "result": "Passed",
+      "run": "resource-tempo-final-model",
+      "duration": "0.056828"
+    },
+    "Wildfolk.Tests.StabilityModelTests.EveryCurrentBasicAttackHasOneTargetAndExtensibleShape": {
+      "result": "Passed",
+      "run": "resource-tempo-final-model",
+      "duration": "0.000939"
+    },
+    "Wildfolk.Tests.StabilityModelTests.HostileRelationIsNotAPlayerTeamDespiteDefaultNumericId": {
+      "result": "Passed",
+      "run": "resource-tempo-final-model",
+      "duration": "0.001254"
+    },
+    "Wildfolk.Tests.StabilityModelTests.InventoryRestoreRejectsUnknownAndOversizedStacksWithoutPartialMutation": {
+      "result": "Passed",
+      "run": "resource-tempo-final-model",
+      "duration": "0.000516"
+    },
+    "Wildfolk.Tests.StabilityModelTests.RawWaterPenaltyExpiresPreciselyAndSurvivesStateRoundTrip": {
+      "result": "Passed",
+      "run": "resource-tempo-final-model",
+      "duration": "0.001118"
+    },
+    "Wildfolk.Tests.StabilityModelTests.RenewalAndTerrainDataKeepDifferentResourceTimes": {
+      "result": "Passed",
+      "run": "resource-tempo-final-model",
+      "duration": "0.000256"
+    },
+    "Wildfolk.Tests.WorldFoundationTests.OceanAndHydrologyHaveNaturalBoundariesAndContinuousTransitions": {
+      "result": "Passed",
+      "run": "resource-tempo-final-model",
+      "duration": "1.147568"
+    },
+    "Wildfolk.Tests.WorldFoundationTests.SameSeedReplaysMacroHydrologySourceAnchorsAndChunks": {
+      "result": "Passed",
+      "run": "resource-tempo-final-model",
+      "duration": "3.221232"
+    },
+    "Wildfolk.Tests.WorldFoundationTests.SeedHasConnectedCavesValidSourcesFourPlayerYieldAndBiomeFamilies(9472026)": {
+      "result": "Passed",
+      "run": "resource-tempo-final-model",
+      "duration": "1.162464"
+    },
+    "Wildfolk.Tests.WorldFoundationTests.SeedHasConnectedCavesValidSourcesFourPlayerYieldAndBiomeFamilies(17491)": {
+      "result": "Passed",
+      "run": "resource-tempo-final-model",
+      "duration": "1.035864"
+    },
+    "Wildfolk.Tests.WorldFoundationTests.SeedHasConnectedCavesValidSourcesFourPlayerYieldAndBiomeFamilies(-81027)": {
+      "result": "Passed",
+      "run": "resource-tempo-final-model",
+      "duration": "0.889227"
+    },
+    "Wildfolk.Tests.WorldFoundationTests.SeedHasConnectedCavesValidSourcesFourPlayerYieldAndBiomeFamilies(193080127)": {
+      "result": "Passed",
+      "run": "resource-tempo-final-model",
+      "duration": "0.752749"
+    },
+    "Wildfolk.Tests.WorldFoundationTests.SourcesUseEnvironmentalTagsAndRegionalRecovery": {
+      "result": "Passed",
+      "run": "resource-tempo-final-model",
+      "duration": "1.168942"
+    },
+    "Wildfolk.Tests.WorldFoundationTests.SubSeedsAreIsolatedAndLegacyLayoutIsVersionBound": {
+      "result": "Passed",
+      "run": "resource-tempo-final-model",
+      "duration": "1.147652"
+    },
+    "Wildfolk.Tests.WorldFoundationTests.VegetationDensityDoesNotMoveOreRiverOrPoi": {
+      "result": "Passed",
+      "run": "resource-tempo-final-model",
+      "duration": "1.594436"
+    },
+    "Wildfolk.Tests.WorldGenerationTests.GroundActuallyShowsDirtRoadAndFordDiffersFromDeepWater": {
+      "result": "Passed",
+      "run": "resource-tempo-edit",
+      "duration": "0.007501"
+    },
+    "Wildfolk.Tests.WorldGenerationTests.ManySeedsHaveClearSpawnNearbySuppliesRareOreAndNoOverlaps": {
+      "result": "Passed",
+      "run": "resource-tempo-edit",
+      "duration": "0.784503"
+    },
+    "Wildfolk.Tests.WorldGenerationTests.PartialTransferPreservesTotalsOnFullOrDifferentTargets": {
+      "result": "Passed",
+      "run": "resource-tempo-edit",
+      "duration": "0.000654"
+    },
+    "Wildfolk.Tests.WorldGenerationTests.PopulationAndLootDataAreBoundedAndOnlyOneBiomeExists": {
+      "result": "Passed",
+      "run": "resource-tempo-edit",
+      "duration": "0.026623"
+    },
+    "Wildfolk.Tests.WorldGenerationTests.RiverHasWalkableCrossingAndLandRemainsConnected": {
+      "result": "Passed",
+      "run": "resource-tempo-edit",
+      "duration": "0.014103"
+    },
+    "Wildfolk.Tests.WorldGenerationTests.SeedRecreatesTerrainRoadsAndResourcesWithoutUsingUnityRandom": {
+      "result": "Passed",
+      "run": "resource-tempo-edit",
+      "duration": "0.016059"
+    },
+    "Wildfolk.Tests.WorldGenerationTests.TreeHitCountsUpgradeRecipesAndFurnaceCapacityMatchActualData": {
+      "result": "Passed",
+      "run": "resource-tempo-edit",
+      "duration": "0.000997"
+    },
+    "Wildfolk.Tests.MetalProgressionPlayTests.BasicRejectsSteelAdvancedNeedsNoNearbyBenchAndCargoSurvivesLoad": {
+      "result": "Passed",
+      "run": "resource-tempo-play",
+      "duration": "3.176193"
+    },
+    "Wildfolk.Tests.MetalProgressionPlayTests.ChestScrollWheelTouchAndBottomSlotDragPreserveContents": {
+      "result": "Passed",
+      "run": "resource-tempo-play",
+      "duration": "1.736547"
+    },
+    "Wildfolk.Tests.MetalProgressionPlayTests.RejectedMiningHasZeroDamageProgressLootOrSuccessSignalsAndValidToolHitsOnce": {
+      "result": "Passed",
+      "run": "resource-tempo-play",
+      "duration": "3.732161"
+    },
+    "Wildfolk.Tests.MetalProgressionPlayTests.UpgradeUiScrollsArbitraryCostsAndPreservesTierAndMetalsAcrossSnapshotLoad": {
+      "result": "Passed",
+      "run": "resource-tempo-play",
+      "duration": "3.098361"
+    },
+    "Wildfolk.Tests.ResourceTempoHostTests.AuthorityRecoversDistinctRegionsAndRehostDoesNotDuplicateSavedSources": {
+      "result": "Passed",
+      "run": "resource-tempo-final-recovery",
+      "duration": "26.531270"
+    },
+    "Wildfolk.Tests.ResourceTempoPlayTests.FullHarvestYieldsAndPanPermissionsUseCanonicalNodes": {
+      "result": "Passed",
+      "run": "resource-tempo-final-recovery",
+      "duration": "3.538489"
+    },
+    "Wildfolk.Tests.ResourceTempoPlayTests.MineralDebtRecoversElsewhereAndSurvivesSleepSaveReloadWithoutDuplicates": {
+      "result": "Passed",
+      "run": "resource-tempo-final-recovery",
+      "duration": "9.830082"
+    },
+    "Wildfolk.Tests.WorldFoundationPlayTests.CavernPortalConnectsSurfaceRoomGraphDeepBranchAndReturn": {
+      "result": "Passed",
+      "run": "resource-tempo-play",
+      "duration": "5.807139"
+    },
+    "Wildfolk.Tests.WorldFoundationPlayTests.ChunkUnloadPreservesFiniteOreCargoChestAndSaveVersion": {
+      "result": "Passed",
+      "run": "resource-tempo-play",
+      "duration": "6.419569"
+    },
+    "Wildfolk.Tests.WorldFoundationPlayTests.CurrentMetalLoopAndLegacyLayoutRemainSeparate": {
+      "result": "Passed",
+      "run": "resource-tempo-play",
+      "duration": "6.138594"
+    }
+  },
+  "runnerSeconds": 172.3439384,
+  "latestTotal": 77,
+  "latestFailed": [],
+  "disclaimer": "Related selected tests and failed/changed cases; not a fresh complete project suite."
+}

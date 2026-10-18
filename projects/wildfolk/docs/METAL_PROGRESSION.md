@@ -1,6 +1,6 @@
 # 초기 금속 progression 교정
 
-2026-10-17 현재 Item48 / Recipe36 / Equipment Tier4 / Surface Biome4 / Save7 / Protocol8. 아래 금속 패스의 v6/Protocol7 검수는 당시 기록이다. 신규 자연 공급/비재생/4인 yield와 구 generation1 정책은 WORLD_GENERATION 정본을 따른다.
+2026-10-18 현재 Item86 / Recipe71 / Equipment Tier4 / Surface Biome4 / Save9 / Protocol11. 아래 금속 패스의 v6/Protocol7 검수는 당시 기록이다. 신규 자연 공급/지역 회복/4인 yield와 구 generation1 정책은 WORLD_GENERATION 정본을 따른다.
 
 ## 확정한 진행
 
@@ -10,12 +10,12 @@ Iron → Workbench II → Copper → Prospecting Pan → Tin → Bronze → Blas
 
 | 자원 | 채취 방식/최소 도구 | HP 또는 채취 진행 / 드랍 | 초기 수량 |
 |---|---|---|---|
-| Iron Ore | Strike / Stone Pickaxe Rank2 |75 /3|16, 기존 Rule2|
-| Copper Ore | Strike / Iron Pickaxe Rank3 |90 /4|14, Rule5|
-| Coal | Strike / Stone Pickaxe Rank2 |90 /4|12, Rule7|
-| Tin Deposit | Panning / Prospecting Pan |75 /3|10, Rule6|
+| Iron Ore | Strike / Stone Pickaxe Rank2 |75 /6|16, 기존 Rule2|
+| Copper Ore | Strike / Iron Pickaxe Rank3 |90 /6|14, Rule5|
+| Coal | Strike / Stone Pickaxe Rank2 |90 /10|12, Rule7|
+| Tin Deposit | Panning / Prospecting Pan |50 /5|10, Rule6|
 
-Copper는 노출된 암벽의 넓은 구리맥, Coal은 검은 층이 드러난 낮은 암층, Tin은 물가의 납작한 자갈·퇴적층으로 표현한다. Tin은 일반 Pickaxe로 채취할 수 없다. HarvestMethod(Strike/Panning/Interaction)와 ToolKind/최소 Rank를 함께 검사한다. 현재 실제 구현된 방식은 Strike/Panning이며 Interaction 전용 콘텐츠는 없다. Pan은 25 진행, 1.1초 모션/1.4초 간격이며 세 번에 Tin3을 얻는다. Pan으로 생물을 공격하지 않는다. 별도 UI 미니게임은 추가하지 않았다.
+Copper는 노출된 암벽의 넓은 구리맥, Coal은 검은 층이 드러난 낮은 암층, Tin은 물가의 납작한 자갈·퇴적층으로 표현한다. Tin은 일반 Pickaxe로 채취할 수 없다. HarvestMethod(Strike/Panning/Interaction)와 ToolKind/최소 Rank를 함께 검사한다. 현재 실제 구현된 방식은 Strike/Panning이며 Interaction 전용 콘텐츠는 없다. Pan은 25 진행, 1.1초 모션/1.4초 간격이며 두 번에 Tin5을 얻는다. Pan으로 생물을 공격하지 않는다. 별도 UI 미니게임은 추가하지 않았다.
 
 요구 도구 미달은 Health/진행/loot/성공 Damage 신호를 바꾸지 않는다. 성공 효과는 이 신호에 연결된다. 일반 헛동작은 가능하고 requirement 안내는 기존 2.5초 제한을 사용한다. Tin 퇴적층에서 획득한 재료의 화면 이름은 Tin Ore다.
 
@@ -37,7 +37,7 @@ Copper는 노출된 암벽의 넓은 구리맥, Coal은 검은 층이 드러난 
 
 기존 Iron 제련은 Ore1→Ingot1/2초로 유지한다. Furnace는 Iron/Copper/Tin/Bronze만, Blast Furnace는 현재 Steel만 처리한다. Campfire만 Raw Meat를 조리한다. Workbench II가 근처에 있는지 검사하던 반경 지원·registry 코드는 제거했다. II에서 상위 시설을 제작하는 기술 단계가 실제 진행을 결정한다. 초기 Local Host 시설5개에는 Blast Furnace가 포함되지 않는다.
 
-Bronze의 현재 주 용도는 Blast Furnace 부품이다. Bronze Chest/Steel Wall 대체 Recipe는 제거했고 기존 Reinforced Chest/Stone Wall의 Iron·기초 재료 비용을 유지한다. 구 재료는 상위 제작에서도 프레임·손잡이·보강재로 계속 쓰인다. Steel 장비는 기존 Iron 수치를 읽고 정한 초기값이다. Axe/Pickaxe 기본 피해18(채집 효율 별도), Sword43, Head/Body Defense3/5다. 세부 효율·속도는 BALANCE를 따른다. 내구도/자동 진화/새 Copper·Bronze 풀 세트는 없다.
+Bronze는 Blast Furnace 부품, Reinforced Bow/Crossbow/Lantern/보강 건축·Trap/Brazier/Bronze Arrow에 쓰인다. Bronze Chest/Steel Wall 대체 Recipe는 제거했고 기존 Reinforced Chest/Stone Wall의 Iron·기초 재료 비용을 유지한다. 구 재료는 상위 제작에서도 프레임·손잡이·보강재로 계속 쓰인다. Steel 장비는 기존 Iron 수치를 읽고 정한 초기값이다. Axe/Pickaxe 기본 피해18(채집 효율 별도), Sword43, Head/Body Defense3/5다. 세부 효율·속도는 BALANCE를 따른다. 내구도/자동 진화/새 Copper·Bronze 풀 세트는 없다.
 
 ## 저장·권위·상자
 
