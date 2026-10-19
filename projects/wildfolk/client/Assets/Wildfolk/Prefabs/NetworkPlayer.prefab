@@ -484,6 +484,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 226757985403581487, guid: 2e39c5feaa7d80b438125df9889b639e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 9140918765836912329}
+    - targetCorrespondingSourceObject: {fileID: 226757985403581487, guid: 2e39c5feaa7d80b438125df9889b639e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8403562884576028147}
   m_SourcePrefab: {fileID: 100100000, guid: 2e39c5feaa7d80b438125df9889b639e, type: 3}
 --- !u!114 &316104689973762130 stripped
 MonoBehaviour:
@@ -727,6 +730,10 @@ MonoBehaviour:
   m_Name:
   m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.NetworkNavigation
   ShowTopMostFoldoutHeaderGroup: 1
+  Beacons:
+    UpdateTraits:
+      MinSecondsBetweenUpdates: 0
+      MaxSecondsBetweenUpdates: 0
 --- !u!114 &6430399531753804696
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -770,6 +777,19 @@ MonoBehaviour:
   Placement: {fileID: 316104689973762130}
   Survival: {fileID: 7660059189107394195}
   Session: {fileID: 7564107769141678363}
+--- !u!114 &8403562884576028147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7578384368933851516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a8f6b2e593d4d45ae3997db576ea851, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.NetworkTierThreePlayer
+  ShowTopMostFoldoutHeaderGroup: 1
 --- !u!114 &7660059189107394195 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 19052881427358656, guid: 2e39c5feaa7d80b438125df9889b639e, type: 3}

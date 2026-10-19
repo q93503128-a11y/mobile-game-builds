@@ -10,7 +10,7 @@ namespace Wildfolk
         private static bool Finite(double value)=>!double.IsNaN(value) && !double.IsInfinity(value);
         public static void Validate(SavedGame game,ContentCatalog catalog,WorldGenerationDefinition definition,AnimalPopulationDefinition animals,int playerCapacity,int maximumHP,SurvivalDefinition survival,CharacterGrowthDefinition growth,LocomotionDefinition locomotion)
         {
-            Require(game!=null && game.Version>=2 && game.Version<=9,"Unsupported save version");Require(Finite(game.Elapsed) && game.Elapsed>=0,"Invalid world time");
+            Require(game!=null && game.Version>=2 && game.Version<=10,"Unsupported save version");Require(Finite(game.Elapsed) && game.Elapsed>=0,"Invalid world time");
             var map=new WorldMap(definition,game.Seed,game.BaseGenerationVersion,false);var player=game.Player;
             ValidatePlayer(player,map,catalog,playerCapacity,maximumHP,survival,growth,locomotion,game.IsMultiplayer);
             Require(game.Resources!=null && game.Animals!=null && game.Placeables!=null && game.Pickups!=null,"Missing world state");
@@ -45,9 +45,10 @@ namespace Wildfolk
             foreach(var state in game.Placeables)
             {
                 Require(state!=null && !string.IsNullOrEmpty(state.Id) && System.Text.Encoding.UTF8.GetByteCount(state.Id)<=61 && ids.Add(state.Id),"Placeable ID collision");Position(map,state.Position);Require(Finite(state.Rotation) && Finite(state.SimulatedAt) && state.SimulatedAt>=0 && state.SimulatedAt<=game.Elapsed,"Invalid placement timing or rotation");
-                var item=catalog.Item(state.Item);var placed=item.Placement;Require(placed!=null && state.HP>0 && state.HP<=placed.Vitality.MaximumHealth,"Invalid facility");
+                var item=catalog.Item(state.Item);var placed=item.Placement;Require(placed!=null && state.HP>0 && state.HP<=TurretState.MaximumHP(placed,state.Turret,catalog),"Invalid facility");
                 Require(!state.DoorOpen || placed.IsDoor,"Invalid door state");
                 if(placed.StorageSlots>0)new InventoryModel(placed.StorageSlots).Restore(state.Inventory,catalog);else Require(state.Inventory==null || state.Inventory.Length==0,"Unexpected chest contents");
+                if(placed.Turret!=null)TurretState.Validate(state.Turret,placed,catalog);else Require(TurretState.IsEmpty(state.Turret),"Unexpected turret state");
                 if(state.Processing==null)continue;
                 if(state.Processing.Sequential){ValidateQueue(state.Processing,placed,catalog);continue;}
                 if(string.IsNullOrEmpty(state.Processing.Recipe)){Require(state.Processing.Batch==0 && state.Processing.Remaining==0,"Invalid empty processing state");continue;}
@@ -71,7 +72,7 @@ namespace Wildfolk
         }
         public static void ValidatePlayer(PlayerSnapshot player,WorldMap map,ContentCatalog catalog,int playerCapacity,int maximumHP,SurvivalDefinition survival,CharacterGrowthDefinition growth,LocomotionDefinition locomotion,bool allowDead=false)
         {
-            Require(player!=null,"Missing player");Require(string.IsNullOrEmpty(player.HomeId) || System.Text.Encoding.UTF8.GetByteCount(player.HomeId)<=61,"Invalid home reference");GrowthValidation.Validate(player.Growth,growth,player.XP);
+            Require(player!=null,"Missing player");Require(string.IsNullOrEmpty(player.HomeId) || System.Text.Encoding.UTF8.GetByteCount(player.HomeId)<=61,"Invalid home reference");Require(player.NavigationMode>=NavigationMode.Automatic && player.NavigationMode<=NavigationMode.Beacon && (string.IsNullOrEmpty(player.BeaconId) || System.Text.Encoding.UTF8.GetByteCount(player.BeaconId)<=61),"Invalid navigation reference");GrowthValidation.Validate(player.Growth,growth,player.XP);
             var hpBonus=Mathf.RoundToInt(GrowthValidation.Bonus(player.Growth,growth,SkillEffect.MaximumHealth));
             Require((allowDead ? player.HP>=0 : player.HP>0) && player.HP<=maximumHP+hpBonus && player.Selected>=0 && player.Selected<playerCapacity,"Invalid player");
             var staminaMax=locomotion.MaximumStamina+GrowthValidation.Bonus(player.Growth,growth,SkillEffect.MaximumStamina);

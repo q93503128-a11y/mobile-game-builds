@@ -14,8 +14,8 @@ namespace Wildfolk
             var placed=new List<PlaceableSnapshot>();
             foreach(var facility in WorldPlaceable.Active)
             {
-                if(!facility.Health.IsAlive)continue;var chest=facility.GetComponent<StorageChest>();var process=facility.GetComponent<StationProcessing>();var door=facility.GetComponent<WorldDoor>();
-                placed.Add(new PlaceableSnapshot{Id=facility.SaveId,Item=facility.Definition.Item.Id,Position=facility.transform.position,Rotation=facility.transform.eulerAngles.z,HP=facility.Health.Current,Inventory=chest==null ? null : chest.Model.Capture(),Processing=process==null ? null : process.Capture(),DoorOpen=door!=null && door.IsOpen,Creator=facility.CreatorId,SimulatedAt=Clock.Model.Elapsed});
+                if(!facility.Health.IsAlive)continue;
+                placed.Add(WorldChunkRuntime.CapturePlace(facility,Clock.Model.Elapsed));
             }
             if(World.Map.Streamed)placed.AddRange(World.Chunks.DormantPlaces());game.Placeables=placed.ToArray();var pickups=new List<PickupSnapshot>();
             foreach(var pickup in WorldPickup.Active)if(pickup.Item!=null && pickup.Count>0)pickups.Add(new PickupSnapshot{Item=pickup.Item.Id,Count=pickup.Count,Charges=pickup.Charges,Quality=pickup.Quality,Position=pickup.transform.position});
@@ -36,7 +36,7 @@ namespace Wildfolk
             World.Renewal.Restore(game.Resources,game.Recovery);
             foreach(var state in game.Placeables)
             {
-                var facility=NetworkSpawnFactory.Spawn(Catalog.Item(state.Item).Placement.Prefab,state.Position,Quaternion.Euler(0,0,state.Rotation));facility.SaveId=state.Id;facility.CreatorId=state.Creator;facility.Health.RestoreHealth(state.HP);
+                var facility=NetworkSpawnFactory.Spawn(Catalog.Item(state.Item).Placement.Prefab,state.Position,Quaternion.Euler(0,0,state.Rotation));facility.SaveId=state.Id;facility.CreatorId=state.Creator;facility.GetComponent<SignalBeacon>()?.Restore(state.BeaconNumber);facility.GetComponent<WorldTurret>()?.Restore(state.Turret,Catalog);facility.Health.RestoreHealth(state.HP);
                 var chest=facility.GetComponent<StorageChest>();if(chest!=null){chest.BindVisitor(Player);chest.Model.Restore(state.Inventory,Catalog);}
                 var process=facility.GetComponent<StationProcessing>();if(process!=null)process.InitializeSnapshot(state.Processing,Catalog,Player);
                 var door=facility.GetComponent<WorldDoor>();if(door!=null)door.RestoreOpen(state.DoorOpen);

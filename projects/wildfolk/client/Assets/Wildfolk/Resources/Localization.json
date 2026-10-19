@@ -2865,6 +2865,594 @@
         "Workbench upgraded · New recipes available",
         "작업대 업그레이드 완료 · 새 제작법 사용 가능"
       ]
+    },
+    {
+      "Key": "item.diamond.name",
+      "Values": [
+        "Diamond",
+        "다이아몬드"
+      ]
+    },
+    {
+      "Key": "item.diamond.description",
+      "Values": [
+        "Diamond · Workbench III technology",
+        "다이아몬드 · 작업대 III 기술"
+      ]
+    },
+    {
+      "Key": "item.crystal.name",
+      "Values": [
+        "Crystal",
+        "크리스탈"
+      ]
+    },
+    {
+      "Key": "item.crystal.description",
+      "Values": [
+        "Crystal · Workbench III technology",
+        "크리스탈 · 작업대 III 기술"
+      ]
+    },
+    {
+      "Key": "item.mechanical_part.name",
+      "Values": [
+        "Mechanical Part",
+        "기계 부품"
+      ]
+    },
+    {
+      "Key": "item.mechanical_part.description",
+      "Values": [
+        "Mechanical Part · Workbench III technology",
+        "기계 부품 · 작업대 III 기술"
+      ]
+    },
+    {
+      "Key": "item.steel_spear.name",
+      "Values": [
+        "Steel Spear",
+        "강철 창"
+      ]
+    },
+    {
+      "Key": "item.steel_spear.description",
+      "Values": [
+        "Steel Spear · Workbench III technology",
+        "강철 창 · 작업대 III 기술"
+      ]
+    },
+    {
+      "Key": "item.telescope.name",
+      "Values": [
+        "Telescope",
+        "망원경"
+      ]
+    },
+    {
+      "Key": "item.telescope.description",
+      "Values": [
+        "Look into distant terrain without waking its creatures. Drag to aim; cancel to return.",
+        "먼 지형을 관찰합니다. 드래그로 방향을 바꾸고 접기로 돌아옵니다."
+      ]
+    },
+    {
+      "Key": "item.crystal_lantern.name",
+      "Values": [
+        "Crystal Lantern",
+        "크리스탈 랜턴"
+      ]
+    },
+    {
+      "Key": "item.crystal_lantern.description",
+      "Values": [
+        "Crystal Lantern · Workbench III technology",
+        "크리스탈 랜턴 · 작업대 III 기술"
+      ]
+    },
+    {
+      "Key": "item.workbench_iii.name",
+      "Values": [
+        "Workbench III",
+        "작업대 III"
+      ]
+    },
+    {
+      "Key": "item.workbench_iii.description",
+      "Values": [
+        "Workbench III · Workbench III technology",
+        "작업대 III · 작업대 III 기술"
+      ]
+    },
+    {
+      "Key": "item.turret_workbench.name",
+      "Values": [
+        "Turret Workbench",
+        "포탑 작업대"
+      ]
+    },
+    {
+      "Key": "item.turret_workbench.description",
+      "Values": [
+        "Turret Workbench · Workbench III technology",
+        "포탑 작업대 · 작업대 III 기술"
+      ]
+    },
+    {
+      "Key": "item.signal_beacon.name",
+      "Values": [
+        "Signal Beacon",
+        "신호 비콘"
+      ]
+    },
+    {
+      "Key": "item.signal_beacon.description",
+      "Values": [
+        "Place a shared navigation marker. Choose one target with your Compass. Can be recovered.",
+        "팀이 공유하는 길 찾기 표식을 설치합니다. 나침반에서 하나를 골라 추적하고 회수할 수 있습니다."
+      ]
+    },
+    {
+      "Key": "item.ballista.name",
+      "Values": [
+        "Ballista",
+        "발리스타"
+      ]
+    },
+    {
+      "Key": "item.ballista.description",
+      "Values": [
+        "Slow, powerful single shots. Ballista Bolts only. Manual aim and loading work without modules.",
+        "느리고 강한 단발 사격. 발리스타 볼트를 사용하며 모듈 없이 수동 조준·장전이 가능합니다."
+      ]
+    },
+    {
+      "Key": "item.repeater.name",
+      "Values": [
+        "Repeater",
+        "연발 쇠뇌"
+      ]
+    },
+    {
+      "Key": "item.repeater.description",
+      "Values": [
+        "Fast, lighter shots using existing Crossbow Bolts.",
+        "기존 쇠뇌 볼트로 빠르고 가벼운 사격을 합니다."
+      ]
+    },
+    {
+      "Key": "item.ballista_bolt.name",
+      "Values": [
+        "Ballista Bolt",
+        "발리스타 볼트"
+      ]
+    },
+    {
+      "Key": "item.ballista_bolt.description",
+      "Values": [
+        "Ballista Bolt · Workbench III technology",
+        "발리스타 볼트 · 작업대 III 기술"
+      ]
+    },
+    {
+      "Key": "item.auto_loader.name",
+      "Values": [
+        "Auto Loader",
+        "자동 장전기"
+      ]
+    },
+    {
+      "Key": "item.auto_loader.description",
+      "Values": [
+        "Loads ammunition from this turret after recovery. Does not create ammunition.",
+        "재장전 대기 후 포탑 내부의 탄약을 장전합니다. 탄약을 만들지 않습니다."
+      ]
+    },
+    {
+      "Key": "item.auto_aim.name",
+      "Values": [
+        "Auto Aim",
+        "자동 조준기"
+      ]
+    },
+    {
+      "Key": "item.auto_aim.description",
+      "Values": [
+        "Tracks visible enemies. Combine with Auto Loader for automatic fire.",
+        "시야가 열린 적을 추적합니다. 자동 장전기와 함께 장착하면 자동 사격합니다."
+      ]
+    },
+    {
+      "Key": "item.ammo_box.name",
+      "Values": [
+        "Ammo Box",
+        "탄약함"
+      ]
+    },
+    {
+      "Key": "item.ammo_box.description",
+      "Values": [
+        "Adds two ammunition slots to this turret.",
+        "이 포탑에 탄약 두 칸을 추가합니다."
+      ]
+    },
+    {
+      "Key": "item.rotation_gear.name",
+      "Values": [
+        "Rotation Gear",
+        "회전 기어"
+      ]
+    },
+    {
+      "Key": "item.rotation_gear.description",
+      "Values": [
+        "Tracking rotation speed +35%.",
+        "추적 회전 속도 +35%."
+      ]
+    },
+    {
+      "Key": "item.reinforced_frame.name",
+      "Values": [
+        "Reinforced Frame",
+        "보강 프레임"
+      ]
+    },
+    {
+      "Key": "item.reinforced_frame.description",
+      "Values": [
+        "Maximum turret health +50%.",
+        "포탑 최대 체력 +50%."
+      ]
+    },
+    {
+      "Key": "item.industrial_container.name",
+      "Values": [
+        "Industrial Chest",
+        "공업용 상자"
+      ]
+    },
+    {
+      "Key": "item.industrial_container.description",
+      "Values": [
+        "Industrial Chest · Workbench III technology",
+        "공업용 상자 · 작업대 III 기술"
+      ]
+    },
+    {
+      "Key": "item.diamond_axe.name",
+      "Values": [
+        "Diamond Axe",
+        "다이아몬드 도끼"
+      ]
+    },
+    {
+      "Key": "item.diamond_axe.description",
+      "Values": [
+        "Diamond Axe · Workbench III technology",
+        "다이아몬드 도끼 · 작업대 III 기술"
+      ]
+    },
+    {
+      "Key": "item.diamond_pickaxe.name",
+      "Values": [
+        "Diamond Pickaxe",
+        "다이아몬드 곡괭이"
+      ]
+    },
+    {
+      "Key": "item.diamond_pickaxe.description",
+      "Values": [
+        "Diamond Pickaxe · Workbench III technology",
+        "다이아몬드 곡괭이 · 작업대 III 기술"
+      ]
+    },
+    {
+      "Key": "item.diamond_sword.name",
+      "Values": [
+        "Diamond Sword",
+        "다이아몬드 검"
+      ]
+    },
+    {
+      "Key": "item.diamond_sword.description",
+      "Values": [
+        "Diamond Sword · Workbench III technology",
+        "다이아몬드 검 · 작업대 III 기술"
+      ]
+    },
+    {
+      "Key": "item.diamond_spear.name",
+      "Values": [
+        "Diamond Spear",
+        "다이아몬드 창"
+      ]
+    },
+    {
+      "Key": "item.diamond_spear.description",
+      "Values": [
+        "Diamond Spear · Workbench III technology",
+        "다이아몬드 창 · 작업대 III 기술"
+      ]
+    },
+    {
+      "Key": "item.diamond_head.name",
+      "Values": [
+        "Diamond Helmet",
+        "다이아몬드 투구"
+      ]
+    },
+    {
+      "Key": "item.diamond_head.description",
+      "Values": [
+        "Diamond Helmet · Workbench III technology",
+        "다이아몬드 투구 · 작업대 III 기술"
+      ]
+    },
+    {
+      "Key": "item.diamond_body.name",
+      "Values": [
+        "Diamond Armor",
+        "다이아몬드 갑옷"
+      ]
+    },
+    {
+      "Key": "item.diamond_body.description",
+      "Values": [
+        "Diamond Armor · Workbench III technology",
+        "다이아몬드 갑옷 · 작업대 III 기술"
+      ]
+    },
+    {
+      "Key": "ui.workbench.III",
+      "Values": [
+        "Workbench III",
+        "작업대 III"
+      ]
+    },
+    {
+      "Key": "ui.navigation.choose",
+      "Values": [
+        "Navigation",
+        "길 찾기"
+      ]
+    },
+    {
+      "Key": "ui.navigation.no_target",
+      "Values": [
+        "No beacon selected",
+        "선택한 비콘 없음"
+      ]
+    },
+    {
+      "Key": "ui.navigation.track",
+      "Values": [
+        "Track this beacon",
+        "이 비콘 추적"
+      ]
+    },
+    {
+      "Key": "ui.navigation.off",
+      "Values": [
+        "Navigation off",
+        "안내 끄기"
+      ]
+    },
+    {
+      "Key": "ui.navigation.auto",
+      "Values": [
+        "Home / Cave Exit",
+        "집 / 동굴 출구"
+      ]
+    },
+    {
+      "Key": "ui.beacon.number",
+      "Values": [
+        "Beacon {0}",
+        "비콘 {0}"
+      ]
+    },
+    {
+      "Key": "ui.beacon.recover",
+      "Values": [
+        "Recover beacon",
+        "비콘 회수"
+      ]
+    },
+    {
+      "Key": "ui.telescope.aim",
+      "Values": [
+        "Drag to look · movement is stopped",
+        "드래그하여 관찰 · 이동 정지"
+      ]
+    },
+    {
+      "Key": "ui.telescope.close",
+      "Values": [
+        "Put telescope away",
+        "망원경 접기"
+      ]
+    },
+    {
+      "Key": "ui.turret.manual",
+      "Values": [
+        "Aim → Load → Fire\nUse real ammunition from your bag.",
+        "조준 → 장전 → 발사\n가방의 탄약을 넣어 사용합니다."
+      ]
+    },
+    {
+      "Key": "ui.turret.aim",
+      "Values": [
+        "Drag to aim",
+        "드래그하여 조준"
+      ]
+    },
+    {
+      "Key": "ui.turret.fire",
+      "Values": [
+        "Fire",
+        "발사"
+      ]
+    },
+    {
+      "Key": "ui.turret.reload",
+      "Values": [
+        "Load",
+        "장전"
+      ]
+    },
+    {
+      "Key": "ui.turret.deposit",
+      "Values": [
+        "Insert compatible ammo from bag",
+        "가방에서 맞는 탄약 넣기"
+      ]
+    },
+    {
+      "Key": "ui.turret.modules",
+      "Values": [
+        "Modules · one per role",
+        "모듈 · 역할별 한 개"
+      ]
+    },
+    {
+      "Key": "ui.turret.remove",
+      "Values": [
+        "Remove",
+        "분리"
+      ]
+    },
+    {
+      "Key": "ui.turret.install",
+      "Values": [
+        "Install from bag",
+        "가방에서 장착"
+      ]
+    },
+    {
+      "Key": "ui.turret.reloading",
+      "Values": [
+        "Reloading · {0}s",
+        "장전 대기 · {0}초"
+      ]
+    },
+    {
+      "Key": "ui.turret.ready",
+      "Values": [
+        "Ready to fire",
+        "발사 준비됨"
+      ]
+    },
+    {
+      "Key": "ui.turret.unloaded",
+      "Values": [
+        "Load ammunition",
+        "장전 필요"
+      ]
+    },
+    {
+      "Key": "ui.turret.locked_slot",
+      "Values": [
+        "Ammo Box slot",
+        "탄약함 확장 칸"
+      ]
+    },
+    {
+      "Key": "feedback.turret_unavailable",
+      "Values": [
+        "Cannot operate now. Check range, ammo and reload.",
+        "거리, 탄약과 장전 상태를 확인하세요."
+      ]
+    },
+    {
+      "Key": "feedback.turret_module",
+      "Values": [
+        "No compatible module in your bag.",
+        "가방에 맞는 모듈이 없습니다."
+      ]
+    },
+    {
+      "Key": "ui.station.TurretWorkbench",
+      "Values": [
+        "Turret Workbench",
+        "포탑 작업대"
+      ]
+    },
+    {
+      "Key": "module.Loader",
+      "Values": [
+        "Loader",
+        "장전"
+      ]
+    },
+    {
+      "Key": "module.Aim",
+      "Values": [
+        "Aim",
+        "조준"
+      ]
+    },
+    {
+      "Key": "module.Ammo",
+      "Values": [
+        "Ammo",
+        "탄약"
+      ]
+    },
+    {
+      "Key": "module.Rotation",
+      "Values": [
+        "Rotation",
+        "회전"
+      ]
+    },
+    {
+      "Key": "module.Frame",
+      "Values": [
+        "Frame",
+        "프레임"
+      ]
+    },
+    {
+      "Key": "poi.CrystalPocket",
+      "Values": [
+        "Crystal Pocket",
+        "크리스탈 군집"
+      ]
+    },
+    {
+      "Key": "poi.DiamondPocket",
+      "Values": [
+        "Diamond Pocket",
+        "다이아몬드 군집"
+      ]
+    },
+    {
+      "Key": "poi.DeepMine",
+      "Values": [
+        "Deep Mine",
+        "심부 광산"
+      ]
+    },
+    {
+      "Key": "poi.AbandonedWorkshop",
+      "Values": [
+        "Abandoned Workshop",
+        "버려진 작업장"
+      ]
+    },
+    {
+      "Key": "ui.telescope.use",
+      "Values": [
+        "Use telescope",
+        "망원경 사용"
+      ]
+    },
+    {
+      "Key": "ui.turret.empty",
+      "Values": [
+        "Empty",
+        "비어 있음"
+      ]
     }
   ]
 }

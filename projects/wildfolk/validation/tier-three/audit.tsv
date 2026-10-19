@@ -1,0 +1,449 @@
+ITEM	axe	stack=1	damage=10	cooldown=0.62	range=1.6
+ITEM	campfire	stack=10
+ITEM	clean_water_cup	stack=1
+ITEM	cooked_meat	stack=20
+ITEM	empty_cup	stack=20
+ITEM	feather	stack=50
+ITEM	furnace	stack=10
+ITEM	iron_axe	stack=1	damage=15	cooldown=0.42	range=1.6
+ITEM	iron_body	stack=1	defense=4
+ITEM	iron_head	stack=1	defense=2
+ITEM	iron_ingot	stack=50
+ITEM	iron_ore	stack=50
+ITEM	iron_pickaxe	stack=1	damage=15	cooldown=0.5	range=1.6
+ITEM	iron_sword	stack=1	damage=36	cooldown=0.38	range=1.6
+ITEM	leather	stack=50
+ITEM	leather_body	stack=1	defense=2
+ITEM	leather_head	stack=1	defense=1
+ITEM	pickaxe	stack=1	damage=10	cooldown=0.72	range=1.6
+ITEM	raw_meat	stack=20
+ITEM	raw_water_cup	stack=1
+ITEM	reinforced_chest	stack=10
+ITEM	rusted_sword	stack=1	damage=11	cooldown=0.48	range=1.85
+ITEM	stone	stack=50
+ITEM	stone_axe	stack=1	damage=12	cooldown=0.5	range=1.6
+ITEM	stone_pickaxe	stack=1	damage=12	cooldown=0.6	range=1.6
+ITEM	stone_sword	stack=1	damage=28	cooldown=0.42	range=1.6
+ITEM	stone_wall	stack=10
+ITEM	storage_chest	stack=10
+ITEM	wood	stack=50
+ITEM	wood_door	stack=10
+ITEM	wood_sword	stack=1	damage=20	cooldown=0.46	range=1.6
+ITEM	wood_wall	stack=10
+ITEM	workbench	stack=10
+ITEM	workbench_ii	stack=10
+ITEM	copper_ore	stack=50
+ITEM	tin_ore	stack=50
+ITEM	coal	stack=50
+ITEM	copper_ingot	stack=50
+ITEM	tin_ingot	stack=50
+ITEM	bronze	stack=50
+ITEM	steel	stack=50
+ITEM	prospecting_pan	stack=1	damage=25	cooldown=1.4	range=1.8
+ITEM	blast_furnace	stack=10
+ITEM	steel_axe	stack=1	damage=18	cooldown=0.4	range=1.6
+ITEM	steel_pickaxe	stack=1	damage=18	cooldown=0.48	range=1.6
+ITEM	steel_sword	stack=1	damage=43	cooldown=0.38	range=1.6
+ITEM	steel_head	stack=1	defense=3
+ITEM	steel_body	stack=1	defense=5
+ITEM	torch	stack=50
+ITEM	compass	stack=1
+ITEM	plant_fiber	stack=50
+ITEM	berry	stack=50
+ITEM	mushroom	stack=50
+ITEM	raw_fish	stack=50
+ITEM	bow	stack=1	damage=14	cooldown=0.8	range=14
+ITEM	arrow	stack=100
+ITEM	wood_spear	stack=1	damage=12	cooldown=0.72	range=2.55
+ITEM	stone_spear	stack=1	damage=20	cooldown=0.76	range=2.65
+ITEM	iron_spear	stack=1	damage=29	cooldown=0.78	range=2.8
+ITEM	fishing_rod	stack=1
+ITEM	roasted_mushroom	stack=50
+ITEM	cooked_fish	stack=50
+ITEM	cooking_pot	stack=20
+ITEM	mushroom_stew	stack=50
+ITEM	meat_stew	stack=50
+ITEM	fish_stew	stack=50
+ITEM	mixed_stew	stack=50
+ITEM	waterskin	stack=1
+ITEM	wood_fence	stack=20
+ITEM	wood_fence_gate	stack=20
+ITEM	wood_gate	stack=20
+ITEM	stone_door	stack=20
+ITEM	stone_fence	stack=20
+ITEM	stone_fence_gate	stack=20
+ITEM	stone_gate	stack=20
+ITEM	reinforced_bow	stack=1	damage=19	cooldown=0.78	range=16
+ITEM	bronze_arrow	stack=100
+ITEM	crossbow	stack=1	damage=31	cooldown=1.55	range=19
+ITEM	crossbow_bolt	stack=100
+ITEM	steel_bolt	stack=100
+ITEM	lantern	stack=1	light_radius=8.5
+ITEM	reinforced_wall	stack=20
+ITEM	reinforced_door	stack=20
+ITEM	reinforced_gate	stack=20
+ITEM	spike_trap	stack=20
+ITEM	brazier	stack=20
+ITEM	diamond	stack=50
+ITEM	crystal	stack=50
+ITEM	mechanical_part	stack=50
+ITEM	steel_spear	stack=1	damage=35	cooldown=0.78	range=2.8
+ITEM	diamond_pickaxe	stack=1	damage=18	cooldown=0.48	range=1.6
+ITEM	diamond_axe	stack=1	damage=18	cooldown=0.4	range=1.6
+ITEM	diamond_sword	stack=1	damage=52	cooldown=0.38	range=1.6
+ITEM	diamond_spear	stack=1	damage=42	cooldown=0.78	range=2.8
+ITEM	diamond_head	stack=1	defense=4
+ITEM	diamond_body	stack=1	defense=6
+ITEM	telescope	stack=1
+ITEM	crystal_lantern	stack=1	light_radius=11.475
+ITEM	workbench_iii	stack=10
+ITEM	turret_workbench	stack=10
+ITEM	signal_beacon	stack=10
+ITEM	ballista_bolt	stack=100
+ITEM	ballista	stack=10
+ITEM	repeater	stack=10
+ITEM	auto_loader	stack=1
+ITEM	auto_aim	stack=1
+ITEM	ammo_box	stack=1
+ITEM	rotation_gear	stack=1
+ITEM	reinforced_frame	stack=1
+ITEM	industrial_container	stack=10
+RECIPE	axe	Workbench	1	axe=1	wood=5
+RECIPE	campfire	None	1	campfire=1	wood=4 stone=3
+RECIPE	clean_water_cup	Campfire	1	clean_water_cup=1	raw_water_cup=1
+RECIPE	cooked_meat	Campfire	1	cooked_meat=1	raw_meat=1
+RECIPE	empty_cup	None	1	empty_cup=1	wood=2
+RECIPE	furnace	Workbench	1	furnace=1	stone=8 wood=4
+RECIPE	iron_axe	Workbench	1	iron_axe=1	stone_axe=1 iron_ingot=3
+RECIPE	iron_body	Workbench	1	iron_body=1	iron_ingot=3 leather=1
+RECIPE	iron_head	Workbench	1	iron_head=1	iron_ingot=2 leather=1
+RECIPE	iron_ingot	Furnace	1	iron_ingot=1	iron_ore=1
+RECIPE	iron_pickaxe	Workbench	1	iron_pickaxe=1	stone_pickaxe=1 iron_ingot=3
+RECIPE	iron_sword	Workbench	1	iron_sword=1	stone_sword=1 iron_ingot=3
+RECIPE	leather_body	Workbench	1	leather_body=1	leather=2 wood=3
+RECIPE	leather_head	Workbench	1	leather_head=1	leather=1 wood=2
+RECIPE	pickaxe	Workbench	1	pickaxe=1	wood=5
+RECIPE	reinforced_chest	Workbench	2	reinforced_chest=1	wood=8 iron_ingot=2
+RECIPE	stone_axe	Workbench	1	stone_axe=1	axe=1 stone=4
+RECIPE	stone_pickaxe	Workbench	1	stone_pickaxe=1	pickaxe=1 stone=4
+RECIPE	stone_sword	Workbench	1	stone_sword=1	wood_sword=1 stone=5
+RECIPE	stone_wall	Workbench	2	stone_wall=1	stone=3 wood=1
+RECIPE	storage_chest	Workbench	1	storage_chest=1	wood=6
+RECIPE	wood_door	Workbench	1	wood_door=1	wood=3
+RECIPE	wood_sword	Workbench	1	wood_sword=1	wood=5
+RECIPE	wood_wall	Workbench	1	wood_wall=1	wood=2
+RECIPE	workbench	None	1	workbench=1	wood=6
+RECIPE	copper_ingot	Furnace	1	copper_ingot=1	copper_ore=1 coal=1
+RECIPE	tin_ingot	Furnace	1	tin_ingot=1	tin_ore=1 coal=1
+RECIPE	bronze	Furnace	1	bronze=3	copper_ingot=2 tin_ingot=1
+RECIPE	steel	BlastFurnace	1	steel=1	iron_ingot=1 coal=1
+RECIPE	prospecting_pan	Workbench	2	prospecting_pan=1	copper_ingot=2 wood=2
+RECIPE	blast_furnace	Workbench	2	blast_furnace=1	bronze=3 iron_ingot=3 stone=8 wood=4
+RECIPE	steel_axe	Workbench	2	steel_axe=1	iron_axe=1 steel=3 wood=2
+RECIPE	steel_pickaxe	Workbench	2	steel_pickaxe=1	iron_pickaxe=1 steel=3 wood=2
+RECIPE	steel_sword	Workbench	2	steel_sword=1	iron_sword=1 steel=4 leather=1
+RECIPE	steel_head	Workbench	2	steel_head=1	iron_head=1 steel=2 leather=1
+RECIPE	steel_body	Workbench	2	steel_body=1	iron_body=1 steel=3 leather=1
+RECIPE	torch	None	1	torch=4	wood=1 coal=1
+RECIPE	compass	Workbench	1	compass=1	wood=2 iron_ingot=1
+RECIPE	bow	Workbench	1	bow=1	wood=5 plant_fiber=4
+RECIPE	arrow	Workbench	1	arrow=12	wood=2 feather=1
+RECIPE	wood_spear	Workbench	1	wood_spear=1	wood=4 plant_fiber=2
+RECIPE	stone_spear	Workbench	1	stone_spear=1	wood_spear=1 stone=4
+RECIPE	iron_spear	Workbench	1	iron_spear=1	stone_spear=1 iron_ingot=3
+RECIPE	fishing_rod	Workbench	1	fishing_rod=1	wood=4 plant_fiber=3
+RECIPE	roasted_mushroom	Campfire	1	roasted_mushroom=1	mushroom=1
+RECIPE	cooked_fish	Campfire	1	cooked_fish=1	raw_fish=1
+RECIPE	cooking_pot	Workbench	1	cooking_pot=1	stone=6 iron_ingot=2
+RECIPE	mushroom_stew	CookingPot	1	mushroom_stew=1	mushroom=2 berry=2
+RECIPE	meat_stew	CookingPot	1	meat_stew=1	raw_meat=1 mushroom=1 berry=2
+RECIPE	fish_stew	CookingPot	1	fish_stew=1	raw_fish=1 mushroom=1 berry=2
+RECIPE	mixed_stew	CookingPot	1	mixed_stew=1	raw_meat=1 raw_fish=1 mushroom=1 berry=2
+RECIPE	waterskin	Workbench	1	waterskin=1	leather=2 plant_fiber=3
+RECIPE	purify_waterskin	Campfire	1	waterskin=1	waterskin=1
+RECIPE	wood_fence	Workbench	1	wood_fence=2	wood=3 plant_fiber=1
+RECIPE	wood_fence_gate	Workbench	1	wood_fence_gate=1	wood=3 plant_fiber=2
+RECIPE	wood_gate	Workbench	1	wood_gate=1	wood=6 plant_fiber=2
+RECIPE	stone_door	Workbench	1	stone_door=1	stone=4 wood=2
+RECIPE	stone_fence	Workbench	1	stone_fence=2	stone=4 wood=1
+RECIPE	stone_fence_gate	Workbench	1	stone_fence_gate=1	stone=4 wood=2
+RECIPE	stone_gate	Workbench	1	stone_gate=1	stone=7 wood=3
+RECIPE	reinforced_bow	Workbench	2	reinforced_bow=1	bow=1 bronze=2 leather=1
+RECIPE	bronze_arrow	Workbench	2	bronze_arrow=12	wood=2 feather=1 bronze=1
+RECIPE	crossbow	Workbench	2	crossbow=1	wood=6 bronze=3 leather=2
+RECIPE	crossbow_bolt	Workbench	2	crossbow_bolt=12	wood=2 feather=1
+RECIPE	steel_bolt	Workbench	2	steel_bolt=8	wood=2 feather=1 steel=1
+RECIPE	lantern	Workbench	2	lantern=1	bronze=2 leather=1 coal=2
+RECIPE	reinforced_wall	Workbench	2	reinforced_wall=1	stone=3 wood=2 bronze=1
+RECIPE	reinforced_door	Workbench	2	reinforced_door=1	stone=3 wood=2 bronze=2
+RECIPE	reinforced_gate	Workbench	2	reinforced_gate=1	stone=5 wood=4 bronze=3
+RECIPE	spike_trap	Workbench	2	spike_trap=1	wood=4 stone=2 bronze=1
+RECIPE	brazier	Workbench	2	brazier=1	bronze=3 stone=4 coal=2
+RECIPE	steel_spear	Workbench	2	steel_spear=1	iron_spear=1 steel=3 leather=1
+RECIPE	diamond_pickaxe	Workbench	3	diamond_pickaxe=1	steel_pickaxe=1 diamond=2
+RECIPE	diamond_axe	Workbench	3	diamond_axe=1	steel_axe=1 diamond=1
+RECIPE	diamond_sword	Workbench	3	diamond_sword=1	steel_sword=1 diamond=2
+RECIPE	diamond_spear	Workbench	3	diamond_spear=1	steel_spear=1 diamond=2
+RECIPE	diamond_head	Workbench	3	diamond_head=1	steel_head=1 diamond=2
+RECIPE	diamond_body	Workbench	3	diamond_body=1	steel_body=1 diamond=3
+RECIPE	mechanical_part	Workbench	3	mechanical_part=2	bronze=1 steel=1
+RECIPE	telescope	Workbench	3	telescope=1	crystal=2 bronze=1 leather=1
+RECIPE	crystal_lantern	Workbench	3	crystal_lantern=1	lantern=1 crystal=2 bronze=1
+RECIPE	turret_workbench	Workbench	3	turret_workbench=1	wood=8 stone=8 bronze=4 steel=4 crystal=2 mechanical_part=2
+RECIPE	signal_beacon	Workbench	3	signal_beacon=1	crystal=2 bronze=1 mechanical_part=1 wood=2
+RECIPE	ballista_bolt	TurretWorkbench	3	ballista_bolt=6	wood=2 steel=1
+RECIPE	ballista	TurretWorkbench	3	ballista=1	wood=10 steel=3 leather=2 mechanical_part=1
+RECIPE	repeater	TurretWorkbench	3	repeater=1	wood=8 bronze=3 steel=2 mechanical_part=2
+RECIPE	auto_loader	TurretWorkbench	3	auto_loader=1	mechanical_part=2 steel=1 bronze=1
+RECIPE	auto_aim	TurretWorkbench	3	auto_aim=1	mechanical_part=1 crystal=2 bronze=1
+RECIPE	ammo_box	TurretWorkbench	3	ammo_box=1	wood=4 steel=1
+RECIPE	rotation_gear	TurretWorkbench	3	rotation_gear=1	mechanical_part=1 bronze=2
+RECIPE	reinforced_frame	TurretWorkbench	3	reinforced_frame=1	steel=2 leather=2
+ECONOMY	1	SharedRaw	coal	24
+ECONOMY	1	SharedRaw	copper_ore	10
+ECONOMY	1	SharedRaw	crystal	6
+ECONOMY	1	SharedRaw	diamond	1
+ECONOMY	1	SharedRaw	iron_ore	14
+ECONOMY	1	SharedRaw	stone	43
+ECONOMY	1	SharedRaw	tin_ore	5
+ECONOMY	1	SharedRaw	wood	50
+ECONOMY	1	PersonalRaw	coal	25
+ECONOMY	1	PersonalRaw	copper_ore	4
+ECONOMY	1	PersonalRaw	crystal	4
+ECONOMY	1	PersonalRaw	diamond	12
+ECONOMY	1	PersonalRaw	iron_ore	36
+ECONOMY	1	PersonalRaw	leather	8
+ECONOMY	1	PersonalRaw	plant_fiber	2
+ECONOMY	1	PersonalRaw	stone	17
+ECONOMY	1	PersonalRaw	tin_ore	1
+ECONOMY	1	PersonalRaw	wood	29
+ECONOMY	1	OptionalRaw	coal	72
+ECONOMY	1	OptionalRaw	copper_ore	26
+ECONOMY	1	OptionalRaw	crystal	6
+ECONOMY	1	OptionalRaw	feather	14
+ECONOMY	1	OptionalRaw	iron_ore	33
+ECONOMY	1	OptionalRaw	leather	9
+ECONOMY	1	OptionalRaw	plant_fiber	4
+ECONOMY	1	OptionalRaw	stone	38
+ECONOMY	1	OptionalRaw	tin_ore	13
+ECONOMY	1	OptionalRaw	wood	109
+ECONOMY	1	TotalRaw	coal	121
+ECONOMY	1	TotalRaw	copper_ore	40
+ECONOMY	1	TotalRaw	crystal	16
+ECONOMY	1	TotalRaw	diamond	13
+ECONOMY	1	TotalRaw	feather	14
+ECONOMY	1	TotalRaw	iron_ore	83
+ECONOMY	1	TotalRaw	leather	17
+ECONOMY	1	TotalRaw	plant_fiber	6
+ECONOMY	1	TotalRaw	stone	98
+ECONOMY	1	TotalRaw	tin_ore	19
+ECONOMY	1	TotalRaw	wood	188
+ECONOMY	1	Produced	ammo_box	2
+ECONOMY	1	Produced	auto_aim	2
+ECONOMY	1	Produced	auto_loader	2
+ECONOMY	1	Produced	axe	1
+ECONOMY	1	Produced	ballista	1
+ECONOMY	1	Produced	ballista_bolt	60
+ECONOMY	1	Produced	blast_furnace	1
+ECONOMY	1	Produced	bow	1
+ECONOMY	1	Produced	brazier	1
+ECONOMY	1	Produced	bronze	57
+ECONOMY	1	Produced	bronze_arrow	24
+ECONOMY	1	Produced	campfire	1
+ECONOMY	1	Produced	compass	1
+ECONOMY	1	Produced	cooking_pot	1
+ECONOMY	1	Produced	copper_ingot	40
+ECONOMY	1	Produced	crossbow	1
+ECONOMY	1	Produced	crossbow_bolt	120
+ECONOMY	1	Produced	crystal_lantern	1
+ECONOMY	1	Produced	diamond_axe	1
+ECONOMY	1	Produced	diamond_body	1
+ECONOMY	1	Produced	diamond_head	1
+ECONOMY	1	Produced	diamond_pickaxe	1
+ECONOMY	1	Produced	diamond_spear	1
+ECONOMY	1	Produced	diamond_sword	1
+ECONOMY	1	Produced	empty_cup	1
+ECONOMY	1	Produced	furnace	1
+ECONOMY	1	Produced	iron_axe	1
+ECONOMY	1	Produced	iron_body	1
+ECONOMY	1	Produced	iron_head	1
+ECONOMY	1	Produced	iron_ingot	83
+ECONOMY	1	Produced	iron_pickaxe	1
+ECONOMY	1	Produced	iron_spear	1
+ECONOMY	1	Produced	iron_sword	1
+ECONOMY	1	Produced	lantern	1
+ECONOMY	1	Produced	mechanical_part	14
+ECONOMY	1	Produced	pickaxe	1
+ECONOMY	1	Produced	prospecting_pan	1
+ECONOMY	1	Produced	reinforced_bow	1
+ECONOMY	1	Produced	reinforced_door	1
+ECONOMY	1	Produced	reinforced_frame	2
+ECONOMY	1	Produced	reinforced_gate	1
+ECONOMY	1	Produced	reinforced_wall	6
+ECONOMY	1	Produced	repeater	1
+ECONOMY	1	Produced	rotation_gear	2
+ECONOMY	1	Produced	signal_beacon	1
+ECONOMY	1	Produced	spike_trap	1
+ECONOMY	1	Produced	steel	58
+ECONOMY	1	Produced	steel_axe	1
+ECONOMY	1	Produced	steel_body	1
+ECONOMY	1	Produced	steel_bolt	16
+ECONOMY	1	Produced	steel_head	1
+ECONOMY	1	Produced	steel_pickaxe	1
+ECONOMY	1	Produced	steel_spear	1
+ECONOMY	1	Produced	steel_sword	1
+ECONOMY	1	Produced	stone_axe	1
+ECONOMY	1	Produced	stone_pickaxe	1
+ECONOMY	1	Produced	stone_spear	1
+ECONOMY	1	Produced	stone_sword	1
+ECONOMY	1	Produced	storage_chest	1
+ECONOMY	1	Produced	telescope	1
+ECONOMY	1	Produced	tin_ingot	19
+ECONOMY	1	Produced	turret_workbench	1
+ECONOMY	1	Produced	wood_spear	1
+ECONOMY	1	Produced	wood_sword	1
+ECONOMY	1	Produced	workbench	1
+ECONOMY	4	SharedRaw	coal	24
+ECONOMY	4	SharedRaw	copper_ore	10
+ECONOMY	4	SharedRaw	crystal	6
+ECONOMY	4	SharedRaw	diamond	1
+ECONOMY	4	SharedRaw	iron_ore	14
+ECONOMY	4	SharedRaw	stone	43
+ECONOMY	4	SharedRaw	tin_ore	5
+ECONOMY	4	SharedRaw	wood	50
+ECONOMY	4	PersonalRaw	coal	103
+ECONOMY	4	PersonalRaw	copper_ore	18
+ECONOMY	4	PersonalRaw	crystal	16
+ECONOMY	4	PersonalRaw	diamond	48
+ECONOMY	4	PersonalRaw	iron_ore	144
+ECONOMY	4	PersonalRaw	leather	32
+ECONOMY	4	PersonalRaw	plant_fiber	8
+ECONOMY	4	PersonalRaw	stone	68
+ECONOMY	4	PersonalRaw	tin_ore	5
+ECONOMY	4	PersonalRaw	wood	116
+ECONOMY	4	OptionalRaw	coal	99
+ECONOMY	4	OptionalRaw	copper_ore	40
+ECONOMY	4	OptionalRaw	crystal	6
+ECONOMY	4	OptionalRaw	feather	26
+ECONOMY	4	OptionalRaw	iron_ore	39
+ECONOMY	4	OptionalRaw	leather	18
+ECONOMY	4	OptionalRaw	plant_fiber	16
+ECONOMY	4	OptionalRaw	stone	38
+ECONOMY	4	OptionalRaw	tin_ore	20
+ECONOMY	4	OptionalRaw	wood	166
+ECONOMY	4	TotalRaw	coal	226
+ECONOMY	4	TotalRaw	copper_ore	68
+ECONOMY	4	TotalRaw	crystal	28
+ECONOMY	4	TotalRaw	diamond	49
+ECONOMY	4	TotalRaw	feather	26
+ECONOMY	4	TotalRaw	iron_ore	197
+ECONOMY	4	TotalRaw	leather	50
+ECONOMY	4	TotalRaw	plant_fiber	24
+ECONOMY	4	TotalRaw	stone	149
+ECONOMY	4	TotalRaw	tin_ore	30
+ECONOMY	4	TotalRaw	wood	332
+ECONOMY	4	Produced	ammo_box	2
+ECONOMY	4	Produced	auto_aim	2
+ECONOMY	4	Produced	auto_loader	2
+ECONOMY	4	Produced	axe	4
+ECONOMY	4	Produced	ballista	1
+ECONOMY	4	Produced	ballista_bolt	60
+ECONOMY	4	Produced	blast_furnace	1
+ECONOMY	4	Produced	bow	4
+ECONOMY	4	Produced	brazier	1
+ECONOMY	4	Produced	bronze	90
+ECONOMY	4	Produced	bronze_arrow	96
+ECONOMY	4	Produced	campfire	1
+ECONOMY	4	Produced	compass	4
+ECONOMY	4	Produced	cooking_pot	1
+ECONOMY	4	Produced	copper_ingot	68
+ECONOMY	4	Produced	crossbow	4
+ECONOMY	4	Produced	crossbow_bolt	120
+ECONOMY	4	Produced	crystal_lantern	4
+ECONOMY	4	Produced	diamond_axe	4
+ECONOMY	4	Produced	diamond_body	4
+ECONOMY	4	Produced	diamond_head	4
+ECONOMY	4	Produced	diamond_pickaxe	4
+ECONOMY	4	Produced	diamond_spear	4
+ECONOMY	4	Produced	diamond_sword	4
+ECONOMY	4	Produced	empty_cup	4
+ECONOMY	4	Produced	furnace	1
+ECONOMY	4	Produced	iron_axe	4
+ECONOMY	4	Produced	iron_body	4
+ECONOMY	4	Produced	iron_head	4
+ECONOMY	4	Produced	iron_ingot	197
+ECONOMY	4	Produced	iron_pickaxe	4
+ECONOMY	4	Produced	iron_spear	4
+ECONOMY	4	Produced	iron_sword	4
+ECONOMY	4	Produced	lantern	4
+ECONOMY	4	Produced	mechanical_part	14
+ECONOMY	4	Produced	pickaxe	4
+ECONOMY	4	Produced	prospecting_pan	4
+ECONOMY	4	Produced	reinforced_bow	4
+ECONOMY	4	Produced	reinforced_door	1
+ECONOMY	4	Produced	reinforced_frame	2
+ECONOMY	4	Produced	reinforced_gate	1
+ECONOMY	4	Produced	reinforced_wall	6
+ECONOMY	4	Produced	repeater	1
+ECONOMY	4	Produced	rotation_gear	2
+ECONOMY	4	Produced	signal_beacon	1
+ECONOMY	4	Produced	spike_trap	1
+ECONOMY	4	Produced	steel	118
+ECONOMY	4	Produced	steel_axe	4
+ECONOMY	4	Produced	steel_body	4
+ECONOMY	4	Produced	steel_bolt	64
+ECONOMY	4	Produced	steel_head	4
+ECONOMY	4	Produced	steel_pickaxe	4
+ECONOMY	4	Produced	steel_spear	4
+ECONOMY	4	Produced	steel_sword	4
+ECONOMY	4	Produced	stone_axe	4
+ECONOMY	4	Produced	stone_pickaxe	4
+ECONOMY	4	Produced	stone_spear	4
+ECONOMY	4	Produced	stone_sword	4
+ECONOMY	4	Produced	storage_chest	1
+ECONOMY	4	Produced	telescope	4
+ECONOMY	4	Produced	tin_ingot	30
+ECONOMY	4	Produced	turret_workbench	1
+ECONOMY	4	Produced	wood_spear	4
+ECONOMY	4	Produced	wood_sword	4
+ECONOMY	4	Produced	workbench	1
+ECONOMY	9472026	InitialSupply	coal	550
+ECONOMY	9472026	InitialSupply	copper_ore	108
+ECONOMY	9472026	InitialSupply	crystal	96
+ECONOMY	9472026	InitialSupply	diamond	81
+ECONOMY	9472026	InitialSupply	iron_ore	396
+ECONOMY	9472026	InitialSupply	plant_fiber	8
+ECONOMY	9472026	InitialSupply	stone	42
+ECONOMY	9472026	InitialSupply	tin_ore	55
+ECONOMY	9472026	InitialSupply	wood	76
+VALIDATOR	9472026	PASS	accessible_caves=8
+ECONOMY	1	InitialSupply	coal	550
+ECONOMY	1	InitialSupply	copper_ore	108
+ECONOMY	1	InitialSupply	crystal	96
+ECONOMY	1	InitialSupply	diamond	81
+ECONOMY	1	InitialSupply	iron_ore	396
+ECONOMY	1	InitialSupply	plant_fiber	8
+ECONOMY	1	InitialSupply	stone	42
+ECONOMY	1	InitialSupply	tin_ore	55
+ECONOMY	1	InitialSupply	wood	76
+VALIDATOR	1	PASS	accessible_caves=8
+ECONOMY	42	InitialSupply	coal	550
+ECONOMY	42	InitialSupply	copper_ore	108
+ECONOMY	42	InitialSupply	crystal	96
+ECONOMY	42	InitialSupply	diamond	81
+ECONOMY	42	InitialSupply	iron_ore	396
+ECONOMY	42	InitialSupply	plant_fiber	8
+ECONOMY	42	InitialSupply	stone	42
+ECONOMY	42	InitialSupply	tin_ore	55
+ECONOMY	42	InitialSupply	wood	76
+VALIDATOR	42	PASS	accessible_caves=8
+ECONOMY	20261019	InitialSupply	coal	550
+ECONOMY	20261019	InitialSupply	copper_ore	108
+ECONOMY	20261019	InitialSupply	crystal	96
+ECONOMY	20261019	InitialSupply	diamond	81
+ECONOMY	20261019	InitialSupply	iron_ore	396
+ECONOMY	20261019	InitialSupply	plant_fiber	8
+ECONOMY	20261019	InitialSupply	stone	42
+ECONOMY	20261019	InitialSupply	tin_ore	55
+ECONOMY	20261019	InitialSupply	wood	76
+VALIDATOR	20261019	PASS	accessible_caves=8

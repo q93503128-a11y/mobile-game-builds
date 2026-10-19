@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea85a5ebaf6f62646a87d747548e1a2f, type: 3}
+  m_Name: IndustrialContainerPlacement
+  m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.PlaceableDefinition
+  Item: {fileID: 11400000, guid: 9a2fd40247e403e4c8ec126a6bb61758, type: 2}
+  Prefab: {fileID: 3996446922011461074, guid: 98e40b809021ada49b034864b5a6f45b, type: 3}
+  Vitality: {fileID: 11400000, guid: 2d5aef4d748268b408bb20973cba2bbe, type: 2}
+  Footprint: {x: 1.5, y: 1.1}
+  MaximumDistance: 2.8
+  Station: 0
+  Tier: {fileID: 11400000, guid: b632d88d6c00461418a7100d186ff69c, type: 2}
+  IsBeacon: 0
+  Turret: {fileID: 0}
+  IsBarrier: 0
+  IsDoor: 0
+  StorageSlots: 6
+  ParallelCapacity: 1
+  ProcessingMode: 0
+  InputCapacity: 50
+  OutputCapacity: 100
+  ProcessingSpeed: 1
+  WorkbenchTier: 1
+  TierVisual: {fileID: 21300000, guid: e9bd2245388c09145859ba43eebc5a48, type: 3}
+  TierDisplayKey: item.industrial_container.name
+  UpgradeTo: {fileID: 0}
+  UpgradeCosts: []

@@ -4,7 +4,7 @@ namespace Wildfolk
 {
     public static class WorldGenerationVersion
     {
-        public const int Legacy=1,Current=2;
+        public const int Legacy=1,Continental=2,Current=3;
         public static bool Valid(int version)=>version>=Legacy && version<=Current;
     }
     public enum SeedDomain { Continental=101,Terrain=211,Hydrology=307,Biome=401,Cave=503,Resource=601,POI=701,Road=809,Vegetation=907,Creature=1009 }

@@ -14,10 +14,10 @@ namespace Wildfolk.Tests
         [TestCase(1)][TestCase(4)]public void RecipeEconomyIncludesSharedFacilitiesAllUpgradeChainsAndBatchedFuel(int players)
         {
             var d=Data;var b=ProgressionEconomy.Calculate(d.ProgressionCatalog,players);var c=d.ProgressionCatalog;
-            Assert.That(b.Total[c.Item("iron_ore")],Is.EqualTo(players==1 ? 39 : 135));
-            Assert.That(b.Shared[c.Item("iron_ore")],Is.EqualTo(5));Assert.That(b.Personal[c.Item("iron_ore")],Is.EqualTo(30*players));
-            Assert.That(b.Total.ContainsKey(c.Item("empty_cup")),Is.False);Assert.That(b.Total[c.Item("wood")],Is.EqualTo(players==1 ? 98 : 230));
-            var old=players==1 ? 50 : 140;Assert.That(b.Total[c.Item("coal")],Is.EqualTo(old));
+            Assert.That(b.Total[c.Item("iron_ore")],Is.EqualTo(players==1 ? 83 : 197));
+            Assert.That(b.Shared[c.Item("iron_ore")],Is.EqualTo(14));Assert.That(b.Personal[c.Item("iron_ore")],Is.EqualTo(36*players));
+            Assert.That(b.Total.ContainsKey(c.Item("empty_cup")),Is.False);Assert.That(b.Total[c.Item("wood")],Is.EqualTo(players==1 ? 188 : 332));
+            var old=players==1 ? 121 : 226;Assert.That(b.Total[c.Item("coal")],Is.EqualTo(old));
             foreach(var item in b.Total.Keys)Assert.That(b.Total[item],Is.EqualTo((b.Shared.TryGetValue(item,out var s) ? s : 0)+(b.Personal.TryGetValue(item,out var p) ? p : 0)+(b.Optional.TryGetValue(item,out var o) ? o : 0)));
             Assert.That(c.Recipe("copper_ingot").ResultCount,Is.EqualTo(1));Assert.That(c.Recipe("tin_ingot").ResultCount,Is.EqualTo(1));Assert.That(c.Recipe("steel").ResultCount,Is.EqualTo(1));
         }

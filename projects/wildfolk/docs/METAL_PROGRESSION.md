@@ -1,6 +1,6 @@
 # 초기 금속 progression 교정
 
-2026-10-18 현재 Item86 / Recipe71 / Equipment Tier4 / Surface Biome4 / Save9 / Protocol11. 아래 금속 패스의 v6/Protocol7 검수는 당시 기록이다. 신규 자연 공급/지역 회복/4인 yield와 구 generation1 정책은 WORLD_GENERATION 정본을 따른다.
+2026-10-19 현재 Item110 / Recipe91 / Equipment Tier5 / Surface Biome4 / Save10 / Protocol12. Workbench III가 활성화되었으며 현재 비용은 CONTENT_EXPANSION의 III 절을 따른다. 아래 이전 금속·I–II 패스 수치/검수는 당시 기록이다. 신규 자연 공급/지역 회복/4인 yield와 구 generation1/2 정책은 WORLD_GENERATION 정본을 따른다.
 
 ## 확정한 진행
 
@@ -98,3 +98,8 @@ SP 임시 파일 저장·Load와 Local Host 임시 파일 저장→Leave→재Ho
 ## Workbench I–II Content Expansion (2026-10-18)
 
 Workbench I~II 콘텐츠 확장으로 Bronze9종 지속 사용처와 Feather 탄약 소비를 제공한다. Steel Bolt를 포함한 1인/4인 광물 필수·선택·안전 여유 표는 [CONTENT_EXPANSION](CONTENT_EXPANSION.md)이 현재 정본이다. III/Diamond 비용은 넣지 않았다.
+
+
+## Workbench III 현재 상태 · 2026-10-19
+
+현재 III는 활성 alpha 범위다. 위 I–II 시점의 III/Diamond 비활성 설명은 역사 기록이다. II→III는 재료만 요구하고 Diamond 장비는 Steel 장비를 소비한다. Bronze+Steel→Mechanical Part로 기존 광물을 사용하며 Ballista/Repeater는 Turret Workbench에서 제작한다. 현재 비용·수치·1/4인 예산은 CONTENT_EXPANSION의 III 절을 따른다.

@@ -37,3 +37,8 @@ ContentExpansionAssets는 기존 scene IDs를 보존하는 콘텐츠 authoring�
 ## Gamefeel 통합 검수
 
 Editor 전용 `GamefeelQa.Begin()`은 fresh isolated Play에서 command/UI callback/drag handler 흐름을 기록한다. `Resume()`은 준비된 QA 월드에서 전투 이후 checkpoint를 실행한다. ContentExpansionQa.Prepare가 격리 profile/repository를 검사한다. Resource teleport/아이템 지급/정지 표적/시설 Advance를 사용하며 자연 progression/사람의 터치 검수와 다르다. SceneFlow.Load가 이전 coroutine을 종료하므로 로드 후 상태는 MCP로 별도 조회한다. `Captures/gamefeel/play.tsv`와 snapshot을 저장하고 정본 요약은 validation/gamefeel에 선별한다. 실제 저장/설정은 사용하지 않는다.
+
+
+## Workbench III 현재 상태 · 2026-10-19
+
+III 콘텐츠 authoring은 Editor의 TierThreeAssets.Build, 기존 씬 카드/컴포넌트 갱신은 TierThreeAssets.RefreshPresentation이다. TierThreeAudit.Export는 실제 recipe 기반1/4인 경제와 seed 공급을 출력한다. TierThreeQa는 격리 generation3에서만 실행하고 도구/재료 지급·teleport·시간 전진을 기록한다. Stage 도구는 Editor 전용이며 플레이어 HUD에 들어가지 않는다.

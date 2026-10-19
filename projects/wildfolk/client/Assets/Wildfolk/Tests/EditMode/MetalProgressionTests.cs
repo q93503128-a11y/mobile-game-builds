@@ -14,7 +14,7 @@ namespace Wildfolk.Tests
         [Test]public void OnlyConfiguredNextTierOpensAndLegacyUpgradeCostsRemain()
         {
             var one=Data<PlaceableDefinition>("WorkbenchPlacement");var two=one.UpgradeTo;
-            Assert.That(WorkbenchProgression.CanUpgrade(one),Is.True);Assert.That(WorkbenchProgression.CanUpgrade(two),Is.False);Assert.That(two.WorkbenchTier,Is.EqualTo(2));
+            Assert.That(WorkbenchProgression.CanUpgrade(one),Is.True);Assert.That(WorkbenchProgression.CanUpgrade(two),Is.True);Assert.That(two.WorkbenchTier,Is.EqualTo(2));
             Assert.That(one.UpgradeCosts.Select(c=>c.Item.Id+":"+c.Count),Is.EqualTo(new[]{"wood:8","stone:6","iron_ingot:2"}));
             var fake=UnityEngine.Object.Instantiate(two);fake.WorkbenchTier=6;fake.UpgradeTo=one;Assert.That(WorkbenchProgression.CanUpgrade(fake),Is.False);fake.WorkbenchTier=7;Assert.That(WorkbenchProgression.CanUpgrade(fake),Is.False);UnityEngine.Object.DestroyImmediate(fake);
         }
@@ -66,7 +66,7 @@ namespace Wildfolk.Tests
             foreach(var name in new[]{"CopperOreNode","TinOreNode","CoalNode"})
             {var r=Data<ResourceDefinition>(name+"Resource");Assert.That(r.CanHarvest(null),Is.False);Assert.That(r.CanHarvest(Data<ToolDefinition>("IronSwordTool")),Is.False);Assert.That(r.CanHarvest(Data<ToolDefinition>(name=="TinOreNode" ? "ProspectingPanTool" : "IronPickaxeTool")),Is.True);Assert.That(r.RequiredToolItem,Is.Not.Null);}
             Assert.That(Data<ResourceDefinition>("TinOreNodeResource").CanHarvest(Data<ToolDefinition>("PickaxeTool")),Is.False);
-            Assert.That(Catalog.Items.Length,Is.EqualTo(86));Assert.That(Catalog.Recipes.Length,Is.EqualTo(71));Assert.That(AssetDatabase.FindAssets("t:BiomeDefinition").Length,Is.EqualTo(1));
+            Assert.That(Catalog.Items.Length,Is.EqualTo(110));Assert.That(Catalog.Recipes.Length,Is.EqualTo(91));Assert.That(AssetDatabase.FindAssets("t:BiomeDefinition").Length,Is.EqualTo(1));
         }
     }
 }

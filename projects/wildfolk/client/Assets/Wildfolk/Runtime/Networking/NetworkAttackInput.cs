@@ -10,7 +10,7 @@ namespace Wildfolk
         public void OnPointerDown(PointerEventData e){if(pointer.HasValue)return;pointer=e.pointerId;Fire();}
         public void OnPointerUp(PointerEventData e){if(pointer==e.pointerId)pointer=null;}
         private void Fire(){Arena.LocalPlayer?.Commands.Attack();next=Time.unscaledTime+.12f;}
-        private void Update(){if(pointer.HasValue && Time.unscaledTime>=next)Fire();}
+        private void Update(){if(pointer.HasValue && Time.unscaledTime>=next && Arena.LocalPlayer!=null && Arena.LocalPlayer.GetComponent<PlayerPrimaryAction>().Kind!=PrimaryActionKind.Telescope)Fire();}
         private void OnDisable()=>pointer=null;
         private void OnApplicationFocus(bool focus){if(!focus)pointer=null;}
     }

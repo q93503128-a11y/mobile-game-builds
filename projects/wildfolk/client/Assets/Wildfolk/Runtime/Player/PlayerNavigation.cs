@@ -2,9 +2,15 @@ using System;
 using UnityEngine;
 namespace Wildfolk
 {
+    public enum NavigationMode { Automatic,Off,Home,CaveExit,Beacon }
     public sealed class PlayerNavigation : MonoBehaviour
     {
         public ItemDefinition Compass;
+        public NavigationMode Mode {get;private set;}
+        public string BeaconId {get;private set;}
+        public void RestoreNavigation(NavigationMode mode,string id){Mode=mode;BeaconId=id;Changed?.Invoke();}
+        public void SelectNavigation(NavigationMode mode,string id=null){RestoreNavigation(mode,id);GetComponent<NetworkNavigation>()?.SelectNavigation(mode,id);}
+        public bool TryBeacon(out Vector2 point,out int number){point=default;number=0;var net=GetComponent<NetworkNavigation>();if(net!=null && !net.IsServer){foreach(var b in net.Beacons)if(b.Id.ToString()==BeaconId){point=b.Position;number=b.Number;return true;}return false;}if(!string.IsNullOrEmpty(BeaconId) && BeaconDirectory.Points.TryGetValue(BeaconId,out var p)){point=p.Position;number=p.Number;return true;}return false;}
         public string HomeId {get;private set;}
         public event Action Changed;
         public bool HasCompass=>GetComponent<PlayerInventory>().Model!=null && Compass!=null && GetComponent<PlayerInventory>().Model.CountItem(Compass)>0;

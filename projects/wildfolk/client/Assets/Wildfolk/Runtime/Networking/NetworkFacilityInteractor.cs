@@ -84,7 +84,7 @@ namespace Wildfolk
         }
         public bool Execute(FacilityOperation op,ulong id,uint bagRevision,uint facilityRevision,int recipe=-1,int from=0,int to=0,int amount=0,byte sides=0)
         {
-            if(!Bag.CanOperate || bagRevision!=Bag.Revision.Value || amount<0)return false;
+            if(!Bag.CanOperate || Bag.Player.Commands.IsScouting || bagRevision!=Bag.Revision.Value || amount<0)return false;
             var facility=Resolve(id);var hand=id==ulong.MaxValue && op==FacilityOperation.Craft;
             if(!hand && (facility==null || !facility.InRange(Bag.Player) || facility.Revision.Value!=facilityRevision))return false;
             if(op!=FacilityOperation.Open && Bag.Player.Commands.Session.State!=SessionState.Inventory)return false;

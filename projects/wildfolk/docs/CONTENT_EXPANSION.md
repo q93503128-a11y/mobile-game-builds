@@ -1,4 +1,6 @@
-# Workbench I–II Content Expansion
+# Workbench content expansion
+
+아래 I–II 표는 2026-10-18 구현 기록이다. 현재 III 확장은 이 문서 마지막 절을 따른다.
 
 2026-10-18. 기준318ddd6b14eb89bbc526c96239d23c8067de76e6. Lowfire 표시명/Wildfolk 내부명을 유지한다. 아이템50→86, Recipe38→71. Workbench III/Diamond/전문 무기·방어구·포탑 제작대는 미구현이다. 기존 런타임 위에 행동/선택지를 추가했으며 출시 밸런스나 실제 단말 합격이 아니다.
 
@@ -166,3 +168,95 @@ Utility 한 칸에 Lantern을 장착한다. 기존 equipment request/status와 P
 낚시 미끼/물고기 종류/낚시 레벨·음식 buff tree·추가 무기군·III/Diamond·전문 제작대·포탑·지도·자동 채광·새 biome은 없다. 도구 내구도/광원 연료 소비도 추가하지 않았다. 장기 음식/탄약/낚시 속도는 알파 수치다.
 
 실제 검수와 한계는 CONTENT_EXPANSION_REVIEW, validation/content-expansion.json에 기록한다. QA는 Play 전에 별도 DevelopmentProfile을 선택해 저장 경로와 기본 설정/멀티 식별자를 격리한다. 실제 save/profile을 fixture로 읽지 않는다.
+
+
+## Workbench III / Deep Caverns / Turret foundation (2026-10-19)
+
+시작 정본821e493d637e2f25ba94ab843cc9737539cb9ee5. 직전 통합 감사의 readiness A와 source를 확인한 뒤 진행했다. 표시명 Lowfire, 내부 Wildfolk 유지. III는 현재 alpha 범위의 최고 활성 단계이며 최종 tier가 아니다. IV–VI/보스/Defense Objective/전기·물류/총기/별도 Weapon·Armor Workbench는 추가하지 않았다. 현재 item110/recipe91, Save10/Protocol12, 새 월드 generation3다.
+
+### 구현 전 데이터 확인과 조사
+
+MCP로 기존86개 Item과71개 Recipe, Tool/Armor/Ranged/Placement 필드를 내보내고 실제 비용을 확인했다. Steel Pickaxe/Axe는 damage18, Sword43, Head3/Body5 defense. Crossbow31damage/19range/1.55초 주기, 기본 Bolt100stack이다. 기존 Steel Spear는 없어 같은 Spear 계열 안에서 Iron Spear를 소비하는 Steel 중간 단계를 추가했다. 기존 Enemy HP나 I–II recipe/resource tempo는 변경하지 않았다.
+
+- [Subnautica Alterra Science](https://unknownworlds.com/en/news/alterra-science-update-released): 기존 Knife/Tank/Fins를 Workbench에서 변경하는 사례, 이름으로 Beacon을 구별하는 사례를 확인했다. 기존 Steel/Lantern 소비와 식별 가능한 비콘 이름에 적용했다.
+- [Grounded Bugs Strike Back](https://grounded.obsidian.net/news/get-ready-as-the-bugs-strike-back): 플레이어가 탑승해 운용하는 두 turret의 역할 차이와 PEEP.R 관찰을 확인했다. Lowfire는 수동 조준·장전·발사를 기본 기능으로 두고 별도 위험 활성 없이 원거리 관찰을 제공한다.
+- [Grounded Super Duper](https://grounded.obsidian.net/news/grounded/update-1-2): turret ammunition 추가 사례를 확인했다. Lowfire는 Ballista 전용탄과 기존 Bolt 재사용을 구분하고 Ammo Box도 실제 stack을 보관한다.
+- [Minecraft render/simulation guide](https://learn.microsoft.com/en-us/minecraft/creator/documents/simulationrenderdistanceguide?view=minecraft-bedrock-stable): 렌더 범위와 AI/spawn/game tick 범위가 다른 개념임을 확인했다. Telescope 표시와 포탑 전투 휴면 경계에 적용했다.
+- [Valheim FAQ](https://www.valheimgame.com/faq/): 탐험·재료·제작·건축과 협동 loop를 참고했다. 희귀 pocket 발견 보상, 산업 chest의 작은 bonus, 1인 개인 장비와 공유 시설의 비용 분리는 Lowfire의 자체 설계 판단이다.
+
+관찰과 자체 판단을 구분한다. 외부 게임의 내부 타기팅/LOS/저장 알고리즘을 확인했다고 주장하지 않는다. Auto Aim의 살아 있는 적·아군 제외·LOS, 고정 역할 module, 초기4인 공급/입구 경로 검증은 이번 Lowfire 요구에 맞춰 설계했다. 타 게임 asset/code/layout은 사용하지 않았다. 새 sprites는 기존 Pillow 방식이다.
+
+### III 재료와 비용
+
+II→III는 Wood10+Stone10+Bronze4+Steel4+Crystal4+Diamond1만 요구한다. 방문·kill·quest 체크는 없다. I→II 기존 비용은 유지한다.
+
+|출력|소비|역할/수치|
+|---|---|---|
+|Diamond Pickaxe|Steel Pickaxe+Diamond2|동일 damage18/속도·거리, 채집 효율 약+22%|
+|Diamond Axe|Steel Axe+Diamond1|동일 damage18/속도·거리, 채집 효율 약+22%|
+|Diamond Sword|Steel Sword+Diamond2|damage52, 속도·거리 유지|
+|Diamond Spear|Steel Spear+Diamond2|damage42, 속도·거리 유지|
+|Diamond Head|Steel Head+Diamond2|defense4|
+|Diamond Body|Steel Body+Diamond3|defense6|
+|Steel Spear|Iron Spear+Steel3+Leather1|II,damage35; 기존 Iron 타이밍/거리|
+|Mechanical Part×2|Bronze1+Steel1|III 제작이 주 공급; Coal 직접 추가 없음|
+|Telescope|Crystal2+Bronze1+Leather1|가방/선택 슬롯에서 사용, Utility 차지 없음|
+|Crystal Lantern|Lantern+Crystal2+Bronze1|기존 Utility, 반경+35%, 공격 손 유지|
+|Signal Beacon|Crystal2+Bronze1+Mechanical Part1+Wood2|팀 공유 설치/회수/저장|
+|Turret Workbench|Wood8+Stone8+Bronze4+Steel4+Crystal2+Mechanical Part2|III에서 제작; 현재 빈 상위 tier UI 없음|
+|Ballista|Wood10+Steel3+Leather2+Mechanical Part1|전용 Bolt,62damage/26range/2.3초/45도·초,HP180|
+|Repeater|Wood8+Bronze3+Steel2+Mechanical Part2|기존 Crossbow Bolt,16damage/17range/.55초/105도·초,HP160|
+|Ballista Bolt×6|Wood2+Steel1|Turret Workbench|
+|Auto Loader|Mechanical Part2+Steel1+Bronze1|저장 탄약 자동 장전|
+|Auto Aim|Mechanical Part1+Crystal2+Bronze1|Host의 유효 적 추적/LOS|
+|Ammo Box|Wood4+Steel1|기본1칸→3칸, 각 탄약 기존100stack|
+|Rotation Gear|Mechanical Part1+Bronze2|회전 속도+35%|
+|Reinforced Frame|Steel2+Leather2|최대HP+50%; 즉시 수리 효과 없음|
+
+Diamond 개인6종은12개, 공유 III 업그레이드를 포함해1인13/4인49개다. 장착한 Steel은 가방으로 해제한 뒤 재료로 소비한다. 장착 상태의 아이템을 몰래 재료로 소모하지 않는다. Ballista 관통은 이번에 추가하지 않았으며 단발·장거리·느린 추적 역할로 구분한다.
+
+### Deep Caverns와 초기 공급
+
+새 generation3는 기존 지형/동굴 graph/기존 g·c·e source를 유지하고 독립적인 iii ID와 새 source stream만 추가한다. generation1/2 저장은 해당 버전으로 계속 읽으며 새 natural source/POI를 소급 생성하지 않는다. 기존 저장에 새 아이템을 보관하거나 시설을 설치할 수 있지만 자연 III 진행은 새 generation3 월드가 필요하다. 강제 재생성·wipe는 없다.
+
+Diamond: Deep Caverns의 pocket 중심, depth .75+, Steel Pickaxe+,source당3,회복300초,target ratio.70. Crystal: 지하 depth .6+,source당6,회복150초,target.85. Surface Diamond/Crystal 공급은 없으며 surface Diamond에 의존하지 않는다. 새 위치/pID로 지역 회복하고 비활성 청크에 GameObject를 생성하지 않는다. 기존 Stone6/75,Iron6/120,Coal10/105,Copper6/150,Tin5/165/Pan 규칙은 유지한다.
+
+Crystal Pocket/Diamond Pocket/Deep Mine/Abandoned Workshop을 표시한다. 산업 지역의 실제 상자만 작은 bonus를 담는다. Mechanical Part는 확률 bonus1~3이며 일반 몹·평범한 상자·맨바닥 자연 spawn에 추가하지 않았다. POI를 찾지 못해도 Bronze+Steel 제작으로 진행 가능하다. 새 적 종은 추가하지 않았다.
+
+새 월드의 보장 deep source는 Diamond27개/81개 yield, Crystal16개/96개 yield다. Diamond는3개 cave pocket에 분산해 어느 하나를 제외해도4인 기본 필요49개를 확보할 수 있도록 보강했다. 초기 공급·geographic distribution·surface entrance A*·동굴 graph 경로와 source까지의 지형 연결을 검사하며 회복을 초기 부족분 보충 수단으로 쓰지 않는다. 검사 Seed와 최종 결과는 validation/tier-three를 따른다.
+
+### 경제: 기본 진행과 대표 선택 방어기지
+
+현재 Recipe graph에서 shared/personal/optional을 나눠 batch 잔여량을 재사용한다. 기존 I–II까지의 초기 도구·시설과 III 개인6종/Telescope/Crystal Lantern,공유 III·Turret Workbench를 포함한다. 선택 시나리오는 Ballista1+Repeater1+Beacon1+각 module2+Ballista Bolt60+기본 Bolt120 및 기존 선택 root다. 이 시나리오를 모든 플레이어의 필수 비용으로 해석하지 않는다.
+
+|최종 raw material|1P|4P|
+|---|---:|---:|
+|Wood|188|332|
+|Stone|98|149|
+|Iron Ore|83|197|
+|Coal|121|226|
+|Copper Ore|40|68|
+|Tin Ore|19|30|
+|Diamond|13|49|
+|Crystal|16|28|
+|Leather|17|50|
+|Feather|14|26|
+|Plant Fiber|6|24|
+
+Bronze/Steel/Mechanical Part의 제작 중간 합계와 그룹별 raw 비용은 audit.tsv에 별도로 기록한다. 위 raw 합계에 중간재를 다시 더하지 않는다. Steel/Bronze는 새 장비·부품·시설·모듈·탄약을 통해 계속 소비되고, Feather는 기존 Bolt에 남는다. Ballista Bolt는6발마다Steel1+Wood2,기본 Crossbow Bolt는12발마다Wood2+Feather1이다.
+
+### Telescope / Navigation / 포탑 구조
+
+Telescope는 공격·채집·이동·dash·상호작용·설치를 막고 드래그/aim으로 관찰 방향을 바꾼다. 접기/다시 사용/피격으로 종료한다. 카메라 offset은64unit chunk의2.5개 앞이다. 기존 WorldChunkRuntime/WorldTerrainRenderer에 표시 전용 root를 요청하며 카메라 footprint에 필요한 최대9개만 허용한다. AI/자원/물리/시설/생물 활성 경로를 호출하지 않는다. 종료3초 후 root를 반환하고 기존 지형 LRU24를 사용한다. 별도 월드 streaming manager는 없다.
+
+비콘 추적은 기본 OFF다. 기존 Compass의 Home/Exit 자동 안내는 유지하며 Navigation에서 Off/Home/Exit/Beacon 중 하나를 고른다. Beacon은 순번 이름을 저장하고 한번에 한 대상의 방향/거리/짧은 이름만 표시한다. 강제 설치 개수 제한은 없다. team registry metadata는 변화가 있을 때 갱신하며 멀리 있는 비콘도 표시를 위해 시뮬레이션하지 않는다.
+
+포탑은 기존 WorldPlaceable/InventoryModel/StoneProjectile/NetworkProjectile를 사용한다. 공용 staggered scheduler가16개까지의 활성 포탑을 tick하며 각 포탑의 검색은 최대64개 근처 collider와32개 LOS hit로 제한한다. 자원/포탑마다 Update를 추가하지 않았다. Loader/Aim/Ammo/Rotation/Frame 슬롯당 한 module이며 상위 module 교체가 가능하다. 확장 탄약이 남으면 Ammo Box 분리를 거부한다. module 제거/교체는 가방 공간을 검사한다.
+
+수동 운용은 드래그 조준→탄약 삽입→장전→발사다. Loader만 있으면 수동 조준/발사, Aim만 있으면 추적과 수동 장전/발사, 둘 다 있으면 실제 투사체와 탄약·cooldown을 이용한 자동 사격이다. Host만 타깃/발사/소모/피해를 결정한다. 원격은 owner request와 변경 state/최대10Hz heading만 전달한다. 시뮬레이션 청크 밖에서는 추적·발사·탄약 소비를 하지 않고 HP/모듈/탄약/방향/재장전 상태만 저장한다. 새 save file을 만들지 않는다.
+
+### Gamefeel / UI / 검증 범위
+
+새 화면은 기존 Canvas/SafeArea/서체/색과 제작 카드를 확장한다. 긴 비용은 have/need와 disabled 상태로 표시한다. 최초 실제 Play에서 새 카드가71개로 남은 문제와6개 upgrade 재료의 가림을 확인해 카드 추가와 우측 높이를 교정했다. 별도 shake/hitstop/zoom/VFX stack이나 placeholder 소리는 추가하지 않았다. 포탑의 장전/대기/빈 탄약, module 설치, scope 종료, 비콘 선택은 각각 즉각적인 상태 변화와 짧은 조작으로 전달한다.
+
+검사(compile/자동/static)와 실제 테스트(MCP Play/Game View)는 validation/tier-three의 결과를 따른다. 실제 OS 터치, 원격4인/Relay, 모바일60fps/장시간 전투·재미는 별도다. 단일 Editor 수치를 출시 성능이나 밸런스 합격으로 해석하지 않는다.

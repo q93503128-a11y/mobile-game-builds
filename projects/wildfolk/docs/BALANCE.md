@@ -163,3 +163,26 @@ Torch: Hand Wood1+Coal1→4, stack50/설치HP40/footprint.5×.5/거리3.5. 광�
 ## Resource Tempo (2026-10-18)
 
 Stone6/75초, Iron6/120초, Coal10/105초, Copper6/150초, Tin5/165초(HP50/2 Pan hit). generation2는64unit chunk deficit,광물/Stone target0.85,5초마다활성지역조회·최대16ticket/2source/48후보다. Save9/Protocol11. 경제 전체 수치/분모와 검증 한계는 [RESOURCE_TEMPO](RESOURCE_TEMPO.md)를 따른다.
+
+## Workbench III (2026-10-19 현재)
+
+현재 Save10/Protocol12, 새 월드 generation3. 위 I–II/Resource Tempo 기록의 기존 수율·회복 간격은 유지한다. III 비용·장비·포탑·모듈의 전체 표는 [CONTENT_EXPANSION의 III 절](CONTENT_EXPANSION.md#iii-재료와-비용)에 통합했다. 출시 밸런스 확정값은 아니다.
+
+II→III: Wood10 Stone10 Bronze4 Steel4 Crystal4 Diamond1. 개인 Diamond6종은 기존 Steel 장비+Diamond12, 최초 공유 업그레이드 포함1인13/4인49다. Diamond Sword52/Spear42, Head4/Body6, 도구 기본피해18·기존 속도/거리·채집 효율 약+22%다. Crystal Lantern 반경×1.35, Telescope는 Utility 슬롯을 차지하지 않는다.
+
+Diamond3/300초/target.70, Crystal6/150초/target.85, Steel Pickaxe 이상, 지하 전용이다. 최초 보장 공급81/96. 새 보석의 회복 후보 clear radius2, 초기 source 간격4, 채집 자리 제외 반경4를 사용한다. 원래5unit 회복 clear radius는 밀집 동굴에서 유효 후보를 막아 수정했다. 기존 광물 간격은 바꾸지 않았다.
+
+대표 선택 방어기지까지 포함한 실제 Recipe graph 합계:
+
+|재료|1P|4P|
+|---|---:|---:|
+|Wood / Stone|188 / 98|332 / 149|
+|Iron Ore / Coal|83 / 121|197 / 226|
+|Copper Ore / Tin Ore|40 / 19|68 / 30|
+|Diamond / Crystal|13 / 16|49 / 28|
+|Leather / Feather / Fiber|17 / 14 / 6|50 / 26 / 24|
+|중간재 제작량 Bronze / Steel / Mechanical Part|57 / 58 / 14|90 / 118 / 14|
+
+중간재는 raw 합계에 다시 더하지 않는다. shared/personal/optional 분류와 batch 잔량은 `validation/tier-three/audit.tsv`에 있다. 선택분은 Ballista1+Repeater1+Beacon1+각 모듈2+Ballista Bolt60+기본 Bolt120 및 기존 선택 root다. 모든 플레이어의 필수 예산을 의미하지 않는다. Ballista6발마다 Wood2+Steel1, Repeater 기본 Bolt12발마다 Wood2+Feather1이므로 장기 사격 비용은 별도다.
+
+Ballista62damage/26range/2.3초/45도·초/HP180, Repeater16/17/.55초/105도·초/HP160. Ammo Box1→3칸(각100stack), Rotation×1.35, Frame 최대HP×1.5(회복 없음). 실제 기기 FPS/재미/장시간 전투 및 4인 체감 경제는 미검수다.

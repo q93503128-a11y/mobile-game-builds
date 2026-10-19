@@ -31,7 +31,7 @@ namespace Wildfolk
         private void Finish(){if(bag.Revision.Value>=waitRevision){pending=0;acknowledged=false;}}
         public bool ExecutePlace(uint revision,int slot,Vector2 position)
         {
-            if(!bag.CanOperate || revision!=bag.Revision.Value || slot!=bag.Inventory.SelectedIndex || !bag.Player.Commands.Session.IsRunning || !Finite(position))return false;
+            if(!bag.CanOperate || bag.Player.Commands.IsScouting || revision!=bag.Revision.Value || slot!=bag.Inventory.SelectedIndex || !bag.Player.Commands.Session.IsRunning || !Finite(position))return false;
             var definition=bag.Player.Equipment.ActivePlaceable;Physics2D.SyncTransforms();if(definition==null || !placement.CanPlaceAt(definition,position))return false;
             WorldPlaceable placed=null;
             try

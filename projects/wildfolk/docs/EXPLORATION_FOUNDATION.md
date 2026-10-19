@@ -65,3 +65,8 @@ Torch는 일반 PlaceableSnapshot의 stable SaveId/Item/HP/위치/회전/Creator
 검증 결과와 수치는 `EXPLORATION_REVIEW.md`, `validation/exploration-foundation.json`에 최종 실제 측정으로 기록한다. PC Editor와 logical actor fixture를 실제 Android/Relay/4기기 검수로 해석하지 않는다.
 
 멀티 야외 조명 시간은 기존 NetworkWorldState의 Host 시간 sample(Elapsed/Server timestamp/Advancing)을0.5초마다 전달하고 Client가 server time으로 보간한다. 멈춘 Client WorldClock 때문에 밤에도 낮 광원으로 표시되던 경계를 연결했다. 별도 매 frame light/position RPC는 없으며 실제 remote Relay 화면 동기화는 미검수다.
+
+
+## Workbench III 현재 상태 · 2026-10-19
+
+현재 III는 Telescope(use-item), Signal Beacon(기본 추적 OFF), Crystal Lantern(기존 Utility)을 추가한다. 기존 Compass의 Home/Exit 안내를 유지하고 추적 대상은 한번에 하나다. Telescope는 camera footprint만 표시 전용으로 요청하며 sim/AI/recovery를 활성화하지 않는다. 종료3초 hysteresis와 기존 LRU를 사용한다. 상세는 CONTENT_EXPANSION의 III 절을 따른다.

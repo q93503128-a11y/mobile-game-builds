@@ -20,6 +20,7 @@ namespace Wildfolk
     {
         public string SourceId;
         public int ResourceRule=-1;
+        public int MinimumGenerationVersion=2;
         public EnvironmentTag AnyTags;
         public ResourceSourceContext Context;
         public Vector2 DepthRange=new Vector2(0,1),MoistureRange=new Vector2(0,1),RockRange=new Vector2(0,1);

@@ -48,3 +48,8 @@ tools/generate_exploration_art.py(Pillow)가 torch/torch_placed/compass/bearing_
 ## Workbench I–II Content Expansion (2026-10-18)
 
 이번 신규 아이콘/무기/자연물/시설/문·울타리·Trap은 tools/generate_content_art.py(Pillow) 원본이다. 문은 동일 원본에서 고정 frame과 회전 leaf를 나누어 내보낸다. Krita bridge는 연결되지 않았으며 이미지 생성 도구나 외부 게임 asset은 사용하지 않았다.
+
+
+## Workbench III 현재 상태 · 2026-10-19
+
+III 원본 아트: tools/generate_tier_three_art.py(Pillow). 기존 Steel/Lantern 도형을 바탕으로 Diamond/Crystal 상위 표현을 만들고 Telescope/Beacon/포탑·모듈/산업 상자/Deep POI를 코드 도형으로 그렸다. 외부 게임의 sprite/model을 사용하지 않았다. 현재 최종 아트가 아니다.

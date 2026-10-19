@@ -22,7 +22,7 @@ namespace Wildfolk
 
         private void Update()
         {
-            input=Session.IsRunning ? Input.Move : Vector2.zero;
+            input=Session.IsRunning && !Input.IsScouting ? Input.Move : Vector2.zero;
             if (input.sqrMagnitude > .01f && !Combat.IsAttacking) Avatar.Facing.Face(input);
         }
 

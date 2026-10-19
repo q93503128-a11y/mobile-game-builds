@@ -17,10 +17,10 @@ MonoBehaviour:
   SortOrder: 200
   Result: {fileID: 11400000, guid: fed1c5703ce25d647bdedc2d1d393a71, type: 2}
   ResultCount: 1
-  EssentialPerPlayer: 1
-  EssentialShared: 0
   ProgressionPerPlayer: 0
   ProgressionShared: 0
+  EssentialPerPlayer: 1
+  EssentialShared: 0
   ResultCharges: 0
   ResultQuality: 0
   Ingredients:
@@ -43,4 +43,5 @@ MonoBehaviour:
   Tier: {fileID: 11400000, guid: be3c17177552c5b49aaf9593cea187c3, type: 2}
   RequiredWorkbenchTier: 2
   DisplayKey:
+  SupersededBy: {fileID: 11400000, guid: 7196518deb2dba740addd947ff770fc2, type: 2}
   FutureUnlocks: []

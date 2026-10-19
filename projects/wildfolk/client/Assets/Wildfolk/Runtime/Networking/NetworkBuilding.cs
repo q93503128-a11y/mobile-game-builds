@@ -50,7 +50,7 @@ namespace Wildfolk
         }
         public bool SetDoor(NetworkPlayer player,bool desired,uint expected)
         {
-            if(!IsSpawned || !IsServer || Door==null || expected!=Revision.Value || desired==Door.IsOpen || !Placeable.Health.IsAlive)return false;
+            if(player.Commands.IsScouting || !IsSpawned || !IsServer || Door==null || expected!=Revision.Value || desired==Door.IsOpen || !Placeable.Health.IsAlive)return false;
             if(Vector2.Distance(player.transform.position,transform.position)>player.GetComponent<PlayerInventory>().Settings.StationInteractionRange)return false;
             return Door.Toggle();
         }

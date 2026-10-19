@@ -81,3 +81,8 @@ Home 좌표는 Save의 별도 중복 truth가 아니라 살아 있는 또는 dor
 현재 Save9/Protocol11, v1~v8 호환. Waterskin Charges/Quality, Player Utility, Cooking Pot cargo와 신규 설치물은 기존 codec에 포함된다. 빈/구 stack은0/Empty, 이전 플레이어는 Utility 없음이다. 기존 지형 버전과 source ID를 유지한다. QA는 Play 전 IsolatedQaProfile을 사용하고 사용자 저장/백업을 fixture로 사용하지 않는다. [상태 의미](CONTENT_EXPANSION.md).
 
 지역 회복도 기존 Save9 Recovery.Pending/Harvests/Serial/CandidateCursor와 ResourceSnapshot을 사용한다. g/c/e tombstone과 살아 있는 p를 기준으로 지역 목표를 재구성한다. old v2 depletion은 활성화 때 새 delay부터 시작하고 새 Due는 reload/rehost로 초기화하지 않는다. 현 정책은 [RESOURCE_TEMPO](RESOURCE_TEMPO.md)에 있다.
+
+
+## Workbench III 현재 상태 · 2026-10-19
+
+현재 Save10(v1–v9 지원), Protocol12. PlaceableSnapshot에 TurretSnapshot(ammo3/역할 module5/heading/loaded/reload remaining)과 BeaconNumber, PlayerSnapshot에 navigation mode/BeaconId를 저장한다. item/type/위치/HP는 기존 placeable 저장을 재사용한다. 기존 generation1/2는 보존하며 신규 generation3만 III natural content를 생성한다. 비포탑의 null nested state가 Unity JSON에서 빈 객체로 복원되는 경우는 빈 내용만 허용하고 cargo가 들어 있으면 거부한다. 포탑 추가 저장 파일은 없다.

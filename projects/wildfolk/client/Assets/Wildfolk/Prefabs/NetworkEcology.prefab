@@ -219,6 +219,11 @@ MonoBehaviour:
   Renewal: {fileID: 4456147602622536825}
   Animals: {fileID: 3120962446745633437}
   PoiSprites: []
+  DeepPoiSprites:
+  - {fileID: 21300000, guid: 46a784c671fb16d4b8a46bf1291692f7, type: 3}
+  - {fileID: 21300000, guid: 44304aae1b57b7b498bcb11a196586c4, type: 3}
+  - {fileID: 21300000, guid: 8f7a20dafe2cc2d479eafb127d8d3831, type: 3}
+  - {fileID: 21300000, guid: 718daea3571178c4bba0add145d9e644, type: 3}
   GenerateOnAwake: 0
 --- !u!114 &5498284721663869418
 MonoBehaviour:
@@ -467,6 +472,22 @@ MonoBehaviour:
     NetworkPrefab: {fileID: 2726719000251344505, guid: 657f7a16e8b29984da2ecdab22be3dea, type: 3}
   - Source: {fileID: 5280073604833245363, guid: de8792fb15777754a954a4f7ea35fc19, type: 3}
     NetworkPrefab: {fileID: 6222093797224790155, guid: 24a89aab2858b314dbe0994073c1c91d, type: 3}
+  - Source: {fileID: 8658041461814157941, guid: 0a1de6add9ba07042a5d38428329f07d, type: 3}
+    NetworkPrefab: {fileID: 9169937249828522435, guid: 2281b48250a151c45a0f8dde92c3311e, type: 3}
+  - Source: {fileID: 9052956572469100118, guid: 4502a4ed27646d34784c80804d3317c6, type: 3}
+    NetworkPrefab: {fileID: 7373835791102514339, guid: 3f1e7388ca4030b45941bab29c3724af, type: 3}
+  - Source: {fileID: 9052956572469100118, guid: 253f10516a2ad2b4e980cd93586b5220, type: 3}
+    NetworkPrefab: {fileID: 1237265002142103415, guid: b9fc16e96c9fb714ea83bf339129c674, type: 3}
+  - Source: {fileID: 9052956572469100118, guid: 6d3871f5486fbdf4bbfdde7f468c0886, type: 3}
+    NetworkPrefab: {fileID: 2945231184073288932, guid: 442fe471787bff848ad87276114ce132, type: 3}
+  - Source: {fileID: 9052956572469100118, guid: ec26570a49ae5ff45b046550270d3f48, type: 3}
+    NetworkPrefab: {fileID: 4020004702511012615, guid: eb11e858e393b544d94745ac101238ed, type: 3}
+  - Source: {fileID: 6281068670762303525, guid: 98e40b809021ada49b034864b5a6f45b, type: 3}
+    NetworkPrefab: {fileID: 920425900455642003, guid: 8fdc110b302e04f479554da030b6e266, type: 3}
+  - Source: {fileID: 458477514586584603, guid: 5af4bba4534e8584f9d421c0b6477659, type: 3}
+    NetworkPrefab: {fileID: 312067174545636933, guid: 89c4ffa2fd41eae49b2a7f002d4495ed, type: 3}
+  - Source: {fileID: 411425022804814305, guid: 034da1e907a53fe4381b7c2b6580fd01, type: 3}
+    NetworkPrefab: {fileID: 1025156473430500488, guid: 43cc6c4f7ee943a4793924015b642b98, type: 3}
   Catalog: {fileID: 11400000, guid: edf4df5213dc0bf4e96917b39fb19914, type: 2}
   World: {fileID: 4496810478940515493}
   Clock: {fileID: 2554870917964472763}

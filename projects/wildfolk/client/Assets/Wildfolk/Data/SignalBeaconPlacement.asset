@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea85a5ebaf6f62646a87d747548e1a2f, type: 3}
+  m_Name: SignalBeaconPlacement
+  m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.PlaceableDefinition
+  Item: {fileID: 11400000, guid: 1c87c5dda6107c7449c14c54c1bd06ee, type: 2}
+  Prefab: {fileID: 3385274447091358857, guid: 253f10516a2ad2b4e980cd93586b5220, type: 3}
+  Vitality: {fileID: 11400000, guid: 5debe6c8595ab4040b97324552fbde78, type: 2}
+  Footprint: {x: 1.8, y: 1.15}
+  MaximumDistance: 2.8
+  Station: 0
+  Tier: {fileID: 11400000, guid: b632d88d6c00461418a7100d186ff69c, type: 2}
+  IsBeacon: 1
+  Turret: {fileID: 0}
+  IsBarrier: 0
+  IsDoor: 0
+  StorageSlots: 0
+  ParallelCapacity: 1
+  ProcessingMode: 0
+  InputCapacity: 50
+  OutputCapacity: 100
+  ProcessingSpeed: 1
+  WorkbenchTier: 1
+  TierVisual: {fileID: 21300000, guid: af578d9d4afa01b489495fe4b8a4a783, type: 3}
+  TierDisplayKey: item.signal_beacon.name
+  UpgradeTo: {fileID: 0}
+  UpgradeCosts: []

@@ -184,3 +184,8 @@ ItemStack/SavedStack/NetworkStack/GroundItemState에 작은 Charges/Quality 값�
 ## Resource Tempo (2026-10-18)
 
 현재 공유/개인 필수와 선택 예산은 canonical recipe metadata와 batch 잔량으로 계산한다. 비용/결과는 기존 processing save와 동일하다. 광물 source당 수율·chunk population 보충·Protocol11은 [RESOURCE_TEMPO](RESOURCE_TEMPO.md)를 따른다.
+
+
+## Workbench III 현재 상태 · 2026-10-19
+
+현재 III 확장: Save10/Protocol12, 새 world generation3. WorldChunkRuntime의 표시 전용 요청은 terrain/정적 POI만 만들며 simulation wanted와 분리한다. WorldTurret는 공용 TurretScheduler+InventoryModel+기존 projectile를 사용한다. NetworkTurret는 변경된 cargo/module state와 sampled heading, NetworkTierThreePlayer는 owner request 검증을 맡는다. BeaconDirectory는 휴면을 포함한 ID/위치/순번을 유지한다. 상세는 CONTENT_EXPANSION의 III 절을 따른다.

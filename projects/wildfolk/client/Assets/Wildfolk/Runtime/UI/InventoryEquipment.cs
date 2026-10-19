@@ -26,7 +26,7 @@ namespace Wildfolk
             Refresh();
         }
         private ItemDefinition Current()=>Equipment.Equipped(selectedSlot);
-        public void Equip(){var stack=Player.SelectedStack;if(!stack.IsEmpty && (stack.Item.Armor!=null || stack.Item.EquippedLight!=null))Equipment.TryEquip(stack.Item);Refresh();}
+        public void Equip(){var stack=Player.SelectedStack;if(!stack.IsEmpty && stack.Item.Telescope){Player.GetComponent<PlayerInputCommands>().Session.CloseInventory();Player.GetComponent<PlayerTelescope>().Use();return;}if(!stack.IsEmpty && (stack.Item.Armor!=null || stack.Item.EquippedLight!=null))Equipment.TryEquip(stack.Item);Refresh();}
         public void Unequip(){if(equippedSelected)Equipment.Unequip(selectedSlot);else{var stack=Player.SelectedStack;if(!stack.IsEmpty && (stack.Item.Armor!=null || stack.Item.EquippedLight!=null))Equipment.Unequip(PlayerEquipment.Slot(stack.Item));}Refresh();}
         public void Refresh()
         {
@@ -34,8 +34,10 @@ namespace Wildfolk
             HeadIcon.sprite=Equipment.HeadArmor==null ? null : Equipment.HeadArmor.Icon;HeadIcon.enabled=HeadIcon.sprite!=null;BodyIcon.sprite=Equipment.BodyArmor==null ? null : Equipment.BodyArmor.Icon;BodyIcon.enabled=BodyIcon.sprite!=null;
             if(UtilityIcon!=null){UtilityIcon.sprite=Equipment.Utility==null ? null : Equipment.Utility.Icon;UtilityIcon.enabled=UtilityIcon.sprite!=null;}
             var stack=Player.SelectedStack;var item=equippedSelected ? Current() : stack.IsEmpty ? null : stack.Item;var armor=item==null ? null : item.Armor;
-            EquipButton.gameObject.SetActive(item!=null && (armor!=null || item.EquippedLight!=null) && !equippedSelected);UnequipButton.gameObject.SetActive(item!=null && (armor!=null || item.EquippedLight!=null) && equippedSelected);Comparison.text=Details.text="";
+            EquipButton.gameObject.SetActive(item!=null && (armor!=null || item.EquippedLight!=null || item.Telescope) && !equippedSelected);UnequipButton.gameObject.SetActive(item!=null && (armor!=null || item.EquippedLight!=null) && equippedSelected);Comparison.text=Details.text="";
             if(armor!=null){var current=armor.Slot==ArmorSlot.Head ? Equipment.HeadArmor : Equipment.BodyArmor;var oldDefense=current==null ? 0 : current.Armor.Defense;Details.text=L.Format("ui.inventory.armor_detail",L.Text("ui.slot."+armor.Slot),armor.Defense);Comparison.text=L.Format("ui.inventory.compare",oldDefense,armor.Defense,armor.Defense-oldDefense);UnequipButton.interactable=current!=null;}
+            if(EquipLabel!=null)EquipLabel.text=L.Text(item!=null && item.Telescope ? "ui.telescope.use" : "ui.action.equip");
+            if(item!=null && item.Telescope)Details.text=L.Text("ui.telescope.aim");
             if(item!=null && item.EquippedLight!=null){Details.text=L.Text("ui.utility.info");UnequipButton.interactable=Equipment.Utility!=null;}
             if(item!=null && item.Tool!=null)Details.text=ItemStats.Description(item);
             if(item!=null && item.Ammo!=AmmoKind.None)Details.text=L.Format("ui.ammo.info",item.AmmoDamage);

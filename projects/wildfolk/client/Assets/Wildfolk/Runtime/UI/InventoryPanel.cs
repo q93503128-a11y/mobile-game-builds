@@ -37,7 +37,7 @@ namespace Wildfolk
 
         private void Refresh()
         {
-            View.SetActive(Session.State==SessionState.Inventory && (Storage==null || !Storage.IsOpen) && (Crafting==null || !Crafting.ScreenOpen));
+            View.SetActive(!TierThreeHud.IsFocused && Session.State==SessionState.Inventory && (Storage==null || !Storage.IsOpen) && (Crafting==null || !Crafting.ScreenOpen));
             var selected=Owner.SelectedIndex;
             for(var i=0;i<Slots.Length;i++) Slots[i].Show(Owner.Model.GetSlot(i),i==selected);
             var stack=Owner.SelectedStack;

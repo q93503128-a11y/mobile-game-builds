@@ -56,11 +56,11 @@ namespace Wildfolk
         public bool Dash()
         {
             if(!IsSpawned || !IsOwner)return false;
-            if(IsServer){AcceptMove(pendingMove);return Motor.Locomotion.TryDash();}
+            if(IsServer){AcceptMove(pendingMove);return !Commands.IsScouting && Motor.Locomotion.TryDash();}
             DashRpc(pendingMove);return true;
         }
         public bool Attack()
-        {if(!IsSpawned || !IsOwner || !Health.IsAlive)return false;if(Equipment.ActivePlaceable!=null)return GetComponent<NetworkConstruction>().Place();
+        {if(!IsSpawned || !IsOwner || !Health.IsAlive)return false;if(Equipment.SelectedItem!=null && Equipment.SelectedItem.Telescope)return GetComponent<PlayerTelescope>().Use();if(Commands.IsScouting)return false;if(Equipment.ActivePlaceable!=null)return GetComponent<NetworkConstruction>().Place();
             if(IsServer)return GetComponent<PlayerPrimaryAction>().TryUse();AttackRpc();return true;}
         [Rpc(SendTo.Server,InvokePermission=RpcInvokePermission.Owner)]
         private void AttackRpc(RpcParams rpc=default)
@@ -88,8 +88,8 @@ namespace Wildfolk
         {if(rpc.Receive.SenderClientId==OwnerClientId)AcceptMove(move);}
         [Rpc(SendTo.Server,InvokePermission=RpcInvokePermission.Owner)]
         private void DashRpc(Vector2 move,RpcParams rpc=default)
-        {if(rpc.Receive.SenderClientId!=OwnerClientId)return;AcceptMove(move);Motor.Locomotion.TryDash();}
-        private void AcceptMove(Vector2 move){Commands.ApplyMove(NetworkInputRules.Sanitize(move));receivedAt=Time.unscaledTime;}
+        {if(rpc.Receive.SenderClientId!=OwnerClientId)return;AcceptMove(move);if(!Commands.IsScouting)Motor.Locomotion.TryDash();}
+        private void AcceptMove(Vector2 move){Commands.ApplyMove(Commands.IsScouting ? Vector2.zero : NetworkInputRules.Sanitize(move));receivedAt=Time.unscaledTime;}
         private void Tick()
         {
             if(!IsSpawned)return;

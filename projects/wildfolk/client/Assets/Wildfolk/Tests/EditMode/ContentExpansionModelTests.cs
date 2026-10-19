@@ -10,7 +10,7 @@ namespace Wildfolk.Tests
         private static T D<T>(string name)where T:UnityEngine.Object=>AssetDatabase.LoadAssetAtPath<T>("Assets/Wildfolk/Data/"+name+".asset");
         [Test]public void CatalogHasRealRecipesFourWeaponFamiliesAndSustainableBasicAmmo()
         {
-            var c=D<ContentCatalog>("ContentCatalog");Assert.That(c.Items.Length,Is.EqualTo(86));Assert.That(c.Recipes.Length,Is.EqualTo(71));Assert.That(c.Items.Select(i=>i.Id).Distinct().Count(),Is.EqualTo(86));Assert.That(c.Recipes.Select(i=>i.Id).Distinct().Count(),Is.EqualTo(71));
+            var c=D<ContentCatalog>("ContentCatalog");Assert.That(c.Items.Length,Is.EqualTo(110));Assert.That(c.Recipes.Length,Is.EqualTo(91));Assert.That(c.Items.Select(i=>i.Id).Distinct().Count(),Is.EqualTo(110));Assert.That(c.Recipes.Select(i=>i.Id).Distinct().Count(),Is.EqualTo(91));
             foreach(var r in c.Recipes){Assert.That(r.ResultCount,Is.GreaterThan(0));foreach(var cost in r.Ingredients){Assert.That(c.Items.Contains(cost.Item),Is.True,r.Id);Assert.That(cost.Count,Is.GreaterThan(0));}}
             foreach(var id in new[]{"arrow","crossbow_bolt"}){var r=c.Recipe(id);Assert.That(r.ResultCount,Is.EqualTo(12));Assert.That(r.Ingredients.Select(x=>x.Item.Id),Is.EquivalentTo(new[]{"wood","feather"}));}
             Assert.That(c.Recipe("reinforced_bow").Ingredients.Any(x=>x.Item.Id=="bow" && x.Count==1),Is.True);Assert.That(c.Recipe("crossbow").Ingredients.Any(x=>x.Item.Id.Contains("bow")),Is.False);

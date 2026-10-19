@@ -30,10 +30,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: fd37ae220a364fb489292b6b40a147d1, type: 2}
   - {fileID: 11400000, guid: f01cbbfbba49be54f81f55ce8e32ba2e, type: 2}
   - {fileID: 11400000, guid: e0c6368811c23d04eb84f3ce4e0dde99, type: 2}
-  - {fileID: 11400000, guid: 7416319fd5788b54c9eded354dbfe71e, type: 2}
   - {fileID: 11400000, guid: 601a339fc408db342aa865a1cfd847f8, type: 2}
   - {fileID: 11400000, guid: 0fdc435c4d16a3445a9911dc7ea32a23, type: 2}
   - {fileID: 11400000, guid: 67ad05af9a77bb349867c5d5d41efebb, type: 2}
+  - {fileID: 11400000, guid: a8be358d4ae4bcb47831e28b47d0f934, type: 2}
+  - {fileID: 11400000, guid: a05b10564741e4f4cb3c9a2b72fed1e9, type: 2}
   ProgressionCatalog: {fileID: 11400000, guid: edf4df5213dc0bf4e96917b39fb19914, type: 2}
   WalkingSpeed: 4.2
   TravelMinutesAcross: 52
@@ -49,9 +50,9 @@ MonoBehaviour:
   Resources:
   - IndependentGeneration: 0
     DistributionConfigured: 0
+    Generation2Only: 0
     LayoutSourceCount: 8
     LayoutSupplementCount: 0
-    Generation2Only: 0
     GenerationSalt: 0
     AllowedBiomes: []
     SourceContext: 0
@@ -86,9 +87,9 @@ MonoBehaviour:
     ClusterSpacing: 4
   - IndependentGeneration: 0
     DistributionConfigured: 0
+    Generation2Only: 0
     LayoutSourceCount: 7
     LayoutSupplementCount: 0
-    Generation2Only: 0
     GenerationSalt: 0
     AllowedBiomes: []
     SourceContext: 0
@@ -123,9 +124,9 @@ MonoBehaviour:
     ClusterSpacing: 4
   - IndependentGeneration: 0
     DistributionConfigured: 0
+    Generation2Only: 0
     LayoutSourceCount: 61
     LayoutSupplementCount: 5
-    Generation2Only: 0
     GenerationSalt: 0
     AllowedBiomes: []
     SourceContext: 0
@@ -160,9 +161,9 @@ MonoBehaviour:
     ClusterSpacing: 4
   - IndependentGeneration: 0
     DistributionConfigured: 0
+    Generation2Only: 0
     LayoutSourceCount: 7
     LayoutSupplementCount: 0
-    Generation2Only: 0
     GenerationSalt: 0
     AllowedBiomes: []
     SourceContext: 0
@@ -197,9 +198,9 @@ MonoBehaviour:
     ClusterSpacing: 3.2
   - IndependentGeneration: 0
     DistributionConfigured: 0
+    Generation2Only: 0
     LayoutSourceCount: 4
     LayoutSupplementCount: 0
-    Generation2Only: 0
     GenerationSalt: 0
     AllowedBiomes: []
     SourceContext: 0
@@ -234,9 +235,9 @@ MonoBehaviour:
     ClusterSpacing: 2.4
   - IndependentGeneration: 1
     DistributionConfigured: 1
+    Generation2Only: 0
     LayoutSourceCount: 9
     LayoutSupplementCount: 9
-    Generation2Only: 0
     GenerationSalt: 701
     AllowedBiomes:
     - {fileID: 11400000, guid: 88ca94fbce62a574089c6b4c45a10282, type: 2}
@@ -272,9 +273,9 @@ MonoBehaviour:
     ClusterSpacing: 4
   - IndependentGeneration: 1
     DistributionConfigured: 1
+    Generation2Only: 0
     LayoutSourceCount: 9
     LayoutSupplementCount: 2
-    Generation2Only: 0
     GenerationSalt: 709
     AllowedBiomes:
     - {fileID: 11400000, guid: 88ca94fbce62a574089c6b4c45a10282, type: 2}
@@ -310,9 +311,9 @@ MonoBehaviour:
     ClusterSpacing: 4
   - IndependentGeneration: 1
     DistributionConfigured: 1
+    Generation2Only: 0
     LayoutSourceCount: 27
     LayoutSupplementCount: 28
-    Generation2Only: 0
     GenerationSalt: 719
     AllowedBiomes:
     - {fileID: 11400000, guid: 88ca94fbce62a574089c6b4c45a10282, type: 2}
@@ -348,9 +349,9 @@ MonoBehaviour:
     ClusterSpacing: 4
   - IndependentGeneration: 1
     DistributionConfigured: 1
+    Generation2Only: 1
     LayoutSourceCount: 0
     LayoutSupplementCount: 0
-    Generation2Only: 1
     GenerationSalt: 907
     AllowedBiomes: []
     SourceContext: 0
@@ -385,9 +386,9 @@ MonoBehaviour:
     ClusterSpacing: 0
   - IndependentGeneration: 1
     DistributionConfigured: 1
+    Generation2Only: 1
     LayoutSourceCount: 0
     LayoutSupplementCount: 0
-    Generation2Only: 1
     GenerationSalt: 911
     AllowedBiomes: []
     SourceContext: 0
@@ -420,5 +421,79 @@ MonoBehaviour:
     HarvestExclusionRadius: 0
     HarvestExclusionSeconds: 0
     ClusterSpacing: 0
+  - IndependentGeneration: 1
+    DistributionConfigured: 1
+    Generation2Only: 1
+    LayoutSourceCount: 0
+    LayoutSupplementCount: 0
+    GenerationSalt: 0
+    AllowedBiomes: []
+    SourceContext: 0
+    Terrain: 0
+    DepthRange: {x: 0.6, y: 1}
+    WaterDistanceRange: {x: 0, y: 0}
+    RoadDistanceRange: {x: 0, y: 0}
+    ForestDensityRange: {x: 0, y: 0}
+    RockDensityRange: {x: 0, y: 0}
+    BiomeAffinity: 0
+    ClusterRadius: 0
+    ClusterSize: 0
+    Prefab: {fileID: 4218523117031606375, guid: 5af4bba4534e8584f9d421c0b6477659, type: 3}
+    AlternateSprite: {fileID: 0}
+    Count: 0
+    StartCount: 0
+    StartRadius: 0
+    SpawnClearance: 0
+    Spacing: 2
+    ForestPreference: 0
+    RockPreference: 0
+    ScaleRange: {x: 0.9, y: 1.1}
+    RespawnSeconds: 300
+    RecoveryConfigured: 1
+    NaturalRecovery: 1
+    WorldRecoveryScope: 0
+    Family: 2
+    Rarity: 2
+    TargetDensityRatio: 0.7
+    HarvestExclusionRadius: 4
+    HarvestExclusionSeconds: 300
+    ClusterSpacing: 2
+  - IndependentGeneration: 1
+    DistributionConfigured: 1
+    Generation2Only: 1
+    LayoutSourceCount: 0
+    LayoutSupplementCount: 0
+    GenerationSalt: 0
+    AllowedBiomes: []
+    SourceContext: 0
+    Terrain: 0
+    DepthRange: {x: 0.6, y: 1}
+    WaterDistanceRange: {x: 0, y: 0}
+    RoadDistanceRange: {x: 0, y: 0}
+    ForestDensityRange: {x: 0, y: 0}
+    RockDensityRange: {x: 0, y: 0}
+    BiomeAffinity: 0
+    ClusterRadius: 0
+    ClusterSize: 0
+    Prefab: {fileID: 7534500194137633777, guid: 034da1e907a53fe4381b7c2b6580fd01, type: 3}
+    AlternateSprite: {fileID: 0}
+    Count: 0
+    StartCount: 0
+    StartRadius: 0
+    SpawnClearance: 0
+    Spacing: 2
+    ForestPreference: 0
+    RockPreference: 0
+    ScaleRange: {x: 0.9, y: 1.1}
+    RespawnSeconds: 150
+    RecoveryConfigured: 1
+    NaturalRecovery: 1
+    WorldRecoveryScope: 0
+    Family: 2
+    Rarity: 1
+    TargetDensityRatio: 0.85
+    HarvestExclusionRadius: 4
+    HarvestExclusionSeconds: 150
+    ClusterSpacing: 2
   DecorationCount: 480
   ShallowMoveMultiplier: 0.7

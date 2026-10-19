@@ -25,7 +25,7 @@ namespace Wildfolk
         }
         public static Dictionary<int,int> RequiredYield(WorldGenerationDefinition data,int players=4)
         {
-            var budget=ProgressionEconomy.Calculate(data.ProgressionCatalog,players);var result=new Dictionary<int,int>();
+            var budget=ProgressionEconomy.Calculate(data.ProgressionCatalog,players,maximumTier:2);var result=new Dictionary<int,int>();
             for(var i=0;i<data.Resources.Length;i++)if(budget.Total.TryGetValue(data.Resources[i].Prefab.Definition.DropItem,out var count))result[i]=Mathf.CeilToInt(count*data.ProgressionSafetyFactor);
             return result;
         }
@@ -67,7 +67,7 @@ namespace Wildfolk
             var budget=WorldProgressionSupply.RequiredYield(data);foreach(var pair in budget)
             {var rule=data.Resources[pair.Key];if(rule.Family==ResourceFamily.Timber || rule.Family==ResourceFamily.Stone){if(!starter.TryGetValue(rule.Prefab.Definition.DropItem,out var supply) || supply<pair.Value)throw new InvalidOperationException("Insufficient starting wood or stone");continue;}if(rule.Family!=ResourceFamily.Mineral)continue;var amount=0;var clusters=new HashSet<WorldChunk>();foreach(var p in world.GuaranteedResources)if(p.Rule==pair.Key){amount+=data.Resources[p.Rule].Prefab.Definition.DropCount;clusters.Add(WorldChunk.At(p.Position,128));if(!world.SourceAllowed(p.Rule,p.Position))throw new InvalidOperationException("Invalid guaranteed source environment");}if(amount<pair.Value || clusters.Count<3)throw new InvalidOperationException("Insufficient geographically distributed four-player progression yield");}
             foreach(var cave in world.Caves){var deep=false;foreach(var room in cave.Rooms){if(room.Depth>=.8f)deep=true;if(room.Neighbors.Count==0 || !world.Walkable(room.Center,1))throw new InvalidOperationException("Disconnected or blocked cave room");}if(!deep)throw new InvalidOperationException("No deep cavern progression");}
-            ProgressionReachability.Validate(world);
+            ProgressionReachability.Validate(world);DeepCavernContent.Validate(world,data);
         }
     }
 }

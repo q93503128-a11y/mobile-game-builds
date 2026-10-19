@@ -16,12 +16,13 @@ namespace Wildfolk
         {
             if(Time.unscaledTime<nextTick)return;nextTick=Time.unscaledTime+.15f;
             if(Player==null){var arena=FindFirstObjectByType<MultiplayerArena>();if(arena!=null && arena.LocalPlayer!=null)Player=arena.LocalPlayer.GetComponent<PlayerNavigation>();}
-            var visible=Player!=null && Player.HasCompass;View.SetActive(visible);if(!visible)return;
+            var visible=Player!=null && Player.HasCompass && Player.Mode!=NavigationMode.Off;View.SetActive(visible);if(!visible)return;
             if(world==null)world=FindFirstObjectByType<WorldGenerator>();if(world==null || world.Map==null)return;
             North.localRotation=Quaternion.Euler(0,0,NavigationBearing.Angle(Vector2.up,Camera));
             Vector2 target;string label;bool valid;
             var p=(Vector2)Player.transform.position;
-            if(world.Map.Streamed && world.Map.Continental.Underground(p)){target=NavigationBearing.CaveExit(world.Map.Continental.CaveAt(p),p);valid=true;label=L.Text("ui.navigation.exit");}
+            if(Player.Mode==NavigationMode.Beacon){valid=Player.TryBeacon(out target,out var number);label=valid ? L.Format("ui.beacon.number",number) : L.Text("ui.navigation.no_target");}
+            else if(Player.Mode==NavigationMode.CaveExit || Player.Mode==NavigationMode.Automatic && world.Map.Streamed && world.Map.Continental.Underground(p)){valid=world.Map.Streamed && world.Map.Continental.Underground(p);target=valid ? NavigationBearing.CaveExit(world.Map.Continental.CaveAt(p),p) : p;label=L.Text("ui.navigation.exit");}
             else
             {
                 var network=Player.GetComponent<NetworkNavigation>();

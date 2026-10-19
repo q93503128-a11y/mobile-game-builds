@@ -1,6 +1,6 @@
 # World Generation / Biome Foundation v2
 
-2026-10-18 현재 자원 템포: **Save9 / Protocol11, Item86 / Recipe71**. [현재 정본](CONTENT_EXPANSION.md). 아래 이전 버전 설명은 해당 패스의 기록이다.
+2026-10-19 현재 **Save10 / Protocol12, Item110 / Recipe91**, 새 월드 generation3는 Deep Caverns III의 Diamond/Crystal/산업 POI를 제공한다. 기존 generation1/2는 보존한다. [현재 정본](CONTENT_EXPANSION.md). 아래 이전 버전 설명은 해당 패스의 기록이다.
 
 
 2026-10-18 현재: generation2 지형 유지 / **Save8 / Protocol9**, Item50 / Recipe38. Torch·Compass·제작대 Home·동굴 Exit·제한 지형 cache/분할 생성을 제공한다. [탐험 정본](EXPLORATION_FOUNDATION.md)과 [실제 검수/성능](EXPLORATION_REVIEW.md)를 따른다. 아래 이전 날짜/Version 설명은 각 단계의 기록이다.
@@ -44,7 +44,7 @@ generation2 Mineral/Stone과 식생은 지역 deficit에 따라 환경 후보에
 
 실제 Catalog Essential/선택 root와 recipe graph, 공유 시설/upgrade를 계산해4인 예산에1.5배 여유를 적용한다. drop yield에 따른 node수,기존 g/e baseline 배치는 고정하고 현재 수율로3개 이상128unit cluster와 예산을 검증한다. 시작점→Forest/보장 공급처는 bounded16unit flood+2unit edge/1unit endpoint 지형 검사를 한다. 임의 미래 지역 전체/동적 건축물까지 검증하는 navigation은 아니다.
 
-DiamondPocketSource는 disabled/ResourceRule=-1/depth .8~1의 미래 hook뿐이다. Diamond item/drop/equipment/보장량은 없고 최종 tier로 고정하지 않는다.
+당시 DiamondPocketSource는 disabled 미래 hook이었다. 현재는 이 사용하지 않는 asset을 제거하고 generation3 전용 Diamond/Crystal source와 보장량을 제공한다. 아래 III 절을 따른다.
 
 ## POI / 길 / 생물
 
@@ -95,3 +95,8 @@ Workbench III/Diamond progression/IV~VI/새 biome·섬·Boat/Torch·Lantern game
 ## Resource Tempo / 현재 정책
 
 [RESOURCE_TEMPO](RESOURCE_TEMPO.md)에 현재 source당 수율, 지역 ticket, immutable generation baseline,4인 예산과 seed 결과를 기록한다. 기존 +3/+4 개별 복원은 제거했다.
+
+
+## Workbench III 현재 상태 · 2026-10-19
+
+현재 generation3는 기존2의 지형/graph/기존 source를 유지하고 III deep source/POI를 독립 stream으로 추가한다. generation1/2는 그대로 읽고 backfill하지 않는다. Diamond/Crystal은 Steel Pickaxe+, 지하만 공급한다. 초기4인 공급과 단일 cave 의존 여부, surface entrance 경로와 동굴 graph 연결을 검사한다. 기존 disabled DiamondPocketSource는 사용되지 않아 제거했다. 위 Diamond 미구현 설명은 당시 기록이며 현재 비용·분포·회복은 CONTENT_EXPANSION의 III 절을 따른다.

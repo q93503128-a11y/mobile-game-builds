@@ -1,0 +1,40 @@
+utc	step	result
+2026-10-19T05:46:25.3521795Z	workbench-III	begin
+2026-10-19T05:46:25.8668142Z	workbench-III	PASS missing materials rejected
+2026-10-19T05:46:26.2937013Z	workbench-III	PASS III upgraded through UI callback
+2026-10-19T05:46:26.3534491Z	workbench-III	PASS UI crafted diamond_pickaxe
+2026-10-19T05:46:26.3841404Z	workbench-III	PASS consumed steel_pickaxe
+2026-10-19T05:46:26.4100138Z	workbench-III	PASS UI crafted diamond_axe
+2026-10-19T05:46:26.4267464Z	workbench-III	PASS consumed steel_axe
+2026-10-19T05:46:26.4574850Z	workbench-III	PASS UI crafted diamond_sword
+2026-10-19T05:46:26.5066486Z	workbench-III	PASS consumed steel_sword
+2026-10-19T05:46:26.5425580Z	workbench-III	PASS UI crafted diamond_spear
+2026-10-19T05:46:26.5745966Z	workbench-III	PASS consumed steel_spear
+2026-10-19T05:46:26.6109657Z	workbench-III	PASS UI crafted diamond_head
+2026-10-19T05:46:26.6321319Z	workbench-III	PASS consumed steel_head
+2026-10-19T05:46:26.6631055Z	workbench-III	PASS UI crafted diamond_body
+2026-10-19T05:46:26.6804611Z	workbench-III	PASS consumed steel_body
+2026-10-19T05:46:26.7224173Z	workbench-III	PASS UI crafted mechanical_part
+2026-10-19T05:46:26.7979986Z	workbench-III	PASS Mechanical Part output2
+2026-10-19T05:46:26.8625809Z	workbench-III	PASS UI crafted telescope
+2026-10-19T05:46:26.9460403Z	workbench-III	PASS UI crafted crystal_lantern
+2026-10-19T05:46:27.0179416Z	workbench-III	PASS UI crafted signal_beacon
+2026-10-19T05:46:27.1321840Z	workbench-III	PASS UI crafted turret_workbench
+2026-10-19T05:46:27.4920501Z	workbench-III	PASS Crystal Lantern Utility equipped
+2026-10-19T05:46:27.5136708Z	workbench-III	PASS Lantern remains while holding sword
+2026-10-19T05:46:27.5172901Z	natural-crystal	begin
+2026-10-19T05:46:29.1227461Z	natural-crystal	PASS Iron Pickaxe rejected
+2026-10-19T05:46:30.9295025Z	natural-crystal	PASS Steel Pickaxe harvested authored deep source; yield=6
+2026-10-19T05:46:31.0485245Z	natural-crystal	FAIL regional replacement after fixture deficit and time advance; prior source ID remains destroyed
+2026-10-19T05:46:31.0547394Z	failed	System.InvalidOperationException: regional replacement after fixture deficit and time advance; prior source ID remains destroyed
+   at Wildfolk.Editor.TierThreeQa.Check (System.Boolean value, System.String message) [0x00024] in C:\UnityProjects\Wildfolk\Assets\Wildfolk\Editor\TierThreeQa.cs:19
+   at Wildfolk.Editor.TierThreeQa+<Gather>d__21.MoveNext () [0x004b2] in C:\UnityProjects\Wildfolk\Assets\Wildfolk\Editor\TierThreeQa.cs:37
+   at Wildfolk.Editor.TierThreeQa+<Guard>d__9.MoveNext () [0x0003c] in C:\UnityProjects\Wildfolk\Assets\Wildfolk\Editor\TierThreeQa.cs:17
+2026-10-19T05:49:00.4028676Z	natural-diamond	begin
+2026-10-19T05:49:02.2223675Z	natural-diamond	PASS Iron Pickaxe rejected
+2026-10-19T05:49:04.0651204Z	natural-diamond	PASS Steel Pickaxe harvested authored deep source; yield=3
+2026-10-19T05:49:04.2109109Z	natural-diamond	FAIL regional replacement after fixture deficit and time advance; prior source ID remains destroyed
+2026-10-19T05:49:04.2140008Z	failed	System.InvalidOperationException: regional replacement after fixture deficit and time advance; prior source ID remains destroyed
+   at Wildfolk.Editor.TierThreeQa.Check (System.Boolean value, System.String message) [0x00024] in C:\UnityProjects\Wildfolk\Assets\Wildfolk\Editor\TierThreeQa.cs:19
+   at Wildfolk.Editor.TierThreeQa+<Gather>d__21.MoveNext () [0x004b2] in C:\UnityProjects\Wildfolk\Assets\Wildfolk\Editor\TierThreeQa.cs:37
+   at Wildfolk.Editor.TierThreeQa+<Guard>d__9.MoveNext () [0x0003c] in C:\UnityProjects\Wildfolk\Assets\Wildfolk\Editor\TierThreeQa.cs:17

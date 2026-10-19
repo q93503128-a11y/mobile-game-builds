@@ -10,21 +10,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ff9428a620c64b9980d7bc3887901084, type: 3}
-  m_Name: DiamondPocketSource
+  m_Name: CrystalNodeSource
   m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.NaturalSourceDefinition
-  SourceId: diamond_pocket
-  ResourceRule: -1
-  AnyTags: 6144
+  SourceId: crystal_deep
+  ResourceRule: 11
+  MinimumGenerationVersion: 3
+  AnyTags: 2048
   Context: 1
-  DepthRange: {x: 0.8, y: 1}
+  DepthRange: {x: 0.6, y: 1}
   MoistureRange: {x: 0, y: 1}
   RockRange: {x: 0, y: 1}
-  CandidatesPerChunk: 4
-  Probability: 1
+  CandidatesPerChunk: 14
+  Probability: 0.75
   DensityField: 0
   DensityRange: {x: 1, y: 1}
   MinimumSpacing: 4
   StarterSupply: 0
   VegetationStream: 0
-  NaturalRecovery: 0
-  Enabled: 0
+  NaturalRecovery: 1
+  Enabled: 1
+  SurfaceBiomes:

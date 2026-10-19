@@ -24,6 +24,8 @@ namespace Wildfolk
         public int WaterCapacity;
         public ConsumableDefinition RawDrink,CleanDrink;
         public bool FishingRod;
+        public bool Telescope;
+        public TurretModuleDefinition TurretModule;
         public GameplayLightDefinition EquippedLight;
         public RangedWeaponDefinition Ranged;
         public AmmoKind Ammo;

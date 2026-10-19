@@ -17,6 +17,7 @@ namespace Wildfolk
         public ResourceRegeneration Renewal;
         public AnimalPopulation Animals;
         public Sprite[] PoiSprites;
+        public Sprite[] DeepPoiSprites;
         public WorldChunkRuntime Chunks {get;private set;}
         public static int SelectedGenerationVersion=WorldGenerationVersion.Current;
         public WorldMap Map { get; private set; }
@@ -28,7 +29,7 @@ namespace Wildfolk
         private void Awake(){if(GenerateOnAwake)Generate(SelectedSeed ?? Definition.DefaultSeed);}
         public void Generate(int seed,bool populate=true,int generationVersion=0)
         {
-            var regenerate=Map!=null;if(regenerate)GetComponent<ZombieSpawner>().ReleaseWorld();
+            BeaconDirectory.Clear();var regenerate=Map!=null;if(regenerate)GetComponent<ZombieSpawner>().ReleaseWorld();
             var started=System.Diagnostics.Stopwatch.StartNew();
             for(var i=Environment.childCount-1;i>=0;i--){var child=Environment.GetChild(i).gameObject;child.SetActive(false);Destroy(child);}
             Map=new WorldMap(Definition,seed,generationVersion==0 ? (Map?.GenerationVersion??SelectedGenerationVersion) : generationVersion);Renewal.ResetWorld();Region.Size=Map.Size-Vector2.one*3;Terrain.Build(Map);

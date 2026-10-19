@@ -1,0 +1,1058 @@
+{
+  "runs": [
+    {
+      "file": "tier-three-edit.xml",
+      "id": "2",
+      "testcasecount": "142",
+      "result": "Failed(Child)",
+      "total": "142",
+      "passed": "130",
+      "failed": "12",
+      "inconclusive": "0",
+      "skipped": "0",
+      "asserts": "0",
+      "engine-version": "3.5.0.0",
+      "clr-version": "4.0.30319.42000",
+      "start-time": "2026-10-19 05:33:57Z",
+      "end-time": "2026-10-19 05:34:56Z",
+      "duration": "59.4243046",
+      "failed_cases": [
+        "Wildfolk.Tests.EcologyModelTests.RustedSwordIsUsableSingleTargetLocalizedSaveItemAndRareVariantLoot",
+        "Wildfolk.Tests.ExplorationModelTests.EarlyTorchAndCompassUseExistingMaterialsAndOnePlacementItem",
+        "Wildfolk.Tests.MetalProgressionTests.OnlyConfiguredNextTierOpensAndLegacyUpgradeCostsRemain",
+        "Wildfolk.Tests.NetworkCreatureContractTests.EveryEcologySpawnHasRegisteredServerPrefabAndSharedBrain",
+        "Wildfolk.Tests.NetworkFacilityModelTests.FacilityPrefabsAndInteractionComponentsAreRegisteredBeforeSessionStarts",
+        "Wildfolk.Tests.NetworkPersistenceModelTests.EveryExistingPlaceableUsesOneSourceDefinitionAndServerBuildingState",
+        "Wildfolk.Tests.ProgressionTests.TiersImproveTheirRolesAndGateOreByToolKindAndRank",
+        "Wildfolk.Tests.ResourceTempoTests.RecipeEconomyIncludesSharedFacilitiesAllUpgradeChainsAndBatchedFuel(1)",
+        "Wildfolk.Tests.ResourceTempoTests.RecipeEconomyIncludesSharedFacilitiesAllUpgradeChainsAndBatchedFuel(4)",
+        "Wildfolk.Tests.SceneContractTests.BalanceDataHasValidCombatRangesAndProgressionItems",
+        "Wildfolk.Tests.SceneContractTests.SavedSceneRetainsPlayableConnectionsAndNonPushingEnemy",
+        "Wildfolk.Tests.WorldFoundationTests.SourcesUseEnvironmentalTagsAndRegionalRecovery"
+      ]
+    },
+    {
+      "file": "tier-three-play.xml",
+      "id": "2",
+      "testcasecount": "19",
+      "result": "Failed(Child)",
+      "total": "19",
+      "passed": "9",
+      "failed": "10",
+      "inconclusive": "0",
+      "skipped": "0",
+      "asserts": "0",
+      "engine-version": "3.5.0.0",
+      "clr-version": "4.0.30319.42000",
+      "start-time": "2026-10-19 05:39:04Z",
+      "end-time": "2026-10-19 05:41:52Z",
+      "duration": "168.3437089",
+      "failed_cases": [
+        "Wildfolk.Tests.ExplorationPlayTests.HomeAndPlacedTorchSurviveSleepSaveLoadAndWorkbenchUpgrade",
+        "Wildfolk.Tests.NetworkPersistencePlayTests.HostSaveRehostRestoresWorldCargoGroundEcologyAndPlayerWithoutDuplicates",
+        "Wildfolk.Tests.NetworkPersistencePlayTests.PlacementRaceRollbackAndEveryCurrentBuildingUseExistingDefinitions",
+        "Wildfolk.Tests.NetworkPersistencePlayTests.RetireAndRejoinSameIdentityRestoreOnceAndRejectConcurrentIdentity",
+        "Wildfolk.Tests.NetworkPersistencePlayTests.SaveFailureKeepsHostSessionAndCorruptLoadCannotCreateReplacementWorld",
+        "Wildfolk.Tests.NetworkPersistencePlayTests.WallAdjacencyAndDoorDesiredStateRejectCompetingToggle",
+        "Wildfolk.Tests.TierThreeHostTests.HostAuthorityPersistsTurretAmmoModulesHealthAndTeamBeaconThroughRehost",
+        "Wildfolk.Tests.TierThreePlayTests.WorkbenchUpgradeConsumesMaterialsAndDiamondUsesSteelIngredient",
+        "Wildfolk.Tests.WorldFoundationPlayTests.ChunkUnloadPreservesFiniteOreCargoChestAndSaveVersion",
+        "Wildfolk.Tests.WorldFoundationPlayTests.CurrentMetalLoopAndLegacyLayoutRemainSeparate"
+      ]
+    },
+    {
+      "file": "tier-three-edit-recheck.xml",
+      "id": "2",
+      "testcasecount": "11",
+      "result": "Failed(Child)",
+      "total": "11",
+      "passed": "10",
+      "failed": "1",
+      "inconclusive": "0",
+      "skipped": "0",
+      "asserts": "0",
+      "engine-version": "3.5.0.0",
+      "clr-version": "4.0.30319.42000",
+      "start-time": "2026-10-19 05:46:48Z",
+      "end-time": "2026-10-19 05:46:51Z",
+      "duration": "3.3660927",
+      "failed_cases": [
+        "Wildfolk.Tests.SceneContractTests.BalanceDataHasValidCombatRangesAndProgressionItems"
+      ]
+    },
+    {
+      "file": "tier-three-play-recheck.xml",
+      "id": "2",
+      "testcasecount": "13",
+      "result": "Failed(Child)",
+      "total": "13",
+      "passed": "11",
+      "failed": "2",
+      "inconclusive": "0",
+      "skipped": "0",
+      "asserts": "0",
+      "engine-version": "3.5.0.0",
+      "clr-version": "4.0.30319.42000",
+      "start-time": "2026-10-19 05:50:15Z",
+      "end-time": "2026-10-19 05:54:13Z",
+      "duration": "238.7059442",
+      "failed_cases": [
+        "Wildfolk.Tests.TierThreeHostTests.HostAuthorityPersistsTurretAmmoModulesHealthAndTeamBeaconThroughRehost",
+        "Wildfolk.Tests.TierThreePlayTests.WorkbenchUpgradeConsumesMaterialsAndDiamondUsesSteelIngredient"
+      ]
+    },
+    {
+      "file": "tier-three-final-edit.xml",
+      "id": "2",
+      "testcasecount": "20",
+      "result": "Passed",
+      "total": "20",
+      "passed": "20",
+      "failed": "0",
+      "inconclusive": "0",
+      "skipped": "0",
+      "asserts": "0",
+      "engine-version": "3.5.0.0",
+      "clr-version": "4.0.30319.42000",
+      "start-time": "2026-10-19 06:02:46Z",
+      "end-time": "2026-10-19 06:03:05Z",
+      "duration": "19.4603403",
+      "failed_cases": []
+    },
+    {
+      "file": "tier-three-final-play.xml",
+      "id": "2",
+      "testcasecount": "8",
+      "result": "Failed(Child)",
+      "total": "8",
+      "passed": "6",
+      "failed": "2",
+      "inconclusive": "0",
+      "skipped": "0",
+      "asserts": "0",
+      "engine-version": "3.5.0.0",
+      "clr-version": "4.0.30319.42000",
+      "start-time": "2026-10-19 06:04:17Z",
+      "end-time": "2026-10-19 06:05:17Z",
+      "duration": "60.2925029",
+      "failed_cases": [
+        "Wildfolk.Tests.TierThreeHostTests.HostAuthorityPersistsTurretAmmoModulesHealthAndTeamBeaconThroughRehost",
+        "Wildfolk.Tests.TierThreePlayTests.WorkbenchUpgradeConsumesMaterialsAndDiamondUsesSteelIngredient"
+      ]
+    },
+    {
+      "file": "tier-three-resumed-editmode.xml",
+      "id": "2",
+      "testcasecount": "12",
+      "result": "Passed",
+      "total": "12",
+      "passed": "12",
+      "failed": "0",
+      "inconclusive": "0",
+      "skipped": "0",
+      "asserts": "0",
+      "engine-version": "3.5.0.0",
+      "clr-version": "4.0.30319.42000",
+      "start-time": "2026-10-19 10:10:16Z",
+      "end-time": "2026-10-19 10:10:33Z",
+      "duration": "17.083363",
+      "failed_cases": []
+    },
+    {
+      "file": "tier-three-resumed-playmode.xml",
+      "id": "2",
+      "testcasecount": "4",
+      "result": "Passed",
+      "total": "4",
+      "passed": "4",
+      "failed": "0",
+      "inconclusive": "0",
+      "skipped": "0",
+      "asserts": "0",
+      "engine-version": "3.5.0.0",
+      "clr-version": "4.0.30319.42000",
+      "start-time": "2026-10-19 10:11:09Z",
+      "end-time": "2026-10-19 10:12:47Z",
+      "duration": "98.1731319",
+      "failed_cases": []
+    },
+    {
+      "file": "tier-three-projectile-boundary-playmode.xml",
+      "id": "2",
+      "testcasecount": "4",
+      "result": "Passed",
+      "total": "4",
+      "passed": "4",
+      "failed": "0",
+      "inconclusive": "0",
+      "skipped": "0",
+      "asserts": "0",
+      "engine-version": "3.5.0.0",
+      "clr-version": "4.0.30319.42000",
+      "start-time": "2026-10-19 10:20:23Z",
+      "end-time": "2026-10-19 10:20:44Z",
+      "duration": "20.8919935",
+      "failed_cases": []
+    }
+  ],
+  "distinct_cases": 171,
+  "latest_results": [
+    {
+      "case": "Wildfolk.Tests.CharacterPassModelTests.ArmorCostsSlotsAndSilhouettesAreActualData",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.CharacterPassModelTests.CategoriesAndStableTierSortDoNotDependOnNewFlags",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.CharacterPassModelTests.DashSpendingIsAtomicAndRecoveryHonorsDelayAndCondition",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.CharacterPassModelTests.InvalidPointsRanksAndXPAreRejected",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.CharacterPassModelTests.LevelCurveCarriesRemainderAndAwardsPoints",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.CharacterPassModelTests.SkillsSpendPointsRespectRanksAndRestoreEffects",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.CharacterPassModelTests.SprintUsesHoldHysteresisAndExhaustionRecovery",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.CharacterPassModelTests.SurvivalPreventsCriticalSprintAndChangesEfficiency",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.CharacterPassModelTests.V1EnvelopeStillDecodesAndFutureVersionsFail",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.ContentExpansionModelTests.AddedSourcesAndBudgetDoNotMoveExistingSourceIds(9472026)",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.ContentExpansionModelTests.AddedSourcesAndBudgetDoNotMoveExistingSourceIds(17491)",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.ContentExpansionModelTests.CatalogHasRealRecipesFourWeaponFamiliesAndSustainableBasicAmmo",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.ContentExpansionModelTests.ContainerStateTransfersAndRollsBackWithoutBecomingNewItems",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.ContentExpansionModelTests.CookingRecipesRestoreMoreThanSimpleFoodAndBuildingRolesAreReal",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.ContentExpansionModelTests.PurificationReservesOnlyFullRawAndRestoresChargesAfterQueueSave",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.EcologyModelTests.AllFiveSpeciesHaveUsableLootGroupsHabitatsAndBoundedPopulation",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.EcologyModelTests.FamilyAndLightTraitAreIndependentData",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.EcologyModelTests.FullInventoryReplacementFailureIsAtomic",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.EcologyModelTests.RustedSwordIsUsableSingleTargetLocalizedSaveItemAndRareVariantLoot",
+      "result": "Passed",
+      "run": "tier-three-edit-recheck.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.EcologyModelTests.SlingshotHasRealDrawReleaseAndRecoveryIntervals",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.EcologyModelTests.V3AnimalMigrationRetainsLivingIdentityPositionHPAndRecoveryDeadline",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.ExplorationModelTests.AtomicPlacementReservationRollsBackFailedSpawn",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.ExplorationModelTests.BoundaryHysteresisRetainsThenReleasesWithoutUnboundedHistory",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.ExplorationModelTests.CaveExitGuidanceStaysOnItsChamberGraphAndBrightnessHasAFloor",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.ExplorationModelTests.ChunkUnionDeduplicatesOneTwoAndFourDistantRegions",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.ExplorationModelTests.CompassProjectsNorthAndLargeDistanceIndependentlyOfFacing",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.ExplorationModelTests.EarlyTorchAndCompassUseExistingMaterialsAndOnePlacementItem",
+      "result": "Passed",
+      "run": "tier-three-edit-recheck.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.ExplorationModelTests.HostClockSampleKeepsSurfaceLightTimeAcrossJoinAndPause",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.FrontendContractTests.AppStartsAtHomeAndGameplayRemainsEnabled",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.FrontendContractTests.SaveRulesReferenceGameplayContentAndHomeKeysHaveBothLanguages",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.GamefeelModelTests.CachedCaveRoutesFollowShortestDistanceToEitherExit(False)",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.GamefeelModelTests.CachedCaveRoutesFollowShortestDistanceToEitherExit(True)",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.InventoryOperationsTests.DifferentItemsSwapWithoutChangingCounts",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.InventoryOperationsTests.FullInventoryRejectsCraftAtomically",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.InventoryOperationsTests.FullSameItemDestinationAndSameSlotDoNotMutateOrNotify",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.InventoryOperationsTests.FullyConsumedMaterialSlotCanHoldCraftResult",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.InventoryOperationsTests.MergeStopsAtMaxStackAndKeepsOverflowAtSource",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.InventoryOperationsTests.MissingMaterialsNeverConsumeAnything",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.InventoryOperationsTests.MultipleResultStacksCannotPartiallyConsumeIngredients",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.InventoryOperationsTests.PlacementConsumptionRequiresMatchingSelectedItem",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.InventoryOperationsTests.WholeStackMovesBetweenStorageAndHotbarWithOneNotification",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.InventoryTests.DifferentMaterialsDoNotMerge",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.InventoryTests.FullInventoryReturnsUnacceptedAmountWithoutLosingExistingItems",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.InventoryTests.InvalidAmountsCannotMutateInventory",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.InventoryTests.MaxStackOverflowUsesNextSlot",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.InventoryTests.NotifiesOnceForAnAcceptedBatchAndNeverForRejectedBatch",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.InventoryTests.SameItemMergesBeforeUsingAnotherSlot",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.InventoryTests.StartsEmpty",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.MetalProgressionTests.AppendedOresAreDeterministicAndPreserveEveryLegacyPlacementAndId",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.MetalProgressionTests.BronzeAndSteelReserveEveryIngredientAndPreserveBlockedOutputAndQueueSnapshot",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.MetalProgressionTests.FourInputsReserveAtomicallyAndRollbackFailureOrException",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.MetalProgressionTests.MiningToolPermissionHasNoFistFallbackAndMaterialKindsRemainDistinct",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.MetalProgressionTests.OnlyConfiguredNextTierOpensAndLegacyUpgradeCostsRemain",
+      "result": "Passed",
+      "run": "tier-three-edit-recheck.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.MetalProgressionTests.SupplyContextAndRecoveryAreIndependentOfTechnologyAndRespectMineralFamily",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.MetalProgressionTests.WorkbenchRangeIsOneThroughSix(0,False)",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.MetalProgressionTests.WorkbenchRangeIsOneThroughSix(1,True)",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.MetalProgressionTests.WorkbenchRangeIsOneThroughSix(2,True)",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.MetalProgressionTests.WorkbenchRangeIsOneThroughSix(6,True)",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.MetalProgressionTests.WorkbenchRangeIsOneThroughSix(7,False)",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.MetalProgressionTests.WorkbenchRangeIsOneThroughSix(-1,False)",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.NetworkCreatureContractTests.EveryEcologySpawnHasRegisteredServerPrefabAndSharedBrain",
+      "result": "Passed",
+      "run": "tier-three-edit-recheck.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.NetworkCreatureContractTests.MultiplayerWorldHasNoPersistenceAndKeepsPopulationDefinitions",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.NetworkCreatureContractTests.PlayerRequestsNeverContainTargetDamageOrClientHitResult",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.NetworkCreatureContractTests.RangedReplicaEndsPresentationWithoutLaunchingAnotherStone",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.NetworkFacilityModelTests.CraftFailureKeepsAllIngredientsAndSameIngredientsOnlyCraftOnce",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.NetworkFacilityModelTests.FacilityPrefabsAndInteractionComponentsAreRegisteredBeforeSessionStarts",
+      "result": "Passed",
+      "run": "tier-three-edit-recheck.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.NetworkFacilityModelTests.QueueVersionOnlyChangesAtCompletionAndBlockedCargoIsConserved",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.NetworkFoundationTests.CommandsRejectNonFiniteAndClampUntrustedMagnitude",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.NetworkFoundationTests.InternetCodeAndLocalAddressAreDifferentRoutes",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.NetworkFoundationTests.PlayerStateIsServerWritableAndRpcInputsAreOwnerOnly",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.NetworkItemModelTests.DropFailureAndExceptionRestoreOriginalStackWithoutPublishing",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.NetworkItemModelTests.EveryResourceAndGroundDropUsesRegisteredNetworkPrefab",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.NetworkItemModelTests.ReplicaInventoryRejectsMutationAndFullStackPickupIsAtomic",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.NetworkPersistenceModelTests.EveryExistingPlaceableUsesOneSourceDefinitionAndServerBuildingState",
+      "result": "Passed",
+      "run": "tier-three-edit-recheck.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.NetworkPersistenceModelTests.ParticipantMetadataRejectsDuplicatesInvalidIdentityAndMismatchedHost",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.NetworkPersistenceModelTests.SeparateRepositoriesAndDeadParticipantPolicyPreserveSingleplayerRules",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.NetworkPersistenceModelTests.V4MigratesToV6WithoutChangingSingleplayerPayloadAndV5RoundTrips",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.ProgressionTests.ChestsHaveIndependentStoresAndFailedTransfersPreserveBoth",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.ProgressionTests.ChestTransferMergesPartiallyRejectsFullAndSwapsAtomically",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.ProgressionTests.ProcessingRecipesUseSeparateStationsAndNoPlaceholderFuel",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.ProgressionTests.TiersImproveTheirRolesAndGateOreByToolKindAndRank",
+      "result": "Passed",
+      "run": "tier-three-edit-recheck.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.ProgressionTests.WorldTimeCrossesAllPhasesAndLightingIsContinuousAtBoundaries",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.QualityModelTests.LanguagePersistsAsLocalPreferenceAndRefreshesCatalog",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.QualityModelTests.LocalizationHasTwoCompleteLanguagesAndEquivalentPlaceholders",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.QualityModelTests.OutputCapacityAndInventorySpacePreserveReservedCargo",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.QualityModelTests.PopulationUsesRegionalDeficitsAndWorldScopeForRareRules",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.QualityModelTests.QueueAndLegacyBatchRestoreWithoutMaterialDuplication",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.QualityModelTests.QueueReservesInputProcessesSingleUnitsAndWithdrawsOnlyWaiting",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.QualityModelTests.QueueSaveRetainsAlternatingRecipeOrder",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.QualityModelTests.RecoverySaveKeepsExclusionsAndCandidateSequence",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.QualityModelTests.SkillPrerequisiteAndLegacyLearnedRankAreBothRespected",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.ResourceTempoTests.RecipeEconomyIncludesSharedFacilitiesAllUpgradeChainsAndBatchedFuel(1)",
+      "result": "Passed",
+      "run": "tier-three-final-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.ResourceTempoTests.RecipeEconomyIncludesSharedFacilitiesAllUpgradeChainsAndBatchedFuel(4)",
+      "result": "Passed",
+      "run": "tier-three-final-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.ResourceTempoTests.RecoveryDebtIsOneTicketPerChunkAndCandidatesStayInsideThatRegion",
+      "result": "Passed",
+      "run": "tier-three-final-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.ResourceTempoTests.SourcesPayOnCompletionAndRecoverWithinRegionalTempo(1,6,75)",
+      "result": "Passed",
+      "run": "tier-three-final-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.ResourceTempoTests.SourcesPayOnCompletionAndRecoverWithinRegionalTempo(2,6,120)",
+      "result": "Passed",
+      "run": "tier-three-final-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.ResourceTempoTests.SourcesPayOnCompletionAndRecoverWithinRegionalTempo(5,6,150)",
+      "result": "Passed",
+      "run": "tier-three-final-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.ResourceTempoTests.SourcesPayOnCompletionAndRecoverWithinRegionalTempo(6,5,165)",
+      "result": "Passed",
+      "run": "tier-three-final-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.ResourceTempoTests.SourcesPayOnCompletionAndRecoverWithinRegionalTempo(7,10,105)",
+      "result": "Passed",
+      "run": "tier-three-final-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.SceneContractTests.BalanceDataHasValidCombatRangesAndProgressionItems",
+      "result": "Passed",
+      "run": "tier-three-final-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.SceneContractTests.SavedSceneRetainsPlayableConnectionsAndNonPushingEnemy",
+      "result": "Passed",
+      "run": "tier-three-final-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.StabilityModelTests.AtomicSaveBackupRecoversCorruptionAndIgnoresInterruptedTemporaryFile",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.StabilityModelTests.ChecksumAndFutureVersionAreRejected",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.StabilityModelTests.CupStateChangesAreAtomicAndConserveContainersOnFullBags",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.StabilityModelTests.EditorValidatorAcceptsCurrentDataAndDeveloperToolsStayInEditorAssembly",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.StabilityModelTests.EveryCurrentBasicAttackHasOneTargetAndExtensibleShape",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.StabilityModelTests.HostileRelationIsNotAPlayerTeamDespiteDefaultNumericId",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.StabilityModelTests.InventoryRestoreRejectsUnknownAndOversizedStacksWithoutPartialMutation",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.StabilityModelTests.RawWaterPenaltyExpiresPreciselyAndSurvivesStateRoundTrip",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.StabilityModelTests.RenewalAndTerrainDataKeepDifferentResourceTimes",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.SteelProgressionTests.HarvestMethodsAndMinimumToolsAreIndependent",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.SteelProgressionTests.LegacyCargoAndChestMigrationPreserveContentsExactlyOnce",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.SteelProgressionTests.TechnologyUsesSeparateFacilityAndKeepsLegacyMaterials",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.SurvivalSettingsTests.BothEmptyMetersDealIndependentPeriodicDamage",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.SurvivalSettingsTests.CookingReservationRejectsPartialCostWithoutChangingInventory",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.SurvivalSettingsTests.EmptyMetersDamageAtIntervalsAndFoodClampsWithoutWastingAtMax",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.SurvivalSettingsTests.LocalPreferencesClampAndRoundTripThroughSeparateKeys",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.TierThreeModelTests.DeepResourcesHaveCorrectGatingYieldRenewalAndNoSurfaceDependency",
+      "result": "Passed",
+      "run": "tier-three-resumed-editmode.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.TierThreeModelTests.DiamondPowerPreservesWeaponTimingAndArmorGrowthIsLimited",
+      "result": "Passed",
+      "run": "tier-three-resumed-editmode.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.TierThreeModelTests.NewDeepSupplyIsInitiallySufficientAndEarlierSourcesDoNotMove(9472026)",
+      "result": "Passed",
+      "run": "tier-three-resumed-editmode.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.TierThreeModelTests.NewDeepSupplyIsInitiallySufficientAndEarlierSourcesDoNotMove(42)",
+      "result": "Passed",
+      "run": "tier-three-resumed-editmode.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.TierThreeModelTests.PersonalDiamondBudgetAndSharedUpgradeAreCountedOnce(1)",
+      "result": "Passed",
+      "run": "tier-three-resumed-editmode.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.TierThreeModelTests.PersonalDiamondBudgetAndSharedUpgradeAreCountedOnce(4)",
+      "result": "Passed",
+      "run": "tier-three-resumed-editmode.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.TierThreeModelTests.ThirdWorkbenchUsesOnlyMaterialsAndEveryPersonalUpgradeConsumesSteel",
+      "result": "Passed",
+      "run": "tier-three-resumed-editmode.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.TierThreeModelTests.TurretSnapshotRejectsIncompatibleCargoAndWrongModuleRoles",
+      "result": "Passed",
+      "run": "tier-three-resumed-editmode.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.TierThreeModelTests.UtilityAndTurretRolesKeepExistingMaterialsRelevant",
+      "result": "Passed",
+      "run": "tier-three-resumed-editmode.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.WorldFoundationTests.OceanAndHydrologyHaveNaturalBoundariesAndContinuousTransitions",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.WorldFoundationTests.SameSeedReplaysMacroHydrologySourceAnchorsAndChunks",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.WorldFoundationTests.SeedHasConnectedCavesValidSourcesFourPlayerYieldAndBiomeFamilies(9472026)",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.WorldFoundationTests.SeedHasConnectedCavesValidSourcesFourPlayerYieldAndBiomeFamilies(17491)",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.WorldFoundationTests.SeedHasConnectedCavesValidSourcesFourPlayerYieldAndBiomeFamilies(-81027)",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.WorldFoundationTests.SeedHasConnectedCavesValidSourcesFourPlayerYieldAndBiomeFamilies(193080127)",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.WorldFoundationTests.SourcesUseEnvironmentalTagsAndRegionalRecovery",
+      "result": "Passed",
+      "run": "tier-three-edit-recheck.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.WorldFoundationTests.SubSeedsAreIsolatedAndLegacyLayoutIsVersionBound",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.WorldFoundationTests.VegetationDensityDoesNotMoveOreRiverOrPoi",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.WorldGenerationTests.GroundActuallyShowsDirtRoadAndFordDiffersFromDeepWater",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.WorldGenerationTests.ManySeedsHaveClearSpawnNearbySuppliesRareOreAndNoOverlaps",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.WorldGenerationTests.PartialTransferPreservesTotalsOnFullOrDifferentTargets",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.WorldGenerationTests.PopulationAndLootDataAreBoundedAndOnlyOneBiomeExists",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.WorldGenerationTests.RiverHasWalkableCrossingAndLandRemainsConnected",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.WorldGenerationTests.SeedRecreatesTerrainRoadsAndResourcesWithoutUsingUnityRandom",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.WorldGenerationTests.TreeHitCountsUpgradeRecipesAndFurnaceCapacityMatchActualData",
+      "result": "Passed",
+      "run": "tier-three-edit.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.ExplorationPlayTests.CaveReadableFloorTorchAndExitBearingRemainDistinctFromHome",
+      "result": "Passed",
+      "run": "tier-three-play.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.ExplorationPlayTests.HomeAndPlacedTorchSurviveSleepSaveLoadAndWorkbenchUpgrade",
+      "result": "Passed",
+      "run": "tier-three-play-recheck.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.ExplorationPlayTests.TerrainBudgetCacheAndMineralTombstoneRemainBounded",
+      "result": "Passed",
+      "run": "tier-three-play.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.ExplorationPlayTests.TorchCraftHeldMovementPlacementAndValidationShareOneItem",
+      "result": "Passed",
+      "run": "tier-three-play.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.NetworkPersistencePlayTests.HostSaveRehostRestoresWorldCargoGroundEcologyAndPlayerWithoutDuplicates",
+      "result": "Passed",
+      "run": "tier-three-play-recheck.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.NetworkPersistencePlayTests.PlacementRaceRollbackAndEveryCurrentBuildingUseExistingDefinitions",
+      "result": "Passed",
+      "run": "tier-three-play-recheck.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.NetworkPersistencePlayTests.RetireAndRejoinSameIdentityRestoreOnceAndRejectConcurrentIdentity",
+      "result": "Passed",
+      "run": "tier-three-play-recheck.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.NetworkPersistencePlayTests.SaveFailureKeepsHostSessionAndCorruptLoadCannotCreateReplacementWorld",
+      "result": "Passed",
+      "run": "tier-three-play-recheck.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.NetworkPersistencePlayTests.WallAdjacencyAndDoorDesiredStateRejectCompetingToggle",
+      "result": "Passed",
+      "run": "tier-three-play-recheck.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.TierThreeHostTests.HostAuthorityPersistsTurretAmmoModulesHealthAndTeamBeaconThroughRehost",
+      "result": "Passed",
+      "run": "tier-three-resumed-playmode.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.TierThreePlayTests.BeaconsTrackOnlyOneAndSnapshotRestoresNavigationAndUtility",
+      "result": "Passed",
+      "run": "tier-three-final-play.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.TierThreePlayTests.FullAutomationUsesLosIgnoresFriendliesAndStopsWhenEmpty",
+      "result": "Passed",
+      "run": "tier-three-projectile-boundary-playmode.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.TierThreePlayTests.ManualTurretRequiresRealCompatibleAmmoReloadAndKeepsModules",
+      "result": "Passed",
+      "run": "tier-three-projectile-boundary-playmode.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.TierThreePlayTests.ScopeKeepsSimulationChunksUnchangedAndPresentationExpires",
+      "result": "Passed",
+      "run": "tier-three-final-play.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.TierThreePlayTests.SleepingTurretHasNoFarCombatAndReturnsWithCargo",
+      "result": "Passed",
+      "run": "tier-three-projectile-boundary-playmode.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.TierThreePlayTests.WorkbenchUpgradeConsumesMaterialsAndDiamondUsesSteelIngredient",
+      "result": "Passed",
+      "run": "tier-three-resumed-playmode.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.WorldFoundationPlayTests.CavernPortalConnectsSurfaceRoomGraphDeepBranchAndReturn",
+      "result": "Passed",
+      "run": "tier-three-play.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.WorldFoundationPlayTests.ChunkUnloadPreservesFiniteOreCargoChestAndSaveVersion",
+      "result": "Passed",
+      "run": "tier-three-play-recheck.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.WorldFoundationPlayTests.CurrentMetalLoopAndLegacyLayoutRemainSeparate",
+      "result": "Passed",
+      "run": "tier-three-play-recheck.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.TierThreeModelTests.InlineJsonEmptyTurretStateIsAcceptedOnlyWithoutCargo",
+      "result": "Passed",
+      "run": "tier-three-resumed-editmode.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.ResourceTempoHostTests.AuthorityRecoversDistinctRegionsAndRehostDoesNotDuplicateSavedSources",
+      "result": "Passed",
+      "run": "tier-three-play-recheck.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.ResourceTempoPlayTests.FullHarvestYieldsAndPanPermissionsUseCanonicalNodes",
+      "result": "Passed",
+      "run": "tier-three-play-recheck.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.ResourceTempoPlayTests.MineralDebtRecoversElsewhereAndSurvivesSleepSaveReloadWithoutDuplicates",
+      "result": "Passed",
+      "run": "tier-three-play-recheck.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.GamefeelPlayTests.WorkbenchDetailsDoNotOverlapUpgradeRequirementsAndModalBlocksMovement",
+      "result": "Passed",
+      "run": "tier-three-final-play.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.TierThreeModelTests.NewDeepSupplyIsInitiallySufficientAndEarlierSourcesDoNotMove(1)",
+      "result": "Passed",
+      "run": "tier-three-resumed-editmode.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.TierThreeModelTests.NewDeepSupplyIsInitiallySufficientAndEarlierSourcesDoNotMove(20261019)",
+      "result": "Passed",
+      "run": "tier-three-resumed-editmode.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.TierThreePlayTests.DeepGemRecoveryFindsNewLocationWithoutExpandingActiveChunks",
+      "result": "Passed",
+      "run": "tier-three-resumed-playmode.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.TierThreePlayTests.WithdrawingLastLoadedRoundClearsReadyState",
+      "result": "Passed",
+      "run": "tier-three-resumed-playmode.xml"
+    },
+    {
+      "case": "Wildfolk.Tests.TierThreePlayTests.TurretProjectileStopsAtInactiveSimulationChunk",
+      "result": "Passed",
+      "run": "tier-three-projectile-boundary-playmode.xml"
+    }
+  ],
+  "unresolved_failed_cases": [],
+  "scope": "Initial Edit suite and selected Play suites plus targeted corrections; not a complete Play suite."
+}

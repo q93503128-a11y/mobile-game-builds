@@ -34,7 +34,7 @@ namespace Wildfolk
         {
             if(!WorldGenerationVersion.Valid(generationVersion))throw new ArgumentOutOfRangeException(nameof(generationVersion));
             Definition=definition;Seed=seed;GenerationVersion=generationVersion;
-            if(Streamed)Continental=new ContinentalWorldLayout(definition,seed,validateGeneration);else legacy=new LegacyWorldLayout(definition,seed);
+            if(Streamed)Continental=new ContinentalWorldLayout(definition,seed,validateGeneration,generationVersion);else legacy=new LegacyWorldLayout(definition,seed);
         }
         public bool Contains(Vector2 p)=>Streamed ? Continental.Contains(p) : Bounds.Contains(p);
         public Bounds RegionBounds(Vector2 p)=>Streamed && Continental.Underground(p) ? new Bounds(Continental.CaveAt(p).Origin,new Vector3(400,400,1)) : Bounds;

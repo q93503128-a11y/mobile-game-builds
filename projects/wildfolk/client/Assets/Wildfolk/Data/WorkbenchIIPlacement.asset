@@ -19,6 +19,8 @@ MonoBehaviour:
   MaximumDistance: 2.8
   Station: 1
   Tier: {fileID: 11400000, guid: 5945e678712f7744cbe23200644f4d02, type: 2}
+  IsBeacon: 0
+  Turret: {fileID: 0}
   IsBarrier: 0
   IsDoor: 0
   StorageSlots: 0
@@ -28,5 +30,31 @@ MonoBehaviour:
   OutputCapacity: 100
   ProcessingSpeed: 1
   WorkbenchTier: 2
-  UpgradeTo: {fileID: 0}
-  UpgradeCosts: []
+  TierVisual: {fileID: 0}
+  TierDisplayKey:
+  UpgradeTo: {fileID: 11400000, guid: 64dc62cf2af14cd4c884d989c276f221, type: 2}
+  UpgradeCosts:
+  - Item: {fileID: 11400000, guid: 431287b464f63f4408828d4053bac6eb, type: 2}
+    Count: 10
+    Charges: 0
+    Quality: 0
+  - Item: {fileID: 11400000, guid: 30904e05765ac844ab5bb28b855a15db, type: 2}
+    Count: 10
+    Charges: 0
+    Quality: 0
+  - Item: {fileID: 11400000, guid: f9d01f6ba03eb6844b137faebea8612b, type: 2}
+    Count: 4
+    Charges: 0
+    Quality: 0
+  - Item: {fileID: 11400000, guid: 7829ba341a701304a8ee1b5e2bf83611, type: 2}
+    Count: 4
+    Charges: 0
+    Quality: 0
+  - Item: {fileID: 11400000, guid: 381f5ba6867082e4f978781f1de007d9, type: 2}
+    Count: 4
+    Charges: 0
+    Quality: 0
+  - Item: {fileID: 11400000, guid: 79ed4239b75c0ab4194fece248ef8411, type: 2}
+    Count: 1
+    Charges: 0
+    Quality: 0

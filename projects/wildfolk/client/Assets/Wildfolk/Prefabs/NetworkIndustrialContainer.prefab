@@ -1,0 +1,134 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &6623903174592103350
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6281068670762303525, guid: 98e40b809021ada49b034864b5a6f45b, type: 3}
+      propertyPath: m_Name
+      value: NetworkIndustrialContainer
+      objectReference: {fileID: 0}
+    - target: {fileID: 7587134258155731304, guid: 98e40b809021ada49b034864b5a6f45b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7587134258155731304, guid: 98e40b809021ada49b034864b5a6f45b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7587134258155731304, guid: 98e40b809021ada49b034864b5a6f45b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7587134258155731304, guid: 98e40b809021ada49b034864b5a6f45b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7587134258155731304, guid: 98e40b809021ada49b034864b5a6f45b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7587134258155731304, guid: 98e40b809021ada49b034864b5a6f45b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7587134258155731304, guid: 98e40b809021ada49b034864b5a6f45b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7587134258155731304, guid: 98e40b809021ada49b034864b5a6f45b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7587134258155731304, guid: 98e40b809021ada49b034864b5a6f45b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7587134258155731304, guid: 98e40b809021ada49b034864b5a6f45b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6281068670762303525, guid: 98e40b809021ada49b034864b5a6f45b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 696689620732668517}
+    - targetCorrespondingSourceObject: {fileID: 6281068670762303525, guid: 98e40b809021ada49b034864b5a6f45b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5388515935268737673}
+    - targetCorrespondingSourceObject: {fileID: 6281068670762303525, guid: 98e40b809021ada49b034864b5a6f45b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6655818362081301925}
+  m_SourcePrefab: {fileID: 100100000, guid: 98e40b809021ada49b034864b5a6f45b, type: 3}
+--- !u!1 &920425900455642003 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6281068670762303525, guid: 98e40b809021ada49b034864b5a6f45b, type: 3}
+  m_PrefabInstance: {fileID: 6623903174592103350}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &696689620732668517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 920425900455642003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
+  GlobalObjectIdHash: 739742995
+  InScenePlacedSourceGlobalObjectIdHash: 0
+  m_InScenePlacedDisabledByDefault: 0
+  DeferredDespawnTick: 0
+  Ownership: 1
+  AlwaysReplicateAsRoot: 0
+  SynchronizeTransform: 1
+  m_InScenePlaced: 1
+  ActiveSceneSynchronization: 0
+  SceneMigrationSynchronization: 0
+  SpawnWithObservers: 1
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
+  SyncOwnerTransformWhenParented: 1
+  AllowOwnerToParent: 0
+--- !u!114 &5388515935268737673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 920425900455642003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d286698207d54a7db32dd8d0116db85a, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.NetworkBuilding
+  ShowTopMostFoldoutHeaderGroup: 1
+--- !u!114 &6655818362081301925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 920425900455642003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de69bc668de04c968d7cfc530853bfa8, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.NetworkFacility
+  ShowTopMostFoldoutHeaderGroup: 1
+  Slots:
+    UpdateTraits:
+      MinSecondsBetweenUpdates: 0
+      MaxSecondsBetweenUpdates: 0
+  Cargo:
+    UpdateTraits:
+      MinSecondsBetweenUpdates: 0
+      MaxSecondsBetweenUpdates: 0

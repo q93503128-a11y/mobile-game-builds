@@ -425,3 +425,8 @@ Torch도 기존 NetworkConstruction/NetworkBuilding transaction과 stable Save I
 ## Workbench I–II Content Expansion (2026-10-18)
 
 현재 Save9/Protocol11, Item86/Recipe71, source variant46+Player1. 낚시 보상/물부대 변경/장비/탄약/Trap/시설/건축은 Host 권위다. Activity state는 시작/변경 시만 보내고 클라이언트가 시간으로 표시한다. 초기 공유 시설5개를 유지하며 Cooking Pot은 제작해야 한다. 실제 Relay/4기기 검수는 별도다. [현재 범위](CONTENT_EXPANSION.md).
+
+
+## Workbench III 현재 상태 · 2026-10-19
+
+현재 Protocol12/Save10: 포탑 타깃·LOS·발사·탄약·피해는 Host가 결정하고 owner RPC는 거리/상태/권위와 inventory/turret revision을 검증한다. cargo/module은 변화 시, heading은 최대10Hz 변경 시 전송한다. 비콘의 팀 공유 metadata와 선택 navigation은 기존 저장/재Host 경계에 포함한다. 원격4인/Relay 검증과 local Host 자동·실제 검수는 구분한다. 현재 세부 범위는 CONTENT_EXPANSION III 및 validation/tier-three를 따른다.

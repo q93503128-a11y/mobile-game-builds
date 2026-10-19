@@ -2,7 +2,7 @@
 
 표시 이름은 **Lowfire**다. 내부 Wildfolk namespace, projects/wildfolk 경로와 기존 저장/설정 식별자는 유지한다. 이번 변경은 전체 프로젝트 rename이 아니다.
 
-Unity **6000.3.19f1 LTS / Universal 2D**, 모바일 Landscape(기준1920×1080) 탑다운 생존 게임의 초기 플레이 버전이다. 현재 Seed 월드, 낮 채집/시설/장비 업그레이드, Goblin 무리·작은 Camp,밤 Zombie/Skeleton, 물 용기와 생존, Save/Load v9(v1~v8 호환)을 제공한다. 최종 아트·월드 생성·출시 밸런스가 아니다.
+Unity **6000.3.19f1 LTS / Universal 2D**, 모바일 Landscape(기준1920×1080) 탑다운 생존 게임의 초기 플레이 버전이다. 현재 Seed 월드, 낮 채집/시설/장비 업그레이드, Goblin 무리·작은 Camp,밤 Zombie/Skeleton, 물 용기와 생존, Save/Load v10(v1~v9 호환)을 제공한다. 최종 아트·월드 생성·출시 밸런스가 아니다.
 
 ![플레이 화면](docs/images/world-v2/01-default-grassland.png)
 
@@ -26,7 +26,7 @@ Zombie는 밤에 올라와 활동하고 새벽에는 보상 없이 잠복한다.
 
 ## 정본과 검증
 
-- 실제 Item86종, Recipe71종, Equipment Tier4종, Surface Biome4종이다.
+- 실제 Item110종, Recipe91종, Equipment Tier5종, Surface Biome4종이다.
 - [기획](docs/DESIGN_BIBLE.md), [월드](docs/WORLD_GENERATION.md), [저장](docs/SAVE_PERSISTENCE.md), [전투/이동](docs/COMBAT_NAVIGATION.md), [수치](docs/BALANCE.md), [제작](docs/CRAFTING.md), [가방](docs/INVENTORY.md), [구조](docs/ARCHITECTURE.md).
 - [Developer Tools](docs/DEVELOPER_TOOLS.md)는 Editor 전용이며 게임 HUD/Release에 노출되지 않는다.
 - [Home/이번 검수](docs/HOME_FRONTEND.md). 이전 *_REVIEW는 당시 단계의 기록이다.
@@ -49,15 +49,18 @@ Wildfolk > View 메뉴는 기존 Game View의 해상도만 갱신하고 Play Unf
 
 Home 수첩의 Single Player/Multiplayer/Settings는 기본 배경 박스를 없애고 종이 위 텍스트 메뉴로 표시한다. Continue의 Primary 박스와 기존 배경/타이틀은 유지한다.
 
-현재 금속 진행은 Wood→Stone→Iron→Steel 장비와 Workbench I(Iron까지) / II(post-Iron 기술)다. Copper는 Iron Pickaxe, Coal은 Stone Pickaxe, 수변 Tin은 II에서 Copper로 만든 Prospecting Pan을 요구한다. Bronze 부품으로 별도 Blast Furnace를 제작해 Steel을 처리하며 기존 Furnace는 저단계 제련·Bronze를 담당한다. Reinforced Chest36과 가변 스크롤 UI, Save v6의 구 Chest/Steel cargo 이관을 제공한다. III~VI는 미구현이다. 지상4종/Caverns 기반은 WORLD_GENERATION 정본을 따른다. [진행과 이번 실제 MCP 검수](docs/METAL_PROGRESSION.md)를 따른다. 실제 연결된 Unity Game View에서 채집·제작·가공·장착·상자·SP Load·Local Host 재Host를 확인했으며 물리 기기/새 Protocol7 remote Relay 검수는 별도다.
+이전 I–II 금속 패스 당시 진행은 Wood→Stone→Iron→Steel 장비와 Workbench I(Iron까지) / II(post-Iron 기술)였다. Copper는 Iron Pickaxe, Coal은 Stone Pickaxe, 수변 Tin은 II에서 Copper로 만든 Prospecting Pan을 요구한다. Bronze 부품으로 별도 Blast Furnace를 제작해 Steel을 처리하며 기존 Furnace는 저단계 제련·Bronze를 담당한다. Reinforced Chest36과 가변 스크롤 UI, Save v6의 구 Chest/Steel cargo 이관을 제공한다. III~VI는 미구현이다. 지상4종/Caverns 기반은 WORLD_GENERATION 정본을 따른다. [진행과 이번 실제 MCP 검수](docs/METAL_PROGRESSION.md)를 따른다. 실제 연결된 Unity Game View에서 채집·제작·가공·장착·상자·SP Load·Local Host 재Host를 확인했으며 물리 기기/새 Protocol7 remote Relay 검수는 별도다.
 
 직전 World Foundation v2: 신규 대륙/4 Surface Biome/수계/동굴 graph/청크 sleep state/광물 고갈/Save7·Protocol8. [정본](docs/WORLD_GENERATION.md)과 [이번 검수](docs/WORLD_FOUNDATION_REVIEW.md)를 따른다. 위 이전 패스 검수의 v6/Protocol7은 당시 기록이다.
 
 
 이전 Exploration Foundation 1 당시: 하나의 Torch로 손/설치 광원, 초반 Compass, 제작대 지정 Home/동굴 Exit 안내, 청크 경계4unit retention·비활성 지형 LRU24·2.5ms 목표 row sampler를 제공한다. Save8/Protocol9이며 generation2 지형과 legacy generation1을 유지한다. [탐험 정본](docs/EXPLORATION_FOUNDATION.md)과 [검수/성능 수치](docs/EXPLORATION_REVIEW.md)를 따른다. 당시 WB III/hands-free Lantern/지도는 없었으며, 현재 Lantern 구현은 아래 Content Expansion 정본을 따른다.
 
-현재 Workbench I–II Content Expansion: [전체 제작·예산 정본](docs/CONTENT_EXPANSION.md), [음식·낚시·물부대](docs/FOOD_AND_FISHING.md), [검수](docs/CONTENT_EXPANSION_REVIEW.md). Save9/Protocol11. III/Diamond/전문 제작대·포탑은 미구현이다.
+이전 Workbench I–II Content Expansion 기록: [제작·예산](docs/CONTENT_EXPANSION.md), [음식·낚시·물부대](docs/FOOD_AND_FISHING.md), [당시 검수](docs/CONTENT_EXPANSION_REVIEW.md). 당시 Save9/Protocol11이며 현재 III 구현은 아래 절을 따른다.
 
 현재 자원 템포 패스: [수율·1/4인 경제·지역 회복 정본](docs/RESOURCE_TEMPO.md), [86종 Source/Sink](docs/RESOURCE_ECONOMY_AUDIT.md), [실행 결과](docs/RESOURCE_TEMPO_REVIEW.md). 광물 보상과 지역 회복을 조정했고 기존 source 위치/ID와 저장 schema9를 유지한다.
 
 Workbench III 전 구조/Gamefeel/UX 감사: [통합 감사표·수정 근거](docs/GAMEFEEL_AUDIT.md), [검사·실제 Play 결과](validation/gamefeel/results.json). 새 콘텐츠는 추가하지 않았다.
+
+
+현재 Workbench III alpha 범위: Diamond 개인 장비, Deep Caverns의 Diamond/Crystal과4종 발견 지점, Mechanical Part, Telescope 표시 전용 시야, 선택형 Beacon 안내, Crystal Lantern, Turret Workbench와 수동/자동 Ballista·Repeater를 제공한다. III는 최종 tier가 아니며 IV–VI 콘텐츠는 없다. 신규 월드는 generation3, 기존 generation1/2는 강제 재생성하지 않는다. Save10/Protocol12. [현재 제작·수치·경제·chunk/authority 정책](docs/CONTENT_EXPANSION.md)의 III 절과 [검증 기록](validation/tier-three/)을 따른다. 위 이전 패스의 ‘미구현’/구 버전 표기는 해당 단계 기록이다.

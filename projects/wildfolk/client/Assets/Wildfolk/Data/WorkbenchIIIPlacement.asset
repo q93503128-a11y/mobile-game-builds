@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea85a5ebaf6f62646a87d747548e1a2f, type: 3}
+  m_Name: WorkbenchIIIPlacement
+  m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.PlaceableDefinition
+  Item: {fileID: 11400000, guid: 7486a1081c59f9b49aef5b3c0c6bf24b, type: 2}
+  Prefab: {fileID: 1610150635453931034, guid: 0a1de6add9ba07042a5d38428329f07d, type: 3}
+  Vitality: {fileID: 11400000, guid: 1e472839da42b764ea6cad33647c16ce, type: 2}
+  Footprint: {x: 1.8, y: 1.15}
+  MaximumDistance: 2.8
+  Station: 1
+  Tier: {fileID: 11400000, guid: 5945e678712f7744cbe23200644f4d02, type: 2}
+  IsBeacon: 0
+  Turret: {fileID: 0}
+  IsBarrier: 0
+  IsDoor: 0
+  StorageSlots: 0
+  ParallelCapacity: 1
+  ProcessingMode: 0
+  InputCapacity: 50
+  OutputCapacity: 100
+  ProcessingSpeed: 1
+  WorkbenchTier: 3
+  TierVisual: {fileID: 21300000, guid: d5d75fdfe9a9eb64cb2a0c3d02b2b480, type: 3}
+  TierDisplayKey: ui.workbench.III
+  UpgradeTo: {fileID: 0}
+  UpgradeCosts: []

@@ -13,6 +13,8 @@ namespace Wildfolk
         [Min(.1f)] public float MaximumDistance;
         public StationKind Station;
         public EquipmentTier Tier;
+        public bool IsBeacon;
+        public TurretDefinition Turret;
         public bool IsBarrier;
         public bool IsDoor;
         [Min(0)] public int StorageSlots;

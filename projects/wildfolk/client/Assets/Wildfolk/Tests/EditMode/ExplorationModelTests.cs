@@ -21,7 +21,7 @@ namespace Wildfolk.Tests
             var torch=r.Result;Assert.That(torch.PortableLight,Is.Not.Null);Assert.That(torch.HeldSprite,Is.Not.Null);Assert.That(torch.Placement.Item,Is.SameAs(torch));
             Assert.That(torch.Placement.Prefab.GetComponentInChildren<LocalFirelight>().Definition,Is.SameAs(torch.PortableLight));
             Assert.That(torch.PortableLight.DetersEnemies,Is.False);Assert.That(catalog.Recipe("compass").RequiredWorkbenchTier,Is.EqualTo(1));Assert.That(catalog.Item("compass").NavigationInstrument,Is.True);
-            Assert.That(catalog.Items.Any(i=>i.Id.Contains("diamond")),Is.False);
+            Assert.That(catalog.Items.Any(i=>i.Id=="diamond"),Is.True);Assert.That(catalog.Recipe("compass").Ingredients.Any(a=>a.Item.Id=="diamond"),Is.False);
         }
         [Test]public void CompassProjectsNorthAndLargeDistanceIndependentlyOfFacing()
         {

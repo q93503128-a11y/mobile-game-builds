@@ -4,7 +4,7 @@ using UnityEngine.Serialization;
 
 namespace Wildfolk
 {
-    public enum StationKind { None, Workbench, Campfire, Furnace, BlastFurnace, CookingPot }
+    public enum StationKind { None, Workbench, Campfire, Furnace, BlastFurnace, CookingPot, TurretWorkbench }
     public enum RecipeCategory { Survival, Tools, Weapons, Armor, Building, Facilities }
     public enum ProcessingKind { None, Cooking, Smelting }
     public enum UnlockKind { PlayerLevel, Skill, DiscoveredItem, Blueprint, SpecialContent }
@@ -37,6 +37,7 @@ namespace Wildfolk
         public EquipmentTier Tier;
         [Range(1,6)]public int RequiredWorkbenchTier=1;
         public string DisplayKey;
+        public RecipeDefinition SupersededBy;
         public UnlockRequirement[] FutureUnlocks=Array.Empty<UnlockRequirement>();
     }
 }

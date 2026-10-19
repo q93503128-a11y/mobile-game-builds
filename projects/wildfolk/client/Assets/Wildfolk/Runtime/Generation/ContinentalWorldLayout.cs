@@ -9,6 +9,7 @@ namespace Wildfolk
     public sealed class ContinentalWorldLayout
     {
         private readonly WorldGenerationDefinition data;private readonly int seed;
+        public int GenerationVersion {get;}
         public Vector2 Size {get;}
         public float Phase {get;}
         private readonly float coastPhase;
@@ -20,13 +21,13 @@ namespace Wildfolk
         public readonly List<ResourcePlacement> GuaranteedResources=new List<ResourcePlacement>();
         private readonly Dictionary<WorldChunk,List<Vector2[]>> roadIndex=new Dictionary<WorldChunk,List<Vector2[]>>();
         public Vector2 ForestAnchor {get;}public Vector2 RockyAnchor {get;}public Vector2 SedimentAnchor {get;private set;}
-        public ContinentalWorldLayout(WorldGenerationDefinition definition,int value,bool validateGeneration=true)
+        public ContinentalWorldLayout(WorldGenerationDefinition definition,int value,bool validateGeneration=true,int generationVersion=2)
         {
-            data=definition;seed=value;var width=Mathf.Ceil(definition.WalkingSpeed*60*definition.TravelMinutesAcross/definition.ChunkSize)*definition.ChunkSize;Size=Vector2.one*width;
+            data=definition;seed=value;GenerationVersion=generationVersion;var width=Mathf.Ceil(definition.WalkingSpeed*60*definition.TravelMinutesAcross/definition.ChunkSize)*definition.ChunkSize;Size=Vector2.one*width;
             Phase=WorldSeeds.Unit(seed,SeedDomain.Hydrology)*6.28f;LakeCenter=new Vector2(-1100+WorldSeeds.Unit(seed,SeedDomain.Hydrology,1)*180,-850);
             coastPhase=WorldSeeds.Unit(seed,SeedDomain.Continental)*6.28f;
             var angle=(WorldSeeds.Unit(seed,SeedDomain.Biome)-.5f)*1.1f;ForestAnchor=new Vector2(Mathf.Cos(angle)*210,Mathf.Sin(angle)*210);RockyAnchor=new Vector2(-650,-80+WorldSeeds.Unit(seed,SeedDomain.Terrain)*160);SedimentAnchor=new Vector2(RiverAt(100)+7,100);
-            Biomes=new SurfaceBiomeRegions(this,data);GenerateAnchors();GenerateRoads();WorldProgressionSupply.Build(this,data);WorldProgressionSupply.Supplement(this,data);if(validateGeneration)WorldGenerationValidator.Validate(this,data);
+            Biomes=new SurfaceBiomeRegions(this,data);GenerateAnchors();GenerateRoads();WorldProgressionSupply.Build(this,data);WorldProgressionSupply.Supplement(this,data);if(GenerationVersion>=3)DeepCavernContent.Build(this,data);if(validateGeneration)WorldGenerationValidator.Validate(this,data);
         }
         public bool Underground(Vector2 p)=>p.x>Size.x;
         public CavernNetwork CaveAt(Vector2 p){CavernNetwork best=null;float d=float.MaxValue;foreach(var c in Caves){var n=(c.Origin-p).sqrMagnitude;if(n<d){d=n;best=c;}}return best;}
@@ -72,22 +73,22 @@ namespace Wildfolk
             if(e.Moisture>.63f && e.Height<.52f)e.Tags|=EnvironmentTag.WetGround;return e;
         }
         public bool SourceAllowed(int rule,Vector2 p)
-        {if(!Walkable(p,.6f) || p.magnitude<7 || RoadDistance(p)<2.5f)return false;var underground=Underground(p);var depth=underground ? CaveAt(p).Nearest(p).Depth : 0;var e=Environment(p);foreach(var s in data.NaturalSources)if(s.ResourceRule==rule && s.Matches(e,underground,depth))return true;return false;}
-        public bool Renewable(int rule){foreach(var s in data.NaturalSources)if(s.Enabled && s.ResourceRule==rule && s.NaturalRecovery)return true;return false;}
+        {if(!Walkable(p,.6f) || p.magnitude<7 || RoadDistance(p)<2.5f)return false;var underground=Underground(p);var depth=underground ? CaveAt(p).Nearest(p).Depth : 0;var e=Environment(p);foreach(var s in data.NaturalSources)if(s.MinimumGenerationVersion<=GenerationVersion && s.ResourceRule==rule && s.Matches(e,underground,depth))return true;return false;}
+        public bool Renewable(int rule){foreach(var s in data.NaturalSources)if(s.Enabled && s.MinimumGenerationVersion<=GenerationVersion && s.ResourceRule==rule && s.NaturalRecovery)return true;return false;}
         public List<ResourcePlacement> GenerateChunk(WorldChunk chunk)
         {
             var result=new List<ResourcePlacement>();var origin=chunk.Origin(data.ChunkSize);
-            foreach(var p in GuaranteedResources)if(!p.Id.StartsWith("e") && WorldChunk.At(p.Position,data.ChunkSize).Equals(chunk))result.Add(p);
-            for(var phase=0;phase<2;phase++)for(var rule=0;rule<data.NaturalSources.Length;rule++)
+            foreach(var p in GuaranteedResources)if(!p.Id.StartsWith("e") && !p.Id.StartsWith("iii:") && WorldChunk.At(p.Position,data.ChunkSize).Equals(chunk))result.Add(p);
+            for(var phase=0;phase<3;phase++)for(var rule=0;rule<data.NaturalSources.Length;rule++)
             {
-                var source=data.NaturalSources[rule];if(!source.Enabled || source.ResourceRule<0 || source.VegetationStream!=(phase==1))continue;var rng=new System.Random(WorldSeeds.Derive(seed,source.VegetationStream ? SeedDomain.Vegetation : SeedDomain.Resource,chunk.X,chunk.Y,WorldSeeds.StableText(source.SourceId)));
+                var source=data.NaturalSources[rule];if(!source.Enabled || source.MinimumGenerationVersion>GenerationVersion || source.ResourceRule<0 || (phase==2 ? source.MinimumGenerationVersion<3 : source.MinimumGenerationVersion>=3 || source.VegetationStream!=(phase==1)))continue;var rng=new System.Random(WorldSeeds.Derive(seed,source.VegetationStream ? SeedDomain.Vegetation : SeedDomain.Resource,chunk.X,chunk.Y,WorldSeeds.StableText(source.SourceId)));
                 for(var i=0;i<source.CandidatesPerChunk;i++)
                 {var p=origin+new Vector2((float)rng.NextDouble(),(float)rng.NextDouble())*data.ChunkSize;var under=Underground(p);if(!Contains(p))continue;var e=Environment(p);var depth=under ? CaveAt(p).Nearest(p).Depth : 0;if(!source.Matches(e,under,depth) || !SourceAllowed(source.ResourceRule,p) || rng.NextDouble()>source.Probability)continue;
                     if(rng.NextDouble()>source.Density(e))continue;
                     var clear=true;foreach(var r in result)if((r.Position-p).sqrMagnitude<source.MinimumSpacing*source.MinimumSpacing){clear=false;break;}if(!clear)continue;
                     result.Add(new ResourcePlacement(source.ResourceRule,p,Mathf.Lerp(.9f,1.1f,(float)rng.NextDouble()),"c"+chunk.X+":"+chunk.Y+":"+source.SourceId+":"+i));}
             }
-            foreach(var p in GuaranteedResources)if(p.Id.StartsWith("e") && WorldChunk.At(p.Position,data.ChunkSize).Equals(chunk))result.Add(p);
+            foreach(var p in GuaranteedResources)if((p.Id.StartsWith("e") || p.Id.StartsWith("iii:")) && WorldChunk.At(p.Position,data.ChunkSize).Equals(chunk))result.Add(p);
             return result;
         }
         private void GenerateAnchors()
