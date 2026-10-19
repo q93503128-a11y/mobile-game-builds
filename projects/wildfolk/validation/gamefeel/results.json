@@ -1,0 +1,144 @@
+{
+  "status": "implementation_and_validation_complete",
+  "start_remote_main": "ab6a464bfd0965d3b1526142eb2b9567adc554d5",
+  "readiness": "A: no identified Workbench III structural blocker; device/audio/remote cooperation validation remains",
+  "save_version": 9,
+  "protocol_version": 11,
+  "runs": {
+    "gamefeel-edit": {
+      "result": "Passed",
+      "total": "133",
+      "passed": "133",
+      "failed": "0",
+      "skipped": "0",
+      "duration": "38.5277387",
+      "start-time": "2026-10-19 00:48:18Z",
+      "end-time": "2026-10-19 00:48:57Z",
+      "failed_cases": []
+    },
+    "gamefeel-play": {
+      "result": "Failed(Child)",
+      "total": "130",
+      "passed": "105",
+      "failed": "25",
+      "skipped": "0",
+      "duration": "892.7811396",
+      "start-time": "2026-10-19 00:50:59Z",
+      "end-time": "2026-10-19 01:05:52Z",
+      "failed_cases": [
+        "Wildfolk.Tests.FrontendPlayTests.SharedSettingsAndBilingualLabelsSurviveSceneChanges",
+        "Wildfolk.Tests.GamefeelPlayTests.DeathDisablesCollisionImmediatelyPaysOnceAndRestoresPooledAppearance",
+        "Wildfolk.Tests.GamefeelPlayTests.SchedulerRunsJobsButNotDisabledFacilitiesAndResumesAfterCollect",
+        "Wildfolk.Tests.GameplayPlayTests.HotbarInventoryAndToolsShareRealSlotsAndApplyResourceEfficiencies",
+        "Wildfolk.Tests.GameplayPlayTests.PunchesAlternateAndResourcesDropBeforeInventoryPickupAndStack",
+        "Wildfolk.Tests.MetalRenderPlayTests.NaturalOreViewsAndFiveMaterialWorkbenchLayoutAt1920By1080",
+        "Wildfolk.Tests.NeedsCookingPlayTests.OneNeutralMeatSourceDropsRawWithoutAddingAnEnemyType",
+        "Wildfolk.Tests.NetworkCreaturePlayTests.HostTargetsLivingPlayersAndLaunchesOneAuthoritativeProjectile",
+        "Wildfolk.Tests.NetworkFacilityPlayTests.CampfireMeatAndWaterRemainSharedAfterActorRetires",
+        "Wildfolk.Tests.NetworkFacilityPlayTests.ChestWithdrawDepositSplitStaleAndFullBagHaveNoLoss",
+        "Wildfolk.Tests.NetworkFacilityPlayTests.ExistingUiUsesSharedChestAndHandCraftingWithLocalActorBindings",
+        "Wildfolk.Tests.NetworkFacilityPlayTests.FurnaceQueueAndCompletionRacesKeepOutputAndReservedInputs",
+        "Wildfolk.Tests.NetworkFacilityPlayTests.HandCraftAtomicityAndWorkbenchUpgradeCommitOnce",
+        "Wildfolk.Tests.NetworkFacilityPlayTests.SteelUsesSeparateHostFacilityAndReservationsCommitOnce",
+        "Wildfolk.Tests.NetworkFoundationPlayTests.LocalHostSpawnsAuthoritativePlayerWithoutSingleplayerSaveService",
+        "Wildfolk.Tests.NetworkItemPlayTests.CreatureLootAndNearbySessionRewardsCommitExactlyOnce",
+        "Wildfolk.Tests.NetworkItemPlayTests.ExistingInventoryUiSplitsMovesSelectsAndEquipsThroughHost",
+        "Wildfolk.Tests.NetworkItemPlayTests.OreValidationPublishesOnlyAcceptedHitsAndFinalHitSpawnsLootExactlyOnce",
+        "Wildfolk.Tests.NetworkItemPlayTests.PickupRaceFullBagDropReplayAndRetiredPlayerCannotDuplicate",
+        "Wildfolk.Tests.NetworkItemPlayTests.SharedResourceFinalHitDropsOnceAndRecoversWithNewIdentity",
+        "Wildfolk.Tests.ProgressionPlayTests.OreRequiresStonePickaxeAndDropsRealOreAfterValidHits",
+        "Wildfolk.Tests.StabilityPlayTests.EveryBasicWeaponHitsExactlyOneForwardTarget",
+        "Wildfolk.Tests.StabilityPlayTests.RegionalRecoveryKeepsDestroyedIdentityAndExclusionsAcrossSave",
+        "Wildfolk.Tests.SurvivalLoopPlayTests.BareHandsToPlacedWorkbenchToCraftedToolsAndSwordThroughActualUI",
+        "Wildfolk.Tests.WorldPassPlayTests.FurnaceSequentialQueuePreservesFinishedAndReservedCargoWhenDestroyed"
+      ]
+    },
+    "gamefeel-recheck": {
+      "result": "Failed(Child)",
+      "total": "34",
+      "passed": "31",
+      "failed": "3",
+      "skipped": "0",
+      "duration": "288.9673275",
+      "start-time": "2026-10-19 01:12:50Z",
+      "end-time": "2026-10-19 01:17:39Z",
+      "failed_cases": [
+        "Wildfolk.Tests.NeedsCookingPlayTests.OneNeutralMeatSourceDropsRawWithoutAddingAnEnemyType",
+        "Wildfolk.Tests.StabilityPlayTests.EveryBasicWeaponHitsExactlyOneForwardTarget",
+        "Wildfolk.Tests.SurvivalLoopPlayTests.BareHandsToPlacedWorkbenchToCraftedToolsAndSwordThroughActualUI"
+      ]
+    },
+    "gamefeel-final-play": {
+      "result": "Skipped:Ignored",
+      "total": "7",
+      "passed": "6",
+      "failed": "0",
+      "skipped": "1",
+      "duration": "112.1925175",
+      "start-time": "2026-10-19 01:20:48Z",
+      "end-time": "2026-10-19 01:22:41Z",
+      "failed_cases": []
+    },
+    "gamefeel-final-edit": {
+      "result": "Passed",
+      "total": "133",
+      "passed": "133",
+      "failed": "0",
+      "skipped": "0",
+      "duration": "42.529573",
+      "start-time": "2026-10-19 04:59:55Z",
+      "end-time": "2026-10-19 05:00:38Z",
+      "failed_cases": []
+    }
+  },
+  "compile_errors": 0,
+  "source_validator": {
+    "result": "Passed",
+    "unique_asset_guids": 996,
+    "checks": [
+      "Landscape",
+      "source structure",
+      "sprite references",
+      "prohibited visible text"
+    ]
+  },
+  "play_result_interpretation": "Initial full suite plus failed/changed-case rechecks; latest-per-case results are not a full final-source regression run.",
+  "latest_play_case_totals": {
+    "passed": 131,
+    "failed": 0,
+    "skipped": 1
+  },
+  "skipped_case": "MetalRenderPlayTests.NaturalOreViewsAndFiveMaterialWorkbenchLayoutAt1920By1080: requires graphics, batch runner uses Null Graphics",
+  "actual_unity_play": {
+    "resolution": "1920x1080",
+    "required_scenarios": "1-38 exercised via commands, UI callbacks/drag handlers and isolated fixtures; see mcp-play.tsv and mcp-followup.json",
+    "host": "local Host only; final restored furnace output3/waiting0 and Take yields3 ingots; Lantern preserved",
+    "fixtures": [
+      "fresh isolated generation2 seed9472026",
+      "teleport and tool/material grants",
+      "cleared path and stationary/emerged enemy",
+      "direct player damage",
+      "processing time advance",
+      "0.1x death presentation inspection, restored1x"
+    ],
+    "not_verified": [
+      "Windows mouse/touch input",
+      "mobile device/notch matrix",
+      "4 remote players/Relay",
+      "long survival/balance/fun",
+      "actual Audio/Haptic assets",
+      "remote multi-client fishing visual timing"
+    ]
+  },
+  "timing": {
+    "timezone": "UTC",
+    "prior_measured_work_window": "2026-10-19 00:34:29–01:22:41; 48m12s, through last batch finish; pause closure not separately measured",
+    "audit": "00:34:29–00:40:03;5m34s",
+    "initial_implementation": "00:40:03–00:46:57;6m54s",
+    "integrated_checks_Play_corrections_docs": "00:46:57–01:22:41;35m44s",
+    "resume_started": "2026-10-19 04:57:01",
+    "finalized_validation_at": "2026-10-19T05:01:06.551798+00:00",
+    "note": "User-requested pause gap excluded. Batch engine durations overlap work phases and must not be added to wall time.",
+    "resume_final_checks_docs": "04:57:01–05:01:07;4m06s"
+  }
+}

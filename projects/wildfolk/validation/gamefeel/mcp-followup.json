@@ -1,0 +1,53 @@
+{
+  "SP_load": {
+    "isolated": true,
+    "utility": "lantern",
+    "compass": true,
+    "source": "MCP queried after SceneFlow reload; initial coroutine destroyed with old scene, explicit followup query"
+  },
+  "camera": {
+    "fresh_generation": 2,
+    "enter": true,
+    "exit": true,
+    "after_camera_distance": 0,
+    "active_chunks": 9,
+    "screenshots": [
+      "11-cave-camera-after.png",
+      "12-cave-exit-after.png"
+    ]
+  },
+  "death": {
+    "fixture": "stationary, fully emerged Zombie; command attacks; final pose at 0.1x time for inspection, then restored to1x",
+    "first_hp": 40,
+    "after_hit_hp": 4,
+    "final_last_hit_count": 1,
+    "final_applied_damage": 4,
+    "pooled_after_death": true
+  },
+  "host_initial": {
+    "isolated": true,
+    "lantern_equipped": true,
+    "save": true,
+    "furnace_input": 3,
+    "waiting": 2,
+    "fixture": "processor disabled before queue/save"
+  },
+  "first_rehost": {
+    "player_spawned": true,
+    "utility": "lantern",
+    "output": 0,
+    "waiting": 2,
+    "finding": "restore before NetworkObject spawn did not register scheduler; fixed NetworkFacility.OnNetworkSpawn; resolved by final_rehost below"
+  },
+  "final_rehost": {
+    "spawned": true,
+    "utility": "lantern",
+    "furnace_output": 3,
+    "waiting": 0,
+    "opened_ui": true,
+    "overlay": true,
+    "take": true,
+    "inventory_iron_ingot": 3,
+    "source": "actual Unity MCP queries and 19-rehost-final.png after OnNetworkSpawn registration correction"
+  }
+}

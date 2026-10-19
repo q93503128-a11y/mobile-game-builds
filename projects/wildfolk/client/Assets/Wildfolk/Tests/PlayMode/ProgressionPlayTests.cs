@@ -81,7 +81,7 @@ namespace Wildfolk.Tests
             inventory.SelectSlot(0);yield return null;yield return input.Click(hud.Attack);yield return new WaitForSeconds(.8f);Assert.That(ore.Health.Current,Is.EqualTo(hp));
             inventory.SelectSlot(1);yield return null;yield return input.Click(hud.Attack);yield return new WaitForSeconds(.65f);Assert.That(ore.Health.Current,Is.EqualTo(hp-30));
             inventory.SelectSlot(2);yield return null;yield return input.Click(hud.Attack);yield return new WaitForSeconds(.55f);Assert.That(ore==null,Is.True);
-            var drop=Object.FindFirstObjectByType<WorldPickup>();Assert.That(drop.Item.Id,Is.EqualTo("iron_ore"));Assert.That(drop.Count,Is.EqualTo(3));
+            var drop=Object.FindFirstObjectByType<WorldPickup>();Assert.That(drop.Item.Id,Is.EqualTo("iron_ore"));Assert.That(drop.Count,Is.EqualTo(6));
         }
         [UnityTest] public IEnumerator FurnaceSmeltsWithProgressAndWorkbenchMakesIronEquipment()
         {

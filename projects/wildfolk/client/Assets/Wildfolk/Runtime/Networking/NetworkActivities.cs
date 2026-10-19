@@ -14,6 +14,8 @@ namespace Wildfolk
         public readonly NetworkVariable<ActivityState> Activity=new NetworkVariable<ActivityState>();
         public void Publish(ActivityKind kind,Vector2 point,float duration)
         {if(IsSpawned && IsServer)Activity.Value=new ActivityState{Sequence=Activity.Value.Sequence+1,Kind=kind,Point=point,Started=NetworkManager.ServerTime.Time,Duration=duration};}
-        private void LateUpdate(){if(!IsSpawned || IsServer || Activity.Value.Kind!=ActivityKind.Ranged)return;var s=Activity.Value;var elapsed=(float)(NetworkManager.ServerTime.Time-s.Started);var item=GetComponent<PlayerEquipment>().SelectedItem;if(item!=null && item.Ranged!=null && elapsed>=0 && elapsed<s.Duration)GetComponent<PlayerRanged>().Present(elapsed,item.Ranged);}
+        private PlayerEquipment equipment;private PlayerRanged ranged;
+        private void Awake(){equipment=GetComponent<PlayerEquipment>();ranged=GetComponent<PlayerRanged>();}
+        private void LateUpdate(){if(!IsSpawned || IsServer || Activity.Value.Kind!=ActivityKind.Ranged)return;var s=Activity.Value;var elapsed=(float)(NetworkManager.ServerTime.Time-s.Started);var item=equipment.SelectedItem;if(item!=null && item.Ranged!=null && elapsed>=0 && elapsed<s.Duration)ranged.Present(elapsed,item.Ranged);}
     }
 }

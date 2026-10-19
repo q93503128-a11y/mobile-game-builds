@@ -33,3 +33,7 @@ Editor 전용 ExplorationProfiler.Begin(stage, frameCount, moveX, moveY)는 Unit
 ## Workbench I–II Content Expansion (2026-10-18)
 
 ContentExpansionAssets는 기존 scene IDs를 보존하는 콘텐츠 authoring이다. RefreshBindings는 player 행동/Utility UI 참조만 갱신한다. IsolatedQaProfile.Begin은 Play 전에 별도 Captures 디렉터리를 선택하고 기본 설정/멀티 식별자를 격리한다. End는 Play 중지 후 호출한다. ContentExpansionQa는 격리 확인을 통과한 Editor fixture API다.
+
+## Gamefeel 통합 검수
+
+Editor 전용 `GamefeelQa.Begin()`은 fresh isolated Play에서 command/UI callback/drag handler 흐름을 기록한다. `Resume()`은 준비된 QA 월드에서 전투 이후 checkpoint를 실행한다. ContentExpansionQa.Prepare가 격리 profile/repository를 검사한다. Resource teleport/아이템 지급/정지 표적/시설 Advance를 사용하며 자연 progression/사람의 터치 검수와 다르다. SceneFlow.Load가 이전 coroutine을 종료하므로 로드 후 상태는 MCP로 별도 조회한다. `Captures/gamefeel/play.tsv`와 snapshot을 저장하고 정본 요약은 validation/gamefeel에 선별한다. 실제 저장/설정은 사용하지 않는다.

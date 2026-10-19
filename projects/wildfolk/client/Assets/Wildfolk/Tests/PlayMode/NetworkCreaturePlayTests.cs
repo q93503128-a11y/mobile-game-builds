@@ -19,7 +19,7 @@ namespace Wildfolk.Tests
             session.NewWorldGenerationVersion=1;session.WorldRepository=new SaveRepository(System.IO.Path.Combine(Application.temporaryCachePath,"lowfire-legacy-creature-"+System.Guid.NewGuid().ToString("N"),"world.json"));session.ProfileOverride=System.Guid.NewGuid().ToString("N");
             var task=session.Host(ConnectionRoute.LocalNetwork);for(var i=0;i<300 && !task.IsCompleted;i++)yield return null;
             Assert.That(task.IsCompleted && task.Result,Is.True,session.LastFailure);Assert.That(session.EnterGame(),Is.True);
-            for(var i=0;i<300;i++){yield return null;player=Object.FindFirstObjectByType<NetworkPlayer>();if(player!=null && player.IsSpawned)break;}
+            for(var i=0;i<300;i++){yield return new WaitForSecondsRealtime(.02f);player=Object.FindFirstObjectByType<NetworkPlayer>();if(player!=null && player.IsSpawned)break;}
             Assert.That(player,Is.Not.Null);world=NetworkCreatureWorld.Active;Assert.That(world,Is.Not.Null);
             player.GetComponent<PlayerInputAdapter>().enabled=false;player.Commands.SetMove(Vector2.zero);
             world.Goblins.enabled=world.Night.enabled=world.Animals.enabled=world.Clock.enabled=false;

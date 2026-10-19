@@ -16,6 +16,7 @@ namespace Wildfolk.Editor
             for(var i=0;i<view.Slots.Length;i++){var slot=Slot(hotbar,i,94,true);((RectTransform)slot.transform).anchoredPosition=new Vector2((i-4)*102,0);view.Slots[i]=slot.GetComponent<InventorySlotView>();UnityEventTools.AddIntPersistentListener(Button(slot).onClick,view.Select,i);}
             var ui=root.AddComponent<NetworkInventoryUi>();var bag=Image("Inventory",rect,"panel",new Vector2(.5f,0),new Vector2(-459,102),new Vector2(94,94),true);Image("Backpack",bag.transform,"icon_inventory",new Vector2(.5f,.5f),Vector2.zero,new Vector2(62,62));bag.transform.SetAsFirstSibling();ui.Bag=Button(bag);
             ui.Wallet=Text("Session Rewards",rect,"",new Vector2(-580,355),new Vector2(650,44),24,UnityEngine.TextAnchor.MiddleLeft);ui.Wallet.transform.SetAsFirstSibling();
+            var feedback=root.AddComponent<PlayerFeedback>();feedback.Label=Text("Message",rect,"",new Vector2(0,432),new Vector2(940,52),26);feedback.Label.raycastTarget=false;
             return ui;
         }
     }

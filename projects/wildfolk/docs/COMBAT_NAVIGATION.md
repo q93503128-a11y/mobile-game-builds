@@ -40,3 +40,7 @@ Door는 왼쪽 Hinge/고정 Frame/0.32초 easing으로 열린다. Collider는 ea
 ## Workbench I–II Content Expansion (2026-10-18)
 
 출시 알파 무기군은 Sword/Spear/Bow/Crossbow 네 개다. Spear는 기존 melee의 긴 Range/좁은 Arc/큰 thrust 데이터다. Bow와 Crossbow는 하나의 PlayerRanged와 기존 projectile을 공유한다. Bow→Reinforced Bow는 이전 Bow를 소비하고 Crossbow는 별개다. 기본 Arrow/Bolt는 renewable 재료, 고급탄은 Bronze/Steel 선택 소비다. 실제 공격력·초당 공격·Range를 UI에 표시한다. [수치·Recipe](CONTENT_EXPANSION.md).
+
+## 통합 감사 교정 (2026-10-19)
+
+SP/Host death는 같은 HitFeedback settle을 사용하며 총0.35초 후 pooling/despawn한다. 보상은 lethal 시점에 확정하며 collider와 AI/lifecycle은 즉시 중지한다. 자연 burrow/despawn은 여전히 보상 없이 별도 경로다. 피격0.16초는 event-start coroutine으로 보존했다. CameraFollow는 초기 화면/지역 bounds 변경/화면 폭 초과 불연속 이동만 snap하고 일반 이동은 기존 SmoothDamp를 유지한다. 세부 근거와 검수 한계는 GAMEFEEL_AUDIT를 따른다.

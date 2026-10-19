@@ -14,7 +14,7 @@ namespace Wildfolk
         private ulong sequence,pending,lastRequest;
         private uint waitBag,waitFacility;
         private NetworkFacility waiting,opened;
-        private bool acknowledged;
+        private bool acknowledged;private RecipeDefinition pendingRecipe;
         private uint dragBag,dragFacility;
         public void CaptureTransferState(){dragBag=Bag.Revision.Value;dragFacility=Storage.Chest==null ? 0 : Storage.Chest.GetComponent<NetworkFacility>().Revision.Value;}
         private void Awake(){Bag=GetComponent<NetworkInventory>();Crafting=GetComponent<PlayerCrafting>();Storage=GetComponent<PlayerStorage>();}
@@ -46,8 +46,8 @@ namespace Wildfolk
             var id=facility==null ? ulong.MaxValue : facility.NetworkObjectId;var revision=facility==null ? 0 : facility.Revision.Value;var index=recipe==null ? -1 : Array.IndexOf(Bag.Player.Catalog.Recipes,recipe);
             var usingDrag=op==FacilityOperation.Transfer || op==FacilityOperation.Drop;
             var bagRevision=usingDrag ? dragBag : Bag.Revision.Value;if(usingDrag)revision=dragFacility;
-            if(IsServer)return Execute(op,id,bagRevision,revision,index,from,to,amount,sides);
-            pending=++sequence;acknowledged=false;waiting=facility;RequestRpc(pending,op,id,bagRevision,revision,index,from,to,amount,sides);return true;
+            if(IsServer){var result=Execute(op,id,bagRevision,revision,index,from,to,amount,sides);PresentResult(op,recipe,result);return result;}
+            pendingRecipe=recipe;pending=++sequence;acknowledged=false;waiting=facility;RequestRpc(pending,op,id,bagRevision,revision,index,from,to,amount,sides);return true;
         }
         [Rpc(SendTo.Server,InvokePermission=RpcInvokePermission.Owner)]
         private void RequestRpc(ulong request,FacilityOperation op,ulong id,uint bagRevision,uint facilityRevision,int recipe,int from,int to,int amount,byte sides,RpcParams rpc=default)
@@ -61,7 +61,15 @@ namespace Wildfolk
         {
             if(pending!=request)return;waitBag=bagRevision;waitFacility=facilityRevision;acknowledged=true;
             if(op==FacilityOperation.Open && success){IsApplying=true;try{ApplyOpen(Resolve(id));}finally{IsApplying=false;}}
-            if(!success)PlayerFeedback.ShowKey("feedback.slot_space");FinishPending();
+            if(!success)PlayerFeedback.ShowKey("feedback.slot_space");else PresentResult(op,pendingRecipe,true);FinishPending();
+        }
+        private static void PresentResult(FacilityOperation op,RecipeDefinition recipe,bool success)
+        {
+            if(!success)return;
+            if(op==FacilityOperation.Upgrade)PlayerFeedback.ShowOperation(PlayerFeedback.Cue.Upgraded);
+            else if(op==FacilityOperation.Collect)PlayerFeedback.ShowOperation(PlayerFeedback.Cue.Collected);
+            else if(op==FacilityOperation.AddOne || op==FacilityOperation.AddAll)PlayerFeedback.ShowOperation(PlayerFeedback.Cue.Processing);
+            else if(op==FacilityOperation.Craft && recipe!=null){if(recipe.ProcessingSeconds>0)PlayerFeedback.ShowOperation(PlayerFeedback.Cue.Processing);else PlayerFeedback.ShowCrafted(recipe);}
         }
         // Only the requesting owner checks receipt; facilities have no network polling loop.
         private void Update(){if(acknowledged)FinishPending();}

@@ -1,0 +1,530 @@
+{
+  "Wildfolk.Tests.CharacterPassPlayTests.ArmorBothSlotsReduceDamagePreserveMinimumAndSurvivalBypass": {
+    "result": "Passed",
+    "run": "gamefeel-play"
+  },
+  "Wildfolk.Tests.CharacterPassPlayTests.CraftingCategoriesAndCraftableFilterReflectActualRecipes": {
+    "result": "Passed",
+    "run": "gamefeel-play"
+  },
+  "Wildfolk.Tests.CharacterPassPlayTests.DashCannotCrossDeepWaterAndCannotRunWithInventoryOrPauseOpen": {
+    "result": "Passed",
+    "run": "gamefeel-play"
+  },
+  "Wildfolk.Tests.CharacterPassPlayTests.DashUsesFacingAndMovementDirectionCostsStaminaAndStopsAtWall": {
+    "result": "Passed",
+    "run": "gamefeel-play"
+  },
+  "Wildfolk.Tests.CharacterPassPlayTests.DeveloperProfilesUseCurrentDataRemainEditorOnlyAndDashButtonRuns": {
+    "result": "Passed",
+    "run": "gamefeel-play"
+  },
+  "Wildfolk.Tests.CharacterPassPlayTests.GrowthSkillsEquipmentAndStaminaSurviveValidatedSaveRoundTrip": {
+    "result": "Passed",
+    "run": "gamefeel-play"
+  },
+  "Wildfolk.Tests.CharacterPassPlayTests.ProfileOpensIndependentTreeAndInventoryOwnsEquipment": {
+    "result": "Passed",
+    "run": "gamefeel-play"
+  },
+  "Wildfolk.Tests.CharacterPassPlayTests.SprintThroughInputDrainsStopsAtCriticalNeedsAndHUDHidesAfterRecovery": {
+    "result": "Passed",
+    "run": "gamefeel-play"
+  },
+  "Wildfolk.Tests.CharacterPassPlayTests.V1MigrationPreservesWorldInventoryAndOldXPWithoutForcingNewGame": {
+    "result": "Passed",
+    "run": "gamefeel-play"
+  },
+  "Wildfolk.Tests.CharacterPassPlayTests.WorkbenchUpgradeKeepsTierIRecipesAndPersistsTierIIChestContents": {
+    "result": "Passed",
+    "run": "gamefeel-play"
+  },
+  "Wildfolk.Tests.ContentExpansionHostTests.FishingContainerUtilityAndNewBuildingsPersistThroughHostAuthority": {
+    "result": "Passed",
+    "run": "gamefeel-play"
+  },
+  "Wildfolk.Tests.ContentExpansionPlayTests.BowCrossbowConsumeMatchingAmmoAndHitEnemyWithoutMelee": {
+    "result": "Passed",
+    "run": "gamefeel-recheck"
+  },
+  "Wildfolk.Tests.ContentExpansionPlayTests.FishingRequiresNaturalWaterBiteAndSingleAuthoritativeReward": {
+    "result": "Passed",
+    "run": "gamefeel-final-play"
+  },
+  "Wildfolk.Tests.ContentExpansionPlayTests.GatesCollideOpenAndTrapRespectsTeamAndCooldown": {
+    "result": "Passed",
+    "run": "gamefeel-recheck"
+  },
+  "Wildfolk.Tests.ContentExpansionPlayTests.LanternHandsFreeAndCookingPotQueueSurviveValidatedSaveLoad": {
+    "result": "Passed",
+    "run": "gamefeel-recheck"
+  },
+  "Wildfolk.Tests.ContentExpansionPlayTests.WaterskinThreeUsesChestDropAndSavePreserveQuality": {
+    "result": "Passed",
+    "run": "gamefeel-recheck"
+  },
+  "Wildfolk.Tests.EcologyPlayTests.ActualPointerArmorDragSwapUnequipAndUse": {
+    "result": "Passed",
+    "run": "gamefeel-play"
+  },
+  "Wildfolk.Tests.EcologyPlayTests.AnimalsSeparateSoftlyAndHerdAlertStaysLocal": {
+    "result": "Passed",
+    "run": "gamefeel-play"
+  },
+  "Wildfolk.Tests.EcologyPlayTests.CampPopulationRefillsNewResidentsAndPersists": {
+    "result": "Passed",
+    "run": "gamefeel-play"
+  },
+  "Wildfolk.Tests.EcologyPlayTests.CombatSandboxDoesNotCreateDetachedBrownBodyRenderers": {
+    "result": "Passed",
+    "run": "gamefeel-play"
+  },
+  "Wildfolk.Tests.EcologyPlayTests.DoorHingeEasesAndColliderMatchesPassageAndSave": {
+    "result": "Passed",
+    "run": "gamefeel-play"
+  },
+  "Wildfolk.Tests.EcologyPlayTests.ModalLayerIsCenteredAndBlocksBagAndGameplay": {
+    "result": "Passed",
+    "run": "gamefeel-play"
+  },
+  "Wildfolk.Tests.EcologyPlayTests.PointBlankAndFacingMatrixForFistAxePickaxeSword": {
+    "result": "Passed",
+    "run": "gamefeel-play"
+  },
+  "Wildfolk.Tests.EcologyPlayTests.RegionalAnimalRecoveryUsesNewIdsAndRoundTripsGroups": {
+    "result": "Passed",
+    "run": "gamefeel-play"
+  },
+  "Wildfolk.Tests.EcologyPlayTests.SkeletonUsesNightMeleeVariantAndIndependentLightTrait": {
+    "result": "Passed",
+    "run": "gamefeel-play"
+  },
+  "Wildfolk.Tests.EcologyPlayTests.SlingshotDrawReleaseProjectileDamageAndBoundedReposition": {
+    "result": "Passed",
+    "run": "gamefeel-play"
+  },
+  "Wildfolk.Tests.EcologyPlayTests.V3LoadPreservesOldAnimalsEquipmentDoorAndWorld": {
+    "result": "Passed",
+    "run": "gamefeel-play"
+  },
+  "Wildfolk.Tests.EcologyPlayTests.WarbandAssistIsBoundedAndRangedCountVaries": {
+    "result": "Passed",
+    "run": "gamefeel-play"
+  },
+  "Wildfolk.Tests.ExplorationHostTests.TorchAuthorityAtomicityFourRegionUnionAndHomeRehost": {
+    "result": "Passed",
+    "run": "gamefeel-play"
+  },
+  "Wildfolk.Tests.ExplorationPlayTests.CaveReadableFloorTorchAndExitBearingRemainDistinctFromHome": {
+    "result": "Passed",
+    "run": "gamefeel-play"
+  },
+  "Wildfolk.Tests.ExplorationPlayTests.HomeAndPlacedTorchSurviveSleepSaveLoadAndWorkbenchUpgrade": {
+    "result": "Passed",
+    "run": "gamefeel-play"
+  },
+  "Wildfolk.Tests.ExplorationPlayTests.TerrainBudgetCacheAndMineralTombstoneRemainBounded": {
+    "result": "Passed",
+    "run": "gamefeel-play"
+  },
+  "Wildfolk.Tests.ExplorationPlayTests.TorchCraftHeldMovementPlacementAndValidationShareOneItem": {
+    "result": "Passed",
+    "run": "gamefeel-play"
+  },
+  "Wildfolk.Tests.FrontendPlayTests.ActualButtonsStartSaveReturnConfirmCancelAndContinueWithoutDuplicateServices": {
+    "result": "Passed",
+    "run": "gamefeel-play"
+  },
+  "Wildfolk.Tests.FrontendPlayTests.EmptyAndCorruptSaveDisableContinueAndBackupIsValidated": {
+    "result": "Passed",
+    "run": "gamefeel-play"
+  },
+  "Wildfolk.Tests.FrontendPlayTests.HomeIdleKeepsStaticUiAndNoGameplaySimulation": {
+    "result": "Passed",
+    "run": "gamefeel-play"
+  },
+  "Wildfolk.Tests.FrontendPlayTests.SharedSettingsAndBilingualLabelsSurviveSceneChanges": {
+    "result": "Passed",
+    "run": "gamefeel-recheck"
+  },
+  "Wildfolk.Tests.GamefeelPlayTests.DeathDisablesCollisionImmediatelyPaysOnceAndRestoresPooledAppearance": {
+    "result": "Passed",
+    "run": "gamefeel-recheck"
+  },
+  "Wildfolk.Tests.GamefeelPlayTests.SchedulerRunsJobsButNotDisabledFacilitiesAndResumesAfterCollect": {
+    "result": "Passed",
+    "run": "gamefeel-recheck"
+  },
+  "Wildfolk.Tests.GamefeelPlayTests.WorkbenchDetailsDoNotOverlapUpgradeRequirementsAndModalBlocksMovement": {
+    "result": "Passed",
+    "run": "gamefeel-recheck"
+  },
+  "Wildfolk.Tests.GameplayPlayTests.BossHudBindsRealHealthAndUnbindsWithoutLeavingFakeBoss": {
+    "result": "Passed",
+    "run": "gamefeel-play"
+  },
+  "Wildfolk.Tests.GameplayPlayTests.DefeatCanRestartThroughActualUIButton": {
+    "result": "Passed",
+    "run": "gamefeel-play"
+  },
+  "Wildfolk.Tests.GameplayPlayTests.EnemyTelegraphsDamagesWithoutPhysicsPushAndDiesToAttackInput": {
+    "result": "Passed",
+    "run": "gamefeel-play"
+  },
+  "Wildfolk.Tests.GameplayPlayTests.FacingMovesEyesAndHandsWithoutRotatingBodyAndKeepsLastDirection": {
+    "result": "Passed",
+    "run": "gamefeel-play"
+  },
+  "Wildfolk.Tests.GameplayPlayTests.HotbarInventoryAndToolsShareRealSlotsAndApplyResourceEfficiencies": {
+    "result": "Passed",
+    "run": "gamefeel-recheck"
+  },
+  "Wildfolk.Tests.GameplayPlayTests.InventoryButtonsOpenCloseAndModalBlocksGameplayInput": {
+    "result": "Passed",
+    "run": "gamefeel-play"
+  },
+  "Wildfolk.Tests.GameplayPlayTests.PointerDragMovesDiagonallyReturnsThumbAndCameraFollows": {
+    "result": "Passed",
+    "run": "gamefeel-play"
+  },
+  "Wildfolk.Tests.GameplayPlayTests.PunchesAlternateAndResourcesDropBeforeInventoryPickupAndStack": {
+    "result": "Passed",
+    "run": "gamefeel-recheck"
+  },
+  "Wildfolk.Tests.MetalProgressionPlayTests.BasicRejectsSteelAdvancedNeedsNoNearbyBenchAndCargoSurvivesLoad": {
+    "result": "Passed",
+    "run": "gamefeel-play"
+  },
+  "Wildfolk.Tests.MetalProgressionPlayTests.ChestScrollWheelTouchAndBottomSlotDragPreserveContents": {
+    "result": "Passed",
+    "run": "gamefeel-play"
+  },
+  "Wildfolk.Tests.MetalProgressionPlayTests.RejectedMiningHasZeroDamageProgressLootOrSuccessSignalsAndValidToolHitsOnce": {
+    "result": "Passed",
+    "run": "gamefeel-play"
+  },
+  "Wildfolk.Tests.MetalProgressionPlayTests.UpgradeUiScrollsArbitraryCostsAndPreservesTierAndMetalsAcrossSnapshotLoad": {
+    "result": "Passed",
+    "run": "gamefeel-play"
+  },
+  "Wildfolk.Tests.MetalRenderPlayTests.NaturalOreViewsAndFiveMaterialWorkbenchLayoutAt1920By1080": {
+    "result": "Skipped",
+    "run": "gamefeel-final-play"
+  },
+  "Wildfolk.Tests.NeedsCookingPlayTests.CampfireRecipePlacementCookingProgressAndTakeUseActualButtons": {
+    "result": "Passed",
+    "run": "gamefeel-play"
+  },
+  "Wildfolk.Tests.NeedsCookingPlayTests.ControlSizeLimitsKeepTouchControlsSeparateAndModalCentered": {
+    "result": "Passed",
+    "run": "gamefeel-play"
+  },
+  "Wildfolk.Tests.NeedsCookingPlayTests.DestroyedFireReturnsUncookedInputAndRangeCannotStartCooking": {
+    "result": "Passed",
+    "run": "gamefeel-play"
+  },
+  "Wildfolk.Tests.NeedsCookingPlayTests.FullInventoryKeepsCookedOutputAndDestroyedFireDropsCargo": {
+    "result": "Passed",
+    "run": "gamefeel-play"
+  },
+  "Wildfolk.Tests.NeedsCookingPlayTests.MultiplayerPauseBlocksLocalInputButContinuesWorldNeedsAndEnemy": {
+    "result": "Passed",
+    "run": "gamefeel-play"
+  },
+  "Wildfolk.Tests.NeedsCookingPlayTests.OneNeutralMeatSourceDropsRawWithoutAddingAnEnemyType": {
+    "result": "Passed",
+    "run": "gamefeel-final-play"
+  },
+  "Wildfolk.Tests.NeedsCookingPlayTests.PauseSettingsSlidersApplyToControlsAndRealAudioChannels": {
+    "result": "Passed",
+    "run": "gamefeel-play"
+  },
+  "Wildfolk.Tests.NeedsCookingPlayTests.WaterInteractionAndSelectedConsumptionDoNotWasteFullMeters": {
+    "result": "Passed",
+    "run": "gamefeel-play"
+  },
+  "Wildfolk.Tests.NetworkCreaturePlayTests.HostSpawnGroupCombatAndDeathHaveOneAuthority": {
+    "result": "Passed",
+    "run": "gamefeel-play"
+  },
+  "Wildfolk.Tests.NetworkCreaturePlayTests.HostTargetsLivingPlayersAndLaunchesOneAuthoritativeProjectile": {
+    "result": "Passed",
+    "run": "gamefeel-recheck"
+  },
+  "Wildfolk.Tests.NetworkCreaturePlayTests.LethalReentrantDamageFiresDeathOnceAndPoolResetRestoresSingleplayerHealth": {
+    "result": "Passed",
+    "run": "gamefeel-play"
+  },
+  "Wildfolk.Tests.NetworkCreaturePlayTests.UnspawnedReplicaCannotRunBrainDamageAlertsOrSpawnPopulation": {
+    "result": "Passed",
+    "run": "gamefeel-play"
+  },
+  "Wildfolk.Tests.NetworkFacilityPlayTests.CampfireMeatAndWaterRemainSharedAfterActorRetires": {
+    "result": "Passed",
+    "run": "gamefeel-recheck"
+  },
+  "Wildfolk.Tests.NetworkFacilityPlayTests.ChestWithdrawDepositSplitStaleAndFullBagHaveNoLoss": {
+    "result": "Passed",
+    "run": "gamefeel-recheck"
+  },
+  "Wildfolk.Tests.NetworkFacilityPlayTests.ExistingUiUsesSharedChestAndHandCraftingWithLocalActorBindings": {
+    "result": "Passed",
+    "run": "gamefeel-final-play"
+  },
+  "Wildfolk.Tests.NetworkFacilityPlayTests.FurnaceQueueAndCompletionRacesKeepOutputAndReservedInputs": {
+    "result": "Passed",
+    "run": "gamefeel-recheck"
+  },
+  "Wildfolk.Tests.NetworkFacilityPlayTests.HandCraftAtomicityAndWorkbenchUpgradeCommitOnce": {
+    "result": "Passed",
+    "run": "gamefeel-recheck"
+  },
+  "Wildfolk.Tests.NetworkFacilityPlayTests.SteelUsesSeparateHostFacilityAndReservationsCommitOnce": {
+    "result": "Passed",
+    "run": "gamefeel-recheck"
+  },
+  "Wildfolk.Tests.NetworkFoundationPlayTests.LocalHostSpawnsAuthoritativePlayerWithoutSingleplayerSaveService": {
+    "result": "Passed",
+    "run": "gamefeel-recheck"
+  },
+  "Wildfolk.Tests.NetworkItemPlayTests.CreatureLootAndNearbySessionRewardsCommitExactlyOnce": {
+    "result": "Passed",
+    "run": "gamefeel-recheck"
+  },
+  "Wildfolk.Tests.NetworkItemPlayTests.ExistingInventoryUiSplitsMovesSelectsAndEquipsThroughHost": {
+    "result": "Passed",
+    "run": "gamefeel-recheck"
+  },
+  "Wildfolk.Tests.NetworkItemPlayTests.OreValidationPublishesOnlyAcceptedHitsAndFinalHitSpawnsLootExactlyOnce": {
+    "result": "Passed",
+    "run": "gamefeel-recheck"
+  },
+  "Wildfolk.Tests.NetworkItemPlayTests.PickupRaceFullBagDropReplayAndRetiredPlayerCannotDuplicate": {
+    "result": "Passed",
+    "run": "gamefeel-recheck"
+  },
+  "Wildfolk.Tests.NetworkItemPlayTests.SharedResourceFinalHitDropsOnceAndRecoversWithNewIdentity": {
+    "result": "Passed",
+    "run": "gamefeel-recheck"
+  },
+  "Wildfolk.Tests.NetworkPersistencePlayTests.HostSaveRehostRestoresWorldCargoGroundEcologyAndPlayerWithoutDuplicates": {
+    "result": "Passed",
+    "run": "gamefeel-play"
+  },
+  "Wildfolk.Tests.NetworkPersistencePlayTests.PlacementRaceRollbackAndEveryCurrentBuildingUseExistingDefinitions": {
+    "result": "Passed",
+    "run": "gamefeel-play"
+  },
+  "Wildfolk.Tests.NetworkPersistencePlayTests.RetireAndRejoinSameIdentityRestoreOnceAndRejectConcurrentIdentity": {
+    "result": "Passed",
+    "run": "gamefeel-play"
+  },
+  "Wildfolk.Tests.NetworkPersistencePlayTests.SaveFailureKeepsHostSessionAndCorruptLoadCannotCreateReplacementWorld": {
+    "result": "Passed",
+    "run": "gamefeel-play"
+  },
+  "Wildfolk.Tests.NetworkPersistencePlayTests.WallAdjacencyAndDoorDesiredStateRejectCompetingToggle": {
+    "result": "Passed",
+    "run": "gamefeel-play"
+  },
+  "Wildfolk.Tests.ProgressionPlayTests.ArmorFoundationEquipsOneSlotAndSurvivalDamageBypassesDefense": {
+    "result": "Passed",
+    "run": "gamefeel-play"
+  },
+  "Wildfolk.Tests.ProgressionPlayTests.ChestUITransfersMergesSwapsAndRefreshesEquippedHotbar": {
+    "result": "Passed",
+    "run": "gamefeel-play"
+  },
+  "Wildfolk.Tests.ProgressionPlayTests.ChickenWandersFleesOnApproachAndDoesNotAttack": {
+    "result": "Passed",
+    "run": "gamefeel-play"
+  },
+  "Wildfolk.Tests.ProgressionPlayTests.DoorUseOpensClosesAndRejectsClosingOnAnActor": {
+    "result": "Passed",
+    "run": "gamefeel-play"
+  },
+  "Wildfolk.Tests.ProgressionPlayTests.FurnaceSmeltsWithProgressAndWorkbenchMakesIronEquipment": {
+    "result": "Passed",
+    "run": "gamefeel-play"
+  },
+  "Wildfolk.Tests.ProgressionPlayTests.NightSpawnUsesSameZombieOutsideCameraAndStopsAtCap": {
+    "result": "Passed",
+    "run": "gamefeel-play"
+  },
+  "Wildfolk.Tests.ProgressionPlayTests.OreRequiresStonePickaxeAndDropsRealOreAfterValidHits": {
+    "result": "Passed",
+    "run": "gamefeel-recheck"
+  },
+  "Wildfolk.Tests.ProgressionPlayTests.RecipeScrollCanReachAndCraftStorageChestThroughPointerInput": {
+    "result": "Passed",
+    "run": "gamefeel-play"
+  },
+  "Wildfolk.Tests.ProgressionPlayTests.ZombieIsBlockedByWallAndDealsVisibleHealthDamage": {
+    "result": "Passed",
+    "run": "gamefeel-play"
+  },
+  "Wildfolk.Tests.QualityPlayTests.ArmorAndHandsShareActualWalkingMotionRoot": {
+    "result": "Passed",
+    "run": "gamefeel-play"
+  },
+  "Wildfolk.Tests.QualityPlayTests.FurnaceQueueButtonsReserveReturnCollectAndPersist": {
+    "result": "Passed",
+    "run": "gamefeel-play"
+  },
+  "Wildfolk.Tests.QualityPlayTests.NearStaminaTracksPlayerAndFadesAtFull": {
+    "result": "Passed",
+    "run": "gamefeel-play"
+  },
+  "Wildfolk.Tests.QualityPlayTests.RecipeFirstScreenGroupsAllAndColorsEachIngredient": {
+    "result": "Passed",
+    "run": "gamefeel-play"
+  },
+  "Wildfolk.Tests.QualityPlayTests.SettingsSwitchRefreshesExistingLabelsAndUsesKoreanGlyphs": {
+    "result": "Passed",
+    "run": "gamefeel-play"
+  },
+  "Wildfolk.Tests.QualityPlayTests.V2MigrationKeepsEquipmentLearnedSkillsDestroyedResourcesAndReservedBatch": {
+    "result": "Passed",
+    "run": "gamefeel-play"
+  },
+  "Wildfolk.Tests.ResourceTempoHostTests.AuthorityRecoversDistinctRegionsAndRehostDoesNotDuplicateSavedSources": {
+    "result": "Passed",
+    "run": "gamefeel-play"
+  },
+  "Wildfolk.Tests.ResourceTempoPlayTests.FullHarvestYieldsAndPanPermissionsUseCanonicalNodes": {
+    "result": "Passed",
+    "run": "gamefeel-recheck"
+  },
+  "Wildfolk.Tests.ResourceTempoPlayTests.MineralDebtRecoversElsewhereAndSurvivesSleepSaveReloadWithoutDuplicates": {
+    "result": "Passed",
+    "run": "gamefeel-recheck"
+  },
+  "Wildfolk.Tests.StabilityPlayTests.AnimalRecoveryPersistsRegionalTimerAndCreatesNewIdentityOutsideCamera": {
+    "result": "Passed",
+    "run": "gamefeel-play"
+  },
+  "Wildfolk.Tests.StabilityPlayTests.CupCollectionRawPenaltyBoilingAndReturnedCupWorkTogether": {
+    "result": "Passed",
+    "run": "gamefeel-play"
+  },
+  "Wildfolk.Tests.StabilityPlayTests.EveryBasicWeaponHitsExactlyOneForwardTarget": {
+    "result": "Passed",
+    "run": "gamefeel-final-play"
+  },
+  "Wildfolk.Tests.StabilityPlayTests.FriendlyFilteringAndMultiTargetProfileDoNotBlockHostiles": {
+    "result": "Passed",
+    "run": "gamefeel-play"
+  },
+  "Wildfolk.Tests.StabilityPlayTests.GoblinPersonalSpaceAndSoftSeparationWorkWithoutPlayerPush": {
+    "result": "Passed",
+    "run": "gamefeel-play"
+  },
+  "Wildfolk.Tests.StabilityPlayTests.LongPressSplitHoldsChosenAmountUntilExplicitPlacementOrCancel": {
+    "result": "Passed",
+    "run": "gamefeel-play"
+  },
+  "Wildfolk.Tests.StabilityPlayTests.PointBlankNormalEdgeAndOutsideRespectRange": {
+    "result": "Passed",
+    "run": "gamefeel-play"
+  },
+  "Wildfolk.Tests.StabilityPlayTests.PooledPickupsResetCountsAndReuseWithoutDuplicateRewards": {
+    "result": "Passed",
+    "run": "gamefeel-play"
+  },
+  "Wildfolk.Tests.StabilityPlayTests.RegionalRecoveryKeepsDestroyedIdentityAndExclusionsAcrossSave": {
+    "result": "Passed",
+    "run": "gamefeel-recheck"
+  },
+  "Wildfolk.Tests.StabilityPlayTests.RemoteIdleZombiesReturnSlotsAfterGraceAndThreatMovesToNewRegion": {
+    "result": "Passed",
+    "run": "gamefeel-play"
+  },
+  "Wildfolk.Tests.StabilityPlayTests.SaveReloadRestoresPlayerContainersFacilitiesCargoAndResourceDeltas": {
+    "result": "Passed",
+    "run": "gamefeel-play"
+  },
+  "Wildfolk.Tests.StabilityPlayTests.ShallowTerrainModifierUsesDeviceIndependentMoveCommands": {
+    "result": "Passed",
+    "run": "gamefeel-play"
+  },
+  "Wildfolk.Tests.SurvivalLoopPlayTests.BareHandsToPlacedWorkbenchToCraftedToolsAndSwordThroughActualUI": {
+    "result": "Passed",
+    "run": "gamefeel-final-play"
+  },
+  "Wildfolk.Tests.SurvivalLoopPlayTests.CraftIntoStorageThenDragToHotbarUpdatesPlacementImmediately": {
+    "result": "Passed",
+    "run": "gamefeel-play"
+  },
+  "Wildfolk.Tests.SurvivalLoopPlayTests.InventoryKeepsEnemyAliveWhilePauseHasSeparateWorldPolicy": {
+    "result": "Passed",
+    "run": "gamefeel-play"
+  },
+  "Wildfolk.Tests.SurvivalLoopPlayTests.NewGameStartsWith36EmptySlotsAndOnlyHandCrafting": {
+    "result": "Passed",
+    "run": "gamefeel-play"
+  },
+  "Wildfolk.Tests.SurvivalLoopPlayTests.PointerDragMovesMergesSwapsAndRefreshesEquipmentWithoutReopening": {
+    "result": "Passed",
+    "run": "gamefeel-play"
+  },
+  "Wildfolk.Tests.SurvivalLoopPlayTests.WorkbenchRecipesRequireLiveStationWithinRangeAndCannotLoseItems": {
+    "result": "Passed",
+    "run": "gamefeel-play"
+  },
+  "Wildfolk.Tests.WorldFoundationHostTests.CurrentHostKeepsRemoteChunksCargoOreAndCaveAcrossRehost": {
+    "result": "Passed",
+    "run": "gamefeel-play"
+  },
+  "Wildfolk.Tests.WorldFoundationPlayTests.CavernPortalConnectsSurfaceRoomGraphDeepBranchAndReturn": {
+    "result": "Passed",
+    "run": "gamefeel-play"
+  },
+  "Wildfolk.Tests.WorldFoundationPlayTests.ChunkUnloadPreservesFiniteOreCargoChestAndSaveVersion": {
+    "result": "Passed",
+    "run": "gamefeel-play"
+  },
+  "Wildfolk.Tests.WorldFoundationPlayTests.CurrentMetalLoopAndLegacyLayoutRemainSeparate": {
+    "result": "Passed",
+    "run": "gamefeel-play"
+  },
+  "Wildfolk.Tests.WorldPassPlayTests.ActualGeneratedWorldHasWaterCollisionsFordAndGroundSorting": {
+    "result": "Passed",
+    "run": "gamefeel-play"
+  },
+  "Wildfolk.Tests.WorldPassPlayTests.AttackNeverOpensStationOrChestAndInteractDoes": {
+    "result": "Passed",
+    "run": "gamefeel-play"
+  },
+  "Wildfolk.Tests.WorldPassPlayTests.DawnBurrowsWithoutRewardsAndEmergenceCannotAttack": {
+    "result": "Passed",
+    "run": "gamefeel-play"
+  },
+  "Wildfolk.Tests.WorldPassPlayTests.FurnaceSequentialQueuePreservesFinishedAndReservedCargoWhenDestroyed": {
+    "result": "Passed",
+    "run": "gamefeel-recheck"
+  },
+  "Wildfolk.Tests.WorldPassPlayTests.GoblinPatrolsAggrosOnlyOnTerritoryOrHitAndGivesSeparateRewards": {
+    "result": "Passed",
+    "run": "gamefeel-play"
+  },
+  "Wildfolk.Tests.WorldPassPlayTests.SafeLightBlocksNewAggroAndEndsExistingPursuitAfterGrace": {
+    "result": "Passed",
+    "run": "gamefeel-play"
+  },
+  "Wildfolk.Tests.WorldPassPlayTests.SplitHalfViaTouchButtonAndExplicitDropZonePreserveItems": {
+    "result": "Passed",
+    "run": "gamefeel-play"
+  },
+  "Wildfolk.Tests.WorldPassPlayTests.SurvivalRegeneratesOnlyAfterDelayAndWhenBothMetersAreHigh": {
+    "result": "Passed",
+    "run": "gamefeel-play"
+  },
+  "Wildfolk.Tests.GamefeelHostTests.RestoredHostProcessingRegistersAfterSpawnAndFishingCancellationPublishesNone": {
+    "result": "Passed",
+    "run": "gamefeel-final-play"
+  },
+  "Wildfolk.Tests.GamefeelPlayTests.CameraSnapsAcrossDiscontinuousTravelAndKeepsNormalFollowSmooth": {
+    "result": "Passed",
+    "run": "gamefeel-recheck"
+  }
+}

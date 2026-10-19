@@ -47,7 +47,7 @@ namespace Wildfolk
             catch(Exception){if(next!=null)Destroy(next.gameObject);return false;}
             Station.Changed-=NotifyStation;old.gameObject.SetActive(false);Destroy(old.gameObject);Station=next.GetComponent<CraftingStation>();Station.Changed+=NotifyStation;StationChanged?.Invoke();return true;
         }
-        public void UpgradeFromUI(){if(!UpgradeWorkbench())PlayerFeedback.ShowKey("feedback.upgrade");}
+        public void UpgradeFromUI(){if(!UpgradeWorkbench())PlayerFeedback.ShowKey("feedback.upgrade");else if(Authority==null)PlayerFeedback.ShowOperation(PlayerFeedback.Cue.Upgraded);}
 
         private void OnEnable(){Session.StateChanged+=SessionChanged;}
         private void OnDisable(){Session.StateChanged-=SessionChanged;}

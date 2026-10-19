@@ -1,0 +1,20 @@
+{
+  "context": "Editor, isolated generation2, 1920x1080, single counters; different views; not mobile benchmark or before/after speedup",
+  "before_crafting_render": {
+    "batches": 83,
+    "setpass": 5,
+    "draw_calls": 83
+  },
+  "after_cave_frame": {
+    "cpu_ms": 4.7835,
+    "main_ms": 2.4865,
+    "render_ms": 0.8648,
+    "gpu_ms": 1.18849
+  },
+  "after_transitions_memory": {
+    "gc_allocated_frame_bytes": 862579,
+    "total_used_bytes": 1529461580
+  },
+  "interpretation": "MCP/Editor/chunk transitions included; no baseline equivalence or percentile distribution. Source-level callback/allocation reductions verified separately.",
+  "utc_for_individual_samples": "not separately logged; tools returned counters during this Play audit"
+}

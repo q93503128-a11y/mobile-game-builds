@@ -36,21 +36,6 @@ namespace Wildfolk
             var right=(Vector2)camera.transform.right;var up=(Vector2)camera.transform.up;
             return -Mathf.Atan2(Vector2.Dot(direction,right),Vector2.Dot(direction,up))*Mathf.Rad2Deg;
         }
-        public static Vector2 CaveExit(CavernNetwork cave,Vector2 point)
-        {
-            var n=cave.Rooms.Count;var distances=new float[n];var next=new int[n];var used=new bool[n];
-            for(var i=0;i<n;i++){distances[i]=float.MaxValue;next[i]=-1;}
-            distances[0]=0;if(cave.SurfaceEntrances.Count>1)distances[2]=0;
-            for(var pass=0;pass<n;pass++)
-            {
-                var at=-1;for(var i=0;i<n;i++)if(!used[i] && (at<0 || distances[i]<distances[at]))at=i;
-                if(at<0)break;used[at]=true;
-                foreach(var j in cave.Rooms[at].Neighbors){var d=distances[at]+Vector2.Distance(cave.Rooms[at].Center,cave.Rooms[j].Center);if(d<distances[j]){distances[j]=d;next[j]=at;}}
-            }
-            var nearest=cave.Rooms.IndexOf(cave.Nearest(point));var room=cave.Rooms[nearest];
-            // Return to a chamber center before following its next corridor, so arrows do not cut cave walls.
-            if(Vector2.Distance(point,room.Center)>2)return room.Center;
-            return next[nearest]<0 ? room.Center : cave.Rooms[next[nearest]].Center;
-        }
+        public static Vector2 CaveExit(CavernNetwork cave,Vector2 point)=>cave.ExitWaypoint(point);
     }
 }

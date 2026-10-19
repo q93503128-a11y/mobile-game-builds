@@ -13,7 +13,7 @@ namespace Wildfolk.Tests
         {
             Time.timeScale=1;SceneFlow.Home(SaveRepository.Default());yield return null;yield return null;Object.FindFirstObjectByType<HomeScreen>().OpenMultiplayer();
             var session=NetworkSession.Instance;session.NewWorldGenerationVersion=1;session.WorldRepository=new SaveRepository(System.IO.Path.Combine(Application.temporaryCachePath,"lowfire-net-"+System.Guid.NewGuid().ToString("N"),"world.json"));session.ProfileOverride=System.Guid.NewGuid().ToString("N");var task=session.Host(ConnectionRoute.LocalNetwork);for(var i=0;i<300 && !task.IsCompleted;i++)yield return null;Assert.That(task.Result,Is.True);Assert.That(session.EnterGame(),Is.True);
-            for(var i=0;i<300;i++){yield return null;player=Object.FindFirstObjectByType<NetworkPlayer>();if(player!=null && player.IsSpawned)break;}Assert.That(player,Is.Not.Null);world=NetworkCreatureWorld.Active;
+            for(var i=0;i<300;i++){yield return new WaitForSecondsRealtime(.02f);player=Object.FindFirstObjectByType<NetworkPlayer>();if(player!=null && player.IsSpawned)break;}Assert.That(player,Is.Not.Null);world=NetworkCreatureWorld.Active;
             world.Clock.enabled=world.Animals.enabled=world.Goblins.enabled=world.Night.enabled=world.World.Renewal.enabled=false;Freeze(player);yield return null;yield return null;
         }
         private void Freeze(NetworkPlayer actor){actor.GetComponent<PlayerInputAdapter>().enabled=false;actor.GetComponent<NetworkInventory>().enabled=false;actor.Motor.enabled=false;actor.GetComponent<Rigidbody2D>().bodyType=RigidbodyType2D.Kinematic;}

@@ -1,30 +1,32 @@
+using System.Collections;
 using UnityEngine;
 namespace Wildfolk
 {
-    public sealed class LootOnDeath : MonoBehaviour
+    public sealed class LootOnDeath : MonoBehaviour,IPoolReset
     {
         public Health Health;
         public LootTable Table;
         public PlayerInventory Player;
         public WorldPickup Pickup;
         public GameplaySettings Settings;
+        private Collider2D[] colliders;private bool[] colliderStates;
+        private Behaviour[] simulation;private bool[] simulationStates;private bool deathPresented;
+        private void Awake(){colliders=GetComponents<Collider2D>();colliderStates=new bool[colliders.Length];for(var i=0;i<colliders.Length;i++)colliderStates[i]=colliders[i].enabled;simulation=new Behaviour[]{GetComponent<NeutralAnimal>(),GetComponent<EnemyController>(),GetComponent<GoblinController>(),GetComponent<SlingshotAttack>(),GetComponent<ZombieLifecycle>()};simulationStates=new bool[simulation.Length];}
+        public void ResetForSpawn(){for(var i=0;i<colliders.Length;i++)colliders[i].enabled=colliderStates[i];if(deathPresented)for(var i=0;i<simulation.Length;i++)if(simulation[i]!=null)simulation[i].enabled=simulationStates[i];deathPresented=false;}
         private void OnEnable()=>Health.Died+=Drop;
         private void OnDisable()=>Health.Died-=Drop;
         private void Drop()
         {
             var network=GetComponent<NetworkCreature>();if(network!=null){network.ResolveDeath(Table);return;}
-            DropItems(Table.Items);DropItems(Table.RareItems);
+            foreach(var entry in Table.Roll())
+            {var drop=PrefabPool.Spawn(Pickup,transform.position,Quaternion.identity);drop.Initialize(entry.Item,entry.Count,Player,Settings);}
+            foreach(var collider in colliders)collider.enabled=false;
+            deathPresented=true;for(var i=0;i<simulation.Length;i++)if(simulation[i]!=null){simulationStates[i]=simulation[i].enabled;simulation[i].enabled=false;}
+            var body=GetComponent<Rigidbody2D>();if(body!=null)body.linearVelocity=Vector2.zero;
+            GetComponent<HitFeedback>()?.BeginDeath();
             if(Health.LastAttacker!=null){var reward=Health.LastAttacker.GetComponent<PlayerProgression>();if(reward!=null)reward.Reward(Table.Experience,Table.Gold);}
-            PrefabPool.Release(gameObject);
+            StartCoroutine(RemoveDead());
         }
-        private void DropItems(LootEntry[] entries)
-        {
-            foreach(var entry in entries)
-            {
-                if(entry.Chance<1 && Random.value>=entry.Chance)continue;
-                var drop=PrefabPool.Spawn(Pickup,transform.position,Quaternion.identity);
-                drop.Initialize(entry.Item,Random.Range(entry.Minimum,entry.Maximum+1),Player,Settings);
-            }
-        }
+        private IEnumerator RemoveDead(){yield return new WaitForSeconds(HitFeedback.DeathDuration);PrefabPool.Release(gameObject);}
     }
 }

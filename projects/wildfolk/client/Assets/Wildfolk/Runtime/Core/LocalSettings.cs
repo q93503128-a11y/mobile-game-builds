@@ -3,6 +3,8 @@ namespace Wildfolk
 {
     public sealed class LocalSettings
     {
+        private static readonly System.Collections.Generic.Dictionary<string,LocalSettings> isolated=new System.Collections.Generic.Dictionary<string,LocalSettings>();
+        private LocalSettings Copy()=>new LocalSettings{ControlSize=ControlSize,Master=Master,Music=Music,Sfx=Sfx,Language=Language};
         public const string Prefix="wildfolk.user.";
         public float ControlSize { get; private set; }=1;
         public float Master { get; private set; }=1;
@@ -16,7 +18,7 @@ namespace Wildfolk
         public void SetSfx(float value) => Sfx=Mathf.Clamp01(value);
         public static LocalSettings Load(string prefix=Prefix)
         {
-            var settings=new LocalSettings();if(DevelopmentProfile.Isolated && prefix==Prefix)return settings;
+            var settings=new LocalSettings();if(DevelopmentProfile.Isolated && prefix==Prefix)return isolated.TryGetValue(DevelopmentProfile.Directory,out var saved) ? saved.Copy() : settings;
             settings.SetControl(PlayerPrefs.GetFloat(prefix+"controls",settings.ControlSize));
             settings.SetMaster(PlayerPrefs.GetFloat(prefix+"master",settings.Master));
             settings.SetMusic(PlayerPrefs.GetFloat(prefix+"music",settings.Music));
@@ -24,7 +26,7 @@ namespace Wildfolk
         }
         public void Store(string prefix=Prefix)
         {
-            if(DevelopmentProfile.Isolated && prefix==Prefix)return;
+            if(DevelopmentProfile.Isolated && prefix==Prefix){isolated[DevelopmentProfile.Directory]=Copy();return;}
             PlayerPrefs.SetFloat(prefix+"controls",ControlSize);PlayerPrefs.SetFloat(prefix+"master",Master);
             PlayerPrefs.SetFloat(prefix+"music",Music);PlayerPrefs.SetFloat(prefix+"sfx",Sfx);
             PlayerPrefs.SetString(prefix+"language",Language);

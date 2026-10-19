@@ -20,7 +20,7 @@ namespace Wildfolk.Tests
         private WorldSaveService Game=>Object.FindFirstObjectByType<WorldSaveService>();
         [UnitySetUp]public IEnumerator Setup()
         {
-            original=LocalSettings.Load();present=prefKeys.Select(k=>PlayerPrefs.HasKey(LocalSettings.Prefix+k)).ToArray();
+            original=LocalSettings.Load();present=DevelopmentProfile.Isolated ? new bool[prefKeys.Length] : prefKeys.Select(k=>PlayerPrefs.HasKey(LocalSettings.Prefix+k)).ToArray();
             pointer=new PlayPointerDriver();Time.timeScale=1;
             folder=Path.Combine(Application.temporaryCachePath,"wildfolk-home-"+System.Guid.NewGuid().ToString("N"));Directory.CreateDirectory(folder);repository=new SaveRepository(Path.Combine(folder,"world-v1.json"));
             SceneFlow.Home(repository);yield return Ready(false);
@@ -35,7 +35,7 @@ namespace Wildfolk.Tests
         [UnityTearDown]public IEnumerator Cleanup()
         {
             if(Game!=null)Game.AutoSaveEnabled=false;Time.timeScale=1;pointer.Dispose();
-            original.Store();for(var i=0;i<prefKeys.Length;i++)if(!present[i])PlayerPrefs.DeleteKey(LocalSettings.Prefix+prefKeys[i]);PlayerPrefs.Save();L.SetLanguage(original.Language);
+            original.Store();if(!DevelopmentProfile.Isolated){for(var i=0;i<prefKeys.Length;i++)if(!present[i])PlayerPrefs.DeleteKey(LocalSettings.Prefix+prefKeys[i]);PlayerPrefs.Save();}L.SetLanguage(original.Language);
             SceneFlow.Repository=SaveRepository.Default();if(Directory.Exists(folder))Directory.Delete(folder,true);yield return null;
         }
         [UnityTest]public IEnumerator EmptyAndCorruptSaveDisableContinueAndBackupIsValidated()

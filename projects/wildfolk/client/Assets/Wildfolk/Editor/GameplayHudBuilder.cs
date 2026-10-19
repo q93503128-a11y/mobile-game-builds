@@ -29,7 +29,7 @@ namespace Wildfolk.Editor
             var interactSurface=Image("Interact",controls,"attack_button",new Vector2(1,0),new Vector2(-162,310),new Vector2(108,108),true);
             var interact=interactSurface.gameObject.AddComponent<InteractButtonView>();interact.Interaction=motor.GetComponent<PlayerInteraction>();interact.Surface=interactSurface;interact.Button=Button(interactSurface);interact.DefaultIcon=VisualArtImporter.Sprite("icon_interact");
             interact.Icon=Image("Icon",interactSurface.transform,"icon_interact",new Vector2(.5f,.5f),Vector2.zero,new Vector2(64,64));interact.Icon.preserveAspect=true;
-            var feedback=root.AddComponent<PlayerFeedback>();feedback.Label=Text("Message",safe,string.Empty,new Vector2(0,363),new Vector2(640,52),26);feedback.Label.raycastTarget=false;
+            var feedback=root.AddComponent<PlayerFeedback>();feedback.Label=Text("Message",safe,string.Empty,new Vector2(0,432),new Vector2(940,52),26);feedback.Label.raycastTarget=false;
             BuildHotbar(controls,session,inventory);
             BuildBoss(safe);
             var time=Image("World Time",safe,"panel",new Vector2(0,1),new Vector2(148,-229),new Vector2(232,44));
@@ -66,6 +66,7 @@ namespace Wildfolk.Editor
             var drag=root.GetComponent<InventoryDragController>();var split=drag.SplitPanel;var hud=root.GetComponent<GameplayHud>();
             var modalRoots=new System.Collections.Generic.HashSet<Transform>{root.GetComponent<InventoryPanel>().View.transform,root.GetComponent<CraftingPanel>().View.transform,root.GetComponent<ChestPanel>().View.transform,root.GetComponent<CharacterScreen>().View.transform,root.GetComponent<SkillTreeScreen>().View.transform,hud.PausePanel.transform,hud.DefeatPanel.transform,drag.DropZone.transform,drag.Ghost,split.View.transform,split.Actions.transform,drag.HeldCancel.transform};
             foreach(var child in children)child.SetParent(modalRoots.Contains(child) ? modal : gameplay,false);
+            root.GetComponent<PlayerFeedback>().Label.transform.SetParent(safe,false);root.GetComponent<PlayerFeedback>().Label.transform.SetAsLastSibling();
             var layers=root.AddComponent<GameplayUiLayers>();layers.Session=session;layers.Gameplay=gameplay.gameObject.AddComponent<CanvasGroup>();
             // One ordered canvas hierarchy: gameplay, blocking modal surfaces, then their item drag overlay.
             drag.Ghost.SetAsLastSibling();

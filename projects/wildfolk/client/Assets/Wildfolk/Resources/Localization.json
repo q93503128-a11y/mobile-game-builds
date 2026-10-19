@@ -2830,6 +2830,41 @@
         "Damage bonus +{0}\nFirst matching bag stack is used.",
         "추가 피해 +{0}\n가방 앞쪽의 맞는 탄약부터 사용."
       ]
+    },
+    {
+      "Key": "feedback.crafted",
+      "Values": [
+        "Crafted",
+        "제작 완료"
+      ]
+    },
+    {
+      "Key": "feedback.crafted_item",
+      "Values": [
+        "Crafted {0} ×{1}",
+        "{0} ×{1} 제작 완료"
+      ]
+    },
+    {
+      "Key": "feedback.processing_started",
+      "Values": [
+        "Added to processing queue",
+        "처리 대기열에 추가했습니다"
+      ]
+    },
+    {
+      "Key": "feedback.collected",
+      "Values": [
+        "Processing results collected",
+        "처리 결과를 수령했습니다"
+      ]
+    },
+    {
+      "Key": "feedback.upgraded",
+      "Values": [
+        "Workbench upgraded · New recipes available",
+        "작업대 업그레이드 완료 · 새 제작법 사용 가능"
+      ]
     }
   ]
 }

@@ -13,6 +13,7 @@ namespace Wildfolk
         public readonly List<CavernRoom> Rooms=new List<CavernRoom>();
         public readonly List<Vector2> SurfaceEntrances=new List<Vector2>();
         public const float CorridorWidth=3.8f;
+        private int[] exitNext;
         public CavernNetwork(int seed,int id,Vector2 origin,Vector2 entrance,bool second)
         {
             Id=id;Origin=origin;SurfaceEntrances.Add(entrance);if(second)SurfaceEntrances.Add(entrance+new Vector2(110,45));
@@ -29,9 +30,15 @@ namespace Wildfolk
         private void Connect(int a,int b){Rooms[a].Neighbors.Add(b);Rooms[b].Neighbors.Add(a);}
         private void ComputeDepth()
         {
+            exitNext=new int[Rooms.Count];for(var i=0;i<exitNext.Length;i++)exitNext[i]=-1;
             var distance=new float[Rooms.Count];for(var i=0;i<distance.Length;i++)distance[i]=float.MaxValue;distance[0]=0;if(SurfaceEntrances.Count>1)distance[2]=0;
-            var used=new bool[distance.Length];for(var pass=0;pass<distance.Length;pass++){var at=-1;for(var i=0;i<distance.Length;i++)if(!used[i] && (at<0 || distance[i]<distance[at]))at=i;if(at<0)break;used[at]=true;foreach(var next in Rooms[at].Neighbors)distance[next]=Mathf.Min(distance[next],distance[at]+Vector2.Distance(Rooms[at].Center,Rooms[next].Center));}
+            var used=new bool[distance.Length];for(var pass=0;pass<distance.Length;pass++){var at=-1;for(var i=0;i<distance.Length;i++)if(!used[i] && (at<0 || distance[i]<distance[at]))at=i;if(at<0)break;used[at]=true;foreach(var next in Rooms[at].Neighbors){var candidate=distance[at]+Vector2.Distance(Rooms[at].Center,Rooms[next].Center);if(candidate<distance[next]){distance[next]=candidate;exitNext[next]=at;}}}
             var max=0f;foreach(var d in distance)max=Mathf.Max(max,d);for(var i=0;i<Rooms.Count;i++)Rooms[i].Depth=distance[i]/max;
+        }
+        public Vector2 ExitWaypoint(Vector2 point)
+        {
+            var room=Nearest(point);var index=Rooms.IndexOf(room);
+            return Vector2.Distance(point,room.Center)>2 || exitNext[index]<0 ? room.Center : Rooms[exitNext[index]].Center;
         }
         public float FloorDistance(Vector2 p)
         {

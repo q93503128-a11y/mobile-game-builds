@@ -73,10 +73,10 @@ namespace Wildfolk
             if(!IsServer || !IsSpawned || DeathResolved)return;DeathResolved=true;
             var attacker=Health.LastAttacker==null ? null : Health.LastAttacker.GetComponent<NetworkObject>();
             NetworkCreatureWorld.Active?.RecordDeath(new NetworkDeathResult(NetworkObjectId,attacker==null ? ulong.MaxValue : attacker.NetworkObjectId,table));
-            SetSimulation(false);var feedback=GetComponent<HitFeedback>();if(feedback!=null)feedback.enabled=false;
-            if(Visual!=null)Visual.localScale=new Vector3(Visual.localScale.x,Visual.localScale.y*.25f,1);
+            SetSimulation(false);GetComponent<HitFeedback>()?.BeginDeath();
+            var body=GetComponent<Rigidbody2D>();if(body!=null)body.linearVelocity=Vector2.zero;
             Publish();foreach(var collider in GetComponents<Collider2D>())collider.enabled=false;StartCoroutine(RemoveDead());
         }
-        private IEnumerator RemoveDead(){yield return new WaitForSeconds(.35f);if(IsSpawned && IsServer)NetworkObject.Despawn();}
+        private IEnumerator RemoveDead(){yield return new WaitForSeconds(HitFeedback.DeathDuration);if(IsSpawned && IsServer)NetworkObject.Despawn();}
     }
 }

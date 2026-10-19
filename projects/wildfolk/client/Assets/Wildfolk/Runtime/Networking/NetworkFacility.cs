@@ -23,7 +23,7 @@ namespace Wildfolk
             if(Chest!=null){Chest.Model.IsReadOnly=!IsServer;if(IsServer)Chest.Model.Changed+=Publish;}
             if(Processor!=null){Processor.ReplicaRemaining=()=>Processing.Value.Running ? Mathf.Max(0,(float)(Processing.Value.Ends-NetworkManager.ServerTime.Time)) : 0;if(IsServer)Processor.Changed+=Publish;}
             Slots.OnListChanged+=SlotsChanged;Cargo.OnListChanged+=CargoChanged;Processing.OnValueChanged+=ProcessChanged;Tier.OnValueChanged+=TierChanged;Revision.OnValueChanged+=RevisionChanged;
-            if(IsServer){if(Station!=null && Station.Definition.Station==StationKind.Workbench)Tier.Value=Station.Definition.WorkbenchTier;Publish();}else{ApplyTier();MirrorSlots();MirrorProcessing();}
+            if(IsServer){if(Station!=null && Station.Definition.Station==StationKind.Workbench)Tier.Value=Station.Definition.WorkbenchTier;if(Processor!=null)ProcessingScheduler.Schedule(Processor);Publish();}else{ApplyTier();MirrorSlots();MirrorProcessing();}
         }
         public bool InRange(NetworkPlayer player)=>IsSpawned && placeable.Health.IsAlive && Vector2.Distance(transform.position,player.transform.position)<=player.GetComponent<PlayerInventory>().Settings.StationInteractionRange;
         public bool Upgrade(PlayerInventory player)

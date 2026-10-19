@@ -23,7 +23,7 @@ namespace Wildfolk.Tests
         }
         [UnityTearDown] public IEnumerator Release()
         {
-            input.Dispose();Time.timeScale=1;original.Store();PlayerPrefs.Save();yield return null;
+            input.Dispose();Time.timeScale=1;original.Store();if(!DevelopmentProfile.Isolated)PlayerPrefs.Save();yield return null;
         }
         private RecipeDefinition Recipe(string id)
         {foreach(var recipe in crafting.Catalog.Recipes) if(recipe.Id==id) return recipe;Assert.Fail(id);return null;}
@@ -146,10 +146,10 @@ namespace Wildfolk.Tests
         [UnityTest] public IEnumerator OneNeutralMeatSourceDropsRawWithoutAddingAnEnemyType()
         {
             Assert.That(Object.FindObjectsByType<EnemyController>(FindObjectsSortMode.None),Is.Empty);
-            NeutralAnimal animal=null;foreach(var node in Object.FindObjectsByType<NeutralAnimal>(FindObjectsSortMode.None))if(node.GetComponent<LootOnDeath>().Table.Items[0].Minimum==2)animal=node;
+            NeutralAnimal animal=null;foreach(var node in Object.FindObjectsByType<NeutralAnimal>(FindObjectsSortMode.None))if(node.Member.Definition.Id=="boar")animal=node;
             Assert.That(animal,Is.Not.Null);Assert.That(animal.GetComponent<EnemyController>(),Is.Null);
             Position((Vector2)animal.transform.position+Vector2.down*1.6f,Vector2.up);yield return new WaitForSeconds(.2f);
-            animal.Health.ApplyDamage(animal.Health.Maximum);yield return null;
+            animal.Health.ApplyDamage(animal.Health.Maximum);yield return new WaitForSeconds(HitFeedback.DeathDuration+.05f);
             Assert.That(animal==null,Is.True);WorldPickup drop=null;foreach(var item in Object.FindObjectsByType<WorldPickup>(FindObjectsSortMode.None))if(item.Item==Raw)drop=item;Assert.That(drop,Is.Not.Null);Assert.That(drop.Count,Is.EqualTo(2));
             Position(drop.transform.position,Vector2.up);yield return new WaitForSeconds(.85f);Assert.That(inventory.Model.CountItem(Raw),Is.EqualTo(2));
         }

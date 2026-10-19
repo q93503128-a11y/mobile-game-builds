@@ -38,7 +38,7 @@ namespace Wildfolk.Editor
             foreach(var component in ecology.GetComponentsInChildren<Component>(true))PrefabUtility.RecordPrefabInstancePropertyModifications(component);
             arena.Follow=camera.gameObject.AddComponent<CameraFollow>();arena.Follow.Ground=world.World.Terrain.Ground;arena.Follow.Settings=AssetDatabase.LoadAssetAtPath<GameplaySettings>("Assets/Wildfolk/Data/GameplaySettings.asset");
             var canvas=new GameObject("Camp Canvas",typeof(RectTransform),typeof(Canvas),typeof(CanvasScaler),typeof(GraphicRaycaster));
-            canvas.GetComponent<Canvas>().renderMode=RenderMode.ScreenSpaceCamera;canvas.GetComponent<Canvas>().worldCamera=camera;canvas.GetComponent<Canvas>().planeDistance=1;canvas.GetComponent<Canvas>().sortingOrder=WorldSorting.Overlay;
+            canvas.GetComponent<Canvas>().renderMode=RenderMode.ScreenSpaceOverlay;canvas.GetComponent<Canvas>().sortingOrder=WorldSorting.Overlay;
             var scaler=canvas.GetComponent<CanvasScaler>();scaler.uiScaleMode=CanvasScaler.ScaleMode.ScaleWithScreenSize;scaler.referenceResolution=new Vector2(1920,1080);scaler.matchWidthOrHeight=.5f;
             var safe=Rect("Safe Area",canvas.transform,Vector2.zero,Vector2.zero,Vector2.zero);safe.anchorMax=Vector2.one;safe.offsetMin=safe.offsetMax=Vector2.zero;safe.gameObject.AddComponent<SafeAreaLayout>();
             arena.CampLabel=Text("Camp",safe,"net.camp",new Vector2(-580,470),new Vector2(650,54),30,TextAnchor.MiddleLeft);

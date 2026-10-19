@@ -7,7 +7,7 @@ namespace Wildfolk
     {
         public RecipeDefinition Recipe;public PlayerCrafting Crafting;public Image Icon,InputIcon,Progress;public Text Name,Materials,Status,ButtonLabel,NewLabel;public Button CraftButton;
         public void OnPointerClick(UnityEngine.EventSystems.PointerEventData data)=>Crafting.SetSelected(Recipe);
-        public void Craft(){Crafting.SetSelected(Recipe);Crafting.Craft(Recipe);Refresh();}
+        public void Craft(){Crafting.SetSelected(Recipe);var result=Crafting.Craft(Recipe);if(Crafting.Authority==null)PlayerFeedback.CraftResult(Recipe,result);Refresh();}
         public void RefreshProgress(){var job=Crafting.Processor;if(job==null || job.Recipe!=Recipe)return;Progress.fillAmount=job.Progress;Status.text=job.Remaining<=0 ? L.Text("ui.crafting.ready") : L.Format(Recipe.Processing==ProcessingKind.Smelting ? "ui.crafting.smelting" : "ui.crafting.cooking",Mathf.CeilToInt(job.Remaining));}
         public void Refresh()
         {

@@ -12,7 +12,7 @@ namespace Wildfolk
         public float Remaining {get;private set;}
         public int WaitingCount=>waiting.Count;
         public int OutputCount {get{var n=0;foreach(var pair in output)n+=pair.Value*pair.Key.ResultCount;return n;}}
-        public int CountWaiting(RecipeDefinition recipe)=>waiting.FindAll(r=>r==recipe).Count;
+        public int CountWaiting(RecipeDefinition recipe){var count=0;foreach(var entry in waiting)if(entry==recipe)count++;return count;}
         public int CountOutput(RecipeDefinition recipe)=>output.TryGetValue(recipe,out var n) ? n*recipe.ResultCount : 0;
         public bool Add(RecipeDefinition recipe,int count,InventoryModel bag,int capacity,float speed)
         {

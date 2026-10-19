@@ -6,7 +6,9 @@ namespace Wildfolk
     {
         public event Action Changed;
         public Func<float> ReplicaRemaining {get;set;}
-        private void Notify(){Changed?.Invoke();Station.NotifyChanged();}
+        private void Notify(){Schedule();Changed?.Invoke();Station.NotifyChanged();}
+        private void Schedule()=>ProcessingScheduler.Schedule(this);
+        internal bool NeedsTime=>isActiveAndEnabled && SimulationAuthority.Allows(this) && (Sequential ? queue.Current!=null && (queue.Remaining>0 || queue.OutputCount+queue.Current.ResultCount<=Station.Definition.OutputCapacity) : Recipe!=null && batchRemaining>0);
         internal void InitializeSnapshot(ProcessingSnapshot state,ContentCatalog catalog,PlayerInventory player)=>RestoreCore(state,catalog,player);
         internal void ApplyReplica(ProcessingSnapshot state,ContentCatalog catalog)=>RestoreCore(state,catalog,null);
         public CraftingStation Station;
@@ -31,13 +33,9 @@ namespace Wildfolk
         public void Restore(ProcessingSnapshot state,ContentCatalog catalog,PlayerInventory player)
         {if(!SimulationAuthority.Allows(this))return;RestoreCore(state,catalog,player);Notify();}
         private void RestoreCore(ProcessingSnapshot state,ContentCatalog catalog,PlayerInventory player)
-        {if(Sequential){queue.Restore(state,catalog,Station.Definition.ProcessingSpeed);owner=player;return;}if(state==null || string.IsNullOrEmpty(state.Recipe)){Recipe=null;owner=null;BatchCount=0;Remaining=0;return;}Recipe=catalog.Recipe(state.Recipe);BatchCount=state.Batch;Remaining=state.Remaining;owner=player;}
-        private void OnEnable() => Station.Health.Died+=ReleaseCargo;
-        private void OnDisable() => Station.Health.Died-=ReleaseCargo;
-        private void Update()
-        {
-            Advance(Time.deltaTime);
-        }
+        {if(Sequential){queue.Restore(state,catalog,Station.Definition.ProcessingSpeed);owner=player;Schedule();return;}if(state==null || string.IsNullOrEmpty(state.Recipe)){Recipe=null;owner=null;BatchCount=0;Remaining=0;return;}Recipe=catalog.Recipe(state.Recipe);BatchCount=state.Batch;Remaining=state.Remaining;owner=player;Schedule();}
+        private void OnEnable(){Station.Health.Died+=ReleaseCargo;Schedule();}
+        private void OnDisable(){Station.Health.Died-=ReleaseCargo;ProcessingScheduler.Remove(this);}
         public bool Begin(RecipeDefinition recipe,PlayerInventory player)
         {
             var authority=player.GetComponent<NetworkFacilityInteractor>();if(authority!=null && !authority.IsApplying)return authority.Process(FacilityOperation.Craft,this,recipe);
@@ -45,7 +43,7 @@ namespace Wildfolk
             if(Sequential)return Add(recipe,player,1);
             if(!WorkbenchProgression.Allows(Station,recipe) || IsBusy || recipe.ProcessingSeconds<=0 || recipe.RequiredStation!=Station.Definition.Station || !Station.Health.IsAlive) return false;
             var batch=BatchSize(recipe,player.Model);if(batch<=0)return false;
-            var costs=ScaledCosts(recipe,batch);if(!player.Model.TryConsumeCosts(costs)) return false;
+            var costs=ProcessingQueue.Costs(recipe,batch);if(!player.Model.TryConsumeCosts(costs)) return false;
             owner=player;Recipe=recipe;BatchCount=batch;Remaining=Duration;Notify();return true;
         }
         public bool Add(RecipeDefinition recipe,PlayerInventory player,int count)
@@ -58,8 +56,6 @@ namespace Wildfolk
         {if(!SimulationAuthority.Allows(this))return;var before=queue.Version;var previous=Remaining;var wasReady=IsReady;if(Sequential){queue.Advance(seconds,Station.Definition.ProcessingSpeed,Station.Definition.OutputCapacity);if(before!=queue.Version || previous>0 && Remaining<=0)Notify();}else if(Recipe!=null && Remaining>0){Remaining=Mathf.Max(0,Remaining-seconds);if(!wasReady && IsReady)Notify();}}
         public int BatchSize(RecipeDefinition recipe,InventoryModel model)
         {if(!WorkbenchProgression.Allows(Station,recipe))return 0;var batch=Sequential ? Station.Definition.InputCapacity-queue.WaitingCount-(queue.Current==null ? 0 : 1) : Station.Definition.ParallelCapacity;foreach(var cost in recipe.Ingredients)batch=(int)Math.Min(batch,model.CountAmount(cost)/cost.Count);return batch;}
-        private static ItemAmount[] ScaledCosts(RecipeDefinition recipe,int batch)
-        {var costs=new ItemAmount[recipe.Ingredients.Length];for(var i=0;i<costs.Length;i++)costs[i]=new ItemAmount{Item=recipe.Ingredients[i].Item,Count=checked(recipe.Ingredients[i].Count*batch),Charges=recipe.Ingredients[i].Charges,Quality=recipe.Ingredients[i].Quality};return costs;}
         public bool Collect(PlayerInventory player)
         {
             var authority=player.GetComponent<NetworkFacilityInteractor>();if(authority!=null && !authority.IsApplying)return authority.Process(FacilityOperation.Collect,this);

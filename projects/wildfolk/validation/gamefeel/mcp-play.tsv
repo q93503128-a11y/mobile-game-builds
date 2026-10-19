@@ -1,0 +1,95 @@
+utc	step	result
+2026-10-19T00:51:59.2552324Z	spawn	begin
+2026-10-19T00:51:59.2567716Z	spawn	fresh isolated generation2 spawn
+2026-10-19T00:51:59.4641812Z	movement	begin
+2026-10-19T00:51:59.4646981Z	movement	movement command moves body
+2026-10-19T00:52:00.4267043Z	sprint-stamina	begin
+2026-10-19T00:52:00.4277099Z	sprint-stamina	held full movement drains sprint stamina
+2026-10-19T00:52:00.5743532Z	gather-Wood	begin
+2026-10-19T00:52:03.2278809Z	gather-Wood	command attacks harvested Wood; initial HP=150; fixture teleport/tool injection
+2026-10-19T00:52:03.3867983Z	gather-Stone	begin
+2026-10-19T00:52:04.2169715Z	gather-Stone	command attacks harvested Stone; initial HP=50; fixture teleport/tool injection
+2026-10-19T00:52:04.3661566Z	gather-IronOre	begin
+2026-10-19T00:52:05.9439873Z	gather-IronOre	command attacks harvested IronOre; initial HP=75; fixture teleport/tool injection
+2026-10-19T00:52:06.1040019Z	gather-Coal	begin
+2026-10-19T00:52:08.4496379Z	gather-Coal	command attacks harvested Coal; initial HP=90; fixture teleport/tool injection
+2026-10-19T00:52:08.6056903Z	gather-CopperOre	begin
+2026-10-19T00:52:10.1870804Z	gather-CopperOre	command attacks harvested CopperOre; initial HP=90; fixture teleport/tool injection
+2026-10-19T00:52:10.3338788Z	gather-TinOre	begin
+2026-10-19T00:52:13.5484457Z	gather-TinOre	command attacks harvested TinOre; initial HP=50; fixture teleport/tool injection
+2026-10-19T00:52:13.7101263Z	melee-miss	begin
+2026-10-19T00:52:14.2806290Z	failed	System.InvalidOperationException: miss swing began
+   at Wildfolk.Editor.GamefeelQa.Check (System.Boolean value, System.String result) [0x00010] in C:\UnityProjects\Wildfolk\Assets\Wildfolk\Editor\GamefeelQa.cs:29
+   at Wildfolk.Editor.GamefeelQa+<Flow>d__21.MoveNext () [0x003a6] in C:\UnityProjects\Wildfolk\Assets\Wildfolk\Editor\GamefeelQa.cs:64
+   at Wildfolk.Editor.GamefeelQa+<Guard>d__10.MoveNext () [0x0003c] in C:\UnityProjects\Wildfolk\Assets\Wildfolk\Editor\GamefeelQa.cs:25
+2026-10-19T00:53:25.7493589Z	melee-miss	begin
+2026-10-19T00:53:25.7990883Z	melee-miss	miss swing began
+2026-10-19T00:53:26.5903633Z	melee-miss	miss has no hit result
+2026-10-19T00:53:26.5913981Z	melee-hit-death	begin
+2026-10-19T00:53:26.5997290Z	melee-hit-death	hit swing began
+2026-10-19T00:53:27.0001732Z	melee-hit-death	melee contact changed target HP
+2026-10-19T00:53:27.6175474Z	ranged	begin
+2026-10-19T00:53:27.7088070Z	ranged	ranged command began
+2026-10-19T00:53:28.4954093Z	ranged	ranged consumed one arrow
+2026-10-19T00:53:28.4970425Z	enemy-kill	begin
+2026-10-19T00:53:29.4609858Z	enemy-kill	death recovered to pool after short presentation
+2026-10-19T00:53:29.4625163Z	player-damage	begin
+2026-10-19T00:53:29.4636250Z	player-damage	fixture damage changed player HP
+2026-10-19T00:53:29.6253608Z	pickup	begin
+2026-10-19T00:53:30.6025306Z	pickup	proximity pickup delivered +3
+2026-10-19T00:53:30.7741603Z	inventory-drag-drop	begin
+2026-10-19T00:53:30.8772408Z	inventory-drag-drop	inventory opened
+2026-10-19T00:53:30.8897029Z	inventory-drag-drop	UI drag handlers moved stack
+2026-10-19T00:53:30.8934458Z	inventory-drag-drop	inventory world drop succeeded
+2026-10-19T00:53:30.8934458Z	equipment-utility	begin
+2026-10-19T00:53:30.9353172Z	equipment-utility	body equipment installed
+2026-10-19T00:53:30.9651728Z	equipment-utility	Lantern installed in Utility
+2026-10-19T00:53:31.0967984Z	equipment-utility	tool and Utility coexist
+2026-10-19T00:53:31.2973728Z	craft-failure-success-upgrade	begin
+2026-10-19T00:53:31.3871491Z	craft-failure-success-upgrade	tier-locked craft rejected without mutation
+2026-10-19T00:53:31.6512522Z	craft-failure-success-upgrade	Craft button produced Compass
+2026-10-19T00:53:31.9131892Z	craft-failure-success-upgrade	Upgrade button changed Workbench I to II
+2026-10-19T00:53:32.2009332Z	craft-failure-success-upgrade	Compass Home selected
+2026-10-19T00:53:32.2079669Z	furnace	begin
+2026-10-19T00:53:32.2529482Z	furnace	station UI opened
+2026-10-19T00:53:32.5865184Z	furnace	processing started and scheduler advanced
+2026-10-19T00:53:32.7651249Z	furnace	fixture time advance reached output
+2026-10-19T00:53:32.7682246Z	furnace	Take button collected result
+2026-10-19T00:53:32.7707804Z	blast_furnace	begin
+2026-10-19T00:53:32.7923940Z	blast_furnace	station UI opened
+2026-10-19T00:53:33.1582527Z	blast_furnace	processing started and scheduler advanced
+2026-10-19T00:53:33.4453378Z	blast_furnace	fixture time advance reached output
+2026-10-19T00:53:33.4463570Z	blast_furnace	Take button collected result
+2026-10-19T00:53:33.4479328Z	cooking_pot	begin
+2026-10-19T00:53:33.4933213Z	cooking_pot	station UI opened
+2026-10-19T00:53:33.8709637Z	cooking_pot	processing started and scheduler advanced
+2026-10-19T00:53:34.0616631Z	cooking_pot	fixture time advance reached output
+2026-10-19T00:53:34.0641945Z	cooking_pot	Take button collected result
+2026-10-19T00:53:34.0662298Z	food	begin
+2026-10-19T00:53:34.1323653Z	food	cooked food consumed
+2026-10-19T00:53:34.1328752Z	building-valid-invalid	begin
+2026-10-19T00:53:34.5366716Z	building-valid-invalid	valid placement consumed one wall
+2026-10-19T00:53:34.8136669Z	building-valid-invalid	overlapping placement rejected
+2026-10-19T00:53:34.8153274Z	chest-door	begin
+2026-10-19T00:53:34.8390852Z	chest-door	chest UI opened
+2026-10-19T00:53:34.8406347Z	chest-door	chest transfer delivered one
+2026-10-19T00:53:35.0472761Z	chest-door	door open accepted
+2026-10-19T00:53:35.3603910Z	chest-door	door animation removed barrier
+2026-10-19T00:53:35.3619067Z	chest-door	door close accepted
+2026-10-19T00:53:35.7705663Z	chest-door	door animation restored barrier
+2026-10-19T00:53:35.7705663Z	fishing-water	begin
+2026-10-19T00:53:36.7772051Z	fishing-water	cast near natural river
+2026-10-19T00:53:39.9809172Z	fishing-water	bite phase reached
+2026-10-19T00:53:40.1667209Z	fishing-water	bite action caught fish
+2026-10-19T00:53:40.8173959Z	fishing-water	caught settled to idle
+2026-10-19T00:53:40.9357052Z	fishing-water	Waterskin filled from natural river
+2026-10-19T00:53:40.9389290Z	fishing-water	Waterskin consumed one charge
+2026-10-19T00:53:40.9399210Z	torch-compass-cave	begin
+2026-10-19T00:53:41.1510236Z	torch-compass-cave	Torch held light
+2026-10-19T00:53:42.0291348Z	torch-compass-cave	cave entry interaction
+2026-10-19T00:53:43.2145359Z	torch-compass-cave	underground region entered
+2026-10-19T00:53:43.2150724Z	torch-compass-cave	Compass remains carried
+2026-10-19T00:53:43.3617660Z	torch-compass-cave	cave exit interaction
+2026-10-19T00:53:43.5997772Z	save-load	begin
+2026-10-19T00:53:48.5260651Z	save-load	isolated save written
+2026-10-19T00:53:51.1947712Z	save-load	isolated save loaded

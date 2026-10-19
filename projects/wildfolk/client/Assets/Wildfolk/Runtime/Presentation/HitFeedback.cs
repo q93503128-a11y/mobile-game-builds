@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 namespace Wildfolk
@@ -14,7 +15,8 @@ namespace Wildfolk
         private Vector3 restPosition;
         private Vector3 restScale;
         private Quaternion restRotation;
-        private float elapsed = 1;
+        private float elapsed = 1;private Coroutine reaction;private bool dying;
+        public const float DeathDuration=.35f;
         private const float Duration = .16f;
 
         private void Awake()
@@ -28,13 +30,21 @@ namespace Wildfolk
         }
 
         private void OnEnable() => Health.Damaged += React;
-        private void OnDisable() => Health.Damaged -= React;
-        public void ResetForSpawn(){elapsed=Duration;Visual.localPosition=restPosition;Visual.localScale=restScale;Visual.localRotation=restRotation;for(var i=0;i<renderers.Length;i++)renderers[i].color=colors[i];}
-        private void React() => elapsed = 0;
-
-        private void Update()
+        private void OnDisable(){Health.Damaged-=React;StopAllCoroutines();reaction=null;}
+        public void ResetForSpawn(){dying=false;reaction=null;elapsed=Duration;Visual.localPosition=restPosition;Visual.localScale=restScale;Visual.localRotation=restRotation;for(var i=0;i<renderers.Length;i++)renderers[i].color=colors[i];}
+        private void React(){if(dying)return;if(reaction!=null)StopCoroutine(reaction);elapsed=0;reaction=StartCoroutine(AnimateHit());}
+        public void BeginDeath()
+        {if(dying)return;dying=true;if(reaction!=null)StopCoroutine(reaction);reaction=StartCoroutine(AnimateDeath());}
+        private IEnumerator AnimateDeath()
         {
-            if (elapsed >= Duration) return;
+            var from=Visual.localScale;
+            for(var t=0f;t<.22f;t+=Time.deltaTime){var k=Mathf.SmoothStep(0,1,t/.22f);Visual.localScale=Vector3.Lerp(from,new Vector3(restScale.x*1.08f,restScale.y*.25f,restScale.z),k);yield return null;}
+            Visual.localScale=new Vector3(restScale.x*1.08f,restScale.y*.25f,restScale.z);reaction=null;
+        }
+
+        private IEnumerator AnimateHit()
+        {
+            while(elapsed<Duration){
             elapsed = Mathf.Min(elapsed + Time.deltaTime, Duration);
             var t = elapsed / Duration;
             var damping = 1 - t;
@@ -50,7 +60,9 @@ namespace Wildfolk
                 Visual.localPosition = restPosition + Vector3.right * (Mathf.Sin(t * (tree ? 15 : 25)) * damping * (tree ? .075f : .038f));
                 Visual.localRotation = restRotation * Quaternion.Euler(0, 0, Mathf.Sin(t * 16) * damping * (tree ? 3 : .7f));
             }
-            if (elapsed < Duration) return;
+            yield return null;
+            }
+            reaction=null;
             Visual.localPosition = restPosition;
             Visual.localScale = restScale;
             Visual.localRotation = restRotation;

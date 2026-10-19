@@ -17,7 +17,7 @@ namespace Wildfolk.Tests
             Assert.That(menu.Session.Manager.NetworkConfig.Prefabs.Prefabs.Count,Is.EqualTo(menu.Session.EcologyPrefab.GetComponent<NetworkCreatureWorld>().Prefabs.Length+1));
             Assert.That(menu.Session.EnterGame(),Is.True);
             NetworkPlayer player=null;
-            for(var i=0;i<300;i++){yield return null;player=Object.FindFirstObjectByType<NetworkPlayer>();if(player!=null && player.IsSpawned)break;}
+            for(var i=0;i<300;i++){yield return new WaitForSecondsRealtime(.02f);player=Object.FindFirstObjectByType<NetworkPlayer>();if(player!=null && player.IsSpawned)break;}
             Assert.That(player,Is.Not.Null);Assert.That(player.IsServer && player.IsOwner,Is.True);
             Assert.That(Object.FindObjectsByType<WorldGenerator>(FindObjectsSortMode.None).Length,Is.EqualTo(1));Assert.That(NetworkCreatureWorld.Active.IsAuthority,Is.True);Assert.That(Object.FindObjectsByType<WorldSaveService>(FindObjectsSortMode.None),Is.Empty);
             player.GetComponent<PlayerInputAdapter>().enabled=false;var before=player.transform.position;

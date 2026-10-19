@@ -17,13 +17,13 @@ namespace Wildfolk.Tests
         private void EmptyInventory(){var state=new SavedStack[player.Model.Capacity];for(var i=0;i<state.Length;i++)state[i]=new SavedStack();player.Model.Restore(state,saves.Catalog);player.SelectSlot(0);}
         private Health Target(Vector2 p,EntityRelation relation=EntityRelation.Hostile)
         {var go=new GameObject("Combat assertion target");go.SetActive(false);var health=go.AddComponent<Health>();health.Definition=player.GetComponent<Health>().Definition;go.AddComponent<CircleCollider2D>().radius=.5f;go.GetComponent<CircleCollider2D>().isTrigger=true;go.AddComponent<CombatAffiliation>().Relation=relation;go.transform.position=p;go.SetActive(true);return health;}
-        private IEnumerator Strike(){Assert.That(combat.TryAttack(),Is.True);yield return new WaitForSeconds(.76f);}
+        private IEnumerator Strike(){var tool=player.GetComponent<PlayerEquipment>().ActiveTool;Assert.That(combat.TryAttack(),Is.True);yield return new WaitForSeconds(tool==null ? .76f : Mathf.Max(tool.Duration,tool.Cooldown)+.05f);}
         private int Find(ItemDefinition item){for(var i=0;i<player.Model.Capacity;i++)if(!player.Model.GetSlot(i).IsEmpty && player.Model.GetSlot(i).Item==item)return i;Assert.Fail(item.Id);return -1;}
         [UnityTest]public IEnumerator EveryBasicWeaponHitsExactlyOneForwardTarget()
         {
             ClearStart();Position(Vector2.zero,Vector2.right);var first=Target(new Vector2(1.2f,0));var second=Target(new Vector2(1.2f,.5f));var behind=Target(new Vector2(-.3f,0));
             yield return Strike();Assert.That(first.Current,Is.EqualTo(90));Assert.That(second.Current,Is.EqualTo(100));Assert.That(behind.Current,Is.EqualTo(100));
-            foreach(var item in saves.Catalog.Items)if(item.Tool!=null && item.Tool.HarvestMethod==HarvestMethod.Strike)
+            foreach(var item in saves.Catalog.Items)if(item.Tool!=null && item.Tool.HarvestMethod==HarvestMethod.Strike && item.Ranged==null && !item.FishingRod)
             {EmptyInventory();player.Model.Add(item,1);player.SelectSlot(0);first.RestoreHealth(100);second.RestoreHealth(100);Position(Vector2.zero,Vector2.right);yield return null;yield return Strike();Assert.That(first.Current,Is.EqualTo(100-item.Tool.Damage),item.Id);Assert.That(second.Current,Is.EqualTo(100),item.Id);Assert.That(combat.LastHitCount,Is.EqualTo(1));}
         }
         [UnityTest]public IEnumerator PointBlankNormalEdgeAndOutsideRespectRange()
@@ -64,9 +64,12 @@ namespace Wildfolk.Tests
         }
         [UnityTest]public IEnumerator RegionalRecoveryKeepsDestroyedIdentityAndExclusionsAcrossSave()
         {
-            var ores=Object.FindObjectsByType<ResourceIdentity>(FindObjectsSortMode.None).Where(x=>saves.World.Definition.Resources[x.Rule].Rarity==ResourceRarity.Rare).Take(2).ToArray();var ids=ores.Select(x=>x.Id).ToArray();var positions=ores.Select(x=>(Vector2)x.transform.position).ToArray();foreach(var ore in ores)ore.Node.Health.ApplyDamage(ore.Node.Health.Maximum);yield return null;
-            saves.Clock.Model.Advance(721);Assert.That(saves.World.Renewal.Tick(),Is.EqualTo(1));var states=saves.World.Renewal.Capture();Assert.That(states.Count(x=>x.Destroyed),Is.EqualTo(2));var recovered=states.Single(x=>x.Id.StartsWith("p"));foreach(var point in positions)Assert.That(Vector2.Distance(recovered.Position,point),Is.GreaterThanOrEqualTo(28));Assert.That(saves.GetComponent<WorldNavigation>().OutsideCamera(recovered.Position),Is.True);
-            var snapshot=SaveRepository.Decode(SaveRepository.Encode(saves.Capture()));saves.Apply(snapshot);yield return null;Assert.That(saves.World.Renewal.Population.Harvests.Count,Is.EqualTo(2));foreach(var id in ids)Assert.That(Object.FindObjectsByType<ResourceIdentity>(FindObjectsSortMode.None).Any(x=>x.Id==id),Is.False);Assert.That(Object.FindObjectsByType<ResourceIdentity>(FindObjectsSortMode.None).Any(x=>x.Id==recovered.Id),Is.True);
+            var population=saves.World.Renewal.Population;var first=Object.FindObjectsByType<ResourceIdentity>(FindObjectsSortMode.None).First(x=>x.Node.Definition.Kind==ResourceKind.IronOre);var rule=first.Rule;var region=population.Region(rule,first.transform.position);var definition=saves.World.Definition.Resources[rule];
+            var sources=Object.FindObjectsByType<ResourceIdentity>(FindObjectsSortMode.None).Where(x=>x.Rule==rule && population.Region(rule,x.transform.position)==region).ToArray();var removed=new System.Collections.Generic.List<ResourceIdentity>();
+            foreach(var ore in sources){if(population.Count(rule,region)<population.Target(rule,region))break;removed.Add(ore);ore.Node.Health.ApplyDamage(ore.Node.Health.Maximum);}
+            var ids=removed.Select(x=>x.Id).ToArray();var positions=removed.Select(x=>(Vector2)x.transform.position).ToArray();yield return null;Assert.That(ids.Length,Is.GreaterThan(0));
+            saves.Clock.Model.Advance(definition.RespawnSeconds+1);Assert.That(saves.World.Renewal.Tick(),Is.GreaterThan(0));var states=saves.World.Renewal.Capture();Assert.That(states.Count(x=>x.Destroyed),Is.EqualTo(ids.Length));var recovered=states.First(x=>x.Id.StartsWith("p") && x.Rule==rule);foreach(var point in positions)Assert.That(Vector2.Distance(recovered.Position,point),Is.GreaterThanOrEqualTo(definition.HarvestExclusionRadius));Assert.That(saves.GetComponent<WorldNavigation>().OutsideCamera(recovered.Position),Is.True);
+            var snapshot=SaveRepository.Decode(SaveRepository.Encode(saves.Capture()));saves.Apply(snapshot);yield return null;Assert.That(saves.World.Renewal.Population.Harvests.Count,Is.EqualTo(ids.Length));foreach(var id in ids)Assert.That(Object.FindObjectsByType<ResourceIdentity>(FindObjectsSortMode.None).Any(x=>x.Id==id),Is.False);Assert.That(Object.FindObjectsByType<ResourceIdentity>(FindObjectsSortMode.None).Any(x=>x.Id==recovered.Id),Is.True);
         }
         [UnityTest]public IEnumerator AnimalRecoveryPersistsRegionalTimerAndCreatesNewIdentityOutsideCamera()
         {

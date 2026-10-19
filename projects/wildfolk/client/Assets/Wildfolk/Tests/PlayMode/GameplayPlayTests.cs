@@ -182,14 +182,14 @@ namespace Wildfolk.Tests
             yield return PunchOnce();Assert.That(stoneBar.View.activeSelf,Is.True);
             yield return new WaitForSeconds(settings.PunchCooldown);
             yield return DestroyNode(stone);Assert.That(Total("stone"),Is.Zero);
-            yield return Collect("stone",3);
+            yield return Collect("stone",6);
             stone=Resource("stone",-13.5f,-2.1f);
             PositionPlayer(new Vector2(-13.5f,-4.1f));yield return new WaitForFixedUpdate();yield return null;
-            yield return DestroyNode(stone);yield return Collect("stone",6);
-            Assert.That(inventory.Model.GetSlot(3).Count,Is.EqualTo(6));
+            yield return DestroyNode(stone);yield return Collect("stone",12);
+            Assert.That(inventory.Model.GetSlot(3).Count,Is.EqualTo(12));
             var panel=Object.FindFirstObjectByType<InventoryPanel>();
             yield return driver.Inventory(hud);
-            Assert.That(panel.Slots[2].Count.text,Is.EqualTo("6"));Assert.That(panel.Slots[3].Count.text,Is.EqualTo("6"));
+            Assert.That(panel.Slots[2].Count.text,Is.EqualTo("6"));Assert.That(panel.Slots[3].Count.text,Is.EqualTo("12"));
             yield return Click(panel.Slots[3].GetComponent<Button>());
             Assert.That(panel.SelectedName.text,Is.EqualTo("Stone"));
             Assert.That(panel.Slots[3].Selection.enabled,Is.True);
@@ -315,7 +315,7 @@ namespace Wildfolk.Tests
             yield return driver.Inventory(hud);
             Assert.That(equipment.HeldVisual.sprite,Is.SameAs(inventory.Model.GetSlot(1).Item.Tool.HeldSprite));
             yield return UseToolOnce();Assert.That(stone.Health.Current,Is.EqualTo(20));
-            yield return UseToolOnce();Assert.That(stone==null,Is.True);yield return Collect("stone",3);
+            yield return UseToolOnce();Assert.That(stone==null,Is.True);yield return Collect("stone",6);
             yield return Click(bar.Slots[2].GetComponent<Button>());
             Assert.That(equipment.HeldVisual.enabled,Is.False,"Selecting a material restores bare hands.");
             yield return Click(bar.Slots[8].GetComponent<Button>());
