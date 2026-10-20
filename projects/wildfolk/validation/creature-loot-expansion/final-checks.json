@@ -1,0 +1,68 @@
+{
+  "utc": "2026-10-20T08:49:37.003902+00:00",
+  "items": 121,
+  "recipes": 99,
+  "save": 11,
+  "protocol": 13,
+  "validator_errors": [],
+  "visual_validation": "PASS: Landscape/source/1256 unique GUIDs/sprite references/visible text",
+  "tests": {
+    "edit-final": {
+      "total": "66",
+      "passed": "66",
+      "failed": "0",
+      "duration": "14.1954487",
+      "start-time": "2026-10-19 12:19:31Z",
+      "end-time": "2026-10-19 12:19:45Z"
+    },
+    "play-final": {
+      "total": "21",
+      "passed": "21",
+      "failed": "0",
+      "duration": "125.2062553",
+      "start-time": "2026-10-19 12:12:47Z",
+      "end-time": "2026-10-19 12:14:52Z"
+    },
+    "persistence-final": {
+      "total": "12",
+      "passed": "12",
+      "failed": "0",
+      "duration": "150.7116684",
+      "start-time": "2026-10-19 12:23:49Z",
+      "end-time": "2026-10-19 12:26:20Z"
+    },
+    "edit-resumed-final": {
+      "total": "14",
+      "passed": "14",
+      "failed": "0",
+      "duration": "0.757413",
+      "start-time": "2026-10-20 08:35:30Z",
+      "end-time": "2026-10-20 08:35:31Z"
+    },
+    "combat-resolved": {
+      "total": "11",
+      "passed": "11",
+      "failed": "0",
+      "duration": "69.3546898",
+      "start-time": "2026-10-20 08:44:55Z",
+      "end-time": "2026-10-20 08:46:05Z"
+    }
+  },
+  "live_sp_complete": true,
+  "live_host_rehost_complete": true,
+  "live_six_hostile_damage_sp_host": true,
+  "damage": [
+    5,
+    10,
+    6,
+    9,
+    18,
+    12
+  ],
+  "original_user_data_unchanged": true,
+  "unity_play_stopped": true,
+  "isolated_profile_ended": true,
+  "remote_client_tested": false,
+  "four_player_relay_tested": false,
+  "mobile_device_tested": false
+}

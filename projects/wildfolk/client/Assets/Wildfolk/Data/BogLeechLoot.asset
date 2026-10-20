@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 213579090249d754e9b5bdf72d333110, type: 3}
+  m_Name: BogLeechLoot
+  m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.LootTable
+  Items:
+  - Item: {fileID: 11400000, guid: aa4e465c5340fd9488fde7f383b9d7d5, type: 2}
+    Chance: 1
+    Minimum: 1
+    Maximum: 1
+  RareItems: []
+  Experience: 5
+  Gold: 0

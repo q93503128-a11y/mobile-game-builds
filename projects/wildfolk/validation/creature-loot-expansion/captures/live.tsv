@@ -1,0 +1,114 @@
+utc	phase	result
+2026-10-19T12:19:20.1074396Z	gallery	begin
+2026-10-19T12:19:20.3136613Z	bat	begin
+2026-10-19T12:19:21.0682281Z	bat	PASS authored habitat at (26307.11, -1.64) biome=Rocky water=0 tags=CaveFloor, CaveWall
+2026-10-19T12:19:21.0991045Z	bat	PASS bat reached Warning
+2026-10-19T12:19:21.8444856Z	bat	PASS bat reached Action
+2026-10-19T12:19:22.0252642Z	bat	PASS bat reached Recovery
+2026-10-19T12:19:22.0252642Z	bat	PASS unfolded / active
+2026-10-19T12:19:22.6615880Z	bat	DROP medicinal_gland x1
+2026-10-19T12:19:23.5616928Z	bat	PASS automatic pickup medicinal_gland
+2026-10-19T12:19:23.5627030Z	bat	PASS death returns pooled actor
+2026-10-19T12:19:23.5637044Z	stone_crawler	begin
+2026-10-19T12:19:24.1023149Z	stone_crawler	PASS authored habitat at (26184.39, -102.94) biome=Rocky water=0 tags=CaveFloor, CaveWall, DeepCave
+2026-10-19T12:19:24.1277824Z	stone_crawler	PASS stone_crawler reached Warning
+2026-10-19T12:19:24.2084704Z	stone_crawler	PASS stone disguise during first warning
+2026-10-19T12:19:26.0274947Z	stone_crawler	PASS stone_crawler reached Action
+2026-10-19T12:19:26.2752342Z	stone_crawler	PASS stone_crawler reached Recovery
+2026-10-19T12:19:26.2752342Z	stone_crawler	PASS unfolded / active
+2026-10-19T12:19:26.8449768Z	stone_crawler	DROP chitin x1
+2026-10-19T12:19:27.7462678Z	stone_crawler	PASS automatic pickup chitin
+2026-10-19T12:19:27.7467988Z	stone_crawler	DROP stone x1
+2026-10-19T12:19:28.6486486Z	stone_crawler	PASS automatic pickup stone
+2026-10-19T12:19:28.6486486Z	stone_crawler	PASS death returns pooled actor
+2026-10-19T12:19:28.6496528Z	bog_leech	begin
+2026-10-19T12:19:29.1841097Z	bog_leech	PASS authored habitat at (131.68, -585.37) biome=Wetlands water=3.638489 tags=GrassSurface, ForestFloor, RiverBank, WetGround, ShallowWaterEdge
+2026-10-19T12:19:29.2138567Z	bog_leech	PASS bog_leech reached Warning
+2026-10-19T12:19:30.1868032Z	bog_leech	PASS bog_leech reached Action
+2026-10-19T12:19:30.4510965Z	bog_leech	PASS bog_leech reached Recovery
+2026-10-19T12:19:30.4521040Z	bog_leech	PASS unfolded / active
+2026-10-19T12:19:31.1962417Z	bog_leech	DROP medicinal_gland x1
+2026-10-19T12:19:32.0963195Z	bog_leech	PASS automatic pickup medicinal_gland
+2026-10-19T12:19:32.0973275Z	bog_leech	PASS death returns pooled actor
+2026-10-19T12:19:32.0973275Z	wolf	begin
+2026-10-19T12:19:32.5870085Z	wolf	PASS authored habitat at (58.41, 76.19) biome=Forest water=79.25336 tags=GrassSurface, ForestFloor
+2026-10-19T12:19:32.6256541Z	wolf	PASS wolf reached Warning
+2026-10-19T12:19:33.6024523Z	wolf	PASS wolf reached Action
+2026-10-19T12:19:33.8439817Z	wolf	PASS wolf reached Recovery
+2026-10-19T12:19:33.8439817Z	wolf	PASS unfolded / active
+2026-10-19T12:19:34.1675164Z	wolf	PASS same pack joined
+2026-10-19T12:19:34.7222223Z	wolf	DROP bone x2
+2026-10-19T12:19:35.6234290Z	wolf	PASS automatic pickup bone
+2026-10-19T12:19:35.6244367Z	wolf	PASS death returns pooled actor
+2026-10-19T12:19:35.6244367Z	mountain_goat	begin
+2026-10-19T12:19:35.9863844Z	mountain_goat	PASS authored habitat at (-62.30, 231.77) biome=Rocky water=217.0385 tags=GrassSurface, ForestFloor, RockFace, ExposedRock, CoalSeam
+2026-10-19T12:19:36.4703917Z	mountain_goat	PASS passive escape displacement
+2026-10-19T12:19:37.0263429Z	mountain_goat	DROP bone x1
+2026-10-19T12:19:37.9268548Z	mountain_goat	PASS automatic pickup bone
+2026-10-19T12:19:37.9273722Z	mountain_goat	PASS death returns pooled actor
+2026-10-19T12:19:37.9273722Z	crow	begin
+2026-10-19T12:19:38.2441321Z	crow	PASS authored habitat at (2.10, -23.91) biome=Grassland water=33.67147 tags=GrassSurface
+2026-10-19T12:19:38.7285382Z	crow	PASS passive escape displacement
+2026-10-19T12:19:39.2921347Z	crow	DROP raw_meat x1
+2026-10-19T12:19:40.1949219Z	crow	PASS automatic pickup raw_meat
+2026-10-19T12:19:40.1949219Z	crow	PASS death returns pooled actor
+2026-10-19T12:19:40.1964664Z	giant_boar	begin
+2026-10-19T12:19:40.3854438Z	giant_boar	PASS authored habitat at (71.60, 124.94) biome=Forest water=124.8119 tags=GrassSurface, ForestFloor
+2026-10-19T12:19:40.4191904Z	giant_boar	PASS giant_boar reached Warning
+2026-10-19T12:19:42.0311459Z	giant_boar	PASS giant_boar reached Action
+2026-10-19T12:19:42.1176187Z	giant_boar	PASS giant_boar reached Recovery
+2026-10-19T12:19:42.1186231Z	giant_boar	PASS unfolded / active
+2026-10-19T12:19:42.6706181Z	giant_boar	DROP raw_meat x4
+2026-10-19T12:19:43.5758227Z	giant_boar	PASS automatic pickup raw_meat
+2026-10-19T12:19:43.5763573Z	giant_boar	DROP leather x2
+2026-10-19T12:19:44.4880124Z	giant_boar	PASS automatic pickup leather
+2026-10-19T12:19:44.4880124Z	giant_boar	DROP bone x2
+2026-10-19T12:19:45.3881154Z	giant_boar	PASS automatic pickup bone
+2026-10-19T12:19:45.3886295Z	giant_boar	PASS death returns pooled actor
+2026-10-19T12:19:45.3896371Z	crystal_crawler	begin
+2026-10-19T12:19:46.2605864Z	crystal_crawler	PASS authored habitat at (26261.37, -100.54) biome=Rocky water=0 tags=CaveFloor, CaveWall, DeepCave, CrystalPocket
+2026-10-19T12:19:46.2934449Z	crystal_crawler	PASS crystal_crawler reached Warning
+2026-10-19T12:19:47.9701872Z	crystal_crawler	PASS crystal_crawler reached Action
+2026-10-19T12:19:48.2336743Z	crystal_crawler	PASS crystal_crawler reached Recovery
+2026-10-19T12:19:48.2346820Z	crystal_crawler	PASS unfolded / active
+2026-10-19T12:19:48.8154368Z	crystal_crawler	DROP chitin x2
+2026-10-19T12:19:49.7158562Z	crystal_crawler	PASS automatic pickup chitin
+2026-10-19T12:19:49.7158562Z	crystal_crawler	DROP crystal x1
+2026-10-19T12:19:50.6159324Z	crystal_crawler	PASS automatic pickup crystal
+2026-10-19T12:19:50.6174437Z	crystal_crawler	PASS death returns pooled actor
+2026-10-19T12:19:50.6179725Z	crafting	begin
+2026-10-19T12:19:50.9640677Z	crafting	PASS UI crafted bone_arrow
+2026-10-19T12:19:50.9882690Z	crafting	PASS UI crafted bone_trap
+2026-10-19T12:19:51.0059195Z	crafting	PASS UI crafted barbed_bolt
+2026-10-19T12:19:51.0233504Z	crafting	PASS UI crafted carapace_vest
+2026-10-19T12:19:51.1498986Z	crafting	PASS UI crafted healing_salve
+2026-10-19T12:19:51.2483804Z	crafting	PASS queue began trail_ration
+2026-10-19T12:19:58.5638369Z	crafting	PASS collected trail_ration
+2026-10-19T12:19:58.5638369Z	crafting	PASS UI crafted trail_ration
+2026-10-19T12:19:58.6742734Z	crafting	PASS queue began bone_broth
+2026-10-19T12:20:06.9882478Z	crafting	PASS collected bone_broth
+2026-10-19T12:20:06.9882478Z	crafting	PASS UI crafted bone_broth
+2026-10-19T12:20:07.0033822Z	crafting	PASS queue began restorative_broth
+2026-10-19T12:20:15.3296575Z	crafting	PASS collected restorative_broth
+2026-10-19T12:20:15.3306642Z	crafting	PASS UI crafted restorative_broth
+2026-10-19T12:20:15.4516688Z	crafting	PASS queue began bronze
+2026-10-19T12:20:20.7796282Z	crafting	PASS collected bronze
+2026-10-19T12:20:20.7807665Z	crafting	PASS UI crafted bronze
+2026-10-19T12:20:20.9524974Z	crafting	PASS queue began steel
+2026-10-19T12:20:27.3084459Z	crafting	PASS collected steel
+2026-10-19T12:20:27.3094634Z	crafting	PASS UI crafted steel
+2026-10-19T12:20:27.3906608Z	consume	begin
+2026-10-19T12:20:27.4083219Z	consume	PASS salve through primary action
+2026-10-19T12:20:27.4083219Z	consume	PASS salve restored25HP
+2026-10-19T12:20:27.4103322Z	consume	PASS shared4s consumption cooldown
+2026-10-19T12:20:27.4862320Z	camp	begin
+2026-10-19T12:20:27.6307458Z	camp	PASS living guard blocks loot
+2026-10-19T12:20:28.1078697Z	camp	PASS open take-only camp modal
+2026-10-19T12:20:28.1774811Z	camp	PASS loot button claimed entire stack
+2026-10-19T12:20:28.1774811Z	camp	PASS replayed claim rejected
+2026-10-19T12:20:28.1790126Z	camp	PASS claimed ammunition in bag exactly once
+2026-10-19T12:20:29.8264568Z	camp	FAIL isolated Save11 writes camp state: Invalid saved stack
+2026-10-19T12:20:29.8279521Z	failed	System.InvalidOperationException: isolated Save11 writes camp state: Invalid saved stack
+   at Wildfolk.Editor.CreatureLootQa.Check (System.Boolean value, System.String text) [0x00024] in C:\UnityProjects\Wildfolk\Assets\Wildfolk\Editor\CreatureLootQa.cs:17
+   at Wildfolk.Editor.CreatureLootQa+<Flow>d__21.MoveNext () [0x01035] in C:\UnityProjects\Wildfolk\Assets\Wildfolk\Editor\CreatureLootQa.cs:52
+   at Wildfolk.Editor.CreatureLootQa+<Guard>d__12.MoveNext () [0x0003c] in C:\UnityProjects\Wildfolk\Assets\Wildfolk\Editor\CreatureLootQa.cs:20

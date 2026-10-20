@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11dea1035ea390e4484835d1926fd7af, type: 3}
+  m_Name: WolfCreature
+  m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.CreatureDefinition
+  Id: wolf
+  Family: 0
+  Faction: 1
+  Traits: 8
+  Habitat: 2
+  Actions: {fileID: 11400000, guid: 3fb9f04704142674a9b9e1a2937436f4, type: 2}
+  Light:
+    DimDetection: 0.8
+    SafeMovement: 0.75
+    DimMovement: 0.9
+    SuppressSafeAggro: 1
+    ChaseGraceMultiplier: 1
+  SeparationRadius: 0.45
+  PreferredSpacing: 2.4
+  AlertRadius: 7
+  AlertMaxDistance: 12
+  RoamRadius: 7
+  MinimumGroup: 2
+  MaximumGroup: 3

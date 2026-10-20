@@ -10,7 +10,7 @@ namespace Wildfolk
         private static bool Finite(double value)=>!double.IsNaN(value) && !double.IsInfinity(value);
         public static void Validate(SavedGame game,ContentCatalog catalog,WorldGenerationDefinition definition,AnimalPopulationDefinition animals,int playerCapacity,int maximumHP,SurvivalDefinition survival,CharacterGrowthDefinition growth,LocomotionDefinition locomotion)
         {
-            Require(game!=null && game.Version>=2 && game.Version<=10,"Unsupported save version");Require(Finite(game.Elapsed) && game.Elapsed>=0,"Invalid world time");
+            Require(game!=null && game.Version>=2 && game.Version<=11,"Unsupported save version");Require(Finite(game.Elapsed) && game.Elapsed>=0,"Invalid world time");
             var map=new WorldMap(definition,game.Seed,game.BaseGenerationVersion,false);var player=game.Player;
             ValidatePlayer(player,map,catalog,playerCapacity,maximumHP,survival,growth,locomotion,game.IsMultiplayer);
             Require(game.Resources!=null && game.Animals!=null && game.Placeables!=null && game.Pickups!=null,"Missing world state");
@@ -41,7 +41,7 @@ namespace Wildfolk
                 Position(map,state.Position);Position(map,state.Home);Require(Finite(state.RespawnAt) && state.RespawnAt>=0,"Invalid animal timer");
                 Require(state.Missing ? state.HP==0 : state.HP>0 && state.HP<=animals.Rules[state.Rule].Prefab.Health.Maximum,"Invalid animal HP");
             }
-            if(game.Version>=4)ValidateEcology(game,map,animals);
+            if(game.Version>=4)ValidateEcology(game,map,animals,catalog);
             foreach(var state in game.Placeables)
             {
                 Require(state!=null && !string.IsNullOrEmpty(state.Id) && System.Text.Encoding.UTF8.GetByteCount(state.Id)<=61 && ids.Add(state.Id),"Placeable ID collision");Position(map,state.Position);Require(Finite(state.Rotation) && Finite(state.SimulatedAt) && state.SimulatedAt>=0 && state.SimulatedAt<=game.Elapsed,"Invalid placement timing or rotation");
@@ -86,12 +86,13 @@ namespace Wildfolk
             foreach(var value in new[]{needs.Hunger,needs.Thirst,needs.HungerClock,needs.ThirstClock,needs.RecoveryBlock,needs.DrainPenalty,needs.DrainMultiplier})Require(Finite(value) && value>=0,"Invalid survival value");
             Require(needs.Hunger<=survival.MaximumHunger && needs.Thirst<=survival.MaximumThirst && needs.DrainMultiplier>=1 && needs.HungerClock<survival.DamageInterval && needs.ThirstClock<survival.DamageInterval,"Invalid survival state");
         }
-        private static void ValidateEcology(SavedGame game,WorldMap map,AnimalPopulationDefinition animals)
+        private static void ValidateEcology(SavedGame game,WorldMap map,AnimalPopulationDefinition animals,ContentCatalog catalog)
         {
             var ecology=game.AnimalEcology;Require(ecology!=null && ecology.Serial>=0 && ecology.GroupSerial>=0 && ecology.Cursor>=0 && ecology.Pending!=null,"Invalid animal population");var keys=new HashSet<string>();
             foreach(var ticket in ecology.Pending)Require(ticket!=null && ticket.Rule>=0 && ticket.Rule<animals.Rules.Length && map.ValidPopulationRegion(ticket.Region) && Finite(ticket.Due) && ticket.Due>=0 && keys.Add(ticket.Rule+":"+ticket.Region),"Invalid animal recovery");
+            if(game.Version>=11){Require(ecology.ExpandedRegions!=null,"Missing ecology expansion state");var expanded=new HashSet<int>();foreach(var region in ecology.ExpandedRegions)Require(map.ValidPopulationRegion(region) && expanded.Add(region),"Invalid expanded region");}
             var goblins=game.GoblinEcology;if(goblins==null)return;Require(goblins.Serial>=0 && goblins.GroupSerial>=0 && goblins.Camps!=null && goblins.Actors!=null && goblins.Actors.Length<=(map.Streamed ? 20000 : 128),"Invalid faction population");
-            var camps=new HashSet<string>();foreach(var camp in goblins.Camps){Require(camp!=null && !string.IsNullOrEmpty(camp.Id) && camps.Add(camp.Id) && Finite(camp.RefillAt) && camp.RefillAt>=0,"Invalid camp");Position(map,camp.Position);}
+            var camps=new HashSet<string>();foreach(var camp in goblins.Camps){Require(camp!=null && !string.IsNullOrEmpty(camp.Id) && camps.Add(camp.Id) && Finite(camp.RefillAt) && camp.RefillAt>=0,"Invalid camp");Position(map,camp.Position);if(game.Version>=11){Require(camp.Loot!=null && (camp.LootInitialized ? camp.Loot.Length==6 : camp.Loot.Length==0 && !camp.LootOpened && camp.LootRevision==0),"Invalid camp loot state");if(camp.LootInitialized)new InventoryModel(6).Restore(camp.Loot,catalog);}}
             keys.Clear();foreach(var actor in goblins.Actors){Require(actor!=null && !string.IsNullOrEmpty(actor.Id) && keys.Add(actor.Id) && actor.HP>0 && actor.HP<=1000 && (string.IsNullOrEmpty(actor.CampId) || camps.Contains(actor.CampId)),"Invalid faction actor");Position(map,actor.Position);Position(map,actor.Home);}
         }
         private static void ValidateQueue(ProcessingSnapshot state,PlaceableDefinition placed,ContentCatalog catalog)

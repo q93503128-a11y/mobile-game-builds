@@ -1,0 +1,33 @@
+utc	phase	result
+utc	phase	result
+2026-10-20T08:45:18.1080922Z	sp-actual-damage	begin
+2026-10-20T08:45:18.9657103Z	sp-actual-damage	PASS bat damage=5 expected=5 impacts=1
+2026-10-20T08:45:19.1011571Z	sp-actual-damage	PASS bat one hit through recovery
+2026-10-20T08:45:20.9108620Z	sp-actual-damage	PASS stone_crawler damage=10 expected=10 impacts=1
+2026-10-20T08:45:21.0927492Z	sp-actual-damage	PASS stone_crawler one hit through recovery
+2026-10-20T08:45:22.2324721Z	sp-actual-damage	PASS bog_leech damage=6 expected=6 impacts=1
+2026-10-20T08:45:22.3235373Z	sp-actual-damage	PASS bog_leech one hit through recovery
+2026-10-20T08:45:23.4283106Z	sp-actual-damage	PASS wolf damage=9 expected=9 impacts=1
+2026-10-20T08:45:23.6136332Z	sp-actual-damage	PASS wolf one hit through recovery
+2026-10-20T08:45:25.3425450Z	sp-actual-damage	PASS giant_boar damage=18 expected=18 impacts=1
+2026-10-20T08:45:25.4344357Z	sp-actual-damage	PASS giant_boar one hit through recovery
+2026-10-20T08:45:27.2480146Z	sp-actual-damage	PASS crystal_crawler damage=12 expected=12 impacts=1
+2026-10-20T08:45:27.4924785Z	sp-actual-damage	PASS crystal_crawler one hit through recovery
+2026-10-20T08:45:27.5020537Z	complete	live flow complete
+2026-10-20T08:45:59.4667923Z	idle	PASS local Host starts:
+2026-10-20T08:45:59.4805688Z	idle	PASS enter multiplayer world
+2026-10-20T08:46:02.6432445Z	idle	PASS authoritative world ready
+2026-10-20T08:46:03.2980886Z	host-actual-damage	begin
+2026-10-20T08:46:04.2016880Z	host-actual-damage	PASS bat damage=5 expected=5 impacts=1
+2026-10-20T08:46:04.3679244Z	host-actual-damage	PASS bat one hit through recovery
+2026-10-20T08:46:06.1727173Z	host-actual-damage	PASS stone_crawler damage=10 expected=10 impacts=1
+2026-10-20T08:46:06.3757084Z	host-actual-damage	PASS stone_crawler one hit through recovery
+2026-10-20T08:46:07.4960647Z	host-actual-damage	PASS bog_leech damage=6 expected=6 impacts=1
+2026-10-20T08:46:07.6844688Z	host-actual-damage	PASS bog_leech one hit through recovery
+2026-10-20T08:46:08.8165213Z	host-actual-damage	PASS wolf damage=9 expected=9 impacts=1
+2026-10-20T08:46:09.0161165Z	host-actual-damage	PASS wolf one hit through recovery
+2026-10-20T08:46:10.7471683Z	host-actual-damage	PASS giant_boar damage=18 expected=18 impacts=1
+2026-10-20T08:46:10.9059923Z	host-actual-damage	PASS giant_boar one hit through recovery
+2026-10-20T08:46:12.7068987Z	host-actual-damage	PASS crystal_crawler damage=12 expected=12 impacts=1
+2026-10-20T08:46:12.9136667Z	host-actual-damage	PASS crystal_crawler one hit through recovery
+2026-10-20T08:46:12.9279258Z	complete	live flow complete

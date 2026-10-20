@@ -1,18 +1,28 @@
-# Food / Fishing / Reusable Water
+# 음식·낚시·재사용 물
 
-현재 음식/낚시는 [콘텐츠 정본](CONTENT_EXPANSION.md)을 따른다. Hunger drain.08/s, Thirst.12/s와 기존 Raw Water 불이익을 유지한다. 음식은 timed combat buff 없이 기본 Hunger/Thirst를 회복한다.
+2026-10-20. Hunger drain0.08/s, Thirst0.12/s와 Raw Water 불이익을 유지한다. 음식/연고는 즉시 HP 또는 Stamina도 회복할 수 있으며 timed buff stack은 없다. 새 회복품과 Mixed Stew는 공용4초 소비 간격이다. Hunger/Thirst가 가득 차도 해당 HP/Stamina가 부족하면 사용한다. Host 권위·alive/Running·실제 stack 소모 후 적용하며 실패·죽음·cooldown에는 소비하지 않는다.
 
-|음식|Hunger|Thirst|공급/시설|
-|---|---:|---:|---|
-|Berry|8|3|renewable bush|
-|Mushroom|5|0|renewable source|
-|Raw Fish|6|0|낚시|
-|Roasted Mushroom|16|0|Campfire5s|
-|Cooked Fish|26|0|Campfire5s|
-|Mushroom Stew|35|10|Cooking Pot7s|
-|Meat Stew|48|12|Cooking Pot8s|
-|Fish Stew|46|15|Cooking Pot8s|
-|Mixed Stew|65|18|Cooking Pot10s|
+|Item ID|Hunger|Thirst|즉시 HP|즉시 Stamina|
+|---|---:|---:|---:|---:|
+|clean_water_cup|0|38|0|0|
+|cooked_meat|35|0|0|0|
+|raw_meat|8|0|0|0|
+|raw_water_cup|0|15|0|0|
+|berry|8|3|0|0|
+|mushroom|5|0|0|0|
+|raw_fish|6|0|0|0|
+|roasted_mushroom|16|0|0|0|
+|cooked_fish|26|0|0|0|
+|mushroom_stew|35|10|0|0|
+|meat_stew|48|12|0|0|
+|fish_stew|46|15|0|0|
+|mixed_stew|65|18|8|0|
+|healing_salve|0|0|25|0|
+|bone_broth|24|12|18|0|
+|restorative_broth|22|10|0|35|
+|trail_ration|25|0|0|20|
+
+Salve는 현장 Hand, Trail Ration은 Campfire7초, Bone/Restorative Broth는 Pot8초다. 기존 Stew의 Hunger 우위·Cooked Meat의 단순 비용을 유지하고 HP/Stamina 지원을 선택하게 한다. 전체 비용은 CONTENT_EXPANSION을 따른다.
 
 기존 Cooked Meat와 Cup 정수는 유지한다. Cooking Pot은 독립 설치물이며 기존 sequential 처리기를 재사용한다. 입력을 예약하고 완료 결과는 Take로 수령하며 full bag에서는 cargo를 보존한다. 파괴/휴면/Save/reHost는 기존 처리 상태 규칙과 같다.
 

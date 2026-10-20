@@ -23,7 +23,8 @@ namespace Wildfolk
             foreach(var member in members)
             {
                 if(member==this || member.Definition==null || Definition==null || member.Definition.Faction!=Definition.Faction)continue;
-                var eligible=alert==CreatureAlert.Flee ? member.GroupId==GroupId && !string.IsNullOrEmpty(GroupId) && member.Definition.Has(CreatureTrait.FleeTogether) : member.Definition.Has(CreatureTrait.AllyAssist);
+                var samePack=!string.IsNullOrEmpty(GroupId) && member.GroupId==GroupId;
+                var eligible=alert==CreatureAlert.Flee ? samePack && member.Definition.Has(CreatureTrait.FleeTogether) : member.Definition.Has(CreatureTrait.AllyAssist) || samePack && member.Definition.Has(CreatureTrait.PackAggro);
                 if(!eligible || Vector2.Distance(member.transform.position,transform.position)>Definition.AlertRadius || Vector2.Distance(member.transform.position,origin)>Definition.AlertMaxDistance)continue;
                 member.Alerted?.Invoke(origin,alert);notified++;
             }

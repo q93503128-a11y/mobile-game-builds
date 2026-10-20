@@ -4,6 +4,9 @@ namespace Wildfolk
     [CreateAssetMenu(menuName="Wildfolk/Consumable")]
     public sealed class ConsumableDefinition : ScriptableObject
     {
+        [Min(0)] public int HealthRestore;
+        [Min(0)] public float StaminaRestore;
+        [Min(0)] public float UseCooldownSeconds;
         [Min(0)] public float HungerRestore;
         [Min(0)] public float ThirstRestore;
         [Min(0)] public float RecoveryBlockSeconds;

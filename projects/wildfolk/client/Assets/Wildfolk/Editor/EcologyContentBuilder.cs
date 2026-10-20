@@ -11,6 +11,7 @@ namespace Wildfolk.Editor
             var projectilePrefab=PrefabUtility.SaveAsPrefabAsset(pebble.gameObject,"Assets/Wildfolk/Prefabs/Pebble.prefab").GetComponent<StoneProjectile>();Object.DestroyImmediate(pebble.gameObject);
             var source=AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Wildfolk/Prefabs/Goblin.prefab");var root=Object.Instantiate(source);root.name="Slingshot Goblin";
             var goblin=root.GetComponent<GoblinController>();goblin.Member.Definition=EcologyAssets.Species("SlingshotGoblin");
+            root.GetComponent<LootOnDeath>().Table=EcologyAssets.Data<LootTable>("SlingshotGoblinLoot");
             var attack=root.AddComponent<SlingshotAttack>();goblin.Ranged=attack;attack.Definition=EcologyAssets.Data<SlingshotDefinition>("SlingshotAttack");attack.Facing=goblin.Facing;attack.Pose=goblin.Pose;attack.Owner=goblin.OwnHealth;attack.Projectile=projectilePrefab;
             attack.Frame=Sprite("Slingshot Frame","slingshot",goblin.Facing.RightHand,new Vector2(0,.2f),.65f,3).transform;
             attack.PouchStone=Sprite("Loaded Pebble","pebble",goblin.Pose,Vector2.zero,.45f,4);attack.PouchStone.enabled=false;
@@ -36,7 +37,7 @@ namespace Wildfolk.Editor
             var root=Group("Goblin Camp",null);var camp=root.gameObject.AddComponent<GoblinCamp>();camp.Definition=EcologyAssets.Data<GoblinCampDefinition>("GoblinCamp");
             var shelter=Group("Shelter",root,-2,1);Shadow(shelter,3.2f,.85f);var image=Sprite("Tent","goblin_tent",shelter,Vector2.zero,1,0);var sort=shelter.gameObject.AddComponent<UnityEngine.Rendering.SortingGroup>();shelter.gameObject.AddComponent<DepthSort>().Visual=sort;shelter.gameObject.AddComponent<BoxCollider2D>().size=new Vector2(2.1f,1.2f);
             var fire=Group("Camp Fire",root,1,-1);Shadow(fire,1.5f,.4f);Sprite("Fire","campfire",fire,Vector2.zero,.7f,0);var fireSort=fire.gameObject.AddComponent<UnityEngine.Rendering.SortingGroup>();fire.gameObject.AddComponent<DepthSort>().Visual=fireSort;
-            var box=Group("Camp Supplies",root,2,1.2f);Shadow(box,1.1f,.35f);Sprite("Box","camp_box",box,Vector2.zero,.8f,0);var boxSort=box.gameObject.AddComponent<UnityEngine.Rendering.SortingGroup>();box.gameObject.AddComponent<DepthSort>().Visual=boxSort;box.gameObject.AddComponent<BoxCollider2D>().size=new Vector2(.8f,.55f);
+            var box=Group("Camp Supplies",root,2,1.2f);Shadow(box,1.1f,.35f);camp.SupplyVisual=Sprite("Box","camp_supplies",box,Vector2.zero,.8f,0);camp.Supplies=box;camp.SupplyIcon=VisualArtImporter.Sprite("camp_supplies");camp.OpenedSprite=VisualArtImporter.Sprite("camp_supplies_open");var boxSort=box.gameObject.AddComponent<UnityEngine.Rendering.SortingGroup>();box.gameObject.AddComponent<DepthSort>().Visual=boxSort;box.gameObject.AddComponent<BoxCollider2D>().size=new Vector2(.8f,.55f);
             camp.Definition.Prefab=PrefabUtility.SaveAsPrefabAsset(root.gameObject,"Assets/Wildfolk/Prefabs/GoblinCamp.prefab").GetComponent<GoblinCamp>();EditorUtility.SetDirty(camp.Definition);Object.DestroyImmediate(root.gameObject);
         }
     }

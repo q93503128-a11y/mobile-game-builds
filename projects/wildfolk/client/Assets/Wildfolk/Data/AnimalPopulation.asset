@@ -14,25 +14,70 @@ MonoBehaviour:
   m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.AnimalPopulationDefinition
   Rules:
   - Prefab: {fileID: 8300660236168116533, guid: 64fdfe82ef5527c47b404255e0ed0963, type: 3}
-    Home: {x: 0, y: 0}
     Population: 10
     RespawnSeconds: 180
+    ChunkChance: 0
+    RegionalTarget: 0
   - Prefab: {fileID: 6093698111049186242, guid: 30d479c61b4d57940a5bab9d42c59add, type: 3}
-    Home: {x: 0, y: 0}
     Population: 6
     RespawnSeconds: 300
+    ChunkChance: 0
+    RegionalTarget: 0
   - Prefab: {fileID: 6056661540184698363, guid: a96bb258551d66144a37dd0ab820d1b3, type: 3}
-    Home: {x: 0, y: 0}
     Population: 12
     RespawnSeconds: 180
+    ChunkChance: 0
+    RegionalTarget: 0
   - Prefab: {fileID: 7554119870305175797, guid: 8a3b9af0f295bee4ca37d02be32aaa71, type: 3}
-    Home: {x: 0, y: 0}
     Population: 8
     RespawnSeconds: 420
+    ChunkChance: 0
+    RegionalTarget: 0
   - Prefab: {fileID: 7754414801024710065, guid: 66cb43b761b13a140a5d9e9a612aef5a, type: 3}
-    Home: {x: 0, y: 0}
     Population: 10
     RespawnSeconds: 300
+    ChunkChance: 0
+    RegionalTarget: 0
+  - Prefab: {fileID: 7742574341082542728, guid: 606a39f29e2d96246a97a1eb443315b5, type: 3}
+    Population: 10
+    RespawnSeconds: 180
+    ChunkChance: 0.75
+    RegionalTarget: 3
+  - Prefab: {fileID: 3333198609217396872, guid: 0d48b7b2415059245912ba9b7cee459e, type: 3}
+    Population: 8
+    RespawnSeconds: 300
+    ChunkChance: 0.45
+    RegionalTarget: 2
+  - Prefab: {fileID: 3370433634910759010, guid: 683ad293a91e6d644b77b6924e793da6, type: 3}
+    Population: 6
+    RespawnSeconds: 180
+    ChunkChance: 0.5
+    RegionalTarget: 2
+  - Prefab: {fileID: 6539573856638166944, guid: 1bbb6c1fec53f4d49843d81d88066d29, type: 3}
+    Population: 8
+    RespawnSeconds: 360
+    ChunkChance: 0.4
+    RegionalTarget: 3
+  - Prefab: {fileID: 8199870280272451465, guid: 65163739c82cdba4a8284444d3c24775, type: 3}
+    Population: 6
+    RespawnSeconds: 300
+    ChunkChance: 0.5
+    RegionalTarget: 2
+  - Prefab: {fileID: 3714645376440935577, guid: 39eaef2fb9c0fb149a7bf4a92ea5f5a1, type: 3}
+    Population: 6
+    RespawnSeconds: 240
+    ChunkChance: 0.5
+    RegionalTarget: 2
+  - Prefab: {fileID: 6969498992667836707, guid: 2785592ea19dcf74a97aef834d794fda, type: 3}
+    Population: 3
+    RespawnSeconds: 600
+    ChunkChance: 0.2
+    RegionalTarget: 1
+  - Prefab: {fileID: 5538545795845663172, guid: b14b04b6b7c01a94fbaac89e349254b2, type: 3}
+    Population: 5
+    RespawnSeconds: 450
+    ChunkChance: 0.55
+    RegionalTarget: 1
   HardCap: 80
   PlayerDistance: 14
   BaseDistance: 8

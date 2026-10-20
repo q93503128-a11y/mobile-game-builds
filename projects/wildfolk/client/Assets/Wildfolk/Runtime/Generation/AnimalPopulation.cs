@@ -19,8 +19,8 @@ namespace Wildfolk
         public static int Region(WorldMap map,Vector2 p)
         {if(map.Streamed)return map.PopulationRegion(p);var size=map.Definition.Size;return Mathf.Clamp(Mathf.FloorToInt((p.x/size.x+.5f)*4),0,3)+4*Mathf.Clamp(Mathf.FloorToInt((p.y/size.y+.5f)*3),0,2);}
         public int Count(int rule,int region)
-        {var count=0;foreach(var actor in live.Values)if(actor!=null && actor.State.Rule==rule && actor.State.Region==region)count++;return count;}
-        public int Target(int rule,int region)=>World.Map.Streamed ? 2 : targets[rule,region];
+        {if(World.Map.Streamed)return LogicalCount(rule,region);var count=0;foreach(var actor in live.Values)if(actor!=null && actor.State.Rule==rule && actor.State.Region==region)count++;return count;}
+        public int Target(int rule,int region)=>World.Map.Streamed ? StreamTarget(rule,WorldMap.Decode(region)) : targets[rule,region];
         public int SpeciesCount(int rule){var count=0;if(World.Map.Streamed){foreach(var a in live.Values)if(a!=null && a.State.Rule==rule)count++;return count;}for(var i=0;i<12;i++)count+=Count(rule,i);return count;}
         private Vector2 Candidate(int region,System.Random random)=>Candidate(World.Definition.Size,region,random);
         private static Vector2 Candidate(Vector2 size,int region,System.Random random)
@@ -81,12 +81,13 @@ namespace Wildfolk
         {
             var actor=NetworkSpawnFactory.Spawn(Definition.Rules[state.Rule].Prefab,state.Position,Quaternion.identity,World.Environment);
             actor.Player=World.Player.transform;actor.Session=World.Session;actor.Region=World.Region;actor.Member.Anchor=state.Home;actor.Member.GroupId=state.GroupId;actor.Separation.Player=actor.Player;
+            actor.GetComponent<WildlifeActionBrain>()?.Bind(Navigation);
             var loot=actor.GetComponent<LootOnDeath>();loot.Player=World.Player;loot.Pickup=World.Pickup;loot.Settings=World.Settings;
             state.Missing=false;if(state.HP>0)actor.Health.RestoreHealth(state.HP);state.HP=actor.Health.Current;state.RespawnAt=0;
             var identity=actor.gameObject.AddComponent<AnimalIdentity>();identity.State=state;identity.Animal=actor;identity.Owner=this;identity.Bind();live.Add(state.Id,identity);
         }
         public void Removed(AnimalIdentity identity)
-        {live.Remove(identity.State.Id);Schedule(identity.State.Rule,identity.State.Region,Clock.Model.Elapsed);}
+        {live.Remove(identity.State.Id);if(World.Map.Streamed)AdjustLogical(identity.State.Rule,identity.State.Region,-1);Schedule(identity.State.Rule,identity.State.Region,Clock.Model.Elapsed);}
         private void Schedule(int rule,int region,double now)
         {if(Count(rule,region)<Target(rule,region) && SpeciesCount(rule)<Definition.Rules[rule].Population && !pending.Exists(t=>t.Rule==rule && t.Region==region))pending.Add(new RecoveryTicket{Rule=rule,Region=region,Due=now+Definition.Rules[rule].RespawnSeconds});}
         private void Update(){if(SimulationAuthority.Allows(this) && World.Session.WorldIsRunning && Clock.Model.Elapsed>=nextAttempt){nextAttempt=Clock.Model.Elapsed+5;Tick();}}
@@ -109,7 +110,7 @@ namespace Wildfolk
             if(World.Map.Streamed)return CaptureStreamed();var result=new List<AnimalSnapshot>();foreach(var identity in live.Values)if(identity!=null && identity.Animal.Health.IsAlive){var s=identity.State;result.Add(new AnimalSnapshot{Id=s.Id,Species=s.Species,Rule=s.Rule,GroupId=s.GroupId,Region=s.Region,HP=identity.Animal.Health.Current,Position=identity.transform.position,Home=s.Home});}return result.ToArray();
         }
         public AnimalEcologySnapshot CaptureEcology()
-        {var tickets=new RecoveryTicket[pending.Count];for(var i=0;i<tickets.Length;i++){var t=pending[i];tickets[i]=new RecoveryTicket{Rule=t.Rule,Region=t.Region,Due=t.Due};}return new AnimalEcologySnapshot{Serial=serial,GroupSerial=groupSerial,Cursor=cursor,Pending=tickets,InitializedRegions=new List<int>(initializedRegions).ToArray()};}
+        {var tickets=new RecoveryTicket[pending.Count];for(var i=0;i<tickets.Length;i++){var t=pending[i];tickets[i]=new RecoveryTicket{Rule=t.Rule,Region=t.Region,Due=t.Due};}return new AnimalEcologySnapshot{Serial=serial,GroupSerial=groupSerial,Cursor=cursor,Pending=tickets,InitializedRegions=new List<int>(initializedRegions).ToArray(),ExpandedRegions=new List<int>(expandedRegions).ToArray()};}
         public void Restore(AnimalSnapshot[] states,AnimalEcologySnapshot ecology=null)
         {
             if(!SimulationAuthority.Allows(this))return;

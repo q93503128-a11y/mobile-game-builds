@@ -23,7 +23,7 @@ namespace Wildfolk.Tests
         {
             var session=AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Wildfolk/Prefabs/NetworkSession.prefab").GetComponent<NetworkSession>();
             var entries=session.EcologyPrefab.GetComponent<NetworkCreatureWorld>().Prefabs;
-            Assert.That(entries.Length,Is.EqualTo(54));Assert.That(entries.Select(e=>e.NetworkPrefab).Distinct().Count(),Is.EqualTo(54));
+            Assert.That(entries.Length,Is.EqualTo(63));Assert.That(entries.Select(e=>e.NetworkPrefab).Distinct().Count(),Is.EqualTo(63));
             foreach(var e in entries)
             {
                 Assert.That(e.Source,Is.Not.Null);Assert.That(e.NetworkPrefab.GetComponent<NetworkObject>(),Is.Not.Null);
@@ -34,7 +34,7 @@ namespace Wildfolk.Tests
                 var transform=e.NetworkPrefab.GetComponent<NetworkTransform>();Assert.That(transform.Interpolate && transform.UseUnreliableDeltas,Is.True);Assert.That(transform.PositionThreshold,Is.GreaterThan(0));
                 Assert.That(creature.Visual,Is.Not.Null);Assert.That(e.NetworkPrefab.GetComponent<LootOnDeath>().Table,Is.Not.Null);
             }
-            Assert.That(entries.Count(e=>e.Source.GetComponent<CreatureMember>()!=null),Is.EqualTo(9));
+            Assert.That(entries.Count(e=>e.Source.GetComponent<CreatureMember>()!=null),Is.EqualTo(17));
             Assert.That(entries.Single(e=>e.Source.GetComponent<StoneProjectile>()!=null).NetworkPrefab.GetComponent<NetworkProjectile>(),Is.Not.Null);
         }
         [Test]public void PlayerRequestsNeverContainTargetDamageOrClientHitResult()
@@ -47,7 +47,7 @@ namespace Wildfolk.Tests
         {
             var world=AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Wildfolk/Prefabs/NetworkEcology.prefab").GetComponent<NetworkCreatureWorld>();
             Assert.That(world.GetComponent<WorldSaveService>(),Is.Null);Assert.That(world.World.GenerateOnAwake,Is.False);
-            Assert.That(world.Animals.Definition.Rules.Length,Is.EqualTo(5));Assert.That(world.Goblins.CampDefinition.Prefab,Is.Not.Null);
+            Assert.That(world.Animals.Definition.Rules.Length,Is.EqualTo(13));Assert.That(world.Goblins.CampDefinition.Prefab,Is.Not.Null);
             Assert.That(world.World.Water,Is.Not.Null);Assert.That(world.World.Pickup,Is.Not.Null);
         }
     }

@@ -241,7 +241,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bc835398879986747ad63dd752bddc68, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.DepthSort
   Visual: {fileID: 4331195002099880729}
 --- !u!61 &1372408969880722252
@@ -371,7 +371,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 21300000, guid: f319aed3cf0c55a4f87fb1666a6ccd6c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4c1c28adf5b8af149870a049a7f89395, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -517,13 +517,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 19ce33bce2213f44b9f618cc7b810b86, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.GoblinCamp
   State:
-    Id: 
+    Id:
     Position: {x: 0, y: 0}
     RefillAt: 0
+    LootInitialized: 0
+    LootOpened: 0
+    LootRevision: 0
+    Loot: []
   Definition: {fileID: 11400000, guid: c8a1ac1a1fd83cd41b259e9bc486b9de, type: 2}
+  Supplies: {fileID: 523000842888350247}
+  SupplyIcon: {fileID: 21300000, guid: 4c1c28adf5b8af149870a049a7f89395, type: 3}
+  SupplyVisual: {fileID: 128356149987041953}
+  OpenedSprite: {fileID: 21300000, guid: d75ca9face41a8741b616f67794dd714, type: 3}
 --- !u!1 &7279168683282484124
 GameObject:
   m_ObjectHideFlags: 0
@@ -674,7 +682,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bc835398879986747ad63dd752bddc68, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.DepthSort
   Visual: {fileID: 6012559234994193590}
 --- !u!61 &3069658432119769221
@@ -872,6 +880,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bc835398879986747ad63dd752bddc68, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.DepthSort
   Visual: {fileID: 5638927012200334661}

@@ -1,6 +1,6 @@
 # 현재 초기 플레이 수치
 
-2026-10-14. 실제 정본은 client/Assets/Wildfolk/Data 에셋이다. 사용자 요구 범위와 기능 검증을 위한 초기값이며 상대 게임의 숫자를 측정/복제하지 않았다. 재미/세부 밸런스는 사용자 테스트로 판단한다.
+2026-10-20. 실제 정본은 client/Assets/Wildfolk/Data 에셋이다. 사용자 요구 범위와 기능 검증을 위한 초기값이며 상대 게임의 숫자를 측정/복제하지 않았다. 재미/세부 밸런스는 사용자 테스트로 판단한다.
 
 ## 기본 플레이
 
@@ -164,9 +164,9 @@ Torch: Hand Wood1+Coal1→4, stack50/설치HP40/footprint.5×.5/거리3.5. 광�
 
 Stone6/75초, Iron6/120초, Coal10/105초, Copper6/150초, Tin5/165초(HP50/2 Pan hit). generation2는64unit chunk deficit,광물/Stone target0.85,5초마다활성지역조회·최대16ticket/2source/48후보다. Save9/Protocol11. 경제 전체 수치/분모와 검증 한계는 [RESOURCE_TEMPO](RESOURCE_TEMPO.md)를 따른다.
 
-## Workbench III (2026-10-19 현재)
+## Workbench III와 현재 생물 경제
 
-현재 Save10/Protocol12, 새 월드 generation3. 위 I–II/Resource Tempo 기록의 기존 수율·회복 간격은 유지한다. III 비용·장비·포탑·모듈의 전체 표는 [CONTENT_EXPANSION의 III 절](CONTENT_EXPANSION.md#iii-재료와-비용)에 통합했다. 출시 밸런스 확정값은 아니다.
+현재 Save11/Protocol13, 새 월드 generation3. 위 I–II/Resource Tempo 기록의 기존 수율·회복 간격은 유지한다. III 비용·장비·포탑·모듈의 전체 표는 [CONTENT_EXPANSION](CONTENT_EXPANSION.md)에 통합했다. 출시 밸런스 확정값은 아니다.
 
 II→III: Wood10 Stone10 Bronze4 Steel4 Crystal4 Diamond1. 개인 Diamond6종은 기존 Steel 장비+Diamond12, 최초 공유 업그레이드 포함1인13/4인49다. Diamond Sword52/Spear42, Head4/Body6, 도구 기본피해18·기존 속도/거리·채집 효율 약+22%다. Crystal Lantern 반경×1.35, Telescope는 Utility 슬롯을 차지하지 않는다.
 
@@ -180,9 +180,27 @@ Diamond3/300초/target.70, Crystal6/150초/target.85, Steel Pickaxe 이상, 지�
 |Iron Ore / Coal|83 / 121|197 / 226|
 |Copper Ore / Tin Ore|40 / 19|68 / 30|
 |Diamond / Crystal|13 / 16|49 / 28|
-|Leather / Feather / Fiber|17 / 14 / 6|50 / 26 / 24|
+|Leather / Feather / Fiber / Chitin|15 / 14 / 6 / 4|48 / 26 / 24 / 4|
 |중간재 제작량 Bronze / Steel / Mechanical Part|57 / 58 / 14|90 / 118 / 14|
 
 중간재는 raw 합계에 다시 더하지 않는다. shared/personal/optional 분류와 batch 잔량은 `validation/tier-three/audit.tsv`에 있다. 선택분은 Ballista1+Repeater1+Beacon1+각 모듈2+Ballista Bolt60+기본 Bolt120 및 기존 선택 root다. 모든 플레이어의 필수 예산을 의미하지 않는다. Ballista6발마다 Wood2+Steel1, Repeater 기본 Bolt12발마다 Wood2+Feather1이므로 장기 사격 비용은 별도다.
 
 Ballista62damage/26range/2.3초/45도·초/HP180, Repeater16/17/.55초/105도·초/HP160. Ammo Box1→3칸(각100stack), Rotation×1.35, Frame 최대HP×1.5(회복 없음). 실제 기기 FPS/재미/장시간 전투 및 4인 체감 경제는 미검수다.
+
+
+## 신규8종 · 현재 데이터
+
+아래 cap은 종별 활성 상한이며 합계52를 기존46에 더해 동시에98마리를 보장하지 않는다. 공용 활성80/청크 quota가 우선한다. chance는 청크가 규칙을 선택할 확률이며 실제 habitat·충돌·거리 후보도 통과해야 한다.
+
+|종|HP|피해|경고/준비/Action/회복 초|cap|지역 목표 / chance|회복 지연 초|
+|---|---:|---:|---|---:|---|---:|
+|bat|24|5|0.35/0.35/0.4/1.2|10|3 / 75%|180|
+|stone_crawler|80|10|1/0.65/0.2/1.5|8|2 / 45%|300|
+|bog_leech|28|6|0.45/0.45/0.25/1.4|6|2 / 50%|180|
+|wolf|60|9|0.4/0.45/0.2/0.95|8|3 / 40%|360|
+|mountain_goat|45|0|0/0/0/0|6|2 / 50%|300|
+|crow|14|0|0/0/0/0|6|2 / 50%|240|
+|giant_boar|130|18|0.7/0.85/0.65/2|3|1 / 20%|600|
+|crystal_crawler|95|12|0.65/1/0.25/1.8|5|1 / 55%|450|
+
+새 장비/소모품·전체 drop 수치는 [콘텐츠](CONTENT_EXPANSION.md)/[생물](CREATURES_AND_LOOT.md)/[음식](FOOD_AND_FISHING.md), 필수/선택1P·4P 계산과 확률 기대값은 [이번 경제 표](../validation/creature-loot-expansion/ECONOMY.md)를 따른다. 새로운 full armor tier/buff stack/Station은 없다. 실제 플레이 진행 속도·재미를 측정한 수치가 아니다.

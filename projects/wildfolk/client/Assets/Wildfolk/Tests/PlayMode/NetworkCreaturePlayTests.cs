@@ -35,7 +35,7 @@ namespace Wildfolk.Tests
         [UnityTest]public IEnumerator HostSpawnGroupCombatAndDeathHaveOneAuthority()
         {
             yield return Host();
-            Assert.That(Object.FindObjectsByType<AnimalIdentity>(FindObjectsSortMode.None).Select(a=>a.State.Species).Distinct().Count(),Is.EqualTo(5));
+            Assert.That(Object.FindObjectsByType<AnimalIdentity>(FindObjectsSortMode.None).Where(a=>a.State.Rule<5).Select(a=>a.State.Species).Distinct().Count(),Is.EqualTo(5));
             foreach(var identity in Object.FindObjectsByType<AnimalIdentity>(FindObjectsSortMode.None)){var net=identity.GetComponent<NetworkCreature>();Assert.That(net.IsSpawned && net.IsServer,Is.True);Assert.That(net.Identity.Value.Group.ToString(),Is.EqualTo(identity.State.GroupId));}
             var origin=world.World.Map.Spawn;Place(player,origin);
             var a=Animal(origin+Vector2.up*.95f,"network-flock");var b=Animal(origin+Vector2.up*3,"network-flock");yield return null;yield return null;

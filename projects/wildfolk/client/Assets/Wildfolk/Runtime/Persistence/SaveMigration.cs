@@ -3,6 +3,12 @@ namespace Wildfolk
 {
     public static class SaveMigration
     {
+        public static void CreatureLootFromEarlier(SavedGame game)
+        {
+            if(game.AnimalEcology!=null)game.AnimalEcology.ExpandedRegions=Array.Empty<int>();
+            if(game.GoblinEcology!=null)foreach(var camp in game.GoblinEcology.Camps){camp.LootInitialized=camp.LootOpened=false;camp.LootRevision=0;camp.Loot=Array.Empty<SavedStack>();}
+            game.Version=11;
+        }
         public static void EcologyFromV3(SavedGame game,WorldGenerationDefinition definition,AnimalPopulationDefinition animals)
         {
             var living=new System.Collections.Generic.List<AnimalSnapshot>();var tickets=new System.Collections.Generic.List<RecoveryTicket>();var map=new WorldMap(definition,game.Seed);var targets=AnimalPopulation.BuildTargets(map,animals);

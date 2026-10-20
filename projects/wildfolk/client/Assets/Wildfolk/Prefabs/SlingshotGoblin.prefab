@@ -368,7 +368,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 31144a4856d21a0469ec38cffc161b18, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.WorldHealthBar
   Health: {fileID: 8719063598604578231}
   View: {fileID: 6093359349526253018}
@@ -1126,7 +1126,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d7f0ec9e19b23b74ca69f030c5c64078, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.Health
   Definition: {fileID: 11400000, guid: 88be00e50aa303045939ea5ec5b8af89, type: 2}
 --- !u!114 &5979646879241780466
@@ -1139,7 +1139,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bc835398879986747ad63dd752bddc68, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.DepthSort
   Visual: {fileID: 4515920040389858289}
 --- !u!114 &5526028096778738098
@@ -1152,7 +1152,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c148bd731bfd11b4f872ced2877cea22, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.CharacterFacing
   LeftEye: {fileID: 5385073197693788542}
   RightEye: {fileID: 4588281430826394517}
@@ -1173,7 +1173,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0cebd7b307ad85b4c9b2a0b72a930452, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.GoblinController
   Definition: {fileID: 11400000, guid: 9d659cc738ec9d64a8abd8660ab3911c, type: 2}
   Session: {fileID: 0}
@@ -1195,10 +1195,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e91da0d8745f14941b64645cb74e00c3, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.CreatureMember
   Definition: {fileID: 11400000, guid: 7da28cc629b338c47bb6bc8ad368090f, type: 2}
-  GroupId: 
+  GroupId:
   Anchor: {x: 0, y: 0}
   AdditionalTraits: 0
 --- !u!114 &5551729237052054893
@@ -1211,7 +1211,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8afbb33eddbc3834188e6be1dc4e1125, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.SoftSeparation
   Member: {fileID: 4595513491818781679}
   Player: {fileID: 0}
@@ -1225,7 +1225,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 537fbcfad19b0fd438c2d9af7df9d5d5, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.EnemySteering
   Definition: {fileID: 11400000, guid: da9f695e0b5b0c844a8132c95627e0e1, type: 2}
   Navigation: {fileID: 0}
@@ -1239,7 +1239,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2203564f23f60b84c9b8b1475ad410c9, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.CombatAffiliation
   Relation: 2
   TeamId: 0
@@ -1253,10 +1253,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d033f103e0db4ea4ca9eb22bd7ba8ba1, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.LootOnDeath
   Health: {fileID: 8719063598604578231}
-  Table: {fileID: 11400000, guid: 7dcc41eede7158849898d87c8af90e8d, type: 2}
+  Table: {fileID: 11400000, guid: 3ad459868dd6ccc44ba1cc57a19c8d3d, type: 2}
   Player: {fileID: 0}
   Pickup: {fileID: 460157505685859054, guid: 13d811d9b0ff6834ea370f69d47a2a12, type: 3}
   Settings: {fileID: 11400000, guid: fd43ec9cd9385eb4eb69f64792c98535, type: 2}
@@ -1270,7 +1270,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a978af72c4e505b4bbd2d9f62a806ba9, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.HitFeedback
   Health: {fileID: 8719063598604578231}
   Visual: {fileID: 3297379340701215405}
@@ -1285,7 +1285,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7184d1766f17b5b41bb1fe84eaabc38b, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.SlingshotAttack
   Definition: {fileID: 11400000, guid: b60760b5be41be148b00d9b5b3f11aa5, type: 2}
   Facing: {fileID: 5526028096778738098}

@@ -12,15 +12,15 @@ Skin과Gear는별도렌더러다. 모두 공통 Motion Root 아래에서 Walking
 
 Stamina는Sprint/Dash공통이다. 보행은무료,Joystick0.9이상0.4초로Sprint,유지0.72,정지/고갈/심한허기·갈증에서Walk로전환한다. 고갈후20회복과새Hold가필요하다. Dash는이동입력또는Facing으로Cost24/거리2.6/시간0.18/Cooldown0.55다. 장애물/깊은물/모든메뉴입력차단을유지하고무적·타격은없다. Stamina는 Player 아래쪽 120도 Arc로 표시하며 몸통/손/머리 위 HP를 피한다. 좌상단 Stamina는 제거했다. Full 회복 후0.7초 뒤fade하고 메뉴 중에는 숨긴다. Dash Icon은 전진 Double Chevron이다.
 
-Developer Test Console은Editor전용이고Early/Stone/Iron/Workbench II프로필을공유한다. Main Menu/World Select/계정Pet/MetaCoin/영구Skin/번식/고티어/전문Bench/Turret/Dungeon/NewBiome는구현하지않았다.
+Developer Test Console은 Editor 전용이다. 현재 Home/협동/III 장비/탐험/포탑은 CONTENT_EXPANSION을 따르며 계정/Pet/MetaCoin/영구Skin/번식은 없다.
 
 향후Status Effect는CharacterStats의Modifier집계와Health/Survival/Locomotion/Combat경계를사용한다. Raw Water현재불이익은유지하고확률Water Sickness/Raw Meat Food Poisoning은이번에없다. 구체적인원인·기간·주기·중첩은후속콘텐츠패스에서결정한다.
 
 현재Info/Skill/Armor시각과Sprint/Dash엄지위치·성장/제작속도는사용자테스트대상이다. 현재외형은자체초기아트시안이며최종상품품질을주장하지않는다.
 
 
-이번 생태 패스는 새 Armor Tier를 추가하지 않는다. 기존4개를 Inventory Drag/빠른 Use로 장착하고 동일 PlayerEquipment의 슬롯 교환을 공유한다. 큰 Character/Tree/Inventory는 Safe Area 중심이며 뒤 Gameplay UI는 입력이 차단된다. Save v4(v1~v3 이관)에도 성장/Armor/Skill/Seen/Stamina를 유지한다. Iron을 최종 Progression으로 고정하지 않는다.
+Armor는 동일 PlayerEquipment의 Inventory Drag/빠른 Use/슬롯 교환을 공유한다. 큰 Character/Tree/Inventory는 Safe Area 중심이며 뒤 Gameplay UI 입력을 차단한다. Save11(1~10 이관)에 성장/장비/Skill/Seen/Stamina를 보존한다.
 
 ## 현재 제작 진행 범위
 
-일반 Workbench 구조는 I~VI, 실제 콘텐츠는 I~II이며 III~VI 비용은 미정이다. Equipment Tier는 Wood/Stone/Iron/Steel, Armor는 Leather/Iron/Steel의 Head/Body6개다. Copper/Tin/Bronze는 풀 장비 Tier가 아니며 Coal은 기술·제련 재료다. 현재 Home/Multiplayer·Save v6 범위는 README/MULTIPLAYER_FOUNDATION/SAVE_PERSISTENCE를 따른다. 이 문서의 이전 패스 제외 목록은 당시 기록이다.
+실제 Workbench I~III, 구조적 상한VI다. Equipment Wood/Stone/Iron/Steel/Diamond, Armor는 Leather/Iron/Steel/Diamond의 Head/Body8개와 Carapace Vest1개다. Copper/Tin/Bronze는 풀 장비 tier가 아니다. Vest는 WB II Chitin4+Leather1+Fiber2, 방어3(철 Body4보다 낮음)과 Stamina 회복속도+15%의 선택 장비다. Skill Recovery와 가산 집계하며 즉시 Stamina를 지급하지 않는다. 현재 Home/Multiplayer·Save11은 README/SAVE_PERSISTENCE를 따른다.

@@ -29,7 +29,8 @@ namespace Wildfolk
         }
         private void Bind(GoblinController actor,GoblinActorSnapshot state)
         {var identity=actor.GetComponent<GoblinIdentity>();if(identity==null)identity=actor.gameObject.AddComponent<GoblinIdentity>();identity.Bind(this,actor,state);actors.Add(state.Id,identity);}
-        public void Removed(GoblinIdentity actor){actors.Remove(actor.State.Id);var camp=camps.Find(c=>c.State.Id==actor.State.CampId);if(camp!=null && camp.State.RefillAt<=0)camp.State.RefillAt=Clock.Model.Elapsed+CampDefinition.RefillSeconds;}
+        private void RefreshSecurity(){foreach(var camp in camps){camp.Notify();camp.GetComponent<NetworkCamp>()?.PublishLoot();}}
+        public void Removed(GoblinIdentity actor){actors.Remove(actor.State.Id);var camp=camps.Find(c=>c.State.Id==actor.State.CampId);if(camp!=null && camp.State.RefillAt<=0)camp.State.RefillAt=Clock.Model.Elapsed+CampDefinition.RefillSeconds;RefreshSecurity();}
         private void Prune()
         {missingKeys.Clear();foreach(var pair in actors)if(pair.Value==null || !pair.Value.gameObject.activeInHierarchy)missingKeys.Add(pair.Key);foreach(var key in missingKeys){var actor=actors[key];if(actor!=null)Removed(actor);else actors.Remove(key);}}
 
@@ -45,7 +46,7 @@ namespace Wildfolk
             if(!SimulationAuthority.Allows(this))throw new InvalidOperationException("Host authority required.");
             var actor=PrefabPool.Spawn(ranged ? RangedPrefab : Prefab,position,Quaternion.identity);actor.Session=Session;actor.PlayerHealth=Player;actor.Member.GroupId=group;actor.Member.AdditionalTraits=string.IsNullOrEmpty(campId) ? CreatureTrait.None : CreatureTrait.CampBound;actor.SetHome(home);actor.Separation.Player=Player.transform;actor.Steering.Navigation=World.GetComponent<WorldNavigation>();actor.GetComponent<LootOnDeath>().Player=World.Player;
             if(hp>0)actor.OwnHealth.RestoreHealth(hp);
-            Bind(actor,new GoblinActorSnapshot{Id=id ?? "g"+(++serial),GroupId=group,CampId=campId,Home=home,Position=position,Ranged=ranged,HP=actor.OwnHealth.Current});return actor;
+            Bind(actor,new GoblinActorSnapshot{Id=id ?? "g"+(++serial),GroupId=group,CampId=campId,Home=home,Position=position,Ranged=ranged,HP=actor.OwnHealth.Current});RefreshSecurity();return actor;
         }
         public GoblinController[] SpawnWarband(Vector2 center,bool safe=true)
         {
@@ -80,11 +81,12 @@ namespace Wildfolk
             foreach(var building in WorldPlaceable.Active)if(Vector2.Distance(p,building.transform.position)<CampDefinition.BaseDistance)return false;
             return true;
         }
-        public GoblinCamp SpawnCamp(Vector2 position,string id=null,double refill=0,bool populate=true)
+        public bool CampSecured(string id){foreach(var actor in actors.Values)if(actor!=null && actor.State.CampId==id && actor.Actor.OwnHealth.IsAlive)return false;return !sleepingResidentCounts.TryGetValue(id,out var n) || n==0;}
+        public GoblinCamp SpawnCamp(Vector2 position,string id=null,double refill=0,bool populate=true,CampSnapshot saved=null)
         {
             if(!SimulationAuthority.Allows(this))throw new InvalidOperationException("Host authority required.");
-            var state=new CampSnapshot{Id=id ?? "camp"+(camps.Count+1),Position=position,RefillAt=refill};
-            var camp=NetworkSpawnFactory.Spawn(CampDefinition.Prefab,position,Quaternion.identity,World.Environment);camp.State=state;camps.Add(camp);
+            var state=saved??new CampSnapshot{Id=id ?? "camp"+(camps.Count+1),Position=position,RefillAt=refill};
+            var camp=NetworkSpawnFactory.Spawn(CampDefinition.Prefab,position,Quaternion.identity,World.Environment);camp.State=state;camp.InitializeLoot(this,World.Definition.ProgressionCatalog,World.Seed);camps.Add(camp);
             if(populate)Refill(camp,false);return camp;
         }
         public void GenerateCamps()
@@ -92,7 +94,7 @@ namespace Wildfolk
             if(!SimulationAuthority.Allows(this))return;
             restored=true;foreach(var actor in actors.Values)if(actor!=null)PrefabPool.Release(actor.gameObject);actors.Clear();
             foreach(var camp in camps)if(camp!=null){PrefabPool.Release(camp.gameObject);}camps.Clear();serial=groupSerial=0;
-            if(World.Map.Streamed){sleepingCamps.Clear();sleepingGoblins.Clear();initializedCamps.Clear();return;}
+            sleepingResidentCounts.Clear();if(World.Map.Streamed){sleepingCamps.Clear();sleepingGoblins.Clear();campChunks.Clear();goblinChunks.Clear();initializedCamps.Clear();return;}
             var random=new System.Random(World.Seed^19273);
             for(var i=0;i<CampDefinition.InitialCamps;i++)for(var attempt=0;attempt<200;attempt++)
             {var size=World.Definition.Size;var p=new Vector2(((float)random.NextDouble()-.5f)*(size.x-16),((float)random.NextDouble()-.5f)*(size.y-16));if(ClearCamp(p,false)){SpawnCamp(p);break;}}
@@ -119,14 +121,14 @@ namespace Wildfolk
         public GoblinEcologySnapshot Capture()
         {
             Prune();var saved=new List<GoblinActorSnapshot>();foreach(var actor in actors.Values){var s=actor.State;saved.Add(new GoblinActorSnapshot{Id=s.Id,GroupId=s.GroupId,CampId=s.CampId,Ranged=s.Ranged,Position=actor.transform.position,Home=actor.Actor.Home,HP=actor.Actor.OwnHealth.Current});}
-            var locations=new List<CampSnapshot>();foreach(var camp in camps)locations.Add(new CampSnapshot{Id=camp.State.Id,Position=camp.State.Position,RefillAt=camp.State.RefillAt});var state=new GoblinEcologySnapshot{Serial=serial,GroupSerial=groupSerial,Camps=locations.ToArray(),Actors=saved.ToArray()};return World.Map.Streamed ? CaptureStreamed(state) : state;
+            var locations=new List<CampSnapshot>();foreach(var camp in camps)locations.Add(JsonUtility.FromJson<CampSnapshot>(JsonUtility.ToJson(camp.State)));var state=new GoblinEcologySnapshot{Serial=serial,GroupSerial=groupSerial,Camps=locations.ToArray(),Actors=saved.ToArray()};return World.Map.Streamed ? CaptureStreamed(state) : state;
         }
         public void Restore(GoblinEcologySnapshot state)
         {
             if(!SimulationAuthority.Allows(this))return;
             restored=true;foreach(var actor in actors.Values)if(actor!=null)PrefabPool.Release(actor.gameObject);actors.Clear();foreach(var camp in camps)if(camp!=null){PrefabPool.Release(camp.gameObject);}camps.Clear();
             if(World.Map.Streamed){RestoreStreamed(state);return;}if(state==null){GenerateCamps();return;}serial=state.Serial;groupSerial=state.GroupSerial;
-            foreach(var camp in state.Camps)SpawnCamp(camp.Position,camp.Id,camp.RefillAt,false);
+            foreach(var camp in state.Camps)SpawnCamp(camp.Position,camp.Id,camp.RefillAt,false,camp);
             foreach(var actor in state.Actors)SpawnActor(actor.Ranged,actor.Position,actor.GroupId,actor.Home,actor.CampId,actor.Id,actor.HP);
         }
     }

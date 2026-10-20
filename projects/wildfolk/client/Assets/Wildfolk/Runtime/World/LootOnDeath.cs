@@ -11,7 +11,7 @@ namespace Wildfolk
         public GameplaySettings Settings;
         private Collider2D[] colliders;private bool[] colliderStates;
         private Behaviour[] simulation;private bool[] simulationStates;private bool deathPresented;
-        private void Awake(){colliders=GetComponents<Collider2D>();colliderStates=new bool[colliders.Length];for(var i=0;i<colliders.Length;i++)colliderStates[i]=colliders[i].enabled;simulation=new Behaviour[]{GetComponent<NeutralAnimal>(),GetComponent<EnemyController>(),GetComponent<GoblinController>(),GetComponent<SlingshotAttack>(),GetComponent<ZombieLifecycle>()};simulationStates=new bool[simulation.Length];}
+        private void Awake(){colliders=GetComponents<Collider2D>();colliderStates=new bool[colliders.Length];for(var i=0;i<colliders.Length;i++)colliderStates[i]=colliders[i].enabled;simulation=new Behaviour[]{GetComponent<NeutralAnimal>(),GetComponent<EnemyController>(),GetComponent<GoblinController>(),GetComponent<SlingshotAttack>(),GetComponent<ZombieLifecycle>(),GetComponent<WildlifeActionBrain>()};simulationStates=new bool[simulation.Length];}
         public void ResetForSpawn(){for(var i=0;i<colliders.Length;i++)colliders[i].enabled=colliderStates[i];if(deathPresented)for(var i=0;i<simulation.Length;i++)if(simulation[i]!=null)simulation[i].enabled=simulationStates[i];deathPresented=false;}
         private void OnEnable()=>Health.Died+=Drop;
         private void OnDisable()=>Health.Died-=Drop;

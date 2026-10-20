@@ -66,7 +66,7 @@ namespace Wildfolk.Tests
             foreach(var name in new[]{"CopperOreNode","TinOreNode","CoalNode"})
             {var r=Data<ResourceDefinition>(name+"Resource");Assert.That(r.CanHarvest(null),Is.False);Assert.That(r.CanHarvest(Data<ToolDefinition>("IronSwordTool")),Is.False);Assert.That(r.CanHarvest(Data<ToolDefinition>(name=="TinOreNode" ? "ProspectingPanTool" : "IronPickaxeTool")),Is.True);Assert.That(r.RequiredToolItem,Is.Not.Null);}
             Assert.That(Data<ResourceDefinition>("TinOreNodeResource").CanHarvest(Data<ToolDefinition>("PickaxeTool")),Is.False);
-            Assert.That(Catalog.Items.Length,Is.EqualTo(110));Assert.That(Catalog.Recipes.Length,Is.EqualTo(91));Assert.That(AssetDatabase.FindAssets("t:BiomeDefinition").Length,Is.EqualTo(1));
+            Assert.That(Catalog.Items.Length,Is.EqualTo(121));Assert.That(Catalog.Recipes.Length,Is.EqualTo(99));Assert.That(AssetDatabase.FindAssets("t:BiomeDefinition").Length,Is.EqualTo(1));
         }
     }
 }

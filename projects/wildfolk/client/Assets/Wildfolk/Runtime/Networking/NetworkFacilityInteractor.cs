@@ -16,6 +16,15 @@ namespace Wildfolk
         private NetworkFacility waiting,opened;
         private bool acknowledged;private RecipeDefinition pendingRecipe;
         private uint dragBag,dragFacility;
+        private ulong campSequence,lastCampRequest;
+        public bool CampLoot(GoblinCamp camp,int slot,uint revision)
+        {if(!IsSpawned || !IsOwner || camp==null || !Bag.Player.Health.IsAlive || Bag.Pending)return false;var target=camp.GetComponent<NetworkCamp>();if(target==null || !target.IsSpawned)return false;if(IsServer)return ExecuteCampLoot(target.NetworkObjectId,slot,revision,Bag.Revision.Value);CampLootRpc(++campSequence,target.NetworkObjectId,slot,revision,Bag.Revision.Value);return true;}
+        [Rpc(SendTo.Server,InvokePermission=RpcInvokePermission.Owner)]
+        private void CampLootRpc(ulong sequence,ulong target,int slot,uint revision,uint bagRevision,RpcParams rpc=default)
+        {if(rpc.Receive.SenderClientId!=OwnerClientId || sequence<=lastCampRequest)return;lastCampRequest=sequence;if(!ExecuteCampLoot(target,slot,revision,bagRevision))CampDeniedRpc();}
+        public bool ExecuteCampLoot(ulong target,int slot,uint revision,uint bagRevision)
+        {if(!Bag.CanOperate || Bag.Revision.Value!=bagRevision || Bag.Player.Commands.IsScouting || !NetworkManager.SpawnManager.SpawnedObjects.TryGetValue(target,out var obj))return false;var camp=obj.GetComponent<GoblinCamp>();return camp!=null && obj.GetComponent<NetworkCamp>()!=null && camp.Take(GetComponent<PlayerInventory>(),slot,revision);}
+        [Rpc(SendTo.Owner,InvokePermission=RpcInvokePermission.Server)]private void CampDeniedRpc()=>PlayerFeedback.ShowKey("ui.camp.unavailable");
         public void CaptureTransferState(){dragBag=Bag.Revision.Value;dragFacility=Storage.Chest==null ? 0 : Storage.Chest.GetComponent<NetworkFacility>().Revision.Value;}
         private void Awake(){Bag=GetComponent<NetworkInventory>();Crafting=GetComponent<PlayerCrafting>();Storage=GetComponent<PlayerStorage>();}
         public override void OnNetworkSpawn(){Crafting.Authority=this;Storage.Authority=this;GetComponent<PlayerInteraction>().enabled=IsOwner;Bag.Player.Commands.Session.StateChanged+=SessionChanged;}

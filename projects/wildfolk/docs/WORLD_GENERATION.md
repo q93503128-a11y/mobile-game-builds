@@ -1,6 +1,6 @@
 # World Generation / Biome Foundation v2
 
-2026-10-19 현재 **Save10 / Protocol12, Item110 / Recipe91**, 새 월드 generation3는 Deep Caverns III의 Diamond/Crystal/산업 POI를 제공한다. 기존 generation1/2는 보존한다. [현재 정본](CONTENT_EXPANSION.md). 아래 이전 버전 설명은 해당 패스의 기록이다.
+2026-10-20 현재 **Save11 / Protocol13, Item121 / Recipe99**, 새 월드 generation3는 Deep Caverns III의 Diamond/Crystal/산업 POI를 제공한다. 기존 generation1/2는 보존한다. [현재 정본](CONTENT_EXPANSION.md). 아래 이전 버전 설명은 해당 패스의 기록이다.
 
 
 2026-10-18 현재: generation2 지형 유지 / **Save8 / Protocol9**, Item50 / Recipe38. Torch·Compass·제작대 Home·동굴 Exit·제한 지형 cache/분할 생성을 제공한다. [탐험 정본](EXPLORATION_FOUNDATION.md)과 [실제 검수/성능](EXPLORATION_REVIEW.md)를 따른다. 아래 이전 날짜/Version 설명은 각 단계의 기록이다.
@@ -82,7 +82,7 @@ Save7:Root Seed/BaseGenerationVersion/g·c·p deltas/비재생 tombstone/멀리 
 
 결과는 [WORLD_FOUNDATION_REVIEW](WORLD_FOUNDATION_REVIEW.md)에 기록한다. fixture의 순간 이동/재료 지급/시간 전진은 자연 진행과 구분한다. 모바일/remote Relay/4인 stress/장시간 탐험·부족도·성능은 미확인이다.
 
-Workbench III/Diamond progression/IV~VI/새 biome·섬·Boat/Torch·Lantern gameplay/지도·Compass·HomeMarker·waypoint·팀 위치는 후속이다. 미래 확장은 additive content/unexplored backfill/외곽 확장/새 지하 layer와 별도 version을 검토하며 기존 base terrain을 자동 교체하지 않는다.
+이 World Foundation 당시의 후속 항목 중 Workbench III/Diamond, Torch/Lantern, Compass/Home/Beacon 안내는 현재 구현했다. IV~VI/섬·Boat/전체 지도·팀 위치는 미래 범위다. 미래 확장은 additive content/unexplored backfill/외곽 확장/새 지하 layer와 별도 version을 검토하며 기존 base terrain을 자동 교체하지 않는다.
 
 ## Exploration Foundation 1 확장 (2026-10-18)
 
@@ -97,6 +97,15 @@ Workbench III/Diamond progression/IV~VI/새 biome·섬·Boat/Torch·Lantern game
 [RESOURCE_TEMPO](RESOURCE_TEMPO.md)에 현재 source당 수율, 지역 ticket, immutable generation baseline,4인 예산과 seed 결과를 기록한다. 기존 +3/+4 개별 복원은 제거했다.
 
 
-## Workbench III 현재 상태 · 2026-10-19
+## Workbench III 생성 정책
 
 현재 generation3는 기존2의 지형/graph/기존 source를 유지하고 III deep source/POI를 독립 stream으로 추가한다. generation1/2는 그대로 읽고 backfill하지 않는다. Diamond/Crystal은 Steel Pickaxe+, 지하만 공급한다. 초기4인 공급과 단일 cave 의존 여부, surface entrance 경로와 동굴 graph 연결을 검사한다. 기존 disabled DiamondPocketSource는 사용되지 않아 제거했다. 위 Diamond 미구현 설명은 당시 기록이며 현재 비용·분포·회복은 CONTENT_EXPANSION의 III 절을 따른다.
+
+
+## Creature / Loot 확장 · 현재
+
+지형 generation3와 원래1/2 source ID/좌표는 바꾸지 않았다. 기존5동물 규칙 뒤에8개를 추가하고 Rocky/Shore/Caverns/DeepCaverns/CrystalPocket habitat를 사용한다. Wolf는 Forest, Crow는 Grassland/ForestEdge, Giant Boar는 Rocky 또는 rockiness≥0.45인 Forest 경계다. Leech는 Wetlands의 육지 WaterDistance0.2–4, Crystal Crawler는 지하 CrystalPocket만 허용한다. 새 대형 Biome는 없다.
+
+Save11의 ExpandedRegions는 기존 initialized 방문 청크에 신규 규칙을 한 번 초기화한다. 기존 생존 ID/group/HP/Home/원래 logical region을 보존한다. 적합 habitat지만 충돌로 초기 생성 실패하면 지연 ticket을 남긴다. active+sleep logical count/청크별 index와 공용 활성80 cap을 사용한다. 생물 때문에 simulation chunk를 붙잡지 않는다. 생성·회복 상한/종별 interval은 BALANCE, 실제 행동/드랍은 CREATURES_AND_LOOT를 따른다.
+
+Goblin 주민의480초 보충과 Camp 보급품 최초1회 생성을 분리했다. 상자 잔량은 휴면/Load/reHost에 보존하며 자연 Crystal은 여전히6개/150초의 주 공급이다. Crystal Crawler의1개15%는 선택 전투 보너스이고 Diamond나 Part를 드랍하지 않는다.

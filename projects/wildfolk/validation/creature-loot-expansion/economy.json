@@ -1,0 +1,997 @@
+{
+  "rules": [
+    {
+      "id": "chicken",
+      "hp": 20,
+      "cap": 10,
+      "respawn": 180.0,
+      "chance": 0.0,
+      "target": 0,
+      "profile": null
+    },
+    {
+      "id": "boar",
+      "hp": 20,
+      "cap": 6,
+      "respawn": 300.0,
+      "chance": 0.0,
+      "target": 0,
+      "profile": null
+    },
+    {
+      "id": "rabbit",
+      "hp": 20,
+      "cap": 12,
+      "respawn": 180.0,
+      "chance": 0.0,
+      "target": 0,
+      "profile": null
+    },
+    {
+      "id": "deer",
+      "hp": 55,
+      "cap": 8,
+      "respawn": 420.0,
+      "chance": 0.0,
+      "target": 0,
+      "profile": null
+    },
+    {
+      "id": "sheep",
+      "hp": 40,
+      "cap": 10,
+      "respawn": 300.0,
+      "chance": 0.0,
+      "target": 0,
+      "profile": null
+    },
+    {
+      "id": "bat",
+      "hp": 24,
+      "cap": 10,
+      "respawn": 180.0,
+      "chance": 0.75,
+      "target": 3,
+      "profile": {
+        "Movement": 1,
+        "Attack": 2,
+        "Camouflage": false,
+        "Defensive": false,
+        "Detection": 6.0,
+        "Leash": 12.0,
+        "WalkSpeed": 1.2,
+        "ChaseSpeed": 4.2,
+        "ActionSpeed": 8.0,
+        "WarningSeconds": 0.35,
+        "WindupSeconds": 0.35,
+        "ActionSeconds": 0.4,
+        "RecoverySeconds": 1.2,
+        "Reach": 1.1,
+        "EngageRange": 4.5,
+        "FleeSpeed": 4.2,
+        "Damage": 5,
+        "name": "BatAction",
+        "hideFlags": 0
+      }
+    },
+    {
+      "id": "stone_crawler",
+      "hp": 80,
+      "cap": 8,
+      "respawn": 300.0,
+      "chance": 0.45,
+      "target": 2,
+      "profile": {
+        "Movement": 0,
+        "Attack": 1,
+        "Camouflage": true,
+        "Defensive": true,
+        "Detection": 4.0,
+        "Leash": 12.0,
+        "WalkSpeed": 0.55,
+        "ChaseSpeed": 1.7,
+        "ActionSpeed": 0.0,
+        "WarningSeconds": 1.0,
+        "WindupSeconds": 0.65,
+        "ActionSeconds": 0.2,
+        "RecoverySeconds": 1.5,
+        "Reach": 1.5,
+        "EngageRange": 1.7,
+        "FleeSpeed": 1.7,
+        "Damage": 10,
+        "name": "StoneCrawlerAction",
+        "hideFlags": 0
+      }
+    },
+    {
+      "id": "bog_leech",
+      "hp": 28,
+      "cap": 6,
+      "respawn": 180.0,
+      "chance": 0.5,
+      "target": 2,
+      "profile": {
+        "Movement": 0,
+        "Attack": 3,
+        "Camouflage": false,
+        "Defensive": false,
+        "Detection": 3.0,
+        "Leash": 5.0,
+        "WalkSpeed": 0.4,
+        "ChaseSpeed": 1.2,
+        "ActionSpeed": 6.0,
+        "WarningSeconds": 0.45,
+        "WindupSeconds": 0.45,
+        "ActionSeconds": 0.25,
+        "RecoverySeconds": 1.4,
+        "Reach": 1.0,
+        "EngageRange": 2.8,
+        "FleeSpeed": 1.2,
+        "Damage": 6,
+        "name": "BogLeechAction",
+        "hideFlags": 0
+      }
+    },
+    {
+      "id": "wolf",
+      "hp": 60,
+      "cap": 8,
+      "respawn": 360.0,
+      "chance": 0.4,
+      "target": 3,
+      "profile": {
+        "Movement": 0,
+        "Attack": 1,
+        "Camouflage": false,
+        "Defensive": false,
+        "Detection": 6.0,
+        "Leash": 12.0,
+        "WalkSpeed": 1.2,
+        "ChaseSpeed": 3.3,
+        "ActionSpeed": 0.0,
+        "WarningSeconds": 0.4,
+        "WindupSeconds": 0.45,
+        "ActionSeconds": 0.2,
+        "RecoverySeconds": 0.95,
+        "Reach": 1.5,
+        "EngageRange": 1.8,
+        "FleeSpeed": 3.3,
+        "Damage": 9,
+        "name": "WolfAction",
+        "hideFlags": 0
+      }
+    },
+    {
+      "id": "mountain_goat",
+      "hp": 45,
+      "cap": 6,
+      "respawn": 300.0,
+      "chance": 0.5,
+      "target": 2,
+      "profile": {
+        "Movement": 2,
+        "Attack": 0,
+        "Camouflage": false,
+        "Defensive": false,
+        "Detection": 5.0,
+        "Leash": 12.0,
+        "WalkSpeed": 0.8,
+        "ChaseSpeed": 4.8,
+        "ActionSpeed": 0.0,
+        "WarningSeconds": 0.0,
+        "WindupSeconds": 0.0,
+        "ActionSeconds": 0.0,
+        "RecoverySeconds": 0.0,
+        "Reach": 0.0,
+        "EngageRange": 0.0,
+        "FleeSpeed": 4.8,
+        "Damage": 0,
+        "name": "MountainGoatAction",
+        "hideFlags": 0
+      }
+    },
+    {
+      "id": "crow",
+      "hp": 14,
+      "cap": 6,
+      "respawn": 240.0,
+      "chance": 0.5,
+      "target": 2,
+      "profile": {
+        "Movement": 1,
+        "Attack": 0,
+        "Camouflage": false,
+        "Defensive": false,
+        "Detection": 5.5,
+        "Leash": 12.0,
+        "WalkSpeed": 0.7,
+        "ChaseSpeed": 4.6,
+        "ActionSpeed": 0.0,
+        "WarningSeconds": 0.0,
+        "WindupSeconds": 0.0,
+        "ActionSeconds": 0.0,
+        "RecoverySeconds": 0.0,
+        "Reach": 0.0,
+        "EngageRange": 0.0,
+        "FleeSpeed": 4.6,
+        "Damage": 0,
+        "name": "CrowAction",
+        "hideFlags": 0
+      }
+    },
+    {
+      "id": "giant_boar",
+      "hp": 130,
+      "cap": 3,
+      "respawn": 600.0,
+      "chance": 0.2,
+      "target": 1,
+      "profile": {
+        "Movement": 0,
+        "Attack": 4,
+        "Camouflage": false,
+        "Defensive": true,
+        "Detection": 7.0,
+        "Leash": 12.0,
+        "WalkSpeed": 0.8,
+        "ChaseSpeed": 2.2,
+        "ActionSpeed": 11.0,
+        "WarningSeconds": 0.7,
+        "WindupSeconds": 0.85,
+        "ActionSeconds": 0.65,
+        "RecoverySeconds": 2.0,
+        "Reach": 1.3,
+        "EngageRange": 6.0,
+        "FleeSpeed": 2.2,
+        "Damage": 18,
+        "name": "GiantBoarAction",
+        "hideFlags": 0
+      }
+    },
+    {
+      "id": "crystal_crawler",
+      "hp": 95,
+      "cap": 5,
+      "respawn": 450.0,
+      "chance": 0.55,
+      "target": 1,
+      "profile": {
+        "Movement": 0,
+        "Attack": 5,
+        "Camouflage": false,
+        "Defensive": false,
+        "Detection": 5.0,
+        "Leash": 12.0,
+        "WalkSpeed": 0.65,
+        "ChaseSpeed": 1.4,
+        "ActionSpeed": 0.0,
+        "WarningSeconds": 0.65,
+        "WindupSeconds": 1.0,
+        "ActionSeconds": 0.25,
+        "RecoverySeconds": 1.8,
+        "Reach": 2.4,
+        "EngageRange": 2.6,
+        "FleeSpeed": 1.4,
+        "Damage": 12,
+        "name": "CrystalCrawlerAction",
+        "hideFlags": 0
+      }
+    }
+  ],
+  "budgets": [
+    {
+      "players": 1,
+      "essential": [
+        {
+          "id": "wood",
+          "count": 79
+        },
+        {
+          "id": "stone",
+          "count": 60
+        },
+        {
+          "id": "copper_ore",
+          "count": 14
+        },
+        {
+          "id": "coal",
+          "count": 49
+        },
+        {
+          "id": "tin_ore",
+          "count": 6
+        },
+        {
+          "id": "iron_ore",
+          "count": 50
+        },
+        {
+          "id": "crystal",
+          "count": 10
+        },
+        {
+          "id": "diamond",
+          "count": 13
+        },
+        {
+          "id": "leather",
+          "count": 8
+        },
+        {
+          "id": "plant_fiber",
+          "count": 2
+        }
+      ],
+      "withOptional": [
+        {
+          "id": "wood",
+          "count": 188
+        },
+        {
+          "id": "stone",
+          "count": 98
+        },
+        {
+          "id": "copper_ore",
+          "count": 40
+        },
+        {
+          "id": "coal",
+          "count": 121
+        },
+        {
+          "id": "tin_ore",
+          "count": 19
+        },
+        {
+          "id": "iron_ore",
+          "count": 83
+        },
+        {
+          "id": "crystal",
+          "count": 16
+        },
+        {
+          "id": "diamond",
+          "count": 13
+        },
+        {
+          "id": "leather",
+          "count": 15
+        },
+        {
+          "id": "plant_fiber",
+          "count": 6
+        },
+        {
+          "id": "feather",
+          "count": 14
+        },
+        {
+          "id": "chitin",
+          "count": 4
+        }
+      ],
+      "produced": [
+        {
+          "id": "campfire",
+          "count": 1
+        },
+        {
+          "id": "furnace",
+          "count": 1
+        },
+        {
+          "id": "storage_chest",
+          "count": 1
+        },
+        {
+          "id": "workbench",
+          "count": 1
+        },
+        {
+          "id": "blast_furnace",
+          "count": 1
+        },
+        {
+          "id": "bronze",
+          "count": 57
+        },
+        {
+          "id": "copper_ingot",
+          "count": 40
+        },
+        {
+          "id": "tin_ingot",
+          "count": 19
+        },
+        {
+          "id": "iron_ingot",
+          "count": 83
+        },
+        {
+          "id": "turret_workbench",
+          "count": 1
+        },
+        {
+          "id": "steel",
+          "count": 58
+        },
+        {
+          "id": "mechanical_part",
+          "count": 14
+        },
+        {
+          "id": "empty_cup",
+          "count": 1
+        },
+        {
+          "id": "prospecting_pan",
+          "count": 1
+        },
+        {
+          "id": "compass",
+          "count": 1
+        },
+        {
+          "id": "diamond_pickaxe",
+          "count": 1
+        },
+        {
+          "id": "steel_pickaxe",
+          "count": 1
+        },
+        {
+          "id": "iron_pickaxe",
+          "count": 1
+        },
+        {
+          "id": "stone_pickaxe",
+          "count": 1
+        },
+        {
+          "id": "pickaxe",
+          "count": 1
+        },
+        {
+          "id": "diamond_axe",
+          "count": 1
+        },
+        {
+          "id": "steel_axe",
+          "count": 1
+        },
+        {
+          "id": "iron_axe",
+          "count": 1
+        },
+        {
+          "id": "stone_axe",
+          "count": 1
+        },
+        {
+          "id": "axe",
+          "count": 1
+        },
+        {
+          "id": "diamond_sword",
+          "count": 1
+        },
+        {
+          "id": "steel_sword",
+          "count": 1
+        },
+        {
+          "id": "iron_sword",
+          "count": 1
+        },
+        {
+          "id": "stone_sword",
+          "count": 1
+        },
+        {
+          "id": "wood_sword",
+          "count": 1
+        },
+        {
+          "id": "diamond_spear",
+          "count": 1
+        },
+        {
+          "id": "steel_spear",
+          "count": 1
+        },
+        {
+          "id": "iron_spear",
+          "count": 1
+        },
+        {
+          "id": "stone_spear",
+          "count": 1
+        },
+        {
+          "id": "wood_spear",
+          "count": 1
+        },
+        {
+          "id": "diamond_head",
+          "count": 1
+        },
+        {
+          "id": "steel_head",
+          "count": 1
+        },
+        {
+          "id": "iron_head",
+          "count": 1
+        },
+        {
+          "id": "diamond_body",
+          "count": 1
+        },
+        {
+          "id": "steel_body",
+          "count": 1
+        },
+        {
+          "id": "iron_body",
+          "count": 1
+        },
+        {
+          "id": "telescope",
+          "count": 1
+        },
+        {
+          "id": "crystal_lantern",
+          "count": 1
+        },
+        {
+          "id": "lantern",
+          "count": 1
+        },
+        {
+          "id": "cooking_pot",
+          "count": 1
+        },
+        {
+          "id": "reinforced_bow",
+          "count": 1
+        },
+        {
+          "id": "bow",
+          "count": 1
+        },
+        {
+          "id": "bronze_arrow",
+          "count": 24
+        },
+        {
+          "id": "crossbow",
+          "count": 1
+        },
+        {
+          "id": "crossbow_bolt",
+          "count": 120
+        },
+        {
+          "id": "steel_bolt",
+          "count": 16
+        },
+        {
+          "id": "reinforced_wall",
+          "count": 6
+        },
+        {
+          "id": "reinforced_door",
+          "count": 1
+        },
+        {
+          "id": "reinforced_gate",
+          "count": 1
+        },
+        {
+          "id": "spike_trap",
+          "count": 1
+        },
+        {
+          "id": "brazier",
+          "count": 1
+        },
+        {
+          "id": "signal_beacon",
+          "count": 1
+        },
+        {
+          "id": "ballista_bolt",
+          "count": 60
+        },
+        {
+          "id": "ballista",
+          "count": 1
+        },
+        {
+          "id": "repeater",
+          "count": 1
+        },
+        {
+          "id": "auto_loader",
+          "count": 2
+        },
+        {
+          "id": "auto_aim",
+          "count": 2
+        },
+        {
+          "id": "ammo_box",
+          "count": 2
+        },
+        {
+          "id": "rotation_gear",
+          "count": 2
+        },
+        {
+          "id": "reinforced_frame",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "players": 4,
+      "essential": [
+        {
+          "id": "wood",
+          "count": 166
+        },
+        {
+          "id": "stone",
+          "count": 111
+        },
+        {
+          "id": "copper_ore",
+          "count": 28
+        },
+        {
+          "id": "coal",
+          "count": 127
+        },
+        {
+          "id": "tin_ore",
+          "count": 10
+        },
+        {
+          "id": "iron_ore",
+          "count": 158
+        },
+        {
+          "id": "crystal",
+          "count": 22
+        },
+        {
+          "id": "diamond",
+          "count": 49
+        },
+        {
+          "id": "leather",
+          "count": 32
+        },
+        {
+          "id": "plant_fiber",
+          "count": 8
+        }
+      ],
+      "withOptional": [
+        {
+          "id": "wood",
+          "count": 332
+        },
+        {
+          "id": "stone",
+          "count": 149
+        },
+        {
+          "id": "copper_ore",
+          "count": 68
+        },
+        {
+          "id": "coal",
+          "count": 226
+        },
+        {
+          "id": "tin_ore",
+          "count": 30
+        },
+        {
+          "id": "iron_ore",
+          "count": 197
+        },
+        {
+          "id": "crystal",
+          "count": 28
+        },
+        {
+          "id": "diamond",
+          "count": 49
+        },
+        {
+          "id": "leather",
+          "count": 48
+        },
+        {
+          "id": "plant_fiber",
+          "count": 24
+        },
+        {
+          "id": "feather",
+          "count": 26
+        },
+        {
+          "id": "chitin",
+          "count": 4
+        }
+      ],
+      "produced": [
+        {
+          "id": "campfire",
+          "count": 1
+        },
+        {
+          "id": "furnace",
+          "count": 1
+        },
+        {
+          "id": "storage_chest",
+          "count": 1
+        },
+        {
+          "id": "workbench",
+          "count": 1
+        },
+        {
+          "id": "blast_furnace",
+          "count": 1
+        },
+        {
+          "id": "bronze",
+          "count": 90
+        },
+        {
+          "id": "copper_ingot",
+          "count": 68
+        },
+        {
+          "id": "tin_ingot",
+          "count": 30
+        },
+        {
+          "id": "iron_ingot",
+          "count": 197
+        },
+        {
+          "id": "turret_workbench",
+          "count": 1
+        },
+        {
+          "id": "steel",
+          "count": 118
+        },
+        {
+          "id": "mechanical_part",
+          "count": 14
+        },
+        {
+          "id": "empty_cup",
+          "count": 4
+        },
+        {
+          "id": "prospecting_pan",
+          "count": 4
+        },
+        {
+          "id": "compass",
+          "count": 4
+        },
+        {
+          "id": "diamond_pickaxe",
+          "count": 4
+        },
+        {
+          "id": "steel_pickaxe",
+          "count": 4
+        },
+        {
+          "id": "iron_pickaxe",
+          "count": 4
+        },
+        {
+          "id": "stone_pickaxe",
+          "count": 4
+        },
+        {
+          "id": "pickaxe",
+          "count": 4
+        },
+        {
+          "id": "diamond_axe",
+          "count": 4
+        },
+        {
+          "id": "steel_axe",
+          "count": 4
+        },
+        {
+          "id": "iron_axe",
+          "count": 4
+        },
+        {
+          "id": "stone_axe",
+          "count": 4
+        },
+        {
+          "id": "axe",
+          "count": 4
+        },
+        {
+          "id": "diamond_sword",
+          "count": 4
+        },
+        {
+          "id": "steel_sword",
+          "count": 4
+        },
+        {
+          "id": "iron_sword",
+          "count": 4
+        },
+        {
+          "id": "stone_sword",
+          "count": 4
+        },
+        {
+          "id": "wood_sword",
+          "count": 4
+        },
+        {
+          "id": "diamond_spear",
+          "count": 4
+        },
+        {
+          "id": "steel_spear",
+          "count": 4
+        },
+        {
+          "id": "iron_spear",
+          "count": 4
+        },
+        {
+          "id": "stone_spear",
+          "count": 4
+        },
+        {
+          "id": "wood_spear",
+          "count": 4
+        },
+        {
+          "id": "diamond_head",
+          "count": 4
+        },
+        {
+          "id": "steel_head",
+          "count": 4
+        },
+        {
+          "id": "iron_head",
+          "count": 4
+        },
+        {
+          "id": "diamond_body",
+          "count": 4
+        },
+        {
+          "id": "steel_body",
+          "count": 4
+        },
+        {
+          "id": "iron_body",
+          "count": 4
+        },
+        {
+          "id": "telescope",
+          "count": 4
+        },
+        {
+          "id": "crystal_lantern",
+          "count": 4
+        },
+        {
+          "id": "lantern",
+          "count": 4
+        },
+        {
+          "id": "cooking_pot",
+          "count": 1
+        },
+        {
+          "id": "reinforced_bow",
+          "count": 4
+        },
+        {
+          "id": "bow",
+          "count": 4
+        },
+        {
+          "id": "bronze_arrow",
+          "count": 96
+        },
+        {
+          "id": "crossbow",
+          "count": 4
+        },
+        {
+          "id": "crossbow_bolt",
+          "count": 120
+        },
+        {
+          "id": "steel_bolt",
+          "count": 64
+        },
+        {
+          "id": "reinforced_wall",
+          "count": 6
+        },
+        {
+          "id": "reinforced_door",
+          "count": 1
+        },
+        {
+          "id": "reinforced_gate",
+          "count": 1
+        },
+        {
+          "id": "spike_trap",
+          "count": 1
+        },
+        {
+          "id": "brazier",
+          "count": 1
+        },
+        {
+          "id": "signal_beacon",
+          "count": 1
+        },
+        {
+          "id": "ballista_bolt",
+          "count": 60
+        },
+        {
+          "id": "ballista",
+          "count": 1
+        },
+        {
+          "id": "repeater",
+          "count": 1
+        },
+        {
+          "id": "auto_loader",
+          "count": 2
+        },
+        {
+          "id": "auto_aim",
+          "count": 2
+        },
+        {
+          "id": "ammo_box",
+          "count": 2
+        },
+        {
+          "id": "rotation_gear",
+          "count": 2
+        },
+        {
+          "id": "reinforced_frame",
+          "count": 2
+        }
+      ]
+    }
+  ]
+}

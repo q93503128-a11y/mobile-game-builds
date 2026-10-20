@@ -1,6 +1,6 @@
 # 현재 코드 연결
 
-2026-10-19 현재: generation2 / Save9 / Protocol11. v1~v8 지원, generation1 동결 reader 유지. 아래 v5~v8/구 Protocol 설명은 해당 단계 기록이다. 현재 동작은 WORLD_GENERATION/CONTENT_EXPANSION/RESOURCE_TEMPO 및 [통합 감사](GAMEFEEL_AUDIT.md)를 따른다.
+2026-10-20 현재: generation3 / Save11 / Protocol13, Item121 / Recipe99. v1~10 이관과 generation1/2 reader를 유지한다. 아래 날짜별 Foundation 절은 구조의 도입 기록이며 현재 데이터는 CONTENT_EXPANSION/CREATURES_AND_LOOT/SAVE_PERSISTENCE를 따른다.
 
 시설 실행은 ProcessingScheduler의 공용0.1초 tick에 등록된 busy Host/SP 작업만 진행한다. HitFeedback는 피격 이벤트 동안 coroutine으로 동작한다. LootTable.Roll/ProcessingQueue.Costs/CavernNetwork의 exitNext가 중복 계산을 공유한다. UI는 visibility 변경에만 강제 layout, 처리 명칭은 recipe/language cache, LocalFirelight geometry는 definition 변경에만 설정한다. Save/Protocol 필드와 inactive logical advance는 유지한다.
 Runtime/InputSystem/UGUI,Editor,EditMode/PlayMode Tests를 분리한다. 실제 수치는Data ScriptableObject가 정본이고 Editor는 없는 초기 데이터를 생성하며 기존 수치를 보존한다. 씬은 프리팹 연결과 월드Bootstrap을 저장하고 수동 테스트 월드 배치 코드는 제거했다.
@@ -30,7 +30,7 @@ Runtime/InputSystem/UGUI,Editor,EditMode/PlayMode Tests를 분리한다. 실제 
 
 PlayerAction의 공격/상호작용 Context 혼합을 폐기하고 GUID를 보존해 Primary로 대체했다. 인터페이스는 PlayerInteraction을 받으며 선택 장비와 무관하게 시설을 찾는다. PlayerCombat은 설치물을 자동 타격하지 않고 Resource 채굴 Tier를 데이터로 확인한다.
 
-WorldMap은 System.Random(seed)와 공통 물 경계를 사용하며 UnityRandom을 건드리지 않는다. 지형은 한 Texture/Sprite, 물은 몇 PolygonCollider, 자원259개와 최대480장식을 제한 생성한다. Camera와 Placement는 생성 Ground Bounds를 공유한다. 무한 스트리밍, 복잡한 NavMesh, 풀링 최적화 완료를 주장하지 않는다.
+Legacy generation1은 제한된 고정 영역을 생성한다. 현재 generation2/3은 독립 Seed domain과 WorldChunkRuntime의 가까운64unit 청크·행 단위 지형 생성/LRU를 사용한다. Camera/Placement/AI는 같은 terrain 경계를 참조한다. 무한 월드·복잡한 NavMesh를 사용하지 않는다.
 
 Zombie/Goblin/Animal의 행동 책임은 분리했다. 자연 Despawn은 Health.Died를 호출하지 않아 Loot/XP/Gold를 지급하지 않는다. 직접 피해에 PlayerInventory를 기록하고 처치 때만 재화를 지급한다. 일반 피해 방어와 허기 피해의 방어 우회를 유지했다.
 
@@ -188,4 +188,15 @@ ItemStack/SavedStack/NetworkStack/GroundItemState에 작은 Charges/Quality 값�
 
 ## Workbench III 현재 상태 · 2026-10-19
 
-현재 III 확장: Save10/Protocol12, 새 world generation3. WorldChunkRuntime의 표시 전용 요청은 terrain/정적 POI만 만들며 simulation wanted와 분리한다. WorldTurret는 공용 TurretScheduler+InventoryModel+기존 projectile를 사용한다. NetworkTurret는 변경된 cargo/module state와 sampled heading, NetworkTierThreePlayer는 owner request 검증을 맡는다. BeaconDirectory는 휴면을 포함한 ID/위치/순번을 유지한다. 상세는 CONTENT_EXPANSION의 III 절을 따른다.
+III 확장 도입 당시: Save10/Protocol12, 새 world generation3. WorldChunkRuntime의 표시 전용 요청은 terrain/정적 POI만 만들며 simulation wanted와 분리한다. WorldTurret는 공용 TurretScheduler+InventoryModel+기존 projectile를 사용한다. NetworkTurret는 변경된 cargo/module state와 sampled heading, NetworkTierThreePlayer는 owner request 검증을 맡는다. BeaconDirectory는 휴면을 포함한 ID/위치/순번을 유지한다. 상세는 CONTENT_EXPANSION의 III 절을 따른다.
+
+
+## 현재 Creature / Loot 확장
+
+CreatureDefinition.Actions→WildlifeActionDefinition은 movement/attack/temperament/timing을 조합한다. 신규8종은 NeutralAnimal의 기존 FixedUpdate를 건너뛰고 WildlifeActionScheduler의0.05초/최대32개 round-robin으로 실행한다. Terrain/solid sweep·LOS·접촉을 공유하고 pulse는 고정32 collider buffer와 중복 Health 제거를 쓴다. Group 경보는 가까운 동일 pack에만1회 전달한다. 클라이언트는 NetworkCreature의 기존 phase/timestamp/facing/awakening frame으로 표현하며 행동 frame 최대10Hz·HP 변화 즉시다.
+
+StreamedAnimalPopulation은 살아 있는+휴면 logical count, chunk sleeper index, deterministic 규칙 순서 분산과 expansion region 표시를 사용한다. 공유 활성80 cap·청크 quota·종 cap을 구분한다. 초기 적합 habitat의 충돌 실패는 회복 ticket으로 이어지며 tick은 최대32 ticket/2 group/24후보다. StreamedGoblinPopulation도 Camp/actor를 청크 index로 조회하고 휴면 거주 수를 유지한다. 전체 영속 상태 수에 비례하는 매 프레임 scan은 없다.
+
+GoblinCamp는 IPlayerInteractable이며 StorageChest와 별개의6칸 보급품 truth를 가진다. NetworkCamp는 server-only Security/Opened/revision/변경 Loot list, NetworkFacilityInteractor는 owner RPC/sequence/가방·상자 revision/range/alive/space를 검사한다. 교환은 기존 InventoryModel.TryExchange와 일회 slot 소모를 사용한다. 개봉·잔량은 Save11이며 active/dormant capture를 deep copy한다. CampLootPanel은 take-only·Safe Area·localized labels와 기존 Inventory 입력 차단을 공유한다.
+
+ConsumableDefinition.HealthRestore/StaminaRestore/UseCooldownSeconds→PlayerSurvival의 권위·alive·재료 소모 후 즉시 효과, ArmorDefinition.StaminaRecoveryBonus→CharacterStats 집계다. 복잡한 buff stack이나 새 processing engine은 없다. 신규 코드·아트 빌더/격리 QA는 Editor assembly와 runtime을 분리한다.

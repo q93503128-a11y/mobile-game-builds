@@ -3453,6 +3453,209 @@
         "Empty",
         "비어 있음"
       ]
+    },
+    {
+      "Key": "ui.food.recovery",
+      "Values": [
+        "Health +{0} · Stamina +{1}\nUse interval {2}s",
+        "체력 +{0} · 지구력 +{1}\n사용 간격 {2}초"
+      ]
+    },
+    {
+      "Key": "ui.armor.recovery",
+      "Values": [
+        "Stamina recovery +{0}%",
+        "지구력 회복 +{0}%"
+      ]
+    },
+    {
+      "Key": "ui.camp.title",
+      "Values": [
+        "Camp supplies",
+        "야영지 보급품"
+      ]
+    },
+    {
+      "Key": "ui.camp.explain",
+      "Values": [
+        "Shared loot · Take only · Supplies never restock",
+        "공유 보급품 · 가져가기 전용 · 다시 채워지지 않습니다"
+      ]
+    },
+    {
+      "Key": "ui.camp.take",
+      "Values": [
+        "Take",
+        "가져가기"
+      ]
+    },
+    {
+      "Key": "ui.camp.guarded",
+      "Values": [
+        "Clear the camp guards before taking supplies.",
+        "야영지 경비를 제압하면 보급품을 가져갈 수 있습니다."
+      ]
+    },
+    {
+      "Key": "ui.camp.remaining",
+      "Values": [
+        "Choose a stack to take. Make room in your bag first.",
+        "가져갈 묶음을 고르세요. 먼저 가방 공간을 확보하세요."
+      ]
+    },
+    {
+      "Key": "ui.camp.empty",
+      "Values": [
+        "Supplies collected. This chest will not refill.",
+        "보급품을 모두 챙겼습니다. 이 상자는 다시 채워지지 않습니다."
+      ]
+    },
+    {
+      "Key": "ui.camp.empty_slot",
+      "Values": [
+        "Collected",
+        "획득 완료"
+      ]
+    },
+    {
+      "Key": "ui.camp.unavailable",
+      "Values": [
+        "Supplies changed, guarded, or bag full.",
+        "보급품이 바뀌었거나 경비·가방 공간을 확인해야 합니다."
+      ]
+    },
+    {
+      "Key": "creature.bat.name",
+      "Values": [
+        "Bat",
+        "박쥐"
+      ]
+    },
+    {
+      "Key": "creature.stone_crawler.name",
+      "Values": [
+        "Stone Crawler",
+        "암석벌레"
+      ]
+    },
+    {
+      "Key": "creature.bog_leech.name",
+      "Values": [
+        "Bog Leech",
+        "늪거머리"
+      ]
+    },
+    {
+      "Key": "creature.wolf.name",
+      "Values": [
+        "Wolf",
+        "늑대"
+      ]
+    },
+    {
+      "Key": "creature.mountain_goat.name",
+      "Values": [
+        "Mountain Goat",
+        "산양"
+      ]
+    },
+    {
+      "Key": "creature.crow.name",
+      "Values": [
+        "Crow",
+        "까마귀"
+      ]
+    },
+    {
+      "Key": "creature.giant_boar.name",
+      "Values": [
+        "Giant Boar",
+        "거대 멧돼지"
+      ]
+    },
+    {
+      "Key": "creature.crystal_crawler.name",
+      "Values": [
+        "Crystal Crawler",
+        "수정벌레"
+      ]
+    },
+    {
+      "Key": "item.bone.name",
+      "Values": [
+        "Bone",
+        "뼈"
+      ]
+    },
+    {
+      "Key": "item.chitin.name",
+      "Values": [
+        "Chitin",
+        "키틴질"
+      ]
+    },
+    {
+      "Key": "item.medicinal_gland.name",
+      "Values": [
+        "Medicinal Gland",
+        "약용 분비샘"
+      ]
+    },
+    {
+      "Key": "item.bone_arrow.name",
+      "Values": [
+        "Bone Arrow",
+        "뼈 화살"
+      ]
+    },
+    {
+      "Key": "item.bone_trap.name",
+      "Values": [
+        "Bone Trap",
+        "뼈 함정"
+      ]
+    },
+    {
+      "Key": "item.bone_broth.name",
+      "Values": [
+        "Bone Broth",
+        "뼈 국물"
+      ]
+    },
+    {
+      "Key": "item.carapace_vest.name",
+      "Values": [
+        "Carapace Vest",
+        "갑각 조끼"
+      ]
+    },
+    {
+      "Key": "item.barbed_bolt.name",
+      "Values": [
+        "Barbed Bolt",
+        "가시 볼트"
+      ]
+    },
+    {
+      "Key": "item.healing_salve.name",
+      "Values": [
+        "Healing Salve",
+        "회복 연고"
+      ]
+    },
+    {
+      "Key": "item.restorative_broth.name",
+      "Values": [
+        "Restorative Broth",
+        "활력 국물"
+      ]
+    },
+    {
+      "Key": "item.trail_ration.name",
+      "Values": [
+        "Trail Ration",
+        "탐험 식량"
+      ]
     }
   ]
 }

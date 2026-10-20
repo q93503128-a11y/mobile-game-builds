@@ -18,16 +18,18 @@ namespace Wildfolk
         private SlingshotAttack ranged;
         private ZombieLifecycle lifecycle;
         private CreatureVariant variant;
+        private WildlifeActionBrain wildlife;
+        private float nextWildlifePublish;
         private CharacterFacing facing;
         private ushort hits;
         private void Awake()
         {
             Health=GetComponent<Health>();Member=GetComponent<CreatureMember>();animal=GetComponent<NeutralAnimal>();enemy=GetComponent<EnemyController>();goblin=GetComponent<GoblinController>();
             ranged=GetComponent<SlingshotAttack>();lifecycle=GetComponent<ZombieLifecycle>();variant=GetComponent<CreatureVariant>();facing=GetComponent<CharacterFacing>();
-            Health.IsReplica=true;SetSimulation(false);
+            wildlife=GetComponent<WildlifeActionBrain>();Health.IsReplica=true;SetSimulation(false);
         }
         private void SetSimulation(bool enabled)
-        {if(animal!=null)animal.enabled=enabled;if(enemy!=null)enemy.enabled=enabled;if(goblin!=null)goblin.enabled=enabled;if(lifecycle!=null)lifecycle.enabled=enabled;if(ranged!=null)ranged.enabled=enabled;}
+        {if(animal!=null)animal.enabled=enabled;if(enemy!=null)enemy.enabled=enabled;if(goblin!=null)goblin.enabled=enabled;if(lifecycle!=null)lifecycle.enabled=enabled;if(ranged!=null)ranged.enabled=enabled;if(wildlife!=null)wildlife.enabled=enabled;}
         public override void OnNetworkSpawn()
         {
             Health.IsReplica=!IsServer;SetSimulation(IsServer);
@@ -45,6 +47,8 @@ namespace Wildfolk
         private void Publish()
         {
             if(!IsServer || !IsSpawned)return;
+            if(wildlife!=null && Time.unscaledTime<nextWildlifePublish && Health.Current==Frame.Value.HP)return;
+            nextWildlifePublish=Time.unscaledTime+.1f;
             var identity=GetComponent<GoblinIdentity>();
             var id=new CreatureIdentityState{Species=Member.Definition.Id,Group=Member.GroupId??string.Empty,Camp=identity==null ? string.Empty : identity.State.CampId??string.Empty,Anchor=Member.Anchor,Traits=(int)Member.AdditionalTraits,Variant=variant!=null && variant.Equipped};
             if(!Identity.Value.Equals(id))Identity.Value=id;
@@ -52,6 +56,7 @@ namespace Wildfolk
             var obj=target==null ? null : target.GetComponent<NetworkObject>();
             var next=new CreatureFrame{HP=Health.Current,Hits=hits,Target=obj==null ? ulong.MaxValue : obj.NetworkObjectId,Brain=enemy!=null ? (byte)enemy.State : goblin!=null ? (byte)goblin.State : (byte)(animal!=null && animal.IsFleeing ? 1 : 0),Lifecycle=lifecycle==null ? (byte)0 : (byte)lifecycle.Phase,Facing=facing==null ? Vector2.down : Q(facing.Direction),VisualPosition=Visual==null ? Vector2.zero : Q(Visual.localPosition),VisualScale=Visual==null ? Vector2.one : Q(Visual.localScale),Rotation=Visual==null ? 0 : Mathf.Round(Visual.localEulerAngles.z),Ranged=ranged!=null && ranged.IsBusy,ShotStarted=ranged==null ? 0 : ranged.NetworkStarted};
             if(facing!=null){next.Left=Q(facing.LeftOffset);next.Right=Q(facing.RightOffset);next.LeftArc=Mathf.Round(facing.LeftArc);next.RightArc=Mathf.Round(facing.RightArc);}
+            if(wildlife!=null){next.Brain=(byte)wildlife.Phase;next.ShotStarted=wildlife.ServerStarted;next.Facing=Q(wildlife.Direction);next.Ranged=wildlife.Awakened;next.VisualPosition=Vector2.zero;next.VisualScale=Vector2.one;next.Rotation=0;}
             if(!Frame.Value.Equals(next))Frame.Value=next;
         }
         private void IdentityChanged(CreatureIdentityState old,CreatureIdentityState next){if(!IsServer)ApplyIdentity(next);}
@@ -64,7 +69,8 @@ namespace Wildfolk
         {
             if(!IsSpawned || IsServer)return;
             var state=Frame.Value;var blend=1-Mathf.Exp(-Time.deltaTime*25);
-            if(Visual!=null){Visual.localPosition=Vector3.Lerp(Visual.localPosition,new Vector3(state.VisualPosition.x,state.VisualPosition.y,Visual.localPosition.z),blend);Visual.localScale=Vector3.Lerp(Visual.localScale,new Vector3(state.VisualScale.x,state.VisualScale.y,1),blend);Visual.localRotation=Quaternion.Slerp(Visual.localRotation,Quaternion.Euler(0,0,state.Rotation),blend);}
+            if(wildlife!=null)wildlife.PresentReplica(state.Brain,state.ShotStarted,state.Facing,NetworkManager.ServerTime.Time,state.Ranged);
+            else if(Visual!=null){Visual.localPosition=Vector3.Lerp(Visual.localPosition,new Vector3(state.VisualPosition.x,state.VisualPosition.y,Visual.localPosition.z),blend);Visual.localScale=Vector3.Lerp(Visual.localScale,new Vector3(state.VisualScale.x,state.VisualScale.y,1),blend);Visual.localRotation=Quaternion.Slerp(Visual.localRotation,Quaternion.Euler(0,0,state.Rotation),blend);}
             if(facing!=null){facing.Face(state.Facing);facing.SetHandPose(0,state.Left,state.LeftArc);facing.SetHandPose(1,state.Right,state.RightArc);}
             if(ranged!=null)ranged.PresentReplica(state.Ranged,(float)(NetworkManager.ServerTime.Time-state.ShotStarted),state.Facing);
         }

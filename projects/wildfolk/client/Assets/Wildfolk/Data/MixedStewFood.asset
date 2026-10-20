@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f9e983df120a7046a12bc7edb7d4559, type: 3}
   m_Name: MixedStewFood
   m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.ConsumableDefinition
+  HealthRestore: 8
+  StaminaRestore: 0
+  UseCooldownSeconds: 4
   HungerRestore: 65
   ThirstRestore: 18
   RecoveryBlockSeconds: 0

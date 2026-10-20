@@ -20,6 +20,6 @@ namespace Wildfolk
         public bool Attack()=>Session.IsRunning && (CombatAuthority!=null ? CombatAuthority.Attack() : Primary!=null && Primary.TryUse());
         public bool Interact()=>!IsScouting && Interaction!=null && Interaction.TryInteract();
         public void Inventory(){if(AllowInventory)Session.ToggleInventory();}
-        public void Pause(){if(TierThreeHud.CloseFocused())return;if(IsScouting){GetComponent<PlayerTelescope>().Exit();return;}if(AllowPause)Session.OpenPause();}
+        public void Pause(){if(CampLootPanel.CloseFocused() || TierThreeHud.CloseFocused())return;if(IsScouting){GetComponent<PlayerTelescope>().Exit();return;}if(AllowPause)Session.OpenPause();}
     }
 }

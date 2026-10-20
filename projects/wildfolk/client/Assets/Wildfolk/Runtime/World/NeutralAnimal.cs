@@ -38,7 +38,7 @@ namespace Wildfolk
         }
         private void FixedUpdate()
         {
-            if(!SimulationAuthority.Allows(this) || !Session.WorldIsRunning || !Health.IsAlive)return;
+            if(Member.Definition.Actions!=null || !SimulationAuthority.Allows(this) || !Session.WorldIsRunning || !Health.IsAlive)return;
             if(GetComponent<NetworkCreature>()!=null){var target=SimulationAuthority.Target(this,null);if(target==null)return;Player=target.transform;}
             if(Vector2.Distance(body.position,Player.position)<Definition.DangerRange)Flee();
             else if(!IsFleeing && Time.time>=nextWander)ChooseDirection();

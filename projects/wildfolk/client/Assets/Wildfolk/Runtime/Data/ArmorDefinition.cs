@@ -7,6 +7,7 @@ namespace Wildfolk
     {
         public ArmorSlot Slot;
         [Min(0)]public int Defense;
+        [Min(0)]public float StaminaRecoveryBonus;
         public Sprite WornSprite,HandSprite;
         public EquipmentTier Tier;
     }

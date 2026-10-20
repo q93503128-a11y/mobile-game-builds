@@ -59,6 +59,8 @@ namespace Wildfolk.Editor
             foreach(var goblin in Assets<GoblinDefinition>())check(goblin.OuterTerritory>goblin.Territory && goblin.PersonalSpace>0 && goblin.Leash>goblin.OuterTerritory && goblin.Population>0 && goblin.EncounterChance>=0 && goblin.EncounterChance<=1,"Invalid Goblin data");
             foreach(var container in Assets<WaterContainerDefinition>())check(!string.IsNullOrEmpty(container.Id) && container.Empty!=null && container.Raw!=null && container.Clean!=null && container.Empty.Liquid==LiquidState.Empty && container.Raw.Liquid==LiquidState.Raw && container.Clean.Liquid==LiquidState.Clean && container.Raw.Consumable!=null && container.Clean.Consumable!=null,"Invalid container state graph");
             foreach(var armor in Assets<ArmorDefinition>())check(armor.Defense>=0 && armor.WornSprite!=null && tiers.Contains(armor.Tier) && Enum.IsDefined(typeof(ArmorSlot),armor.Slot),"Invalid armor data");
+            foreach(var armor in Assets<ArmorDefinition>())check(Nonnegative(armor.StaminaRecoveryBonus),"Invalid armor recovery: "+armor.name);
+            foreach(var food in Assets<ConsumableDefinition>())check(food.HealthRestore>=0 && Nonnegative(food.StaminaRestore) && Nonnegative(food.UseCooldownSeconds) && (!(food.HealthRestore>0 || food.StaminaRestore>0) || food.UseCooldownSeconds>0),"Invalid consumable recovery: "+food.name);
             foreach(var growth in Assets<CharacterGrowthDefinition>())
             {check(growth.FirstLevelXP>0 && growth.AdditionalXPPerLevel>=0 && growth.MaximumLevel>1 && growth.PointsPerLevel>0,"Invalid level curve");var skillIds=new HashSet<string>();foreach(var skill in growth.Skills)check(skill!=null && !string.IsNullOrEmpty(skill.Id) && skillIds.Add(skill.Id) && skill.Icon!=null && skill.MaximumRank>0 && skill.PerRank>0,"Invalid skill data");}
             foreach(var move in Assets<LocomotionDefinition>())check(move.MaximumStamina>0 && move.Recovery>0 && move.RecoveryDelay>=0 && move.SprintDrain>0 && move.DashCost>0 && move.DashCost<=move.MaximumStamina && move.SprintEnter>move.SprintMaintain && move.SprintMaintain>0 && move.SprintEnter<=1 && move.SprintHold>0 && move.SprintSpeed>1 && move.DashDistance>0 && move.DashDuration>0 && move.ExhaustedRestart>0 && move.ExhaustedRestart<=move.MaximumStamina,"Invalid locomotion data");
@@ -73,6 +75,7 @@ namespace Wildfolk.Editor
             QualityDataValidator.Validate(errors);EcologyDataValidator.Validate(errors);return errors;
         }
         private static void Attack(AttackProfile attack,Action<bool,string> check,string id)=>check(attack!=null && attack.MaxTargets>0 && attack.MaxTargets<=32 && attack.Range>0 && attack.ArcAngle>0 && attack.ArcAngle<=360 && attack.PierceCount>=0 && attack.AoERadius>=0,"Invalid attack profile: "+id);
+        private static bool Nonnegative(float value)=>!float.IsNaN(value) && !float.IsInfinity(value) && value>=0;
         private static bool Cycle(ItemDefinition node,Dictionary<ItemDefinition,List<ItemDefinition>> graph,HashSet<ItemDefinition> visited,HashSet<ItemDefinition> visiting)
         {if(visiting.Contains(node))return true;if(visited.Contains(node))return false;visiting.Add(node);if(graph.TryGetValue(node,out var edges))foreach(var next in edges)if(Cycle(next,graph,visited,visiting))return true;visiting.Remove(node);visited.Add(node);return false;}
     }

@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bfa3a36766470349be175e10907eebf, type: 3}
+  m_Name: StoneCrawlerAction
+  m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.WildlifeActionDefinition
+  Movement: 0
+  Attack: 1
+  Camouflage: 1
+  Defensive: 1
+  Detection: 4
+  Leash: 12
+  WalkSpeed: 0.55
+  ChaseSpeed: 1.7
+  ActionSpeed: 0
+  WarningSeconds: 1
+  WindupSeconds: 0.65
+  ActionSeconds: 0.2
+  RecoverySeconds: 1.5
+  Reach: 1.5
+  EngageRange: 1.7
+  FleeSpeed: 1.7
+  Damage: 10
