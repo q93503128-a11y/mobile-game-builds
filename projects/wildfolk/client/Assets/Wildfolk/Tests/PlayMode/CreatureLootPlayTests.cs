@@ -20,6 +20,50 @@ namespace Wildfolk.Tests
         private WildlifeActionBrain Actor(string id,Vector2 p,string group="qa")
         {var rule=s.World.Animals.Definition.Rules.Single(r=>r.Prefab.Member.Definition.Id==id);var a=Object.Instantiate(rule.Prefab,p,Quaternion.identity);a.Player=bag.transform;a.Session=input.Session;a.Member.Anchor=p;a.Member.GroupId=group;a.Separation.Player=bag.transform;var brain=a.GetComponent<WildlifeActionBrain>();brain.Bind(s.World.GetComponent<WorldNavigation>());return brain;}
         private GoblinCamp Camp(){var spawner=s.World.GetComponent<GoblinSpawner>();return spawner.SpawnCamp(new Vector2(-2,0),"qa-camp",0,false);}
+        [UnityTest]public IEnumerator CorrectedDeathLootPickupsAndExistingStacksRoundTripWithoutVersionChange()
+        {
+            bag.GetComponent<PlayerSurvival>().enabled=false;
+            foreach(var id in new[]{"plant_fiber","feather","crossbow_bolt","iron_ore"})bag.Model.Add(s.Catalog.Item(id),5);
+            var growth=bag.GetComponent<PlayerProgression>();var xp=growth.Experience;var gold=growth.Gold;
+            var randomState=UnityEngine.Random.state;
+            try
+            {
+                foreach(var name in new[]{"sheep","zombie","goblin","slingshot_goblin","skeleton","skeleton_sword"})
+                {
+                    GameObject actor;var p=new Vector2(0,4);
+                    if(name=="sheep")actor=Object.Instantiate(s.World.Animals.Definition.Rules[4].Prefab,p,Quaternion.identity).gameObject;
+                    else if(name=="goblin" || name=="slingshot_goblin")actor=s.World.GetComponent<GoblinSpawner>().SpawnActor(name=="slingshot_goblin",p,"loot-correction",p).gameObject;
+                    else
+                    {
+                        var spawner=s.World.GetComponent<ZombieSpawner>();var enemy=Object.Instantiate(name=="zombie" ? spawner.Prefab : spawner.SecondaryPrefab,p,Quaternion.identity);
+                        enemy.Session=input.Session;enemy.Clock=s.Clock;enemy.PlayerHealth=bag.GetComponent<Health>();enemy.Lifecycle.Clock=s.Clock;
+                        if(name=="skeleton_sword")enemy.Variant.SetEquipped(true);actor=enemy.gameObject;
+                    }
+                    var loot=actor.GetComponent<LootOnDeath>();loot.Player=bag;loot.Settings=s.World.Settings;loot.Pickup=s.World.Pickup;
+                    // Select a successful authored chance branch; this is not a measured drop-rate sample.
+                    var selected=false;for(var seed=0;seed<64;seed++){UnityEngine.Random.InitState(seed);if(UnityEngine.Random.value<.25f){UnityEngine.Random.InitState(seed);selected=true;break;}}Assert.That(selected,Is.True);
+                    var table=loot.Table;var before=growth.Experience;var beforeGold=growth.Gold;
+                    actor.GetComponent<Health>().ApplyDamage(10000,true,bag);
+                    Assert.That(growth.Experience,Is.EqualTo(before+table.Experience));Assert.That(growth.Gold,Is.EqualTo(beforeGold+table.Gold));
+                    var drops=WorldPickup.Active.Where(x=>x!=null && x.Count>0 && Vector2.Distance(x.transform.position,p)<1).ToArray();
+                    Assert.That(drops,Is.Not.Empty,name);
+                    foreach(var drop in drops)
+                    {
+                        Assert.That(new[]{"raw_meat","bone","leather","rusted_sword"},Does.Contain(drop.Item.Id),name);
+                        var item=drop.Item;var amount=drop.Count;var beforeCount=bag.Model.CountItem(item);Move(drop.transform.position);
+                        yield return new WaitForSeconds(.9f);Assert.That(bag.Model.CountItem(item),Is.EqualTo(beforeCount+amount),name+" pickup");
+                    }
+                    Move(Vector2.zero);
+                }
+            }
+            finally{UnityEngine.Random.state=randomState;}
+            foreach(var id in new[]{"plant_fiber","feather","crossbow_bolt","iron_ore"})Assert.That(bag.Model.CountItem(s.Catalog.Item(id)),Is.EqualTo(5),id+" previous stacks remain valid");
+            Assert.That(growth.Experience,Is.EqualTo(xp+36));Assert.That(growth.Gold,Is.EqualTo(gold+11));
+            var expected=JsonUtility.ToJson(new InventoryFixture{Slots=bag.Model.Capture()});Assert.That(s.Save(),Is.True,s.LastError);
+            var loaded=s.Repository.Read(s.Validate);Assert.That(loaded.Version,Is.EqualTo(11));s.Apply(loaded);yield return null;
+            Assert.That(JsonUtility.ToJson(new InventoryFixture{Slots=bag.Model.Capture()}),Is.EqualTo(expected));
+        }
+        [Serializable]private sealed class InventoryFixture{public SavedStack[] Slots;}
         [UnityTest]public IEnumerator SalveHealsAtFullHungerAndCooldownAndDeathPreventConsumption()
         {var health=bag.GetComponent<Health>();health.ApplyDamage(40);var hp=health.Current;Select("healing_salve",3);Assert.That(bag.GetComponent<PlayerSurvival>().TryConsume(),Is.True);Assert.That(health.Current,Is.EqualTo(hp+25));Assert.That(bag.Model.CountItem(s.Catalog.Item("healing_salve")),Is.EqualTo(2));Assert.That(bag.GetComponent<PlayerSurvival>().TryConsume(),Is.False);health.ApplyDamage(10000,true);Assert.That(bag.GetComponent<PlayerSurvival>().TryConsume(),Is.False);Assert.That(bag.Model.CountItem(s.Catalog.Item("healing_salve")),Is.EqualTo(2));yield return null;}
         [UnityTest]public IEnumerator RestorativeFoodRestoresStaminaAndVestIsAnEquipmentTradeoff()

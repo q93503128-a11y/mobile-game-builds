@@ -1,0 +1,43 @@
+{
+  "kind": "account_shared_rate_limit_snapshots",
+  "tokenCountsAvailable": false,
+  "caveat": "Account-wide integer percent, may include other threads and rounding; not per-task token metering.",
+  "snapshots": [
+    {
+      "stage": "start",
+      "utc": "2026-10-20T08:58:41Z",
+      "primaryUsedPercent": 32,
+      "secondaryUsedPercent": 5
+    },
+    {
+      "stage": "audit_end",
+      "utc": "2026-10-20 09:01:11 UTC",
+      "primaryUsedPercent": 35,
+      "secondaryUsedPercent": 6
+    },
+    {
+      "stage": "implementation_end",
+      "utc": "2026-10-20 09:04:07 UTC",
+      "primaryUsedPercent": 38,
+      "secondaryUsedPercent": 6
+    },
+    {
+      "stage": "verification_end",
+      "utc": "2026-10-20 09:09:34 UTC",
+      "primaryUsedPercent": 43,
+      "secondaryUsedPercent": 7
+    },
+    {
+      "stage": "docs_end",
+      "utc": "2026-10-20 09:12:13 UTC",
+      "primaryUsedPercent": 45,
+      "secondaryUsedPercent": 7
+    },
+    {
+      "stage": "git_prepared",
+      "utc": "2026-10-20 09:13:48 UTC",
+      "primaryUsedPercent": 47,
+      "secondaryUsedPercent": 7
+    }
+  ]
+}

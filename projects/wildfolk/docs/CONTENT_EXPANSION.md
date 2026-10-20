@@ -1,10 +1,12 @@
 # 현재 제작 콘텐츠 · Creature / Loot Expansion 1
 
-2026-10-19. **Item121 / Recipe99 / Save11 / Protocol13**, 신규 월드 generation3. Workbench I→II→III와 Wood/Stone/Iron/Steel/Diamond를 제공한다. 실제 정본은 ContentCatalog/RecipeDefinition/각 행동·Loot 에셋이다. 아래 표는 해당 Unity 에셋에서 추출했다. 이전 I–II/III 패스의 경위는 validation/tier-three와 기존 review 기록을 따른다.
+2026-10-20 드랍 개연성 교정 반영. **Item121 / Recipe99 / Save11 / Protocol13**, 신규 월드 generation3. Workbench I→II→III와 Wood/Stone/Iron/Steel/Diamond를 제공한다. 실제 정본은 ContentCatalog/RecipeDefinition/각 행동·Loot 에셋이다. 아래 표는 해당 Unity 에셋에서 추출했다. 이전 I–II/III 패스의 경위는 validation/tier-three와 기존 review 기록을 따른다.
 
 ## 이번 연결
 
-Bone→반복 Arrow / 저비용 Trap / HP 지원 Broth, Chitin→Body sidegrade / 반복 Bolt / 기존 Frame, Medicinal Gland→Hand Salve / Stamina Broth다. 종 전용 raw material, Fur/Hide, Trophy, 새 전문 제작대는 추가하지 않았다. [외부 비교와 결정 근거](../validation/creature-loot-expansion/REVIEW.md), [전체 source→recipe→use 그래프](../validation/creature-loot-expansion/CURRENT_GRAPH.md).
+Bone→반복 Arrow / 저비용 Trap / HP 지원 Broth, Chitin→Body sidegrade / 반복 Bolt / 기존 Frame, Medicinal Gland→Hand Salve / Stamina Broth다. 종 전용 raw material, Fur/Hide, Trophy, 새 전문 제작대는 추가하지 않았다. [Expansion 외부 비교와 결정 근거](../validation/creature-loot-expansion/REVIEW.md), [현재 전체 source→recipe→use 그래프](../validation/loot-plausibility-correction/CURRENT_GRAPH.md).
+
+현재 Feather는 Chicken/Crow, Plant Fiber는 Small Plant가 공급한다. Sheep/Zombie/Goblin의 Fiber와 Goblin의 Bolt·새총 Goblin의 Feather, Skeleton의 원광 보너스는 개연성 교정에서 제거했다. Recipe99의 비용/배치량은 유지하며 기존 보유 stack·Camp 보급품도 보존한다. [공급·탄약 지속 비용 계산](../validation/loot-plausibility-correction/REVIEW.md)을 따른다.
 
 활은 빠른 사격, 쇠뇌는 느린 장전과 높은 단발 피해를 유지한다. Bone Arrow는 기본 Arrow 대비 피해+3, Bronze Arrow보다 낮고, Barbed Bolt는 기본 Bolt 대비+6, Steel Bolt보다 낮다. Carapace Vest는 방어3(철 Body4보다 낮음), Stamina 회복속도+15%다. 숫자 상위 장비 tier를 추가하지 않는다.
 

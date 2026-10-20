@@ -44,12 +44,12 @@ namespace Wildfolk.Editor
             BoneTrap();
             recipes.Find(r=>r.Id=="reinforced_frame").Ingredients=new[]{Cost("steel",2),Cost("leather",1),Cost("chitin",2)};
             var mixed=I("mixed_stew").Consumable;mixed.HealthRestore=8;mixed.UseCooldownSeconds=4;EditorUtility.SetDirty(mixed);
-            Loot("RabbitLoot",0,0,Drop("raw_meat",1,1),Drop("bone",1,1,.5f));Loot("SheepLoot",0,0,Drop("raw_meat",2,2),Drop("plant_fiber",2,2));
+            Loot("RabbitLoot",0,0,Drop("raw_meat",1,1),Drop("bone",1,1,.5f));Loot("SheepLoot",0,0,Drop("raw_meat",2,2));
             Loot("DeerLoot",0,0,Drop("raw_meat",2,3),Drop("leather",1,1,.75f),Drop("bone",1,1));
-            Loot("ZombieLoot",5,1,Drop("plant_fiber",1,2,.7f),Drop("bone",1,1,.5f));
-            Loot("SkeletonLoot",7,2,Drop("bone",1,2),Drop("iron_ore",1,1,.2f));var sword=Loot("SkeletonSwordLoot",8,2,Drop("bone",1,2),Drop("iron_ore",1,1,.2f));sword.RareItems=new[]{Drop("rusted_sword",1,1,.12f)};
-            Loot("GoblinLoot",8,3,Drop("crossbow_bolt",4,8,.6f),Drop("plant_fiber",1,2,.8f),Drop("leather",1,1,.25f));
-            var sling=Loot("SlingshotGoblinLoot",8,3,Drop("feather",1,2,.75f),Drop("plant_fiber",1,2,.8f),Drop("leather",1,1,.25f));
+            Loot("ZombieLoot",5,1,Drop("bone",1,1,.5f));
+            Loot("SkeletonLoot",7,2,Drop("bone",1,2));var sword=Loot("SkeletonSwordLoot",8,2,Drop("bone",1,2));sword.RareItems=new[]{Drop("rusted_sword",1,1,.12f)};
+            Loot("GoblinLoot",8,3,Drop("leather",1,1,.25f));
+            var sling=Loot("SlingshotGoblinLoot",8,3,Drop("leather",1,1,.25f));
             var slingRoot=PrefabUtility.LoadPrefabContents("Assets/Wildfolk/Prefabs/SlingshotGoblin.prefab");slingRoot.GetComponent<LootOnDeath>().Table=sling;PrefabUtility.SaveAsPrefabAsset(slingRoot,"Assets/Wildfolk/Prefabs/SlingshotGoblin.prefab");PrefabUtility.UnloadPrefabContents(slingRoot);
             NewSpecies();UpdateCamp();
             catalog.Items=items.ToArray();catalog.Recipes=recipes.ToArray();D<RecipeCatalog>("Recipes").Recipes=recipes.ToArray();EditorUtility.SetDirty(catalog);EditorUtility.SetDirty(D<RecipeCatalog>("Recipes"));foreach(var i in items)if(i.Id=="carapace_vest" || i.Id=="barbed_bolt" || i.Id=="bone_arrow")EditorUtility.SetDirty(i);foreach(var r in recipes)if(r.Id=="reinforced_frame")EditorUtility.SetDirty(r);

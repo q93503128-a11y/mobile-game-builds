@@ -1,6 +1,6 @@
 # 현재 Creature / Loot · Expansion 1
 
-2026-10-19. 기존5동물+Zombie/Goblin/새총 Goblin/Skeleton/검 Variant와 신규8종을 제공한다. Family=Animal/Undead/Humanoid/Invertebrate, Faction과 Trait/Habitat는 별도 데이터다. 종 ID별 runtime AI 분기는 없다.
+2026-10-20 드랍 개연성 교정 반영. 기존5동물+Zombie/Goblin/새총 Goblin/Skeleton/검 Variant와 신규8종을 제공한다. Family=Animal/Undead/Humanoid/Invertebrate, Faction과 Trait/Habitat는 별도 데이터다. 종 ID별 runtime AI 분기는 없다.
 
 ## 신규 생태와 전투
 
@@ -31,18 +31,20 @@
 |CrystalCrawlerLoot|12 / 0|chitin×2, crystal×1 (15%)|없음|
 |DeerLoot|0 / 0|raw_meat×2–3, leather×1 (75%), bone×1|없음|
 |GiantBoarLoot|15 / 0|raw_meat×4, leather×2, bone×2|없음|
-|GoblinLoot|8 / 3|crossbow_bolt×4–8 (60%), plant_fiber×1–2 (80%), leather×1 (25%)|없음|
+|GoblinLoot|8 / 3|leather×1 (25%)|없음|
 |MountainGoatLoot|0 / 0|bone×1–2, raw_meat×1, leather×1 (50%)|없음|
 |RabbitLoot|0 / 0|raw_meat×1, bone×1 (50%)|없음|
-|SheepLoot|0 / 0|raw_meat×2, plant_fiber×2|없음|
-|SkeletonLoot|7 / 2|bone×1–2, iron_ore×1 (20%)|없음|
-|SkeletonSwordLoot|8 / 2|bone×1–2, iron_ore×1 (20%)|rusted_sword×1 (12%)|
-|SlingshotGoblinLoot|8 / 3|feather×1–2 (75%), plant_fiber×1–2 (80%), leather×1 (25%)|없음|
+|SheepLoot|0 / 0|raw_meat×2|없음|
+|SkeletonLoot|7 / 2|bone×1–2|없음|
+|SkeletonSwordLoot|8 / 2|bone×1–2|rusted_sword×1 (12%)|
+|SlingshotGoblinLoot|8 / 3|leather×1 (25%)|없음|
 |StoneCrawlerLoot|7 / 0|chitin×1, stone×1–2 (70%)|없음|
 |WolfLoot|8 / 0|bone×1–2, raw_meat×1, leather×1 (25%)|없음|
-|ZombieLoot|5 / 1|plant_fiber×1–2 (70%), bone×1 (50%)|없음|
+|ZombieLoot|5 / 1|bone×1 (50%)|없음|
 
-기존 Chicken/Boar 보상은 유지한다. Rabbit/Deer/Skeleton은 Bone 공급, Sheep는 Meat+Fiber, Zombie는 Fiber+Bone으로 바꾸었다. Goblin은 Bolt/Fiber/소량 Leather, 새총 Goblin은 Feather/Fiber/소량 Leather를 주어 Wood/Stone 기초 채집과 중복을 줄였다. 검 Skeleton의 Rusted Sword12%는 유지한다. 새 raw material은 Bone/Chitin/Medicinal Gland3종이며 별도 Fur/Hide/종별 Trophy는 없다. 각 sink는 [전체 제작 정본](CONTENT_EXPANSION.md)을 따른다.
+드랍은 몸의 재료나 실제 소지품과 연결한다. Sheep는 고기만, Zombie는 Bone만 떨어뜨릴 수 있다. Goblin 두 역할은 가죽 복식·장비 끈에서 회수할 소량 Leather와 기존 XP/Gold를 공유한다. 일반 Goblin은 쇠뇌를 쓰지 않고 새총에는 Feather가 필요하지 않으므로 해당 탄약/Feather를 주지 않는다. Plant Fiber는 관목 채집재이며 생물의 털·천과 동일시하지 않는다. 두 Skeleton의 원광도 제거하고 Bone과 실제 검 Variant의 Rusted Sword12%를 유지했다. 공급처 수를 채우기 위한 대체 Drop은 없다.
+
+Chicken/Crow가 Feather, Small Plant가 Plant Fiber, 포유류·Undead 등이 Bone/Leather를 공급한다. 신규8종·Bone/Chitin/Medicinal Gland 구조와 모든 Recipe는 유지한다. 각 sink는 [전체 제작 정본](CONTENT_EXPANSION.md), 교정 전후와 공급 계산·검수는 [교정 REVIEW](../validation/loot-plausibility-correction/REVIEW.md)를 따른다. 이전 Expansion review는 당시 기록이다.
 
 ## 권위와 population
 

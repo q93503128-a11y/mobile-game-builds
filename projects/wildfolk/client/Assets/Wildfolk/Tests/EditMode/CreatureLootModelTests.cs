@@ -23,8 +23,21 @@ namespace Wildfolk.Tests
         {var p=D<AnimalPopulationDefinition>("AnimalPopulation");Assert.That(p.Rules.Take(5).Select(r=>r.Prefab.Member.Definition.Id),Is.EqualTo(new[]{"chicken","boar","rabbit","deer","sheep"}));Assert.That(p.HardCap,Is.EqualTo(80));foreach(var r in p.Rules.Skip(5)){var d=r.Prefab.Member.Definition;var a=d.Actions;Assert.That(a,Is.Not.Null);Assert.That(r.Prefab.GetComponent<WildlifeActionBrain>(),Is.Not.Null);Assert.That(r.ChunkChance,Is.InRange(.01f,1f));Assert.That(r.RegionalTarget,Is.GreaterThan(0));if(a.Attack!=WildlifeAttack.None){Assert.That(a.WarningSeconds+a.WindupSeconds,Is.GreaterThanOrEqualTo(.6f));Assert.That(a.RecoverySeconds,Is.GreaterThan(.5f));Assert.That(a.Leash,Is.GreaterThan(a.Detection));}}}
         [Test]public void CamouflageFlightAndCrystalHabitatUseDifferentAuthoredShapes()
         {var stone=D<CreatureDefinition>("StoneCrawlerCreature");Assert.That(stone.Actions.Camouflage,Is.True);Assert.That(D<CreatureDefinition>("CrystalCrawlerCreature").Actions.Camouflage,Is.False);Assert.That(D<CreatureDefinition>("CrystalCrawlerCreature").Habitat,Is.EqualTo(CreatureHabitat.CrystalPocket));foreach(var name in new[]{"Bat","Crow"})Assert.That(D<CreatureDefinition>(name+"Creature").Actions.Movement,Is.EqualTo(WildlifeMovement.Flight));Assert.That(D<CreatureDefinition>("MountainGoatCreature").Actions.Movement,Is.EqualTo(WildlifeMovement.Hop));}
-        [Test]public void OldUndeadAndGoblinRewardsStopDuplicatingBasicGathering()
-        {foreach(var name in new[]{"ZombieLoot","GoblinLoot","SlingshotGoblinLoot","SkeletonLoot","SkeletonSwordLoot"})Assert.That(D<LootTable>(name).Items.All(x=>x.Item.Id!="wood" && x.Item.Id!="stone"),Is.True);Assert.That(D<LootTable>("SkeletonLoot").Items.Any(x=>x.Item.Id=="bone" && x.Chance==1),Is.True);Assert.That(D<LootTable>("ChickenLoot").Items.Single(x=>x.Item.Id=="feather").Chance,Is.EqualTo(1));Assert.That(D<LootTable>("CrowLoot").Items.Single(x=>x.Item.Id=="feather").Chance,Is.LessThan(1));}
+        [Test]public void CreatureDropsAvoidUnrelatedGatheringAndPreserveNaturalFeatherSources()
+        {
+            foreach(var guid in AssetDatabase.FindAssets("t:LootTable",new[]{"Assets/Wildfolk/Data"}))
+            {
+                var table=AssetDatabase.LoadAssetAtPath<LootTable>(AssetDatabase.GUIDToAssetPath(guid));
+                var entries=table.Items.Concat(table.RareItems).ToArray();
+                Assert.That(entries.Any(x=>x.Item.Id=="plant_fiber"),Is.False,table.name+" is not a plant source");
+                if(entries.Any(x=>x.Item.Id=="feather"))Assert.That(table.name,Is.EqualTo("ChickenLoot").Or.EqualTo("CrowLoot"));
+            }
+            foreach(var name in new[]{"ZombieLoot","GoblinLoot","SlingshotGoblinLoot","SkeletonLoot","SkeletonSwordLoot"})
+                Assert.That(D<LootTable>(name).Items.All(x=>x.Item.Id!="wood" && x.Item.Id!="stone" && x.Item.Id!="iron_ore" && x.Item.Id!="crossbow_bolt"),Is.True,name);
+            Assert.That(D<LootTable>("SkeletonLoot").Items.Any(x=>x.Item.Id=="bone" && x.Chance==1),Is.True);
+            Assert.That(D<LootTable>("ChickenLoot").Items.Single(x=>x.Item.Id=="feather").Chance,Is.EqualTo(1));
+            Assert.That(D<LootTable>("CrowLoot").Items.Single(x=>x.Item.Id=="feather").Chance,Is.LessThan(1));
+        }
         [Test]public void MigrationPreservesOldLivingIdsAndDoesNotPretendToHaveRolledCampLoot()
         {var a=new AnimalSnapshot{Id="old",Species="deer",HP=9,GroupId="herd"};var c=new CampSnapshot{Id="oldcamp",RefillAt=42};var g=new SavedGame{Version=10,Animals=new[]{a},AnimalEcology=new AnimalEcologySnapshot{InitializedRegions=new[]{7}},GoblinEcology=new GoblinEcologySnapshot{Camps=new[]{c}}};SaveMigration.CreatureLootFromEarlier(g);Assert.That(g.Version,Is.EqualTo(11));Assert.That(g.Animals.Single(),Is.SameAs(a));Assert.That(a.HP,Is.EqualTo(9));Assert.That(g.AnimalEcology.InitializedRegions,Is.EqualTo(new[]{7}));Assert.That(g.AnimalEcology.ExpandedRegions,Is.Empty);Assert.That(c.LootInitialized,Is.False);Assert.That(c.Loot,Is.Empty);Assert.That(c.RefillAt,Is.EqualTo(42));}
         [Test]public void CampRollIsStableByPersistentIdAndNeverRefillsAnOpenedContainer()

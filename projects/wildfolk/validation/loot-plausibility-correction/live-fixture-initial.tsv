@@ -1,0 +1,8 @@
+utc	creature	result
+2026-10-20T09:07:24.6103209Z	Sheep	PASS death rewards XP=0 Gold=0 seeded branch=4
+2026-10-20T09:07:25.0179347Z	Sheep	DROP raw_meat x2
+2026-10-20T09:07:26.0312564Z	Sheep	PASS automatic pickup
+2026-10-20T09:07:26.2723154Z	failed	System.ArgumentException: The Object you want to instantiate is null.
+  at UnityEngine.Object.Instantiate (UnityEngine.Object original, UnityEngine.Vector3 position, UnityEngine.Quaternion rotation) [0x00049] in <987aa4221989419a947e2c4ff5d6829c>:0
+  at UnityEngine.Object.Instantiate[T] (T original, UnityEngine.Vector3 position, UnityEngine.Quaternion rotation) [0x00001] in <987aa4221989419a947e2c4ff5d6829c>:0
+  at MCPDynamicCode+<Execute>c__AnonStorey0.<>m__0 () [0x000fb] in <c51d6a0fc1764fddadfee3ae74dbc75c>:0
