@@ -33,11 +33,11 @@ namespace Wildfolk.Editor
             var arrow=Item("BoneArrow","bone_arrow",ItemCategory.Material,100);arrow.Ammo=AmmoKind.Arrow;arrow.AmmoDamage=3;
             var bolt=Item("BarbedBolt","barbed_bolt",ItemCategory.Material,100);bolt.Ammo=AmmoKind.Bolt;bolt.AmmoDamage=6;
             var vest=Item("CarapaceVest","carapace_vest",ItemCategory.Armor,1);vest.Armor=Make<ArmorDefinition>("CarapaceVestArmor",d=>{d.Slot=ArmorSlot.Body;d.Defense=3;d.StaminaRecoveryBonus=.15f;d.Tier=D<EquipmentTier>("IronTier");d.WornSprite=VisualArtImporter.Sprite("carapace_vest_worn");});
-            Food("HealingSalve","healing_salve",0,0,25,0);Food("BoneBroth","bone_broth",24,12,18,0);Food("RestorativeBroth","restorative_broth",22,10,0,35);Food("TrailRation","trail_ration",25,0,0,20);
+            Food("HealingSalve","healing_salve",0,0,30,0);I("healing_salve").Consumable.Kind=ConsumableKind.Medicine;Food("BoneBroth","bone_broth",24,12,18,0);Food("RestorativeBroth","restorative_broth",22,10,0,35);Food("TrailRation","trail_ration",25,0,0,20);
             Recipe("BoneArrow","bone_arrow",12,1,StationKind.Workbench,RecipeCategory.Weapons,0,Cost("bone",2),Cost("wood",1),Cost("feather",1));
             Recipe("BarbedBolt","barbed_bolt",8,2,StationKind.Workbench,RecipeCategory.Weapons,0,Cost("chitin",1),Cost("wood",2),Cost("feather",1));
             Recipe("CarapaceVest","carapace_vest",1,2,StationKind.Workbench,RecipeCategory.Armor,0,Cost("chitin",4),Cost("leather",1),Cost("plant_fiber",2));
-            Recipe("HealingSalve","healing_salve",1,1,StationKind.None,RecipeCategory.Survival,0,Cost("medicinal_gland",1),Cost("plant_fiber",2));
+            Recipe("HealingSalve","healing_salve",1,1,StationKind.None,RecipeCategory.Survival,0,Cost("medicinal_gland",1),Cost("medicinal_herb",1),Cost("plant_fiber",2));
             Recipe("BoneBroth","bone_broth",1,1,StationKind.CookingPot,RecipeCategory.Survival,8,Cost("bone",2),Cost("mushroom",1),Cost("raw_meat",1));
             Recipe("RestorativeBroth","restorative_broth",1,1,StationKind.CookingPot,RecipeCategory.Survival,8,Cost("medicinal_gland",1),Cost("mushroom",1),Cost("berry",2));
             Recipe("TrailRation","trail_ration",1,1,StationKind.Campfire,RecipeCategory.Survival,7,Cost("raw_meat",1),Cost("mushroom",1),Cost("berry",2));

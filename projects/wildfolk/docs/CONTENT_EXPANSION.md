@@ -1,12 +1,12 @@
-# 현재 제작 콘텐츠 · Creature / Loot Expansion 1
+# 현재 제작 콘텐츠 · Medicine Expansion 2-A
 
-2026-10-20 드랍 개연성 교정 반영. **Item121 / Recipe99 / Save11 / Protocol13**, 신규 월드 generation3. Workbench I→II→III와 Wood/Stone/Iron/Steel/Diamond를 제공한다. 실제 정본은 ContentCatalog/RecipeDefinition/각 행동·Loot 에셋이다. 아래 표는 해당 Unity 에셋에서 추출했다. 이전 I–II/III 패스의 경위는 validation/tier-three와 기존 review 기록을 따른다.
+2026-10-20 Medicine Expansion2-A 반영. **Item123 / Recipe100 / Save11 / Protocol14**, 신규 월드 generation3. Workbench I→II→III와 Wood/Stone/Iron/Steel/Diamond를 제공한다. 실제 정본은 ContentCatalog/RecipeDefinition/각 행동·Loot 에셋이다. 아래 표는 해당 Unity 에셋에서 추출했다. 이전 I–II/III 패스의 경위는 validation/tier-three와 기존 review 기록을 따른다.
 
 ## 이번 연결
 
-Bone→반복 Arrow / 저비용 Trap / HP 지원 Broth, Chitin→Body sidegrade / 반복 Bolt / 기존 Frame, Medicinal Gland→Hand Salve / Stamina Broth다. 종 전용 raw material, Fur/Hide, Trophy, 새 전문 제작대는 추가하지 않았다. [Expansion 외부 비교와 결정 근거](../validation/creature-loot-expansion/REVIEW.md), [현재 전체 source→recipe→use 그래프](../validation/loot-plausibility-correction/CURRENT_GRAPH.md).
+Bone→반복 Arrow / 저비용 Trap / HP 지원 Broth, Chitin→Body sidegrade / 반복 Bolt / 기존 Frame, Medicinal Gland→Hand Salve / Stamina Broth다. 종 전용 raw material, Fur/Hide, Trophy, 새 전문 제작대는 추가하지 않았다. [Expansion 외부 비교와 결정 근거](../validation/creature-loot-expansion/REVIEW.md), [드랍 교정 당시 source→recipe→use 그래프](../validation/loot-plausibility-correction/CURRENT_GRAPH.md).
 
-현재 Feather는 Chicken/Crow, Plant Fiber는 Small Plant가 공급한다. Sheep/Zombie/Goblin의 Fiber와 Goblin의 Bolt·새총 Goblin의 Feather, Skeleton의 원광 보너스는 개연성 교정에서 제거했다. Recipe99의 비용/배치량은 유지하며 기존 보유 stack·Camp 보급품도 보존한다. [공급·탄약 지속 비용 계산](../validation/loot-plausibility-correction/REVIEW.md)을 따른다.
+현재 Feather는 Chicken/Crow, Plant Fiber는 Small Plant가 공급한다. Sheep/Zombie/Goblin의 Fiber와 Goblin의 Bolt·새총 Goblin의 Feather, Skeleton의 원광 보너스는 개연성 교정에서 제거했다. 드랍 교정에서는 당시 Recipe99의 비용/배치량을 유지했다. 이후2-A는 아래 약품만 변경하며 기존 보유 stack·Camp 보급품도 보존한다. [공급·탄약 지속 비용 계산](../validation/loot-plausibility-correction/REVIEW.md)을 따른다.
 
 활은 빠른 사격, 쇠뇌는 느린 장전과 높은 단발 피해를 유지한다. Bone Arrow는 기본 Arrow 대비 피해+3, Bronze Arrow보다 낮고, Barbed Bolt는 기본 Bolt 대비+6, Steel Bolt보다 낮다. Carapace Vest는 방어3(철 Body4보다 낮음), Stamina 회복속도+15%다. 숫자 상위 장비 tier를 추가하지 않는다.
 
@@ -20,13 +20,13 @@ Telescope는 제한된 지형 표시만 요청하고 simulation chunk를 늘리�
 |Campfire|6|단순 가열/물. Trail Ration1개 추가.|
 |CookingPot|6|복합 조리·HP/Stamina 지원. Broth2개 추가.|
 |Furnace|4|Iron/Copper/Tin/Bronze4개. 생물 가공을 억지로 넣지 않음.|
-|None|5|현장 조립·기본 생존. Gland+Fiber 연고1개 추가.|
+|None|6|현장 조립·기본 생존. 약초 기반 붕대·연고2개.|
 |TurretWorkbench|8|포탑·탄약·모듈8개. Frame의 Leather2를 Leather1+Chitin2로 조정.|
 |Workbench 1|35|기본 도구·장비·시설 조립. Bone Arrow/Trap2개 추가.|
 |Workbench 2|23|중기 장비·시설. Vest/Barbed Bolt2개 추가.|
 |Workbench 3|11|Diamond·유틸리티·Turret 진입. 이번 추가0.|
 
-Workbench 수는 tier별 신규 Recipe다. I35 / II23 / III11이며 누적35/58/69다. Hand5, Campfire6, Pot6, Furnace4, Blast1, Turret8과 합쳐99다. 전문 처리 시설을 추가하면 맡길 실재 Recipe가 너무 적고 기존 시설과 역할이 겹친다. Furnace의4개와 Blast의1개는 변경하지 않았다. 시설 수를 채우기 위한 새 중간재는 없다.
+Workbench 수는 tier별 신규 Recipe다. I35 / II23 / III11이며 누적35/58/69다. Hand6, Campfire6, Pot6, Furnace4, Blast1, Turret8과 합쳐100이다. 전문 처리 시설을 추가하면 맡길 실재 Recipe가 너무 적고 기존 시설과 역할이 겹친다. Furnace의4개와 Blast의1개는 변경하지 않았다. 시설 수를 채우기 위한 새 중간재는 없다.
 
 ## 현재 전체 Recipe
 
@@ -53,7 +53,8 @@ None은 Hand, Workbench tier는 요구 최소값이다. 상위 Workbench는 하�
 |tin_ingot|tin_ingot×1|Furnace / 1|tin_ore×1 + coal×1|3|
 |campfire|campfire×1|None / 1|wood×4 + stone×3|0|
 |empty_cup|empty_cup×1|None / 1|wood×2|0|
-|healing_salve|healing_salve×1|None / 1|medicinal_gland×1 + plant_fiber×2|0|
+|field_dressing|field_dressing×1|None / 1|plant_fiber×2 + medicinal_herb×1|0|
+|healing_salve|healing_salve×1|None / 1|medicinal_gland×1 + medicinal_herb×1 + plant_fiber×2|0|
 |torch|torch×4|None / 1|wood×1 + coal×1|0|
 |workbench|workbench×1|None / 1|wood×6|0|
 |ammo_box|ammo_box×1|TurretWorkbench / 3|wood×4 + steel×1|0|
@@ -141,3 +142,7 @@ None은 Hand, Workbench tier는 요구 최소값이다. 상위 Workbench는 하�
 ## Goblin Camp
 
 보급품은 플레이어 Storage와 분리한6칸 take-only container다. 살아 있거나 잠든 거주 Goblin이 남으면 획득할 수 없다. 기본4묶음(Bone Arrow8–16/Salve1–2/Bronze1–2/Leather1–2), 선택2묶음(Mechanical Part1 20%/Barbed Bolt8 35%)을 최초1회 생성한다. 캠프 ID와 seed로 고정하고 잔량/개봉/revision을 저장한다. 거주 적 보충은 상자를 보충하지 않는다. Host만 range/alive/가방·상자 revision/공간을 검증해 묶음 전체를 교환한다.
+
+## Medicine 2-A · 현재
+
+추가 Item은 Medicinal Herb(약초, stack50)와 Field Dressing(응급 붕대, stack20)2개, Recipe는 Hand 붕대1개다. Herb→붕대/연고2 sink, Gland→연고/Stamina Broth2 sink를 가진다. 붕대20HP/8초, Salve30HP 즉시, 공용4초·지속치료 비중첩이다. 연고 ID·보유 stack은 유지한다. 전문 Station/상위 약품/음식 수치 변경은 없다. [외부 비교·1P/4P 경제·검수](../validation/medicine-expansion/REVIEW.md).

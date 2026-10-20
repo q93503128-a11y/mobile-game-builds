@@ -2,7 +2,7 @@ namespace Wildfolk
 {
     public static class ItemStats
     {
-        public static string Food(ConsumableDefinition food)=>L.Format("ui.food.stats",food.HungerRestore,food.ThirstRestore)+(food.HealthRestore>0 || food.StaminaRestore>0 ? "\n"+L.Format("ui.food.recovery",food.HealthRestore,food.StaminaRestore,food.UseCooldownSeconds) : "");
+        public static string Food(ConsumableDefinition food)=>food.Kind==ConsumableKind.Medicine ? (food.GradualHealthRestore>0 ? L.Format("ui.medicine.gradual",food.GradualHealthRestore,food.HealingDuration) : L.Format("ui.medicine.instant",food.HealthRestore))+"\n"+L.Format("ui.medicine.limit",food.UseCooldownSeconds) : L.Format("ui.food.stats",food.HungerRestore,food.ThirstRestore)+(food.HealthRestore>0 || food.StaminaRestore>0 ? "\n"+L.Format("ui.food.recovery",food.HealthRestore,food.StaminaRestore,food.UseCooldownSeconds) : "");
         public static string Armor(ArmorDefinition armor)=>L.Format("ui.inventory.armor_detail",L.Text("ui.slot."+armor.Slot),armor.Defense)+(armor.StaminaRecoveryBonus>0 ? "\n"+L.Format("ui.armor.recovery",armor.StaminaRecoveryBonus*100) : "");
         public static string Description(ItemDefinition item)
         {

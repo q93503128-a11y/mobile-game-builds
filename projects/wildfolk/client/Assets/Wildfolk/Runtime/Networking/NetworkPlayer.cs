@@ -19,13 +19,15 @@ namespace Wildfolk
         public Health Health {get;private set;}
         public PlayerEquipment Equipment {get;private set;}
         private PlayerInputAdapter input;
+        private PlayerSurvival survival;
+        private ulong actionSequence,lastActionRequest;
         private Vector2 pendingMove,lastSent;
         private float sentAt,receivedAt,nextDenial;
 
         private void Awake()
         {
             Commands=GetComponent<PlayerInputCommands>();Motor=GetComponent<PlayerMotor>();Health=GetComponent<Health>();Equipment=GetComponent<PlayerEquipment>();input=GetComponent<PlayerInputAdapter>();
-            combat=GetComponent<PlayerCombat>();combat.enabled=false;Health.IsReplica=true;
+            combat=GetComponent<PlayerCombat>();survival=GetComponent<PlayerSurvival>();combat.enabled=false;Health.IsReplica=true;
             input.enabled=false;Motor.enabled=false;Motor.Locomotion.enabled=false;Equipment.enabled=false;GetComponent<CharacterStats>().enabled=false;
         }
         public override void OnNetworkSpawn()
@@ -39,7 +41,7 @@ namespace Wildfolk
             input.enabled=IsOwner;LocalMarker.SetActive(IsOwner);
             NetworkManager.NetworkTickSystem.Tick+=Tick;
             Motion.OnValueChanged+=OnMotion;Status.OnValueChanged+=OnStatus;
-            if(IsServer){Health.Changed+=PublishStatus;Equipment.Changed+=PublishStatus;PublishStatus();receivedAt=Time.unscaledTime;}
+            if(IsServer){Health.Changed+=PublishStatus;Equipment.Changed+=PublishStatus;survival.TreatmentChanged+=PublishStatus;PublishStatus();receivedAt=Time.unscaledTime;}
             else ApplyStatus(Status.Value);
             ApplyMotion(Motion.Value);
             if(IsOwner && NetworkObject.IsPlayerObject)FindFirstObjectByType<MultiplayerArena>()?.BindLocal(this);
@@ -51,6 +53,7 @@ namespace Wildfolk
             if(NetworkManager!=null && NetworkManager.NetworkTickSystem!=null)NetworkManager.NetworkTickSystem.Tick-=Tick;
             Motion.OnValueChanged-=OnMotion;Status.OnValueChanged-=OnStatus;Health.Changed-=PublishStatus;Equipment.Changed-=PublishStatus;
             combat.AttackStarted-=PublishAttack;combat.HarvestDenied-=PublishDenial;Commands.MovementAuthority=null;Commands.CombatAuthority=null;
+            survival.TreatmentChanged-=PublishStatus;survival.ResetTransient();
         }
         public void SetMove(Vector2 move){if(IsSpawned && IsOwner)pendingMove=NetworkInputRules.Sanitize(move);}
         public bool Dash()
@@ -61,10 +64,12 @@ namespace Wildfolk
         }
         public bool Attack()
         {if(!IsSpawned || !IsOwner || !Health.IsAlive)return false;if(Equipment.SelectedItem!=null && Equipment.SelectedItem.Telescope)return GetComponent<PlayerTelescope>().Use();if(Commands.IsScouting)return false;if(Equipment.ActivePlaceable!=null)return GetComponent<NetworkConstruction>().Place();
-            if(IsServer)return GetComponent<PlayerPrimaryAction>().TryUse();AttackRpc();return true;}
+            if(IsServer)return ExecutePrimary(++actionSequence);AttackRpc(++actionSequence);return true;}
         [Rpc(SendTo.Server,InvokePermission=RpcInvokePermission.Owner)]
-        private void AttackRpc(RpcParams rpc=default)
-        {if(rpc.Receive.SenderClientId==OwnerClientId && Health.IsAlive && Equipment.ActivePlaceable==null)GetComponent<PlayerPrimaryAction>().TryUse();}
+        private void AttackRpc(ulong request,RpcParams rpc=default)
+        {if(rpc.Receive.SenderClientId==OwnerClientId)ExecutePrimary(request);}
+        public bool ExecutePrimary(ulong request)
+        {if(!IsSpawned || !IsServer || request==0 || request<=lastActionRequest)return false;lastActionRequest=request;return Health.IsAlive && Equipment.ActivePlaceable==null && GetComponent<PlayerPrimaryAction>().TryUse();}
         private void PublishDenial(ResourceDefinition resource)
         {
             if(Time.unscaledTime<nextDenial)return;nextDenial=Time.unscaledTime+2.5f;
@@ -96,6 +101,7 @@ namespace Wildfolk
             if(IsOwner && ((pendingMove-lastSent).sqrMagnitude>.0001f || Time.unscaledTime-sentAt>.15f))
             {if(IsServer)AcceptMove(pendingMove);else MoveRpc(pendingMove);lastSent=pendingMove;sentAt=Time.unscaledTime;}
             if(!IsServer)return;
+            survival.AdvanceTreatment(1f/NetworkManager.NetworkConfig.TickRate);
             if(Time.unscaledTime-receivedAt>.4f)Commands.ApplyMove(Vector2.zero);
             var direction=Motor.Avatar.Facing.Direction;
             var flags=(byte)((Motor.IsMoving || Motor.Locomotion.IsDashing ? 1 : 0)|(Motor.Locomotion.Stamina.IsSprinting ? 2 : 0)|(Motor.Locomotion.IsDashing ? 4 : 0));
@@ -107,7 +113,7 @@ namespace Wildfolk
         private void PublishStatus()
         {
             if(!IsSpawned || !IsServer)return;
-            var next=new PlayerStatusState{HP=Health.Current,MaximumHP=Health.Maximum,Head=ItemIndex(Equipment.HeadArmor),Body=ItemIndex(Equipment.BodyArmor),Held=ItemIndex(Equipment.SelectedItem),Utility=ItemIndex(Equipment.Utility)};
+            var next=new PlayerStatusState{HP=Health.Current,MaximumHP=Health.Maximum,Head=ItemIndex(Equipment.HeadArmor),Body=ItemIndex(Equipment.BodyArmor),Held=ItemIndex(Equipment.SelectedItem),Utility=ItemIndex(Equipment.Utility),TreatmentUntil=survival.Treatment.Active ? NetworkManager.ServerTime.Time+survival.Treatment.Remaining : 0};
             if(!Status.Value.Equals(next))Status.Value=next;
         }
         private void OnMotion(PlayerMotionState previous,PlayerMotionState next)=>ApplyMotion(next);

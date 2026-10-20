@@ -1,6 +1,6 @@
 # Lowfire
 
-Unity **6000.3.19f1 LTS / Universal 2D**, 모바일 Landscape(1920×1080) 탑다운 생존 게임이다. 표시명 Lowfire, 내부 Wildfolk namespace·경로·저장 식별자는 유지한다. 현재 alpha 콘텐츠는 **Item121 / Recipe99 / Save11 / Protocol13**, Workbench I→II→III와 Wood/Stone/Iron/Steel/Diamond 장비다.
+Unity **6000.3.19f1 LTS / Universal 2D**, 모바일 Landscape(1920×1080) 탑다운 생존 게임이다. 표시명 Lowfire, 내부 Wildfolk namespace·경로·저장 식별자는 유지한다. 현재 alpha 콘텐츠는 **Item123 / Recipe100 / Save11 / Protocol14**, Workbench I→II→III와 Wood/Stone/Iron/Steel/Diamond 장비다.
 
 ## 실행과 플레이
 
@@ -25,10 +25,12 @@ Multiplayer는 Relay Room Code 또는 Local Network Host/Join이다. Host가 이
 ## 정본·개발·검증
 
 - 작업 전 [AGENTS](AGENTS.md)를 읽는다. main 직접 작업, canonical source 수정, PR/임시 branch 금지.
-- [기획](docs/DESIGN_BIBLE.md), [콘텐츠/전체99 Recipe](docs/CONTENT_EXPANSION.md), [생물·드랍](docs/CREATURES_AND_LOOT.md), [제작](docs/CRAFTING.md), [음식](docs/FOOD_AND_FISHING.md), [수치](docs/BALANCE.md), [월드](docs/WORLD_GENERATION.md), [저장](docs/SAVE_PERSISTENCE.md), [구조](docs/ARCHITECTURE.md).
+- [기획](docs/DESIGN_BIBLE.md), [콘텐츠/전체100 Recipe](docs/CONTENT_EXPANSION.md), [생물·드랍](docs/CREATURES_AND_LOOT.md), [제작](docs/CRAFTING.md), [음식](docs/FOOD_AND_FISHING.md), [수치](docs/BALANCE.md), [월드](docs/WORLD_GENERATION.md), [저장](docs/SAVE_PERSISTENCE.md), [구조](docs/ARCHITECTURE.md).
 - [이번 외부 비교·구현·경제·검수](validation/creature-loot-expansion/REVIEW.md). 과거 validation/review는 당시 기록이다.
 - 소스 검사: `python tests/validate_visual_project.py client`. Unity EditMode/PlayMode는 Assets/Wildfolk/Tests. 자동 검사와 실제 Play 검수는 구분한다.
 - 신규 생물/아이콘은 기존 Pillow 방식의 `tools/generate_creature_loot_art.py` 원본이다. 기존 art 출처는 [SOURCE_ART](docs/SOURCE_ART.md). 외부 게임 asset/code/layout을 복제하지 않는다.
 - Unity MCP/code는 허용한다. Windows 입력과 Focus/Show는 금지한다. View 메뉴는 기존 Game View만 Repaint하고 PlayUnfocused를 적용한다. 씬/에셋 재생성은 수작업 변경을 먼저 확인한다.
 
 실제 터치·손맛·재미·장시간 경제·Android 성능은 사용자 검증 대상이다. BGM/SFX 콘텐츠는 비어 있다. Boss/Undead King/Defense Objective/IV~VI/전기/총기/직업/Pet/번식/상인/영구 Skin은 이번에 추가하지 않았다.
+
+약초는 Forest/Wetlands에서 맨손으로 채집한다. 응급 붕대는 Hand에서 Fiber2+Herb1→20HP/8초, 기존 회복 연고는 Gland1+Herb1+Fiber2→즉시30HP다. 공용4초·붕대 비중첩, 자연회복/음식·기존 Station은 유지한다. [의약 조사·경제·검수](validation/medicine-expansion/REVIEW.md). 다음 예정은 Food Expansion2-B다.

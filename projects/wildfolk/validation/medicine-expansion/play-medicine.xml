@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="4" result="Passed" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-20 09:57:58Z" end-time="2026-10-20 09:59:40Z" duration="102.1257497">
+  <test-suite type="TestSuite" id="1196" name="Wildfolk" fullname="Wildfolk" runstate="Runnable" testcasecount="157" result="Passed" start-time="2026-10-20 09:57:58Z" end-time="2026-10-20 09:59:40Z" duration="102.125750" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <test-suite type="Assembly" id="1193" name="Wildfolk.Tests.PlayMode.dll" fullname="C:/Users/User/Documents/ChatGPT/문승준 모바일/canonical/projects/wildfolk/tests/artifacts/unity/Library/ScriptAssemblies/Wildfolk.Tests.PlayMode.dll" runstate="Runnable" testcasecount="157" result="Passed" start-time="2026-10-20 09:57:58Z" end-time="2026-10-20 09:59:40Z" duration="102.117083" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="13228" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <test-suite type="TestSuite" id="1194" name="Wildfolk" fullname="Wildfolk" runstate="Runnable" testcasecount="157" result="Passed" start-time="2026-10-20 09:57:58Z" end-time="2026-10-20 09:59:40Z" duration="102.115743" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1195" name="Tests" fullname="Wildfolk.Tests" runstate="Runnable" testcasecount="157" result="Passed" start-time="2026-10-20 09:57:58Z" end-time="2026-10-20 09:59:40Z" duration="102.114785" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1025" name="CreatureLootPlayTests" fullname="Wildfolk.Tests.CreatureLootPlayTests" classname="Wildfolk.Tests.CreatureLootPlayTests" runstate="Runnable" testcasecount="12" result="Passed" start-time="2026-10-20 09:57:58Z" end-time="2026-10-20 09:58:09Z" duration="10.891352" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1027" name="SalveHealsAtFullHungerAndCooldownAndDeathPreventConsumption" fullname="Wildfolk.Tests.CreatureLootPlayTests.SalveHealsAtFullHungerAndCooldownAndDeathPreventConsumption" methodname="SalveHealsAtFullHungerAndCooldownAndDeathPreventConsumption" classname="Wildfolk.Tests.CreatureLootPlayTests" runstate="Runnable" seed="1268695071" result="Passed" start-time="2026-10-20 09:57:58Z" end-time="2026-10-20 09:58:02Z" duration="3.811521" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1037" name="Save10MigrationAndCorruptCampStackValidationUseRealWorldSnapshot" fullname="Wildfolk.Tests.CreatureLootPlayTests.Save10MigrationAndCorruptCampStackValidationUseRealWorldSnapshot" methodname="Save10MigrationAndCorruptCampStackValidationUseRealWorldSnapshot" classname="Wildfolk.Tests.CreatureLootPlayTests" runstate="Runnable" seed="662307526" result="Passed" start-time="2026-10-20 09:58:02Z" end-time="2026-10-20 09:58:09Z" duration="7.060746" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1079" name="MedicinePlayTests" fullname="Wildfolk.Tests.MedicinePlayTests" classname="Wildfolk.Tests.MedicinePlayTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-20 09:58:09Z" end-time="2026-10-20 09:59:40Z" duration="91.215168" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1080" name="HerbsCraftingHealingSharedLimitAndSaveLoadUseActualGameplay" fullname="Wildfolk.Tests.MedicinePlayTests.HerbsCraftingHealingSharedLimitAndSaveLoadUseActualGameplay" methodname="HerbsCraftingHealingSharedLimitAndSaveLoadUseActualGameplay" classname="Wildfolk.Tests.MedicinePlayTests" runstate="Runnable" seed="2005376193" result="Passed" start-time="2026-10-20 09:58:09Z" end-time="2026-10-20 09:58:39Z" duration="29.659684" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1081" name="HostHealingReplayProtectionAndReHostUseActualServer" fullname="Wildfolk.Tests.MedicinePlayTests.HostHealingReplayProtectionAndReHostUseActualServer" methodname="HostHealingReplayProtectionAndReHostUseActualServer" classname="Wildfolk.Tests.MedicinePlayTests" runstate="Runnable" seed="822834229" result="Passed" start-time="2026-10-20 09:58:39Z" end-time="2026-10-20 09:59:40Z" duration="61.547177" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[<b><color=#2EA3FF>MCP-FOR-UNITY</color></b>: [TestRunnerNoThrottle] Restored Interaction Mode after test run.
+Saving results to: C:/Users/User/AppData/LocalLow/DefaultCompany/Wildfolk\TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

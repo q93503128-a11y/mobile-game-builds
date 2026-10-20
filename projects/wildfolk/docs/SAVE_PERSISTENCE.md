@@ -1,6 +1,6 @@
 # Save / Load11 · v1~v10 이관
 
-2026-10-20 현재 Save11 / Protocol13, 신규 generation3. 정본은 SaveGameRules/SaveValidation/SaveMigration/WorldSnapshotCodec/PlayerSnapshotCodec/SaveRepository다. 기존 generation1/2 지형·시설·자원 ID를 보존한다.
+2026-10-20 현재 Save11 / Protocol14, 신규 generation3. 정본은 SaveGameRules/SaveValidation/SaveMigration/WorldSnapshotCodec/PlayerSnapshotCodec/SaveRepository다. 기존 generation1/2 지형·시설·자원 ID를 보존한다.
 
 ## 파일과 검증
 
@@ -45,6 +45,10 @@ Home 검사와 실제 Continue/Save는 같은 SaveGameRules.Validate를 쓴다. 
 
 ## Host와 QA
 
-Host는 저장 성공 후 세션을 종료하고 실패하면 유지한다. reHost는 저장을 먼저 읽어 새 연결을 만들며 참가자 상태를 spawn 전에 복원한다. 멀티 HP0은 Defeated를 유지한다. Cloud/Account/Host Migration/crash 보장은 없다. Protocol13 peer끼리만 호환한다.
+Host는 저장 성공 후 세션을 종료하고 실패하면 유지한다. reHost는 저장을 먼저 읽어 새 연결을 만들며 참가자 상태를 spawn 전에 복원한다. 멀티 HP0은 Defeated를 유지한다. Cloud/Account/Host Migration/crash 보장은 없다. Protocol14 peer끼리만 호환한다.
 
 실제 사용자 파일은 QA에서 수정·삭제하지 않는다. Editor 전용 IsolatedQaProfile은 별도 Captures 디렉터리와 격리 identity/preferences를 쓴다. 실제 Unity SP/Host와 자동 회귀, 원격·단말 미검수 범위는 [이번 REVIEW](../validation/creature-loot-expansion/REVIEW.md)를 따른다. Android 강제 종료 파일 시스템은 별도 실기 검증이다.
+
+## Medicine2-A · transient 치료
+
+Save11을 유지한다. 신규 item ID는 기존 Catalog codec, Herb 고갈/지역 ticket은 기존 resource snapshot을 사용한다. 이미 소비된 붕대와 실제 적용된 HP만 저장하며, 남은8초 치료와 공용 사용 간격은 Load/reHost/사망에서 초기화한다. 저장·재접속으로 새 치료를 다시 지급하지 않는다. 별도 migration 필드가 필요 없다. Protocol14는 PlayerStatusState에 치료 종료 서버 시각을 추가하고 Primary RPC에 단조 증가 요청 번호를 추가했기 때문이며13 peer와 혼용하지 않는다. 사용자 원본 저장의 hash/mtime 비교는 [이번 REVIEW](../validation/medicine-expansion/REVIEW.md).

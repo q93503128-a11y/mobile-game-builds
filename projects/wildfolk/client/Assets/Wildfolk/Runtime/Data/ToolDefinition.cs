@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Wildfolk
 {
-    public enum ResourceKind { Wood, Stone, Meat, IronOre, CopperOre, TinOre, Coal, PlantFiber, Berry, Mushroom, Diamond, Crystal }
+    public enum ResourceKind { Wood, Stone, Meat, IronOre, CopperOre, TinOre, Coal, PlantFiber, Berry, Mushroom, Diamond, Crystal, MedicinalHerb }
     public enum ToolKind { Axe, Pickaxe, Sword, Pan, Spear, Bow, Crossbow }
     public enum HarvestMethod { Strike, Panning, Interaction }
     [Serializable] public struct ResourceEfficiency

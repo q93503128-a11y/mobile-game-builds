@@ -1,6 +1,6 @@
 # 제작과 처리 · 현재 정본
 
-2026-10-19. Item121 / Recipe99, Workbench I→II→III, Equipment Wood/Stone/Iron/Steel/Diamond. 전체 실제 비용·출력·Station·시간은 [CONTENT_EXPANSION](CONTENT_EXPANSION.md)의99개 표를 따른다. RecipeDefinition/RecipeCatalog/ContentCatalog가 코드 정본이다.
+2026-10-20. Item123 / Recipe100, Workbench I→II→III, Equipment Wood/Stone/Iron/Steel/Diamond. 전체 실제 비용·출력·Station·시간은 [CONTENT_EXPANSION](CONTENT_EXPANSION.md)의100개 표를 따른다. RecipeDefinition/RecipeCatalog/ContentCatalog가 코드 정본이다.
 
 ## Station 경계
 
@@ -23,3 +23,5 @@ StationProcessing은 데이터의 Batch/Sequential Mode·Speed를 읽는다. Cam
 ## Multiplayer
 
 Host가 PlayerCrafting.GetStatus/Craft와 InventoryModel.TryExchange로 Station/tier/재료/공간을 확인한다. 투입·회수·수령·완료 경계에서 facility revision을 올린다. 오래된 요청/full bag은 cargo를 유지한다. Client는 변경 snapshot과 server 종료 시각으로 진행을 표시한다. Goblin Camp는 플레이어가 넣을 수 없는 별도6칸 보급품 UI와 Host claim 경계를 사용한다.
+
+Medicine2-A: Hand6개 중 응급 붕대(Fiber2+Herb1)·연고(Gland1+Herb1+Fiber2)를 현장 제작한다. 새 의약 Station은0개이며 기존 제작 카드·정렬·공간/재료 검증을 재사용한다. 상세 결정은 [이번 REVIEW](../validation/medicine-expansion/REVIEW.md).

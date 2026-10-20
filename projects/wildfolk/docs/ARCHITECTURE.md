@@ -1,6 +1,6 @@
 # 현재 코드 연결
 
-2026-10-20 현재: generation3 / Save11 / Protocol13, Item121 / Recipe99. v1~10 이관과 generation1/2 reader를 유지한다. 아래 날짜별 Foundation 절은 구조의 도입 기록이며 현재 데이터는 CONTENT_EXPANSION/CREATURES_AND_LOOT/SAVE_PERSISTENCE를 따른다.
+2026-10-20 현재: generation3 / Save11 / Protocol14, Item123 / Recipe100. v1~10 이관과 generation1/2 reader를 유지한다. 아래 날짜별 Foundation 절은 구조의 도입 기록이며 현재 데이터는 CONTENT_EXPANSION/CREATURES_AND_LOOT/SAVE_PERSISTENCE를 따른다.
 
 시설 실행은 ProcessingScheduler의 공용0.1초 tick에 등록된 busy Host/SP 작업만 진행한다. HitFeedback는 피격 이벤트 동안 coroutine으로 동작한다. LootTable.Roll/ProcessingQueue.Costs/CavernNetwork의 exitNext가 중복 계산을 공유한다. UI는 visibility 변경에만 강제 layout, 처리 명칭은 recipe/language cache, LocalFirelight geometry는 definition 변경에만 설정한다. Save/Protocol 필드와 inactive logical advance는 유지한다.
 Runtime/InputSystem/UGUI,Editor,EditMode/PlayMode Tests를 분리한다. 실제 수치는Data ScriptableObject가 정본이고 Editor는 없는 초기 데이터를 생성하며 기존 수치를 보존한다. 씬은 프리팹 연결과 월드Bootstrap을 저장하고 수동 테스트 월드 배치 코드는 제거했다.
@@ -200,3 +200,7 @@ StreamedAnimalPopulation은 살아 있는+휴면 logical count, chunk sleeper in
 GoblinCamp는 IPlayerInteractable이며 StorageChest와 별개의6칸 보급품 truth를 가진다. NetworkCamp는 server-only Security/Opened/revision/변경 Loot list, NetworkFacilityInteractor는 owner RPC/sequence/가방·상자 revision/range/alive/space를 검사한다. 교환은 기존 InventoryModel.TryExchange와 일회 slot 소모를 사용한다. 개봉·잔량은 Save11이며 active/dormant capture를 deep copy한다. CampLootPanel은 take-only·Safe Area·localized labels와 기존 Inventory 입력 차단을 공유한다.
 
 ConsumableDefinition.HealthRestore/StaminaRestore/UseCooldownSeconds→PlayerSurvival의 권위·alive·재료 소모 후 즉시 효과, ArmorDefinition.StaminaRecoveryBonus→CharacterStats 집계다. 복잡한 buff stack이나 새 processing engine은 없다. 신규 코드·아트 빌더/격리 QA는 Editor assembly와 runtime을 분리한다.
+
+## Medicine2-A · 현재
+
+ConsumableDefinition.Kind/GradualHealthRestore/HealingDuration은 Food와 Medicine 및 즉시/지속 효과를 표현한다. PlayerSurvival의 기존 원자적 소비·권위·alive·공용 nextConsume 경로를 재사용한다. TreatmentModel은 단일 transient 상태이며 누적 목표량의 정수 차이만 HP에 전달해 프레임별 반올림 손실·중첩을 방지한다. SP는 기존 Update, MP는 기존 server NetworkPlayer tick에서 진행한다. 기존 MP hunger/natural survival Update를 켜지 않는다. Client는 상태 종료 시각으로 표시만 한다. Owner Primary RPC는 요청 번호를 검사해 중복/지연 재생을 거절하며 피해/회복량을 client에서 받지 않는다. MedicineHud는 잔여 정수 초가 바뀔 때 작은 localized Text만 갱신한다. 새 Status Framework/Station/전역 resource scan은 없다.

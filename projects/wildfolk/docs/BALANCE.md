@@ -204,3 +204,16 @@ Ballista62damage/26range/2.3초/45도·초/HP180, Repeater16/17/.55초/105도·�
 |crystal_crawler|95|12|0.65/1/0.25/1.8|5|1 / 55%|450|
 
 새 장비/소모품·전체 drop 수치는 [콘텐츠](CONTENT_EXPANSION.md)/[생물](CREATURES_AND_LOOT.md)/[음식](FOOD_AND_FISHING.md), 필수/선택1P·4P 계산과 확률 기대값은 [이번 경제 표](../validation/creature-loot-expansion/ECONOMY.md)를 따른다. 새로운 full armor tier/buff stack/Station은 없다. 실제 플레이 진행 속도·재미를 측정한 수치가 아니다.
+
+## Medicine2-A · 현재
+
+|대상|비용/수치|역할|
+|---|---|---|
+|Medicinal Herb|Forest/Wetlands, HP12, 맨손, yield2, stack50|64유닛 청크당6후보·60%·간격6, Starter0|
+|지역 회복|240초, target1.0, spacing6/cluster3, harvest exclusion 반경6/480초|기존 화면 밖 지역 보충, 제자리 즉시 재생 아님|
+|Field Dressing|Fiber2+Herb1, Hand,20HP/8초, stack20|초당2.5HP, 활성 중 재사용 거부·미소비|
+|Healing Salve|Gland1+Herb1+Fiber2, Hand,즉시30HP|기존25에서30, 위기 대응|
+|사용 제한|기존 소비품 공용4초|서로 교대해 제한 우회 불가|
+|자연회복|H/T≥70%, 전투 후8초,0.5HP/s|기존 안전 복구 보존|
+
+현재 위험 생물 피해5–18HP 대비 붕대는 느린 복구, Salve는 즉시 피해 약1.7–6회분이다. 음식 최대18HP·Stamina 지원은 그대로다. [3seed 실제 분포와1P/4P 준비 예산](../validation/medicine-expansion/REVIEW.md)은 산술/생성 검증이며 실제 재미·장시간 소모율 측정이 아니다.

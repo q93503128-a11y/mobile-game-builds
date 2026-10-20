@@ -1,0 +1,65 @@
+2026-10-20T09:58:13.3652663Z	herb-Forest	begin
+2026-10-20T09:58:13.9471420Z	herb-Forest	PASS unarmed strike
+2026-10-20T09:58:14.5491443Z	herb-Forest	PASS unarmed strike
+2026-10-20T09:58:15.1980822Z	herb-Forest	PASS herb harvested c-4:-32:medicinal_herb_surface:3 at (-237.92, -2003.35)
+2026-10-20T09:58:15.1996062Z	herb-Forest	PASS real herb ground pickup
+2026-10-20T09:58:16.0978686Z	herb-Forest	PASS pickup adds authored yield2
+2026-10-20T09:58:16.0990710Z	herb-Wetlands	begin
+2026-10-20T09:58:16.6371624Z	herb-Wetlands	PASS unarmed strike
+2026-10-20T09:58:17.2251906Z	herb-Wetlands	PASS unarmed strike
+2026-10-20T09:58:17.8772713Z	herb-Wetlands	PASS herb harvested c-32:-32:medicinal_herb_surface:2 at (-2001.96, -1986.45)
+2026-10-20T09:58:17.8772713Z	herb-Wetlands	PASS real herb ground pickup
+2026-10-20T09:58:18.7777568Z	herb-Wetlands	PASS pickup adds authored yield2
+2026-10-20T09:58:18.7777568Z	herb-Wetlands	PASS harvest schedules regional recovery
+2026-10-20T09:58:18.7792679Z	craft	begin
+2026-10-20T09:58:19.1495770Z	craft	PASS actual Hand card crafted field_dressing
+2026-10-20T09:58:19.1689198Z	craft	PASS actual Hand card crafted healing_salve
+2026-10-20T09:58:19.1714369Z	full-health	begin
+2026-10-20T09:58:19.1802550Z	full-health	PASS full HP rejects dressing
+2026-10-20T09:58:19.1905386Z	full-health	PASS full HP rejects Salve
+2026-10-20T09:58:19.1905386Z	treatment	begin
+2026-10-20T09:58:19.2002141Z	treatment	PASS dressing begins without instant burst
+2026-10-20T09:58:19.2002141Z	treatment	PASS one dressing consumed
+2026-10-20T09:58:19.2099754Z	treatment	PASS dressing blocks immediate Salve
+2026-10-20T09:58:23.3554834Z	treatment	PASS gradual half-course delivery
+2026-10-20T09:58:23.3664042Z	treatment	PASS active treatment refuses repeat after cooldown
+2026-10-20T09:58:23.3794767Z	treatment	PASS Salve gives exactly30 instant HP after shared interval
+2026-10-20T09:58:23.3794767Z	treatment	PASS one Salve consumed
+2026-10-20T09:58:23.3805835Z	treatment	PASS Salve repeat blocked
+2026-10-20T09:58:23.3904405Z	treatment	PASS Salve blocks immediate dressing
+2026-10-20T09:58:27.5565325Z	treatment	PASS 20 gradual plus30 instant completed
+2026-10-20T09:58:27.5576274Z	save-load	begin
+2026-10-20T09:58:27.5662087Z	save-load	PASS new course before Save
+2026-10-20T09:58:33.6301018Z	save-load	PASS isolated Save11:
+2026-10-20T09:58:35.2614473Z	save-load	PASS Save schema11 preserved
+2026-10-20T09:58:39.2152173Z	save-load	PASS Load retains delivered HP and clears remaining treatment
+2026-10-20T09:58:39.2162228Z	save-load	PASS Load never replays heal or consumed item
+2026-10-20T09:58:39.2167279Z	save-load	PASS herb recovery survives Save/Load
+2026-10-20T09:58:39.2177914Z	complete	complete
+2026-10-20T09:58:41.2789886Z	host	begin
+2026-10-20T09:58:41.4087411Z	host	PASS local Host:
+2026-10-20T09:58:41.4194510Z	host	PASS enter multiplayer
+2026-10-20T09:58:44.6950422Z	host	PASS Host world ready
+2026-10-20T09:58:45.3111410Z	host	PASS Host natural herb location
+2026-10-20T09:58:45.8795175Z	host	PASS Host owns actual herb
+2026-10-20T09:58:45.8820319Z	host	PASS Host unarmed harvest request
+2026-10-20T09:58:46.4804644Z	host	PASS Host unarmed harvest request
+2026-10-20T09:58:48.1359640Z	host	PASS Host herb drops and picks up exactly2
+2026-10-20T09:58:48.1378254Z	host	PASS existing MP natural survival stays disabled
+2026-10-20T09:58:48.1389719Z	host	PASS Host accepts dressing once
+2026-10-20T09:58:48.1404485Z	host	PASS same request rejected
+2026-10-20T09:58:48.1424860Z	host	PASS one network consumption
+2026-10-20T09:58:48.1434963Z	host	PASS replicated treatment end
+2026-10-20T09:58:48.1450421Z	host	PASS shared interval blocks Salve
+2026-10-20T09:58:52.3329666Z	host	PASS Host advances HoT despite disabled survival Update
+2026-10-20T09:58:52.3339687Z	host	PASS stale request still rejected after interval
+2026-10-20T09:58:52.3349673Z	host	PASS fresh Salve restores once
+2026-10-20T09:58:52.3354719Z	host	PASS duplicate Salve no item/heal
+2026-10-20T09:59:03.8553033Z	host	PASS Host saves during treatment
+2026-10-20T09:59:19.0060464Z	rehost	begin
+2026-10-20T09:59:22.0475995Z	rehost	PASS local Host:
+2026-10-20T09:59:22.0496166Z	rehost	PASS enter multiplayer
+2026-10-20T09:59:27.8791339Z	rehost	PASS Host world ready
+2026-10-20T09:59:28.4678318Z	rehost	PASS reHost retains HP and clears transient course
+2026-10-20T09:59:28.4693436Z	rehost	PASS reHost retains exactly consumed stacks
+2026-10-20T09:59:28.4703568Z	complete	complete

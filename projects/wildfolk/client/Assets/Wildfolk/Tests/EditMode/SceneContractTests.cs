@@ -30,7 +30,7 @@ namespace Wildfolk.Tests
                 Assert.That(player.Combat.Equipment,Is.Not.Null);Assert.That(player.Avatar.Facing,Is.Not.Null);
                 Assert.That(player.GetComponent<PlayerInventory>().Settings.InventorySlots,Is.EqualTo(36));
                 Assert.That(player.GetComponent<PlayerPrimaryAction>().Placement,Is.Not.Null);
-                Assert.That(player.GetComponent<PlayerCrafting>().Catalog.Recipes.Length,Is.EqualTo(99));
+                Assert.That(player.GetComponent<PlayerCrafting>().Catalog.Recipes.Length,Is.EqualTo(100));
                 Assert.That(player.Session.GetComponent<WorldPauseController>(),Is.Not.Null);
                 Assert.That(Object.FindFirstObjectByType<InventoryPanel>().Slots.Length,Is.EqualTo(36));
                 Assert.That(enemy,Is.Null,"The saved daytime scene must have no active Zombie.");
@@ -43,7 +43,7 @@ namespace Wildfolk.Tests
                 Assert.That(hotbar.Owner,Is.SameAs(player.GetComponent<PlayerInventory>()));
                 Assert.That(nodes,Is.Zero,"Resources are generated from Seed rather than stored as manual instances.");
                 var generator=player.Session.GetComponent<WorldGenerator>();Assert.That(generator,Is.Not.Null);Assert.That(generator.Player,Is.SameAs(player.GetComponent<PlayerInventory>()));
-                Assert.That(generator.Definition.Resources.Length,Is.EqualTo(12));Assert.That(generator.Definition.Biome.Id,Is.EqualTo("temperate"));
+                Assert.That(generator.Definition.Resources.Length,Is.EqualTo(13));Assert.That(generator.Definition.Biome.Id,Is.EqualTo("temperate"));
                 Assert.That(Object.FindObjectsByType<ParticleSystem>(FindObjectsSortMode.None),Is.Empty);
             }
             finally { if(!wasLoaded) EditorSceneManager.CloseScene(scene,true); }
@@ -63,7 +63,7 @@ namespace Wildfolk.Tests
             }
             Assert.That(settings.EnemyLoseRange,Is.GreaterThanOrEqualTo(settings.EnemyDetectionRange));
             Assert.That(settings.InventorySlots,Is.GreaterThanOrEqualTo(PlayerInventory.HotbarSize));
-            Assert.That(AssetDatabase.FindAssets("t:ItemDefinition",new[]{"Assets/Wildfolk/Data"}).Length,Is.EqualTo(121));
+            Assert.That(AssetDatabase.FindAssets("t:ItemDefinition",new[]{"Assets/Wildfolk/Data"}).Length,Is.EqualTo(123));
             var ids=new HashSet<string>();
             foreach(var guid in AssetDatabase.FindAssets("t:ItemDefinition",new[]{"Assets/Wildfolk/Data"}))
             {
@@ -74,7 +74,7 @@ namespace Wildfolk.Tests
                 {
                     Assert.That(item.Consumable,Is.Not.Null);
                     Assert.That(item.Consumable.HungerRestore,Is.GreaterThanOrEqualTo(0));Assert.That(item.Consumable.ThirstRestore,Is.GreaterThanOrEqualTo(0));
-                    Assert.That(item.Consumable.HungerRestore+item.Consumable.ThirstRestore+item.Consumable.HealthRestore+item.Consumable.StaminaRestore,Is.GreaterThan(0));
+                    Assert.That(item.Consumable.HungerRestore+item.Consumable.ThirstRestore+item.Consumable.HealthRestore+item.Consumable.GradualHealthRestore+item.Consumable.StaminaRestore,Is.GreaterThan(0));
                 }
                 if(item.Category==ItemCategory.Placeable) {Assert.That(item.Placement.Prefab,Is.Not.Null);Assert.That(item.Placement.Item,Is.SameAs(item));}
                 if(item.NavigationInstrument || item.FishingRod || item.EquippedLight!=null || item.Telescope || item.TurretModule!=null){Assert.That(item.Tool,Is.Null);Assert.That(item.MaxStack,Is.EqualTo(1));}
@@ -104,7 +104,7 @@ namespace Wildfolk.Tests
                 foreach(var cost in recipe.Ingredients)
                 {Assert.That(cost.Item,Is.Not.Null);Assert.That(cost.Count,Is.GreaterThan(0));Assert.That(ingredients.Add(cost.Item.Id),Is.True);}
             }
-            Assert.That(recipeIds.Count,Is.EqualTo(99));
+            Assert.That(recipeIds.Count,Is.EqualTo(100));
             Assert.That(System.IO.File.Exists("Assets/Wildfolk/Data/StartingEquipment.asset"),Is.False);
             foreach(var guid in AssetDatabase.FindAssets("t:VitalityDefinition",new[]{"Assets/Wildfolk/Data"}))
             {
@@ -116,6 +116,7 @@ namespace Wildfolk.Tests
                 var resource=AssetDatabase.LoadAssetAtPath<ResourceDefinition>(AssetDatabase.GUIDToAssetPath(guid));
                 Assert.That(resource.Vitality,Is.Not.Null);Assert.That(resource.DropItem,Is.Not.Null);
                 Assert.That(resource.DropCount,Is.InRange(1,resource.DropItem.MaxStack));
+                if(resource.DropItem.Id=="medicinal_herb"){Assert.That(resource.Kind,Is.EqualTo(ResourceKind.MedicinalHerb));continue;}
                 Assert.That(resource.Kind,Is.EqualTo(resource.DropItem.Id=="wood" ? ResourceKind.Wood : resource.DropItem.Id=="stone" ? ResourceKind.Stone : resource.DropItem.Id=="iron_ore" ? ResourceKind.IronOre : resource.DropItem.Id=="copper_ore" ? ResourceKind.CopperOre : resource.DropItem.Id=="tin_ore" ? ResourceKind.TinOre : resource.DropItem.Id=="coal" ? ResourceKind.Coal : resource.DropItem.Id=="plant_fiber" ? ResourceKind.PlantFiber : resource.DropItem.Id=="berry" ? ResourceKind.Berry : resource.DropItem.Id=="mushroom" ? ResourceKind.Mushroom : resource.DropItem.Id=="diamond" ? ResourceKind.Diamond : resource.DropItem.Id=="crystal" ? ResourceKind.Crystal : ResourceKind.Meat));
             }
         }

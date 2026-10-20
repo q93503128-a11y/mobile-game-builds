@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fed1ca97dce3214e8ef920e00983bf4, type: 3}
+  m_Name: MedicinalHerbResource
+  m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.ResourceDefinition
+  Kind: 12
+  Harvest:
+    Mode: 0
+    Method: 0
+    MinimumTier: {fileID: 0}
+    RequiredTool: 0
+    RequiredToolItem: {fileID: 0}
+  Vitality: {fileID: 11400000, guid: e26123a7a094a00478547b4d31950de2, type: 2}
+  DropItem: {fileID: 11400000, guid: 234cbab1a9bc0094e9b6e69e132e7cfb, type: 2}
+  DropCount: 2

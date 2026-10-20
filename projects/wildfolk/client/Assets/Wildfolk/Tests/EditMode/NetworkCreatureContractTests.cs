@@ -23,7 +23,7 @@ namespace Wildfolk.Tests
         {
             var session=AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Wildfolk/Prefabs/NetworkSession.prefab").GetComponent<NetworkSession>();
             var entries=session.EcologyPrefab.GetComponent<NetworkCreatureWorld>().Prefabs;
-            Assert.That(entries.Length,Is.EqualTo(63));Assert.That(entries.Select(e=>e.NetworkPrefab).Distinct().Count(),Is.EqualTo(63));
+            Assert.That(entries.Length,Is.EqualTo(64));Assert.That(entries.Select(e=>e.NetworkPrefab).Distinct().Count(),Is.EqualTo(64));
             foreach(var e in entries)
             {
                 Assert.That(e.Source,Is.Not.Null);Assert.That(e.NetworkPrefab.GetComponent<NetworkObject>(),Is.Not.Null);
@@ -40,7 +40,7 @@ namespace Wildfolk.Tests
         [Test]public void PlayerRequestsNeverContainTargetDamageOrClientHitResult()
         {
             var attack=typeof(NetworkPlayer).GetMethod("AttackRpc",System.Reflection.BindingFlags.NonPublic|System.Reflection.BindingFlags.Instance);
-            Assert.That(attack.GetParameters().Single().ParameterType,Is.EqualTo(typeof(RpcParams)));
+            Assert.That(attack.GetParameters().Select(p=>p.ParameterType),Is.EqualTo(new[]{typeof(ulong),typeof(RpcParams)}));
             var rpc=(RpcAttribute)attack.GetCustomAttributes(typeof(RpcAttribute),false).Single();Assert.That(rpc.InvokePermission,Is.EqualTo(RpcInvokePermission.Owner));
         }
         [Test]public void MultiplayerWorldHasNoPersistenceAndKeepsPopulationDefinitions()

@@ -12,7 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f9e983df120a7046a12bc7edb7d4559, type: 3}
   m_Name: HealingSalveFood
   m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.ConsumableDefinition
-  HealthRestore: 25
+  Kind: 1
+  HealthRestore: 30
+  GradualHealthRestore: 0
+  HealingDuration: 0
   StaminaRestore: 0
   UseCooldownSeconds: 4
   HungerRestore: 0

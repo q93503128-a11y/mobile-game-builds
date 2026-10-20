@@ -109,3 +109,7 @@ Save7:Root Seed/BaseGenerationVersion/g·c·p deltas/비재생 tombstone/멀리 
 Save11의 ExpandedRegions는 기존 initialized 방문 청크에 신규 규칙을 한 번 초기화한다. 기존 생존 ID/group/HP/Home/원래 logical region을 보존한다. 적합 habitat지만 충돌로 초기 생성 실패하면 지연 ticket을 남긴다. active+sleep logical count/청크별 index와 공용 활성80 cap을 사용한다. 생물 때문에 simulation chunk를 붙잡지 않는다. 생성·회복 상한/종별 interval은 BALANCE, 실제 행동/드랍은 CREATURES_AND_LOOT를 따른다.
 
 Goblin 주민의480초 보충과 Camp 보급품 최초1회 생성을 분리했다. 상자 잔량은 휴면/Load/reHost에 보존하며 자연 Crystal은 여전히6개/150초의 주 공급이다. Crystal Crawler의1개15%는 선택 전투 보너스이고 Diamond나 Part를 드랍하지 않는다.
+
+## Medicine2-A · 약초
+
+Resource rule12 / NaturalSource 마지막 항목에 Medicinal Herb를 추가했다. Surface Forest/Wetlands의 ForestFloor 또는 WetGround,6후보/청크·0.6확률·간격6·yield2·StarterSupply0이다. Grassland/Rocky/지하에는 생성하지 않는다. 기존 청크 materialization·지역 recovery를 재사용하며 자원별 Update/전역 scan을 추가하지 않는다. Generation1에는 independent salt12317의 Forest fallback12개가 있으며 기존 r index는 유지한다. Generation2/3는 기존 c/g/e ID·좌표를 보존하고 새 source만 append한다. [분포/호환 검증](../validation/medicine-expansion/REVIEW.md).

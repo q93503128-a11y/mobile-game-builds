@@ -1,0 +1,320 @@
+{
+  "edit_unique_passed": 76,
+  "edit_latest_cases": {
+    "Wildfolk.Tests.ContentExpansionModelTests.AddedSourcesAndBudgetDoNotMoveExistingSourceIds(9472026)": {
+      "result": "Passed",
+      "evidence": "edit-medicine.xml"
+    },
+    "Wildfolk.Tests.ContentExpansionModelTests.AddedSourcesAndBudgetDoNotMoveExistingSourceIds(17491)": {
+      "result": "Passed",
+      "evidence": "edit-medicine.xml"
+    },
+    "Wildfolk.Tests.ContentExpansionModelTests.CatalogHasRealRecipesFourWeaponFamiliesAndSustainableBasicAmmo": {
+      "result": "Passed",
+      "evidence": "edit-medicine.xml"
+    },
+    "Wildfolk.Tests.ContentExpansionModelTests.ContainerStateTransfersAndRollsBackWithoutBecomingNewItems": {
+      "result": "Passed",
+      "evidence": "edit-medicine.xml"
+    },
+    "Wildfolk.Tests.ContentExpansionModelTests.CookingRecipesRestoreMoreThanSimpleFoodAndBuildingRolesAreReal": {
+      "result": "Passed",
+      "evidence": "edit-medicine.xml"
+    },
+    "Wildfolk.Tests.ContentExpansionModelTests.PurificationReservesOnlyFullRawAndRestoresChargesAfterQueueSave": {
+      "result": "Passed",
+      "evidence": "edit-medicine.xml"
+    },
+    "Wildfolk.Tests.CreatureLootModelTests.CamouflageFlightAndCrystalHabitatUseDifferentAuthoredShapes": {
+      "result": "Passed",
+      "evidence": "edit-medicine.xml"
+    },
+    "Wildfolk.Tests.CreatureLootModelTests.CampRollIsStableByPersistentIdAndNeverRefillsAnOpenedContainer": {
+      "result": "Passed",
+      "evidence": "edit-medicine.xml"
+    },
+    "Wildfolk.Tests.CreatureLootModelTests.CreatureDropsAvoidUnrelatedGatheringAndPreserveNaturalFeatherSources": {
+      "result": "Passed",
+      "evidence": "edit-medicine.xml"
+    },
+    "Wildfolk.Tests.CreatureLootModelTests.DataValidatorRejectsNonfiniteRecoveryWithoutChangingAuthoredAssets": {
+      "result": "Passed",
+      "evidence": "edit-medicine.xml"
+    },
+    "Wildfolk.Tests.CreatureLootModelTests.LootNetworkWritesBelongToServerAndRequestsContainNoClientRewards": {
+      "result": "Passed",
+      "evidence": "edit-medicine.xml"
+    },
+    "Wildfolk.Tests.CreatureLootModelTests.MigrationPreservesOldLivingIdsAndDoesNotPretendToHaveRolledCampLoot": {
+      "result": "Passed",
+      "evidence": "edit-medicine.xml"
+    },
+    "Wildfolk.Tests.CreatureLootModelTests.OriginalFiveRuleIndicesAreStableAndNewActionsHaveReadableWindows": {
+      "result": "Passed",
+      "evidence": "edit-medicine.xml"
+    },
+    "Wildfolk.Tests.CreatureLootModelTests.RawMaterialsHaveDistinctImplementedSinks(\"bone\",3)": {
+      "result": "Passed",
+      "evidence": "edit-medicine.xml"
+    },
+    "Wildfolk.Tests.CreatureLootModelTests.RawMaterialsHaveDistinctImplementedSinks(\"chitin\",3)": {
+      "result": "Passed",
+      "evidence": "edit-medicine.xml"
+    },
+    "Wildfolk.Tests.CreatureLootModelTests.RawMaterialsHaveDistinctImplementedSinks(\"medicinal_gland\",2)": {
+      "result": "Passed",
+      "evidence": "edit-medicine.xml"
+    },
+    "Wildfolk.Tests.CreatureLootModelTests.SidegradesPreserveDiamondAndNaturalCrystalRoles": {
+      "result": "Passed",
+      "evidence": "edit-medicine.xml"
+    },
+    "Wildfolk.Tests.CreatureLootModelTests.StationRolesAndNewFoodEffectsAreReal": {
+      "result": "Passed",
+      "evidence": "edit-medicine.xml"
+    },
+    "Wildfolk.Tests.MedicineModelTests.AppendingHerbsPreservesEveryPreviousSourceIdAndPosition(1)": {
+      "result": "Passed",
+      "evidence": "edit-medicine.xml"
+    },
+    "Wildfolk.Tests.MedicineModelTests.AppendingHerbsPreservesEveryPreviousSourceIdAndPosition(2)": {
+      "result": "Passed",
+      "evidence": "edit-medicine.xml"
+    },
+    "Wildfolk.Tests.MedicineModelTests.AppendingHerbsPreservesEveryPreviousSourceIdAndPosition(3)": {
+      "result": "Passed",
+      "evidence": "edit-medicine.xml"
+    },
+    "Wildfolk.Tests.MedicineModelTests.HealingStatusRoundTripsThroughNetworkSerializationAndUsesProtocol14": {
+      "result": "Passed",
+      "evidence": "edit-medicine.xml"
+    },
+    "Wildfolk.Tests.MedicineModelTests.HerbIsUnarmedSurfacePlantWithRegionalRecoveryAndNoStarterSupply": {
+      "result": "Passed",
+      "evidence": "edit-medicine.xml"
+    },
+    "Wildfolk.Tests.MedicineModelTests.TreatmentIsGradualExactSingleAndTransient": {
+      "result": "Passed",
+      "evidence": "edit-medicine.xml"
+    },
+    "Wildfolk.Tests.MedicineModelTests.TwoMedicinesUseOneHerbAndFiberSinkWithoutNewStationOrFoodChanges": {
+      "result": "Passed",
+      "evidence": "edit-medicine.xml"
+    },
+    "Wildfolk.Tests.MetalProgressionTests.AppendedOresAreDeterministicAndPreserveEveryLegacyPlacementAndId": {
+      "result": "Passed",
+      "evidence": "edit-medicine.xml"
+    },
+    "Wildfolk.Tests.MetalProgressionTests.BronzeAndSteelReserveEveryIngredientAndPreserveBlockedOutputAndQueueSnapshot": {
+      "result": "Passed",
+      "evidence": "edit-medicine.xml"
+    },
+    "Wildfolk.Tests.MetalProgressionTests.FourInputsReserveAtomicallyAndRollbackFailureOrException": {
+      "result": "Passed",
+      "evidence": "edit-medicine.xml"
+    },
+    "Wildfolk.Tests.MetalProgressionTests.MiningToolPermissionHasNoFistFallbackAndMaterialKindsRemainDistinct": {
+      "result": "Passed",
+      "evidence": "edit-medicine.xml"
+    },
+    "Wildfolk.Tests.MetalProgressionTests.OnlyConfiguredNextTierOpensAndLegacyUpgradeCostsRemain": {
+      "result": "Passed",
+      "evidence": "edit-medicine.xml"
+    },
+    "Wildfolk.Tests.MetalProgressionTests.SupplyContextAndRecoveryAreIndependentOfTechnologyAndRespectMineralFamily": {
+      "result": "Passed",
+      "evidence": "edit-medicine.xml"
+    },
+    "Wildfolk.Tests.MetalProgressionTests.WorkbenchRangeIsOneThroughSix(0,False)": {
+      "result": "Passed",
+      "evidence": "edit-medicine.xml"
+    },
+    "Wildfolk.Tests.MetalProgressionTests.WorkbenchRangeIsOneThroughSix(1,True)": {
+      "result": "Passed",
+      "evidence": "edit-medicine.xml"
+    },
+    "Wildfolk.Tests.MetalProgressionTests.WorkbenchRangeIsOneThroughSix(2,True)": {
+      "result": "Passed",
+      "evidence": "edit-medicine.xml"
+    },
+    "Wildfolk.Tests.MetalProgressionTests.WorkbenchRangeIsOneThroughSix(6,True)": {
+      "result": "Passed",
+      "evidence": "edit-medicine.xml"
+    },
+    "Wildfolk.Tests.MetalProgressionTests.WorkbenchRangeIsOneThroughSix(7,False)": {
+      "result": "Passed",
+      "evidence": "edit-medicine.xml"
+    },
+    "Wildfolk.Tests.MetalProgressionTests.WorkbenchRangeIsOneThroughSix(-1,False)": {
+      "result": "Passed",
+      "evidence": "edit-medicine.xml"
+    },
+    "Wildfolk.Tests.NetworkCreatureContractTests.EveryEcologySpawnHasRegisteredServerPrefabAndSharedBrain": {
+      "result": "Passed",
+      "evidence": "edit-medicine.xml"
+    },
+    "Wildfolk.Tests.NetworkCreatureContractTests.MultiplayerWorldHasNoPersistenceAndKeepsPopulationDefinitions": {
+      "result": "Passed",
+      "evidence": "edit-medicine.xml"
+    },
+    "Wildfolk.Tests.NetworkCreatureContractTests.PlayerRequestsNeverContainTargetDamageOrClientHitResult": {
+      "result": "Passed",
+      "evidence": "edit-contract-correction.xml"
+    },
+    "Wildfolk.Tests.NetworkCreatureContractTests.RangedReplicaEndsPresentationWithoutLaunchingAnotherStone": {
+      "result": "Passed",
+      "evidence": "edit-medicine.xml"
+    },
+    "Wildfolk.Tests.NetworkFoundationTests.CommandsRejectNonFiniteAndClampUntrustedMagnitude": {
+      "result": "Passed",
+      "evidence": "edit-medicine.xml"
+    },
+    "Wildfolk.Tests.NetworkFoundationTests.InternetCodeAndLocalAddressAreDifferentRoutes": {
+      "result": "Passed",
+      "evidence": "edit-medicine.xml"
+    },
+    "Wildfolk.Tests.NetworkFoundationTests.PlayerStateIsServerWritableAndRpcInputsAreOwnerOnly": {
+      "result": "Passed",
+      "evidence": "edit-medicine.xml"
+    },
+    "Wildfolk.Tests.NetworkPersistenceModelTests.EveryExistingPlaceableUsesOneSourceDefinitionAndServerBuildingState": {
+      "result": "Passed",
+      "evidence": "edit-medicine.xml"
+    },
+    "Wildfolk.Tests.NetworkPersistenceModelTests.ParticipantMetadataRejectsDuplicatesInvalidIdentityAndMismatchedHost": {
+      "result": "Passed",
+      "evidence": "edit-medicine.xml"
+    },
+    "Wildfolk.Tests.NetworkPersistenceModelTests.SeparateRepositoriesAndDeadParticipantPolicyPreserveSingleplayerRules": {
+      "result": "Passed",
+      "evidence": "edit-medicine.xml"
+    },
+    "Wildfolk.Tests.NetworkPersistenceModelTests.V4MigratesToV6WithoutChangingSingleplayerPayloadAndV5RoundTrips": {
+      "result": "Passed",
+      "evidence": "edit-medicine.xml"
+    },
+    "Wildfolk.Tests.ResourceTempoTests.RecipeEconomyIncludesSharedFacilitiesAllUpgradeChainsAndBatchedFuel(1)": {
+      "result": "Passed",
+      "evidence": "edit-medicine.xml"
+    },
+    "Wildfolk.Tests.ResourceTempoTests.RecipeEconomyIncludesSharedFacilitiesAllUpgradeChainsAndBatchedFuel(4)": {
+      "result": "Passed",
+      "evidence": "edit-medicine.xml"
+    },
+    "Wildfolk.Tests.ResourceTempoTests.RecoveryDebtIsOneTicketPerChunkAndCandidatesStayInsideThatRegion": {
+      "result": "Passed",
+      "evidence": "edit-medicine.xml"
+    },
+    "Wildfolk.Tests.ResourceTempoTests.SourcesPayOnCompletionAndRecoverWithinRegionalTempo(1,6,75)": {
+      "result": "Passed",
+      "evidence": "edit-medicine.xml"
+    },
+    "Wildfolk.Tests.ResourceTempoTests.SourcesPayOnCompletionAndRecoverWithinRegionalTempo(2,6,120)": {
+      "result": "Passed",
+      "evidence": "edit-medicine.xml"
+    },
+    "Wildfolk.Tests.ResourceTempoTests.SourcesPayOnCompletionAndRecoverWithinRegionalTempo(5,6,150)": {
+      "result": "Passed",
+      "evidence": "edit-medicine.xml"
+    },
+    "Wildfolk.Tests.ResourceTempoTests.SourcesPayOnCompletionAndRecoverWithinRegionalTempo(6,5,165)": {
+      "result": "Passed",
+      "evidence": "edit-medicine.xml"
+    },
+    "Wildfolk.Tests.ResourceTempoTests.SourcesPayOnCompletionAndRecoverWithinRegionalTempo(7,10,105)": {
+      "result": "Passed",
+      "evidence": "edit-medicine.xml"
+    },
+    "Wildfolk.Tests.SceneContractTests.BalanceDataHasValidCombatRangesAndProgressionItems": {
+      "result": "Passed",
+      "evidence": "edit-resource-contract.xml"
+    },
+    "Wildfolk.Tests.SceneContractTests.SavedSceneRetainsPlayableConnectionsAndNonPushingEnemy": {
+      "result": "Passed",
+      "evidence": "edit-medicine.xml"
+    },
+    "Wildfolk.Tests.StabilityModelTests.AtomicSaveBackupRecoversCorruptionAndIgnoresInterruptedTemporaryFile": {
+      "result": "Passed",
+      "evidence": "edit-medicine.xml"
+    },
+    "Wildfolk.Tests.StabilityModelTests.ChecksumAndFutureVersionAreRejected": {
+      "result": "Passed",
+      "evidence": "edit-medicine.xml"
+    },
+    "Wildfolk.Tests.StabilityModelTests.CupStateChangesAreAtomicAndConserveContainersOnFullBags": {
+      "result": "Passed",
+      "evidence": "edit-medicine.xml"
+    },
+    "Wildfolk.Tests.StabilityModelTests.EditorValidatorAcceptsCurrentDataAndDeveloperToolsStayInEditorAssembly": {
+      "result": "Passed",
+      "evidence": "edit-medicine.xml"
+    },
+    "Wildfolk.Tests.StabilityModelTests.EveryCurrentBasicAttackHasOneTargetAndExtensibleShape": {
+      "result": "Passed",
+      "evidence": "edit-medicine.xml"
+    },
+    "Wildfolk.Tests.StabilityModelTests.HostileRelationIsNotAPlayerTeamDespiteDefaultNumericId": {
+      "result": "Passed",
+      "evidence": "edit-medicine.xml"
+    },
+    "Wildfolk.Tests.StabilityModelTests.InventoryRestoreRejectsUnknownAndOversizedStacksWithoutPartialMutation": {
+      "result": "Passed",
+      "evidence": "edit-medicine.xml"
+    },
+    "Wildfolk.Tests.StabilityModelTests.RawWaterPenaltyExpiresPreciselyAndSurvivesStateRoundTrip": {
+      "result": "Passed",
+      "evidence": "edit-medicine.xml"
+    },
+    "Wildfolk.Tests.StabilityModelTests.RenewalAndTerrainDataKeepDifferentResourceTimes": {
+      "result": "Passed",
+      "evidence": "edit-medicine.xml"
+    },
+    "Wildfolk.Tests.WorldFoundationTests.OceanAndHydrologyHaveNaturalBoundariesAndContinuousTransitions": {
+      "result": "Passed",
+      "evidence": "edit-medicine.xml"
+    },
+    "Wildfolk.Tests.WorldFoundationTests.SameSeedReplaysMacroHydrologySourceAnchorsAndChunks": {
+      "result": "Passed",
+      "evidence": "edit-medicine.xml"
+    },
+    "Wildfolk.Tests.WorldFoundationTests.SeedHasConnectedCavesValidSourcesFourPlayerYieldAndBiomeFamilies(9472026)": {
+      "result": "Passed",
+      "evidence": "edit-medicine.xml"
+    },
+    "Wildfolk.Tests.WorldFoundationTests.SeedHasConnectedCavesValidSourcesFourPlayerYieldAndBiomeFamilies(17491)": {
+      "result": "Passed",
+      "evidence": "edit-medicine.xml"
+    },
+    "Wildfolk.Tests.WorldFoundationTests.SeedHasConnectedCavesValidSourcesFourPlayerYieldAndBiomeFamilies(-81027)": {
+      "result": "Passed",
+      "evidence": "edit-medicine.xml"
+    },
+    "Wildfolk.Tests.WorldFoundationTests.SeedHasConnectedCavesValidSourcesFourPlayerYieldAndBiomeFamilies(193080127)": {
+      "result": "Passed",
+      "evidence": "edit-medicine.xml"
+    },
+    "Wildfolk.Tests.WorldFoundationTests.SourcesUseEnvironmentalTagsAndRegionalRecovery": {
+      "result": "Passed",
+      "evidence": "edit-medicine.xml"
+    },
+    "Wildfolk.Tests.WorldFoundationTests.SubSeedsAreIsolatedAndLegacyLayoutIsVersionBound": {
+      "result": "Passed",
+      "evidence": "edit-medicine.xml"
+    },
+    "Wildfolk.Tests.WorldFoundationTests.VegetationDensityDoesNotMoveOreRiverOrPoi": {
+      "result": "Passed",
+      "evidence": "edit-medicine.xml"
+    }
+  },
+  "play_passed": 4,
+  "new_localization_en_ko_keys_passed": [
+    "item.medicinal_herb.name",
+    "item.field_dressing.name",
+    "ui.medicine.gradual",
+    "ui.medicine.instant",
+    "ui.medicine.limit",
+    "ui.medicine.active"
+  ],
+  "data_validator_errors": [],
+  "source_validator": "PASS: Unity source structure, Landscape settings, 1274 unique asset GUIDs, sprite references and visible text."
+}

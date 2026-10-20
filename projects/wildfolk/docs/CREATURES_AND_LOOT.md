@@ -46,6 +46,8 @@
 
 Chicken/Crow가 Feather, Small Plant가 Plant Fiber, 포유류·Undead 등이 Bone/Leather를 공급한다. 신규8종·Bone/Chitin/Medicinal Gland 구조와 모든 Recipe는 유지한다. 각 sink는 [전체 제작 정본](CONTENT_EXPANSION.md), 교정 전후와 공급 계산·검수는 [교정 REVIEW](../validation/loot-plausibility-correction/REVIEW.md)를 따른다. 이전 Expansion review는 당시 기록이다.
 
+Medicine2-A는 이 Loot를 변경하지 않는다. Gland는 기존 연고·Restorative Broth의2개 sink를 유지하며 연고에 Herb1 비용을 추가했다. Gland 없는 붕대는 Forest/Wetlands의 식물 Herb를 사용한다. 현재 의약 수치·경제·검수는 [Medicine REVIEW](../validation/medicine-expansion/REVIEW.md)를 따른다.
+
 ## 권위와 population
 
 WildlifeActionScheduler가0.05초 간격에 최대32개를 순환 처리한다. 신규 AI의 개별 Update/월드 전체 검색이 없고, 활성 종 상한 합계98과 공용 HardCap80을 구분한다. 종 목표는 서식지별 soft 목표이며 전체 활성 상한을 올리지 않는다. 청크별 quota와 sleep을 적용하고 휴면 개체는 청크 index로 조회한다. 지역 부족 보충은5초마다 최대32 ticket·2 group·각24후보로 제한한다. 죽은 지역 목표만 보충하고 멀리 있는 생물은 simulation chunk를 붙잡지 않는다. Save11 ExpandedRegions로 기존 방문 청크에 새8규칙을 한 번만 보충한다.

@@ -3656,6 +3656,48 @@
         "Trail Ration",
         "탐험 식량"
       ]
+    },
+    {
+      "Key": "item.medicinal_herb.name",
+      "Values": [
+        "Medicinal Herb",
+        "약초"
+      ]
+    },
+    {
+      "Key": "item.field_dressing.name",
+      "Values": [
+        "Field Dressing",
+        "응급 붕대"
+      ]
+    },
+    {
+      "Key": "ui.medicine.gradual",
+      "Values": [
+        "Restores {0} HP over {1} seconds.",
+        "{1}초에 걸쳐 HP {0} 회복"
+      ]
+    },
+    {
+      "Key": "ui.medicine.instant",
+      "Values": [
+        "Instantly restores {0} HP.",
+        "HP {0} 즉시 회복"
+      ]
+    },
+    {
+      "Key": "ui.medicine.limit",
+      "Values": [
+        "Shared recovery interval: {0}s. Bandages do not stack.",
+        "회복품 공용 사용 간격 {0}초. 붕대 효과는 중첩되지 않습니다."
+      ]
+    },
+    {
+      "Key": "ui.medicine.active",
+      "Values": [
+        "Bandage healing · {0}s",
+        "붕대 치료 · {0}초"
+      ]
     }
   ]
 }

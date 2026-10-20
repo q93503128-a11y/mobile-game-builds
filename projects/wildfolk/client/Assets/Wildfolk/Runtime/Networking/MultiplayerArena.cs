@@ -20,6 +20,7 @@ namespace Wildfolk
             LocalPlayer=player;Follow.Target=player.transform;Joystick.Session=player.Commands.Session;player.GetComponent<PlayerInputAdapter>().Joystick=Joystick;Joystick.gameObject.SetActive(true);DashButton.interactable=true;
             var light=FindFirstObjectByType<WorldLighting>();if(light!=null)light.Player=player.transform;
             InventoryUi.Bind(player);player.Health.Changed+=RefreshHealth;RefreshText();
+            var medicine=FindFirstObjectByType<MedicineHud>();if(medicine!=null)medicine.Player=player.GetComponent<PlayerSurvival>();
         }
         public void Dash(){if(LocalPlayer!=null)LocalPlayer.Commands.Dash();}
         public void Leave(){if(NetworkSession.Instance!=null){NetworkSession.Instance.Leave();}else SceneFlow.Home(SceneFlow.Repository);}
