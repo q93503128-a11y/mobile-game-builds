@@ -23,10 +23,15 @@ namespace Wildfolk
             var penalized=Mathf.Min(seconds,DrainPenaltyRemaining);
             var damage=AdvanceSegment(penalized,Definition.ThirstPerSecond*DrainMultiplier);
             damage+=AdvanceSegment(seconds-penalized,Definition.ThirstPerSecond);
+            AdvanceEffects(seconds);
+            return damage;
+        }
+        public void AdvanceEffects(float seconds)
+        {
+            if(seconds<0 || float.IsNaN(seconds) || float.IsInfinity(seconds))throw new ArgumentOutOfRangeException(nameof(seconds));
             RecoveryBlockRemaining=Mathf.Max(0,RecoveryBlockRemaining-seconds);
             DrainPenaltyRemaining=Mathf.Max(0,DrainPenaltyRemaining-seconds);
             if(DrainPenaltyRemaining==0)DrainMultiplier=1;
-            return damage;
         }
         private int AdvanceSegment(float seconds,float thirstRate)
         {

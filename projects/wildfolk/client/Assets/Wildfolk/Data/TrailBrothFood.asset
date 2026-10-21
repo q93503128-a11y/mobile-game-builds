@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f9e983df120a7046a12bc7edb7d4559, type: 3}
+  m_Name: TrailBrothFood
+  m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.ConsumableDefinition
+  Kind: 0
+  Meal: {fileID: 11400000, guid: 522badf1aca9d8448801df943a9dbaef, type: 2}
+  HealthRestore: 0
+  GradualHealthRestore: 0
+  HealingDuration: 0
+  StaminaRestore: 0
+  UseCooldownSeconds: 4
+  HungerRestore: 28
+  ThirstRestore: 22
+  RecoveryBlockSeconds: 0
+  DrainPenaltySeconds: 0
+  ThirstDrainMultiplier: 1

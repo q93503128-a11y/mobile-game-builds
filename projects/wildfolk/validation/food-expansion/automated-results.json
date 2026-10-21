@@ -1,0 +1,330 @@
+{
+  "edit_unique_cases": 70,
+  "edit_passed": 70,
+  "edit_latest_cases": {
+    "Wildfolk.Tests.CharacterPassModelTests.ArmorCostsSlotsAndSilhouettesAreActualData": {
+      "result": "Passed",
+      "evidence": "edit-food.xml"
+    },
+    "Wildfolk.Tests.CharacterPassModelTests.CategoriesAndStableTierSortDoNotDependOnNewFlags": {
+      "result": "Passed",
+      "evidence": "edit-food.xml"
+    },
+    "Wildfolk.Tests.CharacterPassModelTests.DashSpendingIsAtomicAndRecoveryHonorsDelayAndCondition": {
+      "result": "Passed",
+      "evidence": "edit-food.xml"
+    },
+    "Wildfolk.Tests.CharacterPassModelTests.InvalidPointsRanksAndXPAreRejected": {
+      "result": "Passed",
+      "evidence": "edit-food.xml"
+    },
+    "Wildfolk.Tests.CharacterPassModelTests.LevelCurveCarriesRemainderAndAwardsPoints": {
+      "result": "Passed",
+      "evidence": "edit-food.xml"
+    },
+    "Wildfolk.Tests.CharacterPassModelTests.SkillsSpendPointsRespectRanksAndRestoreEffects": {
+      "result": "Passed",
+      "evidence": "edit-food.xml"
+    },
+    "Wildfolk.Tests.CharacterPassModelTests.SprintUsesHoldHysteresisAndExhaustionRecovery": {
+      "result": "Passed",
+      "evidence": "edit-food.xml"
+    },
+    "Wildfolk.Tests.CharacterPassModelTests.SurvivalPreventsCriticalSprintAndChangesEfficiency": {
+      "result": "Passed",
+      "evidence": "edit-food.xml"
+    },
+    "Wildfolk.Tests.CharacterPassModelTests.V1EnvelopeStillDecodesAndFutureVersionsFail": {
+      "result": "Passed",
+      "evidence": "edit-food.xml"
+    },
+    "Wildfolk.Tests.ContentExpansionModelTests.AddedSourcesAndBudgetDoNotMoveExistingSourceIds(9472026)": {
+      "result": "Passed",
+      "evidence": "edit-food.xml"
+    },
+    "Wildfolk.Tests.ContentExpansionModelTests.AddedSourcesAndBudgetDoNotMoveExistingSourceIds(17491)": {
+      "result": "Passed",
+      "evidence": "edit-food.xml"
+    },
+    "Wildfolk.Tests.ContentExpansionModelTests.CatalogHasRealRecipesFourWeaponFamiliesAndSustainableBasicAmmo": {
+      "result": "Passed",
+      "evidence": "edit-food.xml"
+    },
+    "Wildfolk.Tests.ContentExpansionModelTests.ContainerStateTransfersAndRollsBackWithoutBecomingNewItems": {
+      "result": "Passed",
+      "evidence": "edit-food.xml"
+    },
+    "Wildfolk.Tests.ContentExpansionModelTests.CookingRecipesRestoreMoreThanSimpleFoodAndBuildingRolesAreReal": {
+      "result": "Passed",
+      "evidence": "edit-food.xml"
+    },
+    "Wildfolk.Tests.ContentExpansionModelTests.PurificationReservesOnlyFullRawAndRestoresChargesAfterQueueSave": {
+      "result": "Passed",
+      "evidence": "edit-food.xml"
+    },
+    "Wildfolk.Tests.CreatureLootModelTests.CamouflageFlightAndCrystalHabitatUseDifferentAuthoredShapes": {
+      "result": "Passed",
+      "evidence": "edit-food.xml"
+    },
+    "Wildfolk.Tests.CreatureLootModelTests.CampRollIsStableByPersistentIdAndNeverRefillsAnOpenedContainer": {
+      "result": "Passed",
+      "evidence": "edit-food.xml"
+    },
+    "Wildfolk.Tests.CreatureLootModelTests.CreatureDropsAvoidUnrelatedGatheringAndPreserveNaturalFeatherSources": {
+      "result": "Passed",
+      "evidence": "edit-food.xml"
+    },
+    "Wildfolk.Tests.CreatureLootModelTests.DataValidatorRejectsNonfiniteRecoveryWithoutChangingAuthoredAssets": {
+      "result": "Passed",
+      "evidence": "edit-food.xml"
+    },
+    "Wildfolk.Tests.CreatureLootModelTests.LootNetworkWritesBelongToServerAndRequestsContainNoClientRewards": {
+      "result": "Passed",
+      "evidence": "edit-food.xml"
+    },
+    "Wildfolk.Tests.CreatureLootModelTests.MigrationPreservesOldLivingIdsAndDoesNotPretendToHaveRolledCampLoot": {
+      "result": "Passed",
+      "evidence": "edit-food.xml"
+    },
+    "Wildfolk.Tests.CreatureLootModelTests.OriginalFiveRuleIndicesAreStableAndNewActionsHaveReadableWindows": {
+      "result": "Passed",
+      "evidence": "edit-food.xml"
+    },
+    "Wildfolk.Tests.CreatureLootModelTests.RawMaterialsHaveDistinctImplementedSinks(\"chitin\",3)": {
+      "result": "Passed",
+      "evidence": "edit-sinks.xml"
+    },
+    "Wildfolk.Tests.CreatureLootModelTests.RawMaterialsHaveDistinctImplementedSinks(\"medicinal_gland\",2)": {
+      "result": "Passed",
+      "evidence": "edit-sinks.xml"
+    },
+    "Wildfolk.Tests.CreatureLootModelTests.SidegradesPreserveDiamondAndNaturalCrystalRoles": {
+      "result": "Passed",
+      "evidence": "edit-food.xml"
+    },
+    "Wildfolk.Tests.CreatureLootModelTests.StationRolesAndNewFoodEffectsAreReal": {
+      "result": "Passed",
+      "evidence": "edit-food.xml"
+    },
+    "Wildfolk.Tests.FoodModelTests.MealsAreThreeDistinctPotChoicesAndExistingRecoveryFoodsRemainImmediate": {
+      "result": "Passed",
+      "evidence": "edit-final-related.xml"
+    },
+    "Wildfolk.Tests.FoodModelTests.NetworkMealIdentityAndEndTimeRoundTripAndParticipateInEquality": {
+      "result": "Passed",
+      "evidence": "edit-final-related.xml"
+    },
+    "Wildfolk.Tests.FoodModelTests.OneMealReplacesInsteadOfStackingAndSameMealResetsOnlyItsDuration": {
+      "result": "Passed",
+      "evidence": "edit-final-related.xml"
+    },
+    "Wildfolk.Tests.FoodModelTests.StaminaMealChangesRateWithoutChangingDelayCostOrMaximum": {
+      "result": "Passed",
+      "evidence": "edit-final-related.xml"
+    },
+    "Wildfolk.Tests.FoodModelTests.StewsHavePlantHydrationMeatHungerFishHydrationAndMixedNutritionRoles": {
+      "result": "Passed",
+      "evidence": "edit-final-related.xml"
+    },
+    "Wildfolk.Tests.MedicineModelTests.AppendingHerbsPreservesEveryPreviousSourceIdAndPosition(1)": {
+      "result": "Passed",
+      "evidence": "edit-food.xml"
+    },
+    "Wildfolk.Tests.MedicineModelTests.AppendingHerbsPreservesEveryPreviousSourceIdAndPosition(2)": {
+      "result": "Passed",
+      "evidence": "edit-food.xml"
+    },
+    "Wildfolk.Tests.MedicineModelTests.AppendingHerbsPreservesEveryPreviousSourceIdAndPosition(3)": {
+      "result": "Passed",
+      "evidence": "edit-food.xml"
+    },
+    "Wildfolk.Tests.MedicineModelTests.HealingStatusRoundTripsThroughNetworkSerializationAndUsesProtocol15": {
+      "result": "Passed",
+      "evidence": "edit-food.xml"
+    },
+    "Wildfolk.Tests.MedicineModelTests.HerbIsUnarmedSurfacePlantWithRegionalRecoveryAndNoStarterSupply": {
+      "result": "Passed",
+      "evidence": "edit-food.xml"
+    },
+    "Wildfolk.Tests.MedicineModelTests.TreatmentIsGradualExactSingleAndTransient": {
+      "result": "Passed",
+      "evidence": "edit-food.xml"
+    },
+    "Wildfolk.Tests.MedicineModelTests.TwoMedicinesUseOneHerbAndFiberSinkWithoutNewStationOrFoodChanges": {
+      "result": "Passed",
+      "evidence": "edit-sinks.xml"
+    },
+    "Wildfolk.Tests.MetalProgressionTests.AppendedOresAreDeterministicAndPreserveEveryLegacyPlacementAndId": {
+      "result": "Passed",
+      "evidence": "edit-food.xml"
+    },
+    "Wildfolk.Tests.MetalProgressionTests.BronzeAndSteelReserveEveryIngredientAndPreserveBlockedOutputAndQueueSnapshot": {
+      "result": "Passed",
+      "evidence": "edit-food.xml"
+    },
+    "Wildfolk.Tests.MetalProgressionTests.FourInputsReserveAtomicallyAndRollbackFailureOrException": {
+      "result": "Passed",
+      "evidence": "edit-food.xml"
+    },
+    "Wildfolk.Tests.MetalProgressionTests.MiningToolPermissionHasNoFistFallbackAndMaterialKindsRemainDistinct": {
+      "result": "Passed",
+      "evidence": "edit-food.xml"
+    },
+    "Wildfolk.Tests.MetalProgressionTests.OnlyConfiguredNextTierOpensAndLegacyUpgradeCostsRemain": {
+      "result": "Passed",
+      "evidence": "edit-food.xml"
+    },
+    "Wildfolk.Tests.MetalProgressionTests.SupplyContextAndRecoveryAreIndependentOfTechnologyAndRespectMineralFamily": {
+      "result": "Passed",
+      "evidence": "edit-food.xml"
+    },
+    "Wildfolk.Tests.MetalProgressionTests.WorkbenchRangeIsOneThroughSix(0,False)": {
+      "result": "Passed",
+      "evidence": "edit-food.xml"
+    },
+    "Wildfolk.Tests.MetalProgressionTests.WorkbenchRangeIsOneThroughSix(1,True)": {
+      "result": "Passed",
+      "evidence": "edit-food.xml"
+    },
+    "Wildfolk.Tests.MetalProgressionTests.WorkbenchRangeIsOneThroughSix(2,True)": {
+      "result": "Passed",
+      "evidence": "edit-food.xml"
+    },
+    "Wildfolk.Tests.MetalProgressionTests.WorkbenchRangeIsOneThroughSix(6,True)": {
+      "result": "Passed",
+      "evidence": "edit-food.xml"
+    },
+    "Wildfolk.Tests.MetalProgressionTests.WorkbenchRangeIsOneThroughSix(7,False)": {
+      "result": "Passed",
+      "evidence": "edit-food.xml"
+    },
+    "Wildfolk.Tests.MetalProgressionTests.WorkbenchRangeIsOneThroughSix(-1,False)": {
+      "result": "Passed",
+      "evidence": "edit-food.xml"
+    },
+    "Wildfolk.Tests.NetworkFoundationTests.CommandsRejectNonFiniteAndClampUntrustedMagnitude": {
+      "result": "Passed",
+      "evidence": "edit-food.xml"
+    },
+    "Wildfolk.Tests.NetworkFoundationTests.InternetCodeAndLocalAddressAreDifferentRoutes": {
+      "result": "Passed",
+      "evidence": "edit-food.xml"
+    },
+    "Wildfolk.Tests.NetworkFoundationTests.PlayerStateIsServerWritableAndRpcInputsAreOwnerOnly": {
+      "result": "Passed",
+      "evidence": "edit-food.xml"
+    },
+    "Wildfolk.Tests.NetworkPersistenceModelTests.EveryExistingPlaceableUsesOneSourceDefinitionAndServerBuildingState": {
+      "result": "Passed",
+      "evidence": "edit-food.xml"
+    },
+    "Wildfolk.Tests.NetworkPersistenceModelTests.ParticipantMetadataRejectsDuplicatesInvalidIdentityAndMismatchedHost": {
+      "result": "Passed",
+      "evidence": "edit-food.xml"
+    },
+    "Wildfolk.Tests.NetworkPersistenceModelTests.SeparateRepositoriesAndDeadParticipantPolicyPreserveSingleplayerRules": {
+      "result": "Passed",
+      "evidence": "edit-food.xml"
+    },
+    "Wildfolk.Tests.NetworkPersistenceModelTests.V4MigratesToV6WithoutChangingSingleplayerPayloadAndV5RoundTrips": {
+      "result": "Passed",
+      "evidence": "edit-food.xml"
+    },
+    "Wildfolk.Tests.SceneContractTests.BalanceDataHasValidCombatRangesAndProgressionItems": {
+      "result": "Passed",
+      "evidence": "edit-final-related.xml"
+    },
+    "Wildfolk.Tests.SceneContractTests.SavedSceneRetainsPlayableConnectionsAndNonPushingEnemy": {
+      "result": "Passed",
+      "evidence": "edit-final-related.xml"
+    },
+    "Wildfolk.Tests.StabilityModelTests.AtomicSaveBackupRecoversCorruptionAndIgnoresInterruptedTemporaryFile": {
+      "result": "Passed",
+      "evidence": "edit-final-related.xml"
+    },
+    "Wildfolk.Tests.StabilityModelTests.ChecksumAndFutureVersionAreRejected": {
+      "result": "Passed",
+      "evidence": "edit-final-related.xml"
+    },
+    "Wildfolk.Tests.StabilityModelTests.CupStateChangesAreAtomicAndConserveContainersOnFullBags": {
+      "result": "Passed",
+      "evidence": "edit-final-related.xml"
+    },
+    "Wildfolk.Tests.StabilityModelTests.EditorValidatorAcceptsCurrentDataAndDeveloperToolsStayInEditorAssembly": {
+      "result": "Passed",
+      "evidence": "edit-final-related.xml"
+    },
+    "Wildfolk.Tests.StabilityModelTests.EveryCurrentBasicAttackHasOneTargetAndExtensibleShape": {
+      "result": "Passed",
+      "evidence": "edit-final-related.xml"
+    },
+    "Wildfolk.Tests.StabilityModelTests.HostileRelationIsNotAPlayerTeamDespiteDefaultNumericId": {
+      "result": "Passed",
+      "evidence": "edit-final-related.xml"
+    },
+    "Wildfolk.Tests.StabilityModelTests.InventoryRestoreRejectsUnknownAndOversizedStacksWithoutPartialMutation": {
+      "result": "Passed",
+      "evidence": "edit-final-related.xml"
+    },
+    "Wildfolk.Tests.StabilityModelTests.RawWaterPenaltyExpiresPreciselyAndSurvivesStateRoundTrip": {
+      "result": "Passed",
+      "evidence": "edit-final-related.xml"
+    },
+    "Wildfolk.Tests.StabilityModelTests.RenewalAndTerrainDataKeepDifferentResourceTimes": {
+      "result": "Passed",
+      "evidence": "edit-final-related.xml"
+    },
+    "Wildfolk.Tests.CreatureLootModelTests.RawMaterialsHaveDistinctImplementedSinks(\"bone\",4)": {
+      "result": "Passed",
+      "evidence": "edit-sinks.xml"
+    },
+    "Wildfolk.Tests.FoodModelTests.HostCanExpireWaterPenaltyWithoutEnablingNutritionDrain": {
+      "result": "Passed",
+      "evidence": "edit-final-related.xml"
+    }
+  },
+  "new_en_ko_keys": [
+    "item.hunters_stew.name",
+    "item.forager_soup.name",
+    "item.trail_broth.name",
+    "ui.meal.MaximumHealth",
+    "ui.meal.NaturalRecovery",
+    "ui.meal.StaminaRecovery",
+    "ui.meal.rule",
+    "ui.meal.active",
+    "ui.meal.preview.MaximumHealth",
+    "ui.meal.preview.NaturalRecovery",
+    "ui.meal.preview.StaminaRecovery",
+    "ui.meal.preview_rule"
+  ],
+  "data_validator_errors": [],
+  "play_unique_cases": 6,
+  "play_passed": 6,
+  "play_latest_cases": {
+    "Wildfolk.Tests.CreatureLootPlayTests.RestorativeFoodRestoresStaminaAndVestIsAnEquipmentTradeoff": {
+      "result": "Passed",
+      "evidence": "play-food.xml"
+    },
+    "Wildfolk.Tests.CreatureLootPlayTests.SalveHealsAtFullHungerAndCooldownAndDeathPreventConsumption": {
+      "result": "Passed",
+      "evidence": "play-food.xml"
+    },
+    "Wildfolk.Tests.CreatureLootPlayTests.Save10MigrationAndCorruptCampStackValidationUseRealWorldSnapshot": {
+      "result": "Passed",
+      "evidence": "play-food.xml"
+    },
+    "Wildfolk.Tests.FoodPlayTests.ActualPotMealsReplaceExpireRespectRecoveryGatesAndRoundTripSave11": {
+      "result": "Passed",
+      "evidence": "play-food.xml"
+    },
+    "Wildfolk.Tests.FoodPlayTests.HostMealsRejectReplayAndDoNotPersistTemporaryMaxHealthAcrossReHost": {
+      "result": "Passed",
+      "evidence": "play-food.xml"
+    },
+    "Wildfolk.Tests.FoodPlayTests.HostWaterBlockExpiresWhileForagerKeepsOriginalNutritionPolicy": {
+      "result": "Passed",
+      "evidence": "play-host-timers.xml"
+    }
+  },
+  "source_validator": "PASS:1296 unique GUIDs/Landscape/references/visible text"
+}

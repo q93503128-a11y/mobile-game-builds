@@ -1,0 +1,485 @@
+[
+  {
+    "id": "berry",
+    "Kind": 0,
+    "HungerRestore": 8.0,
+    "ThirstRestore": 3.0,
+    "HealthRestore": 0,
+    "GradualHealthRestore": 0,
+    "HealingDuration": 0,
+    "StaminaRestore": 0,
+    "UseCooldownSeconds": 0,
+    "RecoveryBlockSeconds": 0.0,
+    "DrainPenaltySeconds": 0.0,
+    "ThirstDrainMultiplier": 1.0,
+    "recipes": []
+  },
+  {
+    "id": "bone_broth",
+    "Kind": 0,
+    "HungerRestore": 24.0,
+    "ThirstRestore": 12.0,
+    "HealthRestore": 18.0,
+    "GradualHealthRestore": 0,
+    "HealingDuration": 0,
+    "StaminaRestore": 0.0,
+    "UseCooldownSeconds": 4.0,
+    "RecoveryBlockSeconds": 0.0,
+    "DrainPenaltySeconds": 0.0,
+    "ThirstDrainMultiplier": 1.0,
+    "recipes": [
+      {
+        "asset": "BoneBrothRecipe.asset",
+        "ingredients": [
+          "bone×2",
+          "mushroom×1",
+          "raw_meat×1"
+        ],
+        "station": 5.0,
+        "seconds": 8.0
+      }
+    ]
+  },
+  {
+    "id": "clean_water_cup",
+    "Kind": 0,
+    "HungerRestore": 0.0,
+    "ThirstRestore": 38.0,
+    "HealthRestore": 0,
+    "GradualHealthRestore": 0,
+    "HealingDuration": 0,
+    "StaminaRestore": 0,
+    "UseCooldownSeconds": 0,
+    "RecoveryBlockSeconds": 0.0,
+    "DrainPenaltySeconds": 0.0,
+    "ThirstDrainMultiplier": 1.0,
+    "recipes": [
+      {
+        "asset": "CleanWaterCupRecipe.asset",
+        "ingredients": [
+          "raw_water_cup×1"
+        ],
+        "station": 2.0,
+        "seconds": 5.0
+      }
+    ]
+  },
+  {
+    "id": "cooked_fish",
+    "Kind": 0,
+    "HungerRestore": 26.0,
+    "ThirstRestore": 0.0,
+    "HealthRestore": 0,
+    "GradualHealthRestore": 0,
+    "HealingDuration": 0,
+    "StaminaRestore": 0,
+    "UseCooldownSeconds": 0,
+    "RecoveryBlockSeconds": 0.0,
+    "DrainPenaltySeconds": 0.0,
+    "ThirstDrainMultiplier": 1.0,
+    "recipes": [
+      {
+        "asset": "CookedFishRecipe.asset",
+        "ingredients": [
+          "raw_fish×1"
+        ],
+        "station": 2.0,
+        "seconds": 5.0
+      }
+    ]
+  },
+  {
+    "id": "cooked_meat",
+    "Kind": 0,
+    "HungerRestore": 35.0,
+    "ThirstRestore": 0.0,
+    "HealthRestore": 0,
+    "GradualHealthRestore": 0,
+    "HealingDuration": 0,
+    "StaminaRestore": 0,
+    "UseCooldownSeconds": 0,
+    "RecoveryBlockSeconds": 0,
+    "DrainPenaltySeconds": 0,
+    "ThirstDrainMultiplier": 0,
+    "recipes": [
+      {
+        "asset": "CookedMeatRecipe.asset",
+        "ingredients": [
+          "raw_meat×1"
+        ],
+        "station": 2.0,
+        "seconds": 5.0
+      }
+    ]
+  },
+  {
+    "id": "field_dressing",
+    "Kind": 1.0,
+    "HungerRestore": 0.0,
+    "ThirstRestore": 0.0,
+    "HealthRestore": 0.0,
+    "GradualHealthRestore": 20.0,
+    "HealingDuration": 8.0,
+    "StaminaRestore": 0.0,
+    "UseCooldownSeconds": 4.0,
+    "RecoveryBlockSeconds": 0.0,
+    "DrainPenaltySeconds": 0.0,
+    "ThirstDrainMultiplier": 1.0,
+    "recipes": [
+      {
+        "asset": "FieldDressingRecipe.asset",
+        "ingredients": [
+          "plant_fiber×2",
+          "medicinal_herb×1"
+        ],
+        "station": 0.0,
+        "seconds": 0.0
+      }
+    ]
+  },
+  {
+    "id": "fish_stew",
+    "Kind": 0.0,
+    "HungerRestore": 42.0,
+    "ThirstRestore": 26.0,
+    "HealthRestore": 0.0,
+    "GradualHealthRestore": 0.0,
+    "HealingDuration": 0.0,
+    "StaminaRestore": 0.0,
+    "UseCooldownSeconds": 0.0,
+    "RecoveryBlockSeconds": 0.0,
+    "DrainPenaltySeconds": 0.0,
+    "ThirstDrainMultiplier": 1.0,
+    "recipes": [
+      {
+        "asset": "FishStewRecipe.asset",
+        "ingredients": [
+          "raw_fish×1",
+          "mushroom×1",
+          "berry×2"
+        ],
+        "station": 5.0,
+        "seconds": 8.0
+      }
+    ]
+  },
+  {
+    "id": "forager_soup",
+    "Kind": 0.0,
+    "HungerRestore": 30.0,
+    "ThirstRestore": 18.0,
+    "HealthRestore": 0.0,
+    "GradualHealthRestore": 0.0,
+    "HealingDuration": 0.0,
+    "StaminaRestore": 0.0,
+    "UseCooldownSeconds": 4.0,
+    "RecoveryBlockSeconds": 0.0,
+    "DrainPenaltySeconds": 0.0,
+    "ThirstDrainMultiplier": 1.0,
+    "recipes": [
+      {
+        "asset": "ForagerSoupRecipe.asset",
+        "ingredients": [
+          "medicinal_herb×1",
+          "mushroom×2",
+          "berry×1"
+        ],
+        "station": 5.0,
+        "seconds": 10.0
+      }
+    ]
+  },
+  {
+    "id": "healing_salve",
+    "Kind": 1.0,
+    "HungerRestore": 0.0,
+    "ThirstRestore": 0.0,
+    "HealthRestore": 30.0,
+    "GradualHealthRestore": 0.0,
+    "HealingDuration": 0.0,
+    "StaminaRestore": 0.0,
+    "UseCooldownSeconds": 4.0,
+    "RecoveryBlockSeconds": 0.0,
+    "DrainPenaltySeconds": 0.0,
+    "ThirstDrainMultiplier": 1.0,
+    "recipes": [
+      {
+        "asset": "HealingSalveRecipe.asset",
+        "ingredients": [
+          "medicinal_gland×1",
+          "medicinal_herb×1",
+          "plant_fiber×2"
+        ],
+        "station": 0.0,
+        "seconds": 0.0
+      }
+    ]
+  },
+  {
+    "id": "hunters_stew",
+    "Kind": 0.0,
+    "HungerRestore": 44.0,
+    "ThirstRestore": 12.0,
+    "HealthRestore": 0.0,
+    "GradualHealthRestore": 0.0,
+    "HealingDuration": 0.0,
+    "StaminaRestore": 0.0,
+    "UseCooldownSeconds": 4.0,
+    "RecoveryBlockSeconds": 0.0,
+    "DrainPenaltySeconds": 0.0,
+    "ThirstDrainMultiplier": 1.0,
+    "recipes": [
+      {
+        "asset": "HuntersStewRecipe.asset",
+        "ingredients": [
+          "raw_meat×2",
+          "bone×1",
+          "mushroom×1",
+          "berry×1"
+        ],
+        "station": 5.0,
+        "seconds": 10.0
+      }
+    ]
+  },
+  {
+    "id": "meat_stew",
+    "Kind": 0.0,
+    "HungerRestore": 52.0,
+    "ThirstRestore": 10.0,
+    "HealthRestore": 0.0,
+    "GradualHealthRestore": 0.0,
+    "HealingDuration": 0.0,
+    "StaminaRestore": 0.0,
+    "UseCooldownSeconds": 0.0,
+    "RecoveryBlockSeconds": 0.0,
+    "DrainPenaltySeconds": 0.0,
+    "ThirstDrainMultiplier": 1.0,
+    "recipes": [
+      {
+        "asset": "MeatStewRecipe.asset",
+        "ingredients": [
+          "raw_meat×1",
+          "mushroom×1",
+          "berry×2"
+        ],
+        "station": 5.0,
+        "seconds": 8.0
+      }
+    ]
+  },
+  {
+    "id": "mixed_stew",
+    "Kind": 0,
+    "HungerRestore": 65.0,
+    "ThirstRestore": 18.0,
+    "HealthRestore": 8.0,
+    "GradualHealthRestore": 0,
+    "HealingDuration": 0,
+    "StaminaRestore": 0.0,
+    "UseCooldownSeconds": 4.0,
+    "RecoveryBlockSeconds": 0.0,
+    "DrainPenaltySeconds": 0.0,
+    "ThirstDrainMultiplier": 1.0,
+    "recipes": [
+      {
+        "asset": "MixedStewRecipe.asset",
+        "ingredients": [
+          "raw_meat×1",
+          "raw_fish×1",
+          "mushroom×1",
+          "berry×2"
+        ],
+        "station": 5.0,
+        "seconds": 10.0
+      }
+    ]
+  },
+  {
+    "id": "mushroom",
+    "Kind": 0,
+    "HungerRestore": 5.0,
+    "ThirstRestore": 0.0,
+    "HealthRestore": 0,
+    "GradualHealthRestore": 0,
+    "HealingDuration": 0,
+    "StaminaRestore": 0,
+    "UseCooldownSeconds": 0,
+    "RecoveryBlockSeconds": 0.0,
+    "DrainPenaltySeconds": 0.0,
+    "ThirstDrainMultiplier": 1.0,
+    "recipes": []
+  },
+  {
+    "id": "mushroom_stew",
+    "Kind": 0.0,
+    "HungerRestore": 35.0,
+    "ThirstRestore": 18.0,
+    "HealthRestore": 0.0,
+    "GradualHealthRestore": 0.0,
+    "HealingDuration": 0.0,
+    "StaminaRestore": 0.0,
+    "UseCooldownSeconds": 0.0,
+    "RecoveryBlockSeconds": 0.0,
+    "DrainPenaltySeconds": 0.0,
+    "ThirstDrainMultiplier": 1.0,
+    "recipes": [
+      {
+        "asset": "MushroomStewRecipe.asset",
+        "ingredients": [
+          "mushroom×2",
+          "berry×2"
+        ],
+        "station": 5.0,
+        "seconds": 7.0
+      }
+    ]
+  },
+  {
+    "id": "raw_fish",
+    "Kind": 0,
+    "HungerRestore": 6.0,
+    "ThirstRestore": 0.0,
+    "HealthRestore": 0,
+    "GradualHealthRestore": 0,
+    "HealingDuration": 0,
+    "StaminaRestore": 0,
+    "UseCooldownSeconds": 0,
+    "RecoveryBlockSeconds": 0.0,
+    "DrainPenaltySeconds": 0.0,
+    "ThirstDrainMultiplier": 1.0,
+    "recipes": []
+  },
+  {
+    "id": "raw_meat",
+    "Kind": 0,
+    "HungerRestore": 8.0,
+    "ThirstRestore": 0.0,
+    "HealthRestore": 0,
+    "GradualHealthRestore": 0,
+    "HealingDuration": 0,
+    "StaminaRestore": 0,
+    "UseCooldownSeconds": 0,
+    "RecoveryBlockSeconds": 0,
+    "DrainPenaltySeconds": 0,
+    "ThirstDrainMultiplier": 0,
+    "recipes": []
+  },
+  {
+    "id": "raw_water_cup",
+    "Kind": 0,
+    "HungerRestore": 0.0,
+    "ThirstRestore": 15.0,
+    "HealthRestore": 0,
+    "GradualHealthRestore": 0,
+    "HealingDuration": 0,
+    "StaminaRestore": 0,
+    "UseCooldownSeconds": 0,
+    "RecoveryBlockSeconds": 60.0,
+    "DrainPenaltySeconds": 60.0,
+    "ThirstDrainMultiplier": 1.5,
+    "recipes": []
+  },
+  {
+    "id": "restorative_broth",
+    "Kind": 0,
+    "HungerRestore": 22.0,
+    "ThirstRestore": 10.0,
+    "HealthRestore": 0.0,
+    "GradualHealthRestore": 0,
+    "HealingDuration": 0,
+    "StaminaRestore": 35.0,
+    "UseCooldownSeconds": 4.0,
+    "RecoveryBlockSeconds": 0.0,
+    "DrainPenaltySeconds": 0.0,
+    "ThirstDrainMultiplier": 1.0,
+    "recipes": [
+      {
+        "asset": "RestorativeBrothRecipe.asset",
+        "ingredients": [
+          "medicinal_gland×1",
+          "mushroom×1",
+          "berry×2"
+        ],
+        "station": 5.0,
+        "seconds": 8.0
+      }
+    ]
+  },
+  {
+    "id": "roasted_mushroom",
+    "Kind": 0,
+    "HungerRestore": 16.0,
+    "ThirstRestore": 0.0,
+    "HealthRestore": 0,
+    "GradualHealthRestore": 0,
+    "HealingDuration": 0,
+    "StaminaRestore": 0,
+    "UseCooldownSeconds": 0,
+    "RecoveryBlockSeconds": 0.0,
+    "DrainPenaltySeconds": 0.0,
+    "ThirstDrainMultiplier": 1.0,
+    "recipes": [
+      {
+        "asset": "RoastedMushroomRecipe.asset",
+        "ingredients": [
+          "mushroom×1"
+        ],
+        "station": 2.0,
+        "seconds": 5.0
+      }
+    ]
+  },
+  {
+    "id": "trail_broth",
+    "Kind": 0.0,
+    "HungerRestore": 28.0,
+    "ThirstRestore": 22.0,
+    "HealthRestore": 0.0,
+    "GradualHealthRestore": 0.0,
+    "HealingDuration": 0.0,
+    "StaminaRestore": 0.0,
+    "UseCooldownSeconds": 4.0,
+    "RecoveryBlockSeconds": 0.0,
+    "DrainPenaltySeconds": 0.0,
+    "ThirstDrainMultiplier": 1.0,
+    "recipes": [
+      {
+        "asset": "TrailBrothRecipe.asset",
+        "ingredients": [
+          "raw_fish×1",
+          "medicinal_herb×1",
+          "berry×2"
+        ],
+        "station": 5.0,
+        "seconds": 10.0
+      }
+    ]
+  },
+  {
+    "id": "trail_ration",
+    "Kind": 0,
+    "HungerRestore": 25.0,
+    "ThirstRestore": 0.0,
+    "HealthRestore": 0.0,
+    "GradualHealthRestore": 0,
+    "HealingDuration": 0,
+    "StaminaRestore": 20.0,
+    "UseCooldownSeconds": 4.0,
+    "RecoveryBlockSeconds": 0.0,
+    "DrainPenaltySeconds": 0.0,
+    "ThirstDrainMultiplier": 1.0,
+    "recipes": [
+      {
+        "asset": "TrailRationRecipe.asset",
+        "ingredients": [
+          "raw_meat×1",
+          "mushroom×1",
+          "berry×2"
+        ],
+        "station": 2.0,
+        "seconds": 7.0
+      }
+    ]
+  }
+]

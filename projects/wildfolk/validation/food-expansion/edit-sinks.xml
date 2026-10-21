@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="4" result="Passed" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-21 00:05:46Z" end-time="2026-10-21 00:05:46Z" duration="0.1026403">
+  <test-suite type="TestSuite" id="1000" name="Wildfolk" fullname="Wildfolk" runstate="Runnable" testcasecount="169" result="Passed" start-time="2026-10-21 00:05:46Z" end-time="2026-10-21 00:05:46Z" duration="0.102640" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1215" name="Wildfolk.Tests.EditMode.dll" fullname="C:/Users/User/Documents/ChatGPT/문승준 모바일/canonical/projects/wildfolk/tests/artifacts/unity/Library/ScriptAssemblies/Wildfolk.Tests.EditMode.dll" runstate="Runnable" testcasecount="169" result="Passed" start-time="2026-10-21 00:05:46Z" end-time="2026-10-21 00:05:46Z" duration="0.089637" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="16264" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1216" name="Wildfolk" fullname="Wildfolk" runstate="Runnable" testcasecount="169" result="Passed" start-time="2026-10-21 00:05:46Z" end-time="2026-10-21 00:05:46Z" duration="0.088450" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1217" name="Tests" fullname="Wildfolk.Tests" runstate="Runnable" testcasecount="169" result="Passed" start-time="2026-10-21 00:05:46Z" end-time="2026-10-21 00:05:46Z" duration="0.087821" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1027" name="CreatureLootModelTests" fullname="Wildfolk.Tests.CreatureLootModelTests" classname="Wildfolk.Tests.CreatureLootModelTests" runstate="Runnable" testcasecount="12" result="Passed" start-time="2026-10-21 00:05:46Z" end-time="2026-10-21 00:05:46Z" duration="0.051290" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="ParameterizedMethod" id="1031" name="RawMaterialsHaveDistinctImplementedSinks" fullname="Wildfolk.Tests.CreatureLootModelTests.RawMaterialsHaveDistinctImplementedSinks" classname="Wildfolk.Tests.CreatureLootModelTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-10-21 00:05:46Z" end-time="2026-10-21 00:05:46Z" duration="0.044327" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1028" name="RawMaterialsHaveDistinctImplementedSinks(&quot;bone&quot;,4)" fullname="Wildfolk.Tests.CreatureLootModelTests.RawMaterialsHaveDistinctImplementedSinks(&quot;bone&quot;,4)" methodname="RawMaterialsHaveDistinctImplementedSinks" classname="Wildfolk.Tests.CreatureLootModelTests" runstate="Runnable" seed="903454322" result="Passed" start-time="2026-10-21 00:05:46Z" end-time="2026-10-21 00:05:46Z" duration="0.024736" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1029" name="RawMaterialsHaveDistinctImplementedSinks(&quot;chitin&quot;,3)" fullname="Wildfolk.Tests.CreatureLootModelTests.RawMaterialsHaveDistinctImplementedSinks(&quot;chitin&quot;,3)" methodname="RawMaterialsHaveDistinctImplementedSinks" classname="Wildfolk.Tests.CreatureLootModelTests" runstate="Runnable" seed="9072014" result="Passed" start-time="2026-10-21 00:05:46Z" end-time="2026-10-21 00:05:46Z" duration="0.000423" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1030" name="RawMaterialsHaveDistinctImplementedSinks(&quot;medicinal_gland&quot;,2)" fullname="Wildfolk.Tests.CreatureLootModelTests.RawMaterialsHaveDistinctImplementedSinks(&quot;medicinal_gland&quot;,2)" methodname="RawMaterialsHaveDistinctImplementedSinks" classname="Wildfolk.Tests.CreatureLootModelTests" runstate="Runnable" seed="882698236" result="Passed" start-time="2026-10-21 00:05:46Z" end-time="2026-10-21 00:05:46Z" duration="0.000289" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+          </test-suite>
+          <test-suite type="TestFixture" id="1087" name="MedicineModelTests" fullname="Wildfolk.Tests.MedicineModelTests" classname="Wildfolk.Tests.MedicineModelTests" runstate="Runnable" testcasecount="7" result="Passed" start-time="2026-10-21 00:05:46Z" end-time="2026-10-21 00:05:46Z" duration="0.028536" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1089" name="TwoMedicinesUseOneHerbAndFiberSinkWithoutNewStationOrFoodChanges" fullname="Wildfolk.Tests.MedicineModelTests.TwoMedicinesUseOneHerbAndFiberSinkWithoutNewStationOrFoodChanges" methodname="TwoMedicinesUseOneHerbAndFiberSinkWithoutNewStationOrFoodChanges" classname="Wildfolk.Tests.MedicineModelTests" runstate="Runnable" seed="1892775707" result="Passed" start-time="2026-10-21 00:05:46Z" end-time="2026-10-21 00:05:46Z" duration="0.025919" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[<b><color=#2EA3FF>MCP-FOR-UNITY</color></b>: [TestRunnerNoThrottle] Restored Interaction Mode after test run.
+Saving results to: C:/Users/User/AppData/LocalLow/DefaultCompany/Wildfolk\TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

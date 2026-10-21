@@ -12,7 +12,7 @@ namespace Wildfolk.Tests
         private static T D<T>(string name)where T:Object=>AssetDatabase.LoadAssetAtPath<T>("Assets/Wildfolk/Data/"+name+".asset");
         private static ContentCatalog C=>D<ContentCatalog>("ContentCatalog");
         private static string[] ValidateData(){var type=AppDomain.CurrentDomain.GetAssemblies().Select(a=>a.GetType("Wildfolk.Editor.ProjectDataValidator")).First(t=>t!=null);return ((System.Collections.Generic.List<string>)type.GetMethod("Validate").Invoke(null,null)).ToArray();}
-        [TestCase("bone",3)][TestCase("chitin",3)][TestCase("medicinal_gland",2)]
+        [TestCase("bone",4)][TestCase("chitin",3)][TestCase("medicinal_gland",2)]
         public void RawMaterialsHaveDistinctImplementedSinks(string id,int sinks)
         {var recipes=C.Recipes.Where(r=>r.Ingredients.Any(a=>a.Item.Id==id)).ToArray();Assert.That(recipes.Length,Is.EqualTo(sinks));Assert.That(recipes.Select(r=>r.Result.Id).Distinct().Count(),Is.EqualTo(sinks));Assert.That(recipes.Any(r=>r.ResultCount>1 || r.Result.Consumable!=null),Is.True);Assert.That(recipes.All(r=>r.FutureUnlocks.Length==0),Is.True);}
         [Test]public void SidegradesPreserveDiamondAndNaturalCrystalRoles()

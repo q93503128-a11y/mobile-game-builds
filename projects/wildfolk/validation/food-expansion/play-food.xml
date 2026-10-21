@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="5" result="Passed" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-21 00:10:42Z" end-time="2026-10-21 00:14:00Z" duration="197.9788808">
+  <test-suite type="TestSuite" id="1199" name="Wildfolk" fullname="Wildfolk" runstate="Runnable" testcasecount="159" result="Passed" start-time="2026-10-21 00:10:42Z" end-time="2026-10-21 00:14:00Z" duration="197.978881" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <test-suite type="Assembly" id="1196" name="Wildfolk.Tests.PlayMode.dll" fullname="C:/Users/User/Documents/ChatGPT/문승준 모바일/canonical/projects/wildfolk/tests/artifacts/unity/Library/ScriptAssemblies/Wildfolk.Tests.PlayMode.dll" runstate="Runnable" testcasecount="159" result="Passed" start-time="2026-10-21 00:10:43Z" end-time="2026-10-21 00:14:00Z" duration="197.963613" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="16732" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <test-suite type="TestSuite" id="1197" name="Wildfolk" fullname="Wildfolk" runstate="Runnable" testcasecount="159" result="Passed" start-time="2026-10-21 00:10:43Z" end-time="2026-10-21 00:14:00Z" duration="197.961874" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1198" name="Tests" fullname="Wildfolk.Tests" runstate="Runnable" testcasecount="159" result="Passed" start-time="2026-10-21 00:10:43Z" end-time="2026-10-21 00:14:00Z" duration="197.960320" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1025" name="CreatureLootPlayTests" fullname="Wildfolk.Tests.CreatureLootPlayTests" classname="Wildfolk.Tests.CreatureLootPlayTests" runstate="Runnable" testcasecount="12" result="Passed" start-time="2026-10-21 00:10:43Z" end-time="2026-10-21 00:11:05Z" duration="22.126789" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1028" name="RestorativeFoodRestoresStaminaAndVestIsAnEquipmentTradeoff" fullname="Wildfolk.Tests.CreatureLootPlayTests.RestorativeFoodRestoresStaminaAndVestIsAnEquipmentTradeoff" methodname="RestorativeFoodRestoresStaminaAndVestIsAnEquipmentTradeoff" classname="Wildfolk.Tests.CreatureLootPlayTests" runstate="Runnable" seed="1501662624" result="Passed" start-time="2026-10-21 00:10:43Z" end-time="2026-10-21 00:10:49Z" duration="6.144118" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1027" name="SalveHealsAtFullHungerAndCooldownAndDeathPreventConsumption" fullname="Wildfolk.Tests.CreatureLootPlayTests.SalveHealsAtFullHungerAndCooldownAndDeathPreventConsumption" methodname="SalveHealsAtFullHungerAndCooldownAndDeathPreventConsumption" classname="Wildfolk.Tests.CreatureLootPlayTests" runstate="Runnable" seed="361930460" result="Passed" start-time="2026-10-21 00:10:49Z" end-time="2026-10-21 00:10:54Z" duration="5.483072" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1037" name="Save10MigrationAndCorruptCampStackValidationUseRealWorldSnapshot" fullname="Wildfolk.Tests.CreatureLootPlayTests.Save10MigrationAndCorruptCampStackValidationUseRealWorldSnapshot" methodname="Save10MigrationAndCorruptCampStackValidationUseRealWorldSnapshot" classname="Wildfolk.Tests.CreatureLootPlayTests" runstate="Runnable" seed="1341379627" result="Passed" start-time="2026-10-21 00:10:54Z" end-time="2026-10-21 00:11:05Z" duration="10.466592" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1058" name="FoodPlayTests" fullname="Wildfolk.Tests.FoodPlayTests" classname="Wildfolk.Tests.FoodPlayTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-21 00:11:05Z" end-time="2026-10-21 00:14:00Z" duration="175.814255" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1059" name="ActualPotMealsReplaceExpireRespectRecoveryGatesAndRoundTripSave11" fullname="Wildfolk.Tests.FoodPlayTests.ActualPotMealsReplaceExpireRespectRecoveryGatesAndRoundTripSave11" methodname="ActualPotMealsReplaceExpireRespectRecoveryGatesAndRoundTripSave11" classname="Wildfolk.Tests.FoodPlayTests" runstate="Runnable" seed="556136978" result="Passed" start-time="2026-10-21 00:11:05Z" end-time="2026-10-21 00:12:20Z" duration="75.399131" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1060" name="HostMealsRejectReplayAndDoNotPersistTemporaryMaxHealthAcrossReHost" fullname="Wildfolk.Tests.FoodPlayTests.HostMealsRejectReplayAndDoNotPersistTemporaryMaxHealthAcrossReHost" methodname="HostMealsRejectReplayAndDoNotPersistTemporaryMaxHealthAcrossReHost" classname="Wildfolk.Tests.FoodPlayTests" runstate="Runnable" seed="534714537" result="Passed" start-time="2026-10-21 00:12:20Z" end-time="2026-10-21 00:14:00Z" duration="100.406883" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[<b><color=#2EA3FF>MCP-FOR-UNITY</color></b>: [TestRunnerNoThrottle] Restored Interaction Mode after test run.
+Saving results to: C:/Users/User/AppData/LocalLow/DefaultCompany/Wildfolk\TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

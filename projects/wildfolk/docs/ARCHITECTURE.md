@@ -1,6 +1,6 @@
 # 현재 코드 연결
 
-2026-10-20 현재: generation3 / Save11 / Protocol14, Item123 / Recipe100. v1~10 이관과 generation1/2 reader를 유지한다. 아래 날짜별 Foundation 절은 구조의 도입 기록이며 현재 데이터는 CONTENT_EXPANSION/CREATURES_AND_LOOT/SAVE_PERSISTENCE를 따른다.
+2026-10-20 현재: generation3 / Save11 / Protocol15, Item126 / Recipe103. v1~10 이관과 generation1/2 reader를 유지한다. 아래 날짜별 Foundation 절은 구조의 도입 기록이며 현재 데이터는 CONTENT_EXPANSION/CREATURES_AND_LOOT/SAVE_PERSISTENCE를 따른다.
 
 시설 실행은 ProcessingScheduler의 공용0.1초 tick에 등록된 busy Host/SP 작업만 진행한다. HitFeedback는 피격 이벤트 동안 coroutine으로 동작한다. LootTable.Roll/ProcessingQueue.Costs/CavernNetwork의 exitNext가 중복 계산을 공유한다. UI는 visibility 변경에만 강제 layout, 처리 명칭은 recipe/language cache, LocalFirelight geometry는 definition 변경에만 설정한다. Save/Protocol 필드와 inactive logical advance는 유지한다.
 Runtime/InputSystem/UGUI,Editor,EditMode/PlayMode Tests를 분리한다. 실제 수치는Data ScriptableObject가 정본이고 Editor는 없는 초기 데이터를 생성하며 기존 수치를 보존한다. 씬은 프리팹 연결과 월드Bootstrap을 저장하고 수동 테스트 월드 배치 코드는 제거했다.
@@ -204,3 +204,11 @@ ConsumableDefinition.HealthRestore/StaminaRestore/UseCooldownSeconds→PlayerSur
 ## Medicine2-A · 현재
 
 ConsumableDefinition.Kind/GradualHealthRestore/HealingDuration은 Food와 Medicine 및 즉시/지속 효과를 표현한다. PlayerSurvival의 기존 원자적 소비·권위·alive·공용 nextConsume 경로를 재사용한다. TreatmentModel은 단일 transient 상태이며 누적 목표량의 정수 차이만 HP에 전달해 프레임별 반올림 손실·중첩을 방지한다. SP는 기존 Update, MP는 기존 server NetworkPlayer tick에서 진행한다. 기존 MP hunger/natural survival Update를 켜지 않는다. Client는 상태 종료 시각으로 표시만 한다. Owner Primary RPC는 요청 번호를 검사해 중복/지연 재생을 거절하며 피해/회복량을 client에서 받지 않는다. MedicineHud는 잔여 정수 초가 바뀔 때 작은 localized Text만 갱신한다. 새 Status Framework/Station/전역 resource scan은 없다.
+
+## Food2-B · 현재
+
+ConsumableDefinition.Meal→MealDefinition(효과1종/크기/기간),MealModel은플레이어당1상태다.PlayerSurvival의소비성공후교체·기존공용간격·AdvanceTemporary(SP Update/서버tick)가시간·사망을처리한다.CharacterStats가영구Skill+Meal최대HP/Stamina회복을집계하며Health.SetMaximumBonus는현재HP를증가시키지않고초과분만clamp한다.자연회복함수를분리해기존H/T/전투/RawWater조건과소수누적을SP·Host에공유한다.MP의기존Survival.Update는계속꺼져있고H/T소모를새로켜지않는다.Client는MealItem/종료서버시각과최종MaxHP를표시한다.영구Save는임시Meal상태를기록하지않는다.
+
+MealHud는0.2초확인·정수초/아이템/메뉴표시상태변경시만Text/Icon을갱신한다.Pot대기열의음식효과누락은CraftingPanel.FoodPreview로영양·단일효과·교체/기간만기존빈영역에표시한다.새buffframework/Station/자원Update/전역scan없음.
+
+Host의RawWater회복차단·소모불이익타이머는기존Model.AdvanceEffects로진행한다.MPH/T자연소모를켜지않으며SP구간별소모계산순서는보존한다.식사때문에일시차단이영구차단으로남지않는다.

@@ -217,3 +217,9 @@ Ballista62damage/26range/2.3초/45도·초/HP180, Repeater16/17/.55초/105도·�
 |자연회복|H/T≥70%, 전투 후8초,0.5HP/s|기존 안전 복구 보존|
 
 현재 위험 생물 피해5–18HP 대비 붕대는 느린 복구, Salve는 즉시 피해 약1.7–6회분이다. 음식 최대18HP·Stamina 지원은 그대로다. [3seed 실제 분포와1P/4P 준비 예산](../validation/medicine-expansion/REVIEW.md)은 산술/생성 검증이며 실제 재미·장시간 소모율 측정이 아니다.
+
+## Food2-B · 현재
+
+Meal3종/150초/동시1개/교체,공용4초다.Hunter MaxHP+8(HPheal0),Forager 자연HP회복+0.15/s(0.5→0.65,기존조건유지),Trail Stamina회복+10%(16→17.6/s,대기1.2초유지).150초는480초cycle의31.25%·낮240초의62.5%이며정지없는보행최대630unit에해당한다.세Meal은음식영양+단일일시준비역할로영구Skill과구분한다.
+
+일반Stew H/T는Mushroom35/18,Meat52/10,Fish42/26,Mixed65/18+HP8.기존비용·Campfire·Bone/Restorative/Ration·의약수치변경없다.원료/Recipe는CONTENT_EXPANSION,조건·UI는FOOD_AND_FISHING,1P/4P계산과미검증은food-expansion/REVIEW를따른다.

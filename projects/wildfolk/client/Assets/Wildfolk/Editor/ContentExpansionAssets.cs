@@ -70,9 +70,9 @@ namespace Wildfolk.Editor
             Recipe("RoastedMushroom",Food("RoastedMushroom","roasted_mushroom",16,0),1,1,RecipeCategory.Survival,new[]{C("mushroom",1)},StationKind.Campfire,5);
             Recipe("CookedFish",Food("CookedFish","cooked_fish",26,0),1,1,RecipeCategory.Survival,new[]{C("raw_fish",1)},StationKind.Campfire,5);
             var pot=Building("CookingPot","cooking_pot",1,120,1.7f,new[]{C("stone",6),C("iron_ingot",2)},station:StationKind.CookingPot);recipes.Find(r=>r.Result==pot).ProgressionShared=1;
-            Recipe("MushroomStew",Food("MushroomStew","mushroom_stew",35,10),1,1,RecipeCategory.Survival,new[]{C("mushroom",2),C("berry",2)},StationKind.CookingPot,7);
-            Recipe("MeatStew",Food("MeatStew","meat_stew",48,12),1,1,RecipeCategory.Survival,new[]{C("raw_meat",1),C("mushroom",1),C("berry",2)},StationKind.CookingPot,8);
-            Recipe("FishStew",Food("FishStew","fish_stew",46,15),1,1,RecipeCategory.Survival,new[]{C("raw_fish",1),C("mushroom",1),C("berry",2)},StationKind.CookingPot,8);
+            Recipe("MushroomStew",Food("MushroomStew","mushroom_stew",35,18),1,1,RecipeCategory.Survival,new[]{C("mushroom",2),C("berry",2)},StationKind.CookingPot,7);
+            Recipe("MeatStew",Food("MeatStew","meat_stew",52,10),1,1,RecipeCategory.Survival,new[]{C("raw_meat",1),C("mushroom",1),C("berry",2)},StationKind.CookingPot,8);
+            Recipe("FishStew",Food("FishStew","fish_stew",42,26),1,1,RecipeCategory.Survival,new[]{C("raw_fish",1),C("mushroom",1),C("berry",2)},StationKind.CookingPot,8);
             Recipe("MixedStew",Food("MixedStew","mixed_stew",65,18),1,1,RecipeCategory.Survival,new[]{C("raw_meat",1),C("raw_fish",1),C("mushroom",1),C("berry",2)},StationKind.CookingPot,10);
             var skin=Item("Waterskin","waterskin",ItemCategory.Container,1);skin.WaterCapacity=3;skin.RawDrink=I("raw_water_cup").Consumable;skin.CleanDrink=I("clean_water_cup").Consumable;EditorUtility.SetDirty(skin);Recipe("Waterskin",skin,1,1,RecipeCategory.Survival,new[]{C("leather",2),C("plant_fiber",3)});
             var purify=Recipe("PurifyWaterskin",skin,1,1,RecipeCategory.Survival,new[]{new ItemAmount{Item=skin,Count=1,Charges=3,Quality=LiquidState.Raw}},StationKind.Campfire,10,"purify_waterskin");purify.ResultCharges=3;purify.ResultQuality=LiquidState.Clean;purify.DisplayKey="recipe.purify_waterskin";EditorUtility.SetDirty(purify);

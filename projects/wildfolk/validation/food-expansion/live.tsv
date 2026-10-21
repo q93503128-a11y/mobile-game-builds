@@ -1,0 +1,89 @@
+2026-10-21T00:04:38.4560087Z	cooking	begin
+2026-10-21T00:04:39.2909891Z	cooking	PASS actual Pot queue accepted hunters_stew
+2026-10-21T00:04:49.6619624Z	cooking	PASS collect cooked hunters_stew
+2026-10-21T00:04:49.6625735Z	cooking	PASS one cooked inventory result hunters_stew
+2026-10-21T00:04:49.8665443Z	cooking	PASS actual Pot queue accepted forager_soup
+2026-10-21T00:05:00.2551776Z	cooking	PASS collect cooked forager_soup
+2026-10-21T00:05:00.2556927Z	cooking	PASS one cooked inventory result forager_soup
+2026-10-21T00:05:00.4487591Z	cooking	PASS actual Pot queue accepted trail_broth
+2026-10-21T00:05:10.8073065Z	cooking	PASS collect cooked trail_broth
+2026-10-21T00:05:10.8088158Z	cooking	PASS one cooked inventory result trail_broth
+2026-10-21T00:05:11.0799196Z	baseline	begin
+2026-10-21T00:05:13.1610902Z	baseline	PASS baseline Stamina rate 16.00001
+2026-10-21T00:05:21.2778643Z	baseline	PASS baseline natural HP 4 in 8.109669
+2026-10-21T00:05:21.2824324Z	hunter	begin
+2026-10-21T00:05:21.2998693Z	hunter	PASS Hunter consumed at full nutrition
+2026-10-21T00:05:21.3044985Z	hunter	PASS Hunter max108 without healing current60
+2026-10-21T00:05:21.3080137Z	hunter	PASS Hunter supplies exactly one role
+2026-10-21T00:05:21.3137162Z	hunter	PASS repeat blocked without consuming
+2026-10-21T00:05:21.3462974Z	hunter	PASS Meal shares interval with medicine
+2026-10-21T00:05:21.5994778Z	hunter	PASS explicit151s expiry clamps108 to100
+2026-10-21T00:05:21.8487996Z	hunter	PASS temporary food never changes Skill ranks
+2026-10-21T00:05:21.8487996Z	replacement	begin
+2026-10-21T00:05:21.8606517Z	replacement	PASS new Hunter course
+2026-10-21T00:05:25.9469472Z	replacement	PASS Forager replaces Hunter after interval
+2026-10-21T00:05:25.9475215Z	replacement	PASS one replacement slot
+2026-10-21T00:05:25.9485813Z	forager	begin
+2026-10-21T00:05:34.0323207Z	forager	PASS Forager natural HP 5 in 8.106541
+2026-10-21T00:05:34.1910353Z	forager	PASS low nutrition blocks Forager
+2026-10-21T00:05:34.1910353Z	forager	PASS recent combat blocks Forager
+2026-10-21T00:05:34.1925520Z	forager	PASS raw-water recovery block still applies
+2026-10-21T00:05:34.1935679Z	trail	begin
+2026-10-21T00:05:34.2092592Z	trail	PASS Trail replaces Forager
+2026-10-21T00:05:34.2102584Z	trail	PASS Trail alone gives10percent Stamina recovery
+2026-10-21T00:05:36.2749742Z	trail	PASS actual Trail Stamina rate 17.60002
+2026-10-21T00:05:36.2766020Z	trail	PASS Trail never raises MaxStamina
+2026-10-21T00:05:36.2771378Z	trail	PASS normal Dash cost fixture
+2026-10-21T00:05:36.7801359Z	trail	PASS normal recovery delay preserved
+2026-10-21T00:05:36.9370786Z	food-medicine	begin
+2026-10-21T00:05:36.9604005Z	food-medicine	PASS Bone Broth instant18 with no MaxHP meal
+2026-10-21T00:05:36.9871088Z	food-medicine	PASS Restorative instant35 with no recovery buff
+2026-10-21T00:05:37.0252240Z	food-medicine	PASS Campfire Ration instant20 no Meal
+2026-10-21T00:05:37.0451160Z	food-medicine	PASS Salve remains instant30
+2026-10-21T00:05:37.0906447Z	food-medicine	PASS Dressing remains gradual not instant
+2026-10-21T00:05:37.3111842Z	save-load	begin
+2026-10-21T00:05:37.3217998Z	save-load	PASS Hunter before Save
+2026-10-21T00:05:37.3345034Z	save-load	PASS Save snapshot clamps temporary excess without modifying live HP
+2026-10-21T00:05:42.3504557Z	save-load	PASS isolated Save11
+2026-10-21T00:05:50.4327826Z	save-load	PASS Load removes temporary meal without replay
+2026-10-21T00:05:50.4332933Z	save-load	PASS Load retains exactly consumed stack
+2026-10-21T00:05:50.5917428Z	death	begin
+2026-10-21T00:05:50.5985628Z	death	PASS Hunter before death
+2026-10-21T00:05:50.6022797Z	death	PASS death removes Meal modifier
+2026-10-21T00:05:50.6035300Z	complete	complete
+2026-10-21T00:07:43.0807531Z	host	begin
+2026-10-21T00:07:43.3260579Z	host	PASS local Host
+2026-10-21T00:07:43.3392959Z	host	PASS enter multiplayer
+2026-10-21T00:07:50.5510026Z	host	PASS Host world ready
+2026-10-21T00:07:51.4727780Z	host	PASS server consumes Hunter
+2026-10-21T00:07:51.4739024Z	host	PASS server MaxHP no free heal
+2026-10-21T00:07:51.4739024Z	host	PASS duplicate RPC does not consume twice
+2026-10-21T00:07:51.4753496Z	host	PASS meal identity and end time replicated
+2026-10-21T00:07:55.7855107Z	host	PASS stale request rejected after cooldown
+2026-10-21T00:07:55.7880457Z	host	PASS server replaces with Forager
+2026-10-21T00:07:55.7880457Z	host	PASS old server modifier removed
+2026-10-21T00:08:03.9002173Z	host	PASS server natural recovery includes Forager with disabled survival Update
+2026-10-21T00:08:03.9022341Z	host	PASS server Trail replaces Forager
+2026-10-21T00:08:03.9038490Z	host	PASS duplicate Trail rejected
+2026-10-21T00:08:04.1129486Z	host	PASS server explicit151s expiry removes modifier
+2026-10-21T00:08:08.1722764Z	host	PASS server Hunter before Save
+2026-10-21T00:08:21.7176673Z	host	PASS Host Save11 with temporary maxHP
+2026-10-21T00:08:21.7186822Z	host	PASS saving does not clamp live server HP
+2026-10-21T00:08:44.8418331Z	rehost	begin
+2026-10-21T00:08:47.3393132Z	rehost	PASS local Host
+2026-10-21T00:08:47.3408270Z	rehost	PASS enter multiplayer
+2026-10-21T00:08:55.7755248Z	rehost	PASS Host world ready
+2026-10-21T00:08:56.6940392Z	rehost	PASS reHost removes meal and clamps persistent HP
+2026-10-21T00:08:56.6956831Z	rehost	PASS reHost preserves exact consumption
+2026-10-21T00:08:56.9836321Z	complete	complete
+2026-10-21T00:15:50.5714105Z	host-timers	begin
+2026-10-21T00:15:50.7813586Z	host-timers	PASS local Host
+2026-10-21T00:15:50.7954745Z	host-timers	PASS enter multiplayer
+2026-10-21T00:15:54.4019561Z	host-timers	PASS Host world ready
+2026-10-21T00:15:54.9031985Z	host-timers	PASS Forager timer fixture consumed
+2026-10-21T00:15:54.9037039Z	host-timers	PASS Raw Water blocks server Forager
+2026-10-21T00:15:54.9037039Z	host-timers	PASS server temporary update advances59s water penalty
+2026-10-21T00:15:54.9037039Z	host-timers	PASS server water effects expire without permanent block
+2026-10-21T00:15:54.9047097Z	host-timers	PASS temporary timer fix does not enable MP nutrition drain
+2026-10-21T00:15:54.9047097Z	host-timers	PASS existing server natural recovery resumes with Forager
+2026-10-21T00:15:55.0365857Z	complete	complete

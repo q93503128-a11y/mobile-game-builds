@@ -24,3 +24,7 @@ Armor는 동일 PlayerEquipment의 Inventory Drag/빠른 Use/슬롯 교환을 �
 ## 현재 제작 진행 범위
 
 실제 Workbench I~III, 구조적 상한VI다. Equipment Wood/Stone/Iron/Steel/Diamond, Armor는 Leather/Iron/Steel/Diamond의 Head/Body8개와 Carapace Vest1개다. Copper/Tin/Bronze는 풀 장비 tier가 아니다. Vest는 WB II Chitin4+Leather1+Fiber2, 방어3(철 Body4보다 낮음)과 Stamina 회복속도+15%의 선택 장비다. Skill Recovery와 가산 집계하며 즉시 Stamina를 지급하지 않는다. 현재 Home/Multiplayer·Save11은 README/SAVE_PERSISTENCE를 따른다.
+
+## Food2-B와 성장 경계
+
+CharacterStats는PersistentHealthBonus(Skill)와일시Meal을구분해합친다.Hunter+8은Vitality한rank+10보다작으며현재HP를회복하지않는다.Vitality1이면Max110→Meal118→만료110이며Rank/Point를바꾸지않는다.Trail+10%는Recovery한rank+15%보다작고기존Armor/Skill과가산된다.Forager는기존안전HP회복에만+0.15/s이며Stamina Recovery Skill을복제하지않는다.Endurance최대Stamina/SteadyStride비용효율/Dash/Sprint해금은Meal로대체하지않는다.150초종료/교체/죽음/Load/reHost시임시효과제거,영구성장은보존한다.

@@ -3698,6 +3698,90 @@
         "Bandage healing · {0}s",
         "붕대 치료 · {0}초"
       ]
+    },
+    {
+      "Key": "item.hunters_stew.name",
+      "Values": [
+        "Hunter's Stew",
+        "사냥꾼 스튜"
+      ]
+    },
+    {
+      "Key": "item.forager_soup.name",
+      "Values": [
+        "Forager Soup",
+        "채집꾼 수프"
+      ]
+    },
+    {
+      "Key": "item.trail_broth.name",
+      "Values": [
+        "Trail Broth",
+        "원정 국물"
+      ]
+    },
+    {
+      "Key": "ui.meal.MaximumHealth",
+      "Values": [
+        "Maximum HP +{0}. Current HP is not healed.",
+        "최대 HP +{0}. 현재 HP는 회복하지 않습니다."
+      ]
+    },
+    {
+      "Key": "ui.meal.NaturalRecovery",
+      "Values": [
+        "Safe recovery +{0} HP/s. Requires food, water and time out of combat.",
+        "안전 상태 회복 +{0} HP/초. 충분한 허기·갈증과 비전투 상태가 필요합니다."
+      ]
+    },
+    {
+      "Key": "ui.meal.StaminaRecovery",
+      "Values": [
+        "Stamina recovery +{0}%. Recovery delay and sprint cost stay the same.",
+        "Stamina 회복 +{0}%. 회복 대기와 달리기 소모는 같습니다."
+      ]
+    },
+    {
+      "Key": "ui.meal.rule",
+      "Values": [
+        "Meal lasts {0}s. A new meal replaces it. Shared recovery interval: {1}s.",
+        "식사 효과 {0}초. 새 식사는 기존 효과를 교체합니다. 회복품 공용 사용 간격 {1}초."
+      ]
+    },
+    {
+      "Key": "ui.meal.active",
+      "Values": [
+        "{0} · {1}:{2}",
+        "{0} · {1}:{2}"
+      ]
+    },
+    {
+      "Key": "ui.meal.preview.MaximumHealth",
+      "Values": [
+        "Max HP +{0} · no instant healing",
+        "최대 HP +{0} · 즉시 회복 없음"
+      ]
+    },
+    {
+      "Key": "ui.meal.preview.NaturalRecovery",
+      "Values": [
+        "Safe HP recovery +{0}/s",
+        "안전 상태 HP 회복 +{0}/초"
+      ]
+    },
+    {
+      "Key": "ui.meal.preview.StaminaRecovery",
+      "Values": [
+        "Stamina recovery +{0}%",
+        "Stamina 회복 +{0}%"
+      ]
+    },
+    {
+      "Key": "ui.meal.preview_rule",
+      "Values": [
+        "{0}s · one meal · replaces previous",
+        "{0}초 · 식사 효과 1개 · 기존 효과 교체"
+      ]
     }
   ]
 }

@@ -41,7 +41,7 @@ namespace Wildfolk
             input.enabled=IsOwner;LocalMarker.SetActive(IsOwner);
             NetworkManager.NetworkTickSystem.Tick+=Tick;
             Motion.OnValueChanged+=OnMotion;Status.OnValueChanged+=OnStatus;
-            if(IsServer){Health.Changed+=PublishStatus;Equipment.Changed+=PublishStatus;survival.TreatmentChanged+=PublishStatus;PublishStatus();receivedAt=Time.unscaledTime;}
+            if(IsServer){Health.Changed+=PublishStatus;Equipment.Changed+=PublishStatus;survival.TreatmentChanged+=PublishStatus;survival.MealChanged+=PublishStatus;PublishStatus();receivedAt=Time.unscaledTime;}
             else ApplyStatus(Status.Value);
             ApplyMotion(Motion.Value);
             if(IsOwner && NetworkObject.IsPlayerObject)FindFirstObjectByType<MultiplayerArena>()?.BindLocal(this);
@@ -53,7 +53,7 @@ namespace Wildfolk
             if(NetworkManager!=null && NetworkManager.NetworkTickSystem!=null)NetworkManager.NetworkTickSystem.Tick-=Tick;
             Motion.OnValueChanged-=OnMotion;Status.OnValueChanged-=OnStatus;Health.Changed-=PublishStatus;Equipment.Changed-=PublishStatus;
             combat.AttackStarted-=PublishAttack;combat.HarvestDenied-=PublishDenial;Commands.MovementAuthority=null;Commands.CombatAuthority=null;
-            survival.TreatmentChanged-=PublishStatus;survival.ResetTransient();
+            survival.TreatmentChanged-=PublishStatus;survival.MealChanged-=PublishStatus;survival.ResetTransient();
         }
         public void SetMove(Vector2 move){if(IsSpawned && IsOwner)pendingMove=NetworkInputRules.Sanitize(move);}
         public bool Dash()
@@ -101,7 +101,7 @@ namespace Wildfolk
             if(IsOwner && ((pendingMove-lastSent).sqrMagnitude>.0001f || Time.unscaledTime-sentAt>.15f))
             {if(IsServer)AcceptMove(pendingMove);else MoveRpc(pendingMove);lastSent=pendingMove;sentAt=Time.unscaledTime;}
             if(!IsServer)return;
-            survival.AdvanceTreatment(1f/NetworkManager.NetworkConfig.TickRate);
+            survival.AdvanceTemporary(1f/NetworkManager.NetworkConfig.TickRate);survival.AdvanceNaturalRecovery(1f/NetworkManager.NetworkConfig.TickRate);
             if(Time.unscaledTime-receivedAt>.4f)Commands.ApplyMove(Vector2.zero);
             var direction=Motor.Avatar.Facing.Direction;
             var flags=(byte)((Motor.IsMoving || Motor.Locomotion.IsDashing ? 1 : 0)|(Motor.Locomotion.Stamina.IsSprinting ? 2 : 0)|(Motor.Locomotion.IsDashing ? 4 : 0));
@@ -113,7 +113,7 @@ namespace Wildfolk
         private void PublishStatus()
         {
             if(!IsSpawned || !IsServer)return;
-            var next=new PlayerStatusState{HP=Health.Current,MaximumHP=Health.Maximum,Head=ItemIndex(Equipment.HeadArmor),Body=ItemIndex(Equipment.BodyArmor),Held=ItemIndex(Equipment.SelectedItem),Utility=ItemIndex(Equipment.Utility),TreatmentUntil=survival.Treatment.Active ? NetworkManager.ServerTime.Time+survival.Treatment.Remaining : 0};
+            var next=new PlayerStatusState{HP=Health.Current,MaximumHP=Health.Maximum,Head=ItemIndex(Equipment.HeadArmor),Body=ItemIndex(Equipment.BodyArmor),Held=ItemIndex(Equipment.SelectedItem),Utility=ItemIndex(Equipment.Utility),MealItem=ItemIndex(survival.Meal.Item),MealUntil=survival.Meal.Active ? NetworkManager.ServerTime.Time+survival.Meal.Remaining : 0,TreatmentUntil=survival.Treatment.Active ? NetworkManager.ServerTime.Time+survival.Treatment.Remaining : 0};
             if(!Status.Value.Equals(next))Status.Value=next;
         }
         private void OnMotion(PlayerMotionState previous,PlayerMotionState next)=>ApplyMotion(next);

@@ -1,6 +1,6 @@
 # Lowfire
 
-Unity **6000.3.19f1 LTS / Universal 2D**, 모바일 Landscape(1920×1080) 탑다운 생존 게임이다. 표시명 Lowfire, 내부 Wildfolk namespace·경로·저장 식별자는 유지한다. 현재 alpha 콘텐츠는 **Item123 / Recipe100 / Save11 / Protocol14**, Workbench I→II→III와 Wood/Stone/Iron/Steel/Diamond 장비다.
+Unity **6000.3.19f1 LTS / Universal 2D**, 모바일 Landscape(1920×1080) 탑다운 생존 게임이다. 표시명 Lowfire, 내부 Wildfolk namespace·경로·저장 식별자는 유지한다. 현재 alpha 콘텐츠는 **Item126 / Recipe103 / Save11 / Protocol15**, Workbench I→II→III와 Wood/Stone/Iron/Steel/Diamond 장비다.
 
 ## 실행과 플레이
 
@@ -25,7 +25,7 @@ Multiplayer는 Relay Room Code 또는 Local Network Host/Join이다. Host가 이
 ## 정본·개발·검증
 
 - 작업 전 [AGENTS](AGENTS.md)를 읽는다. main 직접 작업, canonical source 수정, PR/임시 branch 금지.
-- [기획](docs/DESIGN_BIBLE.md), [콘텐츠/전체100 Recipe](docs/CONTENT_EXPANSION.md), [생물·드랍](docs/CREATURES_AND_LOOT.md), [제작](docs/CRAFTING.md), [음식](docs/FOOD_AND_FISHING.md), [수치](docs/BALANCE.md), [월드](docs/WORLD_GENERATION.md), [저장](docs/SAVE_PERSISTENCE.md), [구조](docs/ARCHITECTURE.md).
+- [기획](docs/DESIGN_BIBLE.md), [콘텐츠/전체103 Recipe](docs/CONTENT_EXPANSION.md), [생물·드랍](docs/CREATURES_AND_LOOT.md), [제작](docs/CRAFTING.md), [음식](docs/FOOD_AND_FISHING.md), [수치](docs/BALANCE.md), [월드](docs/WORLD_GENERATION.md), [저장](docs/SAVE_PERSISTENCE.md), [구조](docs/ARCHITECTURE.md).
 - [이번 외부 비교·구현·경제·검수](validation/creature-loot-expansion/REVIEW.md). 과거 validation/review는 당시 기록이다.
 - 소스 검사: `python tests/validate_visual_project.py client`. Unity EditMode/PlayMode는 Assets/Wildfolk/Tests. 자동 검사와 실제 Play 검수는 구분한다.
 - 신규 생물/아이콘은 기존 Pillow 방식의 `tools/generate_creature_loot_art.py` 원본이다. 기존 art 출처는 [SOURCE_ART](docs/SOURCE_ART.md). 외부 게임 asset/code/layout을 복제하지 않는다.
@@ -33,4 +33,6 @@ Multiplayer는 Relay Room Code 또는 Local Network Host/Join이다. Host가 이
 
 실제 터치·손맛·재미·장시간 경제·Android 성능은 사용자 검증 대상이다. BGM/SFX 콘텐츠는 비어 있다. Boss/Undead King/Defense Objective/IV~VI/전기/총기/직업/Pet/번식/상인/영구 Skin은 이번에 추가하지 않았다.
 
-약초는 Forest/Wetlands에서 맨손으로 채집한다. 응급 붕대는 Hand에서 Fiber2+Herb1→20HP/8초, 기존 회복 연고는 Gland1+Herb1+Fiber2→즉시30HP다. 공용4초·붕대 비중첩, 자연회복/음식·기존 Station은 유지한다. [의약 조사·경제·검수](validation/medicine-expansion/REVIEW.md). 다음 예정은 Food Expansion2-B다.
+약초는 Forest/Wetlands에서 맨손으로 채집한다. 응급 붕대는 Hand에서 Fiber2+Herb1→20HP/8초, 기존 회복 연고는 Gland1+Herb1+Fiber2→즉시30HP다. 공용4초·붕대 비중첩, 자연회복/음식·기존 Station은 유지한다. [의약 조사·경제·검수](validation/medicine-expansion/REVIEW.md). Food Expansion2-B는 아래 Meal 선택을 추가했다.
+
+기본식·일반 Stew·기능성 Meal을 구분한다. Cooking Pot의 사냥꾼 스튜(MaxHP+8),채집꾼 수프(안전 HP회복+0.15/초),원정 국물(Stamina회복+10%)은150초간 하나만 유지되며 교체된다. 기본 HP를 즉시 채우거나 Skill Rank를 올리지 않는다. Campfire/기존 의약·즉시회복 Broth는 유지한다. [음식 전체 감사·외부 비교·경제·검수](validation/food-expansion/REVIEW.md). 다음 예정은2-C:Bone/Chitin Creature Material Sidegrade다.

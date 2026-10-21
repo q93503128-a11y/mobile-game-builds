@@ -6,6 +6,7 @@ namespace Wildfolk
     public sealed class ConsumableDefinition : ScriptableObject
     {
         public ConsumableKind Kind;
+        public MealDefinition Meal;
         [Min(0)] public int HealthRestore;
         [Min(0)] public int GradualHealthRestore;
         [Min(0)] public float HealingDuration;

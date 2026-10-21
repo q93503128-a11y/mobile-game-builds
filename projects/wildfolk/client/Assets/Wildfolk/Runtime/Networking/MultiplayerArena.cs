@@ -21,6 +21,7 @@ namespace Wildfolk
             var light=FindFirstObjectByType<WorldLighting>();if(light!=null)light.Player=player.transform;
             InventoryUi.Bind(player);player.Health.Changed+=RefreshHealth;RefreshText();
             var medicine=FindFirstObjectByType<MedicineHud>();if(medicine!=null)medicine.Player=player.GetComponent<PlayerSurvival>();
+            var meal=FindFirstObjectByType<MealHud>();if(meal!=null)meal.Player=player.GetComponent<PlayerSurvival>();
         }
         public void Dash(){if(LocalPlayer!=null)LocalPlayer.Commands.Dash();}
         public void Leave(){if(NetworkSession.Instance!=null){NetworkSession.Instance.Leave();}else SceneFlow.Home(SceneFlow.Repository);}

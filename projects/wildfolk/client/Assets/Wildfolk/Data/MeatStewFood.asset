@@ -12,8 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f9e983df120a7046a12bc7edb7d4559, type: 3}
   m_Name: MeatStewFood
   m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.ConsumableDefinition
-  HungerRestore: 48
-  ThirstRestore: 12
+  Kind: 0
+  Meal: {fileID: 0}
+  HealthRestore: 0
+  GradualHealthRestore: 0
+  HealingDuration: 0
+  StaminaRestore: 0
+  UseCooldownSeconds: 0
+  HungerRestore: 52
+  ThirstRestore: 10
   RecoveryBlockSeconds: 0
   DrainPenaltySeconds: 0
   ThirstDrainMultiplier: 1

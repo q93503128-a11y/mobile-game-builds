@@ -1,26 +1,30 @@
 # 음식·낚시·재사용 물
 
-2026-10-20. Hunger drain0.08/s, Thirst0.12/s와 Raw Water 불이익을 유지한다. 음식/연고는 즉시 HP 또는 Stamina도 회복할 수 있으며 timed buff stack은 없다. 새 회복품과 Mixed Stew는 공용4초 소비 간격이다. Hunger/Thirst가 가득 차도 해당 HP/Stamina가 부족하면 사용한다. Host 권위·alive/Running·실제 stack 소모 후 적용하며 실패·죽음·cooldown에는 소비하지 않는다.
+2026-10-21. Hunger0.08/s·Thirst0.12/s,기존 RawWater 불이익·낚시/물 구조는 유지한다. 기본 식재료·Campfire 간편식은 무buff,일반 Stew는영양,Higher Meal3종은일시준비선택이다. 아래는현재정본Data를읽은값이며음식의공용간격0은추가대기가없음을뜻한다(진행중공용간격은우회하지않음).
 
-|Item ID|Hunger|Thirst|즉시 HP|즉시 Stamina|
-|---|---:|---:|---:|---:|
-|clean_water_cup|0|38|0|0|
-|cooked_meat|35|0|0|0|
-|raw_meat|8|0|0|0|
-|raw_water_cup|0|15|0|0|
-|berry|8|3|0|0|
-|mushroom|5|0|0|0|
-|raw_fish|6|0|0|0|
-|roasted_mushroom|16|0|0|0|
-|cooked_fish|26|0|0|0|
-|mushroom_stew|35|10|0|0|
-|meat_stew|48|12|0|0|
-|fish_stew|46|15|0|0|
-|mixed_stew|65|18|8|0|
-|healing_salve|0|0|30|0|
-|bone_broth|24|12|18|0|
-|restorative_broth|22|10|0|35|
-|trail_ration|25|0|0|20|
+|ID|Hunger|Thirst|즉시HP|즉시Stamina|사용간격초|
+|---|---:|---:|---:|---:|---:|
+|berry|8|3|0|0|0|
+|bone_broth|24|12|18|0|4|
+|clean_water_cup|0|38|0|0|0|
+|cooked_fish|26|0|0|0|0|
+|cooked_meat|35|0|0|0|0|
+|field_dressing|0|0|0|0|4|
+|fish_stew|42|26|0|0|0|
+|forager_soup|30|18|0|0|4|
+|healing_salve|0|0|30|0|4|
+|hunters_stew|44|12|0|0|4|
+|meat_stew|52|10|0|0|0|
+|mixed_stew|65|18|8|0|4|
+|mushroom|5|0|0|0|0|
+|mushroom_stew|35|18|0|0|0|
+|raw_fish|6|0|0|0|0|
+|raw_meat|8|0|0|0|0|
+|raw_water_cup|0|15|0|0|0|
+|restorative_broth|22|10|0|35|4|
+|roasted_mushroom|16|0|0|0|0|
+|trail_broth|28|22|0|0|4|
+|trail_ration|25|0|0|20|4|
 
 Salve는 현장 Hand, Trail Ration은 Campfire7초, Bone/Restorative Broth는 Pot8초다. 기존 Stew의 Hunger 우위·Cooked Meat의 단순 비용을 유지하고 HP/Stamina 지원을 선택하게 한다. 전체 비용은 CONTENT_EXPANSION을 따른다.
 
@@ -34,4 +38,22 @@ Waterskin은 WB I Leather2+Fiber3, 한 item/3회분/stack1이다. 빈 상태 Pri
 
 ## Medicine2-A와 음식 경계
 
-Salve는 음식 분류와 구분되는 Medicine이다. 응급 붕대는 즉시0/총20HP를8초간 회복하며 Fiber2+Herb1, Salve는Gland1+Herb1+Fiber2로 즉시30HP다. 두 약품과 기존 회복 음식의 입력 제한은 공용4초다. 붕대 효과가 남으면 추가 붕대는 소비하지 않는다. 설명/아이콘과 작은 잔여 치료 표시를 제공한다. 음식 최대 즉시 회복은 Bone Broth18로 Salve보다 낮아 음식 수치를 변경하지 않았다. 음식 전체 확장은 다음2-B에서 판단한다.
+Salve는 음식 분류와 구분되는 Medicine이다. 응급 붕대는 즉시0/총20HP를8초간 회복하며 Fiber2+Herb1, Salve는Gland1+Herb1+Fiber2로 즉시30HP다. 두 약품과 기존 회복 음식의 입력 제한은 공용4초다. 붕대 효과가 남으면 추가 붕대는 소비하지 않는다. 설명/아이콘과 작은 잔여 치료 표시를 제공한다. 음식 최대 즉시 회복은 Bone Broth18로 Salve보다 낮아 음식 수치를 변경하지 않았다. 음식2-B의Meal은아래준비역할만추가한다.
+
+## Food2-B · Meal 선택
+
+|음식|Pot 재료/시간|H/T|150초 Meal 효과|
+|---|---|---|---|
+|사냥꾼 스튜|Meat2+Bone1+Mushroom1+Berry1 /10초|44/12|MaxHP+8·현재HP즉시회복없음|
+|채집꾼 수프|Herb1+Mushroom2+Berry1 /10초|30/18|기존안전회복+0.15HP/s|
+|원정 국물|Fish1+Herb1+Berry2 /10초|28/22|Stamina회복속도+10%|
+
+한Meal만활성·새Meal은교체·같은Meal도150초로reset(시간가산없음).일반음식/의약은Meal을교체하지않는다.세Meal은즉시HP/Stamina를주지않으며공용4초를적용한다.H/T가가득차도준비목적으로사용할수있다.자동재섭취없음.
+
+MushroomStew35/18은고기/낚시없는식물수분식,MeatStew52/10은허기우선,FishStew42/26은수분우선,Mixed65/18/HP8은두고기재료를쓰는범용영양식이다.각각Status를붙이지않는다.BoneBroth는즉시18HP,Restorative는즉시Stamina35,CampfireRation은휴대식H25/Stamina20으로유지한다.Salve30즉시와Dressing20/8초가위기치료를맡는다.
+
+Forager는H/T≥70%·마지막전투8초·RawWater회복차단을모두지킨다.기본0.5→0.65HP/s이며Dressing속도를올리지않는다.MP에서도기존함수를서버tick에연결했다(이전에는Survival.Update가꺼져호출이없었음).MPH/T자연소모구조는이번에바꾸지않았다.Trail은기본16→17.6Stamina/s이며기존회복대기1.2초·Dash24·Sprint14/s를유지한다.Skill/Armor와기존가산집계를쓴다.
+
+활성Meal은작은아이콘·이름·남은분:초로표시하고메뉴에서는숨긴다.Pot제작전영양·핵심효과·150초/교체규칙을보여주며Inventory에는상세조건·공용간격을표시한다.Load/reHost/죽음은Meal을초기화하고임시최대치를영구저장하지않는다. [조사·경제·검수](../validation/food-expansion/REVIEW.md).
+
+Host의RawWater회복차단·소모불이익타이머는기존Model.AdvanceEffects로진행한다.MPH/T자연소모를켜지않으며SP구간별소모계산순서는보존한다.식사때문에일시차단이영구차단으로남지않는다.

@@ -19,10 +19,12 @@ namespace Wildfolk
     {
         public int HP,MaximumHP;
         public double TreatmentUntil;
+        public short MealItem;
+        public double MealUntil;
         public short Head,Body,Held,Utility;
         public void NetworkSerialize<T>(BufferSerializer<T> serializer) where T:IReaderWriter
-        {serializer.SerializeValue(ref HP);serializer.SerializeValue(ref MaximumHP);serializer.SerializeValue(ref Head);serializer.SerializeValue(ref Body);serializer.SerializeValue(ref Held);serializer.SerializeValue(ref Utility);serializer.SerializeValue(ref TreatmentUntil);}
-        public bool Equals(PlayerStatusState other)=>HP==other.HP && MaximumHP==other.MaximumHP && Head==other.Head && Body==other.Body && Held==other.Held && Utility==other.Utility && TreatmentUntil==other.TreatmentUntil;
+        {serializer.SerializeValue(ref HP);serializer.SerializeValue(ref MaximumHP);serializer.SerializeValue(ref Head);serializer.SerializeValue(ref Body);serializer.SerializeValue(ref Held);serializer.SerializeValue(ref Utility);serializer.SerializeValue(ref TreatmentUntil);serializer.SerializeValue(ref MealItem);serializer.SerializeValue(ref MealUntil);}
+        public bool Equals(PlayerStatusState other)=>HP==other.HP && MaximumHP==other.MaximumHP && Head==other.Head && Body==other.Body && Held==other.Held && Utility==other.Utility && TreatmentUntil==other.TreatmentUntil && MealItem==other.MealItem && MealUntil==other.MealUntil;
     }
     public struct PlayerAttackState : INetworkSerializable,IEquatable<PlayerAttackState>
     {
