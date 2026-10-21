@@ -250,3 +250,18 @@ Meal3종/150초/동시1개/교체,공용4초다.Hunter MaxHP+8(HPheal0),Forager 
 |신호 호각|WBI Wood2+Fiber2→1|근처동료60unit,20s, cooldown30s|stack1, sender1개/team최대4, HUD최근1개|
 
 개인 두 도구 Wood4/Bronze2/Leather1/Fiber2,4인 각자 Wood16/Bronze8/Leather4/Fiber8. 팀 공유1세트는 개인1세트와 같다. reusable이므로 반복 원재료 소비0. Crystal/MechanicalPart/Steel 신규 경쟁0. 기존 WBI35/II24에 각1Recipe만 추가했다. [외부 조사·전체 utility 비용](../validation/exploration-utility-expansion/REVIEW.md).
+
+## Base / Defense / POI2-F 초기값
+
+|항목|현재 값|
+|---|---|
+|Bone Trap|32피해, 한 대상/한 번 후 파괴,40HP,Bone2+Wood3,WBI|
+|Spike Trap|16피해/1.2초 반복,100HP,Wood4+Stone2+Bronze1,WBII 유지|
+|Well|공유3회/480 game초당1회,한번 clean38Thirst; offline0|
+|Campsite|3개 seed 변형 중1개: Torch2+Meat1+Arrow4 / Torch3+Fish1+Dressing1 / Torch1+Ration1+CleanCup1|
+|Quarry 최대|기존 Stone2/Copper1/Coal1 node→Stone12/CopperOre6/Coal10,재생 없음|
+|Quarry 도구|Stone는 기존 Pickaxe,Coal는 Stone tier,Copper는 Iron tier 유지|
+|Graveyard|Skeleton1/HP32,cache Bone3+MedicinalHerb1+Dressing1,한번|
+|Guard home|추적 경계12/Player16,기존 steering 복귀,HP 회복/clear 없음|
+
+우물 지속38/480=.07917Thirst/초는 SP 감소.12의 약66%이며 단독으로 전체 갈증을 감당하지 못한다. 4인에서도 공유량은 같다. 기존 MP 자연 Hunger/Thirst 감소 OFF를 바꾸지 않았다. 음식은 cache당1개(25/26/35Hunger), 붕대는 해당 variant/묘지당1개(20HP/8초), Arrow4는 기본12발 batch의1/3이다. 새 POI 직접 Bronze/Iron/Leather/MechanicalPart 지급0,Diamond/Crystal/Steel0. GoblinCamp의 강한 보상과 WBIII Part 제작은 유지한다. 실제 이동 경로/장시간 경제와 재미는 사용자 QA다. [전체 경제·방어 inventory](../validation/base-defense-poi-expansion/REVIEW.md).

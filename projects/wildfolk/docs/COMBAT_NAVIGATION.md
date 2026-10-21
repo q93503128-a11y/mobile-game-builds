@@ -54,3 +54,9 @@ PlayerCombat은대상선택과impact재검증때nonalloc solid ray로자신/목�
 ## Exploration Utility2-E
 
 Compass는 소지 시 북쪽/Home/Exit/선택 Beacon 안내를 계속 담당한다. Surveyor를 선택하면 기존 nav HUD의 한 화살표/문구로 정지 조사·8방향 광물명·중단·대기 시간을 표시한다. exact resource 좌표/거리/강조는 없다. 조사 도구가 선택되지 않았을 때 최근의 유효한 동료 신호 하나가 잠시 기존 목적지 표시를 대신하고 만료 뒤 원래 안내로 돌아간다. Compass 없는 신호 수신도 가능하나 북쪽 dial은 Compass가 있어야 보인다. Whistle은 현재 위치만20초,반경60m/같은 surface·cave region,30초 간격이며 permanent Beacon을 대체하지 않는다. 공격·광물 지급·AI 유도 효과가 없다. 이동/피격/사망/modal/도구 교체가 survey를 취소한다. [2-E 계약·검수](../validation/exploration-utility-expansion/REVIEW.md).
+
+## POI / Defense2-F
+
+Bone Trap은 기존 비용Bone2+Wood3/WBI/40HP를 유지하면서 한 대상에게32피해를 주고 기존 Health 사망 경로로 소모된다. Spike Trap은100HP/16피해/1.2초 반복/WBII를 유지한다. 자원과 같은 팀은 발동·소모 대상에서 제외한다. 신규 방어물/포탑은 없고 wall100/220/360과 gate/모듈/완전 자동화는 유지한다. 수리와 일반 철거·재료 회수는 아직 없다.
+
+Graveyard는 기존 Skeleton1/HP32의 작은 고정 encounter다. 이 guard만 낮에도 행동하고 야간 잠복을 하지 않는다. Player가 home16 밖 또는 guard가12 밖이면 기존 EnemySteering으로 근처로 돌아가며 HP/보상 잠금을 초기화하지 않는다. home은 stable anchor에서 유도한다. 처치만 clear이고 유인/청크 이탈/낮 전환/재접속은 clear가 아니다. hardcap/막힌 후보에서는 잠김을 유지하며 중앙 active site tick에서 재시도한다. 기존 WorldNavigation의 지형/충돌/enclosure와 barrier 공격을 재사용하며 새 pathfinder/wave/boss가 없다.

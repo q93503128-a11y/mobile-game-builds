@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="6" result="Passed" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-21 11:49:10Z" end-time="2026-10-21 11:49:17Z" duration="6.5714897">
+  <test-suite type="TestSuite" id="1000" name="Wildfolk" fullname="Wildfolk" runstate="Runnable" testcasecount="191" result="Passed" start-time="2026-10-21 11:49:10Z" end-time="2026-10-21 11:49:17Z" duration="6.571490" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1242" name="Wildfolk.Tests.EditMode.dll" fullname="C:/Users/User/Documents/ChatGPT/문승준 모바일/canonical/projects/wildfolk/tests/artifacts/unity/Library/ScriptAssemblies/Wildfolk.Tests.EditMode.dll" runstate="Runnable" testcasecount="191" result="Passed" start-time="2026-10-21 11:49:10Z" end-time="2026-10-21 11:49:17Z" duration="6.548118" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="24276" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1243" name="Wildfolk" fullname="Wildfolk" runstate="Runnable" testcasecount="191" result="Passed" start-time="2026-10-21 11:49:10Z" end-time="2026-10-21 11:49:17Z" duration="6.544120" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1244" name="Tests" fullname="Wildfolk.Tests" runstate="Runnable" testcasecount="191" result="Passed" start-time="2026-10-21 11:49:10Z" end-time="2026-10-21 11:49:17Z" duration="6.541026" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1152" name="PoiContentModelTests" fullname="Wildfolk.Tests.PoiContentModelTests" classname="Wildfolk.Tests.PoiContentModelTests" runstate="Runnable" testcasecount="6" result="Passed" start-time="2026-10-21 11:49:10Z" end-time="2026-10-21 11:49:17Z" duration="6.533717" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1153" name="FourSitesUseExistingBoundedRewardsAndNoNewItemsRecipesOrGeneration" fullname="Wildfolk.Tests.PoiContentModelTests.FourSitesUseExistingBoundedRewardsAndNoNewItemsRecipesOrGeneration" methodname="FourSitesUseExistingBoundedRewardsAndNoNewItemsRecipesOrGeneration" classname="Wildfolk.Tests.PoiContentModelTests" runstate="Runnable" seed="1422632368" result="Passed" start-time="2026-10-21 11:49:10Z" end-time="2026-10-21 11:49:10Z" duration="0.062584" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1155" name="OptionalSave11StateRejectsFabricatedLootBadWaterAndDuplicateGuard" fullname="Wildfolk.Tests.PoiContentModelTests.OptionalSave11StateRejectsFabricatedLootBadWaterAndDuplicateGuard" methodname="OptionalSave11StateRejectsFabricatedLootBadWaterAndDuplicateGuard" classname="Wildfolk.Tests.PoiContentModelTests" runstate="Runnable" seed="492167277" result="Passed" start-time="2026-10-21 11:49:10Z" end-time="2026-10-21 11:49:13Z" duration="3.090755" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1158" name="Protocol18RoundTripsSiteIdentitySecurityRevisionAndSharedWater" fullname="Wildfolk.Tests.PoiContentModelTests.Protocol18RoundTripsSiteIdentitySecurityRevisionAndSharedWater" methodname="Protocol18RoundTripsSiteIdentitySecurityRevisionAndSharedWater" classname="Wildfolk.Tests.PoiContentModelTests" runstate="Runnable" seed="176596892" result="Passed" start-time="2026-10-21 11:49:13Z" end-time="2026-10-21 11:49:13Z" duration="0.010376" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1156" name="QuarryTombstonesAreSeparateFromNaturalRecoveryAndToolGatesRemain" fullname="Wildfolk.Tests.PoiContentModelTests.QuarryTombstonesAreSeparateFromNaturalRecoveryAndToolGatesRemain" methodname="QuarryTombstonesAreSeparateFromNaturalRecoveryAndToolGatesRemain" classname="Wildfolk.Tests.PoiContentModelTests" runstate="Runnable" seed="516846725" result="Passed" start-time="2026-10-21 11:49:13Z" end-time="2026-10-21 11:49:17Z" duration="3.300610" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1157" name="TrapsHaveDifferentReuseRolesWallsAndTurretsKeepTheirBudgets" fullname="Wildfolk.Tests.PoiContentModelTests.TrapsHaveDifferentReuseRolesWallsAndTurretsKeepTheirBudgets" methodname="TrapsHaveDifferentReuseRolesWallsAndTurretsKeepTheirBudgets" classname="Wildfolk.Tests.PoiContentModelTests" runstate="Runnable" seed="258772262" result="Passed" start-time="2026-10-21 11:49:17Z" end-time="2026-10-21 11:49:17Z" duration="0.034291" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1154" name="WellIsCappedLazyAndOnlyGameTimeRecoversOneServingPerDay" fullname="Wildfolk.Tests.PoiContentModelTests.WellIsCappedLazyAndOnlyGameTimeRecoversOneServingPerDay" methodname="WellIsCappedLazyAndOnlyGameTimeRecoversOneServingPerDay" classname="Wildfolk.Tests.PoiContentModelTests" runstate="Runnable" seed="1981327884" result="Passed" start-time="2026-10-21 11:49:17Z" end-time="2026-10-21 11:49:17Z" duration="0.006646" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[<b><color=#2EA3FF>MCP-FOR-UNITY</color></b>: [TestRunnerNoThrottle] Restored Interaction Mode after test run.
+Saving results to: C:/Users/User/AppData/LocalLow/DefaultCompany/Wildfolk\TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

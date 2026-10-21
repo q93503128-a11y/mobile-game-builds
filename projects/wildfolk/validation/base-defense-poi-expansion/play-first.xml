@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="5" result="Failed(Child)" total="5" passed="3" failed="2" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-21 11:12:19Z" end-time="2026-10-21 11:15:43Z" duration="203.7400001">
+  <test-suite type="TestSuite" id="1213" name="Wildfolk" fullname="Wildfolk" runstate="Runnable" testcasecount="169" result="Failed" site="Child" start-time="2026-10-21 11:12:19Z" end-time="2026-10-21 11:15:43Z" duration="203.740000" total="5" passed="3" failed="2" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <failure>
+      <message><![CDATA[One or more child tests had errors]]></message>
+    </failure>
+    <test-suite type="Assembly" id="1210" name="Wildfolk.Tests.PlayMode.dll" fullname="C:/Users/User/Documents/ChatGPT/문승준 모바일/canonical/projects/wildfolk/tests/artifacts/unity/Library/ScriptAssemblies/Wildfolk.Tests.PlayMode.dll" runstate="Runnable" testcasecount="169" result="Failed" site="Child" start-time="2026-10-21 11:12:19Z" end-time="2026-10-21 11:15:43Z" duration="203.704940" total="5" passed="3" failed="2" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="5608" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <failure>
+        <message><![CDATA[One or more child tests had errors]]></message>
+      </failure>
+      <test-suite type="TestSuite" id="1211" name="Wildfolk" fullname="Wildfolk" runstate="Runnable" testcasecount="169" result="Failed" site="Child" start-time="2026-10-21 11:12:19Z" end-time="2026-10-21 11:15:43Z" duration="203.700509" total="5" passed="3" failed="2" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <failure>
+          <message><![CDATA[One or more child tests had errors]]></message>
+        </failure>
+        <test-suite type="TestSuite" id="1212" name="Tests" fullname="Wildfolk.Tests" runstate="Runnable" testcasecount="169" result="Failed" site="Child" start-time="2026-10-21 11:12:19Z" end-time="2026-10-21 11:15:43Z" duration="203.695675" total="5" passed="3" failed="2" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <failure>
+            <message><![CDATA[One or more child tests had errors]]></message>
+          </failure>
+          <test-suite type="TestFixture" id="1017" name="ContentExpansionPlayTests" fullname="Wildfolk.Tests.ContentExpansionPlayTests" classname="Wildfolk.Tests.ContentExpansionPlayTests" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-10-21 11:12:19Z" end-time="2026-10-21 11:12:30Z" duration="10.369746" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1022" name="GatesCollideOpenAndTrapRespectsTeamAndCooldown" fullname="Wildfolk.Tests.ContentExpansionPlayTests.GatesCollideOpenAndTrapRespectsTeamAndCooldown" methodname="GatesCollideOpenAndTrapRespectsTeamAndCooldown" classname="Wildfolk.Tests.ContentExpansionPlayTests" runstate="Runnable" seed="164344508" result="Passed" start-time="2026-10-21 11:12:19Z" end-time="2026-10-21 11:12:30Z" duration="10.316966" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1041" name="EcologyPlayTests" fullname="Wildfolk.Tests.EcologyPlayTests" classname="Wildfolk.Tests.EcologyPlayTests" runstate="Runnable" testcasecount="12" result="Passed" start-time="2026-10-21 11:12:30Z" end-time="2026-10-21 11:12:48Z" duration="18.164476" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1045" name="DoorHingeEasesAndColliderMatchesPassageAndSave" fullname="Wildfolk.Tests.EcologyPlayTests.DoorHingeEasesAndColliderMatchesPassageAndSave" methodname="DoorHingeEasesAndColliderMatchesPassageAndSave" classname="Wildfolk.Tests.EcologyPlayTests" runstate="Runnable" seed="2108404552" result="Passed" start-time="2026-10-21 11:12:30Z" end-time="2026-10-21 11:12:39Z" duration="9.766091" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1052" name="V3LoadPreservesOldAnimalsEquipmentDoorAndWorld" fullname="Wildfolk.Tests.EcologyPlayTests.V3LoadPreservesOldAnimalsEquipmentDoorAndWorld" methodname="V3LoadPreservesOldAnimalsEquipmentDoorAndWorld" classname="Wildfolk.Tests.EcologyPlayTests" runstate="Runnable" seed="1495617590" result="Passed" start-time="2026-10-21 11:12:39Z" end-time="2026-10-21 11:12:48Z" duration="8.373900" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1138" name="PoiContentPlayTests" fullname="Wildfolk.Tests.PoiContentPlayTests" classname="Wildfolk.Tests.PoiContentPlayTests" runstate="Runnable" testcasecount="2" result="Failed" site="Child" start-time="2026-10-21 11:12:48Z" end-time="2026-10-21 11:15:43Z" duration="175.120456" total="2" passed="0" failed="2" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <failure>
+              <message><![CDATA[One or more child tests had errors]]></message>
+            </failure>
+            <test-case id="1139" name="AllEightPoiFiniteSuppliesWellQuarryGuardLegacySaveAndTrapRoles" fullname="Wildfolk.Tests.PoiContentPlayTests.AllEightPoiFiniteSuppliesWellQuarryGuardLegacySaveAndTrapRoles" methodname="AllEightPoiFiniteSuppliesWellQuarryGuardLegacySaveAndTrapRoles" classname="Wildfolk.Tests.PoiContentPlayTests" runstate="Runnable" seed="602359295" result="Failed" start-time="2026-10-21 11:12:48Z" end-time="2026-10-21 11:13:19Z" duration="31.531764" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[  See Captures/base-defense-poi-expansion/live.tsv
+  Expected string length 8 but was 6. Strings differ at index 0.
+  Expected: "complete"
+  But was:  "failed"
+  -----------^
+]]></message>
+                <stack-trace><![CDATA[at Wildfolk.Tests.PoiContentPlayTests+<Run>d__0.MoveNext () [0x000ba] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Tests\PlayMode\PoiContentPlayTests.cs:12
+at UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\Library\PackageCache\com.unity.test-framework@bd7f943e9647\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:44
+]]></stack-trace>
+              </failure>
+            </test-case>
+            <test-case id="1140" name="HostSharedRequestsFourSimulatedClaimantsGuardSleepAndTwoReHosts" fullname="Wildfolk.Tests.PoiContentPlayTests.HostSharedRequestsFourSimulatedClaimantsGuardSleepAndTwoReHosts" methodname="HostSharedRequestsFourSimulatedClaimantsGuardSleepAndTwoReHosts" classname="Wildfolk.Tests.PoiContentPlayTests" runstate="Runnable" seed="1067471353" result="Failed" label="Error" start-time="2026-10-21 11:13:19Z" end-time="2026-10-21 11:15:43Z" duration="143.583077" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[  See Captures/base-defense-poi-expansion/live.tsv
+  Expected string length 8 but was 6. Strings differ at index 0.
+  Expected: "complete"
+  But was:  "failed"
+  -----------^
+
+TearDown : System.IO.InvalidDataException : Invalid POI state]]></message>
+                <stack-trace><![CDATA[at Wildfolk.Tests.PoiContentPlayTests+<Run>d__0.MoveNext () [0x000ba] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Tests\PlayMode\PoiContentPlayTests.cs:12
+at UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\Library\PackageCache\com.unity.test-framework@bd7f943e9647\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:44
+
+--TearDown
+  at Wildfolk.PoiSaveValidation.Need (System.Boolean ok) [0x0000e] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Runtime\Persistence\PoiSaveValidation.cs:9
+  at Wildfolk.PoiSaveValidation.Validate (Wildfolk.SavedGame game, Wildfolk.WorldMap map, Wildfolk.WorldGenerationDefinition world) [0x00653] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Runtime\Persistence\PoiSaveValidation.cs:39
+  at Wildfolk.SaveValidation.ValidateStreamedResources (Wildfolk.SavedGame game, Wildfolk.WorldMap map, Wildfolk.WorldGenerationDefinition definition) [0x002ba] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Runtime\Persistence\SaveValidation.cs:72
+  at Wildfolk.SaveValidation.Validate (Wildfolk.SavedGame game, Wildfolk.ContentCatalog catalog, Wildfolk.WorldGenerationDefinition definition, Wildfolk.AnimalPopulationDefinition animals, System.Int32 playerCapacity, System.Int32 maximumHP, Wildfolk.SurvivalDefinition survival, Wildfolk.CharacterGrowthDefinition growth, Wildfolk.LocomotionDefinition locomotion) [0x000e0] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Runtime\Persistence\SaveValidation.cs:19
+  at Wildfolk.SaveGameRules.Validate (Wildfolk.SavedGame game) [0x001ee] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Runtime\Persistence\SaveGameRules.cs:30
+  at Wildfolk.NetworkWorldPersistence.Capture () [0x00156] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Runtime\Networking\NetworkWorldPersistence.cs:39
+  at Wildfolk.NetworkWorldPersistence.Save () [0x00018] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Runtime\Networking\NetworkWorldPersistence.cs:44
+  at Wildfolk.NetworkSession.TrySaveWorld () [0x00028] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Runtime\Networking\NetworkSession.cs:56
+  at Wildfolk.NetworkSession.Leave (System.Boolean returnHome, System.Boolean force) [0x00012] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Runtime\Networking\NetworkSession.cs:167
+  at Wildfolk.Tests.PoiContentPlayTests+<Close>d__3.MoveNext () [0x00040] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Tests\PlayMode\PoiContentPlayTests.cs:17
+  at UnityEngine.TestTools.EnumeratorHelper+<ProgressOnEnumerator>d__5.MoveNext () [0x00017] in .\Library\PackageCache\com.unity.test-framework@bd7f943e9647\UnityEngine.TestRunner\NUnitExtensions\Attributes\EnumeratorHelper.cs:35
+  at UnityEngine.TestTools.BeforeAfterTestCommandBase`1+<ExecuteEnumerable>d__16[T].MoveNext () [0x0043e] in .\Library\PackageCache\com.unity.test-framework@bd7f943e9647\UnityEngine.TestRunner\NUnitExtensions\Commands\BeforeAfterTestCommandBase.cs:248 ]]></stack-trace>
+              </failure>
+              <output><![CDATA[<b><color=#2EA3FF>MCP-FOR-UNITY</color></b>: [TestRunnerNoThrottle] Restored Interaction Mode after test run.
+Saving results to: C:/Users/User/AppData/LocalLow/DefaultCompany/Wildfolk\TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

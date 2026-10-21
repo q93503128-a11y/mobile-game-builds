@@ -1,0 +1,300 @@
+2026-10-21T11:12:55.4255319Z	idle	catalog=134 recipes=111 generation=3
+2026-10-21T11:12:55.4364930Z	idle	PASS generation3 QA world
+2026-10-21T11:12:55.4380306Z	all-eight-poi	begin
+2026-10-21T11:12:56.6448946Z	all-eight-poi	PASS actual active terrain Campsite
+2026-10-21T11:12:56.6494809Z	all-eight-poi	Campsite id=poi1:-1 position=(732.84, -479.56)
+2026-10-21T11:12:57.7986352Z	all-eight-poi	PASS actual active terrain Ruin
+2026-10-21T11:12:57.8008575Z	all-eight-poi	Ruin id=poi-1:-2 position=(-439.32, -1198.43)
+2026-10-21T11:12:58.8356841Z	all-eight-poi	PASS actual active terrain Well
+2026-10-21T11:12:58.8372106Z	all-eight-poi	Well id=poi1:0 position=(820.68, 61.57)
+2026-10-21T11:13:00.2554271Z	all-eight-poi	PASS actual active terrain Quarry
+2026-10-21T11:13:00.2590093Z	all-eight-poi	Quarry id=poi-1:0 position=(-489.95, 55.29)
+2026-10-21T11:13:01.5866340Z	all-eight-poi	PASS actual active terrain Graveyard
+2026-10-21T11:13:01.5881625Z	all-eight-poi	Graveyard id=poi1:2 position=(707.75, 1460.23)
+2026-10-21T11:13:02.9048181Z	all-eight-poi	PASS actual active terrain Mine
+2026-10-21T11:13:02.9095220Z	all-eight-poi	Mine id=poi-2:-1 position=(-1115.20, -509.89)
+2026-10-21T11:13:04.4947420Z	all-eight-poi	PASS actual active terrain GoblinCamp
+2026-10-21T11:13:04.4979794Z	all-eight-poi	GoblinCamp id=poi0:0 position=(77.57, 138.50)
+2026-10-21T11:13:06.1645734Z	all-eight-poi	PASS actual active terrain CaveEntrance
+2026-10-21T11:13:06.1666889Z	all-eight-poi	CaveEntrance id=cave0:1 position=(-537.28, 65.04)
+2026-10-21T11:13:06.1687166Z	campsite	begin
+2026-10-21T11:13:07.3736051Z	campsite	PASS new campsite bounded variant
+2026-10-21T11:13:07.5960279Z	campsite	PASS actual interact target Campsite
+2026-10-21T11:13:07.6298523Z	campsite	PASS actual interact action Campsite
+2026-10-21T11:13:07.7572830Z	campsite	PASS existing supplies modal
+2026-10-21T11:13:07.7685164Z	campsite	PASS full bag leaves campsite unchanged
+2026-10-21T11:13:07.7741526Z	campsite	PASS take actual campsite slot
+2026-10-21T11:13:07.7762025Z	campsite	PASS duplicate stale revision gives one reward
+2026-10-21T11:13:07.7856409Z	campsite	PASS feature capture does not alias mutable state
+2026-10-21T11:13:09.0994283Z	campsite	PASS campsite representation retired
+2026-10-21T11:13:09.5566277Z	campsite	PASS campsite exact finite state survives unload/reload
+2026-10-21T11:13:09.5596736Z	well	begin
+2026-10-21T11:13:10.6769009Z	well	PASS new shared well cap3
+2026-10-21T11:13:10.9169220Z	well	PASS actual interact target Well
+2026-10-21T11:13:10.9250446Z	well	PASS actual interact action Well
+2026-10-21T11:13:11.0501077Z	well	PASS selected waterskin clean single serving, natural-water shortcut bypassed
+2026-10-21T11:13:11.0526701Z	well	PASS well stale duplicate rejected
+2026-10-21T11:13:11.0567450Z	well	PASS well shared3 consumed, no full refill per charge
+2026-10-21T11:13:11.0598140Z	well	PASS empty well denied
+2026-10-21T11:13:11.8994832Z	well	PASS well representation retired
+2026-10-21T11:13:12.2822272Z	well	PASS well exact finite state survives unload/reload
+2026-10-21T11:13:12.2873562Z	well	PASS no early well recharge
+2026-10-21T11:13:12.3082235Z	well	PASS 480 game seconds gives one clean cup
+2026-10-21T11:13:12.3107650Z	well	PASS well full bag/no cup no lost charge
+2026-10-21T11:13:12.3132887Z	well	PASS raw partial container cannot transmute clean water
+2026-10-21T11:13:12.3148271Z	quarry	begin
+2026-10-21T11:13:14.1642661Z	quarry	PASS four physical quarry nodes
+2026-10-21T11:13:14.1724660Z	quarry	PASS quarry retains Copper Iron-tool gate
+2026-10-21T11:13:14.1975224Z	quarry	PASS actual quarry harvest
+2026-10-21T11:13:15.1173069Z	quarry	PASS full bag keeps quarry ground pickup
+2026-10-21T11:13:16.0215778Z	quarry	PASS actual pickup6 Copper
+2026-10-21T11:13:16.0257126Z	quarry	PASS POI depletion adds no natural source delta/recovery debt
+2026-10-21T11:13:16.0277296Z	quarry	PASS quarry tombstone
+2026-10-21T11:13:17.0349024Z	quarry	PASS quarry unload cannot replenish
+2026-10-21T11:13:17.0359434Z	graveyard	begin
+2026-10-21T11:13:17.8747085Z	graveyard	PASS graveyard locked before actual death
+2026-10-21T11:13:17.8767211Z	graveyard	PASS guarded feedback without objective modal
+2026-10-21T11:13:17.8828346Z	graveyard	PASS graveyard uses daytime encounter AI
+2026-10-21T11:13:18.5858144Z	graveyard	PASS daytime graveyard guard actually pursues player
+2026-10-21T11:13:19.1904674Z	graveyard	PASS surface guard persists dormant in daytime
+2026-10-21T11:13:19.6911219Z	graveyard	PASS luring/unloading never unlocks cache
+2026-10-21T11:13:19.6987787Z	graveyard	PASS day guard restored exact HP
+2026-10-21T11:13:19.7185451Z	graveyard	PASS one guard death unlocks exactly once
+2026-10-21T11:13:19.7448563Z	graveyard	FAIL actual interact target Graveyard
+2026-10-21T11:13:19.7567602Z	failed	System.InvalidOperationException: actual interact target Graveyard
+  at Wildfolk.Editor.PoiContentQa.Check (System.Boolean ok, System.String s) [0x00024] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Editor\PoiContentQa.cs:15
+  at Wildfolk.Editor.PoiContentQa+<Interact>d__23.MoveNext () [0x00076] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Editor\PoiContentQa.cs:25
+  at Wildfolk.Editor.PoiContentQa+<Guard>d__15.MoveNext () [0x0003c] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Editor\PoiContentQa.cs:17
+2026-10-21T11:13:25.9746715Z	host-shared-supplies	begin
+2026-10-21T11:13:26.2268865Z	host-shared-supplies	PASS LAN Host
+2026-10-21T11:13:26.2491686Z	host-shared-supplies	PASS enter Host scene
+2026-10-21T11:13:31.9934197Z	host-shared-supplies	PASS Host ready
+2026-10-21T11:13:33.3305627Z	host-shared-supplies	PASS POI source registered as real NGO object
+2026-10-21T11:13:33.4151566Z	host-shared-supplies	PASS actual interact target Campsite
+2026-10-21T11:13:33.4508417Z	host-shared-supplies	PASS actual interact action Campsite
+2026-10-21T11:13:33.6186902Z	host-shared-supplies	PASS Host transfer accepts current independent revisions
+2026-10-21T11:13:33.6207507Z	host-shared-supplies	PASS Host duplicate loot rejected
+2026-10-21T11:13:33.6217635Z	host-shared-supplies	PASS one finite shared reward
+2026-10-21T11:13:33.6242772Z	host-shared-supplies	PASS stale bag revision independently rejected
+2026-10-21T11:13:33.7964029Z	host-shared-supplies	PASS four simulated server participants racing one revision produce one winner, no x4 loot
+2026-10-21T11:13:33.8051115Z	host-well-mining-guard	begin
+2026-10-21T11:13:35.2253423Z	host-well-mining-guard	PASS actual interact target Well
+2026-10-21T11:13:35.2278526Z	host-well-mining-guard	PASS actual interact action Well
+2026-10-21T11:13:35.2956088Z	host-well-mining-guard	PASS Host actual interact fills one clean charge
+2026-10-21T11:13:36.8641026Z	host-well-mining-guard	PASS Host actual quarry resources
+2026-10-21T11:13:36.8774712Z	host-well-mining-guard	PASS Host network quarry harvest
+2026-10-21T11:13:38.4276750Z	host-well-mining-guard	PASS Host guarded cache locked
+2026-10-21T11:13:38.4380263Z	host-rehost	begin
+2026-10-21T11:14:14.3731609Z	host-rehost	PASS Host validates and writes Save11
+2026-10-21T11:15:18.9808995Z	host-rehost	PASS LAN Host
+2026-10-21T11:15:18.9844865Z	host-rehost	PASS enter Host scene
+2026-10-21T11:15:36.2097998Z	host-rehost	PASS Host ready
+2026-10-21T11:15:38.1307898Z	host-rehost	PASS daytime surface guard exact HP survives actual reHost
+2026-10-21T11:15:38.1353480Z	host-rehost	PASS reHost cannot unlock living guard
+2026-10-21T11:15:38.1383843Z	host-rehost	PASS reHost retains claimed campsite slot
+2026-10-21T11:15:38.1409021Z	host-rehost	PASS reHost retains spent water and due time
+2026-10-21T11:15:38.1420633Z	host-rehost	PASS reHost retains quarry tombstone
+2026-10-21T11:15:39.6106021Z	failed	System.InvalidOperationException: Sequence contains no matching element
+  at System.Linq.Enumerable.Single[TSource] (System.Collections.Generic.IEnumerable`1[T] source, System.Func`2[T,TResult] predicate) [0x00070] in <80564d689e48448fa2a7101993ee7201>:0
+  at Wildfolk.Editor.PoiContentQa+<HostFlow>d__32.MoveNext () [0x0082c] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Editor\PoiContentQa.cs:68
+  at Wildfolk.Editor.PoiContentQa+<Guard>d__15.MoveNext () [0x0003c] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Editor\PoiContentQa.cs:17
+2026-10-21T11:22:40.7108396Z	idle	catalog=134 recipes=111 generation=3
+2026-10-21T11:22:40.7312714Z	idle	PASS generation3 QA world
+2026-10-21T11:22:40.7328113Z	all-eight-poi	begin
+2026-10-21T11:22:42.0427056Z	all-eight-poi	PASS actual active terrain Campsite
+2026-10-21T11:22:42.0493642Z	all-eight-poi	Campsite id=poi1:-1 position=(732.84, -479.56)
+2026-10-21T11:22:43.1749010Z	all-eight-poi	PASS actual active terrain Ruin
+2026-10-21T11:22:43.1764204Z	all-eight-poi	Ruin id=poi-1:-2 position=(-439.32, -1198.43)
+2026-10-21T11:22:44.4447320Z	all-eight-poi	PASS actual active terrain Well
+2026-10-21T11:22:44.4467744Z	all-eight-poi	Well id=poi1:0 position=(820.68, 61.57)
+2026-10-21T11:22:45.7389450Z	all-eight-poi	PASS actual active terrain Quarry
+2026-10-21T11:22:45.7420066Z	all-eight-poi	Quarry id=poi-1:0 position=(-489.95, 55.29)
+2026-10-21T11:22:46.8960940Z	all-eight-poi	PASS actual active terrain Graveyard
+2026-10-21T11:22:46.8981071Z	all-eight-poi	Graveyard id=poi1:2 position=(707.75, 1460.23)
+2026-10-21T11:22:48.0461770Z	all-eight-poi	PASS actual active terrain Mine
+2026-10-21T11:22:48.0476847Z	all-eight-poi	Mine id=poi-2:-1 position=(-1115.20, -509.89)
+2026-10-21T11:22:49.1931680Z	all-eight-poi	PASS actual active terrain GoblinCamp
+2026-10-21T11:22:49.1941940Z	all-eight-poi	GoblinCamp id=poi0:0 position=(77.57, 138.50)
+2026-10-21T11:22:50.6589313Z	all-eight-poi	PASS actual active terrain CaveEntrance
+2026-10-21T11:22:50.6599959Z	all-eight-poi	CaveEntrance id=cave0:1 position=(-537.28, 65.04)
+2026-10-21T11:22:50.6625498Z	campsite	begin
+2026-10-21T11:22:51.9045556Z	campsite	PASS new campsite bounded variant
+2026-10-21T11:22:52.0660340Z	campsite	PASS actual interact target Campsite
+2026-10-21T11:22:52.0968335Z	campsite	PASS actual interact action Campsite
+2026-10-21T11:22:52.1577564Z	campsite	PASS existing supplies modal
+2026-10-21T11:22:52.1659122Z	campsite	PASS full bag leaves campsite unchanged
+2026-10-21T11:22:52.1736317Z	campsite	PASS take actual campsite slot
+2026-10-21T11:22:52.1756773Z	campsite	PASS duplicate stale revision gives one reward
+2026-10-21T11:22:52.1801605Z	campsite	PASS feature capture does not alias mutable state
+2026-10-21T11:22:53.4395562Z	campsite	PASS campsite representation retired
+2026-10-21T11:22:53.7234539Z	campsite	PASS campsite exact finite state survives unload/reload
+2026-10-21T11:22:53.7249500Z	well	begin
+2026-10-21T11:22:54.7950879Z	well	PASS new shared well cap3
+2026-10-21T11:22:55.0242449Z	well	PASS actual interact target Well
+2026-10-21T11:22:55.0283066Z	well	PASS actual interact action Well
+2026-10-21T11:22:55.1382366Z	well	PASS selected waterskin clean single serving, natural-water shortcut bypassed
+2026-10-21T11:22:55.1403868Z	well	PASS well stale duplicate rejected
+2026-10-21T11:22:55.1419177Z	well	PASS well shared3 consumed, no full refill per charge
+2026-10-21T11:22:55.1429182Z	well	PASS empty well denied
+2026-10-21T11:22:55.7275103Z	well	PASS well representation retired
+2026-10-21T11:22:56.0430866Z	well	PASS well exact finite state survives unload/reload
+2026-10-21T11:22:56.0467889Z	well	PASS no early well recharge
+2026-10-21T11:22:56.0498343Z	well	PASS 480 game seconds gives one clean cup
+2026-10-21T11:22:56.0550713Z	well	PASS well full bag/no cup no lost charge
+2026-10-21T11:22:56.0587440Z	well	PASS raw partial container cannot transmute clean water
+2026-10-21T11:22:56.0606033Z	quarry	begin
+2026-10-21T11:22:57.4002508Z	quarry	PASS four physical quarry nodes
+2026-10-21T11:22:57.4068143Z	quarry	PASS quarry retains Copper Iron-tool gate
+2026-10-21T11:22:57.4159805Z	quarry	PASS actual quarry harvest
+2026-10-21T11:22:58.3203424Z	quarry	PASS full bag keeps quarry ground pickup
+2026-10-21T11:22:59.2303224Z	quarry	PASS actual pickup6 Copper
+2026-10-21T11:22:59.2328847Z	quarry	PASS POI depletion adds no natural source delta/recovery debt
+2026-10-21T11:22:59.2369466Z	quarry	PASS quarry tombstone
+2026-10-21T11:23:00.1498832Z	quarry	PASS quarry unload cannot replenish
+2026-10-21T11:23:00.1524225Z	graveyard	begin
+2026-10-21T11:23:01.1898772Z	graveyard	PASS graveyard locked before actual death
+2026-10-21T11:23:01.1909336Z	graveyard	PASS guarded feedback without objective modal
+2026-10-21T11:23:01.1971680Z	graveyard	PASS graveyard uses daytime encounter AI
+2026-10-21T11:23:01.8991706Z	graveyard	PASS daytime graveyard guard actually pursues player
+2026-10-21T11:23:02.5746515Z	graveyard	PASS surface guard persists dormant in daytime
+2026-10-21T11:23:03.0304925Z	graveyard	PASS luring/unloading never unlocks cache
+2026-10-21T11:23:03.0350758Z	graveyard	PASS day guard restored exact HP
+2026-10-21T11:23:03.0426939Z	graveyard	PASS one guard death unlocks exactly once
+2026-10-21T11:23:03.0553809Z	graveyard	PASS actual interact target Graveyard
+2026-10-21T11:23:03.0645012Z	graveyard	PASS actual interact action Graveyard
+2026-10-21T11:23:03.0761368Z	graveyard	PASS guarded supplies full bag rollback
+2026-10-21T11:23:03.0776517Z	graveyard	PASS graveyard shared bone slot claimed once
+2026-10-21T11:23:03.3230030Z	graveyard	PASS graveyard representation retired
+2026-10-21T11:23:03.5212158Z	graveyard	PASS graveyard exact finite state survives unload/reload
+2026-10-21T11:23:03.5252927Z	save-load	begin
+2026-10-21T11:23:16.9811688Z	save-load	PASS isolated Save11
+2026-10-21T11:23:29.4412943Z	save-load	PASS saved POI exact remaining poi1:-1
+2026-10-21T11:23:29.4438598Z	save-load	PASS saved POI exact remaining poi1:0
+2026-10-21T11:23:29.4448529Z	save-load	PASS saved POI exact remaining poi-1:0
+2026-10-21T11:23:29.4463671Z	save-load	PASS saved POI exact remaining poi1:2
+2026-10-21T11:23:29.4478875Z	save-load	PASS Save11 generation3 unchanged
+2026-10-21T11:23:29.4514234Z	old-visited	begin
+2026-10-21T11:23:39.7002704Z	old-visited	PASS old visited conservative additive policy Campsite
+2026-10-21T11:23:40.6493752Z	old-visited	PASS old visited conservative additive policy Well
+2026-10-21T11:23:41.9155279Z	old-visited	PASS old visited conservative additive policy Quarry
+2026-10-21T11:23:42.7846009Z	old-visited	PASS old visited conservative additive policy Graveyard
+2026-10-21T11:23:52.5394673Z	old-visited	PASS legacy policy remains valid Save11
+2026-10-21T11:23:52.5430447Z	defense	begin
+2026-10-21T11:23:53.7119429Z	defense	PASS actual Bone Trap placement
+2026-10-21T11:23:53.8915189Z	defense	PASS trap friendly safety
+2026-10-21T11:23:54.5966774Z	defense	PASS Bone single target32 burst destroys trap
+2026-10-21T11:23:55.0700436Z	defense	PASS actual Spike placement
+2026-10-21T11:23:55.3557792Z	defense	PASS Spike first contact16 persistent
+2026-10-21T11:23:56.5650437Z	defense	PASS Spike repeated contact after1.2 seconds
+2026-10-21T11:24:06.3222862Z	defense	PASS trap state Save11
+2026-10-21T11:24:18.2138522Z	defense	PASS reusable Spike survives Save/Load
+2026-10-21T11:24:18.2164390Z	defense	PASS spent Bone stays destroyed on Load
+2026-10-21T11:24:18.2215342Z	defense-navigation	begin
+2026-10-21T11:24:21.8295060Z	defense-navigation	PASS actual enemy pursues player, closed gate blocks and takes structure damage
+2026-10-21T11:24:21.8335888Z	defense-navigation	PASS actual gate open action
+2026-10-21T11:24:22.2641692Z	defense-navigation	PASS gate opens collider after animation
+2026-10-21T11:24:22.2667085Z	defense-navigation	PASS gate choke becomes traversable
+2026-10-21T11:24:23.7560887Z	defense-navigation	PASS enemy traverses opened choke instead of staying on structure
+2026-10-21T11:24:23.7586422Z	defense-navigation	PASS baseline open spawn candidate
+2026-10-21T11:24:23.7633508Z	defense-navigation	PASS shared navigation rejects creature spawn enclosed by player barriers
+2026-10-21T11:24:23.7669355Z	complete	complete
+2026-10-21T11:24:28.5451533Z	host-shared-supplies	begin
+2026-10-21T11:24:28.9780436Z	host-shared-supplies	PASS LAN Host
+2026-10-21T11:24:29.0057625Z	host-shared-supplies	PASS enter Host scene
+2026-10-21T11:24:38.9937620Z	host-shared-supplies	PASS Host ready
+2026-10-21T11:24:40.8866317Z	host-shared-supplies	PASS POI source registered as real NGO object
+2026-10-21T11:24:40.9651843Z	host-shared-supplies	PASS actual interact target Campsite
+2026-10-21T11:24:40.9780491Z	host-shared-supplies	PASS actual interact action Campsite
+2026-10-21T11:24:41.0284022Z	host-shared-supplies	PASS Host transfer accepts current independent revisions
+2026-10-21T11:24:41.0304682Z	host-shared-supplies	PASS Host duplicate loot rejected
+2026-10-21T11:24:41.0335488Z	host-shared-supplies	PASS one finite shared reward
+2026-10-21T11:24:41.0345671Z	host-shared-supplies	PASS stale bag revision independently rejected
+2026-10-21T11:24:41.1263005Z	host-shared-supplies	PASS four simulated server participants racing one revision produce one winner, no x4 loot
+2026-10-21T11:24:41.1350699Z	host-well-mining-guard	begin
+2026-10-21T11:24:42.4216535Z	host-well-mining-guard	PASS actual interact target Well
+2026-10-21T11:24:42.4241967Z	host-well-mining-guard	PASS actual interact action Well
+2026-10-21T11:24:42.4697144Z	host-well-mining-guard	PASS Host actual interact fills one clean charge
+2026-10-21T11:24:44.0153643Z	host-well-mining-guard	PASS Host actual quarry resources
+2026-10-21T11:24:44.0288419Z	host-well-mining-guard	PASS Host network quarry harvest
+2026-10-21T11:24:45.3223425Z	host-well-mining-guard	PASS Host guarded cache locked
+2026-10-21T11:24:45.3300575Z	host-rehost	begin
+2026-10-21T11:25:15.5873321Z	host-rehost	PASS Host validates and writes Save11
+2026-10-21T11:26:13.6798889Z	host-rehost	PASS LAN Host
+2026-10-21T11:26:13.6834554Z	host-rehost	PASS enter Host scene
+2026-10-21T11:26:32.2142870Z	host-rehost	PASS Host ready
+2026-10-21T11:26:33.9523381Z	host-rehost	PASS daytime surface guard exact HP survives actual reHost
+2026-10-21T11:26:33.9564211Z	host-rehost	PASS reHost cannot unlock living guard
+2026-10-21T11:26:33.9589498Z	host-rehost	PASS reHost retains claimed campsite slot
+2026-10-21T11:26:33.9640606Z	host-rehost	PASS reHost retains spent water and due time
+2026-10-21T11:26:33.9660887Z	host-rehost	PASS reHost retains quarry tombstone
+2026-10-21T11:26:35.6306363Z	failed	System.InvalidOperationException: Sequence contains no matching element
+  at System.Linq.Enumerable.Single[TSource] (System.Collections.Generic.IEnumerable`1[T] source, System.Func`2[T,TResult] predicate) [0x00070] in <80564d689e48448fa2a7101993ee7201>:0
+  at Wildfolk.Editor.PoiContentQa+<HostFlow>d__34.MoveNext () [0x0082c] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Editor\PoiContentQa.cs:75
+  at Wildfolk.Editor.PoiContentQa+<Guard>d__15.MoveNext () [0x0003c] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Editor\PoiContentQa.cs:17
+2026-10-21T11:32:15.7064745Z	guard-boundary	begin
+2026-10-21T11:32:17.0240084Z	guard-boundary	PASS guard home derives from stable anchor
+2026-10-21T11:32:22.0392737Z	guard-boundary	PASS lured guard returns locally, keeps HP and cannot unlock supplies
+2026-10-21T11:32:22.8581486Z	guard-boundary	PASS daytime guard resumes local pursuit
+2026-10-21T11:32:22.8627145Z	complete	complete
+2026-10-21T11:32:26.7527354Z	host-shared-supplies	begin
+2026-10-21T11:32:26.7783345Z	host-shared-supplies	PASS LAN Host
+2026-10-21T11:32:26.7829507Z	host-shared-supplies	PASS enter Host scene
+2026-10-21T11:32:32.2730863Z	host-shared-supplies	PASS Host ready
+2026-10-21T11:32:33.5064120Z	host-shared-supplies	PASS POI source registered as real NGO object
+2026-10-21T11:32:33.6239055Z	host-shared-supplies	PASS actual interact target Campsite
+2026-10-21T11:32:33.6444151Z	host-shared-supplies	PASS actual interact action Campsite
+2026-10-21T11:32:33.6801362Z	host-shared-supplies	PASS Host transfer accepts current independent revisions
+2026-10-21T11:32:33.6816808Z	host-shared-supplies	PASS Host duplicate loot rejected
+2026-10-21T11:32:33.6827127Z	host-shared-supplies	PASS one finite shared reward
+2026-10-21T11:32:33.6837045Z	host-shared-supplies	PASS stale bag revision independently rejected
+2026-10-21T11:32:33.7457887Z	host-shared-supplies	PASS four simulated server participants racing one revision produce one winner, no x4 loot
+2026-10-21T11:32:33.7494886Z	host-well-mining-guard	begin
+2026-10-21T11:32:34.7561957Z	host-well-mining-guard	PASS actual interact target Well
+2026-10-21T11:32:34.7591956Z	host-well-mining-guard	PASS actual interact action Well
+2026-10-21T11:32:34.7827981Z	host-well-mining-guard	PASS Host actual interact fills one clean charge
+2026-10-21T11:32:35.9356408Z	host-well-mining-guard	PASS Host actual quarry resources
+2026-10-21T11:32:35.9531583Z	host-well-mining-guard	PASS Host network quarry harvest
+2026-10-21T11:32:37.1702087Z	host-well-mining-guard	PASS Host guarded cache locked
+2026-10-21T11:32:37.1809647Z	host-rehost	begin
+2026-10-21T11:33:03.1968044Z	host-rehost	PASS Host validates and writes Save11
+2026-10-21T11:33:49.9669652Z	host-rehost	PASS LAN Host
+2026-10-21T11:33:49.9694875Z	host-rehost	PASS enter Host scene
+2026-10-21T11:34:02.9490475Z	host-rehost	PASS Host ready
+2026-10-21T11:34:04.0320462Z	host-rehost	PASS daytime surface guard exact HP survives actual reHost
+2026-10-21T11:34:04.0335575Z	host-rehost	PASS reHost cannot unlock living guard
+2026-10-21T11:34:04.0350912Z	host-rehost	PASS reHost retains claimed campsite slot
+2026-10-21T11:34:04.0350912Z	host-rehost	PASS reHost retains spent water and due time
+2026-10-21T11:34:04.0366232Z	host-rehost	PASS reHost retains quarry tombstone
+2026-10-21T11:34:05.3232882Z	host-rehost	PASS guard death publishes shared security
+2026-10-21T11:34:05.3331036Z	host-rehost	PASS Host claims graveyard Bone
+2026-10-21T11:34:30.8834426Z	host-rehost	PASS Host validates and writes Save11
+2026-10-21T11:35:03.0453049Z	host-rehost	PASS LAN Host
+2026-10-21T11:35:03.0475204Z	host-rehost	PASS enter Host scene
+2026-10-21T11:35:14.5362053Z	host-rehost	PASS Host ready
+2026-10-21T11:35:15.6307253Z	host-rehost	PASS cleared graveyard/remaining loot persists, no guard respawn on reHost
+2026-10-21T11:35:15.6327500Z	complete	complete
+2026-10-21T11:39:55.9987690Z	coop-client-join	begin
+2026-10-21T11:39:56.3493590Z	coop-client-join	PASS Client LAN transport started
+2026-10-21T11:40:08.5170330Z	coop-client-join	PASS real Client owner spawned
+2026-10-21T11:40:09.4159288Z	coop-client-join	PASS Client replicated nearby Campsite
+2026-10-21T11:40:09.7223849Z	coop-client-join	PASS Client displays Host rolled supplies without local initialization
+2026-10-21T11:40:09.7346196Z	coop-client-join	PASS actual interact target Campsite
+2026-10-21T11:40:09.7761262Z	coop-client-join	PASS actual interact action Campsite
+2026-10-21T11:40:09.8664802Z	coop-client-join	PASS real Client existing supplies UI sends owner request
+2026-10-21T11:40:09.9568722Z	coop-client-join	PASS Client confirms inventory and shared slot replica
+2026-10-21T11:40:12.1163452Z	coop-client-join	PASS Client replicated nearby Well
+2026-10-21T11:40:13.1345920Z	coop-client-join	PASS actual interact target Well
+2026-10-21T11:40:13.1361060Z	coop-client-join	PASS actual interact action Well
+2026-10-21T11:40:13.1509850Z	coop-client-join	PASS Client queues duplicate stale well request
+2026-10-21T11:40:13.7492517Z	coop-client-join	PASS Client clean charge and finite shared water replica
+2026-10-21T11:40:15.6998632Z	coop-client-join	PASS Client replicated nearby Graveyard
+2026-10-21T11:40:16.0054672Z	coop-client-join	PASS Client sees guarded state
+2026-10-21T11:40:16.5298311Z	coop-client-join	PASS actual interact target Graveyard
+2026-10-21T11:40:16.5333498Z	coop-client-join	PASS actual interact action Graveyard
+2026-10-21T11:40:16.5436856Z	coop-client-join	PASS Client guarded feedback prevents opening
+2026-10-21T11:40:17.1459855Z	coop-client-join	PASS Host death updates Client security without local death roll
+2026-10-21T11:40:17.1575211Z	coop-client-join	PASS actual interact target Graveyard
+2026-10-21T11:40:17.1690750Z	coop-client-join	PASS actual interact action Graveyard
+2026-10-21T11:40:17.2239075Z	coop-client-join	PASS Client claims cleared graveyard from same supplies UI
+2026-10-21T11:40:17.2777771Z	coop-client-join	PASS Client confirms exactly Bone3
+2026-10-21T11:40:17.4722389Z	complete	complete

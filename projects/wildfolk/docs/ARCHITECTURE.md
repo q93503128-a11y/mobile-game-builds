@@ -1,6 +1,6 @@
 # 현재 코드 연결
 
-2026-10-20 현재: generation3 / Save11 / Protocol16, Item132 / Recipe109. v1~10 이관과 generation1/2 reader를 유지한다. 아래 날짜별 Foundation 절은 구조의 도입 기록이며 현재 데이터는 CONTENT_EXPANSION/CREATURES_AND_LOOT/SAVE_PERSISTENCE를 따른다.
+2026-10-21 현재: generation3 / Save11 / Protocol18, Item134 / Recipe111. v1~10 이관과 generation1/2 reader를 유지한다. 아래 날짜별 Foundation 절은 구조의 도입 기록이며 현재 데이터는 CONTENT_EXPANSION/CREATURES_AND_LOOT/SAVE_PERSISTENCE를 따른다.
 
 시설 실행은 ProcessingScheduler의 공용0.1초 tick에 등록된 busy Host/SP 작업만 진행한다. HitFeedback는 피격 이벤트 동안 coroutine으로 동작한다. LootTable.Roll/ProcessingQueue.Costs/CavernNetwork의 exitNext가 중복 계산을 공유한다. UI는 visibility 변경에만 강제 layout, 처리 명칭은 recipe/language cache, LocalFirelight geometry는 definition 변경에만 설정한다. Save/Protocol 필드와 inactive logical advance는 유지한다.
 Runtime/InputSystem/UGUI,Editor,EditMode/PlayMode Tests를 분리한다. 실제 수치는Data ScriptableObject가 정본이고 Editor는 없는 초기 데이터를 생성하며 기존 수치를 보존한다. 씬은 프리팹 연결과 월드Bootstrap을 저장하고 수동 테스트 월드 배치 코드는 제거했다.
@@ -227,3 +227,9 @@ Protocol16의ActivityState.CatchIndex/CatchCount는서버가결정한catch정체
 ItemDefinition.ExplorationUtility→ExplorationUtilityDefinition(Survey/Signal)과 PlayerExplorationUtility가 기존 PlayerPrimaryAction/owner Primary sequence를 재사용한다. Server만 수락·channel·cooldown·자원 query·신호 위치/만료를 결정한다. 새 NetworkExplorationUtility는 owner SurveyState(phase/item index/8sector/시각), shared ExplorationSignal(명시적 위치/시각/범위), owner SignalReady를 복제한다. Client는 resource query를 하지 않는다. 추가 RPC 입력 경로는 없다. NetworkAttackInput의 hold repeat에서 두 utility를 제외한다.
 
 query는 channel 완료 때만 fixed128 OverlapCircle, terrain .5unit segment와 fixed32 barrier ray로 제한한다. 현재 active ResourceIdentity/Owner/살아 있는 Mineral·보유 도구 gate를 확인하며 saturation은 Crowded다. 전체 resource registry 순회/매frame scan/FindObjectsOfType/GenerateChunk/RequestScoutPresentation 호출이 없다. 장면 WorldGenerator 참조는 첫 접근 후 cache. peer 표시 조회는 NetworkPlayer.Active 최대4만 .15초 HUD tick에서 확인한다. 기존 north/한 arrow/text를 재사용한다.
+
+## POI2-F 현재 연결
+
+WorldGenerationDefinition.PoiContent→기존 anchor→WorldChunkRuntime.WorldChunkPoi→feature Site 논리 상태와 active PoiSite를 분리한다. Well은 지연 계산, Quarry는 기존 ResourceNode/ResourceIdentity를 사용하되 poi: ID를 embedded Nodes로 기록한다. 전체 POI의 frame scan/새 perPOI Update가 없다. 기존 중앙 청크 scheduler만 active guard 초기화를 재시도한다.
+
+IWorldSupplies를 GoblinCamp/PoiSite가 구현하고 기존 CampLootPanel을 재사용한다. PlayerInteraction이 NetworkPoiSite를 시설 대상으로 허용하며 Well에서는 선택 물통의 자연 raw fill보다 우물 상호작용을 우선한다. NetworkFacilityInteractor의 owner request는 Client에서 전송 가능하고 서버 Execute에서만 Bag.CanOperate를 검사한다. NetworkPoiSite는 Host 초기화/잔량/보안 상태를 복제하고 Client는 roll/채광 생성/guard clear를 하지 않는다. 새 representation/RPC로 Protocol18,Save11/generation3,Item134/Recipe111이다.

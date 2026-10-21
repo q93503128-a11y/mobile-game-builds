@@ -177,3 +177,9 @@ None은 Hand, Workbench tier는 요구 최소값이다. 상위 Workbench는 하�
 ## Exploration Utility2-E
 
 신규2Item/2Recipe, raw0/station0. 광물 조사기 `ore_surveyor`: WBII Wood2+Bronze2+Leather1→1. 신호 호각 `signal_whistle`: WBI Wood2+PlantFiber2→1. 두 도구는 stack1/reusable/손 선택이며 전투 ToolDefinition이 없다. Survey는 자원 수색, Whistle은 일시 협동 위치 신호다. 기존 utility 변경0, POI 보상 변경0. 총134/111, WBI36/II25/III11(누적36/61/72), Hand10/Fire7/Pot9/Furnace4/Blast1/Turret8. [역할 감사와 경제](../validation/exploration-utility-expansion/REVIEW.md).
+
+## Content Expansion2-F · Base / Defense / POI
+
+Item134/Recipe111 유지, 신규 Item/Recipe/Defense Item/Turret0. 기존 Campsite/Well/Quarry/Graveyard를 보급/제한 clean 수원/현지 채광/작은 undead 확보로 구분했다. Ruin/Mine는 이번 보류, GoblinCamp와 CaveEntrance의 기존 역할·보상은 유지한다. Bone Trap은32피해 한 대상1회, Spike는16/1.2초 반복이다. Save11/generation3 유지,Protocol18.
+
+Content Expansion2는 이 패스로 마감한다. 다음 큰 작업은 Skill Point / Class / Job의 **기획**이고, 이후 Undead King / Reusable Boss Foundation이다. 이번에 해당 시스템을 구현하지 않았다. [사전 외부 비교·채택/배제·검증](../validation/base-defense-poi-expansion/REVIEW.md).

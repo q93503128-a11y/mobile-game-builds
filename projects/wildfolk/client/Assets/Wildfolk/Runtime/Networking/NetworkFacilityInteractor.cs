@@ -16,7 +16,15 @@ namespace Wildfolk
         private NetworkFacility waiting,opened;
         private bool acknowledged;private RecipeDefinition pendingRecipe;
         private uint dragBag,dragFacility;
-        private ulong campSequence,lastCampRequest;
+        private ulong campSequence,lastCampRequest,poiSequence,lastPoiRequest;
+        public bool PoiInteract(PoiSite site,int slot,uint revision)
+        {if(!IsSpawned || !IsOwner || site==null || !Bag.Player.Health.IsAlive || Bag.Pending)return false;var target=site.GetComponent<NetworkPoiSite>();if(target==null || !target.IsSpawned)return false;if(IsServer)return ExecutePoi(target.NetworkObjectId,slot,revision,Bag.Revision.Value);PoiRpc(++poiSequence,target.NetworkObjectId,slot,revision,Bag.Revision.Value);return true;}
+        [Rpc(SendTo.Server,InvokePermission=RpcInvokePermission.Owner)]
+        private void PoiRpc(ulong sequence,ulong target,int slot,uint revision,uint bagRevision,RpcParams rpc=default)
+        {if(rpc.Receive.SenderClientId!=OwnerClientId || sequence<=lastPoiRequest)return;lastPoiRequest=sequence;if(!ExecutePoi(target,slot,revision,bagRevision))PoiDeniedRpc();}
+        public bool ExecutePoi(ulong target,int slot,uint revision,uint bagRevision)
+        {if(!IsServer || !Bag.CanOperate || Bag.Player.Commands.IsScouting || Bag.Revision.Value!=bagRevision || !NetworkManager.SpawnManager.SpawnedObjects.TryGetValue(target,out var obj) || obj.GetComponent<NetworkPoiSite>()==null)return false;var site=obj.GetComponent<PoiSite>();return site!=null && (slot== -2 ? site.Fill(GetComponent<PlayerInventory>(),revision) : site.Take(GetComponent<PlayerInventory>(),slot,revision));}
+        [Rpc(SendTo.Owner,InvokePermission=RpcInvokePermission.Server)]private void PoiDeniedRpc()=>PlayerFeedback.ShowKey("ui.poi.unavailable");
         public bool CampLoot(GoblinCamp camp,int slot,uint revision)
         {if(!IsSpawned || !IsOwner || camp==null || !Bag.Player.Health.IsAlive || Bag.Pending)return false;var target=camp.GetComponent<NetworkCamp>();if(target==null || !target.IsSpawned)return false;if(IsServer)return ExecuteCampLoot(target.NetworkObjectId,slot,revision,Bag.Revision.Value);CampLootRpc(++campSequence,target.NetworkObjectId,slot,revision,Bag.Revision.Value);return true;}
         [Rpc(SendTo.Server,InvokePermission=RpcInvokePermission.Owner)]

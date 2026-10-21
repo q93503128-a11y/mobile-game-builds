@@ -59,7 +59,7 @@ namespace Wildfolk.Editor
         {
             var i=Item("BoneTrap","bone_trap",ItemCategory.Placeable,10);var source=I("spike_trap").Placement;
             var place=Make<PlaceableDefinition>("BoneTrapPlacement",d=>{d.Item=i;d.MaximumDistance=source.MaximumDistance;d.Footprint=source.Footprint;d.Vitality=Make<VitalityDefinition>("BoneTrapVitality",v=>v.MaximumHealth=40);});i.Placement=place;EditorUtility.SetDirty(i);
-            var path="Assets/Wildfolk/Prefabs/BoneTrap.prefab";var root=UnityEngine.Object.Instantiate(source.Prefab.gameObject);root.name="BoneTrap";var p=root.GetComponent<WorldPlaceable>();p.Definition=place;p.Health.Definition=place.Vitality;p.Visual.sprite=i.Icon;root.GetComponent<SpikeTrap>().Damage=10;place.Prefab=PrefabUtility.SaveAsPrefabAsset(root,path).GetComponent<WorldPlaceable>();UnityEngine.Object.DestroyImmediate(root);EditorUtility.SetDirty(place);sources.Add(place.Prefab.gameObject);
+            var path="Assets/Wildfolk/Prefabs/BoneTrap.prefab";var root=UnityEngine.Object.Instantiate(source.Prefab.gameObject);root.name="BoneTrap";var p=root.GetComponent<WorldPlaceable>();p.Definition=place;p.Health.Definition=place.Vitality;p.Visual.sprite=i.Icon;root.GetComponent<SpikeTrap>().Damage=32;root.GetComponent<SpikeTrap>().SingleUse=true;place.Prefab=PrefabUtility.SaveAsPrefabAsset(root,path).GetComponent<WorldPlaceable>();UnityEngine.Object.DestroyImmediate(root);EditorUtility.SetDirty(place);sources.Add(place.Prefab.gameObject);
             Recipe("BoneTrap","bone_trap",1,1,StationKind.Workbench,RecipeCategory.Building,0,Cost("bone",2),Cost("wood",3));
         }
         private static void NewSpecies()

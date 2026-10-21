@@ -24,7 +24,7 @@ namespace Wildfolk
             {
                 var candidate=candidates[i].GetComponentInParent<IPlayerInteractable>();
                 if(candidate==null || !candidate.CanInteract(this))continue;
-                if(GetComponent<NetworkPlayer>()!=null && candidate.Location.GetComponent<NetworkBuilding>()==null && candidate.Location.GetComponentInParent<NetworkCamp>()==null)continue;
+                if(GetComponent<NetworkPlayer>()!=null && candidate.Location.GetComponent<NetworkBuilding>()==null && candidate.Location.GetComponentInParent<NetworkCamp>()==null && candidate.Location.GetComponentInParent<NetworkPoiSite>()==null)continue;
                 var delta=(Vector2)candidate.Location.position-(Vector2)transform.position;
                 if(delta.sqrMagnitude>.001f && Vector2.Dot(Facing.Direction,delta.normalized)<.35f)continue;
                 if(delta.sqrMagnitude>=nearest)continue;nearest=delta.sqrMagnitude;target=candidate;
@@ -32,7 +32,7 @@ namespace Wildfolk
             if(target==Target)return;Target=target;Changed?.Invoke();
         }
         public bool CanEquipSelected=>Equipment.SelectedItem!=null && (Equipment.SelectedItem.Armor!=null || Equipment.SelectedItem.EquippedLight!=null);
-        public bool TryInteract() {if(!Session.IsRunning || GetComponent<PlayerInputCommands>().IsScouting)return false;if(Equipment.SelectedItem!=null && Equipment.SelectedItem.WaterCapacity>0){var net=GetComponent<NetworkContainer>();return net==null ? GetComponent<PlayerWaterskin>().Fill() : net.Fill();}if(CanEquipSelected)return Equipment.TryEquipSelectedArmor();Refresh();return Target!=null && Target.Use(this);}
+        public bool TryInteract() {if(!Session.IsRunning || GetComponent<PlayerInputCommands>().IsScouting)return false;Refresh();if(Target is PoiSite site && site.Kind==WorldAnchorKind.Well)return site.Use(this);if(Equipment.SelectedItem!=null && Equipment.SelectedItem.WaterCapacity>0){var net=GetComponent<NetworkContainer>();return net==null ? GetComponent<PlayerWaterskin>().Fill() : net.Fill();}if(CanEquipSelected)return Equipment.TryEquipSelectedArmor();Refresh();return Target!=null && Target.Use(this);}
         public void Use() => TryInteract();
     }
 }

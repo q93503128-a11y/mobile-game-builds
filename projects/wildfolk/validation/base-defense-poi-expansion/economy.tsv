@@ -1,0 +1,8 @@
+site	pattern	maximum_per_site	food_or_health	metal_or_material	sharing
+Campsite A	finite supplies	Torch2 CookedMeat1 Arrow4	Hunger35	0 metal/Leather/Bone/Part	one shared container
+Campsite B	finite supplies	Torch3 CookedFish1 FieldDressing1	Hunger26 +20HP over8sec	0 metal/Leather/Bone/Part	one shared container
+Campsite C	finite supplies	Torch1 TrailRation1 CleanWaterCup1	Hunger25 Stamina20 Thirst38	0 metal/Leather/Bone/Part	one shared container
+Well	reusable utility	3 clean servings initially;1 per480 game seconds	Thirst38 per serving	EmptyCup exchanged or skin+1 clean charge	shared cap3 including4P
+Quarry	finite physical mining	Stone2 Copper1 Coal1 existing nodes	0	Stone12 CopperOre6 Coal10 maximum;no natural recovery	one shared set of nodes
+Graveyard	finite guard and supplies	Skeleton1 +Bone3 MedicinalHerb1 FieldDressing1	+20HP over8sec	Bone4..5 including skeleton1..2	one shared container;normal XP/Gold rules
+GoblinCamp	unchanged resident-clear supplies	BoneArrow8..16 Salve1..2 Bronze1..2 Leather1..2 Part1 at20percent BarbedBolt8 at35percent	Salve30HP each	existing stronger combat reward	existing shared6slots

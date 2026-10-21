@@ -1,0 +1,72 @@
+{
+  "started_utc": "2026-10-21T10:30:13Z",
+  "stages": [
+    {
+      "stage": "remote fetch, canonical audit, external research and preimplementation review",
+      "start_utc": "2026-10-21T10:30:13Z",
+      "end_utc": "2026-10-21T10:46:21Z",
+      "seconds": 968.0,
+      "end_source": "REVIEW.md creation UTC"
+    },
+    {
+      "stage": "preimplementation review gate to first source write",
+      "start_utc": "2026-10-21T10:46:21Z",
+      "end_utc": "2026-10-21T10:49:03Z",
+      "seconds": 162,
+      "source": "filesystem creation milestones; no detailed operation attribution"
+    },
+    {
+      "stage": "canonical implementation and related fixtures",
+      "start_utc": "2026-10-21T10:49:03Z",
+      "end_utc": "2026-10-21T11:03:09Z",
+      "seconds": 846.0,
+      "start_source": "first new runtime source creation UTC",
+      "end_source": "first live QA compilation state observation"
+    },
+    {
+      "stage": "related QA, corrections and documentation including overlapping headless runs",
+      "start_utc": "2026-10-21T11:03:09Z",
+      "end_utc": "2026-10-21T11:48:25Z",
+      "seconds": 2716
+    },
+    {
+      "stage": "final evidence, diff review and publication preparation",
+      "start_utc": "2026-10-21T11:48:25Z",
+      "end_utc": "2026-10-21T11:56:48.122576+00:00",
+      "seconds": 503.122576
+    }
+  ],
+  "usage_snapshots": [
+    {
+      "at_utc": "2026-10-21T10:33:00Z",
+      "five_hour_used_percent": 3,
+      "weekly_used_percent": 44,
+      "timestamp_precision": "approximate initial observation"
+    },
+    {
+      "at_utc": "2026-10-21T10:58:00Z",
+      "five_hour_used_percent": 26,
+      "weekly_used_percent": 48,
+      "timestamp_precision": "tool-call interval"
+    },
+    {
+      "at_utc": "2026-10-21T11:18:40Z",
+      "five_hour_used_percent": 41,
+      "weekly_used_percent": 50,
+      "timestamp_precision": "tool-call interval"
+    },
+    {
+      "at_utc": "2026-10-21T11:48:25Z",
+      "five_hour_used_percent": 59,
+      "weekly_used_percent": 53,
+      "timestamp_precision": "tool-call interval"
+    }
+  ],
+  "usage_note": "Account-wide rounded usage snapshots, shared with other chats; percentage point differences are not exact task/model tokens or cost. Source/edit/test calls cannot be individually attributed by this API. Timings of headless runs overlap live QA and are not added to wall-clock stages.",
+  "measured_prepublication_seconds": 5195.122576,
+  "notes": [
+    "First clock was recorded after the initial remote fetch; fetch duration before that was not measured.",
+    "Milestone stages do not overlap. Test-process intervals overlap stages and are not summed again.",
+    "Commit/push timing and final SHA are reported after publication; this file ends before commit."
+  ]
+}

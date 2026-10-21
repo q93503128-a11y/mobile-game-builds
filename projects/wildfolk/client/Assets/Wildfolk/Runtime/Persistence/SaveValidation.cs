@@ -69,6 +69,7 @@ namespace Wildfolk
                 var chunk=WorldChunk.At(s.Position,definition.ChunkSize);if(!chunks.TryGetValue(chunk,out var sources))chunks[chunk]=sources=map.Continental.GenerateChunk(chunk);var valid=false;foreach(var source in sources)if(source.Id==s.Id && source.Rule==s.Rule && Vector2.Distance(source.Position,s.Position)<.01f){valid=true;break;}Require(valid,"Source no longer matches its generation version");
             }
             var features=new HashSet<string>();foreach(var f in game.Features??Array.Empty<WorldFeatureSnapshot>())Require(f!=null && !string.IsNullOrEmpty(f.Id) && f.Id.Length<80 && features.Add(f.Id),"Invalid feature state");
+            PoiSaveValidation.Validate(game,map,definition);
         }
         public static void ValidatePlayer(PlayerSnapshot player,WorldMap map,ContentCatalog catalog,int playerCapacity,int maximumHP,SurvivalDefinition survival,CharacterGrowthDefinition growth,LocomotionDefinition locomotion,bool allowDead=false)
         {

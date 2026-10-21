@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="1" result="Passed" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-21 11:39:50Z" end-time="2026-10-21 11:40:17Z" duration="26.8264556">
+  <test-suite type="TestSuite" id="1215" name="Wildfolk" fullname="Wildfolk" runstate="Runnable" testcasecount="171" result="Passed" start-time="2026-10-21 11:39:50Z" end-time="2026-10-21 11:40:17Z" duration="26.826456" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <test-suite type="Assembly" id="1212" name="Wildfolk.Tests.PlayMode.dll" fullname="C:/Users/User/Documents/ChatGPT/문승준 모바일/canonical/projects/wildfolk/tests/artifacts/unity/Library/ScriptAssemblies/Wildfolk.Tests.PlayMode.dll" runstate="Runnable" testcasecount="171" result="Passed" start-time="2026-10-21 11:39:50Z" end-time="2026-10-21 11:40:17Z" duration="26.797844" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="7464" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <test-suite type="TestSuite" id="1213" name="Wildfolk" fullname="Wildfolk" runstate="Runnable" testcasecount="171" result="Passed" start-time="2026-10-21 11:39:50Z" end-time="2026-10-21 11:40:17Z" duration="26.792437" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1214" name="Tests" fullname="Wildfolk.Tests" runstate="Runnable" testcasecount="171" result="Passed" start-time="2026-10-21 11:39:50Z" end-time="2026-10-21 11:40:17Z" duration="26.788386" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1138" name="PoiContentPlayTests" fullname="Wildfolk.Tests.PoiContentPlayTests" classname="Wildfolk.Tests.PoiContentPlayTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-10-21 11:39:50Z" end-time="2026-10-21 11:40:17Z" duration="26.771690" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1141" name="RealClientSuppliesWellAndGuardedClear" fullname="Wildfolk.Tests.PoiContentPlayTests.RealClientSuppliesWellAndGuardedClear" methodname="RealClientSuppliesWellAndGuardedClear" classname="Wildfolk.Tests.PoiContentPlayTests" runstate="Explicit" seed="1675739406" result="Passed" start-time="2026-10-21 11:39:50Z" end-time="2026-10-21 11:40:17Z" duration="26.712263" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="_SKIPREASON" value="Requires an actual separate isolated LAN Host running BeginCoopHost" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[<b><color=#2EA3FF>MCP-FOR-UNITY</color></b>: [TestRunnerNoThrottle] Restored Interaction Mode after test run.
+Saving results to: C:/Users/User/AppData/LocalLow/DefaultCompany/Wildfolk\TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

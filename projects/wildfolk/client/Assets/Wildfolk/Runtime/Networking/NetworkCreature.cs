@@ -29,7 +29,7 @@ namespace Wildfolk
             wildlife=GetComponent<WildlifeActionBrain>();Health.IsReplica=true;SetSimulation(false);
         }
         private void SetSimulation(bool enabled)
-        {if(animal!=null)animal.enabled=enabled;if(enemy!=null)enemy.enabled=enabled;if(goblin!=null)goblin.enabled=enabled;if(lifecycle!=null)lifecycle.enabled=enabled;if(ranged!=null)ranged.enabled=enabled;if(wildlife!=null)wildlife.enabled=enabled;}
+        {if(animal!=null)animal.enabled=enabled;if(enemy!=null)enemy.enabled=enabled;if(goblin!=null)goblin.enabled=enabled;if(lifecycle!=null)lifecycle.enabled=enabled && (enemy==null || !enemy.PersistentGuard);if(ranged!=null)ranged.enabled=enabled;if(wildlife!=null)wildlife.enabled=enabled;}
         public override void OnNetworkSpawn()
         {
             Health.IsReplica=!IsServer;SetSimulation(IsServer);

@@ -22,7 +22,7 @@ namespace Wildfolk
         public bool Wants(Vector2 p)=>wanted.Contains(WorldChunk.At(p,World.Definition.ChunkSize));
         public void Initialize(WorldGenerator world)
         {
-            ClearPresentation();World=world;foreach(var root in active.Values)if(root!=null)Destroy(root);active.Clear();wanted.Clear();pending.Clear();sleepingPlaces.Clear();sleepingPickups.Clear();features.Clear();nextTick=0;enabled=true;
+            ClearPoiSites();ClearPresentation();World=world;foreach(var root in active.Values)if(root!=null)Destroy(root);active.Clear();wanted.Clear();pending.Clear();sleepingPlaces.Clear();sleepingPickups.Clear();features.Clear();nextTick=0;enabled=true;
         }
         private void Update()
         {
@@ -40,7 +40,7 @@ namespace Wildfolk
             ChunkActivation.Build(World.Map,centers,active.Keys,wanted);
             retiring.Clear();foreach(var pair in active)if(!wanted.Contains(pair.Key))retiring.Add(pair.Key);foreach(var key in retiring)Deactivate(key);
             pending.Clear();queued.Clear();foreach(var center in centers){var key=WorldChunk.At(center,World.Definition.ChunkSize);if(wanted.Contains(key) && !active.ContainsKey(key) && queued.Add(key))pending.Enqueue(key);}foreach(var key in wanted)if(!active.ContainsKey(key) && queued.Add(key))pending.Enqueue(key);
-            if(authority){CullDistantObjects();World.Animals.StreamReconcile(this);World.GetComponent<GoblinSpawner>().StreamReconcile(this);World.GetComponent<ZombieSpawner>().StreamReconcile(this);if(NetworkCreatureWorld.Active!=null)WorldChunkInterest.Refresh(NetworkCreatureWorld.Active);}
+            if(authority){CullDistantObjects();ReconcilePoi();World.Animals.StreamReconcile(this);World.GetComponent<GoblinSpawner>().StreamReconcile(this);World.GetComponent<ZombieSpawner>().StreamReconcile(this);if(NetworkCreatureWorld.Active!=null)WorldChunkInterest.Refresh(NetworkCreatureWorld.Active);}
         }
         public void DrainPending(){var count=pending.Count;for(var i=0;i<count;i++){var key=pending.Dequeue();if(wanted.Contains(key) && !active.ContainsKey(key))Activate(key);}World.Terrain.ProcessTerrainWork(double.PositiveInfinity);}
         private void Activate(WorldChunk key)
@@ -51,14 +51,14 @@ namespace Wildfolk
             {
                 var resources=World.Map.Continental.GenerateChunk(key);World.Renewal.PrepareChunk(key,resources);foreach(var p in resources)World.Renewal.Materialize(p,root.transform);
                 World.Renewal.MaterializeRecovered(key,root.transform);
-                RestoreObjects(key);World.Animals.ActivateChunk(key);World.GetComponent<GoblinSpawner>().ActivateChunk(key);
-                MaterializeCaveThreats(key);
+                RestoreObjects(key);MaterializePoi(key,root.transform);World.Animals.ActivateChunk(key);World.GetComponent<GoblinSpawner>().ActivateChunk(key);
+                MaterializeCaveThreats(key);ReconcilePoi();
             }
             Decorations(key,root.transform);
         }
         private void Deactivate(WorldChunk key)
         {
-            if(SimulationAuthority.Allows(World)){World.Renewal.UnloadChunk(key);World.Animals.UnloadChunk(key);World.GetComponent<GoblinSpawner>().UnloadChunk(key);}
+            if(SimulationAuthority.Allows(World)){UnloadPoiSites(key);World.Renewal.UnloadChunk(key);World.Animals.UnloadChunk(key);World.GetComponent<GoblinSpawner>().UnloadChunk(key);}
             World.Terrain.ReleaseChunk(key);var root=active[key];active.Remove(key);if(root!=null){root.SetActive(false);Destroy(root);}
         }
         private void Decorations(WorldChunk key,Transform parent)
@@ -67,6 +67,6 @@ namespace Wildfolk
             var random=new System.Random(WorldSeeds.Derive(World.Seed,SeedDomain.Vegetation,key.X,key.Y));for(var i=0;i<32;i++)
             {var p=key.Origin(World.Definition.ChunkSize)+new Vector2((float)random.NextDouble(),(float)random.NextDouble())*World.Definition.ChunkSize;if(!World.Map.IsWalkable(p,0) || World.Map.IsWater(p,1))continue;var go=new GameObject("Ground foliage");go.transform.SetParent(parent,false);go.transform.position=p;go.transform.localScale=Vector3.one*Mathf.Lerp(.35f,.7f,(float)random.NextDouble());var sr=go.AddComponent<SpriteRenderer>();sr.sprite=i%3==0 ? World.Fern : World.Grass;sr.sharedMaterial=World.SpriteMaterial;sr.sortingOrder=WorldSorting.GroundDecoration;}
         }
-        private void OnDestroy(){ClearPresentation();foreach(var root in active.Values)if(root!=null)Destroy(root);active.Clear();}
+        private void OnDestroy(){ClearPoiSites();ClearPresentation();foreach(var root in active.Values)if(root!=null)Destroy(root);active.Clear();}
     }
 }

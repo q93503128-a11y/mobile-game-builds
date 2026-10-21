@@ -45,7 +45,7 @@ namespace Wildfolk
             var navigation=World.GetComponent<WorldNavigation>();
             foreach(var enemy in enemies)
             {
-                if(enemy==null || !enemy.gameObject.activeInHierarchy || enemy.Lifecycle.Phase!=ZombiePhase.Active || World.Map.Streamed && World.Map.Continental.Underground(enemy.transform.position))continue;
+                if(enemy==null || !enemy.gameObject.activeInHierarchy || enemy.Lifecycle.Phase!=ZombiePhase.Active || caveFeatures.ContainsKey(enemy) || World.Map.Streamed && World.Map.Continental.Underground(enemy.transform.position))continue;
                 var eligible=enemy.State==EnemyState.Idle && Vector2.Distance(enemy.transform.position,Player.transform.position)>Definition.InactiveDistance && navigation.OutsideCamera(enemy.transform.position);
                 if(!eligible){inactive.Remove(enemy);continue;}
                 if(!inactive.TryGetValue(enemy,out var since))inactive[enemy]=Time.time;

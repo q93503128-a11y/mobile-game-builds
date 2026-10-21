@@ -17,7 +17,7 @@ namespace Wildfolk
         {
             if(!SimulationAuthority.Allows(this))return;
             var state=new ResourceSnapshot{Id=identity.Id,Rule=identity.Rule,Position=identity.transform.position,Scale=identity.transform.localScale.x,HP=identity.Node.Health.Current,Destroyed=destroyed};
-            if(World.Map.Streamed){RecordStreamed(identity,state,destroyed);return;}
+            if(World.Map.Streamed){if(World.Chunks.RecordPoiResource(state)){if(destroyed)live.Remove(state.Id);return;}RecordStreamed(identity,state,destroyed);return;}
             if(destroyed){if(!live.Remove(state.Id))return;Population.Remove(state.Rule,state.Position,Clock.Model.Elapsed,true);if(state.Id.StartsWith("p")){changes.Remove(state.Id);return;}}
             changes[state.Id]=state;
         }

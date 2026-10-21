@@ -13,7 +13,7 @@ namespace Wildfolk
         {position=default;if(!sleepingPlaces.TryGetValue(id,out var state) || World.Definition.ProgressionCatalog.Item(state.Item).Placement.Station!=StationKind.Workbench || state.HP<=0)return false;position=state.Position;return true;}
         public PlaceableSnapshot[] DormantPlaces(){var result=new List<PlaceableSnapshot>();foreach(var s in sleepingPlaces.Values){AdvanceCargo(s,World.Renewal.Clock.Model.Elapsed);result.Add(s);}return result.ToArray();}
         public PickupSnapshot[] DormantPickups()=>sleepingPickups.ToArray();
-        public WorldFeatureSnapshot[] CaptureFeatures()=>new List<WorldFeatureSnapshot>(features.Values).ToArray();
+        public WorldFeatureSnapshot[] CaptureFeatures(){var result=new List<WorldFeatureSnapshot>();foreach(var f in features.Values)result.Add(JsonUtility.FromJson<WorldFeatureSnapshot>(JsonUtility.ToJson(f)));return result.ToArray();}
         public void RestoreDormant(SavedGame game)
         {
             sleepingPlaces.Clear();foreach(var s in game.Placeables){sleepingPlaces.Add(s.Id,s);if(World.Definition.ProgressionCatalog.Item(s.Item).Placement.IsBeacon)BeaconDirectory.Put(s.Id,s.BeaconNumber,s.Position);}sleepingPickups.Clear();sleepingPickups.AddRange(game.Pickups);features.Clear();foreach(var f in game.Features??Array.Empty<WorldFeatureSnapshot>())features.Add(f.Id,f);
@@ -45,7 +45,7 @@ namespace Wildfolk
         {
             foreach(var a in World.Map.Continental.Anchors)if(WorldChunk.At(a.Position,World.Definition.ChunkSize).Equals(key))
             {
-                if(SimulationAuthority.Allows(World) && !features.ContainsKey(a.Id))features[a.Id]=new WorldFeatureSnapshot{Id=a.Id,Visited=true};
+                if(SimulationAuthority.Allows(World) && !PoiContentDefinition.Supports(a.Kind) && !features.ContainsKey(a.Id))features[a.Id]=new WorldFeatureSnapshot{Id=a.Id,Visited=true};
                 if(a.Kind==WorldAnchorKind.GoblinCamp)continue;
                 var go=Landmark(parent,a.Kind,a.Position);if(a.Kind==WorldAnchorKind.CaveEntrance){var portal=go.AddComponent<CavernPortal>();portal.World=World;portal.AnchorId=a.Id;var collider=go.AddComponent<CircleCollider2D>();collider.radius=1.4f;collider.isTrigger=true;}
             }
@@ -54,7 +54,7 @@ namespace Wildfolk
         }
         private GameObject Landmark(Transform parent,WorldAnchorKind kind,Vector2 position)
         {var go=new GameObject(kind==WorldAnchorKind.CaveEntrance ? "Caverns" : "Weathered landmark");go.transform.SetParent(parent,false);go.transform.position=position;var sr=go.AddComponent<SpriteRenderer>();sr.sprite=World.PoiSprites[(int)kind];sr.sharedMaterial=World.SpriteMaterial;sr.sortingOrder=WorldSorting.GroundDecoration+1;return go;}
-        public void MarkFeatureCleared(string id){if(features.TryGetValue(id,out var f))f.Cleared=true;}
+        public void MarkFeatureCleared(string id){if(features.TryGetValue(id,out var f)){f.Cleared=true;NotifyPoiGuard(id);}}
         private void MaterializeCaveThreats(WorldChunk key)
         {
             foreach(var cave in World.Map.Continental.Caves)foreach(var room in cave.Rooms)

@@ -1,0 +1,30 @@
+id	hp	damage	interval	cost	station	tier	other
+stone_wall	220	0	0	stone=3+wood=1	Workbench	2
+wood_door	80	0	0	wood=3	Workbench	1
+wood_wall	100	0	0	wood=2	Workbench	1
+arrow	0	0	0	wood=2+feather=1	Workbench	1
+wood_fence	90	0	0	wood=3+plant_fiber=1	Workbench	1
+wood_fence_gate	90	0	0	wood=3+plant_fiber=2	Workbench	1
+wood_gate	140	0	0	wood=6+plant_fiber=2	Workbench	1
+stone_door	200	0	0	stone=4+wood=2	Workbench	1
+stone_fence	160	0	0	stone=4+wood=1	Workbench	1
+stone_fence_gate	160	0	0	stone=4+wood=2	Workbench	1
+stone_gate	240	0	0	stone=7+wood=3	Workbench	1
+bronze_arrow	0	0	0	wood=2+feather=1+bronze=1	Workbench	2
+crossbow_bolt	0	0	0	wood=2+feather=1	Workbench	2
+steel_bolt	0	0	0	wood=2+feather=1+steel=1	Workbench	2
+reinforced_wall	360	0	0	stone=3+wood=2+bronze=1	Workbench	2
+reinforced_door	320	0	0	stone=3+wood=2+bronze=2	Workbench	2
+reinforced_gate	420	0	0	stone=5+wood=4+bronze=3	Workbench	2
+spike_trap	100	16	1.2	wood=4+stone=2+bronze=1	Workbench	2
+ballista_bolt	0	0	0	wood=2+steel=1	TurretWorkbench	3
+ballista	180	62	2.3	wood=10+steel=3+leather=2+mechanical_part=1	TurretWorkbench	3
+repeater	160	16	0.55	wood=8+bronze=3+steel=2+mechanical_part=2	TurretWorkbench	3
+auto_loader	0	0	0	mechanical_part=2+steel=1+bronze=1	TurretWorkbench	3	{"Slot":0,"Multiplier":1.0,"ExtraAmmoSlots":0}
+auto_aim	0	0	0	mechanical_part=1+crystal=2+bronze=1	TurretWorkbench	3	{"Slot":1,"Multiplier":1.0,"ExtraAmmoSlots":0}
+ammo_box	0	0	0	wood=4+steel=1	TurretWorkbench	3	{"Slot":2,"Multiplier":1.0,"ExtraAmmoSlots":2}
+rotation_gear	0	0	0	mechanical_part=1+bronze=2	TurretWorkbench	3	{"Slot":3,"Multiplier":1.350000023841858,"ExtraAmmoSlots":0}
+reinforced_frame	0	0	0	steel=2+leather=1+chitin=2	TurretWorkbench	3	{"Slot":4,"Multiplier":1.5,"ExtraAmmoSlots":0}
+bone_arrow	0	0	0	bone=2+wood=1+feather=1	Workbench	1
+barbed_bolt	0	0	0	chitin=1+wood=2+feather=1	Workbench	2
+bone_trap	40	10	1.2	bone=2+wood=3	Workbench	1

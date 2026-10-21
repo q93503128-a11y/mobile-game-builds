@@ -1,0 +1,449 @@
+{
+  "start_sha": "1f355614a5a6849f0f009b1199ca383a5022f43d",
+  "items": 134,
+  "recipes": 111,
+  "new_items": 0,
+  "new_recipes": 0,
+  "new_defense_items": 0,
+  "save": 11,
+  "protocol": 18,
+  "generation": 3,
+  "data_validator_errors": 0,
+  "source_guid_validator": "PASS 1362 unique GUIDs",
+  "runs": [
+    {
+      "file": "edit-first.xml",
+      "result": "Failed(Child)",
+      "total": "31",
+      "passed": "30",
+      "failed": "1",
+      "start-time": "2026-10-21 10:59:20Z",
+      "end-time": "2026-10-21 10:59:35Z",
+      "duration": "14.812226"
+    },
+    {
+      "file": "edit-compat.xml",
+      "result": "Failed(Child)",
+      "total": "11",
+      "passed": "10",
+      "failed": "1",
+      "start-time": "2026-10-21 11:04:45Z",
+      "end-time": "2026-10-21 11:05:25Z",
+      "duration": "40.0555197"
+    },
+    {
+      "file": "edit-quarry.xml",
+      "result": "Passed",
+      "total": "1",
+      "passed": "1",
+      "failed": "0",
+      "start-time": "2026-10-21 11:08:19Z",
+      "end-time": "2026-10-21 11:08:22Z",
+      "duration": "3.8366661"
+    },
+    {
+      "file": "play-first.xml",
+      "result": "Failed(Child)",
+      "total": "5",
+      "passed": "3",
+      "failed": "2",
+      "start-time": "2026-10-21 11:12:19Z",
+      "end-time": "2026-10-21 11:15:43Z",
+      "duration": "203.7400001"
+    },
+    {
+      "file": "play-final.xml",
+      "result": "Failed(Child)",
+      "total": "2",
+      "passed": "1",
+      "failed": "1",
+      "start-time": "2026-10-21 11:22:33Z",
+      "end-time": "2026-10-21 11:26:41Z",
+      "duration": "247.9513994"
+    },
+    {
+      "file": "host-final.xml",
+      "result": "Passed",
+      "total": "3",
+      "passed": "3",
+      "failed": "0",
+      "start-time": "2026-10-21 11:30:17Z",
+      "end-time": "2026-10-21 11:35:38Z",
+      "duration": "321.3801457"
+    },
+    {
+      "file": "coop-client.xml",
+      "result": "Passed",
+      "total": "1",
+      "passed": "1",
+      "failed": "0",
+      "start-time": "2026-10-21 11:39:50Z",
+      "end-time": "2026-10-21 11:40:17Z",
+      "duration": "26.8264556"
+    },
+    {
+      "file": "preserved-poi.xml",
+      "result": "Passed",
+      "total": "2",
+      "passed": "2",
+      "failed": "0",
+      "start-time": "2026-10-21 11:42:22Z",
+      "end-time": "2026-10-21 11:42:47Z",
+      "duration": "24.3139031"
+    },
+    {
+      "file": "edit-final.xml",
+      "result": "Passed",
+      "total": "6",
+      "passed": "6",
+      "failed": "0",
+      "start-time": "2026-10-21 11:49:10Z",
+      "end-time": "2026-10-21 11:49:17Z",
+      "duration": "6.5714897"
+    }
+  ],
+  "latest": {
+    "Wildfolk.Tests.PoiContentPlayTests.RealClientSuppliesWellAndGuardedClear": {
+      "result": "Passed",
+      "file": "coop-client.xml",
+      "end": "2026-10-21 11:40:17Z",
+      "suite": "play"
+    },
+    "Wildfolk.Tests.ExplorationUtilityModelTests.BearingOnlyHasEightSectorsAndNoSurveyPositionIsSerialized": {
+      "result": "Passed",
+      "file": "edit-compat.xml",
+      "end": "2026-10-21 11:04:46Z",
+      "suite": "edit"
+    },
+    "Wildfolk.Tests.PoiContentModelTests.QuarryTombstonesAreSeparateFromNaturalRecoveryAndToolGatesRemain": {
+      "result": "Passed",
+      "file": "edit-final.xml",
+      "end": "2026-10-21 11:49:17Z",
+      "suite": "edit"
+    },
+    "Wildfolk.Tests.WorldFoundationTests.OceanAndHydrologyHaveNaturalBoundariesAndContinuousTransitions": {
+      "result": "Passed",
+      "file": "edit-compat.xml",
+      "end": "2026-10-21 11:04:52Z",
+      "suite": "edit"
+    },
+    "Wildfolk.Tests.WorldFoundationTests.SameSeedReplaysMacroHydrologySourceAnchorsAndChunks": {
+      "result": "Passed",
+      "file": "edit-compat.xml",
+      "end": "2026-10-21 11:05:02Z",
+      "suite": "edit"
+    },
+    "Wildfolk.Tests.WorldFoundationTests.SeedHasConnectedCavesValidSourcesFourPlayerYieldAndBiomeFamilies(9472026)": {
+      "result": "Passed",
+      "file": "edit-compat.xml",
+      "end": "2026-10-21 11:05:06Z",
+      "suite": "edit"
+    },
+    "Wildfolk.Tests.WorldFoundationTests.SeedHasConnectedCavesValidSourcesFourPlayerYieldAndBiomeFamilies(17491)": {
+      "result": "Passed",
+      "file": "edit-compat.xml",
+      "end": "2026-10-21 11:05:09Z",
+      "suite": "edit"
+    },
+    "Wildfolk.Tests.WorldFoundationTests.SeedHasConnectedCavesValidSourcesFourPlayerYieldAndBiomeFamilies(-81027)": {
+      "result": "Passed",
+      "file": "edit-compat.xml",
+      "end": "2026-10-21 11:05:12Z",
+      "suite": "edit"
+    },
+    "Wildfolk.Tests.WorldFoundationTests.SeedHasConnectedCavesValidSourcesFourPlayerYieldAndBiomeFamilies(193080127)": {
+      "result": "Passed",
+      "file": "edit-compat.xml",
+      "end": "2026-10-21 11:05:14Z",
+      "suite": "edit"
+    },
+    "Wildfolk.Tests.WorldFoundationTests.SourcesUseEnvironmentalTagsAndRegionalRecovery": {
+      "result": "Passed",
+      "file": "edit-compat.xml",
+      "end": "2026-10-21 11:05:17Z",
+      "suite": "edit"
+    },
+    "Wildfolk.Tests.WorldFoundationTests.SubSeedsAreIsolatedAndLegacyLayoutIsVersionBound": {
+      "result": "Passed",
+      "file": "edit-compat.xml",
+      "end": "2026-10-21 11:05:21Z",
+      "suite": "edit"
+    },
+    "Wildfolk.Tests.WorldFoundationTests.VegetationDensityDoesNotMoveOreRiverOrPoi": {
+      "result": "Passed",
+      "file": "edit-compat.xml",
+      "end": "2026-10-21 11:05:25Z",
+      "suite": "edit"
+    },
+    "Wildfolk.Tests.PoiContentModelTests.FourSitesUseExistingBoundedRewardsAndNoNewItemsRecipesOrGeneration": {
+      "result": "Passed",
+      "file": "edit-final.xml",
+      "end": "2026-10-21 11:49:10Z",
+      "suite": "edit"
+    },
+    "Wildfolk.Tests.PoiContentModelTests.OptionalSave11StateRejectsFabricatedLootBadWaterAndDuplicateGuard": {
+      "result": "Passed",
+      "file": "edit-final.xml",
+      "end": "2026-10-21 11:49:13Z",
+      "suite": "edit"
+    },
+    "Wildfolk.Tests.PoiContentModelTests.Protocol18RoundTripsSiteIdentitySecurityRevisionAndSharedWater": {
+      "result": "Passed",
+      "file": "edit-final.xml",
+      "end": "2026-10-21 11:49:13Z",
+      "suite": "edit"
+    },
+    "Wildfolk.Tests.PoiContentModelTests.TrapsHaveDifferentReuseRolesWallsAndTurretsKeepTheirBudgets": {
+      "result": "Passed",
+      "file": "edit-final.xml",
+      "end": "2026-10-21 11:49:17Z",
+      "suite": "edit"
+    },
+    "Wildfolk.Tests.PoiContentModelTests.WellIsCappedLazyAndOnlyGameTimeRecoversOneServingPerDay": {
+      "result": "Passed",
+      "file": "edit-final.xml",
+      "end": "2026-10-21 11:49:17Z",
+      "suite": "edit"
+    },
+    "Wildfolk.Tests.ContentExpansionModelTests.AddedSourcesAndBudgetDoNotMoveExistingSourceIds(9472026)": {
+      "result": "Passed",
+      "file": "edit-first.xml",
+      "end": "2026-10-21 10:59:24Z",
+      "suite": "edit"
+    },
+    "Wildfolk.Tests.ContentExpansionModelTests.AddedSourcesAndBudgetDoNotMoveExistingSourceIds(17491)": {
+      "result": "Passed",
+      "file": "edit-first.xml",
+      "end": "2026-10-21 10:59:26Z",
+      "suite": "edit"
+    },
+    "Wildfolk.Tests.ContentExpansionModelTests.CatalogHasRealRecipesFourWeaponFamiliesAndSustainableBasicAmmo": {
+      "result": "Passed",
+      "file": "edit-first.xml",
+      "end": "2026-10-21 10:59:26Z",
+      "suite": "edit"
+    },
+    "Wildfolk.Tests.ContentExpansionModelTests.ContainerStateTransfersAndRollsBackWithoutBecomingNewItems": {
+      "result": "Passed",
+      "file": "edit-first.xml",
+      "end": "2026-10-21 10:59:26Z",
+      "suite": "edit"
+    },
+    "Wildfolk.Tests.ContentExpansionModelTests.CookingRecipesRestoreMoreThanSimpleFoodAndBuildingRolesAreReal": {
+      "result": "Passed",
+      "file": "edit-first.xml",
+      "end": "2026-10-21 10:59:26Z",
+      "suite": "edit"
+    },
+    "Wildfolk.Tests.ContentExpansionModelTests.PurificationReservesOnlyFullRawAndRestoresChargesAfterQueueSave": {
+      "result": "Passed",
+      "file": "edit-first.xml",
+      "end": "2026-10-21 10:59:26Z",
+      "suite": "edit"
+    },
+    "Wildfolk.Tests.CreatureLootModelTests.CamouflageFlightAndCrystalHabitatUseDifferentAuthoredShapes": {
+      "result": "Passed",
+      "file": "edit-first.xml",
+      "end": "2026-10-21 10:59:26Z",
+      "suite": "edit"
+    },
+    "Wildfolk.Tests.CreatureLootModelTests.CampRollIsStableByPersistentIdAndNeverRefillsAnOpenedContainer": {
+      "result": "Passed",
+      "file": "edit-first.xml",
+      "end": "2026-10-21 10:59:26Z",
+      "suite": "edit"
+    },
+    "Wildfolk.Tests.CreatureLootModelTests.CreatureDropsAvoidUnrelatedGatheringAndPreserveNaturalFeatherSources": {
+      "result": "Passed",
+      "file": "edit-first.xml",
+      "end": "2026-10-21 10:59:26Z",
+      "suite": "edit"
+    },
+    "Wildfolk.Tests.CreatureLootModelTests.DataValidatorRejectsNonfiniteRecoveryWithoutChangingAuthoredAssets": {
+      "result": "Passed",
+      "file": "edit-first.xml",
+      "end": "2026-10-21 10:59:27Z",
+      "suite": "edit"
+    },
+    "Wildfolk.Tests.CreatureLootModelTests.LootNetworkWritesBelongToServerAndRequestsContainNoClientRewards": {
+      "result": "Passed",
+      "file": "edit-first.xml",
+      "end": "2026-10-21 10:59:27Z",
+      "suite": "edit"
+    },
+    "Wildfolk.Tests.CreatureLootModelTests.MigrationPreservesOldLivingIdsAndDoesNotPretendToHaveRolledCampLoot": {
+      "result": "Passed",
+      "file": "edit-first.xml",
+      "end": "2026-10-21 10:59:27Z",
+      "suite": "edit"
+    },
+    "Wildfolk.Tests.CreatureLootModelTests.OriginalFiveRuleIndicesAreStableAndNewActionsHaveReadableWindows": {
+      "result": "Passed",
+      "file": "edit-first.xml",
+      "end": "2026-10-21 10:59:27Z",
+      "suite": "edit"
+    },
+    "Wildfolk.Tests.CreatureLootModelTests.RawMaterialsHaveDistinctImplementedSinks(\"bone\",5)": {
+      "result": "Passed",
+      "file": "edit-first.xml",
+      "end": "2026-10-21 10:59:27Z",
+      "suite": "edit"
+    },
+    "Wildfolk.Tests.CreatureLootModelTests.RawMaterialsHaveDistinctImplementedSinks(\"chitin\",3)": {
+      "result": "Passed",
+      "file": "edit-first.xml",
+      "end": "2026-10-21 10:59:27Z",
+      "suite": "edit"
+    },
+    "Wildfolk.Tests.CreatureLootModelTests.RawMaterialsHaveDistinctImplementedSinks(\"medicinal_gland\",2)": {
+      "result": "Passed",
+      "file": "edit-first.xml",
+      "end": "2026-10-21 10:59:27Z",
+      "suite": "edit"
+    },
+    "Wildfolk.Tests.CreatureLootModelTests.SidegradesPreserveDiamondAndNaturalCrystalRoles": {
+      "result": "Passed",
+      "file": "edit-first.xml",
+      "end": "2026-10-21 10:59:27Z",
+      "suite": "edit"
+    },
+    "Wildfolk.Tests.CreatureLootModelTests.StationRolesAndNewFoodEffectsAreReal": {
+      "result": "Passed",
+      "file": "edit-first.xml",
+      "end": "2026-10-21 10:59:27Z",
+      "suite": "edit"
+    },
+    "Wildfolk.Tests.NetworkFacilityModelTests.CraftFailureKeepsAllIngredientsAndSameIngredientsOnlyCraftOnce": {
+      "result": "Passed",
+      "file": "edit-first.xml",
+      "end": "2026-10-21 10:59:27Z",
+      "suite": "edit"
+    },
+    "Wildfolk.Tests.NetworkFacilityModelTests.FacilityPrefabsAndInteractionComponentsAreRegisteredBeforeSessionStarts": {
+      "result": "Passed",
+      "file": "edit-first.xml",
+      "end": "2026-10-21 10:59:27Z",
+      "suite": "edit"
+    },
+    "Wildfolk.Tests.NetworkFacilityModelTests.QueueVersionOnlyChangesAtCompletionAndBlockedCargoIsConserved": {
+      "result": "Passed",
+      "file": "edit-first.xml",
+      "end": "2026-10-21 10:59:27Z",
+      "suite": "edit"
+    },
+    "Wildfolk.Tests.NetworkPersistenceModelTests.EveryExistingPlaceableUsesOneSourceDefinitionAndServerBuildingState": {
+      "result": "Passed",
+      "file": "edit-first.xml",
+      "end": "2026-10-21 10:59:27Z",
+      "suite": "edit"
+    },
+    "Wildfolk.Tests.NetworkPersistenceModelTests.ParticipantMetadataRejectsDuplicatesInvalidIdentityAndMismatchedHost": {
+      "result": "Passed",
+      "file": "edit-first.xml",
+      "end": "2026-10-21 10:59:27Z",
+      "suite": "edit"
+    },
+    "Wildfolk.Tests.NetworkPersistenceModelTests.SeparateRepositoriesAndDeadParticipantPolicyPreserveSingleplayerRules": {
+      "result": "Passed",
+      "file": "edit-first.xml",
+      "end": "2026-10-21 10:59:27Z",
+      "suite": "edit"
+    },
+    "Wildfolk.Tests.NetworkPersistenceModelTests.V4MigratesToV6WithoutChangingSingleplayerPayloadAndV5RoundTrips": {
+      "result": "Passed",
+      "file": "edit-first.xml",
+      "end": "2026-10-21 10:59:27Z",
+      "suite": "edit"
+    },
+    "Wildfolk.Tests.CreatureLootHostTests.HostRejectsStaleLootAndBagRevisionsAndRehostKeepsSpentSlots": {
+      "result": "Passed",
+      "file": "host-final.xml",
+      "end": "2026-10-21 11:32:03Z",
+      "suite": "play"
+    },
+    "Wildfolk.Tests.PoiContentPlayTests.GraveyardGuardKeepsLocalBoundaryWithoutResettingHealthOrReward": {
+      "result": "Passed",
+      "file": "host-final.xml",
+      "end": "2026-10-21 11:32:22Z",
+      "suite": "play"
+    },
+    "Wildfolk.Tests.PoiContentPlayTests.HostSharedRequestsFourSimulatedClaimantsGuardSleepAndTwoReHosts": {
+      "result": "Passed",
+      "file": "host-final.xml",
+      "end": "2026-10-21 11:35:38Z",
+      "suite": "play"
+    },
+    "Wildfolk.Tests.PoiContentPlayTests.AllEightPoiFiniteSuppliesWellQuarryGuardLegacySaveAndTrapRoles": {
+      "result": "Passed",
+      "file": "play-final.xml",
+      "end": "2026-10-21 11:24:23Z",
+      "suite": "play"
+    },
+    "Wildfolk.Tests.ContentExpansionPlayTests.GatesCollideOpenAndTrapRespectsTeamAndCooldown": {
+      "result": "Passed",
+      "file": "play-first.xml",
+      "end": "2026-10-21 11:12:30Z",
+      "suite": "play"
+    },
+    "Wildfolk.Tests.EcologyPlayTests.DoorHingeEasesAndColliderMatchesPassageAndSave": {
+      "result": "Passed",
+      "file": "play-first.xml",
+      "end": "2026-10-21 11:12:39Z",
+      "suite": "play"
+    },
+    "Wildfolk.Tests.EcologyPlayTests.V3LoadPreservesOldAnimalsEquipmentDoorAndWorld": {
+      "result": "Passed",
+      "file": "play-first.xml",
+      "end": "2026-10-21 11:12:48Z",
+      "suite": "play"
+    },
+    "Wildfolk.Tests.CreatureLootPlayTests.ActualLootModalHasSafeLayoutLocalizedTakeActionsAndClosesWithoutDeposit": {
+      "result": "Passed",
+      "file": "preserved-poi.xml",
+      "end": "2026-10-21 11:42:32Z",
+      "suite": "play"
+    },
+    "Wildfolk.Tests.WorldFoundationPlayTests.CavernPortalConnectsSurfaceRoomGraphDeepBranchAndReturn": {
+      "result": "Passed",
+      "file": "preserved-poi.xml",
+      "end": "2026-10-21 11:42:47Z",
+      "suite": "play"
+    }
+  },
+  "summary": {
+    "edit_unique": 41,
+    "edit_passed": 41,
+    "play_unique": 10,
+    "play_passed": 10
+  },
+  "actual_sp_scene_reload": {
+    "different_service_instance": true,
+    "save": 11,
+    "generation": 3,
+    "spike_traps": 1,
+    "spent_bone_traps": 0,
+    "features": 8
+  },
+  "actual_mcp_coop": {
+    "separate_process_client": true,
+    "campsite_transfer": true,
+    "duplicate_well_one_charge": true,
+    "grave_guard_and_clear_replica": true,
+    "client_disconnect": true,
+    "rehost_exact_remaining": true
+  },
+  "observed_live_end": {
+    "active_chunks": 9,
+    "pending": 0,
+    "active_sites": 1,
+    "total_anchors": 266
+  },
+  "four_actor_race": "four simulated server participants, one winner for one shared revision; not four actual network devices",
+  "limits": [
+    "Client ran headless: no Client screenshot QA",
+    "No actual four-player/Relay/latency-loss/mobile QA",
+    "No Android profiling or long-session economy/fun validation",
+    "Repair/reclaim remain unimplemented; Ruin/Mine stay visual landmarks"
+  ],
+  "grade": "A for requested functional scope; release balance/fun not certified"
+}

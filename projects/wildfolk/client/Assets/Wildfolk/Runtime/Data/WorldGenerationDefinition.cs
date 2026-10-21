@@ -43,6 +43,7 @@ namespace Wildfolk
         public SurfaceEnvironmentDefinition[] SurfaceEnvironments=Array.Empty<SurfaceEnvironmentDefinition>();
         public NaturalSourceDefinition[] NaturalSources=Array.Empty<NaturalSourceDefinition>();
         public ContentCatalog ProgressionCatalog;
+        public PoiContentDefinition PoiContent;
         public float WalkingSpeed=4.2f,TravelMinutesAcross=52,PoiTravelMinutes=2.5f,ProgressionSafetyFactor=1.5f;
         public int ChunkSize=64,ChunkTexturePixels=128;
         public int DefaultSeed=9472026;

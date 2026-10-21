@@ -122,3 +122,11 @@ Resource rule12 / NaturalSource 마지막 항목에 Medicinal Herb를 추가했�
 ## Exploration Utility2-E 조회 경계
 
 광물 조사기는 이미 활성인 chunk의 local physics ResourceIdentity만 조회한다. seed/generation/자원 배치·ID/rare density를 바꾸지 않고 미생성 chunk를 요청하지 않는다. cave/surface region 및 지형·시설 장벽을 넘는 후보를 제외한다. Telescope의 presentation-only 청크와 별개이며 source 조회로 simulation 범위를 넓히지 않는다. [query와 실제 청크 수 검증](../validation/exploration-utility-expansion/REVIEW.md).
+
+## Base / Defense / POI2-F
+
+generation3 유지,1/2 reader와 기존 anchor/source ID·건축·채집 delta를 보존한다. Campsite는 소형 일회 보급, Well은3회 공유 clean 저장/480 game초당1회 회복, Quarry는 기존 Stone2/Copper1/Coal1의 유한 채광 기회, Graveyard는 기존 Skeleton1 처치 후 소형 보급이다. Ruin/Mine는 기존 surface landmark, GoblinCamp는 거주 적 확보/한번 보급, CaveEntrance는 지역 이동을 유지한다.
+
+새 content는 기존 stable anchor에 부착한다. 기존 feature 기록은 청크가 활성화됐다는 뜻이므로, 누락/Schema0 state가 있는 **기존 feature에는** 새 일회 보급·광맥·guard를 지급하지 않는다. Well은0에서480초 뒤 회복한다. 기록 없는 anchor만 최초 콘텐츠를 초기화한다. generation1에 anchor를 만들지 않는다.
+
+WorldChunkRuntime의 active representation만 유지하고 전체 POI별 Update가 없다. 물은 접근/상호작용에서 게임 시간으로 지연 계산한다. Quarry는 별도 embedded node HP/tombstone이며 원래 GenerateChunk/자연 재생 debt/normal resource ID에 섞지 않는다. 기존 노드/건축을 피해 청크 안의 빈 후보만 사용해0~4개가 될 수 있고, 누락 자리를 재방문 때 다시 채우지 않는다. [감사·비교·검수](../validation/base-defense-poi-expansion/REVIEW.md).

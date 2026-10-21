@@ -23,7 +23,7 @@ namespace Wildfolk.Tests
         [Test]public void ExistingNetworkToolAndHeldIndicesCarrySidegradeWithoutNewFields()
         {
             var index=checked((short)Array.IndexOf(C.Items,C.Item("hunters_spear")));var a=new PlayerAttackState{Sequence=37,Hand=1,Tool=index,Started=123.5};using(var w=new FastBufferWriter(128,Allocator.Temp)){w.WriteNetworkSerializable(a);using(var r=new FastBufferReader(w,Allocator.Temp)){r.ReadNetworkSerializable(out PlayerAttackState b);Assert.That(b.Equals(a),Is.True);Assert.That(C.Items[b.Tool].Tool,Is.SameAs(C.Item("hunters_spear").Tool));}}
-            var status=new PlayerStatusState{HP=83,MaximumHP=100,Held=index,Head=-1,Body=-1,Utility=-1,MealItem=-1};using(var w=new FastBufferWriter(128,Allocator.Temp)){w.WriteNetworkSerializable(status);using(var r=new FastBufferReader(w,Allocator.Temp)){r.ReadNetworkSerializable(out PlayerStatusState b);Assert.That(b.Equals(status),Is.True);Assert.That(C.Items[b.Held].HeldSprite,Is.Not.Null);}}Assert.That(NetworkProtocol.Current,Is.EqualTo(17));
+            var status=new PlayerStatusState{HP=83,MaximumHP=100,Held=index,Head=-1,Body=-1,Utility=-1,MealItem=-1};using(var w=new FastBufferWriter(128,Allocator.Temp)){w.WriteNetworkSerializable(status);using(var r=new FastBufferReader(w,Allocator.Temp)){r.ReadNetworkSerializable(out PlayerStatusState b);Assert.That(b.Equals(status),Is.True);Assert.That(C.Items[b.Held].HeldSprite,Is.Not.Null);}}Assert.That(NetworkProtocol.Current,Is.EqualTo(18));
         }
         [Test]public void BothLanguagesHaveNameAndDistinctHeldArt()
         {

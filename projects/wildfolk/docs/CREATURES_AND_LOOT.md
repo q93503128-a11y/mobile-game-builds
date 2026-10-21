@@ -61,3 +61,7 @@ Camp ID+:supplies가 persistent identity다. 거주 Goblin의 활성·휴면 생
 ## Sidegrade2-C · 재료 소비
 
 드랍/종/공급률변경0. Bone은기존Arrow/Trap/Broth/HunterMeal4개에WBII사냥꾼창1개가추가되어5sink다. 창은IronSpear1+Bone6+Leather2를한번소비한다. Chitin은Bolt/Vest/Frame3sink유지,Head는효과중복때문에보류. Skeleton평균수율1.5기준창1개Bone6은기대수율환산4kill(실제완료정지시간과다름),4P24는16kill환산이다. 기존반복소비와선택경제는 [2-C REVIEW](../validation/creature-sidegrade-expansion/REVIEW.md).
+
+## POI2-F 묘지
+
+기존 Skeleton1을 Graveyard의 작은 고정 encounter로 재사용한다. 종·스탯·기존 Bone1~2/XP7/Gold2는 유지한다. 이 수호자만 낮에도 행동하고 잠복하지 않으며, 멀리 유인되면 기존 steering으로 묘지 근처로 돌아간다. 처치 marker와 HP는 휴면/Save/reHost를 보존한다. 별도 종/variant/Drop은 없다. [POI와 방어 감사·검수](../validation/base-defense-poi-expansion/REVIEW.md).

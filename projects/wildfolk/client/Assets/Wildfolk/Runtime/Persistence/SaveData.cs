@@ -28,7 +28,9 @@ namespace Wildfolk
     {public string Id,Item,Creator;public double SimulatedAt;public Vector2 Position;public float Rotation;public int HP;public bool DoorOpen;public SavedStack[] Inventory;public ProcessingSnapshot Processing;public TurretSnapshot Turret;public int BeaconNumber;}
     [Serializable] public sealed class PickupSnapshot
     {public string Item;public int Count,Charges;public LiquidState Quality;public Vector2 Position;}
-    [Serializable] public sealed class WorldFeatureSnapshot {public string Id;public bool Visited,Cleared;}
+    [Serializable] public sealed class WorldFeatureSnapshot {public string Id;public bool Visited,Cleared;public PoiSiteSnapshot Site;}
+    [Serializable]public sealed class PoiSiteSnapshot
+    {public int Schema;public bool Legacy,Opened;public uint Revision;public int Water;public double RefillAt;public SavedStack[] Loot=Array.Empty<SavedStack>();public ResourceSnapshot[] Nodes=Array.Empty<ResourceSnapshot>();}
     [Serializable] public sealed class SavedGame
     {
         public int Version=11,Seed;

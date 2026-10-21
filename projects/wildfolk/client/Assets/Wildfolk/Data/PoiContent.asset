@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32dcb44aebb3e4c4e91dc17ffba1124c, type: 3}
+  m_Name: PoiContent
+  m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.PoiContentDefinition
+  Prefab: {fileID: 8480407469027781217, guid: a9ae75d71a0fb2d4daba373e58e21cac, type: 3}
+  Campsite:
+  - Items:
+    - Item: {fileID: 11400000, guid: 50df494cb3c442b478a85bf768889d80, type: 2}
+      Count: 2
+      Charges: 0
+      Quality: 0
+    - Item: {fileID: 11400000, guid: 0e4f7d7bd8a14b942b82b3a378682c4e, type: 2}
+      Count: 1
+      Charges: 0
+      Quality: 0
+    - Item: {fileID: 11400000, guid: 6764860931a21f04cb6959e93567e645, type: 2}
+      Count: 4
+      Charges: 0
+      Quality: 0
+  - Items:
+    - Item: {fileID: 11400000, guid: 50df494cb3c442b478a85bf768889d80, type: 2}
+      Count: 3
+      Charges: 0
+      Quality: 0
+    - Item: {fileID: 11400000, guid: cea4d9436a66a7642be02a3b482e505d, type: 2}
+      Count: 1
+      Charges: 0
+      Quality: 0
+    - Item: {fileID: 11400000, guid: 7cb462395d3b7a74b878034c2426e972, type: 2}
+      Count: 1
+      Charges: 0
+      Quality: 0
+  - Items:
+    - Item: {fileID: 11400000, guid: 50df494cb3c442b478a85bf768889d80, type: 2}
+      Count: 1
+      Charges: 0
+      Quality: 0
+    - Item: {fileID: 11400000, guid: a5adfa46dd496664f9ea1e1502bc8737, type: 2}
+      Count: 1
+      Charges: 0
+      Quality: 0
+    - Item: {fileID: 11400000, guid: bc7cfdcc45321784f8eb22a45b55bd67, type: 2}
+      Count: 1
+      Charges: 0
+      Quality: 0
+  Graveyard:
+  - Item: {fileID: 11400000, guid: 90a095062071caa4686b63b68706c06e, type: 2}
+    Count: 3
+    Charges: 0
+    Quality: 0
+  - Item: {fileID: 11400000, guid: 234cbab1a9bc0094e9b6e69e132e7cfb, type: 2}
+    Count: 1
+    Charges: 0
+    Quality: 0
+  - Item: {fileID: 11400000, guid: 7cb462395d3b7a74b878034c2426e972, type: 2}
+    Count: 1
+    Charges: 0
+    Quality: 0
+  QuarryRules: 01000000010000000500000007000000
+  WellCapacity: 3
+  WellRefillSeconds: 480

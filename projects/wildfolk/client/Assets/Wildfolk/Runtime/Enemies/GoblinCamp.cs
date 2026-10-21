@@ -1,7 +1,7 @@
 using UnityEngine;
 namespace Wildfolk
 {
-    public sealed class GoblinCamp : MonoBehaviour,IPlayerInteractable
+    public sealed class GoblinCamp : MonoBehaviour,IPlayerInteractable,IWorldSupplies
     {
         public CampSnapshot State;
         public GoblinCampDefinition Definition;
@@ -9,6 +9,11 @@ namespace Wildfolk
         public Sprite SupplyIcon;
         public SpriteRenderer SupplyVisual;
         public Sprite OpenedSprite;
+        public bool IsAvailable=>this!=null && State!=null;
+        public SavedStack[] Loot=>State.Loot;
+        public uint Revision=>State.LootRevision;
+        public string TitleKey=>"ui.camp.title";public string ExplainKey=>"ui.camp.explain";
+        public bool RequestTake(PlayerInventory visitor,int slot){var net=visitor.GetComponent<NetworkFacilityInteractor>();return net==null ? Take(visitor,slot,Revision) : net.CampLoot(this,slot,Revision);}
         public string LootId=>State.Id+":supplies";
         public GoblinSpawner Owner {get;private set;}
         public ContentCatalog Catalog {get;private set;}

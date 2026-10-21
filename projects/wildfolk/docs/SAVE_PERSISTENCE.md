@@ -1,6 +1,6 @@
 # Save / Load11 · v1~v10 이관
 
-2026-10-21 현재 Save11 / Protocol17, 신규 generation3. 정본은 SaveGameRules/SaveValidation/SaveMigration/WorldSnapshotCodec/PlayerSnapshotCodec/SaveRepository다. 기존 generation1/2 지형·시설·자원 ID를 보존한다.
+2026-10-21 현재 Save11 / Protocol18, 신규 generation3. 정본은 SaveGameRules/SaveValidation/SaveMigration/WorldSnapshotCodec/PlayerSnapshotCodec/SaveRepository다. 기존 generation1/2 지형·시설·자원 ID를 보존한다.
 
 ## 파일과 검증
 
@@ -45,7 +45,7 @@ Home 검사와 실제 Continue/Save는 같은 SaveGameRules.Validate를 쓴다. 
 
 ## Host와 QA
 
-Host는 저장 성공 후 세션을 종료하고 실패하면 유지한다. reHost는 저장을 먼저 읽어 새 연결을 만들며 참가자 상태를 spawn 전에 복원한다. 멀티 HP0은 Defeated를 유지한다. Cloud/Account/Host Migration/crash 보장은 없다. Protocol17 peer끼리만 호환한다.
+Host는 저장 성공 후 세션을 종료하고 실패하면 유지한다. reHost는 저장을 먼저 읽어 새 연결을 만들며 참가자 상태를 spawn 전에 복원한다. 멀티 HP0은 Defeated를 유지한다. Cloud/Account/Host Migration/crash 보장은 없다. 현재 Protocol18 peer끼리만 호환한다.
 
 실제 사용자 파일은 QA에서 수정·삭제하지 않는다. Editor 전용 IsolatedQaProfile은 별도 Captures 디렉터리와 격리 identity/preferences를 쓴다. 실제 Unity SP/Host와 자동 회귀, 원격·단말 미검수 범위는 [이번 REVIEW](../validation/creature-loot-expansion/REVIEW.md)를 따른다. Android 강제 종료 파일 시스템은 별도 실기 검증이다.
 
@@ -69,3 +69,11 @@ Protocol16은ActivityState에CatchIndex/CatchCount가추가되고owner수역/거
 ## Exploration Utility2-E · Save11 / Protocol17
 
 신규 두 item은 기존 item ID/stack codec으로 저장하고 migration 필드가 없다. Survey channel/result/쿨다운과 signal 위치/만료/쿨다운은 transient다. PlayerSnapshotCodec.Apply와 NetworkExplorationUtility.OnNetworkDespawn에서 모두 지워 Load/reHost/reconnect에 남기지 않는다. 소비/보상을 주는 도구가 아니므로 transient 초기화로 아이템을 복제하지 않는다. 기존 persistent Beacon/Home/장비 저장은 유지한다. 새 NetworkBehaviour/복제 struct 때문에 Protocol17이고16 peer와 혼용하지 않는다. [격리 save 검증](../validation/exploration-utility-expansion/REVIEW.md).
+
+## POI2-F · Save11 / Protocol18
+
+Save11과 generation3를 유지한다. WorldFeatureSnapshot.Site의 선택 Schema1 state는 Legacy/Opened/Revision/Loot6칸/Water/RefillAt/Quarry Nodes를 저장한다. Site null뿐 아니라 Schema0도 과거 누락 필드로 취급한다. 기존 feature는 빈 Legacy state, Well0/480초 대기로 이관하고 기존 visited를 미방문으로 바꾸지 않는다. capture는 중첩 상태를 복제한다.
+
+유한 보급품은 Host가 초기화/원자 transfer하고 site와 bag의 독립 revision·owner sequence·거리·생존·scouting·guard 상태를 검사한다. 일회 보급과 node 고갈은 unload/Load/reHost로 재충전하지 않는다. 우물은 오프라인 시간이 아닌 저장한 게임 시간만 쓴다. Graveyard의 feature actor는 낮/휴면/Save/reHost에 HP와 clear를 보존하며 home은 stable anchor에서 복원한다. NetworkCreature가 이 수호자의 야간 lifecycle을 다시 켜지 않는다.
+
+PoiSaveValidation은 anchor 종류/Schema/고정 seed 보급 상한·잔량/빈 슬롯/물 범위·유한 시각/node ID·rule·HP·위치/중복 guard와 clear 일관성을 검사한다. 신규 NetworkPoiSite/NetworkList와 owner POI RPC 추가로 Protocol18이 필요하며17 peer와 혼용하지 않는다. 기존 저장 파일명·원본 파일은 유지한다. [격리 저장·원본 hash/mtime](../validation/base-defense-poi-expansion/REVIEW.md).
