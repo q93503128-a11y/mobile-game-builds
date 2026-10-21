@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="5" result="Passed" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-21 00:38:23Z" end-time="2026-10-21 00:41:26Z" duration="182.9583135">
+  <test-suite type="TestSuite" id="1203" name="Wildfolk" fullname="Wildfolk" runstate="Runnable" testcasecount="162" result="Passed" start-time="2026-10-21 00:38:23Z" end-time="2026-10-21 00:41:26Z" duration="182.958314" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <test-suite type="Assembly" id="1200" name="Wildfolk.Tests.PlayMode.dll" fullname="C:/Users/User/Documents/ChatGPT/문승준 모바일/canonical/projects/wildfolk/tests/artifacts/unity/Library/ScriptAssemblies/Wildfolk.Tests.PlayMode.dll" runstate="Runnable" testcasecount="162" result="Passed" start-time="2026-10-21 00:38:23Z" end-time="2026-10-21 00:41:26Z" duration="182.939404" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="26224" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <test-suite type="TestSuite" id="1201" name="Wildfolk" fullname="Wildfolk" runstate="Runnable" testcasecount="162" result="Passed" start-time="2026-10-21 00:38:23Z" end-time="2026-10-21 00:41:26Z" duration="182.937867" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1202" name="Tests" fullname="Wildfolk.Tests" runstate="Runnable" testcasecount="162" result="Passed" start-time="2026-10-21 00:38:23Z" end-time="2026-10-21 00:41:26Z" duration="182.936569" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1038" name="CreatureSidegradePlayTests" fullname="Wildfolk.Tests.CreatureSidegradePlayTests" classname="Wildfolk.Tests.CreatureSidegradePlayTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-21 00:38:23Z" end-time="2026-10-21 00:40:38Z" duration="135.187019" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1039" name="ActualCraftReachVisualTipWallsSingleHitAndSave11" fullname="Wildfolk.Tests.CreatureSidegradePlayTests.ActualCraftReachVisualTipWallsSingleHitAndSave11" methodname="ActualCraftReachVisualTipWallsSingleHitAndSave11" classname="Wildfolk.Tests.CreatureSidegradePlayTests" runstate="Runnable" seed="76104445" result="Passed" start-time="2026-10-21 00:38:23Z" end-time="2026-10-21 00:39:12Z" duration="48.940906" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1040" name="HostCraftAndHitReplicateExistingToolThenRestoreAcrossReHost" fullname="Wildfolk.Tests.CreatureSidegradePlayTests.HostCraftAndHitReplicateExistingToolThenRestoreAcrossReHost" methodname="HostCraftAndHitReplicateExistingToolThenRestoreAcrossReHost" classname="Wildfolk.Tests.CreatureSidegradePlayTests" runstate="Runnable" seed="1925255212" result="Passed" start-time="2026-10-21 00:39:12Z" end-time="2026-10-21 00:40:38Z" duration="86.211425" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1041" name="EcologyPlayTests" fullname="Wildfolk.Tests.EcologyPlayTests" classname="Wildfolk.Tests.EcologyPlayTests" runstate="Runnable" testcasecount="12" result="Passed" start-time="2026-10-21 00:40:38Z" end-time="2026-10-21 00:41:16Z" duration="37.293755" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1042" name="PointBlankAndFacingMatrixForFistAxePickaxeSword" fullname="Wildfolk.Tests.EcologyPlayTests.PointBlankAndFacingMatrixForFistAxePickaxeSword" methodname="PointBlankAndFacingMatrixForFistAxePickaxeSword" classname="Wildfolk.Tests.EcologyPlayTests" runstate="Runnable" seed="192965658" result="Passed" start-time="2026-10-21 00:40:41Z" end-time="2026-10-21 00:41:16Z" duration="34.244180" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1089" name="MetalProgressionPlayTests" fullname="Wildfolk.Tests.MetalProgressionPlayTests" classname="Wildfolk.Tests.MetalProgressionPlayTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-10-21 00:41:16Z" end-time="2026-10-21 00:41:21Z" duration="5.086249" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1090" name="RejectedMiningHasZeroDamageProgressLootOrSuccessSignalsAndValidToolHitsOnce" fullname="Wildfolk.Tests.MetalProgressionPlayTests.RejectedMiningHasZeroDamageProgressLootOrSuccessSignalsAndValidToolHitsOnce" methodname="RejectedMiningHasZeroDamageProgressLootOrSuccessSignalsAndValidToolHitsOnce" classname="Wildfolk.Tests.MetalProgressionPlayTests" runstate="Runnable" seed="882020344" result="Passed" start-time="2026-10-21 00:41:16Z" end-time="2026-10-21 00:41:21Z" duration="5.076547" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1153" name="StabilityPlayTests" fullname="Wildfolk.Tests.StabilityPlayTests" classname="Wildfolk.Tests.StabilityPlayTests" runstate="Runnable" testcasecount="12" result="Passed" start-time="2026-10-21 00:41:21Z" end-time="2026-10-21 00:41:26Z" duration="5.340126" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1155" name="PointBlankNormalEdgeAndOutsideRespectRange" fullname="Wildfolk.Tests.StabilityPlayTests.PointBlankNormalEdgeAndOutsideRespectRange" methodname="PointBlankNormalEdgeAndOutsideRespectRange" classname="Wildfolk.Tests.StabilityPlayTests" runstate="Runnable" seed="818844959" result="Passed" start-time="2026-10-21 00:41:21Z" end-time="2026-10-21 00:41:26Z" duration="5.334473" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[<b><color=#2EA3FF>MCP-FOR-UNITY</color></b>: [TestRunnerNoThrottle] Restored Interaction Mode after test run.
+Saving results to: C:/Users/User/AppData/LocalLow/DefaultCompany/Wildfolk\TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

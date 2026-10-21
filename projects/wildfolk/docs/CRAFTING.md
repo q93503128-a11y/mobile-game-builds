@@ -1,10 +1,10 @@
 # 제작과 처리 · 현재 정본
 
-2026-10-20. Item126 / Recipe103, Workbench I→II→III, Equipment Wood/Stone/Iron/Steel/Diamond. 전체 실제 비용·출력·Station·시간은 [CONTENT_EXPANSION](CONTENT_EXPANSION.md)의103개 표를 따른다. RecipeDefinition/RecipeCatalog/ContentCatalog가 코드 정본이다.
+2026-10-20. Item127 / Recipe104, Workbench I→II→III, Equipment Wood/Stone/Iron/Steel/Diamond. 전체 실제 비용·출력·Station·시간은 [CONTENT_EXPANSION](CONTENT_EXPANSION.md)의104개 표를 따른다. RecipeDefinition/RecipeCatalog/ContentCatalog가 코드 정본이다.
 
 ## Station 경계
 
-Hand6 / Workbench I35·II전용23·III전용11 / Campfire6 / Cooking Pot9 / Furnace4 / Blast Furnace1 / Turret Workbench8이다. Workbench 누적35/58/69다. 이번에는 새 전문 Station을 추가하지 않았다. 현장 연고는 Hand, 단순 휴대식은 Campfire, 복합 Broth는 Pot, 장비·탄약·함정은 I/II에 배치했다. III 신규 Recipe0이며 Diamond 진행을 유지한다. [조사·밀도·대안 비교](../validation/creature-loot-expansion/REVIEW.md).
+Hand6 / Workbench I35·II전용24·III전용11 / Campfire6 / Cooking Pot9 / Furnace4 / Blast Furnace1 / Turret Workbench8이다. Workbench 누적35/59/70다. 이번에는 새 전문 Station을 추가하지 않았다. 현장 연고는 Hand, 단순 휴대식은 Campfire, 복합 Broth는 Pot, 장비·탄약·함정은 I/II에 배치했다. 2-C는 기존 Iron Spear를 소비하는 Hunter1개를 II에 추가했다. III 신규 Recipe0이며 Diamond 진행을 유지한다. [조사·밀도·대안 비교](../validation/creature-loot-expansion/REVIEW.md).
 
 Furnace는 Iron/Copper/Tin/Bronze, Blast는 Steel 전용이다. Iron은 무연료2초, Copper/Tin/Bronze/Steel의 재료·Coal·처리시간은 에셋을 따른다. 생물 재료를 금속로에 넣지 않는다. 새 광물 tier/가짜 가공 중간재가 없다.
 

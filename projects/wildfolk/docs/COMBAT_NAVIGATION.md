@@ -44,3 +44,9 @@ Door는 왼쪽 Hinge/고정 Frame/0.32초 easing으로 열린다. Collider는 ea
 ## 통합 감사 교정 (2026-10-19)
 
 SP/Host death는 같은 HitFeedback settle을 사용하며 총0.35초 후 pooling/despawn한다. 보상은 lethal 시점에 확정하며 collider와 AI/lifecycle은 즉시 중지한다. 자연 burrow/despawn은 여전히 보상 없이 별도 경로다. 피격0.16초는 event-start coroutine으로 보존했다. CameraFollow는 초기 화면/지역 bounds 변경/화면 폭 초과 불연속 이동만 snap하고 일반 이동은 기존 SmoothDamp를 유지한다. 세부 근거와 검수 한계는 GAMEFEEL_AUDIT를 따른다.
+
+## Sidegrade2-C · 현재
+
+Hunter는기존Spear/AttackProfile/ToolDefinition을쓴다. Range3.35/Arc24/MaxTargets1,Damage27/모션.63/간격.90. 새관통/AoE/공격Stamina/이동제한은없다. 현재모든Spear찌르기는impact에서오른손을aim선으로모으며Hunter의별도길쭉한HeldSprite+HandExtension1.52가사거리를표현한다. UI는사거리를소수둘째자리까지필요한만큼표시한다.
+
+PlayerCombat은대상선택과impact재검증때nonalloc solid ray로자신/목표Health외장애물을차단한다. 버퍼포화는타격거절,trigger hurtbox는장애물이아니며벽/자원고체는차단한다. 기존FriendlyFireOFF/Health별중복Collider제거/공격당1회/단일대상/Range표면거리유지. 별도창전투framework나client hit신뢰경로없음. 실제거리경계·벽·동작시벽생성·여러적·중복hurtbox는 [2-C검수](../validation/creature-sidegrade-expansion/REVIEW.md).

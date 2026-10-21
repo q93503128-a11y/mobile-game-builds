@@ -53,3 +53,7 @@ tools/generate_exploration_art.py(Pillow)가 torch/torch_placed/compass/bearing_
 ## Workbench III 현재 상태 · 2026-10-19
 
 III 원본 아트: tools/generate_tier_three_art.py(Pillow). 기존 Steel/Lantern 도형을 바탕으로 Diamond/Crystal 상위 표현을 만들고 Telescope/Beacon/포탑·모듈/산업 상자/Deep POI를 코드 도형으로 그렸다. 외부 게임의 sprite/model을 사용하지 않았다. 현재 최종 아트가 아니다.
+
+## Sidegrade2-C 자체 아트
+
+`tools/generate_sidegrade_art.py`가사냥꾼창의compact icon128×160과held128×353을직접Pillow로그린다. 무광목재·가공Bone보강·가죽결속·유지된철촉으로표현하며외부asset/layout은사용하지않았다. 기존CharacterFacing/PlayerCombat찌르기를재사용한다.

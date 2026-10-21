@@ -28,3 +28,7 @@ Armor는 동일 PlayerEquipment의 Inventory Drag/빠른 Use/슬롯 교환을 �
 ## Food2-B와 성장 경계
 
 CharacterStats는PersistentHealthBonus(Skill)와일시Meal을구분해합친다.Hunter+8은Vitality한rank+10보다작으며현재HP를회복하지않는다.Vitality1이면Max110→Meal118→만료110이며Rank/Point를바꾸지않는다.Trail+10%는Recovery한rank+15%보다작고기존Armor/Skill과가산된다.Forager는기존안전HP회복에만+0.15/s이며Stamina Recovery Skill을복제하지않는다.Endurance최대Stamina/SteadyStride비용효율/Dash/Sprint해금은Meal로대체하지않는다.150초종료/교체/죽음/Load/reHost시임시효과제거,영구성장은보존한다.
+
+## Sidegrade2-C · 성장 경계
+
+새장비는거리유지형사냥꾼창1개이며HP/MaxStamina/Recovery/이동modifier를추가하지않는다. Iron보다피해·속도·조준폭이낮고Range가길다. Armor는기존9개그대로이며CarapaceHead보류. Vest15%는Skill/Meal과기존가산,Defense3/철Body4의손해를유지한다. 장비/Skill/Meal을분리한계산과보류이유는 [2-C REVIEW](../validation/creature-sidegrade-expansion/REVIEW.md).

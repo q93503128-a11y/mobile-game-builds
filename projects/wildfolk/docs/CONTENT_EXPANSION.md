@@ -1,6 +1,6 @@
-# 현재 제작 콘텐츠 · Food / Meal Expansion 2-B
+# 현재 제작 콘텐츠 · Creature Material Sidegrade 2-C
 
-2026-10-21 Food Expansion2-B 반영. **Item126 / Recipe103 / Save11 / Protocol15**, 신규 월드 generation3. Workbench I→II→III와 Wood/Stone/Iron/Steel/Diamond를 제공한다. 실제 정본은 ContentCatalog/RecipeDefinition/각 행동·Loot 에셋이다. 아래 표는 해당 Unity 에셋에서 추출했다. 이전 I–II/III 패스의 경위는 validation/tier-three와 기존 review 기록을 따른다.
+2026-10-21 Sidegrade2-C 반영. **Item127 / Recipe104 / Save11 / Protocol15**, 신규 월드 generation3. Workbench I→II→III와 Wood/Stone/Iron/Steel/Diamond를 제공한다. 실제 정본은 ContentCatalog/RecipeDefinition/각 행동·Loot 에셋이다. 아래 표는 해당 Unity 에셋에서 추출했다. 이전 I–II/III 패스의 경위는 validation/tier-three와 기존 review 기록을 따른다.
 
 ## 이번 연결
 
@@ -23,10 +23,10 @@ Telescope는 제한된 지형 표시만 요청하고 simulation chunk를 늘리�
 |None|6|현장 조립·기본 생존. 약초 기반 붕대·연고2개.|
 |TurretWorkbench|8|포탑·탄약·모듈8개. Frame의 Leather2를 Leather1+Chitin2로 조정.|
 |Workbench 1|35|기본 도구·장비·시설 조립. Bone Arrow/Trap2개 추가.|
-|Workbench 2|23|중기 장비·시설. Vest/Barbed Bolt2개 추가.|
+|Workbench 2|24|중기 장비·시설. Vest/Barbed Bolt2개 추가.|
 |Workbench 3|11|Diamond·유틸리티·Turret 진입. 이번 추가0.|
 
-Workbench 수는 tier별 신규 Recipe다. I35 / II23 / III11이며 누적35/58/69다. Hand6, Campfire6, Pot9, Furnace4, Blast1, Turret8과 합쳐103이다. 전문 처리 시설을 추가하면 맡길 실재 Recipe가 너무 적고 기존 시설과 역할이 겹친다. Furnace의4개와 Blast의1개는 변경하지 않았다. 시설 수를 채우기 위한 새 중간재는 없다.
+Workbench 수는 tier별 신규 Recipe다. I35 / II24 / III11이며 누적35/59/70다. Hand6, Campfire6, Pot9, Furnace4, Blast1, Turret8과 합쳐104이다. 전문 처리 시설을 추가하면 맡길 실재 Recipe가 너무 적고 기존 시설과 역할이 겹친다. Furnace의4개와 Blast의1개는 변경하지 않았다. 시설 수를 채우기 위한 새 중간재는 없다.
 
 ## 현재 전체 Recipe
 
@@ -108,6 +108,7 @@ None은 Hand, Workbench tier는 요구 최소값이다. 상위 Workbench는 하�
 |brazier|brazier×1|Workbench / 2|bronze×3 + stone×4 + coal×2|0|
 |bronze_arrow|bronze_arrow×12|Workbench / 2|wood×2 + feather×1 + bronze×1|0|
 |carapace_vest|carapace_vest×1|Workbench / 2|chitin×4 + leather×1 + plant_fiber×2|0|
+|hunters_spear|hunters_spear×1|Workbench / 2|iron_spear×1 + bone×6 + leather×2|0|
 |crossbow|crossbow×1|Workbench / 2|wood×6 + bronze×3 + leather×2|0|
 |crossbow_bolt|crossbow_bolt×12|Workbench / 2|wood×2 + feather×1|0|
 |lantern|lantern×1|Workbench / 2|bronze×2 + leather×1 + coal×2|0|
@@ -153,3 +154,7 @@ None은 Hand, Workbench tier는 요구 최소값이다. 상위 Workbench는 하�
 ## Food2-B · 현재
 
 새 Item3/Recipe3, raw0/Station0이며 Pot9개다.일반 Stew H/T는Mushroom35/18,Meat52/10,Fish42/26,Mixed65/18+즉시HP8이다. Meal은150초 동안 하나만 유지한다. Hunter H44/T12·MaxHP+8(즉시heal0),Forager H30/T18·조건부자연회복+0.15HP/s,Trail H28/T22·Stamina회복+10%다. 동종은150초로갱신·다른Meal은교체하며시간가산없다. BoneBroth18HP/Restorative35Stamina/Ration20Stamina·의약품은이전효과대로다. [전체 효과·1P/4P 경쟁·검수](../validation/food-expansion/REVIEW.md).
+
+## Sidegrade2-C · 현재
+
+추가Item/Recipe각1로127/104. 사냥꾼 창은WBII IronSpear1+Bone6+Leather2, Damage27/Range3.35/Arc24°/Cooldown.90/Duration.63/단일대상이다. Iron29/2.8/.78보다거리만길고피해·속도·Arc가낮다. 기존Steel/Diamond체인은Hunter를재료로받지않는다. Head는Defense/Recovery외지원효과가없어보류하며Vest변경0,새raw/Station0. Bone5sink/Chitin3sink,Save11/Protocol15유지. [조사·장비감사·1P/4P·실제검수](../validation/creature-sidegrade-expansion/REVIEW.md).

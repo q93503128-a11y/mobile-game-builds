@@ -57,3 +57,7 @@ Host만 spawn/AI/목표/피해/사망/loot roll/보충/상자 claim을 수행한
 ## Goblin Camp 보급품
 
 Camp ID+:supplies가 persistent identity다. 거주 Goblin의 활성·휴면 생존 수를 모두 확인한다.6칸 take-only UI, 개봉/잔량/revision, 최초 deterministic roll을 저장한다. 재방문·거주 Goblin 보충·Load·reHost는 상자를 다시 채우지 않는다. Host가 alive/range/상자와 가방 revision/공간을 검증해 whole-stack 교환을 한 번 확정한다. 플레이어 Storage로 사용할 수 없다. 보상표는 [CONTENT_EXPANSION](CONTENT_EXPANSION.md), 버전 이관은 [SAVE_PERSISTENCE](SAVE_PERSISTENCE.md)를 따른다.
+
+## Sidegrade2-C · 재료 소비
+
+드랍/종/공급률변경0. Bone은기존Arrow/Trap/Broth/HunterMeal4개에WBII사냥꾼창1개가추가되어5sink다. 창은IronSpear1+Bone6+Leather2를한번소비한다. Chitin은Bolt/Vest/Frame3sink유지,Head는효과중복때문에보류. Skeleton평균수율1.5기준창1개Bone6은기대수율환산4kill(실제완료정지시간과다름),4P24는16kill환산이다. 기존반복소비와선택경제는 [2-C REVIEW](../validation/creature-sidegrade-expansion/REVIEW.md).

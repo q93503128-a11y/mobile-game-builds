@@ -1,0 +1,362 @@
+{
+  "Wildfolk.Tests.CharacterPassModelTests.ArmorCostsSlotsAndSilhouettesAreActualData": {
+    "result": "Passed",
+    "duration": "0.021574",
+    "source": "edit-sidegrade.xml"
+  },
+  "Wildfolk.Tests.CharacterPassModelTests.CategoriesAndStableTierSortDoNotDependOnNewFlags": {
+    "result": "Passed",
+    "duration": "0.004159",
+    "source": "edit-sidegrade.xml"
+  },
+  "Wildfolk.Tests.CharacterPassModelTests.DashSpendingIsAtomicAndRecoveryHonorsDelayAndCondition": {
+    "result": "Passed",
+    "duration": "0.002160",
+    "source": "edit-sidegrade.xml"
+  },
+  "Wildfolk.Tests.CharacterPassModelTests.InvalidPointsRanksAndXPAreRejected": {
+    "result": "Passed",
+    "duration": "0.002358",
+    "source": "edit-sidegrade.xml"
+  },
+  "Wildfolk.Tests.CharacterPassModelTests.LevelCurveCarriesRemainderAndAwardsPoints": {
+    "result": "Passed",
+    "duration": "0.002762",
+    "source": "edit-sidegrade.xml"
+  },
+  "Wildfolk.Tests.CharacterPassModelTests.SkillsSpendPointsRespectRanksAndRestoreEffects": {
+    "result": "Passed",
+    "duration": "0.002233",
+    "source": "edit-sidegrade.xml"
+  },
+  "Wildfolk.Tests.CharacterPassModelTests.SprintUsesHoldHysteresisAndExhaustionRecovery": {
+    "result": "Passed",
+    "duration": "0.001461",
+    "source": "edit-sidegrade.xml"
+  },
+  "Wildfolk.Tests.CharacterPassModelTests.SurvivalPreventsCriticalSprintAndChangesEfficiency": {
+    "result": "Passed",
+    "duration": "0.002263",
+    "source": "edit-sidegrade.xml"
+  },
+  "Wildfolk.Tests.CharacterPassModelTests.V1EnvelopeStillDecodesAndFutureVersionsFail": {
+    "result": "Passed",
+    "duration": "0.011776",
+    "source": "edit-sidegrade.xml"
+  },
+  "Wildfolk.Tests.ContentExpansionModelTests.CatalogHasRealRecipesFourWeaponFamiliesAndSustainableBasicAmmo": {
+    "result": "Passed",
+    "duration": "0.011832",
+    "source": "edit-sidegrade.xml"
+  },
+  "Wildfolk.Tests.CreatureLootModelTests.CamouflageFlightAndCrystalHabitatUseDifferentAuthoredShapes": {
+    "result": "Passed",
+    "duration": "0.001580",
+    "source": "edit-sidegrade.xml"
+  },
+  "Wildfolk.Tests.CreatureLootModelTests.CampRollIsStableByPersistentIdAndNeverRefillsAnOpenedContainer": {
+    "result": "Passed",
+    "duration": "0.004300",
+    "source": "edit-sidegrade.xml"
+  },
+  "Wildfolk.Tests.CreatureLootModelTests.CreatureDropsAvoidUnrelatedGatheringAndPreserveNaturalFeatherSources": {
+    "result": "Passed",
+    "duration": "0.019073",
+    "source": "edit-sidegrade.xml"
+  },
+  "Wildfolk.Tests.CreatureLootModelTests.DataValidatorRejectsNonfiniteRecoveryWithoutChangingAuthoredAssets": {
+    "result": "Passed",
+    "duration": "0.396954",
+    "source": "edit-sidegrade.xml"
+  },
+  "Wildfolk.Tests.CreatureLootModelTests.LootNetworkWritesBelongToServerAndRequestsContainNoClientRewards": {
+    "result": "Passed",
+    "duration": "0.002641",
+    "source": "edit-sidegrade.xml"
+  },
+  "Wildfolk.Tests.CreatureLootModelTests.MigrationPreservesOldLivingIdsAndDoesNotPretendToHaveRolledCampLoot": {
+    "result": "Passed",
+    "duration": "0.003097",
+    "source": "edit-sidegrade.xml"
+  },
+  "Wildfolk.Tests.CreatureLootModelTests.OriginalFiveRuleIndicesAreStableAndNewActionsHaveReadableWindows": {
+    "result": "Passed",
+    "duration": "0.008927",
+    "source": "edit-sidegrade.xml"
+  },
+  "Wildfolk.Tests.CreatureLootModelTests.RawMaterialsHaveDistinctImplementedSinks(\"chitin\",3)": {
+    "result": "Passed",
+    "duration": "0.000385",
+    "source": "edit-sink-correction.xml"
+  },
+  "Wildfolk.Tests.CreatureLootModelTests.RawMaterialsHaveDistinctImplementedSinks(\"medicinal_gland\",2)": {
+    "result": "Passed",
+    "duration": "0.000172",
+    "source": "edit-sink-correction.xml"
+  },
+  "Wildfolk.Tests.CreatureLootModelTests.SidegradesPreserveDiamondAndNaturalCrystalRoles": {
+    "result": "Passed",
+    "duration": "0.001864",
+    "source": "edit-sidegrade.xml"
+  },
+  "Wildfolk.Tests.CreatureLootModelTests.StationRolesAndNewFoodEffectsAreReal": {
+    "result": "Passed",
+    "duration": "0.001350",
+    "source": "edit-sidegrade.xml"
+  },
+  "Wildfolk.Tests.CreatureSidegradeModelTests.AppendedItemRoundTripsExistingStackCodecAndRecipesKeepRepeatSinks": {
+    "result": "Passed",
+    "duration": "0.002781",
+    "source": "edit-sidegrade.xml"
+  },
+  "Wildfolk.Tests.CreatureSidegradeModelTests.BothLanguagesHaveNameAndDistinctHeldArt": {
+    "result": "Passed",
+    "duration": "0.002056",
+    "source": "edit-sidegrade.xml"
+  },
+  "Wildfolk.Tests.CreatureSidegradeModelTests.ExistingNetworkToolAndHeldIndicesCarrySidegradeWithoutNewFields": {
+    "result": "Passed",
+    "duration": "0.007719",
+    "source": "edit-sidegrade.xml"
+  },
+  "Wildfolk.Tests.CreatureSidegradeModelTests.HunterTradesDamageSpeedAndArcForReachWithoutSkippingIron": {
+    "result": "Passed",
+    "duration": "0.001981",
+    "source": "edit-sidegrade.xml"
+  },
+  "Wildfolk.Tests.FoodModelTests.HostCanExpireWaterPenaltyWithoutEnablingNutritionDrain": {
+    "result": "Passed",
+    "duration": "0.002069",
+    "source": "edit-sidegrade.xml"
+  },
+  "Wildfolk.Tests.FoodModelTests.MealsAreThreeDistinctPotChoicesAndExistingRecoveryFoodsRemainImmediate": {
+    "result": "Passed",
+    "duration": "0.003678",
+    "source": "edit-sidegrade.xml"
+  },
+  "Wildfolk.Tests.FoodModelTests.NetworkMealIdentityAndEndTimeRoundTripAndParticipateInEquality": {
+    "result": "Passed",
+    "duration": "0.000601",
+    "source": "edit-sidegrade.xml"
+  },
+  "Wildfolk.Tests.FoodModelTests.OneMealReplacesInsteadOfStackingAndSameMealResetsOnlyItsDuration": {
+    "result": "Passed",
+    "duration": "0.001659",
+    "source": "edit-sidegrade.xml"
+  },
+  "Wildfolk.Tests.FoodModelTests.StaminaMealChangesRateWithoutChangingDelayCostOrMaximum": {
+    "result": "Passed",
+    "duration": "0.000804",
+    "source": "edit-sidegrade.xml"
+  },
+  "Wildfolk.Tests.FoodModelTests.StewsHavePlantHydrationMeatHungerFishHydrationAndMixedNutritionRoles": {
+    "result": "Passed",
+    "duration": "0.000455",
+    "source": "edit-sidegrade.xml"
+  },
+  "Wildfolk.Tests.MetalProgressionTests.AppendedOresAreDeterministicAndPreserveEveryLegacyPlacementAndId": {
+    "result": "Passed",
+    "duration": "0.247356",
+    "source": "edit-sidegrade.xml"
+  },
+  "Wildfolk.Tests.MetalProgressionTests.BronzeAndSteelReserveEveryIngredientAndPreserveBlockedOutputAndQueueSnapshot": {
+    "result": "Passed",
+    "duration": "0.008288",
+    "source": "edit-sidegrade.xml"
+  },
+  "Wildfolk.Tests.MetalProgressionTests.FourInputsReserveAtomicallyAndRollbackFailureOrException": {
+    "result": "Passed",
+    "duration": "0.002069",
+    "source": "edit-sidegrade.xml"
+  },
+  "Wildfolk.Tests.MetalProgressionTests.MiningToolPermissionHasNoFistFallbackAndMaterialKindsRemainDistinct": {
+    "result": "Passed",
+    "duration": "0.016428",
+    "source": "edit-sidegrade.xml"
+  },
+  "Wildfolk.Tests.MetalProgressionTests.OnlyConfiguredNextTierOpensAndLegacyUpgradeCostsRemain": {
+    "result": "Passed",
+    "duration": "0.001461",
+    "source": "edit-sidegrade.xml"
+  },
+  "Wildfolk.Tests.MetalProgressionTests.SupplyContextAndRecoveryAreIndependentOfTechnologyAndRespectMineralFamily": {
+    "result": "Passed",
+    "duration": "0.040847",
+    "source": "edit-sidegrade.xml"
+  },
+  "Wildfolk.Tests.MetalProgressionTests.WorkbenchRangeIsOneThroughSix(0,False)": {
+    "result": "Passed",
+    "duration": "0.000666",
+    "source": "edit-sidegrade.xml"
+  },
+  "Wildfolk.Tests.MetalProgressionTests.WorkbenchRangeIsOneThroughSix(1,True)": {
+    "result": "Passed",
+    "duration": "0.000138",
+    "source": "edit-sidegrade.xml"
+  },
+  "Wildfolk.Tests.MetalProgressionTests.WorkbenchRangeIsOneThroughSix(2,True)": {
+    "result": "Passed",
+    "duration": "0.000097",
+    "source": "edit-sidegrade.xml"
+  },
+  "Wildfolk.Tests.MetalProgressionTests.WorkbenchRangeIsOneThroughSix(6,True)": {
+    "result": "Passed",
+    "duration": "0.000082",
+    "source": "edit-sidegrade.xml"
+  },
+  "Wildfolk.Tests.MetalProgressionTests.WorkbenchRangeIsOneThroughSix(7,False)": {
+    "result": "Passed",
+    "duration": "0.000076",
+    "source": "edit-sidegrade.xml"
+  },
+  "Wildfolk.Tests.MetalProgressionTests.WorkbenchRangeIsOneThroughSix(-1,False)": {
+    "result": "Passed",
+    "duration": "0.000072",
+    "source": "edit-sidegrade.xml"
+  },
+  "Wildfolk.Tests.NetworkFoundationTests.CommandsRejectNonFiniteAndClampUntrustedMagnitude": {
+    "result": "Passed",
+    "duration": "0.000886",
+    "source": "edit-sidegrade.xml"
+  },
+  "Wildfolk.Tests.NetworkFoundationTests.InternetCodeAndLocalAddressAreDifferentRoutes": {
+    "result": "Passed",
+    "duration": "0.001633",
+    "source": "edit-sidegrade.xml"
+  },
+  "Wildfolk.Tests.NetworkFoundationTests.PlayerStateIsServerWritableAndRpcInputsAreOwnerOnly": {
+    "result": "Passed",
+    "duration": "0.015286",
+    "source": "edit-sidegrade.xml"
+  },
+  "Wildfolk.Tests.NetworkItemModelTests.DropFailureAndExceptionRestoreOriginalStackWithoutPublishing": {
+    "result": "Passed",
+    "duration": "0.001925",
+    "source": "edit-sidegrade.xml"
+  },
+  "Wildfolk.Tests.NetworkItemModelTests.EveryResourceAndGroundDropUsesRegisteredNetworkPrefab": {
+    "result": "Passed",
+    "duration": "0.002206",
+    "source": "edit-sidegrade.xml"
+  },
+  "Wildfolk.Tests.NetworkItemModelTests.ReplicaInventoryRejectsMutationAndFullStackPickupIsAtomic": {
+    "result": "Passed",
+    "duration": "0.001274",
+    "source": "edit-sidegrade.xml"
+  },
+  "Wildfolk.Tests.NetworkPersistenceModelTests.EveryExistingPlaceableUsesOneSourceDefinitionAndServerBuildingState": {
+    "result": "Passed",
+    "duration": "0.012199",
+    "source": "edit-sidegrade.xml"
+  },
+  "Wildfolk.Tests.NetworkPersistenceModelTests.ParticipantMetadataRejectsDuplicatesInvalidIdentityAndMismatchedHost": {
+    "result": "Passed",
+    "duration": "0.179009",
+    "source": "edit-sidegrade.xml"
+  },
+  "Wildfolk.Tests.NetworkPersistenceModelTests.SeparateRepositoriesAndDeadParticipantPolicyPreserveSingleplayerRules": {
+    "result": "Passed",
+    "duration": "0.216974",
+    "source": "edit-sidegrade.xml"
+  },
+  "Wildfolk.Tests.NetworkPersistenceModelTests.V4MigratesToV6WithoutChangingSingleplayerPayloadAndV5RoundTrips": {
+    "result": "Passed",
+    "duration": "0.093346",
+    "source": "edit-sidegrade.xml"
+  },
+  "Wildfolk.Tests.SceneContractTests.BalanceDataHasValidCombatRangesAndProgressionItems": {
+    "result": "Passed",
+    "duration": "0.039196",
+    "source": "edit-sidegrade.xml"
+  },
+  "Wildfolk.Tests.SceneContractTests.SavedSceneRetainsPlayableConnectionsAndNonPushingEnemy": {
+    "result": "Passed",
+    "duration": "0.561810",
+    "source": "edit-sidegrade.xml"
+  },
+  "Wildfolk.Tests.StabilityModelTests.AtomicSaveBackupRecoversCorruptionAndIgnoresInterruptedTemporaryFile": {
+    "result": "Passed",
+    "duration": "0.103488",
+    "source": "edit-sidegrade.xml"
+  },
+  "Wildfolk.Tests.StabilityModelTests.ChecksumAndFutureVersionAreRejected": {
+    "result": "Passed",
+    "duration": "0.001287",
+    "source": "edit-sidegrade.xml"
+  },
+  "Wildfolk.Tests.StabilityModelTests.CupStateChangesAreAtomicAndConserveContainersOnFullBags": {
+    "result": "Passed",
+    "duration": "0.002271",
+    "source": "edit-sidegrade.xml"
+  },
+  "Wildfolk.Tests.StabilityModelTests.EditorValidatorAcceptsCurrentDataAndDeveloperToolsStayInEditorAssembly": {
+    "result": "Passed",
+    "duration": "0.091795",
+    "source": "edit-sidegrade.xml"
+  },
+  "Wildfolk.Tests.StabilityModelTests.EveryCurrentBasicAttackHasOneTargetAndExtensibleShape": {
+    "result": "Passed",
+    "duration": "0.000966",
+    "source": "edit-sidegrade.xml"
+  },
+  "Wildfolk.Tests.StabilityModelTests.HostileRelationIsNotAPlayerTeamDespiteDefaultNumericId": {
+    "result": "Passed",
+    "duration": "0.001340",
+    "source": "edit-sidegrade.xml"
+  },
+  "Wildfolk.Tests.StabilityModelTests.InventoryRestoreRejectsUnknownAndOversizedStacksWithoutPartialMutation": {
+    "result": "Passed",
+    "duration": "0.000741",
+    "source": "edit-sidegrade.xml"
+  },
+  "Wildfolk.Tests.StabilityModelTests.RawWaterPenaltyExpiresPreciselyAndSurvivesStateRoundTrip": {
+    "result": "Passed",
+    "duration": "0.001101",
+    "source": "edit-sidegrade.xml"
+  },
+  "Wildfolk.Tests.StabilityModelTests.RenewalAndTerrainDataKeepDifferentResourceTimes": {
+    "result": "Passed",
+    "duration": "0.000361",
+    "source": "edit-sidegrade.xml"
+  },
+  "Wildfolk.Tests.CreatureLootModelTests.RawMaterialsHaveDistinctImplementedSinks(\"bone\",5)": {
+    "result": "Passed",
+    "duration": "0.017470",
+    "source": "edit-sink-correction.xml"
+  },
+  "Wildfolk.Tests.StabilityPlayTests.EveryBasicWeaponHitsExactlyOneForwardTarget": {
+    "result": "Passed",
+    "duration": "18.543596",
+    "source": "play-melee-regression.xml"
+  },
+  "Wildfolk.Tests.StabilityPlayTests.FriendlyFilteringAndMultiTargetProfileDoNotBlockHostiles": {
+    "result": "Passed",
+    "duration": "3.405008",
+    "source": "play-melee-regression.xml"
+  },
+  "Wildfolk.Tests.CreatureSidegradePlayTests.ActualCraftReachVisualTipWallsSingleHitAndSave11": {
+    "result": "Passed",
+    "duration": "48.940906",
+    "source": "play-sidegrade.xml"
+  },
+  "Wildfolk.Tests.CreatureSidegradePlayTests.HostCraftAndHitReplicateExistingToolThenRestoreAcrossReHost": {
+    "result": "Passed",
+    "duration": "86.211425",
+    "source": "play-sidegrade.xml"
+  },
+  "Wildfolk.Tests.EcologyPlayTests.PointBlankAndFacingMatrixForFistAxePickaxeSword": {
+    "result": "Passed",
+    "duration": "34.244180",
+    "source": "play-sidegrade.xml"
+  },
+  "Wildfolk.Tests.MetalProgressionPlayTests.RejectedMiningHasZeroDamageProgressLootOrSuccessSignalsAndValidToolHitsOnce": {
+    "result": "Passed",
+    "duration": "5.076547",
+    "source": "play-sidegrade.xml"
+  },
+  "Wildfolk.Tests.StabilityPlayTests.PointBlankNormalEdgeAndOutsideRespectRange": {
+    "result": "Passed",
+    "duration": "5.334473",
+    "source": "play-sidegrade.xml"
+  }
+}

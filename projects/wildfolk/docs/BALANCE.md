@@ -166,7 +166,7 @@ Stone6/75초, Iron6/120초, Coal10/105초, Copper6/150초, Tin5/165초(HP50/2 Pa
 
 ## Workbench III와 현재 생물 경제
 
-현재 Save11/Protocol13, 새 월드 generation3. 위 I–II/Resource Tempo 기록의 기존 수율·회복 간격은 유지한다. III 비용·장비·포탑·모듈의 전체 표는 [CONTENT_EXPANSION](CONTENT_EXPANSION.md)에 통합했다. 출시 밸런스 확정값은 아니다.
+현재 Save11/Protocol15, 새 월드 generation3. 위 I–II/Resource Tempo 기록의 기존 수율·회복 간격은 유지한다. III 비용·장비·포탑·모듈의 전체 표는 [CONTENT_EXPANSION](CONTENT_EXPANSION.md)에 통합했다. 출시 밸런스 확정값은 아니다.
 
 II→III: Wood10 Stone10 Bronze4 Steel4 Crystal4 Diamond1. 개인 Diamond6종은 기존 Steel 장비+Diamond12, 최초 공유 업그레이드 포함1인13/4인49다. Diamond Sword52/Spear42, Head4/Body6, 도구 기본피해18·기존 속도/거리·채집 효율 약+22%다. Crystal Lantern 반경×1.35, Telescope는 Utility 슬롯을 차지하지 않는다.
 
@@ -223,3 +223,14 @@ Ballista62damage/26range/2.3초/45도·초/HP180, Repeater16/17/.55초/105도·�
 Meal3종/150초/동시1개/교체,공용4초다.Hunter MaxHP+8(HPheal0),Forager 자연HP회복+0.15/s(0.5→0.65,기존조건유지),Trail Stamina회복+10%(16→17.6/s,대기1.2초유지).150초는480초cycle의31.25%·낮240초의62.5%이며정지없는보행최대630unit에해당한다.세Meal은음식영양+단일일시준비역할로영구Skill과구분한다.
 
 일반Stew H/T는Mushroom35/18,Meat52/10,Fish42/26,Mixed65/18+HP8.기존비용·Campfire·Bone/Restorative/Ration·의약수치변경없다.원료/Recipe는CONTENT_EXPANSION,조건·UI는FOOD_AND_FISHING,1P/4P계산과미검증은food-expansion/REVIEW를따른다.
+
+## Sidegrade2-C · 현재
+
+|창|피해|사거리|Arc|간격초|모션초|방어0 이론DPS|
+|---|---:|---:|---:|---:|---:|---:|
+|Iron|29|2.8|28°|.78|.546|37.18|
+|Hunter|27|3.35|24°|.90|.63|30.00|
+|Steel|35|2.8|28°|.78|.546|44.87|
+|Diamond|42|2.8|28°|.78|.546|53.85|
+
+전부MaxTargets1/공격Stamina0. Hunter는WBII에서IronSpear1+Bone6+Leather2소비. 긴거리대신낮은피해·좁은Arc·긴공격간격이며금속체인우회없음. Vest Defense3/회복+15%유지: 기본16→18.4/s,Trail+10%와RecoveryRank1+15%까지합쳐22.4/s. Dash24와delay1.2초포함복구2.70→2.504초. 공격회복이득은없고방어는IronBody4보다낮다. 새Head/회복중복장비0. 경제는 [2-C REVIEW](../validation/creature-sidegrade-expansion/REVIEW.md)의일회/반복1P·4P계산이며장시간실측은아니다.

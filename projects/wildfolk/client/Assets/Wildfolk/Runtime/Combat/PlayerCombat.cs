@@ -15,6 +15,7 @@ namespace Wildfolk
         public event System.Action AttackStarted;
         public bool IsAttacking { get; private set; }
         private readonly Collider2D[] candidates = new Collider2D[32];
+        private readonly RaycastHit2D[] obstacles=new RaycastHit2D[32];
         private readonly Health[] targets=new Health[32];
         private readonly Collider2D[] targetColliders=new Collider2D[32];
         private readonly float[] scores=new float[32];
@@ -63,7 +64,22 @@ namespace Wildfolk
             distance=Vector2.Distance(origin,collider.ClosestPoint(origin));
             alignment=delta.sqrMagnitude<.0001f ? 1 : Vector2.Dot(strikeFacing,delta.normalized);
             var contact=ownCollider!=null && ownCollider.Distance(collider).distance<=.12f;
-            return distance<=reach+.001f && (contact || alignment>=Mathf.Cos(profile.ArcAngle*.5f*Mathf.Deg2Rad));
+            return distance<=reach+.001f && (contact || alignment>=Mathf.Cos(profile.ArcAngle*.5f*Mathf.Deg2Rad)) && ClearPath(collider);
+        }
+        private bool ClearPath(Collider2D target)
+        {
+            var origin=(Vector2)transform.position;
+            var delta=target.ClosestPoint(origin)-origin;
+            if(delta.sqrMagnitude<.000001f)return true;
+            var count=Physics2D.Raycast(origin,delta.normalized,new ContactFilter2D{useTriggers=false},obstacles,delta.magnitude);
+            if(count==obstacles.Length)return false;
+            var health=target.GetComponentInParent<Health>();
+            for(var i=0;i<count;i++)
+            {
+                var owner=obstacles[i].collider.GetComponentInParent<Health>();
+                if(owner!=OwnHealth && owner!=health)return false;
+            }
+            return true;
         }
         private void FindTarget()
         {
@@ -127,7 +143,8 @@ namespace Wildfolk
             else
             {
                 var arc = tool.Kind==ToolKind.Spear ? 0 : -Mathf.Sin(progress * Mathf.PI * 2) * tool.SwingArc;
-                Avatar.Facing.SetHandPose(1, new Vector2(-.2f * extension, tool.HandExtension * extension), arc);
+                var inward=tool.Kind==ToolKind.Spear ? Avatar.Facing.HandSeparation : .2f;
+                Avatar.Facing.SetHandPose(1, new Vector2(-inward * extension, tool.HandExtension * extension), arc);
             }
         }
 

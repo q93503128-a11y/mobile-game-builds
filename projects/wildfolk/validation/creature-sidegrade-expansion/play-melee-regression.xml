@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="2" result="Passed" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-21 00:43:23Z" end-time="2026-10-21 00:43:45Z" duration="22.0574472">
+  <test-suite type="TestSuite" id="1203" name="Wildfolk" fullname="Wildfolk" runstate="Runnable" testcasecount="162" result="Passed" start-time="2026-10-21 00:43:23Z" end-time="2026-10-21 00:43:45Z" duration="22.057447" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <test-suite type="Assembly" id="1200" name="Wildfolk.Tests.PlayMode.dll" fullname="C:/Users/User/Documents/ChatGPT/문승준 모바일/canonical/projects/wildfolk/tests/artifacts/unity/Library/ScriptAssemblies/Wildfolk.Tests.PlayMode.dll" runstate="Runnable" testcasecount="162" result="Passed" start-time="2026-10-21 00:43:23Z" end-time="2026-10-21 00:43:45Z" duration="22.024819" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="12252" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <test-suite type="TestSuite" id="1201" name="Wildfolk" fullname="Wildfolk" runstate="Runnable" testcasecount="162" result="Passed" start-time="2026-10-21 00:43:23Z" end-time="2026-10-21 00:43:45Z" duration="22.017491" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1202" name="Tests" fullname="Wildfolk.Tests" runstate="Runnable" testcasecount="162" result="Passed" start-time="2026-10-21 00:43:23Z" end-time="2026-10-21 00:43:45Z" duration="22.011706" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1153" name="StabilityPlayTests" fullname="Wildfolk.Tests.StabilityPlayTests" classname="Wildfolk.Tests.StabilityPlayTests" runstate="Runnable" testcasecount="12" result="Passed" start-time="2026-10-21 00:43:23Z" end-time="2026-10-21 00:43:45Z" duration="21.990524" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1154" name="EveryBasicWeaponHitsExactlyOneForwardTarget" fullname="Wildfolk.Tests.StabilityPlayTests.EveryBasicWeaponHitsExactlyOneForwardTarget" methodname="EveryBasicWeaponHitsExactlyOneForwardTarget" classname="Wildfolk.Tests.StabilityPlayTests" runstate="Runnable" seed="1703755129" result="Passed" start-time="2026-10-21 00:43:23Z" end-time="2026-10-21 00:43:41Z" duration="18.543596" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1156" name="FriendlyFilteringAndMultiTargetProfileDoNotBlockHostiles" fullname="Wildfolk.Tests.StabilityPlayTests.FriendlyFilteringAndMultiTargetProfileDoNotBlockHostiles" methodname="FriendlyFilteringAndMultiTargetProfileDoNotBlockHostiles" classname="Wildfolk.Tests.StabilityPlayTests" runstate="Runnable" seed="1983873946" result="Passed" start-time="2026-10-21 00:43:41Z" end-time="2026-10-21 00:43:45Z" duration="3.405008" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[<b><color=#2EA3FF>MCP-FOR-UNITY</color></b>: [TestRunnerNoThrottle] Restored Interaction Mode after test run.
+Saving results to: C:/Users/User/AppData/LocalLow/DefaultCompany/Wildfolk\TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

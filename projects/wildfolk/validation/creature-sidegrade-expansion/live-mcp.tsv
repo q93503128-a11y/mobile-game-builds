@@ -1,0 +1,117 @@
+2026-10-21T00:37:13.1745097Z	craft	begin
+2026-10-21T00:37:13.4468889Z	craft	PASS WB I rejects WBII sidegrade
+2026-10-21T00:37:14.2914569Z	craft	PASS actual craft card creates one Hunter
+2026-10-21T00:37:14.2920705Z	craft	PASS craft consumed iron_spear
+2026-10-21T00:37:14.2920705Z	craft	PASS craft consumed bone
+2026-10-21T00:37:14.2931731Z	craft	PASS craft consumed leather
+2026-10-21T00:37:14.6732857Z	craft	PASS selected gear resolves Tool
+2026-10-21T00:37:14.6732857Z	reach	begin
+2026-10-21T00:37:15.6631836Z	reach	PASS actual Primary attack iron_spear
+2026-10-21T00:37:15.6631836Z	reach	PASS same-frame duplicate rejected
+2026-10-21T00:37:15.9704109Z	reach	PASS iron_spear damage 0 expected 0
+2026-10-21T00:37:15.9714120Z	reach	PASS one hit at most
+2026-10-21T00:37:15.9724292Z	reach	PASS melee has no stamina cost
+2026-10-21T00:37:16.9157913Z	reach	PASS no later duplicate damage
+2026-10-21T00:37:17.9416675Z	reach	PASS actual Primary attack steel_spear
+2026-10-21T00:37:17.9433323Z	reach	PASS same-frame duplicate rejected
+2026-10-21T00:37:18.2406885Z	reach	PASS steel_spear damage 0 expected 0
+2026-10-21T00:37:18.2432773Z	reach	PASS one hit at most
+2026-10-21T00:37:18.2442774Z	reach	PASS melee has no stamina cost
+2026-10-21T00:37:19.2023224Z	reach	PASS no later duplicate damage
+2026-10-21T00:37:20.2120152Z	reach	PASS actual Primary attack hunters_spear
+2026-10-21T00:37:20.2130177Z	reach	PASS same-frame duplicate rejected
+2026-10-21T00:37:20.5546173Z	reach	PASS hunters_spear damage 27 expected 27
+2026-10-21T00:37:20.5567685Z	reach	PASS one hit at most
+2026-10-21T00:37:20.5578644Z	reach	PASS melee has no stamina cost
+2026-10-21T00:37:20.5598877Z	reach	PASS visible tip (0.00, 3.39, 0.00) matches3.35 reach
+2026-10-21T00:37:21.4964985Z	reach	PASS no later duplicate damage
+2026-10-21T00:37:22.5059692Z	reach	PASS actual Primary attack steel_spear
+2026-10-21T00:37:22.5064853Z	reach	PASS same-frame duplicate rejected
+2026-10-21T00:37:22.8074278Z	reach	PASS steel_spear damage 35 expected 35
+2026-10-21T00:37:22.8084237Z	reach	PASS one hit at most
+2026-10-21T00:37:22.8089331Z	reach	PASS melee has no stamina cost
+2026-10-21T00:37:23.7572183Z	reach	PASS no later duplicate damage
+2026-10-21T00:37:24.7820224Z	reach	PASS actual Primary attack diamond_spear
+2026-10-21T00:37:24.7820224Z	reach	PASS same-frame duplicate rejected
+2026-10-21T00:37:25.0770714Z	reach	PASS diamond_spear damage 42 expected 42
+2026-10-21T00:37:25.0782369Z	reach	PASS one hit at most
+2026-10-21T00:37:25.0788917Z	reach	PASS melee has no stamina cost
+2026-10-21T00:37:26.0402700Z	reach	PASS no later duplicate damage
+2026-10-21T00:37:27.0473414Z	reach	PASS actual Primary attack hunters_spear
+2026-10-21T00:37:27.0488714Z	reach	PASS same-frame duplicate rejected
+2026-10-21T00:37:27.3930900Z	reach	PASS hunters_spear damage 0 expected 0
+2026-10-21T00:37:27.3946098Z	reach	PASS one hit at most
+2026-10-21T00:37:27.3951683Z	reach	PASS melee has no stamina cost
+2026-10-21T00:37:28.3556771Z	reach	PASS no later duplicate damage
+2026-10-21T00:37:29.3911659Z	reach	PASS actual Primary attack hunters_spear
+2026-10-21T00:37:29.3921680Z	reach	PASS same-frame duplicate rejected
+2026-10-21T00:37:29.8509847Z	reach	PASS hunters_spear damage 27 expected 27
+2026-10-21T00:37:29.8526003Z	reach	PASS one hit at most
+2026-10-21T00:37:29.8526003Z	reach	PASS melee has no stamina cost
+2026-10-21T00:37:30.7510951Z	reach	PASS no later duplicate damage
+2026-10-21T00:37:30.7536177Z	walls	begin
+2026-10-21T00:37:31.7539537Z	walls	PASS actual Primary attack hunters_spear
+2026-10-21T00:37:31.7555679Z	walls	PASS same-frame duplicate rejected
+2026-10-21T00:37:32.1020175Z	walls	PASS hunters_spear damage 0 expected 0
+2026-10-21T00:37:32.1020175Z	walls	PASS one hit at most
+2026-10-21T00:37:32.1040614Z	walls	PASS melee has no stamina cost
+2026-10-21T00:37:33.0596656Z	walls	PASS no later duplicate damage
+2026-10-21T00:37:34.5002524Z	walls	PASS actual Primary attack hunters_spear
+2026-10-21T00:37:34.5013683Z	walls	PASS same-frame duplicate rejected
+2026-10-21T00:37:34.8367773Z	walls	PASS hunters_spear damage 27 expected 27
+2026-10-21T00:37:34.8373298Z	walls	PASS one hit at most
+2026-10-21T00:37:34.8383485Z	walls	PASS melee has no stamina cost
+2026-10-21T00:37:35.7973265Z	walls	PASS no later duplicate damage
+2026-10-21T00:37:35.8152678Z	walls	PASS begin before obstruction
+2026-10-21T00:37:36.8040320Z	walls	PASS impact recheck rejects new wall
+2026-10-21T00:37:36.8055628Z	multi-target	begin
+2026-10-21T00:37:37.8178301Z	multi-target	PASS actual Primary attack hunters_spear
+2026-10-21T00:37:37.8184497Z	multi-target	PASS same-frame duplicate rejected
+2026-10-21T00:37:38.1708091Z	multi-target	PASS hunters_spear damage 27 expected 27
+2026-10-21T00:37:38.1728116Z	multi-target	PASS one hit at most
+2026-10-21T00:37:38.1738129Z	multi-target	PASS melee has no stamina cost
+2026-10-21T00:37:38.1749420Z	multi-target	PASS visible tip (0.00, 3.39, 0.00) matches3.35 reach
+2026-10-21T00:37:39.1148043Z	multi-target	PASS no later duplicate damage
+2026-10-21T00:37:39.1153169Z	multi-target	PASS second enemy untouched
+2026-10-21T00:37:40.1190915Z	multi-target	PASS actual Primary attack hunters_spear
+2026-10-21T00:37:40.1200913Z	multi-target	PASS same-frame duplicate rejected
+2026-10-21T00:37:40.4695477Z	multi-target	PASS hunters_spear damage 0 expected 0
+2026-10-21T00:37:40.4706618Z	multi-target	PASS one hit at most
+2026-10-21T00:37:40.4716581Z	multi-target	PASS melee has no stamina cost
+2026-10-21T00:37:41.4626278Z	multi-target	PASS no later duplicate damage
+2026-10-21T00:37:41.4656987Z	vest	begin
+2026-10-21T00:37:41.4722641Z	vest	PASS Vest equip
+2026-10-21T00:37:41.4733995Z	vest	PASS Vest still15percent
+2026-10-21T00:37:41.4739241Z	vest	PASS Vest and Meal add
+2026-10-21T00:37:41.4764670Z	vest	PASS Vest unequip removes modifier
+2026-10-21T00:37:41.4764670Z	vest	PASS Vest modifier gone
+2026-10-21T00:37:41.4779755Z	save-load	begin
+2026-10-21T00:37:44.3445296Z	save-load	PASS isolated Save11
+2026-10-21T00:37:46.6968898Z	save-load	PASS no Save version change
+2026-10-21T00:37:53.1059194Z	save-load	PASS selected Hunter restored from Item ID
+2026-10-21T00:37:53.5651986Z	save-load	PASS empty hand removes weapon
+2026-10-21T00:37:53.9951274Z	complete	complete
+2026-10-21T00:42:12.9631811Z	host	begin
+2026-10-21T00:42:13.3308382Z	host	PASS local Host
+2026-10-21T00:42:13.3459579Z	host	PASS enter multiplayer
+2026-10-21T00:42:18.7873625Z	host	PASS Host world ready
+2026-10-21T00:42:20.1447572Z	host	PASS Host opens WB
+2026-10-21T00:42:20.1805374Z	host	PASS Host upgrades WBII
+2026-10-21T00:42:20.1963826Z	host	PASS Host authority crafts Hunter
+2026-10-21T00:42:20.4842263Z	host	PASS Held index replicated
+2026-10-21T00:42:20.5480267Z	host	PASS Host Primary
+2026-10-21T00:42:20.5495794Z	host	PASS duplicate during attack rejected
+2026-10-21T00:42:20.9210868Z	host	PASS Host actual range damage27
+2026-10-21T00:42:20.9227942Z	host	PASS attack Tool reference replicated
+2026-10-21T00:42:20.9238131Z	host	PASS damage replicated
+2026-10-21T00:42:21.4278979Z	host	PASS stale Primary sequence rejected
+2026-10-21T00:42:21.4294311Z	host	PASS replay publishes no attack
+2026-10-21T00:42:35.9650694Z	host	PASS Host saves selected Hunter
+2026-10-21T00:42:56.9982565Z	rehost	begin
+2026-10-21T00:43:01.5046800Z	rehost	PASS local Host
+2026-10-21T00:43:01.5063051Z	rehost	PASS enter multiplayer
+2026-10-21T00:43:10.0371047Z	rehost	PASS Host world ready
+2026-10-21T00:43:10.9972196Z	rehost	PASS reHost selected Hunter restored
+2026-10-21T00:43:10.9982259Z	rehost	PASS reHost exact Tool data
+2026-10-21T00:43:10.9992262Z	rehost	PASS craft costs not refunded/replayed
+2026-10-21T00:43:11.3573369Z	complete	complete
