@@ -13,6 +13,7 @@ namespace Wildfolk
         {
             Player.GetComponent<PlayerSurvival>().ResetTransient();
             Player.GetComponent<PlayerFishing>()?.ResetTransient();
+            Player.GetComponent<PlayerExplorationUtility>()?.ResetTransient();
             var body=Player.GetComponent<Rigidbody2D>();if(body!=null)body.position=state.Position;Player.transform.position=state.Position;
             Player.GetComponent<PlayerNavigation>()?.RestoreHome(state.HomeId);Player.GetComponent<PlayerNavigation>()?.RestoreNavigation(state.NavigationMode,state.BeaconId);
             Player.GetComponent<PlayerEquipment>().RestoreUtility(string.IsNullOrEmpty(state.Utility) ? null : Catalog.Item(state.Utility));var player=state;Player.Model.Restore(player.Inventory,Catalog);Player.SelectSlot(player.Selected);Player.GetComponent<PlayerProgression>().Restore(player.Growth,player.XP,player.Gold);Player.GetComponent<CharacterStats>().Apply();

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="9" result="Passed" total="9" passed="9" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-21 05:57:54Z" end-time="2026-10-21 05:57:58Z" duration="4.0085038">
+  <test-suite type="TestSuite" id="1000" name="Wildfolk" fullname="Wildfolk" runstate="Runnable" testcasecount="185" result="Passed" start-time="2026-10-21 05:57:54Z" end-time="2026-10-21 05:57:58Z" duration="4.008504" total="9" passed="9" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1235" name="Wildfolk.Tests.EditMode.dll" fullname="C:/Users/User/Documents/ChatGPT/문승준 모바일/canonical/projects/wildfolk/tests/artifacts/unity/Library/ScriptAssemblies/Wildfolk.Tests.EditMode.dll" runstate="Runnable" testcasecount="185" result="Passed" start-time="2026-10-21 05:57:54Z" end-time="2026-10-21 05:57:58Z" duration="3.969031" total="9" passed="9" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="4696" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1236" name="Wildfolk" fullname="Wildfolk" runstate="Runnable" testcasecount="185" result="Passed" start-time="2026-10-21 05:57:54Z" end-time="2026-10-21 05:57:58Z" duration="3.965071" total="9" passed="9" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1237" name="Tests" fullname="Wildfolk.Tests" runstate="Runnable" testcasecount="185" result="Passed" start-time="2026-10-21 05:57:54Z" end-time="2026-10-21 05:57:58Z" duration="3.962004" total="9" passed="9" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1061" name="ExplorationUtilityModelTests" fullname="Wildfolk.Tests.ExplorationUtilityModelTests" classname="Wildfolk.Tests.ExplorationUtilityModelTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-10-21 05:57:54Z" end-time="2026-10-21 05:57:58Z" duration="3.909450" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1064" name="BearingOnlyHasEightSectorsAndNoSurveyPositionIsSerialized" fullname="Wildfolk.Tests.ExplorationUtilityModelTests.BearingOnlyHasEightSectorsAndNoSurveyPositionIsSerialized" methodname="BearingOnlyHasEightSectorsAndNoSurveyPositionIsSerialized" classname="Wildfolk.Tests.ExplorationUtilityModelTests" runstate="Runnable" seed="1873108310" result="Passed" start-time="2026-10-21 05:57:54Z" end-time="2026-10-21 05:57:54Z" duration="0.050015" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1065" name="RegionsDoNotMixUndergroundAndSurfaceOrSeparateCaves" fullname="Wildfolk.Tests.ExplorationUtilityModelTests.RegionsDoNotMixUndergroundAndSurfaceOrSeparateCaves" methodname="RegionsDoNotMixUndergroundAndSurfaceOrSeparateCaves" classname="Wildfolk.Tests.ExplorationUtilityModelTests" runstate="Runnable" seed="537979266" result="Passed" start-time="2026-10-21 05:57:54Z" end-time="2026-10-21 05:57:58Z" duration="3.570401" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1062" name="SceneInitializationHasStandardTransportInactivityBudget" fullname="Wildfolk.Tests.ExplorationUtilityModelTests.SceneInitializationHasStandardTransportInactivityBudget" methodname="SceneInitializationHasStandardTransportInactivityBudget" classname="Wildfolk.Tests.ExplorationUtilityModelTests" runstate="Runnable" seed="1511631568" result="Passed" start-time="2026-10-21 05:57:58Z" end-time="2026-10-21 05:57:58Z" duration="0.204221" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1063" name="TwoDistinctOptionalToolsHaveBoundedBudgetsAndBothLanguages" fullname="Wildfolk.Tests.ExplorationUtilityModelTests.TwoDistinctOptionalToolsHaveBoundedBudgetsAndBothLanguages" methodname="TwoDistinctOptionalToolsHaveBoundedBudgetsAndBothLanguages" classname="Wildfolk.Tests.ExplorationUtilityModelTests" runstate="Runnable" seed="1939910753" result="Passed" start-time="2026-10-21 05:57:58Z" end-time="2026-10-21 05:57:58Z" duration="0.047544" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1082" name="FrontendContractTests" fullname="Wildfolk.Tests.FrontendContractTests" classname="Wildfolk.Tests.FrontendContractTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-21 05:57:58Z" end-time="2026-10-21 05:57:58Z" duration="0.016119" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1083" name="AppStartsAtHomeAndGameplayRemainsEnabled" fullname="Wildfolk.Tests.FrontendContractTests.AppStartsAtHomeAndGameplayRemainsEnabled" methodname="AppStartsAtHomeAndGameplayRemainsEnabled" classname="Wildfolk.Tests.FrontendContractTests" runstate="Runnable" seed="1734891838" result="Passed" start-time="2026-10-21 05:57:58Z" end-time="2026-10-21 05:57:58Z" duration="0.002806" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1084" name="SaveRulesReferenceGameplayContentAndHomeKeysHaveBothLanguages" fullname="Wildfolk.Tests.FrontendContractTests.SaveRulesReferenceGameplayContentAndHomeKeysHaveBothLanguages" methodname="SaveRulesReferenceGameplayContentAndHomeKeysHaveBothLanguages" classname="Wildfolk.Tests.FrontendContractTests" runstate="Runnable" seed="74716341" result="Passed" start-time="2026-10-21 05:57:58Z" end-time="2026-10-21 05:57:58Z" duration="0.008123" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1139" name="NetworkFoundationTests" fullname="Wildfolk.Tests.NetworkFoundationTests" classname="Wildfolk.Tests.NetworkFoundationTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-10-21 05:57:58Z" end-time="2026-10-21 05:57:58Z" duration="0.015713" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1140" name="CommandsRejectNonFiniteAndClampUntrustedMagnitude" fullname="Wildfolk.Tests.NetworkFoundationTests.CommandsRejectNonFiniteAndClampUntrustedMagnitude" methodname="CommandsRejectNonFiniteAndClampUntrustedMagnitude" classname="Wildfolk.Tests.NetworkFoundationTests" runstate="Runnable" seed="1191872266" result="Passed" start-time="2026-10-21 05:57:58Z" end-time="2026-10-21 05:57:58Z" duration="0.003579" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1142" name="InternetCodeAndLocalAddressAreDifferentRoutes" fullname="Wildfolk.Tests.NetworkFoundationTests.InternetCodeAndLocalAddressAreDifferentRoutes" methodname="InternetCodeAndLocalAddressAreDifferentRoutes" classname="Wildfolk.Tests.NetworkFoundationTests" runstate="Runnable" seed="909054072" result="Passed" start-time="2026-10-21 05:57:58Z" end-time="2026-10-21 05:57:58Z" duration="0.001980" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1141" name="PlayerStateIsServerWritableAndRpcInputsAreOwnerOnly" fullname="Wildfolk.Tests.NetworkFoundationTests.PlayerStateIsServerWritableAndRpcInputsAreOwnerOnly" methodname="PlayerStateIsServerWritableAndRpcInputsAreOwnerOnly" classname="Wildfolk.Tests.NetworkFoundationTests" runstate="Runnable" seed="1449740373" result="Passed" start-time="2026-10-21 05:57:58Z" end-time="2026-10-21 05:57:58Z" duration="0.006796" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[<b><color=#2EA3FF>MCP-FOR-UNITY</color></b>: [TestRunnerNoThrottle] Restored Interaction Mode after test run.
+Saving results to: C:/Users/User/AppData/LocalLow/DefaultCompany/Wildfolk\TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

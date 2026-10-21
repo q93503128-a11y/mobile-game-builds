@@ -30,7 +30,7 @@ namespace Wildfolk.Tests
                 Assert.That(player.Combat.Equipment,Is.Not.Null);Assert.That(player.Avatar.Facing,Is.Not.Null);
                 Assert.That(player.GetComponent<PlayerInventory>().Settings.InventorySlots,Is.EqualTo(36));
                 Assert.That(player.GetComponent<PlayerPrimaryAction>().Placement,Is.Not.Null);
-                Assert.That(player.GetComponent<PlayerCrafting>().Catalog.Recipes.Length,Is.EqualTo(109));
+                Assert.That(player.GetComponent<PlayerCrafting>().Catalog.Recipes.Length,Is.EqualTo(111));
                 Assert.That(player.Session.GetComponent<WorldPauseController>(),Is.Not.Null);
                 Assert.That(Object.FindFirstObjectByType<InventoryPanel>().Slots.Length,Is.EqualTo(36));
                 Assert.That(enemy,Is.Null,"The saved daytime scene must have no active Zombie.");
@@ -63,7 +63,7 @@ namespace Wildfolk.Tests
             }
             Assert.That(settings.EnemyLoseRange,Is.GreaterThanOrEqualTo(settings.EnemyDetectionRange));
             Assert.That(settings.InventorySlots,Is.GreaterThanOrEqualTo(PlayerInventory.HotbarSize));
-            Assert.That(AssetDatabase.FindAssets("t:ItemDefinition",new[]{"Assets/Wildfolk/Data"}).Length,Is.EqualTo(132));
+            Assert.That(AssetDatabase.FindAssets("t:ItemDefinition",new[]{"Assets/Wildfolk/Data"}).Length,Is.EqualTo(134));
             var ids=new HashSet<string>();
             foreach(var guid in AssetDatabase.FindAssets("t:ItemDefinition",new[]{"Assets/Wildfolk/Data"}))
             {
@@ -77,7 +77,7 @@ namespace Wildfolk.Tests
                     Assert.That(item.Consumable.HungerRestore+item.Consumable.ThirstRestore+item.Consumable.HealthRestore+item.Consumable.GradualHealthRestore+item.Consumable.StaminaRestore,Is.GreaterThan(0));
                 }
                 if(item.Category==ItemCategory.Placeable) {Assert.That(item.Placement.Prefab,Is.Not.Null);Assert.That(item.Placement.Item,Is.SameAs(item));}
-                if(item.NavigationInstrument || item.FishingRod || item.EquippedLight!=null || item.Telescope || item.TurretModule!=null){Assert.That(item.Tool,Is.Null);Assert.That(item.MaxStack,Is.EqualTo(1));}
+                if(item.ExplorationUtility!=null || item.NavigationInstrument || item.FishingRod || item.EquippedLight!=null || item.Telescope || item.TurretModule!=null){Assert.That(item.Tool,Is.Null);Assert.That(item.MaxStack,Is.EqualTo(1));}
                 else if(item.Category==ItemCategory.Tool || item.Category==ItemCategory.Weapon)
                 {
                     Assert.That(item.MaxStack,Is.EqualTo(1));Assert.That(item.Tool,Is.Not.Null);
@@ -104,7 +104,7 @@ namespace Wildfolk.Tests
                 foreach(var cost in recipe.Ingredients)
                 {Assert.That(cost.Item,Is.Not.Null);Assert.That(cost.Count,Is.GreaterThan(0));Assert.That(ingredients.Add(cost.Item.Id),Is.True);}
             }
-            Assert.That(recipeIds.Count,Is.EqualTo(109));
+            Assert.That(recipeIds.Count,Is.EqualTo(111));
             Assert.That(System.IO.File.Exists("Assets/Wildfolk/Data/StartingEquipment.asset"),Is.False);
             foreach(var guid in AssetDatabase.FindAssets("t:VitalityDefinition",new[]{"Assets/Wildfolk/Data"}))
             {

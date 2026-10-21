@@ -70,3 +70,7 @@ Torch는 일반 PlaceableSnapshot의 stable SaveId/Item/HP/위치/회전/Creator
 ## Workbench III 현재 상태 · 2026-10-19
 
 현재 III는 Telescope(use-item), Signal Beacon(기본 추적 OFF), Crystal Lantern(기존 Utility)을 추가한다. 기존 Compass의 Home/Exit 안내를 유지하고 추적 대상은 한번에 하나다. Telescope는 camera footprint만 표시 전용으로 요청하며 sim/AI/recovery를 활성화하지 않는다. 종료3초 hysteresis와 기존 LRU를 사용한다. 상세는 CONTENT_EXPANSION의 III 절을 따른다.
+
+## Exploration2-E 현재 상태 · 2026-10-21
+
+현재134Item/111Recipe/Save11/Protocol17. 기존 Compass/Home/Exit/Beacon/Telescope/조명은 유지하며 WBII 광물 조사기와 WBI 신호 호각을 기존 nav HUD에 연결한다. Pan은 Tin 채취다. [전체 감사·외부 비교·검수](../validation/exploration-utility-expansion/REVIEW.md).

@@ -1,0 +1,194 @@
+2026-10-21T05:30:56.4852411Z	craft-inventory	begin
+2026-10-21T05:30:56.8507567Z	craft-inventory	PASS WBI actual card Wood2+Fiber2
+2026-10-21T05:30:57.2637448Z	craft-inventory	PASS WBII actual card Wood2+Bronze2+Leather1
+2026-10-21T05:30:57.4145788Z	baseline-navigation-light	begin
+2026-10-21T05:30:57.4183753Z	baseline-navigation-light	PASS Compass Home assigned
+2026-10-21T05:30:57.4193841Z	baseline-navigation-light	PASS Compass Home bearing available
+2026-10-21T05:30:57.5675457Z	baseline-navigation-light	PASS persistent Beacon selected
+2026-10-21T05:30:57.6653665Z	baseline-navigation-light	PASS Telescope primary
+2026-10-21T05:30:58.4689974Z	baseline-navigation-light	PASS Telescope terrain-only presentation
+2026-10-21T05:31:03.1562927Z	baseline-navigation-light	PASS Torch held
+2026-10-21T05:31:03.3523481Z	baseline-navigation-light	PASS Lantern equip
+2026-10-21T05:31:03.3680166Z	baseline-navigation-light	PASS Lantern hands free radius8.5
+2026-10-21T05:31:03.5284996Z	baseline-navigation-light	PASS Crystal Lantern equip
+2026-10-21T05:31:03.5396839Z	baseline-navigation-light	PASS Crystal Lantern radius11.475
+2026-10-21T05:31:03.7024254Z	pan-water	begin
+2026-10-21T05:31:04.6115427Z	pan-water	PASS Pan physically harvests Tin, no radar
+2026-10-21T05:31:05.6564949Z	pan-water	PASS Waterskin refill natural water
+2026-10-21T05:31:05.6585026Z	pan-water	PASS Waterskin drink charge
+2026-10-21T05:31:05.9308093Z	survey-local	begin
+2026-10-21T05:31:06.8037665Z	survey-local	PASS existing Iron rule
+2026-10-21T05:31:06.8093323Z	survey-local	PASS primary starts 11-no-proper-tool
+2026-10-21T05:31:06.8108401Z	survey-local	PASS same-frame duplicate rejected
+2026-10-21T05:31:08.3374884Z	survey-local	PASS 11-no-proper-tool result=Empty
+2026-10-21T05:31:08.3400408Z	survey-local	PASS one query on completion
+2026-10-21T05:31:08.3421989Z	survey-local	PASS no chunk/simulation/presentation increase
+2026-10-21T05:31:08.3437699Z	survey-local	PASS cooldown enforced
+2026-10-21T05:31:08.3499448Z	survey-local	bounded colliders=13 query_ms=0.9781
+2026-10-21T05:31:08.6436073Z	survey-local	PASS primary starts 12-local-ore
+2026-10-21T05:31:08.6456207Z	survey-local	PASS same-frame duplicate rejected
+2026-10-21T05:31:10.1527287Z	survey-local	PASS 12-local-ore result=Found
+2026-10-21T05:31:10.1537396Z	survey-local	PASS one query on completion
+2026-10-21T05:31:10.1552575Z	survey-local	PASS no chunk/simulation/presentation increase
+2026-10-21T05:31:10.1562681Z	survey-local	PASS cooldown enforced
+2026-10-21T05:31:10.1577810Z	survey-local	bounded colliders=13 query_ms=1.8100
+2026-10-21T05:31:10.4295588Z	survey-local	PASS coarse west Iron only, no coords
+2026-10-21T05:31:10.4387586Z	survey-local	PASS primary starts 13-wall-blocked
+2026-10-21T05:31:10.4397726Z	survey-local	PASS same-frame duplicate rejected
+2026-10-21T05:31:11.9585407Z	survey-local	PASS 13-wall-blocked result=Empty
+2026-10-21T05:31:11.9600507Z	survey-local	PASS one query on completion
+2026-10-21T05:31:11.9610617Z	survey-local	PASS no chunk/simulation/presentation increase
+2026-10-21T05:31:11.9610617Z	survey-local	PASS cooldown enforced
+2026-10-21T05:31:11.9625714Z	survey-local	bounded colliders=14 query_ms=0.1544
+2026-10-21T05:31:12.1891534Z	survey-local	PASS primary starts 14-no-ore
+2026-10-21T05:31:12.1906770Z	survey-local	PASS same-frame duplicate rejected
+2026-10-21T05:31:13.7020979Z	survey-local	PASS 14-no-ore result=Empty
+2026-10-21T05:31:13.7030988Z	survey-local	PASS one query on completion
+2026-10-21T05:31:13.7036083Z	survey-local	PASS no chunk/simulation/presentation increase
+2026-10-21T05:31:13.7061282Z	survey-local	PASS cooldown enforced
+2026-10-21T05:31:13.7061282Z	survey-local	bounded colliders=12 query_ms=0.0486
+2026-10-21T05:31:13.8841509Z	survey-cave-boundary	begin
+2026-10-21T05:31:14.9872344Z	survey-cave-boundary	PASS existing Iron rule
+2026-10-21T05:31:14.9892453Z	survey-cave-boundary	PASS primary starts 15-cave
+2026-10-21T05:31:14.9892453Z	survey-cave-boundary	PASS same-frame duplicate rejected
+2026-10-21T05:31:16.4960716Z	survey-cave-boundary	PASS 15-cave result=Found
+2026-10-21T05:31:16.4981705Z	survey-cave-boundary	PASS one query on completion
+2026-10-21T05:31:16.5007288Z	survey-cave-boundary	PASS no chunk/simulation/presentation increase
+2026-10-21T05:31:16.5022451Z	survey-cave-boundary	PASS cooldown enforced
+2026-10-21T05:31:16.5032582Z	survey-cave-boundary	bounded colliders=3 query_ms=0.1929
+2026-10-21T05:31:16.7900608Z	survey-cave-boundary	PASS existing Iron rule
+2026-10-21T05:31:16.7916062Z	survey-cave-boundary	PASS primary starts 16-chunk-boundary
+2026-10-21T05:31:16.7926118Z	survey-cave-boundary	PASS same-frame duplicate rejected
+2026-10-21T05:31:18.3040215Z	survey-cave-boundary	PASS 16-chunk-boundary result=Found
+2026-10-21T05:31:18.3056375Z	survey-cave-boundary	PASS one query on completion
+2026-10-21T05:31:18.3066475Z	survey-cave-boundary	PASS no chunk/simulation/presentation increase
+2026-10-21T05:31:18.3076760Z	survey-cave-boundary	PASS cooldown enforced
+2026-10-21T05:31:18.3076760Z	survey-cave-boundary	bounded colliders=2 query_ms=0.0693
+2026-10-21T05:31:18.4607955Z	survey-cave-boundary	PASS primary starts 17-ungenerated
+2026-10-21T05:31:18.4619111Z	survey-cave-boundary	PASS same-frame duplicate rejected
+2026-10-21T05:31:19.9682710Z	survey-cave-boundary	PASS 17-ungenerated result=Empty
+2026-10-21T05:31:19.9692784Z	survey-cave-boundary	PASS one query on completion
+2026-10-21T05:31:19.9707406Z	survey-cave-boundary	PASS no chunk/simulation/presentation increase
+2026-10-21T05:31:19.9707406Z	survey-cave-boundary	PASS cooldown enforced
+2026-10-21T05:31:19.9717374Z	survey-cave-boundary	bounded colliders=1 query_ms=0.0167
+2026-10-21T05:31:20.0809404Z	survey-cancel-repeat	begin
+2026-10-21T05:31:20.0855107Z	survey-cancel-repeat	PASS start movement cancel
+2026-10-21T05:31:20.2903850Z	survey-cancel-repeat	PASS input movement cancels
+2026-10-21T05:31:20.2918926Z	survey-cancel-repeat	PASS start damage
+2026-10-21T05:31:20.5041644Z	survey-cancel-repeat	PASS damage cancels without query
+2026-10-21T05:31:20.5051942Z	survey-cancel-repeat	PASS start modal
+2026-10-21T05:31:20.7174091Z	survey-cancel-repeat	PASS modal cancels without query
+2026-10-21T05:31:20.7267661Z	survey-cancel-repeat	PASS start switch
+2026-10-21T05:31:20.9736401Z	survey-cancel-repeat	PASS switch cancels without query
+2026-10-21T05:31:20.9772524Z	survey-cancel-repeat	PASS real cooldown start
+2026-10-21T05:31:22.4798086Z	survey-cancel-repeat	PASS early repeat denied
+2026-10-21T05:31:33.1883780Z	survey-cancel-repeat	PASS repeat accepted after12 seconds
+2026-10-21T05:31:34.7120655Z	survey-cancel-repeat	PASS exact two completed queries across cooldown
+2026-10-21T05:31:34.7135866Z	signal-save-load	begin
+2026-10-21T05:31:34.7151001Z	signal-save-load	PASS SP signal primary and spam reject
+2026-10-21T05:31:44.3542831Z	signal-save-load	PASS isolated Save11
+2026-10-21T05:31:48.6594019Z	signal-save-load	PASS isolated Load11
+2026-10-21T05:35:06.0958014Z	host-survey	begin
+2026-10-21T05:35:06.3656355Z	host-survey	PASS Local Host
+2026-10-21T05:35:06.3791949Z	host-survey	PASS enter Host
+2026-10-21T05:35:10.8089664Z	host-survey	PASS Host ready
+2026-10-21T05:35:11.7099265Z	host-survey	PASS existing Iron rule
+2026-10-21T05:35:11.7133755Z	host-survey	PASS Host authoritative survey request
+2026-10-21T05:35:11.7143748Z	host-survey	PASS duplicate sequence rejected
+2026-10-21T05:35:13.2222424Z	host-survey	PASS server publishes owner-only coarse result
+2026-10-21T05:35:13.4354537Z	host-signals	begin
+2026-10-21T05:35:13.4380557Z	host-signals	PASS Host signal accepted once; serial and cooldown reject spam
+2026-10-21T05:35:13.4397017Z	host-signals	PASS server signal replicated
+2026-10-21T05:35:13.5142060Z	host-signals	PASS simulated receiver sees Host signal
+2026-10-21T05:35:13.5158213Z	host-signals	PASS simulated peer accepted signal
+2026-10-21T05:35:13.5158213Z	host-signals	PASS simulated peer spam denied
+2026-10-21T05:35:13.6289963Z	host-signals	FAIL simulated receiver sees Host signal
+2026-10-21T05:35:13.6471453Z	failed	System.InvalidOperationException: simulated receiver sees Host signal
+  at Wildfolk.Editor.ExplorationUtilityQa.Check (System.Boolean value, System.String text) [0x00024] in C:\UnityProjects\Wildfolk\Assets\Wildfolk\Editor\ExplorationUtilityQa.cs:16
+  at Wildfolk.Editor.ExplorationUtilityQa+<HostFlow>d__27.MoveNext () [0x002bd] in C:\UnityProjects\Wildfolk\Assets\Wildfolk\Editor\ExplorationUtilityQa.cs:61
+  at Wildfolk.Editor.ExplorationUtilityQa+<Guard>d__16.MoveNext () [0x0003c] in C:\UnityProjects\Wildfolk\Assets\Wildfolk\Editor\ExplorationUtilityQa.cs:19
+2026-10-21T05:38:00.5882513Z	host-survey	begin
+2026-10-21T05:38:00.7824719Z	host-survey	PASS Local Host
+2026-10-21T05:38:00.7962551Z	host-survey	PASS enter Host
+2026-10-21T05:38:05.3087071Z	host-survey	PASS Host ready
+2026-10-21T05:38:06.2382862Z	host-survey	PASS existing Iron rule
+2026-10-21T05:38:06.2428433Z	host-survey	PASS Host authoritative survey request
+2026-10-21T05:38:06.2438427Z	host-survey	PASS duplicate sequence rejected
+2026-10-21T05:38:07.7543009Z	host-survey	PASS server publishes owner-only coarse result
+2026-10-21T05:38:07.9002616Z	host-signals	begin
+2026-10-21T05:38:07.9007873Z	host-signals	PASS Host signal accepted once; serial and cooldown reject spam
+2026-10-21T05:38:07.9018035Z	host-signals	PASS server signal replicated
+2026-10-21T05:38:07.9563525Z	host-signals	PASS simulated receiver sees latest eligible signal
+2026-10-21T05:38:07.9563525Z	host-signals	PASS simulated peer accepted signal
+2026-10-21T05:38:07.9584018Z	host-signals	PASS simulated peer spam denied
+2026-10-21T05:38:08.0666118Z	host-signals	PASS simulated receiver sees latest eligible signal
+2026-10-21T05:38:08.0666118Z	host-signals	PASS simulated peer accepted signal
+2026-10-21T05:38:08.0681235Z	host-signals	PASS simulated peer spam denied
+2026-10-21T05:38:08.1781319Z	host-signals	PASS simulated receiver sees latest eligible signal
+2026-10-21T05:38:08.1797018Z	host-signals	PASS simulated peer accepted signal
+2026-10-21T05:38:08.1812358Z	host-signals	PASS simulated peer spam denied
+2026-10-21T05:38:08.2914818Z	host-signals	PASS at most four sender signals
+2026-10-21T05:38:08.2925075Z	host-signals	PASS receiver selects only newest eligible signal
+2026-10-21T05:38:08.3142050Z	host-signals	PASS disconnect removes sender immediately
+2026-10-21T05:38:08.8484395Z	host-signals	PASS out of range signal hidden
+2026-10-21T05:38:09.9863692Z	host-signals	PASS surface signal hidden in cave
+2026-10-21T05:38:30.4974926Z	host-signals	PASS Host expiry clears all signals
+2026-10-21T05:38:30.4995022Z	host-rehost	begin
+2026-10-21T05:38:30.5000106Z	host-rehost	PASS signal before save
+2026-10-21T05:38:30.5005192Z	host-rehost	PASS channel before save
+2026-10-21T05:38:43.7122717Z	host-rehost	PASS Host Save11
+2026-10-21T05:39:11.5808638Z	host-rehost	PASS Local Host
+2026-10-21T05:39:11.5824018Z	host-rehost	PASS enter Host
+2026-10-21T05:39:19.5729256Z	host-rehost	PASS Host ready
+2026-10-21T05:39:19.6026586Z	host-rehost	PASS reHost no transient ping/channel
+2026-10-21T05:39:19.6041650Z	host-rehost	PASS reHost new inventory retained
+2026-10-21T05:39:19.7823397Z	complete	complete
+2026-10-21T05:40:17.6231249Z	coop-host-wait	begin
+2026-10-21T05:40:17.6440439Z	coop-host-wait	PASS Local Host
+2026-10-21T05:40:17.6471260Z	coop-host-wait	PASS enter Host
+2026-10-21T05:40:21.8216153Z	coop-host-wait	PASS Host ready
+2026-10-21T05:42:52.6840965Z	coop-host-wait	FAIL real LAN client joined separate process
+2026-10-21T05:42:52.6894996Z	failed	System.InvalidOperationException: real LAN client joined separate process
+  at Wildfolk.Editor.ExplorationUtilityQa.Check (System.Boolean value, System.String text) [0x00024] in C:\UnityProjects\Wildfolk\Assets\Wildfolk\Editor\ExplorationUtilityQa.cs:16
+  at Wildfolk.Editor.ExplorationUtilityQa+<CoopHost>d__28.MoveNext () [0x000f1] in C:\UnityProjects\Wildfolk\Assets\Wildfolk\Editor\ExplorationUtilityQa.cs:61
+  at Wildfolk.Editor.ExplorationUtilityQa+<Guard>d__16.MoveNext () [0x0003c] in C:\UnityProjects\Wildfolk\Assets\Wildfolk\Editor\ExplorationUtilityQa.cs:19
+2026-10-21T05:44:48.8297684Z	coop-host-wait	begin
+2026-10-21T05:44:49.1345798Z	coop-host-wait	PASS Local Host
+2026-10-21T05:44:49.1485229Z	coop-host-wait	PASS enter Host
+2026-10-21T05:44:53.6112276Z	coop-host-wait	PASS Host ready
+2026-10-21T05:48:33.7444793Z	saturation	{"Phase":4,"Item":-1,"Bearing":0,"Until":266.2462273951247,"Ready":269.43786809807258} colliders=128 queries=1 ms=0.2763
+2026-10-21T05:48:47.6746366Z	death	MCP death cancel started=True phase=Cancelled useAfterDeath=False
+2026-10-21T05:50:23.4032665Z	coop-host-wait	begin
+2026-10-21T05:50:23.6750073Z	coop-host-wait	PASS Local Host
+2026-10-21T05:50:23.6889387Z	coop-host-wait	PASS enter Host
+2026-10-21T05:50:28.0173491Z	coop-host-wait	PASS Host ready
+2026-10-21T05:54:53.2779554Z	coop-host-wait	begin
+2026-10-21T05:54:53.5669527Z	coop-host-wait	PASS Local Host
+2026-10-21T05:54:53.6055769Z	coop-host-wait	PASS enter Host
+2026-10-21T05:54:58.3810086Z	coop-host-wait	PASS Host ready
+2026-10-21T05:55:57.9920037Z	coop-host-wait	PASS real LAN client joined separate process
+2026-10-21T05:55:57.9992932Z	coop-host-wait	PASS existing Iron rule
+2026-10-21T05:55:58.0078093Z	coop-host-wait	PASS Host sends signal for real Client
+2026-10-21T05:55:58.0078093Z	coop-host-requests	begin
+2026-10-21T05:56:01.5603354Z	coop-host-requests	PASS real Client request caused exactly one Host query
+2026-10-21T05:56:01.5603354Z	coop-host-requests	PASS real Client signal location chosen by Host
+2026-10-21T05:56:01.5618503Z	coop-host-requests	PASS Host receives Client signal
+2026-10-21T05:56:04.0538662Z	coop-host-requests	PASS real client disconnect despawns marker owner
+2026-10-21T05:56:04.0553831Z	coop-host-requests	PASS real client disconnect removes HUD target
+2026-10-21T05:56:04.0564956Z	complete	complete
+2026-10-21T05:58:54.0699405Z	final	PASS data validator0; EN/KO Utility description binding; actual scene reload previously kept both item stacks and Crystal Lantern, survey None/signal0
+2026-10-21T06:01:19.2527008Z	coop-host-wait	begin
+2026-10-21T06:01:19.4453084Z	coop-host-wait	PASS Local Host
+2026-10-21T06:01:19.4585657Z	coop-host-wait	PASS enter Host
+2026-10-21T06:01:23.6893916Z	coop-host-wait	PASS Host ready
+2026-10-21T06:03:00.5859378Z	coop-host-wait	PASS real LAN client joined separate process
+2026-10-21T06:03:00.5932370Z	coop-host-wait	PASS existing Iron rule
+2026-10-21T06:03:00.6009411Z	coop-host-wait	PASS Host sends signal for real Client
+2026-10-21T06:03:00.6019597Z	coop-host-requests	begin
+2026-10-21T06:03:04.1406456Z	coop-host-requests	PASS real Client request caused exactly one Host query
+2026-10-21T06:03:04.1417083Z	coop-host-requests	PASS real Client signal location chosen by Host
+2026-10-21T06:03:04.1417083Z	coop-host-requests	PASS Host receives Client signal
+2026-10-21T06:03:04.4012353Z	coop-host-requests	PASS Host navigation HUD shows real Client signal after display tick
+2026-10-21T06:03:06.6457770Z	coop-host-requests	PASS real client disconnect despawns marker owner
+2026-10-21T06:03:06.6457770Z	coop-host-requests	PASS real client disconnect removes HUD target
+2026-10-21T06:03:06.6474916Z	complete	complete

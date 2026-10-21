@@ -430,3 +430,7 @@ Torch도 기존 NetworkConstruction/NetworkBuilding transaction과 stable Save I
 ## Workbench III 현재 상태 · 2026-10-19
 
 현재 Protocol12/Save10: 포탑 타깃·LOS·발사·탄약·피해는 Host가 결정하고 owner RPC는 거리/상태/권위와 inventory/turret revision을 검증한다. cargo/module은 변화 시, heading은 최대10Hz 변경 시 전송한다. 비콘의 팀 공유 metadata와 선택 navigation은 기존 저장/재Host 경계에 포함한다. 원격4인/Relay 검증과 local Host 자동·실제 검수는 구분한다. 현재 세부 범위는 CONTENT_EXPANSION III 및 validation/tier-three를 따른다.
+
+## Exploration2-E · Protocol17
+
+새 NetworkExplorationUtility는 owner SurveyState/SignalReady와 shared ExplorationSignal을 server write로 복제한다. Primary owner RPC·단조 sequence를 재사용하고 원격 자원 query는 없다. 조사/신호는 Save11에 저장하지 않는다. 이번2P 검수에서 기존4초 transport inactivity가6초 이상인 씬 초기화 도중 승인된 Client를 끊는 경계를 확인하여 정본 NetworkSession prefab과 MultiplayerSceneBuilder의 DisconnectTimeoutMS를 Unity Transport 기본값30000으로 복구했다. 접속 재시도/승인/Join12초/NGO tick20/queue128은 유지한다. 실제 수행과 실패 이력은 [2-E REVIEW](../validation/exploration-utility-expansion/REVIEW.md)에 구분한다.

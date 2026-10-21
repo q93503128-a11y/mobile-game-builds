@@ -1,6 +1,6 @@
 # Save / Load11 · v1~v10 이관
 
-2026-10-20 현재 Save11 / Protocol16, 신규 generation3. 정본은 SaveGameRules/SaveValidation/SaveMigration/WorldSnapshotCodec/PlayerSnapshotCodec/SaveRepository다. 기존 generation1/2 지형·시설·자원 ID를 보존한다.
+2026-10-21 현재 Save11 / Protocol17, 신규 generation3. 정본은 SaveGameRules/SaveValidation/SaveMigration/WorldSnapshotCodec/PlayerSnapshotCodec/SaveRepository다. 기존 generation1/2 지형·시설·자원 ID를 보존한다.
 
 ## 파일과 검증
 
@@ -45,7 +45,7 @@ Home 검사와 실제 Continue/Save는 같은 SaveGameRules.Validate를 쓴다. 
 
 ## Host와 QA
 
-Host는 저장 성공 후 세션을 종료하고 실패하면 유지한다. reHost는 저장을 먼저 읽어 새 연결을 만들며 참가자 상태를 spawn 전에 복원한다. 멀티 HP0은 Defeated를 유지한다. Cloud/Account/Host Migration/crash 보장은 없다. Protocol16 peer끼리만 호환한다.
+Host는 저장 성공 후 세션을 종료하고 실패하면 유지한다. reHost는 저장을 먼저 읽어 새 연결을 만들며 참가자 상태를 spawn 전에 복원한다. 멀티 HP0은 Defeated를 유지한다. Cloud/Account/Host Migration/crash 보장은 없다. Protocol17 peer끼리만 호환한다.
 
 실제 사용자 파일은 QA에서 수정·삭제하지 않는다. Editor 전용 IsolatedQaProfile은 별도 Captures 디렉터리와 격리 identity/preferences를 쓴다. 실제 Unity SP/Host와 자동 회귀, 원격·단말 미검수 범위는 [이번 REVIEW](../validation/creature-loot-expansion/REVIEW.md)를 따른다. Android 강제 종료 파일 시스템은 별도 실기 검증이다.
 
@@ -65,3 +65,7 @@ Protocol15는PlayerStatusState에MealItem/MealUntil을추가해클라이언트�
 새물고기4/음식1과Recipe5는기존item/recipe ID codec을사용한다.기존raw_fishstack과음식queue는유효하며Saveversion/migration필드추가없다.낚시Casting/Waiting/Bite/Caught와PendingCatch는저장하지않는다.실제로지급된Inventory만영속이다.같은객체Load도PlayerSnapshotCodec.Apply에서낚시를초기화해이전pending을다시수령하지않는다.reHost/despawn도초기화한다.미끼가없어미끼복제경로도없다.
 
 Protocol16은ActivityState에CatchIndex/CatchCount가추가되고owner수역/거절안내RPC가추가되기때문이다.15peer와혼용하지않는다.서버Primary의단조sequence검사·Host원자inventory권위를유지한다.검수는격리저장만사용하며 [2-D 원본hash/mtime및Save/reHost](../validation/fishing-aquatic-expansion/REVIEW.md)를따른다.
+
+## Exploration Utility2-E · Save11 / Protocol17
+
+신규 두 item은 기존 item ID/stack codec으로 저장하고 migration 필드가 없다. Survey channel/result/쿨다운과 signal 위치/만료/쿨다운은 transient다. PlayerSnapshotCodec.Apply와 NetworkExplorationUtility.OnNetworkDespawn에서 모두 지워 Load/reHost/reconnect에 남기지 않는다. 소비/보상을 주는 도구가 아니므로 transient 초기화로 아이템을 복제하지 않는다. 기존 persistent Beacon/Home/장비 저장은 유지한다. 새 NetworkBehaviour/복제 struct 때문에 Protocol17이고16 peer와 혼용하지 않는다. [격리 save 검증](../validation/exploration-utility-expansion/REVIEW.md).

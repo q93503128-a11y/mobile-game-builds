@@ -118,3 +118,7 @@ Resource rule12 / NaturalSource 마지막 항목에 Medicinal Herb를 추가했�
 ## Fishing2-D · 기존 수면 query 사용
 
 지형 generation/Seed/자원ID/POI를 변경하지 않았다. FishingWaterContext는 실제 Contains/IsWater 이후 generation2/3의 CoastDistance<0을Ocean으로,Environment.Biome Wetlands를습지로,나머지지상을내륙으로구분한다.바다가Wetlands보다우선한다.동굴pool은Cavern공용fish,legacy1은내륙fallback이다. signed WaterDistance≤-2.25와 IsDeepWater는수직깊이가아닌물가안쪽조건이다.Ford는안쪽거리만충족해도농어조건이되지않는다.모든catch는기존Rod5unit의shorecast범위에서얻으며실제3seed/해안위치검증은 [2-D REVIEW](../validation/fishing-aquatic-expansion/REVIEW.md)에있다.선택손질4recipe는OptionalConversion으로진행예산의모호한필수제조경로로해석하지않는다.
+
+## Exploration Utility2-E 조회 경계
+
+광물 조사기는 이미 활성인 chunk의 local physics ResourceIdentity만 조회한다. seed/generation/자원 배치·ID/rare density를 바꾸지 않고 미생성 chunk를 요청하지 않는다. cave/surface region 및 지형·시설 장벽을 넘는 후보를 제외한다. Telescope의 presentation-only 청크와 별개이며 source 조회로 simulation 범위를 넓히지 않는다. [query와 실제 청크 수 검증](../validation/exploration-utility-expansion/REVIEW.md).

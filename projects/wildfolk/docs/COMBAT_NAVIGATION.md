@@ -50,3 +50,7 @@ SP/Host death는 같은 HitFeedback settle을 사용하며 총0.35초 후 poolin
 Hunter는기존Spear/AttackProfile/ToolDefinition을쓴다. Range3.35/Arc24/MaxTargets1,Damage27/모션.63/간격.90. 새관통/AoE/공격Stamina/이동제한은없다. 현재모든Spear찌르기는impact에서오른손을aim선으로모으며Hunter의별도길쭉한HeldSprite+HandExtension1.52가사거리를표현한다. UI는사거리를소수둘째자리까지필요한만큼표시한다.
 
 PlayerCombat은대상선택과impact재검증때nonalloc solid ray로자신/목표Health외장애물을차단한다. 버퍼포화는타격거절,trigger hurtbox는장애물이아니며벽/자원고체는차단한다. 기존FriendlyFireOFF/Health별중복Collider제거/공격당1회/단일대상/Range표면거리유지. 별도창전투framework나client hit신뢰경로없음. 실제거리경계·벽·동작시벽생성·여러적·중복hurtbox는 [2-C검수](../validation/creature-sidegrade-expansion/REVIEW.md).
+
+## Exploration Utility2-E
+
+Compass는 소지 시 북쪽/Home/Exit/선택 Beacon 안내를 계속 담당한다. Surveyor를 선택하면 기존 nav HUD의 한 화살표/문구로 정지 조사·8방향 광물명·중단·대기 시간을 표시한다. exact resource 좌표/거리/강조는 없다. 조사 도구가 선택되지 않았을 때 최근의 유효한 동료 신호 하나가 잠시 기존 목적지 표시를 대신하고 만료 뒤 원래 안내로 돌아간다. Compass 없는 신호 수신도 가능하나 북쪽 dial은 Compass가 있어야 보인다. Whistle은 현재 위치만20초,반경60m/같은 surface·cave region,30초 간격이며 permanent Beacon을 대체하지 않는다. 공격·광물 지급·AI 유도 효과가 없다. 이동/피격/사망/modal/도구 교체가 survey를 취소한다. [2-E 계약·검수](../validation/exploration-utility-expansion/REVIEW.md).

@@ -39,7 +39,7 @@ namespace Wildfolk
         public bool TryAttack()
         {
             if (!SimulationAuthority.Allows(this) || !Session.IsRunning || !OwnHealth.IsAlive || IsAttacking || Time.time < nextAttack) return false;
-            if(Equipment.SelectedItem!=null && (Equipment.SelectedItem.Ranged!=null || Equipment.SelectedItem.FishingRod) || GetComponent<PlayerRanged>()!=null && GetComponent<PlayerRanged>().IsBusy)return false;
+            if(Equipment.SelectedItem!=null && (Equipment.SelectedItem.ExplorationUtility!=null || Equipment.SelectedItem.Ranged!=null || Equipment.SelectedItem.FishingRod) || GetComponent<PlayerRanged>()!=null && GetComponent<PlayerRanged>().IsBusy)return false;
             attackTool = Equipment.ActiveTool;
             duration = attackTool == null ? Settings.PunchDuration : attackTool.Duration;
             profile=attackTool==null ? Settings.PunchAttack : attackTool.Attack;

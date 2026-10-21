@@ -10,7 +10,7 @@ namespace Wildfolk.Tests
         private static T Data<T>(string name) where T:UnityEngine.Object=>AssetDatabase.LoadAssetAtPath<T>("Assets/Wildfolk/Data/"+name+".asset");
         [Test]public void EveryCurrentBasicAttackHasOneTargetAndExtensibleShape()
         {
-            var catalog=Data<ContentCatalog>("ContentCatalog");Assert.That(catalog.Items.Length,Is.EqualTo(132));Assert.That(catalog.Recipes.Length,Is.EqualTo(109));
+            var catalog=Data<ContentCatalog>("ContentCatalog");Assert.That(catalog.Items.Length,Is.EqualTo(134));Assert.That(catalog.Recipes.Length,Is.EqualTo(111));
             Assert.That(Data<GameplaySettings>("GameplaySettings").PunchAttack.MaxTargets,Is.EqualTo(1));
             foreach(var item in catalog.Items)if(item.Tool!=null){var p=item.Tool.Attack;Assert.That(p.MaxTargets,Is.EqualTo(1));Assert.That(p.Range,Is.GreaterThan(0));Assert.That(p.ArcAngle,Is.InRange(1,360));Assert.That(p.PierceCount,Is.Zero);Assert.That(p.AoERadius,Is.Zero);}
         }

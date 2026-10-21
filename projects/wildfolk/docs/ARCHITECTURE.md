@@ -221,3 +221,9 @@ FishingLootTable의직렬화FishingCatchDefinition배열이waterflags/time/minim
 새ingredientgroup언어없이Hand손질4개를기존exactIDRecipe로추가했다.RecipeDefinition.OptionalConversion은자연획득재의선택가공임을표시해ProgressionEconomy의유일필수제조경로에서제외한다.해당recipe에진행root수량을지정하면validator가거절한다.기존1P/4P II/III예산이동일함을검사한다.새런타임framework/skill/tree/station은없다.
 
 Protocol16의ActivityState.CatchIndex/CatchCount는서버가결정한catch정체성을owner의작은아이콘/이름/수량에연결한다.NetworkActivities의ownerRPC는수역/가방오류안내만전달하며Client보상결정경로는없다.목록순서/필드를공유하는동일콘텐츠build를사용한다.
+
+## Exploration Utility2-E
+
+ItemDefinition.ExplorationUtility→ExplorationUtilityDefinition(Survey/Signal)과 PlayerExplorationUtility가 기존 PlayerPrimaryAction/owner Primary sequence를 재사용한다. Server만 수락·channel·cooldown·자원 query·신호 위치/만료를 결정한다. 새 NetworkExplorationUtility는 owner SurveyState(phase/item index/8sector/시각), shared ExplorationSignal(명시적 위치/시각/범위), owner SignalReady를 복제한다. Client는 resource query를 하지 않는다. 추가 RPC 입력 경로는 없다. NetworkAttackInput의 hold repeat에서 두 utility를 제외한다.
+
+query는 channel 완료 때만 fixed128 OverlapCircle, terrain .5unit segment와 fixed32 barrier ray로 제한한다. 현재 active ResourceIdentity/Owner/살아 있는 Mineral·보유 도구 gate를 확인하며 saturation은 Crowded다. 전체 resource registry 순회/매frame scan/FindObjectsOfType/GenerateChunk/RequestScoutPresentation 호출이 없다. 장면 WorldGenerator 참조는 첫 접근 후 cache. peer 표시 조회는 NetworkPlayer.Active 최대4만 .15초 HUD tick에서 확인한다. 기존 north/한 arrow/text를 재사용한다.

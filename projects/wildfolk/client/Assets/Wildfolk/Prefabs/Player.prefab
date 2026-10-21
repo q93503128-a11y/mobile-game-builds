@@ -40,6 +40,7 @@ GameObject:
   - component: {fileID: 6652427092622252233}
   - component: {fileID: 2473603753881311934}
   - component: {fileID: 7145052237140651567}
+  - component: {fileID: 8469485295403156809}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -588,6 +589,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50814b281016414e96ba1fa16cdd9a74, type: 3}
   m_Name:
   m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.PlayerTelescope
+--- !u!114 &8469485295403156809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 226757985403581487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f657f96509cfb794cac6bd6d5548738b, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.PlayerExplorationUtility
+  Catalog: {fileID: 11400000, guid: edf4df5213dc0bf4e96917b39fb19914, type: 2}
 --- !u!1 &245822511421666910
 GameObject:
   m_ObjectHideFlags: 0

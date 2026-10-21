@@ -3957,6 +3957,104 @@
         "Produces {0} ×{1}",
         "결과: {0} ×{1}"
       ]
+    },
+    {
+      "Key": "item.ore_surveyor.name",
+      "Values": [
+        "Ore Surveyor",
+        "광물 조사기"
+      ]
+    },
+    {
+      "Key": "item.ore_surveyor.description",
+      "Values": [
+        "Stand still for 1.2s to find nearby ore you can mine with carried tools.\nDirection lasts 6s. Reuse after 12s.",
+        "1.2초간 멈춰서 지닌 도구로 채취할 수 있는 주변 광물을 조사합니다.\n방향 안내 6초 · 재사용 12초"
+      ]
+    },
+    {
+      "Key": "item.signal_whistle.name",
+      "Values": [
+        "Signal Whistle",
+        "신호 호각"
+      ]
+    },
+    {
+      "Key": "item.signal_whistle.description",
+      "Values": [
+        "Signal your position to nearby companions for 20s.\nReuse after 30s.",
+        "가까운 동료에게 현재 위치를 20초간 알립니다.\n재사용 30초"
+      ]
+    },
+    {
+      "Key": "ui.survey.ready",
+      "Values": [
+        "Survey nearby ore",
+        "주변 광물 조사"
+      ]
+    },
+    {
+      "Key": "ui.survey.channel",
+      "Values": [
+        "Keep still…",
+        "멈춰서 조사 중…"
+      ]
+    },
+    {
+      "Key": "ui.survey.empty",
+      "Values": [
+        "No mineable ore nearby",
+        "주변에 채취할 광물 없음"
+      ]
+    },
+    {
+      "Key": "ui.survey.crowded",
+      "Values": [
+        "Too crowded — try nearby",
+        "너무 복잡함 · 옆에서 조사"
+      ]
+    },
+    {
+      "Key": "ui.survey.cancelled",
+      "Values": [
+        "Survey interrupted",
+        "조사 중단"
+      ]
+    },
+    {
+      "Key": "ui.exploration.ready",
+      "Values": [
+        "Ready in {0}s",
+        "{0}초 후 사용 가능"
+      ]
+    },
+    {
+      "Key": "ui.signal.peer",
+      "Values": [
+        "Companion signal",
+        "동료의 신호"
+      ]
+    },
+    {
+      "Key": "ui.signal.near",
+      "Values": [
+        "Companion signal nearby",
+        "동료 신호에 도착"
+      ]
+    },
+    {
+      "Key": "ui.signal.sent",
+      "Values": [
+        "Signal sent",
+        "신호를 보냈습니다"
+      ]
+    },
+    {
+      "Key": "ui.signal.ready",
+      "Values": [
+        "Signal nearby companions",
+        "가까운 동료에게 신호"
+      ]
     }
   ]
 }

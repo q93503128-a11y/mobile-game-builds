@@ -1,0 +1,239 @@
+2026-10-21T05:37:48.6209388Z	craft-inventory	begin
+2026-10-21T05:37:49.0757184Z	craft-inventory	PASS WBI actual card Wood2+Fiber2
+2026-10-21T05:37:49.2815272Z	craft-inventory	PASS WBII actual card Wood2+Bronze2+Leather1
+2026-10-21T05:37:49.3012098Z	baseline-navigation-light	begin
+2026-10-21T05:37:49.3063206Z	baseline-navigation-light	PASS Compass Home assigned
+2026-10-21T05:37:49.3078587Z	baseline-navigation-light	PASS Compass Home bearing available
+2026-10-21T05:37:49.3160079Z	baseline-navigation-light	PASS persistent Beacon selected
+2026-10-21T05:37:49.3226525Z	baseline-navigation-light	PASS Telescope primary
+2026-10-21T05:37:50.1262704Z	baseline-navigation-light	PASS Telescope terrain-only presentation
+2026-10-21T05:37:54.7090157Z	baseline-navigation-light	PASS Torch held
+2026-10-21T05:37:54.7131412Z	baseline-navigation-light	PASS Lantern equip
+2026-10-21T05:37:54.7187287Z	baseline-navigation-light	PASS Lantern hands free radius8.5
+2026-10-21T05:37:54.7218776Z	baseline-navigation-light	PASS Crystal Lantern equip
+2026-10-21T05:37:54.7286380Z	baseline-navigation-light	PASS Crystal Lantern radius11.475
+2026-10-21T05:37:54.7296579Z	pan-water	begin
+2026-10-21T05:37:55.5746687Z	pan-water	PASS Pan physically harvests Tin, no radar
+2026-10-21T05:37:56.3596826Z	pan-water	PASS Waterskin refill natural water
+2026-10-21T05:37:56.3634635Z	pan-water	PASS Waterskin drink charge
+2026-10-21T05:37:56.3644653Z	survey-local	begin
+2026-10-21T05:37:57.2344731Z	survey-local	PASS existing Iron rule
+2026-10-21T05:37:57.2422782Z	survey-local	PASS primary starts 11-no-proper-tool
+2026-10-21T05:37:57.2442959Z	survey-local	PASS same-frame duplicate rejected
+2026-10-21T05:37:58.7513357Z	survey-local	PASS 11-no-proper-tool result=Empty
+2026-10-21T05:37:58.7523773Z	survey-local	PASS one query on completion
+2026-10-21T05:37:58.7539102Z	survey-local	PASS no chunk/simulation/presentation increase
+2026-10-21T05:37:58.7554797Z	survey-local	PASS cooldown enforced
+2026-10-21T05:37:58.7575132Z	survey-local	bounded colliders=13 query_ms=0.8768
+2026-10-21T05:37:58.7590628Z	survey-local	PASS primary starts 12-local-ore
+2026-10-21T05:37:58.7606033Z	survey-local	PASS same-frame duplicate rejected
+2026-10-21T05:38:00.2614507Z	survey-local	PASS 12-local-ore result=Found
+2026-10-21T05:38:00.2629714Z	survey-local	PASS one query on completion
+2026-10-21T05:38:00.2640016Z	survey-local	PASS no chunk/simulation/presentation increase
+2026-10-21T05:38:00.2650452Z	survey-local	PASS cooldown enforced
+2026-10-21T05:38:00.2665330Z	survey-local	bounded colliders=13 query_ms=0.9958
+2026-10-21T05:38:00.2675632Z	survey-local	PASS coarse west Iron only, no coords
+2026-10-21T05:38:00.2731284Z	survey-local	PASS primary starts 13-wall-blocked
+2026-10-21T05:38:00.2736352Z	survey-local	PASS same-frame duplicate rejected
+2026-10-21T05:38:01.7758381Z	survey-local	PASS 13-wall-blocked result=Empty
+2026-10-21T05:38:01.7763582Z	survey-local	PASS one query on completion
+2026-10-21T05:38:01.7783999Z	survey-local	PASS no chunk/simulation/presentation increase
+2026-10-21T05:38:01.7789336Z	survey-local	PASS cooldown enforced
+2026-10-21T05:38:01.7799452Z	survey-local	bounded colliders=14 query_ms=0.1607
+2026-10-21T05:38:01.7819801Z	survey-local	PASS primary starts 14-no-ore
+2026-10-21T05:38:01.7829991Z	survey-local	PASS same-frame duplicate rejected
+2026-10-21T05:38:03.2885271Z	survey-local	PASS 14-no-ore result=Empty
+2026-10-21T05:38:03.2895254Z	survey-local	PASS one query on completion
+2026-10-21T05:38:03.2895254Z	survey-local	PASS no chunk/simulation/presentation increase
+2026-10-21T05:38:03.2921099Z	survey-local	PASS cooldown enforced
+2026-10-21T05:38:03.2931257Z	survey-local	bounded colliders=12 query_ms=0.0416
+2026-10-21T05:38:03.2931257Z	survey-cave-boundary	begin
+2026-10-21T05:38:04.3059667Z	survey-cave-boundary	PASS existing Iron rule
+2026-10-21T05:38:04.3079971Z	survey-cave-boundary	PASS primary starts 15-cave
+2026-10-21T05:38:04.3079971Z	survey-cave-boundary	PASS same-frame duplicate rejected
+2026-10-21T05:38:05.8106624Z	survey-cave-boundary	PASS 15-cave result=Found
+2026-10-21T05:38:05.8121731Z	survey-cave-boundary	PASS one query on completion
+2026-10-21T05:38:05.8131790Z	survey-cave-boundary	PASS no chunk/simulation/presentation increase
+2026-10-21T05:38:05.8136832Z	survey-cave-boundary	PASS cooldown enforced
+2026-10-21T05:38:05.8146871Z	survey-cave-boundary	bounded colliders=3 query_ms=0.0777
+2026-10-21T05:38:05.9141953Z	survey-cave-boundary	PASS existing Iron rule
+2026-10-21T05:38:05.9157387Z	survey-cave-boundary	PASS primary starts 16-chunk-boundary
+2026-10-21T05:38:05.9172676Z	survey-cave-boundary	PASS same-frame duplicate rejected
+2026-10-21T05:38:07.4219512Z	survey-cave-boundary	PASS 16-chunk-boundary result=Found
+2026-10-21T05:38:07.4250938Z	survey-cave-boundary	PASS one query on completion
+2026-10-21T05:38:07.4279080Z	survey-cave-boundary	PASS no chunk/simulation/presentation increase
+2026-10-21T05:38:07.4295123Z	survey-cave-boundary	PASS cooldown enforced
+2026-10-21T05:38:07.4310456Z	survey-cave-boundary	bounded colliders=3 query_ms=0.0764
+2026-10-21T05:38:07.4358370Z	survey-cave-boundary	PASS primary starts 17-ungenerated
+2026-10-21T05:38:07.4392768Z	survey-cave-boundary	PASS same-frame duplicate rejected
+2026-10-21T05:38:08.9410986Z	survey-cave-boundary	PASS 17-ungenerated result=Empty
+2026-10-21T05:38:08.9421062Z	survey-cave-boundary	PASS one query on completion
+2026-10-21T05:38:08.9431072Z	survey-cave-boundary	PASS no chunk/simulation/presentation increase
+2026-10-21T05:38:08.9441064Z	survey-cave-boundary	PASS cooldown enforced
+2026-10-21T05:38:08.9441064Z	survey-cave-boundary	bounded colliders=1 query_ms=0.0165
+2026-10-21T05:38:08.9461446Z	survey-cancel-repeat	begin
+2026-10-21T05:38:08.9506993Z	survey-cancel-repeat	PASS start movement cancel
+2026-10-21T05:38:09.1566464Z	survey-cancel-repeat	PASS input movement cancels
+2026-10-21T05:38:09.1607767Z	survey-cancel-repeat	PASS start damage
+2026-10-21T05:38:09.3694388Z	survey-cancel-repeat	PASS damage cancels without query
+2026-10-21T05:38:09.3714811Z	survey-cancel-repeat	PASS start modal
+2026-10-21T05:38:09.5780256Z	survey-cancel-repeat	PASS modal cancels without query
+2026-10-21T05:38:09.5806073Z	survey-cancel-repeat	PASS start switch
+2026-10-21T05:38:09.7874697Z	survey-cancel-repeat	PASS switch cancels without query
+2026-10-21T05:38:09.7884710Z	survey-cancel-repeat	PASS real cooldown start
+2026-10-21T05:38:11.2918773Z	survey-cancel-repeat	PASS early repeat denied
+2026-10-21T05:38:21.9957365Z	survey-cancel-repeat	PASS repeat accepted after12 seconds
+2026-10-21T05:38:23.4977820Z	survey-cancel-repeat	PASS exact two completed queries across cooldown
+2026-10-21T05:38:23.4993078Z	signal-save-load	begin
+2026-10-21T05:38:23.5008501Z	signal-save-load	PASS SP signal primary and spam reject
+2026-10-21T05:38:36.0060221Z	signal-save-load	PASS isolated Save11
+2026-10-21T05:38:47.7270024Z	signal-save-load	PASS isolated saved snapshot Apply11
+2026-10-21T05:38:48.5405412Z	signal-save-load	PASS Load discards transient signal/survey
+2026-10-21T05:38:48.5416189Z	signal-save-load	PASS new item stacks persist
+2026-10-21T05:38:48.5427239Z	signal-save-load	PASS start before death
+2026-10-21T05:38:48.7444542Z	signal-save-load	PASS death cancels and denies use
+2026-10-21T05:38:48.7454811Z	complete	complete
+2026-10-21T05:40:53.0584689Z	coop-client-join	begin
+2026-10-21T05:40:53.3445307Z	coop-client-join	PASS Client transport started
+2026-10-21T05:41:38.3461677Z	coop-client-join	FAIL Client owner spawned
+2026-10-21T05:41:38.3530892Z	failed	System.InvalidOperationException: Client owner spawned
+  at Wildfolk.Editor.ExplorationUtilityQa.Check (System.Boolean value, System.String text) [0x00024] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Editor\ExplorationUtilityQa.cs:16
+  at Wildfolk.Editor.ExplorationUtilityQa+<CoopClient>d__29.MoveNext () [0x00167] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Editor\ExplorationUtilityQa.cs:69
+  at Wildfolk.Editor.ExplorationUtilityQa+<Guard>d__16.MoveNext () [0x0003c] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Editor\ExplorationUtilityQa.cs:19
+2026-10-21T05:44:59.3397263Z	coop-client-join	begin
+2026-10-21T05:44:59.8270294Z	coop-client-join	PASS Client transport started
+2026-10-21T05:45:44.8282313Z	coop-client-join	FAIL Client owner spawned
+2026-10-21T05:45:44.8333898Z	failed	System.InvalidOperationException: Client owner spawned
+  at Wildfolk.Editor.ExplorationUtilityQa.Check (System.Boolean value, System.String text) [0x00024] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Editor\ExplorationUtilityQa.cs:16
+  at Wildfolk.Editor.ExplorationUtilityQa+<CoopClient>d__30.MoveNext () [0x0016c] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Editor\ExplorationUtilityQa.cs:70
+  at Wildfolk.Editor.ExplorationUtilityQa+<Guard>d__16.MoveNext () [0x0003c] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Editor\ExplorationUtilityQa.cs:19
+2026-10-21T05:47:11.5276696Z	host-survey	begin
+2026-10-21T05:47:11.7943275Z	host-survey	PASS Local Host
+2026-10-21T05:47:11.8138389Z	host-survey	PASS enter Host
+2026-10-21T05:47:17.4139939Z	host-survey	PASS Host ready
+2026-10-21T05:47:18.3401517Z	host-survey	PASS existing Iron rule
+2026-10-21T05:47:18.3540554Z	host-survey	PASS Host authoritative survey request
+2026-10-21T05:47:18.3588008Z	host-survey	PASS duplicate sequence rejected
+2026-10-21T05:47:19.8635076Z	host-survey	PASS server publishes owner-only coarse result
+2026-10-21T05:47:19.8650155Z	host-signals	begin
+2026-10-21T05:47:19.8708023Z	host-signals	PASS Host signal accepted once; serial and cooldown reject spam
+2026-10-21T05:47:19.8743507Z	host-signals	PASS server signal replicated
+2026-10-21T05:47:20.0489612Z	host-signals	PASS simulated receiver sees latest eligible signal
+2026-10-21T05:47:20.0521597Z	host-signals	PASS simulated peer accepted signal
+2026-10-21T05:47:20.0547079Z	host-signals	PASS simulated peer spam denied
+2026-10-21T05:47:20.1612019Z	host-signals	PASS simulated receiver sees latest eligible signal
+2026-10-21T05:47:20.1632465Z	host-signals	PASS simulated peer accepted signal
+2026-10-21T05:47:20.1647657Z	host-signals	PASS simulated peer spam denied
+2026-10-21T05:47:20.2743797Z	host-signals	PASS simulated receiver sees latest eligible signal
+2026-10-21T05:47:20.2753894Z	host-signals	PASS simulated peer accepted signal
+2026-10-21T05:47:20.2768963Z	host-signals	PASS simulated peer spam denied
+2026-10-21T05:47:20.3854311Z	host-signals	PASS at most four sender signals
+2026-10-21T05:47:20.3882512Z	host-signals	PASS receiver selects only newest eligible signal
+2026-10-21T05:47:20.4243178Z	host-signals	PASS disconnect removes sender immediately
+2026-10-21T05:47:21.0705039Z	host-signals	PASS out of range signal hidden
+2026-10-21T05:47:22.2521115Z	host-signals	PASS surface signal hidden in cave
+2026-10-21T05:47:42.4731436Z	host-signals	PASS Host expiry clears all signals
+2026-10-21T05:47:42.4758853Z	host-rehost	begin
+2026-10-21T05:47:42.4778575Z	host-rehost	PASS signal before save
+2026-10-21T05:47:42.4809737Z	host-rehost	PASS channel before save
+2026-10-21T05:47:59.5669493Z	host-rehost	PASS Host Save11
+2026-10-21T05:48:32.7500964Z	host-rehost	PASS Local Host
+2026-10-21T05:48:32.7517210Z	host-rehost	PASS enter Host
+2026-10-21T05:48:42.5620606Z	host-rehost	PASS Host ready
+2026-10-21T05:48:42.6065028Z	host-rehost	PASS reHost no transient ping/channel
+2026-10-21T05:48:42.6080790Z	host-rehost	PASS reHost new inventory retained
+2026-10-21T05:48:42.6106396Z	complete	complete
+2026-10-21T05:50:17.7047670Z	coop-client-join	begin
+2026-10-21T05:50:17.9680872Z	coop-client-join	PASS Client transport started
+2026-10-21T05:50:17.9697476Z	coop-client-join	join diagnostic state=Connecting approved=False connected=False message=net.connecting reason=
+2026-10-21T05:50:19.9701715Z	coop-client-join	join diagnostic state=Connecting approved=False connected=False message=net.connecting reason=
+2026-10-21T05:50:21.9712963Z	coop-client-join	join diagnostic state=Connecting approved=False connected=False message=net.connecting reason=
+2026-10-21T05:50:23.9712675Z	coop-client-join	join diagnostic state=Idle approved=False connected=False message=net.connection_failed reason=[Disconnect Event][Client-0][TransportClientId-0][TransportShutdown] NetworkConnectionManager was shutdown. The transport was shutdown.
+2026-10-21T05:50:25.9719863Z	coop-client-join	join diagnostic state=Idle approved=False connected=False message=net.connection_failed reason=[Disconnect Event][Client-0][TransportClientId-0][TransportShutdown] NetworkConnectionManager was shutdown. The transport was shutdown.
+2026-10-21T05:50:27.9722341Z	coop-client-join	join diagnostic state=Idle approved=False connected=False message=net.connection_failed reason=[Disconnect Event][Client-0][TransportClientId-0][TransportShutdown] NetworkConnectionManager was shutdown. The transport was shutdown.
+2026-10-21T05:50:29.9723374Z	coop-client-join	join diagnostic state=Idle approved=False connected=False message=net.connection_failed reason=[Disconnect Event][Client-0][TransportClientId-0][TransportShutdown] NetworkConnectionManager was shutdown. The transport was shutdown.
+2026-10-21T05:50:31.9718916Z	coop-client-join	join diagnostic state=Idle approved=False connected=False message=net.connection_failed reason=[Disconnect Event][Client-0][TransportClientId-0][TransportShutdown] NetworkConnectionManager was shutdown. The transport was shutdown.
+2026-10-21T05:50:33.9726975Z	coop-client-join	join diagnostic state=Idle approved=False connected=False message=net.connection_failed reason=[Disconnect Event][Client-0][TransportClientId-0][TransportShutdown] NetworkConnectionManager was shutdown. The transport was shutdown.
+2026-10-21T05:50:35.9734780Z	coop-client-join	join diagnostic state=Idle approved=False connected=False message=net.connection_failed reason=[Disconnect Event][Client-0][TransportClientId-0][TransportShutdown] NetworkConnectionManager was shutdown. The transport was shutdown.
+2026-10-21T05:50:37.9730352Z	coop-client-join	join diagnostic state=Idle approved=False connected=False message=net.connection_failed reason=[Disconnect Event][Client-0][TransportClientId-0][TransportShutdown] NetworkConnectionManager was shutdown. The transport was shutdown.
+2026-10-21T05:50:39.9731073Z	coop-client-join	join diagnostic state=Idle approved=False connected=False message=net.connection_failed reason=[Disconnect Event][Client-0][TransportClientId-0][TransportShutdown] NetworkConnectionManager was shutdown. The transport was shutdown.
+2026-10-21T05:50:41.9743658Z	coop-client-join	join diagnostic state=Idle approved=False connected=False message=net.connection_failed reason=[Disconnect Event][Client-0][TransportClientId-0][TransportShutdown] NetworkConnectionManager was shutdown. The transport was shutdown.
+2026-10-21T05:51:33.6194452Z	coop-client-join	begin
+2026-10-21T05:51:34.0422729Z	coop-client-join	PASS Client transport started
+2026-10-21T05:51:34.0433451Z	coop-client-join	join diagnostic state=Connecting approved=False connected=False message=net.connecting reason=
+2026-10-21T05:51:41.0042396Z	coop-client-join	join diagnostic state=Playing approved=True connected=True message= reason=[Disconnect Event][Client-1][TransportClientId-4294967296][ClosedByRemote] Connection was closed by remote endpoint.
+2026-10-21T05:51:48.2876999Z	coop-client-join	join diagnostic state=Idle approved=False connected=False message= reason=[Disconnect Event][Client-1][TransportClientId-0][TransportShutdown] NetworkConnectionManager was shutdown. The transport was shutdown.
+2026-10-21T05:51:50.2881463Z	coop-client-join	join diagnostic state=Idle approved=False connected=False message= reason=[Disconnect Event][Client-1][TransportClientId-0][TransportShutdown] NetworkConnectionManager was shutdown. The transport was shutdown.
+2026-10-21T05:51:52.2880993Z	coop-client-join	join diagnostic state=Idle approved=False connected=False message= reason=[Disconnect Event][Client-1][TransportClientId-0][TransportShutdown] NetworkConnectionManager was shutdown. The transport was shutdown.
+2026-10-21T05:51:54.2876463Z	coop-client-join	join diagnostic state=Idle approved=False connected=False message= reason=[Disconnect Event][Client-1][TransportClientId-0][TransportShutdown] NetworkConnectionManager was shutdown. The transport was shutdown.
+2026-10-21T05:51:56.2887106Z	coop-client-join	join diagnostic state=Idle approved=False connected=False message= reason=[Disconnect Event][Client-1][TransportClientId-0][TransportShutdown] NetworkConnectionManager was shutdown. The transport was shutdown.
+2026-10-21T05:51:58.2888426Z	coop-client-join	join diagnostic state=Idle approved=False connected=False message= reason=[Disconnect Event][Client-1][TransportClientId-0][TransportShutdown] NetworkConnectionManager was shutdown. The transport was shutdown.
+2026-10-21T05:52:00.2874905Z	coop-client-join	join diagnostic state=Idle approved=False connected=False message= reason=[Disconnect Event][Client-1][TransportClientId-0][TransportShutdown] NetworkConnectionManager was shutdown. The transport was shutdown.
+2026-10-21T05:52:02.2887599Z	coop-client-join	join diagnostic state=Idle approved=False connected=False message= reason=[Disconnect Event][Client-1][TransportClientId-0][TransportShutdown] NetworkConnectionManager was shutdown. The transport was shutdown.
+2026-10-21T05:52:04.2891993Z	coop-client-join	join diagnostic state=Idle approved=False connected=False message= reason=[Disconnect Event][Client-1][TransportClientId-0][TransportShutdown] NetworkConnectionManager was shutdown. The transport was shutdown.
+2026-10-21T05:52:06.2891677Z	coop-client-join	join diagnostic state=Idle approved=False connected=False message= reason=[Disconnect Event][Client-1][TransportClientId-0][TransportShutdown] NetworkConnectionManager was shutdown. The transport was shutdown.
+2026-10-21T05:52:08.2891048Z	coop-client-join	join diagnostic state=Idle approved=False connected=False message= reason=[Disconnect Event][Client-1][TransportClientId-0][TransportShutdown] NetworkConnectionManager was shutdown. The transport was shutdown.
+2026-10-21T05:52:10.2897125Z	coop-client-join	join diagnostic state=Idle approved=False connected=False message= reason=[Disconnect Event][Client-1][TransportClientId-0][TransportShutdown] NetworkConnectionManager was shutdown. The transport was shutdown.
+2026-10-21T05:52:12.2898692Z	coop-client-join	join diagnostic state=Idle approved=False connected=False message= reason=[Disconnect Event][Client-1][TransportClientId-0][TransportShutdown] NetworkConnectionManager was shutdown. The transport was shutdown.
+2026-10-21T05:52:14.2893451Z	coop-client-join	join diagnostic state=Idle approved=False connected=False message= reason=[Disconnect Event][Client-1][TransportClientId-0][TransportShutdown] NetworkConnectionManager was shutdown. The transport was shutdown.
+2026-10-21T05:52:16.2901421Z	coop-client-join	join diagnostic state=Idle approved=False connected=False message= reason=[Disconnect Event][Client-1][TransportClientId-0][TransportShutdown] NetworkConnectionManager was shutdown. The transport was shutdown.
+2026-10-21T05:52:18.2900775Z	coop-client-join	join diagnostic state=Idle approved=False connected=False message= reason=[Disconnect Event][Client-1][TransportClientId-0][TransportShutdown] NetworkConnectionManager was shutdown. The transport was shutdown.
+2026-10-21T05:52:19.0441623Z	coop-client-join	FAIL Client owner spawned
+2026-10-21T05:52:19.0489263Z	failed	System.InvalidOperationException: Client owner spawned
+  at Wildfolk.Editor.ExplorationUtilityQa.Check (System.Boolean value, System.String text) [0x00024] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Editor\ExplorationUtilityQa.cs:16
+  at Wildfolk.Editor.ExplorationUtilityQa+<CoopClient>d__30.MoveNext () [0x00242] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Editor\ExplorationUtilityQa.cs:70
+  at Wildfolk.Editor.ExplorationUtilityQa+<Guard>d__16.MoveNext () [0x0003c] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Editor\ExplorationUtilityQa.cs:19
+2026-10-21T05:55:50.3002500Z	coop-client-join	begin
+2026-10-21T05:55:50.6123178Z	coop-client-join	PASS Client transport started
+2026-10-21T05:55:50.6133103Z	coop-client-join	join diagnostic state=Connecting approved=False connected=False message=net.connecting reason=
+2026-10-21T05:55:57.8570774Z	coop-client-join	join diagnostic state=Playing approved=True connected=True message= reason=
+2026-10-21T05:55:58.7915632Z	coop-client-join	PASS Client owner spawned
+2026-10-21T05:55:59.5248145Z	coop-client-join	PASS Client Primary request survey
+2026-10-21T05:56:00.8353650Z	coop-client-join	PASS Client receives Host result without any local resource query
+2026-10-21T05:56:00.8415001Z	coop-client-join	PASS Client receives Host temporary signal
+2026-10-21T05:56:01.5454013Z	coop-client-join	PASS Client Primary request signal
+2026-10-21T05:56:02.2476888Z	coop-client-join	PASS Client receives own server-confirmed signal
+2026-10-21T05:56:02.9500556Z	coop-client-join	PASS duplicate Client request does not extend signal
+2026-10-21T05:56:04.0655307Z	complete	complete
+2026-10-21T06:01:03.9894266Z	coop-client-join	begin
+2026-10-21T06:01:04.1831998Z	coop-client-join	PASS Client transport started
+2026-10-21T06:01:04.1842911Z	coop-client-join	join diagnostic state=Connecting approved=False connected=False message=net.connecting reason=
+2026-10-21T06:01:06.1839719Z	coop-client-join	join diagnostic state=Connecting approved=False connected=False message=net.connecting reason=
+2026-10-21T06:01:08.1841453Z	coop-client-join	join diagnostic state=Connecting approved=False connected=False message=net.connecting reason=
+2026-10-21T06:01:10.1845429Z	coop-client-join	join diagnostic state=Idle approved=False connected=False message=net.connection_failed reason=[Disconnect Event][Client-0][TransportClientId-0][TransportShutdown] NetworkConnectionManager was shutdown. The transport was shutdown.
+2026-10-21T06:01:12.1845272Z	coop-client-join	join diagnostic state=Idle approved=False connected=False message=net.connection_failed reason=[Disconnect Event][Client-0][TransportClientId-0][TransportShutdown] NetworkConnectionManager was shutdown. The transport was shutdown.
+2026-10-21T06:01:14.1838404Z	coop-client-join	join diagnostic state=Idle approved=False connected=False message=net.connection_failed reason=[Disconnect Event][Client-0][TransportClientId-0][TransportShutdown] NetworkConnectionManager was shutdown. The transport was shutdown.
+2026-10-21T06:01:16.1853884Z	coop-client-join	join diagnostic state=Idle approved=False connected=False message=net.connection_failed reason=[Disconnect Event][Client-0][TransportClientId-0][TransportShutdown] NetworkConnectionManager was shutdown. The transport was shutdown.
+2026-10-21T06:01:18.1858353Z	coop-client-join	join diagnostic state=Idle approved=False connected=False message=net.connection_failed reason=[Disconnect Event][Client-0][TransportClientId-0][TransportShutdown] NetworkConnectionManager was shutdown. The transport was shutdown.
+2026-10-21T06:01:20.1858271Z	coop-client-join	join diagnostic state=Idle approved=False connected=False message=net.connection_failed reason=[Disconnect Event][Client-0][TransportClientId-0][TransportShutdown] NetworkConnectionManager was shutdown. The transport was shutdown.
+2026-10-21T06:01:22.1847018Z	coop-client-join	join diagnostic state=Idle approved=False connected=False message=net.connection_failed reason=[Disconnect Event][Client-0][TransportClientId-0][TransportShutdown] NetworkConnectionManager was shutdown. The transport was shutdown.
+2026-10-21T06:01:24.1862762Z	coop-client-join	join diagnostic state=Idle approved=False connected=False message=net.connection_failed reason=[Disconnect Event][Client-0][TransportClientId-0][TransportShutdown] NetworkConnectionManager was shutdown. The transport was shutdown.
+2026-10-21T06:01:26.1861325Z	coop-client-join	join diagnostic state=Idle approved=False connected=False message=net.connection_failed reason=[Disconnect Event][Client-0][TransportClientId-0][TransportShutdown] NetworkConnectionManager was shutdown. The transport was shutdown.
+2026-10-21T06:01:28.1863543Z	coop-client-join	join diagnostic state=Idle approved=False connected=False message=net.connection_failed reason=[Disconnect Event][Client-0][TransportClientId-0][TransportShutdown] NetworkConnectionManager was shutdown. The transport was shutdown.
+2026-10-21T06:01:30.1861451Z	coop-client-join	join diagnostic state=Idle approved=False connected=False message=net.connection_failed reason=[Disconnect Event][Client-0][TransportClientId-0][TransportShutdown] NetworkConnectionManager was shutdown. The transport was shutdown.
+2026-10-21T06:01:32.1863214Z	coop-client-join	join diagnostic state=Idle approved=False connected=False message=net.connection_failed reason=[Disconnect Event][Client-0][TransportClientId-0][TransportShutdown] NetworkConnectionManager was shutdown. The transport was shutdown.
+2026-10-21T06:01:34.1863589Z	coop-client-join	join diagnostic state=Idle approved=False connected=False message=net.connection_failed reason=[Disconnect Event][Client-0][TransportClientId-0][TransportShutdown] NetworkConnectionManager was shutdown. The transport was shutdown.
+2026-10-21T06:01:36.1869521Z	coop-client-join	join diagnostic state=Idle approved=False connected=False message=net.connection_failed reason=[Disconnect Event][Client-0][TransportClientId-0][TransportShutdown] NetworkConnectionManager was shutdown. The transport was shutdown.
+2026-10-21T06:01:38.1866412Z	coop-client-join	join diagnostic state=Idle approved=False connected=False message=net.connection_failed reason=[Disconnect Event][Client-0][TransportClientId-0][TransportShutdown] NetworkConnectionManager was shutdown. The transport was shutdown.
+2026-10-21T06:01:40.1868892Z	coop-client-join	join diagnostic state=Idle approved=False connected=False message=net.connection_failed reason=[Disconnect Event][Client-0][TransportClientId-0][TransportShutdown] NetworkConnectionManager was shutdown. The transport was shutdown.
+2026-10-21T06:01:42.1872514Z	coop-client-join	join diagnostic state=Idle approved=False connected=False message=net.connection_failed reason=[Disconnect Event][Client-0][TransportClientId-0][TransportShutdown] NetworkConnectionManager was shutdown. The transport was shutdown.
+2026-10-21T06:01:44.1872809Z	coop-client-join	join diagnostic state=Idle approved=False connected=False message=net.connection_failed reason=[Disconnect Event][Client-0][TransportClientId-0][TransportShutdown] NetworkConnectionManager was shutdown. The transport was shutdown.
+2026-10-21T06:01:46.1862354Z	coop-client-join	join diagnostic state=Idle approved=False connected=False message=net.connection_failed reason=[Disconnect Event][Client-0][TransportClientId-0][TransportShutdown] NetworkConnectionManager was shutdown. The transport was shutdown.
+2026-10-21T06:01:48.1877659Z	coop-client-join	join diagnostic state=Idle approved=False connected=False message=net.connection_failed reason=[Disconnect Event][Client-0][TransportClientId-0][TransportShutdown] NetworkConnectionManager was shutdown. The transport was shutdown.
+2026-10-21T06:01:49.1847069Z	coop-client-join	FAIL Client owner spawned
+2026-10-21T06:01:49.1883347Z	failed	System.InvalidOperationException: Client owner spawned
+  at Wildfolk.Editor.ExplorationUtilityQa.Check (System.Boolean value, System.String text) [0x00024] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Editor\ExplorationUtilityQa.cs:16
+  at Wildfolk.Editor.ExplorationUtilityQa+<CoopClient>d__30.MoveNext () [0x00242] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Editor\ExplorationUtilityQa.cs:70
+  at Wildfolk.Editor.ExplorationUtilityQa+<Guard>d__16.MoveNext () [0x0003c] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Editor\ExplorationUtilityQa.cs:19
+2026-10-21T06:02:52.5947164Z	coop-client-join	begin
+2026-10-21T06:02:52.8380855Z	coop-client-join	PASS Client transport started
+2026-10-21T06:02:52.8391109Z	coop-client-join	join diagnostic state=Connecting approved=False connected=False message=net.connecting reason=
+2026-10-21T06:03:00.4633630Z	coop-client-join	join diagnostic state=Playing approved=True connected=True message= reason=
+2026-10-21T06:03:01.3894891Z	coop-client-join	PASS Client owner spawned
+2026-10-21T06:03:02.1137876Z	coop-client-join	PASS Client Primary request survey
+2026-10-21T06:03:03.4241354Z	coop-client-join	PASS Client receives Host result without any local resource query
+2026-10-21T06:03:03.4298986Z	coop-client-join	PASS Client receives Host temporary signal
+2026-10-21T06:03:04.1348412Z	coop-client-join	PASS Client Primary request signal
+2026-10-21T06:03:04.8383552Z	coop-client-join	PASS Client receives own server-confirmed signal
+2026-10-21T06:03:05.5446156Z	coop-client-join	PASS duplicate Client request does not extend signal
+2026-10-21T06:03:06.6699784Z	complete	complete

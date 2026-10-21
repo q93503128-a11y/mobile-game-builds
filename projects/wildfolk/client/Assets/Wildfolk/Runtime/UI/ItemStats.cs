@@ -13,6 +13,7 @@ namespace Wildfolk
         public static string Armor(ArmorDefinition armor)=>L.Format("ui.inventory.armor_detail",L.Text("ui.slot."+armor.Slot),armor.Defense)+(armor.StaminaRecoveryBonus>0 ? "\n"+L.Format("ui.armor.recovery",armor.StaminaRecoveryBonus*100) : "");
         public static string Description(ItemDefinition item)
         {
+            if(item.ExplorationUtility!=null)return L.Text("item."+item.Id+".description");
             if(item.Tool==null)return "";
             var ranged=item.Ranged;var damage=ranged==null ? item.Tool.Damage : ranged.Damage;
             var seconds=ranged==null ? item.Tool.Cooldown : ranged.DrawSeconds+ranged.RecoverySeconds;

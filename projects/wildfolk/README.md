@@ -1,6 +1,6 @@
 # Lowfire
 
-Unity **6000.3.19f1 LTS / Universal 2D**, 모바일 Landscape(1920×1080) 탑다운 생존 게임이다. 표시명 Lowfire, 내부 Wildfolk namespace·경로·저장 식별자는 유지한다. 현재 alpha 콘텐츠는 **Item132 / Recipe109 / Save11 / Protocol16**, Workbench I→II→III와 Wood/Stone/Iron/Steel/Diamond 장비다.
+Unity **6000.3.19f1 LTS / Universal 2D**, 모바일 Landscape(1920×1080) 탑다운 생존 게임이다. 표시명 Lowfire, 내부 Wildfolk namespace·경로·저장 식별자는 유지한다. 현재 alpha 콘텐츠는 **Item134 / Recipe111 / Save11 / Protocol17**, Workbench I→II→III와 Wood/Stone/Iron/Steel/Diamond 장비다.
 
 ## 실행과 플레이
 
@@ -36,3 +36,7 @@ Multiplayer는 Relay Room Code 또는 Local Network Host/Join이다. Host가 이
 약초는 Forest/Wetlands에서 맨손으로 채집한다. 응급 붕대는 Hand에서 Fiber2+Herb1→20HP/8초, 기존 회복 연고는 Gland1+Herb1+Fiber2→즉시30HP다. 공용4초·붕대 비중첩, 자연회복/음식·기존 Station은 유지한다. [의약 조사·경제·검수](validation/medicine-expansion/REVIEW.md). Food Expansion2-B는 아래 Meal 선택을 추가했다.
 
 기본식·일반 Stew·기능성 Meal을 구분한다. Cooking Pot의 사냥꾼 스튜(MaxHP+8),채집꾼 수프(안전 HP회복+0.15/초),원정 국물(Stamina회복+10%)은150초간 하나만 유지되며 교체된다. 기본 HP를 즉시 채우거나 Skill Rank를 올리지 않는다. Campfire/기존 의약·즉시회복 Broth는 유지한다. [음식 전체 감사·외부 비교·경제·검수](validation/food-expansion/REVIEW.md). 2-C는 사냥꾼 창1개를 WBII에 추가했다. Iron Spear1+Bone6+Leather2, 피해27/사거리3.35/공격간격0.90초이며 철창보다 약하고 느리다. Carapace Head는 지원 modifier 중복으로 보류, Vest/Skill/Meal은 유지한다. [2-C 감사·경제·검수](validation/creature-sidegrade-expansion/REVIEW.md). 2-D는 기존 Raw Fish+붕어/농어/고등어/장어의5 catch identity,수역/안쪽수면/밤 조건과Hand손질4개·Campfire소분식1개를 추가했다. 미끼/새Rod/Skill/Station0,Save11/Protocol16. [2-D 감사·외부비교·경제·검수](validation/fishing-aquatic-expansion/REVIEW.md). 다음 예정은2-E Exploration / Utility Expansion이다.
+
+## Exploration / Utility 2-E
+
+현재 **Item134 / Recipe111 / Save11 / Protocol17**. WBII 광물 조사기(정지1.2초·반경18·보유 도구로 채취 가능한 광물8방향·6초 안내·12초 간격), WBI 신호 호각(근처 동료60m·20초·30초 간격)을 추가했다. 기존 Compass/Telescope/Beacon/Pan/3조명은 유지한다. Recall/Bedroll/Backpack은 보류. [감사·외부 비교·검증](validation/exploration-utility-expansion/REVIEW.md).

@@ -25,6 +25,7 @@ namespace Wildfolk
         public ConsumableDefinition RawDrink,CleanDrink;
         public bool FishingRod;
         public bool Telescope;
+        public ExplorationUtilityDefinition ExplorationUtility;
         public TurretModuleDefinition TurretModule;
         public GameplayLightDefinition EquippedLight;
         public RangedWeaponDefinition Ranged;

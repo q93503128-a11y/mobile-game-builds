@@ -39,7 +39,7 @@ namespace Wildfolk
             if(EquipLabel!=null)EquipLabel.text=L.Text(item!=null && item.Telescope ? "ui.telescope.use" : "ui.action.equip");
             if(item!=null && item.Telescope)Details.text=L.Text("ui.telescope.aim");
             if(item!=null && item.EquippedLight!=null){Details.text=L.Text("ui.utility.info");UnequipButton.interactable=Equipment.Utility!=null;}
-            if(item!=null && item.Tool!=null)Details.text=ItemStats.Description(item);
+            if(item!=null && (item.Tool!=null || item.ExplorationUtility!=null))Details.text=ItemStats.Description(item);
             if(item!=null && item.Consumable!=null)Details.text=ItemStats.Food(item.Consumable);
             if(item!=null && item.FishingRod)Details.text=L.Text("ui.fishing.rod");
             if(item!=null && item.Consumable!=null && L.Has("item."+item.Id+".description"))Details.text+="\n"+L.Text("item."+item.Id+".description");

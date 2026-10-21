@@ -241,3 +241,12 @@ Meal3종/150초/동시1개/교체,공용4초다.Hunter MaxHP+8(HPheal0),Forager 
 시간 .45초cast/3초입질/2.2초입력/.6초회수는유지한다.내륙raw8·습지raw6·동굴raw1,습지붕어4,내륙/습지안쪽농어2,바다고등어1,내륙/습지Night장어.5의조건부가중치다.안쪽조건은실제DeepWater와shore inset≥2.25unit.동굴에는적용하지않는다.전어종catch1,손질raw수율붕어1/농어2/고등어1/장어2.최대raw기대량은내륙깊은밤13/10.5=1.2381/catch,기본1대비+23.81%.고등어1+Berry1/8초→소분식2(H20/T2씩),새Meal0.
 
 반응.3초가정3.9초/catch의생산상한은15.38/min/person.실제기본Hunger4.8/min대비CookedFish26은.1846fish/min,낚시.72초/min+가열.923초/min의산술하한(여행/가방/실패제외)이다.기존낚시도무한시간식량원이며기본공급을줄이지않았다.4인동시기준.7385fish/min/낚시2.88person秒/가열3.692station秒.현멀티자연H/T소모는기존대로꺼져있으므로이4P유지량은동일생존소모를가정한비교예산이다.실제현재MP의자연유지필요량은0이며선택적음식/Meal소비만발생한다.낚시로Leather/Bone/Feather/XP/Gold/광물은공급하지않는다. [전체수역확률·1P/4P·장시간미실측](../validation/fishing-aquatic-expansion/REVIEW.md).
+
+## Exploration Utility2-E
+
+|도구|제작|범위/시간|비용 선택|
+|---|---|---|---|
+|광물 조사기|WBII Wood2+Bronze2+Leather1→1|18unit, 정지1.2s, 결과6s, 시작부터cooldown12s|stack1/손 선택, 실제 채취 도구 추가 소지|
+|신호 호각|WBI Wood2+Fiber2→1|근처동료60unit,20s, cooldown30s|stack1, sender1개/team최대4, HUD최근1개|
+
+개인 두 도구 Wood4/Bronze2/Leather1/Fiber2,4인 각자 Wood16/Bronze8/Leather4/Fiber8. 팀 공유1세트는 개인1세트와 같다. reusable이므로 반복 원재료 소비0. Crystal/MechanicalPart/Steel 신규 경쟁0. 기존 WBI35/II24에 각1Recipe만 추가했다. [외부 조사·전체 utility 비용](../validation/exploration-utility-expansion/REVIEW.md).
