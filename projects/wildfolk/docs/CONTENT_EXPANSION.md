@@ -1,6 +1,6 @@
-# 현재 제작 콘텐츠 · Creature Material Sidegrade 2-C
+# 현재 제작 콘텐츠 · Fishing / Aquatic 2-D
 
-2026-10-21 Sidegrade2-C 반영. **Item127 / Recipe104 / Save11 / Protocol15**, 신규 월드 generation3. Workbench I→II→III와 Wood/Stone/Iron/Steel/Diamond를 제공한다. 실제 정본은 ContentCatalog/RecipeDefinition/각 행동·Loot 에셋이다. 아래 표는 해당 Unity 에셋에서 추출했다. 이전 I–II/III 패스의 경위는 validation/tier-three와 기존 review 기록을 따른다.
+2026-10-21 Fishing2-D 반영. **Item132 / Recipe109 / Save11 / Protocol16**, 신규 월드 generation3. Workbench I→II→III와 Wood/Stone/Iron/Steel/Diamond를 제공한다. 실제 정본은 ContentCatalog/RecipeDefinition/각 행동·Loot 에셋이다. 아래 기존104개 표와 마지막2-D 신규5개 표가 전체109개다. 이전 I–II/III 패스의 경위는 validation/tier-three와 기존 review 기록을 따른다.
 
 ## 이번 연결
 
@@ -17,18 +17,18 @@ Telescope는 제한된 지형 표시만 요청하고 simulation chunk를 늘리�
 |Station|현재 Recipe|역할 / 겹침 검토|
 |---|---:|---|
 |BlastFurnace|1|Steel1개. Coal을 쓰는 고급 합금 단계 자체가 역할.|
-|Campfire|6|단순 가열/물. Trail Ration1개 추가.|
+|Campfire|7|단순 가열/물·Trail Ration·고등어 소분식.|
 |CookingPot|9|일반 Stew·즉시 회복 Broth·단일 기능 Meal3개.|
 |Furnace|4|Iron/Copper/Tin/Bronze4개. 생물 가공을 억지로 넣지 않음.|
-|None|6|현장 조립·기본 생존. 약초 기반 붕대·연고2개.|
+|None|10|현장 조립·기본 생존·붕대·연고·선택 생선 손질4개.|
 |TurretWorkbench|8|포탑·탄약·모듈8개. Frame의 Leather2를 Leather1+Chitin2로 조정.|
 |Workbench 1|35|기본 도구·장비·시설 조립. Bone Arrow/Trap2개 추가.|
 |Workbench 2|24|중기 장비·시설. Vest/Barbed Bolt2개 추가.|
 |Workbench 3|11|Diamond·유틸리티·Turret 진입. 이번 추가0.|
 
-Workbench 수는 tier별 신규 Recipe다. I35 / II24 / III11이며 누적35/59/70다. Hand6, Campfire6, Pot9, Furnace4, Blast1, Turret8과 합쳐104이다. 전문 처리 시설을 추가하면 맡길 실재 Recipe가 너무 적고 기존 시설과 역할이 겹친다. Furnace의4개와 Blast의1개는 변경하지 않았다. 시설 수를 채우기 위한 새 중간재는 없다.
+Workbench 수는 tier별 신규 Recipe다. I35 / II24 / III11이며 누적35/59/70다. Hand10, Campfire7, Pot9, Furnace4, Blast1, Turret8과 합쳐109이다. 전문 처리 시설을 추가하면 맡길 실재 Recipe가 너무 적고 기존 시설과 역할이 겹친다. Furnace의4개와 Blast의1개는 변경하지 않았다. 시설 수를 채우기 위한 새 중간재는 없다.
 
-## 현재 전체 Recipe
+## 기존104 Recipe (신규5개는 마지막2-D 표)
 
 None은 Hand, Workbench tier는 요구 최소값이다. 상위 Workbench는 하위 Recipe를 유지한다. 초는 해당 Recipe의 기본 처리시간이며 시설의 ProcessingSpeed가 적용된다. 병/용기 recipe의 Charges/Quality는 실제 데이터와 공용 inventory codec을 사용한다.
 
@@ -158,3 +158,18 @@ None은 Hand, Workbench tier는 요구 최소값이다. 상위 Workbench는 하�
 ## Sidegrade2-C · 현재
 
 추가Item/Recipe각1로127/104. 사냥꾼 창은WBII IronSpear1+Bone6+Leather2, Damage27/Range3.35/Arc24°/Cooldown.90/Duration.63/단일대상이다. Iron29/2.8/.78보다거리만길고피해·속도·Arc가낮다. 기존Steel/Diamond체인은Hunter를재료로받지않는다. Head는Defense/Recovery외지원효과가없어보류하며Vest변경0,새raw/Station0. Bone5sink/Chitin3sink,Save11/Protocol15유지. [조사·장비감사·1P/4P·실제검수](../validation/creature-sidegrade-expansion/REVIEW.md).
+
+
+## Fishing2-D · 현재 추가 Recipe5
+
+현재 총Item132/Recipe109/Save11/Protocol16. 기존104개 Recipe와 이전 검수 기록은 보존한다. 신규 raw Item은 물고기4종, 완성 음식1개,새Station0이다.
+
+|ID|결과|Station|재료|초|
+|---|---|---|---|---:|
+|fillet_crucian_carp|raw_fish1|Hand|crucian_carp1|0|
+|fillet_perch|raw_fish2|Hand|perch1|0|
+|fillet_mackerel|raw_fish1|Hand|mackerel1|0|
+|fillet_eel|raw_fish2|Hand|eel1|0|
+|fish_portions|fish_portions2|Campfire|mackerel1+berry1|8|
+
+5catch identity와 수역 table·소비/손질 선택은 [음식 정본](FOOD_AND_FISHING.md),선정/배제 이유와외부비교·1P/4P·검증한계는 [2-D REVIEW](../validation/fishing-aquatic-expansion/REVIEW.md)를 따른다. Hand10/Campfire7/Pot9/WBI35/II24/III11이며 기존 금속/시설 예산은 바뀌지 않는다.

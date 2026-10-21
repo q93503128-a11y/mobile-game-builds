@@ -1,6 +1,6 @@
 # Lowfire
 
-Unity **6000.3.19f1 LTS / Universal 2D**, 모바일 Landscape(1920×1080) 탑다운 생존 게임이다. 표시명 Lowfire, 내부 Wildfolk namespace·경로·저장 식별자는 유지한다. 현재 alpha 콘텐츠는 **Item127 / Recipe104 / Save11 / Protocol15**, Workbench I→II→III와 Wood/Stone/Iron/Steel/Diamond 장비다.
+Unity **6000.3.19f1 LTS / Universal 2D**, 모바일 Landscape(1920×1080) 탑다운 생존 게임이다. 표시명 Lowfire, 내부 Wildfolk namespace·경로·저장 식별자는 유지한다. 현재 alpha 콘텐츠는 **Item132 / Recipe109 / Save11 / Protocol16**, Workbench I→II→III와 Wood/Stone/Iron/Steel/Diamond 장비다.
 
 ## 실행과 플레이
 
@@ -25,7 +25,7 @@ Multiplayer는 Relay Room Code 또는 Local Network Host/Join이다. Host가 이
 ## 정본·개발·검증
 
 - 작업 전 [AGENTS](AGENTS.md)를 읽는다. main 직접 작업, canonical source 수정, PR/임시 branch 금지.
-- [기획](docs/DESIGN_BIBLE.md), [콘텐츠/전체104 Recipe](docs/CONTENT_EXPANSION.md), [생물·드랍](docs/CREATURES_AND_LOOT.md), [제작](docs/CRAFTING.md), [음식](docs/FOOD_AND_FISHING.md), [수치](docs/BALANCE.md), [월드](docs/WORLD_GENERATION.md), [저장](docs/SAVE_PERSISTENCE.md), [구조](docs/ARCHITECTURE.md).
+- [기획](docs/DESIGN_BIBLE.md), [콘텐츠/전체109 Recipe](docs/CONTENT_EXPANSION.md), [생물·드랍](docs/CREATURES_AND_LOOT.md), [제작](docs/CRAFTING.md), [음식](docs/FOOD_AND_FISHING.md), [수치](docs/BALANCE.md), [월드](docs/WORLD_GENERATION.md), [저장](docs/SAVE_PERSISTENCE.md), [구조](docs/ARCHITECTURE.md).
 - [이번 외부 비교·구현·경제·검수](validation/creature-loot-expansion/REVIEW.md). 과거 validation/review는 당시 기록이다.
 - 소스 검사: `python tests/validate_visual_project.py client`. Unity EditMode/PlayMode는 Assets/Wildfolk/Tests. 자동 검사와 실제 Play 검수는 구분한다.
 - 신규 생물/아이콘은 기존 Pillow 방식의 `tools/generate_creature_loot_art.py` 원본이다. 기존 art 출처는 [SOURCE_ART](docs/SOURCE_ART.md). 외부 게임 asset/code/layout을 복제하지 않는다.
@@ -35,4 +35,4 @@ Multiplayer는 Relay Room Code 또는 Local Network Host/Join이다. Host가 이
 
 약초는 Forest/Wetlands에서 맨손으로 채집한다. 응급 붕대는 Hand에서 Fiber2+Herb1→20HP/8초, 기존 회복 연고는 Gland1+Herb1+Fiber2→즉시30HP다. 공용4초·붕대 비중첩, 자연회복/음식·기존 Station은 유지한다. [의약 조사·경제·검수](validation/medicine-expansion/REVIEW.md). Food Expansion2-B는 아래 Meal 선택을 추가했다.
 
-기본식·일반 Stew·기능성 Meal을 구분한다. Cooking Pot의 사냥꾼 스튜(MaxHP+8),채집꾼 수프(안전 HP회복+0.15/초),원정 국물(Stamina회복+10%)은150초간 하나만 유지되며 교체된다. 기본 HP를 즉시 채우거나 Skill Rank를 올리지 않는다. Campfire/기존 의약·즉시회복 Broth는 유지한다. [음식 전체 감사·외부 비교·경제·검수](validation/food-expansion/REVIEW.md). 2-C는 사냥꾼 창1개를 WBII에 추가했다. Iron Spear1+Bone6+Leather2, 피해27/사거리3.35/공격간격0.90초이며 철창보다 약하고 느리다. Carapace Head는 지원 modifier 중복으로 보류, Vest/Skill/Meal은 유지한다. [2-C 감사·경제·검수](validation/creature-sidegrade-expansion/REVIEW.md). 다음 예정은2-D Fishing / Aquatic Content Expansion이다.
+기본식·일반 Stew·기능성 Meal을 구분한다. Cooking Pot의 사냥꾼 스튜(MaxHP+8),채집꾼 수프(안전 HP회복+0.15/초),원정 국물(Stamina회복+10%)은150초간 하나만 유지되며 교체된다. 기본 HP를 즉시 채우거나 Skill Rank를 올리지 않는다. Campfire/기존 의약·즉시회복 Broth는 유지한다. [음식 전체 감사·외부 비교·경제·검수](validation/food-expansion/REVIEW.md). 2-C는 사냥꾼 창1개를 WBII에 추가했다. Iron Spear1+Bone6+Leather2, 피해27/사거리3.35/공격간격0.90초이며 철창보다 약하고 느리다. Carapace Head는 지원 modifier 중복으로 보류, Vest/Skill/Meal은 유지한다. [2-C 감사·경제·검수](validation/creature-sidegrade-expansion/REVIEW.md). 2-D는 기존 Raw Fish+붕어/농어/고등어/장어의5 catch identity,수역/안쪽수면/밤 조건과Hand손질4개·Campfire소분식1개를 추가했다. 미끼/새Rod/Skill/Station0,Save11/Protocol16. [2-D 감사·외부비교·경제·검수](validation/fishing-aquatic-expansion/REVIEW.md). 다음 예정은2-E Exploration / Utility Expansion이다.

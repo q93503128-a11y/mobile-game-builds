@@ -23,7 +23,7 @@ namespace Wildfolk
             private readonly HashSet<ItemDefinition> path=new HashSet<ItemDefinition>();
             public int WorkbenchTier=1;
             public Planner(ContentCatalog value,int maximumTier)
-            {catalog=value;foreach(var r in catalog.Recipes){if(r.ResultCharges>0 || r.RequiredWorkbenchTier>maximumTier)continue;if(!recipes.TryAdd(r.Result,r))throw new InvalidOperationException("Ambiguous progression recipe");}}
+            {catalog=value;foreach(var r in catalog.Recipes){if(r.OptionalConversion || r.ResultCharges>0 || r.RequiredWorkbenchTier>maximumTier)continue;if(!recipes.TryAdd(r.Result,r))throw new InvalidOperationException("Ambiguous progression recipe");}}
             private static void Add(Dictionary<ItemDefinition,int> map,ItemDefinition item,int n)
             {map.TryGetValue(item,out var old);map[item]=checked(old+n);}
             public void Take(ItemDefinition item,int count,Dictionary<ItemDefinition,int> group)

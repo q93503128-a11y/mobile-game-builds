@@ -129,7 +129,7 @@ namespace Wildfolk.Editor
             var equipment=player.GetComponent<PlayerEquipment>();if(equipment.UtilityVisual==null){var g=new GameObject("Belt Lantern");g.transform.SetParent(player.transform,false);g.transform.localPosition=new Vector3(-.48f,-.25f,0);g.transform.localScale=Vector3.one*.27f;equipment.UtilityVisual=g.AddComponent<SpriteRenderer>();equipment.UtilityVisual.sharedMaterial=equipment.HeldVisual.sharedMaterial;equipment.UtilityVisual.sortingOrder=WorldSorting.Overlay;}
             if(player.GetComponent<PlayerWaterskin>()==null)player.AddComponent<PlayerWaterskin>();
             var ranged=player.GetComponent<PlayerRanged>()??player.AddComponent<PlayerRanged>();ranged.Projectile=projectile;
-            var fishing=player.GetComponent<PlayerFishing>()??player.AddComponent<PlayerFishing>();fishing.Fish=I("raw_fish");fishing.BobberSprite=VisualArtImporter.Sprite("fishing_bobber");fishing.BiteSprite=VisualArtImporter.Sprite("fishing_bite");
+            var fishing=player.GetComponent<PlayerFishing>()??player.AddComponent<PlayerFishing>();fishing.CatchTable=AssetDatabase.LoadAssetAtPath<FishingLootTable>("Assets/Wildfolk/Data/FishingCatches.asset");fishing.BobberSprite=VisualArtImporter.Sprite("fishing_bobber");fishing.BiteSprite=VisualArtImporter.Sprite("fishing_bite");
             if(player.GetComponent<NetworkPlayer>()!=null){if(player.GetComponent<NetworkActivities>()==null)player.AddComponent<NetworkActivities>();if(player.GetComponent<NetworkContainer>()==null)player.AddComponent<NetworkContainer>();}
         }
         private static void ConfigureUtilityUi(InventoryEquipment ui)

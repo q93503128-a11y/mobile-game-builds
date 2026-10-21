@@ -28,6 +28,7 @@ namespace Wildfolk.Editor
             {
                 check(!string.IsNullOrWhiteSpace(recipe.Id) && ids.Add("recipe:"+recipe.Id),"Duplicate recipe ID: "+recipe.name);
                 check(itemSet.Contains(recipe.Result) && recipe.ResultCount>0,"Unknown result: "+recipe.name);
+                check(!recipe.OptionalConversion || recipe.EssentialPerPlayer==0 && recipe.EssentialShared==0 && recipe.ProgressionPerPlayer==0 && recipe.ProgressionShared==0,"Optional conversion cannot be a progression root: "+recipe.name);
                 check(Enum.IsDefined(typeof(RecipeCategory),recipe.Category),"Invalid recipe category");
                 check(Enum.IsDefined(typeof(StationKind),recipe.RequiredStation) && WorkbenchProgression.IsValid(recipe.RequiredWorkbenchTier),"Invalid station requirement: "+recipe.name);
                 check(recipe.FutureUnlocks!=null && recipe.FutureUnlocks.Length==0,"Additional unlock conditions are reserved, not active: "+recipe.name);
@@ -74,7 +75,7 @@ namespace Wildfolk.Editor
                 var saveIds=new HashSet<string>();foreach(var placed in UnityEngine.Object.FindObjectsByType<WorldPlaceable>(FindObjectsSortMode.None))check(!string.IsNullOrEmpty(placed.SaveId) && saveIds.Add(placed.SaveId),"Save ID collision");
                 foreach(var resource in UnityEngine.Object.FindObjectsByType<ResourceIdentity>(FindObjectsSortMode.None))check(saveIds.Add(resource.Id),"Resource save ID collision");
             }
-            QualityDataValidator.Validate(errors);EcologyDataValidator.Validate(errors);return errors;
+            FishingDataValidator.Validate(errors);QualityDataValidator.Validate(errors);EcologyDataValidator.Validate(errors);return errors;
         }
         private static void Attack(AttackProfile attack,Action<bool,string> check,string id)=>check(attack!=null && attack.MaxTargets>0 && attack.MaxTargets<=32 && attack.Range>0 && attack.ArcAngle>0 && attack.ArcAngle<=360 && attack.PierceCount>=0 && attack.AoERadius>=0,"Invalid attack profile: "+id);
         private static bool Nonnegative(float value)=>!float.IsNaN(value) && !float.IsInfinity(value) && value>=0;

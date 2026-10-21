@@ -30,7 +30,7 @@ Salve는 현장 Hand, Trail Ration은 Campfire7초, Bone/Restorative Broth는 Po
 
 기존 Cooked Meat와 Cup 정수는 유지한다. Cooking Pot은 독립 설치물이며 기존 sequential 처리기를 재사용한다. 입력을 예약하고 완료 결과는 Take로 수령하며 full bag에서는 cargo를 보존한다. 파괴/휴면/Save/reHost는 기존 처리 상태 규칙과 같다.
 
-Fishing Rod는 WB I Wood4+Fiber3. 바라보는 방향1.5~5unit의 유효 자연 수면에서 cast.45s→3초 시점 입질→2.2초 입력 창→Raw Fish1이다. 성공 후.6초 회수한다. 이동1.2unit 초과/도구 변경/사망/모달은 취소한다. 실패/가방 포화는 보상을 생성하지 않으며 입질 창이 남으면 다시 입력할 수 있다. 보상 성공은 phase를 바꾸어 중복 요청을 거절한다. Host 권위이며 client는 line/bobber/입질을 시간 표본으로 표시한다.
+Fishing Rod는 WB I Wood4+Fiber3. 바라보는 방향1.5~5unit의 유효 자연 수면에서 cast.45s→3초 시점 입질→2.2초 입력 창을 유지한다. 보상은 아래2-D 표를 따른다. 성공 후.6초 회수한다. 이동1.2unit 초과/도구 변경/사망/모달은 취소한다. 실패/가방 포화는 보상을 생성하지 않으며 입질 창이 남으면 다시 입력할 수 있다. 보상 성공은 phase를 바꾸어 중복 요청을 거절한다. Host 권위이며 client는 line/bobber/입질을 시간 표본으로 표시한다.
 
 Waterskin은 WB I Leather2+Fiber3, 한 item/3회분/stack1이다. 빈 상태 Primary는 채우기, 채운 상태 Primary는 마시기, Interact는 근처 자연 물에서 보충이다. 정수된 가득 찬 용기를 Raw로 덮지 않는다. 부분 충전/정수 용기를 보충하면 Raw3/3이 되므로 다시 정수해야 한다. Campfire의 Purify Waterskin은 Raw3/3만10초 처리해 Clean3/3으로 돌려준다. 각 drink는 기존 Cup의 Raw15 또는 Clean38 회복/불이익을 사용하며.5초 입력 간격을 둔다. 한 용기의 서로 다른 charge/quality가 합쳐지지 않는다.
 
@@ -57,3 +57,22 @@ Forager는H/T≥70%·마지막전투8초·RawWater회복차단을모두지킨다
 활성Meal은작은아이콘·이름·남은분:초로표시하고메뉴에서는숨긴다.Pot제작전영양·핵심효과·150초/교체규칙을보여주며Inventory에는상세조건·공용간격을표시한다.Load/reHost/죽음은Meal을초기화하고임시최대치를영구저장하지않는다. [조사·경제·검수](../validation/food-expansion/REVIEW.md).
 
 Host의RawWater회복차단·소모불이익타이머는기존Model.AdvanceEffects로진행한다.MPH/T자연소모를켜지않으며SP구간별소모계산순서는보존한다.식사때문에일시차단이영구차단으로남지않는다.
+
+
+## Fishing2-D · 수역·획득물·사용처
+
+Item132/Recipe109/Save11/Protocol16. 기존 Rod(WBI Wood4/Fiber3) 하나로 모든 catch에 접근한다. 미끼와 낚시 Skill은 없다. 방향을 따라 .5unit씩 검색해 첫 수면부터 이어진 구간의 최대5unit 지점을 선택한다. 육지에서 수면 안쪽까지의 signed 거리 근사2.25unit 이상+실제 DeepWater인 곳을 '안쪽 수면'으로 안내한다. 실제 수직 수심은 없다. 더 넓은 물/접근 위치·방향이 농어 접근을 바꾸며 수영/정밀 타깃 입력을 요구하지 않는다.
+
+|Catch|발견 조건|가중치|생식H/T|손질/용도|
+|---|---|---:|---|---|
+|기존 raw_fish|내륙·습지·동굴|8/6/1|6/0|기존4요리 재료 그대로|
+|붕어|Wetlands|4|6/6|Hand1→raw1,소량수분 생식 선택|
+|농어|내륙/습지 안쪽 수면|2|6/0|Hand1→raw2|
+|고등어|CoastDistance<0 바다|1|6/0|Hand1→raw1 또는 Campfire 소분식|
+|장어|내륙/습지 Night|.5|8/0|Hand1→raw2,핵심 진행 gate없음|
+
+조건을 만족하는 가중치만 정규화한다. 내륙 얕은낮100%raw,깊은낮80%raw/20%농어;습지깊은밤48%raw/32%붕어/16%농어/4%장어;바다100%고등어. 표의'깊은'은 안쪽 수면 조건의 약칭이다. generation1은내륙,동굴은공용raw만 유지한다. Cavern pool의-2/15 이진 WaterDistance를수심으로사용하지 않는다.
+
+새4종 stack50은 언제든 Hand 손질로 기존 stack과 합칠 수 있다. 실제 Recipe는 정확 Item ID로 받고 종별 요리 복제는 없다. 고등어1+열매1/8초→생선 소분식2개는 각H20/T2이며 HP/Stamina/Meal효과0이다. 보존시간 시스템이 없는 게임이므로 부패 지연이나 유통기한 효과를 주장하지 않는다. 기존 CookedFish26/0, FishStew42/26, Mixed65/18+HP8, Trail28/22+150초 회복10%를 유지한다.
+
+Host가 cast 순간 수역·밤·가중치 결과를 정한다. 가방 full에도 같은 catch를 유지하며 Bite창 안에서 공간을 비우면1회만 지급한다. 성공은 짧은 아이콘+이름+수량이며 결과모달/ID/확률을 표시하지 않는다. 이동/모달/선택 변경/사망은 취소,Use도 즉시 조건/시간을 검사한다. Save/Load/reHost는 pending 낚시를 버리고 실제 받은 가방만 보존한다. [조사·경제·자동/MCP 검수](../validation/fishing-aquatic-expansion/REVIEW.md).

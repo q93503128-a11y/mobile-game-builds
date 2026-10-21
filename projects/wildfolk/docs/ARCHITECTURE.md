@@ -1,6 +1,6 @@
 # 현재 코드 연결
 
-2026-10-20 현재: generation3 / Save11 / Protocol15, Item127 / Recipe104. v1~10 이관과 generation1/2 reader를 유지한다. 아래 날짜별 Foundation 절은 구조의 도입 기록이며 현재 데이터는 CONTENT_EXPANSION/CREATURES_AND_LOOT/SAVE_PERSISTENCE를 따른다.
+2026-10-20 현재: generation3 / Save11 / Protocol16, Item132 / Recipe109. v1~10 이관과 generation1/2 reader를 유지한다. 아래 날짜별 Foundation 절은 구조의 도입 기록이며 현재 데이터는 CONTENT_EXPANSION/CREATURES_AND_LOOT/SAVE_PERSISTENCE를 따른다.
 
 시설 실행은 ProcessingScheduler의 공용0.1초 tick에 등록된 busy Host/SP 작업만 진행한다. HitFeedback는 피격 이벤트 동안 coroutine으로 동작한다. LootTable.Roll/ProcessingQueue.Costs/CavernNetwork의 exitNext가 중복 계산을 공유한다. UI는 visibility 변경에만 강제 layout, 처리 명칭은 recipe/language cache, LocalFirelight geometry는 definition 변경에만 설정한다. Save/Protocol 필드와 inactive logical advance는 유지한다.
 Runtime/InputSystem/UGUI,Editor,EditMode/PlayMode Tests를 분리한다. 실제 수치는Data ScriptableObject가 정본이고 Editor는 없는 초기 데이터를 생성하며 기존 수치를 보존한다. 씬은 프리팹 연결과 월드Bootstrap을 저장하고 수동 테스트 월드 배치 코드는 제거했다.
@@ -212,3 +212,12 @@ ConsumableDefinition.Meal→MealDefinition(효과1종/크기/기간),MealModel�
 MealHud는0.2초확인·정수초/아이템/메뉴표시상태변경시만Text/Icon을갱신한다.Pot대기열의음식효과누락은CraftingPanel.FoodPreview로영양·단일효과·교체/기간만기존빈영역에표시한다.새buffframework/Station/자원Update/전역scan없음.
 
 Host의RawWater회복차단·소모불이익타이머는기존Model.AdvanceEffects로진행한다.MPH/T자연소모를켜지않으며SP구간별소모계산순서는보존한다.식사때문에일시차단이영구차단으로남지않는다.
+
+
+## Fishing2-D · 현재
+
+FishingLootTable의직렬화FishingCatchDefinition배열이waterflags/time/minimumshoreinset/weight/output/amount를정의한다.FishingWaterContext는기존WorldMap의실제수면query를합성하고PlayerFishing이cast시Host context/roll을확정한다.일회InventoryModel.TryExchange·phase변경이보상경계이며Use에서시간/이동/모달/장비를다시확인한다.PlayerSnapshotCodec.Apply와NetworkPlayerdespawn은낚시ResetTransient를호출한다.
+
+새ingredientgroup언어없이Hand손질4개를기존exactIDRecipe로추가했다.RecipeDefinition.OptionalConversion은자연획득재의선택가공임을표시해ProgressionEconomy의유일필수제조경로에서제외한다.해당recipe에진행root수량을지정하면validator가거절한다.기존1P/4P II/III예산이동일함을검사한다.새런타임framework/skill/tree/station은없다.
+
+Protocol16의ActivityState.CatchIndex/CatchCount는서버가결정한catch정체성을owner의작은아이콘/이름/수량에연결한다.NetworkActivities의ownerRPC는수역/가방오류안내만전달하며Client보상결정경로는없다.목록순서/필드를공유하는동일콘텐츠build를사용한다.

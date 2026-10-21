@@ -3789,6 +3789,174 @@
         "Hunter's Spear",
         "사냥꾼 창"
       ]
+    },
+    {
+      "Key": "item.crucian_carp.name",
+      "Values": [
+        "Crucian Carp",
+        "붕어"
+      ]
+    },
+    {
+      "Key": "item.crucian_carp.description",
+      "Values": [
+        "Wetlands fish. Eat for a little water, or prepare by hand into 1 Raw Fish.",
+        "습지의 물고기. 생식하면 소량의 수분을 얻고, 손질하면 생선 1개가 됩니다."
+      ]
+    },
+    {
+      "Key": "recipe.fillet_crucian_carp",
+      "Values": [
+        "Prepare Crucian Carp",
+        "붕어 손질"
+      ]
+    },
+    {
+      "Key": "item.perch.name",
+      "Values": [
+        "Perch",
+        "농어"
+      ]
+    },
+    {
+      "Key": "item.perch.description",
+      "Values": [
+        "Found farther inside inland waters. Prepare by hand into 2 Raw Fish.",
+        "내륙의 안쪽 수면에서 잡힙니다. 손질하면 생선 2개가 됩니다."
+      ]
+    },
+    {
+      "Key": "recipe.fillet_perch",
+      "Values": [
+        "Prepare Perch",
+        "농어 손질"
+      ]
+    },
+    {
+      "Key": "item.mackerel.name",
+      "Values": [
+        "Mackerel",
+        "고등어"
+      ]
+    },
+    {
+      "Key": "item.mackerel.description",
+      "Values": [
+        "Coastal sea fish. Prepare into 1 Raw Fish, or cook with a berry into 2 Fish Portions.",
+        "바다에서 잡힙니다. 생선 1개로 손질하거나 열매와 함께 생선 소분식 2개를 조리합니다."
+      ]
+    },
+    {
+      "Key": "recipe.fillet_mackerel",
+      "Values": [
+        "Prepare Mackerel",
+        "고등어 손질"
+      ]
+    },
+    {
+      "Key": "item.eel.name",
+      "Values": [
+        "Eel",
+        "장어"
+      ]
+    },
+    {
+      "Key": "item.eel.description",
+      "Values": [
+        "An uncommon night catch in inland waters and wetlands. Prepare by hand into 2 Raw Fish.",
+        "밤의 내륙·습지에서 드물게 잡힙니다. 손질하면 생선 2개가 됩니다."
+      ]
+    },
+    {
+      "Key": "recipe.fillet_eel",
+      "Values": [
+        "Prepare Eel",
+        "장어 손질"
+      ]
+    },
+    {
+      "Key": "item.fish_portions.name",
+      "Values": [
+        "Fish Portions",
+        "생선 소분식"
+      ]
+    },
+    {
+      "Key": "item.fish_portions.description",
+      "Values": [
+        "Two small servings from mackerel and a berry. Nutrition only; no Meal effect.",
+        "고등어와 열매로 만든 두 끼의 소분식. 영양만 회복하고 식사 효과는 없습니다."
+      ]
+    },
+    {
+      "Key": "fishing.small_fish",
+      "Values": [
+        "Small Freshwater Fish",
+        "작은 민물고기"
+      ]
+    },
+    {
+      "Key": "fishing.water.Inland",
+      "Values": [
+        "Inland water",
+        "내륙 수면"
+      ]
+    },
+    {
+      "Key": "fishing.water.Wetlands",
+      "Values": [
+        "Wetlands water",
+        "습지 수면"
+      ]
+    },
+    {
+      "Key": "fishing.water.Ocean",
+      "Values": [
+        "Coastal sea",
+        "해안 바다"
+      ]
+    },
+    {
+      "Key": "fishing.water.Cavern",
+      "Values": [
+        "Cavern pool",
+        "동굴 수면"
+      ]
+    },
+    {
+      "Key": "fishing.deep",
+      "Values": [
+        "Inner water",
+        "안쪽 수면"
+      ]
+    },
+    {
+      "Key": "fishing.night",
+      "Values": [
+        "Night",
+        "밤"
+      ]
+    },
+    {
+      "Key": "feedback.fishing_catch",
+      "Values": [
+        "Caught {0} ×{1}",
+        "{0} ×{1} 획득"
+      ]
+    },
+    {
+      "Key": "ui.fishing.rod",
+      "Values": [
+        "Face water and use. Cast reaches up to 5 units. Inland, wetlands and sea catches differ; inner water and night offer other catches. No bait needed.",
+        "수면을 바라보고 사용합니다. 최대 5유닛까지 던집니다. 내륙·습지·바다의 어종이 다르며 안쪽 수면과 밤에는 다른 어종을 만날 수 있습니다. 미끼는 필요하지 않습니다."
+      ]
+    },
+    {
+      "Key": "ui.crafting.result",
+      "Values": [
+        "Produces {0} ×{1}",
+        "결과: {0} ×{1}"
+      ]
     }
   ]
 }

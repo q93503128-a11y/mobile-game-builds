@@ -1,6 +1,6 @@
 # Save / Load11 · v1~v10 이관
 
-2026-10-20 현재 Save11 / Protocol15, 신규 generation3. 정본은 SaveGameRules/SaveValidation/SaveMigration/WorldSnapshotCodec/PlayerSnapshotCodec/SaveRepository다. 기존 generation1/2 지형·시설·자원 ID를 보존한다.
+2026-10-20 현재 Save11 / Protocol16, 신규 generation3. 정본은 SaveGameRules/SaveValidation/SaveMigration/WorldSnapshotCodec/PlayerSnapshotCodec/SaveRepository다. 기존 generation1/2 지형·시설·자원 ID를 보존한다.
 
 ## 파일과 검증
 
@@ -45,7 +45,7 @@ Home 검사와 실제 Continue/Save는 같은 SaveGameRules.Validate를 쓴다. 
 
 ## Host와 QA
 
-Host는 저장 성공 후 세션을 종료하고 실패하면 유지한다. reHost는 저장을 먼저 읽어 새 연결을 만들며 참가자 상태를 spawn 전에 복원한다. 멀티 HP0은 Defeated를 유지한다. Cloud/Account/Host Migration/crash 보장은 없다. Protocol15 peer끼리만 호환한다.
+Host는 저장 성공 후 세션을 종료하고 실패하면 유지한다. reHost는 저장을 먼저 읽어 새 연결을 만들며 참가자 상태를 spawn 전에 복원한다. 멀티 HP0은 Defeated를 유지한다. Cloud/Account/Host Migration/crash 보장은 없다. Protocol16 peer끼리만 호환한다.
 
 실제 사용자 파일은 QA에서 수정·삭제하지 않는다. Editor 전용 IsolatedQaProfile은 별도 Captures 디렉터리와 격리 identity/preferences를 쓴다. 실제 Unity SP/Host와 자동 회귀, 원격·단말 미검수 범위는 [이번 REVIEW](../validation/creature-loot-expansion/REVIEW.md)를 따른다. Android 강제 종료 파일 시스템은 별도 실기 검증이다.
 
@@ -58,3 +58,10 @@ Save11을 유지한다. 신규 item ID는 기존 Catalog codec, Herb 고갈/지�
 Save11유지.Meal150초의남은효과는기존Medicine정책처럼transient로취급해Load/reHost/죽음에삭제한다.PlayerSnapshotCodec은현재HP와영구최대HP(base+Vitality)중작은값만기록한다.Hunter로HP108이되었을때liveHP는그대로두고snapshot은100(Vitality1이면110까지)이다.임시최대치를초과한invalidSave·무료재지급·무한연장을피하며새migration필드없음.
 
 Protocol15는PlayerStatusState에MealItem/MealUntil을추가해클라이언트가정확한아이콘/시간을표시하기때문이다.기존PrimaryownerRPC/단조증가sequence와공용소비검증을재사용한다.실제원본UserData는격리QA와분리했다. [호환·Host/reHost 검수](../validation/food-expansion/REVIEW.md).
+
+
+## Fishing2-D · Save11 / Protocol16
+
+새물고기4/음식1과Recipe5는기존item/recipe ID codec을사용한다.기존raw_fishstack과음식queue는유효하며Saveversion/migration필드추가없다.낚시Casting/Waiting/Bite/Caught와PendingCatch는저장하지않는다.실제로지급된Inventory만영속이다.같은객체Load도PlayerSnapshotCodec.Apply에서낚시를초기화해이전pending을다시수령하지않는다.reHost/despawn도초기화한다.미끼가없어미끼복제경로도없다.
+
+Protocol16은ActivityState에CatchIndex/CatchCount가추가되고owner수역/거절안내RPC가추가되기때문이다.15peer와혼용하지않는다.서버Primary의단조sequence검사·Host원자inventory권위를유지한다.검수는격리저장만사용하며 [2-D 원본hash/mtime및Save/reHost](../validation/fishing-aquatic-expansion/REVIEW.md)를따른다.

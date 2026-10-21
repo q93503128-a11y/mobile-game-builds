@@ -57,3 +57,8 @@ III 원본 아트: tools/generate_tier_three_art.py(Pillow). 기존 Steel/Lanter
 ## Sidegrade2-C 자체 아트
 
 `tools/generate_sidegrade_art.py`가사냥꾼창의compact icon128×160과held128×353을직접Pillow로그린다. 무광목재·가공Bone보강·가죽결속·유지된철촉으로표현하며외부asset/layout은사용하지않았다. 기존CharacterFacing/PlayerCombat찌르기를재사용한다.
+
+
+## Fishing2-D · 원본 생성
+
+`tools/generate_fishing_art.py`의Pillow도형원본으로붕어(crucian_carp),농어(perch),고등어(mackerel),장어(eel),생선소분식(fish_portions)160×128아이콘을작성했다.둥근몸통/가시등/유선형꼬리/긴곡선으로실루엣을구분하며외부게임Asset을사용하지않았다.

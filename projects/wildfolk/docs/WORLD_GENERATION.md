@@ -113,3 +113,8 @@ Goblin 주민의480초 보충과 Camp 보급품 최초1회 생성을 분리했�
 ## Medicine2-A · 약초
 
 Resource rule12 / NaturalSource 마지막 항목에 Medicinal Herb를 추가했다. Surface Forest/Wetlands의 ForestFloor 또는 WetGround,6후보/청크·0.6확률·간격6·yield2·StarterSupply0이다. Grassland/Rocky/지하에는 생성하지 않는다. 기존 청크 materialization·지역 recovery를 재사용하며 자원별 Update/전역 scan을 추가하지 않는다. Generation1에는 independent salt12317의 Forest fallback12개가 있으며 기존 r index는 유지한다. Generation2/3는 기존 c/g/e ID·좌표를 보존하고 새 source만 append한다. [분포/호환 검증](../validation/medicine-expansion/REVIEW.md).
+
+
+## Fishing2-D · 기존 수면 query 사용
+
+지형 generation/Seed/자원ID/POI를 변경하지 않았다. FishingWaterContext는 실제 Contains/IsWater 이후 generation2/3의 CoastDistance<0을Ocean으로,Environment.Biome Wetlands를습지로,나머지지상을내륙으로구분한다.바다가Wetlands보다우선한다.동굴pool은Cavern공용fish,legacy1은내륙fallback이다. signed WaterDistance≤-2.25와 IsDeepWater는수직깊이가아닌물가안쪽조건이다.Ford는안쪽거리만충족해도농어조건이되지않는다.모든catch는기존Rod5unit의shorecast범위에서얻으며실제3seed/해안위치검증은 [2-D REVIEW](../validation/fishing-aquatic-expansion/REVIEW.md)에있다.선택손질4recipe는OptionalConversion으로진행예산의모호한필수제조경로로해석하지않는다.

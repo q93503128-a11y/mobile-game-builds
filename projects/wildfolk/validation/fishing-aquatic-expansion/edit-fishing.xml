@@ -1,0 +1,465 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="47" result="Failed(Child)" total="47" passed="39" failed="8" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-21 04:46:02Z" end-time="2026-10-21 04:46:07Z" duration="4.902841">
+  <test-suite type="TestSuite" id="1000" name="Wildfolk" fullname="Wildfolk" runstate="Runnable" testcasecount="181" result="Failed" site="Child" start-time="2026-10-21 04:46:02Z" end-time="2026-10-21 04:46:07Z" duration="4.902841" total="47" passed="39" failed="8" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <failure>
+      <message><![CDATA[One or more child tests had errors]]></message>
+    </failure>
+    <test-suite type="Assembly" id="1230" name="Wildfolk.Tests.EditMode.dll" fullname="C:/Users/User/Documents/ChatGPT/문승준 모바일/canonical/projects/wildfolk/tests/artifacts/unity/Library/ScriptAssemblies/Wildfolk.Tests.EditMode.dll" runstate="Runnable" testcasecount="181" result="Failed" site="Child" start-time="2026-10-21 04:46:02Z" end-time="2026-10-21 04:46:07Z" duration="4.888005" total="47" passed="39" failed="8" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="3592" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <failure>
+        <message><![CDATA[One or more child tests had errors]]></message>
+      </failure>
+      <test-suite type="TestSuite" id="1231" name="Wildfolk" fullname="Wildfolk" runstate="Runnable" testcasecount="181" result="Failed" site="Child" start-time="2026-10-21 04:46:02Z" end-time="2026-10-21 04:46:07Z" duration="4.886375" total="47" passed="39" failed="8" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <failure>
+          <message><![CDATA[One or more child tests had errors]]></message>
+        </failure>
+        <test-suite type="TestSuite" id="1232" name="Tests" fullname="Wildfolk.Tests" runstate="Runnable" testcasecount="181" result="Failed" site="Child" start-time="2026-10-21 04:46:02Z" end-time="2026-10-21 04:46:07Z" duration="4.884417" total="47" passed="39" failed="8" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <failure>
+            <message><![CDATA[One or more child tests had errors]]></message>
+          </failure>
+          <test-suite type="TestFixture" id="1019" name="ContentExpansionModelTests" fullname="Wildfolk.Tests.ContentExpansionModelTests" classname="Wildfolk.Tests.ContentExpansionModelTests" runstate="Runnable" testcasecount="6" result="Failed" site="Child" start-time="2026-10-21 04:46:02Z" end-time="2026-10-21 04:46:05Z" duration="2.515864" total="6" passed="4" failed="2" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <failure>
+              <message><![CDATA[One or more child tests had errors]]></message>
+            </failure>
+            <test-suite type="ParameterizedMethod" id="1026" name="AddedSourcesAndBudgetDoNotMoveExistingSourceIds" fullname="Wildfolk.Tests.ContentExpansionModelTests.AddedSourcesAndBudgetDoNotMoveExistingSourceIds" classname="Wildfolk.Tests.ContentExpansionModelTests" runstate="Runnable" testcasecount="2" result="Failed" site="Child" start-time="2026-10-21 04:46:02Z" end-time="2026-10-21 04:46:05Z" duration="2.453715" total="2" passed="0" failed="2" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <failure>
+                <message><![CDATA[One or more child tests had errors]]></message>
+              </failure>
+              <test-case id="1024" name="AddedSourcesAndBudgetDoNotMoveExistingSourceIds(9472026)" fullname="Wildfolk.Tests.ContentExpansionModelTests.AddedSourcesAndBudgetDoNotMoveExistingSourceIds(9472026)" methodname="AddedSourcesAndBudgetDoNotMoveExistingSourceIds" classname="Wildfolk.Tests.ContentExpansionModelTests" runstate="Runnable" seed="10519122" result="Failed" label="Error" start-time="2026-10-21 04:46:02Z" end-time="2026-10-21 04:46:04Z" duration="1.435769" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <failure>
+                  <message><![CDATA[System.InvalidOperationException : Ambiguous progression recipe]]></message>
+                  <stack-trace><![CDATA[  at Wildfolk.ProgressionEconomy+Planner..ctor (Wildfolk.ContentCatalog value, System.Int32 maximumTier) [0x00097] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Runtime\Generation\ProgressionEconomy.cs:26
+  at Wildfolk.ProgressionEconomy.Calculate (Wildfolk.ContentCatalog catalog, System.Int32 players, System.Boolean optional, System.Int32 maximumTier) [0x0001c] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Runtime\Generation\ProgressionEconomy.cs:47
+  at Wildfolk.WorldProgressionSupply.RequiredYield (Wildfolk.WorldGenerationDefinition data, System.Int32 players) [0x00000] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Runtime\Generation\WorldProgressionSupply.cs:28
+  at Wildfolk.WorldProgressionSupply.Supplement (Wildfolk.ContinentalWorldLayout world, Wildfolk.WorldGenerationDefinition data) [0x00000] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Runtime\Generation\WorldProgressionSupply.cs:10
+  at Wildfolk.ContinentalWorldLayout..ctor (Wildfolk.WorldGenerationDefinition definition, System.Int32 value, System.Boolean validateGeneration, System.Int32 generationVersion) [0x001b4] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Runtime\Generation\ContinentalWorldLayout.cs:30
+  at Wildfolk.WorldMap..ctor (Wildfolk.WorldGenerationDefinition definition, System.Int32 seed, System.Int32 generationVersion, System.Boolean validateGeneration) [0x00036] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Runtime\Generation\WorldMap.cs:37
+  at Wildfolk.Tests.ContentExpansionModelTests.AddedSourcesAndBudgetDoNotMoveExistingSourceIds (System.Int32 seed) [0x000b0] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Tests\EditMode\ContentExpansionModelTests.cs:43
+  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)
+  at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x0006a] in <41d29b352f6a475ab1bf7c6628b82790>:0 ]]></stack-trace>
+                </failure>
+              </test-case>
+              <test-case id="1025" name="AddedSourcesAndBudgetDoNotMoveExistingSourceIds(17491)" fullname="Wildfolk.Tests.ContentExpansionModelTests.AddedSourcesAndBudgetDoNotMoveExistingSourceIds(17491)" methodname="AddedSourcesAndBudgetDoNotMoveExistingSourceIds" classname="Wildfolk.Tests.ContentExpansionModelTests" runstate="Runnable" seed="1450721664" result="Failed" label="Error" start-time="2026-10-21 04:46:04Z" end-time="2026-10-21 04:46:05Z" duration="1.005478" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <failure>
+                  <message><![CDATA[System.InvalidOperationException : Ambiguous progression recipe]]></message>
+                  <stack-trace><![CDATA[  at Wildfolk.ProgressionEconomy+Planner..ctor (Wildfolk.ContentCatalog value, System.Int32 maximumTier) [0x00097] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Runtime\Generation\ProgressionEconomy.cs:26
+  at Wildfolk.ProgressionEconomy.Calculate (Wildfolk.ContentCatalog catalog, System.Int32 players, System.Boolean optional, System.Int32 maximumTier) [0x0001c] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Runtime\Generation\ProgressionEconomy.cs:47
+  at Wildfolk.WorldProgressionSupply.RequiredYield (Wildfolk.WorldGenerationDefinition data, System.Int32 players) [0x00000] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Runtime\Generation\WorldProgressionSupply.cs:28
+  at Wildfolk.WorldProgressionSupply.Supplement (Wildfolk.ContinentalWorldLayout world, Wildfolk.WorldGenerationDefinition data) [0x00000] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Runtime\Generation\WorldProgressionSupply.cs:10
+  at Wildfolk.ContinentalWorldLayout..ctor (Wildfolk.WorldGenerationDefinition definition, System.Int32 value, System.Boolean validateGeneration, System.Int32 generationVersion) [0x001b4] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Runtime\Generation\ContinentalWorldLayout.cs:30
+  at Wildfolk.WorldMap..ctor (Wildfolk.WorldGenerationDefinition definition, System.Int32 seed, System.Int32 generationVersion, System.Boolean validateGeneration) [0x00036] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Runtime\Generation\WorldMap.cs:37
+  at Wildfolk.Tests.ContentExpansionModelTests.AddedSourcesAndBudgetDoNotMoveExistingSourceIds (System.Int32 seed) [0x000b0] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Tests\EditMode\ContentExpansionModelTests.cs:43
+  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)
+  at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x0006a] in <41d29b352f6a475ab1bf7c6628b82790>:0 ]]></stack-trace>
+                </failure>
+              </test-case>
+            </test-suite>
+            <test-case id="1020" name="CatalogHasRealRecipesFourWeaponFamiliesAndSustainableBasicAmmo" fullname="Wildfolk.Tests.ContentExpansionModelTests.CatalogHasRealRecipesFourWeaponFamiliesAndSustainableBasicAmmo" methodname="CatalogHasRealRecipesFourWeaponFamiliesAndSustainableBasicAmmo" classname="Wildfolk.Tests.ContentExpansionModelTests" runstate="Runnable" seed="1991148078" result="Passed" start-time="2026-10-21 04:46:05Z" end-time="2026-10-21 04:46:05Z" duration="0.022027" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1021" name="ContainerStateTransfersAndRollsBackWithoutBecomingNewItems" fullname="Wildfolk.Tests.ContentExpansionModelTests.ContainerStateTransfersAndRollsBackWithoutBecomingNewItems" methodname="ContainerStateTransfersAndRollsBackWithoutBecomingNewItems" classname="Wildfolk.Tests.ContentExpansionModelTests" runstate="Runnable" seed="293458650" result="Passed" start-time="2026-10-21 04:46:05Z" end-time="2026-10-21 04:46:05Z" duration="0.005978" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1023" name="CookingRecipesRestoreMoreThanSimpleFoodAndBuildingRolesAreReal" fullname="Wildfolk.Tests.ContentExpansionModelTests.CookingRecipesRestoreMoreThanSimpleFoodAndBuildingRolesAreReal" methodname="CookingRecipesRestoreMoreThanSimpleFoodAndBuildingRolesAreReal" classname="Wildfolk.Tests.ContentExpansionModelTests" runstate="Runnable" seed="1910035971" result="Passed" start-time="2026-10-21 04:46:05Z" end-time="2026-10-21 04:46:05Z" duration="0.005525" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1022" name="PurificationReservesOnlyFullRawAndRestoresChargesAfterQueueSave" fullname="Wildfolk.Tests.ContentExpansionModelTests.PurificationReservesOnlyFullRawAndRestoresChargesAfterQueueSave" methodname="PurificationReservesOnlyFullRawAndRestoresChargesAfterQueueSave" classname="Wildfolk.Tests.ContentExpansionModelTests" runstate="Runnable" seed="76148166" result="Passed" start-time="2026-10-21 04:46:05Z" end-time="2026-10-21 04:46:05Z" duration="0.011280" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1041" name="CreatureSidegradeModelTests" fullname="Wildfolk.Tests.CreatureSidegradeModelTests" classname="Wildfolk.Tests.CreatureSidegradeModelTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-10-21 04:46:05Z" end-time="2026-10-21 04:46:05Z" duration="0.062769" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1043" name="AppendedItemRoundTripsExistingStackCodecAndRecipesKeepRepeatSinks" fullname="Wildfolk.Tests.CreatureSidegradeModelTests.AppendedItemRoundTripsExistingStackCodecAndRecipesKeepRepeatSinks" methodname="AppendedItemRoundTripsExistingStackCodecAndRecipesKeepRepeatSinks" classname="Wildfolk.Tests.CreatureSidegradeModelTests" runstate="Runnable" seed="552043385" result="Passed" start-time="2026-10-21 04:46:05Z" end-time="2026-10-21 04:46:05Z" duration="0.037966" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1045" name="BothLanguagesHaveNameAndDistinctHeldArt" fullname="Wildfolk.Tests.CreatureSidegradeModelTests.BothLanguagesHaveNameAndDistinctHeldArt" methodname="BothLanguagesHaveNameAndDistinctHeldArt" classname="Wildfolk.Tests.CreatureSidegradeModelTests" runstate="Runnable" seed="1280225877" result="Passed" start-time="2026-10-21 04:46:05Z" end-time="2026-10-21 04:46:05Z" duration="0.012151" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1044" name="ExistingNetworkToolAndHeldIndicesCarrySidegradeWithoutNewFields" fullname="Wildfolk.Tests.CreatureSidegradeModelTests.ExistingNetworkToolAndHeldIndicesCarrySidegradeWithoutNewFields" methodname="ExistingNetworkToolAndHeldIndicesCarrySidegradeWithoutNewFields" classname="Wildfolk.Tests.CreatureSidegradeModelTests" runstate="Runnable" seed="1594525728" result="Passed" start-time="2026-10-21 04:46:05Z" end-time="2026-10-21 04:46:05Z" duration="0.007250" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1042" name="HunterTradesDamageSpeedAndArcForReachWithoutSkippingIron" fullname="Wildfolk.Tests.CreatureSidegradeModelTests.HunterTradesDamageSpeedAndArcForReachWithoutSkippingIron" methodname="HunterTradesDamageSpeedAndArcForReachWithoutSkippingIron" classname="Wildfolk.Tests.CreatureSidegradeModelTests" runstate="Runnable" seed="2028978458" result="Passed" start-time="2026-10-21 04:46:05Z" end-time="2026-10-21 04:46:05Z" duration="0.002061" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1061" name="FishingModelTests" fullname="Wildfolk.Tests.FishingModelTests" classname="Wildfolk.Tests.FishingModelTests" runstate="Runnable" testcasecount="7" result="Failed" site="Child" start-time="2026-10-21 04:46:05Z" end-time="2026-10-21 04:46:06Z" duration="1.072470" total="7" passed="3" failed="4" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <failure>
+              <message><![CDATA[One or more child tests had errors]]></message>
+            </failure>
+            <test-suite type="ParameterizedMethod" id="1066" name="ActualGenerationSupportsReachableInlandWetlandsSeaAndDeep" fullname="Wildfolk.Tests.FishingModelTests.ActualGenerationSupportsReachableInlandWetlandsSeaAndDeep" classname="Wildfolk.Tests.FishingModelTests" runstate="Runnable" testcasecount="3" result="Failed" site="Child" start-time="2026-10-21 04:46:05Z" end-time="2026-10-21 04:46:05Z" duration="0.190139" total="3" passed="0" failed="3" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <failure>
+                <message><![CDATA[One or more child tests had errors]]></message>
+              </failure>
+              <test-case id="1063" name="ActualGenerationSupportsReachableInlandWetlandsSeaAndDeep(9472026)" fullname="Wildfolk.Tests.FishingModelTests.ActualGenerationSupportsReachableInlandWetlandsSeaAndDeep(9472026)" methodname="ActualGenerationSupportsReachableInlandWetlandsSeaAndDeep" classname="Wildfolk.Tests.FishingModelTests" runstate="Runnable" seed="422134255" result="Failed" label="Error" start-time="2026-10-21 04:46:05Z" end-time="2026-10-21 04:46:05Z" duration="0.063700" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <failure>
+                  <message><![CDATA[System.InvalidOperationException : Ambiguous progression recipe]]></message>
+                  <stack-trace><![CDATA[  at Wildfolk.ProgressionEconomy+Planner..ctor (Wildfolk.ContentCatalog value, System.Int32 maximumTier) [0x00097] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Runtime\Generation\ProgressionEconomy.cs:26
+  at Wildfolk.ProgressionEconomy.Calculate (Wildfolk.ContentCatalog catalog, System.Int32 players, System.Boolean optional, System.Int32 maximumTier) [0x0001c] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Runtime\Generation\ProgressionEconomy.cs:47
+  at Wildfolk.WorldProgressionSupply.RequiredYield (Wildfolk.WorldGenerationDefinition data, System.Int32 players) [0x00000] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Runtime\Generation\WorldProgressionSupply.cs:28
+  at Wildfolk.WorldProgressionSupply.Supplement (Wildfolk.ContinentalWorldLayout world, Wildfolk.WorldGenerationDefinition data) [0x00000] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Runtime\Generation\WorldProgressionSupply.cs:10
+  at Wildfolk.ContinentalWorldLayout..ctor (Wildfolk.WorldGenerationDefinition definition, System.Int32 value, System.Boolean validateGeneration, System.Int32 generationVersion) [0x001b4] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Runtime\Generation\ContinentalWorldLayout.cs:30
+  at Wildfolk.WorldMap..ctor (Wildfolk.WorldGenerationDefinition definition, System.Int32 seed, System.Int32 generationVersion, System.Boolean validateGeneration) [0x00036] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Runtime\Generation\WorldMap.cs:37
+  at Wildfolk.Tests.FishingModelTests.ActualGenerationSupportsReachableInlandWetlandsSeaAndDeep (System.Int32 seed) [0x0000b] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Tests\EditMode\FishingModelTests.cs:24
+  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)
+  at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x0006a] in <41d29b352f6a475ab1bf7c6628b82790>:0 ]]></stack-trace>
+                </failure>
+              </test-case>
+              <test-case id="1064" name="ActualGenerationSupportsReachableInlandWetlandsSeaAndDeep(17491)" fullname="Wildfolk.Tests.FishingModelTests.ActualGenerationSupportsReachableInlandWetlandsSeaAndDeep(17491)" methodname="ActualGenerationSupportsReachableInlandWetlandsSeaAndDeep" classname="Wildfolk.Tests.FishingModelTests" runstate="Runnable" seed="2070508804" result="Failed" label="Error" start-time="2026-10-21 04:46:05Z" end-time="2026-10-21 04:46:05Z" duration="0.062055" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <failure>
+                  <message><![CDATA[System.InvalidOperationException : Ambiguous progression recipe]]></message>
+                  <stack-trace><![CDATA[  at Wildfolk.ProgressionEconomy+Planner..ctor (Wildfolk.ContentCatalog value, System.Int32 maximumTier) [0x00097] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Runtime\Generation\ProgressionEconomy.cs:26
+  at Wildfolk.ProgressionEconomy.Calculate (Wildfolk.ContentCatalog catalog, System.Int32 players, System.Boolean optional, System.Int32 maximumTier) [0x0001c] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Runtime\Generation\ProgressionEconomy.cs:47
+  at Wildfolk.WorldProgressionSupply.RequiredYield (Wildfolk.WorldGenerationDefinition data, System.Int32 players) [0x00000] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Runtime\Generation\WorldProgressionSupply.cs:28
+  at Wildfolk.WorldProgressionSupply.Supplement (Wildfolk.ContinentalWorldLayout world, Wildfolk.WorldGenerationDefinition data) [0x00000] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Runtime\Generation\WorldProgressionSupply.cs:10
+  at Wildfolk.ContinentalWorldLayout..ctor (Wildfolk.WorldGenerationDefinition definition, System.Int32 value, System.Boolean validateGeneration, System.Int32 generationVersion) [0x001b4] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Runtime\Generation\ContinentalWorldLayout.cs:30
+  at Wildfolk.WorldMap..ctor (Wildfolk.WorldGenerationDefinition definition, System.Int32 seed, System.Int32 generationVersion, System.Boolean validateGeneration) [0x00036] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Runtime\Generation\WorldMap.cs:37
+  at Wildfolk.Tests.FishingModelTests.ActualGenerationSupportsReachableInlandWetlandsSeaAndDeep (System.Int32 seed) [0x0000b] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Tests\EditMode\FishingModelTests.cs:24
+  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)
+  at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x0006a] in <41d29b352f6a475ab1bf7c6628b82790>:0 ]]></stack-trace>
+                </failure>
+              </test-case>
+              <test-case id="1065" name="ActualGenerationSupportsReachableInlandWetlandsSeaAndDeep(-81027)" fullname="Wildfolk.Tests.FishingModelTests.ActualGenerationSupportsReachableInlandWetlandsSeaAndDeep(-81027)" methodname="ActualGenerationSupportsReachableInlandWetlandsSeaAndDeep" classname="Wildfolk.Tests.FishingModelTests" runstate="Runnable" seed="1335498647" result="Failed" label="Error" start-time="2026-10-21 04:46:05Z" end-time="2026-10-21 04:46:05Z" duration="0.063253" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <failure>
+                  <message><![CDATA[System.InvalidOperationException : Ambiguous progression recipe]]></message>
+                  <stack-trace><![CDATA[  at Wildfolk.ProgressionEconomy+Planner..ctor (Wildfolk.ContentCatalog value, System.Int32 maximumTier) [0x00097] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Runtime\Generation\ProgressionEconomy.cs:26
+  at Wildfolk.ProgressionEconomy.Calculate (Wildfolk.ContentCatalog catalog, System.Int32 players, System.Boolean optional, System.Int32 maximumTier) [0x0001c] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Runtime\Generation\ProgressionEconomy.cs:47
+  at Wildfolk.WorldProgressionSupply.RequiredYield (Wildfolk.WorldGenerationDefinition data, System.Int32 players) [0x00000] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Runtime\Generation\WorldProgressionSupply.cs:28
+  at Wildfolk.WorldProgressionSupply.Supplement (Wildfolk.ContinentalWorldLayout world, Wildfolk.WorldGenerationDefinition data) [0x00000] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Runtime\Generation\WorldProgressionSupply.cs:10
+  at Wildfolk.ContinentalWorldLayout..ctor (Wildfolk.WorldGenerationDefinition definition, System.Int32 value, System.Boolean validateGeneration, System.Int32 generationVersion) [0x001b4] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Runtime\Generation\ContinentalWorldLayout.cs:30
+  at Wildfolk.WorldMap..ctor (Wildfolk.WorldGenerationDefinition definition, System.Int32 seed, System.Int32 generationVersion, System.Boolean validateGeneration) [0x00036] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Runtime\Generation\WorldMap.cs:37
+  at Wildfolk.Tests.FishingModelTests.ActualGenerationSupportsReachableInlandWetlandsSeaAndDeep (System.Int32 seed) [0x0000b] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Tests\EditMode\FishingModelTests.cs:24
+  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)
+  at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x0006a] in <41d29b352f6a475ab1bf7c6628b82790>:0 ]]></stack-trace>
+                </failure>
+              </test-case>
+            </test-suite>
+            <test-case id="1069" name="CatchStateRoundTripsWithProtocol16AndBothLanguages" fullname="Wildfolk.Tests.FishingModelTests.CatchStateRoundTripsWithProtocol16AndBothLanguages" methodname="CatchStateRoundTripsWithProtocol16AndBothLanguages" classname="Wildfolk.Tests.FishingModelTests" runstate="Runnable" seed="2077309627" result="Passed" start-time="2026-10-21 04:46:05Z" end-time="2026-10-21 04:46:05Z" duration="0.008586" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1062" name="ConditionsWeightsAndYieldDoNotDependOnClientOrSpeciesName" fullname="Wildfolk.Tests.FishingModelTests.ConditionsWeightsAndYieldDoNotDependOnClientOrSpeciesName" methodname="ConditionsWeightsAndYieldDoNotDependOnClientOrSpeciesName" classname="Wildfolk.Tests.FishingModelTests" runstate="Runnable" seed="2119710812" result="Passed" start-time="2026-10-21 04:46:05Z" end-time="2026-10-21 04:46:06Z" duration="0.864415" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1068" name="OptionalConversionsDoNotMoveExistingProgressionSupplyBudgets" fullname="Wildfolk.Tests.FishingModelTests.OptionalConversionsDoNotMoveExistingProgressionSupplyBudgets" methodname="OptionalConversionsDoNotMoveExistingProgressionSupplyBudgets" classname="Wildfolk.Tests.FishingModelTests" runstate="Runnable" seed="2044838731" result="Failed" label="Error" start-time="2026-10-21 04:46:06Z" end-time="2026-10-21 04:46:06Z" duration="0.003015" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[System.InvalidOperationException : Ambiguous progression recipe]]></message>
+                <stack-trace><![CDATA[  at Wildfolk.ProgressionEconomy+Planner..ctor (Wildfolk.ContentCatalog value, System.Int32 maximumTier) [0x00097] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Runtime\Generation\ProgressionEconomy.cs:26
+  at Wildfolk.ProgressionEconomy.Calculate (Wildfolk.ContentCatalog catalog, System.Int32 players, System.Boolean optional, System.Int32 maximumTier) [0x0001c] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Runtime\Generation\ProgressionEconomy.cs:47
+  at Wildfolk.Tests.FishingModelTests.OptionalConversionsDoNotMoveExistingProgressionSupplyBudgets () [0x00085] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Tests\EditMode\FishingModelTests.cs:41
+  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)
+  at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x0006a] in <41d29b352f6a475ab1bf7c6628b82790>:0 ]]></stack-trace>
+              </failure>
+            </test-case>
+            <test-case id="1067" name="ProcessingPreservesExistingFoodAndInventoryCodecs" fullname="Wildfolk.Tests.FishingModelTests.ProcessingPreservesExistingFoodAndInventoryCodecs" methodname="ProcessingPreservesExistingFoodAndInventoryCodecs" classname="Wildfolk.Tests.FishingModelTests" runstate="Runnable" seed="1791040351" result="Passed" start-time="2026-10-21 04:46:06Z" end-time="2026-10-21 04:46:06Z" duration="0.003703" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1070" name="FoodModelTests" fullname="Wildfolk.Tests.FoodModelTests" classname="Wildfolk.Tests.FoodModelTests" runstate="Runnable" testcasecount="6" result="Passed" start-time="2026-10-21 04:46:06Z" end-time="2026-10-21 04:46:06Z" duration="0.014726" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1076" name="HostCanExpireWaterPenaltyWithoutEnablingNutritionDrain" fullname="Wildfolk.Tests.FoodModelTests.HostCanExpireWaterPenaltyWithoutEnablingNutritionDrain" methodname="HostCanExpireWaterPenaltyWithoutEnablingNutritionDrain" classname="Wildfolk.Tests.FoodModelTests" runstate="Runnable" seed="894929013" result="Passed" start-time="2026-10-21 04:46:06Z" end-time="2026-10-21 04:46:06Z" duration="0.002338" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1072" name="MealsAreThreeDistinctPotChoicesAndExistingRecoveryFoodsRemainImmediate" fullname="Wildfolk.Tests.FoodModelTests.MealsAreThreeDistinctPotChoicesAndExistingRecoveryFoodsRemainImmediate" methodname="MealsAreThreeDistinctPotChoicesAndExistingRecoveryFoodsRemainImmediate" classname="Wildfolk.Tests.FoodModelTests" runstate="Runnable" seed="1892922600" result="Passed" start-time="2026-10-21 04:46:06Z" end-time="2026-10-21 04:46:06Z" duration="0.003764" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1075" name="NetworkMealIdentityAndEndTimeRoundTripAndParticipateInEquality" fullname="Wildfolk.Tests.FoodModelTests.NetworkMealIdentityAndEndTimeRoundTripAndParticipateInEquality" methodname="NetworkMealIdentityAndEndTimeRoundTripAndParticipateInEquality" classname="Wildfolk.Tests.FoodModelTests" runstate="Runnable" seed="315558058" result="Passed" start-time="2026-10-21 04:46:06Z" end-time="2026-10-21 04:46:06Z" duration="0.000702" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1071" name="OneMealReplacesInsteadOfStackingAndSameMealResetsOnlyItsDuration" fullname="Wildfolk.Tests.FoodModelTests.OneMealReplacesInsteadOfStackingAndSameMealResetsOnlyItsDuration" methodname="OneMealReplacesInsteadOfStackingAndSameMealResetsOnlyItsDuration" classname="Wildfolk.Tests.FoodModelTests" runstate="Runnable" seed="174337023" result="Passed" start-time="2026-10-21 04:46:06Z" end-time="2026-10-21 04:46:06Z" duration="0.001804" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1074" name="StaminaMealChangesRateWithoutChangingDelayCostOrMaximum" fullname="Wildfolk.Tests.FoodModelTests.StaminaMealChangesRateWithoutChangingDelayCostOrMaximum" methodname="StaminaMealChangesRateWithoutChangingDelayCostOrMaximum" classname="Wildfolk.Tests.FoodModelTests" runstate="Runnable" seed="1985305221" result="Passed" start-time="2026-10-21 04:46:06Z" end-time="2026-10-21 04:46:06Z" duration="0.001936" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1073" name="StewsHavePlantHydrationMeatHungerFishHydrationAndMixedNutritionRoles" fullname="Wildfolk.Tests.FoodModelTests.StewsHavePlantHydrationMeatHungerFishHydrationAndMixedNutritionRoles" methodname="StewsHavePlantHydrationMeatHungerFishHydrationAndMixedNutritionRoles" classname="Wildfolk.Tests.FoodModelTests" runstate="Runnable" seed="59003437" result="Passed" start-time="2026-10-21 04:46:06Z" end-time="2026-10-21 04:46:06Z" duration="0.000576" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1102" name="MedicineModelTests" fullname="Wildfolk.Tests.MedicineModelTests" classname="Wildfolk.Tests.MedicineModelTests" runstate="Runnable" testcasecount="7" result="Failed" site="Child" start-time="2026-10-21 04:46:06Z" end-time="2026-10-21 04:46:06Z" duration="0.185466" total="7" passed="5" failed="2" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <failure>
+              <message><![CDATA[One or more child tests had errors]]></message>
+            </failure>
+            <test-suite type="ParameterizedMethod" id="1109" name="AppendingHerbsPreservesEveryPreviousSourceIdAndPosition" fullname="Wildfolk.Tests.MedicineModelTests.AppendingHerbsPreservesEveryPreviousSourceIdAndPosition" classname="Wildfolk.Tests.MedicineModelTests" runstate="Runnable" testcasecount="3" result="Failed" site="Child" start-time="2026-10-21 04:46:06Z" end-time="2026-10-21 04:46:06Z" duration="0.173438" total="3" passed="1" failed="2" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <failure>
+                <message><![CDATA[One or more child tests had errors]]></message>
+              </failure>
+              <test-case id="1106" name="AppendingHerbsPreservesEveryPreviousSourceIdAndPosition(1)" fullname="Wildfolk.Tests.MedicineModelTests.AppendingHerbsPreservesEveryPreviousSourceIdAndPosition(1)" methodname="AppendingHerbsPreservesEveryPreviousSourceIdAndPosition" classname="Wildfolk.Tests.MedicineModelTests" runstate="Runnable" seed="515891866" result="Passed" start-time="2026-10-21 04:46:06Z" end-time="2026-10-21 04:46:06Z" duration="0.044139" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1107" name="AppendingHerbsPreservesEveryPreviousSourceIdAndPosition(2)" fullname="Wildfolk.Tests.MedicineModelTests.AppendingHerbsPreservesEveryPreviousSourceIdAndPosition(2)" methodname="AppendingHerbsPreservesEveryPreviousSourceIdAndPosition" classname="Wildfolk.Tests.MedicineModelTests" runstate="Runnable" seed="1129916595" result="Failed" label="Error" start-time="2026-10-21 04:46:06Z" end-time="2026-10-21 04:46:06Z" duration="0.073003" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <failure>
+                  <message><![CDATA[System.InvalidOperationException : Ambiguous progression recipe]]></message>
+                  <stack-trace><![CDATA[  at Wildfolk.ProgressionEconomy+Planner..ctor (Wildfolk.ContentCatalog value, System.Int32 maximumTier) [0x00097] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Runtime\Generation\ProgressionEconomy.cs:26
+  at Wildfolk.ProgressionEconomy.Calculate (Wildfolk.ContentCatalog catalog, System.Int32 players, System.Boolean optional, System.Int32 maximumTier) [0x0001c] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Runtime\Generation\ProgressionEconomy.cs:47
+  at Wildfolk.WorldProgressionSupply.RequiredYield (Wildfolk.WorldGenerationDefinition data, System.Int32 players) [0x00000] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Runtime\Generation\WorldProgressionSupply.cs:28
+  at Wildfolk.WorldProgressionSupply.Supplement (Wildfolk.ContinentalWorldLayout world, Wildfolk.WorldGenerationDefinition data) [0x00000] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Runtime\Generation\WorldProgressionSupply.cs:10
+  at Wildfolk.ContinentalWorldLayout..ctor (Wildfolk.WorldGenerationDefinition definition, System.Int32 value, System.Boolean validateGeneration, System.Int32 generationVersion) [0x001b4] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Runtime\Generation\ContinentalWorldLayout.cs:30
+  at Wildfolk.WorldMap..ctor (Wildfolk.WorldGenerationDefinition definition, System.Int32 seed, System.Int32 generationVersion, System.Boolean validateGeneration) [0x00036] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Runtime\Generation\WorldMap.cs:37
+  at Wildfolk.Tests.MedicineModelTests.AppendingHerbsPreservesEveryPreviousSourceIdAndPosition (System.Int32 generation) [0x00059] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Tests\EditMode\MedicineModelTests.cs:23
+  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)
+  at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x0006a] in <41d29b352f6a475ab1bf7c6628b82790>:0 ]]></stack-trace>
+                </failure>
+              </test-case>
+              <test-case id="1108" name="AppendingHerbsPreservesEveryPreviousSourceIdAndPosition(3)" fullname="Wildfolk.Tests.MedicineModelTests.AppendingHerbsPreservesEveryPreviousSourceIdAndPosition(3)" methodname="AppendingHerbsPreservesEveryPreviousSourceIdAndPosition" classname="Wildfolk.Tests.MedicineModelTests" runstate="Runnable" seed="939240433" result="Failed" label="Error" start-time="2026-10-21 04:46:06Z" end-time="2026-10-21 04:46:06Z" duration="0.053610" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <failure>
+                  <message><![CDATA[System.InvalidOperationException : Ambiguous progression recipe]]></message>
+                  <stack-trace><![CDATA[  at Wildfolk.ProgressionEconomy+Planner..ctor (Wildfolk.ContentCatalog value, System.Int32 maximumTier) [0x00097] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Runtime\Generation\ProgressionEconomy.cs:26
+  at Wildfolk.ProgressionEconomy.Calculate (Wildfolk.ContentCatalog catalog, System.Int32 players, System.Boolean optional, System.Int32 maximumTier) [0x0001c] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Runtime\Generation\ProgressionEconomy.cs:47
+  at Wildfolk.WorldProgressionSupply.RequiredYield (Wildfolk.WorldGenerationDefinition data, System.Int32 players) [0x00000] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Runtime\Generation\WorldProgressionSupply.cs:28
+  at Wildfolk.WorldProgressionSupply.Supplement (Wildfolk.ContinentalWorldLayout world, Wildfolk.WorldGenerationDefinition data) [0x00000] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Runtime\Generation\WorldProgressionSupply.cs:10
+  at Wildfolk.ContinentalWorldLayout..ctor (Wildfolk.WorldGenerationDefinition definition, System.Int32 value, System.Boolean validateGeneration, System.Int32 generationVersion) [0x001b4] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Runtime\Generation\ContinentalWorldLayout.cs:30
+  at Wildfolk.WorldMap..ctor (Wildfolk.WorldGenerationDefinition definition, System.Int32 seed, System.Int32 generationVersion, System.Boolean validateGeneration) [0x00036] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Runtime\Generation\WorldMap.cs:37
+  at Wildfolk.Tests.MedicineModelTests.AppendingHerbsPreservesEveryPreviousSourceIdAndPosition (System.Int32 generation) [0x00059] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Tests\EditMode\MedicineModelTests.cs:23
+  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)
+  at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x0006a] in <41d29b352f6a475ab1bf7c6628b82790>:0 ]]></stack-trace>
+                </failure>
+              </test-case>
+            </test-suite>
+            <test-case id="1110" name="HealingStatusRoundTripsThroughNetworkSerializationAndUsesProtocol16" fullname="Wildfolk.Tests.MedicineModelTests.HealingStatusRoundTripsThroughNetworkSerializationAndUsesProtocol16" methodname="HealingStatusRoundTripsThroughNetworkSerializationAndUsesProtocol16" classname="Wildfolk.Tests.MedicineModelTests" runstate="Runnable" seed="365477262" result="Passed" start-time="2026-10-21 04:46:06Z" end-time="2026-10-21 04:46:06Z" duration="0.000732" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1105" name="HerbIsUnarmedSurfacePlantWithRegionalRecoveryAndNoStarterSupply" fullname="Wildfolk.Tests.MedicineModelTests.HerbIsUnarmedSurfacePlantWithRegionalRecoveryAndNoStarterSupply" methodname="HerbIsUnarmedSurfacePlantWithRegionalRecoveryAndNoStarterSupply" classname="Wildfolk.Tests.MedicineModelTests" runstate="Runnable" seed="642753251" result="Passed" start-time="2026-10-21 04:46:06Z" end-time="2026-10-21 04:46:06Z" duration="0.001588" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1103" name="TreatmentIsGradualExactSingleAndTransient" fullname="Wildfolk.Tests.MedicineModelTests.TreatmentIsGradualExactSingleAndTransient" methodname="TreatmentIsGradualExactSingleAndTransient" classname="Wildfolk.Tests.MedicineModelTests" runstate="Runnable" seed="1573642062" result="Passed" start-time="2026-10-21 04:46:06Z" end-time="2026-10-21 04:46:06Z" duration="0.001484" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1104" name="TwoMedicinesUseOneHerbAndFiberSinkWithoutNewStationOrFoodChanges" fullname="Wildfolk.Tests.MedicineModelTests.TwoMedicinesUseOneHerbAndFiberSinkWithoutNewStationOrFoodChanges" methodname="TwoMedicinesUseOneHerbAndFiberSinkWithoutNewStationOrFoodChanges" classname="Wildfolk.Tests.MedicineModelTests" runstate="Runnable" seed="430880047" result="Passed" start-time="2026-10-21 04:46:06Z" end-time="2026-10-21 04:46:06Z" duration="0.003932" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1111" name="MetalProgressionTests" fullname="Wildfolk.Tests.MetalProgressionTests" classname="Wildfolk.Tests.MetalProgressionTests" runstate="Runnable" testcasecount="12" result="Passed" start-time="2026-10-21 04:46:06Z" end-time="2026-10-21 04:46:06Z" duration="0.328081" total="12" passed="12" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1121" name="AppendedOresAreDeterministicAndPreserveEveryLegacyPlacementAndId" fullname="Wildfolk.Tests.MetalProgressionTests.AppendedOresAreDeterministicAndPreserveEveryLegacyPlacementAndId" methodname="AppendedOresAreDeterministicAndPreserveEveryLegacyPlacementAndId" classname="Wildfolk.Tests.MetalProgressionTests" runstate="Runnable" seed="1324463631" result="Passed" start-time="2026-10-21 04:46:06Z" end-time="2026-10-21 04:46:06Z" duration="0.226280" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1123" name="BronzeAndSteelReserveEveryIngredientAndPreserveBlockedOutputAndQueueSnapshot" fullname="Wildfolk.Tests.MetalProgressionTests.BronzeAndSteelReserveEveryIngredientAndPreserveBlockedOutputAndQueueSnapshot" methodname="BronzeAndSteelReserveEveryIngredientAndPreserveBlockedOutputAndQueueSnapshot" classname="Wildfolk.Tests.MetalProgressionTests" runstate="Runnable" seed="643943392" result="Passed" start-time="2026-10-21 04:46:06Z" end-time="2026-10-21 04:46:06Z" duration="0.004479" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1120" name="FourInputsReserveAtomicallyAndRollbackFailureOrException" fullname="Wildfolk.Tests.MetalProgressionTests.FourInputsReserveAtomicallyAndRollbackFailureOrException" methodname="FourInputsReserveAtomicallyAndRollbackFailureOrException" classname="Wildfolk.Tests.MetalProgressionTests" runstate="Runnable" seed="1229871456" result="Passed" start-time="2026-10-21 04:46:06Z" end-time="2026-10-21 04:46:06Z" duration="0.003877" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1124" name="MiningToolPermissionHasNoFistFallbackAndMaterialKindsRemainDistinct" fullname="Wildfolk.Tests.MetalProgressionTests.MiningToolPermissionHasNoFistFallbackAndMaterialKindsRemainDistinct" methodname="MiningToolPermissionHasNoFistFallbackAndMaterialKindsRemainDistinct" classname="Wildfolk.Tests.MetalProgressionTests" runstate="Runnable" seed="782906601" result="Passed" start-time="2026-10-21 04:46:06Z" end-time="2026-10-21 04:46:06Z" duration="0.021953" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1119" name="OnlyConfiguredNextTierOpensAndLegacyUpgradeCostsRemain" fullname="Wildfolk.Tests.MetalProgressionTests.OnlyConfiguredNextTierOpensAndLegacyUpgradeCostsRemain" methodname="OnlyConfiguredNextTierOpensAndLegacyUpgradeCostsRemain" classname="Wildfolk.Tests.MetalProgressionTests" runstate="Runnable" seed="1441058889" result="Passed" start-time="2026-10-21 04:46:06Z" end-time="2026-10-21 04:46:06Z" duration="0.001894" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1122" name="SupplyContextAndRecoveryAreIndependentOfTechnologyAndRespectMineralFamily" fullname="Wildfolk.Tests.MetalProgressionTests.SupplyContextAndRecoveryAreIndependentOfTechnologyAndRespectMineralFamily" methodname="SupplyContextAndRecoveryAreIndependentOfTechnologyAndRespectMineralFamily" classname="Wildfolk.Tests.MetalProgressionTests" runstate="Runnable" seed="417926264" result="Passed" start-time="2026-10-21 04:46:06Z" end-time="2026-10-21 04:46:06Z" duration="0.057318" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-suite type="ParameterizedMethod" id="1118" name="WorkbenchRangeIsOneThroughSix" fullname="Wildfolk.Tests.MetalProgressionTests.WorkbenchRangeIsOneThroughSix" classname="Wildfolk.Tests.MetalProgressionTests" runstate="Runnable" testcasecount="6" result="Passed" start-time="2026-10-21 04:46:06Z" end-time="2026-10-21 04:46:06Z" duration="0.005198" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1112" name="WorkbenchRangeIsOneThroughSix(0,False)" fullname="Wildfolk.Tests.MetalProgressionTests.WorkbenchRangeIsOneThroughSix(0,False)" methodname="WorkbenchRangeIsOneThroughSix" classname="Wildfolk.Tests.MetalProgressionTests" runstate="Runnable" seed="727065475" result="Passed" start-time="2026-10-21 04:46:06Z" end-time="2026-10-21 04:46:06Z" duration="0.000866" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1113" name="WorkbenchRangeIsOneThroughSix(1,True)" fullname="Wildfolk.Tests.MetalProgressionTests.WorkbenchRangeIsOneThroughSix(1,True)" methodname="WorkbenchRangeIsOneThroughSix" classname="Wildfolk.Tests.MetalProgressionTests" runstate="Runnable" seed="130981887" result="Passed" start-time="2026-10-21 04:46:06Z" end-time="2026-10-21 04:46:06Z" duration="0.000151" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1114" name="WorkbenchRangeIsOneThroughSix(2,True)" fullname="Wildfolk.Tests.MetalProgressionTests.WorkbenchRangeIsOneThroughSix(2,True)" methodname="WorkbenchRangeIsOneThroughSix" classname="Wildfolk.Tests.MetalProgressionTests" runstate="Runnable" seed="1693194478" result="Passed" start-time="2026-10-21 04:46:06Z" end-time="2026-10-21 04:46:06Z" duration="0.000083" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1115" name="WorkbenchRangeIsOneThroughSix(6,True)" fullname="Wildfolk.Tests.MetalProgressionTests.WorkbenchRangeIsOneThroughSix(6,True)" methodname="WorkbenchRangeIsOneThroughSix" classname="Wildfolk.Tests.MetalProgressionTests" runstate="Runnable" seed="610664422" result="Passed" start-time="2026-10-21 04:46:06Z" end-time="2026-10-21 04:46:06Z" duration="0.000074" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1116" name="WorkbenchRangeIsOneThroughSix(7,False)" fullname="Wildfolk.Tests.MetalProgressionTests.WorkbenchRangeIsOneThroughSix(7,False)" methodname="WorkbenchRangeIsOneThroughSix" classname="Wildfolk.Tests.MetalProgressionTests" runstate="Runnable" seed="546790310" result="Passed" start-time="2026-10-21 04:46:06Z" end-time="2026-10-21 04:46:06Z" duration="0.000070" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1117" name="WorkbenchRangeIsOneThroughSix(-1,False)" fullname="Wildfolk.Tests.MetalProgressionTests.WorkbenchRangeIsOneThroughSix(-1,False)" methodname="WorkbenchRangeIsOneThroughSix" classname="Wildfolk.Tests.MetalProgressionTests" runstate="Runnable" seed="1259287568" result="Passed" start-time="2026-10-21 04:46:06Z" end-time="2026-10-21 04:46:06Z" duration="0.000080" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+          </test-suite>
+          <test-suite type="TestFixture" id="1134" name="NetworkFoundationTests" fullname="Wildfolk.Tests.NetworkFoundationTests" classname="Wildfolk.Tests.NetworkFoundationTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-10-21 04:46:06Z" end-time="2026-10-21 04:46:06Z" duration="0.022603" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1135" name="CommandsRejectNonFiniteAndClampUntrustedMagnitude" fullname="Wildfolk.Tests.NetworkFoundationTests.CommandsRejectNonFiniteAndClampUntrustedMagnitude" methodname="CommandsRejectNonFiniteAndClampUntrustedMagnitude" classname="Wildfolk.Tests.NetworkFoundationTests" runstate="Runnable" seed="1614753586" result="Passed" start-time="2026-10-21 04:46:06Z" end-time="2026-10-21 04:46:06Z" duration="0.001251" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1137" name="InternetCodeAndLocalAddressAreDifferentRoutes" fullname="Wildfolk.Tests.NetworkFoundationTests.InternetCodeAndLocalAddressAreDifferentRoutes" methodname="InternetCodeAndLocalAddressAreDifferentRoutes" classname="Wildfolk.Tests.NetworkFoundationTests" runstate="Runnable" seed="484382575" result="Passed" start-time="2026-10-21 04:46:06Z" end-time="2026-10-21 04:46:06Z" duration="0.001935" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1136" name="PlayerStateIsServerWritableAndRpcInputsAreOwnerOnly" fullname="Wildfolk.Tests.NetworkFoundationTests.PlayerStateIsServerWritableAndRpcInputsAreOwnerOnly" methodname="PlayerStateIsServerWritableAndRpcInputsAreOwnerOnly" classname="Wildfolk.Tests.NetworkFoundationTests" runstate="Runnable" seed="2118958405" result="Passed" start-time="2026-10-21 04:46:06Z" end-time="2026-10-21 04:46:06Z" duration="0.016384" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1174" name="SceneContractTests" fullname="Wildfolk.Tests.SceneContractTests" classname="Wildfolk.Tests.SceneContractTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-21 04:46:06Z" end-time="2026-10-21 04:46:07Z" duration="0.654968" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1176" name="BalanceDataHasValidCombatRangesAndProgressionItems" fullname="Wildfolk.Tests.SceneContractTests.BalanceDataHasValidCombatRangesAndProgressionItems" methodname="BalanceDataHasValidCombatRangesAndProgressionItems" classname="Wildfolk.Tests.SceneContractTests" runstate="Runnable" seed="1790839885" result="Passed" start-time="2026-10-21 04:46:06Z" end-time="2026-10-21 04:46:06Z" duration="0.053687" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1175" name="SavedSceneRetainsPlayableConnectionsAndNonPushingEnemy" fullname="Wildfolk.Tests.SceneContractTests.SavedSceneRetainsPlayableConnectionsAndNonPushingEnemy" methodname="SavedSceneRetainsPlayableConnectionsAndNonPushingEnemy" classname="Wildfolk.Tests.SceneContractTests" runstate="Runnable" seed="411555554" result="Passed" start-time="2026-10-21 04:46:06Z" end-time="2026-10-21 04:46:07Z" duration="0.598645" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[<b><color=#2EA3FF>MCP-FOR-UNITY</color></b>: [TestRunnerNoThrottle] Restored Interaction Mode after test run.
+Saving results to: C:/Users/User/AppData/LocalLow/DefaultCompany/Wildfolk\TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

@@ -234,3 +234,10 @@ Meal3종/150초/동시1개/교체,공용4초다.Hunter MaxHP+8(HPheal0),Forager 
 |Diamond|42|2.8|28°|.78|.546|53.85|
 
 전부MaxTargets1/공격Stamina0. Hunter는WBII에서IronSpear1+Bone6+Leather2소비. 긴거리대신낮은피해·좁은Arc·긴공격간격이며금속체인우회없음. Vest Defense3/회복+15%유지: 기본16→18.4/s,Trail+10%와RecoveryRank1+15%까지합쳐22.4/s. Dash24와delay1.2초포함복구2.70→2.504초. 공격회복이득은없고방어는IronBody4보다낮다. 새Head/회복중복장비0. 경제는 [2-C REVIEW](../validation/creature-sidegrade-expansion/REVIEW.md)의일회/반복1P·4P계산이며장시간실측은아니다.
+
+
+## Fishing2-D · 초기값
+
+시간 .45초cast/3초입질/2.2초입력/.6초회수는유지한다.내륙raw8·습지raw6·동굴raw1,습지붕어4,내륙/습지안쪽농어2,바다고등어1,내륙/습지Night장어.5의조건부가중치다.안쪽조건은실제DeepWater와shore inset≥2.25unit.동굴에는적용하지않는다.전어종catch1,손질raw수율붕어1/농어2/고등어1/장어2.최대raw기대량은내륙깊은밤13/10.5=1.2381/catch,기본1대비+23.81%.고등어1+Berry1/8초→소분식2(H20/T2씩),새Meal0.
+
+반응.3초가정3.9초/catch의생산상한은15.38/min/person.실제기본Hunger4.8/min대비CookedFish26은.1846fish/min,낚시.72초/min+가열.923초/min의산술하한(여행/가방/실패제외)이다.기존낚시도무한시간식량원이며기본공급을줄이지않았다.4인동시기준.7385fish/min/낚시2.88person秒/가열3.692station秒.현멀티자연H/T소모는기존대로꺼져있으므로이4P유지량은동일생존소모를가정한비교예산이다.실제현재MP의자연유지필요량은0이며선택적음식/Meal소비만발생한다.낚시로Leather/Bone/Feather/XP/Gold/광물은공급하지않는다. [전체수역확률·1P/4P·장시간미실측](../validation/fishing-aquatic-expansion/REVIEW.md).

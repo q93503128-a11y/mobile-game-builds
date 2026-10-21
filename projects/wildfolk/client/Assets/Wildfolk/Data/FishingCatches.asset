@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22518198773792643ad7677540cdfe95, type: 3}
+  m_Name: FishingCatches
+  m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.FishingLootTable
+  Entries:
+  - Id: small_fish
+    NameKey: fishing.small_fish
+    Waters: 1
+    Time: 0
+    MinimumShoreInset: 0
+    Weight: 8
+    Output: {fileID: 11400000, guid: 39fe644283f73d54e8bfc6be54a92c3d, type: 2}
+    Amount: 1
+  - Id: wetland_fish
+    NameKey: item.raw_fish.name
+    Waters: 2
+    Time: 0
+    MinimumShoreInset: 0
+    Weight: 6
+    Output: {fileID: 11400000, guid: 39fe644283f73d54e8bfc6be54a92c3d, type: 2}
+    Amount: 1
+  - Id: cavern_fish
+    NameKey: item.raw_fish.name
+    Waters: 8
+    Time: 0
+    MinimumShoreInset: 0
+    Weight: 1
+    Output: {fileID: 11400000, guid: 39fe644283f73d54e8bfc6be54a92c3d, type: 2}
+    Amount: 1
+  - Id: crucian_carp
+    NameKey: item.crucian_carp.name
+    Waters: 2
+    Time: 0
+    MinimumShoreInset: 0
+    Weight: 4
+    Output: {fileID: 11400000, guid: f758a41e82e6f5f4ba48e37ea5cb0100, type: 2}
+    Amount: 1
+  - Id: perch
+    NameKey: item.perch.name
+    Waters: 3
+    Time: 0
+    MinimumShoreInset: 2.25
+    Weight: 2
+    Output: {fileID: 11400000, guid: a5a154d18dd71c04eb6405fa16d22e91, type: 2}
+    Amount: 1
+  - Id: mackerel
+    NameKey: item.mackerel.name
+    Waters: 4
+    Time: 0
+    MinimumShoreInset: 0
+    Weight: 1
+    Output: {fileID: 11400000, guid: 4fa8a735b75aa9e41821013eeda1abcf, type: 2}
+    Amount: 1
+  - Id: eel
+    NameKey: item.eel.name
+    Waters: 3
+    Time: 2
+    MinimumShoreInset: 0
+    Weight: 0.5
+    Output: {fileID: 11400000, guid: c0879fba1b222554c9767b92a4328ba7, type: 2}
+    Amount: 1

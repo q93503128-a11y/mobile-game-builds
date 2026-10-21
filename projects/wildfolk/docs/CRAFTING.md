@@ -1,10 +1,10 @@
 # 제작과 처리 · 현재 정본
 
-2026-10-20. Item127 / Recipe104, Workbench I→II→III, Equipment Wood/Stone/Iron/Steel/Diamond. 전체 실제 비용·출력·Station·시간은 [CONTENT_EXPANSION](CONTENT_EXPANSION.md)의104개 표를 따른다. RecipeDefinition/RecipeCatalog/ContentCatalog가 코드 정본이다.
+2026-10-20. Item132 / Recipe109, Workbench I→II→III, Equipment Wood/Stone/Iron/Steel/Diamond. 전체 실제 비용·출력·Station·시간은 [CONTENT_EXPANSION](CONTENT_EXPANSION.md)의109개 표를 따른다. RecipeDefinition/RecipeCatalog/ContentCatalog가 코드 정본이다.
 
 ## Station 경계
 
-Hand6 / Workbench I35·II전용24·III전용11 / Campfire6 / Cooking Pot9 / Furnace4 / Blast Furnace1 / Turret Workbench8이다. Workbench 누적35/59/70다. 이번에는 새 전문 Station을 추가하지 않았다. 현장 연고는 Hand, 단순 휴대식은 Campfire, 복합 Broth는 Pot, 장비·탄약·함정은 I/II에 배치했다. 2-C는 기존 Iron Spear를 소비하는 Hunter1개를 II에 추가했다. III 신규 Recipe0이며 Diamond 진행을 유지한다. [조사·밀도·대안 비교](../validation/creature-loot-expansion/REVIEW.md).
+Hand10 / Workbench I35·II전용24·III전용11 / Campfire7 / Cooking Pot9 / Furnace4 / Blast Furnace1 / Turret Workbench8이다. Workbench 누적35/59/70다. 이번에는 새 전문 Station을 추가하지 않았다. 현장 연고는 Hand, 단순 휴대식은 Campfire, 복합 Broth는 Pot, 장비·탄약·함정은 I/II에 배치했다. 2-C는 기존 Iron Spear를 소비하는 Hunter1개를 II에 추가했다. III 신규 Recipe0이며 Diamond 진행을 유지한다. [조사·밀도·대안 비교](../validation/creature-loot-expansion/REVIEW.md).
 
 Furnace는 Iron/Copper/Tin/Bronze, Blast는 Steel 전용이다. Iron은 무연료2초, Copper/Tin/Bronze/Steel의 재료·Coal·처리시간은 에셋을 따른다. 생물 재료를 금속로에 넣지 않는다. 새 광물 tier/가짜 가공 중간재가 없다.
 
@@ -24,6 +24,11 @@ StationProcessing은 데이터의 Batch/Sequential Mode·Speed를 읽는다. Cam
 
 Host가 PlayerCrafting.GetStatus/Craft와 InventoryModel.TryExchange로 Station/tier/재료/공간을 확인한다. 투입·회수·수령·완료 경계에서 facility revision을 올린다. 오래된 요청/full bag은 cargo를 유지한다. Client는 변경 snapshot과 server 종료 시각으로 진행을 표시한다. Goblin Camp는 플레이어가 넣을 수 없는 별도6칸 보급품 UI와 Host claim 경계를 사용한다.
 
-Medicine2-A: Hand6개 중 응급 붕대(Fiber2+Herb1)·연고(Gland1+Herb1+Fiber2)를 현장 제작한다. 새 의약 Station은0개이며 기존 제작 카드·정렬·공간/재료 검증을 재사용한다. 상세 결정은 [이번 REVIEW](../validation/medicine-expansion/REVIEW.md).
+Medicine2-A 도입 당시 Hand6개 중 응급 붕대(Fiber2+Herb1)·연고(Gland1+Herb1+Fiber2)를 현장 제작한다. 새 의약 Station은0개이며 기존 제작 카드·정렬·공간/재료 검증을 재사용한다. 상세 결정은 [이번 REVIEW](../validation/medicine-expansion/REVIEW.md).
 
-Food2-B는CookingPot에실제3Meal Recipe만추가했다.각10초이며기존순차queue·예약·Take·가방공간·Save/reHost경계를재사용한다.Campfire6/새Station0.Hunter/Forager/Trail의핵심효과와150초·교체규칙을Pot의빈상단설명영역에서제작전에볼수있다.
+Food2-B 도입 당시 CookingPot에실제3Meal Recipe만추가했다.각10초이며기존순차queue·예약·Take·가방공간·Save/reHost경계를재사용한다.Campfire6/새Station0.Hunter/Forager/Trail의핵심효과와150초·교체규칙을Pot의빈상단설명영역에서제작전에볼수있다.
+
+
+## Fishing2-D · 선택 손질
+
+Hand에서 붕어1→생선1,농어1→생선2,고등어1→생선1,장어1→생선2를 즉시 교환한다. 고등어1+Berry1은 Campfire8초에 생선 소분식2개(H20/T2씩,Meal없음)로 조리할 수도 있다. 기존 정확 Item 재료·원자 교환/공간 검사·예약/Take를 재사용한다. 새 Ingredient Group/Station은 없다. 손질4개는 RecipeDefinition.OptionalConversion으로 필수 진행 예산의 유일 제조 경로로 해석하지 않으며, progression root 수량을 지정할 수 없다. 게임 제작은 일반 Recipe와 같다. 기존 Fish4요리 비용·효과를 보존한다.

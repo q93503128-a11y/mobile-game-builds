@@ -10,7 +10,7 @@
 
 큰 유한 대륙과4개 Surface Biome, 별도 Caverns/Deep Caverns, Seed·지형/수계/자원/POI 독립 stream, 가까운64unit 청크 simulation을 제공한다. 기존 generation1/2를 보존하고 신규 generation3에서 III 자원을 공급한다. 자원·생물은 지역 부족량을 안전한 새 위치·ID로 보충한다. 오프라인 시간을 재생에 더하지 않는다.
 
-Workbench I→II→III가 progression spine이다. Wood/Stone/Iron/Steel/Diamond, Copper/Tin/Bronze 부품, Furnace/Blast Furnace, Campfire/Cooking Pot, 실제 수요8개를 가진 Turret Workbench를 제공한다. IV~VI는 구조적 상한이며 빈 tier 진입을 만들지 않는다. 전체127 Item/104 Recipe는 CONTENT_EXPANSION을 따른다.
+Workbench I→II→III가 progression spine이다. Wood/Stone/Iron/Steel/Diamond, Copper/Tin/Bronze 부품, Furnace/Blast Furnace, Campfire/Cooking Pot, 실제 수요8개를 가진 Turret Workbench를 제공한다. IV~VI는 구조적 상한이며 빈 tier 진입을 만들지 않는다. 전체132 Item/109 Recipe는 CONTENT_EXPANSION을 따른다.
 
 13종 야생 생물과 Zombie/Skeleton/검 Variant·Goblin/새총 Goblin을 제공한다. Family/Faction/Trait/Habitat와 행동 데이터를 조합한다. 신규8종은 비행·위장 해제·물가 매복·무리 합류·hop/도주·돌진·결정 pulse를 구분한다. Bone/Chitin/Medicinal Gland는 실제 서로 다른 sink에 연결하고 종별 Trophy/중복 Fur/Hide를 만들지 않는다. Camp 전투→확보→일회 보급품 획득을 제공하며 진행 핵심을 RNG 상자에 의존시키지 않는다.
 
@@ -24,7 +24,7 @@ Primary는 맨손/장비 공격·채집·설치·선택 소비품·Armor, Intera
 
 ## 저장·협동
 
-Save11(1~10 이관)/Protocol15. Host만 spawn/AI/목표/피해/사망/loot roll/보급 claim/보충/저장을 결정한다. Client는 입력 요청과 replica 표시를 한다. Relay/명시적 Local Network Host/Join, 최대4인 구조, 로컬 식별자별 가방·성장·장비와 공유 월드를 저장한다. Host migration·dedicated server·인증 계정·Cloud는 없다. 실제 원격4인/단말 성능·장기 생존·재미는 별도 검수다.
+Save11(1~10 이관)/Protocol16. Host만 spawn/AI/목표/피해/사망/loot roll/보급 claim/보충/저장을 결정한다. Client는 입력 요청과 replica 표시를 한다. Relay/명시적 Local Network Host/Join, 최대4인 구조, 로컬 식별자별 가방·성장·장비와 공유 월드를 저장한다. Host migration·dedicated server·인증 계정·Cloud는 없다. 실제 원격4인/단말 성능·장기 생존·재미는 별도 검수다.
 
 ## 후속
 

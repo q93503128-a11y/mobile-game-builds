@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20df6dd9b4c24af4889549b8f9dc4ce5, type: 3}
+  m_Name: CrucianCarpFilletRecipe
+  m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.RecipeDefinition
+  Id: fillet_crucian_carp
+  Category: 0
+  SortOrder: 700
+  Result: {fileID: 11400000, guid: 39fe644283f73d54e8bfc6be54a92c3d, type: 2}
+  ResultCount: 1
+  ProgressionPerPlayer: 0
+  ProgressionShared: 0
+  EssentialPerPlayer: 0
+  EssentialShared: 0
+  ResultCharges: 0
+  ResultQuality: 0
+  Ingredients:
+  - Item: {fileID: 11400000, guid: f758a41e82e6f5f4ba48e37ea5cb0100, type: 2}
+    Count: 1
+    Charges: 0
+    Quality: 0
+  RequiredStation: 0
+  ProcessingSeconds: 0
+  Processing: 0
+  LegacyProcessingSeconds: 0
+  Tier: {fileID: 0}
+  RequiredWorkbenchTier: 1
+  DisplayKey: recipe.fillet_crucian_carp
+  SupersededBy: {fileID: 0}
+  OptionalConversion: 1
+  FutureUnlocks: []

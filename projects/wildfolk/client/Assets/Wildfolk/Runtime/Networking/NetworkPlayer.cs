@@ -54,6 +54,7 @@ namespace Wildfolk
             Motion.OnValueChanged-=OnMotion;Status.OnValueChanged-=OnStatus;Health.Changed-=PublishStatus;Equipment.Changed-=PublishStatus;
             combat.AttackStarted-=PublishAttack;combat.HarvestDenied-=PublishDenial;Commands.MovementAuthority=null;Commands.CombatAuthority=null;
             survival.TreatmentChanged-=PublishStatus;survival.MealChanged-=PublishStatus;survival.ResetTransient();
+            GetComponent<PlayerFishing>()?.ResetTransient();
         }
         public void SetMove(Vector2 move){if(IsSpawned && IsOwner)pendingMove=NetworkInputRules.Sanitize(move);}
         public bool Dash()

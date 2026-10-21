@@ -1,0 +1,377 @@
+{
+  "unique": 60,
+  "passed": 60,
+  "failed": [],
+  "runs": [
+    {
+      "name": "edit-fishing",
+      "id": "2",
+      "testcasecount": "47",
+      "result": "Failed(Child)",
+      "total": "47",
+      "passed": "39",
+      "failed": "8",
+      "inconclusive": "0",
+      "skipped": "0",
+      "asserts": "0",
+      "engine-version": "3.5.0.0",
+      "clr-version": "4.0.30319.42000",
+      "start-time": "2026-10-21 04:46:02Z",
+      "end-time": "2026-10-21 04:46:07Z",
+      "duration": "4.902841"
+    },
+    {
+      "name": "edit-correction",
+      "id": "2",
+      "testcasecount": "19",
+      "result": "Passed",
+      "total": "19",
+      "passed": "19",
+      "failed": "0",
+      "inconclusive": "0",
+      "skipped": "0",
+      "asserts": "0",
+      "engine-version": "3.5.0.0",
+      "clr-version": "4.0.30319.42000",
+      "start-time": "2026-10-21 04:47:23Z",
+      "end-time": "2026-10-21 04:47:31Z",
+      "duration": "8.3751614"
+    },
+    {
+      "name": "play-fishing",
+      "id": "2",
+      "testcasecount": "4",
+      "result": "Passed",
+      "total": "4",
+      "passed": "4",
+      "failed": "0",
+      "inconclusive": "0",
+      "skipped": "0",
+      "asserts": "0",
+      "engine-version": "3.5.0.0",
+      "clr-version": "4.0.30319.42000",
+      "start-time": "2026-10-21 04:48:55Z",
+      "end-time": "2026-10-21 04:53:04Z",
+      "duration": "248.7549845"
+    },
+    {
+      "name": "edit-final",
+      "id": "2",
+      "testcasecount": "15",
+      "result": "Passed",
+      "total": "15",
+      "passed": "15",
+      "failed": "0",
+      "inconclusive": "0",
+      "skipped": "0",
+      "asserts": "0",
+      "engine-version": "3.5.0.0",
+      "clr-version": "4.0.30319.42000",
+      "start-time": "2026-10-21 04:54:47Z",
+      "end-time": "2026-10-21 04:55:06Z",
+      "duration": "18.5090367"
+    }
+  ],
+  "tests": {
+    "Wildfolk.Tests.ContentExpansionModelTests.AddedSourcesAndBudgetDoNotMoveExistingSourceIds(9472026)": {
+      "result": "Passed",
+      "run": "edit-final",
+      "duration": "2.903330"
+    },
+    "Wildfolk.Tests.ContentExpansionModelTests.AddedSourcesAndBudgetDoNotMoveExistingSourceIds(17491)": {
+      "result": "Passed",
+      "run": "edit-final",
+      "duration": "1.770384"
+    },
+    "Wildfolk.Tests.ContentExpansionModelTests.CatalogHasRealRecipesFourWeaponFamiliesAndSustainableBasicAmmo": {
+      "result": "Passed",
+      "run": "edit-fishing",
+      "duration": "0.022027"
+    },
+    "Wildfolk.Tests.ContentExpansionModelTests.ContainerStateTransfersAndRollsBackWithoutBecomingNewItems": {
+      "result": "Passed",
+      "run": "edit-fishing",
+      "duration": "0.005978"
+    },
+    "Wildfolk.Tests.ContentExpansionModelTests.CookingRecipesRestoreMoreThanSimpleFoodAndBuildingRolesAreReal": {
+      "result": "Passed",
+      "run": "edit-fishing",
+      "duration": "0.005525"
+    },
+    "Wildfolk.Tests.ContentExpansionModelTests.PurificationReservesOnlyFullRawAndRestoresChargesAfterQueueSave": {
+      "result": "Passed",
+      "run": "edit-fishing",
+      "duration": "0.011280"
+    },
+    "Wildfolk.Tests.CreatureSidegradeModelTests.AppendedItemRoundTripsExistingStackCodecAndRecipesKeepRepeatSinks": {
+      "result": "Passed",
+      "run": "edit-fishing",
+      "duration": "0.037966"
+    },
+    "Wildfolk.Tests.CreatureSidegradeModelTests.BothLanguagesHaveNameAndDistinctHeldArt": {
+      "result": "Passed",
+      "run": "edit-fishing",
+      "duration": "0.012151"
+    },
+    "Wildfolk.Tests.CreatureSidegradeModelTests.ExistingNetworkToolAndHeldIndicesCarrySidegradeWithoutNewFields": {
+      "result": "Passed",
+      "run": "edit-fishing",
+      "duration": "0.007250"
+    },
+    "Wildfolk.Tests.CreatureSidegradeModelTests.HunterTradesDamageSpeedAndArcForReachWithoutSkippingIron": {
+      "result": "Passed",
+      "run": "edit-fishing",
+      "duration": "0.002061"
+    },
+    "Wildfolk.Tests.FishingModelTests.ActualGenerationSupportsReachableInlandWetlandsSeaAndDeep(9472026)": {
+      "result": "Passed",
+      "run": "edit-correction",
+      "duration": "2.710607"
+    },
+    "Wildfolk.Tests.FishingModelTests.ActualGenerationSupportsReachableInlandWetlandsSeaAndDeep(17491)": {
+      "result": "Passed",
+      "run": "edit-correction",
+      "duration": "2.182695"
+    },
+    "Wildfolk.Tests.FishingModelTests.ActualGenerationSupportsReachableInlandWetlandsSeaAndDeep(-81027)": {
+      "result": "Passed",
+      "run": "edit-correction",
+      "duration": "2.088387"
+    },
+    "Wildfolk.Tests.FishingModelTests.CatchStateRoundTripsWithProtocol16AndBothLanguages": {
+      "result": "Passed",
+      "run": "edit-final",
+      "duration": "0.033180"
+    },
+    "Wildfolk.Tests.FishingModelTests.ConditionsWeightsAndYieldDoNotDependOnClientOrSpeciesName": {
+      "result": "Passed",
+      "run": "edit-correction",
+      "duration": "0.880947"
+    },
+    "Wildfolk.Tests.FishingModelTests.OptionalConversionsDoNotMoveExistingProgressionSupplyBudgets": {
+      "result": "Passed",
+      "run": "edit-correction",
+      "duration": "0.006238"
+    },
+    "Wildfolk.Tests.FishingModelTests.ProcessingPreservesExistingFoodAndInventoryCodecs": {
+      "result": "Passed",
+      "run": "edit-correction",
+      "duration": "0.007472"
+    },
+    "Wildfolk.Tests.FoodModelTests.HostCanExpireWaterPenaltyWithoutEnablingNutritionDrain": {
+      "result": "Passed",
+      "run": "edit-fishing",
+      "duration": "0.002338"
+    },
+    "Wildfolk.Tests.FoodModelTests.MealsAreThreeDistinctPotChoicesAndExistingRecoveryFoodsRemainImmediate": {
+      "result": "Passed",
+      "run": "edit-fishing",
+      "duration": "0.003764"
+    },
+    "Wildfolk.Tests.FoodModelTests.NetworkMealIdentityAndEndTimeRoundTripAndParticipateInEquality": {
+      "result": "Passed",
+      "run": "edit-fishing",
+      "duration": "0.000702"
+    },
+    "Wildfolk.Tests.FoodModelTests.OneMealReplacesInsteadOfStackingAndSameMealResetsOnlyItsDuration": {
+      "result": "Passed",
+      "run": "edit-fishing",
+      "duration": "0.001804"
+    },
+    "Wildfolk.Tests.FoodModelTests.StaminaMealChangesRateWithoutChangingDelayCostOrMaximum": {
+      "result": "Passed",
+      "run": "edit-fishing",
+      "duration": "0.001936"
+    },
+    "Wildfolk.Tests.FoodModelTests.StewsHavePlantHydrationMeatHungerFishHydrationAndMixedNutritionRoles": {
+      "result": "Passed",
+      "run": "edit-fishing",
+      "duration": "0.000576"
+    },
+    "Wildfolk.Tests.MedicineModelTests.AppendingHerbsPreservesEveryPreviousSourceIdAndPosition(1)": {
+      "result": "Passed",
+      "run": "edit-final",
+      "duration": "0.037803"
+    },
+    "Wildfolk.Tests.MedicineModelTests.AppendingHerbsPreservesEveryPreviousSourceIdAndPosition(2)": {
+      "result": "Passed",
+      "run": "edit-final",
+      "duration": "5.695978"
+    },
+    "Wildfolk.Tests.MedicineModelTests.AppendingHerbsPreservesEveryPreviousSourceIdAndPosition(3)": {
+      "result": "Passed",
+      "run": "edit-final",
+      "duration": "7.741496"
+    },
+    "Wildfolk.Tests.MedicineModelTests.HealingStatusRoundTripsThroughNetworkSerializationAndUsesProtocol16": {
+      "result": "Passed",
+      "run": "edit-fishing",
+      "duration": "0.000732"
+    },
+    "Wildfolk.Tests.MedicineModelTests.HerbIsUnarmedSurfacePlantWithRegionalRecoveryAndNoStarterSupply": {
+      "result": "Passed",
+      "run": "edit-fishing",
+      "duration": "0.001588"
+    },
+    "Wildfolk.Tests.MedicineModelTests.TreatmentIsGradualExactSingleAndTransient": {
+      "result": "Passed",
+      "run": "edit-fishing",
+      "duration": "0.001484"
+    },
+    "Wildfolk.Tests.MedicineModelTests.TwoMedicinesUseOneHerbAndFiberSinkWithoutNewStationOrFoodChanges": {
+      "result": "Passed",
+      "run": "edit-fishing",
+      "duration": "0.003932"
+    },
+    "Wildfolk.Tests.MetalProgressionTests.AppendedOresAreDeterministicAndPreserveEveryLegacyPlacementAndId": {
+      "result": "Passed",
+      "run": "edit-correction",
+      "duration": "0.219755"
+    },
+    "Wildfolk.Tests.MetalProgressionTests.BronzeAndSteelReserveEveryIngredientAndPreserveBlockedOutputAndQueueSnapshot": {
+      "result": "Passed",
+      "run": "edit-correction",
+      "duration": "0.013417"
+    },
+    "Wildfolk.Tests.MetalProgressionTests.FourInputsReserveAtomicallyAndRollbackFailureOrException": {
+      "result": "Passed",
+      "run": "edit-correction",
+      "duration": "0.005506"
+    },
+    "Wildfolk.Tests.MetalProgressionTests.MiningToolPermissionHasNoFistFallbackAndMaterialKindsRemainDistinct": {
+      "result": "Passed",
+      "run": "edit-correction",
+      "duration": "0.028158"
+    },
+    "Wildfolk.Tests.MetalProgressionTests.OnlyConfiguredNextTierOpensAndLegacyUpgradeCostsRemain": {
+      "result": "Passed",
+      "run": "edit-correction",
+      "duration": "0.008218"
+    },
+    "Wildfolk.Tests.MetalProgressionTests.SupplyContextAndRecoveryAreIndependentOfTechnologyAndRespectMineralFamily": {
+      "result": "Passed",
+      "run": "edit-correction",
+      "duration": "0.060731"
+    },
+    "Wildfolk.Tests.MetalProgressionTests.WorkbenchRangeIsOneThroughSix(0,False)": {
+      "result": "Passed",
+      "run": "edit-correction",
+      "duration": "0.001695"
+    },
+    "Wildfolk.Tests.MetalProgressionTests.WorkbenchRangeIsOneThroughSix(1,True)": {
+      "result": "Passed",
+      "run": "edit-correction",
+      "duration": "0.000359"
+    },
+    "Wildfolk.Tests.MetalProgressionTests.WorkbenchRangeIsOneThroughSix(2,True)": {
+      "result": "Passed",
+      "run": "edit-correction",
+      "duration": "0.000257"
+    },
+    "Wildfolk.Tests.MetalProgressionTests.WorkbenchRangeIsOneThroughSix(6,True)": {
+      "result": "Passed",
+      "run": "edit-correction",
+      "duration": "0.000473"
+    },
+    "Wildfolk.Tests.MetalProgressionTests.WorkbenchRangeIsOneThroughSix(7,False)": {
+      "result": "Passed",
+      "run": "edit-correction",
+      "duration": "0.000351"
+    },
+    "Wildfolk.Tests.MetalProgressionTests.WorkbenchRangeIsOneThroughSix(-1,False)": {
+      "result": "Passed",
+      "run": "edit-correction",
+      "duration": "0.000348"
+    },
+    "Wildfolk.Tests.NetworkFoundationTests.CommandsRejectNonFiniteAndClampUntrustedMagnitude": {
+      "result": "Passed",
+      "run": "edit-fishing",
+      "duration": "0.001251"
+    },
+    "Wildfolk.Tests.NetworkFoundationTests.InternetCodeAndLocalAddressAreDifferentRoutes": {
+      "result": "Passed",
+      "run": "edit-fishing",
+      "duration": "0.001935"
+    },
+    "Wildfolk.Tests.NetworkFoundationTests.PlayerStateIsServerWritableAndRpcInputsAreOwnerOnly": {
+      "result": "Passed",
+      "run": "edit-fishing",
+      "duration": "0.016384"
+    },
+    "Wildfolk.Tests.SceneContractTests.BalanceDataHasValidCombatRangesAndProgressionItems": {
+      "result": "Passed",
+      "run": "edit-fishing",
+      "duration": "0.053687"
+    },
+    "Wildfolk.Tests.SceneContractTests.SavedSceneRetainsPlayableConnectionsAndNonPushingEnemy": {
+      "result": "Passed",
+      "run": "edit-fishing",
+      "duration": "0.598645"
+    },
+    "Wildfolk.Tests.ContentExpansionPlayTests.FishingRequiresNaturalWaterBiteAndSingleAuthoritativeReward": {
+      "result": "Passed",
+      "run": "play-fishing",
+      "duration": "9.918321"
+    },
+    "Wildfolk.Tests.FishingPlayTests.ActualWaterCatchesCancelFullBagProcessingAndSave11": {
+      "result": "Passed",
+      "run": "play-fishing",
+      "duration": "85.982391"
+    },
+    "Wildfolk.Tests.FishingPlayTests.HostRollAwardReplicatedCatchAndReHostRemainAuthoritative": {
+      "result": "Passed",
+      "run": "play-fishing",
+      "duration": "90.476189"
+    },
+    "Wildfolk.Tests.GamefeelHostTests.RestoredHostProcessingRegistersAfterSpawnAndFishingCancellationPublishesNone": {
+      "result": "Passed",
+      "run": "play-fishing",
+      "duration": "59.075172"
+    },
+    "Wildfolk.Tests.StabilityModelTests.AtomicSaveBackupRecoversCorruptionAndIgnoresInterruptedTemporaryFile": {
+      "result": "Passed",
+      "run": "edit-final",
+      "duration": "0.110439"
+    },
+    "Wildfolk.Tests.StabilityModelTests.ChecksumAndFutureVersionAreRejected": {
+      "result": "Passed",
+      "run": "edit-final",
+      "duration": "0.002104"
+    },
+    "Wildfolk.Tests.StabilityModelTests.CupStateChangesAreAtomicAndConserveContainersOnFullBags": {
+      "result": "Passed",
+      "run": "edit-final",
+      "duration": "0.003431"
+    },
+    "Wildfolk.Tests.StabilityModelTests.EditorValidatorAcceptsCurrentDataAndDeveloperToolsStayInEditorAssembly": {
+      "result": "Passed",
+      "run": "edit-final",
+      "duration": "0.112684"
+    },
+    "Wildfolk.Tests.StabilityModelTests.EveryCurrentBasicAttackHasOneTargetAndExtensibleShape": {
+      "result": "Passed",
+      "run": "edit-final",
+      "duration": "0.002455"
+    },
+    "Wildfolk.Tests.StabilityModelTests.HostileRelationIsNotAPlayerTeamDespiteDefaultNumericId": {
+      "result": "Passed",
+      "run": "edit-final",
+      "duration": "0.001831"
+    },
+    "Wildfolk.Tests.StabilityModelTests.InventoryRestoreRejectsUnknownAndOversizedStacksWithoutPartialMutation": {
+      "result": "Passed",
+      "run": "edit-final",
+      "duration": "0.001443"
+    },
+    "Wildfolk.Tests.StabilityModelTests.RawWaterPenaltyExpiresPreciselyAndSurvivesStateRoundTrip": {
+      "result": "Passed",
+      "run": "edit-final",
+      "duration": "0.001825"
+    },
+    "Wildfolk.Tests.StabilityModelTests.RenewalAndTerrainDataKeepDifferentResourceTimes": {
+      "result": "Passed",
+      "run": "edit-final",
+      "duration": "0.000394"
+    }
+  }
+}

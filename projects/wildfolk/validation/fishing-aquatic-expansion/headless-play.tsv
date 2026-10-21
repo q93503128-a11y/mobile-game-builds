@@ -1,0 +1,117 @@
+2026-10-21T04:49:11.2379039Z	rod-craft	begin
+2026-10-21T04:49:11.5812995Z	rod-craft	PASS WBI Wood4+Fiber3 existing Rod crafted through card
+2026-10-21T04:49:11.6157101Z	rod-craft	PASS land cast rejected
+2026-10-21T04:49:11.6198884Z	catch-raw_fish	begin
+2026-10-21T04:49:12.5514006Z	catch-raw_fish	PASS real water cast query
+2026-10-21T04:49:12.5541263Z	catch-raw_fish	PASS actual cast (730.42, 585.00) to (725.42, 585.00)
+2026-10-21T04:49:12.5578445Z	catch-raw_fish	PASS Host roll raw_fish water=Inland inset=3 deep=True night=False
+2026-10-21T04:49:12.5583535Z	catch-raw_fish	PASS early reel rejected
+2026-10-21T04:49:15.2794053Z	catch-raw_fish	measured cast-to-bite=3.003255
+2026-10-21T04:49:15.2932874Z	catch-raw_fish	PASS reel success
+2026-10-21T04:49:15.2958735Z	catch-raw_fish	PASS same-frame duplicate rejected
+2026-10-21T04:49:15.2974297Z	catch-raw_fish	PASS exactly one inventory award
+2026-10-21T04:49:15.8810195Z	catch-raw_fish	measured full cycle=3.605461
+2026-10-21T04:49:15.8816273Z	catch-crucian_carp	begin
+2026-10-21T04:49:16.6356668Z	catch-crucian_carp	PASS real water cast query
+2026-10-21T04:49:16.6382157Z	catch-crucian_carp	PASS actual cast (748.70, 1537.00) to (743.70, 1537.00)
+2026-10-21T04:49:16.6393630Z	catch-crucian_carp	PASS Host roll crucian_carp water=Wetlands inset=3 deep=True night=False
+2026-10-21T04:49:16.6403569Z	catch-crucian_carp	PASS early reel rejected
+2026-10-21T04:49:19.3405131Z	catch-crucian_carp	measured cast-to-bite=3.002069
+2026-10-21T04:49:19.3473409Z	catch-crucian_carp	PASS reel success
+2026-10-21T04:49:19.3501151Z	catch-crucian_carp	PASS same-frame duplicate rejected
+2026-10-21T04:49:19.3522264Z	catch-crucian_carp	PASS exactly one inventory award
+2026-10-21T04:49:19.9400036Z	catch-crucian_carp	measured full cycle=3.603466
+2026-10-21T04:49:19.9420629Z	catch-perch	begin
+2026-10-21T04:49:20.1019460Z	catch-perch	PASS real water cast query
+2026-10-21T04:49:20.1039702Z	catch-perch	PASS actual cast (730.42, 585.00) to (725.42, 585.00)
+2026-10-21T04:49:20.1054753Z	catch-perch	PASS Host roll perch water=Inland inset=3 deep=True night=False
+2026-10-21T04:49:20.1060123Z	catch-perch	PASS early reel rejected
+2026-10-21T04:49:22.9464759Z	catch-perch	measured cast-to-bite=3.000825
+2026-10-21T04:49:22.9480127Z	catch-perch	PASS reel success
+2026-10-21T04:49:22.9486287Z	catch-perch	PASS same-frame duplicate rejected
+2026-10-21T04:49:22.9506706Z	catch-perch	PASS exactly one inventory award
+2026-10-21T04:49:23.5599692Z	catch-perch	measured full cycle=3.602345
+2026-10-21T04:49:23.5620753Z	catch-mackerel	begin
+2026-10-21T04:49:24.3889270Z	catch-mackerel	PASS real water cast query
+2026-10-21T04:49:24.3919704Z	catch-mackerel	PASS actual cast (5989.36, 0.00) to (5994.36, 0.00)
+2026-10-21T04:49:24.3930975Z	catch-mackerel	PASS Host roll mackerel water=Ocean inset=3.999598 deep=True night=False
+2026-10-21T04:49:24.3941046Z	catch-mackerel	PASS early reel rejected
+2026-10-21T04:49:27.0953939Z	catch-mackerel	measured cast-to-bite=3.000942
+2026-10-21T04:49:27.1092301Z	catch-mackerel	PASS reel success
+2026-10-21T04:49:27.1102816Z	catch-mackerel	PASS same-frame duplicate rejected
+2026-10-21T04:49:27.1119641Z	catch-mackerel	PASS exactly one inventory award
+2026-10-21T04:49:27.6934665Z	catch-mackerel	measured full cycle=3.608047
+2026-10-21T04:49:27.6958933Z	catch-eel	begin
+2026-10-21T04:49:28.1204943Z	catch-eel	PASS real water cast query
+2026-10-21T04:49:28.1230307Z	catch-eel	PASS actual cast (748.70, 1537.00) to (743.70, 1537.00)
+2026-10-21T04:49:28.1240643Z	catch-eel	PASS Host roll eel water=Wetlands inset=3 deep=True night=True
+2026-10-21T04:49:28.1266307Z	catch-eel	PASS early reel rejected
+2026-10-21T04:49:30.8171083Z	catch-eel	measured cast-to-bite=3.000919
+2026-10-21T04:49:30.8238562Z	catch-eel	PASS reel success
+2026-10-21T04:49:30.8263791Z	catch-eel	PASS same-frame duplicate rejected
+2026-10-21T04:49:30.8298146Z	catch-eel	PASS exactly one inventory award
+2026-10-21T04:49:31.4169514Z	catch-eel	measured full cycle=3.60232
+2026-10-21T04:49:31.4206020Z	cancel-fail-full	begin
+2026-10-21T04:49:31.7980751Z	cancel-fail-full	PASS cast to expire
+2026-10-21T04:49:36.8256980Z	cancel-fail-full	PASS missed bite expires without reward
+2026-10-21T04:49:36.8278274Z	cancel-fail-full	PASS cast before move
+2026-10-21T04:49:36.8530472Z	cancel-fail-full	PASS movement cancels
+2026-10-21T04:49:36.8587035Z	cancel-fail-full	PASS cast before tool switch
+2026-10-21T04:49:36.8977630Z	cancel-fail-full	PASS tool switch cancels
+2026-10-21T04:49:36.9023958Z	cancel-fail-full	PASS cast before modal
+2026-10-21T04:49:36.9511646Z	cancel-fail-full	PASS inventory modal cancels
+2026-10-21T04:49:36.9546878Z	cancel-fail-full	PASS full bag cast
+2026-10-21T04:49:39.9357692Z	cancel-fail-full	PASS full bag no reward or reroll
+2026-10-21T04:49:39.9373337Z	cancel-fail-full	PASS free one slot
+2026-10-21T04:49:39.9391784Z	cancel-fail-full	PASS same pending catch succeeds once after free slot
+2026-10-21T04:49:40.6354757Z	processing-and-cooking	begin
+2026-10-21T04:49:41.8487138Z	processing-and-cooking	PASS actual Hand prepare crucian_carp
+2026-10-21T04:49:41.8963597Z	processing-and-cooking	PASS actual Hand prepare perch
+2026-10-21T04:49:41.9258191Z	processing-and-cooking	PASS actual Hand prepare mackerel
+2026-10-21T04:49:41.9621952Z	processing-and-cooking	PASS actual Hand prepare eel
+2026-10-21T04:49:42.0118938Z	processing-and-cooking	PASS open actual station fish_portions
+2026-10-21T04:49:42.0920398Z	processing-and-cooking	PASS real recipe processing fish_portions
+2026-10-21T04:49:50.2394827Z	processing-and-cooking	PASS take output fish_portions
+2026-10-21T04:49:50.2404795Z	processing-and-cooking	PASS correct output count fish_portions
+2026-10-21T04:49:50.2492116Z	processing-and-cooking	PASS open actual station cooked_fish
+2026-10-21T04:49:50.2798504Z	processing-and-cooking	PASS real recipe processing cooked_fish
+2026-10-21T04:49:55.4668785Z	processing-and-cooking	PASS take output cooked_fish
+2026-10-21T04:49:55.4678816Z	processing-and-cooking	PASS correct output count cooked_fish
+2026-10-21T04:49:55.5244260Z	processing-and-cooking	PASS open actual station fish_stew
+2026-10-21T04:49:55.5653842Z	processing-and-cooking	PASS real recipe processing fish_stew
+2026-10-21T04:50:03.7519721Z	processing-and-cooking	PASS take output fish_stew
+2026-10-21T04:50:03.7529984Z	processing-and-cooking	PASS correct output count fish_stew
+2026-10-21T04:50:03.7727496Z	processing-and-cooking	PASS open actual station trail_broth
+2026-10-21T04:50:03.8090162Z	processing-and-cooking	PASS real recipe processing trail_broth
+2026-10-21T04:50:13.9865496Z	processing-and-cooking	PASS take output trail_broth
+2026-10-21T04:50:13.9886955Z	processing-and-cooking	PASS correct output count trail_broth
+2026-10-21T04:50:14.0014815Z	processing-and-cooking	PASS portion nutrition only no Meal/heal
+2026-10-21T04:50:14.0035319Z	save-load	begin
+2026-10-21T04:50:14.1436871Z	save-load	PASS pending cast before save
+2026-10-21T04:50:21.9864210Z	save-load	PASS isolated Save11
+2026-10-21T04:50:31.2425151Z	save-load	PASS Load discards transient fishing
+2026-10-21T04:50:31.2477760Z	save-load	PASS new and existing item stacks exactly restored
+2026-10-21T04:50:31.2529784Z	save-load	PASS new cast after Load
+2026-10-21T04:50:31.3054154Z	save-load	PASS death cancels fishing
+2026-10-21T04:50:31.3079708Z	complete	complete
+2026-10-21T04:50:34.9194120Z	host-catch	begin
+2026-10-21T04:50:35.2431978Z	host-catch	PASS Local Host
+2026-10-21T04:50:35.2672046Z	host-catch	PASS enter Host world
+2026-10-21T04:50:40.9905353Z	host-catch	PASS Host world ready
+2026-10-21T04:50:41.8527358Z	host-catch	PASS real water cast query
+2026-10-21T04:50:41.8671384Z	host-catch	PASS Host cast request accepted
+2026-10-21T04:50:41.8680769Z	host-catch	PASS duplicate cast request rejected
+2026-10-21T04:50:44.5694800Z	host-catch	PASS Host reel request accepted
+2026-10-21T04:50:44.5699900Z	host-catch	PASS duplicate and newer recovery requests rejected
+2026-10-21T04:50:44.5730125Z	host-catch	PASS Host one eel award
+2026-10-21T04:50:44.5760813Z	host-catch	PASS replicated catch index/count from server
+2026-10-21T04:50:45.2695707Z	host-catch	PASS pending Host cast before Save
+2026-10-21T04:51:02.1653267Z	host-catch	PASS Host Save11 while waiting
+2026-10-21T04:51:26.1759179Z	rehost	begin
+2026-10-21T04:51:30.2571239Z	rehost	PASS Local Host
+2026-10-21T04:51:30.2596552Z	rehost	PASS enter Host world
+2026-10-21T04:51:39.5730359Z	rehost	PASS Host world ready
+2026-10-21T04:51:39.6257978Z	rehost	PASS reHost exact catch inventory and no pending reward
+2026-10-21T04:51:39.6268115Z	rehost	PASS selected Rod restored
+2026-10-21T04:51:39.6291073Z	rehost	PASS reHost activity Idle
+2026-10-21T04:51:39.6296448Z	complete	complete

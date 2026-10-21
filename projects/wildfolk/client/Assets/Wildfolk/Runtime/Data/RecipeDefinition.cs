@@ -38,6 +38,8 @@ namespace Wildfolk
         [Range(1,6)]public int RequiredWorkbenchTier=1;
         public string DisplayKey;
         public RecipeDefinition SupersededBy;
+        // Alternative processing of an already obtainable ingredient; not a mandatory progression route.
+        public bool OptionalConversion;
         public UnlockRequirement[] FutureUnlocks=Array.Empty<UnlockRequirement>();
     }
 }

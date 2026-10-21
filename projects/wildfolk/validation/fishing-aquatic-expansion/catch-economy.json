@@ -1,0 +1,157 @@
+{
+  "assumption": "Math, not measured farming; 3.9s includes assumed0.3s reaction; all catches successful; no travel/cooking time. Current MP natural H/T drain stays disabled.",
+  "contexts": [
+    {
+      "water": "inland",
+      "night": false,
+      "deep": false,
+      "probabilities": {
+        "raw_fish": 1.0
+      },
+      "raw_per_catch": 1.0,
+      "raw_per_minute_1p_at_3_9_seconds": 15.384615384615385,
+      "raw_per_minute_4p_at_3_9_seconds": 61.53846153846154,
+      "expected_casts_to_each_species": {
+        "raw_fish": 1.0
+      }
+    },
+    {
+      "water": "inland",
+      "night": false,
+      "deep": true,
+      "probabilities": {
+        "raw_fish": 0.8,
+        "perch": 0.2
+      },
+      "raw_per_catch": 1.2,
+      "raw_per_minute_1p_at_3_9_seconds": 18.461538461538463,
+      "raw_per_minute_4p_at_3_9_seconds": 73.84615384615385,
+      "expected_casts_to_each_species": {
+        "raw_fish": 1.25,
+        "perch": 5.0
+      }
+    },
+    {
+      "water": "inland",
+      "night": true,
+      "deep": false,
+      "probabilities": {
+        "raw_fish": 0.9411764705882353,
+        "eel": 0.058823529411764705
+      },
+      "raw_per_catch": 1.0588235294117647,
+      "raw_per_minute_1p_at_3_9_seconds": 16.289592760180998,
+      "raw_per_minute_4p_at_3_9_seconds": 65.15837104072399,
+      "expected_casts_to_each_species": {
+        "raw_fish": 1.0625,
+        "eel": 17.0
+      }
+    },
+    {
+      "water": "inland",
+      "night": true,
+      "deep": true,
+      "probabilities": {
+        "raw_fish": 0.7619047619047619,
+        "perch": 0.19047619047619047,
+        "eel": 0.047619047619047616
+      },
+      "raw_per_catch": 1.2380952380952381,
+      "raw_per_minute_1p_at_3_9_seconds": 19.04761904761905,
+      "raw_per_minute_4p_at_3_9_seconds": 76.1904761904762,
+      "expected_casts_to_each_species": {
+        "raw_fish": 1.3125,
+        "perch": 5.25,
+        "eel": 21.0
+      }
+    },
+    {
+      "water": "wetlands",
+      "night": false,
+      "deep": false,
+      "probabilities": {
+        "raw_fish": 0.6,
+        "crucian_carp": 0.4
+      },
+      "raw_per_catch": 1.0,
+      "raw_per_minute_1p_at_3_9_seconds": 15.384615384615385,
+      "raw_per_minute_4p_at_3_9_seconds": 61.53846153846154,
+      "expected_casts_to_each_species": {
+        "raw_fish": 1.6666666666666667,
+        "crucian_carp": 2.5
+      }
+    },
+    {
+      "water": "wetlands",
+      "night": false,
+      "deep": true,
+      "probabilities": {
+        "raw_fish": 0.5,
+        "crucian_carp": 0.3333333333333333,
+        "perch": 0.16666666666666666
+      },
+      "raw_per_catch": 1.1666666666666667,
+      "raw_per_minute_1p_at_3_9_seconds": 17.94871794871795,
+      "raw_per_minute_4p_at_3_9_seconds": 71.7948717948718,
+      "expected_casts_to_each_species": {
+        "raw_fish": 2.0,
+        "crucian_carp": 3.0,
+        "perch": 6.0
+      }
+    },
+    {
+      "water": "wetlands",
+      "night": true,
+      "deep": false,
+      "probabilities": {
+        "raw_fish": 0.5714285714285714,
+        "crucian_carp": 0.38095238095238093,
+        "eel": 0.047619047619047616
+      },
+      "raw_per_catch": 1.0476190476190477,
+      "raw_per_minute_1p_at_3_9_seconds": 16.11721611721612,
+      "raw_per_minute_4p_at_3_9_seconds": 64.46886446886448,
+      "expected_casts_to_each_species": {
+        "raw_fish": 1.75,
+        "crucian_carp": 2.625,
+        "eel": 21.0
+      }
+    },
+    {
+      "water": "wetlands",
+      "night": true,
+      "deep": true,
+      "probabilities": {
+        "raw_fish": 0.48,
+        "crucian_carp": 0.32,
+        "perch": 0.16,
+        "eel": 0.04
+      },
+      "raw_per_catch": 1.2,
+      "raw_per_minute_1p_at_3_9_seconds": 18.461538461538463,
+      "raw_per_minute_4p_at_3_9_seconds": 73.84615384615385,
+      "expected_casts_to_each_species": {
+        "raw_fish": 2.0833333333333335,
+        "crucian_carp": 3.125,
+        "perch": 6.25,
+        "eel": 25.0
+      }
+    },
+    {
+      "water": "ocean",
+      "probabilities": {
+        "mackerel": 1
+      },
+      "raw_per_catch": 1,
+      "portions_alternative_hunger_per_catch": 40,
+      "berry_per_catch": 1
+    },
+    {
+      "water": "cavern",
+      "probabilities": {
+        "raw_fish": 1
+      },
+      "raw_per_catch": 1
+    }
+  ]
+}

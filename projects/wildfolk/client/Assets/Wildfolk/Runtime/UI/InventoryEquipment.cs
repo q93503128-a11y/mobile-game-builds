@@ -41,6 +41,8 @@ namespace Wildfolk
             if(item!=null && item.EquippedLight!=null){Details.text=L.Text("ui.utility.info");UnequipButton.interactable=Equipment.Utility!=null;}
             if(item!=null && item.Tool!=null)Details.text=ItemStats.Description(item);
             if(item!=null && item.Consumable!=null)Details.text=ItemStats.Food(item.Consumable);
+            if(item!=null && item.FishingRod)Details.text=L.Text("ui.fishing.rod");
+            if(item!=null && item.Consumable!=null && L.Has("item."+item.Id+".description"))Details.text+="\n"+L.Text("item."+item.Id+".description");
             if(item!=null && item.Ammo!=AmmoKind.None)Details.text=L.Format("ui.ammo.info",item.AmmoDamage);
             if(item!=null && item.WaterCapacity>0)Details.text=stack.Charges+"/"+item.WaterCapacity+" · "+L.Text("water."+stack.Quality)+"\n"+L.Text("ui.waterskin.info");
             if(equippedSelected){Panel.SelectedName.text=item==null ? L.Text("ui.inventory.empty") : item.LocalizedName;Panel.SelectedIcon.sprite=item==null ? null : item.Icon;Panel.SelectedIcon.enabled=item!=null;Panel.SelectedCategory.text=L.Text("ui.slot."+selectedSlot);}
