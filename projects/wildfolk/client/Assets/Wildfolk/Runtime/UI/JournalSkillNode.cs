@@ -18,7 +18,7 @@ namespace Wildfolk
         {
             Focus.SetActive(selected);Learned.SetActive(learned);Locked.SetActive(!learned && !available);
             Frame.color=learned?JournalStyle.Learned:available?Color.white:new Color32(196,188,164,255);
-            Icon.color=learned || available?Color.white:new Color32(147,143,121,255);
+            Icon.color=learned || available?JournalStyle.Ink:JournalStyle.Muted;
         }
     }
 }
