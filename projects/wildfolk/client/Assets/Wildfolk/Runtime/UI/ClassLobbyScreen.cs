@@ -11,6 +11,18 @@ namespace Wildfolk
         public Text Title,Role,Description,Progress,NodeDetail,PurchaseLabel,SelectLabel,InvestLabel,Currency,ConfirmText,Status;
         public Button PurchaseButton,SelectButton,RespecButton,InvestButton;
         private int selected,node;private AccountProgression account;
+        private void Awake()
+        {
+            if(CardStates==null)return;
+            foreach(var label in CardStates)
+            {
+                if(label==null)continue;
+                label.rectTransform.anchoredPosition=new Vector2(15,-38);
+                label.rectTransform.sizeDelta=new Vector2(216,24);
+                label.fontSize=19;
+                label.resizeTextForBestFit=false;
+            }
+        }
         private void OnEnable(){ClassProfiles.Changed+=Refresh;L.Changed+=Refresh;}
         private void OnDisable(){ClassProfiles.Changed-=Refresh;L.Changed-=Refresh;}
         public void Open()
@@ -37,8 +49,9 @@ namespace Wildfolk
             {
                 var c=catalog.Classes[i];var progress=account.Find(c.Id);CardNames[i].text=c.Name;CardRoles[i].text=L.Text("journal.role."+c.Id);CardStates[i].text=L.Text(account.Selected==c.Id?"class.selected":progress.Owned?"class.owned":"class.locked");
                 Cards[i].image.color=selected==i?new Color32(137,88,56,38):Color.clear;CardNames[i].fontStyle=selected==i?FontStyle.Bold:FontStyle.Normal;CardMarks[i].enabled=account.Selected==c.Id;
+                var cardIcon=Cards[i].transform.Find("Class Icon")?.GetComponent<Image>();if(cardIcon!=null)cardIcon.color=progress.Owned?JournalStyle.Ink:JournalStyle.Muted;
             }
-            ClassIcon.sprite=TreeIcon.sprite=ClassIcons[selected];Title.text=d.Name;Role.text=L.Text("journal.role."+d.Id)+"\n"+L.Text(d.Active?"class.has_active":"class.passive");Description.text=d.Description;
+            ClassIcon.sprite=TreeIcon.sprite=ClassIcons[selected];ClassIcon.color=TreeIcon.color=JournalStyle.Ink;Title.text=d.Name;Role.text=L.Text("journal.role."+d.Id)+"\n"+L.Text(d.Active?"class.has_active":"class.passive");Description.text=d.Description;
             Progress.text=L.Format("journal.class_progress",p.XP,points,catalog.Earned(p.XP));var next=Array.Find(catalog.Milestones,x=>x>p.XP);if(next>0)Progress.text+="\n"+L.Format("class.next",next);
             for(var i=0;i<Nodes.Length;i++)
             {
