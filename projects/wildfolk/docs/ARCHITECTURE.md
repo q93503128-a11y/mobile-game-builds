@@ -1,6 +1,6 @@
 # 현재 코드 연결
 
-2026-10-21 현재: generation3 / Save12 / Protocol19, Item134 / Recipe111. v1~10 이관과 generation1/2 reader를 유지한다. 아래 날짜별 Foundation 절은 구조의 도입 기록이며 현재 데이터는 CONTENT_EXPANSION/CREATURES_AND_LOOT/SAVE_PERSISTENCE를 따른다.
+2026-10-22 현재: generation3 / Save13 / Protocol20, Item134 / Recipe111. v1~10 이관과 generation1/2 reader를 유지한다. 아래 날짜별 Foundation 절은 구조의 도입 기록이며 현재 데이터는 CONTENT_EXPANSION/CREATURES_AND_LOOT/SAVE_PERSISTENCE를 따른다.
 
 시설 실행은 ProcessingScheduler의 공용0.1초 tick에 등록된 busy Host/SP 작업만 진행한다. HitFeedback는 피격 이벤트 동안 coroutine으로 동작한다. LootTable.Roll/ProcessingQueue.Costs/CavernNetwork의 exitNext가 중복 계산을 공유한다. UI는 visibility 변경에만 강제 layout, 처리 명칭은 recipe/language cache, LocalFirelight geometry는 definition 변경에만 설정한다. Save/Protocol 필드와 inactive logical advance는 유지한다.
 Runtime/InputSystem/UGUI,Editor,EditMode/PlayMode Tests를 분리한다. 실제 수치는Data ScriptableObject가 정본이고 Editor는 없는 초기 데이터를 생성하며 기존 수치를 보존한다. 씬은 프리팹 연결과 월드Bootstrap을 저장하고 수동 테스트 월드 배치 코드는 제거했다.
@@ -244,3 +244,9 @@ IWorldSupplies를 GoblinCamp/PoiSite가 구현하고 기존 CampLootPanel을 재
 - DeathHud는 기존 Canvas modal에 무료 Home을 항상 표시하고 MP Downed는 작은 banner/원정 표식/기존 navigation bearing으로 표시한다. 버튼/모달은 상태 이벤트, 시간·근처 구조 탐색은 제한된0.1~0.15초 갱신이다. 새 Canvas sorting override는 없다.
 - SaveGameRules는 같은 seed/generation의 **불변 검증 지형만** 한 개 재사용한다. snapshot/player/거래/ID/타이머/Item 검증은 매번 실행한다. 새 seed/definition/generation 또는 Editor rules 재검증에서 지형을 교체한다.
 - 복귀는 목적지 근처 청크를 제한적으로 materialize한 뒤 실제 terrain/solid 검증한다. 현장 보정은 최대3m, Home 막힘 보정은8m다. 실제 valid death 지점은 이동하지 않는다. NGO despawn callback에서는 참가자 snapshot만 기억하고 disconnect 파일 저장은 다음 프레임 수행한다.
+
+## Class foundation boundaries
+
+ClassCatalog(6 definition/54 node/milestones)→ClassProfiles(IAccountProgressionStore/IClassEntitlementStore/IClassPurchaseWallet)→admission lock→PlayerClass cached modifiers. Class identity는 PlayerClass에서만 판정하고 Combat/Medicine/Locomotion/Building/Exploration은 capability/modifier를 소비한다. LocalAlphaClassAdmission은 로컬 소유·XP claim을 신뢰하는 Alpha 경계로 backend authentication을 주장하지 않는다. Host는 노드/선행/XP/수치 정본과 세션 lock을 검사한다.
+
+PlayerMedicine generic item category/application/HoT, PlayerBuildingService hold+atomic transaction, StructureMaintenance buffer/refund, PlayerTeamMarker 관측/LOS·만료를 담당한다. ClassHud는5Hz bounded context overlap, marker는NetworkPlayer.Active 최대4 순회. per-frame 전역 creature/placeable/POI 검색은 없다. marker 생성 순간의 관측된 landmark 표시만 확인한다.

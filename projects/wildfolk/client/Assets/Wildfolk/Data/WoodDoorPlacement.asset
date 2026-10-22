@@ -12,6 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea85a5ebaf6f62646a87d747548e1a2f, type: 3}
   m_Name: WoodDoorPlacement
   m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.PlaceableDefinition
+  RepairMaterials:
+  - Item: {fileID: 11400000, guid: 431287b464f63f4408828d4053bac6eb, type: 2}
+    Count: 1
+    Charges: 0
+    Quality: 0
+  ConstructionMaterials:
+  - Item: {fileID: 11400000, guid: 431287b464f63f4408828d4053bac6eb, type: 2}
+    Count: 3
+    Charges: 0
+    Quality: 0
+  RecoverPortable: 0
   Item: {fileID: 11400000, guid: 339d21307ef4bc54a8f91086caf80e98, type: 2}
   Prefab: {fileID: 1494577906523988666, guid: 98b46c759ea4bd84fa7d6fdae4516266, type: 3}
   Vitality: {fileID: 11400000, guid: 3b0132e61406bcc41abaf130095546da, type: 2}
@@ -19,6 +30,8 @@ MonoBehaviour:
   MaximumDistance: 2.8
   Station: 0
   Tier: {fileID: 11400000, guid: b632d88d6c00461418a7100d186ff69c, type: 2}
+  IsBeacon: 0
+  Turret: {fileID: 0}
   IsBarrier: 1
   IsDoor: 1
   StorageSlots: 0
@@ -28,5 +41,7 @@ MonoBehaviour:
   OutputCapacity: 100
   ProcessingSpeed: 1
   WorkbenchTier: 1
+  TierVisual: {fileID: 0}
+  TierDisplayKey:
   UpgradeTo: {fileID: 0}
   UpgradeCosts: []

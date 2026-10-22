@@ -54,7 +54,7 @@ namespace Wildfolk
             if(State==GoblinState.Windup)
             {
                 Pose.localScale=new Vector3(1.05f,.95f,1);Facing.Face(strike);Facing.SetHandPose(1,new Vector2(0,.22f*Mathf.Clamp01(timer/Definition.Windup)),-50+100*Mathf.Clamp01(timer/Definition.Windup));
-                if(timer>=Definition.Windup){if(delta.magnitude<=Definition.AttackReach && Vector2.Dot(strike,delta.normalized)>.4f)PlayerHealth.ApplyDamage(Definition.Damage);State=GoblinState.Recovery;timer=0;Pose.localScale=Vector3.one;}
+                if(timer>=Definition.Windup){if(delta.magnitude<=Definition.AttackReach && Vector2.Dot(strike,delta.normalized)>.4f)PlayerHealth.ApplyDamage(Definition.Damage,false,null,OwnHealth);State=GoblinState.Recovery;timer=0;Pose.localScale=Vector3.one;}
             }
             if(State==GoblinState.Recovery && timer>=Definition.Cooldown){State=GoblinState.Chase;Facing.ResetPose();}
         }

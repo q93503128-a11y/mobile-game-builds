@@ -72,6 +72,7 @@ namespace Wildfolk
         private void RefreshTurret()
         {
             if(turret==null)return;status.text=turret.GetComponent<Health>().Current+" / "+turret.GetComponent<Health>().Maximum+"   ·   "+turret.Definition.Ammunition.LocalizedName+" ×"+turret.AmmoCount()+"\n"+(turret.ReloadRemaining>.05f ? L.Format("ui.turret.reloading",turret.ReloadRemaining.ToString("0.0")) : L.Text(turret.Loaded ? "ui.turret.ready" : "ui.turret.unloaded"));
+            if(turret.OverclockRemaining>0)status.text+=" · "+L.Text("class.overclock")+" "+Mathf.CeilToInt(turret.OverclockRemaining)+"s";
             fire.interactable=turret.Loaded && turret.ReloadRemaining<=0 && turret.AmmoCount()>0;reload.interactable=!turret.Loaded && turret.ReloadRemaining<=0 && turret.AmmoCount()>0;
             if(shownRevision==turret.Revision && shownLanguage==L.Language)return;shownRevision=turret.Revision;shownLanguage=L.Language;
             for(var i=0;i<3;i++){var s=turret.Ammo.GetSlot(i);ammo[i].interactable=i<turret.AmmoSlots && !s.IsEmpty;ammoText[i].text=i>=turret.AmmoSlots ? L.Text("ui.turret.locked_slot") : s.IsEmpty ? L.Text("ui.turret.empty") : s.Item.LocalizedName+"\n×"+s.Count;}

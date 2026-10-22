@@ -29,15 +29,20 @@ namespace Wildfolk
             Current = Maximum;
         }
 
-        public int ApplyDamage(int amount,bool ignoreDefense=false,PlayerInventory attacker=null)
+        public int ApplyDamage(int amount,bool ignoreDefense=false,PlayerInventory attacker=null,Health source=null,DamageKind kind=DamageKind.Unspecified,bool prepared=false)
         {
             if (amount <= 0) throw new ArgumentOutOfRangeException(nameof(amount));
-            if (IsReplica || !IsAlive || deathNotified || GetComponent<PlayerDeath>()?.BlocksDamage==true) return 0;
-            var applied = Math.Min(Current, ignoreDefense ? amount : Math.Max(1,amount-DamageReduction));
-            Current -= applied;var died=Current==0;if(died)deathNotified=true;
+            if (IsReplica || !IsAlive || deathNotified || (GetComponent<PlayerDeath>()?.BlocksDamage==true || GetComponent<PlayerClass>()?.BlocksDamage==true)) return 0;
+            var dealer=source?.GetComponent<PlayerClass>();if(dealer!=null && kind!=DamageKind.Unspecified)amount=dealer.Outgoing(this,amount,kind,prepared);
+            var role=GetComponent<PlayerClass>();var mitigation=ignoreDefense?amount:Math.Max(1,amount-DamageReduction);bool guarded=false;
+            if(role!=null && !ignoreDefense)mitigation=role.Incoming(mitigation,source,out guarded);
+            var buffer=GetComponent<StructureMaintenance>();if(buffer!=null)mitigation=buffer.Absorb(mitigation);
+            var applied=Math.Min(Current,mitigation);var survived=role!=null && role.PreventLethal(ref applied);
+            Current -= applied;if(survived)Current=Math.Max(Current,role.SurvivingHealth);var died=Current==0;if(died)deathNotified=true;
             LastAttacker=attacker;LastCombatTime=Time.time;
             Changed?.Invoke();
             Damaged?.Invoke();
+            role?.Received(applied,guarded);dealer?.Hit(this,applied,kind);
             if (died) Died?.Invoke();
             return applied;
         }

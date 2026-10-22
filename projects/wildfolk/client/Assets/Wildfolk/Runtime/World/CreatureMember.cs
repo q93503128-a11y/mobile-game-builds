@@ -14,7 +14,8 @@ namespace Wildfolk
         public event Action<Vector2,CreatureAlert> Alerted;
         private static readonly List<CreatureMember> members=new List<CreatureMember>();
         public static IReadOnlyList<CreatureMember> Active=>members;
-        private void OnEnable()=>members.Add(this);
+        public uint SpawnGeneration {get;private set;}
+        private void OnEnable(){SpawnGeneration++;members.Add(this);}
         private void OnDisable()=>members.Remove(this);
         public int Broadcast(Vector2 origin,CreatureAlert alert)
         {

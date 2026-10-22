@@ -6,6 +6,9 @@ namespace Wildfolk
     [CreateAssetMenu(menuName = "Wildfolk/Placeable")]
     public sealed class PlaceableDefinition : ScriptableObject
     {
+        public ItemAmount[] RepairMaterials=System.Array.Empty<ItemAmount>();
+        public ItemAmount[] ConstructionMaterials=System.Array.Empty<ItemAmount>();
+        public bool RecoverPortable;
         public ItemDefinition Item;
         public WorldPlaceable Prefab;
         public VitalityDefinition Vitality;

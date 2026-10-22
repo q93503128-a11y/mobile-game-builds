@@ -28,6 +28,8 @@ namespace Wildfolk
         public string ProfileOverride {get;set;}
         public string LocalProfile {get;private set;}
         private readonly Dictionary<ulong,string> identities=new Dictionary<ulong,string>();
+        public IClassAdmissionVerifier ClassVerifier {get;set;}=new LocalAlphaClassAdmission();
+        private readonly Dictionary<string,AccountProgression> classLocks=new Dictionary<string,AccountProgression>();
         private readonly HashSet<ulong> spawning=new HashSet<ulong>();
         private SaveGameRules SaveRules=>Resources.Load<SaveGameRules>("SaveGameRules");
         public event Action Changed;
@@ -57,7 +59,7 @@ namespace Wildfolk
             MessageKey="net.save_failed";Notify();return false;
         }
         private void ConfigureIdentity()
-        {LocalProfile=ProfileOverride??LocalPlayerIdentity.Get();if(!LocalPlayerIdentity.Valid(LocalProfile))throw new InvalidOperationException("Invalid local participant.");Manager.NetworkConfig.ConnectionData=System.Text.Encoding.UTF8.GetBytes(LocalProfile);}
+        {LocalProfile=ProfileOverride??LocalPlayerIdentity.Get();if(!LocalPlayerIdentity.Valid(LocalProfile))throw new InvalidOperationException("Invalid local participant.");Manager.NetworkConfig.ConnectionData=System.Text.Encoding.UTF8.GetBytes(JsonUtility.ToJson(ClassAdmission.Local(LocalProfile)));}
         private IRoomConnection Connection(ConnectionRoute route)=>route==ConnectionRoute.Internet ? (IRoomConnection)new RelayRoomConnection() : new LocalRoomConnection();
         private void Notify()=>Changed?.Invoke();
         public async Task<bool> Host(ConnectionRoute route,bool continueWorld=true)
@@ -66,7 +68,7 @@ namespace Wildfolk
             var ticket=++operation;Route=route;State=NetworkSessionState.Connecting;MessageKey="net.connecting";LastFailure=null;Notify();
             try
             {
-                ConfigureIdentity();PreparedWorld=null;identities.Clear();spawning.Clear();
+                ConfigureIdentity();PreparedWorld=null;identities.Clear();spawning.Clear();classLocks.Clear();
                 if(continueWorld && WorldRepository.Exists)
                 {
                     try{PreparedWorld=WorldRepository.Read(SaveRules.Validate);if(!PreparedWorld.IsMultiplayer || PreparedWorld.Multiplayer==null || PreparedWorld.Multiplayer.HostId!=LocalProfile)throw new InvalidOperationException("World belongs to a different local Host.");}
@@ -101,8 +103,11 @@ namespace Wildfolk
         {LastFailure=error.GetType().Name+": "+error.Message;State=NetworkSessionState.Idle;MessageKey=key;RoomCode=string.Empty;Notify();}
         private void Approve(NetworkManager.ConnectionApprovalRequest request,NetworkManager.ConnectionApprovalResponse response)
         {
-            var id=System.Text.Encoding.UTF8.GetString(request.Payload??Array.Empty<byte>());
-            response.Approved=CanApprove(id,request.ClientNetworkId);response.CreatePlayerObject=false;
+            ClassAdmission admission=null;try{if(request.Payload?.Length<=2048)admission=JsonUtility.FromJson<ClassAdmission>(System.Text.Encoding.UTF8.GetString(request.Payload));}catch(Exception){}
+            var id=admission?.Profile;
+            var accepted=CanApprove(id,request.ClientNetworkId);
+            if(accepted && !classLocks.ContainsKey(id)){accepted=ClassVerifier.Verify(admission,out var account);if(accepted)classLocks[id]=account;}
+            response.Approved=accepted;response.CreatePlayerObject=false;
             response.Pending=false;if(response.Approved)identities[request.ClientNetworkId]=id;else response.Reason=Manager.ConnectedClientsIds.Count>=MaximumPlayers ? "net.room_full" : LocalPlayerIdentity.Valid(id) ? "net.duplicate_player" : "net.connection_failed";
         }
         public bool CanApprove(string profile,ulong clientId)
@@ -148,7 +153,7 @@ namespace Wildfolk
             var order=0;foreach(var peer in Manager.ConnectedClientsIds){if(peer==id)break;order++;}var position=new Vector3((order%2)*3-1.5f,(order/2)*-3,0);
             var world=NetworkCreatureWorld.Active;if(world!=null)position+=(Vector3)world.World.Map.Spawn;
             if(!identities.TryGetValue(id,out var profile))return;
-            var actor=Instantiate(PlayerPrefab,position,Quaternion.identity);var player=actor.GetComponent<NetworkPlayer>();player.ProfileId=profile;NetworkWorldPersistence.Active.RestorePlayer(player);actor.GetComponent<NetworkObject>().SpawnAsPlayerObject(id,true);
+            var actor=Instantiate(PlayerPrefab,position,Quaternion.identity);var player=actor.GetComponent<NetworkPlayer>();player.ProfileId=profile;var account=classLocks.TryGetValue(profile,out var locked)?locked:ClassProfiles.Store.Read(profile);player.GetComponent<PlayerClass>().Lock(profile,account);NetworkWorldPersistence.Active.RestorePlayer(player);actor.GetComponent<NetworkObject>().SpawnAsPlayerObject(id,true);
         }
         private IEnumerator SpawnWhenReady(ulong id)
         {

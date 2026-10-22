@@ -29,6 +29,7 @@ namespace Wildfolk
         private void Awake(){if(GenerateOnAwake)Generate(SelectedSeed ?? Definition.DefaultSeed);}
         public void Generate(int seed,bool populate=true,int generationVersion=0)
         {
+            StructureMaintenance.NewWorld();
             BeaconDirectory.Clear();var regenerate=Map!=null;if(regenerate)GetComponent<ZombieSpawner>().ReleaseWorld();
             var started=System.Diagnostics.Stopwatch.StartNew();
             for(var i=Environment.childCount-1;i>=0;i--){var child=Environment.GetChild(i).gameObject;child.SetActive(false);Destroy(child);}

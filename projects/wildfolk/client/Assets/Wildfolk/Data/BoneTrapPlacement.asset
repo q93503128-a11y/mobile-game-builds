@@ -12,6 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea85a5ebaf6f62646a87d747548e1a2f, type: 3}
   m_Name: BoneTrapPlacement
   m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.PlaceableDefinition
+  RepairMaterials:
+  - Item: {fileID: 11400000, guid: 431287b464f63f4408828d4053bac6eb, type: 2}
+    Count: 1
+    Charges: 0
+    Quality: 0
+  ConstructionMaterials:
+  - Item: {fileID: 11400000, guid: 90a095062071caa4686b63b68706c06e, type: 2}
+    Count: 2
+    Charges: 0
+    Quality: 0
+  - Item: {fileID: 11400000, guid: 431287b464f63f4408828d4053bac6eb, type: 2}
+    Count: 3
+    Charges: 0
+    Quality: 0
+  RecoverPortable: 0
   Item: {fileID: 11400000, guid: 608a93d6b77231941bc427fdf3c82ea4, type: 2}
   Prefab: {fileID: 1935393744217072601, guid: 939a8c1e5bed0dc4b889afec455f6020, type: 3}
   Vitality: {fileID: 11400000, guid: 5d83b0602d66628438333c4ff7093ec2, type: 2}

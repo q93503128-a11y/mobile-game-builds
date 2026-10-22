@@ -12,6 +12,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea85a5ebaf6f62646a87d747548e1a2f, type: 3}
   m_Name: BrazierPlacement
   m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.PlaceableDefinition
+  RepairMaterials:
+  - Item: {fileID: 11400000, guid: 30904e05765ac844ab5bb28b855a15db, type: 2}
+    Count: 1
+    Charges: 0
+    Quality: 0
+  ConstructionMaterials:
+  - Item: {fileID: 11400000, guid: f9d01f6ba03eb6844b137faebea8612b, type: 2}
+    Count: 3
+    Charges: 0
+    Quality: 0
+  - Item: {fileID: 11400000, guid: 30904e05765ac844ab5bb28b855a15db, type: 2}
+    Count: 4
+    Charges: 0
+    Quality: 0
+  - Item: {fileID: 11400000, guid: 745a86eb96e288b4abcf496de399103a, type: 2}
+    Count: 2
+    Charges: 0
+    Quality: 0
+  RecoverPortable: 0
   Item: {fileID: 11400000, guid: 302622d2a67608f4eb7b0cb188921865, type: 2}
   Prefab: {fileID: 5718696057229259221, guid: de8792fb15777754a954a4f7ea35fc19, type: 3}
   Vitality: {fileID: 11400000, guid: 4f60b40f7cc149c4989002b684d1ad59, type: 2}
@@ -19,6 +38,8 @@ MonoBehaviour:
   MaximumDistance: 3.5
   Station: 0
   Tier: {fileID: 0}
+  IsBeacon: 0
+  Turret: {fileID: 0}
   IsBarrier: 0
   IsDoor: 0
   StorageSlots: 0

@@ -248,6 +248,7 @@ GameObject:
   - component: {fileID: 1935393744217072601}
   - component: {fileID: 3882658616280986790}
   - component: {fileID: 8225109153430522884}
+  - component: {fileID: 6503397777105513798}
   m_Layer: 0
   m_Name: BoneTrap
   m_TagString: Untagged
@@ -632,3 +633,15 @@ Transform:
   - {fileID: 7722329012058797291}
   m_Father: {fileID: 6847674579585877990}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6503397777105513798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5804736990936193361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55336593be201514ba1d6d33f157339c, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.StructureMaintenance

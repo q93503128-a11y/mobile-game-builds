@@ -1,0 +1,7 @@
+2026-10-22T05:44:50.8307050Z	starting	PASS QA admission profile medic
+2026-10-22T05:44:51.1542417Z	join_r1	PASS actual LAN join
+2026-10-22T05:44:59.5028118Z	join_r1	FAIL session class locked
+2026-10-22T05:44:59.5053424Z	failed	System.InvalidOperationException: session class locked
+  at Wildfolk.Editor.ClassLanQa.Check (System.Boolean condition, System.String text) [0x00024] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Editor\ClassLanQa.cs:33
+  at Wildfolk.Editor.ClassLanQa+<Remote>d__43.MoveNext () [0x001cc] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Editor\ClassLanQa.cs:70
+  at Wildfolk.Editor.ClassLanQa+<Guard>d__19.MoveNext () [0x00046] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Editor\ClassLanQa.cs:29

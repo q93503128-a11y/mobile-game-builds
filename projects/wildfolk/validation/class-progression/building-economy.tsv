@@ -1,0 +1,32 @@
+item	full repair cost	construction refund	portable
+campfire	wood:1 + stone:1	wood:4 + stone:3	False
+furnace	stone:2 + wood:1	stone:8 + wood:4	False
+reinforced_chest	wood:2 + iron_ingot:1	wood:8 + iron_ingot:2	False
+stone_wall	stone:1 + wood:1	stone:3 + wood:1	False
+storage_chest	wood:2	wood:6	False
+wood_door	wood:1	wood:3	False
+wood_wall	wood:1	wood:2	False
+workbench	wood:2	wood:6	False
+workbench_ii	wood:4 + stone:2 + iron_ingot:1	wood:14 + stone:6 + iron_ingot:2	False
+blast_furnace	iron_ingot:1 + stone:2 + wood:1	bronze:3 + iron_ingot:3 + stone:8 + wood:4	False
+torch	wood:1	wood:1 + coal:1	True
+cooking_pot	stone:2 + iron_ingot:1	stone:6 + iron_ingot:2	False
+wood_fence	wood:1	wood:1 + plant_fiber:1	True
+wood_fence_gate	wood:1	wood:3 + plant_fiber:2	False
+wood_gate	wood:2	wood:6 + plant_fiber:2	False
+stone_door	stone:1 + wood:1	stone:4 + wood:2	False
+stone_fence	stone:1 + wood:1	stone:2 + wood:1	True
+stone_fence_gate	stone:1 + wood:1	stone:4 + wood:2	False
+stone_gate	stone:2 + wood:1	stone:7 + wood:3	False
+reinforced_wall	stone:1 + wood:1	stone:3 + wood:2 + bronze:1	False
+reinforced_door	stone:1 + wood:1	stone:3 + wood:2 + bronze:2	False
+reinforced_gate	stone:2 + wood:1	stone:5 + wood:4 + bronze:3	False
+spike_trap	wood:1 + stone:1	wood:4 + stone:2 + bronze:1	False
+brazier	stone:1	bronze:3 + stone:4 + coal:2	False
+workbench_iii	wood:6 + stone:4 + iron_ingot:1	wood:24 + stone:16 + iron_ingot:2 + bronze:4 + steel:4 + crystal:4 + diamond:1	False
+turret_workbench	wood:2 + stone:2	wood:8 + stone:8 + bronze:4 + steel:4 + crystal:2 + mechanical_part:2	False
+signal_beacon	wood:1	crystal:2 + bronze:1 + mechanical_part:1 + wood:2	False
+ballista	wood:3	wood:10 + steel:3 + leather:2 + mechanical_part:1	False
+repeater	wood:2	wood:8 + bronze:3 + steel:2 + mechanical_part:2	False
+industrial_container	wood:1		False
+bone_trap	wood:1	bone:2 + wood:3	False

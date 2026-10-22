@@ -38,7 +38,7 @@ namespace Wildfolk
             {
                 var committed=bag.Inventory.Model.TryDropSlot(slot,definition.Item,1,()=>
                 {
-                    placed=NetworkCreatureWorld.Active.Create(definition.Prefab,position,placement.RotationFor(definition));placed.CreatorId=bag.Player.ProfileId;
+                    placed=NetworkCreatureWorld.Active.Create(definition.Prefab,position,placement.RotationFor(definition));placed.CreatorId=bag.Player.ProfileId;placed.PlayerBuilt=true;
                     Physics2D.SyncTransforms();return NetworkCreatureWorld.Active.SpawnPendingNow(placed.GetComponent<NetworkObject>());
                 });
                 if(!committed && placed!=null)PrefabPool.Release(placed.gameObject);return committed;

@@ -20,6 +20,7 @@ GameObject:
   - component: {fileID: 5808550471289848651}
   - component: {fileID: 7699868651623943745}
   - component: {fileID: 393332807254724452}
+  - component: {fileID: 4416362111531406806}
   m_Layer: 0
   m_Name: BlastFurnace
   m_TagString: Untagged
@@ -760,3 +761,15 @@ MonoBehaviour:
   View: {fileID: 3659139846299079296}
   Fill: {fileID: 5114000149663170802}
   AlwaysVisible: 0
+--- !u!114 &4416362111531406806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1695445328312933717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55336593be201514ba1d6d33f157339c, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.StructureMaintenance

@@ -109,6 +109,7 @@ GameObject:
   - component: {fileID: 1298721150853748411}
   - component: {fileID: 6688794327644618661}
   - component: {fileID: 3404646606018493982}
+  - component: {fileID: 4805036572200285475}
   m_Layer: 0
   m_Name: ReinforcedGate
   m_TagString: Untagged
@@ -795,3 +796,15 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &4805036572200285475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1497303408420845172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55336593be201514ba1d6d33f157339c, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.StructureMaintenance

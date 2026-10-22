@@ -200,6 +200,7 @@ GameObject:
   - component: {fileID: 5488979741946574626}
   - component: {fileID: 2934098983188636517}
   - component: {fileID: 7413501370848822446}
+  - component: {fileID: 565284884054428202}
   m_Layer: 0
   m_Name: WoodDoor
   m_TagString: Untagged
@@ -795,3 +796,15 @@ Transform:
   - {fileID: 4962055755066164144}
   m_Father: {fileID: 7540447050454006208}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &565284884054428202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 800676665494792286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55336593be201514ba1d6d33f157339c, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.StructureMaintenance

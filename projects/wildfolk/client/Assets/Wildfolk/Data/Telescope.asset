@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21d11bab9581bdf4c8f70c3d4992c713, type: 3}
   m_Name: Telescope
   m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.ItemDefinition
+  ExplorationCategory: 1
   Id: telescope
   DisplayName: Telescope
   Icon: {fileID: 21300000, guid: 079681b860cf64248b67398f941455ce, type: 3}
@@ -30,6 +31,7 @@ MonoBehaviour:
   CleanDrink: {fileID: 0}
   FishingRod: 0
   Telescope: 1
+  ExplorationUtility: {fileID: 0}
   TurretModule: {fileID: 0}
   EquippedLight: {fileID: 0}
   Ranged: {fileID: 0}

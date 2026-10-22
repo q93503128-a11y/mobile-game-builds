@@ -1,12 +1,13 @@
 using UnityEngine;
 namespace Wildfolk
 {
-    public sealed class PlayerTelescope : MonoBehaviour
+    public sealed class PlayerTelescope : MonoBehaviour,IAimableExplorationTool
     {
         public bool IsViewing {get;private set;}
         public Vector2 Direction {get;private set;}=Vector2.up;
         private PlayerInventory bag;private PlayerInputCommands commands;private Health health;private WorldGenerator world;
-        public Vector2 ViewPoint=> (Vector2)transform.position+Direction*(world==null ? 0 : world.Definition.ChunkSize*2.5f);
+        public bool Observing=>IsViewing;public Vector2 ObservedPoint=>ViewPoint;public float EffectiveRange=>(world==null?160:world.Definition.ChunkSize*2.5f)*(GetComponent<PlayerClass>()?.OpticMultiplier??1);
+        public Vector2 ViewPoint=> (Vector2)transform.position+Direction*EffectiveRange;
         private void Awake(){bag=GetComponent<PlayerInventory>();commands=GetComponent<PlayerInputCommands>();health=GetComponent<Health>();}
         private void OnEnable()=>health.Damaged+=Exit;
         private void OnDisable(){health.Damaged-=Exit;Exit();}
@@ -18,7 +19,7 @@ namespace Wildfolk
             GetComponent<PlayerCombat>().CancelAttack();GetComponent<PlayerLocomotion>().CancelDash();Direction=GetComponent<PlayerAvatar>().Facing.Direction;IsViewing=true;GetComponent<NetworkTierThreePlayer>()?.Scope(true);commands.SetMove(Vector2.zero);return true;
         }
         public void Aim(Vector2 direction){if(IsViewing && direction.sqrMagnitude>.05f)Direction=direction.normalized;}
-        public void SetViewing(bool value){IsViewing=value;if(!value)commands.ApplyMove(Vector2.zero);}
+        public void SetViewing(bool value){if(world==null)world=FindFirstObjectByType<WorldGenerator>();IsViewing=value;if(!value)commands.ApplyMove(Vector2.zero);}
         public void Exit(){if(IsViewing)GetComponent<NetworkTierThreePlayer>()?.Scope(false);IsViewing=false;}
         private void LateUpdate()
         {

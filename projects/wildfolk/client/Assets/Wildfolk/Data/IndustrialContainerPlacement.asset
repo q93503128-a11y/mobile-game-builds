@@ -12,6 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea85a5ebaf6f62646a87d747548e1a2f, type: 3}
   m_Name: IndustrialContainerPlacement
   m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.PlaceableDefinition
+  RepairMaterials:
+  - Item: {fileID: 11400000, guid: 431287b464f63f4408828d4053bac6eb, type: 2}
+    Count: 1
+    Charges: 0
+    Quality: 0
+  ConstructionMaterials: []
+  RecoverPortable: 0
   Item: {fileID: 11400000, guid: 9a2fd40247e403e4c8ec126a6bb61758, type: 2}
   Prefab: {fileID: 3996446922011461074, guid: 98e40b809021ada49b034864b5a6f45b, type: 3}
   Vitality: {fileID: 11400000, guid: 2d5aef4d748268b408bb20973cba2bbe, type: 2}

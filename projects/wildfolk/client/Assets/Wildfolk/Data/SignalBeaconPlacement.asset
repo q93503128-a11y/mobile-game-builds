@@ -12,6 +12,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea85a5ebaf6f62646a87d747548e1a2f, type: 3}
   m_Name: SignalBeaconPlacement
   m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.PlaceableDefinition
+  RepairMaterials:
+  - Item: {fileID: 11400000, guid: 431287b464f63f4408828d4053bac6eb, type: 2}
+    Count: 1
+    Charges: 0
+    Quality: 0
+  ConstructionMaterials:
+  - Item: {fileID: 11400000, guid: 381f5ba6867082e4f978781f1de007d9, type: 2}
+    Count: 2
+    Charges: 0
+    Quality: 0
+  - Item: {fileID: 11400000, guid: f9d01f6ba03eb6844b137faebea8612b, type: 2}
+    Count: 1
+    Charges: 0
+    Quality: 0
+  - Item: {fileID: 11400000, guid: 53ed9b7ff312f1e4eb49bdb67b5df0cf, type: 2}
+    Count: 1
+    Charges: 0
+    Quality: 0
+  - Item: {fileID: 11400000, guid: 431287b464f63f4408828d4053bac6eb, type: 2}
+    Count: 2
+    Charges: 0
+    Quality: 0
+  RecoverPortable: 0
   Item: {fileID: 11400000, guid: 1c87c5dda6107c7449c14c54c1bd06ee, type: 2}
   Prefab: {fileID: 3385274447091358857, guid: 253f10516a2ad2b4e980cd93586b5220, type: 3}
   Vitality: {fileID: 11400000, guid: 5debe6c8595ab4040b97324552fbde78, type: 2}

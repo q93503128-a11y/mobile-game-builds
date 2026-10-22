@@ -26,7 +26,7 @@ namespace Wildfolk
 #endif
         public void Validate(SavedGame game)
         {
-            if(game==null || game.Version<1 || game.Version>12)throw new InvalidDataException("Unsupported save version");
+            if(game==null || game.Version<1 || game.Version>13)throw new InvalidDataException("Unsupported save version");
             if(game.Version<=5)MetalSaveMigration.NormalizeLegacyContent(game,Catalog);
             if(game.Version<=6)game.BaseGenerationVersion=WorldGenerationVersion.Legacy;
             if(game.Features==null)game.Features=Array.Empty<WorldFeatureSnapshot>();
@@ -34,13 +34,21 @@ namespace Wildfolk
             var growth=Player.GetComponent<PlayerProgression>().Definition;var locomotion=Player.GetComponent<PlayerLocomotion>().Definition;
             if(game.Version==1)
             {if(game.Player==null)throw new InvalidDataException("Missing player");game.Player.Growth=GrowthValidation.FromLegacy(game.Player.XP,growth);game.Player.HeadArmor=game.Player.BodyArmor=null;game.Player.Stamina=locomotion.MaximumStamina;game.Player.StaminaWait=0;game.Player.SeenRecipes=Array.Empty<string>();game.Version=2;}
+            if(game.Version<=12)
+            {
+                if(game.Player?.Growth!=null && game.Player.Growth.Skills?.Length==4)GrowthValidation.Migrate(game.Player.Growth,growth,game.Player.XP);
+                if(game.Multiplayer?.Players!=null)foreach(var entry in game.Multiplayer.Players)if(entry.State!=game.Player && entry.State?.Growth?.Skills?.Length==4)GrowthValidation.Migrate(entry.State.Growth,growth,entry.State.XP);
+            }
             if(game.Version==2){SaveValidation.Validate(game,Catalog,World,Animals,Player.Settings.InventorySlots,Player.GetComponent<Health>().Definition.MaximumHealth,Player.GetComponent<PlayerSurvival>().Definition,growth,locomotion,ValidationMap(game));SaveMigration.PopulationFromV2(game,World);}
             if(game.Version==3){SaveValidation.Validate(game,Catalog,World,Animals,Player.Settings.InventorySlots,Player.GetComponent<Health>().Definition.MaximumHealth,Player.GetComponent<PlayerSurvival>().Definition,growth,locomotion,ValidationMap(game));SaveMigration.EcologyFromV3(game,World,Animals);}
             SaveValidation.Validate(game,Catalog,World,Animals,Player.Settings.InventorySlots,Player.GetComponent<Health>().Definition.MaximumHealth,Player.GetComponent<PlayerSurvival>().Definition,growth,locomotion,ValidationMap(game));
             ValidateEnemies(game);
             if(game.Version>=4 && game.Version<=10)SaveMigration.CreatureLootFromEarlier(game);
             if(game.Version==11)DeathSaveValidation.Migrate(game,World,ValidationMap(game));
+            if(game.Version==12){ClassSaveValidation.Migrate(game);game.Version=13;}
+            ClassSaveValidation.Validate(game.Player);
             MultiplayerSaveRules.Validate(game,this);
+            if(game.Multiplayer?.Players!=null)foreach(var p in game.Multiplayer.Players)ClassSaveValidation.Validate(p.State);
         }
         private void ValidateEnemies(SavedGame game)
         {

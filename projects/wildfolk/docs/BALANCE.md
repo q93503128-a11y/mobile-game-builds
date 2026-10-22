@@ -106,8 +106,8 @@ Long Press0.45초. Split1~N−1,Half/±1,Confirm 후 목적지 선택. 일반 Dr
 | Leather Cap / Guard 방어 |1 /2 (합3)|
 | Iron Helmet / Guard 방어 |2 /4 (합6)|
 | 일반 피해 |max(1,피해−Head−Body),생존 피해는 우회|
-| Level |1~20,필요 XP=35+(Level−1)×20,Up마다Point1,남은 XP 유지|
-| Vitality / Endurance |Rank당MaxHP+10 /MaxStamina+15,각3Rank|
+| Level |게임플레이 상한 없음,필요 XP=35+(Level−1)×20,Up마다Point1,남은 XP 유지|
+| Vitality / Endurance |Rank당MaxHP+10 /MaxStamina+15,Vitality10/Endurance3Rank|
 | Recovery /Steady Stride |Rank당Recovery+15% /SprintEfficiency+12%,각3Rank|
 | Sprint 비용 |14/초 ×1/(1+Skill효율Bonus) /생존SprintEfficiency|
 | Stamina |100,회복16/초,사용 후1.2초 대기|
@@ -269,3 +269,7 @@ Meal3종/150초/동시1개/교체,공용4초다.Hunter MaxHP+8(HPheal0),Forager 
 ## Death / Revive 초기값
 
 정본 Data/Revive.asset: Downed24초, hold4초, range2.6m, 입력 lease0.5초, 현장/동료40%HP, 보호2초(공격 시작시 종료), Home100%HP. Home/현장 모두 기존 Hunger/Thirst/Stamina 보존, 기존 사망 Meal/Treatment reset 유지. 광고는 원정당 성공1회, Gem 무제한/고정 config 가격이며 현재 ReviveGemCost0은 **미확정·비활성**이다. Editor QA7 Gem은 제품 가격이 아니다. 신규 Item/Recipe/Crystal/Gold 비용 없음. [TTK 근거와 배제 대안](../validation/death-revive-respawn/REVIEW.md).
+
+## Class Foundation Alpha 수치
+
+Metabolism5Rank×5%=최대25% needs drain감소, FieldCare3Rank×10%=받는Medicine최대30%. 공용Class별 node54값은 CHARACTER_PROGRESSION/Classes.json이며 일반Point를ClassPoint로 소비하지 않는다. GoldClass4개각60, 누적ClassXP50/180/400/750/1200/1800에서현재6Point. 가격/시간 산술은 validation/class-progression/REVIEW.md의가정시나리오이며실측경제/출시밸런스아님.

@@ -1,0 +1,851 @@
+2026-10-22T05:23:55.0122995Z	building-services	begin
+2026-10-22T05:23:55.0468197Z	building-services	PASS QA durable profile warrior
+2026-10-22T05:23:55.0478446Z	building-services	PASS QA isolated loadout warrior
+2026-10-22T05:23:55.0638463Z	building-services	PASS recentdamage lockout
+2026-10-22T05:23:56.8684948Z	building-services	PASS normalholdrepair consumescheapmaterialonce
+2026-10-22T05:23:56.8701427Z	building-services	PASS repairhold starts
+2026-10-22T05:23:56.8809884Z	building-services	PASS newstructure damageinterruptsrepair
+2026-10-22T05:23:56.8930938Z	building-services	PASS QA durable profile engineer
+2026-10-22T05:23:56.8951599Z	building-services	PASS QA isolated loadout engineer
+2026-10-22T05:23:56.8956913Z	building-services	PASS Engineer zerocostHP repair
+2026-10-22T05:23:56.8967130Z	building-services	PASS Engineer noHPmaterialcharge
+2026-10-22T05:23:56.8977951Z	building-services	PASS 30percentbase +10barrierbuffer withoutMaxHPmutation
+2026-10-22T05:23:56.8977951Z	building-services	PASS temporarybuffer absorbsfirst
+2026-10-22T05:23:56.9010820Z	building-services	PASS same-sessionstableID buffer sleep/wake
+2026-10-22T05:23:59.0784090Z	building-services	PASS temporarybuffer notserialized
+2026-10-22T05:23:59.0818449Z	building-services	PASS 90percent fullrefund
+2026-10-22T05:23:59.0824458Z	building-services	PASS below90percent flooredrefund
+2026-10-22T05:23:59.0835531Z	building-services	PASS neardestroyed safezero refund
+2026-10-22T05:23:59.0845546Z	building-services	PASS cycle recovery 0
+2026-10-22T05:23:59.0873955Z	building-services	PASS cycle rebuildingcost 0
+2026-10-22T05:23:59.0924340Z	building-services	PASS cycle recovery 1
+2026-10-22T05:23:59.0945578Z	building-services	PASS cycle rebuildingcost 1
+2026-10-22T05:23:59.1008126Z	building-services	PASS cycle recovery 2
+2026-10-22T05:23:59.1024768Z	building-services	PASS cycle rebuildingcost 2
+2026-10-22T05:23:59.1090634Z	building-services	PASS cycle recovery 3
+2026-10-22T05:23:59.1107282Z	building-services	PASS cycle rebuildingcost 3
+2026-10-22T05:23:59.1173226Z	building-services	PASS cycle recovery 4
+2026-10-22T05:23:59.1189485Z	building-services	PASS cycle rebuildingcost 4
+2026-10-22T05:23:59.1244165Z	building-services	PASS cycle recovery 5
+2026-10-22T05:23:59.1244165Z	building-services	PASS cycle rebuildingcost 5
+2026-10-22T05:23:59.1301179Z	building-services	PASS cycle recovery 6
+2026-10-22T05:23:59.1307338Z	building-services	PASS cycle rebuildingcost 6
+2026-10-22T05:23:59.1366053Z	building-services	PASS cycle recovery 7
+2026-10-22T05:23:59.1373312Z	building-services	PASS cycle rebuildingcost 7
+2026-10-22T05:23:59.1444407Z	building-services	PASS cycle recovery 8
+2026-10-22T05:23:59.1466890Z	building-services	PASS cycle rebuildingcost 8
+2026-10-22T05:23:59.1535517Z	building-services	PASS cycle recovery 9
+2026-10-22T05:23:59.1545531Z	building-services	PASS cycle rebuildingcost 9
+2026-10-22T05:23:59.1623394Z	building-services	PASS cycle recovery 10
+2026-10-22T05:23:59.1644641Z	building-services	PASS cycle rebuildingcost 10
+2026-10-22T05:23:59.1714997Z	building-services	PASS cycle recovery 11
+2026-10-22T05:23:59.1732405Z	building-services	PASS cycle rebuildingcost 11
+2026-10-22T05:23:59.1791876Z	building-services	PASS cycle recovery 12
+2026-10-22T05:23:59.1808608Z	building-services	PASS cycle rebuildingcost 12
+2026-10-22T05:23:59.1892466Z	building-services	PASS cycle recovery 13
+2026-10-22T05:23:59.1915840Z	building-services	PASS cycle rebuildingcost 13
+2026-10-22T05:23:59.1975118Z	building-services	PASS cycle recovery 14
+2026-10-22T05:23:59.1991570Z	building-services	PASS cycle rebuildingcost 14
+2026-10-22T05:23:59.2046656Z	building-services	PASS cycle recovery 15
+2026-10-22T05:23:59.2062934Z	building-services	PASS cycle rebuildingcost 15
+2026-10-22T05:23:59.2107637Z	building-services	PASS cycle recovery 16
+2026-10-22T05:23:59.2123933Z	building-services	PASS cycle rebuildingcost 16
+2026-10-22T05:23:59.2172981Z	building-services	PASS cycle recovery 17
+2026-10-22T05:23:59.2189367Z	building-services	PASS cycle rebuildingcost 17
+2026-10-22T05:23:59.2260128Z	building-services	PASS cycle recovery 18
+2026-10-22T05:23:59.2273308Z	building-services	PASS cycle rebuildingcost 18
+2026-10-22T05:23:59.2346769Z	building-services	PASS cycle recovery 19
+2026-10-22T05:23:59.2374378Z	building-services	PASS cycle rebuildingcost 19
+2026-10-22T05:23:59.2445540Z	building-services	PASS cycle recovery 20
+2026-10-22T05:23:59.2468743Z	building-services	PASS cycle rebuildingcost 20
+2026-10-22T05:23:59.2558742Z	building-services	PASS cycle recovery 21
+2026-10-22T05:23:59.2601143Z	building-services	PASS cycle rebuildingcost 21
+2026-10-22T05:23:59.2692772Z	building-services	PASS cycle recovery 22
+2026-10-22T05:23:59.2706260Z	building-services	PASS cycle rebuildingcost 22
+2026-10-22T05:23:59.2800866Z	building-services	PASS cycle recovery 23
+2026-10-22T05:23:59.2818895Z	building-services	PASS cycle rebuildingcost 23
+2026-10-22T05:23:59.2899958Z	building-services	PASS cycle recovery 24
+2026-10-22T05:23:59.2923943Z	building-services	PASS cycle rebuildingcost 24
+2026-10-22T05:23:59.3018265Z	building-services	PASS cycle recovery 25
+2026-10-22T05:23:59.3039678Z	building-services	PASS cycle rebuildingcost 25
+2026-10-22T05:23:59.3134830Z	building-services	PASS cycle recovery 26
+2026-10-22T05:23:59.3145907Z	building-services	PASS cycle rebuildingcost 26
+2026-10-22T05:23:59.3251096Z	building-services	PASS cycle recovery 27
+2026-10-22T05:23:59.3271995Z	building-services	PASS cycle rebuildingcost 27
+2026-10-22T05:23:59.3351684Z	building-services	PASS cycle recovery 28
+2026-10-22T05:23:59.3372036Z	building-services	PASS cycle rebuildingcost 28
+2026-10-22T05:23:59.3460284Z	building-services	PASS cycle recovery 29
+2026-10-22T05:23:59.3475751Z	building-services	PASS cycle rebuildingcost 29
+2026-10-22T05:23:59.3581545Z	building-services	PASS cycle recovery 30
+2026-10-22T05:23:59.3615512Z	building-services	PASS cycle rebuildingcost 30
+2026-10-22T05:23:59.3706997Z	building-services	PASS cycle recovery 31
+2026-10-22T05:23:59.3723822Z	building-services	PASS cycle rebuildingcost 31
+2026-10-22T05:23:59.3808430Z	building-services	PASS cycle recovery 32
+2026-10-22T05:23:59.3836656Z	building-services	PASS cycle rebuildingcost 32
+2026-10-22T05:23:59.3922966Z	building-services	PASS cycle recovery 33
+2026-10-22T05:23:59.3953325Z	building-services	PASS cycle rebuildingcost 33
+2026-10-22T05:23:59.4093676Z	building-services	PASS cycle recovery 34
+2026-10-22T05:23:59.4111600Z	building-services	PASS cycle rebuildingcost 34
+2026-10-22T05:23:59.4206125Z	building-services	PASS cycle recovery 35
+2026-10-22T05:23:59.4233910Z	building-services	PASS cycle rebuildingcost 35
+2026-10-22T05:23:59.4336704Z	building-services	PASS cycle recovery 36
+2026-10-22T05:23:59.4371221Z	building-services	PASS cycle rebuildingcost 36
+2026-10-22T05:23:59.4462842Z	building-services	PASS cycle recovery 37
+2026-10-22T05:23:59.4479653Z	building-services	PASS cycle rebuildingcost 37
+2026-10-22T05:23:59.4573980Z	building-services	PASS cycle recovery 38
+2026-10-22T05:23:59.4590236Z	building-services	PASS cycle rebuildingcost 38
+2026-10-22T05:23:59.4678277Z	building-services	PASS cycle recovery 39
+2026-10-22T05:23:59.4678277Z	building-services	PASS cycle rebuildingcost 39
+2026-10-22T05:23:59.4729232Z	building-services	PASS cycle recovery 40
+2026-10-22T05:23:59.4760261Z	building-services	PASS cycle rebuildingcost 40
+2026-10-22T05:23:59.4837473Z	building-services	PASS cycle recovery 41
+2026-10-22T05:23:59.4867903Z	building-services	PASS cycle rebuildingcost 41
+2026-10-22T05:23:59.4948591Z	building-services	PASS cycle recovery 42
+2026-10-22T05:23:59.4968996Z	building-services	PASS cycle rebuildingcost 42
+2026-10-22T05:23:59.5033983Z	building-services	PASS cycle recovery 43
+2026-10-22T05:23:59.5057039Z	building-services	PASS cycle rebuildingcost 43
+2026-10-22T05:23:59.5140444Z	building-services	PASS cycle recovery 44
+2026-10-22T05:23:59.5163569Z	building-services	PASS cycle rebuildingcost 44
+2026-10-22T05:23:59.5254562Z	building-services	PASS cycle recovery 45
+2026-10-22T05:23:59.5271500Z	building-services	PASS cycle rebuildingcost 45
+2026-10-22T05:23:59.5363409Z	building-services	PASS cycle recovery 46
+2026-10-22T05:23:59.5384724Z	building-services	PASS cycle rebuildingcost 46
+2026-10-22T05:23:59.5483265Z	building-services	PASS cycle recovery 47
+2026-10-22T05:23:59.5499528Z	building-services	PASS cycle rebuildingcost 47
+2026-10-22T05:23:59.5597583Z	building-services	PASS cycle recovery 48
+2026-10-22T05:23:59.5619543Z	building-services	PASS cycle rebuildingcost 48
+2026-10-22T05:23:59.5698839Z	building-services	PASS cycle recovery 49
+2026-10-22T05:23:59.5727139Z	building-services	PASS cycle rebuildingcost 49
+2026-10-22T05:23:59.5816010Z	building-services	PASS cycle recovery 50
+2026-10-22T05:23:59.5837299Z	building-services	PASS cycle rebuildingcost 50
+2026-10-22T05:23:59.5926304Z	building-services	PASS cycle recovery 51
+2026-10-22T05:23:59.5945325Z	building-services	PASS cycle rebuildingcost 51
+2026-10-22T05:23:59.6032796Z	building-services	PASS cycle recovery 52
+2026-10-22T05:23:59.6052738Z	building-services	PASS cycle rebuildingcost 52
+2026-10-22T05:23:59.6131680Z	building-services	PASS cycle recovery 53
+2026-10-22T05:23:59.6158024Z	building-services	PASS cycle rebuildingcost 53
+2026-10-22T05:23:59.6250500Z	building-services	PASS cycle recovery 54
+2026-10-22T05:23:59.6273475Z	building-services	PASS cycle rebuildingcost 54
+2026-10-22T05:23:59.6363065Z	building-services	PASS cycle recovery 55
+2026-10-22T05:23:59.6376793Z	building-services	PASS cycle rebuildingcost 55
+2026-10-22T05:23:59.6468499Z	building-services	PASS cycle recovery 56
+2026-10-22T05:23:59.6512585Z	building-services	PASS cycle rebuildingcost 56
+2026-10-22T05:23:59.6599785Z	building-services	PASS cycle recovery 57
+2026-10-22T05:23:59.6627590Z	building-services	PASS cycle rebuildingcost 57
+2026-10-22T05:23:59.6714582Z	building-services	PASS cycle recovery 58
+2026-10-22T05:23:59.6735917Z	building-services	PASS cycle rebuildingcost 58
+2026-10-22T05:23:59.6824850Z	building-services	PASS cycle recovery 59
+2026-10-22T05:23:59.6851330Z	building-services	PASS cycle rebuildingcost 59
+2026-10-22T05:23:59.6930601Z	building-services	PASS cycle recovery 60
+2026-10-22T05:23:59.6964168Z	building-services	PASS cycle rebuildingcost 60
+2026-10-22T05:23:59.7051822Z	building-services	PASS cycle recovery 61
+2026-10-22T05:23:59.7073536Z	building-services	PASS cycle rebuildingcost 61
+2026-10-22T05:23:59.7178640Z	building-services	PASS cycle recovery 62
+2026-10-22T05:23:59.7209344Z	building-services	PASS cycle rebuildingcost 62
+2026-10-22T05:23:59.7306714Z	building-services	PASS cycle recovery 63
+2026-10-22T05:23:59.7332081Z	building-services	PASS cycle rebuildingcost 63
+2026-10-22T05:23:59.7424482Z	building-services	PASS cycle recovery 64
+2026-10-22T05:23:59.7449768Z	building-services	PASS cycle rebuildingcost 64
+2026-10-22T05:23:59.7551588Z	building-services	PASS cycle recovery 65
+2026-10-22T05:23:59.7577079Z	building-services	PASS cycle rebuildingcost 65
+2026-10-22T05:23:59.7662821Z	building-services	PASS cycle recovery 66
+2026-10-22T05:23:59.7689062Z	building-services	PASS cycle rebuildingcost 66
+2026-10-22T05:23:59.7775927Z	building-services	PASS cycle recovery 67
+2026-10-22T05:23:59.7803270Z	building-services	PASS cycle rebuildingcost 67
+2026-10-22T05:23:59.7897265Z	building-services	PASS cycle recovery 68
+2026-10-22T05:23:59.7919212Z	building-services	PASS cycle rebuildingcost 68
+2026-10-22T05:23:59.8046428Z	building-services	PASS cycle recovery 69
+2026-10-22T05:23:59.8062092Z	building-services	PASS cycle rebuildingcost 69
+2026-10-22T05:23:59.8160277Z	building-services	PASS cycle recovery 70
+2026-10-22T05:23:59.8175770Z	building-services	PASS cycle rebuildingcost 70
+2026-10-22T05:23:59.8278029Z	building-services	PASS cycle recovery 71
+2026-10-22T05:23:59.8298829Z	building-services	PASS cycle rebuildingcost 71
+2026-10-22T05:23:59.8391043Z	building-services	PASS cycle recovery 72
+2026-10-22T05:23:59.8411384Z	building-services	PASS cycle rebuildingcost 72
+2026-10-22T05:23:59.8507789Z	building-services	PASS cycle recovery 73
+2026-10-22T05:23:59.8528301Z	building-services	PASS cycle rebuildingcost 73
+2026-10-22T05:23:59.8629176Z	building-services	PASS cycle recovery 74
+2026-10-22T05:23:59.8654346Z	building-services	PASS cycle rebuildingcost 74
+2026-10-22T05:23:59.8752336Z	building-services	PASS cycle recovery 75
+2026-10-22T05:23:59.8767866Z	building-services	PASS cycle rebuildingcost 75
+2026-10-22T05:23:59.8862275Z	building-services	PASS cycle recovery 76
+2026-10-22T05:23:59.8878080Z	building-services	PASS cycle rebuildingcost 76
+2026-10-22T05:23:59.8934502Z	building-services	PASS cycle recovery 77
+2026-10-22T05:23:59.8934502Z	building-services	PASS cycle rebuildingcost 77
+2026-10-22T05:23:59.8985202Z	building-services	PASS cycle recovery 78
+2026-10-22T05:23:59.8990596Z	building-services	PASS cycle rebuildingcost 78
+2026-10-22T05:23:59.9031723Z	building-services	PASS cycle recovery 79
+2026-10-22T05:23:59.9041715Z	building-services	PASS cycle rebuildingcost 79
+2026-10-22T05:23:59.9082472Z	building-services	PASS cycle recovery 80
+2026-10-22T05:23:59.9092908Z	building-services	PASS cycle rebuildingcost 80
+2026-10-22T05:23:59.9128971Z	building-services	PASS cycle recovery 81
+2026-10-22T05:23:59.9139107Z	building-services	PASS cycle rebuildingcost 81
+2026-10-22T05:23:59.9164366Z	building-services	PASS cycle recovery 82
+2026-10-22T05:23:59.9179727Z	building-services	PASS cycle rebuildingcost 82
+2026-10-22T05:23:59.9215675Z	building-services	PASS cycle recovery 83
+2026-10-22T05:23:59.9215675Z	building-services	PASS cycle rebuildingcost 83
+2026-10-22T05:23:59.9245650Z	building-services	PASS cycle recovery 84
+2026-10-22T05:23:59.9255656Z	building-services	PASS cycle rebuildingcost 84
+2026-10-22T05:23:59.9291583Z	building-services	PASS cycle recovery 85
+2026-10-22T05:23:59.9306784Z	building-services	PASS cycle rebuildingcost 85
+2026-10-22T05:23:59.9342129Z	building-services	PASS cycle recovery 86
+2026-10-22T05:23:59.9342129Z	building-services	PASS cycle rebuildingcost 86
+2026-10-22T05:23:59.9396486Z	building-services	PASS cycle recovery 87
+2026-10-22T05:23:59.9414272Z	building-services	PASS cycle rebuildingcost 87
+2026-10-22T05:23:59.9473914Z	building-services	PASS cycle recovery 88
+2026-10-22T05:23:59.9492396Z	building-services	PASS cycle rebuildingcost 88
+2026-10-22T05:23:59.9537738Z	building-services	PASS cycle recovery 89
+2026-10-22T05:23:59.9537738Z	building-services	PASS cycle rebuildingcost 89
+2026-10-22T05:23:59.9576300Z	building-services	PASS cycle recovery 90
+2026-10-22T05:23:59.9586532Z	building-services	PASS cycle rebuildingcost 90
+2026-10-22T05:23:59.9661093Z	building-services	PASS cycle recovery 91
+2026-10-22T05:23:59.9677905Z	building-services	PASS cycle rebuildingcost 91
+2026-10-22T05:23:59.9745264Z	building-services	PASS cycle recovery 92
+2026-10-22T05:23:59.9761965Z	building-services	PASS cycle rebuildingcost 92
+2026-10-22T05:23:59.9844005Z	building-services	PASS cycle recovery 93
+2026-10-22T05:23:59.9844005Z	building-services	PASS cycle rebuildingcost 93
+2026-10-22T05:23:59.9894178Z	building-services	PASS cycle recovery 94
+2026-10-22T05:23:59.9909837Z	building-services	PASS cycle rebuildingcost 94
+2026-10-22T05:23:59.9965581Z	building-services	PASS cycle recovery 95
+2026-10-22T05:23:59.9975694Z	building-services	PASS cycle rebuildingcost 95
+2026-10-22T05:24:00.0037405Z	building-services	PASS cycle recovery 96
+2026-10-22T05:24:00.0122682Z	building-services	PASS cycle rebuildingcost 96
+2026-10-22T05:24:00.0212497Z	building-services	PASS cycle recovery 97
+2026-10-22T05:24:00.0222788Z	building-services	PASS cycle rebuildingcost 97
+2026-10-22T05:24:00.0349408Z	building-services	PASS cycle recovery 98
+2026-10-22T05:24:00.0403715Z	building-services	PASS cycle rebuildingcost 98
+2026-10-22T05:24:00.0496937Z	building-services	PASS cycle recovery 99
+2026-10-22T05:24:00.0526859Z	building-services	PASS cycle rebuildingcost 99
+2026-10-22T05:24:00.0617976Z	building-services	PASS 100 build/recover cycles noresourcegrowth
+2026-10-22T05:24:00.0701118Z	building-services	PASS chest contents blockrecovery
+2026-10-22T05:24:00.0845098Z	building-services	PASS turretammo blocksrecovery
+2026-10-22T05:24:00.0897016Z	building-services	PASS turretmodule blocksrecovery
+2026-10-22T05:24:00.0964121Z	building-services	PASS BoneTrap stayssingleuse
+2026-10-22T05:24:00.0980432Z	building-services	FAIL consumedBoneTrap cannotberepaired
+2026-10-22T05:24:00.1029640Z	failed	System.InvalidOperationException: consumedBoneTrap cannotberepaired
+  at Wildfolk.Editor.ClassFoundationQa.Check (System.Boolean value, System.String s) [0x00024] in C:\UnityProjects\Wildfolk\Assets\Wildfolk\Editor\ClassFoundationQa.cs:26
+  at Wildfolk.Editor.ClassFoundationQa+<Buildings>d__29.MoveNext () [0x006fb] in C:\UnityProjects\Wildfolk\Assets\Wildfolk\Editor\ClassFoundationQa.cs:119
+  at Wildfolk.Editor.ClassFoundationQa+<Run>d__16.MoveNext () [0x0003c] in C:\UnityProjects\Wildfolk\Assets\Wildfolk\Editor\ClassFoundationQa.cs:31
+2026-10-22T05:43:26.1896862Z	lobby-purchase-tree	begin
+2026-10-22T05:43:26.2120774Z	lobby-purchase-tree	PASS QA durable profile warrior
+2026-10-22T05:43:26.2155069Z	lobby-purchase-tree	PASS QA isolated loadout warrior
+2026-10-22T05:43:28.4780749Z	lobby-purchase-tree	PASS isolatedworldGold240durablysaved
+2026-10-22T05:43:28.4896818Z	lobby-purchase-tree	PASS startdefaultownership
+2026-10-22T05:43:31.3221379Z	lobby-purchase-tree	PASS defaultSurvivorownedselected
+2026-10-22T05:43:31.3271726Z	lobby-purchase-tree	PASS lockedGoldclassshowspriceandpurchase
+2026-10-22T05:43:31.3347701Z	lobby-purchase-tree	PASS purchaseconfirmation 1
+2026-10-22T05:43:31.4036927Z	lobby-purchase-tree	PASS durableGoldunlock 1
+2026-10-22T05:43:31.4099099Z	lobby-purchase-tree	PASS purchaseconfirmation 2
+2026-10-22T05:43:31.4703577Z	lobby-purchase-tree	PASS durableGoldunlock 2
+2026-10-22T05:43:31.4754703Z	lobby-purchase-tree	PASS purchaseconfirmation 3
+2026-10-22T05:43:31.5449625Z	lobby-purchase-tree	PASS durableGoldunlock 3
+2026-10-22T05:43:31.5520313Z	lobby-purchase-tree	PASS purchaseconfirmation 4
+2026-10-22T05:43:31.6387176Z	lobby-purchase-tree	PASS durableGoldunlock 4
+2026-10-22T05:43:31.6418303Z	lobby-purchase-tree	PASS existingworldGoldchargedexactly240with4receipts
+2026-10-22T05:43:31.6433573Z	lobby-purchase-tree	PASS ownedclassduplicatepurchaserejected
+2026-10-22T05:43:31.6474186Z	lobby-purchase-tree	PASS productionEngineerunavailablewithoutproviderorprice
+2026-10-22T05:43:31.9317418Z	lobby-purchase-tree	PASS LobbyselectownedHunter
+2026-10-22T05:43:31.9603310Z	lobby-purchase-tree	PASS classprerequisiteenforced
+2026-10-22T05:43:32.1409670Z	lobby-purchase-tree	PASS sixearnedpointsmustchoosefromnine
+2026-10-22T05:43:32.1430905Z	lobby-purchase-tree	PASS duplicatespenddoesnotcharge
+2026-10-22T05:43:32.1448047Z	lobby-purchase-tree	PASS ClassXPisolatedbyclass
+2026-10-22T05:43:32.3238530Z	lobby-purchase-tree	PASS freeLobbyrespeconlyresetsallocation
+2026-10-22T05:43:32.3447266Z	lobby-purchase-tree	PASS Koreandetailfits 0:0
+2026-10-22T05:43:32.3546370Z	lobby-purchase-tree	PASS Koreandetailfits 0:1
+2026-10-22T05:43:32.3612743Z	lobby-purchase-tree	PASS Koreandetailfits 0:2
+2026-10-22T05:43:32.3687483Z	lobby-purchase-tree	PASS Koreandetailfits 0:3
+2026-10-22T05:43:32.3738007Z	lobby-purchase-tree	PASS Koreandetailfits 0:4
+2026-10-22T05:43:32.3788623Z	lobby-purchase-tree	PASS Koreandetailfits 0:5
+2026-10-22T05:43:32.3849098Z	lobby-purchase-tree	PASS Koreandetailfits 0:6
+2026-10-22T05:43:32.3905022Z	lobby-purchase-tree	PASS Koreandetailfits 0:7
+2026-10-22T05:43:32.3955589Z	lobby-purchase-tree	PASS Koreandetailfits 0:8
+2026-10-22T05:43:32.4066722Z	lobby-purchase-tree	PASS Koreandetailfits 1:0
+2026-10-22T05:43:32.4117441Z	lobby-purchase-tree	PASS Koreandetailfits 1:1
+2026-10-22T05:43:32.4176691Z	lobby-purchase-tree	PASS Koreandetailfits 1:2
+2026-10-22T05:43:32.4227019Z	lobby-purchase-tree	PASS Koreandetailfits 1:3
+2026-10-22T05:43:32.4287628Z	lobby-purchase-tree	PASS Koreandetailfits 1:4
+2026-10-22T05:43:32.4340219Z	lobby-purchase-tree	PASS Koreandetailfits 1:5
+2026-10-22T05:43:32.4385554Z	lobby-purchase-tree	PASS Koreandetailfits 1:6
+2026-10-22T05:43:32.4441011Z	lobby-purchase-tree	PASS Koreandetailfits 1:7
+2026-10-22T05:43:32.4486595Z	lobby-purchase-tree	PASS Koreandetailfits 1:8
+2026-10-22T05:43:32.4589497Z	lobby-purchase-tree	PASS Koreandetailfits 2:0
+2026-10-22T05:43:32.4645046Z	lobby-purchase-tree	PASS Koreandetailfits 2:1
+2026-10-22T05:43:32.4701203Z	lobby-purchase-tree	PASS Koreandetailfits 2:2
+2026-10-22T05:43:32.4782636Z	lobby-purchase-tree	PASS Koreandetailfits 2:3
+2026-10-22T05:43:32.4868974Z	lobby-purchase-tree	PASS Koreandetailfits 2:4
+2026-10-22T05:43:32.4930302Z	lobby-purchase-tree	PASS Koreandetailfits 2:5
+2026-10-22T05:43:32.4991070Z	lobby-purchase-tree	PASS Koreandetailfits 2:6
+2026-10-22T05:43:32.5056722Z	lobby-purchase-tree	PASS Koreandetailfits 2:7
+2026-10-22T05:43:32.5112090Z	lobby-purchase-tree	PASS Koreandetailfits 2:8
+2026-10-22T05:43:32.5237048Z	lobby-purchase-tree	PASS Koreandetailfits 3:0
+2026-10-22T05:43:32.5304218Z	lobby-purchase-tree	PASS Koreandetailfits 3:1
+2026-10-22T05:43:32.5361833Z	lobby-purchase-tree	PASS Koreandetailfits 3:2
+2026-10-22T05:43:32.5413354Z	lobby-purchase-tree	PASS Koreandetailfits 3:3
+2026-10-22T05:43:32.5468287Z	lobby-purchase-tree	PASS Koreandetailfits 3:4
+2026-10-22T05:43:32.5519798Z	lobby-purchase-tree	PASS Koreandetailfits 3:5
+2026-10-22T05:43:32.5574328Z	lobby-purchase-tree	PASS Koreandetailfits 3:6
+2026-10-22T05:43:32.5619712Z	lobby-purchase-tree	PASS Koreandetailfits 3:7
+2026-10-22T05:43:32.5690532Z	lobby-purchase-tree	PASS Koreandetailfits 3:8
+2026-10-22T05:43:32.5789833Z	lobby-purchase-tree	PASS Koreandetailfits 4:0
+2026-10-22T05:43:32.5848968Z	lobby-purchase-tree	PASS Koreandetailfits 4:1
+2026-10-22T05:43:32.5894949Z	lobby-purchase-tree	PASS Koreandetailfits 4:2
+2026-10-22T05:43:32.5963772Z	lobby-purchase-tree	PASS Koreandetailfits 4:3
+2026-10-22T05:43:32.6019568Z	lobby-purchase-tree	PASS Koreandetailfits 4:4
+2026-10-22T05:43:32.6065376Z	lobby-purchase-tree	PASS Koreandetailfits 4:5
+2026-10-22T05:43:32.6120612Z	lobby-purchase-tree	PASS Koreandetailfits 4:6
+2026-10-22T05:43:32.6170757Z	lobby-purchase-tree	PASS Koreandetailfits 4:7
+2026-10-22T05:43:32.6232087Z	lobby-purchase-tree	PASS Koreandetailfits 4:8
+2026-10-22T05:43:32.6294229Z	lobby-purchase-tree	PASS Koreandetailfits 5:0
+2026-10-22T05:43:32.6340716Z	lobby-purchase-tree	PASS Koreandetailfits 5:1
+2026-10-22T05:43:32.6363882Z	lobby-purchase-tree	PASS Koreandetailfits 5:2
+2026-10-22T05:43:32.6401749Z	lobby-purchase-tree	PASS Koreandetailfits 5:3
+2026-10-22T05:43:32.6435118Z	lobby-purchase-tree	PASS Koreandetailfits 5:4
+2026-10-22T05:43:32.6468684Z	lobby-purchase-tree	PASS Koreandetailfits 5:5
+2026-10-22T05:43:32.6511240Z	lobby-purchase-tree	PASS Koreandetailfits 5:6
+2026-10-22T05:43:32.6533610Z	lobby-purchase-tree	PASS Koreandetailfits 5:7
+2026-10-22T05:43:32.6567286Z	lobby-purchase-tree	PASS Koreandetailfits 5:8
+2026-10-22T05:43:39.7816804Z	lobby-purchase-tree	PASS selectedClasslockedonworldentry
+2026-10-22T05:43:39.7826812Z	lobby-purchase-tree	PASS Gameplayselectionrespeclockrejected
+2026-10-22T05:43:39.7844135Z	complete	complete
+2026-10-22T05:55:44.7683123Z	warrior	begin
+2026-10-22T05:55:44.7876756Z	warrior	PASS QA durable profile warrior
+2026-10-22T05:55:44.7892177Z	warrior	PASS QA isolated loadout warrior
+2026-10-22T05:55:44.7915835Z	warrior	PASS Guard input held
+2026-10-22T05:55:44.7982283Z	warrior	PASS armor thenGuard17 actualHP,notheavy
+2026-10-22T05:55:44.7997556Z	warrior	PASS final20HP qualifies heavy: damage=20 max=100 heavy=True
+2026-10-22T05:55:44.8007640Z	warrior	PASS heavy defense window
+2026-10-22T05:55:44.8017645Z	warrior	PASS Guard blocks Dash
+2026-10-22T05:55:44.8032718Z	warrior	PASS Guard interval/movement penalty with upgrades
+2026-10-22T05:55:44.8078750Z	warrior	PASS Guard permits actual attack start
+2026-10-22T05:55:44.8094108Z	warrior	PASS first melee attack consumes riposte opportunity at attack start
+2026-10-22T05:55:44.8104958Z	warrior	PASS backhit not reduced by frontalGuard,onlyactiveheavywindow
+2026-10-22T05:55:44.8243237Z	warrior	PASS QA durable profile warrior
+2026-10-22T05:55:44.8243237Z	warrior	PASS QA isolated loadout warrior
+2026-10-22T05:55:44.8258686Z	warrior	PASS 150degree guard cannotcoverrear
+2026-10-22T05:55:44.8264301Z	warrior	PASS forward mobility specialization
+2026-10-22T05:55:44.8269739Z	warrior	PASS release shortens recovery wait
+2026-10-22T05:55:45.1957537Z	complete	complete
+2026-10-22T05:56:06.1512152Z	hunter	begin
+2026-10-22T05:56:06.1754880Z	hunter	PASS QA durable profile hunter
+2026-10-22T05:56:06.1759941Z	hunter	PASS QA isolated loadout hunter
+2026-10-22T05:56:06.1820455Z	hunter	PASS actual valid hit assigns one30secondQuarry
+2026-10-22T05:56:06.1835654Z	hunter	PASS Quarry8plusstationary12 ranged bonus
+2026-10-22T05:56:06.1846111Z	hunter	PASS generic bow/crossbow range towardQuarry
+2026-10-22T05:56:06.1851303Z	hunter	PASS tracking sprint efficiency
+2026-10-22T05:56:06.1856492Z	hunter	PASS new validtarget replaces Quarry
+2026-10-22T05:56:06.3525628Z	hunter	PASS destroyedtarget clears Quarry
+2026-10-22T05:56:06.3741556Z	hunter	PASS QA durable profile hunter
+2026-10-22T05:56:06.3741556Z	hunter	PASS QA isolated loadout hunter
+2026-10-22T05:56:06.3751560Z	hunter	PASS generic spear reach
+2026-10-22T05:56:06.3771808Z	hunter	PASS largeQuarry8plus12 spear bonus
+2026-10-22T05:56:06.5973061Z	complete	complete
+2026-10-22T05:56:26.4744748Z	medicine	begin
+2026-10-22T05:56:26.4931867Z	medicine	PASS QA durable profile medic
+2026-10-22T05:56:26.4941860Z	medicine	PASS QA isolated loadout medic
+2026-10-22T05:56:26.4962027Z	medicine	PASS FieldCare rank 0
+2026-10-22T05:56:26.4967213Z	medicine	PASS FieldCare rank 1
+2026-10-22T05:56:26.4982345Z	medicine	PASS FieldCare rank 2
+2026-10-22T05:56:26.5906279Z	medicine	PASS selfMedicine healing_salve
+2026-10-22T05:56:26.5916281Z	medicine	PASS one item and sharedcooldown healing_salve
+2026-10-22T05:56:26.5926279Z	medicine	PASS outgoing critical25percent * received30percent healing_salve
+2026-10-22T05:56:26.6072918Z	medicine	PASS selfMedicine field_dressing
+2026-10-22T05:56:26.6088055Z	medicine	PASS one item and sharedcooldown field_dressing
+2026-10-22T05:56:26.6093114Z	medicine	PASS HoTdelivery shortened withoutlosingtotal
+2026-10-22T05:56:26.6103191Z	medicine	PASS outgoing critical25percent * received30percent field_dressing
+2026-10-22T05:56:26.6113201Z	medicine	PASS generic timed medicine begins
+2026-10-22T05:56:26.6128298Z	medicine	PASS A2 onlychangesnonzeroapplication
+2026-10-22T05:56:26.6128298Z	medicine	PASS canceledmedicine notconsumed
+2026-10-22T05:56:26.8748757Z	complete	complete
+2026-10-22T09:51:51.4640487Z	shared-growth	begin
+2026-10-22T09:51:51.4768014Z	shared-growth	PASS QA durable profile warrior
+2026-10-22T09:51:51.4778106Z	shared-growth	PASS QA isolated loadout warrior
+2026-10-22T09:51:51.4836425Z	shared-growth	PASS level boundary 20
+2026-10-22T09:51:51.4836425Z	shared-growth	PASS level boundary 99
+2026-10-22T09:51:51.4836425Z	shared-growth	PASS level boundary 999
+2026-10-22T09:51:51.4862387Z	shared-growth	PASS shared rank 0:0
+2026-10-22T09:51:51.4877679Z	shared-growth	PASS shared rank 0:1
+2026-10-22T09:51:51.4887662Z	shared-growth	PASS shared rank 0:2
+2026-10-22T09:51:51.4887662Z	shared-growth	PASS shared rank 0:3
+2026-10-22T09:51:51.4902763Z	shared-growth	PASS shared rank 0:4
+2026-10-22T09:51:51.4918153Z	shared-growth	PASS shared rank 0:5
+2026-10-22T09:51:51.4933447Z	shared-growth	PASS shared rank 0:6
+2026-10-22T09:51:51.4948544Z	shared-growth	PASS shared rank 0:7
+2026-10-22T09:51:51.4958685Z	shared-growth	PASS shared rank 0:8
+2026-10-22T09:51:51.4973871Z	shared-growth	PASS shared rank 0:9
+2026-10-22T09:51:51.4983891Z	shared-growth	PASS shared rank 1:0
+2026-10-22T09:51:51.4999047Z	shared-growth	PASS shared rank 1:1
+2026-10-22T09:51:51.5014366Z	shared-growth	PASS shared rank 1:2
+2026-10-22T09:51:51.5024506Z	shared-growth	PASS shared rank 2:0
+2026-10-22T09:51:51.5038523Z	shared-growth	PASS shared rank 2:1
+2026-10-22T09:51:51.5058722Z	shared-growth	PASS shared rank 2:2
+2026-10-22T09:51:51.5064075Z	shared-growth	PASS shared rank 3:0
+2026-10-22T09:51:51.5074188Z	shared-growth	PASS shared rank 3:1
+2026-10-22T09:51:51.5084188Z	shared-growth	PASS shared rank 3:2
+2026-10-22T09:51:51.5094201Z	shared-growth	PASS shared rank 4:0
+2026-10-22T09:51:51.5094201Z	shared-growth	PASS shared rank 4:1
+2026-10-22T09:51:51.5114265Z	shared-growth	PASS shared rank 4:2
+2026-10-22T09:51:51.5129576Z	shared-growth	PASS shared rank 4:3
+2026-10-22T09:51:51.5144678Z	shared-growth	PASS shared rank 4:4
+2026-10-22T09:51:51.5165275Z	shared-growth	PASS shared rank 5:0
+2026-10-22T09:51:51.5175384Z	shared-growth	PASS shared rank 5:1
+2026-10-22T09:51:51.5185393Z	shared-growth	PASS shared rank 5:2
+2026-10-22T09:51:51.5200437Z	shared-growth	PASS surplus points and invalid/max spend
+2026-10-22T09:51:51.5210512Z	shared-growth	PASS Vitality does not heal
+2026-10-22T09:51:53.2267213Z	shared-growth	PASS Save13 common growth validates
+2026-10-22T09:51:55.8006408Z	shared-growth	PASS common growth survives actual save apply
+2026-10-22T09:51:55.8016411Z	shared-growth	PASS prerequisite and insufficient points
+2026-10-22T09:51:55.8026390Z	shared-growth	PASS point consumption exactly once
+2026-10-22T09:51:55.8048428Z	shared-growth	PASS v12 rank3 and points preserved with two zero nodes
+2026-10-22T09:51:55.8776606Z	shared-growth	PASS four digit character level UI
+2026-10-22T09:51:55.9173438Z	shared-growth	PASS actual six shared nodes
+2026-10-22T09:51:56.4035258Z	shared-growth	PASS debug reward does not grant Class XP
+2026-10-22T09:51:56.4266261Z	shared-growth	PASS duplicate reward receipt awards Class XP once
+2026-10-22T09:52:00.6502533Z	survivor	begin
+2026-10-22T09:52:00.6668842Z	survivor	PASS QA durable profile survivor
+2026-10-22T09:52:00.6683949Z	survivor	PASS QA isolated loadout survivor
+2026-10-22T09:52:00.6709268Z	survivor	PASS lethal interception before Death,10percentHP,270s cooldown
+2026-10-22T09:52:00.6719255Z	survivor	PASS survival restores25 stamina
+2026-10-22T09:52:00.6719255Z	survivor	PASS survival protection blocks damage
+2026-10-22T09:52:00.6729252Z	survivor	PASS attack intent clears survival protection
+2026-10-22T09:52:03.2524479Z	survivor	PASS Save/load preserves cooldown
+2026-10-22T09:52:03.2559824Z	survivor	PASS second lethal during cooldown reaches normal death
+2026-10-22T09:52:03.2882930Z	survivor	PASS Home respawn succeeds
+2026-10-22T09:52:03.2898072Z	survivor	PASS Home does not reset cooldown
+2026-10-22T09:52:03.7636873Z	survivor	PASS QA durable profile survivor
+2026-10-22T09:52:03.7646963Z	survivor	PASS QA isolated loadout survivor
+2026-10-22T09:52:03.7646963Z	survivor	PASS survivor fieldcraft modifiers
+2026-10-22T09:52:07.9995976Z	warrior	begin
+2026-10-22T09:52:08.0190344Z	warrior	PASS QA durable profile warrior
+2026-10-22T09:52:08.0200591Z	warrior	PASS QA isolated loadout warrior
+2026-10-22T09:52:08.0227229Z	warrior	PASS Guard input held
+2026-10-22T09:52:08.0244550Z	warrior	PASS armor thenGuard17 actualHP,notheavy
+2026-10-22T09:52:08.0259677Z	warrior	PASS final20HP qualifies heavy: damage=20 max=100 heavy=True
+2026-10-22T09:52:08.0259677Z	warrior	PASS heavy defense window
+2026-10-22T09:52:08.0280922Z	warrior	PASS Guard blocks Dash
+2026-10-22T09:52:08.0289845Z	warrior	PASS Guard interval/movement penalty with upgrades
+2026-10-22T09:52:08.0311172Z	warrior	PASS Guard permits actual attack start
+2026-10-22T09:52:08.0333304Z	warrior	PASS first melee attack consumes riposte opportunity at attack start
+2026-10-22T09:52:08.0343435Z	warrior	PASS backhit not reduced by frontalGuard,onlyactiveheavywindow
+2026-10-22T09:52:08.0444613Z	warrior	PASS QA durable profile warrior
+2026-10-22T09:52:08.0459164Z	warrior	PASS QA isolated loadout warrior
+2026-10-22T09:52:08.0469198Z	warrior	PASS 150degree guard cannotcoverrear
+2026-10-22T09:52:08.0469198Z	warrior	PASS forward mobility specialization
+2026-10-22T09:52:08.0479265Z	warrior	PASS release shortens recovery wait
+2026-10-22T09:52:12.8371100Z	hunter	begin
+2026-10-22T09:52:12.8471101Z	hunter	PASS QA durable profile hunter
+2026-10-22T09:52:12.8471101Z	hunter	PASS QA isolated loadout hunter
+2026-10-22T09:52:12.8496474Z	hunter	PASS actual valid hit assigns one30secondQuarry
+2026-10-22T09:52:12.8506561Z	hunter	PASS Quarry8plusstationary12 ranged bonus
+2026-10-22T09:52:12.8506561Z	hunter	PASS generic bow/crossbow range towardQuarry
+2026-10-22T09:52:12.8506561Z	hunter	PASS tracking sprint efficiency
+2026-10-22T09:52:12.8521617Z	hunter	PASS new validtarget replaces Quarry
+2026-10-22T09:52:12.9468511Z	hunter	PASS destroyedtarget clears Quarry
+2026-10-22T09:52:12.9549637Z	hunter	PASS QA durable profile hunter
+2026-10-22T09:52:12.9564507Z	hunter	PASS QA isolated loadout hunter
+2026-10-22T09:52:12.9564507Z	hunter	PASS generic spear reach
+2026-10-22T09:52:12.9584609Z	hunter	PASS largeQuarry8plus12 spear bonus
+2026-10-22T09:52:17.0872961Z	medicine	begin
+2026-10-22T09:52:17.1049715Z	medicine	PASS QA durable profile medic
+2026-10-22T09:52:17.1049715Z	medicine	PASS QA isolated loadout medic
+2026-10-22T09:52:17.1061924Z	medicine	PASS FieldCare rank 0
+2026-10-22T09:52:17.1061924Z	medicine	PASS FieldCare rank 1
+2026-10-22T09:52:17.1071867Z	medicine	PASS FieldCare rank 2
+2026-10-22T09:52:17.2027074Z	medicine	PASS selfMedicine healing_salve
+2026-10-22T09:52:17.2037204Z	medicine	PASS one item and sharedcooldown healing_salve
+2026-10-22T09:52:17.2047281Z	medicine	PASS outgoing critical25percent * received30percent healing_salve
+2026-10-22T09:52:17.2188164Z	medicine	PASS selfMedicine field_dressing
+2026-10-22T09:52:17.2188164Z	medicine	PASS one item and sharedcooldown field_dressing
+2026-10-22T09:52:17.2203889Z	medicine	PASS HoTdelivery shortened withoutlosingtotal
+2026-10-22T09:52:17.2213963Z	medicine	PASS outgoing critical25percent * received30percent field_dressing
+2026-10-22T09:52:17.2239082Z	medicine	PASS generic timed medicine begins
+2026-10-22T09:52:17.2244117Z	medicine	PASS A2 onlychangesnonzeroapplication
+2026-10-22T09:52:17.2244117Z	medicine	PASS canceledmedicine notconsumed
+2026-10-22T09:52:21.8455350Z	building-services	begin
+2026-10-22T09:52:21.8546431Z	building-services	PASS QA durable profile warrior
+2026-10-22T09:52:21.8546431Z	building-services	PASS QA isolated loadout warrior
+2026-10-22T09:52:21.8623991Z	building-services	PASS recentdamage lockout
+2026-10-22T09:52:23.6484544Z	building-services	PASS normalholdrepair consumescheapmaterialonce
+2026-10-22T09:52:23.6489809Z	building-services	PASS repairhold starts
+2026-10-22T09:52:23.6555948Z	building-services	PASS newstructure damageinterruptsrepair
+2026-10-22T09:52:23.6682905Z	building-services	PASS QA durable profile engineer
+2026-10-22T09:52:23.6693012Z	building-services	PASS QA isolated loadout engineer
+2026-10-22T09:52:23.6693012Z	building-services	PASS Engineer zerocostHP repair
+2026-10-22T09:52:23.6703002Z	building-services	PASS Engineer noHPmaterialcharge
+2026-10-22T09:52:23.6713130Z	building-services	PASS 30percentbase +10barrierbuffer withoutMaxHPmutation
+2026-10-22T09:52:23.6723599Z	building-services	PASS temporarybuffer absorbsfirst
+2026-10-22T09:52:23.6738871Z	building-services	PASS same-sessionstableID buffer sleep/wake
+2026-10-22T09:52:23.6789316Z	building-services	PASS temporarybuffer notserialized
+2026-10-22T09:52:23.6826747Z	building-services	PASS 90percent fullrefund
+2026-10-22T09:52:23.6826747Z	building-services	PASS below90percent flooredrefund
+2026-10-22T09:52:23.6836826Z	building-services	PASS neardestroyed safezero refund
+2026-10-22T09:52:23.6856828Z	building-services	PASS cycle recovery 0
+2026-10-22T09:52:23.6871907Z	building-services	PASS cycle rebuildingcost 0
+2026-10-22T09:52:23.6902367Z	building-services	PASS cycle recovery 1
+2026-10-22T09:52:23.6907441Z	building-services	PASS cycle rebuildingcost 1
+2026-10-22T09:52:23.6937909Z	building-services	PASS cycle recovery 2
+2026-10-22T09:52:23.6947916Z	building-services	PASS cycle rebuildingcost 2
+2026-10-22T09:52:23.6983084Z	building-services	PASS cycle recovery 3
+2026-10-22T09:52:23.6983084Z	building-services	PASS cycle rebuildingcost 3
+2026-10-22T09:52:23.7019893Z	building-services	PASS cycle recovery 4
+2026-10-22T09:52:23.7025083Z	building-services	PASS cycle rebuildingcost 4
+2026-10-22T09:52:23.7055146Z	building-services	PASS cycle recovery 5
+2026-10-22T09:52:23.7065231Z	building-services	PASS cycle rebuildingcost 5
+2026-10-22T09:52:23.7091288Z	building-services	PASS cycle recovery 6
+2026-10-22T09:52:23.7101414Z	building-services	PASS cycle rebuildingcost 6
+2026-10-22T09:52:23.7131918Z	building-services	PASS cycle recovery 7
+2026-10-22T09:52:23.7142044Z	building-services	PASS cycle rebuildingcost 7
+2026-10-22T09:52:23.7177231Z	building-services	PASS cycle recovery 8
+2026-10-22T09:52:23.7177231Z	building-services	PASS cycle rebuildingcost 8
+2026-10-22T09:52:23.7212624Z	building-services	PASS cycle recovery 9
+2026-10-22T09:52:23.7212624Z	building-services	PASS cycle rebuildingcost 9
+2026-10-22T09:52:23.7263042Z	building-services	PASS cycle recovery 10
+2026-10-22T09:52:23.7273132Z	building-services	PASS cycle rebuildingcost 10
+2026-10-22T09:52:23.7298446Z	building-services	PASS cycle recovery 11
+2026-10-22T09:52:23.7313561Z	building-services	PASS cycle rebuildingcost 11
+2026-10-22T09:52:23.7339090Z	building-services	PASS cycle recovery 12
+2026-10-22T09:52:23.7359469Z	building-services	PASS cycle rebuildingcost 12
+2026-10-22T09:52:23.7395253Z	building-services	PASS cycle recovery 13
+2026-10-22T09:52:23.7395253Z	building-services	PASS cycle rebuildingcost 13
+2026-10-22T09:52:23.7435855Z	building-services	PASS cycle recovery 14
+2026-10-22T09:52:23.7450983Z	building-services	PASS cycle rebuildingcost 14
+2026-10-22T09:52:23.7487582Z	building-services	PASS cycle recovery 15
+2026-10-22T09:52:23.7492640Z	building-services	PASS cycle rebuildingcost 15
+2026-10-22T09:52:23.7538732Z	building-services	PASS cycle recovery 16
+2026-10-22T09:52:23.7548703Z	building-services	PASS cycle rebuildingcost 16
+2026-10-22T09:52:23.7589875Z	building-services	PASS cycle recovery 17
+2026-10-22T09:52:23.7589875Z	building-services	PASS cycle rebuildingcost 17
+2026-10-22T09:52:23.7629825Z	building-services	PASS cycle recovery 18
+2026-10-22T09:52:23.7650136Z	building-services	PASS cycle rebuildingcost 18
+2026-10-22T09:52:23.7685438Z	building-services	PASS cycle recovery 19
+2026-10-22T09:52:23.7695559Z	building-services	PASS cycle rebuildingcost 19
+2026-10-22T09:52:23.7726211Z	building-services	PASS cycle recovery 20
+2026-10-22T09:52:23.7746750Z	building-services	PASS cycle rebuildingcost 20
+2026-10-22T09:52:23.7792563Z	building-services	PASS cycle recovery 21
+2026-10-22T09:52:23.7802691Z	building-services	PASS cycle rebuildingcost 21
+2026-10-22T09:52:23.7863694Z	building-services	PASS cycle recovery 22
+2026-10-22T09:52:23.7879032Z	building-services	PASS cycle rebuildingcost 22
+2026-10-22T09:52:23.7909366Z	building-services	PASS cycle recovery 23
+2026-10-22T09:52:23.7924643Z	building-services	PASS cycle rebuildingcost 23
+2026-10-22T09:52:23.7962220Z	building-services	PASS cycle recovery 24
+2026-10-22T09:52:23.7977586Z	building-services	PASS cycle rebuildingcost 24
+2026-10-22T09:52:23.8013143Z	building-services	PASS cycle recovery 25
+2026-10-22T09:52:23.8033663Z	building-services	PASS cycle rebuildingcost 25
+2026-10-22T09:52:23.8084297Z	building-services	PASS cycle recovery 26
+2026-10-22T09:52:23.8099503Z	building-services	PASS cycle rebuildingcost 26
+2026-10-22T09:52:23.8135034Z	building-services	PASS cycle recovery 27
+2026-10-22T09:52:23.8135034Z	building-services	PASS cycle rebuildingcost 27
+2026-10-22T09:52:23.8170248Z	building-services	PASS cycle recovery 28
+2026-10-22T09:52:23.8170248Z	building-services	PASS cycle rebuildingcost 28
+2026-10-22T09:52:23.8205615Z	building-services	PASS cycle recovery 29
+2026-10-22T09:52:23.8220816Z	building-services	PASS cycle rebuildingcost 29
+2026-10-22T09:52:23.8256308Z	building-services	PASS cycle recovery 30
+2026-10-22T09:52:23.8256308Z	building-services	PASS cycle rebuildingcost 30
+2026-10-22T09:52:23.8286657Z	building-services	PASS cycle recovery 31
+2026-10-22T09:52:23.8296651Z	building-services	PASS cycle rebuildingcost 31
+2026-10-22T09:52:23.8326927Z	building-services	PASS cycle recovery 32
+2026-10-22T09:52:23.8337006Z	building-services	PASS cycle rebuildingcost 32
+2026-10-22T09:52:23.8372651Z	building-services	PASS cycle recovery 33
+2026-10-22T09:52:23.8382737Z	building-services	PASS cycle rebuildingcost 33
+2026-10-22T09:52:23.8428285Z	building-services	PASS cycle recovery 34
+2026-10-22T09:52:23.8443487Z	building-services	PASS cycle rebuildingcost 34
+2026-10-22T09:52:23.8489728Z	building-services	PASS cycle recovery 35
+2026-10-22T09:52:23.8504890Z	building-services	PASS cycle rebuildingcost 35
+2026-10-22T09:52:23.8540610Z	building-services	PASS cycle recovery 36
+2026-10-22T09:52:23.8545677Z	building-services	PASS cycle rebuildingcost 36
+2026-10-22T09:52:23.8576229Z	building-services	PASS cycle recovery 37
+2026-10-22T09:52:23.8586224Z	building-services	PASS cycle rebuildingcost 37
+2026-10-22T09:52:23.8611296Z	building-services	PASS cycle recovery 38
+2026-10-22T09:52:23.8627060Z	building-services	PASS cycle rebuildingcost 38
+2026-10-22T09:52:23.8662768Z	building-services	PASS cycle recovery 39
+2026-10-22T09:52:23.8672847Z	building-services	PASS cycle rebuildingcost 39
+2026-10-22T09:52:23.8718439Z	building-services	PASS cycle recovery 40
+2026-10-22T09:52:23.8728438Z	building-services	PASS cycle rebuildingcost 40
+2026-10-22T09:52:23.8764107Z	building-services	PASS cycle recovery 41
+2026-10-22T09:52:23.8774084Z	building-services	PASS cycle rebuildingcost 41
+2026-10-22T09:52:23.8814404Z	building-services	PASS cycle recovery 42
+2026-10-22T09:52:23.8829456Z	building-services	PASS cycle rebuildingcost 42
+2026-10-22T09:52:23.8891009Z	building-services	PASS cycle recovery 43
+2026-10-22T09:52:23.8901068Z	building-services	PASS cycle rebuildingcost 43
+2026-10-22T09:52:23.8961434Z	building-services	PASS cycle recovery 44
+2026-10-22T09:52:23.8971426Z	building-services	PASS cycle rebuildingcost 44
+2026-10-22T09:52:23.9001749Z	building-services	PASS cycle recovery 45
+2026-10-22T09:52:23.9011859Z	building-services	PASS cycle rebuildingcost 45
+2026-10-22T09:52:23.9052394Z	building-services	PASS cycle recovery 46
+2026-10-22T09:52:23.9067730Z	building-services	PASS cycle rebuildingcost 46
+2026-10-22T09:52:23.9098672Z	building-services	PASS cycle recovery 47
+2026-10-22T09:52:23.9108773Z	building-services	PASS cycle rebuildingcost 47
+2026-10-22T09:52:23.9149169Z	building-services	PASS cycle recovery 48
+2026-10-22T09:52:23.9154233Z	building-services	PASS cycle rebuildingcost 48
+2026-10-22T09:52:23.9189470Z	building-services	PASS cycle recovery 49
+2026-10-22T09:52:23.9189470Z	building-services	PASS cycle rebuildingcost 49
+2026-10-22T09:52:23.9224867Z	building-services	PASS cycle recovery 50
+2026-10-22T09:52:23.9234930Z	building-services	PASS cycle rebuildingcost 50
+2026-10-22T09:52:23.9255211Z	building-services	PASS cycle recovery 51
+2026-10-22T09:52:23.9270424Z	building-services	PASS cycle rebuildingcost 51
+2026-10-22T09:52:23.9300911Z	building-services	PASS cycle recovery 52
+2026-10-22T09:52:23.9316108Z	building-services	PASS cycle rebuildingcost 52
+2026-10-22T09:52:23.9347072Z	building-services	PASS cycle recovery 53
+2026-10-22T09:52:23.9347072Z	building-services	PASS cycle rebuildingcost 53
+2026-10-22T09:52:23.9382326Z	building-services	PASS cycle recovery 54
+2026-10-22T09:52:23.9392332Z	building-services	PASS cycle rebuildingcost 54
+2026-10-22T09:52:23.9427716Z	building-services	PASS cycle recovery 55
+2026-10-22T09:52:23.9427716Z	building-services	PASS cycle rebuildingcost 55
+2026-10-22T09:52:23.9463079Z	building-services	PASS cycle recovery 56
+2026-10-22T09:52:23.9473188Z	building-services	PASS cycle rebuildingcost 56
+2026-10-22T09:52:23.9509699Z	building-services	PASS cycle recovery 57
+2026-10-22T09:52:23.9509699Z	building-services	PASS cycle rebuildingcost 57
+2026-10-22T09:52:23.9539981Z	building-services	PASS cycle recovery 58
+2026-10-22T09:52:23.9550060Z	building-services	PASS cycle rebuildingcost 58
+2026-10-22T09:52:23.9585204Z	building-services	PASS cycle recovery 59
+2026-10-22T09:52:23.9590258Z	building-services	PASS cycle rebuildingcost 59
+2026-10-22T09:52:23.9615403Z	building-services	PASS cycle recovery 60
+2026-10-22T09:52:23.9625471Z	building-services	PASS cycle rebuildingcost 60
+2026-10-22T09:52:23.9656930Z	building-services	PASS cycle recovery 61
+2026-10-22T09:52:23.9666987Z	building-services	PASS cycle rebuildingcost 61
+2026-10-22T09:52:23.9692260Z	building-services	PASS cycle recovery 62
+2026-10-22T09:52:23.9692260Z	building-services	PASS cycle rebuildingcost 62
+2026-10-22T09:52:23.9727425Z	building-services	PASS cycle recovery 63
+2026-10-22T09:52:23.9732457Z	building-services	PASS cycle rebuildingcost 63
+2026-10-22T09:52:23.9757537Z	building-services	PASS cycle recovery 64
+2026-10-22T09:52:23.9767575Z	building-services	PASS cycle rebuildingcost 64
+2026-10-22T09:52:23.9807696Z	building-services	PASS cycle recovery 65
+2026-10-22T09:52:23.9807696Z	building-services	PASS cycle rebuildingcost 65
+2026-10-22T09:52:23.9848049Z	building-services	PASS cycle recovery 66
+2026-10-22T09:52:23.9858192Z	building-services	PASS cycle rebuildingcost 66
+2026-10-22T09:52:23.9888488Z	building-services	PASS cycle recovery 67
+2026-10-22T09:52:23.9898884Z	building-services	PASS cycle rebuildingcost 67
+2026-10-22T09:52:23.9929156Z	building-services	PASS cycle recovery 68
+2026-10-22T09:52:23.9939217Z	building-services	PASS cycle rebuildingcost 68
+2026-10-22T09:52:23.9966863Z	building-services	PASS cycle recovery 69
+2026-10-22T09:52:23.9976934Z	building-services	PASS cycle rebuildingcost 69
+2026-10-22T09:52:23.9999009Z	building-services	PASS cycle recovery 70
+2026-10-22T09:52:24.0015426Z	building-services	PASS cycle rebuildingcost 70
+2026-10-22T09:52:24.0045647Z	building-services	PASS cycle recovery 71
+2026-10-22T09:52:24.0055736Z	building-services	PASS cycle rebuildingcost 71
+2026-10-22T09:52:24.0085962Z	building-services	PASS cycle recovery 72
+2026-10-22T09:52:24.0091021Z	building-services	PASS cycle rebuildingcost 72
+2026-10-22T09:52:24.0121333Z	building-services	PASS cycle recovery 73
+2026-10-22T09:52:24.0126543Z	building-services	PASS cycle rebuildingcost 73
+2026-10-22T09:52:24.0151773Z	building-services	PASS cycle recovery 74
+2026-10-22T09:52:24.0151773Z	building-services	PASS cycle rebuildingcost 74
+2026-10-22T09:52:24.0192855Z	building-services	PASS cycle recovery 75
+2026-10-22T09:52:24.0192855Z	building-services	PASS cycle rebuildingcost 75
+2026-10-22T09:52:24.0233181Z	building-services	PASS cycle recovery 76
+2026-10-22T09:52:24.0238238Z	building-services	PASS cycle rebuildingcost 76
+2026-10-22T09:52:24.0273882Z	building-services	PASS cycle recovery 77
+2026-10-22T09:52:24.0273882Z	building-services	PASS cycle rebuildingcost 77
+2026-10-22T09:52:24.0309114Z	building-services	PASS cycle recovery 78
+2026-10-22T09:52:24.0314178Z	building-services	PASS cycle rebuildingcost 78
+2026-10-22T09:52:24.0344391Z	building-services	PASS cycle recovery 79
+2026-10-22T09:52:24.0344391Z	building-services	PASS cycle rebuildingcost 79
+2026-10-22T09:52:24.0374551Z	building-services	PASS cycle recovery 80
+2026-10-22T09:52:24.0384593Z	building-services	PASS cycle rebuildingcost 80
+2026-10-22T09:52:24.0414709Z	building-services	PASS cycle recovery 81
+2026-10-22T09:52:24.0414709Z	building-services	PASS cycle rebuildingcost 81
+2026-10-22T09:52:24.0449867Z	building-services	PASS cycle recovery 82
+2026-10-22T09:52:24.0449867Z	building-services	PASS cycle rebuildingcost 82
+2026-10-22T09:52:24.0480093Z	building-services	PASS cycle recovery 83
+2026-10-22T09:52:24.0495512Z	building-services	PASS cycle rebuildingcost 83
+2026-10-22T09:52:24.0525757Z	building-services	PASS cycle recovery 84
+2026-10-22T09:52:24.0535839Z	building-services	PASS cycle rebuildingcost 84
+2026-10-22T09:52:24.0561163Z	building-services	PASS cycle recovery 85
+2026-10-22T09:52:24.0581321Z	building-services	PASS cycle rebuildingcost 85
+2026-10-22T09:52:24.0611576Z	building-services	PASS cycle recovery 86
+2026-10-22T09:52:24.0611576Z	building-services	PASS cycle rebuildingcost 86
+2026-10-22T09:52:24.0646959Z	building-services	PASS cycle recovery 87
+2026-10-22T09:52:24.0656991Z	building-services	PASS cycle rebuildingcost 87
+2026-10-22T09:52:24.0692317Z	building-services	PASS cycle recovery 88
+2026-10-22T09:52:24.0692317Z	building-services	PASS cycle rebuildingcost 88
+2026-10-22T09:52:24.0727609Z	building-services	PASS cycle recovery 89
+2026-10-22T09:52:24.0732696Z	building-services	PASS cycle rebuildingcost 89
+2026-10-22T09:52:24.0757761Z	building-services	PASS cycle recovery 90
+2026-10-22T09:52:24.0772847Z	building-services	PASS cycle rebuildingcost 90
+2026-10-22T09:52:24.0807953Z	building-services	PASS cycle recovery 91
+2026-10-22T09:52:24.0813282Z	building-services	PASS cycle rebuildingcost 91
+2026-10-22T09:52:24.0839059Z	building-services	PASS cycle recovery 92
+2026-10-22T09:52:24.0839059Z	building-services	PASS cycle rebuildingcost 92
+2026-10-22T09:52:24.0879310Z	building-services	PASS cycle recovery 93
+2026-10-22T09:52:24.0884424Z	building-services	PASS cycle rebuildingcost 93
+2026-10-22T09:52:24.0909491Z	building-services	PASS cycle recovery 94
+2026-10-22T09:52:24.0909491Z	building-services	PASS cycle rebuildingcost 94
+2026-10-22T09:52:24.0939683Z	building-services	PASS cycle recovery 95
+2026-10-22T09:52:24.0939683Z	building-services	PASS cycle rebuildingcost 95
+2026-10-22T09:52:24.0980392Z	building-services	PASS cycle recovery 96
+2026-10-22T09:52:24.0985604Z	building-services	PASS cycle rebuildingcost 96
+2026-10-22T09:52:24.1006693Z	building-services	PASS cycle recovery 97
+2026-10-22T09:52:24.1016958Z	building-services	PASS cycle rebuildingcost 97
+2026-10-22T09:52:24.1036977Z	building-services	PASS cycle recovery 98
+2026-10-22T09:52:24.1047214Z	building-services	PASS cycle rebuildingcost 98
+2026-10-22T09:52:24.1077600Z	building-services	PASS cycle recovery 99
+2026-10-22T09:52:24.1077600Z	building-services	PASS cycle rebuildingcost 99
+2026-10-22T09:52:24.1108239Z	building-services	PASS 100 build/recover cycles noresourcegrowth
+2026-10-22T09:52:24.1138720Z	building-services	PASS chest contents blockrecovery
+2026-10-22T09:52:24.1189121Z	building-services	PASS turretammo blocksrecovery
+2026-10-22T09:52:24.1199230Z	building-services	PASS turretmodule blocksrecovery
+2026-10-22T09:52:24.1224350Z	building-services	PASS BoneTrap stayssingleuse
+2026-10-22T09:52:24.1239487Z	building-services	PASS consumedBoneTrap cannotberepaired
+2026-10-22T09:52:28.1963991Z	turret-overclock	begin
+2026-10-22T09:52:28.2142155Z	turret-overclock	PASS QA durable profile engineer
+2026-10-22T09:52:28.2142155Z	turret-overclock	PASS QA isolated loadout engineer
+2026-10-22T09:52:28.2183719Z	turret-overclock	PASS activeoverclock ballista
+2026-10-22T09:52:28.2188768Z	turret-overclock	PASS overclockspeedwithB3 ballista
+2026-10-22T09:52:28.2198822Z	turret-overclock	PASS 16second duration24second cooldown
+2026-10-22T09:52:28.2198822Z	turret-overclock	PASS noammo/module/damage/rangegrant ballista
+2026-10-22T09:52:28.2227174Z	turret-overclock	PASS overclock expiry restores module-only speed
+2026-10-22T09:52:28.2263551Z	turret-overclock	PASS activeoverclock repeater
+2026-10-22T09:52:28.2263551Z	turret-overclock	PASS overclockspeedwithB3 repeater
+2026-10-22T09:52:28.2263551Z	turret-overclock	PASS 16second duration24second cooldown
+2026-10-22T09:52:28.2284118Z	turret-overclock	PASS noammo/module/damage/rangegrant repeater
+2026-10-22T09:52:28.2304445Z	turret-overclock	PASS overclock expiry restores module-only speed
+2026-10-22T09:52:28.6519287Z	exploration	begin
+2026-10-22T09:52:28.6707664Z	exploration	PASS QA durable profile warrior
+2026-10-22T09:52:28.6719220Z	exploration	PASS QA isolated loadout warrior
+2026-10-22T09:52:28.6729447Z	exploration	PASS normaloptic160
+2026-10-22T09:52:28.6800810Z	exploration	PASS QA durable profile explorer
+2026-10-22T09:52:28.6814317Z	exploration	PASS QA isolated loadout explorer
+2026-10-22T09:52:28.6814317Z	exploration	PASS Exploreroptic216
+2026-10-22T09:52:28.6829891Z	exploration	PASS validobservedlandcorridor
+2026-10-22T09:52:28.6905718Z	exploration	PASS actualopticuse
+2026-10-22T09:52:28.7147314Z	exploration	PASS validatedobservedreticlemarker
+2026-10-22T09:52:28.7157635Z	exploration	PASS A3 marker90seconds
+2026-10-22T09:52:28.7157635Z	exploration	PASS outofrange markerdenied
+2026-10-22T09:52:28.7167422Z	exploration	PASS nonfinite markerdenied
+2026-10-22T09:52:28.7167422Z	exploration	PASS optic/marker createsnohiddenresourceactors
+2026-10-22T09:52:30.2252228Z	exploration	PASS single marker replace after spam gate
+2026-10-22T09:52:30.2297368Z	exploration	PASS temporary marker expires without save
+2026-10-22T09:52:30.2317928Z	exploration	PASS markerbuttononlyduringobservation
+2026-10-22T09:52:30.2424337Z	exploration	PASS QA durable profile explorer
+2026-10-22T09:52:30.2442484Z	exploration	PASS QA isolated loadout explorer
+2026-10-22T09:52:30.2462603Z	exploration	PASS signalbranchgenericmodifiers
+2026-10-22T09:52:34.2416771Z	lobby-purchase-tree	begin
+2026-10-22T09:52:34.2498273Z	lobby-purchase-tree	PASS QA durable profile warrior
+2026-10-22T09:52:34.2503714Z	lobby-purchase-tree	PASS QA isolated loadout warrior
+2026-10-22T09:52:34.2624377Z	lobby-purchase-tree	PASS isolatedworldGold240durablysaved
+2026-10-22T09:52:34.2720810Z	lobby-purchase-tree	PASS startdefaultownership
+2026-10-22T09:52:34.8496102Z	lobby-purchase-tree	PASS defaultSurvivorownedselected
+2026-10-22T09:52:34.8538534Z	lobby-purchase-tree	PASS lockedGoldclassshowspriceandpurchase
+2026-10-22T09:52:34.8599832Z	lobby-purchase-tree	PASS purchaseconfirmation 1
+2026-10-22T09:52:34.9326914Z	lobby-purchase-tree	PASS durableGoldunlock 1
+2026-10-22T09:52:34.9425473Z	lobby-purchase-tree	PASS purchaseconfirmation 2
+2026-10-22T09:52:35.0225745Z	lobby-purchase-tree	PASS durableGoldunlock 2
+2026-10-22T09:52:35.0289420Z	lobby-purchase-tree	PASS purchaseconfirmation 3
+2026-10-22T09:52:35.0985971Z	lobby-purchase-tree	PASS durableGoldunlock 3
+2026-10-22T09:52:35.1058969Z	lobby-purchase-tree	PASS purchaseconfirmation 4
+2026-10-22T09:52:35.1625009Z	lobby-purchase-tree	PASS durableGoldunlock 4
+2026-10-22T09:52:35.1645393Z	lobby-purchase-tree	PASS existingworldGoldchargedexactly240with4receipts
+2026-10-22T09:52:35.1660500Z	lobby-purchase-tree	PASS ownedclassduplicatepurchaserejected
+2026-10-22T09:52:35.1691247Z	lobby-purchase-tree	PASS productionEngineerunavailablewithoutproviderorprice
+2026-10-22T09:52:35.5923007Z	lobby-purchase-tree	PASS LobbyselectownedHunter
+2026-10-22T09:52:35.6085296Z	lobby-purchase-tree	PASS classprerequisiteenforced
+2026-10-22T09:52:35.7998540Z	lobby-purchase-tree	PASS sixearnedpointsmustchoosefromnine
+2026-10-22T09:52:35.8023647Z	lobby-purchase-tree	PASS duplicatespenddoesnotcharge
+2026-10-22T09:52:35.8033748Z	lobby-purchase-tree	PASS ClassXPisolatedbyclass
+2026-10-22T09:52:36.2628414Z	lobby-purchase-tree	PASS freeLobbyrespeconlyresetsallocation
+2026-10-22T09:52:36.2935144Z	lobby-purchase-tree	PASS Koreandetailfits 0:0
+2026-10-22T09:52:36.3031786Z	lobby-purchase-tree	PASS Koreandetailfits 0:1
+2026-10-22T09:52:36.3146071Z	lobby-purchase-tree	PASS Koreandetailfits 0:2
+2026-10-22T09:52:36.3232758Z	lobby-purchase-tree	PASS Koreandetailfits 0:3
+2026-10-22T09:52:36.3273167Z	lobby-purchase-tree	PASS Koreandetailfits 0:4
+2026-10-22T09:52:36.3339489Z	lobby-purchase-tree	PASS Koreandetailfits 0:5
+2026-10-22T09:52:36.3384998Z	lobby-purchase-tree	PASS Koreandetailfits 0:6
+2026-10-22T09:52:36.3502060Z	lobby-purchase-tree	PASS Koreandetailfits 0:7
+2026-10-22T09:52:36.3691154Z	lobby-purchase-tree	PASS Koreandetailfits 0:8
+2026-10-22T09:52:36.3778102Z	lobby-purchase-tree	PASS Koreandetailfits 1:0
+2026-10-22T09:52:36.3824127Z	lobby-purchase-tree	PASS Koreandetailfits 1:1
+2026-10-22T09:52:36.3874525Z	lobby-purchase-tree	PASS Koreandetailfits 1:2
+2026-10-22T09:52:36.3914990Z	lobby-purchase-tree	PASS Koreandetailfits 1:3
+2026-10-22T09:52:36.3960283Z	lobby-purchase-tree	PASS Koreandetailfits 1:4
+2026-10-22T09:52:36.4005810Z	lobby-purchase-tree	PASS Koreandetailfits 1:5
+2026-10-22T09:52:36.4051398Z	lobby-purchase-tree	PASS Koreandetailfits 1:6
+2026-10-22T09:52:36.4091876Z	lobby-purchase-tree	PASS Koreandetailfits 1:7
+2026-10-22T09:52:36.4137534Z	lobby-purchase-tree	PASS Koreandetailfits 1:8
+2026-10-22T09:52:36.4224754Z	lobby-purchase-tree	PASS Koreandetailfits 2:0
+2026-10-22T09:52:36.4275033Z	lobby-purchase-tree	PASS Koreandetailfits 2:1
+2026-10-22T09:52:36.4328465Z	lobby-purchase-tree	PASS Koreandetailfits 2:2
+2026-10-22T09:52:36.4374053Z	lobby-purchase-tree	PASS Koreandetailfits 2:3
+2026-10-22T09:52:36.4473906Z	lobby-purchase-tree	PASS Koreandetailfits 2:4
+2026-10-22T09:52:36.4554570Z	lobby-purchase-tree	PASS Koreandetailfits 2:5
+2026-10-22T09:52:36.4604834Z	lobby-purchase-tree	PASS Koreandetailfits 2:6
+2026-10-22T09:52:36.4670403Z	lobby-purchase-tree	PASS Koreandetailfits 2:7
+2026-10-22T09:52:36.4705746Z	lobby-purchase-tree	PASS Koreandetailfits 2:8
+2026-10-22T09:52:36.4922980Z	lobby-purchase-tree	PASS Koreandetailfits 3:0
+2026-10-22T09:52:36.5048233Z	lobby-purchase-tree	PASS Koreandetailfits 3:1
+2026-10-22T09:52:36.5147209Z	lobby-purchase-tree	PASS Koreandetailfits 3:2
+2026-10-22T09:52:36.5239210Z	lobby-purchase-tree	PASS Koreandetailfits 3:3
+2026-10-22T09:52:36.5315770Z	lobby-purchase-tree	PASS Koreandetailfits 3:4
+2026-10-22T09:52:36.5427364Z	lobby-purchase-tree	PASS Koreandetailfits 3:5
+2026-10-22T09:52:36.5539040Z	lobby-purchase-tree	PASS Koreandetailfits 3:6
+2026-10-22T09:52:36.5624884Z	lobby-purchase-tree	PASS Koreandetailfits 3:7
+2026-10-22T09:52:36.5697410Z	lobby-purchase-tree	PASS Koreandetailfits 3:8
+2026-10-22T09:52:36.5866911Z	lobby-purchase-tree	PASS Koreandetailfits 4:0
+2026-10-22T09:52:36.5960504Z	lobby-purchase-tree	PASS Koreandetailfits 4:1
+2026-10-22T09:52:36.6041079Z	lobby-purchase-tree	PASS Koreandetailfits 4:2
+2026-10-22T09:52:36.6091335Z	lobby-purchase-tree	PASS Koreandetailfits 4:3
+2026-10-22T09:52:36.6142021Z	lobby-purchase-tree	PASS Koreandetailfits 4:4
+2026-10-22T09:52:36.6202712Z	lobby-purchase-tree	PASS Koreandetailfits 4:5
+2026-10-22T09:52:36.6273380Z	lobby-purchase-tree	PASS Koreandetailfits 4:6
+2026-10-22T09:52:36.6333673Z	lobby-purchase-tree	PASS Koreandetailfits 4:7
+2026-10-22T09:52:36.6389999Z	lobby-purchase-tree	PASS Koreandetailfits 4:8
+2026-10-22T09:52:36.6613818Z	lobby-purchase-tree	PASS Koreandetailfits 5:0
+2026-10-22T09:52:36.6635430Z	lobby-purchase-tree	PASS Koreandetailfits 5:1
+2026-10-22T09:52:36.6675701Z	lobby-purchase-tree	PASS Koreandetailfits 5:2
+2026-10-22T09:52:36.6700733Z	lobby-purchase-tree	PASS Koreandetailfits 5:3
+2026-10-22T09:52:36.6730998Z	lobby-purchase-tree	PASS Koreandetailfits 5:4
+2026-10-22T09:52:36.6761637Z	lobby-purchase-tree	PASS Koreandetailfits 5:5
+2026-10-22T09:52:36.6797206Z	lobby-purchase-tree	PASS Koreandetailfits 5:6
+2026-10-22T09:52:36.6827641Z	lobby-purchase-tree	PASS Koreandetailfits 5:7
+2026-10-22T09:52:36.6857973Z	lobby-purchase-tree	PASS Koreandetailfits 5:8
+2026-10-22T09:52:36.7206501Z	lobby-purchase-tree	PASS committed receipt repairs missing entitlement without second debit
+2026-10-22T09:52:36.7562515Z	lobby-purchase-tree	PASS uncommitted intent clears without debit or grant
+2026-10-22T09:52:36.7779748Z	lobby-purchase-tree	PASS QA approved price injected wallet grants and charges once
+2026-10-22T09:52:36.7789872Z	lobby-purchase-tree	PASS QA premium duplicate no second charge
+2026-10-22T09:52:42.6988641Z	lobby-purchase-tree	PASS selectedClasslockedonworldentry
+2026-10-22T09:52:42.7013736Z	lobby-purchase-tree	PASS Gameplayselectionrespeclockrejected
+2026-10-22T09:52:42.7019157Z	complete	complete
+2026-10-22T09:55:44.2026871Z	shared-growth	begin
+2026-10-22T09:55:44.2158783Z	shared-growth	PASS QA durable profile warrior
+2026-10-22T09:55:44.2163956Z	shared-growth	PASS QA isolated loadout warrior
+2026-10-22T09:55:44.2189132Z	shared-growth	PASS level boundary 20
+2026-10-22T09:55:44.2189132Z	shared-growth	PASS level boundary 99
+2026-10-22T09:55:44.2199221Z	shared-growth	PASS level boundary 999
+2026-10-22T09:55:44.2210461Z	shared-growth	PASS shared rank 0:0
+2026-10-22T09:55:44.2210461Z	shared-growth	PASS shared rank 0:1
+2026-10-22T09:55:44.2225524Z	shared-growth	PASS shared rank 0:2
+2026-10-22T09:55:44.2225524Z	shared-growth	PASS shared rank 0:3
+2026-10-22T09:55:44.2240697Z	shared-growth	PASS shared rank 0:4
+2026-10-22T09:55:44.2240697Z	shared-growth	PASS shared rank 0:5
+2026-10-22T09:55:44.2250779Z	shared-growth	PASS shared rank 0:6
+2026-10-22T09:55:44.2255836Z	shared-growth	PASS shared rank 0:7
+2026-10-22T09:55:44.2260895Z	shared-growth	PASS shared rank 0:8
+2026-10-22T09:55:44.2270409Z	shared-growth	PASS shared rank 0:9
+2026-10-22T09:55:44.2270409Z	shared-growth	PASS shared rank 1:0
+2026-10-22T09:55:44.2281337Z	shared-growth	PASS shared rank 1:1
+2026-10-22T09:55:44.2281337Z	shared-growth	PASS shared rank 1:2
+2026-10-22T09:55:44.2291338Z	shared-growth	PASS shared rank 2:0
+2026-10-22T09:55:44.2296392Z	shared-growth	PASS shared rank 2:1
+2026-10-22T09:55:44.2306469Z	shared-growth	PASS shared rank 2:2
+2026-10-22T09:55:44.2306469Z	shared-growth	PASS shared rank 3:0
+2026-10-22T09:55:44.2316526Z	shared-growth	PASS shared rank 3:1
+2026-10-22T09:55:44.2326585Z	shared-growth	PASS shared rank 3:2
+2026-10-22T09:55:44.2326585Z	shared-growth	PASS shared rank 4:0
+2026-10-22T09:55:44.2326585Z	shared-growth	PASS shared rank 4:1
+2026-10-22T09:55:44.2341640Z	shared-growth	PASS shared rank 4:2
+2026-10-22T09:55:44.2346795Z	shared-growth	PASS shared rank 4:3
+2026-10-22T09:55:44.2346795Z	shared-growth	PASS shared rank 4:4
+2026-10-22T09:55:44.2356874Z	shared-growth	PASS shared rank 5:0
+2026-10-22T09:55:44.2356874Z	shared-growth	PASS shared rank 5:1
+2026-10-22T09:55:44.2370092Z	shared-growth	PASS shared rank 5:2
+2026-10-22T09:55:44.2380071Z	shared-growth	PASS surplus points and invalid/max spend
+2026-10-22T09:55:44.2380071Z	shared-growth	PASS Vitality does not heal
+2026-10-22T09:55:44.2455832Z	shared-growth	PASS Save13 common growth validates
+2026-10-22T09:55:46.6586327Z	shared-growth	PASS common growth survives actual save apply
+2026-10-22T09:55:46.6601805Z	shared-growth	PASS prerequisite and insufficient points
+2026-10-22T09:55:46.6607139Z	shared-growth	PASS point consumption exactly once
+2026-10-22T09:55:46.6622300Z	shared-growth	PASS v12 rank3 and points preserved with two zero nodes
+2026-10-22T09:55:46.7065241Z	shared-growth	PASS four digit character level UI
+2026-10-22T09:55:46.7332801Z	shared-growth	PASS actual six shared nodes
+2026-10-22T09:55:47.1808469Z	shared-growth	PASS debug reward does not grant Class XP
+2026-10-22T09:55:47.2057806Z	shared-growth	PASS duplicate reward receipt awards Class XP once
+2026-10-22T09:55:47.2057806Z	complete	complete
+2026-10-22T09:57:01.9385939Z	complete	PASS QA durable profile engineer
+2026-10-22T09:57:01.9400911Z	complete	PASS QA isolated loadout engineer

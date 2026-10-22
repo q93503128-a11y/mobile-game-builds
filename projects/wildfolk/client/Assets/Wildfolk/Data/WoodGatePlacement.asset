@@ -12,6 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea85a5ebaf6f62646a87d747548e1a2f, type: 3}
   m_Name: WoodGatePlacement
   m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.PlaceableDefinition
+  RepairMaterials:
+  - Item: {fileID: 11400000, guid: 431287b464f63f4408828d4053bac6eb, type: 2}
+    Count: 2
+    Charges: 0
+    Quality: 0
+  ConstructionMaterials:
+  - Item: {fileID: 11400000, guid: 431287b464f63f4408828d4053bac6eb, type: 2}
+    Count: 6
+    Charges: 0
+    Quality: 0
+  - Item: {fileID: 11400000, guid: 9d46c4acb7fdb664292156668e68c7b6, type: 2}
+    Count: 2
+    Charges: 0
+    Quality: 0
+  RecoverPortable: 0
   Item: {fileID: 11400000, guid: 536fa0142c6fabd4782cc6e0ec9f9f0d, type: 2}
   Prefab: {fileID: 305525075023135685, guid: 30ad42bf836ffb4458c8c8a516be9a4a, type: 3}
   Vitality: {fileID: 11400000, guid: bf8bdba72dbe9074fae1cb00b031c82f, type: 2}
@@ -19,6 +34,8 @@ MonoBehaviour:
   MaximumDistance: 3.5
   Station: 0
   Tier: {fileID: 0}
+  IsBeacon: 0
+  Turret: {fileID: 0}
   IsBarrier: 1
   IsDoor: 1
   StorageSlots: 0

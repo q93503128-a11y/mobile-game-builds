@@ -62,3 +62,7 @@ III 원본 아트: tools/generate_tier_three_art.py(Pillow). 기존 Steel/Lanter
 ## Fishing2-D · 원본 생성
 
 `tools/generate_fishing_art.py`의Pillow도형원본으로붕어(crucian_carp),농어(perch),고등어(mackerel),장어(eel),생선소분식(fish_portions)160×128아이콘을작성했다.둥근몸통/가시등/유선형꼬리/긴곡선으로실루엣을구분하며외부게임Asset을사용하지않았다.
+
+## Class icons
+
+6종 class_survivor/warrior/hunter/medic/explorer/engineer는 tools/generate_class_icons.py의 원형·잎·방패·활·십자·나침반·기어 기하 도형으로 직접 생성했다. 외부 이미지/폰트/에셋 없음.128×128 RGBA,384에서 축소. 기존 Lowfire 팔레트/Unity importer 사용.

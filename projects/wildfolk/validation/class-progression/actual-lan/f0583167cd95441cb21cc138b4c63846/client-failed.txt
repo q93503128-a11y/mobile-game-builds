@@ -1,0 +1,4 @@
+System.InvalidOperationException: Sequence contains no matching element
+  at System.Linq.Enumerable.First[TSource] (System.Collections.Generic.IEnumerable`1[T] source, System.Func`2[T,TResult] predicate) [0x00011] in <80564d689e48448fa2a7101993ee7201>:0
+  at Wildfolk.Editor.ClassLanQa+<Remote>d__43.MoveNext () [0x00910] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Editor\ClassLanQa.cs:80
+  at Wildfolk.Editor.ClassLanQa+<Guard>d__19.MoveNext () [0x00046] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Editor\ClassLanQa.cs:29

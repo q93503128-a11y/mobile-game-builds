@@ -587,6 +587,7 @@ GameObject:
   - component: {fileID: 8891724463293757519}
   - component: {fileID: 6809994037064510634}
   - component: {fileID: 4103024260245376386}
+  - component: {fileID: 963696678686208466}
   m_Layer: 0
   m_Name: StoneGate
   m_TagString: Untagged
@@ -795,3 +796,15 @@ MonoBehaviour:
   Health: {fileID: 5213739360813540551}
   Visual: {fileID: 6386843452799118958}
   Reaction: 1
+--- !u!114 &963696678686208466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9159479288769947836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55336593be201514ba1d6d33f157339c, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.StructureMaintenance

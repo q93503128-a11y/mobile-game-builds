@@ -20,6 +20,7 @@ GameObject:
   - component: {fileID: 765075226616627161}
   - component: {fileID: 2250286020488686793}
   - component: {fileID: 8366459008189799118}
+  - component: {fileID: 3852455975678916992}
   m_Layer: 0
   m_Name: CookingPot
   m_TagString: Untagged
@@ -760,3 +761,15 @@ Transform:
   - {fileID: 6680998761383678574}
   m_Father: {fileID: 4820645891238911168}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3852455975678916992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1452883731124691857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55336593be201514ba1d6d33f157339c, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.StructureMaintenance

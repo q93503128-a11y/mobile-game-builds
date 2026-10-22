@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="20" result="Failed(Child)" total="20" passed="14" failed="6" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-22 05:09:39Z" end-time="2026-10-22 05:09:39Z" duration="0.355615">
+  <test-suite type="TestSuite" id="1000" name="Wildfolk" fullname="Wildfolk" runstate="Runnable" testcasecount="216" result="Failed" site="Child" start-time="2026-10-22 05:09:39Z" end-time="2026-10-22 05:09:39Z" duration="0.355615" total="20" passed="14" failed="6" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <failure>
+      <message><![CDATA[One or more child tests had errors]]></message>
+    </failure>
+    <test-suite type="Assembly" id="1271" name="Wildfolk.Tests.EditMode.dll" fullname="C:/Users/User/Documents/ChatGPT/문승준 모바일/canonical/projects/wildfolk/tests/artifacts/unity/Library/ScriptAssemblies/Wildfolk.Tests.EditMode.dll" runstate="Runnable" testcasecount="216" result="Failed" site="Child" start-time="2026-10-22 05:09:39Z" end-time="2026-10-22 05:09:39Z" duration="0.339098" total="20" passed="14" failed="6" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="10408" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <failure>
+        <message><![CDATA[One or more child tests had errors]]></message>
+      </failure>
+      <test-suite type="TestSuite" id="1272" name="Wildfolk" fullname="Wildfolk" runstate="Runnable" testcasecount="216" result="Failed" site="Child" start-time="2026-10-22 05:09:39Z" end-time="2026-10-22 05:09:39Z" duration="0.338229" total="20" passed="14" failed="6" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <failure>
+          <message><![CDATA[One or more child tests had errors]]></message>
+        </failure>
+        <test-suite type="TestSuite" id="1273" name="Tests" fullname="Wildfolk.Tests" runstate="Runnable" testcasecount="216" result="Failed" site="Child" start-time="2026-10-22 05:09:39Z" end-time="2026-10-22 05:09:39Z" duration="0.337371" total="20" passed="14" failed="6" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <failure>
+            <message><![CDATA[One or more child tests had errors]]></message>
+          </failure>
+          <test-suite type="TestFixture" id="1019" name="ClassProgressionModelTests" fullname="Wildfolk.Tests.ClassProgressionModelTests" classname="Wildfolk.Tests.ClassProgressionModelTests" runstate="Runnable" testcasecount="20" result="Failed" site="Child" start-time="2026-10-22 05:09:39Z" end-time="2026-10-22 05:09:39Z" duration="0.294329" total="20" passed="14" failed="6" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <failure>
+              <message><![CDATA[One or more child tests had errors]]></message>
+            </failure>
+            <test-case id="1027" name="AllSharedSkillRanksAndSurplusPointsValidate" fullname="Wildfolk.Tests.ClassProgressionModelTests.AllSharedSkillRanksAndSurplusPointsValidate" methodname="AllSharedSkillRanksAndSurplusPointsValidate" classname="Wildfolk.Tests.ClassProgressionModelTests" runstate="Runnable" seed="717678229" result="Passed" start-time="2026-10-22 05:09:39Z" end-time="2026-10-22 05:09:39Z" duration="0.062822" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1035" name="BrokenPrimaryUsesValidBackupWithoutResettingOwnership" fullname="Wildfolk.Tests.ClassProgressionModelTests.BrokenPrimaryUsesValidBackupWithoutResettingOwnership" methodname="BrokenPrimaryUsesValidBackupWithoutResettingOwnership" classname="Wildfolk.Tests.ClassProgressionModelTests" runstate="Runnable" seed="894980964" result="Failed" label="Error" start-time="2026-10-22 05:09:39Z" end-time="2026-10-22 05:09:39Z" duration="0.084110" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[System.IO.InvalidDataException : Invalid class purchase]]></message>
+                <stack-trace><![CDATA[  at Wildfolk.AccountProgression.Validate () [0x0024c] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Runtime\Persistence\ClassProfiles.cs:31
+  at Wildfolk.LocalAccountProgressionStore.Decode (System.String text) [0x00038] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Runtime\Persistence\ClassProfiles.cs:44
+  at Wildfolk.LocalAccountProgressionStore.Write (System.String profile, Wildfolk.AccountProgression data) [0x00082] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Runtime\Persistence\ClassProfiles.cs:56
+  at Wildfolk.Tests.ClassProgressionModelTests.BrokenPrimaryUsesValidBackupWithoutResettingOwnership () [0x00017] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Tests\EditMode\ClassProgressionModelTests.cs:40
+  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)
+  at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x0006a] in <41d29b352f6a475ab1bf7c6628b82790>:0 ]]></stack-trace>
+              </failure>
+            </test-case>
+            <test-case id="1036" name="BrokenProfileWithoutBackupDoesNotGrantDefaultOwnership" fullname="Wildfolk.Tests.ClassProgressionModelTests.BrokenProfileWithoutBackupDoesNotGrantDefaultOwnership" methodname="BrokenProfileWithoutBackupDoesNotGrantDefaultOwnership" classname="Wildfolk.Tests.ClassProgressionModelTests" runstate="Runnable" seed="287538936" result="Passed" start-time="2026-10-22 05:09:39Z" end-time="2026-10-22 05:09:39Z" duration="0.025634" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1028" name="ClassCatalogHasSixIndependentNineNodeTrees" fullname="Wildfolk.Tests.ClassProgressionModelTests.ClassCatalogHasSixIndependentNineNodeTrees" methodname="ClassCatalogHasSixIndependentNineNodeTrees" classname="Wildfolk.Tests.ClassProgressionModelTests" runstate="Runnable" seed="1602011097" result="Passed" start-time="2026-10-22 05:09:39Z" end-time="2026-10-22 05:09:39Z" duration="0.011784" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1034" name="DuplicateAndInsufficientClassPointAllocationsFailClosed" fullname="Wildfolk.Tests.ClassProgressionModelTests.DuplicateAndInsufficientClassPointAllocationsFailClosed" methodname="DuplicateAndInsufficientClassPointAllocationsFailClosed" classname="Wildfolk.Tests.ClassProgressionModelTests" runstate="Runnable" seed="215388755" result="Failed" label="Error" start-time="2026-10-22 05:09:39Z" end-time="2026-10-22 05:09:39Z" duration="0.001757" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[System.IO.InvalidDataException : Invalid class progression]]></message>
+                <stack-trace><![CDATA[  at Wildfolk.AccountProgression.Validate () [0x0024c] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Runtime\Persistence\ClassProfiles.cs:31
+  at Wildfolk.LocalAccountProgressionStore.Write (System.String profile, Wildfolk.AccountProgression data) [0x00000] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Runtime\Persistence\ClassProfiles.cs:55
+  at Wildfolk.Tests.ClassProgressionModelTests.DuplicateAndInsufficientClassPointAllocationsFailClosed () [0x00024] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Tests\EditMode\ClassProgressionModelTests.cs:38
+  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)
+  at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x0006a] in <41d29b352f6a475ab1bf7c6628b82790>:0 ]]></stack-trace>
+              </failure>
+            </test-case>
+            <test-case id="1030" name="DurableProfileSurvivesReopenAndDoesNotShareClasses" fullname="Wildfolk.Tests.ClassProgressionModelTests.DurableProfileSurvivesReopenAndDoesNotShareClasses" methodname="DurableProfileSurvivesReopenAndDoesNotShareClasses" classname="Wildfolk.Tests.ClassProgressionModelTests" runstate="Runnable" seed="1940645447" result="Failed" label="Error" start-time="2026-10-22 05:09:39Z" end-time="2026-10-22 05:09:39Z" duration="0.014008" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[System.IO.InvalidDataException : Invalid class purchase]]></message>
+                <stack-trace><![CDATA[  at Wildfolk.AccountProgression.Validate () [0x0024c] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Runtime\Persistence\ClassProfiles.cs:31
+  at Wildfolk.LocalAccountProgressionStore.Decode (System.String text) [0x00038] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Runtime\Persistence\ClassProfiles.cs:44
+  at Wildfolk.LocalAccountProgressionStore.Write (System.String profile, Wildfolk.AccountProgression data) [0x00082] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Runtime\Persistence\ClassProfiles.cs:56
+  at Wildfolk.Tests.ClassProgressionModelTests.DurableProfileSurvivesReopenAndDoesNotShareClasses () [0x0005f] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Tests\EditMode\ClassProgressionModelTests.cs:33
+  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)
+  at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x0006a] in <41d29b352f6a475ab1bf7c6628b82790>:0 ]]></stack-trace>
+              </failure>
+            </test-case>
+            <test-case id="1029" name="EarnablePointsComeFromMilestoneEntries" fullname="Wildfolk.Tests.ClassProgressionModelTests.EarnablePointsComeFromMilestoneEntries" methodname="EarnablePointsComeFromMilestoneEntries" classname="Wildfolk.Tests.ClassProgressionModelTests" runstate="Runnable" seed="704165447" result="Passed" start-time="2026-10-22 05:09:39Z" end-time="2026-10-22 05:09:39Z" duration="0.001562" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1040" name="EveryCurrentMedicineHasInstantApplicationAndGenericClassification" fullname="Wildfolk.Tests.ClassProgressionModelTests.EveryCurrentMedicineHasInstantApplicationAndGenericClassification" methodname="EveryCurrentMedicineHasInstantApplicationAndGenericClassification" classname="Wildfolk.Tests.ClassProgressionModelTests" runstate="Runnable" seed="1558182828" result="Passed" start-time="2026-10-22 05:09:39Z" end-time="2026-10-22 05:09:39Z" duration="0.002262" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1041" name="ExplorationCategoriesCoverAllThreeExistingToolKinds" fullname="Wildfolk.Tests.ClassProgressionModelTests.ExplorationCategoriesCoverAllThreeExistingToolKinds" methodname="ExplorationCategoriesCoverAllThreeExistingToolKinds" classname="Wildfolk.Tests.ClassProgressionModelTests" runstate="Runnable" seed="1645665059" result="Passed" start-time="2026-10-22 05:09:39Z" end-time="2026-10-22 05:09:39Z" duration="0.002064" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-suite type="ParameterizedMethod" id="1033" name="InvalidClassPrerequisiteOrNodeFailsClosed" fullname="Wildfolk.Tests.ClassProgressionModelTests.InvalidClassPrerequisiteOrNodeFailsClosed" classname="Wildfolk.Tests.ClassProgressionModelTests" runstate="Runnable" testcasecount="2" result="Failed" site="Child" start-time="2026-10-22 05:09:39Z" end-time="2026-10-22 05:09:39Z" duration="0.010967" total="2" passed="0" failed="2" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <failure>
+                <message><![CDATA[One or more child tests had errors]]></message>
+              </failure>
+              <test-case id="1031" name="InvalidClassPrerequisiteOrNodeFailsClosed(&quot;A2&quot;)" fullname="Wildfolk.Tests.ClassProgressionModelTests.InvalidClassPrerequisiteOrNodeFailsClosed(&quot;A2&quot;)" methodname="InvalidClassPrerequisiteOrNodeFailsClosed" classname="Wildfolk.Tests.ClassProgressionModelTests" runstate="Runnable" seed="426033661" result="Failed" label="Error" start-time="2026-10-22 05:09:39Z" end-time="2026-10-22 05:09:39Z" duration="0.001871" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <failure>
+                  <message><![CDATA[System.IO.InvalidDataException : Invalid class allocation]]></message>
+                  <stack-trace><![CDATA[  at Wildfolk.AccountProgression.Validate () [0x0024c] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Runtime\Persistence\ClassProfiles.cs:31
+  at Wildfolk.LocalAccountProgressionStore.Write (System.String profile, Wildfolk.AccountProgression data) [0x00000] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Runtime\Persistence\ClassProfiles.cs:55
+  at Wildfolk.Tests.ClassProgressionModelTests.InvalidClassPrerequisiteOrNodeFailsClosed (System.String node) [0x00036] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Tests\EditMode\ClassProgressionModelTests.cs:36
+  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)
+  at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x0006a] in <41d29b352f6a475ab1bf7c6628b82790>:0 ]]></stack-trace>
+                </failure>
+              </test-case>
+              <test-case id="1032" name="InvalidClassPrerequisiteOrNodeFailsClosed(&quot;Z1&quot;)" fullname="Wildfolk.Tests.ClassProgressionModelTests.InvalidClassPrerequisiteOrNodeFailsClosed(&quot;Z1&quot;)" methodname="InvalidClassPrerequisiteOrNodeFailsClosed" classname="Wildfolk.Tests.ClassProgressionModelTests" runstate="Runnable" seed="921637879" result="Failed" label="Error" start-time="2026-10-22 05:09:39Z" end-time="2026-10-22 05:09:39Z" duration="0.001003" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <failure>
+                  <message><![CDATA[System.IO.InvalidDataException : Invalid class allocation]]></message>
+                  <stack-trace><![CDATA[  at Wildfolk.AccountProgression.Validate () [0x0024c] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Runtime\Persistence\ClassProfiles.cs:31
+  at Wildfolk.LocalAccountProgressionStore.Write (System.String profile, Wildfolk.AccountProgression data) [0x00000] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Runtime\Persistence\ClassProfiles.cs:55
+  at Wildfolk.Tests.ClassProgressionModelTests.InvalidClassPrerequisiteOrNodeFailsClosed (System.String node) [0x00036] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Tests\EditMode\ClassProgressionModelTests.cs:36
+  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)
+  at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x0006a] in <41d29b352f6a475ab1bf7c6628b82790>:0 ]]></stack-trace>
+                </failure>
+              </test-case>
+            </test-suite>
+            <test-suite type="ParameterizedMethod" id="1023" name="LinearLevelsCarryAcrossOldBoundaries" fullname="Wildfolk.Tests.ClassProgressionModelTests.LinearLevelsCarryAcrossOldBoundaries" classname="Wildfolk.Tests.ClassProgressionModelTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-10-22 05:09:39Z" end-time="2026-10-22 05:09:39Z" duration="0.006289" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1020" name="LinearLevelsCarryAcrossOldBoundaries(20)" fullname="Wildfolk.Tests.ClassProgressionModelTests.LinearLevelsCarryAcrossOldBoundaries(20)" methodname="LinearLevelsCarryAcrossOldBoundaries" classname="Wildfolk.Tests.ClassProgressionModelTests" runstate="Runnable" seed="52165596" result="Passed" start-time="2026-10-22 05:09:39Z" end-time="2026-10-22 05:09:39Z" duration="0.001896" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1021" name="LinearLevelsCarryAcrossOldBoundaries(99)" fullname="Wildfolk.Tests.ClassProgressionModelTests.LinearLevelsCarryAcrossOldBoundaries(99)" methodname="LinearLevelsCarryAcrossOldBoundaries" classname="Wildfolk.Tests.ClassProgressionModelTests" runstate="Runnable" seed="101888905" result="Passed" start-time="2026-10-22 05:09:39Z" end-time="2026-10-22 05:09:39Z" duration="0.000964" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1022" name="LinearLevelsCarryAcrossOldBoundaries(999)" fullname="Wildfolk.Tests.ClassProgressionModelTests.LinearLevelsCarryAcrossOldBoundaries(999)" methodname="LinearLevelsCarryAcrossOldBoundaries" classname="Wildfolk.Tests.ClassProgressionModelTests" runstate="Runnable" seed="1563917431" result="Passed" start-time="2026-10-22 05:09:39Z" end-time="2026-10-22 05:09:39Z" duration="0.000520" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+            <test-case id="1024" name="LongMaximumXPUsesBoundedArithmetic" fullname="Wildfolk.Tests.ClassProgressionModelTests.LongMaximumXPUsesBoundedArithmetic" methodname="LongMaximumXPUsesBoundedArithmetic" classname="Wildfolk.Tests.ClassProgressionModelTests" runstate="Runnable" seed="1231378345" result="Passed" start-time="2026-10-22 05:09:39Z" end-time="2026-10-22 05:09:39Z" duration="0.001994" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1038" name="MetabolismReducesDrainRatherThanIncreasingNutrition" fullname="Wildfolk.Tests.ClassProgressionModelTests.MetabolismReducesDrainRatherThanIncreasingNutrition" methodname="MetabolismReducesDrainRatherThanIncreasingNutrition" classname="Wildfolk.Tests.ClassProgressionModelTests" runstate="Runnable" seed="1964006368" result="Passed" start-time="2026-10-22 05:09:39Z" end-time="2026-10-22 05:09:39Z" duration="0.001907" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1026" name="OldVitalityThreeAndSurplusCapXPArePreserved" fullname="Wildfolk.Tests.ClassProgressionModelTests.OldVitalityThreeAndSurplusCapXPArePreserved" methodname="OldVitalityThreeAndSurplusCapXPArePreserved" classname="Wildfolk.Tests.ClassProgressionModelTests" runstate="Runnable" seed="788791773" result="Passed" start-time="2026-10-22 05:09:39Z" end-time="2026-10-22 05:09:39Z" duration="0.003890" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1037" name="PremiumEngineerIsUnavailableWithoutProviderAndApprovedPrice" fullname="Wildfolk.Tests.ClassProgressionModelTests.PremiumEngineerIsUnavailableWithoutProviderAndApprovedPrice" methodname="PremiumEngineerIsUnavailableWithoutProviderAndApprovedPrice" classname="Wildfolk.Tests.ClassProgressionModelTests" runstate="Runnable" seed="1969359342" result="Passed" start-time="2026-10-22 05:09:39Z" end-time="2026-10-22 05:09:39Z" duration="0.002434" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1039" name="RepairDataCoversEveryPlaceableAndUpgradeOnce" fullname="Wildfolk.Tests.ClassProgressionModelTests.RepairDataCoversEveryPlaceableAndUpgradeOnce" methodname="RepairDataCoversEveryPlaceableAndUpgradeOnce" classname="Wildfolk.Tests.ClassProgressionModelTests" runstate="Runnable" seed="1142074808" result="Failed" start-time="2026-10-22 05:09:39Z" end-time="2026-10-22 05:09:39Z" duration="0.012398" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[  industrial_container
+  Expected: greater than 0
+  But was:  0
+]]></message>
+                <stack-trace><![CDATA[at Wildfolk.Tests.ClassProgressionModelTests.RepairDataCoversEveryPlaceableAndUpgradeOnce () [0x00074] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Tests\EditMode\ClassProgressionModelTests.cs:48
+]]></stack-trace>
+              </failure>
+            </test-case>
+            <test-case id="1025" name="TotalXPOverflowDoesNotPartiallyMutate" fullname="Wildfolk.Tests.ClassProgressionModelTests.TotalXPOverflowDoesNotPartiallyMutate" methodname="TotalXPOverflowDoesNotPartiallyMutate" classname="Wildfolk.Tests.ClassProgressionModelTests" runstate="Runnable" seed="1120377569" result="Passed" start-time="2026-10-22 05:09:39Z" end-time="2026-10-22 05:09:39Z" duration="0.004995" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[<b><color=#2EA3FF>MCP-FOR-UNITY</color></b>: [TestRunnerNoThrottle] Restored Interaction Mode after test run.
+Saving results to: C:/Users/User/AppData/LocalLow/DefaultCompany/Wildfolk\TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

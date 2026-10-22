@@ -414,6 +414,7 @@ GameObject:
   - component: {fileID: 3996446922011461074}
   - component: {fileID: 7332232133224731108}
   - component: {fileID: 8735418707579938600}
+  - component: {fileID: 6860705911554330425}
   m_Layer: 0
   m_Name: StorageChest
   m_TagString: Untagged
@@ -632,3 +633,15 @@ MonoBehaviour:
   View: {fileID: 6107496092399076358}
   Fill: {fileID: 7060593484308736262}
   AlwaysVisible: 0
+--- !u!114 &6860705911554330425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6281068670762303525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55336593be201514ba1d6d33f157339c, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.StructureMaintenance

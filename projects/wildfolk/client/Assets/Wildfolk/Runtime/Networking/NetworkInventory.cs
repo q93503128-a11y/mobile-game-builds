@@ -45,7 +45,7 @@ namespace Wildfolk
         {if(IsServer || !IsOwner)return;if(change.Type==NetworkListEvent<NetworkStack>.EventType.Value && change.Index>=0 && change.Index<Inventory.Model.Capacity){var value=change.Value;Inventory.Model.ApplyReplicaSlot(change.Index,value.Count==0 ? default : new ItemStack(Item(value.Item),value.Count,value.Charges,value.Quality));}else MirrorAll();}
         private void SelectionChanged(int old,int value){if(!IsServer && IsOwner)Inventory.ApplySelection(value);}
         private void RewardsChanged(SessionRewardState old,SessionRewardState value){if(!IsServer && IsOwner)ApplyRewards(value);}
-        private void ApplyRewards(SessionRewardState value)=>progression.SetValues(value.Experience,value.Gold);
+        private void ApplyRewards(SessionRewardState value){if(GetComponent<NetworkCommonGrowth>()==null)progression.SetValues(value.Experience,value.Gold);}
         private void RevisionChanged(uint old,uint value){if(pending!=0 && waitingRevision!=0 && value>=waitingRevision){pending=0;waitingRevision=0;}}
         private void ViewChanged(){if(IsOwner && !IsServer && !GetComponent<NetworkFacilityInteractor>().IsApplying)ViewRpc(Player.Commands.Session.State==SessionState.Inventory);}
         [Rpc(SendTo.Server,InvokePermission=RpcInvokePermission.Owner)]

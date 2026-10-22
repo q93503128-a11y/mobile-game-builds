@@ -10,6 +10,8 @@ namespace Wildfolk
         // Zero means no production price has been approved, hence unavailable.
         [Min(0)]public int ReviveGemCost;
     }
+    public interface ICooperativeReviveModifiers
+    {float ReviveProtectionBonus{get;}float DownedDrainMultiplier{get;}float GoldenTimeBonus{get;}}
     public interface IReviveModifiers
     {
         float DownedDurationMultiplier {get;}

@@ -463,6 +463,7 @@ GameObject:
   - component: {fileID: 4526185821349369520}
   - component: {fileID: 458540202860335056}
   - component: {fileID: 6489016253400140802}
+  - component: {fileID: 8820952559301272129}
   m_Layer: 0
   m_Name: SpikeTrap
   m_TagString: Untagged
@@ -631,3 +632,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.SpikeTrap
   Interval: 1.2
   Damage: 16
+  SingleUse: 0
+--- !u!114 &8820952559301272129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7974508571590110595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55336593be201514ba1d6d33f157339c, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.StructureMaintenance

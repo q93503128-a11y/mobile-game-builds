@@ -21,11 +21,11 @@ namespace Wildfolk
             var condition=Motor.Survival.Model.ConditionRatio;
             var recovery=Mathf.Lerp(Definition.PoorRecoveryMultiplier,1,Mathf.InverseLerp(0,Motor.Survival.Definition.RegenThreshold,condition))*Stats.RecoveryMultiplier;
             if(IsDashing){if(!Motor.Session.IsRunning)CancelDash();return;}
-            Stamina.Advance(Time.deltaTime,Motor.Session.IsRunning ? Motor.Input.Move.magnitude : 0,Motor.Survival.CanSprint,Motor.Survival.SprintEfficiency,Stats.SprintCostMultiplier,recovery);
+            Stamina.Advance(Time.deltaTime,Motor.Session.IsRunning ? Motor.Input.Move.magnitude : 0,Motor.Survival.CanSprint && GetComponent<PlayerClass>()?.Guarding!=true,Mathf.Lerp(Motor.Survival.SprintEfficiency,1,GetComponent<PlayerClass>()?.PenaltyRelief??0),Stats.SprintCostMultiplier*(GetComponent<PlayerClass>()?.SprintMultiplier(Motor.Input.Move)??1),recovery);
         }
         public bool TryDash()
         {
-            if(!Motor.Session.IsRunning || !GetComponent<Health>().IsAlive || IsDashing || Time.time<nextDash || !Stamina.Spend(Definition.DashCost))return false;
+            if(GetComponent<PlayerClass>()?.Guarding==true || !Motor.Session.IsRunning || !GetComponent<Health>().IsAlive || IsDashing || Time.time<nextDash || !Stamina.Spend(Definition.DashCost))return false;
             DashDirection=Motor.Input.Move.sqrMagnitude>.01f ? Motor.Input.Move.normalized : Motor.Avatar.Facing.Direction;
             Motor.Combat.CancelAttack();Motor.Avatar.Facing.Face(DashDirection);Stamina.StopSprint();dashRemaining=Definition.DashDuration;nextDash=Time.time+Definition.DashCooldown;return true;
         }

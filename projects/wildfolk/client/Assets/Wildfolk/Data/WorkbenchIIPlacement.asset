@@ -12,6 +12,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea85a5ebaf6f62646a87d747548e1a2f, type: 3}
   m_Name: WorkbenchIIPlacement
   m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.PlaceableDefinition
+  RepairMaterials:
+  - Item: {fileID: 11400000, guid: 431287b464f63f4408828d4053bac6eb, type: 2}
+    Count: 4
+    Charges: 0
+    Quality: 0
+  - Item: {fileID: 11400000, guid: 30904e05765ac844ab5bb28b855a15db, type: 2}
+    Count: 2
+    Charges: 0
+    Quality: 0
+  - Item: {fileID: 11400000, guid: c5b679876e2427346848b9e6432a186c, type: 2}
+    Count: 1
+    Charges: 0
+    Quality: 0
+  ConstructionMaterials:
+  - Item: {fileID: 11400000, guid: 431287b464f63f4408828d4053bac6eb, type: 2}
+    Count: 14
+    Charges: 0
+    Quality: 0
+  - Item: {fileID: 11400000, guid: 30904e05765ac844ab5bb28b855a15db, type: 2}
+    Count: 6
+    Charges: 0
+    Quality: 0
+  - Item: {fileID: 11400000, guid: c5b679876e2427346848b9e6432a186c, type: 2}
+    Count: 2
+    Charges: 0
+    Quality: 0
+  RecoverPortable: 0
   Item: {fileID: 11400000, guid: 2e666233cdfdf3441bec2b510276cd7d, type: 2}
   Prefab: {fileID: 1610150635453931034, guid: c73fc72548859ca4b8f6f6cc775d6998, type: 3}
   Vitality: {fileID: 11400000, guid: 242d49b002185f44f8205255afa31736, type: 2}

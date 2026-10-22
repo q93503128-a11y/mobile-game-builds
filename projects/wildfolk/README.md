@@ -1,6 +1,6 @@
 # Lowfire
 
-Unity **6000.3.19f1 LTS / Universal 2D**, 모바일 Landscape(1920×1080) 탑다운 생존 게임이다. 표시명 Lowfire, 내부 Wildfolk namespace·경로·저장 식별자는 유지한다. 현재 alpha 콘텐츠는 **Item134 / Recipe111 / Save12 / Protocol19**, Workbench I→II→III와 Wood/Stone/Iron/Steel/Diamond 장비다.
+Unity **6000.3.19f1 LTS / Universal 2D**, 모바일 Landscape(1920×1080) 탑다운 생존 게임이다. 표시명 Lowfire, 내부 Wildfolk namespace·경로·저장 식별자는 유지한다. 현재 alpha 콘텐츠는 **Item134 / Recipe111 / Save13 / Protocol20**, Workbench I→II→III와 Wood/Stone/Iron/Steel/Diamond 장비다.
 
 ## 실행과 플레이
 
@@ -14,11 +14,11 @@ Primary는 공격·도구·설치·선택 소비품·Armor 장착, Interact는 �
 
 Telescope는 원거리 표시만 요청하며 simulation 범위를 늘리지 않는다. Compass/Home/동굴 Exit/선택 Beacon 안내, Torch와 Utility Lantern/Crystal Lantern을 제공한다. Ballista/Repeater는 실제 호환 탄약을 소비하며 모듈로 장전·조준·보관·회전·내구를 조합한다.
 
-Hunger/Thirst, 재사용 Cup/Waterskin, 낚시, HP/Stamina 즉시 회복 음식·연고를 제공한다. 치료 효과가 있는 새 소모품은 공용4초 간격을 사용한다. 성장은 월드 캐릭터의 Level/4 Node Skill이며 영구 계정 성장과 구분한다.
+Hunger/Thirst, 재사용 Cup/Waterskin, 낚시, HP/Stamina 즉시 회복 음식·연고를 제공한다. 치료 효과가 있는 새 소모품은 공용4초 간격을 사용한다. 성장은 월드 캐릭터의 Level/6 Node Skill이며 영구 계정 성장과 구분한다.
 
 ## 저장과 협동
 
-Save12는 기존1~11을 읽고 다음 정상 Save에서 이관한다. Seed·generation version·game time·자원/생물 logical delta·시설·queue·가방·장비·성장·Camp 보급 잔량을 저장한다. Editor는 프로젝트 UserData, 빌드는 persistentDataPath, 격리 QA는 전용 Captures 경로를 쓴다. 원래 파일명과 checksum/atomic replace/backup을 유지한다. Home Continue/Pause Save·Save & return home, 기기 Background/Quit 저장을 제공하며 플레이어용 Load 버튼은 없다.
+Save13은 기존1~12를 읽고 다음 정상 Save에서 이관한다. Seed·generation version·game time·자원/생물 logical delta·시설·queue·가방·장비·성장·Camp 보급 잔량을 저장한다. Editor는 프로젝트 UserData, 빌드는 persistentDataPath, 격리 QA는 전용 Captures 경로를 쓴다. 원래 파일명과 checksum/atomic replace/backup을 유지한다. Home Continue/Pause Save·Save & return home, 기기 Background/Quit 저장을 제공하며 플레이어용 Load 버튼은 없다.
 
 Multiplayer는 Relay Room Code 또는 Local Network Host/Join이다. Host가 이동·전투·spawn/AI·채집·loot·가방·시설·상자·save를 결정한다. Client는 요청과 replica 표시다. 최대4인 admission 구조를 유지하며 실제4인 Relay·모바일·장시간 통합 검수는 별도다. Host 종료 시 세션도 끝나며 Host migration/Account/Cloud는 없다.
 
@@ -26,12 +26,12 @@ Multiplayer는 Relay Room Code 또는 Local Network Host/Join이다. Host가 이
 
 - 작업 전 [AGENTS](AGENTS.md)를 읽는다. main 직접 작업, canonical source 수정, PR/임시 branch 금지.
 - [기획](docs/DESIGN_BIBLE.md), [콘텐츠/전체111 Recipe](docs/CONTENT_EXPANSION.md), [생물·드랍](docs/CREATURES_AND_LOOT.md), [제작](docs/CRAFTING.md), [음식](docs/FOOD_AND_FISHING.md), [수치](docs/BALANCE.md), [월드](docs/WORLD_GENERATION.md), [저장](docs/SAVE_PERSISTENCE.md), [구조](docs/ARCHITECTURE.md).
-- [이번 외부 비교·구현·경제·검수](validation/creature-loot-expansion/REVIEW.md). 과거 validation/review는 당시 기록이다.
+- [현재 Class Foundation 외부 비교·구현·경제·검수](validation/class-progression/REVIEW.md). 과거 validation/review는 당시 기록이다.
 - 소스 검사: `python tests/validate_visual_project.py client`. Unity EditMode/PlayMode는 Assets/Wildfolk/Tests. 자동 검사와 실제 Play 검수는 구분한다.
 - 신규 생물/아이콘은 기존 Pillow 방식의 `tools/generate_creature_loot_art.py` 원본이다. 기존 art 출처는 [SOURCE_ART](docs/SOURCE_ART.md). 외부 게임 asset/code/layout을 복제하지 않는다.
 - Unity MCP/code는 허용한다. Windows 입력과 Focus/Show는 금지한다. View 메뉴는 기존 Game View만 Repaint하고 PlayUnfocused를 적용한다. 씬/에셋 재생성은 수작업 변경을 먼저 확인한다.
 
-실제 터치·손맛·재미·장시간 경제·Android 성능은 사용자 검증 대상이다. BGM/SFX 콘텐츠는 비어 있다. Boss/Undead King/Defense Objective/IV~VI/전기/총기/직업/Pet/번식/상인/영구 Skin은 이번에 추가하지 않았다.
+실제 터치·손맛·재미·장시간 경제·Android 성능은 사용자 검증 대상이다. BGM/SFX 콘텐츠는 비어 있다. Boss/Undead King/Defense Objective/IV~VI/전기/총기/Pet/번식/상인/영구 Skin은 이번에 추가하지 않았다.
 
 약초는 Forest/Wetlands에서 맨손으로 채집한다. 응급 붕대는 Hand에서 Fiber2+Herb1→20HP/8초, 기존 회복 연고는 Gland1+Herb1+Fiber2→즉시30HP다. 공용4초·붕대 비중첩, 자연회복/음식·기존 Station은 유지한다. [의약 조사·경제·검수](validation/medicine-expansion/REVIEW.md). Food Expansion2-B는 아래 Meal 선택을 추가했다.
 
@@ -50,3 +50,9 @@ Campsite 한 번 보급,Well 공유3회/480초 회복 clean 물,Quarry 기존 �
 SP 사망은 현장 광고(원정당 성공1회)·Premium Gem(횟수 제한 없음)·무료 Home 복귀로 나뉜다. 현재 실제 광고/유료 지갑은 미연결이며 제품에서는 두 현장 결제 버튼을 사용할 수 없다. Crystal/Gold는 차감하지 않는다. MP는24초 Downed→동료4초 hold 구조(40%HP/2초 보호, 공격 시작시 종료) 또는 Dead→무료 Home이다. 구조는 release/이동/피격/거리/시야/무력화/연결 상실로 중단한다. 전체 down은 각자 Home으로 돌아갈 수 있게 Dead로 확정한다.
 
 사망 HomeAnchor는 개인별 초기 WorldMap.Spawn이며 Workbench 방향 안내 Home과 별개다. 소지품·장비·성장·월드를 유지한다. Save12는 죽음·광고 사용·원정·Home을 저장하고 구조 진행/무적은 저장하지 않는다. Protocol19. [감사·외부 비교·거래 경계·검수](validation/death-revive-respawn/REVIEW.md). 다음 Class/Medic/Boss는 이번에 구현하지 않았다.
+
+## Character / Class Foundation (2026-10-22)
+
+Item134/Recipe111, generation3 유지. 공용 무제한Level·6Skill, 로컬 Class profile/6Class/54node, Repair/Dismantle/지원 능력. Save13/Profile1/Protocol20. [성장 정본](docs/CHARACTER_PROGRESSION.md), [근거·검수](validation/class-progression/REVIEW.md).
+
+Class Foundation 검수: 관련 EditMode고유53, Class PlayMode고유9(관련실행합집합), 실제2프로세스LAN/4actor simulation/MCP1920×1080검수통과. Android/Relay/실제4인/실제Ads·IAP는미검증이다. [실제결과와한계](validation/class-progression/REVIEW.md).

@@ -463,6 +463,7 @@ GameObject:
   - component: {fileID: 3385274447091358857}
   - component: {fileID: 6761088422026332990}
   - component: {fileID: 4319208713122179554}
+  - component: {fileID: 2570102927699329441}
   m_Layer: 0
   m_Name: SignalBeacon
   m_TagString: Untagged
@@ -629,3 +630,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025094a92e334602bc6335563f4bbcbe, type: 3}
   m_Name:
   m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.SignalBeacon
+--- !u!114 &2570102927699329441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9052956572469100118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55336593be201514ba1d6d33f157339c, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.StructureMaintenance

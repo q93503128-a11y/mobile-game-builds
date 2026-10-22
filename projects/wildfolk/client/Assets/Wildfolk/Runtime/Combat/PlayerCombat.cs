@@ -43,13 +43,14 @@ namespace Wildfolk
             attackTool = Equipment.ActiveTool;
             duration = attackTool == null ? Settings.PunchDuration : attackTool.Duration;
             profile=attackTool==null ? Settings.PunchAttack : attackTool.Attack;
-            reach=profile.Range;strikeFacing=Avatar.Facing.Direction;LastHitCount=LastDamage=0;
+            reach=profile.Range*(attackTool?.Kind==ToolKind.Spear ? GetComponent<PlayerClass>()?.SpearReach??1 : 1);strikeFacing=Avatar.Facing.Direction;LastHitCount=LastDamage=0;
             FindTarget();
             if(targetCount==0 && denied!=null){HarvestDenied?.Invoke(denied.Definition);if(GetComponent<NetworkPlayer>()==null)PlayerFeedback.ShowRequirement(denied.Definition);}
             if(targetCount>0)Avatar.Facing.Face((Vector2)targets[0].transform.position-(Vector2)transform.position);
             handIndex = attackTool == null ? 1 - handIndex : 1;
             started = Time.time;
-            nextAttack = started + (attackTool == null ? Settings.PunchCooldown : attackTool.Cooldown);
+            GetComponent<PlayerClass>()?.BeginMelee();
+            var interval=GetComponent<PlayerClass>()?.AttackInterval??1;duration*=interval;nextAttack = started + (attackTool == null ? Settings.PunchCooldown : attackTool.Cooldown)*interval;
             hitApplied = false;
             IsAttacking = true;
             GetComponent<PlayerDeath>()?.OffensiveAction();
@@ -121,7 +122,7 @@ namespace Wildfolk
                     if(collider==null || !collider.enabled || !CombatAffiliation.CanDamage(OwnHealth,target) || !InSector(collider,out _,out _))continue;
                     var node=target.GetComponent<ResourceNode>();
                     var damage=attackTool==null ? Settings.PunchDamage : node==null ? attackTool.Damage : attackTool.DamageFor(node.Definition.Kind);
-                    var applied=node!=null ? node.Harvest(attackTool,damage,Equipment.Inventory) : target.ApplyDamage(damage,false,Equipment.Inventory);
+                    var applied=node!=null ? node.Harvest(attackTool,damage,Equipment.Inventory) : target.ApplyDamage(damage,false,Equipment.Inventory,OwnHealth,attackTool?.Kind==ToolKind.Spear?DamageKind.Spear:DamageKind.Melee);
                     LastDamage+=applied;if(applied>0)LastHitCount++;
                 }
             }

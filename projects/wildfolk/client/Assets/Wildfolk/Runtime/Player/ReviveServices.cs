@@ -5,6 +5,7 @@ namespace Wildfolk
     {
         bool Available {get;}
         // Exactly one completed reward is success; close/no-fill/error is false.
+        // true means the SDK/provider official reward-earned completion, never started/closed/skipped/store-open/timer.
         void Show(string transaction,Action<bool> completed);
     }
     public interface IPremiumCurrencyWallet

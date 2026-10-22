@@ -11,7 +11,7 @@ namespace Wildfolk.Editor
             var hud=root.AddComponent<ProfileHud>();hud.Player=player;
             var profile=Image("Player Profile",safe,"profile",new Vector2(0,1),new Vector2(85,-84),new Vector2(114,114),true);
             UnityEventTools.AddPersistentListener(Button(profile).onClick,session.OpenCharacter);
-            hud.Level=Text("Level",profile.transform,"Lv. 1",new Vector2(0,-75),new Vector2(116,32),22);
+            hud.Level=Text("Level",profile.transform,"Lv. 1",new Vector2(0,-75),new Vector2(180,32),22);
             hud.SkillNotice=Text("Skill Point Notice",profile.transform,"",new Vector2(52,45),new Vector2(62,32),22);hud.SkillNotice.color=new Color32(216,193,118,255);
             var health=Bar(safe,"Health",new Vector2(288,-71),new Vector2(260,23),new Color32(156,173,103,255));hud.HP=health;
             hud.HealthValue=Text("HP Value",health.transform,"100 / 100",new Vector2(0,26),new Vector2(260,30),22,TextAnchor.MiddleLeft);
@@ -40,8 +40,8 @@ namespace Wildfolk.Editor
             Text("Title",surface.transform,"ui.skill.title",new Vector2(-424,340),new Vector2(440,50),34,TextAnchor.MiddleLeft);
             tree.Points=Text("Points",surface.transform,"",new Vector2(20,340),new Vector2(400,50),24,TextAnchor.MiddleRight);
             QualityUiBuilder.Action(surface.transform,"Back","ui.action.back",new Vector2(505,340),new Vector2(160,62),tree.Back,out var back);
-            var field=Rect("Tree",surface.transform,new Vector2(.5f,.5f),new Vector2(-225,-5),new Vector2(850,580));
-            var origin=new Vector2(-350,10);Image("Origin",field,"profile",new Vector2(.5f,.5f),origin,new Vector2(66,66));Text("Origin Caption",field,"ui.skill.origin",origin+new Vector2(0,-63),new Vector2(150,30),19);
+            var field=Rect("Tree",surface.transform,new Vector2(.5f,.5f),new Vector2(-225,-5),new Vector2(850,690));
+            var origin=new Vector2(-370,280);Image("Origin",field,"profile",new Vector2(.5f,.5f),origin,new Vector2(66,66));Text("Origin Caption",field,"ui.skill.origin",origin+new Vector2(0,-63),new Vector2(150,30),19);
             tree.Nodes=new Button[growth.Definition.Skills.Length];tree.Ranks=new Text[tree.Nodes.Length];tree.Names=new Text[tree.Nodes.Length];tree.NodeStates=new Text[tree.Nodes.Length];tree.Links=new Image[tree.Nodes.Length];
             for(var i=0;i<tree.Nodes.Length;i++)
             {
@@ -52,7 +52,7 @@ namespace Wildfolk.Editor
             {
                 var skill=growth.Definition.Skills[i];var node=Image("Skill Node",field,"panel",new Vector2(.5f,.5f),skill.NodePosition,new Vector2(112,112),true);tree.Nodes[i]=Button(node);UnityEventTools.AddIntPersistentListener(tree.Nodes[i].onClick,tree.Select,i);
                 var icon=Image("Icon",node.transform,"white",new Vector2(.5f,.5f),new Vector2(0,7),new Vector2(58,58));icon.sprite=skill.Icon;icon.preserveAspect=true;
-                tree.Ranks[i]=Text("Rank",node.transform,"",new Vector2(0,-36),new Vector2(108,25),19);tree.Names[i]=Text("Name",field,"",skill.NodePosition+new Vector2(0,-88),new Vector2(242,35),22);tree.NodeStates[i]=Text("State",field,"",skill.NodePosition+new Vector2(0,-119),new Vector2(240,28),16);tree.NodeStates[i].color=new Color32(167,178,141,255);
+                tree.Ranks[i]=Text("Rank",node.transform,"",new Vector2(0,-36),new Vector2(108,25),19);tree.Names[i]=Text("Name",field,"",skill.NodePosition+new Vector2(0,-76),new Vector2(242,35),22);tree.NodeStates[i]=Text("State",field,"",skill.NodePosition+new Vector2(0,-101),new Vector2(240,28),16);tree.NodeStates[i].color=new Color32(167,178,141,255);
             }
             QualityUiBuilder.Line(surface.transform,new Vector2(246,267),new Vector2(246,-340),2);
             tree.SelectedName=Text("Selected Node",surface.transform,"",new Vector2(456,220),new Vector2(358,52),30,TextAnchor.MiddleLeft);

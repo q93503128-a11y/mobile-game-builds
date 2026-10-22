@@ -67,13 +67,14 @@ namespace Wildfolk
             World.Player=player.GetComponent<PlayerInventory>();Goblins.Player=Night.Player=player;
             var nav=World.GetComponent<WorldNavigation>();nav.Player=player.transform;
         }
+        private readonly string rewardRun=System.Guid.NewGuid().ToString("N");
         public void RecordDeath(NetworkDeathResult result)
         {
             if(!IsAuthority || !result.TryCommit())return;DeathCount++;LastDeath=result;
             var manager=NetworkManager.Singleton;if(!manager.SpawnManager.SpawnedObjects.TryGetValue(result.CreatureId,out var creature))return;
             foreach(var item in result.Items)NetworkGroundItem.Drop(item.Item,item.Count,creature.transform.position,null,false);
             if(manager.SpawnManager.SpawnedObjects.TryGetValue(result.AttackerId,out var attacker) && attacker.GetComponent<NetworkPlayer>()!=null)
-                foreach(var player in NetworkPlayer.Active)if(player.Health.IsAlive && manager.ConnectedClients.ContainsKey(player.OwnerClientId) && Vector2.Distance(player.transform.position,creature.transform.position)<=RewardRadius)player.GetComponent<PlayerProgression>().Reward(result.Experience,result.Gold);
+                foreach(var player in NetworkPlayer.Active)if(player.Health.IsAlive && manager.ConnectedClients.ContainsKey(player.OwnerClientId) && Vector2.Distance(player.transform.position,creature.transform.position)<=RewardRadius)player.GetComponent<PlayerProgression>().GameplayReward(result.Experience,result.Gold,rewardRun+":"+DeathCount);
             LootGenerated?.Invoke(result);
         }
         private void OnDestroy()

@@ -14,7 +14,7 @@ Workbench I→II→III가 progression spine이다. Wood/Stone/Iron/Steel/Diamond
 
 13종 야생 생물과 Zombie/Skeleton/검 Variant·Goblin/새총 Goblin을 제공한다. Family/Faction/Trait/Habitat와 행동 데이터를 조합한다. 신규8종은 비행·위장 해제·물가 매복·무리 합류·hop/도주·돌진·결정 pulse를 구분한다. Bone/Chitin/Medicinal Gland는 실제 서로 다른 sink에 연결하고 종별 Trophy/중복 Fur/Hide를 만들지 않는다. Camp 전투→확보→일회 보급품 획득을 제공하며 진행 핵심을 RNG 상자에 의존시키지 않는다.
 
-Hunger/Thirst, 물 용기 상태·정수, 낚시, 음식·의약품 즉시 HP/Stamina 회복을 제공한다. 복잡한 timed buff stack은 없다. 성장은 Level1~20과4개 Skill이며 Armor는 Head/Body와 공용 장비 교환을 사용한다. Gold는 세션/월드 캐릭터 재화이고 아직 소비처가 없다. Meta Coin/영구 계정 성장은 없다.
+Hunger/Thirst, 물 용기 상태·정수, 낚시, 음식·의약품 즉시 HP/Stamina 회복을 제공한다. 복잡한 timed buff stack은 없다. 공용 성장은 Level 상한 없이6개 Skill이며 Armor는 Head/Body와 공용 장비 교환을 사용한다. Gold는 세션/월드 캐릭터 재화이며 저장된 잔액으로 Class를 해금한다. Meta Coin은 없다. Class 소유·Class XP·노드 배분은 별도 로컬 profile이며 인증 계정 성장을 뜻하지 않는다.
 
 ## 조작·UI·장비
 
@@ -24,7 +24,7 @@ Primary는 맨손/장비 공격·채집·설치·선택 소비품·Armor, Intera
 
 ## 저장·협동
 
-Save12(1~11 이관)/Protocol19. Host만 spawn/AI/목표/피해/사망/loot roll/보급 claim/보충/저장을 결정한다. Client는 입력 요청과 replica 표시를 한다. Relay/명시적 Local Network Host/Join, 최대4인 구조, 로컬 식별자별 가방·성장·장비와 공유 월드를 저장한다. Host migration·dedicated server·인증 계정·Cloud는 없다. 실제 원격4인/단말 성능·장기 생존·재미는 별도 검수다.
+Save13(1~12 이관)/Protocol20. Host만 spawn/AI/목표/피해/사망/loot roll/보급 claim/보충/저장을 결정한다. Client는 입력 요청과 replica 표시를 한다. Relay/명시적 Local Network Host/Join, 최대4인 구조, 로컬 식별자별 가방·성장·장비와 공유 월드를 저장한다. Host migration·dedicated server·인증 계정·Cloud는 없다. 실제 원격4인/단말 성능·장기 생존·재미는 별도 검수다.
 
 ## 후속
 

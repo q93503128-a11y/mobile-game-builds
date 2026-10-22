@@ -34,11 +34,11 @@ namespace Wildfolk
             if(d.Kind==ExplorationUtilityKind.Signal)
             {
                 if(Now<LocalSignalReady)return false;
-                LocalSignalReady=Now+d.CooldownSeconds;LocalSignal=new ExplorationSignal{Point=transform.position,Started=Now,Until=Now+d.LifetimeSeconds,Range=d.Range};network?.Publish();return true;
+                LocalSignalReady=Now+d.CooldownSeconds*(1-(GetComponent<PlayerClass>()?.Value(ClassEffect.SurveyCooldown)??0));LocalSignal=new ExplorationSignal{Point=transform.position,Started=Now,Until=Now+d.LifetimeSeconds*(1+(GetComponent<PlayerClass>()?.Value(ClassEffect.SignalDuration)??0)),Range=d.Range*(GetComponent<PlayerClass>()?.SignalMultiplier??1)};network?.Publish();return true;
             }
             if(Now<LocalSurvey.Ready || LocalSurvey.Phase==SurveyPhase.Channel || commands.Move.sqrMagnitude>.01f)return false;
             GetComponent<PlayerCombat>().CancelAttack();GetComponent<PlayerLocomotion>().CancelDash();
-            channelItem=item;origin=transform.position;LocalSurvey=new SurveyState{Phase=SurveyPhase.Channel,Item=-1,Until=Now+d.ChannelSeconds,Ready=Now+d.CooldownSeconds};network?.Publish();return true;
+            channelItem=item;origin=transform.position;LocalSurvey=new SurveyState{Phase=SurveyPhase.Channel,Item=-1,Until=Now+d.ChannelSeconds,Ready=Now+d.CooldownSeconds*(1-(GetComponent<PlayerClass>()?.Value(ClassEffect.SurveyCooldown)??0))};network?.Publish();return true;
         }
         public void Cancel()
         {
@@ -55,7 +55,7 @@ namespace Wildfolk
             if(s.Phase==SurveyPhase.Channel)
             {
                 if(!commands.Session.IsRunning || bag.SelectedStack.Item!=channelItem || commands.Move.sqrMagnitude>.01f || Vector2.Distance(origin,transform.position)>.2f){Cancel();return;}
-                if(Now>=s.Until){s.Phase=Query(channelItem.ExplorationUtility.Range,out var result,out var bearing);s.Item=result;s.Bearing=bearing;s.Until=Now+channelItem.ExplorationUtility.LifetimeSeconds;LocalSurvey=s;channelItem=null;network?.Publish();}
+                if(Now>=s.Until){s.Phase=Query(channelItem.ExplorationUtility.Range*(GetComponent<PlayerClass>()?.SurveyMultiplier??1),out var result,out var bearing);s.Item=result;s.Bearing=bearing;s.Until=Now+channelItem.ExplorationUtility.LifetimeSeconds+(GetComponent<PlayerClass>()?.Value(ClassEffect.SurveyDetail)??0);LocalSurvey=s;channelItem=null;network?.Publish();}
             }
             else if(s.Phase!=SurveyPhase.None && Now>=s.Until){s.Phase=SurveyPhase.None;s.Item=-1;LocalSurvey=s;network?.Publish();}
         }

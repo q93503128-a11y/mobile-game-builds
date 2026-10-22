@@ -12,6 +12,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea85a5ebaf6f62646a87d747548e1a2f, type: 3}
   m_Name: StoneFenceGatePlacement
   m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.PlaceableDefinition
+  RepairMaterials:
+  - Item: {fileID: 11400000, guid: 30904e05765ac844ab5bb28b855a15db, type: 2}
+    Count: 1
+    Charges: 0
+    Quality: 0
+  - Item: {fileID: 11400000, guid: 431287b464f63f4408828d4053bac6eb, type: 2}
+    Count: 1
+    Charges: 0
+    Quality: 0
+  ConstructionMaterials:
+  - Item: {fileID: 11400000, guid: 30904e05765ac844ab5bb28b855a15db, type: 2}
+    Count: 4
+    Charges: 0
+    Quality: 0
+  - Item: {fileID: 11400000, guid: 431287b464f63f4408828d4053bac6eb, type: 2}
+    Count: 2
+    Charges: 0
+    Quality: 0
+  RecoverPortable: 0
   Item: {fileID: 11400000, guid: 59b242465f3537b468c355076e871cd8, type: 2}
   Prefab: {fileID: 8843467028454755940, guid: 68f43e6615e734543883ef2cfa2af5fe, type: 3}
   Vitality: {fileID: 11400000, guid: f00f2c76961841e41a1a1ed4b5537528, type: 2}
@@ -19,6 +38,8 @@ MonoBehaviour:
   MaximumDistance: 3.5
   Station: 0
   Tier: {fileID: 0}
+  IsBeacon: 0
+  Turret: {fileID: 0}
   IsBarrier: 1
   IsDoor: 1
   StorageSlots: 0

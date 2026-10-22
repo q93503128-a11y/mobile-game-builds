@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="8" result="Failed(Child)" total="8" passed="2" failed="6" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-22 05:21:50Z" end-time="2026-10-22 05:22:34Z" duration="43.4024394">
+  <test-suite type="TestSuite" id="1228" name="Wildfolk" fullname="Wildfolk" runstate="Runnable" testcasecount="182" result="Failed" site="Child" start-time="2026-10-22 05:21:50Z" end-time="2026-10-22 05:22:34Z" duration="43.402439" total="8" passed="2" failed="6" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <failure>
+      <message><![CDATA[One or more child tests had errors]]></message>
+    </failure>
+    <test-suite type="Assembly" id="1225" name="Wildfolk.Tests.PlayMode.dll" fullname="C:/Users/User/Documents/ChatGPT/문승준 모바일/canonical/projects/wildfolk/tests/artifacts/unity/Library/ScriptAssemblies/Wildfolk.Tests.PlayMode.dll" runstate="Runnable" testcasecount="182" result="Failed" site="Child" start-time="2026-10-22 05:21:50Z" end-time="2026-10-22 05:22:34Z" duration="43.390967" total="8" passed="2" failed="6" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="3320" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <failure>
+        <message><![CDATA[One or more child tests had errors]]></message>
+      </failure>
+      <test-suite type="TestSuite" id="1226" name="Wildfolk" fullname="Wildfolk" runstate="Runnable" testcasecount="182" result="Failed" site="Child" start-time="2026-10-22 05:21:50Z" end-time="2026-10-22 05:22:34Z" duration="43.389893" total="8" passed="2" failed="6" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <failure>
+          <message><![CDATA[One or more child tests had errors]]></message>
+        </failure>
+        <test-suite type="TestSuite" id="1227" name="Tests" fullname="Wildfolk.Tests" runstate="Runnable" testcasecount="182" result="Failed" site="Child" start-time="2026-10-22 05:21:50Z" end-time="2026-10-22 05:22:34Z" duration="43.389231" total="8" passed="2" failed="6" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <failure>
+            <message><![CDATA[One or more child tests had errors]]></message>
+          </failure>
+          <test-suite type="TestFixture" id="1015" name="ClassProgressionPlayTests" fullname="Wildfolk.Tests.ClassProgressionPlayTests" classname="Wildfolk.Tests.ClassProgressionPlayTests" runstate="Runnable" testcasecount="8" result="Failed" site="Child" start-time="2026-10-22 05:21:50Z" end-time="2026-10-22 05:22:34Z" duration="43.383415" total="8" passed="2" failed="6" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <failure>
+              <message><![CDATA[One or more child tests had errors]]></message>
+            </failure>
+            <test-case id="1023" name="AdOfficialCompletionOnly" fullname="Wildfolk.Tests.ClassProgressionPlayTests.AdOfficialCompletionOnly" methodname="AdOfficialCompletionOnly" classname="Wildfolk.Tests.ClassProgressionPlayTests" runstate="Runnable" seed="590850804" result="Passed" start-time="2026-10-22 05:21:50Z" end-time="2026-10-22 05:21:56Z" duration="6.058396" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[The referenced script on this Behaviour (Game Object '') is missing!
+The referenced script on this Behaviour (Game Object 'Player') is missing!
+]]></output>
+            </test-case>
+            <test-case id="1019" name="HunterQuarryAndWeaponCategories" fullname="Wildfolk.Tests.ClassProgressionPlayTests.HunterQuarryAndWeaponCategories" methodname="HunterQuarryAndWeaponCategories" classname="Wildfolk.Tests.ClassProgressionPlayTests" runstate="Runnable" seed="409803339" result="Failed" start-time="2026-10-22 05:21:56Z" end-time="2026-10-22 05:22:02Z" duration="5.754438" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[  Captures/class-progression/live.tsv
+  Expected string length 8 but was 6. Strings differ at index 0.
+  Expected: "complete"
+  But was:  "failed"
+  -----------^
+]]></message>
+                <stack-trace><![CDATA[at Wildfolk.Tests.ClassProgressionPlayTests+<Run>d__0.MoveNext () [0x000c7] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Tests\PlayMode\ClassProgressionPlayTests.cs:11
+at UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\Library\PackageCache\com.unity.test-framework@bd7f943e9647\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:44
+]]></stack-trace>
+              </failure>
+              <output><![CDATA[The referenced script on this Behaviour (Game Object '') is missing!
+The referenced script on this Behaviour (Game Object 'Player') is missing!
+]]></output>
+            </test-case>
+            <test-case id="1020" name="MedicinePipelineAndGenericDelivery" fullname="Wildfolk.Tests.ClassProgressionPlayTests.MedicinePipelineAndGenericDelivery" methodname="MedicinePipelineAndGenericDelivery" classname="Wildfolk.Tests.ClassProgressionPlayTests" runstate="Runnable" seed="224347919" result="Failed" start-time="2026-10-22 05:22:02Z" end-time="2026-10-22 05:22:08Z" duration="6.227594" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[Unhandled log message: '[Error] Missing localization key: item.qa-medicine.name'. Use UnityEngine.TestTools.LogAssert.Expect]]></message>
+                <stack-trace><![CDATA[Wildfolk.L:Text (string) (at Assets/Wildfolk/Runtime/UI/Localization.cs:19)
+Wildfolk.ItemDefinition:get_LocalizedName () (at Assets/Wildfolk/Runtime/Items/ItemDefinition.cs:13)
+Wildfolk.InventoryPanel:Refresh () (at Assets/Wildfolk/Runtime/UI/InventoryPanel.cs:46)
+Wildfolk.PlayerInventory:ApplySelection (int) (at Assets/Wildfolk/Runtime/Items/PlayerInventory.cs:29)
+Wildfolk.PlayerInventory:SelectSlot (int) (at Assets/Wildfolk/Runtime/Items/PlayerInventory.cs:23)
+Wildfolk.Editor.ClassFoundationQa/<Medicine>d__28:MoveNext () (at Assets/Wildfolk/Editor/ClassFoundationQa.cs:105)
+Wildfolk.Editor.ClassFoundationQa/<Run>d__16:MoveNext () (at Assets/Wildfolk/Editor/ClassFoundationQa.cs:31)
+UnityEngine.SetupCoroutine:InvokeMoveNext (System.Collections.IEnumerator,intptr)
+
+]]></stack-trace>
+              </failure>
+              <output><![CDATA[The referenced script on this Behaviour (Game Object '') is missing!
+The referenced script on this Behaviour (Game Object 'Player') is missing!
+Missing localization key: item.qa-medicine.name
+]]></output>
+            </test-case>
+            <test-case id="1022" name="OverclockAndExplorationMarker" fullname="Wildfolk.Tests.ClassProgressionPlayTests.OverclockAndExplorationMarker" methodname="OverclockAndExplorationMarker" classname="Wildfolk.Tests.ClassProgressionPlayTests" runstate="Runnable" seed="1109892968" result="Passed" start-time="2026-10-22 05:22:08Z" end-time="2026-10-22 05:22:14Z" duration="5.354461" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[The referenced script on this Behaviour (Game Object '') is missing!
+The referenced script on this Behaviour (Game Object 'Player') is missing!
+]]></output>
+            </test-case>
+            <test-case id="1021" name="RepairBufferRecoveryAndHundredCycles" fullname="Wildfolk.Tests.ClassProgressionPlayTests.RepairBufferRecoveryAndHundredCycles" methodname="RepairBufferRecoveryAndHundredCycles" classname="Wildfolk.Tests.ClassProgressionPlayTests" runstate="Runnable" seed="594446526" result="Failed" start-time="2026-10-22 05:22:14Z" end-time="2026-10-22 05:22:19Z" duration="5.442975" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[  Captures/class-progression/live.tsv
+  Expected string length 8 but was 6. Strings differ at index 0.
+  Expected: "complete"
+  But was:  "failed"
+  -----------^
+
+TearDown : Unhandled log message: '[Exception] NullReferenceException: Object reference not set to an instance of an object'. Use UnityEngine.TestTools.LogAssert.Expect]]></message>
+                <stack-trace><![CDATA[Wildfolk.ClassHud.Update () (at Assets/Wildfolk/Runtime/UI/ClassHud.cs:56)
+
+]]></stack-trace>
+              </failure>
+              <output><![CDATA[The referenced script on this Behaviour (Game Object '') is missing!
+The referenced script on this Behaviour (Game Object 'Player') is missing!
+NullReferenceException: Object reference not set to an instance of an object
+Wildfolk.ClassHud.Update () (at Assets/Wildfolk/Runtime/UI/ClassHud.cs:56)
+
+]]></output>
+            </test-case>
+            <test-case id="1016" name="SharedGrowthMigrationAndProfileXP" fullname="Wildfolk.Tests.ClassProgressionPlayTests.SharedGrowthMigrationAndProfileXP" methodname="SharedGrowthMigrationAndProfileXP" classname="Wildfolk.Tests.ClassProgressionPlayTests" runstate="Runnable" seed="1037483929" result="Failed" start-time="2026-10-22 05:22:19Z" end-time="2026-10-22 05:22:19Z" duration="0.126207" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[Unhandled log message: '[Exception] NullReferenceException: Object reference not set to an instance of an object'. Use UnityEngine.TestTools.LogAssert.Expect]]></message>
+                <stack-trace><![CDATA[Wildfolk.ClassHud.Update () (at Assets/Wildfolk/Runtime/UI/ClassHud.cs:56)
+
+]]></stack-trace>
+              </failure>
+              <output><![CDATA[NullReferenceException: Object reference not set to an instance of an object
+Wildfolk.ClassHud.Update () (at Assets/Wildfolk/Runtime/UI/ClassHud.cs:56)
+
+]]></output>
+            </test-case>
+            <test-case id="1017" name="SurvivorLethalCooldownAndHome" fullname="Wildfolk.Tests.ClassProgressionPlayTests.SurvivorLethalCooldownAndHome" methodname="SurvivorLethalCooldownAndHome" classname="Wildfolk.Tests.ClassProgressionPlayTests" runstate="Runnable" seed="888440070" result="Failed" start-time="2026-10-22 05:22:19Z" end-time="2026-10-22 05:22:23Z" duration="3.858806" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[Unhandled log message: '[Exception] NullReferenceException: Object reference not set to an instance of an object'. Use UnityEngine.TestTools.LogAssert.Expect]]></message>
+                <stack-trace><![CDATA[Wildfolk.ClassHud.Update () (at Assets/Wildfolk/Runtime/UI/ClassHud.cs:56)
+
+]]></stack-trace>
+              </failure>
+              <output><![CDATA[NullReferenceException: Object reference not set to an instance of an object
+Wildfolk.ClassHud.Update () (at Assets/Wildfolk/Runtime/UI/ClassHud.cs:56)
+
+The referenced script on this Behaviour (Game Object '') is missing!
+The referenced script on this Behaviour (Game Object 'Player') is missing!
+]]></output>
+            </test-case>
+            <test-case id="1018" name="WarriorFrontalGuardAndActualHPHeavy" fullname="Wildfolk.Tests.ClassProgressionPlayTests.WarriorFrontalGuardAndActualHPHeavy" methodname="WarriorFrontalGuardAndActualHPHeavy" classname="Wildfolk.Tests.ClassProgressionPlayTests" runstate="Runnable" seed="326356873" result="Failed" start-time="2026-10-22 05:22:23Z" end-time="2026-10-22 05:22:34Z" duration="10.539956" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[  Captures/class-progression/live.tsv
+  Expected string length 8 but was 6. Strings differ at index 0.
+  Expected: "complete"
+  But was:  "failed"
+  -----------^
+]]></message>
+                <stack-trace><![CDATA[at Wildfolk.Tests.ClassProgressionPlayTests+<Run>d__0.MoveNext () [0x000c7] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Tests\PlayMode\ClassProgressionPlayTests.cs:11
+at UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\Library\PackageCache\com.unity.test-framework@bd7f943e9647\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:44
+]]></stack-trace>
+              </failure>
+              <output><![CDATA[The referenced script on this Behaviour (Game Object '') is missing!
+The referenced script on this Behaviour (Game Object 'Player') is missing!
+<b><color=#2EA3FF>MCP-FOR-UNITY</color></b>: [TestRunnerNoThrottle] Restored Interaction Mode after test run.
+Saving results to: C:/Users/User/AppData/LocalLow/DefaultCompany/Wildfolk\TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

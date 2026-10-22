@@ -1,0 +1,89 @@
+2026-10-22T09:48:52.7231780Z	starting	PASS QA admission profile medic
+2026-10-22T09:48:52.8816075Z	join_r1	PASS actual LAN join
+2026-10-22T09:48:56.2882454Z	join_r1	PASS session class locked
+2026-10-22T09:48:56.2892890Z	join_r1	ack join_r1
+2026-10-22T09:48:56.3449857Z	guard_seen	PASS different selected classes replicate
+2026-10-22T09:48:56.3465237Z	guard_seen	ack guard_seen
+2026-10-22T09:48:56.5495252Z	self_medicine	ack self_medicine
+2026-10-22T09:49:00.7409362Z	ally_medicine	ack ally_medicine
+2026-10-22T09:49:03.0399480Z	invalid_medicine	PASS Downed ally cannot consume medicine
+2026-10-22T09:49:03.0419823Z	invalid_medicine	ack invalid_medicine
+2026-10-22T09:49:03.0511383Z	revive_first	hold queued=True own=Alive other=Downed
+2026-10-22T09:49:03.1623442Z	revive_first	hold queued=True own=Alive other=Reviving
+2026-10-22T09:49:03.2658758Z	revive_first	hold queued=True own=Alive other=Reviving
+2026-10-22T09:49:03.3683017Z	revive_first	hold queued=True own=Alive other=Reviving
+2026-10-22T09:49:03.4704010Z	revive_first	hold queued=True own=Alive other=Reviving
+2026-10-22T09:49:03.5716132Z	revive_first	hold queued=True own=Alive other=Reviving
+2026-10-22T09:49:03.6742740Z	revive_first	hold queued=True own=Alive other=Reviving
+2026-10-22T09:49:03.7761965Z	revive_first	hold queued=True own=Alive other=Reviving
+2026-10-22T09:49:03.8791635Z	revive_first	hold queued=True own=Alive other=Reviving
+2026-10-22T09:49:03.9808654Z	revive_first	hold queued=True own=Alive other=Reviving
+2026-10-22T09:49:04.1365775Z	revive_first	ack revive_first
+2026-10-22T09:49:04.1437009Z	revive_retry	hold queued=True own=Alive other=Downed
+2026-10-22T09:49:04.2463127Z	revive_retry	hold queued=True own=Alive other=Downed
+2026-10-22T09:49:04.3475311Z	revive_retry	hold queued=True own=Alive other=Reviving
+2026-10-22T09:49:04.4498886Z	revive_retry	hold queued=True own=Alive other=Reviving
+2026-10-22T09:49:04.5550253Z	revive_retry	hold queued=True own=Alive other=Reviving
+2026-10-22T09:49:04.6608270Z	revive_retry	hold queued=True own=Alive other=Reviving
+2026-10-22T09:49:04.7628496Z	revive_retry	hold queued=True own=Alive other=Reviving
+2026-10-22T09:49:04.8647753Z	revive_retry	hold queued=True own=Alive other=Reviving
+2026-10-22T09:49:04.9676630Z	revive_retry	hold queued=True own=Alive other=Reviving
+2026-10-22T09:49:05.0711164Z	revive_retry	hold queued=True own=Alive other=Reviving
+2026-10-22T09:49:05.1742999Z	revive_retry	hold queued=True own=Alive other=Reviving
+2026-10-22T09:49:05.2837196Z	revive_retry	hold queued=True own=Alive other=Reviving
+2026-10-22T09:49:05.3875383Z	revive_retry	hold queued=True own=Alive other=Reviving
+2026-10-22T09:49:05.4972885Z	revive_retry	hold queued=True own=Alive other=Reviving
+2026-10-22T09:49:05.6005659Z	revive_retry	hold queued=True own=Alive other=Reviving
+2026-10-22T09:49:05.7031090Z	revive_retry	hold queued=True own=Alive other=Reviving
+2026-10-22T09:49:05.8057976Z	revive_retry	hold queued=True own=Alive other=Reviving
+2026-10-22T09:49:05.9073942Z	revive_retry	hold queued=True own=Alive other=Reviving
+2026-10-22T09:49:06.0095268Z	revive_retry	hold queued=True own=Alive other=Reviving
+2026-10-22T09:49:06.1106111Z	revive_retry	hold queued=True own=Alive other=Reviving
+2026-10-22T09:49:06.2135923Z	revive_retry	hold queued=True own=Alive other=Reviving
+2026-10-22T09:49:06.3161804Z	revive_retry	hold queued=True own=Alive other=Reviving
+2026-10-22T09:49:06.4182199Z	revive_retry	hold queued=True own=Alive other=Reviving
+2026-10-22T09:49:06.5210930Z	revive_retry	hold queued=True own=Alive other=Reviving
+2026-10-22T09:49:06.6218914Z	revive_retry	hold queued=True own=Alive other=Reviving
+2026-10-22T09:49:06.7278304Z	revive_retry	hold queued=True own=Alive other=Reviving
+2026-10-22T09:49:06.8315106Z	revive_retry	hold queued=True own=Alive other=Reviving
+2026-10-22T09:49:06.9329211Z	revive_retry	hold queued=True own=Alive other=Reviving
+2026-10-22T09:49:07.0376911Z	revive_retry	hold queued=True own=Alive other=Reviving
+2026-10-22T09:49:07.1440058Z	revive_retry	hold queued=True own=Alive other=Reviving
+2026-10-22T09:49:07.2471567Z	revive_retry	hold queued=True own=Alive other=Reviving
+2026-10-22T09:49:07.3501714Z	revive_retry	hold queued=True own=Alive other=Reviving
+2026-10-22T09:49:07.4532849Z	revive_retry	hold queued=True own=Alive other=Reviving
+2026-10-22T09:49:07.5559480Z	revive_retry	hold queued=False own=Alive other=Alive
+2026-10-22T09:49:07.6590530Z	revive_retry	ack revive_retry
+2026-10-22T09:49:08.2776272Z	prepare_r2	PASS QA admission profile engineer
+2026-10-22T09:49:08.2791396Z	prepare_r2	ack prepare_r2
+2026-10-22T09:49:11.6684864Z	join_r2	PASS actual LAN join
+2026-10-22T09:49:14.6813919Z	join_r2	PASS session class locked
+2026-10-22T09:49:14.6825250Z	join_r2	ack join_r2
+2026-10-22T09:49:14.7739146Z	marker_seen	PASS Explorer/Engineer replicate
+2026-10-22T09:49:14.7759411Z	marker_seen	ack marker_seen
+2026-10-22T09:49:16.7261723Z	repair	ack repair
+2026-10-22T09:49:18.5607672Z	overrepair	ack overrepair
+2026-10-22T09:49:18.7432813Z	overclock_ballista	ack overclock_ballista
+2026-10-22T09:49:19.0820405Z	overclock_repeater	ack overclock_repeater
+2026-10-22T09:49:21.7055409Z	dismantle	ack dismantle
+2026-10-22T09:49:22.1382243Z	reconnect_class	PASS actual LAN join
+2026-10-22T09:49:25.1600503Z	reconnect_class	PASS same-session reconnect restores locked Engineer despite different Lobby claim
+2026-10-22T09:49:25.1610528Z	reconnect_class	ack reconnect_class
+2026-10-22T09:49:25.5374146Z	leave_rehost	ack leave_rehost
+2026-10-22T09:49:28.8259153Z	join_r2_rehost	PASS actual LAN join
+2026-10-22T09:49:31.8988811Z	join_r2_rehost	PASS session class locked
+2026-10-22T09:49:31.9009546Z	join_r2_rehost	ack join_r2_rehost
+2026-10-22T09:49:32.3097760Z	prepare_r3	PASS QA admission profile survivor
+2026-10-22T09:49:32.3112841Z	prepare_r3	ack prepare_r3
+2026-10-22T09:49:35.6286809Z	join_r3	PASS actual LAN join
+2026-10-22T09:49:38.5908651Z	join_r3	PASS session class locked
+2026-10-22T09:49:38.5918787Z	join_r3	ack join_r3
+2026-10-22T09:49:38.7046238Z	quarry_seen	PASS Hunter/Survivor replicate
+2026-10-22T09:49:38.7056255Z	quarry_seen	ack quarry_seen
+2026-10-22T09:49:39.2254492Z	common_invest	PASS insufficient common points cannot overspend via RPC
+2026-10-22T09:49:39.2412275Z	common_invest	PASS client Character UI owner level
+2026-10-22T09:49:39.2571159Z	common_invest	PASS client shared Skill UI six nodes
+2026-10-22T09:49:39.2596340Z	common_invest	ack common_invest
+2026-10-22T09:49:39.5722604Z	cancel_survival_protection	ack cancel_survival_protection
+2026-10-22T09:49:40.0334024Z	finish	ack finish
+2026-10-22T09:49:40.0339294Z	complete	complete

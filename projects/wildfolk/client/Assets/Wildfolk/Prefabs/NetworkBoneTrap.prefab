@@ -111,6 +111,7 @@ GameObject:
   - component: {fileID: 8640178423137901376}
   - component: {fileID: 1868049741899235665}
   - component: {fileID: 9175732225183731814}
+  - component: {fileID: 2055656254921153722}
   m_Layer: 0
   m_Name: NetworkBoneTrap
   m_TagString: Untagged
@@ -688,3 +689,15 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &2055656254921153722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 350389049709974286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55336593be201514ba1d6d33f157339c, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.StructureMaintenance

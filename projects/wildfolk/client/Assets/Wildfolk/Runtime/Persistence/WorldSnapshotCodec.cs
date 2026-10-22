@@ -25,6 +25,7 @@ namespace Wildfolk
         public static void Apply(WorldGenerator World,WorldClock Clock,ContentCatalog Catalog,SavedGame game,PlayerInventory Player)
         {
             if(!SimulationAuthority.Allows(World))throw new System.InvalidOperationException("Only the world authority can restore snapshots.");
+            StructureMaintenance.NewWorld();
             // Remove previous network actors through their real lifecycle, including pending spawns.
             World.Renewal.ReleaseWorld();
             World.GetComponent<ZombieSpawner>().ReleaseWorld();
@@ -36,7 +37,7 @@ namespace Wildfolk
             World.Renewal.Restore(game.Resources,game.Recovery);
             foreach(var state in game.Placeables)
             {
-                var facility=NetworkSpawnFactory.Spawn(Catalog.Item(state.Item).Placement.Prefab,state.Position,Quaternion.Euler(0,0,state.Rotation));facility.SaveId=state.Id;facility.CreatorId=state.Creator;facility.GetComponent<SignalBeacon>()?.Restore(state.BeaconNumber);facility.GetComponent<WorldTurret>()?.Restore(state.Turret,Catalog);facility.Health.RestoreHealth(state.HP);
+                var facility=NetworkSpawnFactory.Spawn(Catalog.Item(state.Item).Placement.Prefab,state.Position,Quaternion.Euler(0,0,state.Rotation));facility.PlayerBuilt=state.PlayerBuilt;facility.SaveId=state.Id;facility.CreatorId=state.Creator;facility.GetComponent<SignalBeacon>()?.Restore(state.BeaconNumber);facility.GetComponent<WorldTurret>()?.Restore(state.Turret,Catalog);facility.Health.RestoreHealth(state.HP);
                 var chest=facility.GetComponent<StorageChest>();if(chest!=null){chest.BindVisitor(Player);chest.Model.Restore(state.Inventory,Catalog);}
                 var process=facility.GetComponent<StationProcessing>();if(process!=null)process.InitializeSnapshot(state.Processing,Catalog,Player);
                 var door=facility.GetComponent<WorldDoor>();if(door!=null)door.RestoreOpen(state.DoorOpen);

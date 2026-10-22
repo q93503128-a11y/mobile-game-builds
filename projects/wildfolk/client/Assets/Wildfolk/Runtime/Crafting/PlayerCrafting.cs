@@ -39,7 +39,7 @@ namespace Wildfolk
                 var success=Inventory.Model.TryConsumeCosts(definition.UpgradeCosts,()=>
                 {
                     next=Instantiate(definition.UpgradeTo.Prefab,old.transform.position,old.transform.rotation);
-                    next.SaveId=old.SaveId;next.CreatorId=old.CreatorId;next.Health.RestoreHealth(Mathf.Max(1,Mathf.RoundToInt(old.Health.Ratio*next.Health.Maximum)));
+                    next.PlayerBuilt=old.PlayerBuilt;next.SaveId=old.SaveId;next.CreatorId=old.CreatorId;next.Health.RestoreHealth(Mathf.Max(1,Mathf.RoundToInt(old.Health.Ratio*next.Health.Maximum)));
                     return next.GetComponent<CraftingStation>()!=null;
                 });
                 if(!success){if(next!=null)Destroy(next.gameObject);return false;}

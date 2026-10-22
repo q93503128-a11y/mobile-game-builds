@@ -554,6 +554,7 @@ GameObject:
   - component: {fileID: 3385274447091358857}
   - component: {fileID: 6761088422026332990}
   - component: {fileID: 3508635218943965770}
+  - component: {fileID: 6850315437099018307}
   m_Layer: 0
   m_Name: Ballista
   m_TagString: Untagged
@@ -723,3 +724,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.WorldTurret
   Definition: {fileID: 11400000, guid: 29b9656f765f3c94bb3b9c505dadd5ee, type: 2}
   Head: {fileID: 7106860405701133270}
+--- !u!114 &6850315437099018307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9052956572469100118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55336593be201514ba1d6d33f157339c, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.StructureMaintenance

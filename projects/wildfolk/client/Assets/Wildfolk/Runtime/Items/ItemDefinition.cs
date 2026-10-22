@@ -7,6 +7,7 @@ namespace Wildfolk
     [CreateAssetMenu(menuName = "Wildfolk/Item")]
     public sealed class ItemDefinition : ScriptableObject
     {
+        public ExplorationToolCategory ExplorationCategory;
         public string Id;
         public string DisplayName;
         public string LocalizedName=>L.Text("item."+Id+".name");

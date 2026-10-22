@@ -1,0 +1,33 @@
+2026-10-22T06:03:57.4290193Z	starting	PASS QA admission profile warrior
+2026-10-22T06:03:57.6334412Z	starting	PASS actual LAN Host
+2026-10-22T06:03:57.6470810Z	starting	PASS Host enters world
+2026-10-22T06:04:02.5506473Z	join_r1	command
+2026-10-22T06:04:52.0761379Z	join_r1	PASS Host validates admission and assigns different classes
+2026-10-22T06:04:52.0796758Z	join_r1	PASS owner Guard request accepted
+2026-10-22T06:04:52.0806836Z	guard_seen	command
+2026-10-22T06:04:52.1677718Z	self_medicine	command
+2026-10-22T06:04:52.4526395Z	self_medicine	PASS Medic self critical medicine Host calculation actual=54
+2026-10-22T06:04:52.4567600Z	ally_medicine	command
+2026-10-22T06:04:56.6264414Z	ally_medicine	PASS ally medicine outgoing*FieldCare exact one item actualHP=65 count=2
+2026-10-22T06:04:56.6719628Z	ally_medicine	PASS Warrior enters MP Downed
+2026-10-22T06:04:56.6739636Z	invalid_medicine	command
+2026-10-22T06:04:56.9835430Z	revive_first	command
+2026-10-22T06:04:58.0759085Z	revive_first	PASS Medic GoldenTime and Stabilize survive release state=Downed extension=3.5182033970905
+2026-10-22T06:04:58.0779633Z	revive_retry	command
+2026-10-22T06:04:58.4384038Z	revive_retry	PASS cancel/restart cannot grant GoldenTime twice
+2026-10-22T06:05:01.6100973Z	revive_retry	PASS actual client Medic 3.2second revive50percent
+2026-10-22T06:05:01.6107114Z	revive_retry	PASS Medic protection longer than base
+2026-10-22T06:05:01.8386598Z	revive_retry	PASS in-session Class lock cannot be replaced
+2026-10-22T06:05:01.8420073Z	revive_retry	PASS unknown capability packet rejected
+2026-10-22T06:05:01.8476814Z	prepare_r2	command
+2026-10-22T06:06:38.3859482Z	prepare_r2	PASS QA admission profile explorer
+2026-10-22T06:06:38.4584085Z	prepare_r2	PASS actual LAN Host
+2026-10-22T06:06:38.4631088Z	prepare_r2	PASS Host enters world
+2026-10-22T06:06:42.7377450Z	join_r2	command
+2026-10-22T06:06:48.5851380Z	join_r2	PASS observed corridor
+2026-10-22T06:06:48.6168788Z	join_r2	PASS Host optic input
+2026-10-22T06:06:48.6334465Z	join_r2	FAIL Host observed marker request
+2026-10-22T06:06:48.6398449Z	failed	System.InvalidOperationException: Host observed marker request
+  at Wildfolk.Editor.ClassLanQa.Check (System.Boolean condition, System.String text) [0x00024] in C:\UnityProjects\Wildfolk\Assets\Wildfolk\Editor\ClassLanQa.cs:33
+  at Wildfolk.Editor.ClassLanQa+<Authority>d__46.MoveNext () [0x00a77] in C:\UnityProjects\Wildfolk\Assets\Wildfolk\Editor\ClassLanQa.cs:125
+  at Wildfolk.Editor.ClassLanQa+<Guard>d__19.MoveNext () [0x00046] in C:\UnityProjects\Wildfolk\Assets\Wildfolk\Editor\ClassLanQa.cs:29

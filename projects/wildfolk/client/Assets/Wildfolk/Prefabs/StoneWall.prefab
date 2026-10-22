@@ -463,6 +463,7 @@ GameObject:
   - component: {fileID: 4925190960920588024}
   - component: {fileID: 3442959631249290620}
   - component: {fileID: 1348787332174370353}
+  - component: {fileID: 5471082441844533334}
   m_Layer: 0
   m_Name: StoneWall
   m_TagString: Untagged
@@ -632,3 +633,15 @@ MonoBehaviour:
   Health: {fileID: 1788938684771651304}
   Visual: {fileID: 428758259131777598}
   Reaction: 1
+--- !u!114 &5471082441844533334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6936464655545487945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55336593be201514ba1d6d33f157339c, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.StructureMaintenance

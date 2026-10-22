@@ -1,6 +1,6 @@
-# Save / Load12 · v1~v11 이관
+# Save / Load13 · v1~v12 이관
 
-2026-10-22 현재 Save12 / Protocol19, 신규 generation3. 정본은 SaveGameRules/SaveValidation/SaveMigration/WorldSnapshotCodec/PlayerSnapshotCodec/SaveRepository다. 기존 generation1/2 지형·시설·자원 ID를 보존한다.
+2026-10-22 현재 Save13 / Protocol20, 신규 generation3. 정본은 SaveGameRules/SaveValidation/SaveMigration/WorldSnapshotCodec/PlayerSnapshotCodec/SaveRepository다. 기존 generation1/2 지형·시설·자원 ID를 보존한다.
 
 ## 파일과 검증
 
@@ -45,7 +45,7 @@ Home 검사와 실제 Continue/Save는 같은 SaveGameRules.Validate를 쓴다. 
 
 ## Host와 QA
 
-Host는 저장 성공 후 세션을 종료하고 실패하면 유지한다. reHost는 저장을 먼저 읽어 새 연결을 만들며 참가자 상태를 spawn 전에 복원한다. 멀티 HP0은 저장 경계에서 Dead로 남기며 무료 Home으로 복귀한다. Cloud/Account/Host Migration/crash 보장은 없다. 현재 Protocol19 peer끼리만 호환한다.
+Host는 저장 성공 후 세션을 종료하고 실패하면 유지한다. reHost는 저장을 먼저 읽어 새 연결을 만들며 참가자 상태를 spawn 전에 복원한다. 멀티 HP0은 저장 경계에서 Dead로 남기며 무료 Home으로 복귀한다. Cloud/Account/Host Migration/crash 보장은 없다. 현재 Protocol20 peer끼리만 호환한다.
 
 실제 사용자 파일은 QA에서 수정·삭제하지 않는다. Editor 전용 IsolatedQaProfile은 별도 Captures 디렉터리와 격리 identity/preferences를 쓴다. 실제 Unity SP/Host와 자동 회귀, 원격·단말 미검수 범위는 [이번 REVIEW](../validation/creature-loot-expansion/REVIEW.md)를 따른다. Android 강제 종료 파일 시스템은 별도 실기 검증이다.
 
@@ -87,3 +87,13 @@ PoiSaveValidation은 anchor 종류/Schema/고정 seed 보급 상한·잔량/빈 
 광고 완료는 현재 death/revision과 연결해 중복·취소·늦은 callback을 버린다. Gem은 지갑의 원자 commit 계약 안에서 world 저장이 성공한 뒤에만 완료하고 실패하면 Dead/HP0/이전 원정 상태로 되돌린다. 실제 결제 공급자가 없으므로 production은 disabled다. 개발 provider는 Editor 전용 메모리 fixture이며 실제 계정 잔액/영속 결제를 검증했다고 주장하지 않는다. 손상 backup fallback/수동 파일 복원·위조/인증 없는 local GUID 교체까지 막는 서버계정 시스템은 없다.
 
 [Save·거래·LAN·실제 Play 증거](../validation/death-revive-respawn/REVIEW.md).
+
+## v12→v13 · Class / player-built metadata
+
+ClassSaveValidation은 SessionClass=survivor, SurvivalCooldown=0, ClassPurchases=[]를 기본값으로 추가한다. 공용 Growth는 ID별 기존4Skill Rank/Point를 보존하고 Metabolism/FieldCare를0으로 추가한다. 구 Level20 이후 누적XP는 새 Level과 Point로 변환한다. Class 소유/XP/선택/node는 world와 분리된 checksum profile Schema1이며 실제 인증 backend가 아니다.
+
+Placeable.PlayerBuilt를 추가한다. 구 SP 설치물은 cargo 외 플레이어 건설로, 구 MP는 유효 Creator GUID가 있는 설치물만 플레이어 건설로 이관한다. 무료 starter/자연시설은 회수 불가다. SessionClass/치명상 방지 cooldown 잔여초/구매receipt를 player snapshot에 보존한다. 보호·Guard·Quarry·표식·Overrepair·Overclock은 transient다.
+
+Gold 구매는 profile intent 저장→world Gold debit+receipt atomic commit→profile entitlement 확정 순서다. 중단 후 world receipt가 있으면 grant, receipt가 없으면 intent만 취소해 재시도한다. read/validation 실패는 해금하지 않는다. 로컬 save 수동 rollback/인증 없는 GUID·파일 교체는 막지 못한다.
+
+Protocol20은 NetworkClassActions/ClassActionState와 owner request, NetworkCommonGrowth, NetworkBuilding PlayerBuilt/buffer 및 임시 포탑 상태를 추가하기 때문이다.19 peer와 혼용하지 않는다.

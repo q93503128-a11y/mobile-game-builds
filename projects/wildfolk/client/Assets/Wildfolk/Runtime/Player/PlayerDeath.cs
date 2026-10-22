@@ -33,7 +33,7 @@ namespace Wildfolk
         public static event Action PartyWiped;
         public Func<bool> Persistence {get;set;}
         private Health health;private NetworkPlayer network;private Vector2 deathPosition,holdPosition;
-        private double leaseUntil,nextPartyCheck;
+        private double leaseUntil,nextPartyCheck,lastBleedAt;private bool goldenUsed;
         private readonly Collider2D[] overlaps=new Collider2D[64];
         private readonly RaycastHit2D[] walls=new RaycastHit2D[32];
         private GameplaySession Session=>GetComponent<PlayerInputCommands>().Session;
@@ -57,7 +57,7 @@ namespace Wildfolk
             InterruptRescue();Rescuer?.InterruptRescue();deathPosition=transform.position;
             if(DeathNumber==long.MaxValue){Run=Guid.NewGuid().ToString("N");DeathNumber=0;}DeathNumber++;
             ProtectedUntil=0;ResetActions();
-            State=Multi ? PlayerLife.Downed : PlayerLife.Dead;
+            State=Multi ? PlayerLife.Downed : PlayerLife.Dead;lastBleedAt=Now;goldenUsed=false;
             DownUntil=Multi ? Now+Definition.DownedSeconds*Mathf.Clamp(Modifiers(this)?.DownedDurationMultiplier??1,.1f,10) : 0;
             Revision++;ApplySession();Signal();Durable=Persist();Signal();
         }
@@ -75,6 +75,8 @@ namespace Wildfolk
             if(!Authority || !Multi)return;
             if(State==PlayerLife.Downed || State==PlayerLife.Reviving)
             {
+                var elapsed=Math.Max(0,Now-lastBleedAt);lastBleedAt=Now;
+                if(Rescuer!=null && Now<=leaseUntil && ValidRescuer(Rescuer))DownUntil+=elapsed*(1-Mathf.Clamp01(Rescuer.GetComponent<ICooperativeReviveModifiers>()?.DownedDrainMultiplier??1));
                 if(Now>=DownUntil){BecomeDead();return;}
                 if(Rescuer!=null)
                 {
@@ -124,7 +126,8 @@ namespace Wildfolk
             if(Rescuer==null)
             {
                 by.InterruptRescue();Rescuer=by;by.RescueTarget=this;holdPosition=by.transform.position;
-                HoldStarted=Now;HoldUntil=Now+Definition.HoldSeconds/Mathf.Clamp(Modifiers(by)?.ReviveSpeedMultiplier??1,.1f,10);
+                if(!goldenUsed){var bonus=by.GetComponent<ICooperativeReviveModifiers>()?.GoldenTimeBonus??0;if(bonus>0){DownUntil+=bonus;goldenUsed=true;}}
+                lastBleedAt=Now;HoldStarted=Now;HoldUntil=Now+Definition.HoldSeconds/Mathf.Clamp(Modifiers(by)?.ReviveSpeedMultiplier??1,.1f,10);
                 State=PlayerLife.Reviving;by.ResetLivingActions();by.ApplySession();by.Signal();Signal();
             }
             leaseUntil=Now+.5;return true;
@@ -144,7 +147,7 @@ namespace Wildfolk
         {
             var by=Rescuer;if(!ValidRescuer(by) || Now>=DownUntil)return;
             if(!TryPosition(deathPosition,3,out var position))return;
-            by.InterruptRescue();CommitRespawn(position,Mathf.Clamp01(Definition.RevivedHealth*(Modifiers(by)?.RevivedHealthMultiplier??1)),false,false);DownUntil=0;Signal();
+            by.InterruptRescue();CommitRespawn(position,Mathf.Clamp01(Definition.RevivedHealth*(Modifiers(by)?.RevivedHealthMultiplier??1)),false,false);if(State==PlayerLife.Alive)ProtectedUntil+=by.GetComponent<ICooperativeReviveModifiers>()?.ReviveProtectionBonus??0;DownUntil=0;Signal();
         }
         public bool HomeRespawn()
         {
@@ -181,7 +184,7 @@ namespace Wildfolk
         {
             var old=Capture();var prior=(Vector2)transform.position;
             State=PlayerLife.Respawning;ApplySession();
-            if(home){Run=Guid.NewGuid().ToString("N");DeathNumber=0;AdUsed=false;}else if(ad)AdUsed=true;
+            if(home){GetComponent<PlayerClass>()?.HomeDeparture();Run=Guid.NewGuid().ToString("N");DeathNumber=0;AdUsed=false;}else if(ad)AdUsed=true;
             RestoreBody(point,ratio);State=PlayerLife.Alive;
             if(!Persist())
             {
@@ -193,7 +196,7 @@ namespace Wildfolk
         {Move(point);health.RestoreHealth(Mathf.Max(1,Mathf.RoundToInt(health.Maximum*ratio)));health.MarkCombat();ProtectedUntil=Now+Definition.ProtectionSeconds;}
         private void Move(Vector2 point){GetComponent<PlayerInputCommands>().ApplyMove(Vector2.zero);GetComponent<PlayerLocomotion>().CancelDash();GetComponent<Rigidbody2D>().position=point;transform.position=point;Physics2D.SyncTransforms();}
         public bool BlocksDamage=>State==PlayerLife.Alive && Now<ProtectedUntil;
-        public void OffensiveAction(){if(!Authority)return;InterruptRescue();if(ProtectedUntil>Now){ProtectedUntil=0;Signal();}}
+        public void OffensiveAction(){if(!Authority)return;GetComponent<PlayerClass>()?.OffensiveAction();InterruptRescue();if(ProtectedUntil>Now){ProtectedUntil=0;Signal();}}
         private bool Safe(Vector2 point)
         {
             var nav=GetComponent<PlayerMotor>().Terrain;

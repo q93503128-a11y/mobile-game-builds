@@ -12,6 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea85a5ebaf6f62646a87d747548e1a2f, type: 3}
   m_Name: WorkbenchPlacement
   m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.PlaceableDefinition
+  RepairMaterials:
+  - Item: {fileID: 11400000, guid: 431287b464f63f4408828d4053bac6eb, type: 2}
+    Count: 2
+    Charges: 0
+    Quality: 0
+  ConstructionMaterials:
+  - Item: {fileID: 11400000, guid: 431287b464f63f4408828d4053bac6eb, type: 2}
+    Count: 6
+    Charges: 0
+    Quality: 0
+  RecoverPortable: 0
   Item: {fileID: 11400000, guid: a50ff5ee6519b404a9e96c12b81d4578, type: 2}
   Prefab: {fileID: 3385274447091358857, guid: def524a147fbf934d88f769c2b38c926, type: 3}
   Vitality: {fileID: 11400000, guid: 85641e5369e46494eb3fe19aaa28ff71, type: 2}
@@ -19,6 +30,8 @@ MonoBehaviour:
   MaximumDistance: 2.8
   Station: 1
   Tier: {fileID: 11400000, guid: b632d88d6c00461418a7100d186ff69c, type: 2}
+  IsBeacon: 0
+  Turret: {fileID: 0}
   IsBarrier: 0
   IsDoor: 0
   StorageSlots: 0
@@ -28,11 +41,19 @@ MonoBehaviour:
   OutputCapacity: 100
   ProcessingSpeed: 1
   WorkbenchTier: 1
+  TierVisual: {fileID: 0}
+  TierDisplayKey:
   UpgradeTo: {fileID: 11400000, guid: ebd7916adefaa1c448b978852a202cb5, type: 2}
   UpgradeCosts:
   - Item: {fileID: 11400000, guid: 431287b464f63f4408828d4053bac6eb, type: 2}
     Count: 8
+    Charges: 0
+    Quality: 0
   - Item: {fileID: 11400000, guid: 30904e05765ac844ab5bb28b855a15db, type: 2}
     Count: 6
+    Charges: 0
+    Quality: 0
   - Item: {fileID: 11400000, guid: c5b679876e2427346848b9e6432a186c, type: 2}
     Count: 2
+    Charges: 0
+    Quality: 0

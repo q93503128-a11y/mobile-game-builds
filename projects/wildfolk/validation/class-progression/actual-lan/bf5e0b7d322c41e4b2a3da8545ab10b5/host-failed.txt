@@ -1,0 +1,11 @@
+System.IO.IOException: Sharing violation on path C:\UnityProjects\Wildfolk\Captures\class-progression\actual-lan\bf5e0b7d322c41e4b2a3da8545ab10b5\phase.txt
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.Boolean anonymous, System.IO.FileOptions options) [0x0019e] in <41d29b352f6a475ab1bf7c6628b82790>:0
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.IO.FileOptions options) [0x00000] in <41d29b352f6a475ab1bf7c6628b82790>:0
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream..ctor(string,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare,int,System.IO.FileOptions)
+  at System.IO.StreamWriter..ctor (System.String path, System.Boolean append, System.Text.Encoding encoding, System.Int32 bufferSize) [0x00055] in <41d29b352f6a475ab1bf7c6628b82790>:0
+  at System.IO.StreamWriter..ctor (System.String path) [0x00008] in <41d29b352f6a475ab1bf7c6628b82790>:0
+  at (wrapper remoting-invoke-with-check) System.IO.StreamWriter..ctor(string)
+  at System.IO.File.WriteAllText (System.String path, System.String contents) [0x00026] in <41d29b352f6a475ab1bf7c6628b82790>:0
+  at Wildfolk.Editor.ClassLanQa.Command (System.String command) [0x00006] in C:\UnityProjects\Wildfolk\Assets\Wildfolk\Editor\ClassLanQa.cs:34
+  at Wildfolk.Editor.ClassLanQa+<Authority>d__47.MoveNext () [0x01129] in C:\UnityProjects\Wildfolk\Assets\Wildfolk\Editor\ClassLanQa.cs:132
+  at Wildfolk.Editor.ClassLanQa+<Guard>d__20.MoveNext () [0x00046] in C:\UnityProjects\Wildfolk\Assets\Wildfolk\Editor\ClassLanQa.cs:29

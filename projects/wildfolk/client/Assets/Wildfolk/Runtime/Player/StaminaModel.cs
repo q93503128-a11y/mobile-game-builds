@@ -15,6 +15,7 @@ namespace Wildfolk
         public void SetMaximum(float maximum){Maximum=maximum;Current=Mathf.Min(Current,Maximum);}
         public bool Spend(float amount)
         {if(amount<0 || float.IsNaN(amount))throw new ArgumentOutOfRangeException();if(Current<amount)return false;Current-=amount;RecoveryWait=Definition.RecoveryDelay;return true;}
+        public void ShortenRecovery(float maximum)=>RecoveryWait=Mathf.Min(RecoveryWait,maximum);
         public void StopSprint(){IsSprinting=false;held=0;}
         public void Advance(float seconds,float magnitude,bool canSprint,float efficiency,float costMultiplier,float recoveryMultiplier)
         {

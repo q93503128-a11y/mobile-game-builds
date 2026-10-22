@@ -54,7 +54,7 @@ namespace Wildfolk
             var position = (Vector2)transform.position + Facing.Direction * Settings.PlacementDistance;
             if (!CanPlaceAt(definition, position)) return false;
             WorldPlaceable placed=null;
-            try{return Inventory.Model.TryDropSlot(Inventory.SelectedIndex,definition.Item,1,()=>{placed=Instantiate(definition.Prefab,position,RotationFor(definition));return placed!=null;});}
+            try{return Inventory.Model.TryDropSlot(Inventory.SelectedIndex,definition.Item,1,()=>{placed=Instantiate(definition.Prefab,position,RotationFor(definition));if(placed!=null)placed.PlayerBuilt=true;return placed!=null;});}
             catch(System.Exception){if(placed!=null)Destroy(placed.gameObject);return false;}
         }
     }

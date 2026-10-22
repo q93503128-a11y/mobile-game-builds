@@ -38,7 +38,7 @@ namespace Wildfolk.Tests
         [Test]public void AtomicSaveBackupRecoversCorruptionAndIgnoresInterruptedTemporaryFile()
         {
             var root=Path.Combine(Path.GetTempPath(),"wildfolk-save-"+Guid.NewGuid().ToString("N"));var repo=new SaveRepository(Path.Combine(root,"world.json"));
-            Action<SavedGame> validate=g=>{if(g.Version!=12)throw new InvalidDataException();};
+            Action<SavedGame> validate=g=>{if(g.Version!=13)throw new InvalidDataException();};
             try
             {
                 repo.Write(new SavedGame{Seed=1},validate);repo.Write(new SavedGame{Seed=2},validate);

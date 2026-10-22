@@ -18,7 +18,16 @@ namespace Wildfolk
         public Health Target {get;private set;}
         public event Action Changed;
         public uint Revision {get;private set;}
-        private float readyAt,lastManual;
+        private float readyAt,lastManual;private double overclockUntil;private float reloadBonus,rotationBonus;
+        public double OverclockUntil=>overclockUntil;
+        internal float OverclockReload=>reloadBonus;
+        internal float OverclockRotation=>rotationBonus;
+        internal void ApplyOverclock(float seconds,float reload,float rotation){overclockUntil=seconds>0?Time.timeAsDouble+seconds:0;reloadBonus=reload;rotationBonus=rotation;}
+        public float OverclockRemaining=>Mathf.Max(0,(float)(overclockUntil-Time.timeAsDouble));
+        public bool Overclock(float duration,float reload,float rotation)
+        {if(!Authoritative || !place.Health.IsAlive || duration<=0 || Time.timeAsDouble<overclockUntil)return false;overclockUntil=Time.timeAsDouble+duration;reloadBonus=reload;rotationBonus=rotation;Notify();return true;}
+        public float ReloadMultiplier=>Time.timeAsDouble<overclockUntil?1+reloadBonus:1;
+        public float RotationMultiplier=>Time.timeAsDouble<overclockUntil?1+rotationBonus:1;
         private WorldPlaceable place;private WorldGenerator world;private PlayerInventory credit;
         internal WorldGenerator SimulationWorld=>world;
         private readonly Collider2D[] nearby=new Collider2D[64];private readonly RaycastHit2D[] lineHits=new RaycastHit2D[32];
@@ -29,7 +38,7 @@ namespace Wildfolk
         private void OnEnable(){TurretScheduler.Register(this);place.Health.Died+=ReleaseCargo;}
         private void OnDisable(){TurretScheduler.Unregister(this);place.Health.Died-=ReleaseCargo;Target=null;}
         private void Notify(){if(AmmoCount()==0)Loaded=false;Revision++;Changed?.Invoke();}
-        public void ResetForSpawn(){Ammo=new InventoryModel(3);Ammo.Changed+=Notify;Array.Clear(Modules,0,5);Heading=DesiredHeading=transform.eulerAngles.z;Loaded=false;readyAt=0;credit=null;Target=null;place.Health.SetMaximumBonus(0);}
+        public void ResetForSpawn(){Ammo=new InventoryModel(3);Ammo.Changed+=Notify;Array.Clear(Modules,0,5);Heading=DesiredHeading=transform.eulerAngles.z;Loaded=false;readyAt=0;overclockUntil=0;reloadBonus=rotationBonus=0;credit=null;Target=null;place.Health.SetMaximumBonus(0);}
         public bool CanInteract(PlayerInteraction actor)=>place.Health.IsAlive && actor.Session.IsRunning;
         public bool Use(PlayerInteraction actor)=>TierThreeHud.OpenTurret(this,actor.GetComponent<PlayerInventory>());
         public bool InRange(PlayerInventory player)=>player!=null && player.GetComponent<Health>().IsAlive && Vector2.Distance(player.transform.position,transform.position)<=player.Settings.StationInteractionRange;
@@ -66,11 +75,12 @@ namespace Wildfolk
         public void Tick(float seconds)
         {
             if(!place.Health.IsAlive)return;
+            if(Authoritative && overclockUntil>0 && Time.timeAsDouble>=overclockUntil){overclockUntil=0;Notify();}
             if(!Authoritative){var net=GetComponent<NetworkTurret>();if(net!=null && net.IsSpawned)Heading=Mathf.MoveTowardsAngle(Heading,net.Heading.Value,Definition.RotationSpeed*seconds*2);Present();return;}
             if(world==null)world=FindFirstObjectByType<WorldGenerator>();
             if(world!=null && world.Map.Streamed && !world.Chunks.Wants(transform.position)){Target=null;return;}
             if(Modules[1]!=null && Time.time>=lastManual){Target=Acquire();if(Target!=null){var d=(Vector2)(Target.transform.position-transform.position);DesiredHeading=Mathf.Atan2(d.y,d.x)*Mathf.Rad2Deg-90;}}
-            Heading=Mathf.MoveTowardsAngle(Heading,DesiredHeading,Definition.RotationSpeed*(Modules[3]?.TurretModule.Multiplier??1)*seconds);Present();GetComponent<NetworkTurret>()?.PublishHeading();
+            Heading=Mathf.MoveTowardsAngle(Heading,DesiredHeading,Definition.RotationSpeed*(Modules[3]?.TurretModule.Multiplier??1)*RotationMultiplier*seconds);Present();GetComponent<NetworkTurret>()?.PublishHeading();
             if(Modules[0]!=null && !Loaded && Time.time>=readyAt && AmmoCount()>0){Loaded=true;Notify();}
             if(Modules[0]!=null && Modules[1]!=null && Target!=null && Mathf.Abs(Mathf.DeltaAngle(Heading,DesiredHeading))<5 && HasLineOfSight(Target))Fire();
         }
@@ -92,7 +102,7 @@ namespace Wildfolk
             var slot=-1;for(var i=0;i<AmmoSlots;i++)if(!Ammo.GetSlot(i).IsEmpty){slot=i;break;}if(slot<0)return false;
             StoneProjectile shot=null;var direction=(Vector2)(Quaternion.Euler(0,0,Heading)*Vector3.up);
             var accepted=Ammo.TryDropSlot(slot,Definition.Ammunition,1,()=>{shot=PrefabPool.Spawn(Definition.Projectile,(Vector2)transform.position+direction*1.1f,Quaternion.identity);shot.Launch(place.Health,direction,Definition.ProjectileSpeed,Definition.Range,Definition.Damage,credit,Definition.Ammunition);var net=shot.GetComponent<NetworkProjectile>();return net==null || NetworkCreatureWorld.Active.SpawnPendingNow(net.NetworkObject);});
-            if(!accepted){if(shot!=null)PrefabPool.Release(shot.gameObject);return false;}Loaded=false;readyAt=Time.time+Definition.ReloadSeconds;Shots++;Notify();return true;
+            if(!accepted){if(shot!=null)PrefabPool.Release(shot.gameObject);return false;}Loaded=false;readyAt=Time.time+Definition.ReloadSeconds/ReloadMultiplier;Shots++;Notify();return true;
         }
         private void Present(){if(Head!=null)Head.localRotation=Quaternion.Euler(0,0,Heading-transform.eulerAngles.z);}
         public TurretSnapshot Capture(){var ids=new string[5];for(var i=0;i<5;i++)ids[i]=Modules[i]?.Id;return new TurretSnapshot{Ammo=Ammo.Capture(),Modules=ids,Heading=Heading,Loaded=Loaded,ReloadRemaining=ReloadRemaining};}

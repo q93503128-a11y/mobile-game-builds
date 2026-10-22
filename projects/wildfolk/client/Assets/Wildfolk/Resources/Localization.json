@@ -398,8 +398,8 @@
     {
       "Key": "ui.skill.origin",
       "Values": [
-        "SURVIVOR",
-        "생존자"
+        "Shared Growth",
+        "공용 성장"
       ]
     },
     {
@@ -4292,6 +4292,496 @@
       "Values": [
         "Teammate needs rescue · {0} m",
         "구조를 기다리는 동료 · {0} m"
+      ]
+    },
+    {
+      "Key": "class.title",
+      "Values": [
+        "CLASS",
+        "클래스"
+      ]
+    },
+    {
+      "Key": "class.selected",
+      "Values": [
+        "Selected",
+        "선택됨"
+      ]
+    },
+    {
+      "Key": "class.owned",
+      "Values": [
+        "Owned",
+        "보유"
+      ]
+    },
+    {
+      "Key": "class.locked",
+      "Values": [
+        "Locked",
+        "잠김"
+      ]
+    },
+    {
+      "Key": "class.available",
+      "Values": [
+        "Available",
+        "선택 가능"
+      ]
+    },
+    {
+      "Key": "class.learned",
+      "Values": [
+        "Learned",
+        "습득"
+      ]
+    },
+    {
+      "Key": "class.select",
+      "Values": [
+        "Select",
+        "선택"
+      ]
+    },
+    {
+      "Key": "class.invest",
+      "Values": [
+        "Learn · 1 Point",
+        "습득 · 1 포인트"
+      ]
+    },
+    {
+      "Key": "class.respec",
+      "Values": [
+        "Reset tree · Free",
+        "트리 초기화 · 무료"
+      ]
+    },
+    {
+      "Key": "class.buy",
+      "Values": [
+        "Unlock",
+        "해금"
+      ]
+    },
+    {
+      "Key": "class.confirm",
+      "Values": [
+        "Unlock {0} for {1} {2}?",
+        "{1} {2}로 {0} 해금?"
+      ]
+    },
+    {
+      "Key": "class.price",
+      "Values": [
+        "{0} {1}",
+        "{0} {1}"
+      ]
+    },
+    {
+      "Key": "class.gem",
+      "Values": [
+        "Gem",
+        "젬"
+      ]
+    },
+    {
+      "Key": "class.gem_unavailable",
+      "Values": [
+        "Gem · Unavailable",
+        "젬 · 이용 불가"
+      ]
+    },
+    {
+      "Key": "class.progress",
+      "Values": [
+        "Class XP {0} · Points {1} / Earned {2}",
+        "클래스 XP {0} · 남은 포인트 {1} / 획득 {2}"
+      ]
+    },
+    {
+      "Key": "class.next",
+      "Values": [
+        "Next point at {0}",
+        "다음 포인트 {0}"
+      ]
+    },
+    {
+      "Key": "class.gold_available",
+      "Values": [
+        "Saved character Gold {0}",
+        "저장된 캐릭터 Gold {0}"
+      ]
+    },
+    {
+      "Key": "ui.gold",
+      "Values": [
+        "Gold",
+        "Gold"
+      ]
+    },
+    {
+      "Key": "class.has_active",
+      "Values": [
+        "Active ability",
+        "사용 능력"
+      ]
+    },
+    {
+      "Key": "class.passive",
+      "Values": [
+        "Passive abilities",
+        "상시 능력"
+      ]
+    },
+    {
+      "Key": "class.cannot_spend",
+      "Values": [
+        "Check points and prerequisites.",
+        "포인트와 선행 기술을 확인하세요."
+      ]
+    },
+    {
+      "Key": "class.purchased",
+      "Values": [
+        "Class unlocked.",
+        "클래스를 해금했습니다."
+      ]
+    },
+    {
+      "Key": "class.purchase_failed",
+      "Values": [
+        "Could not unlock this class.",
+        "클래스를 해금할 수 없습니다."
+      ]
+    },
+    {
+      "Key": "class.profile_failed",
+      "Values": [
+        "Could not read class progress.",
+        "클래스 성장을 읽을 수 없습니다."
+      ]
+    },
+    {
+      "Key": "class.guard",
+      "Values": [
+        "Hold Guard",
+        "방어 유지"
+      ]
+    },
+    {
+      "Key": "class.guarding",
+      "Values": [
+        "Guarding",
+        "방어 중"
+      ]
+    },
+    {
+      "Key": "class.overclock",
+      "Values": [
+        "Overclock",
+        "과부하"
+      ]
+    },
+    {
+      "Key": "class.mark",
+      "Values": [
+        "Mark",
+        "표식"
+      ]
+    },
+    {
+      "Key": "class.repair",
+      "Values": [
+        "Hold to repair",
+        "길게 눌러 수리"
+      ]
+    },
+    {
+      "Key": "class.dismantle",
+      "Values": [
+        "Hold to recover",
+        "길게 눌러 회수"
+      ]
+    },
+    {
+      "Key": "class.empty_first",
+      "Values": [
+        "Empty the contents first.",
+        "먼저 내용물을 비워주세요."
+      ]
+    },
+    {
+      "Key": "class.hold_hint",
+      "Values": [
+        "Stay still and hold. Damage interrupts repairs.",
+        "멈춰서 길게 누르세요. 피해를 받으면 수리가 중단됩니다."
+      ]
+    },
+    {
+      "Key": "class.holding",
+      "Values": [
+        "Working… {0}s",
+        "정비 중… {0}초"
+      ]
+    },
+    {
+      "Key": "class.heal_ally",
+      "Values": [
+        "Treat ally",
+        "동료 치료"
+      ]
+    },
+    {
+      "Key": "class.medicine_done",
+      "Values": [
+        "Treatment applied.",
+        "치료했습니다."
+      ]
+    },
+    {
+      "Key": "class.quarry",
+      "Values": [
+        "Quarry",
+        "사냥감"
+      ]
+    },
+    {
+      "Key": "ui.skill.metabolism.name",
+      "Values": [
+        "Metabolism",
+        "신진대사"
+      ]
+    },
+    {
+      "Key": "ui.skill.field_care.name",
+      "Values": [
+        "Field Care",
+        "야전 치료"
+      ]
+    },
+    {
+      "Key": "ui.skill.Metabolism.effect",
+      "Values": [
+        "Hunger and thirst drain −{0}% per rank",
+        "단계마다 허기·갈증 소모 −{0}%"
+      ]
+    },
+    {
+      "Key": "ui.skill.MedicineReceived.effect",
+      "Values": [
+        "Medicine healing received +{0}% per rank",
+        "단계마다 받는 의약품 회복량 +{0}%"
+      ]
+    },
+    {
+      "Key": "class.meaning.0",
+      "Values": [
+        "Move",
+        "이동"
+      ]
+    },
+    {
+      "Key": "class.meaning.1",
+      "Values": [
+        "Danger",
+        "위험"
+      ]
+    },
+    {
+      "Key": "class.meaning.2",
+      "Values": [
+        "Resource",
+        "자원"
+      ]
+    },
+    {
+      "Key": "class.distance.0",
+      "Values": [
+        "Nearby",
+        "가까움"
+      ]
+    },
+    {
+      "Key": "class.distance.1",
+      "Values": [
+        "Midrange",
+        "조금 멂"
+      ]
+    },
+    {
+      "Key": "class.distance.2",
+      "Values": [
+        "Far",
+        "멀리"
+      ]
+    },
+    {
+      "Key": "class.distance.3",
+      "Values": [
+        "Very far",
+        "아주 멂"
+      ]
+    },
+    {
+      "Key": "class.condition.fine.0",
+      "Values": [
+        "Healthy",
+        "건강"
+      ]
+    },
+    {
+      "Key": "class.condition.fine.1",
+      "Values": [
+        "Hurt",
+        "상처"
+      ]
+    },
+    {
+      "Key": "class.condition.fine.2",
+      "Values": [
+        "Wounded",
+        "부상"
+      ]
+    },
+    {
+      "Key": "class.condition.fine.3",
+      "Values": [
+        "Critical",
+        "빈사"
+      ]
+    },
+    {
+      "Key": "class.condition.coarse.0",
+      "Values": [
+        "Healthy",
+        "건강"
+      ]
+    },
+    {
+      "Key": "class.condition.coarse.1",
+      "Values": [
+        "Wounded",
+        "부상"
+      ]
+    },
+    {
+      "Key": "class.condition.coarse.2",
+      "Values": [
+        "Critical",
+        "빈사"
+      ]
+    },
+    {
+      "Key": "utility.bearing.0",
+      "Values": [
+        "E",
+        "동"
+      ]
+    },
+    {
+      "Key": "utility.bearing.1",
+      "Values": [
+        "NE",
+        "북동"
+      ]
+    },
+    {
+      "Key": "utility.bearing.2",
+      "Values": [
+        "N",
+        "북"
+      ]
+    },
+    {
+      "Key": "utility.bearing.3",
+      "Values": [
+        "NW",
+        "북서"
+      ]
+    },
+    {
+      "Key": "utility.bearing.4",
+      "Values": [
+        "W",
+        "서"
+      ]
+    },
+    {
+      "Key": "utility.bearing.5",
+      "Values": [
+        "SW",
+        "남서"
+      ]
+    },
+    {
+      "Key": "utility.bearing.6",
+      "Values": [
+        "S",
+        "남"
+      ]
+    },
+    {
+      "Key": "utility.bearing.7",
+      "Values": [
+        "SE",
+        "남동"
+      ]
+    },
+    {
+      "Key": "class.poi.Campsite",
+      "Values": [
+        "Campsite",
+        "야영지"
+      ]
+    },
+    {
+      "Key": "class.poi.Well",
+      "Values": [
+        "Well",
+        "우물"
+      ]
+    },
+    {
+      "Key": "class.poi.Quarry",
+      "Values": [
+        "Quarry",
+        "채석장"
+      ]
+    },
+    {
+      "Key": "class.poi.Graveyard",
+      "Values": [
+        "Graveyard",
+        "묘지"
+      ]
+    },
+    {
+      "Key": "class.poi.Ruin",
+      "Values": [
+        "Ruin",
+        "폐허"
+      ]
+    },
+    {
+      "Key": "class.poi.Mine",
+      "Values": [
+        "Mine",
+        "광산"
+      ]
+    },
+    {
+      "Key": "class.poi.CaveEntrance",
+      "Values": [
+        "CaveEntrance",
+        "동굴 입구"
+      ]
+    },
+    {
+      "Key": "class.poi.GoblinCamp",
+      "Values": [
+        "GoblinCamp",
+        "고블린 야영지"
       ]
     }
   ]

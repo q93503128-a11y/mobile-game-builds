@@ -1,0 +1,84 @@
+2026-10-22T09:48:20.6756106Z	starting	PASS QA admission profile warrior
+2026-10-22T09:48:20.8546246Z	starting	PASS actual LAN Host
+2026-10-22T09:48:20.8791919Z	starting	PASS Host enters world
+2026-10-22T09:48:24.6115814Z	join_r1	command
+2026-10-22T09:48:56.3039852Z	join_r1	PASS pre-spawn restore uses same server clock with no artificial cooldown
+2026-10-22T09:48:56.3050016Z	join_r1	PASS Host validates admission and assigns different classes
+2026-10-22T09:48:56.3060088Z	join_r1	PASS owner Guard request accepted
+2026-10-22T09:48:56.3085203Z	guard_seen	command
+2026-10-22T09:48:56.3685850Z	self_medicine	command
+2026-10-22T09:48:56.5515655Z	self_medicine	PASS Medic self critical medicine Host calculation actual=54
+2026-10-22T09:48:56.5592906Z	ally_medicine	command
+2026-10-22T09:49:00.7486127Z	ally_medicine	PASS ally medicine outgoing*FieldCare exact one item actualHP=65 count=2
+2026-10-22T09:49:02.7331380Z	ally_medicine	PASS Warrior enters MP Downed
+2026-10-22T09:49:02.7348600Z	invalid_medicine	command
+2026-10-22T09:49:03.0445018Z	revive_first	command
+2026-10-22T09:49:04.1386100Z	revive_first	PASS Medic GoldenTime and Stabilize survive release state=Downed extension=3.50744509271804
+2026-10-22T09:49:04.1401315Z	revive_retry	command
+2026-10-22T09:49:04.4947219Z	revive_retry	PASS cancel/restart cannot grant GoldenTime twice
+2026-10-22T09:49:07.6657300Z	revive_retry	PASS actual client Medic 3.2second revive50percent
+2026-10-22T09:49:07.6672573Z	revive_retry	PASS Medic protection longer than base
+2026-10-22T09:49:07.8332162Z	revive_retry	PASS in-session Class lock cannot be replaced
+2026-10-22T09:49:07.8332162Z	revive_retry	PASS unknown capability packet rejected
+2026-10-22T09:49:07.8355346Z	prepare_r2	command
+2026-10-22T09:49:08.7334561Z	prepare_r2	PASS QA admission profile explorer
+2026-10-22T09:49:08.7584028Z	prepare_r2	PASS actual LAN Host
+2026-10-22T09:49:08.7594113Z	prepare_r2	PASS Host enters world
+2026-10-22T09:49:11.6584061Z	join_r2	command
+2026-10-22T09:49:14.6910378Z	join_r2	PASS observed corridor
+2026-10-22T09:49:14.7032184Z	join_r2	PASS Host optic input
+2026-10-22T09:49:14.7092781Z	join_r2	PASS Host observed marker request
+2026-10-22T09:49:14.7102861Z	marker_seen	command
+2026-10-22T09:49:14.8670461Z	marker_seen	PASS network building wood_wall
+2026-10-22T09:49:14.8685636Z	repair	command
+2026-10-22T09:49:16.7307575Z	repair	PASS actual Engineer owner repairs without HP materials
+2026-10-22T09:49:16.7317750Z	overrepair	command
+2026-10-22T09:49:18.5695482Z	overrepair	PASS actual Engineer buffer30 no MaxHP mutation
+2026-10-22T09:49:18.5700565Z	overrepair	PASS network structure buffer absorbs first
+2026-10-22T09:49:18.7024342Z	overrepair	PASS network building ballista
+2026-10-22T09:49:18.7044342Z	overclock_ballista	command
+2026-10-22T09:49:18.7478494Z	overclock_ballista	PASS actual owner Overclock speeds/noammo/noAutoAim ballista
+2026-10-22T09:49:19.0546160Z	overclock_ballista	PASS network building repeater
+2026-10-22T09:49:19.0566917Z	overclock_repeater	command
+2026-10-22T09:49:19.0866459Z	overclock_repeater	PASS actual owner Overclock speeds/noammo/noAutoAim repeater
+2026-10-22T09:49:19.3936264Z	dismantle	command
+2026-10-22T09:49:21.7095741Z	dismantle	PASS actual client dismantle exactly2Wood
+2026-10-22T09:49:21.7360029Z	dismantle	PASS network world save after services
+2026-10-22T09:49:21.7380368Z	reconnect_class	command
+2026-10-22T09:49:25.1620526Z	reconnect_class	PASS Host keeps session class on reconnect
+2026-10-22T09:49:25.1630531Z	leave_rehost	command
+2026-10-22T09:49:25.9558491Z	leave_rehost	PASS actual LAN Host
+2026-10-22T09:49:25.9568494Z	leave_rehost	PASS Host enters world
+2026-10-22T09:49:28.8142350Z	join_r2_rehost	command
+2026-10-22T09:49:31.9055822Z	join_r2_rehost	PASS reHost/profile restored classes
+2026-10-22T09:49:31.9107562Z	join_r2_rehost	PASS temporary marker not saved
+2026-10-22T09:49:31.9117700Z	prepare_r3	command
+2026-10-22T09:49:32.7175072Z	prepare_r3	PASS QA admission profile hunter
+2026-10-22T09:49:32.7388368Z	prepare_r3	PASS actual LAN Host
+2026-10-22T09:49:32.7398453Z	prepare_r3	PASS Host enters world
+2026-10-22T09:49:35.6158938Z	join_r3	command
+2026-10-22T09:49:38.6005618Z	join_r3	PASS network GiantBoar fixture
+2026-10-22T09:49:38.6046514Z	quarry_seen	command
+2026-10-22T09:49:38.7056255Z	quarry_seen	PASS actual Hunter Quarry replicated
+2026-10-22T09:49:38.8352147Z	common_invest	command
+2026-10-22T09:49:39.2626752Z	common_invest	PASS Host commits actual client common investment once
+2026-10-22T09:49:39.2636822Z	common_invest	PASS actual MP Survivor prevents first Downed HP=10 cooldown=270
+2026-10-22T09:49:39.2641913Z	cancel_survival_protection	command
+2026-10-22T09:49:39.5762850Z	cancel_survival_protection	PASS actual owner attack cancels survival protection
+2026-10-22T09:49:39.5935579Z	cancel_survival_protection	PASS MP Survivor second lethal reaches Downed
+2026-10-22T09:49:39.6153635Z	cancel_survival_protection	PASS MP cooldown durable save
+2026-10-22T09:49:39.6183887Z	cancel_survival_protection	PASS MP cooldown + normalized death snapshot
+2026-10-22T09:49:39.6570390Z	cancel_survival_protection	PASS MP Home retains survival cooldown
+2026-10-22T09:49:39.6600890Z	finish	command
+2026-10-22T09:49:40.0380565Z	four-actor-simulation	three simulated server actors; this is not four physical clients
+2026-10-22T09:49:40.0506388Z	four-actor-simulation	PASS QA admission profile medic
+2026-10-22T09:49:40.0721325Z	four-actor-simulation	PASS QA admission profile engineer
+2026-10-22T09:49:40.1045832Z	four-actor-simulation	PASS QA admission profile explorer
+2026-10-22T09:49:40.1445105Z	four-actor-simulation	PASS four simulated actors retain four different classes
+2026-10-22T09:49:40.1515578Z	four-actor-simulation	PASS simulated Medic ally Medicine baseline
+2026-10-22T09:49:40.1531683Z	four-actor-simulation	PASS network building wood_wall
+2026-10-22T09:49:42.2364795Z	four-actor-simulation	PASS simulated Engineer repairs shared structure
+2026-10-22T09:49:46.2914168Z	four-actor-simulation	PASS simulated Medic baseline revive alongside two other classes
+2026-10-22T09:49:49.2988655Z	four-actor-simulation	PERF four actors frames=277 elapsed=3.004662 meanMs=10.84715 managedDelta=-80293888
+2026-10-22T09:49:49.3192541Z	four-actor-simulation	PASS four actor session locks reject replacement
+2026-10-22T09:49:49.9714520Z	complete	complete

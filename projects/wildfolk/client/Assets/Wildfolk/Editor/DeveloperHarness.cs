@@ -45,7 +45,7 @@ namespace Wildfolk.Editor
         }
         public static void RestoreVitals(){var s=Context();SetHealth(s.Player.GetComponent<Health>().Maximum);SetNeeds(90,90);SetStamina(s.Player.GetComponent<PlayerLocomotion>().Stamina.Maximum);}
         public static void GiveCurrentTierGear(){var s=Context();var selected=s.Player.GetComponent<PlayerEquipment>().SelectedItem;var rank=selected!=null && selected.Tier!=null ? selected.Tier.Rank : 1;foreach(var item in s.Catalog.Items)if(item.Tool!=null && item.Tier.Rank==rank)s.Player.Model.Add(item,1);}
-        public static void AddSkillPoint(){var p=Context().Player.GetComponent<PlayerProgression>();if(p.Level<p.Definition.MaximumLevel)p.Reward(p.RequiredXP-(int)p.CurrentXP,0);}
+        public static void AddSkillPoint(){var p=Context().Player.GetComponent<PlayerProgression>();p.Reward(checked((int)(p.RequiredXP-p.CurrentXP)),0);}
         public static int ForceAnimalPopulation()=>Context().World.Animals.Tick();
         public static int ForceCampPopulation()=>Context().GetComponent<GoblinSpawner>().TickCamps();
         public static void SpawnWarband(Vector2 p)=>Context().GetComponent<GoblinSpawner>().SpawnWarband(p,false);
@@ -58,9 +58,9 @@ namespace Wildfolk.Editor
             foreach(var stack in profile.Items)service.Player.Model.Add(stack.Item,stack.Count);service.Player.SelectSlot(0);SetHealth(service.Player.GetComponent<Health>().Maximum);SetNeeds(profile.Hunger,profile.Thirst);SetProgression(profile.XP,profile.Gold);SetStamina(service.Player.GetComponent<PlayerLocomotion>().Stamina.Maximum);
         }
         public static void SetLevel(int level)
-        {var p=Context().Player.GetComponent<PlayerProgression>();level=Mathf.Clamp(level,1,p.Definition.MaximumLevel);long xp=0;for(var i=1;i<level;i++)xp+=p.Definition.RequiredXP(i);p.SetValues(xp,p.Gold);}
+        {var p=Context().Player.GetComponent<PlayerProgression>();level=Mathf.Max(1,level);long xp=checked((long)p.Definition.TotalBefore(level));p.SetValues(xp,p.Gold);}
         public static void SetSkillPoints(int points)
-        {var p=Context().Player.GetComponent<PlayerProgression>();SetLevel(Mathf.Clamp(points/p.Definition.PointsPerLevel+1,1,p.Definition.MaximumLevel));}
+        {var p=Context().Player.GetComponent<PlayerProgression>();SetLevel(Mathf.Max(1,points/p.Definition.PointsPerLevel+1));}
         public static void SetStamina(float current){var move=Context().Player.GetComponent<PlayerLocomotion>();move.Restore(Mathf.Clamp(current,0,move.Stamina.Maximum),0);}
         public static void GiveArmorSet(bool iron,bool equip)
         {var s=Context();foreach(var slot in new[]{"head","body"}){var item=s.Catalog.Item((iron ? "iron_" : "leather_")+slot);s.Player.Model.Add(item,1);if(equip)s.Player.GetComponent<PlayerEquipment>().TryEquip(item);}}

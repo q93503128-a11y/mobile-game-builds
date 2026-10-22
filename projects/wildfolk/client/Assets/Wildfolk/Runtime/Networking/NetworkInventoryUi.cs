@@ -30,6 +30,12 @@ namespace Wildfolk
             }
             Interact.Interaction=player.GetComponent<PlayerInteraction>();
             Bag.onClick.AddListener(session.ToggleInventory);player.GetComponent<PlayerProgression>().Changed+=Refresh;player.Equipment.Changed+=Refresh;L.Changed+=Refresh;
+            var profile=GetComponent<ProfileHud>();if(profile!=null)profile.Player=inventory;
+            var screen=GetComponent<CharacterScreen>();if(screen!=null){screen.Player=inventory;screen.Session=session;screen.TreeButton.onClick=new Button.ButtonClickedEvent();screen.TreeButton.onClick.AddListener(screen.OpenTree);foreach(var b in screen.View.GetComponentsInChildren<Button>(true))if(b.name=="Close"){b.onClick=new Button.ButtonClickedEvent();b.onClick.AddListener(screen.Close);}}
+            var tree=GetComponent<SkillTreeScreen>();if(tree!=null){tree.Growth=player.GetComponent<PlayerProgression>();tree.Session=session;}
+            var needs=GetComponentInChildren<SurvivalHud>(true);if(needs!=null)needs.Player=player.GetComponent<PlayerSurvival>();
+            var gauge=GetComponent<PlayerStaminaHud>();if(gauge!=null){gauge.Player=player.GetComponent<PlayerLocomotion>();gauge.Session=session;}
+            if(profile!=null){var button=profile.Level.transform.parent.GetComponent<Button>();button.onClick=new Button.ButtonClickedEvent();button.onClick.AddListener(session.OpenCharacter);}
             gameObject.SetActive(true);Refresh();
         }
         private void Refresh(){if(owner==null)return;var p=owner.GetComponent<PlayerProgression>();Wallet.text=L.Format("net.wallet",p.Level,p.Experience,p.Gold);AttackIcon.sprite=owner.GetComponent<PlayerPrimaryAction>().ActionIcon(fist);}

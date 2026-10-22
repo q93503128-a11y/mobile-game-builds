@@ -11,7 +11,7 @@ namespace Wildfolk
         private float fullTime;
         private void LateUpdate()
         {
-            if(!Session.IsRunning){Group.alpha=0;return;}
+            if(Player==null || Session==null || !Session.IsRunning){Group.alpha=0;return;}
             var camera=Camera.main;if(camera==null)return;
             RectTransformUtility.ScreenPointToLocalPointInRectangle(CanvasRect,camera.WorldToScreenPoint(Player.transform.position),null,out var position);Anchor.anchoredPosition=position;
             var model=Player.Stamina;Arc.Fill=model.Current/model.Maximum;

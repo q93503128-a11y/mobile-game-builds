@@ -1,0 +1,15 @@
+2026-10-22T05:49:22.5057112Z	starting	PASS QA admission profile warrior
+2026-10-22T05:49:22.8277356Z	starting	PASS actual LAN Host
+2026-10-22T05:49:22.8574476Z	starting	PASS Host enters world
+2026-10-22T05:49:27.8931587Z	join_r1	command
+2026-10-22T05:50:08.5898923Z	join_r1	PASS Host validates admission and assigns different classes
+2026-10-22T05:50:08.5976005Z	join_r1	PASS owner Guard request accepted
+2026-10-22T05:50:08.5995919Z	guard_seen	command
+2026-10-22T05:50:08.6843263Z	self_medicine	command
+2026-10-22T05:50:08.8266993Z	self_medicine	PASS Medic self critical medicine Host calculation actual=54
+2026-10-22T05:50:08.8339929Z	ally_medicine	command
+2026-10-22T05:50:13.0041658Z	ally_medicine	FAIL ally medicine outgoing*FieldCare exact one item
+2026-10-22T05:50:13.0085011Z	failed	System.InvalidOperationException: ally medicine outgoing*FieldCare exact one item
+  at Wildfolk.Editor.ClassLanQa.Check (System.Boolean condition, System.String text) [0x00024] in C:\UnityProjects\Wildfolk\Assets\Wildfolk\Editor\ClassLanQa.cs:33
+  at Wildfolk.Editor.ClassLanQa+<Authority>d__45.MoveNext () [0x00414] in C:\UnityProjects\Wildfolk\Assets\Wildfolk\Editor\ClassLanQa.cs:101
+  at Wildfolk.Editor.ClassLanQa+<Guard>d__19.MoveNext () [0x00046] in C:\UnityProjects\Wildfolk\Assets\Wildfolk\Editor\ClassLanQa.cs:29

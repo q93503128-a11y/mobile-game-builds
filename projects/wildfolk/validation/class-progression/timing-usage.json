@@ -1,0 +1,105 @@
+{
+  "startSHA": "cbe3c14115ee5529eed7babd062df801e7981b99",
+  "startedUTC": "2026-10-22T04:31:57+00:00",
+  "events": [
+    {
+      "stage": "source audit and external comparison",
+      "UTC": "2026-10-22T04:38:35.761872+00:00"
+    },
+    {
+      "stage": "audit/research gate completed; implementation begins",
+      "UTC": "2026-10-22T04:40:25.824251+00:00"
+    },
+    {
+      "stage": "first compile and asset authoring complete; objective QA begins",
+      "UTC": "2026-10-22T05:05:15.684395+00:00"
+    },
+    {
+      "stage": "local models20 and gameplay9 cases passed; actual LAN validation",
+      "UTC": "2026-10-22T05:46:05.905367+00:00"
+    },
+    {
+      "stage": "canonical class/profile/building documentation",
+      "UTC": "2026-10-22T05:50:57.157614+00:00"
+    },
+    {
+      "stage": "user requested pause; compiled checkpoint and handoff, no commit/push",
+      "UTC": "2026-10-22T06:22:36.797944+00:00"
+    },
+    {
+      "stage": "resume: fetch remote unchanged; remaining LAN/UI/regression validation",
+      "UTC": "2026-10-22T09:43:31.549681+00:00"
+    },
+    {
+      "stage": "final LAN complete; related53 and actual visible8/UI inputs validated; review and commit preparation",
+      "UTC": "2026-10-22T09:59:51.363220+00:00"
+    }
+  ],
+  "usage": [
+    {
+      "UTC": "2026-10-22T04:38:35.766044+00:00",
+      "fiveHourUsedPercent": 73,
+      "weeklyUsedPercent": 67,
+      "scope": "account-wide rounded snapshot; not task tokens or cost"
+    },
+    {
+      "UTC": "2026-10-22T05:46:05.896351+00:00",
+      "fiveHourUsedPercent": 52,
+      "weeklyUsedPercent": 78,
+      "scope": "account-wide rounded; other work may contribute; 5h window reset during task"
+    },
+    {
+      "UTC": "2026-10-22T06:22:36.802869+00:00",
+      "fiveHourUsedPercent": 83,
+      "weeklyUsedPercent": 82,
+      "scope": "account-wide rounded; not exact task usage; 5h reset during task"
+    },
+    {
+      "UTC": "2026-10-22T09:43:31.557281+00:00",
+      "fiveHourUsedPercent": 86,
+      "weeklyUsedPercent": 83,
+      "scope": "account-wide rounded resume snapshot; not task tokens"
+    },
+    {
+      "UTC": "2026-10-22T09:59:51.371102+00:00",
+      "fiveHourUsedPercent": 10,
+      "weeklyUsedPercent": 85,
+      "scope": "account-wide rounded; 5h reset during resume, not task tokens/cost"
+    }
+  ],
+  "checkpointUTC": "2026-10-22T06:23:18.073406+00:00",
+  "stages": [
+    {
+      "stage": "audit/research",
+      "startUTC": "2026-10-22T04:31:57+00:00",
+      "endUTC": "2026-10-22T04:40:25.824251+00:00",
+      "elapsedSeconds": 508.824,
+      "note": "wall clock; includes tool waits and overlapping documentation, not active CPU or task token usage"
+    },
+    {
+      "stage": "implementation/first authoring",
+      "startUTC": "2026-10-22T04:40:25.824251+00:00",
+      "endUTC": "2026-10-22T05:05:15.684395+00:00",
+      "elapsedSeconds": 1489.86,
+      "note": "wall clock; includes tool waits and overlapping documentation, not active CPU or task token usage"
+    },
+    {
+      "stage": "local objective QA and fixes",
+      "startUTC": "2026-10-22T05:05:15.684395+00:00",
+      "endUTC": "2026-10-22T05:46:05.905367+00:00",
+      "elapsedSeconds": 2450.221,
+      "note": "wall clock; includes tool waits and overlapping documentation, not active CPU or task token usage"
+    },
+    {
+      "stage": "actual LAN, fixes, documentation, handoff",
+      "startUTC": "2026-10-22T05:46:05.905367+00:00",
+      "endUTC": "2026-10-22T06:23:18.073406+00:00",
+      "elapsedSeconds": 2232.168,
+      "note": "wall clock; includes tool waits and overlapping documentation, not active CPU or task token usage"
+    }
+  ],
+  "resumeStartUTC": "2026-10-22T09:42:41+00:00",
+  "resumeValidatedUTC": "2026-10-22T10:01:22.687960+00:00",
+  "resumeElapsedSeconds": 1121.68796,
+  "note": "Pause interval excluded. Wall time includes tool waits; account usage snapshots are rounded and not task tokens."
+}

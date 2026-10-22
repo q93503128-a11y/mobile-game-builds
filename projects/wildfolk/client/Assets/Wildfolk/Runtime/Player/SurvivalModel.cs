@@ -11,6 +11,7 @@ namespace Wildfolk
         public bool CanSprint=>ConditionRatio>=Definition.CriticalThreshold;
         public float SprintEfficiency=>CanSprint ? Mathf.Lerp(.55f,1,Mathf.InverseLerp(Definition.CriticalThreshold,Definition.RegenThreshold,ConditionRatio)) : 0;
         public float MovementCondition=>ConditionRatio<Definition.MovementPenaltyThreshold ? Definition.CriticalMoveMultiplier : 1;
+        public float MetabolicMultiplier {get;set;}=1;
         private float hungerClock, thirstClock;
         public float RecoveryBlockRemaining {get;private set;}
         public float DrainPenaltyRemaining {get;private set;}
@@ -36,8 +37,8 @@ namespace Wildfolk
         private int AdvanceSegment(float seconds,float thirstRate)
         {
             if(seconds<=0)return 0;
-            var damage=AdvanceMeter(Hunger,Definition.HungerPerSecond,seconds,ref hungerClock)+AdvanceMeter(Thirst,thirstRate,seconds,ref thirstClock);
-            Hunger=Mathf.Max(0,Hunger-Definition.HungerPerSecond*seconds);Thirst=Mathf.Max(0,Thirst-thirstRate*seconds);return damage;
+            var damage=AdvanceMeter(Hunger,Definition.HungerPerSecond*MetabolicMultiplier,seconds,ref hungerClock)+AdvanceMeter(Thirst,thirstRate*MetabolicMultiplier,seconds,ref thirstClock);
+            Hunger=Mathf.Max(0,Hunger-Definition.HungerPerSecond*MetabolicMultiplier*seconds);Thirst=Mathf.Max(0,Thirst-thirstRate*MetabolicMultiplier*seconds);return damage;
         }
         public void SetMeters(float hunger,float thirst)
         {Hunger=Mathf.Clamp(hunger,0,Definition.MaximumHunger);Thirst=Mathf.Clamp(thirst,0,Definition.MaximumThirst);hungerClock=thirstClock=0;}
@@ -54,10 +55,10 @@ namespace Wildfolk
         }
         public bool CanRestore(ConsumableDefinition food) => food!=null &&
             ((food.HungerRestore>0 && Hunger<Definition.MaximumHunger) || (food.ThirstRestore>0 && Thirst<Definition.MaximumThirst));
-        public void Restore(ConsumableDefinition food)
+        public void Restore(ConsumableDefinition food,float nutritionMultiplier=1)
         {
-            Hunger=Mathf.Min(Definition.MaximumHunger,Hunger+food.HungerRestore);
-            Thirst=Mathf.Min(Definition.MaximumThirst,Thirst+food.ThirstRestore);
+            Hunger=Mathf.Min(Definition.MaximumHunger,Hunger+food.HungerRestore*nutritionMultiplier);
+            Thirst=Mathf.Min(Definition.MaximumThirst,Thirst+food.ThirstRestore*nutritionMultiplier);
             if(Hunger>0) hungerClock=0;if(Thirst>0) thirstClock=0;
             RecoveryBlockRemaining=Mathf.Max(RecoveryBlockRemaining,food.RecoveryBlockSeconds);
             DrainPenaltyRemaining=Mathf.Max(DrainPenaltyRemaining,food.DrainPenaltySeconds);

@@ -12,6 +12,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea85a5ebaf6f62646a87d747548e1a2f, type: 3}
   m_Name: BallistaPlacement
   m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.PlaceableDefinition
+  RepairMaterials:
+  - Item: {fileID: 11400000, guid: 431287b464f63f4408828d4053bac6eb, type: 2}
+    Count: 3
+    Charges: 0
+    Quality: 0
+  ConstructionMaterials:
+  - Item: {fileID: 11400000, guid: 431287b464f63f4408828d4053bac6eb, type: 2}
+    Count: 10
+    Charges: 0
+    Quality: 0
+  - Item: {fileID: 11400000, guid: 7829ba341a701304a8ee1b5e2bf83611, type: 2}
+    Count: 3
+    Charges: 0
+    Quality: 0
+  - Item: {fileID: 11400000, guid: 6c8ade8d88abbee42b65fe778b0e7777, type: 2}
+    Count: 2
+    Charges: 0
+    Quality: 0
+  - Item: {fileID: 11400000, guid: 53ed9b7ff312f1e4eb49bdb67b5df0cf, type: 2}
+    Count: 1
+    Charges: 0
+    Quality: 0
+  RecoverPortable: 0
   Item: {fileID: 11400000, guid: 34c36c5275c4e0d44b65847f6a41164c, type: 2}
   Prefab: {fileID: 3385274447091358857, guid: 6d3871f5486fbdf4bbfdde7f468c0886, type: 3}
   Vitality: {fileID: 11400000, guid: 974f3aac9f4bd1c45beb8827bdbacf96, type: 2}

@@ -248,6 +248,7 @@ GameObject:
   - component: {fileID: 5648470760736251602}
   - component: {fileID: 6824138812268636180}
   - component: {fileID: 6790739940928742180}
+  - component: {fileID: 2737453994025397355}
   m_Layer: 0
   m_Name: ReinforcedWall
   m_TagString: Untagged
@@ -632,3 +633,15 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &2737453994025397355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5685525351267656795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55336593be201514ba1d6d33f157339c, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.StructureMaintenance

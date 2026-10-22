@@ -12,6 +12,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea85a5ebaf6f62646a87d747548e1a2f, type: 3}
   m_Name: BlastFurnacePlacement
   m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.PlaceableDefinition
+  RepairMaterials:
+  - Item: {fileID: 11400000, guid: c5b679876e2427346848b9e6432a186c, type: 2}
+    Count: 1
+    Charges: 0
+    Quality: 0
+  - Item: {fileID: 11400000, guid: 30904e05765ac844ab5bb28b855a15db, type: 2}
+    Count: 2
+    Charges: 0
+    Quality: 0
+  - Item: {fileID: 11400000, guid: 431287b464f63f4408828d4053bac6eb, type: 2}
+    Count: 1
+    Charges: 0
+    Quality: 0
+  ConstructionMaterials:
+  - Item: {fileID: 11400000, guid: f9d01f6ba03eb6844b137faebea8612b, type: 2}
+    Count: 3
+    Charges: 0
+    Quality: 0
+  - Item: {fileID: 11400000, guid: c5b679876e2427346848b9e6432a186c, type: 2}
+    Count: 3
+    Charges: 0
+    Quality: 0
+  - Item: {fileID: 11400000, guid: 30904e05765ac844ab5bb28b855a15db, type: 2}
+    Count: 8
+    Charges: 0
+    Quality: 0
+  - Item: {fileID: 11400000, guid: 431287b464f63f4408828d4053bac6eb, type: 2}
+    Count: 4
+    Charges: 0
+    Quality: 0
+  RecoverPortable: 0
   Item: {fileID: 11400000, guid: 29c6da3d3a34e0344af6ba5e3de25c95, type: 2}
   Prefab: {fileID: 3988979176521910607, guid: 4ae1cf8ce06fe3c4089a43aae1dc197e, type: 3}
   Vitality: {fileID: 11400000, guid: 7a873b7e7814f8c4691365ce07930dc4, type: 2}
@@ -19,6 +50,8 @@ MonoBehaviour:
   MaximumDistance: 2.8
   Station: 4
   Tier: {fileID: 11400000, guid: be3c17177552c5b49aaf9593cea187c3, type: 2}
+  IsBeacon: 0
+  Turret: {fileID: 0}
   IsBarrier: 0
   IsDoor: 0
   StorageSlots: 0

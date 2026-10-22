@@ -5,7 +5,7 @@ namespace Wildfolk
     [CreateAssetMenu(menuName="Wildfolk/Consumable")]
     public sealed class ConsumableDefinition : ScriptableObject
     {
-        public ConsumableKind Kind;
+        public ConsumableKind Kind;[Min(0)]public float ApplicationSeconds;
         public MealDefinition Meal;
         [Min(0)] public int HealthRestore;
         [Min(0)] public int GradualHealthRestore;

@@ -109,11 +109,11 @@ namespace Wildfolk
             if(d.Attack==WildlifeAttack.Pulse)
             {
                 impact=true;var count=Physics2D.OverlapCircle(after,d.Reach,new ContactFilter2D{useTriggers=true},contacts);var unique=0;
-                for(var i=0;i<count;i++){var target=contacts[i].GetComponentInParent<Health>();if(target==null || target.GetComponent<PlayerInventory>()==null || !target.IsAlive || !LineClear(after,target))continue;var duplicate=false;for(var j=0;j<unique;j++)if(struck[j]==target)duplicate=true;if(duplicate)continue;struck[unique++]=target;if(target.ApplyDamage(d.Damage)>0)Impacts++;}
+                for(var i=0;i<count;i++){var target=contacts[i].GetComponentInParent<Health>();if(target==null || target.GetComponent<PlayerInventory>()==null || !target.IsAlive || !LineClear(after,target))continue;var duplicate=false;for(var j=0;j<unique;j++)if(struck[j]==target)duplicate=true;if(duplicate)continue;struck[unique++]=target;if(target.ApplyDamage(d.Damage,false,null,GetComponent<Health>())>0)Impacts++;}
                 return;
             }
             if(Target==null || ContactDistance(Target,before,after)>d.Reach || !LineClear(after,Target))return;
-            if(Target.ApplyDamage(d.Damage)>0)Impacts++;impact=true;
+            if(Target.ApplyDamage(d.Damage,false,null,GetComponent<Health>())>0)Impacts++;impact=true;
         }
         private static float ContactDistance(Health target,Vector2 before,Vector2 after)
         {

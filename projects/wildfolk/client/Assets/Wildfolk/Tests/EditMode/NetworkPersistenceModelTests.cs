@@ -17,7 +17,7 @@ namespace Wildfolk.Tests
         }
         [Test]public void LegacyV4AndV11MigrateTo12PreservingCorePlayerPayload()
         {
-            var game=ValidGame();game.Version=4;var before=JsonUtility.ToJson(game.Player);Rules.Validate(game);Assert.That(game.Version,Is.EqualTo(12));var death=game.Player.Death;Assert.That(death.Home,Is.EqualTo(Vector2.zero));game.Player.Death=null;Assert.That(JsonUtility.ToJson(game.Player),Is.EqualTo(before));game.Player.Death=death;Assert.That(game.Multiplayer,Is.Null);var restored=SaveRepository.Decode(SaveRepository.Encode(game));Rules.Validate(restored);Assert.That(restored.Seed,Is.EqualTo(game.Seed));Assert.That(restored.Player.Inventory.Length,Is.EqualTo(36));
+            var game=ValidGame();game.Version=4;var before=JsonUtility.ToJson(game.Player);Rules.Validate(game);Assert.That(game.Version,Is.EqualTo(13));var death=game.Player.Death;Assert.That(death.Home,Is.EqualTo(Vector2.zero));game.Player.Death=null;Assert.That(JsonUtility.ToJson(game.Player),Is.EqualTo(before));game.Player.Death=death;Assert.That(game.Multiplayer,Is.Null);var restored=SaveRepository.Decode(SaveRepository.Encode(game));Rules.Validate(restored);Assert.That(restored.Seed,Is.EqualTo(game.Seed));Assert.That(restored.Player.Inventory.Length,Is.EqualTo(36));
         }
         [Test]public void ParticipantMetadataRejectsDuplicatesInvalidIdentityAndMismatchedHost()
         {

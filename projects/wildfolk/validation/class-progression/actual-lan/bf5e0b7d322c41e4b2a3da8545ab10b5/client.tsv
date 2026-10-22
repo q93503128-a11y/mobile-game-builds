@@ -1,0 +1,19 @@
+2026-10-22T06:16:58.9929630Z	starting	PASS QA admission profile medic
+2026-10-22T06:16:59.0935676Z	prepare_r2	PASS QA admission profile engineer
+2026-10-22T06:16:59.0988164Z	prepare_r2	ack prepare_r2
+2026-10-22T06:17:03.8414075Z	join_r2	PASS actual LAN join
+2026-10-22T06:17:11.7257384Z	join_r2	PASS session class locked
+2026-10-22T06:17:11.7357630Z	join_r2	ack join_r2
+2026-10-22T06:17:12.0101046Z	marker_seen	PASS Explorer/Engineer replicate
+2026-10-22T06:17:12.0132314Z	marker_seen	ack marker_seen
+2026-10-22T06:17:14.3177283Z	repair	ack repair
+2026-10-22T06:17:16.1812089Z	overrepair	ack overrepair
+2026-10-22T06:17:16.4792974Z	overclock_ballista	ack overclock_ballista
+2026-10-22T06:17:16.8972486Z	overclock_repeater	ack overclock_repeater
+2026-10-22T06:17:19.5794457Z	dismantle	ack dismantle
+2026-10-22T06:17:20.4791065Z	reconnect_class	PASS actual LAN join
+2026-10-22T06:17:26.1939846Z	reconnect_class	PASS same-session reconnect restores locked Engineer despite different Lobby claim
+2026-10-22T06:17:26.1975247Z	reconnect_class	ack reconnect_class
+2026-10-22T06:17:26.8802689Z	leave_rehost	ack leave_rehost
+2026-10-22T06:19:35.4530182Z	finish	ack finish
+2026-10-22T06:19:35.4545412Z	complete	complete

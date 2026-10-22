@@ -187,3 +187,7 @@ Content Expansion2는 이 패스로 마감한다. 다음 큰 작업은 Skill Poi
 ## Death / Revive / Respawn Foundation
 
 Item134/Recipe111과 기존 콘텐츠는 유지한다. 신규 장비/재료/Station/Class/Boss/사망 가방이 없다. Save12/Protocol19로 플레이어 death/Home 기반을 추가했다. [정책·외부 비교·검수](../validation/death-revive-respawn/REVIEW.md). 다음은 Class/Class Point/Class Skill Tree이며 Medic은 공용 revive modifier 경계에서 설계한다.
+
+## Character / Class Foundation (2026-10-22)
+
+Item134/Recipe111, generation3 유지. 공용 무제한Level·6Skill, 로컬 Class profile/6Class/54node, Repair/Dismantle/지원 능력. Save13/Profile1/Protocol20. [성장 정본](CHARACTER_PROGRESSION.md), [근거·검수](../validation/class-progression/REVIEW.md).

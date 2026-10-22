@@ -12,6 +12,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea85a5ebaf6f62646a87d747548e1a2f, type: 3}
   m_Name: ReinforcedChestPlacement
   m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.PlaceableDefinition
+  RepairMaterials:
+  - Item: {fileID: 11400000, guid: 431287b464f63f4408828d4053bac6eb, type: 2}
+    Count: 2
+    Charges: 0
+    Quality: 0
+  - Item: {fileID: 11400000, guid: c5b679876e2427346848b9e6432a186c, type: 2}
+    Count: 1
+    Charges: 0
+    Quality: 0
+  ConstructionMaterials:
+  - Item: {fileID: 11400000, guid: 431287b464f63f4408828d4053bac6eb, type: 2}
+    Count: 8
+    Charges: 0
+    Quality: 0
+  - Item: {fileID: 11400000, guid: c5b679876e2427346848b9e6432a186c, type: 2}
+    Count: 2
+    Charges: 0
+    Quality: 0
+  RecoverPortable: 0
   Item: {fileID: 11400000, guid: 034dc0c170161be4a9bed7298c9eb842, type: 2}
   Prefab: {fileID: 5151198320160700257, guid: 8bbd4e17c8fc52e43abb677bde1f7b9d, type: 3}
   Vitality: {fileID: 11400000, guid: 12185f04b145b6540add5c8ee1f798cd, type: 2}
@@ -19,6 +38,8 @@ MonoBehaviour:
   MaximumDistance: 2.8
   Station: 0
   Tier: {fileID: 11400000, guid: 5945e678712f7744cbe23200644f4d02, type: 2}
+  IsBeacon: 0
+  Turret: {fileID: 0}
   IsBarrier: 0
   IsDoor: 0
   StorageSlots: 36

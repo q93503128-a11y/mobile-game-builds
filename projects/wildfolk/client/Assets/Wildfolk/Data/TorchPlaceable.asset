@@ -12,6 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea85a5ebaf6f62646a87d747548e1a2f, type: 3}
   m_Name: TorchPlaceable
   m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.PlaceableDefinition
+  RepairMaterials:
+  - Item: {fileID: 11400000, guid: 431287b464f63f4408828d4053bac6eb, type: 2}
+    Count: 1
+    Charges: 0
+    Quality: 0
+  ConstructionMaterials:
+  - Item: {fileID: 11400000, guid: 431287b464f63f4408828d4053bac6eb, type: 2}
+    Count: 1
+    Charges: 0
+    Quality: 0
+  - Item: {fileID: 11400000, guid: 745a86eb96e288b4abcf496de399103a, type: 2}
+    Count: 1
+    Charges: 0
+    Quality: 0
+  RecoverPortable: 1
   Item: {fileID: 11400000, guid: 50df494cb3c442b478a85bf768889d80, type: 2}
   Prefab: {fileID: 5067015521679372732, guid: 0958d9ea19da63048b7e3e49cd755895, type: 3}
   Vitality: {fileID: 11400000, guid: 3845ab3173fed244fa71d44e1f2f86e2, type: 2}
@@ -19,6 +34,8 @@ MonoBehaviour:
   MaximumDistance: 3.5
   Station: 0
   Tier: {fileID: 0}
+  IsBeacon: 0
+  Turret: {fileID: 0}
   IsBarrier: 0
   IsDoor: 0
   StorageSlots: 0

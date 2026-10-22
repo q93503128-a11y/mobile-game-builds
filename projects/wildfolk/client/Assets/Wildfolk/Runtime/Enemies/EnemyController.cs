@@ -89,7 +89,7 @@ namespace Wildfolk
                     if(strikeTarget!=null && strikeTarget.IsAlive && strikeCollider!=null && strikeCollider.enabled)
                     {
                         var toward=(strikeTarget==PlayerHealth ? (Vector2)PlayerHealth.transform.position : strikeCollider.ClosestPoint(body.position))-body.position;
-                        if(toward.magnitude<=Reach && (toward.sqrMagnitude<.001f || Vector2.Dot(strikeDirection,toward.normalized)>.4f))strikeTarget.ApplyDamage(Damage);
+                        if(toward.magnitude<=Reach && (toward.sqrMagnitude<.001f || Vector2.Dot(strikeDirection,toward.normalized)>.4f))strikeTarget.ApplyDamage(Damage,false,null,OwnHealth);
                     }
                     SetState(EnemyState.Recovery);break;
                 case EnemyState.Recovery:

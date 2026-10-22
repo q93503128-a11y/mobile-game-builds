@@ -463,6 +463,7 @@ GameObject:
   - component: {fileID: 3385274447091358857}
   - component: {fileID: 2869001505386399791}
   - component: {fileID: 6761088422026332990}
+  - component: {fileID: 1341804342985420402}
   m_Layer: 0
   m_Name: Workbench
   m_TagString: Untagged
@@ -631,3 +632,15 @@ MonoBehaviour:
   Health: {fileID: 7554568579630103570}
   Visual: {fileID: 272834605111812719}
   Reaction: 1
+--- !u!114 &1341804342985420402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9052956572469100118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55336593be201514ba1d6d33f157339c, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.StructureMaintenance
