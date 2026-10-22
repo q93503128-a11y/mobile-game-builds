@@ -21,7 +21,7 @@ namespace Wildfolk
         public SavedGame Capture()=>WorldSnapshotCodec.Capture(World,Clock,Player);
         public bool Save()
         {
-            if(World.Map==null || !Player.GetComponent<Health>().IsAlive)return false;
+            if(World.Map==null)return false;
             try{Repository.Write(Capture(),Validate);LastError=null;return true;}
             catch(Exception error)when(error is InvalidDataException || error is IOException || error is ArgumentException || error is InvalidOperationException){LastError=error.Message;return false;}
         }

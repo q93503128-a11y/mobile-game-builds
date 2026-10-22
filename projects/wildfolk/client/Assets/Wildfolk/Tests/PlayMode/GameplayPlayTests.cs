@@ -238,19 +238,20 @@ namespace Wildfolk.Tests
             Assert.That(hud.View.activeSelf,Is.False);Assert.That(BossIdentity.Active,Is.Null);
         }
 
-        [UnityTest] public IEnumerator DefeatCanRestartThroughActualUIButton()
+        [UnityTest] public IEnumerator DeathCanReturnHomeThroughActualUIButton()
         {
+            var before=inventory.Model.Capture();var priorXp=player.GetComponent<PlayerProgression>().Experience;
             player.GetComponent<Health>().ApplyDamage(player.GetComponent<Health>().Maximum);yield return null;
-            Assert.That(hud.DefeatPanel.activeSelf,Is.True);
-            var button=hud.DefeatPanel.transform.Find("Defeat Panel/Restart").GetComponent<Button>();
+            Assert.That(Object.FindFirstObjectByType<DeathHud>().DeadView.activeSelf,Is.True);
+            var button=Object.FindFirstObjectByType<DeathHud>().Home;
             yield return Click(button);yield return null;yield return null;
             var session=Object.FindFirstObjectByType<GameplaySession>();
             Assert.That(session.State,Is.EqualTo(SessionState.Running));
             Assert.That(session.PlayerHealth.Current,Is.EqualTo(session.PlayerHealth.Maximum));
             Assert.That(Time.timeScale,Is.EqualTo(1));
-            var restarted=Object.FindFirstObjectByType<PlayerEquipment>();
-            for(var i=0;i<restarted.Inventory.Model.Capacity;i++) Assert.That(restarted.Inventory.Model.GetSlot(i).IsEmpty,Is.True);
-            Assert.That(restarted.ActiveTool,Is.Null);
+            var restored=Object.FindFirstObjectByType<PlayerEquipment>();
+            for(var i=0;i<restored.Inventory.Model.Capacity;i++){var s=restored.Inventory.Model.Capture()[i];Assert.That(s.Item,Is.EqualTo(before[i].Item));Assert.That(s.Count,Is.EqualTo(before[i].Count));}
+            Assert.That(player.GetComponent<PlayerProgression>().Experience,Is.EqualTo(priorXp));
         }
 
         [UnityTest] public IEnumerator FacingMovesEyesAndHandsWithoutRotatingBodyAndKeepsLastDirection()

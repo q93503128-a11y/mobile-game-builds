@@ -26,7 +26,7 @@ namespace Wildfolk
             world.FlushPending();Ready=true;
         }
         public void RestorePlayer(NetworkPlayer player)
-        {if(!world.IsAuthority)throw new InvalidOperationException("Host required.");if(participants.TryGetValue(player.ProfileId,out var state))PlayerSnapshotCodec.Apply(player.GetComponent<PlayerInventory>(),state,world.Catalog);}
+        {if(!world.IsAuthority)throw new InvalidOperationException("Host required.");if(participants.TryGetValue(player.ProfileId,out var state))PlayerSnapshotCodec.Apply(player.GetComponent<PlayerInventory>(),state,world.Catalog);else player.GetComponent<PlayerDeath>()?.InitializeHome(world.World.Map.Spawn);}
         public void Remember(NetworkPlayer player)
         {if(world.IsAuthority && Ready && LocalPlayerIdentity.Valid(player.ProfileId))participants[player.ProfileId]=PlayerSnapshotCodec.Capture(player.GetComponent<PlayerInventory>());}
         public SavedGame Capture()

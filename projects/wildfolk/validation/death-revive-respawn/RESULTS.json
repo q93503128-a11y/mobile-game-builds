@@ -1,0 +1,49 @@
+{
+  "start_sha": "e073c3401e99bca9e9441976a8cdac928418685a",
+  "grade": "A - foundation scope; production ad/currency provider unavailable",
+  "content": {
+    "items": 134,
+    "recipes": 111,
+    "save": 12,
+    "protocol": 19,
+    "generation": 3
+  },
+  "latest_passed_unique": {
+    "EditMode": 47,
+    "PlayMode_including_actual_LAN": 13
+  },
+  "actual_two_process_LAN": true,
+  "actual_four_clients": false,
+  "four_server_actor_simulation": true,
+  "screenshots": {
+    "count": 14,
+    "resolution": [
+      1920,
+      1080
+    ],
+    "visible_host_only": true
+  },
+  "source_validator": {
+    "result": "PASS",
+    "unique_guids": 1377
+  },
+  "data_validator": "PASS",
+  "original_save_sha_and_mtime_unchanged": true,
+  "production_rewarded_provider": "unavailable",
+  "production_premium_wallet": "unavailable",
+  "qa_gem_cost": 7,
+  "production_gem_cost": 0,
+  "gem_hard_cap": null,
+  "ad_per_expedition_successes": 1,
+  "untested": [
+    "Android device",
+    "real touch",
+    "production ads/billing/account wallet",
+    "Relay",
+    "4 physical clients",
+    "latency/loss",
+    "long economy/fun"
+  ],
+  "attempts": "test-attempts.json",
+  "source_review": "REVIEW.md"
+}

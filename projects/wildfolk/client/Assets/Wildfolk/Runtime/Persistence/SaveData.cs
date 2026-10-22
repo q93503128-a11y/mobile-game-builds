@@ -8,7 +8,7 @@ namespace Wildfolk
     [Serializable] public sealed class SavedSkill {public string Id;public int Rank;}
     [Serializable] public sealed class GrowthSnapshot {public int Level,Points;public long CurrentXP;public SavedSkill[] Skills;}
     [Serializable] public sealed class PlayerSnapshot
-    {public Vector2 Position;public int HP,Selected;public float CombatRecovery;public SurvivalSnapshot Survival;public SavedStack[] Inventory;public long XP,Gold;public string HeadArmor,BodyArmor,Utility;public GrowthSnapshot Growth;public float Stamina,StaminaWait;public string HomeId;public NavigationMode NavigationMode;public string BeaconId;public string[] SeenRecipes=Array.Empty<string>();}
+    {public DeathSnapshot Death;public Vector2 Position;public int HP,Selected;public float CombatRecovery;public SurvivalSnapshot Survival;public SavedStack[] Inventory;public long XP,Gold;public string HeadArmor,BodyArmor,Utility;public GrowthSnapshot Growth;public float Stamina,StaminaWait;public string HomeId;public NavigationMode NavigationMode;public string BeaconId;public string[] SeenRecipes=Array.Empty<string>();}
     [Serializable] public sealed class ResourceSnapshot
     {public string Id;public int Rule,HP;public Vector2 Position;public float Scale;public bool Destroyed;public double RespawnAt;}
     [Serializable] public sealed class AnimalSnapshot
@@ -33,7 +33,7 @@ namespace Wildfolk
     {public int Schema;public bool Legacy,Opened;public uint Revision;public int Water;public double RefillAt;public SavedStack[] Loot=Array.Empty<SavedStack>();public ResourceSnapshot[] Nodes=Array.Empty<ResourceSnapshot>();}
     [Serializable] public sealed class SavedGame
     {
-        public int Version=11,Seed;
+        public int Version=12,Seed;
         public int BaseGenerationVersion=1;
         public WorldFeatureSnapshot[] Features=Array.Empty<WorldFeatureSnapshot>();
         public bool IsMultiplayer;

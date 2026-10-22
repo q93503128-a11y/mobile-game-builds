@@ -1,0 +1,376 @@
+{
+  "attempts": [
+    {
+      "file": "models.xml",
+      "total": "43",
+      "passed": "41",
+      "failed": "2",
+      "duration_seconds": "33.8954362"
+    },
+    {
+      "file": "flow-corrected.xml",
+      "total": "2",
+      "passed": "0",
+      "failed": "2",
+      "duration_seconds": "46.0984176"
+    },
+    {
+      "file": "models-final.xml",
+      "total": "7",
+      "passed": "7",
+      "failed": "0",
+      "duration_seconds": "7.485751"
+    },
+    {
+      "file": "lan-client.xml",
+      "total": "1",
+      "passed": "0",
+      "failed": "1",
+      "duration_seconds": "67.0814604"
+    },
+    {
+      "file": "flow-final.xml",
+      "total": "12",
+      "passed": "8",
+      "failed": "4",
+      "duration_seconds": "156.6375111"
+    },
+    {
+      "file": "lan-client-final.xml",
+      "total": "1",
+      "passed": "1",
+      "failed": "0",
+      "duration_seconds": "53.0881388"
+    },
+    {
+      "file": "regression-corrected.xml",
+      "total": "5",
+      "passed": "4",
+      "failed": "1",
+      "duration_seconds": "70.3801263"
+    },
+    {
+      "file": "network-regression-final.xml",
+      "total": "1",
+      "passed": "0",
+      "failed": "1",
+      "duration_seconds": "5.8073164"
+    },
+    {
+      "file": "network-regression-clearance.xml",
+      "total": "1",
+      "passed": "1",
+      "failed": "0",
+      "duration_seconds": "6.6096132"
+    },
+    {
+      "file": "persistence-models.xml",
+      "total": "3",
+      "passed": "3",
+      "failed": "0",
+      "duration_seconds": "0.2164333"
+    }
+  ],
+  "latest_by_test": {
+    "Wildfolk.Tests.DeathFoundationModelTests.DataIsSharedAndProductionPriceRemainsUndecided": {
+      "result": "Passed",
+      "evidence": "models-final.xml",
+      "duration_seconds": "0.016966"
+    },
+    "Wildfolk.Tests.DeathFoundationModelTests.Protocol19RoundTripsLifecycleAndDeadlines": {
+      "result": "Passed",
+      "evidence": "models-final.xml",
+      "duration_seconds": "0.005483"
+    },
+    "Wildfolk.Tests.DeathFoundationModelTests.ReleaseProvidersAreUnavailableAndNoCrystalOrGoldWallet": {
+      "result": "Passed",
+      "evidence": "models-final.xml",
+      "duration_seconds": "0.000812"
+    },
+    "Wildfolk.Tests.DeathFoundationModelTests.Save11MigrationPreservesHpAndInitialSeedHomeForAllParticipants": {
+      "result": "Passed",
+      "evidence": "models-final.xml",
+      "duration_seconds": "4.852681"
+    },
+    "Wildfolk.Tests.ExplorationUtilityModelTests.BearingOnlyHasEightSectorsAndNoSurveyPositionIsSerialized": {
+      "result": "Passed",
+      "evidence": "models.xml",
+      "duration_seconds": "0.006245"
+    },
+    "Wildfolk.Tests.ExplorationUtilityModelTests.RegionsDoNotMixUndergroundAndSurfaceOrSeparateCaves": {
+      "result": "Passed",
+      "evidence": "models.xml",
+      "duration_seconds": "2.684396"
+    },
+    "Wildfolk.Tests.ExplorationUtilityModelTests.SceneInitializationHasStandardTransportInactivityBudget": {
+      "result": "Passed",
+      "evidence": "models.xml",
+      "duration_seconds": "0.001239"
+    },
+    "Wildfolk.Tests.ExplorationUtilityModelTests.TwoDistinctOptionalToolsHaveBoundedBudgetsAndBothLanguages": {
+      "result": "Passed",
+      "evidence": "models.xml",
+      "duration_seconds": "0.027642"
+    },
+    "Wildfolk.Tests.FishingModelTests.ActualGenerationSupportsReachableInlandWetlandsSeaAndDeep(9472026)": {
+      "result": "Passed",
+      "evidence": "models.xml",
+      "duration_seconds": "2.352019"
+    },
+    "Wildfolk.Tests.FishingModelTests.ActualGenerationSupportsReachableInlandWetlandsSeaAndDeep(17491)": {
+      "result": "Passed",
+      "evidence": "models.xml",
+      "duration_seconds": "1.693305"
+    },
+    "Wildfolk.Tests.FishingModelTests.ActualGenerationSupportsReachableInlandWetlandsSeaAndDeep(-81027)": {
+      "result": "Passed",
+      "evidence": "models.xml",
+      "duration_seconds": "1.800726"
+    },
+    "Wildfolk.Tests.FishingModelTests.CatchStateRoundTripsWithCurrentProtocolAndBothLanguages": {
+      "result": "Passed",
+      "evidence": "models.xml",
+      "duration_seconds": "0.003816"
+    },
+    "Wildfolk.Tests.FishingModelTests.ConditionsWeightsAndYieldDoNotDependOnClientOrSpeciesName": {
+      "result": "Passed",
+      "evidence": "models.xml",
+      "duration_seconds": "0.663661"
+    },
+    "Wildfolk.Tests.FishingModelTests.OptionalConversionsDoNotMoveExistingProgressionSupplyBudgets": {
+      "result": "Passed",
+      "evidence": "models.xml",
+      "duration_seconds": "0.006082"
+    },
+    "Wildfolk.Tests.FishingModelTests.ProcessingPreservesExistingFoodAndInventoryCodecs": {
+      "result": "Passed",
+      "evidence": "models.xml",
+      "duration_seconds": "0.005599"
+    },
+    "Wildfolk.Tests.FoodModelTests.HostCanExpireWaterPenaltyWithoutEnablingNutritionDrain": {
+      "result": "Passed",
+      "evidence": "models.xml",
+      "duration_seconds": "0.002154"
+    },
+    "Wildfolk.Tests.FoodModelTests.MealsAreThreeDistinctPotChoicesAndExistingRecoveryFoodsRemainImmediate": {
+      "result": "Passed",
+      "evidence": "models.xml",
+      "duration_seconds": "0.002830"
+    },
+    "Wildfolk.Tests.FoodModelTests.NetworkMealIdentityAndEndTimeRoundTripAndParticipateInEquality": {
+      "result": "Passed",
+      "evidence": "models.xml",
+      "duration_seconds": "0.000624"
+    },
+    "Wildfolk.Tests.FoodModelTests.OneMealReplacesInsteadOfStackingAndSameMealResetsOnlyItsDuration": {
+      "result": "Passed",
+      "evidence": "models.xml",
+      "duration_seconds": "0.002134"
+    },
+    "Wildfolk.Tests.FoodModelTests.StaminaMealChangesRateWithoutChangingDelayCostOrMaximum": {
+      "result": "Passed",
+      "evidence": "models.xml",
+      "duration_seconds": "0.001652"
+    },
+    "Wildfolk.Tests.FoodModelTests.StewsHavePlantHydrationMeatHungerFishHydrationAndMixedNutritionRoles": {
+      "result": "Passed",
+      "evidence": "models.xml",
+      "duration_seconds": "0.000669"
+    },
+    "Wildfolk.Tests.MedicineModelTests.AppendingHerbsPreservesEveryPreviousSourceIdAndPosition(1)": {
+      "result": "Passed",
+      "evidence": "models.xml",
+      "duration_seconds": "0.035340"
+    },
+    "Wildfolk.Tests.MedicineModelTests.AppendingHerbsPreservesEveryPreviousSourceIdAndPosition(2)": {
+      "result": "Passed",
+      "evidence": "models.xml",
+      "duration_seconds": "6.093782"
+    },
+    "Wildfolk.Tests.MedicineModelTests.AppendingHerbsPreservesEveryPreviousSourceIdAndPosition(3)": {
+      "result": "Passed",
+      "evidence": "models.xml",
+      "duration_seconds": "8.202142"
+    },
+    "Wildfolk.Tests.MedicineModelTests.HealingStatusRoundTripsThroughNetworkSerializationAndUsesCurrentProtocol": {
+      "result": "Passed",
+      "evidence": "models.xml",
+      "duration_seconds": "0.000854"
+    },
+    "Wildfolk.Tests.MedicineModelTests.HerbIsUnarmedSurfacePlantWithRegionalRecoveryAndNoStarterSupply": {
+      "result": "Passed",
+      "evidence": "models.xml",
+      "duration_seconds": "0.002172"
+    },
+    "Wildfolk.Tests.MedicineModelTests.TreatmentIsGradualExactSingleAndTransient": {
+      "result": "Passed",
+      "evidence": "models.xml",
+      "duration_seconds": "0.002894"
+    },
+    "Wildfolk.Tests.MedicineModelTests.TwoMedicinesUseOneHerbAndFiberSinkWithoutNewStationOrFoodChanges": {
+      "result": "Passed",
+      "evidence": "models.xml",
+      "duration_seconds": "0.002130"
+    },
+    "Wildfolk.Tests.PoiContentModelTests.FourSitesUseExistingBoundedRewardsAndNoNewItemsRecipesOrGeneration": {
+      "result": "Passed",
+      "evidence": "models.xml",
+      "duration_seconds": "0.008082"
+    },
+    "Wildfolk.Tests.PoiContentModelTests.OptionalSave11StateRejectsFabricatedLootBadWaterAndDuplicateGuard": {
+      "result": "Passed",
+      "evidence": "models-final.xml",
+      "duration_seconds": "2.483051"
+    },
+    "Wildfolk.Tests.PoiContentModelTests.Protocol18RoundTripsSiteIdentitySecurityRevisionAndSharedWater": {
+      "result": "Passed",
+      "evidence": "models.xml",
+      "duration_seconds": "0.008153"
+    },
+    "Wildfolk.Tests.PoiContentModelTests.QuarryTombstonesAreSeparateFromNaturalRecoveryAndToolGatesRemain": {
+      "result": "Passed",
+      "evidence": "models.xml",
+      "duration_seconds": "2.407784"
+    },
+    "Wildfolk.Tests.PoiContentModelTests.TrapsHaveDifferentReuseRolesWallsAndTurretsKeepTheirBudgets": {
+      "result": "Passed",
+      "evidence": "models.xml",
+      "duration_seconds": "0.001947"
+    },
+    "Wildfolk.Tests.PoiContentModelTests.WellIsCappedLazyAndOnlyGameTimeRecoversOneServingPerDay": {
+      "result": "Passed",
+      "evidence": "models.xml",
+      "duration_seconds": "0.001586"
+    },
+    "Wildfolk.Tests.StabilityModelTests.AtomicSaveBackupRecoversCorruptionAndIgnoresInterruptedTemporaryFile": {
+      "result": "Passed",
+      "evidence": "models-final.xml",
+      "duration_seconds": "0.068256"
+    },
+    "Wildfolk.Tests.StabilityModelTests.ChecksumAndFutureVersionAreRejected": {
+      "result": "Passed",
+      "evidence": "models.xml",
+      "duration_seconds": "0.000915"
+    },
+    "Wildfolk.Tests.StabilityModelTests.CupStateChangesAreAtomicAndConserveContainersOnFullBags": {
+      "result": "Passed",
+      "evidence": "models.xml",
+      "duration_seconds": "0.001221"
+    },
+    "Wildfolk.Tests.StabilityModelTests.EditorValidatorAcceptsCurrentDataAndDeveloperToolsStayInEditorAssembly": {
+      "result": "Passed",
+      "evidence": "models.xml",
+      "duration_seconds": "0.161862"
+    },
+    "Wildfolk.Tests.StabilityModelTests.EveryCurrentBasicAttackHasOneTargetAndExtensibleShape": {
+      "result": "Passed",
+      "evidence": "models.xml",
+      "duration_seconds": "0.001956"
+    },
+    "Wildfolk.Tests.StabilityModelTests.HostileRelationIsNotAPlayerTeamDespiteDefaultNumericId": {
+      "result": "Passed",
+      "evidence": "models.xml",
+      "duration_seconds": "0.002784"
+    },
+    "Wildfolk.Tests.StabilityModelTests.InventoryRestoreRejectsUnknownAndOversizedStacksWithoutPartialMutation": {
+      "result": "Passed",
+      "evidence": "models.xml",
+      "duration_seconds": "0.001115"
+    },
+    "Wildfolk.Tests.StabilityModelTests.RawWaterPenaltyExpiresPreciselyAndSurvivesStateRoundTrip": {
+      "result": "Passed",
+      "evidence": "models.xml",
+      "duration_seconds": "0.001763"
+    },
+    "Wildfolk.Tests.StabilityModelTests.RenewalAndTerrainDataKeepDifferentResourceTimes": {
+      "result": "Passed",
+      "evidence": "models.xml",
+      "duration_seconds": "0.000616"
+    },
+    "Wildfolk.Tests.DeathFoundationPlayTests.FourActorDownReviveInterruptTimeoutWipePersistenceReHost": {
+      "result": "Passed",
+      "evidence": "flow-final.xml",
+      "duration_seconds": "43.385987"
+    },
+    "Wildfolk.Tests.DeathFoundationPlayTests.SingleDeathAdsRepeatedGemTransactionsHomeAndRealReload": {
+      "result": "Passed",
+      "evidence": "regression-corrected.xml",
+      "duration_seconds": "25.800039"
+    },
+    "Wildfolk.Tests.DeathFoundationModelTests.DevelopmentWalletDuplicateRollbackAndReentrancyAreAtomic": {
+      "result": "Passed",
+      "evidence": "models-final.xml",
+      "duration_seconds": "0.003393"
+    },
+    "Wildfolk.Tests.DeathFoundationPlayTests.ActualSeparateLanClientLifecycle": {
+      "result": "Passed",
+      "evidence": "lan-client-final.xml",
+      "duration_seconds": "53.030841"
+    },
+    "Wildfolk.Tests.GameplayPlayTests.DeathCanReturnHomeThroughActualUIButton": {
+      "result": "Passed",
+      "evidence": "regression-corrected.xml",
+      "duration_seconds": "5.607910"
+    },
+    "Wildfolk.Tests.GameplayPlayTests.EnemyTelegraphsDamagesWithoutPhysicsPushAndDiesToAttackInput": {
+      "result": "Passed",
+      "evidence": "flow-final.xml",
+      "duration_seconds": "7.331339"
+    },
+    "Wildfolk.Tests.MedicinePlayTests.HerbsCraftingHealingSharedLimitAndSaveLoadUseActualGameplay": {
+      "result": "Passed",
+      "evidence": "regression-corrected.xml",
+      "duration_seconds": "29.764341"
+    },
+    "Wildfolk.Tests.MedicinePlayTests.HostHealingReplayProtectionAndReHostUseActualServer": {
+      "result": "Passed",
+      "evidence": "flow-final.xml",
+      "duration_seconds": "20.221773"
+    },
+    "Wildfolk.Tests.NetworkCreaturePlayTests.HostSpawnGroupCombatAndDeathHaveOneAuthority": {
+      "result": "Passed",
+      "evidence": "network-regression-clearance.xml",
+      "duration_seconds": "6.538730"
+    },
+    "Wildfolk.Tests.NetworkCreaturePlayTests.HostTargetsLivingPlayersAndLaunchesOneAuthoritativeProjectile": {
+      "result": "Passed",
+      "evidence": "flow-final.xml",
+      "duration_seconds": "9.032753"
+    },
+    "Wildfolk.Tests.NetworkCreaturePlayTests.LethalReentrantDamageFiresDeathOnceAndPoolResetRestoresSingleplayerHealth": {
+      "result": "Passed",
+      "evidence": "flow-final.xml",
+      "duration_seconds": "0.529776"
+    },
+    "Wildfolk.Tests.NetworkCreaturePlayTests.UnspawnedReplicaCannotRunBrainDamageAlertsOrSpawnPopulation": {
+      "result": "Passed",
+      "evidence": "flow-final.xml",
+      "duration_seconds": "1.102345"
+    },
+    "Wildfolk.Tests.NetworkPersistencePlayTests.RetireAndRejoinSameIdentityRestoreOnceAndRejectConcurrentIdentity": {
+      "result": "Passed",
+      "evidence": "flow-final.xml",
+      "duration_seconds": "4.328260"
+    },
+    "Wildfolk.Tests.SurvivalLoopPlayTests.InventoryKeepsEnemyAliveWhilePauseHasSeparateWorldPolicy": {
+      "result": "Passed",
+      "evidence": "regression-corrected.xml",
+      "duration_seconds": "6.417518"
+    },
+    "Wildfolk.Tests.NetworkPersistenceModelTests.LegacyV4AndV11MigrateTo12PreservingCorePlayerPayload": {
+      "result": "Passed",
+      "evidence": "persistence-models.xml",
+      "duration_seconds": "0.104333"
+    },
+    "Wildfolk.Tests.NetworkPersistenceModelTests.ParticipantMetadataRejectsDuplicatesInvalidIdentityAndMismatchedHost": {
+      "result": "Passed",
+      "evidence": "persistence-models.xml",
+      "duration_seconds": "0.019396"
+    },
+    "Wildfolk.Tests.NetworkPersistenceModelTests.SeparateRepositoriesAndDeadParticipantPolicyPreserveSingleplayerRules": {
+      "result": "Passed",
+      "evidence": "persistence-models.xml",
+      "duration_seconds": "0.033340"
+    }
+  }
+}

@@ -15,9 +15,18 @@ namespace Wildfolk
         public EnemyController[] NightPrefabs;
         public GoblinController Goblin;
         public GoblinCampDefinition Camps;
+        private WorldMap validationMap;
+        internal WorldMap ValidationMap(SavedGame game)
+        {
+            if(validationMap==null || validationMap.Definition!=World || validationMap.Seed!=game.Seed || validationMap.GenerationVersion!=game.BaseGenerationVersion)validationMap=new WorldMap(World,game.Seed,game.BaseGenerationVersion,false);
+            return validationMap;
+        }
+#if UNITY_EDITOR
+        private void OnValidate(){validationMap=null;}
+#endif
         public void Validate(SavedGame game)
         {
-            if(game==null || game.Version<1 || game.Version>11)throw new InvalidDataException("Unsupported save version");
+            if(game==null || game.Version<1 || game.Version>12)throw new InvalidDataException("Unsupported save version");
             if(game.Version<=5)MetalSaveMigration.NormalizeLegacyContent(game,Catalog);
             if(game.Version<=6)game.BaseGenerationVersion=WorldGenerationVersion.Legacy;
             if(game.Features==null)game.Features=Array.Empty<WorldFeatureSnapshot>();
@@ -25,17 +34,18 @@ namespace Wildfolk
             var growth=Player.GetComponent<PlayerProgression>().Definition;var locomotion=Player.GetComponent<PlayerLocomotion>().Definition;
             if(game.Version==1)
             {if(game.Player==null)throw new InvalidDataException("Missing player");game.Player.Growth=GrowthValidation.FromLegacy(game.Player.XP,growth);game.Player.HeadArmor=game.Player.BodyArmor=null;game.Player.Stamina=locomotion.MaximumStamina;game.Player.StaminaWait=0;game.Player.SeenRecipes=Array.Empty<string>();game.Version=2;}
-            if(game.Version==2){SaveValidation.Validate(game,Catalog,World,Animals,Player.Settings.InventorySlots,Player.GetComponent<Health>().Definition.MaximumHealth,Player.GetComponent<PlayerSurvival>().Definition,growth,locomotion);SaveMigration.PopulationFromV2(game,World);}
-            if(game.Version==3){SaveValidation.Validate(game,Catalog,World,Animals,Player.Settings.InventorySlots,Player.GetComponent<Health>().Definition.MaximumHealth,Player.GetComponent<PlayerSurvival>().Definition,growth,locomotion);SaveMigration.EcologyFromV3(game,World,Animals);}
-            SaveValidation.Validate(game,Catalog,World,Animals,Player.Settings.InventorySlots,Player.GetComponent<Health>().Definition.MaximumHealth,Player.GetComponent<PlayerSurvival>().Definition,growth,locomotion);
+            if(game.Version==2){SaveValidation.Validate(game,Catalog,World,Animals,Player.Settings.InventorySlots,Player.GetComponent<Health>().Definition.MaximumHealth,Player.GetComponent<PlayerSurvival>().Definition,growth,locomotion,ValidationMap(game));SaveMigration.PopulationFromV2(game,World);}
+            if(game.Version==3){SaveValidation.Validate(game,Catalog,World,Animals,Player.Settings.InventorySlots,Player.GetComponent<Health>().Definition.MaximumHealth,Player.GetComponent<PlayerSurvival>().Definition,growth,locomotion,ValidationMap(game));SaveMigration.EcologyFromV3(game,World,Animals);}
+            SaveValidation.Validate(game,Catalog,World,Animals,Player.Settings.InventorySlots,Player.GetComponent<Health>().Definition.MaximumHealth,Player.GetComponent<PlayerSurvival>().Definition,growth,locomotion,ValidationMap(game));
             ValidateEnemies(game);
             if(game.Version>=4 && game.Version<=10)SaveMigration.CreatureLootFromEarlier(game);
+            if(game.Version==11)DeathSaveValidation.Migrate(game,World,ValidationMap(game));
             MultiplayerSaveRules.Validate(game,this);
         }
         private void ValidateEnemies(SavedGame game)
         {
             if(game.NightCreatures==null || game.NightCreatures.Length>(game.BaseGenerationVersion>=2 ? 10000 : Night.HardCap))throw new InvalidDataException("Invalid nocturnal population");
-            var map=game.NightCreatures.Length>0 ? new WorldMap(World,game.Seed,game.BaseGenerationVersion,false) : null;
+            var map=game.NightCreatures.Length>0 ? ValidationMap(game) : null;
             foreach(var state in game.NightCreatures){if(state==null)throw new InvalidDataException("Missing nocturnal actor");var prefab=SpeciesPrefab(state.Species);if(state.HP<=0 || state.HP>prefab.OwnHealth.Maximum || !map.Contains(state.Position) || float.IsNaN(state.Position.x) || float.IsNaN(state.Position.y) || !string.IsNullOrEmpty(state.Variant) && (prefab.Variant==null || prefab.Variant.Definition.Id!=state.Variant))throw new InvalidDataException("Invalid nocturnal actor");}
             if(game.GoblinEcology!=null){if(game.GoblinEcology.Actors.Length>(game.BaseGenerationVersion>=2 ? 20000 : Camps.HardCap))throw new InvalidDataException("Faction cap exceeded");foreach(var actor in game.GoblinEcology.Actors)if(actor.HP>Goblin.OwnHealth.Maximum)throw new InvalidDataException("Invalid faction health");}
         }

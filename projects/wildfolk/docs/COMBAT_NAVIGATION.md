@@ -60,3 +60,9 @@ Compass는 소지 시 북쪽/Home/Exit/선택 Beacon 안내를 계속 담당한�
 Bone Trap은 기존 비용Bone2+Wood3/WBI/40HP를 유지하면서 한 대상에게32피해를 주고 기존 Health 사망 경로로 소모된다. Spike Trap은100HP/16피해/1.2초 반복/WBII를 유지한다. 자원과 같은 팀은 발동·소모 대상에서 제외한다. 신규 방어물/포탑은 없고 wall100/220/360과 gate/모듈/완전 자동화는 유지한다. 수리와 일반 철거·재료 회수는 아직 없다.
 
 Graveyard는 기존 Skeleton1/HP32의 작은 고정 encounter다. 이 guard만 낮에도 행동하고 야간 잠복을 하지 않는다. Player가 home16 밖 또는 guard가12 밖이면 기존 EnemySteering으로 근처로 돌아가며 HP/보상 잠금을 초기화하지 않는다. home은 stable anchor에서 유도한다. 처치만 clear이고 유인/청크 이탈/낮 전환/재접속은 clear가 아니다. hardcap/막힌 후보에서는 잠김을 유지하며 중앙 active site tick에서 재시도한다. 기존 WorldNavigation의 지형/충돌/enclosure와 barrier 공격을 재사용하며 새 pathfinder/wave/boss가 없다.
+
+## Player death / rescue
+
+SP는 HP0→Dead 선택, MP는 HP0→Downed24초→동료 hold4초 또는 Dead다. Downed/Dead는 Health.IsAlive=false이므로 기존 타깃 선택/impact에서 제외한다. 네트워크 객체·청크·몸통을 유지하고 낮은 자세/머리 표식과 navigation 화살표로 팀원에게 알린다. 구조 대상은 같은 팀의 가장 가까운 Downed,2.6m/고체 LOS로 선택하며 작은 hurtbox/facing을 요구하지 않고 기존 Interact보다 우선한다.
+
+release/이동 입력·실제 위치0.2m 이탈/피격/공격 의도/거리·시야 상실/무력화/modal/target 변경/timeout/disconnect는 구조 진도를 취소한다. 재시도는 가능하지만 원래 Downed 시간이 계속 흐른다. 여러 구조자는 속도를 합산하지 않으며 Host의 lock/revision으로1회만 확정한다. 현장/구조40%HP,2초 피해 보호, 실제 공격을 시작하면 즉시 보호 종료. Home은100%HP, 무료이며 Stamina/Hunger/Thirst는 채우지 않는다. 새로운 사망 아이템 손실/장비 내구/영구 maxHP penalty는 없다.

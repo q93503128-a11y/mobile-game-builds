@@ -183,3 +183,7 @@ None은 Hand, Workbench tier는 요구 최소값이다. 상위 Workbench는 하�
 Item134/Recipe111 유지, 신규 Item/Recipe/Defense Item/Turret0. 기존 Campsite/Well/Quarry/Graveyard를 보급/제한 clean 수원/현지 채광/작은 undead 확보로 구분했다. Ruin/Mine는 이번 보류, GoblinCamp와 CaveEntrance의 기존 역할·보상은 유지한다. Bone Trap은32피해 한 대상1회, Spike는16/1.2초 반복이다. Save11/generation3 유지,Protocol18.
 
 Content Expansion2는 이 패스로 마감한다. 다음 큰 작업은 Skill Point / Class / Job의 **기획**이고, 이후 Undead King / Reusable Boss Foundation이다. 이번에 해당 시스템을 구현하지 않았다. [사전 외부 비교·채택/배제·검증](../validation/base-defense-poi-expansion/REVIEW.md).
+
+## Death / Revive / Respawn Foundation
+
+Item134/Recipe111과 기존 콘텐츠는 유지한다. 신규 장비/재료/Station/Class/Boss/사망 가방이 없다. Save12/Protocol19로 플레이어 death/Home 기반을 추가했다. [정책·외부 비교·검수](../validation/death-revive-respawn/REVIEW.md). 다음은 Class/Class Point/Class Skill Tree이며 Medic은 공용 revive modifier 경계에서 설계한다.

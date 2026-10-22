@@ -1,0 +1,263 @@
+2026-10-22T00:53:06.3336687Z	host-four-actor-simulation	begin
+2026-10-22T00:53:06.5169156Z	host-four-actor-simulation	PASS LAN Host
+2026-10-22T00:53:06.5288756Z	host-four-actor-simulation	PASS enter multiplayer
+2026-10-22T00:53:32.5680178Z	host-four-actor-simulation	PASS MP HP0 enters Downed keeping actor
+2026-10-22T00:53:32.5692648Z	host-four-actor-simulation	PASS downed input/attack/dash/inventory denied
+2026-10-22T00:53:32.5722604Z	host-four-actor-simulation	PASS first reviver locks target
+2026-10-22T00:53:32.5756610Z	host-four-actor-simulation	PASS second reviver cannot double lock
+2026-10-22T00:53:32.5766598Z	host-four-actor-simulation	PASS damage interrupts and resets hold
+2026-10-22T00:53:32.5772660Z	host-four-actor-simulation	PASS retry after damage
+2026-10-22T00:53:32.6408996Z	host-four-actor-simulation	PASS distance interrupt
+2026-10-22T00:53:32.6460138Z	host-four-actor-simulation	PASS hold starts
+2026-10-22T00:53:32.6460138Z	host-four-actor-simulation	PASS stale hold revision rejected after release
+2026-10-22T00:53:33.8018600Z	host-four-actor-simulation	PASS expired input lease cannot complete a revive
+2026-10-22T00:54:00.9135275Z	host-four-actor-simulation	FAIL single teammate commit restores40HP
+2026-10-22T00:54:00.9173547Z	failed	System.InvalidOperationException: single teammate commit restores40HP
+  at Wildfolk.Editor.DeathFoundationQa.Check (System.Boolean b, System.String s) [0x00024] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Editor\DeathFoundationQa.cs:17
+  at Wildfolk.Editor.DeathFoundationQa+<HostSimulation>d__29.MoveNext () [0x00470] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Editor\DeathFoundationQa.cs:77
+  at Wildfolk.Editor.DeathFoundationQa+<Guard>d__16.MoveNext () [0x0003c] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Editor\DeathFoundationQa.cs:20
+2026-10-22T00:56:20.9707051Z	single-natural-death	begin
+2026-10-22T00:56:38.0053148Z	single-natural-death	PASS actual EnemyController swing causes SP Dead
+2026-10-22T00:56:38.0113464Z	single-natural-death	PASS SP death freezes world and input
+2026-10-22T00:56:38.0154336Z	single-natural-death	PASS real recovery UI production-disabled providers and clear free Home
+2026-10-22T00:56:42.3819835Z	single-natural-death	PASS lethal autosave persists HP0
+2026-10-22T00:56:42.3850193Z	single-natural-death	PASS unavailable providers cannot grant free revive
+2026-10-22T00:56:42.3865368Z	single-ad-fail	begin
+2026-10-22T00:56:42.3881060Z	single-ad-fail	PASS reward request accepted
+2026-10-22T00:56:42.3891103Z	single-ad-fail	PASS double click and competing payment rejected while ad pending
+2026-10-22T00:56:42.3906622Z	single-ad-fail	PASS failed ad grants nothing and preserves opportunity
+2026-10-22T00:56:42.3957234Z	single-unlimited-gems	begin
+2026-10-22T01:01:50.2857304Z	host-four-actor-simulation	begin
+2026-10-22T01:01:50.5348275Z	host-four-actor-simulation	PASS LAN Host
+2026-10-22T01:01:50.5595254Z	host-four-actor-simulation	PASS enter multiplayer
+2026-10-22T01:01:56.8275994Z	host-four-actor-simulation	PASS MP HP0 enters Downed keeping actor
+2026-10-22T01:01:56.8311975Z	host-four-actor-simulation	PASS downed input/attack/dash/inventory denied
+2026-10-22T01:01:56.8369653Z	host-four-actor-simulation	PASS first reviver locks target
+2026-10-22T01:01:56.8390249Z	host-four-actor-simulation	PASS second reviver cannot double lock
+2026-10-22T01:01:56.8400361Z	host-four-actor-simulation	PASS damage interrupts and resets hold
+2026-10-22T01:01:56.8415437Z	host-four-actor-simulation	PASS retry after damage
+2026-10-22T01:01:56.9008028Z	host-four-actor-simulation	PASS distance interrupt
+2026-10-22T01:01:56.9087695Z	host-four-actor-simulation	PASS hold starts
+2026-10-22T01:01:56.9102821Z	host-four-actor-simulation	PASS stale hold revision rejected after release
+2026-10-22T01:01:58.0085241Z	host-four-actor-simulation	PASS expired input lease cannot complete a revive
+2026-10-22T01:02:02.0281826Z	host-four-actor-simulation	PASS single teammate commit restores40HP actual=Alive hp=40
+2026-10-22T01:02:02.0297915Z	host-four-actor-simulation	PASS stale postcommit revive rejected
+2026-10-22T01:02:02.0621922Z	host-four-actor-simulation	PASS capture collapses transient Downed into persistent Dead
+2026-10-22T01:02:02.0683099Z	host-four-actor-simulation	PASS reconnect restore cannot become Alive
+2026-10-22T01:02:02.1072783Z	host-four-actor-simulation	PASS Dead participant returns Home free
+2026-10-22T01:02:26.3743953Z	host-four-actor-simulation	PASS timeout then Home available
+2026-10-22T01:02:26.8955991Z	host-four-actor-simulation	PASS four simulated actors all-down resolves to Dead, no indefinite wait
+2026-10-22T01:02:26.9310442Z	host-four-actor-simulation	PASS Host can return Home after party wipe
+2026-10-22T01:02:26.9727904Z	host-four-actor-simulation	PASS Host saves lifecycle world
+2026-10-22T01:02:27.0195851Z	host-four-actor-simulation	PASS Host Dead saved
+2026-10-22T01:02:27.1941948Z	host-four-actor-simulation	PASS LAN Host
+2026-10-22T01:02:27.2109106Z	failed	System.NullReferenceException: Object reference not set to an instance of an object
+  at Unity.Netcode.SceneEventProgress.SetAsyncOperation (UnityEngine.AsyncOperation asyncOperation) [0x00007] in .\Library\PackageCache\com.unity.netcode.gameobjects@277a288a1cea\Runtime\SceneManagement\SceneEventProgress.cs:274
+  at Unity.Netcode.DefaultSceneManagerHandler.UnloadSceneAsync (UnityEngine.SceneManagement.Scene scene, Unity.Netcode.SceneEventProgress sceneEventProgress) [0x00007] in .\Library\PackageCache\com.unity.netcode.gameobjects@277a288a1cea\Runtime\SceneManagement\DefaultSceneManagerHandler.cs:35
+  at Unity.Netcode.NetworkSceneManager.UnloadAdditivelyLoadedScenes (System.UInt32 sceneEventId) [0x000f8] in .\Library\PackageCache\com.unity.netcode.gameobjects@277a288a1cea\Runtime\SceneManagement\NetworkSceneManager.cs:1493
+  at Unity.Netcode.NetworkSceneManager.LoadScene (System.String sceneName, UnityEngine.SceneManagement.LoadSceneMode loadSceneMode) [0x000b6] in .\Library\PackageCache\com.unity.netcode.gameobjects@277a288a1cea\Runtime\SceneManagement\NetworkSceneManager.cs:1557
+  at Wildfolk.NetworkSession.EnterGame () [0x00018] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Runtime\Networking\NetworkSession.cs:136
+  at Wildfolk.Editor.DeathFoundationQa+<EnterHost>d__25.MoveNext () [0x0009e] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Editor\DeathFoundationQa.cs:60
+  at Wildfolk.Editor.DeathFoundationQa+<Guard>d__16.MoveNext () [0x0003c] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Editor\DeathFoundationQa.cs:20
+2026-10-22T01:06:01.1961918Z	idle	PASS Client transport startup
+2026-10-22T01:06:08.8847688Z	idle	PASS Host phase revive-host
+2026-10-22T01:06:08.9971052Z	idle	PASS Client sees Host Downed replica and interaction priority
+2026-10-22T01:06:13.0759100Z	idle	PASS Client sees committed Host40HP replica
+2026-10-22T01:06:13.3061022Z	idle	PASS Host phase client-down
+2026-10-22T01:06:13.3285569Z	idle	PASS Client Downed presentation and input lock
+2026-10-22T01:06:13.3290629Z	idle	PASS Client cannot call authoritative life executor
+2026-10-22T01:07:03.3368058Z	idle	FAIL Host phase client-revived
+2026-10-22T01:07:03.3444363Z	failed	System.InvalidOperationException: Host phase client-revived
+  at Wildfolk.Editor.DeathFoundationQa.Check (System.Boolean b, System.String s) [0x00024] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Editor\DeathFoundationQa.cs:17
+  at Wildfolk.Editor.DeathFoundationQa+<WaitPhase>d__40.MoveNext () [0x00075] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Editor\DeathFoundationQa.cs:116
+  at Wildfolk.Editor.DeathFoundationQa+<Guard>d__16.MoveNext () [0x0003c] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Editor\DeathFoundationQa.cs:20
+2026-10-22T01:09:01.0164558Z	host-four-actor-simulation	begin
+2026-10-22T01:09:01.2032565Z	host-four-actor-simulation	PASS LAN Host
+2026-10-22T01:09:01.2159821Z	host-four-actor-simulation	PASS enter multiplayer
+2026-10-22T01:09:06.5109163Z	host-four-actor-simulation	PASS MP HP0 enters Downed keeping actor
+2026-10-22T01:09:06.5146558Z	host-four-actor-simulation	PASS downed input/attack/dash/inventory denied
+2026-10-22T01:09:06.5197518Z	host-four-actor-simulation	PASS first reviver locks target
+2026-10-22T01:09:06.5218649Z	host-four-actor-simulation	PASS second reviver cannot double lock
+2026-10-22T01:09:06.5234831Z	host-four-actor-simulation	PASS damage interrupts and resets hold
+2026-10-22T01:09:06.5245859Z	host-four-actor-simulation	PASS retry after damage
+2026-10-22T01:09:06.5829890Z	host-four-actor-simulation	PASS distance interrupt
+2026-10-22T01:09:06.5879773Z	host-four-actor-simulation	PASS hold starts
+2026-10-22T01:09:06.5896038Z	host-four-actor-simulation	PASS stale hold revision rejected after release
+2026-10-22T01:09:07.6966116Z	host-four-actor-simulation	PASS expired input lease cannot complete a revive
+2026-10-22T01:09:11.7490213Z	host-four-actor-simulation	PASS single teammate commit restores40HP actual=Alive hp=40
+2026-10-22T01:09:11.7515780Z	host-four-actor-simulation	PASS stale postcommit revive rejected
+2026-10-22T01:09:11.7992528Z	host-four-actor-simulation	PASS capture collapses transient Downed into persistent Dead
+2026-10-22T01:09:11.8073658Z	host-four-actor-simulation	PASS reconnect restore cannot become Alive
+2026-10-22T01:09:11.8482134Z	host-four-actor-simulation	PASS Dead participant returns Home free
+2026-10-22T01:09:36.1553085Z	host-four-actor-simulation	PASS timeout then Home available
+2026-10-22T01:09:36.7164539Z	host-four-actor-simulation	PASS four simulated actors all-down resolves to Dead, no indefinite wait
+2026-10-22T01:09:36.7729887Z	host-four-actor-simulation	PASS Host can return Home after party wipe
+2026-10-22T01:09:36.8349759Z	host-four-actor-simulation	PASS Host saves lifecycle world
+2026-10-22T01:09:36.9149569Z	host-four-actor-simulation	PASS Host Dead saved
+2026-10-22T01:09:37.5138774Z	host-four-actor-simulation	PASS LAN Host
+2026-10-22T01:09:37.5156111Z	host-four-actor-simulation	PASS enter multiplayer
+2026-10-22T01:09:41.3619529Z	host-four-actor-simulation	PASS actual Host/reHost restores Dead
+2026-10-22T01:09:41.4438745Z	host-four-actor-simulation	PASS reHost free Home
+2026-10-22T01:09:41.5468913Z	complete	complete
+2026-10-22T01:09:46.3441618Z	single-natural-death	begin
+2026-10-22T01:09:46.9969710Z	single-natural-death	PASS actual EnemyController swing causes SP Dead
+2026-10-22T01:09:47.0106077Z	single-natural-death	PASS SP death freezes world and input
+2026-10-22T01:09:47.0178385Z	single-natural-death	PASS real recovery UI production-disabled providers and clear free Home
+2026-10-22T01:09:47.0309928Z	single-natural-death	PASS lethal autosave persists HP0
+2026-10-22T01:09:47.0337887Z	single-natural-death	PASS unavailable providers cannot grant free revive
+2026-10-22T01:09:47.0378844Z	single-ad-fail	begin
+2026-10-22T01:09:47.0411815Z	single-ad-fail	PASS reward request accepted
+2026-10-22T01:09:47.0438660Z	single-ad-fail	PASS double click and competing payment rejected while ad pending
+2026-10-22T01:09:47.0477633Z	single-ad-fail	PASS failed ad grants nothing and preserves opportunity
+2026-10-22T01:09:47.0563330Z	single-unlimited-gems	begin
+2026-10-22T01:09:47.0983157Z	single-unlimited-gems	PASS Gem revive 1
+2026-10-22T01:09:47.1016012Z	single-unlimited-gems	PASS partial HP no ad consumption
+2026-10-22T01:09:47.1038254Z	single-unlimited-gems	PASS same-position field revival
+2026-10-22T01:09:47.1058238Z	single-unlimited-gems	PASS duplicate success cannot charge twice
+2026-10-22T01:09:47.1083087Z	single-unlimited-gems	PASS 2-second protection rejects incoming damage
+2026-10-22T01:09:47.1159314Z	single-unlimited-gems	PASS actual attack start ends protection
+2026-10-22T01:09:47.2114273Z	single-unlimited-gems	PASS Gem revive 2
+2026-10-22T01:09:47.2137075Z	single-unlimited-gems	PASS partial HP no ad consumption
+2026-10-22T01:09:47.2158428Z	single-unlimited-gems	PASS same-position field revival
+2026-10-22T01:09:47.2183476Z	single-unlimited-gems	PASS duplicate success cannot charge twice
+2026-10-22T01:09:47.2209626Z	single-unlimited-gems	PASS 2-second protection rejects incoming damage
+2026-10-22T01:09:47.3153894Z	single-unlimited-gems	PASS Gem revive 3
+2026-10-22T01:09:47.3178768Z	single-unlimited-gems	PASS partial HP no ad consumption
+2026-10-22T01:09:47.3195532Z	single-unlimited-gems	PASS same-position field revival
+2026-10-22T01:09:47.3216077Z	single-unlimited-gems	PASS duplicate success cannot charge twice
+2026-10-22T01:09:47.3233202Z	single-unlimited-gems	PASS 2-second protection rejects incoming damage
+2026-10-22T01:09:47.4159003Z	single-unlimited-gems	PASS Gem revive 4
+2026-10-22T01:09:47.4182993Z	single-unlimited-gems	PASS partial HP no ad consumption
+2026-10-22T01:09:47.4211665Z	single-unlimited-gems	PASS same-position field revival
+2026-10-22T01:09:47.4243468Z	single-unlimited-gems	PASS duplicate success cannot charge twice
+2026-10-22T01:09:47.4263802Z	single-unlimited-gems	PASS 2-second protection rejects incoming damage
+2026-10-22T01:09:47.5169821Z	single-unlimited-gems	PASS Gem revive 5
+2026-10-22T01:09:47.5197179Z	single-unlimited-gems	PASS partial HP no ad consumption
+2026-10-22T01:09:47.5213835Z	single-unlimited-gems	PASS same-position field revival
+2026-10-22T01:09:47.5235114Z	single-unlimited-gems	PASS duplicate success cannot charge twice
+2026-10-22T01:09:47.5252572Z	single-unlimited-gems	PASS 2-second protection rejects incoming damage
+2026-10-22T01:09:47.6133876Z	single-unlimited-gems	PASS Gem revive 6
+2026-10-22T01:09:47.6151247Z	single-unlimited-gems	PASS partial HP no ad consumption
+2026-10-22T01:09:47.6193562Z	single-unlimited-gems	PASS same-position field revival
+2026-10-22T01:09:47.6199315Z	single-unlimited-gems	PASS duplicate success cannot charge twice
+2026-10-22T01:09:47.6209732Z	single-unlimited-gems	PASS 2-second protection rejects incoming damage
+2026-10-22T01:09:47.6665250Z	single-unlimited-gems	PASS six repeated Gem commits exact balance and Crystal untouched
+2026-10-22T01:09:47.6713037Z	single-unlimited-gems	PASS no inventory loss
+2026-10-22T01:09:47.6729945Z	single-unlimited-gems	PASS no free hunger/thirst/stamina reset
+2026-10-22T01:09:47.6757288Z	single-ad-success-reload	begin
+2026-10-22T01:09:47.6774770Z	single-ad-success-reload	PASS ad opportunity remains after six Gems
+2026-10-22T01:09:47.7229146Z	single-ad-success-reload	PASS reward success commits once despite duplicate callback
+2026-10-22T01:09:47.7612936Z	single-ad-success-reload	PASS one successful ad per expedition, Gem remains available
+2026-10-22T01:09:47.7713118Z	single-ad-success-reload	PASS Save12 persists ad/death
+2026-10-22T01:09:51.8306491Z	single-ad-success-reload	PASS same-object Load cannot cancel death/refill ad
+2026-10-22T01:09:51.9848710Z	single-ad-success-reload	PASS Gem remains repeatable after ad and reload
+2026-10-22T01:09:52.0308347Z	single-ad-success-reload	PASS insufficient Premium Gems cannot revive
+2026-10-22T01:09:52.0308347Z	single-rollback	begin
+2026-10-22T01:09:52.0331806Z	single-rollback	PASS failed durable world commit rolls back HP with zero debit
+2026-10-22T01:09:52.0354694Z	single-home	begin
+2026-10-22T01:09:52.1594271Z	single-home	PASS real free Home button starts next expedition
+2026-10-22T01:09:52.1600497Z	single-home	PASS Home initial seed spawn
+2026-10-22T01:09:52.1981553Z	single-home	PASS new expedition allows ad again
+2026-10-22T01:09:52.2413638Z	single-home	PASS Home can cancel pending ad
+2026-10-22T01:09:52.2442080Z	single-home	PASS late canceled ad callback cannot mutate new expedition
+2026-10-22T01:09:52.2462144Z	single-new-scene-load	begin
+2026-10-22T01:09:52.3273686Z	single-new-scene-load	PASS death save can be explicitly written
+2026-10-22T01:09:52.3468441Z	single-new-scene-load	PASS actual SceneFlow Continue boundary
+2026-10-22T01:09:59.7585710Z	single-new-scene-load	PASS new scene reload retains Dead without free revival
+2026-10-22T01:09:59.8390197Z	single-new-scene-load	PASS loaded death retains free Home path
+2026-10-22T01:09:59.8396363Z	complete	complete
+2026-10-22T01:13:21.6241356Z	idle	PASS Client transport startup
+2026-10-22T01:13:29.5743231Z	idle	PASS Host phase revive-host
+2026-10-22T01:13:29.6593463Z	idle	PASS Client sees Host Downed replica and interaction priority
+2026-10-22T01:13:33.7319722Z	idle	PASS Client sees committed Host40HP replica
+2026-10-22T01:13:33.9812254Z	idle	PASS Host phase client-down
+2026-10-22T01:13:34.0067586Z	idle	PASS Client Downed presentation and input lock
+2026-10-22T01:13:34.0088262Z	idle	PASS Client cannot call authoritative life executor
+2026-10-22T01:13:38.3042522Z	idle	PASS Host phase client-revived
+2026-10-22T01:13:38.3264290Z	idle	PASS Client Alive controls restored
+2026-10-22T01:14:02.5715029Z	idle	PASS Host phase home
+2026-10-22T01:14:02.5730435Z	idle	PASS Client Dead replica after timeout
+2026-10-22T01:14:02.5827322Z	idle	PASS MP UI only free Home, no paid options
+2026-10-22T01:14:02.6799146Z	idle	PASS real Home button/RPC double request commits once
+2026-10-22T01:14:03.4586600Z	idle	PASS Host phase all-down-home
+2026-10-22T01:14:03.4597333Z	idle	PASS Client sees actual party wipe
+2026-10-22T01:14:03.5223140Z	idle	PASS Client Home after all-down
+2026-10-22T01:14:03.5552589Z	idle	PASS Host phase disconnect-down
+2026-10-22T01:14:03.5673659Z	idle	PASS Client disconnects from actual Downed
+2026-10-22T01:14:04.1851586Z	idle	PASS Host phase rejoin
+2026-10-22T01:14:04.2066103Z	idle	PASS Client transport startup
+2026-10-22T01:14:10.2507530Z	idle	PASS real reconnect cannot cancel death
+2026-10-22T01:14:10.4506312Z	idle	PASS Host phase leave
+2026-10-22T01:14:10.5301179Z	complete	complete
+2026-10-22T01:15:51.7360558Z	single-natural-death	begin
+2026-10-22T01:15:55.4013971Z	single-natural-death	PASS actual EnemyController swing causes SP Dead
+2026-10-22T01:15:55.4149430Z	single-natural-death	PASS SP death freezes world and input
+2026-10-22T01:15:55.4215501Z	single-natural-death	PASS real recovery UI production-disabled providers and clear free Home
+2026-10-22T01:15:55.4390143Z	single-natural-death	PASS lethal autosave persists HP0
+2026-10-22T01:15:55.4456920Z	single-natural-death	PASS unavailable providers cannot grant free revive
+2026-10-22T01:15:55.4529529Z	single-ad-fail	begin
+2026-10-22T01:15:55.4580658Z	single-ad-fail	PASS reward request accepted
+2026-10-22T01:15:55.4616235Z	single-ad-fail	PASS double click and competing payment rejected while ad pending
+2026-10-22T01:15:55.4657319Z	single-ad-fail	PASS failed ad grants nothing and preserves opportunity
+2026-10-22T01:15:55.4757490Z	single-unlimited-gems	begin
+2026-10-22T01:15:55.5362279Z	single-unlimited-gems	PASS Gem revive 1
+2026-10-22T01:15:55.5398222Z	single-unlimited-gems	PASS partial HP no ad consumption
+2026-10-22T01:15:55.5424326Z	single-unlimited-gems	PASS same-position field revival
+2026-10-22T01:15:55.5455587Z	single-unlimited-gems	PASS duplicate success cannot charge twice
+2026-10-22T01:15:55.5487837Z	single-unlimited-gems	PASS 2-second protection rejects incoming damage
+2026-10-22T01:15:55.5607898Z	single-unlimited-gems	PASS actual attack start ends protection
+2026-10-22T01:15:55.6663880Z	single-unlimited-gems	PASS Gem revive 2
+2026-10-22T01:15:55.6663880Z	single-unlimited-gems	PASS partial HP no ad consumption
+2026-10-22T01:15:55.6679239Z	single-unlimited-gems	PASS same-position field revival
+2026-10-22T01:15:55.6689341Z	single-unlimited-gems	PASS duplicate success cannot charge twice
+2026-10-22T01:15:55.6689341Z	single-unlimited-gems	PASS 2-second protection rejects incoming damage
+2026-10-22T01:15:57.8231162Z	single-unlimited-gems	PASS protection expires naturally after two seconds
+2026-10-22T01:15:57.8768821Z	single-unlimited-gems	PASS Gem revive 3
+2026-10-22T01:15:57.8783867Z	single-unlimited-gems	PASS partial HP no ad consumption
+2026-10-22T01:15:57.8798916Z	single-unlimited-gems	PASS same-position field revival
+2026-10-22T01:15:57.8808971Z	single-unlimited-gems	PASS duplicate success cannot charge twice
+2026-10-22T01:15:57.8818969Z	single-unlimited-gems	PASS 2-second protection rejects incoming damage
+2026-10-22T01:15:57.9585950Z	single-unlimited-gems	PASS Gem revive 4
+2026-10-22T01:15:57.9601310Z	single-unlimited-gems	PASS partial HP no ad consumption
+2026-10-22T01:15:57.9611515Z	single-unlimited-gems	PASS same-position field revival
+2026-10-22T01:15:57.9636809Z	single-unlimited-gems	PASS duplicate success cannot charge twice
+2026-10-22T01:15:57.9662444Z	single-unlimited-gems	PASS 2-second protection rejects incoming damage
+2026-10-22T01:15:58.0397261Z	single-unlimited-gems	PASS Gem revive 5
+2026-10-22T01:15:58.0412598Z	single-unlimited-gems	PASS partial HP no ad consumption
+2026-10-22T01:15:58.0422811Z	single-unlimited-gems	PASS same-position field revival
+2026-10-22T01:15:58.0427972Z	single-unlimited-gems	PASS duplicate success cannot charge twice
+2026-10-22T01:15:58.0443082Z	single-unlimited-gems	PASS 2-second protection rejects incoming damage
+2026-10-22T01:15:58.1057195Z	single-unlimited-gems	PASS Gem revive 6
+2026-10-22T01:15:58.1088267Z	single-unlimited-gems	PASS partial HP no ad consumption
+2026-10-22T01:15:58.1098622Z	single-unlimited-gems	PASS same-position field revival
+2026-10-22T01:15:58.1108749Z	single-unlimited-gems	PASS duplicate success cannot charge twice
+2026-10-22T01:15:58.1108749Z	single-unlimited-gems	PASS 2-second protection rejects incoming damage
+2026-10-22T01:15:58.1381225Z	single-unlimited-gems	PASS six repeated Gem commits exact balance and Crystal untouched
+2026-10-22T01:15:58.1392386Z	single-unlimited-gems	PASS no inventory loss
+2026-10-22T01:15:58.1403381Z	single-unlimited-gems	PASS no free hunger/thirst/stamina reset
+2026-10-22T01:15:58.1408718Z	single-ad-success-reload	begin
+2026-10-22T01:15:58.1413921Z	single-ad-success-reload	PASS ad opportunity remains after six Gems
+2026-10-22T01:15:58.1642639Z	single-ad-success-reload	PASS reward success commits once despite duplicate callback
+2026-10-22T01:15:58.1879653Z	single-ad-success-reload	PASS one successful ad per expedition, Gem remains available
+2026-10-22T01:15:58.1963063Z	single-ad-success-reload	PASS Save12 persists ad/death
+2026-10-22T01:16:01.5917565Z	single-ad-success-reload	PASS same-object Load cannot cancel death/refill ad
+2026-10-22T01:16:01.8029236Z	single-ad-success-reload	PASS Gem remains repeatable after ad and reload
+2026-10-22T01:16:01.8464332Z	single-ad-success-reload	PASS insufficient Premium Gems cannot revive
+2026-10-22T01:16:01.8522817Z	single-rollback	begin
+2026-10-22T01:16:01.8589082Z	single-rollback	PASS failed durable world commit rolls back HP with zero debit
+2026-10-22T01:16:01.8655083Z	single-home	begin
+2026-10-22T01:16:02.0610232Z	single-home	PASS real free Home button starts next expedition
+2026-10-22T01:16:02.0625268Z	single-home	PASS Home initial seed spawn
+2026-10-22T01:16:02.0905288Z	single-home	PASS authority persistent Home relocation API accepts safe point without Bed gameplay
+2026-10-22T01:16:02.1166221Z	single-home	PASS new expedition allows ad again
+2026-10-22T01:16:02.1438520Z	single-home	PASS Home can cancel pending ad
+2026-10-22T01:16:02.1464654Z	single-home	PASS late canceled ad callback cannot mutate new expedition
+2026-10-22T01:16:02.1485307Z	single-local-safety	begin
+2026-10-22T01:16:02.2064323Z	single-local-safety	PASS solid-blocked death position uses local valid correction
+2026-10-22T01:16:02.2079682Z	single-local-safety	PASS field correction stays within3m and never jumps Home
+2026-10-22T01:16:02.3137299Z	single-new-scene-load	begin
+2026-10-22T01:16:02.3680590Z	single-new-scene-load	PASS death save can be explicitly written
+2026-10-22T01:16:02.3769681Z	single-new-scene-load	PASS actual SceneFlow Continue boundary
+2026-10-22T01:16:10.3358046Z	single-new-scene-load	PASS new scene reload retains Dead without free revival
+2026-10-22T01:16:10.3727324Z	single-new-scene-load	PASS loaded death retains free Home path
+2026-10-22T01:16:10.3732519Z	complete	complete

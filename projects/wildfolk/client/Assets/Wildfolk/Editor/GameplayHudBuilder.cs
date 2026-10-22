@@ -37,7 +37,7 @@ namespace Wildfolk.Editor
             timeHud.Icon=Image("Time Icon",time.transform,"sun",new Vector2(.5f,.5f),new Vector2(-92,0),new Vector2(30,30));
             timeHud.Label=Text("Time",time.transform,"",new Vector2(19,0),new Vector2(172,36),20);
             InventoryUiBuilder.Build(root,safe,session,inventory,motor.GetComponent<PlayerCrafting>(),assets.Settings.InventorySlots);
-            var defeat=BuildDefeat(safe,session);
+            DeathUiBuilder.Build(root,safe,safe,inventory.GetComponent<PlayerDeath>());
             var pause=SurvivalUiBuilder.Pause(safe,session);
             CharacterUiBuilder.Build(root,safe,session,inventory);
             var backpack=Image("Inventory",safe,"panel",new Vector2(.5f,0),new Vector2(-459,102),new Vector2(94,94),true);
@@ -52,7 +52,7 @@ namespace Wildfolk.Editor
             Image("Icon",dash.transform,"icon_dash",new Vector2(.5f,.5f),Vector2.zero,new Vector2(70,70));UnityEventTools.AddPersistentListener(Button(dash).onClick,motor.Locomotion.DashFromUI);sizes.Dash=(RectTransform)dash.transform;
             sizes.Hotbar=(RectTransform)controls.Find("Hotbar");sizes.InventoryButton=(RectTransform)backpack.transform;
             var hud=root.AddComponent<GameplayHud>();hud.Session=session;hud.Joystick=joystick;hud.Attack=attack;hud.Interact=interact;hud.Controls=controlsGroup;
-            hud.InventoryButton=inventoryButton;hud.PauseButton=pauseButton;hud.PausePanel=pause;hud.DefeatPanel=defeat;
+            hud.InventoryButton=inventoryButton;hud.PauseButton=pauseButton;hud.PausePanel=pause;
             OrganizeLayers(root,safe,session);
             var eventSystem=new GameObject("EventSystem",typeof(EventSystem),typeof(InputSystemUIInputModule));eventSystem.GetComponent<EventSystem>().sendNavigationEvents=false;
             var module=eventSystem.GetComponent<InputSystemUIInputModule>();module.UnassignActions();module.actionsAsset=assets.UIActions;module.point=assets.Point;module.leftClick=assets.Click;
@@ -64,7 +64,7 @@ namespace Wildfolk.Editor
             var gameplay=Rect("Gameplay Layer",safe,Vector2.zero,Vector2.zero,Vector2.zero);gameplay.anchorMax=Vector2.one;gameplay.offsetMin=gameplay.offsetMax=Vector2.zero;
             var modal=Rect("Modal Layer",safe,Vector2.zero,Vector2.zero,Vector2.zero);modal.anchorMax=Vector2.one;modal.offsetMin=modal.offsetMax=Vector2.zero;
             var drag=root.GetComponent<InventoryDragController>();var split=drag.SplitPanel;var hud=root.GetComponent<GameplayHud>();
-            var modalRoots=new System.Collections.Generic.HashSet<Transform>{root.GetComponent<InventoryPanel>().View.transform,root.GetComponent<CraftingPanel>().View.transform,root.GetComponent<ChestPanel>().View.transform,root.GetComponent<CharacterScreen>().View.transform,root.GetComponent<SkillTreeScreen>().View.transform,hud.PausePanel.transform,hud.DefeatPanel.transform,drag.DropZone.transform,drag.Ghost,split.View.transform,split.Actions.transform,drag.HeldCancel.transform};
+            var modalRoots=new System.Collections.Generic.HashSet<Transform>{root.GetComponent<InventoryPanel>().View.transform,root.GetComponent<CraftingPanel>().View.transform,root.GetComponent<ChestPanel>().View.transform,root.GetComponent<CharacterScreen>().View.transform,root.GetComponent<SkillTreeScreen>().View.transform,hud.PausePanel.transform,root.GetComponent<DeathHud>().DeadView.transform,drag.DropZone.transform,drag.Ghost,split.View.transform,split.Actions.transform,drag.HeldCancel.transform};
             foreach(var child in children)child.SetParent(modalRoots.Contains(child) ? modal : gameplay,false);
             root.GetComponent<PlayerFeedback>().Label.transform.SetParent(safe,false);root.GetComponent<PlayerFeedback>().Label.transform.SetAsLastSibling();
             var layers=root.AddComponent<GameplayUiLayers>();layers.Session=session;layers.Gameplay=gameplay.gameObject.AddComponent<CanvasGroup>();
@@ -89,13 +89,6 @@ namespace Wildfolk.Editor
             boss.Name=Text("Name",view,string.Empty,new Vector2(0,27),new Vector2(620,40),28);
             var track=Image("Track",view,"panel",new Vector2(.5f,.5f),new Vector2(0,-14),new Vector2(620,26));
             boss.Fill=Image("Health",track.transform,"white",new Vector2(.5f,.5f),Vector2.zero,new Vector2(604,12));boss.Fill.type=UnityEngine.UI.Image.Type.Filled;boss.Fill.fillMethod=UnityEngine.UI.Image.FillMethod.Horizontal;boss.Fill.color=new Color32(169,105,68,255);view.gameObject.SetActive(false);
-        }
-        private static GameObject BuildDefeat(Transform safe,GameplaySession session)
-        {
-            var scrim=Scrim("Defeat Overlay",safe);var panel=Image("Defeat Panel",scrim.transform,"panel",new Vector2(.5f,.5f),Vector2.zero,new Vector2(500,280),true);
-            Text("Title",panel.transform,"ui.game.defeat",new Vector2(0,60),new Vector2(430,60),36);
-            var restart=Image("Restart",panel.transform,"panel",new Vector2(.5f,.5f),new Vector2(0,-55),new Vector2(240,72),true);Text("Label",restart.transform,"ui.game.restart",Vector2.zero,new Vector2(220,62),27);
-            UnityEventTools.AddPersistentListener(Button(restart).onClick,session.Restart);scrim.gameObject.SetActive(false);return scrim.gameObject;
         }
     }
 }

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="3" result="Passed" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-22 01:24:01Z" end-time="2026-10-22 01:24:01Z" duration="0.2164333">
+  <test-suite type="TestSuite" id="1000" name="Wildfolk" fullname="Wildfolk" runstate="Runnable" testcasecount="196" result="Passed" start-time="2026-10-22 01:24:01Z" end-time="2026-10-22 01:24:01Z" duration="0.216433" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1248" name="Wildfolk.Tests.EditMode.dll" fullname="C:/Users/User/Documents/ChatGPT/문승준 모바일/canonical/projects/wildfolk/tests/artifacts/unity/Library/ScriptAssemblies/Wildfolk.Tests.EditMode.dll" runstate="Runnable" testcasecount="196" result="Passed" start-time="2026-10-22 01:24:01Z" end-time="2026-10-22 01:24:01Z" duration="0.202655" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="13308" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1249" name="Wildfolk" fullname="Wildfolk" runstate="Runnable" testcasecount="196" result="Passed" start-time="2026-10-22 01:24:01Z" end-time="2026-10-22 01:24:01Z" duration="0.199775" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1250" name="Tests" fullname="Wildfolk.Tests" runstate="Runnable" testcasecount="196" result="Passed" start-time="2026-10-22 01:24:01Z" end-time="2026-10-22 01:24:01Z" duration="0.197234" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1153" name="NetworkPersistenceModelTests" fullname="Wildfolk.Tests.NetworkPersistenceModelTests" classname="Wildfolk.Tests.NetworkPersistenceModelTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-10-22 01:24:01Z" end-time="2026-10-22 01:24:01Z" duration="0.179049" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1154" name="LegacyV4AndV11MigrateTo12PreservingCorePlayerPayload" fullname="Wildfolk.Tests.NetworkPersistenceModelTests.LegacyV4AndV11MigrateTo12PreservingCorePlayerPayload" methodname="LegacyV4AndV11MigrateTo12PreservingCorePlayerPayload" classname="Wildfolk.Tests.NetworkPersistenceModelTests" runstate="Runnable" seed="796533662" result="Passed" start-time="2026-10-22 01:24:01Z" end-time="2026-10-22 01:24:01Z" duration="0.104333" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1155" name="ParticipantMetadataRejectsDuplicatesInvalidIdentityAndMismatchedHost" fullname="Wildfolk.Tests.NetworkPersistenceModelTests.ParticipantMetadataRejectsDuplicatesInvalidIdentityAndMismatchedHost" methodname="ParticipantMetadataRejectsDuplicatesInvalidIdentityAndMismatchedHost" classname="Wildfolk.Tests.NetworkPersistenceModelTests" runstate="Runnable" seed="1182069554" result="Passed" start-time="2026-10-22 01:24:01Z" end-time="2026-10-22 01:24:01Z" duration="0.019396" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1156" name="SeparateRepositoriesAndDeadParticipantPolicyPreserveSingleplayerRules" fullname="Wildfolk.Tests.NetworkPersistenceModelTests.SeparateRepositoriesAndDeadParticipantPolicyPreserveSingleplayerRules" methodname="SeparateRepositoriesAndDeadParticipantPolicyPreserveSingleplayerRules" classname="Wildfolk.Tests.NetworkPersistenceModelTests" runstate="Runnable" seed="1897519549" result="Passed" start-time="2026-10-22 01:24:01Z" end-time="2026-10-22 01:24:01Z" duration="0.033340" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[<b><color=#2EA3FF>MCP-FOR-UNITY</color></b>: [TestRunnerNoThrottle] Restored Interaction Mode after test run.
+Saving results to: C:/Users/User/AppData/LocalLow/DefaultCompany/Wildfolk\TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

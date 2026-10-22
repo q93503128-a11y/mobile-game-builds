@@ -17,6 +17,7 @@ namespace Wildfolk
             if(!SimulationAuthority.Allows(this) || busy || combat.IsAttacking || Time.time<readyAt)return false;
             weapon=equipment.SelectedItem;if(weapon==null || weapon.Ranged==null || AmmoSlot(weapon.Ranged.Ammunition)<0){PlayerFeedback.ShowKey("feedback.no_ammo");return false;}
             if(!GetComponent<Health>().IsAlive || !GetComponent<PlayerInputCommands>().Session.IsRunning)return false;
+            GetComponent<PlayerDeath>()?.OffensiveAction();
             direction=GetComponent<PlayerAvatar>().Facing.Direction;started=Time.time;fired=false;busy=true;
             readyAt=started+weapon.Ranged.DrawSeconds+weapon.Ranged.RecoverySeconds;
             GetComponent<NetworkActivities>()?.Publish(ActivityKind.Ranged,direction,weapon.Ranged.DrawSeconds+weapon.Ranged.RecoverySeconds);
@@ -38,7 +39,7 @@ namespace Wildfolk
         }
         public void Present(float elapsed,RangedWeaponDefinition data)
         {var facing=GetComponent<PlayerAvatar>().Facing;var draw=data.Crossbow ? elapsed<data.DrawSeconds ? 0 : Mathf.Sin(Mathf.Clamp01((elapsed-data.DrawSeconds)/data.RecoverySeconds)*Mathf.PI) : Mathf.Clamp01(elapsed/data.DrawSeconds);facing.SetHandPose(1,new Vector2(-.15f,.1f),data.Crossbow ? draw*14 : -draw*8);facing.SetHandPose(0,new Vector2(facing.HandSeparation*1.7f,-draw*.4f));}
-        private void Cancel(){busy=false;GetComponent<PlayerAvatar>().Facing.ResetPose();}
+        public void Cancel(){busy=false;GetComponent<PlayerAvatar>().Facing.ResetPose();}
         private void OnDisable()=>Cancel();
     }
 }

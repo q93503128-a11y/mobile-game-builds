@@ -12,7 +12,7 @@ namespace Wildfolk
         public NetworkPlayer Player {get;private set;}
         public PlayerInventory Inventory {get;private set;}
         public bool IsApplying {get;private set;}
-        public bool CanOperate=>IsSpawned && IsServer && Player.Health.IsAlive && NetworkManager.IsListening && NetworkManager.ConnectedClients.ContainsKey(OwnerClientId);
+        public bool CanOperate=>IsSpawned && IsServer && Player.Health.IsAlive && (GetComponent<PlayerDeath>()==null || GetComponent<PlayerDeath>().CanAct) && NetworkManager.IsListening && NetworkManager.ConnectedClients.ContainsKey(OwnerClientId);
         public bool Pending=>pending!=0;
         private ulong sequence,pending,lastRequest;
         private uint waitingRevision;

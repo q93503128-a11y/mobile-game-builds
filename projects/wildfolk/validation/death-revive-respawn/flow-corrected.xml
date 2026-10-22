@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="2" result="Failed(Child)" total="2" passed="0" failed="2" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-22 01:01:46Z" end-time="2026-10-22 01:02:32Z" duration="46.0984176">
+  <test-suite type="TestSuite" id="1219" name="Wildfolk" fullname="Wildfolk" runstate="Runnable" testcasecount="174" result="Failed" site="Child" start-time="2026-10-22 01:01:46Z" end-time="2026-10-22 01:02:32Z" duration="46.098418" total="2" passed="0" failed="2" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <failure>
+      <message><![CDATA[One or more child tests had errors]]></message>
+    </failure>
+    <test-suite type="Assembly" id="1216" name="Wildfolk.Tests.PlayMode.dll" fullname="C:/Users/User/Documents/ChatGPT/문승준 모바일/canonical/projects/wildfolk/tests/artifacts/unity/Library/ScriptAssemblies/Wildfolk.Tests.PlayMode.dll" runstate="Runnable" testcasecount="174" result="Failed" site="Child" start-time="2026-10-22 01:01:46Z" end-time="2026-10-22 01:02:32Z" duration="46.078999" total="2" passed="0" failed="2" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="3152" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <failure>
+        <message><![CDATA[One or more child tests had errors]]></message>
+      </failure>
+      <test-suite type="TestSuite" id="1217" name="Wildfolk" fullname="Wildfolk" runstate="Runnable" testcasecount="174" result="Failed" site="Child" start-time="2026-10-22 01:01:46Z" end-time="2026-10-22 01:02:32Z" duration="46.076937" total="2" passed="0" failed="2" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <failure>
+          <message><![CDATA[One or more child tests had errors]]></message>
+        </failure>
+        <test-suite type="TestSuite" id="1218" name="Tests" fullname="Wildfolk.Tests" runstate="Runnable" testcasecount="174" result="Failed" site="Child" start-time="2026-10-22 01:01:46Z" end-time="2026-10-22 01:02:32Z" duration="46.075586" total="2" passed="0" failed="2" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <failure>
+            <message><![CDATA[One or more child tests had errors]]></message>
+          </failure>
+          <test-suite type="TestFixture" id="1041" name="DeathFoundationPlayTests" fullname="Wildfolk.Tests.DeathFoundationPlayTests" classname="Wildfolk.Tests.DeathFoundationPlayTests" runstate="Runnable" testcasecount="3" result="Failed" site="Child" start-time="2026-10-22 01:01:46Z" end-time="2026-10-22 01:02:32Z" duration="46.063848" total="2" passed="0" failed="2" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <failure>
+              <message><![CDATA[One or more child tests had errors]]></message>
+            </failure>
+            <test-case id="1043" name="FourActorDownReviveInterruptTimeoutWipePersistenceReHost" fullname="Wildfolk.Tests.DeathFoundationPlayTests.FourActorDownReviveInterruptTimeoutWipePersistenceReHost" methodname="FourActorDownReviveInterruptTimeoutWipePersistenceReHost" classname="Wildfolk.Tests.DeathFoundationPlayTests" runstate="Runnable" seed="90610576" result="Failed" start-time="2026-10-22 01:01:46Z" end-time="2026-10-22 01:02:27Z" duration="40.749331" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[  See Captures/death-revive-respawn/live.tsv
+  Expected string length 8 but was 6. Strings differ at index 0.
+  Expected: "complete"
+  But was:  "failed"
+  -----------^
+]]></message>
+                <stack-trace><![CDATA[at Wildfolk.Tests.DeathFoundationPlayTests+<Run>d__0.MoveNext () [0x000ba] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Tests\PlayMode\DeathFoundationPlayTests.cs:12
+at UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\Library\PackageCache\com.unity.test-framework@bd7f943e9647\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:44
+]]></stack-trace>
+              </failure>
+            </test-case>
+            <test-case id="1042" name="SingleDeathAdsRepeatedGemTransactionsHomeAndRealReload" fullname="Wildfolk.Tests.DeathFoundationPlayTests.SingleDeathAdsRepeatedGemTransactionsHomeAndRealReload" methodname="SingleDeathAdsRepeatedGemTransactionsHomeAndRealReload" classname="Wildfolk.Tests.DeathFoundationPlayTests" runstate="Runnable" seed="54785437" result="Failed" label="Error" start-time="2026-10-22 01:02:27Z" end-time="2026-10-22 01:02:32Z" duration="5.293642" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[System.Reflection.TargetInvocationException : Exception has been thrown by the target of an invocation.
+  ----> System.NullReferenceException : Object reference not set to an instance of an object]]></message>
+                <stack-trace><![CDATA[  at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x00083] in <41d29b352f6a475ab1bf7c6628b82790>:0
+  at System.Reflection.MethodBase.Invoke (System.Object obj, System.Object[] parameters) [0x00000] in <41d29b352f6a475ab1bf7c6628b82790>:0
+  at Wildfolk.Tests.DeathFoundationPlayTests+<Run>d__0.MoveNext () [0x00058] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Tests\PlayMode\DeathFoundationPlayTests.cs:12
+  at UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\Library\PackageCache\com.unity.test-framework@bd7f943e9647\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:44
+--NullReferenceException
+  at Wildfolk.Editor.DeathFoundationQa.BeginSingle () [0x00061] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Editor\DeathFoundationQa.cs:26
+  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)
+  at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x0006a] in <41d29b352f6a475ab1bf7c6628b82790>:0 ]]></stack-trace>
+              </failure>
+              <output><![CDATA[Can't add script behaviour 'DeathQaRunner' because it is an editor script. To attach a script it needs to be outside the 'Editor' folder.
+<b><color=#2EA3FF>MCP-FOR-UNITY</color></b>: [TestRunnerNoThrottle] Restored Interaction Mode after test run.
+Saving results to: C:/Users/User/AppData/LocalLow/DefaultCompany/Wildfolk\TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

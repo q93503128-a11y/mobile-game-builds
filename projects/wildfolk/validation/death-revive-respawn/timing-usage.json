@@ -1,0 +1,134 @@
+{
+  "stages": [
+    {
+      "stage": "audit-research-complete",
+      "at_utc": "2026-10-22T00:34:14.570877+00:00"
+    },
+    {
+      "stage": "implementation-start",
+      "at_utc": "2026-10-22T00:35:28.187384+00:00"
+    },
+    {
+      "stage": "initial-implementation-complete",
+      "at_utc": "2026-10-22T00:46:50.645293+00:00"
+    },
+    {
+      "stage": "single-live-passed",
+      "at_utc": "2026-10-22T01:04:07.557237+00:00"
+    },
+    {
+      "stage": "lan-two-process-passed",
+      "at_utc": "2026-10-22T01:16:33.095388+00:00"
+    },
+    {
+      "stage": "verification-and-evidence-complete",
+      "at_utc": "2026-10-22T01:26:13.267610+00:00"
+    },
+    {
+      "stage": "staged-diff-reviewed-precommit",
+      "at_utc": "2026-10-22T01:27:52.010659+00:00"
+    }
+  ],
+  "task_start_utc": "2026-10-22T00:29:00Z",
+  "task_start_note": "fetch/read occurred before first retained clock00:30:28; 00:29 approximate, not measured",
+  "first_retained_clock_utc": "2026-10-22T00:30:28Z",
+  "usage_scope": "account-wide rounded windows, not exact task tokens/cost; snapshots may include other chats",
+  "usage": [
+    {
+      "utc": "2026-10-22T00:31:00Z",
+      "five_hour_used_percent": 4,
+      "weekly_used_percent": 57,
+      "time_note": "minute approximate from tool order"
+    },
+    {
+      "utc": "2026-10-22T00:43:16Z",
+      "five_hour_used_percent": 15,
+      "weekly_used_percent": 58
+    },
+    {
+      "utc": "2026-10-22T00:55:00Z",
+      "five_hour_used_percent": 28,
+      "weekly_used_percent": 60,
+      "time_note": "minute approximate from tool order"
+    },
+    {
+      "utc": "2026-10-22T01:09:21Z",
+      "five_hour_used_percent": 44,
+      "weekly_used_percent": 63
+    },
+    {
+      "utc": "2026-10-22T01:16:55Z",
+      "five_hour_used_percent": 54,
+      "weekly_used_percent": 64,
+      "time_note": "minute rounded"
+    },
+    {
+      "utc": "2026-10-22T01:27:28Z",
+      "five_hour_used_percent": 65,
+      "weekly_used_percent": 66
+    }
+  ],
+  "test_waits": [
+    {
+      "evidence": "flow-corrected.xml",
+      "test_start_utc": "2026-10-22 01:01:46Z",
+      "test_end_utc": "2026-10-22 01:02:32Z",
+      "test_execution_seconds": 46.0984176
+    },
+    {
+      "evidence": "flow-final.xml",
+      "test_start_utc": "2026-10-22 01:08:58Z",
+      "test_end_utc": "2026-10-22 01:11:34Z",
+      "test_execution_seconds": 156.6375111
+    },
+    {
+      "evidence": "lan-client-final.xml",
+      "test_start_utc": "2026-10-22 01:13:17Z",
+      "test_end_utc": "2026-10-22 01:14:10Z",
+      "test_execution_seconds": 53.0881388
+    },
+    {
+      "evidence": "lan-client.xml",
+      "test_start_utc": "2026-10-22 01:05:56Z",
+      "test_end_utc": "2026-10-22 01:07:03Z",
+      "test_execution_seconds": 67.0814604
+    },
+    {
+      "evidence": "models-final.xml",
+      "test_start_utc": "2026-10-22 01:04:15Z",
+      "test_end_utc": "2026-10-22 01:04:23Z",
+      "test_execution_seconds": 7.485751
+    },
+    {
+      "evidence": "models.xml",
+      "test_start_utc": "2026-10-22 00:50:14Z",
+      "test_end_utc": "2026-10-22 00:50:48Z",
+      "test_execution_seconds": 33.8954362
+    },
+    {
+      "evidence": "network-regression-clearance.xml",
+      "test_start_utc": "2026-10-22 01:21:36Z",
+      "test_end_utc": "2026-10-22 01:21:42Z",
+      "test_execution_seconds": 6.6096132
+    },
+    {
+      "evidence": "network-regression-final.xml",
+      "test_start_utc": "2026-10-22 01:19:01Z",
+      "test_end_utc": "2026-10-22 01:19:07Z",
+      "test_execution_seconds": 5.8073164
+    },
+    {
+      "evidence": "persistence-models.xml",
+      "test_start_utc": "2026-10-22 01:24:01Z",
+      "test_end_utc": "2026-10-22 01:24:01Z",
+      "test_execution_seconds": 0.2164333
+    },
+    {
+      "evidence": "regression-corrected.xml",
+      "test_start_utc": "2026-10-22 01:15:44Z",
+      "test_end_utc": "2026-10-22 01:16:54Z",
+      "test_execution_seconds": 70.3801263
+    }
+  ],
+  "timing_note": "Stage wall intervals are sequential; test startup/execution overlap work and are not added again. Before00:30:28 not precisely measured."
+}

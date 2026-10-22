@@ -43,13 +43,13 @@ namespace Wildfolk.Tests
             var hp=a.Health.Current;Assert.That(player.Commands.Attack(),Is.True);Assert.That(player.Commands.Attack(),Is.False);
             yield return new WaitForSeconds(.19f);Assert.That(a.Health.Current,Is.EqualTo(hp-player.GetComponent<PlayerCombat>().Settings.PunchDamage));
             Assert.That(b.Health.Current,Is.EqualTo(b.Health.Maximum));Assert.That(a.GetComponent<NetworkCreature>().Frame.Value.HP,Is.EqualTo(a.Health.Current));
-            var second=Object.Instantiate(NetworkSession.Instance.PlayerPrefab,origin+Vector2.right*.1f,Quaternion.identity).GetComponent<NetworkPlayer>();second.GetComponent<NetworkObject>().Spawn();second.GetComponent<PlayerInputAdapter>().enabled=false;Place(second,origin+Vector2.right*.1f);
-            yield return new WaitForSeconds(.35f);Place(player,origin);Place(second,origin+Vector2.right*.1f);
+            var second=Object.Instantiate(NetworkSession.Instance.PlayerPrefab,origin+Vector2.right*1.2f,Quaternion.identity).GetComponent<NetworkPlayer>();second.GetComponent<NetworkObject>().Spawn();second.GetComponent<PlayerInputAdapter>().enabled=false;Place(second,origin+Vector2.right*1.2f);
+            yield return new WaitForSeconds(.35f);Place(player,origin);Place(second,origin+Vector2.right*1.2f);
             a.Health.RestoreHealth(1);var deaths=0;a.Health.Died+=()=>deaths++;var count=world.DeathCount;var id=a.GetComponent<NetworkObject>().NetworkObjectId;var progression=player.GetComponent<PlayerProgression>();var xp=progression.Experience;var gold=progression.Gold;
             var pickups=Object.FindObjectsByType<WorldPickup>(FindObjectsSortMode.None).Length;
             Assert.That(player.Commands.Attack(),Is.True);Assert.That(second.Commands.Attack(),Is.True);yield return new WaitForSeconds(.20f);
             Assert.That(a.Health.Current,Is.Zero);Assert.That(a.Health.ApplyDamage(999),Is.Zero);Assert.That(deaths,Is.EqualTo(1));Assert.That(world.DeathCount,Is.EqualTo(count+1));Assert.That(world.LastDeath.CreatureId,Is.EqualTo(id));Assert.That(world.LastDeath.Items.Count,Is.GreaterThan(0));
-            Assert.That(progression.Experience,Is.EqualTo(xp));Assert.That(progression.Gold,Is.EqualTo(gold));Assert.That(Object.FindObjectsByType<WorldPickup>(FindObjectsSortMode.None).Length,Is.GreaterThan(pickups));
+            Assert.That(progression.Experience,Is.EqualTo(xp+world.LastDeath.Experience));Assert.That(progression.Gold,Is.EqualTo(gold+world.LastDeath.Gold));Assert.That(Object.FindObjectsByType<WorldPickup>(FindObjectsSortMode.None).Length,Is.GreaterThan(pickups));
             yield return new WaitForSeconds(.4f);Assert.That(NetworkSession.Instance.Manager.SpawnManager.SpawnedObjects.ContainsKey(id),Is.False);
         }
         [UnityTest]public IEnumerator HostTargetsLivingPlayersAndLaunchesOneAuthoritativeProjectile()

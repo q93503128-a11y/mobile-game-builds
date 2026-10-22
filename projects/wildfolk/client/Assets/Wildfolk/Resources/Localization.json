@@ -4160,6 +4160,139 @@
         "Cavern entrance",
         "동굴 입구"
       ]
+    },
+    {
+      "Key": "death.title",
+      "Values": [
+        "Back on your feet",
+        "다시 일어서기"
+      ]
+    },
+    {
+      "Key": "death.choices",
+      "Values": [
+        "Revive here, or return Home for free.",
+        "이 자리에서 부활하거나 무료로 귀환하세요."
+      ]
+    },
+    {
+      "Key": "death.ad",
+      "Values": [
+        "Watch an ad · Revive here",
+        "광고 보고 현장 부활"
+      ]
+    },
+    {
+      "Key": "death.gem",
+      "Values": [
+        "Use Premium Gems · Revive here",
+        "보석으로 현장 부활"
+      ]
+    },
+    {
+      "Key": "death.gem_cost",
+      "Values": [
+        "Revive here · {0} Premium Gems",
+        "보석 {0}개로 현장 부활"
+      ]
+    },
+    {
+      "Key": "death.home",
+      "Values": [
+        "Return Home · Free",
+        "Home에서 무료 부활"
+      ]
+    },
+    {
+      "Key": "death.home_hint",
+      "Values": [
+        "Your belongings and world are safe. Return Home when ready.",
+        "소지품과 월드는 유지됩니다. 준비되면 귀환하세요."
+      ]
+    },
+    {
+      "Key": "death.downed",
+      "Values": [
+        "Waiting for rescue · {0}s",
+        "구조 대기 · {0}초"
+      ]
+    },
+    {
+      "Key": "death.hold",
+      "Values": [
+        "Hold Interact near your teammate to revive",
+        "동료 곁에서 상호작용을 길게 눌러 구조"
+      ]
+    },
+    {
+      "Key": "death.progress",
+      "Values": [
+        "Reviving · {0}%",
+        "구조 중 · {0}%"
+      ]
+    },
+    {
+      "Key": "death.ad_unavailable",
+      "Values": [
+        "An ad is not available right now.",
+        "지금은 광고를 이용할 수 없습니다."
+      ]
+    },
+    {
+      "Key": "death.ad_used",
+      "Values": [
+        "You have used this expedition’s ad revive.",
+        "이번 원정의 광고 부활을 사용했습니다."
+      ]
+    },
+    {
+      "Key": "death.gem_unavailable",
+      "Values": [
+        "Premium Gem revive is currently unavailable.",
+        "현재 보석 부활을 이용할 수 없습니다."
+      ]
+    },
+    {
+      "Key": "death.gem_short",
+      "Values": [
+        "Not enough Premium Gems.",
+        "보석이 부족합니다."
+      ]
+    },
+    {
+      "Key": "death.ad_failed",
+      "Values": [
+        "No reward received. Choose another way to return.",
+        "광고 보상을 받지 못했습니다. 다른 방법을 선택하세요."
+      ]
+    },
+    {
+      "Key": "death.position_failed",
+      "Values": [
+        "There is no clear space here. You can return Home.",
+        "주변에 설 자리가 없습니다. Home으로 귀환할 수 있습니다."
+      ]
+    },
+    {
+      "Key": "death.save_failed",
+      "Values": [
+        "Could not save. Please try returning Home again.",
+        "저장하지 못했습니다. Home 귀환을 다시 시도하세요."
+      ]
+    },
+    {
+      "Key": "death.wait",
+      "Values": [
+        "Waiting for the reward. You can still return Home.",
+        "보상을 기다리는 중입니다. Home 귀환도 가능합니다."
+      ]
+    },
+    {
+      "Key": "death.peer",
+      "Values": [
+        "Teammate needs rescue · {0} m",
+        "구조를 기다리는 동료 · {0} m"
+      ]
     }
   ]
 }

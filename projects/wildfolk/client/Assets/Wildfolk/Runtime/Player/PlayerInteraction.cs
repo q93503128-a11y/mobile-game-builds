@@ -32,7 +32,7 @@ namespace Wildfolk
             if(target==Target)return;Target=target;Changed?.Invoke();
         }
         public bool CanEquipSelected=>Equipment.SelectedItem!=null && (Equipment.SelectedItem.Armor!=null || Equipment.SelectedItem.EquippedLight!=null);
-        public bool TryInteract() {if(!Session.IsRunning || GetComponent<PlayerInputCommands>().IsScouting)return false;Refresh();if(Target is PoiSite site && site.Kind==WorldAnchorKind.Well)return site.Use(this);if(Equipment.SelectedItem!=null && Equipment.SelectedItem.WaterCapacity>0){var net=GetComponent<NetworkContainer>();return net==null ? GetComponent<PlayerWaterskin>().Fill() : net.Fill();}if(CanEquipSelected)return Equipment.TryEquipSelectedArmor();Refresh();return Target!=null && Target.Use(this);}
+        public bool TryInteract() {if(GetComponent<PlayerInputCommands>().HasDownedTeammate)return GetComponent<PlayerInputCommands>().HoldInteract(true);if(!Session.IsRunning || GetComponent<PlayerInputCommands>().IsScouting)return false;Refresh();if(Target is PoiSite site && site.Kind==WorldAnchorKind.Well)return site.Use(this);if(Equipment.SelectedItem!=null && Equipment.SelectedItem.WaterCapacity>0){var net=GetComponent<NetworkContainer>();return net==null ? GetComponent<PlayerWaterskin>().Fill() : net.Fill();}if(CanEquipSelected)return Equipment.TryEquipSelectedArmor();Refresh();return Target!=null && Target.Use(this);}
         public void Use() => TryInteract();
     }
 }

@@ -1,6 +1,6 @@
 # Lowfire
 
-Unity **6000.3.19f1 LTS / Universal 2D**, 모바일 Landscape(1920×1080) 탑다운 생존 게임이다. 표시명 Lowfire, 내부 Wildfolk namespace·경로·저장 식별자는 유지한다. 현재 alpha 콘텐츠는 **Item134 / Recipe111 / Save11 / Protocol18**, Workbench I→II→III와 Wood/Stone/Iron/Steel/Diamond 장비다.
+Unity **6000.3.19f1 LTS / Universal 2D**, 모바일 Landscape(1920×1080) 탑다운 생존 게임이다. 표시명 Lowfire, 내부 Wildfolk namespace·경로·저장 식별자는 유지한다. 현재 alpha 콘텐츠는 **Item134 / Recipe111 / Save12 / Protocol19**, Workbench I→II→III와 Wood/Stone/Iron/Steel/Diamond 장비다.
 
 ## 실행과 플레이
 
@@ -8,7 +8,7 @@ Unity Hub에서 `client/`를 열고 `Assets/Wildfolk/Scenes/MainMenu.unity`에�
 
 낮 채집·도구/시설 제작 → Copper/Tin/Bronze/Steel → Deep Caverns Diamond/Crystal → III 장비·탐험·방어로 이어진다. 밤 Zombie/Skeleton, 낮 Goblin 무리·Camp, 동물·야생 위험 생물13종을 제공한다. 신규8종은 Bat/Stone Crawler/Bog Leech/Wolf/Mountain Goat/Crow/Giant Boar/Crystal Crawler다. Bone/Chitin/Medicinal Gland는 탄약·함정·장비·치료·음식으로 소비된다. Goblin Camp 보급품은 거주 적 처치 후 획득하는 비재충전6칸 상자다.
 
-Primary는 공격·도구·설치·선택 소비품·Armor 장착, Interact는 시설·문·물·상자다. Joystick/Sprint/Dash, Inventory36(Hotbar9+Storage27), 일반 Chest24/강화36칸, 드래그·합치기·소분·명시적 버리기를 제공한다. Inventory/제작/보급품 화면에서는 플레이 입력만 막고 세계는 진행한다. Singleplayer Pause/Defeat는 정지한다.
+Primary는 공격·도구·설치·선택 소비품·Armor 장착, Interact는 시설·문·물·상자다. Joystick/Sprint/Dash, Inventory36(Hotbar9+Storage27), 일반 Chest24/강화36칸, 드래그·합치기·소분·명시적 버리기를 제공한다. Inventory/제작/보급품 화면에서는 플레이 입력만 막고 세계는 진행한다. Singleplayer Pause/사망 선택은 정지한다.
 
 기본 Workbench는 Wood6. 장비 업그레이드는 이전 장비를 재료로 소비한다. 설치 제작대 I→II는 Wood8+Stone6+Iron2, II→III는 Wood10+Stone10+Bronze4+Steel4+Crystal4+Diamond1이다. 별도 II/III Recipe는 없다. Furnace는 Iron/Copper/Tin/Bronze, Blast Furnace는 Steel, Campfire는 단순 가열·정수, Cooking Pot은 복합 조리, Turret Workbench는 포탑·탄약·모듈을 맡는다. 전체 비용/시간은 제작 정본을 따른다.
 
@@ -18,7 +18,7 @@ Hunger/Thirst, 재사용 Cup/Waterskin, 낚시, HP/Stamina 즉시 회복 음식�
 
 ## 저장과 협동
 
-Save11은 기존1~10을 읽고 다음 정상 Save에서 이관한다. Seed·generation version·game time·자원/생물 logical delta·시설·queue·가방·장비·성장·Camp 보급 잔량을 저장한다. Editor는 프로젝트 UserData, 빌드는 persistentDataPath, 격리 QA는 전용 Captures 경로를 쓴다. 원래 파일명과 checksum/atomic replace/backup을 유지한다. Home Continue/Pause Save·Save & return home, 기기 Background/Quit 저장을 제공하며 플레이어용 Load 버튼은 없다.
+Save12는 기존1~11을 읽고 다음 정상 Save에서 이관한다. Seed·generation version·game time·자원/생물 logical delta·시설·queue·가방·장비·성장·Camp 보급 잔량을 저장한다. Editor는 프로젝트 UserData, 빌드는 persistentDataPath, 격리 QA는 전용 Captures 경로를 쓴다. 원래 파일명과 checksum/atomic replace/backup을 유지한다. Home Continue/Pause Save·Save & return home, 기기 Background/Quit 저장을 제공하며 플레이어용 Load 버튼은 없다.
 
 Multiplayer는 Relay Room Code 또는 Local Network Host/Join이다. Host가 이동·전투·spawn/AI·채집·loot·가방·시설·상자·save를 결정한다. Client는 요청과 replica 표시다. 최대4인 admission 구조를 유지하며 실제4인 Relay·모바일·장시간 통합 검수는 별도다. Host 종료 시 세션도 끝나며 Host migration/Account/Cloud는 없다.
 
@@ -44,3 +44,9 @@ Multiplayer는 Relay Room Code 또는 Local Network Host/Join이다. Host가 이
 ## Base / Defense / POI2-F
 
 Campsite 한 번 보급,Well 공유3회/480초 회복 clean 물,Quarry 기존 유한 채광,Graveyard Skeleton1 처치 후 보급을 제공한다. Bone Trap은32피해 한 대상1회,Spike는16/1.2초 반복이다. 신규 item/recipe/포탑0,Save11/generation3 유지,Protocol18. 구 visited POI는 새 일회 보상을 받지 않고 Well은0에서 회복한다. [감사·외부 비교·경제·검수](validation/base-defense-poi-expansion/REVIEW.md). Content Expansion2는 여기서 마감하며 이후 Skill Point/Class/Job 기획→Undead King/Boss Foundation 순서다.
+
+## Death / Revive / Respawn
+
+SP 사망은 현장 광고(원정당 성공1회)·Premium Gem(횟수 제한 없음)·무료 Home 복귀로 나뉜다. 현재 실제 광고/유료 지갑은 미연결이며 제품에서는 두 현장 결제 버튼을 사용할 수 없다. Crystal/Gold는 차감하지 않는다. MP는24초 Downed→동료4초 hold 구조(40%HP/2초 보호, 공격 시작시 종료) 또는 Dead→무료 Home이다. 구조는 release/이동/피격/거리/시야/무력화/연결 상실로 중단한다. 전체 down은 각자 Home으로 돌아갈 수 있게 Dead로 확정한다.
+
+사망 HomeAnchor는 개인별 초기 WorldMap.Spawn이며 Workbench 방향 안내 Home과 별개다. 소지품·장비·성장·월드를 유지한다. Save12는 죽음·광고 사용·원정·Home을 저장하고 구조 진행/무적은 저장하지 않는다. Protocol19. [감사·외부 비교·거래 경계·검수](validation/death-revive-respawn/REVIEW.md). 다음 Class/Medic/Boss는 이번에 구현하지 않았다.

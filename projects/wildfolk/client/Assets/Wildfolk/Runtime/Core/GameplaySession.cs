@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Wildfolk
 {
     public enum SessionMode { Singleplayer, Multiplayer }
-    public enum SessionState { Running, Inventory, Paused, Defeated, Character, SkillTree }
+    public enum SessionState { Running, Inventory, Paused, Defeated, Character, SkillTree, Downed, Rescuing }
 
     public sealed class GameplaySession : MonoBehaviour
     {
@@ -32,16 +32,20 @@ namespace Wildfolk
         public void CloseSkillTree(){if(State==SessionState.SkillTree)SetState(SessionState.Running);}
         public void OpenPause()
         {
-            if (State != SessionState.Defeated && State != SessionState.Paused) SetState(SessionState.Paused);
+            if (State != SessionState.Defeated && State != SessionState.Downed && State != SessionState.Rescuing && State != SessionState.Paused) SetState(SessionState.Paused);
         }
         public void Resume() { if (State == SessionState.Paused) SetState(SessionState.Running); }
         internal void ReplicateDefeat(){if(State!=SessionState.Defeated)SetState(SessionState.Defeated);}
-        private void Defeat() => SetState(SessionState.Defeated);
+        private void Defeat(){var death=PlayerHealth.GetComponent<PlayerDeath>();if(death!=null)death.Lethal();else SetState(SessionState.Defeated);}
+        internal void ApplyLife(PlayerLife life,bool helping=false)
+        {
+            var next=life==PlayerLife.Alive ? helping ? SessionState.Rescuing : SessionState.Running : life==PlayerLife.Downed || life==PlayerLife.Reviving ? SessionState.Downed : SessionState.Defeated;
+            if(State!=next)SetState(next);
+        }
         private void SetState(SessionState value)
         {
             State = value;
             StateChanged?.Invoke();
         }
-        public void Restart()=>SceneFlow.NewGame();
     }
 }

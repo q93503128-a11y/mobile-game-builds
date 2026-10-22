@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="5" result="Failed(Child)" total="5" passed="4" failed="1" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-22 01:15:44Z" end-time="2026-10-22 01:16:54Z" duration="70.3801263">
+  <test-suite type="TestSuite" id="1219" name="Wildfolk" fullname="Wildfolk" runstate="Runnable" testcasecount="174" result="Failed" site="Child" start-time="2026-10-22 01:15:44Z" end-time="2026-10-22 01:16:54Z" duration="70.380126" total="5" passed="4" failed="1" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <failure>
+      <message><![CDATA[One or more child tests had errors]]></message>
+    </failure>
+    <test-suite type="Assembly" id="1216" name="Wildfolk.Tests.PlayMode.dll" fullname="C:/Users/User/Documents/ChatGPT/문승준 모바일/canonical/projects/wildfolk/tests/artifacts/unity/Library/ScriptAssemblies/Wildfolk.Tests.PlayMode.dll" runstate="Runnable" testcasecount="174" result="Failed" site="Child" start-time="2026-10-22 01:15:44Z" end-time="2026-10-22 01:16:54Z" duration="70.357553" total="5" passed="4" failed="1" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="16836" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <failure>
+        <message><![CDATA[One or more child tests had errors]]></message>
+      </failure>
+      <test-suite type="TestSuite" id="1217" name="Wildfolk" fullname="Wildfolk" runstate="Runnable" testcasecount="174" result="Failed" site="Child" start-time="2026-10-22 01:15:44Z" end-time="2026-10-22 01:16:54Z" duration="70.353999" total="5" passed="4" failed="1" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <failure>
+          <message><![CDATA[One or more child tests had errors]]></message>
+        </failure>
+        <test-suite type="TestSuite" id="1218" name="Tests" fullname="Wildfolk.Tests" runstate="Runnable" testcasecount="174" result="Failed" site="Child" start-time="2026-10-22 01:15:44Z" end-time="2026-10-22 01:16:54Z" duration="70.350790" total="5" passed="4" failed="1" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <failure>
+            <message><![CDATA[One or more child tests had errors]]></message>
+          </failure>
+          <test-suite type="TestFixture" id="1041" name="DeathFoundationPlayTests" fullname="Wildfolk.Tests.DeathFoundationPlayTests" classname="Wildfolk.Tests.DeathFoundationPlayTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-10-22 01:15:44Z" end-time="2026-10-22 01:16:10Z" duration="25.824953" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1042" name="SingleDeathAdsRepeatedGemTransactionsHomeAndRealReload" fullname="Wildfolk.Tests.DeathFoundationPlayTests.SingleDeathAdsRepeatedGemTransactionsHomeAndRealReload" methodname="SingleDeathAdsRepeatedGemTransactionsHomeAndRealReload" classname="Wildfolk.Tests.DeathFoundationPlayTests" runstate="Runnable" seed="1666365971" result="Passed" start-time="2026-10-22 01:15:44Z" end-time="2026-10-22 01:16:10Z" duration="25.800039" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1088" name="GameplayPlayTests" fullname="Wildfolk.Tests.GameplayPlayTests" classname="Wildfolk.Tests.GameplayPlayTests" runstate="Runnable" testcasecount="8" result="Passed" start-time="2026-10-22 01:16:10Z" end-time="2026-10-22 01:16:16Z" duration="5.625117" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1094" name="DeathCanReturnHomeThroughActualUIButton" fullname="Wildfolk.Tests.GameplayPlayTests.DeathCanReturnHomeThroughActualUIButton" methodname="DeathCanReturnHomeThroughActualUIButton" classname="Wildfolk.Tests.GameplayPlayTests" runstate="Runnable" seed="564634062" result="Passed" start-time="2026-10-22 01:16:10Z" end-time="2026-10-22 01:16:16Z" duration="5.607910" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1097" name="MedicinePlayTests" fullname="Wildfolk.Tests.MedicinePlayTests" classname="Wildfolk.Tests.MedicinePlayTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-22 01:16:16Z" end-time="2026-10-22 01:16:45Z" duration="29.768459" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1098" name="HerbsCraftingHealingSharedLimitAndSaveLoadUseActualGameplay" fullname="Wildfolk.Tests.MedicinePlayTests.HerbsCraftingHealingSharedLimitAndSaveLoadUseActualGameplay" methodname="HerbsCraftingHealingSharedLimitAndSaveLoadUseActualGameplay" classname="Wildfolk.Tests.MedicinePlayTests" runstate="Runnable" seed="1799254449" result="Passed" start-time="2026-10-22 01:16:16Z" end-time="2026-10-22 01:16:45Z" duration="29.764341" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1116" name="NetworkCreaturePlayTests" fullname="Wildfolk.Tests.NetworkCreaturePlayTests" classname="Wildfolk.Tests.NetworkCreaturePlayTests" runstate="Runnable" testcasecount="4" result="Failed" site="Child" start-time="2026-10-22 01:16:45Z" end-time="2026-10-22 01:16:48Z" duration="2.664132" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <failure>
+              <message><![CDATA[One or more child tests had errors]]></message>
+            </failure>
+            <test-case id="1117" name="HostSpawnGroupCombatAndDeathHaveOneAuthority" fullname="Wildfolk.Tests.NetworkCreaturePlayTests.HostSpawnGroupCombatAndDeathHaveOneAuthority" methodname="HostSpawnGroupCombatAndDeathHaveOneAuthority" classname="Wildfolk.Tests.NetworkCreaturePlayTests" runstate="Runnable" seed="1431212576" result="Failed" start-time="2026-10-22 01:16:45Z" end-time="2026-10-22 01:16:48Z" duration="2.610453" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[Unhandled log message: '[Error] Failed to bind UDP socket because the address is already in use. Likely because there is another process using port 7777.'. Use UnityEngine.TestTools.LogAssert.Expect]]></message>
+                <stack-trace><![CDATA[Unity.Networking.Transport.UDPNetworkInterface:CreateSocket (int,int,Unity.Networking.Transport.NetworkEndpoint,Unity.Baselib.LowLevel.Binding/Baselib_RegisteredNetwork_Socket_UDP&,bool) (at ./Library/PackageCache/com.unity.transport@98ef8bfec34d/Runtime/UDPNetworkInterface.cs:567)
+Unity.Networking.Transport.UDPNetworkInterface:Bind (Unity.Networking.Transport.NetworkEndpoint) (at ./Library/PackageCache/com.unity.transport@98ef8bfec34d/Runtime/UDPNetworkInterface.cs:525)
+Unity.Networking.Transport.NetworkInterfaceLayer`1<Unity.Networking.Transport.UDPNetworkInterface>:Bind (Unity.Networking.Transport.NetworkEndpoint&) (at ./Library/PackageCache/com.unity.transport@98ef8bfec34d/Runtime/Layers/NetworkInterfaceLayer.cs:45)
+Unity.Networking.Transport.NetworkStack/NetworkInterfaceFunctions:BindWrapper<Unity.Networking.Transport.UDPNetworkInterface> (void*,int) (at ./Library/PackageCache/com.unity.transport@98ef8bfec34d/Runtime/NetworkStack.cs:72)
+Unity.Networking.Transport.ManagedCallWrapper:Method (void*,void*,int) (at ./Library/PackageCache/com.unity.transport@98ef8bfec34d/Runtime/Utilities/ManagedCallWrapper.cs:23)
+Unity.Networking.Transport.ManagedCallWrapper:Invoke (void*,int) (at ./Library/PackageCache/com.unity.transport@98ef8bfec34d/Runtime/Utilities/ManagedCallWrapper.cs:72)
+Unity.Networking.Transport.ManagedCallWrapper:Invoke<Unity.Networking.Transport.NetworkStack/NetworkInterfaceFunctions/BindArguments> (Unity.Networking.Transport.NetworkStack/NetworkInterfaceFunctions/BindArguments&) (at ./Library/PackageCache/com.unity.transport@98ef8bfec34d/Runtime/Utilities/ManagedCallWrapper.cs:79)
+Unity.Networking.Transport.NetworkStack/NetworkInterfaceFunctions:Bind (Unity.Networking.Transport.NetworkStack&,Unity.Networking.Transport.NetworkEndpoint&) (at ./Library/PackageCache/com.unity.transport@98ef8bfec34d/Runtime/NetworkStack.cs:36)
+Unity.Networking.Transport.NetworkStack:Bind (Unity.Networking.Transport.NetworkEndpoint&) (at ./Library/PackageCache/com.unity.transport@98ef8bfec34d/Runtime/NetworkStack.cs:319)
+Unity.Networking.Transport.NetworkDriver:Bind (Unity.Networking.Transport.NetworkEndpoint) (at ./Library/PackageCache/com.unity.transport@98ef8bfec34d/Runtime/NetworkDriver.cs:909)
+Unity.Netcode.Transports.UTP.UnityTransport:ServerBindAndListen (Unity.Networking.Transport.NetworkEndpoint) (at ./Library/PackageCache/com.unity.netcode.gameobjects@277a288a1cea/Runtime/Transports/UTP/UnityTransport.cs:797)
+Unity.Netcode.Transports.UTP.UnityTransport:StartServer () (at ./Library/PackageCache/com.unity.netcode.gameobjects@277a288a1cea/Runtime/Transports/UTP/UnityTransport.cs:1700)
+Unity.Netcode.NetworkManager:StartHost () (at ./Library/PackageCache/com.unity.netcode.gameobjects@277a288a1cea/Runtime/Core/NetworkManager.cs:1474)
+Wildfolk.NetworkSession/<Host>d__67:MoveNext () (at Assets/Wildfolk/Runtime/Networking/NetworkSession.cs:77)
+System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1<bool>:Start<Wildfolk.NetworkSession/<Host>d__67> (Wildfolk.NetworkSession/<Host>d__67&)
+Wildfolk.NetworkSession:Host (Wildfolk.ConnectionRoute,bool)
+Wildfolk.Tests.NetworkCreaturePlayTests/<Host>d__2:MoveNext () (at Assets/Wildfolk/Tests/PlayMode/NetworkCreaturePlayTests.cs:20)
+UnityEngine.SetupCoroutine:InvokeMoveNext (System.Collections.IEnumerator,intptr)
+
+]]></stack-trace>
+              </failure>
+              <output><![CDATA[Failed to bind UDP socket because the address is already in use. Likely because there is another process using port 7777.
+Server failed to bind. This is usually caused by another process being bound to the same port.
+[Netcode] Host is shutting down due to network transport start failure of UnityTransport!
+]]></output>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1182" name="SurvivalLoopPlayTests" fullname="Wildfolk.Tests.SurvivalLoopPlayTests" classname="Wildfolk.Tests.SurvivalLoopPlayTests" runstate="Runnable" testcasecount="6" result="Passed" start-time="2026-10-22 01:16:48Z" end-time="2026-10-22 01:16:54Z" duration="6.426048" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1184" name="InventoryKeepsEnemyAliveWhilePauseHasSeparateWorldPolicy" fullname="Wildfolk.Tests.SurvivalLoopPlayTests.InventoryKeepsEnemyAliveWhilePauseHasSeparateWorldPolicy" methodname="InventoryKeepsEnemyAliveWhilePauseHasSeparateWorldPolicy" classname="Wildfolk.Tests.SurvivalLoopPlayTests" runstate="Runnable" seed="1316461631" result="Passed" start-time="2026-10-22 01:16:48Z" end-time="2026-10-22 01:16:54Z" duration="6.417518" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[<b><color=#2EA3FF>MCP-FOR-UNITY</color></b>: [TestRunnerNoThrottle] Restored Interaction Mode after test run.
+Saving results to: C:/Users/User/AppData/LocalLow/DefaultCompany/Wildfolk\TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

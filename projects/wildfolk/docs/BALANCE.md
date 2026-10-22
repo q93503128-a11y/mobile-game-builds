@@ -265,3 +265,7 @@ Meal3종/150초/동시1개/교체,공용4초다.Hunter MaxHP+8(HPheal0),Forager 
 |Guard home|추적 경계12/Player16,기존 steering 복귀,HP 회복/clear 없음|
 
 우물 지속38/480=.07917Thirst/초는 SP 감소.12의 약66%이며 단독으로 전체 갈증을 감당하지 못한다. 4인에서도 공유량은 같다. 기존 MP 자연 Hunger/Thirst 감소 OFF를 바꾸지 않았다. 음식은 cache당1개(25/26/35Hunger), 붕대는 해당 variant/묘지당1개(20HP/8초), Arrow4는 기본12발 batch의1/3이다. 새 POI 직접 Bronze/Iron/Leather/MechanicalPart 지급0,Diamond/Crystal/Steel0. GoblinCamp의 강한 보상과 WBIII Part 제작은 유지한다. 실제 이동 경로/장시간 경제와 재미는 사용자 QA다. [전체 경제·방어 inventory](../validation/base-defense-poi-expansion/REVIEW.md).
+
+## Death / Revive 초기값
+
+정본 Data/Revive.asset: Downed24초, hold4초, range2.6m, 입력 lease0.5초, 현장/동료40%HP, 보호2초(공격 시작시 종료), Home100%HP. Home/현장 모두 기존 Hunger/Thirst/Stamina 보존, 기존 사망 Meal/Treatment reset 유지. 광고는 원정당 성공1회, Gem 무제한/고정 config 가격이며 현재 ReviveGemCost0은 **미확정·비활성**이다. Editor QA7 Gem은 제품 가격이 아니다. 신규 Item/Recipe/Crystal/Gold 비용 없음. [TTK 근거와 배제 대안](../validation/death-revive-respawn/REVIEW.md).

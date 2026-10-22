@@ -18,13 +18,15 @@ namespace Wildfolk
     public struct PlayerStatusState : INetworkSerializable,IEquatable<PlayerStatusState>
     {
         public int HP,MaximumHP;
+        public byte Life;public uint LifeRevision;public bool Helping;
+        public double DownUntil,HoldStarted,HoldUntil,ProtectedUntil;
         public double TreatmentUntil;
         public short MealItem;
         public double MealUntil;
         public short Head,Body,Held,Utility;
         public void NetworkSerialize<T>(BufferSerializer<T> serializer) where T:IReaderWriter
-        {serializer.SerializeValue(ref HP);serializer.SerializeValue(ref MaximumHP);serializer.SerializeValue(ref Head);serializer.SerializeValue(ref Body);serializer.SerializeValue(ref Held);serializer.SerializeValue(ref Utility);serializer.SerializeValue(ref TreatmentUntil);serializer.SerializeValue(ref MealItem);serializer.SerializeValue(ref MealUntil);}
-        public bool Equals(PlayerStatusState other)=>HP==other.HP && MaximumHP==other.MaximumHP && Head==other.Head && Body==other.Body && Held==other.Held && Utility==other.Utility && TreatmentUntil==other.TreatmentUntil && MealItem==other.MealItem && MealUntil==other.MealUntil;
+        {serializer.SerializeValue(ref Life);serializer.SerializeValue(ref LifeRevision);serializer.SerializeValue(ref Helping);serializer.SerializeValue(ref DownUntil);serializer.SerializeValue(ref HoldStarted);serializer.SerializeValue(ref HoldUntil);serializer.SerializeValue(ref ProtectedUntil);serializer.SerializeValue(ref HP);serializer.SerializeValue(ref MaximumHP);serializer.SerializeValue(ref Head);serializer.SerializeValue(ref Body);serializer.SerializeValue(ref Held);serializer.SerializeValue(ref Utility);serializer.SerializeValue(ref TreatmentUntil);serializer.SerializeValue(ref MealItem);serializer.SerializeValue(ref MealUntil);}
+        public bool Equals(PlayerStatusState other)=>Life==other.Life && LifeRevision==other.LifeRevision && Helping==other.Helping && DownUntil==other.DownUntil && HoldStarted==other.HoldStarted && HoldUntil==other.HoldUntil && ProtectedUntil==other.ProtectedUntil && HP==other.HP && MaximumHP==other.MaximumHP && Head==other.Head && Body==other.Body && Held==other.Held && Utility==other.Utility && TreatmentUntil==other.TreatmentUntil && MealItem==other.MealItem && MealUntil==other.MealUntil;
     }
     public struct PlayerAttackState : INetworkSerializable,IEquatable<PlayerAttackState>
     {

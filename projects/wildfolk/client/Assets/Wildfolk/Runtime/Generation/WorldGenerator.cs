@@ -33,7 +33,7 @@ namespace Wildfolk
             var started=System.Diagnostics.Stopwatch.StartNew();
             for(var i=Environment.childCount-1;i>=0;i--){var child=Environment.GetChild(i).gameObject;child.SetActive(false);Destroy(child);}
             Map=new WorldMap(Definition,seed,generationVersion==0 ? (Map?.GenerationVersion??SelectedGenerationVersion) : generationVersion);Renewal.ResetWorld();Region.Size=Map.Size-Vector2.one*3;Terrain.Build(Map);
-            var playerBody=Player.GetComponent<Rigidbody2D>();if(playerBody!=null)playerBody.position=Map.Spawn;Player.transform.position=Map.Spawn;
+            var playerBody=Player.GetComponent<Rigidbody2D>();if(playerBody!=null)playerBody.position=Map.Spawn;Player.transform.position=Map.Spawn;Player.GetComponent<PlayerDeath>()?.InitializeHome(Map.Spawn);
             if(Map.Streamed){if(Chunks==null)Chunks=gameObject.GetComponent<WorldChunkRuntime>()??gameObject.AddComponent<WorldChunkRuntime>();Chunks.Initialize(this);if(populate && SimulationAuthority.Allows(this)){Animals.Generate();GetComponent<GoblinSpawner>().GenerateCamps();}Chunks.Reconcile();started.Stop();GenerationMilliseconds=(float)started.Elapsed.TotalMilliseconds;return;}
             if(Chunks!=null)Chunks.enabled=false;
             if(populate && SimulationAuthority.Allows(this))for(var index=0;index<Map.Resources.Count;index++)

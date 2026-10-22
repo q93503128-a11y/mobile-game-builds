@@ -18,6 +18,13 @@ namespace Wildfolk
         public int PendingCount=>pending.Count;
         public int WantedCount=>wanted.Count;
         public IReadOnlyDictionary<WorldChunk,GameObject> ActiveChunks=>active;
+        public void PreparePlayerReturn(Vector2 point,float radius)
+        {
+            if(World==null || World.Map==null || !World.Map.Streamed)return;
+            var low=WorldChunk.At(point-Vector2.one*(radius+.5f),World.Definition.ChunkSize);var high=WorldChunk.At(point+Vector2.one*(radius+.5f),World.Definition.ChunkSize);
+            for(var y=low.Y;y<=high.Y;y++)for(var x=low.X;x<=high.X;x++){var key=new WorldChunk(x,y);if(World.Map.Continental.ContainsChunk(key) && !active.ContainsKey(key))Activate(key);}
+            Physics2D.SyncTransforms();
+        }
         public bool IsActive(Vector2 p)=>active.ContainsKey(WorldChunk.At(p,World.Definition.ChunkSize));
         public bool Wants(Vector2 p)=>wanted.Contains(WorldChunk.At(p,World.Definition.ChunkSize));
         public void Initialize(WorldGenerator world)
@@ -35,7 +42,7 @@ namespace Wildfolk
         public void Reconcile()
         {
             centers.Clear();var authority=SimulationAuthority.Allows(World);
-            if(NetworkCreatureWorld.Active!=null){foreach(var p in NetworkPlayer.Active)if(p.IsSpawned && p.Health.IsAlive && (authority || p.IsOwner && p.NetworkObject.IsPlayerObject))centers.Add(p.transform.position);}
+            if(NetworkCreatureWorld.Active!=null){foreach(var p in NetworkPlayer.Active)if(p.IsSpawned && (authority || p.IsOwner && p.NetworkObject.IsPlayerObject))centers.Add(p.transform.position);}
             if(centers.Count==0 && World.Player!=null)centers.Add(World.Player.transform.position);
             ChunkActivation.Build(World.Map,centers,active.Keys,wanted);
             retiring.Clear();foreach(var pair in active)if(!wanted.Contains(pair.Key))retiring.Add(pair.Key);foreach(var key in retiring)Deactivate(key);

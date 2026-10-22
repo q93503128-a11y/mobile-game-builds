@@ -1,6 +1,6 @@
 # 현재 코드 연결
 
-2026-10-21 현재: generation3 / Save11 / Protocol18, Item134 / Recipe111. v1~10 이관과 generation1/2 reader를 유지한다. 아래 날짜별 Foundation 절은 구조의 도입 기록이며 현재 데이터는 CONTENT_EXPANSION/CREATURES_AND_LOOT/SAVE_PERSISTENCE를 따른다.
+2026-10-21 현재: generation3 / Save12 / Protocol19, Item134 / Recipe111. v1~10 이관과 generation1/2 reader를 유지한다. 아래 날짜별 Foundation 절은 구조의 도입 기록이며 현재 데이터는 CONTENT_EXPANSION/CREATURES_AND_LOOT/SAVE_PERSISTENCE를 따른다.
 
 시설 실행은 ProcessingScheduler의 공용0.1초 tick에 등록된 busy Host/SP 작업만 진행한다. HitFeedback는 피격 이벤트 동안 coroutine으로 동작한다. LootTable.Roll/ProcessingQueue.Costs/CavernNetwork의 exitNext가 중복 계산을 공유한다. UI는 visibility 변경에만 강제 layout, 처리 명칭은 recipe/language cache, LocalFirelight geometry는 definition 변경에만 설정한다. Save/Protocol 필드와 inactive logical advance는 유지한다.
 Runtime/InputSystem/UGUI,Editor,EditMode/PlayMode Tests를 분리한다. 실제 수치는Data ScriptableObject가 정본이고 Editor는 없는 초기 데이터를 생성하며 기존 수치를 보존한다. 씬은 프리팹 연결과 월드Bootstrap을 저장하고 수동 테스트 월드 배치 코드는 제거했다.
@@ -233,3 +233,14 @@ query는 channel 완료 때만 fixed128 OverlapCircle, terrain .5unit segment와
 WorldGenerationDefinition.PoiContent→기존 anchor→WorldChunkRuntime.WorldChunkPoi→feature Site 논리 상태와 active PoiSite를 분리한다. Well은 지연 계산, Quarry는 기존 ResourceNode/ResourceIdentity를 사용하되 poi: ID를 embedded Nodes로 기록한다. 전체 POI의 frame scan/새 perPOI Update가 없다. 기존 중앙 청크 scheduler만 active guard 초기화를 재시도한다.
 
 IWorldSupplies를 GoblinCamp/PoiSite가 구현하고 기존 CampLootPanel을 재사용한다. PlayerInteraction이 NetworkPoiSite를 시설 대상으로 허용하며 Well에서는 선택 물통의 자연 raw fill보다 우물 상호작용을 우선한다. NetworkFacilityInteractor의 owner request는 Client에서 전송 가능하고 서버 Execute에서만 Bag.CanOperate를 검사한다. NetworkPoiSite는 Host 초기화/잔량/보안 상태를 복제하고 Client는 roll/채광 생성/guard clear를 하지 않는다. 새 representation/RPC로 Protocol18,Save11/generation3,Item134/Recipe111이다.
+
+## Death / Revive / Respawn (2026-10-22)
+
+- PlayerDeath는 Alive/Downed/Reviving/Dead/Respawning과 개인 HomeAnchor/원정/광고 사용을 관리한다. GameplaySession은 입력/화면 상태이며 lifecycle의 권위가 아니다. SP는 Dead 직행, MP는 Downed/teammate policy를 사용한다. 구조자는 Alive인 채 SessionState.Rescuing으로 행동을 막는다.
+- ReviveDefinition의24초/4초/2.6m/40%/2초를 사용하고 IReviveModifiers의 duration/speed/health 집계로 향후 Medic을 연결한다. class ID 분기는 없다. PartyWiped 이벤트는 world reset 없이 future encounter 경계를 제공한다.
+- Host NetworkPlayer.LifeRpc는 owner/단조 sequence/target revision/range/LOS/HP/세션을 검증한다. 한 대상 한 구조자 lock,0.5초 heartbeat lease, timeout 우선·single commit. Client는 요청과 PlayerStatusState의 life/revision/server deadline/helping 표시만 제공한다.
+- 기존 Health0/IsAlive 타깃 제외를 재사용한다. 부활 보호만 Health damage gate에 추가하며 실제 melee/ranged 시작에 보호를 끝낸다. reset은 기존 Meal/Treatment/fishing/survey/telescope/dash/ranged/combat 경계다. 이동·피격 등으로 hold를 해제하며 client도 정상 상태 복귀는 server replica를 기다린다.
+- IRewardedReviveService는 availability와 실제 reward completion, IPremiumCurrencyWallet은 idempotent transaction+원자 debit/영속 revive commit 계약이다. 기본 공급자는 unavailable. Editor provider는 명시 주입, production provider/상점/계정은 없다. 미래 remote wallet은 durable receipt/reconciliation 계약을 구현한 뒤 활성화해야 하며 일반 Gem balance를 월드/Crystal/Gold에 저장하지 않는다.
+- DeathHud는 기존 Canvas modal에 무료 Home을 항상 표시하고 MP Downed는 작은 banner/원정 표식/기존 navigation bearing으로 표시한다. 버튼/모달은 상태 이벤트, 시간·근처 구조 탐색은 제한된0.1~0.15초 갱신이다. 새 Canvas sorting override는 없다.
+- SaveGameRules는 같은 seed/generation의 **불변 검증 지형만** 한 개 재사용한다. snapshot/player/거래/ID/타이머/Item 검증은 매번 실행한다. 새 seed/definition/generation 또는 Editor rules 재검증에서 지형을 교체한다.
+- 복귀는 목적지 근처 청크를 제한적으로 materialize한 뒤 실제 terrain/solid 검증한다. 현장 보정은 최대3m, Home 막힘 보정은8m다. 실제 valid death 지점은 이동하지 않는다. NGO despawn callback에서는 참가자 snapshot만 기억하고 disconnect 파일 저장은 다음 프레임 수행한다.

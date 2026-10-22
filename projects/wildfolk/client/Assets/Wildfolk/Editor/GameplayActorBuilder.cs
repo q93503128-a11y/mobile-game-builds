@@ -37,6 +37,7 @@ namespace Wildfolk.Editor
             avatar.Facing=facing;avatar.Body=motion;
             var combat=root.gameObject.AddComponent<PlayerCombat>();combat.Settings=assets.Settings;combat.Avatar=avatar;combat.OwnHealth=health;
             var motor=root.gameObject.AddComponent<PlayerMotor>();motor.Settings=assets.Settings;motor.Avatar=avatar;motor.Combat=combat;avatar.Motor=motor;
+            DeathContentAssets.ConfigureMarker(root.gameObject);var life=root.gameObject.AddComponent<PlayerDeath>();life.Definition=UnityEditor.AssetDatabase.LoadAssetAtPath<ReviveDefinition>("Assets/Wildfolk/Data/Revive.asset");
             var inventory=root.gameObject.AddComponent<PlayerInventory>();inventory.Settings=assets.Settings;
             var needs=root.gameObject.AddComponent<PlayerSurvival>();needs.Definition=assets.Survival.Needs;needs.Health=health;needs.Inventory=inventory;
             var equipment=root.gameObject.AddComponent<PlayerEquipment>();equipment.Inventory=inventory;equipment.Combat=combat;equipment.HeldVisual=held;combat.Equipment=equipment;

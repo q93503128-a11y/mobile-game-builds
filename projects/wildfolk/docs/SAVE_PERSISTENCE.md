@@ -1,12 +1,12 @@
-# Save / Load11 · v1~v10 이관
+# Save / Load12 · v1~v11 이관
 
-2026-10-21 현재 Save11 / Protocol18, 신규 generation3. 정본은 SaveGameRules/SaveValidation/SaveMigration/WorldSnapshotCodec/PlayerSnapshotCodec/SaveRepository다. 기존 generation1/2 지형·시설·자원 ID를 보존한다.
+2026-10-22 현재 Save12 / Protocol19, 신규 generation3. 정본은 SaveGameRules/SaveValidation/SaveMigration/WorldSnapshotCodec/PlayerSnapshotCodec/SaveRepository다. 기존 generation1/2 지형·시설·자원 ID를 보존한다.
 
 ## 파일과 검증
 
 SP 파일명 `world-v1.json`, Host 파일명 `multiplayer-world-v5.json`을 유지한다. Editor는 프로젝트 UserData, 빌드는 persistentDataPath다. checksum을 포함한 JSON envelope, temporary 쓰기/flush→재읽기/데이터 검증→atomic replace와 정상 backup 정책을 유지한다. 손상된 primary는 정상 backup을 시도하고, 손상된 primary 때문에 정상 backup을 덮지 않는다. Load만으로 원래 파일을 덮어쓰지 않는다.
 
-Home 검사와 실제 Continue/Save는 같은 SaveGameRules.Validate를 쓴다. 버전/체크섬/ID/슬롯·수량·Charges/Quality/위치/HP/Recipe·queue·시간/성장/장비/참가자·Camp 참조를 적용 전에 검사한다. 로드 실패는 안내 후 현재 화면에 남고 임의의 새 월드로 대체하지 않는다. 기기 Background/Quit의 살아 있는 세션 자동 저장과 Pause Save·Save & return home을 제공한다. 플레이어용 Load 버튼은 없고 Home Continue와 Editor Load를 유지한다.
+Home 검사와 실제 Continue/Save는 같은 SaveGameRules.Validate를 쓴다. 버전/체크섬/ID/슬롯·수량·Charges/Quality/위치/HP/Recipe·queue·시간/성장/장비/참가자·Camp 참조를 적용 전에 검사한다. 로드 실패는 안내 후 현재 화면에 남고 임의의 새 월드로 대체하지 않는다. 기기 Background/Quit의 플레이 세션 자동 저장과 Pause Save·Save & return home을 제공한다. 플레이어용 Load 버튼은 없고 Home Continue와 Editor Load를 유지한다.
 
 ## 현재 저장 범위
 
@@ -45,7 +45,7 @@ Home 검사와 실제 Continue/Save는 같은 SaveGameRules.Validate를 쓴다. 
 
 ## Host와 QA
 
-Host는 저장 성공 후 세션을 종료하고 실패하면 유지한다. reHost는 저장을 먼저 읽어 새 연결을 만들며 참가자 상태를 spawn 전에 복원한다. 멀티 HP0은 Defeated를 유지한다. Cloud/Account/Host Migration/crash 보장은 없다. 현재 Protocol18 peer끼리만 호환한다.
+Host는 저장 성공 후 세션을 종료하고 실패하면 유지한다. reHost는 저장을 먼저 읽어 새 연결을 만들며 참가자 상태를 spawn 전에 복원한다. 멀티 HP0은 저장 경계에서 Dead로 남기며 무료 Home으로 복귀한다. Cloud/Account/Host Migration/crash 보장은 없다. 현재 Protocol19 peer끼리만 호환한다.
 
 실제 사용자 파일은 QA에서 수정·삭제하지 않는다. Editor 전용 IsolatedQaProfile은 별도 Captures 디렉터리와 격리 identity/preferences를 쓴다. 실제 Unity SP/Host와 자동 회귀, 원격·단말 미검수 범위는 [이번 REVIEW](../validation/creature-loot-expansion/REVIEW.md)를 따른다. Android 강제 종료 파일 시스템은 별도 실기 검증이다.
 
@@ -77,3 +77,13 @@ Save11과 generation3를 유지한다. WorldFeatureSnapshot.Site의 선택 Schem
 유한 보급품은 Host가 초기화/원자 transfer하고 site와 bag의 독립 revision·owner sequence·거리·생존·scouting·guard 상태를 검사한다. 일회 보급과 node 고갈은 unload/Load/reHost로 재충전하지 않는다. 우물은 오프라인 시간이 아닌 저장한 게임 시간만 쓴다. Graveyard의 feature actor는 낮/휴면/Save/reHost에 HP와 clear를 보존하며 home은 stable anchor에서 복원한다. NetworkCreature가 이 수호자의 야간 lifecycle을 다시 켜지 않는다.
 
 PoiSaveValidation은 anchor 종류/Schema/고정 seed 보급 상한·잔량/빈 슬롯/물 범위·유한 시각/node ID·rule·HP·위치/중복 guard와 clear 일관성을 검사한다. 신규 NetworkPoiSite/NetworkList와 owner POI RPC 추가로 Protocol18이 필요하며17 peer와 혼용하지 않는다. 기존 저장 파일명·원본 파일은 유지한다. [격리 저장·원본 hash/mtime](../validation/base-defense-poi-expansion/REVIEW.md).
+
+## v11→v12 · lifecycle/Home
+
+기존1~11을 검증·기존 이관한 뒤 DeathSnapshot(Home vector,Run Guid,Death number,Dead,AdUsed)을 추가한다. Home은 해당 seed/generation의 WorldMap.Spawn, 구 HP0 참가자는 Dead, 광고 미사용으로 시작한다. 기존 Workbench HomeId/위치/가방/장비/성장/월드/POI는 보존한다. 새12에서 Death record 누락/HP불일치/잘못된 Home은 거절한다. 파일명/checksum/backup/atomic replace와 generation은 유지한다.
+
+죽음 직후와 부활/Home commit은 동기 영속 저장한다. Downed/Reviving/대기 광고는 HP0+Dead로 정규화하며 재접속/reHost/Load는 Dead다. 구조자/NetworkObjectId/hold progress/bleedout deadline/보호는 저장하지 않는다. 성공 광고1회는 AdUsed로 영속, Gem은 이를 소모하지 않는다. Home만 새 Run/광고 기회를 시작한다. 유효하지 않은 죽음 좌표는 HP0에서만 유한 범위로 저장을 허용하여 Home 경로를 잃지 않게 한다.
+
+광고 완료는 현재 death/revision과 연결해 중복·취소·늦은 callback을 버린다. Gem은 지갑의 원자 commit 계약 안에서 world 저장이 성공한 뒤에만 완료하고 실패하면 Dead/HP0/이전 원정 상태로 되돌린다. 실제 결제 공급자가 없으므로 production은 disabled다. 개발 provider는 Editor 전용 메모리 fixture이며 실제 계정 잔액/영속 결제를 검증했다고 주장하지 않는다. 손상 backup fallback/수동 파일 복원·위조/인증 없는 local GUID 교체까지 막는 서버계정 시스템은 없다.
+
+[Save·거래·LAN·실제 Play 증거](../validation/death-revive-respawn/REVIEW.md).

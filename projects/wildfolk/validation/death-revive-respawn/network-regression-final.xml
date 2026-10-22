@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="1" result="Failed(Child)" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-22 01:19:01Z" end-time="2026-10-22 01:19:07Z" duration="5.8073164">
+  <test-suite type="TestSuite" id="1219" name="Wildfolk" fullname="Wildfolk" runstate="Runnable" testcasecount="174" result="Failed" site="Child" start-time="2026-10-22 01:19:01Z" end-time="2026-10-22 01:19:07Z" duration="5.807316" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <failure>
+      <message><![CDATA[One or more child tests had errors]]></message>
+    </failure>
+    <test-suite type="Assembly" id="1216" name="Wildfolk.Tests.PlayMode.dll" fullname="C:/Users/User/Documents/ChatGPT/문승준 모바일/canonical/projects/wildfolk/tests/artifacts/unity/Library/ScriptAssemblies/Wildfolk.Tests.PlayMode.dll" runstate="Runnable" testcasecount="174" result="Failed" site="Child" start-time="2026-10-22 01:19:01Z" end-time="2026-10-22 01:19:07Z" duration="5.772031" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="21620" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <failure>
+        <message><![CDATA[One or more child tests had errors]]></message>
+      </failure>
+      <test-suite type="TestSuite" id="1217" name="Wildfolk" fullname="Wildfolk" runstate="Runnable" testcasecount="174" result="Failed" site="Child" start-time="2026-10-22 01:19:01Z" end-time="2026-10-22 01:19:07Z" duration="5.765374" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <failure>
+          <message><![CDATA[One or more child tests had errors]]></message>
+        </failure>
+        <test-suite type="TestSuite" id="1218" name="Tests" fullname="Wildfolk.Tests" runstate="Runnable" testcasecount="174" result="Failed" site="Child" start-time="2026-10-22 01:19:01Z" end-time="2026-10-22 01:19:07Z" duration="5.762970" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <failure>
+            <message><![CDATA[One or more child tests had errors]]></message>
+          </failure>
+          <test-suite type="TestFixture" id="1116" name="NetworkCreaturePlayTests" fullname="Wildfolk.Tests.NetworkCreaturePlayTests" classname="Wildfolk.Tests.NetworkCreaturePlayTests" runstate="Runnable" testcasecount="4" result="Failed" site="Child" start-time="2026-10-22 01:19:01Z" end-time="2026-10-22 01:19:07Z" duration="5.756298" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <failure>
+              <message><![CDATA[One or more child tests had errors]]></message>
+            </failure>
+            <test-case id="1117" name="HostSpawnGroupCombatAndDeathHaveOneAuthority" fullname="Wildfolk.Tests.NetworkCreaturePlayTests.HostSpawnGroupCombatAndDeathHaveOneAuthority" methodname="HostSpawnGroupCombatAndDeathHaveOneAuthority" classname="Wildfolk.Tests.NetworkCreaturePlayTests" runstate="Runnable" seed="2046032584" result="Failed" start-time="2026-10-22 01:19:01Z" end-time="2026-10-22 01:19:07Z" duration="5.725861" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[  Expected: 0
+  But was:  1
+]]></message>
+                <stack-trace><![CDATA[at Wildfolk.Tests.NetworkCreaturePlayTests+<HostSpawnGroupCombatAndDeathHaveOneAuthority>d__5.MoveNext () [0x00530] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Tests\PlayMode\NetworkCreaturePlayTests.cs:51
+at UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\Library\PackageCache\com.unity.test-framework@bd7f943e9647\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:44
+]]></stack-trace>
+              </failure>
+              <output><![CDATA[<b><color=#2EA3FF>MCP-FOR-UNITY</color></b>: [TestRunnerNoThrottle] Restored Interaction Mode after test run.
+Saving results to: C:/Users/User/AppData/LocalLow/DefaultCompany/Wildfolk\TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

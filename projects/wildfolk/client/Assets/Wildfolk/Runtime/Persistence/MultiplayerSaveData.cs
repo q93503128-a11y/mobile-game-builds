@@ -22,12 +22,13 @@ namespace Wildfolk
         public static void Validate(SavedGame game,SaveGameRules rules)
         {
             if(!game.IsMultiplayer){game.Multiplayer=null;return;}var multi=game.Multiplayer;
-            if(multi==null || game.Version!=11 || !LocalPlayerIdentity.Valid(multi.WorldId) || !LocalPlayerIdentity.Valid(multi.HostId) || multi.Players==null || multi.Players.Length<1 || multi.Players.Length>256)throw new InvalidDataException("Invalid cooperative world metadata.");
-            var ids=new HashSet<string>();var host=false;var map=new WorldMap(rules.World,game.Seed,game.BaseGenerationVersion,false);var player=rules.Player;
+            if(multi==null || game.Version!=12 || !LocalPlayerIdentity.Valid(multi.WorldId) || !LocalPlayerIdentity.Valid(multi.HostId) || multi.Players==null || multi.Players.Length<1 || multi.Players.Length>256)throw new InvalidDataException("Invalid cooperative world metadata.");
+            var ids=new HashSet<string>();var host=false;var map=rules.ValidationMap(game);var player=rules.Player;
             foreach(var entry in multi.Players)
             {
                 if(entry==null || !LocalPlayerIdentity.Valid(entry.Id) || !ids.Add(entry.Id))throw new InvalidDataException("Duplicate or invalid participant.");
                 SaveValidation.ValidatePlayer(entry.State,map,rules.Catalog,player.Settings.InventorySlots,player.GetComponent<Health>().Definition.MaximumHealth,player.GetComponent<PlayerSurvival>().Definition,player.GetComponent<PlayerProgression>().Definition,player.GetComponent<PlayerLocomotion>().Definition,true);
+                DeathSaveValidation.Validate(entry.State,map);
                 if(entry.Id==multi.HostId){host=true;if(JsonUtility.ToJson(entry.State)!=JsonUtility.ToJson(game.Player))throw new InvalidDataException("Host snapshot mismatch.");}
             }
             if(!host)throw new InvalidDataException("Missing Host participant.");

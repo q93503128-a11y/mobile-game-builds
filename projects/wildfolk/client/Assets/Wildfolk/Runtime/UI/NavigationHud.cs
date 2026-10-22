@@ -42,7 +42,18 @@ namespace Wildfolk
         private void SetLabel(string label){if(previous!=label){Destination.text=label;previous=label;}}
         private bool UtilityHint(out Vector2 direction,out bool arrow,out string label)
         {
-            direction=Vector2.zero;arrow=false;label=null;if(utility==null)return false;
+            direction=Vector2.zero;arrow=false;label=null;
+            if(Player!=null && Player.GetComponent<Health>().IsAlive)
+            {
+                PlayerDeath closest=null;var distance=float.MaxValue;
+                foreach(var p in NetworkPlayer.Active)
+                {
+                    var life=p.GetComponent<PlayerDeath>();if(life==null || life.gameObject==Player.gameObject || life.State!=PlayerLife.Downed && life.State!=PlayerLife.Reviving)continue;
+                    var delta=(Vector2)(life.transform.position-Player.transform.position);if(delta.sqrMagnitude>=distance)continue;distance=delta.sqrMagnitude;closest=life;
+                }
+                if(closest!=null){direction=(Vector2)(closest.transform.position-Player.transform.position);arrow=true;label=L.Format("death.peer",Mathf.RoundToInt(direction.magnitude));return true;}
+            }
+            if(utility==null)return false;
             var stack=utility.GetComponent<PlayerInventory>().SelectedStack;var d=stack.IsEmpty ? null : stack.Item.ExplorationUtility;
             if(d!=null && d.Kind==ExplorationUtilityKind.Survey)
             {

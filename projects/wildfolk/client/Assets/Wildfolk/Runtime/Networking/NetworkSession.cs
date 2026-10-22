@@ -121,10 +121,12 @@ namespace Wildfolk
         private void Disconnected(ulong id)
         {
             if(quitting || State==NetworkSessionState.Closing || State==NetworkSessionState.Idle)return;
-            if(Manager.IsHost && id!=Manager.LocalClientId){RetireParticipant(id);Notify();return;}
+            if(Manager.IsHost && id!=Manager.LocalClientId){RetireParticipant(id);StartCoroutine(SaveAfterDisconnect());Notify();return;}
             MessageKey=State==NetworkSessionState.Connecting ? (Manager.DisconnectReason=="net.room_full" ? "net.room_full" : Manager.DisconnectReason=="net.duplicate_player" ? "net.duplicate_player" : "net.connection_failed") : "net.host_left";
             Leave(true);
         }
+        private IEnumerator SaveAfterDisconnect()
+        {yield return null;if(Manager.IsHost && State==NetworkSessionState.Playing)TrySaveWorld();}
         private void TransportFailed(){if(State==NetworkSessionState.Closing)return;MessageKey="net.connection_failed";Leave(true,true);}
         private void AttachScenes()
         {Manager.SceneManager.OnLoadEventCompleted+=Loaded;Manager.SceneManager.OnSynchronizeComplete+=Synchronized;}

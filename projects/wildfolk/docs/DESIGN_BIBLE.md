@@ -24,7 +24,7 @@ Primary는 맨손/장비 공격·채집·설치·선택 소비품·Armor, Intera
 
 ## 저장·협동
 
-Save11(1~10 이관)/Protocol18. Host만 spawn/AI/목표/피해/사망/loot roll/보급 claim/보충/저장을 결정한다. Client는 입력 요청과 replica 표시를 한다. Relay/명시적 Local Network Host/Join, 최대4인 구조, 로컬 식별자별 가방·성장·장비와 공유 월드를 저장한다. Host migration·dedicated server·인증 계정·Cloud는 없다. 실제 원격4인/단말 성능·장기 생존·재미는 별도 검수다.
+Save12(1~11 이관)/Protocol19. Host만 spawn/AI/목표/피해/사망/loot roll/보급 claim/보충/저장을 결정한다. Client는 입력 요청과 replica 표시를 한다. Relay/명시적 Local Network Host/Join, 최대4인 구조, 로컬 식별자별 가방·성장·장비와 공유 월드를 저장한다. Host migration·dedicated server·인증 계정·Cloud는 없다. 실제 원격4인/단말 성능·장기 생존·재미는 별도 검수다.
 
 ## 후속
 

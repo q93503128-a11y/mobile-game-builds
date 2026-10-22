@@ -52,6 +52,7 @@ namespace Wildfolk
             nextAttack = started + (attackTool == null ? Settings.PunchCooldown : attackTool.Cooldown);
             hitApplied = false;
             IsAttacking = true;
+            GetComponent<PlayerDeath>()?.OffensiveAction();
             AttackStarted?.Invoke();
             OwnHealth.MarkCombat();
             return true;

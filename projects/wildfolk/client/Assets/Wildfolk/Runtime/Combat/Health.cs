@@ -32,7 +32,7 @@ namespace Wildfolk
         public int ApplyDamage(int amount,bool ignoreDefense=false,PlayerInventory attacker=null)
         {
             if (amount <= 0) throw new ArgumentOutOfRangeException(nameof(amount));
-            if (IsReplica || !IsAlive || deathNotified) return 0;
+            if (IsReplica || !IsAlive || deathNotified || GetComponent<PlayerDeath>()?.BlocksDamage==true) return 0;
             var applied = Math.Min(Current, ignoreDefense ? amount : Math.Max(1,amount-DamageReduction));
             Current -= applied;var died=Current==0;if(died)deathNotified=true;
             LastAttacker=attacker;LastCombatTime=Time.time;

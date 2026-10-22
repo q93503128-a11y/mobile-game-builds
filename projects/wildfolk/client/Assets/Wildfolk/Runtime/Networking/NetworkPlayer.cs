@@ -14,6 +14,7 @@ namespace Wildfolk
         public readonly NetworkVariable<PlayerStatusState> Status=new NetworkVariable<PlayerStatusState>();
         public readonly NetworkVariable<PlayerAttackState> AttackState=new NetworkVariable<PlayerAttackState>();
         private PlayerCombat combat;
+        private PlayerDeath death;private ulong lifeSequence,lastLifeRequest;private float nextHold;private bool holdSent;
         public PlayerInputCommands Commands {get;private set;}
         public PlayerMotor Motor {get;private set;}
         public Health Health {get;private set;}
@@ -27,7 +28,7 @@ namespace Wildfolk
         private void Awake()
         {
             Commands=GetComponent<PlayerInputCommands>();Motor=GetComponent<PlayerMotor>();Health=GetComponent<Health>();Equipment=GetComponent<PlayerEquipment>();input=GetComponent<PlayerInputAdapter>();
-            combat=GetComponent<PlayerCombat>();survival=GetComponent<PlayerSurvival>();combat.enabled=false;Health.IsReplica=true;
+            death=GetComponent<PlayerDeath>();combat=GetComponent<PlayerCombat>();survival=GetComponent<PlayerSurvival>();combat.enabled=false;Health.IsReplica=true;
             input.enabled=false;Motor.enabled=false;Motor.Locomotion.enabled=false;Equipment.enabled=false;GetComponent<CharacterStats>().enabled=false;
         }
         public override void OnNetworkSpawn()
@@ -41,14 +42,15 @@ namespace Wildfolk
             input.enabled=IsOwner;LocalMarker.SetActive(IsOwner);
             NetworkManager.NetworkTickSystem.Tick+=Tick;
             Motion.OnValueChanged+=OnMotion;Status.OnValueChanged+=OnStatus;
-            if(IsServer){Health.Changed+=PublishStatus;Equipment.Changed+=PublishStatus;survival.TreatmentChanged+=PublishStatus;survival.MealChanged+=PublishStatus;PublishStatus();receivedAt=Time.unscaledTime;}
+            if(IsServer){death.Changed+=PublishStatus;Health.Changed+=PublishStatus;Equipment.Changed+=PublishStatus;survival.TreatmentChanged+=PublishStatus;survival.MealChanged+=PublishStatus;PublishStatus();receivedAt=Time.unscaledTime;}
             else ApplyStatus(Status.Value);
             ApplyMotion(Motion.Value);
             if(IsOwner && NetworkObject.IsPlayerObject)FindFirstObjectByType<MultiplayerArena>()?.BindLocal(this);
         }
         public override void OnNetworkDespawn()
         {
-            if(IsServer)NetworkWorldPersistence.Active?.Remember(this);
+            if(IsServer){death.Detach();NetworkWorldPersistence.Active?.Remember(this);}
+            death.Changed-=PublishStatus;
             players.Remove(this);
             if(NetworkManager!=null && NetworkManager.NetworkTickSystem!=null)NetworkManager.NetworkTickSystem.Tick-=Tick;
             Motion.OnValueChanged-=OnMotion;Status.OnValueChanged-=OnStatus;Health.Changed-=PublishStatus;Equipment.Changed-=PublishStatus;
@@ -70,7 +72,7 @@ namespace Wildfolk
         private void AttackRpc(ulong request,RpcParams rpc=default)
         {if(rpc.Receive.SenderClientId==OwnerClientId)ExecutePrimary(request);}
         public bool ExecutePrimary(ulong request)
-        {if(!IsSpawned || !IsServer || request==0 || request<=lastActionRequest)return false;lastActionRequest=request;return Health.IsAlive && Equipment.ActivePlaceable==null && GetComponent<PlayerPrimaryAction>().TryUse();}
+        {if(!IsSpawned || !IsServer || request==0 || request<=lastActionRequest)return false;lastActionRequest=request;death.InterruptRescue();return Health.IsAlive && Equipment.ActivePlaceable==null && GetComponent<PlayerPrimaryAction>().TryUse();}
         private void PublishDenial(ResourceDefinition resource)
         {
             if(Time.unscaledTime<nextDenial)return;nextDenial=Time.unscaledTime+2.5f;
@@ -95,7 +97,35 @@ namespace Wildfolk
         [Rpc(SendTo.Server,InvokePermission=RpcInvokePermission.Owner)]
         private void DashRpc(Vector2 move,RpcParams rpc=default)
         {if(rpc.Receive.SenderClientId!=OwnerClientId)return;AcceptMove(move);if(!Commands.IsScouting)Motor.Locomotion.TryDash();}
-        private void AcceptMove(Vector2 move){Commands.ApplyMove(Commands.IsScouting ? Vector2.zero : NetworkInputRules.Sanitize(move));receivedAt=Time.unscaledTime;}
+        private void AcceptMove(Vector2 move){move=NetworkInputRules.Sanitize(move);if(move.sqrMagnitude>.001f)death.InterruptRescue();Commands.ApplyMove(Commands.IsScouting || !death.CanAct || !Commands.Session.IsRunning ? Vector2.zero : move);receivedAt=Time.unscaledTime;}
+        public bool HoldRevive(bool held)
+        {
+            if(!IsSpawned || !IsOwner)return false;
+            var target=held ? death.NearbyDowned() : null;
+            if(held && target==null){if(holdSent)HoldRevive(false);return false;}
+            if(!held && !holdSent)return false;holdSent=held;
+            if(held && Time.unscaledTime<nextHold)return true;nextHold=Time.unscaledTime+.12f;
+            var id=target==null ? ulong.MaxValue : target.GetComponent<NetworkObject>().NetworkObjectId;
+            var revision=target==null ? 0 : target.Revision;
+            if(IsServer)return ExecuteLife(++lifeSequence,id,revision,held,false);
+            LifeRpc(++lifeSequence,id,revision,held,false);return true;
+        }
+        public bool RequestHome()
+        {if(!IsSpawned || !IsOwner || death.State!=PlayerLife.Dead)return false;if(IsServer)return ExecuteLife(++lifeSequence,0,death.Revision,false,true);LifeRpc(++lifeSequence,0,death.Revision,false,true);return true;}
+        public void CancelRevive(){if(!IsSpawned || !IsOwner)return;HoldRevive(false);}
+        [Rpc(SendTo.Server,InvokePermission=RpcInvokePermission.Owner)]
+        private void LifeRpc(ulong request,ulong target,uint revision,bool held,bool home,RpcParams rpc=default)
+        {if(rpc.Receive.SenderClientId==OwnerClientId)ExecuteLife(request,target,revision,held,home);}
+        public bool ExecuteLife(ulong request,ulong target,uint revision,bool held,bool home)
+        {
+            if(!IsSpawned || !IsServer || request==0 || request<=lastLifeRequest)return false;lastLifeRequest=request;
+            if(home)return revision==death.Revision && death.HomeRespawn();
+            if(!held){death.InterruptRescue();return true;}
+            if(!NetworkManager.SpawnManager.SpawnedObjects.TryGetValue(target,out var obj))return false;
+            var other=obj.GetComponent<PlayerDeath>();if(other==null)return false;
+            if(death.RescueTarget!=null && death.RescueTarget!=other)death.InterruptRescue();
+            return other.ReceiveHold(death,revision,true);
+        }
         private void Tick()
         {
             if(!IsSpawned)return;
@@ -114,7 +144,7 @@ namespace Wildfolk
         private void PublishStatus()
         {
             if(!IsSpawned || !IsServer)return;
-            var next=new PlayerStatusState{HP=Health.Current,MaximumHP=Health.Maximum,Head=ItemIndex(Equipment.HeadArmor),Body=ItemIndex(Equipment.BodyArmor),Held=ItemIndex(Equipment.SelectedItem),Utility=ItemIndex(Equipment.Utility),MealItem=ItemIndex(survival.Meal.Item),MealUntil=survival.Meal.Active ? NetworkManager.ServerTime.Time+survival.Meal.Remaining : 0,TreatmentUntil=survival.Treatment.Active ? NetworkManager.ServerTime.Time+survival.Treatment.Remaining : 0};
+            var next=new PlayerStatusState{Life=(byte)death.State,LifeRevision=death.Revision,Helping=death.RescueTarget!=null,DownUntil=death.DownUntil,HoldStarted=death.HoldStarted,HoldUntil=death.HoldUntil,ProtectedUntil=death.ProtectedUntil,HP=Health.Current,MaximumHP=Health.Maximum,Head=ItemIndex(Equipment.HeadArmor),Body=ItemIndex(Equipment.BodyArmor),Held=ItemIndex(Equipment.SelectedItem),Utility=ItemIndex(Equipment.Utility),MealItem=ItemIndex(survival.Meal.Item),MealUntil=survival.Meal.Active ? NetworkManager.ServerTime.Time+survival.Meal.Remaining : 0,TreatmentUntil=survival.Treatment.Active ? NetworkManager.ServerTime.Time+survival.Treatment.Remaining : 0};
             if(!Status.Value.Equals(next))Status.Value=next;
         }
         private void OnMotion(PlayerMotionState previous,PlayerMotionState next)=>ApplyMotion(next);
@@ -127,7 +157,7 @@ namespace Wildfolk
         private void ApplyStatus(PlayerStatusState state)
         {
             if(state.MaximumHP<=0)return;
-            Health.SetMaximumBonus(Mathf.Max(0,state.MaximumHP-Health.Definition.MaximumHealth));Health.ApplyReplica(state.HP);if(state.HP<=0)Commands.Session.ReplicateDefeat();
+            Health.SetMaximumBonus(Mathf.Max(0,state.MaximumHP-Health.Definition.MaximumHealth));Health.ApplyReplica(state.HP);death.ApplyReplica(state);
             Equipment.ApplyReplicatedAppearance(Item(state.Head),Item(state.Body),Item(state.Held));Equipment.RestoreUtility(Item(state.Utility));
         }
     }

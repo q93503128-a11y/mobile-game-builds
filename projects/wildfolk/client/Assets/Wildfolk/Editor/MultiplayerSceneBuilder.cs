@@ -53,7 +53,7 @@ namespace Wildfolk.Editor
             arena.InventoryUi=NetworkInventoryUiBuilder.Build(safe);arena.InventoryUi.AttackIcon=attack.transform.Find("Fist").GetComponent<Image>();
             var interact=Image("Interact",arena.InventoryUi.transform,"attack_button",new Vector2(1,0),new Vector2(-380,133),new Vector2(118,118),true);var interactView=interact.gameObject.AddComponent<InteractButtonView>();interactView.Button=Button(interact);interactView.Surface=interact;interactView.Icon=Image("Icon",interact.transform,"icon_inventory",new Vector2(.5f,.5f),Vector2.zero,new Vector2(64,64));interactView.DefaultIcon=interactView.Icon.sprite;arena.InventoryUi.Interact=interactView;
             var events=new GameObject("EventSystem",typeof(EventSystem),typeof(InputSystemUIInputModule));events.GetComponent<EventSystem>().sendNavigationEvents=false;var module=events.GetComponent<InputSystemUIInputModule>();module.UnassignActions();module.actionsAsset=actions;module.point=point;module.leftClick=click;
-            EditorSceneManager.SaveScene(scene,ScenePath);FrontendSceneBuilder.Build();AssetDatabase.SaveAssets();
+            DeathUiBuilder.Build(arena.gameObject,safe,safe,null);EditorSceneManager.SaveScene(scene,ScenePath);FrontendSceneBuilder.Build();AssetDatabase.SaveAssets();
         }
         public static void CreatePrefabs()
         {
