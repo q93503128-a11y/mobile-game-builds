@@ -109,3 +109,7 @@ Class milestone누적XP:50,180,400,750,1200,1800. 중간첫4.88분/여섯175.61�
 객관적 Foundation 판정 **A**: 요청한 행동/계산/저장/권위 경계를 검증했다. 실제 재미·손맛·장기경제·체감밸런스는 사용자가 플레이한 뒤 판정한다.
 
 최종 LAN run: [`654feae46b104f1a9916c7ed040a5948`](actual-lan/654feae46b104f1a9916c7ed040a5948/host.tsv), [Client](actual-lan/654feae46b104f1a9916c7ed040a5948/client.tsv), [완료](actual-lan/654feae46b104f1a9916c7ed040a5948/complete.txt).
+
+## 후속 교정 안내 · 2026-10-22
+
+이 문서는 Foundation 완료 당시의 조사/검수 기록이다. 이후 remote admission 신뢰, 영구 XP receipts, Medic A2 무효 효과와 UI 문제를 별도 패스에서 교정했다. 당시 기록을 현재 보안/시각 품질의 근거로 사용하지 않는다. 최신 동작·비교·검수는 [Class correction / Camp Journal](../ui-redesign/REVIEW.md)을 따른다. 중간 HANDOFF/실패 실행/중복 XML 정리는 최신 REVIEW의 제거 목록을 따른다.

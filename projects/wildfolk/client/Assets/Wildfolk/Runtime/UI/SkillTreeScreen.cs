@@ -9,7 +9,7 @@ namespace Wildfolk
         public GameObject View;
         public Button[] Nodes;
         public Text[] Ranks,Names,NodeStates;
-        public Image[] Links;
+        public Image[] Links;public JournalSkillNode[] NodeViews;
         public Text Points,SelectedName,Detail,State,Action;
         public Button InvestButton;
         private int selected;
@@ -24,7 +24,7 @@ namespace Wildfolk
             View.SetActive(Session.State==SessionState.SkillTree);if(!View.activeSelf)return;
             Points.text=L.Format("ui.skill.points",Growth.SkillPoints);
             for(var i=0;i<Nodes.Length;i++)
-            {var rank=Growth.Rank(i);Ranks[i].text=rank+" / "+Growth.Definition.Skills[i].MaximumRank;Names[i].text=L.Text("ui.skill."+Growth.Definition.Skills[i].Id+".name");NodeStates[i].text=L.Text(!Growth.Unlocked(i) ? "ui.skill.locked" : rank>0 ? "ui.skill.learned" : "ui.skill.available");Nodes[i].image.color=i==selected ? new Color32(165,153,103,255) : rank>0 ? new Color32(106,133,91,255) : Growth.Unlocked(i) ? new Color32(91,103,77,255) : new Color32(46,60,49,255);Links[i].color=rank>0 ? new Color32(175,164,112,255) : new Color32(69,88,70,255);}
+            {var rank=Growth.Rank(i);Ranks[i].text=rank+" / "+Growth.Definition.Skills[i].MaximumRank;Names[i].text=L.Text("ui.skill."+Growth.Definition.Skills[i].Id+".name");NodeStates[i].text=L.Text(!Growth.Unlocked(i) ? "ui.skill.locked" : rank>0 ? "ui.skill.learned" : "ui.skill.available");NodeViews[i].SetState(rank>0,Growth.CanInvest(i),i==selected);Names[i].color=Growth.Unlocked(i)?JournalStyle.Ink:JournalStyle.Muted;Links[i].color=rank>0?JournalStyle.Ember:new Color32(136,124,91,180);}
             var skill=Growth.Definition.Skills[selected];var current=Growth.Rank(selected);SelectedName.text=L.Text("ui.skill."+skill.Id+".name");
             Detail.text=L.Format("ui.skill.rank",current,skill.MaximumRank)+"\n\n"+L.Format("ui.skill."+skill.Effect+".effect",skill.PerRank*(skill.Percentage ? 100 : 1));
             if(!string.IsNullOrEmpty(skill.Prerequisite))Detail.text+="\n\n"+L.Format("ui.skill.requires",L.Text("ui.skill."+skill.Prerequisite+".name"),skill.PrerequisiteRank);

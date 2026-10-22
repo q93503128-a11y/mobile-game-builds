@@ -1,0 +1,82 @@
+{
+  "startSHA": "7502810ffcf957de6a79c2141c7657e9705eccd4",
+  "startedUTC": "2026-10-22T10:28:50Z",
+  "events": [
+    {
+      "stage": "source and visual audit; external visual research",
+      "UTC": "2026-10-22T10:36:03.360679+00:00"
+    },
+    {
+      "stage": "audit and six external screens complete; objective corrections and journal implementation",
+      "UTC": "2026-10-22T10:40:06.211855+00:00"
+    },
+    {
+      "stage": "first implementation reviewed; typography and footer correction",
+      "UTC": "2026-10-22T10:48:49.252806+00:00"
+    },
+    {
+      "stage": "targeted models30 and PlayMode3 passed; actual visual QA and LAN smoke",
+      "UTC": "2026-10-22T10:58:07.433942+00:00"
+    },
+    {
+      "stage": "all targeted tests, final actual visual review, LAN, original-save checks complete; Git review and delivery",
+      "UTC": "2026-10-22T11:09:46.613946+00:00"
+    }
+  ],
+  "usage": [
+    {
+      "UTC": "2026-10-22T10:33:00Z",
+      "fiveHourUsedPercent": 26,
+      "weeklyUsedPercent": 88,
+      "scope": "account-wide rounded snapshot; not task tokens/cost",
+      "timestampPrecision": "minute"
+    },
+    {
+      "UTC": "2026-10-22T10:59:25.893982+00:00",
+      "fiveHourUsedPercent": 53,
+      "weeklyUsedPercent": 92,
+      "stage": "audit + objective corrections + UI authoring + model30 + PlayMode3; visual checks ongoing",
+      "scope": "account-wide rounded snapshot, not isolated task billing"
+    },
+    {
+      "UTC": "2026-10-22T11:09:57Z",
+      "fiveHourUsedPercent": 65,
+      "weeklyUsedPercent": 94,
+      "stage": "final actual UI bounds/raycast checks, LAN, screenshots, cleanup and docs",
+      "scope": "shared account snapshot; not exact task tokens/cost"
+    }
+  ],
+  "measuredProcessWallSeconds": {
+    "EditMode": 47.5330913066864,
+    "PlayMode": 60.847596168518066,
+    "LANClient": 45.820799589157104
+  },
+  "waitInterpretation": "Background process wall time includes startup/compile/tests and overlaps editing; it is not added to overall elapsed time. MCP/compiler waits were not exhaustively measured.",
+  "stages": [
+    {
+      "stage": "repository, visual audit and six reference screens",
+      "startUTC": "2026-10-22T10:28:50Z",
+      "endUTC": "2026-10-22T10:40:06.211855+00:00",
+      "elapsedSeconds": 676.211855
+    },
+    {
+      "stage": "canonical corrections and journal implementation",
+      "startUTC": "2026-10-22T10:40:06.211855+00:00",
+      "endUTC": "2026-10-22T10:48:49.252806+00:00",
+      "elapsedSeconds": 523.040951
+    },
+    {
+      "stage": "targeted tests, visual correction and actual LAN",
+      "startUTC": "2026-10-22T10:48:49.252806+00:00",
+      "endUTC": "2026-10-22T11:06:57.674368+00:00",
+      "elapsedSeconds": 1088.421562
+    },
+    {
+      "stage": "final visual inspection, evidence, docs and manual diff review",
+      "startUTC": "2026-10-22T11:06:57.674368+00:00",
+      "endUTC": "2026-10-22T11:10:50.439572+00:00",
+      "elapsedSeconds": 232.765204
+    }
+  ],
+  "gitDeliveryStartUTC": "2026-10-22T11:10:50.439572+00:00"
+}

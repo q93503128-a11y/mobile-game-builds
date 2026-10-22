@@ -4297,8 +4297,8 @@
     {
       "Key": "class.title",
       "Values": [
-        "CLASS",
-        "클래스"
+        "Class Journal",
+        "직업 기록"
       ]
     },
     {
@@ -4388,8 +4388,8 @@
     {
       "Key": "class.gem_unavailable",
       "Values": [
-        "Gem · Unavailable",
-        "젬 · 이용 불가"
+        "Premium class · Locked",
+        "프리미엄 직업 · 잠김"
       ]
     },
     {
@@ -4409,8 +4409,8 @@
     {
       "Key": "class.gold_available",
       "Values": [
-        "Saved character Gold {0}",
-        "저장된 캐릭터 Gold {0}"
+        "Gold {0}",
+        "골드 {0}"
       ]
     },
     {
@@ -4782,6 +4782,97 @@
       "Values": [
         "GoblinCamp",
         "고블린 야영지"
+      ]
+    },
+    {
+      "Key": "journal.classes",
+      "Values": [
+        "Survivor’s Journal",
+        "생존자의 수첩"
+      ]
+    },
+    {
+      "Key": "journal.field_notes",
+      "Values": [
+        "FIELD NOTES",
+        "야전 기록"
+      ]
+    },
+    {
+      "Key": "journal.condition",
+      "Values": [
+        "FIELD CONDITION",
+        "야전 상태"
+      ]
+    },
+    {
+      "Key": "journal.class_progress",
+      "Values": [
+        "Class XP {0}\nPoints {1} / earned {2}",
+        "직업 경험치 {0}\n남은 포인트 {1} / 획득 {2}"
+      ]
+    },
+    {
+      "Key": "journal.need_point",
+      "Values": [
+        "Point needed",
+        "포인트 필요"
+      ]
+    },
+    {
+      "Key": "journal.requires",
+      "Values": [
+        "Requires: {0}",
+        "선행: {0}"
+      ]
+    },
+    {
+      "Key": "journal.premium_locked",
+      "Values": [
+        "Premium · Locked",
+        "프리미엄 · 잠김"
+      ]
+    },
+    {
+      "Key": "journal.role.survivor",
+      "Values": [
+        "Survival",
+        "범용 생존"
+      ]
+    },
+    {
+      "Key": "journal.role.warrior",
+      "Values": [
+        "Guard & counter",
+        "방어 · 반격"
+      ]
+    },
+    {
+      "Key": "journal.role.hunter",
+      "Values": [
+        "Hunt & track",
+        "사냥 · 추적"
+      ]
+    },
+    {
+      "Key": "journal.role.medic",
+      "Values": [
+        "Medicine & rescue",
+        "치료 · 구조"
+      ]
+    },
+    {
+      "Key": "journal.role.explorer",
+      "Values": [
+        "Observe & survey",
+        "관측 · 탐사"
+      ]
+    },
+    {
+      "Key": "journal.role.engineer",
+      "Values": [
+        "Repair & turrets",
+        "수리 · 포탑"
       ]
     }
   ]

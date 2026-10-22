@@ -18,6 +18,7 @@ namespace Wildfolk
         private void OnDisable()=>Health.Died-=Drop;
         private void Drop()
         {
+            if(deathPresented)return;
             var network=GetComponent<NetworkCreature>();if(network!=null){network.ResolveDeath(Table);return;}
             foreach(var entry in Table.Roll())
             {var drop=PrefabPool.Spawn(Pickup,transform.position,Quaternion.identity);drop.Initialize(entry.Item,entry.Count,Player,Settings);}

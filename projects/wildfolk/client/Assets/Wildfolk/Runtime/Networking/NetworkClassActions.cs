@@ -59,7 +59,7 @@ namespace Wildfolk
             return false;
         }
         public void SendProfile()
-        {if(!IsSpawned || !IsServer || role.Definition==null)return;var p=ClassProfiles.Store.Read(role.Profile).Find(role.Definition.Id);ProgressRpc(role.Definition.Id,p.XP);}
+        {if(!IsSpawned || !IsServer || role.Definition==null)return;ProgressRpc(role.Definition.Id,role.ClassXP);}
         [Rpc(SendTo.Owner,InvokePermission=RpcInvokePermission.Server)]private void ProgressRpc(FixedString64Bytes id,long total)
         {if(IsServer)return;ClassProfiles.Update(ClassProfiles.LocalId,d=>{var p=d.Find(id.ToString());if(p?.Owned!=true || total<p.XP)return false;p.XP=total;return true;});}
         public void MedicineFeedback(Health target)

@@ -97,3 +97,9 @@ Placeable.PlayerBuilt를 추가한다. 구 SP 설치물은 cargo 외 플레이�
 Gold 구매는 profile intent 저장→world Gold debit+receipt atomic commit→profile entitlement 확정 순서다. 중단 후 world receipt가 있으면 grant, receipt가 없으면 intent만 취소해 재시도한다. read/validation 실패는 해금하지 않는다. 로컬 save 수동 rollback/인증 없는 GUID·파일 교체는 막지 못한다.
 
 Protocol20은 NetworkClassActions/ClassActionState와 owner request, NetworkCommonGrowth, NetworkBuilding PlayerBuilt/buffer 및 임시 포탑 상태를 추가하기 때문이다.19 peer와 혼용하지 않는다.
+
+## Class receipt compaction / admission correction · 2026-10-22
+
+Save13/Profile1/Protocol20 유지. Profile1의 과거 Receipts 배열은 JsonUtility가 무시한다. checksum/atomic/backup 검증 뒤 소유·총XP·선택·노드·구매 intent는 보존하며 다음 정상 저장은 obsolete kill receipt를 쓰지 않는다. backup은 기존 원자 교체 정책대로 교체되므로 직전 legacy payload가 다음 저장까지 backup에 남을 수 있다. 신규 kill 기록은 영속하지 않는다. 월드의 구매 ClassPurchases는 제거하지 않는다.
+
+중복 처치는 death commit과 세션 recent512 window로 차단한다. 원격 미인증 계정 claim을 Host 영구 profile로 승격하지 않는다. 기본 원격 Class 진행은 새 Survivor 세션이며 해당 Host의 reconnect까지만 XP/lock을 보관한다. 명시 개발 verifier의 원격 상위 직업도 ephemeral이다. Host 로컬/SP의 profile 진행은 기존 영구 store를 쓴다. [실측·이관·LAN 검증](../validation/ui-redesign/REVIEW.md).

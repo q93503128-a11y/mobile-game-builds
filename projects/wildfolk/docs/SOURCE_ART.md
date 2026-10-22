@@ -66,3 +66,7 @@ III 원본 아트: tools/generate_tier_three_art.py(Pillow). 기존 Steel/Lanter
 ## Class icons
 
 6종 class_survivor/warrior/hunter/medic/explorer/engineer는 tools/generate_class_icons.py의 원형·잎·방패·활·십자·나침반·기어 기하 도형으로 직접 생성했다. 외부 이미지/폰트/에셋 없음.128×128 RGBA,384에서 축소. 기존 Lowfire 팔레트/Unity importer 사용.
+
+## Camp Journal UI · 2026-10-22
+
+기존 자체 제작 lowfire_journal.png/lowfire_wordmark.png, class/skill/item icon과 기존 Noto Sans KR/OFL를 재사용한다. tools/generate_journal_icons.py는 paper node/focus ring/seal/lock/Gold coin/Premium Gem 작은6PNG를 원본 Pillow 도형으로 작성한다. 광물 Crystal을 유료 Gem으로 사용하지 않는다. 새 외부 asset/유료 font/외부 게임 screenshot/code/layout을 게임에 포함하지 않는다. 연구용6게임 화면은 외부 로컬 폴더에서만 비교했고 URL/관찰만 REVIEW에 기록한다. Fanpot/Penpot/ImageGen은 이번 UI authoring에 사용하지 않았다.

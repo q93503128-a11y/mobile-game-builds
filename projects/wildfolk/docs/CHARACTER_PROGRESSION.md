@@ -35,9 +35,9 @@ CharacterStats는PersistentHealthBonus(Skill)와일시Meal을구분해합친다.
 
 ## Character Progression + Class Foundation (2026-10-22)
 
-일반 Level/XP/Rank/잔여 Point는 월드 캐릭터 성장이다. 별도 profile Schema1은 여섯 Class의 소유/XP/선택/노드/거래 receipt를 보존한다. Survivor는 기본 소유, Warrior/Hunter/Medic/Explorer는 기존 저장 월드 Gold 각60, Engineer는 PremiumGem 공급자·가격 미확정으로 production 구매 불가다. 여러 월드 잔액을 합산하지 않는다. local checksum/backup은 인증·위조 방지가 아니다.
+일반 Level/XP/Rank/잔여 Point는 월드 캐릭터 성장이다. 별도 profile Schema1은 여섯 Class의 소유/XP/선택/노드/구매 intent를 보존한다. 처치별 receipt는 영구 저장하지 않는다. Survivor는 기본 소유, Warrior/Hunter/Medic/Explorer는 기존 저장 월드 Gold 각60, Engineer는 PremiumGem 공급자·가격 미확정으로 production 구매 불가다. 여러 월드 잔액을 합산하지 않는다. local checksum/backup은 인증·위조 방지가 아니다.
 
-Home CLASS(Host/Join 연결 전 포함)에서 선택·투자·무료 재분배한다. admission/world 진입 때 loadout을 잠그고 같은 세션 재접속은 Host lock을 복원한다. 일반 gameplay XP1에 Class XP1이며 개발자 Reward는 Class XP를 주지 않는다. 클래스별 XP와 보상 receipt를 보존한다. 누적50/180/400/750/1200/1800에서 현재6Point, 데이터 milestone 수로 계산하며 코드 상한6은 없다. branch1→2→3 선행, 각 노드1Point, 현재9개 중6개를 선택한다.
+Home 책 안의 직업 기록(Host/Join 연결 전 포함)에서 선택·투자·무료 재분배한다. admission/world 진입 때 loadout을 잠그고 같은 세션 재접속은 Host lock을 복원한다. 일반 gameplay XP1에 Class XP1이며 개발자 Reward는 Class XP를 주지 않는다. 로컬 SP/Host의 클래스별 XP를 보존한다. 원격 미인증 참가자는 기본 Survivor/XP0/노드0에서 시작하며 원격 Class XP는 해당 Host 세션에만 유지된다. 누적50/180/400/750/1200/1800에서 현재6Point, 데이터 milestone 수로 계산하며 코드 상한6은 없다. branch1→2→3 선행, 각 노드1Point, 현재9개 중6개를 선택한다.
 
 기본 능력: Survivor 치명상 전HP1·보호1.5초·360초(공격 시 보호 종료), Warrior 정면120도 Guard 피해50%·기력12/초·이속65%·공격간격1.6배(공격 가능), Hunter 피해 준 생물 한 마리20초 Quarry·후속피해+8%, Medic generic Medicine 아군 사용, Explorer Optic/Survey/Signal 범위+15% 및 관측점 임시 표식, Engineer 무료 HP수리·기본20% buffer·Overclock12초/30초(+25%reload/+35%rotation)다.
 
@@ -71,7 +71,7 @@ Home CLASS(Host/Join 연결 전 포함)에서 선택·투자·무료 재분배�
 |Hunter|창|C2 추격 찌르기|사냥감 쪽으로 0.8초 이동 후 첫 창 적중이 15% 강해집니다.|0.15 / C1|
 |Hunter|창|C3 대형 사냥|최대 체력 120 이상인 사냥감에게 창 피해가 12% 늘어납니다.|0.12 / C2|
 |Medic|치료|A1 치료 숙련|자신과 동료에게 제공하는 의약품 회복량이 10% 늘어납니다.|0.1 / 없음|
-|Medic|치료|A2 빠른 처치|준비 시간이 있는 의약품의 사용 시간이 20% 줄어듭니다. 즉시 사용은 그대로입니다.|0.2 / A1|
+|Medic|치료|A2 빠른 처치|자신과 동료에게 의약품을 사용한 뒤의 대기 시간이 20% 줄어듭니다.|0.2 / A1|
 |Medic|치료|A3 집중 치료|지속 회복 의약품이 같은 총량을 25% 빠르게 전달합니다.|0.25 / A2|
 |Medic|구조|B1 구조 훈련|동료 구조 시간이 4초에서 3.2초로 줄어듭니다.|0.25 / 없음|
 |Medic|구조|B2 소생 처치|구조한 동료가 최대 체력의 50%로 일어납니다.|0.25 / B1|
@@ -98,6 +98,18 @@ Home CLASS(Host/Join 연결 전 포함)에서 선택·투자·무료 재분배�
 |Engineer|방어공학|C2 함정 정비|지속형 함정의 수리 시간이 15% 줄고 임시 보강이 10%p 늘어납니다.|0.1 / C1|
 |Engineer|방어공학|C3 포탑 정비|포탑 수리 시간이 15% 줄고 임시 보강이 10%p 늘어납니다.|0.1 / C2|
 
-Medicine 발신=(1+Medic치료+응급치료), 수신=(1+FieldCare+Survivor저체력보너스)를 곱한다. 현재 붕대/연고 ApplicationSeconds는0이므로 A2는 현재 두 아이템을 빠르게 하지 않는다. 비영점 application 데이터의 generic 경계는 QA fixture로 검증한다. A3는 HoT 총량을 유지하며 기간을 줄인다. 공용4초 사용 간격은 유지한다.
+Medicine 발신=(1+Medic치료+응급치료), 수신=(1+FieldCare+Survivor저체력보너스)를 곱한다. 현재 붕대/연고 ApplicationSeconds는0이고 강제 준비 시간을 추가하지 않는다. A2는 ConsumableKind.Medicine 공통 경계에서 사용 간격4초를3.2초로 줄이며 Self/Ally에 동일하게 적용한다. 음식의 기존 간격은 바꾸지 않는다. A1은 회복량+10%, A3는 HoT 총량을 유지하며 기간−25%다.
 
 Quarry HUD는 방위/거리구간/체력구간만 제공한다. Explorer는 도구 category/IAimableExplorationTool을 사용하며 normal combat camera/simulation/chunk 상한을 바꾸지 않는다. [외부 사례·가격/XP 산술·검수](../validation/class-progression/REVIEW.md).
+
+## Admission / receipt correction · 2026-10-22
+
+기본 SurvivorClassAdmission은 원격 Owned/Selected/XP/Nodes claim을 권위로 사용하지 않는다. Host 자신만 자신의 store에서 읽는다. 원격 profile GUID는 routing 식별자이며 인증이 아니다. Host profile을 remote route로 주장하면 거절한다. IClassAdmissionVerifier는 향후 인증된 entitlement/progression provider의 교체 경계다. 현재 원격 유료 직업 인증 backend는 없다.
+
+DevelopmentAlphaClassAdmission은 Editor/Development에서 명시 주입한 경우에만 claim을 canonical node/XP 규칙으로 검사한 세션 account를 만든다. Host 디스크에 원격 ownership/XP/nodes를 기록하지 않는다. ClassAdmissionLocks가 class/account/recent reward window를 같은 세션 재접속까지 보관하고 새 Host에서 지운다.
+
+ClassProgressSession은 영구 프로필과 세션 전용 진행을 구분한다. RewardReceiptWindow는 HashSet+Queue512개 상한이다. 1차 once-only 경계는 LootOnDeath의 deathPresented/per-spawn ID 및 NetworkDeathResult.TryCommit이다. Client가 과거 receipt를 제출하는 RPC는 없다. Profile1의 옛 Receipts 필드는 checksum 검증 후 무시하고 다음 정상 Write에서 제거한다. Class 구매를 위한 월드 ClassPurchases는 별개이며 그대로 유지한다. Save13/Profile1/Protocol20 유지.
+
+## Camp Journal UI
+
+MainMenu 책 안 직업 기록, MP 책의 연결된 bookmark, Class 명단/큰 선택 직업/3갈래 아이콘 경로/상세 footer, Character sheet와 공용6Skill diagram이 기존 Lowfire 수첩을 공유한다. 직업/공용 node는 선택 ring·학습 seal·잠금 mark와 상태 문구를 사용한다. 선택/구매/투자/무료 재분배 권위 경계는 기존 Lobby 제한을 따른다. [수정 전 감사·외부6화면·검수](../validation/ui-redesign/REVIEW.md).

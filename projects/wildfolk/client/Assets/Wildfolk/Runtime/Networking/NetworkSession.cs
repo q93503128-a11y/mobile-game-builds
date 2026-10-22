@@ -28,8 +28,8 @@ namespace Wildfolk
         public string ProfileOverride {get;set;}
         public string LocalProfile {get;private set;}
         private readonly Dictionary<ulong,string> identities=new Dictionary<ulong,string>();
-        public IClassAdmissionVerifier ClassVerifier {get;set;}=new LocalAlphaClassAdmission();
-        private readonly Dictionary<string,AccountProgression> classLocks=new Dictionary<string,AccountProgression>();
+        public IClassAdmissionVerifier ClassVerifier {get;set;}=new SurvivorClassAdmission();
+        private readonly ClassAdmissionLocks classLocks=new ClassAdmissionLocks();
         private readonly HashSet<ulong> spawning=new HashSet<ulong>();
         private SaveGameRules SaveRules=>Resources.Load<SaveGameRules>("SaveGameRules");
         public event Action Changed;
@@ -106,7 +106,7 @@ namespace Wildfolk
             ClassAdmission admission=null;try{if(request.Payload?.Length<=2048)admission=JsonUtility.FromJson<ClassAdmission>(System.Text.Encoding.UTF8.GetString(request.Payload));}catch(Exception){}
             var id=admission?.Profile;
             var accepted=CanApprove(id,request.ClientNetworkId);
-            if(accepted && !classLocks.ContainsKey(id)){accepted=ClassVerifier.Verify(admission,out var account);if(accepted)classLocks[id]=account;}
+            if(accepted)accepted=classLocks.Admit(LocalProfile,admission,request.ClientNetworkId==NetworkManager.ServerClientId,ClassVerifier,out _);
             response.Approved=accepted;response.CreatePlayerObject=false;
             response.Pending=false;if(response.Approved)identities[request.ClientNetworkId]=id;else response.Reason=Manager.ConnectedClientsIds.Count>=MaximumPlayers ? "net.room_full" : LocalPlayerIdentity.Valid(id) ? "net.duplicate_player" : "net.connection_failed";
         }
@@ -153,7 +153,7 @@ namespace Wildfolk
             var order=0;foreach(var peer in Manager.ConnectedClientsIds){if(peer==id)break;order++;}var position=new Vector3((order%2)*3-1.5f,(order/2)*-3,0);
             var world=NetworkCreatureWorld.Active;if(world!=null)position+=(Vector3)world.World.Map.Spawn;
             if(!identities.TryGetValue(id,out var profile))return;
-            var actor=Instantiate(PlayerPrefab,position,Quaternion.identity);var player=actor.GetComponent<NetworkPlayer>();player.ProfileId=profile;var account=classLocks.TryGetValue(profile,out var locked)?locked:ClassProfiles.Store.Read(profile);player.GetComponent<PlayerClass>().Lock(profile,account);NetworkWorldPersistence.Active.RestorePlayer(player);actor.GetComponent<NetworkObject>().SpawnAsPlayerObject(id,true);
+            var actor=Instantiate(PlayerPrefab,position,Quaternion.identity);var player=actor.GetComponent<NetworkPlayer>();player.ProfileId=profile;if(!classLocks.TryGet(profile,out var locked)){Destroy(actor);return;}player.GetComponent<PlayerClass>().Lock(profile,locked);NetworkWorldPersistence.Active.RestorePlayer(player);actor.GetComponent<NetworkObject>().SpawnAsPlayerObject(id,true);
         }
         private IEnumerator SpawnWhenReady(ulong id)
         {

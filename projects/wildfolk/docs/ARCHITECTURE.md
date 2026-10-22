@@ -247,6 +247,8 @@ IWorldSupplies를 GoblinCamp/PoiSite가 구현하고 기존 CampLootPanel을 재
 
 ## Class foundation boundaries
 
-ClassCatalog(6 definition/54 node/milestones)→ClassProfiles(IAccountProgressionStore/IClassEntitlementStore/IClassPurchaseWallet)→admission lock→PlayerClass cached modifiers. Class identity는 PlayerClass에서만 판정하고 Combat/Medicine/Locomotion/Building/Exploration은 capability/modifier를 소비한다. LocalAlphaClassAdmission은 로컬 소유·XP claim을 신뢰하는 Alpha 경계로 backend authentication을 주장하지 않는다. Host는 노드/선행/XP/수치 정본과 세션 lock을 검사한다.
+ClassCatalog(6 definition/54 node/milestones)→ClassProfiles(IAccountProgressionStore/IClassEntitlementStore/IClassPurchaseWallet)→admission lock→PlayerClass cached modifiers. Class identity는 PlayerClass에서만 판정하고 Combat/Medicine/Locomotion/Building/Exploration은 capability/modifier를 소비한다. SurvivorClassAdmission은 기본 remote claim을 Survivor/XP0/노드0으로 제한한다. Host 로컬만 자기 store를 읽고 DevelopmentAlphaClassAdmission은 명시 주입한 Editor/Development 세션 snapshot에만 적용한다. ClassAdmissionLocks/ClassProgressSession은 재접속 lock·remote ephemeral XP·bounded512 recent receipt를 유지하며 Host 디스크에 원격 claim을 쓰지 않는다. IClassAdmissionVerifier는 미래 인증 provider 경계다.
 
 PlayerMedicine generic item category/application/HoT, PlayerBuildingService hold+atomic transaction, StructureMaintenance buffer/refund, PlayerTeamMarker 관측/LOS·만료를 담당한다. ClassHud는5Hz bounded context overlap, marker는NetworkPlayer.Active 최대4 순회. per-frame 전역 creature/placeable/POI 검색은 없다. marker 생성 순간의 관측된 landmark 표시만 확인한다.
+
+JournalUiBuilder는 기존 paper/font/icon을 사용하는 소형 Editor authoring helper이며 세 장면에 UI를 직렬화한다. JournalSkillNode는 Class/common 트리 상태만 표현한다. 런타임 UI 재생성·새 NetworkBehaviour·wire 변경은 없다.

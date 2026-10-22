@@ -33,7 +33,7 @@ namespace Wildfolk
         public bool Low=>health!=null && health.Ratio<=.3f;
         public float MedicineReceived=>1+(GetComponent<PlayerProgression>()?.Bonus(SkillEffect.MedicineReceived)??0)+(Low?Value(ClassEffect.LowMedicine):0);
         public float HealingOutgoing(Health target)=>1+Value(ClassEffect.HealingOut)+(target.Ratio<=.3f?Value(ClassEffect.EmergencyHeal):0);
-        public float ApplicationMultiplier=>1-Value(ClassEffect.ApplicationTime);
+        public float MedicineCooldownMultiplier=>1-Value(ClassEffect.MedicineCooldown);
         public float HotDurationMultiplier=>1-Value(ClassEffect.HotSpeed);
         public float NutritionMultiplier=>1+Value(ClassEffect.Nutrition);
         public float MealDurationMultiplier=>1+Value(ClassEffect.MealDuration);
@@ -55,10 +55,14 @@ namespace Wildfolk
         public float GoldenTimeBonus=>Value(ClassEffect.GoldenTime);
         private void Awake(){health=GetComponent<Health>();locomotion=GetComponent<PlayerLocomotion>();commands=GetComponent<PlayerInputCommands>();bag=GetComponent<PlayerInventory>();previous=transform.position;}
         private void Start(){if(!Locked && GetComponent<NetworkPlayer>()==null)Lock(ClassProfiles.LocalId,ClassProfiles.Local);}
-        public bool Lock(string profile,AccountProgression account)
+        private ClassProgressSession progression;
+        public long ClassXP=>progression?.Account.Find(Definition.Id)?.XP??0;
+        public bool Lock(string profile,AccountProgression account)=>Lock(profile,new ClassProgressSession(account,true));
+        public bool Lock(string profile,ClassProgressSession admitted)
         {
+            var account=admitted.Account;
             if(Locked)return false;account.Validate();var progress=account.Find(account.Selected);if(progress?.Owned!=true)return false;
-            Profile=profile;Definition=ClassCatalog.Current.Find(progress.Id);Array.Clear(modifiers,0,modifiers.Length);
+            progression=admitted;Profile=profile;Definition=ClassCatalog.Current.Find(progress.Id);Array.Clear(modifiers,0,modifiers.Length);
             foreach(var id in progress.Nodes){var node=Array.Find(Definition.Nodes,n=>n.Id==id);modifiers[(int)node.Effect]+=node.Amount;}
             Locked=true;stationarySince=Now;lastStep=Now;HomeDeparture();Changed?.Invoke();return true;
         }
@@ -74,7 +78,7 @@ namespace Wildfolk
         public bool GrantXP(int xp,string receipt)
         {
             if(!Authority || !Locked || xp<0)return false;
-            var success=ClassProfiles.Update(Profile,d=>{if(d.Receipts.Contains(receipt))return false;var p=d.Find(Definition.Id);if(p?.Owned!=true)return false;p.XP=checked(p.XP+xp);d.Receipts=d.Receipts.Concat(new[]{receipt}).ToArray();return true;});
+            var success=progression.Grant(Profile,Definition.Id,xp,receipt);
             if(success)GetComponent<NetworkClassActions>()?.SendProfile();return success;
         }
         public void HomeDeparture(){homeUntil=Now+60;}

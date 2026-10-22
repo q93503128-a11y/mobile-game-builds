@@ -121,14 +121,14 @@ namespace Wildfolk.Editor
             yield return Prepare();Step("medicine");Role("medic","A1","A2","A3","C1","C2","C3");var growth=bag.GetComponent<PlayerProgression>();growth.SetValues(450,0);for(var i=0;i<3;i++)Check(growth.Invest(5),"FieldCare rank "+i);yield return null;
             ClearBag();var medicine=save.Catalog.Items.Where(i=>i.Consumable?.Kind==ConsumableKind.Medicine).ToArray();foreach(var item in medicine)
             {
-                health.RestoreHealth(20);survival.ResetTransient();bag.Model.Add(item,2);ContentExpansionQa.Select(item.Id,false);var before=bag.Model.CountItem(item);Check(bag.GetComponent<PlayerMedicine>().Begin(health),"selfMedicine "+item.Id);Check(bag.Model.CountItem(item)==before-1 && !bag.GetComponent<PlayerMedicine>().Begin(health),"one item and sharedcooldown "+item.Id);
+                health.RestoreHealth(20);survival.ResetTransient();bag.Model.Add(item,2);ContentExpansionQa.Select(item.Id,false);var before=bag.Model.CountItem(item);Check(bag.GetComponent<PlayerMedicine>().Begin(health),"selfMedicine "+item.Id);Check(Math.Abs(survival.UseReadyAt-Time.time-3.2f)<.02f,"generic Medicine cooldown4 to3.2");Check(bag.Model.CountItem(item)==before-1 && !bag.GetComponent<PlayerMedicine>().Begin(health),"one item and sharedcooldown "+item.Id);
                 var expected=Mathf.RoundToInt((item.Consumable.HealthRestore+item.Consumable.GradualHealthRestore)*1.25f*1.3f);
                 if(item.Consumable.GradualHealthRestore>0){Check(Mathf.Abs(survival.Treatment.Remaining-item.Consumable.HealingDuration*.75f)<.1f,"HoTdelivery shortened withoutlosingtotal");survival.AdvanceTreatment(20);}
                 Check(health.Current==20+expected,"outgoing critical25percent * received30percent "+item.Id);
             }
             // No production medicine gets a new cast; generic non-zero application is supported with a QA clone.
             survival.ResetTransient();health.RestoreHealth(20);ClearBag();var salve=medicine.First(i=>i.Consumable.HealthRestore>0);var clone=UnityEngine.Object.Instantiate(salve);clone.Id=salve.Id;clone.Consumable=UnityEngine.Object.Instantiate(salve.Consumable);clone.Consumable.ApplicationSeconds=1;bag.Model.Add(clone,1);for(var i=0;i<9;i++)if(bag.Model.GetSlot(i).Item==clone)bag.SelectSlot(i);
-            Check(bag.GetComponent<PlayerMedicine>().Begin(health),"generic timed medicine begins");Check(Math.Abs(bag.GetComponent<PlayerMedicine>().Until-role.Now-.8)<.05,"A2 onlychangesnonzeroapplication");bag.GetComponent<PlayerMedicine>().Cancel();Check(bag.Model.CountItem(clone)==1,"canceledmedicine notconsumed");yield return Shot("05-medic");
+            Check(bag.GetComponent<PlayerMedicine>().Begin(health),"generic timed medicine begins");Check(Math.Abs(bag.GetComponent<PlayerMedicine>().Until-role.Now-1)<.05,"A2 leaves application unchanged");bag.GetComponent<PlayerMedicine>().Cancel();Check(bag.Model.CountItem(clone)==1,"canceledmedicine notconsumed");yield return Shot("05-medic");
         }
         public static IEnumerator Buildings()
         {

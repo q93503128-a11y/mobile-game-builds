@@ -29,7 +29,7 @@ namespace Wildfolk
             var stack=bag.SelectedStack;var medicine=stack.Item?.Consumable;
             if(stack.IsEmpty || medicine?.Kind!=ConsumableKind.Medicine || other.Current>=other.Maximum || medicine.GradualHealthRestore>0 && other.GetComponent<PlayerSurvival>().Treatment.Active)return false;
             item=stack.Item;slot=bag.SelectedIndex;target=other;origin=transform.position;startRevision=revision;
-            Until=role.Now+medicine.ApplicationSeconds*(role?.ApplicationMultiplier??1);
+            Until=role.Now+medicine.ApplicationSeconds;
             if(medicine.ApplicationSeconds<=0)return Commit();return true;
         }
         private bool Commit()
@@ -40,7 +40,7 @@ namespace Wildfolk
             var multiplier=(role?.HealingOutgoing(target)??1)*received;
             var success=bag.Model.TryDropSlot(slot,item,1,()=>
             {target.Heal(Mathf.RoundToInt(medicine.HealthRestore*multiplier));if(medicine.GradualHealthRestore>0)recipient.ReceiveTreatment(Mathf.RoundToInt(medicine.GradualHealthRestore*multiplier),medicine.HealingDuration*(role?.HotDurationMultiplier??1));return true;});
-            if(success){survival.UseReadyAt=Time.time+medicine.UseCooldownSeconds;GetComponent<NetworkClassActions>()?.MedicineFeedback(target);}
+            if(success){survival.UseReadyAt=Time.time+medicine.UseCooldownSeconds*(role?.MedicineCooldownMultiplier??1);GetComponent<NetworkClassActions>()?.MedicineFeedback(target);}
             Cancel();return success;
         }
         public void Cancel(){target=null;item=null;Until=0;}

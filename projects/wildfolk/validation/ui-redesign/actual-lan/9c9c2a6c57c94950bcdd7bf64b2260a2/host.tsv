@@ -1,0 +1,19 @@
+2026-10-22T11:01:38.4758199Z	starting	PASS QA admission profile warrior
+2026-10-22T11:01:38.6858056Z	starting	PASS actual LAN Host
+2026-10-22T11:01:38.6953925Z	starting	PASS Host enters world
+2026-10-22T11:01:41.9108324Z	join_smoke	command
+2026-10-22T11:02:13.3732772Z	join_smoke	PASS trusted local Host and explicit remote QA classes
+2026-10-22T11:02:13.3732772Z	join_smoke	PASS no remote claim durable file on Host
+2026-10-22T11:02:13.3747910Z	medicine_smoke	command
+2026-10-22T11:02:13.5947004Z	medicine_smoke	PASS self Medicine A1 and early retry consumes once
+2026-10-22T11:02:13.5957313Z	medicine_smoke	PASS Medic A2 actual shared cooldown3.2 remaining=3.030052
+2026-10-22T11:02:13.5972431Z	ally_smoke	command
+2026-10-22T11:02:16.9069488Z	ally_smoke	PASS ally generic Medicine consumes once after3.2 seconds
+2026-10-22T11:02:16.9188561Z	ally_smoke	PASS authoritative reward duplicate blocked
+2026-10-22T11:02:16.9203864Z	ally_smoke	PASS remote session XP updated
+2026-10-22T11:02:16.9231626Z	reconnect_smoke	command
+2026-10-22T11:02:20.4447523Z	reconnect_smoke	PASS class, XP and bounded receipt window retain reconnect lock
+2026-10-22T11:02:20.4464481Z	reconnect_smoke	PASS remote state remains ephemeral after rewards and reconnect
+2026-10-22T11:02:20.4628685Z	reconnect_smoke	PASS Save13 world compatible with session-only class admission
+2026-10-22T11:02:20.5826223Z	finish_smoke	command
+2026-10-22T11:02:21.2291418Z	complete	complete

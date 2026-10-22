@@ -17,12 +17,14 @@ namespace Wildfolk.Editor
         private static string run;private static string Dir=>Path.Combine(Shared,run);
         private static NetworkSession session;private static bool client;private static int firstRound=1;
         static ClassLanQa(){EditorApplication.playModeStateChanged+=PlayState;}
-        private static void PlayState(PlayModeStateChange s){if(s==PlayModeStateChange.EnteredPlayMode && UnityEditor.SessionState.GetBool("Lowfire.ClassLan.Client",false)){UnityEditor.SessionState.SetBool("Lowfire.ClassLan.Client",false);Start(true);}}
+        private static void PlayState(PlayModeStateChange s){if(s==PlayModeStateChange.EnteredPlayMode && UnityEditor.SessionState.GetBool("Lowfire.ClassLan.Client",false)){UnityEditor.SessionState.SetBool("Lowfire.ClassLan.Client",false);Start(true,UnityEditor.SessionState.GetBool("Lowfire.ClassLan.Smoke",false));}}
         public static void Client(){Directory.CreateDirectory(Shared);run=File.ReadAllText(Path.Combine(Shared,"current-run.txt")).Trim();UnityEditor.SessionState.SetString("Wildfolk.QA.Directory",Path.Combine(Dir,"client-profile"));UnityEditor.SessionState.SetBool("Lowfire.ClassLan.Client",true);Application.runInBackground=true;EditorApplication.update-=Pump;EditorApplication.update+=Pump;EditorApplication.isPlaying=true;}
         private static void Pump(){if(EditorApplication.isPlaying)EditorApplication.QueuePlayerLoopUpdate();}
         public static void Host(int startRound=1){firstRound=startRound;if(!Application.isPlaying || !DevelopmentProfile.Isolated)throw new InvalidOperationException("Isolated Play required");Directory.CreateDirectory(Shared);run=Guid.NewGuid().ToString("N");Directory.CreateDirectory(Dir);File.WriteAllText(Path.Combine(Shared,"current-run.txt"),run);Start(false);}
-        private static void Start(bool remote)
-        {client=remote;if(remote)run=File.ReadAllText(Path.Combine(Shared,"current-run.txt")).Trim();ClassProfiles.DevelopmentProviders(new LocalAccountProgressionStore(Path.Combine(Dir,remote?"client-store":"host-store")));var runner=new GameObject("Class LAN QA").AddComponent<DevelopmentCoroutineHost>();UnityEngine.Object.DontDestroyOnLoad(runner.gameObject);runner.StartCoroutine(Guard(remote?Remote():Authority()));}
+        public static void ClientSmoke(){UnityEditor.SessionState.SetBool("Lowfire.ClassLan.Smoke",true);Client();}
+        public static void HostSmoke(){if(!Application.isPlaying || !DevelopmentProfile.Isolated)throw new InvalidOperationException("Isolated Play required");Directory.CreateDirectory(Shared);run=Guid.NewGuid().ToString("N");Directory.CreateDirectory(Dir);File.WriteAllText(Path.Combine(Shared,"current-run.txt"),run);Start(false,true);}
+        private static void Start(bool remote,bool smoke=false)
+        {client=remote;if(remote)run=File.ReadAllText(Path.Combine(Shared,"current-run.txt")).Trim();ClassProfiles.DevelopmentProviders(new LocalAccountProgressionStore(Path.Combine(Dir,remote?"client-store":"host-store")));var runner=new GameObject("Class LAN QA").AddComponent<DevelopmentCoroutineHost>();UnityEngine.Object.DontDestroyOnLoad(runner.gameObject);runner.StartCoroutine(Guard(smoke?(remote?SmokeRemote():SmokeAuthority()):(remote?Remote():Authority())));}
         private static IEnumerator Guard(IEnumerator flow)
         {
             var stack=new System.Collections.Generic.Stack<IEnumerator>();stack.Push(flow);Phase="starting";
@@ -52,7 +54,7 @@ namespace Wildfolk.Editor
         private static void SelectRole(string id){var d=ClassProfiles.Store.Read(client?ClientId:HostId);d.Selected=id;ClassProfiles.Store.Write(client?ClientId:HostId,d);}
         private static IEnumerator NewHost(bool resume)
         {
-            if(session==null)session=NetworkSession.Instance??UnityEngine.Object.Instantiate(AssetDatabase.LoadAssetAtPath<NetworkSession>(MultiplayerSceneBuilder.SessionPrefabPath));session.ProfileOverride=HostId;session.WorldRepository=new SaveRepository(Path.Combine(Dir,"world.json"));
+            if(session==null)session=NetworkSession.Instance??UnityEngine.Object.Instantiate(AssetDatabase.LoadAssetAtPath<NetworkSession>(MultiplayerSceneBuilder.SessionPrefabPath));session.ClassVerifier=new DevelopmentAlphaClassAdmission();session.ProfileOverride=HostId;session.WorldRepository=new SaveRepository(Path.Combine(Dir,"world.json"));
             var task=session.Host(ConnectionRoute.LocalNetwork,resume);yield return Wait(()=>task.IsCompleted,"Host transport");Check(task.Result,"actual LAN Host "+session.LastFailure);Check(session.EnterGame(),"Host enters world");yield return Wait(()=>Local!=null && NetworkCreatureWorld.Active?.Ready==true,"Host actor");Freeze();
         }
         private static IEnumerator Join()
@@ -110,6 +112,27 @@ namespace Wildfolk.Editor
             while(Time.time<end && down.State!=PlayerLife.Alive){down.ReceiveHold(helper,down.Revision,true);yield return null;}down.ReceiveHold(helper,down.Revision,false);Check(down.State==PlayerLife.Alive && peers[1].Health.Current==40,"simulated Medic baseline revive alongside two other classes");
             var before=System.GC.GetTotalMemory(false);var frame=Time.frameCount;var began=Time.realtimeSinceStartup;yield return new WaitForSecondsRealtime(3);var elapsed=Time.realtimeSinceStartup-began;Log("PERF four actors frames="+(Time.frameCount-frame)+" elapsed="+elapsed+" meanMs="+(1000*elapsed/Mathf.Max(1,Time.frameCount-frame))+" managedDelta="+(System.GC.GetTotalMemory(false)-before));
             Check(NetworkPlayer.Active.All(p=>Role(p).Locked) && peers.All(p=>!Role(p).Lock(p.ProfileId,ClassProfiles.Store.Read(p.ProfileId))),"four actor session locks reject replacement");yield return Shot("lan-four-actor-simulation");foreach(var p in peers)p.NetworkObject.Despawn();
+        }
+        private static IEnumerator SmokeRemote()
+        {
+            yield return SceneManager.LoadSceneAsync(SceneFlow.HomeScene);yield return null;Profile(ClientId,"medic","A1","A2","A3");
+            yield return Wait(()=>Read("phase.txt")=="join_smoke","smoke Host");yield return Join();Check(Role(Local).Definition.Id=="medic","explicit development Medic admitted");Ack("join_smoke");
+            yield return Wait(()=>Read("phase.txt")=="medicine_smoke","medicine fixtures");yield return Wait(()=>Bag(Local).SelectedStack.Item?.Consumable?.Kind==ConsumableKind.Medicine && Local.Health.Current==20,"self fixture replica");
+            var actions=Local.GetComponent<NetworkClassActions>();actions.Request(ClassAction.Medicine,false,Local.Health);yield return Wait(()=>Local.Health.Current==53,"self medicine33 HP");actions.Request(ClassAction.Medicine,false,Local.Health);Ack("medicine_smoke");
+            yield return Wait(()=>Read("phase.txt")=="ally_smoke","ally fixture");yield return new WaitForSecondsRealtime(3.25f);actions.Request(ClassAction.Medicine,false,Other.Health);yield return Wait(()=>Other.Health.Current==53,"ally medicine33 HP at3.2sec");Ack("ally_smoke");
+            yield return Wait(()=>Read("phase.txt")=="reconnect_smoke","reconnect command");yield return Wait(()=>ClassProfiles.Local.Find("medic").XP==1808,"owner class XP persisted on owner only");yield return Leave();SelectRole("engineer");yield return Join();Check(Role(Local).Definition.Id=="medic","reconnect retains admitted Medic despite Engineer claim");Ack("reconnect_smoke");
+            yield return Wait(()=>Read("phase.txt")=="finish_smoke","finish");Ack("finish_smoke");yield return Leave();
+        }
+        private static IEnumerator SmokeAuthority()
+        {
+            Profile(HostId,"warrior","A1");yield return NewHost(false);Command("join_smoke");yield return Acknowledged("join_smoke");yield return Wait(()=>Other!=null,"two actual actors");Freeze();var host=Local;var peer=Other;var origin=NetworkCreatureWorld.Active.World.Map.Spawn;Move(host,origin);Move(peer,origin+Vector2.right*2);Empty(peer);Give(peer,"healing_salve",4);peer.Health.RestoreHealth(20);host.Health.RestoreHealth(20);
+            Check(Role(host).Definition.Id=="warrior" && Role(peer).Definition.Id=="medic","trusted local Host and explicit remote QA classes");
+            Check(!File.Exists(Path.Combine(Dir,"host-store","class-"+ClientId+".json")),"no remote claim durable file on Host");
+            Command("medicine_smoke");yield return Acknowledged("medicine_smoke");yield return new WaitForSecondsRealtime(.12f);Check(peer.Health.Current==53 && Bag(peer).Model.CountItem(peer.Catalog.Item("healing_salve"))==3,"self Medicine A1 and early retry consumes once");var remaining=peer.GetComponent<PlayerSurvival>().UseReadyAt-Time.time;Check(remaining>2.5f && remaining<=3.2f,"Medic A2 actual shared cooldown3.2 remaining="+remaining);
+            Command("ally_smoke");yield return Acknowledged("ally_smoke");Check(host.Health.Current==53 && Bag(peer).Model.CountItem(peer.Catalog.Item("healing_salve"))==2,"ally generic Medicine consumes once after3.2 seconds");
+            Check(Role(peer).GrantXP(8,"smoke-death") && !Role(peer).GrantXP(8,"smoke-death"),"authoritative reward duplicate blocked");Check(Role(peer).ClassXP==1808,"remote session XP updated");
+            Command("reconnect_smoke");yield return Acknowledged("reconnect_smoke");yield return Wait(()=>Other!=null,"reconnected actual actor");Check(Role(Other).Definition.Id=="medic" && Role(Other).ClassXP==1808 && !Role(Other).GrantXP(8,"smoke-death"),"class, XP and bounded receipt window retain reconnect lock");
+            Check(!File.Exists(Path.Combine(Dir,"host-store","class-"+ClientId+".json")),"remote state remains ephemeral after rewards and reconnect");Check(session.TrySaveWorld(),"Save13 world compatible with session-only class admission");yield return Shot("correction-two-process");Command("finish_smoke");yield return Acknowledged("finish_smoke");yield return Wait(()=>Other==null,"remote left");yield return Leave();File.WriteAllText(Path.Combine(Dir,"complete.txt"),"targeted actual two-process LAN smoke complete");
         }
         private static IEnumerator Authority()
         {

@@ -48,12 +48,12 @@ namespace Wildfolk.Editor
             var brand=Image(L.Text("brand.name"),menu,"lowfire_wordmark",new Vector2(.5f,.5f),new Vector2(-405,255),new Vector2(660,174));brand.preserveAspect=true;
             var panel=Image("Field Journal",menu,"lowfire_journal",new Vector2(.77f,.5f),Vector2.zero,new Vector2(610,730),true);
             var heading=Text("Menu Title",panel.transform,"home.camp",new Vector2(26,237),new Vector2(422,40),22,TextAnchor.MiddleLeft);heading.color=Ink;
-            home.ContinueButton=JournalAction(panel.transform,"Continue","home.continue",new Vector2(23,139),new Vector2(434,100),home.TryContinue,true);
-            home.SaveSummary=Text("Saved World",panel.transform,"",new Vector2(26,51),new Vector2(414,66),21,TextAnchor.MiddleLeft);home.SaveSummary.color=Ink;
-            foreach(var y in new[]{-2f,-108f,-213f}){var rule=Image("Page Rule",panel.transform,"white",new Vector2(.5f,.5f),new Vector2(26,y),new Vector2(418,1));rule.color=new Color32(158,147,115,180);}
-            home.SingleButton=JournalAction(panel.transform,"Single Player","home.single",new Vector2(23,-49),new Vector2(434,82),home.SinglePlayer,false);
-            home.MultiplayerButton=JournalAction(panel.transform,"Multiplayer","home.multi",new Vector2(23,-154),new Vector2(434,82),home.OpenMultiplayer,false);
-            home.SettingsButton=JournalAction(panel.transform,"Settings","ui.settings.title",new Vector2(-44,-255),new Vector2(300,66),home.OpenSettings,false);
+            home.ContinueButton=JournalAction(panel.transform,"Continue","home.continue",new Vector2(23,170),new Vector2(434,82),home.TryContinue,true);
+            home.SaveSummary=Text("Saved World",panel.transform,"",new Vector2(26,95),new Vector2(414,42),21,TextAnchor.MiddleLeft);home.SaveSummary.color=Ink;
+            foreach(var y in new[]{55f,-25f,-108f}){var rule=Image("Page Rule",panel.transform,"white",new Vector2(.5f,.5f),new Vector2(26,y),new Vector2(418,1));rule.color=new Color32(158,147,115,180);}
+            home.SingleButton=JournalAction(panel.transform,"Single Player","home.single",new Vector2(23,15),new Vector2(434,72),home.SinglePlayer,false);
+            home.MultiplayerButton=JournalAction(panel.transform,"Multiplayer","home.multi",new Vector2(23,-67),new Vector2(434,72),home.OpenMultiplayer,false);
+            home.SettingsButton=JournalAction(panel.transform,"Settings","ui.settings.title",new Vector2(-44,-235),new Vector2(300,72),home.OpenSettings,false);
             home.Status=Text("Save Status",panel.transform,"",new Vector2(26,-321),new Vector2(422,42),18,TextAnchor.MiddleLeft);home.Status.color=new Color32(106,57,38,255);
             home.Settings=SurvivalUiBuilder.Settings(safe,prefs,home.ShowHome);home.Settings.SetActive(false);
             home.Multiplayer=MultiplayerUiBuilder.Build(safe,home);home.Multiplayer.SetActive(false);

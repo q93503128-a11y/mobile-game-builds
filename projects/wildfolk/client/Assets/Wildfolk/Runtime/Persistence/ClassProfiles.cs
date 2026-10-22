@@ -13,13 +13,14 @@ namespace Wildfolk
     [Serializable] public sealed class AccountProgression
     {
         public int Version=1;public string Selected="survivor";public ClassProgress[] Classes;
-        public string[] Receipts=Array.Empty<string>();public ClassPurchaseIntent Pending;
+        // Profile1 legacy Receipts is ignored by JsonUtility and omitted on the next successful write.
+        public ClassPurchaseIntent Pending;
         public static AccountProgression New()=>new AccountProgression{Classes=ClassCatalog.Current.Classes.Select(c=>new ClassProgress{Id=c.Id,Owned=c.Price==0 && c.Currency=="Gold"}).ToArray()};
         public ClassProgress Find(string id)=>Array.Find(Classes,c=>c.Id==id);
         public void Validate()
         {
             var catalog=ClassCatalog.Current;
-            if(Version!=1 || Classes==null || Classes.Length!=catalog.Classes.Length || Receipts==null || Receipts.Any(string.IsNullOrEmpty) || Receipts.Distinct().Count()!=Receipts.Length)throw new InvalidDataException("Invalid class profile");
+            if(Version!=1 || Classes==null || Classes.Length!=catalog.Classes.Length)throw new InvalidDataException("Invalid class profile");
             var seen=new System.Collections.Generic.HashSet<string>();
             foreach(var p in Classes)
             {

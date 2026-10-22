@@ -56,3 +56,5 @@ SP 사망은 현장 광고(원정당 성공1회)·Premium Gem(횟수 제한 없�
 Item134/Recipe111, generation3 유지. 공용 무제한Level·6Skill, 로컬 Class profile/6Class/54node, Repair/Dismantle/지원 능력. Save13/Profile1/Protocol20. [성장 정본](docs/CHARACTER_PROGRESSION.md), [근거·검수](validation/class-progression/REVIEW.md).
 
 Class Foundation 검수: 관련 EditMode고유53, Class PlayMode고유9(관련실행합집합), 실제2프로세스LAN/4actor simulation/MCP1920×1080검수통과. Android/Relay/실제4인/실제Ads·IAP는미검증이다. [실제결과와한계](validation/class-progression/REVIEW.md).
+
+Class 교정·Camp Journal(2026-10-22): remote admission 기본 Survivor/XP0/노드0, 명시 개발 verifier는 session-only, 처치 receipt 영속 제거·runtime512상한, Medic A2 의약 간격4→3.2초. MainMenu/Class/Character/공용Skill UI는 기존 수첩 계열로 재작성했다. Save13/Profile1/Protocol20 유지. [현재 교정·UI 검수](validation/ui-redesign/REVIEW.md).
