@@ -97,14 +97,14 @@ namespace Wildfolk.Editor
             {
                 var y=275-i*111;var card=Image("Class Entry "+i,panel,"white",Vector2.one*.5f,new Vector2(-615,y),new Vector2(308,104),true);screen.Cards[i]=Button(card);screen.Cards[i].transition=Selectable.Transition.None;
                 UnityEventTools.AddIntPersistentListener(screen.Cards[i].onClick,screen.SelectCard,i);
-                var icon=Image("Class Icon",card.transform,"class_"+ClassCatalog.Current.Classes[i].Id,Vector2.one*.5f,new Vector2(-115,18),new Vector2(58,58));icon.preserveAspect=true;
+                var icon=Image("Class Icon",card.transform,"white",Vector2.one*.5f,new Vector2(-115,18),new Vector2(58,58));icon.sprite=JournalSymbolAssets.Sprite("class_"+ClassCatalog.Current.Classes[i].Id);icon.preserveAspect=true;
                 screen.CardNames[i]=JournalUiBuilder.Label(card.transform,"Name","",new Vector2(27,29),new Vector2(210,50),27);
                 screen.CardRoles[i]=JournalUiBuilder.Label(card.transform,"Role","",new Vector2(24,-10),new Vector2(210,44),22);
-                screen.CardStates[i]=JournalUiBuilder.Label(card.transform,"Ownership","",new Vector2(15,-45),new Vector2(216,34),20);
+                screen.CardStates[i]=JournalUiBuilder.Label(card.transform,"Ownership","",new Vector2(-108,-31),new Vector2(90,38),20,TextAnchor.MiddleCenter);
                 screen.CardMarks[i]=Image("Selected Stamp",card.transform,"journal_seal",Vector2.one*.5f,new Vector2(135,30),new Vector2(30,30));
                 JournalUiBuilder.Rule(card.transform,new Vector2(-145,-52),new Vector2(145,-52));
             }
-            screen.ClassIcon=Image("Selected Class Symbol",panel,"class_survivor",Vector2.one*.5f,new Vector2(-277,261),new Vector2(140,140));
+            screen.ClassIcon=Image("Selected Class Symbol",panel,"white",Vector2.one*.5f,new Vector2(-277,261),new Vector2(140,140));
             screen.Title=JournalUiBuilder.Label(panel,"Class Title","",new Vector2(-272,148),new Vector2(290,76),42,TextAnchor.MiddleCenter);
             screen.Role=JournalUiBuilder.Label(panel,"Class Role","",new Vector2(-272,70),new Vector2(284,80),24,TextAnchor.MiddleCenter);
             screen.Description=JournalUiBuilder.Label(panel,"Identity","",new Vector2(-272,-44),new Vector2(284,140),24,TextAnchor.UpperLeft);
@@ -112,10 +112,11 @@ namespace Wildfolk.Editor
             screen.SelectButton=JournalUiBuilder.Action(panel,"Select","class.select",new Vector2(-272,-289),new Vector2(284,76),screen.SelectClass,out screen.SelectLabel,true);
             screen.PurchaseButton=JournalUiBuilder.Action(panel,"Purchase","",new Vector2(-272,-375),new Vector2(284,76),screen.AskPurchase,out screen.PurchaseLabel,true);
             screen.Nodes=new Button[9];screen.NodeNames=new Text[9];screen.NodeViews=new JournalSkillNode[9];screen.Branches=new Text[3];screen.NodeIcons=new Image[9];
-            screen.ClassIcons=ClassCatalog.Current.Classes.Select(c=>VisualArtImporter.Sprite("class_"+c.Id)).ToArray();
-            var icons=new[]{"skill_vitality","skill_endurance","skill_recovery","skill_endurance","healing_salve","leather_body","cooked_meat","cooking_pot","compass", "class_warrior","skill_stride","iron_body","iron_sword","iron_sword","skill_endurance","skill_stride","skill_recovery","class_warrior", "compass","class_hunter","skill_stride","bow","crossbow","bone_arrow","iron_spear","hunters_spear","bone", "healing_salve","skill_recovery","medicinal_herb","class_medic","skill_vitality","iron_body","skill_endurance","compass","healing_salve", "telescope","compass","signal_beacon","ore_surveyor","ore_surveyor","skill_recovery","signal_whistle","signal_whistle","class_explorer", "workbench","wood_wall","skill_recovery","ballista","steel","repeater","stone_wall","bone_trap","ballista"};screen.SkillIcons=icons.Select(id=>VisualArtImporter.Sprite(id)??throw new InvalidOperationException("Missing journal icon: "+id)).ToArray();
-            var root=new Vector2(422,287);Image("Class Tree Root",panel,"class_survivor",Vector2.one*.5f,root,new Vector2(58,58));
+            screen.ClassIcons=JournalSymbolAssets.Classes();
+            screen.SkillIcons=JournalSymbolAssets.Nodes();
+            var root=new Vector2(422,287);Image("Class Tree Root",panel,"white",Vector2.one*.5f,root,new Vector2(58,58));
             screen.TreeIcon=panel.Find("Class Tree Root").GetComponent<Image>();
+            screen.ClassIcon.sprite=screen.TreeIcon.sprite=screen.ClassIcons[0];
             for(var b=0;b<3;b++)
             {
                 var x=184+b*237;JournalUiBuilder.Rule(panel,root+new Vector2(0,-32),new Vector2(x,224),3);
@@ -124,7 +125,7 @@ namespace Wildfolk.Editor
                 {
                     var i=b*3+r;var p=new Vector2(x+(b-1)*r*9,137-r*145);
                     if(r<2)JournalUiBuilder.Rule(panel,p+new Vector2(0,-78),p+new Vector2((b-1)*9,-99),3);
-                    screen.NodeViews[i]=JournalUiBuilder.Node(panel,"Class Skill "+i,p,VisualArtImporter.Sprite("class_survivor"),screen.SelectNode,i,out screen.Nodes[i]);screen.NodeIcons[i]=screen.NodeViews[i].Icon;
+                    screen.NodeViews[i]=JournalUiBuilder.Node(panel,"Class Skill "+i,p,screen.SkillIcons[i],screen.SelectNode,i,out screen.Nodes[i]);screen.NodeIcons[i]=screen.NodeViews[i].Icon;
                     screen.NodeNames[i]=JournalUiBuilder.Label(panel,"Node Name "+i,"",p+new Vector2(0,-67),new Vector2(216,43),22,TextAnchor.MiddleCenter);
 
                 }

@@ -70,3 +70,7 @@ III 원본 아트: tools/generate_tier_three_art.py(Pillow). 기존 Steel/Lanter
 ## Camp Journal UI · 2026-10-22
 
 기존 자체 제작 lowfire_journal.png/lowfire_wordmark.png, class/skill/item icon과 기존 Noto Sans KR/OFL를 재사용한다. tools/generate_journal_icons.py는 paper node/focus ring/seal/lock/Gold coin/Premium Gem 작은6PNG를 원본 Pillow 도형으로 작성한다. 광물 Crystal을 유료 Gem으로 사용하지 않는다. 새 외부 asset/유료 font/외부 게임 screenshot/code/layout을 게임에 포함하지 않는다. 연구용6게임 화면은 외부 로컬 폴더에서만 비교했고 URL/관찰만 REVIEW에 기록한다. Fanpot/Penpot/ImageGen은 이번 UI authoring에 사용하지 않았다.
+
+## Camp Journal symbols · 2026-10-23
+
+`tools/generate_journal_symbols.py`의 자체 Pillow 도형은 UI 전용 `journal_symbols.png` atlas1개(1408×768 RGBA,128×128 cell66개)를 생성한다. Class6·공용Skill6·54경량node조합이며 마지막54개는 공통 사물 도형+효과 표식이다. 기존 Journal Ink(49,63,48), 동일 선 굵기, 투명 배경, 무광 단색이다. 기존 class/skill 개별PNG는 world feedback·Character Sheet에서 계속 사용한다. `JournalSymbolAssets`가 Multiple/FullRect/Uncompressed/Bilinear/Clamp/mipmap off로 import한다. 외부3게임 화면은 연구용으로만 직접 확인했으며 외부asset을 포함하지 않았다. [현재 비교·원인·검수](../validation/journal-icon-finish/REVIEW.md).

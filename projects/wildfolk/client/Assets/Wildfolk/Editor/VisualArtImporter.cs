@@ -14,6 +14,7 @@ namespace Wildfolk.Editor
             foreach (var file in Directory.GetFiles(ArtPath, "*.png"))
             {
                 var path = file.Replace('\\', '/');
+                if(path==JournalSymbolAssets.Path){JournalSymbolAssets.Import();continue;}
                 var importer = (TextureImporter)AssetImporter.GetAtPath(path);
                 var ppu=Path.GetFileName(path)=="ground.png" ? 2560f/48f : 100f;
                 var border=Path.GetFileName(path)=="panel.png" ? new Vector4(18,18,18,18) : Vector4.zero;

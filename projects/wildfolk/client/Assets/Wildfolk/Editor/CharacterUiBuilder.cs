@@ -70,7 +70,7 @@ namespace Wildfolk.Editor
                 var p=positions[i];tree.NodeViews[i]=JournalUiBuilder.Node(page,"Shared Skill "+i,p,growth.Definition.Skills[i].Icon,tree.Select,i,out tree.Nodes[i]);
                 tree.Ranks[i]=JournalUiBuilder.Label(page,"Rank "+i,"",p+new Vector2(0,-61),new Vector2(i==4?200:210,34),22,TextAnchor.MiddleCenter);
                 tree.Names[i]=JournalUiBuilder.Label(page,"Name "+i,"",p+new Vector2(0,-103),new Vector2(i==4?200:225,42),24,TextAnchor.MiddleCenter);
-                tree.NodeStates[i]=JournalUiBuilder.Label(page,"State "+i,"",p+new Vector2(0,-143),new Vector2(i==4?200:210,32),20,TextAnchor.MiddleCenter);
+                tree.NodeStates[i]=JournalUiBuilder.Label(page,"State "+i,"",p+new Vector2(0,-143),new Vector2(i==4?200:210,40),20,TextAnchor.MiddleCenter);
             }
             JournalUiBuilder.Label(page,"Field Notes","journal.field_notes",new Vector2(418,285),new Vector2(590,48),24);
             tree.SelectedName=JournalUiBuilder.Label(page,"Selected Node","",new Vector2(418,205),new Vector2(590,80),38);

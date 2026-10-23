@@ -113,3 +113,5 @@ ClassProgressSession은 영구 프로필과 세션 전용 진행을 구분한다
 ## Camp Journal UI
 
 MainMenu 책 안 직업 기록, MP 책의 연결된 bookmark, Class 명단/큰 선택 직업/3갈래 아이콘 경로/상세 footer, Character sheet와 공용6Skill diagram이 기존 Lowfire 수첩을 공유한다. 직업/공용 node는 선택 ring·학습 seal·잠금 mark와 상태 문구를 사용한다. 선택/구매/투자/무료 재분배 권위 경계는 기존 Lobby 제한을 따른다. [수정 전 감사·외부6화면·검수](../validation/ui-redesign/REVIEW.md).
+
+2026-10-23 시각 마감: Class 명단 상태 글씨를 카드 내부로 옮기고 공용 상태 label 높이32→40(폰트20 유지), Class6/공용6/node54는 UI 전용 잉크 atlas의 의미별 표식으로 표시한다. 잠금은 기존 mark와72% icon alpha로 구분한다. 책·명단/연결선 geometry·Character Sheet·능력/수치/Save13/Profile1/Protocol20은 유지한다. [실제 화면·관련 검수](../validation/journal-icon-finish/REVIEW.md).

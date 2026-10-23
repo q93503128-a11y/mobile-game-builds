@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="5" result="Passed" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-23 00:38:47Z" end-time="2026-10-23 00:38:48Z" duration="1.0742774">
+  <test-suite type="TestSuite" id="1000" name="Wildfolk" fullname="Wildfolk" runstate="Runnable" testcasecount="231" result="Passed" start-time="2026-10-23 00:38:47Z" end-time="2026-10-23 00:38:48Z" duration="1.074277" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1290" name="Wildfolk.Tests.EditMode.dll" fullname="C:/Users/User/Documents/ChatGPT/문승준 모바일/canonical/projects/wildfolk/tests/artifacts/unity/Library/ScriptAssemblies/Wildfolk.Tests.EditMode.dll" runstate="Runnable" testcasecount="231" result="Passed" start-time="2026-10-23 00:38:47Z" end-time="2026-10-23 00:38:48Z" duration="1.063593" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="22636" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1291" name="Wildfolk" fullname="Wildfolk" runstate="Runnable" testcasecount="231" result="Passed" start-time="2026-10-23 00:38:47Z" end-time="2026-10-23 00:38:48Z" duration="1.061057" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1292" name="Tests" fullname="Wildfolk.Tests" runstate="Runnable" testcasecount="231" result="Passed" start-time="2026-10-23 00:38:47Z" end-time="2026-10-23 00:38:48Z" duration="1.058228" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1148" name="JournalIconFinishTests" fullname="Wildfolk.Tests.JournalIconFinishTests" classname="Wildfolk.Tests.JournalIconFinishTests" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-10-23 00:38:47Z" end-time="2026-10-23 00:38:48Z" duration="1.051140" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="ParameterizedMethod" id="1153" name="CommonTreeHasSixDistinctSymbolsAndPaddedSharedStates" fullname="Wildfolk.Tests.JournalIconFinishTests.CommonTreeHasSixDistinctSymbolsAndPaddedSharedStates" classname="Wildfolk.Tests.JournalIconFinishTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-23 00:38:47Z" end-time="2026-10-23 00:38:48Z" duration="0.927419" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1151" name="CommonTreeHasSixDistinctSymbolsAndPaddedSharedStates(&quot;Wildfolk&quot;)" fullname="Wildfolk.Tests.JournalIconFinishTests.CommonTreeHasSixDistinctSymbolsAndPaddedSharedStates(&quot;Wildfolk&quot;)" methodname="CommonTreeHasSixDistinctSymbolsAndPaddedSharedStates" classname="Wildfolk.Tests.JournalIconFinishTests" runstate="Runnable" seed="1977832790" result="Passed" start-time="2026-10-23 00:38:47Z" end-time="2026-10-23 00:38:48Z" duration="0.538570" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1152" name="CommonTreeHasSixDistinctSymbolsAndPaddedSharedStates(&quot;Multiplayer&quot;)" fullname="Wildfolk.Tests.JournalIconFinishTests.CommonTreeHasSixDistinctSymbolsAndPaddedSharedStates(&quot;Multiplayer&quot;)" methodname="CommonTreeHasSixDistinctSymbolsAndPaddedSharedStates" classname="Wildfolk.Tests.JournalIconFinishTests" runstate="Runnable" seed="1277987575" result="Passed" start-time="2026-10-23 00:38:48Z" end-time="2026-10-23 00:38:48Z" duration="0.379665" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+            <test-case id="1149" name="InkAtlasContainsExplicitClassCommonAndNodeSymbols" fullname="Wildfolk.Tests.JournalIconFinishTests.InkAtlasContainsExplicitClassCommonAndNodeSymbols" methodname="InkAtlasContainsExplicitClassCommonAndNodeSymbols" classname="Wildfolk.Tests.JournalIconFinishTests" runstate="Runnable" seed="497318054" result="Passed" start-time="2026-10-23 00:38:48Z" end-time="2026-10-23 00:38:48Z" duration="0.042787" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1154" name="NodeStatesPreserveInkAndIndependentFocusLockSeal" fullname="Wildfolk.Tests.JournalIconFinishTests.NodeStatesPreserveInkAndIndependentFocusLockSeal" methodname="NodeStatesPreserveInkAndIndependentFocusLockSeal" classname="Wildfolk.Tests.JournalIconFinishTests" runstate="Runnable" seed="431205398" result="Passed" start-time="2026-10-23 00:38:48Z" end-time="2026-10-23 00:38:48Z" duration="0.004615" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1150" name="RosterStatesFitCardWithoutShrinkingFontAndClassNodesAreMapped" fullname="Wildfolk.Tests.JournalIconFinishTests.RosterStatesFitCardWithoutShrinkingFontAndClassNodesAreMapped" methodname="RosterStatesFitCardWithoutShrinkingFontAndClassNodesAreMapped" classname="Wildfolk.Tests.JournalIconFinishTests" runstate="Runnable" seed="1540224819" result="Passed" start-time="2026-10-23 00:38:48Z" end-time="2026-10-23 00:38:48Z" duration="0.063285" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[<b><color=#2EA3FF>MCP-FOR-UNITY</color></b>: [TestRunnerNoThrottle] Restored Interaction Mode after test run.
+Saving results to: C:/Users/User/AppData/LocalLow/DefaultCompany/Wildfolk\TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

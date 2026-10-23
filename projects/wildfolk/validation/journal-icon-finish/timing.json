@@ -1,0 +1,50 @@
+{
+  "startSHA": "198cdc1299fff7d69527d68a11100f21c05c98d0",
+  "observedStartUTC": "2026-10-23T00:16:00Z",
+  "events": [
+    {
+      "stage": "latest main and Unity baseline audit",
+      "UTC": "2026-10-23T00:18:22.015798+00:00"
+    },
+    {
+      "stage": "baseline and visual reference complete; icon authoring",
+      "UTC": "2026-10-23T00:29:02.567164+00:00"
+    },
+    {
+      "stage": "icon authoring complete; focused validation and visual QA",
+      "UTC": "2026-10-23T00:33:10.003802+00:00"
+    },
+    {
+      "stage": "visual QA and final validation complete; documentation and Git",
+      "UTC": "2026-10-23T00:42:57.007265+00:00"
+    }
+  ],
+  "phases": [
+    {
+      "stage": "reference audit and initial symbol authoring",
+      "startUTC": "2026-10-23T00:16:00Z",
+      "endUTC": "2026-10-23T00:29:02.567164+00:00",
+      "elapsedSeconds": 782.567,
+      "perPhaseTokens": null
+    },
+    {
+      "stage": "source integration and focused test setup",
+      "startUTC": "2026-10-23T00:29:02.567164+00:00",
+      "endUTC": "2026-10-23T00:33:10.003802+00:00",
+      "elapsedSeconds": 247.437,
+      "perPhaseTokens": null
+    },
+    {
+      "stage": "visual QA and final focused validation",
+      "startUTC": "2026-10-23T00:33:10.003802+00:00",
+      "endUTC": "2026-10-23T00:42:57.007265+00:00",
+      "elapsedSeconds": 587.003,
+      "perPhaseTokens": null
+    }
+  ],
+  "batchWallSeconds": [
+    73.712,
+    44.319
+  ],
+  "usageNote": "No per-phase token/cost counter is exposed. Background batch wall times overlap phases and are not added."
+}
