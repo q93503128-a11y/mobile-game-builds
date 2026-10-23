@@ -57,7 +57,7 @@ namespace Wildfolk
         }
         public void TryPoiGuard(PoiSite site)
         {
-            if(site.Kind!=WorldAnchorKind.Graveyard || site.State.Legacy || features.ContainsKey(site.GuardId))return;
+            if(site.Kind!=WorldAnchorKind.Graveyard || features.ContainsKey(site.GuardId))return;
             Physics2D.SyncTransforms();for(var i=0;i<16;i++)
             {
                 var a=i*Mathf.PI/8;var p=(Vector2)site.transform.position+new Vector2(Mathf.Cos(a),Mathf.Sin(a))*5;

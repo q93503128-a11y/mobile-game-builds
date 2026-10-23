@@ -16,12 +16,14 @@ namespace Wildfolk
         public CreatureMember Member;
         public CreatureCombatDefinition Combat;
         public CreatureVariant Variant;
+        public Health PreferredTarget;public float MovementMultiplier=1;
+        private Health SelectTarget()=>PreferredTarget!=null && PreferredTarget.IsAlive?PreferredTarget:SimulationAuthority.Target(this,PlayerHealth);
         public bool PersistentGuard {get;set;}
         public Vector2 GuardHome {get;set;}public float GuardLeash {get;set;}=12;
         private bool ReturningGuard=>PersistentGuard && (Vector2.Distance(body.position,GuardHome)>GuardLeash || PlayerHealth!=null && Vector2.Distance(PlayerHealth.transform.position,GuardHome)>GuardLeash+4);
         private bool Sensitive=>Member!=null && Member.Definition.Has(CreatureTrait.LightSensitive);
         private float Reach=>Combat==null ? Settings.EnemyAttackReach : Combat.Reach+(Variant==null ? 0 : Variant.ReachBonus);
-        private float Speed=>Combat==null ? Settings.EnemySpeed : Combat.Speed;
+        private float Speed=>(Combat==null ? Settings.EnemySpeed : Combat.Speed)*MovementMultiplier;
         private float Windup=>Combat==null ? Settings.EnemyWindup : Combat.Windup;
         private float Recovery=>Combat==null ? Settings.EnemyCooldown : Combat.Recovery;
         private int Damage=>Combat==null ? Settings.EnemyDamage : Combat.Damage+(Variant==null ? 0 : Variant.DamageBonus);
@@ -36,13 +38,13 @@ namespace Wildfolk
         private Collider2D strikeCollider;
         private readonly RaycastHit2D[] obstacles=new RaycastHit2D[8];
         private void Awake() {body=GetComponent<Rigidbody2D>();restPosition=AttackPose.localPosition;restScale=AttackPose.localScale;}
-        public void ResetForSpawn(){PersistentGuard=false;State=EnemyState.Idle;stateStarted=Time.time;safeSince=lostSince=-1;strikeTarget=null;strikeCollider=null;AttackPose.localPosition=restPosition;AttackPose.localScale=restScale;}
+        public void ResetForSpawn(){PersistentGuard=false;PreferredTarget=null;MovementMultiplier=1;State=EnemyState.Idle;stateStarted=Time.time;safeSince=lostSince=-1;strikeTarget=null;strikeCollider=null;AttackPose.localPosition=restPosition;AttackPose.localScale=restScale;}
         private bool NightHunt => PersistentGuard || Clock!=null && Clock.Model.Phase==DayPhase.Night;
         private void Update()
         {
             if(!SimulationAuthority.Allows(this))return;
             if(PlayerHealth==null || !PlayerHealth.IsAlive)CancelPursuit();
-            if(State==EnemyState.Idle || State==EnemyState.Chase)PlayerHealth=SimulationAuthority.Target(this,PlayerHealth);
+            if(State==EnemyState.Idle || State==EnemyState.Chase)PlayerHealth=SelectTarget();
             if(!CanAct)return;
             if(ReturningGuard){if(State!=EnemyState.Idle)CancelPursuit();return;}
             if(Sensitive && Member.Definition.Light.SuppressSafeAggro && GameplayLight.IsSafe(PlayerHealth.transform.position))
@@ -104,7 +106,7 @@ namespace Wildfolk
         {
             if(!SimulationAuthority.Allows(this))return;
             if(PlayerHealth==null || !PlayerHealth.IsAlive)CancelPursuit();
-            if(State==EnemyState.Idle || State==EnemyState.Chase)PlayerHealth=SimulationAuthority.Target(this,PlayerHealth);
+            if(State==EnemyState.Idle || State==EnemyState.Chase)PlayerHealth=SelectTarget();
             if(!CanAct)return;
             if(ReturningGuard){var home=GuardHome-body.position;if(home.magnitude>1 && Steering!=null)Steering.Move(home.normalized,Speed);return;}
             var delta=body.position-(Vector2)PlayerHealth.transform.position;

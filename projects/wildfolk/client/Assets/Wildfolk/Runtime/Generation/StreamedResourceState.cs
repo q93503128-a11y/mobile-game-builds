@@ -20,6 +20,7 @@ namespace Wildfolk
         }
         public void Materialize(ResourcePlacement p,Transform parent)
         {
+            if(World.GetComponent<BossWorld>()?.ExcludesResource(p.Rule,p.Position)==true)return;
             if(live.ContainsKey(p.Id))return;
             if(changes.TryGetValue(p.Id,out var state) && state.Destroyed)return;
             var node=World.CreateResource(p.Id,p.Rule,p.Position,p.Scale,parent);if(state!=null)node.Health.RestoreHealth(state.HP);
@@ -28,7 +29,7 @@ namespace Wildfolk
         {
             if(!chunkChanges.TryGetValue(key,out var entries))return;
             streamKeys.Clear();foreach(var s in entries.Values)if(!s.Destroyed && s.Id.StartsWith("p") && !live.ContainsKey(s.Id))streamKeys.Add(s.Id);
-            foreach(var id in streamKeys){var s=changes[id];var recovered=World.CreateResource(s.Id,s.Rule,s.Position,s.Scale,parent);recovered.Health.RestoreHealth(s.HP);}
+            foreach(var id in streamKeys){var s=changes[id];if(World.GetComponent<BossWorld>()?.ExcludesResource(s.Rule,s.Position)==true)continue;var recovered=World.CreateResource(s.Id,s.Rule,s.Position,s.Scale,parent);recovered.Health.RestoreHealth(s.HP);}
         }
         private void RecordStreamed(ResourceIdentity identity,ResourceSnapshot state,bool destroyed)
         {

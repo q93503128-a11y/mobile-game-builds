@@ -8,6 +8,7 @@ namespace Wildfolk
         public string Key;
         private void OnEnable(){L.Changed+=Refresh;Refresh();}
         private void OnDisable()=>L.Changed-=Refresh;
-        public void Refresh(){if(!string.IsNullOrEmpty(Key))GetComponent<Text>().text=L.Text(Key);}
+        private void OnDestroy()=>L.Changed-=Refresh;
+        public void Refresh(){if(this==null){L.Changed-=Refresh;return;}if(!string.IsNullOrEmpty(Key))GetComponent<Text>().text=L.Text(Key);}
     }
 }

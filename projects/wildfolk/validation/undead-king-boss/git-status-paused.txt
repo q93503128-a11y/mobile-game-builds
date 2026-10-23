@@ -1,0 +1,218 @@
+ M projects/wildfolk/README.md
+ M projects/wildfolk/client/Assets/Wildfolk/Data/ContentCatalog.asset
+ M projects/wildfolk/client/Assets/Wildfolk/Editor/GameplayHudBuilder.cs
+ M projects/wildfolk/client/Assets/Wildfolk/Editor/ProjectDataValidator.cs
+ M projects/wildfolk/client/Assets/Wildfolk/Prefabs/NetworkEcology.prefab
+ M projects/wildfolk/client/Assets/Wildfolk/Prefabs/NetworkSession.prefab
+ M projects/wildfolk/client/Assets/Wildfolk/Prefabs/Player.prefab
+ M projects/wildfolk/client/Assets/Wildfolk/Resources/Localization.json
+ M projects/wildfolk/client/Assets/Wildfolk/Resources/SaveGameRules.asset
+ M projects/wildfolk/client/Assets/Wildfolk/Runtime/Combat/Health.cs
+ M projects/wildfolk/client/Assets/Wildfolk/Runtime/Combat/PlayerCombat.cs
+ M projects/wildfolk/client/Assets/Wildfolk/Runtime/Data/ArmorDefinition.cs
+ M projects/wildfolk/client/Assets/Wildfolk/Runtime/Enemies/BossIdentity.cs
+ M projects/wildfolk/client/Assets/Wildfolk/Runtime/Enemies/EnemyController.cs
+ M projects/wildfolk/client/Assets/Wildfolk/Runtime/Enemies/ZombieSpawner.cs
+ M projects/wildfolk/client/Assets/Wildfolk/Runtime/Generation/ResourceRegeneration.cs
+ M projects/wildfolk/client/Assets/Wildfolk/Runtime/Generation/StreamedResourceState.cs
+ M projects/wildfolk/client/Assets/Wildfolk/Runtime/Generation/WorldChunkPoi.cs
+ M projects/wildfolk/client/Assets/Wildfolk/Runtime/Items/ItemDefinition.cs
+ M projects/wildfolk/client/Assets/Wildfolk/Runtime/Networking/NetworkFacilityInteractor.cs
+ M projects/wildfolk/client/Assets/Wildfolk/Runtime/Networking/NetworkInventory.cs
+ M projects/wildfolk/client/Assets/Wildfolk/Runtime/Networking/NetworkPlayer.cs
+ M projects/wildfolk/client/Assets/Wildfolk/Runtime/Networking/NetworkPlayerState.cs
+ M projects/wildfolk/client/Assets/Wildfolk/Runtime/Networking/NetworkPoiSite.cs
+ M projects/wildfolk/client/Assets/Wildfolk/Runtime/Networking/NetworkProtocol.cs
+ M projects/wildfolk/client/Assets/Wildfolk/Runtime/Networking/SimulationAuthority.cs
+ M projects/wildfolk/client/Assets/Wildfolk/Runtime/Persistence/MultiplayerSaveData.cs
+ M projects/wildfolk/client/Assets/Wildfolk/Runtime/Persistence/PlayerSnapshotCodec.cs
+ M projects/wildfolk/client/Assets/Wildfolk/Runtime/Persistence/SaveData.cs
+ M projects/wildfolk/client/Assets/Wildfolk/Runtime/Persistence/SaveGameRules.cs
+ M projects/wildfolk/client/Assets/Wildfolk/Runtime/Persistence/SaveRepository.cs
+ M projects/wildfolk/client/Assets/Wildfolk/Runtime/Persistence/SaveValidation.cs
+ M projects/wildfolk/client/Assets/Wildfolk/Runtime/Persistence/WorldSnapshotCodec.cs
+ M projects/wildfolk/client/Assets/Wildfolk/Runtime/Player/CharacterStats.cs
+ M projects/wildfolk/client/Assets/Wildfolk/Runtime/Player/PlayerEquipment.cs
+ M projects/wildfolk/client/Assets/Wildfolk/Runtime/Player/PlayerMotor.cs
+ M projects/wildfolk/client/Assets/Wildfolk/Runtime/Player/PlayerPrimaryAction.cs
+ M projects/wildfolk/client/Assets/Wildfolk/Runtime/UI/BossHud.cs
+ M projects/wildfolk/client/Assets/Wildfolk/Runtime/UI/InventoryDragController.cs
+ M projects/wildfolk/client/Assets/Wildfolk/Runtime/UI/InventoryEquipment.cs
+ M projects/wildfolk/client/Assets/Wildfolk/Runtime/UI/LocalizedLabel.cs
+ M projects/wildfolk/client/Assets/Wildfolk/Runtime/UI/TimeHud.cs
+ M projects/wildfolk/client/Assets/Wildfolk/Runtime/World/PoiSite.cs
+ M projects/wildfolk/client/Assets/Wildfolk/Scenes/Multiplayer.unity
+ M projects/wildfolk/client/Assets/Wildfolk/Scenes/Wildfolk.unity
+ M projects/wildfolk/client/Assets/Wildfolk/Tests/EditMode/ContentExpansionModelTests.cs
+ M projects/wildfolk/client/Assets/Wildfolk/Tests/EditMode/CreatureSidegradeModelTests.cs
+ M projects/wildfolk/client/Assets/Wildfolk/Tests/EditMode/DeathFoundationModelTests.cs
+ M projects/wildfolk/client/Assets/Wildfolk/Tests/EditMode/ExplorationUtilityModelTests.cs
+ M projects/wildfolk/client/Assets/Wildfolk/Tests/EditMode/FishingModelTests.cs
+ M projects/wildfolk/client/Assets/Wildfolk/Tests/EditMode/FoodModelTests.cs
+ M projects/wildfolk/client/Assets/Wildfolk/Tests/EditMode/MedicineModelTests.cs
+ M projects/wildfolk/client/Assets/Wildfolk/Tests/EditMode/MetalProgressionTests.cs
+ M projects/wildfolk/client/Assets/Wildfolk/Tests/EditMode/NetworkPersistenceModelTests.cs
+ M projects/wildfolk/client/Assets/Wildfolk/Tests/EditMode/PoiContentModelTests.cs
+ M projects/wildfolk/client/Assets/Wildfolk/Tests/EditMode/SceneContractTests.cs
+ M projects/wildfolk/client/Assets/Wildfolk/Tests/EditMode/StabilityModelTests.cs
+ M projects/wildfolk/docs/ARCHITECTURE.md
+ M projects/wildfolk/docs/BALANCE.md
+ M projects/wildfolk/docs/CHARACTER_PROGRESSION.md
+ M projects/wildfolk/docs/CONTENT_EXPANSION.md
+ M projects/wildfolk/docs/CREATURES_AND_LOOT.md
+ M projects/wildfolk/docs/DESIGN_BIBLE.md
+ M projects/wildfolk/docs/INVENTORY.md
+ M projects/wildfolk/docs/SAVE_PERSISTENCE.md
+ M projects/wildfolk/docs/SOURCE_ART.md
+ M projects/wildfolk/docs/WORLD_GENERATION.md
+?? projects/wildfolk/client/Assets/Wildfolk/Art/boss_core_t1.png
+?? projects/wildfolk/client/Assets/Wildfolk/Art/boss_core_t1.png.meta
+?? projects/wildfolk/client/Assets/Wildfolk/Art/grave_crack.png
+?? projects/wildfolk/client/Assets/Wildfolk/Art/grave_crack.png.meta
+?? projects/wildfolk/client/Assets/Wildfolk/Art/king_arm.png
+?? projects/wildfolk/client/Assets/Wildfolk/Art/king_arm.png.meta
+?? projects/wildfolk/client/Assets/Wildfolk/Art/king_ash.png
+?? projects/wildfolk/client/Assets/Wildfolk/Art/king_ash.png.meta
+?? projects/wildfolk/client/Assets/Wildfolk/Art/king_cloak.png
+?? projects/wildfolk/client/Assets/Wildfolk/Art/king_cloak.png.meta
+?? projects/wildfolk/client/Assets/Wildfolk/Art/king_crown.png
+?? projects/wildfolk/client/Assets/Wildfolk/Art/king_crown.png.meta
+?? projects/wildfolk/client/Assets/Wildfolk/Art/king_crown_broken.png
+?? projects/wildfolk/client/Assets/Wildfolk/Art/king_crown_broken.png.meta
+?? projects/wildfolk/client/Assets/Wildfolk/Art/king_head.png
+?? projects/wildfolk/client/Assets/Wildfolk/Art/king_head.png.meta
+?? projects/wildfolk/client/Assets/Wildfolk/Art/king_legs.png
+?? projects/wildfolk/client/Assets/Wildfolk/Art/king_legs.png.meta
+?? projects/wildfolk/client/Assets/Wildfolk/Art/king_sword.png
+?? projects/wildfolk/client/Assets/Wildfolk/Art/king_sword.png.meta
+?? projects/wildfolk/client/Assets/Wildfolk/Art/king_torso.png
+?? projects/wildfolk/client/Assets/Wildfolk/Art/king_torso.png.meta
+?? projects/wildfolk/client/Assets/Wildfolk/Art/royal_tomb.png
+?? projects/wildfolk/client/Assets/Wildfolk/Art/royal_tomb.png.meta
+?? projects/wildfolk/client/Assets/Wildfolk/Art/royal_tomb_lid.png
+?? projects/wildfolk/client/Assets/Wildfolk/Art/royal_tomb_lid.png.meta
+?? projects/wildfolk/client/Assets/Wildfolk/Art/skull_mark.png
+?? projects/wildfolk/client/Assets/Wildfolk/Art/skull_mark.png.meta
+?? projects/wildfolk/client/Assets/Wildfolk/Art/undead_kings_crown.png
+?? projects/wildfolk/client/Assets/Wildfolk/Art/undead_kings_crown.png.meta
+?? projects/wildfolk/client/Assets/Wildfolk/Data/BossCoreT1.asset
+?? projects/wildfolk/client/Assets/Wildfolk/Data/BossCoreT1.asset.meta
+?? projects/wildfolk/client/Assets/Wildfolk/Data/BossSummonLoot.asset
+?? projects/wildfolk/client/Assets/Wildfolk/Data/BossSummonLoot.asset.meta
+?? projects/wildfolk/client/Assets/Wildfolk/Data/LastCrown.asset
+?? projects/wildfolk/client/Assets/Wildfolk/Data/LastCrown.asset.meta
+?? projects/wildfolk/client/Assets/Wildfolk/Data/UndeadKing.asset
+?? projects/wildfolk/client/Assets/Wildfolk/Data/UndeadKing.asset.meta
+?? projects/wildfolk/client/Assets/Wildfolk/Data/UndeadKingLoot.asset
+?? projects/wildfolk/client/Assets/Wildfolk/Data/UndeadKingLoot.asset.meta
+?? projects/wildfolk/client/Assets/Wildfolk/Data/UndeadKingVitality.asset
+?? projects/wildfolk/client/Assets/Wildfolk/Data/UndeadKingVitality.asset.meta
+?? projects/wildfolk/client/Assets/Wildfolk/Data/UndeadKingsCrown.asset
+?? projects/wildfolk/client/Assets/Wildfolk/Data/UndeadKingsCrown.asset.meta
+?? projects/wildfolk/client/Assets/Wildfolk/Editor/BossCombatQa.cs
+?? projects/wildfolk/client/Assets/Wildfolk/Editor/BossCombatQa.cs.meta
+?? projects/wildfolk/client/Assets/Wildfolk/Editor/BossContentAssets.cs
+?? projects/wildfolk/client/Assets/Wildfolk/Editor/BossContentAssets.cs.meta
+?? projects/wildfolk/client/Assets/Wildfolk/Editor/BossDataValidator.cs
+?? projects/wildfolk/client/Assets/Wildfolk/Editor/BossDataValidator.cs.meta
+?? projects/wildfolk/client/Assets/Wildfolk/Editor/BossDefenseQa.cs
+?? projects/wildfolk/client/Assets/Wildfolk/Editor/BossDefenseQa.cs.meta
+?? projects/wildfolk/client/Assets/Wildfolk/Editor/BossLanQa.cs
+?? projects/wildfolk/client/Assets/Wildfolk/Editor/BossLanQa.cs.meta
+?? projects/wildfolk/client/Assets/Wildfolk/Editor/BossProductionQa.cs
+?? projects/wildfolk/client/Assets/Wildfolk/Editor/BossProductionQa.cs.meta
+?? projects/wildfolk/client/Assets/Wildfolk/Editor/BossTransactionQa.cs
+?? projects/wildfolk/client/Assets/Wildfolk/Editor/BossTransactionQa.cs.meta
+?? projects/wildfolk/client/Assets/Wildfolk/Editor/BossUiRegressionQa.cs
+?? projects/wildfolk/client/Assets/Wildfolk/Editor/BossUiRegressionQa.cs.meta
+?? projects/wildfolk/client/Assets/Wildfolk/Editor/BossVisualQa.cs
+?? projects/wildfolk/client/Assets/Wildfolk/Editor/BossVisualQa.cs.meta
+?? projects/wildfolk/client/Assets/Wildfolk/Prefabs/NetworkUndeadKing.prefab
+?? projects/wildfolk/client/Assets/Wildfolk/Prefabs/NetworkUndeadKing.prefab.meta
+?? projects/wildfolk/client/Assets/Wildfolk/Prefabs/RoyalTomb.prefab
+?? projects/wildfolk/client/Assets/Wildfolk/Prefabs/RoyalTomb.prefab.meta
+?? projects/wildfolk/client/Assets/Wildfolk/Prefabs/UndeadKing.prefab
+?? projects/wildfolk/client/Assets/Wildfolk/Prefabs/UndeadKing.prefab.meta
+?? projects/wildfolk/client/Assets/Wildfolk/Runtime/Bosses.meta
+?? projects/wildfolk/client/Assets/Wildfolk/Runtime/Bosses/BossDefinition.cs
+?? projects/wildfolk/client/Assets/Wildfolk/Runtime/Bosses/BossDefinition.cs.meta
+?? projects/wildfolk/client/Assets/Wildfolk/Runtime/Bosses/BossEncounter.cs
+?? projects/wildfolk/client/Assets/Wildfolk/Runtime/Bosses/BossEncounter.cs.meta
+?? projects/wildfolk/client/Assets/Wildfolk/Runtime/Bosses/BossMinion.cs
+?? projects/wildfolk/client/Assets/Wildfolk/Runtime/Bosses/BossMinion.cs.meta
+?? projects/wildfolk/client/Assets/Wildfolk/Runtime/Bosses/BossWorld.cs
+?? projects/wildfolk/client/Assets/Wildfolk/Runtime/Bosses/BossWorld.cs.meta
+?? projects/wildfolk/client/Assets/Wildfolk/Runtime/Bosses/RoyalTomb.cs
+?? projects/wildfolk/client/Assets/Wildfolk/Runtime/Bosses/RoyalTomb.cs.meta
+?? projects/wildfolk/client/Assets/Wildfolk/Runtime/Combat/DamageProtection.cs
+?? projects/wildfolk/client/Assets/Wildfolk/Runtime/Combat/DamageProtection.cs.meta
+?? projects/wildfolk/client/Assets/Wildfolk/Runtime/Items/AccessoryDefinition.cs
+?? projects/wildfolk/client/Assets/Wildfolk/Runtime/Items/AccessoryDefinition.cs.meta
+?? projects/wildfolk/client/Assets/Wildfolk/Runtime/Networking/NetworkBoss.cs
+?? projects/wildfolk/client/Assets/Wildfolk/Runtime/Networking/NetworkBoss.cs.meta
+?? projects/wildfolk/client/Assets/Wildfolk/Runtime/Networking/NetworkBossWorld.cs
+?? projects/wildfolk/client/Assets/Wildfolk/Runtime/Networking/NetworkBossWorld.cs.meta
+?? projects/wildfolk/client/Assets/Wildfolk/Runtime/Persistence/BossSaveValidation.cs
+?? projects/wildfolk/client/Assets/Wildfolk/Runtime/Persistence/BossSaveValidation.cs.meta
+?? projects/wildfolk/client/Assets/Wildfolk/Runtime/Presentation/AccessoryVisual.cs
+?? projects/wildfolk/client/Assets/Wildfolk/Runtime/Presentation/AccessoryVisual.cs.meta
+?? projects/wildfolk/client/Assets/Wildfolk/Runtime/Presentation/BossTelegraph.cs
+?? projects/wildfolk/client/Assets/Wildfolk/Runtime/Presentation/BossTelegraph.cs.meta
+?? projects/wildfolk/client/Assets/Wildfolk/Runtime/Presentation/UndeadKingVisual.cs
+?? projects/wildfolk/client/Assets/Wildfolk/Runtime/Presentation/UndeadKingVisual.cs.meta
+?? projects/wildfolk/client/Assets/Wildfolk/Tests/EditMode/BossFoundationTests.cs
+?? projects/wildfolk/client/Assets/Wildfolk/Tests/EditMode/BossFoundationTests.cs.meta
+?? projects/wildfolk/client/Assets/Wildfolk/Tests/PlayMode/BossProductionPlayTests.cs
+?? projects/wildfolk/client/Assets/Wildfolk/Tests/PlayMode/BossProductionPlayTests.cs.meta
+?? projects/wildfolk/tools/generate_boss_art.py
+?? projects/wildfolk/validation/undead-king-boss/CONTINUE-first-pause.md
+?? projects/wildfolk/validation/undead-king-boss/CONTINUE.md
+?? projects/wildfolk/validation/undead-king-boss/REVIEW.md
+?? projects/wildfolk/validation/undead-king-boss/actual-mcp/equipment-layout/Equipment-complete.txt
+?? projects/wildfolk/validation/undead-king-boss/actual-mcp/equipment-layout/checks.tsv
+?? projects/wildfolk/validation/undead-king-boss/actual-mcp/isolated/Lifecycle-complete.txt
+?? projects/wildfolk/validation/undead-king-boss/actual-mcp/isolated/checks.tsv
+?? projects/wildfolk/validation/undead-king-boss/actual-mcp/visual-isolated-2/Visual-complete.txt
+?? projects/wildfolk/validation/undead-king-boss/actual-mcp/visual-isolated-2/checks.tsv
+?? projects/wildfolk/validation/undead-king-boss/boss-editmode.xml
+?? projects/wildfolk/validation/undead-king-boss/boss-playmode.xml
+?? projects/wildfolk/validation/undead-king-boss/checkpoint-latest.json
+?? projects/wildfolk/validation/undead-king-boss/checkpoint.json
+?? projects/wildfolk/validation/undead-king-boss/git-status-paused.txt
+?? projects/wildfolk/validation/undead-king-boss/resumed-verification/actual-lan/20d880c9f4194ad69c000ed993570076/client.tsv
+?? projects/wildfolk/validation/undead-king-boss/resumed-verification/actual-lan/20d880c9f4194ad69c000ed993570076/host-failed.txt
+?? projects/wildfolk/validation/undead-king-boss/resumed-verification/actual-lan/20d880c9f4194ad69c000ed993570076/host.tsv
+?? projects/wildfolk/validation/undead-king-boss/resumed-verification/actual-lan/6ce6b2ed93cb4380a0a215212a9c6257/client.tsv
+?? projects/wildfolk/validation/undead-king-boss/resumed-verification/actual-lan/6ce6b2ed93cb4380a0a215212a9c6257/complete.txt
+?? projects/wildfolk/validation/undead-king-boss/resumed-verification/actual-lan/6ce6b2ed93cb4380a0a215212a9c6257/host.tsv
+?? projects/wildfolk/validation/undead-king-boss/resumed-verification/actual-lan/d797f1db504c4b678d51f1870219c443/client.tsv
+?? projects/wildfolk/validation/undead-king-boss/resumed-verification/actual-lan/d797f1db504c4b678d51f1870219c443/host-failed.txt
+?? projects/wildfolk/validation/undead-king-boss/resumed-verification/actual-lan/d797f1db504c4b678d51f1870219c443/host.tsv
+?? projects/wildfolk/validation/undead-king-boss/resumed-verification/automated/Equipment/checks.tsv
+?? projects/wildfolk/validation/undead-king-boss/resumed-verification/automated/Lifecycle/checks.tsv
+?? projects/wildfolk/validation/undead-king-boss/resumed-verification/automated/Transactions/checks.tsv
+?? projects/wildfolk/validation/undead-king-boss/resumed-verification/automated/Transactions/transactions.tsv
+?? projects/wildfolk/validation/undead-king-boss/resumed-verification/defenses.tsv
+?? projects/wildfolk/validation/undead-king-boss/resumed-verification/diamond-result.json
+?? projects/wildfolk/validation/undead-king-boss/resumed-verification/diamond-stalled.txt
+?? projects/wildfolk/validation/undead-king-boss/resumed-verification/diamond.tsv
+?? projects/wildfolk/validation/undead-king-boss/resumed-verification/generation-comparison.txt
+?? projects/wildfolk/validation/undead-king-boss/resumed-verification/language.tsv
+?? projects/wildfolk/validation/undead-king-boss/resumed-verification/resource-replication-anomaly.txt
+?? projects/wildfolk/validation/undead-king-boss/resumed-verification/steel-result.json
+?? projects/wildfolk/validation/undead-king-boss/resumed-verification/steel.tsv
+?? projects/wildfolk/validation/undead-king-boss/screens/accessory-1280.png
+?? projects/wildfolk/validation/undead-king-boss/screens/accessory-1920.png
+?? projects/wildfolk/validation/undead-king-boss/screens/class-menu-1920.png
+?? projects/wildfolk/validation/undead-king-boss/screens/cleave-1920.png
+?? projects/wildfolk/validation/undead-king-boss/screens/crownfall-1280.png
+?? projects/wildfolk/validation/undead-king-boss/screens/death-1280.png
+?? projects/wildfolk/validation/undead-king-boss/screens/loot-1280.png
+?? projects/wildfolk/validation/undead-king-boss/screens/phase2-mark-1280.png
+?? projects/wildfolk/validation/undead-king-boss/screens/phase2-mark-1920.png
+?? projects/wildfolk/validation/undead-king-boss/screens/returning-1920.png
+?? projects/wildfolk/validation/undead-king-boss/screens/tomb-and-king-1920.png
+?? projects/wildfolk/validation/undead-king-boss/screenshots.json
+?? projects/wildfolk/validation/undead-king-boss/timing.json
+?? projects/wildfolk/validation/undead-king-boss/user-save-after.json
+?? projects/wildfolk/validation/undead-king-boss/user-save-before.json

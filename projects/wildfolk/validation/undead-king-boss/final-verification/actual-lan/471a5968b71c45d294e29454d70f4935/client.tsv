@@ -1,0 +1,26 @@
+2026-10-23T07:44:09.3055593Z	starting	PASS QA admission profile explorer
+2026-10-23T07:44:09.4320304Z	join_first	PASS actual LAN join
+2026-10-23T07:44:12.5733491Z	join_first	ack join_first
+2026-10-23T07:44:15.4916106Z	rollback	PASS failed offering publishes prior night and inactive mirror
+2026-10-23T07:44:15.4931140Z	rollback	ack rollback
+2026-10-23T07:44:15.5034592Z	summon	PASS owner sends existing facility summon RPC
+2026-10-23T07:44:15.5572956Z	summon	PASS one boss replica no duplicate
+2026-10-23T07:44:15.5578019Z	summon	PASS client damage mutation rejected
+2026-10-23T07:44:15.5588094Z	summon	PASS client cannot force Returning
+2026-10-23T07:44:15.5603163Z	summon	ack summon
+2026-10-23T07:44:19.3232128Z	telegraph	PASS replica telegraph geometry uses same direction and authored attack
+2026-10-23T07:44:19.3257248Z	telegraph	ack telegraph
+2026-10-23T07:44:21.3410618Z	phase_two	PASS 2P no HP or speed scaling
+2026-10-23T07:44:21.3435761Z	phase_two	ack phase_two
+2026-10-23T07:44:21.7558107Z	transfer	ack transfer
+2026-10-23T07:44:29.4688240Z	returning	ack returning
+2026-10-23T07:44:30.2489767Z	accessory	PASS owner accessory RPC queued
+2026-10-23T07:44:30.2866226Z	accessory	ack accessory
+2026-10-23T07:44:33.9994448Z	reward	ack reward
+2026-10-23T07:44:34.4848418Z	leave	ack leave
+2026-10-23T07:44:37.2574835Z	join_resumed	PASS actual LAN join
+2026-10-23T07:44:39.7160388Z	join_resumed	ack join_resumed
+2026-10-23T07:44:40.2280874Z	resume	PASS resolved encounter no respawn
+2026-10-23T07:44:40.2301535Z	resume	ack resume
+2026-10-23T07:44:40.2372061Z	finish	ack finish
+2026-10-23T07:44:40.5249496Z	complete	complete

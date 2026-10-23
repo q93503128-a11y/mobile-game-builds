@@ -1,0 +1,41 @@
+2026-10-23T07:43:47.0215571Z	starting	PASS QA admission profile explorer
+2026-10-23T07:43:47.1184883Z	starting	PASS actual LAN Host
+2026-10-23T07:43:47.1254876Z	starting	PASS Host enters world
+2026-10-23T07:43:49.6105035Z	join_first	command
+2026-10-23T07:44:12.5784061Z	join_first	PASS pre-spawn boss clock uses server epoch
+2026-10-23T07:44:13.2026281Z	join_first	PASS existing guardian seals network tomb
+2026-10-23T07:44:13.7048471Z	join_first	PASS Host guardian unlock persisted flag
+2026-10-23T07:44:15.1351027Z	join_first	PASS failed network offering rolls back actor, Bone and night
+2026-10-23T07:44:15.1361092Z	rollback	command
+2026-10-23T07:44:15.4936184Z	summon	command
+2026-10-23T07:44:15.5603163Z	summon	PASS one authoritative full HP spawn
+2026-10-23T07:44:15.5638818Z	summon	PASS duplicate offering blocked globally
+2026-10-23T07:44:19.2318789Z	telegraph	command
+2026-10-23T07:44:21.3273801Z	telegraph	PASS 2P authored three adds state=Windup hp=6300 living=2
+2026-10-23T07:44:21.3298969Z	phase_two	command
+2026-10-23T07:44:21.7487137Z	phase_two	PASS server transfers mark after Downed
+2026-10-23T07:44:21.7502328Z	transfer	command
+2026-10-23T07:44:26.4595286Z	transfer	PASS full party wipe retires wave then Returning
+2026-10-23T07:44:29.4642342Z	transfer	PASS gradual multiplayer return regen
+2026-10-23T07:44:29.4652418Z	returning	command
+2026-10-23T07:44:29.5346670Z	returning	PASS existing MP Home respawn
+2026-10-23T07:44:29.5536495Z	returning	PASS existing MP Home respawn
+2026-10-23T07:44:30.1794629Z	returning	PASS living re-entry resumes server fight
+2026-10-23T07:44:30.1809870Z	accessory	command
+2026-10-23T07:44:30.2906709Z	accessory	PASS remote accessory state and shared visual anchor
+2026-10-23T07:44:33.9916941Z	accessory	PASS one shared guaranteed core network set
+2026-10-23T07:44:33.9927429Z	accessory	PASS one crown roll shared at most one
+2026-10-23T07:44:33.9938749Z	accessory	PASS living eligible reward exactly once cccccccccccccccccccccccccccccccc
+2026-10-23T07:44:33.9948829Z	accessory	PASS living eligible reward exactly once dddddddddddddddddddddddddddddddd
+2026-10-23T07:44:33.9958850Z	reward	command
+2026-10-23T07:44:34.0300629Z	reward	PASS Host Save14 boss reward/accessory
+2026-10-23T07:44:34.1305147Z	leave	command
+2026-10-23T07:44:34.8764882Z	leave	PASS actual LAN Host
+2026-10-23T07:44:34.8779998Z	leave	PASS Host enters world
+2026-10-23T07:44:37.2483121Z	join_resumed	command
+2026-10-23T07:44:39.7185433Z	join_resumed	PASS reHost retains consumed night and resolved reward
+2026-10-23T07:44:39.7185433Z	join_resumed	PASS reHost no physical loot duplicate
+2026-10-23T07:44:40.2226848Z	join_resumed	PASS resolved reHost same-night offering rejects without consuming Bone
+2026-10-23T07:44:40.2236663Z	resume	command
+2026-10-23T07:44:40.2333157Z	finish	command
+2026-10-23T07:44:40.7043564Z	complete	complete

@@ -113,6 +113,8 @@ GameObject:
   - component: {fileID: 7611654771057414980}
   - component: {fileID: 5090963937599931888}
   - component: {fileID: 244430250233079259}
+  - component: {fileID: 7228577701377224416}
+  - component: {fileID: 4227585675387129210}
   m_Layer: 0
   m_Name: NetworkEcology
   m_TagString: Untagged
@@ -510,6 +512,8 @@ MonoBehaviour:
     NetworkPrefab: {fileID: 3379622091367633623, guid: 372f8fe5d8323b049869481d1fabd8b2, type: 3}
   - Source: {fileID: 7898460173386211623, guid: a9ae75d71a0fb2d4daba373e58e21cac, type: 3}
     NetworkPrefab: {fileID: 7306394435312142419, guid: e7a1a03155bc19740a357882624a1f1b, type: 3}
+  - Source: {fileID: 6190735184541263451, guid: 804a95c6dd949cd4c95b6c94f4df4cd7, type: 3}
+    NetworkPrefab: {fileID: 9126503708822405658, guid: 8f99a68a03c3cd84183b637be1fdc5fe, type: 3}
   Catalog: {fileID: 11400000, guid: edf4df5213dc0bf4e96917b39fb19914, type: 2}
   World: {fileID: 4496810478940515493}
   Clock: {fileID: 2554870917964472763}
@@ -608,3 +612,37 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &7228577701377224416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7031309093746953857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c603af27d2254774a9ffd69610d2e6ed, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.BossWorld
+  Definitions:
+  - {fileID: 11400000, guid: 0880984f1e1a4ce4cadfbd5e1fdaea8e, type: 2}
+  World: {fileID: 4496810478940515493}
+  Clock: {fileID: 2554870917964472763}
+  Navigation: {fileID: 5498284721663869418}
+--- !u!114 &4227585675387129210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7031309093746953857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cde23fc2f56df24aab4fbb6a6351b7a, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.NetworkBossWorld
+  ShowTopMostFoldoutHeaderGroup: 1
+  Offerings:
+    UpdateTraits:
+      MinSecondsBetweenUpdates: 0
+      MaxSecondsBetweenUpdates: 0

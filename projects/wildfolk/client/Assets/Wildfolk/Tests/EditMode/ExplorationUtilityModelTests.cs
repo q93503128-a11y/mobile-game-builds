@@ -13,7 +13,7 @@ namespace Wildfolk.Tests
         private ContentCatalog C=>Resources.Load<SaveGameRules>("SaveGameRules").Catalog;
         [Test]public void TwoDistinctOptionalToolsHaveBoundedBudgetsAndBothLanguages()
         {
-            Assert.That(C.Items.Length,Is.EqualTo(134));Assert.That(C.Recipes.Length,Is.EqualTo(111));Assert.That(C.Items[126].Id,Is.EqualTo("hunters_spear"));Assert.That(C.Items[131].Id,Is.EqualTo("fish_portions"));
+            Assert.That(C.Items.Length,Is.EqualTo(136));Assert.That(C.Recipes.Length,Is.EqualTo(111));Assert.That(C.Items[126].Id,Is.EqualTo("hunters_spear"));Assert.That(C.Items[131].Id,Is.EqualTo("fish_portions"));
             var survey=C.Item("ore_surveyor");var whistle=C.Item("signal_whistle");Assert.That(survey.ExplorationUtility.Kind,Is.EqualTo(ExplorationUtilityKind.Survey));Assert.That(whistle.ExplorationUtility.Kind,Is.EqualTo(ExplorationUtilityKind.Signal));Assert.That(survey.ExplorationUtility.Range,Is.EqualTo(18));Assert.That(whistle.ExplorationUtility.LifetimeSeconds,Is.EqualTo(20));
             Assert.That(C.Recipe("ore_surveyor").RequiredWorkbenchTier,Is.EqualTo(2));Assert.That(C.Recipe("signal_whistle").RequiredWorkbenchTier,Is.EqualTo(1));
             foreach(var item in new[]{survey,whistle}){Assert.That(item.MaxStack,Is.EqualTo(1));Assert.That(item.Tool,Is.Null);Assert.That(item.Icon,Is.Not.Null);Assert.That(item.ExplorationUtility.CooldownSeconds,Is.GreaterThan(item.ExplorationUtility.LifetimeSeconds));foreach(var language in new[]{"en","ko"}){L.SetLanguage(language);Assert.That(L.Text("item."+item.Id+".description"),Is.Not.Empty);Assert.That(item.LocalizedName,Is.Not.Empty);}}
@@ -26,7 +26,7 @@ namespace Wildfolk.Tests
             Assert.That(typeof(SurveyState).GetFields().Any(f=>f.FieldType==typeof(Vector2)),Is.False);
             var a=new SurveyState{Phase=SurveyPhase.Found,Item=23,Bearing=7,Until=42.5,Ready=48.5};using(var w=new FastBufferWriter(128,Allocator.Temp)){w.WriteNetworkSerializable(a);using(var r=new FastBufferReader(w,Allocator.Temp)){r.ReadNetworkSerializable(out SurveyState b);Assert.That(b.Equals(a),Is.True);b.Bearing=0;Assert.That(b.Equals(a),Is.False);}}
             var s=new ExplorationSignal{Point=new Vector2(15,-8),Started=54,Until=74,Range=60};using(var w=new FastBufferWriter(128,Allocator.Temp)){w.WriteNetworkSerializable(s);using(var r=new FastBufferReader(w,Allocator.Temp)){r.ReadNetworkSerializable(out ExplorationSignal b);Assert.That(b.Equals(s),Is.True);}}
-            Assert.That(NetworkProtocol.Current,Is.EqualTo(19));
+            Assert.That(NetworkProtocol.Current,Is.EqualTo(21));
         }
         [Test]public void RegionsDoNotMixUndergroundAndSurfaceOrSeparateCaves()
         {var rules=Resources.Load<SaveGameRules>("SaveGameRules");var map=new WorldMap(rules.World,9472026,3,false);Assert.That(PlayerExplorationUtility.SameRegion(map,Vector2.zero,Vector2.one),Is.True);var a=map.Continental.Caves[0].Origin;Assert.That(PlayerExplorationUtility.SameRegion(map,Vector2.zero,a),Is.False);Assert.That(PlayerExplorationUtility.SameRegion(map,a,a+Vector2.one),Is.True);}

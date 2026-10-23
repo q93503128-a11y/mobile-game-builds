@@ -19,11 +19,11 @@ Developer Test Console은 Editor 전용이다. 현재 Home/협동/III 장비/탐
 현재Info/Skill/Armor시각과Sprint/Dash엄지위치·성장/제작속도는사용자테스트대상이다. 현재외형은자체초기아트시안이며최종상품품질을주장하지않는다.
 
 
-Armor는 동일 PlayerEquipment의 Inventory Drag/빠른 Use/슬롯 교환을 공유한다. 큰 Character/Tree/Inventory는 Safe Area 중심이며 뒤 Gameplay UI 입력을 차단한다. Save13(1~12 이관)에 성장/장비/Skill/Seen/Stamina를 보존한다.
+Armor는 동일 PlayerEquipment의 Inventory Drag/빠른 Use/슬롯 교환을 공유한다. 큰 Character/Tree/Inventory는 Safe Area 중심이며 뒤 Gameplay UI 입력을 차단한다. Save14(1~13 이관)에 성장/장비/Skill/Seen/Stamina를 보존한다.
 
 ## 현재 제작 진행 범위
 
-실제 Workbench I~III, 구조적 상한VI다. Equipment Wood/Stone/Iron/Steel/Diamond, Armor는 Leather/Iron/Steel/Diamond의 Head/Body8개와 Carapace Vest1개다. Copper/Tin/Bronze는 풀 장비 tier가 아니다. Vest는 WB II Chitin4+Leather1+Fiber2, 방어3(철 Body4보다 낮음)과 Stamina 회복속도+15%의 선택 장비다. Skill Recovery와 가산 집계하며 즉시 Stamina를 지급하지 않는다. 현재 Home/Multiplayer·Save13은 README/SAVE_PERSISTENCE를 따른다.
+실제 Workbench I~III, 구조적 상한VI다. Equipment Wood/Stone/Iron/Steel/Diamond, Armor는 Leather/Iron/Steel/Diamond의 Head/Body8개와 Carapace Vest1개다. Copper/Tin/Bronze는 풀 장비 tier가 아니다. Vest는 WB II Chitin4+Leather1+Fiber2, 방어3(철 Body4보다 낮음)과 Stamina 회복속도+15%의 선택 장비다. Skill Recovery와 가산 집계하며 즉시 Stamina를 지급하지 않는다. 현재 Home/Multiplayer·Save14은 README/SAVE_PERSISTENCE를 따른다.
 
 ## Food2-B와 성장 경계
 
@@ -115,3 +115,7 @@ ClassProgressSession은 영구 프로필과 세션 전용 진행을 구분한다
 MainMenu 책 안 직업 기록, MP 책의 연결된 bookmark, Class 명단/큰 선택 직업/3갈래 아이콘 경로/상세 footer, Character sheet와 공용6Skill diagram이 기존 Lowfire 수첩을 공유한다. 직업/공용 node는 선택 ring·학습 seal·잠금 mark와 상태 문구를 사용한다. 선택/구매/투자/무료 재분배 권위 경계는 기존 Lobby 제한을 따른다. [수정 전 감사·외부6화면·검수](../validation/ui-redesign/REVIEW.md).
 
 2026-10-23 시각 마감: Class 명단 상태 글씨를 카드 내부로 옮기고 공용 상태 label 높이32→40(폰트20 유지), Class6/공용6/node54는 UI 전용 잉크 atlas의 의미별 표식으로 표시한다. 잠금은 기존 mark와72% icon alpha로 구분한다. 책·명단/연결선 geometry·Character Sheet·능력/수치/Save13/Profile1/Protocol20은 유지한다. [실제 화면·관련 검수](../validation/journal-icon-finish/REVIEW.md).
+
+## Crown / boss reward
+
+Head/Body/Utility와 별개 Accessory1칸을 공유 PlayerEquipment transaction으로 제공한다. Crown은 생존 시 HP ratio≤0.35에서 이동+8%와 incoming 피해−10%만 주며 HeadArmor/Skill/Meal을 대체하지 않는다. 기존 armor/class 다음 한 번 적용하고 공격력/공격 속도 modifier는 없다. 해제/치유/사망 뒤 지속 효과를 남기지 않는다. Boss 공용XP120/Gold35는 world commit에서1회, ClassXP는 기존 PlayerClass 수신·세션 receipt 경계를 사용해 commit 뒤 전달한다. 공용 Level/Skill/6Class/54node는 재설계하지 않는다.

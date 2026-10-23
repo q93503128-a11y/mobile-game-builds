@@ -8,7 +8,7 @@ namespace Wildfolk
         public string Id;public WorldAnchorKind Kind;public PoiSiteSnapshot State;
         public WorldGenerator World{get;private set;}public ContentCatalog Catalog{get;private set;}
         public SpriteRenderer Visual;public Sprite ClosedSprite,OpenedSprite,WaterIcon;
-        public bool ReplicaSecured;
+        public bool ReplicaSecured,ReplicaTombUnlocked;
         public event Action Changed;
         public bool IsAvailable=>this!=null && State!=null;
         public Transform Location=>Kind==WorldAnchorKind.Well || Visual==null ? transform : Visual.transform;public Sprite Icon=>Kind==WorldAnchorKind.Well ? WaterIcon : ClosedSprite;
@@ -17,9 +17,9 @@ namespace Wildfolk
         public string GuardId=>Id+":guard";
         public bool Secured=>Kind!=WorldAnchorKind.Graveyard || State!=null && State.Legacy || (World!=null ? World.Chunks.FeatureCleared(GuardId) : ReplicaSecured);
         public void Initialize(WorldGenerator world,WorldAnchor anchor,PoiSiteSnapshot state)
-        {World=world;Catalog=world.Definition.ProgressionCatalog;Id=anchor.Id;Kind=anchor.Kind;State=state;Notify();}
+        {World=world;Catalog=world.Definition.ProgressionCatalog;Id=anchor.Id;Kind=anchor.Kind;State=state;world.GetComponent<BossWorld>()?.Materialize(this);Notify();}
         public void ApplyReplica(string id,WorldAnchorKind kind,PoiSiteSnapshot state,bool secured,ContentCatalog catalog)
-        {Id=id;Kind=kind;State=state;Catalog=catalog;ReplicaSecured=secured;Notify();}
+        {Id=id;Kind=kind;State=state;Catalog=catalog;ReplicaSecured=secured;NetworkCreatureWorld.Active.World.GetComponent<BossWorld>()?.Materialize(this);Notify();}
         public bool InRange(PlayerInventory p)=>p!=null && p.GetComponent<Health>().IsAlive && Vector2.Distance(p.transform.position,Location.position)<=p.Settings.StationInteractionRange;
         public bool CanInteract(PlayerInteraction p)=>State!=null && InRange(p.GetComponent<PlayerInventory>());
         public bool Use(PlayerInteraction p)

@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 213579090249d754e9b5bdf72d333110, type: 3}
+  m_Name: UndeadKingLoot
+  m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.LootTable
+  Items:
+  - Item: {fileID: 11400000, guid: c2fe1be2e5243084bb54d0349c7b0224, type: 2}
+    Chance: 1
+    Minimum: 1
+    Maximum: 1
+  - Item: {fileID: 11400000, guid: 90a095062071caa4686b63b68706c06e, type: 2}
+    Chance: 1
+    Minimum: 14
+    Maximum: 20
+  - Item: {fileID: 11400000, guid: c5b679876e2427346848b9e6432a186c, type: 2}
+    Chance: 1
+    Minimum: 2
+    Maximum: 4
+  - Item: {fileID: 11400000, guid: 7829ba341a701304a8ee1b5e2bf83611, type: 2}
+    Chance: 1
+    Minimum: 1
+    Maximum: 2
+  RareItems:
+  - Item: {fileID: 11400000, guid: 5437d25b9e4486a4b8bc99aedd6877ba, type: 2}
+    Chance: 0.2
+    Minimum: 1
+    Maximum: 1
+  Experience: 120
+  Gold: 35

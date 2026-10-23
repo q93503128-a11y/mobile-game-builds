@@ -15,7 +15,7 @@ namespace Wildfolk
         {
             get
             {
-                for(var i=0;i<active.Count;i++) if(active[i]!=null && active[i].Health.IsAlive) return active[i];
+                for(var i=0;i<active.Count;i++) if(active[i]!=null && active[i].Health.IsAlive && (active[i].GetComponent<BossEncounter>()==null || active[i].GetComponent<BossEncounter>().BarVisible)) return active[i];
                 return null;
             }
         }
@@ -23,6 +23,7 @@ namespace Wildfolk
         private void Awake() => Health=GetComponent<Health>();
         private void OnEnable() { active.Add(this); Health.Died+=Notify; ActiveChanged?.Invoke(); }
         private void OnDisable() { active.Remove(this); Health.Died-=Notify; ActiveChanged?.Invoke(); }
+        public void NotifyState()=>ActiveChanged?.Invoke();
         private void Notify() => ActiveChanged?.Invoke();
     }
 }

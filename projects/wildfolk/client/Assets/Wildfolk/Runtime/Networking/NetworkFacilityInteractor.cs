@@ -16,7 +16,23 @@ namespace Wildfolk
         private NetworkFacility waiting,opened;
         private bool acknowledged;private RecipeDefinition pendingRecipe;
         private uint dragBag,dragFacility;
-        private ulong campSequence,lastCampRequest,poiSequence,lastPoiRequest;
+        private ulong campSequence,lastCampRequest,poiSequence,lastPoiRequest,tombSequence,lastTombRequest;
+        public bool SummonBoss(RoyalTomb tomb)
+        {
+            if(!IsSpawned || !IsOwner || tomb==null || Bag.Pending)return false;
+            var site=tomb.Site.GetComponent<NetworkPoiSite>();if(site==null || !site.IsSpawned)return false;
+            var night=tomb.World.Clock.Model.Day;
+            if(IsServer)return ExecuteSummon(site.NetworkObjectId,night,Bag.Revision.Value);
+            SummonRpc(++tombSequence,site.NetworkObjectId,night,Bag.Revision.Value);return true;
+        }
+        [Rpc(SendTo.Server,InvokePermission=RpcInvokePermission.Owner)]
+        private void SummonRpc(ulong request,ulong site,int night,uint revision,RpcParams rpc=default)
+        {if(rpc.Receive.SenderClientId!=OwnerClientId || request<=lastTombRequest)return;lastTombRequest=request;if(!ExecuteSummon(site,night,revision))PoiDeniedRpc();}
+        public bool ExecuteSummon(ulong site,int night,uint revision)
+        {
+            if(!Bag.CanOperate || revision!=Bag.Revision.Value || !NetworkManager.SpawnManager.SpawnedObjects.TryGetValue(site,out var obj))return false;
+            var tomb=obj.GetComponentInChildren<RoyalTomb>();return tomb!=null && tomb.World.Summon(tomb,Bag.Inventory,night);
+        }
         public bool PoiInteract(PoiSite site,int slot,uint revision)
         {if(!IsSpawned || !IsOwner || site==null || !Bag.Player.Health.IsAlive || Bag.Pending)return false;var target=site.GetComponent<NetworkPoiSite>();if(target==null || !target.IsSpawned)return false;if(IsServer)return ExecutePoi(target.NetworkObjectId,slot,revision,Bag.Revision.Value);PoiRpc(++poiSequence,target.NetworkObjectId,slot,revision,Bag.Revision.Value);return true;}
         [Rpc(SendTo.Server,InvokePermission=RpcInvokePermission.Owner)]

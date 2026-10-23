@@ -13,7 +13,7 @@ namespace Wildfolk.Tests
         {
             var a=new PlayerStatusState{HP=0,MaximumHP=100,Life=(byte)PlayerLife.Reviving,LifeRevision=51,DownUntil=120,HoldStarted=93,HoldUntil=97,ProtectedUntil=0,Helping=false};
             using(var writer=new FastBufferWriter(256,Allocator.Temp)){writer.WriteNetworkSerializable(a);using(var reader=new FastBufferReader(writer,Allocator.Temp)){reader.ReadNetworkSerializable(out PlayerStatusState b);Assert.That(b.Equals(a),Is.True);b.LifeRevision++;Assert.That(b.Equals(a),Is.False);}}
-            Assert.That(NetworkProtocol.Current,Is.EqualTo(20));
+            Assert.That(NetworkProtocol.Current,Is.EqualTo(21));
         }
         [Test]public void Save11MigrationPreservesHpAndInitialSeedHomeForAllParticipants()
         {

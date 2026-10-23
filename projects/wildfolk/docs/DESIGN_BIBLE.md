@@ -10,7 +10,7 @@
 
 큰 유한 대륙과4개 Surface Biome, 별도 Caverns/Deep Caverns, Seed·지형/수계/자원/POI 독립 stream, 가까운64unit 청크 simulation을 제공한다. 기존 generation1/2를 보존하고 신규 generation3에서 III 자원을 공급한다. 자원·생물은 지역 부족량을 안전한 새 위치·ID로 보충한다. 오프라인 시간을 재생에 더하지 않는다.
 
-Workbench I→II→III가 progression spine이다. Wood/Stone/Iron/Steel/Diamond, Copper/Tin/Bronze 부품, Furnace/Blast Furnace, Campfire/Cooking Pot, 실제 수요8개를 가진 Turret Workbench를 제공한다. IV~VI는 구조적 상한이며 빈 tier 진입을 만들지 않는다. 전체134 Item/111 Recipe는 CONTENT_EXPANSION을 따른다.
+Workbench I→II→III가 progression spine이다. Wood/Stone/Iron/Steel/Diamond, Copper/Tin/Bronze 부품, Furnace/Blast Furnace, Campfire/Cooking Pot, 실제 수요8개를 가진 Turret Workbench를 제공한다. IV~VI는 구조적 상한이며 빈 tier 진입을 만들지 않는다. 전체136 Item/111 Recipe는 CONTENT_EXPANSION을 따른다.
 
 13종 야생 생물과 Zombie/Skeleton/검 Variant·Goblin/새총 Goblin을 제공한다. Family/Faction/Trait/Habitat와 행동 데이터를 조합한다. 신규8종은 비행·위장 해제·물가 매복·무리 합류·hop/도주·돌진·결정 pulse를 구분한다. Bone/Chitin/Medicinal Gland는 실제 서로 다른 sink에 연결하고 종별 Trophy/중복 Fur/Hide를 만들지 않는다. Camp 전투→확보→일회 보급품 획득을 제공하며 진행 핵심을 RNG 상자에 의존시키지 않는다.
 
@@ -24,8 +24,12 @@ Primary는 맨손/장비 공격·채집·설치·선택 소비품·Armor, Intera
 
 ## 저장·협동
 
-Save13(1~12 이관)/Protocol20. Host만 spawn/AI/목표/피해/사망/loot roll/보급 claim/보충/저장을 결정한다. Client는 입력 요청과 replica 표시를 한다. Relay/명시적 Local Network Host/Join, 최대4인 구조, 로컬 식별자별 가방·성장·장비와 공유 월드를 저장한다. Host migration·dedicated server·인증 계정·Cloud는 없다. 실제 원격4인/단말 성능·장기 생존·재미는 별도 검수다.
+Save14(1~13 이관)/Protocol21. Host만 spawn/AI/목표/피해/사망/loot roll/보급 claim/보충/저장을 결정한다. Client는 입력 요청과 replica 표시를 한다. Relay/명시적 Local Network Host/Join, 최대4인 구조, 로컬 식별자별 가방·성장·장비와 공유 월드를 저장한다. Host migration·dedicated server·인증 계정·Cloud는 없다. 실제 원격4인/단말 성능·장기 생존·재미는 별도 검수다.
 
 ## 후속
 
-이번 Creature/Loot/Material/Recipe 패스가 완료·검수된 다음 Undead King/Boss Foundation을 별도 착수한다. Boss framework/Day10 event/HP HUD/IV~VI/대형 새 Biome/Defense Objective/전기/총기/Class/Pet/Skin/Merchant/Farming/Story는 이번 범위가 아니다. 재미·손맛·진행 만족도를 사용자를 대신해 합격 처리하지 않는다. [이번 결정·제한](../validation/creature-loot-expansion/REVIEW.md).
+첫 Undead King은 별도 Boss Foundation/왕묘/phase/Accessory/공유 loot 경계를 사용한다. Class Foundation도 제공한다. Day10 event/IV~VI/대형 새 Biome/Defense Objective/전기/총기/Pet/Skin/Merchant/Farming/Story는 현재 범위가 아니다. 재미·손맛·진행 만족도를 사용자를 대신해 합격 처리하지 않는다. [이번 결정·제한](../validation/creature-loot-expansion/REVIEW.md).
+
+## 첫 production boss의 규칙
+
+Undead King은 거대 일반 Skeleton이 아닌 분절형 전사왕이다. 공격은 검/몸 준비와 제한된 지면 윤곽으로 읽는다. HP70/35% 경계, 무한 추적 없는 진군3타, Phase2 의식과 제한 wave/해당 wave 생존 동안 Skull Mark, Phase3 잔여 wave 유지·새 wave 금지다. 여러 사람이 모이면 쉬워지며 보스 본체 인원별 stat scaling은 없다. 수치 정본은 BALANCE, 저장 경계는 SAVE_PERSISTENCE다. 새 보스는 data/config와 별도 표현을 추가하고 공용 EnemyController에 종 이름 분기를 넣지 않는다.

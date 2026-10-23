@@ -8,7 +8,7 @@ namespace Wildfolk
             =>Capture(World,Clock,PlayerSnapshotCodec.Capture(Player));
         public static SavedGame Capture(WorldGenerator World,WorldClock Clock,PlayerSnapshot player)
         {
-            var game=new SavedGame{Seed=World.Seed,BaseGenerationVersion=World.Map.GenerationVersion,Features=World.Chunks!=null && World.Map.Streamed ? World.Chunks.CaptureFeatures() : System.Array.Empty<WorldFeatureSnapshot>(),Elapsed=Clock.Model.Elapsed,Player=player,Resources=World.Renewal.Capture(),Recovery=World.Renewal.CaptureRecovery(),Animals=World.Animals.Capture()};
+            var game=new SavedGame{Bosses=World.GetComponent<BossWorld>()?.Capture()??System.Array.Empty<BossSnapshot>(),Seed=World.Seed,BaseGenerationVersion=World.Map.GenerationVersion,Features=World.Chunks!=null && World.Map.Streamed ? World.Chunks.CaptureFeatures() : System.Array.Empty<WorldFeatureSnapshot>(),Elapsed=Clock.Model.Elapsed,Player=player,Resources=World.Renewal.Capture(),Recovery=World.Renewal.CaptureRecovery(),Animals=World.Animals.Capture()};
             game.AnimalEcology=World.Animals.CaptureEcology();game.GoblinEcology=World.GetComponent<GoblinSpawner>().Capture();
             game.NightCreatures=World.GetComponent<ZombieSpawner>().CaptureWorld();
             var placed=new List<PlaceableSnapshot>();
@@ -25,13 +25,13 @@ namespace Wildfolk
         public static void Apply(WorldGenerator World,WorldClock Clock,ContentCatalog Catalog,SavedGame game,PlayerInventory Player)
         {
             if(!SimulationAuthority.Allows(World))throw new System.InvalidOperationException("Only the world authority can restore snapshots.");
-            StructureMaintenance.NewWorld();
+            World.GetComponent<BossWorld>()?.ResetWorld();StructureMaintenance.NewWorld();
             // Remove previous network actors through their real lifecycle, including pending spawns.
             World.Renewal.ReleaseWorld();
             World.GetComponent<ZombieSpawner>().ReleaseWorld();
             for(var i=WorldPickup.Active.Count-1;i>=0;i--)PrefabPool.Release(WorldPickup.Active[i].gameObject);
             for(var i=WorldPlaceable.Active.Count-1;i>=0;i--)PrefabPool.Release(WorldPlaceable.Active[i].gameObject);
-            World.Generate(game.Seed,false,game.BaseGenerationVersion);Clock.Model.SetElapsed(game.Elapsed);
+            World.Generate(game.Seed,false,game.BaseGenerationVersion);Clock.Model.SetElapsed(game.Elapsed);World.GetComponent<BossWorld>()?.Restore(game.Bosses);
             if(World.Map.Streamed){World.Renewal.Restore(game.Resources,game.Recovery);World.Chunks.RestoreDormant(game);World.Animals.Restore(game.Animals,game.AnimalEcology);World.GetComponent<GoblinSpawner>().Restore(game.GoblinEcology);World.GetComponent<ZombieSpawner>().Restore(game.NightCreatures);World.Chunks.Reconcile();return;}
             for(var i=0;i<World.Map.Resources.Count;i++){var p=World.Map.Resources[i];World.CreateResource("r"+i,p.Rule,p.Position,p.Scale);}
             World.Renewal.Restore(game.Resources,game.Recovery);

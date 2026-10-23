@@ -74,3 +74,7 @@ III 원본 아트: tools/generate_tier_three_art.py(Pillow). 기존 Steel/Lanter
 ## Camp Journal symbols · 2026-10-23
 
 `tools/generate_journal_symbols.py`의 자체 Pillow 도형은 UI 전용 `journal_symbols.png` atlas1개(1408×768 RGBA,128×128 cell66개)를 생성한다. Class6·공용Skill6·54경량node조합이며 마지막54개는 공통 사물 도형+효과 표식이다. 기존 Journal Ink(49,63,48), 동일 선 굵기, 투명 배경, 무광 단색이다. 기존 class/skill 개별PNG는 world feedback·Character Sheet에서 계속 사용한다. `JournalSymbolAssets`가 Multiple/FullRect/Uncompressed/Bilinear/Clamp/mipmap off로 import한다. 외부3게임 화면은 연구용으로만 직접 확인했으며 외부asset을 포함하지 않았다. [현재 비교·원인·검수](../validation/journal-icon-finish/REVIEW.md).
+
+## Undead King / Royal Tomb (2026-10-23)
+
+`tools/generate_boss_art.py`의 Pillow 원본15PNG: king_head/crown/crown_broken/torso/cloak/arm/legs/sword/ash, royal_tomb/lid, skull_mark/grave_crack, boss_core_t1/undead_kings_crown. 머리/왕관/갑주/양팔/하체/검/비대칭 망토는 별도 sprite/transform 포즈다. 플레이어 Crown은 온전한 작은 왕관, 보스 Phase3은 기울어진 파손 왕관이다. Terraria/Valheim/Core Keeper의 원칙만 조사했으며 그 게임의 이미지/코드/음원을 사용하지 않았다. 신규 외부 BGM/SFX는 없다.

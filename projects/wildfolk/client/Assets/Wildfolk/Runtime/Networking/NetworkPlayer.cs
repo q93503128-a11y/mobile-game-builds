@@ -144,7 +144,7 @@ namespace Wildfolk
         private void PublishStatus()
         {
             if(!IsSpawned || !IsServer)return;
-            var next=new PlayerStatusState{Life=(byte)death.State,LifeRevision=death.Revision,Helping=death.RescueTarget!=null,DownUntil=death.DownUntil,HoldStarted=death.HoldStarted,HoldUntil=death.HoldUntil,ProtectedUntil=death.ProtectedUntil,HP=Health.Current,MaximumHP=Health.Maximum,Head=ItemIndex(Equipment.HeadArmor),Body=ItemIndex(Equipment.BodyArmor),Held=ItemIndex(Equipment.SelectedItem),Utility=ItemIndex(Equipment.Utility),MealItem=ItemIndex(survival.Meal.Item),MealUntil=survival.Meal.Active ? NetworkManager.ServerTime.Time+survival.Meal.Remaining : 0,TreatmentUntil=survival.Treatment.Active ? NetworkManager.ServerTime.Time+survival.Treatment.Remaining : 0};
+            var next=new PlayerStatusState{Life=(byte)death.State,LifeRevision=death.Revision,Helping=death.RescueTarget!=null,DownUntil=death.DownUntil,HoldStarted=death.HoldStarted,HoldUntil=death.HoldUntil,ProtectedUntil=death.ProtectedUntil,HP=Health.Current,MaximumHP=Health.Maximum,Head=ItemIndex(Equipment.HeadArmor),Body=ItemIndex(Equipment.BodyArmor),Held=ItemIndex(Equipment.SelectedItem),Utility=ItemIndex(Equipment.Utility),Accessory=ItemIndex(Equipment.Accessory),MealItem=ItemIndex(survival.Meal.Item),MealUntil=survival.Meal.Active ? NetworkManager.ServerTime.Time+survival.Meal.Remaining : 0,TreatmentUntil=survival.Treatment.Active ? NetworkManager.ServerTime.Time+survival.Treatment.Remaining : 0};
             if(!Status.Value.Equals(next))Status.Value=next;
         }
         private void OnMotion(PlayerMotionState previous,PlayerMotionState next)=>ApplyMotion(next);
@@ -158,7 +158,7 @@ namespace Wildfolk
         {
             if(state.MaximumHP<=0)return;
             Health.SetMaximumBonus(Mathf.Max(0,state.MaximumHP-Health.Definition.MaximumHealth));Health.ApplyReplica(state.HP);death.ApplyReplica(state);
-            Equipment.ApplyReplicatedAppearance(Item(state.Head),Item(state.Body),Item(state.Held));Equipment.RestoreUtility(Item(state.Utility));
+            Equipment.ApplyReplicatedAppearance(Item(state.Head),Item(state.Body),Item(state.Held));Equipment.RestoreUtility(Item(state.Utility));Equipment.RestoreAccessory(Item(state.Accessory));
         }
     }
 }

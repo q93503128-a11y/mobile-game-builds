@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: SaveGameRules
   m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.SaveGameRules
   Catalog: {fileID: 11400000, guid: edf4df5213dc0bf4e96917b39fb19914, type: 2}
+  Bosses:
+  - {fileID: 11400000, guid: 0880984f1e1a4ce4cadfbd5e1fdaea8e, type: 2}
   World: {fileID: 11400000, guid: 474a373c8520e98439d770ebdf62dec3, type: 2}
   Animals: {fileID: 11400000, guid: ed2e1972adc9b7e4e99863d9b28e09f9, type: 2}
   Player: {fileID: 7080438054753028775, guid: 2e39c5feaa7d80b438125df9889b639e, type: 3}

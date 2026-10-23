@@ -29,7 +29,7 @@ namespace Wildfolk
         private void FixedUpdate()
         {
             if(Locomotion.MoveDash(Time.fixedDeltaTime))return;
-            var velocity=Session.IsRunning ? input*Settings.MoveSpeed*Locomotion.SpeedMultiplier*Survival.MovementCondition*(GetComponent<PlayerClass>()?.GuardMove(input)??1)*(Terrain==null ? 1 : Terrain.MovementMultiplier(body.position)) : Vector2.zero;
+            var velocity=Session.IsRunning ? input*Settings.MoveSpeed*Locomotion.SpeedMultiplier*(GetComponent<CharacterStats>()?.MovementMultiplier??1)*Survival.MovementCondition*(GetComponent<PlayerClass>()?.GuardMove(input)??1)*(Terrain==null ? 1 : Terrain.MovementMultiplier(body.position)) : Vector2.zero;
             if(Terrain!=null && !Terrain.Traversable(body.position+velocity*Time.fixedDeltaTime,.3f))velocity=Vector2.zero;body.linearVelocity=velocity;
         }
 

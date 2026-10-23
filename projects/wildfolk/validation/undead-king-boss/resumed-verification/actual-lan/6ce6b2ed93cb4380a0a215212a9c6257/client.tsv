@@ -1,0 +1,22 @@
+2026-10-23T04:53:58.8308156Z	starting	PASS QA admission profile explorer
+2026-10-23T04:53:59.2446275Z	join_first	PASS actual LAN join
+2026-10-23T04:54:06.7057076Z	join_first	ack join_first
+2026-10-23T04:54:08.9129277Z	summon	PASS owner sends existing facility summon RPC
+2026-10-23T04:54:11.6026785Z	summon	PASS one boss replica no duplicate
+2026-10-23T04:54:11.6047896Z	summon	PASS client damage mutation rejected
+2026-10-23T04:54:11.6059157Z	summon	PASS client cannot force Returning
+2026-10-23T04:54:11.6083534Z	summon	ack summon
+2026-10-23T04:54:14.5851756Z	phase_two	PASS 2P no HP or speed scaling
+2026-10-23T04:54:14.5913209Z	phase_two	ack phase_two
+2026-10-23T04:54:15.0277452Z	transfer	ack transfer
+2026-10-23T04:54:22.7550563Z	returning	ack returning
+2026-10-23T04:54:23.5739191Z	accessory	PASS owner accessory RPC queued
+2026-10-23T04:54:23.6302512Z	accessory	ack accessory
+2026-10-23T04:54:27.4038939Z	reward	ack reward
+2026-10-23T04:54:28.4552559Z	leave	ack leave
+2026-10-23T04:54:33.1957542Z	join_resumed	PASS actual LAN join
+2026-10-23T04:54:38.9200138Z	join_resumed	ack join_resumed
+2026-10-23T04:54:38.9537863Z	resume	PASS resolved encounter no respawn
+2026-10-23T04:54:38.9572066Z	resume	ack resume
+2026-10-23T04:54:38.9756061Z	finish	ack finish
+2026-10-23T04:54:39.5487376Z	complete	complete

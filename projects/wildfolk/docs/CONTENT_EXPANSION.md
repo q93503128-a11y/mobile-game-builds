@@ -1,6 +1,6 @@
 # 현재 제작 콘텐츠 · Fishing / Aquatic 2-D
 
-2026-10-21 Exploration2-E 반영. **Item134 / Recipe111 / Save11 / Protocol17**, 신규 월드 generation3. Workbench I→II→III와 Wood/Stone/Iron/Steel/Diamond를 제공한다. 실제 정본은 ContentCatalog/RecipeDefinition/각 행동·Loot 에셋이다. 아래 기존104개 표와2-D 신규5개,2-E 신규2개가 전체111개다. 이전 I–II/III 패스의 경위는 validation/tier-three와 기존 review 기록을 따른다.
+2026-10-23 Boss Foundation 반영. **Item136 / Recipe111 / Save14 / Protocol21**, 신규 월드 generation3. Workbench I→II→III와 Wood/Stone/Iron/Steel/Diamond를 제공한다. 실제 정본은 ContentCatalog/RecipeDefinition/각 행동·Loot 에셋이다. 아래 기존104개 표와2-D 신규5개,2-E 신규2개가 전체111개다. 이전 I–II/III 패스의 경위는 validation/tier-three와 기존 review 기록을 따른다.
 
 ## 이번 연결
 
@@ -191,3 +191,7 @@ Item134/Recipe111과 기존 콘텐츠는 유지한다. 신규 장비/재료/Stat
 ## Character / Class Foundation (2026-10-22)
 
 Item134/Recipe111, generation3 유지. 공용 무제한Level·6Skill, 로컬 Class profile/6Class/54node, Repair/Dismantle/지원 능력. Save13/Profile1/Protocol20. [성장 정본](CHARACTER_PROGRESSION.md), [근거·검수](../validation/class-progression/REVIEW.md).
+
+## Undead King 보상 (2026-10-23)
+
+신규 Item2(`boss_core_t1`, `undead_kings_crown`), Recipe0/Station0/종 확장0. Core는20stack material·보스당1개 확정이며 현재 제작 sink가 없다. Crown은1stack Accessory·20%·1개. 기존 Bone14~20, Iron Ingot2~4, Steel1~2와 공용 XP120/Gold35를 준다. 한 세계 밤마다 boss별 소환1회, Bone10을 소비한다. Recipe111/Workbench I~III/Furnace/Blast Furnace/Cooking/기존 creature loot는 유지한다. Boss-summoned Skeleton은 XP/Gold/Item0. [전체 결정·경제·검수](../validation/undead-king-boss/REVIEW.md).

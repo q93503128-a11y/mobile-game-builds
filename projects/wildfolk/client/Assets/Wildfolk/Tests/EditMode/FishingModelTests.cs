@@ -30,7 +30,7 @@ namespace Wildfolk.Tests
         }
         [Test]public void ProcessingPreservesExistingFoodAndInventoryCodecs()
         {
-            Assert.That(C.Items.Length,Is.EqualTo(134));Assert.That(C.Recipes.Length,Is.EqualTo(111));Assert.That(C.Items[126].Id,Is.EqualTo("hunters_spear"));var bag=new InventoryModel(36);bag.Add(C.Item("raw_fish"),7);
+            Assert.That(C.Items.Length,Is.EqualTo(136));Assert.That(C.Recipes.Length,Is.EqualTo(111));Assert.That(C.Items[126].Id,Is.EqualTo("hunters_spear"));var bag=new InventoryModel(36);bag.Add(C.Item("raw_fish"),7);
             foreach(var id in new[]{"crucian_carp","perch","mackerel","eel"}){bag.Add(C.Item(id),1);var r=C.Recipe("fillet_"+id);Assert.That(r.RequiredStation,Is.EqualTo(StationKind.None));Assert.That(bag.TryExchange(r.Ingredients,r.Result,r.ResultCount),Is.EqualTo(ExchangeResult.Success));Assert.That(C.Item(id).Consumable.Meal,Is.Null);}
             Assert.That(bag.CountItem(C.Item("raw_fish")),Is.EqualTo(13));var restored=new InventoryModel(36);restored.Restore(bag.Capture(),C);Assert.That(restored.CountItem(C.Item("raw_fish")),Is.EqualTo(13));foreach(var id in new[]{"cooked_fish","fish_stew","mixed_stew","trail_broth"})Assert.That(C.Recipe(id).Ingredients.Any(i=>i.Item.Id=="raw_fish"),Is.True);
             Assert.That(C.Recipes.Count(r=>r.RequiredStation==StationKind.None),Is.EqualTo(10));Assert.That(C.Recipes.Count(r=>r.RequiredStation==StationKind.Campfire),Is.EqualTo(7));Assert.That(C.Recipes.Count(r=>r.RequiredStation==StationKind.CookingPot),Is.EqualTo(9));Assert.That(C.Recipe("fish_portions").ResultCount,Is.EqualTo(2));Assert.That(C.Item("fish_portions").Consumable.Meal,Is.Null);
@@ -43,7 +43,7 @@ namespace Wildfolk.Tests
         [Test]public void CatchStateRoundTripsWithCurrentProtocolAndBothLanguages()
         {
             var a=new ActivityState{Sequence=51,Kind=ActivityKind.FishingCaught,Started=442.5,Duration=.6f,Point=new Vector2(18,-3),CatchIndex=6,CatchCount=1};using(var writer=new FastBufferWriter(128,Allocator.Temp)){writer.WriteNetworkSerializable(a);using(var reader=new FastBufferReader(writer,Allocator.Temp)){reader.ReadNetworkSerializable(out ActivityState b);Assert.That(b.Equals(a),Is.True);b.CatchIndex--;Assert.That(b.Equals(a),Is.False);b=a;b.CatchCount++;Assert.That(b.Equals(a),Is.False);}}
-            Assert.That(NetworkProtocol.Current,Is.EqualTo(19));var language=L.Language;try{foreach(var lang in new[]{"en","ko"}){L.SetLanguage(lang);foreach(var e in Table.Entries){Assert.That(L.Text(e.NameKey),Is.Not.Empty);Assert.That(e.Output.Icon,Is.Not.Null);}foreach(var r in C.Recipes.Where(r=>r.Id.StartsWith("fillet_")))Assert.That(L.Text(r.DisplayKey),Is.Not.Empty);}}finally{L.SetLanguage(language);}
+            Assert.That(NetworkProtocol.Current,Is.EqualTo(21));var language=L.Language;try{foreach(var lang in new[]{"en","ko"}){L.SetLanguage(lang);foreach(var e in Table.Entries){Assert.That(L.Text(e.NameKey),Is.Not.Empty);Assert.That(e.Output.Icon,Is.Not.Null);}foreach(var r in C.Recipes.Where(r=>r.Id.StartsWith("fillet_")))Assert.That(L.Text(r.DisplayKey),Is.Not.Empty);}}finally{L.SetLanguage(language);}
         }
     }
 }

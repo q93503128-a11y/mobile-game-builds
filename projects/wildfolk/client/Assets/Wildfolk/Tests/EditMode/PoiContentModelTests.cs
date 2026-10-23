@@ -15,7 +15,7 @@ namespace Wildfolk.Tests
         private static PoiContentDefinition Content=>World.PoiContent;
         [Test]public void FourSitesUseExistingBoundedRewardsAndNoNewItemsRecipesOrGeneration()
         {
-            Assert.That(Rules.Catalog.Items.Length,Is.EqualTo(134));Assert.That(Rules.Catalog.Recipes.Length,Is.EqualTo(111));Assert.That(WorldGenerationVersion.Current,Is.EqualTo(3));Assert.That(Content.Campsite.Length,Is.EqualTo(3));
+            Assert.That(Rules.Catalog.Items.Length,Is.EqualTo(136));Assert.That(Rules.Catalog.Recipes.Length,Is.EqualTo(111));Assert.That(WorldGenerationVersion.Current,Is.EqualTo(3));Assert.That(Content.Campsite.Length,Is.EqualTo(3));
             var signatures=Enumerable.Range(0,80).Select(seed=>string.Join(";",Content.Supplies(WorldAnchorKind.Campsite,seed,"poi1:2").Select(s=>s.Item+"="+s.Count))).Distinct().ToArray();Assert.That(signatures.Length,Is.EqualTo(3));
             foreach(var kind in new[]{WorldAnchorKind.Campsite,WorldAnchorKind.Graveyard})for(var seed=0;seed<30;seed++){var a=Content.Supplies(kind,seed,"poi3:4");Assert.That(JsonUtility.ToJson(new PoiSiteSnapshot{Loot=a}),Is.EqualTo(JsonUtility.ToJson(new PoiSiteSnapshot{Loot=Content.Supplies(kind,seed,"poi3:4")})));Assert.That(a.Count(s=>s.Count>0),Is.EqualTo(3));Assert.That(a.Any(s=>s.Item=="steel" || s.Item=="diamond" || s.Item=="crystal" || s.Item=="mechanical_part" || s.Item=="bronze"),Is.False);}
             Assert.That(Enum.GetValues(typeof(WorldAnchorKind)).Cast<WorldAnchorKind>().Count(PoiContentDefinition.Supports),Is.EqualTo(4));
@@ -29,7 +29,7 @@ namespace Wildfolk.Tests
         {
             var map=new WorldMap(World,9472026,3,false);var anchor=map.Continental.Anchors.First(a=>a.Kind==WorldAnchorKind.Campsite);var state=new PoiSiteSnapshot{Schema=1,Loot=Content.Supplies(anchor.Kind,map.Seed,anchor.Id)};
             var game=new SavedGame{BaseGenerationVersion=3,Seed=map.Seed,Features=new[]{new WorldFeatureSnapshot{Id=anchor.Id,Visited=true,Site=state}}};Assert.DoesNotThrow(()=>PoiSaveValidation.Validate(game,map,World));
-            var clone=SaveRepository.Decode(SaveRepository.Encode(game));Assert.That(clone.Version,Is.EqualTo(13));Assert.That(clone.Features[0].Site.Schema,Is.EqualTo(1));
+            var clone=SaveRepository.Decode(SaveRepository.Encode(game));Assert.That(clone.Version,Is.EqualTo(14));Assert.That(clone.Features[0].Site.Schema,Is.EqualTo(1));
             state.Loot[0].Count++;Assert.Throws<InvalidDataException>(()=>PoiSaveValidation.Validate(game,map,World));state.Loot[0].Count--;state.Water=1;Assert.Throws<InvalidDataException>(()=>PoiSaveValidation.Validate(game,map,World));state.Water=0;state.Schema=2;Assert.Throws<InvalidDataException>(()=>PoiSaveValidation.Validate(game,map,World));state.Schema=0;Assert.DoesNotThrow(()=>PoiSaveValidation.Validate(game,map,World));
             var old=JsonUtility.FromJson<WorldFeatureSnapshot>("{\"Id\":\"old\",\"Visited\":true}");Assert.That(old.Site==null || old.Site.Schema==0,Is.True);
             var grave=map.Continental.Anchors.First(a=>a.Kind==WorldAnchorKind.Graveyard);var guard=grave.Id+":guard";game.Features=new[]{new WorldFeatureSnapshot{Id=grave.Id,Site=new PoiSiteSnapshot{Schema=1,Loot=Content.Supplies(grave.Kind,map.Seed,grave.Id)}},new WorldFeatureSnapshot{Id=guard}};game.NightCreatures=new[]{new NightCreatureSnapshot{Species="skeleton",Feature=guard,HP=32,Position=grave.Position}};Assert.DoesNotThrow(()=>PoiSaveValidation.Validate(game,map,World));game.NightCreatures=new[]{game.NightCreatures[0],game.NightCreatures[0]};Assert.Throws<InvalidDataException>(()=>PoiSaveValidation.Validate(game,map,World));
@@ -48,7 +48,7 @@ namespace Wildfolk.Tests
         [Test]public void Protocol20RoundTripsSiteIdentitySecurityRevisionAndSharedWater()
         {
             var a=new PoiNetworkState{Id="poi4:5",Kind=WorldAnchorKind.Well,Opened=true,Secured=true,Revision=54,Water=2};using(var w=new FastBufferWriter(256,Allocator.Temp)){w.WriteNetworkSerializable(a);using(var r=new FastBufferReader(w,Allocator.Temp)){r.ReadNetworkSerializable(out PoiNetworkState b);Assert.That(b.Equals(a),Is.True);b.Water--;Assert.That(b.Equals(a),Is.False);}}
-            Assert.That(NetworkProtocol.Current,Is.EqualTo(20));var e=AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Wildfolk/Prefabs/NetworkEcology.prefab").GetComponent<NetworkCreatureWorld>();Assert.That(e.Prefabs.Count(p=>p.Source.GetComponent<PoiSite>()!=null && p.NetworkPrefab.GetComponent<NetworkPoiSite>()!=null),Is.EqualTo(1));
+            Assert.That(NetworkProtocol.Current,Is.EqualTo(21));var e=AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Wildfolk/Prefabs/NetworkEcology.prefab").GetComponent<NetworkCreatureWorld>();Assert.That(e.Prefabs.Count(p=>p.Source.GetComponent<PoiSite>()!=null && p.NetworkPrefab.GetComponent<NetworkPoiSite>()!=null),Is.EqualTo(1));
         }
     }
 }

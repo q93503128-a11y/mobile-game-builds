@@ -10,7 +10,7 @@ namespace Wildfolk
         private static bool Finite(double value)=>!double.IsNaN(value) && !double.IsInfinity(value);
         public static void Validate(SavedGame game,ContentCatalog catalog,WorldGenerationDefinition definition,AnimalPopulationDefinition animals,int playerCapacity,int maximumHP,SurvivalDefinition survival,CharacterGrowthDefinition growth,LocomotionDefinition locomotion,WorldMap validationMap=null)
         {
-            Require(game!=null && game.Version>=2 && game.Version<=13,"Unsupported save version");Require(Finite(game.Elapsed) && game.Elapsed>=0,"Invalid world time");
+            Require(game!=null && game.Version>=2 && game.Version<=14,"Unsupported save version");Require(Finite(game.Elapsed) && game.Elapsed>=0,"Invalid world time");
             var map=validationMap??new WorldMap(definition,game.Seed,game.BaseGenerationVersion,false);var player=game.Player;
             ValidatePlayer(player,map,catalog,playerCapacity,maximumHP,survival,growth,locomotion,game.IsMultiplayer || game.Version>=12);
             if(game.Version>=12)DeathSaveValidation.Validate(player,map);
@@ -79,6 +79,7 @@ namespace Wildfolk
             Require((allowDead ? player.HP>=0 : player.HP>0) && player.HP<=maximumHP+hpBonus && player.Selected>=0 && player.Selected<playerCapacity,"Invalid player");
             var staminaMax=locomotion.MaximumStamina+GrowthValidation.Bonus(player.Growth,growth,SkillEffect.MaximumStamina);
             Require(Finite(player.Stamina) && player.Stamina>=0 && player.Stamina<=staminaMax && Finite(player.StaminaWait) && player.StaminaWait>=0 && player.StaminaWait<=locomotion.RecoveryDelay,"Invalid stamina");
+            Require(string.IsNullOrEmpty(player.Accessory) || catalog.Item(player.Accessory).Accessory!=null,"Invalid accessory");
             Require(string.IsNullOrEmpty(player.Utility) || catalog.Item(player.Utility).EquippedLight!=null,"Invalid utility equipment");Armor(player.HeadArmor,ArmorSlot.Head,catalog);Armor(player.BodyArmor,ArmorSlot.Body,catalog);
             Require(player.SeenRecipes!=null,"Missing recipe state");var seen=new HashSet<string>();foreach(var id in player.SeenRecipes){Require(seen.Add(id),"Duplicate recipe state");catalog.Recipe(id);}
             if(player.HP==0)Require(Finite(player.Position.x) && Finite(player.Position.y) && Mathf.Abs(player.Position.x)<1000000 && Mathf.Abs(player.Position.y)<1000000,"Invalid death position");else Position(map,player.Position);Require(player.HP==0 || map.IsWalkable(player.Position,0),"Player is outside traversable terrain");

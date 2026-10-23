@@ -1,0 +1,113 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c77bcf259d76ed6458ac0e745afa764e, type: 3}
+  m_Name: UndeadKing
+  m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.BossDefinition
+  Id: undead_king
+  NameKey: boss.undead_king
+  Prefab: {fileID: 8617702375303751942, guid: 804a95c6dd949cd4c95b6c94f4df4cd7, type: 3}
+  Tomb: {fileID: 447861797880950144, guid: 9dc7885827e7918489a879569caf5d3c, type: 3}
+  Vitality: {fileID: 11400000, guid: 8d8986f1094513b418a58a05e8292e63, type: 2}
+  Rewards: {fileID: 11400000, guid: ef6fe665cc025914eb3748c56d81a3d1, type: 2}
+  MinionRewards: {fileID: 11400000, guid: dd15dc4e0c83e5f4db1441ef4345f49d, type: 2}
+  Minion: {fileID: 3178893350470064847, guid: e48d7c35caf360c4b8755a2db73ac197, type: 3}
+  Offering: {fileID: 11400000, guid: 90a095062071caa4686b63b68706c06e, type: 2}
+  AnchorKind: 4
+  OfferingCount: 10
+  SpawnOffset: {x: 0, y: -2.8}
+  Speed: 2.1
+  Territory: 23
+  Grace: 4
+  ReturnSpeed: 0.78
+  RegenDelay: 2
+  RegenFraction: 0.01
+  Awakening: 3.6
+  Ritual: 1.5
+  DeathSeconds: 2.5
+  LootPause: 0.4
+  SummonInterval: 28
+  DecisionDelay: 0.45
+  LastPhaseSpeed: 1.05
+  LastPhaseRecovery: 0.9
+  MinionSpeed: 1.11
+  StructureDamage: 3
+  ClearingRadius: 10
+  Thresholds:
+  - 0.7
+  - 0.35
+  Attacks:
+  - Id: royal_cleave
+    Shape: 0
+    Damage: 26
+    FirstPhase: 1
+    LastPhase: 3
+    Repeats: 1
+    FollowUp: 3
+    Windup: 0.8
+    Recovery: 0.7
+    Range: 2.8
+    Width: 1.2
+    Angle: 110
+    Advance: 0
+  - Id: execution
+    Shape: 1
+    Damage: 41
+    FirstPhase: 1
+    LastPhase: 3
+    Repeats: 1
+    FollowUp: -1
+    Windup: 1.15
+    Recovery: 1.2
+    Range: 3.5
+    Width: 1.25
+    Angle: 110
+    Advance: 0
+  - Id: kings_march
+    Shape: 0
+    Damage: 21
+    FirstPhase: 1
+    LastPhase: 3
+    Repeats: 3
+    FollowUp: 1
+    Windup: 0.75
+    Recovery: 1.3
+    Range: 2.7
+    Width: 1.2
+    Angle: 100
+    Advance: 0.5
+  - Id: grave_cleave
+    Shape: 1
+    Damage: 26
+    FirstPhase: 2
+    LastPhase: 3
+    Repeats: 1
+    FollowUp: -1
+    Windup: 0.95
+    Recovery: 0.9
+    Range: 7
+    Width: 1.35
+    Angle: 110
+    Advance: 0
+  - Id: crownfall
+    Shape: 2
+    Damage: 36
+    FirstPhase: 3
+    LastPhase: 3
+    Repeats: 1
+    FollowUp: -1
+    Windup: 1.3
+    Recovery: 1.5
+    Range: 3.5
+    Width: 1.2
+    Angle: 110
+    Advance: 0
+  Schedule: 00000000010000000000000002000000030000000000000004000000

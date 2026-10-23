@@ -1,0 +1,26 @@
+OverflowException: Reading past the end of the buffer
+  at Unity.Netcode.BufferSerializerReader.SerializeValue[T] (T& value, Unity.Netcode.FastBufferWriter+ForFixedStrings unused) [0x00000] in .\Library\PackageCache\com.unity.netcode.gameobjects@277a288a1cea\Runtime\Serialization\BufferSerializerReader.cs:48
+  at Unity.Netcode.BufferSerializer`1[TReaderWriter].SerializeValue[T] (T& value, Unity.Netcode.FastBufferWriter+ForFixedStrings unused) [0x00000] in .\Library\PackageCache\com.unity.netcode.gameobjects@277a288a1cea\Runtime\Serialization\BufferSerializer.cs:308
+  at Wildfolk.ResourceNetworkState.NetworkSerialize[T] (Unity.Netcode.BufferSerializer`1[TReaderWriter] s) [0x00000] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Runtime\Networking\NetworkResource.cs:14
+  at Unity.Netcode.UnmanagedNetworkSerializableSerializer`1[T].Read (Unity.Netcode.FastBufferReader reader, T& value) [0x0000d] in .\Library\PackageCache\com.unity.netcode.gameobjects@277a288a1cea\Runtime\NetworkVariable\Serialization\TypedSerializerImplementations.cs:948
+  at Unity.Netcode.NetworkVariableSerialization`1[T].Read (Unity.Netcode.FastBufferReader reader, T& value) [0x00000] in .\Library\PackageCache\com.unity.netcode.gameobjects@277a288a1cea\Runtime\NetworkVariable\Serialization\NetworkVariableSerialization.cs:85
+  at Unity.Netcode.NetworkVariable`1[T].ReadField (Unity.Netcode.FastBufferReader reader) [0x00031] in .\Library\PackageCache\com.unity.netcode.gameobjects@277a288a1cea\Runtime\NetworkVariable\NetworkVariable.cs:378
+  at Unity.Netcode.NetworkBehaviour.SetNetworkVariableData (Unity.Netcode.FastBufferReader reader, System.UInt64 clientId) [0x00113] in .\Library\PackageCache\com.unity.netcode.gameobjects@277a288a1cea\Runtime\Core\NetworkBehaviour.cs:1472
+  at Unity.Netcode.NetworkObject.SynchronizeNetworkBehaviours[T] (Unity.Netcode.BufferSerializer`1[T]& serializer, System.UInt64 targetClientId) [0x0010a] in .\Library\PackageCache\com.unity.netcode.gameobjects@277a288a1cea\Runtime\Core\NetworkObject.cs:3463
+  at Unity.Netcode.NetworkSpawnManager.NonAuthorityLocalSpawn (Unity.Netcode.NetworkObject+SerializedObject& serializedObject, Unity.Netcode.NetworkObject& networkObject, Unity.Netcode.FastBufferReader reader, System.Boolean destroyWithScene) [0x000e2] in .\Library\PackageCache\com.unity.netcode.gameobjects@277a288a1cea\Runtime\Spawning\NetworkSpawnManager.cs:1214
+UnityEngine.DebugLogHandler:Internal_LogException_Injected(Exception, IntPtr)
+UnityEngine.DebugLogHandler:Internal_LogException(Exception, Object)
+UnityEngine.DebugLogHandler:LogException(Exception, Object)
+UnityEngine.Logger:LogException(Exception, Object)
+UnityEngine.Debug:LogException(Exception)
+Unity.Netcode.NetworkSpawnManager:NonAuthorityLocalSpawn(SerializedObject&, NetworkObject&, FastBufferReader, Boolean) (at .\Library\PackageCache\com.unity.netcode.gameobjects@277a288a1cea\Runtime\Spawning\NetworkSpawnManager.cs:1218)
+Unity.Netcode.NetworkObject:DeserializeAndSpawnObject(SerializedObject&, FastBufferReader, NetworkManager, Boolean) (at .\Library\PackageCache\com.unity.netcode.gameobjects@277a288a1cea\Runtime\Core\NetworkObject.cs:3583)
+Unity.Netcode.CreateObjectMessage:CreateObject(NetworkManager&, UInt64, UInt32, SerializedObject, FastBufferReader, UInt64[], UInt64[]) (at .\Library\PackageCache\com.unity.netcode.gameobjects@277a288a1cea\Runtime\Messaging\Messages\CreateObjectMessage.cs:175)
+Unity.Netcode.CreateObjectMessage:Handle(NetworkContext&) (at .\Library\PackageCache\com.unity.netcode.gameobjects@277a288a1cea\Runtime\Messaging\Messages\CreateObjectMessage.cs:151)
+Unity.Netcode.NetworkMessageManager:ReceiveMessage(FastBufferReader, NetworkContext&, NetworkMessageManager) (at .\Library\PackageCache\com.unity.netcode.gameobjects@277a288a1cea\Runtime\Messaging\NetworkMessageManager.cs:566)
+Unity.Netcode.NetworkMessageManager:HandleMessage(NetworkMessageHeader&, FastBufferReader, UInt64, Single, Int32) (at .\Library\PackageCache\com.unity.netcode.gameobjects@277a288a1cea\Runtime\Messaging\NetworkMessageManager.cs:420)
+Unity.Netcode.NetworkMessageManager:ProcessIncomingMessageQueue() (at .\Library\PackageCache\com.unity.netcode.gameobjects@277a288a1cea\Runtime\Messaging\NetworkMessageManager.cs:446)
+Unity.Netcode.NetworkManager:NetworkUpdate(NetworkUpdateStage) (at .\Library\PackageCache\com.unity.netcode.gameobjects@277a288a1cea\Runtime\Core\NetworkManager.cs:364)
+Unity.Netcode.NetworkUpdateLoop:RunNetworkUpdateStage(NetworkUpdateStage) (at .\Library\PackageCache\com.unity.netcode.gameobjects@277a288a1cea\Runtime\Core\NetworkUpdateLoop.cs:191)
+Unity.Netcode.<>c:<CreateLoopSystem>b__0_0() (at .\Library\PackageCache\com.unity.netcode.gameobjects@277a288a1cea\Runtime\Core\NetworkUpdateLoop.cs:214)
+Observed once in the completed LAN run; ResourceNetworkState was not edited. Root cause remains unconfirmed.

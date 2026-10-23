@@ -82,7 +82,7 @@ namespace Wildfolk.Editor
                 view.Slots[i]=slot.GetComponent<InventorySlotView>();UnityEventTools.AddIntPersistentListener(Button(slot).onClick,view.Select,i);
             }
         }
-        private static void BuildBoss(Transform safe)
+        internal static void BuildBoss(Transform safe)
         {
             var holder=Rect("Boss HUD",safe,new Vector2(.5f,1),new Vector2(0,-88),new Vector2(640,90));var boss=holder.gameObject.AddComponent<BossHud>();
             var view=Rect("View",holder,new Vector2(.5f,.5f),Vector2.zero,new Vector2(640,90));boss.View=view.gameObject;

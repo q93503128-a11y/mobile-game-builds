@@ -7,6 +7,7 @@ namespace Wildfolk
     public sealed class SaveGameRules : ScriptableObject
     {
         public ContentCatalog Catalog;
+        public BossDefinition[] Bosses=Array.Empty<BossDefinition>();
         public WorldGenerationDefinition World;
         public AnimalPopulationDefinition Animals;
         public PlayerInventory Player;
@@ -26,7 +27,7 @@ namespace Wildfolk
 #endif
         public void Validate(SavedGame game)
         {
-            if(game==null || game.Version<1 || game.Version>13)throw new InvalidDataException("Unsupported save version");
+            if(game==null || game.Version<1 || game.Version>14)throw new InvalidDataException("Unsupported save version");
             if(game.Version<=5)MetalSaveMigration.NormalizeLegacyContent(game,Catalog);
             if(game.Version<=6)game.BaseGenerationVersion=WorldGenerationVersion.Legacy;
             if(game.Features==null)game.Features=Array.Empty<WorldFeatureSnapshot>();
@@ -46,6 +47,7 @@ namespace Wildfolk
             if(game.Version>=4 && game.Version<=10)SaveMigration.CreatureLootFromEarlier(game);
             if(game.Version==11)DeathSaveValidation.Migrate(game,World,ValidationMap(game));
             if(game.Version==12){ClassSaveValidation.Migrate(game);game.Version=13;}
+            BossSaveValidation.MigrateAndValidate(game,this);
             ClassSaveValidation.Validate(game.Player);
             MultiplayerSaveRules.Validate(game,this);
             if(game.Multiplayer?.Players!=null)foreach(var p in game.Multiplayer.Players)ClassSaveValidation.Validate(p.State);

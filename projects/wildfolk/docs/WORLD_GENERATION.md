@@ -1,6 +1,6 @@
 # World Generation / Biome Foundation v2
 
-2026-10-20 현재 **Save11 / Protocol13, Item121 / Recipe99**, 새 월드 generation3는 Deep Caverns III의 Diamond/Crystal/산업 POI를 제공한다. 기존 generation1/2는 보존한다. [현재 정본](CONTENT_EXPANSION.md). 아래 이전 버전 설명은 해당 패스의 기록이다.
+2026-10-23 현재 **Save14 / Protocol21, Item136 / Recipe111**, 새 월드 generation3는 Deep Caverns III의 Diamond/Crystal/산업 POI를 제공한다. 기존 generation1/2는 보존한다. [현재 정본](CONTENT_EXPANSION.md). 아래 이전 버전 설명은 해당 패스의 기록이다.
 
 
 2026-10-18 현재: generation2 지형 유지 / **Save8 / Protocol9**, Item50 / Recipe38. Torch·Compass·제작대 Home·동굴 Exit·제한 지형 cache/분할 생성을 제공한다. [탐험 정본](EXPLORATION_FOUNDATION.md)과 [실제 검수/성능](EXPLORATION_REVIEW.md)를 따른다. 아래 이전 날짜/Version 설명은 각 단계의 기록이다.
@@ -130,3 +130,7 @@ generation3 유지,1/2 reader와 기존 anchor/source ID·건축·채집 delta�
 새 content는 기존 stable anchor에 부착한다. 기존 feature 기록은 청크가 활성화됐다는 뜻이므로, 누락/Schema0 state가 있는 **기존 feature에는** 새 일회 보급·광맥·guard를 지급하지 않는다. Well은0에서480초 뒤 회복한다. 기록 없는 anchor만 최초 콘텐츠를 초기화한다. generation1에 anchor를 만들지 않는다.
 
 WorldChunkRuntime의 active representation만 유지하고 전체 POI별 Update가 없다. 물은 접근/상호작용에서 게임 시간으로 지연 계산한다. Quarry는 별도 embedded node HP/tombstone이며 원래 GenerateChunk/자연 재생 debt/normal resource ID에 섞지 않는다. 기존 노드/건축을 피해 청크 안의 빈 후보만 사용해0~4개가 될 수 있고, 누락 자리를 재방문 때 다시 채우지 않는다. [감사·비교·검수](../validation/base-defense-poi-expansion/REVIEW.md).
+
+## Royal Tomb / encounter 영역
+
+기존 Graveyard anchor의 중앙에 RoyalTomb landmark를 둔다. 기존 guardian feature의 cleared 상태를 영구 unlock으로 사용하며 새 generator seed/지형 ID나 새 guardian 종을 만들지 않는다. materialization/recovery 후보에서 왕묘 중심10unit의 Timber/Stone만 제외해 전투 중앙을 비운다. 광물/자원 logical ID/저장된 건축물은 제거하지 않는다. 보스는 anchor의(0,−2.8)에서 등장하고23unit을 encounter로 삼는다. 벽이나 강제 teleport 없이 실제 길로 돌아오며 외부 공격이 Returning을 해제하지 않는다. 활동 중 무작위 undead 보충만 해당 영역에서 억제하며 낮 전환은 전투를 제거하지 않는다.

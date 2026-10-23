@@ -67,6 +67,7 @@ namespace Wildfolk
         }
         public bool IsValidPosition(Vector2 position)
         {
+            if(World.GetComponent<BossWorld>()?.Suppresses(position)==true)return false;
             if(!World.Map.Contains(position) || !World.GetComponent<WorldNavigation>().CanSpawn(position,Definition.FootprintRadius,Definition.PlayerDistance,false) || Vector2.Distance(position,Player.transform.position)<Definition.PlayerDistance || GameplayLight.IsSafe(position))return false;
             var viewport=Camera.WorldToViewportPoint(position);var margin=Definition.CameraMargin;
             if(viewport.z<=0 || viewport.x>=-margin && viewport.x<=1+margin && viewport.y>=-margin && viewport.y<=1+margin)return false;

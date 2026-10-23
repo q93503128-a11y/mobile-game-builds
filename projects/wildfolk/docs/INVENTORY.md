@@ -16,7 +16,7 @@ PlayerItemDrop은 물/장애물 없는 근처 지점을 확인한 뒤 WorldPicku
 
 가방/Chest 입력 잠금은 세계 정지와 분리한다. 멀티 가방 전달은 Foundation 3의 Host 권위 기반으로 제공하며 실제2인 통합 QA는 남아 있다. Friendly Fire는 관계 필터 기반 OFF이며 Team 시설을 일반 공격으로 파괴하지 않는다.
 
-Inventory의 작은 캐릭터 Preview와 실제 Head/Body 슬롯에서 Armor를 장착·교체·해제한다. 슬롯을 누르면 보유한 호환 장비를 강조하고, 선택 장비의 슬롯별 Defense 비교와 Equip을 제공한다. 장착 슬롯 선택에서는 Unequip을 제공한다. Profile에는 장비 조작을 중복 구현하지 않는다. 아직 없는 Accessory/Back 슬롯은 노출하지 않는다. 장착물은Inventory에서빠지고해제/교체시반환하며공간없으면해제를거절한다. Armor/Skill은별도Snapshot으로저장한다. Reinforced Chest는독립36칸이며기존Storage Chest24는유지한다. Chest UI는가변용량과세로스크롤을지원하고기존Transfer/Split/Drop을공유한다.
+Inventory의 작은 캐릭터 Preview와 실제 Head/Body 슬롯에서 Armor를 장착·교체·해제한다. 슬롯을 누르면 보유한 호환 장비를 강조하고, 선택 장비의 슬롯별 Defense 비교와 Equip을 제공한다. 장착 슬롯 선택에서는 Unequip을 제공한다. Profile에는 장비 조작을 중복 구현하지 않는다. Accessory1칸을 추가하며 Back 슬롯은 노출하지 않는다. 장착물은Inventory에서빠지고해제/교체시반환하며공간없으면해제를거절한다. Armor/Skill은별도Snapshot으로저장한다. Reinforced Chest는독립36칸이며기존Storage Chest24는유지한다. Chest UI는가변용량과세로스크롤을지원하고기존Transfer/Split/Drop을공유한다.
 
 
 Armor를 가방에서 맞는 Head/Body 슬롯으로 Drag하면 즉시 장착한다. 이미 장착된 방어구는 교환 시 소지품으로 돌아온다. 장착 슬롯에서 빈 가방 칸으로 Drag하면 해제하며 들어갈 공간이 없으면 원본을 유지하고 Feedback을 표시한다. 선택 Armor는 Primary 또는 Interact로 같은 PlayerEquipment API를 통해 장착한다. 도구/무기/설치/소비 입력과 구분한다. 큰 Modal 뒤 Bag/Hotbar/Attack/Dash/Interact/Pause는 입력을 받지 않는다. Modal 안 Close로 닫고,Split의 Cancel은 Modal 계층에서 작동한다.
@@ -41,3 +41,7 @@ Torch는 기존 Hotbar 선택/held appearance/Primary placement를 쓴다. 선�
 ## Workbench I–II Content Expansion (2026-10-18)
 
 Waterskin은 item 하나와 Charges/Quality를 가지는 MaxStack1 용기다. 슬롯·상자·드롭·픽업·저장·replica에서 상태를 보존한다. Utility 한 칸과 Lantern 장착/해제를 기존 equipment 요청에 연결했다. Head/Body와 같은 슬롯 행을 사용한다. [정본](CONTENT_EXPANSION.md).
+
+## Accessory 한 칸
+
+ArmorSlot.Accessory는 기존 enum 뒤 index3으로 추가했다. Head/Body/Utility/Accessory는 장비 영역2×2이며 Storage/Hotbar와 겹치지 않는다. Equippable 경계로 슬롯 강조·Primary·Equip·Drag·교체·해제를 공유한다. 장착은 가방에서 제거, 교체는 이전1개 반환, 공간이 없으면 원본 유지다. Crown은 HeadArmor와 동시에 장착된다. accessory ID는 Save14, appearance index는 Protocol21에서 복제한다. HP≤35% 조건은 현재 살아 있는 Health에서 계산하고 회복/해제 즉시 풀리며 저장한 지속 buff를 누적하지 않는다. 시각은 Anchor 설정과 별도 SpriteRenderer1개로 표현한다.

@@ -90,8 +90,8 @@ namespace Wildfolk
             for(var i=0;i<count;i++)
             {
                 var health=candidates[i].GetComponentInParent<Health>();
-                if(NetworkTargetsOnly && (health==null || health.GetComponent<NetworkCreature>()==null && health.GetComponent<NetworkResource>()==null))continue;
-                if(CreatureTargetsOnly && (health==null || health.GetComponent<NetworkCreature>()==null))continue;
+                if(NetworkTargetsOnly && (health==null || health.GetComponent<NetworkCreature>()==null && health.GetComponent<NetworkBoss>()==null && health.GetComponent<NetworkResource>()==null))continue;
+                if(CreatureTargetsOnly && (health==null || health.GetComponent<NetworkCreature>()==null && health.GetComponent<NetworkBoss>()==null))continue;
                 if(!CombatAffiliation.CanDamage(OwnHealth,health) || !InSector(candidates[i],out var distance,out var alignment))continue;
                 var node=health.GetComponent<ResourceNode>();
                 if(attackTool!=null && attackTool.HarvestMethod!=HarvestMethod.Strike && node==null)continue;

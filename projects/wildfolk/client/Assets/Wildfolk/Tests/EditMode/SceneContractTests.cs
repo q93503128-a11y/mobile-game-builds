@@ -63,7 +63,7 @@ namespace Wildfolk.Tests
             }
             Assert.That(settings.EnemyLoseRange,Is.GreaterThanOrEqualTo(settings.EnemyDetectionRange));
             Assert.That(settings.InventorySlots,Is.GreaterThanOrEqualTo(PlayerInventory.HotbarSize));
-            Assert.That(AssetDatabase.FindAssets("t:ItemDefinition",new[]{"Assets/Wildfolk/Data"}).Length,Is.EqualTo(134));
+            Assert.That(AssetDatabase.FindAssets("t:ItemDefinition",new[]{"Assets/Wildfolk/Data"}).Length,Is.EqualTo(136));
             var ids=new HashSet<string>();
             foreach(var guid in AssetDatabase.FindAssets("t:ItemDefinition",new[]{"Assets/Wildfolk/Data"}))
             {

@@ -45,7 +45,7 @@ namespace Wildfolk
             for(var attempt=0;attempt<96;attempt++)
             {
                 point=Population.Candidate(index,region);
-                if(!World.Map.ResourceSiteAllowed(index,point) || Population.Excluded(index,point,Clock.Model.Elapsed) || !Navigation.CanSpawn(point,rule.Spacing*.55f,rule.Rarity==ResourceRarity.Rare ? 24 : 12))continue;
+                if(World.GetComponent<BossWorld>()?.ExcludesResource(index,point)==true || !World.Map.ResourceSiteAllowed(index,point) || Population.Excluded(index,point,Clock.Model.Elapsed) || !Navigation.CanSpawn(point,rule.Spacing*.55f,rule.Rarity==ResourceRarity.Rare ? 24 : 12))continue;
                 var density=World.Map.ResourceDensity(index,point);if(density<.25f)continue;
                 var clear=true;foreach(var other in live.Values)if(other!=null && World.Definition.Resources[other.Rule].Family==rule.Family && Vector2.Distance(other.transform.position,point)<rule.ClusterSpacing){clear=false;break;}if(clear)return true;
             }

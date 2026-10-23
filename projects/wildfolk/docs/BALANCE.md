@@ -273,3 +273,24 @@ Meal3종/150초/동시1개/교체,공용4초다.Hunter MaxHP+8(HPheal0),Forager 
 ## Class Foundation Alpha 수치
 
 Metabolism5Rank×5%=최대25% needs drain감소, FieldCare3Rank×10%=받는Medicine최대30%. 공용Class별 node54값은 CHARACTER_PROGRESSION/Classes.json이며 일반Point를ClassPoint로 소비하지 않는다. GoldClass4개각60, 누적ClassXP50/180/400/750/1200/1800에서현재6Point. 가격/시간 산술은 validation/class-progression/REVIEW.md의가정시나리오이며실측경제/출시밸런스아님.
+
+## Undead King · 2026-10-23
+
+|항목|현재 정본|
+|---|---|
+|HP / 이동|9000 /2.1,1~4인 고정|
+|Royal Cleave|피해26, windup0.80, recovery0.70초, fan110°, range2.8|
+|Execution Slam|41,1.15/1.20초, line3.5×1.25|
+|King's March|타당21,0.75초 준비 반복,3타·방향 고정, recovery1.30초, range2.7|
+|Grave Cleave|26,0.95/0.90초, 물리 line7×1.35|
+|Crownfall|36,1.30/1.50초,360° range3.5|
+|Phase / 의식|70%/35%,1.50초, 동시에 heavy 없음|
+|Phase2 adds|1/2/3/4P→2/3/4/5마리, 이전 wave0일 때만28초 이후 재소환|
+|Skull Mark|wave 전멸까지; 대상 무력화/이탈/연결 상실 시 이전; 이동×1.11만|
+|Phase3|이동×1.05/recovery×0.90, windup 유지, chain 최대2, 새 wave0|
+|소환 / 등장 / 사망|밤 Bone10, world boss별 한밤1회 /3.6초 /2.5+0.4초 후 loot|
+|territory/귀환|23unit, grace4초, 귀환 속도×0.78,2초 뒤 maxHP1%/초(90HP/초)|
+|구조물 피해|기본 공격의3배, 플레이어 방어는 기존 armor/class 경계|
+|Crown|20%,HP≤35%에서 이동+8%/armor·class 후 incoming×0.90, offense0|
+
+Steel Head3+Body5에서 기본100HP 기준 피해18/33/13/18/28. 방어 없는100HP에도 최대41이며 한 방 즉사가 아니다. Diamond Head4+Body6은 같은 피해를 더 줄인다. SteelSword43/0.38=113.16, Diamond52/0.38=136.84는 순수 공격 이론 DPS다. 공격 duration0.28은 cooldown에 더하지 않는다. 실제 clear 측정과 조작/클래스/회복 조건은 보스 REVIEW를 따른다. Dash에는 무적이 없다. 실제 mobile 손맛/장기 경제의 출시 밸런스 합격을 주장하지 않는다.

@@ -70,11 +70,11 @@ namespace Wildfolk
         {
             if(!IsDragging || equipmentSource.HasValue || data.pointerId!=pointer || sourceModel!=Owner.Model)return;
             var stack=sourceModel.GetSlot(SourceIndex);
-            if(!stack.IsEmpty && (stack.Item.Armor!=null || stack.Item.EquippedLight!=null) && PlayerEquipment.Slot(stack.Item)==slot)Owner.GetComponent<PlayerEquipment>().TryEquipFromSlot(SourceIndex);
+            if(!stack.IsEmpty && (stack.Item.Equippable) && PlayerEquipment.Slot(stack.Item)==slot)Owner.GetComponent<PlayerEquipment>().TryEquipFromSlot(SourceIndex);
             else PlayerFeedback.ShowKey("feedback.armor_slot");Cancel();
         }
         public bool CanEquip(ArmorSlot slot)
-        {if(!IsDragging || equipmentSource.HasValue || sourceModel!=Owner.Model)return false;var stack=sourceModel.GetSlot(SourceIndex);return !stack.IsEmpty && (stack.Item.Armor!=null || stack.Item.EquippedLight!=null) && PlayerEquipment.Slot(stack.Item)==slot;}
+        {if(!IsDragging || equipmentSource.HasValue || sourceModel!=Owner.Model)return false;var stack=sourceModel.GetSlot(SourceIndex);return !stack.IsEmpty && (stack.Item.Equippable) && PlayerEquipment.Slot(stack.Item)==slot;}
         public void Move(PointerEventData data)
         {
             if (!IsDragging || data.pointerId != pointer) return;

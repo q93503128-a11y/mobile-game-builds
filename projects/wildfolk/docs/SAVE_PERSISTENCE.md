@@ -1,6 +1,6 @@
 # Save / Load13 · v1~v12 이관
 
-2026-10-22 현재 Save13 / Protocol20, 신규 generation3. 정본은 SaveGameRules/SaveValidation/SaveMigration/WorldSnapshotCodec/PlayerSnapshotCodec/SaveRepository다. 기존 generation1/2 지형·시설·자원 ID를 보존한다.
+2026-10-23 현재 Save14 / Protocol21, 신규 generation3. 정본은 SaveGameRules/SaveValidation/SaveMigration/WorldSnapshotCodec/PlayerSnapshotCodec/SaveRepository다. 기존 generation1/2 지형·시설·자원 ID를 보존한다.
 
 ## 파일과 검증
 
@@ -45,7 +45,7 @@ Home 검사와 실제 Continue/Save는 같은 SaveGameRules.Validate를 쓴다. 
 
 ## Host와 QA
 
-Host는 저장 성공 후 세션을 종료하고 실패하면 유지한다. reHost는 저장을 먼저 읽어 새 연결을 만들며 참가자 상태를 spawn 전에 복원한다. 멀티 HP0은 저장 경계에서 Dead로 남기며 무료 Home으로 복귀한다. Cloud/Account/Host Migration/crash 보장은 없다. 현재 Protocol20 peer끼리만 호환한다.
+Host는 저장 성공 후 세션을 종료하고 실패하면 유지한다. reHost는 저장을 먼저 읽어 새 연결을 만들며 참가자 상태를 spawn 전에 복원한다. 멀티 HP0은 저장 경계에서 Dead로 남기며 무료 Home으로 복귀한다. Cloud/Account/Host Migration/crash 보장은 없다. 현재 Protocol21 peer끼리만 호환한다.
 
 실제 사용자 파일은 QA에서 수정·삭제하지 않는다. Editor 전용 IsolatedQaProfile은 별도 Captures 디렉터리와 격리 identity/preferences를 쓴다. 실제 Unity SP/Host와 자동 회귀, 원격·단말 미검수 범위는 [이번 REVIEW](../validation/creature-loot-expansion/REVIEW.md)를 따른다. Android 강제 종료 파일 시스템은 별도 실기 검증이다.
 
@@ -103,3 +103,13 @@ Protocol20은 NetworkClassActions/ClassActionState와 owner request, NetworkComm
 Save13/Profile1/Protocol20 유지. Profile1의 과거 Receipts 배열은 JsonUtility가 무시한다. checksum/atomic/backup 검증 뒤 소유·총XP·선택·노드·구매 intent는 보존하며 다음 정상 저장은 obsolete kill receipt를 쓰지 않는다. backup은 기존 원자 교체 정책대로 교체되므로 직전 legacy payload가 다음 저장까지 backup에 남을 수 있다. 신규 kill 기록은 영속하지 않는다. 월드의 구매 ClassPurchases는 제거하지 않는다.
 
 중복 처치는 death commit과 세션 recent512 window로 차단한다. 원격 미인증 계정 claim을 Host 영구 profile로 승격하지 않는다. 기본 원격 Class 진행은 새 Survivor 세션이며 해당 Host의 reconnect까지만 XP/lock을 보관한다. 명시 개발 verifier의 원격 상위 직업도 ephemeral이다. Host 로컬/SP의 profile 진행은 기존 영구 store를 쓴다. [실측·이관·LAN 검증](../validation/ui-redesign/REVIEW.md).
+
+## Boss / Accessory · Save14 / Protocol21
+
+Save13→14는 기존 player/월드/참가자 payload를 유지하고 Accessory=null/Bosses=[]로 정상 이관한다. 이전1~12 reader도13을 거쳐14로 간다. schema만 변경하며 generation1/2/3과 파일명/checksum/atomic replace/backup을 유지한다.
+
+BossSnapshot은 boss ID/Tomb ID/LastNight/Home/Position/Active/HP/PendingReward/Eligible/이미 추첨한 RolledLoot를 보존한다. 기존 guardian-cleared feature가 unlock이다. 알려진 boss·anchor·guard·HP·유한 좌표·night/중복 ID·고정 보상 min/max/확정 Core·중복 stack을 검증한다. 성공한 offering 순간 Bone10과 그 밤 identity를 한 저장에 확정하고 실패하면 provisional boss/가방/밤을 rollback한다.
+
+Active load는 저장 HP의 Returning에서 재개한다. target/공격 포즈/임시 adds/mark는 transient이며 저장해 중복 생성하지 않는다. 죽는 중 load는 이미 뽑은 보상과 eligible ID를 유지해 짧은 Dying 이후 해결한다. 물리 pickups+공용XP/Gold+resolved flag는 한 world snapshot commit이며 실패하면 모두 rollback하고 재추첨 없이 재시도한다. resolved reload/reHost는 다시 지급하지 않는다. 별도 로컬 Class profile의 XP는 world commit 후 전달하므로 프로세스 강제 종료의 두 저장소 사이 원자성/유실 방지는 보장하지 않는다. account/cloud/crash-proof 보장을 추가하지 않았다.
+
+Protocol21은 NetworkBoss의 HP/state/phase/attack/server timestamp/mark, NetworkBossWorld offering, POI unlock 및 player Accessory appearance를 추가한다.20 peer와 혼용하지 않는다. Host가 simulation/roll/보상·저장을 결정하며 Client는 owner RPC 요청과 replica만 수행한다.

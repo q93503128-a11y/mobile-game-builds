@@ -1,0 +1,111 @@
+bjects: 9.123900 ms  DeleteObjects: 0.179400 ms)
+
+OverflowException: Reading past the end of the buffer
+  at Unity.Netcode.BufferSerializerReader.SerializeValue[T] (T& value, Unity.Netcode.FastBufferWriter+ForFixedStrings unused) [0x00000] in .\Library\PackageCache\com.unity.netcode.gameobjects@277a288a1cea\Runtime\Serialization\BufferSerializerReader.cs:48
+  at Unity.Netcode.BufferSerializer`1[TReaderWriter].SerializeValue[T] (T& value, Unity.Netcode.FastBufferWriter+ForFixedStrings unused) [0x00000] in .\Library\PackageCache\com.unity.netcode.gameobjects@277a288a1cea\Runtime\Serialization\BufferSerializer.cs:308
+  at Wildfolk.ResourceNetworkState.NetworkSerialize[T] (Unity.Netcode.BufferSerializer`1[TReaderWriter] s) [0x00000] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Runtime\Networking\NetworkResource.cs:14
+  at Unity.Netcode.UnmanagedNetworkSerializableSerializer`1[T].Read (Unity.Netcode.FastBufferReader reader, T& value) [0x0000d] in .\Library\PackageCache\com.unity.netcode.gameobjects@277a288a1cea\Runtime\NetworkVariable\Serialization\TypedSerializerImplementations.cs:948
+  at Unity.Netcode.NetworkVariableSerialization`1[T].Read (Unity.Netcode.FastBufferReader reader, T& value) [0x00000] in .\Library\PackageCache\com.unity.netcode.gameobjects@277a288a1cea\Runtime\NetworkVariable\Serialization\NetworkVariableSerialization.cs:85
+  at Unity.Netcode.NetworkVariable`1[T].ReadField (Unity.Netcode.FastBufferReader reader) [0x00031] in .\Library\PackageCache\com.unity.netcode.gameobjects@277a288a1cea\Runtime\NetworkVariable\NetworkVariable.cs:378
+  at Unity.Netcode.NetworkBehaviour.SetNetworkVariableData (Unity.Netcode.FastBufferReader reader, System.UInt64 clientId) [0x00113] in .\Library\PackageCache\com.unity.netcode.gameobjects@277a288a1cea\Runtime\Core\NetworkBehaviour.cs:1472
+  at Unity.Netcode.NetworkObject.SynchronizeNetworkBehaviours[T] (Unity.Netcode.BufferSerializer`1[T]& serializer, System.UInt64 targetClientId) [0x0010a] in .\Library\PackageCache\com.unity.netcode.gameobjects@277a288a1cea\Runtime\Core\NetworkObject.cs:3463
+  at Unity.Netcode.NetworkSpawnManager.NonAuthorityLocalSpawn (Unity.Netcode.NetworkObject+SerializedObject& serializedObject, Unity.Netcode.NetworkObject& networkObject, Unity.Netcode.FastBufferReader reader, System.Boolean destroyWithScene) [0x000e2] in .\Library\PackageCache\com.unity.netcode.gameobjects@277a288a1cea\Runtime\Spawning\NetworkSpawnManager.cs:1214
+UnityEngine.DebugLogHandler:Internal_LogException_Injected(Exception, IntPtr)
+UnityEngine.DebugLogHandler:Internal_LogException(Exception, Object)
+UnityEngine.DebugLogHandler:LogException(Exception, Object)
+UnityEngine.Logger:LogException(Exception, Object)
+UnityEngine.Debug:LogException(Exception)
+Unity.Netcode.NetworkSpawnManager:NonAuthorityLocalSpawn(SerializedObject&, NetworkObject&, FastBufferReader, Boolean) (at .\Library\PackageCache\com.unity.netcode.gameobjects@277a288a1cea\Runtime\Spawning\NetworkSpawnManager.cs:1218)
+Unity.Netcode.NetworkObject:DeserializeAndSpawnObject(SerializedObject&, FastBufferReader, NetworkManager, Boolean) (at .\Library\PackageCache\com.unity.netcode.gameobjects@277a288a1cea\Runtime\Core\NetworkObject.cs:3583)
+Unity.Netcode.CreateObjectMessage:CreateObject(NetworkManager&, UInt64, UInt32, SerializedObject, FastBufferReader, UInt64[], UInt64[]) (at .\Library\PackageCache\com.unity.netcode.gameobjects@277a288a1cea\Runtime\Messaging\Messages\CreateObjectMessage.cs:175)
+Unity.Netcode.CreateObjectMessage:Handle(NetworkContext&) (at .\Library\PackageCache\com.unity.netcode.gameobjects@277a288a1cea\Runtime\Messaging\Messages\CreateObjectMessage.cs:151)
+Unity.Netcode.NetworkMessageManager:ReceiveMessage(FastBufferReader, NetworkContext&, NetworkMessageManager) (at .\Library\PackageCache\
+
+s now loaded: 0)
+Start Indexing on Editor startup
+ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+  at System.Collections.Generic.List`1[T].get_Item (System.Int32 index) [0x00009] in <41d29b352f6a475ab1bf7c6628b82790>:0
+  at UnityEditor.Search.SearchDatabase+<EnumerateAll>d__80.MoveNext () [0x00106] in <5b34bb5dc7a045aaaa697e17baf62c78>:0
+  at System.Linq.Enumerable.TryGetFirst[TSource] (System.Collections.Generic.IEnumerable`1[T] source, System.Boolean& found) [0x00045] in <80564d689e48448fa2a7101993ee7201>:0
+  at System.Linq.Enumerable.First[TSource] (System.Collections.Generic.IEnumerable`1[T] source) [0x00000] in <80564d689e48448fa2a7101993ee7201>:0
+  at UnityEditor.Search.SearchDatabase.GetDefaultSearchDatabase () [0x00006] in <5b34bb5dc7a045aaaa697e17baf62c78>:0
+  at UnityEditor.Search.SearchInit.IndexationOnStartup () [0x0000c] in <5b34bb5dc7a045aaaa697e17baf62c78>:0
+  at UnityEditor.EditorApplication.Internal_CallDelayFunctions () [0x0002c] in <cf2607b209aa47de987ba5ed55932aa8>:0
+
+Created GICache directory at C:/Users/User/AppData/LocalLow/Unity/Caches/GiCache. Took: 0.040s, timestamps: [18.660 - 18.700]
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Client] Successfully resolved entitlement details
+UnloadTime: 0.311600 ms
+Loaded scene 'Assets/Wildfolk/Scenes/MainMenu.unity'
+	Deserialize:            806.039 ms
+	Integration:            1643.757 ms
+	Integration of assets:  0.714 ms
+	Thread Wait Time:       426.946 ms
+	Total Operation Time:   2877.455 ms
+Unloading 33 unused Assets / (2.9 KB). Loaded Objects now: 18367.
+Memory consumption went from 265.0 MB to 265.0 MB.
+Total: 11.016400 ms (FindLiveObjects: 0.882200 ms CreateObjectMapping: 0.474300 ms MarkObjects: 9.572200 ms  DeleteObjects: 0.086200 ms)
+
+Unloading 21 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 7.634700 ms
+Loaded scene 'Assets/Wildfolk/Scenes/Multiplayer.unity'
+	Deserialize:            259.930 ms
+	Integration:            274.130 ms
+	Integration of assets:  2.602 ms
+	Thread Wait Time:       0.258 ms
+	Total Operation Time:   536.920 ms
+Unloading 83 unused Assets / (46.4 KB). Loaded Objects now: 26927.
+Memory consumption went from 276.7 MB to 276.7 MB.
+Total: 11.001000 ms (FindLiveObjects: 1.130200 ms CreateObjectMapping: 0.566100 ms MarkObjects: 9.123900 ms  DeleteObjects: 0.179400 ms)
+
+OverflowException: Reading past the end of the buffer
+  at Unity.Netcode.BufferSerializerReader.SerializeValue[T] (T& value, Unity.Netcode.FastBufferWriter+ForFixedStrings unused) [0x00000] in .\Library\PackageCache\com.unity.netcode.gameobjects@277a288a1cea\Runtime\Serialization\BufferSerializerReader.cs:48
+  at Unity.Netcode.BufferSerializer`1[TReaderWriter].SerializeValue[T] (T& value, Unity.Netcode.FastBufferWriter+ForFixedStrings unused) [0x00000] in .\Library\PackageCache\com.unity.netcode.gameobjects@277a288a1cea\Runtime\Serialization\BufferSerializer.cs:308
+  at Wildfolk.ResourceNetworkState.NetworkSerialize[T] (Unity.Netcode.BufferSerializer`1[TReaderWriter] s) [0x00000] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Runtime\Networking\NetworkResource.cs:14
+  at Unity.Netcode.UnmanagedNetworkSerializableSerializer`1[T].Read (Unity.Netcode.FastBufferReader reader, T& value) [0x0000d] in .\Library\PackageCache\com.unity.netcode.gameobjects@277a288a1cea\Runtime\NetworkVariable\Serialization\TypedSerializerImplementations.cs:948
+  at Unity.Netcode.NetworkVariableSerialization`1[T].Read (Unity.Netcode.FastBufferReader reader, T& value) [0x00000] in .\Library\PackageCache\com.unity.netcode.gameobjects@277a288a1cea\Runtime\NetworkVariable\Serialization\NetworkVariableSerialization.cs:85
+  at Unity.Netcode.NetworkVa
+
+ne)][Deserialize][NetworkBehaviourSynchronization][Size mismatch] Expected: 59 Currently At: 58!
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object,UnityEngine.Object)
+Unity.Netcode.Logging.ContextualLogger:Log (UnityEngine.LogType,Unity.Netcode.Logging.Context)
+Unity.Netcode.Logging.ContextualLogger:Warning (Unity.Netcode.Logging.Context)
+Unity.Netcode.NetworkLog:LogWarning (string)
+Unity.Netcode.NetworkObject:DeserializeAndSpawnObject (Unity.Netcode.NetworkObject/SerializedObject&,Unity.Netcode.FastBufferReader,Unity.Netcode.NetworkManager,bool) (at ./Library/PackageCache/com.unity.netcode.gameobjects@277a288a1cea/Runtime/Core/NetworkObject.cs:3595)
+Unity.Netcode.CreateObjectMessage:CreateObject (Unity.Netcode.NetworkManager&,ulong,uint,Unity.Netcode.NetworkObject/SerializedObject,Unity.Netcode.FastBufferReader,ulong[],ulong[]) (at ./Library/PackageCache/com.unity.netcode.gameobjects@277a288a1cea/Runtime/Messaging/Messages/CreateObjectMessage.cs:175)
+Unity.Netcode.CreateObjectMessage:Handle (Unity.Netcode.NetworkContext&) (at ./Library/PackageCache/com.unity.netcode.gameobjects@277a288a1cea/Runtime/Messaging/Messages/CreateObjectMessage.cs:151)
+Unity.Netcode.NetworkMessageManager:ReceiveMessage<Unity.Netcode.CreateObjectMessage> (Unity.Netcode.FastBufferReader,Unity.Netcode.NetworkContext&,Unity.Netcode.NetworkMessageManager) (at ./Library/PackageCache/com.unity.netcode.gameobjects@277a288a1cea/Runtime/Messaging/NetworkMessageManager.cs:566)
+Unity.Netcode.NetworkMessageManager:HandleMessage (Unity.Netcode.NetworkMessageHeader&,Unity.Netcode.FastBufferReader,ulong,single,int) (at ./Library/PackageCache/com.unity.netcode.gameobjects@277a288a1cea/Runtime/Messaging/NetworkMessageManager.cs:420)
+Unity.Netcode.NetworkMessageManager:ProcessIncomingMessageQueue () (at ./Library/PackageCache/com.unity.netcode.gameobjects@277a288a1cea/Runtime/Messaging/NetworkMessageManager.cs:446)
+Unity.Netcode.NetworkManager:NetworkUpdate (Unity.Netcode.NetworkUpdateStage) (at ./Library/PackageCache/com.unity.netcode.gameobjects@277a288a1cea/Runtime/Core/NetworkManager.cs:364)
+Unity.Netcode.NetworkUpdateLoop:RunNetworkUpdateStage (Unity.Netcode.NetworkUpdateStage) (at ./Library/PackageCache/com.unity.netcode.gameobjects@277a288a1cea/Runtime/Core/NetworkUpdateLoop.cs:191)
+Unity.Netcode.NetworkUpdateLoop/NetworkEarlyUpdate/<>c:<CreateLoopSystem>b__0_0 () (at ./Library/PackageCache/com.unity.netcode.gameobjects@277a288a1cea/Runtime/Core/NetworkUpdateLoop.cs:214)
+
+(Filename: ./Library/PackageCache/com.unity.netcode.gameobjects@277a288a1cea/Runtime/Core/NetworkObject.cs Line: 3595)
+
+Unloading 6 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 15.523200 ms
+Loaded scene 'Assets/Wildfolk/Scenes/MainMenu.unity'
+	Deserialize:            22.302 ms
+	Integration:            253.686 ms
+	Integration of assets:  0.295 ms
+	Thread Wait Time:       0.595 ms
+	Total Operation Time:   276.877 ms
+Unloading 89 unused Assets / (116.8 KB). Loaded Objects now: 18373.
+Memory consumption went from 274.7 MB to 274.6 MB.
+Total: 11.593300 ms (FindLiveObjects: 0.906000 ms CreateObjectMapping: 0.487700 ms MarkObjects: 9.946000 ms  DeleteObjects: 0.252100 ms)
+
+TrimDiskCacheJob: Current cache size 0mb
+Unloading 18 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 1.489200 ms
+Loaded scene 'Assets/Wildfolk/Scenes/Multiplayer.unity'
+	Deserialize:            249.559 ms
+	Integration:            240.549 ms
+	Integration of assets:  1.172 ms
+	Thread Wait Time:       -0.047 ms
+	Total Operation T

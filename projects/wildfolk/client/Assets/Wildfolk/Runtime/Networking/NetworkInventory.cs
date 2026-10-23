@@ -90,7 +90,7 @@ namespace Wildfolk
                     case InventoryOperation.Select:Inventory.ApplySelection(from);return true;
                     case InventoryOperation.Transfer:return to>=0 && to<capacity && Inventory.Model.MoveStackAmount(from,to,amount);
                     case InventoryOperation.Equip:return Player.Equipment.TryEquipFromSlot(from);
-                    case InventoryOperation.Unequip:return from>=0 && from<=2 && to>=-1 && to<capacity && Player.Equipment.Unequip((ArmorSlot)from,to);
+                    case InventoryOperation.Unequip:return from>=0 && from<=3 && to>=-1 && to<capacity && Player.Equipment.Unequip((ArmorSlot)from,to);
                     case InventoryOperation.Drop:return GetComponent<PlayerItemDrop>().Drop(Inventory.Model,from,amount);
                     case InventoryOperation.Pickup:return NetworkManager.SpawnManager.SpawnedObjects.TryGetValue(target,out var obj) && obj.TryGetComponent<NetworkGroundItem>(out var item) && item.TryPickup(this);
                     default:return false;

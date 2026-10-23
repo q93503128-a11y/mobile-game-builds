@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Wildfolk
 {
-    public enum ItemCategory { Material, Tool, Placeable, Weapon, Consumable, Armor, Container }
+    public enum ItemCategory { Material, Tool, Placeable, Weapon, Consumable, Armor, Container, Accessory }
 
     [CreateAssetMenu(menuName = "Wildfolk/Item")]
     public sealed class ItemDefinition : ScriptableObject
@@ -18,6 +18,8 @@ namespace Wildfolk
         public PlaceableDefinition Placement;
         public ConsumableDefinition Consumable;
         public ArmorDefinition Armor;
+        public AccessoryDefinition Accessory;
+        public bool Equippable=>Armor!=null || EquippedLight!=null || Accessory!=null;
         public WaterContainerDefinition Container;
         public GameplayLightDefinition PortableLight;
         public Sprite HeldSprite;

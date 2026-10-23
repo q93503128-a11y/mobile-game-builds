@@ -1,0 +1,246 @@
+{
+  "startSHA": "82084f79bcf8cce11454b21ef67e79a3174bb82d",
+  "firstObservedUTC": "2026-10-23T01:51:19Z",
+  "events": [
+    {
+      "stage": "source audit and external boss research complete",
+      "UTC": "2026-10-23T02:01:49.017624+00:00"
+    },
+    {
+      "stage": "initial foundation, equipment and boss authoring complete",
+      "UTC": "2026-10-23T02:26:20.294287+00:00"
+    },
+    {
+      "stage": "MCP isolated lifecycle passed; PlayMode fixture isolation and authority audit repairs",
+      "UTC": "2026-10-23T02:53:39.261481+00:00"
+    },
+    {
+      "stage": "visual lifecycle complete at1920/1280; accessory grid corrected; preparing requested pause",
+      "UTC": "2026-10-23T03:12:07.740133+00:00"
+    },
+    {
+      "stage": "requested checkpoint written; current automated/source/data checks passed; full pass remains incomplete",
+      "UTC": "2026-10-23T03:14:20.051582+00:00"
+    },
+    {
+      "stage": "requested pause: current validation complete, working source/evidence/handoff preserved",
+      "UTC": "2026-10-23T03:15:38.148180+00:00"
+    },
+    {
+      "stage": "resumed: remote main remains82084f7; starting actual two-process LAN",
+      "UTC": "2026-10-23T04:41:39.496554+00:00"
+    },
+    {
+      "stage": "LAN initial failure diagnosed: Survivor innate lethal prevention; fixture uses Explorer for Downed assertions",
+      "UTC": "2026-10-23T04:46:46.567366+00:00"
+    },
+    {
+      "stage": "LAN exposed pre-spawn boss timestamp using local epoch; corrected to listening server clock",
+      "UTC": "2026-10-23T04:51:16.698546+00:00"
+    },
+    {
+      "stage": "actual two-process LAN boss lifecycle/accessory/rewards/reHost passed; one unrelated resource wire error under investigation",
+      "UTC": "2026-10-23T04:55:35.129303+00:00"
+    },
+    {
+      "stage": "Steel input-bot clear257.4641game seconds/5salves; PlayMode3/3 including pending reload and failed transaction recovery passed",
+      "UTC": "2026-10-23T05:03:05.849214+00:00"
+    },
+    {
+      "stage": "Diamond trial exposed local tomb-corner stall; shared boss chase now uses existing bounded sidestep candidates; input bot gains local obstacle avoidance",
+      "UTC": "2026-10-23T05:04:37.385415+00:00"
+    },
+    {
+      "stage": "manual pooling audit repaired former boss minion normal AI/lifecycle restore; regression added",
+      "UTC": "2026-10-23T05:09:14.571495+00:00"
+    },
+    {
+      "stage": "Diamond ordinary-stat bot clear217.2021game seconds/4salves after tomb navigation correction; defense damage/LOS/return immunity/blocking structure checks passed",
+      "UTC": "2026-10-23T05:10:56.209928+00:00"
+    },
+    {
+      "stage": "second requested pause: current Steel/Diamond measurements and verification evidence preserved; final audit/LAN handshake/Git remain",
+      "UTC": "2026-10-23T05:25:14.916296+00:00"
+    },
+    {
+      "stage": "second pause finalized: Play off/MainMenu, QA directory erased, data/source/diff checks passed, user save unchanged",
+      "UTC": "2026-10-23T05:25:57.855454+00:00"
+    },
+    {
+      "stage": "third segment resumed: fetched remote main unchanged; final authority audit and targeted LAN verification",
+      "UTC": "2026-10-23T07:32:24.792304+00:00"
+    },
+    {
+      "stage": "final code audit, latest PlayMode3/3, visual and actual LAN rollback/telegraph/reHost completed; documentation consolidated",
+      "UTC": "2026-10-23T07:46:55.231713+00:00"
+    },
+    {
+      "stage": "final review/evidence and source/data validation ready; original user save hash and mtime unchanged; editor cleaned up",
+      "UTC": "2026-10-23T07:48:30.466189+00:00"
+    },
+    {
+      "stage": "final diff reviewed; beginning main commit/push; remote main re-fetched unchanged",
+      "UTC": "2026-10-23T07:49:54.065145+00:00"
+    }
+  ],
+  "perPhaseTokens": null,
+  "resumedSegment": {
+    "startUTC": "2026-10-23T04:41:39.496554+00:00",
+    "endUTC": "2026-10-23T05:25:57.855454+00:00",
+    "elapsedSeconds": 2658.3589,
+    "includesToolWaits": true,
+    "excludesPreviousPause": true,
+    "perOperationTokens": null
+  },
+  "thirdSegment": {
+    "startUTC": "2026-10-23T07:32:24.792304+00:00",
+    "verificationEndUTC": "2026-10-23T07:48:30.466189+00:00",
+    "elapsedSeconds": 965.673885,
+    "includesToolWaits": true,
+    "excludesPreviousUserPause": true,
+    "perOperationTokens": null
+  },
+  "measuredToolProcesses": [
+    {
+      "stage": "latest related PlayMode batch",
+      "startUTC": "2026-10-23T07:34:06.562386+00:00",
+      "wallSeconds": 128.90115308761597
+    },
+    {
+      "stage": "final LAN first retry (Error Pause timeout)",
+      "startUTC": "2026-10-23T07:36:48.681486+00:00",
+      "wallSeconds": 81.73399305343628
+    },
+    {
+      "stage": "final LAN second retry (Error Pause timeout)",
+      "startUTC": "2026-10-23T07:41:46.195640+00:00",
+      "wallSeconds": 84.73974347114563
+    },
+    {
+      "stage": "completed final actual LAN Client",
+      "startUTC": "2026-10-23T07:43:47.625662+00:00",
+      "wallSeconds": 57.079179525375366
+    }
+  ],
+  "recordedStageIntervals": [
+    {
+      "fromUTC": "2026-10-23T02:01:49.017624+00:00",
+      "toUTC": "2026-10-23T02:26:20.294287+00:00",
+      "finishedStage": "initial foundation, equipment and boss authoring complete",
+      "elapsedSeconds": 1471.276663,
+      "includesToolWaits": true
+    },
+    {
+      "fromUTC": "2026-10-23T02:26:20.294287+00:00",
+      "toUTC": "2026-10-23T02:53:39.261481+00:00",
+      "finishedStage": "MCP isolated lifecycle passed; PlayMode fixture isolation and authority audit repairs",
+      "elapsedSeconds": 1638.967194,
+      "includesToolWaits": true
+    },
+    {
+      "fromUTC": "2026-10-23T02:53:39.261481+00:00",
+      "toUTC": "2026-10-23T03:12:07.740133+00:00",
+      "finishedStage": "visual lifecycle complete at1920/1280; accessory grid corrected; preparing requested pause",
+      "elapsedSeconds": 1108.478652,
+      "includesToolWaits": true
+    },
+    {
+      "fromUTC": "2026-10-23T03:12:07.740133+00:00",
+      "toUTC": "2026-10-23T03:14:20.051582+00:00",
+      "finishedStage": "requested checkpoint written; current automated/source/data checks passed; full pass remains incomplete",
+      "elapsedSeconds": 132.311449,
+      "includesToolWaits": true
+    },
+    {
+      "fromUTC": "2026-10-23T03:14:20.051582+00:00",
+      "toUTC": "2026-10-23T03:15:38.148180+00:00",
+      "finishedStage": "requested pause: current validation complete, working source/evidence/handoff preserved",
+      "elapsedSeconds": 78.096598,
+      "includesToolWaits": true
+    },
+    {
+      "fromUTC": "2026-10-23T04:41:39.496554+00:00",
+      "toUTC": "2026-10-23T04:46:46.567366+00:00",
+      "finishedStage": "LAN initial failure diagnosed: Survivor innate lethal prevention; fixture uses Explorer for Downed assertions",
+      "elapsedSeconds": 307.070812,
+      "includesToolWaits": true
+    },
+    {
+      "fromUTC": "2026-10-23T04:46:46.567366+00:00",
+      "toUTC": "2026-10-23T04:51:16.698546+00:00",
+      "finishedStage": "LAN exposed pre-spawn boss timestamp using local epoch; corrected to listening server clock",
+      "elapsedSeconds": 270.13118,
+      "includesToolWaits": true
+    },
+    {
+      "fromUTC": "2026-10-23T04:51:16.698546+00:00",
+      "toUTC": "2026-10-23T04:55:35.129303+00:00",
+      "finishedStage": "actual two-process LAN boss lifecycle/accessory/rewards/reHost passed; one unrelated resource wire error under investigation",
+      "elapsedSeconds": 258.430757,
+      "includesToolWaits": true
+    },
+    {
+      "fromUTC": "2026-10-23T04:55:35.129303+00:00",
+      "toUTC": "2026-10-23T05:03:05.849214+00:00",
+      "finishedStage": "Steel input-bot clear257.4641game seconds/5salves; PlayMode3/3 including pending reload and failed transaction recovery passed",
+      "elapsedSeconds": 450.719911,
+      "includesToolWaits": true
+    },
+    {
+      "fromUTC": "2026-10-23T05:03:05.849214+00:00",
+      "toUTC": "2026-10-23T05:04:37.385415+00:00",
+      "finishedStage": "Diamond trial exposed local tomb-corner stall; shared boss chase now uses existing bounded sidestep candidates; input bot gains local obstacle avoidance",
+      "elapsedSeconds": 91.536201,
+      "includesToolWaits": true
+    },
+    {
+      "fromUTC": "2026-10-23T05:04:37.385415+00:00",
+      "toUTC": "2026-10-23T05:09:14.571495+00:00",
+      "finishedStage": "manual pooling audit repaired former boss minion normal AI/lifecycle restore; regression added",
+      "elapsedSeconds": 277.18608,
+      "includesToolWaits": true
+    },
+    {
+      "fromUTC": "2026-10-23T05:09:14.571495+00:00",
+      "toUTC": "2026-10-23T05:10:56.209928+00:00",
+      "finishedStage": "Diamond ordinary-stat bot clear217.2021game seconds/4salves after tomb navigation correction; defense damage/LOS/return immunity/blocking structure checks passed",
+      "elapsedSeconds": 101.638433,
+      "includesToolWaits": true
+    },
+    {
+      "fromUTC": "2026-10-23T05:10:56.209928+00:00",
+      "toUTC": "2026-10-23T05:25:14.916296+00:00",
+      "finishedStage": "second requested pause: current Steel/Diamond measurements and verification evidence preserved; final audit/LAN handshake/Git remain",
+      "elapsedSeconds": 858.706368,
+      "includesToolWaits": true
+    },
+    {
+      "fromUTC": "2026-10-23T05:25:14.916296+00:00",
+      "toUTC": "2026-10-23T05:25:57.855454+00:00",
+      "finishedStage": "second pause finalized: Play off/MainMenu, QA directory erased, data/source/diff checks passed, user save unchanged",
+      "elapsedSeconds": 42.939158,
+      "includesToolWaits": true
+    },
+    {
+      "fromUTC": "2026-10-23T07:32:24.792304+00:00",
+      "toUTC": "2026-10-23T07:46:55.231713+00:00",
+      "finishedStage": "final code audit, latest PlayMode3/3, visual and actual LAN rollback/telegraph/reHost completed; documentation consolidated",
+      "elapsedSeconds": 870.439409,
+      "includesToolWaits": true
+    },
+    {
+      "fromUTC": "2026-10-23T07:46:55.231713+00:00",
+      "toUTC": "2026-10-23T07:48:30.466189+00:00",
+      "finishedStage": "final review/evidence and source/data validation ready; original user save hash and mtime unchanged; editor cleaned up",
+      "elapsedSeconds": 95.234476,
+      "includesToolWaits": true
+    },
+    {
+      "fromUTC": "2026-10-23T07:48:30.466189+00:00",
+      "toUTC": "2026-10-23T07:49:54.065145+00:00",
+      "finishedStage": "final diff reviewed; beginning main commit/push; remote main re-fetched unchanged",
+      "elapsedSeconds": 83.598956,
+      "includesToolWaits": true
+    }
+  ]
+}

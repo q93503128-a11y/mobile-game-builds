@@ -1,0 +1,83 @@
+{
+  "status": "implementation, targeted verification and documentation complete; final Git result in completion message",
+  "UTC": "2026-10-23T05:25:14.808407+00:00",
+  "HEAD": "82084f79bcf8cce11454b21ef67e79a3174bb82d",
+  "EditMode": {
+    "result": "Passed",
+    "total": "42",
+    "passed": "42",
+    "failed": "0",
+    "duration": "1.5655553",
+    "start-time": "2026-10-23 05:07:36Z",
+    "end-time": "2026-10-23 05:07:38Z"
+  },
+  "PlayMode": {
+    "result": "Passed",
+    "total": "3",
+    "passed": "3",
+    "failed": "0",
+    "duration": "83.3284718",
+    "start-time": "2026-10-23 07:34:47Z",
+    "end-time": "2026-10-23 07:36:11Z"
+  },
+  "combat": {
+    "steel": {
+      "clear": true,
+      "gameSeconds": 262.4973,
+      "wallSeconds": 133.1479,
+      "hits": 10,
+      "playerHP": 65,
+      "bossHP": 0,
+      "salvesUsed": 6,
+      "timeScale": 2
+    },
+    "diamond": {
+      "clear": true,
+      "gameSeconds": 217.2021,
+      "wallSeconds": 108.4395,
+      "hits": 17,
+      "playerHP": 88,
+      "bossHP": 0,
+      "salvesUsed": 4,
+      "timeScale": 2
+    }
+  },
+  "actualLanRuns": [
+    {
+      "id": "20d880c9f4194ad69c000ed993570076",
+      "passed": false,
+      "hostFailed": true,
+      "clientFailed": false
+    },
+    {
+      "id": "6ce6b2ed93cb4380a0a215212a9c6257",
+      "passed": true,
+      "hostFailed": false,
+      "clientFailed": false
+    },
+    {
+      "id": "d797f1db504c4b678d51f1870219c443",
+      "passed": false,
+      "hostFailed": true,
+      "clientFailed": false
+    }
+  ],
+  "sourceValidation": "PASS1471GUID",
+  "dataValidationErrors": 0,
+  "userSaveHashAndMtimeUnchanged": true,
+  "perOperationTokens": null,
+  "commitPush": "prepared on main; exact final Git result reported after push",
+  "finalizedUTC": "2026-10-23T05:25:57.855454+00:00",
+  "editor": {
+    "playing": false,
+    "scene": "MainMenu",
+    "qaDirectoryErased": true,
+    "consoleFlagsRestored": 8071,
+    "expectedFaultInjectionErrors": 1
+  },
+  "gitDiffCheck": "PASS",
+  "worktreeClean": false,
+  "resumedSegmentElapsedSeconds": 2658.3589,
+  "finalVerificationUTC": "2026-10-23T07:48:30.478591+00:00",
+  "finalActualLanRun": "471a5968b71c45d294e29454d70f4935"
+}

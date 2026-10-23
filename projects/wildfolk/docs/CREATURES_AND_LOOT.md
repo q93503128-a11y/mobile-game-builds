@@ -65,3 +65,9 @@ Camp ID+:supplies가 persistent identity다. 거주 Goblin의 활성·휴면 생
 ## POI2-F 묘지
 
 기존 Skeleton1을 Graveyard의 작은 고정 encounter로 재사용한다. 종·스탯·기존 Bone1~2/XP7/Gold2는 유지한다. 이 수호자만 낮에도 행동하고 잠복하지 않으며, 멀리 유인되면 기존 steering으로 묘지 근처로 돌아간다. 처치 marker와 HP는 휴면/Save/reHost를 보존한다. 별도 종/variant/Drop은 없다. [POI와 방어 감사·검수](../validation/base-defense-poi-expansion/REVIEW.md).
+
+## Undead King / 임시 소환수
+
+Undead King은 공용 BossEncounter를 사용하며 자연 Night population의 새 종이 아니다. 기존 Graveyard guardian1회 처치 marker가 왕묘를 영구 해제한다. 옛 visited 묘지도 guardian이 아직 cleared가 아니면 기존 수호자를 한 번 materialize하며 추가 수호자를 겹쳐 만들지 않는다. 왕묘 중심10unit 나무/돌 배치만 비워 중앙 전투 공간을 확보한다.
+
+Boss loot: Core T1×1 확정, Bone14~20, Iron Ingot2~4, Steel1~2, Crown20%×1. 물리 loot는 세계 공유1세트다. 참여했고 죽음/해결 때 살아 있으며 접속·반경24 조건을 만족하는 플레이어마다 XP120/Gold35를1회 준다. 소환 Skeleton은 기존 종/전투 수치, 이동만×1.11, no-loot/no-XP/no-Gold의 임시 actor다. 자연 spawn suppression은 활성 encounter23unit 내부의 무작위 undead 생성에만 적용한다. 기존 wildlife/Goblin/다른 묘지 생성은 전역 차단하지 않는다.

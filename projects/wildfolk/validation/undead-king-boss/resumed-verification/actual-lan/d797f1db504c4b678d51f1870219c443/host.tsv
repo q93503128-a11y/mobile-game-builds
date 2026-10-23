@@ -1,0 +1,16 @@
+2026-10-23T04:42:16.4319890Z	starting	PASS QA admission profile survivor
+2026-10-23T04:42:16.7928517Z	starting	PASS actual LAN Host
+2026-10-23T04:42:16.8078145Z	starting	PASS Host enters world
+2026-10-23T04:42:22.4101264Z	join_first	command
+2026-10-23T04:43:20.7617197Z	join_first	PASS existing guardian seals network tomb
+2026-10-23T04:43:21.2590321Z	join_first	PASS Host guardian unlock persisted flag
+2026-10-23T04:43:21.2636121Z	summon	command
+2026-10-23T04:43:24.6067443Z	summon	PASS one authoritative full HP spawn
+2026-10-23T04:43:24.6108158Z	summon	PASS duplicate offering blocked globally
+2026-10-23T04:43:30.6080964Z	summon	PASS 2P authored three adds
+2026-10-23T04:43:30.6096355Z	phase_two	command
+2026-10-23T04:43:31.0204417Z	phase_two	FAIL server transfers mark after Downed
+2026-10-23T04:43:31.0260452Z	failed	System.InvalidOperationException: server transfers mark after Downed
+  at Wildfolk.Editor.BossLanQa.Check (System.Boolean condition, System.String text) [0x00024] in C:\UnityProjects\Wildfolk\Assets\Wildfolk\Editor\BossLanQa.cs:35
+  at Wildfolk.Editor.BossLanQa+<Authority>d__55.MoveNext () [0x0048f] in C:\UnityProjects\Wildfolk\Assets\Wildfolk\Editor\BossLanQa.cs:131
+  at Wildfolk.Editor.BossLanQa+<Guard>d__21.MoveNext () [0x00046] in C:\UnityProjects\Wildfolk\Assets\Wildfolk\Editor\BossLanQa.cs:31

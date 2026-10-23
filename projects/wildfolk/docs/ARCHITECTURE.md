@@ -1,6 +1,6 @@
 # 현재 코드 연결
 
-2026-10-22 현재: generation3 / Save13 / Protocol20, Item134 / Recipe111. v1~10 이관과 generation1/2 reader를 유지한다. 아래 날짜별 Foundation 절은 구조의 도입 기록이며 현재 데이터는 CONTENT_EXPANSION/CREATURES_AND_LOOT/SAVE_PERSISTENCE를 따른다.
+2026-10-23 현재: generation3 / Save14 / Protocol21, Item136 / Recipe111. v1~10 이관과 generation1/2 reader를 유지한다. 아래 날짜별 Foundation 절은 구조의 도입 기록이며 현재 데이터는 CONTENT_EXPANSION/CREATURES_AND_LOOT/SAVE_PERSISTENCE를 따른다.
 
 시설 실행은 ProcessingScheduler의 공용0.1초 tick에 등록된 busy Host/SP 작업만 진행한다. HitFeedback는 피격 이벤트 동안 coroutine으로 동작한다. LootTable.Roll/ProcessingQueue.Costs/CavernNetwork의 exitNext가 중복 계산을 공유한다. UI는 visibility 변경에만 강제 layout, 처리 명칭은 recipe/language cache, LocalFirelight geometry는 definition 변경에만 설정한다. Save/Protocol 필드와 inactive logical advance는 유지한다.
 Runtime/InputSystem/UGUI,Editor,EditMode/PlayMode Tests를 분리한다. 실제 수치는Data ScriptableObject가 정본이고 Editor는 없는 초기 데이터를 생성하며 기존 수치를 보존한다. 씬은 프리팹 연결과 월드Bootstrap을 저장하고 수동 테스트 월드 배치 코드는 제거했다.
@@ -252,3 +252,14 @@ ClassCatalog(6 definition/54 node/milestones)→ClassProfiles(IAccountProgressio
 PlayerMedicine generic item category/application/HoT, PlayerBuildingService hold+atomic transaction, StructureMaintenance buffer/refund, PlayerTeamMarker 관측/LOS·만료를 담당한다. ClassHud는5Hz bounded context overlap, marker는NetworkPlayer.Active 최대4 순회. per-frame 전역 creature/placeable/POI 검색은 없다. marker 생성 순간의 관측된 landmark 표시만 확인한다.
 
 JournalUiBuilder는 기존 paper/font/icon을 사용하는 소형 Editor authoring helper이며 세 장면에 UI를 직렬화한다. JournalSkillNode는 Class/common 트리 상태만 표현한다. 런타임 UI 재생성·새 NetworkBehaviour·wire 변경은 없다.
+
+## Reusable Boss Foundation
+
+- BossDefinition/BossAttack: vitality/공격 shape·range·windup·recovery·phase 조건·연계/소환/territory/보상 config.
+- BossEncounter: Awakening→Chase/Windup/Strike/Recovery, Transition/Ritual, Returning, Dying/Ended. Host simulation만 target/피해/소환을 결정한다. 기존 Health/Navigation/시설 피해를 재사용한다.
+- BossWorld: boss ID별 전역 night identity, 기존 POI guard-cleared와 왕묘 연결, offering/저장 rollback, 고정한 pending roll→한 세계 snapshot 보상 commit.
+- BossMinion: 기존 Skeleton의 임시 encounter 소유권/PreferredTarget/이동 modifier/무보상·정리. 자연 population에 등록하지 않는다.
+- NetworkBoss: 서버 HP/state/phase/attack/direction/시작 timestamp/marked actor,10Hz와 상태 변경 즉시. 초기화가 NetworkObject.Spawn보다 먼저이므로 pre-spawn부터 listening server clock을 쓴다. 기존 server NetworkTransform으로 이동한다.
+- NetworkBossWorld/NetworkPoiSite: 소비한 밤/active 및 수호자 해제 replica. Client owner offering은 기존 NetworkFacilityInteractor RPC 검증 경계를 통한다.
+- UndeadKingVisual/BossTelegraph: 표현 전용 분절 포즈/범위·짧은 물리 균열·사망/ash/loot pause. BossIdentity/BossHud/TimeHud는 기존 경계를 확장했다.
+- AccessoryDefinition/AccessoryVisual: Head/Body/Utility와 별개 한 칸. 공용 장착 transaction/short catalog index replica/ID save, Anchor 설정에 따른 작은 부유 시각. 공격 stat을 더하지 않는다.

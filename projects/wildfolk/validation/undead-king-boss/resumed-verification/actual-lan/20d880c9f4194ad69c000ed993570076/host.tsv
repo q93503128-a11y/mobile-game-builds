@@ -1,0 +1,14 @@
+2026-10-23T04:48:31.9095189Z	starting	PASS QA admission profile explorer
+2026-10-23T04:48:32.1106980Z	starting	PASS actual LAN Host
+2026-10-23T04:48:32.1232922Z	starting	PASS Host enters world
+2026-10-23T04:48:36.3587933Z	join_first	command
+2026-10-23T04:49:36.0491602Z	join_first	PASS existing guardian seals network tomb
+2026-10-23T04:49:36.5398032Z	join_first	PASS Host guardian unlock persisted flag
+2026-10-23T04:49:36.5454219Z	summon	command
+2026-10-23T04:49:39.6599950Z	summon	PASS one authoritative full HP spawn
+2026-10-23T04:49:39.6656918Z	summon	PASS duplicate offering blocked globally
+2026-10-23T04:49:45.5646924Z	summon	FAIL 2P authored three adds
+2026-10-23T04:49:45.5694337Z	failed	System.InvalidOperationException: 2P authored three adds
+  at Wildfolk.Editor.BossLanQa.Check (System.Boolean condition, System.String text) [0x00024] in C:\UnityProjects\Wildfolk\Assets\Wildfolk\Editor\BossLanQa.cs:35
+  at Wildfolk.Editor.BossLanQa+<Authority>d__55.MoveNext () [0x003f6] in C:\UnityProjects\Wildfolk\Assets\Wildfolk\Editor\BossLanQa.cs:130
+  at Wildfolk.Editor.BossLanQa+<Guard>d__21.MoveNext () [0x00046] in C:\UnityProjects\Wildfolk\Assets\Wildfolk\Editor\BossLanQa.cs:31

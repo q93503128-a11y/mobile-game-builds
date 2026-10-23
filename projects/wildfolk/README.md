@@ -1,6 +1,6 @@
 # Lowfire
 
-Unity **6000.3.19f1 LTS / Universal 2D**, 모바일 Landscape(1920×1080) 탑다운 생존 게임이다. 표시명 Lowfire, 내부 Wildfolk namespace·경로·저장 식별자는 유지한다. 현재 alpha 콘텐츠는 **Item134 / Recipe111 / Save13 / Protocol20**, Workbench I→II→III와 Wood/Stone/Iron/Steel/Diamond 장비다.
+Unity **6000.3.19f1 LTS / Universal 2D**, 모바일 Landscape(1920×1080) 탑다운 생존 게임이다. 표시명 Lowfire, 내부 Wildfolk namespace·경로·저장 식별자는 유지한다. 현재 alpha 콘텐츠는 **Item136 / Recipe111 / Save14 / Protocol21**, Workbench I→II→III와 Wood/Stone/Iron/Steel/Diamond 장비다.
 
 ## 실행과 플레이
 
@@ -18,7 +18,7 @@ Hunger/Thirst, 재사용 Cup/Waterskin, 낚시, HP/Stamina 즉시 회복 음식�
 
 ## 저장과 협동
 
-Save13은 기존1~12를 읽고 다음 정상 Save에서 이관한다. Seed·generation version·game time·자원/생물 logical delta·시설·queue·가방·장비·성장·Camp 보급 잔량을 저장한다. Editor는 프로젝트 UserData, 빌드는 persistentDataPath, 격리 QA는 전용 Captures 경로를 쓴다. 원래 파일명과 checksum/atomic replace/backup을 유지한다. Home Continue/Pause Save·Save & return home, 기기 Background/Quit 저장을 제공하며 플레이어용 Load 버튼은 없다.
+Save14는 기존1~13를 읽고 다음 정상 Save에서 이관한다. Seed·generation version·game time·자원/생물 logical delta·시설·queue·가방·장비·성장·Camp 보급 잔량을 저장한다. Editor는 프로젝트 UserData, 빌드는 persistentDataPath, 격리 QA는 전용 Captures 경로를 쓴다. 원래 파일명과 checksum/atomic replace/backup을 유지한다. Home Continue/Pause Save·Save & return home, 기기 Background/Quit 저장을 제공하며 플레이어용 Load 버튼은 없다.
 
 Multiplayer는 Relay Room Code 또는 Local Network Host/Join이다. Host가 이동·전투·spawn/AI·채집·loot·가방·시설·상자·save를 결정한다. Client는 요청과 replica 표시다. 최대4인 admission 구조를 유지하며 실제4인 Relay·모바일·장시간 통합 검수는 별도다. Host 종료 시 세션도 끝나며 Host migration/Account/Cloud는 없다.
 
@@ -31,7 +31,7 @@ Multiplayer는 Relay Room Code 또는 Local Network Host/Join이다. Host가 이
 - 신규 생물/아이콘은 기존 Pillow 방식의 `tools/generate_creature_loot_art.py` 원본이다. 기존 art 출처는 [SOURCE_ART](docs/SOURCE_ART.md). 외부 게임 asset/code/layout을 복제하지 않는다.
 - Unity MCP/code는 허용한다. Windows 입력과 Focus/Show는 금지한다. View 메뉴는 기존 Game View만 Repaint하고 PlayUnfocused를 적용한다. 씬/에셋 재생성은 수작업 변경을 먼저 확인한다.
 
-실제 터치·손맛·재미·장시간 경제·Android 성능은 사용자 검증 대상이다. BGM/SFX 콘텐츠는 비어 있다. Boss/Undead King/Defense Objective/IV~VI/전기/총기/Pet/번식/상인/영구 Skin은 이번에 추가하지 않았다.
+실제 터치·손맛·재미·장시간 경제·Android 성능은 사용자 검증 대상이다. BGM/SFX 콘텐츠는 비어 있다. 첫 보스 Undead King과 공용 Boss Foundation을 제공한다. Defense Objective/IV~VI/전기/총기/Pet/번식/상인/영구 Skin은 제공하지 않는다.
 
 약초는 Forest/Wetlands에서 맨손으로 채집한다. 응급 붕대는 Hand에서 Fiber2+Herb1→20HP/8초, 기존 회복 연고는 Gland1+Herb1+Fiber2→즉시30HP다. 공용4초·붕대 비중첩, 자연회복/음식·기존 Station은 유지한다. [의약 조사·경제·검수](validation/medicine-expansion/REVIEW.md). Food Expansion2-B는 아래 Meal 선택을 추가했다.
 
@@ -39,7 +39,7 @@ Multiplayer는 Relay Room Code 또는 Local Network Host/Join이다. Host가 이
 
 ## Exploration / Utility 2-E
 
-현재 **Item134 / Recipe111 / Save11 / Protocol17**. WBII 광물 조사기(정지1.2초·반경18·보유 도구로 채취 가능한 광물8방향·6초 안내·12초 간격), WBI 신호 호각(근처 동료60m·20초·30초 간격)을 추가했다. 기존 Compass/Telescope/Beacon/Pan/3조명은 유지한다. Recall/Bedroll/Backpack은 보류. [감사·외부 비교·검증](validation/exploration-utility-expansion/REVIEW.md).
+2-E 도입 당시 **Item134 / Recipe111 / Save11 / Protocol17**. WBII 광물 조사기(정지1.2초·반경18·보유 도구로 채취 가능한 광물8방향·6초 안내·12초 간격), WBI 신호 호각(근처 동료60m·20초·30초 간격)을 추가했다. 기존 Compass/Telescope/Beacon/Pan/3조명은 유지한다. Recall/Bedroll/Backpack은 보류. [감사·외부 비교·검증](validation/exploration-utility-expansion/REVIEW.md).
 
 ## Base / Defense / POI2-F
 
@@ -58,3 +58,9 @@ Item134/Recipe111, generation3 유지. 공용 무제한Level·6Skill, 로컬 Cla
 Class Foundation 검수: 관련 EditMode고유53, Class PlayMode고유9(관련실행합집합), 실제2프로세스LAN/4actor simulation/MCP1920×1080검수통과. Android/Relay/실제4인/실제Ads·IAP는미검증이다. [실제결과와한계](validation/class-progression/REVIEW.md).
 
 Class 교정·Camp Journal(2026-10-22): remote admission 기본 Survivor/XP0/노드0, 명시 개발 verifier는 session-only, 처치 receipt 영속 제거·runtime512상한, Medic A2 의약 간격4→3.2초. MainMenu/Class/Character/공용Skill UI는 기존 수첩 계열로 재작성했다. Save13/Profile1/Protocol20 유지. [현재 교정·UI 검수](validation/ui-redesign/REVIEW.md).
+
+## Undead King / Boss Foundation (2026-10-23)
+
+기존 Graveyard 수호자 처치로 큰 왕묘가 영구 개방된다. 밤에 Bone10으로 소환하며 성공한 그 밤은 세계 전체에서 같은 보스를 다시 부를 수 없다. 다음 밤에 재시도한다. 보스 HP/피해/속도는1~4인 동일하고 Phase2 소환수만2/3/4/5마리다. 기존 방어 시설을 준비할 수 있다. 전원 이탈·전멸 시 걸어서 귀환하며 점진 회복하고, 낮이 되어도 진행 중 전투는 유지한다.
+
+Core T1은 공유 물리 보상1개 확정이며 현재 Recipe가 없다. Crown은20% 공유 추첨, Head와 별개 Accessory1칸에 장착한다. 체력35% 이하에서 이동+8%/받는 피해−10%, 공격 보너스는 없다. 날짜/현재 시기 HUD를 사용한다. [설계·수치·실제 검증 및 한계](validation/undead-king-boss/REVIEW.md). 아래 날짜별 절은 각 패스 도입 당시 기록이다.

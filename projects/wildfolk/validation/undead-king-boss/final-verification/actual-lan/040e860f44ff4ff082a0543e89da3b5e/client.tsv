@@ -1,0 +1,6 @@
+2026-10-23T07:42:10.5718231Z	starting	PASS QA admission profile explorer
+2026-10-23T07:42:10.6921892Z	join_first	PASS actual LAN join
+2026-10-23T07:42:13.3886705Z	join_first	ack join_first
+2026-10-23T07:43:05.9406143Z	failed	System.TimeoutException: rollback inventory replica; tomb=False unlocked=False local=False bone=-1
+  at Wildfolk.Editor.BossLanQa+<Wait>d__25.MoveNext () [0x000a7] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Editor\BossLanQa.cs:37
+  at Wildfolk.Editor.BossLanQa+<Guard>d__19.MoveNext () [0x00046] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Editor\BossLanQa.cs:28

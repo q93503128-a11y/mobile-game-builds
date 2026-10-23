@@ -10,7 +10,7 @@ namespace Wildfolk
         public PlayerPlacement Placement;
         public PlayerSurvival Survival;
         public GameplaySession Session;
-        public PrimaryActionKind Kind => Equipment.SelectedItem!=null && Equipment.SelectedItem.ExplorationUtility!=null ? PrimaryActionKind.Exploration : Equipment.SelectedItem!=null && Equipment.SelectedItem.Telescope ? PrimaryActionKind.Telescope : Equipment.SelectedItem!=null && (Equipment.SelectedItem.Armor!=null || Equipment.SelectedItem.EquippedLight!=null) ? PrimaryActionKind.Equip : Equipment.SelectedItem!=null && Equipment.SelectedItem.WaterCapacity>0 ? PrimaryActionKind.Water : Equipment.SelectedItem!=null && Equipment.SelectedItem.FishingRod ? PrimaryActionKind.Fish : Equipment.SelectedItem!=null && Equipment.SelectedItem.Ranged!=null ? PrimaryActionKind.Ranged : Equipment.ActivePlaceable!=null ? PrimaryActionKind.Place : Equipment.SelectedItem!=null && Equipment.SelectedItem.Consumable!=null ? PrimaryActionKind.Consume : PrimaryActionKind.Attack;
+        public PrimaryActionKind Kind => Equipment.SelectedItem!=null && Equipment.SelectedItem.ExplorationUtility!=null ? PrimaryActionKind.Exploration : Equipment.SelectedItem!=null && Equipment.SelectedItem.Telescope ? PrimaryActionKind.Telescope : Equipment.SelectedItem!=null && (Equipment.SelectedItem.Equippable) ? PrimaryActionKind.Equip : Equipment.SelectedItem!=null && Equipment.SelectedItem.WaterCapacity>0 ? PrimaryActionKind.Water : Equipment.SelectedItem!=null && Equipment.SelectedItem.FishingRod ? PrimaryActionKind.Fish : Equipment.SelectedItem!=null && Equipment.SelectedItem.Ranged!=null ? PrimaryActionKind.Ranged : Equipment.ActivePlaceable!=null ? PrimaryActionKind.Place : Equipment.SelectedItem!=null && Equipment.SelectedItem.Consumable!=null ? PrimaryActionKind.Consume : PrimaryActionKind.Attack;
         public event Action Changed;
         private ItemDefinition previous;
         private void Update() {if(previous==Equipment.SelectedItem)return;previous=Equipment.SelectedItem;Changed?.Invoke();}
@@ -31,7 +31,7 @@ namespace Wildfolk
         public Sprite ActionIcon(Sprite fist)
         {
             var item=Equipment.SelectedItem;
-            return item!=null && (item.ExplorationUtility!=null || item.Telescope || item.Tool!=null || item.Placement!=null || item.Consumable!=null || item.Armor!=null || item.FishingRod || item.WaterCapacity>0 || item.EquippedLight!=null) ? item.Icon : fist;
+            return item!=null && (item.ExplorationUtility!=null || item.Telescope || item.Tool!=null || item.Placement!=null || item.Consumable!=null || item.Equippable || item.FishingRod || item.WaterCapacity>0 || item.EquippedLight!=null) ? item.Icon : fist;
         }
     }
 }
