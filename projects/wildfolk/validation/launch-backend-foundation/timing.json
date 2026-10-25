@@ -1,0 +1,33 @@
+{
+  "startSHA": "23ae4341edb904923946f3bdcc0c72a2909dc8cd",
+  "perOperationTokens": null,
+  "events": [
+    {
+      "UTC": "2026-10-25T05:16:15.711944+00:00",
+      "stage": "Remote main fetched clean23ae434; canonical docs/Relay/Profile2 audited; official research in progress"
+    },
+    {
+      "UTC": "2026-10-25T05:34:52.539402+00:00",
+      "stage": "Account/Cloud/Alpha/support server and client sources written;30 Node model tests passed; Unity package compile and UI authoring in progress"
+    },
+    {
+      "UTC": "2026-10-25T06:45:20.325282+00:00",
+      "stage": "Final relevant tests, Android script compile, actual LAN, UI and user-save protection evidence collected; diff/secret review and main publication next"
+    }
+  ],
+  "phases": [
+    {
+      "name": "Initial audit, official research and first source pass",
+      "startUTC": "2026-10-25T05:16:15.711944+00:00",
+      "endUTC": "2026-10-25T05:34:52.539402+00:00",
+      "wallSeconds": 1116.827458
+    },
+    {
+      "name": "Implementation refinement, Unity/server validation, docs and final audit",
+      "startUTC": "2026-10-25T05:34:52.539402+00:00",
+      "endUTC": "2026-10-25T06:47:10.945366+00:00",
+      "wallSeconds": 4338.405964
+    }
+  ],
+  "measurementNote": "Phases are non-overlapping wall-clock windows, not model compute time. Individual process timings overlap these windows and must not be added. Exact per-operation tokens are unavailable."
+}

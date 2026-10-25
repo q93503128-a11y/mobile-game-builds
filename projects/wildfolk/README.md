@@ -20,7 +20,7 @@ Hunger/Thirst, 재사용 Cup/Waterskin, 낚시, HP/Stamina 즉시 회복 음식�
 
 Save14는 기존1~13를 읽고 다음 정상 Save에서 이관한다. Seed·generation version·game time·자원/생물 logical delta·시설·queue·가방·장비·성장·Camp 보급 잔량을 저장한다. Editor는 프로젝트 UserData, 빌드는 persistentDataPath, 격리 QA는 전용 Captures 경로를 쓴다. 원래 파일명과 checksum/atomic replace/backup을 유지한다. Home Continue/Pause Save·Save & return home, 기기 Background/Quit 저장을 제공하며 플레이어용 Load 버튼은 없다.
 
-Multiplayer는 Relay Room Code 또는 Local Network Host/Join이다. Host가 이동·전투·spawn/AI·채집·loot·가방·시설·상자·save를 결정한다. Client는 요청과 replica 표시다. 최대4인 admission 구조를 유지하며 실제4인 Relay·모바일·장시간 통합 검수는 별도다. Host 종료 시 세션도 끝나며 Host migration/Account/Cloud는 없다.
+Multiplayer는 Relay Room Code 또는 Local Network Host/Join이다. Host가 이동·전투·spawn/AI·채집·loot·가방·시설·상자·save를 결정한다. Client는 요청과 replica 표시다. 최대4인 admission 구조를 유지하며 실제4인 Relay·모바일·장시간 통합 검수는 별도다. Host 종료 시 세션도 끝나며 Host migration은 없다. Account/Cloud Foundation1은 아래 외부 설정이 완료되기 전 비활성이다.
 
 ## 정본·개발·검증
 
@@ -68,3 +68,9 @@ Core T1은 공유 물리 보상1개 확정이며 현재 Recipe가 없다. Crown�
 ## Post-Boss Stabilization (2026-10-25)
 
 LAN 검증 fixture의 잘못된 비활성 resource spawn을 제거하고 Host/Client 자원 집합·채집·청크 왕복·재접속·reHost 회귀를 추가했다. 주석 공급처의 지역 후보 소진 때만 실제 강변을 따라 제한된 결정적 fallback을 사용한다. 기존 정상 배치는 유지한다. Boss ClassXP는 Profile2의 최대1개 미완료 거래와 저장된 보상 확정을 대조해 복구한다. Save14/Protocol21/generation3 및 보스 수치·Item/Recipe는 유지한다. [원인·회귀·한계](validation/post-boss-stabilization/REVIEW.md).
+
+## Launch Backend Foundation1 (2026-10-25)
+
+Google Play Games v2 + 기존 Unity Authentication, 별도 CloudProfile1/계정 cache, Alpha 참여·영구 자격 이전 기반, Support ID·문의·audit/의심 flag·삭제 요청 UI와 서버 작업을 제공한다. 현재 UGS production 환경 한 개만 읽기 조회로 확인했고, Provider/Play Console 설정과 배포는 미확인이다.  BackendSettings.Enabled=false다. 로컬 SP/LAN/Host save는 유지하며 Save14/Profile2/Protocol21/generation3와 인게임 콘텐츠를 바꾸지 않는다. Alpha/현재 Production 현금 결제는 항상 불가하다.
+
+[1.0 범위](docs/LAUNCH_SCOPE.md) · [운영/데이터 경계](docs/BACKEND_OPERATIONS.md) · [외부 설정](docs/SETUP_REQUIRED.md) · [출시 차단 항목](docs/RELEASE_BLOCKERS.md) · [검증 기록](validation/launch-backend-foundation/REVIEW.md).

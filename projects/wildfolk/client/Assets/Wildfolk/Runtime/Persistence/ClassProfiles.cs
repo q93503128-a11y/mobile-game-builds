@@ -70,9 +70,10 @@ namespace Wildfolk
     public static class ClassProfiles
     {
         private sealed class NoWallet:IClassPurchaseWallet {public bool Available=>false;public bool Commit(string transaction,int price,Func<bool> grant)=>false;}
-        private static IAccountProgressionStore store;
+        private static IAccountProgressionStore store,cloudStore;
+        public static void AttachCloud(IAccountProgressionStore value){cloudStore=value;Changed?.Invoke();}
         public static IClassPurchaseWallet Premium {get;private set;}=new NoWallet();
-        public static IAccountProgressionStore Store=>store??(store=new LocalAccountProgressionStore(Path.Combine(Path.GetDirectoryName(SaveRepository.Default().Path),"Profiles")));
+        public static IAccountProgressionStore Store=>cloudStore??(store??(store=new LocalAccountProgressionStore(Path.Combine(Path.GetDirectoryName(SaveRepository.Default().Path),"Profiles"))));
         public static event Action Changed;
         public static string LocalId=>NetworkSession.Instance!=null && LocalPlayerIdentity.Valid(NetworkSession.Instance.LocalProfile)?NetworkSession.Instance.LocalProfile:LocalPlayerIdentity.Get();
         public static AccountProgression Local=>Store.Read(LocalId);
@@ -122,8 +123,8 @@ namespace Wildfolk
             return false;
         }
 #if UNITY_EDITOR || DEVELOPMENT_BUILD
-        public static void DevelopmentProviders(IAccountProgressionStore profiles,IClassPurchaseWallet wallet=null){store=profiles;Premium=wallet??new NoWallet();}
+        public static void DevelopmentProviders(IAccountProgressionStore profiles,IClassPurchaseWallet wallet=null){cloudStore=null;store=profiles;Premium=wallet??new NoWallet();}
 #endif
-        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]private static void Reset(){store=null;Premium=new NoWallet();Changed=null;}
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]private static void Reset(){cloudStore=null;store=null;Premium=new NoWallet();Changed=null;}
     }
 }

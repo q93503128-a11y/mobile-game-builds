@@ -123,3 +123,7 @@ Head/Body/Utility와 별개 Accessory1칸을 공유 PlayerEquipment transaction�
 ## Post-Boss Stabilization · ClassXP 내구성
 
 현재 로컬 profile은2이며1의 소유·선택·XP·노드·구매 의도를 보존해 이관한다. Boss 공용 XP120/Gold35의 world commit 전에 XP를 아직 가산하지 않은 profile PendingXP를 저장하고, 확정된 world receipt를 대조해 원래 Class에 가산+marker 제거를 원자 반영한다. 강제 종료 공백은 다음 profile 읽기에서 복구하며 최대1개 intent만 유지한다. 보스 ClassXP를 공용 Level/Skill XP로 합치지 않는다. 로컬 영속 진행과 원격 admission/session-only verifier의 구분은 유지한다. Client ProgressRpc도 영속 profile을 쓰지 않고 transient ClassXP만 갱신하며, join/reconnect 시 현재 session XP를 받는다. Save14/Protocol21과 기존 Class/노드/수치는 그대로다. [저장 경계](SAVE_PERSISTENCE.md), [fault test와 실제 검증](../validation/post-boss-stabilization/REVIEW.md).
+
+## Launch Backend Foundation1 · Class account mirror
+
+6Class/54node와 월드 공용Level/Skill/Gold는 유지한다. 일회성 Profile2 import는 prelaunch local unverified이며 미래 Gem/IAP/Entitlement 획득 증명이 아니다. 기존 Cloud profile은 별도 account cache로 받아 guest 파일을 덮지 않는다. 이후 host-local Class snapshot은 canonical validation/정확한 ClassRevision/비감소 XP/ownership 보존으로 명시 sync한다. PremiumGem Class의 새 ownership 및 account entitlement는 이 snapshot 요청으로 지급하지 않는다. Cloud conflict에서 max/union/자동 overwrite는 하지 않는다. 원격 MP admission은 기존 검증 경계이며 Client cloud claim만으로 권위를 얻지 않는다. [운영·신뢰 경계](BACKEND_OPERATIONS.md).

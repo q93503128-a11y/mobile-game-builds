@@ -1,0 +1,250 @@
+TAP version 13
+# Subtest: feedback metadata does not cause a class revision conflict
+ok 1 - feedback metadata does not cause a class revision conflict
+  ---
+  duration_ms: 6.5018
+  type: 'test'
+  ...
+# Subtest: profile creation and existing path keep support/created/class canonical
+ok 2 - profile creation and existing path keep support/created/class canonical
+  ---
+  duration_ms: 0.4241
+  type: 'test'
+  ...
+# Subtest: one-time Profile2 import validates and durable receipt refuses second import
+ok 3 - one-time Profile2 import validates and durable receipt refuses second import
+  ---
+  duration_ms: 0.5711
+  type: 'test'
+  ...
+# Subtest: Production refuses legacy import before creating account
+ok 4 - Production refuses legacy import before creating account
+  ---
+  duration_ms: 0.1625
+  type: 'test'
+  ...
+# Subtest: invalid import leaves no partial root
+ok 5 - invalid import leaves no partial root
+  ---
+  duration_ms: 0.1511
+  type: 'test'
+  ...
+# Subtest: Profile2 payload rejects paths/pending/unknown schema
+ok 6 - Profile2 payload rejects paths/pending/unknown schema
+  ---
+  duration_ms: 0.3673
+  type: 'test'
+  ...
+# Subtest: entitlement additive grant is stable and duplicate safe
+ok 7 - entitlement additive grant is stable and duplicate safe
+  ---
+  duration_ms: 0.3575
+  type: 'test'
+  ...
+# Subtest: client cannot grant entitlement; suspicious flag without ban
+ok 8 - client cannot grant entitlement; suspicious flag without ban
+  ---
+  duration_ms: 0.311
+  type: 'test'
+  ...
+# Subtest: Alpha enrollment idempotent and participation does not grant production reward
+ok 9 - Alpha enrollment idempotent and participation does not grant production reward
+  ---
+  duration_ms: 0.5283
+  type: 'test'
+  ...
+# Subtest: Alpha enrollment rejects unlinked
+ok 10 - Alpha enrollment rejects unlinked
+  ---
+  duration_ms: 0.3398
+  type: 'test'
+  ...
+# Subtest: Alpha enrollment rejects noProof
+ok 11 - Alpha enrollment rejects noProof
+  ---
+  duration_ms: 0.2564
+  type: 'test'
+  ...
+# Subtest: Alpha enrollment rejects closed
+ok 12 - Alpha enrollment rejects closed
+  ---
+  duration_ms: 0.2422
+  type: 'test'
+  ...
+# Subtest: Alpha enrollment rejects badBuild
+ok 13 - Alpha enrollment rejects badBuild
+  ---
+  duration_ms: 0.2143
+  type: 'test'
+  ...
+# Subtest: Alpha enrollment rejects outsideWindow
+ok 14 - Alpha enrollment rejects outsideWindow
+  ---
+  duration_ms: 0.1844
+  type: 'test'
+  ...
+# Subtest: Development real-money boundary hard-off
+ok 15 - Development real-money boundary hard-off
+  ---
+  duration_ms: 0.204
+  type: 'test'
+  ...
+# Subtest: Alpha real-money boundary hard-off
+ok 16 - Alpha real-money boundary hard-off
+  ---
+  duration_ms: 0.1562
+  type: 'test'
+  ...
+# Subtest: Production real-money boundary hard-off
+ok 17 - Production real-money boundary hard-off
+  ---
+  duration_ms: 0.1772
+  type: 'test'
+  ...
+# Subtest: wrong environment does not touch record
+ok 18 - wrong environment does not touch record
+  ---
+  duration_ms: 0.2949
+  type: 'test'
+  ...
+# Subtest: Alpha/Production reject fixture identity
+ok 19 - Alpha/Production reject fixture identity
+  ---
+  duration_ms: 0.1782
+  type: 'test'
+  ...
+# Subtest: support IDs stable and project-separated,10000 sample uniqueness
+ok 20 - support IDs stable and project-separated,10000 sample uniqueness
+  ---
+  duration_ms: 24.5649
+  type: 'test'
+  ...
+# Subtest: feedback validation and no text leakage into audit
+ok 21 - feedback validation and no text leakage into audit
+  ---
+  duration_ms: 1.3446
+  type: 'test'
+  ...
+# Subtest: feedback same key returns same ticket, changed payload flags abuse
+ok 22 - feedback same key returns same ticket, changed payload flags abuse
+  ---
+  duration_ms: 0.4509
+  type: 'test'
+  ...
+# Subtest: feedback server cooldown and daily cap
+ok 23 - feedback server cooldown and daily cap
+  ---
+  duration_ms: 0.7332
+  type: 'test'
+  ...
+# Subtest: diagnostics allowlist removes tokens paths emails oversized opaque data
+ok 24 - diagnostics allowlist removes tokens paths emails oversized opaque data
+  ---
+  duration_ms: 1.3468
+  type: 'test'
+  ...
+# Subtest: bounded audit and operations; old idempotency key rejected
+ok 25 - bounded audit and operations; old idempotency key rejected
+  ---
+  duration_ms: 21.4978
+  type: 'test'
+  ...
+# Subtest: CAS conflict retries bounded, never unconditional overwrite
+ok 26 - CAS conflict retries bounded, never unconditional overwrite
+  ---
+  duration_ms: 0.4709
+  type: 'test'
+  ...
+# Subtest: cloud class replace requires exact revision, not max or union
+ok 27 - cloud class replace requires exact revision, not max or union
+  ---
+  duration_ms: 0.4211
+  type: 'test'
+  ...
+# Subtest: ongoing local class sync cannot unlock premium ownership
+ok 28 - ongoing local class sync cannot unlock premium ownership
+  ---
+  duration_ms: 0.6952
+  type: 'test'
+  ...
+# Subtest: deletion preparation needs confirmation, idempotent, not falsely complete
+ok 29 - deletion preparation needs confirmation, idempotent, not falsely complete
+  ---
+  duration_ms: 0.4564
+  type: 'test'
+  ...
+# Subtest: cloud schema rejects unsupported versions
+ok 30 - cloud schema rejects unsupported versions
+  ---
+  duration_ms: 0.1597
+  type: 'test'
+  ...
+# Subtest: Play Integrity binds player/environment/operation/build, package/cert/version/license/time
+ok 31 - Play Integrity binds player/environment/operation/build, package/cert/version/license/time
+  ---
+  duration_ms: 0.8554
+  type: 'test'
+  ...
+# Subtest: first creation and existing path never re-import through unchecked upsert
+ok 32 - first creation and existing path never re-import through unchecked upsert
+  ---
+  duration_ms: 2.6114
+  type: 'test'
+  ...
+# Subtest: concurrent first requests use existing-gate CAS, retry reads winner
+ok 33 - concurrent first requests use existing-gate CAS, retry reads winner
+  ---
+  duration_ms: 0.6024
+  type: 'test'
+  ...
+# Subtest: missing bootstrap gate fails closed without account write
+ok 34 - missing bootstrap gate fails closed without account write
+  ---
+  duration_ms: 0.3748
+  type: 'test'
+  ...
+# Subtest: unknown initial write outcome retains gate; no unsafe lease expiry
+ok 35 - unknown initial write outcome retains gate; no unsafe lease expiry
+  ---
+  duration_ms: 0.2309
+  type: 'test'
+  ...
+# Subtest: existing updates require write lock and reject stale revision
+ok 36 - existing updates require write lock and reject stale revision
+  ---
+  duration_ms: 0.4228
+  type: 'test'
+  ...
+# Subtest: deletion refuses an omitted real environment before any mutation
+ok 37 - deletion refuses an omitted real environment before any mutation
+  ---
+  duration_ms: 1.4973
+  type: 'test'
+  ...
+# Subtest: deletion cleanup failure never deletes Auth; retry resumes after durable journal
+ok 38 - deletion cleanup failure never deletes Auth; retry resumes after durable journal
+  ---
+  duration_ms: 1.5164
+  type: 'test'
+  ...
+# Subtest: Auth deletion failure retains pending job, no false completion
+ok 39 - Auth deletion failure retains pending job, no false completion
+  ---
+  duration_ms: 0.2713
+  type: 'test'
+  ...
+# Subtest: Alpha migration rereads trusted source; dry-run and one additive audited grant
+ok 40 - Alpha migration rereads trusted source; dry-run and one additive audited grant
+  ---
+  duration_ms: 10.1183
+  type: 'test'
+  ...
+1..40
+# tests 40
+# suites 0
+# pass 40
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 166.4754

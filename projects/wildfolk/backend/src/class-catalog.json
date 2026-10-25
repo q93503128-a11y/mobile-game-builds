@@ -1,0 +1,270 @@
+{
+  "Milestones": [
+    50,
+    180,
+    400,
+    750,
+    1200,
+    1800
+  ],
+  "Classes": [
+    {
+      "Id": "survivor",
+      "Currency": "Gold",
+      "Price": 0,
+      "Nodes": [
+        {
+          "Id": "A1",
+          "Prerequisite": ""
+        },
+        {
+          "Id": "A2",
+          "Prerequisite": "A1"
+        },
+        {
+          "Id": "A3",
+          "Prerequisite": "A2"
+        },
+        {
+          "Id": "B1",
+          "Prerequisite": ""
+        },
+        {
+          "Id": "B2",
+          "Prerequisite": "B1"
+        },
+        {
+          "Id": "B3",
+          "Prerequisite": "B2"
+        },
+        {
+          "Id": "C1",
+          "Prerequisite": ""
+        },
+        {
+          "Id": "C2",
+          "Prerequisite": "C1"
+        },
+        {
+          "Id": "C3",
+          "Prerequisite": "C2"
+        }
+      ]
+    },
+    {
+      "Id": "warrior",
+      "Currency": "Gold",
+      "Price": 60,
+      "Nodes": [
+        {
+          "Id": "A1",
+          "Prerequisite": ""
+        },
+        {
+          "Id": "A2",
+          "Prerequisite": "A1"
+        },
+        {
+          "Id": "A3",
+          "Prerequisite": "A2"
+        },
+        {
+          "Id": "B1",
+          "Prerequisite": ""
+        },
+        {
+          "Id": "B2",
+          "Prerequisite": "B1"
+        },
+        {
+          "Id": "B3",
+          "Prerequisite": "B2"
+        },
+        {
+          "Id": "C1",
+          "Prerequisite": ""
+        },
+        {
+          "Id": "C2",
+          "Prerequisite": "C1"
+        },
+        {
+          "Id": "C3",
+          "Prerequisite": "C2"
+        }
+      ]
+    },
+    {
+      "Id": "hunter",
+      "Currency": "Gold",
+      "Price": 60,
+      "Nodes": [
+        {
+          "Id": "A1",
+          "Prerequisite": ""
+        },
+        {
+          "Id": "A2",
+          "Prerequisite": "A1"
+        },
+        {
+          "Id": "A3",
+          "Prerequisite": "A2"
+        },
+        {
+          "Id": "B1",
+          "Prerequisite": ""
+        },
+        {
+          "Id": "B2",
+          "Prerequisite": "B1"
+        },
+        {
+          "Id": "B3",
+          "Prerequisite": "B2"
+        },
+        {
+          "Id": "C1",
+          "Prerequisite": ""
+        },
+        {
+          "Id": "C2",
+          "Prerequisite": "C1"
+        },
+        {
+          "Id": "C3",
+          "Prerequisite": "C2"
+        }
+      ]
+    },
+    {
+      "Id": "medic",
+      "Currency": "Gold",
+      "Price": 60,
+      "Nodes": [
+        {
+          "Id": "A1",
+          "Prerequisite": ""
+        },
+        {
+          "Id": "A2",
+          "Prerequisite": "A1"
+        },
+        {
+          "Id": "A3",
+          "Prerequisite": "A2"
+        },
+        {
+          "Id": "B1",
+          "Prerequisite": ""
+        },
+        {
+          "Id": "B2",
+          "Prerequisite": "B1"
+        },
+        {
+          "Id": "B3",
+          "Prerequisite": "B2"
+        },
+        {
+          "Id": "C1",
+          "Prerequisite": ""
+        },
+        {
+          "Id": "C2",
+          "Prerequisite": "C1"
+        },
+        {
+          "Id": "C3",
+          "Prerequisite": "C2"
+        }
+      ]
+    },
+    {
+      "Id": "explorer",
+      "Currency": "Gold",
+      "Price": 60,
+      "Nodes": [
+        {
+          "Id": "A1",
+          "Prerequisite": ""
+        },
+        {
+          "Id": "A2",
+          "Prerequisite": "A1"
+        },
+        {
+          "Id": "A3",
+          "Prerequisite": "A2"
+        },
+        {
+          "Id": "B1",
+          "Prerequisite": ""
+        },
+        {
+          "Id": "B2",
+          "Prerequisite": "B1"
+        },
+        {
+          "Id": "B3",
+          "Prerequisite": "B2"
+        },
+        {
+          "Id": "C1",
+          "Prerequisite": ""
+        },
+        {
+          "Id": "C2",
+          "Prerequisite": "C1"
+        },
+        {
+          "Id": "C3",
+          "Prerequisite": "C2"
+        }
+      ]
+    },
+    {
+      "Id": "engineer",
+      "Currency": "PremiumGem",
+      "Price": 0,
+      "Nodes": [
+        {
+          "Id": "A1",
+          "Prerequisite": ""
+        },
+        {
+          "Id": "A2",
+          "Prerequisite": "A1"
+        },
+        {
+          "Id": "A3",
+          "Prerequisite": "A2"
+        },
+        {
+          "Id": "B1",
+          "Prerequisite": ""
+        },
+        {
+          "Id": "B2",
+          "Prerequisite": "B1"
+        },
+        {
+          "Id": "B3",
+          "Prerequisite": "B2"
+        },
+        {
+          "Id": "C1",
+          "Prerequisite": ""
+        },
+        {
+          "Id": "C2",
+          "Prerequisite": "C1"
+        },
+        {
+          "Id": "C3",
+          "Prerequisite": "C2"
+        }
+      ]
+    }
+  ]
+}

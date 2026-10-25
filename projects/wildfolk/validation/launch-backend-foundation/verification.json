@@ -1,0 +1,75 @@
+{
+  "UTC": "2026-10-25T06:45:20.324289+00:00",
+  "Unity": {
+    "model": {
+      "total": "38",
+      "passed": "38",
+      "failed": "0",
+      "duration": "33.3288459",
+      "start-time": "2026-10-25 06:33:46Z",
+      "end-time": "2026-10-25 06:34:20Z"
+    },
+    "play": {
+      "total": "4",
+      "passed": "4",
+      "failed": "0",
+      "duration": "17.6480187",
+      "start-time": "2026-10-25 06:19:39Z",
+      "end-time": "2026-10-25 06:19:57Z"
+    }
+  },
+  "finalAccountEdit": {
+    "total": 14,
+    "passed": 14,
+    "failed": 0,
+    "skipped": 0,
+    "durationSeconds": 38.1520011,
+    "resultState": "Passed"
+  },
+  "relatedEditUniqueCases": 40,
+  "finalPlay": {
+    "total": 4,
+    "passed": 4,
+    "failed": 0,
+    "skipped": 0,
+    "durationSeconds": 19.2535572,
+    "resultState": "Passed"
+  },
+  "relatedPlayUniqueCases": 4,
+  "serverTests": {
+    "UTC": "2026-10-25T06:43:50.759445+00:00",
+    "command": "node --test --test-reporter=tap backend/tests/*.test.cjs",
+    "exit": 0,
+    "tests": 40,
+    "passed": 40
+  },
+  "androidScriptCompile": {
+    "Passed": true,
+    "AlphaFixtureExcluded": true,
+    "ProductionFixtureExcluded": true,
+    "AlphaAssemblies": 57,
+    "ProductionAssemblies": 57,
+    "Seconds": 63.548448,
+    "Error": ""
+  },
+  "actualLan": {
+    "host.tsv": {
+      "passCount": 33,
+      "completed": true
+    },
+    "client.tsv": {
+      "passCount": 16,
+      "completed": true
+    }
+  },
+  "actualRelayAllocation": false,
+  "actualGoogleSignIn": false,
+  "actualCloudDeployment": false,
+  "McpUi": "isolated Editor fixture only; six screenshots inspected; no real cloud success claim",
+  "userSavesUnchanged": true,
+  "Save": 14,
+  "Profile": 2,
+  "Protocol": 21,
+  "generation": 3,
+  "externalBackendEnabled": false
+}

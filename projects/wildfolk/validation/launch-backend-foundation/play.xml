@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="4" result="Passed" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-25 06:19:39Z" end-time="2026-10-25 06:19:57Z" duration="17.6480187">
+  <test-suite type="TestSuite" id="1236" name="Wildfolk" fullname="Wildfolk" runstate="Runnable" testcasecount="188" result="Passed" start-time="2026-10-25 06:19:39Z" end-time="2026-10-25 06:19:57Z" duration="17.648019" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <test-suite type="Assembly" id="1233" name="Wildfolk.Tests.PlayMode.dll" fullname="C:/Users/User/Documents/ChatGPT/문승준 모바일/canonical/projects/wildfolk/tests/artifacts/unity/Library/ScriptAssemblies/Wildfolk.Tests.PlayMode.dll" runstate="Runnable" testcasecount="188" result="Passed" start-time="2026-10-25 06:19:39Z" end-time="2026-10-25 06:19:57Z" duration="17.641675" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="16144" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <test-suite type="TestSuite" id="1234" name="Wildfolk" fullname="Wildfolk" runstate="Runnable" testcasecount="188" result="Passed" start-time="2026-10-25 06:19:39Z" end-time="2026-10-25 06:19:57Z" duration="17.641056" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1235" name="Tests" fullname="Wildfolk.Tests" runstate="Runnable" testcasecount="188" result="Passed" start-time="2026-10-25 06:19:39Z" end-time="2026-10-25 06:19:57Z" duration="17.640740" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1004" name="AccountFoundationPlayTests" fullname="Wildfolk.Tests.AccountFoundationPlayTests" classname="Wildfolk.Tests.AccountFoundationPlayTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-25 06:19:39Z" end-time="2026-10-25 06:19:43Z" duration="4.257974" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1005" name="AccountJournalAndFeedbackUseRealAuthoredControls" fullname="Wildfolk.Tests.AccountFoundationPlayTests.AccountJournalAndFeedbackUseRealAuthoredControls" methodname="AccountJournalAndFeedbackUseRealAuthoredControls" classname="Wildfolk.Tests.AccountFoundationPlayTests" runstate="Runnable" seed="541167773" result="Passed" start-time="2026-10-25 06:19:39Z" end-time="2026-10-25 06:19:40Z" duration="0.492900" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1006" name="OfflineAuthenticationDoesNotBlockSingleplayerSaveAndHome" fullname="Wildfolk.Tests.AccountFoundationPlayTests.OfflineAuthenticationDoesNotBlockSingleplayerSaveAndHome" methodname="OfflineAuthenticationDoesNotBlockSingleplayerSaveAndHome" classname="Wildfolk.Tests.AccountFoundationPlayTests" runstate="Runnable" seed="1816946751" result="Passed" start-time="2026-10-25 06:19:40Z" end-time="2026-10-25 06:19:43Z" duration="3.755371" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1022" name="ClassProgressionPlayTests" fullname="Wildfolk.Tests.ClassProgressionPlayTests" classname="Wildfolk.Tests.ClassProgressionPlayTests" runstate="Runnable" testcasecount="9" result="Passed" start-time="2026-10-25 06:19:43Z" end-time="2026-10-25 06:19:57Z" duration="13.373813" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1023" name="LobbyOwnershipPurchaseTreeAndSessionLock" fullname="Wildfolk.Tests.ClassProgressionPlayTests.LobbyOwnershipPurchaseTreeAndSessionLock" methodname="LobbyOwnershipPurchaseTreeAndSessionLock" classname="Wildfolk.Tests.ClassProgressionPlayTests" runstate="Runnable" seed="531722676" result="Passed" start-time="2026-10-25 06:19:43Z" end-time="2026-10-25 06:19:52Z" duration="8.936630" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1024" name="SharedGrowthMigrationAndProfileXP" fullname="Wildfolk.Tests.ClassProgressionPlayTests.SharedGrowthMigrationAndProfileXP" methodname="SharedGrowthMigrationAndProfileXP" classname="Wildfolk.Tests.ClassProgressionPlayTests" runstate="Runnable" seed="814284464" result="Passed" start-time="2026-10-25 06:19:52Z" end-time="2026-10-25 06:19:57Z" duration="4.433955" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[<b><color=#2EA3FF>MCP-FOR-UNITY</color></b>: [TestRunnerNoThrottle] Restored Interaction Mode after test run.
+Saving results to: C:/Users/User/AppData/LocalLow/DefaultCompany/Wildfolk\TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

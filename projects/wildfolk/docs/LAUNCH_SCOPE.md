@@ -1,0 +1,21 @@
+# Lowfire 1.0 · Launch Scope
+
+2026-10-25 기준 인게임 범위를 잠근다. 현재 실제 정본은 Item136 / Recipe111 / Save14 / Profile2 / Protocol21 / generation3다.
+
+## 1.0 인게임
+
+생존 시작 → Workbench I → Iron/Copper/Tin/Bronze → Workbench II → Steel → Caverns/Deep Caverns → Workbench III → Diamond/Crystal → 6Class 성장 → Graveyard → Undead King.
+
+현재 biome/cavern/deep cavern, 생존·제작·건축·방어·생물/적, Death/Revive, 1~4인 협동 경계, 기존 Accessory를 포함한다. 검증하지 않은 실제4인/Relay/모바일 품질을 출시 완료로 간주하지 않는다.
+
+## 출시 전 외부 시스템
+
+이번 Foundation1: Account, Cloud Account Profile, Alpha 참여/영구 entitlement 이전 기반, 운영·문의·개인정보/삭제 hook. 외부 설정은 SETUP_REQUIRED와 RELEASE_BLOCKERS를 따른다.
+
+별도 다음 패스: Gem 실제 경제, Achievement, Attendance, Rewarded Ads, IAP, Audio, 최종 출시 polish. 이번에는 해당 콘텐츠/SDK/상품/실제 결제를 추가하지 않았다. Alpha와 현재 Production의 현금 결제는 코드·서버 양쪽에서 항상 거절한다.
+
+## 후속 업데이트
+
+Mount, WB IV–VI, Boss Core 사용처, 추가 Boss/대형 biome, Defense Objective/Day10 major event, Electricity/Guns, Pet/Breeding/Merchant/Farming, Story/Permanent Skin, Recall/Bedroll/Backpack, 본격 Status Effect content.
+
+이 목록은 이번 패스 구현 목록이 아니다. Foundation1 완료 후 다음 사용자 지시까지 멈춘다.

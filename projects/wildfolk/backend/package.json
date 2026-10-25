@@ -1,0 +1,13 @@
+{
+  "name": "lowfire-launch-backend",
+  "private": true,
+  "version": "1.0.0",
+  "type": "commonjs",
+  "scripts": {
+    "test": "node --test tests/*.test.cjs",
+    "bundle": "node tools/bundle.cjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

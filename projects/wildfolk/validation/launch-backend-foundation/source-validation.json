@@ -1,0 +1,22 @@
+{
+  "UTC": "2026-10-25T06:45:39.039723+00:00",
+  "command": "python tests/validate_visual_project.py client",
+  "exit": 0,
+  "output": "PASS: Unity source structure, Landscape settings, 1608 unique asset GUIDs, sprite references and visible text.",
+  "ownSourceDiffCheck": 0,
+  "vendorWhitespacePreserved": true,
+  "manualReview": [
+    "Shared Relay bootstrap/default auth profile unchanged while disabled",
+    "PGS/EDM one official distribution; licenses present; no duplicate UPM EDM",
+    "Canonical new account cache never overwrites guest Profile2/world",
+    "Deletion request clears only current session/account directory after receipt; pending is not complete",
+    "Cloud writes Protected/Private and CAS; unknown initial write retains creation gate",
+    "Server/client entitlement and real-money boundary hard-off",
+    "Scene existing object IDs preserved; six existing semantic modifications",
+    "No gameplay data/Save/Profile/Protocol changes",
+    "Actual external operations unconfigured; disabled release gates and setup docs explicit"
+  ],
+  "stagedFileCount": 306,
+  "originalVendorOrRawEvidenceWhitespaceWarnings": 254,
+  "rawEvidenceWhitespacePreserved": true
+}

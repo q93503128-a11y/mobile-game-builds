@@ -18,12 +18,7 @@ namespace Wildfolk
     public sealed class RelayRoomConnection : IRoomConnection
     {
         public static string AuthenticationProfile="default";
-        private static async Task Initialize()
-        {
-            if(UnityServices.State!=ServicesInitializationState.Initialized)
-                await UnityServices.InitializeAsync(new InitializationOptions().SetProfile(AuthenticationProfile));
-            if(!AuthenticationService.Instance.IsSignedIn)await AuthenticationService.Instance.SignInAnonymouslyAsync();
-        }
+        private static Task Initialize()=>UgsBootstrap.EnsureAnonymous(AuthenticationProfile);
         public static bool ValidCode(string code)
         {if(string.IsNullOrWhiteSpace(code) || code.Length<6 || code.Length>12)return false;foreach(var c in code)if(!(c>='A' && c<='Z' || c>='0' && c<='9'))return false;return true;}
         public async Task<string> Host(UnityTransport transport,int maximumPlayers)

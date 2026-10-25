@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ugs-config-schemas.unity3d.com/v1/project-access-policy.schema.json",
+  "Statements": [
+    {
+      "Sid": "lowfire_deny_player_cloud_writes",
+      "Action": [
+        "Write"
+      ],
+      "Effect": "Deny",
+      "Principal": "Player",
+      "Resource": "urn:ugs:cloud-save:/**",
+      "Version": "1.0.0"
+    },
+    {
+      "Sid": "lowfire_allow_player_queries",
+      "Action": [
+        "Write"
+      ],
+      "Effect": "Allow",
+      "Principal": "Player",
+      "Resource": "urn:ugs:cloud-save:/**/query",
+      "Version": "1.0.1"
+    }
+  ]
+}

@@ -63,7 +63,7 @@ namespace Wildfolk.Editor
             Action(confirm.transform,"Cancel","ui.action.cancel",new Vector2(-230,-160),new Vector2(340,72),home.ShowHome,false);
             Action(confirm.transform,"Start New World","home.new_action",new Vector2(190,-160),new Vector2(400,72),home.BeginNew,true);home.Confirm.SetActive(false);
             var events=new GameObject("EventSystem",typeof(EventSystem),typeof(InputSystemUIInputModule));events.GetComponent<EventSystem>().sendNavigationEvents=false;var input=events.GetComponent<InputSystemUIInputModule>();input.UnassignActions();input.actionsAsset=uiActions;input.point=point;input.leftClick=click;
-            EditorSceneManager.SaveScene(scene,ScenePath);EditorBuildSettings.scenes=new[]{new EditorBuildSettingsScene(ScenePath,true),new EditorBuildSettingsScene(GameplaySceneBuilder.ScenePath,true),new EditorBuildSettingsScene(MultiplayerSceneBuilder.ScenePath,true)};AssetDatabase.SaveAssets();
+            EditorSceneManager.SaveScene(scene,ScenePath);EditorBuildSettings.scenes=new[]{new EditorBuildSettingsScene(ScenePath,true),new EditorBuildSettingsScene(GameplaySceneBuilder.ScenePath,true),new EditorBuildSettingsScene(MultiplayerSceneBuilder.ScenePath,true)};AssetDatabase.SaveAssets();AccountUiBuilder.Build();
         }
         private static readonly Color32 Ink=new Color32(49,63,48,255);
         private static Button JournalAction(Transform parent,string name,string key,Vector2 position,Vector2 size,UnityEngine.Events.UnityAction action,bool primary)

@@ -33,3 +33,7 @@ Save14(1~13 이관)/Protocol21. Host만 spawn/AI/목표/피해/사망/loot roll/
 ## 첫 production boss의 규칙
 
 Undead King은 거대 일반 Skeleton이 아닌 분절형 전사왕이다. 공격은 검/몸 준비와 제한된 지면 윤곽으로 읽는다. HP70/35% 경계, 무한 추적 없는 진군3타, Phase2 의식과 제한 wave/해당 wave 생존 동안 Skull Mark, Phase3 잔여 wave 유지·새 wave 금지다. 여러 사람이 모이면 쉬워지며 보스 본체 인원별 stat scaling은 없다. 수치 정본은 BALANCE, 저장 경계는 SAVE_PERSISTENCE다. 새 보스는 data/config와 별도 표현을 추가하고 공용 EnemyController에 종 이름 분기를 넣지 않는다.
+
+## 1.0 Launch Scope lock · 2026-10-25
+
+인게임 범위는 WB I–III/Diamond·Crystal/현재 biome·cavern·deep/생존·제작·건축·생물/6Class/Death·Revive/협동/Undead King/Accessory까지 잠근다. Account·Cloud·운영은 외부 출시 기반이며 신규 progression을 추가하지 않는다. Gem/Achievement/Attendance/Ads/IAP/Audio는 후속 별도 패스다. Mount/IV–VI/Core 사용처/추가 Boss 등은 이후 업데이트다. 전체 분류는 [LAUNCH_SCOPE](LAUNCH_SCOPE.md)를 정본으로 한다.

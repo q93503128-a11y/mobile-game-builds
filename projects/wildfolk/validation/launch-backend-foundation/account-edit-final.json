@@ -1,0 +1,165 @@
+{
+  "job_id": "f0500e925ad84cfdaeb4da61ce851a8a",
+  "status": "succeeded",
+  "mode": "EditMode",
+  "started_unix_ms": 1792910532852,
+  "finished_unix_ms": 1792910576935,
+  "last_update_unix_ms": 1792910576935,
+  "progress": {
+    "completed": 14,
+    "total": 14,
+    "current_test_full_name": null,
+    "current_test_started_unix_ms": null,
+    "last_finished_test_full_name": "Wildfolk.Tests.AccountFoundationTests.WrongCloudSchemaOrIdentityRejected",
+    "last_finished_unix_ms": 1792910576805,
+    "stuck_suspected": false,
+    "editor_is_focused": false,
+    "run_in_background": true,
+    "focus_nudge_attempts": null,
+    "focus_nudge_limit": null,
+    "focus_nudge_status": null,
+    "blocked_reason": null,
+    "failures_so_far": [],
+    "failures_capped": false
+  },
+  "error": null,
+  "result": {
+    "mode": "EditMode",
+    "summary": {
+      "total": 14,
+      "passed": 14,
+      "failed": 0,
+      "skipped": 0,
+      "durationSeconds": 38.1520011,
+      "resultState": "Passed"
+    },
+    "results": [
+      {
+        "name": "AcceptedDeletionClearsCurrentAccountSessionCacheButPreservesGuestAndWorld",
+        "fullName": "Wildfolk.Tests.AccountFoundationTests.AcceptedDeletionClearsCurrentAccountSessionCacheButPreservesGuestAndWorld",
+        "state": "Passed",
+        "durationSeconds": 4.054289,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "AccountCacheDoesNotOverwriteGuestAndMarksLocalWritesDirty",
+        "fullName": "Wildfolk.Tests.AccountFoundationTests.AccountCacheDoesNotOverwriteGuestAndMarksLocalWritesDirty",
+        "state": "Passed",
+        "durationSeconds": 3.1554699,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "AlphaHashBindsAccountEnvironmentOperationBuild",
+        "fullName": "Wildfolk.Tests.AccountFoundationTests.AlphaHashBindsAccountEnvironmentOperationBuild",
+        "state": "Passed",
+        "durationSeconds": 2.2691141,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "CachedGuestLinksWithoutCreatingParticipantIdentity",
+        "fullName": "Wildfolk.Tests.AccountFoundationTests.CachedGuestLinksWithoutCreatingParticipantIdentity",
+        "state": "Passed",
+        "durationSeconds": 2.8171187,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "ConflictDoesNotSwitchUntilExplicitChoice",
+        "fullName": "Wildfolk.Tests.AccountFoundationTests.ConflictDoesNotSwitchUntilExplicitChoice",
+        "state": "Passed",
+        "durationSeconds": 2.5290513,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "DevelopmentAdapterRequiresExplicitIsolation",
+        "fullName": "Wildfolk.Tests.AccountFoundationTests.DevelopmentAdapterRequiresExplicitIsolation",
+        "state": "Passed",
+        "durationSeconds": 2.227624,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "FailedAccountCacheWriteReturnsFalseWithoutChangingProgress",
+        "fullName": "Wildfolk.Tests.AccountFoundationTests.FailedAccountCacheWriteReturnsFalseWithoutChangingProgress",
+        "state": "Passed",
+        "durationSeconds": 3.4279638,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "OfflineKeepsLocalProfileAndWorld",
+        "fullName": "Wildfolk.Tests.AccountFoundationTests.OfflineKeepsLocalProfileAndWorld",
+        "state": "Passed",
+        "durationSeconds": 2.7735013,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "PendingTransactionCannotBeImported",
+        "fullName": "Wildfolk.Tests.AccountFoundationTests.PendingTransactionCannotBeImported",
+        "state": "Passed",
+        "durationSeconds": 2.5951667,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "Profile2CloudMappingExcludesWorldPathAndPending",
+        "fullName": "Wildfolk.Tests.AccountFoundationTests.Profile2CloudMappingExcludesWorldPathAndPending",
+        "state": "Passed",
+        "durationSeconds": 2.2558055,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "RealMoneyIsAlwaysDisabled",
+        "fullName": "Wildfolk.Tests.AccountFoundationTests.RealMoneyIsAlwaysDisabled",
+        "state": "Passed",
+        "durationSeconds": 2.8035004,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "RelayUsesSharedBootstrapAndLanHasNoCloudDependency",
+        "fullName": "Wildfolk.Tests.AccountFoundationTests.RelayUsesSharedBootstrapAndLanHasNoCloudDependency",
+        "state": "Passed",
+        "durationSeconds": 2.1851853,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "ServerPendingDeletionDoesNotRematerializeAnAccountCache",
+        "fullName": "Wildfolk.Tests.AccountFoundationTests.ServerPendingDeletionDoesNotRematerializeAnAccountCache",
+        "state": "Passed",
+        "durationSeconds": 2.2592179,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "WrongCloudSchemaOrIdentityRejected",
+        "fullName": "Wildfolk.Tests.AccountFoundationTests.WrongCloudSchemaOrIdentityRejected",
+        "state": "Passed",
+        "durationSeconds": 2.2316045,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      }
+    ]
+  }
+}
