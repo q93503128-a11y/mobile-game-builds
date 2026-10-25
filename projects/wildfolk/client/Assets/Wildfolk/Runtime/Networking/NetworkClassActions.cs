@@ -19,7 +19,7 @@ namespace Wildfolk
         public readonly NetworkVariable<ClassActionState> State=new NetworkVariable<ClassActionState>();
         private ulong sequence,lastRequest;private PlayerClass role;private PlayerInventory bag;private NetworkInventory inventory;private float nextTick;
         private void Awake(){role=GetComponent<PlayerClass>();bag=GetComponent<PlayerInventory>();inventory=GetComponent<NetworkInventory>();}
-        public override void OnNetworkSpawn(){State.OnValueChanged+=Changed;if(IsServer){role.Changed+=Publish;Publish();}else Apply(State.Value);}
+        public override void OnNetworkSpawn(){State.OnValueChanged+=Changed;if(IsServer){role.Changed+=Publish;Publish();SendProfile();}else Apply(State.Value);}
         public override void OnNetworkDespawn(){State.OnValueChanged-=Changed;role.Changed-=Publish;GetComponent<PlayerBuildingService>().Cancel();GetComponent<PlayerMedicine>().Cancel();GetComponent<PlayerTeamMarker>().Clear();}
         private void Changed(ClassActionState old,ClassActionState next){if(!IsServer)Apply(next);}
         private void Apply(ClassActionState value)
@@ -61,7 +61,7 @@ namespace Wildfolk
         public void SendProfile()
         {if(!IsSpawned || !IsServer || role.Definition==null)return;ProgressRpc(role.Definition.Id,role.ClassXP);}
         [Rpc(SendTo.Owner,InvokePermission=RpcInvokePermission.Server)]private void ProgressRpc(FixedString64Bytes id,long total)
-        {if(IsServer)return;ClassProfiles.Update(ClassProfiles.LocalId,d=>{var p=d.Find(id.ToString());if(p?.Owned!=true || total<p.XP)return false;p.XP=total;return true;});}
+        {if(!IsServer)role.ApplyReplicaXP(id.ToString(),total);}
         public void MedicineFeedback(Health target)
         {if(IsSpawned && IsServer)MedicineFeedbackRpc();}
         [Rpc(SendTo.Owner,InvokePermission=RpcInvokePermission.Server)]private void MedicineFeedbackRpc()=>PlayerFeedback.ShowKey("class.medicine_done");

@@ -1,0 +1,56 @@
+{
+  "core-play.xml": {
+    "result": "Passed",
+    "total": "5",
+    "passed": "5",
+    "failed": "0",
+    "duration": "96.7268221",
+    "start-time": "2026-10-25 01:18:58Z",
+    "end-time": "2026-10-25 01:20:35Z"
+  },
+  "final-model.xml": {
+    "result": "Passed",
+    "total": "87",
+    "passed": "87",
+    "failed": "0",
+    "duration": "16.8036922",
+    "start-time": "2026-10-25 01:28:19Z",
+    "end-time": "2026-10-25 01:28:35Z"
+  },
+  "generation-after.xml": {
+    "result": "Passed",
+    "total": "41",
+    "passed": "41",
+    "failed": "0",
+    "duration": "142.8592192",
+    "start-time": "2026-10-25 01:04:52Z",
+    "end-time": "2026-10-25 01:07:14Z"
+  },
+  "generation-before.xml": {
+    "result": "Failed(Child)",
+    "total": "36",
+    "passed": "33",
+    "failed": "3",
+    "duration": "138.5815933",
+    "start-time": "2026-10-25 01:01:42Z",
+    "end-time": "2026-10-25 01:04:00Z"
+  },
+  "p0-model-initial.xml": {
+    "result": "Failed(Child)",
+    "total": "5",
+    "passed": "1",
+    "failed": "4",
+    "duration": "0.2570418",
+    "start-time": "2026-10-25 00:57:34Z",
+    "end-time": "2026-10-25 00:57:34Z"
+  },
+  "persistence-model.xml": {
+    "result": "Passed",
+    "total": "62",
+    "passed": "62",
+    "failed": "0",
+    "duration": "18.716363",
+    "start-time": "2026-10-25 01:16:39Z",
+    "end-time": "2026-10-25 01:16:58Z"
+  }
+}

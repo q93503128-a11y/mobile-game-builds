@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="41" result="Passed" total="41" passed="41" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-25 01:04:52Z" end-time="2026-10-25 01:07:14Z" duration="142.8592192">
+  <test-suite type="TestSuite" id="1000" name="Wildfolk" fullname="Wildfolk" runstate="Runnable" testcasecount="290" result="Passed" start-time="2026-10-25 01:04:52Z" end-time="2026-10-25 01:07:14Z" duration="142.859219" total="41" passed="41" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1356" name="Wildfolk.Tests.EditMode.dll" fullname="C:/Users/User/Documents/ChatGPT/문승준 모바일/canonical/projects/wildfolk/tests/artifacts/unity/Library/ScriptAssemblies/Wildfolk.Tests.EditMode.dll" runstate="Runnable" testcasecount="290" result="Passed" start-time="2026-10-25 01:04:52Z" end-time="2026-10-25 01:07:14Z" duration="142.847211" total="41" passed="41" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="18872" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1357" name="Wildfolk" fullname="Wildfolk" runstate="Runnable" testcasecount="290" result="Passed" start-time="2026-10-25 01:04:52Z" end-time="2026-10-25 01:07:14Z" duration="142.844470" total="41" passed="41" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1358" name="Tests" fullname="Wildfolk.Tests" runstate="Runnable" testcasecount="290" result="Passed" start-time="2026-10-25 01:04:52Z" end-time="2026-10-25 01:07:14Z" duration="142.838577" total="41" passed="41" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1151" name="GenerationStabilizationTests" fullname="Wildfolk.Tests.GenerationStabilizationTests" classname="Wildfolk.Tests.GenerationStabilizationTests" runstate="Runnable" testcasecount="36" result="Passed" start-time="2026-10-25 01:04:52Z" end-time="2026-10-25 01:07:14Z" duration="142.764654" total="36" passed="36" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="ParameterizedMethod" id="1188" name="GenerationThreeIsValidAndDeterministic" fullname="Wildfolk.Tests.GenerationStabilizationTests.GenerationThreeIsValidAndDeterministic" classname="Wildfolk.Tests.GenerationStabilizationTests" runstate="Runnable" testcasecount="36" result="Passed" start-time="2026-10-25 01:04:52Z" end-time="2026-10-25 01:07:14Z" duration="142.759220" total="36" passed="36" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties>
+                <property name="Timeout" value="120000" />
+              </properties>
+              <test-case id="1152" name="GenerationThreeIsValidAndDeterministic(9472026)" fullname="Wildfolk.Tests.GenerationStabilizationTests.GenerationThreeIsValidAndDeterministic(9472026)" methodname="GenerationThreeIsValidAndDeterministic" classname="Wildfolk.Tests.GenerationStabilizationTests" runstate="Runnable" seed="889314562" result="Passed" start-time="2026-10-25 01:04:52Z" end-time="2026-10-25 01:04:56Z" duration="3.885275" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1153" name="GenerationThreeIsValidAndDeterministic(-324239329)" fullname="Wildfolk.Tests.GenerationStabilizationTests.GenerationThreeIsValidAndDeterministic(-324239329)" methodname="GenerationThreeIsValidAndDeterministic" classname="Wildfolk.Tests.GenerationStabilizationTests" runstate="Runnable" seed="1878034346" result="Passed" start-time="2026-10-25 01:04:56Z" end-time="2026-10-25 01:04:59Z" duration="3.411334" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1154" name="GenerationThreeIsValidAndDeterministic(int.MinValue)" fullname="Wildfolk.Tests.GenerationStabilizationTests.GenerationThreeIsValidAndDeterministic(int.MinValue)" methodname="GenerationThreeIsValidAndDeterministic" classname="Wildfolk.Tests.GenerationStabilizationTests" runstate="Runnable" seed="20292304" result="Passed" start-time="2026-10-25 01:04:59Z" end-time="2026-10-25 01:05:02Z" duration="3.420676" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1155" name="GenerationThreeIsValidAndDeterministic(int.MaxValue)" fullname="Wildfolk.Tests.GenerationStabilizationTests.GenerationThreeIsValidAndDeterministic(int.MaxValue)" methodname="GenerationThreeIsValidAndDeterministic" classname="Wildfolk.Tests.GenerationStabilizationTests" runstate="Runnable" seed="433579348" result="Passed" start-time="2026-10-25 01:05:02Z" end-time="2026-10-25 01:05:06Z" duration="4.034208" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1156" name="GenerationThreeIsValidAndDeterministic(0)" fullname="Wildfolk.Tests.GenerationStabilizationTests.GenerationThreeIsValidAndDeterministic(0)" methodname="GenerationThreeIsValidAndDeterministic" classname="Wildfolk.Tests.GenerationStabilizationTests" runstate="Runnable" seed="1259928180" result="Passed" start-time="2026-10-25 01:05:06Z" end-time="2026-10-25 01:05:10Z" duration="3.682520" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1157" name="GenerationThreeIsValidAndDeterministic(1)" fullname="Wildfolk.Tests.GenerationStabilizationTests.GenerationThreeIsValidAndDeterministic(1)" methodname="GenerationThreeIsValidAndDeterministic" classname="Wildfolk.Tests.GenerationStabilizationTests" runstate="Runnable" seed="641478464" result="Passed" start-time="2026-10-25 01:05:10Z" end-time="2026-10-25 01:05:14Z" duration="3.878661" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1158" name="GenerationThreeIsValidAndDeterministic(-1)" fullname="Wildfolk.Tests.GenerationStabilizationTests.GenerationThreeIsValidAndDeterministic(-1)" methodname="GenerationThreeIsValidAndDeterministic" classname="Wildfolk.Tests.GenerationStabilizationTests" runstate="Runnable" seed="1961627554" result="Passed" start-time="2026-10-25 01:05:14Z" end-time="2026-10-25 01:05:17Z" duration="2.840967" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1159" name="GenerationThreeIsValidAndDeterministic(42)" fullname="Wildfolk.Tests.GenerationStabilizationTests.GenerationThreeIsValidAndDeterministic(42)" methodname="GenerationThreeIsValidAndDeterministic" classname="Wildfolk.Tests.GenerationStabilizationTests" runstate="Runnable" seed="1501035797" result="Passed" start-time="2026-10-25 01:05:17Z" end-time="2026-10-25 01:05:20Z" duration="3.066638" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1160" name="GenerationThreeIsValidAndDeterministic(12345)" fullname="Wildfolk.Tests.GenerationStabilizationTests.GenerationThreeIsValidAndDeterministic(12345)" methodname="GenerationThreeIsValidAndDeterministic" classname="Wildfolk.Tests.GenerationStabilizationTests" runstate="Runnable" seed="508843146" result="Passed" start-time="2026-10-25 01:05:20Z" end-time="2026-10-25 01:05:24Z" duration="3.757771" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1161" name="GenerationThreeIsValidAndDeterministic(54321)" fullname="Wildfolk.Tests.GenerationStabilizationTests.GenerationThreeIsValidAndDeterministic(54321)" methodname="GenerationThreeIsValidAndDeterministic" classname="Wildfolk.Tests.GenerationStabilizationTests" runstate="Runnable" seed="681476347" result="Passed" start-time="2026-10-25 01:05:24Z" end-time="2026-10-25 01:05:28Z" duration="3.893266" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1162" name="GenerationThreeIsValidAndDeterministic(1172691542)" fullname="Wildfolk.Tests.GenerationStabilizationTests.GenerationThreeIsValidAndDeterministic(1172691542)" methodname="GenerationThreeIsValidAndDeterministic" classname="Wildfolk.Tests.GenerationStabilizationTests" runstate="Runnable" seed="168779055" result="Passed" start-time="2026-10-25 01:05:28Z" end-time="2026-10-25 01:05:32Z" duration="4.726475" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1163" name="GenerationThreeIsValidAndDeterministic(-1256181508)" fullname="Wildfolk.Tests.GenerationStabilizationTests.GenerationThreeIsValidAndDeterministic(-1256181508)" methodname="GenerationThreeIsValidAndDeterministic" classname="Wildfolk.Tests.GenerationStabilizationTests" runstate="Runnable" seed="2135615015" result="Passed" start-time="2026-10-25 01:05:32Z" end-time="2026-10-25 01:05:37Z" duration="4.854752" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1164" name="GenerationThreeIsValidAndDeterministic(1027954715)" fullname="Wildfolk.Tests.GenerationStabilizationTests.GenerationThreeIsValidAndDeterministic(1027954715)" methodname="GenerationThreeIsValidAndDeterministic" classname="Wildfolk.Tests.GenerationStabilizationTests" runstate="Runnable" seed="587639026" result="Passed" start-time="2026-10-25 01:05:37Z" end-time="2026-10-25 01:05:41Z" duration="4.149293" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1165" name="GenerationThreeIsValidAndDeterministic(-1183764359)" fullname="Wildfolk.Tests.GenerationStabilizationTests.GenerationThreeIsValidAndDeterministic(-1183764359)" methodname="GenerationThreeIsValidAndDeterministic" classname="Wildfolk.Tests.GenerationStabilizationTests" runstate="Runnable" seed="2134165578" result="Passed" start-time="2026-10-25 01:05:41Z" end-time="2026-10-25 01:05:46Z" duration="4.457875" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1166" name="GenerationThreeIsValidAndDeterministic(2113670865)" fullname="Wildfolk.Tests.GenerationStabilizationTests.GenerationThreeIsValidAndDeterministic(2113670865)" methodname="GenerationThreeIsValidAndDeterministic" classname="Wildfolk.Tests.GenerationStabilizationTests" runstate="Runnable" seed="912626665" result="Passed" start-time="2026-10-25 01:05:46Z" end-time="2026-10-25 01:05:50Z" duration="4.289807" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1167" name="GenerationThreeIsValidAndDeterministic(-50624349)" fullname="Wildfolk.Tests.GenerationStabilizationTests.GenerationThreeIsValidAndDeterministic(-50624349)" methodname="GenerationThreeIsValidAndDeterministic" classname="Wildfolk.Tests.GenerationStabilizationTests" runstate="Runnable" seed="249670393" result="Passed" start-time="2026-10-25 01:05:50Z" end-time="2026-10-25 01:05:53Z" duration="3.329834" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1168" name="GenerationThreeIsValidAndDeterministic(1671528757)" fullname="Wildfolk.Tests.GenerationStabilizationTests.GenerationThreeIsValidAndDeterministic(1671528757)" methodname="GenerationThreeIsValidAndDeterministic" classname="Wildfolk.Tests.GenerationStabilizationTests" runstate="Runnable" seed="484257914" result="Passed" start-time="2026-10-25 01:05:53Z" end-time="2026-10-25 01:05:58Z" duration="4.550177" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1169" name="GenerationThreeIsValidAndDeterministic(-784760213)" fullname="Wildfolk.Tests.GenerationStabilizationTests.GenerationThreeIsValidAndDeterministic(-784760213)" methodname="GenerationThreeIsValidAndDeterministic" classname="Wildfolk.Tests.GenerationStabilizationTests" runstate="Runnable" seed="2068067446" result="Passed" start-time="2026-10-25 01:05:58Z" end-time="2026-10-25 01:06:02Z" duration="3.982553" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1170" name="GenerationThreeIsValidAndDeterministic(1735119095)" fullname="Wildfolk.Tests.GenerationStabilizationTests.GenerationThreeIsValidAndDeterministic(1735119095)" methodname="GenerationThreeIsValidAndDeterministic" classname="Wildfolk.Tests.GenerationStabilizationTests" runstate="Runnable" seed="945649495" result="Passed" start-time="2026-10-25 01:06:02Z" end-time="2026-10-25 01:06:06Z" duration="4.243266" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1171" name="GenerationThreeIsValidAndDeterministic(-1963333446)" fullname="Wildfolk.Tests.GenerationStabilizationTests.GenerationThreeIsValidAndDeterministic(-1963333446)" methodname="GenerationThreeIsValidAndDeterministic" classname="Wildfolk.Tests.GenerationStabilizationTests" runstate="Runnable" seed="1279732567" result="Passed" start-time="2026-10-25 01:06:06Z" end-time="2026-10-25 01:06:10Z" duration="4.244440" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1172" name="GenerationThreeIsValidAndDeterministic(342066196)" fullname="Wildfolk.Tests.GenerationStabilizationTests.GenerationThreeIsValidAndDeterministic(342066196)" methodname="GenerationThreeIsValidAndDeterministic" classname="Wildfolk.Tests.GenerationStabilizationTests" runstate="Runnable" seed="1756629671" result="Passed" start-time="2026-10-25 01:06:10Z" end-time="2026-10-25 01:06:14Z" duration="3.855266" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1173" name="GenerationThreeIsValidAndDeterministic(-1650964223)" fullname="Wildfolk.Tests.GenerationStabilizationTests.GenerationThreeIsValidAndDeterministic(-1650964223)" methodname="GenerationThreeIsValidAndDeterministic" classname="Wildfolk.Tests.GenerationStabilizationTests" runstate="Runnable" seed="726476774" result="Passed" start-time="2026-10-25 01:06:14Z" end-time="2026-10-25 01:06:18Z" duration="3.892439" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1174" name="GenerationThreeIsValidAndDeterministic(2116814737)" fullname="Wildfolk.Tests.GenerationStabilizationTests.GenerationThreeIsValidAndDeterministic(2116814737)" methodname="GenerationThreeIsValidAndDeterministic" classname="Wildfolk.Tests.GenerationStabilizationTests" runstate="Runnable" seed="1973417785" result="Passed" start-time="2026-10-25 01:06:18Z" end-time="2026-10-25 01:06:22Z" duration="3.757061" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1175" name="GenerationThreeIsValidAndDeterministic(-1643032572)" fullname="Wildfolk.Tests.GenerationStabilizationTests.GenerationThreeIsValidAndDeterministic(-1643032572)" methodname="GenerationThreeIsValidAndDeterministic" classname="Wildfolk.Tests.GenerationStabilizationTests" runstate="Runnable" seed="1787642857" result="Passed" start-time="2026-10-25 01:06:22Z" end-time="2026-10-25 01:06:25Z" duration="3.183818" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1176" name="GenerationThreeIsValidAndDeterministic(2050408601)" fullname="Wildfolk.Tests.GenerationStabilizationTests.GenerationThreeIsValidAndDeterministic(2050408601)" methodname="GenerationThreeIsValidAndDeterministic" classname="Wildfolk.Tests.GenerationStabilizationTests" runstate="Runnable" seed="746686053" result="Passed" start-time="2026-10-25 01:06:25Z" end-time="2026-10-25 01:06:29Z" duration="4.282713" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1177" name="GenerationThreeIsValidAndDeterministic(-1732308195)" fullname="Wildfolk.Tests.GenerationStabilizationTests.GenerationThreeIsValidAndDeterministic(-1732308195)" methodname="GenerationThreeIsValidAndDeterministic" classname="Wildfolk.Tests.GenerationStabilizationTests" runstate="Runnable" seed="1745132126" result="Passed" start-time="2026-10-25 01:06:29Z" end-time="2026-10-25 01:06:34Z" duration="4.473360" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1178" name="GenerationThreeIsValidAndDeterministic(366002102)" fullname="Wildfolk.Tests.GenerationStabilizationTests.GenerationThreeIsValidAndDeterministic(366002102)" methodname="GenerationThreeIsValidAndDeterministic" classname="Wildfolk.Tests.GenerationStabilizationTests" runstate="Runnable" seed="952413012" result="Passed" start-time="2026-10-25 01:06:34Z" end-time="2026-10-25 01:06:37Z" duration="3.428644" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1179" name="GenerationThreeIsValidAndDeterministic(-478986116)" fullname="Wildfolk.Tests.GenerationStabilizationTests.GenerationThreeIsValidAndDeterministic(-478986116)" methodname="GenerationThreeIsValidAndDeterministic" classname="Wildfolk.Tests.GenerationStabilizationTests" runstate="Runnable" seed="1461854883" result="Passed" start-time="2026-10-25 01:06:37Z" end-time="2026-10-25 01:06:41Z" duration="3.728092" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1180" name="GenerationThreeIsValidAndDeterministic(470546222)" fullname="Wildfolk.Tests.GenerationStabilizationTests.GenerationThreeIsValidAndDeterministic(470546222)" methodname="GenerationThreeIsValidAndDeterministic" classname="Wildfolk.Tests.GenerationStabilizationTests" runstate="Runnable" seed="738293891" result="Passed" start-time="2026-10-25 01:06:41Z" end-time="2026-10-25 01:06:46Z" duration="4.724172" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1181" name="GenerationThreeIsValidAndDeterministic(-730167040)" fullname="Wildfolk.Tests.GenerationStabilizationTests.GenerationThreeIsValidAndDeterministic(-730167040)" methodname="GenerationThreeIsValidAndDeterministic" classname="Wildfolk.Tests.GenerationStabilizationTests" runstate="Runnable" seed="960105220" result="Passed" start-time="2026-10-25 01:06:46Z" end-time="2026-10-25 01:06:50Z" duration="3.911363" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1182" name="GenerationThreeIsValidAndDeterministic(1120970343)" fullname="Wildfolk.Tests.GenerationStabilizationTests.GenerationThreeIsValidAndDeterministic(1120970343)" methodname="GenerationThreeIsValidAndDeterministic" classname="Wildfolk.Tests.GenerationStabilizationTests" runstate="Runnable" seed="1614136603" result="Passed" start-time="2026-10-25 01:06:50Z" end-time="2026-10-25 01:06:53Z" duration="3.536623" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1183" name="GenerationThreeIsValidAndDeterministic(-18756029)" fullname="Wildfolk.Tests.GenerationStabilizationTests.GenerationThreeIsValidAndDeterministic(-18756029)" methodname="GenerationThreeIsValidAndDeterministic" classname="Wildfolk.Tests.GenerationStabilizationTests" runstate="Runnable" seed="1422813449" result="Passed" start-time="2026-10-25 01:06:53Z" end-time="2026-10-25 01:06:58Z" duration="4.858459" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1184" name="GenerationThreeIsValidAndDeterministic(334968854)" fullname="Wildfolk.Tests.GenerationStabilizationTests.GenerationThreeIsValidAndDeterministic(334968854)" methodname="GenerationThreeIsValidAndDeterministic" classname="Wildfolk.Tests.GenerationStabilizationTests" runstate="Runnable" seed="214438978" result="Passed" start-time="2026-10-25 01:06:58Z" end-time="2026-10-25 01:07:03Z" duration="5.390248" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1185" name="GenerationThreeIsValidAndDeterministic(-812749735)" fullname="Wildfolk.Tests.GenerationStabilizationTests.GenerationThreeIsValidAndDeterministic(-812749735)" methodname="GenerationThreeIsValidAndDeterministic" classname="Wildfolk.Tests.GenerationStabilizationTests" runstate="Runnable" seed="299503984" result="Passed" start-time="2026-10-25 01:07:03Z" end-time="2026-10-25 01:07:08Z" duration="4.296299" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1186" name="GenerationThreeIsValidAndDeterministic(1433957432)" fullname="Wildfolk.Tests.GenerationStabilizationTests.GenerationThreeIsValidAndDeterministic(1433957432)" methodname="GenerationThreeIsValidAndDeterministic" classname="Wildfolk.Tests.GenerationStabilizationTests" runstate="Runnable" seed="173506604" result="Passed" start-time="2026-10-25 01:07:08Z" end-time="2026-10-25 01:07:11Z" duration="3.798570" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1187" name="GenerationThreeIsValidAndDeterministic(-381637053)" fullname="Wildfolk.Tests.GenerationStabilizationTests.GenerationThreeIsValidAndDeterministic(-381637053)" methodname="GenerationThreeIsValidAndDeterministic" classname="Wildfolk.Tests.GenerationStabilizationTests" runstate="Runnable" seed="365709731" result="Passed" start-time="2026-10-25 01:07:11Z" end-time="2026-10-25 01:07:14Z" duration="2.922418" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+          </test-suite>
+          <test-suite type="TestFixture" id="1282" name="ResourceReplicationRegressionTests" fullname="Wildfolk.Tests.ResourceReplicationRegressionTests" classname="Wildfolk.Tests.ResourceReplicationRegressionTests" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-10-25 01:07:14Z" end-time="2026-10-25 01:07:14Z" duration="0.055451" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1288" name="InactiveRootCannotResolveNgoBehaviourOwner" fullname="Wildfolk.Tests.ResourceReplicationRegressionTests.InactiveRootCannotResolveNgoBehaviourOwner" methodname="InactiveRootCannotResolveNgoBehaviourOwner" classname="Wildfolk.Tests.ResourceReplicationRegressionTests" runstate="Runnable" seed="1229611542" result="Passed" start-time="2026-10-25 01:07:14Z" end-time="2026-10-25 01:07:14Z" duration="0.007393" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-suite type="ParameterizedMethod" id="1287" name="ResourceWireRoundTripsWithExactLength" fullname="Wildfolk.Tests.ResourceReplicationRegressionTests.ResourceWireRoundTripsWithExactLength" classname="Wildfolk.Tests.ResourceReplicationRegressionTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-10-25 01:07:14Z" end-time="2026-10-25 01:07:14Z" duration="0.011317" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1283" name="ResourceWireRoundTripsWithExactLength(&quot;&quot;)" fullname="Wildfolk.Tests.ResourceReplicationRegressionTests.ResourceWireRoundTripsWithExactLength(&quot;&quot;)" methodname="ResourceWireRoundTripsWithExactLength" classname="Wildfolk.Tests.ResourceReplicationRegressionTests" runstate="Runnable" seed="1180651864" result="Passed" start-time="2026-10-25 01:07:14Z" end-time="2026-10-25 01:07:14Z" duration="0.007613" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1284" name="ResourceWireRoundTripsWithExactLength(&quot;r0&quot;)" fullname="Wildfolk.Tests.ResourceReplicationRegressionTests.ResourceWireRoundTripsWithExactLength(&quot;r0&quot;)" methodname="ResourceWireRoundTripsWithExactLength" classname="Wildfolk.Tests.ResourceReplicationRegressionTests" runstate="Runnable" seed="1983542641" result="Passed" start-time="2026-10-25 01:07:14Z" end-time="2026-10-25 01:07:14Z" duration="0.000189" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1285" name="ResourceWireRoundTripsWithExactLength(&quot;c:-27:53:6:11&quot;)" fullname="Wildfolk.Tests.ResourceReplicationRegressionTests.ResourceWireRoundTripsWithExactLength(&quot;c:-27:53:6:11&quot;)" methodname="ResourceWireRoundTripsWithExactLength" classname="Wildfolk.Tests.ResourceReplicationRegressionTests" runstate="Runnable" seed="523097806" result="Passed" start-time="2026-10-25 01:07:14Z" end-time="2026-10-25 01:07:14Z" duration="0.000111" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1286" name="ResourceWireRoundTripsWithExactLength(&quot;poi:graveyard:12:3&quot;)" fullname="Wildfolk.Tests.ResourceReplicationRegressionTests.ResourceWireRoundTripsWithExactLength(&quot;poi:graveyard:12:3&quot;)" methodname="ResourceWireRoundTripsWithExactLength" classname="Wildfolk.Tests.ResourceReplicationRegressionTests" runstate="Runnable" seed="1796701545" result="Passed" start-time="2026-10-25 01:07:14Z" end-time="2026-10-25 01:07:14Z" duration="0.000165" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[<b><color=#2EA3FF>MCP-FOR-UNITY</color></b>: [TestRunnerNoThrottle] Restored Interaction Mode after test run.
+Saving results to: C:/Users/User/AppData/LocalLow/DefaultCompany/Wildfolk\TestResults.xml
+]]></output>
+              </test-case>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

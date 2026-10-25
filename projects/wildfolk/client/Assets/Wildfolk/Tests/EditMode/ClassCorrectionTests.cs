@@ -38,10 +38,10 @@ namespace Wildfolk.Tests
             var dir=Path.Combine(Path.GetTempPath(),"LowfireMigration-"+Guid.NewGuid().ToString("N"));Directory.CreateDirectory(dir);
             try
             {
-                var d=AccountProgression.New();d.Selected="hunter";var p=d.Find("hunter");p.Owned=true;p.XP=1800;p.Nodes=new[]{"A1","A2"};var payload=JsonUtility.ToJson(d);payload=payload.Substring(0,payload.Length-1)+",\"Receipts\":[\"old-kill-1\",\"old-kill-2\"]}";
+                var d=AccountProgression.New();d.Version=1;d.Selected="hunter";var p=d.Find("hunter");p.Owned=true;p.XP=1800;p.Nodes=new[]{"A1","A2"};var payload=JsonUtility.ToJson(d);payload=payload.Substring(0,payload.Length-1)+",\"Receipts\":[\"old-kill-1\",\"old-kill-2\"]}";
                 string checksum;using(var hash=SHA256.Create())checksum=Convert.ToBase64String(hash.ComputeHash(Encoding.UTF8.GetBytes(payload)));
                 File.WriteAllText(Path.Combine(dir,"class-"+Host+".json"),JsonUtility.ToJson(new LegacyEnvelope{Payload=payload,Checksum=checksum}));var disk=new LocalAccountProgressionStore(dir);var migrated=disk.Read(Host);
-                Assert.That(migrated.Version,Is.EqualTo(1));Assert.That(migrated.Selected,Is.EqualTo("hunter"));Assert.That(migrated.Find("hunter").Nodes,Is.EqualTo(p.Nodes));Assert.That(migrated.Find("hunter").XP,Is.EqualTo(1800));Assert.That(migrated.Find("hunter").Owned,Is.True);Assert.That(disk.Write(Host,migrated),Is.True);Assert.That(File.ReadAllText(Path.Combine(dir,"class-"+Host+".json")),Does.Not.Contain("old-kill"));Assert.That(disk.Read(Host).Selected,Is.EqualTo("hunter"));
+                Assert.That(migrated.Version,Is.EqualTo(2));Assert.That(migrated.Selected,Is.EqualTo("hunter"));Assert.That(migrated.Find("hunter").Nodes,Is.EqualTo(p.Nodes));Assert.That(migrated.Find("hunter").XP,Is.EqualTo(1800));Assert.That(migrated.Find("hunter").Owned,Is.True);Assert.That(disk.Write(Host,migrated),Is.True);Assert.That(File.ReadAllText(Path.Combine(dir,"class-"+Host+".json")),Does.Not.Contain("old-kill"));Assert.That(disk.Read(Host).Selected,Is.EqualTo("hunter"));
             }finally{Directory.Delete(dir,true);}
         }
         [Serializable]private sealed class LegacyEnvelope{public string Payload,Checksum;}

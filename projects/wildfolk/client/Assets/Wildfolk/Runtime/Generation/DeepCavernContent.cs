@@ -51,6 +51,7 @@ namespace Wildfolk
                         foreach(var old in world.GenerateChunk(WorldChunk.At(p,data.ChunkSize)))if((old.Position-p).sqrMagnitude<16){clear=false;break;}if(!clear)continue;
                         world.GuaranteedResources.Add(new ResourcePlacement(rule,p,1,"iii:"+rule+":"+i));found=true;break;
                     }
+                    if(!found && WorldProgressionSupply.TryRiverFallback(world,data,rule,center,true,out var fallback)){world.GuaranteedResources.Add(new ResourcePlacement(rule,fallback,1,"iii:"+rule+":"+i));found=true;}
                     if(!found)throw new InvalidOperationException("Deep progression source placement exhausted");
                 }
             }

@@ -1,0 +1,33 @@
+2026-10-25T01:20:21.7767383Z	PASS	existing one guardian keeps tomb sealed
+2026-10-25T01:20:22.2779774Z	PASS	real melee guardian kill permanently unlocks tomb
+2026-10-25T01:20:22.2998465Z	PASS	daytime tomb consumes nothing
+2026-10-25T01:20:23.7265269Z	PASS	unlocked tomb save
+2026-10-25T01:20:23.7298685Z	PASS	Save14 capture
+2026-10-25T01:20:23.7588291Z	PASS	Bone10 nighttime offering commits
+2026-10-25T01:20:23.7635639Z	PASS	exact10 Bone consumed
+2026-10-25T01:20:23.7669951Z	PASS	awakening blocks early damage
+2026-10-25T01:20:23.7759060Z	PASS	same night duplicate summon rejected
+2026-10-25T01:20:27.1070357Z	PASS	awakening finishes without input lock
+2026-10-25T01:20:27.1076114Z	PASS	one continuous boss bar binds
+2026-10-25T01:20:27.1148095Z	PASS	natural spawn suppression is local
+2026-10-25T01:20:29.1192714Z	PASS	phase2 solo two adds and skull mark
+2026-10-25T01:20:31.1221351Z	PASS	skull mark has no expiry timer
+2026-10-25T01:20:33.1408053Z	PASS	phase3 retains previous adds and mark
+2026-10-25T01:20:33.8388162Z	PASS	wave clear removes mark
+2026-10-25T01:20:33.8431496Z	PASS	pooled former boss add restores ordinary AI, lifecycle, loot and speed
+2026-10-25T01:20:53.3345548Z	PASS	phase3 Crownfall scheduled
+2026-10-25T01:20:57.7780698Z	PASS	grace then Returning after abandonment
+2026-10-25T01:20:57.7833902Z	PASS	outside damage cannot cheese or cancel Returning
+2026-10-25T01:21:01.7894748Z	PASS	gradual regeneration, not instant full heal
+2026-10-25T01:21:02.2862534Z	PASS	territory re-entry resumes
+2026-10-25T01:21:02.6018055Z	PASS	live king survives day transition
+2026-10-25T01:21:02.6174694Z	PASS	active encounter save
+2026-10-25T01:21:05.0671653Z	PASS	load retains single active encounter and consumed night
+2026-10-25T01:21:05.7407612Z	PASS	death rolls one pending transaction
+2026-10-25T01:21:05.7599636Z	PASS	dying pending roll persisted
+2026-10-25T01:21:09.1237007Z	PASS	death / ash / loot sequence completes
+2026-10-25T01:21:09.1353263Z	PASS	one guaranteed core and one forced crown shared physical set
+2026-10-25T01:21:09.1507772Z	PASS	resolved loot persisted
+2026-10-25T01:21:11.7544953Z	PASS	load cannot duplicate resolved loot
+2026-10-25T01:21:11.7583111Z	PASS	day still rejects summon
+2026-10-25T01:21:12.0910276Z	PASS	next night accepts a new Bone10 offering

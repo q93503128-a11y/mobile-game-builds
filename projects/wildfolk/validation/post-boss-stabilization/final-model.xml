@@ -1,0 +1,597 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="87" result="Passed" total="87" passed="87" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-25 01:28:19Z" end-time="2026-10-25 01:28:35Z" duration="16.8036922">
+  <test-suite type="TestSuite" id="1000" name="Wildfolk" fullname="Wildfolk" runstate="Runnable" testcasecount="300" result="Passed" start-time="2026-10-25 01:28:19Z" end-time="2026-10-25 01:28:35Z" duration="16.803692" total="87" passed="87" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1368" name="Wildfolk.Tests.EditMode.dll" fullname="C:/Users/User/Documents/ChatGPT/문승준 모바일/canonical/projects/wildfolk/tests/artifacts/unity/Library/ScriptAssemblies/Wildfolk.Tests.EditMode.dll" runstate="Runnable" testcasecount="300" result="Passed" start-time="2026-10-25 01:28:19Z" end-time="2026-10-25 01:28:35Z" duration="16.795038" total="87" passed="87" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="15440" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1369" name="Wildfolk" fullname="Wildfolk" runstate="Runnable" testcasecount="300" result="Passed" start-time="2026-10-25 01:28:19Z" end-time="2026-10-25 01:28:35Z" duration="16.793956" total="87" passed="87" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1370" name="Tests" fullname="Wildfolk.Tests" runstate="Runnable" testcasecount="300" result="Passed" start-time="2026-10-25 01:28:19Z" end-time="2026-10-25 01:28:35Z" duration="16.793082" total="87" passed="87" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1009" name="BossFoundationTests" fullname="Wildfolk.Tests.BossFoundationTests" classname="Wildfolk.Tests.BossFoundationTests" runstate="Runnable" testcasecount="18" result="Passed" start-time="2026-10-25 01:28:19Z" end-time="2026-10-25 01:28:19Z" duration="0.069872" total="18" passed="18" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1025" name="AccessoryAddsOneSlotAndNoDamageBonus" fullname="Wildfolk.Tests.BossFoundationTests.AccessoryAddsOneSlotAndNoDamageBonus" methodname="AccessoryAddsOneSlotAndNoDamageBonus" classname="Wildfolk.Tests.BossFoundationTests" runstate="Runnable" seed="1599118242" result="Passed" start-time="2026-10-25 01:28:19Z" end-time="2026-10-25 01:28:19Z" duration="0.012126" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1027" name="BossFrameRoundTripsAuthorityPoseAndMark" fullname="Wildfolk.Tests.BossFoundationTests.BossFrameRoundTripsAuthorityPoseAndMark" methodname="BossFrameRoundTripsAuthorityPoseAndMark" classname="Wildfolk.Tests.BossFoundationTests" runstate="Runnable" seed="370240241" result="Passed" start-time="2026-10-25 01:28:19Z" end-time="2026-10-25 01:28:19Z" duration="0.006268" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1024" name="CoreGuaranteedCrownTwentyPercentAndMinionsHaveNoFarmLoot" fullname="Wildfolk.Tests.BossFoundationTests.CoreGuaranteedCrownTwentyPercentAndMinionsHaveNoFarmLoot" methodname="CoreGuaranteedCrownTwentyPercentAndMinionsHaveNoFarmLoot" classname="Wildfolk.Tests.BossFoundationTests" runstate="Runnable" seed="276095121" result="Passed" start-time="2026-10-25 01:28:19Z" end-time="2026-10-25 01:28:19Z" duration="0.001868" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1022" name="NightIdentitySurvivesKillWipeLoadAndUnlocksNextNight" fullname="Wildfolk.Tests.BossFoundationTests.NightIdentitySurvivesKillWipeLoadAndUnlocksNextNight" methodname="NightIdentitySurvivesKillWipeLoadAndUnlocksNextNight" classname="Wildfolk.Tests.BossFoundationTests" runstate="Runnable" seed="477109751" result="Passed" start-time="2026-10-25 01:28:19Z" end-time="2026-10-25 01:28:19Z" duration="0.000486" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1023" name="OfferUsesExistingBoneAndMeleeTelegraphsRemainReadable" fullname="Wildfolk.Tests.BossFoundationTests.OfferUsesExistingBoneAndMeleeTelegraphsRemainReadable" methodname="OfferUsesExistingBoneAndMeleeTelegraphsRemainReadable" classname="Wildfolk.Tests.BossFoundationTests" runstate="Runnable" seed="844140972" result="Passed" start-time="2026-10-25 01:28:19Z" end-time="2026-10-25 01:28:19Z" duration="0.002205" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-suite type="ParameterizedMethod" id="1021" name="OnlyAuthoredAddCountScales" fullname="Wildfolk.Tests.BossFoundationTests.OnlyAuthoredAddCountScales" classname="Wildfolk.Tests.BossFoundationTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-10-25 01:28:19Z" end-time="2026-10-25 01:28:19Z" duration="0.005185" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1017" name="OnlyAuthoredAddCountScales(1,2)" fullname="Wildfolk.Tests.BossFoundationTests.OnlyAuthoredAddCountScales(1,2)" methodname="OnlyAuthoredAddCountScales" classname="Wildfolk.Tests.BossFoundationTests" runstate="Runnable" seed="741757675" result="Passed" start-time="2026-10-25 01:28:19Z" end-time="2026-10-25 01:28:19Z" duration="0.001527" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1018" name="OnlyAuthoredAddCountScales(2,3)" fullname="Wildfolk.Tests.BossFoundationTests.OnlyAuthoredAddCountScales(2,3)" methodname="OnlyAuthoredAddCountScales" classname="Wildfolk.Tests.BossFoundationTests" runstate="Runnable" seed="1412315831" result="Passed" start-time="2026-10-25 01:28:19Z" end-time="2026-10-25 01:28:19Z" duration="0.000318" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1019" name="OnlyAuthoredAddCountScales(3,4)" fullname="Wildfolk.Tests.BossFoundationTests.OnlyAuthoredAddCountScales(3,4)" methodname="OnlyAuthoredAddCountScales" classname="Wildfolk.Tests.BossFoundationTests" runstate="Runnable" seed="1436270009" result="Passed" start-time="2026-10-25 01:28:19Z" end-time="2026-10-25 01:28:19Z" duration="0.000177" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1020" name="OnlyAuthoredAddCountScales(4,5)" fullname="Wildfolk.Tests.BossFoundationTests.OnlyAuthoredAddCountScales(4,5)" methodname="OnlyAuthoredAddCountScales" classname="Wildfolk.Tests.BossFoundationTests" runstate="Runnable" seed="1332284470" result="Passed" start-time="2026-10-25 01:28:19Z" end-time="2026-10-25 01:28:19Z" duration="0.000122" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+            <test-suite type="ParameterizedMethod" id="1016" name="PhaseThresholds" fullname="Wildfolk.Tests.BossFoundationTests.PhaseThresholds" classname="Wildfolk.Tests.BossFoundationTests" runstate="Runnable" testcasecount="6" result="Passed" start-time="2026-10-25 01:28:19Z" end-time="2026-10-25 01:28:19Z" duration="0.002413" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1010" name="PhaseThresholds(1.0f,1)" fullname="Wildfolk.Tests.BossFoundationTests.PhaseThresholds(1.0f,1)" methodname="PhaseThresholds" classname="Wildfolk.Tests.BossFoundationTests" runstate="Runnable" seed="1881353749" result="Passed" start-time="2026-10-25 01:28:19Z" end-time="2026-10-25 01:28:19Z" duration="0.000414" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1011" name="PhaseThresholds(0.7001f,1)" fullname="Wildfolk.Tests.BossFoundationTests.PhaseThresholds(0.7001f,1)" methodname="PhaseThresholds" classname="Wildfolk.Tests.BossFoundationTests" runstate="Runnable" seed="943057617" result="Passed" start-time="2026-10-25 01:28:19Z" end-time="2026-10-25 01:28:19Z" duration="0.000087" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1012" name="PhaseThresholds(0.7f,2)" fullname="Wildfolk.Tests.BossFoundationTests.PhaseThresholds(0.7f,2)" methodname="PhaseThresholds" classname="Wildfolk.Tests.BossFoundationTests" runstate="Runnable" seed="1155531360" result="Passed" start-time="2026-10-25 01:28:19Z" end-time="2026-10-25 01:28:19Z" duration="0.000054" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1013" name="PhaseThresholds(0.3501f,2)" fullname="Wildfolk.Tests.BossFoundationTests.PhaseThresholds(0.3501f,2)" methodname="PhaseThresholds" classname="Wildfolk.Tests.BossFoundationTests" runstate="Runnable" seed="333067764" result="Passed" start-time="2026-10-25 01:28:19Z" end-time="2026-10-25 01:28:19Z" duration="0.000048" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1014" name="PhaseThresholds(0.35f,3)" fullname="Wildfolk.Tests.BossFoundationTests.PhaseThresholds(0.35f,3)" methodname="PhaseThresholds" classname="Wildfolk.Tests.BossFoundationTests" runstate="Runnable" seed="1982539261" result="Passed" start-time="2026-10-25 01:28:19Z" end-time="2026-10-25 01:28:19Z" duration="0.000047" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1015" name="PhaseThresholds(0.0f,3)" fullname="Wildfolk.Tests.BossFoundationTests.PhaseThresholds(0.0f,3)" methodname="PhaseThresholds" classname="Wildfolk.Tests.BossFoundationTests" runstate="Runnable" seed="428413648" result="Passed" start-time="2026-10-25 01:28:19Z" end-time="2026-10-25 01:28:19Z" duration="0.000044" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+            <test-case id="1028" name="RosterLabelIsClassInEnglish" fullname="Wildfolk.Tests.BossFoundationTests.RosterLabelIsClassInEnglish" methodname="RosterLabelIsClassInEnglish" classname="Wildfolk.Tests.BossFoundationTests" runstate="Runnable" seed="159397401" result="Passed" start-time="2026-10-25 01:28:19Z" end-time="2026-10-25 01:28:19Z" duration="0.017939" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1029" name="SegmentsAreDistinctAndPoseOnlyComponentDoesNotOwnSimulation" fullname="Wildfolk.Tests.BossFoundationTests.SegmentsAreDistinctAndPoseOnlyComponentDoesNotOwnSimulation" methodname="SegmentsAreDistinctAndPoseOnlyComponentDoesNotOwnSimulation" classname="Wildfolk.Tests.BossFoundationTests" runstate="Runnable" seed="1649915018" result="Passed" start-time="2026-10-25 01:28:19Z" end-time="2026-10-25 01:28:19Z" duration="0.005431" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1026" name="SnapshotCopyDoesNotAliasPendingLootOrEligibility" fullname="Wildfolk.Tests.BossFoundationTests.SnapshotCopyDoesNotAliasPendingLootOrEligibility" methodname="SnapshotCopyDoesNotAliasPendingLootOrEligibility" classname="Wildfolk.Tests.BossFoundationTests" runstate="Runnable" seed="1285257744" result="Passed" start-time="2026-10-25 01:28:19Z" end-time="2026-10-25 01:28:19Z" duration="0.000821" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1030" name="CharacterPassModelTests" fullname="Wildfolk.Tests.CharacterPassModelTests" classname="Wildfolk.Tests.CharacterPassModelTests" runstate="Runnable" testcasecount="9" result="Passed" start-time="2026-10-25 01:28:19Z" end-time="2026-10-25 01:28:19Z" duration="0.026569" total="9" passed="9" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1037" name="ArmorCostsSlotsAndSilhouettesAreActualData" fullname="Wildfolk.Tests.CharacterPassModelTests.ArmorCostsSlotsAndSilhouettesAreActualData" methodname="ArmorCostsSlotsAndSilhouettesAreActualData" classname="Wildfolk.Tests.CharacterPassModelTests" runstate="Runnable" seed="658069607" result="Passed" start-time="2026-10-25 01:28:19Z" end-time="2026-10-25 01:28:19Z" duration="0.002430" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1038" name="CategoriesAndStableTierSortDoNotDependOnNewFlags" fullname="Wildfolk.Tests.CharacterPassModelTests.CategoriesAndStableTierSortDoNotDependOnNewFlags" methodname="CategoriesAndStableTierSortDoNotDependOnNewFlags" classname="Wildfolk.Tests.CharacterPassModelTests" runstate="Runnable" seed="1834987097" result="Passed" start-time="2026-10-25 01:28:19Z" end-time="2026-10-25 01:28:19Z" duration="0.002920" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1035" name="DashSpendingIsAtomicAndRecoveryHonorsDelayAndCondition" fullname="Wildfolk.Tests.CharacterPassModelTests.DashSpendingIsAtomicAndRecoveryHonorsDelayAndCondition" methodname="DashSpendingIsAtomicAndRecoveryHonorsDelayAndCondition" classname="Wildfolk.Tests.CharacterPassModelTests" runstate="Runnable" seed="691928310" result="Passed" start-time="2026-10-25 01:28:19Z" end-time="2026-10-25 01:28:19Z" duration="0.001217" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1033" name="InvalidPointsRanksAndXPAreRejected" fullname="Wildfolk.Tests.CharacterPassModelTests.InvalidPointsRanksAndXPAreRejected" methodname="InvalidPointsRanksAndXPAreRejected" classname="Wildfolk.Tests.CharacterPassModelTests" runstate="Runnable" seed="106055191" result="Passed" start-time="2026-10-25 01:28:19Z" end-time="2026-10-25 01:28:19Z" duration="0.006050" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1031" name="LevelCurveCarriesRemainderAndAwardsPoints" fullname="Wildfolk.Tests.CharacterPassModelTests.LevelCurveCarriesRemainderAndAwardsPoints" methodname="LevelCurveCarriesRemainderAndAwardsPoints" classname="Wildfolk.Tests.CharacterPassModelTests" runstate="Runnable" seed="995530270" result="Passed" start-time="2026-10-25 01:28:19Z" end-time="2026-10-25 01:28:19Z" duration="0.001722" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1032" name="SkillsSpendPointsRespectRanksAndRestoreEffects" fullname="Wildfolk.Tests.CharacterPassModelTests.SkillsSpendPointsRespectRanksAndRestoreEffects" methodname="SkillsSpendPointsRespectRanksAndRestoreEffects" classname="Wildfolk.Tests.CharacterPassModelTests" runstate="Runnable" seed="1287807780" result="Passed" start-time="2026-10-25 01:28:19Z" end-time="2026-10-25 01:28:19Z" duration="0.001465" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1034" name="SprintUsesHoldHysteresisAndExhaustionRecovery" fullname="Wildfolk.Tests.CharacterPassModelTests.SprintUsesHoldHysteresisAndExhaustionRecovery" methodname="SprintUsesHoldHysteresisAndExhaustionRecovery" classname="Wildfolk.Tests.CharacterPassModelTests" runstate="Runnable" seed="1006743205" result="Passed" start-time="2026-10-25 01:28:19Z" end-time="2026-10-25 01:28:19Z" duration="0.000446" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1036" name="SurvivalPreventsCriticalSprintAndChangesEfficiency" fullname="Wildfolk.Tests.CharacterPassModelTests.SurvivalPreventsCriticalSprintAndChangesEfficiency" methodname="SurvivalPreventsCriticalSprintAndChangesEfficiency" classname="Wildfolk.Tests.CharacterPassModelTests" runstate="Runnable" seed="159324506" result="Passed" start-time="2026-10-25 01:28:19Z" end-time="2026-10-25 01:28:19Z" duration="0.000884" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1039" name="V1EnvelopeStillDecodesAndFutureVersionsFail" fullname="Wildfolk.Tests.CharacterPassModelTests.V1EnvelopeStillDecodesAndFutureVersionsFail" methodname="V1EnvelopeStillDecodesAndFutureVersionsFail" classname="Wildfolk.Tests.CharacterPassModelTests" runstate="Runnable" seed="645302366" result="Passed" start-time="2026-10-25 01:28:19Z" end-time="2026-10-25 01:28:19Z" duration="0.004192" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1040" name="ClassCorrectionTests" fullname="Wildfolk.Tests.ClassCorrectionTests" classname="Wildfolk.Tests.ClassCorrectionTests" runstate="Runnable" testcasecount="10" result="Passed" start-time="2026-10-25 01:28:19Z" end-time="2026-10-25 01:28:19Z" duration="0.311008" total="10" passed="10" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1047" name="DevelopmentStillRejectsInvalidAllocation" fullname="Wildfolk.Tests.ClassCorrectionTests.DevelopmentStillRejectsInvalidAllocation" methodname="DevelopmentStillRejectsInvalidAllocation" classname="Wildfolk.Tests.ClassCorrectionTests" runstate="Runnable" seed="1885188965" result="Passed" start-time="2026-10-25 01:28:19Z" end-time="2026-10-25 01:28:19Z" duration="0.007340" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1046" name="ExplicitDevelopmentAdmissionIsEphemeralAndReconnectLocked" fullname="Wildfolk.Tests.ClassCorrectionTests.ExplicitDevelopmentAdmissionIsEphemeralAndReconnectLocked" methodname="ExplicitDevelopmentAdmissionIsEphemeralAndReconnectLocked" classname="Wildfolk.Tests.ClassCorrectionTests" runstate="Runnable" seed="672869209" result="Passed" start-time="2026-10-25 01:28:19Z" end-time="2026-10-25 01:28:19Z" duration="0.001740" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1049" name="FailedDurableWriteCanRetryWithoutLostReceiptOrXP" fullname="Wildfolk.Tests.ClassCorrectionTests.FailedDurableWriteCanRetryWithoutLostReceiptOrXP" methodname="FailedDurableWriteCanRetryWithoutLostReceiptOrXP" classname="Wildfolk.Tests.ClassCorrectionTests" runstate="Runnable" seed="1805421909" result="Passed" start-time="2026-10-25 01:28:19Z" end-time="2026-10-25 01:28:19Z" duration="0.000934" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1045" name="HostUsesItsOwnStoreAndRejectsPeerImpersonation" fullname="Wildfolk.Tests.ClassCorrectionTests.HostUsesItsOwnStoreAndRejectsPeerImpersonation" methodname="HostUsesItsOwnStoreAndRejectsPeerImpersonation" classname="Wildfolk.Tests.ClassCorrectionTests" runstate="Runnable" seed="1463263433" result="Passed" start-time="2026-10-25 01:28:19Z" end-time="2026-10-25 01:28:19Z" duration="0.000536" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1051" name="MedicA2IsGenericCooldownAndKeepsA1A3" fullname="Wildfolk.Tests.ClassCorrectionTests.MedicA2IsGenericCooldownAndKeepsA1A3" methodname="MedicA2IsGenericCooldownAndKeepsA1A3" classname="Wildfolk.Tests.ClassCorrectionTests" runstate="Runnable" seed="1841868198" result="Passed" start-time="2026-10-25 01:28:19Z" end-time="2026-10-25 01:28:19Z" duration="0.000633" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1050" name="ProfileOneReceiptMigrationPreservesPermanentProgress" fullname="Wildfolk.Tests.ClassCorrectionTests.ProfileOneReceiptMigrationPreservesPermanentProgress" methodname="ProfileOneReceiptMigrationPreservesPermanentProgress" classname="Wildfolk.Tests.ClassCorrectionTests" runstate="Runnable" seed="385434105" result="Passed" start-time="2026-10-25 01:28:19Z" end-time="2026-10-25 01:28:19Z" duration="0.046558" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-suite type="ParameterizedMethod" id="1044" name="ReleaseIgnoresForgedPremiumGoldXPAndAllNodes" fullname="Wildfolk.Tests.ClassCorrectionTests.ReleaseIgnoresForgedPremiumGoldXPAndAllNodes" classname="Wildfolk.Tests.ClassCorrectionTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-10-25 01:28:19Z" end-time="2026-10-25 01:28:19Z" duration="0.002835" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1041" name="ReleaseIgnoresForgedPremiumGoldXPAndAllNodes(&quot;engineer&quot;)" fullname="Wildfolk.Tests.ClassCorrectionTests.ReleaseIgnoresForgedPremiumGoldXPAndAllNodes(&quot;engineer&quot;)" methodname="ReleaseIgnoresForgedPremiumGoldXPAndAllNodes" classname="Wildfolk.Tests.ClassCorrectionTests" runstate="Runnable" seed="1068820020" result="Passed" start-time="2026-10-25 01:28:19Z" end-time="2026-10-25 01:28:19Z" duration="0.001023" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1042" name="ReleaseIgnoresForgedPremiumGoldXPAndAllNodes(&quot;warrior&quot;)" fullname="Wildfolk.Tests.ClassCorrectionTests.ReleaseIgnoresForgedPremiumGoldXPAndAllNodes(&quot;warrior&quot;)" methodname="ReleaseIgnoresForgedPremiumGoldXPAndAllNodes" classname="Wildfolk.Tests.ClassCorrectionTests" runstate="Runnable" seed="1217949571" result="Passed" start-time="2026-10-25 01:28:19Z" end-time="2026-10-25 01:28:19Z" duration="0.000193" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1043" name="ReleaseIgnoresForgedPremiumGoldXPAndAllNodes(&quot;medic&quot;)" fullname="Wildfolk.Tests.ClassCorrectionTests.ReleaseIgnoresForgedPremiumGoldXPAndAllNodes(&quot;medic&quot;)" methodname="ReleaseIgnoresForgedPremiumGoldXPAndAllNodes" classname="Wildfolk.Tests.ClassCorrectionTests" runstate="Runnable" seed="892501667" result="Passed" start-time="2026-10-25 01:28:19Z" end-time="2026-10-25 01:28:19Z" duration="0.000126" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+            <test-case id="1048" name="TenThousandRewardsHaveBoundedRuntimeAndProfileSize" fullname="Wildfolk.Tests.ClassCorrectionTests.TenThousandRewardsHaveBoundedRuntimeAndProfileSize" methodname="TenThousandRewardsHaveBoundedRuntimeAndProfileSize" classname="Wildfolk.Tests.ClassCorrectionTests" runstate="Runnable" seed="1981435046" result="Passed" start-time="2026-10-25 01:28:19Z" end-time="2026-10-25 01:28:19Z" duration="0.247502" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[10000 rewards; profile bytes 530→534; runtime receipts 512
+]]></output>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1052" name="ClassProgressionModelTests" fullname="Wildfolk.Tests.ClassProgressionModelTests" classname="Wildfolk.Tests.ClassProgressionModelTests" runstate="Runnable" testcasecount="20" result="Passed" start-time="2026-10-25 01:28:19Z" end-time="2026-10-25 01:28:19Z" duration="0.060815" total="20" passed="20" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1060" name="AllSharedSkillRanksAndSurplusPointsValidate" fullname="Wildfolk.Tests.ClassProgressionModelTests.AllSharedSkillRanksAndSurplusPointsValidate" methodname="AllSharedSkillRanksAndSurplusPointsValidate" classname="Wildfolk.Tests.ClassProgressionModelTests" runstate="Runnable" seed="1492435308" result="Passed" start-time="2026-10-25 01:28:19Z" end-time="2026-10-25 01:28:19Z" duration="0.002161" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1068" name="BrokenPrimaryUsesValidBackupWithoutResettingOwnership" fullname="Wildfolk.Tests.ClassProgressionModelTests.BrokenPrimaryUsesValidBackupWithoutResettingOwnership" methodname="BrokenPrimaryUsesValidBackupWithoutResettingOwnership" classname="Wildfolk.Tests.ClassProgressionModelTests" runstate="Runnable" seed="373110732" result="Passed" start-time="2026-10-25 01:28:19Z" end-time="2026-10-25 01:28:19Z" duration="0.023949" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1069" name="BrokenProfileWithoutBackupDoesNotGrantDefaultOwnership" fullname="Wildfolk.Tests.ClassProgressionModelTests.BrokenProfileWithoutBackupDoesNotGrantDefaultOwnership" methodname="BrokenProfileWithoutBackupDoesNotGrantDefaultOwnership" classname="Wildfolk.Tests.ClassProgressionModelTests" runstate="Runnable" seed="907383770" result="Passed" start-time="2026-10-25 01:28:19Z" end-time="2026-10-25 01:28:19Z" duration="0.006431" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1061" name="ClassCatalogHasSixIndependentNineNodeTrees" fullname="Wildfolk.Tests.ClassProgressionModelTests.ClassCatalogHasSixIndependentNineNodeTrees" methodname="ClassCatalogHasSixIndependentNineNodeTrees" classname="Wildfolk.Tests.ClassProgressionModelTests" runstate="Runnable" seed="1017704618" result="Passed" start-time="2026-10-25 01:28:19Z" end-time="2026-10-25 01:28:19Z" duration="0.001335" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1067" name="DuplicateAndInsufficientClassPointAllocationsFailClosed" fullname="Wildfolk.Tests.ClassProgressionModelTests.DuplicateAndInsufficientClassPointAllocationsFailClosed" methodname="DuplicateAndInsufficientClassPointAllocationsFailClosed" classname="Wildfolk.Tests.ClassProgressionModelTests" runstate="Runnable" seed="1702149224" result="Passed" start-time="2026-10-25 01:28:19Z" end-time="2026-10-25 01:28:19Z" duration="0.000478" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1063" name="DurableProfileSurvivesReopenAndDoesNotShareClasses" fullname="Wildfolk.Tests.ClassProgressionModelTests.DurableProfileSurvivesReopenAndDoesNotShareClasses" methodname="DurableProfileSurvivesReopenAndDoesNotShareClasses" classname="Wildfolk.Tests.ClassProgressionModelTests" runstate="Runnable" seed="108011216" result="Passed" start-time="2026-10-25 01:28:19Z" end-time="2026-10-25 01:28:19Z" duration="0.009098" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1062" name="EarnablePointsComeFromMilestoneEntries" fullname="Wildfolk.Tests.ClassProgressionModelTests.EarnablePointsComeFromMilestoneEntries" methodname="EarnablePointsComeFromMilestoneEntries" classname="Wildfolk.Tests.ClassProgressionModelTests" runstate="Runnable" seed="238292319" result="Passed" start-time="2026-10-25 01:28:19Z" end-time="2026-10-25 01:28:19Z" duration="0.000679" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1073" name="EveryCurrentMedicineHasInstantApplicationAndGenericClassification" fullname="Wildfolk.Tests.ClassProgressionModelTests.EveryCurrentMedicineHasInstantApplicationAndGenericClassification" methodname="EveryCurrentMedicineHasInstantApplicationAndGenericClassification" classname="Wildfolk.Tests.ClassProgressionModelTests" runstate="Runnable" seed="1177457377" result="Passed" start-time="2026-10-25 01:28:19Z" end-time="2026-10-25 01:28:19Z" duration="0.000828" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1074" name="ExplorationCategoriesCoverAllThreeExistingToolKinds" fullname="Wildfolk.Tests.ClassProgressionModelTests.ExplorationCategoriesCoverAllThreeExistingToolKinds" methodname="ExplorationCategoriesCoverAllThreeExistingToolKinds" classname="Wildfolk.Tests.ClassProgressionModelTests" runstate="Runnable" seed="1834090234" result="Passed" start-time="2026-10-25 01:28:19Z" end-time="2026-10-25 01:28:19Z" duration="0.000763" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-suite type="ParameterizedMethod" id="1066" name="InvalidClassPrerequisiteOrNodeFailsClosed" fullname="Wildfolk.Tests.ClassProgressionModelTests.InvalidClassPrerequisiteOrNodeFailsClosed" classname="Wildfolk.Tests.ClassProgressionModelTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-25 01:28:19Z" end-time="2026-10-25 01:28:19Z" duration="0.001489" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1064" name="InvalidClassPrerequisiteOrNodeFailsClosed(&quot;A2&quot;)" fullname="Wildfolk.Tests.ClassProgressionModelTests.InvalidClassPrerequisiteOrNodeFailsClosed(&quot;A2&quot;)" methodname="InvalidClassPrerequisiteOrNodeFailsClosed" classname="Wildfolk.Tests.ClassProgressionModelTests" runstate="Runnable" seed="2081384358" result="Passed" start-time="2026-10-25 01:28:19Z" end-time="2026-10-25 01:28:19Z" duration="0.000427" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1065" name="InvalidClassPrerequisiteOrNodeFailsClosed(&quot;Z1&quot;)" fullname="Wildfolk.Tests.ClassProgressionModelTests.InvalidClassPrerequisiteOrNodeFailsClosed(&quot;Z1&quot;)" methodname="InvalidClassPrerequisiteOrNodeFailsClosed" classname="Wildfolk.Tests.ClassProgressionModelTests" runstate="Runnable" seed="1968091502" result="Passed" start-time="2026-10-25 01:28:19Z" end-time="2026-10-25 01:28:19Z" duration="0.000222" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+            <test-suite type="ParameterizedMethod" id="1056" name="LinearLevelsCarryAcrossOldBoundaries" fullname="Wildfolk.Tests.ClassProgressionModelTests.LinearLevelsCarryAcrossOldBoundaries" classname="Wildfolk.Tests.ClassProgressionModelTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-10-25 01:28:19Z" end-time="2026-10-25 01:28:19Z" duration="0.002120" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1053" name="LinearLevelsCarryAcrossOldBoundaries(20)" fullname="Wildfolk.Tests.ClassProgressionModelTests.LinearLevelsCarryAcrossOldBoundaries(20)" methodname="LinearLevelsCarryAcrossOldBoundaries" classname="Wildfolk.Tests.ClassProgressionModelTests" runstate="Runnable" seed="985771034" result="Passed" start-time="2026-10-25 01:28:19Z" end-time="2026-10-25 01:28:19Z" duration="0.000740" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1054" name="LinearLevelsCarryAcrossOldBoundaries(99)" fullname="Wildfolk.Tests.ClassProgressionModelTests.LinearLevelsCarryAcrossOldBoundaries(99)" methodname="LinearLevelsCarryAcrossOldBoundaries" classname="Wildfolk.Tests.ClassProgressionModelTests" runstate="Runnable" seed="1742635287" result="Passed" start-time="2026-10-25 01:28:19Z" end-time="2026-10-25 01:28:19Z" duration="0.000271" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1055" name="LinearLevelsCarryAcrossOldBoundaries(999)" fullname="Wildfolk.Tests.ClassProgressionModelTests.LinearLevelsCarryAcrossOldBoundaries(999)" methodname="LinearLevelsCarryAcrossOldBoundaries" classname="Wildfolk.Tests.ClassProgressionModelTests" runstate="Runnable" seed="395327400" result="Passed" start-time="2026-10-25 01:28:19Z" end-time="2026-10-25 01:28:19Z" duration="0.000225" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+            <test-case id="1057" name="LongMaximumXPUsesBoundedArithmetic" fullname="Wildfolk.Tests.ClassProgressionModelTests.LongMaximumXPUsesBoundedArithmetic" methodname="LongMaximumXPUsesBoundedArithmetic" classname="Wildfolk.Tests.ClassProgressionModelTests" runstate="Runnable" seed="1256841828" result="Passed" start-time="2026-10-25 01:28:19Z" end-time="2026-10-25 01:28:19Z" duration="0.000899" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1071" name="MetabolismReducesDrainRatherThanIncreasingNutrition" fullname="Wildfolk.Tests.ClassProgressionModelTests.MetabolismReducesDrainRatherThanIncreasingNutrition" methodname="MetabolismReducesDrainRatherThanIncreasingNutrition" classname="Wildfolk.Tests.ClassProgressionModelTests" runstate="Runnable" seed="423444343" result="Passed" start-time="2026-10-25 01:28:19Z" end-time="2026-10-25 01:28:19Z" duration="0.000909" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1059" name="OldVitalityThreeAndSurplusCapXPArePreserved" fullname="Wildfolk.Tests.ClassProgressionModelTests.OldVitalityThreeAndSurplusCapXPArePreserved" methodname="OldVitalityThreeAndSurplusCapXPArePreserved" classname="Wildfolk.Tests.ClassProgressionModelTests" runstate="Runnable" seed="428506110" result="Passed" start-time="2026-10-25 01:28:19Z" end-time="2026-10-25 01:28:19Z" duration="0.001463" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1070" name="PremiumEngineerIsUnavailableWithoutProviderAndApprovedPrice" fullname="Wildfolk.Tests.ClassProgressionModelTests.PremiumEngineerIsUnavailableWithoutProviderAndApprovedPrice" methodname="PremiumEngineerIsUnavailableWithoutProviderAndApprovedPrice" classname="Wildfolk.Tests.ClassProgressionModelTests" runstate="Runnable" seed="435466943" result="Passed" start-time="2026-10-25 01:28:19Z" end-time="2026-10-25 01:28:19Z" duration="0.000606" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1072" name="RepairDataCoversEveryPlaceableAndUpgradeOnce" fullname="Wildfolk.Tests.ClassProgressionModelTests.RepairDataCoversEveryPlaceableAndUpgradeOnce" methodname="RepairDataCoversEveryPlaceableAndUpgradeOnce" classname="Wildfolk.Tests.ClassProgressionModelTests" runstate="Runnable" seed="2138274845" result="Passed" start-time="2026-10-25 01:28:19Z" end-time="2026-10-25 01:28:19Z" duration="0.002054" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1058" name="TotalXPOverflowDoesNotPartiallyMutate" fullname="Wildfolk.Tests.ClassProgressionModelTests.TotalXPOverflowDoesNotPartiallyMutate" methodname="TotalXPOverflowDoesNotPartiallyMutate" classname="Wildfolk.Tests.ClassProgressionModelTests" runstate="Runnable" seed="461369785" result="Passed" start-time="2026-10-25 01:28:19Z" end-time="2026-10-25 01:28:19Z" duration="0.000879" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1075" name="ClassRewardDurabilityTests" fullname="Wildfolk.Tests.ClassRewardDurabilityTests" classname="Wildfolk.Tests.ClassRewardDurabilityTests" runstate="Runnable" testcasecount="10" result="Passed" start-time="2026-10-25 01:28:19Z" end-time="2026-10-25 01:28:35Z" duration="15.796663" total="10" passed="10" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1083" name="FailedWorldCommitRollsBackIntentAndLeavesBothXpValuesUnchanged" fullname="Wildfolk.Tests.ClassRewardDurabilityTests.FailedWorldCommitRollsBackIntentAndLeavesBothXpValuesUnchanged" methodname="FailedWorldCommitRollsBackIntentAndLeavesBothXpValuesUnchanged" classname="Wildfolk.Tests.ClassRewardDurabilityTests" runstate="Runnable" seed="516890740" result="Passed" start-time="2026-10-25 01:28:19Z" end-time="2026-10-25 01:28:22Z" duration="2.880479" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1082" name="ProfileWriteFailureRetainsRecoverableIntentAndCannotDoubleCredit" fullname="Wildfolk.Tests.ClassRewardDurabilityTests.ProfileWriteFailureRetainsRecoverableIntentAndCannotDoubleCredit" methodname="ProfileWriteFailureRetainsRecoverableIntentAndCannotDoubleCredit" classname="Wildfolk.Tests.ClassRewardDurabilityTests" runstate="Runnable" seed="1162401004" result="Passed" start-time="2026-10-25 01:28:22Z" end-time="2026-10-25 01:28:23Z" duration="1.363053" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-suite type="ParameterizedMethod" id="1081" name="RestartAtEachPairCommitBoundaryRecoversExactlyOnce" fullname="Wildfolk.Tests.ClassRewardDurabilityTests.RestartAtEachPairCommitBoundaryRecoversExactlyOnce" classname="Wildfolk.Tests.ClassRewardDurabilityTests" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-10-25 01:28:23Z" end-time="2026-10-25 01:28:30Z" duration="7.103762" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1076" name="RestartAtEachPairCommitBoundaryRecoversExactlyOnce(0)" fullname="Wildfolk.Tests.ClassRewardDurabilityTests.RestartAtEachPairCommitBoundaryRecoversExactlyOnce(0)" methodname="RestartAtEachPairCommitBoundaryRecoversExactlyOnce" classname="Wildfolk.Tests.ClassRewardDurabilityTests" runstate="Runnable" seed="20010154" result="Passed" start-time="2026-10-25 01:28:23Z" end-time="2026-10-25 01:28:25Z" duration="1.379271" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1077" name="RestartAtEachPairCommitBoundaryRecoversExactlyOnce(1)" fullname="Wildfolk.Tests.ClassRewardDurabilityTests.RestartAtEachPairCommitBoundaryRecoversExactlyOnce(1)" methodname="RestartAtEachPairCommitBoundaryRecoversExactlyOnce" classname="Wildfolk.Tests.ClassRewardDurabilityTests" runstate="Runnable" seed="2129024630" result="Passed" start-time="2026-10-25 01:28:25Z" end-time="2026-10-25 01:28:26Z" duration="1.378396" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1078" name="RestartAtEachPairCommitBoundaryRecoversExactlyOnce(2)" fullname="Wildfolk.Tests.ClassRewardDurabilityTests.RestartAtEachPairCommitBoundaryRecoversExactlyOnce(2)" methodname="RestartAtEachPairCommitBoundaryRecoversExactlyOnce" classname="Wildfolk.Tests.ClassRewardDurabilityTests" runstate="Runnable" seed="1316450934" result="Passed" start-time="2026-10-25 01:28:26Z" end-time="2026-10-25 01:28:27Z" duration="1.415392" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1079" name="RestartAtEachPairCommitBoundaryRecoversExactlyOnce(3)" fullname="Wildfolk.Tests.ClassRewardDurabilityTests.RestartAtEachPairCommitBoundaryRecoversExactlyOnce(3)" methodname="RestartAtEachPairCommitBoundaryRecoversExactlyOnce" classname="Wildfolk.Tests.ClassRewardDurabilityTests" runstate="Runnable" seed="966684324" result="Passed" start-time="2026-10-25 01:28:27Z" end-time="2026-10-25 01:28:29Z" duration="1.482874" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1080" name="RestartAtEachPairCommitBoundaryRecoversExactlyOnce(4)" fullname="Wildfolk.Tests.ClassRewardDurabilityTests.RestartAtEachPairCommitBoundaryRecoversExactlyOnce(4)" methodname="RestartAtEachPairCommitBoundaryRecoversExactlyOnce" classname="Wildfolk.Tests.ClassRewardDurabilityTests" runstate="Runnable" seed="592774839" result="Passed" start-time="2026-10-25 01:28:29Z" end-time="2026-10-25 01:28:30Z" duration="1.445867" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+            <test-case id="1086" name="SessionOnlyRewardsDoNotWriteOrPromoteRemoteProfiles" fullname="Wildfolk.Tests.ClassRewardDurabilityTests.SessionOnlyRewardsDoNotWriteOrPromoteRemoteProfiles" methodname="SessionOnlyRewardsDoNotWriteOrPromoteRemoteProfiles" classname="Wildfolk.Tests.ClassRewardDurabilityTests" runstate="Runnable" seed="361454325" result="Passed" start-time="2026-10-25 01:28:30Z" end-time="2026-10-25 01:28:32Z" duration="1.471826" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1084" name="UnavailableIntentStoreCannotStartWorldRewardCommit" fullname="Wildfolk.Tests.ClassRewardDurabilityTests.UnavailableIntentStoreCannotStartWorldRewardCommit" methodname="UnavailableIntentStoreCannotStartWorldRewardCommit" classname="Wildfolk.Tests.ClassRewardDurabilityTests" runstate="Runnable" seed="1706061207" result="Passed" start-time="2026-10-25 01:28:32Z" end-time="2026-10-25 01:28:33Z" duration="1.441411" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1085" name="ValidBackupPendingIntentRecoversWithoutDuplicatingAlreadyCommittedXp" fullname="Wildfolk.Tests.ClassRewardDurabilityTests.ValidBackupPendingIntentRecoversWithoutDuplicatingAlreadyCommittedXp" methodname="ValidBackupPendingIntentRecoversWithoutDuplicatingAlreadyCommittedXp" classname="Wildfolk.Tests.ClassRewardDurabilityTests" runstate="Runnable" seed="610738863" result="Passed" start-time="2026-10-25 01:28:33Z" end-time="2026-10-25 01:28:35Z" duration="1.534270" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1201" name="InventoryOperationsTests" fullname="Wildfolk.Tests.InventoryOperationsTests" classname="Wildfolk.Tests.InventoryOperationsTests" runstate="Runnable" testcasecount="9" result="Passed" start-time="2026-10-25 01:28:35Z" end-time="2026-10-25 01:28:35Z" duration="0.010967" total="9" passed="9" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1205" name="DifferentItemsSwapWithoutChangingCounts" fullname="Wildfolk.Tests.InventoryOperationsTests.DifferentItemsSwapWithoutChangingCounts" methodname="DifferentItemsSwapWithoutChangingCounts" classname="Wildfolk.Tests.InventoryOperationsTests" runstate="Runnable" seed="125311629" result="Passed" start-time="2026-10-25 01:28:35Z" end-time="2026-10-25 01:28:35Z" duration="0.001897" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1207" name="FullInventoryRejectsCraftAtomically" fullname="Wildfolk.Tests.InventoryOperationsTests.FullInventoryRejectsCraftAtomically" methodname="FullInventoryRejectsCraftAtomically" classname="Wildfolk.Tests.InventoryOperationsTests" runstate="Runnable" seed="988486828" result="Passed" start-time="2026-10-25 01:28:35Z" end-time="2026-10-25 01:28:35Z" duration="0.001065" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1204" name="FullSameItemDestinationAndSameSlotDoNotMutateOrNotify" fullname="Wildfolk.Tests.InventoryOperationsTests.FullSameItemDestinationAndSameSlotDoNotMutateOrNotify" methodname="FullSameItemDestinationAndSameSlotDoNotMutateOrNotify" classname="Wildfolk.Tests.InventoryOperationsTests" runstate="Runnable" seed="556017678" result="Passed" start-time="2026-10-25 01:28:35Z" end-time="2026-10-25 01:28:35Z" duration="0.000431" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1208" name="FullyConsumedMaterialSlotCanHoldCraftResult" fullname="Wildfolk.Tests.InventoryOperationsTests.FullyConsumedMaterialSlotCanHoldCraftResult" methodname="FullyConsumedMaterialSlotCanHoldCraftResult" classname="Wildfolk.Tests.InventoryOperationsTests" runstate="Runnable" seed="1436366234" result="Passed" start-time="2026-10-25 01:28:35Z" end-time="2026-10-25 01:28:35Z" duration="0.000487" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1203" name="MergeStopsAtMaxStackAndKeepsOverflowAtSource" fullname="Wildfolk.Tests.InventoryOperationsTests.MergeStopsAtMaxStackAndKeepsOverflowAtSource" methodname="MergeStopsAtMaxStackAndKeepsOverflowAtSource" classname="Wildfolk.Tests.InventoryOperationsTests" runstate="Runnable" seed="2078286478" result="Passed" start-time="2026-10-25 01:28:35Z" end-time="2026-10-25 01:28:35Z" duration="0.000311" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1206" name="MissingMaterialsNeverConsumeAnything" fullname="Wildfolk.Tests.InventoryOperationsTests.MissingMaterialsNeverConsumeAnything" methodname="MissingMaterialsNeverConsumeAnything" classname="Wildfolk.Tests.InventoryOperationsTests" runstate="Runnable" seed="291953222" result="Passed" start-time="2026-10-25 01:28:35Z" end-time="2026-10-25 01:28:35Z" duration="0.000286" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1209" name="MultipleResultStacksCannotPartiallyConsumeIngredients" fullname="Wildfolk.Tests.InventoryOperationsTests.MultipleResultStacksCannotPartiallyConsumeIngredients" methodname="MultipleResultStacksCannotPartiallyConsumeIngredients" classname="Wildfolk.Tests.InventoryOperationsTests" runstate="Runnable" seed="1842133998" result="Passed" start-time="2026-10-25 01:28:35Z" end-time="2026-10-25 01:28:35Z" duration="0.000237" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1210" name="PlacementConsumptionRequiresMatchingSelectedItem" fullname="Wildfolk.Tests.InventoryOperationsTests.PlacementConsumptionRequiresMatchingSelectedItem" methodname="PlacementConsumptionRequiresMatchingSelectedItem" classname="Wildfolk.Tests.InventoryOperationsTests" runstate="Runnable" seed="2114294126" result="Passed" start-time="2026-10-25 01:28:35Z" end-time="2026-10-25 01:28:35Z" duration="0.000487" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1202" name="WholeStackMovesBetweenStorageAndHotbarWithOneNotification" fullname="Wildfolk.Tests.InventoryOperationsTests.WholeStackMovesBetweenStorageAndHotbarWithOneNotification" methodname="WholeStackMovesBetweenStorageAndHotbarWithOneNotification" classname="Wildfolk.Tests.InventoryOperationsTests" runstate="Runnable" seed="1033388548" result="Passed" start-time="2026-10-25 01:28:35Z" end-time="2026-10-25 01:28:35Z" duration="0.000416" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1266" name="NetworkPersistenceModelTests" fullname="Wildfolk.Tests.NetworkPersistenceModelTests" classname="Wildfolk.Tests.NetworkPersistenceModelTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-10-25 01:28:35Z" end-time="2026-10-25 01:28:35Z" duration="0.085090" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1270" name="EveryExistingPlaceableUsesOneSourceDefinitionAndServerBuildingState" fullname="Wildfolk.Tests.NetworkPersistenceModelTests.EveryExistingPlaceableUsesOneSourceDefinitionAndServerBuildingState" methodname="EveryExistingPlaceableUsesOneSourceDefinitionAndServerBuildingState" classname="Wildfolk.Tests.NetworkPersistenceModelTests" runstate="Runnable" seed="675845473" result="Passed" start-time="2026-10-25 01:28:35Z" end-time="2026-10-25 01:28:35Z" duration="0.007894" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1267" name="LegacyV4AndV11MigrateTo12PreservingCorePlayerPayload" fullname="Wildfolk.Tests.NetworkPersistenceModelTests.LegacyV4AndV11MigrateTo12PreservingCorePlayerPayload" methodname="LegacyV4AndV11MigrateTo12PreservingCorePlayerPayload" classname="Wildfolk.Tests.NetworkPersistenceModelTests" runstate="Runnable" seed="974849385" result="Passed" start-time="2026-10-25 01:28:35Z" end-time="2026-10-25 01:28:35Z" duration="0.033990" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1268" name="ParticipantMetadataRejectsDuplicatesInvalidIdentityAndMismatchedHost" fullname="Wildfolk.Tests.NetworkPersistenceModelTests.ParticipantMetadataRejectsDuplicatesInvalidIdentityAndMismatchedHost" methodname="ParticipantMetadataRejectsDuplicatesInvalidIdentityAndMismatchedHost" classname="Wildfolk.Tests.NetworkPersistenceModelTests" runstate="Runnable" seed="1213342204" result="Passed" start-time="2026-10-25 01:28:35Z" end-time="2026-10-25 01:28:35Z" duration="0.013769" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1269" name="SeparateRepositoriesAndDeadParticipantPolicyPreserveSingleplayerRules" fullname="Wildfolk.Tests.NetworkPersistenceModelTests.SeparateRepositoriesAndDeadParticipantPolicyPreserveSingleplayerRules" methodname="SeparateRepositoriesAndDeadParticipantPolicyPreserveSingleplayerRules" classname="Wildfolk.Tests.NetworkPersistenceModelTests" runstate="Runnable" seed="1756530544" result="Passed" start-time="2026-10-25 01:28:35Z" end-time="2026-10-25 01:28:35Z" duration="0.027322" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1294" name="ResourceReplicationRegressionTests" fullname="Wildfolk.Tests.ResourceReplicationRegressionTests" classname="Wildfolk.Tests.ResourceReplicationRegressionTests" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-10-25 01:28:35Z" end-time="2026-10-25 01:28:35Z" duration="0.011380" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1300" name="InactiveRootCannotResolveNgoBehaviourOwner" fullname="Wildfolk.Tests.ResourceReplicationRegressionTests.InactiveRootCannotResolveNgoBehaviourOwner" methodname="InactiveRootCannotResolveNgoBehaviourOwner" classname="Wildfolk.Tests.ResourceReplicationRegressionTests" runstate="Runnable" seed="832811777" result="Passed" start-time="2026-10-25 01:28:35Z" end-time="2026-10-25 01:28:35Z" duration="0.004082" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-suite type="ParameterizedMethod" id="1299" name="ResourceWireRoundTripsWithExactLength" fullname="Wildfolk.Tests.ResourceReplicationRegressionTests.ResourceWireRoundTripsWithExactLength" classname="Wildfolk.Tests.ResourceReplicationRegressionTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-10-25 01:28:35Z" end-time="2026-10-25 01:28:35Z" duration="0.004773" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1295" name="ResourceWireRoundTripsWithExactLength(&quot;&quot;)" fullname="Wildfolk.Tests.ResourceReplicationRegressionTests.ResourceWireRoundTripsWithExactLength(&quot;&quot;)" methodname="ResourceWireRoundTripsWithExactLength" classname="Wildfolk.Tests.ResourceReplicationRegressionTests" runstate="Runnable" seed="2093239444" result="Passed" start-time="2026-10-25 01:28:35Z" end-time="2026-10-25 01:28:35Z" duration="0.001746" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1296" name="ResourceWireRoundTripsWithExactLength(&quot;r0&quot;)" fullname="Wildfolk.Tests.ResourceReplicationRegressionTests.ResourceWireRoundTripsWithExactLength(&quot;r0&quot;)" methodname="ResourceWireRoundTripsWithExactLength" classname="Wildfolk.Tests.ResourceReplicationRegressionTests" runstate="Runnable" seed="349297588" result="Passed" start-time="2026-10-25 01:28:35Z" end-time="2026-10-25 01:28:35Z" duration="0.000167" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1297" name="ResourceWireRoundTripsWithExactLength(&quot;c:-27:53:6:11&quot;)" fullname="Wildfolk.Tests.ResourceReplicationRegressionTests.ResourceWireRoundTripsWithExactLength(&quot;c:-27:53:6:11&quot;)" methodname="ResourceWireRoundTripsWithExactLength" classname="Wildfolk.Tests.ResourceReplicationRegressionTests" runstate="Runnable" seed="594963101" result="Passed" start-time="2026-10-25 01:28:35Z" end-time="2026-10-25 01:28:35Z" duration="0.000068" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1298" name="ResourceWireRoundTripsWithExactLength(&quot;poi:graveyard:12:3&quot;)" fullname="Wildfolk.Tests.ResourceReplicationRegressionTests.ResourceWireRoundTripsWithExactLength(&quot;poi:graveyard:12:3&quot;)" methodname="ResourceWireRoundTripsWithExactLength" classname="Wildfolk.Tests.ResourceReplicationRegressionTests" runstate="Runnable" seed="530744793" result="Passed" start-time="2026-10-25 01:28:35Z" end-time="2026-10-25 01:28:35Z" duration="0.000078" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+          </test-suite>
+          <test-suite type="TestFixture" id="1312" name="SceneContractTests" fullname="Wildfolk.Tests.SceneContractTests" classname="Wildfolk.Tests.SceneContractTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-25 01:28:35Z" end-time="2026-10-25 01:28:35Z" duration="0.389944" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1314" name="BalanceDataHasValidCombatRangesAndProgressionItems" fullname="Wildfolk.Tests.SceneContractTests.BalanceDataHasValidCombatRangesAndProgressionItems" methodname="BalanceDataHasValidCombatRangesAndProgressionItems" classname="Wildfolk.Tests.SceneContractTests" runstate="Runnable" seed="537229684" result="Passed" start-time="2026-10-25 01:28:35Z" end-time="2026-10-25 01:28:35Z" duration="0.036449" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1313" name="SavedSceneRetainsPlayableConnectionsAndNonPushingEnemy" fullname="Wildfolk.Tests.SceneContractTests.SavedSceneRetainsPlayableConnectionsAndNonPushingEnemy" methodname="SavedSceneRetainsPlayableConnectionsAndNonPushingEnemy" classname="Wildfolk.Tests.SceneContractTests" runstate="Runnable" seed="244914910" result="Passed" start-time="2026-10-25 01:28:35Z" end-time="2026-10-25 01:28:35Z" duration="0.351763" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[<b><color=#2EA3FF>MCP-FOR-UNITY</color></b>: [TestRunnerNoThrottle] Restored Interaction Mode after test run.
+Saving results to: C:/Users/User/AppData/LocalLow/DefaultCompany/Wildfolk\TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

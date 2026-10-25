@@ -33,7 +33,7 @@ namespace Wildfolk
         private readonly RaycastHit2D[] walls=new RaycastHit2D[32];
         private static readonly float[] ReturnAngles={55,-55,100,-100};
         private Rigidbody2D body;private Collider2D footprint;private DamageProtection protection;
-        private float tick,missing,regen,decision,retarget,summonAt;private int cursor,repeat,chain;
+        private float tick,missing,regen,decision,retarget,summonAt;private double nextRewardAttempt;private int cursor,repeat,chain;
         private void Awake(){body=GetComponent<Rigidbody2D>();footprint=GetComponent<Collider2D>();protection=GetComponent<DamageProtection>();protection.Blocked=true;}
         private void OnEnable(){Health.Died+=Died;}
         private void OnDisable(){Health.Died-=Died;ClearAdds();}
@@ -58,7 +58,7 @@ namespace Wildfolk
         public void Advance(float dt)
         {
             if(!Authority || World==null)return;
-            if(State==BossState.Dying){if(Age>=Definition.DeathSeconds+Definition.LootPause && World.ResolveReward(this)){SetState(BossState.Ended);World.Release(this);}return;}
+            if(State==BossState.Dying){if(Age>=Definition.DeathSeconds+Definition.LootPause && Now>=nextRewardAttempt){nextRewardAttempt=Now+1;if(World.ResolveReward(this)){SetState(BossState.Ended);World.Release(this);}}return;}
             if(State==BossState.Awakening){if(Age>=Definition.Awakening)SetState(BossState.Chase);return;}
             var living=0;foreach(var p in World.Players)if(Valid(p.GetComponent<Health>())){living++;participants.Add(p);}
             missing=living==0?missing+dt:0;

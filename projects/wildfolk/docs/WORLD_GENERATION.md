@@ -134,3 +134,9 @@ WorldChunkRuntime의 active representation만 유지하고 전체 POI별 Update�
 ## Royal Tomb / encounter 영역
 
 기존 Graveyard anchor의 중앙에 RoyalTomb landmark를 둔다. 기존 guardian feature의 cleared 상태를 영구 unlock으로 사용하며 새 generator seed/지형 ID나 새 guardian 종을 만들지 않는다. materialization/recovery 후보에서 왕묘 중심10unit의 Timber/Stone만 제외해 전투 중앙을 비운다. 광물/자원 logical ID/저장된 건축물은 제거하지 않는다. 보스는 anchor의(0,−2.8)에서 등장하고23unit을 encounter로 삼는다. 벽이나 강제 teleport 없이 실제 길로 돌아오며 외부 공격이 Returning을 해제하지 않는다. 활동 중 무작위 undead 보충만 해당 영역에서 억제하며 낮 전환은 전투를 제거하지 않는다.
+
+## Post-Boss Stabilization · 보장 강변 공급 fallback
+
+실패 seed-324239329의 주석 rule6 세 번째 중심(y480)은 기존 약78unit 반경의1200후보 모두 유효 RiverGravel이 없었다. 기존 공급 배치를 먼저 그대로 시도하고, panning 공급의 후보 소진 때만 강의 y축을32unit 간격으로 양방향 탐색한다.128step×4bank(±8/±12unit), 최대512개 추가후보다. SourceAllowed의 지형/수면/도로/태그와 기존 간격4unit, supplement/deep의 자연 후보 충돌 배제는 유지한다. 무한 reroll/전역 평준화/태그 완화는 없다.
+
+Build/Supplement와 generation3의 추가 surface panning 예산이 같은 fallback을 사용한다. source ID·POI·동굴·지형 RNG와 기존 성공 배치는 바꾸지 않으며 generation1은 수정하지 않았다.36seed 반복 생성/필수 biome·POI·좌표·경계·동굴·공급 invariant를 검사했고, 수정 전 통과하던33개 world fingerprint는 그대로다. 기존 유효 save의 묘지나 자원을 재생성/이동시키는 migration은 없다. [전체 원인·결과](../validation/post-boss-stabilization/REVIEW.md).

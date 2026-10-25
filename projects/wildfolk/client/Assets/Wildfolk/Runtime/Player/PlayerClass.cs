@@ -56,13 +56,18 @@ namespace Wildfolk
         private void Awake(){health=GetComponent<Health>();locomotion=GetComponent<PlayerLocomotion>();commands=GetComponent<PlayerInputCommands>();bag=GetComponent<PlayerInventory>();previous=transform.position;}
         private void Start(){if(!Locked && GetComponent<NetworkPlayer>()==null)Lock(ClassProfiles.LocalId,ClassProfiles.Local);}
         private ClassProgressSession progression;
-        public long ClassXP=>progression?.Account.Find(Definition.Id)?.XP??0;
+        private string replicaProgressClass;private long replicaProgressXP;
+        private bool pendingBossXP;
+        public bool PersistentProgression=>progression?.Persistent==true;
+        public long ClassXP=>progression?.Account.Find(Definition.Id)?.XP??(Definition!=null && Definition.Id==replicaProgressClass?replicaProgressXP:0);
+        public void ApplyReplicaXP(string id,long total)
+        {if(Authority || total<0 || ClassCatalog.Current.Find(id)==null || replicaProgressClass==id && total<replicaProgressXP)return;replicaProgressClass=id;replicaProgressXP=total;Changed?.Invoke();}
         public bool Lock(string profile,AccountProgression account)=>Lock(profile,new ClassProgressSession(account,true));
         public bool Lock(string profile,ClassProgressSession admitted)
         {
             var account=admitted.Account;
             if(Locked)return false;account.Validate();var progress=account.Find(account.Selected);if(progress?.Owned!=true)return false;
-            progression=admitted;Profile=profile;Definition=ClassCatalog.Current.Find(progress.Id);Array.Clear(modifiers,0,modifiers.Length);
+            progression=admitted;pendingBossXP=account.PendingXP!=null;Profile=profile;Definition=ClassCatalog.Current.Find(progress.Id);Array.Clear(modifiers,0,modifiers.Length);
             foreach(var id in progress.Nodes){var node=Array.Find(Definition.Nodes,n=>n.Id==id);modifiers[(int)node.Effect]+=node.Amount;}
             Locked=true;stationarySince=Now;lastStep=Now;HomeDeparture();Changed?.Invoke();return true;
         }
@@ -80,6 +85,16 @@ namespace Wildfolk
             if(!Authority || !Locked || xp<0)return false;
             var success=progression.Grant(Profile,Definition.Id,xp,receipt);
             if(success)GetComponent<NetworkClassActions>()?.SendProfile();return success;
+        }
+        public ClassRewardPersistence.ClassXpCommit BeginBossXP(ClassXpIntent intent)
+        {if(!PersistentProgression)return null;pendingBossXP=true;return ClassRewardPersistence.Begin(Profile,intent);}
+        public void AcceptBossXP(long total,string receipt)
+        {progression.ApplyCommittedXP(Definition.Id,total,receipt);pendingBossXP=false;GetComponent<NetworkClassActions>()?.SendProfile();}
+        public bool RecoverBossXP()
+        {
+            if(!PersistentProgression || !pendingBossXP || ClassRewardPersistence.Active(Profile))return true;
+            try{var data=ClassProfiles.Store.Read(Profile);pendingBossXP=data.PendingXP!=null;if(!pendingBossXP)AcceptBossXP(data.Find(Definition.Id).XP,null);return !pendingBossXP;}
+            catch(Exception e)when(e is System.IO.IOException || e is UnauthorizedAccessException || e is ArgumentException || e is InvalidOperationException){return false;}
         }
         public void HomeDeparture(){homeUntil=Now+60;}
         public void RestoreCooldown(float remaining){survivalReady=Now+remaining;ProtectionUntil=0;SetGuard(false);Quarry=null;QuarryUntil=0;}

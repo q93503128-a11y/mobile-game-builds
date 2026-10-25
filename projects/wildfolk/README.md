@@ -1,6 +1,6 @@
 # Lowfire
 
-Unity **6000.3.19f1 LTS / Universal 2D**, 모바일 Landscape(1920×1080) 탑다운 생존 게임이다. 표시명 Lowfire, 내부 Wildfolk namespace·경로·저장 식별자는 유지한다. 현재 alpha 콘텐츠는 **Item136 / Recipe111 / Save14 / Protocol21**, Workbench I→II→III와 Wood/Stone/Iron/Steel/Diamond 장비다.
+Unity **6000.3.19f1 LTS / Universal 2D**, 모바일 Landscape(1920×1080) 탑다운 생존 게임이다. 표시명 Lowfire, 내부 Wildfolk namespace·경로·저장 식별자는 유지한다. 현재 alpha 콘텐츠는 **Item136 / Recipe111 / Save14 / Profile2 / Protocol21**, Workbench I→II→III와 Wood/Stone/Iron/Steel/Diamond 장비다.
 
 ## 실행과 플레이
 
@@ -64,3 +64,7 @@ Class 교정·Camp Journal(2026-10-22): remote admission 기본 Survivor/XP0/노
 기존 Graveyard 수호자 처치로 큰 왕묘가 영구 개방된다. 밤에 Bone10으로 소환하며 성공한 그 밤은 세계 전체에서 같은 보스를 다시 부를 수 없다. 다음 밤에 재시도한다. 보스 HP/피해/속도는1~4인 동일하고 Phase2 소환수만2/3/4/5마리다. 기존 방어 시설을 준비할 수 있다. 전원 이탈·전멸 시 걸어서 귀환하며 점진 회복하고, 낮이 되어도 진행 중 전투는 유지한다.
 
 Core T1은 공유 물리 보상1개 확정이며 현재 Recipe가 없다. Crown은20% 공유 추첨, Head와 별개 Accessory1칸에 장착한다. 체력35% 이하에서 이동+8%/받는 피해−10%, 공격 보너스는 없다. 날짜/현재 시기 HUD를 사용한다. [설계·수치·실제 검증 및 한계](validation/undead-king-boss/REVIEW.md). 아래 날짜별 절은 각 패스 도입 당시 기록이다.
+
+## Post-Boss Stabilization (2026-10-25)
+
+LAN 검증 fixture의 잘못된 비활성 resource spawn을 제거하고 Host/Client 자원 집합·채집·청크 왕복·재접속·reHost 회귀를 추가했다. 주석 공급처의 지역 후보 소진 때만 실제 강변을 따라 제한된 결정적 fallback을 사용한다. 기존 정상 배치는 유지한다. Boss ClassXP는 Profile2의 최대1개 미완료 거래와 저장된 보상 확정을 대조해 복구한다. Save14/Protocol21/generation3 및 보스 수치·Item/Recipe는 유지한다. [원인·회귀·한계](validation/post-boss-stabilization/REVIEW.md).

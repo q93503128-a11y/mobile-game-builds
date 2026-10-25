@@ -41,7 +41,7 @@ namespace Wildfolk
         public bool Save()
         {
             if(!world.IsAuthority || !Ready)return false;
-            try{var game=Capture();NetworkSession.Instance.WorldRepository.Write(game,Rules.Validate);return true;}
+            try{var game=Capture();NetworkSession.Instance.WorldRepository.Write(game,Rules.Validate);foreach(var player in NetworkPlayer.Active)player.GetComponent<PlayerClass>()?.RecoverBossXP();return true;}
             catch(Exception error)when(error is System.IO.IOException || error is UnauthorizedAccessException || error is ArgumentException || error is InvalidOperationException || error is OverflowException)
             {Debug.LogError("Cooperative world save failed: "+error.GetType().Name);return false;}
         }

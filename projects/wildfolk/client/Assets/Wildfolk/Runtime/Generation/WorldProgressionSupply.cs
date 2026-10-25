@@ -19,6 +19,7 @@ namespace Wildfolk
                         // Supplements may overlap a natural candidate; the supplement is skipped there, never the old source.
                         var prior=world.GenerateChunk(WorldChunk.At(p,data.ChunkSize));foreach(var old in prior)if((p-old.Position).sqrMagnitude<16){clear=false;break;}if(!clear)continue;
                         world.GuaranteedResources.Add(new ResourcePlacement(rule,p,1,"e"+rule+":"+i));found=true;break;}
+                    if(!found && TryRiverFallback(world,data,rule,center,true,out var fallback)){world.GuaranteedResources.Add(new ResourcePlacement(rule,fallback,1,"e"+rule+":"+i));found=true;}
                     if(!found)throw new InvalidOperationException("No safe additive progression source site");
                 }
             }
@@ -50,10 +51,30 @@ namespace Wildfolk
                         var angle=attempt*2.399963f;var radius=2+Mathf.Sqrt(attempt)*2.2f;var p=center+new Vector2(Mathf.Cos(angle),Mathf.Sin(angle))*radius;
                         if(!world.SourceAllowed(rule,p))continue;var clear=true;foreach(var old in world.GuaranteedResources)if((old.Position-p).sqrMagnitude<16){clear=false;break;}if(!clear)continue;selected=p;found=true;break;
                     }
+                    if(!found)found=TryRiverFallback(world,data,rule,center,false,out selected);
                     if(!found)throw new InvalidOperationException("Deterministic source repair exhausted for rule "+rule);
                     world.GuaranteedResources.Add(new ResourcePlacement(rule,selected,1,"g"+rule+":"+i));
                 }
             }
+        }
+        // Only exhausted panning clusters enter this path. Keep existing successful coordinates/IDs intact.
+        internal static bool TryRiverFallback(ContinentalWorldLayout world,WorldGenerationDefinition data,int rule,Vector2 center,bool avoidNatural,out Vector2 selected)
+        {
+            selected=default;if(data.Resources[rule].Prefab.Definition.HarvestMethod!=HarvestMethod.Panning)return false;
+            var cached=avoidNatural?new Dictionary<WorldChunk,List<ResourcePlacement>>():null;
+            // 128 longitudinal steps × four banks: at most512 habitat-aware candidates, no RNG reroll.
+            for(var step=0;step<128;step++)
+            {
+                var y=center.y+((step+1)/2)*32*(step%2==1?1:-1);
+                for(var bank=0;bank<4;bank++)
+                {
+                    var offset=(bank<2?8:12)*(bank%2==0?1:-1);var p=new Vector2(world.RiverAt(y)+offset,y);
+                    if(!world.SourceAllowed(rule,p))continue;var clear=true;foreach(var old in world.GuaranteedResources)if((old.Position-p).sqrMagnitude<16){clear=false;break;}if(!clear)continue;
+                    if(avoidNatural){var key=WorldChunk.At(p,data.ChunkSize);if(!cached.TryGetValue(key,out var entries))cached[key]=entries=world.GenerateChunk(key);foreach(var old in entries)if((old.Position-p).sqrMagnitude<16){clear=false;break;}if(!clear)continue;}
+                    selected=p;return true;
+                }
+            }
+            return false;
         }
     }
     public static class WorldGenerationValidator

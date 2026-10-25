@@ -263,3 +263,9 @@ JournalUiBuilder는 기존 paper/font/icon을 사용하는 소형 Editor authori
 - NetworkBossWorld/NetworkPoiSite: 소비한 밤/active 및 수호자 해제 replica. Client owner offering은 기존 NetworkFacilityInteractor RPC 검증 경계를 통한다.
 - UndeadKingVisual/BossTelegraph: 표현 전용 분절 포즈/범위·짧은 물리 균열·사망/ash/loot pause. BossIdentity/BossHud/TimeHud는 기존 경계를 확장했다.
 - AccessoryDefinition/AccessoryVisual: Head/Body/Utility와 별개 한 칸. 공용 장착 transaction/short catalog index replica/ID save, Anchor 설정에 따른 작은 부유 시각. 공격 stat을 더하지 않는다.
+
+## Post-Boss Stabilization
+
+ClassRewardPersistence/ClassXpIntent는 로컬 boss 보상에 한정한 bounded profile journal이다. ClassXpCommit의 in-flight 구간 동안 Profile2 PendingXP→Save14 resolved receipt→Profile2 XP+clear를 순서대로 확정한다. PlayerClass는 영속/ephemeral 경계를 유지하고 완료 XP를 cached ClassProgressSession에 적용한다. LocalAccountProgressionStore는 남은 intent만 on-read reconciliation하며, WorldSaveService/NetworkWorldPersistence는 실제 save 이벤트에서만 미완료 보상을 재시도한다. Boss 사망 보상 저장 실패의 재시도는 최대1초에1회다. 새 공용 Level/Skill/계정/cloud/Host migration 경계는 없다.
+
+P0의 잘못된 inactive NetworkStone은 Editor BossLanQa.Freeze에서 pending root를 꺼 NGO behaviour 목록이0개가 된 검증 fixture 결함이었다. runtime ResourceNetworkState/authority/packet 크기는 그대로다. ResourceReplicationQa는 실제 observer set/ID/rule/HP·채집·청크·late join·reHost를 비교하는 Editor-only 회귀이며 출하 scene에 붙지 않는다.

@@ -47,6 +47,9 @@ namespace Wildfolk
             if(!tomb.Unlocked)return Feedback(player,"boss.tomb.sealed");
             if(Clock.Model.Phase!=DayPhase.Night)return Feedback(player,"boss.tomb.cold");
             if(expectedNight!=Clock.Model.Day || !d.CanSummon(r.LastNight,Clock.Model.Day,Clock.Model.Phase,r.Active))return Feedback(player,"boss.tomb.silent");
+            // Do not overwrite a resolved night receipt while its local profile credit still needs recovery.
+            if(network==null){if(World.Player.GetComponent<PlayerClass>()?.RecoverBossXP()==false)return false;}
+            else foreach(var actor in NetworkPlayer.Active)if(actor.GetComponent<PlayerClass>()?.RecoverBossXP()==false)return false;
             var prior=r.Copy();BossEncounter spawned=null;
             var ok=player.Model.TryConsumeCosts(new[]{new ItemAmount{Item=d.Offering,Count=d.OfferingCount}},()=>
             {
@@ -83,6 +86,20 @@ namespace Wildfolk
             var created=new List<WorldPickup>();var recipients=new List<PlayerProgression>();var before=new List<GrowthSnapshot>();var xp=new List<long>();var gold=new List<long>();
             foreach(var p in Players)if(Present(p) && Array.IndexOf(r.Eligible,Id(p))>=0 && Vector2.Distance(p.transform.position,e.transform.position)<=NetworkCreatureWorld.RewardRadius)
             {var g=p.GetComponent<PlayerProgression>();recipients.Add(g);before.Add(g.Capture());xp.Add(g.Experience);gold.Add(g.Gold);}
+            var receipt=r.Boss+":"+r.Tomb+":"+r.LastNight;
+            var durable=new List<ClassRewardPersistence.ClassXpCommit>();var roles=new List<PlayerClass>();
+            var repository=network==null?World.Session.GetComponent<WorldSaveService>().Repository:NetworkSession.Instance.WorldRepository;
+            try
+            {
+                foreach(var p in recipients)
+                {
+                    var role=p.GetComponent<PlayerClass>();if(role?.PersistentProgression!=true)continue;
+                    var intent=new ClassXpIntent{Receipt=receipt,ClassId=role.Definition.Id,WorldPath=repository.Path,Boss=r.Boss,Tomb=r.Tomb,Night=r.LastNight,Seed=World.Seed,Generation=World.Map.GenerationVersion,Experience=e.Definition.Rewards.Experience};
+                    var commit=role.BeginBossXP(intent);if(commit==null)throw new InvalidOperationException("Class reward intent unavailable");durable.Add(commit);roles.Add(role);
+                }
+            }
+            catch(Exception error)when(error is System.IO.IOException || error is UnauthorizedAccessException || error is ArgumentException || error is InvalidOperationException)
+            {foreach(var commit in durable){try{commit.Rollback();}finally{commit.Dispose();}}return false;}
             // World reward state, common XP/Gold and physical stacks commit atomically.
             var rolled=r.RolledLoot;var eligibleIds=r.Eligible;r.Active=false;r.PendingReward=false;r.RolledLoot=Array.Empty<SavedStack>();r.Eligible=Array.Empty<string>();
             try
@@ -96,10 +113,11 @@ namespace Wildfolk
             {
                 foreach(var drop in created)if(drop!=null)PrefabPool.Release(drop.gameObject);
                 for(var i=0;i<recipients.Count;i++)recipients[i].Restore(before[i],xp[i],gold[i]);r.Active=true;r.PendingReward=true;r.RolledLoot=rolled;r.Eligible=eligibleIds;
+                foreach(var commit in durable){try{commit.Rollback();}finally{commit.Dispose();}}
                 Debug.LogError("Boss reward commit deferred: "+error.GetType().Name);return false;
             }
-            var receipt=r.Boss+":"+r.Tomb+":"+r.LastNight;
-            foreach(var p in recipients)p.GetComponent<PlayerClass>()?.GrantXP(e.Definition.Rewards.Experience,receipt);
+            for(var i=0;i<durable.Count;i++){var commit=durable[i];try{if(commit.Complete(out var total))roles[i].AcceptBossXP(total,receipt);}finally{commit.Dispose();}}
+            foreach(var p in recipients){var role=p.GetComponent<PlayerClass>();if(role!=null && !role.PersistentProgression)role.GrantXP(e.Definition.Rewards.Experience,receipt);}
             r.RolledLoot=Array.Empty<SavedStack>();r.Eligible=Array.Empty<string>();GetComponent<NetworkBossWorld>()?.Publish();return true;
         }
     }

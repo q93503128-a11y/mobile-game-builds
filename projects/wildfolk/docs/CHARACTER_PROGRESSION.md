@@ -119,3 +119,7 @@ MainMenu 책 안 직업 기록, MP 책의 연결된 bookmark, Class 명단/큰 �
 ## Crown / boss reward
 
 Head/Body/Utility와 별개 Accessory1칸을 공유 PlayerEquipment transaction으로 제공한다. Crown은 생존 시 HP ratio≤0.35에서 이동+8%와 incoming 피해−10%만 주며 HeadArmor/Skill/Meal을 대체하지 않는다. 기존 armor/class 다음 한 번 적용하고 공격력/공격 속도 modifier는 없다. 해제/치유/사망 뒤 지속 효과를 남기지 않는다. Boss 공용XP120/Gold35는 world commit에서1회, ClassXP는 기존 PlayerClass 수신·세션 receipt 경계를 사용해 commit 뒤 전달한다. 공용 Level/Skill/6Class/54node는 재설계하지 않는다.
+
+## Post-Boss Stabilization · ClassXP 내구성
+
+현재 로컬 profile은2이며1의 소유·선택·XP·노드·구매 의도를 보존해 이관한다. Boss 공용 XP120/Gold35의 world commit 전에 XP를 아직 가산하지 않은 profile PendingXP를 저장하고, 확정된 world receipt를 대조해 원래 Class에 가산+marker 제거를 원자 반영한다. 강제 종료 공백은 다음 profile 읽기에서 복구하며 최대1개 intent만 유지한다. 보스 ClassXP를 공용 Level/Skill XP로 합치지 않는다. 로컬 영속 진행과 원격 admission/session-only verifier의 구분은 유지한다. Client ProgressRpc도 영속 profile을 쓰지 않고 transient ClassXP만 갱신하며, join/reconnect 시 현재 session XP를 받는다. Save14/Protocol21과 기존 Class/노드/수치는 그대로다. [저장 경계](SAVE_PERSISTENCE.md), [fault test와 실제 검증](../validation/post-boss-stabilization/REVIEW.md).

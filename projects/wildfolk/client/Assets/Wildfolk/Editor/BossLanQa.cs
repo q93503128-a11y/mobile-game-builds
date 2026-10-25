@@ -43,7 +43,7 @@ namespace Wildfolk.Editor
         private static NetworkPlayer Other=>NetworkPlayer.Active.FirstOrDefault(p=>p.IsSpawned && p.NetworkObject.IsPlayerObject && !p.IsOwner);
         private static PlayerInventory Bag(NetworkPlayer p)=>p.GetComponent<PlayerInventory>();
         private static void Freeze()
-        {var w=NetworkCreatureWorld.Active;w.Clock.enabled=w.Animals.enabled=w.Goblins.enabled=w.Night.enabled=w.World.Renewal.enabled=false;foreach(var p in NetworkPlayer.Active){p.Motor.enabled=p.GetComponent<PlayerInputAdapter>().enabled=false;p.GetComponent<Rigidbody2D>().linearVelocity=Vector2.zero;var survival=p.GetComponent<PlayerSurvival>();survival.Definition=UnityEngine.Object.Instantiate(survival.Definition);survival.Definition.RegenPerSecond=0;}foreach(var r in UnityEngine.Object.FindObjectsByType<ResourceNode>(FindObjectsSortMode.None))if(Vector2.Distance(r.transform.position,w.World.Map.Spawn)<10)r.gameObject.SetActive(false);}
+        {var w=NetworkCreatureWorld.Active;w.Clock.enabled=w.Animals.enabled=w.Goblins.enabled=w.Night.enabled=w.World.Renewal.enabled=false;foreach(var p in NetworkPlayer.Active){p.Motor.enabled=p.GetComponent<PlayerInputAdapter>().enabled=false;p.GetComponent<Rigidbody2D>().linearVelocity=Vector2.zero;var survival=p.GetComponent<PlayerSurvival>();survival.Definition=UnityEngine.Object.Instantiate(survival.Definition);survival.Definition.RegenPerSecond=0;}}
         private static void Move(NetworkPlayer p,Vector2 at){p.GetComponent<Rigidbody2D>().position=at;p.transform.position=at;p.GetComponent<Rigidbody2D>().linearVelocity=Vector2.zero;Physics2D.SyncTransforms();}
         private static void Give(NetworkPlayer p,string id,int count=1){var item=p.Catalog.Item(id);Bag(p).Model.Add(item,count);for(var i=0;i<9;i++)if(Bag(p).Model.GetSlot(i).Item==item){Bag(p).SelectSlot(i);break;}}
         private static IEnumerator NewHost(bool resume)
@@ -53,7 +53,7 @@ namespace Wildfolk.Editor
         }
         private static IEnumerator Join()
         {
-            session=NetworkSession.Instance??UnityEngine.Object.Instantiate(AssetDatabase.LoadAssetAtPath<NetworkSession>(MultiplayerSceneBuilder.SessionPrefabPath));session.ProfileOverride=ClientId;var task=session.Join(ConnectionRoute.LocalNetwork,"127.0.0.1");yield return Wait(()=>task.IsCompleted,"client transport");Check(task.Result,"actual LAN join "+session.LastFailure);yield return Wait(()=>Local!=null && Other!=null && NetworkCreatureWorld.Active?.Ready==true,"client two actors");Local.GetComponent<PlayerInputAdapter>().enabled=false;yield return null;
+            session=NetworkSession.Instance??UnityEngine.Object.Instantiate(AssetDatabase.LoadAssetAtPath<NetworkSession>(MultiplayerSceneBuilder.SessionPrefabPath));session.ProfileOverride=ClientId;var task=session.Join(ConnectionRoute.LocalNetwork,"127.0.0.1");yield return Wait(()=>task.IsCompleted,"client transport");Check(task.Result,"actual LAN join "+session.LastFailure);yield return Wait(()=>Local!=null && Other!=null && NetworkCreatureWorld.Active?.Ready==true,"client two actors");yield return Wait(()=>Local.GetComponent<PlayerClass>().ClassXP>=1800,"initial/reconnected transient ClassXP snapshot");Check(Local.GetComponent<PlayerClass>().Definition.Id=="explorer","admitted class snapshot preserved on join");Local.GetComponent<PlayerInputAdapter>().enabled=false;yield return null;
         }
         private static IEnumerator Leave()
         {if(session!=null && session.State!=NetworkSessionState.Idle){session.Leave(true);yield return Wait(()=>session.State==NetworkSessionState.Idle,"leave");}yield return null;yield return null;}
@@ -73,6 +73,7 @@ namespace Wildfolk.Editor
             {
                 var stage=Read("phase.txt");if(stage==done || string.IsNullOrEmpty(stage)){yield return null;continue;}done=stage;Phase=stage;
                 if(stage.StartsWith("join_")){yield return Join();Ack(stage);}
+                else if(stage.StartsWith("resources_")){yield return ResourceReplicationQa.Receive(stage,Dir);Ack(stage);}
                 else if(stage=="rollback")
                 {yield return Wait(()=>Tomb!=null && Tomb.Unlocked && Bag(Local).Model.CountItem(Local.Catalog.Item("bone"))==30,"rollback inventory replica");yield return Delay(.3f);Check(Boss==null && !World.Record("undead_king").Active && World.Record("undead_king").LastNight==0,"failed offering publishes prior night and inactive mirror");Ack(stage);}
                 else if(stage=="summon")
@@ -107,8 +108,10 @@ namespace Wildfolk.Editor
                     yield return Wait(()=>Local.GetComponent<PlayerEquipment>().Accessory!=null,"owner accessory equip acknowledged");Local.Commands.Session.CloseInventory();Ack(stage);
                 }
                 else if(stage=="reward")
-                {yield return Wait(()=>Boss==null && Local.GetComponent<PlayerProgression>().Experience>=120 && Local.GetComponent<PlayerProgression>().Gold>=35,"eligible XP Gold replica once");Ack(stage);}
-                else if(stage=="leave"){yield return Leave();Ack(stage);}
+                {yield return Wait(()=>Boss==null && Local.GetComponent<PlayerProgression>().Experience>=120 && Local.GetComponent<PlayerProgression>().Gold>=35 && Local.GetComponent<PlayerClass>().ClassXP>=1920,"eligible common reward and transient ClassXP replica once");Ack(stage);}
+                else if(stage=="pickup_core")
+                {var id=ulong.Parse(Read("core-pickup-id.txt"));yield return Wait(()=>Bag(Local).Model.CountItem(Local.Catalog.Item("boss_core_t1"))==1 || session.Manager.SpawnManager.SpawnedObjects.ContainsKey(id),"core replica or already acknowledged pickup");if(Bag(Local).Model.CountItem(Local.Catalog.Item("boss_core_t1"))==0)Local.GetComponent<NetworkInventory>().Pickup(id);yield return Wait(()=>Bag(Local).Model.CountItem(Local.Catalog.Item("boss_core_t1"))==1,"owner pickup request acknowledged by Host");Ack(stage);}
+                else if(stage=="leave" || stage=="resource_disconnect"){yield return Leave();Ack(stage);}
                 else if(stage=="resume")
                 {yield return Wait(()=>Local.GetComponent<PlayerEquipment>().Accessory!=null,"accessory restored on reHost");Check(Boss==null,"resolved encounter no respawn");Ack(stage);}
                 else if(stage=="finish"){Ack(stage);yield return Leave();yield break;}
@@ -121,6 +124,8 @@ namespace Wildfolk.Editor
         private static IEnumerator Authority()
         {
             Profile(HostId,"explorer");yield return NewHost(false);Command("join_first");yield return Acknowledged("join_first");yield return Wait(()=>Other!=null,"two actual processes ready");Freeze();
+            yield return ResourceReplicationQa.Exercise(NetworkCreatureWorld.Active,()=>Local,()=>Other,Dir,Command,Acknowledged);
+            Command("resource_disconnect");yield return Acknowledged("resource_disconnect");yield return Wait(()=>Other==null,"resource peer disconnected");Command("join_resource");yield return Acknowledged("join_resource");yield return Wait(()=>Other!=null,"resource peer rejoined");Freeze();yield return ResourceReplicationQa.Probe("resources_late_join",()=>Other,Dir,Command,Acknowledged);
             var prefab=AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Wildfolk/Prefabs/NetworkUndeadKing.prefab").GetComponent<NetworkBoss>();Check(Math.Abs(prefab.Clock-session.Manager.ServerTime.Time)<.1,"pre-spawn boss clock uses server epoch");
             var w=NetworkCreatureWorld.Active;
             var a=w.World.Map.Continental.Anchors.First(x=>x.Kind==WorldAnchorKind.Graveyard);Move(Local,a.Position+Vector2.down*3);Move(Other,a.Position+Vector2.down*2);
@@ -140,12 +145,18 @@ namespace Wildfolk.Editor
             sustain=true;yield return Delay(.7f);Check(Boss.State!=BossState.Returning,"living re-entry resumes server fight");
             Give(Other,"undead_kings_crown");Command("accessory");yield return Acknowledged("accessory");Check(Other.GetComponent<PlayerEquipment>().Accessory!=null && Other.GetComponentInChildren<AccessoryVisual>()!=null,"remote accessory state and shared visual anchor");
             var exp=NetworkPlayer.Active.ToDictionary(p=>p.ProfileId,p=>p.GetComponent<PlayerProgression>().Experience);var gold=NetworkPlayer.Active.ToDictionary(p=>p.ProfileId,p=>p.GetComponent<PlayerProgression>().Gold);
+            var classXp=NetworkPlayer.Active.ToDictionary(p=>p.ProfileId,p=>p.GetComponent<PlayerClass>().ClassXP);var remoteBytes=File.ReadAllBytes(Path.Combine(Dir,"client-store","class-"+ClientId+".json"));
             var core=Total("boss_core_t1");var crown=Total("undead_kings_crown");Boss.Health.ApplyDamage(Boss.Health.Current,true,Bag(Local),Local.Health);yield return Delay(3.7f);
             Check(Boss==null && Total("boss_core_t1")==core+1,"one shared guaranteed core network set");Check(Total("undead_kings_crown")-crown<=1,"one crown roll shared at most one");
             foreach(var p in NetworkPlayer.Active){Check(p.GetComponent<PlayerProgression>().Experience==exp[p.ProfileId]+120 && p.GetComponent<PlayerProgression>().Gold==gold[p.ProfileId]+35,"living eligible reward exactly once "+p.ProfileId);}
-            Command("reward");yield return Acknowledged("reward");Check(session.TrySaveWorld(),"Host Save14 boss reward/accessory");yield return Shot("boss-two-process-rewards");
+            foreach(var p in NetworkPlayer.Active)Check(p.GetComponent<PlayerClass>().ClassXP==classXp[p.ProfileId]+120,"class XP once in persistent Host or session-only peer "+p.ProfileId);
+            Check(ClassProfiles.Store.Read(HostId).PendingXP==null && ClassProfiles.Store.Read(HostId).Find("explorer").XP==classXp[HostId]+120,"Host Profile2 reward committed without pending intent");Check(File.ReadAllBytes(Path.Combine(Dir,"client-store","class-"+ClientId+".json")).SequenceEqual(remoteBytes),"remote verifier progression never writes peer persistent profile");
+            Command("reward");yield return Acknowledged("reward");
+            var groundCore=WorldPickup.Active.FirstOrDefault(p=>p.Item!=null && p.Item.Id=="boss_core_t1");if(groundCore!=null){var item=groundCore.GetComponent<NetworkGroundItem>();File.WriteAllText(Path.Combine(Dir,"core-pickup-id.txt"),item.NetworkObjectId.ToString());Move(Local,(Vector2)groundCore.transform.position+Vector2.up*6);Move(Other,groundCore.transform.position);Command("pickup_core");yield return Acknowledged("pickup_core");Check(Bag(Other).Model.CountItem(Other.Catalog.Item("boss_core_t1"))==1 && Total("boss_core_t1")==core+1,"authoritative owner pickup keeps exactly one physical core");}
+            Check(session.TrySaveWorld(),"Host Save14 boss reward/accessory");yield return Shot("boss-two-process-rewards");
             Command("leave");yield return Acknowledged("leave");yield return Wait(()=>Other==null,"client left");yield return Leave();yield return NewHost(true);Command("join_resumed");yield return Acknowledged("join_resumed");yield return Wait(()=>Other!=null,"reHost actual peer");Freeze();
             Check(Boss==null && World.Record("undead_king").LastNight==1,"reHost retains consumed night and resolved reward");Check(Total("boss_core_t1")==core+1,"reHost no physical loot duplicate");
+            Check(NetworkCreatureWorld.Active.World.Renewal.Capture().Any(r=>r.Id==Read("harvested-resource.txt") && r.Destroyed),"harvest tombstone survives save/reHost");yield return ResourceReplicationQa.Probe("resources_rehost",()=>Other,Dir,Command,Acknowledged);
             var oldTomb=World.Record("undead_king").Tomb;var anchor=NetworkCreatureWorld.Active.World.Map.Continental.Anchors.First(x=>x.Kind==WorldAnchorKind.Graveyard && x.Id==oldTomb);Move(Local,anchor.Position+Vector2.down*3);Move(Other,anchor.Position+Vector2.down*2);NetworkCreatureWorld.Active.World.Chunks.Reconcile();NetworkCreatureWorld.Active.World.Chunks.DrainPending();yield return Delay(.5f);
             var bones=Bag(Other).Model.CountItem(Other.Catalog.Item("bone"));Check(Tomb!=null && Tomb.Unlocked && !World.Summon(Tomb,Bag(Other),1) && Bag(Other).Model.CountItem(Other.Catalog.Item("bone"))==bones,"resolved reHost same-night offering rejects without consuming Bone");
             Command("resume");yield return Acknowledged("resume");Command("finish");yield return Acknowledged("finish");yield return Wait(()=>Other==null,"client finished");yield return Leave();File.WriteAllText(Path.Combine(Dir,"complete.txt"),"actual two-process boss LAN complete");

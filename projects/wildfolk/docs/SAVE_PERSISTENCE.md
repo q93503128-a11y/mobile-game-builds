@@ -110,6 +110,16 @@ Save13→14는 기존 player/월드/참가자 payload를 유지하고 Accessory=
 
 BossSnapshot은 boss ID/Tomb ID/LastNight/Home/Position/Active/HP/PendingReward/Eligible/이미 추첨한 RolledLoot를 보존한다. 기존 guardian-cleared feature가 unlock이다. 알려진 boss·anchor·guard·HP·유한 좌표·night/중복 ID·고정 보상 min/max/확정 Core·중복 stack을 검증한다. 성공한 offering 순간 Bone10과 그 밤 identity를 한 저장에 확정하고 실패하면 provisional boss/가방/밤을 rollback한다.
 
-Active load는 저장 HP의 Returning에서 재개한다. target/공격 포즈/임시 adds/mark는 transient이며 저장해 중복 생성하지 않는다. 죽는 중 load는 이미 뽑은 보상과 eligible ID를 유지해 짧은 Dying 이후 해결한다. 물리 pickups+공용XP/Gold+resolved flag는 한 world snapshot commit이며 실패하면 모두 rollback하고 재추첨 없이 재시도한다. resolved reload/reHost는 다시 지급하지 않는다. 별도 로컬 Class profile의 XP는 world commit 후 전달하므로 프로세스 강제 종료의 두 저장소 사이 원자성/유실 방지는 보장하지 않는다. account/cloud/crash-proof 보장을 추가하지 않았다.
+Active load는 저장 HP의 Returning에서 재개한다. target/공격 포즈/임시 adds/mark는 transient이며 저장해 중복 생성하지 않는다. 죽는 중 load는 이미 뽑은 보상과 eligible ID를 유지해 짧은 Dying 이후 해결한다. 물리 pickups+공용XP/Gold+resolved flag는 한 world snapshot commit이며 실패하면 모두 rollback하고 재추첨 없이 재시도한다. resolved reload/reHost는 다시 지급하지 않는다. Boss 도입 당시에는 별도 로컬 Class profile XP를 world commit 뒤 전달해 두 저장소 사이 강제 종료 유실 공백이 있었다. 아래 Post-Boss Stabilization의 Profile2 복구 거래가 이 경계를 보완한다. account/cloud/crash-proof 보장을 추가하지 않았다.
 
 Protocol21은 NetworkBoss의 HP/state/phase/attack/server timestamp/mark, NetworkBossWorld offering, POI unlock 및 player Accessory appearance를 추가한다.20 peer와 혼용하지 않는다. Host가 simulation/roll/보상·저장을 결정하며 Client는 owner RPC 요청과 replica만 수행한다.
+
+## Post-Boss Stabilization · Profile2 / Save14 유지
+
+Profile1→2는 checksum 검증 뒤 기존 소유·선택·ClassXP·노드·구매 Pending을 보존하고 PendingXP=null로 정상 이관한다. 로드만으로 일반 프로필을 다시 쓰지 않으며 다음 정상 Write에서2로 저장한다. 옛 영속 처치 Receipts는 계속 무시한다. Save14/Protocol21/generation3의 payload와 파일명은 바꾸지 않는다.
+
+Boss 보상은 로컬 영속 profile에 ClassId/XP/WorldPath/seed/generation/boss/tomb/night/receipt를 가진 PendingXP 한 개를 먼저 atomic commit한다(XP는 아직 그대로). 그 다음 물리 loot·공용 XP/Gold·resolved boss를 한 world snapshot에 commit하고, profile의 XP 가산+PendingXP 제거를 한 atomic Write로 마감한다. 진행 중인 동일 프로세스의 profile Read는 미확정 거래를 회수하지 않도록 in-flight guard를 사용한다.
+
+프로세스 재시작 시 LocalAccountProgressionStore.Read는 미완료 의도가 있을 때만 해당 world를 checksum/정본 validator로 읽는다. 같은 seed/generation/boss/tomb/night의 HP0·inactive·보상 해결 상태이면 원래 Class에 XP를 한 번 더하고 marker를 함께 제거한다. world가 아직 미확정이면 XP 없이 marker를 제거한다. world를 읽을 수 없거나 profile Write에 실패하면 marker를 남겨 다음 읽기/정상 save에서 재시도한다. 새 밤 소환은 미해결 로컬 profile 보상을 복구하기 전 기존 resolved receipt를 덮지 않는다. 정상 상태에서 매 프레임 파일 검사나 영속 처치 이력 누적을 하지 않는다.
+
+Background/Quit/Save & home/Host Save는 기존 world Save 경계를 유지하고, 미완료 로컬 ClassXP가 있으면 복구도 시도한다. 원격 development verifier의 진행은 session-only이며 Host가 원격 profile을 영속 승격하지 않는다. A~E 단계 중단/쓰기 실패는 controlled fault test이며 실제 OS crash/Android 파일 시스템 내구 시험은 아니다. 독립 파일의 원자성·미디어 손상·과거 world backup의 수동 rollback까지 account 수준의 exactly-once를 주장하지 않는다.

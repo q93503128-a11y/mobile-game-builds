@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="5" result="Failed(Child)" total="5" passed="1" failed="4" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-25 00:57:34Z" end-time="2026-10-25 00:57:34Z" duration="0.2570418">
+  <test-suite type="TestSuite" id="1000" name="Wildfolk" fullname="Wildfolk" runstate="Runnable" testcasecount="254" result="Failed" site="Child" start-time="2026-10-25 00:57:34Z" end-time="2026-10-25 00:57:34Z" duration="0.257042" total="5" passed="1" failed="4" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <failure>
+      <message><![CDATA[One or more child tests had errors]]></message>
+    </failure>
+    <test-suite type="Assembly" id="1318" name="Wildfolk.Tests.EditMode.dll" fullname="C:/Users/User/Documents/ChatGPT/문승준 모바일/canonical/projects/wildfolk/tests/artifacts/unity/Library/ScriptAssemblies/Wildfolk.Tests.EditMode.dll" runstate="Runnable" testcasecount="254" result="Failed" site="Child" start-time="2026-10-25 00:57:34Z" end-time="2026-10-25 00:57:34Z" duration="0.229611" total="5" passed="1" failed="4" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="2040" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <failure>
+        <message><![CDATA[One or more child tests had errors]]></message>
+      </failure>
+      <test-suite type="TestSuite" id="1319" name="Wildfolk" fullname="Wildfolk" runstate="Runnable" testcasecount="254" result="Failed" site="Child" start-time="2026-10-25 00:57:34Z" end-time="2026-10-25 00:57:34Z" duration="0.147188" total="5" passed="1" failed="4" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <failure>
+          <message><![CDATA[One or more child tests had errors]]></message>
+        </failure>
+        <test-suite type="TestSuite" id="1320" name="Tests" fullname="Wildfolk.Tests" runstate="Runnable" testcasecount="254" result="Failed" site="Child" start-time="2026-10-25 00:57:34Z" end-time="2026-10-25 00:57:34Z" duration="0.105588" total="5" passed="1" failed="4" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <failure>
+            <message><![CDATA[One or more child tests had errors]]></message>
+          </failure>
+          <test-suite type="TestFixture" id="1244" name="ResourceReplicationRegressionTests" fullname="Wildfolk.Tests.ResourceReplicationRegressionTests" classname="Wildfolk.Tests.ResourceReplicationRegressionTests" runstate="Runnable" testcasecount="5" result="Failed" site="Child" start-time="2026-10-25 00:57:34Z" end-time="2026-10-25 00:57:34Z" duration="0.084015" total="5" passed="1" failed="4" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <failure>
+              <message><![CDATA[One or more child tests had errors]]></message>
+            </failure>
+            <test-case id="1250" name="InactiveRootCannotResolveNgoBehaviourOwner" fullname="Wildfolk.Tests.ResourceReplicationRegressionTests.InactiveRootCannotResolveNgoBehaviourOwner" methodname="InactiveRootCannotResolveNgoBehaviourOwner" classname="Wildfolk.Tests.ResourceReplicationRegressionTests" runstate="Runnable" seed="130673933" result="Passed" start-time="2026-10-25 00:57:34Z" end-time="2026-10-25 00:57:34Z" duration="0.046689" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-suite type="ParameterizedMethod" id="1249" name="ResourceWireRoundTripsWithExactLength" fullname="Wildfolk.Tests.ResourceReplicationRegressionTests.ResourceWireRoundTripsWithExactLength" classname="Wildfolk.Tests.ResourceReplicationRegressionTests" runstate="Runnable" testcasecount="4" result="Failed" site="Child" start-time="2026-10-25 00:57:34Z" end-time="2026-10-25 00:57:34Z" duration="0.017763" total="4" passed="0" failed="4" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <failure>
+                <message><![CDATA[One or more child tests had errors]]></message>
+              </failure>
+              <test-case id="1245" name="ResourceWireRoundTripsWithExactLength(&quot;&quot;)" fullname="Wildfolk.Tests.ResourceReplicationRegressionTests.ResourceWireRoundTripsWithExactLength(&quot;&quot;)" methodname="ResourceWireRoundTripsWithExactLength" classname="Wildfolk.Tests.ResourceReplicationRegressionTests" runstate="Runnable" seed="1106740019" result="Failed" start-time="2026-10-25 00:57:34Z" end-time="2026-10-25 00:57:34Z" duration="0.012310" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <failure>
+                  <message><![CDATA[  Expected: 12
+  But was:  14
+]]></message>
+                  <stack-trace><![CDATA[at Wildfolk.Tests.ResourceReplicationRegressionTests.ResourceWireRoundTripsWithExactLength (System.String id) [0x00048] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Tests\EditMode\ResourceReplicationRegressionTests.cs:15
+]]></stack-trace>
+                </failure>
+              </test-case>
+              <test-case id="1246" name="ResourceWireRoundTripsWithExactLength(&quot;r0&quot;)" fullname="Wildfolk.Tests.ResourceReplicationRegressionTests.ResourceWireRoundTripsWithExactLength(&quot;r0&quot;)" methodname="ResourceWireRoundTripsWithExactLength" classname="Wildfolk.Tests.ResourceReplicationRegressionTests" runstate="Runnable" seed="94656079" result="Failed" start-time="2026-10-25 00:57:34Z" end-time="2026-10-25 00:57:34Z" duration="0.000365" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <failure>
+                  <message><![CDATA[  Expected: 14
+  But was:  16
+]]></message>
+                  <stack-trace><![CDATA[at Wildfolk.Tests.ResourceReplicationRegressionTests.ResourceWireRoundTripsWithExactLength (System.String id) [0x00048] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Tests\EditMode\ResourceReplicationRegressionTests.cs:15
+]]></stack-trace>
+                </failure>
+              </test-case>
+              <test-case id="1247" name="ResourceWireRoundTripsWithExactLength(&quot;c:-27:53:6:11&quot;)" fullname="Wildfolk.Tests.ResourceReplicationRegressionTests.ResourceWireRoundTripsWithExactLength(&quot;c:-27:53:6:11&quot;)" methodname="ResourceWireRoundTripsWithExactLength" classname="Wildfolk.Tests.ResourceReplicationRegressionTests" runstate="Runnable" seed="399676621" result="Failed" start-time="2026-10-25 00:57:34Z" end-time="2026-10-25 00:57:34Z" duration="0.000372" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <failure>
+                  <message><![CDATA[  Expected: 25
+  But was:  27
+]]></message>
+                  <stack-trace><![CDATA[at Wildfolk.Tests.ResourceReplicationRegressionTests.ResourceWireRoundTripsWithExactLength (System.String id) [0x00048] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Tests\EditMode\ResourceReplicationRegressionTests.cs:15
+]]></stack-trace>
+                </failure>
+              </test-case>
+              <test-case id="1248" name="ResourceWireRoundTripsWithExactLength(&quot;poi:graveyard:12:3&quot;)" fullname="Wildfolk.Tests.ResourceReplicationRegressionTests.ResourceWireRoundTripsWithExactLength(&quot;poi:graveyard:12:3&quot;)" methodname="ResourceWireRoundTripsWithExactLength" classname="Wildfolk.Tests.ResourceReplicationRegressionTests" runstate="Runnable" seed="1596943689" result="Failed" start-time="2026-10-25 00:57:34Z" end-time="2026-10-25 00:57:34Z" duration="0.000255" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <failure>
+                  <message><![CDATA[  Expected: 30
+  But was:  32
+]]></message>
+                  <stack-trace><![CDATA[at Wildfolk.Tests.ResourceReplicationRegressionTests.ResourceWireRoundTripsWithExactLength (System.String id) [0x00048] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Tests\EditMode\ResourceReplicationRegressionTests.cs:15
+]]></stack-trace>
+                </failure>
+                <output><![CDATA[<b><color=#2EA3FF>MCP-FOR-UNITY</color></b>: [TestRunnerNoThrottle] Restored Interaction Mode after test run.
+Saving results to: C:/Users/User/AppData/LocalLow/DefaultCompany/Wildfolk\TestResults.xml
+]]></output>
+              </test-case>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

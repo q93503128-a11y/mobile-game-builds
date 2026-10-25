@@ -22,7 +22,7 @@ namespace Wildfolk
         public bool Save()
         {
             if(World.Map==null)return false;
-            try{Repository.Write(Capture(),Validate);LastError=null;return true;}
+            try{Repository.Write(Capture(),Validate);Player.GetComponent<PlayerClass>()?.RecoverBossXP();LastError=null;return true;}
             catch(Exception error)when(error is InvalidDataException || error is IOException || error is ArgumentException || error is InvalidOperationException){LastError=error.Message;return false;}
         }
         public void SaveFromMenu()=>PlayerFeedback.ShowKey(Save() ? "feedback.saved" : "feedback.save_failed");

@@ -1,0 +1,85 @@
+{
+  "startSHA": "b4bee20dae6c88b262f2c48a9425cf745b866e59",
+  "events": [
+    {
+      "stage": "latest remote fetched; canonical docs and prior issue evidence read; P0 investigation started",
+      "UTC": "2026-10-25T00:50:31.944308+00:00"
+    },
+    {
+      "stage": "P0 baseline actual LAN reproduced: inactive pending NetworkStone spawned with zero behaviours; removing QA root deactivation and adding observer/harvest/stream/reconnect regression",
+      "UTC": "2026-10-25T00:54:16.239976+00:00"
+    },
+    {
+      "stage": "P0 fixed actual LAN: rich observer set501, harvest/2stream cycles/late join/reHost and boss checks passed; zero resource buffer errors; starting P1",
+      "UTC": "2026-10-25T00:57:12.286401+00:00"
+    },
+    {
+      "stage": "P1 original seed reproduced; tin cluster480 has zero valid local candidates; habitat-aware512-candidate river fallback passes failing seed with full invariants in actual Editor",
+      "UTC": "2026-10-25T01:03:06.349523+00:00"
+    },
+    {
+      "stage": "P1 full36-seed deterministic and invariant regression passed; all33 formerly passing fingerprints unchanged; actual failed-seed world/save/tomb inspected; starting P2",
+      "UTC": "2026-10-25T01:09:15.800556+00:00"
+    },
+    {
+      "stage": "P2 fault/recovery62 Edit tests and core5 Play tests passed; actual MCP boss/class XP127 matches durable profile; pause/quit saves verified; client ephemeral XP persistence leak identified and corrected",
+      "UTC": "2026-10-25T01:22:54.790168+00:00"
+    },
+    {
+      "stage": "P3 core5 Play and actual MCP boss lifecycle/save passed; final LAN adds transient client ClassXP and authoritative core pickup assertions",
+      "UTC": "2026-10-25T01:23:56.461749+00:00"
+    },
+    {
+      "stage": "P3 final actual two-process LAN/reconnect/session XP/Core pickup passed; final87 Edit tests passed; Play stopped, MainMenu and settings restored; docs/diff finalization",
+      "UTC": "2026-10-25T01:37:07.600273+00:00"
+    },
+    {
+      "stage": "documentation and staged source/evidence review complete; source1476GUID and live data validator0 errors; preparing main commit/push",
+      "UTC": "2026-10-25T01:37:55.880493+00:00"
+    }
+  ],
+  "perOperationTokens": null,
+  "adjacentIntervals": [
+    {
+      "from": "latest remote fetched; canonical docs and prior issue evidence read; P0 investigation started",
+      "to": "P0 baseline actual LAN reproduced: inactive pending NetworkStone spawned with zero behaviours; removing QA root deactivation and adding observer/harvest/stream/reconnect regression",
+      "seconds": 224.295668
+    },
+    {
+      "from": "P0 baseline actual LAN reproduced: inactive pending NetworkStone spawned with zero behaviours; removing QA root deactivation and adding observer/harvest/stream/reconnect regression",
+      "to": "P0 fixed actual LAN: rich observer set501, harvest/2stream cycles/late join/reHost and boss checks passed; zero resource buffer errors; starting P1",
+      "seconds": 176.046425
+    },
+    {
+      "from": "P0 fixed actual LAN: rich observer set501, harvest/2stream cycles/late join/reHost and boss checks passed; zero resource buffer errors; starting P1",
+      "to": "P1 original seed reproduced; tin cluster480 has zero valid local candidates; habitat-aware512-candidate river fallback passes failing seed with full invariants in actual Editor",
+      "seconds": 354.063122
+    },
+    {
+      "from": "P1 original seed reproduced; tin cluster480 has zero valid local candidates; habitat-aware512-candidate river fallback passes failing seed with full invariants in actual Editor",
+      "to": "P1 full36-seed deterministic and invariant regression passed; all33 formerly passing fingerprints unchanged; actual failed-seed world/save/tomb inspected; starting P2",
+      "seconds": 369.451033
+    },
+    {
+      "from": "P1 full36-seed deterministic and invariant regression passed; all33 formerly passing fingerprints unchanged; actual failed-seed world/save/tomb inspected; starting P2",
+      "to": "P2 fault/recovery62 Edit tests and core5 Play tests passed; actual MCP boss/class XP127 matches durable profile; pause/quit saves verified; client ephemeral XP persistence leak identified and corrected",
+      "seconds": 818.989612
+    },
+    {
+      "from": "P2 fault/recovery62 Edit tests and core5 Play tests passed; actual MCP boss/class XP127 matches durable profile; pause/quit saves verified; client ephemeral XP persistence leak identified and corrected",
+      "to": "P3 core5 Play and actual MCP boss lifecycle/save passed; final LAN adds transient client ClassXP and authoritative core pickup assertions",
+      "seconds": 61.671581
+    },
+    {
+      "from": "P3 core5 Play and actual MCP boss lifecycle/save passed; final LAN adds transient client ClassXP and authoritative core pickup assertions",
+      "to": "P3 final actual two-process LAN/reconnect/session XP/Core pickup passed; final87 Edit tests passed; Play stopped, MainMenu and settings restored; docs/diff finalization",
+      "seconds": 791.138524
+    },
+    {
+      "from": "P3 final actual two-process LAN/reconnect/session XP/Core pickup passed; final87 Edit tests passed; Play stopped, MainMenu and settings restored; docs/diff finalization",
+      "to": "documentation and staged source/evidence review complete; source1476GUID and live data validator0 errors; preparing main commit/push",
+      "seconds": 48.28022
+    }
+  ],
+  "note": "Wall intervals include inspection, tool execution and waits. Independent process times may overlap these intervals and each other; do not sum them. Per-operation tokens unavailable."
+}

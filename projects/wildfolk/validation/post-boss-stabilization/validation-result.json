@@ -1,0 +1,18 @@
+{
+  "sourceValidator": {
+    "result": "PASS",
+    "uniqueGUIDs": 1476,
+    "command": "python -X utf8 tests/validate_visual_project.py client"
+  },
+  "liveProjectDataValidator": {
+    "errors": [],
+    "scene": "MainMenu",
+    "playing": false,
+    "qaDirectoryCleared": true,
+    "consoleSettingsRestored": true
+  },
+  "console": {
+    "compileErrors": 0,
+    "remainingExpectedLog": "Cooperative world save failed: IOException (deliberate offering fault injection)"
+  }
+}

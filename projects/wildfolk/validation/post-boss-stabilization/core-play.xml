@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="5" result="Passed" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-25 01:18:58Z" end-time="2026-10-25 01:20:35Z" duration="96.7268221">
+  <test-suite type="TestSuite" id="1233" name="Wildfolk" fullname="Wildfolk" runstate="Runnable" testcasecount="186" result="Passed" start-time="2026-10-25 01:18:58Z" end-time="2026-10-25 01:20:35Z" duration="96.726822" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <test-suite type="Assembly" id="1230" name="Wildfolk.Tests.PlayMode.dll" fullname="C:/Users/User/Documents/ChatGPT/문승준 모바일/canonical/projects/wildfolk/tests/artifacts/unity/Library/ScriptAssemblies/Wildfolk.Tests.PlayMode.dll" runstate="Runnable" testcasecount="186" result="Passed" start-time="2026-10-25 01:18:58Z" end-time="2026-10-25 01:20:35Z" duration="96.714075" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="10572" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <test-suite type="TestSuite" id="1231" name="Wildfolk" fullname="Wildfolk" runstate="Runnable" testcasecount="186" result="Passed" start-time="2026-10-25 01:18:58Z" end-time="2026-10-25 01:20:35Z" duration="96.713238" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1232" name="Tests" fullname="Wildfolk.Tests" runstate="Runnable" testcasecount="186" result="Passed" start-time="2026-10-25 01:18:58Z" end-time="2026-10-25 01:20:35Z" duration="96.712735" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1004" name="BossProductionPlayTests" fullname="Wildfolk.Tests.BossProductionPlayTests" classname="Wildfolk.Tests.BossProductionPlayTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-10-25 01:18:58Z" end-time="2026-10-25 01:20:19Z" duration="81.306095" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1006" name="AccessoryExchangeThresholdAndPersistence" fullname="Wildfolk.Tests.BossProductionPlayTests.AccessoryExchangeThresholdAndPersistence" methodname="AccessoryExchangeThresholdAndPersistence" classname="Wildfolk.Tests.BossProductionPlayTests" runstate="Runnable" seed="927422623" result="Passed" start-time="2026-10-25 01:18:58Z" end-time="2026-10-25 01:19:04Z" duration="5.943505" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1005" name="LifecycleSaveRewardsAndNightGate" fullname="Wildfolk.Tests.BossProductionPlayTests.LifecycleSaveRewardsAndNightGate" methodname="LifecycleSaveRewardsAndNightGate" classname="Wildfolk.Tests.BossProductionPlayTests" runstate="Runnable" seed="408163101" result="Passed" start-time="2026-10-25 01:19:04Z" end-time="2026-10-25 01:19:53Z" duration="49.043716" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1007" name="PendingReloadAndFailedWritesAreAtomic" fullname="Wildfolk.Tests.BossProductionPlayTests.PendingReloadAndFailedWritesAreAtomic" methodname="PendingReloadAndFailedWritesAreAtomic" classname="Wildfolk.Tests.BossProductionPlayTests" runstate="Runnable" seed="466074424" result="Passed" start-time="2026-10-25 01:19:53Z" end-time="2026-10-25 01:20:19Z" duration="26.306845" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Boss reward commit deferred: InvalidOperationException
+]]></output>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1019" name="ClassProgressionPlayTests" fullname="Wildfolk.Tests.ClassProgressionPlayTests" classname="Wildfolk.Tests.ClassProgressionPlayTests" runstate="Runnable" testcasecount="9" result="Passed" start-time="2026-10-25 01:20:19Z" end-time="2026-10-25 01:20:35Z" duration="15.396055" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1020" name="LobbyOwnershipPurchaseTreeAndSessionLock" fullname="Wildfolk.Tests.ClassProgressionPlayTests.LobbyOwnershipPurchaseTreeAndSessionLock" methodname="LobbyOwnershipPurchaseTreeAndSessionLock" classname="Wildfolk.Tests.ClassProgressionPlayTests" runstate="Runnable" seed="1084541236" result="Passed" start-time="2026-10-25 01:20:20Z" end-time="2026-10-25 01:20:30Z" duration="10.020529" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1021" name="SharedGrowthMigrationAndProfileXP" fullname="Wildfolk.Tests.ClassProgressionPlayTests.SharedGrowthMigrationAndProfileXP" methodname="SharedGrowthMigrationAndProfileXP" classname="Wildfolk.Tests.ClassProgressionPlayTests" runstate="Runnable" seed="1493638257" result="Passed" start-time="2026-10-25 01:20:30Z" end-time="2026-10-25 01:20:35Z" duration="5.359738" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[<b><color=#2EA3FF>MCP-FOR-UNITY</color></b>: [TestRunnerNoThrottle] Restored Interaction Mode after test run.
+Saving results to: C:/Users/User/AppData/LocalLow/DefaultCompany/Wildfolk\TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

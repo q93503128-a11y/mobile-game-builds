@@ -20,6 +20,8 @@ namespace Wildfolk
         public RewardReceiptWindow Rewards {get;}=new RewardReceiptWindow();
         public ClassProgressSession(AccountProgression account,bool persistent)
         {account.Validate();Account=account;Persistent=persistent;}
+        public void ApplyCommittedXP(string classId,long xp,string receipt)
+        {Account.Find(classId).XP=xp;if(!string.IsNullOrEmpty(receipt))Rewards.Commit(receipt);}
         public bool Grant(string profile,string classId,int xp,string receipt)
         {
             if(xp<0 || string.IsNullOrEmpty(receipt) || Rewards.Contains(receipt) || Account.Selected!=classId)return false;

@@ -12,15 +12,16 @@ namespace Wildfolk
     {public string Transaction,ClassId,WorldPath;public int Cost;}
     [Serializable] public sealed class AccountProgression
     {
-        public int Version=1;public string Selected="survivor";public ClassProgress[] Classes;
+        public int Version=2;public string Selected="survivor";public ClassProgress[] Classes;
         // Profile1 legacy Receipts is ignored by JsonUtility and omitted on the next successful write.
         public ClassPurchaseIntent Pending;
+        public ClassXpIntent PendingXP;
         public static AccountProgression New()=>new AccountProgression{Classes=ClassCatalog.Current.Classes.Select(c=>new ClassProgress{Id=c.Id,Owned=c.Price==0 && c.Currency=="Gold"}).ToArray()};
         public ClassProgress Find(string id)=>Array.Find(Classes,c=>c.Id==id);
         public void Validate()
         {
             var catalog=ClassCatalog.Current;
-            if(Version!=1 || Classes==null || Classes.Length!=catalog.Classes.Length)throw new InvalidDataException("Invalid class profile");
+            if(Version!=2 || Classes==null || Classes.Length!=catalog.Classes.Length)throw new InvalidDataException("Invalid class profile");
             var seen=new System.Collections.Generic.HashSet<string>();
             foreach(var p in Classes)
             {
@@ -30,6 +31,8 @@ namespace Wildfolk
             if(Find("survivor")?.Owned!=true || Find(Selected)?.Owned!=true)throw new InvalidDataException("Invalid selected class");
             if(Pending!=null && string.IsNullOrEmpty(Pending.Transaction) && string.IsNullOrEmpty(Pending.ClassId) && string.IsNullOrEmpty(Pending.WorldPath) && Pending.Cost==0)Pending=null;
             if(Pending!=null && (!Guid.TryParseExact(Pending.Transaction,"N",out _) || catalog.Find(Pending.ClassId)==null || Pending.Cost<=0 || string.IsNullOrEmpty(Pending.WorldPath)))throw new InvalidDataException("Invalid class purchase");
+            if(PendingXP!=null && string.IsNullOrEmpty(PendingXP.Receipt) && string.IsNullOrEmpty(PendingXP.ClassId) && string.IsNullOrEmpty(PendingXP.WorldPath) && string.IsNullOrEmpty(PendingXP.Boss) && string.IsNullOrEmpty(PendingXP.Tomb) && PendingXP.Night==0 && PendingXP.Generation==0 && PendingXP.Experience==0 && PendingXP.Seed==0)PendingXP=null;
+            PendingXP?.Validate();
         }
     }
     public interface IAccountProgressionStore
@@ -43,11 +46,11 @@ namespace Wildfolk
         public LocalAccountProgressionStore(string directory)=>Directory=directory;
         private string PathFor(string profile){if(!LocalPlayerIdentity.Valid(profile))throw new ArgumentException("Invalid profile");return Path.Combine(Directory,"class-"+profile+".json");}
         private static string Hash(string value){using(var hash=SHA256.Create())return Convert.ToBase64String(hash.ComputeHash(Encoding.UTF8.GetBytes(value)));}
-        private static AccountProgression Decode(string text){var e=JsonUtility.FromJson<Envelope>(text);if(e==null || e.Checksum!=Hash(e.Payload))throw new InvalidDataException("Invalid class checksum");var d=JsonUtility.FromJson<AccountProgression>(e.Payload);d.Validate();return d;}
+        private static AccountProgression Decode(string text){var e=JsonUtility.FromJson<Envelope>(text);if(e==null || e.Checksum!=Hash(e.Payload))throw new InvalidDataException("Invalid class checksum");var d=JsonUtility.FromJson<AccountProgression>(e.Payload);if(d.Version==1){d.Version=2;d.PendingXP=null;}d.Validate();return d;}
         public AccountProgression Read(string profile)
         {
             var path=PathFor(profile);if(!File.Exists(path) && !File.Exists(path+".backup"))return AccountProgression.New();
-            foreach(var p in new[]{path,path+".backup"}){if(!File.Exists(p))continue;try{return Decode(File.ReadAllText(p));}catch(Exception e)when(e is InvalidDataException || e is IOException || e is ArgumentException || e is InvalidOperationException){}}
+            foreach(var p in new[]{path,path+".backup"}){if(!File.Exists(p))continue;try{var data=Decode(File.ReadAllText(p));return ClassRewardPersistence.Active(profile)?data:ClassRewardPersistence.Recover(profile,data,this);}catch(Exception e)when(e is InvalidDataException || e is IOException || e is ArgumentException || e is InvalidOperationException){}}
             throw new InvalidDataException("Class profile unavailable");
         }
         public bool Write(string profile,AccountProgression data)
