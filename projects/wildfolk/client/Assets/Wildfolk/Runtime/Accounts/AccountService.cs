@@ -10,8 +10,8 @@ namespace Wildfolk
     {
         public async Task<AccountReply> Call(string operation,Dictionary<string,object> input)
         {
-            var payload=new Dictionary<string,object>{{"operation",operation},{"channel",BackendPolicy.Channel.ToString()},{"buildVersion",Application.version},{"input",input}};
-            for(var attempt=0;attempt<3;attempt++)try{var reply=await CloudCodeService.Instance.CallEndpointAsync<AccountReply>("LowfireAccount",payload);if(attempt<2&&(reply.error=="busy"||reply.error=="cloud_unavailable")){await Task.Delay(250*(attempt+1));continue;}return reply;}catch{if(attempt==2)throw;await Task.Delay(250*(attempt+1));}
+            UgsBootstrap.VerifyEnvironment();var payload=new Dictionary<string,object>{{"operation",operation},{"channel",BackendPolicy.Channel.ToString()},{"buildVersion",Application.version},{"input",input}};
+            for(var attempt=0;attempt<3;attempt++)try{var reply=await CloudCodeService.Instance.CallEndpointAsync<AccountReply>("LowfireAccount",payload);if(attempt<2&&(reply.error=="busy"||reply.error=="cloud_unavailable")){await Task.Delay(250*(1<<attempt));continue;}return reply;}catch{if(attempt==2)throw;await Task.Delay(250*(1<<attempt));}
             throw new InvalidOperationException("Cloud unavailable");
         }
     }
@@ -39,6 +39,7 @@ namespace Wildfolk
         {
             if(!CanOperate)return;busy=true;Set(AccountConnection.Connecting);
             try{if(useExisting)await identity.UseExisting();else await identity.Connect();await SyncCore(false);}
+            catch(BackendSetupException){Set(AccountConnection.CloudError,"setup_required");}
             catch(AccountConflictException e){Set(AccountConnection.AccountConflict,e.Code);}
             catch(Exception){Set(AccountConnection.Offline,"cloud_unavailable");}
             finally{busy=false;}

@@ -19,7 +19,7 @@ async function migrateAlpha(source,target,players,{apply=false,sourceEnvironment
   }
   if(!results.some(r=>r.player===player))results.push({player,result:'busy'});
  }
- return {dryRun:!apply,targetCount:results.filter(r=>['would_grant','granted'].includes(r.result)).length,results};
+ return {dryRun:!apply,candidateCount:new Set(players).size,duplicateCount:players.length-new Set(players).size,alreadyGrantedCount:results.filter(r=>r.result==='already_granted').length,targetCount:results.filter(r=>['would_grant','granted'].includes(r.result)).length,grantPlan:results.filter(r=>['would_grant','granted'].includes(r.result)).map(r=>({player:r.player,operationId:digest('alpha_2026:'+sourceEnvironment+':'+r.player)})),results};
 }
 // Persist the operator journal before deleting anything; Auth is always the final service.
 async function deleteAccount(admin,job,persist,{apply=false}={}){

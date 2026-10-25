@@ -2,15 +2,15 @@
 
 ## 현재 구현과 활성화 상태
 
-Foundation1은 client/server 소스와 검증 경계를 제공한다. 현재 `Resources/BackendSettings.json`의 Enabled=false이며 실제 Dashboard/Play Console 설정·배포를 확인하지 않았다. 제품에서 가짜 계정/Cloud 성공으로 대체하지 않는다. 외부 설정을 마칠 때까지 온라인 계정 기능은 unavailable, 기존 로컬 SP/LAN/저장은 유지한다.
+Foundation1.5는 development/alpha 실제 환경에 서버 기반을 배포했다. development 실제 서비스76개, Unity SDK account 왕복, 실제2프로세스 인터넷 Relay를 검증했다. 실제 Google 로그인/Integrity/URL/Android release 설정은 미완료이며 Resources/BackendSettings.json Enabled=false를 유지한다. [활성화 검증](../validation/launch-backend-activation/REVIEW.md), [외부 설정](SETUP_REQUIRED.md).
 
-정본 서버는 `backend/src/`, Admin 도구는 `backend/tools/admin.cjs`, 접근 정책은 `backend/access/lowfire.ac`다. `node backend/tools/sync-catalog.cjs`는 기존 Classes.json에서 최소 검증 표를 생성한다. `node backend/tools/bundle.cjs`가 한 Cloud Code script `LowfireAccount`를 `backend/deploy/`에 만든다. 생성된 배포물은 Git에 중복 저장하지 않는다.
+정본 서버는 `backend/src/`, Admin 도구는 `backend/tools/admin.cjs`, 접근 정책은 `backend/access/lowfire.ac`다. `node backend/tools/sync-catalog.cjs`는 기존 Classes.json에서 최소 검증 표를 생성한다. npm ci 후 `node backend/tools/bundle.cjs`가 Cloud Code scripts `LowfireAccount`와 `LowfireIntegrityVerify`를 `backend/deploy/`에 만든다. 생성된 배포물은 Git에 중복 저장하지 않는다.
 
 ## Identity와 기존 Relay
 
 Android Google Play Games v2의 일회용 server auth code를 Unity Authentication에 넘긴다. canonical account key는 Unity PlayerId다. Google 외부 ID/email을 게임 key나 Cloud 필드로 복사하지 않는다. Lowfire 이메일/비밀번호는 없다.
 
-RelayRoomConnection과 계정 기능은 UgsBootstrap을 공유한다. 기존 AuthenticationProfile=`default`, 익명/cached sign-in을 유지하고 초기화·로그인을 직렬화한다. 이미 초기화된 다른 환경을 몰래 재초기화하지 않는다. 계정 설정을 켜기 전 Relay의 기존 implicit SDK 환경을 그대로 사용한다. 2026-10-25 Core Editor EnvironmentsApi.RefreshAsync 읽기 전용 조회로 production 한 개(ID 9da27a5f-4c79-44bc-b96b-1e490f83619d)를 확인했다. Editor 선택 이름은 빈 값/ID는 Guid.Empty이며 실제 서비스 초기화 환경을 새로 지정하지 않았다. development/alpha는 아직 없다. Provider/서비스 정책·배포·사용자 데이터는 미확인이다.
+RelayRoomConnection과 계정 기능은 UgsBootstrap을 공유한다. 기존 AuthenticationProfile=`default`, 익명/cached sign-in을 유지하고 초기화·로그인을 직렬화한다. 이미 초기화된 다른 환경을 몰래 재초기화하지 않는다. Foundation1.5에서는 Enabled와 무관하게 채널에 등록된 환경을 명시한다. development=9aa02b53-8272-4975-a42a-f6a0b75a360f, alpha=a9eee8ca-e2a8-4fa7-9530-6df9b230e943, production=9da27a5f-4c79-44bc-b96b-1e490f83619d다. Core1.18의 공개 초기화 API SetEnvironmentName을 사용하고, Authentication이 실제 반환한 IEnvironmentId component를 등록 ID와 대조한 뒤에만 Relay/Cloud 요청한다. 이 낮은 수준의 공개 component API 사용은 pinned Core/Authentication 업그레이드 때 다시 검증한다. 빈 ID/중복 mapping/이미 다른 환경 초기화/ID mismatch는 fail-closed이며 production fallback은 없다. production의 기본 환경 지정은 유지했고 provider/다른 remote 서비스 상태는 조회하지 않은 부분을 UNVERIFIED로 남긴다.
 
 cached anonymous→PGS LinkWithGooglePlayGamesAsync로 기존 Unity PlayerId를 보존한다. AccountAlreadyLinked는 사용자 선택으로 처리한다. 기존 계정 로그인 선택 때만 별도 SDK profile `lowfire-recover`에서 SignInWithGooglePlayGamesAsync한다. 원래 guest SDK profile의 cached token은 이 전환에서 지우지 않는다. 자동 merge/union/max, 자동 unlink 또는 저장 삭제는 없다. 오프라인/오류는 로컬 플레이를 막지 않는다.
 
@@ -26,7 +26,7 @@ cached anonymous→PGS LinkWithGooglePlayGamesAsync로 기존 Unity PlayerId를 
 
 LOWFIRE_ALPHA / LOWFIRE_PRODUCTION define으로 release channel을 정한다. 일반 Editor/Development build는 Development, 그 외 기본은 Production이다. Alpha/Production에 Development build 옵션을 섞으면 build validator가 거절한다. Development identity는 Editor/Development 조건부 컴파일과 channel+isolated-directory 검사로 제한한다.
 
-환경 이름/ID는 실제 Dashboard 값을 확인해 채운다. 기존 환경을 삭제/이름변경/이관하지 않는다. Enable 전 legacy Relay 경로는 그대로다. Enable 후 계정과 Relay가 동일한 mapping으로 처음 초기화되도록 앱을 재시작한다. 서로 다른 환경을 같은 실행 중 섞지 않는다. Authentication identity는 project 범위, 서비스 데이터는 environment 범위이므로 Alpha 데이터가 Production에 자동 복사된다고 가정하지 않는다.
+환경 이름/ID는 실제 Dashboard 값을 확인해 채운다. 기존 환경을 삭제/이름변경/이관하지 않는다. 기존 cached SDK profile default는 보존하며 환경 mapping을 바꾼 뒤 앱을 재시작한다. 계정과 Relay는 같은 mapping을 쓴다. 서로 다른 환경을 같은 실행 중 섞지 않는다. Authentication identity는 project 범위, 서비스 데이터는 environment 범위이므로 Alpha 데이터가 Production에 자동 복사된다고 가정하지 않는다.
 
 ## CloudProfile1 / local Profile2 소유권
 
@@ -88,3 +88,15 @@ Account UI 경고→재확인→인증/온라인→서버 요청 ID. UI는 요�
 로컬 world는 삭제하지 않는다. Sign Out은 현재 계정 연결/선택을 해제하며 원본 guest와 world를 보존한다. 요청 접수 후 현재 기기의 계정 캐시/선택 pointer를 정리하고 현재 SDK profile token/session을 지운다. 원래 별도 guest와 local world는 보존한다. filesystem 실패는 deletion marker로 재선택을 막고 pending/local_cleanup_failed로 남긴다. 다른 오프라인 기기/OS 백업을 원격에서 지울 수 없으므로 웹 완료 통지·실기기 검증은 출시 전 확정해야 한다. UGS Authentication 삭제는 project 범위이므로 환경 하나만 정리한 후 실행하면 안 된다.
 
 현재 Privacy/웹 삭제 URL은 비어 있으며 가짜 링크를 넣지 않았다. URL·Dashboard·실기기 end-to-end 검증이 끝나기 전 공개 출시할 수 없다. 수집 inventory: UGS identity(UGS가 관리), account snapshot/entitlement/import, 선택적 support text/diagnostics, bounded audit. 현재 실제 Analytics/Gem/Ads/IAP 데이터는 수집하지 않는다. [설정](SETUP_REQUIRED.md), [출시 차단 항목](RELEASE_BLOCKERS.md).
+
+## Foundation1.5 실제 배포 경계
+
+공식 UGS CLI2.0.0의 Unity Hub 로그인으로 환경/정책/스크립트/index를 관리했다. 게임 Authentication과 운영 CLI 인증은 별개다. Production은 read-only metadata 감사만 수행했다. 실제 서비스 검증과 fixture 결과는 [REVIEW](../validation/launch-backend-activation/REVIEW.md)에서 구분한다.
+
+Cloud Code JS에는 Node crypto가 없어 초기 배포가 실패했다. 정본은 node-forge1.4.0의 필요한 browser 모듈을 esbuild로 번들하며 Node built-in/TextEncoder/WebCrypto에 의존하지 않는다. SHA256은 독립 Node 구현과, RS256 서명은 메모리에서 생성한 일회성 key의 독립 native verify와 비교했다. 실제 Google 검증 성공을 뜻하지 않는다. 서버 context.correlationId와 operation 기반의 비밀이 아닌 식별자를 사용하며 자체 credential/random key를 만들지 않는다.
+
+128KB script limit 때문에 Account와 IntegrityVerify를 분리했다. bundle 도구가 각128000byte 미만을 강제한다. Account는 같은 실제 player token으로 같은 project/environment의 IntegrityVerify를 호출하고, 서버 응답 verified를 확인한 뒤 enrollment 조건·idempotency를 다시 검사한다. child는 별도 linked provider/window/policy/hash/Google 검증을 수행하며 자격을 직접 지급하지 않는다. Alpha가 닫혔으면 Google credential을 읽거나 외부 검증을 호출하지 않는다.
+
+서버 audit는 account.created, cloud.profile_created/imported, support.submitted, cloud.conflict, cloud.profile_updated, account.deletion_requested, alpha.enrolled 및 security.suspicious를 공통 schema에 기록한다. account.linked/cloud.write_failed의 client report는 서버 확인 사실과 구분한다. migration plan은 candidate/duplicate/already-granted/target count와 결정적 operationId를 제공한다.
+
+새 dependency의 RSA verification advisory는 현재 호출하지 않는 API의 문제이며 npm audit 결과를 숨기지 않는다. [Release blockers](RELEASE_BLOCKERS.md), [third-party notices](../backend/THIRD_PARTY_NOTICES.md). user save/Profile2와 Host-owned Continue/후발 Join/Host migration 없음 정책은 그대로다.

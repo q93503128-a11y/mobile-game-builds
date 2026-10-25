@@ -1,0 +1,41 @@
+{
+  "IsDryRun": false,
+  "Result": [
+    {
+      "Name": "LowfireAccount.js",
+      "Service": "Cloud Code Scripts",
+      "Type": "Cloud Code Scripts",
+      "Status": "Failed to Publish",
+      "Details": "Error calling PublishScript: {\"code\":9006,\"detail\":\"Compilation Error\",\"details\":[{\"message\":\"Cannot find module 'crypto'\",\"name\":\"CompilationError\",\"stackTrace\":[\"at load (LowfireAccount.js:500:62)\",\"at ./account.cjs (LowfireAccount.js:4:14)\"]}],\"instance\":null,\"requestId\":\"7644a554-7c1e-446f-9ed0-9f073bcb8eea\",\"status\":400,\"title\":\"Bad Request\",\"type\":\"problems/compilation\"}",
+      "Severity": "Error",
+      "Path": "C:\\Users\\User\\Documents\\ChatGPT\\문승준 모바일\\canonical\\projects\\wildfolk\\backend\\deploy\\LowfireAccount.js"
+    },
+    {
+      "Name": "lowfire.ac",
+      "Service": "",
+      "Type": "Project Access File",
+      "Status": "Up to date",
+      "Details": "",
+      "Severity": "Success",
+      "Path": "C:\\Users\\User\\Documents\\ChatGPT\\문승준 모바일\\canonical\\projects\\wildfolk\\backend\\access\\lowfire.ac"
+    },
+    {
+      "Name": "lowfire_deny_player_cloud_writes",
+      "Service": "",
+      "Type": "Project Access Control Statement",
+      "Status": "Created",
+      "Details": "",
+      "Severity": "Info",
+      "Path": "C:\\Users\\User\\Documents\\ChatGPT\\문승준 모바일\\canonical\\projects\\wildfolk\\backend\\access\\lowfire.ac"
+    },
+    {
+      "Name": "lowfire_allow_player_queries",
+      "Service": "",
+      "Type": "Project Access Control Statement",
+      "Status": "Created",
+      "Details": "",
+      "Severity": "Info",
+      "Path": "C:\\Users\\User\\Documents\\ChatGPT\\문승준 모바일\\canonical\\projects\\wildfolk\\backend\\access\\lowfire.ac"
+    }
+  ]
+}

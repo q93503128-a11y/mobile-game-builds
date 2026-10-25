@@ -273,3 +273,7 @@ P0의 잘못된 inactive NetworkStone은 Editor BossLanQa.Freeze에서 pending r
 ## Launch Backend Foundation1
 
 UgsBootstrap은 기존 Relay와 계정의 인증 초기화를 공유한다. GooglePlayGamesIdentityProvider→Unity Authentication PlayerId→Cloud Code LowfireAccount→Protected CloudProfile1 경계다. world participant GUID/Host Save14와 account ID는 분리한다. AccountCloudCache는 guest 원본과 별개 디렉터리에 snapshot을 materialize하고 ClassProfiles의 기존 store 경계에 붙는다. local 변경은 dirty·ClassRevision 기반 명시 sync, conflict는 자동 merge하지 않는다. server premium entitlement와 unverified player-host Class mirror를 구분한다. 개발 adapter는 명시 격리/채널 제한이며 release build에서 차단한다. [운영 정본](BACKEND_OPERATIONS.md), [외부 설정](SETUP_REQUIRED.md), [1.0 범위](LAUNCH_SCOPE.md).
+
+## Launch Backend Activation1.5
+
+UgsBootstrap은 backend Enabled와 무관하게 verified channel mapping으로 SetEnvironmentName하고 Auth가 실제 반환한 환경 ID를 대조한다. Relay/Cloud는 검사 후 실행하며 잘못된 mapping의 production fallback은 없다. 서버는 런타임/128KB 제한에 맞춰 LowfireAccount와 LowfireIntegrityVerify로 분리한다. browser crypto 번들·Protected CAS·비밀이 아닌 context correlation·같은 player token의 서버 간 proof 호출을 사용한다. 실제 development/alpha 배포와 검증/미검증 경계는 [활성화 REVIEW](../validation/launch-backend-activation/REVIEW.md)를 따른다. World authority/participant GUID/Host Continue/Save14/Profile2/Protocol21은 바꾸지 않았다.

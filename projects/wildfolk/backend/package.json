@@ -9,5 +9,11 @@
   },
   "engines": {
     "node": ">=20"
+  },
+  "dependencies": {
+    "node-forge": "1.4.0"
+  },
+  "devDependencies": {
+    "esbuild": "0.28.2"
   }
 }

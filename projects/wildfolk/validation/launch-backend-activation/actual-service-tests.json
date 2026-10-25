@@ -1,0 +1,315 @@
+{
+  "UTC": "2026-10-25T07:24:17.365299+00:00",
+  "classification": "ACTUAL SERVICE",
+  "environmentId": "9aa02b53-8272-4975-a42a-f6a0b75a360f",
+  "tests": [
+    {
+      "case": "malformed import rejected before create",
+      "passed": true
+    },
+    {
+      "case": "failed import leaves no cloud root",
+      "passed": true
+    },
+    {
+      "case": "profile created category 0",
+      "passed": true
+    },
+    {
+      "case": "same create request returns existing 0",
+      "passed": true
+    },
+    {
+      "case": "actual cached anonymous session returns same Unity PlayerId",
+      "passed": true
+    },
+    {
+      "case": "Support ID and imported XP stable after reauthentication",
+      "passed": true
+    },
+    {
+      "case": "repeat explicit Profile2 import rejected",
+      "passed": true
+    },
+    {
+      "case": "stale ClassRevision rejected",
+      "passed": true
+    },
+    {
+      "case": "valid server CAS class update",
+      "passed": true
+    },
+    {
+      "case": "production channel claim on development rejected",
+      "passed": true
+    },
+    {
+      "case": "GrantEntitlement rejected",
+      "passed": true
+    },
+    {
+      "case": "RealMoneyPurchase rejected",
+      "passed": true
+    },
+    {
+      "case": "EnrollAlphaParticipation rejected",
+      "passed": true
+    },
+    {
+      "case": "invalid feedback text0",
+      "passed": true
+    },
+    {
+      "case": "invalid feedback text1501",
+      "passed": true
+    },
+    {
+      "case": "invalid feedback category0",
+      "passed": true
+    },
+    {
+      "case": "client reads own Protected profile",
+      "passed": true,
+      "http": 200
+    },
+    {
+      "case": "client direct write denied /items",
+      "passed": true,
+      "http": 403
+    },
+    {
+      "case": "client direct write denied /protected/items",
+      "passed": true,
+      "http": 401
+    },
+    {
+      "case": "submit Bug Report",
+      "passed": true
+    },
+    {
+      "case": "same operation keeps one ticket Bug Report",
+      "passed": true
+    },
+    {
+      "case": "server cooldown Bug Report",
+      "passed": true
+    },
+    {
+      "case": "changed payload with same operation flagged",
+      "passed": true
+    },
+    {
+      "case": "durable ticket admin read Bug Report",
+      "passed": true
+    },
+    {
+      "case": "consent and redaction Bug Report",
+      "passed": true
+    },
+    {
+      "case": "semantic audit event Bug Report",
+      "passed": true
+    },
+    {
+      "case": "suspicious flag and audit, no ban",
+      "passed": true
+    },
+    {
+      "case": "admin Support ID lookup 0",
+      "passed": true
+    },
+    {
+      "case": "actual deletion request remains pending",
+      "passed": true
+    },
+    {
+      "case": "deletion request duplicate stable",
+      "passed": true
+    },
+    {
+      "case": "profile created category 1",
+      "passed": true
+    },
+    {
+      "case": "same create request returns existing 1",
+      "passed": true
+    },
+    {
+      "case": "submit Game Feedback",
+      "passed": true
+    },
+    {
+      "case": "same operation keeps one ticket Game Feedback",
+      "passed": true
+    },
+    {
+      "case": "server cooldown Game Feedback",
+      "passed": true
+    },
+    {
+      "case": "durable ticket admin read Game Feedback",
+      "passed": true
+    },
+    {
+      "case": "consent and redaction Game Feedback",
+      "passed": true
+    },
+    {
+      "case": "semantic audit event Game Feedback",
+      "passed": true
+    },
+    {
+      "case": "admin Support ID lookup 1",
+      "passed": true
+    },
+    {
+      "case": "profile created category 2",
+      "passed": true
+    },
+    {
+      "case": "same create request returns existing 2",
+      "passed": true
+    },
+    {
+      "case": "submit Account / Cloud",
+      "passed": true
+    },
+    {
+      "case": "same operation keeps one ticket Account / Cloud",
+      "passed": true
+    },
+    {
+      "case": "server cooldown Account / Cloud",
+      "passed": true
+    },
+    {
+      "case": "durable ticket admin read Account / Cloud",
+      "passed": true
+    },
+    {
+      "case": "consent and redaction Account / Cloud",
+      "passed": true
+    },
+    {
+      "case": "semantic audit event Account / Cloud",
+      "passed": true
+    },
+    {
+      "case": "admin Support ID lookup 2",
+      "passed": true
+    },
+    {
+      "case": "profile created category 3",
+      "passed": true
+    },
+    {
+      "case": "same create request returns existing 3",
+      "passed": true
+    },
+    {
+      "case": "submit Purchase",
+      "passed": true
+    },
+    {
+      "case": "same operation keeps one ticket Purchase",
+      "passed": true
+    },
+    {
+      "case": "server cooldown Purchase",
+      "passed": true
+    },
+    {
+      "case": "durable ticket admin read Purchase",
+      "passed": true
+    },
+    {
+      "case": "consent and redaction Purchase",
+      "passed": true
+    },
+    {
+      "case": "semantic audit event Purchase",
+      "passed": true
+    },
+    {
+      "case": "admin Support ID lookup 3",
+      "passed": true
+    },
+    {
+      "case": "profile created category 4",
+      "passed": true
+    },
+    {
+      "case": "same create request returns existing 4",
+      "passed": true
+    },
+    {
+      "case": "submit Player Report",
+      "passed": true
+    },
+    {
+      "case": "same operation keeps one ticket Player Report",
+      "passed": true
+    },
+    {
+      "case": "server cooldown Player Report",
+      "passed": true
+    },
+    {
+      "case": "durable ticket admin read Player Report",
+      "passed": true
+    },
+    {
+      "case": "consent and redaction Player Report",
+      "passed": true
+    },
+    {
+      "case": "semantic audit event Player Report",
+      "passed": true
+    },
+    {
+      "case": "admin Support ID lookup 4",
+      "passed": true
+    },
+    {
+      "case": "profile created category 5",
+      "passed": true
+    },
+    {
+      "case": "same create request returns existing 5",
+      "passed": true
+    },
+    {
+      "case": "submit Other",
+      "passed": true
+    },
+    {
+      "case": "same operation keeps one ticket Other",
+      "passed": true
+    },
+    {
+      "case": "server cooldown Other",
+      "passed": true
+    },
+    {
+      "case": "durable ticket admin read Other",
+      "passed": true
+    },
+    {
+      "case": "consent and redaction Other",
+      "passed": true
+    },
+    {
+      "case": "semantic audit event Other",
+      "passed": true
+    },
+    {
+      "case": "admin Support ID lookup 5",
+      "passed": true
+    },
+    {
+      "case": "unauthenticated request denied",
+      "passed": true,
+      "http": 401
+    }
+  ]
+}

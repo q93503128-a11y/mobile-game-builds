@@ -1,6 +1,7 @@
 "use strict";
-const fs=require('node:fs'),path=require('node:path');
-const names=['account.cjs','integrity.cjs','cloud-save.cjs','class-catalog.json','entry.cjs'];
-const modules=names.map(n=>JSON.stringify('./'+n)+':function(module,exports,require){\n'+(n.endsWith('.json')?'module.exports='+fs.readFileSync(path.join(__dirname,'../src',n),'utf8')+';':fs.readFileSync(path.join(__dirname,'../src',n),'utf8'))+'\n}').join(',\n');
-const code='// Generated from backend/src by node tools/bundle.cjs. Deploy this single script as LowfireAccount.\nconst nativeRequire=require;const factories={'+modules+'};const cache={};function load(id){if(!factories[id])return nativeRequire(id);if(!cache[id]){const m={exports:{}};cache[id]=m;factories[id](m,m.exports,load);}return cache[id].exports;}\nmodule.exports=load("./entry.cjs");\n';
-fs.mkdirSync(path.join(__dirname,'../deploy'),{recursive:true});fs.writeFileSync(path.join(__dirname,'../deploy/LowfireAccount.js'),code);
+const fs=require('node:fs'),path=require('node:path'),{buildSync}=require('esbuild');
+for(const [file,name] of [['entry.cjs','LowfireAccount'],['integrity-entry.cjs','LowfireIntegrityVerify']]){
+ const source=path.join(__dirname,'../src',file),params=require(source).params,outfile=path.join(__dirname,'../deploy',name+'.js');
+ buildSync({entryPoints:[source],outfile,bundle:true,platform:'browser',format:'cjs',target:'es2020',external:['axios-1.6','@unity-services/cloud-save-1.4'],minify:true,legalComments:'none',banner:{js:'/* node-forge1.4.0: Copyright (c) 2010 Digital Bazaar, Inc. BSD-3-Clause; full notice in backend/THIRD_PARTY_NOTICES.md. */'},footer:{js:'module.exports.params = '+JSON.stringify(params)+';'}});
+ if(fs.statSync(outfile).size>=128000)throw new Error('Cloud Code script exceeds128KB: '+name);
+}

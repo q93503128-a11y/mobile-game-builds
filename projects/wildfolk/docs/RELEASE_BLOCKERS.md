@@ -1,14 +1,14 @@
 # Launch Backend · Release Blockers
 
-Foundation1 소스 구현과 실제 서비스 오픈은 구분한다. 현재 backend는 disabled이며 아래 항목이 공개 Alpha/Production을 막는다.
+Foundation1.5 상태는 **PARTIALLY ACTIVE**다. development/alpha 환경·Cloud Code/Cloud Save/Access Control/index는 실제 배포했고 development 실제 왕복과 인터넷 Relay를 검증했다. 아래 항목이 제품 활성화/공개 Alpha·Production을 막는다. BackendSettings.Enabled=false 유지.
 
-- UGS production 한 개는 읽기 조회로 확인했다. development/alpha 생성, 실제 서비스 역할·기존 Relay 환경 확인 및 나머지 name/ID mapping이 필요하다.
-- Play Console PGS v2 앱·서명·Web/Android OAuth·tester/track, UGS provider secret 설정과 생성된 Android manifest.
-- Cloud Save index, 초기 creation gate/policy, Cloud Code publish, Access Control 배포·실제 direct-write rejection.
-- Play Integrity service credential은 Secret Manager에만 설정; 실제 기기 app/version/cert/license/hash/freshness 검증.
-- 실제 Privacy Policy URL과 외부 웹 삭제 요청 경로. 앱 안 request만으로 외부 경로가 준비됐다고 간주하지 않는다.
-- 문의 처리·ticket retention·삭제 요청 처리 담당/실행 주기, 모든 환경 data cleanup과 Authentication 삭제의 end-to-end 검증.
-- 서버 요청 접수 후 현재 기기 account cache/auth/session 정리의 실기기 검증 및 원격 완료 통지. 오프라인 기기의 world/cache를 원격에서 지웠다고 표시하지 않는다.
-- 실제 Android Gradle/IL2CPP/AAB, Google 계정 로그인·복구, 실제 Relay/4기기/장시간 품질. script compile와 localhost LAN은 이 검증과 다르다.
+- 사용자 확정 package `com.gltam.lowfire`에 연결할 Play Console PGS v2, Android/Web OAuth, 실제 서명 SHA, tester/track, UGS provider secret. 공개 Web client ID/PGS app ID/Google project number가 아직 없다.
+- 실제 PlayGamesSettings resource·PGS Android manifest. plugin Web client ID와 BackendSettings 불일치를 release validator가 차단한다.
+- Play Integrity API/Cloud project 연결, Secret Manager credential, 실제 cert/version/license/requestHash/freshness 승인·거절. Alpha enrollment는 닫혀 있다.
+- 실제 Privacy Policy 및 외부 웹 삭제 요청 URL·운영 절차/Data safety. 가짜 URL로 gate를 통과시키지 않는다.
+- 문의 담당/비활성 ticket30일 정리 job·로그 retention·삭제 요청 처리 주기, 원격 완료 통지와 다른 기기/OS 백업 정책. 현재 요청은 pending이며 완료로 오인시키지 않는다.
+- Android Gradle/IL2CPP/APK/AAB와 Google 로그인·Link/conflict/복구·실기기 UX·4기기. 두 채널 C# script compile과2프로세스 Relay 통과가 이를 대신하지 않는다.
+- Production policy/gate/index/Cloud Code/Access Control 배포는 별도 출시 작업이다. 이번에는 production의 기존 기본 환경·스크립트·정책을 변경하지 않았다.
+- node-forge1.4.0의 RSA **검증** advisory GHSA-86w9-cpqp-85rv가 npm audit에 남는다(현재 patched release 없음). 현재 Lowfire는 SHA256과 RS256 **서명**만 사용하고 그 검증 API를 노출/호출하지 않는다. Account bundle에는 RSA가 포함되지 않는다. 공개 출시 전 dependency 상태/대체책을 재검토하고 미래 외부 서명 검증에 해당 API를 재사용하지 않는다. [근거와 범위](../validation/launch-backend-activation/REVIEW.md).
 
-이후 Gem/Achievement/Attendance/Ads/IAP/Audio는 별도 사용자 지시와 release pass다. 현재 Alpha/Production 현금 결제는 구조적으로 비활성이다.
+현재 서버 권위 development 기반으로 다음 Foundation2를 개발할 수 있지만, 실제 사용자 Google 계정/공개 출시 준비가 완료된 것은 아니다. Gem/Achievement/Attendance/Ads/IAP/Audio는 다음 사용자 지시 전 시작하지 않는다.

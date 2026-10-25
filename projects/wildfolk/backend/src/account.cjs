@@ -1,15 +1,14 @@
 "use strict";
-const crypto=require('crypto');
+const crypto=require('./cryptography.cjs');
 const catalog=require('./class-catalog.json');
 const clone=x=>JSON.parse(JSON.stringify(x));
 const categories=['Bug Report','Game Feedback','Account / Cloud','Purchase','Player Report','Other'];
 const operations=new Set(['EnsureAccountProfile','GetAccountProfile','EnrollAlphaParticipation','GetEntitlements','SubmitFeedback','RecordOperationalEvent','RequestAccountDeletionPreparation','CommitClassProgress','ImportProfile2','GrantEntitlement','RealMoneyPurchase']);
 const safeId=x=>typeof x==='string'&&/^[a-zA-Z0-9_-]{1,96}$/.test(x);
-class Rejected extends Error {constructor(code){super(code);this.code=code;}}
-const requireThat=(ok,code)=>{if(!ok)throw new Rejected(code);};
+const {Rejected,requireThat}=require('./errors.cjs');
 const stable=x=>Array.isArray(x)?x.map(stable):x&&typeof x==='object'?Object.fromEntries(Object.keys(x).sort().filter(k=>k!=='integrityToken').map(k=>[k,stable(x[k])])):x;
 const operationDigest=(operation,input)=>digest(stable([operation,input]));
-const digest=x=>crypto.createHash('sha256').update(typeof x==='string'?x:JSON.stringify(x)).digest('hex');
+const digest=x=>crypto.sha256(typeof x==='string'?x:JSON.stringify(x));
 function supportId(project,player){return 'LF-'+digest(project+':'+player).slice(0,20).toUpperCase().match(/.{4}/g).join('-');}
 function localProfile(raw){
  requireThat(raw&&raw.Version===2&&Array.isArray(raw.Classes)&&raw.Classes.length===catalog.Classes.length,'invalid_import');
@@ -46,7 +45,7 @@ function validateProfile(p){
 }
 function view(p){return {Schema:p.Schema,PlayerId:p.PlayerId,SupportId:p.SupportId,CreatedAt:p.CreatedAt,ProviderLinked:p.ProviderLinked,Revision:p.Revision,ClassRevision:p.ClassRevision,ClassProfile:clone(p.ClassProfile),AlphaRecorded:!!p.Alpha,Entitlements:clone(p.Entitlements),DeletionPending:!!p.Deletion};}
 function audit(p,ctx,type,operationId,result,reason,now){
- p.Audit.push({eventId:crypto.randomUUID(),playerId:ctx.playerId,supportId:p.SupportId,timestamp:now,correlationId:ctx.correlationId,buildVersion:/^[0-9]+(?:\.[0-9]+){0,3}$/.test(ctx.buildVersion)?ctx.buildVersion:'unlisted',buildChannel:ctx.channel,eventType:type,operationId,result,reason});p.Audit=p.Audit.slice(-64);
+ p.Audit.push({eventId:digest([ctx.correlationId,operationId,type,p.Audit.length]),playerId:ctx.playerId,supportId:p.SupportId,timestamp:now,correlationId:ctx.correlationId,buildVersion:/^[0-9]+(?:\.[0-9]+){0,3}$/.test(ctx.buildVersion)?ctx.buildVersion:'unlisted',buildChannel:ctx.channel,eventType:type,operationId,result,reason});p.Audit=p.Audit.slice(-64);
 }
 function validOperation(key,now){
  requireThat(typeof key==='string'&&/^\d{4}-\d{2}-\d{2}:[a-f0-9]{32}$/.test(key),'invalid_operation');
@@ -87,9 +86,11 @@ class AccountBackend {
    if(old){if(old.hash===hash)return clone(old.result);if(p.Security.Reasons.includes('idempotency_payload_mismatch'))return {error:'operation_conflict'};flag(p,'idempotency_payload_mismatch');audit(p,ctx,'security.suspicious',key,'rejected','idempotency_payload_mismatch',now);p.Revision++;if(await this.store.compareExchange(ctx.playerId,record.version,p))return {error:'operation_conflict'};continue;}
    if(p.Daily.Day!==now.slice(0,10))p.Daily={Day:now.slice(0,10),Count:0};
    if(p.Daily.Count>=200)throw new Rejected('rate_limited');
-   let result;try{requireThat(!p.Deletion||operation==='RequestAccountDeletionPreparation','deletion_pending');result=edit(p)||{};}
+   const priorReasons=[...p.Security.Reasons];let result;try{requireThat(!p.Deletion||operation==='RequestAccountDeletionPreparation','deletion_pending');result=edit(p)||{};}
    catch(e){if(!(e instanceof Rejected))throw e;result={error:e.code};if(['invalid_import','impossible_entitlement','feedback_rate_limited'].includes(e.code))flag(p,e.code);}
-   p.Daily.Count++;p.Revision++;audit(p,ctx,operation,key,result.error?'rejected':'ok',result.error||'',now);
+   p.Daily.Count++;p.Revision++;const eventType=result.error==='cloud_conflict'?'cloud.conflict':({EnrollAlphaParticipation:'alpha.enrolled',SubmitFeedback:'support.submitted',CommitClassProgress:'cloud.profile_updated',RequestAccountDeletionPreparation:'account.deletion_requested'}[operation]||operation);
+   audit(p,ctx,eventType,key,result.error?'rejected':'ok',result.error||'',now);
+   for(const reason of p.Security.Reasons)if(!priorReasons.includes(reason))audit(p,ctx,'security.suspicious',key,'flagged',reason,now);
    p.Operations=p.Operations.filter(r=>Date.parse(r.id.slice(0,10)+'T00:00:00Z')>=Date.parse(now.slice(0,10)+'T00:00:00Z')-86400000);
    p.Operations.push({id:key,hash,result:clone(result),at:now});requireThat(p.Operations.length<=512,'rate_limited');
    if(await this.store.compareExchange(ctx.playerId,record.version,p))return result;
@@ -113,7 +114,7 @@ class AccountBackend {
    requireThat(categories.includes(input.category)&&typeof input.text==='string'&&input.text.trim().length>=5&&input.text.length<=1500,'invalid_feedback');
    const recent=p.Tickets.filter(t=>t.At.slice(0,10)===now.slice(0,10));
    requireThat(recent.length<5&&(!p.Tickets.length||Date.parse(now)-Date.parse(p.Tickets[p.Tickets.length-1].At)>=60000),'feedback_rate_limited');
-   const id='T-'+crypto.randomUUID();p.Tickets=p.Tickets.filter(t=>Date.parse(t.At)>Date.parse(now)-30*86400000);
+   const id='T-'+digest(ctx.playerId+':'+input.operationId);p.Tickets=p.Tickets.filter(t=>Date.parse(t.At)>Date.parse(now)-30*86400000);
    p.Tickets.push({Id:id,At:now,Category:input.category,Text:input.text.trim(),Diagnostic:input.consent===true?diagnostics(input.diagnostic):{},Status:'Open'});p.Tickets=p.Tickets.slice(-20);return {ticketId:id};
   }
   if(operation==='RecordOperationalEvent'){
@@ -124,7 +125,7 @@ class AccountBackend {
   if(operation==='GrantEntitlement'||operation==='RealMoneyPurchase')throw new Rejected(operation==='GrantEntitlement'?'impossible_entitlement':'purchase_disabled');
   if(operation==='RequestAccountDeletionPreparation'){
    requireThat(input.confirmation==='DELETE','confirmation_required');
-   if(!p.Deletion)p.Deletion={Id:'D-'+crypto.randomUUID(),At:now,Status:'Requested',CompletedEnvironments:[],AuthenticationDeleted:false};return {deletionId:p.Deletion.Id,deletionPending:true};
+   if(!p.Deletion)p.Deletion={Id:'D-'+digest(ctx.playerId+':'+input.operationId),At:now,Status:'Requested',CompletedEnvironments:[],AuthenticationDeleted:false};return {deletionId:p.Deletion.Id,deletionPending:true};
   }
   throw new Rejected('operation_forbidden');
  }

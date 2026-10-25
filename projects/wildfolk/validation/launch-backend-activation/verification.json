@@ -1,0 +1,92 @@
+{
+  "UTC": "2026-10-25T08:20:20.489348+00:00",
+  "activationStatus": "PARTIALLY ACTIVE",
+  "actualServiceAssertions": 76,
+  "actualUnityCloudRoundtrip": true,
+  "actualGoogleSignIn": false,
+  "productionMutation": false,
+  "androidPackage": "com.gltam.lowfire",
+  "androidAabBuilt": false,
+  "productBackendEnabled": false,
+  "userSaveUnchanged": true,
+  "versions": {
+    "Save": 14,
+    "Profile": 2,
+    "Protocol": 21,
+    "generation": 3
+  },
+  "Edit": {
+    "total": 17,
+    "passed": 17,
+    "failed": 0,
+    "durationSeconds": 17.6462324,
+    "resultState": "Passed",
+    "source": "Earlier get_test_job response observed in this task; Editor domain reload later cleared detailed result while persisted status/progress remained"
+  },
+  "Play": {
+    "total": 4,
+    "passed": 4,
+    "failed": 0,
+    "durationSeconds": 17.8114264,
+    "resultState": "Passed",
+    "source": "Earlier get_test_job response observed in this task; Editor domain reload later cleared detailed result while persisted status/progress remained"
+  },
+  "backendModel": {
+    "passed": 43
+  },
+  "androidScriptCompile": {
+    "Passed": true,
+    "AlphaFixtureExcluded": true,
+    "ProductionFixtureExcluded": true,
+    "AlphaAssemblies": 57,
+    "ProductionAssemblies": 57,
+    "Seconds": 70.5308976,
+    "Error": ""
+  },
+  "lan": {
+    "classification": "ACTUAL UNITY LOCAL",
+    "runId": "211ea75b7f6f40739c27fa01a97b02df",
+    "transport": "lan",
+    "actualUnityProcesses": 2,
+    "logs": {
+      "host.tsv": {
+        "passedChecks": 33,
+        "complete": true
+      },
+      "client.tsv": {
+        "passedChecks": 16,
+        "complete": true
+      }
+    }
+  },
+  "relay": {
+    "classification": "ACTUAL SERVICE + ACTUAL UNITY LOCAL",
+    "runId": "63a10fa052ef43f7860b45854c2d1274",
+    "transport": "relay",
+    "actualUnityProcesses": 2,
+    "logs": {
+      "host.tsv": {
+        "passedChecks": 33,
+        "complete": true
+      },
+      "client.tsv": {
+        "passedChecks": 16,
+        "complete": true
+      }
+    },
+    "authQaIdentitiesDeleted": [
+      "AJlORi54Iw5mlVRR54q7f4jhG1MJ",
+      "rIMbVQP3Lf1pw722xgRQgDG9z4Pf"
+    ],
+    "qaProtectedDataAbsentAllEnvironments": true
+  },
+  "viewportCases": 20,
+  "dependencyAdvisories": {
+    "info": 0,
+    "low": 0,
+    "moderate": 0,
+    "high": 1,
+    "critical": 0,
+    "total": 1
+  }
+}

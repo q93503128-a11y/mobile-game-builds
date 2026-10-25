@@ -1,0 +1,40 @@
+{
+  "metadata": {
+    "Name": "LowfireAccount",
+    "Language": "JS",
+    "Type": "API",
+    "Versions": [
+      2,
+      1
+    ],
+    "ActiveScript": {
+      "Version": 2,
+      "DatePublished": "2026-10-25T07:53:12",
+      "Params": [
+        {
+          "type": "STRING",
+          "name": "operation",
+          "required": true
+        },
+        {
+          "type": "STRING",
+          "name": "channel",
+          "required": true
+        },
+        {
+          "type": "STRING",
+          "name": "buildVersion",
+          "required": true
+        },
+        {
+          "type": "JSON",
+          "name": "input",
+          "required": false
+        }
+      ]
+    }
+  },
+  "sha256": "5f8c610aeccaed0a8f461cc669df68b59b59531b594b565ad7e6e60264550d8b",
+  "bytes": 44692,
+  "matchesLocalBundle": true
+}

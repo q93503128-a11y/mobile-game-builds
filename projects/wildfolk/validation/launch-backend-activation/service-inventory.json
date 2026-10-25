@@ -1,0 +1,158 @@
+{
+  "UTC": "2026-10-25T07:53:59.700990+00:00",
+  "projectId": "70ba2490-7029-4528-b55a-9c2231fde007",
+  "editorLinkedProjectName": "Wildfolk 2026-10-13_09-04-47",
+  "androidPackage": "com.gltam.lowfire",
+  "anonymousAuthentication": "ACTUAL SERVICE passed",
+  "googlePlayGamesProvider": "UNVERIFIED; user confirms OAuth/PGS values not created",
+  "integrityGoogleCredential": "EXTERNAL SETUP REQUIRED; no credential read or written",
+  "economy": "UNVERIFIED; no Economy SDK/config added; CLI2 removed Economy commands",
+  "analyticsDiagnostics": "Remote UNVERIFIED; local Analytics/Diagnostics/Purchasing/Ads flags disabled",
+  "productionMutations": false,
+  "environments": [
+    {
+      "name": "development",
+      "policy": {
+        "allowLegacyImport": true,
+        "alphaEnd": "",
+        "alphaOpen": false,
+        "alphaStart": "",
+        "alphaVersionCodes": [],
+        "approvedBuilds": [],
+        "certificates": [],
+        "channel": "Development",
+        "environmentId": "9aa02b53-8272-4975-a42a-f6a0b75a360f",
+        "packageName": "com.gltam.lowfire",
+        "realMoneyPurchase": false
+      },
+      "scripts": [
+        {
+          "name": "LowfireAccount",
+          "version": 3,
+          "sha256": "5f8c610aeccaed0a8f461cc669df68b59b59531b594b565ad7e6e60264550d8b",
+          "matchesLocalBundle": true
+        },
+        {
+          "name": "LowfireIntegrityVerify",
+          "version": 2,
+          "sha256": "e75819c1e01c08cd864bf3bd48dee2d4d3d4de9fbbdce323da7c60b2c1421898",
+          "matchesLocalBundle": true
+        }
+      ],
+      "accessPolicy": {
+        "Policy": {
+          "statements": [
+            {
+              "Sid": "lowfire_allow_player_queries",
+              "Action": [
+                "Write"
+              ],
+              "Effect": "Allow",
+              "Principal": "Player",
+              "Resource": "urn:ugs:cloud-save:/**/query",
+              "Version": "1.0.1"
+            },
+            {
+              "Sid": "lowfire_deny_player_cloud_writes",
+              "Action": [
+                "Write"
+              ],
+              "Effect": "Deny",
+              "Principal": "Player",
+              "Resource": "urn:ugs:cloud-save:/**",
+              "Version": "1.0.0"
+            }
+          ]
+        }
+      },
+      "indexes": {
+        "IndexIds": [
+          {
+            "Id": "lf_support_1",
+            "Status": "READY",
+            "EntityType": "player",
+            "AccessClass": "protected",
+            "Fields": [
+              {
+                "Key": "lf_support",
+                "Ascending": true
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "alpha",
+      "policy": {
+        "allowLegacyImport": false,
+        "alphaEnd": "",
+        "alphaOpen": false,
+        "alphaStart": "",
+        "alphaVersionCodes": [],
+        "approvedBuilds": [],
+        "certificates": [],
+        "channel": "Alpha",
+        "environmentId": "a9eee8ca-e2a8-4fa7-9530-6df9b230e943",
+        "packageName": "com.gltam.lowfire",
+        "realMoneyPurchase": false
+      },
+      "scripts": [
+        {
+          "name": "LowfireAccount",
+          "version": 2,
+          "sha256": "5f8c610aeccaed0a8f461cc669df68b59b59531b594b565ad7e6e60264550d8b",
+          "matchesLocalBundle": true
+        },
+        {
+          "name": "LowfireIntegrityVerify",
+          "version": 2,
+          "sha256": "e75819c1e01c08cd864bf3bd48dee2d4d3d4de9fbbdce323da7c60b2c1421898",
+          "matchesLocalBundle": true
+        }
+      ],
+      "accessPolicy": {
+        "Policy": {
+          "statements": [
+            {
+              "Sid": "lowfire_allow_player_queries",
+              "Action": [
+                "Write"
+              ],
+              "Effect": "Allow",
+              "Principal": "Player",
+              "Resource": "urn:ugs:cloud-save:/**/query",
+              "Version": "1.0.1"
+            },
+            {
+              "Sid": "lowfire_deny_player_cloud_writes",
+              "Action": [
+                "Write"
+              ],
+              "Effect": "Deny",
+              "Principal": "Player",
+              "Resource": "urn:ugs:cloud-save:/**",
+              "Version": "1.0.0"
+            }
+          ]
+        }
+      },
+      "indexes": {
+        "IndexIds": [
+          {
+            "Id": "lf_support_1",
+            "Status": "READY",
+            "EntityType": "player",
+            "AccessClass": "protected",
+            "Fields": [
+              {
+                "Key": "lf_support",
+                "Ascending": true
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

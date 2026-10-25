@@ -3,7 +3,7 @@ const {AccountBackend,Rejected}=require('./account.cjs');
 const {CloudSaveStore}=require('./cloud-save.cjs');
 // Dependencies are provided by the official Cloud Code runtime, pinned by versioned names.
 module.exports=async ({params,context,logger,secretManager})=>{
- const correlationId=require('crypto').randomUUID();
+ const correlationId=context.correlationId||'unavailable';
  try{
   if(!require('./account.cjs').operations.has(params.operation))throw new Rejected('operation_forbidden');
   if(!context.playerId||!context.accessToken||!context.serviceToken)throw new Rejected('authentication_required');
@@ -18,8 +18,13 @@ module.exports=async ({params,context,logger,secretManager})=>{
   if(identity.data.id!==context.playerId||identity.data.disabled)throw new Rejected('authentication_required');
   const linked=identity.data.externalIds?.some(i=>i.providerId==='google-play-games')===true;
   const ctx={playerId:context.playerId,projectId:context.projectId,environmentId:context.environmentId,linked,channel:params.channel,buildVersion:params.buildVersion,correlationId};
-  if(params.operation==='EnrollAlphaParticipation'){const record=await new CloudSaveStore(api,context.projectId).read(context.playerId);const previous=record?.value.Operations?.find(r=>r.id===params.input?.operationId);ctx.trustedAlphaBuild=!!previous||await require('./integrity.cjs').verifyAlpha(axios,secretManager,policy,ctx,params.input||{});}
-  const backend=new AccountBackend(new CloudSaveStore(api,context.projectId),policy);
+  if(params.operation==='EnrollAlphaParticipation'){
+   if(policy.channel!=='Alpha'||!policy.alphaOpen||!linked)throw new Rejected('alpha_unavailable');
+   const record=await new CloudSaveStore(api,context.projectId,correlationId).read(context.playerId);const previous=record?.value.Operations?.find(r=>r.id===params.input?.operationId);
+   if(previous)ctx.trustedAlphaBuild=true;
+   else {const proof=await axios.post('https://cloud-code.services.api.unity.com/v1/projects/'+context.projectId+'/scripts/LowfireIntegrityVerify',{params:{operationId:params.input?.operationId,buildVersion:params.buildVersion,integrityToken:params.input?.integrityToken}},{headers:{Authorization:'Bearer '+context.accessToken},timeout:10000});ctx.trustedAlphaBuild=proof.data.output?.verified===true;}
+  }
+  const backend=new AccountBackend(new CloudSaveStore(api,context.projectId,correlationId),policy);
   const result=await backend.execute(ctx,params.operation,params.input||{});
   // No payload, credential, free text, external identity, HTTP exception or filesystem paths in logs.
   logger.info(JSON.stringify({correlationId,operation:params.operation,result:result.ok?'ok':'rejected',reason:result.error||'',ticketId:result.ticketId,playerId:context.playerId}));

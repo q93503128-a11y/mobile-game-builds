@@ -74,3 +74,7 @@ LAN 검증 fixture의 잘못된 비활성 resource spawn을 제거하고 Host/Cl
 Google Play Games v2 + 기존 Unity Authentication, 별도 CloudProfile1/계정 cache, Alpha 참여·영구 자격 이전 기반, Support ID·문의·audit/의심 flag·삭제 요청 UI와 서버 작업을 제공한다. 현재 UGS production 환경 한 개만 읽기 조회로 확인했고, Provider/Play Console 설정과 배포는 미확인이다.  BackendSettings.Enabled=false다. 로컬 SP/LAN/Host save는 유지하며 Save14/Profile2/Protocol21/generation3와 인게임 콘텐츠를 바꾸지 않는다. Alpha/현재 Production 현금 결제는 항상 불가하다.
 
 [1.0 범위](docs/LAUNCH_SCOPE.md) · [운영/데이터 경계](docs/BACKEND_OPERATIONS.md) · [외부 설정](docs/SETUP_REQUIRED.md) · [출시 차단 항목](docs/RELEASE_BLOCKERS.md) · [검증 기록](validation/launch-backend-foundation/REVIEW.md).
+
+## Launch Backend Foundation1.5 (2026-10-25)
+
+현재 **PARTIALLY ACTIVE**: 실제 development/alpha 환경, Cloud Code2개, Protected profile/Support index·Access Control을 배포했다. development 실제 서비스76개, Unity SDK 왕복과2프로세스 LAN/인터넷 Relay를 확인했다. Android package는 사용자 확정 `com.gltam.lowfire`다. Google OAuth/PGS/Integrity·실제 Privacy/삭제 URL이 없어 제품 backend Enabled=false와 release gate는 유지한다. [현재 검증과 한계](validation/launch-backend-activation/REVIEW.md), [남은 설정](docs/SETUP_REQUIRED.md). Save14/Profile2/Protocol21/generation3와 인게임 콘텐츠는 유지한다.

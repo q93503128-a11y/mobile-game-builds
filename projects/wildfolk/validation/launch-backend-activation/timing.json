@@ -1,0 +1,33 @@
+{
+  "startSHA": "0ce14989f5819dc1d1c46e4a128b3ee4f93e15f7",
+  "perOperationTokens": null,
+  "measurementNote": "Timing capture began after initial remote fetch and initial required reads. Process times overlap phases.",
+  "events": [
+    {
+      "UTC": "2026-10-25T06:58:34.039955+00:00",
+      "stage": "Remote main fetched clean0ce1498; canonical audit and official CLI2 Hub auth research in progress"
+    },
+    {
+      "UTC": "2026-10-25T07:29:16.483371+00:00",
+      "stage": "Actual Development76 service assertions passed; Unity SDK cloud roundtrip succeeded; non-production environments/deployments established; local network and UI regression next"
+    },
+    {
+      "UTC": "2026-10-25T08:20:20.491241+00:00",
+      "stage": "Implementation, actual UGS/Unity/LAN/Relay/UI/Android regression complete; final all-source credential scan and Git publication next"
+    }
+  ],
+  "phases": [
+    {
+      "name": "Audit, environments, deploy and actual service validation",
+      "startUTC": "2026-10-25T06:58:34.039955+00:00",
+      "endUTC": "2026-10-25T07:29:16.483371+00:00",
+      "wallSeconds": 1842.443416
+    },
+    {
+      "name": "Unity/network/UI/Android validation and canonical docs",
+      "startUTC": "2026-10-25T07:29:16.483371+00:00",
+      "endUTC": "2026-10-25T08:20:20.491241+00:00",
+      "wallSeconds": 3064.00787
+    }
+  ]
+}

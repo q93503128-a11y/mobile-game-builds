@@ -19,3 +19,5 @@
 Mount, WB IV–VI, Boss Core 사용처, 추가 Boss/대형 biome, Defense Objective/Day10 major event, Electricity/Guns, Pet/Breeding/Merchant/Farming, Story/Permanent Skin, Recall/Bedroll/Backpack, 본격 Status Effect content.
 
 이 목록은 이번 패스 구현 목록이 아니다. Foundation1 완료 후 다음 사용자 지시까지 멈춘다.
+
+Foundation1.5는 development/alpha 서버 기반을 실제 배포·검증했으며 인게임 범위는 그대로다. PGS/Google·Privacy·실기기/production 출시 gate는 남아 있다. 다음 Foundation2는 별도 지시 후 development 서버 기반에서 시작할 수 있고, 이번 패스는 여기서 멈춘다.

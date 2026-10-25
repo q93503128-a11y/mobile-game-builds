@@ -1,0 +1,20 @@
+{
+  "package": "com.gltam.lowfire",
+  "minSdk": "AndroidApiLevel25",
+  "targetSdk": "AndroidApiLevelAuto",
+  "architecture": "ARM64",
+  "backend": "IL2CPP",
+  "stripping": "Minimal",
+  "customKeystore": false,
+  "internetPermission": true,
+  "releaseIssues": [
+    "Backend configuration is not enabled",
+    "Public HTTPS privacy policy required",
+    "Public HTTPS deletion request page required",
+    "Google Play Games / Integrity configuration required"
+  ],
+  "pgsIssues": [
+    "PGS PlayGamesSettings resource is missing",
+    "PGS Android setup manifest is missing"
+  ]
+}

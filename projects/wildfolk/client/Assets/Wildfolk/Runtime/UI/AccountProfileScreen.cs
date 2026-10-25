@@ -39,7 +39,7 @@ namespace Wildfolk
         private void Refresh()
         {
             if(Status==null)return;for(var i=0;i<Category.options.Count;i++)Category.options[i].text=L.Text("account.category."+i);Category.RefreshShownValue();var p=service.Profile;Status.text=L.Text("account.state."+service.State);
-            Cloud.text=L.Text(service.Dirty?"account.cloud_attention":service.State==AccountConnection.Connected?"account.cloud_synced":"account.cloud_offline");
+            Cloud.text=L.Text(service.LastError=="setup_required"||service.State==AccountConnection.Offline&&!BackendSettings.Current.Enabled?"account.backend_unavailable":service.Dirty?"account.cloud_attention":service.State==AccountConnection.Connected?"account.cloud_synced":"account.cloud_offline");
             Provider.text=L.Text(service.Linked?"account.google_connected":"account.google_disconnected");Support.text=p?.SupportId??"—";Alpha.text=L.Text(p?.AlphaRecorded==true?"account.alpha_recorded":"account.alpha_none");Created.text=p==null?"—":p.CreatedAt.Substring(0,Math.Min(10,p.CreatedAt.Length));
             try{var selected=ClassProfiles.Local.Selected;var level=1;var repo=SceneFlow.Repository;if(repo.Exists)level=repo.Read(Home.Rules.Validate).Player.Growth.Level;Character.text=L.Format("account.character",level,ClassCatalog.Current.Find(selected).Name);}catch{Character.text="—";}
             var idle=service.State!=AccountConnection.Connecting&&service.State!=AccountConnection.CloudSyncing;

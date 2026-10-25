@@ -1,0 +1,46 @@
+2026-10-25T07:37:32.5985625Z	starting	PASS QA admission profile explorer
+2026-10-25T07:37:33.7310030Z	join_first	PASS actual Internet join 
+2026-10-25T07:37:33.7325263Z	join_first	Relay authenticated QA player AJlORi54Iw5mlVRR54q7f4jhG1MJ
+2026-10-25T07:37:38.7286507Z	join_first	PASS admitted class snapshot preserved on join
+2026-10-25T07:37:38.7561299Z	join_first	ack join_first
+2026-10-25T07:37:39.2979571Z	resources_initial	ack resources_initial
+2026-10-25T07:37:40.3915808Z	resources_rich	ack resources_rich
+2026-10-25T07:37:41.1838352Z	resources_damage	ack resources_damage
+2026-10-25T07:37:41.7280829Z	resources_harvest	ack resources_harvest
+2026-10-25T07:37:42.3733567Z	resources_leave0	ack resources_leave0
+2026-10-25T07:37:42.9950917Z	resources_return0	ack resources_return0
+2026-10-25T07:37:43.6185611Z	resources_leave1	ack resources_leave1
+2026-10-25T07:37:44.2479210Z	resources_return1	ack resources_return1
+2026-10-25T07:37:44.7261914Z	resource_disconnect	ack resource_disconnect
+2026-10-25T07:37:46.4707284Z	join_resource	PASS actual Internet join 
+2026-10-25T07:37:46.4717586Z	join_resource	Relay authenticated QA player AJlORi54Iw5mlVRR54q7f4jhG1MJ
+2026-10-25T07:37:50.8906230Z	join_resource	PASS admitted class snapshot preserved on join
+2026-10-25T07:37:50.8972250Z	join_resource	ack join_resource
+2026-10-25T07:37:51.4473397Z	resources_late_join	ack resources_late_join
+2026-10-25T07:37:53.1019101Z	rollback	PASS failed offering publishes prior night and inactive mirror
+2026-10-25T07:37:53.1029593Z	rollback	ack rollback
+2026-10-25T07:37:53.1337888Z	summon	PASS owner sends existing facility summon RPC
+2026-10-25T07:37:53.3521026Z	summon	PASS one boss replica no duplicate
+2026-10-25T07:37:53.3536152Z	summon	PASS client damage mutation rejected
+2026-10-25T07:37:53.3556717Z	summon	PASS client cannot force Returning
+2026-10-25T07:37:53.3598481Z	summon	ack summon
+2026-10-25T07:37:57.0000326Z	telegraph	PASS replica telegraph geometry uses same direction and authored attack
+2026-10-25T07:37:57.0025733Z	telegraph	ack telegraph
+2026-10-25T07:37:59.0217680Z	phase_two	PASS 2P no HP or speed scaling
+2026-10-25T07:37:59.0273981Z	phase_two	ack phase_two
+2026-10-25T07:37:59.4460123Z	transfer	ack transfer
+2026-10-25T07:38:07.1691119Z	returning	ack returning
+2026-10-25T07:38:08.0133754Z	accessory	PASS owner accessory RPC queued
+2026-10-25T07:38:08.1609262Z	accessory	ack accessory
+2026-10-25T07:38:11.8933762Z	reward	ack reward
+2026-10-25T07:38:12.1080264Z	pickup_core	ack pickup_core
+2026-10-25T07:38:12.7459311Z	leave	ack leave
+2026-10-25T07:38:17.7220850Z	join_resumed	PASS actual Internet join 
+2026-10-25T07:38:17.7236344Z	join_resumed	Relay authenticated QA player AJlORi54Iw5mlVRR54q7f4jhG1MJ
+2026-10-25T07:38:23.3699621Z	join_resumed	PASS admitted class snapshot preserved on join
+2026-10-25T07:38:23.3814387Z	join_resumed	ack join_resumed
+2026-10-25T07:38:23.9531607Z	resources_rehost	ack resources_rehost
+2026-10-25T07:38:24.4846139Z	resume	PASS resolved encounter no respawn
+2026-10-25T07:38:24.4866342Z	resume	ack resume
+2026-10-25T07:38:24.5065194Z	finish	ack finish
+2026-10-25T07:38:24.9817755Z	complete	complete

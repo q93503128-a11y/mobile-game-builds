@@ -12,7 +12,8 @@ namespace Wildfolk.Editor
     {
         public static string Phase{get;private set;}="idle";
         private const string HostId="cccccccccccccccccccccccccccccccc",ClientId="dddddddddddddddddddddddddddddddd";
-        private static string Shared=>Environment.GetEnvironmentVariable("LOWFIRE_BOSS_QA_DIR")??Path.GetFullPath("Captures/undead-king-boss/actual-lan");
+        private static string Shared=>Environment.GetEnvironmentVariable("LOWFIRE_BOSS_QA_DIR")??UnityEditor.SessionState.GetString("Lowfire.NetworkQa.Directory",Path.GetFullPath("Captures/undead-king-boss/actual-lan"));
+        private static ConnectionRoute Route=>(Environment.GetEnvironmentVariable("LOWFIRE_BOSS_QA_ROUTE")??UnityEditor.SessionState.GetString("Lowfire.NetworkQa.Route","LocalNetwork"))=="Internet"?ConnectionRoute.Internet:ConnectionRoute.LocalNetwork;
         private static string run;private static string Dir=>Path.Combine(Shared,run);
         private static NetworkSession session;private static bool client;
         static BossLanQa(){EditorApplication.playModeStateChanged+=PlayState;}
@@ -21,7 +22,7 @@ namespace Wildfolk.Editor
         private static void Pump(){if(EditorApplication.isPlaying)EditorApplication.QueuePlayerLoopUpdate();}
         public static void Host(){if(!Application.isPlaying || !DevelopmentProfile.Isolated)throw new InvalidOperationException("Isolated Play required");Application.runInBackground=true;EditorApplication.update-=Pump;EditorApplication.update+=Pump;Directory.CreateDirectory(Shared);run=Guid.NewGuid().ToString("N");Directory.CreateDirectory(Dir);File.WriteAllText(Path.Combine(Shared,"current-run.txt"),run);Start(false);}
         private static void Start(bool remote)
-        {client=remote;if(remote)run=File.ReadAllText(Path.Combine(Shared,"current-run.txt")).Trim();ClassProfiles.DevelopmentProviders(new LocalAccountProgressionStore(Path.Combine(Dir,remote?"client-store":"host-store")));var runner=new GameObject("Boss LAN QA").AddComponent<DevelopmentCoroutineHost>();UnityEngine.Object.DontDestroyOnLoad(runner.gameObject);runner.StartCoroutine(Guard(remote?Remote():Authority()));}
+        {client=remote;if(remote)run=File.ReadAllText(Path.Combine(Shared,"current-run.txt")).Trim();if(Route==ConnectionRoute.Internet)RelayRoomConnection.AuthenticationProfile="act-relay-"+Guid.NewGuid().ToString("N").Substring(0,16);ClassProfiles.DevelopmentProviders(new LocalAccountProgressionStore(Path.Combine(Dir,remote?"client-store":"host-store")));var runner=new GameObject("Boss LAN QA").AddComponent<DevelopmentCoroutineHost>();UnityEngine.Object.DontDestroyOnLoad(runner.gameObject);runner.StartCoroutine(Guard(remote?Remote():Authority()));}
         private static IEnumerator Guard(IEnumerator flow)
         {
             var stack=new System.Collections.Generic.Stack<IEnumerator>();stack.Push(flow);Phase="starting";
@@ -49,11 +50,11 @@ namespace Wildfolk.Editor
         private static IEnumerator NewHost(bool resume)
         {
             if(session==null)session=NetworkSession.Instance??UnityEngine.Object.Instantiate(AssetDatabase.LoadAssetAtPath<NetworkSession>(MultiplayerSceneBuilder.SessionPrefabPath));session.ClassVerifier=new DevelopmentAlphaClassAdmission();session.ProfileOverride=HostId;session.WorldRepository=new SaveRepository(Path.Combine(Dir,"world.json"));
-            var task=session.Host(ConnectionRoute.LocalNetwork,resume);yield return Wait(()=>task.IsCompleted,"Host transport");Check(task.Result,"actual LAN Host "+session.LastFailure);Check(session.EnterGame(),"Host enters world");yield return Wait(()=>Local!=null && NetworkCreatureWorld.Active?.Ready==true,"Host actor");Freeze();
+            var task=session.Host(Route,resume);yield return Wait(()=>task.IsCompleted,"Host transport");Check(task.Result,"actual "+Route+" Host "+session.LastFailure);if(Route==ConnectionRoute.Internet){File.WriteAllText(Path.Combine(Dir,"room-code.txt"),session.RoomCode);Log("Relay authenticated QA player "+Unity.Services.Authentication.AuthenticationService.Instance.PlayerId);}Check(session.EnterGame(),"Host enters world");yield return Wait(()=>Local!=null && NetworkCreatureWorld.Active?.Ready==true,"Host actor");Freeze();
         }
         private static IEnumerator Join()
         {
-            session=NetworkSession.Instance??UnityEngine.Object.Instantiate(AssetDatabase.LoadAssetAtPath<NetworkSession>(MultiplayerSceneBuilder.SessionPrefabPath));session.ProfileOverride=ClientId;var task=session.Join(ConnectionRoute.LocalNetwork,"127.0.0.1");yield return Wait(()=>task.IsCompleted,"client transport");Check(task.Result,"actual LAN join "+session.LastFailure);yield return Wait(()=>Local!=null && Other!=null && NetworkCreatureWorld.Active?.Ready==true,"client two actors");yield return Wait(()=>Local.GetComponent<PlayerClass>().ClassXP>=1800,"initial/reconnected transient ClassXP snapshot");Check(Local.GetComponent<PlayerClass>().Definition.Id=="explorer","admitted class snapshot preserved on join");Local.GetComponent<PlayerInputAdapter>().enabled=false;yield return null;
+            session=NetworkSession.Instance??UnityEngine.Object.Instantiate(AssetDatabase.LoadAssetAtPath<NetworkSession>(MultiplayerSceneBuilder.SessionPrefabPath));session.ProfileOverride=ClientId;var task=session.Join(Route,Route==ConnectionRoute.Internet?Read("room-code.txt"):"127.0.0.1");yield return Wait(()=>task.IsCompleted,"client transport");Check(task.Result,"actual "+Route+" join "+session.LastFailure);if(Route==ConnectionRoute.Internet)Log("Relay authenticated QA player "+Unity.Services.Authentication.AuthenticationService.Instance.PlayerId);yield return Wait(()=>Local!=null && Other!=null && NetworkCreatureWorld.Active?.Ready==true,"client two actors");yield return Wait(()=>Local.GetComponent<PlayerClass>().ClassXP>=1800,"initial/reconnected transient ClassXP snapshot");Check(Local.GetComponent<PlayerClass>().Definition.Id=="explorer","admitted class snapshot preserved on join");Local.GetComponent<PlayerInputAdapter>().enabled=false;yield return null;
         }
         private static IEnumerator Leave()
         {if(session!=null && session.State!=NetworkSessionState.Idle){session.Leave(true);yield return Wait(()=>session.State==NetworkSessionState.Idle,"leave");}yield return null;yield return null;}
