@@ -1,0 +1,4 @@
+PASS actual Development account connected
+PASS actual SDK flush acknowledges initial batch while preserving new event
+PASS actual SDK next flush commits retained event exactly once
+PASS progress alone does not grant Gem

@@ -16710,6 +16710,7 @@ MonoBehaviour:
   SelectLabel: {fileID: 1300091399}
   InvestLabel: {fileID: 1829275928}
   Currency: {fileID: 1773523461}
+  PremiumCurrency: {fileID: 1731612996}
   ConfirmText: {fileID: 1356930948}
   Status: {fileID: 1099183734}
   PurchaseButton: {fileID: 2041283235}
@@ -27851,8 +27852,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 433, y: 397}
-  m_SizeDelta: {x: 70, y: 40}
+  m_AnchoredPosition: {x: 490, y: 397}
+  m_SizeDelta: {x: 195, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1731612996
 MonoBehaviour:
@@ -43313,6 +43314,7 @@ GameObject:
   - component: {fileID: 340386003}
   - component: {fileID: 340386004}
   - component: {fileID: 340386005}
+  - component: {fileID: 836915264208739112}
   m_Layer: 0
   m_Name: Selected Achievement
   m_TagString: Untagged
@@ -59403,3 +59405,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2128658166}
   m_CullTransparentMesh: 1
+--- !u!114 &836915264208739112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 340386002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.ContentSizeFitter
+  m_HorizontalFit: 0
+  m_VerticalFit: 2

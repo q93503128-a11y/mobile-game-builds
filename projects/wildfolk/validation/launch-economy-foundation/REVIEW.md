@@ -109,3 +109,52 @@ UI는 상태 변경 때 갱신하며 탐험/밤은0.5초 관찰, network 제출�
 사용자 노트북 종료 요청으로 여기서 멈춘다. [HANDOFF](HANDOFF.md)를 다음 재개 정본으로 사용한다. 서버64/64, Edit74/74, 최종 Play 고유17개, 실제 서비스33개, 실제 Unity SDK 핵심 거래, 실제2프로세스 LAN은 통과했다. QA계정7개/Protected data/임시함수 정리 완료. 최종 viewport는 해상도 전환 뒤 Selected Achievement content 높이 검사에서 실패했으며 아직 수정·재검증이 남아 있다. 마지막 UI source와 동일한 Android compile/전체 diff 최종 감사·live Editor 동기화도 남겼다. 최신 검사 상태는 checkpoint-validation.json이다. 실제 사용자 저장2개는 hash/mtime/bytes 일치, credential pattern scan3541 text file0건이다. 이 문서가 포함된 main checkpoint commit은 중간 보존이며 Foundation2 최종 SHA가 아니다.
 
 초기 회귀 실패의 일부는 Save11/12/13·가격0·Protocol21 기대값과 Survivor의 기존1회 lethal 방어를 고려하지 않은 QA fixture였다. 현재 Save14/고정가격/Protocol22와 명시적 lethal fixture로 정정 후 관련 검사가 통과했다. SDK actual roundtrip에서 엄격한 응답 역직렬화의 claimedDay/event hash/admin ledger metadata 누락을 찾아 정본 DTO를 수정했다. ordinary ClassXP mirror dirty가 Auth offline과 혼동되던 경계를 별도 CloudAvailable로 분리했고 offline 선택은 local write로 다시 열리지 않음을 검사했다. UI 목록 anchor/slot 줄바꿈/footer 및 상세 scroll을 수정했으나 최종 content sizing 검사는 미통과다.
+
+## 2026-10-26 재개 완료
+
+remote main `f9d3411cf840fa948ece299c78f503e7b167323c`를 다시 fetch해 local과 일치·clean을 확인하고 위 체크포인트의 잔여 작업을 마쳤다. 전체 Foundation2 시작은 `f1ae334ffa81c8dad103cb7c3b1d854df554d342`다. **Foundation2 구현과 관련 QA 완료**이며 제품 활성화/출시 승인은 기존 외부 설정 차단을 유지한다. 이 절을 현재 결과로 사용하고 위 종료 체크포인트의 실패 기록은 당시 사실로 보존한다.
+
+### 교정한 원인과 실제 결과
+
+해상도를 바꿔도 논리 너비는660으로 같을 수 있지만 Canvas pixel scale과 Text glyph/layout cache는 달라진다. 기존 preferredHeight 일회 계산을 제거하고 canonical ContentSizeFitter vertical PreferredSize, pixel scale 변화 시에만 text/layout dirty를 적용했다. 폰트 축소/overflow 허용/assertion 제거로 숨기지 않았다. QA 자체가 target viewport를 복원한 뒤 bounds를 재던 문제도 교정해 실제 target에서 검증하고 마지막 tier scroll 정렬까지 확인한다. Class 화면은 Gem 잔액을 Gold 문자열에 붙이던 연결을 제거하고 기존 Gem 칸에 실제 잔액을 연결했다.
+
+진행 전송 fixture의 ack 누락으로 발견한 반복 위험을 실제 서비스 경계에도 반영했다. Sync는 처음 freeze한 queue 수만 처리해 전송 중 생성된 이벤트를 다음 flush에 남긴다. ack가 제출 Last보다 작으면 outbox를 보존하고 invalid_progress_ack로 중단한다. 두 관련 Play test와 새 Development 실제 SDK4검사에서 최초fish1→다음전송fish2, 중복0, Gem지급0을 확인했다. wallet 금액·서버 거래·부활 원자 경계는 바꾸지 않았다. [금융 코드 연속성](completion/financial-source-continuity.json).
+
+### 최종 검증 분류
+
+| 분류 | 결과 | 증거와 범위 |
+|---|---|---|
+| Node 서버/계약 | 64/64 | completion/server-tests.tap, 재개 시 재실행 |
+| Unity EditMode | 74/74 | completion/edit.xml, 최종 source |
+| Unity 관련 PlayMode | 14/14 | completion/ui-play.xml; Economy8, Account·Frontend 포함 |
+| 전체 최종 Play 합집합 | 고유20 | 이전 play-final/account-final + 이번14; 중복 실행을 합산하지 않음 |
+| 실제 Development 서비스 | 이전33통과 유지 | actual-service.json; 이번에33개를 재실행한 주장이 아님 |
+| 실제 Unity SDK 거래 | 이전13통과 유지 | actual/ 증거, 출석·Engineer·부활·환급·무료Home·Save14 |
+| 실제 Unity SDK 진행 | 새4통과 | completion/progress/checks.json, actual-progress.json; 실제Google 아님 |
+| 실제2프로세스 LAN | 이전 Protocol22 통과 유지 | LAN/resource/보스/보상/reHost와 owner progress; 이번 재실행 아님 |
+| Unity Canvas 렌더 | 42PNG, 3해상도 통과 | completion/visual/checks.json, KO/EN상세·마지막 tier·Profile·출석·empty event·backend 불가·Engineer2/140Gem·확인 modal·SP온라인/오프라인 |
+| Android C# | Alpha57/Production57, adapter 제외 | completion/android-scripts.json, 최종 source; 새 AAB·실기기 검증 아님 |
+| source/data | 1621GUID validator, catalogue mirror 일치 | completion/validation-summary.json, completion/source-continuity.json |
+
+Unity MCP 도구는 재개 후에도 제공되지 않아 호출하지 않았다. offscreen graphical Editor batch의 실제 Canvas 렌더와 사용자 터치·실기기 성능은 구분한다. 이 검수 화면의 PGS 연결·140Gem·가을 이벤트는 격리 fixture이며 실제 Google/공개 이벤트/사용자 잔액을 뜻하지 않는다. 실제 config Events=[]와 제품 Enabled=false는 유지한다. completion/prior-fixture-reconnect-diagnostic.txt는 앞선 실패의 진단으로 보존했으며 최종 visual 성공 파일과 구분한다.
+
+### live 반영·데이터 보호·운영
+
+사용자가 live `C:/UnityProjects/Wildfolk`의 편집 모드·Play OFF를 확인했다. Foundation2 시작 baseline과71변경 파일을 대조했고 MainMenu의1829객체는 내용 변경 없이 순서/공백만 달랐다. 사용자 변경 충돌0을 확인한 뒤 외부 source backup을 만들고71파일을 원자 교체했다. canonical/QA2프로젝트 전체2982 asset files의 bytes가 일치한다. live는 이번71파일 bytes가 일치하고 기존27파일의 줄끝/행말 공백·Unity YAML 객체 순서 차이를 제외하면 전체 내용이 일치한다. 이 기존 serialization 차이는 덮어쓰지 않았다. live 메모리 씬 reload는 MCP 부재로 확인하지 못했다. Windows 입력/Focus/Show는 사용하지 않았다. [baseline 비교](completion/live-baseline-audit.json), [동기화](completion/live-sync.json).
+
+실제 사용자 world2개 SHA256/mtime/bytes 일치. 이번 새 SDK player와 cleanup helper2개의 Protected account/support/economy3key를 지우고 Authentication을 삭제한 뒤 임시 Cloud Code도 제거했다. 이전7 QA identity의 삭제 기록은 그대로 유효하다. production data/policy/script는 변경하지 않았다. secret/credential은 Git에 기록하지 않으며 최종 패턴 검사와 변경 파일 목록은 completion/에 남긴다. 패턴0은 모든 가능한 secret 형태를 증명한다는 뜻은 아니다.
+
+### 경제·버전·다음 패스 경계
+
+초기0Gem, 업적213/신규45/월간40, Engineer120/부활8은 유지한다. 30/90일 월초정렬287/372,10월26일 시작271/356은 소비0·명시 행동/출석 가정이며 실측이 아니다. 전체22family58tier/특수9/7category/785Point. 대표 적5/30/120/360, 밤1/4/12/30, 보스1/2/3, WBII/WBIII·동굴·왕관 등은 단일 사건이다. 실제 table은 위와 정본 catalogue를 따른다. 월간 일반24slot은 출석 기록, 새 world item/Gold를 지급하지 않는다.
+
+Save14/localProfile2/CloudProfile1/Economy1/generation3 유지, owner RPC에 Protocol22 사용. 요청은5분 batch+화면/명시 sync,30분6/시간12 progress+menu/claim6가정이며 DAU/latency/과금비 실측이 아니다. 한 요청의 Auth/Private/account/economy 읽기·CAS와 retry 비용은 위 설명을 따른다. UI pixel scale 변화 때만 추가 layout을 갱신한다.
+
+Google/PGS/OAuth/Integrity·실제 Privacy/삭제 URL·기기/공개Production 활성화, remote MP premium class admission, ledger8192/3MiB 이후 archive/지원 복구·비용 운영은 남은 한계다. modified Host의 느린 위조를 막았다고 주장하지 않는다. Foundation3는 검증된 provider receipt→내부 server grant→동일 CAS ledger라는 확장 경계까지만 준비했다. AdsSDK/광고 시청 보상/IAP/Store/Audio/새 gameplay는 시작하지 않았다. 다음 사용자 지시까지 STOP.
+
+### 이번 재개 시간·사용량 기록
+- Resume audit, implementation and iterative QA: KST 16:09:13–16:56:45, 47분 33초.
+- Final parallel Unity verification wall span: KST 16:56:45–17:00:00, 3분 15초.
+- Final source audit, QA cleanup, live sync, evidence and docs: KST 17:00:00–17:10:24, 10분 24초.
+
+각 단계는 겹치지 않는 wall span이며 첫 단계에 반복 QA 대기가 포함된다. 최종 process별 대기는 completion/*-process.json에 별도 기록했고 병렬 실행 시간을 합산하지 않는다. Git 마감 시간은 이 수치에 포함하지 않는다. 최초 패스의 단계별 시각은 상위 timing.json에 보존했다. 작업별 token 사용량을 반환하는 계측은 없어 perOperationTokens=null로 기록하며 시간에서 사용량을 추정하지 않는다.

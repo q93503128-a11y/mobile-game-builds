@@ -1,0 +1,11 @@
+Historical diagnostic from an earlier failed fixture reconnect, retained for provenance; NOT a failure of the final visual run. Final success is visual/checks.json and visual-process.json.
+
+  at System.Environment.get_StackTrace () [0x00000] in <41d29b352f6a475ab1bf7c6628b82790>:0
+  at Wildfolk.Editor.EconomyQa+<>c__DisplayClass15_0.<Visual>b__0 () [0x0001a] in C:\UnityProjects\LowfireAndroidQa\tests\artifacts\unity\Assets\Wildfolk\Editor\EconomyQa.cs:38
+  at Wildfolk.AccountService.Set (Wildfolk.AccountConnection state, System.String error) [0x00018] in C:\UnityProjects\LowfireAndroidQa\tests\artifacts\unity\Assets\Wildfolk\Runtime\Accounts\AccountService.cs:38
+  at Wildfolk.AccountService.Connect (System.Boolean useExisting) [0x00189] in C:\UnityProjects\LowfireAndroidQa\tests\artifacts\unity\Assets\Wildfolk\Runtime\Accounts\AccountService.cs:45
+  at System.Runtime.CompilerServices.AsyncTaskMethodBuilder.Start[TStateMachine] (TStateMachine& stateMachine) [0x00000] in <41d29b352f6a475ab1bf7c6628b82790>:0
+  at Wildfolk.AccountService.Connect (System.Boolean useExisting) [0x00000] in <cfa1ea49fb8f4ad087b91641b11a2718>:0
+  at Wildfolk.Editor.EconomyQa+<Visual>d__15.MoveNext () [0x003ca] in C:\UnityProjects\LowfireAndroidQa\tests\artifacts\unity\Assets\Wildfolk\Editor\EconomyQa.cs:41
+  at Wildfolk.Editor.EconomyQa+<Guard>d__9.MoveNext () [0x0003c] in C:\UnityProjects\LowfireAndroidQa\tests\artifacts\unity\Assets\Wildfolk\Editor\EconomyQa.cs:22
+  at UnityEngine.SetupCoroutine.InvokeMoveNext (System.Collections.IEnumerator enumerator, System.IntPtr returnValueAddress) [0x00000] in <987aa4221989419a947e2c4ff5d6829c>:0

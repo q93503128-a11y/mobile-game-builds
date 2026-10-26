@@ -8,7 +8,7 @@ namespace Wildfolk
         public HomeScreen Home;public GameObject View,Confirmation;public SaveGameRules Rules;
         public Button[] Cards,Nodes;public Text[] CardNames,CardRoles,CardStates,NodeNames,Branches;
         public Image ClassIcon,TreeIcon;public Image[] CardMarks,NodeIcons;public Sprite[] ClassIcons,SkillIcons;public JournalSkillNode[] NodeViews;
-        public Text Title,Role,Description,Progress,NodeDetail,PurchaseLabel,SelectLabel,InvestLabel,Currency,ConfirmText,Status;
+        public Text Title,Role,Description,Progress,NodeDetail,PurchaseLabel,SelectLabel,InvestLabel,Currency,PremiumCurrency,ConfirmText,Status;
         public Button PurchaseButton,SelectButton,RespecButton,InvestButton;
         private int selected,node;private AccountProgression account;
         private void OnEnable(){ClassProfiles.Changed+=Refresh;L.Changed+=Refresh;EconomyService.Get().Changed+=Refresh;}
@@ -53,7 +53,7 @@ namespace Wildfolk
             PurchaseButton.gameObject.SetActive(!owned);PurchaseButton.interactable=lobby && (d.Currency=="Gold"?ClassProfiles.GoldAvailable(Rules)>=d.Price:d.Price>0 && EconomyService.Get().CanSpend && (EconomyService.Get().Snapshot?.Balance??0)>=d.Price);
             PurchaseLabel.text=d.Currency=="Gold"?L.Format("class.price",d.Price,L.Text("ui.gold")):d.Price>0?L.Format("class.price",d.Price,L.Text("class.gem")):L.Text("journal.premium_locked");
             InvestButton.interactable=lobby && owned && !has && points>0 && requires;InvestLabel.text=L.Text(has?"class.learned":!owned || !requires?"class.locked":points<=0?"journal.need_point":"class.invest");
-            RespecButton.interactable=lobby && owned && p.Nodes.Length>0;Currency.text=ClassProfiles.GoldAvailable(Rules)+" · "+L.Format("economy.balance",EconomyService.Get().Snapshot?.Balance.ToString()??"—");
+            RespecButton.interactable=lobby && owned && p.Nodes.Length>0;Currency.text=ClassProfiles.GoldAvailable(Rules).ToString();if(PremiumCurrency!=null)PremiumCurrency.text=EconomyService.Get().Snapshot?.Balance.ToString()??"—";
         }
     }
 }

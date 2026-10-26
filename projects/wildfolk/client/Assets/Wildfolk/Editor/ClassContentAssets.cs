@@ -90,7 +90,7 @@ namespace Wildfolk.Editor
             Image("Gold Icon",panel,"journal_gold",Vector2.one*.5f,new Vector2(108,397),new Vector2(34,34));
             screen.Currency=JournalUiBuilder.Label(panel,"Gold","",new Vector2(228,397),new Vector2(180,40),26);
             Image("Gem Icon",panel,"journal_gem",Vector2.one*.5f,new Vector2(368,397),new Vector2(34,34));
-            JournalUiBuilder.Label(panel,"Gems","—",new Vector2(433,397),new Vector2(70,40),26);
+            screen.PremiumCurrency=JournalUiBuilder.Label(panel,"Gems","—",new Vector2(490,397),new Vector2(195,40),26);
             JournalUiBuilder.Rule(panel,new Vector2(-765,351),new Vector2(-82,351));JournalUiBuilder.Rule(panel,new Vector2(88,351),new Vector2(766,351));
             screen.Cards=new Button[6];screen.CardNames=new Text[6];screen.CardRoles=new Text[6];screen.CardStates=new Text[6];screen.CardMarks=new Image[6];
             for(var i=0;i<6;i++)

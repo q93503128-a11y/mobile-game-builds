@@ -1,0 +1,38 @@
+{
+  "startSHA": "f9d3411cf840fa948ece299c78f503e7b167323c",
+  "startUTC": "2026-10-26T07:09:13.418369+00:00",
+  "perOperationTokens": null,
+  "tokenNote": "Per-operation usage is unavailable; do not infer token counts from elapsed time.",
+  "events": [
+    {
+      "UTC": "2026-10-26T07:09:13.418384+00:00",
+      "stage": "Fresh remote main verified clean; canonical docs and unresolved viewport sizing reviewed"
+    },
+    {
+      "UTC": "2026-10-26T08:09:16.202207+00:00",
+      "stage": "Final scoped QA passed; 71 live source files synced with user saves unchanged; new QA identities cleaned; docs and final Git audit prepared"
+    }
+  ],
+  "endUTC": "2026-10-26T08:10:24.647585+00:00",
+  "phases": [
+    {
+      "stage": "Resume audit, implementation and iterative QA",
+      "startUTC": "2026-10-26T07:09:13.418369+00:00",
+      "endUTC": "2026-10-26T07:56:45.980221+00:00",
+      "wallSeconds": 2852.561852
+    },
+    {
+      "stage": "Final parallel Unity verification wall span",
+      "startUTC": "2026-10-26T07:56:45.980221+00:00",
+      "endUTC": "2026-10-26T08:00:00.641038+00:00",
+      "wallSeconds": 194.660817
+    },
+    {
+      "stage": "Final source audit, QA cleanup, live sync, evidence and docs",
+      "startUTC": "2026-10-26T08:00:00.641038+00:00",
+      "endUTC": "2026-10-26T08:10:24.647585+00:00",
+      "wallSeconds": 624.006547
+    }
+  ],
+  "processTimingNote": "Process waits have individual *-process.json. Parallel tests overlap; use wall span, never sum their durations. Initial unmeasured fetch time and final Git time are not inferred."
+}

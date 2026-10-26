@@ -1,0 +1,363 @@
+{
+  "baseline": "f1ae334ffa81c8dad103cb7c3b1d854df554d342",
+  "UTC": "2026-10-26T08:02:41.741063+00:00",
+  "sceneComparison": "YAML objects keyed by fileID, ignoring trailing whitespace and object ordering only",
+  "files": [
+    {
+      "path": "projects/wildfolk/client/Assets/Wildfolk/Data/Revive.asset",
+      "liveState": "base_matches",
+      "canonicalSHA256": "d182bd7427a5f82e07167ff4a3633ad4cce5f08dc8ebba157514c16fc91e9690"
+    },
+    {
+      "path": "projects/wildfolk/client/Assets/Wildfolk/Editor/BossLanQa.cs",
+      "liveState": "base_matches",
+      "canonicalSHA256": "b95509eeb6cce1f71818d1ff19c201b5eafc9958768758fe085235b16531553d"
+    },
+    {
+      "path": "projects/wildfolk/client/Assets/Wildfolk/Editor/ClassContentAssets.cs",
+      "liveState": "base_matches",
+      "canonicalSHA256": "6b407d7a72f2f1994fc38656858c68cfcc3bba9b2b30fd4c692be94849988419"
+    },
+    {
+      "path": "projects/wildfolk/client/Assets/Wildfolk/Editor/DeathFoundationQa.cs",
+      "liveState": "base_matches",
+      "canonicalSHA256": "1f91df4773132101fc95f2c620194f881ecfdb8806638328d87b6dee7021905c"
+    },
+    {
+      "path": "projects/wildfolk/client/Assets/Wildfolk/Editor/EconomyDataValidator.cs",
+      "liveState": "new_file",
+      "canonicalSHA256": "0a3391160555db437bdbc7fccf710145d073ea4cd2a374c15ed319063de5d082"
+    },
+    {
+      "path": "projects/wildfolk/client/Assets/Wildfolk/Editor/EconomyDataValidator.cs.meta",
+      "liveState": "new_file",
+      "canonicalSHA256": "c127a08876ca443b3369bd80c3c3641482a35e499fa94b08dbed708e45e72dd5"
+    },
+    {
+      "path": "projects/wildfolk/client/Assets/Wildfolk/Editor/EconomyQa.cs",
+      "liveState": "new_file",
+      "canonicalSHA256": "f85cb7ab40fd53f5108f8181c4cb34f43130a6a0ab10388c384caa7375188cf9"
+    },
+    {
+      "path": "projects/wildfolk/client/Assets/Wildfolk/Editor/EconomyQa.cs.meta",
+      "liveState": "new_file",
+      "canonicalSHA256": "fdc266c6ac50bbd8dfed114a97cbfd9886992578b1045850ca75f735e68ddad0"
+    },
+    {
+      "path": "projects/wildfolk/client/Assets/Wildfolk/Editor/EconomyUiBuilder.cs",
+      "liveState": "new_file",
+      "canonicalSHA256": "601b8116c6e67d5e390b98ca8f2ae5aa404ae9536ea9f14075d460723cd1c322"
+    },
+    {
+      "path": "projects/wildfolk/client/Assets/Wildfolk/Editor/EconomyUiBuilder.cs.meta",
+      "liveState": "new_file",
+      "canonicalSHA256": "b3d833176bb6989a051b1ccb9fc00d9555709249698f99531d7d6ea8241ef5a7"
+    },
+    {
+      "path": "projects/wildfolk/client/Assets/Wildfolk/Editor/FishingQa.cs",
+      "liveState": "base_matches",
+      "canonicalSHA256": "105c2f5d95bc15fc14275244a44bc496e77f39b57665d8db74a54779b3e49f3f"
+    },
+    {
+      "path": "projects/wildfolk/client/Assets/Wildfolk/Editor/IsolatedQaProfile.cs",
+      "liveState": "base_matches",
+      "canonicalSHA256": "1f657a1433c93324b3087bba5839d495d924e0b7669fdbc05ada0cc1d296e1ce"
+    },
+    {
+      "path": "projects/wildfolk/client/Assets/Wildfolk/Resources/Classes.json",
+      "liveState": "base_matches",
+      "canonicalSHA256": "62d9e75b75331983fab37b01ac7da7d97b8387babb8c90489b536b43d3e19c1f"
+    },
+    {
+      "path": "projects/wildfolk/client/Assets/Wildfolk/Resources/EconomyCatalog.json",
+      "liveState": "new_file",
+      "canonicalSHA256": "d3c260f9ab7ac46ab300a45827971e2a25c248ea5d00cf38938421c20a06e512"
+    },
+    {
+      "path": "projects/wildfolk/client/Assets/Wildfolk/Resources/EconomyCatalog.json.meta",
+      "liveState": "new_file",
+      "canonicalSHA256": "f280a85777864ef21596591f1617f56276b117e8ceea3bb8b336986cd172f7d9"
+    },
+    {
+      "path": "projects/wildfolk/client/Assets/Wildfolk/Resources/Localization.json",
+      "liveState": "base_matches",
+      "canonicalSHA256": "1aaab4f37ea9c56b34b57817190ad17a856e5dec5ee839b4f5af640814d8560c"
+    },
+    {
+      "path": "projects/wildfolk/client/Assets/Wildfolk/Runtime/Accounts/AccountService.cs",
+      "liveState": "base_matches",
+      "canonicalSHA256": "e99db62b06d2d116b370e1f8338be8b253067dd4a8fbe9e511a2f295d3a5808e"
+    },
+    {
+      "path": "projects/wildfolk/client/Assets/Wildfolk/Runtime/Accounts/CloudAccountModels.cs",
+      "liveState": "base_matches",
+      "canonicalSHA256": "86ad031f6b109b7fc4ff6890a02ddc706c40131269ace0d128204fb0ff07ae8d"
+    },
+    {
+      "path": "projects/wildfolk/client/Assets/Wildfolk/Runtime/Accounts/CloudGemReviveWallet.cs",
+      "liveState": "new_file",
+      "canonicalSHA256": "f0d7b192a0c920b8f533796b1ffbc73914b7c6b20db3dba413804ca09339b2d0"
+    },
+    {
+      "path": "projects/wildfolk/client/Assets/Wildfolk/Runtime/Accounts/CloudGemReviveWallet.cs.meta",
+      "liveState": "new_file",
+      "canonicalSHA256": "7e912e57d6a915d8855d70b86ea46a876c32cce2834a2ac4ed89bf455a8ec108"
+    },
+    {
+      "path": "projects/wildfolk/client/Assets/Wildfolk/Runtime/Accounts/EconomyModels.cs",
+      "liveState": "new_file",
+      "canonicalSHA256": "53716767a67b39541b15c732f63938f11233a87a97e216af0bb23427af1e4079"
+    },
+    {
+      "path": "projects/wildfolk/client/Assets/Wildfolk/Runtime/Accounts/EconomyModels.cs.meta",
+      "liveState": "new_file",
+      "canonicalSHA256": "b5869a0bfd47f08bd6c01f470a8e789989509ab454a2cb66ad87a323cbd09d5d"
+    },
+    {
+      "path": "projects/wildfolk/client/Assets/Wildfolk/Runtime/Accounts/EconomyService.cs",
+      "liveState": "new_file",
+      "canonicalSHA256": "82ccc1068122d36287a8cb059eb1d83223cdedf261543293d8a00937f49329bb"
+    },
+    {
+      "path": "projects/wildfolk/client/Assets/Wildfolk/Runtime/Accounts/EconomyService.cs.meta",
+      "liveState": "new_file",
+      "canonicalSHA256": "46be358398b0a9a3fe959a936a3c81cb8ea82135daeeaa75389e54b1d2a58855"
+    },
+    {
+      "path": "projects/wildfolk/client/Assets/Wildfolk/Runtime/Accounts/EconomyTelemetry.cs",
+      "liveState": "new_file",
+      "canonicalSHA256": "10429d8fda0c3b5e00170c8df42a9601f60f5892d119984197f9892395b12a2f"
+    },
+    {
+      "path": "projects/wildfolk/client/Assets/Wildfolk/Runtime/Accounts/EconomyTelemetry.cs.meta",
+      "liveState": "new_file",
+      "canonicalSHA256": "e7f07c7f4fc167e57d2d971f77e7c2e5f1825fffff6defa4719d75340f0451f0"
+    },
+    {
+      "path": "projects/wildfolk/client/Assets/Wildfolk/Runtime/Accounts/link.xml",
+      "liveState": "base_matches",
+      "canonicalSHA256": "87f549a430f771f06efd9ffb357cf3aac2275a51659de124927dec7c112f3204"
+    },
+    {
+      "path": "projects/wildfolk/client/Assets/Wildfolk/Runtime/Bosses/BossWorld.cs",
+      "liveState": "base_matches",
+      "canonicalSHA256": "d6f36120551d1ee8df7bca3d61ce00f6d2fbaf23c64bed3c2cc78b84b953a2b9"
+    },
+    {
+      "path": "projects/wildfolk/client/Assets/Wildfolk/Runtime/Crafting/PlayerCrafting.cs",
+      "liveState": "base_matches",
+      "canonicalSHA256": "597aabf96ced125b06bc9d0726e83af7555d5a39cb551c3b38c55ae5d345a59c"
+    },
+    {
+      "path": "projects/wildfolk/client/Assets/Wildfolk/Runtime/Crafting/StationProcessing.cs",
+      "liveState": "base_matches",
+      "canonicalSHA256": "e411c8b374e449bc8a7cdb10e34936c255fe0fddde1568ef9a9d8ed3b9f1464e"
+    },
+    {
+      "path": "projects/wildfolk/client/Assets/Wildfolk/Runtime/Enemies/GoblinCamp.cs",
+      "liveState": "base_matches",
+      "canonicalSHA256": "6738168943b65961f86c1020a7006a6972ff980b3f1875231b5825c22804f783"
+    },
+    {
+      "path": "projects/wildfolk/client/Assets/Wildfolk/Runtime/Input/PlayerInputCommands.cs",
+      "liveState": "base_matches",
+      "canonicalSHA256": "faa0a7aa6c7d21290b9d2c7e98e8cfbe27106266c978d1cdbac3188180e8d05d"
+    },
+    {
+      "path": "projects/wildfolk/client/Assets/Wildfolk/Runtime/Networking/NetworkCommonGrowth.cs",
+      "liveState": "base_matches",
+      "canonicalSHA256": "120acf32cf7c824d3341daf29f502718c329903091d391a0309104ccdd81f6e9"
+    },
+    {
+      "path": "projects/wildfolk/client/Assets/Wildfolk/Runtime/Networking/NetworkConstruction.cs",
+      "liveState": "base_matches",
+      "canonicalSHA256": "f8307ea1a362d339a2497db10570ce1ff0a0a79c6f5a68f4499c39fbd7c7f443"
+    },
+    {
+      "path": "projects/wildfolk/client/Assets/Wildfolk/Runtime/Networking/NetworkCreatureWorld.cs",
+      "liveState": "base_matches",
+      "canonicalSHA256": "9614811a59b635efbcabb97bbc43d7f1c3ce4b3b014f8def43b7bddc0850847c"
+    },
+    {
+      "path": "projects/wildfolk/client/Assets/Wildfolk/Runtime/Networking/NetworkFacility.cs",
+      "liveState": "base_matches",
+      "canonicalSHA256": "e900372119b191ef1a737f80e556a690bb12709cf3b810f7ba28e5b3efa6baf8"
+    },
+    {
+      "path": "projects/wildfolk/client/Assets/Wildfolk/Runtime/Networking/NetworkProtocol.cs",
+      "liveState": "base_matches",
+      "canonicalSHA256": "df3238754769ab18d321387246bef59021681e9f784706ee6283b8f17aacda90"
+    },
+    {
+      "path": "projects/wildfolk/client/Assets/Wildfolk/Runtime/Networking/NetworkResource.cs",
+      "liveState": "base_matches",
+      "canonicalSHA256": "317e8688d7570db4fefe40b90fcc8b6486aa528e5ca171bca9afbc834c568f13"
+    },
+    {
+      "path": "projects/wildfolk/client/Assets/Wildfolk/Runtime/Persistence/ClassProfiles.cs",
+      "liveState": "base_matches",
+      "canonicalSHA256": "7b2b6b1e71f5154562ef2343eb28bef8da00e5b491050d9cd3aa38caeb6d30a2"
+    },
+    {
+      "path": "projects/wildfolk/client/Assets/Wildfolk/Runtime/Persistence/EconomyJournal.cs",
+      "liveState": "new_file",
+      "canonicalSHA256": "fd0c05c540ae88235561b07472dc5d794b48481512a67ce6aea27538215e76be"
+    },
+    {
+      "path": "projects/wildfolk/client/Assets/Wildfolk/Runtime/Persistence/EconomyJournal.cs.meta",
+      "liveState": "new_file",
+      "canonicalSHA256": "1b50b4f36fed006410cd2e75d0d6aef05ecdacccc75047e4f89e65558e2d5da5"
+    },
+    {
+      "path": "projects/wildfolk/client/Assets/Wildfolk/Runtime/Player/PlayerDeath.cs",
+      "liveState": "base_matches",
+      "canonicalSHA256": "de76bdadcab48cc7b2a3745b08d5eba0666db944d07094e0190c287a9d1a1469"
+    },
+    {
+      "path": "projects/wildfolk/client/Assets/Wildfolk/Runtime/Player/PlayerEquipment.cs",
+      "liveState": "base_matches",
+      "canonicalSHA256": "3cff66cd8066641e55e90f750b7582931638ba65f6d2848bec135f89528afac1"
+    },
+    {
+      "path": "projects/wildfolk/client/Assets/Wildfolk/Runtime/Player/PlayerFishing.cs",
+      "liveState": "base_matches",
+      "canonicalSHA256": "4329bc8c7d7e3cce8954e609b58f53b705a3dbe25439684f25db9b27d2540d93"
+    },
+    {
+      "path": "projects/wildfolk/client/Assets/Wildfolk/Runtime/Player/ReviveServices.cs",
+      "liveState": "base_matches",
+      "canonicalSHA256": "d63d8433f98c15a754b4d4c9d05d1e29bd83e33230224c80972645e362d3c78b"
+    },
+    {
+      "path": "projects/wildfolk/client/Assets/Wildfolk/Runtime/UI/AccountProfileScreen.cs",
+      "liveState": "base_matches",
+      "canonicalSHA256": "70052a2783437ae5c1d989df60979c376cf3404fbb9e49f2ba71f51d7040ad90"
+    },
+    {
+      "path": "projects/wildfolk/client/Assets/Wildfolk/Runtime/UI/ClassLobbyScreen.cs",
+      "liveState": "base_matches",
+      "canonicalSHA256": "ec19bd4c10de841c7837435ec8dd3362d70ead353a5c2eebd7ad289a5c4dbfef"
+    },
+    {
+      "path": "projects/wildfolk/client/Assets/Wildfolk/Runtime/UI/DeathHud.cs",
+      "liveState": "base_matches",
+      "canonicalSHA256": "c0c373f2f35e11785c230de0582a0dc9706e480cbaa6c8c1122015021c7520e3"
+    },
+    {
+      "path": "projects/wildfolk/client/Assets/Wildfolk/Runtime/UI/EconomyScreen.cs",
+      "liveState": "new_file",
+      "canonicalSHA256": "dc70296c81d2e22685bb6b1e3e59206d55f714996765bda9ee05456f29dd19b8"
+    },
+    {
+      "path": "projects/wildfolk/client/Assets/Wildfolk/Runtime/UI/EconomyScreen.cs.meta",
+      "liveState": "new_file",
+      "canonicalSHA256": "6ba8fc0500371ee5a98778a6767101fb0dd29732a82e2009c4aac7ab4368a8b2"
+    },
+    {
+      "path": "projects/wildfolk/client/Assets/Wildfolk/Runtime/World/LootOnDeath.cs",
+      "liveState": "base_matches",
+      "canonicalSHA256": "73b4b360fbd4aff4a05938658c2164c2c9c130260feb36c60fd5fba690680dec"
+    },
+    {
+      "path": "projects/wildfolk/client/Assets/Wildfolk/Runtime/World/PlayerPlacement.cs",
+      "liveState": "base_matches",
+      "canonicalSHA256": "8d269d70fac178922c6ead27f45e99c7fda1c2ddb519789a6b3a94267ba8f756"
+    },
+    {
+      "path": "projects/wildfolk/client/Assets/Wildfolk/Runtime/World/ResourceNode.cs",
+      "liveState": "base_matches",
+      "canonicalSHA256": "41d6279185ebc0b3673bc71673732140feb27326a541de3b3dd0c571aa077cd8"
+    },
+    {
+      "path": "projects/wildfolk/client/Assets/Wildfolk/Scenes/MainMenu.unity",
+      "liveState": "semantic_base_matches",
+      "canonicalSHA256": "aba17747eed727cff18db01f56af71c1d9975186201d0634d40562bf8fd41da2"
+    },
+    {
+      "path": "projects/wildfolk/client/Assets/Wildfolk/Tests/EditMode/BossFoundationTests.cs",
+      "liveState": "base_matches",
+      "canonicalSHA256": "db43a2e4a010b373f5239c971757a035b98a2b55b03191ecbc5f0bed72bb5d3a"
+    },
+    {
+      "path": "projects/wildfolk/client/Assets/Wildfolk/Tests/EditMode/ClassProgressionModelTests.cs",
+      "liveState": "base_matches",
+      "canonicalSHA256": "6f1cf5e9e3597e596e21a1985f9fe117b89b45299585ef19f5fd78c6908db74c"
+    },
+    {
+      "path": "projects/wildfolk/client/Assets/Wildfolk/Tests/EditMode/CreatureSidegradeModelTests.cs",
+      "liveState": "base_matches",
+      "canonicalSHA256": "e7b14b0e0ffcb5e895a94a20dc46872605930ca219cf8406f5abfd3a70247b86"
+    },
+    {
+      "path": "projects/wildfolk/client/Assets/Wildfolk/Tests/EditMode/DeathFoundationModelTests.cs",
+      "liveState": "base_matches",
+      "canonicalSHA256": "cf861e0b2d3c1ebacbbe3fc5bd9dfb9631ff80ba9a35dfad31b9c5531fd71801"
+    },
+    {
+      "path": "projects/wildfolk/client/Assets/Wildfolk/Tests/EditMode/EconomyFoundationTests.cs",
+      "liveState": "new_file",
+      "canonicalSHA256": "975d78077cc20ec18053f52cc0635e861e478cfb5d11bebe7ae4f2c34ad5aa55"
+    },
+    {
+      "path": "projects/wildfolk/client/Assets/Wildfolk/Tests/EditMode/EconomyFoundationTests.cs.meta",
+      "liveState": "new_file",
+      "canonicalSHA256": "bb4b825c234f3a88d255923e9047cbf15c0ec103b8506b70c77fef51a6356f62"
+    },
+    {
+      "path": "projects/wildfolk/client/Assets/Wildfolk/Tests/EditMode/ExplorationUtilityModelTests.cs",
+      "liveState": "base_matches",
+      "canonicalSHA256": "3c45ed271d98ba65cc905a7e8bdeed12bcc0878620cee8d2c458095fbe41216a"
+    },
+    {
+      "path": "projects/wildfolk/client/Assets/Wildfolk/Tests/EditMode/FishingModelTests.cs",
+      "liveState": "base_matches",
+      "canonicalSHA256": "0aa9e9806c01b808b4c5f77b176486faaf68b96b1a659bbdcc18bed2701aead3"
+    },
+    {
+      "path": "projects/wildfolk/client/Assets/Wildfolk/Tests/EditMode/FoodModelTests.cs",
+      "liveState": "base_matches",
+      "canonicalSHA256": "0049997aed1f03f689063f0755b712dede4761ab6c2bd06867246785f96d5192"
+    },
+    {
+      "path": "projects/wildfolk/client/Assets/Wildfolk/Tests/EditMode/MedicineModelTests.cs",
+      "liveState": "base_matches",
+      "canonicalSHA256": "c4f12fc47272f734fb62f9821d65ae6a81de8d68d65a5c4eb8753933d994beaf"
+    },
+    {
+      "path": "projects/wildfolk/client/Assets/Wildfolk/Tests/EditMode/PoiContentModelTests.cs",
+      "liveState": "base_matches",
+      "canonicalSHA256": "c20d075e263243d93e2362eb166f97b80bf7652cfe82653250215b4085230dfd"
+    },
+    {
+      "path": "projects/wildfolk/client/Assets/Wildfolk/Tests/EditMode/StabilityModelTests.cs",
+      "liveState": "base_matches",
+      "canonicalSHA256": "3475f4a987803da1ead0a3602e9503311210a78801e18db5d5f4722a4a75e6f6"
+    },
+    {
+      "path": "projects/wildfolk/client/Assets/Wildfolk/Tests/PlayMode/CharacterPassPlayTests.cs",
+      "liveState": "base_matches",
+      "canonicalSHA256": "36b670877af6e6339f112ea124c5cd3ed4c7391b93987b21d906052bdae39b5a"
+    },
+    {
+      "path": "projects/wildfolk/client/Assets/Wildfolk/Tests/PlayMode/CreatureLootPlayTests.cs",
+      "liveState": "base_matches",
+      "canonicalSHA256": "7de8fbd493d48a253c6073b7cd1651e1d60c91039ca40a088f08eccc9fd05a55"
+    },
+    {
+      "path": "projects/wildfolk/client/Assets/Wildfolk/Tests/PlayMode/EconomyFoundationPlayTests.cs",
+      "liveState": "new_file",
+      "canonicalSHA256": "5b53dc9e3773f734fa6d345ff0a5aaa10e76b15973b3ade6b4b95bd22071792c"
+    },
+    {
+      "path": "projects/wildfolk/client/Assets/Wildfolk/Tests/PlayMode/EconomyFoundationPlayTests.cs.meta",
+      "liveState": "new_file",
+      "canonicalSHA256": "87876aaad3f7ba28a4ac749374656ed79a354de5b3c8f278714cb07c4ca9d172"
+    },
+    {
+      "path": "projects/wildfolk/client/Assets/Wildfolk/Tests/PlayMode/GameplayPlayTests.cs",
+      "liveState": "base_matches",
+      "canonicalSHA256": "cdff95831770608bc48c527784a5d41b2052191b02d8a9c565ad743177b79f0c"
+    }
+  ],
+  "conflicts": 0
+}

@@ -1,0 +1,14 @@
+{
+  "checkpoint": "f9d3411cf840fa948ece299c78f503e7b167323c",
+  "unchangedFromCheckpoint": {
+    "backend/src/economy.cjs": true,
+    "backend/src/economy-entry.cjs": true,
+    "backend/src/account.cjs": true,
+    "backend/src/entry.cjs": true,
+    "backend/src/economy-catalog.json": true,
+    "client/Assets/Wildfolk/Runtime/Accounts/EconomyService.cs": false,
+    "client/Assets/Wildfolk/Runtime/Accounts/CloudGemReviveWallet.cs": true,
+    "client/Assets/Wildfolk/Runtime/Persistence/EconomyJournal.cs": true
+  },
+  "changedClientSync": "Freeze initial batch, bounded initial queue count, reject non-forward acknowledgement and retain outbox. Verified by two new Play tests and four actual SDK progress checks. Prior spend/refund/Engineer SDK and LAN evidence is retained, not relabeled as a rerun."
+}

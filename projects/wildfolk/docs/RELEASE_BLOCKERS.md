@@ -11,7 +11,7 @@ Foundation1.5 상태는 **PARTIALLY ACTIVE**다. development/alpha 환경·Cloud
 - Production policy/gate/index/Cloud Code/Access Control 배포는 별도 출시 작업이다. 이번에는 production의 기존 기본 환경·스크립트·정책을 변경하지 않았다.
 - node-forge1.4.0의 RSA **검증** advisory GHSA-86w9-cpqp-85rv가 npm audit에 남는다(현재 patched release 없음). 현재 Lowfire는 SHA256과 RS256 **서명**만 사용하고 그 검증 API를 노출/호출하지 않는다. Account bundle에는 RSA가 포함되지 않는다. 공개 출시 전 dependency 상태/대체책을 재검토하고 미래 외부 서명 검증에 해당 API를 재사용하지 않는다. [근거와 범위](../validation/launch-backend-activation/REVIEW.md).
 
-현재 서버 권위 development 기반으로 다음 Foundation2를 개발할 수 있지만, 실제 사용자 Google 계정/공개 출시 준비가 완료된 것은 아니다. Gem/Achievement/Attendance/Ads/IAP/Audio는 다음 사용자 지시 전 시작하지 않는다.
+현재 Foundation2 Gem/Achievement/Attendance 구현·관련 QA를 완료했지만 실제 사용자 Google 계정/공개 출시 준비는 미완료다. Ads/IAP/Audio는 다음 사용자 지시 전 시작하지 않는다.
 
 ## Launch Economy Foundation2 · 현재 경계
 

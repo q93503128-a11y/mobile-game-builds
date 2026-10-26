@@ -24,7 +24,7 @@ CloudProfile1/local Profile2/Save14는 유지하고 기존 NetworkCommonGrowth�
 
 오프라인은 account/environment별 checksum+atomic replace+backup aggregate journal에만 진행을 저장한다. 첫 로그인 전 guest journal은 첫 계정 하나에만 두 파일 binding 후 채택한다. 기존 Profile2/공용 Level/과거 보스를 일괄 환산하지 않는다. 로그아웃 후 별도 guest로 얻은 새 진행을 계속 여러 계정에 재수입하지 않는다. 같은 계정의 offline cache 상태에서는 account journal을 그대로 사용한다.
 
-per-device 증가 sequence/high-water와 고정 operation의 frozen outbox를 서버가 확인한 뒤에만 제거한다. 한 요청에서 여러 metric을 합치고 최대5분 간격·화면 열기·명시 Sync 때 전송한다. 매 kill HTTP는 없다. 한 계정64device, permanent critical4096, local recent2048/outbox32, mutation500/day, 서버/클라이언트 각 최대3retry다. metric delta/daily cap은 유한 전체 목표까지이며100000kill/50boss 같은 불가능한 burst를 거절하고 Suspicious/audit만 남긴다. 실제 행동 발생은 player-host/offline unverified다. 느리게 그럴듯한 가짜 이벤트를 만드는 modified Host까지 방어하지 않으며 자동 영구 Ban은 없다. read spam은 UGS project quota/throttle와 운영 모니터링이 필요하다.
+per-device 증가 sequence/high-water와 고정 operation의 frozen outbox를 서버가 확인한 뒤에만 제거한다. 한 요청에서 여러 metric을 합치고 최대5분 간격·화면 열기·명시 Sync 때 전송한다. 한 번의 Sync는 시작할 때 고정한 outbox만 처리한다. 요청 중 생긴 새 진행은 다음 Sync로 남겨 두고, 마지막 sequence보다 작은 ack는 outbox를 지우지 않고 중단한다. 매 kill HTTP는 없다. 한 계정64device, permanent critical4096, local recent2048/outbox32, mutation500/day, 서버/클라이언트 각 최대3retry다. metric delta/daily cap은 유한 전체 목표까지이며100000kill/50boss 같은 불가능한 burst를 거절하고 Suspicious/audit만 남긴다. 실제 행동 발생은 player-host/offline unverified다. 느리게 그럴듯한 가짜 이벤트를 만드는 modified Host까지 방어하지 않으며 자동 영구 Ban은 없다. read spam은 UGS project quota/throttle와 운영 모니터링이 필요하다.
 
 ## 출석과 시간
 
@@ -47,3 +47,5 @@ Admin `economy-lookup`은 실제 account/env scope를 읽는다. `economy-adjust
 일반 audit는64개·operation cache는256개로 제한하지만 모든 경제 Ledger/source receipt는 절대 prune하지 않는다. 8192행 또는 root JSON3MiB에서 거래 전체를 fail-closed한다(Protected 총5MiB보다 낮은 경계). Ads/IAP 대량 지급 전 서버 archive/idempotency migration·비용 검증이 필요하다. 현재는 verified grant를 위한 내부 transact 경계만 준비했으며 provider 확인/AdsSDK/Billing 상품/가짜 충전 버튼은 없다.
 
 계정 삭제 운영은 모든 환경의 Protected data 전수를 삭제하므로 lf_economy도 포함한다. 현재 기기는 wallet/cache/revive intent와 해당 계정에 bound된 guest economic journal을 정리하며 실제 world/guest Profile2는 보존한다. 수집 inventory에 economic ledger, progress/device random ID/source hashes, attendance/Engineer/revive receipts를 추가한다. Privacy/삭제 URL, Google/PGS/Integrity/실기기 설정은 여전히 RELEASE_BLOCKERS다. Alpha 통화의 Production 자동 이전은 제공하지 않으며 Alpha Tester entitlement와 분리한다.
+
+UI 상세 tier는 ContentSizeFitter의 preferred height를 사용하고 Canvas pixel scale이 실제로 바뀔 때만 텍스트/layout을 다시 계산한다. 같은 scale의 frame에서는 rebuild하지 않는다. 직업 수첩의 기존 Gold/Gem 칸을 각각 실제 값에 연결한다.

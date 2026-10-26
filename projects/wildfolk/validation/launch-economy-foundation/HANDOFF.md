@@ -1,3 +1,15 @@
+# Foundation2 마감 완료 · 다음 작업 대기
+
+2026-10-26 `f9d3411cf840fa948ece299c78f503e7b167323c`에서 재개해 아래 중간 체크포인트의 잔여 항목을 마쳤다. 현재 정본은 [REVIEW의 재개 완료](REVIEW.md#2026-10-26-재개-완료)와 [최종 결과](completion/validation-summary.json)다. 아래 본문은 당시 미완료 상태의 기록으로 보존한다.
+
+상세 Text는 ContentSizeFitter와 실제 Canvas pixel scale 변화 시 layout 갱신으로 교정했고, Class의 기존 Gem 칸에 실제 잔액을 연결했다. 진행 Sync는 시작할 때의 batch만 처리하고 잘못된 ack는 보존·중단한다. 최종 Edit74/관련 Play14, 전체 최종 실행 Play 고유20, 서버64, Android Alpha/Production57/57, 실제 SDK 진행4, viewport42 PNG가 통과했다. 기존 실제 서비스33/SDK13/LAN 증거는 재실행으로 부풀리지 않는다. 새 QA2계정/Protected data/임시함수 정리 완료.
+
+사용자가 live Unity 편집 모드·Play OFF를 확인했다. Foundation2 전 baseline과 대조했으며 MainMenu는 YAML 객체 내용이 같고 whitespace/order만 달랐다. 충돌0으로71 source 파일을 백업 후 동기화했다. 사용자 world2개 hash/mtime/bytes는 일치한다. MCP 미제공으로 live 메모리 씬 reload·실기기 입력은 확인하지 못했다. 소스/씬을 최신으로 reload한 뒤 사용자가 직접 플레이할 수 있다.
+
+Save14/Profile2/CloudProfile1/Economy1/Protocol22/generation3. 제품 backend Enabled=false, Google/PGS/OAuth/Integrity/Privacy·삭제 URL 미설정, Production 변경 없음. 이 패스의 새 AAB는 없다. Ads/IAP/Store/Audio나 추가 gameplay를 자동 시작하지 않는다. 다음 지시 전에는 멈춘다.
+
+---
+
 # 사용자 종료 요청에 따른 중간 체크포인트 · Foundation2 미완료
 
 2026-10-26 사용자가 노트북 종료를 위해 현재 작업까지만 마치고 멈추도록 요청했다. 구현 대부분과 핵심 서비스 검증은 끝났지만 **Foundation2 완료/출시 준비 완료로 선언하지 않는다**. 다음 작업은 Foundation2 잔여 검증 마무리이며 Ads/IAP/Store/Audio로 넘어가지 않는다.

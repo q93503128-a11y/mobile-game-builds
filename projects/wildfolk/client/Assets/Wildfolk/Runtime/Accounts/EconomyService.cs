@@ -55,7 +55,7 @@ namespace Wildfolk
         public async Task Sync()
         {
             if(syncing||!Online||Busy)return;syncing=true;var owner=epoch;
-            try{ProgressBatch b;while(owner==epoch&&(b=journal.Freeze())!=null){var r=await Call("SubmitProgress",new Dictionary<string,object>{{"operationId",b.Operation},{"device",journal.State.Device},{"first",b.First},{"last",b.Last},{"metrics",b.Metrics}});if(!r.ok||owner!=epoch)return;journal.Acknowledge(r.acknowledged);}if(owner==epoch)await Call("GetEconomy",new Dictionary<string,object>(),false);}
+            try{journal.Freeze();var queued=journal.State.Outbox.Count;for(var index=0;index<queued&&owner==epoch;index++){var b=journal.State.Outbox[0];var r=await Call("SubmitProgress",new Dictionary<string,object>{{"operationId",b.Operation},{"device",journal.State.Device},{"first",b.First},{"last",b.Last},{"metrics",b.Metrics}});if(!r.ok||owner!=epoch)return;if(r.acknowledged<b.Last){LastError="invalid_progress_ack";return;}journal.Acknowledge(r.acknowledged);}if(owner==epoch)await Call("GetEconomy",new Dictionary<string,object>(),false);}
             catch(Exception){LastError="local_save_failed";blocked=true;}finally{syncing=false;Changed?.Invoke();}
         }
         public async Task<EconomyReply> Claim(string family=null){await Sync();var r=await Call(family==null?"ClaimAll":"ClaimAchievement",family==null?new Dictionary<string,object>():new Dictionary<string,object>{{"family",family}});if(r.ok)LastAchievementClaim=family??"all";return r;}

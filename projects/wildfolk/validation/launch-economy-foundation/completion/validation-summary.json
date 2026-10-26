@@ -1,0 +1,90 @@
+{
+  "status": "FOUNDATION2 IMPLEMENTATION AND SCOPED QA COMPLETE; PRODUCT ACTIVATION BLOCKED BY EXISTING EXTERNAL SETUP",
+  "initialSHA": "f1ae334ffa81c8dad103cb7c3b1d854df554d342",
+  "resumeSHA": "f9d3411cf840fa948ece299c78f503e7b167323c",
+  "serverTests": 64,
+  "editModeFinal": {
+    "id": "2",
+    "testcasecount": "74",
+    "result": "Passed",
+    "total": "74",
+    "passed": "74",
+    "failed": "0",
+    "inconclusive": "0",
+    "skipped": "0",
+    "asserts": "0",
+    "engine-version": "3.5.0.0",
+    "clr-version": "4.0.30319.42000",
+    "start-time": "2026-10-26 07:58:38Z",
+    "end-time": "2026-10-26 07:58:58Z",
+    "duration": "20.1658743"
+  },
+  "playModeFinalResume": {
+    "id": "2",
+    "testcasecount": "14",
+    "result": "Passed",
+    "total": "14",
+    "passed": "14",
+    "failed": "0",
+    "inconclusive": "0",
+    "skipped": "0",
+    "asserts": "0",
+    "engine-version": "3.5.0.0",
+    "clr-version": "4.0.30319.42000",
+    "start-time": "2026-10-26 07:57:24Z",
+    "end-time": "2026-10-26 07:57:59Z",
+    "duration": "34.9627552"
+  },
+  "uniquePassingPlayModeAcrossFinalRuns": 20,
+  "priorActualDevelopmentServiceChecks": 33,
+  "priorActualUnitySdkChecks": 13,
+  "newActualUnitySdkProgressChecks": 4,
+  "priorTwoProcessLanProtocol": 22,
+  "visualPassed": true,
+  "visualAssertions": 697,
+  "visualPngs": 42,
+  "viewports": [
+    "1920x1080",
+    "1280x720",
+    "844x390"
+  ],
+  "androidScripts": {
+    "Passed": true,
+    "AlphaFixtureExcluded": true,
+    "ProductionFixtureExcluded": true,
+    "AlphaAssemblies": 57,
+    "ProductionAssemblies": 57,
+    "Seconds": 35.341369199999995,
+    "Error": ""
+  },
+  "sourceValidator": "PASS 1621 unique asset GUIDs; references, visible text, Landscape",
+  "economyCatalogMirrorEqual": true,
+  "mcpAvailable": false,
+  "actualGoogle": false,
+  "actualDeviceTouch": false,
+  "newAabBuilt": false,
+  "productionMutation": false,
+  "userSaveFiles": 2,
+  "userSavesUnchanged": true,
+  "liveSourceSync": true,
+  "liveInMemorySceneReloadVerified": false,
+  "qaCleanup": {
+    "UTC": "2026-10-26T08:01:55.701417+00:00",
+    "classification": "ACTUAL SERVICE",
+    "newThisPassOnly": true,
+    "environment": "development",
+    "playerIds": [
+      "k9KTGunJqwSFDLgQsmJwzJbo9fcW",
+      "wvOvKKgVzUhrD4gIig2hb3aQhnym"
+    ],
+    "protectedCleanup": {
+      "players": 2,
+      "remainingProtectedKeys": 0,
+      "removed": 3
+    },
+    "authenticationDeletedAfterCloudCleanup": true,
+    "temporaryScriptRemoved": true,
+    "productionMutation": false
+  },
+  "nextFeatureStarted": false
+}
