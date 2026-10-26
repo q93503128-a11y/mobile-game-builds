@@ -71,3 +71,7 @@ Google/URL 값이 없을 때도 기존 Development 채널의 빌드 도구 체�
 이 경로는 Enabled=false·AllowDevelopmentIdentity=false·custom keystore 미사용·release define 미지정·IL2CPP/ARM64를 요구한다. 실제 제품 씬을 `BuildOptions.Development`와 표준 debug 서명으로 AAB 빌드하고 결과 JSON을 기록한다. Alpha/Production validator나 Google 설정 검사를 우회하지 않는다. 이 개발 AAB의 성공은 실제 PGS 로그인·Alpha/Production AAB·출시 서명·기기 실행 성공을 뜻하지 않는다. 없는 Google resource/manifest는 설정 완료로 표시하지 않는다.
 
 2026-10-26: 빈 미설정 PGS `.androidlib` skeleton 제거 후 실제 Development AAB가 생성됐다. PGS Setup은 실제 값 입력 시 폴더/manifest를 다시 만든다. [실제 후속 검증](../validation/launch-backend-activation/android-development/REVIEW.md). 공개 Google 값/URL 부재와 release 차단은 그대로다.
+
+## Launch Economy Foundation2 · 현재 경계
+
+Foundation2 non-production 경제 배포/검증은 별도 REVIEW를 따른다. 공개 활성화 전 실제 PGS/OAuth/Integrity approvedBuild·정식 서명·Privacy/삭제 URL, remote class entitlement admission 정책, 장기 ledger archive/용량 알림, 정상 기기 progress/latency/비용을 검증한다. 가짜 ID/URL은 넣지 않는다. production 경제 배포·활성화·Alpha Gem 이전은 별도 출시 작업이다. [경제 전체 규칙](ECONOMY.md) · [실행·검증](../validation/launch-economy-foundation/REVIEW.md).

@@ -22,8 +22,9 @@ namespace Wildfolk
         public event Action Changed;
         public string LastError{get;private set;}public string CorrelationId{get;private set;}
         public CloudAccountProfile Profile=>cache?.Profile;
+        public bool CloudAvailable=>cloudConnected&&Profile!=null;private bool cloudConnected;
         public bool Linked=>identity.Linked;public bool Dirty=>cache?.Dirty==true;
-        private bool development;
+        public bool IsDevelopment=>development;private bool development;
         private readonly IAccountIdentityProvider identity;private readonly IAccountCloudTransport cloud;private AccountCloudCache cache;private bool busy;
         public AccountService(IAccountIdentityProvider identity,IAccountCloudTransport cloud){this.identity=identity;this.cloud=cloud;}
         public static AccountService Get()
@@ -34,7 +35,7 @@ namespace Wildfolk
 #endif
         private void CacheChanged(){if(cache.Dirty)State=AccountConnection.CloudError;Changed?.Invoke();}
         private bool CanOperate=>ClassProfiles.Lobby&&!busy&&(BackendSettings.Current.Enabled||development);
-        private void Set(AccountConnection state,string error=null){State=state;LastError=error;Changed?.Invoke();}
+        private void Set(AccountConnection state,string error=null){cloudConnected=state==AccountConnection.Connected;State=state;LastError=error;Changed?.Invoke();}
         public async Task Connect(bool useExisting=false)
         {
             if(!CanOperate)return;busy=true;Set(AccountConnection.Connecting);

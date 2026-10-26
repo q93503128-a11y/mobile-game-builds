@@ -50,6 +50,20 @@ async function main(){
   }while(page&&players.length<limit);
   fs.writeFileSync(a.out,JSON.stringify({sourceEnvironment:a.environment,players,next:page,exportedAt:new Date().toISOString()},null,2),{mode:0o600});console.log(JSON.stringify({exported:players.length,next:page||null}));return;
  }
+ if(a.command==='economy-adjust'){
+  requireThat(a.request&&a.operator&&a.case&&a.player,'adjustment_context_required');
+  const config=(await api.getPrivateCustomItems(a.project,'lowfire_backend',['policy','economy_config'])).data.results;
+  const policy=config.find(i=>i.key==='policy')?.value,economyConfig=config.find(i=>i.key==='economy_config')?.value;requireThat(policy?.environmentId===a.environment&&economyConfig,'setup_required');
+  const account=(await store.read(a.player))?.value;requireThat(account&&!account.Deletion,'account_unavailable');
+  const request=JSON.parse(fs.readFileSync(a.request,'utf8'));requireThat(Object.keys(request).every(k=>['operationId','reason','delta'].includes(k)),'invalid_adjustment');
+  const ctx={playerId:a.player,projectId:a.project,environmentId:a.environment,channel:policy.channel,buildVersion:'admin',correlationId:request.operationId,supportId:account.SupportId,linked:true};
+  const backend=new (require('../src/economy.cjs').EconomyBackend)(new CloudSaveStore(api,a.project,request.operationId,'lf_economy'),policy,economyConfig);
+  console.log(JSON.stringify(await backend.adminAdjust(ctx,request,{operator:a.operator,caseReference:a.case,authorized:true,apply:a.apply}),null,2));return;
+ }
+ if(a.command==='economy-lookup'){
+  let player=a.player;if(a.support){const result=await api.lookup(a.support);player=result.id||result.playerId;requireThat(player,'player_missing');}
+  requireThat(player,'player_required');const record=await new CloudSaveStore(api,a.project,undefined,'lf_economy').read(player);console.log(JSON.stringify(record,null,2));return;
+ }
  if(a.command==='lookup'){console.log(JSON.stringify(a.support?await api.lookup(a.support):await store.read(a.player),null,2));return;}
  if(a.command==='migrate-alpha'){
   requireThat(a.source&&a.target&&a.source!==a.target&&a.players,'invalid_migration_scope');

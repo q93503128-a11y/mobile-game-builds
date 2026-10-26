@@ -40,8 +40,8 @@ namespace Wildfolk.Tests
         {var d=AccountProgression.New();d.Find("medic").Owned=true;Assert.That(store.Write(Id,d),Is.True);d.Find("medic").XP=50;Assert.That(store.Write(Id,d),Is.True);File.WriteAllText(Path.Combine(directory,"class-"+Id+".json"),"broken");Assert.That(store.Read(Id).Find("medic").Owned,Is.True);}
         [Test]public void BrokenProfileWithoutBackupDoesNotGrantDefaultOwnership()
         {Directory.CreateDirectory(directory);File.WriteAllText(Path.Combine(directory,"class-"+Id+".json"),"broken");Assert.Throws<InvalidDataException>(()=>store.Read(Id));}
-        [Test]public void PremiumEngineerIsUnavailableWithoutProviderAndApprovedPrice()
-        {Assert.That(ClassProfiles.Premium.Available,Is.False);var e=ClassCatalog.Current.Find("engineer");Assert.That(e.Currency,Is.EqualTo("PremiumGem"));Assert.That(e.Price,Is.Zero);Assert.That(AccountProgression.New().Find("engineer").Owned,Is.False);Assert.That(ReviveServices.Wallet.Available,Is.False);Assert.That(ReviveServices.Rewarded.Available,Is.False);}
+        [Test]public void PremiumEngineerRequiresProviderAtCanonicalPrice()
+        {Assert.That(ClassProfiles.Premium.Available,Is.False);var e=ClassCatalog.Current.Find("engineer");Assert.That(e.Currency,Is.EqualTo("PremiumGem"));Assert.That(e.Price,Is.EqualTo(EconomyCatalog.Current.EngineerCost));Assert.That(AccountProgression.New().Find("engineer").Owned,Is.False);Assert.That(ReviveServices.Wallet.Available,Is.False);Assert.That(ReviveServices.Rewarded.Available,Is.False);}
         [Test]public void MetabolismReducesDrainRatherThanIncreasingNutrition()
         {var definition=AssetDatabase.LoadAssetAtPath<SurvivalDefinition>("Assets/Wildfolk/Data/Survival.asset");var a=new SurvivalModel(definition);var b=new SurvivalModel(definition){MetabolicMultiplier=.75f};a.Advance(60);b.Advance(60);Assert.That(100-b.Hunger,Is.EqualTo((100-a.Hunger)*.75f).Within(.001));Assert.That(100-b.Thirst,Is.EqualTo((100-a.Thirst)*.75f).Within(.001));}
         [Test]public void RepairDataCoversEveryPlaceableAndUpgradeOnce()

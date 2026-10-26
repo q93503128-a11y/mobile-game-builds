@@ -1,0 +1,142 @@
+{
+  "UTC": "2026-10-26T05:31:34.330180+00:00",
+  "classification": "ACTUAL SERVICE",
+  "environmentId": "9aa02b53-8272-4975-a42a-f6a0b75a360f",
+  "tests": [
+    {
+      "case": "existing Account Cloud Code creates isolated real development root",
+      "passed": true
+    },
+    {
+      "case": "new canonical wallet starts at zero with matching catalogue",
+      "passed": true
+    },
+    {
+      "case": "player direct Protected wallet write denied",
+      "passed": true,
+      "http": 401
+    },
+    {
+      "case": "default-access fake economy write denied",
+      "passed": true,
+      "http": 403
+    },
+    {
+      "case": "public Grant forbidden",
+      "passed": true
+    },
+    {
+      "case": "public Spend forbidden",
+      "passed": true
+    },
+    {
+      "case": "public AdminAdjust forbidden",
+      "passed": true
+    },
+    {
+      "case": "public RealMoneyPurchase forbidden",
+      "passed": true
+    },
+    {
+      "case": "public iap_purchase forbidden",
+      "passed": true
+    },
+    {
+      "case": "public rewarded_ad forbidden",
+      "passed": true
+    },
+    {
+      "case": "progress completes three tiers without granting wallet",
+      "passed": true
+    },
+    {
+      "case": "new-operation retry of same stream is acknowledged without double progress",
+      "passed": true
+    },
+    {
+      "case": "atomic real ClaimAll grants three deterministic receipts",
+      "passed": true
+    },
+    {
+      "case": "lost-response retry returns same claim receipt and balance",
+      "passed": true
+    },
+    {
+      "case": "fresh ClaimAll operation cannot reclaim prior tiers",
+      "passed": true
+    },
+    {
+      "case": "newcomer server day claim grants exact3",
+      "passed": true
+    },
+    {
+      "case": "device day and client reward cannot override same-day receipt",
+      "passed": true
+    },
+    {
+      "case": "monthly regular slot records attendance without fake currency",
+      "passed": true
+    },
+    {
+      "case": "actual revive reserves eight Gem",
+      "passed": true
+    },
+    {
+      "case": "duplicate revive source does not debit again",
+      "passed": true
+    },
+    {
+      "case": "local failure compensates once through actual Cloud Save",
+      "passed": true
+    },
+    {
+      "case": "late conflicting completion cannot reopen refunded revive",
+      "passed": true
+    },
+    {
+      "case": "canonical admin logic dry-run against actual scoped record",
+      "passed": true
+    },
+    {
+      "case": "authorized Hub CLI writeLock applies canonical audited admin correction",
+      "passed": true
+    },
+    {
+      "case": "same admin correction receipt is stable",
+      "passed": true
+    },
+    {
+      "case": "Engineer debit and ownership receipt atomic on service",
+      "passed": true
+    },
+    {
+      "case": "repeat Engineer unlock has no second debit",
+      "passed": true
+    },
+    {
+      "case": "Account Cloud Code projects trusted premium receipt without local ownership claim",
+      "passed": true
+    },
+    {
+      "case": "actual reverse ledger pagination includes grants/debit/refund/admin",
+      "passed": true
+    },
+    {
+      "case": "impossible boss burst rejected and flagged",
+      "passed": true
+    },
+    {
+      "case": "claimed production channel fails closed in development",
+      "passed": true
+    },
+    {
+      "case": "second actual account has independent wallet/Engineer ownership",
+      "passed": true
+    },
+    {
+      "case": "anonymous unauthenticated request denied before script",
+      "passed": true,
+      "http": 401
+    }
+  ]
+}

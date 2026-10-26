@@ -1,1 +1,1 @@
-namespace Wildfolk {public static class NetworkProtocol {public const ushort Current=21;}}
+namespace Wildfolk {public static class NetworkProtocol {public const ushort Current=22;}}

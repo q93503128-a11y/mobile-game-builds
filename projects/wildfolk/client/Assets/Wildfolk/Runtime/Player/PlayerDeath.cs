@@ -147,7 +147,7 @@ namespace Wildfolk
         {
             var by=Rescuer;if(!ValidRescuer(by) || Now>=DownUntil)return;
             if(!TryPosition(deathPosition,3,out var position))return;
-            by.InterruptRescue();CommitRespawn(position,Mathf.Clamp01(Definition.RevivedHealth*(Modifiers(by)?.RevivedHealthMultiplier??1)),false,false);if(State==PlayerLife.Alive)ProtectedUntil+=by.GetComponent<ICooperativeReviveModifiers>()?.ReviveProtectionBonus??0;DownUntil=0;Signal();
+            var receipt=Run+":"+DeathNumber;by.InterruptRescue();CommitRespawn(position,Mathf.Clamp01(Definition.RevivedHealth*(Modifiers(by)?.RevivedHealthMultiplier??1)),false,false);if(State==PlayerLife.Alive){EconomyTelemetry.Record(by,"rescues",1,receipt);ProtectedUntil+=by.GetComponent<ICooperativeReviveModifiers>()?.ReviveProtectionBonus??0;}DownUntil=0;Signal();
         }
         public bool HomeRespawn()
         {
@@ -160,10 +160,17 @@ namespace Wildfolk
         public bool GemRevive()
         {
             if(!Authority || !CanGem)return false;if(!TryPosition(deathPosition,3,out var point)){MessageKey="death.position_failed";Signal();return false;}
+            if(ReviveServices.Wallet is IAsyncPremiumCurrencyWallet remote){GemReviveRemote(remote,point);return true;}
             var revision=Revision;var id=Transaction("gem");PaymentPending=true;Signal();bool result=false;
             try{result=ReviveServices.Wallet.TryCommitRevive(id,Definition.ReviveGemCost,()=>State==PlayerLife.Dead && Revision==revision && CommitRespawn(point,Definition.RevivedHealth,false,false));}
             finally{PaymentPending=false;Signal();}
             return result;
+        }
+        private async void GemReviveRemote(IAsyncPremiumCurrencyWallet wallet,Vector2 point)
+        {
+            var revision=Revision;var id=Transaction("gem");PaymentPending=true;Signal();
+            try{await wallet.CommitRevive(id,Definition.ReviveGemCost,()=>this!=null&&State==PlayerLife.Dead&&Revision==revision&&CommitRespawn(point,Definition.RevivedHealth,false,false));}
+            finally{if(this!=null){PaymentPending=false;Signal();}}
         }
         public bool RewardedRevive()
         {

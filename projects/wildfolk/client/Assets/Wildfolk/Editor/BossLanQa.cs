@@ -96,6 +96,8 @@ namespace Wildfolk.Editor
                     Check(Boss.Health.Maximum==9000 && Boss.Definition.Speed==2.1f,"2P no HP or speed scaling");
                     File.WriteAllText(Path.Combine(Dir,"marked.txt"),Boss.Marked.GetComponent<NetworkPlayer>().ProfileId);Ack(stage);
                 }
+                else if(stage=="economy_progress")
+                {yield return Wait(()=>EconomyService.Get().LocalValue("fish")==1,"owner-only economic RPC delivered and duplicate source coalesced");File.WriteAllText(Path.Combine(Dir,"economy-owner-client.json"),"{\"Fish\":1,\"Protocol\":22}");Ack(stage);}
                 else if(stage=="transfer")
                 {
                     yield return Wait(()=>Boss.Marked!=null && Boss.Marked.IsAlive && Boss.Marked.GetComponent<NetworkPlayer>().ProfileId!=Read("marked.txt"),"mark transferred off incapacitated player");Ack(stage);
@@ -125,6 +127,7 @@ namespace Wildfolk.Editor
         private static IEnumerator Authority()
         {
             Profile(HostId,"explorer");yield return NewHost(false);Command("join_first");yield return Acknowledged("join_first");yield return Wait(()=>Other!=null,"two actual processes ready");Freeze();
+            var source="owner-economic-probe:"+run;Local.GetComponent<NetworkCommonGrowth>().EmitEconomy("fish",1,source);Local.GetComponent<NetworkCommonGrowth>().EmitEconomy("fish",1,source);Other.GetComponent<NetworkCommonGrowth>().EmitEconomy("fish",1,source);Other.GetComponent<NetworkCommonGrowth>().EmitEconomy("fish",1,source);Check(EconomyService.Get().LocalValue("fish")==1,"Host owner economic progress journals only once");Command("economy_progress");yield return Acknowledged("economy_progress");
             yield return ResourceReplicationQa.Exercise(NetworkCreatureWorld.Active,()=>Local,()=>Other,Dir,Command,Acknowledged);
             Command("resource_disconnect");yield return Acknowledged("resource_disconnect");yield return Wait(()=>Other==null,"resource peer disconnected");Command("join_resource");yield return Acknowledged("join_resource");yield return Wait(()=>Other!=null,"resource peer rejoined");Freeze();yield return ResourceReplicationQa.Probe("resources_late_join",()=>Other,Dir,Command,Acknowledged);
             var prefab=AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Wildfolk/Prefabs/NetworkUndeadKing.prefab").GetComponent<NetworkBoss>();Check(Math.Abs(prefab.Clock-session.Manager.ServerTime.Time)<.1,"pre-spawn boss clock uses server epoch");

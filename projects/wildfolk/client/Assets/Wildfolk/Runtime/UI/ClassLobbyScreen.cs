@@ -11,8 +11,8 @@ namespace Wildfolk
         public Text Title,Role,Description,Progress,NodeDetail,PurchaseLabel,SelectLabel,InvestLabel,Currency,ConfirmText,Status;
         public Button PurchaseButton,SelectButton,RespecButton,InvestButton;
         private int selected,node;private AccountProgression account;
-        private void OnEnable(){ClassProfiles.Changed+=Refresh;L.Changed+=Refresh;}
-        private void OnDisable(){ClassProfiles.Changed-=Refresh;L.Changed-=Refresh;}
+        private void OnEnable(){ClassProfiles.Changed+=Refresh;L.Changed+=Refresh;EconomyService.Get().Changed+=Refresh;}
+        private void OnDisable(){ClassProfiles.Changed-=Refresh;L.Changed-=Refresh;if(EconomyService.Current!=null)EconomyService.Current.Changed-=Refresh;}
         public void Open()
         {
             Home.Menu.SetActive(false);Home.Settings.SetActive(false);Home.Multiplayer.SetActive(false);Home.Confirm.SetActive(false);View.SetActive(true);Confirmation.SetActive(false);
@@ -26,7 +26,7 @@ namespace Wildfolk
         public void Respec(){ClassProfiles.Respec(ClassCatalog.Current.Classes[selected].Id);Refresh();}
         public void AskPurchase(){var d=ClassCatalog.Current.Classes[selected];if(!ClassProfiles.Lobby || !PurchaseButton.interactable)return;ConfirmText.text=L.Format("class.confirm",d.Name,d.Price,d.Currency=="Gold"?L.Text("ui.gold"):L.Text("class.gem"));Confirmation.SetActive(true);}
         public void CancelPurchase()=>Confirmation.SetActive(false);
-        public void ConfirmPurchase(){Confirmation.SetActive(false);Status.text=L.Text(ClassProfiles.Purchase(ClassCatalog.Current.Classes[selected].Id,Rules)?"class.purchased":"class.purchase_failed");Refresh();}
+        public async void ConfirmPurchase(){Confirmation.SetActive(false);var d=ClassCatalog.Current.Classes[selected];var ok=d.Currency=="PremiumGem"?await EconomyService.Get().UnlockEngineer():ClassProfiles.Purchase(d.Id,Rules);Status.text=L.Text(ok?"class.purchased":"class.purchase_failed");Refresh();}
         private void Unavailable(){Status.text=L.Text("class.profile_failed");PurchaseButton.interactable=SelectButton.interactable=RespecButton.interactable=InvestButton.interactable=false;}
         public void Refresh()
         {
@@ -50,10 +50,10 @@ namespace Wildfolk
             var chosen=d.Nodes[node];var has=Array.IndexOf(p.Nodes,chosen.Id)>=0;var requires=string.IsNullOrEmpty(chosen.Prerequisite)||Array.IndexOf(p.Nodes,chosen.Prerequisite)>=0;
             NodeDetail.text=chosen.Description;if(!requires)Status.text=L.Format("journal.requires",Array.Find(d.Nodes,n=>n.Id==chosen.Prerequisite).Name);
             SelectButton.interactable=lobby && owned && account.Selected!=d.Id;SelectLabel.text=L.Text(account.Selected==d.Id?"class.selected":"class.select");
-            PurchaseButton.gameObject.SetActive(!owned);PurchaseButton.interactable=lobby && (d.Currency=="Gold"?ClassProfiles.GoldAvailable(Rules)>=d.Price:d.Price>0 && ClassProfiles.Premium.Available);
+            PurchaseButton.gameObject.SetActive(!owned);PurchaseButton.interactable=lobby && (d.Currency=="Gold"?ClassProfiles.GoldAvailable(Rules)>=d.Price:d.Price>0 && EconomyService.Get().CanSpend && (EconomyService.Get().Snapshot?.Balance??0)>=d.Price);
             PurchaseLabel.text=d.Currency=="Gold"?L.Format("class.price",d.Price,L.Text("ui.gold")):d.Price>0?L.Format("class.price",d.Price,L.Text("class.gem")):L.Text("journal.premium_locked");
             InvestButton.interactable=lobby && owned && !has && points>0 && requires;InvestLabel.text=L.Text(has?"class.learned":!owned || !requires?"class.locked":points<=0?"journal.need_point":"class.invest");
-            RespecButton.interactable=lobby && owned && p.Nodes.Length>0;Currency.text=ClassProfiles.GoldAvailable(Rules).ToString();
+            RespecButton.interactable=lobby && owned && p.Nodes.Length>0;Currency.text=ClassProfiles.GoldAvailable(Rules)+" · "+L.Format("economy.balance",EconomyService.Get().Snapshot?.Balance.ToString()??"—");
         }
     }
 }

@@ -18,6 +18,8 @@ module.exports=async ({params,context,logger,secretManager})=>{
   if(identity.data.id!==context.playerId||identity.data.disabled)throw new Rejected('authentication_required');
   const linked=identity.data.externalIds?.some(i=>i.providerId==='google-play-games')===true;
   const ctx={playerId:context.playerId,projectId:context.projectId,environmentId:context.environmentId,linked,channel:params.channel,buildVersion:params.buildVersion,correlationId};
+  const economy=await new CloudSaveStore(api,context.projectId,correlationId,'lf_economy').read(context.playerId);
+  ctx.premiumVerified=true;ctx.engineerOwned=require('./economy-ownership.cjs').engineerOwnership(economy?.value,ctx);
   if(params.operation==='EnrollAlphaParticipation'){
    if(policy.channel!=='Alpha'||!policy.alphaOpen||!linked)throw new Rejected('alpha_unavailable');
    const record=await new CloudSaveStore(api,context.projectId,correlationId).read(context.playerId);const previous=record?.value.Operations?.find(r=>r.id===params.input?.operationId);

@@ -9,11 +9,11 @@ namespace Wildfolk.Tests
 {
     public sealed class DeathFoundationModelTests
     {
-        [Test]public void Protocol20RoundTripsLifecycleAndDeadlines()
+        [Test]public void CurrentProtocolRoundTripsLifecycleAndDeadlines()
         {
             var a=new PlayerStatusState{HP=0,MaximumHP=100,Life=(byte)PlayerLife.Reviving,LifeRevision=51,DownUntil=120,HoldStarted=93,HoldUntil=97,ProtectedUntil=0,Helping=false};
             using(var writer=new FastBufferWriter(256,Allocator.Temp)){writer.WriteNetworkSerializable(a);using(var reader=new FastBufferReader(writer,Allocator.Temp)){reader.ReadNetworkSerializable(out PlayerStatusState b);Assert.That(b.Equals(a),Is.True);b.LifeRevision++;Assert.That(b.Equals(a),Is.False);}}
-            Assert.That(NetworkProtocol.Current,Is.EqualTo(21));
+            Assert.That(NetworkProtocol.Current,Is.EqualTo(22));
         }
         [Test]public void Save11MigrationPreservesHpAndInitialSeedHomeForAllParticipants()
         {
@@ -34,7 +34,7 @@ namespace Wildfolk.Tests
             Assert.That(wallet.TryCommitRevive("once",7,()=>{calls++;return true;}),Is.True);Assert.That(calls,Is.EqualTo(1));Assert.That(wallet.Balance,Is.EqualTo(93));
             for(var i=0;i<8;i++)Assert.That(wallet.TryCommitRevive("repeat"+i,7,()=>true),Is.True);Assert.That(wallet.Balance,Is.EqualTo(37));Assert.That(wallet.TryCommitRevive("poor",50,()=>true),Is.False);
         }
-        [Test]public void DataIsSharedAndProductionPriceRemainsUndecided()
-        {var d=AssetDatabase.LoadAssetAtPath<ReviveDefinition>("Assets/Wildfolk/Data/Revive.asset");Assert.That(d.DownedSeconds,Is.EqualTo(24));Assert.That(d.HoldSeconds,Is.EqualTo(4));Assert.That(d.RevivedHealth,Is.EqualTo(.4f));Assert.That(d.ProtectionSeconds,Is.EqualTo(2));Assert.That(d.ReviveGemCost,Is.Zero);foreach(var p in new[]{"Player","NetworkPlayer"})Assert.That(AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Wildfolk/Prefabs/"+p+".prefab").GetComponent<PlayerDeath>().Definition,Is.SameAs(d));}
+        [Test]public void DataIsSharedAndGemPriceMatchesCanonicalEconomy()
+        {var d=AssetDatabase.LoadAssetAtPath<ReviveDefinition>("Assets/Wildfolk/Data/Revive.asset");Assert.That(d.DownedSeconds,Is.EqualTo(24));Assert.That(d.HoldSeconds,Is.EqualTo(4));Assert.That(d.RevivedHealth,Is.EqualTo(.4f));Assert.That(d.ProtectionSeconds,Is.EqualTo(2));Assert.That(d.ReviveGemCost,Is.EqualTo(EconomyCatalog.Current.ReviveCost));foreach(var p in new[]{"Player","NetworkPlayer"})Assert.That(AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Wildfolk/Prefabs/"+p+".prefab").GetComponent<PlayerDeath>().Definition,Is.SameAs(d));}
     }
 }

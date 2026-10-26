@@ -127,3 +127,7 @@ Background/Quit/Save & home/Host Save는 기존 world Save 경계를 유지하�
 ## Launch Backend Foundation1 · CloudProfile1
 
 Save14/Profile2/Protocol21/generation3는 유지한다. CloudProfile1은 별도 account schema이며 world 파일/지형/자원/Boss를 업로드하지 않는다. 신규 account의 prelaunch Profile2 import는 서버 정책·canonical 검증·영구 receipt로 한 번만 허용하며 unverified로 기록한다. pending 구매/XP 거래와 WorldPath는 업로드하지 않는다. 기존 guest 원본/backup은 보존하고 별도 CloudAccounts cache를 쓴다. 기존 Cloud는 account 정본이며 명시 ClassRevision 교체만 가능하다. 로컬 ClassXP journal은 cache의 기존 store에도 적용한다. Root creation은 미리 만든 server-private CAS gate, 기존 root mutation은 Cloud Save writeLock CAS를 쓴다. [범위·failure/retry·삭제](BACKEND_OPERATIONS.md).
+
+## Launch Economy Foundation2 · 현재 경계
+
+Save14/local Profile2/CloudProfile1/generation3 유지. 새 경제 Schema1은 Protected lf_economy 정본이며 local Economy/<scope hash>.json은 별도 journal/cache다. Gem 부활은 기존 DeathSnapshot run/death/Dead와 primary world save를 대조해 복구하고 Save version을 올리지 않는다. 기존 사용자 world/Profile2를 업적/Gem으로 일괄 변환하지 않는다. [경제 전체 규칙](ECONOMY.md) · [실행·검증](../validation/launch-economy-foundation/REVIEW.md).

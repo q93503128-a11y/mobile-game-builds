@@ -54,7 +54,7 @@ namespace Wildfolk
             {
                 var stack=State.Loot[slot];if(stack==null || stack.Count<=0)return false;
                 if(player.Model.TryExchange(System.Array.Empty<ItemAmount>(),Catalog.Item(stack.Item),stack.Count)!=ExchangeResult.Success)return false;
-                State.Loot[slot]=new SavedStack();
+                State.Loot[slot]=new SavedStack();EconomyTelemetry.Record(player,"camp",1,State.Id);
             }
             State.LootOpened=true;State.LootRevision++;Notify();net?.PublishLoot();return true;
         }

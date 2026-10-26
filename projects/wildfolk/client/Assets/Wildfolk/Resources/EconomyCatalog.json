@@ -1,0 +1,749 @@
+{
+  "Schema": 1,
+  "Revision": 1,
+  "InitialBalance": 0,
+  "EngineerCost": 120,
+  "ReviveCost": 8,
+  "MaximumBalance": 100000000,
+  "MaximumLedger": 8192,
+  "MaximumStateBytes": 3145728,
+  "Categories": [
+    "Progression",
+    "Combat",
+    "Survival",
+    "Exploration",
+    "Gathering",
+    "Life",
+    "Coop"
+  ],
+  "Metrics": [
+    {
+      "Id": "hostiles",
+      "Maximum": 360,
+      "MaxBatch": 360,
+      "MaxDaily": 360,
+      "Mode": "count",
+      "Critical": false
+    },
+    {
+      "Id": "undead",
+      "Maximum": 240,
+      "MaxBatch": 240,
+      "MaxDaily": 240,
+      "Mode": "count",
+      "Critical": false
+    },
+    {
+      "Id": "goblins",
+      "Maximum": 180,
+      "MaxBatch": 180,
+      "MaxDaily": 180,
+      "Mode": "count",
+      "Critical": false
+    },
+    {
+      "Id": "wildlife",
+      "Maximum": 120,
+      "MaxBatch": 120,
+      "MaxDaily": 120,
+      "Mode": "count",
+      "Critical": false
+    },
+    {
+      "Id": "harvests",
+      "Maximum": 900,
+      "MaxBatch": 900,
+      "MaxDaily": 900,
+      "Mode": "count",
+      "Critical": false
+    },
+    {
+      "Id": "crafts",
+      "Maximum": 240,
+      "MaxBatch": 240,
+      "MaxDaily": 240,
+      "Mode": "count",
+      "Critical": false
+    },
+    {
+      "Id": "fish",
+      "Maximum": 120,
+      "MaxBatch": 120,
+      "MaxDaily": 120,
+      "Mode": "count",
+      "Critical": false
+    },
+    {
+      "Id": "builds",
+      "Maximum": 100,
+      "MaxBatch": 100,
+      "MaxDaily": 100,
+      "Mode": "count",
+      "Critical": false
+    },
+    {
+      "Id": "nights",
+      "Maximum": 30,
+      "MaxBatch": 30,
+      "MaxDaily": 30,
+      "Mode": "count",
+      "Critical": true
+    },
+    {
+      "Id": "rescues",
+      "Maximum": 30,
+      "MaxBatch": 30,
+      "MaxDaily": 30,
+      "Mode": "count",
+      "Critical": false
+    },
+    {
+      "Id": "bosses",
+      "Maximum": 3,
+      "MaxBatch": 3,
+      "MaxDaily": 3,
+      "Mode": "count",
+      "Critical": true
+    },
+    {
+      "Id": "gold_classes",
+      "Maximum": 4,
+      "MaxBatch": 4,
+      "MaxDaily": 4,
+      "Mode": "count",
+      "Critical": true
+    },
+    {
+      "Id": "class_nodes",
+      "Maximum": 6,
+      "MaxBatch": 6,
+      "MaxDaily": 6,
+      "Mode": "count",
+      "Critical": true
+    },
+    {
+      "Id": "workbench_ii",
+      "Maximum": 1,
+      "MaxBatch": 1,
+      "MaxDaily": 1,
+      "Mode": "count",
+      "Critical": true
+    },
+    {
+      "Id": "workbench_iii",
+      "Maximum": 1,
+      "MaxBatch": 1,
+      "MaxDaily": 1,
+      "Mode": "count",
+      "Critical": true
+    },
+    {
+      "Id": "diamond",
+      "Maximum": 1,
+      "MaxBatch": 1,
+      "MaxDaily": 1,
+      "Mode": "count",
+      "Critical": true
+    },
+    {
+      "Id": "cavern",
+      "Maximum": 1,
+      "MaxBatch": 1,
+      "MaxDaily": 1,
+      "Mode": "count",
+      "Critical": true
+    },
+    {
+      "Id": "deep",
+      "Maximum": 1,
+      "MaxBatch": 1,
+      "MaxDaily": 1,
+      "Mode": "count",
+      "Critical": true
+    },
+    {
+      "Id": "biomes",
+      "Maximum": 4,
+      "MaxBatch": 4,
+      "MaxDaily": 4,
+      "Mode": "mask",
+      "Critical": false
+    },
+    {
+      "Id": "crown",
+      "Maximum": 1,
+      "MaxBatch": 1,
+      "MaxDaily": 1,
+      "Mode": "count",
+      "Critical": true
+    },
+    {
+      "Id": "summoning",
+      "Maximum": 1,
+      "MaxBatch": 1,
+      "MaxDaily": 1,
+      "Mode": "count",
+      "Critical": true
+    },
+    {
+      "Id": "camp",
+      "Maximum": 1,
+      "MaxBatch": 1,
+      "MaxDaily": 1,
+      "Mode": "count",
+      "Critical": true
+    }
+  ],
+  "Families": [
+    {
+      "Id": "hostiles",
+      "Category": "Combat",
+      "Metric": "hostiles",
+      "NameKey": "achievement.hostiles",
+      "DescriptionKey": "achievement.hostiles.detail",
+      "Critical": false,
+      "Tiers": [
+        {
+          "Threshold": 5,
+          "GemReward": 1,
+          "AchievementPoints": 5
+        },
+        {
+          "Threshold": 30,
+          "GemReward": 2,
+          "AchievementPoints": 10
+        },
+        {
+          "Threshold": 120,
+          "GemReward": 3,
+          "AchievementPoints": 15
+        },
+        {
+          "Threshold": 360,
+          "GemReward": 5,
+          "AchievementPoints": 20
+        }
+      ]
+    },
+    {
+      "Id": "undead",
+      "Category": "Combat",
+      "Metric": "undead",
+      "NameKey": "achievement.undead",
+      "DescriptionKey": "achievement.undead.detail",
+      "Critical": false,
+      "Tiers": [
+        {
+          "Threshold": 3,
+          "GemReward": 1,
+          "AchievementPoints": 5
+        },
+        {
+          "Threshold": 20,
+          "GemReward": 2,
+          "AchievementPoints": 10
+        },
+        {
+          "Threshold": 80,
+          "GemReward": 3,
+          "AchievementPoints": 15
+        },
+        {
+          "Threshold": 240,
+          "GemReward": 5,
+          "AchievementPoints": 20
+        }
+      ]
+    },
+    {
+      "Id": "goblins",
+      "Category": "Combat",
+      "Metric": "goblins",
+      "NameKey": "achievement.goblins",
+      "DescriptionKey": "achievement.goblins.detail",
+      "Critical": false,
+      "Tiers": [
+        {
+          "Threshold": 3,
+          "GemReward": 1,
+          "AchievementPoints": 5
+        },
+        {
+          "Threshold": 15,
+          "GemReward": 2,
+          "AchievementPoints": 10
+        },
+        {
+          "Threshold": 60,
+          "GemReward": 3,
+          "AchievementPoints": 15
+        },
+        {
+          "Threshold": 180,
+          "GemReward": 5,
+          "AchievementPoints": 20
+        }
+      ]
+    },
+    {
+      "Id": "wildlife",
+      "Category": "Combat",
+      "Metric": "wildlife",
+      "NameKey": "achievement.wildlife",
+      "DescriptionKey": "achievement.wildlife.detail",
+      "Critical": false,
+      "Tiers": [
+        {
+          "Threshold": 2,
+          "GemReward": 1,
+          "AchievementPoints": 5
+        },
+        {
+          "Threshold": 12,
+          "GemReward": 2,
+          "AchievementPoints": 10
+        },
+        {
+          "Threshold": 45,
+          "GemReward": 3,
+          "AchievementPoints": 15
+        },
+        {
+          "Threshold": 120,
+          "GemReward": 5,
+          "AchievementPoints": 20
+        }
+      ]
+    },
+    {
+      "Id": "harvesting",
+      "Category": "Gathering",
+      "Metric": "harvests",
+      "NameKey": "achievement.harvesting",
+      "DescriptionKey": "achievement.harvesting.detail",
+      "Critical": false,
+      "Tiers": [
+        {
+          "Threshold": 12,
+          "GemReward": 1,
+          "AchievementPoints": 5
+        },
+        {
+          "Threshold": 80,
+          "GemReward": 2,
+          "AchievementPoints": 10
+        },
+        {
+          "Threshold": 300,
+          "GemReward": 3,
+          "AchievementPoints": 15
+        },
+        {
+          "Threshold": 900,
+          "GemReward": 5,
+          "AchievementPoints": 20
+        }
+      ]
+    },
+    {
+      "Id": "crafting",
+      "Category": "Gathering",
+      "Metric": "crafts",
+      "NameKey": "achievement.crafting",
+      "DescriptionKey": "achievement.crafting.detail",
+      "Critical": false,
+      "Tiers": [
+        {
+          "Threshold": 6,
+          "GemReward": 1,
+          "AchievementPoints": 5
+        },
+        {
+          "Threshold": 30,
+          "GemReward": 2,
+          "AchievementPoints": 10
+        },
+        {
+          "Threshold": 100,
+          "GemReward": 3,
+          "AchievementPoints": 15
+        },
+        {
+          "Threshold": 240,
+          "GemReward": 5,
+          "AchievementPoints": 20
+        }
+      ]
+    },
+    {
+      "Id": "fishing",
+      "Category": "Life",
+      "Metric": "fish",
+      "NameKey": "achievement.fishing",
+      "DescriptionKey": "achievement.fishing.detail",
+      "Critical": false,
+      "Tiers": [
+        {
+          "Threshold": 3,
+          "GemReward": 1,
+          "AchievementPoints": 5
+        },
+        {
+          "Threshold": 15,
+          "GemReward": 2,
+          "AchievementPoints": 10
+        },
+        {
+          "Threshold": 50,
+          "GemReward": 3,
+          "AchievementPoints": 15
+        },
+        {
+          "Threshold": 120,
+          "GemReward": 5,
+          "AchievementPoints": 20
+        }
+      ]
+    },
+    {
+      "Id": "building",
+      "Category": "Progression",
+      "Metric": "builds",
+      "NameKey": "achievement.building",
+      "DescriptionKey": "achievement.building.detail",
+      "Critical": false,
+      "Tiers": [
+        {
+          "Threshold": 3,
+          "GemReward": 1,
+          "AchievementPoints": 5
+        },
+        {
+          "Threshold": 15,
+          "GemReward": 2,
+          "AchievementPoints": 10
+        },
+        {
+          "Threshold": 40,
+          "GemReward": 3,
+          "AchievementPoints": 15
+        },
+        {
+          "Threshold": 100,
+          "GemReward": 5,
+          "AchievementPoints": 20
+        }
+      ]
+    },
+    {
+      "Id": "nights",
+      "Category": "Survival",
+      "Metric": "nights",
+      "NameKey": "achievement.nights",
+      "DescriptionKey": "achievement.nights.detail",
+      "Critical": false,
+      "Tiers": [
+        {
+          "Threshold": 1,
+          "GemReward": 1,
+          "AchievementPoints": 5
+        },
+        {
+          "Threshold": 4,
+          "GemReward": 2,
+          "AchievementPoints": 10
+        },
+        {
+          "Threshold": 12,
+          "GemReward": 3,
+          "AchievementPoints": 15
+        },
+        {
+          "Threshold": 30,
+          "GemReward": 5,
+          "AchievementPoints": 20
+        }
+      ]
+    },
+    {
+      "Id": "rescue",
+      "Category": "Coop",
+      "Metric": "rescues",
+      "NameKey": "achievement.rescue",
+      "DescriptionKey": "achievement.rescue.detail",
+      "Critical": false,
+      "Tiers": [
+        {
+          "Threshold": 1,
+          "GemReward": 1,
+          "AchievementPoints": 5
+        },
+        {
+          "Threshold": 4,
+          "GemReward": 2,
+          "AchievementPoints": 10
+        },
+        {
+          "Threshold": 12,
+          "GemReward": 3,
+          "AchievementPoints": 15
+        },
+        {
+          "Threshold": 30,
+          "GemReward": 5,
+          "AchievementPoints": 20
+        }
+      ]
+    },
+    {
+      "Id": "king",
+      "Category": "Combat",
+      "Metric": "bosses",
+      "NameKey": "achievement.king",
+      "DescriptionKey": "achievement.king.detail",
+      "Critical": true,
+      "Tiers": [
+        {
+          "Threshold": 1,
+          "GemReward": 6,
+          "AchievementPoints": 15
+        },
+        {
+          "Threshold": 2,
+          "GemReward": 8,
+          "AchievementPoints": 20
+        },
+        {
+          "Threshold": 3,
+          "GemReward": 10,
+          "AchievementPoints": 25
+        }
+      ]
+    },
+    {
+      "Id": "classes",
+      "Category": "Progression",
+      "Metric": "gold_classes",
+      "NameKey": "achievement.classes",
+      "DescriptionKey": "achievement.classes.detail",
+      "Critical": true,
+      "Tiers": [
+        {
+          "Threshold": 1,
+          "GemReward": 3,
+          "AchievementPoints": 10
+        },
+        {
+          "Threshold": 2,
+          "GemReward": 4,
+          "AchievementPoints": 15
+        },
+        {
+          "Threshold": 4,
+          "GemReward": 7,
+          "AchievementPoints": 20
+        }
+      ]
+    },
+    {
+      "Id": "learning",
+      "Category": "Progression",
+      "Metric": "class_nodes",
+      "NameKey": "achievement.learning",
+      "DescriptionKey": "achievement.learning.detail",
+      "Critical": true,
+      "Tiers": [
+        {
+          "Threshold": 1,
+          "GemReward": 2,
+          "AchievementPoints": 10
+        },
+        {
+          "Threshold": 3,
+          "GemReward": 4,
+          "AchievementPoints": 15
+        },
+        {
+          "Threshold": 6,
+          "GemReward": 6,
+          "AchievementPoints": 20
+        }
+      ]
+    },
+    {
+      "Id": "workbench_ii",
+      "Category": "Progression",
+      "Metric": "workbench_ii",
+      "NameKey": "achievement.workbench_ii",
+      "DescriptionKey": "achievement.workbench_ii.detail",
+      "Critical": true,
+      "Tiers": [
+        {
+          "Threshold": 1,
+          "GemReward": 5,
+          "AchievementPoints": 10
+        }
+      ]
+    },
+    {
+      "Id": "workbench_iii",
+      "Category": "Progression",
+      "Metric": "workbench_iii",
+      "NameKey": "achievement.workbench_iii",
+      "DescriptionKey": "achievement.workbench_iii.detail",
+      "Critical": true,
+      "Tiers": [
+        {
+          "Threshold": 1,
+          "GemReward": 8,
+          "AchievementPoints": 20
+        }
+      ]
+    },
+    {
+      "Id": "diamond",
+      "Category": "Progression",
+      "Metric": "diamond",
+      "NameKey": "achievement.diamond",
+      "DescriptionKey": "achievement.diamond.detail",
+      "Critical": true,
+      "Tiers": [
+        {
+          "Threshold": 1,
+          "GemReward": 8,
+          "AchievementPoints": 20
+        }
+      ]
+    },
+    {
+      "Id": "cavern",
+      "Category": "Exploration",
+      "Metric": "cavern",
+      "NameKey": "achievement.cavern",
+      "DescriptionKey": "achievement.cavern.detail",
+      "Critical": true,
+      "Tiers": [
+        {
+          "Threshold": 1,
+          "GemReward": 4,
+          "AchievementPoints": 10
+        }
+      ]
+    },
+    {
+      "Id": "deep",
+      "Category": "Exploration",
+      "Metric": "deep",
+      "NameKey": "achievement.deep",
+      "DescriptionKey": "achievement.deep.detail",
+      "Critical": true,
+      "Tiers": [
+        {
+          "Threshold": 1,
+          "GemReward": 8,
+          "AchievementPoints": 20
+        }
+      ]
+    },
+    {
+      "Id": "biomes",
+      "Category": "Exploration",
+      "Metric": "biomes",
+      "NameKey": "achievement.biomes",
+      "DescriptionKey": "achievement.biomes.detail",
+      "Critical": true,
+      "Tiers": [
+        {
+          "Threshold": 4,
+          "GemReward": 6,
+          "AchievementPoints": 20
+        }
+      ]
+    },
+    {
+      "Id": "crown",
+      "Category": "Combat",
+      "Metric": "crown",
+      "NameKey": "achievement.crown",
+      "DescriptionKey": "achievement.crown.detail",
+      "Critical": true,
+      "Tiers": [
+        {
+          "Threshold": 1,
+          "GemReward": 6,
+          "AchievementPoints": 15
+        }
+      ]
+    },
+    {
+      "Id": "summoning",
+      "Category": "Combat",
+      "Metric": "summoning",
+      "NameKey": "achievement.summoning",
+      "DescriptionKey": "achievement.summoning.detail",
+      "Critical": true,
+      "Tiers": [
+        {
+          "Threshold": 1,
+          "GemReward": 4,
+          "AchievementPoints": 10
+        }
+      ]
+    },
+    {
+      "Id": "camp",
+      "Category": "Exploration",
+      "Metric": "camp",
+      "NameKey": "achievement.camp",
+      "DescriptionKey": "achievement.camp.detail",
+      "Critical": true,
+      "Tiers": [
+        {
+          "Threshold": 1,
+          "GemReward": 4,
+          "AchievementPoints": 10
+        }
+      ]
+    }
+  ],
+  "Newcomer": [
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    12
+  ],
+  "Monthly": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    6,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    8,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    10,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    16
+  ],
+  "Events": []
+}

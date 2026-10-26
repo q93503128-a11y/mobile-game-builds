@@ -5,7 +5,7 @@ namespace Wildfolk.Editor
 {
     public static class IsolatedQaProfile
     {
-        [InitializeOnLoadMethod]private static void BatchIsolation(){if(UnityEngine.Application.isBatchMode)UnityEditor.SessionState.SetString("Wildfolk.QA.Directory",Path.GetFullPath(Path.Combine(UnityEngine.Application.dataPath,"../Captures/Codex_QA_ContentExpansion_Batch")));}
+        [InitializeOnLoadMethod]private static void BatchIsolation(){if(UnityEngine.Application.isBatchMode && string.IsNullOrEmpty(UnityEditor.SessionState.GetString("Wildfolk.QA.Directory","")))UnityEditor.SessionState.SetString("Wildfolk.QA.Directory",Path.GetFullPath(Path.Combine(UnityEngine.Application.dataPath,"../Captures/Codex_QA_ContentExpansion_Batch")));}
         public static string Begin(string label)
         {
             if(EditorApplication.isPlayingOrWillChangePlaymode)throw new InvalidOperationException("Choose the profile before entering Play.");

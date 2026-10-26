@@ -1,6 +1,6 @@
 # Lowfire
 
-Unity **6000.3.19f1 LTS / Universal 2D**, 모바일 Landscape(1920×1080) 탑다운 생존 게임이다. 표시명 Lowfire, 내부 Wildfolk namespace·경로·저장 식별자는 유지한다. 현재 alpha 콘텐츠는 **Item136 / Recipe111 / Save14 / Profile2 / Protocol21**, Workbench I→II→III와 Wood/Stone/Iron/Steel/Diamond 장비다.
+Unity **6000.3.19f1 LTS / Universal 2D**, 모바일 Landscape(1920×1080) 탑다운 생존 게임이다. 표시명 Lowfire, 내부 Wildfolk namespace·경로·저장 식별자는 유지한다. 현재 alpha 콘텐츠는 **Item136 / Recipe111 / Save14 / Profile2 / Protocol22**, Workbench I→II→III와 Wood/Stone/Iron/Steel/Diamond 장비다.
 
 ## 실행과 플레이
 
@@ -47,7 +47,7 @@ Campsite 한 번 보급,Well 공유3회/480초 회복 clean 물,Quarry 기존 �
 
 ## Death / Revive / Respawn
 
-SP 사망은 현장 광고(원정당 성공1회)·Premium Gem(횟수 제한 없음)·무료 Home 복귀로 나뉜다. 현재 실제 광고/유료 지갑은 미연결이며 제품에서는 두 현장 결제 버튼을 사용할 수 없다. Crystal/Gold는 차감하지 않는다. MP는24초 Downed→동료4초 hold 구조(40%HP/2초 보호, 공격 시작시 종료) 또는 Dead→무료 Home이다. 구조는 release/이동/피격/거리/시야/무력화/연결 상실로 중단한다. 전체 down은 각자 Home으로 돌아갈 수 있게 Dead로 확정한다.
+SP 사망은 현장 광고(원정당 성공1회)·Premium Gem(횟수 제한 없음)·무료 Home 복귀로 나뉜다. 실제 광고는 미연결이다. Gem 지갑은 Foundation2의 온라인 계정 경계에 연결되며 외부 backend 설정 전에는 제품 계정 기능이 비활성이다. Crystal/Gold는 차감하지 않는다. MP는24초 Downed→동료4초 hold 구조(40%HP/2초 보호, 공격 시작시 종료) 또는 Dead→무료 Home이다. 구조는 release/이동/피격/거리/시야/무력화/연결 상실로 중단한다. 전체 down은 각자 Home으로 돌아갈 수 있게 Dead로 확정한다.
 
 사망 HomeAnchor는 개인별 초기 WorldMap.Spawn이며 Workbench 방향 안내 Home과 별개다. 소지품·장비·성장·월드를 유지한다. Save12는 죽음·광고 사용·원정·Home을 저장하고 구조 진행/무적은 저장하지 않는다. Protocol19. [감사·외부 비교·거래 경계·검수](validation/death-revive-respawn/REVIEW.md). 다음 Class/Medic/Boss는 이번에 구현하지 않았다.
 
@@ -80,3 +80,9 @@ Google Play Games v2 + 기존 Unity Authentication, 별도 CloudProfile1/계정 
 현재 **PARTIALLY ACTIVE**: 실제 development/alpha 환경, Cloud Code2개, Protected profile/Support index·Access Control을 배포했다. development 실제 서비스76개, Unity SDK 왕복과2프로세스 LAN/인터넷 Relay를 확인했다. Android package는 사용자 확정 `com.gltam.lowfire`다. Google OAuth/PGS/Integrity·실제 Privacy/삭제 URL이 없어 제품 backend Enabled=false와 release gate는 유지한다. [현재 검증과 한계](validation/launch-backend-activation/REVIEW.md), [남은 설정](docs/SETUP_REQUIRED.md). Save14/Profile2/Protocol21/generation3와 인게임 콘텐츠는 유지한다.
 
 2026-10-26 후속: 빈 미설정 PGS Android library를 정리하고 실제 **Development AAB(IL2CPP/ARM64, debug 서명)**를 생성·검사했다. 제품 backend와 Alpha/Production release gate는 계속 비활성/차단이다. [빌드·원인·한계](validation/launch-backend-activation/android-development/REVIEW.md).
+
+## Launch Economy Foundation2 (2026-10-26)
+
+계정 Gem/원장,22family58tier 업적(특수9), 신규 누적7회/월간28회/기간형 출석, Profile 수첩과 badge, Engineer120Gem·SP 부활8Gem을 연결했다. 초기0Gem, 업적213/신규45/월간40Gem. 실제 development 검증과 제품 활성화 제한은 [REVIEW](validation/launch-economy-foundation/REVIEW.md), [경제 정본](docs/ECONOMY.md)을 따른다. Save14/Profile2/generation3 유지, owner 진행 RPC 추가로 Protocol22다. Ads/IAP/Store/Audio/추가 progression은 구현하지 않았다.
+
+Foundation2 현재 상태: **사용자 종료 요청에 따른 검증 중 체크포인트**. 최종 viewport 상세 Text 높이 검사가 남아 있으며 완료 선언 전 [재개 메모](validation/launch-economy-foundation/HANDOFF.md)를 먼저 따른다.

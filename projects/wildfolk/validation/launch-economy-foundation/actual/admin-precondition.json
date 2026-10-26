@@ -1,0 +1,23 @@
+{
+  "classification": "ACTUAL SERVICE",
+  "playerId": "v7L97xRaFH8R68xxAWRZTQY4HriZ",
+  "operator": "economy_qa_operator",
+  "case": "SDK_ECONOMY_QA",
+  "transaction": {
+    "TransactionId": "G-2-1700c2ed6d26",
+    "Sequence": 2,
+    "PlayerId": "v7L97xRaFH8R68xxAWRZTQY4HriZ",
+    "Timestamp": "2026-10-26T06:08:34.278Z",
+    "Delta": 200,
+    "BalanceBefore": 3,
+    "BalanceAfter": 203,
+    "Reason": "admin_adjustment",
+    "SourceId": "admin:880c64090a5245f5bb7b4b36d4b6b776",
+    "OperationId": "880c64090a5245f5bb7b4b36d4b6b776",
+    "BuildChannel": "Development",
+    "MetadataVersion": 1,
+    "Operator": "economy_qa_operator",
+    "CaseReference": "SDK_ECONOMY_QA",
+    "AdjustmentReason": "Isolated actual Unity SDK QA precondition"
+  }
+}

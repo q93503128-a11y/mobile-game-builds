@@ -9,9 +9,9 @@ namespace Wildfolk
         public Text Title,Message,DownLabel,GemLabel;
         public Button Ad,Gem,Home;
         private float nextRefresh;private string lastDown;
-        private void OnEnable(){L.Changed+=Refresh;}
+        private void OnEnable(){L.Changed+=Refresh;EconomyService.Get().Changed+=Refresh;}
         private void Start(){var p=Player;Player=null;if(p!=null)Bind(p);else Refresh();Ad.onClick.AddListener(Reward);Gem.onClick.AddListener(Pay);Home.onClick.AddListener(Respawn);}
-        private void OnDestroy(){L.Changed-=Refresh;if(Player!=null)Player.Changed-=Refresh;Ad.onClick.RemoveListener(Reward);Gem.onClick.RemoveListener(Pay);Home.onClick.RemoveListener(Respawn);}
+        private void OnDestroy(){L.Changed-=Refresh;if(EconomyService.Current!=null)EconomyService.Current.Changed-=Refresh;if(Player!=null)Player.Changed-=Refresh;Ad.onClick.RemoveListener(Reward);Gem.onClick.RemoveListener(Pay);Home.onClick.RemoveListener(Respawn);}
         public void Bind(PlayerDeath player){if(Player!=null)Player.Changed-=Refresh;Player=player;if(Player!=null)Player.Changed+=Refresh;Refresh();}
         public void Reward(){Player?.RewardedRevive();Refresh();}
         public void Pay(){Player?.GemRevive();Refresh();}

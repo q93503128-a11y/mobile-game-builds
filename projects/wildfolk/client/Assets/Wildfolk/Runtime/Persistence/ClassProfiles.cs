@@ -81,8 +81,8 @@ namespace Wildfolk
         public static bool Update(string id,Func<AccountProgression,bool> edit)
         {var d=Store.Read(id);if(!edit(d) || !Store.Write(id,d))return false;Changed?.Invoke();return true;}
         public static bool Select(string id)=>Lobby && Update(LocalId,d=>{if(d.Find(id)?.Owned!=true)return false;d.Selected=id;return true;});
-        public static bool Spend(string id,string node)=>Lobby && Update(LocalId,d=>
-        {var p=d.Find(id);var def=ClassCatalog.Current.Find(id);var n=def==null?null:Array.Find(def.Nodes,x=>x.Id==node);if(p==null || !p.Owned || n==null || p.Nodes.Contains(node) || p.Nodes.Length>=ClassCatalog.Current.Earned(p.XP) || !string.IsNullOrEmpty(n.Prerequisite) && !p.Nodes.Contains(n.Prerequisite))return false;p.Nodes=p.Nodes.Concat(new[]{node}).ToArray();return true;});
+        public static bool Spend(string id,string node){var ok=Lobby && Update(LocalId,d=>
+        {var p=d.Find(id);var def=ClassCatalog.Current.Find(id);var n=def==null?null:Array.Find(def.Nodes,x=>x.Id==node);if(p==null || !p.Owned || n==null || p.Nodes.Contains(node) || p.Nodes.Length>=ClassCatalog.Current.Earned(p.XP) || !string.IsNullOrEmpty(n.Prerequisite) && !p.Nodes.Contains(n.Prerequisite))return false;p.Nodes=p.Nodes.Concat(new[]{node}).ToArray();return true;});if(ok&&Application.isPlaying)EconomyService.Get().Record("class_nodes",1,"node:"+id+":"+node);return ok;}
         public static bool Respec(string id)=>Lobby && Update(LocalId,d=>{var p=d.Find(id);if(p?.Owned!=true)return false;p.Nodes=Array.Empty<string>();return true;});
         public static SaveRepository[] GoldSources=>new[]{SceneFlow.Repository,SaveRepository.MultiplayerDefault()};
         private static PlayerSnapshot Payer(SavedGame game)=>game.IsMultiplayer ? game.Multiplayer.HostId==LocalId?Array.Find(game.Multiplayer.Players,p=>p.Id==LocalId)?.State:null : game.Player;
@@ -98,7 +98,7 @@ namespace Wildfolk
                 // A crash before the world commit leaves only the intent. No debit receipt means no grant.
                 // Clear that intent so a fresh purchase can retry; a committed receipt grants exactly once.
                 if(!(payer.ClassPurchases??Array.Empty<string>()).Contains(pending.Transaction))return Update(LocalId,d=>{if(d.Pending?.Transaction!=pending.Transaction)return false;d.Pending=null;return true;});
-                return Update(LocalId,d=>{if(d.Pending?.Transaction!=pending.Transaction)return false;d.Find(pending.ClassId).Owned=true;d.Pending=null;return true;});
+                var granted=Update(LocalId,d=>{if(d.Pending?.Transaction!=pending.Transaction)return false;d.Find(pending.ClassId).Owned=true;d.Pending=null;return true;});if(granted&&Application.isPlaying)EconomyService.Get().Record("gold_classes",1,"class:"+pending.ClassId);return granted;
             }catch(Exception e)when(e is InvalidDataException || e is IOException || e is ArgumentException || e is InvalidOperationException){return false;}
         }
         public static bool Purchase(string id,SaveGameRules rules)

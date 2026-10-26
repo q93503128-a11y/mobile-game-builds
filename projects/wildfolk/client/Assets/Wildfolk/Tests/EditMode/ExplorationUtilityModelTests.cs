@@ -26,7 +26,7 @@ namespace Wildfolk.Tests
             Assert.That(typeof(SurveyState).GetFields().Any(f=>f.FieldType==typeof(Vector2)),Is.False);
             var a=new SurveyState{Phase=SurveyPhase.Found,Item=23,Bearing=7,Until=42.5,Ready=48.5};using(var w=new FastBufferWriter(128,Allocator.Temp)){w.WriteNetworkSerializable(a);using(var r=new FastBufferReader(w,Allocator.Temp)){r.ReadNetworkSerializable(out SurveyState b);Assert.That(b.Equals(a),Is.True);b.Bearing=0;Assert.That(b.Equals(a),Is.False);}}
             var s=new ExplorationSignal{Point=new Vector2(15,-8),Started=54,Until=74,Range=60};using(var w=new FastBufferWriter(128,Allocator.Temp)){w.WriteNetworkSerializable(s);using(var r=new FastBufferReader(w,Allocator.Temp)){r.ReadNetworkSerializable(out ExplorationSignal b);Assert.That(b.Equals(s),Is.True);}}
-            Assert.That(NetworkProtocol.Current,Is.EqualTo(21));
+            Assert.That(NetworkProtocol.Current,Is.EqualTo(22));
         }
         [Test]public void RegionsDoNotMixUndergroundAndSurfaceOrSeparateCaves()
         {var rules=Resources.Load<SaveGameRules>("SaveGameRules");var map=new WorldMap(rules.World,9472026,3,false);Assert.That(PlayerExplorationUtility.SameRegion(map,Vector2.zero,Vector2.one),Is.True);var a=map.Continental.Caves[0].Origin;Assert.That(PlayerExplorationUtility.SameRegion(map,Vector2.zero,a),Is.False);Assert.That(PlayerExplorationUtility.SameRegion(map,a,a+Vector2.one),Is.True);}

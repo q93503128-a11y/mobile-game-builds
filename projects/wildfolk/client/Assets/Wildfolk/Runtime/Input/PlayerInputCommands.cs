@@ -11,6 +11,7 @@ namespace Wildfolk
         public PlayerLocomotion Locomotion;
         public IPlayerMovementAuthority MovementAuthority {get;set;}
         public IPlayerCombatAuthority CombatAuthority {get;set;}
+        private void Start(){if(GetComponent<AchievementObserver>()==null)gameObject.AddComponent<AchievementObserver>();}
         public bool AllowInventory=true,AllowPause=true;
         public bool IsScouting=>GetComponent<PlayerTelescope>()!=null && GetComponent<PlayerTelescope>().IsViewing;
         public bool Dash()=>!IsScouting && (MovementAuthority==null ? Locomotion.TryDash() : MovementAuthority.Dash());

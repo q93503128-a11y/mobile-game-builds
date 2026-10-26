@@ -26,7 +26,7 @@ namespace Wildfolk
             deathPresented=true;for(var i=0;i<simulation.Length;i++)if(simulation[i]!=null){simulationStates[i]=simulation[i].enabled;simulation[i].enabled=false;}
             var body=GetComponent<Rigidbody2D>();if(body!=null)body.linearVelocity=Vector2.zero;
             GetComponent<HitFeedback>()?.BeginDeath();
-            if(Health.LastAttacker!=null){var reward=Health.LastAttacker.GetComponent<PlayerProgression>();if(reward!=null)reward.GameplayReward(Table.Experience,Table.Gold,rewardReceipt);}
+            if(Health.LastAttacker!=null){var reward=Health.LastAttacker.GetComponent<PlayerProgression>();if(reward!=null){reward.GameplayReward(Table.Experience,Table.Gold,rewardReceipt);EconomyTelemetry.Killed(reward,gameObject,rewardReceipt);}}
             StartCoroutine(RemoveDead());
         }
         private IEnumerator RemoveDead(){yield return new WaitForSeconds(HitFeedback.DeathDuration);PrefabPool.Release(gameObject);}

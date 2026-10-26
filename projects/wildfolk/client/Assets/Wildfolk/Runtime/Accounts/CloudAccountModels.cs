@@ -20,5 +20,5 @@ namespace Wildfolk
     }
     [Serializable]public sealed class AccountReply {public bool ok,existing,alphaRecorded,deletionPending;public string error,correlationId,ticketId,deletionId;public CloudAccountProfile profile;public AccountEntitlement[] entitlements;}
     [Serializable]public sealed class FeedbackDiagnostic
-    {public string appVersion,channel,platform,deviceModel,os,locale,saveVersion="14",profileVersion="2",protocolVersion="21",scene,sessionId,lastErrorCode,cloudState;}
+    {public string appVersion,channel,platform,deviceModel,os,locale,saveVersion="14",profileVersion="2",protocolVersion="22",scene,sessionId,lastErrorCode,cloudState,lastGemTransaction,lastAchievementClaim,lastAttendanceClaim,economyVersion="1";}
 }

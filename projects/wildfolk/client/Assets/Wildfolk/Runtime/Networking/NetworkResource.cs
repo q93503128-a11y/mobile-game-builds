@@ -48,7 +48,7 @@ namespace Wildfolk
         {
             if(!IsSpawned || !IsServer || Broken)return;Broken=true;
             NetworkGroundItem.Drop(node.Definition.DropItem,node.Definition.DropCount,transform.position,null,false);
-            foreach(var box in hitboxes)box.enabled=false;Publish();StartCoroutine(Remove());
+            EconomyTelemetry.Record(node.Health.LastAttacker,"harvests");foreach(var box in hitboxes)box.enabled=false;Publish();StartCoroutine(Remove());
         }
         private IEnumerator Remove(){yield return null;if(IsSpawned && IsServer)NetworkObject.Despawn();}
         public override void OnNetworkDespawn(){node.Health.Changed-=Publish;node.Health.Damaged-=Hit;State.OnValueChanged-=Changed;}

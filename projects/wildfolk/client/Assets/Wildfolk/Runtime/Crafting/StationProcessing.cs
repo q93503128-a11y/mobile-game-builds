@@ -60,11 +60,11 @@ namespace Wildfolk
         {
             var authority=player.GetComponent<NetworkFacilityInteractor>();if(authority!=null && !authority.IsApplying)return authority.Process(FacilityOperation.Collect,this);
             if(!SimulationAuthority.Allows(this))return false;
-            if(Sequential){var accepted=queue.Collect(player.Model);if(accepted){queue.Advance(0,Station.Definition.ProcessingSpeed,Station.Definition.OutputCapacity);Notify();}return accepted;}
+            if(Sequential){var accepted=queue.Collect(player.Model);if(accepted){queue.Advance(0,Station.Definition.ProcessingSpeed,Station.Definition.OutputCapacity);Notify();EconomyTelemetry.Record(player,"crafts");}return accepted;}
             if(!IsReady) return false;
             if(player.Model.GetExchangeStatus(Array.Empty<ItemAmount>(),Recipe.Result,OutputCount,Recipe.ResultCharges,Recipe.ResultQuality)!=ExchangeResult.Success) return false;
             player.Model.TryExchange(Array.Empty<ItemAmount>(),Recipe.Result,OutputCount,Recipe.ResultCharges,Recipe.ResultQuality);
-            Recipe=null;owner=null;Notify();return true;
+            EconomyTelemetry.Crafted(player,Recipe.Result);Recipe=null;owner=null;Notify();return true;
         }
         private void ReleaseCargo()
         {

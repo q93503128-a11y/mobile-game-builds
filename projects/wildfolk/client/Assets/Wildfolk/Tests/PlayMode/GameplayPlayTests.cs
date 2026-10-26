@@ -241,7 +241,7 @@ namespace Wildfolk.Tests
         [UnityTest] public IEnumerator DeathCanReturnHomeThroughActualUIButton()
         {
             var before=inventory.Model.Capture();var priorXp=player.GetComponent<PlayerProgression>().Experience;
-            player.GetComponent<Health>().ApplyDamage(player.GetComponent<Health>().Maximum);yield return null;
+            player.GetComponent<PlayerClass>()?.RestoreCooldown(360);player.GetComponent<Health>().ApplyDamage(player.GetComponent<Health>().Maximum,true);yield return null;
             Assert.That(Object.FindFirstObjectByType<DeathHud>().DeadView.activeSelf,Is.True);
             var button=Object.FindFirstObjectByType<DeathHud>().Home;
             yield return Click(button);yield return null;yield return null;

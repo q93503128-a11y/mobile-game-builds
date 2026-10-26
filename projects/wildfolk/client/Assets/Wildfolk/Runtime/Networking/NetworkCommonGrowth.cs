@@ -17,6 +17,8 @@ namespace Wildfolk
         private void Changed(FixedString4096Bytes old,FixedString4096Bytes next){if(!IsServer && IsOwner)Apply(next);}
         private void Apply(FixedString4096Bytes value)
         {if(value.Length==0)return;var state=JsonUtility.FromJson<NetworkGrowthSnapshot>(value.ToString());progression.Restore(state.Growth,state.XP,state.Gold);GetComponent<PlayerLocomotion>().Stamina.SetMaximum(GetComponent<PlayerLocomotion>().Definition.MaximumStamina+GetComponent<CharacterStats>().StaminaBonus);}
+        public void EmitEconomy(string metric,int amount,string source){if(IsServer&&IsSpawned)EconomyProgressRpc(metric,amount,source);}
+        [Rpc(SendTo.Owner,InvokePermission=RpcInvokePermission.Server)]private void EconomyProgressRpc(string metric,int amount,string source){if(IsOwner)EconomyService.Get().Record(metric,amount,source);}
         public bool Invest(int index)
         {if(!IsSpawned || !IsOwner)return false;if(IsServer)return Execute(++sequence,index);InvestRpc(++sequence,index);return true;}
         [Rpc(SendTo.Server,InvokePermission=RpcInvokePermission.Owner)]private void InvestRpc(ulong request,int index,RpcParams rpc=default){if(rpc.Receive.SenderClientId==OwnerClientId)Execute(request,index);}

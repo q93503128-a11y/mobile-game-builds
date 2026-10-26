@@ -1,0 +1,160 @@
+{
+  "method": "Explicit low-frequency play assumptions, not observed play/retention/earnings. Crown RNG is excluded; co-op milestones require co-op. Hour scenarios use spread-out days as stated; 30/90-day values do not imply those hours are required.",
+  "totals": {
+    "families": 22,
+    "tiers": 58,
+    "special": 9,
+    "achievementGem": 213,
+    "achievementPoints": 785,
+    "newcomerGem": 45,
+    "monthlyGem": 40,
+    "engineerCost": 120,
+    "reviveCost": 8
+  },
+  "scenarios": [
+    {
+      "scenario": "30m",
+      "playHoursAssumed": 0.5,
+      "calendarDays": 1,
+      "achievement": 7,
+      "newcomer": 3,
+      "monthly": 0,
+      "total": 10,
+      "revivesIfNoUnlock": 1,
+      "engineerProgress": 0.083,
+      "afterEngineer": 0,
+      "revivesAfterEngineer": 0
+    },
+    {
+      "scenario": "1h",
+      "playHoursAssumed": 1,
+      "calendarDays": 1,
+      "achievement": 27,
+      "newcomer": 3,
+      "monthly": 0,
+      "total": 30,
+      "revivesIfNoUnlock": 3,
+      "engineerProgress": 0.25,
+      "afterEngineer": 0,
+      "revivesAfterEngineer": 0
+    },
+    {
+      "scenario": "3h",
+      "playHoursAssumed": 3,
+      "calendarDays": 2,
+      "achievement": 54,
+      "newcomer": 7,
+      "monthly": 0,
+      "total": 61,
+      "revivesIfNoUnlock": 7,
+      "engineerProgress": 0.508,
+      "afterEngineer": 0,
+      "revivesAfterEngineer": 0
+    },
+    {
+      "scenario": "5h",
+      "playHoursAssumed": 5,
+      "calendarDays": 4,
+      "achievement": 106,
+      "newcomer": 18,
+      "monthly": 0,
+      "total": 124,
+      "revivesIfNoUnlock": 15,
+      "engineerProgress": 1,
+      "afterEngineer": 4,
+      "revivesAfterEngineer": 0
+    },
+    {
+      "scenario": "10h",
+      "playHoursAssumed": 10,
+      "calendarDays": 7,
+      "achievement": 141,
+      "newcomer": 45,
+      "monthly": 6,
+      "total": 192,
+      "revivesIfNoUnlock": 24,
+      "engineerProgress": 1,
+      "afterEngineer": 72,
+      "revivesAfterEngineer": 9
+    },
+    {
+      "scenario": "20h",
+      "playHoursAssumed": 20,
+      "calendarDays": 14,
+      "achievement": 202,
+      "newcomer": 45,
+      "monthly": 14,
+      "total": 261,
+      "revivesIfNoUnlock": 32,
+      "engineerProgress": 1,
+      "afterEngineer": 141,
+      "revivesAfterEngineer": 17
+    },
+    {
+      "scenario": "30d-month-aligned",
+      "playHoursAssumed": 30,
+      "calendarDays": 30,
+      "achievement": 202,
+      "newcomer": 45,
+      "monthly": 40,
+      "total": 287,
+      "revivesIfNoUnlock": 35,
+      "engineerProgress": 1,
+      "afterEngineer": 167,
+      "revivesAfterEngineer": 20
+    },
+    {
+      "scenario": "90d-month-aligned",
+      "playHoursAssumed": 90,
+      "calendarDays": 90,
+      "achievement": 207,
+      "newcomer": 45,
+      "monthly": 120,
+      "total": 372,
+      "revivesIfNoUnlock": 46,
+      "engineerProgress": 1,
+      "afterEngineer": 252,
+      "revivesAfterEngineer": 31
+    },
+    {
+      "scenario": "30d-start-Oct26",
+      "playHoursAssumed": 30,
+      "calendarDays": 30,
+      "achievement": 202,
+      "newcomer": 45,
+      "monthly": 24,
+      "total": 271,
+      "revivesIfNoUnlock": 33,
+      "engineerProgress": 1,
+      "afterEngineer": 151,
+      "revivesAfterEngineer": 18
+    },
+    {
+      "scenario": "90d-start-Oct26",
+      "playHoursAssumed": 90,
+      "calendarDays": 90,
+      "achievement": 207,
+      "newcomer": 45,
+      "monthly": 104,
+      "total": 356,
+      "revivesIfNoUnlock": 44,
+      "engineerProgress": 1,
+      "afterEngineer": 236,
+      "revivesAfterEngineer": 29
+    }
+  ],
+  "conservativeAttendance20Claims": {
+    "30": 14,
+    "90": 52
+  },
+  "adsAndIapNow": 0,
+  "futureExtension": "Trusted verified provider receipt -> internal server grant -> same CAS ledger; no client grant, pricing, ad SDK or billing implemented. Each extra trusted Gem grant adds to the same supply model; no assumed ad revenue or purchase conversion.",
+  "requestEstimate": {
+    "batchSeconds": 300,
+    "30mProgressCalls": 6,
+    "1hProgressCalls": 12,
+    "menuReadAndClaimsAssumed": 6,
+    "oneEconomyCallTypical": "1 CloudCode + 1 Auth GET + 1 Private policy/config batch GET + 1 account GET + 2 economy GET + optional 1 CAS write. First creation adds guarded creation reads/writes. Alpha/Production progress adds actual Integrity verification. CAS/client retry bounded3 each",
+    "notIncluded": "Real-world idle/menu patterns, latency, multi-device concurrency and operator access are unmeasured."
+  }
+}

@@ -74,7 +74,7 @@ namespace Wildfolk
             var manager=NetworkManager.Singleton;if(!manager.SpawnManager.SpawnedObjects.TryGetValue(result.CreatureId,out var creature))return;
             foreach(var item in result.Items)NetworkGroundItem.Drop(item.Item,item.Count,creature.transform.position,null,false);
             if(manager.SpawnManager.SpawnedObjects.TryGetValue(result.AttackerId,out var attacker) && attacker.GetComponent<NetworkPlayer>()!=null)
-                foreach(var player in NetworkPlayer.Active)if(player.Health.IsAlive && manager.ConnectedClients.ContainsKey(player.OwnerClientId) && Vector2.Distance(player.transform.position,creature.transform.position)<=RewardRadius)player.GetComponent<PlayerProgression>().GameplayReward(result.Experience,result.Gold,rewardRun+":"+DeathCount);
+                foreach(var player in NetworkPlayer.Active)if(player.Health.IsAlive && manager.ConnectedClients.ContainsKey(player.OwnerClientId) && Vector2.Distance(player.transform.position,creature.transform.position)<=RewardRadius){player.GetComponent<PlayerProgression>().GameplayReward(result.Experience,result.Gold,rewardRun+":"+DeathCount);EconomyTelemetry.Killed(player,creature.gameObject,rewardRun+":"+DeathCount);}
             LootGenerated?.Invoke(result);
         }
         private void OnDestroy()

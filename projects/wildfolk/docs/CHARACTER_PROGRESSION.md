@@ -35,7 +35,7 @@ CharacterStats는PersistentHealthBonus(Skill)와일시Meal을구분해합친다.
 
 ## Character Progression + Class Foundation (2026-10-22)
 
-일반 Level/XP/Rank/잔여 Point는 월드 캐릭터 성장이다. 별도 profile Schema1은 여섯 Class의 소유/XP/선택/노드/구매 intent를 보존한다. 처치별 receipt는 영구 저장하지 않는다. Survivor는 기본 소유, Warrior/Hunter/Medic/Explorer는 기존 저장 월드 Gold 각60, Engineer는 PremiumGem 공급자·가격 미확정으로 production 구매 불가다. 여러 월드 잔액을 합산하지 않는다. local checksum/backup은 인증·위조 방지가 아니다.
+일반 Level/XP/Rank/잔여 Point는 월드 캐릭터 성장이다. 별도 profile Schema1은 여섯 Class의 소유/XP/선택/노드/구매 intent를 보존한다. 처치별 receipt는 영구 저장하지 않는다. Survivor는 기본 소유, Warrior/Hunter/Medic/Explorer는 기존 저장 월드 Gold 각60, Engineer는 온라인 계정 Gem120으로 해금하며 외부 backend 설정 전 제품 계정 구매는 비활성이다. 여러 월드 잔액을 합산하지 않는다. local checksum/backup은 인증·위조 방지가 아니다.
 
 Home 책 안의 직업 기록(Host/Join 연결 전 포함)에서 선택·투자·무료 재분배한다. admission/world 진입 때 loadout을 잠그고 같은 세션 재접속은 Host lock을 복원한다. 일반 gameplay XP1에 Class XP1이며 개발자 Reward는 Class XP를 주지 않는다. 로컬 SP/Host의 클래스별 XP를 보존한다. 원격 미인증 참가자는 기본 Survivor/XP0/노드0에서 시작하며 원격 Class XP는 해당 Host 세션에만 유지된다. 누적50/180/400/750/1200/1800에서 현재6Point, 데이터 milestone 수로 계산하며 코드 상한6은 없다. branch1→2→3 선행, 각 노드1Point, 현재9개 중6개를 선택한다.
 
@@ -127,3 +127,7 @@ Head/Body/Utility와 별개 Accessory1칸을 공유 PlayerEquipment transaction�
 ## Launch Backend Foundation1 · Class account mirror
 
 6Class/54node와 월드 공용Level/Skill/Gold는 유지한다. 일회성 Profile2 import는 prelaunch local unverified이며 미래 Gem/IAP/Entitlement 획득 증명이 아니다. 기존 Cloud profile은 별도 account cache로 받아 guest 파일을 덮지 않는다. 이후 host-local Class snapshot은 canonical validation/정확한 ClassRevision/비감소 XP/ownership 보존으로 명시 sync한다. PremiumGem Class의 새 ownership 및 account entitlement는 이 snapshot 요청으로 지급하지 않는다. Cloud conflict에서 max/union/자동 overwrite는 하지 않는다. 원격 MP admission은 기존 검증 경계이며 Client cloud claim만으로 권위를 얻지 않는다. [운영·신뢰 경계](BACKEND_OPERATIONS.md).
+
+## Launch Economy Foundation2 · 현재 경계
+
+Engineer 실제 가격120Gem, 기본 잔액0/업적·출석으로 획득 가능. 서버 ledger의 class_unlock receipt가 premium ownership 정본이며 Profile2/import/CommitClassProgress는 새 유료 소유를 증명하지 않는다. 구매 후 Account Sync가 별도 cloud Class cache를 받는다. 원격 MP admission의 Survivor/session-only 한계와 기존 공용 성장/Gold4직업60은 유지한다. [경제 전체 규칙](ECONOMY.md) · [실행·검증](../validation/launch-economy-foundation/REVIEW.md).

@@ -33,7 +33,7 @@ namespace Wildfolk
             if(previous==item)return false;
             var accepted=previous==null ? Inventory.Model.ConsumeSlot(index,item,1) : Inventory.Model.ReplaceConsumedSlot(index,item,previous);
             if(!accepted){PlayerFeedback.ShowKey("feedback.bag_full");return false;}
-            if(slot==ArmorSlot.Accessory)Accessory=item;else if(slot==ArmorSlot.Utility)Utility=item;else if(slot==ArmorSlot.Head)HeadArmor=item;else BodyArmor=item;RefreshArmor();return true;
+            if(slot==ArmorSlot.Accessory)Accessory=item;else if(slot==ArmorSlot.Utility)Utility=item;else if(slot==ArmorSlot.Head)HeadArmor=item;else BodyArmor=item;RefreshArmor();if(item.Id=="undead_kings_crown")EconomyTelemetry.Record(this,"crown");return true;
         }
         public bool Unequip(ArmorSlot slot,int destination=-1)
         {

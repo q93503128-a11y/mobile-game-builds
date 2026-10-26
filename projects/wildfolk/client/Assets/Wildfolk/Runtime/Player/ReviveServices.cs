@@ -12,9 +12,9 @@ namespace Wildfolk
     {
         bool Available {get;}
         long Balance {get;}
-        // Provider MUST atomically debit + durably commit the revive, or neither.
+        // Synchronous local providers debit and durably commit together. Remote providers use IAsyncPremiumCurrencyWallet.
         // Transaction keys are persistent and idempotent across callback/retry/reload.
-        // Future remote provider must reconcile its receipt with the world commit before success.
+        // The async remote path reconciles reservations with the world save and compensates known failures.
         bool TryCommitRevive(string transaction,int cost,Func<bool> commit);
     }
     public static class ReviveServices
@@ -29,6 +29,7 @@ namespace Wildfolk
         // No automatic development success and no release fallback grants.
         public static IRewardedReviveService Rewarded {get;private set;}=disabled;
         public static IPremiumCurrencyWallet Wallet {get;private set;}=disabled;
+internal static void InstallCloud(IPremiumCurrencyWallet wallet){Wallet=wallet??disabled;}
 #if UNITY_EDITOR || DEVELOPMENT_BUILD
         public static void SetDevelopmentProviders(IRewardedReviveService ad,IPremiumCurrencyWallet wallet)
         {Rewarded=ad??disabled;Wallet=wallet??disabled;}

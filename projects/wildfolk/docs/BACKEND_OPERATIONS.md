@@ -4,7 +4,7 @@
 
 Foundation1.5는 development/alpha 실제 환경에 서버 기반을 배포했다. development 실제 서비스76개, Unity SDK account 왕복, 실제2프로세스 인터넷 Relay를 검증했다. 실제 Google 로그인/Integrity/URL/Android release 설정은 미완료이며 Resources/BackendSettings.json Enabled=false를 유지한다. [활성화 검증](../validation/launch-backend-activation/REVIEW.md), [외부 설정](SETUP_REQUIRED.md).
 
-정본 서버는 `backend/src/`, Admin 도구는 `backend/tools/admin.cjs`, 접근 정책은 `backend/access/lowfire.ac`다. `node backend/tools/sync-catalog.cjs`는 기존 Classes.json에서 최소 검증 표를 생성한다. npm ci 후 `node backend/tools/bundle.cjs`가 Cloud Code scripts `LowfireAccount`와 `LowfireIntegrityVerify`를 `backend/deploy/`에 만든다. 생성된 배포물은 Git에 중복 저장하지 않는다.
+정본 서버는 `backend/src/`, Admin 도구는 `backend/tools/admin.cjs`, 접근 정책은 `backend/access/lowfire.ac`다. `node backend/tools/sync-catalog.cjs`는 기존 Classes.json에서 최소 검증 표를 생성한다. npm ci 후 `node backend/tools/bundle.cjs`가 Cloud Code scripts `LowfireAccount`/`LowfireIntegrityVerify`/`LowfireEconomy`를 `backend/deploy/`에 만든다. 생성된 배포물은 Git에 중복 저장하지 않는다.
 
 ## Identity와 기존 Relay
 
@@ -87,7 +87,7 @@ Account UI 경고→재확인→인증/온라인→서버 요청 ID. UI는 요�
 
 로컬 world는 삭제하지 않는다. Sign Out은 현재 계정 연결/선택을 해제하며 원본 guest와 world를 보존한다. 요청 접수 후 현재 기기의 계정 캐시/선택 pointer를 정리하고 현재 SDK profile token/session을 지운다. 원래 별도 guest와 local world는 보존한다. filesystem 실패는 deletion marker로 재선택을 막고 pending/local_cleanup_failed로 남긴다. 다른 오프라인 기기/OS 백업을 원격에서 지울 수 없으므로 웹 완료 통지·실기기 검증은 출시 전 확정해야 한다. UGS Authentication 삭제는 project 범위이므로 환경 하나만 정리한 후 실행하면 안 된다.
 
-현재 Privacy/웹 삭제 URL은 비어 있으며 가짜 링크를 넣지 않았다. URL·Dashboard·실기기 end-to-end 검증이 끝나기 전 공개 출시할 수 없다. 수집 inventory: UGS identity(UGS가 관리), account snapshot/entitlement/import, 선택적 support text/diagnostics, bounded audit. 현재 실제 Analytics/Gem/Ads/IAP 데이터는 수집하지 않는다. [설정](SETUP_REQUIRED.md), [출시 차단 항목](RELEASE_BLOCKERS.md).
+현재 Privacy/웹 삭제 URL은 비어 있으며 가짜 링크를 넣지 않았다. URL·Dashboard·실기기 end-to-end 검증이 끝나기 전 공개 출시할 수 없다. 수집 inventory: UGS identity(UGS가 관리), account snapshot/entitlement/import, 선택적 support text/diagnostics, bounded audit. Foundation2는 economic ledger/achievement/attendance 데이터를 추가한다. Analytics/Ads/IAP SDK 데이터는 수집하지 않는다. [설정](SETUP_REQUIRED.md), [출시 차단 항목](RELEASE_BLOCKERS.md).
 
 ## Foundation1.5 실제 배포 경계
 
@@ -100,3 +100,7 @@ Cloud Code JS에는 Node crypto가 없어 초기 배포가 실패했다. 정본�
 서버 audit는 account.created, cloud.profile_created/imported, support.submitted, cloud.conflict, cloud.profile_updated, account.deletion_requested, alpha.enrolled 및 security.suspicious를 공통 schema에 기록한다. account.linked/cloud.write_failed의 client report는 서버 확인 사실과 구분한다. migration plan은 candidate/duplicate/already-granted/target count와 결정적 operationId를 제공한다.
 
 새 dependency의 RSA verification advisory는 현재 호출하지 않는 API의 문제이며 npm audit 결과를 숨기지 않는다. [Release blockers](RELEASE_BLOCKERS.md), [third-party notices](../backend/THIRD_PARTY_NOTICES.md). user save/Profile2와 Host-owned Continue/후발 Join/Host migration 없음 정책은 그대로다.
+
+## Launch Economy Foundation2 · 현재 경계
+
+LowfireEconomy는 lf_economy의 지급/차감/Claim/출석/Engineer/부활 reservation·compensation을 같은 CAS로 확정한다. Private economy_config Events=[]가 실제 non-production에 배포된다. admin.cjs economy-lookup/economy-adjust(reason/operator/case/operation 필수, default dry-run) 추가. ledger는 append-only8192행/root3MiB에서 fail-closed, audit64/op256/devices64/critical4096. 삭제 inventory에 lf_economy와 계정 economic cache/intent를 포함한다. Ads/IAP 이전 archive/용량/비용 검증 필요. provider/URL/실기기 미설정으로 제품 Enabled=false 유지. [경제 전체 규칙](ECONOMY.md) · [실행·검증](../validation/launch-economy-foundation/REVIEW.md).

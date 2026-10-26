@@ -268,7 +268,7 @@ Meal3종/150초/동시1개/교체,공용4초다.Hunter MaxHP+8(HPheal0),Forager 
 
 ## Death / Revive 초기값
 
-정본 Data/Revive.asset: Downed24초, hold4초, range2.6m, 입력 lease0.5초, 현장/동료40%HP, 보호2초(공격 시작시 종료), Home100%HP. Home/현장 모두 기존 Hunger/Thirst/Stamina 보존, 기존 사망 Meal/Treatment reset 유지. 광고는 원정당 성공1회, Gem 무제한/고정 config 가격이며 현재 ReviveGemCost0은 **미확정·비활성**이다. Editor QA7 Gem은 제품 가격이 아니다. 신규 Item/Recipe/Crystal/Gold 비용 없음. [TTK 근거와 배제 대안](../validation/death-revive-respawn/REVIEW.md).
+정본 Data/Revive.asset: Downed24초, hold4초, range2.6m, 입력 lease0.5초, 현장/동료40%HP, 보호2초(공격 시작시 종료), Home100%HP. Home/현장 모두 기존 Hunger/Thirst/Stamina 보존, 기존 사망 Meal/Treatment reset 유지. 광고는 원정당 성공1회, Gem 무제한/고정 config 가격이며 현재 ReviveGemCost8이며 온라인 계정 지갑이 필요하다. Editor QA7 Gem은 제품 가격이 아니다. 신규 Item/Recipe/Crystal/Gold 비용 없음. [TTK 근거와 배제 대안](../validation/death-revive-respawn/REVIEW.md).
 
 ## Class Foundation Alpha 수치
 
@@ -294,3 +294,7 @@ Metabolism5Rank×5%=최대25% needs drain감소, FieldCare3Rank×10%=받는Medic
 |Crown|20%,HP≤35%에서 이동+8%/armor·class 후 incoming×0.90, offense0|
 
 Steel Head3+Body5에서 기본100HP 기준 피해18/33/13/18/28. 방어 없는100HP에도 최대41이며 한 방 즉사가 아니다. Diamond Head4+Body6은 같은 피해를 더 줄인다. SteelSword43/0.38=113.16, Diamond52/0.38=136.84는 순수 공격 이론 DPS다. 공격 duration0.28은 cooldown에 더하지 않는다. 실제 clear 측정과 조작/클래스/회복 조건은 보스 REVIEW를 따른다. Dash에는 무적이 없다. 실제 mobile 손맛/장기 경제의 출시 밸런스 합격을 주장하지 않는다.
+
+## Launch Economy Foundation2 · 현재 경계
+
+초기0Gem, 전체 업적213Gem/785Point, 신규7회45Gem, 월간7/14/21/28회6/8/10/16Gem(총40). Engineer120Gem, SP현장부활8Gem, 무료Home 유지. 5h/4일124,30일 월초정렬287,90일372Gem은 명시적 행동/출석 가정에 따른 모델이며 실측이 아니다. 세부 표·출석 일반 slot 정책은 ECONOMY 정본을 따른다. [경제 전체 규칙](ECONOMY.md) · [실행·검증](../validation/launch-economy-foundation/REVIEW.md).

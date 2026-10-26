@@ -1,0 +1,38 @@
+{
+  "metadata": {
+    "Name": "LowfireEconomy",
+    "Language": "JS",
+    "Type": "API",
+    "Versions": [
+      1
+    ],
+    "ActiveScript": {
+      "Version": 1,
+      "DatePublished": "2026-10-26T05:26:16",
+      "Params": [
+        {
+          "type": "STRING",
+          "name": "operation",
+          "required": true
+        },
+        {
+          "type": "STRING",
+          "name": "channel",
+          "required": true
+        },
+        {
+          "type": "STRING",
+          "name": "buildVersion",
+          "required": true
+        },
+        {
+          "type": "JSON",
+          "name": "input",
+          "required": false
+        }
+      ]
+    }
+  },
+  "sha256": "6db4075684c0283093770ec33eadb3deee8f3abb6e735533611e5d897db974dd",
+  "bytes": 66838
+}

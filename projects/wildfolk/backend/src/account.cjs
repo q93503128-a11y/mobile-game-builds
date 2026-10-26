@@ -27,7 +27,7 @@ function localProfile(raw){
 }
 function newClass(){return {Version:2,Selected:'survivor',Classes:catalog.Classes.map(c=>({Id:c.Id,Owned:c.Price===0&&c.Currency==='Gold',XP:0,Nodes:[]}))};}
 function diagnostics(value){
- const allowed=['appVersion','channel','platform','deviceModel','os','locale','saveVersion','profileVersion','protocolVersion','scene','sessionId','lastErrorCode','cloudState'];
+ const allowed=['appVersion','channel','platform','deviceModel','os','locale','saveVersion','profileVersion','protocolVersion','scene','sessionId','lastErrorCode','cloudState','lastGemTransaction','lastAchievementClaim','lastAttendanceClaim','economyVersion'];
  const out={};for(const k of allowed){let v=value?.[k];if(typeof v!=='string'&&typeof v!=='number')continue;v=String(v).slice(0,128);
   // Never forward paths, credentials, email, bearer strings or opaque token-like data.
   if(/[\\/]|@|bearer|token|secret|credential|private.key|[A-Za-z0-9_-]{40,}/i.test(v))continue;out[k]=v;
@@ -43,7 +43,7 @@ function validateProfile(p){
  requireThat(p?.Schema===1&&safeId(p.PlayerId)&&typeof p.SupportId==='string'&&/^LF-(?:[A-F0-9]{4}-){4}[A-F0-9]{4}$/.test(p.SupportId)&&Number.isSafeInteger(p.Revision)&&p.Revision>=0&&Number.isSafeInteger(p.ClassRevision)&&p.ClassRevision>=0,'invalid_cloud_schema');
  localProfile(p.ClassProfile);requireThat(p.Import?.Closed===true&&p.Entitlements.length<=256&&p.Tickets.length<=20&&p.Audit.length<=64&&p.Operations.length<=512,'invalid_cloud_schema');return p;
 }
-function view(p){return {Schema:p.Schema,PlayerId:p.PlayerId,SupportId:p.SupportId,CreatedAt:p.CreatedAt,ProviderLinked:p.ProviderLinked,Revision:p.Revision,ClassRevision:p.ClassRevision,ClassProfile:clone(p.ClassProfile),AlphaRecorded:!!p.Alpha,Entitlements:clone(p.Entitlements),DeletionPending:!!p.Deletion};}
+function view(p,ctx){const profile={Schema:p.Schema,PlayerId:p.PlayerId,SupportId:p.SupportId,CreatedAt:p.CreatedAt,ProviderLinked:p.ProviderLinked,Revision:p.Revision,ClassRevision:p.ClassRevision,ClassProfile:clone(p.ClassProfile),AlphaRecorded:!!p.Alpha,Entitlements:clone(p.Entitlements),DeletionPending:!!p.Deletion};if(ctx?.premiumVerified){const engineer=profile.ClassProfile.Classes.find(c=>c.Id==='engineer');engineer.Owned=ctx.engineerOwned===true;if(!engineer.Owned){engineer.XP=0;engineer.Nodes=[];if(profile.ClassProfile.Selected==='engineer')profile.ClassProfile.Selected='survivor';}}return profile;}
 function audit(p,ctx,type,operationId,result,reason,now){
  p.Audit.push({eventId:digest([ctx.correlationId,operationId,type,p.Audit.length]),playerId:ctx.playerId,supportId:p.SupportId,timestamp:now,correlationId:ctx.correlationId,buildVersion:/^[0-9]+(?:\.[0-9]+){0,3}$/.test(ctx.buildVersion)?ctx.buildVersion:'unlisted',buildChannel:ctx.channel,eventType:type,operationId,result,reason});p.Audit=p.Audit.slice(-64);
 }
@@ -68,11 +68,11 @@ class AccountBackend {
     requireThat(!input.legacy||this.policy.allowLegacyImport&&ctx.channel!=='Production','import_closed');
     if(input.legacy)localProfile(input.legacy);
     const created=await this.store.create(ctx.playerId,()=>{const p=makeProfile(ctx,now,input.legacy);audit(p,ctx,'account.created',input.operationId,'ok','',now);audit(p,ctx,input.legacy?'cloud.profile_imported':'cloud.profile_created',input.operationId,'ok','',now);return p;});
-    return {ok:true,profile:view((await this.store.read(ctx.playerId)).value),existing:!created.created};
+    return {ok:true,profile:view((await this.store.read(ctx.playerId)).value,ctx),existing:!created.created};
    }
    if(operation==='GetAccountProfile'||operation==='GetEntitlements'){
     const record=await this.store.read(ctx.playerId);requireThat(record,'profile_missing');const p=validateProfile(record.value);
-    return operation==='GetEntitlements'?{ok:true,entitlements:clone(p.Entitlements)}:{ok:true,profile:view(p)};
+    return operation==='GetEntitlements'?{ok:true,entitlements:clone(p.Entitlements)}:{ok:true,profile:view(p,ctx)};
    }
 
    const result=await this.mutate(ctx,operation,input.operationId,input,p=>this.apply(p,ctx,operation,input,now));return {ok:!result.error,...result};
@@ -100,7 +100,7 @@ class AccountBackend {
   if(operation==='ImportProfile2'){flag(p,'invalid_migration_attempt');throw new Rejected('import_closed');}
   if(operation==='CommitClassProgress'){
    requireThat(input.baseRevision===p.ClassRevision,'cloud_conflict');const next=localProfile(input.classProfile);
-   for(const c of next.Classes){const old=p.ClassProfile.Classes.find(x=>x.Id===c.Id),def=catalog.Classes.find(x=>x.Id===c.Id);requireThat((!old.Owned||c.Owned)&&c.XP>=old.XP,'invalid_class_change');requireThat(def.Currency!=='PremiumGem'||c.Owned===old.Owned,'premium_ownership_forbidden');}
+   for(const c of next.Classes){const old=p.ClassProfile.Classes.find(x=>x.Id===c.Id),def=catalog.Classes.find(x=>x.Id===c.Id);if(def.Currency==='PremiumGem'&&ctx.premiumVerified){requireThat(!c.Owned||ctx.engineerOwned,'premium_ownership_forbidden');requireThat(c.XP>=(ctx.engineerOwned?old.XP:0),'invalid_class_change');c.Owned=ctx.engineerOwned===true;}else{requireThat((!old.Owned||c.Owned)&&c.XP>=old.XP,'invalid_class_change');requireThat(def.Currency!=='PremiumGem'||c.Owned===old.Owned,'premium_ownership_forbidden');}}
    p.ClassProfile=next;p.ClassRevision++;p.ClassSource='local_host_unverified';return {};
   }
   if(operation==='EnrollAlphaParticipation'){

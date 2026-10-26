@@ -45,7 +45,7 @@ namespace Wildfolk
                 if(!success){if(next!=null)Destroy(next.gameObject);return false;}
             }
             catch(Exception){if(next!=null)Destroy(next.gameObject);return false;}
-            Station.Changed-=NotifyStation;old.gameObject.SetActive(false);Destroy(old.gameObject);Station=next.GetComponent<CraftingStation>();Station.Changed+=NotifyStation;StationChanged?.Invoke();return true;
+            Station.Changed-=NotifyStation;old.gameObject.SetActive(false);Destroy(old.gameObject);Station=next.GetComponent<CraftingStation>();Station.Changed+=NotifyStation;StationChanged?.Invoke();EconomyTelemetry.Record(this,Station.Definition.WorkbenchTier==2?"workbench_ii":"workbench_iii");return true;
         }
         public void UpgradeFromUI(){if(!UpgradeWorkbench())PlayerFeedback.ShowKey("feedback.upgrade");else if(Authority==null)PlayerFeedback.ShowOperation(PlayerFeedback.Cue.Upgraded);}
 
@@ -101,6 +101,7 @@ namespace Wildfolk
             if(recipe.ProcessingSeconds>0)
                 return Processor!=null && Processor.Begin(recipe,Inventory) ? CraftStatus.Processing : CraftStatus.StationRequired;
             var result = Inventory.Model.TryExchange(recipe.Ingredients, recipe.Result, recipe.ResultCount,recipe.ResultCharges,recipe.ResultQuality);
+            if(result==ExchangeResult.Success)EconomyTelemetry.Crafted(this,recipe.Result);
             return result == ExchangeResult.Success ? CraftStatus.Ready :
                 result == ExchangeResult.NoSpace ? CraftStatus.NoSpace : CraftStatus.MissingMaterials;
         }

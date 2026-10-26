@@ -20,7 +20,7 @@ namespace Wildfolk
             AdvancePhase();
             if(!CanFish())return false;
             if(Phase==FishingPhase.Bite)
-            {var result=CatchTable.Entries[PendingCatch];if(bag.Model.TryExchange(System.Array.Empty<ItemAmount>(),result.Output,result.Amount)!=ExchangeResult.Success){Feedback("feedback.bag_full");return false;}Phase=FishingPhase.Caught;Catches++;started=Time.time;if(net!=null && net.IsSpawned)net.PublishCatch(PendingCatch,result.Amount,WaterPoint);else PlayerFeedback.ShowCatch(result,result.Amount);return true;}
+            {var result=CatchTable.Entries[PendingCatch];if(bag.Model.TryExchange(System.Array.Empty<ItemAmount>(),result.Output,result.Amount)!=ExchangeResult.Success){Feedback("feedback.bag_full");return false;}Phase=FishingPhase.Caught;Catches++;EconomyTelemetry.Record(this,"fish");started=Time.time;if(net!=null && net.IsSpawned)net.PublishCatch(PendingCatch,result.Amount,WaterPoint);else PlayerFeedback.ShowCatch(result,result.Amount);return true;}
             if(Phase!=FishingPhase.Idle)return false;
             if(world==null)world=FindFirstObjectByType<WorldGenerator>();if(world==null)return false;
             var p=(Vector2)transform.position;var direction=avatar.Facing.Direction;

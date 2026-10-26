@@ -41,7 +41,7 @@ namespace Wildfolk
                     placed=NetworkCreatureWorld.Active.Create(definition.Prefab,position,placement.RotationFor(definition));placed.CreatorId=bag.Player.ProfileId;placed.PlayerBuilt=true;
                     Physics2D.SyncTransforms();return NetworkCreatureWorld.Active.SpawnPendingNow(placed.GetComponent<NetworkObject>());
                 });
-                if(!committed && placed!=null)PrefabPool.Release(placed.gameObject);return committed;
+                if(!committed && placed!=null)PrefabPool.Release(placed.gameObject);if(committed)EconomyTelemetry.Record(this,"builds");return committed;
             }
             catch(System.Exception error){if(placed!=null)PrefabPool.Release(placed.gameObject);Debug.LogError("Building transaction failed: "+error.GetType().Name);return false;}
         }

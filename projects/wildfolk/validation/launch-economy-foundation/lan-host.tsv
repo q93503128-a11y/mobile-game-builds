@@ -1,0 +1,62 @@
+2026-10-26T06:17:23.9282041Z	starting	PASS QA admission profile explorer
+2026-10-26T06:17:24.2879225Z	starting	PASS actual LocalNetwork Host
+2026-10-26T06:17:24.3174878Z	starting	PASS Host enters world
+2026-10-26T06:17:31.2953913Z	join_first	command
+2026-10-26T06:18:24.3510330Z	join_first	PASS Host owner economic progress journals only once
+2026-10-26T06:18:24.3530517Z	economy_progress	command
+2026-10-26T06:18:24.9534218Z	resources_initial	command
+2026-10-26T06:18:26.6623812Z	resources_rich	command
+2026-10-26T06:18:27.2441743Z	resources_damage	command
+2026-10-26T06:18:27.8525657Z	resources_harvest	command
+2026-10-26T06:18:28.5812031Z	resources_leave0	command
+2026-10-26T06:18:29.4663369Z	resources_return0	command
+2026-10-26T06:18:30.2089237Z	resources_leave1	command
+2026-10-26T06:18:30.9912142Z	resources_return1	command
+2026-10-26T06:18:31.0287082Z	resource_disconnect	command
+2026-10-26T06:18:33.6491424Z	join_resource	command
+2026-10-26T06:18:39.8946224Z	resources_late_join	command
+2026-10-26T06:18:39.9209755Z	resources_late_join	PASS pre-spawn boss clock uses server epoch
+2026-10-26T06:18:40.9621985Z	resources_late_join	PASS existing guardian seals network tomb
+2026-10-26T06:18:41.4478071Z	resources_late_join	PASS Host guardian unlock persisted flag
+2026-10-26T06:18:41.4926122Z	resources_late_join	PASS failed network offering rolls back actor, Bone and night
+2026-10-26T06:18:41.4946736Z	rollback	command
+2026-10-26T06:18:41.8930470Z	summon	command
+2026-10-26T06:18:42.2076599Z	summon	PASS one authoritative full HP spawn
+2026-10-26T06:18:42.2127416Z	summon	PASS duplicate offering blocked globally
+2026-10-26T06:18:45.6191240Z	telegraph	command
+2026-10-26T06:18:47.6850643Z	telegraph	PASS 2P authored three adds state=Windup hp=6300 living=2
+2026-10-26T06:18:47.6881049Z	phase_two	command
+2026-10-26T06:18:48.1574219Z	phase_two	PASS server transfers mark after Downed
+2026-10-26T06:18:48.1631941Z	transfer	command
+2026-10-26T06:18:52.8991448Z	transfer	PASS full party wipe retires wave then Returning
+2026-10-26T06:18:55.9065080Z	transfer	PASS gradual multiplayer return regen
+2026-10-26T06:18:55.9106428Z	returning	command
+2026-10-26T06:18:56.0775215Z	returning	PASS existing MP Home respawn
+2026-10-26T06:18:56.1435814Z	returning	PASS existing MP Home respawn
+2026-10-26T06:18:56.6475100Z	returning	PASS living re-entry resumes server fight
+2026-10-26T06:18:56.6506740Z	accessory	command
+2026-10-26T06:18:56.8080060Z	accessory	PASS remote accessory state and shared visual anchor
+2026-10-26T06:19:00.5334150Z	accessory	PASS one shared guaranteed core network set
+2026-10-26T06:19:00.5344268Z	accessory	PASS one crown roll shared at most one
+2026-10-26T06:19:00.5380739Z	accessory	PASS living eligible reward exactly once cccccccccccccccccccccccccccccccc
+2026-10-26T06:19:00.5391113Z	accessory	PASS living eligible reward exactly once dddddddddddddddddddddddddddddddd
+2026-10-26T06:19:00.5396396Z	accessory	PASS class XP once in persistent Host or session-only peer cccccccccccccccccccccccccccccccc
+2026-10-26T06:19:00.5401671Z	accessory	PASS class XP once in persistent Host or session-only peer dddddddddddddddddddddddddddddddd
+2026-10-26T06:19:00.5489096Z	accessory	PASS Host Profile2 reward committed without pending intent
+2026-10-26T06:19:00.5535307Z	accessory	PASS remote verifier progression never writes peer persistent profile
+2026-10-26T06:19:00.5560821Z	reward	command
+2026-10-26T06:19:00.5853645Z	pickup_core	command
+2026-10-26T06:19:00.6434109Z	pickup_core	PASS authoritative owner pickup keeps exactly one physical core
+2026-10-26T06:19:00.6936180Z	pickup_core	PASS Host Save14 boss reward/accessory
+2026-10-26T06:19:00.6972386Z	leave	command
+2026-10-26T06:19:02.5745268Z	leave	PASS actual LocalNetwork Host
+2026-10-26T06:19:02.5755357Z	leave	PASS Host enters world
+2026-10-26T06:19:06.6494870Z	join_resumed	command
+2026-10-26T06:19:12.8716040Z	join_resumed	PASS reHost retains consumed night and resolved reward
+2026-10-26T06:19:12.8731965Z	join_resumed	PASS reHost no physical loot duplicate
+2026-10-26T06:19:12.8801786Z	join_resumed	PASS harvest tombstone survives save/reHost
+2026-10-26T06:19:13.4040957Z	resources_rehost	command
+2026-10-26T06:19:13.9736447Z	resources_rehost	PASS resolved reHost same-night offering rejects without consuming Bone
+2026-10-26T06:19:13.9757580Z	resume	command
+2026-10-26T06:19:14.0236448Z	finish	command
+2026-10-26T06:19:14.8828103Z	complete	complete

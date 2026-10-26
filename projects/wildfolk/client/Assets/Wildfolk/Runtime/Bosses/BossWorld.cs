@@ -58,7 +58,7 @@ namespace Wildfolk
                 catch(Exception e){Debug.LogError("Boss summon could not commit: "+e.GetType().Name);}
                 records[records.IndexOf(r)]=prior;if(spawned!=null)Release(spawned);return false;
             });
-            if(!ok)Feedback(player,"boss.tomb.offering");return ok;
+            if(!ok)Feedback(player,"boss.tomb.offering");else EconomyTelemetry.Record(player,"summoning",1,EconomyTelemetry.WorldSource(World,r.Boss+":"+r.Tomb+":"+r.LastNight));return ok;
         }
         private static bool Feedback(PlayerInventory p,string key){var net=p.GetComponent<NetworkPlayer>();if(net==null || net.IsOwner)PlayerFeedback.ShowKey(key);return false;}
         private BossEncounter Spawn(BossDefinition definition,BossSnapshot state,bool restored)
@@ -117,7 +117,7 @@ namespace Wildfolk
                 Debug.LogError("Boss reward commit deferred: "+error.GetType().Name);return false;
             }
             for(var i=0;i<durable.Count;i++){var commit=durable[i];try{if(commit.Complete(out var total))roles[i].AcceptBossXP(total,receipt);}finally{commit.Dispose();}}
-            foreach(var p in recipients){var role=p.GetComponent<PlayerClass>();if(role!=null && !role.PersistentProgression)role.GrantXP(e.Definition.Rewards.Experience,receipt);}
+            foreach(var p in recipients){var role=p.GetComponent<PlayerClass>();if(role!=null && !role.PersistentProgression)role.GrantXP(e.Definition.Rewards.Experience,receipt);EconomyTelemetry.Record(p,"bosses",1,EconomyTelemetry.WorldSource(World,receipt));}
             r.RolledLoot=Array.Empty<SavedStack>();r.Eligible=Array.Empty<string>();GetComponent<NetworkBossWorld>()?.Publish();return true;
         }
     }

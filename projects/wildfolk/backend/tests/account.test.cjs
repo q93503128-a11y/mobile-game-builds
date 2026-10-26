@@ -42,3 +42,17 @@ test('ongoing local class sync cannot unlock premium ownership',async()=>{const 
 test('deletion preparation needs confirmation, idempotent, not falsely complete',async()=>{const f=await ready();assert.equal((await f.call('RequestAccountDeletionPreparation')).error,'confirmation_required');const a=await f.call('RequestAccountDeletionPreparation',{confirmation:'DELETE'}),b=await f.call('RequestAccountDeletionPreparation',{confirmation:'DELETE'});assert.equal(a.deletionId,b.deletionId);const p=(await f.store.read(f.ctx.playerId)).value;assert.equal(p.Deletion.AuthenticationDeleted,false);assert.equal((await f.call('SubmitFeedback',{category:'Other',text:'Hello there'})).error,'deletion_pending');});
 test('cloud schema rejects unsupported versions',async()=>{const f=await ready();const p=(await f.store.read(f.ctx.playerId)).value;p.Schema=2;assert.throws(()=>validateProfile(p));});
 test('Play Integrity binds player/environment/operation/build, package/cert/version/license/time',()=>{const f=fixture('Alpha'),key=f.id();const policy={packageName:'com.example.lowfire',alphaVersionCodes:['7'],certificates:['cert']};const valid={requestDetails:{requestPackageName:policy.packageName,requestHash:requestHash(f.ctx,key),timestampMillis:Date.parse(f.clock.now)},appIntegrity:{appRecognitionVerdict:'PLAY_RECOGNIZED',packageName:policy.packageName,versionCode:'7',certificateSha256Digest:['cert']},accountDetails:{appLicensingVerdict:'LICENSED'}};assert.equal(validateVerdict(valid,policy,f.ctx,key,Date.parse(f.clock.now)),true);for(const field of ['requestHash','timestampMillis']){const p=copy(valid);p.requestDetails[field]=field==='timestampMillis'?0:'forged';assert.throws(()=>validateVerdict(p,policy,f.ctx,key,Date.parse(f.clock.now)));}const p=copy(valid);p.appIntegrity.certificateSha256Digest=['bad'];assert.throws(()=>validateVerdict(p,policy,f.ctx,key,Date.parse(f.clock.now)));});
+
+test('premium ownership projects only a verified economic receipt and permits first trusted Engineer sync',async()=>{
+ const f=await ready();f.ctx.premiumVerified=true;f.ctx.engineerOwned=false;
+ let profile=(await f.call('GetAccountProfile')).profile;const forged=copy(profile.ClassProfile);forged.Classes.find(c=>c.Id==='engineer').Owned=true;
+ assert.equal((await f.call('CommitClassProgress',{baseRevision:profile.ClassRevision,classProfile:forged})).error,'premium_ownership_forbidden');
+ f.ctx.engineerOwned=true;profile=(await f.call('GetAccountProfile')).profile;assert.equal(profile.ClassProfile.Classes.find(c=>c.Id==='engineer').Owned,true);
+ assert.equal((await f.call('CommitClassProgress',{baseRevision:profile.ClassRevision,classProfile:profile.ClassProfile})).ok,true);
+ f.ctx.engineerOwned=false;profile=(await f.call('GetAccountProfile')).profile;assert.equal(profile.ClassProfile.Classes.find(c=>c.Id==='engineer').Owned,false);
+});
+test('Engineer ownership helper rejects imported flags, another player/environment and missing debit receipt',()=>{
+ const {engineerOwnership}=require('../src/economy-ownership.cjs'),ctx={playerId:'player',environmentId:'dev'};
+ const root={Schema:1,PlayerId:'player',EnvironmentId:'dev',Engineer:{Id:'class_engineer',TransactionId:'tx'},Ledger:[{TransactionId:'tx',PlayerId:'player',Reason:'class_unlock',SourceId:'class:engineer',Delta:-120}]};
+ assert.equal(engineerOwnership(root,ctx),true);for(const value of [{...root,Ledger:[]},{...root,PlayerId:'other'},{...root,EnvironmentId:'alpha'},{...root,Engineer:null}])assert.equal(engineerOwnership(value,ctx),false);
+});

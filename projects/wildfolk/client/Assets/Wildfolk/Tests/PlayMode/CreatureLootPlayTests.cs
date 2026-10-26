@@ -60,7 +60,7 @@ namespace Wildfolk.Tests
             foreach(var id in new[]{"plant_fiber","feather","crossbow_bolt","iron_ore"})Assert.That(bag.Model.CountItem(s.Catalog.Item(id)),Is.EqualTo(5),id+" previous stacks remain valid");
             Assert.That(growth.Experience,Is.EqualTo(xp+36));Assert.That(growth.Gold,Is.EqualTo(gold+11));
             var expected=JsonUtility.ToJson(new InventoryFixture{Slots=bag.Model.Capture()});Assert.That(s.Save(),Is.True,s.LastError);
-            var loaded=s.Repository.Read(s.Validate);Assert.That(loaded.Version,Is.EqualTo(11));s.Apply(loaded);yield return null;
+            var loaded=s.Repository.Read(s.Validate);Assert.That(loaded.Version,Is.EqualTo(14));s.Apply(loaded);yield return null;
             Assert.That(JsonUtility.ToJson(new InventoryFixture{Slots=bag.Model.Capture()}),Is.EqualTo(expected));
         }
         [Serializable]private sealed class InventoryFixture{public SavedStack[] Slots;}
@@ -105,7 +105,7 @@ namespace Wildfolk.Tests
             Object.Destroy(wall);Object.Destroy(actor.gameObject);
         }
         [UnityTest]public IEnumerator Save10MigrationAndCorruptCampStackValidationUseRealWorldSnapshot()
-        {var camp=Camp();var game=s.Capture();game.Version=10;var copy=SaveRepository.Decode(SaveRepository.Encode(game));s.Rules.Validate(copy);Assert.That(copy.Version,Is.EqualTo(11));Assert.That(copy.GoblinEcology.Camps.Single(c=>c.Id=="qa-camp").LootInitialized,Is.False);var corrupt=s.Capture();corrupt.GoblinEcology.Camps.Single(c=>c.Id=="qa-camp").Loot[0].Count=1000;Assert.Throws<ArgumentException>(()=>s.Rules.Validate(corrupt));yield return null;}
+        {var camp=Camp();var game=s.Capture();game.Version=10;var copy=SaveRepository.Decode(SaveRepository.Encode(game));s.Rules.Validate(copy);Assert.That(copy.Version,Is.EqualTo(14));Assert.That(copy.GoblinEcology.Camps.Single(c=>c.Id=="qa-camp").LootInitialized,Is.False);var corrupt=s.Capture();corrupt.GoblinEcology.Camps.Single(c=>c.Id=="qa-camp").Loot[0].Count=1000;Assert.Throws<ArgumentException>(()=>s.Rules.Validate(corrupt));yield return null;}
         [UnityTearDown]public IEnumerator Exit(){CampLootPanel.CloseFocused();foreach(var a in Object.FindObjectsByType<WildlifeActionBrain>(FindObjectsSortMode.None))Object.Destroy(a.gameObject);Time.timeScale=1;yield return null;}
     }
 }

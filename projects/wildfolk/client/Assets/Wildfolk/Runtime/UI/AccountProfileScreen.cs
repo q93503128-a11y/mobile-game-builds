@@ -16,11 +16,11 @@ namespace Wildfolk
         private void OnDisable(){service.Changed-=Refresh;L.Changed-=Refresh;}
         public void Open(){if(service!=AccountService.Current){service.Changed-=Refresh;service=AccountService.Get();service.Changed+=Refresh;}Home.Menu.SetActive(false);Home.Settings.SetActive(false);View.SetActive(true);FeedbackView.SetActive(false);DeleteView.SetActive(false);Refresh();}
         public void Back(){View.SetActive(false);FeedbackView.SetActive(false);DeleteView.SetActive(false);Home.ShowHome();}
-        public async void Connect(){await service.Connect();Refresh();}
-        public async void UseExisting(){await service.Connect(true);Refresh();}
+        public async void Connect(){await service.Connect();await EconomyService.Get().Sync();Refresh();}
+        public async void UseExisting(){await service.Connect(true);await EconomyService.Get().Sync();Refresh();}
         public void KeepLocal(){service.KeepLocal();Refresh();}
-        public async void Sync(){await service.Sync();Refresh();}
-        public async void UseCloud(){await service.Sync(true);Refresh();}
+        public async void Sync(){await service.Sync();await EconomyService.Get().Sync();Refresh();}
+        public async void UseCloud(){await service.Sync(true);await EconomyService.Get().Sync();Refresh();}
         public async void Enroll(){await service.EnrollAlpha();Refresh();}
         public void SignOut(){service.SignOut();Refresh();}
         public void CopySupport(){if(service.Profile!=null)GUIUtility.systemCopyBuffer=service.Profile.SupportId;}
@@ -29,7 +29,7 @@ namespace Wildfolk
         public void CloseHelp(){FeedbackView.SetActive(false);View.SetActive(true);}
         public async void Submit()
         {
-            SubmitButton.interactable=false;var reply=await service.Submit(Categories[Category.value],FeedbackText.text,Consent.isOn,Consent.isOn?new FeedbackDiagnostic{appVersion=Application.version,channel=BackendPolicy.Channel.ToString(),platform=Application.platform.ToString(),deviceModel=SystemInfo.deviceModel,os=SystemInfo.operatingSystem,locale=L.Language,scene=UnityEngine.SceneManagement.SceneManager.GetActiveScene().name,sessionId=Guid.NewGuid().ToString("N"),lastErrorCode=service.LastError,cloudState=service.State.ToString()}:null);
+            SubmitButton.interactable=false;var reply=await service.Submit(Categories[Category.value],FeedbackText.text,Consent.isOn,Consent.isOn?new FeedbackDiagnostic{appVersion=Application.version,channel=BackendPolicy.Channel.ToString(),platform=Application.platform.ToString(),deviceModel=SystemInfo.deviceModel,os=SystemInfo.operatingSystem,locale=L.Language,scene=UnityEngine.SceneManagement.SceneManager.GetActiveScene().name,sessionId=Guid.NewGuid().ToString("N"),lastErrorCode=service.LastError,cloudState=service.State.ToString(),lastGemTransaction=EconomyService.Get().LastTransaction,lastAchievementClaim=EconomyService.Get().LastAchievementClaim,lastAttendanceClaim=EconomyService.Get().LastAttendanceClaim}:null);
             FeedbackStatus.text=reply.ok?L.Text("account.ticket_sent")+" "+reply.ticketId:L.Text(reply.error=="feedback_rate_limited"?"account.feedback_limit":"account.feedback_failed");SubmitButton.interactable=true;if(reply.ok)FeedbackText.text="";
         }
         public void Delete(){View.SetActive(false);deletionConfirmation=0;DeleteView.SetActive(true);FeedbackView.SetActive(false);DeleteMessage.text=L.Text("account.delete_warning");}

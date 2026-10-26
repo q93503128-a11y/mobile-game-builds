@@ -36,4 +36,4 @@ Undead King은 거대 일반 Skeleton이 아닌 분절형 전사왕이다. 공�
 
 ## 1.0 Launch Scope lock · 2026-10-25
 
-인게임 범위는 WB I–III/Diamond·Crystal/현재 biome·cavern·deep/생존·제작·건축·생물/6Class/Death·Revive/협동/Undead King/Accessory까지 잠근다. Account·Cloud·운영은 외부 출시 기반이며 신규 progression을 추가하지 않는다. Gem/Achievement/Attendance/Ads/IAP/Audio는 후속 별도 패스다. Mount/IV–VI/Core 사용처/추가 Boss 등은 이후 업데이트다. 전체 분류는 [LAUNCH_SCOPE](LAUNCH_SCOPE.md)를 정본으로 한다.
+인게임 범위는 WB I–III/Diamond·Crystal/현재 biome·cavern·deep/생존·제작·건축·생물/6Class/Death·Revive/협동/Undead King/Accessory까지 잠근다. Account·Cloud·운영은 외부 출시 기반이며 신규 progression을 추가하지 않는다. Gem/Achievement/Attendance는 Foundation2의 계정 경제다. Ads/IAP/Audio는 후속 별도 패스다. Mount/IV–VI/Core 사용처/추가 Boss 등은 이후 업데이트다. 전체 분류는 [LAUNCH_SCOPE](LAUNCH_SCOPE.md)를 정본으로 한다.

@@ -35,7 +35,7 @@ namespace Wildfolk
                 if(!player.Model.TryConsumeCosts(old.UpgradeCosts,()=>{SetDefinition(old.UpgradeTo);Tier.Value=Station.Definition.WorkbenchTier;return true;}))return false;
             }
             catch(Exception){SetDefinition(old);placeable.Health.RestoreHealth(hp);Tier.Value=old.WorkbenchTier;return false;}
-            Publish();return true;
+            EconomyTelemetry.Record(player,Station.Definition.WorkbenchTier==2?"workbench_ii":"workbench_iii");Publish();return true;
         }
         private void ApplyTier()
         {

@@ -24,6 +24,6 @@ namespace Wildfolk.Tests
         }
         private static string Key(ResourcePlacement p)=>p.Id+":"+p.Rule+":"+p.Position+":"+p.Scale;
         [Test]public void HealingStatusRoundTripsThroughNetworkSerializationAndUsesCurrentProtocol()
-        {var expected=new PlayerStatusState{HP=37,MaximumHP=100,Head=-1,Body=4,Held=122,Utility=-1,TreatmentUntil=812.25};using(var writer=new FastBufferWriter(128,Allocator.Temp)){writer.WriteNetworkSerializable(expected);using(var reader=new FastBufferReader(writer,Allocator.Temp)){reader.ReadNetworkSerializable(out PlayerStatusState actual);Assert.That(actual.Equals(expected),Is.True);actual.TreatmentUntil=0;Assert.That(actual.Equals(expected),Is.False);}}Assert.That(NetworkProtocol.Current,Is.EqualTo(21));}
+        {var expected=new PlayerStatusState{HP=37,MaximumHP=100,Head=-1,Body=4,Held=122,Utility=-1,TreatmentUntil=812.25};using(var writer=new FastBufferWriter(128,Allocator.Temp)){writer.WriteNetworkSerializable(expected);using(var reader=new FastBufferReader(writer,Allocator.Temp)){reader.ReadNetworkSerializable(out PlayerStatusState actual);Assert.That(actual.Equals(expected),Is.True);actual.TreatmentUntil=0;Assert.That(actual.Equals(expected),Is.False);}}Assert.That(NetworkProtocol.Current,Is.EqualTo(22));}
     }
 }

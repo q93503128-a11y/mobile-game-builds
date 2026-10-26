@@ -277,3 +277,7 @@ UgsBootstrap은 기존 Relay와 계정의 인증 초기화를 공유한다. Goog
 ## Launch Backend Activation1.5
 
 UgsBootstrap은 backend Enabled와 무관하게 verified channel mapping으로 SetEnvironmentName하고 Auth가 실제 반환한 환경 ID를 대조한다. Relay/Cloud는 검사 후 실행하며 잘못된 mapping의 production fallback은 없다. 서버는 런타임/128KB 제한에 맞춰 LowfireAccount와 LowfireIntegrityVerify로 분리한다. browser crypto 번들·Protected CAS·비밀이 아닌 context correlation·같은 player token의 서버 간 proof 호출을 사용한다. 실제 development/alpha 배포와 검증/미검증 경계는 [활성화 REVIEW](../validation/launch-backend-activation/REVIEW.md)를 따른다. World authority/participant GUID/Host Continue/Save14/Profile2/Protocol21은 바꾸지 않았다.
+
+## Launch Economy Foundation2 · 현재 경계
+
+경제는 EconomyService/UGS EconomyTransport → LowfireEconomy → Protected lf_economy 단일 CAS 정본이다. EconomyJournal은 offline outbox/cache/revive intent이며 wallet 권위가 아니다. existing NetworkCommonGrowth에 server→owner event RPC를 추가해 Protocol22를 사용한다. UI는 EconomyUiBuilder로 기존 MainMenu에 직렬화한 수첩이며 이벤트 때 갱신한다. [경제 전체 규칙](ECONOMY.md) · [실행·검증](../validation/launch-economy-foundation/REVIEW.md).
