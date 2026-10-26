@@ -1,0 +1,36 @@
+{
+  "perOperationTokens": null,
+  "measurementNote": "Measured process/copy phases only; initial fetch/reads and gaps excluded. Tool monitoring waits are inside process wall time, never added again. Source validator overlapped builds and is not summed separately. Verification/docs/Git finalization ends in external publication receipt.",
+  "phases": [
+    {
+      "name": "First non-ASCII project attempt",
+      "startUTC": "2026-10-25T23:57:28.867583+00:00",
+      "endUTC": "2026-10-26T00:08:48.931509+00:00",
+      "wallSeconds": 680.0639395
+    },
+    {
+      "name": "ASCII isolated copy preparation",
+      "startUTC": "2026-10-26T00:10:54.309559+00:00",
+      "endUTC": "2026-10-26T00:11:59.049477+00:00",
+      "wallSeconds": 64.73990249999997
+    },
+    {
+      "name": "First full ARM64 build, blocked by empty PGS library",
+      "startUTC": "2026-10-26T00:11:59.051573+00:00",
+      "endUTC": "2026-10-26T01:07:27.009769+00:00",
+      "wallSeconds": 3328.0135533000002
+    },
+    {
+      "name": "Cached build after canonical empty-library cleanup",
+      "startUTC": "2026-10-26T01:09:29.019696+00:00",
+      "endUTC": "2026-10-26T01:14:12.334036+00:00",
+      "wallSeconds": 283.3143360999993
+    },
+    {
+      "name": "Artifact verification, canonical docs, source and credential review",
+      "startUTC": "2026-10-26T01:14:12.334036+00:00",
+      "endUTC": "2026-10-26T01:21:36.873158+00:00",
+      "wallSeconds": 444.539122
+    }
+  ]
+}

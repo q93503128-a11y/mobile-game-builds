@@ -1,0 +1,27 @@
+{
+  "UTC": "2026-10-26T01:19:12.079211+00:00",
+  "startSHA": "efc7ac5427888fcf62c3cd3ec0fcc9d554e56905",
+  "sourceValidator": {
+    "exit": 0,
+    "uniqueGuids": 1609,
+    "result": "PASS: Unity source structure, Landscape settings, sprite references and visible text",
+    "receipt": "Directly observed command output this session"
+  },
+  "arm64CompileNodesWithOutputs": 856,
+  "ugsReadOnlyRefresh": {
+    "exit": 1,
+    "reason": "Unity Hub is not running",
+    "remoteMutation": false
+  },
+  "googleSetup": "User confirms still not configured",
+  "unityMcp": "Unavailable in this turn; no MCP Play/UI test claimed",
+  "editMode": "Not rerun: runtime/gameplay unchanged",
+  "playMode": "Not rerun: runtime/gameplay unchanged",
+  "backendTests": "Not rerun: server unchanged",
+  "scope": "Editor QA entry point and removal of empty unconfigured Android library; Save14/Profile2/Protocol21 preserved",
+  "diffReview": {
+    "UTC": "2026-10-26T01:21:36.873158+00:00",
+    "whitespaceExit": 0,
+    "scope": "All canonical source/doc and follow-up evidence staged changes reviewed; no runtime/data/settings changes; no generated binaries"
+  }
+}

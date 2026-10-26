@@ -63,3 +63,11 @@ ugs cloud-save data index list -p 70ba2490-7029-4528-b55a-9c2231fde007 -e develo
 ## 활성화 전 최종 확인
 
 PGS 설정과 실제 URL을 완료한 뒤에만 BackendSettings.Enabled=true. LOWFIRE_ALPHA 또는 LOWFIRE_PRODUCTION 중 의도한 한 channel을 지정하고 앱을 재시작한다. 환경 초기화/인증 ID mismatch는 fail-closed이며 production fallback은 없다. 실제 Android/Google 복구·Integrity·삭제 전체 흐름, AAB/IL2CPP/Gradle·실기기·4기기 검증을 진행한다. 현금 결제는 계속 false다. [출시 차단 항목](RELEASE_BLOCKERS.md)을 함께 확인한다.
+
+## PGS 설정 전 Development Android 빌드 확인
+
+Google/URL 값이 없을 때도 기존 Development 채널의 빌드 도구 체인은 별도로 검사할 수 있다. `AccountCompileQa.DevelopmentBundle`은 `-batchmode -buildTarget Android`로 실행하며, `LOWFIRE_QA_PROJECT`가 현재 프로젝트의 절대 경로와 같고 `/tests/artifacts/unity`로 끝나는 격리 복사본에서만 동작한다. 프로젝트와 결과 폴더는 모두 영문/ASCII 경로를 쓴다(예: `C:/UnityProjects/LowfireAndroidQa/tests/artifacts/unity`, `C:/UnityProjects/LowfireAndroidQa/results`). Android 사전검사는 현재 저장소의 한글 경로를 거절하므로 저장소 자체를 옮기지 않고 복사본을 사용한다. Assets/Packages/ProjectSettings를 복사하되 사용자 UserData나 credential은 복사하지 않는다. `LOWFIRE_BACKEND_RESULTS`에는 Assets 밖의 결과 폴더를 지정한다.
+
+이 경로는 Enabled=false·AllowDevelopmentIdentity=false·custom keystore 미사용·release define 미지정·IL2CPP/ARM64를 요구한다. 실제 제품 씬을 `BuildOptions.Development`와 표준 debug 서명으로 AAB 빌드하고 결과 JSON을 기록한다. Alpha/Production validator나 Google 설정 검사를 우회하지 않는다. 이 개발 AAB의 성공은 실제 PGS 로그인·Alpha/Production AAB·출시 서명·기기 실행 성공을 뜻하지 않는다. 없는 Google resource/manifest는 설정 완료로 표시하지 않는다.
+
+2026-10-26: 빈 미설정 PGS `.androidlib` skeleton 제거 후 실제 Development AAB가 생성됐다. PGS Setup은 실제 값 입력 시 폴더/manifest를 다시 만든다. [실제 후속 검증](../validation/launch-backend-activation/android-development/REVIEW.md). 공개 Google 값/URL 부재와 release 차단은 그대로다.

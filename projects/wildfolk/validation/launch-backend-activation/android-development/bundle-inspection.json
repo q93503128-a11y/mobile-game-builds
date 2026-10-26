@@ -1,0 +1,45 @@
+{
+  "UTC": "2026-10-26T01:14:14.934533+00:00",
+  "sha256": "47273fcadc7f333c6f3f6fa425e3a8ce402f862b84c6fd8a3d0833ef034fbfd5",
+  "bytes": 59985054,
+  "bundletoolValidation": {
+    "exit": 0,
+    "toolVersion": "1.17.2 (Unity bundled)",
+    "stdoutSha256": "7e2d9f683c94720b984708c01bde0712ea5cab89f126d96d5b07c3ea37d64b92",
+    "stderr": ""
+  },
+  "manifest": {
+    "package": "com.gltam.lowfire",
+    "versionCode": "1",
+    "minSdk": "25",
+    "targetSdk": "36",
+    "debuggable": "true",
+    "internet": true
+  },
+  "signature": {
+    "verified": true,
+    "standardAndroidDebugCertificate": true,
+    "productionSigning": false
+  },
+  "nativeLibraries": [
+    "base/lib/arm64-v8a/lib_burst_generated.so",
+    "base/lib/arm64-v8a/libc++_shared.so",
+    "base/lib/arm64-v8a/libgame.so",
+    "base/lib/arm64-v8a/libil2cpp.so",
+    "base/lib/arm64-v8a/libmain.so",
+    "base/lib/arm64-v8a/libswappywrapper.so",
+    "base/lib/arm64-v8a/libunity.so"
+  ],
+  "embeddedBackendSettingsVerified": true,
+  "credentialPatternScan": {
+    "entries": 547,
+    "findings": [],
+    "scope": "Every uncompressed AAB ZIP entry, raw and NUL-stripped bytes; private keys/GitHub/Google API/AWS/JWT patterns; not an exhaustive secrets proof"
+  },
+  "embeddedUnityProjectIdVerified": "70ba2490-7029-4528-b55a-9c2231fde007",
+  "editorWarnings": [
+    "UGS Core build warning: QA Editor not logged in; source checks ProjectBound AND IsLoggedIn; actual public project ID remains embedded",
+    "Google Play Games not configured; expected, no successful Google login claimed"
+  ],
+  "inspectionCompletionObservedUTC": "2026-10-26T01:19:12.054281+00:00"
+}

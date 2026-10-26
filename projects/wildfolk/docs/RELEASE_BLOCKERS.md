@@ -7,7 +7,7 @@ Foundation1.5 상태는 **PARTIALLY ACTIVE**다. development/alpha 환경·Cloud
 - Play Integrity API/Cloud project 연결, Secret Manager credential, 실제 cert/version/license/requestHash/freshness 승인·거절. Alpha enrollment는 닫혀 있다.
 - 실제 Privacy Policy 및 외부 웹 삭제 요청 URL·운영 절차/Data safety. 가짜 URL로 gate를 통과시키지 않는다.
 - 문의 담당/비활성 ticket30일 정리 job·로그 retention·삭제 요청 처리 주기, 원격 완료 통지와 다른 기기/OS 백업 정책. 현재 요청은 pending이며 완료로 오인시키지 않는다.
-- Android Gradle/IL2CPP/APK/AAB와 Google 로그인·Link/conflict/복구·실기기 UX·4기기. 두 채널 C# script compile과2프로세스 Relay 통과가 이를 대신하지 않는다.
+- 실제 Google 로그인·Link/conflict/복구·Alpha/Production AAB·출시 서명·실기기 UX·4기기. 2026-10-26 Development AAB는 실제 Gradle/IL2CPP/ARM64·debug 서명·manifest/포함 설정 검사를 통과했다([결과](../validation/launch-backend-activation/android-development/REVIEW.md)). 개발 AAB와 두 채널 C# compile·2프로세스 Relay가 실제 출시/기기 검수를 대신하지 않는다.
 - Production policy/gate/index/Cloud Code/Access Control 배포는 별도 출시 작업이다. 이번에는 production의 기존 기본 환경·스크립트·정책을 변경하지 않았다.
 - node-forge1.4.0의 RSA **검증** advisory GHSA-86w9-cpqp-85rv가 npm audit에 남는다(현재 patched release 없음). 현재 Lowfire는 SHA256과 RS256 **서명**만 사용하고 그 검증 API를 노출/호출하지 않는다. Account bundle에는 RSA가 포함되지 않는다. 공개 출시 전 dependency 상태/대체책을 재검토하고 미래 외부 서명 검증에 해당 API를 재사용하지 않는다. [근거와 범위](../validation/launch-backend-activation/REVIEW.md).
 

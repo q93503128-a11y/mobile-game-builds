@@ -78,3 +78,5 @@ Google Play Games v2 + 기존 Unity Authentication, 별도 CloudProfile1/계정 
 ## Launch Backend Foundation1.5 (2026-10-25)
 
 현재 **PARTIALLY ACTIVE**: 실제 development/alpha 환경, Cloud Code2개, Protected profile/Support index·Access Control을 배포했다. development 실제 서비스76개, Unity SDK 왕복과2프로세스 LAN/인터넷 Relay를 확인했다. Android package는 사용자 확정 `com.gltam.lowfire`다. Google OAuth/PGS/Integrity·실제 Privacy/삭제 URL이 없어 제품 backend Enabled=false와 release gate는 유지한다. [현재 검증과 한계](validation/launch-backend-activation/REVIEW.md), [남은 설정](docs/SETUP_REQUIRED.md). Save14/Profile2/Protocol21/generation3와 인게임 콘텐츠는 유지한다.
+
+2026-10-26 후속: 빈 미설정 PGS Android library를 정리하고 실제 **Development AAB(IL2CPP/ARM64, debug 서명)**를 생성·검사했다. 제품 backend와 Alpha/Production release gate는 계속 비활성/차단이다. [빌드·원인·한계](validation/launch-backend-activation/android-development/REVIEW.md).

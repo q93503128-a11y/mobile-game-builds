@@ -1,0 +1,21 @@
+{
+    "Passed": false,
+    "Development": true,
+    "BackendEnabled": false,
+    "CustomKeystore": false,
+    "Package": "com.gltam.lowfire",
+    "EnvironmentName": "development",
+    "EnvironmentId": "9aa02b53-8272-4975-a42a-f6a0b75a360f",
+    "Backend": "IL2CPP",
+    "Architecture": "ARM64",
+    "Result": "Failed",
+    "Error": "InvalidOperationException: Development bundle build Failed",
+    "MissingPgsConfiguration": [
+        "PGS PlayGamesSettings resource is missing",
+        "PGS Android setup manifest is missing"
+    ],
+    "Seconds": 14.151943399999999,
+    "Bytes": 0,
+    "Errors": 1,
+    "Warnings": 2
+}
