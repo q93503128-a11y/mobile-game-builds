@@ -29,7 +29,7 @@ namespace Wildfolk.Tests
         {
             var a=new BossFrame{Ready=true,HP=6300,State=(byte)BossState.Ritual,Phase=2,Attack=3,Direction=Vector2.left,Home=new Vector2(12,23),Started=12.75,Marked=42,Tomb="poi:guard"};
             using(var w=new FastBufferWriter(512,Allocator.Temp)){w.WriteNetworkSerializable(a);using(var r=new FastBufferReader(w,Allocator.Temp)){r.ReadNetworkSerializable(out BossFrame b);Assert.That(b.Equals(a),Is.True);}}
-            Assert.That(NetworkProtocol.Current,Is.EqualTo(22));
+            Assert.That(NetworkProtocol.Current,Is.EqualTo(23));
         }
         [Test] public void RosterLabelIsClassInEnglish()
         {var old=L.Language;try{L.SetLanguage("en");Assert.That(L.Text("class.title"),Is.EqualTo("Class"));}finally{L.SetLanguage(old);}}

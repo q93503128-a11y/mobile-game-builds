@@ -1,6 +1,6 @@
 # Lowfire
 
-Unity **6000.3.19f1 LTS / Universal 2D**, 모바일 Landscape(1920×1080) 탑다운 생존 게임이다. 표시명 Lowfire, 내부 Wildfolk namespace·경로·저장 식별자는 유지한다. 현재 alpha 콘텐츠는 **Item136 / Recipe111 / Save14 / Profile2 / Protocol22**, Workbench I→II→III와 Wood/Stone/Iron/Steel/Diamond 장비다.
+Unity **6000.3.19f1 LTS / Universal 2D**, 모바일 Landscape(1920×1080) 탑다운 생존 게임이다. 표시명 Lowfire, 내부 Wildfolk namespace·경로·저장 식별자는 유지한다. 현재 alpha 콘텐츠는 **Item136 / Recipe111 / Save14 / Profile2 / Protocol23**, Workbench I→II→III와 Wood/Stone/Iron/Steel/Diamond 장비다.
 
 ## 실행과 플레이
 
@@ -86,3 +86,7 @@ Google Play Games v2 + 기존 Unity Authentication, 별도 CloudProfile1/계정 
 계정 Gem/원장,22family58tier 업적(특수9), 신규 누적7회/월간28회/기간형 출석, Profile 수첩과 badge, Engineer120Gem·SP 부활8Gem을 연결했다. 초기0Gem, 업적213/신규45/월간40Gem. 실제 development 검증과 제품 활성화 제한은 [REVIEW](validation/launch-economy-foundation/REVIEW.md), [경제 정본](docs/ECONOMY.md)을 따른다. Save14/Profile2/generation3 유지, owner 진행 RPC 추가로 Protocol22다. Ads/IAP/Store/Audio/추가 progression은 구현하지 않았다.
 
 Foundation2 현재 상태: **구현·관련 검증 완료**. 해상도 전환 후 상세 스크롤·Gem 표시를 교정했고, 최종 Edit74/Play14·Android57/57 compile·3해상도 렌더 검사·추가 실제 SDK 진행 전송을 통과했다. 전체 최종 실행의 Play 고유20개이며 이전 거래/LAN 검증과 이번 재실행을 구분한다. [완료 기록](validation/launch-economy-foundation/REVIEW.md#2026-10-26-재개-완료). 제품 backend Enabled=false 및 실제 Google·PGS·Integrity·공개 URL·실기기·Production 활성화 제한은 유지한다. Foundation2에서 멈추며 다음 기능은 사용자 지시 후 진행한다.
+
+## Foundation2.1 재개 지점 · 2026-10-27
+
+서버 premium admission과 Economy2 archive 정본 구현을 반영했다. 실제 Development 계정과 두 Unity 프로세스로 LAN/Relay의 Engineer 입장·재접속·새 세션·offline/미소유 fallback을 확인했다. 사용자 요청으로 최종 통합 검증 전에 중단하며 **Foundation2.1 전체 완료는 아니다**. 남은 Android/SDK 회귀와 최종 검수는 [RESUME](validation/economy-premium-mp-ledger/RESUME.md), 실제 결과와 구조는 [REVIEW](validation/economy-premium-mp-ledger/REVIEW.md)를 따른다. 다음 기능은 시작하지 않는다.

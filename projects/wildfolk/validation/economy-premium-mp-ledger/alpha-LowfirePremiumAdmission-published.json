@@ -1,0 +1,42 @@
+{
+  "metadata": {
+    "Name": "LowfirePremiumAdmission",
+    "Language": "JS",
+    "Type": "API",
+    "Versions": [
+      5,
+      4,
+      3,
+      2,
+      1
+    ],
+    "ActiveScript": {
+      "Version": 5,
+      "DatePublished": "2026-10-27T00:42:43",
+      "Params": [
+        {
+          "type": "STRING",
+          "name": "operation",
+          "required": true
+        },
+        {
+          "type": "STRING",
+          "name": "channel",
+          "required": true
+        },
+        {
+          "type": "STRING",
+          "name": "buildVersion",
+          "required": true
+        },
+        {
+          "type": "JSON",
+          "name": "input",
+          "required": true
+        }
+      ]
+    }
+  },
+  "sha256": "c0759361c81af8360e28f35c120fe311dde1a210fa43948efa8fb5a23bc6b8cb",
+  "bytes": 81855
+}

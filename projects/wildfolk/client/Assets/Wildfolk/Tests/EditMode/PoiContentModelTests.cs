@@ -48,7 +48,7 @@ namespace Wildfolk.Tests
         [Test]public void Protocol20RoundTripsSiteIdentitySecurityRevisionAndSharedWater()
         {
             var a=new PoiNetworkState{Id="poi4:5",Kind=WorldAnchorKind.Well,Opened=true,Secured=true,Revision=54,Water=2};using(var w=new FastBufferWriter(256,Allocator.Temp)){w.WriteNetworkSerializable(a);using(var r=new FastBufferReader(w,Allocator.Temp)){r.ReadNetworkSerializable(out PoiNetworkState b);Assert.That(b.Equals(a),Is.True);b.Water--;Assert.That(b.Equals(a),Is.False);}}
-            Assert.That(NetworkProtocol.Current,Is.EqualTo(22));var e=AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Wildfolk/Prefabs/NetworkEcology.prefab").GetComponent<NetworkCreatureWorld>();Assert.That(e.Prefabs.Count(p=>p.Source.GetComponent<PoiSite>()!=null && p.NetworkPrefab.GetComponent<NetworkPoiSite>()!=null),Is.EqualTo(1));
+            Assert.That(NetworkProtocol.Current,Is.EqualTo(23));var e=AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Wildfolk/Prefabs/NetworkEcology.prefab").GetComponent<NetworkCreatureWorld>();Assert.That(e.Prefabs.Count(p=>p.Source.GetComponent<PoiSite>()!=null && p.NetworkPrefab.GetComponent<NetworkPoiSite>()!=null),Is.EqualTo(1));
         }
     }
 }

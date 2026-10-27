@@ -74,4 +74,8 @@ Google/URL 값이 없을 때도 기존 Development 채널의 빌드 도구 체�
 
 ## Launch Economy Foundation2 · 현재 경계
 
-Foundation2 non-production 경제 배포/검증은 별도 REVIEW를 따른다. 공개 활성화 전 실제 PGS/OAuth/Integrity approvedBuild·정식 서명·Privacy/삭제 URL, remote class entitlement admission 정책, 장기 ledger archive/용량 알림, 정상 기기 progress/latency/비용을 검증한다. 가짜 ID/URL은 넣지 않는다. production 경제 배포·활성화·Alpha Gem 이전은 별도 출시 작업이다. [경제 전체 규칙](ECONOMY.md) · [실행·검증](../validation/launch-economy-foundation/REVIEW.md).
+Foundation2 non-production 경제 배포/검증은 별도 REVIEW를 따른다. 공개 활성화 전 실제 PGS/OAuth/Integrity approvedBuild·정식 서명·Privacy/삭제 URL, 원격 premium admission과 ledger archive는 Foundation2.1 정본 구현 및 Development 실제 검증을 반영했다. 최종 Android/SDK 회귀, 운영 용량 경고 전달과 정상 기기 progress/latency/비용 검증은 남아 있다. 가짜 ID/URL은 넣지 않는다. production 경제 배포·활성화·Alpha Gem 이전은 별도 출시 작업이다. [경제 전체 규칙](ECONOMY.md) · [실행·검증](../validation/launch-economy-foundation/REVIEW.md).
+
+## Foundation2.1 재개 시 설정 확인
+
+새 서버 script LowfirePremiumAdmission을 Account/Economy와 같은 실제 environment에 배포하고 Private Game Data 접근은 service 전용으로 유지한다. per-player archive/source shard ID는 코드에서 결정하며 임의 수동 ID를 만들지 않는다. capacity75/90%는 운영 조회에 있으며 Dashboard 경고 전달/처리 주기는 운영 설정이 필요하다. Development/Alpha 배포는 실제 확인했지만 Production/Google/PGS/Integrity/공개 Privacy·삭제 URL은 계속 미설정이다. package는 com.gltam.lowfire를 유지하고 가짜 ID/URL을 넣지 않는다. [미완료 검증](../validation/economy-premium-mp-ledger/RESUME.md).

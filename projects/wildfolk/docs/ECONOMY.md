@@ -4,15 +4,15 @@
 
 ## 통화와 영구 소유
 
-초기0Gem, Engineer120Gem, SP 현장 부활8Gem이다. Engineer는 기존 utility/support 직업으로 필수가 아니다. 기존4개 Gold 직업 각60·Survivor 기본 소유·6Class54node·성장/공격 수치는 유지한다. CloudProfile의 Engineer flag나 Profile2 import는 프리미엄 획득 증거가 아니다. Account 응답은 `lf_economy`의 유효한 class_unlock debit receipt로 Engineer 소유를 투영한다. 실제 구매 후 Account Sync로 캐시를 받으며 offline cache는 플레이 편의용이다. 원격 MP admission은 기존 Survivor/session-only 신뢰 경계를 유지해 유료 소유권 claim으로 승격하지 않는다. SP/Host의 구매한 Engineer와 원격 계정 직업 admission은 같은 보장이 아니다.
+초기0Gem, Engineer120Gem, SP 현장 부활8Gem이다. Engineer는 기존 utility/support 직업으로 필수가 아니다. 기존4개 Gold 직업 각60·Survivor 기본 소유·6Class54node·성장/공격 수치는 유지한다. CloudProfile의 Engineer flag나 Profile2 import는 프리미엄 획득 증거가 아니다. Account 응답은 `lf_economy`의 유효한 class_unlock debit receipt로 Engineer 소유를 투영한다. 실제 구매 후 Account Sync로 캐시를 받으며 offline cache는 플레이 편의용이다. 원격 Engineer는 아래 Foundation2.1의 인증된 서버 admission을 통과해야 한다. 원격 XP/node는 계속 session-only이며 Gold 직업의 기존 입장 정책은 유지한다.
 
 ## 서버와 거래
 
-Protected player `lf_economy` Schema1 하나에 integer Balance, append-only Ledger, metric/claim/attendance receipt, Engineer, revive reservation, devices/critical source, bounded security/audit/operation을 저장한다. 기존 `lf_account` CloudProfile1과 world Save14/local Profile2는 별개다. `LowfireEconomy`가 인증 context의 PlayerId/환경/channel/provider/삭제 상태·Private economy_config를 검증하고 같은 key의 writeLock CAS로 지급/차감/수령을 원자 확정한다. 첫 생성은 기존 Private creation_gate를 재사용한다. Economy Currency를 따로 복제하지 않는다. Player의 Protected/default data 직접 쓰기는 Access Control이 차단한다.
+Protected player `lf_economy` Schema2에 integer Balance, 최근 Ledger, archive checkpoint, metric/claim/attendance receipt, Engineer의 원본 해금 증거, revive reservation, devices/critical source, bounded security/audit/operation을 저장한다. 전체 금융 이력은 Private Game Data archive와 영구 source index를 포함한 정본이다. 기존 Schema1은 거래/잔액/claim을 보존해 서버에서 이관한다. Client wire snapshot은 Schema1을 유지한다. 기존 `lf_account` CloudProfile1과 world Save14/local Profile2는 별개다. `LowfireEconomy`가 인증 context의 PlayerId/환경/channel/provider/삭제 상태·Private economy_config를 검증하고 같은 key의 writeLock CAS로 지급/차감/수령을 원자 확정한다. 첫 생성은 기존 Private creation_gate를 재사용한다. Economy Currency를 따로 복제하지 않는다. Player의 Protected/default data 직접 쓰기는 Access Control이 차단한다.
 
 각 Gem 거래는 TransactionId/PlayerId/Timestamp/Delta/BalanceBefore/BalanceAfter/Reason/SourceId/OperationId/BuildChannel/MetadataVersion을 보존한다. 숫자는 정수이고 잔액0 미만은 거절한다. 공개 op는 GetEconomy, SubmitProgress, ClaimAchievement, ClaimAll, ClaimAttendance, UnlockEngineer, BeginRevive, FinishRevive, TransactionHistory뿐이다. 내부 transact의 grant/spend를 클라이언트 일반 API로 노출하지 않는다. achievement:family:tier, attendance:board:period:slot, class:engineer, revive:attempt, admin:operation source는 영구 중복 방지 receipt다. 과거 tier ID/순서를 재사용/재정렬하지 않는다.
 
-CloudProfile1/local Profile2/Save14는 유지하고 기존 NetworkCommonGrowth의 서버→owner 진행 RPC를 추가해 Protocol22를 사용한다. 구 Protocol21 peer와 접속을 허용하지 않는다.
+CloudProfile1/local Profile2/Save14는 유지하고 기존 NetworkCommonGrowth의 서버→owner 진행 RPC를 추가해 Protocol23을 사용한다. 구 Protocol21/22 peer와 접속을 허용하지 않는다.
 
 ## 업적과 진행 기록
 
@@ -44,8 +44,22 @@ Prepared/CommitStarted/Committed/Failed intent를 재시작 후 확인한다. Co
 
 Admin `economy-lookup`은 실제 account/env scope를 읽는다. `economy-adjust --request <JSON> --operator <id> --case <ticket>`는 delta/reason/operationId를 필수로 받고 기본 dry-run, 명시 --apply만 writeLock CAS한다. credentials는 기존 Dashboard/운영 환경변수로 직접 설정하며 채팅/Git에 넣지 않는다. player client로 호출할 public admin endpoint는 없다. class_unlock/refund/support case 사유가 ledger/audit에 남는다. 피드백 진단 동의가 있을 때만 마지막 공개 경제 receipt ID와 version을 첨부하며 token/world path/inventory는 전송하지 않는다.
 
-일반 audit는64개·operation cache는256개로 제한하지만 모든 경제 Ledger/source receipt는 절대 prune하지 않는다. 8192행 또는 root JSON3MiB에서 거래 전체를 fail-closed한다(Protected 총5MiB보다 낮은 경계). Ads/IAP 대량 지급 전 서버 archive/idempotency migration·비용 검증이 필요하다. 현재는 verified grant를 위한 내부 transact 경계만 준비했으며 provider 확인/AdsSDK/Billing 상품/가짜 충전 버튼은 없다.
+일반 audit64개·operation cache256개는 bounded다. 금융행과 source receipt는 삭제하지 않고 아래 Private archive로 옮긴다. root3MiB와 hot768행, index bucket2000key/4MiB에서 fail-closed한다. 기존8192행은 과거 Schema1 reader의 상한이며 새 금융 이력 전체 상한이 아니다. provider 확인/Ads SDK/Billing 상품/가짜 충전 버튼은 없다.
 
-계정 삭제 운영은 모든 환경의 Protected data 전수를 삭제하므로 lf_economy도 포함한다. 현재 기기는 wallet/cache/revive intent와 해당 계정에 bound된 guest economic journal을 정리하며 실제 world/guest Profile2는 보존한다. 수집 inventory에 economic ledger, progress/device random ID/source hashes, attendance/Engineer/revive receipts를 추가한다. Privacy/삭제 URL, Google/PGS/Integrity/실기기 설정은 여전히 RELEASE_BLOCKERS다. Alpha 통화의 Production 자동 이전은 제공하지 않으며 Alpha Tester entitlement와 분리한다.
+계정 삭제 운영은 각 환경에서 Private archive와 source/resolution index를 먼저 지운 후 Default/Public/Protected player data와 마지막 Authentication을 삭제한다. root manifest를 먼저 지우지 않는다. operator journal로 중간 실패를 재개한다. 현재 기기는 wallet/cache/revive intent와 해당 계정에 bound된 guest economic journal을 정리하며 실제 world/guest Profile2는 보존한다. 수집 inventory에 economic ledger, progress/device random ID/source hashes, attendance/Engineer/revive receipts를 추가한다. Privacy/삭제 URL, Google/PGS/Integrity/실기기 설정은 여전히 RELEASE_BLOCKERS다. Alpha 통화의 Production 자동 이전은 제공하지 않으며 Alpha Tester entitlement와 분리한다.
 
 UI 상세 tier는 ContentSizeFitter의 preferred height를 사용하고 Canvas pixel scale이 실제로 바뀔 때만 텍스트/layout을 다시 계산한다. 같은 scale의 frame에서는 rebuild하지 않는다. 직업 수첩의 기존 Gold/Gem 칸을 각각 실제 값에 연결한다.
+
+## Foundation2.1 · 서버 admission / 원장 수명
+
+인증된 소유자가 `LowfirePremiumAdmission`에서 Engineer 증명을 발급받고, 인증된 Host가 같은 서버에서 다시 확인한다. 증명은 실제 PlayerId/HostPlayerId/session/admission/profile/selected class/operation과 account·economy revision에 묶이며 서버 시간90초 유효, 동시16개다. 소유권은 실제 class_unlock debit 및 보호된 Engineer.Proof로 검증한다. NGO에는 bearer credential을 보내지 않는다. 발급/검증은 입장 시에만 하며 매 frame 호출하지 않는다. reconnect마다 admission nonce를 바꾸고 reHost마다 session을 바꾼다. Host 자신의 Engineer도 같은 경계다. backend unavailable/미소유/timeout은 Survivor로 입장하고 번역된 상태를 표시하며 영구 선택/XP를 바꾸지 않는다.
+
+hot512행부터 확정된 앞256행을 한 번에 archive한다. segment는 Private Custom Item 하나의 immutable JSON으로 scope/절대 sequence/opening·closing balance/previous hash를 포함한다. HashVersion1은 재귀 정렬 JSON의 SHA256이며 Cloud Save object key 순서 변화에 안전하다. source SHA256 앞2hex의256 Custom Item에 개별 immutable key를 둔다. item ID/key는 전체 SHA256의 base64url을 사용해45자이며, 예전 SDK50자 제한도 만족한다. source 조회는 index key1개와 segment1개, UI는 최근 hot최대50행만 읽는다.
+
+순서는 archive 쓰기·재조회 검증 → source/resolution index 쓰기(concurrency16) → root writeLock CAS다. speculative 거래를 archive하지 않는다. 성공 응답 유실 시 같은 확정 prefix를 재시도하며 root checkpoint/count가 권위다. root CAS 전 orphan 한 segment/index set이 남을 수 있으며 같은 prefix 재시도로 회복한다. 한 invocation에서 한 segment, CAS최대3회. legacy8192행은 요청당256행씩 점진 compact하며 금융행을 버리지 않는다. Engineer.Proof는 이관 때 보존하고 terminal revive는 최근32개만 root에, 이전 terminal 결과는 영구 resolution key에 둔다. Reserved는 prune하지 않는다.
+
+achievement/attendance는 immutable claim identity를 보존한다. future Ads/IAP는 검증된 server receipt만 받는 내부 binding 경계와 메모리 fixture가 있으며 public grant API/SDK/provider verifier는 없다. provider+환경+receipt hash 전역 owner binding이 다른 계정의 재사용을 차단한다. raw purchase token은 저장하지 않는다. 실제 provider 검증·restore/refund·개인정보 보존/삭제 정책은 다음 단계에서 확정해야 한다.
+
+capacity는 실제 serialized root/index bytes와 hot/archive 개수를 지원 도구에 노출한다. root3MiB, bucket2000key/4MiB의75%/90%에서 warning/critical이며 플레이어 popup은 없다. 100k 모델은 root193217B/hot416/archive389/Custom Item645/최대bucket450key, archive+index+root59006349B다. 이는 서비스 성능·비용 보장이 아니다. 실제512행 이관은 archive256/hot256 및 서버1745ms를 확인했다. 정상 Get도 maintenance 확인을 위한 root read 비용이 추가되며 archive는 threshold/recovery 때만 쓴다. 비용·대량 운영 경고 전달 job·실기기 성능은 별도 운영 검증이다.
+
+현재 구현·실제 검증·남은 검증은 [Foundation2.1 REVIEW](../validation/economy-premium-mp-ledger/REVIEW.md)와 [재개 목록](../validation/economy-premium-mp-ledger/RESUME.md)에서 구분한다.

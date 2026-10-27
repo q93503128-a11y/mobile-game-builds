@@ -43,7 +43,7 @@ namespace Wildfolk.Tests
         [Test]public void CatchStateRoundTripsWithCurrentProtocolAndBothLanguages()
         {
             var a=new ActivityState{Sequence=51,Kind=ActivityKind.FishingCaught,Started=442.5,Duration=.6f,Point=new Vector2(18,-3),CatchIndex=6,CatchCount=1};using(var writer=new FastBufferWriter(128,Allocator.Temp)){writer.WriteNetworkSerializable(a);using(var reader=new FastBufferReader(writer,Allocator.Temp)){reader.ReadNetworkSerializable(out ActivityState b);Assert.That(b.Equals(a),Is.True);b.CatchIndex--;Assert.That(b.Equals(a),Is.False);b=a;b.CatchCount++;Assert.That(b.Equals(a),Is.False);}}
-            Assert.That(NetworkProtocol.Current,Is.EqualTo(22));var language=L.Language;try{foreach(var lang in new[]{"en","ko"}){L.SetLanguage(lang);foreach(var e in Table.Entries){Assert.That(L.Text(e.NameKey),Is.Not.Empty);Assert.That(e.Output.Icon,Is.Not.Null);}foreach(var r in C.Recipes.Where(r=>r.Id.StartsWith("fillet_")))Assert.That(L.Text(r.DisplayKey),Is.Not.Empty);}}finally{L.SetLanguage(language);}
+            Assert.That(NetworkProtocol.Current,Is.EqualTo(23));var language=L.Language;try{foreach(var lang in new[]{"en","ko"}){L.SetLanguage(lang);foreach(var e in Table.Entries){Assert.That(L.Text(e.NameKey),Is.Not.Empty);Assert.That(e.Output.Icon,Is.Not.Null);}foreach(var r in C.Recipes.Where(r=>r.Id.StartsWith("fillet_")))Assert.That(L.Text(r.DisplayKey),Is.Not.Empty);}}finally{L.SetLanguage(language);}
         }
     }
 }

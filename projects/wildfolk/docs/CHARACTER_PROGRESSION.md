@@ -104,7 +104,7 @@ Quarry HUD는 방위/거리구간/체력구간만 제공한다. Explorer는 도�
 
 ## Admission / receipt correction · 2026-10-22
 
-기본 SurvivorClassAdmission은 원격 Owned/Selected/XP/Nodes claim을 권위로 사용하지 않는다. Host 자신만 자신의 store에서 읽는다. 원격 profile GUID는 routing 식별자이며 인증이 아니다. Host profile을 remote route로 주장하면 거절한다. IClassAdmissionVerifier는 향후 인증된 entitlement/progression provider의 교체 경계다. 현재 원격 유료 직업 인증 backend는 없다.
+기본 SurvivorClassAdmission은 원격 Owned/Selected/XP/Nodes claim을 권위로 사용하지 않는다. Host 자신만 자신의 store에서 읽는다. 원격 profile GUID는 routing 식별자이며 인증이 아니다. Host profile을 remote route로 주장하면 거절한다. IClassAdmissionVerifier는 향후 인증된 entitlement/progression provider의 교체 경계다. Foundation2.1부터 원격 Engineer는 별도 서버 premium admission을 통과해야 하며 아래 현재 경계를 따른다.
 
 DevelopmentAlphaClassAdmission은 Editor/Development에서 명시 주입한 경우에만 claim을 canonical node/XP 규칙으로 검사한 세션 account를 만든다. Host 디스크에 원격 ownership/XP/nodes를 기록하지 않는다. ClassAdmissionLocks가 class/account/recent reward window를 같은 세션 재접속까지 보관하고 새 Host에서 지운다.
 
@@ -130,4 +130,8 @@ Head/Body/Utility와 별개 Accessory1칸을 공유 PlayerEquipment transaction�
 
 ## Launch Economy Foundation2 · 현재 경계
 
-Engineer 실제 가격120Gem, 기본 잔액0/업적·출석으로 획득 가능. 서버 ledger의 class_unlock receipt가 premium ownership 정본이며 Profile2/import/CommitClassProgress는 새 유료 소유를 증명하지 않는다. 구매 후 Account Sync가 별도 cloud Class cache를 받는다. 원격 MP admission의 Survivor/session-only 한계와 기존 공용 성장/Gold4직업60은 유지한다. [경제 전체 규칙](ECONOMY.md) · [실행·검증](../validation/launch-economy-foundation/REVIEW.md).
+Engineer 실제 가격120Gem, 기본 잔액0/업적·출석으로 획득 가능. 서버 ledger의 class_unlock receipt가 premium ownership 정본이며 Profile2/import/CommitClassProgress는 새 유료 소유를 증명하지 않는다. 구매 후 Account Sync가 별도 cloud Class cache를 받는다. 원격 Engineer는 Foundation2.1 서버 검증 뒤 허용한다. 원격 ClassXP/node는 session-only, 기존 공용 성장/Gold4직업60은 유지한다. [경제 전체 규칙](ECONOMY.md) · [실행·검증](../validation/launch-economy-foundation/REVIEW.md).
+
+## Foundation2.1 admission 현재 경계
+
+Host 로컬과 remote Engineer 모두 실제 서버 ownership을 발급·재검증한다. remote Owned JSON/선택/receipt만으로 승격하지 않는다. 처음 remote Engineer 입장 시 XP0/node빈 값이며 같은 authenticated player의 같은 세션 재접속만 임시 XP를 보존한다. 다른 계정/새 Host session은0부터다. 원격 성장을 account store에 쓰지 않는다. backend unavailable이면 Survivor로 세션만 fallback하고 영구 Engineer 선택/XP는 유지한다. Gold 직업의 기존 local Host 허용/원격 Survivor 정책은 변경하지 않았다. LAN/Relay 공통이며 Protocol23이다. 검증/재개 상태는 [Foundation2.1 REVIEW](../validation/economy-premium-mp-ledger/REVIEW.md)를 따른다.

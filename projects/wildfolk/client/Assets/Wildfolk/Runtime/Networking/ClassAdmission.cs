@@ -11,7 +11,7 @@ namespace Wildfolk
     }
     public interface IClassAdmissionVerifier
     {bool Verify(ClassAdmission claim,out AccountProgression account);}
-    // No remote entitlement service is connected. Unauthenticated peers start a fresh session as Survivor.
+    // Base admission: Gold/local claims remain untrusted. Premium verification runs before spawn.
     public sealed class SurvivorClassAdmission:IClassAdmissionVerifier
     {
         public bool Verify(ClassAdmission claim,out AccountProgression account)
@@ -33,16 +33,28 @@ namespace Wildfolk
     public sealed class ClassAdmissionLocks
     {
         private readonly Dictionary<string,ClassProgressSession> locks=new Dictionary<string,ClassProgressSession>();
-        public void Clear()=>locks.Clear();
+        private readonly Dictionary<string,string> premiumPlayers=new Dictionary<string,string>();
+        public void Clear(){locks.Clear();premiumPlayers.Clear();}
         public bool TryGet(string profile,out ClassProgressSession progress)=>locks.TryGetValue(profile,out progress);
-        public bool Admit(string localProfile,ClassAdmission claim,bool localHost,IClassAdmissionVerifier verifier,out ClassProgressSession progress)
+        public bool Admit(string localProfile,ClassAdmission claim,bool localHost,IClassAdmissionVerifier verifier,out ClassProgressSession progress,AccountProgression localSnapshot=null)
         {
             progress=null;if(claim==null || !LocalPlayerIdentity.Valid(claim.Profile) || localHost && claim.Profile!=localProfile || !localHost && claim.Profile==localProfile)return false;
             if(locks.TryGetValue(claim.Profile,out progress))return true;
             AccountProgression account;
-            try{if(localHost)account=ClassProfiles.Store.Read(localProfile);else if(verifier==null || !verifier.Verify(claim,out account))return false;account.Validate();}
+            try{if(localHost)account=localSnapshot??ClassProfiles.Store.Read(localProfile);else if(verifier==null || !verifier.Verify(claim,out account))return false;account.Validate();}
             catch(Exception){return false;}
             progress=new ClassProgressSession(account,localHost);locks.Add(claim.Profile,progress);return true;
+        }
+        public bool CompletePremium(string profile,PremiumChallenge challenge,PremiumAdmissionSnapshot verified,string player)
+        {
+            if(!locks.TryGetValue(profile,out var current)||current.Persistent||challenge?.Profile!=profile)return false;
+            var accepted=verified?.Matches(challenge,player)==true;
+            if(accepted){
+                if(current.Account.Selected=="engineer"&&premiumPlayers.TryGetValue(profile,out var old)&&old==player)return true;
+                var account=AccountProgression.New();account.Find("engineer").Owned=true;account.Selected="engineer";
+                locks[profile]=new ClassProgressSession(account,false);premiumPlayers[profile]=player;return true;
+            }
+            premiumPlayers.Remove(profile);if(current.Account.Selected=="engineer")locks[profile]=new ClassProgressSession(AccountProgression.New(),false);return false;
         }
     }
 }

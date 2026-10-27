@@ -131,3 +131,7 @@ Save14/Profile2/Protocol21/generation3는 유지한다. CloudProfile1은 별도 
 ## Launch Economy Foundation2 · 현재 경계
 
 Save14/local Profile2/CloudProfile1/generation3 유지. 새 경제 Schema1은 Protected lf_economy 정본이며 local Economy/<scope hash>.json은 별도 journal/cache다. Gem 부활은 기존 DeathSnapshot run/death/Dead와 primary world save를 대조해 복구하고 Save version을 올리지 않는다. 기존 사용자 world/Profile2를 업적/Gem으로 일괄 변환하지 않는다. [경제 전체 규칙](ECONOMY.md) · [실행·검증](../validation/launch-economy-foundation/REVIEW.md).
+
+## Foundation2.1 저장 경계
+
+world Save14/local Profile2/CloudProfile1/generation3는 그대로다. server Economy1→2만 archive checkpoint와 영구 private receipt를 추가하며 client economy snapshot은1이다. legacy 금융행·claim·잔액·Engineer receipt를 보존한다. session Class label은 소유권 증거가 아니며 remote XP는 world 재개로 영구 계정 XP가 되지 않는다. NGO Protocol23은 admission message 변경이다. 실제 사용자 save는 수정하지 않고 isolated QA만 사용했다. [재개/검증](../validation/economy-premium-mp-ledger/RESUME.md).

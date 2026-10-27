@@ -442,3 +442,7 @@ NetworkPlayer prefab에 NetworkClassActions/NetworkCommonGrowth를 등록한다.
 Owner RPC는 sender/sequence/현재생존/세션/능력·거리/LOS·inventory revision·target revision을 검사한다. release는 incapacitated/stale bag여도 hold를 해제한다. 공용 Growth/XP/Gold는 owner snapshot·투자RPC, Class/action·Quarry 구간·팀표식/구조buffer/Overclock은 Host state로 복제한다.
 
 SP/Host/프로필 저장과 실제 LAN/4actor simulation/단말 미검증은 validation/class-progression/REVIEW.md를 따른다.
+
+## Foundation2.1 · Protocol23
+
+remote Engineer는 LowfirePremiumAdmission 발급·Host 재검증을 거쳐 actor spawn 전에 허용한다. participant GUID는 routing이며 인증이 아니다. server PlayerId/Host/session/admission/profile/operation/90초 수명을 검증한다. 같은 세션 재접속은 새 admission으로 재검증하고 임시 XP를 보존하며 reHost/Continue는 새 session/XP0다. offline/미소유는 Survivor로 접속을 유지한다. Host 자기 Engineer도 같은 경계를 사용하며 Gold 정책은 유지한다. named message 추가로 Protocol23, serialized NetworkSession prefab의 오래된21도23으로 정정하고 Awake에서 Current를 적용한다. 실제 두 프로세스 LAN/Relay 성공과 미완료 회귀는 [REVIEW](../validation/economy-premium-mp-ledger/REVIEW.md)를 따른다. Host migration은 없다.

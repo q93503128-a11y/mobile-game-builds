@@ -1,0 +1,35 @@
+{
+  "Capacity": {
+    "ArchiveSegments": 1,
+    "HotRows": 256,
+    "IndexHardBytes": 4194304,
+    "IndexHardKeys": 2000,
+    "IndexShards": 256,
+    "ReceiptIndexBytes": 49988,
+    "ReceiptIndexEntries": 256,
+    "RootBytes": 147111,
+    "Status": "Healthy",
+    "TotalRows": 512
+  },
+  "Engineer": {
+    "GrantedAt": "2026-10-27T00:43:03.473Z",
+    "Id": "class_engineer",
+    "Proof": {
+      "BalanceAfter": 0,
+      "BalanceBefore": 120,
+      "BuildChannel": "Development",
+      "Delta": -120,
+      "MetadataVersion": 1,
+      "OperationId": "bbc83cb7bd204fd7b2430e5b8f6bb0d4",
+      "PlayerId": "rswNnaqzrWpL78IwQT0ybYEonKQ1",
+      "Reason": "class_unlock",
+      "Sequence": 2,
+      "SourceId": "class:engineer",
+      "Timestamp": "2026-10-27T00:43:03.473Z",
+      "TransactionId": "G-2-6b060ed7340c"
+    },
+    "TransactionId": "G-2-6b060ed7340c"
+  },
+  "Milliseconds": 1745,
+  "Schema": 2
+}

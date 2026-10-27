@@ -19,7 +19,7 @@ namespace Wildfolk
         public readonly NetworkVariable<ClassActionState> State=new NetworkVariable<ClassActionState>();
         private ulong sequence,lastRequest;private PlayerClass role;private PlayerInventory bag;private NetworkInventory inventory;private float nextTick;
         private void Awake(){role=GetComponent<PlayerClass>();bag=GetComponent<PlayerInventory>();inventory=GetComponent<NetworkInventory>();}
-        public override void OnNetworkSpawn(){State.OnValueChanged+=Changed;if(IsServer){role.Changed+=Publish;Publish();SendProfile();}else Apply(State.Value);}
+        public override void OnNetworkSpawn(){State.OnValueChanged+=Changed;if(IsServer){role.Changed+=Publish;Publish();SendProfile();}else Apply(State.Value);if(IsOwner&&NetworkSession.Instance?.PremiumMessageKey!=null)PlayerFeedback.ShowKey(NetworkSession.Instance.PremiumMessageKey);}
         public override void OnNetworkDespawn(){State.OnValueChanged-=Changed;role.Changed-=Publish;GetComponent<PlayerBuildingService>().Cancel();GetComponent<PlayerMedicine>().Cancel();GetComponent<PlayerTeamMarker>().Clear();}
         private void Changed(ClassActionState old,ClassActionState next){if(!IsServer)Apply(next);}
         private void Apply(ClassActionState value)

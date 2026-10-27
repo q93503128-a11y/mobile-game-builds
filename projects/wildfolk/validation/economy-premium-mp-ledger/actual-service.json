@@ -1,0 +1,89 @@
+{
+  "UTC": "2026-10-27T00:43:15.853350+00:00",
+  "classification": "ACTUAL DEVELOPMENT SERVICE; anonymous QA, not Google",
+  "tests": [
+    {
+      "case": "create isolated account 2",
+      "passed": true
+    },
+    {
+      "case": "create isolated wallet 2",
+      "passed": true
+    },
+    {
+      "case": "create isolated account 2",
+      "passed": true
+    },
+    {
+      "case": "create isolated wallet 2",
+      "passed": true
+    },
+    {
+      "case": "canonical scoped admin grant120",
+      "passed": true
+    },
+    {
+      "case": "actual Engineer unlock before archive",
+      "passed": true
+    },
+    {
+      "case": "server issues scoped remote premium snapshot",
+      "passed": true
+    },
+    {
+      "case": "authenticated Host verifies remote snapshot",
+      "passed": true
+    },
+    {
+      "case": "unowned own-wallet claim rejected",
+      "passed": true
+    },
+    {
+      "case": "actual reject SessionId",
+      "passed": true
+    },
+    {
+      "case": "actual reject AdmissionId",
+      "passed": true
+    },
+    {
+      "case": "actual reject PlayerId",
+      "passed": true
+    },
+    {
+      "case": "actual reject ProofId",
+      "passed": true
+    },
+    {
+      "case": "actual isolated Economy1 fixture512 prepared",
+      "passed": true,
+      "bytes": 254042
+    },
+    {
+      "case": "actual segment/index/root migration",
+      "passed": true,
+      "serverMilliseconds": 1745,
+      "httpWallSeconds": 2.2491633999998157
+    },
+    {
+      "case": "all512 actual financial rows byte-content preserved after archive",
+      "passed": true
+    },
+    {
+      "case": "actual archived source lookup and full balance-chain reconciliation",
+      "passed": true
+    },
+    {
+      "case": "Account projects Engineer after unlock row archived",
+      "passed": true
+    },
+    {
+      "case": "remote Engineer revalidated after archive",
+      "passed": true
+    },
+    {
+      "case": "player receives bounded recent hot history",
+      "passed": true
+    }
+  ]
+}

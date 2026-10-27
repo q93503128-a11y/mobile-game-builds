@@ -15,4 +15,4 @@ Foundation1.5 상태는 **PARTIALLY ACTIVE**다. development/alpha 환경·Cloud
 
 ## Launch Economy Foundation2 · 현재 경계
 
-Foundation2의 development/alpha 경제 배포와 개발 QA는 공개 출시 승인이 아니다. 실제 Google/PGS/Integrity/공개URL/실기기 Android·터치·공개 Production 활성화는 미완료다. 기존 remote MP Class admission은 premium 소유 증명을 처리하지 않는다. 경제 root 한계8192행/3MiB 도달 전 archive/지원 복구와 비용 모니터링을 운영해야 하며 Ads/IAP는 아직 구현하지 않는다. [경제 전체 규칙](ECONOMY.md) · [실행·검증](../validation/launch-economy-foundation/REVIEW.md).
+Foundation2의 development/alpha 경제 배포와 개발 QA는 공개 출시 승인이 아니다. 실제 Google/PGS/Integrity/공개URL/실기기 Android·터치·공개 Production 활성화는 미완료다. Foundation2.1은 remote Engineer 서버 증명과 Economy2 archive/지원 도구를 구현하고 실제 Development LAN/Relay/512행 이관을 확인했다. 최종 Android/SDK 회귀는 재개 목록에 남았다. root3MiB/index2000key·4MiB 운영 경고 전달/비용 모니터링은 공개 출시 전 필요하며 Ads/IAP는 아직 구현하지 않는다. [경제 전체 규칙](ECONOMY.md) · [실행·검증](../validation/launch-economy-foundation/REVIEW.md).

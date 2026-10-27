@@ -1,0 +1,52 @@
+{
+  "UTC": "2026-10-27T01:11:50.652492+00:00",
+  "state": "USER_REQUESTED_CHECKPOINT; FOUNDATION21_NOT_COMPLETE",
+  "startSHA": "b9ce7c6ce63b698b7ec575faae0e3fde611f0fcf",
+  "userSaveFiles": 2,
+  "userSavesHashMtimeBytesUnchanged": true,
+  "liveMcp": {
+    "editPassed": 13,
+    "playPassed": 1,
+    "playingAfter": false,
+    "sceneAfter": "MainMenu",
+    "sceneDirtyAfter": false,
+    "isolatedAfter": false,
+    "consoleErrorsAfter": 0,
+    "nativeFocusOrInputUsed": false
+  },
+  "backendTestsPassed": 95,
+  "actualHttpPassed": 20,
+  "hiddenEditPassed": 97,
+  "hiddenPlayPassed": 29,
+  "hiddenPlayFailed": 1,
+  "hiddenPlayFailure": "Explicit separate LAN death client lacked ready Host; deferred correct orchestration",
+  "actualLanAndRelayTwoProcessPassed": true,
+  "qaPlayersCleaned": 22,
+  "temporaryScriptsRemoved": [
+    "LowfirePremiumQaFixture",
+    "LowfirePremiumQaDebug",
+    "LowfirePremiumQaCleanup"
+  ],
+  "productionMutation": false,
+  "versions": {
+    "Save": 14,
+    "Profile": 2,
+    "CloudProfile": 1,
+    "ServerEconomy": 2,
+    "ClientEconomySnapshot": 1,
+    "Protocol": 23,
+    "Generation": 3
+  },
+  "remaining": [
+    "Final Android Alpha/Production compile",
+    "Actual SDK economy/attendance/Engineer/revive/refund regression on Schema2",
+    "Correctly orchestrated separate LAN death/Save/reHost and any required Boss/resource regression",
+    "Final diff/source review and requested full Foundation21 report"
+  ],
+  "measuredWallSecondsSinceImplementation": 4574.931957,
+  "initialFetchAndAuditTimeUnmeasured": true,
+  "perOperationTokens": null,
+  "next": "RESUME.md",
+  "sourceValidator": "PASS: Unity source structure, Landscape settings,1626 unique asset GUIDs, sprite references and visible text",
+  "privateQaKeysRemoved": 771
+}

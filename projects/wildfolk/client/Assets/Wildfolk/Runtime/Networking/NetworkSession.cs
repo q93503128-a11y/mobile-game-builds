@@ -10,7 +10,7 @@ using UnityEngine.SceneManagement;
 namespace Wildfolk
 {
     public enum NetworkSessionState { Idle,Connecting,Waiting,Loading,Playing,Closing }
-    public sealed class NetworkSession : MonoBehaviour
+    public sealed partial class NetworkSession : MonoBehaviour
     {
         public const int MaximumPlayers=4;
         public static NetworkSession Instance {get;private set;}
@@ -40,7 +40,7 @@ namespace Wildfolk
         {
             if(Instance!=null && Instance!=this){Destroy(gameObject);return;}
             Instance=this;DontDestroyOnLoad(gameObject);WorldRepository=SaveRepository.MultiplayerDefault();Application.wantsToQuit+=CanQuit;
-            Manager.AddNetworkPrefab(PlayerPrefab);
+            Manager.NetworkConfig.ProtocolVersion=NetworkProtocol.Current;Manager.AddNetworkPrefab(PlayerPrefab);
             foreach(var entry in EcologyPrefab.GetComponent<NetworkCreatureWorld>().Prefabs)Manager.AddNetworkPrefab(entry.NetworkPrefab);
             Manager.OnClientConnectedCallback+=Connected;Manager.OnClientDisconnectCallback+=Disconnected;
             Manager.OnTransportFailure+=TransportFailed;Manager.ConnectionApprovalCallback=Approve;
@@ -48,7 +48,7 @@ namespace Wildfolk
         private void OnDestroy()
         {
             if(Instance!=this)return;
-            Application.wantsToQuit-=CanQuit;Manager.OnClientConnectedCallback-=Connected;Manager.OnClientDisconnectCallback-=Disconnected;Manager.OnTransportFailure-=TransportFailed;Instance=null;
+            UnregisterPremiumMessages();Application.wantsToQuit-=CanQuit;Manager.OnClientConnectedCallback-=Connected;Manager.OnClientDisconnectCallback-=Disconnected;Manager.OnTransportFailure-=TransportFailed;Instance=null;
         }
         private bool CanQuit(){return !Manager.IsHost || NetworkWorldPersistence.Active==null || !NetworkWorldPersistence.Active.Ready || TrySaveWorld();}
         private void OnApplicationQuit(){quitting=true;operation++;}
@@ -68,7 +68,8 @@ namespace Wildfolk
             var ticket=++operation;Route=route;State=NetworkSessionState.Connecting;MessageKey="net.connecting";LastFailure=null;Notify();
             try
             {
-                ConfigureIdentity();PreparedWorld=null;identities.Clear();spawning.Clear();classLocks.Clear();
+                ConfigureIdentity();PreparedWorld=null;identities.Clear();spawning.Clear();classLocks.Clear();BeginPremiumSession();await PrepareHostPremium();
+                if(ticket!=operation||quitting)return false;
                 if(continueWorld && WorldRepository.Exists)
                 {
                     try{PreparedWorld=WorldRepository.Read(SaveRules.Validate);if(!PreparedWorld.IsMultiplayer || PreparedWorld.Multiplayer==null || PreparedWorld.Multiplayer.HostId!=LocalProfile)throw new InvalidOperationException("World belongs to a different local Host.");}
@@ -77,7 +78,7 @@ namespace Wildfolk
                 var code=await Connection(route).Host(Transport,MaximumPlayers);
                 if(ticket!=operation || quitting)return false;
                 if(!Manager.StartHost())throw new InvalidOperationException("Host transport did not start.");
-                AttachScenes();RoomCode=code;State=NetworkSessionState.Waiting;MessageKey="net.host_ready";Notify();return true;
+                RegisterPremiumMessages();AttachScenes();RoomCode=code;State=NetworkSessionState.Waiting;MessageKey=PremiumMessageKey??"net.host_ready";Notify();return true;
             }
             catch(Exception error){if(ticket==operation)ConnectionFailed(error,route==ConnectionRoute.Internet ? "net.online_unavailable" : "net.connection_failed");return false;}
         }
@@ -90,9 +91,10 @@ namespace Wildfolk
             var ticket=++operation;Route=route;State=NetworkSessionState.Connecting;MessageKey="net.connecting";LastFailure=null;Notify();
             try
             {
-                ConfigureIdentity();await Connection(route).Join(Transport,destination);
+                ConfigureIdentity();PremiumMessageKey=null;lastClientPremiumAdmission=null;await Connection(route).Join(Transport,destination);
                 if(ticket!=operation || quitting)return false;
                 if(!Manager.StartClient())throw new InvalidOperationException("Client transport did not start.");
+                RegisterPremiumMessages();
                 RoomCode=route==ConnectionRoute.Internet ? destination : string.Empty;StartCoroutine(JoinTimeout(ticket));return true;
             }
             catch(Exception error){if(ticket==operation)ConnectionFailed(error,"net.connection_failed");return false;}
@@ -106,9 +108,10 @@ namespace Wildfolk
             ClassAdmission admission=null;try{if(request.Payload?.Length<=2048)admission=JsonUtility.FromJson<ClassAdmission>(System.Text.Encoding.UTF8.GetString(request.Payload));}catch(Exception){}
             var id=admission?.Profile;
             var accepted=CanApprove(id,request.ClientNetworkId);
-            if(accepted)accepted=classLocks.Admit(LocalProfile,admission,request.ClientNetworkId==NetworkManager.ServerClientId,ClassVerifier,out _);
+            if(accepted&&ClassCatalog.Current.Find(admission.Selected)==null)accepted=false;
+            if(accepted)accepted=classLocks.Admit(LocalProfile,admission,request.ClientNetworkId==NetworkManager.ServerClientId,ClassVerifier,out _,hostPremiumSnapshot);
             response.Approved=accepted;response.CreatePlayerObject=false;
-            response.Pending=false;if(response.Approved)identities[request.ClientNetworkId]=id;else response.Reason=Manager.ConnectedClientsIds.Count>=MaximumPlayers ? "net.room_full" : LocalPlayerIdentity.Valid(id) ? "net.duplicate_player" : "net.connection_failed";
+            response.Pending=false;if(response.Approved){identities[request.ClientNetworkId]=id;QueuePremium(request.ClientNetworkId,admission);}else response.Reason=Manager.ConnectedClientsIds.Count>=MaximumPlayers ? "net.room_full" : LocalPlayerIdentity.Valid(id) ? "net.duplicate_player" : "net.connection_failed";
         }
         public bool CanApprove(string profile,ulong clientId)
         {
@@ -120,6 +123,7 @@ namespace Wildfolk
         {if(!Manager.IsServer || !CanApprove(profile,clientId))return false;identities[clientId]=profile;return true;}
         private void Connected(ulong id)
         {
+            if(Manager.IsServer&&id!=NetworkManager.ServerClientId&&premiumPending.ContainsKey(id))StartCoroutine(StartPremiumChallenge(id));
             if(!Manager.IsServer && id==Manager.LocalClientId){State=SceneManager.GetActiveScene().name==SceneFlow.MultiplayerScene ? NetworkSessionState.Playing : NetworkSessionState.Waiting;MessageKey="net.waiting_host";}
             Notify();
         }
@@ -148,7 +152,7 @@ namespace Wildfolk
         public void SpawnParticipant(ulong id)
         {
             var ecology=NetworkCreatureWorld.Active;
-            if(ecology==null || !ecology.Ready){if(spawning.Add(id))StartCoroutine(SpawnWhenReady(id));return;}
+            if(ecology==null || !ecology.Ready||premiumPending.ContainsKey(id)){if(spawning.Add(id))StartCoroutine(SpawnWhenReady(id));return;}
             if(!Manager.ConnectedClients.TryGetValue(id,out var client)||client.PlayerObject!=null)return;
             var order=0;foreach(var peer in Manager.ConnectedClientsIds){if(peer==id)break;order++;}var position=new Vector3((order%2)*3-1.5f,(order/2)*-3,0);
             var world=NetworkCreatureWorld.Active;if(world!=null)position+=(Vector3)world.World.Map.Spawn;
@@ -157,7 +161,7 @@ namespace Wildfolk
         }
         private IEnumerator SpawnWhenReady(ulong id)
         {
-            while(Manager.IsListening && (NetworkCreatureWorld.Active==null || !NetworkCreatureWorld.Active.Ready))yield return null;
+            while(Manager.IsListening && (NetworkCreatureWorld.Active==null || !NetworkCreatureWorld.Active.Ready||premiumPending.ContainsKey(id)))yield return null;
             spawning.Remove(id);
             if(Manager.IsServer && Manager.IsListening && NetworkCreatureWorld.Active!=null)SpawnParticipant(id);
         }
@@ -166,7 +170,7 @@ namespace Wildfolk
         {
             if(Manager.IsServer && Manager.ConnectedClients.TryGetValue(id,out var client) && client.PlayerObject!=null)
             {var player=client.PlayerObject.GetComponent<NetworkPlayer>();NetworkWorldPersistence.Active?.Remember(player);if(client.PlayerObject.IsSpawned)client.PlayerObject.Despawn();client.PlayerObject=null;}
-            identities.Remove(id);spawning.Remove(id);
+            identities.Remove(id);spawning.Remove(id);premiumPending.Remove(id);
         }
         public void Leave(bool returnHome=true,bool force=false)
         {
@@ -179,7 +183,7 @@ namespace Wildfolk
             // Leave NGO callbacks before stopping or loading another scene.
             yield return null;
             if(Manager.SceneManager!=null){Manager.SceneManager.OnLoadEventCompleted-=Loaded;Manager.SceneManager.OnSynchronizeComplete-=Synchronized;}
-            if(Manager.IsListening)Manager.Shutdown();
+            UnregisterPremiumMessages();premiumPending.Clear();if(Manager.IsListening)Manager.Shutdown();
             while(Manager.ShutdownInProgress)yield return null;
             RoomCode=string.Empty;identities.Clear();spawning.Clear();PreparedWorld=null;State=NetworkSessionState.Idle;Notify();
             if(returnHome && SceneManager.GetActiveScene().name==SceneFlow.MultiplayerScene)

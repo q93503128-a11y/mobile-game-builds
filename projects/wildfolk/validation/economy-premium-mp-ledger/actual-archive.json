@@ -1,0 +1,47 @@
+{
+  "classification": "ACTUAL DEVELOPMENT SERVICE on isolated account",
+  "playerId": "rswNnaqzrWpL78IwQT0ybYEonKQ1",
+  "seed": {
+    "Balance": 510,
+    "Bytes": 254042,
+    "LegacyRowsHash": "3776272ab8ac904a181c61205b1ea711e35adb0ef4e0ea3bf6ef478671b8954b",
+    "Rows": 512
+  },
+  "maintenance": {
+    "Capacity": {
+      "ArchiveSegments": 1,
+      "HotRows": 256,
+      "IndexHardBytes": 4194304,
+      "IndexHardKeys": 2000,
+      "IndexShards": 256,
+      "ReceiptIndexBytes": 49988,
+      "ReceiptIndexEntries": 256,
+      "RootBytes": 147111,
+      "Status": "Healthy",
+      "TotalRows": 512
+    },
+    "Engineer": {
+      "GrantedAt": "2026-10-27T00:43:03.473Z",
+      "Id": "class_engineer",
+      "Proof": {
+        "BalanceAfter": 0,
+        "BalanceBefore": 120,
+        "BuildChannel": "Development",
+        "Delta": -120,
+        "MetadataVersion": 1,
+        "OperationId": "bbc83cb7bd204fd7b2430e5b8f6bb0d4",
+        "PlayerId": "rswNnaqzrWpL78IwQT0ybYEonKQ1",
+        "Reason": "class_unlock",
+        "Sequence": 2,
+        "SourceId": "class:engineer",
+        "Timestamp": "2026-10-27T00:43:03.473Z",
+        "TransactionId": "G-2-6b060ed7340c"
+      },
+      "TransactionId": "G-2-6b060ed7340c"
+    },
+    "Milliseconds": 1745,
+    "Schema": 2
+  },
+  "allRowsPreserved": true,
+  "productionMutation": false
+}

@@ -104,3 +104,13 @@ Cloud Code JS에는 Node crypto가 없어 초기 배포가 실패했다. 정본�
 ## Launch Economy Foundation2 · 현재 경계
 
 LowfireEconomy는 lf_economy의 지급/차감/Claim/출석/Engineer/부활 reservation·compensation을 같은 CAS로 확정한다. Private economy_config Events=[]가 실제 non-production에 배포된다. admin.cjs economy-lookup/economy-adjust(reason/operator/case/operation 필수, default dry-run) 추가. ledger는 append-only8192행/root3MiB에서 fail-closed, audit64/op256/devices64/critical4096. 삭제 inventory에 lf_economy와 계정 economic cache/intent를 포함한다. Ads/IAP 이전 archive/용량/비용 검증 필요. provider/URL/실기기 미설정으로 제품 Enabled=false 유지. [경제 전체 규칙](ECONOMY.md) · [실행·검증](../validation/launch-economy-foundation/REVIEW.md).
+
+## Foundation2.1 운영 경계 · 2026-10-27 checkpoint
+
+Development/Alpha의 LowfireAccount/LowfireEconomy/LowfirePremiumAdmission 정본을 배포했다. Integrity/policy/creation gate는 변경하지 않았고 Production은 배포·활성화하지 않았다. 실제 서비스 검증은 신규 anonymous QA이며 Google 성공을 뜻하지 않는다.
+
+`economy-lookup`은 capacity/Engineer receipt 검증/last admission을 제공한다. `economy-history --before <absolute sequence> --limit <1..50>`, `economy-source --source <id>`, `economy-transaction --transaction <id>`, `economy-capacity`, `economy-reconcile [--cursor <JSON file>] [--limit <segments>]`, `economy-maintain [--apply]`를 추가했다. 기존 project/environment/player 또는 support scope와 operator credential을 사용한다. maintain 기본은 dry-run이며 reconcile은 bounded cursor로 이어간다. 경제 조정은 기존 reason/operator/case/operationId와 CAS를 유지한다.
+
+삭제는 environment별 archive Count+1(orphan 가능)와256 source/resolution bucket을 먼저 drain하고 player data, 마지막 Auth를 지운다. journal 완료 checkpoint 전에 실패하면 같은 environment를 재시도한다. 긴 이력의 삭제/지원 조회 요청 수는 이력 크기에 비례하며 작업 시간·비용을 운영에서 관찰해야 한다. raw token/secret은 저장하지 않는다. 미래 Ads/IAP global receipt registry의 법적 retention/restore/deletion 정책은 실제 provider 도입 전에 확정한다.
+
+audit64/day·활성 proof16/90초·mutation budget500/day, rejected proof는 bounded suspicious와 reason으로 남기며 자동 ban은 없다. malformed/replay/cross-player/session/revision을 거절하고 성공 ownership은 재조회한다. 수정된 Host gameplay와 능동 LAN MITM 전체를 방어하는 anti-cheat가 아니다. 최종 QA/정리 결과와 남은 항목은 [RESUME](../validation/economy-premium-mp-ledger/RESUME.md)를 따른다.

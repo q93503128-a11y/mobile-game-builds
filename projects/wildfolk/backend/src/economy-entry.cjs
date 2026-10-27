@@ -15,11 +15,11 @@ module.exports=async({params,context,logger})=>{
   const ctx={playerId:context.playerId,projectId:context.projectId,environmentId:context.environmentId,channel:policy.channel,buildVersion:params.buildVersion,correlationId,supportId:account.SupportId,linked:identity.data.externalIds?.some(i=>i.providerId==='google-play-games')===true};
   if(params.operation==='SubmitProgress'&&policy.channel!=='Development'){
    requireThat(ctx.linked&&policy.approvedBuilds.includes(params.buildVersion),'integrity_required');
-   const existing=(await new CloudSaveStore(api,context.projectId,correlationId,'lf_economy').read(context.playerId))?.value;
+   const existing=(await new CloudSaveStore(api,context.projectId,correlationId,'lf_economy',context.environmentId).read(context.playerId))?.value;
    if(existing?.Operations?.some(o=>o.Id===params.input?.operationId&&o.Result?.ok===true))ctx.trustedBuild=true;
    else {const proof=await axios.post('https://cloud-code.services.api.unity.com/v1/projects/'+context.projectId+'/scripts/LowfireIntegrityVerify',{params:{purpose:'economy',operationId:params.input?.operationId,buildVersion:params.buildVersion,integrityToken:params.input?.integrityToken}},{headers:{Authorization:'Bearer '+context.accessToken},timeout:10000});ctx.trustedBuild=proof.data.output?.verified===true;}
   }
-  const result=await new EconomyBackend(new CloudSaveStore(api,context.projectId,correlationId,'lf_economy'),policy,config).execute(ctx,params.operation,params.input||{});
+  const result=await new EconomyBackend(new CloudSaveStore(api,context.projectId,correlationId,'lf_economy',context.environmentId),policy,config).execute(ctx,params.operation,params.input||{});
   logger.info(JSON.stringify({correlationId,operation:params.operation,result:result.ok?'ok':'rejected',reason:result.error||'',playerId:context.playerId}));return {...result,correlationId};
  }catch(e){const error=e instanceof Rejected?e.code:'cloud_unavailable';logger.warning(JSON.stringify({correlationId,result:'error',reason:error}));return {ok:false,error,correlationId};}
 };
