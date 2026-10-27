@@ -105,7 +105,7 @@ Cloud Code JS에는 Node crypto가 없어 초기 배포가 실패했다. 정본�
 
 LowfireEconomy는 lf_economy의 지급/차감/Claim/출석/Engineer/부활 reservation·compensation을 같은 CAS로 확정한다. Private economy_config Events=[]가 실제 non-production에 배포된다. admin.cjs economy-lookup/economy-adjust(reason/operator/case/operation 필수, default dry-run) 추가. ledger는 append-only8192행/root3MiB에서 fail-closed, audit64/op256/devices64/critical4096. 삭제 inventory에 lf_economy와 계정 economic cache/intent를 포함한다. Ads/IAP 이전 archive/용량/비용 검증 필요. provider/URL/실기기 미설정으로 제품 Enabled=false 유지. [경제 전체 규칙](ECONOMY.md) · [실행·검증](../validation/launch-economy-foundation/REVIEW.md).
 
-## Foundation2.1 운영 경계 · 2026-10-27 checkpoint
+## Foundation2.1 운영 경계 · 2026-10-27 완료
 
 Development/Alpha의 LowfireAccount/LowfireEconomy/LowfirePremiumAdmission 정본을 배포했다. Integrity/policy/creation gate는 변경하지 않았고 Production은 배포·활성화하지 않았다. 실제 서비스 검증은 신규 anonymous QA이며 Google 성공을 뜻하지 않는다.
 
@@ -113,4 +113,6 @@ Development/Alpha의 LowfireAccount/LowfireEconomy/LowfirePremiumAdmission 정�
 
 삭제는 environment별 archive Count+1(orphan 가능)와256 source/resolution bucket을 먼저 drain하고 player data, 마지막 Auth를 지운다. journal 완료 checkpoint 전에 실패하면 같은 environment를 재시도한다. 긴 이력의 삭제/지원 조회 요청 수는 이력 크기에 비례하며 작업 시간·비용을 운영에서 관찰해야 한다. raw token/secret은 저장하지 않는다. 미래 Ads/IAP global receipt registry의 법적 retention/restore/deletion 정책은 실제 provider 도입 전에 확정한다.
 
-audit64/day·활성 proof16/90초·mutation budget500/day, rejected proof는 bounded suspicious와 reason으로 남기며 자동 ban은 없다. malformed/replay/cross-player/session/revision을 거절하고 성공 ownership은 재조회한다. 수정된 Host gameplay와 능동 LAN MITM 전체를 방어하는 anti-cheat가 아니다. 최종 QA/정리 결과와 남은 항목은 [RESUME](../validation/economy-premium-mp-ledger/RESUME.md)를 따른다.
+audit64/day·활성 proof16/90초·mutation budget500/day, rejected proof는 bounded suspicious와 reason으로 남기며 자동 ban은 없다. malformed/replay/cross-player/session/revision을 거절하고 성공 ownership은 재조회한다. 수정된 Host gameplay와 능동 LAN MITM 전체를 방어하는 anti-cheat가 아니다. 최종 QA/정리 결과와 남은 출시 설정은 [RESUME](../validation/economy-premium-mp-ledger/RESUME.md)를 따른다.
+
+재개 완료: Android57/57 compile, 실제 SDK의 Economy2 출석/업적 수령·중복방지/Engineer120/부활8·환급·무료Home/Save14와 별도2process death NUnit 및 Boss/resource LAN 회귀를 통과했다. 이번 재개에서 추가된 코드는 Editor/검증 harness뿐이며 Runtime/backend/product 설정은 변경하지 않았다. 원래22개와 이번8개 신규 QA identity를 모두 정리했고 서비스의 Private/player data→Auth 순서를 지켰다. 실제 서비스429는 안전한 단계/HTTP코드/Retry-After만 기록했고 대기 후 성공했다. product6개(Development/Alpha3개씩) published hash가 checkpoint와 같음을 재조회했다. [완료 기록](../validation/economy-premium-mp-ledger/REVIEW.md#2026-10-27-재개-완료).

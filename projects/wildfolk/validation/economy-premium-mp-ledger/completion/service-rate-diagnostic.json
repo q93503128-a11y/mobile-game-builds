@@ -1,0 +1,23 @@
+{
+  "UTC": "2026-10-27T04:58:51.532848+00:00",
+  "classification": "ACTUAL DEVELOPMENT; scoped temporary helper; no tokens/payloads",
+  "playerId": "XfjgrXWzD9MMy8OX0P3TauxlX9NB",
+  "status": 200,
+  "result": {
+    "checks": [
+      {
+        "code": 50,
+        "http": 429,
+        "ok": false,
+        "retryAfter": "69",
+        "step": "identity"
+      },
+      {
+        "code": 51,
+        "http": 401,
+        "ok": false,
+        "step": "admin-identity"
+      }
+    ]
+  }
+}

@@ -97,7 +97,7 @@ namespace Wildfolk.Editor
                     File.WriteAllText(Path.Combine(Dir,"marked.txt"),Boss.Marked.GetComponent<NetworkPlayer>().ProfileId);Ack(stage);
                 }
                 else if(stage=="economy_progress")
-                {yield return Wait(()=>EconomyService.Get().LocalValue("fish")==1,"owner-only economic RPC delivered and duplicate source coalesced");File.WriteAllText(Path.Combine(Dir,"economy-owner-client.json"),"{\"Fish\":1,\"Protocol\":22}");Ack(stage);}
+                {yield return Wait(()=>EconomyService.Get().LocalValue("fish")==1,"owner-only economic RPC delivered and duplicate source coalesced");File.WriteAllText(Path.Combine(Dir,"economy-owner-client.json"),"{\"Fish\":1,\"Protocol\":"+NetworkProtocol.Current+"}");Ack(stage);}
                 else if(stage=="transfer")
                 {
                     yield return Wait(()=>Boss.Marked!=null && Boss.Marked.IsAlive && Boss.Marked.GetComponent<NetworkPlayer>().ProfileId!=Read("marked.txt"),"mark transferred off incapacitated player");Ack(stage);

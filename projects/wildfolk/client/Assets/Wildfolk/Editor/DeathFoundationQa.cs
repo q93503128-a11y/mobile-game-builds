@@ -10,7 +10,7 @@ namespace Wildfolk.Editor
     public static class DeathFoundationQa
     {
         public static string Phase {get;private set;}="idle";
-        private static string Root=>Path.GetFullPath("Captures/death-revive-respawn");
+        private static string Root=>Path.GetFullPath(Environment.GetEnvironmentVariable("LOWFIRE_DEATH_RESULTS")??"Captures/death-revive-respawn");
         private static WorldSaveService save;private static PlayerInventory bag;private static PlayerDeath death;private static WorldGenerator world;
         private static NetworkSession host;private static NetworkPlayer actor;private static ulong sequence=10000;
         private static void Log(string s){Directory.CreateDirectory(Root);File.AppendAllText(Root+"/live.tsv",DateTime.UtcNow.ToString("O")+"\t"+Phase+"\t"+s+"\n");}
@@ -92,10 +92,10 @@ namespace Wildfolk.Editor
             foreach(var p in peers)p.NetworkObject.Despawn();Check(host.TrySaveWorld(),"Host saves lifecycle world");Kill(death);Check(host.TrySaveWorld(),"Host Dead saved");host.Leave();yield return new WaitUntil(()=>host.State==NetworkSessionState.Idle);yield return null;yield return null;yield return EnterHost(true);Check(death.State==PlayerLife.Dead,"actual Host/reHost restores Dead");Check(death.HomeRespawn(),"reHost free Home");yield return Shot("08-rehost-home");host.Leave();yield return new WaitUntil(()=>host.State==NetworkSessionState.Idle);
         }
 
-        private static string LanRoot=>Path.Combine(Path.GetTempPath(),"LowfireDeathLan19");
+        private static string LanRoot=>Environment.GetEnvironmentVariable("LOWFIRE_DEATH_QA_DIR")??Path.Combine(Path.GetTempPath(),"LowfireDeathLan19");
         private static string lanRun;
-        private static void Send(string phase){Directory.CreateDirectory(LanRoot);File.WriteAllText(LanRoot+"/phase",lanRun+"|"+phase);Step("lan-"+phase);}
-        private static string Read(string name){try{return File.ReadAllText(LanRoot+"/"+name);}catch(IOException){return "";}}
+        private static void Send(string phase){Directory.CreateDirectory(LanRoot);var file=LanRoot+"/phase";File.WriteAllText(file+".next",lanRun+"|"+phase);if(File.Exists(file))File.Replace(file+".next",file,null);else File.Move(file+".next",file);Step("lan-"+phase);}
+        private static string Read(string name){try{using(var stream=new FileStream(LanRoot+"/"+name,FileMode.Open,FileAccess.Read,FileShare.ReadWrite|FileShare.Delete))using(var reader=new StreamReader(stream))return reader.ReadToEnd();}catch(IOException){return "";}}
         private static void Ack(string phase)=>File.WriteAllText(LanRoot+"/ack",lanRun+"|"+phase);
         private static IEnumerator WaitAck(string phase,float seconds=30)
         {var until=Time.realtimeSinceStartup+seconds;while(Time.realtimeSinceStartup<until && Read("ack")!=lanRun+"|"+phase)yield return null;Check(Read("ack")==lanRun+"|"+phase,"real Client acknowledged "+phase);}

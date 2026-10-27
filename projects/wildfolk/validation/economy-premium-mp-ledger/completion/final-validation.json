@@ -1,0 +1,62 @@
+{
+  "UTC": "2026-10-27T05:14:18.069009+00:00",
+  "status": "COMPLETE_FOUNDATION21_IMPLEMENTATION_AND_SCOPED_VALIDATION; STOP_BEFORE_FOUNDATION3",
+  "originalStartSHA": "b9ce7c6ce63b698b7ec575faae0e3fde611f0fcf",
+  "resumeSHA": "e99436a8561ed9179cf9e879a6210a4dfd5e1f13",
+  "previousResults": {
+    "backend": 95,
+    "EditMode": 97,
+    "LiveMcpEditRepeated": 13,
+    "LiveMcpPlay": 1,
+    "actualHttp": 20,
+    "actualPremiumLAN": true,
+    "actualPremiumRelay": true,
+    "actualLegacy512Archive": true,
+    "ledgerModelRows": [
+      10000,
+      50000,
+      100000
+    ]
+  },
+  "finalResults": {
+    "AndroidAlphaAssemblies": 57,
+    "AndroidProductionAssemblies": 57,
+    "DevelopmentFixtureExcluded": true,
+    "actualSdkEconomyAssertions": 13,
+    "actualSdkProgressAchievementAssertions": 6,
+    "actualNunitDeathHost": 1,
+    "actualNunitDeathClient": 1,
+    "previousExplicitClientFailureResolved": true,
+    "actualBossResourceRehostLan": true,
+    "sourceValidator": "PASS1626GUID",
+    "distinctPassedPlayTestsAcrossPass": 32,
+    "userSaveHashMtimeBytesUnchanged": true,
+    "userSaveFiles": 2,
+    "newQaIdentitiesRemoved": 8,
+    "priorQaIdentitiesRemoved": 22,
+    "credentialPatternsFound": 0,
+    "publishedProductScriptHashesUnchanged": 6,
+    "readOnlyLiveRuntimeFilesEqual": 652
+  },
+  "versions": {
+    "Save": 14,
+    "Profile": 2,
+    "CloudProfile": 1,
+    "serverEconomy": 2,
+    "clientEconomySnapshot": 1,
+    "Protocol": 23,
+    "generation": 3
+  },
+  "knownLimits": [
+    "Product backend Enabled=false; actual PGS/OAuth/Integrity/URLs/device/Production release setup incomplete",
+    "600/hour per-IP Authentication Client budget and real429 observed; production load/latency/quota/alert verification remains",
+    "Host authoritative game/offline progress is not dedicated-server anti-cheat; LAN active MITM not solved",
+    "Archive/source keys remain finite operational limits, retention/cost and warning delivery require operations",
+    "Future Ads/IAP provider SDK/SSV/restore/refund/legal receipt retention not implemented",
+    "Current resume had no Unity MCP tools; previous checkpoint actual MCP verification preserved; Live Editor/Test harness files not synced this resume"
+  ],
+  "sourceScope": "This resume changes only four Editor/Test QA files plus docs/evidence; runtime/backend/config/prices unchanged",
+  "perOperationTokens": null,
+  "productionMutation": false,
+  "next": "Wait for explicit user instruction; do not start Ads/IAP/Store/Audio/content"
+}

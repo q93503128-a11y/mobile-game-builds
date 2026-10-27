@@ -15,4 +15,6 @@ Foundation1.5 상태는 **PARTIALLY ACTIVE**다. development/alpha 환경·Cloud
 
 ## Launch Economy Foundation2 · 현재 경계
 
-Foundation2의 development/alpha 경제 배포와 개발 QA는 공개 출시 승인이 아니다. 실제 Google/PGS/Integrity/공개URL/실기기 Android·터치·공개 Production 활성화는 미완료다. Foundation2.1은 remote Engineer 서버 증명과 Economy2 archive/지원 도구를 구현하고 실제 Development LAN/Relay/512행 이관을 확인했다. 최종 Android/SDK 회귀는 재개 목록에 남았다. root3MiB/index2000key·4MiB 운영 경고 전달/비용 모니터링은 공개 출시 전 필요하며 Ads/IAP는 아직 구현하지 않는다. [경제 전체 규칙](ECONOMY.md) · [실행·검증](../validation/launch-economy-foundation/REVIEW.md).
+Foundation2의 development/alpha 경제 배포와 개발 QA는 공개 출시 승인이 아니다. 실제 Google/PGS/Integrity/공개URL/실기기 Android·터치·공개 Production 활성화는 미완료다. Foundation2.1은 remote Engineer 서버 증명과 Economy2 archive/지원 도구를 구현하고 실제 Development LAN/Relay/512행 이관을 확인했다. 최종 Android Alpha/Production compile·실제 SDK·별도 death/Boss/resource LAN 회귀는 통과했다. root3MiB/index2000key·4MiB 운영 경고 전달/비용 모니터링은 공개 출시 전 필요하며 Ads/IAP는 아직 구현하지 않는다. [경제 전체 규칙](ECONOMY.md) · [실행·검증](../validation/launch-economy-foundation/REVIEW.md).
+
+Foundation2.1 재개 검증 중 Cloud Code의 Authentication Get Player 조회에서 실제429(code50, Retry-After69초)를 관측했다. 대기 후 동일 서버 검증 경계로 실제 SDK 회귀를 통과했으며 client bool/캐시·admin credential 우회는 적용하지 않았다. 공개 활성화 전 upstream 인증 요청량·지연·429와 Cloud Save bytes/operation quota를 함께 관찰하고, 장애 시 Survivor/무료Home을 유지하는 운영 대응을 검수한다. [공식 Client API 제한](https://docs.unity.com/en-us/oas-player-auth-client/1.0.0) · [실행 근거](../validation/economy-premium-mp-ledger/completion/service-rate-diagnostic.json).

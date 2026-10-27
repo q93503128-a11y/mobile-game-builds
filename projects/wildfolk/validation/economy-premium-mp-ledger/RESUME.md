@@ -1,21 +1,15 @@
-# Foundation2.1 · 중단 및 다음 재개
+# Foundation2.1 완료 및 인계 · 2026-10-27
 
-2026-10-27 사용자 사용량 요청으로 현재 검증 묶음까지 마치고 중단한다. **전체 Foundation2.1은 아직 완료하지 않았다. 다음 기능은 시작하지 않는다.** 코드/문서/evidence를 main checkpoint commit으로 보존한다. 시작 SHA b9ce7c6ce63b698b7ec575faae0e3fde611f0fcf. 최종 checkpoint SHA는 git log의 해당 commit을 기준으로 한다.
+**Foundation2.1 구현·관련 검증 완료. 여기서 STOP.** 사용자 요청으로 저장했던 e99436a checkpoint를 remote fetch/clean 확인 후 재개해 남은 Android/SDK/death/Boss/resource 회귀를 끝냈다. 전체 시작 b9ce7c6ce63b698b7ec575faae0e3fde611f0fcf, 재개 e99436a8561ed9179cf9e879a6210a4dfd5e1f13. 최종 main SHA는 이 문서를 포함한 완료 commit의 git log 및 최종 보고를 기준으로 한다.
 
-## 완료한 묶음
+* Android Alpha/Production57/57 script compile 및 fixture 제외 PASS.
+* 실제 Development Unity SDK: 출석/업적 수령·중복 방지/Engineer120/부활8·실패환급/무료Home/Save14 PASS. 실제 Google 아님.
+* 이전 전제조건 오류1건은 별도 ready Host+Client 실제 NUnit1+1 PASS로 해결. 사망·구조·재접속·Save/reHost 확인.
+* 실제 LAN Boss/resource/chunk/owner economy event/reconnect/reHost PASS. premium 실제 LAN/Relay는 이전 checkpoint에서 성공.
+* Node95/Edit97/이전 Live MCP13+1/실제 HTTP20/512 archive 및10k·50k·100k 모델은 이전 실행 결과로 보존. 반복 합산하지 않는다.
+* 초기 서비스429는 Retry-After 관측 후 대기해 해결했으며 인증 우회 없음. 원래22+이번8 QA identity·temp script 정리, 사용자save 해시/mtime/bytes 동일.
+* Runtime/backend/config는 재개 중 변경하지 않았다. Live Unity runtime은 이전 검증 소스와 같다. 이번 Editor/Test QA4파일은 canonical/isolated QA에만 반영했으며 MCP 미제공으로 사용자 Editor를 조작하지 않았다.
 
-서버 Engineer admission, 공통 LAN/Relay spawn gate, Host/remote/reconnect/unavailable, Economy2 archive/index/migration/영구 중복 방지/admin·deletion 경계, canonical docs. Node95/95, hidden Edit97/97, Play29통과+명시적LAN테스트의Host없음1실패, Live MCP Edit13/13·Play1/1. 실제 HTTP20/20/legacy512archive와 실제 두프로세스 LAN/Relay 성공. 가격/콘텐츠/Save14/Profile2/CloudProfile1/generation3 불변, Protocol23. Development/Alpha만 관련3script 배포, Production 변경 없음. 실제 Google/PGS 성공 아님.
+현재 Save14/Profile2/CloudProfile1/serverEconomy2/client snapshot1/Protocol23/generation3. 가격·보상·콘텐츠·직업/보스 수치 변화 없음. Product backend Enabled=false; 실제 Google/PGS/OAuth/Integrity/공개URL/실기기/Production 활성화는 외부 출시 설정이다.
 
-## 다음 순서
-
-1. remote main fetch → local HEAD 일치/clean → AGENTS/README 및 이 REVIEW와 정본 docs 재독. 현재 원격 소스를 우선한다.
-2. source/code/diff 최종 검수와 남은 관련 필수 체크를 실행한다. source validator는 이번 checkpoint에서 PASS(1626 unique GUID)했다. 프로젝트에 이미 있는 검증 도구를 먼저 확인한다.
-3. 최종 Android Alpha/Production compile 검증. 실제 device/PGS/OAuth/Integrity/Privacy·삭제URL은 사용자 설정 전 불가이며 가짜 설정을 만들지 않는다.
-4. EconomyQa.ActualBatch로 새Schema2 실제 SDK 업적/출석/Engineer/부활8차감·실패환급/무료Home/Save14 회귀. 새 isolated identity만 만들고 QA목록을 기록한 뒤 private→player data→Auth 순으로 정리한다. 이전에 삭제한 QA ID를 재사용하지 않는다.
-5. broad Play의 Explicit ActualSeparateLanClientLifecycle을 ready Host 없이 넣은1실패를 전체 통과라고 하지 않는다. 실제 ready Host를 먼저 띄우는 기존 DeathFoundationQa 별도2process 흐름으로 관련 death/Save/reHost 회귀를 실행한다. 필요 시 기존 Boss/resource LAN 회귀를 재사용한다. 이미 성공한 premium LAN/Relay/Node 모델을 변경 근거 없이 반복하지 않는다.
-6. Live source는25파일 반영·MCP 검증 완료. 새 변경이 생기면 사용자 edit-mode 및 씬dirty 여부 확인, baseline 비교/backup 후 필요한 source만 반영한다. 실제UserData는 수정 금지. Play 테스트는 isolated QA 경로만.
-7. Foundation2.1 요청의 최종20항목 보고를 완성하고 docs의 checkpoint/미완료 표시를 실제 결과에 맞게 갱신한다. main commit/push → remote SHA 재조회 → HEAD일치/clean 확인 후 STOP.
-
-## 정리/보호 증거
-
-qa-cleanup.json의 completed=true와 temporaryScriptsRemoved를 확인한다. 사용자 save 해시/mtime/bytes 전후 비교, Live MCP 최종 edit/MainMenu/console은 checkpoint-final.json을 따른다. 실제 secrets/session token은 Git/채팅에 저장하지 않는다. per-operation token은 도구로 측정할 수 없어 null이며 시간만 timing.json에 실측한다. 오래된 pass REVIEW는 덮어쓰지 않는다.
+다음 작업은 사용자 지시 후 진행한다. Rewarded Ads/IAP/Store/Audio/Mount/WB IV/추가 Boss를 자동으로 시작하지 않는다. Foundation3의 내부 receipt·idempotency 준비는 실제 provider/SDK/SSV가 구현됐다는 뜻이 아니다. [REVIEW 완료 절](REVIEW.md#2026-10-27-재개-완료), [최종검증](completion/final-validation.json), [시간](completion/TIMING.md), [외부 설정](../../docs/SETUP_REQUIRED.md)을 참조한다. 새 작업은 반드시 remote main fetch와 required canonical docs 재독으로 시작한다.

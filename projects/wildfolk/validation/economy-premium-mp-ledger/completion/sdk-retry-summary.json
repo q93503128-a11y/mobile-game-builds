@@ -1,0 +1,22 @@
+{
+  "initial": {
+    "startUTC": "2026-10-27T04:51:11.719360+00:00",
+    "endUTC": "2026-10-27T04:52:25.200195+00:00",
+    "exit": 1
+  },
+  "second": {
+    "startUTC": "2026-10-27T04:55:06.497600+00:00",
+    "endUTC": "2026-10-27T04:56:05.302217+00:00",
+    "exit": 1
+  },
+  "final": {
+    "stage": "actual",
+    "startUTC": "2026-10-27T05:00:59.052721+00:00",
+    "endUTC": "2026-10-27T05:02:03.171577+00:00",
+    "wallSeconds": 64.11883840000019,
+    "exit": 0
+  },
+  "cause": "Actual downstream Authentication Get Player429/code50; diagnostic Retry-After69sec; after cooldown real SDK passes without bypass",
+  "initialLogs": "prior-attempts/actual-initial/",
+  "secondFailureRecordedBySafeDiagnostic": true
+}

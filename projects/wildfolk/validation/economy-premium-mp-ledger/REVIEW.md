@@ -118,3 +118,33 @@ Save14/Profile2/CloudProfile1/generation3 유지, serverEconomy2/client snapshot
 |1095|10|0|11328|43/320|4384018|3302400|
 |1095|10|1|11365|43/357|4398337|3302400|
 |1095|10|3|11439|43/431|4426976|3302400|
+
+## 2026-10-27 재개 완료
+
+재개 시작은 remote main `e99436a8561ed9179cf9e879a6210a4dfd5e1f13` fetch 후 local 일치/clean/main을 확인했다. 위 checkpoint는 당시 기록으로 유지한다. **Foundation2.1 구현·요구된 관련 검증을 완료**했고 다음 기능은 시작하지 않는다. 전체 패스의 최초 시작 SHA는 `b9ce7c6ce63b698b7ec575faae0e3fde611f0fcf`다. 최종 SHA는 이 완료 기록을 포함한 main commit을 기준으로 최종 보고한다.
+
+|남았던 검증|실제 실행과 결과|근거/경계|
+|---|---|---|
+|Android Alpha/Production|57/57 assembly compile, 두 채널 fixture identity 제외 확인|completion/android-scripts.json, 내부85.273초/process142.056초; AAB·실기기·Google 성공 아님|
+|실제 SDK 경제/저장|초기0→출석3→scoped QA admin+200→Engineer−120=83→부활−8=75→실패부활 예약−8/환급+8=75, offline 무료Home/Save14|completion/actual/checks.json 13개 PASS, actual-sdk.json; actual Google=false|
+|실제 SDK 업적/중복방지|outbox중 새 fish event는 다음 flush에 정확히1회 반영, fish3 첫tier Claim1Gem, 반복Claim도 원장1행|completion/progress/checks.json 6개 PASS, actual-progress.json; 실제 server Economy2 잔액1/receipt1 대조|
+|초기 Play 전제조건 실패 해결|ready Host 먼저 실행 후 별도 Client NUnit, 각각1/1 PASS|completion/death-host.xml/client.xml/process.json; 실제 NGO LAN, Host101.734초/Client49.969초, 전체155.534초|
+|death/Save/reconnect|쌍방 실제구조/40HP, 피격중단,24초Dead, 무료Home 중복RPC, 전원Down, down상태disconnect, reconnectDead, Save/reHostDead/Home|completion/death-host/client.tsv; Host/Client 실제프로세스, four-actor simulation과 구분|
+|기존 boss/resource/경제RPC|실제 LAN2process, 격리개발 Medic/Explorer admission, ownerFish1/Protocol23, boss offering/reward, resource/chunk/reconnect/reHost 회귀|completion/lan-results.json·lan-host/client.tsv, exit0/0,143.526초; 이 Gold fixture를 premium 서비스 증명으로 보고하지 않음|
+|제품 소스/배포|Runtime/backend/config 변경 없음, Development/Alpha product3개씩 published SHA256 동일|completion/published-code-verification.json; Production 무변경|
+|QA 정리/사용자save|이번 추가8 identity 제거, temporary diagnostic/cleanup 제거, save 해시·mtime·bytes 동일|completion/qa-cleanup.json + early-sdk-qa-cleanup.json + cleanup-verification.json; 앞 checkpoint22개와 별도|
+
+실제 SDK 연결 최초2실행은 Account cloud_unavailable로 실패했다. temp scoped diagnostic에서 Cloud Save policy/protected reads200, Authentication Get Player429/code50·Retry-After69초를 확인했다. 서비스 안내 대기 후 같은 정본 SDK 경로로 성공했으며 권위 검증을 생략하거나 다른 credential로 대체하지 않았다. admin serviceToken probe는401로 거절됐고 제품 구현에 도입하지 않았다. 처음 실패한 SDK는 PlayerId 기록 전에 종료돼, 원래 process04:51:11~04:52:25UTC의 유일한 anonymous 생성 ID를 read-only metadata로 확인해 정리했다. 다음 실행부터 ID를 Connect 전에 기록한다. 이력/진단에는 credential/token/HTTP header payload를 남기지 않았다.
+
+|추가 공식 근거|실제 관찰|적용과 배제|
+|---|---|---|
+|[Authentication Client API](https://docs.unity.com/en-us/oas-player-auth-client/1.0.0): 대부분endpoint IP별15/sec·600/hour,429에Retry-After초|Cloud Code→Get Player429, 실제69초헤더|검증경계를 유지한 대기 후 재시도, 추가 운영 모니터링/출시 검수. cached owned bool·admin credential fallback·인증 우회 배제|
+|[Cloud Code token support](https://docs.unity.com/en-us/cloud-code/scripts/how-to-guides/token-support): player access와service token 권한구분|service token으로 Auth Admin 조회401|이를 지원한다고 가정하지 않으며 product 기존 self identity 검증 유지, 새secret 불필요|
+
+Editor QA의 Protocol22 하드코딩 문구/JSON은 Current를 읽도록 정정했다. 기존 Explicit Client 검사에 대응하는 Explicit Host 검사를 추가하고 isolated 경로/이전 SessionState 복원을 사용한다. 두프로세스 signal은 atomic phase replace/shared-read로 처리한다. 검증 harness를 개선한 것이며 runtime class/world/보스/경제 가격은 바뀌지 않았다.
+
+전체 패스의 Node95/95와 hidden Edit97/97, Live MCP Edit13/13·Play1/1, 실제 HTTP20/20·legacy512 archive·premium LAN/Relay는 앞 checkpoint 결과다. 이번에는 실패했던 death Client를 실제 Host와 함께 재실행해 해결하고 새로운 Host 테스트도 통과했다. 이미 통과한 동일검사를 중복 합산하지 않으며 고유 Play 목록은 completion/verified-tests.json에서 대조한다. MCP는 이전 pass에서 실제 수행했지만 이번 재개에서는 도구가 제공되지 않았다. 사용자 Live runtime은 read-only hash 비교하며, 이번 Editor/Test harness 변경은 canonical/isolated QA에만 반영한다.
+
+Save14/Profile2/CloudProfile1/generation3, client snapshot1 유지; serverEconomy2/Protocol23은 앞 checkpoint에서 바뀌었고 이번 추가 버전상승0. 사용자 실제 save는 바뀌지 않았다. Foundation3는 verified receipt 계약/영구 owner-binding·archive/idempotency 경계가 준비된 상태이며 실제 Rewarded Ads SDK/SSV/provider 검증·실기기·운영retention/restore/삭제정책·quota는 후속 사용자 지시 후 별도다. PGS/OAuth/Play Integrity/Privacy·삭제URL/Production 활성화는 여전히 출시 차단이다. 새 item/recipe/가격/Audio/Store/IAP/보스0.
+
+단계 시간과 token측정 한계는 completion/TIMING.md, 최종 상태는 completion/final-validation.json, 다음 인계는 RESUME.md를 따른다.

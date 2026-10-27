@@ -1,0 +1,23 @@
+2026-10-27T04:58:23.6805665Z	idle	PASS Client transport startup
+2026-10-27T04:58:32.5319371Z	idle	PASS Host phase revive-host
+2026-10-27T04:58:32.6105718Z	idle	PASS Client sees Host Downed replica and interaction priority
+2026-10-27T04:58:36.7238663Z	idle	PASS Client sees committed Host40HP replica
+2026-10-27T04:58:36.7728828Z	idle	PASS Host phase client-down
+2026-10-27T04:58:36.7911731Z	idle	PASS Client Downed presentation and input lock
+2026-10-27T04:58:36.7916920Z	idle	PASS Client cannot call authoritative life executor
+2026-10-27T04:58:40.8429783Z	idle	PASS Host phase client-revived
+2026-10-27T04:58:40.8683239Z	idle	PASS Client Alive controls restored
+2026-10-27T04:59:05.1219170Z	idle	PASS Host phase home
+2026-10-27T04:59:05.1225577Z	idle	PASS Client Dead replica after timeout
+2026-10-27T04:59:05.1288368Z	idle	PASS MP UI only free Home, no paid options
+2026-10-27T04:59:05.2019365Z	idle	PASS real Home button/RPC double request commits once
+2026-10-27T04:59:05.7292723Z	idle	PASS Host phase all-down-home
+2026-10-27T04:59:05.7312358Z	idle	PASS Client sees actual party wipe
+2026-10-27T04:59:05.8062999Z	idle	PASS Client Home after all-down
+2026-10-27T04:59:05.8605325Z	idle	PASS Host phase disconnect-down
+2026-10-27T04:59:05.8840821Z	idle	PASS Client disconnects from actual Downed
+2026-10-27T04:59:06.7536010Z	idle	PASS Host phase rejoin
+2026-10-27T04:59:06.7690003Z	idle	PASS Client transport startup
+2026-10-27T04:59:12.0487086Z	idle	PASS real reconnect cannot cancel death
+2026-10-27T04:59:12.0932656Z	idle	PASS Host phase leave
+2026-10-27T04:59:12.1673080Z	complete	complete

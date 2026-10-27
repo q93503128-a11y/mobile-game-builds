@@ -282,7 +282,7 @@ UgsBootstrap은 backend Enabled와 무관하게 verified channel mapping으로 S
 
 경제는 EconomyService/UGS EconomyTransport → LowfireEconomy → Protected lf_economy 단일 CAS 정본이다. EconomyJournal은 offline outbox/cache/revive intent이며 wallet 권위가 아니다. existing NetworkCommonGrowth에 server→owner event RPC를 추가해 Protocol22를 사용한다. UI는 EconomyUiBuilder로 기존 MainMenu에 직렬화한 수첩이며 이벤트 때 갱신한다. [경제 전체 규칙](ECONOMY.md) · [실행·검증](../validation/launch-economy-foundation/REVIEW.md).
 
-## Foundation2.1 현재 구현 · 최종 검증 전 checkpoint
+## Foundation2.1 현재 구현 · 관련 검증 완료
 
 NetworkSessionPremium은 공통 LAN/Relay named message challenge를 actor spawn 전에 처리한다. 인증 소유자의 서버 발급과 인증 Host 서버 verify를 모두 통과해야 remote Engineer를 ClassAdmissionLocks에 확정한다. connection timeout20초/late callback nonce 검사/중복 verify 방지, Host 자신도 동일 경계다. NGO bearer token은 없다. Protocol23은 constant와 serialized prefab, Awake 적용값이 일치한다.
 

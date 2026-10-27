@@ -1,0 +1,34 @@
+{
+  "UTC": "2026-10-27T04:57:18.338574+00:00",
+  "classification": "ACTUAL DEVELOPMENT; scoped temporary helper; no tokens/payloads",
+  "playerId": "ikr3ueYR4HLcP9U2hjlzH4yLshO5",
+  "status": 200,
+  "result": {
+    "checks": [
+      {
+        "http": 200,
+        "items": 1,
+        "ok": true,
+        "step": "policy"
+      },
+      {
+        "code": 50,
+        "http": 429,
+        "ok": false,
+        "step": "identity"
+      },
+      {
+        "http": 200,
+        "items": 0,
+        "ok": true,
+        "step": "economy"
+      },
+      {
+        "http": 200,
+        "items": 0,
+        "ok": true,
+        "step": "account"
+      }
+    ]
+  }
+}

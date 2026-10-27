@@ -1,0 +1,40 @@
+{
+  "UTC": "2026-10-27T05:04:45.431283+00:00",
+  "classification": "ACTUAL DEVELOPMENT protected root read after real Unity SDK operations",
+  "wallets": [
+    {
+      "label": "actual",
+      "PlayerId": "gmETGt80bGf1HnKmq4MKje0GRoF5",
+      "Schema": 2,
+      "Balance": 75,
+      "LedgerRows": 6,
+      "ArchivedSegments": 0,
+      "Sources": [
+        "attendance:newcomer:account:1",
+        "admin:c33ee57742734365b9a2c8ee6781f88c",
+        "class:engineer",
+        "revive:9717d25028074ccfa7ca830fd8cabb6e",
+        "revive:b4894e4c5dc54e2a9d7ef20fefaa6219",
+        "revive-refund:b4894e4c5dc54e2a9d7ef20fefaa6219"
+      ],
+      "EngineerOwned": true,
+      "ReviveStates": [
+        "Committed",
+        "Refunded"
+      ]
+    },
+    {
+      "label": "progress",
+      "PlayerId": "pa1ytR0SxEqq6e9H6kXNwTixEDA4",
+      "Schema": 2,
+      "Balance": 1,
+      "LedgerRows": 1,
+      "ArchivedSegments": 0,
+      "Sources": [
+        "achievement:fishing:0"
+      ],
+      "EngineerOwned": false,
+      "ReviveStates": []
+    }
+  ]
+}

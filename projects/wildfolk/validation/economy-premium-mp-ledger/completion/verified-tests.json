@@ -1,0 +1,111 @@
+{
+  "classification": "Distinct passed Play test names across original XML, corrected actual Host/Client XML, and previous Live MCP; repeated names counted once",
+  "distinctPassedPlayTests": 32,
+  "tests": {
+    "Wildfolk.Tests.AccountFoundationPlayTests.AccountJournalAndFeedbackUseRealAuthoredControls": {
+      "source": "validation\\economy-premium-mp-ledger\\play.xml"
+    },
+    "Wildfolk.Tests.AccountFoundationPlayTests.OfflineAuthenticationDoesNotBlockSingleplayerSaveAndHome": {
+      "source": "validation\\economy-premium-mp-ledger\\play.xml"
+    },
+    "Wildfolk.Tests.BossProductionPlayTests.AccessoryExchangeThresholdAndPersistence": {
+      "source": "validation\\economy-premium-mp-ledger\\play.xml"
+    },
+    "Wildfolk.Tests.BossProductionPlayTests.LifecycleSaveRewardsAndNightGate": {
+      "source": "validation\\economy-premium-mp-ledger\\play.xml"
+    },
+    "Wildfolk.Tests.BossProductionPlayTests.PendingReloadAndFailedWritesAreAtomic": {
+      "source": "validation\\economy-premium-mp-ledger\\play.xml"
+    },
+    "Wildfolk.Tests.ClassProgressionPlayTests.AdOfficialCompletionOnly": {
+      "source": "validation\\economy-premium-mp-ledger\\play.xml"
+    },
+    "Wildfolk.Tests.ClassProgressionPlayTests.HunterQuarryAndWeaponCategories": {
+      "source": "validation\\economy-premium-mp-ledger\\play.xml"
+    },
+    "Wildfolk.Tests.ClassProgressionPlayTests.LobbyOwnershipPurchaseTreeAndSessionLock": {
+      "source": "validation\\economy-premium-mp-ledger\\play.xml"
+    },
+    "Wildfolk.Tests.ClassProgressionPlayTests.MedicinePipelineAndGenericDelivery": {
+      "source": "validation\\economy-premium-mp-ledger\\play.xml"
+    },
+    "Wildfolk.Tests.ClassProgressionPlayTests.OverclockAndExplorationMarker": {
+      "source": "validation\\economy-premium-mp-ledger\\play.xml"
+    },
+    "Wildfolk.Tests.ClassProgressionPlayTests.RepairBufferRecoveryAndHundredCycles": {
+      "source": "validation\\economy-premium-mp-ledger\\play.xml"
+    },
+    "Wildfolk.Tests.ClassProgressionPlayTests.SharedGrowthMigrationAndProfileXP": {
+      "source": "validation\\economy-premium-mp-ledger\\play.xml"
+    },
+    "Wildfolk.Tests.ClassProgressionPlayTests.SurvivorLethalCooldownAndHome": {
+      "source": "validation\\economy-premium-mp-ledger\\play.xml"
+    },
+    "Wildfolk.Tests.ClassProgressionPlayTests.WarriorFrontalGuardAndActualHPHeavy": {
+      "source": "validation\\economy-premium-mp-ledger\\play.xml"
+    },
+    "Wildfolk.Tests.DeathFoundationPlayTests.FourActorDownReviveInterruptTimeoutWipePersistenceReHost": {
+      "source": "validation\\economy-premium-mp-ledger\\play.xml"
+    },
+    "Wildfolk.Tests.DeathFoundationPlayTests.SingleDeathAdsRepeatedGemTransactionsHomeAndRealReload": {
+      "source": "validation\\economy-premium-mp-ledger\\play.xml"
+    },
+    "Wildfolk.Tests.EconomyFoundationPlayTests.ADelayedOldAccountReplyCannotMaterializeAfterSignout": {
+      "source": "validation\\economy-premium-mp-ledger\\play.xml"
+    },
+    "Wildfolk.Tests.EconomyFoundationPlayTests.AuthoredJournalControlsClaimAndSeparateBoardsHaveClearEmptyState": {
+      "source": "validation\\economy-premium-mp-ledger\\play.xml"
+    },
+    "Wildfolk.Tests.EconomyFoundationPlayTests.CanonicalOfflineEventsBatchOnceAndCachedGemCannotBeSpent": {
+      "source": "validation\\economy-premium-mp-ledger\\play.xml"
+    },
+    "Wildfolk.Tests.EconomyFoundationPlayTests.DetailScrollReflowsAtPixelScaleAndLanguageChanges": {
+      "source": "validation\\economy-premium-mp-ledger\\play.xml"
+    },
+    "Wildfolk.Tests.EconomyFoundationPlayTests.DirtyClassMirrorKeepsAuthenticatedWalletOnlineButOfflineChoiceNeverReopensIt": {
+      "source": "validation\\economy-premium-mp-ledger\\play.xml"
+    },
+    "Wildfolk.Tests.EconomyFoundationPlayTests.EngineerGrantComesFromServerProfileAndSurvivesEconomyRefresh": {
+      "source": "validation\\economy-premium-mp-ledger\\play.xml"
+    },
+    "Wildfolk.Tests.EconomyFoundationPlayTests.InvalidAcknowledgementStopsAndRetainsTheOutbox": {
+      "source": "validation\\economy-premium-mp-ledger\\play.xml"
+    },
+    "Wildfolk.Tests.EconomyFoundationPlayTests.ProgressCreatedDuringRequestWaitsForTheNextFlush": {
+      "source": "validation\\economy-premium-mp-ledger\\play.xml"
+    },
+    "Wildfolk.Tests.FrontendPlayTests.ActualButtonsStartSaveReturnConfirmCancelAndContinueWithoutDuplicateServices": {
+      "source": "validation\\economy-premium-mp-ledger\\play.xml"
+    },
+    "Wildfolk.Tests.FrontendPlayTests.EmptyAndCorruptSaveDisableContinueAndBackupIsValidated": {
+      "source": "validation\\economy-premium-mp-ledger\\play.xml"
+    },
+    "Wildfolk.Tests.FrontendPlayTests.HomeIdleKeepsStaticUiAndNoGameplaySimulation": {
+      "source": "validation\\economy-premium-mp-ledger\\play.xml"
+    },
+    "Wildfolk.Tests.FrontendPlayTests.SharedSettingsAndBilingualLabelsSurviveSceneChanges": {
+      "source": "validation\\economy-premium-mp-ledger\\play.xml"
+    },
+    "Wildfolk.Tests.NetworkFoundationPlayTests.LocalHostSpawnsAuthoritativePlayerWithoutSingleplayerSaveService": {
+      "source": "validation\\economy-premium-mp-ledger\\play.xml"
+    },
+    "Wildfolk.Tests.DeathFoundationPlayTests.ActualSeparateLanHostLifecycle": {
+      "source": "validation\\economy-premium-mp-ledger\\completion\\death-host.xml"
+    },
+    "Wildfolk.Tests.DeathFoundationPlayTests.ActualSeparateLanClientLifecycle": {
+      "source": "validation\\economy-premium-mp-ledger\\completion\\death-client.xml"
+    },
+    "Wildfolk.Tests.PremiumAdmissionPlayTests.OfflineCachedEngineerCannotBecomeHostPremiumButFreeSessionStillStarts": {
+      "source": "validation/economy-premium-mp-ledger/live-mcp-play.json"
+    }
+  },
+  "backendTests": 95,
+  "originalEditMode": 97,
+  "previousLiveEditModeRerun": 13,
+  "originalPlayPreconditionFailureResolvedByActualSeparateHost": true,
+  "androidCompileAssemblies": {
+    "Alpha": 57,
+    "Production": 57
+  },
+  "actualHttpCases": 20
+}

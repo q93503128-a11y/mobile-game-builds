@@ -1,0 +1,21 @@
+{
+  "UTC": "2026-10-27T04:56:27.623120+00:00",
+  "playerId": "8CqCLtElVG8aMpm81r8ptsXN02KN",
+  "classification": "ACTUAL DEVELOPMENT HTTP DIAGNOSTIC; no tokens retained",
+  "results": [
+    {
+      "operation": "GetAccountProfile",
+      "status": 200,
+      "ok": false,
+      "error": "cloud_unavailable",
+      "correlationId": "ee5ffad6-4b2f-4119-a2a0-135dcb52df8d"
+    },
+    {
+      "operation": "EnsureAccountProfile",
+      "status": 200,
+      "ok": false,
+      "error": "cloud_unavailable",
+      "correlationId": "4183decd-05e4-4907-80c3-7884d6504a8d"
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+2026-10-27T04:57:37.5845938Z	idle	PASS LAN Host
+2026-10-27T04:57:37.6068440Z	idle	PASS enter multiplayer
+2026-10-27T04:57:43.9015917Z	lan-ready	begin
+2026-10-27T04:58:29.9972097Z	lan-ready	PASS actual separate-process LAN Client admitted
+2026-10-27T04:58:32.2350880Z	lan-revive-host	begin
+2026-10-27T04:58:36.6891203Z	lan-revive-host	PASS real Client owner hold RPC revives Host exactly once
+2026-10-27T04:58:36.7345213Z	lan-revive-host	PASS real Client acknowledged revive-host
+2026-10-27T04:58:36.7698155Z	lan-client-down	begin
+2026-10-27T04:58:36.7998068Z	lan-client-down	PASS real Client acknowledged client-down
+2026-10-27T04:58:36.8008153Z	lan-client-down	PASS Host starts teammate rescue
+2026-10-27T04:58:36.8013406Z	lan-client-down	PASS Host damage interrupts actual Client rescue
+2026-10-27T04:58:40.8281449Z	lan-client-down	PASS Host hold revives actual Client
+2026-10-27T04:58:40.8381762Z	lan-client-revived	begin
+2026-10-27T04:58:40.8739295Z	lan-client-revived	PASS real Client acknowledged client-revived
+2026-10-27T04:58:40.9031967Z	lan-timeout	begin
+2026-10-27T04:59:05.1094726Z	lan-timeout	PASS real Client timeout to Dead authoritative
+2026-10-27T04:59:05.1207067Z	lan-home	begin
+2026-10-27T04:59:05.2146148Z	lan-home	PASS real Client acknowledged home
+2026-10-27T04:59:05.2146148Z	lan-home	PASS actual Client free Home and duplicate stale request once
+2026-10-27T04:59:05.6791760Z	lan-home	PASS actual two-process all-down Dead
+2026-10-27T04:59:05.7146173Z	lan-home	PASS Host Home after actual party wipe
+2026-10-27T04:59:05.7252003Z	lan-all-down-home	begin
+2026-10-27T04:59:05.8279149Z	lan-all-down-home	PASS real Client acknowledged all-down-home
+2026-10-27T04:59:05.8585188Z	lan-disconnect-down	begin
+2026-10-27T04:59:06.0503736Z	lan-disconnect-down	PASS real Client acknowledged disconnect-down
+2026-10-27T04:59:06.0509855Z	lan-disconnect-down	PASS actual downed Client disconnect
+2026-10-27T04:59:06.0532495Z	lan-disconnect-down	PASS disconnect record cannot restore Alive
+2026-10-27T04:59:06.0618952Z	lan-rejoin	begin
+2026-10-27T04:59:11.4512833Z	lan-rejoin	PASS same-profile actual reconnect remains Dead
+2026-10-27T04:59:12.0577184Z	lan-rejoin	PASS real Client acknowledged rejoin
+2026-10-27T04:59:12.0742853Z	lan-leave	begin
+2026-10-27T04:59:12.1904122Z	lan-leave	PASS real Client acknowledged leave
+2026-10-27T04:59:12.5155676Z	lan-leave	PASS solo Host all-down ends
+2026-10-27T04:59:12.5459647Z	lan-leave	PASS actual LAN death records durable
+2026-10-27T04:59:13.3072741Z	lan-leave	PASS LAN Host
+2026-10-27T04:59:13.3082669Z	lan-leave	PASS enter multiplayer
+2026-10-27T04:59:17.6881298Z	lan-leave	PASS actual LAN reHost keeps Host Dead
+2026-10-27T04:59:17.7498890Z	lan-leave	PASS reHost Home path
+2026-10-27T04:59:17.8502301Z	complete	complete
