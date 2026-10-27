@@ -11,10 +11,14 @@ Foundation1.5 상태는 **PARTIALLY ACTIVE**다. development/alpha 환경·Cloud
 - Production policy/gate/index/Cloud Code/Access Control 배포는 별도 출시 작업이다. 이번에는 production의 기존 기본 환경·스크립트·정책을 변경하지 않았다.
 - node-forge1.4.0의 RSA **검증** advisory GHSA-86w9-cpqp-85rv가 npm audit에 남는다(현재 patched release 없음). 현재 Lowfire는 SHA256과 RS256 **서명**만 사용하고 그 검증 API를 노출/호출하지 않는다. Account bundle에는 RSA가 포함되지 않는다. 공개 출시 전 dependency 상태/대체책을 재검토하고 미래 외부 서명 검증에 해당 API를 재사용하지 않는다. [근거와 범위](../validation/launch-backend-activation/REVIEW.md).
 
-현재 Foundation2 Gem/Achievement/Attendance 구현·관련 QA를 완료했지만 실제 사용자 Google 계정/공개 출시 준비는 미완료다. Ads/IAP/Audio는 다음 사용자 지시 전 시작하지 않는다.
+현재 Foundation2 Gem/Achievement/Attendance 구현·관련 QA를 완료했지만 실제 사용자 Google 계정/공개 출시 준비는 미완료다. IAP/Audio는 다음 사용자 지시 전 시작하지 않는다. Ads Foundation3 상태는 아래를 따른다.
 
 ## Launch Economy Foundation2 · 현재 경계
 
-Foundation2의 development/alpha 경제 배포와 개발 QA는 공개 출시 승인이 아니다. 실제 Google/PGS/Integrity/공개URL/실기기 Android·터치·공개 Production 활성화는 미완료다. Foundation2.1은 remote Engineer 서버 증명과 Economy2 archive/지원 도구를 구현하고 실제 Development LAN/Relay/512행 이관을 확인했다. 최종 Android Alpha/Production compile·실제 SDK·별도 death/Boss/resource LAN 회귀는 통과했다. root3MiB/index2000key·4MiB 운영 경고 전달/비용 모니터링은 공개 출시 전 필요하며 Ads/IAP는 아직 구현하지 않는다. [경제 전체 규칙](ECONOMY.md) · [실행·검증](../validation/launch-economy-foundation/REVIEW.md).
+Foundation2의 development/alpha 경제 배포와 개발 QA는 공개 출시 승인이 아니다. 실제 Google/PGS/Integrity/공개URL/실기기 Android·터치·공개 Production 활성화는 미완료다. Foundation2.1은 remote Engineer 서버 증명과 Economy2 archive/지원 도구를 구현하고 실제 Development LAN/Relay/512행 이관을 확인했다. 최종 Android Alpha/Production compile·실제 SDK·별도 death/Boss/resource LAN 회귀는 통과했다. root3MiB/index2000key·4MiB 운영 경고 전달/비용 모니터링은 공개 출시 전 필요하며 IAP는 아직 구현하지 않으며 Ads Foundation3 상태는 아래를 따른다. [경제 전체 규칙](ECONOMY.md) · [실행·검증](../validation/launch-economy-foundation/REVIEW.md).
 
 Foundation2.1 재개 검증 중 Cloud Code의 Authentication Get Player 조회에서 실제429(code50, Retry-After69초)를 관측했다. 대기 후 동일 서버 검증 경계로 실제 SDK 회귀를 통과했으며 client bool/캐시·admin credential 우회는 적용하지 않았다. 공개 활성화 전 upstream 인증 요청량·지연·429와 Cloud Save bytes/operation quota를 함께 관찰하고, 장애 시 Survivor/무료Home을 유지하는 운영 대응을 검수한다. [공식 Client API 제한](https://docs.unity.com/en-us/oas-player-auth-client/1.0.0) · [실행 근거](../validation/economy-premium-mp-ledger/completion/service-rate-diagnostic.json).
+
+## Foundation3 Ads 출시 차단
+
+코드/격리QA와실제광고운영을구분한다. 실제 AdMob등록·unit2개·공개callback/CloudRun/CloudTasks/서버secret·UMP정책/Privacy URL·Android실기기영상·consent/SSV/retry·운영알림은미완료다. Alpha는공식sampletest unit만사용하므로owned-unitSSV end-to-end는별도guardedtest계획이필요하다. 이번C# Androidcompile은새SDK의실제Gradle/AAB/실기기/지역consent검증을대체하지않는다. Google/PGS/Integrity및기존출시차단은유지한다. Production live기본OFF,추가게임컨텐츠/IAP자동착수없음. [정확한외부설정](ADS.md).

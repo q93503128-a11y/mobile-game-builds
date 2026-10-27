@@ -1,6 +1,6 @@
 # Lowfire 1.0 · Launch Scope
 
-2026-10-25 기준 인게임 범위를 잠근다. 현재 실제 정본은 Item136 / Recipe111 / Save14 / Profile2 / Protocol21 / generation3다.
+2026-10-25 기준 인게임 범위를 잠근다. 현재 실제 정본은 Item136 / Recipe111 / Save14 / Profile2 / Protocol23 / generation3다.
 
 ## 1.0 인게임
 
@@ -12,7 +12,7 @@
 
 이번 Foundation1: Account, Cloud Account Profile, Alpha 참여/영구 entitlement 이전 기반, 운영·문의·개인정보/삭제 hook. 외부 설정은 SETUP_REQUIRED와 RELEASE_BLOCKERS를 따른다.
 
-Foundation2에서 Gem 실제 경제/Achievement/Attendance를 구현했다. 별도 다음 패스는 Rewarded Ads, IAP, Audio, 최종 출시 polish다. Alpha와 현재 Production의 현금 결제는 코드·서버 양쪽에서 항상 거절한다.
+Foundation3에서 선택형 Rewarded Ads 서버/SDK 기반과 Profile·업적·출석 화면을 연결했다. 광고 기본 OFF와 실제 provider/SSV·기기 외부 설정 차단을 유지한다. 다음 별도 패스는 IAP/Store, Audio, 최종 출시 polish다. Alpha와 현재 Production의 현금 결제는 코드·서버 양쪽에서 항상 거절한다.
 
 ## 후속 업데이트
 
@@ -24,4 +24,10 @@ Foundation1.5는 development/alpha 서버 기반을 실제 배포·검증했으�
 
 ## Launch Economy Foundation2 · 현재 경계
 
-Foundation2는 계정 Gem/업적/출석/Profile·Engineer120Gem·SP부활8Gem을 이번 범위로 구현한다. 다음 별도 패스는 Rewarded Ads, IAP/Store, Audio/최종 polish이며 자동 진행하지 않는다. [경제 전체 규칙](ECONOMY.md) · [실행·검증](../validation/launch-economy-foundation/REVIEW.md).
+Foundation2는 계정 Gem/업적/출석/Profile·Engineer120Gem·SP부활8Gem을 이번 범위로 구현한다. Foundation3 광고 기반은 별도 ADS.md를 따른다. 다음 IAP/Store, Audio/최종 polish는 자동 진행하지 않는다. [경제 전체 규칙](ECONOMY.md) · [실행·검증](../validation/launch-economy-foundation/REVIEW.md).
+
+## Foundation3 현재 상태
+
+보상 광고2placement·Economy2 verified receipt·프로필/업적/출석 기록지 구현. Google AdMob11.6.0, client/server/production live 기본OFF. 실제 Android video/consent/SSV/Cloud Tasks 외부 설정과 출시 gate는 남는다. Foundation4를 자동 시작하지 않는다. [광고 정본](ADS.md).
+
+2026-10-27 사용자 시간 제한으로 Foundation3는 중간 체크포인트에서 멈췄다. 전체 완료가 아니며 [이어받기](../validation/rewarded-ads-meta-ui/RESUME.md)를 따른다. 전체 완료 전 IAP를 시작하지 않는다.

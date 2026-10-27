@@ -1,0 +1,14 @@
+{
+  "name": "lowfire-admob-ssv-ingress",
+  "version": "1.0.0",
+  "private": true,
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "start": "node server.cjs"
+  },
+  "dependencies": {
+    "google-auth-library": "11.3.1"
+  }
+}

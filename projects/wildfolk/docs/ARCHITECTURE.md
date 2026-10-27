@@ -287,3 +287,7 @@ UgsBootstrap은 backend Enabled와 무관하게 verified channel mapping으로 S
 NetworkSessionPremium은 공통 LAN/Relay named message challenge를 actor spawn 전에 처리한다. 인증 소유자의 서버 발급과 인증 Host 서버 verify를 모두 통과해야 remote Engineer를 ClassAdmissionLocks에 확정한다. connection timeout20초/late callback nonce 검사/중복 verify 방지, Host 자신도 동일 경계다. NGO bearer token은 없다. Protocol23은 constant와 serialized prefab, Awake 적용값이 일치한다.
 
 Economy2는 Protected root CAS와 Private immutable256행 segment/256 shard 개별 source·revive resolution key로 구성한다. root checkpoint가 authoritative manifest다. Economy wire snapshot1/CloudProfile1/Save14/Profile2/generation3는 유지한다. [경제 정본](ECONOMY.md), [검증과 재개](../validation/economy-premium-mp-ledger/RESUME.md).
+
+## Foundation3 Ads / Meta UI
+
+Runtime RewardedAds/RewardedJournal/IRewardedAdProvider와 AndroidAds assembly를분리한다. Google원본SDK11.6.0/기존EDM사용,Editor자동보상없음. Gem계정·환경scopejournal→servercanonicalslot/nonce→signedGoogleGET→durableCloudTasks→OIDC/HMACworker→LowfireRewarded→기존Economy2CAS/영구receipt/source. 로컬SP부활earnedproof는Run/death에묶어Save14성공후에만소모한다. Save/Profile/Protocol을올리지않고새광고journalSchema1·boundedAdsmetadata만추가했다. EconomyScreen의직렬화Hub/기록지UI는상태변경시갱신,출석resetclock만열린동안1초간격이다. [authority·flow·배포](ADS.md).

@@ -1,0 +1,41 @@
+{
+  "metadata": {
+    "Name": "LowfireRewarded",
+    "Language": "JS",
+    "Type": "API",
+    "Versions": [
+      1
+    ],
+    "ActiveScript": {
+      "Version": 1,
+      "DatePublished": "2026-10-27T06:55:45",
+      "Params": [
+        {
+          "type": "STRING",
+          "name": "operation",
+          "required": true
+        },
+        {
+          "type": "STRING",
+          "name": "channel",
+          "required": true
+        },
+        {
+          "type": "STRING",
+          "name": "buildVersion",
+          "required": true
+        },
+        {
+          "type": "JSON",
+          "name": "input",
+          "required": false
+        }
+      ]
+    }
+  },
+  "sha256": "a3cd38e97de2f83f51519990fd43e53dc2e2b1474ac607c73a5dfc51a0ba2123",
+  "bytes": 89467,
+  "Enabled": false,
+  "SsvReady": false,
+  "ProductionLiveEnabled": false
+}

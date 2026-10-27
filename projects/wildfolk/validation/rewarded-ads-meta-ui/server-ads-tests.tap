@@ -1,0 +1,33 @@
+✔ public callback ack requires durable enqueue; repeated provider callback deduplicates task ID (28.63ms)
+✔ only authenticated worker with untampered server seal can deliver verified provider receipt (8.2633ms)
+✔ Cloud Code failure retains queued proof; later retry and public key rotation do not lose earned reward (4.6434ms)
+✔ wrong placement/unit/environment rejected before durable queue or UGS call (3.4917ms)
+✔ actual ECDSA fixture verifies original encoded order; tamper/duplicate params/wrong key rejected (55.2586ms)
+✔ Google keys fixed URL, rotation cache <24h and unknown key refresh bounded (2.1199ms)
+✔ receiver seal domain/scope/age prevents a client boolean or forged public key receipt (13.5386ms)
+✔ server rewarded_ad1 receipt credits same Economy2 once, duplicate never regrants (20.9217ms)
+✔ same day failed-show retry reuses one canonical slot/nonce; parallel other device blocked (9.9205ms)
+✔ guest/offline/unconfigured/Production accidental-live requests fail closed (3.3186ms)
+✔ valid receipt cannot cross Placement (5.0118ms)
+✔ valid receipt cannot cross PlayerId (1.608ms)
+✔ valid receipt cannot cross Nonce (1.6621ms)
+✔ valid receipt cannot cross AdUnit (2.293ms)
+✔ valid receipt cannot cross ProviderTimestamp (3.8319ms)
+✔ valid receipt cannot cross EnvironmentId (2.6724ms)
+✔ second provider transaction on consumed operation cannot mint extra Gem (4.109ms)
+✔ device clock/reward amount/day inputs ignored; server reservation day survives midnight (4.7412ms)
+✔ frozen reserved amount honored after policy change or stopping new ad shows (2.8097ms)
+✔ unknown verified-intent CAS is durable; authenticated retry resumes once (2.6568ms)
+✔ global bind succeeded but wallet CAS failed: receipt intent is enumerable and retry safe (4.0351ms)
+✔ lost wallet success response retries same receipt without duplicate credit (2.603ms)
+✔ archived ad receipt and pruned operation still prevent duplicate grants (94.3381ms)
+✔ deletion blocks pending grant; bounded fraud evidence no automatic ban (21.9722ms)
+✔ revive telemetry is explicitly unverified, deduplicated and cannot grant money (0.9468ms)
+ℹ tests 25
+ℹ suites 0
+ℹ pass 25
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 525.1727

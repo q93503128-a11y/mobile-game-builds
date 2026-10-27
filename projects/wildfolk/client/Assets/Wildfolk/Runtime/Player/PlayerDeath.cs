@@ -41,7 +41,7 @@ namespace Wildfolk
         public bool Authority=>network==null || network.IsSpawned && network.IsServer;
         public double Now=>network!=null && network.IsSpawned ? network.NetworkManager.ServerTime.Time : Time.time;
         public bool CanOffer=>!Multi && State==PlayerLife.Dead && !PaymentPending && Durable;
-        public bool CanAd=>CanOffer && !AdUsed && ReviveServices.Rewarded.Available;
+        public bool CanAd=>CanOffer && !AdUsed && (ReviveServices.Rewarded is IScopedRewardedRevive scoped ? scoped.AvailableFor(Transaction("ad")) : ReviveServices.Rewarded.Available);
         public bool CanGem=>CanOffer && Definition.ReviveGemCost>0 && ReviveServices.Wallet.Available && ReviveServices.Wallet.Balance>=Definition.ReviveGemCost;
         public bool CanAct=>State==PlayerLife.Alive && RescueTarget==null && !PaymentPending;
         private void Awake(){health=GetComponent<Health>();network=GetComponent<NetworkPlayer>();Run=Guid.NewGuid().ToString("N");}
@@ -172,6 +172,7 @@ namespace Wildfolk
             try{await wallet.CommitRevive(id,Definition.ReviveGemCost,()=>this!=null&&State==PlayerLife.Dead&&Revision==revision&&CommitRespawn(point,Definition.RevivedHealth,false,false));}
             finally{if(this!=null){PaymentPending=false;Signal();}}
         }
+        public void PrepareRewarded(bool retry=false){if(CanOffer&&!AdUsed&&ReviveServices.Rewarded is IScopedRewardedRevive scoped)scoped.Prepare(Transaction("ad"),retry);}
         public bool RewardedRevive()
         {
             if(!Authority || !CanAd)return false;var revision=Revision;var run=Run;var number=DeathNumber;
@@ -180,7 +181,7 @@ namespace Wildfolk
             {
                 if(this==null || !PaymentPending || State!=PlayerLife.Dead || revision!=Revision || run!=Run || number!=DeathNumber)return;
                 PaymentPending=false;
-                if(success && !AdUsed && TryPosition(deathPosition,3,out var point))CommitRespawn(point,Definition.RevivedHealth,false,true);
+                if(success && !AdUsed && TryPosition(deathPosition,3,out var point)){var saved=CommitRespawn(point,Definition.RevivedHealth,false,true);if(ReviveServices.Rewarded is IScopedRewardedRevive scoped)scoped.Resolve(run+":"+number+":ad",saved);}
                 else MessageKey=success ? "death.position_failed" : "death.ad_failed";
                 Signal();
             });}catch(Exception){PaymentPending=false;MessageKey="death.ad_failed";Signal();return false;}

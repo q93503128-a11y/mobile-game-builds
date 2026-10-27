@@ -1,0 +1,29 @@
+✔ actual ECDSA fixture verifies original encoded order; tamper/duplicate params/wrong key rejected (93.8747ms)
+✔ Google keys fixed URL, rotation cache <24h and unknown key refresh bounded (5.1821ms)
+✔ receiver seal domain/scope/age prevents a client boolean or forged public key receipt (14.511ms)
+✔ server rewarded_ad1 receipt credits same Economy2 once, duplicate never regrants (24.6782ms)
+✔ same day failed-show retry reuses one canonical slot/nonce; parallel other device blocked (10.1945ms)
+✔ guest/offline/unconfigured/Production accidental-live requests fail closed (3.4881ms)
+✔ valid receipt cannot cross Placement (6.0028ms)
+✔ valid receipt cannot cross PlayerId (5.2486ms)
+✔ valid receipt cannot cross Nonce (5.2218ms)
+✔ valid receipt cannot cross AdUnit (6.152ms)
+✔ valid receipt cannot cross ProviderTimestamp (2.7594ms)
+✔ valid receipt cannot cross EnvironmentId (3.0558ms)
+✔ second provider transaction on consumed operation cannot mint extra Gem (10.1245ms)
+✔ device clock/reward amount/day inputs ignored; server reservation day survives midnight (15.346ms)
+✔ frozen reserved amount honored after policy change or stopping new ad shows (5.4714ms)
+✔ unknown verified-intent CAS is durable; authenticated retry resumes once (5.788ms)
+✔ global bind succeeded but wallet CAS failed: receipt intent is enumerable and retry safe (13.0524ms)
+✔ lost wallet success response retries same receipt without duplicate credit (9.7245ms)
+✔ archived ad receipt and pruned operation still prevent duplicate grants (205.1213ms)
+✔ deletion blocks pending grant; bounded fraud evidence no automatic ban (38.3548ms)
+✔ revive telemetry is explicitly unverified, deduplicated and cannot grant money (1.9339ms)
+ℹ tests 21
+ℹ suites 0
+ℹ pass 21
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1506.5377

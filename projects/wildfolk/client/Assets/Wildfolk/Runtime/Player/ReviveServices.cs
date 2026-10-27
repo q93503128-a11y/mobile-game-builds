@@ -8,6 +8,7 @@ namespace Wildfolk
         // true means the SDK/provider official reward-earned completion, never started/closed/skipped/store-open/timer.
         void Show(string transaction,Action<bool> completed);
     }
+    public interface IScopedRewardedRevive {bool CanRetry{get;}bool Preparing{get;}bool AvailableFor(string transaction);void Prepare(string transaction,bool retry=false);void Resolve(string transaction,bool worldSaved);}
     public interface IPremiumCurrencyWallet
     {
         bool Available {get;}
@@ -29,7 +30,8 @@ namespace Wildfolk
         // No automatic development success and no release fallback grants.
         public static IRewardedReviveService Rewarded {get;private set;}=disabled;
         public static IPremiumCurrencyWallet Wallet {get;private set;}=disabled;
-internal static void InstallCloud(IPremiumCurrencyWallet wallet){Wallet=wallet??disabled;}
+public static void InstallRewarded(IRewardedReviveService provider){Rewarded=provider??disabled;}
+        internal static void InstallCloud(IPremiumCurrencyWallet wallet){Wallet=wallet??disabled;}
 #if UNITY_EDITOR || DEVELOPMENT_BUILD
         public static void SetDevelopmentProviders(IRewardedReviveService ad,IPremiumCurrencyWallet wallet)
         {Rewarded=ad??disabled;Wallet=wallet??disabled;}

@@ -15,7 +15,7 @@ namespace Wildfolk
         private void OnEnable(){if(service==null)service=AccountService.Get();service.Changed+=Refresh;L.Changed+=Refresh;}
         private void OnDisable(){service.Changed-=Refresh;L.Changed-=Refresh;}
         public void Open(){if(service!=AccountService.Current){service.Changed-=Refresh;service=AccountService.Get();service.Changed+=Refresh;}Home.Menu.SetActive(false);Home.Settings.SetActive(false);View.SetActive(true);FeedbackView.SetActive(false);DeleteView.SetActive(false);Refresh();}
-        public void Back(){View.SetActive(false);FeedbackView.SetActive(false);DeleteView.SetActive(false);Home.ShowHome();}
+        public void Back(){View.SetActive(false);FeedbackView.SetActive(false);DeleteView.SetActive(false);var meta=GetComponent<EconomyScreen>();if(meta!=null&&meta.HubView!=null)meta.OpenHub();else Home.ShowHome();}
         public async void Connect(){await service.Connect();await EconomyService.Get().Sync();Refresh();}
         public async void UseExisting(){await service.Connect(true);await EconomyService.Get().Sync();Refresh();}
         public void KeepLocal(){service.KeepLocal();Refresh();}

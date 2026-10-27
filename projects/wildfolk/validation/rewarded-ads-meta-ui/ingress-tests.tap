@@ -1,0 +1,12 @@
+✔ public callback ack requires durable enqueue; repeated provider callback deduplicates task ID (50.5169ms)
+✔ only authenticated worker with untampered server seal can deliver verified provider receipt (14.6507ms)
+✔ Cloud Code failure retains queued proof; later retry and public key rotation do not lose earned reward (10.3393ms)
+✔ wrong placement/unit/environment rejected before durable queue or UGS call (1.1581ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 344.8393

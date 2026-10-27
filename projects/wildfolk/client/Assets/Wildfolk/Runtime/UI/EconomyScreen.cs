@@ -6,26 +6,33 @@ namespace Wildfolk
 {
     public sealed class EconomyScreen:MonoBehaviour
     {
+        public GameObject HubView;public Text HubIdentity,AdStatus,AdLabel;public Button WatchAd,RetryAd,AdPrivacy;
         public HomeScreen Home;public AccountProfileScreen Profile;public GameObject AchievementView,AttendanceView;public Text Wallet,Summary,Detail,Status,AttendanceWallet,AttendanceStatus,ResetLabel,BoardTitle,ProfileSummary,AchievementEntry,AttendanceEntry,HomeEntry;
         public Button Claim,ClaimAll,Attend;public Image[] SlotMarks;public Button[] Categories,Rows,Tabs,Slots;public Text[] CategoryLabels,RowLabels,SlotLabels;public ScrollRect FamilyScroll,DetailScroll;
         private EconomyService service;private int category,selection,tab,eventIndex;private bool fromProfile;private string notice;private float nextClock;
         private void Awake(){service=EconomyService.Get();}
         private Canvas journalCanvas;private Text[] journalTexts;private float journalCanvasScale=-1;
-        private void OnEnable(){journalTexts=GetComponentsInChildren<Text>(true);Canvas.preWillRenderCanvases+=ReflowText;service=EconomyService.Get();service.Changed+=Refresh;L.Changed+=Refresh;Refresh();}
-        private void OnDisable(){Canvas.preWillRenderCanvases-=ReflowText;if(service!=null)service.Changed-=Refresh;L.Changed-=Refresh;}
+        private void OnEnable(){journalTexts=GetComponentsInChildren<Text>(true);Canvas.preWillRenderCanvases+=ReflowText;service=EconomyService.Get();service.Changed+=Refresh;RewardedAds.Get().Changed+=Refresh;L.Changed+=Refresh;Refresh();}
+        private void OnDisable(){Canvas.preWillRenderCanvases-=ReflowText;if(service!=null)service.Changed-=Refresh;RewardedAds.Get().Changed-=Refresh;L.Changed-=Refresh;}
         private void ReflowText()
         {
             if(journalCanvas==null)journalCanvas=GetComponentInParent<Canvas>();if(journalCanvas==null)return;var scale=journalCanvas.scaleFactor;
             if(Mathf.Approximately(journalCanvasScale,scale))return;journalCanvasScale=scale;
             // Pixel scale can change without changing logical widths. Regenerate text once
             // before Unity's layout pass; unchanged frames do not rebuild or allocate.
-            foreach(var label in journalTexts)if(label!=null)label.SetAllDirty();
+            foreach(var label in journalTexts)if(label!=null){label.cachedTextGenerator.Invalidate();label.cachedTextGeneratorForLayout.Invalidate();label.SetAllDirty();}
             if(Detail!=null&&Detail.gameObject.activeInHierarchy)LayoutRebuilder.MarkLayoutForRebuild(Detail.rectTransform);
         }
         private void SelectService(){if(service==EconomyService.Get())return;service.Changed-=Refresh;service=EconomyService.Get();service.Changed+=Refresh;}
-        public async void OpenAchievements(){SelectService();fromProfile=Profile.View.activeSelf;Profile.View.SetActive(false);Home.Menu.SetActive(false);AchievementView.SetActive(true);AttendanceView.SetActive(false);notice=null;Refresh();await service.Sync();Refresh();}
-        public async void OpenAttendance(){SelectService();fromProfile=Profile.View.activeSelf;Profile.View.SetActive(false);Home.Menu.SetActive(false);AttendanceView.SetActive(true);AchievementView.SetActive(false);notice=null;Refresh();await service.Sync();Refresh();}
-        public void Back(){AchievementView.SetActive(false);AttendanceView.SetActive(false);if(fromProfile)Profile.Open();else Home.ShowHome();}
+        public async void OpenAchievements(){SelectService();fromProfile=HubView!=null&&HubView.activeSelf;HubView?.SetActive(false);Profile.View.SetActive(false);Home.Menu.SetActive(false);AchievementView.SetActive(true);AttendanceView.SetActive(false);notice=null;Refresh();await service.Sync();Refresh();}
+        public async void OpenAttendance(){SelectService();fromProfile=HubView!=null&&HubView.activeSelf;HubView?.SetActive(false);Profile.View.SetActive(false);Home.Menu.SetActive(false);AttendanceView.SetActive(true);AchievementView.SetActive(false);notice=null;Refresh();await service.Sync();Refresh();}
+        public async void OpenHub(){SelectService();Home.Menu.SetActive(false);Profile.View.SetActive(false);AchievementView.SetActive(false);AttendanceView.SetActive(false);HubView.SetActive(true);Refresh();await service.Sync();await RewardedAds.Get().Refresh();Refresh();}
+        public void CloseHub(){HubView.SetActive(false);Home.ShowHome();}
+        public void OpenAccount(){HubView.SetActive(false);Profile.Open();}
+        public async void WatchReward(){await RewardedAds.Get().WatchGem();Refresh();}
+        public async void RetryReward(){await RewardedAds.Get().Refresh();Refresh();}
+        public void AdPrivacyOptions()=>RewardedAds.Get().PrivacyOptions();
+        public void Back(){AchievementView.SetActive(false);AttendanceView.SetActive(false);if(fromProfile)OpenHub();else Home.ShowHome();}
         public void Category(int i){category=i;selection=0;FamilyScroll.verticalNormalizedPosition=1;DetailScroll.verticalNormalizedPosition=1;notice=null;Refresh();}
         public void Select(int i){selection=i;notice=null;Refresh();DetailScroll.verticalNormalizedPosition=1;}
         public void Board(int i){if(i==2&&tab==2)eventIndex++;tab=i;notice=null;Refresh();}
@@ -41,14 +48,15 @@ namespace Wildfolk
             if(service==null||Wallet==null)return;var s=service.Snapshot;var currency=L.Format("economy.balance",s?.Balance.ToString()??"—");Wallet.text=AttendanceWallet.text=currency;
             var prestige=s==null?L.Text("economy.no_account"):L.Format("economy.prestige",s.points,s.completed,s.total);Summary.text=prestige;Status.text=notice??Connection;AttendanceStatus.text=notice??Connection;
             if(ProfileSummary!=null){var representatives=s==null?"":string.Join(" · ",EconomyCatalog.Current.Families.Where(f=>s.Value(f.Metric)>=f.Tiers[0].Threshold).Take(3).Select(f=>L.Text(f.NameKey)));ProfileSummary.text=currency+"\n"+prestige+"\n"+representatives;}
-            var dot=service.Badge?"  •":"";AchievementEntry.text=L.Text("economy.achievements")+(s?.Claimable==true?"  •":"");AttendanceEntry.text=L.Text("economy.attendance")+(s!=null&&s.Boards.Any(b=>b.Available)?"  •":"");HomeEntry.text=L.Text("account.title")+dot;
+            var dot=service.Badge?"  •":"";AchievementEntry.text=L.Text("economy.achievements")+(s?.Claimable==true?"  •":"");AttendanceEntry.text=L.Text("economy.attendance")+(s!=null&&s.Boards.Any(b=>b.Available)?"  •":"");HomeEntry.text=L.Text("meta.title")+dot;
+            if(HubView!=null){var account=AccountService.Get();var level=1;try{if(SceneFlow.Repository.Exists)level=SceneFlow.Repository.Read(Home.Rules.Validate).Player.Growth.Level;}catch{}HubIdentity.text=L.Format("account.character",level,ClassCatalog.Current.Find(ClassProfiles.Local.Selected).Name)+"\n"+L.Text(account.Linked?"account.google_connected":"account.google_disconnected")+" · "+L.Text(account.Profile?.AlphaRecorded==true?"account.alpha_recorded":"account.alpha_none");var ads=RewardedAds.Get();AdLabel.text=L.Format("ads.watch_gem",ads.State?.GemPerRewardedAd??1);WatchAd.interactable=ads.CanGem;RetryAd.interactable=!ads.Busy&&account.CloudAvailable&&account.Linked;AdPrivacy.gameObject.SetActive(ads.PrivacyOptionsRequired);AdStatus.text=L.Text(ads.Busy?"ads.wait":ads.LastError=="ad_cancelled"?"ads.cancelled":ads.Pending?"ads.pending":!account.Linked||!account.CloudAvailable?"ads.account":ads.State?.Remaining==0?"ads.limit":ads.CanGem?"ads.optional":"ads.unavailable");}
             var fs=Families();FamilyScroll.content.sizeDelta=new Vector2(700,fs.Length*132);selection=Mathf.Clamp(selection,0,fs.Length-1);
             for(var i=0;i<Categories.Length;i++){CategoryLabels[i].text=L.Text("economy.category."+EconomyCatalog.Current.Categories[i]);CategoryLabels[i].fontStyle=i==category?FontStyle.Bold:FontStyle.Normal;}
-            for(var i=0;i<Rows.Length;i++){var on=i<fs.Length;Rows[i].gameObject.SetActive(on);if(!on)continue;var f=fs[i];var value=s?.Value(f.Metric)??0;var completed=f.Tiers.Count(t=>value>=t.Threshold);RowLabels[i].text=L.Text(f.NameKey)+"\n"+L.Format("economy.tier",completed,f.Tiers.Length)+(s!=null&&f.Tiers.Where((t,j)=>value>=t.Threshold&&!s.Claimed.Contains(f.Id+":"+j)).Any()?"  •":"");RowLabels[i].fontStyle=i==selection?FontStyle.Bold:FontStyle.Normal;}
+            for(var i=0;i<Rows.Length;i++){var on=i<fs.Length;Rows[i].gameObject.SetActive(on);if(!on)continue;var f=fs[i];var value=s?.Value(f.Metric)??0;var completed=f.Tiers.Count(t=>value>=t.Threshold);var next=f.Tiers.FirstOrDefault(t=>value<t.Threshold);RowLabels[i].text=L.Text(f.NameKey)+" · "+completed+"/"+f.Tiers.Length+"\n"+(next==null?L.Format("economy.tier",completed,f.Tiers.Length):L.Format("meta.next",Math.Min(value,next.Threshold),next.Threshold,next.GemReward))+(s!=null&&f.Tiers.Where((t,j)=>value>=t.Threshold&&!s.Claimed.Contains(f.Id+":"+j)).Any()?"  •":"");RowLabels[i].fontStyle=i==selection?FontStyle.Bold:FontStyle.Normal;}
             if(fs.Length>0){var f=fs[selection];var value=s?.Value(f.Metric)??0;Detail.text=L.Text(f.NameKey)+"\n"+L.Text(f.DescriptionKey)+"\n\n"+string.Join("\n",f.Tiers.Select((t,i)=>L.Format("economy.tier_detail",Math.Min(value,t.Threshold),t.Threshold,t.GemReward,t.AchievementPoints,L.Text(s?.Claimed.Contains(f.Id+":"+i)==true?"economy.received":value>=t.Threshold?"economy.complete":"economy.progress"))));Claim.interactable=service.Online&&!service.Busy&&s!=null&&f.Tiers.Where((t,i)=>value>=t.Threshold&&!s.Claimed.Contains(f.Id+":"+i)).Any();}
             ClaimAll.interactable=service.Online&&!service.Busy&&s?.Claimable==true;
             var b=CurrentBoard();BoardTitle.text=b==null?L.Text(tab==2?"economy.no_event":"economy.no_account"):tab==0?L.Text("economy.newcomer"):tab==1?L.Format("economy.monthly",b.Period):L.Language=="ko"?b.NameKo:b.NameEn;
-            for(var i=0;i<Slots.Length;i++){Slots[i].gameObject.SetActive(b!=null&&i<b.Rewards.Length);if(b==null||i>=b.Rewards.Length)continue;var reward=b.Rewards[i]>0?L.Format("economy.gem_reward",b.Rewards[i]):L.Text("economy.attendance_record");SlotLabels[i].text=L.Format("economy.day",i+1)+"\n"+reward;SlotMarks[i].enabled=i<b.Count;Slots[i].interactable=false;Slots[i].image.color=i<b.Count?new Color32(125,139,91,70):i==b.Count?new Color32(165,111,68,65):new Color32(119,108,77,20);}
+            for(var i=0;i<Slots.Length;i++){Slots[i].gameObject.SetActive(b!=null&&i<b.Rewards.Length);if(b==null||i>=b.Rewards.Length)continue;var reward=b.Rewards[i]>0?L.Format("economy.gem_reward",b.Rewards[i]):L.Text("meta.stamp");SlotLabels[i].text=L.Format("economy.day",i+1)+"\n"+reward;SlotMarks[i].enabled=i<b.Count;SlotLabels[i].fontStyle=b.Rewards[i]>0||i==b.Count?FontStyle.Bold:FontStyle.Normal;Slots[i].interactable=false;Slots[i].transition=UnityEngine.UI.Selectable.Transition.None;Slots[i].image.color=i<b.Count?new Color32(125,139,91,130):i==b.Count?new Color32(165,111,68,160):new Color32(119,108,77,20);}
             Attend.interactable=service.Online&&!service.Busy&&b?.Available==true;RefreshClock();
         }
         private void Update(){if(!AttendanceView.activeSelf||Time.unscaledTime<nextClock)return;nextClock=Time.unscaledTime+1;RefreshClock();}

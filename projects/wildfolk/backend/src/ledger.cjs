@@ -13,6 +13,7 @@ function compactHash(hex){
 }
 function sourceHash(player,environment,source){return hash(['lowfire-source-v1',player,environment,source]);}
 function custom(player,environment,kind,suffix){return kind[0].toUpperCase()+'_'+compactHash(hash([player,environment,kind,suffix]));}
+function financialCustom(environment,kind,provider,receiptHash){return 'F_'+compactHash(hash([environment,kind,provider,receiptHash]));}
 function upgrade(value){
  const p=clone(value);
  if(p.Schema===1){
@@ -74,7 +75,7 @@ class LedgerStorage{
   // INTERNAL server boundary only. No player/Cloud Code operation calls this until a
   // future provider verifier supplies a verified receipt. Raw purchase tokens never enter storage.
   requireThat(receipt?.Verified===true&&['ad','iap'].includes(receipt.Kind)&&/^[A-Za-z0-9_-]{1,48}$/.test(receipt.Provider)&&/^[a-f0-9]{64}$/.test(receipt.ReceiptHash)&&/^[A-Za-z0-9_-]{1,96}$/.test(receipt.PlayerId)&&/^[A-Za-z0-9_-]{1,64}$/.test(receipt.Placement)&&Number.isSafeInteger(receipt.VerifiedAt),'unverified_financial_receipt');
-  const id='F_'+compactHash(hash([this.environment,receipt.Kind,receipt.Provider,receipt.ReceiptHash]));
+  const id=financialCustom(this.environment,receipt.Kind,receipt.Provider,receipt.ReceiptHash);
   const value={Schema:1,Kind:receipt.Kind,Provider:receipt.Provider,ReceiptHash:receipt.ReceiptHash,PlayerId:receipt.PlayerId,Placement:receipt.Placement,VerifiedAt:receipt.VerifiedAt,SourceId:receipt.Kind+':'+receipt.Provider+':'+receipt.ReceiptHash};
   const check=old=>{requireThat(old.value.PlayerId===value.PlayerId&&old.value.SourceId===value.SourceId&&old.value.Placement===value.Placement,'financial_receipt_owner_conflict');return old.value;};
   const old=await this.get(id,'receipt');if(old)return check(old);
@@ -137,4 +138,4 @@ async function reconcile(store,p,cursor={Next:1,Balance:0,Hash:'',Count:p.Archiv
  if(complete){requireThat(Balance===p.Archive.Balance&&Hash===p.Archive.Hash,'archive_checkpoint_invalid');for(const t of p.Ledger){requireThat(t.BalanceBefore===Balance,'ledger_inconsistent');Balance=t.BalanceAfter;}requireThat(Balance===p.Balance,'ledger_inconsistent');}
  return {complete,balance:complete?Balance:undefined,cursor:{Next,Balance:complete?p.Archive.Balance:Balance,Hash,Count}};
 }
-module.exports={SEGMENT,SOFT,HARD,ROOT_BYTES,INDEX_BYTES,bytes,hash,canonical,compactHash,custom,sourceHash,upgrade,sequence,segmentValue,validateSegment,parallel,LedgerStorage,findSource,compact,capacity,history,transaction,reconcile};
+module.exports={SEGMENT,SOFT,HARD,ROOT_BYTES,INDEX_BYTES,bytes,hash,canonical,compactHash,custom,financialCustom,sourceHash,upgrade,sequence,segmentValue,validateSegment,parallel,LedgerStorage,findSource,compact,capacity,history,transaction,reconcile};

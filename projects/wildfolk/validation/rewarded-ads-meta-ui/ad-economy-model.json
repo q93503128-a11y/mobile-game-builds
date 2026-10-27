@@ -1,0 +1,126 @@
+{
+  "method": "Sensitivity at 100% eligible active days. Supply, not actual play, retention or ad revenue. Finite achievements213 and newcomer45 are not recurring. Cap1gem/day and zero cooldown; revive ads avoid spending8 but add0Gem. Calendar month attendance has4milestones/40Gem only when28visits reached.",
+  "prices": {
+    "starting": 0,
+    "lifetimeAchievement": 213,
+    "newcomer": 45,
+    "monthly": 40,
+    "engineer": 120,
+    "revive": 8
+  },
+  "rows": [
+    {
+      "days": 30,
+      "adsPerActiveDay": 1,
+      "activeDays": 30,
+      "uncappedAdGem": 30,
+      "cappedAdGem": 30,
+      "engineerShare": 0.25,
+      "revivesEquivalent": 3.75,
+      "noAdsAdGem": 0
+    },
+    {
+      "days": 30,
+      "adsPerActiveDay": 3,
+      "activeDays": 30,
+      "uncappedAdGem": 90,
+      "cappedAdGem": 30,
+      "engineerShare": 0.25,
+      "revivesEquivalent": 3.75,
+      "noAdsAdGem": 0
+    },
+    {
+      "days": 30,
+      "adsPerActiveDay": 5,
+      "activeDays": 30,
+      "uncappedAdGem": 150,
+      "cappedAdGem": 30,
+      "engineerShare": 0.25,
+      "revivesEquivalent": 3.75,
+      "noAdsAdGem": 0
+    },
+    {
+      "days": 30,
+      "adsPerActiveDay": 10,
+      "activeDays": 30,
+      "uncappedAdGem": 300,
+      "cappedAdGem": 30,
+      "engineerShare": 0.25,
+      "revivesEquivalent": 3.75,
+      "noAdsAdGem": 0
+    },
+    {
+      "days": 90,
+      "adsPerActiveDay": 1,
+      "activeDays": 90,
+      "uncappedAdGem": 90,
+      "cappedAdGem": 90,
+      "engineerShare": 0.75,
+      "revivesEquivalent": 11.25,
+      "noAdsAdGem": 0
+    },
+    {
+      "days": 90,
+      "adsPerActiveDay": 3,
+      "activeDays": 90,
+      "uncappedAdGem": 270,
+      "cappedAdGem": 90,
+      "engineerShare": 0.75,
+      "revivesEquivalent": 11.25,
+      "noAdsAdGem": 0
+    },
+    {
+      "days": 90,
+      "adsPerActiveDay": 5,
+      "activeDays": 90,
+      "uncappedAdGem": 450,
+      "cappedAdGem": 90,
+      "engineerShare": 0.75,
+      "revivesEquivalent": 11.25,
+      "noAdsAdGem": 0
+    },
+    {
+      "days": 90,
+      "adsPerActiveDay": 10,
+      "activeDays": 90,
+      "uncappedAdGem": 900,
+      "cappedAdGem": 90,
+      "engineerShare": 0.75,
+      "revivesEquivalent": 11.25,
+      "noAdsAdGem": 0
+    }
+  ],
+  "noAdsExample": {
+    "achievement": 0,
+    "newcomer": 45,
+    "twoCompleteMonthlyBoards": 80,
+    "total": 125,
+    "engineerCost": 120
+  },
+  "cadenceSensitivity": [
+    {
+      "eligibleDaysPer30": 0,
+      "cappedAdGem30": 0,
+      "cappedAdGem90": 0
+    },
+    {
+      "eligibleDaysPer30": 7,
+      "cappedAdGem30": 7,
+      "cappedAdGem90": 21
+    },
+    {
+      "eligibleDaysPer30": 15,
+      "cappedAdGem30": 15,
+      "cappedAdGem90": 45
+    },
+    {
+      "eligibleDaysPer30": 30,
+      "cappedAdGem30": 30,
+      "cappedAdGem90": 90
+    }
+  ],
+  "reviveAvoidedSpend": {
+    "oneSuccessfulAdRevivePerExpedition": 8,
+    "addedGem": 0
+  }
+}

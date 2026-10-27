@@ -79,3 +79,7 @@ Foundation2 non-production 경제 배포/검증은 별도 REVIEW를 따른다. �
 ## Foundation2.1 재개 시 설정 확인
 
 새 서버 script LowfirePremiumAdmission을 Account/Economy와 같은 실제 environment에 배포하고 Private Game Data 접근은 service 전용으로 유지한다. per-player archive/source shard ID는 코드에서 결정하며 임의 수동 ID를 만들지 않는다. capacity75/90%는 운영 조회에 있으며 Dashboard 경고 전달/처리 주기는 운영 설정이 필요하다. Development/Alpha 배포는 실제 확인했지만 Production/Google/PGS/Integrity/공개 Privacy·삭제 URL은 계속 미설정이다. package는 com.gltam.lowfire를 유지하고 가짜 ID/URL을 넣지 않는다. [완료 및 남은 출시 설정](../validation/economy-premium-mp-ledger/RESUME.md).
+
+## Foundation3 Ads · SETUP_REQUIRED
+
+실제 AdMob App/두 rewarded ad unit/SSV callback URL/Cloud Run·Cloud Tasks·worker IAM·relay HMAC·UGS server credential·UMP audience/privacy/실기기 video/서명SSV는미설정이다. sampleApp/Unit은Google공식test용이며게임실제ID가아니다. [ADS.md의12단계](ADS.md#exact-setup-procedure-no-made-up-values)에사이트·메뉴·App·placement·입력파일·test모드·활성화전검사·secret저장위치를기록했다. 기본OFF를해제한것으로보고하지않는다. Alpha sample영상과owned-unit SSV경로는분리검증하며현재Alpha는realunit을사용하지않는다. Production실제unit/test-device end-to-end 검증/승인전live활성화금지.

@@ -116,3 +116,7 @@ Development/Alpha의 LowfireAccount/LowfireEconomy/LowfirePremiumAdmission 정�
 audit64/day·활성 proof16/90초·mutation budget500/day, rejected proof는 bounded suspicious와 reason으로 남기며 자동 ban은 없다. malformed/replay/cross-player/session/revision을 거절하고 성공 ownership은 재조회한다. 수정된 Host gameplay와 능동 LAN MITM 전체를 방어하는 anti-cheat가 아니다. 최종 QA/정리 결과와 남은 출시 설정은 [RESUME](../validation/economy-premium-mp-ledger/RESUME.md)를 따른다.
 
 재개 완료: Android57/57 compile, 실제 SDK의 Economy2 출석/업적 수령·중복방지/Engineer120/부활8·환급·무료Home/Save14와 별도2process death NUnit 및 Boss/resource LAN 회귀를 통과했다. 이번 재개에서 추가된 코드는 Editor/검증 harness뿐이며 Runtime/backend/product 설정은 변경하지 않았다. 원래22개와 이번8개 신규 QA identity를 모두 정리했고 서비스의 Private/player data→Auth 순서를 지켰다. 실제 서비스429는 안전한 단계/HTTP코드/Retry-After만 기록했고 대기 후 성공했다. product6개(Development/Alpha3개씩) published hash가 checkpoint와 같음을 재조회했다. [완료 기록](../validation/economy-premium-mp-ledger/REVIEW.md#2026-10-27-재개-완료).
+
+## Foundation3 Rewarded Ads 운영
+
+LowfireRewarded는development/alpha에기본OFF(`Enabled=false,SsvReady=false,ProductionLiveEnabled=false`)로추가한다. Production정책/기존서버스크립트는임의교체하지않는다. `ads-setup` dry-run/CAS설정, `ads-lookup` 지원조회와기존economy-source/history/reconcile/조정·operator/case/reason을사용한다. owner검증후globalfinancialbinding삭제가hot/archive/pendingmanifest삭제보다먼저실행된다. ingressGET은durablequeue성공뒤만200,worker는OIDC+서버HMAC와retainedGooglepublickey검증. UGS/Cloud Run/queue429·오래된pending·거절·실패율·oldesttask/cleanup·privacy로그retention을운영관측한다. 요청rawquery/토큰/HMAC/credential은로그/지원/채팅금지. [사이트·메뉴·secret·권한·재시도순서](ADS.md).

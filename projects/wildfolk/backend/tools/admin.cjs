@@ -4,6 +4,7 @@ const {CloudSaveStore}=require('../src/cloud-save.cjs');
 const {requireThat}=require('../src/account.cjs');
 const {migrateAlpha,deleteAccount}=require('../src/operations.cjs');
 const ledger=require('../src/ledger.cjs');
+const adsSupport=require('./ads-support.cjs');
 function parse(argv){const args={command:argv[0],apply:false};for(let i=1;i<argv.length;i++){if(argv[i]==='--apply')args.apply=true;else if(argv[i]==='--dry-run')args.apply=false;else {requireThat(argv[i].startsWith('--')&&argv[i+1],'invalid_arguments');args[argv[i].slice(2)]=argv[++i];}}return args;}
 class AdminApi {
  constructor(project,environment){requireThat(/^[a-zA-Z0-9_-]+$/.test(project)&&/^[a-zA-Z0-9_-]+$/.test(environment),'invalid_scope');this.project=project;this.environment=environment;this.base='https://services.api.unity.com/cloud-save/v1/data/projects/'+project+'/environments/'+environment;}
@@ -24,7 +25,9 @@ class AdminApi {
   const economy=(await new CloudSaveStore(api,this.project,undefined,'lf_economy',env).read(player))?.value;
   const count=economy?.Archive?.Count||0;requireThat(Number.isSafeInteger(count)&&count>=0&&count<=1000000,'invalid_archive_manifest');
   const remove=async(id,key)=>{try{await api.request('DELETE',api.base+'/custom/'+encodeURIComponent(id)+'/private/items/'+key);}catch(e){if(e.response?.status!==404)throw e;}};
-  for(let n=1;n<=count+1;n++)await remove(ledger.custom(player,env,'ledger',n),'segment');
+  const storage=new ledger.LedgerStorage(api,this.project,env);
+  await adsSupport.removeBindings(storage,player,economy?.Ledger||[],economy?.Ads?.Operations,remove);
+  for(let n=1;n<=count+1;n++){const segment=await storage.archive(player,n);if(segment){ledger.validateSegment(segment,player,env,n);await adsSupport.removeBindings(storage,player,segment.Rows,{},remove);}await remove(ledger.custom(player,env,'ledger',n),'segment');}
   for(let n=0;n<256;n++){
    const id=ledger.custom(player,env,'receipts',n.toString(16).padStart(2,'0'));
    for(let page=0;page<110;page++){
@@ -53,6 +56,14 @@ async function main(){
   if(!current.some(i=>i.key==='creation_gate'))await api.setPrivateCustomItem(a.project,'lowfire_backend',{key:'creation_gate',value:{owner:''}});
   const old=current.find(i=>i.key==='policy');await api.setPrivateCustomItem(a.project,'lowfire_backend',{key:'policy',value:policy,...(old?{writeLock:old.writeLock}:{})});console.log('Environment policy provisioned; existing gate ownership preserved.');return;
  }
+ if(a.command==='ads-setup'){
+  requireThat(a.config,'ads_config_required');const value=JSON.parse(fs.readFileSync(a.config,'utf8')),keys=Object.keys(require('../src/ads-config.json'));
+  requireThat(Object.keys(value).every(k=>keys.includes(k))&&keys.every(k=>Object.hasOwn(value,k))&&value.Schema===1&&value.Provider==='admob'&&typeof value.Enabled==='boolean'&&typeof value.SsvReady==='boolean'&&typeof value.ProductionLiveEnabled==='boolean'&&value.IngressKeyName==='LOWFIRE_ADS_INGRESS_HMAC_V1','invalid_ads_config');
+  if(value.Enabled||value.SsvReady)require('../src/rewarded.cjs').policy(value,'Development',true);
+  requireThat(!value.ProductionLiveEnabled||a.confirm==='ENABLE_PRODUCTION_REWARDED_ADS','production_ads_confirmation_required');
+  const current=(await api.getPrivateCustomItems(a.project,'lowfire_backend',['ads_config'])).data.results.find(i=>i.key==='ads_config');
+  if(a.apply)await api.setPrivateCustomItem(a.project,'lowfire_backend',{key:'ads_config',value,...(current?{writeLock:current.writeLock}:{})});console.log(JSON.stringify({applied:a.apply,enabled:value.Enabled,ssvReady:value.SsvReady,productionLive:value.ProductionLiveEnabled}));return;
+ }
  if(a.command==='export-alpha'){
   requireThat(a.out,'output_required');let page=a.cursor||'',players=[];const limit=Math.min(1000,Math.max(1,Number(a.limit||1000)));
   requireThat(Number.isFinite(limit),'invalid_export_limit');
@@ -73,10 +84,11 @@ async function main(){
   const backend=new (require('../src/economy.cjs').EconomyBackend)(new CloudSaveStore(api,a.project,request.operationId,'lf_economy',a.environment),policy,economyConfig);
   console.log(JSON.stringify(await backend.adminAdjust(ctx,request,{operator:a.operator,caseReference:a.case,authorized:true,apply:a.apply}),null,2));return;
  }
- if(['economy-lookup','economy-history','economy-source','economy-transaction','economy-capacity','economy-reconcile','economy-maintain'].includes(a.command)){
+ if(['ads-lookup','economy-lookup','economy-history','economy-source','economy-transaction','economy-capacity','economy-reconcile','economy-maintain'].includes(a.command)){
   let player=a.player;if(a.support){const result=await api.lookup(a.support);player=result.id||result.playerId;requireThat(player,'player_missing');}
   requireThat(player,'player_required');const economyStore=new CloudSaveStore(api,a.project,'admin-'+Date.now(),'lf_economy',a.environment);let record=await economyStore.read(player);requireThat(record,'economy_missing');let p=record.value;
   let result;
+  if(a.command==='ads-lookup')result=adsSupport.summary(p);
   if(a.command==='economy-lookup')result={...record,capacity:ledger.capacity(p),engineerOwned:require('../src/economy-ownership.cjs').engineerOwnership(p,{playerId:player,environmentId:a.environment}),lastPremiumAdmission:p.LastPremiumAdmission||null};
   if(a.command==='economy-history')result=await ledger.history(economyStore,ledger.upgrade(p),a.before?Number(a.before):ledger.sequence(p)+1,Number(a.limit||20));
   if(a.command==='economy-source'){requireThat(a.source,'source_required');result=await ledger.findSource(economyStore,p,a.source);}

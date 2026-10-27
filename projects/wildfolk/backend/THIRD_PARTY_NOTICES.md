@@ -332,3 +332,7 @@ TO LOSS OF DATA OR DATA BEING RENDERED INACCURATE OR LOSSES SUSTAINED BY
 YOU OR THIRD PARTIES OR A FAILURE OF THE PROGRAM TO OPERATE WITH ANY OTHER
 PROGRAMS), EVEN IF SUCH HOLDER OR OTHER PARTY HAS BEEN ADVISED OF THE
 POSSIBILITY OF SUCH DAMAGES.
+
+## Foundation3 ingress and Unity SDK
+
+Node-only google-auth-library11.3.1 (Google, Apache-2.0) is pinned in backend/ingress/package-lock.json; npm installation retains its LICENSE. Google Mobile Ads Unity11.6.0 source/binaries are pinned from the official unitypackage, with full Apache-2.0 LICENSE under client/Assets/GoogleMobileAds. No external reference screenshot is a game asset. Node native crypto performs ECDSA; node-forge HMAC/SHA256 does not invoke its RSA verification API.

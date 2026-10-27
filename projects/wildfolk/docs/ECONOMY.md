@@ -63,3 +63,7 @@ achievement/attendance는 immutable claim identity를 보존한다. future Ads/I
 capacity는 실제 serialized root/index bytes와 hot/archive 개수를 지원 도구에 노출한다. root3MiB, bucket2000key/4MiB의75%/90%에서 warning/critical이며 플레이어 popup은 없다. 100k 모델은 root193217B/hot416/archive389/Custom Item645/최대bucket450key, archive+index+root59006349B다. 이는 서비스 성능·비용 보장이 아니다. 실제512행 이관은 archive256/hot256 및 서버1745ms를 확인했다. 정상 Get도 maintenance 확인을 위한 root read 비용이 추가되며 archive는 threshold/recovery 때만 쓴다. 비용·대량 운영 경고 전달 job·실기기 성능은 별도 운영 검증이다.
 
 현재 구현·실제 검증·남은 검증은 [Foundation2.1 REVIEW](../validation/economy-premium-mp-ledger/REVIEW.md)와 [재개 목록](../validation/economy-premium-mp-ledger/RESUME.md)에서 구분한다.
+
+## Foundation3 · Rewarded Ads
+
+정본 `backend/src/ads-config.json`의1Gem/회·UTC1Gem/day·cooldown0을추가했다. 시작0/업적213/신규45/월간40/Engineer120/부활8은유지한다. Gem은Google서명SSV→durableworker→Economy2 `rewarded_ad`만지급한다. 클라이언트완료bool은재화권위가아니다. 광고30/90일최대30/90Gem이며,무광고신규45+완료월간2회80=125로Engineer가능(활동가정). 서버receipt영구중복방지/자정예약일/지연재시도와설정절차는 [ADS](ADS.md), 계산은 [model](../validation/rewarded-ads-meta-ui/ad-economy-model.json). 광고부활은Gem공급0,피한8Gem지출과분리한다.

@@ -90,3 +90,9 @@ Foundation2 현재 상태: **구현·관련 검증 완료**. 해상도 전환 �
 ## Foundation2.1 완료 · 2026-10-27
 
 서버 premium admission과 Economy2 archive 정본 구현·관련 검증을 완료했다. 실제 Development 계정과 두 Unity 프로세스로 LAN/Relay Engineer 입장·재접속·새 세션·offline/미소유 fallback을 확인했다. 최종 Android Alpha/Production57/57 compile, 실제 SDK 출석·업적·Engineer·부활 차감/환급·무료Home/Save14, 별도 Host/Client 사망 lifecycle NUnit과 보스·자원·reHost LAN 회귀도 통과했다. Save14/Profile2/CloudProfile1/generation3는 유지하고 Protocol23/serverEconomy2다. [최종 검증과 한계](validation/economy-premium-mp-ledger/REVIEW.md#2026-10-27-재개-완료), [인계](validation/economy-premium-mp-ledger/RESUME.md). 제품 backend/Google·PGS·Integrity·공개URL·실기기·Production 활성화는 별도이며 다음 기능은 시작하지 않는다.
+
+## Launch Foundation3
+
+Google AdMob11.6.0 Rewarded Ads 기반과 Profile·Records hub/업적/출석 기록지를 연결했다. 보상은1Gem·UTC하루1회, SP부활은기존원정1회. 서버서명SSV/Economy2중복방지와durable재시도,실제UGS차단경로·격리UnityQA를구분한다. **광고 기본OFF/Production live OFF**이며실기기영상·실제provider SSV/consent는외부설정후필수다. [ADS](docs/ADS.md) · [검증/제한](validation/rewarded-ads-meta-ui/REVIEW.md). 다음IAP/Store는자동진행하지않는다.
+
+2026-10-27 사용자 시간 제한으로 Foundation3는 중간 체크포인트에서 멈췄다. 전체 완료가 아니며 [이어받기](validation/rewarded-ads-meta-ui/RESUME.md)를 따른다.

@@ -1,0 +1,33 @@
+✔ support redacts nonce/raw proof while preserving placement/state/receipt/transaction and trust (5.1557ms)
+✔ deletion removes hot/archive/pending financial binds idempotently and never another owner (10.0594ms)
+✔ ingress missing setup and Production activation fail closed (10.9723ms)
+✔ actual ECDSA fixture verifies original encoded order; tamper/duplicate params/wrong key rejected (46.9304ms)
+✔ Google keys fixed URL, rotation cache <24h and unknown key refresh bounded (3.2058ms)
+✔ receiver seal domain/scope/age prevents a client boolean or forged public key receipt (8.9533ms)
+✔ server rewarded_ad1 receipt credits same Economy2 once, duplicate never regrants (12.7076ms)
+✔ same day failed-show retry reuses one canonical slot/nonce; parallel other device blocked (6.511ms)
+✔ guest/offline/unconfigured/Production accidental-live requests fail closed (2.3442ms)
+✔ valid receipt cannot cross Placement (3.0344ms)
+✔ valid receipt cannot cross PlayerId (2.5375ms)
+✔ valid receipt cannot cross Nonce (2.4452ms)
+✔ valid receipt cannot cross AdUnit (3.5995ms)
+✔ valid receipt cannot cross ProviderTimestamp (3.6316ms)
+✔ valid receipt cannot cross EnvironmentId (3.936ms)
+✔ second provider transaction on consumed operation cannot mint extra Gem (6.6357ms)
+✔ device clock/reward amount/day inputs ignored; server reservation day survives midnight (11.1478ms)
+✔ frozen reserved amount honored after policy change or stopping new ad shows (5.3909ms)
+✔ unknown verified-intent CAS is durable; authenticated retry resumes once (7.6159ms)
+✔ global bind succeeded but wallet CAS failed: receipt intent is enumerable and retry safe (8.992ms)
+✔ lost wallet success response retries same receipt without duplicate credit (6.9162ms)
+✔ archived ad receipt and pruned operation still prevent duplicate grants (153.3275ms)
+✔ deletion blocks pending grant; bounded fraud evidence no automatic ban (56.6353ms)
+✔ revive telemetry is explicitly unverified, deduplicated and cannot grant money (1.5288ms)
+✔ parallel verified deliveries race through CAS but credit one permanent receipt (4.8946ms)
+ℹ tests 25
+ℹ suites 0
+ℹ pass 25
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 796.9177

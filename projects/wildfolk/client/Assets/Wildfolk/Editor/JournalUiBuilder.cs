@@ -17,6 +17,14 @@ namespace Wildfolk.Editor
             Image("Right Page",spread,"lowfire_journal",Vector2.one*.5f,new Vector2(420,0),new Vector2(850,980),true);
             return spread;
         }
+        internal static Transform Sheet(Transform safe,string name,out GameObject view)
+        {
+            var overlay=Scrim(name+" Overlay",safe);overlay.color=new Color(.05f,.07f,.04f,.48f);view=overlay.gameObject;
+            var sheet=Rect(name,overlay.transform,Vector2.one*.5f,Vector2.zero,new Vector2(1720,1000));
+            var fit=sheet.gameObject.AddComponent<ModalLayout>();fit.SafeArea=(RectTransform)safe;fit.ReferenceSize=sheet.sizeDelta;fit.HorizontalReserve=40;fit.TopReserve=fit.BottomReserve=20;
+            Image("Field paper",sheet,"lowfire_journal",Vector2.one*.5f,Vector2.zero,new Vector2(1720,980),true);
+            return sheet;
+        }
         internal static Text Label(Transform parent,string name,string key,Vector2 p,Vector2 size,int font=26,TextAnchor anchor=TextAnchor.MiddleLeft)
         {var t=Text(name,parent,key,p,size,font,anchor);t.color=JournalStyle.Ink;t.verticalOverflow=VerticalWrapMode.Truncate;return t;}
         internal static Image Rule(Transform parent,Vector2 from,Vector2 to,float width=2)
