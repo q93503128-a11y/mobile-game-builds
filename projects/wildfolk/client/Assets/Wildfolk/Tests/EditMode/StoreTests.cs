@@ -1,0 +1,21 @@
+using System;
+using System.IO;
+using NUnit.Framework;
+namespace Wildfolk.Tests
+{
+    public sealed class StoreTests
+    {
+        private string root;[SetUp]public void Setup()=>root=Path.Combine(Path.GetTempPath(),"LowfireStoreEdit-"+Guid.NewGuid().ToString("N"));
+        [TearDown]public void Cleanup(){if(Directory.Exists(root))Directory.Delete(root,true);}
+        private PurchaseJournal Open(string scope="account-a")=>new PurchaseJournal(Path.Combine(root,"purchases.json"),scope);
+        [Test]public void DefaultAllChannelsCannotStartRealPurchase(){var s=StoreSettings.Load();Assert.That(s.PurchaseEnabled,Is.False);foreach(BuildChannel c in Enum.GetValues(typeof(BuildChannel)))Assert.That(s.Allows(c),Is.False);s.PurchaseEnabled=s.ProductionLiveEnabled=s.ExternalSetupReviewed=true;Assert.That(s.Allows(BuildChannel.Alpha),Is.False);Assert.That(s.Allows(BuildChannel.Development),Is.False);Assert.That(s.Allows(BuildChannel.Production),Is.True);Assert.That(BackendPolicy.RealMoneyPurchase,Is.False);}
+        [Test]public void CatalogHasThreeSmallProposedProductsAndNoMoneyPrice(){var c=StoreCatalog.Load();Assert.That(c.Proposed,Is.True);Assert.That(Array.ConvertAll(c.Products,p=>p.GemAmount),Is.EqualTo(new[]{24,72,144}));Assert.That(typeof(StoreItem).GetField("Price"),Is.Null);c.Products[1].ProductId=c.Products[0].ProductId;Assert.Throws<InvalidOperationException>(()=>c.Validate());}
+        [Test]public void PendingTokenAndOperationSurviveRestartWithoutGrantingCurrency(){var j=Open();var a=j.Add(new StorePurchase{Token="isolated-token",ProductId="lowfire_gems_24"});Assert.That(Open().State.Pending[0].OperationId,Is.EqualTo(a.OperationId));Assert.That(j.Add(new StorePurchase{Token="isolated-token",ProductId="lowfire_gems_24"}),Is.SameAs(a));Assert.That(j.State.Pending.Count,Is.EqualTo(1));Assert.Throws<IOException>(()=>Open("account-b"));}
+        [Test]public void TerminalRemovalSanitizesPrimaryAndBackupTokens(){var j=Open();j.Add(new StorePurchase{Token="sensitive-isolated-token",ProductId="lowfire_gems_24"});j.Save();j.Remove("sensitive-isolated-token");Assert.That(Open().State.Pending,Is.Empty);Assert.That(File.ReadAllText(j.Path),Does.Not.Contain("sensitive-isolated-token"));Assert.That(File.ReadAllText(j.Path+".backup"),Does.Not.Contain("sensitive-isolated-token"));}
+        [Test]public void CorruptPrimaryUsesBackupAndDoubleCorruptionBlocksPurchase(){var j=Open();j.Add(new StorePurchase{Token="isolated-token",ProductId="lowfire_gems_24"});j.Save();File.WriteAllText(j.Path,"bad");Assert.That(Open().State.Pending.Count,Is.EqualTo(1));File.WriteAllText(j.Path+".backup","bad");Assert.Throws<IOException>(()=>Open());}
+        [Test]public void QueueBoundFailsBeforePersistingUnreadableState(){var j=Open();for(var i=0;i<64;i++)j.Add(new StorePurchase{Token="isolated-token-"+i,ProductId="lowfire_gems_24"});Assert.Throws<IOException>(()=>j.Add(new StorePurchase{Token="one-too-many",ProductId="lowfire_gems_24"}));Assert.That(Open().State.Pending.Count,Is.EqualTo(64));}
+        [Test]public void PlatformPriceMustIncludeRealCurrencyAndPositiveAmount(){var p=new StorePrice{ProductId="lowfire_gems_24",FormattedPrice="US$ 1,234,567.89",Currency="USD",PriceMicros=1234567890000};Assert.DoesNotThrow(p.Validate);p.FormattedPrice="";Assert.Throws<InvalidOperationException>(p.Validate);p.FormattedPrice="price";p.Currency="unknown";Assert.Throws<InvalidOperationException>(p.Validate);}
+        [Test]public void ReplyCannotCrossPlayerEnvironmentOrGemMapping(){var c=StoreCatalog.Load();var s=new StoreState{Schema=1,PlayerId="p",EnvironmentId="e",AccountBinding=new string('a',64),CatalogRevision=c.Revision,Products=c.Products};Assert.DoesNotThrow(()=>s.Validate("p","e",c));Assert.Throws<InvalidOperationException>(()=>s.Validate("other","e",c));Assert.Throws<InvalidOperationException>(()=>s.Validate("p","wrong",c));s.CatalogRevision++;Assert.Throws<InvalidOperationException>(()=>s.Validate("p","e",c));}
+        [Test]public void AnonymousUnavailableProviderNeverInventsSuccess(){var p=new UnavailableStoreBilling();Assert.That(p.Supported,Is.False);Assert.That(p.Fetch(new[]{"lowfire_gems_24"}).Result,Is.Empty);Assert.That(p.Buy("p","a","b").Result.Outcome,Is.EqualTo(BillingOutcome.Unavailable));}
+    }
+}

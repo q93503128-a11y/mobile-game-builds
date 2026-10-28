@@ -37,7 +37,7 @@ namespace Wildfolk
             return environment;
         }
         public static bool Fixtures=>Channel==BuildChannel.Development && Debug.isDebugBuild;
-        public static bool RealMoneyPurchase=>false;
+        public static bool RealMoneyPurchase=>BackendSettings.Current.Enabled&&StoreSettings.Load().Allows(Channel)&&!StoreCatalog.Load().Proposed;
         public static bool AlphaEnrollment=>Channel==BuildChannel.Alpha;
         public static bool ValidWeb(string value)=>Uri.TryCreate(value,UriKind.Absolute,out var uri)&&uri.Scheme=="https"&&!uri.IsLoopback&&string.IsNullOrEmpty(uri.UserInfo);
     }

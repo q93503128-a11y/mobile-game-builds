@@ -1,0 +1,41 @@
+{
+  "metadata": {
+    "Name": "LowfireIntegrityVerify",
+    "Language": "JS",
+    "Type": "API",
+    "Versions": [
+      3,
+      2,
+      1
+    ],
+    "ActiveScript": {
+      "Version": 3,
+      "DatePublished": "2026-10-26T05:26:45",
+      "Params": [
+        {
+          "type": "STRING",
+          "name": "operationId",
+          "required": true
+        },
+        {
+          "type": "STRING",
+          "name": "buildVersion",
+          "required": true
+        },
+        {
+          "type": "STRING",
+          "name": "integrityToken",
+          "required": true
+        },
+        {
+          "type": "STRING",
+          "name": "purpose",
+          "required": false
+        }
+      ]
+    }
+  },
+  "sha256": "541db405b026f0fedec800fa7e75a027200134b8920ff105ed791e985ac0cd80",
+  "bytes": 120422,
+  "verifiedSameAsLocal": true
+}

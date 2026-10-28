@@ -291,3 +291,7 @@ Economy2는 Protected root CAS와 Private immutable256행 segment/256 shard 개�
 ## Foundation3 Ads / Meta UI
 
 Runtime RewardedAds/RewardedJournal/IRewardedAdProvider와 AndroidAds assembly를분리한다. Google원본SDK11.6.0/기존EDM사용,Editor자동보상없음. Gem계정·환경scopejournal→servercanonicalslot/nonce→signedGoogleGET→durableCloudTasks→OIDC/HMACworker→LowfireRewarded→기존Economy2CAS/영구receipt/source. 로컬SP부활earnedproof는Run/death에묶어Save14성공후에만소모한다. Save/Profile/Protocol을올리지않고새광고journalSchema1·boundedAdsmetadata만추가했다. EconomyScreen의직렬화Hub/기록지UI는상태변경시갱신,출석resetclock만열린동안1초간격이다. [authority·flow·배포](ADS.md).
+
+## Foundation4 Store / Billing
+
+StoreService/IStoreBillingClient → Android 전용 PlayBillingClient/Java Billing9.1.0 → LowfirePurchase → LowfirePlayVerify 실제 Google API. Prepared/Granted Private receipt와 scoped pending journal, token hash 전역 owner binding, 기존 Economy2 CAS/archive/source 중복 방지를 사용한다. 소비는 서버 지급 후 별도 bounded 호출, client 완료 이벤트는 재화 권위가 아니다. 원본 MainMenu Profile 아래 Store를 직렬화하며 EconomyUiBuilder가 같은 StoreUiBuilder 정본을 호출한다. Save14/Profile2/CloudProfile1/Economy2/Protocol23/generation3 유지, 별도 IAP Schema1. [상태·보안·복구·설정](IAP.md).

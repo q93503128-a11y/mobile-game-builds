@@ -25,7 +25,7 @@ function audit(p,ctx,type,op,now,result='ok',reason=''){
 }
 function flag(p,ctx,reason,op,now){p.Security.State='Suspicious';if(!p.Security.Reasons.includes(reason))p.Security.Reasons.push(reason);p.Security.Reasons=p.Security.Reasons.slice(-16);audit(p,ctx,'security.suspicious',op,now,'flagged',reason);}
 async function transact(p,ctx,delta,reason,source,op,now,metadata={},store){
- requireThat(Number.isSafeInteger(delta)&&delta!==0&&Math.abs(delta)<=100000&&typeof source==='string'&&source.length<=160,'invalid_transaction');
+ requireThat(Number.isSafeInteger(delta)&&(delta!==0||reason==='iap_refund'&&metadata.VerifiedReversal===true)&&Math.abs(delta)<=100000&&typeof source==='string'&&source.length<=160,'invalid_transaction');
  // Deterministic claim state is authoritative for achievement/attendance; no archive scan per tier.
  const old=/^(achievement|attendance):/.test(source)?p.Ledger.find(t=>t.SourceId===source):await ledger.findSource(store||{},p,source);if(old){requireThat(old.Delta===delta&&old.Reason===reason,'source_conflict');return old;}
  const next=p.Balance+delta;requireThat(integer(next,catalog.MaximumBalance),'insufficient_gem');requireThat(p.Ledger.length<catalog.MaximumLedger,'economy_capacity');

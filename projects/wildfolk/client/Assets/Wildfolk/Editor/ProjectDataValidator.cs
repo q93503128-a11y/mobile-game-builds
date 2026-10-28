@@ -75,7 +75,7 @@ namespace Wildfolk.Editor
                 var saveIds=new HashSet<string>();foreach(var placed in UnityEngine.Object.FindObjectsByType<WorldPlaceable>(FindObjectsSortMode.None))check(!string.IsNullOrEmpty(placed.SaveId) && saveIds.Add(placed.SaveId),"Save ID collision");
                 foreach(var resource in UnityEngine.Object.FindObjectsByType<ResourceIdentity>(FindObjectsSortMode.None))check(saveIds.Add(resource.Id),"Resource save ID collision");
             }
-            RewardedAdsBuildValidator.Validate(errors);BossDataValidator.Validate(errors);PoiDataValidator.Validate(errors);ExplorationDataValidator.Validate(errors);FishingDataValidator.Validate(errors);QualityDataValidator.Validate(errors);EcologyDataValidator.Validate(errors);return errors;
+            StoreBuildValidator.Validate(errors);RewardedAdsBuildValidator.Validate(errors);BossDataValidator.Validate(errors);PoiDataValidator.Validate(errors);ExplorationDataValidator.Validate(errors);FishingDataValidator.Validate(errors);QualityDataValidator.Validate(errors);EcologyDataValidator.Validate(errors);return errors;
         }
         private static void Attack(AttackProfile attack,Action<bool,string> check,string id)=>check(attack!=null && attack.MaxTargets>0 && attack.MaxTargets<=32 && attack.Range>0 && attack.ArcAngle>0 && attack.ArcAngle<=360 && attack.PierceCount>=0 && attack.AoERadius>=0,"Invalid attack profile: "+id);
         private static bool Nonnegative(float value)=>!float.IsNaN(value) && !float.IsInfinity(value) && value>=0;

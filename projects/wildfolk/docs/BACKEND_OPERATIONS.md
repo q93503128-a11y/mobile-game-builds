@@ -122,3 +122,11 @@ audit64/day·활성 proof16/90초·mutation budget500/day, rejected proof는 bou
 LowfireRewarded는development/alpha에기본OFF(`Enabled=false,SsvReady=false,ProductionLiveEnabled=false`)로추가한다. Production정책/기존서버스크립트는임의교체하지않는다. `ads-setup` dry-run/CAS설정, `ads-lookup` 지원조회와기존economy-source/history/reconcile/조정·operator/case/reason을사용한다. owner검증후globalfinancialbinding삭제가hot/archive/pendingmanifest삭제보다먼저실행된다. ingressGET은durablequeue성공뒤만200,worker는OIDC+서버HMAC와retainedGooglepublickey검증. UGS/Cloud Run/queue429·오래된pending·거절·실패율·oldesttask/cleanup·privacy로그retention을운영관측한다. 요청rawquery/토큰/HMAC/credential은로그/지원/채팅금지. [사이트·메뉴·secret·권한·재시도순서](ADS.md).
 
 2026-10-28: 삭제 요청 표시와 신규 금융 영수증 bind를 같은 짧은 creation gate로 직렬화한다. 운영 삭제는 모든 environment에서 먼저 삭제 표시를 CAS로 보존한 뒤 긴 archive/index/receipt 삭제를 수행한다. worker는 gate 안에서 계정을 다시 확인한다. unknown write의 gate 보존/운영자 확인 원칙은 유지한다.
+
+## Foundation4 구매 운영
+
+`LowfirePurchase`와 `LowfirePlayVerify`는 분리된 bounded 단계다. Development/Alpha iap_config는 구매·live·settlement OFF, Production은 이번 배포 대상이 아니다. Google service account secret은 UGS Secret Manager의 `LOWFIRE_GOOGLE_PLAY_SERVICE_ACCOUNT`에 소유자가 직접 설정하며 Git/채팅에는 넣지 않는다.
+
+지원은 `tools/iap-admin.cjs lookup/recover/voided/resolve-review`의 계정·환경·operator/case·기본dry-run을 사용한다. 공개 grant/refund endpoint는 없다. 실제 Voided feed/pagination과 재시도 cursor를 저장소 밖에서 유지하고 daily scan/pending alert 운영을 활성화 전에 구축한다. 운영 구체 명령·실제 Google 테스트 한계는 [IAP](IAP.md).
+
+금융 계정 삭제는 Authentication disable 전 reviewed retention policy와 ReviewAt를 요구한다. 계정 gate로 새 receipt를 차단한 뒤 Private 구매 detail을 지우고 전역 financial receipt를 PlayerId/token/order 없는 최소 DeletedOwner/hash/product/source/policy/review tombstone으로 바꾼다. 기존 archive/source/player 데이터는 resumable journal 순서로 정리한다. 보존 기간·법적 근거·주기적 review/purge 담당은 소유자 설정이 필요하며 임의로 법정 기간을 만들지 않는다. 세계 save는 삭제하지 않는다.

@@ -83,3 +83,7 @@ Foundation2 non-production 경제 배포/검증은 별도 REVIEW를 따른다. �
 ## Foundation3 Ads · SETUP_REQUIRED
 
 실제 AdMob App/두 rewarded ad unit/SSV callback URL/Cloud Run·Cloud Tasks·worker IAM·relay HMAC·UGS server credential·UMP audience/privacy/실기기 video/서명SSV는미설정이다. sampleApp/Unit은Google공식test용이며게임실제ID가아니다. [ADS.md의12단계](ADS.md#exact-setup-procedure-no-made-up-values)에사이트·메뉴·App·placement·입력파일·test모드·활성화전검사·secret저장위치를기록했다. 기본OFF를해제한것으로보고하지않는다. 기본 Alpha sample 영상과 owned-unit SSV 경로는 분리 검증한다. 2026-10-28 추가한 UseRegisteredTestUnits 경로는 실제 등록 기기와 native SDK isTestDevice 판정이 있어야 load/show를 허용한다. 실제 ID/기기값은 여전히 미설정이고 Production live는 검증/승인 전 OFF다.
+
+## Foundation4 IAP · SETUP_REQUIRED
+
+실제 Play Console merchant/one-time products3개·buy option/지역가격, Android Developer API service account와 UGS Secret Manager, PGS/OAuth/Integrity/서명·license tester/test card, 실제 Privacy·삭제 URL/Data safety/연령·금융 보존정책, daily Voided/pending 모니터와 실기기 Google 결제/환불 검증이 남는다. 구체 사이트·메뉴·값 위치·검수 순서·활성화 gate는 [IAP.md의12단계](IAP.md#external-activation-procedure--setup_required)를 따른다. 가짜 URL/ID는 없다. test track만으로 무료 결제를 보장하지 않으며 Alpha는 license QA도 실제 Billing을 실행하지 않는다. Production 기본OFF 유지.

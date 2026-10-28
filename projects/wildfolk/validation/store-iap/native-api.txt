@@ -1,0 +1,145 @@
+Compiled from "com.android.billingclient:billing@@9.1.0"
+public abstract class com.android.billingclient.api.BillingClient {
+  public abstract int getConnectionState();
+  public static com.android.billingclient.api.BillingClient$Builder newBuilder(android.content.Context);
+  public abstract com.android.billingclient.api.BillingResult isFeatureSupported(java.lang.String);
+  public abstract com.android.billingclient.api.BillingResult launchBillingFlow(android.app.Activity, com.android.billingclient.api.BillingFlowParams);
+  public abstract com.android.billingclient.api.BillingResult showAlternativeBillingOnlyInformationDialog(android.app.Activity, com.android.billingclient.api.AlternativeBillingOnlyInformationDialogListener);
+  public abstract com.android.billingclient.api.BillingResult showExternalOfferInformationDialog(android.app.Activity, com.android.billingclient.api.ExternalOfferInformationDialogListener);
+  public abstract com.android.billingclient.api.BillingResult showInAppMessages(android.app.Activity, com.android.billingclient.api.InAppMessageParams, com.android.billingclient.api.InAppMessageResponseListener);
+  public com.android.billingclient.api.BillingClient();
+  public abstract void acknowledgePurchase(com.android.billingclient.api.AcknowledgePurchaseParams, com.android.billingclient.api.AcknowledgePurchaseResponseListener);
+  public abstract void consumeAsync(com.android.billingclient.api.ConsumeParams, com.android.billingclient.api.ConsumeResponseListener);
+  public abstract void createAlternativeBillingOnlyReportingDetailsAsync(com.android.billingclient.api.AlternativeBillingOnlyReportingDetailsListener);
+  public abstract void createBillingProgramReportingDetailsAsync(com.android.billingclient.api.BillingProgramReportingDetailsParams, com.android.billingclient.api.BillingProgramReportingDetailsListener);
+  public abstract void createExternalOfferReportingDetailsAsync(com.android.billingclient.api.ExternalOfferReportingDetailsListener);
+  public abstract void endConnection();
+  public abstract void getBillingChoiceInfoAsync(com.android.billingclient.api.GetBillingChoiceInfoParams, com.android.billingclient.api.BillingChoiceInfoResponseListener);
+  public abstract void getBillingConfigAsync(com.android.billingclient.api.GetBillingConfigParams, com.android.billingclient.api.BillingConfigResponseListener);
+  public abstract void isAlternativeBillingOnlyAvailableAsync(com.android.billingclient.api.AlternativeBillingOnlyAvailabilityListener);
+  public abstract void isBillingProgramAvailableAsync(int, com.android.billingclient.api.BillingProgramAvailabilityListener);
+  public abstract void isExternalOfferAvailableAsync(com.android.billingclient.api.ExternalOfferAvailabilityListener);
+  public abstract void launchExternalLink(android.app.Activity, com.android.billingclient.api.LaunchExternalLinkParams, com.android.billingclient.api.LaunchExternalLinkResponseListener);
+  public abstract void queryProductDetailsAsync(com.android.billingclient.api.QueryProductDetailsParams, com.android.billingclient.api.ProductDetailsResponseListener);
+  public abstract void queryPurchasesAsync(com.android.billingclient.api.QueryPurchasesParams, com.android.billingclient.api.PurchasesResponseListener);
+  public abstract void showBillingProgramInformationDialog(android.app.Activity, com.android.billingclient.api.BillingProgramInformationDialogParams, com.android.billingclient.api.BillingProgramInformationDialogListener);
+  public abstract void startConnection(com.android.billingclient.api.BillingClientStateListener);
+  public abstract boolean isReady();
+}
+
+Compiled from "com.android.billingclient:billing@@9.1.0"
+public final class com.android.billingclient.api.BillingClient$Builder {
+  volatile boolean zza;
+  volatile com.google.android.gms.internal.play_billing.zzbq zzb;
+  public com.android.billingclient.api.BillingClient$Builder enableAlternativeBillingOnly();
+  public com.android.billingclient.api.BillingClient$Builder enableAutoServiceReconnection();
+  public com.android.billingclient.api.BillingClient$Builder enableBillingProgram(int);
+  public com.android.billingclient.api.BillingClient$Builder enableBillingProgram(com.android.billingclient.api.EnableBillingProgramParams);
+  public com.android.billingclient.api.BillingClient$Builder enableExternalOffer();
+  public com.android.billingclient.api.BillingClient$Builder enablePendingPurchases(com.android.billingclient.api.PendingPurchasesParams);
+  public com.android.billingclient.api.BillingClient$Builder enableUserChoiceBilling(com.android.billingclient.api.UserChoiceBillingListener);
+  public com.android.billingclient.api.BillingClient$Builder setListener(com.android.billingclient.api.PurchasesUpdatedListener);
+  public com.android.billingclient.api.BillingClient build();
+  com.android.billingclient.api.BillingClient$Builder(android.content.Context, com.android.billingclient.api.zzaa);
+}
+
+Compiled from "com.android.billingclient:billing@@9.1.0"
+public final class com.android.billingclient.api.PendingPurchasesParams$Builder {
+  public com.android.billingclient.api.PendingPurchasesParams$Builder enableOneTimeProducts();
+  public com.android.billingclient.api.PendingPurchasesParams$Builder enablePrepaidPlans();
+  public com.android.billingclient.api.PendingPurchasesParams build();
+  com.android.billingclient.api.PendingPurchasesParams$Builder(com.android.billingclient.api.zzeb);
+}
+
+Compiled from "com.android.billingclient:billing@@9.1.0"
+public final class com.android.billingclient.api.ProductDetails {
+  public int hashCode();
+  public com.android.billingclient.api.ProductDetails$OneTimePurchaseOfferDetails getOneTimePurchaseOfferDetails();
+  public java.lang.String getDescription();
+  public java.lang.String getName();
+  public java.lang.String getProductId();
+  public java.lang.String getProductType();
+  public java.lang.String getTitle();
+  public java.lang.String toString();
+  public java.util.List<com.android.billingclient.api.ProductDetails$OneTimePurchaseOfferDetails> getOneTimePurchaseOfferDetailsList();
+  public java.util.List<com.android.billingclient.api.ProductDetails$SubscriptionOfferDetails> getSubscriptionOfferDetails();
+  com.android.billingclient.api.ProductDetails(java.lang.String) throws org.json.JSONException;
+  public boolean equals(java.lang.Object);
+  public final java.lang.String zza();
+  final java.lang.String zzb();
+  final java.lang.String zzc(java.lang.String);
+}
+
+Compiled from "com.android.billingclient:billing@@9.1.0"
+public final class com.android.billingclient.api.ProductDetails$OneTimePurchaseOfferDetails {
+  public long getPriceAmountMicros();
+  public com.android.billingclient.api.ProductDetails$OneTimePurchaseOfferDetails$DiscountDisplayInfo getDiscountDisplayInfo();
+  public com.android.billingclient.api.ProductDetails$OneTimePurchaseOfferDetails$LimitedQuantityInfo getLimitedQuantityInfo();
+  public com.android.billingclient.api.ProductDetails$OneTimePurchaseOfferDetails$PreorderDetails getPreorderDetails();
+  public com.android.billingclient.api.ProductDetails$OneTimePurchaseOfferDetails$RentalDetails getRentalDetails();
+  public com.android.billingclient.api.ProductDetails$OneTimePurchaseOfferDetails$ValidTimeWindow getValidTimeWindow();
+  public java.lang.Long getFullPriceMicros();
+  public java.lang.String getFormattedPrice();
+  public java.lang.String getOfferId();
+  public java.lang.String getOfferToken();
+  public java.lang.String getPriceCurrencyCode();
+  public java.lang.String getPurchaseOptionId();
+  public java.util.List<java.lang.String> getOfferTags();
+  com.android.billingclient.api.ProductDetails$OneTimePurchaseOfferDetails(org.json.JSONObject) throws org.json.JSONException;
+  public final com.android.billingclient.api.zzec zza();
+  final java.lang.String zzb();
+}
+
+Compiled from "com.android.billingclient:billing@@9.1.0"
+public class com.android.billingclient.api.BillingFlowParams$ProductDetailsParams$Builder {
+  public com.android.billingclient.api.BillingFlowParams$ProductDetailsParams$Builder setOfferToken(java.lang.String);
+  public com.android.billingclient.api.BillingFlowParams$ProductDetailsParams$Builder setProductDetails(com.android.billingclient.api.ProductDetails);
+  public com.android.billingclient.api.BillingFlowParams$ProductDetailsParams$Builder setSubscriptionProductReplacementParams(com.android.billingclient.api.BillingFlowParams$ProductDetailsParams$SubscriptionProductReplacementParams);
+  public com.android.billingclient.api.BillingFlowParams$ProductDetailsParams build();
+  static com.android.billingclient.api.BillingFlowParams$ProductDetailsParams$SubscriptionProductReplacementParams zza(com.android.billingclient.api.BillingFlowParams$ProductDetailsParams$Builder);
+  static com.android.billingclient.api.ProductDetails zzb(com.android.billingclient.api.BillingFlowParams$ProductDetailsParams$Builder);
+  static java.lang.String zzc(com.android.billingclient.api.BillingFlowParams$ProductDetailsParams$Builder);
+  com.android.billingclient.api.BillingFlowParams$ProductDetailsParams$Builder(com.android.billingclient.api.zzdb);
+}
+
+Compiled from "com.android.billingclient:billing@@9.1.0"
+public interface com.android.billingclient.api.PurchasesUpdatedListener {
+  public abstract void onPurchasesUpdated(com.android.billingclient.api.BillingResult, java.util.List<com.android.billingclient.api.Purchase>);
+}
+
+Compiled from "com.android.billingclient:billing@@9.1.0"
+public interface com.android.billingclient.api.ProductDetailsResponseListener {
+  public abstract void onProductDetailsResponse(com.android.billingclient.api.BillingResult, com.android.billingclient.api.QueryProductDetailsResult);
+}
+
+Compiled from "com.android.billingclient:billing@@9.1.0"
+public final class com.android.billingclient.api.QueryProductDetailsResult {
+  public static com.android.billingclient.api.QueryProductDetailsResult create(java.util.List<com.android.billingclient.api.ProductDetails>, java.util.List<com.android.billingclient.api.UnfetchedProduct>);
+  public java.util.List<com.android.billingclient.api.ProductDetails> getProductDetailsList();
+  public java.util.List<com.android.billingclient.api.UnfetchedProduct> getUnfetchedProductList();
+  com.android.billingclient.api.QueryProductDetailsResult(java.util.List<com.android.billingclient.api.ProductDetails>, java.util.List<com.android.billingclient.api.UnfetchedProduct>);
+}
+
+Compiled from "com.android.billingclient:billing@@9.1.0"
+public class com.android.billingclient.api.Purchase {
+  public int getPurchaseState();
+  public int getQuantity();
+  public int hashCode();
+  public long getPurchaseTime();
+  public com.android.billingclient.api.AccountIdentifiers getAccountIdentifiers();
+  public com.android.billingclient.api.Purchase$PendingPurchaseUpdate getPendingPurchaseUpdate();
+  public java.lang.String getDeveloperPayload();
+  public java.lang.String getOrderId();
+  public java.lang.String getOriginalJson();
+  public java.lang.String getPackageName();
+  public java.lang.String getPurchaseToken();
+  public java.lang.String getSignature();
+  public java.lang.String toString();
+  public java.util.ArrayList<java.lang.String> getSkus();
+  public java.util.List<java.lang.String> getProducts();
+  public com.android.billingclient.api.Purchase(java.lang.String, java.lang.String) throws org.json.JSONException;
+  public boolean equals(java.lang.Object);
+  public boolean isAcknowledged();
+  public boolean isAutoRenewing();
+  public boolean isSuspended();
+}

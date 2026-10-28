@@ -44,7 +44,7 @@ Prepared/CommitStarted/Committed/Failed intent를 재시작 후 확인한다. Co
 
 Admin `economy-lookup`은 실제 account/env scope를 읽는다. `economy-adjust --request <JSON> --operator <id> --case <ticket>`는 delta/reason/operationId를 필수로 받고 기본 dry-run, 명시 --apply만 writeLock CAS한다. credentials는 기존 Dashboard/운영 환경변수로 직접 설정하며 채팅/Git에 넣지 않는다. player client로 호출할 public admin endpoint는 없다. class_unlock/refund/support case 사유가 ledger/audit에 남는다. 피드백 진단 동의가 있을 때만 마지막 공개 경제 receipt ID와 version을 첨부하며 token/world path/inventory는 전송하지 않는다.
 
-일반 audit64개·operation cache256개는 bounded다. 금융행과 source receipt는 삭제하지 않고 아래 Private archive로 옮긴다. root3MiB와 hot768행, index bucket2000key/4MiB에서 fail-closed한다. 기존8192행은 과거 Schema1 reader의 상한이며 새 금융 이력 전체 상한이 아니다. provider 확인/Ads SDK/Billing 상품/가짜 충전 버튼은 없다.
+일반 audit64개·operation cache256개는 bounded다. 금융행과 source receipt는 삭제하지 않고 아래 Private archive로 옮긴다. root3MiB와 hot768행, index bucket2000key/4MiB에서 fail-closed한다. 기존8192행은 과거 Schema1 reader의 상한이며 새 금융 이력 전체 상한이 아니다. Foundation2 당시 경계였으며 현재 Ads/IAP provider 구현은 아래 Foundation3/4를 따른다. 가짜 충전 버튼은 없다.
 
 계정 삭제 운영은 각 환경에서 Private archive와 source/resolution index를 먼저 지운 후 Default/Public/Protected player data와 마지막 Authentication을 삭제한다. root manifest를 먼저 지우지 않는다. operator journal로 중간 실패를 재개한다. 현재 기기는 wallet/cache/revive intent와 해당 계정에 bound된 guest economic journal을 정리하며 실제 world/guest Profile2는 보존한다. 수집 inventory에 economic ledger, progress/device random ID/source hashes, attendance/Engineer/revive receipts를 추가한다. Privacy/삭제 URL, Google/PGS/Integrity/실기기 설정은 여전히 RELEASE_BLOCKERS다. Alpha 통화의 Production 자동 이전은 제공하지 않으며 Alpha Tester entitlement와 분리한다.
 
@@ -58,7 +58,7 @@ hot512행부터 확정된 앞256행을 한 번에 archive한다. segment는 Priv
 
 순서는 archive 쓰기·재조회 검증 → source/resolution index 쓰기(concurrency16) → root writeLock CAS다. speculative 거래를 archive하지 않는다. 성공 응답 유실 시 같은 확정 prefix를 재시도하며 root checkpoint/count가 권위다. root CAS 전 orphan 한 segment/index set이 남을 수 있으며 같은 prefix 재시도로 회복한다. 한 invocation에서 한 segment, CAS최대3회. legacy8192행은 요청당256행씩 점진 compact하며 금융행을 버리지 않는다. Engineer.Proof는 이관 때 보존하고 terminal revive는 최근32개만 root에, 이전 terminal 결과는 영구 resolution key에 둔다. Reserved는 prune하지 않는다.
 
-achievement/attendance는 immutable claim identity를 보존한다. future Ads/IAP는 검증된 server receipt만 받는 내부 binding 경계와 메모리 fixture가 있으며 public grant API/SDK/provider verifier는 없다. provider+환경+receipt hash 전역 owner binding이 다른 계정의 재사용을 차단한다. raw purchase token은 저장하지 않는다. 실제 provider 검증·restore/refund·개인정보 보존/삭제 정책은 다음 단계에서 확정해야 한다.
+achievement/attendance는 immutable claim identity를 보존한다. Foundation2.1의 receipt 경계 위에 현재 Foundation3/4 provider 검증을 구현했다. public grant API는 없다. provider+환경+receipt hash 전역 owner binding이 다른 계정의 재사용을 차단한다. 금융 ledger에 raw purchase token은 저장하지 않는다. 현재 IAP pending Private receipt의 임시 token 보존·consume 복구·환불·삭제 경계는 IAP.md를 따른다.
 
 capacity는 실제 serialized root/index bytes와 hot/archive 개수를 지원 도구에 노출한다. root3MiB, bucket2000key/4MiB의75%/90%에서 warning/critical이며 플레이어 popup은 없다. 100k 모델은 root193217B/hot416/archive389/Custom Item645/최대bucket450key, archive+index+root59006349B다. 이는 서비스 성능·비용 보장이 아니다. 실제512행 이관은 archive256/hot256 및 서버1745ms를 확인했다. 정상 Get도 maintenance 확인을 위한 root read 비용이 추가되며 archive는 threshold/recovery 때만 쓴다. 비용·대량 운영 경고 전달 job·실기기 성능은 별도 운영 검증이다.
 
@@ -67,3 +67,9 @@ capacity는 실제 serialized root/index bytes와 hot/archive 개수를 지원 �
 ## Foundation3 · Rewarded Ads
 
 정본 `backend/src/ads-config.json`의1Gem/회·UTC1Gem/day·cooldown0을추가했다. 시작0/업적213/신규45/월간40/Engineer120/부활8은유지한다. Gem은Google서명SSV→durableworker→Economy2 `rewarded_ad`만지급한다. 클라이언트완료bool은재화권위가아니다. 광고30/90일최대30/90Gem이며,무광고신규45+완료월간2회80=125로Engineer가능(활동가정). 서버receipt영구중복방지/자정예약일/지연재시도와설정절차는 [ADS](ADS.md), 계산은 [model](../validation/rewarded-ads-meta-ui/ad-economy-model.json). 광고부활은Gem공급0,피한8Gem지출과분리한다.
+
+## Foundation4 Gem 구매 · 현재 구현
+
+기존 무료 공급/120Engineer/8부활은 유지한다. 제안24/72/144Gem은 서버 canonical catalog와 Google proof가 일치할 때만 `iap_purchase`로 기존 CAS/영구source/Private archive에 기록한다. `iap_refund`는 검증된 반환의 단1회 회수이며 잔액은 음수가 되지 않는다. 부족분은 지원 검토와 새 구매 차단, 미래 무료 지급/Engineer를 자동 박탈하지 않는다. 현금 구매는 Alpha 금지·Production 기본OFF. 실제 가격은 Google localized metadata만 사용한다.
+
+30/90일 활동 가정과 무광고/광고/구매 단계 비교는 [모델](../validation/store-iap/economy-model.json), 판단·한계는 [REVIEW](../validation/store-iap/REVIEW.md). 월간2회+신규=125로 무구매 Engineer 가능하나 달성 시간의 실측은 아니다. Engineer와 부활의 현금 가속은 실제 플레이 이점이다. Engineer 이후 반복 sink가 약하므로 최대144, 신규 sink/판매 압박/구독은 추가하지 않는다. [IAP 정본](IAP.md).

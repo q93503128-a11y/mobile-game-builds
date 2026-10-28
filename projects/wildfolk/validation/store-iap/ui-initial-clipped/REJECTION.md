@@ -1,0 +1,1 @@
+Initial native render: status was outside the paper and not readable despite label preferred-height assertions. Rejected by direct PNG inspection. Layout moved status into a dedicated middle row, reduced card height, and blocks purchases while a paid/pending token is unresolved. Final accepted images are in visual/.

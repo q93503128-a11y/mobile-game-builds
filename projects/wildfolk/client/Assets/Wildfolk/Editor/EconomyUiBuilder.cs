@@ -48,7 +48,7 @@ namespace Wildfolk.Editor
             s.ResetLabel=JournalUiBuilder.Label(d,"Next Reset","",new Vector2(-345,-315),new Vector2(775,100),26);
             s.AttendanceStatus=JournalUiBuilder.Label(d,"Connection","",new Vector2(-355,-395),new Vector2(800,50),26,TextAnchor.MiddleCenter);
             foreach(var view in new[]{s.HubView,s.AchievementView,s.AttendanceView})foreach(var label in view.GetComponentsInChildren<Text>(true))if(label.name=="Label"&&label.fontSize==26)label.fontSize=32;
-            s.AchievementView.SetActive(false);s.AttendanceView.SetActive(false);EditorSceneManager.MarkSceneDirty(scene);EditorSceneManager.SaveScene(scene);AssetDatabase.SaveAssets();
+            s.AchievementView.SetActive(false);s.AttendanceView.SetActive(false);StoreUiBuilder.BuildInScene(s);EditorSceneManager.MarkSceneDirty(scene);EditorSceneManager.SaveScene(scene);AssetDatabase.SaveAssets();
         }
         private static void Header(Transform p,string title,UnityEngine.Events.UnityAction back,UnityEngine.Events.UnityAction sync,out Text wallet)
         {JournalUiBuilder.Label(p,"Title",title,new Vector2(-420,427),new Vector2(620,70),34);wallet=JournalUiBuilder.Label(p,"Gem Wallet","",new Vector2(365,428),new Vector2(320,64),30);JournalUiBuilder.Action(p,"Back","ui.action.back",new Vector2(695,400),new Vector2(160,126),back,out _);JournalUiBuilder.Action(p,"Sync","economy.sync",new Vector2(40,425),new Vector2(270,126),sync,out _);}

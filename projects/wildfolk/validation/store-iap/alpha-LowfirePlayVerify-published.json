@@ -1,0 +1,39 @@
+{
+  "metadata": {
+    "Name": "LowfirePlayVerify",
+    "Language": "JS",
+    "Type": "API",
+    "Versions": [
+      1
+    ],
+    "ActiveScript": {
+      "Version": 1,
+      "DatePublished": "2026-10-28T12:39:42",
+      "Params": [
+        {
+          "type": "STRING",
+          "name": "operation",
+          "required": true
+        },
+        {
+          "type": "STRING",
+          "name": "channel",
+          "required": true
+        },
+        {
+          "type": "STRING",
+          "name": "buildVersion",
+          "required": true
+        },
+        {
+          "type": "JSON",
+          "name": "input",
+          "required": false
+        }
+      ]
+    }
+  },
+  "sha256": "97cf43ca1f02a18ef4da6b45f4fedf3e78544b40fdca631d4b8b4fa37fb562d4",
+  "bytes": 125412,
+  "verifiedSameAsLocal": true
+}

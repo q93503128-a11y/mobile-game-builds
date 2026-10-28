@@ -24,7 +24,7 @@ Foundation1.5는 development/alpha 서버 기반을 실제 배포·검증했으�
 
 ## Launch Economy Foundation2 · 현재 경계
 
-Foundation2는 계정 Gem/업적/출석/Profile·Engineer120Gem·SP부활8Gem을 이번 범위로 구현한다. Foundation3 광고 기반은 별도 ADS.md를 따른다. 다음 IAP/Store, Audio/최종 polish는 자동 진행하지 않는다. [경제 전체 규칙](ECONOMY.md) · [실행·검증](../validation/launch-economy-foundation/REVIEW.md).
+Foundation2는 계정 Gem/업적/출석/Profile·Engineer120Gem·SP부활8Gem을 이번 범위로 구현한다. Foundation3 광고 기반은 별도 ADS.md를 따른다. IAP/Store 현재 상태는 아래 Foundation4를 따르며 Audio/최종 polish는 자동 진행하지 않는다. [경제 전체 규칙](ECONOMY.md) · [실행·검증](../validation/launch-economy-foundation/REVIEW.md).
 
 ## Foundation3 현재 상태
 
@@ -33,3 +33,7 @@ Foundation2는 계정 Gem/업적/출석/Profile·Engineer120Gem·SP부활8Gem을
 2026-10-27 사용자 시간 제한으로 Foundation3는 중간 체크포인트에서 멈췄다. 전체 완료가 아니며 [이어받기](../validation/rewarded-ads-meta-ui/RESUME.md)를 따른다. 전체 완료 전 IAP를 시작하지 않는다.
 
 2026-10-28 Foundation3 재개 마감: **저장소 구현·관련 검증 완료 / 광고 운영 미활성**. 위10-27 중간 체크포인트는 당시 기록이다. Node131/131·focused Edit9/Play7·data/Android58/58·native Development AAB packaging·90 typed UI capture·실제 live MCP 격리 확인을 마쳤다. 실제 광고/SSV/기기/개인정보·외부 운영 gate는 유지한다. [최신 마감 기록](../validation/rewarded-ads-meta-ui/REVIEW.md#2026-10-28-재개-완료). 다음 기능은 자동 시작하지 않는다.
+
+## Foundation4 현재 상태
+
+Profile 하위 Gem Store, 제안24/72/144 consumable, Google 서버 검증·Economy2 지급/consume 복구·환불/지원 기반이 현재 범위다. Alpha 실제 구매 금지·Production 기본OFF, 신규 sink/직업 현금 판매/구독/아이템 판매 없음. 외부 설정·실기기 Google 결제와 공개 출시 승인은 남는다. [IAP 정본](IAP.md) · [검증](../validation/store-iap/REVIEW.md). Foundation4에서 멈추며 Audio/Foundation5는 자동 시작하지 않는다.

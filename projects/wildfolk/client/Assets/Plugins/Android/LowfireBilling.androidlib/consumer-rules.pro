@@ -1,0 +1,2 @@
+-keep class com.gltam.lowfire.billing.** { *; }
+-keep interface com.gltam.lowfire.billing.PlayBilling$Callback { *; }

@@ -25,7 +25,7 @@ namespace Wildfolk.Editor
                     var native=compiled.assemblies.Any(p=>Path.GetFileName(p)=="Wildfolk.AndroidAccounts.dll");
                     var excluded=!System.Text.Encoding.UTF8.GetString(File.ReadAllBytes(file)).Contains("DevelopmentIdentityProvider");
                     var ad=compiled.assemblies.Any(p=>Path.GetFileName(p)=="Wildfolk.AndroidAds.dll");excluded=excluded&&!System.Text.Encoding.UTF8.GetString(File.ReadAllBytes(file)).Contains("DevelopmentRewardedAdProvider");
-                    if(!native||!ad||!excluded)throw new InvalidOperationException("Android provider missing or development adapter included");
+                    var billing=compiled.assemblies.Any(p=>Path.GetFileName(p)=="Wildfolk.AndroidBilling.dll");excluded=excluded&&!System.Text.Encoding.UTF8.GetString(File.ReadAllBytes(file)).Contains("DevelopmentStoreBilling");if(!native||!ad||!billing||!excluded)throw new InvalidOperationException("Android provider missing or development adapter included");
                     if(channel=="ALPHA"){result.AlphaAssemblies=compiled.assemblies.Count;result.AlphaFixtureExcluded=excluded;}else{result.ProductionAssemblies=compiled.assemblies.Count;result.ProductionFixtureExcluded=excluded;}
                 }result.Passed=true;
             }catch(Exception e){result.Error=e.GetType().Name+": "+e.Message;throw;}

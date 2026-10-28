@@ -1,0 +1,2 @@
+'use strict';
+const fs=require('node:fs'),path=require('node:path');const source=path.join(__dirname,'../../client/Assets/Wildfolk/Resources/StoreCatalog.json'),target=path.join(__dirname,'../src/store-catalog.json');const catalog=JSON.parse(fs.readFileSync(source,'utf8'));require('../src/iap.cjs').validateCatalog(catalog);const next=JSON.stringify(catalog,null,2)+'\n';if(process.argv.includes('--check')){if(fs.readFileSync(target,'utf8')!==next)throw Error('Store catalog mirror differs');}else fs.writeFileSync(target,next);

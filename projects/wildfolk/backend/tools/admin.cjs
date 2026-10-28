@@ -27,8 +27,10 @@ class AdminApi {
   const count=economy?.Archive?.Count||0;requireThat(Number.isSafeInteger(count)&&count>=0&&count<=1000000,'invalid_archive_manifest');
   const remove=async(id,key)=>{try{await api.request('DELETE',api.base+'/custom/'+encodeURIComponent(id)+'/private/items/'+key);}catch(e){if(e.response?.status!==404)throw e;}};
   const storage=new ledger.LedgerStorage(api,this.project,env);
+  const purchaseRecords=new(require('../src/iap-receipts.cjs').PurchaseRecords)(api,this.project,env);const iapSupport=require('./iap-support.cjs');
+  await iapSupport.minimize(storage,purchaseRecords,player,economy?.Ledger||[],[...(economy?.Iap?.Pending||[]),...(economy?.Iap?.Recent||[])],remove,this.financialRetention);
   await adsSupport.removeBindings(storage,player,economy?.Ledger||[],economy?.Ads?.Operations,remove);
-  for(let n=1;n<=count+1;n++){const segment=await storage.archive(player,n);if(segment){ledger.validateSegment(segment,player,env,n);await adsSupport.removeBindings(storage,player,segment.Rows,{},remove);}await remove(ledger.custom(player,env,'ledger',n),'segment');}
+  for(let n=1;n<=count+1;n++){const segment=await storage.archive(player,n);if(segment){ledger.validateSegment(segment,player,env,n);await adsSupport.removeBindings(storage,player,segment.Rows,{},remove);await iapSupport.minimize(storage,purchaseRecords,player,segment.Rows,[],remove,this.financialRetention);}await remove(ledger.custom(player,env,'ledger',n),'segment');}
   for(let n=0;n<256;n++){
    const id=ledger.custom(player,env,'receipts',n.toString(16).padStart(2,'0'));
    for(let page=0;page<110;page++){
@@ -49,6 +51,18 @@ class AdminApi {
 }
 async function main(){
  const a=parse(process.argv.slice(2)),api=new AdminApi(a.project,a.environment),store=new CloudSaveStore(api,a.project);
+ if(a.command==='iap-setup'){
+  requireThat(a.config,'iap_config_required');const value=JSON.parse(fs.readFileSync(a.config,'utf8')),template=require('../src/iap-config.json');requireThat(Object.keys(value).length===Object.keys(template).length&&Object.keys(template).every(k=>Object.hasOwn(value,k))&&value.Schema===1&&value.Provider==='google_play'&&value.PackageName==='com.gltam.lowfire'&&['PurchaseEnabled','ProductionLiveEnabled','SettlementEnabled','ExternalSetupReviewed','TestOnly'].every(k=>typeof value[k]==='boolean'),'invalid_iap_config');
+  const current=(await api.getPrivateCustomItems(a.project,'lowfire_backend',['policy','iap_config'])).data.results,policy=current.find(x=>x.key==='policy'),old=current.find(x=>x.key==='iap_config');requireThat(policy?.value.environmentId===a.environment,'wrong_environment');
+  if(policy.value.channel!=='Production')requireThat(!value.PurchaseEnabled&&!value.ProductionLiveEnabled&&!value.SettlementEnabled,'nonproduction_billing_forbidden');
+  if(value.SettlementEnabled)requireThat(value.ExternalSetupReviewed&&value.FinancialRetentionPolicy,'settlement_setup_required');
+  if(value.PurchaseEnabled||value.ProductionLiveEnabled)requireThat(policy.value.channel==='Production'&&value.PurchaseEnabled&&value.ProductionLiveEnabled&&value.SettlementEnabled&&value.ExternalSetupReviewed&&value.FinancialRetentionPolicy&&!require('../src/store-catalog.json').Proposed&&a.confirm==='ENABLE_PRODUCTION_PURCHASES','production_activation_confirmation_required');
+  if(old?.value.SettlementEnabled&&!value.SettlementEnabled)requireThat(a.confirm==='DISABLE_SETTLEMENT_AFTER_REVIEW'&&a.operator&&a.case,'unsettled_purchase_review_required');
+  if(!a.apply){console.log(JSON.stringify({dryRun:true,channel:policy.value.channel,PurchaseEnabled:value.PurchaseEnabled,SettlementEnabled:value.SettlementEnabled,existing:!!old}));return;}
+  await api.setPrivateCustomItem(a.project,'lowfire_backend',{key:'iap_config',value,...(old?{writeLock:old.writeLock}:{})});
+  if(value.PurchaseEnabled!==policy.value.realMoneyPurchase)await api.setPrivateCustomItem(a.project,'lowfire_backend',{key:'policy',value:{...policy.value,realMoneyPurchase:value.PurchaseEnabled},writeLock:policy.writeLock});
+  console.log('IAP configuration stored. Runtime client and external setup gates remain independent.');return;
+ }
  if(a.command==='setup'){
   requireThat(a.policy,'policy_required');const policy=JSON.parse(fs.readFileSync(a.policy,'utf8'));
   requireThat(policy.environmentId===a.environment&&['Development','Alpha','Production'].includes(policy.channel)&&policy.realMoneyPurchase===false&&!(policy.channel==='Production'&&policy.allowLegacyImport),'invalid_policy');
@@ -116,6 +130,8 @@ async function main(){
   if(fs.existsSync(a.journal))job=JSON.parse(fs.readFileSync(a.journal,'utf8'));
   else {const record=await store.read(a.player);requireThat(record?.value.Deletion,'deletion_not_requested');requireThat(a.environments,'all_environments_required');job={project:a.project,requestId:record.value.Deletion.Id,playerId:a.player,environments:a.environments.split(','),completed:[],authenticationDeleted:false};}
   requireThat(job.playerId===a.player&&job.project===a.project&&(!a.apply||a.confirm==='DELETE'),'deletion_confirmation_required');
+  if(a['financial-policy'])api.financialRetention=JSON.parse(fs.readFileSync(a['financial-policy'],'utf8'));
+  for(const env of job.environments){const check=new AdminApi(a.project,env),p=(await new CloudSaveStore(check,a.project,undefined,'lf_economy',env).read(a.player))?.value;if(p?.Iap?.EverFinancial||p?.Iap?.Pending?.length||p?.Iap?.Recent?.length)requireThat(api.financialRetention?.PolicyReference&&Number.isFinite(Date.parse(api.financialRetention.ReviewAt)),'financial_retention_policy_required');}
   const persist=async job=>{fs.mkdirSync(path.dirname(path.resolve(a.journal)),{recursive:true});const fd=fs.openSync(a.journal+'.temporary','w',0o600);try{fs.writeFileSync(fd,JSON.stringify(job,null,2));fs.fsyncSync(fd);}finally{fs.closeSync(fd);}fs.renameSync(a.journal+'.temporary',a.journal);};
   console.log(JSON.stringify(await deleteAccount(api,job,persist,{apply:a.apply}),null,2));return;
  }

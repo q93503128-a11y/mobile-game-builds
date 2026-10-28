@@ -1,0 +1,46 @@
+✔ support lookup uses safe references, validation/consume/refund/duplicate states and never pending raw token (46.0686ms)
+✔ financial deletion requires owner-reviewed policy and minimizes identifiers while preserving replay tombstone (6.4293ms)
+✔ only verified IAP reversal permits a zero-delta ledger marker (3.5003ms)
+✔ three proposed products exact, canonical server amount ignores altered client Gem (102.2012ms)
+✔ wrong revision/unknown/disabled products reject before billing authorization (6.18ms)
+✔ Alpha, unlinked, conflict-equivalent, wrong environment, untrusted build and OFF gates fail closed (3.9182ms)
+✔ default committed configuration and proposed catalog cannot authorize money (8.9418ms)
+✔ pending purchase has no grant, receipt or consumption until purchased (23.0543ms)
+✔ Google failure before verification leaves wallet unchanged and retry succeeds (16.8099ms)
+✔ verified Google field mismatch cannot cross ProductId (3.85ms)
+✔ verified Google field mismatch cannot cross AccountBinding (3.0074ms)
+✔ verified Google field mismatch cannot cross ProfileBinding (4.5506ms)
+✔ verified Google field mismatch cannot cross Test (4.4185ms)
+✔ same token repeated/restart/second device operation IDs cannot double grant (19.3704ms)
+✔ another player cannot claim financial token even with copied receipt or linked status (14.7009ms)
+✔ repeated independently paid tokens for same product authorization both fulfill (35.169ms)
+✔ grant response loss after CAS recovers once from private prepared receipt (14.7418ms)
+✔ grant succeeds/consume fails, reinstall without local token recovers from server (15.4797ms)
+✔ consume response loss is confirmed with Google state without repeat grant (19.8654ms)
+✔ consume succeeded / completion record response lost recovers after app reinstall (14.502ms)
+✔ unknown already consumed token does not mint money (1.9453ms)
+✔ catalog retirement and stopping new sales still settle frozen paid intent (10.7661ms)
+✔ published product Gem amount cannot mutate behind existing authorization (4.3576ms)
+✔ private preparation crash after binding is recoverable with owned Play purchase (17.6884ms)
+✔ deletion arriving during global gate wait blocks new financial storage (8.6944ms)
+✔ refund unused/partial/full spent=0 stays nonnegative with permanent reversal (28.8523ms)
+✔ refund unused/partial/full spent=8 stays nonnegative with permanent reversal (27.1814ms)
+✔ refund unused/partial/full spent=24 stays nonnegative with permanent reversal (38.4796ms)
+✔ cancelled unpaid purchase gets permanent zero reversal and never consumes (11.3824ms)
+✔ unknown/forged reversal rejected and cannot debit arbitrary player (4.0625ms)
+✔ archive preserves purchase and refund idempotency after hot rows compact (313.9126ms)
+✔ IAP Gem can unlock Engineer and use canonical revive reserve/refund (18.6915ms)
+✔ concurrent verification and verified refund converge without duplicate money (29.33ms)
+✔ review approval gates settlement separately from stopping new sales (6.5837ms)
+✔ production adapter parses actual v2 shape; pending/quantity/rental/tamper handling (2.2938ms)
+✔ bundled SHA256 matches native UTF8 hashing without Node crypto runtime (14.6255ms)
+✔ browser RS256 signer verifies with independent native implementation; ephemeral memory key only (316.2629ms)
+✔ deploy bundles fit runtime size limit and load without Node built-ins or WebCrypto (194.1576ms)
+ℹ tests 38
+ℹ suites 0
+ℹ pass 38
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1283.8615

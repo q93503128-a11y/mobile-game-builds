@@ -98,3 +98,9 @@ Google AdMob11.6.0 Rewarded Ads 기반과 Profile·Records hub/업적/출석 기
 2026-10-27 사용자 시간 제한으로 Foundation3는 중간 체크포인트에서 멈췄다. 전체 완료가 아니며 [이어받기](validation/rewarded-ads-meta-ui/RESUME.md)를 따른다.
 
 2026-10-28 Foundation3 재개 마감: **저장소 구현·관련 검증 완료 / 광고 운영 미활성**. 위10-27 중간 체크포인트는 당시 기록이다. Node131/131·focused Edit9/Play7·data/Android58/58·native Development AAB packaging·90 typed UI capture·실제 live MCP 격리 확인을 마쳤다. 실제 광고/SSV/기기/개인정보·외부 운영 gate는 유지한다. [최신 마감 기록](validation/rewarded-ads-meta-ui/REVIEW.md#2026-10-28-재개-완료). 다음 기능은 자동 시작하지 않는다.
+
+## Foundation4 Store / Google Play IAP
+
+Gem Store와 서버 검증·Economy2 지급/소비 복구·환불/지원 기반을 구현했다. Native Billing9.1.0, 제안 상품24/72/144Gem이며 실제 Play 등록/가격/Google 결제는 미검증이다. Alpha 실제 구매 금지, Production 기본OFF. 실기기/외부 설정과 공개 출시 승인은 남는다. [IAP 정본](docs/IAP.md) · [검증](validation/store-iap/REVIEW.md). 다음 Audio/Foundation5는 사용자 확인 후 별도 작업한다.
+
+2026-10-28 사용자 요청으로 Foundation4는 **중간 체크포인트**에서 멈췄다. 전체 완료가 아니며 AAB는 컴파일 중 중단·최신 추가 검사/실제 UGS 차단 QA/로컬 동기화가 남는다. [정확한 재개 목록](validation/store-iap/RESUME.md).

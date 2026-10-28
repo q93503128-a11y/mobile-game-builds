@@ -1,0 +1,39 @@
+{
+  "metadata": {
+    "Name": "LowfirePurchase",
+    "Language": "JS",
+    "Type": "API",
+    "Versions": [
+      1
+    ],
+    "ActiveScript": {
+      "Version": 1,
+      "DatePublished": "2026-10-28T12:39:53",
+      "Params": [
+        {
+          "type": "STRING",
+          "name": "operation",
+          "required": true
+        },
+        {
+          "type": "STRING",
+          "name": "channel",
+          "required": true
+        },
+        {
+          "type": "STRING",
+          "name": "buildVersion",
+          "required": true
+        },
+        {
+          "type": "JSON",
+          "name": "input",
+          "required": false
+        }
+      ]
+    }
+  },
+  "sha256": "e22e4ffb03599c678c042b8f55e24dae3aba3a70338b0188a482475f84775358",
+  "bytes": 90420,
+  "verifiedSameAsLocal": true
+}

@@ -1,0 +1,53 @@
+{
+  "UTC": "2026-10-28T12:49:47.549946+00:00",
+  "Foundation4Complete": false,
+  "Reason": "User-requested pause",
+  "StartSHA": "0c1ea494cb757b8250f6f4bfdf446a179ac650c1",
+  "MainBeforeCheckpoint": "0c1ea494cb757b8250f6f4bfdf446a179ac650c1",
+  "PerOperationTokens": null,
+  "BackendFullTests": {
+    "Passed": 164,
+    "FinalSmallChangesAfterFullRun": true
+  },
+  "FinalRelatedTests": {
+    "Passed": 38,
+    "Includes": "IAP32/operations3/runtime3"
+  },
+  "EditModePassed": 9,
+  "PlayModePassedBeforeFinalDeletionChange": 8,
+  "NewestPlayMode": {
+    "Result": "Not run to completion",
+    "Reason": "IL post-processor IPC wait; first retry stopped, second interrupted by user pause"
+  },
+  "ActualUgsNegativeQa": "Authored, not executed; no new player created",
+  "ActualGooglePurchase": false,
+  "AAB": [
+    {
+      "StartUTC": "2026-10-28T12:22:24.938922+00:00",
+      "PID": 17252,
+      "Reason": "One final native packaging gate: new Billing9.1.0 Android library/manifest and JNI keep rules; cheap Java/Gradle and latest Android59/59 compile passed",
+      "Output": "C:\\UnityProjects\\LowfireAndroidQa\\iap-results\\Lowfire-development.aab",
+      "Status": "InterruptedByUserPause",
+      "EndUTC": "2026-10-28T12:47:11.414149+00:00",
+      "WallSeconds": 1486.4755511000003,
+      "Exit": 4294967295,
+      "FileBytes": null,
+      "ReasonForInterruption": "User requested an appropriate checkpoint while native compile was still running; no observed compiler/Gradle failure",
+      "CachePreserved": true,
+      "ResumePolicy": "No automatic repeat. Inspect partial outputs/cache and reconcile the original single-final-AAB instruction with the user-requested interruption before another full packaging attempt."
+    }
+  ],
+  "LiveUnitySync": "Preflight conflict-free and edit mode confirmed; not copied yet",
+  "Versions": {
+    "Save": 14,
+    "Profile": 2,
+    "CloudProfile": 1,
+    "Economy": 2,
+    "Protocol": 23,
+    "generation": 3,
+    "IAP": 1
+  },
+  "UserSavesUnchanged": true,
+  "ProductionMutation": false,
+  "BillingEnabled": false
+}
