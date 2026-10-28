@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="8" result="Passed" total="8" passed="8" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-28 00:01:26Z" end-time="2026-10-28 00:01:26Z" duration="0.2330715">
+  <test-suite type="TestSuite" id="1000" name="Wildfolk" fullname="Wildfolk" runstate="Runnable" testcasecount="346" result="Passed" start-time="2026-10-28 00:01:26Z" end-time="2026-10-28 00:01:26Z" duration="0.233072" total="8" passed="8" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1420" name="Wildfolk.Tests.EditMode.dll" fullname="C:/Users/User/Documents/ChatGPT/문승준 모바일/canonical/projects/wildfolk/tests/artifacts/unity/Library/ScriptAssemblies/Wildfolk.Tests.EditMode.dll" runstate="Runnable" testcasecount="346" result="Passed" start-time="2026-10-28 00:01:26Z" end-time="2026-10-28 00:01:26Z" duration="0.217373" total="8" passed="8" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="24200" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1421" name="Wildfolk" fullname="Wildfolk" runstate="Runnable" testcasecount="346" result="Passed" start-time="2026-10-28 00:01:26Z" end-time="2026-10-28 00:01:26Z" duration="0.211245" total="8" passed="8" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1422" name="Tests" fullname="Wildfolk.Tests" runstate="Runnable" testcasecount="346" result="Passed" start-time="2026-10-28 00:01:26Z" end-time="2026-10-28 00:01:26Z" duration="0.206059" total="8" passed="8" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1355" name="RewardedAdsTests" fullname="Wildfolk.Tests.RewardedAdsTests" classname="Wildfolk.Tests.RewardedAdsTests" runstate="Runnable" testcasecount="8" result="Passed" start-time="2026-10-28 00:01:26Z" end-time="2026-10-28 00:01:26Z" duration="0.193666" total="8" passed="8" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1361" name="ClosedBeforeEarnedAndFailedDurabilityNeverCountAsReward" fullname="Wildfolk.Tests.RewardedAdsTests.ClosedBeforeEarnedAndFailedDurabilityNeverCountAsReward" methodname="ClosedBeforeEarnedAndFailedDurabilityNeverCountAsReward" classname="Wildfolk.Tests.RewardedAdsTests" runstate="Runnable" seed="628790706" result="Passed" start-time="2026-10-28 00:01:26Z" end-time="2026-10-28 00:01:26Z" duration="0.046064" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1357" name="CorruptPrimaryFallsBackAndUnrecoverableJournalFailsClosed" fullname="Wildfolk.Tests.RewardedAdsTests.CorruptPrimaryFallsBackAndUnrecoverableJournalFailsClosed" methodname="CorruptPrimaryFallsBackAndUnrecoverableJournalFailsClosed" classname="Wildfolk.Tests.RewardedAdsTests" runstate="Runnable" seed="710427135" result="Passed" start-time="2026-10-28 00:01:26Z" end-time="2026-10-28 00:01:26Z" duration="0.068075" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1358" name="DefaultAndMissingLegalConfigurationNeverAllowAnAdRequest" fullname="Wildfolk.Tests.RewardedAdsTests.DefaultAndMissingLegalConfigurationNeverAllowAnAdRequest" methodname="DefaultAndMissingLegalConfigurationNeverAllowAnAdRequest" classname="Wildfolk.Tests.RewardedAdsTests" runstate="Runnable" seed="99258595" result="Passed" start-time="2026-10-28 00:01:26Z" end-time="2026-10-28 00:01:26Z" duration="0.006574" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1359" name="DisabledProviderNeverCallsEarnedAndHasNoImplicitFixture" fullname="Wildfolk.Tests.RewardedAdsTests.DisabledProviderNeverCallsEarnedAndHasNoImplicitFixture" methodname="DisabledProviderNeverCallsEarnedAndHasNoImplicitFixture" classname="Wildfolk.Tests.RewardedAdsTests" runstate="Runnable" seed="471975483" result="Passed" start-time="2026-10-28 00:01:26Z" end-time="2026-10-28 00:01:26Z" duration="0.002022" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1360" name="NativeCompletionIgnoresDuplicateAndLateEvents" fullname="Wildfolk.Tests.RewardedAdsTests.NativeCompletionIgnoresDuplicateAndLateEvents" methodname="NativeCompletionIgnoresDuplicateAndLateEvents" classname="Wildfolk.Tests.RewardedAdsTests" runstate="Runnable" seed="1613299634" result="Passed" start-time="2026-10-28 00:01:26Z" end-time="2026-10-28 00:01:26Z" duration="0.002105" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1363" name="OversizedRetryQueueCannotBecomeAnUnreadableSavedJournal" fullname="Wildfolk.Tests.RewardedAdsTests.OversizedRetryQueueCannotBecomeAnUnreadableSavedJournal" methodname="OversizedRetryQueueCannotBecomeAnUnreadableSavedJournal" classname="Wildfolk.Tests.RewardedAdsTests" runstate="Runnable" seed="950883215" result="Passed" start-time="2026-10-28 00:01:26Z" end-time="2026-10-28 00:01:26Z" duration="0.002889" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1356" name="PendingRewardAndScopedEarnedReviveSurviveProcessRestart" fullname="Wildfolk.Tests.RewardedAdsTests.PendingRewardAndScopedEarnedReviveSurviveProcessRestart" methodname="PendingRewardAndScopedEarnedReviveSurviveProcessRestart" classname="Wildfolk.Tests.RewardedAdsTests" runstate="Runnable" seed="973968268" result="Passed" start-time="2026-10-28 00:01:26Z" end-time="2026-10-28 00:01:26Z" duration="0.013975" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1362" name="ReplyRejectsWrongAccountInvalidQuotaAndMalformedServerTime" fullname="Wildfolk.Tests.RewardedAdsTests.ReplyRejectsWrongAccountInvalidQuotaAndMalformedServerTime" methodname="ReplyRejectsWrongAccountInvalidQuotaAndMalformedServerTime" classname="Wildfolk.Tests.RewardedAdsTests" runstate="Runnable" seed="1776504644" result="Passed" start-time="2026-10-28 00:01:26Z" end-time="2026-10-28 00:01:26Z" duration="0.023363" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[<b><color=#2EA3FF>MCP-FOR-UNITY</color></b>: [TestRunnerNoThrottle] Restored Interaction Mode after test run.
+Saving results to: C:/Users/User/AppData/LocalLow/DefaultCompany/Wildfolk\TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

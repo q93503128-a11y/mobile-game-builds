@@ -17,7 +17,7 @@ function parse(raw){
 function seal(envelope,secret){requireThat(typeof secret==='string'&&secret.length>=32&&secret.length<=1024,'ads_setup_required');const h=forge.hmac.create();h.start('sha256',secret);h.update('lowfire-admob-ingress-v1\n'+JSON.stringify(L.canonical(envelope)));return h.digest().toHex();}
 function equal(a,b){if(typeof a!=='string'||typeof b!=='string'||a.length!==b.length)return false;let n=0;for(let i=0;i<a.length;i++)n|=a.charCodeAt(i)^b.charCodeAt(i);return n===0;}
 function attest(input,secret,ctx,now){
- const e=input?.envelope;requireThat(e?.Schema===1&&e.ProjectId===ctx.projectId&&e.EnvironmentId===ctx.environmentId&&e.Channel===ctx.channel&&e.KeyId==='ads-ssv-v1'&&Number.isSafeInteger(e.ReceivedAt)&&e.ReceivedAt<=now+60000&&now-e.ReceivedAt<=7*86400000&&typeof e.RawQuery==='string','ad_invalid_proof');
+ requireThat(input&&JSON.stringify(input).length<=16000,'ad_invalid_proof');const e=input?.envelope;requireThat(e?.Schema===1&&e.ProjectId===ctx.projectId&&e.EnvironmentId===ctx.environmentId&&e.Channel===ctx.channel&&e.KeyId==='ads-ssv-v1'&&Number.isSafeInteger(e.ReceivedAt)&&e.ReceivedAt<=now+60000&&now-e.ReceivedAt<=7*86400000&&typeof e.RawQuery==='string','ad_invalid_proof');
  requireThat(/^[a-f0-9]{64}$/.test(input.seal||'')&&equal(input.seal,seal(e,secret)),'ad_invalid_proof');const proof=parse(e.RawQuery);requireThat(proof.EnvironmentId===ctx.environmentId&&proof.ProviderTimestamp<=e.ReceivedAt+60000&&e.ReceivedAt-proof.ProviderTimestamp<=600000,'ad_expired_proof');return {...proof,ReceivedAt:e.ReceivedAt};
 }
 module.exports={KEY_URL,parse,seal,attest,equal};

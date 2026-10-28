@@ -56,3 +56,5 @@ test('Engineer ownership helper rejects imported flags, another player/environme
  const root={Schema:1,PlayerId:'player',EnvironmentId:'dev',Engineer:{Id:'class_engineer',TransactionId:'tx'},Ledger:[{TransactionId:'tx',PlayerId:'player',Reason:'class_unlock',SourceId:'class:engineer',Delta:-120}]};
  assert.equal(engineerOwnership(root,ctx),true);for(const value of [{...root,Ledger:[]},{...root,PlayerId:'other'},{...root,EnvironmentId:'alpha'},{...root,Engineer:null}])assert.equal(engineerOwnership(value,ctx),false);
 });
+
+test('deletion request commits its marker inside the financial creation gate',async()=>{const f=await ready();let held=false,seen=false;f.store.withCreationGate=async work=>{held=true;try{return await work();}finally{held=false;}};const exchange=f.store.compareExchange.bind(f.store);f.store.compareExchange=async(id,v,p)=>{if(p.Deletion){assert.equal(held,true);seen=true;}return exchange(id,v,p);};assert.equal((await f.call('RequestAccountDeletionPreparation',{confirmation:'DELETE'})).ok,true);assert.equal(seen,true);assert.equal(held,false);});

@@ -82,4 +82,4 @@ Foundation2 non-production 경제 배포/검증은 별도 REVIEW를 따른다. �
 
 ## Foundation3 Ads · SETUP_REQUIRED
 
-실제 AdMob App/두 rewarded ad unit/SSV callback URL/Cloud Run·Cloud Tasks·worker IAM·relay HMAC·UGS server credential·UMP audience/privacy/실기기 video/서명SSV는미설정이다. sampleApp/Unit은Google공식test용이며게임실제ID가아니다. [ADS.md의12단계](ADS.md#exact-setup-procedure-no-made-up-values)에사이트·메뉴·App·placement·입력파일·test모드·활성화전검사·secret저장위치를기록했다. 기본OFF를해제한것으로보고하지않는다. Alpha sample영상과owned-unit SSV경로는분리검증하며현재Alpha는realunit을사용하지않는다. Production실제unit/test-device end-to-end 검증/승인전live활성화금지.
+실제 AdMob App/두 rewarded ad unit/SSV callback URL/Cloud Run·Cloud Tasks·worker IAM·relay HMAC·UGS server credential·UMP audience/privacy/실기기 video/서명SSV는미설정이다. sampleApp/Unit은Google공식test용이며게임실제ID가아니다. [ADS.md의12단계](ADS.md#exact-setup-procedure-no-made-up-values)에사이트·메뉴·App·placement·입력파일·test모드·활성화전검사·secret저장위치를기록했다. 기본OFF를해제한것으로보고하지않는다. 기본 Alpha sample 영상과 owned-unit SSV 경로는 분리 검증한다. 2026-10-28 추가한 UseRegisteredTestUnits 경로는 실제 등록 기기와 native SDK isTestDevice 판정이 있어야 load/show를 허용한다. 실제 ID/기기값은 여전히 미설정이고 Production live는 검증/승인 전 OFF다.

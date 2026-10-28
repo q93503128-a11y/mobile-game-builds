@@ -1,0 +1,31 @@
+{
+  "UTC": "2026-10-28T01:34:31.526415+00:00",
+  "dexChecks": {
+    "GmaAdRequest": true,
+    "NativeTestDeviceApi": true,
+    "UmpBridge": true
+  },
+  "manifest": {
+    "package": "com.gltam.lowfire",
+    "sdk": {
+      "{http://schemas.android.com/apk/res/android}minSdkVersion": "25",
+      "{http://schemas.android.com/apk/res/android}targetSdkVersion": "36"
+    },
+    "permissions": [
+      "android.permission.INTERNET",
+      "android.permission.ACCESS_NETWORK_STATE",
+      "com.google.android.gms.permission.AD_ID",
+      "android.permission.ACCESS_ADSERVICES_AD_ID",
+      "android.permission.ACCESS_ADSERVICES_ATTRIBUTION",
+      "android.permission.ACCESS_ADSERVICES_TOPICS",
+      "android.permission.WAKE_LOCK",
+      "android.permission.FOREGROUND_SERVICE",
+      "com.gltam.lowfire.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+    ],
+    "gmaAppId": [
+      "ca-app-pub-3940256099942544~3347511713"
+    ]
+  },
+  "actualAdVideo": false,
+  "currentSourceManagedGuardRequiresChannelCompile": true
+}

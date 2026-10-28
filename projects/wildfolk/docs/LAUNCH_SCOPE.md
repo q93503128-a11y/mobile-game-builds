@@ -31,3 +31,5 @@ Foundation2는 계정 Gem/업적/출석/Profile·Engineer120Gem·SP부활8Gem을
 보상 광고2placement·Economy2 verified receipt·프로필/업적/출석 기록지 구현. Google AdMob11.6.0, client/server/production live 기본OFF. 실제 Android video/consent/SSV/Cloud Tasks 외부 설정과 출시 gate는 남는다. Foundation4를 자동 시작하지 않는다. [광고 정본](ADS.md).
 
 2026-10-27 사용자 시간 제한으로 Foundation3는 중간 체크포인트에서 멈췄다. 전체 완료가 아니며 [이어받기](../validation/rewarded-ads-meta-ui/RESUME.md)를 따른다. 전체 완료 전 IAP를 시작하지 않는다.
+
+2026-10-28 Foundation3 재개 마감: **저장소 구현·관련 검증 완료 / 광고 운영 미활성**. 위10-27 중간 체크포인트는 당시 기록이다. Node131/131·focused Edit9/Play7·data/Android58/58·native Development AAB packaging·90 typed UI capture·실제 live MCP 격리 확인을 마쳤다. 실제 광고/SSV/기기/개인정보·외부 운영 gate는 유지한다. [최신 마감 기록](../validation/rewarded-ads-meta-ui/REVIEW.md#2026-10-28-재개-완료). 다음 기능은 자동 시작하지 않는다.

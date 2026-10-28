@@ -1,5 +1,7 @@
 # Launch Foundation3 · Rewarded Ads / Meta UI
 
+> **현재 상태 · 2026-10-28:** Foundation3의 저장소 구현·관련 검증을 마감했다. 아래 10-27 체크포인트는 당시 기록이며, 현재 판정은 문서 끝의 「2026-10-28 재개 완료」를 따른다. 실제 광고/SSV/운영 활성화는 외부 설정 전 차단 상태다.
+
 2026-10-27 시작 SHA `7d48ceba336d6e6c6f2a51aa0812376d4bcf3678`. remote fetch/main 일치/clean 확인. **사용자 시간 제한에 따른 중간 체크포인트이며 Foundation3 전체 완료가 아니다.** 이번 코드·격리 검증 결과를 main에 보존하고 남은 작업은 RESUME.md로 이어간다. 기존 가격/Save14/Profile2/CloudProfile1/Economy2/Protocol23/generation3 유지. Production live OFF, 실제 AdMob/CloudRun/SSV/기기 설정 미완료. 최종 Foundation3 종료 SHA는 아직 미정이며 이번 checkpoint SHA는 최종 응답/git log에 기록한다.
 
 ## 조사 품질과 실제 capture
@@ -108,3 +110,71 @@ Node tests는124개PASS. nativeEdit17개/Play26개PASS는직접실행기록이�
 |visual|119.249|
 |android|120.206|
 |rewarded-actual|62.819|
+
+
+## 2026-10-28 재개 완료
+
+재개 시작 전 remote main fetch 결과 `ce7c996461173dcefbffdc29995dcbe090db8af9`와 clean main 일치를 확인했다. 최초 Foundation3 시작은 `7d48ceba336d6e6c6f2a51aa0812376d4bcf3678`다. **저장소 구현·관련 검증 완료 / 광고 운영 미활성**으로 마감한다. 최종 commit SHA는 git log와 최종 응답에 기록한다. Foundation4는 시작하지 않았다.
+
+### 최종 교정과 검증
+
+- 만료/실패한 GetRewardedState 뒤 이전 eligibility를 지우고 응답 scope·quota·clock·operation과 로컬 대기열32개 상한을 검증한다. SDK/UMP callback은 Unity thread로 전달한다. initialize/load20초 제한, placement별 단일 preload, 전역 fullscreen, close-before-earned/late/duplicate/실패 callback과 durable earned 기록 실패를 production completion gate에서 처리한다.
+- Alpha owned-unit 검증 경로를 선택적으로 제공한다. 실제 등록 device hash·실제 두 unit·reviewed config가 필요하며 native `AdRequest.isTestDevice(Context)`를 load와 show 직전에 확인한다. 공식 Maven ads-api25.5.0 AAR의 공개 API를 javap로 직접 확인했다(`completion/native-adrequest-api.txt`). 기본값은 OFF/official sample units이며 실제 owned-unit video/SSV는 아직 미실행이다. [공식 test devices](https://developers.google.com/admob/unity/test-ads).
+- 삭제 준비와 전역 receipt 생성은 같은 짧은 gate를 사용하고 gate 획득 후 account deletion을 다시 읽는다. 운영 삭제는 환경별 marker를 먼저 CAS 확정한 뒤 긴 archive/receipt cleanup을 수행한다. 지연 worker가 삭제 중 orphan receipt를 새로 만들지 않는 관련 fault/race test를 추가했다.
+- Gem/revive의 지원용 결과 보고는 client-reported로 표시하며 금융 증거로 취급하지 않는다. bound operation/device 검증, 중복 telemetry 제거와 일64개 상한을 적용한다. 검증된 중복 SSV 시도는 일32개까지만 집계하며 재지급이나 자동 ban을 하지 않는다. safe ad error와 마지막 실제 server transaction을 선택적 문의 진단에 연결한다.
+- Docker ignore를 실제 backend build context로 옮겼다. 월드/콘텐츠/경제 가격·버전은 유지한다. 서버 Remaining/총 일한도를 UI에 표시한다.
+- 실제 live MCP Play에서844px 영문 메인 메뉴의 `Profile & Records` 잘림을 발견했다. 메뉴 진입명만 `Profile / 프로필`로 줄이고 hub 제목은 유지했다. canonical visual QA에 영문 메인 메뉴 캡처를 추가했다. 실패 캡처는 `completion/mcp/`, 교정 후 실제 MCP KO/EN 메인·영문 offline hub 캡처/검사는 `completion/mcp-final/`이다.
+
+|검증|최종 결과·근거|한계|
+|---|---|---|
+|Backend|131/131 PASS, `completion/backend-tests-final.tap`|메모리/fault/HTTP harness와 실제 서비스를 구분|
+|Focused EditMode|9/9 PASS, `focused-edit-final.xml`|completion/계약/queue/defaultOFF/native test 설정 경계|
+|Focused PlayMode|7/7 PASS, `focused-play-ascii.xml`|격리 native Unity. 초기 scene-order 의존 fixture는3pass/4fail 후 자체 Home 로드로 교정; ILPP stall2회 중단은 PASS에 포함하지 않음|
+|Project data|RewardedAdsQa/ProjectData/Economy validator PASS, errors0|최종 메뉴 변경 뒤 data 검사 재실행|
+|소스 구조|Python validator PASS,1716 unique GUID|실제 기기 성능 검사 아님|
+|Android scripts|Alpha58/Production58 assemblies PASS, fixture 제외|최신 native guard/support source snapshot; 이후 메뉴 문구만 MCP와 data 검사|
+|Native Android|Development IL2CPP/ARM64 AAB 생성 성공, errors0/warnings74; native GMA/UMP API·DEX·manifest 검사|아래 빌드 snapshot 경계 참조|
+|UI native batch|90 PNG, KO/EN3해상도·광고상태·업적·출석·저장실패 부활 retry, checks PASS|typed fixture/UI-only render; 실제 광고 영상 아님|
+|Live Unity MCP|격리 Play KO/EN844 메인/영문 offline hub 확인, 마지막 console errors0|실제 Android/SSV 아님; Windows 입력/Focus/Show0|
+|실제 UGS|기존 실제 SDK default-OFF/위조 bool 거절 PASS; 이번 최신Account+Rewarded Development/Alpha 배포 hash 일치|이번에는 새 anonymous player를 추가하지 않음. Production변경0|
+|저장 보호|실제2파일 SHA256/bytes/mtime 전후 동일|QA 전용 임시 저장만 생성; UserData 복사0|
+|최종 감사|변경 source/evidence credential pattern scan0, vendor 변경0, 배포 bundle SHA 일치|알려진 credential signature 검사; 모든 가능한 secret 부재의 수학적 증명은 아님|
+
+### Android 산출물 범위
+
+실제 `Lowfire-development.aab`는 **64,567,123 bytes**다. Unity BuildReport의1,554,678,302 bytes는 전체 보고 output이며 AAB 크기로 쓰지 않는다. package `com.gltam.lowfire`, minSDK25/targetSDK36, debug signing/Development/ARM64/IL2CPP, backend OFF, 공식 sample AdMob App ID다. 외부 QA 디렉터리에 산출물을 보존하고 binary를 Git에 넣지 않는다.
+
+이 AAB는 이번 재개 초반 source snapshot으로 **동일 native SDK/Gradle packaging**을 검증했다. 이후 추가한 managed owned-unit guard/support/마지막 메뉴 문구까지 포함한 최종 출시 AAB라고 주장하지 않는다. 최신 managed Android compile과 실제 Maven 공개 API 확인을 별도 근거로 기록했다. 실기기 영상·동의 지역·Google SSV·Cloud Tasks 운영·출시 signing/성능/크기 증분은 미검증이다.
+
+### 최종 요구사항 대응
+
+|보고 항목|최종 판정|
+|---|---|
+|Provider/SDK|AdMob11.6.0, Android25.5.0/UMP4.0.0. 공식 비교표·라이선스 유지. 실제 provider account/owned IDs 미설정|
+|Gem|1Gem·서버UTC하루1회·cooldown0;30/90일 최대30/90Gem. 기존 가격/무광고125Gem 예시 유지|
+|Revive|SP 원정 성공1회,40%HP. 취소/실패는 기회 소모0; world save 실패는 durable earned proof로 재시도|
+|Proof/ledger/retry|Google exact-query ECDSA→durable queue→OIDC/HMAC→Economy2 CAS/영구source/global receipt. client bool은금융권위0|
+|Alpha/Production|sample 기본; owned test는 등록기기 native 확인필수. 제품 client/server/Production live OFF|
+|Reference audit|Mine Survival 공식 과거실제화면+현재release설명, Westland/GrimSoul/LDoE/Survivor.io/Stormfall 실제screen. 기존 조사표 유지|
+|Main/Profile|6entry·Play우선,Profile기록hub/계정설정하위,Class독립. 작은 영문 메뉴명을 최종교정|
+|Achievement/Attendance|단일 paper/scroll detail/현재·다음목표,신규7/월간28/event분리,24stamp+6/8/10/16Gem4칸|
+|Ads UI/Badge|선택형CTA·서버remaining·loading/cancel/unavailable/pending,광고badge0. 업적/출석 수령가능만dot|
+|Anti-abuse/Support|operation/nonce/device/account/day/receipt-bound, rate/size/queue bounds, support outcome/duplicate/audit/삭제 gate|
+|Privacy|UMP gate/privacy-options/child·under-age 설정 경계. 실제 audience/공개URLs/지역동의/infra query log redaction 미완료|
+|Versions|Save14/Profile2/CloudProfile1/Economy2/Protocol23/generation3 그대로|
+|Live sync|known main source185개+최종문구3파일 반영. unrelated local scene/prefab/meta 보존; MainMenu clean edit mode로 복원|
+|External next|ADS.md의12단계와 SETUP_REQUIRED/RELEASE_BLOCKERS. 가짜ID/URL/secret0. 실제SSV/queue/기기/Google/PGS가 없으면 활성화 금지|
+|Foundation4|ledger/receipt/운영 경계 재사용 가능. IAP검증·Store상품·Audio0. 다음 사용자 지시 전 STOP|
+
+### 시간·사용량
+
+각 과정의UTC 시작/종료/실측초는 `completion/*-process.json`, `process-history.json`, `timing.json`에 남겼다. 겹치는 단계를 합산하지 않는다. 장시간 native AAB 빌드와 QA 초기 import가 병행됐다. 작업별 token/요금 수치는 제공되지 않아 **null**이며 임의 배분하지 않는다.
+
+|단계|시작UTC|종료UTC|실측초|
+|---|---|---|---:|
+|android-bundle|2026-10-27T23:57:14.940069+00:00|2026-10-28T01:22:49.432051+00:00|5134.755|
+|focused-play-ascii|2026-10-28T01:08:02.807048+00:00|2026-10-28T01:21:56.563800+00:00|834.021|
+|focused-edit-final|2026-10-28T01:27:32.596838+00:00|2026-10-28T01:28:20.427715+00:00|47.831|
+|android|2026-10-28T01:29:04.280617+00:00|2026-10-28T01:33:30.173384+00:00|265.893|
+|visual|2026-10-28T01:33:41.166835+00:00|2026-10-28T01:35:02.817097+00:00|81.650|
+|data|2026-10-28T01:46:02.874643+00:00|2026-10-28T01:46:44.148784+00:00|41.274|

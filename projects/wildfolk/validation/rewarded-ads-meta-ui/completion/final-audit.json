@@ -1,0 +1,46 @@
+{
+  "UTC": "2026-10-28T01:46:41.512460+00:00",
+  "secretPatternScan": {
+    "scannedChangedPaths": 171,
+    "credentialMatches": [],
+    "scope": "Changed/untracked UTF-8 source and evidence; known credential signatures, not a proof of all possible secret absence"
+  },
+  "published": [
+    {
+      "environment": "development",
+      "script": "LowfireAccount",
+      "version": 9,
+      "localBundleEqualsPublished": true,
+      "sha256": "e4226ff2a07329c3df52c98f822ad41ea9d822bd24e02fc9f68c740f02c0fb1d"
+    },
+    {
+      "environment": "development",
+      "script": "LowfireRewarded",
+      "version": 3,
+      "localBundleEqualsPublished": true,
+      "sha256": "6cc2ca29590ab18b5bb4cf9a357e102dcd3731cfcd05cfabb34cd31ceaa94ada"
+    },
+    {
+      "environment": "alpha",
+      "script": "LowfireAccount",
+      "version": 8,
+      "localBundleEqualsPublished": true,
+      "sha256": "e4226ff2a07329c3df52c98f822ad41ea9d822bd24e02fc9f68c740f02c0fb1d"
+    },
+    {
+      "environment": "alpha",
+      "script": "LowfireRewarded",
+      "version": 3,
+      "localBundleEqualsPublished": true,
+      "sha256": "6cc2ca29590ab18b5bb4cf9a357e102dcd3731cfcd05cfabb34cd31ceaa94ada"
+    }
+  ],
+  "SaveVersionsChanged": false,
+  "userSaveUnchanged": true,
+  "vendorChangedThisResume": false,
+  "stagedScanChangedPaths": 178,
+  "stagedCredentialMatches": [],
+  "liveSyncedSourceContentCompared": 52,
+  "liveContentDifferences": [],
+  "finalAuditUTC": "2026-10-28T01:50:07.270507+00:00"
+}

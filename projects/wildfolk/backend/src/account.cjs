@@ -75,7 +75,9 @@ class AccountBackend {
     return operation==='GetEntitlements'?{ok:true,entitlements:clone(p.Entitlements)}:{ok:true,profile:view(p,ctx)};
    }
 
-   const result=await this.mutate(ctx,operation,input.operationId,input,p=>this.apply(p,ctx,operation,input,now));return {ok:!result.error,...result};
+   const mutate=async()=>{const result=await this.mutate(ctx,operation,input.operationId,input,p=>this.apply(p,ctx,operation,input,now));return {ok:!result.error,...result};};
+   if(operation==='RequestAccountDeletionPreparation'&&typeof this.store.withCreationGate==='function')return await this.store.withCreationGate(async()=>{try{return await mutate();}catch(e){if(e instanceof Rejected)return {ok:false,error:e.code};throw e;}},'account-delete:'+ctx.playerId);
+   return await mutate();
   }catch(e){if(e instanceof Rejected)return {ok:false,error:e.code};throw e;}
  }
  async mutate(ctx,operation,key,input,edit){

@@ -1,0 +1,26 @@
+Compiled from "com.google.android.gms:play-services-ads-api@@25.5.0"
+public class com.google.android.gms.ads.AdRequest {
+  public static final int ERROR_CODE_INTERNAL_ERROR;
+  public static final int ERROR_CODE_INVALID_REQUEST;
+  public static final int ERROR_CODE_NETWORK_ERROR;
+  public static final int ERROR_CODE_NO_FILL;
+  public static final int ERROR_CODE_APP_ID_MISSING;
+  public static final int ERROR_CODE_REQUEST_ID_MISMATCH;
+  public static final int ERROR_CODE_INVALID_AD_STRING;
+  public static final int ERROR_CODE_MEDIATION_NO_FILL;
+  public static final int MAX_CONTENT_URL_LENGTH;
+  public static final java.lang.String DEVICE_ID_EMULATOR;
+  protected final com.google.android.gms.ads.internal.client.zzeh zza;
+  protected com.google.android.gms.ads.AdRequest(com.google.android.gms.ads.AbstractAdRequestBuilder);
+  public java.lang.String getContentUrl();
+  public java.util.List<java.lang.String> getNeighboringContentUrls();
+  public java.util.Set<java.lang.String> getKeywords();
+  public <T extends com.google.android.gms.ads.mediation.MediationExtrasReceiver> android.os.Bundle getNetworkExtrasBundle(java.lang.Class<T>);
+  public <T extends com.google.android.gms.ads.mediation.customevent.CustomEvent> android.os.Bundle getCustomEventExtrasBundle(java.lang.Class<T>);
+  public boolean isTestDevice(android.content.Context);
+  public android.os.Bundle getCustomTargeting();
+  public java.lang.String getRequestAgent();
+  public java.lang.String getAdString();
+  public long getPlacementId();
+  public final com.google.android.gms.ads.internal.client.zzeh zza();
+}

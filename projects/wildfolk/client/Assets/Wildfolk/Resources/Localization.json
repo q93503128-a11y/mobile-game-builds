@@ -5926,6 +5926,13 @@
       ]
     },
     {
+      "Key": "meta.menu",
+      "Values": [
+        "Profile",
+        "프로필"
+      ]
+    },
+    {
       "Key": "meta.title",
       "Values": [
         "Profile & Records",
@@ -5970,8 +5977,8 @@
     {
       "Key": "ads.optional",
       "Values": [
-        "Optional · 1 reward per day (UTC)",
-        "선택 보상 · UTC 하루 1회"
+        "Optional · {0}/{1} rewards left today (UTC)",
+        "선택 보상 · 오늘 {0}/{1}회 남음 (UTC)"
       ]
     },
     {
@@ -5991,8 +5998,8 @@
     {
       "Key": "ads.limit",
       "Values": [
-        "Today’s reward received. Resets at 00:00 UTC.",
-        "오늘 보상을 받았습니다. UTC 0시에 초기화됩니다."
+        "0/{0} rewards left. Resets at 00:00 UTC.",
+        "오늘 0/{0}회 남음 · UTC 0시 초기화"
       ]
     },
     {

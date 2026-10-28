@@ -96,3 +96,5 @@ Foundation2 현재 상태: **구현·관련 검증 완료**. 해상도 전환 �
 Google AdMob11.6.0 Rewarded Ads 기반과 Profile·Records hub/업적/출석 기록지를 연결했다. 보상은1Gem·UTC하루1회, SP부활은기존원정1회. 서버서명SSV/Economy2중복방지와durable재시도,실제UGS차단경로·격리UnityQA를구분한다. **광고 기본OFF/Production live OFF**이며실기기영상·실제provider SSV/consent는외부설정후필수다. [ADS](docs/ADS.md) · [검증/제한](validation/rewarded-ads-meta-ui/REVIEW.md). 다음IAP/Store는자동진행하지않는다.
 
 2026-10-27 사용자 시간 제한으로 Foundation3는 중간 체크포인트에서 멈췄다. 전체 완료가 아니며 [이어받기](validation/rewarded-ads-meta-ui/RESUME.md)를 따른다.
+
+2026-10-28 Foundation3 재개 마감: **저장소 구현·관련 검증 완료 / 광고 운영 미활성**. 위10-27 중간 체크포인트는 당시 기록이다. Node131/131·focused Edit9/Play7·data/Android58/58·native Development AAB packaging·90 typed UI capture·실제 live MCP 격리 확인을 마쳤다. 실제 광고/SSV/기기/개인정보·외부 운영 gate는 유지한다. [최신 마감 기록](validation/rewarded-ads-meta-ui/REVIEW.md#2026-10-28-재개-완료). 다음 기능은 자동 시작하지 않는다.

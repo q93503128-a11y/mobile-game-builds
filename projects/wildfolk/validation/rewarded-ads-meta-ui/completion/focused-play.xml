@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="7" result="Failed(Child)" total="7" passed="3" failed="4" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-28 00:04:56Z" end-time="2026-10-28 00:04:57Z" duration="0.3775358">
+  <test-suite type="TestSuite" id="1256" name="Wildfolk" fullname="Wildfolk" runstate="Runnable" testcasecount="205" result="Failed" site="Child" start-time="2026-10-28 00:04:56Z" end-time="2026-10-28 00:04:57Z" duration="0.377536" total="7" passed="3" failed="4" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <failure>
+      <message><![CDATA[One or more child tests had errors]]></message>
+    </failure>
+    <test-suite type="Assembly" id="1253" name="Wildfolk.Tests.PlayMode.dll" fullname="C:/Users/User/Documents/ChatGPT/문승준 모바일/canonical/projects/wildfolk/tests/artifacts/unity/Library/ScriptAssemblies/Wildfolk.Tests.PlayMode.dll" runstate="Runnable" testcasecount="205" result="Failed" site="Child" start-time="2026-10-28 00:04:56Z" end-time="2026-10-28 00:04:57Z" duration="0.346035" total="7" passed="3" failed="4" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="7508" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <failure>
+        <message><![CDATA[One or more child tests had errors]]></message>
+      </failure>
+      <test-suite type="TestSuite" id="1254" name="Wildfolk" fullname="Wildfolk" runstate="Runnable" testcasecount="205" result="Failed" site="Child" start-time="2026-10-28 00:04:56Z" end-time="2026-10-28 00:04:57Z" duration="0.339309" total="7" passed="3" failed="4" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <failure>
+          <message><![CDATA[One or more child tests had errors]]></message>
+        </failure>
+        <test-suite type="TestSuite" id="1255" name="Tests" fullname="Wildfolk.Tests" runstate="Runnable" testcasecount="205" result="Failed" site="Child" start-time="2026-10-28 00:04:56Z" end-time="2026-10-28 00:04:57Z" duration="0.333407" total="7" passed="3" failed="4" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <failure>
+            <message><![CDATA[One or more child tests had errors]]></message>
+          </failure>
+          <test-suite type="TestFixture" id="1198" name="RewardedAdsPlayTests" fullname="Wildfolk.Tests.RewardedAdsPlayTests" classname="Wildfolk.Tests.RewardedAdsPlayTests" runstate="Runnable" testcasecount="7" result="Failed" site="Child" start-time="2026-10-28 00:04:56Z" end-time="2026-10-28 00:04:57Z" duration="0.322781" total="7" passed="3" failed="4" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <failure>
+              <message><![CDATA[One or more child tests had errors]]></message>
+            </failure>
+            <test-case id="1199" name="CancelAndNoFillConsumeNoRewardAndCanRetry" fullname="Wildfolk.Tests.RewardedAdsPlayTests.CancelAndNoFillConsumeNoRewardAndCanRetry" methodname="CancelAndNoFillConsumeNoRewardAndCanRetry" classname="Wildfolk.Tests.RewardedAdsPlayTests" runstate="Runnable" seed="1184226497" result="Failed" start-time="2026-10-28 00:04:57Z" end-time="2026-10-28 00:04:57Z" duration="0.115808" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[  Expected: 3
+  But was:  0
+]]></message>
+                <stack-trace><![CDATA[at Wildfolk.Tests.RewardedAdsPlayTests+<CancelAndNoFillConsumeNoRewardAndCanRetry>d__10.MoveNext () [0x000f0] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Tests\PlayMode\RewardedAdsPlayTests.cs:23
+at UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\Library\PackageCache\com.unity.test-framework@bd7f943e9647\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:44
+]]></stack-trace>
+              </failure>
+            </test-case>
+            <test-case id="1200" name="EarnedCallbackWaitsForServerAndParallelShowIsRejected" fullname="Wildfolk.Tests.RewardedAdsPlayTests.EarnedCallbackWaitsForServerAndParallelShowIsRejected" methodname="EarnedCallbackWaitsForServerAndParallelShowIsRejected" classname="Wildfolk.Tests.RewardedAdsPlayTests" runstate="Runnable" seed="1717928727" result="Passed" start-time="2026-10-28 00:04:57Z" end-time="2026-10-28 00:04:57Z" duration="0.010490" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1204" name="EarnedPreviousDayStaysDurableWhileANewDayCanBePrepared" fullname="Wildfolk.Tests.RewardedAdsPlayTests.EarnedPreviousDayStaysDurableWhileANewDayCanBePrepared" methodname="EarnedPreviousDayStaysDurableWhileANewDayCanBePrepared" classname="Wildfolk.Tests.RewardedAdsPlayTests" runstate="Runnable" seed="4575053" result="Failed" label="Error" start-time="2026-10-28 00:04:57Z" end-time="2026-10-28 00:04:57Z" duration="0.011996" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[System.NullReferenceException : Object reference not set to an instance of an object]]></message>
+                <stack-trace><![CDATA[  at Wildfolk.Tests.RewardedAdsPlayTests+<EarnedPreviousDayStaysDurableWhileANewDayCanBePrepared>d__15.MoveNext () [0x00034] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Tests\PlayMode\RewardedAdsPlayTests.cs:29
+  at UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\Library\PackageCache\com.unity.test-framework@bd7f943e9647\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:44 ]]></stack-trace>
+              </failure>
+            </test-case>
+            <test-case id="1202" name="EarnedReviveRetriesWithoutAnotherAdUntilWorldSaveSucceeds" fullname="Wildfolk.Tests.RewardedAdsPlayTests.EarnedReviveRetriesWithoutAnotherAdUntilWorldSaveSucceeds" methodname="EarnedReviveRetriesWithoutAnotherAdUntilWorldSaveSucceeds" classname="Wildfolk.Tests.RewardedAdsPlayTests" runstate="Runnable" seed="1406328117" result="Passed" start-time="2026-10-28 00:04:57Z" end-time="2026-10-28 00:04:57Z" duration="0.119563" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1205" name="ExplicitRetryDoesNotLaunchConcurrentReviveLoads" fullname="Wildfolk.Tests.RewardedAdsPlayTests.ExplicitRetryDoesNotLaunchConcurrentReviveLoads" methodname="ExplicitRetryDoesNotLaunchConcurrentReviveLoads" classname="Wildfolk.Tests.RewardedAdsPlayTests" runstate="Runnable" seed="883498999" result="Passed" start-time="2026-10-28 00:04:57Z" end-time="2026-10-28 00:04:57Z" duration="0.013964" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1203" name="FailedFreshEligibilityClearsPreviouslyEnabledAdButton" fullname="Wildfolk.Tests.RewardedAdsPlayTests.FailedFreshEligibilityClearsPreviouslyEnabledAdButton" methodname="FailedFreshEligibilityClearsPreviouslyEnabledAdButton" classname="Wildfolk.Tests.RewardedAdsPlayTests" runstate="Runnable" seed="1404009203" result="Failed" start-time="2026-10-28 00:04:57Z" end-time="2026-10-28 00:04:57Z" duration="0.006059" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[  Expected: True
+  But was:  False
+]]></message>
+                <stack-trace><![CDATA[at Wildfolk.Tests.RewardedAdsPlayTests+<FailedFreshEligibilityClearsPreviouslyEnabledAdButton>d__14.MoveNext () [0x00060] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Tests\PlayMode\RewardedAdsPlayTests.cs:28
+at UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\Library\PackageCache\com.unity.test-framework@bd7f943e9647\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:44
+]]></stack-trace>
+              </failure>
+            </test-case>
+            <test-case id="1201" name="OnlyVerifiedServerStateReconcilesAndDisablesFurtherDailyShows" fullname="Wildfolk.Tests.RewardedAdsPlayTests.OnlyVerifiedServerStateReconcilesAndDisablesFurtherDailyShows" methodname="OnlyVerifiedServerStateReconcilesAndDisablesFurtherDailyShows" classname="Wildfolk.Tests.RewardedAdsPlayTests" runstate="Runnable" seed="895729451" result="Failed" label="Error" start-time="2026-10-28 00:04:57Z" end-time="2026-10-28 00:04:57Z" duration="0.003937" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[System.NullReferenceException : Object reference not set to an instance of an object]]></message>
+                <stack-trace><![CDATA[  at Wildfolk.Tests.RewardedAdsPlayTests+<OnlyVerifiedServerStateReconcilesAndDisablesFurtherDailyShows>d__12.MoveNext () [0x00087] in C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\tests\artifacts\unity\Assets\Wildfolk\Tests\PlayMode\RewardedAdsPlayTests.cs:25
+  at UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\Library\PackageCache\com.unity.test-framework@bd7f943e9647\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:44 ]]></stack-trace>
+              </failure>
+              <output><![CDATA[<b><color=#2EA3FF>MCP-FOR-UNITY</color></b>: [TestRunnerNoThrottle] Restored Interaction Mode after test run.
+Saving results to: C:/Users/User/AppData/LocalLow/DefaultCompany/Wildfolk\TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

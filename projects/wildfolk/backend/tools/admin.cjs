@@ -19,8 +19,9 @@ class AdminApi {
  getPrivateCustomItems(project,custom,keys){return this.request('GET',this.base+'/custom/'+encodeURIComponent(custom)+'/private/items?keys='+keys.map(encodeURIComponent).join(','));}
  setPrivateCustomItem(project,custom,body){return this.request('POST',this.base+'/custom/'+encodeURIComponent(custom)+'/private/items',body);}
  async lookup(support){const r=await this.request('POST',this.base+'/queries/players/protected',{fields:[{key:'lf_support',op:'EQ',value:support,asc:true}],returnKeys:['lf_account']});requireThat(r.data.results?.length===1,'support_not_unique_or_missing');return r.data.results[0];}
- async deletePlayerData(env,player){
+ async deletePlayerData(env,player,requestId){
   const api=new AdminApi(this.project,env);
+  await require('../src/deletion.cjs').prepareDeletion(new CloudSaveStore(api,this.project,'deletion-'+require('node:crypto').randomUUID()),player,requestId);
   // Delete deterministic private archives/indexes before losing the root manifest.
   const economy=(await new CloudSaveStore(api,this.project,undefined,'lf_economy',env).read(player))?.value;
   const count=economy?.Archive?.Count||0;requireThat(Number.isSafeInteger(count)&&count>=0&&count<=1000000,'invalid_archive_manifest');

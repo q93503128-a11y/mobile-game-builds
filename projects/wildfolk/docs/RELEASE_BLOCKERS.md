@@ -21,4 +21,4 @@ Foundation2.1 재개 검증 중 Cloud Code의 Authentication Get Player 조회�
 
 ## Foundation3 Ads 출시 차단
 
-코드/격리QA와실제광고운영을구분한다. 실제 AdMob등록·unit2개·공개callback/CloudRun/CloudTasks/서버secret·UMP정책/Privacy URL·Android실기기영상·consent/SSV/retry·운영알림은미완료다. Alpha는공식sampletest unit만사용하므로owned-unitSSV end-to-end는별도guardedtest계획이필요하다. 이번C# Androidcompile은새SDK의실제Gradle/AAB/실기기/지역consent검증을대체하지않는다. Google/PGS/Integrity및기존출시차단은유지한다. Production live기본OFF,추가게임컨텐츠/IAP자동착수없음. [정확한외부설정](ADS.md).
+코드/격리QA와실제광고운영을구분한다. 실제 AdMob등록·unit2개·공개callback/CloudRun/CloudTasks/서버secret·UMP정책/Privacy URL·Android실기기영상·consent/SSV/retry·운영알림은미완료다. Alpha는 기본 official sample test unit을 사용한다. owned-unit 경로는 native SDK test-device guard를 구현했지만 실제 등록 기기/SSV 검증은 미실행이다. Development native Gradle/IL2CPP AAB packaging은 통과했다. 초반 managed source snapshot의 SDK packaging 검증이며 최종 source 출시 AAB/실기기/지역 consent 검증을 대체하지 않는다. Google/PGS/Integrity및기존출시차단은유지한다. Production live기본OFF,추가게임컨텐츠/IAP자동착수없음. [정확한외부설정](ADS.md).

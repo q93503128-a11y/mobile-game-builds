@@ -28,7 +28,7 @@ async function deleteAccount(admin,job,persist,{apply=false}={}){
  if(!apply)return {dryRun:true,player:job.playerId,environments:job.environments};
  await persist(job);job.completed=job.completed||[];
  if(!job.authenticationDisabled){await admin.disableAuthentication(job.playerId);job.authenticationDisabled=true;await persist(job);}
- for(const env of job.environments){if(job.completed.includes(env))continue;await admin.deletePlayerData(env,job.playerId);job.completed.push(env);await persist(job);}
+ for(const env of job.environments){if(job.completed.includes(env))continue;await admin.deletePlayerData(env,job.playerId,job.requestId);job.completed.push(env);await persist(job);}
  if(!job.authenticationDeleted){await admin.deleteAuthentication(job.playerId);job.authenticationDeleted=true;await persist(job);}
  return {complete:job.authenticationDeleted&&job.completed.length===job.environments.length};
 }

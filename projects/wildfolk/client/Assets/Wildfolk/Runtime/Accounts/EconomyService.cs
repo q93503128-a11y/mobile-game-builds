@@ -62,6 +62,7 @@ namespace Wildfolk
         public async Task<EconomyReply> Attend(string board){var r=await Call("ClaimAttendance",new Dictionary<string,object>{{"board",board}});if(r.ok)LastAttendanceClaim=board;return r;}
         public async Task<bool> UnlockEngineer(){if(!CanSpend)return false;var r=await Call("UnlockEngineer",new Dictionary<string,object>{{"expectedCost",EconomyCatalog.Current.EngineerCost}});if(!r.ok)return false;await account.Sync();return account.Profile?.ClassProfile?.Local().Find("engineer")?.Owned==true;}
         public Task<EconomyReply> History(int offset=0)=>Call("TransactionHistory",new Dictionary<string,object>{{"offset",offset},{"limit",20}},false);
+        internal void ObserveServerTransaction(string transaction){if(!string.IsNullOrEmpty(transaction))LastTransaction=transaction;}
         internal void PendingChanged()=>Changed?.Invoke();
         internal EconomyJournal Journal=>journal;
         internal Task<EconomyReply> ReviveCall(string op,Dictionary<string,object> input)=>Call(op,input);

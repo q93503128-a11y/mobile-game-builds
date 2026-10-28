@@ -120,3 +120,5 @@ audit64/day·활성 proof16/90초·mutation budget500/day, rejected proof는 bou
 ## Foundation3 Rewarded Ads 운영
 
 LowfireRewarded는development/alpha에기본OFF(`Enabled=false,SsvReady=false,ProductionLiveEnabled=false`)로추가한다. Production정책/기존서버스크립트는임의교체하지않는다. `ads-setup` dry-run/CAS설정, `ads-lookup` 지원조회와기존economy-source/history/reconcile/조정·operator/case/reason을사용한다. owner검증후globalfinancialbinding삭제가hot/archive/pendingmanifest삭제보다먼저실행된다. ingressGET은durablequeue성공뒤만200,worker는OIDC+서버HMAC와retainedGooglepublickey검증. UGS/Cloud Run/queue429·오래된pending·거절·실패율·oldesttask/cleanup·privacy로그retention을운영관측한다. 요청rawquery/토큰/HMAC/credential은로그/지원/채팅금지. [사이트·메뉴·secret·권한·재시도순서](ADS.md).
+
+2026-10-28: 삭제 요청 표시와 신규 금융 영수증 bind를 같은 짧은 creation gate로 직렬화한다. 운영 삭제는 모든 environment에서 먼저 삭제 표시를 CAS로 보존한 뒤 긴 archive/index/receipt 삭제를 수행한다. worker는 gate 안에서 계정을 다시 확인한다. unknown write의 gate 보존/운영자 확인 원칙은 유지한다.
