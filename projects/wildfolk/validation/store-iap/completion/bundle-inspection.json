@@ -1,0 +1,39 @@
+{
+  "UTC": "2026-10-29T00:21:21.082856+00:00",
+  "sha256": "d3eefe32316ef01abc2636b80d9aac3d5600704096fddc8d431582fa7782d769",
+  "bytes": 65241833,
+  "bundletoolValidation": {
+    "exit": 0,
+    "ToolVersion": "1.17.2 Unity bundled",
+    "StdoutSha256": "98ec0706458b57093534cad143e14d6b30ba6d0eb178286e12dafb8cfea28a6a",
+    "Stderr": ""
+  },
+  "manifest": {
+    "package": "com.gltam.lowfire",
+    "versionCode": "1",
+    "minSdk": "25",
+    "targetSdk": "36",
+    "debuggable": "true",
+    "internet": true
+  },
+  "signature": {
+    "verified": true,
+    "standardAndroidDebugCertificate": true,
+    "productionSigning": false
+  },
+  "nativeLibraries": [
+    "base/lib/arm64-v8a/lib_burst_generated.so",
+    "base/lib/arm64-v8a/libc++_shared.so",
+    "base/lib/arm64-v8a/libgame.so",
+    "base/lib/arm64-v8a/libil2cpp.so",
+    "base/lib/arm64-v8a/libmain.so",
+    "base/lib/arm64-v8a/libswappywrapper.so",
+    "base/lib/arm64-v8a/libunity.so"
+  ],
+  "embeddedBackendSettingsVerified": true,
+  "credentialPatternScan": {
+    "entries": 621,
+    "findings": [],
+    "scope": "Every uncompressed AAB ZIP entry, raw and NUL-stripped bytes; private keys/GitHub/Google API/AWS/JWT patterns; not an exhaustive secrets proof"
+  }
+}

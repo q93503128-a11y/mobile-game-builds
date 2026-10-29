@@ -1,5 +1,7 @@
 # Foundation4 Store / Google Play IAP
 
+Latest status2026-10-29: **repository implementation/related QA complete, real sales OFF**. [Final report](completion/FINAL_REPORT.md). Initial research and pause notes below are historical; final45-subject table supersedes checkpoint status.
+
 Start main `0c1ea494cb757b8250f6f4bfdf446a179ac650c1`, fetched before work; local/remote equal and clean. Work in progress, not a completion claim. Real Play products/merchant/API credentials are not configured. Production mutation and new paid cloud resources: none.
 
 ## Research before implementation · 2026-10-28
@@ -78,3 +80,57 @@ Implementation/verification state, interrupted AAB and exact remaining work are 
 Actual native screenshots prove rendered layout, while money/prices/success in them are isolated fixtures. Seven public games/six images are research, not live checkout QA. Direct images checked: ready EN1920, history KO1280, pending KO844 and long-price EN844. No asset copying from references. Initial clipped status was rejected and corrected. Fixture fulfillment currently covers24Gem only;72/144 production amounts covered by server tests, fixture extension remains listed in RESUME.
 
 No Audio/Foundation5 started. All45 requested review subjects are covered by research tables, IAP.md architecture/catalog/states/account/security/consumption/recovery/refund/RTDN/Voided/support/privacy/channel setup, economy model/P2W, measured evidence and RESUME remaining/modified/version/save/build/timing boundaries. End SHA is the checkpoint commit containing RESUME, not a final completion SHA.
+
+## 2026-10-29 resumed completion — repository work complete, real sales OFF
+
+This section supersedes the historical checkpoint above without rewriting its evidence. User resumed after the reported interrupted AAB. Final fixture mapping covers all3packages; latest deletion regression and actual UGS negative QA passed. The existing local HTTP MCP bridge became available after user Refresh/Reload; no Windows input/Focus/Show used. Actual live Play used an explicit temporary QA directory and was stopped/restored cleanly.
+
+|#|Review subject|Result / evidence / boundary|
+|---:|---|---|
+|1|Start SHA|Original0c1ea494cb757b8250f6f4bfdf446a179ac650c1; resume79ae04ccb827e4ee78e24ea777b86c31e2917681; fetched clean|
+|2|End SHA|The commit introducing completion/FINAL_REPORT.md is the completion commit; exact SHA returned in final delivery. Resolve with git log --diff-filter=A --format=%H -- projects/wildfolk/validation/store-iap/completion/FINAL_REPORT.md|
+|3|Unity IAP vs native|Research comparison above: UnityIAP5.4.4 viable; native Billing9.1 selected for explicit Android consumable/server-consume ownership, future IStoreBillingClient seam|
+|4|Selected implementation|Small Java Billing bridge + Android-only C# callback queue; no dual SDK or client currency grant|
+|5|SDK/package versions|Unity6000.3.19f1, Billing9.1.0 Maven; existing Ads11.6.0 and UGS dependencies unchanged|
+|6|Billing architecture|IAP.md Authority/recovery; LowfirePurchase orchestration and separate LowfirePlayVerify Google/RSA script under128KB|
+|7|Catalog|Schema1/revision1/Proposed=true; canonical StoreCatalog and checked server mirror|
+|8|Gem amounts|lowfire_gems_24/72/144 grant24/72/144; no new sink or Class cash sale|
+|9|Price strategy|Proposed USD0.99/2.99/5.99 planning only; native ProductDetails formatted price; no registered Play SKU or live price claim|
+|10|External games|Seven-game price comparison above;6public screen images actually opened, with official/historical/unknown bounds|
+|11|Store reference findings|Play-first/Profile subentry; equal quantity/price cards, explicit close/select, no first bonus/FREE/sale/value badge|
+|12|State machine|Fetching/ready/start/pending/validate/consume/complete/cancel/fail/recover/account/unavailable; native captures and Play10|
+|13|Account preconditions|UGS identity server-requeried, real Google Play Games link, no deletion/conflict, expected environment and build Integrity|
+|14|Anonymous policy|Actual Unity SDK5calls GetState/Begin/Verify/Recover/Consume rejected purchase_account_required; actual/checks.json|
+|15|Binding|Project/environment/player account hash + immutable intent profile hash; Google obfuscated IDs must match|
+|16|Purchase token|Private pending receipt + scoped atomic client journal; token hash ledger/global owner; terminal raw token removed; no token/order in UI/log/feedback|
+|17|Validation|Actual v2 adapter, fixed package/product/quantity1/state/binding/TestOnly; no client verified/amount/signature shortcut. Actual Google transaction remains unverified|
+|18|Economy2 grant|Same protected root CAS + permanent iap source/Private archive; Engineer120 and SP revive8 unchanged|
+|19|Idempotency|Token identity separate from operation ID; repeated tokens/multiple devices/archive/refund dedup tests|
+|20|Consume/ack|Durable grant precedes server consumption; one Google stage/invocation; consume also acknowledges; no client early ack|
+|21|Crash recovery|Prepared/Granted/Completed; lost grant/consume/completion responses modelled and tested|
+|22|Reinstall/device change|Server pending survives local queue loss, consumed purchases not minted anew; backend/service fixture verified, physical Google devices unverified|
+|23|Reversal policy|Verified cancellation/Voided only; permanent reversal source, reclaim min(balance,grant), shortfall review/new-sales block; no debt/ban/Engineer revoke/free-source offset|
+|24|RTDN|Hosted receiver/PubSub deferred; no resource created and no client unverified notification proof|
+|25|Voided Purchases|Real Google feed CLI,30day overlap, pagination/external cursor; daily operation and pending monitor are release gates, not running schedulers|
+|26|Admin/support|Safe lookup/history refs/duplicates/phase; recover/voided/resolve-review operator+case/dry-run; no public refund/grant endpoint|
+|27|Privacy/Data Safety|IAP.md12step setup: purchase history/IDs/third parties/audience/financial exceptions; owner retention reference+ReviewAt; minimal DeletedOwner/hash tombstone, no invented legal period|
+|28|Alpha policy|Hard no real Billing including license testing; current server purchase/live/settlement OFF verified remotely|
+|29|Production policy|Client/backend/live OFF, Proposed catalog; no Production script/policy/data activation. Fresh QA Authentication identity removed after3environment empty-data reads|
+|30|30/90day economy|Table/model above: assumed free145/285 without ads; optional ad+30/+90; one paid24/72/144; no observed time-to-earn claim|
+|31|Sink insufficiency|Engineer one-time; revive weak repeat sink; cap pack144, no new sink or upsell expansion|
+|32|Pay-to-win|Engineer utility/repair/turret/overclock/overrepair plus SP revive speed are gameplay advantage; no zero-P2W claim; free Engineer route45+40+40=125 remains|
+|33|KO/EN|28Store keys, translated states/controls/help; fixture label restricted to isolated development evidence|
+|34|Viewports|Native Unity rendered1920x1080,1280x720,844x390 KO/EN; manually rejected initial status clipping and accepted corrected captures|
+|35|Tests|Final server166/166; Edit9 retained unchanged; latest Play10/10; latest data validator PASS; final Android59/59 and fixture exclusion PASS|
+|36|Actual vs fixture|Actual native compilation/rendering/UGS negative/local live MCP; financial outcomes and restart/device models are fixtures; Google buy/consume/refund/device unverified|
+|37|Android validation|Current Alpha/Production59assemblies; native Java/Maven compile; completed Development IL2CPP/ARM64/debug AAB plus bundletool/manifest/DEX/off-settings/signature scans|
+|38|AAB count/reasons|2launches total: first cancelled by explicit user pause while compiling; second finishes final native gate on user resume using cache.1completed artifact,0code/packaging rebuilds for UI/docs/backend|
+|39|AAB elapsed|First interrupted1486.48s; resumed successful1445.79s; actual file65241833bytes. Per-run UTC/reason in aab-runs.json; BuildReport size is separate|
+|40|External setup|IAP.md12steps/SETUP_REQUIRED/RELEASE_BLOCKERS. Merchant/SKUs/API secret/PGS/OAuth/Integrity/URLs/financial policy/monitor/tester/device QA remain owner setup|
+|41|Versions|Save14/Profile2/CloudProfile1/Economy2/Protocol23/generation3 unchanged; IAP metadata/journal/receipt Schema1 separate|
+|42|User saves|Original and resumed real file SHA/mtime/bytes unchanged; only isolated QA saves used; live Play stopped, previous QA setting restored|
+|43|Modified files|completion/modified-files.txt records initial expansion files; final source resume changes only fixture mapping/tests, evidence/docs. Canonical sources; no PR/branch/patch layer|
+|44|Remaining limits|No real Google transaction/refund, physical Android, production signing/distribution/activation or continuous monitor/RTDN. Existing non-IAP release blockers unchanged|
+|45|Audio/Foundation5|Repository implementation/related QA complete; Audio/final polish only next user instruction, release blocked pending external gates; STOP|
+
+Evidence: [completion](completion/FINAL_REPORT.md), [server166](completion/backend-all.tap), [Play10](iap-play-complete.xml), [actual UGS](actual/checks.json), [Android](android-scripts.json), [AAB](completion/bundle-inspection.json), [Billing DEX/metadata](completion/billing-native-inspection.json), [live MCP](completion/live-smoke-probe.json), [save protection](completion/user-save-after.json). No claim of real Google checkout from public research or fixtures.

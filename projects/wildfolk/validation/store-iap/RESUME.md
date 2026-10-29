@@ -1,3 +1,9 @@
+# Foundation4 — repository work complete / real billing OFF
+
+2026-10-29: resumed work below is complete. Latest result: [completion/FINAL_REPORT](completion/FINAL_REPORT.md), [REVIEW final45subjects](REVIEW.md#2026-10-29-resumed-completion--repository-work-complete-real-sales-off). The historical checkpoint below records the interruption, not current unfinished work. No automatic Audio/Foundation5. Remaining work is real Play/Google/privacy/monitor/device setup in IAP.md and RELEASE_BLOCKERS; no activation occurred.
+
+---
+
 # Foundation4 checkpoint — not complete
 
 User requested pause at 2026-10-28T12:49:47.552116+00:00. Work stays on main; no branch/PR. Starting main `0c1ea494cb757b8250f6f4bfdf446a179ac650c1`. The commit containing this file is the checkpoint (`git log --all --grep="Checkpoint Foundation4"`); final completion SHA does not exist yet.

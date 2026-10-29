@@ -1,0 +1,26 @@
+{
+  "jsonrpc": "2.0",
+  "id": 2,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"success\":true,\"message\":\"Code executed successfully.\",\"data\":{\"result\":{\"Isolated\":true,\"BackendEnabled\":false,\"PurchaseAllowed\":false,\"StoreExists\":true},\"compiler\":\"codedom\"}}"
+      }
+    ],
+    "structuredContent": {
+      "success": true,
+      "message": "Code executed successfully.",
+      "data": {
+        "result": {
+          "Isolated": true,
+          "BackendEnabled": false,
+          "PurchaseAllowed": false,
+          "StoreExists": true
+        },
+        "compiler": "codedom"
+      }
+    },
+    "isError": false
+  }
+}

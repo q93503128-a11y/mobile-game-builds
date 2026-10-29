@@ -1,0 +1,32 @@
+{
+  "jsonrpc": "2.0",
+  "id": 2,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"success\":true,\"message\":\"Code executed successfully.\",\"data\":{\"result\":{\"Isolated\":true,\"WorldSaveIsQa\":true,\"StoreVisible\":true,\"Cards\":3,\"PurchaseInteractable\":false,\"CanBuy\":false,\"Prices\":0,\"Phase\":\"AccountRequired\",\"RealMoneyPurchase\":false,\"Fixture\":false},\"compiler\":\"codedom\"}}"
+      }
+    ],
+    "structuredContent": {
+      "success": true,
+      "message": "Code executed successfully.",
+      "data": {
+        "result": {
+          "Isolated": true,
+          "WorldSaveIsQa": true,
+          "StoreVisible": true,
+          "Cards": 3,
+          "PurchaseInteractable": false,
+          "CanBuy": false,
+          "Prices": 0,
+          "Phase": "AccountRequired",
+          "RealMoneyPurchase": false,
+          "Fixture": false
+        },
+        "compiler": "codedom"
+      }
+    },
+    "isError": false
+  }
+}

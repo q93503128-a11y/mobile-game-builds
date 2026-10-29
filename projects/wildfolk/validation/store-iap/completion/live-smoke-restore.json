@@ -1,0 +1,27 @@
+{
+  "jsonrpc": "2.0",
+  "id": 2,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"success\":true,\"message\":\"Code executed successfully.\",\"data\":{\"result\":{\"Playing\":false,\"Compiling\":false,\"Scene\":\"Assets/Wildfolk/Scenes/MainMenu.unity\",\"Dirty\":false,\"PurchaseAllowed\":false},\"compiler\":\"codedom\"}}"
+      }
+    ],
+    "structuredContent": {
+      "success": true,
+      "message": "Code executed successfully.",
+      "data": {
+        "result": {
+          "Playing": false,
+          "Compiling": false,
+          "Scene": "Assets/Wildfolk/Scenes/MainMenu.unity",
+          "Dirty": false,
+          "PurchaseAllowed": false
+        },
+        "compiler": "codedom"
+      }
+    },
+    "isError": false
+  }
+}

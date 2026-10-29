@@ -104,3 +104,5 @@ Google AdMob11.6.0 Rewarded Ads 기반과 Profile·Records hub/업적/출석 기
 Gem Store와 서버 검증·Economy2 지급/소비 복구·환불/지원 기반을 구현했다. Native Billing9.1.0, 제안 상품24/72/144Gem이며 실제 Play 등록/가격/Google 결제는 미검증이다. Alpha 실제 구매 금지, Production 기본OFF. 실기기/외부 설정과 공개 출시 승인은 남는다. [IAP 정본](docs/IAP.md) · [검증](validation/store-iap/REVIEW.md). 다음 Audio/Foundation5는 사용자 확인 후 별도 작업한다.
 
 2026-10-28 사용자 요청으로 Foundation4는 **중간 체크포인트**에서 멈췄다. 전체 완료가 아니며 AAB는 컴파일 중 중단·최신 추가 검사/실제 UGS 차단 QA/로컬 동기화가 남는다. [정확한 재개 목록](validation/store-iap/RESUME.md).
+
+2026-10-29 Foundation4 재개 마감: **저장소 구현·관련 검증 완료 / 실제 구매 OFF**. 서버166/166·Edit9·Play10·data·Android59/59·실제 UGS 익명 차단5경로·local MCP 격리 Play·Development Billing9.1 native AAB 검증을 마쳤다. 총 AAB2회 시작 중1회는 이전 사용자 중단, 재개1회가 완료됐다. 실제 Google 결제/환불·실기기·외부 운영·공개 출시 승인은 미완료다. [최종 검증](validation/store-iap/completion/FINAL_REPORT.md). Audio/Foundation5는 시작하지 않는다.

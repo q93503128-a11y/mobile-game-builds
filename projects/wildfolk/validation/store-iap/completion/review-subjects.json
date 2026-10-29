@@ -1,0 +1,230 @@
+{
+  "UTC": "2026-10-29T00:23:21.714018+00:00",
+  "Subjects": [
+    {
+      "Number": 1,
+      "Subject": "Start SHA",
+      "Result": "Original0c1ea494cb757b8250f6f4bfdf446a179ac650c1; resume79ae04ccb827e4ee78e24ea777b86c31e2917681; fetched clean"
+    },
+    {
+      "Number": 2,
+      "Subject": "End SHA",
+      "Result": "The commit introducing completion/FINAL_REPORT.md is the completion commit; exact SHA returned in final delivery. Resolve with git log --diff-filter=A --format=%H -- projects/wildfolk/validation/store-iap/completion/FINAL_REPORT.md"
+    },
+    {
+      "Number": 3,
+      "Subject": "Unity IAP vs native",
+      "Result": "Research comparison above: UnityIAP5.4.4 viable; native Billing9.1 selected for explicit Android consumable/server-consume ownership, future IStoreBillingClient seam"
+    },
+    {
+      "Number": 4,
+      "Subject": "Selected implementation",
+      "Result": "Small Java Billing bridge + Android-only C# callback queue; no dual SDK or client currency grant"
+    },
+    {
+      "Number": 5,
+      "Subject": "SDK/package versions",
+      "Result": "Unity6000.3.19f1, Billing9.1.0 Maven; existing Ads11.6.0 and UGS dependencies unchanged"
+    },
+    {
+      "Number": 6,
+      "Subject": "Billing architecture",
+      "Result": "IAP.md Authority/recovery; LowfirePurchase orchestration and separate LowfirePlayVerify Google/RSA script under128KB"
+    },
+    {
+      "Number": 7,
+      "Subject": "Catalog",
+      "Result": "Schema1/revision1/Proposed=true; canonical StoreCatalog and checked server mirror"
+    },
+    {
+      "Number": 8,
+      "Subject": "Gem amounts",
+      "Result": "lowfire_gems_24/72/144 grant24/72/144; no new sink or Class cash sale"
+    },
+    {
+      "Number": 9,
+      "Subject": "Price strategy",
+      "Result": "Proposed USD0.99/2.99/5.99 planning only; native ProductDetails formatted price; no registered Play SKU or live price claim"
+    },
+    {
+      "Number": 10,
+      "Subject": "External games",
+      "Result": "Seven-game price comparison above;6public screen images actually opened, with official/historical/unknown bounds"
+    },
+    {
+      "Number": 11,
+      "Subject": "Store reference findings",
+      "Result": "Play-first/Profile subentry; equal quantity/price cards, explicit close/select, no first bonus/FREE/sale/value badge"
+    },
+    {
+      "Number": 12,
+      "Subject": "State machine",
+      "Result": "Fetching/ready/start/pending/validate/consume/complete/cancel/fail/recover/account/unavailable; native captures and Play10"
+    },
+    {
+      "Number": 13,
+      "Subject": "Account preconditions",
+      "Result": "UGS identity server-requeried, real Google Play Games link, no deletion/conflict, expected environment and build Integrity"
+    },
+    {
+      "Number": 14,
+      "Subject": "Anonymous policy",
+      "Result": "Actual Unity SDK5calls GetState/Begin/Verify/Recover/Consume rejected purchase_account_required; actual/checks.json"
+    },
+    {
+      "Number": 15,
+      "Subject": "Binding",
+      "Result": "Project/environment/player account hash + immutable intent profile hash; Google obfuscated IDs must match"
+    },
+    {
+      "Number": 16,
+      "Subject": "Purchase token",
+      "Result": "Private pending receipt + scoped atomic client journal; token hash ledger/global owner; terminal raw token removed; no token/order in UI/log/feedback"
+    },
+    {
+      "Number": 17,
+      "Subject": "Validation",
+      "Result": "Actual v2 adapter, fixed package/product/quantity1/state/binding/TestOnly; no client verified/amount/signature shortcut. Actual Google transaction remains unverified"
+    },
+    {
+      "Number": 18,
+      "Subject": "Economy2 grant",
+      "Result": "Same protected root CAS + permanent iap source/Private archive; Engineer120 and SP revive8 unchanged"
+    },
+    {
+      "Number": 19,
+      "Subject": "Idempotency",
+      "Result": "Token identity separate from operation ID; repeated tokens/multiple devices/archive/refund dedup tests"
+    },
+    {
+      "Number": 20,
+      "Subject": "Consume/ack",
+      "Result": "Durable grant precedes server consumption; one Google stage/invocation; consume also acknowledges; no client early ack"
+    },
+    {
+      "Number": 21,
+      "Subject": "Crash recovery",
+      "Result": "Prepared/Granted/Completed; lost grant/consume/completion responses modelled and tested"
+    },
+    {
+      "Number": 22,
+      "Subject": "Reinstall/device change",
+      "Result": "Server pending survives local queue loss, consumed purchases not minted anew; backend/service fixture verified, physical Google devices unverified"
+    },
+    {
+      "Number": 23,
+      "Subject": "Reversal policy",
+      "Result": "Verified cancellation/Voided only; permanent reversal source, reclaim min(balance,grant), shortfall review/new-sales block; no debt/ban/Engineer revoke/free-source offset"
+    },
+    {
+      "Number": 24,
+      "Subject": "RTDN",
+      "Result": "Hosted receiver/PubSub deferred; no resource created and no client unverified notification proof"
+    },
+    {
+      "Number": 25,
+      "Subject": "Voided Purchases",
+      "Result": "Real Google feed CLI,30day overlap, pagination/external cursor; daily operation and pending monitor are release gates, not running schedulers"
+    },
+    {
+      "Number": 26,
+      "Subject": "Admin/support",
+      "Result": "Safe lookup/history refs/duplicates/phase; recover/voided/resolve-review operator+case/dry-run; no public refund/grant endpoint"
+    },
+    {
+      "Number": 27,
+      "Subject": "Privacy/Data Safety",
+      "Result": "IAP.md12step setup: purchase history/IDs/third parties/audience/financial exceptions; owner retention reference+ReviewAt; minimal DeletedOwner/hash tombstone, no invented legal period"
+    },
+    {
+      "Number": 28,
+      "Subject": "Alpha policy",
+      "Result": "Hard no real Billing including license testing; current server purchase/live/settlement OFF verified remotely"
+    },
+    {
+      "Number": 29,
+      "Subject": "Production policy",
+      "Result": "Client/backend/live OFF, Proposed catalog; no Production script/policy/data activation. Fresh QA Authentication identity removed after3environment empty-data reads"
+    },
+    {
+      "Number": 30,
+      "Subject": "30/90day economy",
+      "Result": "Table/model above: assumed free145/285 without ads; optional ad+30/+90; one paid24/72/144; no observed time-to-earn claim"
+    },
+    {
+      "Number": 31,
+      "Subject": "Sink insufficiency",
+      "Result": "Engineer one-time; revive weak repeat sink; cap pack144, no new sink or upsell expansion"
+    },
+    {
+      "Number": 32,
+      "Subject": "Pay-to-win",
+      "Result": "Engineer utility/repair/turret/overclock/overrepair plus SP revive speed are gameplay advantage; no zero-P2W claim; free Engineer route45+40+40=125 remains"
+    },
+    {
+      "Number": 33,
+      "Subject": "KO/EN",
+      "Result": "28Store keys, translated states/controls/help; fixture label restricted to isolated development evidence"
+    },
+    {
+      "Number": 34,
+      "Subject": "Viewports",
+      "Result": "Native Unity rendered1920x1080,1280x720,844x390 KO/EN; manually rejected initial status clipping and accepted corrected captures"
+    },
+    {
+      "Number": 35,
+      "Subject": "Tests",
+      "Result": "Final server166/166; Edit9 retained unchanged; latest Play10/10; latest data validator PASS; final Android59/59 and fixture exclusion PASS"
+    },
+    {
+      "Number": 36,
+      "Subject": "Actual vs fixture",
+      "Result": "Actual native compilation/rendering/UGS negative/local live MCP; financial outcomes and restart/device models are fixtures; Google buy/consume/refund/device unverified"
+    },
+    {
+      "Number": 37,
+      "Subject": "Android validation",
+      "Result": "Current Alpha/Production59assemblies; native Java/Maven compile; completed Development IL2CPP/ARM64/debug AAB plus bundletool/manifest/DEX/off-settings/signature scans"
+    },
+    {
+      "Number": 38,
+      "Subject": "AAB count/reasons",
+      "Result": "2launches total: first cancelled by explicit user pause while compiling; second finishes final native gate on user resume using cache.1completed artifact,0code/packaging rebuilds for UI/docs/backend"
+    },
+    {
+      "Number": 39,
+      "Subject": "AAB elapsed",
+      "Result": "First interrupted1486.48s; resumed successful1445.79s; actual file65241833bytes. Per-run UTC/reason in aab-runs.json; BuildReport size is separate"
+    },
+    {
+      "Number": 40,
+      "Subject": "External setup",
+      "Result": "IAP.md12steps/SETUP_REQUIRED/RELEASE_BLOCKERS. Merchant/SKUs/API secret/PGS/OAuth/Integrity/URLs/financial policy/monitor/tester/device QA remain owner setup"
+    },
+    {
+      "Number": 41,
+      "Subject": "Versions",
+      "Result": "Save14/Profile2/CloudProfile1/Economy2/Protocol23/generation3 unchanged; IAP metadata/journal/receipt Schema1 separate"
+    },
+    {
+      "Number": 42,
+      "Subject": "User saves",
+      "Result": "Original and resumed real file SHA/mtime/bytes unchanged; only isolated QA saves used; live Play stopped, previous QA setting restored"
+    },
+    {
+      "Number": 43,
+      "Subject": "Modified files",
+      "Result": "completion/modified-files.txt records initial expansion files; final source resume changes only fixture mapping/tests, evidence/docs. Canonical sources; no PR/branch/patch layer"
+    },
+    {
+      "Number": 44,
+      "Subject": "Remaining limits",
+      "Result": "No real Google transaction/refund, physical Android, production signing/distribution/activation or continuous monitor/RTDN. Existing non-IAP release blockers unchanged"
+    },
+    {
+      "Number": 45,
+      "Subject": "Audio/Foundation5",
+      "Result": "Repository implementation/related QA complete; Audio/final polish only next user instruction, release blocked pending external gates; STOP"
+    }
+  ]
+}

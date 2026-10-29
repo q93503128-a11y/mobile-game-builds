@@ -1,0 +1,100 @@
+{
+  "UTC": "2026-10-28T23:59:09.141989+00:00",
+  "Settings": [
+    {
+      "Environment": "development",
+      "Key": "iap_config",
+      "Value": {
+        "ExternalSetupReviewed": false,
+        "FinancialRetentionPolicy": "",
+        "PackageName": "com.gltam.lowfire",
+        "ProductionLiveEnabled": false,
+        "Provider": "google_play",
+        "PurchaseEnabled": false,
+        "Schema": 1,
+        "SettlementEnabled": false,
+        "TestOnly": true
+      }
+    },
+    {
+      "Environment": "development",
+      "Key": "policy",
+      "Value": {
+        "allowLegacyImport": true,
+        "alphaEnd": "",
+        "alphaOpen": false,
+        "alphaStart": "",
+        "alphaVersionCodes": [],
+        "approvedBuilds": [],
+        "certificates": [],
+        "channel": "Development",
+        "environmentId": "9aa02b53-8272-4975-a42a-f6a0b75a360f",
+        "packageName": "com.gltam.lowfire",
+        "realMoneyPurchase": false
+      }
+    },
+    {
+      "Environment": "alpha",
+      "Key": "iap_config",
+      "Value": {
+        "ExternalSetupReviewed": false,
+        "FinancialRetentionPolicy": "",
+        "PackageName": "com.gltam.lowfire",
+        "ProductionLiveEnabled": false,
+        "Provider": "google_play",
+        "PurchaseEnabled": false,
+        "Schema": 1,
+        "SettlementEnabled": false,
+        "TestOnly": true
+      }
+    },
+    {
+      "Environment": "alpha",
+      "Key": "policy",
+      "Value": {
+        "allowLegacyImport": false,
+        "alphaEnd": "",
+        "alphaOpen": false,
+        "alphaStart": "",
+        "alphaVersionCodes": [],
+        "approvedBuilds": [],
+        "certificates": [],
+        "channel": "Alpha",
+        "environmentId": "a9eee8ca-e2a8-4fa7-9530-6df9b230e943",
+        "packageName": "com.gltam.lowfire",
+        "realMoneyPurchase": false
+      }
+    }
+  ],
+  "Scripts": [
+    {
+      "Environment": "development",
+      "Name": "LowfirePurchase",
+      "Sha256": "e22e4ffb03599c678c042b8f55e24dae3aba3a70338b0188a482475f84775358",
+      "Bytes": 90420,
+      "MatchesLocal": true
+    },
+    {
+      "Environment": "development",
+      "Name": "LowfirePlayVerify",
+      "Sha256": "97cf43ca1f02a18ef4da6b45f4fedf3e78544b40fdca631d4b8b4fa37fb562d4",
+      "Bytes": 125412,
+      "MatchesLocal": true
+    },
+    {
+      "Environment": "alpha",
+      "Name": "LowfirePurchase",
+      "Sha256": "e22e4ffb03599c678c042b8f55e24dae3aba3a70338b0188a482475f84775358",
+      "Bytes": 90420,
+      "MatchesLocal": true
+    },
+    {
+      "Environment": "alpha",
+      "Name": "LowfirePlayVerify",
+      "Sha256": "97cf43ca1f02a18ef4da6b45f4fedf3e78544b40fdca631d4b8b4fa37fb562d4",
+      "Bytes": 125412,
+      "MatchesLocal": true
+    }
+  ],
+  "ProductionUntouched": true
+}

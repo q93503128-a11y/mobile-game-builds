@@ -1,0 +1,21 @@
+{
+    "Passed": true,
+    "Development": true,
+    "BackendEnabled": false,
+    "CustomKeystore": false,
+    "Package": "com.gltam.lowfire",
+    "EnvironmentName": "development",
+    "EnvironmentId": "9aa02b53-8272-4975-a42a-f6a0b75a360f",
+    "Backend": "IL2CPP",
+    "Architecture": "ARM64",
+    "Result": "Succeeded",
+    "Error": "",
+    "MissingPgsConfiguration": [
+        "PGS plugin Web client ID must match BackendSettings",
+        "Actual PGS application ID required"
+    ],
+    "Seconds": 1375.7825496,
+    "Bytes": 1557136379,
+    "Errors": 0,
+    "Warnings": 8
+}
