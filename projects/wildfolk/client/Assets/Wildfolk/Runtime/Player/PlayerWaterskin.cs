@@ -22,7 +22,7 @@ namespace Wildfolk
             var survival=GetComponent<PlayerSurvival>();var food=s.Quality==LiquidState.Clean ? s.Item.CleanDrink : s.Item.RawDrink;
             if(!survival.Model.CanRestore(food))return false;
             if(!bag.Model.SetWater(bag.SelectedIndex,s.Item,s.Charges-1,s.Charges==1 ? LiquidState.Empty : s.Quality))return false;
-            readyAt=Time.time+.5f;survival.Model.Restore(food);return true;
+            readyAt=Time.time+.5f;survival.Model.Restore(food);PlayerActionAudio.Committed(this,ConfirmedPlayerAction.Drink);return true;
         }
     }
 }

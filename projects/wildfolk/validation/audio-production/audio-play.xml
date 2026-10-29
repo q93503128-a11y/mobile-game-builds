@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="5" result="Failed(Child)" total="5" passed="3" failed="2" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-29 05:40:03Z" end-time="2026-10-29 05:40:09Z" duration="5.9335217">
+  <test-suite type="TestSuite" id="1273" name="Wildfolk" fullname="Wildfolk" runstate="Runnable" testcasecount="220" result="Failed" site="Child" start-time="2026-10-29 05:40:03Z" end-time="2026-10-29 05:40:09Z" duration="5.933522" total="5" passed="3" failed="2" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <failure>
+      <message><![CDATA[One or more child tests had errors]]></message>
+    </failure>
+    <test-suite type="Assembly" id="1270" name="Wildfolk.Tests.PlayMode.dll" fullname="C:/UnityProjects/LowfireRewardedQa/tests/artifacts/unity/Library/ScriptAssemblies/Wildfolk.Tests.PlayMode.dll" runstate="Runnable" testcasecount="220" result="Failed" site="Child" start-time="2026-10-29 05:40:03Z" end-time="2026-10-29 05:40:09Z" duration="5.920783" total="5" passed="3" failed="2" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="10716" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <failure>
+        <message><![CDATA[One or more child tests had errors]]></message>
+      </failure>
+      <test-suite type="TestSuite" id="1271" name="Wildfolk" fullname="Wildfolk" runstate="Runnable" testcasecount="220" result="Failed" site="Child" start-time="2026-10-29 05:40:03Z" end-time="2026-10-29 05:40:09Z" duration="5.918923" total="5" passed="3" failed="2" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <failure>
+          <message><![CDATA[One or more child tests had errors]]></message>
+        </failure>
+        <test-suite type="TestSuite" id="1272" name="Tests" fullname="Wildfolk.Tests" runstate="Runnable" testcasecount="220" result="Failed" site="Child" start-time="2026-10-29 05:40:03Z" end-time="2026-10-29 05:40:09Z" duration="5.917904" total="5" passed="3" failed="2" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <failure>
+            <message><![CDATA[One or more child tests had errors]]></message>
+          </failure>
+          <test-suite type="TestFixture" id="1007" name="AudioPlayTests" fullname="Wildfolk.Tests.AudioPlayTests" classname="Wildfolk.Tests.AudioPlayTests" runstate="Runnable" testcasecount="5" result="Failed" site="Child" start-time="2026-10-29 05:40:03Z" end-time="2026-10-29 05:40:09Z" duration="5.908012" total="5" passed="3" failed="2" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <failure>
+              <message><![CDATA[One or more child tests had errors]]></message>
+            </failure>
+            <test-case id="1010" name="ConfirmedReceiptCannotRepeatAndMuteDoesNotReplay" fullname="Wildfolk.Tests.AudioPlayTests.ConfirmedReceiptCannotRepeatAndMuteDoesNotReplay" methodname="ConfirmedReceiptCannotRepeatAndMuteDoesNotReplay" classname="Wildfolk.Tests.AudioPlayTests" runstate="Runnable" seed="2026798562" result="Passed" start-time="2026-10-29 05:40:03Z" end-time="2026-10-29 05:40:04Z" duration="1.238980" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1012" name="ExistingOwnerStateReceiptsDoNotReplayOnLoadOrSameSequence" fullname="Wildfolk.Tests.AudioPlayTests.ExistingOwnerStateReceiptsDoNotReplayOnLoadOrSameSequence" methodname="ExistingOwnerStateReceiptsDoNotReplayOnLoadOrSameSequence" classname="Wildfolk.Tests.AudioPlayTests" runstate="Runnable" seed="2049423960" result="Failed" start-time="2026-10-29 05:40:04Z" end-time="2026-10-29 05:40:05Z" duration="0.790637" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[Unhandled log message: '[Error] Scene 'Gameplay' couldn't be loaded because it has not been added to the active build profile or shared scene list or the AssetBundle has not been loaded.
+To add a scene to the active build profile or shared scene list use the menu File->Build Profiles'. Use UnityEngine.TestTools.LogAssert.Expect]]></message>
+                <stack-trace><![CDATA[UnityEngine.SceneManagement.SceneManager:LoadSceneAsync (string)
+Wildfolk.Tests.AudioPlayTests/<ExistingOwnerStateReceiptsDoNotReplayOnLoadOrSameSequence>d__9:MoveNext () (at Assets/Wildfolk/Tests/PlayMode/AudioPlayTests.cs:30)
+UnityEngine.SetupCoroutine:InvokeMoveNext (System.Collections.IEnumerator,intptr)
+
+]]></stack-trace>
+              </failure>
+              <output><![CDATA[Scene 'Gameplay' couldn't be loaded because it has not been added to the active build profile or shared scene list or the AssetBundle has not been loaded.
+To add a scene to the active build profile or shared scene list use the menu File->Build Profiles
+]]></output>
+            </test-case>
+            <test-case id="1011" name="HarvestDamageIsOneMaterialEventAndColdSceneIsSilent" fullname="Wildfolk.Tests.AudioPlayTests.HarvestDamageIsOneMaterialEventAndColdSceneIsSilent" methodname="HarvestDamageIsOneMaterialEventAndColdSceneIsSilent" classname="Wildfolk.Tests.AudioPlayTests" runstate="Runnable" seed="1768342813" result="Failed" start-time="2026-10-29 05:40:05Z" end-time="2026-10-29 05:40:06Z" duration="0.683952" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[Unhandled log message: '[Error] Scene 'Gameplay' couldn't be loaded because it has not been added to the active build profile or shared scene list or the AssetBundle has not been loaded.
+To add a scene to the active build profile or shared scene list use the menu File->Build Profiles'. Use UnityEngine.TestTools.LogAssert.Expect]]></message>
+                <stack-trace><![CDATA[UnityEngine.SceneManagement.SceneManager:LoadSceneAsync (string)
+Wildfolk.Tests.AudioPlayTests/<HarvestDamageIsOneMaterialEventAndColdSceneIsSilent>d__8:MoveNext () (at Assets/Wildfolk/Tests/PlayMode/AudioPlayTests.cs:28)
+UnityEngine.SetupCoroutine:InvokeMoveNext (System.Collections.IEnumerator,intptr)
+
+]]></stack-trace>
+              </failure>
+              <output><![CDATA[Scene 'Gameplay' couldn't be loaded because it has not been added to the active build profile or shared scene list or the AssetBundle has not been loaded.
+To add a scene to the active build profile or shared scene list use the menu File->Build Profiles
+]]></output>
+            </test-case>
+            <test-case id="1008" name="MuteAndSettingsDriveRealMixerAndAllSources" fullname="Wildfolk.Tests.AudioPlayTests.MuteAndSettingsDriveRealMixerAndAllSources" methodname="MuteAndSettingsDriveRealMixerAndAllSources" classname="Wildfolk.Tests.AudioPlayTests" runstate="Runnable" seed="902083019" result="Passed" start-time="2026-10-29 05:40:06Z" end-time="2026-10-29 05:40:06Z" duration="0.640908" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1009" name="SceneReloadKeepsOneOwnerAndBoundedSources" fullname="Wildfolk.Tests.AudioPlayTests.SceneReloadKeepsOneOwnerAndBoundedSources" methodname="SceneReloadKeepsOneOwnerAndBoundedSources" classname="Wildfolk.Tests.AudioPlayTests" runstate="Runnable" seed="2001837755" result="Passed" start-time="2026-10-29 05:40:06Z" end-time="2026-10-29 05:40:09Z" duration="2.524134" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[<b><color=#2EA3FF>MCP-FOR-UNITY</color></b>: [TestRunnerNoThrottle] Restored Interaction Mode after test run.
+Saving results to: C:/Users/User/AppData/LocalLow/DefaultCompany/Wildfolk\TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

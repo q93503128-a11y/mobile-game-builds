@@ -45,6 +45,66 @@
     {
       "UTC": "2026-10-29T01:39:51.862417+00:00",
       "Stage": "Main staged diff reviewed; whitespace-only cleanup of newly Unity-generated metadata; no serialized importer values changed"
+    },
+    {
+      "UTC": "2026-10-29T04:57:46.362246+00:00",
+      "Stage": "Resume started04:56:51UTC; fetched origin/main8782da4 local equal/clean; reread original Foundation5 request and canonical checkpoint/docs; resuming runtime integration"
+    },
+    {
+      "UTC": "2026-10-29T04:58:43.013508+00:00",
+      "Stage": "Resume started04:56:51UTC; fetched origin/main8782da4 local equal/clean; reread original Foundation5 request and canonical checkpoint/docs; resuming runtime integration"
+    },
+    {
+      "UTC": "2026-10-29T05:08:47.638337+00:00",
+      "Stage": "Canonical runtime/landscape/actor/UGUI hooks and native mixer-bank authoring implemented; preparing first isolated compile/author snapshot"
+    },
+    {
+      "UTC": "2026-10-29T05:11:59.381267+00:00",
+      "Stage": "Added confirmed economy/purchase sounds and overlay suspension, actual consumption/build-service/crafting/fishing/weapon hooks; no schema/network-message changes"
+    },
+    {
+      "UTC": "2026-10-29T05:21:04.268799+00:00",
+      "Stage": "Foreground verified ad reward/class/build/ranged bindings completed; MP food/drink/treatment use backward-compatible optional semantic receipt fields in existing owner JSON, no new RPC or wire/schema version"
+    },
+    {
+      "UTC": "2026-10-29T05:23:29.332588+00:00",
+      "Stage": "Core event wiring complete; omitted optional low-health sound and unsupported wood-floor cue, removed3unused candidate clips; retained native visual warnings and existing schemas"
+    },
+    {
+      "UTC": "2026-10-29T05:43:05.875366+00:00",
+      "Stage": "Audio data EditMode7 passed; first PlayMode3/5 exposed QA-only wrong scene name, corrected to canonical SceneFlow.GameplayScene; self recovery cues now nonspatial and fishing cast binding completed; native scenes output copy path corrected to Wildfolk.unity"
+    },
+    {
+      "UTC": "2026-10-29T05:48:43.474761+00:00",
+      "Stage": "Native authoring74cues/101clips complete; exact-zero mixer tests passed; QA corrected canonical Wildfolk scene name, store fixture now preserves unique receipt identities; starting focused regression and non-nographics gameplay output verification"
+    },
+    {
+      "UTC": "2026-10-29T06:12:14.541666+00:00",
+      "Stage": "Actual non-nographics Unity gameplay/boss/death/recovery/Continue and six settings captures passed:30sources,13448nonzero output buffers,peak0.3811103,RMS0.02208035,clipEditorMemory3150277bytes; preparing actual two-process LAN and real30minute soak"
+    },
+    {
+      "UTC": "2026-10-29T06:18:56.048628+00:00",
+      "Stage": "Actual two-process LAN host/client completed resource, guardian, boss, reconnect/reHost regression with bounded30sources; actual 30minute maximum-volume DSP soak started; Android Alpha/Production script compilation starts independently"
+    },
+    {
+      "UTC": "2026-10-29T06:51:15.829567+00:00",
+      "Stage": "Validated canonical audio sources/assets/scenes copied to stopped clean local Unity Editor; awaiting MCP refresh/compile, real user saves untouched"
+    },
+    {
+      "UTC": "2026-10-29T07:06:42.628898+00:00",
+      "Stage": "Validated canonical audio sources/assets/scenes copied to stopped clean local Unity Editor; awaiting MCP refresh/compile, real user saves untouched"
+    },
+    {
+      "UTC": "2026-10-29T07:10:11.244282+00:00",
+      "Stage": "Actual30minute max-volume soak passed1800.006s/30sources/peak0.4393703; baseline archive reproduces both unrelated full-Edit failures; related41Play cases latest outcomes pass; final Android59/59 compiled; local dependency sync being closed before save/Git verification"
+    },
+    {
+      "UTC": "2026-10-29T07:10:53.306336+00:00",
+      "Stage": "Final six KO/EN captures inspected, including correct Korean selected-language label; whitespace-only cleanup of native audio metadata, serialized values unchanged"
+    },
+    {
+      "UTC": "2026-10-29T07:18:35.252187+00:00",
+      "Stage": "All authorized audio implementation/technical QA and actual live Editor checks complete; user saves unchanged after final stop; final diff review and main commit/push only remain"
     }
   ]
 }

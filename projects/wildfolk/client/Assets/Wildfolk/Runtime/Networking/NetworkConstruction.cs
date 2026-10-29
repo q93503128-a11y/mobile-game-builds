@@ -26,7 +26,7 @@ namespace Wildfolk
             if(rpc.Receive.SenderClientId!=OwnerClientId || request<=lastRequest)return;lastRequest=request;var ok=ExecutePlace(revision,slot,position);ResultRpc(request,ok,bag.Revision.Value);
         }
         [Rpc(SendTo.Owner,InvokePermission=RpcInvokePermission.Server)]
-        private void ResultRpc(ulong request,bool ok,uint revision){if(pending!=request)return;acknowledged=true;waitRevision=revision;if(!ok)PlayerFeedback.ShowKey("feedback.slot_space");Finish();}
+        private void ResultRpc(ulong request,bool ok,uint revision){if(pending!=request)return;acknowledged=true;waitRevision=revision;if(!ok)PlayerFeedback.ShowKey("feedback.slot_space");else AudioRuntime.Play(Sound.Place);Finish();}
         private void Update(){if(acknowledged)Finish();}
         private void Finish(){if(bag.Revision.Value>=waitRevision){pending=0;acknowledged=false;}}
         public bool ExecutePlace(uint revision,int slot,Vector2 position)
@@ -41,7 +41,7 @@ namespace Wildfolk
                     placed=NetworkCreatureWorld.Active.Create(definition.Prefab,position,placement.RotationFor(definition));placed.CreatorId=bag.Player.ProfileId;placed.PlayerBuilt=true;
                     Physics2D.SyncTransforms();return NetworkCreatureWorld.Active.SpawnPendingNow(placed.GetComponent<NetworkObject>());
                 });
-                if(!committed && placed!=null)PrefabPool.Release(placed.gameObject);if(committed)EconomyTelemetry.Record(this,"builds");return committed;
+                if(!committed && placed!=null)PrefabPool.Release(placed.gameObject);if(committed){EconomyTelemetry.Record(this,"builds");AudioRuntime.Play(Sound.Place,position);}return committed;
             }
             catch(System.Exception error){if(placed!=null)PrefabPool.Release(placed.gameObject);Debug.LogError("Building transaction failed: "+error.GetType().Name);return false;}
         }

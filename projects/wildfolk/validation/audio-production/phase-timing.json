@@ -1,0 +1,46 @@
+{
+  "Phases": [
+    {
+      "Phase": "Fetch/canonical review",
+      "StartUTC": "2026-10-29T04:56:51+00:00",
+      "EndUTC": "2026-10-29T04:58:43+00:00",
+      "WallSeconds": 112.0,
+      "ToolWaitIncluded": true,
+      "PerOperationTokens": null
+    },
+    {
+      "Phase": "Runtime integration/relevant source review",
+      "StartUTC": "2026-10-29T04:58:43+00:00",
+      "EndUTC": "2026-10-29T05:23:29+00:00",
+      "WallSeconds": 1486.0,
+      "ToolWaitIncluded": true,
+      "PerOperationTokens": null
+    },
+    {
+      "Phase": "Native authoring/focused gameplay/LAN QA",
+      "StartUTC": "2026-10-29T05:23:29+00:00",
+      "EndUTC": "2026-10-29T06:19:31.654577+00:00",
+      "WallSeconds": 3362.654577,
+      "ToolWaitIncluded": true,
+      "PerOperationTokens": null
+    },
+    {
+      "Phase": "Real30minute soak plus parallel regression/docs/Android",
+      "StartUTC": "2026-10-29T06:19:31.654577+00:00",
+      "EndUTC": "2026-10-29T06:49:31.676618+00:00",
+      "WallSeconds": 1800.022041,
+      "ToolWaitIncluded": true,
+      "PerOperationTokens": null
+    },
+    {
+      "Phase": "Baseline comparison/final related QA/live sync/docs",
+      "StartUTC": "2026-10-29T06:49:31.676618+00:00",
+      "EndUTC": "2026-10-29T07:18:35.250214+00:00",
+      "WallSeconds": 1743.573596,
+      "ToolWaitIncluded": true,
+      "PerOperationTokens": null
+    }
+  ],
+  "ParallelTimeDoubleCounted": false,
+  "GitClosure": "Measured after commit/push; see external final-run-record.json and final response"
+}

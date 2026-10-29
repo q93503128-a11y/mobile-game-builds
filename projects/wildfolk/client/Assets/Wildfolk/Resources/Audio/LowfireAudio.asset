@@ -1,0 +1,687 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0cda19f91d852f48119d82e4227af84, type: 3}
+  m_Name: LowfireAudio
+  m_EditorClassIdentifier: Wildfolk.Runtime::Wildfolk.AudioBank
+  Mixer: {fileID: 24100000, guid: 1aede255a4a31a7448e59e64a17decbb, type: 2}
+  Music: {fileID: -2720948335009526646, guid: 1aede255a4a31a7448e59e64a17decbb, type: 2}
+  Sfx: {fileID: 951354562053068173, guid: 1aede255a4a31a7448e59e64a17decbb, type: 2}
+  UI: {fileID: -6488122708258866860, guid: 1aede255a4a31a7448e59e64a17decbb, type: 2}
+  Ambience: {fileID: 2743271019187337606, guid: 1aede255a4a31a7448e59e64a17decbb, type: 2}
+  MusicBeds:
+  - {fileID: 8300000, guid: 9b0910626efdaab47855a88529950c5a, type: 3}
+  - {fileID: 8300000, guid: 5b7a485d7f8943142934db42b882061b, type: 3}
+  - {fileID: 8300000, guid: d400de2ecc3628141b52cdfcbe966df1, type: 3}
+  - {fileID: 8300000, guid: 8136a8182c984e14f84fce8c2d2c841d, type: 3}
+  - {fileID: 8300000, guid: 8136a8182c984e14f84fce8c2d2c841d, type: 3}
+  - {fileID: 8300000, guid: b8479f3ea5c0ee8429850b60cc21ccca, type: 3}
+  - {fileID: 8300000, guid: fe48e65a5b2f23e4eae6015727cbf47e, type: 3}
+  EnvironmentBeds:
+  - {fileID: 8300000, guid: cc8769bdb40864740862acf1be8b3d30, type: 3}
+  - {fileID: 8300000, guid: cc8769bdb40864740862acf1be8b3d30, type: 3}
+  - {fileID: 8300000, guid: 896ea1cfca1ae044ebd0074ac2a5d51d, type: 3}
+  - {fileID: 8300000, guid: cc5ada6ea882556458880fecda8e7430, type: 3}
+  - {fileID: 8300000, guid: da289eaf60f4247478d021b825aa3afa, type: 3}
+  - {fileID: 8300000, guid: 3144b464e534c6041bcce0077aca6933, type: 3}
+  - {fileID: 8300000, guid: 3144b464e534c6041bcce0077aca6933, type: 3}
+  Fire: {fileID: 8300000, guid: 46831fec00945ac4d9df0b5201f9cd31, type: 3}
+  Sounds:
+  - Id: 0
+    Clips:
+    - {fileID: 8300000, guid: 56c901c55484d48409bc019256f12025, type: 3}
+    Category: 0
+    Gain: 0.5
+    Cooldown: 0.09
+    Range: 22
+    Priority: 20
+  - Id: 1
+    Clips:
+    - {fileID: 8300000, guid: 2c8f118f4d3f05548a513c703fd74c89, type: 3}
+    Category: 0
+    Gain: 0.5
+    Cooldown: 0.09
+    Range: 22
+    Priority: 20
+  - Id: 2
+    Clips:
+    - {fileID: 8300000, guid: 0da0ba46d084a3d4facf4de3f710d252, type: 3}
+    Category: 0
+    Gain: 0.5
+    Cooldown: 0.09
+    Range: 22
+    Priority: 20
+  - Id: 3
+    Clips:
+    - {fileID: 8300000, guid: 5a86b9f9021b34945b0014b313c7dbde, type: 3}
+    Category: 0
+    Gain: 0.5
+    Cooldown: 0.09
+    Range: 22
+    Priority: 20
+  - Id: 4
+    Clips:
+    - {fileID: 8300000, guid: bb5747b30b17b7d4b81d18c024d53986, type: 3}
+    Category: 0
+    Gain: 0.5
+    Cooldown: 0.09
+    Range: 22
+    Priority: 20
+  - Id: 5
+    Clips:
+    - {fileID: 8300000, guid: 2e3dd5d0d5a0d14419a0658ccc9f9c1c, type: 3}
+    Category: 0
+    Gain: 0.5
+    Cooldown: 0.09
+    Range: 22
+    Priority: 20
+  - Id: 6
+    Clips:
+    - {fileID: 8300000, guid: fc4fc27826a86f546ae3c36c7128b66f, type: 3}
+    Category: 0
+    Gain: 0.5
+    Cooldown: 0.09
+    Range: 22
+    Priority: 20
+  - Id: 7
+    Clips:
+    - {fileID: 8300000, guid: 417df376af40340489b78a076b8cc7f0, type: 3}
+    Category: 0
+    Gain: 0.5
+    Cooldown: 0.09
+    Range: 22
+    Priority: 20
+  - Id: 8
+    Clips:
+    - {fileID: 8300000, guid: fc4fc27826a86f546ae3c36c7128b66f, type: 3}
+    Category: 0
+    Gain: 0.5
+    Cooldown: 0.09
+    Range: 22
+    Priority: 20
+  - Id: 9
+    Clips:
+    - {fileID: 8300000, guid: 4e342f03cae57aa4fb2841d12f757bcb, type: 3}
+    - {fileID: 8300000, guid: 27175887b9a9e234f858d69ac1625304, type: 3}
+    - {fileID: 8300000, guid: fae3cb733e04e30469b8c338457834d1, type: 3}
+    Category: 0
+    Gain: 0.5
+    Cooldown: 0.09
+    Range: 22
+    Priority: 20
+  - Id: 10
+    Clips:
+    - {fileID: 8300000, guid: 47bd7e2ac2374ff45a6c65a20031d4ce, type: 3}
+    Category: 0
+    Gain: 0.5
+    Cooldown: 0.09
+    Range: 22
+    Priority: 20
+  - Id: 11
+    Clips:
+    - {fileID: 8300000, guid: 9ca1892481c68c04aacee6d9ac7a8501, type: 3}
+    Category: 0
+    Gain: 0.5
+    Cooldown: 0.09
+    Range: 22
+    Priority: 20
+  - Id: 12
+    Clips:
+    - {fileID: 8300000, guid: 0985e380e37305d4c80277350a3b4d18, type: 3}
+    Category: 0
+    Gain: 0.5
+    Cooldown: 0.09
+    Range: 22
+    Priority: 20
+  - Id: 13
+    Clips:
+    - {fileID: 8300000, guid: bd85227014876fc46bc5152bd716dc13, type: 3}
+    Category: 1
+    Gain: 0.65
+    Cooldown: 0.045
+    Range: 22
+    Priority: 80
+  - Id: 14
+    Clips:
+    - {fileID: 8300000, guid: 510a7125dcc231c42b86fe5c65c037e4, type: 3}
+    Category: 1
+    Gain: 0.65
+    Cooldown: 0.045
+    Range: 22
+    Priority: 80
+  - Id: 15
+    Clips:
+    - {fileID: 8300000, guid: 0985e380e37305d4c80277350a3b4d18, type: 3}
+    Category: 1
+    Gain: 0.65
+    Cooldown: 0.045
+    Range: 22
+    Priority: 80
+  - Id: 16
+    Clips:
+    - {fileID: 8300000, guid: 7a9ce0f872c50cc4c969bedae69c88b2, type: 3}
+    - {fileID: 8300000, guid: 51f279a72f5ee2f44ac9c1f10b858921, type: 3}
+    - {fileID: 8300000, guid: 33107844757f4d245995d12c0d640419, type: 3}
+    Category: 1
+    Gain: 0.65
+    Cooldown: 0.045
+    Range: 22
+    Priority: 80
+  - Id: 17
+    Clips:
+    - {fileID: 8300000, guid: 417df376af40340489b78a076b8cc7f0, type: 3}
+    Category: 1
+    Gain: 0.65
+    Cooldown: 0.045
+    Range: 22
+    Priority: 80
+  - Id: 18
+    Clips:
+    - {fileID: 8300000, guid: bd85227014876fc46bc5152bd716dc13, type: 3}
+    Category: 1
+    Gain: 0.65
+    Cooldown: 0.045
+    Range: 22
+    Priority: 80
+  - Id: 19
+    Clips:
+    - {fileID: 8300000, guid: 7a9ce0f872c50cc4c969bedae69c88b2, type: 3}
+    - {fileID: 8300000, guid: 51f279a72f5ee2f44ac9c1f10b858921, type: 3}
+    - {fileID: 8300000, guid: 33107844757f4d245995d12c0d640419, type: 3}
+    Category: 1
+    Gain: 0.65
+    Cooldown: 0.045
+    Range: 22
+    Priority: 80
+  - Id: 20
+    Clips:
+    - {fileID: 8300000, guid: b566081cd9eddc64ab1c91f152341034, type: 3}
+    Category: 1
+    Gain: 0.65
+    Cooldown: 0.045
+    Range: 22
+    Priority: 80
+  - Id: 21
+    Clips:
+    - {fileID: 8300000, guid: fcb7804eb84c9cd45aa18c18d4cd10c8, type: 3}
+    Category: 1
+    Gain: 0.65
+    Cooldown: 0.045
+    Range: 22
+    Priority: 80
+  - Id: 22
+    Clips:
+    - {fileID: 8300000, guid: 302c712a8ed02d24f90b2f57accb175f, type: 3}
+    Category: 1
+    Gain: 0.65
+    Cooldown: 0.045
+    Range: 22
+    Priority: 80
+  - Id: 23
+    Clips:
+    - {fileID: 8300000, guid: 984aa3b6a5d977d4b85283054e29bc96, type: 3}
+    Category: 1
+    Gain: 0.65
+    Cooldown: 0.045
+    Range: 22
+    Priority: 80
+  - Id: 24
+    Clips:
+    - {fileID: 8300000, guid: b199d009a720611468ef857c7516ddb0, type: 3}
+    Category: 1
+    Gain: 0.65
+    Cooldown: 0.045
+    Range: 22
+    Priority: 80
+  - Id: 25
+    Clips:
+    - {fileID: 8300000, guid: 96d6a5ef098428f488c5dd222fff7046, type: 3}
+    Category: 1
+    Gain: 0.65
+    Cooldown: 0.045
+    Range: 22
+    Priority: 80
+  - Id: 26
+    Clips:
+    - {fileID: 8300000, guid: 33ee498f8a3c21140b7fc175c33fff45, type: 3}
+    Category: 1
+    Gain: 0.65
+    Cooldown: 0.045
+    Range: 22
+    Priority: 80
+  - Id: 27
+    Clips:
+    - {fileID: 8300000, guid: 77d8984caf4223b489d8f3a4566e787c, type: 3}
+    Category: 1
+    Gain: 0.65
+    Cooldown: 0.045
+    Range: 22
+    Priority: 80
+  - Id: 28
+    Clips:
+    - {fileID: 8300000, guid: ed955b48c40aef44587fc869c1dde5c7, type: 3}
+    Category: 1
+    Gain: 0.65
+    Cooldown: 0.045
+    Range: 22
+    Priority: 80
+  - Id: 29
+    Clips:
+    - {fileID: 8300000, guid: fa6603c892dbca54ebfd56842fa39b46, type: 3}
+    Category: 1
+    Gain: 0.65
+    Cooldown: 0.045
+    Range: 22
+    Priority: 80
+  - Id: 30
+    Clips:
+    - {fileID: 8300000, guid: f47975d728d17f3498ea5d603ab1e920, type: 3}
+    - {fileID: 8300000, guid: 438853f34e017884294470512e17ebcc, type: 3}
+    - {fileID: 8300000, guid: 252c3d1ba84705046a44bba0b06a65a4, type: 3}
+    Category: 1
+    Gain: 0.65
+    Cooldown: 0.045
+    Range: 22
+    Priority: 80
+  - Id: 31
+    Clips:
+    - {fileID: 8300000, guid: fc4fc27826a86f546ae3c36c7128b66f, type: 3}
+    Category: 4
+    Gain: 0.85
+    Cooldown: 0.12
+    Range: 38
+    Priority: 16
+  - Id: 32
+    Clips:
+    - {fileID: 8300000, guid: 1363a3fa0cd12cc4eb116f2224a4080a, type: 3}
+    - {fileID: 8300000, guid: 309157d929c67cf468f88397382f7cc0, type: 3}
+    Category: 4
+    Gain: 0.85
+    Cooldown: 0.12
+    Range: 38
+    Priority: 16
+  - Id: 33
+    Clips:
+    - {fileID: 8300000, guid: b969dbd18a838b0419702752c32cc09f, type: 3}
+    - {fileID: 8300000, guid: 6eb0bc7b702d9a74389ce2b7c9931d95, type: 3}
+    - {fileID: 8300000, guid: 2cf8ebac68e7c6f46ba3c1bc7390a26e, type: 3}
+    Category: 4
+    Gain: 0.85
+    Cooldown: 0.12
+    Range: 38
+    Priority: 16
+  - Id: 34
+    Clips:
+    - {fileID: 8300000, guid: 1363a3fa0cd12cc4eb116f2224a4080a, type: 3}
+    - {fileID: 8300000, guid: 309157d929c67cf468f88397382f7cc0, type: 3}
+    Category: 4
+    Gain: 0.85
+    Cooldown: 0.12
+    Range: 38
+    Priority: 16
+  - Id: 35
+    Clips:
+    - {fileID: 8300000, guid: 9f90c5b3777211b4bab5eb164ccfb1f4, type: 3}
+    - {fileID: 8300000, guid: 59de5ca5953f21d4b8ee11ae628698ed, type: 3}
+    - {fileID: 8300000, guid: 28a6167165ca01944abcf9121a14b89a, type: 3}
+    - {fileID: 8300000, guid: f75a91f35f46b81409e244f70ebb206a, type: 3}
+    Category: 3
+    Gain: 0.7
+    Cooldown: 0.055
+    Range: 11
+    Priority: 180
+  - Id: 36
+    Clips:
+    - {fileID: 8300000, guid: 91efd1b73a93f754c9a5ab36a7d34a32, type: 3}
+    - {fileID: 8300000, guid: 7d42c50b8f8766449b3a747283ec48d4, type: 3}
+    - {fileID: 8300000, guid: efc61f6493714f34bb9d8d0903df9dfe, type: 3}
+    - {fileID: 8300000, guid: 15c46265ed39f2846b8cda2b44407971, type: 3}
+    Category: 3
+    Gain: 0.7
+    Cooldown: 0.055
+    Range: 11
+    Priority: 180
+  - Id: 37
+    Clips:
+    - {fileID: 8300000, guid: f47975d728d17f3498ea5d603ab1e920, type: 3}
+    - {fileID: 8300000, guid: 438853f34e017884294470512e17ebcc, type: 3}
+    - {fileID: 8300000, guid: 252c3d1ba84705046a44bba0b06a65a4, type: 3}
+    Category: 1
+    Gain: 0.65
+    Cooldown: 0.045
+    Range: 22
+    Priority: 80
+  - Id: 38
+    Clips:
+    - {fileID: 8300000, guid: 6b7fcb3be3585b745880bdc1cee33b7b, type: 3}
+    - {fileID: 8300000, guid: 926696166cf70d34f93b4f44cfb89e29, type: 3}
+    Category: 1
+    Gain: 0.65
+    Cooldown: 0.045
+    Range: 22
+    Priority: 80
+  - Id: 39
+    Clips:
+    - {fileID: 8300000, guid: 720d13ff05bd8334b9962ab6f1d12a4a, type: 3}
+    Category: 1
+    Gain: 0.65
+    Cooldown: 0.045
+    Range: 22
+    Priority: 80
+  - Id: 40
+    Clips:
+    - {fileID: 8300000, guid: 0fd5e61870aac384d9da05632fe646db, type: 3}
+    Category: 1
+    Gain: 0.65
+    Cooldown: 0.045
+    Range: 22
+    Priority: 80
+  - Id: 41
+    Clips:
+    - {fileID: 8300000, guid: ff99db94ae01698468e416b92603f713, type: 3}
+    Category: 1
+    Gain: 0.65
+    Cooldown: 0.045
+    Range: 22
+    Priority: 80
+  - Id: 42
+    Clips:
+    - {fileID: 8300000, guid: 256471a30079edb49b2a99ef54b0516a, type: 3}
+    - {fileID: 8300000, guid: 99e7a2b71b4b9504ab023e51254ba0cf, type: 3}
+    - {fileID: 8300000, guid: cd6a023afe433b74da26f170ffc88cd8, type: 3}
+    Category: 1
+    Gain: 0.65
+    Cooldown: 0.045
+    Range: 22
+    Priority: 80
+  - Id: 43
+    Clips:
+    - {fileID: 8300000, guid: 4e342f03cae57aa4fb2841d12f757bcb, type: 3}
+    - {fileID: 8300000, guid: 27175887b9a9e234f858d69ac1625304, type: 3}
+    - {fileID: 8300000, guid: fae3cb733e04e30469b8c338457834d1, type: 3}
+    Category: 1
+    Gain: 0.65
+    Cooldown: 0.045
+    Range: 22
+    Priority: 80
+  - Id: 44
+    Clips:
+    - {fileID: 8300000, guid: 7a9ce0f872c50cc4c969bedae69c88b2, type: 3}
+    - {fileID: 8300000, guid: 51f279a72f5ee2f44ac9c1f10b858921, type: 3}
+    - {fileID: 8300000, guid: 33107844757f4d245995d12c0d640419, type: 3}
+    Category: 1
+    Gain: 0.65
+    Cooldown: 0.045
+    Range: 22
+    Priority: 80
+  - Id: 45
+    Clips:
+    - {fileID: 8300000, guid: 256471a30079edb49b2a99ef54b0516a, type: 3}
+    - {fileID: 8300000, guid: 99e7a2b71b4b9504ab023e51254ba0cf, type: 3}
+    - {fileID: 8300000, guid: cd6a023afe433b74da26f170ffc88cd8, type: 3}
+    Category: 1
+    Gain: 0.65
+    Cooldown: 0.045
+    Range: 22
+    Priority: 80
+  - Id: 46
+    Clips:
+    - {fileID: 8300000, guid: 256471a30079edb49b2a99ef54b0516a, type: 3}
+    - {fileID: 8300000, guid: 99e7a2b71b4b9504ab023e51254ba0cf, type: 3}
+    - {fileID: 8300000, guid: cd6a023afe433b74da26f170ffc88cd8, type: 3}
+    Category: 1
+    Gain: 0.65
+    Cooldown: 0.045
+    Range: 22
+    Priority: 80
+  - Id: 47
+    Clips:
+    - {fileID: 8300000, guid: 7b7c1954a3f4e314f9573c8c53da4573, type: 3}
+    - {fileID: 8300000, guid: e4f0907861d2f2c4c8d52aec684742d9, type: 3}
+    - {fileID: 8300000, guid: 631c3ce384afdca4f9d82de0ff76da20, type: 3}
+    Category: 1
+    Gain: 0.65
+    Cooldown: 0.045
+    Range: 22
+    Priority: 80
+  - Id: 48
+    Clips:
+    - {fileID: 8300000, guid: be52bbcabb44489438c327b827d40c85, type: 3}
+    - {fileID: 8300000, guid: 010967d6cdb2a79449c39f1ff0359d13, type: 3}
+    Category: 1
+    Gain: 0.65
+    Cooldown: 0.045
+    Range: 22
+    Priority: 80
+  - Id: 49
+    Clips:
+    - {fileID: 8300000, guid: 8e455e024aa2ce04d827dec0de30f219, type: 3}
+    - {fileID: 8300000, guid: eb763981598df24438ad1277ff51766c, type: 3}
+    - {fileID: 8300000, guid: 022c45815b2a5574a8eb01727937498a, type: 3}
+    Category: 1
+    Gain: 0.65
+    Cooldown: 0.045
+    Range: 22
+    Priority: 80
+  - Id: 50
+    Clips:
+    - {fileID: 8300000, guid: b969dbd18a838b0419702752c32cc09f, type: 3}
+    - {fileID: 8300000, guid: 6eb0bc7b702d9a74389ce2b7c9931d95, type: 3}
+    - {fileID: 8300000, guid: 2cf8ebac68e7c6f46ba3c1bc7390a26e, type: 3}
+    Category: 1
+    Gain: 0.65
+    Cooldown: 0.045
+    Range: 22
+    Priority: 80
+  - Id: 51
+    Clips:
+    - {fileID: 8300000, guid: d6f35d5c5d289aa4387e35902de09ddc, type: 3}
+    - {fileID: 8300000, guid: 048c6aa2e1fb8c242a293175a8588ae4, type: 3}
+    - {fileID: 8300000, guid: 9ce32e0014bfea84f8b9ce4dc60132a2, type: 3}
+    Category: 1
+    Gain: 0.65
+    Cooldown: 0.045
+    Range: 22
+    Priority: 80
+  - Id: 52
+    Clips:
+    - {fileID: 8300000, guid: 08fe49ca049431a44ae5ad55ab99cb19, type: 3}
+    - {fileID: 8300000, guid: e7aa2af97ef42e9418f6d64aff00838b, type: 3}
+    - {fileID: 8300000, guid: 7ccc60b2dbc57cc4bb488a777f4907c7, type: 3}
+    Category: 1
+    Gain: 0.65
+    Cooldown: 0.045
+    Range: 22
+    Priority: 80
+  - Id: 53
+    Clips:
+    - {fileID: 8300000, guid: 1363a3fa0cd12cc4eb116f2224a4080a, type: 3}
+    - {fileID: 8300000, guid: 309157d929c67cf468f88397382f7cc0, type: 3}
+    Category: 1
+    Gain: 0.65
+    Cooldown: 0.045
+    Range: 22
+    Priority: 80
+  - Id: 54
+    Clips:
+    - {fileID: 8300000, guid: 071bff4502b71eb46ba0903e0dbbc66d, type: 3}
+    - {fileID: 8300000, guid: 46645858cabe5df4194e9d0e01b2f0fe, type: 3}
+    - {fileID: 8300000, guid: 7e8a495b8e3471f42b4f0baca05b22b9, type: 3}
+    Category: 2
+    Gain: 0.6
+    Cooldown: 0.35
+    Range: 18
+    Priority: 140
+  - Id: 55
+    Clips:
+    - {fileID: 8300000, guid: a602b210baf6275458414ad2c7bc9d34, type: 3}
+    - {fileID: 8300000, guid: ee808a9e08b2a3042b6530cdec53e70f, type: 3}
+    - {fileID: 8300000, guid: 80495353b1543a749bc818ad80405d06, type: 3}
+    Category: 2
+    Gain: 0.6
+    Cooldown: 0.35
+    Range: 18
+    Priority: 140
+  - Id: 56
+    Clips:
+    - {fileID: 8300000, guid: eecda4732b47b3343850c8937a1726a9, type: 3}
+    - {fileID: 8300000, guid: 6ce71c426f4eb604eb149ef5fdbcf80e, type: 3}
+    - {fileID: 8300000, guid: 8f97d791b5e6ecd4c8c5bb58058b2d23, type: 3}
+    Category: 2
+    Gain: 0.6
+    Cooldown: 0.35
+    Range: 18
+    Priority: 140
+  - Id: 57
+    Clips:
+    - {fileID: 8300000, guid: 23f29c80258e6af4498247a9f3eb2390, type: 3}
+    Category: 2
+    Gain: 0.6
+    Cooldown: 0.35
+    Range: 18
+    Priority: 140
+  - Id: 58
+    Clips:
+    - {fileID: 8300000, guid: 06e2966ab960a094bb955a6ddf63adfd, type: 3}
+    Category: 2
+    Gain: 0.6
+    Cooldown: 0.35
+    Range: 18
+    Priority: 140
+  - Id: 59
+    Clips:
+    - {fileID: 8300000, guid: 7755b623e74a9bf41bba8a3cf553a164, type: 3}
+    - {fileID: 8300000, guid: a6db1bf0eebe17347b8e4ea0a6dd172a, type: 3}
+    Category: 2
+    Gain: 0.6
+    Cooldown: 0.35
+    Range: 18
+    Priority: 140
+  - Id: 60
+    Clips:
+    - {fileID: 8300000, guid: c1240099cc751fd4aac07f124f370bc3, type: 3}
+    - {fileID: 8300000, guid: 2623f1ca76bb8274ca8ea9bcedee1f74, type: 3}
+    - {fileID: 8300000, guid: c4d3b8413e435a2488686e49ec5bfaa5, type: 3}
+    Category: 2
+    Gain: 0.6
+    Cooldown: 0.35
+    Range: 18
+    Priority: 140
+  - Id: 61
+    Clips:
+    - {fileID: 8300000, guid: 6eff988df0b39bb4e84a752b9688ae33, type: 3}
+    Category: 2
+    Gain: 0.6
+    Cooldown: 8
+    Range: 18
+    Priority: 140
+  - Id: 62
+    Clips:
+    - {fileID: 8300000, guid: 4fcef6ddde45aac42be3a9f233a34414, type: 3}
+    Category: 4
+    Gain: 0.85
+    Cooldown: 0.12
+    Range: 38
+    Priority: 8
+  - Id: 63
+    Clips:
+    - {fileID: 8300000, guid: 47bd7e2ac2374ff45a6c65a20031d4ce, type: 3}
+    Category: 4
+    Gain: 0.85
+    Cooldown: 0.12
+    Range: 38
+    Priority: 8
+  - Id: 64
+    Clips:
+    - {fileID: 8300000, guid: 720d13ff05bd8334b9962ab6f1d12a4a, type: 3}
+    Category: 4
+    Gain: 0.85
+    Cooldown: 0.12
+    Range: 38
+    Priority: 8
+  - Id: 65
+    Clips:
+    - {fileID: 8300000, guid: 417df376af40340489b78a076b8cc7f0, type: 3}
+    Category: 4
+    Gain: 0.85
+    Cooldown: 0.12
+    Range: 38
+    Priority: 8
+  - Id: 66
+    Clips:
+    - {fileID: 8300000, guid: 4fcef6ddde45aac42be3a9f233a34414, type: 3}
+    Category: 4
+    Gain: 0.85
+    Cooldown: 0.12
+    Range: 38
+    Priority: 8
+  - Id: 67
+    Clips:
+    - {fileID: 8300000, guid: 91b1566c88fdcb840afe2df92d721195, type: 3}
+    - {fileID: 8300000, guid: 9e887610f739b6047a1b7d2827b23c8a, type: 3}
+    Category: 4
+    Gain: 0.85
+    Cooldown: 0.12
+    Range: 38
+    Priority: 8
+  - Id: 68
+    Clips:
+    - {fileID: 8300000, guid: 7a9ce0f872c50cc4c969bedae69c88b2, type: 3}
+    - {fileID: 8300000, guid: 51f279a72f5ee2f44ac9c1f10b858921, type: 3}
+    - {fileID: 8300000, guid: 33107844757f4d245995d12c0d640419, type: 3}
+    Category: 4
+    Gain: 0.85
+    Cooldown: 0.12
+    Range: 38
+    Priority: 8
+  - Id: 69
+    Clips:
+    - {fileID: 8300000, guid: 91b1566c88fdcb840afe2df92d721195, type: 3}
+    - {fileID: 8300000, guid: 9e887610f739b6047a1b7d2827b23c8a, type: 3}
+    Category: 4
+    Gain: 0.85
+    Cooldown: 0.12
+    Range: 38
+    Priority: 8
+  - Id: 70
+    Clips:
+    - {fileID: 8300000, guid: 36c9c5a48859fa74c8c6fdfe11c39fbb, type: 3}
+    Category: 4
+    Gain: 0.85
+    Cooldown: 0.12
+    Range: 38
+    Priority: 8
+  - Id: 71
+    Clips:
+    - {fileID: 8300000, guid: d6f35d5c5d289aa4387e35902de09ddc, type: 3}
+    - {fileID: 8300000, guid: 048c6aa2e1fb8c242a293175a8588ae4, type: 3}
+    - {fileID: 8300000, guid: 9ce32e0014bfea84f8b9ce4dc60132a2, type: 3}
+    Category: 4
+    Gain: 0.85
+    Cooldown: 0.12
+    Range: 38
+    Priority: 8
+  - Id: 72
+    Clips:
+    - {fileID: 8300000, guid: 4fcef6ddde45aac42be3a9f233a34414, type: 3}
+    Category: 4
+    Gain: 0.85
+    Cooldown: 0.12
+    Range: 38
+    Priority: 8
+  - Id: 73
+    Clips:
+    - {fileID: 8300000, guid: 0024ed2dd489ab045a0ed4b3db8c37a7, type: 3}
+    Category: 0
+    Gain: 0.5
+    Cooldown: 0.09
+    Range: 22
+    Priority: 20

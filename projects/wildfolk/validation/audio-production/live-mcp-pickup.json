@@ -1,0 +1,21 @@
+{
+  "jsonrpc": "2.0",
+  "id": 3,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"success\":true,\"message\":\"Code executed successfully.\",\"data\":{\"result\":\"actualWoodPickup=4|isolated=True\",\"compiler\":\"codedom\"}}"
+      }
+    ],
+    "structuredContent": {
+      "success": true,
+      "message": "Code executed successfully.",
+      "data": {
+        "result": "actualWoodPickup=4|isolated=True",
+        "compiler": "codedom"
+      }
+    },
+    "isError": false
+  }
+}

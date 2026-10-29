@@ -14,7 +14,7 @@ namespace Wildfolk
         {var t=Rect("Text",parent,point,size).gameObject.AddComponent<Text>();t.font=font;t.fontSize=pixels;t.text=text;t.color=new Color32(231,226,202,255);t.alignment=TextAnchor.MiddleCenter;t.raycastTarget=false;t.horizontalOverflow=HorizontalWrapMode.Wrap;return t;}
         private Text Localized(Transform parent,Vector2 point,Vector2 size,string key,int pixels=24){var t=Label(parent,point,size,L.Text(key),pixels);var label=t.gameObject.AddComponent<LocalizedLabel>();label.Key=key;label.Refresh();return t;}
         private Button Button(Transform parent,Vector2 point,Vector2 size,string text,UnityEngine.Events.UnityAction action)
-        {var r=Rect("Take action",parent,point,size);var i=r.gameObject.AddComponent<Image>();i.color=new Color32(67,82,62,255);var b=r.gameObject.AddComponent<Button>();b.targetGraphic=i;b.navigation=new Navigation{mode=Navigation.Mode.None};b.onClick.AddListener(action);Localized(r,Vector2.zero,size-Vector2.one*8,text,22);return b;}
+        {var r=Rect("Take action",parent,point,size);var i=r.gameObject.AddComponent<Image>();i.color=new Color32(67,82,62,255);var b=AudioButton.Add(r.gameObject);b.targetGraphic=i;b.navigation=new Navigation{mode=Navigation.Mode.None};b.onClick.AddListener(action);Localized(r,Vector2.zero,size-Vector2.one*8,text,22);return b;}
         public static void Open(IWorldSupplies target,PlayerInventory visitor)
         {
             CloseFocused();var canvas=visitor.GetComponentInParent<Canvas>();if(canvas==null)canvas=Object.FindFirstObjectByType<Canvas>();if(canvas==null)return;

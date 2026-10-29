@@ -76,7 +76,7 @@ namespace Wildfolk
             Model.Restore(food,GetComponent<PlayerClass>()?.NutritionMultiplier??1);Health.Heal(food.HealthRestore);if(food.StaminaRestore>0)stamina.Restore(Mathf.Min(stamina.Maximum,stamina.Current+food.StaminaRestore),stamina.RecoveryWait);
             if(food.GradualHealthRestore>0){Treatment.Begin(food.GradualHealthRestore,food.HealingDuration);TreatmentChanged?.Invoke();}
             if(food.Meal!=null){Meal.Begin(consumedItem,GetComponent<PlayerClass>()?.MealDurationMultiplier??1);GetComponent<CharacterStats>().Apply();MealChanged?.Invoke();}
-            UseReadyAt=Time.time+food.UseCooldownSeconds;return true;
+            UseReadyAt=Time.time+food.UseCooldownSeconds;PlayerActionAudio.Committed(this,consumedItem.Container!=null?ConfirmedPlayerAction.Drink:food.GradualHealthRestore>0?ConfirmedPlayerAction.Treatment:ConfirmedPlayerAction.Food);return true;
         }
     }
 }

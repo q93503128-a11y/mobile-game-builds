@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="1" result="Passed" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-29 06:58:34Z" end-time="2026-10-29 06:58:40Z" duration="5.954768">
+  <test-suite type="TestSuite" id="1276" name="Wildfolk" fullname="Wildfolk" runstate="Runnable" testcasecount="223" result="Passed" start-time="2026-10-29 06:58:34Z" end-time="2026-10-29 06:58:40Z" duration="5.954768" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <test-suite type="Assembly" id="1273" name="Wildfolk.Tests.PlayMode.dll" fullname="C:/UnityProjects/LowfireAndroidQa/tests/artifacts/unity/Library/ScriptAssemblies/Wildfolk.Tests.PlayMode.dll" runstate="Runnable" testcasecount="223" result="Passed" start-time="2026-10-29 06:58:34Z" end-time="2026-10-29 06:58:40Z" duration="5.941478" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="13840" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <test-suite type="TestSuite" id="1274" name="Wildfolk" fullname="Wildfolk" runstate="Runnable" testcasecount="223" result="Passed" start-time="2026-10-29 06:58:34Z" end-time="2026-10-29 06:58:40Z" duration="5.937415" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1275" name="Tests" fullname="Wildfolk.Tests" runstate="Runnable" testcasecount="223" result="Passed" start-time="2026-10-29 06:58:34Z" end-time="2026-10-29 06:58:40Z" duration="5.933848" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1142" name="NeedsCookingPlayTests" fullname="Wildfolk.Tests.NeedsCookingPlayTests" classname="Wildfolk.Tests.NeedsCookingPlayTests" runstate="Runnable" testcasecount="8" result="Passed" start-time="2026-10-29 06:58:34Z" end-time="2026-10-29 06:58:40Z" duration="5.924661" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1145" name="MultiplayerPauseBlocksLocalInputButContinuesWorldNeedsAndEnemy" fullname="Wildfolk.Tests.NeedsCookingPlayTests.MultiplayerPauseBlocksLocalInputButContinuesWorldNeedsAndEnemy" methodname="MultiplayerPauseBlocksLocalInputButContinuesWorldNeedsAndEnemy" classname="Wildfolk.Tests.NeedsCookingPlayTests" runstate="Runnable" seed="355513325" result="Passed" start-time="2026-10-29 06:58:34Z" end-time="2026-10-29 06:58:40Z" duration="5.902917" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[<b><color=#2EA3FF>MCP-FOR-UNITY</color></b>: [TestRunnerNoThrottle] Restored Interaction Mode after test run.
+Saving results to: C:/Users/User/AppData/LocalLow/DefaultCompany/Wildfolk\TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

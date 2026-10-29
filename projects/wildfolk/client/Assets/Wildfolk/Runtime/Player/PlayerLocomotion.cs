@@ -27,7 +27,7 @@ namespace Wildfolk
         {
             if(GetComponent<PlayerClass>()?.Guarding==true || !Motor.Session.IsRunning || !GetComponent<Health>().IsAlive || IsDashing || Time.time<nextDash || !Stamina.Spend(Definition.DashCost))return false;
             DashDirection=Motor.Input.Move.sqrMagnitude>.01f ? Motor.Input.Move.normalized : Motor.Avatar.Facing.Direction;
-            Motor.Combat.CancelAttack();Motor.Avatar.Facing.Face(DashDirection);Stamina.StopSprint();dashRemaining=Definition.DashDuration;nextDash=Time.time+Definition.DashCooldown;return true;
+            Motor.Combat.CancelAttack();Motor.Avatar.Facing.Face(DashDirection);Stamina.StopSprint();dashRemaining=Definition.DashDuration;nextDash=Time.time+Definition.DashCooldown;AudioRuntime.Play(Sound.Dash,transform.position);return true;
         }
         public void DashFromUI()=>TryDash();
         public bool MoveDash(float seconds)

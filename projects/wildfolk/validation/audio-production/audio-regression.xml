@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="40" result="Failed(Child)" total="40" passed="38" failed="2" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-29 05:51:12Z" end-time="2026-10-29 05:52:49Z" duration="97.1349286">
+  <test-suite type="TestSuite" id="1275" name="Wildfolk" fullname="Wildfolk" runstate="Runnable" testcasecount="222" result="Failed" site="Child" start-time="2026-10-29 05:51:12Z" end-time="2026-10-29 05:52:49Z" duration="97.134929" total="40" passed="38" failed="2" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <failure>
+      <message><![CDATA[One or more child tests had errors]]></message>
+    </failure>
+    <test-suite type="Assembly" id="1272" name="Wildfolk.Tests.PlayMode.dll" fullname="C:/UnityProjects/LowfireAndroidQa/tests/artifacts/unity/Library/ScriptAssemblies/Wildfolk.Tests.PlayMode.dll" runstate="Runnable" testcasecount="222" result="Failed" site="Child" start-time="2026-10-29 05:51:12Z" end-time="2026-10-29 05:52:49Z" duration="97.120044" total="40" passed="38" failed="2" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="12968" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <failure>
+        <message><![CDATA[One or more child tests had errors]]></message>
+      </failure>
+      <test-suite type="TestSuite" id="1273" name="Wildfolk" fullname="Wildfolk" runstate="Runnable" testcasecount="222" result="Failed" site="Child" start-time="2026-10-29 05:51:12Z" end-time="2026-10-29 05:52:49Z" duration="97.118550" total="40" passed="38" failed="2" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <failure>
+          <message><![CDATA[One or more child tests had errors]]></message>
+        </failure>
+        <test-suite type="TestSuite" id="1274" name="Tests" fullname="Wildfolk.Tests" runstate="Runnable" testcasecount="222" result="Failed" site="Child" start-time="2026-10-29 05:51:12Z" end-time="2026-10-29 05:52:49Z" duration="97.117595" total="40" passed="38" failed="2" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <failure>
+            <message><![CDATA[One or more child tests had errors]]></message>
+          </failure>
+          <test-suite type="TestFixture" id="1007" name="AudioPlayTests" fullname="Wildfolk.Tests.AudioPlayTests" classname="Wildfolk.Tests.AudioPlayTests" runstate="Runnable" testcasecount="6" result="Passed" start-time="2026-10-29 05:51:12Z" end-time="2026-10-29 05:51:31Z" duration="18.955588" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1010" name="ConfirmedReceiptCannotRepeatAndMuteDoesNotReplay" fullname="Wildfolk.Tests.AudioPlayTests.ConfirmedReceiptCannotRepeatAndMuteDoesNotReplay" methodname="ConfirmedReceiptCannotRepeatAndMuteDoesNotReplay" classname="Wildfolk.Tests.AudioPlayTests" runstate="Runnable" seed="1950633532" result="Passed" start-time="2026-10-29 05:51:12Z" end-time="2026-10-29 05:51:14Z" duration="1.370696" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1013" name="ExistingOwnerStateReceiptsDoNotReplayOnLoadOrSameSequence" fullname="Wildfolk.Tests.AudioPlayTests.ExistingOwnerStateReceiptsDoNotReplayOnLoadOrSameSequence" methodname="ExistingOwnerStateReceiptsDoNotReplayOnLoadOrSameSequence" classname="Wildfolk.Tests.AudioPlayTests" runstate="Runnable" seed="761014165" result="Passed" start-time="2026-10-29 05:51:14Z" end-time="2026-10-29 05:51:20Z" duration="6.060288" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1012" name="HarvestDamageIsOneMaterialEventAndColdSceneIsSilent" fullname="Wildfolk.Tests.AudioPlayTests.HarvestDamageIsOneMaterialEventAndColdSceneIsSilent" methodname="HarvestDamageIsOneMaterialEventAndColdSceneIsSilent" classname="Wildfolk.Tests.AudioPlayTests" runstate="Runnable" seed="1274963608" result="Passed" start-time="2026-10-29 05:51:20Z" end-time="2026-10-29 05:51:26Z" duration="6.379651" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1008" name="MuteAndSettingsDriveRealMixerAndAllSources" fullname="Wildfolk.Tests.AudioPlayTests.MuteAndSettingsDriveRealMixerAndAllSources" methodname="MuteAndSettingsDriveRealMixerAndAllSources" classname="Wildfolk.Tests.AudioPlayTests" runstate="Runnable" seed="776813242" result="Passed" start-time="2026-10-29 05:51:26Z" end-time="2026-10-29 05:51:27Z" duration="0.967582" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1011" name="NativeOverlaySuspendsAndFinallyRestoresAudioEvenOnFailure" fullname="Wildfolk.Tests.AudioPlayTests.NativeOverlaySuspendsAndFinallyRestoresAudioEvenOnFailure" methodname="NativeOverlaySuspendsAndFinallyRestoresAudioEvenOnFailure" classname="Wildfolk.Tests.AudioPlayTests" runstate="Runnable" seed="1295951573" result="Passed" start-time="2026-10-29 05:51:27Z" end-time="2026-10-29 05:51:28Z" duration="0.887345" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1009" name="SceneReloadKeepsOneOwnerAndBoundedSources" fullname="Wildfolk.Tests.AudioPlayTests.SceneReloadKeepsOneOwnerAndBoundedSources" methodname="SceneReloadKeepsOneOwnerAndBoundedSources" classname="Wildfolk.Tests.AudioPlayTests" runstate="Runnable" seed="1059872801" result="Passed" start-time="2026-10-29 05:51:28Z" end-time="2026-10-29 05:51:31Z" duration="3.260084" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1083" name="EconomyFoundationPlayTests" fullname="Wildfolk.Tests.EconomyFoundationPlayTests" classname="Wildfolk.Tests.EconomyFoundationPlayTests" runstate="Runnable" testcasecount="8" result="Passed" start-time="2026-10-29 05:51:31Z" end-time="2026-10-29 05:51:41Z" duration="10.180967" total="8" passed="8" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1087" name="ADelayedOldAccountReplyCannotMaterializeAfterSignout" fullname="Wildfolk.Tests.EconomyFoundationPlayTests.ADelayedOldAccountReplyCannotMaterializeAfterSignout" methodname="ADelayedOldAccountReplyCannotMaterializeAfterSignout" classname="Wildfolk.Tests.EconomyFoundationPlayTests" runstate="Runnable" seed="459035068" result="Passed" start-time="2026-10-29 05:51:31Z" end-time="2026-10-29 05:51:32Z" duration="1.152939" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1086" name="AuthoredJournalControlsClaimAndSeparateBoardsHaveClearEmptyState" fullname="Wildfolk.Tests.EconomyFoundationPlayTests.AuthoredJournalControlsClaimAndSeparateBoardsHaveClearEmptyState" methodname="AuthoredJournalControlsClaimAndSeparateBoardsHaveClearEmptyState" classname="Wildfolk.Tests.EconomyFoundationPlayTests" runstate="Runnable" seed="355820752" result="Passed" start-time="2026-10-29 05:51:32Z" end-time="2026-10-29 05:51:35Z" duration="2.777333" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1084" name="CanonicalOfflineEventsBatchOnceAndCachedGemCannotBeSpent" fullname="Wildfolk.Tests.EconomyFoundationPlayTests.CanonicalOfflineEventsBatchOnceAndCachedGemCannotBeSpent" methodname="CanonicalOfflineEventsBatchOnceAndCachedGemCannotBeSpent" classname="Wildfolk.Tests.EconomyFoundationPlayTests" runstate="Runnable" seed="341500440" result="Passed" start-time="2026-10-29 05:51:35Z" end-time="2026-10-29 05:51:36Z" duration="0.917402" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1089" name="DetailScrollReflowsAtPixelScaleAndLanguageChanges" fullname="Wildfolk.Tests.EconomyFoundationPlayTests.DetailScrollReflowsAtPixelScaleAndLanguageChanges" methodname="DetailScrollReflowsAtPixelScaleAndLanguageChanges" classname="Wildfolk.Tests.EconomyFoundationPlayTests" runstate="Runnable" seed="1426176166" result="Passed" start-time="2026-10-29 05:51:36Z" end-time="2026-10-29 05:51:37Z" duration="1.115755" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1088" name="DirtyClassMirrorKeepsAuthenticatedWalletOnlineButOfflineChoiceNeverReopensIt" fullname="Wildfolk.Tests.EconomyFoundationPlayTests.DirtyClassMirrorKeepsAuthenticatedWalletOnlineButOfflineChoiceNeverReopensIt" methodname="DirtyClassMirrorKeepsAuthenticatedWalletOnlineButOfflineChoiceNeverReopensIt" classname="Wildfolk.Tests.EconomyFoundationPlayTests" runstate="Runnable" seed="143973925" result="Passed" start-time="2026-10-29 05:51:37Z" end-time="2026-10-29 05:51:38Z" duration="1.147665" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1085" name="EngineerGrantComesFromServerProfileAndSurvivesEconomyRefresh" fullname="Wildfolk.Tests.EconomyFoundationPlayTests.EngineerGrantComesFromServerProfileAndSurvivesEconomyRefresh" methodname="EngineerGrantComesFromServerProfileAndSurvivesEconomyRefresh" classname="Wildfolk.Tests.EconomyFoundationPlayTests" runstate="Runnable" seed="16818243" result="Passed" start-time="2026-10-29 05:51:38Z" end-time="2026-10-29 05:51:39Z" duration="1.058982" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1090" name="InvalidAcknowledgementStopsAndRetainsTheOutbox" fullname="Wildfolk.Tests.EconomyFoundationPlayTests.InvalidAcknowledgementStopsAndRetainsTheOutbox" methodname="InvalidAcknowledgementStopsAndRetainsTheOutbox" classname="Wildfolk.Tests.EconomyFoundationPlayTests" runstate="Runnable" seed="1396757737" result="Passed" start-time="2026-10-29 05:51:39Z" end-time="2026-10-29 05:51:40Z" duration="0.978802" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1091" name="ProgressCreatedDuringRequestWaitsForTheNextFlush" fullname="Wildfolk.Tests.EconomyFoundationPlayTests.ProgressCreatedDuringRequestWaitsForTheNextFlush" methodname="ProgressCreatedDuringRequestWaitsForTheNextFlush" classname="Wildfolk.Tests.EconomyFoundationPlayTests" runstate="Runnable" seed="1050530611" result="Passed" start-time="2026-10-29 05:51:40Z" end-time="2026-10-29 05:51:41Z" duration="1.021275" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1141" name="NeedsCookingPlayTests" fullname="Wildfolk.Tests.NeedsCookingPlayTests" classname="Wildfolk.Tests.NeedsCookingPlayTests" runstate="Runnable" testcasecount="8" result="Failed" site="Child" start-time="2026-10-29 05:51:41Z" end-time="2026-10-29 05:52:33Z" duration="51.618088" total="8" passed="6" failed="2" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <failure>
+              <message><![CDATA[One or more child tests had errors]]></message>
+            </failure>
+            <test-case id="1146" name="CampfireRecipePlacementCookingProgressAndTakeUseActualButtons" fullname="Wildfolk.Tests.NeedsCookingPlayTests.CampfireRecipePlacementCookingProgressAndTakeUseActualButtons" methodname="CampfireRecipePlacementCookingProgressAndTakeUseActualButtons" classname="Wildfolk.Tests.NeedsCookingPlayTests" runstate="Runnable" seed="686050777" result="Failed" start-time="2026-10-29 05:51:41Z" end-time="2026-10-29 05:51:47Z" duration="5.877386" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[  Expected: same as <Campfire (Wildfolk.ItemDefinition)>
+  But was:  <Wood (Wildfolk.ItemDefinition)>
+]]></message>
+                <stack-trace><![CDATA[at Wildfolk.Tests.NeedsCookingPlayTests+<CampfireRecipePlacementCookingProgressAndTakeUseActualButtons>d__20.MoveNext () [0x0013d] in C:\UnityProjects\LowfireAndroidQa\tests\artifacts\unity\Assets\Wildfolk\Tests\PlayMode\NeedsCookingPlayTests.cs:109
+at UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\Library\PackageCache\com.unity.test-framework@bd7f943e9647\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:44
+]]></stack-trace>
+              </failure>
+            </test-case>
+            <test-case id="1143" name="ControlSizeLimitsKeepTouchControlsSeparateAndModalCentered" fullname="Wildfolk.Tests.NeedsCookingPlayTests.ControlSizeLimitsKeepTouchControlsSeparateAndModalCentered" methodname="ControlSizeLimitsKeepTouchControlsSeparateAndModalCentered" classname="Wildfolk.Tests.NeedsCookingPlayTests" runstate="Runnable" seed="1106726088" result="Passed" start-time="2026-10-29 05:51:47Z" end-time="2026-10-29 05:51:53Z" duration="5.493518" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1148" name="DestroyedFireReturnsUncookedInputAndRangeCannotStartCooking" fullname="Wildfolk.Tests.NeedsCookingPlayTests.DestroyedFireReturnsUncookedInputAndRangeCannotStartCooking" methodname="DestroyedFireReturnsUncookedInputAndRangeCannotStartCooking" classname="Wildfolk.Tests.NeedsCookingPlayTests" runstate="Runnable" seed="313083228" result="Passed" start-time="2026-10-29 05:51:53Z" end-time="2026-10-29 05:51:59Z" duration="5.828867" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1147" name="FullInventoryKeepsCookedOutputAndDestroyedFireDropsCargo" fullname="Wildfolk.Tests.NeedsCookingPlayTests.FullInventoryKeepsCookedOutputAndDestroyedFireDropsCargo" methodname="FullInventoryKeepsCookedOutputAndDestroyedFireDropsCargo" classname="Wildfolk.Tests.NeedsCookingPlayTests" runstate="Runnable" seed="842542040" result="Passed" start-time="2026-10-29 05:51:59Z" end-time="2026-10-29 05:52:09Z" duration="10.116723" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1144" name="MultiplayerPauseBlocksLocalInputButContinuesWorldNeedsAndEnemy" fullname="Wildfolk.Tests.NeedsCookingPlayTests.MultiplayerPauseBlocksLocalInputButContinuesWorldNeedsAndEnemy" methodname="MultiplayerPauseBlocksLocalInputButContinuesWorldNeedsAndEnemy" classname="Wildfolk.Tests.NeedsCookingPlayTests" runstate="Runnable" seed="105005072" result="Passed" start-time="2026-10-29 05:52:09Z" end-time="2026-10-29 05:52:16Z" duration="7.014043" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1149" name="OneNeutralMeatSourceDropsRawWithoutAddingAnEnemyType" fullname="Wildfolk.Tests.NeedsCookingPlayTests.OneNeutralMeatSourceDropsRawWithoutAddingAnEnemyType" methodname="OneNeutralMeatSourceDropsRawWithoutAddingAnEnemyType" classname="Wildfolk.Tests.NeedsCookingPlayTests" runstate="Runnable" seed="1968247780" result="Passed" start-time="2026-10-29 05:52:16Z" end-time="2026-10-29 05:52:22Z" duration="6.440261" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1142" name="PauseSettingsSlidersApplyToControlsAndRealAudioChannels" fullname="Wildfolk.Tests.NeedsCookingPlayTests.PauseSettingsSlidersApplyToControlsAndRealAudioChannels" methodname="PauseSettingsSlidersApplyToControlsAndRealAudioChannels" classname="Wildfolk.Tests.NeedsCookingPlayTests" runstate="Runnable" seed="1442193761" result="Passed" start-time="2026-10-29 05:52:22Z" end-time="2026-10-29 05:52:27Z" duration="5.324612" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1145" name="WaterInteractionAndSelectedConsumptionDoNotWasteFullMeters" fullname="Wildfolk.Tests.NeedsCookingPlayTests.WaterInteractionAndSelectedConsumptionDoNotWasteFullMeters" methodname="WaterInteractionAndSelectedConsumptionDoNotWasteFullMeters" classname="Wildfolk.Tests.NeedsCookingPlayTests" runstate="Runnable" seed="83588357" result="Failed" start-time="2026-10-29 05:52:27Z" end-time="2026-10-29 05:52:33Z" duration="5.515462" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[  Expected: same as <Water source (Wildfolk.WaterSource)>
+  But was:  <Water source (Wildfolk.WaterSource)>
+]]></message>
+                <stack-trace><![CDATA[at Wildfolk.Tests.NeedsCookingPlayTests+<WaterInteractionAndSelectedConsumptionDoNotWasteFullMeters>d__19.MoveNext () [0x000af] in C:\UnityProjects\LowfireAndroidQa\tests\artifacts\unity\Assets\Wildfolk\Tests\PlayMode\NeedsCookingPlayTests.cs:96
+at UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\Library\PackageCache\com.unity.test-framework@bd7f943e9647\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:44
+]]></stack-trace>
+              </failure>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1205" name="RewardedAdsPlayTests" fullname="Wildfolk.Tests.RewardedAdsPlayTests" classname="Wildfolk.Tests.RewardedAdsPlayTests" runstate="Runnable" testcasecount="7" result="Passed" start-time="2026-10-29 05:52:33Z" end-time="2026-10-29 05:52:40Z" duration="6.522335" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1206" name="CancelAndNoFillConsumeNoRewardAndCanRetry" fullname="Wildfolk.Tests.RewardedAdsPlayTests.CancelAndNoFillConsumeNoRewardAndCanRetry" methodname="CancelAndNoFillConsumeNoRewardAndCanRetry" classname="Wildfolk.Tests.RewardedAdsPlayTests" runstate="Runnable" seed="42570914" result="Passed" start-time="2026-10-29 05:52:33Z" end-time="2026-10-29 05:52:34Z" duration="1.158350" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1207" name="EarnedCallbackWaitsForServerAndParallelShowIsRejected" fullname="Wildfolk.Tests.RewardedAdsPlayTests.EarnedCallbackWaitsForServerAndParallelShowIsRejected" methodname="EarnedCallbackWaitsForServerAndParallelShowIsRejected" classname="Wildfolk.Tests.RewardedAdsPlayTests" runstate="Runnable" seed="21844481" result="Passed" start-time="2026-10-29 05:52:34Z" end-time="2026-10-29 05:52:35Z" duration="0.980732" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1211" name="EarnedPreviousDayStaysDurableWhileANewDayCanBePrepared" fullname="Wildfolk.Tests.RewardedAdsPlayTests.EarnedPreviousDayStaysDurableWhileANewDayCanBePrepared" methodname="EarnedPreviousDayStaysDurableWhileANewDayCanBePrepared" classname="Wildfolk.Tests.RewardedAdsPlayTests" runstate="Runnable" seed="1671435510" result="Passed" start-time="2026-10-29 05:52:35Z" end-time="2026-10-29 05:52:36Z" duration="0.715305" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1209" name="EarnedReviveRetriesWithoutAnotherAdUntilWorldSaveSucceeds" fullname="Wildfolk.Tests.RewardedAdsPlayTests.EarnedReviveRetriesWithoutAnotherAdUntilWorldSaveSucceeds" methodname="EarnedReviveRetriesWithoutAnotherAdUntilWorldSaveSucceeds" classname="Wildfolk.Tests.RewardedAdsPlayTests" runstate="Runnable" seed="1132462883" result="Passed" start-time="2026-10-29 05:52:36Z" end-time="2026-10-29 05:52:37Z" duration="0.885351" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1212" name="ExplicitRetryDoesNotLaunchConcurrentReviveLoads" fullname="Wildfolk.Tests.RewardedAdsPlayTests.ExplicitRetryDoesNotLaunchConcurrentReviveLoads" methodname="ExplicitRetryDoesNotLaunchConcurrentReviveLoads" classname="Wildfolk.Tests.RewardedAdsPlayTests" runstate="Runnable" seed="115510510" result="Passed" start-time="2026-10-29 05:52:37Z" end-time="2026-10-29 05:52:38Z" duration="0.744633" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1210" name="FailedFreshEligibilityClearsPreviouslyEnabledAdButton" fullname="Wildfolk.Tests.RewardedAdsPlayTests.FailedFreshEligibilityClearsPreviouslyEnabledAdButton" methodname="FailedFreshEligibilityClearsPreviouslyEnabledAdButton" classname="Wildfolk.Tests.RewardedAdsPlayTests" runstate="Runnable" seed="1968566399" result="Passed" start-time="2026-10-29 05:52:38Z" end-time="2026-10-29 05:52:39Z" duration="1.005639" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1208" name="OnlyVerifiedServerStateReconcilesAndDisablesFurtherDailyShows" fullname="Wildfolk.Tests.RewardedAdsPlayTests.OnlyVerifiedServerStateReconcilesAndDisablesFurtherDailyShows" methodname="OnlyVerifiedServerStateReconcilesAndDisablesFurtherDailyShows" classname="Wildfolk.Tests.RewardedAdsPlayTests" runstate="Runnable" seed="1164082449" result="Passed" start-time="2026-10-29 05:52:39Z" end-time="2026-10-29 05:52:40Z" duration="0.980431" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1226" name="StorePlayTests" fullname="Wildfolk.Tests.StorePlayTests" classname="Wildfolk.Tests.StorePlayTests" runstate="Runnable" testcasecount="11" result="Passed" start-time="2026-10-29 05:52:40Z" end-time="2026-10-29 05:52:49Z" duration="9.808096" total="11" passed="11" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1227" name="AudioOnlyFollowsForegroundConfirmedGrantAndDoesNotReplayRecovery" fullname="Wildfolk.Tests.StorePlayTests.AudioOnlyFollowsForegroundConfirmedGrantAndDoesNotReplayRecovery" methodname="AudioOnlyFollowsForegroundConfirmedGrantAndDoesNotReplayRecovery" classname="Wildfolk.Tests.StorePlayTests" runstate="Runnable" seed="326627971" result="Passed" start-time="2026-10-29 05:52:40Z" end-time="2026-10-29 05:52:41Z" duration="0.994994" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1228" name="CancelNoFillAndFailureAreNonGrantsAndReleaseGate" fullname="Wildfolk.Tests.StorePlayTests.CancelNoFillAndFailureAreNonGrantsAndReleaseGate" methodname="CancelNoFillAndFailureAreNonGrantsAndReleaseGate" classname="Wildfolk.Tests.StorePlayTests" runstate="Runnable" seed="400624325" result="Passed" start-time="2026-10-29 05:52:41Z" end-time="2026-10-29 05:52:41Z" duration="0.766202" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1236" name="DeletionClearsPreviousSessionJournalBeforeStoreIsReopened" fullname="Wildfolk.Tests.StorePlayTests.DeletionClearsPreviousSessionJournalBeforeStoreIsReopened" methodname="DeletionClearsPreviousSessionJournalBeforeStoreIsReopened" classname="Wildfolk.Tests.StorePlayTests" runstate="Runnable" seed="718293938" result="Passed" start-time="2026-10-29 05:52:41Z" end-time="2026-10-29 05:52:42Z" duration="0.862991" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1234" name="DuplicateCallbacksAndRepeatedOpenDoNotRestoreConsumedCurrency" fullname="Wildfolk.Tests.StorePlayTests.DuplicateCallbacksAndRepeatedOpenDoNotRestoreConsumedCurrency" methodname="DuplicateCallbacksAndRepeatedOpenDoNotRestoreConsumedCurrency" classname="Wildfolk.Tests.StorePlayTests" runstate="Runnable" seed="1945525751" result="Passed" start-time="2026-10-29 05:52:42Z" end-time="2026-10-29 05:52:43Z" duration="0.965993" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1235" name="EveryCatalogPackageFulfillsItsOwnAmountOnlyOnce" fullname="Wildfolk.Tests.StorePlayTests.EveryCatalogPackageFulfillsItsOwnAmountOnlyOnce" methodname="EveryCatalogPackageFulfillsItsOwnAmountOnlyOnce" classname="Wildfolk.Tests.StorePlayTests" runstate="Runnable" seed="1940807821" result="Passed" start-time="2026-10-29 05:52:43Z" end-time="2026-10-29 05:52:44Z" duration="1.312683" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1233" name="FailedFreshMetadataClearsCachedPricesAndDisconnectDisablesPurchase" fullname="Wildfolk.Tests.StorePlayTests.FailedFreshMetadataClearsCachedPricesAndDisconnectDisablesPurchase" methodname="FailedFreshMetadataClearsCachedPricesAndDisconnectDisablesPurchase" classname="Wildfolk.Tests.StorePlayTests" runstate="Runnable" seed="553001058" result="Passed" start-time="2026-10-29 05:52:44Z" end-time="2026-10-29 05:52:45Z" duration="0.946251" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1237" name="OfflineAndUnsupportedProductRejectBeforeBilling" fullname="Wildfolk.Tests.StorePlayTests.OfflineAndUnsupportedProductRejectBeforeBilling" methodname="OfflineAndUnsupportedProductRejectBeforeBilling" classname="Wildfolk.Tests.StorePlayTests" runstate="Runnable" seed="927975984" result="Passed" start-time="2026-10-29 05:52:45Z" end-time="2026-10-29 05:52:46Z" duration="0.876366" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1232" name="ParallelTapAndAccountChangeNeverGrantToNewAccount" fullname="Wildfolk.Tests.StorePlayTests.ParallelTapAndAccountChangeNeverGrantToNewAccount" methodname="ParallelTapAndAccountChangeNeverGrantToNewAccount" classname="Wildfolk.Tests.StorePlayTests" runstate="Runnable" seed="937307410" result="Passed" start-time="2026-10-29 05:52:46Z" end-time="2026-10-29 05:52:47Z" duration="0.779531" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1229" name="PendingPaymentIsDurableButNeverARewardUntilServerVerifies" fullname="Wildfolk.Tests.StorePlayTests.PendingPaymentIsDurableButNeverARewardUntilServerVerifies" methodname="PendingPaymentIsDurableButNeverARewardUntilServerVerifies" classname="Wildfolk.Tests.StorePlayTests" runstate="Runnable" seed="524212211" result="Passed" start-time="2026-10-29 05:52:47Z" end-time="2026-10-29 05:52:48Z" duration="0.804462" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1231" name="PurchaseProofSurvivesServerFailureAndServiceRestart" fullname="Wildfolk.Tests.StorePlayTests.PurchaseProofSurvivesServerFailureAndServiceRestart" methodname="PurchaseProofSurvivesServerFailureAndServiceRestart" classname="Wildfolk.Tests.StorePlayTests" runstate="Runnable" seed="1376887321" result="Passed" start-time="2026-10-29 05:52:48Z" end-time="2026-10-29 05:52:49Z" duration="0.818405" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1230" name="ServerUnavailableBeforeStartCannotOpenGoogleUI" fullname="Wildfolk.Tests.StorePlayTests.ServerUnavailableBeforeStartCannotOpenGoogleUI" methodname="ServerUnavailableBeforeStartCannotOpenGoogleUI" classname="Wildfolk.Tests.StorePlayTests" runstate="Runnable" seed="1564425651" result="Passed" start-time="2026-10-29 05:52:49Z" end-time="2026-10-29 05:52:49Z" duration="0.674316" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[<b><color=#2EA3FF>MCP-FOR-UNITY</color></b>: [TestRunnerNoThrottle] Restored Interaction Mode after test run.
+Saving results to: C:/Users/User/AppData/LocalLow/DefaultCompany/Wildfolk\TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

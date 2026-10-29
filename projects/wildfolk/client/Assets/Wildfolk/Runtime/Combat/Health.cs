@@ -27,6 +27,7 @@ namespace Wildfolk
         {
             if (Definition == null || Maximum <= 0) throw new InvalidOperationException("A valid vitality definition is required.");
             Current = Maximum;
+            if(Application.isPlaying && GetComponent<AudioActor>()==null)gameObject.AddComponent<AudioActor>();
         }
 
         public int ApplyDamage(int amount,bool ignoreDefense=false,PlayerInventory attacker=null,Health source=null,DamageKind kind=DamageKind.Unspecified,bool prepared=false)

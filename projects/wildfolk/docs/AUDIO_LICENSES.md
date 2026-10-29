@@ -1,4 +1,4 @@
-# Audio source licenses — Foundation5 checkpoint
+# Audio source licenses — Foundation5
 
 Only selected files under `client/Assets/Wildfolk/Audio/` are covered here. This is the source ledger, not a claim of completed runtime integration or subjective listening approval.
 
@@ -12,7 +12,7 @@ The author/license was checked on the linked primary page on 2026-10-29. Windows
 |---|---|---|
 | CaveboyTup | [Source](https://opengameart.org/content/wolf-monster-sound) · CC0-1.0 | `wolf` |
 | JaggedStone | [Source](https://opengameart.org/content/loopable-dungeon-ambience) · CC0-1.0 | `cave_air` |
-| Kenney | [Source](https://kenney.nl/assets/impact-sounds) · CC0-1.0 | `step_grass_0`, `step_grass_1`, `step_grass_2`, `step_grass_3`, `step_stone_0`, `step_stone_1`, `step_stone_2`, `step_stone_3`, `step_wood_0`, `step_wood_1`, `step_wood_2`, `wood_hit_0`, `wood_hit_1`, `wood_hit_2`, `wood_break_0`, `wood_break_1`, `wood_break_2`, `stone_hit_0`, `stone_hit_1`, `stone_hit_2`, `ore_hit_0`, `ore_hit_1`, `ore_hit_2`, `ore_break_0`, `ore_break_1`, `flesh_hit_0`, `flesh_hit_1`, `flesh_hit_2`, `heavy_hit_0`, `heavy_hit_1`, `bone_hit_0`, `bone_hit_1`, `bone_hit_2`, `chitin_hit_0`, `chitin_hit_1`, `chitin_hit_2`, `plant_0`, `plant_1`, `plant_2`, `body_fall_0`, `body_fall_1` |
+| Kenney | [Source](https://kenney.nl/assets/impact-sounds) · CC0-1.0 | `step_grass_0`, `step_grass_1`, `step_grass_2`, `step_grass_3`, `step_stone_0`, `step_stone_1`, `step_stone_2`, `step_stone_3`, `wood_hit_0`, `wood_hit_1`, `wood_hit_2`, `wood_break_0`, `wood_break_1`, `wood_break_2`, `stone_hit_0`, `stone_hit_1`, `stone_hit_2`, `ore_hit_0`, `ore_hit_1`, `ore_hit_2`, `ore_break_0`, `ore_break_1`, `flesh_hit_0`, `flesh_hit_1`, `flesh_hit_2`, `heavy_hit_0`, `heavy_hit_1`, `bone_hit_0`, `bone_hit_1`, `bone_hit_2`, `chitin_hit_0`, `chitin_hit_1`, `chitin_hit_2`, `plant_0`, `plant_1`, `plant_2`, `body_fall_0`, `body_fall_1` |
 | Kenney | [Source](https://kenney.nl/assets/rpg-audio) · CC0-1.0 | `ui_click`, `ui_back`, `ui_error`, `journal`, `page`, `engineer`, `gold`, `pickup`, `craft_start`, `craft_complete`, `door_open`, `door_close`, `chest`, `equip`, `food`, `bow_draw`, `bow_release`, `crossbow`, `fishing_catch`, `blade_0`, `blade_1` |
 | Luke.RUSTLTD | [Source](https://opengameart.org/content/wind1) · CC0-1.0 | `graveyard_air` |
 | PagDev | [Source](https://opengameart.org/content/fireplace-sound-loop) · CC0-1.0 | `campfire` |
@@ -31,3 +31,7 @@ The author/license was checked on the linked primary page on 2026-10-29. Windows
 | syncopika | [Source](https://opengameart.org/content/bird-chirping-sounds) · CC0-1.0 | `bird` |
 
 Luke.RUSTLTD's wind1 is explicitly a designed PureData wind recording/render rather than a field recording. The original author credits Andy Farnell's tutorial. This is source disclosure, not a claim of a new Lowfire procedural sound generator. Originals/license artifacts and local editing helpers currently remain outside Git at the task workspace's `audio-production-work/`; the pinned URLs/hashes in the ledger allow the exact downloaded files to be identified. Before public release, finish the runtime/audio-quality gates in REVIEW.md.
+
+## Runtime selection update
+
+Current selection is101files: Music6/Ambience6/SFX89. Three unsupported wood-floor footstep candidates were removed; the former104-file checkpoint remains historical in REVIEW. All current files retain their original source/hash/processing ledger. This pass adds no AI-generated audio. Technical playback/output verification is separate from human/device listening approval.

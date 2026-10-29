@@ -1,0 +1,21 @@
+{
+  "jsonrpc": "2.0",
+  "id": 3,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"success\":true,\"message\":\"Code executed successfully.\",\"data\":{\"result\":\"sources=30|listeners=1|signalPower=0.434192566248133|masterDB=0|scene=MainMenu\",\"compiler\":\"codedom\"}}"
+      }
+    ],
+    "structuredContent": {
+      "success": true,
+      "message": "Code executed successfully.",
+      "data": {
+        "result": "sources=30|listeners=1|signalPower=0.434192566248133|masterDB=0|scene=MainMenu",
+        "compiler": "codedom"
+      }
+    },
+    "isError": false
+  }
+}

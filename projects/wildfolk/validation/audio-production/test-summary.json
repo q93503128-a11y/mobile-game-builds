@@ -1,0 +1,31 @@
+{
+  "EditMode": {
+    "Total": 363,
+    "Passed": 361,
+    "ExistingBaselineFailures": 2,
+    "BaselineSHA": "8782da4220a2761f72086acc7488c9c95fdebdb0",
+    "Failures": [
+      {
+        "Name": "EveryEcologySpawnHasRegisteredServerPrefabAndSharedBrain",
+        "Message": "  Expected: 64\n  But was:  66\n"
+      },
+      {
+        "Name": "ManySeedsHaveClearSpawnNearbySuppliesRareOreAndNoOverlaps",
+        "Message": "  Expected: less than 300\n  But was:  307\n"
+      }
+    ],
+    "ComparedInputsUnchanged": {
+      "Tests/EditMode/NetworkCreatureContractTests.cs": true,
+      "Tests/EditMode/WorldGenerationTests.cs": true,
+      "Data/WorldGeneration.asset": true
+    }
+  },
+  "RelatedPlayMode": {
+    "UniqueCases": 41,
+    "LatestPassed": 41,
+    "PrimaryRun": "play-final.xml:40/41",
+    "FocusedRetest": "pause-final.xml:1/1",
+    "FixtureChanges": "Legacy pond/fresh isolated bag; select actual Facilities category before craft; pause policy test puts zombie within melee range instead of testing approach path"
+  },
+  "PerOperationTokens": null
+}

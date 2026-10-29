@@ -31,7 +31,7 @@ Multiplayer는 Relay Room Code 또는 Local Network Host/Join이다. Host가 이
 - 신규 생물/아이콘은 기존 Pillow 방식의 `tools/generate_creature_loot_art.py` 원본이다. 기존 art 출처는 [SOURCE_ART](docs/SOURCE_ART.md). 외부 게임 asset/code/layout을 복제하지 않는다.
 - Unity MCP/code는 허용한다. Windows 입력과 Focus/Show는 금지한다. View 메뉴는 기존 Game View만 Repaint하고 PlayUnfocused를 적용한다. 씬/에셋 재생성은 수작업 변경을 먼저 확인한다.
 
-실제 터치·손맛·재미·장시간 경제·Android 성능은 사용자 검증 대상이다. BGM/SFX 콘텐츠는 비어 있다. 첫 보스 Undead King과 공용 Boss Foundation을 제공한다. Defense Objective/IV~VI/전기/총기/Pet/번식/상인/영구 Skin은 제공하지 않는다.
+실제 터치·손맛·재미·장시간 경제·Android 성능은 사용자 검증 대상이다. BGM6/Ambience6/SFX89와 실제 Mixer/행동 연결을 제공한다. 현재 검증 범위는 docs/AUDIO.md를 따른다. 첫 보스 Undead King과 공용 Boss Foundation을 제공한다. Defense Objective/IV~VI/전기/총기/Pet/번식/상인/영구 Skin은 제공하지 않는다.
 
 약초는 Forest/Wetlands에서 맨손으로 채집한다. 응급 붕대는 Hand에서 Fiber2+Herb1→20HP/8초, 기존 회복 연고는 Gland1+Herb1+Fiber2→즉시30HP다. 공용4초·붕대 비중첩, 자연회복/음식·기존 Station은 유지한다. [의약 조사·경제·검수](validation/medicine-expansion/REVIEW.md). Food Expansion2-B는 아래 Meal 선택을 추가했다.
 
@@ -107,6 +107,10 @@ Gem Store와 서버 검증·Economy2 지급/소비 복구·환불/지원 기반�
 
 2026-10-29 Foundation4 재개 마감: **저장소 구현·관련 검증 완료 / 실제 구매 OFF**. 서버166/166·Edit9·Play10·data·Android59/59·실제 UGS 익명 차단5경로·local MCP 격리 Play·Development Billing9.1 native AAB 검증을 마쳤다. 총 AAB2회 시작 중1회는 이전 사용자 중단, 재개1회가 완료됐다. 실제 Google 결제/환불·실기기·외부 운영·공개 출시 승인은 미완료다. [최종 검증](validation/store-iap/completion/FINAL_REPORT.md). Audio/Foundation5는 시작하지 않는다.
 
-## Launch Foundation5 — 음원 준비 중간 저장
+## Launch Foundation5 — 음원 준비 중간 저장(과거 기록)(과거 기록)(과거 기록)
 
 2026-10-29 사용자 요청으로 Full Audio Production의 음원 준비 단계에서 중단했다. CC0 Music6/Ambience6/SFX92(104파일)의 출처·편집·파일 분석을 기록했다. **Mixer·런타임 이벤트 연결과 실제 플레이/청취 검수는 미완료이며, 현재 게임에서 새 음원이 재생되지는 않는다.** [현재 음향 상태](docs/AUDIO.md), [라이선스](docs/AUDIO_LICENSES.md), [진행·검증·재개 지점](validation/audio-production/REVIEW.md). Foundation6/Final Polish로 넘어가지 않는다.
+
+## Launch Foundation5 — production runtime
+
+현재 **구현·저장소 검증 완료**. 101음원/74cue, 고정30source와 Music/SFX/UI/Ambience Mixer, 실제 행동·보스·보상·멀티 연결을 제공한다. 사용자 save/schema 및 운영 Ads/IAP OFF 유지. 실제 Unity 출력/보스/Continue·2프로세스LAN·Android scripts를 검증했으며 사람·기기 청취 승인은 별도다. [음향 정본](docs/AUDIO.md) · [출처](docs/AUDIO_LICENSES.md) · [최신39항목 검증](validation/audio-production/REVIEW.md). Foundation6/Final Polish는 시작하지 않는다.

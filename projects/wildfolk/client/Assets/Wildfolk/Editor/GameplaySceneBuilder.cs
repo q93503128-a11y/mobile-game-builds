@@ -24,8 +24,6 @@ namespace Wildfolk.Editor
             session.gameObject.AddComponent<PrefabPool>();var saves=session.gameObject.AddComponent<WorldSaveService>();
             var clock=session.gameObject.AddComponent<WorldClock>();clock.Definition=assets.Progression.DayNight;clock.Session=session;
             var preferences=session.gameObject.AddComponent<UserPreferences>();var audio=session.gameObject.AddComponent<GameAudio>();audio.Preferences=preferences;
-            audio.Music=new GameObject("Music Channel").AddComponent<AudioSource>();audio.Music.transform.SetParent(session.transform);audio.Music.playOnAwake=false;audio.Music.loop=true;
-            audio.Sfx=new GameObject("SFX Channel").AddComponent<AudioSource>();audio.Sfx.transform.SetParent(session.transform);audio.Sfx.playOnAwake=false;
             EcologyAssets.Load(assets);var pickup=GameplayActorBuilder.Pickup();WorldContentBuilder.Build(assets,pickup);QualityAssets.Configure(assets);
             foreach(var facility in new[]{assets.Crafting.Workbench,assets.Survival.Campfire,assets.Progression.Furnace,assets.Progression.Wall,assets.Progression.Door,assets.Progression.Chest})GameplayActorBuilder.Facility(facility,pickup,assets.Settings);
             foreach(var facility in CharacterPassAssets.Load(assets))GameplayActorBuilder.Facility(facility,pickup,assets.Settings);

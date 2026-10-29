@@ -46,9 +46,9 @@ namespace Wildfolk
         private async Task<EconomyReply> Call(string operation,Dictionary<string,object> input,bool mutation=true)
         {
             if(!Online||Busy)return new EconomyReply{error="online_required"};Busy=true;Changed?.Invoke();var owner=epoch;
-            try{if(mutation&&!input.ContainsKey("operationId"))input["operationId"]=Guid.NewGuid().ToString("N");var r=await transport.Call(operation,input);if(owner!=epoch)return new EconomyReply{error="account_changed"};
+            try{if(mutation&&!input.ContainsKey("operationId"))input["operationId"]=Guid.NewGuid().ToString("N");var beforeCompleted=Snapshot?.completed??0;var r=await transport.Call(operation,input);if(owner!=epoch)return new EconomyReply{error="account_changed"};
                 if(r.snapshot!=null){r.snapshot.Validate(account.Profile.PlayerId,BackendSettings.Current.Environment.Id);journal.Cache(r.snapshot);anchor=Time.realtimeSinceStartupAsDouble;}
-                LastError=r.ok?null:r.error;LastTransaction=r.transactionId??r.revive?.TransactionId??LastTransaction;return r;
+                if(r.ok&&operation=="SubmitProgress"&&r.snapshot!=null&&r.snapshot.completed>beforeCompleted)AudioTransactions.Confirmed(scope+":achievement:"+(string)input["operationId"],Sound.Achievement);if(!r.ok&&(operation=="ClaimAll"||operation=="ClaimAchievement"||operation=="ClaimAttendance"||operation=="UnlockEngineer"))AudioRuntime.Play(Sound.UiError);LastError=r.ok?null:r.error;LastTransaction=r.transactionId??r.revive?.TransactionId??LastTransaction;if(r.ok&&!r.alreadyClaimed){if(operation=="ClaimAttendance"&&r.claimedDay>0)AudioTransactions.Confirmed(scope+":"+(r.transactionId??(string)input["operationId"]),r.granted>0?Sound.Gem:Sound.Attendance);else if((operation=="ClaimAchievement"||operation=="ClaimAll")&&r.claimedCount>0)AudioTransactions.Confirmed(scope+":"+(r.transactionId??(string)input["operationId"]),r.granted>0?Sound.Gem:Sound.Achievement);}return r;
             }catch(Exception){LastError="cloud_unavailable";return new EconomyReply{error=LastError};}
             finally{Busy=false;Changed?.Invoke();}
         }
@@ -60,7 +60,7 @@ namespace Wildfolk
         }
         public async Task<EconomyReply> Claim(string family=null){await Sync();var r=await Call(family==null?"ClaimAll":"ClaimAchievement",family==null?new Dictionary<string,object>():new Dictionary<string,object>{{"family",family}});if(r.ok)LastAchievementClaim=family??"all";return r;}
         public async Task<EconomyReply> Attend(string board){var r=await Call("ClaimAttendance",new Dictionary<string,object>{{"board",board}});if(r.ok)LastAttendanceClaim=board;return r;}
-        public async Task<bool> UnlockEngineer(){if(!CanSpend)return false;var r=await Call("UnlockEngineer",new Dictionary<string,object>{{"expectedCost",EconomyCatalog.Current.EngineerCost}});if(!r.ok)return false;await account.Sync();return account.Profile?.ClassProfile?.Local().Find("engineer")?.Owned==true;}
+        public async Task<bool> UnlockEngineer(){if(!CanSpend)return false;var r=await Call("UnlockEngineer",new Dictionary<string,object>{{"expectedCost",EconomyCatalog.Current.EngineerCost}});if(!r.ok)return false;await account.Sync();var owned=account.Profile?.ClassProfile?.Local().Find("engineer")?.Owned==true;if(owned&&!r.alreadyOwned)AudioTransactions.Confirmed("engineer:"+account.Profile.PlayerId,Sound.Engineer);return owned;}
         public Task<EconomyReply> History(int offset=0)=>Call("TransactionHistory",new Dictionary<string,object>{{"offset",offset},{"limit",20}},false);
         internal void ObserveServerTransaction(string transaction){if(!string.IsNullOrEmpty(transaction))LastTransaction=transaction;}
         internal void PendingChanged()=>Changed?.Invoke();

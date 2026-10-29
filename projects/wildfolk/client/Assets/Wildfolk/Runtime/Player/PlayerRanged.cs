@@ -9,6 +9,7 @@ namespace Wildfolk
         private ItemDefinition weapon;private Vector2 direction;private float started,readyAt;private bool fired,busy;private bool prepared;
         public bool IsBusy=>busy;
         public int Shots {get;private set;}
+        public event System.Action Released;
         private void Awake(){equipment=GetComponent<PlayerEquipment>();bag=GetComponent<PlayerInventory>();combat=GetComponent<PlayerCombat>();}
         private int AmmoSlot(AmmoKind kind)
         {for(var i=0;i<bag.Model.Capacity;i++){var s=bag.Model.GetSlot(i);if(!s.IsEmpty && s.Item.Ammo==kind)return i;}return -1;}
@@ -21,7 +22,7 @@ namespace Wildfolk
             direction=GetComponent<PlayerAvatar>().Facing.Direction;started=Time.time;fired=false;busy=true;prepared=GetComponent<PlayerClass>()?.SteadyShot??false;
             readyAt=started+(weapon.Ranged.DrawSeconds+weapon.Ranged.RecoverySeconds)*(GetComponent<PlayerClass>()?.AttackInterval??1);
             GetComponent<NetworkActivities>()?.Publish(ActivityKind.Ranged,direction,weapon.Ranged.DrawSeconds+weapon.Ranged.RecoverySeconds);
-            return true;
+            if(GetComponent<NetworkPlayer>()==null)AudioRuntime.Play(Sound.BowDraw,transform.position);return true;
         }
         private void Update()
         {
@@ -33,7 +34,7 @@ namespace Wildfolk
                 fired=true;var slot=AmmoSlot(weapon.Ranged.Ammunition);
                 if(slot<0){Cancel();return;}var ammo=bag.Model.GetSlot(slot).Item;StoneProjectile shot=null;
                 var accepted=bag.Model.TryDropSlot(slot,ammo,1,()=>{shot=PrefabPool.Spawn(Projectile,(Vector2)transform.position+direction*.8f,Quaternion.identity);shot.Launch(GetComponent<Health>(),direction,weapon.Ranged.Speed,weapon.Ranged.Range*(GetComponent<PlayerClass>()?.ShotRange(direction)??1),weapon.Ranged.Damage+ammo.AmmoDamage,bag,ammo,prepared);var net=shot.GetComponent<NetworkProjectile>();return net==null || NetworkCreatureWorld.Active.SpawnPendingNow(net.NetworkObject);});
-                if(!accepted){if(shot!=null)PrefabPool.Release(shot.gameObject);Cancel();return;}Shots++;GetComponent<Health>().MarkCombat();
+                if(!accepted){if(shot!=null)PrefabPool.Release(shot.gameObject);Cancel();return;}Shots++;Released?.Invoke();GetComponent<Health>().MarkCombat();
             }
             if(Time.time>=readyAt)Cancel();
         }

@@ -34,7 +34,7 @@ namespace Wildfolk
         }
         // Only the loot/death authority calls this entry. Debug grants use SetValues/Reward.
         public void GameplayReward(int experience,int gold,string receipt)
-        {if(!SimulationAuthority.Allows(this) || experience<0 || gold<0 || string.IsNullOrEmpty(receipt))return;var total=checked(Experience+experience);var balance=checked(Gold+gold);var role=GetComponent<PlayerClass>();if(role!=null && !role.GrantXP(experience,receipt))return;Reward(experience,gold);}
+        {if(!SimulationAuthority.Allows(this) || experience<0 || gold<0 || string.IsNullOrEmpty(receipt))return;var total=checked(Experience+experience);var balance=checked(Gold+gold);var role=GetComponent<PlayerClass>();if(role!=null && !role.GrantXP(experience,receipt))return;Reward(experience,gold);var n=GetComponent<NetworkPlayer>();if(gold>0&&(n==null||n.IsOwner))AudioRuntime.Play(Sound.Gold);}
         public void Reward(int experience,int gold)
         {if(experience<0 || gold<0)throw new ArgumentOutOfRangeException();var nextGold=checked(Gold+gold);Gain(experience);Gold=nextGold;Changed?.Invoke();}
         public GrowthSnapshot Capture()

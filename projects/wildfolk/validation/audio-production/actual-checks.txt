@@ -1,0 +1,35 @@
+PASS Main Menu has isolated audio owner
+PASS single camera listener
+PASS zero Master mutes all source categories
+PASS real movement generated distance-based footsteps
+PASS wood and stone actual damage use distinct material cues
+PASS actual crafting result cue
+PASS actual placement committed
+PASS successful build cue
+PASS actual processing recipe queued
+PASS processing timer completion cue
+PASS actual cooked output collected
+PASS actual player damage cue
+PASS accepted blade swing cue
+PASS actual food consumed
+PASS food confirmation cue
+PASS actual clean water consumed
+PASS drink confirmation cue
+PASS actual fishing cast
+PASS actual fishing bite
+PASS actual fishing catch
+PASS cast/bite/catch cues are distinct
+PASS actual lethal damage entered death; state=Dead hp=0
+PASS actual free home recovery
+PASS death/recovery cues confirmed by real lifecycle
+PASS all event playback uses fixed30sources
+PASS actual deep cavern position selects deep ambience
+PASS actual night clock selects night bed
+PASS real boss scheduler lifecycle emitted intro/phase/death/victory
+PASS 1800logical-second burst simulation does not grow source pool
+PASS isolated save commits
+PASS Save14 retained
+PASS return home retains one owner
+PASS Continue does not duplicate music or pool
+PASS captured final mix did not clip
+PASS actual Unity output buffers contain audio

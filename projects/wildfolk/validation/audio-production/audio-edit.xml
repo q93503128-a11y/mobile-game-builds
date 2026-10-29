@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="7" result="Passed" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-29 05:37:46Z" end-time="2026-10-29 05:37:47Z" duration="0.7650158">
+  <test-suite type="TestSuite" id="1000" name="Wildfolk" fullname="Wildfolk" runstate="Runnable" testcasecount="363" result="Passed" start-time="2026-10-29 05:37:46Z" end-time="2026-10-29 05:37:47Z" duration="0.765016" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1440" name="Wildfolk.Tests.EditMode.dll" fullname="C:/UnityProjects/LowfireRewardedQa/tests/artifacts/unity/Library/ScriptAssemblies/Wildfolk.Tests.EditMode.dll" runstate="Runnable" testcasecount="363" result="Passed" start-time="2026-10-29 05:37:46Z" end-time="2026-10-29 05:37:47Z" duration="0.740044" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="3164" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1441" name="Wildfolk" fullname="Wildfolk" runstate="Runnable" testcasecount="363" result="Passed" start-time="2026-10-29 05:37:47Z" end-time="2026-10-29 05:37:47Z" duration="0.734648" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1442" name="Tests" fullname="Wildfolk.Tests" runstate="Runnable" testcasecount="363" result="Passed" start-time="2026-10-29 05:37:47Z" end-time="2026-10-29 05:37:47Z" duration="0.730829" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1024" name="AudioDataTests" fullname="Wildfolk.Tests.AudioDataTests" classname="Wildfolk.Tests.AudioDataTests" runstate="Runnable" testcasecount="7" result="Passed" start-time="2026-10-29 05:37:47Z" end-time="2026-10-29 05:37:47Z" duration="0.652416" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1031" name="ExistingOwnerJsonKeepsPresentationSilentByDefault" fullname="Wildfolk.Tests.AudioDataTests.ExistingOwnerJsonKeepsPresentationSilentByDefault" methodname="ExistingOwnerJsonKeepsPresentationSilentByDefault" classname="Wildfolk.Tests.AudioDataTests" runstate="Runnable" seed="2116934115" result="Passed" start-time="2026-10-29 05:37:47Z" end-time="2026-10-29 05:37:47Z" duration="0.028060" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1032" name="ImportedBedsStreamAndEffectsAreMono" fullname="Wildfolk.Tests.AudioDataTests.ImportedBedsStreamAndEffectsAreMono" methodname="ImportedBedsStreamAndEffectsAreMono" classname="Wildfolk.Tests.AudioDataTests" runstate="Runnable" seed="405041354" result="Passed" start-time="2026-10-29 05:37:47Z" end-time="2026-10-29 05:37:47Z" duration="0.450547" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-suite type="ParameterizedMethod" id="1030" name="MixerUsesLogarithmicDecibels" fullname="Wildfolk.Tests.AudioDataTests.MixerUsesLogarithmicDecibels" classname="Wildfolk.Tests.AudioDataTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-10-29 05:37:47Z" end-time="2026-10-29 05:37:47Z" duration="0.006253" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1026" name="MixerUsesLogarithmicDecibels(0,-80)" fullname="Wildfolk.Tests.AudioDataTests.MixerUsesLogarithmicDecibels(0,-80)" methodname="MixerUsesLogarithmicDecibels" classname="Wildfolk.Tests.AudioDataTests" runstate="Runnable" seed="999474663" result="Passed" start-time="2026-10-29 05:37:47Z" end-time="2026-10-29 05:37:47Z" duration="0.002094" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1027" name="MixerUsesLogarithmicDecibels(1,0)" fullname="Wildfolk.Tests.AudioDataTests.MixerUsesLogarithmicDecibels(1,0)" methodname="MixerUsesLogarithmicDecibels" classname="Wildfolk.Tests.AudioDataTests" runstate="Runnable" seed="1898939224" result="Passed" start-time="2026-10-29 05:37:47Z" end-time="2026-10-29 05:37:47Z" duration="0.000285" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1028" name="MixerUsesLogarithmicDecibels(0.5f,-6.0206f)" fullname="Wildfolk.Tests.AudioDataTests.MixerUsesLogarithmicDecibels(0.5f,-6.0206f)" methodname="MixerUsesLogarithmicDecibels" classname="Wildfolk.Tests.AudioDataTests" runstate="Runnable" seed="135399955" result="Passed" start-time="2026-10-29 05:37:47Z" end-time="2026-10-29 05:37:47Z" duration="0.000090" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1029" name="MixerUsesLogarithmicDecibels(0.1f,-20)" fullname="Wildfolk.Tests.AudioDataTests.MixerUsesLogarithmicDecibels(0.1f,-20)" methodname="MixerUsesLogarithmicDecibels" classname="Wildfolk.Tests.AudioDataTests" runstate="Runnable" seed="1554484418" result="Passed" start-time="2026-10-29 05:37:47Z" end-time="2026-10-29 05:37:47Z" duration="0.000052" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+            <test-case id="1025" name="ProductionBankHasCompleteRoutingAndNoEmptyCues" fullname="Wildfolk.Tests.AudioDataTests.ProductionBankHasCompleteRoutingAndNoEmptyCues" methodname="ProductionBankHasCompleteRoutingAndNoEmptyCues" classname="Wildfolk.Tests.AudioDataTests" runstate="Runnable" seed="185865293" result="Passed" start-time="2026-10-29 05:37:47Z" end-time="2026-10-29 05:37:47Z" duration="0.139240" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[<b><color=#2EA3FF>MCP-FOR-UNITY</color></b>: [TestRunnerNoThrottle] Restored Interaction Mode after test run.
+Saving results to: C:/Users/User/AppData/LocalLow/DefaultCompany/Wildfolk\TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

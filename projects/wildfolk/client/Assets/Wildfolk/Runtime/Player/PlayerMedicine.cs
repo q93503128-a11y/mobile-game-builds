@@ -40,7 +40,7 @@ namespace Wildfolk
             var multiplier=(role?.HealingOutgoing(target)??1)*received;
             var success=bag.Model.TryDropSlot(slot,item,1,()=>
             {target.Heal(Mathf.RoundToInt(medicine.HealthRestore*multiplier));if(medicine.GradualHealthRestore>0)recipient.ReceiveTreatment(Mathf.RoundToInt(medicine.GradualHealthRestore*multiplier),medicine.HealingDuration*(role?.HotDurationMultiplier??1));return true;});
-            if(success){survival.UseReadyAt=Time.time+medicine.UseCooldownSeconds*(role?.MedicineCooldownMultiplier??1);GetComponent<NetworkClassActions>()?.MedicineFeedback(target);}
+            if(success){PlayerActionAudio.Committed(this,ConfirmedPlayerAction.Treatment);survival.UseReadyAt=Time.time+medicine.UseCooldownSeconds*(role?.MedicineCooldownMultiplier??1);GetComponent<NetworkClassActions>()?.MedicineFeedback(target);}
             Cancel();return success;
         }
         public void Cancel(){target=null;item=null;Until=0;}

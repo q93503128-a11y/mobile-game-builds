@@ -37,3 +37,7 @@ Foundation2는 계정 Gem/업적/출석/Profile·Engineer120Gem·SP부활8Gem을
 ## Foundation4 현재 상태
 
 Profile 하위 Gem Store, 제안24/72/144 consumable, Google 서버 검증·Economy2 지급/consume 복구·환불/지원 기반이 현재 범위다. Alpha 실제 구매 금지·Production 기본OFF, 신규 sink/직업 현금 판매/구독/아이템 판매 없음. 외부 설정·실기기 Google 결제와 공개 출시 승인은 남는다. [IAP 정본](IAP.md) · [검증](../validation/store-iap/REVIEW.md). Foundation4에서 멈추며 Audio/Foundation5는 자동 시작하지 않는다.
+
+## Launch Foundation5 — Audio
+
+구현·저장소 검증 완료. Music6/Ambience6/SFX89, 실제 Mixer·행동·보스·확정 보상·멀티 presentation과 기존 세 음량 설정을 연결했다. [AUDIO](AUDIO.md) · [출처](AUDIO_LICENSES.md) · [검증](../validation/audio-production/REVIEW.md). Save/Protocol과 운영 결제·광고 OFF 유지. 실제 Android 청취/운영 광고·결제 audio focus와 공개 출시 승인은 별도이며 Foundation6는 시작하지 않는다.

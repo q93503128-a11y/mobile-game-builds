@@ -22,11 +22,11 @@ namespace Wildfolk
         public void SelectCard(int index){if(index<0 || index>=Cards.Length)return;selected=index;node=0;Status.text="";Confirmation.SetActive(false);Refresh();}
         public void SelectNode(int index){if(index<0 || index>=Nodes.Length)return;node=index;Status.text="";Refresh();}
         public void Invest(){var d=ClassCatalog.Current.Classes[selected];if(!ClassProfiles.Spend(d.Id,d.Nodes[node].Id))Status.text=L.Text("class.cannot_spend");Refresh();}
-        public void SelectClass(){if(ClassProfiles.Select(ClassCatalog.Current.Classes[selected].Id))Status.text=L.Text("class.selected");Refresh();}
+        public void SelectClass(){if(ClassProfiles.Select(ClassCatalog.Current.Classes[selected].Id)){Status.text=L.Text("class.selected");AudioRuntime.Play(Sound.UiConfirm);}Refresh();}
         public void Respec(){ClassProfiles.Respec(ClassCatalog.Current.Classes[selected].Id);Refresh();}
         public void AskPurchase(){var d=ClassCatalog.Current.Classes[selected];if(!ClassProfiles.Lobby || !PurchaseButton.interactable)return;ConfirmText.text=L.Format("class.confirm",d.Name,d.Price,d.Currency=="Gold"?L.Text("ui.gold"):L.Text("class.gem"));Confirmation.SetActive(true);}
         public void CancelPurchase()=>Confirmation.SetActive(false);
-        public async void ConfirmPurchase(){Confirmation.SetActive(false);var d=ClassCatalog.Current.Classes[selected];var ok=d.Currency=="PremiumGem"?await EconomyService.Get().UnlockEngineer():ClassProfiles.Purchase(d.Id,Rules);Status.text=L.Text(ok?"class.purchased":"class.purchase_failed");Refresh();}
+        public async void ConfirmPurchase(){Confirmation.SetActive(false);var d=ClassCatalog.Current.Classes[selected];var ok=d.Currency=="PremiumGem"?await EconomyService.Get().UnlockEngineer():ClassProfiles.Purchase(d.Id,Rules);if(ok&&d.Currency!="PremiumGem")AudioRuntime.Play(Sound.ClassUnlock);else if(!ok)AudioRuntime.Play(Sound.UiError);Status.text=L.Text(ok?"class.purchased":"class.purchase_failed");Refresh();}
         private void Unavailable(){Status.text=L.Text("class.profile_failed");PurchaseButton.interactable=SelectButton.interactable=RespecButton.interactable=InvestButton.interactable=false;}
         public void Refresh()
         {

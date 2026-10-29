@@ -37,8 +37,6 @@ namespace Wildfolk.Editor
             var light=new GameObject("Global Light 2D").AddComponent<Light2D>();light.lightType=Light2D.LightType.Global;light.intensity=.78f;
             Background();
             var services=new GameObject("Home Preferences");var prefs=services.AddComponent<UserPreferences>();var audio=services.AddComponent<GameAudio>();audio.Preferences=prefs;
-            audio.Music=new GameObject("Music Channel",typeof(AudioSource)).GetComponent<AudioSource>();audio.Music.transform.SetParent(services.transform);audio.Music.playOnAwake=false;audio.Music.loop=true;
-            audio.Sfx=new GameObject("SFX Channel",typeof(AudioSource)).GetComponent<AudioSource>();audio.Sfx.transform.SetParent(services.transform);audio.Sfx.playOnAwake=false;
             var canvas=new GameObject("Home Canvas",typeof(RectTransform),typeof(Canvas),typeof(CanvasScaler),typeof(GraphicRaycaster));canvas.GetComponent<Canvas>().renderMode=RenderMode.ScreenSpaceOverlay;
             var scaler=canvas.GetComponent<CanvasScaler>();scaler.uiScaleMode=CanvasScaler.ScaleMode.ScaleWithScreenSize;scaler.referenceResolution=new Vector2(1920,1080);scaler.matchWidthOrHeight=.5f;
             var shade=Image("Atmosphere",canvas.transform,"white",new Vector2(.5f,.5f),Vector2.zero,Vector2.zero);var shadeRect=(RectTransform)shade.transform;shadeRect.anchorMin=Vector2.zero;shadeRect.anchorMax=Vector2.one;shadeRect.offsetMin=shadeRect.offsetMax=Vector2.zero;shade.color=new Color(0.02f,.06f,.04f,.13f);

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="2" result="Failed(Child)" total="2" passed="0" failed="2" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-29 06:48:05Z" end-time="2026-10-29 06:48:05Z" duration="0.1433515">
+  <test-suite type="TestSuite" id="1000" name="Wildfolk" fullname="Wildfolk" runstate="Runnable" testcasecount="356" result="Failed" site="Child" start-time="2026-10-29 06:48:05Z" end-time="2026-10-29 06:48:05Z" duration="0.143352" total="2" passed="0" failed="2" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <failure>
+      <message><![CDATA[One or more child tests had errors]]></message>
+    </failure>
+    <test-suite type="Assembly" id="1431" name="Wildfolk.Tests.EditMode.dll" fullname="C:/UnityProjects/LowfireAndroidQa/tests/artifacts/unity/Library/ScriptAssemblies/Wildfolk.Tests.EditMode.dll" runstate="Runnable" testcasecount="356" result="Failed" site="Child" start-time="2026-10-29 06:48:05Z" end-time="2026-10-29 06:48:05Z" duration="0.118334" total="2" passed="0" failed="2" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="6484" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <failure>
+        <message><![CDATA[One or more child tests had errors]]></message>
+      </failure>
+      <test-suite type="TestSuite" id="1432" name="Wildfolk" fullname="Wildfolk" runstate="Runnable" testcasecount="356" result="Failed" site="Child" start-time="2026-10-29 06:48:05Z" end-time="2026-10-29 06:48:05Z" duration="0.107274" total="2" passed="0" failed="2" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <failure>
+          <message><![CDATA[One or more child tests had errors]]></message>
+        </failure>
+        <test-suite type="TestSuite" id="1433" name="Tests" fullname="Wildfolk.Tests" runstate="Runnable" testcasecount="356" result="Failed" site="Child" start-time="2026-10-29 06:48:05Z" end-time="2026-10-29 06:48:05Z" duration="0.102504" total="2" passed="0" failed="2" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <failure>
+            <message><![CDATA[One or more child tests had errors]]></message>
+          </failure>
+          <test-suite type="TestFixture" id="1277" name="NetworkCreatureContractTests" fullname="Wildfolk.Tests.NetworkCreatureContractTests" classname="Wildfolk.Tests.NetworkCreatureContractTests" runstate="Runnable" testcasecount="4" result="Failed" site="Child" start-time="2026-10-29 06:48:05Z" end-time="2026-10-29 06:48:05Z" duration="0.048790" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <failure>
+              <message><![CDATA[One or more child tests had errors]]></message>
+            </failure>
+            <test-case id="1279" name="EveryEcologySpawnHasRegisteredServerPrefabAndSharedBrain" fullname="Wildfolk.Tests.NetworkCreatureContractTests.EveryEcologySpawnHasRegisteredServerPrefabAndSharedBrain" methodname="EveryEcologySpawnHasRegisteredServerPrefabAndSharedBrain" classname="Wildfolk.Tests.NetworkCreatureContractTests" runstate="Runnable" seed="1195113699" result="Failed" start-time="2026-10-29 06:48:05Z" end-time="2026-10-29 06:48:05Z" duration="0.026720" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[  Expected: 64
+  But was:  66
+]]></message>
+                <stack-trace><![CDATA[at Wildfolk.Tests.NetworkCreatureContractTests.EveryEcologySpawnHasRegisteredServerPrefabAndSharedBrain () [0x0001f] in C:\UnityProjects\LowfireAndroidQa\tests\artifacts\unity\Assets\Wildfolk\Tests\EditMode\NetworkCreatureContractTests.cs:26
+]]></stack-trace>
+              </failure>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1423" name="WorldGenerationTests" fullname="Wildfolk.Tests.WorldGenerationTests" classname="Wildfolk.Tests.WorldGenerationTests" runstate="Runnable" testcasecount="7" result="Failed" site="Child" start-time="2026-10-29 06:48:05Z" end-time="2026-10-29 06:48:05Z" duration="0.029698" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <failure>
+              <message><![CDATA[One or more child tests had errors]]></message>
+            </failure>
+            <test-case id="1425" name="ManySeedsHaveClearSpawnNearbySuppliesRareOreAndNoOverlaps" fullname="Wildfolk.Tests.WorldGenerationTests.ManySeedsHaveClearSpawnNearbySuppliesRareOreAndNoOverlaps" methodname="ManySeedsHaveClearSpawnNearbySuppliesRareOreAndNoOverlaps" classname="Wildfolk.Tests.WorldGenerationTests" runstate="Runnable" seed="1262734141" result="Failed" start-time="2026-10-29 06:48:05Z" end-time="2026-10-29 06:48:05Z" duration="0.026011" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[  Expected: less than 300
+  But was:  307
+]]></message>
+                <stack-trace><![CDATA[at Wildfolk.Tests.WorldGenerationTests.ManySeedsHaveClearSpawnNearbySuppliesRareOreAndNoOverlaps () [0x00133] in C:\UnityProjects\LowfireAndroidQa\tests\artifacts\unity\Assets\Wildfolk\Tests\EditMode\WorldGenerationTests.cs:29
+]]></stack-trace>
+              </failure>
+              <output><![CDATA[<b><color=#2EA3FF>MCP-FOR-UNITY</color></b>: [TestRunnerNoThrottle] Restored Interaction Mode after test run.
+Saving results to: C:/Users/User/AppData/LocalLow/DefaultCompany/Wildfolk\TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

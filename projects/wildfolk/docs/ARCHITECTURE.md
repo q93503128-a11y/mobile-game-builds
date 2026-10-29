@@ -25,7 +25,7 @@ Runtime/InputSystem/UGUI,Editor,EditMode/PlayMode Tests를 분리한다. 실제 
 | Goblin | 별도GoblinSpawner Road Day Encounter→GoblinController Territory/Patrol/Leash |
 | 중립 동물 | NeutralAnimal 이동/도망,Health+LootOnDeath |
 | Loot/재화 | LootTable+Health 마지막직접공격자→WorldPickup/세션PlayerProgression XP/Gold |
-| 설정/오디오 | LocalSettings/UserPreferences→ControlSizeLayout/GameAudio/L Language |
+| 설정/오디오 | LocalSettings/UserPreferences→ControlSizeLayout/GameAudio facade/AudioRuntime+Mixer/L Language |
 | UI 상태 | GameplaySession→WorldPauseController/입력차단/ModalLayout |
 
 PlayerAction의 공격/상호작용 Context 혼합을 폐기하고 GUID를 보존해 Primary로 대체했다. 인터페이스는 PlayerInteraction을 받으며 선택 장비와 무관하게 시설을 찾는다. PlayerCombat은 설치물을 자동 타격하지 않고 Resource 채굴 Tier를 데이터로 확인한다.
@@ -96,7 +96,7 @@ Build Settings는 MainMenu/싱글 Wildfolk/멀티 Multiplayer다. FrontendSceneB
 - SaveGameRules: 기존 migration/SaveValidation/적 검증 코드를 WorldSaveService에서 분리해 Home도 공유한다. authored Player Prefab/World/Catalog/종별 데이터 참조만 보관하며 세계 GameObject를 만들지 않는다.
 - SaveRepository.Default: 기존 Editor UserData/기기 persistentDataPath의 단일 파일 위치. SceneFlow.Repository는 같은 파일 접근을 다음 씬에 전달하며 별도 Save 형식이나 영구 캐시를 만들지 않는다.
 - HomeScreen: Home/Settings/Multiplayer/ConfirmNew 상태와 버튼 동선, Home 재진입/Continue 클릭 때만 파일 검증. 언어 이벤트는 표시만 갱신한다. Update나 파일 polling은 없다.
-- UserPreferences/GameAudio/EventSystem은 씬 소유다. DontDestroyOnLoad 서비스를 추가하지 않으며 이전 씬은 Single 모드로 정리된다.
+- UserPreferences/GameAudio facade/EventSystem은 씬 소유다. Foundation5의 단일 Lowfire Audio owner만 음악/환경/고정 source pool을 DontDestroyOnLoad로 유지한다. 이전 씬은 Single 모드로 정리하며 중복 owner/listener를 만들지 않는다.
 - SurvivalUiBuilder.Settings는 Back 콜백을 받아 Home/Pause가 같은 SettingsPanel 제작 코드와 LocalSettings 키를 사용한다.
 
 Quiet Woodland는 SpriteRenderer/Light만 사용하며 WorldGenerator,CreatureMember,Health,PrefabPool,Population/Combat은 없다. SafeAreaLayout은 기존 크기 변화 guard를 사용한다. QualityUiBuilder.AlignHands는 실제 Player 몸통/손 크기와 Facing 간격으로 초상화 손과 장갑 비율을 계산한다. 월드 손 크기/공격 모션은 변경하지 않았다.

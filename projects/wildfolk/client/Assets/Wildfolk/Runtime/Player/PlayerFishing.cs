@@ -27,7 +27,7 @@ namespace Wildfolk
             if(!FishingWaterContext.TryCast(world.Map,p,direction,out var point) || !FishingWaterContext.TrySample(world.Map,point,world.GetComponent<WorldClock>().Model.Phase==DayPhase.Night,out var context) || CatchTable==null){Feedback("feedback.fishing_water");return false;}
             var entry=CatchTable.Roll(context,Random.value);if(entry<0)return false;
             WaterPoint=point;Context=context;PendingCatch=entry;castRod=bag.SelectedStack.Item;
-            origin=p;started=Time.time;Phase=FishingPhase.Casting;net?.Publish(ActivityKind.Fishing,WaterPoint,5.2f);ShowContext(context);return true;
+            origin=p;started=Time.time;Phase=FishingPhase.Casting;net?.Publish(ActivityKind.Fishing,WaterPoint,5.2f);if(net==null)AudioRuntime.Play(Sound.Cast,WaterPoint);ShowContext(context);return true;
         }
         private bool CanFish()=>health.IsAlive && commands.Session.IsRunning && !bag.SelectedStack.IsEmpty && bag.SelectedStack.Item.FishingRod;
         private void Feedback(string key){if(net!=null && net.IsSpawned)net.Feedback(key=="feedback.bag_full");else PlayerFeedback.ShowKey(key);}
@@ -58,7 +58,7 @@ namespace Wildfolk
             line.enabled=bobber.enabled=enabled;
         }
         private void Present(float t,FishingPhase phase,Vector2 point)
-        {if(phase==FishingPhase.Bite && lastPresented!=FishingPhase.Bite && (networkPlayer==null || networkPlayer.IsOwner))PlayerFeedback.ShowKey("feedback.fishing_bite");lastPresented=phase;Show(phase!=FishingPhase.Idle);if(phase==FishingPhase.Idle)return;var tip=equipment.HeldVisual.transform.position;var end=phase==FishingPhase.Caught ? (Vector3)Vector2.Lerp(point,transform.position,Mathf.Clamp01(t/.5f)) : (Vector3)Vector2.Lerp(transform.position,point,Mathf.Clamp01(t/.45f));end.y+=phase==FishingPhase.Bite ? Mathf.Sin(t*18)*.1f : Mathf.Sin(t*3)*.025f;line.SetPosition(0,tip);line.SetPosition(1,(tip+end)*.5f+Vector3.down*.3f);line.SetPosition(2,end);bobber.transform.localScale=Vector3.one*(phase==FishingPhase.Bite ? .7f : .3f);bobber.transform.position=end;bobber.sprite=phase==FishingPhase.Bite ? BiteSprite : BobberSprite;}
+        {if(phase==FishingPhase.Bite && lastPresented!=FishingPhase.Bite && (networkPlayer==null || networkPlayer.IsOwner)){PlayerFeedback.ShowKey("feedback.fishing_bite");AudioRuntime.Play(Sound.Bite,point);}lastPresented=phase;Show(phase!=FishingPhase.Idle);if(phase==FishingPhase.Idle)return;var tip=equipment.HeldVisual.transform.position;var end=phase==FishingPhase.Caught ? (Vector3)Vector2.Lerp(point,transform.position,Mathf.Clamp01(t/.5f)) : (Vector3)Vector2.Lerp(transform.position,point,Mathf.Clamp01(t/.45f));end.y+=phase==FishingPhase.Bite ? Mathf.Sin(t*18)*.1f : Mathf.Sin(t*3)*.025f;line.SetPosition(0,tip);line.SetPosition(1,(tip+end)*.5f+Vector3.down*.3f);line.SetPosition(2,end);bobber.transform.localScale=Vector3.one*(phase==FishingPhase.Bite ? .7f : .3f);bobber.transform.position=end;bobber.sprite=phase==FishingPhase.Bite ? BiteSprite : BobberSprite;}
         public void ResetTransient()=>Cancel();
         private void Cancel(){if(Phase!=FishingPhase.Idle || net!=null && net.IsSpawned && net.IsServer && (net.Activity.Value.Kind==ActivityKind.Fishing || net.Activity.Value.Kind==ActivityKind.FishingCaught))net?.Publish(ActivityKind.None,default,0);Phase=FishingPhase.Idle;PendingCatch=-1;castRod=null;lastPresented=FishingPhase.Idle;Show(false);}
         private void OnDisable()=>Cancel();
