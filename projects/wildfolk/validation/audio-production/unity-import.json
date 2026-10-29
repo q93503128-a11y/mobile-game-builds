@@ -1,0 +1,943 @@
+{
+    "unity": "6000.3.19f1",
+    "clips": 104,
+    "assets": [
+        {
+            "path": "Assets/Wildfolk/Audio/Ambience/campfire.ogg",
+            "channels": 2,
+            "frequency": 32000,
+            "seconds": 28.100000381469728,
+            "loadType": "Streaming",
+            "androidFormat": "Vorbis",
+            "editorBytes": 646
+        },
+        {
+            "path": "Assets/Wildfolk/Audio/Ambience/cave_air.ogg",
+            "channels": 2,
+            "frequency": 32000,
+            "seconds": 47.400001525878909,
+            "loadType": "Streaming",
+            "androidFormat": "Vorbis",
+            "editorBytes": 646
+        },
+        {
+            "path": "Assets/Wildfolk/Audio/Ambience/deep_air.ogg",
+            "channels": 2,
+            "frequency": 32000,
+            "seconds": 59.400001525878909,
+            "loadType": "Streaming",
+            "androidFormat": "Vorbis",
+            "editorBytes": 646
+        },
+        {
+            "path": "Assets/Wildfolk/Audio/Ambience/forest_day.ogg",
+            "channels": 2,
+            "frequency": 32000,
+            "seconds": 43.400001525878909,
+            "loadType": "Streaming",
+            "androidFormat": "Vorbis",
+            "editorBytes": 646
+        },
+        {
+            "path": "Assets/Wildfolk/Audio/Ambience/forest_night.ogg",
+            "channels": 2,
+            "frequency": 32000,
+            "seconds": 10.399999618530274,
+            "loadType": "Streaming",
+            "androidFormat": "Vorbis",
+            "editorBytes": 646
+        },
+        {
+            "path": "Assets/Wildfolk/Audio/Ambience/graveyard_air.ogg",
+            "channels": 2,
+            "frequency": 32000,
+            "seconds": 28.399999618530275,
+            "loadType": "Streaming",
+            "androidFormat": "Vorbis",
+            "editorBytes": 646
+        },
+        {
+            "path": "Assets/Wildfolk/Audio/Music/boss.ogg",
+            "channels": 2,
+            "frequency": 32000,
+            "seconds": 114.61431121826172,
+            "loadType": "Streaming",
+            "androidFormat": "Vorbis",
+            "editorBytes": 646
+        },
+        {
+            "path": "Assets/Wildfolk/Audio/Music/cave.ogg",
+            "channels": 2,
+            "frequency": 32000,
+            "seconds": 46.51884460449219,
+            "loadType": "Streaming",
+            "androidFormat": "Vorbis",
+            "editorBytes": 646
+        },
+        {
+            "path": "Assets/Wildfolk/Audio/Music/day.ogg",
+            "channels": 2,
+            "frequency": 32000,
+            "seconds": 234.85594177246095,
+            "loadType": "Streaming",
+            "androidFormat": "Vorbis",
+            "editorBytes": 646
+        },
+        {
+            "path": "Assets/Wildfolk/Audio/Music/graveyard.ogg",
+            "channels": 2,
+            "frequency": 32000,
+            "seconds": 159.2313995361328,
+            "loadType": "Streaming",
+            "androidFormat": "Vorbis",
+            "editorBytes": 646
+        },
+        {
+            "path": "Assets/Wildfolk/Audio/Music/menu.ogg",
+            "channels": 2,
+            "frequency": 32000,
+            "seconds": 133.00450134277345,
+            "loadType": "Streaming",
+            "androidFormat": "Vorbis",
+            "editorBytes": 646
+        },
+        {
+            "path": "Assets/Wildfolk/Audio/Music/night.ogg",
+            "channels": 2,
+            "frequency": 32000,
+            "seconds": 99.4632797241211,
+            "loadType": "Streaming",
+            "androidFormat": "Vorbis",
+            "editorBytes": 646
+        },
+        {
+            "path": "Assets/Wildfolk/Audio/SFX/bat_0.wav",
+            "channels": 1,
+            "frequency": 32000,
+            "seconds": 0.414000004529953,
+            "loadType": "DecompressOnLoad",
+            "androidFormat": "ADPCM",
+            "editorBytes": 32601
+        },
+        {
+            "path": "Assets/Wildfolk/Audio/SFX/bat_1.wav",
+            "channels": 1,
+            "frequency": 32000,
+            "seconds": 0.44999998807907107,
+            "loadType": "DecompressOnLoad",
+            "androidFormat": "ADPCM",
+            "editorBytes": 34905
+        },
+        {
+            "path": "Assets/Wildfolk/Audio/SFX/bead_reward.wav",
+            "channels": 1,
+            "frequency": 32000,
+            "seconds": 0.28999999165534975,
+            "loadType": "DecompressOnLoad",
+            "androidFormat": "ADPCM",
+            "editorBytes": 24665
+        },
+        {
+            "path": "Assets/Wildfolk/Audio/SFX/beast.wav",
+            "channels": 1,
+            "frequency": 32000,
+            "seconds": 1.399999976158142,
+            "loadType": "DecompressOnLoad",
+            "androidFormat": "ADPCM",
+            "editorBytes": 95705
+        },
+        {
+            "path": "Assets/Wildfolk/Audio/SFX/bird.wav",
+            "channels": 1,
+            "frequency": 32000,
+            "seconds": 1.399999976158142,
+            "loadType": "DecompressOnLoad",
+            "androidFormat": "ADPCM",
+            "editorBytes": 95705
+        },
+        {
+            "path": "Assets/Wildfolk/Audio/SFX/blade_0.wav",
+            "channels": 1,
+            "frequency": 32000,
+            "seconds": 0.38600000739097597,
+            "loadType": "DecompressOnLoad",
+            "androidFormat": "ADPCM",
+            "editorBytes": 30809
+        },
+        {
+            "path": "Assets/Wildfolk/Audio/SFX/blade_1.wav",
+            "channels": 1,
+            "frequency": 32000,
+            "seconds": 0.4580000042915344,
+            "loadType": "DecompressOnLoad",
+            "androidFormat": "ADPCM",
+            "editorBytes": 35417
+        },
+        {
+            "path": "Assets/Wildfolk/Audio/SFX/body_fall_0.wav",
+            "channels": 1,
+            "frequency": 32000,
+            "seconds": 0.527999997138977,
+            "loadType": "DecompressOnLoad",
+            "androidFormat": "ADPCM",
+            "editorBytes": 39897
+        },
+        {
+            "path": "Assets/Wildfolk/Audio/SFX/body_fall_1.wav",
+            "channels": 1,
+            "frequency": 32000,
+            "seconds": 0.5580000281333923,
+            "loadType": "DecompressOnLoad",
+            "androidFormat": "ADPCM",
+            "editorBytes": 41817
+        },
+        {
+            "path": "Assets/Wildfolk/Audio/SFX/bone_hit_0.wav",
+            "channels": 1,
+            "frequency": 32000,
+            "seconds": 0.15199999511241914,
+            "loadType": "DecompressOnLoad",
+            "androidFormat": "ADPCM",
+            "editorBytes": 15833
+        },
+        {
+            "path": "Assets/Wildfolk/Audio/SFX/bone_hit_1.wav",
+            "channels": 1,
+            "frequency": 32000,
+            "seconds": 0.11599999666213989,
+            "loadType": "DecompressOnLoad",
+            "androidFormat": "ADPCM",
+            "editorBytes": 13529
+        },
+        {
+            "path": "Assets/Wildfolk/Audio/SFX/bone_hit_2.wav",
+            "channels": 1,
+            "frequency": 32000,
+            "seconds": 0.16200000047683717,
+            "loadType": "DecompressOnLoad",
+            "androidFormat": "ADPCM",
+            "editorBytes": 16473
+        },
+        {
+            "path": "Assets/Wildfolk/Audio/SFX/boss_roar.wav",
+            "channels": 1,
+            "frequency": 32000,
+            "seconds": 0.4320000112056732,
+            "loadType": "DecompressOnLoad",
+            "androidFormat": "ADPCM",
+            "editorBytes": 33753
+        },
+        {
+            "path": "Assets/Wildfolk/Audio/SFX/boss_summon.wav",
+            "channels": 1,
+            "frequency": 32000,
+            "seconds": 0.527999997138977,
+            "loadType": "DecompressOnLoad",
+            "androidFormat": "ADPCM",
+            "editorBytes": 39897
+        },
+        {
+            "path": "Assets/Wildfolk/Audio/SFX/bow_draw.wav",
+            "channels": 1,
+            "frequency": 32000,
+            "seconds": 0.699999988079071,
+            "loadType": "DecompressOnLoad",
+            "androidFormat": "ADPCM",
+            "editorBytes": 50905
+        },
+        {
+            "path": "Assets/Wildfolk/Audio/SFX/bow_release.wav",
+            "channels": 1,
+            "frequency": 32000,
+            "seconds": 0.4000000059604645,
+            "loadType": "DecompressOnLoad",
+            "androidFormat": "ADPCM",
+            "editorBytes": 31705
+        },
+        {
+            "path": "Assets/Wildfolk/Audio/SFX/chest.wav",
+            "channels": 1,
+            "frequency": 32000,
+            "seconds": 0.7699999809265137,
+            "loadType": "DecompressOnLoad",
+            "androidFormat": "ADPCM",
+            "editorBytes": 55385
+        },
+        {
+            "path": "Assets/Wildfolk/Audio/SFX/chitin_hit_0.wav",
+            "channels": 1,
+            "frequency": 32000,
+            "seconds": 0.15000000596046449,
+            "loadType": "DecompressOnLoad",
+            "androidFormat": "ADPCM",
+            "editorBytes": 15705
+        },
+        {
+            "path": "Assets/Wildfolk/Audio/SFX/chitin_hit_1.wav",
+            "channels": 1,
+            "frequency": 32000,
+            "seconds": 0.14800000190734864,
+            "loadType": "DecompressOnLoad",
+            "androidFormat": "ADPCM",
+            "editorBytes": 15577
+        },
+        {
+            "path": "Assets/Wildfolk/Audio/SFX/chitin_hit_2.wav",
+            "channels": 1,
+            "frequency": 32000,
+            "seconds": 0.164000004529953,
+            "loadType": "DecompressOnLoad",
+            "androidFormat": "ADPCM",
+            "editorBytes": 16601
+        },
+        {
+            "path": "Assets/Wildfolk/Audio/SFX/craft_complete.wav",
+            "channels": 1,
+            "frequency": 32000,
+            "seconds": 0.23800000548362733,
+            "loadType": "DecompressOnLoad",
+            "androidFormat": "ADPCM",
+            "editorBytes": 21337
+        },
+        {
+            "path": "Assets/Wildfolk/Audio/SFX/craft_start.wav",
+            "channels": 1,
+            "frequency": 32000,
+            "seconds": 0.23399999737739564,
+            "loadType": "DecompressOnLoad",
+            "androidFormat": "ADPCM",
+            "editorBytes": 21081
+        },
+        {
+            "path": "Assets/Wildfolk/Audio/SFX/crossbow.wav",
+            "channels": 1,
+            "frequency": 32000,
+            "seconds": 0.38600000739097597,
+            "loadType": "DecompressOnLoad",
+            "androidFormat": "ADPCM",
+            "editorBytes": 30809
+        },
+        {
+            "path": "Assets/Wildfolk/Audio/SFX/door_close.wav",
+            "channels": 1,
+            "frequency": 32000,
+            "seconds": 0.5559999942779541,
+            "loadType": "DecompressOnLoad",
+            "androidFormat": "ADPCM",
+            "editorBytes": 41689
+        },
+        {
+            "path": "Assets/Wildfolk/Audio/SFX/door_open.wav",
+            "channels": 1,
+            "frequency": 32000,
+            "seconds": 0.9120000004768372,
+            "loadType": "DecompressOnLoad",
+            "androidFormat": "ADPCM",
+            "editorBytes": 64473
+        },
+        {
+            "path": "Assets/Wildfolk/Audio/SFX/drink.wav",
+            "channels": 1,
+            "frequency": 32000,
+            "seconds": 0.36800000071525576,
+            "loadType": "DecompressOnLoad",
+            "androidFormat": "ADPCM",
+            "editorBytes": 29657
+        },
+        {
+            "path": "Assets/Wildfolk/Audio/SFX/engineer.wav",
+            "channels": 1,
+            "frequency": 32000,
+            "seconds": 0.20399999618530274,
+            "loadType": "DecompressOnLoad",
+            "androidFormat": "ADPCM",
+            "editorBytes": 19161
+        },
+        {
+            "path": "Assets/Wildfolk/Audio/SFX/equip.wav",
+            "channels": 1,
+            "frequency": 32000,
+            "seconds": 0.24799999594688416,
+            "loadType": "DecompressOnLoad",
+            "androidFormat": "ADPCM",
+            "editorBytes": 21977
+        },
+        {
+            "path": "Assets/Wildfolk/Audio/SFX/fishing_bite.wav",
+            "channels": 1,
+            "frequency": 32000,
+            "seconds": 0.5,
+            "loadType": "DecompressOnLoad",
+            "androidFormat": "ADPCM",
+            "editorBytes": 38105
+        },
+        {
+            "path": "Assets/Wildfolk/Audio/SFX/fishing_catch.wav",
+            "channels": 1,
+            "frequency": 32000,
+            "seconds": 0.3160000145435333,
+            "loadType": "DecompressOnLoad",
+            "androidFormat": "ADPCM",
+            "editorBytes": 26329
+        },
+        {
+            "path": "Assets/Wildfolk/Audio/SFX/flesh_hit_0.wav",
+            "channels": 1,
+            "frequency": 32000,
+            "seconds": 0.2639999985694885,
+            "loadType": "DecompressOnLoad",
+            "androidFormat": "ADPCM",
+            "editorBytes": 23001
+        },
+        {
+            "path": "Assets/Wildfolk/Audio/SFX/flesh_hit_1.wav",
+            "channels": 1,
+            "frequency": 32000,
+            "seconds": 0.2980000078678131,
+            "loadType": "DecompressOnLoad",
+            "androidFormat": "ADPCM",
+            "editorBytes": 25177
+        },
+        {
+            "path": "Assets/Wildfolk/Audio/SFX/flesh_hit_2.wav",
+            "channels": 1,
+            "frequency": 32000,
+            "seconds": 0.3880000114440918,
+            "loadType": "DecompressOnLoad",
+            "androidFormat": "ADPCM",
+            "editorBytes": 30937
+        },
+        {
+            "path": "Assets/Wildfolk/Audio/SFX/food.wav",
+            "channels": 1,
+            "frequency": 32000,
+            "seconds": 0.550000011920929,
+            "loadType": "DecompressOnLoad",
+            "androidFormat": "ADPCM",
+            "editorBytes": 41305
+        },
+        {
+            "path": "Assets/Wildfolk/Audio/SFX/goblin_0.wav",
+            "channels": 1,
+            "frequency": 32000,
+            "seconds": 0.3659999966621399,
+            "loadType": "DecompressOnLoad",
+            "androidFormat": "ADPCM",
+            "editorBytes": 29529
+        },
+        {
+            "path": "Assets/Wildfolk/Audio/SFX/goblin_1.wav",
+            "channels": 1,
+            "frequency": 32000,
+            "seconds": 0.5339999794960022,
+            "loadType": "DecompressOnLoad",
+            "androidFormat": "ADPCM",
+            "editorBytes": 40281
+        },
+        {
+            "path": "Assets/Wildfolk/Audio/SFX/goblin_2.wav",
+            "channels": 1,
+            "frequency": 32000,
+            "seconds": 0.5080000162124634,
+            "loadType": "DecompressOnLoad",
+            "androidFormat": "ADPCM",
+            "editorBytes": 38617
+        },
+        {
+            "path": "Assets/Wildfolk/Audio/SFX/gold.wav",
+            "channels": 1,
+            "frequency": 32000,
+            "seconds": 0.699999988079071,
+            "loadType": "DecompressOnLoad",
+            "androidFormat": "ADPCM",
+            "editorBytes": 50905
+        },
+        {
+            "path": "Assets/Wildfolk/Audio/SFX/heavy_hit_0.wav",
+            "channels": 1,
+            "frequency": 32000,
+            "seconds": 0.4339999854564667,
+            "loadType": "DecompressOnLoad",
+            "androidFormat": "ADPCM",
+            "editorBytes": 33881
+        },
+        {
+            "path": "Assets/Wildfolk/Audio/SFX/heavy_hit_1.wav",
+            "channels": 1,
+            "frequency": 32000,
+            "seconds": 0.39399999380111697,
+            "loadType": "DecompressOnLoad",
+            "androidFormat": "ADPCM",
+            "editorBytes": 31321
+        },
+        {
+            "path": "Assets/Wildfolk/Audio/SFX/insect_0.wav",
+            "channels": 1,
+            "frequency": 32000,
+            "seconds": 0.3779999911785126,
+            "loadType": "DecompressOnLoad",
+            "androidFormat": "ADPCM",
+            "editorBytes": 30297
+        },
+        {
+            "path": "Assets/Wildfolk/Audio/SFX/insect_1.wav",
+            "channels": 1,
+            "frequency": 32000,
+            "seconds": 0.3240000009536743,
+            "loadType": "DecompressOnLoad",
+            "androidFormat": "ADPCM",
+            "editorBytes": 26841
+        },
+        {
+            "path": "Assets/Wildfolk/Audio/SFX/insect_2.wav",
+            "channels": 1,
+            "frequency": 32000,
+            "seconds": 0.4519999921321869,
+            "loadType": "DecompressOnLoad",
+            "androidFormat": "ADPCM",
+            "editorBytes": 35033
+        },
+        {
+            "path": "Assets/Wildfolk/Audio/SFX/journal.wav",
+            "channels": 1,
+            "frequency": 32000,
+            "seconds": 0.15199999511241914,
+            "loadType": "DecompressOnLoad",
+            "androidFormat": "ADPCM",
+            "editorBytes": 15833
+        },
+        {
+            "path": "Assets/Wildfolk/Audio/SFX/ore_break_0.wav",
+            "channels": 1,
+            "frequency": 32000,
+            "seconds": 0.16599999368190766,
+            "loadType": "DecompressOnLoad",
+            "androidFormat": "ADPCM",
+            "editorBytes": 16729
+        },
+        {
+            "path": "Assets/Wildfolk/Audio/SFX/ore_break_1.wav",
+            "channels": 1,
+            "frequency": 32000,
+            "seconds": 0.3580000102519989,
+            "loadType": "DecompressOnLoad",
+            "androidFormat": "ADPCM",
+            "editorBytes": 29017
+        },
+        {
+            "path": "Assets/Wildfolk/Audio/SFX/ore_hit_0.wav",
+            "channels": 1,
+            "frequency": 32000,
+            "seconds": 0.23199999332427979,
+            "loadType": "DecompressOnLoad",
+            "androidFormat": "ADPCM",
+            "editorBytes": 20953
+        },
+        {
+            "path": "Assets/Wildfolk/Audio/SFX/ore_hit_1.wav",
+            "channels": 1,
+            "frequency": 32000,
+            "seconds": 0.18400000035762788,
+            "loadType": "DecompressOnLoad",
+            "androidFormat": "ADPCM",
+            "editorBytes": 17881
+        },
+        {
+            "path": "Assets/Wildfolk/Audio/SFX/ore_hit_2.wav",
+            "channels": 1,
+            "frequency": 32000,
+            "seconds": 0.17399999499320985,
+            "loadType": "DecompressOnLoad",
+            "androidFormat": "ADPCM",
+            "editorBytes": 17241
+        },
+        {
+            "path": "Assets/Wildfolk/Audio/SFX/page.wav",
+            "channels": 1,
+            "frequency": 32000,
+            "seconds": 0.5,
+            "loadType": "DecompressOnLoad",
+            "androidFormat": "ADPCM",
+            "editorBytes": 38105
+        },
+        {
+            "path": "Assets/Wildfolk/Audio/SFX/pickup.wav",
+            "channels": 1,
+            "frequency": 32000,
+            "seconds": 0.23199999332427979,
+            "loadType": "DecompressOnLoad",
+            "androidFormat": "ADPCM",
+            "editorBytes": 20953
+        },
+        {
+            "path": "Assets/Wildfolk/Audio/SFX/plant_0.wav",
+            "channels": 1,
+            "frequency": 32000,
+            "seconds": 0.11599999666213989,
+            "loadType": "DecompressOnLoad",
+            "androidFormat": "ADPCM",
+            "editorBytes": 13529
+        },
+        {
+            "path": "Assets/Wildfolk/Audio/SFX/plant_1.wav",
+            "channels": 1,
+            "frequency": 32000,
+            "seconds": 0.18199999630451203,
+            "loadType": "DecompressOnLoad",
+            "androidFormat": "ADPCM",
+            "editorBytes": 17753
+        },
+        {
+            "path": "Assets/Wildfolk/Audio/SFX/plant_2.wav",
+            "channels": 1,
+            "frequency": 32000,
+            "seconds": 0.1340000033378601,
+            "loadType": "DecompressOnLoad",
+            "androidFormat": "ADPCM",
+            "editorBytes": 14681
+        },
+        {
+            "path": "Assets/Wildfolk/Audio/SFX/ring_reward.wav",
+            "channels": 1,
+            "frequency": 32000,
+            "seconds": 0.49399998784065249,
+            "loadType": "DecompressOnLoad",
+            "androidFormat": "ADPCM",
+            "editorBytes": 37721
+        },
+        {
+            "path": "Assets/Wildfolk/Audio/SFX/slime_0.wav",
+            "channels": 1,
+            "frequency": 32000,
+            "seconds": 0.17399999499320985,
+            "loadType": "DecompressOnLoad",
+            "androidFormat": "ADPCM",
+            "editorBytes": 17241
+        },
+        {
+            "path": "Assets/Wildfolk/Audio/SFX/slime_1.wav",
+            "channels": 1,
+            "frequency": 32000,
+            "seconds": 0.30399999022483828,
+            "loadType": "DecompressOnLoad",
+            "androidFormat": "ADPCM",
+            "editorBytes": 25561
+        },
+        {
+            "path": "Assets/Wildfolk/Audio/SFX/slime_2.wav",
+            "channels": 1,
+            "frequency": 32000,
+            "seconds": 0.20399999618530274,
+            "loadType": "DecompressOnLoad",
+            "androidFormat": "ADPCM",
+            "editorBytes": 19161
+        },
+        {
+            "path": "Assets/Wildfolk/Audio/SFX/step_grass_0.wav",
+            "channels": 1,
+            "frequency": 32000,
+            "seconds": 0.15199999511241914,
+            "loadType": "DecompressOnLoad",
+            "androidFormat": "ADPCM",
+            "editorBytes": 15833
+        },
+        {
+            "path": "Assets/Wildfolk/Audio/SFX/step_grass_1.wav",
+            "channels": 1,
+            "frequency": 32000,
+            "seconds": 0.17000000178813935,
+            "loadType": "DecompressOnLoad",
+            "androidFormat": "ADPCM",
+            "editorBytes": 16985
+        },
+        {
+            "path": "Assets/Wildfolk/Audio/SFX/step_grass_2.wav",
+            "channels": 1,
+            "frequency": 32000,
+            "seconds": 0.17599999904632569,
+            "loadType": "DecompressOnLoad",
+            "androidFormat": "ADPCM",
+            "editorBytes": 17369
+        },
+        {
+            "path": "Assets/Wildfolk/Audio/SFX/step_grass_3.wav",
+            "channels": 1,
+            "frequency": 32000,
+            "seconds": 0.12399999797344208,
+            "loadType": "DecompressOnLoad",
+            "androidFormat": "ADPCM",
+            "editorBytes": 14041
+        },
+        {
+            "path": "Assets/Wildfolk/Audio/SFX/step_stone_0.wav",
+            "channels": 1,
+            "frequency": 32000,
+            "seconds": 0.10400000214576721,
+            "loadType": "DecompressOnLoad",
+            "androidFormat": "ADPCM",
+            "editorBytes": 12761
+        },
+        {
+            "path": "Assets/Wildfolk/Audio/SFX/step_stone_1.wav",
+            "channels": 1,
+            "frequency": 32000,
+            "seconds": 0.10599999874830246,
+            "loadType": "DecompressOnLoad",
+            "androidFormat": "ADPCM",
+            "editorBytes": 12889
+        },
+        {
+            "path": "Assets/Wildfolk/Audio/SFX/step_stone_2.wav",
+            "channels": 1,
+            "frequency": 32000,
+            "seconds": 0.10999999940395355,
+            "loadType": "DecompressOnLoad",
+            "androidFormat": "ADPCM",
+            "editorBytes": 13145
+        },
+        {
+            "path": "Assets/Wildfolk/Audio/SFX/step_stone_3.wav",
+            "channels": 1,
+            "frequency": 32000,
+            "seconds": 0.1080000028014183,
+            "loadType": "DecompressOnLoad",
+            "androidFormat": "ADPCM",
+            "editorBytes": 13017
+        },
+        {
+            "path": "Assets/Wildfolk/Audio/SFX/step_wood_0.wav",
+            "channels": 1,
+            "frequency": 32000,
+            "seconds": 0.2720000147819519,
+            "loadType": "DecompressOnLoad",
+            "androidFormat": "ADPCM",
+            "editorBytes": 23513
+        },
+        {
+            "path": "Assets/Wildfolk/Audio/SFX/step_wood_1.wav",
+            "channels": 1,
+            "frequency": 32000,
+            "seconds": 0.10999999940395355,
+            "loadType": "DecompressOnLoad",
+            "androidFormat": "ADPCM",
+            "editorBytes": 13145
+        },
+        {
+            "path": "Assets/Wildfolk/Audio/SFX/step_wood_2.wav",
+            "channels": 1,
+            "frequency": 32000,
+            "seconds": 0.12999999523162843,
+            "loadType": "DecompressOnLoad",
+            "androidFormat": "ADPCM",
+            "editorBytes": 14425
+        },
+        {
+            "path": "Assets/Wildfolk/Audio/SFX/stone_hit_0.wav",
+            "channels": 1,
+            "frequency": 32000,
+            "seconds": 0.5839999914169312,
+            "loadType": "DecompressOnLoad",
+            "androidFormat": "ADPCM",
+            "editorBytes": 43481
+        },
+        {
+            "path": "Assets/Wildfolk/Audio/SFX/stone_hit_1.wav",
+            "channels": 1,
+            "frequency": 32000,
+            "seconds": 0.5640000104904175,
+            "loadType": "DecompressOnLoad",
+            "androidFormat": "ADPCM",
+            "editorBytes": 42201
+        },
+        {
+            "path": "Assets/Wildfolk/Audio/SFX/stone_hit_2.wav",
+            "channels": 1,
+            "frequency": 32000,
+            "seconds": 0.49399998784065249,
+            "loadType": "DecompressOnLoad",
+            "androidFormat": "ADPCM",
+            "editorBytes": 37721
+        },
+        {
+            "path": "Assets/Wildfolk/Audio/SFX/swing_0.wav",
+            "channels": 1,
+            "frequency": 32000,
+            "seconds": 0.1459999978542328,
+            "loadType": "DecompressOnLoad",
+            "androidFormat": "ADPCM",
+            "editorBytes": 15449
+        },
+        {
+            "path": "Assets/Wildfolk/Audio/SFX/swing_1.wav",
+            "channels": 1,
+            "frequency": 32000,
+            "seconds": 0.11599999666213989,
+            "loadType": "DecompressOnLoad",
+            "androidFormat": "ADPCM",
+            "editorBytes": 13529
+        },
+        {
+            "path": "Assets/Wildfolk/Audio/SFX/swing_2.wav",
+            "channels": 1,
+            "frequency": 32000,
+            "seconds": 0.11800000071525574,
+            "loadType": "DecompressOnLoad",
+            "androidFormat": "ADPCM",
+            "editorBytes": 13657
+        },
+        {
+            "path": "Assets/Wildfolk/Audio/SFX/treat.wav",
+            "channels": 1,
+            "frequency": 32000,
+            "seconds": 0.30000001192092898,
+            "loadType": "DecompressOnLoad",
+            "androidFormat": "ADPCM",
+            "editorBytes": 25305
+        },
+        {
+            "path": "Assets/Wildfolk/Audio/SFX/ui_back.wav",
+            "channels": 1,
+            "frequency": 32000,
+            "seconds": 0.2240000069141388,
+            "loadType": "DecompressOnLoad",
+            "androidFormat": "ADPCM",
+            "editorBytes": 20441
+        },
+        {
+            "path": "Assets/Wildfolk/Audio/SFX/ui_click.wav",
+            "channels": 1,
+            "frequency": 32000,
+            "seconds": 0.18000000715255738,
+            "loadType": "DecompressOnLoad",
+            "androidFormat": "ADPCM",
+            "editorBytes": 17625
+        },
+        {
+            "path": "Assets/Wildfolk/Audio/SFX/ui_confirm.wav",
+            "channels": 1,
+            "frequency": 32000,
+            "seconds": 0.22599999606609345,
+            "loadType": "DecompressOnLoad",
+            "androidFormat": "ADPCM",
+            "editorBytes": 20569
+        },
+        {
+            "path": "Assets/Wildfolk/Audio/SFX/ui_error.wav",
+            "channels": 1,
+            "frequency": 32000,
+            "seconds": 0.2800000011920929,
+            "loadType": "DecompressOnLoad",
+            "androidFormat": "ADPCM",
+            "editorBytes": 24025
+        },
+        {
+            "path": "Assets/Wildfolk/Audio/SFX/undead_0.wav",
+            "channels": 1,
+            "frequency": 32000,
+            "seconds": 0.3659999966621399,
+            "loadType": "DecompressOnLoad",
+            "androidFormat": "ADPCM",
+            "editorBytes": 29529
+        },
+        {
+            "path": "Assets/Wildfolk/Audio/SFX/undead_1.wav",
+            "channels": 1,
+            "frequency": 32000,
+            "seconds": 0.5580000281333923,
+            "loadType": "DecompressOnLoad",
+            "androidFormat": "ADPCM",
+            "editorBytes": 41817
+        },
+        {
+            "path": "Assets/Wildfolk/Audio/SFX/undead_2.wav",
+            "channels": 1,
+            "frequency": 32000,
+            "seconds": 0.5080000162124634,
+            "loadType": "DecompressOnLoad",
+            "androidFormat": "ADPCM",
+            "editorBytes": 38617
+        },
+        {
+            "path": "Assets/Wildfolk/Audio/SFX/victory.wav",
+            "channels": 1,
+            "frequency": 32000,
+            "seconds": 4.5,
+            "loadType": "DecompressOnLoad",
+            "androidFormat": "ADPCM",
+            "editorBytes": 294105
+        },
+        {
+            "path": "Assets/Wildfolk/Audio/SFX/water_splash.wav",
+            "channels": 1,
+            "frequency": 32000,
+            "seconds": 0.36000001430511477,
+            "loadType": "DecompressOnLoad",
+            "androidFormat": "ADPCM",
+            "editorBytes": 29145
+        },
+        {
+            "path": "Assets/Wildfolk/Audio/SFX/wolf.wav",
+            "channels": 1,
+            "frequency": 32000,
+            "seconds": 1.5,
+            "loadType": "DecompressOnLoad",
+            "androidFormat": "ADPCM",
+            "editorBytes": 102105
+        },
+        {
+            "path": "Assets/Wildfolk/Audio/SFX/wood_break_0.wav",
+            "channels": 1,
+            "frequency": 32000,
+            "seconds": 0.20600000023841859,
+            "loadType": "DecompressOnLoad",
+            "androidFormat": "ADPCM",
+            "editorBytes": 19289
+        },
+        {
+            "path": "Assets/Wildfolk/Audio/SFX/wood_break_1.wav",
+            "channels": 1,
+            "frequency": 32000,
+            "seconds": 0.4180000126361847,
+            "loadType": "DecompressOnLoad",
+            "androidFormat": "ADPCM",
+            "editorBytes": 32857
+        },
+        {
+            "path": "Assets/Wildfolk/Audio/SFX/wood_break_2.wav",
+            "channels": 1,
+            "frequency": 32000,
+            "seconds": 0.23199999332427979,
+            "loadType": "DecompressOnLoad",
+            "androidFormat": "ADPCM",
+            "editorBytes": 20953
+        },
+        {
+            "path": "Assets/Wildfolk/Audio/SFX/wood_hit_0.wav",
+            "channels": 1,
+            "frequency": 32000,
+            "seconds": 0.20000000298023225,
+            "loadType": "DecompressOnLoad",
+            "androidFormat": "ADPCM",
+            "editorBytes": 18905
+        },
+        {
+            "path": "Assets/Wildfolk/Audio/SFX/wood_hit_1.wav",
+            "channels": 1,
+            "frequency": 32000,
+            "seconds": 0.21400000154972077,
+            "loadType": "DecompressOnLoad",
+            "androidFormat": "ADPCM",
+            "editorBytes": 19801
+        },
+        {
+            "path": "Assets/Wildfolk/Audio/SFX/wood_hit_2.wav",
+            "channels": 1,
+            "frequency": 32000,
+            "seconds": 0.24799999594688416,
+            "loadType": "DecompressOnLoad",
+            "androidFormat": "ADPCM",
+            "editorBytes": 21977
+        }
+    ],
+    "actualPlayback": false
+}
