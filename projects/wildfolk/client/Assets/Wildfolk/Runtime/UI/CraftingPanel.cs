@@ -34,6 +34,10 @@ namespace Wildfolk
             if(job.Sequential)CurrentItem.text=job.Recipe==null ? L.Text("ui.crafting.idle") : job.Remaining<=0 ? L.Text("ui.crafting.blocked_output") : L.Format("ui.crafting.current",ProcessingName(job.Recipe),job.Remaining);
         }
         private string ProcessingName(RecipeDefinition recipe){if(namedRecipe==recipe && namedLanguage==L.Language)return namedProcessing;namedRecipe=recipe;namedLanguage=L.Language;var text=new StringBuilder();foreach(var input in recipe.Ingredients){if(text.Length>0)text.Append(" + ");text.Append(input.Item.LocalizedName);}return namedProcessing=L.Format("ui.crafting.input_output",text.ToString(),recipe.Result.LocalizedName);}
+        private bool HasOperation(RecipeDefinition recipe)
+        {
+            var job=Owner.Processor;return job!=null && (job.Recipe==recipe || job.Sequential && (job.Queue.CountWaiting(recipe)>0 || job.Queue.CountOutput(recipe)>0));
+        }
         public void Refresh()
         {
             View.SetActive(Owner.ScreenOpen && Owner.Session.State==SessionState.Inventory);if(!View.activeSelf)return;
@@ -44,7 +48,7 @@ namespace Wildfolk
             if(tabsChanged)LayoutRebuilder.ForceRebuildLayoutImmediate((RectTransform)CategoryButtons[0].transform.parent);
             FilterLabel.text=L.Text(craftable ? "ui.crafting.ready_only" : "ui.crafting.show_all");
             var layoutChanged=false;
-            foreach(var card in Cards){var status=card.Recipe.RequiredStation==station ? Owner.GetStatus(card.Recipe) : CraftStatus.StationRequired;var show=card.Recipe.RequiredStation==station && (category<0 || (int)card.Recipe.Category==category) && (!craftable || status==CraftStatus.Ready || status==CraftStatus.Collect);if(card.gameObject.activeSelf!=show){card.gameObject.SetActive(show);layoutChanged=true;}if(show)card.Refresh();}
+            foreach(var card in Cards){var status=card.Recipe.RequiredStation==station ? Owner.GetStatus(card.Recipe) : CraftStatus.StationRequired;var show=card.Recipe.RequiredStation==station && (category<0 || (int)card.Recipe.Category==category) && (!craftable || status==CraftStatus.Ready || status==CraftStatus.Collect || HasOperation(card.Recipe));if(card.gameObject.activeSelf!=show){card.gameObject.SetActive(show);layoutChanged=true;}if(show)card.Refresh();}
             for(var i=0;i<Grids.Length;i++)
             {
                 var visible=false;foreach(var card in Cards)if((int)card.Recipe.Category==i && card.gameObject.activeSelf){visible=true;break;}
@@ -63,9 +67,12 @@ namespace Wildfolk
                 UpgradeLabel.text=L.Format("ui.crafting.upgrade_to",WorkbenchProgression.Display(Owner.Station.Definition.UpgradeTo.WorkbenchTier));
                 if(!ready && !largeUpgrade)UpgradeRequirements.text+="\n"+L.Text("ui.crafting.missing_materials");
             }
-            var recipe=Selected;if(recipe==null || recipe.RequiredStation!=station){foreach(var card in Cards)if(card.gameObject.activeSelf){recipe=card.Recipe;Owner.SetSelected(recipe,false);break;}}
+            var recipe=Selected;RecipeDefinition first=null;var selectedVisible=false;
+            foreach(var card in Cards)if(card.gameObject.activeSelf){if(first==null)first=card.Recipe;if(card.Recipe==recipe)selectedVisible=true;}
+            if(!selectedVisible){recipe=first;Owner.SetSelected(recipe,false);}
             SelectedTitle.text=recipe==null ? "" : string.IsNullOrEmpty(recipe.DisplayKey) ? recipe.Result.LocalizedName : L.Text(recipe.DisplayKey);
-            var job=Owner.Processor;var sequential=job!=null && job.Sequential;QueueView.SetActive(sequential);SummaryScroll.gameObject.SetActive(!sequential);MaterialSummary.gameObject.SetActive(!sequential);SelectedIcon.gameObject.SetActive(!sequential);
+            var job=Owner.Processor;var sequential=job!=null && job.Sequential;QueueView.SetActive(sequential);SummaryScroll.gameObject.SetActive(!sequential && recipe!=null);MaterialSummary.gameObject.SetActive(!sequential && recipe!=null);SelectedIcon.gameObject.SetActive(!sequential && recipe!=null);
+            if(recipe==null){SelectedIcon.sprite=null;MaterialSummary.text="";}
             if(FoodPreview!=null)
             {
                 var food=recipe?.Result.Consumable;FoodPreview.enabled=sequential && food!=null;

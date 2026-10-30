@@ -1,0 +1,878 @@
+{
+  "startSha": "c21ed6affbc5353c7a5c606be19c93dcd049ca57",
+  "beforeABC": {
+    "A": {
+      "seed": -484461830,
+      "position": [
+        15.9582,
+        0.4145
+      ],
+      "swordOpened": true,
+      "emptyWaterskinOpened": false,
+      "filledWaterskinOpened": false,
+      "axeOpened": true,
+      "allTargets": "CraftingStation"
+    },
+    "B": {
+      "before": true,
+      "result": "Processing",
+      "during": false,
+      "ready": true
+    },
+    "C": {
+      "opened": true,
+      "selected": "compass",
+      "selectedVisible": false,
+      "emptyCount": 0,
+      "detail": "Compass"
+    }
+  },
+  "afterA": {
+    "A": [
+      "{ label = sword, accepted = True, target = CraftingStation, opened = True, state = Inventory, charges = 3 }",
+      "{ label = empty waterskin, accepted = True, target = CraftingStation, opened = True, state = Inventory, charges = 0 }",
+      "{ label = filled waterskin, accepted = True, target = CraftingStation, opened = True, state = Inventory, charges = 3 }",
+      "{ label = axe, accepted = True, target = CraftingStation, opened = True, state = Inventory, charges = 3 }"
+    ],
+    "seed": -484461830,
+    "position": [
+      15.9582,
+      0.4145
+    ]
+  },
+  "afterBC": {
+    "purification": {
+      "opened": true,
+      "before": true,
+      "visibleDuring": true,
+      "selected": "purify_waterskin",
+      "remaining": 10
+    },
+    "cooking": {
+      "purificationReady": true,
+      "purificationCollected": true,
+      "cookingVisible": true,
+      "selected": "cooked_meat",
+      "remaining": 5
+    },
+    "collected": {
+      "ready": true,
+      "collected": 1,
+      "visibleCount": 0,
+      "selected": "null",
+      "detail": "",
+      "iconVisible": false
+    },
+    "selection": {
+      "opened": true,
+      "retained": true,
+      "tools": "axe",
+      "toolsVisible": true,
+      "backVisible": true,
+      "reopened": true,
+      "count": 0,
+      "selected": "null",
+      "detail": "",
+      "icon": false,
+      "summary": ""
+    }
+  },
+  "finalOverlap": [
+    "both forward, nearer facility: True, target=CraftingStation, opened=True, charges=0",
+    "both forward, nearer water: True, target=WaterSource, opened=False, charges=3",
+    "full clean skin at water: False, charges=3, quality=Clean",
+    "sword at water: True, raw cups=1"
+  ],
+  "water": {
+    "seed": -484461830,
+    "positions": [
+      [
+        -10.22,
+        7.35
+      ],
+      [
+        -12.28,
+        8.48
+      ],
+      [
+        -15.377,
+        8.677
+      ]
+    ],
+    "trialsBefore": 72,
+    "trialsFinal": 72,
+    "groups": [
+      {
+        "item": "cup",
+        "point": 0,
+        "angle": 0,
+        "beforeSuccess": 3,
+        "finalSuccess": 3,
+        "attempts": 3
+      },
+      {
+        "item": "cup",
+        "point": 0,
+        "angle": 180,
+        "beforeSuccess": 0,
+        "finalSuccess": 0,
+        "attempts": 3
+      },
+      {
+        "item": "cup",
+        "point": 0,
+        "angle": 30,
+        "beforeSuccess": 3,
+        "finalSuccess": 3,
+        "attempts": 3
+      },
+      {
+        "item": "cup",
+        "point": 0,
+        "angle": -30,
+        "beforeSuccess": 3,
+        "finalSuccess": 3,
+        "attempts": 3
+      },
+      {
+        "item": "waterskin",
+        "point": 0,
+        "angle": 0,
+        "beforeSuccess": 0,
+        "finalSuccess": 0,
+        "attempts": 3
+      },
+      {
+        "item": "waterskin",
+        "point": 0,
+        "angle": 180,
+        "beforeSuccess": 0,
+        "finalSuccess": 0,
+        "attempts": 3
+      },
+      {
+        "item": "waterskin",
+        "point": 0,
+        "angle": 30,
+        "beforeSuccess": 0,
+        "finalSuccess": 0,
+        "attempts": 3
+      },
+      {
+        "item": "waterskin",
+        "point": 0,
+        "angle": -30,
+        "beforeSuccess": 0,
+        "finalSuccess": 0,
+        "attempts": 3
+      },
+      {
+        "item": "cup",
+        "point": 1,
+        "angle": 0,
+        "beforeSuccess": 0,
+        "finalSuccess": 3,
+        "attempts": 3
+      },
+      {
+        "item": "cup",
+        "point": 1,
+        "angle": 180,
+        "beforeSuccess": 3,
+        "finalSuccess": 0,
+        "attempts": 3
+      },
+      {
+        "item": "cup",
+        "point": 1,
+        "angle": 30,
+        "beforeSuccess": 3,
+        "finalSuccess": 3,
+        "attempts": 3
+      },
+      {
+        "item": "cup",
+        "point": 1,
+        "angle": -30,
+        "beforeSuccess": 0,
+        "finalSuccess": 3,
+        "attempts": 3
+      },
+      {
+        "item": "waterskin",
+        "point": 1,
+        "angle": 0,
+        "beforeSuccess": 3,
+        "finalSuccess": 3,
+        "attempts": 3
+      },
+      {
+        "item": "waterskin",
+        "point": 1,
+        "angle": 180,
+        "beforeSuccess": 3,
+        "finalSuccess": 3,
+        "attempts": 3
+      },
+      {
+        "item": "waterskin",
+        "point": 1,
+        "angle": 30,
+        "beforeSuccess": 3,
+        "finalSuccess": 3,
+        "attempts": 3
+      },
+      {
+        "item": "waterskin",
+        "point": 1,
+        "angle": -30,
+        "beforeSuccess": 3,
+        "finalSuccess": 3,
+        "attempts": 3
+      },
+      {
+        "item": "cup",
+        "point": 2,
+        "angle": 0,
+        "beforeSuccess": 0,
+        "finalSuccess": 3,
+        "attempts": 3
+      },
+      {
+        "item": "cup",
+        "point": 2,
+        "angle": 180,
+        "beforeSuccess": 3,
+        "finalSuccess": 3,
+        "attempts": 3
+      },
+      {
+        "item": "cup",
+        "point": 2,
+        "angle": 30,
+        "beforeSuccess": 0,
+        "finalSuccess": 3,
+        "attempts": 3
+      },
+      {
+        "item": "cup",
+        "point": 2,
+        "angle": -30,
+        "beforeSuccess": 0,
+        "finalSuccess": 3,
+        "attempts": 3
+      },
+      {
+        "item": "waterskin",
+        "point": 2,
+        "angle": 0,
+        "beforeSuccess": 3,
+        "finalSuccess": 3,
+        "attempts": 3
+      },
+      {
+        "item": "waterskin",
+        "point": 2,
+        "angle": 180,
+        "beforeSuccess": 3,
+        "finalSuccess": 3,
+        "attempts": 3
+      },
+      {
+        "item": "waterskin",
+        "point": 2,
+        "angle": 30,
+        "beforeSuccess": 3,
+        "finalSuccess": 3,
+        "attempts": 3
+      },
+      {
+        "item": "waterskin",
+        "point": 2,
+        "angle": -30,
+        "beforeSuccess": 3,
+        "finalSuccess": 3,
+        "attempts": 3
+      }
+    ]
+  },
+  "testRuns": [
+    {
+      "job": "b8a8acf386e44d539f0b284af650585a",
+      "startedUnixMs": 1793348212412,
+      "finishedUnixMs": 1793348319953,
+      "total": 7,
+      "passed": 7,
+      "failed": 0,
+      "skipped": 0,
+      "durationSeconds": 96.4388184,
+      "resultState": "Passed"
+    },
+    {
+      "job": "d4626aa23aa944edabc53ceacf4ee157",
+      "startedUnixMs": 1793348374044,
+      "finishedUnixMs": 1793348414381,
+      "total": 3,
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0,
+      "durationSeconds": 31.585837,
+      "resultState": "Passed"
+    },
+    {
+      "job": "1d81a6e9bdd64dc39759d53c9528a671",
+      "startedUnixMs": 1793349113697,
+      "finishedUnixMs": 1793349160438,
+      "total": 3,
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0,
+      "durationSeconds": 37.4540638,
+      "resultState": "Passed"
+    },
+    {
+      "job": "efca8555ed71429689c3ab6aac16e835",
+      "startedUnixMs": 1793348449524,
+      "finishedUnixMs": 1793348456127,
+      "total": 36,
+      "passed": 36,
+      "failed": 0,
+      "skipped": 0,
+      "durationSeconds": 1.0269361,
+      "resultState": "Passed"
+    }
+  ],
+  "latestTests": [
+    {
+      "mode": "PlayMode",
+      "name": "CampfireOpensWithSwordEmptyOrFilledWaterskinAndTool",
+      "fullName": "Wildfolk.Tests.PostPlaytestInteractionTests.CampfireOpensWithSwordEmptyOrFilledWaterskinAndTool",
+      "state": "Passed",
+      "durationSeconds": 3.4028576,
+      "message": null,
+      "stackTrace": null,
+      "output": ""
+    },
+    {
+      "mode": "PlayMode",
+      "name": "CategoryFilterAndReopenKeepDetailOnVisibleRecipeOrClearIt",
+      "fullName": "Wildfolk.Tests.PostPlaytestInteractionTests.CategoryFilterAndReopenKeepDetailOnVisibleRecipeOrClearIt",
+      "state": "Passed",
+      "durationSeconds": 10.9669032,
+      "message": null,
+      "stackTrace": null,
+      "output": ""
+    },
+    {
+      "mode": "PlayMode",
+      "name": "CookingRemainsVisibleThroughProcessingBlockedClaimAndCollection",
+      "fullName": "Wildfolk.Tests.PostPlaytestInteractionTests.CookingRemainsVisibleThroughProcessingBlockedClaimAndCollection",
+      "state": "Passed",
+      "durationSeconds": 8.7981569,
+      "message": null,
+      "stackTrace": null,
+      "output": ""
+    },
+    {
+      "mode": "PlayMode",
+      "name": "CupFacesNaturalWaterAtReportedShorePositionsRepeatedly",
+      "fullName": "Wildfolk.Tests.PostPlaytestInteractionTests.CupFacesNaturalWaterAtReportedShorePositionsRepeatedly",
+      "state": "Passed",
+      "durationSeconds": 30.4438306,
+      "message": null,
+      "stackTrace": null,
+      "output": ""
+    },
+    {
+      "mode": "PlayMode",
+      "name": "FacilityWaterOverlapKeepsContextAndWaterCollection",
+      "fullName": "Wildfolk.Tests.PostPlaytestInteractionTests.FacilityWaterOverlapKeepsContextAndWaterCollection",
+      "state": "Passed",
+      "durationSeconds": 3.5798643,
+      "message": null,
+      "stackTrace": null,
+      "output": ""
+    },
+    {
+      "mode": "PlayMode",
+      "name": "PurificationRemainsVisibleThroughProcessingBlockedClaimAndCollection",
+      "fullName": "Wildfolk.Tests.PostPlaytestInteractionTests.PurificationRemainsVisibleThroughProcessingBlockedClaimAndCollection",
+      "state": "Passed",
+      "durationSeconds": 9.5931803,
+      "message": null,
+      "stackTrace": null,
+      "output": ""
+    },
+    {
+      "mode": "PlayMode",
+      "name": "SequentialCurrentWaitingAndUnclaimedOutputSurviveCraftableFilter",
+      "fullName": "Wildfolk.Tests.PostPlaytestInteractionTests.SequentialCurrentWaitingAndUnclaimedOutputSurviveCraftableFilter",
+      "state": "Passed",
+      "durationSeconds": 9.4724059,
+      "message": null,
+      "stackTrace": null,
+      "output": ""
+    },
+    {
+      "mode": "PlayMode",
+      "name": "ChestUITransfersMergesSwapsAndRefreshesEquippedHotbar",
+      "fullName": "Wildfolk.Tests.ProgressionPlayTests.ChestUITransfersMergesSwapsAndRefreshesEquippedHotbar",
+      "state": "Passed",
+      "durationSeconds": 9.8384132,
+      "message": null,
+      "stackTrace": null,
+      "output": ""
+    },
+    {
+      "mode": "PlayMode",
+      "name": "FurnaceQueueButtonsReserveReturnCollectAndPersist",
+      "fullName": "Wildfolk.Tests.QualityPlayTests.FurnaceQueueButtonsReserveReturnCollectAndPersist",
+      "state": "Passed",
+      "durationSeconds": 9.6306253,
+      "message": null,
+      "stackTrace": null,
+      "output": ""
+    },
+    {
+      "mode": "PlayMode",
+      "name": "CupCollectionRawPenaltyBoilingAndReturnedCupWorkTogether",
+      "fullName": "Wildfolk.Tests.StabilityPlayTests.CupCollectionRawPenaltyBoilingAndReturnedCupWorkTogether",
+      "state": "Passed",
+      "durationSeconds": 11.7942944,
+      "message": null,
+      "stackTrace": null,
+      "output": ""
+    },
+    {
+      "mode": "EditMode",
+      "name": "HostCanExpireWaterPenaltyWithoutEnablingNutritionDrain",
+      "fullName": "Wildfolk.Tests.FoodModelTests.HostCanExpireWaterPenaltyWithoutEnablingNutritionDrain",
+      "state": "Passed",
+      "durationSeconds": 0.0515608,
+      "message": null,
+      "stackTrace": null,
+      "output": ""
+    },
+    {
+      "mode": "EditMode",
+      "name": "MealsAreThreeDistinctPotChoicesAndExistingRecoveryFoodsRemainImmediate",
+      "fullName": "Wildfolk.Tests.FoodModelTests.MealsAreThreeDistinctPotChoicesAndExistingRecoveryFoodsRemainImmediate",
+      "state": "Passed",
+      "durationSeconds": 0.0155576,
+      "message": null,
+      "stackTrace": null,
+      "output": ""
+    },
+    {
+      "mode": "EditMode",
+      "name": "NetworkMealIdentityAndEndTimeRoundTripAndParticipateInEquality",
+      "fullName": "Wildfolk.Tests.FoodModelTests.NetworkMealIdentityAndEndTimeRoundTripAndParticipateInEquality",
+      "state": "Passed",
+      "durationSeconds": 0.0155703,
+      "message": null,
+      "stackTrace": null,
+      "output": ""
+    },
+    {
+      "mode": "EditMode",
+      "name": "OneMealReplacesInsteadOfStackingAndSameMealResetsOnlyItsDuration",
+      "fullName": "Wildfolk.Tests.FoodModelTests.OneMealReplacesInsteadOfStackingAndSameMealResetsOnlyItsDuration",
+      "state": "Passed",
+      "durationSeconds": 0.0025372,
+      "message": null,
+      "stackTrace": null,
+      "output": ""
+    },
+    {
+      "mode": "EditMode",
+      "name": "StaminaMealChangesRateWithoutChangingDelayCostOrMaximum",
+      "fullName": "Wildfolk.Tests.FoodModelTests.StaminaMealChangesRateWithoutChangingDelayCostOrMaximum",
+      "state": "Passed",
+      "durationSeconds": 0.0020391,
+      "message": null,
+      "stackTrace": null,
+      "output": ""
+    },
+    {
+      "mode": "EditMode",
+      "name": "StewsHavePlantHydrationMeatHungerFishHydrationAndMixedNutritionRoles",
+      "fullName": "Wildfolk.Tests.FoodModelTests.StewsHavePlantHydrationMeatHungerFishHydrationAndMixedNutritionRoles",
+      "state": "Passed",
+      "durationSeconds": 0.0025328,
+      "message": null,
+      "stackTrace": null,
+      "output": ""
+    },
+    {
+      "mode": "EditMode",
+      "name": "DifferentItemsSwapWithoutChangingCounts",
+      "fullName": "Wildfolk.Tests.InventoryOperationsTests.DifferentItemsSwapWithoutChangingCounts",
+      "state": "Passed",
+      "durationSeconds": 0.0055891,
+      "message": null,
+      "stackTrace": null,
+      "output": ""
+    },
+    {
+      "mode": "EditMode",
+      "name": "FullInventoryRejectsCraftAtomically",
+      "fullName": "Wildfolk.Tests.InventoryOperationsTests.FullInventoryRejectsCraftAtomically",
+      "state": "Passed",
+      "durationSeconds": 0.0015278,
+      "message": null,
+      "stackTrace": null,
+      "output": ""
+    },
+    {
+      "mode": "EditMode",
+      "name": "FullSameItemDestinationAndSameSlotDoNotMutateOrNotify",
+      "fullName": "Wildfolk.Tests.InventoryOperationsTests.FullSameItemDestinationAndSameSlotDoNotMutateOrNotify",
+      "state": "Passed",
+      "durationSeconds": 0.0034193,
+      "message": null,
+      "stackTrace": null,
+      "output": ""
+    },
+    {
+      "mode": "EditMode",
+      "name": "FullyConsumedMaterialSlotCanHoldCraftResult",
+      "fullName": "Wildfolk.Tests.InventoryOperationsTests.FullyConsumedMaterialSlotCanHoldCraftResult",
+      "state": "Passed",
+      "durationSeconds": 0.0022831,
+      "message": null,
+      "stackTrace": null,
+      "output": ""
+    },
+    {
+      "mode": "EditMode",
+      "name": "MergeStopsAtMaxStackAndKeepsOverflowAtSource",
+      "fullName": "Wildfolk.Tests.InventoryOperationsTests.MergeStopsAtMaxStackAndKeepsOverflowAtSource",
+      "state": "Passed",
+      "durationSeconds": 0.0008478,
+      "message": null,
+      "stackTrace": null,
+      "output": ""
+    },
+    {
+      "mode": "EditMode",
+      "name": "MissingMaterialsNeverConsumeAnything",
+      "fullName": "Wildfolk.Tests.InventoryOperationsTests.MissingMaterialsNeverConsumeAnything",
+      "state": "Passed",
+      "durationSeconds": 0.0008543,
+      "message": null,
+      "stackTrace": null,
+      "output": ""
+    },
+    {
+      "mode": "EditMode",
+      "name": "MultipleResultStacksCannotPartiallyConsumeIngredients",
+      "fullName": "Wildfolk.Tests.InventoryOperationsTests.MultipleResultStacksCannotPartiallyConsumeIngredients",
+      "state": "Passed",
+      "durationSeconds": 0.001133,
+      "message": null,
+      "stackTrace": null,
+      "output": ""
+    },
+    {
+      "mode": "EditMode",
+      "name": "PlacementConsumptionRequiresMatchingSelectedItem",
+      "fullName": "Wildfolk.Tests.InventoryOperationsTests.PlacementConsumptionRequiresMatchingSelectedItem",
+      "state": "Passed",
+      "durationSeconds": 0.0013258,
+      "message": null,
+      "stackTrace": null,
+      "output": ""
+    },
+    {
+      "mode": "EditMode",
+      "name": "WholeStackMovesBetweenStorageAndHotbarWithOneNotification",
+      "fullName": "Wildfolk.Tests.InventoryOperationsTests.WholeStackMovesBetweenStorageAndHotbarWithOneNotification",
+      "state": "Passed",
+      "durationSeconds": 0.0017738,
+      "message": null,
+      "stackTrace": null,
+      "output": ""
+    },
+    {
+      "mode": "EditMode",
+      "name": "DifferentMaterialsDoNotMerge",
+      "fullName": "Wildfolk.Tests.InventoryTests.DifferentMaterialsDoNotMerge",
+      "state": "Passed",
+      "durationSeconds": 0.0054297,
+      "message": null,
+      "stackTrace": null,
+      "output": ""
+    },
+    {
+      "mode": "EditMode",
+      "name": "FullInventoryReturnsUnacceptedAmountWithoutLosingExistingItems",
+      "fullName": "Wildfolk.Tests.InventoryTests.FullInventoryReturnsUnacceptedAmountWithoutLosingExistingItems",
+      "state": "Passed",
+      "durationSeconds": 0.0010114,
+      "message": null,
+      "stackTrace": null,
+      "output": ""
+    },
+    {
+      "mode": "EditMode",
+      "name": "InvalidAmountsCannotMutateInventory",
+      "fullName": "Wildfolk.Tests.InventoryTests.InvalidAmountsCannotMutateInventory",
+      "state": "Passed",
+      "durationSeconds": 0.0037452,
+      "message": null,
+      "stackTrace": null,
+      "output": ""
+    },
+    {
+      "mode": "EditMode",
+      "name": "MaxStackOverflowUsesNextSlot",
+      "fullName": "Wildfolk.Tests.InventoryTests.MaxStackOverflowUsesNextSlot",
+      "state": "Passed",
+      "durationSeconds": 0.0016189,
+      "message": null,
+      "stackTrace": null,
+      "output": ""
+    },
+    {
+      "mode": "EditMode",
+      "name": "NotifiesOnceForAnAcceptedBatchAndNeverForRejectedBatch",
+      "fullName": "Wildfolk.Tests.InventoryTests.NotifiesOnceForAnAcceptedBatchAndNeverForRejectedBatch",
+      "state": "Passed",
+      "durationSeconds": 0.0007954,
+      "message": null,
+      "stackTrace": null,
+      "output": ""
+    },
+    {
+      "mode": "EditMode",
+      "name": "SameItemMergesBeforeUsingAnotherSlot",
+      "fullName": "Wildfolk.Tests.InventoryTests.SameItemMergesBeforeUsingAnotherSlot",
+      "state": "Passed",
+      "durationSeconds": 0.0006436,
+      "message": null,
+      "stackTrace": null,
+      "output": ""
+    },
+    {
+      "mode": "EditMode",
+      "name": "StartsEmpty",
+      "fullName": "Wildfolk.Tests.InventoryTests.StartsEmpty",
+      "state": "Passed",
+      "durationSeconds": 0.000558,
+      "message": null,
+      "stackTrace": null,
+      "output": ""
+    },
+    {
+      "mode": "EditMode",
+      "name": "ChestsHaveIndependentStoresAndFailedTransfersPreserveBoth",
+      "fullName": "Wildfolk.Tests.ProgressionTests.ChestsHaveIndependentStoresAndFailedTransfersPreserveBoth",
+      "state": "Passed",
+      "durationSeconds": 0.0024722,
+      "message": null,
+      "stackTrace": null,
+      "output": ""
+    },
+    {
+      "mode": "EditMode",
+      "name": "ChestTransferMergesPartiallyRejectsFullAndSwapsAtomically",
+      "fullName": "Wildfolk.Tests.ProgressionTests.ChestTransferMergesPartiallyRejectsFullAndSwapsAtomically",
+      "state": "Passed",
+      "durationSeconds": 0.0013936,
+      "message": null,
+      "stackTrace": null,
+      "output": ""
+    },
+    {
+      "mode": "EditMode",
+      "name": "ProcessingRecipesUseSeparateStationsAndNoPlaceholderFuel",
+      "fullName": "Wildfolk.Tests.ProgressionTests.ProcessingRecipesUseSeparateStationsAndNoPlaceholderFuel",
+      "state": "Passed",
+      "durationSeconds": 0.0044164,
+      "message": null,
+      "stackTrace": null,
+      "output": ""
+    },
+    {
+      "mode": "EditMode",
+      "name": "TiersImproveTheirRolesAndGateOreByToolKindAndRank",
+      "fullName": "Wildfolk.Tests.ProgressionTests.TiersImproveTheirRolesAndGateOreByToolKindAndRank",
+      "state": "Passed",
+      "durationSeconds": 0.0240057,
+      "message": null,
+      "stackTrace": null,
+      "output": ""
+    },
+    {
+      "mode": "EditMode",
+      "name": "WorldTimeCrossesAllPhasesAndLightingIsContinuousAtBoundaries",
+      "fullName": "Wildfolk.Tests.ProgressionTests.WorldTimeCrossesAllPhasesAndLightingIsContinuousAtBoundaries",
+      "state": "Passed",
+      "durationSeconds": 0.002987,
+      "message": null,
+      "stackTrace": null,
+      "output": ""
+    },
+    {
+      "mode": "EditMode",
+      "name": "LanguagePersistsAsLocalPreferenceAndRefreshesCatalog",
+      "fullName": "Wildfolk.Tests.QualityModelTests.LanguagePersistsAsLocalPreferenceAndRefreshesCatalog",
+      "state": "Passed",
+      "durationSeconds": 0.0084198,
+      "message": null,
+      "stackTrace": null,
+      "output": ""
+    },
+    {
+      "mode": "EditMode",
+      "name": "LocalizationHasTwoCompleteLanguagesAndEquivalentPlaceholders",
+      "fullName": "Wildfolk.Tests.QualityModelTests.LocalizationHasTwoCompleteLanguagesAndEquivalentPlaceholders",
+      "state": "Passed",
+      "durationSeconds": 0.0282579,
+      "message": null,
+      "stackTrace": null,
+      "output": ""
+    },
+    {
+      "mode": "EditMode",
+      "name": "OutputCapacityAndInventorySpacePreserveReservedCargo",
+      "fullName": "Wildfolk.Tests.QualityModelTests.OutputCapacityAndInventorySpacePreserveReservedCargo",
+      "state": "Passed",
+      "durationSeconds": 0.0013047,
+      "message": null,
+      "stackTrace": null,
+      "output": ""
+    },
+    {
+      "mode": "EditMode",
+      "name": "PopulationUsesRegionalDeficitsAndWorldScopeForRareRules",
+      "fullName": "Wildfolk.Tests.QualityModelTests.PopulationUsesRegionalDeficitsAndWorldScopeForRareRules",
+      "state": "Passed",
+      "durationSeconds": 0.0485144,
+      "message": null,
+      "stackTrace": null,
+      "output": ""
+    },
+    {
+      "mode": "EditMode",
+      "name": "QueueAndLegacyBatchRestoreWithoutMaterialDuplication",
+      "fullName": "Wildfolk.Tests.QualityModelTests.QueueAndLegacyBatchRestoreWithoutMaterialDuplication",
+      "state": "Passed",
+      "durationSeconds": 0.0047813,
+      "message": null,
+      "stackTrace": null,
+      "output": ""
+    },
+    {
+      "mode": "EditMode",
+      "name": "QueueReservesInputProcessesSingleUnitsAndWithdrawsOnlyWaiting",
+      "fullName": "Wildfolk.Tests.QualityModelTests.QueueReservesInputProcessesSingleUnitsAndWithdrawsOnlyWaiting",
+      "state": "Passed",
+      "durationSeconds": 0.0028678,
+      "message": null,
+      "stackTrace": null,
+      "output": ""
+    },
+    {
+      "mode": "EditMode",
+      "name": "QueueSaveRetainsAlternatingRecipeOrder",
+      "fullName": "Wildfolk.Tests.QualityModelTests.QueueSaveRetainsAlternatingRecipeOrder",
+      "state": "Passed",
+      "durationSeconds": 0.0008759,
+      "message": null,
+      "stackTrace": null,
+      "output": ""
+    },
+    {
+      "mode": "EditMode",
+      "name": "RecoverySaveKeepsExclusionsAndCandidateSequence",
+      "fullName": "Wildfolk.Tests.QualityModelTests.RecoverySaveKeepsExclusionsAndCandidateSequence",
+      "state": "Passed",
+      "durationSeconds": 0.0250158,
+      "message": null,
+      "stackTrace": null,
+      "output": ""
+    },
+    {
+      "mode": "EditMode",
+      "name": "SkillPrerequisiteAndLegacyLearnedRankAreBothRespected",
+      "fullName": "Wildfolk.Tests.QualityModelTests.SkillPrerequisiteAndLegacyLearnedRankAreBothRespected",
+      "state": "Passed",
+      "durationSeconds": 0.007082,
+      "message": null,
+      "stackTrace": null,
+      "output": ""
+    }
+  ],
+  "uniqueEdit": 36,
+  "uniquePlay": 10,
+  "validatorErrors": [],
+  "structuralValidatorPassed": true,
+  "sourceSync": {
+    "compared": 1089,
+    "differences": [],
+    "extraFiles": []
+  },
+  "saveProtection": {
+    "unchanged": true,
+    "beforeFiles": 2,
+    "afterFiles": 2,
+    "files": [
+      {
+        "path": "UserData/world-v1.json",
+        "before": {
+          "sha256": "57d560f19e49507fbc7ac00b48e1dda5759732a181d1c0baa441ad4536da7970",
+          "mtime_ns": 1792063991504454800,
+          "size": 15851
+        },
+        "after": {
+          "sha256": "57d560f19e49507fbc7ac00b48e1dda5759732a181d1c0baa441ad4536da7970",
+          "mtime_ns": 1792063991504454800,
+          "size": 15851
+        }
+      },
+      {
+        "path": "UserData/world-v1.json.backup",
+        "before": {
+          "sha256": "57d560f19e49507fbc7ac00b48e1dda5759732a181d1c0baa441ad4536da7970",
+          "mtime_ns": 1792063991504454800,
+          "size": 15851
+        },
+        "after": {
+          "sha256": "57d560f19e49507fbc7ac00b48e1dda5759732a181d1c0baa441ad4536da7970",
+          "mtime_ns": 1792063991504454800,
+          "size": 15851
+        }
+      }
+    ],
+    "profilesBefore": [],
+    "profilesAfter": [],
+    "nonPlayerUnityTelemetryOrTestOutputChanges": 8
+  },
+  "versions": {
+    "Save": 14,
+    "Profile": 2,
+    "CloudProfile": 1,
+    "Economy": 2,
+    "Protocol": 23,
+    "generation": 3,
+    "IapSchema": 1
+  },
+  "measuredPhases": {
+    "startUTC": "2026-10-30T08:00:12.083Z",
+    "reproductionDoneUTC": "2026-10-30T08:09:20.359Z",
+    "implementationDoneUTC": "2026-10-30T08:13:15.550Z",
+    "finalMcpStartedUTC": "2026-10-30T08:33:50.008Z",
+    "validationDoneUTC": "2026-10-30T08:36:07.260Z"
+  },
+  "generatedUTC": "2026-10-30T08:37:25.056214+00:00",
+  "editorAfter": {
+    "playing": false,
+    "scene": "MainMenu",
+    "dirty": false,
+    "isolated": false
+  },
+  "consoleLast": [
+    "<b><color=#cc7a00>MCP-FOR-UNITY</color></b>: [WebSocket] Unexpected receive error: WebSocket is not initialised"
+  ]
+}

@@ -18,6 +18,8 @@ StationProcessing은 데이터의 Batch/Sequential Mode·Speed를 읽는다. Cam
 
 가까운 시설 Interact로 전용 제작 화면을 연다. 36칸 가방은 별도 화면이다. Category(Survival/Tools/Weapons/Armor/Building/Facilities)는 해당 Station의 실제 Recipe가 있을 때만 보인다. 두 열 카드, Show all/Craftable only, Tier→SortOrder→ID 고정 정렬, NEW/SeenRecipe 저장을 유지한다. 각 재료의 보유/필요량을 독립 표시한다. 새 Armor/음식/탄약의 실제 효과를 설명 첫 부분에 보여주고 긴 업그레이드 비용·설명은 각각 scroll한다. English/Korean을 지원한다.
 
+Craftable only에서도 현재 시설의 진행·예약·완료 미수령 작업은 해당 Category 안에 유지한다. 재료가 없는 비활성 Recipe를 일반적으로 노출하지 않는다. Category/filter 변경 시 기존 선택이 보이면 유지하고, 숨겨지면 첫 표시 Recipe를 선택하며, 표시 항목이 없으면 Recipe 상세를 비운다.
+
 설치 I→II 비용 Wood8+Stone6+Iron2, II→III Wood10+Stone10+Bronze4+Steel4+Crystal4+Diamond1. 싱글은 설치물 교체, 멀티는 같은 NetworkObject의 Definition 전환으로 Save ID/위치/HP 비율/열린 화면을 유지한다. 별도 II/III Recipe가 없다. FutureUnlocks(Level/Skill/Blueprint 등)는 비어 있고 추가 gate는 활성화하지 않았다. IV~VI는 미구성으로 실행/UI 노출하지 않는다.
 
 ## Multiplayer
