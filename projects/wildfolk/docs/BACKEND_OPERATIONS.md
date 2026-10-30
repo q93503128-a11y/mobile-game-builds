@@ -26,6 +26,8 @@ cached anonymous→PGS LinkWithGooglePlayGamesAsync로 기존 Unity PlayerId를 
 
 LOWFIRE_ALPHA / LOWFIRE_PRODUCTION define으로 release channel을 정한다. 일반 Editor/Development build는 Development, 그 외 기본은 Production이다. Alpha/Production에 Development build 옵션을 섞으면 build validator가 거절한다. Development identity는 Editor/Development 조건부 컴파일과 channel+isolated-directory 검사로 제한한다.
 
+Internal Test RC1은 Android `LOWFIRE_ALPHA`, 계정/광고/현금 구매 OFF로 배포 준비한다. 검증된 unique environment mapping과 fixture 차단을 유지하면서 `BackendSettings.Enabled=false`인 offline Alpha만 외부 계정 설정 없이 packaging할 수 있다. 계정 활성 Alpha와 Production의 Google/Privacy/PGS build gate는 유지한다. [Android 빌드/서명 절차](ANDROID_INTERNAL_TEST.md).
+
 환경 이름/ID는 실제 Dashboard 값을 확인해 채운다. 기존 환경을 삭제/이름변경/이관하지 않는다. 기존 cached SDK profile default는 보존하며 환경 mapping을 바꾼 뒤 앱을 재시작한다. 계정과 Relay는 같은 mapping을 쓴다. 서로 다른 환경을 같은 실행 중 섞지 않는다. Authentication identity는 project 범위, 서비스 데이터는 environment 범위이므로 Alpha 데이터가 Production에 자동 복사된다고 가정하지 않는다.
 
 ## CloudProfile1 / local Profile2 소유권

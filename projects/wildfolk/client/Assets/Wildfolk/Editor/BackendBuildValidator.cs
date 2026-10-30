@@ -23,12 +23,14 @@ namespace Wildfolk.Editor
         }
         public static List<string> Issues(BackendSettings config,BuildChannel channel,bool developmentBuild)
         {
-            var issues=new List<string>();var environment=Array.Find(config.Environments,e=>e.Channel==channel.ToString());
+            var issues=new List<string>();
             if(channel!=BuildChannel.Development&&config.AllowDevelopmentIdentity)issues.Add("Development identity is forbidden outside Development");
             if(channel!=BuildChannel.Development&&developmentBuild)issues.Add("Alpha/Production may not use Development build fixtures");
             if(channel==BuildChannel.Development)return issues;
+            try{BackendPolicy.RequireEnvironment(config,channel);}catch(BackendSetupException){issues.Add("Verified channel/environment mapping required");}
+            // An offline Alpha candidate is distributable; account activation and Production stay strict.
+            if(channel==BuildChannel.Alpha && !config.Enabled)return issues;
             if(!config.Enabled)issues.Add("Backend configuration is not enabled");
-            if(environment==null||!Guid.TryParse(environment.Id,out _)||string.IsNullOrWhiteSpace(environment.Name))issues.Add("Verified channel/environment mapping required");
             if(!BackendPolicy.ValidWeb(config.PrivacyUrl))issues.Add("Public HTTPS privacy policy required");
             if(!BackendPolicy.ValidWeb(config.DeletionWebUrl))issues.Add("Public HTTPS deletion request page required");
             if(string.IsNullOrEmpty(config.GoogleWebClientId)||!long.TryParse(config.GoogleCloudProjectNumber,out var number)||number<=0)issues.Add("Google Play Games / Integrity configuration required");
@@ -39,7 +41,9 @@ namespace Wildfolk.Editor
             var issues=Issues(BackendSettings.Current,BackendPolicy.Channel,(report.summary.options&BuildOptions.Development)!=0);
             if(BackendPolicy.Channel!=BuildChannel.Development){var id=PlayerSettings.GetApplicationIdentifier(UnityEditor.Build.NamedBuildTarget.Android);if(string.IsNullOrWhiteSpace(id)||id.Contains("DefaultCompany")||!System.Text.RegularExpressions.Regex.IsMatch(id,@"^[a-zA-Z][a-zA-Z0-9_]*(\.[a-zA-Z][a-zA-Z0-9_]*)+$"))issues.Add("Real Android application identifier required");}
             if(BackendPolicy.Channel!=BuildChannel.Development&&report.summary.platform!=BuildTarget.Android)issues.Add("Launch account provider currently supports Android only");
-            if(BackendPolicy.Channel!=BuildChannel.Development)issues.AddRange(PgsIssues(BackendSettings.Current));
+            var defines=PlayerSettings.GetScriptingDefineSymbols(UnityEditor.Build.NamedBuildTarget.Android).Split(';');
+            if(Array.IndexOf(defines,"LOWFIRE_ALPHA")>=0&&Array.IndexOf(defines,"LOWFIRE_PRODUCTION")>=0)issues.Add("Conflicting release channels");
+            if(BackendPolicy.Channel!=BuildChannel.Development && (BackendSettings.Current.Enabled||BackendPolicy.Channel==BuildChannel.Production))issues.AddRange(PgsIssues(BackendSettings.Current));
             if(issues.Count>0)throw new BuildFailedException(string.Join("\n",issues));
         }
     }

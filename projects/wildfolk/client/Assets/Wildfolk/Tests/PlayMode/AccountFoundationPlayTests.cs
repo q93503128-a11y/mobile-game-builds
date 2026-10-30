@@ -29,7 +29,7 @@ namespace Wildfolk.Tests
             var screen=UnityEngine.Object.FindFirstObjectByType<AccountProfileScreen>();screen.Open();var task=service.Connect();while(!task.IsCompleted)yield return null;Assert.That(task.IsFaulted,Is.False);Assert.That(service.State,Is.EqualTo(AccountConnection.Connected));Assert.That(screen.Support.text,Is.EqualTo(service.Profile.SupportId));
             var old=GUIUtility.systemCopyBuffer;try{screen.CopySupport();Assert.That(GUIUtility.systemCopyBuffer,Is.EqualTo(service.Profile.SupportId));}finally{GUIUtility.systemCopyBuffer=old;}
             screen.Help();yield return null;Assert.That(screen.View.activeSelf,Is.False);Assert.That(screen.FeedbackView.activeSelf,Is.True);Assert.That(screen.Consent.isOn,Is.False);Assert.That(screen.FeedbackText.characterLimit,Is.EqualTo(1500));Assert.That(screen.Category.options.Count,Is.EqualTo(6));
-            screen.CloseHelp();screen.Delete();screen.ConfirmDelete();Assert.That(service.State,Is.EqualTo(AccountConnection.Connected));screen.CancelDelete();Assert.That(screen.View.activeSelf,Is.True);screen.Back();Assert.That(screen.Home.Menu.activeSelf,Is.True);
+            screen.CloseHelp();screen.Delete();screen.ConfirmDelete();Assert.That(service.State,Is.EqualTo(AccountConnection.Connected));screen.CancelDelete();Assert.That(screen.View.activeSelf,Is.True);screen.Back();Assert.That(screen.GetComponent<EconomyScreen>().HubView.activeSelf,Is.True);Assert.That(screen.Home.Menu.activeSelf,Is.False);
         }
         [UnityTest]public IEnumerator OfflineAuthenticationDoesNotBlockSingleplayerSaveAndHome()
         {

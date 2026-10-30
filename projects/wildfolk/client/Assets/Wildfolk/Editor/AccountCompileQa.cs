@@ -14,8 +14,11 @@ namespace Wildfolk.Editor
         {
             var destination=Environment.GetEnvironmentVariable("LOWFIRE_BACKEND_RESULTS");if(string.IsNullOrEmpty(destination))throw new InvalidOperationException("Explicit QA result directory required");Directory.CreateDirectory(destination);
             var result=new Result();var timer=System.Diagnostics.Stopwatch.StartNew();
+            var named=UnityEditor.Build.NamedBuildTarget.Android;var priorDefines=PlayerSettings.GetScriptingDefineSymbols(named);
             try{
                 foreach(var channel in new[]{"ALPHA","PRODUCTION"}){
+                    var baseDefines=priorDefines.Split(';').Where(d=>d!="LOWFIRE_ALPHA"&&d!="LOWFIRE_PRODUCTION"&&!string.IsNullOrWhiteSpace(d));
+                    PlayerSettings.SetScriptingDefineSymbols(named,string.Join(";",baseDefines.Concat(new[]{"LOWFIRE_"+channel})));
                     var folder=Path.Combine(destination,"android-"+channel.ToLowerInvariant());Directory.CreateDirectory(folder);
                     var settings=new ScriptCompilationSettings{target=BuildTarget.Android,group=BuildTargetGroup.Android,options=ScriptCompilationOptions.None,extraScriptingDefines=new[]{"LOWFIRE_"+channel}};
                     var compiled=PlayerBuildInterface.CompilePlayerScripts(settings,folder);
@@ -29,7 +32,7 @@ namespace Wildfolk.Editor
                     if(channel=="ALPHA"){result.AlphaAssemblies=compiled.assemblies.Count;result.AlphaFixtureExcluded=excluded;}else{result.ProductionAssemblies=compiled.assemblies.Count;result.ProductionFixtureExcluded=excluded;}
                 }result.Passed=true;
             }catch(Exception e){result.Error=e.GetType().Name+": "+e.Message;throw;}
-            finally{timer.Stop();result.Seconds=timer.Elapsed.TotalSeconds;File.WriteAllText(Path.Combine(destination,"android-scripts.json"),JsonUtility.ToJson(result,true));}
+            finally{PlayerSettings.SetScriptingDefineSymbols(named,priorDefines);timer.Stop();result.Seconds=timer.Elapsed.TotalSeconds;File.WriteAllText(Path.Combine(destination,"android-scripts.json"),JsonUtility.ToJson(result,true));}
         }
         [Serializable]private sealed class BundleResult
         {
