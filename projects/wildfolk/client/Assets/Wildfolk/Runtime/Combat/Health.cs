@@ -10,9 +10,13 @@ namespace Wildfolk
         public int Maximum => Definition.MaximumHealth+maximumBonus;
         private int maximumBonus;
         public bool IsReplica {get;internal set;}
-        private bool deathNotified;
+        private bool deathNotified,replicaInitialized;
         public void ApplyReplica(int value,bool hit=false)
-        {var previous=Current;Current=Mathf.Clamp(value,0,Maximum);if(previous!=Current)Changed?.Invoke();if(Current<previous || hit)Damaged?.Invoke();}
+        {
+            var previous=Current;Current=Mathf.Clamp(value,0,Maximum);
+            var damaged=hit || replicaInitialized && Current<previous;replicaInitialized=true;
+            if(previous!=Current)Changed?.Invoke();if(damaged)Damaged?.Invoke();
+        }
         public void SetMaximumBonus(int bonus){maximumBonus=Math.Max(0,bonus);Current=Math.Min(Current,Maximum);Changed?.Invoke();}
         public int DamageReduction { get; set; }
         public PlayerInventory LastAttacker { get; private set; }
@@ -51,7 +55,7 @@ namespace Wildfolk
         public void MarkCombat()=>LastCombatTime=Time.time;
         public void RestoreHealth(int health)
         {if(health<0 || health>Maximum)throw new ArgumentOutOfRangeException(nameof(health));Current=health;deathNotified=health==0;LastAttacker=null;Changed?.Invoke();}
-        public void ResetForSpawn(){RestoreHealth(Maximum);LastCombatTime=float.NegativeInfinity;}
+        public void ResetForSpawn(){replicaInitialized=false;RestoreHealth(Maximum);LastCombatTime=float.NegativeInfinity;}
         public void RestoreCombatTime(float remaining,float delay)=>LastCombatTime=remaining<=0 ? float.NegativeInfinity : Time.time-delay+remaining;
         public int Heal(int amount)
         {

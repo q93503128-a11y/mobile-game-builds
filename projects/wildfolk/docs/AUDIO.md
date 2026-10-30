@@ -1,5 +1,7 @@
 # Lowfire 음향 정본
 
+2026-10-30 수명 교정: 씬 전환 시 이전 encounter의 victory 예약·intro 유지 시간·duck timer를 초기화한다. 메인 메뉴/Continue에서 이전 전투의 예약음을 새로 재생하지 않는다. 영속 owner·source 수·기존 crossfade는 유지한다. [기술 검수](../validation/technical-health-vfx-correctness/REVIEW.md).
+
 Foundation5 현재 상태: **구현·저장소 검증 완료**. 초기 무음 상태와 음원 준비104개 중간 저장은 REVIEW의 과거 기록이다. 현재는 **Music6 / Ambience6 / SFX89 =101파일**, **74개 cue**, Resources AudioBank와 실제 AudioMixer/런타임 연결을 제공한다. 지원되지 않는 나무 바닥 발소리 후보3개는 제거했다. 새 기능·재료·제작법·직업·경제 규칙은 추가하지 않았다.
 
 ## 소리의 방향과 출처

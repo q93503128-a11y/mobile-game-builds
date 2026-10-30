@@ -124,7 +124,7 @@ namespace Wildfolk.Tests
         {
             var wood=Recipe("workbench").Ingredients[0].Item;
             inventory.Model.Add(wood,450);
-            yield return input.Inventory(hud);yield return input.Click(panel.CraftingButton);yield return input.Click(Card("workbench").CraftButton);
+            yield return input.Inventory(hud);yield return input.Click(panel.CraftingButton);yield return CraftVisible("workbench");
             Assert.That(inventory.Model.CountItem(wood),Is.EqualTo(444));
             Assert.That(inventory.Model.GetSlot(9).Item.Id,Is.EqualTo("workbench"));yield return input.Click(crafts.InventoryButton);
             Assert.That(panel.Slots[9].Icon.enabled,Is.True);Assert.That(panel.Slots[9].Count.text,Is.EqualTo("1"));
@@ -183,7 +183,7 @@ namespace Wildfolk.Tests
             yield return Harvest(Tree());
             var wood=Recipe("workbench").Ingredients[0].Item;
             Assert.That(inventory.Model.CountItem(wood),Is.EqualTo(6));
-            yield return input.Inventory(hud);yield return input.Click(panel.CraftingButton);yield return input.Click(Card("workbench").CraftButton);
+            yield return input.Inventory(hud);yield return input.Click(panel.CraftingButton);yield return CraftVisible("workbench");
             Assert.That(inventory.Model.CountItem(wood),Is.Zero);Assert.That(inventory.Model.GetSlot(0).Item.Id,Is.EqualTo("workbench"));
             yield return input.Inventory(hud);
             var placement=player.GetComponent<PlayerPlacement>();
@@ -204,7 +204,7 @@ namespace Wildfolk.Tests
             Assert.That(inventory.Model.CountItem(wood),Is.EqualTo(18));
             Position(new Vector2(0,-.35f),Vector2.down);yield return new WaitForSeconds(.3f);
             yield return input.Click(hud.Interact);
-            yield return input.Click(crafts.CategoryButtons[(int)RecipeCategory.Tools+1]);yield return input.Click(Card("axe").CraftButton);yield return input.Click(Card("pickaxe").CraftButton);yield return input.Click(crafts.CategoryButtons[(int)RecipeCategory.Weapons+1]);yield return CraftVisible("wood_sword");
+            yield return input.Click(crafts.CategoryButtons[(int)RecipeCategory.Tools+1]);yield return CraftVisible("axe");yield return CraftVisible("pickaxe");yield return input.Click(crafts.CategoryButtons[(int)RecipeCategory.Weapons+1]);yield return CraftVisible("wood_sword");
             Assert.That(inventory.Model.CountItem(wood),Is.EqualTo(3));
             Assert.That(inventory.Model.CountItem(Recipe("axe").Result),Is.EqualTo(1));
             Assert.That(inventory.Model.CountItem(Recipe("pickaxe").Result),Is.EqualTo(1));

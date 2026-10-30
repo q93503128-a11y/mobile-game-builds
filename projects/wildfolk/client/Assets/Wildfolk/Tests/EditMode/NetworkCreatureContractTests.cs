@@ -23,7 +23,7 @@ namespace Wildfolk.Tests
         {
             var session=AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Wildfolk/Prefabs/NetworkSession.prefab").GetComponent<NetworkSession>();
             var entries=session.EcologyPrefab.GetComponent<NetworkCreatureWorld>().Prefabs;
-            Assert.That(entries.Length,Is.EqualTo(64));Assert.That(entries.Select(e=>e.NetworkPrefab).Distinct().Count(),Is.EqualTo(64));
+            Assert.That(entries.Length,Is.EqualTo(66));Assert.That(entries.Select(e=>e.NetworkPrefab).Distinct().Count(),Is.EqualTo(66));
             foreach(var e in entries)
             {
                 Assert.That(e.Source,Is.Not.Null);Assert.That(e.NetworkPrefab.GetComponent<NetworkObject>(),Is.Not.Null);

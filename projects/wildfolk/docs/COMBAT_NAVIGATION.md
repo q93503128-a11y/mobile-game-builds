@@ -1,5 +1,7 @@
 # 전투 관계와 적 이동
 
+2026-10-30 기술 검수: 첫 HP replica snapshot은 체력/바만 복원하고 새 피격으로 재생하지 않는다. 이후 HP 감소 또는 명시한 새 impact는 한 번만 피격 이벤트를 내며 pool 재사용은 baseline을 다시 초기화한다. [검수·범위·한계](../validation/technical-health-vfx-correctness/REVIEW.md).
+
 기본 Fist와 현재 Wood/Stone/Iron Axe/Pickaxe/Sword는 모두 MaxTargets1이다. 이전 코드도 한 대상만 피해를 주었으나 방향과 무관한 가장 가까운 대상을 선택했다. 현재는 Facing Sector 안에서 살아 있는 유효 대상을 거리/중앙 정렬 점수로 선택하고 동일 Health의 중복 Collider를 중복 타격하지 않는다. Range는 Collider 표면까지의 거리다. 밀착/일반 거리/범위 끝은 자동 검증하며, 존재가 확인되지 않은 밀착 버그를 가정하지 않았다.
 
 AttackProfile은 MaxTargets/ArcAngle/Range/PierceCount/AoERadius/SelectionRule을 표현한다. 현재 Arc120도/Range1.6/MaxTargets1/Pierce0/AoE0이다. MaxTargets를 늘린 Sector 선택은 검증 가능하지만 출시 장비는 모두1이다. 실제 Pierce/AoE 공격 방식, Greatsword/Spear/Sweep/광역 Skill은 아직 없다.

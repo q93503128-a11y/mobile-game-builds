@@ -69,7 +69,10 @@ namespace Wildfolk.Tests
             var skeleton=PrefabPool.Spawn(world.Night.SecondaryPrefab,origin+Vector2.up*1.3f,Quaternion.identity);skeleton.Session=world.Session;skeleton.PlayerHealth=player.Health;skeleton.Clock=world.Clock;skeleton.Lifecycle.Clock=world.Clock;skeleton.Lifecycle.Definition=world.Night.Definition;skeleton.Variant.SetEquipped(true);
             world.Clock.Model.SetElapsed(world.Clock.Definition.DaySeconds+world.Clock.Definition.EveningSeconds+1);yield return null;yield return null;skeleton.Lifecycle.RestoreActive();
             var hp=player.Health.Current;yield return new WaitForSeconds(.95f);Assert.That(player.Health.Current,Is.LessThan(hp));Assert.That(skeleton.GetComponent<NetworkCreature>().Identity.Value.Variant,Is.True);
-            other.Health.ResetForSpawn();Place(other,origin+Vector2.right*2);player.Health.ApplyDamage(player.Health.Maximum);yield return new WaitForSeconds(.12f);
+            other.Health.ResetForSpawn();Place(other,origin+Vector2.right*2);player.Health.ApplyDamage(player.Health.Maximum);
+            // Survivor's existing lethal safeguard is not the retargeting behavior under test.
+            if(player.Health.IsAlive){yield return new WaitForSeconds(1.6f);player.Health.ApplyDamage(player.Health.Maximum,true);}
+            Assert.That(player.Health.IsAlive,Is.False);yield return new WaitForSeconds(.12f);
             Assert.That(skeleton.PlayerHealth,Is.SameAs(other.Health));Assert.That(skeleton.GetComponent<NetworkCreature>().Frame.Value.Target,Is.EqualTo(other.NetworkObjectId));
         }
         [UnityTest]public IEnumerator UnspawnedReplicaCannotRunBrainDamageAlertsOrSpawnPopulation()

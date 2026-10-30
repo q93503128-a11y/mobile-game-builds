@@ -1,0 +1,1736 @@
+{
+  "baselineSHA": "1f5cc388749764c6060394552597062b2099f7b0",
+  "catalog": {
+    "items": 136,
+    "recipes": 111,
+    "changed": false
+  },
+  "sourceAudit": {
+    "indexedFiles": 442,
+    "lines": 21516,
+    "groups": {
+      "Runtime": 331,
+      "AndroidAds": 1,
+      "AndroidBilling": 1,
+      "Editor": 109
+    },
+    "fullReadClaim": false
+  },
+  "auditGate": {
+    "baseline": "1f5cc388749764c6060394552597062b2099f7b0",
+    "productionEditsBeforeAudit": false,
+    "scope": "442 C# files indexed; critical runtime ownership, hot paths, events, tasks, pooling, scenes, save, network and VFX paths read; real Unity baseline fixtures and 1200-second soak completed before product changes",
+    "fixNow": [
+      {
+        "priority": "P1",
+        "id": "initial-replica-hit",
+        "proof": "Unity initial ApplyReplica(80,false): one Damaged event and active HitFeedback coroutine without a new hit; actual LAN corroboration pending"
+      },
+      {
+        "priority": "P1",
+        "id": "audio-scene-lease",
+        "proof": "Controlled BossDefeated(1.5) then real Save and Home UI callback: MainMenu:BossVictory once"
+      }
+    ],
+    "defer": [
+      "Android/device profiling",
+      "Relay latency/jitter visual comparison",
+      "online delayed UI completion lifetime candidates not reproduced with disabled services",
+      "guard attack replica duration candidate needs targeted reproduction"
+    ],
+    "ignore": [
+      "Adding absent particles/trails or subjective visual polish",
+      "throttled cached HUD pattern hits without a demonstrated hotspot",
+      "pool transient state overwritten by Initialize/Launch",
+      "intentional fail-closed transaction error logging",
+      "Editor-only explicit QA tooling",
+      "architecture refactoring without a reproduced bug"
+    ]
+  },
+  "versions": {
+    "Save": 14,
+    "Profile": 2,
+    "CloudProfile": 1,
+    "Economy": 2,
+    "Protocol": 23,
+    "generation": 3,
+    "IAPSchema": 1,
+    "changed": false
+  },
+  "tests": {
+    "focused": {
+      "job_id": "61193ff7f5fa4ab5823ab31b49835749",
+      "started_unix_ms": 1793355783166,
+      "finished_unix_ms": 1793355823738,
+      "summary": {
+        "total": 12,
+        "passed": 12,
+        "failed": 0,
+        "skipped": 0,
+        "durationSeconds": 29.2452353,
+        "resultState": "Passed"
+      },
+      "tests": [
+        {
+          "fullName": "Wildfolk.Tests.AudioPlayTests.AuthoredCategoryButtonUsesPageAndDisabledButtonIsSilent",
+          "state": "Passed",
+          "message": null
+        },
+        {
+          "fullName": "Wildfolk.Tests.AudioPlayTests.ConfirmedReceiptCannotRepeatAndMuteDoesNotReplay",
+          "state": "Passed",
+          "message": null
+        },
+        {
+          "fullName": "Wildfolk.Tests.AudioPlayTests.ContinueDoesNotInheritPreviousBossIntroLease",
+          "state": "Passed",
+          "message": null
+        },
+        {
+          "fullName": "Wildfolk.Tests.AudioPlayTests.ExistingOwnerStateReceiptsDoNotReplayOnLoadOrSameSequence",
+          "state": "Passed",
+          "message": null
+        },
+        {
+          "fullName": "Wildfolk.Tests.AudioPlayTests.HarvestDamageIsOneMaterialEventAndColdSceneIsSilent",
+          "state": "Passed",
+          "message": null
+        },
+        {
+          "fullName": "Wildfolk.Tests.AudioPlayTests.MuteAndSettingsDriveRealMixerAndAllSources",
+          "state": "Passed",
+          "message": null
+        },
+        {
+          "fullName": "Wildfolk.Tests.AudioPlayTests.NativeOverlaySuspendsAndFinallyRestoresAudioEvenOnFailure",
+          "state": "Passed",
+          "message": null
+        },
+        {
+          "fullName": "Wildfolk.Tests.AudioPlayTests.SceneChangeCancelsPendingBossVictoryAndDucking",
+          "state": "Passed",
+          "message": null
+        },
+        {
+          "fullName": "Wildfolk.Tests.AudioPlayTests.SceneReloadKeepsOneOwnerAndBoundedSources",
+          "state": "Passed",
+          "message": null
+        },
+        {
+          "fullName": "Wildfolk.Tests.ReplicaFeedbackPlayTests.InitialDamagedSnapshotUpdatesHealthWithoutPlayingAnImpact",
+          "state": "Passed",
+          "message": null
+        },
+        {
+          "fullName": "Wildfolk.Tests.ReplicaFeedbackPlayTests.NewDamageAndExplicitBufferedImpactEachReactOnce",
+          "state": "Passed",
+          "message": null
+        },
+        {
+          "fullName": "Wildfolk.Tests.ReplicaFeedbackPlayTests.ReusedActorPrimesItsNewSnapshotSilently",
+          "state": "Passed",
+          "message": null
+        }
+      ]
+    },
+    "initialPlay": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"success\":false,\"message\":null,\"error\":\"Unity plugin session e6c4c8a0-c908-4958-b84a-5835e043e275 disconnected while awaiting command_result\",\"data\":null,\"hint\":\"retry\"}"
+        }
+      ],
+      "structuredContent": {
+        "result": {
+          "success": false,
+          "message": null,
+          "error": "Unity plugin session e6c4c8a0-c908-4958-b84a-5835e043e275 disconnected while awaiting command_result",
+          "data": null,
+          "hint": "retry"
+        }
+      },
+      "isError": false
+    },
+    "initialEdit": {
+      "job_id": "ac86049cb51840debee7efb16b5dcaaa",
+      "status": "failed",
+      "mode": "EditMode",
+      "started_unix_ms": 1793356268944,
+      "finished_unix_ms": 1793356279360,
+      "last_update_unix_ms": 1793356279360,
+      "progress": {
+        "completed": 35,
+        "total": 35,
+        "current_test_full_name": null,
+        "current_test_started_unix_ms": null,
+        "last_finished_test_full_name": "Wildfolk.Tests.SceneContractTests.SavedSceneRetainsPlayableConnectionsAndNonPushingEnemy",
+        "last_finished_unix_ms": 1793356279241,
+        "stuck_suspected": false,
+        "editor_is_focused": false,
+        "run_in_background": true,
+        "focus_nudge_attempts": null,
+        "focus_nudge_limit": null,
+        "focus_nudge_status": null,
+        "blocked_reason": null,
+        "failures_so_far": [
+          {
+            "full_name": "Wildfolk.Tests.NetworkCreatureContractTests.EveryEcologySpawnHasRegisteredServerPrefabAndSharedBrain",
+            "message": "  Expected: 64\r\n  But was:  66\r\n"
+          }
+        ],
+        "failures_capped": false
+      },
+      "error": null,
+      "result": null
+    },
+    "repairedPlay": {
+      "job_id": "73b6d5d3a5ca4fb98e85e8fd480e0e05",
+      "started_unix_ms": 1793356569915,
+      "finished_unix_ms": 1793356632096,
+      "summary": {
+        "total": 4,
+        "passed": 3,
+        "failed": 1,
+        "skipped": 0,
+        "durationSeconds": 52.1113431,
+        "resultState": "Failed(Child)"
+      },
+      "tests": [
+        {
+          "fullName": "Wildfolk.Tests.NetworkCreaturePlayTests.HostTargetsLivingPlayersAndLaunchesOneAuthoritativeProjectile",
+          "state": "Passed",
+          "message": null
+        },
+        {
+          "fullName": "Wildfolk.Tests.NetworkPersistencePlayTests.HostSaveRehostRestoresWorldCargoGroundEcologyAndPlayerWithoutDuplicates",
+          "state": "Passed",
+          "message": null
+        },
+        {
+          "fullName": "Wildfolk.Tests.SurvivalLoopPlayTests.BareHandsToPlacedWorkbenchToCraftedToolsAndSwordThroughActualUI",
+          "state": "Failed",
+          "message": "  Expected: 3\r\n  But was:  13\r\n"
+        },
+        {
+          "fullName": "Wildfolk.Tests.SurvivalLoopPlayTests.CraftIntoStorageThenDragToHotbarUpdatesPlacementImmediately",
+          "state": "Passed",
+          "message": null
+        }
+      ]
+    },
+    "lastFlow": {
+      "job_id": "fa8978533fc340c48cf89d994df17891",
+      "started_unix_ms": 1793356758325,
+      "finished_unix_ms": 1793356805162,
+      "summary": {
+        "total": 1,
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "durationSeconds": 37.3675133,
+        "resultState": "Passed"
+      },
+      "tests": [
+        {
+          "fullName": "Wildfolk.Tests.SurvivalLoopPlayTests.BareHandsToPlacedWorkbenchToCraftedToolsAndSwordThroughActualUI",
+          "state": "Passed",
+          "message": null
+        }
+      ]
+    },
+    "repairedEdit": {
+      "job_id": "f00b02ce25b04c8382a3efd5b1383745",
+      "started_unix_ms": 1793356746299,
+      "finished_unix_ms": 1793356753150,
+      "summary": {
+        "total": 1,
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "durationSeconds": 1.4981821,
+        "resultState": "Passed"
+      },
+      "tests": [
+        {
+          "fullName": "Wildfolk.Tests.NetworkCreatureContractTests.EveryEcologySpawnHasRegisteredServerPrefabAndSharedBrain",
+          "state": "Passed",
+          "message": null
+        }
+      ]
+    },
+    "baselineReplica": {
+      "stage": "initial replica snapshot without a new hit; controlled fixture",
+      "damageEvents": 1,
+      "hitCoroutine": true,
+      "hp": 80,
+      "maximum": 100,
+      "scene": "Wildfolk"
+    }
+  },
+  "testConclusion": {
+    "uniqueEditPassed": 35,
+    "uniquePlayPassed": 45,
+    "initialEdit": "34/35",
+    "initialIntegrationPlay": "29/33",
+    "baselineSameFourFailures": true,
+    "fixtureRepairFirstRerun": "3/4",
+    "lastFlowRerun": "1/1",
+    "validatorErrors": 0,
+    "detailCoverage": "Native summaries establish totals; per-test details in some completed jobs contain failures only. Unique counts exclude reruns and group overlaps."
+  },
+  "baselineReplica": {
+    "hp": 80,
+    "newHitFlag": false,
+    "damageEvents": 1,
+    "hitCoroutine": true,
+    "controlled": true
+  },
+  "audioBefore": {
+    "endScene": "MainMenu",
+    "wrongSceneVictoryCount": "1"
+  },
+  "audioAfter": {
+    "wrongSceneVictoryCount": "0",
+    "cycles": "3",
+    "scene": "MainMenu"
+  },
+  "soak": {
+    "baselineBeforeProductFixes": true,
+    "actualWallTime": true,
+    "accelerated": false,
+    "summary": {
+      "wallSeconds": "1200.0055653",
+      "frames": "187777",
+      "bursts": "599",
+      "gcMeanBytes": "60693",
+      "gcMax": "436307",
+      "mainMeanNanoseconds": "6374115",
+      "mainMaxNanoseconds": "84949800",
+      "endUTC": "2026-10-30T10:10:23.5647536Z"
+    },
+    "samples": 40,
+    "rows": [
+      {
+        "elapsed": "0.027",
+        "gameObjects": "2114",
+        "pooled": "0",
+        "projectiles": "8",
+        "pickups": "1",
+        "particles": "0",
+        "audioOwners": "1",
+        "audioSources": "30",
+        "managed": "888209408",
+        "allocated": "462073205",
+        "damagedSubscribers": "7"
+      },
+      {
+        "elapsed": "30.031",
+        "gameObjects": "2099",
+        "pooled": "9",
+        "projectiles": "0",
+        "pickups": "0",
+        "particles": "0",
+        "audioOwners": "1",
+        "audioSources": "30",
+        "managed": "897155072",
+        "allocated": "461819088",
+        "damagedSubscribers": "7"
+      },
+      {
+        "elapsed": "60.037",
+        "gameObjects": "2094",
+        "pooled": "9",
+        "projectiles": "0",
+        "pickups": "0",
+        "particles": "0",
+        "audioOwners": "1",
+        "audioSources": "30",
+        "managed": "915845120",
+        "allocated": "462097804",
+        "damagedSubscribers": "7"
+      },
+      {
+        "elapsed": "90.038",
+        "gameObjects": "2094",
+        "pooled": "9",
+        "projectiles": "0",
+        "pickups": "0",
+        "particles": "0",
+        "audioOwners": "1",
+        "audioSources": "30",
+        "managed": "940867584",
+        "allocated": "462367284",
+        "damagedSubscribers": "7"
+      },
+      {
+        "elapsed": "120.042",
+        "gameObjects": "2094",
+        "pooled": "9",
+        "projectiles": "0",
+        "pickups": "0",
+        "particles": "0",
+        "audioOwners": "1",
+        "audioSources": "30",
+        "managed": "952971264",
+        "allocated": "462633471",
+        "damagedSubscribers": "7"
+      },
+      {
+        "elapsed": "150.044",
+        "gameObjects": "2104",
+        "pooled": "9",
+        "projectiles": "0",
+        "pickups": "0",
+        "particles": "0",
+        "audioOwners": "1",
+        "audioSources": "30",
+        "managed": "857694208",
+        "allocated": "461227424",
+        "damagedSubscribers": "7"
+      },
+      {
+        "elapsed": "180.045",
+        "gameObjects": "2104",
+        "pooled": "9",
+        "projectiles": "0",
+        "pickups": "0",
+        "particles": "0",
+        "audioOwners": "1",
+        "audioSources": "30",
+        "managed": "899559424",
+        "allocated": "461711802",
+        "damagedSubscribers": "7"
+      },
+      {
+        "elapsed": "210.048",
+        "gameObjects": "2104",
+        "pooled": "9",
+        "projectiles": "0",
+        "pickups": "0",
+        "particles": "0",
+        "audioOwners": "1",
+        "audioSources": "30",
+        "managed": "943067136",
+        "allocated": "462264946",
+        "damagedSubscribers": "7"
+      },
+      {
+        "elapsed": "240.053",
+        "gameObjects": "2109",
+        "pooled": "9",
+        "projectiles": "0",
+        "pickups": "0",
+        "particles": "0",
+        "audioOwners": "1",
+        "audioSources": "30",
+        "managed": "979996672",
+        "allocated": "462662279",
+        "damagedSubscribers": "7"
+      },
+      {
+        "elapsed": "270.054",
+        "gameObjects": "2094",
+        "pooled": "9",
+        "projectiles": "0",
+        "pickups": "0",
+        "particles": "0",
+        "audioOwners": "1",
+        "audioSources": "30",
+        "managed": "860160000",
+        "allocated": "461216509",
+        "damagedSubscribers": "7"
+      },
+      {
+        "elapsed": "300.054",
+        "gameObjects": "2099",
+        "pooled": "9",
+        "projectiles": "0",
+        "pickups": "0",
+        "particles": "0",
+        "audioOwners": "1",
+        "audioSources": "30",
+        "managed": "870252544",
+        "allocated": "461389000",
+        "damagedSubscribers": "7"
+      },
+      {
+        "elapsed": "330.054",
+        "gameObjects": "2104",
+        "pooled": "9",
+        "projectiles": "0",
+        "pickups": "0",
+        "particles": "0",
+        "audioOwners": "1",
+        "audioSources": "30",
+        "managed": "901189632",
+        "allocated": "461828106",
+        "damagedSubscribers": "7"
+      },
+      {
+        "elapsed": "360.057",
+        "gameObjects": "2104",
+        "pooled": "9",
+        "projectiles": "0",
+        "pickups": "0",
+        "particles": "0",
+        "audioOwners": "1",
+        "audioSources": "30",
+        "managed": "940126208",
+        "allocated": "462323524",
+        "damagedSubscribers": "7"
+      },
+      {
+        "elapsed": "390.061",
+        "gameObjects": "2099",
+        "pooled": "9",
+        "projectiles": "0",
+        "pickups": "0",
+        "particles": "0",
+        "audioOwners": "1",
+        "audioSources": "30",
+        "managed": "977887232",
+        "allocated": "462705151",
+        "damagedSubscribers": "7"
+      },
+      {
+        "elapsed": "420.068",
+        "gameObjects": "2104",
+        "pooled": "9",
+        "projectiles": "0",
+        "pickups": "0",
+        "particles": "0",
+        "audioOwners": "1",
+        "audioSources": "30",
+        "managed": "870064128",
+        "allocated": "461393750",
+        "damagedSubscribers": "7"
+      },
+      {
+        "elapsed": "450.073",
+        "gameObjects": "2099",
+        "pooled": "9",
+        "projectiles": "0",
+        "pickups": "0",
+        "particles": "0",
+        "audioOwners": "1",
+        "audioSources": "30",
+        "managed": "896000000",
+        "allocated": "461730552",
+        "damagedSubscribers": "7"
+      },
+      {
+        "elapsed": "480.078",
+        "gameObjects": "2099",
+        "pooled": "9",
+        "projectiles": "0",
+        "pickups": "0",
+        "particles": "0",
+        "audioOwners": "1",
+        "audioSources": "30",
+        "managed": "907530240",
+        "allocated": "461905919",
+        "damagedSubscribers": "7"
+      },
+      {
+        "elapsed": "510.081",
+        "gameObjects": "2104",
+        "pooled": "9",
+        "projectiles": "0",
+        "pickups": "0",
+        "particles": "0",
+        "audioOwners": "1",
+        "audioSources": "30",
+        "managed": "934830080",
+        "allocated": "462299666",
+        "damagedSubscribers": "7"
+      },
+      {
+        "elapsed": "540.085",
+        "gameObjects": "2109",
+        "pooled": "9",
+        "projectiles": "0",
+        "pickups": "0",
+        "particles": "0",
+        "audioOwners": "1",
+        "audioSources": "30",
+        "managed": "979357696",
+        "allocated": "462640538",
+        "damagedSubscribers": "7"
+      },
+      {
+        "elapsed": "570.085",
+        "gameObjects": "2104",
+        "pooled": "9",
+        "projectiles": "0",
+        "pickups": "0",
+        "particles": "0",
+        "audioOwners": "1",
+        "audioSources": "30",
+        "managed": "874086400",
+        "allocated": "461487172",
+        "damagedSubscribers": "7"
+      },
+      {
+        "elapsed": "600.088",
+        "gameObjects": "2099",
+        "pooled": "9",
+        "projectiles": "0",
+        "pickups": "0",
+        "particles": "0",
+        "audioOwners": "1",
+        "audioSources": "30",
+        "managed": "894009344",
+        "allocated": "461767569",
+        "damagedSubscribers": "7"
+      },
+      {
+        "elapsed": "630.091",
+        "gameObjects": "2099",
+        "pooled": "9",
+        "projectiles": "0",
+        "pickups": "0",
+        "particles": "0",
+        "audioOwners": "1",
+        "audioSources": "30",
+        "managed": "911765504",
+        "allocated": "462062901",
+        "damagedSubscribers": "7"
+      },
+      {
+        "elapsed": "660.096",
+        "gameObjects": "2104",
+        "pooled": "9",
+        "projectiles": "0",
+        "pickups": "0",
+        "particles": "0",
+        "audioOwners": "1",
+        "audioSources": "30",
+        "managed": "932700160",
+        "allocated": "462250222",
+        "damagedSubscribers": "7"
+      },
+      {
+        "elapsed": "690.096",
+        "gameObjects": "2104",
+        "pooled": "9",
+        "projectiles": "0",
+        "pickups": "0",
+        "particles": "0",
+        "audioOwners": "1",
+        "audioSources": "30",
+        "managed": "970153984",
+        "allocated": "462787070",
+        "damagedSubscribers": "7"
+      },
+      {
+        "elapsed": "720.099",
+        "gameObjects": "2104",
+        "pooled": "9",
+        "projectiles": "0",
+        "pickups": "0",
+        "particles": "0",
+        "audioOwners": "1",
+        "audioSources": "30",
+        "managed": "872034304",
+        "allocated": "461470652",
+        "damagedSubscribers": "7"
+      },
+      {
+        "elapsed": "750.100",
+        "gameObjects": "2104",
+        "pooled": "9",
+        "projectiles": "0",
+        "pickups": "0",
+        "particles": "0",
+        "audioOwners": "1",
+        "audioSources": "30",
+        "managed": "887939072",
+        "allocated": "461688788",
+        "damagedSubscribers": "7"
+      },
+      {
+        "elapsed": "780.101",
+        "gameObjects": "2094",
+        "pooled": "9",
+        "projectiles": "0",
+        "pickups": "0",
+        "particles": "0",
+        "audioOwners": "1",
+        "audioSources": "30",
+        "managed": "893120512",
+        "allocated": "461823581",
+        "damagedSubscribers": "7"
+      },
+      {
+        "elapsed": "810.107",
+        "gameObjects": "2094",
+        "pooled": "9",
+        "projectiles": "0",
+        "pickups": "0",
+        "particles": "0",
+        "audioOwners": "1",
+        "audioSources": "30",
+        "managed": "888311808",
+        "allocated": "461689221",
+        "damagedSubscribers": "7"
+      },
+      {
+        "elapsed": "840.109",
+        "gameObjects": "2094",
+        "pooled": "9",
+        "projectiles": "0",
+        "pickups": "0",
+        "particles": "0",
+        "audioOwners": "1",
+        "audioSources": "30",
+        "managed": "877625344",
+        "allocated": "461516086",
+        "damagedSubscribers": "7"
+      },
+      {
+        "elapsed": "870.114",
+        "gameObjects": "2098",
+        "pooled": "8",
+        "projectiles": "0",
+        "pickups": "1",
+        "particles": "0",
+        "audioOwners": "1",
+        "audioSources": "30",
+        "managed": "882642944",
+        "allocated": "461588774",
+        "damagedSubscribers": "7"
+      },
+      {
+        "elapsed": "900.115",
+        "gameObjects": "2098",
+        "pooled": "8",
+        "projectiles": "0",
+        "pickups": "1",
+        "particles": "0",
+        "audioOwners": "1",
+        "audioSources": "30",
+        "managed": "889774080",
+        "allocated": "461686000",
+        "damagedSubscribers": "7"
+      },
+      {
+        "elapsed": "930.120",
+        "gameObjects": "2098",
+        "pooled": "8",
+        "projectiles": "0",
+        "pickups": "1",
+        "particles": "0",
+        "audioOwners": "1",
+        "audioSources": "30",
+        "managed": "895700992",
+        "allocated": "461698048",
+        "damagedSubscribers": "7"
+      },
+      {
+        "elapsed": "960.123",
+        "gameObjects": "2098",
+        "pooled": "8",
+        "projectiles": "0",
+        "pickups": "1",
+        "particles": "0",
+        "audioOwners": "1",
+        "audioSources": "30",
+        "managed": "883757056",
+        "allocated": "461571485",
+        "damagedSubscribers": "7"
+      },
+      {
+        "elapsed": "990.130",
+        "gameObjects": "2103",
+        "pooled": "8",
+        "projectiles": "0",
+        "pickups": "1",
+        "particles": "0",
+        "audioOwners": "1",
+        "audioSources": "30",
+        "managed": "871403520",
+        "allocated": "461367507",
+        "damagedSubscribers": "7"
+      },
+      {
+        "elapsed": "1020.139",
+        "gameObjects": "2103",
+        "pooled": "8",
+        "projectiles": "0",
+        "pickups": "1",
+        "particles": "0",
+        "audioOwners": "1",
+        "audioSources": "30",
+        "managed": "858329088",
+        "allocated": "461214390",
+        "damagedSubscribers": "7"
+      },
+      {
+        "elapsed": "1050.144",
+        "gameObjects": "2103",
+        "pooled": "8",
+        "projectiles": "0",
+        "pickups": "1",
+        "particles": "0",
+        "audioOwners": "1",
+        "audioSources": "30",
+        "managed": "857899008",
+        "allocated": "461230222",
+        "damagedSubscribers": "7"
+      },
+      {
+        "elapsed": "1080.148",
+        "gameObjects": "2108",
+        "pooled": "8",
+        "projectiles": "0",
+        "pickups": "1",
+        "particles": "0",
+        "audioOwners": "1",
+        "audioSources": "30",
+        "managed": "968388608",
+        "allocated": "462443342",
+        "damagedSubscribers": "7"
+      },
+      {
+        "elapsed": "1110.152",
+        "gameObjects": "2124",
+        "pooled": "0",
+        "projectiles": "8",
+        "pickups": "1",
+        "particles": "0",
+        "audioOwners": "1",
+        "audioSources": "30",
+        "managed": "944013312",
+        "allocated": "461975286",
+        "damagedSubscribers": "7"
+      },
+      {
+        "elapsed": "1140.152",
+        "gameObjects": "2124",
+        "pooled": "0",
+        "projectiles": "8",
+        "pickups": "1",
+        "particles": "0",
+        "audioOwners": "1",
+        "audioSources": "30",
+        "managed": "930033664",
+        "allocated": "462240457",
+        "damagedSubscribers": "7"
+      },
+      {
+        "elapsed": "1170.155",
+        "gameObjects": "2124",
+        "pooled": "0",
+        "projectiles": "8",
+        "pickups": "1",
+        "particles": "0",
+        "audioOwners": "1",
+        "audioSources": "30",
+        "managed": "959164416",
+        "allocated": "462535849",
+        "damagedSubscribers": "7"
+      }
+    ],
+    "poolCohort": [
+      9
+    ],
+    "managedRange": [
+      857694208,
+      979996672
+    ],
+    "unityAllocatedRange": [
+      461214390,
+      462787070
+    ]
+  },
+  "editorMovement": {
+    "stage": "health-final-movement",
+    "utc": "2026-10-30T10:41:25.6361691Z",
+    "samples": 360,
+    "frameMeanMs": 7.525246,
+    "frameP95Ms": 11.3040037,
+    "frameMaxMs": 27.6115017,
+    "mainRecorderValid": true,
+    "mainMeanMs": 7.498814166666667,
+    "gcRecorderValid": true,
+    "gcMeanBytes": 312083.9138888889,
+    "gcMaxBytes": 839425,
+    "activeGameObjects": 2201,
+    "activeChunks": 9,
+    "maxChunks": 9,
+    "resources": 354,
+    "creatures": 53,
+    "terrainBytes": 1071676,
+    "cachedTiles": 0,
+    "generatedTiles": 9,
+    "cacheHits": 0,
+    "terrainPending": 0,
+    "terrainSliceMaxMs": 4.711,
+    "start": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "end": {
+      "x": 17.8693047,
+      "y": 0.0
+    },
+    "focused": false,
+    "graphics": "Intel(R) Iris(R) Xe Graphics"
+  },
+  "graphicalQA": {
+    "newGameSeed": -697871831,
+    "movement": "normal motor/physics, no teleport",
+    "gather": {
+      "hits": "15",
+      "firstDamageAfterSwingSeconds": "0.3333282",
+      "woodPickedUp": "0",
+      "resourceDepleted": "True",
+      "subscribersRemoved": "true"
+    },
+    "pickup": {
+      "wood": "6",
+      "controlled": "normal motor walked toward visible drop"
+    },
+    "craft": {
+      "woodBefore": "6",
+      "woodAfter": "0",
+      "workbench": "1",
+      "fixture": "no resource injection; UI callback crafted harvested wood"
+    },
+    "placement": {
+      "previewValid": "True",
+      "actionAccepted": "True",
+      "consumed": "1",
+      "playerBuilt": "1"
+    },
+    "death": {
+      "firstLethalFixtureHp": "1",
+      "deadState": "Dead",
+      "deadHp": "0",
+      "button": "Free Home",
+      "buttonEnabled": "True",
+      "qaObserverCorrected": "runtime listener; no game source change",
+      "respawnState": "Alive",
+      "respawnHp": "100",
+      "atHome": "True",
+      "fixture": "lethal damage injected; existing Survivor safeguard honored; actual Home respawn UI callback"
+    },
+    "bossLifecycle": {
+      "passedChecks": 33,
+      "controlled": true,
+      "states": [
+        {
+          "utc": "2026-10-30T10:50:39.8548460Z",
+          "phase": "1",
+          "state": "Awakening",
+          "attack": "none",
+          "age": "0",
+          "edge": "False",
+          "vertices": "2",
+          "worldSpace": "False",
+          "crack": "False"
+        },
+        {
+          "utc": "2026-10-30T10:50:43.2063233Z",
+          "phase": "1",
+          "state": "Chase",
+          "attack": "none",
+          "age": "0",
+          "edge": "False",
+          "vertices": "2",
+          "worldSpace": "False",
+          "crack": "False"
+        },
+        {
+          "utc": "2026-10-30T10:50:43.3559840Z",
+          "phase": "2",
+          "state": "Transition",
+          "attack": "none",
+          "age": "0.03478369",
+          "edge": "False",
+          "vertices": "2",
+          "worldSpace": "False",
+          "crack": "False"
+        },
+        {
+          "utc": "2026-10-30T10:50:44.8973464Z",
+          "phase": "2",
+          "state": "Chase",
+          "attack": "none",
+          "age": "0",
+          "edge": "False",
+          "vertices": "2",
+          "worldSpace": "False",
+          "crack": "False"
+        },
+        {
+          "utc": "2026-10-30T10:50:45.0395880Z",
+          "phase": "2",
+          "state": "Windup",
+          "attack": "royal_cleave",
+          "age": "0.0290144",
+          "edge": "True",
+          "vertices": "42",
+          "worldSpace": "False",
+          "crack": "False"
+        },
+        {
+          "utc": "2026-10-30T10:50:45.8900798Z",
+          "phase": "2",
+          "state": "Strike",
+          "attack": "royal_cleave",
+          "age": "0.0339052",
+          "edge": "False",
+          "vertices": "42",
+          "worldSpace": "False",
+          "crack": "False"
+        },
+        {
+          "utc": "2026-10-30T10:50:46.0523779Z",
+          "phase": "2",
+          "state": "Recovery",
+          "attack": "royal_cleave",
+          "age": "0.03071479",
+          "edge": "False",
+          "vertices": "42",
+          "worldSpace": "False",
+          "crack": "False"
+        },
+        {
+          "utc": "2026-10-30T10:50:46.7751824Z",
+          "phase": "2",
+          "state": "Chase",
+          "attack": "royal_cleave",
+          "age": "0.03847621",
+          "edge": "False",
+          "vertices": "42",
+          "worldSpace": "False",
+          "crack": "False"
+        },
+        {
+          "utc": "2026-10-30T10:50:47.2844526Z",
+          "phase": "3",
+          "state": "Transition",
+          "attack": "none",
+          "age": "0.0425931",
+          "edge": "False",
+          "vertices": "42",
+          "worldSpace": "False",
+          "crack": "False"
+        },
+        {
+          "utc": "2026-10-30T10:50:48.8278710Z",
+          "phase": "3",
+          "state": "Chase",
+          "attack": "none",
+          "age": "0.0327267",
+          "edge": "False",
+          "vertices": "42",
+          "worldSpace": "False",
+          "crack": "False"
+        },
+        {
+          "utc": "2026-10-30T10:50:48.9143245Z",
+          "phase": "3",
+          "state": "Windup",
+          "attack": "execution",
+          "age": "0",
+          "edge": "True",
+          "vertices": "4",
+          "worldSpace": "False",
+          "crack": "False"
+        },
+        {
+          "utc": "2026-10-30T10:50:50.0620207Z",
+          "phase": "3",
+          "state": "Strike",
+          "attack": "execution",
+          "age": "0.0443492",
+          "edge": "False",
+          "vertices": "4",
+          "worldSpace": "False",
+          "crack": "True"
+        },
+        {
+          "utc": "2026-10-30T10:50:50.2184649Z",
+          "phase": "3",
+          "state": "Recovery",
+          "attack": "execution",
+          "age": "0.0450946",
+          "edge": "False",
+          "vertices": "4",
+          "worldSpace": "False",
+          "crack": "True"
+        },
+        {
+          "utc": "2026-10-30T10:50:51.3263870Z",
+          "phase": "3",
+          "state": "Chase",
+          "attack": "execution",
+          "age": "0.0416727",
+          "edge": "False",
+          "vertices": "4",
+          "worldSpace": "False",
+          "crack": "False"
+        },
+        {
+          "utc": "2026-10-30T10:50:51.7845208Z",
+          "phase": "3",
+          "state": "Windup",
+          "attack": "royal_cleave",
+          "age": "0.045404",
+          "edge": "True",
+          "vertices": "42",
+          "worldSpace": "False",
+          "crack": "False"
+        },
+        {
+          "utc": "2026-10-30T10:50:52.5818719Z",
+          "phase": "3",
+          "state": "Strike",
+          "attack": "royal_cleave",
+          "age": "0.0397978",
+          "edge": "False",
+          "vertices": "42",
+          "worldSpace": "False",
+          "crack": "False"
+        },
+        {
+          "utc": "2026-10-30T10:50:52.7302191Z",
+          "phase": "3",
+          "state": "Recovery",
+          "attack": "royal_cleave",
+          "age": "0.04165841",
+          "edge": "False",
+          "vertices": "42",
+          "worldSpace": "False",
+          "crack": "False"
+        },
+        {
+          "utc": "2026-10-30T10:50:53.3911136Z",
+          "phase": "3",
+          "state": "Windup",
+          "attack": "grave_cleave",
+          "age": "0.0357355",
+          "edge": "True",
+          "vertices": "4",
+          "worldSpace": "False",
+          "crack": "False"
+        },
+        {
+          "utc": "2026-10-30T10:50:54.3561551Z",
+          "phase": "3",
+          "state": "Strike",
+          "attack": "grave_cleave",
+          "age": "0.0400955",
+          "edge": "False",
+          "vertices": "4",
+          "worldSpace": "False",
+          "crack": "True"
+        },
+        {
+          "utc": "2026-10-30T10:50:54.5117002Z",
+          "phase": "3",
+          "state": "Recovery",
+          "attack": "grave_cleave",
+          "age": "0.0420325",
+          "edge": "False",
+          "vertices": "4",
+          "worldSpace": "False",
+          "crack": "True"
+        },
+        {
+          "utc": "2026-10-30T10:50:55.3458003Z",
+          "phase": "3",
+          "state": "Chase",
+          "attack": "grave_cleave",
+          "age": "0.0281921",
+          "edge": "False",
+          "vertices": "4",
+          "worldSpace": "False",
+          "crack": "False"
+        },
+        {
+          "utc": "2026-10-30T10:50:55.8565984Z",
+          "phase": "3",
+          "state": "Windup",
+          "attack": "kings_march",
+          "age": "0.03844861",
+          "edge": "True",
+          "vertices": "42",
+          "worldSpace": "False",
+          "crack": "False"
+        },
+        {
+          "utc": "2026-10-30T10:50:56.6420278Z",
+          "phase": "3",
+          "state": "Strike",
+          "attack": "kings_march",
+          "age": "0.0408028",
+          "edge": "False",
+          "vertices": "42",
+          "worldSpace": "False",
+          "crack": "False"
+        },
+        {
+          "utc": "2026-10-30T10:50:58.7165953Z",
+          "phase": "3",
+          "state": "Recovery",
+          "attack": "kings_march",
+          "age": "0.0326166",
+          "edge": "False",
+          "vertices": "42",
+          "worldSpace": "False",
+          "crack": "False"
+        },
+        {
+          "utc": "2026-10-30T10:51:09.4717264Z",
+          "phase": "3",
+          "state": "Windup",
+          "attack": "crownfall",
+          "age": "0.0375518",
+          "edge": "True",
+          "vertices": "41",
+          "worldSpace": "False",
+          "crack": "False"
+        },
+        {
+          "utc": "2026-10-30T10:51:10.7779275Z",
+          "phase": "3",
+          "state": "Strike",
+          "attack": "crownfall",
+          "age": "0.0304124",
+          "edge": "False",
+          "vertices": "41",
+          "worldSpace": "False",
+          "crack": "False"
+        },
+        {
+          "utc": "2026-10-30T10:51:10.9424582Z",
+          "phase": "3",
+          "state": "Recovery",
+          "attack": "crownfall",
+          "age": "0.0148711",
+          "edge": "False",
+          "vertices": "41",
+          "worldSpace": "False",
+          "crack": "False"
+        },
+        {
+          "utc": "2026-10-30T10:51:12.3697843Z",
+          "phase": "3",
+          "state": "Chase",
+          "attack": "crownfall",
+          "age": "0.0384471",
+          "edge": "False",
+          "vertices": "41",
+          "worldSpace": "False",
+          "crack": "False"
+        },
+        {
+          "utc": "2026-10-30T10:51:13.4907942Z",
+          "phase": "3",
+          "state": "Returning",
+          "attack": "none",
+          "age": "0",
+          "edge": "False",
+          "vertices": "41",
+          "worldSpace": "False",
+          "crack": "False"
+        },
+        {
+          "utc": "2026-10-30T10:51:18.5199132Z",
+          "phase": "2",
+          "state": "Ritual",
+          "attack": "none",
+          "age": "0.0431248",
+          "edge": "False",
+          "vertices": "41",
+          "worldSpace": "False",
+          "crack": "False"
+        },
+        {
+          "utc": "2026-10-30T10:51:20.9949900Z",
+          "phase": "2",
+          "state": "Returning",
+          "attack": "none",
+          "age": "0",
+          "edge": "False",
+          "vertices": "2",
+          "worldSpace": "False",
+          "crack": "False"
+        },
+        {
+          "utc": "2026-10-30T10:51:21.9395234Z",
+          "phase": "2",
+          "state": "Dying",
+          "attack": "royal_cleave",
+          "age": "0",
+          "edge": "False",
+          "vertices": "42",
+          "worldSpace": "False",
+          "crack": "False"
+        }
+      ]
+    },
+    "crownfall": {
+      "observed": "True",
+      "attack": "crownfall",
+      "vertices": "41",
+      "worldSpace": "False",
+      "edge": "True",
+      "fixture": "phase3 HP/teleport/healing; real attack scheduler; Editor background player loop queued"
+    },
+    "initialCycles": {
+      "warmingSamplesNotSteadyState": true,
+      "rows": [
+        {
+          "stage": "world-0",
+          "languageListeners": "15",
+          "deadLanguageTargets": "0",
+          "audioOwners": "1",
+          "sources": "30",
+          "gameObjects": "2196",
+          "playerBuilt": "1"
+        },
+        {
+          "stage": "menu-0",
+          "languageListeners": "11",
+          "deadLanguageTargets": "0",
+          "audioOwners": "1",
+          "sources": "30",
+          "gameObjects": "150",
+          "playerBuilt": "0"
+        },
+        {
+          "stage": "world-1",
+          "languageListeners": "14",
+          "deadLanguageTargets": "0",
+          "audioOwners": "1",
+          "sources": "30",
+          "gameObjects": "385",
+          "playerBuilt": "1"
+        },
+        {
+          "stage": "menu-1",
+          "languageListeners": "11",
+          "deadLanguageTargets": "0",
+          "audioOwners": "1",
+          "sources": "30",
+          "gameObjects": "150",
+          "playerBuilt": "0"
+        },
+        {
+          "stage": "world-2",
+          "languageListeners": "14",
+          "deadLanguageTargets": "0",
+          "audioOwners": "1",
+          "sources": "30",
+          "gameObjects": "380",
+          "playerBuilt": "1"
+        },
+        {
+          "stage": "menu-2",
+          "languageListeners": "11",
+          "deadLanguageTargets": "0",
+          "audioOwners": "1",
+          "sources": "30",
+          "gameObjects": "150",
+          "playerBuilt": "0"
+        }
+      ]
+    },
+    "readyCycles": [
+      {
+        "stage": "world-0",
+        "languageListeners": "18",
+        "deadLanguageTargets": "0",
+        "audioOwners": "1",
+        "sources": "30",
+        "gameObjects": "2423",
+        "playerBuilt": "0"
+      },
+      {
+        "stage": "menu-0",
+        "languageListeners": "11",
+        "deadLanguageTargets": "0",
+        "audioOwners": "1",
+        "sources": "30",
+        "gameObjects": "151",
+        "playerBuilt": "0"
+      },
+      {
+        "stage": "world-1",
+        "languageListeners": "13",
+        "deadLanguageTargets": "0",
+        "audioOwners": "1",
+        "sources": "30",
+        "gameObjects": "2429",
+        "playerBuilt": "0"
+      },
+      {
+        "stage": "menu-1",
+        "languageListeners": "11",
+        "deadLanguageTargets": "0",
+        "audioOwners": "1",
+        "sources": "30",
+        "gameObjects": "151",
+        "playerBuilt": "0"
+      },
+      {
+        "stage": "world-2",
+        "languageListeners": "13",
+        "deadLanguageTargets": "0",
+        "audioOwners": "1",
+        "sources": "30",
+        "gameObjects": "2440",
+        "playerBuilt": "0"
+      },
+      {
+        "stage": "menu-2",
+        "languageListeners": "11",
+        "deadLanguageTargets": "0",
+        "audioOwners": "1",
+        "sources": "30",
+        "gameObjects": "151",
+        "playerBuilt": "0"
+      }
+    ],
+    "restoredWorldObserved": {
+      "resources": 414,
+      "chunks": 9,
+      "pending": 0,
+      "terrainWork": 0,
+      "generation": 3
+    }
+  },
+  "LAN": {
+    "transport": "LocalNetwork two real headless Editor processes",
+    "pixelComparison": false,
+    "status": {
+      "host": {
+        "Phase": "complete",
+        "MaximumSources": 30,
+        "Cues": [
+          "OreHit=1",
+          "OreBreak=1",
+          "Bird=1",
+          "BodyFall=1",
+          "Undead=1",
+          "Gold=1",
+          "BossIntro=2",
+          "BossWarningFan=2",
+          "BossHurt=1",
+          "BossPhase=1",
+          "BossWarningLine=1",
+          "Downed=2",
+          "PlayerDeath=1",
+          "BossCharge=1",
+          "Revive=1",
+          "BossDeath=1",
+          "BossVictory=1"
+        ],
+        "Headless": true
+      },
+      "client": {
+        "Phase": "complete",
+        "MaximumSources": 30,
+        "Cues": [
+          "OreHit=1",
+          "StepStone=5",
+          "OreBreak=1",
+          "StepGrass=9",
+          "Gold=2",
+          "BodyFall=1",
+          "Undead=1",
+          "BossIntro=2",
+          "Equip=2",
+          "BossWarningFan=2",
+          "BossHurt=1",
+          "BossPhase=1",
+          "BossWarningLine=1",
+          "Downed=2",
+          "PlayerDeath=1",
+          "BossCharge=1",
+          "Revive=1",
+          "BossDeath=1",
+          "BossVictory=1",
+          "Pickup=2"
+        ],
+        "Headless": true
+      }
+    },
+    "baselineReplicaDamageCount": 9,
+    "baselineInitialFrameDamageCount": 1,
+    "hostDamage": [
+      {
+        "utc": "2026-10-30T10:35:24.4950952Z",
+        "frame": "1775",
+        "phase": "resources_rich",
+        "name": "NetworkCoalNode(Clone)",
+        "networkId": "570",
+        "hp": "89",
+        "maximum": "90",
+        "initialFrame": "False",
+        "replica": "False"
+      },
+      {
+        "utc": "2026-10-30T10:35:25.0311331Z",
+        "frame": "1897",
+        "phase": "resources_damage",
+        "name": "NetworkCoalNode(Clone)",
+        "networkId": "570",
+        "hp": "0",
+        "maximum": "90",
+        "initialFrame": "False",
+        "replica": "False"
+      },
+      {
+        "utc": "2026-10-30T10:35:28.4044994Z",
+        "frame": "2603",
+        "phase": "resources_return1",
+        "name": "NetworkCoalNode(Clone)",
+        "networkId": "3040",
+        "hp": "89",
+        "maximum": "90",
+        "initialFrame": "False",
+        "replica": "False"
+      },
+      {
+        "utc": "2026-10-30T10:35:36.5132351Z",
+        "frame": "4321",
+        "phase": "resources_late_join",
+        "name": "NetworkSkeleton(Clone)",
+        "networkId": "3491",
+        "hp": "0",
+        "maximum": "32",
+        "initialFrame": "False",
+        "replica": "False"
+      },
+      {
+        "utc": "2026-10-30T10:35:41.1145118Z",
+        "frame": "5487",
+        "phase": "telegraph",
+        "name": "NetworkUndeadKing(Clone)",
+        "networkId": "3909",
+        "hp": "6300",
+        "maximum": "9000",
+        "initialFrame": "False",
+        "replica": "False"
+      },
+      {
+        "utc": "2026-10-30T10:35:43.1339677Z",
+        "frame": "6059",
+        "phase": "phase_two",
+        "name": "NetworkPlayer(Clone)",
+        "networkId": "49",
+        "hp": "0",
+        "maximum": "100",
+        "initialFrame": "False",
+        "replica": "False"
+      },
+      {
+        "utc": "2026-10-30T10:35:43.5500601Z",
+        "frame": "6136",
+        "phase": "transfer",
+        "name": "NetworkPlayer(Clone)",
+        "networkId": "3435",
+        "hp": "0",
+        "maximum": "100",
+        "initialFrame": "False",
+        "replica": "False"
+      },
+      {
+        "utc": "2026-10-30T10:35:52.1402280Z",
+        "frame": "8562",
+        "phase": "accessory",
+        "name": "NetworkUndeadKing(Clone)",
+        "networkId": "3909",
+        "hp": "0",
+        "maximum": "9000",
+        "initialFrame": "False",
+        "replica": "False"
+      }
+    ],
+    "clientDamage": [
+      {
+        "utc": "2026-10-30T10:35:24.5215939Z",
+        "frame": "1429",
+        "phase": "resources_rich",
+        "name": "NetworkCoalNode(Clone)",
+        "networkId": "570",
+        "hp": "89",
+        "maximum": "90",
+        "initialFrame": "False",
+        "replica": "True"
+      },
+      {
+        "utc": "2026-10-30T10:35:25.0723049Z",
+        "frame": "1493",
+        "phase": "resources_damage",
+        "name": "NetworkCoalNode(Clone)",
+        "networkId": "570",
+        "hp": "0",
+        "maximum": "90",
+        "initialFrame": "False",
+        "replica": "True"
+      },
+      {
+        "utc": "2026-10-30T10:35:28.4176088Z",
+        "frame": "2000",
+        "phase": "resources_return1",
+        "name": "NetworkCoalNode(Clone)",
+        "networkId": "3040",
+        "hp": "89",
+        "maximum": "90",
+        "initialFrame": "False",
+        "replica": "True"
+      },
+      {
+        "utc": "2026-10-30T10:35:36.5731398Z",
+        "frame": "5434",
+        "phase": "resources_late_join",
+        "name": "NetworkSkeleton(Clone)",
+        "networkId": "3491",
+        "hp": "0",
+        "maximum": "32",
+        "initialFrame": "False",
+        "replica": "True"
+      },
+      {
+        "utc": "2026-10-30T10:35:41.1497467Z",
+        "frame": "6483",
+        "phase": "telegraph",
+        "name": "NetworkUndeadKing(Clone)",
+        "networkId": "3909",
+        "hp": "6300",
+        "maximum": "9000",
+        "initialFrame": "False",
+        "replica": "True"
+      },
+      {
+        "utc": "2026-10-30T10:35:43.2110650Z",
+        "frame": "7017",
+        "phase": "phase_two",
+        "name": "NetworkPlayer(Clone)",
+        "networkId": "49",
+        "hp": "0",
+        "maximum": "100",
+        "initialFrame": "False",
+        "replica": "True"
+      },
+      {
+        "utc": "2026-10-30T10:35:43.6829344Z",
+        "frame": "7124",
+        "phase": "transfer",
+        "name": "NetworkPlayer(Clone)",
+        "networkId": "3435",
+        "hp": "0",
+        "maximum": "100",
+        "initialFrame": "False",
+        "replica": "True"
+      },
+      {
+        "utc": "2026-10-30T10:35:52.2015915Z",
+        "frame": "9177",
+        "phase": "accessory",
+        "name": "NetworkUndeadKing(Clone)",
+        "networkId": "3909",
+        "hp": "0",
+        "maximum": "9000",
+        "initialFrame": "False",
+        "replica": "True"
+      }
+    ],
+    "matchingObjectHpMultisets": true,
+    "finalInitialFrameDamageCount": 0
+  },
+  "fixtureFailures": {
+    "initialLanStart": "IPC file sharing race; long path import",
+    "editorProbeAttachment": "Editor-folder MonoBehaviour cannot attach; no damage counts claimed for that run",
+    "deathObserver": "persistent lookup used on runtime listener; corrected to DeathHud.Home.onClick",
+    "editorErrorPause": "cleared after QA observer exception; stale paused circle attempts not counted as live attack checks",
+    "finalConsoleWarnings": 0,
+    "finalConsoleErrors": 0
+  },
+  "userSaveProtection": {
+    "unchanged": true,
+    "files": [
+      {
+        "file": "world-v1.json",
+        "hash": "57d560f19e49507fbc7ac00b48e1dda5759732a181d1c0baa441ad4536da7970",
+        "mtime_ns": 1792063991504454800,
+        "size": 15851,
+        "unchanged": true
+      },
+      {
+        "file": "world-v1.json.backup",
+        "hash": "57d560f19e49507fbc7ac00b48e1dda5759732a181d1c0baa441ad4536da7970",
+        "mtime_ns": 1792063991504454800,
+        "size": 15851,
+        "unchanged": true
+      }
+    ],
+    "newActualProfileCreated": false,
+    "SDKCacheExcluded": true
+  },
+  "editorEnd": {
+    "scene": "MainMenu",
+    "playing": false,
+    "dirty": false,
+    "qaFlag": "",
+    "editorPaused": false
+  },
+  "buildExecuted": false,
+  "operationalActivation": false,
+  "focusOrWindowShowCalls": false,
+  "readiness": "READY within this technical scope; Android/online operational gates remain",
+  "phaseUsageTokens": null,
+  "images": {
+    "boss-circle.png": "0704c21ace1e291fc585c4270766ff70da8d1a6dc4535054dc66b86f01cfa357",
+    "boss-fan.png": "941605943e482b3a7c94a6d552829bbff3ba4449bcebeedf3f3b083f589c978b",
+    "boss-line.png": "9756f79a1951583deacde48fd5061873b1c5fe5386c6dc087bdf716eabe1ca7f"
+  },
+  "timing": {
+    "phases": [
+      {
+        "name": "remote main / audit / baseline",
+        "start": 1793353254893,
+        "end": 1793355178782,
+        "startUTC": "2026-10-30T09:40:54.893Z",
+        "endUTC": "2026-10-30T10:12:58.782Z",
+        "wallSeconds": 1923.889,
+        "tokens": null
+      },
+      {
+        "name": "correction / automated and LAN checks (includes resume/tool waits)",
+        "start": 1793355178782,
+        "end": 1793356843798,
+        "startUTC": "2026-10-30T10:12:58.782Z",
+        "endUTC": "2026-10-30T10:40:43.798Z",
+        "wallSeconds": 1665.016,
+        "tokens": null
+      },
+      {
+        "name": "graphical Unity verification (includes observer repair/waits)",
+        "start": 1793356843798,
+        "end": 1793358432896,
+        "startUTC": "2026-10-30T10:40:43.798Z",
+        "endUTC": "2026-10-30T11:07:12.896Z",
+        "wallSeconds": 1589.098,
+        "tokens": null
+      },
+      {
+        "name": "documents / evidence / review",
+        "start": 1793358432896,
+        "end": 1793358987172,
+        "startUTC": "2026-10-30T11:07:12.896Z",
+        "endUTC": "2026-10-30T11:16:27.172Z",
+        "wallSeconds": 554.276,
+        "tokens": null
+      }
+    ],
+    "baselineSoakOverlapsAudit": true,
+    "gitCompletion": "Recorded after push in final response; not yet included here."
+  }
+}
