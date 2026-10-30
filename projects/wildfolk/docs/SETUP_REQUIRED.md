@@ -1,5 +1,7 @@
 # Launch Backend · 외부 설정 체크리스트
 
+Internal Test RC1은 `1.0.0-rc1 / versionCode2`, offline Alpha, stable upload key로 signed release AAB를 준비했다. **AAB 업로드 준비와 외부 계정 기능 활성화는 별도**다. 아래 PGS/OAuth/Integrity/공개 URL/실제 광고·결제 설정은 여전히 미완료이며 가짜 값으로 대체하지 않았다. [RC1 검증](../validation/internal-test-rc1/REVIEW.md) · [사용자 수동 업로드](../validation/internal-test-rc1/UPLOAD_CHECKLIST.md) · [서명/빌드 정본](ANDROID_INTERNAL_TEST.md). 첫 Play App Signing 이후 설치본의 app signing 인증서를 확인하며, upload 인증서와 혼동하지 않는다.
+
 Foundation1.5 현재 상태: **PARTIALLY ACTIVE**. development/alpha 실제 환경, Cloud Code2개, Private policy/gate, Protected Support index와 Access Control을 배포했다. development 실제 서비스76개와 Unity SDK 왕복·인터넷 Relay를 확인했다. 제품 `BackendSettings.Enabled=false`는 Google/Privacy 준비까지 유지한다. [검증 정본](../validation/launch-backend-activation/REVIEW.md).
 
 ## 완료된 공개 설정

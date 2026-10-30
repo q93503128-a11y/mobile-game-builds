@@ -16,6 +16,8 @@ Securely back up the private keystore and encrypted DPAPI material, including th
 
 Keep the AAB, native symbol archive, exact build-source SHA, cert fingerprints, SHA256, manifest/ABI/page-size audit and attempt timing outside Git. Final validation goes in [RC1 review](../validation/internal-test-rc1/REVIEW.md). A documentation-only closing commit does not require a second AAB; record its SHA separately from the frozen build-source SHA.
 
+For the exported RC1 Gradle build, FULL symbol files were generated separately in `launcher/build/intermediates/native_debug_metadata/release/extractReleaseNativeDebugMetadata/out/arm64-v8a/`; the AAB contains no debug-symbol metadata. Preserve these as `arm64-v8a/libil2cpp.so`, `libmain.so`, `libunity.so` in the sidecar ZIP after verifying each ELF Build ID against the AAB. RC1's archive is 259,139,063 bytes; unavailable third-party symbols are not invented. No Java mapping file is needed with minification OFF. [Current native-symbol upload guidance](https://developer.android.com/build/include-native-symbols).
+
 ## Current Google requirements checked 2026-10-30
 
 | Requirement | RC1 policy | Official source |

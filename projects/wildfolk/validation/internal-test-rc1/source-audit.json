@@ -1,0 +1,16 @@
+{
+  "startedSourceSHA": "bd97d25b48b537eaa412ce45cd67f0c0e1d9513c",
+  "auditedUTC": "2026-10-30T12:06:21.100188+00:00",
+  "textFiles": 2214,
+  "textBytes": 11332386,
+  "credentialPatternHits": [],
+  "fullAabAttemptsSoFar": 0,
+  "loggingReview": "Runtime operational logs contain exception type or localization key only; no per-frame log call or raw account/purchase/HTTP data logging.",
+  "qaReview": "Editor developer tools/QA fixture providers are compile guarded; release assembly gate excludes development identity/ads/billing adapters.",
+  "resourceHashes": {
+    "BackendSettings.json": "c81af304bb945b04d639091d5d0c20bc9b2577f72c0eca3c580cec778db65495",
+    "RewardedAdsSettings.json": "b99fbc9685069d5b0f45ab6793d2a832d9b77222b2828c814cb93e816f35c77f",
+    "StoreSettings.json": "c57aa6aad85b7adf7a96b0e8f9bc72fcf8928f9bf42bd6e54470e3102f44f2dd"
+  },
+  "sensitiveValuesPrinted": false
+}

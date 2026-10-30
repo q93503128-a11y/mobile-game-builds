@@ -1,0 +1,62 @@
+{
+  "editModeUnique": 47,
+  "editModeFinalPassed": 47,
+  "playModeUnique": 28,
+  "playModeFinalPassed": 28,
+  "initialEditMode": {
+    "total": 47,
+    "passed": 43,
+    "failed": 4,
+    "skipped": 0,
+    "durationSeconds": 23.47667,
+    "resultState": "Failed(Child)"
+  },
+  "policyRetry": {
+    "total": 4,
+    "passed": 4,
+    "failed": 0,
+    "skipped": 0,
+    "durationSeconds": 0.9321649,
+    "resultState": "Passed"
+  },
+  "initialPlayMode": {
+    "total": 28,
+    "passed": 27,
+    "failed": 1,
+    "skipped": 0,
+    "durationSeconds": 29.9909736,
+    "resultState": "Failed(Child)",
+    "evidenceNote": "Original completed MCP response observed in this chat; subsequent get_test_job retains progress but clears consumed result. This is not a rerun."
+  },
+  "navigationRetry": {
+    "total": 1,
+    "passed": 1,
+    "failed": 0,
+    "skipped": 0,
+    "durationSeconds": 2.7252666,
+    "resultState": "Passed"
+  },
+  "initialFailures": "4 new tests named wrong Editor assembly; fixed to Assembly-CSharp-Editor and reran only 4. One existing account UI test expected legacy Home return; canonical Profile returns Meta Hub. Corrected expectation and reran only that test. Runtime UI unchanged.",
+  "android": {
+    "Passed": true,
+    "AlphaFixtureExcluded": true,
+    "ProductionFixtureExcluded": true,
+    "AlphaAssemblies": 59,
+    "ProductionAssemblies": 59,
+    "Seconds": 198.4243299,
+    "Error": ""
+  },
+  "dataValidator": "passed, zero errors",
+  "isolatedAlphaSmoke": [
+    "MainMenu",
+    "Settings",
+    "Profile OFF",
+    "Achievement OFF",
+    "Attendance OFF",
+    "Store/Ads OFF",
+    "New Save14",
+    "Home",
+    "Continue same seed/Profile2"
+  ],
+  "device": "UNVERIFIED"
+}

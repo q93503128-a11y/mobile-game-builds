@@ -1,5 +1,7 @@
 # Lowfire
 
+Internal Test RC1: **signed AAB 업로드 준비 READY** (`1.0.0-rc1 / code2`, IL2CPP/ARM64, offline Alpha). 실제 Android 기기·Console 업로드는 UNVERIFIED이며 계정/광고/현금 구매 OFF를 유지한다. [검증·아티팩트](validation/internal-test-rc1/REVIEW.md) · [수동 업로드](validation/internal-test-rc1/UPLOAD_CHECKLIST.md).
+
 Unity **6000.3.19f1 LTS / Universal 2D**, 모바일 Landscape(1920×1080) 탑다운 생존 게임이다. 표시명 Lowfire, 내부 Wildfolk namespace·경로·저장 식별자는 유지한다. 현재 alpha 콘텐츠는 **Item136 / Recipe111 / Save14 / Profile2 / Protocol23**, Workbench I→II→III와 Wood/Stone/Iron/Steel/Diamond 장비다.
 
 ## 실행과 플레이

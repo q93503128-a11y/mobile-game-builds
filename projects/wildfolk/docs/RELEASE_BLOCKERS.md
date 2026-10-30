@@ -1,5 +1,7 @@
 # Launch Backend · Release Blockers
 
+Internal Test RC1의 **signed AAB 업로드 준비는 READY**다. Android 실기기/Play Console 실제 업로드·설치·PGS/Integrity·운영 활성화 완료를 뜻하지 않는다. 계정·광고·현금 구매 OFF의 offline Alpha만 허용했으며 아래 공개/Production 기능 gate는 유지한다. [RC1 근거와 남은 항목](../validation/internal-test-rc1/REVIEW.md).
+
 Foundation1.5 상태는 **PARTIALLY ACTIVE**다. development/alpha 환경·Cloud Code/Cloud Save/Access Control/index는 실제 배포했고 development 실제 왕복과 인터넷 Relay를 검증했다. 아래 항목이 제품 활성화/공개 Alpha·Production을 막는다. BackendSettings.Enabled=false 유지.
 
 - 사용자 확정 package `com.gltam.lowfire`에 연결할 Play Console PGS v2, Android/Web OAuth, 실제 서명 SHA, tester/track, UGS provider secret. 공개 Web client ID/PGS app ID/Google project number가 아직 없다.

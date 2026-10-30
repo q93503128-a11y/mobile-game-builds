@@ -1,0 +1,40 @@
+{
+  "timezone": "UTC",
+  "perOperationTokens": null,
+  "usageNote": "Per-operation token/quota counts are not exposed; no estimates invented. Main wall phases are contiguous; overlapping test/import/SDK read/inspection jobs are not added twice. Closing timestamp is before final Git push; exact final completion is in external FINAL_GIT.json.",
+  "phases": [
+    {
+      "name": "Fetch/docs/audit/signing configuration",
+      "startedUTC": "2026-10-30T11:37:38.359000+00:00",
+      "finishedUTC": "2026-10-30T11:52:29.903878+00:00",
+      "wallSeconds": 891.544878
+    },
+    {
+      "name": "Cheap gates and isolated Alpha smoke",
+      "startedUTC": "2026-10-30T11:52:29.903878+00:00",
+      "finishedUTC": "2026-10-30T12:07:35.909168+00:00",
+      "wallSeconds": 906.00529
+    },
+    {
+      "name": "AAB attempt1 export/manifest gate/package",
+      "startedUTC": "2026-10-30T12:07:35.909168+00:00",
+      "finishedUTC": "2026-10-30T12:31:09.773684+00:00",
+      "wallSeconds": 1413.864516
+    },
+    {
+      "name": "Artifact/symbol validation and delivery docs",
+      "startedUTC": "2026-10-30T12:31:09.773684+00:00",
+      "finishedUTC": "2026-10-30T12:40:44.653188+00:00",
+      "wallSeconds": 574.879504
+    }
+  ],
+  "subprocessMeasurements": {
+    "cheapInitialGuardFailureSeconds": 271.6426460999992,
+    "cheapPassingProcessSeconds": 224.16321789999893,
+    "androidAssemblySeconds": 198.4243299,
+    "exportProcessSeconds": 361.5632807000002,
+    "unityBuildReportSeconds": 309.4873605,
+    "gradlePackageProcessSeconds": 784.7464290999997
+  },
+  "cheapFailureNote": "First cheap preflight rejected non-ASCII result directory before any AAB attempt; moved results to explicit ASCII path. No AAB retry."
+}

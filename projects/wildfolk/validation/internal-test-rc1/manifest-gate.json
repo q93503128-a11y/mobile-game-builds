@@ -1,0 +1,305 @@
+{
+  "package": "com.gltam.lowfire",
+  "versionCode": "2",
+  "versionName": "1.0.0-rc1",
+  "minSdk": "25",
+  "targetSdk": "36",
+  "application": {
+    "appCategory": "game",
+    "appComponentFactory": "androidx.core.app.CoreComponentFactory",
+    "enableOnBackInvokedCallback": "false",
+    "extractNativeLibs": "true",
+    "icon": "@mipmap/app_icon",
+    "label": "@string/app_name"
+  },
+  "permissions": [
+    "android.permission.INTERNET",
+    "android.permission.ACCESS_NETWORK_STATE",
+    "com.google.android.gms.permission.AD_ID",
+    "android.permission.ACCESS_ADSERVICES_AD_ID",
+    "android.permission.ACCESS_ADSERVICES_ATTRIBUTION",
+    "android.permission.ACCESS_ADSERVICES_TOPICS",
+    "com.android.vending.BILLING",
+    "android.permission.WAKE_LOCK",
+    "android.permission.FOREGROUND_SERVICE",
+    "com.gltam.lowfire.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+  ],
+  "dangerousOrUnexpectedRuntimePermissions": [],
+  "components": [
+    {
+      "type": "activity",
+      "name": "com.unity3d.player.UnityPlayerGameActivity",
+      "configChanges": "mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale|layoutDirection|density",
+      "enabled": "true",
+      "exported": "true",
+      "hardwareAccelerated": "false",
+      "launchMode": "singleTask",
+      "resizeableActivity": "true",
+      "screenOrientation": "landscape",
+      "theme": "@style/BaseUnityGameActivityTheme",
+      "intentFilters": 1
+    },
+    {
+      "type": "activity",
+      "name": "com.google.android.gms.ads.AdActivity",
+      "configChanges": "keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize",
+      "enableOnBackInvokedCallback": "false",
+      "exported": "false",
+      "theme": "@android:style/Theme.Translucent",
+      "intentFilters": 0
+    },
+    {
+      "type": "provider",
+      "name": "com.google.android.gms.ads.MobileAdsInitProvider",
+      "authorities": "com.gltam.lowfire.mobileadsinitprovider",
+      "exported": "false",
+      "initOrder": "100",
+      "intentFilters": 0
+    },
+    {
+      "type": "service",
+      "name": "com.google.android.gms.ads.AdService",
+      "enabled": "true",
+      "exported": "false",
+      "intentFilters": 0
+    },
+    {
+      "type": "activity",
+      "name": "com.google.android.gms.ads.OutOfContextTestingActivity",
+      "configChanges": "keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize",
+      "exported": "false",
+      "intentFilters": 0
+    },
+    {
+      "type": "activity",
+      "name": "com.google.android.gms.ads.NotificationHandlerActivity",
+      "excludeFromRecents": "true",
+      "exported": "false",
+      "launchMode": "singleTask",
+      "taskAffinity": "",
+      "theme": "@android:style/Theme.Translucent.NoTitleBar",
+      "intentFilters": 0
+    },
+    {
+      "type": "activity",
+      "name": "com.google.android.play.core.hsdp.service.HsdpShimActivity",
+      "configChanges": "orientation|screenSize|screenLayout|keyboardHidden",
+      "excludeFromRecents": "true",
+      "exported": "false",
+      "launchMode": "singleTop",
+      "theme": "@style/Theme.HsdpServiceTransparent",
+      "intentFilters": 0
+    },
+    {
+      "type": "provider",
+      "name": "com.google.android.gms.games.provider.PlayGamesInitProvider",
+      "authorities": "com.gltam.lowfire.playgamesinitprovider",
+      "exported": "false",
+      "initOrder": "99",
+      "intentFilters": 0
+    },
+    {
+      "type": "activity",
+      "name": "com.google.android.gms.games.internal.v2.resolution.GamesResolutionActivity",
+      "exported": "false",
+      "theme": "@style/Theme.Games.Transparent",
+      "intentFilters": 0
+    },
+    {
+      "type": "activity",
+      "name": "com.google.android.gms.games.internal.v2.appshortcuts.PlayGamesAppShortcutsActivity",
+      "exported": "true",
+      "theme": "@style/Theme.Games.Transparent",
+      "intentFilters": 0
+    },
+    {
+      "type": "service",
+      "name": "com.google.android.gms.nearby.exposurenotification.WakeUpService",
+      "exported": "true",
+      "permission": "com.google.android.gms.nearby.exposurenotification.EXPOSURE_CALLBACK",
+      "intentFilters": 0
+    },
+    {
+      "type": "activity",
+      "name": "com.android.billingclient.api.ProxyBillingActivity",
+      "configChanges": "keyboard|keyboardHidden|screenLayout|screenSize|orientation",
+      "exported": "false",
+      "theme": "@android:style/Theme.Translucent.NoTitleBar",
+      "intentFilters": 0
+    },
+    {
+      "type": "activity",
+      "name": "com.android.billingclient.api.ProxyBillingActivityV2",
+      "configChanges": "keyboard|keyboardHidden|screenLayout|screenSize|orientation",
+      "exported": "false",
+      "theme": "@android:style/Theme.Translucent.NoTitleBar",
+      "intentFilters": 0
+    },
+    {
+      "type": "activity",
+      "name": "com.google.android.gms.common.api.GoogleApiActivity",
+      "exported": "false",
+      "theme": "@android:style/Theme.Translucent.NoTitleBar",
+      "intentFilters": 0
+    },
+    {
+      "type": "provider",
+      "name": "androidx.startup.InitializationProvider",
+      "authorities": "com.gltam.lowfire.androidx-startup",
+      "exported": "false",
+      "intentFilters": 0
+    },
+    {
+      "type": "service",
+      "name": "androidx.work.impl.background.systemalarm.SystemAlarmService",
+      "directBootAware": "false",
+      "enabled": "@bool/enable_system_alarm_service_default",
+      "exported": "false",
+      "intentFilters": 0
+    },
+    {
+      "type": "service",
+      "name": "androidx.work.impl.background.systemjob.SystemJobService",
+      "directBootAware": "false",
+      "enabled": "@bool/enable_system_job_service_default",
+      "exported": "true",
+      "permission": "android.permission.BIND_JOB_SERVICE",
+      "intentFilters": 0
+    },
+    {
+      "type": "service",
+      "name": "androidx.work.impl.foreground.SystemForegroundService",
+      "directBootAware": "false",
+      "enabled": "@bool/enable_system_foreground_service_default",
+      "exported": "false",
+      "intentFilters": 0
+    },
+    {
+      "type": "receiver",
+      "name": "androidx.work.impl.utils.ForceStopRunnable$BroadcastReceiver",
+      "directBootAware": "false",
+      "enabled": "true",
+      "exported": "false",
+      "intentFilters": 0
+    },
+    {
+      "type": "receiver",
+      "name": "androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryChargingProxy",
+      "directBootAware": "false",
+      "enabled": "false",
+      "exported": "false",
+      "intentFilters": 1
+    },
+    {
+      "type": "receiver",
+      "name": "androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryNotLowProxy",
+      "directBootAware": "false",
+      "enabled": "false",
+      "exported": "false",
+      "intentFilters": 1
+    },
+    {
+      "type": "receiver",
+      "name": "androidx.work.impl.background.systemalarm.ConstraintProxy$StorageNotLowProxy",
+      "directBootAware": "false",
+      "enabled": "false",
+      "exported": "false",
+      "intentFilters": 1
+    },
+    {
+      "type": "receiver",
+      "name": "androidx.work.impl.background.systemalarm.ConstraintProxy$NetworkStateProxy",
+      "directBootAware": "false",
+      "enabled": "false",
+      "exported": "false",
+      "intentFilters": 1
+    },
+    {
+      "type": "receiver",
+      "name": "androidx.work.impl.background.systemalarm.RescheduleReceiver",
+      "directBootAware": "false",
+      "enabled": "false",
+      "exported": "false",
+      "intentFilters": 1
+    },
+    {
+      "type": "receiver",
+      "name": "androidx.work.impl.background.systemalarm.ConstraintProxyUpdateReceiver",
+      "directBootAware": "false",
+      "enabled": "@bool/enable_system_alarm_service_default",
+      "exported": "false",
+      "intentFilters": 1
+    },
+    {
+      "type": "receiver",
+      "name": "androidx.work.impl.diagnostics.DiagnosticsReceiver",
+      "directBootAware": "false",
+      "enabled": "true",
+      "exported": "true",
+      "permission": "android.permission.DUMP",
+      "intentFilters": 1
+    },
+    {
+      "type": "activity",
+      "name": "com.google.games.bridge.GenericResolutionActivity",
+      "exported": "false",
+      "label": "GenericResolutionActivity",
+      "theme": "@android:style/Theme.Translucent.NoTitleBar.Fullscreen",
+      "intentFilters": 0
+    },
+    {
+      "type": "receiver",
+      "name": "androidx.profileinstaller.ProfileInstallReceiver",
+      "directBootAware": "false",
+      "enabled": "true",
+      "exported": "true",
+      "permission": "android.permission.DUMP",
+      "intentFilters": 4
+    },
+    {
+      "type": "service",
+      "name": "androidx.room.MultiInstanceInvalidationService",
+      "directBootAware": "true",
+      "exported": "false",
+      "intentFilters": 0
+    },
+    {
+      "type": "service",
+      "name": "com.google.android.datatransport.runtime.backends.TransportBackendDiscovery",
+      "exported": "false",
+      "intentFilters": 0
+    },
+    {
+      "type": "service",
+      "name": "com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService",
+      "exported": "false",
+      "permission": "android.permission.BIND_JOB_SERVICE",
+      "intentFilters": 0
+    },
+    {
+      "type": "receiver",
+      "name": "com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver",
+      "exported": "false",
+      "intentFilters": 0
+    },
+    {
+      "type": "activity",
+      "name": "com.google.android.play.core.common.PlayCoreDialogWrapperActivity",
+      "exported": "false",
+      "stateNotNeeded": "true",
+      "theme": "@style/Theme.PlayCore.Transparent",
+      "intentFilters": 0
+    }
+  ],
+  "missingExported": [],
+  "queries": [
+    "<queries xmlns:ns0=\"http://schemas.android.com/apk/res/android\">\n\n        \n        <intent>\n            <action ns0:name=\"android.intent.action.VIEW\" />\n\n            <category ns0:name=\"android.intent.category.BROWSABLE\" />\n\n            <data ns0:scheme=\"https\" />\n        </intent>\n        \n        \n        <intent>\n            <action ns0:name=\"android.support.customtabs.action.CustomTabsService\" />\n        </intent>\n        \n        \n        <intent>\n            <action ns0:name=\"android.intent.action.INSERT\" />\n\n            <data ns0:mimeType=\"vnd.android.cursor.dir/event\" />\n        </intent>\n        <intent>\n            <action ns0:name=\"android.intent.action.VIEW\" />\n\n            <data ns0:scheme=\"sms\" />\n        </intent>\n        <intent>\n            <action ns0:name=\"android.intent.action.DIAL\" />\n\n            <data ns0:path=\"tel:\" />\n        </intent>\n        \n        <package ns0:name=\"com.android.vending\" />\n        <package ns0:name=\"com.google.android.gms\" />\n\n        <intent>\n            <action ns0:name=\"com.android.vending.billing.InAppBillingService.BIND\" />\n        </intent>\n        <intent>\n            <action ns0:name=\"com.google.android.apps.play.billingtestcompanion.BillingOverrideService.BIND\" />\n        </intent>\n    </queries>\n\n    "
+  ],
+  "launcherNameStrings": {
+    "launcher\\src\\main\\res\\values\\strings.xml": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<resources>\n  <string name=\"app_name\">Lowfire</string>\n</resources>"
+  },
+  "generatedChannelBody": [
+    "IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t BackendPolicy_get_Channel_m904304F7FE3DF995BE686917A57C5BA8A10F3A82 (const RuntimeMethod* method) \n{\n\t{\n\t\t//<source_info:C:/UnityProjects/LowfireAndroidQa/tests/artifacts/unity/Assets/Wildfolk/Runtime/Accounts/BackendPolicy.cs:21>\n\t\treturn (int32_t)(1);\n\t}"
+  ],
+  "fixtureTypesAbsent": true
+}
