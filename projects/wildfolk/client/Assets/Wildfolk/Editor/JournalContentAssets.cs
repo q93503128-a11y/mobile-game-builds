@@ -14,8 +14,6 @@ namespace Wildfolk.Editor
             VisualArtImporter.Import();var scene=EditorSceneManager.OpenScene("Assets/Wildfolk/Scenes/MainMenu.unity");var home=UnityEngine.Object.FindFirstObjectByType<HomeScreen>();
             var old=home.GetComponent<ClassLobbyScreen>();if(old!=null){UnityEngine.Object.DestroyImmediate(old.View);UnityEngine.Object.DestroyImmediate(old);}
             foreach(var b in home.GetComponentsInChildren<Button>(true))if(b.name=="CLASS" || b.name=="Class Journal Entry" || b.name=="Class Bookmark")UnityEngine.Object.DestroyImmediate(b.gameObject);
-            Move(home.ContinueButton.transform,170,82);Move(home.SaveSummary.transform,95,42);Move(home.SingleButton.transform,15,72);Move(home.MultiplayerButton.transform,-67,72);Move(home.SettingsButton.transform,-235,72);
-            var journal=home.Menu.transform.Find("Field Journal");var n=0;foreach(Transform t in journal)if(t.name=="Page Rule"){if(n<3)((RectTransform)t).anchoredPosition=new Vector2(26,new[]{55f,-25f,-108f}[n]);n++;}
             ClassContentAssets.BuildLobby(home);EditorSceneManager.MarkSceneDirty(scene);EditorSceneManager.SaveScene(scene);
             foreach(var path in new[]{"Assets/Wildfolk/Scenes/Wildfolk.unity","Assets/Wildfolk/Scenes/Multiplayer.unity"})
             {
@@ -27,6 +25,6 @@ namespace Wildfolk.Editor
             }
             AssetDatabase.SaveAssets();EditorSceneManager.OpenScene("Assets/Wildfolk/Scenes/MainMenu.unity");
         }
-        private static void Move(Transform t,float y,float height){var r=(RectTransform)t;r.anchoredPosition=new Vector2(r.anchoredPosition.x,y);r.sizeDelta=new Vector2(r.sizeDelta.x,height);}
+
     }
 }

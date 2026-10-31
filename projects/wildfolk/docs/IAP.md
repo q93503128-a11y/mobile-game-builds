@@ -1,3 +1,7 @@
+## UI 체크포인트 · 2026-10-31
+
+Gem 진입점에서 직접 Store를 열 수 있고 Back은 Home/Profile의 실제 출발점으로 돌아간다. 정책 OFF는 큰 구매 CTA를 숨기고 패키지 수량/이용 불가/현재 Gem 부활 비용에 따른 사용처만 확인시킨다. 복구·이력·문의는 보조 링크다. 24/72/144, 실가격 metadata 원칙, 구매/복구 권한과 서버 거래는 유지한다. 새 판매/할인/상품/활성화는 없다. 아래의 여섯 메뉴/동일한 footer 버튼 설명은 이전 Foundation4 UI다. [현재 검수 상태](../validation/commercial-ui-mobile/REVIEW.md).
+
 # Store · Google Play consumable Gem
 
 Foundation4 implements the purchase foundation, **not live sales activation**. `StoreSettings.json`, `backend/src/iap-config.json` and the proposed catalog ship OFF/unregistered. Alpha never initializes or launches real billing; Development uses explicitly isolated fixtures only. Production deployment/activation, actual Google transactions and device tests remain release gates. [Research and evidence](../validation/store-iap/REVIEW.md).

@@ -44,43 +44,33 @@ namespace Wildfolk.Editor
             var home=canvas.AddComponent<HomeScreen>();home.Rules=rules;home.Preferences=prefs;
             var menu=Rect("Home",safe,new Vector2(.5f,.5f),Vector2.zero,Vector2.zero);menu.anchorMin=Vector2.zero;menu.anchorMax=Vector2.one;menu.offsetMin=menu.offsetMax=Vector2.zero;home.Menu=menu.gameObject;
             var brand=Image(L.Text("brand.name"),menu,"lowfire_wordmark",new Vector2(.5f,.5f),new Vector2(-405,255),new Vector2(660,174));brand.preserveAspect=true;
-            var panel=Image("Field Journal",menu,"lowfire_journal",new Vector2(.77f,.5f),Vector2.zero,new Vector2(610,730),true);
-            var heading=Text("Menu Title",panel.transform,"home.camp",new Vector2(26,237),new Vector2(422,40),22,TextAnchor.MiddleLeft);heading.color=Ink;
-            home.ContinueButton=JournalAction(panel.transform,"Continue","home.continue",new Vector2(23,170),new Vector2(434,82),home.TryContinue,true);
-            home.SaveSummary=Text("Saved World",panel.transform,"",new Vector2(26,95),new Vector2(414,42),21,TextAnchor.MiddleLeft);home.SaveSummary.color=Ink;
-            foreach(var y in new[]{55f,-25f,-108f}){var rule=Image("Page Rule",panel.transform,"white",new Vector2(.5f,.5f),new Vector2(26,y),new Vector2(418,1));rule.color=new Color32(158,147,115,180);}
-            home.SingleButton=JournalAction(panel.transform,"Single Player","home.single",new Vector2(23,15),new Vector2(434,72),home.SinglePlayer,false);
-            home.MultiplayerButton=JournalAction(panel.transform,"Multiplayer","home.multi",new Vector2(23,-67),new Vector2(434,72),home.OpenMultiplayer,false);
+            var panel=Image("Field Journal",menu,"lowfire_journal",new Vector2(.77f,.5f),Vector2.zero,new Vector2(700,950),true);
+            var heading=Text("Menu Title",panel.transform,"home.camp",new Vector2(0,365),new Vector2(530,56),32,TextAnchor.MiddleLeft);heading.color=Ink;
+            home.ContinueButton=JournalAction(panel.transform,"Continue","home.continue",new Vector2(0,260),new Vector2(530,132),home.TryContinue,true);
+            home.SaveSummary=Text("Saved World",panel.transform,"",new Vector2(0,165),new Vector2(530,54),28,TextAnchor.MiddleLeft);home.SaveSummary.color=Ink;
+            foreach(var y in new[]{125f,-10f,-145f}){var rule=Image("Page Rule",panel.transform,"white",new Vector2(.5f,.5f),new Vector2(26,y),new Vector2(418,1));rule.color=new Color32(158,147,115,180);}
+            home.SingleButton=JournalAction(panel.transform,"Single Player","home.single",new Vector2(0,60),new Vector2(530,120),home.SinglePlayer,false);
+            home.MultiplayerButton=JournalAction(panel.transform,"Multiplayer","home.multi",new Vector2(0,-75),new Vector2(530,120),home.OpenMultiplayer,false);
             home.SettingsButton=JournalAction(panel.transform,"Settings","ui.settings.title",new Vector2(-44,-235),new Vector2(300,72),home.OpenSettings,false);
-            home.Status=Text("Save Status",panel.transform,"",new Vector2(26,-321),new Vector2(422,42),18,TextAnchor.MiddleLeft);home.Status.color=new Color32(106,57,38,255);
+            home.Status=Text("Save Status",panel.transform,"",new Vector2(0,-427),new Vector2(530,52),26,TextAnchor.MiddleLeft);home.Status.color=new Color32(106,57,38,255);
             home.Settings=SurvivalUiBuilder.Settings(safe,prefs,home.ShowHome);home.Settings.SetActive(false);
             home.Multiplayer=MultiplayerUiBuilder.Build(safe,home);home.Multiplayer.SetActive(false);
-            var confirm=QualityUiBuilder.Surface(safe,"New World Confirmation",new Vector2(940,500),out home.Confirm);
-            Text("Title",confirm.transform,"home.confirm_title",new Vector2(0,153),new Vector2(820,70),38);
-            Text("Message",confirm.transform,"home.confirm_body",new Vector2(0,26),new Vector2(810,142),26);
-            Action(confirm.transform,"Cancel","ui.action.cancel",new Vector2(-230,-160),new Vector2(340,72),home.ShowHome,false);
-            Action(confirm.transform,"Start New World","home.new_action",new Vector2(190,-160),new Vector2(400,72),home.BeginNew,true);home.Confirm.SetActive(false);
+            var confirm=QualityUiBuilder.Surface(safe,"New World Confirmation",new Vector2(1000,620),out home.Confirm);
+            Text("Title",confirm.transform,"home.confirm_title",new Vector2(0,240),new Vector2(850,80),44);
+            Text("Message",confirm.transform,"home.confirm_body",new Vector2(0,65),new Vector2(850,220),34);
+            Action(confirm.transform,"Cancel","ui.action.cancel",new Vector2(-230,-205),new Vector2(340,72),home.ShowHome,false);
+            Action(confirm.transform,"Start New World","home.new_action",new Vector2(190,-205),new Vector2(400,72),home.BeginNew,true);home.Confirm.SetActive(false);
             var events=new GameObject("EventSystem",typeof(EventSystem),typeof(InputSystemUIInputModule));events.GetComponent<EventSystem>().sendNavigationEvents=false;var input=events.GetComponent<InputSystemUIInputModule>();input.UnassignActions();input.actionsAsset=uiActions;input.point=point;input.leftClick=click;
             EditorSceneManager.SaveScene(scene,ScenePath);EditorBuildSettings.scenes=new[]{new EditorBuildSettingsScene(ScenePath,true),new EditorBuildSettingsScene(GameplaySceneBuilder.ScenePath,true),new EditorBuildSettingsScene(MultiplayerSceneBuilder.ScenePath,true)};AssetDatabase.SaveAssets();AccountUiBuilder.Build();
         }
         private static readonly Color32 Ink=new Color32(49,63,48,255);
         private static Button JournalAction(Transform parent,string name,string key,Vector2 position,Vector2 size,UnityEngine.Events.UnityAction action,bool primary)
         {
-            var image=Image(name,parent,"white",new Vector2(.5f,.5f),position,size,true);image.color=primary ? new Color32(137,88,56,255) : new Color32(91,99,72,14);
-            var label=Text("Label",image.transform,key,new Vector2(-8,0),size-new Vector2(54,12),primary ? 32 : 29,TextAnchor.MiddleLeft);label.color=primary ? new Color32(248,237,207,255) : Ink;
-            if(primary){var arrow=Text("Arrow",image.transform,"›",new Vector2(size.x*.5f-28,0),new Vector2(32,44),34);arrow.color=label.color;}
-            var button=Button(image);var colors=button.colors;
-            if(primary){colors.normalColor=image.color;image.color=Color.white;colors.highlightedColor=new Color32(156,106,71,255);colors.pressedColor=new Color32(100,68,46,255);colors.disabledColor=new Color32(143,140,118,255);}
-            else{image.color=Color.white;colors.normalColor=Color.clear;colors.highlightedColor=colors.selectedColor=new Color(.28f,.34f,.22f,.055f);colors.pressedColor=new Color(.28f,.34f,.22f,.12f);}
-            button.colors=colors;
-            UnityEventTools.AddPersistentListener(button.onClick,action);return button;
+            var button=JournalUiBuilder.Action(parent,name,key,position,size,action,out var label,primary);label.fontSize=36;return button;
         }
         private static Button Action(Transform parent,string name,string key,Vector2 position,Vector2 size,UnityEngine.Events.UnityAction action,bool primary)
         {
-            var image=Image(name,parent,"white",new Vector2(.5f,.5f),position,size,true);image.color=primary ? new Color32(159,168,105,255) : new Color32(45,65,49,255);
-            var label=Text("Label",image.transform,key,new Vector2(14,0),size-new Vector2(70,12),29,TextAnchor.MiddleLeft);label.color=primary ? new Color32(22,39,29,255) : new Color32(226,222,193,255);
-            var bar=Image("Accent",image.transform,"white",new Vector2(0,.5f),new Vector2(2,0),new Vector2(4,size.y));bar.color=primary ? new Color32(219,207,146,255) : new Color32(103,125,85,255);
-            var button=Button(image);var colors=button.colors;colors.disabledColor=new Color(.53f,.57f,.48f,1);button.colors=colors;UnityEventTools.AddPersistentListener(button.onClick,action);return button;
+            size.y=Mathf.Max(120,size.y);return JournalUiBuilder.Action(parent,name,key,position,size,action,out _,primary);
         }
         private static void Background()
         {
@@ -88,7 +78,7 @@ namespace Wildfolk.Editor
             var floor=WorldArt.Sprite("Forest Floor","ground",root,Vector2.zero,1,WorldSorting.Ground);var bounds=floor.sprite.bounds.size;floor.transform.localScale=new Vector3(40/bounds.x,23/bounds.y,1);
             var trees=new[]{new Vector2(-14,7),new Vector2(-11,8),new Vector2(-8,8),new Vector2(-15,3),new Vector2(-12,5.5f),new Vector2(-11,-6),new Vector2(-15,-5),new Vector2(-1,7),new Vector2(3,8),new Vector2(10,-7),new Vector2(14,6)};
             for(var i=0;i<trees.Length;i++)Prop(root,i%2==0 ? "tree_oak" : "tree_olive",trees[i],i%3==0 ? 1.5f : 1.1f);
-            Prop(root,"campfire",new Vector2(-5,-1.1f),1.55f);Prop(root,"fallen_log",new Vector2(-8,-2.7f),1.3f);Prop(root,"storage_chest",new Vector2(-2.7f,-1.5f),1.1f);Prop(root,"workbench",new Vector2(-7.5f,.5f),1.1f);
+            Prop(root,"campfire",new Vector2(-5,-1.1f),1.55f);Prop(root,"fallen_log",new Vector2(-8,-2.7f),1.3f);Prop(root,"storage_chest",new Vector2(-1.5f,-3.1f),1.1f);Prop(root,"workbench",new Vector2(-7.5f,.5f),1.1f);
             Prop(root,"rock_wide",new Vector2(-1.1f,2.2f),1.25f);Prop(root,"rock_split",new Vector2(-10,-.7f),.8f);
             var random=new System.Random(452);for(var i=0;i<34;i++){var p=new Vector2((float)random.NextDouble()*31-16,(float)random.NextDouble()*16-8);WorldArt.Sprite("Grass","grass",root,p,.6f,WorldSorting.GroundDecoration);}
         }

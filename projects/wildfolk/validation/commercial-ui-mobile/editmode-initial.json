@@ -1,0 +1,59 @@
+{
+  "success": true,
+  "message": "Test job status retrieved.",
+  "error": null,
+  "data": {
+    "job_id": "6048aa0a979e44fb8a1f55f247eda178",
+    "status": "failed",
+    "mode": "EditMode",
+    "started_unix_ms": 1793415264744,
+    "finished_unix_ms": 1793415332430,
+    "last_update_unix_ms": 1793415332430,
+    "progress": {
+      "completed": 111,
+      "total": 111,
+      "current_test_full_name": null,
+      "current_test_started_unix_ms": null,
+      "last_finished_test_full_name": "Wildfolk.Tests.SurvivalSettingsTests.LocalPreferencesClampAndRoundTripThroughSeparateKeys",
+      "last_finished_unix_ms": 1793415332088,
+      "stuck_suspected": false,
+      "editor_is_focused": false,
+      "run_in_background": true,
+      "focus_nudge_attempts": null,
+      "focus_nudge_limit": null,
+      "focus_nudge_status": null,
+      "blocked_reason": null,
+      "failures_so_far": [
+        {
+          "full_name": "Wildfolk.Tests.SceneContractTests.SavedSceneRetainsPlayableConnectionsAndNonPushingEnemy",
+          "message": "  Expected: not null\r\n  But was:  null\r\n"
+        }
+      ],
+      "failures_capped": false
+    },
+    "error": null,
+    "result": {
+      "mode": "EditMode",
+      "summary": {
+        "total": 111,
+        "passed": 110,
+        "failed": 1,
+        "skipped": 0,
+        "durationSeconds": 61.9153732,
+        "resultState": "Failed(Child)"
+      },
+      "results": [
+        {
+          "name": "SavedSceneRetainsPlayableConnectionsAndNonPushingEnemy",
+          "fullName": "Wildfolk.Tests.SceneContractTests.SavedSceneRetainsPlayableConnectionsAndNonPushingEnemy",
+          "state": "Failed",
+          "durationSeconds": 0.511934,
+          "message": "  Expected: not null\r\n  But was:  null\r\n",
+          "stackTrace": "at Wildfolk.Tests.SceneContractTests.SavedSceneRetainsPlayableConnectionsAndNonPushingEnemy () [0x000d0] in C:\\UnityProjects\\Wildfolk\\Assets\\Wildfolk\\Tests\\EditMode\\SceneContractTests.cs:28\r\n",
+          "output": ""
+        }
+      ]
+    }
+  },
+  "hint": null
+}

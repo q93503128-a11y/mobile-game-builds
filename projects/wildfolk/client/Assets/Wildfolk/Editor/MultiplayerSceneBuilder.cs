@@ -43,17 +43,16 @@ namespace Wildfolk.Editor
             var safe=Rect("Safe Area",canvas.transform,Vector2.zero,Vector2.zero,Vector2.zero);safe.anchorMax=Vector2.one;safe.offsetMin=safe.offsetMax=Vector2.zero;safe.gameObject.AddComponent<SafeAreaLayout>();
             arena.CampLabel=Text("Camp",safe,"net.camp",new Vector2(-580,470),new Vector2(650,54),30,TextAnchor.MiddleLeft);
             arena.HealthLabel=Text("Health",safe,"",new Vector2(-580,410),new Vector2(650,44),26,TextAnchor.MiddleLeft);
-            var joystick=Image("Joystick",safe,"joystick_base",new Vector2(0,0),new Vector2(190,185),new Vector2(236,236),true);
-            arena.Joystick=joystick.gameObject.AddComponent<VirtualJoystick>();arena.Joystick.Thumb=(RectTransform)Image("Thumb",joystick.transform,"joystick_thumb",new Vector2(.5f,.5f),Vector2.zero,new Vector2(95,95)).transform;
+            var joystick=GameplayHudBuilder.BuildJoystick(safe,null);arena.Joystick=joystick;
             var dash=Image("Dash",safe,"attack_button",new Vector2(1,0),new Vector2(-340,280),new Vector2(130,130),true);Image("Icon",dash.transform,"icon_dash",new Vector2(.5f,.5f),Vector2.zero,new Vector2(66,66));
             arena.DashButton=Button(dash);UnityEventTools.AddPersistentListener(arena.DashButton.onClick,arena.Dash);
-            var attack=Image("Attack",safe,"attack_button",new Vector2(1,0),new Vector2(-175,175),new Vector2(190,190),true);Image("Fist",attack.transform,"icon_fist",new Vector2(.5f,.5f),Vector2.zero,new Vector2(100,100));attack.gameObject.AddComponent<NetworkAttackInput>().Arena=arena;
+            var attack=Image("Attack",safe,"attack_button",new Vector2(1,0),new Vector2(-175,175),new Vector2(204,204),true);Image("Fist",attack.transform,"icon_fist",new Vector2(.5f,.5f),Vector2.zero,new Vector2(100,100));attack.gameObject.AddComponent<NetworkAttackInput>().Arena=arena;
             joystick.gameObject.SetActive(false);arena.DashButton.interactable=false;
             var leave=Image("Leave Session",safe,"panel",new Vector2(1,1),new Vector2(-170,-67),new Vector2(250,72),true);Text("Label",leave.transform,"net.leave",Vector2.zero,new Vector2(228,60),26);UnityEventTools.AddPersistentListener(Button(leave).onClick,arena.Leave);
             arena.InventoryUi=NetworkInventoryUiBuilder.Build(safe);arena.InventoryUi.AttackIcon=attack.transform.Find("Fist").GetComponent<Image>();
-            var interact=Image("Interact",arena.InventoryUi.transform,"attack_button",new Vector2(1,0),new Vector2(-380,133),new Vector2(118,118),true);var interactView=interact.gameObject.AddComponent<InteractButtonView>();interactView.Button=Button(interact);interactView.Surface=interact;interactView.Icon=Image("Icon",interact.transform,"icon_inventory",new Vector2(.5f,.5f),Vector2.zero,new Vector2(64,64));interactView.DefaultIcon=interactView.Icon.sprite;arena.InventoryUi.Interact=interactView;
+            var interact=Image("Interact",arena.InventoryUi.transform,"attack_button",new Vector2(1,0),new Vector2(-175,385),new Vector2(150,150),true);var interactView=interact.gameObject.AddComponent<InteractButtonView>();interactView.Button=Button(interact);interactView.Surface=interact;interactView.Icon=Image("Icon",interact.transform,"icon_inventory",new Vector2(.5f,.5f),Vector2.zero,new Vector2(64,64));interactView.DefaultIcon=interactView.Icon.sprite;arena.InventoryUi.Interact=interactView;
             var events=new GameObject("EventSystem",typeof(EventSystem),typeof(InputSystemUIInputModule));events.GetComponent<EventSystem>().sendNavigationEvents=false;var module=events.GetComponent<InputSystemUIInputModule>();module.UnassignActions();module.actionsAsset=actions;module.point=point;module.leftClick=click;
-            DeathUiBuilder.Build(arena.gameObject,safe,safe,null);EditorSceneManager.SaveScene(scene,ScenePath);FrontendSceneBuilder.Build();AssetDatabase.SaveAssets();
+            DeathUiBuilder.Build(arena.gameObject,safe,safe,null);GameplayHudBuilder.ConfigureTouchLayout();EditorSceneManager.SaveScene(scene,ScenePath);FrontendSceneBuilder.Build();AssetDatabase.SaveAssets();
         }
         public static void CreatePrefabs()
         {

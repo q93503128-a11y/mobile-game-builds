@@ -1,3 +1,11 @@
+## 현재 UI 체크포인트 · 2026-10-31
+
+유효 저장이 있으면 Continue가 우선이고, 없으면 Continue를 숨기고 새 세계 시작을 primary로 표시한다. Class·Profile·Achievements·Attendance는 독립 진입점이며 Store는 작은 Gem 진입점이다. Settings의 버튼/라벨 폭과 중앙 정렬을 함께 작성한다. 배경의 보급 상자는 불에서 더 떨어뜨렸다. Class는 개요→선택한 직업 트리, Multiplayer는 Create/Join과 대기실을 구분하며 MP Class bookmark는 제거했다.
+
+SceneFlow는 실제 비동기 씬 전환에 임시 TransitionOverlay를 사용한다. 가짜 백분율 없이 단계/회전 표시를 쓰며 SP 초기 지형 준비 동안 기존 Pause/Resume으로 보호한다. Network overlay는 기존 상태/timeout/Leave를 따르고 취소 불가능한 씬 로드 중 취소를 숨긴다. 새 저장 서비스나 schema는 없다. 관련 자동검사는 통과했지만 전체 실제 화면·전환 체감·LAN 검수는 다음 작업이다. [상태/검증 한계](../validation/commercial-ui-mobile/REVIEW.md#checkpoint--user-requested-stop).
+
+아래는 2026-10-15 최초 Home 제작 기록이다. 당시 여섯 진입점, 비활성 Continue, 빈 오디오와 동기 전환 설명은 현재 구현을 뜻하지 않는다.
+
 # Lowfire Home / Frontend — 2026-10-15
 
 기준 commit d53eb545c656cd58d31583a6bab6771df0aaf344. 이번 패스는 표시 브랜드와 Home UI 재설계이며 신규 게임 시스템/전체 프로젝트 rename이 아니다.

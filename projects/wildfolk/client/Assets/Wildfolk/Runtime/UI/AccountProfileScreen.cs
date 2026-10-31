@@ -6,8 +6,9 @@ namespace Wildfolk
     public sealed class AccountProfileScreen:MonoBehaviour
     {
         public HomeScreen Home;public GameObject View,FeedbackView,DeleteView;
-        public Text Status,Cloud,Provider,Support,Alpha,Created,Character,FeedbackStatus,DeleteMessage;
-        public Button ConnectButton,SyncButton,ExistingButton,KeepLocalButton,UseCloudButton,AlphaButton,SignOutButton,SubmitButton;
+        public Text Status,Cloud,Provider,Support,Alpha,Character,FeedbackStatus,DeleteMessage;
+        public Button ConnectButton,SyncButton,ExistingButton,KeepLocalButton,UseCloudButton,AlphaButton,SignOutButton,SubmitButton,DeleteButton,CopySupportButton;
+        public GameObject NormalActions;
         public InputField FeedbackText;public Dropdown Category;public Toggle Consent;
         private AccountService service;private int deletionConfirmation;
         private static readonly string[] Categories={"Bug Report","Game Feedback","Account / Cloud","Purchase","Player Report","Other"};
@@ -40,12 +41,16 @@ namespace Wildfolk
         {
             if(Status==null)return;for(var i=0;i<Category.options.Count;i++)Category.options[i].text=L.Text("account.category."+i);Category.RefreshShownValue();var p=service.Profile;Status.text=L.Text("account.state."+service.State);
             Cloud.text=L.Text(service.LastError=="setup_required"||service.State==AccountConnection.Offline&&!BackendSettings.Current.Enabled?"account.backend_unavailable":service.Dirty?"account.cloud_attention":service.State==AccountConnection.Connected?"account.cloud_synced":"account.cloud_offline");
-            Provider.text=L.Text(service.Linked?"account.google_connected":"account.google_disconnected");Support.text=p?.SupportId??"—";Alpha.text=L.Text(p?.AlphaRecorded==true?"account.alpha_recorded":"account.alpha_none");Created.text=p==null?"—":p.CreatedAt.Substring(0,Math.Min(10,p.CreatedAt.Length));
+            Provider.text=L.Text(service.Linked?"account.google_connected":"account.google_disconnected");Support.text=p?.SupportId??"—";Alpha.text=L.Text(p?.AlphaRecorded==true?"account.alpha_recorded":"account.alpha_none");
             try{var selected=ClassProfiles.Local.Selected;var level=1;var repo=SceneFlow.Repository;if(repo.Exists)level=repo.Read(Home.Rules.Validate).Player.Growth.Level;Character.text=L.Format("account.character",level,ClassCatalog.Current.Find(selected).Name);}catch{Character.text="—";}
             var idle=service.State!=AccountConnection.Connecting&&service.State!=AccountConnection.CloudSyncing;
-            ConnectButton.interactable=idle&&BackendSettings.Current.Enabled;SyncButton.interactable=idle&&service.Linked;
+            var conflict=service.State==AccountConnection.AccountConflict;
+            NormalActions.SetActive(!conflict);ConnectButton.gameObject.SetActive(!service.Linked);ConnectButton.interactable=idle&&BackendSettings.Current.Enabled;
+            SyncButton.gameObject.SetActive(service.Linked);SyncButton.interactable=idle&&service.Linked;
+            SignOutButton.gameObject.SetActive(service.Linked);DeleteButton.gameObject.SetActive(service.Linked);DeleteButton.interactable=idle&&service.Linked;
+            CopySupportButton.gameObject.SetActive(p!=null);Alpha.transform.parent.gameObject.SetActive(BackendPolicy.AlphaEnrollment&&service.Linked);
             ExistingButton.gameObject.SetActive(service.State==AccountConnection.AccountConflict&&service.LastError=="account_conflict");KeepLocalButton.gameObject.SetActive(service.State==AccountConnection.AccountConflict);
-            UseCloudButton.gameObject.SetActive(service.State==AccountConnection.AccountConflict&&service.LastError=="cloud_conflict");AlphaButton.gameObject.SetActive(BackendPolicy.AlphaEnrollment);AlphaButton.interactable=idle&&service.Linked;SignOutButton.interactable=idle&&service.Linked;
+            UseCloudButton.gameObject.SetActive(service.State==AccountConnection.AccountConflict&&service.LastError=="cloud_conflict");AlphaButton.gameObject.SetActive(BackendPolicy.AlphaEnrollment&&service.Linked);AlphaButton.interactable=idle&&service.Linked;SignOutButton.interactable=idle&&service.Linked;
         }
     }
 }

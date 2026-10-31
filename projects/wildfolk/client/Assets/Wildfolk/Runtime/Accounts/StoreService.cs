@@ -22,6 +22,7 @@ namespace Wildfolk
         public bool CanBuy=>!Busy&&(journal?.State.Pending.Count??0)==0&&(State?.PendingCount??0)==0&&Phase!=StorePhase.Pending&&Phase!=StorePhase.Consuming&&AccountReady&&Policy&&State?.PurchaseEnabled==true&&!State.ReviewRequired&&billing.Supported&&Prices.Length>0;
         private bool RecoveryAllowed=>development||BackendSettings.Current.Enabled&&BackendPolicy.Channel==BuildChannel.Production&&StoreSettings.Load().ExternalSetupReviewed;
         private bool Policy=>development||BackendSettings.Current.Enabled&&StoreSettings.Load().Allows(BackendPolicy.Channel)&&!Catalog.Proposed;
+        public bool PurchasesConfigured=>Policy;
         private readonly AccountService account;private readonly IStoreTransport transport;private readonly IStoreBillingClient billing;private readonly bool development;private PurchaseJournal journal;private string scope,lastScope;private int epoch;private bool disposed;
         private readonly HashSet<string> deletedScopes=new HashSet<string>();
         private readonly Dictionary<string,PurchaseJournal> owners=new Dictionary<string,PurchaseJournal>();

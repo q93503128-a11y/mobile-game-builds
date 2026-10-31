@@ -28,55 +28,41 @@ namespace Wildfolk.Editor
         internal static void ConfigurePauseActions(Transform panel,WorldSaveService save)
         {
             var load=panel.Find("Load Game");if(load!=null)Object.DestroyImmediate(load.gameObject);
-            ((RectTransform)panel).sizeDelta=new Vector2(440,490);
-            ((RectTransform)panel.Find("Title")).anchoredPosition=new Vector2(0,188);
-            ((RectTransform)panel.Find("Settings")).anchoredPosition=new Vector2(0,-60);
+            ((RectTransform)panel).sizeDelta=new Vector2(840,840);
+            ((RectTransform)panel.Find("Title")).anchoredPosition=new Vector2(0,330);
+            foreach(var pair in new[]{("Continue",220f),("Save Game",65f),("Settings",-90f)}){var rect=(RectTransform)panel.Find(pair.Item1);rect.anchoredPosition=new Vector2(0,pair.Item2);rect.sizeDelta=new Vector2(640,126);var label=rect.GetComponentInChildren<Text>();label.rectTransform.sizeDelta=new Vector2(610,110);label.fontSize=36;}
             var existing=panel.Find("Save and Home");
-            if(existing!=null){((RectTransform)existing).anchoredPosition=new Vector2(0,-155);return;}
-            var home=Image("Save and Home",panel,"panel",new Vector2(.5f,.5f),new Vector2(0,-155),new Vector2(280,70),true);
-            Text("Label",home.transform,"home.save_exit",Vector2.zero,new Vector2(270,60),24);
+            if(existing!=null){((RectTransform)existing).anchoredPosition=new Vector2(0,-260);((RectTransform)existing).sizeDelta=new Vector2(640,126);var label=existing.GetComponentInChildren<Text>();label.rectTransform.sizeDelta=new Vector2(610,110);label.fontSize=34;return;}
+            var home=Image("Save and Home",panel,"panel",new Vector2(.5f,.5f),new Vector2(0,-260),new Vector2(640,126),true);
+            Text("Label",home.transform,"home.save_exit",Vector2.zero,new Vector2(610,110),34);
             UnityEventTools.AddPersistentListener(Button(home).onClick,save.SaveAndHome);
         }
         internal static GameObject Settings(Transform parent,UserPreferences preferences,UnityEngine.Events.UnityAction backAction)
         {
-            var panel=Image("Settings Panel",parent,"panel",new Vector2(.5f,.5f),Vector2.zero,new Vector2(790,790),true);
-            var settings=panel.gameObject.AddComponent<SettingsPanel>();settings.Preferences=preferences;
-            Text("Title",panel.transform,"ui.settings.title",new Vector2(-247,338),new Vector2(180,44),34,TextAnchor.MiddleLeft);
-            Text("Controls Label",panel.transform,"setting.controls",new Vector2(-237,222),new Vector2(200,32),23,TextAnchor.MiddleLeft);
-            settings.Control=SliderRow(panel.transform,"setting.control_size",161,.8f,1.4f,out settings.ControlValue);
-            Text("Audio Label",panel.transform,"setting.audio",new Vector2(-237,83),new Vector2(200,32),23,TextAnchor.MiddleLeft);
-            settings.Master=SliderRow(panel.transform,"setting.master",22,0,1,out settings.MasterValue);
-            settings.Music=SliderRow(panel.transform,"setting.music",-66,0,1,out settings.MusicValue);
-            settings.Sfx=SliderRow(panel.transform,"setting.sfx",-154,0,1,out settings.SfxValue);
-            UnityEventTools.AddPersistentListener(settings.Control.onValueChanged,preferences.SetControl);
-            UnityEventTools.AddPersistentListener(settings.Master.onValueChanged,preferences.SetMaster);
-            UnityEventTools.AddPersistentListener(settings.Music.onValueChanged,preferences.SetMusic);
-            UnityEventTools.AddPersistentListener(settings.Sfx.onValueChanged,preferences.SetSfx);
-            Text("Language",panel.transform,"setting.language",new Vector2(-210,-227),new Vector2(248,42),24,TextAnchor.MiddleLeft);
-            var languageImage=Image("Language Selector",panel.transform,"panel",new Vector2(.5f,.5f),new Vector2(162,-227),new Vector2(308,58),true);
-            settings.LanguageLabel=Text("Language Name",languageImage.transform,"",Vector2.zero,new Vector2(290,52),24);UnityEventTools.AddPersistentListener(Button(languageImage).onClick,settings.NextLanguage);
-            var reset=Image("Reset",panel.transform,"panel",new Vector2(.5f,.5f),new Vector2(-122,-328),new Vector2(272,62),true);
-            Text("Label",reset.transform,"setting.reset",Vector2.zero,new Vector2(260,54),24);
-            UnityEventTools.AddPersistentListener(Button(reset).onClick,preferences.ResetDefaults);
-            var back=Image("Back",panel.transform,"panel",new Vector2(.5f,.5f),new Vector2(190,-328),new Vector2(190,62),true);
-            Text("Label",back.transform,"ui.action.back",Vector2.zero,new Vector2(178,54),25);
-            UnityEventTools.AddPersistentListener(Button(back).onClick,backAction);
-            return panel.gameObject;
+            var page=JournalUiBuilder.Sheet(parent,"Settings Panel",out var view);var settings=view.AddComponent<SettingsPanel>();settings.Preferences=preferences;
+            JournalUiBuilder.Label(page,"Title","ui.settings.title",new Vector2(-450,405),new Vector2(620,80),44);
+            JournalUiBuilder.Action(page,"Back","ui.action.back",new Vector2(690,405),new Vector2(180,120),backAction,out _);
+            JournalUiBuilder.Label(page,"Controls Label","setting.controls",new Vector2(-420,280),new Vector2(650,65),36);
+            settings.Control=SliderRow(page,"setting.control_size",new Vector2(-420,130),.8f,1.4f,out settings.ControlValue);
+            JournalUiBuilder.Label(page,"Audio Label","setting.audio",new Vector2(420,280),new Vector2(650,65),36);
+            settings.Master=SliderRow(page,"setting.master",new Vector2(420,150),0,1,out settings.MasterValue);
+            settings.Music=SliderRow(page,"setting.music",new Vector2(420,-40),0,1,out settings.MusicValue);
+            settings.Sfx=SliderRow(page,"setting.sfx",new Vector2(420,-230),0,1,out settings.SfxValue);
+            UnityEventTools.AddPersistentListener(settings.Control.onValueChanged,preferences.SetControl);UnityEventTools.AddPersistentListener(settings.Master.onValueChanged,preferences.SetMaster);UnityEventTools.AddPersistentListener(settings.Music.onValueChanged,preferences.SetMusic);UnityEventTools.AddPersistentListener(settings.Sfx.onValueChanged,preferences.SetSfx);
+            JournalUiBuilder.Label(page,"Language","setting.language",new Vector2(-420,-60),new Vector2(650,60),34);
+            JournalUiBuilder.Action(page,"Language Selector","",new Vector2(-420,-170),new Vector2(650,120),settings.NextLanguage,out settings.LanguageLabel);
+            JournalUiBuilder.Action(page,"Reset","setting.reset",new Vector2(-420,-360),new Vector2(650,120),preferences.ResetDefaults,out _);
+            return view;
         }
-        private static Slider SliderRow(Transform parent,string label,float y,float min,float max,out Text value)
+        private static Slider SliderRow(Transform parent,string label,Vector2 position,float min,float max,out Text value)
         {
-            var row=Rect(label,parent,new Vector2(.5f,.5f),new Vector2(0,y),new Vector2(670,72));
-            Text("Name",row,label,new Vector2(-159,23),new Vector2(350,32),24,TextAnchor.MiddleLeft);
-            value=Text("Value",row,"",new Vector2(291,23),new Vector2(88,32),24,TextAnchor.MiddleRight);
-            var slider=Image("Slider",row,"white",new Vector2(.5f,.5f),new Vector2(0,-13),new Vector2(670,42),true);slider.color=new Color(0,0,0,0);
-            var track=Image("Track",slider.transform,"panel",new Vector2(.5f,.5f),Vector2.zero,new Vector2(654,12));
-            var area=Rect("Fill Area",slider.transform,new Vector2(.5f,.5f),Vector2.zero,new Vector2(636,8));
-            var fill=Image("Fill",area,"white",new Vector2(.5f,.5f),Vector2.zero,Vector2.zero);fill.color=new Color32(179,176,125,255);
-            var handles=Rect("Handle Area",slider.transform,new Vector2(.5f,.5f),Vector2.zero,new Vector2(636,42));
-            var handle=Image("Handle",handles,"panel",new Vector2(.5f,.5f),Vector2.zero,new Vector2(30,0));
-            var component=slider.gameObject.AddComponent<Slider>();component.minValue=min;component.maxValue=max;
-            component.fillRect=(RectTransform)fill.transform;component.handleRect=(RectTransform)handle.transform;component.targetGraphic=handle;
-            component.navigation=new Navigation{mode=Navigation.Mode.None};return component;
+            var row=Rect(label,parent,Vector2.one*.5f,position,new Vector2(650,160));
+            JournalUiBuilder.Label(row,"Name",label,new Vector2(-65,55),new Vector2(520,55),32);value=JournalUiBuilder.Label(row,"Value","",new Vector2(270,55),new Vector2(110,55),32,TextAnchor.MiddleRight);
+            var surface=Image("Slider",row,"white",Vector2.one*.5f,new Vector2(0,-30),new Vector2(650,120),true);surface.color=Color.clear;
+            var track=Image("Track",surface.transform,"white",Vector2.one*.5f,Vector2.zero,new Vector2(620,14));track.color=JournalStyle.Muted;
+            var area=Rect("Fill Area",surface.transform,Vector2.one*.5f,Vector2.zero,new Vector2(580,10));var fill=Image("Fill",area,"white",Vector2.one*.5f,Vector2.zero,Vector2.zero);fill.color=JournalStyle.Ember;
+            var handles=Rect("Handle Area",surface.transform,Vector2.one*.5f,Vector2.zero,new Vector2(580,80));var handle=Image("Handle",handles,"journal_node",Vector2.one*.5f,Vector2.zero,new Vector2(65,0));handle.color=JournalStyle.Learned;
+            var slider=surface.gameObject.AddComponent<Slider>();slider.minValue=min;slider.maxValue=max;slider.fillRect=fill.rectTransform;slider.handleRect=handle.rectTransform;slider.targetGraphic=handle;slider.navigation=new Navigation{mode=Navigation.Mode.None};return slider;
         }
     }
 }

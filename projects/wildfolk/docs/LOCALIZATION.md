@@ -1,3 +1,7 @@
+## UI 가독성 교정 · 2026-10-31
+
+JournalUiBuilder.Label은 실제 Noto Sans KR의 한 줄 높이를 확보하도록 최소 font×1.6 높이를 작성한다. 844×390 캡처에서 font28의 preferredHeight40.16이 높이38/40 박스를 넘어서 라벨이 사라지는 것을 확인했다. 이 규칙은 authoring이며 매 프레임 크기를 덮어쓰지 않는다. 새 메뉴·로딩·스토어 상태 문구는 같은 en/ko 정본에 추가했다. 최종 양언어/전체 viewport after 매트릭스는 아직 미완료다.
+
 # English / 한국어
 
 기본 English, 현재 실제 지원은 en/ko 두 언어다. Settings의 Language 선택을 누르면 다음 언어로 전환하고 활성 UI와 다음에 열 화면에 즉시 반영한다. 미래 언어 버튼/가짜 번역은 없다.

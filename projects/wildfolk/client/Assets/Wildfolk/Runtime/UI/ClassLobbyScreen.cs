@@ -10,15 +10,18 @@ namespace Wildfolk
         public Image ClassIcon,TreeIcon;public Image[] CardMarks,NodeIcons;public Sprite[] ClassIcons,SkillIcons;public JournalSkillNode[] NodeViews;
         public Text Title,Role,Description,Progress,NodeDetail,PurchaseLabel,SelectLabel,InvestLabel,Currency,PremiumCurrency,ConfirmText,Status;
         public Button PurchaseButton,SelectButton,RespecButton,InvestButton;
+        public GameObject OverviewView,TreeView;public Text TreeTitle,TreePoints;
         private int selected,node;private AccountProgression account;
         private void OnEnable(){ClassProfiles.Changed+=Refresh;L.Changed+=Refresh;EconomyService.Get().Changed+=Refresh;}
         private void OnDisable(){ClassProfiles.Changed-=Refresh;L.Changed-=Refresh;if(EconomyService.Current!=null)EconomyService.Current.Changed-=Refresh;}
         public void Open()
         {
-            Home.Menu.SetActive(false);Home.Settings.SetActive(false);Home.Multiplayer.SetActive(false);Home.Confirm.SetActive(false);View.SetActive(true);Confirmation.SetActive(false);
+            Home.Menu.SetActive(false);Home.Settings.SetActive(false);Home.Multiplayer.SetActive(false);Home.Confirm.SetActive(false);View.SetActive(true);OverviewView.SetActive(true);TreeView.SetActive(false);Confirmation.SetActive(false);
             try{ClassProfiles.Reconcile(Rules);selected=Array.FindIndex(ClassCatalog.Current.Classes,c=>c.Id==ClassProfiles.Local.Selected);if(selected<0)selected=0;node=0;Status.text="";Refresh();}catch(Exception){Unavailable();}
         }
-        public void Back(){Confirmation.SetActive(false);View.SetActive(false);Home.ShowHome();}
+        public void Back(){if(TreeView.activeSelf){CloseTree();return;}Confirmation.SetActive(false);View.SetActive(false);Home.ShowHome();}
+        public void OpenTree(){OverviewView.SetActive(false);TreeView.SetActive(true);Refresh();}
+        public void CloseTree(){TreeView.SetActive(false);OverviewView.SetActive(true);Refresh();}
         public void SelectCard(int index){if(index<0 || index>=Cards.Length)return;selected=index;node=0;Status.text="";Confirmation.SetActive(false);Refresh();}
         public void SelectNode(int index){if(index<0 || index>=Nodes.Length)return;node=index;Status.text="";Refresh();}
         public void Invest(){var d=ClassCatalog.Current.Classes[selected];if(!ClassProfiles.Spend(d.Id,d.Nodes[node].Id))Status.text=L.Text("class.cannot_spend");Refresh();}
@@ -36,7 +39,7 @@ namespace Wildfolk
             for(var i=0;i<Cards.Length;i++)
             {
                 var c=catalog.Classes[i];var progress=account.Find(c.Id);CardNames[i].text=c.Name;CardRoles[i].text=L.Text("journal.role."+c.Id);CardStates[i].text=L.Text(account.Selected==c.Id?"class.selected":progress.Owned?"class.owned":"class.locked");
-                Cards[i].image.color=selected==i?new Color32(137,88,56,38):Color.clear;CardNames[i].fontStyle=selected==i?FontStyle.Bold:FontStyle.Normal;CardMarks[i].enabled=account.Selected==c.Id;
+                Cards[i].image.color=selected==i?JournalStyle.Learned:new Color32(226,214,182,255);CardNames[i].fontStyle=selected==i?FontStyle.Bold:FontStyle.Normal;CardMarks[i].enabled=account.Selected==c.Id;
             }
             ClassIcon.sprite=TreeIcon.sprite=ClassIcons[selected];Title.text=d.Name;Role.text=L.Text("journal.role."+d.Id)+"\n"+L.Text(d.Active?"class.has_active":"class.passive");Description.text=d.Description;
             Progress.text=L.Format("journal.class_progress",p.XP,points,catalog.Earned(p.XP));var next=Array.Find(catalog.Milestones,x=>x>p.XP);if(next>0)Progress.text+="\n"+L.Format("class.next",next);
@@ -44,11 +47,13 @@ namespace Wildfolk
             {
                 var n=d.Nodes[i];var learned=Array.IndexOf(p.Nodes,n.Id)>=0;var prerequisite=string.IsNullOrEmpty(n.Prerequisite)||Array.IndexOf(p.Nodes,n.Prerequisite)>=0;var available=owned && prerequisite && points>0;
                 NodeNames[i].text=n.Name;NodeNames[i].color=learned || available?JournalStyle.Ink:JournalStyle.Muted;
-                NodeViews[i].SetState(learned,available,i==node);NodeIcons[i].sprite=SkillIcons[selected*9+i];
+                NodeViews[i].SetState(learned,owned && prerequisite,i==node);NodeIcons[i].sprite=SkillIcons[selected*9+i];
             }
             for(var i=0;i<Branches.Length;i++)Branches[i].text=d.Nodes[i*3].Branch;
             var chosen=d.Nodes[node];var has=Array.IndexOf(p.Nodes,chosen.Id)>=0;var requires=string.IsNullOrEmpty(chosen.Prerequisite)||Array.IndexOf(p.Nodes,chosen.Prerequisite)>=0;
-            NodeDetail.text=chosen.Description;if(!requires)Status.text=L.Format("journal.requires",Array.Find(d.Nodes,n=>n.Id==chosen.Prerequisite).Name);
+            NodeDetail.text=chosen.Name+"\n\n"+chosen.Description;if(!requires)NodeDetail.text+="\n\n"+L.Format("journal.requires",Array.Find(d.Nodes,n=>n.Id==chosen.Prerequisite).Name);
+            TreeTitle.text=d.Name;TreePoints.text=L.Format("ui.skill.points",points);
+            SelectButton.gameObject.SetActive(owned);
             SelectButton.interactable=lobby && owned && account.Selected!=d.Id;SelectLabel.text=L.Text(account.Selected==d.Id?"class.selected":"class.select");
             PurchaseButton.gameObject.SetActive(!owned);PurchaseButton.interactable=lobby && (d.Currency=="Gold"?ClassProfiles.GoldAvailable(Rules)>=d.Price:d.Price>0 && EconomyService.Get().CanSpend && (EconomyService.Get().Snapshot?.Balance??0)>=d.Price);
             PurchaseLabel.text=d.Currency=="Gold"?L.Format("class.price",d.Price,L.Text("ui.gold")):d.Price>0?L.Format("class.price",d.Price,L.Text("class.gem")):L.Text("journal.premium_locked");

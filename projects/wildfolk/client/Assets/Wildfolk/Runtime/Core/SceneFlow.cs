@@ -17,7 +17,7 @@ namespace Wildfolk
         {if(IsTransitioning)return;pending=game;Repository=source;WorldGenerator.SelectedSeed=game.Seed;WorldGenerator.SelectedGenerationVersion=game.BaseGenerationVersion;Go(GameplayScene);}
         public static void Home(SaveRepository source)
         {if(IsTransitioning)return;pending=null;Repository=source;Go(HomeScene);}
-        private static void Go(string scene){IsTransitioning=true;Time.timeScale=1;SceneManager.LoadScene(scene);}
+        private static void Go(string scene){IsTransitioning=true;Time.timeScale=1;TransitionOverlay.Load(scene,scene==HomeScene?"loading.camp":"loading.world",()=>{IsTransitioning=false;pending=null;if(SceneManager.GetActiveScene().name!=HomeScene)Go(HomeScene);});}
         public static SavedGame TakePending(){var value=pending;pending=null;IsTransitioning=false;return value;}
         public static void HomeReady(){pending=null;IsTransitioning=false;}
         public static void MultiplayerReady(){pending=null;IsTransitioning=false;Time.timeScale=1;}

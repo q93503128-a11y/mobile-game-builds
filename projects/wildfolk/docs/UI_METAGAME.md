@@ -1,3 +1,15 @@
+# Profile / Records · current UI checkpoint
+
+2026-10-31: Home has independent Profile, Achievement, Attendance and Class destinations. Gem Store has a small direct entry; Back returns to the actual origin. Profile retains class/level, confirmed/cached record summary and account management. No rewards, metrics or eligibility rules changed.
+
+Attendance shows the real catalogue as a non-claimable preview without an account. Newcomer keeps7 visits, monthly keeps7×4 and its existing four Gem milestones; visit-only days never pretend to grant Gem. Received/current/future states are separate. Only the server-authorized claim action is interactive. Empty event and offline status are explicit. Family achievement cards retain22families/58tiers/7categories and add progress/selection treatment.
+
+Account uses a flat paper sheet, hides Sign Out/Delete unless linked, separates conflict actions, and removes the creation-date field. Deletion explains cloud/account/economy/support removal, retained local worlds, minimal reviewed financial retention and irreversibility; the transaction is unchanged. Store keeps24/72/144 with real platform prices only. OFF mode allows package inspection, shows availability and existing revive uses, and hides the purchase CTA; recovery/history/support are secondary links. Availability is read from the existing policy, not a second authority.
+
+Implementation and related automatic checks are a checkpoint. Final state/viewport/KO/EN visual verification remains pending. [Research, evidence, remaining work](../validation/commercial-ui-mobile/REVIEW.md).
+
+## Historical Foundation3 implementation
+
 # Profile / Records · Foundation3
 
 Main Menu keeps six existing entries and Play priority. The secondary account entry becomes Profile & Records; Class Journal remains a separate play-preparation feature. Hub shows selected class/world level, server Alpha status/account connection, confirmed Gem, points/completion/representative achievements and two record entries. Account connect/cloud/support/deletion settings are one level deeper. Back returns from account to hub, and hub to Home.

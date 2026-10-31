@@ -27,7 +27,9 @@ namespace Wildfolk.Tests
         }
         private IEnumerator Ready(bool gameplay)
         {
-            for(var i=0;i<120;i++){yield return null;if(gameplay ? Game!=null && Game.World.Map!=null : Home!=null)break;}
+            var until=Time.realtimeSinceStartup+60;var ready=false;
+            while(Time.realtimeSinceStartup<until){yield return null;ready=!TransitionOverlay.Visible&&(gameplay?Game!=null&&Game.World.Map!=null:Home!=null);if(ready)break;}
+            Assert.That(ready,Is.True,"Scene and visible transition must both finish before player input");
             if(gameplay){Assert.That(Game,Is.Not.Null);Game.AutoSaveEnabled=false;Game.Clock.enabled=false;Game.World.Animals.enabled=false;Game.GetComponent<GoblinSpawner>().enabled=false;Game.GetComponent<ZombieSpawner>().enabled=false;Game.Player.GetComponent<PlayerSurvival>().enabled=false;}
             else Assert.That(Home,Is.Not.Null);
             yield return null;
@@ -59,7 +61,7 @@ namespace Wildfolk.Tests
         {
             yield return pointer.Click(Home.SettingsButton);var settings=Home.Settings.GetComponent<SettingsPanel>();Assert.That(Home.Page,Is.EqualTo(FrontendPage.Settings));settings.Preferences.SetControl(1.2f);settings.Preferences.SetMaster(.4f);settings.Preferences.SetMusic(.3f);settings.Preferences.SetSfx(.2f);
             settings.Preferences.SetLanguage(System.Array.FindIndex(L.Catalog.Languages,l=>l.Id=="en"));yield return pointer.Click(settings.LanguageLabel.GetComponentInParent<Button>());Assert.That(L.Language,Is.EqualTo("ko"));
-            yield return pointer.Click(Home.Settings.GetComponentsInChildren<Button>().Single(b=>b.name=="Back"));Assert.That(Home.SingleButton.GetComponentInChildren<Text>().text,Is.EqualTo("싱글 플레이"));yield return pointer.Click(Home.MultiplayerButton);Assert.That(Home.Page,Is.EqualTo(FrontendPage.Multiplayer));Assert.That(Object.FindObjectsByType<WorldGenerator>(FindObjectsSortMode.None),Is.Empty);
+            yield return pointer.Click(Home.Settings.GetComponentsInChildren<Button>().Single(b=>b.name=="Back"));Assert.That(Home.SingleButton.GetComponentInChildren<Text>().text,Is.EqualTo(L.Text("home.new_action")));yield return pointer.Click(Home.MultiplayerButton);Assert.That(Home.Page,Is.EqualTo(FrontendPage.Multiplayer));Assert.That(Object.FindObjectsByType<WorldGenerator>(FindObjectsSortMode.None),Is.Empty);
             yield return pointer.Click(Home.Multiplayer.GetComponentsInChildren<Button>().Single(b=>b.name=="Single Player"));yield return Ready(true);
             var prefs=Game.GetComponent<UserPreferences>();Assert.That(prefs.Values.Language,Is.EqualTo("ko"));Assert.That(prefs.Values.ControlSize,Is.EqualTo(1.2f).Within(.001));Assert.That(prefs.Values.Master,Is.EqualTo(.4f).Within(.001));
             yield return pointer.Click(Object.FindFirstObjectByType<GameplayHud>().PauseButton);var pause=Object.FindFirstObjectByType<PauseMenu>();pause.OpenSettings();yield return null;var shared=pause.Settings.GetComponent<SettingsPanel>();Assert.That(shared.Control.value,Is.EqualTo(1.2f).Within(.001));Assert.That(shared.Music.value,Is.EqualTo(.3f).Within(.001));Assert.That(shared.Sfx.value,Is.EqualTo(.2f).Within(.001));

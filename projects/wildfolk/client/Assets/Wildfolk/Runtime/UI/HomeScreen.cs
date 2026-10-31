@@ -10,7 +10,7 @@ namespace Wildfolk
         public SaveGameRules Rules;
         public UserPreferences Preferences;
         public GameObject Menu,Settings,Multiplayer,Confirm;
-        public Button ContinueButton,SingleButton,MultiplayerButton,SettingsButton;
+        public Button ContinueButton,SingleButton,MultiplayerButton,SettingsButton,ClassButton;
         public Text SaveSummary,Status;
         public FrontendPage Page {get;private set;}
         public bool CanContinue=>saved!=null;
@@ -42,6 +42,12 @@ namespace Wildfolk
         {Page=page;Menu.SetActive(page==FrontendPage.Home);Settings.SetActive(page==FrontendPage.Settings);Multiplayer.SetActive(page==FrontendPage.Multiplayer);Confirm.SetActive(page==FrontendPage.ConfirmNew);}
         private void RefreshText()
         {
+            ContinueButton.gameObject.SetActive(saved!=null);
+            JournalStyle.Action(SingleButton,saved==null);JournalStyle.Action(ContinueButton,true);
+            ((RectTransform)SingleButton.transform).anchoredPosition=new Vector2(0,saved==null?260:60);
+            ((RectTransform)MultiplayerButton.transform).anchoredPosition=new Vector2(0,saved==null?30:-75);
+            if(ClassButton!=null)((RectTransform)ClassButton.transform).anchoredPosition=new Vector2(0,saved==null?-125:-210);
+            var label=SingleButton.GetComponentInChildren<Text>();var singleKey=saved==null?"home.new_action":"home.single";var localized=label.GetComponent<LocalizedLabel>();if(localized!=null)localized.Key=singleKey;label.text=L.Text(singleKey);
             SaveSummary.text=saved==null ? L.Text("home.no_save") : L.Format("home.saved_day",Math.Floor(saved.Elapsed/Rules.Clock.CycleSeconds)+1);
             Status.text=statusKey==null ? string.Empty : L.Text(statusKey);
         }

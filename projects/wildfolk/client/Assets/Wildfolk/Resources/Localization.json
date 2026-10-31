@@ -5200,8 +5200,8 @@
     {
       "Key": "account.delete_warning",
       "Values": [
-        "Request deletion of your account, cloud profile, entitlements and support data. This cannot be undone. Local worlds are kept.",
-        "계정·클라우드 프로필·영구 자격·문의 데이터 삭제를 요청합니다. 삭제 후 복구할 수 없습니다. 로컬 월드는 유지됩니다."
+        "Request deletion of:\n• Account, cloud profile and class entitlements\n• Gem, achievement and attendance records\n• Support messages and diagnostics\n\nYour local worlds are kept. Minimal purchase records may be retained under the reviewed retention policy.\n\nDeletion cannot be undone. The request is processed before deletion completes.",
+        "삭제 요청 대상:\n• 계정·클라우드 프로필·직업 소유 자격\n• 젬·업적·출석 기록\n• 문의 내용과 진단 정보\n\n로컬 월드는 유지됩니다. 최소 구매 기록은 검토된 보존 정책에 따라 남을 수 있습니다.\n\n삭제 후 복구할 수 없습니다. 요청 접수 뒤 처리 완료까지 시간이 걸립니다."
       ]
     },
     {
@@ -5935,8 +5935,8 @@
     {
       "Key": "meta.title",
       "Values": [
-        "Profile & Records",
-        "프로필 · 기록"
+        "Profile",
+        "프로필"
       ]
     },
     {
@@ -6224,6 +6224,90 @@
       "Values": [
         "Refunded / reversed",
         "환불 / 회수"
+      ]
+    },
+    {
+      "Key": "net.create_title",
+      "Values": [
+        "Create a camp",
+        "야영지 만들기"
+      ]
+    },
+    {
+      "Key": "net.create_hint",
+      "Values": [
+        "Host a shared world for up to four players. The world stays with its host.",
+        "최대 4명이 함께합니다. 월드는 방장 기기에 저장됩니다."
+      ]
+    },
+    {
+      "Key": "net.players",
+      "Values": [
+        "Players {0} / {1}",
+        "참가자 {0} / {1}"
+      ]
+    },
+    {
+      "Key": "net.copy_code",
+      "Values": [
+        "Copy room code",
+        "방 코드 복사"
+      ]
+    },
+    {
+      "Key": "loading.world",
+      "Values": [
+        "Preparing your world…",
+        "세계를 준비하고 있습니다…"
+      ]
+    },
+    {
+      "Key": "loading.camp",
+      "Values": [
+        "Returning to camp…",
+        "야영지로 돌아가고 있습니다…"
+      ]
+    },
+    {
+      "Key": "loading.player",
+      "Values": [
+        "Preparing your character…",
+        "캐릭터를 준비하고 있습니다…"
+      ]
+    },
+    {
+      "Key": "loading.failed",
+      "Values": [
+        "Could not open the world. Return to camp and try again.",
+        "세계를 열지 못했습니다. 야영지로 돌아가 다시 시도해 주세요."
+      ]
+    },
+    {
+      "Key": "loading.slow",
+      "Values": [
+        "Taking longer than usual. Please wait.",
+        "평소보다 오래 걸리고 있습니다. 잠시 기다려 주세요."
+      ]
+    },
+    {
+      "Key": "net.client_wait",
+      "Values": [
+        "Connected · waiting for the host",
+        "연결됨 · 방장을 기다리고 있습니다"
+      ]
+    },
+    {
+      "Key": "store.unavailable_short",
+      "Values": [
+        "Not available",
+        "현재 이용 불가"
+      ]
+    },
+    {
+      "Key": "store.revive_uses",
+      "Values": [
+        "Enough for {0} Gem revives",
+        "젬 부활 {0}회에 해당"
       ]
     }
   ]

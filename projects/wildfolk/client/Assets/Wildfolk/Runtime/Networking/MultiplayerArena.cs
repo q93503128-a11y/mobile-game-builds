@@ -10,6 +10,7 @@ namespace Wildfolk
         public VirtualJoystick Joystick;
         public Text HealthLabel,CampLabel;
         public Button DashButton;
+        public ControlSizeLayout Layout;
         public NetworkPlayer LocalPlayer {get;private set;}
         private void Start(){SceneFlow.MultiplayerReady();if(NetworkSession.Instance!=null){NetworkSession.Instance.ArenaReady();NetworkSession.Instance.Changed+=RefreshCamp;}RefreshCamp();}
         private void OnEnable()=>L.Changed+=RefreshText;
@@ -17,9 +18,9 @@ namespace Wildfolk
         private void OnDestroy(){if(LocalPlayer!=null)LocalPlayer.Health.Changed-=RefreshHealth;if(NetworkSession.Instance!=null)NetworkSession.Instance.Changed-=RefreshCamp;}
         public void BindLocal(NetworkPlayer player)
         {
-            LocalPlayer=player;Follow.Target=player.transform;Joystick.Session=player.Commands.Session;player.GetComponent<PlayerInputAdapter>().Joystick=Joystick;Joystick.gameObject.SetActive(true);DashButton.interactable=true;
+            LocalPlayer=player;Follow.Target=player.transform;Joystick.BindSession(player.Commands.Session);player.GetComponent<PlayerInputAdapter>().Joystick=Joystick;Joystick.gameObject.SetActive(true);DashButton.interactable=true;
             var light=FindFirstObjectByType<WorldLighting>();if(light!=null)light.Player=player.transform;
-            FindFirstObjectByType<DeathHud>()?.Bind(player.GetComponent<PlayerDeath>());InventoryUi.Bind(player);player.Health.Changed+=RefreshHealth;RefreshText();
+            FindFirstObjectByType<DeathHud>()?.Bind(player.GetComponent<PlayerDeath>());InventoryUi.Bind(player);Layout?.BindSession(player.Commands.Session);player.Health.Changed+=RefreshHealth;RefreshText();
             var medicine=FindFirstObjectByType<MedicineHud>();if(medicine!=null)medicine.Player=player.GetComponent<PlayerSurvival>();
             var meal=FindFirstObjectByType<MealHud>();if(meal!=null)meal.Player=player.GetComponent<PlayerSurvival>();
         }

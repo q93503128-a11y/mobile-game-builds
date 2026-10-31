@@ -1,3 +1,7 @@
+## UI 전환/작성 체크포인트 · 2026-10-31
+
+UiPresentationBuilder는 기존 canonical UI builders로 세 씬의 UI를 작성하고, 플레이어의 joystick/adapter와 prefab override를 저장한다. Runtime UI override/patch 계층은 없다. VirtualJoystick은 입력 영역과 일시적 base를 분리하고 Session 변경/포인터 종료/취소/Focus 상실에서 입력을 정리한다. MultiplayerArena는 실제 로컬 Session에 입력·크기 layout을 bind한다. SceneFlow의 비동기 경계는 임시 TransitionOverlay가 담당하며 저장·프로토콜·경제 권한을 추가하지 않는다. [진행 중 검수](../validation/commercial-ui-mobile/REVIEW.md).
+
 # 현재 코드 연결
 
 2026-10-23 현재: generation3 / Save14 / Protocol21, Item136 / Recipe111. v1~10 이관과 generation1/2 reader를 유지한다. 아래 날짜별 Foundation 절은 구조의 도입 기록이며 현재 데이터는 CONTENT_EXPANSION/CREATURES_AND_LOOT/SAVE_PERSISTENCE를 따른다.

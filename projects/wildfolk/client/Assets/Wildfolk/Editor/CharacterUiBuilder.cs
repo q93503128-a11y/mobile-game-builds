@@ -57,20 +57,20 @@ namespace Wildfolk.Editor
             tree.Points=JournalUiBuilder.Label(page,"Points","",new Vector2(350,391),new Vector2(500,70),26);
             JournalUiBuilder.Action(page,"Back","ui.action.back",new Vector2(695,394),new Vector2(160,72),tree.Back,out _);
             JournalUiBuilder.Rule(page,new Vector2(-760,348),new Vector2(-100,348));JournalUiBuilder.Rule(page,new Vector2(92,348),new Vector2(760,348));
-            var positions=new[]{new Vector2(-655,130),new Vector2(-420,130),new Vector2(-310,-93),new Vector2(-546,-93),new Vector2(-690,-250),new Vector2(-185,130)};
+            var positions=new[]{new Vector2(-690,100),new Vector2(-510,100),new Vector2(-380,-175),new Vector2(-640,-175),new Vector2(-330,100),new Vector2(-150,100)};
             var origin=new Vector2(-420,282);Image("Origin",page,"profile",Vector2.one*.5f,origin,new Vector2(62,62));
             var count=growth.Definition.Skills.Length;tree.Nodes=new Button[count];tree.Ranks=new Text[count];tree.Names=new Text[count];tree.NodeStates=new Text[count];tree.Links=new Image[count];tree.NodeViews=new JournalSkillNode[count];
             for(var i=0;i<count;i++)
             {
                 var skill=growth.Definition.Skills[i];var from=origin;for(var j=0;j<count;j++)if(growth.Definition.Skills[j].Id==skill.Prerequisite)from=positions[j];
-                var p=positions[i];var dir=(p-from).normalized;if(i==4){JournalUiBuilder.Rule(page,origin+Vector2.left*42,new Vector2(-780,282),3);JournalUiBuilder.Rule(page,new Vector2(-780,282),new Vector2(-780,p.y),3);tree.Links[i]=JournalUiBuilder.Rule(page,new Vector2(-780,p.y),p+Vector2.left*49,3);}else tree.Links[i]=JournalUiBuilder.Rule(page,from+dir*40,p-dir*49,3);
+                var p=positions[i];var dir=(p-from).normalized;tree.Links[i]=JournalUiBuilder.Rule(page,from+dir*40,p-dir*49,3);
             }
             for(var i=0;i<count;i++)
             {
                 var p=positions[i];tree.NodeViews[i]=JournalUiBuilder.Node(page,"Shared Skill "+i,p,growth.Definition.Skills[i].Icon,tree.Select,i,out tree.Nodes[i]);
-                tree.Ranks[i]=JournalUiBuilder.Label(page,"Rank "+i,"",p+new Vector2(0,-61),new Vector2(i==4?200:210,34),22,TextAnchor.MiddleCenter);
-                tree.Names[i]=JournalUiBuilder.Label(page,"Name "+i,"",p+new Vector2(0,-103),new Vector2(i==4?200:225,42),24,TextAnchor.MiddleCenter);
-                tree.NodeStates[i]=JournalUiBuilder.Label(page,"State "+i,"",p+new Vector2(0,-143),new Vector2(i==4?200:210,40),20,TextAnchor.MiddleCenter);
+                tree.Ranks[i]=JournalUiBuilder.Label(page,"Rank "+i,"",p+new Vector2(0,-76),new Vector2(174,34),22,TextAnchor.MiddleCenter);
+                tree.Names[i]=JournalUiBuilder.Label(page,"Name "+i,"",p+new Vector2(0,-120),new Vector2(174,42),24,TextAnchor.MiddleCenter);
+                tree.NodeStates[i]=JournalUiBuilder.Label(page,"State "+i,"",p+new Vector2(0,-160),new Vector2(174,40),20,TextAnchor.MiddleCenter);
             }
             JournalUiBuilder.Label(page,"Field Notes","journal.field_notes",new Vector2(418,285),new Vector2(590,48),24);
             tree.SelectedName=JournalUiBuilder.Label(page,"Selected Node","",new Vector2(418,205),new Vector2(590,80),38);

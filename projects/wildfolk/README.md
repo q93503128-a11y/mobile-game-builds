@@ -1,3 +1,5 @@
+> **2026-10-31 진행 중 체크포인트:** Commercial UI / Mobile Presentation 리워크의 구현·관련 자동검사까지 반영했다. 전체 after 화면·물/생물·실제 LAN·성능 검수는 남아 **RC2 NOT READY**다. 사용자 요청으로 안전한 지점에서 중단했다. [현재 결과와 재개 순서](validation/commercial-ui-mobile/REVIEW.md#checkpoint--user-requested-stop). 아래 RC1 서명 아티팩트는 이전 커밋의 역사 기록이며 현재 main의 새 빌드가 아니다.
+
 # Lowfire
 
 Internal Test RC1: **signed AAB 업로드 준비 READY** (`1.0.0-rc1 / code2`, IL2CPP/ARM64, offline Alpha). 실제 Android 기기·Console 업로드는 UNVERIFIED이며 계정/광고/현금 구매 OFF를 유지한다. [검증·아티팩트](validation/internal-test-rc1/REVIEW.md) · [수동 업로드](validation/internal-test-rc1/UPLOAD_CHECKLIST.md).

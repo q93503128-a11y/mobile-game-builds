@@ -1,3 +1,7 @@
+## UI 체크포인트 · 2026-10-31
+
+Create/Join 구역과 Waiting room을 구분한다. Host는 실제 접속 인원/최대4를, Client는 연결/방장 대기를 표시한다. Local route에는 방 코드 복사 버튼을 표시하지 않는다. Class bookmark는 Home으로 통합했고 admission 규칙은 유지한다. 실제 Connecting/Loading/로컬 actor 준비 상태에 로딩 overlay를 연결했다. MP도 같은 floating joystick과 Control Size layout을 로컬 actor에 bind한다. 이번 새 UI의 실제2프로세스 LAN은 아직 실행하지 않았다. 준비된 companion 프로젝트만 있으며 과거 LAN 결과를 이번 결과로 대체하지 않는다. [재개 지점](../validation/commercial-ui-mobile/REVIEW.md#checkpoint--user-requested-stop).
+
 # Multiplayer Foundation — 자원 템포 / Protocol11
 
 2026-10-18 현재 자원 템포: **Save9 / Protocol11, Item86 / Recipe71**. [현재 정본](CONTENT_EXPANSION.md). 아래 이전 버전 설명은 해당 패스의 기록이다.

@@ -1,0 +1,111 @@
+{
+  "success": true,
+  "message": "Test job status retrieved.",
+  "error": null,
+  "data": {
+    "job_id": "79bb4ef8374749fd86b1f5147cdead87",
+    "status": "failed",
+    "mode": "PlayMode",
+    "started_unix_ms": 1793416199892,
+    "finished_unix_ms": 1793416373315,
+    "last_update_unix_ms": 1793416373315,
+    "progress": {
+      "completed": 67,
+      "total": 67,
+      "current_test_full_name": null,
+      "current_test_started_unix_ms": null,
+      "last_finished_test_full_name": "Wildfolk.Tests.StorePlayTests.ServerUnavailableBeforeStartCannotOpenGoogleUI",
+      "last_finished_unix_ms": 1793416373281,
+      "stuck_suspected": false,
+      "editor_is_focused": false,
+      "run_in_background": true,
+      "focus_nudge_attempts": null,
+      "focus_nudge_limit": null,
+      "focus_nudge_status": null,
+      "blocked_reason": null,
+      "failures_so_far": [
+        {
+          "full_name": "Wildfolk.Tests.ClassProgressionPlayTests.LobbyOwnershipPurchaseTreeAndSessionLock",
+          "message": "  Captures/class-progression/live.tsv\r\n  Expected string length 8 but was 6. Strings differ at index 0.\r\n  Expected: \"complete\"\r\n  But was:  \"failed\"\r\n  -----------^\r\n"
+        },
+        {
+          "full_name": "Wildfolk.Tests.FrontendPlayTests.ActualButtonsStartSaveReturnConfirmCancelAndContinueWithoutDuplicateServices",
+          "message": "  Expected: not null\r\n  But was:  null\r\n"
+        },
+        {
+          "full_name": "Wildfolk.Tests.FrontendPlayTests.SharedSettingsAndBilingualLabelsSurviveSceneChanges",
+          "message": "  String lengths are both 2. Strings differ at index 0.\r\n  Expected: \"en\"\r\n  But was:  \"ko\"\r\n  -----------^\r\n"
+        },
+        {
+          "full_name": "Wildfolk.Tests.QualityPlayTests.SettingsSwitchRefreshesExistingLabelsAndUsesKoreanGlyphs",
+          "message": "  Expected: 10\r\n  But was:  14\r\n"
+        },
+        {
+          "full_name": "Wildfolk.Tests.QualityPlayTests.V2MigrationKeepsEquipmentLearnedSkillsDestroyedResourcesAndReservedBatch",
+          "message": "  Expected: 10\r\n  But was:  14\r\n"
+        }
+      ],
+      "failures_capped": false
+    },
+    "error": null,
+    "result": {
+      "mode": "PlayMode",
+      "summary": {
+        "total": 67,
+        "passed": 62,
+        "failed": 5,
+        "skipped": 0,
+        "durationSeconds": 164.5320547,
+        "resultState": "Failed(Child)"
+      },
+      "results": [
+        {
+          "name": "LobbyOwnershipPurchaseTreeAndSessionLock",
+          "fullName": "Wildfolk.Tests.ClassProgressionPlayTests.LobbyOwnershipPurchaseTreeAndSessionLock",
+          "state": "Failed",
+          "durationSeconds": 4.9246567,
+          "message": "  Captures/class-progression/live.tsv\r\n  Expected string length 8 but was 6. Strings differ at index 0.\r\n  Expected: \"complete\"\r\n  But was:  \"failed\"\r\n  -----------^\r\n",
+          "stackTrace": "at Wildfolk.Tests.ClassProgressionPlayTests+<Run>d__0.MoveNext () [0x000c7] in C:\\UnityProjects\\Wildfolk\\Assets\\Wildfolk\\Tests\\PlayMode\\ClassProgressionPlayTests.cs:11\r\nat UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\\Library\\PackageCache\\com.unity.test-framework@bd7f943e9647\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:44\r\n",
+          "output": ""
+        },
+        {
+          "name": "ActualButtonsStartSaveReturnConfirmCancelAndContinueWithoutDuplicateServices",
+          "fullName": "Wildfolk.Tests.FrontendPlayTests.ActualButtonsStartSaveReturnConfirmCancelAndContinueWithoutDuplicateServices",
+          "state": "Failed",
+          "durationSeconds": 5.0819625,
+          "message": "  Expected: not null\r\n  But was:  null\r\n",
+          "stackTrace": "at Wildfolk.Tests.FrontendPlayTests+<Ready>d__11.MoveNext () [0x00133] in C:\\UnityProjects\\Wildfolk\\Assets\\Wildfolk\\Tests\\PlayMode\\FrontendPlayTests.cs:32\r\nat UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\\Library\\PackageCache\\com.unity.test-framework@bd7f943e9647\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:44\r\n",
+          "output": ""
+        },
+        {
+          "name": "SharedSettingsAndBilingualLabelsSurviveSceneChanges",
+          "fullName": "Wildfolk.Tests.FrontendPlayTests.SharedSettingsAndBilingualLabelsSurviveSceneChanges",
+          "state": "Failed",
+          "durationSeconds": 3.5205007,
+          "message": "  String lengths are both 2. Strings differ at index 0.\r\n  Expected: \"en\"\r\n  But was:  \"ko\"\r\n  -----------^\r\n",
+          "stackTrace": "at Wildfolk.Tests.FrontendPlayTests+<SharedSettingsAndBilingualLabelsSurviveSceneChanges>d__15.MoveNext () [0x00451] in C:\\UnityProjects\\Wildfolk\\Assets\\Wildfolk\\Tests\\PlayMode\\FrontendPlayTests.cs:66\r\nat UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\\Library\\PackageCache\\com.unity.test-framework@bd7f943e9647\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:44\r\n",
+          "output": ""
+        },
+        {
+          "name": "SettingsSwitchRefreshesExistingLabelsAndUsesKoreanGlyphs",
+          "fullName": "Wildfolk.Tests.QualityPlayTests.SettingsSwitchRefreshesExistingLabelsAndUsesKoreanGlyphs",
+          "state": "Failed",
+          "durationSeconds": 1.622575,
+          "message": "  Expected: 10\r\n  But was:  14\r\n",
+          "stackTrace": "at Wildfolk.Tests.QualityPlayTests+<SettingsSwitchRefreshesExistingLabelsAndUsesKoreanGlyphs>d__6.MoveNext () [0x001ae] in C:\\UnityProjects\\Wildfolk\\Assets\\Wildfolk\\Tests\\PlayMode\\QualityPlayTests.cs:27\r\nat UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\\Library\\PackageCache\\com.unity.test-framework@bd7f943e9647\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:44\r\n",
+          "output": ""
+        },
+        {
+          "name": "V2MigrationKeepsEquipmentLearnedSkillsDestroyedResourcesAndReservedBatch",
+          "fullName": "Wildfolk.Tests.QualityPlayTests.V2MigrationKeepsEquipmentLearnedSkillsDestroyedResourcesAndReservedBatch",
+          "state": "Failed",
+          "durationSeconds": 2.6823349,
+          "message": "  Expected: 10\r\n  But was:  14\r\n",
+          "stackTrace": "at Wildfolk.Tests.QualityPlayTests+<V2MigrationKeepsEquipmentLearnedSkillsDestroyedResourcesAndReservedBatch>d__9.MoveNext () [0x003f6] in C:\\UnityProjects\\Wildfolk\\Assets\\Wildfolk\\Tests\\PlayMode\\QualityPlayTests.cs:45\r\nat UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\\Library\\PackageCache\\com.unity.test-framework@bd7f943e9647\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:44\r\n",
+          "output": ""
+        }
+      ]
+    }
+  },
+  "hint": null
+}

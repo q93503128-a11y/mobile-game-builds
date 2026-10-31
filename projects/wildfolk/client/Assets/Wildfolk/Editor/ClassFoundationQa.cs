@@ -60,7 +60,7 @@ namespace Wildfolk.Editor
         public static IEnumerator Lobby()
         {
             yield return Prepare();Step("lobby-purchase-tree");Role("warrior");var progression=bag.GetComponent<PlayerProgression>();progression.SetValues(450,240);death.Persistence=null;Check(save.Save(),"isolatedworldGold240durablysaved");var repository=save.Repository;
-            Check(ClassProfiles.Store.Write(ClassProfiles.LocalId,AccountProgression.New()),"startdefaultownership");SceneFlow.Home(repository);yield return null;yield return null;
+            Check(ClassProfiles.Store.Write(ClassProfiles.LocalId,AccountProgression.New()),"startdefaultownership");SceneFlow.Home(repository);yield return SceneReady(false);
             L.SetLanguage("ko");var screen=UnityEngine.Object.FindFirstObjectByType<ClassLobbyScreen>();screen.Open();Check(ClassProfiles.Local.Selected=="survivor" && ClassProfiles.Local.Find("survivor").Owned,"defaultSurvivorownedselected");
             screen.SelectCard(1);Check(!screen.SelectButton.interactable && screen.PurchaseButton.interactable && screen.PurchaseLabel.text.Contains("60"),"lockedGoldclassshowspriceandpurchase");
             foreach(var index in new[]{1,2,3,4})
@@ -68,7 +68,7 @@ namespace Wildfolk.Editor
             var game=repository.Read(screen.Rules.Validate);Check(game.Player.Gold==0 && game.Player.ClassPurchases.Length==4,"existingworldGoldchargedexactly240with4receipts");Check(!ClassProfiles.Purchase("warrior",screen.Rules),"ownedclassduplicatepurchaserejected");
             screen.SelectCard(5);Check(!screen.PurchaseButton.interactable && !ClassProfiles.Local.Find("engineer").Owned,"productionEngineerunavailablewithoutproviderorprice");yield return Shot("10-lobby-engineer-locked");
             screen.SelectCard(2);screen.SelectClass();Check(ClassProfiles.Local.Selected=="hunter","LobbyselectownedHunter");
-            ClassProfiles.Update(ClassProfiles.LocalId,d=>{d.Find("hunter").XP=1800;return true;});Check(!ClassProfiles.Spend("hunter","A2"),"classprerequisiteenforced");
+            ClassProfiles.Update(ClassProfiles.LocalId,d=>{d.Find("hunter").XP=1800;return true;});Check(!ClassProfiles.Spend("hunter","A2"),"classprerequisiteenforced");screen.OpenTree();
             foreach(var index in new[]{0,1,2,3,4,5}){screen.SelectNode(index);screen.Invest();}Check(ClassProfiles.Local.Find("hunter").Nodes.Length==6 && !ClassProfiles.Spend("hunter","C1"),"sixearnedpointsmustchoosefromnine");
             var after=ClassProfiles.Local.Find("hunter").Nodes.Length;Check(!ClassProfiles.Spend("hunter","A1") && ClassProfiles.Local.Find("hunter").Nodes.Length==after,"duplicatespenddoesnotcharge");Check(ClassProfiles.Local.Find("medic").XP==0,"ClassXPisolatedbyclass");yield return Shot("11-lobby-owned-selected-tree");
             screen.Respec();Check(ClassProfiles.Local.Find("hunter").Nodes.Length==0 && ClassCatalog.Current.Earned(ClassProfiles.Local.Find("hunter").XP)==6,"freeLobbyrespeconlyresetsallocation");
@@ -76,8 +76,12 @@ namespace Wildfolk.Editor
             var pendingReceipt=game.Player.ClassPurchases[0];ClassProfiles.Update(ClassProfiles.LocalId,d=>{d.Find("warrior").Owned=false;d.Pending=new ClassPurchaseIntent{Transaction=pendingReceipt,ClassId="warrior",Cost=60,WorldPath=repository.Path};return true;});Check(ClassProfiles.Reconcile(screen.Rules) && ClassProfiles.Local.Find("warrior").Owned,"committed receipt repairs missing entitlement without second debit");
             ClassProfiles.Update(ClassProfiles.LocalId,d=>{d.Pending=new ClassPurchaseIntent{Transaction=Guid.NewGuid().ToString("N"),ClassId="medic",Cost=60,WorldPath=repository.Path};return true;});Check(ClassProfiles.Reconcile(screen.Rules) && ClassProfiles.Local.Pending==null && repository.Read(screen.Rules.Validate).Player.Gold==0,"uncommitted intent clears without debit or grant");
             var engineer=ClassCatalog.Current.Find("engineer");var profileStore=ClassProfiles.Store;var price=engineer.Price;try{engineer.Price=7;var wallet=new ClassQaWallet();ClassProfiles.DevelopmentProviders(profileStore,wallet);Check(ClassProfiles.Purchase("engineer",screen.Rules) && wallet.Balance==3 && ClassProfiles.Local.Find("engineer").Owned,"QA approved price injected wallet grants and charges once");Check(!ClassProfiles.Purchase("engineer",screen.Rules) && wallet.Balance==3,"QA premium duplicate no second charge");}finally{engineer.Price=price;ClassProfiles.DevelopmentProviders(profileStore);}
-            screen.Back();UnityEngine.Object.FindFirstObjectByType<HomeScreen>().TryContinue();yield return null;yield return null;
+            screen.CloseTree();screen.Back();UnityEngine.Object.FindFirstObjectByType<HomeScreen>().TryContinue();yield return SceneReady(true);
             var actor=UnityEngine.Object.FindFirstObjectByType<WorldSaveService>().Player.GetComponent<PlayerClass>();Check(actor.Definition.Id=="hunter" && actor.Locked,"selectedClasslockedonworldentry");Check(!ClassProfiles.Select("warrior") && !ClassProfiles.Respec("hunter") && !actor.Lock(ClassProfiles.LocalId,ClassProfiles.Local),"Gameplayselectionrespeclockrejected");
+        }
+        private static IEnumerator SceneReady(bool gameplay)
+        {
+            var until=Time.realtimeSinceStartup+60;while(Time.realtimeSinceStartup<until){yield return null;var ready=gameplay?UnityEngine.Object.FindFirstObjectByType<WorldSaveService>()!=null:UnityEngine.Object.FindFirstObjectByType<HomeScreen>()!=null;if(ready&&!TransitionOverlay.Visible)yield break;}throw new TimeoutException("UI scene transition did not finish");
         }
         private sealed class ClassQaWallet:IClassPurchaseWallet {public int Balance=10;public bool Available=>true;private readonly HashSet<string> done=new HashSet<string>();public bool Commit(string transaction,int price,Func<bool> grant){if(price<=0 || Balance<price || done.Contains(transaction) || !grant())return false;Balance-=price;done.Add(transaction);return true;}}
         public static IEnumerator SharedGrowth()

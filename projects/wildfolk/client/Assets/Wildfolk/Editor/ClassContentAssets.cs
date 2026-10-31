@@ -78,69 +78,59 @@ namespace Wildfolk.Editor
 
         internal static void BuildLobby(HomeScreen home)
         {
-            var screen=home.gameObject.AddComponent<ClassLobbyScreen>();screen.Home=home;screen.Rules=home.Rules;
-            var journal=home.Menu.transform.Find("Field Journal");
-            var entry=JournalUiBuilder.Action(journal,"Class Journal Entry","class.title",new Vector2(23,-149),new Vector2(434,72),screen.Open,out var entryLabel,false);entryLabel.alignment=TextAnchor.MiddleLeft;entryLabel.fontSize=29;var entryColors=entry.colors;entryColors.normalColor=Color.clear;entry.colors=entryColors;
-            var mp=home.Multiplayer.transform.Find("Camp Journal");
-            JournalUiBuilder.Action(mp,"Class Bookmark","class.title",new Vector2(235,350),new Vector2(190,72),screen.Open,out _,false);
-            var panel=JournalUiBuilder.Book(home.Menu.transform.parent,"Class Field Journal",out screen.View);
-            JournalUiBuilder.Label(panel,"Heading","journal.classes",new Vector2(-600,391),new Vector2(330,52),32);
-            JournalUiBuilder.Label(panel,"Field Notes","journal.field_notes",new Vector2(-280,391),new Vector2(260,45),22);
-            JournalUiBuilder.Action(panel,"Back","ui.action.back",new Vector2(690,394),new Vector2(160,72),screen.Back,out _);
-            Image("Gold Icon",panel,"journal_gold",Vector2.one*.5f,new Vector2(108,397),new Vector2(34,34));
-            screen.Currency=JournalUiBuilder.Label(panel,"Gold","",new Vector2(228,397),new Vector2(180,40),26);
-            Image("Gem Icon",panel,"journal_gem",Vector2.one*.5f,new Vector2(368,397),new Vector2(34,34));
-            screen.PremiumCurrency=JournalUiBuilder.Label(panel,"Gems","—",new Vector2(490,397),new Vector2(195,40),26);
-            JournalUiBuilder.Rule(panel,new Vector2(-765,351),new Vector2(-82,351));JournalUiBuilder.Rule(panel,new Vector2(88,351),new Vector2(766,351));
-            screen.Cards=new Button[6];screen.CardNames=new Text[6];screen.CardRoles=new Text[6];screen.CardStates=new Text[6];screen.CardMarks=new Image[6];
+            var s=home.gameObject.AddComponent<ClassLobbyScreen>();s.Home=home;s.Rules=home.Rules;
+            home.ClassButton=JournalUiBuilder.Action(home.Menu.transform.Find("Field Journal"),"Class Journal Entry","class.title",new Vector2(0,-210),new Vector2(530,120),s.Open,out _);
+            var page=JournalUiBuilder.Sheet(home.Menu.transform.parent,"Class Field Journal",out s.View);
+            JournalUiBuilder.Label(page,"Heading","journal.classes",new Vector2(-460,405),new Vector2(580,80),44);
+            JournalUiBuilder.Action(page,"Back","ui.action.back",new Vector2(690,405),new Vector2(180,120),s.Back,out _);
+            Image("Gold Icon",page,"journal_gold",Vector2.one*.5f,new Vector2(45,405),new Vector2(42,42));s.Currency=JournalUiBuilder.Label(page,"Gold","",new Vector2(155,405),new Vector2(160,55),32);
+            Image("Gem Icon",page,"journal_gem",Vector2.one*.5f,new Vector2(310,405),new Vector2(42,42));s.PremiumCurrency=JournalUiBuilder.Label(page,"Gems","",new Vector2(430,405),new Vector2(180,55),32);
+            JournalUiBuilder.Rule(page,new Vector2(-760,335),new Vector2(760,335));
+            var overview=Rect("Class Overview",page,Vector2.one*.5f,Vector2.zero,new Vector2(1720,1000));s.OverviewView=overview.gameObject;
+            s.Cards=new Button[6];s.CardNames=new Text[6];s.CardRoles=new Text[6];s.CardStates=new Text[6];s.CardMarks=new Image[6];
             for(var i=0;i<6;i++)
             {
-                var y=275-i*111;var card=Image("Class Entry "+i,panel,"white",Vector2.one*.5f,new Vector2(-615,y),new Vector2(308,104),true);screen.Cards[i]=Button(card);screen.Cards[i].transition=Selectable.Transition.None;
-                UnityEventTools.AddIntPersistentListener(screen.Cards[i].onClick,screen.SelectCard,i);
-                var icon=Image("Class Icon",card.transform,"white",Vector2.one*.5f,new Vector2(-115,18),new Vector2(58,58));icon.sprite=JournalSymbolAssets.Sprite("class_"+ClassCatalog.Current.Classes[i].Id);icon.preserveAspect=true;
-                screen.CardNames[i]=JournalUiBuilder.Label(card.transform,"Name","",new Vector2(27,29),new Vector2(210,50),27);
-                screen.CardRoles[i]=JournalUiBuilder.Label(card.transform,"Role","",new Vector2(24,-10),new Vector2(210,44),22);
-                screen.CardStates[i]=JournalUiBuilder.Label(card.transform,"Ownership","",new Vector2(-108,-31),new Vector2(90,38),20,TextAnchor.MiddleCenter);
-                screen.CardMarks[i]=Image("Selected Stamp",card.transform,"journal_seal",Vector2.one*.5f,new Vector2(135,30),new Vector2(30,30));
-                JournalUiBuilder.Rule(card.transform,new Vector2(-145,-52),new Vector2(145,-52));
+                var card=Image("Class Entry "+i,overview,"white",Vector2.one*.5f,new Vector2(-590+i%2*350,225-i/2*210),new Vector2(330,190),true);s.Cards[i]=Button(card);s.Cards[i].transition=Selectable.Transition.None;UnityEventTools.AddIntPersistentListener(s.Cards[i].onClick,s.SelectCard,i);
+                var icon=Image("Class Icon",card.transform,"white",Vector2.one*.5f,new Vector2(-120,50),new Vector2(54,54));icon.sprite=JournalSymbolAssets.Sprite("class_"+ClassCatalog.Current.Classes[i].Id);icon.preserveAspect=true;
+                s.CardNames[i]=JournalUiBuilder.Label(card.transform,"Name","",new Vector2(32,50),new Vector2(225,60),34);
+                s.CardRoles[i]=JournalUiBuilder.Label(card.transform,"Role","",new Vector2(0,-12),new Vector2(290,64),28);
+                s.CardStates[i]=JournalUiBuilder.Label(card.transform,"Ownership","",new Vector2(0,-66),new Vector2(280,40),28);
+                s.CardMarks[i]=Image("Selected Stamp",card.transform,"journal_seal",Vector2.one*.5f,new Vector2(135,65),new Vector2(32,32));
+                JournalUiBuilder.Rule(card.transform,new Vector2(-160,-95),new Vector2(160,-95));
             }
-            screen.ClassIcon=Image("Selected Class Symbol",panel,"white",Vector2.one*.5f,new Vector2(-277,261),new Vector2(140,140));
-            screen.Title=JournalUiBuilder.Label(panel,"Class Title","",new Vector2(-272,148),new Vector2(290,76),42,TextAnchor.MiddleCenter);
-            screen.Role=JournalUiBuilder.Label(panel,"Class Role","",new Vector2(-272,70),new Vector2(284,80),24,TextAnchor.MiddleCenter);
-            screen.Description=JournalUiBuilder.Label(panel,"Identity","",new Vector2(-272,-44),new Vector2(284,140),24,TextAnchor.UpperLeft);
-            screen.Progress=JournalUiBuilder.Label(panel,"Class Progress","",new Vector2(-272,-182),new Vector2(284,126),23,TextAnchor.UpperLeft);
-            screen.SelectButton=JournalUiBuilder.Action(panel,"Select","class.select",new Vector2(-272,-289),new Vector2(284,76),screen.SelectClass,out screen.SelectLabel,true);
-            screen.PurchaseButton=JournalUiBuilder.Action(panel,"Purchase","",new Vector2(-272,-375),new Vector2(284,76),screen.AskPurchase,out screen.PurchaseLabel,true);
-            screen.Nodes=new Button[9];screen.NodeNames=new Text[9];screen.NodeViews=new JournalSkillNode[9];screen.Branches=new Text[3];screen.NodeIcons=new Image[9];
-            screen.ClassIcons=JournalSymbolAssets.Classes();
-            screen.SkillIcons=JournalSymbolAssets.Nodes();
-            var root=new Vector2(422,287);Image("Class Tree Root",panel,"white",Vector2.one*.5f,root,new Vector2(58,58));
-            screen.TreeIcon=panel.Find("Class Tree Root").GetComponent<Image>();
-            screen.ClassIcon.sprite=screen.TreeIcon.sprite=screen.ClassIcons[0];
+            s.ClassIcons=JournalSymbolAssets.Classes();s.SkillIcons=JournalSymbolAssets.Nodes();
+            s.ClassIcon=Image("Selected Class Symbol",overview,"white",Vector2.one*.5f,new Vector2(155,265),new Vector2(110,110));
+            s.Title=JournalUiBuilder.Label(overview,"Class Title","",new Vector2(460,280),new Vector2(480,80),46);
+            s.Role=JournalUiBuilder.Label(overview,"Class Role","",new Vector2(460,203),new Vector2(480,85),30);
+            s.Description=JournalUiBuilder.Label(overview,"Identity","",new Vector2(430,60),new Vector2(650,170),34,TextAnchor.UpperLeft);
+            s.Progress=JournalUiBuilder.Label(overview,"Class Progress","",new Vector2(430,-100),new Vector2(650,140),30);
+            JournalUiBuilder.Action(overview,"Class Skill Tree","ui.skill.title",new Vector2(430,-235),new Vector2(650,120),s.OpenTree,out _);
+            s.SelectButton=JournalUiBuilder.Action(overview,"Select","class.select",new Vector2(430,-375),new Vector2(650,120),s.SelectClass,out s.SelectLabel,true);
+            s.PurchaseButton=JournalUiBuilder.Action(overview,"Purchase","",new Vector2(430,-375),new Vector2(650,120),s.AskPurchase,out s.PurchaseLabel,true);
+            var tree=Rect("Class Tree",page,Vector2.one*.5f,Vector2.zero,new Vector2(1720,1000));s.TreeView=tree.gameObject;
+            s.TreeTitle=JournalUiBuilder.Label(tree,"Selected Class","",new Vector2(-420,280),new Vector2(650,75),42);s.TreePoints=JournalUiBuilder.Label(tree,"Points","",new Vector2(430,280),new Vector2(650,75),34);
+            s.TreeIcon=Image("Class Tree Root",tree,"white",Vector2.one*.5f,new Vector2(-420,200),new Vector2(56,56));
+            s.Nodes=new Button[9];s.NodeNames=new Text[9];s.NodeViews=new JournalSkillNode[9];s.Branches=new Text[3];s.NodeIcons=new Image[9];
             for(var b=0;b<3;b++)
             {
-                var x=184+b*237;JournalUiBuilder.Rule(panel,root+new Vector2(0,-32),new Vector2(x,224),3);
-                screen.Branches[b]=JournalUiBuilder.Label(panel,"Branch "+b,"",new Vector2(x,210),new Vector2(218,40),25,TextAnchor.MiddleCenter);
+                var x=-660+b*240;JournalUiBuilder.Rule(tree,new Vector2(-420,165),new Vector2(x,133),3);s.Branches[b]=JournalUiBuilder.Label(tree,"Branch "+b,"",new Vector2(x,140),new Vector2(220,48),30,TextAnchor.MiddleCenter);
                 for(var r=0;r<3;r++)
                 {
-                    var i=b*3+r;var p=new Vector2(x+(b-1)*r*9,137-r*145);
-                    if(r<2)JournalUiBuilder.Rule(panel,p+new Vector2(0,-78),p+new Vector2((b-1)*9,-99),3);
-                    screen.NodeViews[i]=JournalUiBuilder.Node(panel,"Class Skill "+i,p,screen.SkillIcons[i],screen.SelectNode,i,out screen.Nodes[i]);screen.NodeIcons[i]=screen.NodeViews[i].Icon;
-                    screen.NodeNames[i]=JournalUiBuilder.Label(panel,"Node Name "+i,"",p+new Vector2(0,-67),new Vector2(216,43),22,TextAnchor.MiddleCenter);
-
+                    var i=b*3+r;var p=new Vector2(x,50-r*185);if(r<2)JournalUiBuilder.Rule(tree,p+new Vector2(0,-48),p+new Vector2(0,-135),3);
+                    s.NodeViews[i]=JournalUiBuilder.Node(tree,"Class Skill "+i,p,s.SkillIcons[i],s.SelectNode,i,out s.Nodes[i]);s.NodeIcons[i]=s.NodeViews[i].Icon;
+                    s.NodeNames[i]=JournalUiBuilder.Label(tree,"Node Name "+i,"",p+new Vector2(0,-94),new Vector2(224,56),28,TextAnchor.MiddleCenter);
                 }
             }
-            JournalUiBuilder.Detail(panel,new Vector2(421,-294),new Vector2(665,108));
-            screen.NodeDetail=JournalUiBuilder.Label(panel,"Node Detail","",new Vector2(421,-288),new Vector2(665,96),22,TextAnchor.UpperLeft);
-            screen.InvestButton=JournalUiBuilder.Action(panel,"Invest","class.invest",new Vector2(602,-375),new Vector2(294,72),screen.Invest,out screen.InvestLabel,true);
-            screen.RespecButton=JournalUiBuilder.Action(panel,"Respec","class.respec",new Vector2(240,-375),new Vector2(294,72),screen.Respec,out _);
-            screen.Status=JournalUiBuilder.Label(panel,"Status","",new Vector2(-615,-377),new Vector2(300,70),20,TextAnchor.MiddleCenter);
-            var confirm=QualityUiBuilder.Surface(screen.View.transform,"Confirm Purchase",new Vector2(760,390),out screen.Confirmation);
-            foreach(var image in confirm.GetComponentsInChildren<Image>())image.color=new Color32(225,211,173,255);
-            screen.ConfirmText=JournalUiBuilder.Label(confirm.transform,"Price","",new Vector2(0,65),new Vector2(650,160),28,TextAnchor.MiddleCenter);
-            JournalUiBuilder.Action(confirm.transform,"Confirm","class.buy",new Vector2(-170,-105),new Vector2(290,76),screen.ConfirmPurchase,out _,true);JournalUiBuilder.Action(confirm.transform,"Cancel","ui.action.back",new Vector2(170,-105),new Vector2(290,76),screen.CancelPurchase,out _);
-            screen.Confirmation.SetActive(false);screen.View.SetActive(false);
+            s.NodeDetail=JournalUiBuilder.Label(tree,"Node Detail","",new Vector2(430,20),new Vector2(650,370),36,TextAnchor.UpperLeft);
+            s.InvestButton=JournalUiBuilder.Action(tree,"Invest","class.invest",new Vector2(430,-250),new Vector2(650,120),s.Invest,out s.InvestLabel,true);
+            s.RespecButton=JournalUiBuilder.Action(tree,"Respec","class.respec",new Vector2(430,-390),new Vector2(650,120),s.Respec,out _);
+            s.Status=JournalUiBuilder.Label(page,"Status","",new Vector2(-420,-435),new Vector2(680,45),28,TextAnchor.MiddleCenter);
+            var confirm=QualityUiBuilder.Surface(s.View.transform,"Confirm Purchase",new Vector2(1000,540),out s.Confirmation);
+            s.ConfirmText=JournalUiBuilder.Label(confirm.transform,"Price","",new Vector2(0,80),new Vector2(850,210),36,TextAnchor.MiddleCenter);
+            JournalUiBuilder.Action(confirm.transform,"Confirm","class.buy",new Vector2(-220,-140),new Vector2(400,126),s.ConfirmPurchase,out _,true);JournalUiBuilder.Action(confirm.transform,"Cancel","ui.action.back",new Vector2(220,-140),new Vector2(400,126),s.CancelPurchase,out _);
+            s.Confirmation.SetActive(false);s.TreeView.SetActive(false);s.View.SetActive(false);
         }
+
         public static void BuildHud(GameObject root,Transform safe,PlayerInventory player)
         {
             var hud=root.AddComponent<ClassHud>();hud.Player=player;
