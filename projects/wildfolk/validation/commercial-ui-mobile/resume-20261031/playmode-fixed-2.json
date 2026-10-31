@@ -1,0 +1,44 @@
+{
+  "success": true,
+  "message": "Test job status retrieved.",
+  "error": null,
+  "data": {
+    "job_id": "ccb9f87a044a495883a22cf23c4eb02e",
+    "status": "succeeded",
+    "mode": "PlayMode",
+    "started_unix_ms": 1793426898971,
+    "finished_unix_ms": 1793426914378,
+    "last_update_unix_ms": 1793426914378,
+    "progress": {
+      "completed": 2,
+      "total": 2,
+      "current_test_full_name": null,
+      "current_test_started_unix_ms": null,
+      "last_finished_test_full_name": "Wildfolk.Tests.QualityPlayTests.ArmorAndHandsShareActualWalkingMotionRoot",
+      "last_finished_unix_ms": 1793426914342,
+      "stuck_suspected": false,
+      "editor_is_focused": false,
+      "run_in_background": true,
+      "focus_nudge_attempts": null,
+      "focus_nudge_limit": null,
+      "focus_nudge_status": null,
+      "blocked_reason": null,
+      "failures_so_far": [],
+      "failures_capped": false
+    },
+    "error": null,
+    "result": {
+      "mode": "PlayMode",
+      "summary": {
+        "total": 2,
+        "passed": 2,
+        "failed": 0,
+        "skipped": 0,
+        "durationSeconds": 9.3868394,
+        "resultState": "Passed"
+      },
+      "results": []
+    }
+  },
+  "hint": null
+}

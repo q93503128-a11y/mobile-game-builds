@@ -1,3 +1,7 @@
+## 실제 검수 체크포인트2 · 2026-10-31
+
+한영14화면×3해상도84캡처와 텍스트 높이를 점검했고, 직업 트리 하단/출석 안내 높이를 교정했다. 실제 New/Continue/Home 전환을 관찰했다. 마지막 Profile 광고 불러오기 문구·MP/역할 HUD·Client scene overlay는 재검수가 남아 전체 패스는 아직 완료가 아니다. [최신 증거/이어받기](../validation/commercial-ui-mobile/REVIEW.md#checkpoint-2--resumed-inspection-user-requested-stop).
+
 ## 현재 UI 체크포인트 · 2026-10-31
 
 유효 저장이 있으면 Continue가 우선이고, 없으면 Continue를 숨기고 새 세계 시작을 primary로 표시한다. Class·Profile·Achievements·Attendance는 독립 진입점이며 Store는 작은 Gem 진입점이다. Settings의 버튼/라벨 폭과 중앙 정렬을 함께 작성한다. 배경의 보급 상자는 불에서 더 떨어뜨렸다. Class는 개요→선택한 직업 트리, Multiplayer는 Create/Join과 대기실을 구분하며 MP Class bookmark는 제거했다.

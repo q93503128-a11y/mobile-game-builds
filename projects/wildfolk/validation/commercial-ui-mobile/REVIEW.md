@@ -1,6 +1,6 @@
 # Commercial UI / mobile presentation — 2026-10-31
 
-Status: IN PROGRESS — USER-REQUESTED CHECKPOINT, NOT COMPLETE. Start main `d32c07ce7dd598ac3f607d33fd1c2f75d16bf76c`; remote fetched before inspection. This file separates observed baseline, design decisions and verification still required. No RC2 build/upload or service activation is authorized by this pass.
+Status: IN PROGRESS — USER-REQUESTED CHECKPOINT 2, NOT COMPLETE. Latest evidence/resume instructions are in Checkpoint 2 below; earlier sections preserve the first checkpoint. Start main `d32c07ce7dd598ac3f607d33fd1c2f75d16bf76c`; remote fetched before inspection. This file separates observed baseline, design decisions and verification still required. No RC2 build/upload or service activation is authorized by this pass.
 
 ## Current-run evidence
 
@@ -87,3 +87,56 @@ Implemented: common paper/primary/secondary/danger/link vocabulary; direct Home 
 Workspace `ui-rework-20261031/`: working MCP HTTP client uses unique request IDs; source sync excludes `.unity` (scenes are authored/saved in Unity then pulled); capture/state/test/save-protection helpers and timing. Public reference images and actual screen captures stay under `C:/UnityProjects/LowfireCommercialUi/`. This is local QA evidence, not copied product art. No Focus/Show or Windows input was used; the inspected `VisualGameView.Show` only resizes/repaints an existing view and selects PlayUnfocused.
 
 Do not run old scene captures labelled35 as MP gameplay: it still showed MainMenu. Capture36 is the actual ready MP scene. The direct-lethal fixture's non-durable message is not a normal-play save-corruption finding. Preserve these evidence limits when resuming.
+
+
+## Checkpoint 2 — resumed inspection, user-requested stop
+
+Resumed after fetching remote main `e223478640e31551168d8219120db4a95f9f075b`; local HEAD matched it and the worktree was clean. The original full-pass start remains `d32c07ce7dd598ac3f607d33fd1c2f75d16bf76c`. User requested another appropriate stopping point. **The full commercial UI pass remains incomplete; RC2 NOT READY.** This section supersedes the old pending checklist only where explicit evidence below completes it. Historical first-run failures/checkpoint records above are retained.
+
+### Work completed in this continuation
+
+|Area|Observed problem / action|Result / evidence limit|
+|---|---|---|
+|Menu matrix|Captured14 destinations × KO/EN ×1920×1080/1280×720/844×390; inspected principal screens and text heights|84 captures, `full-menu-matrix.json`; zero truncated text boxes in the final recorded metrics. The later `Load ad / 광고 불러오기` copy still needs Profile recapture|
+|Class tree|Last-row names reached the visible paper edge|Moved rows/names inward and enlarged node targets120; recaptured both languages/all3 viewports|
+|Attendance|Long offline footer exceeded its text box|Authored105height; recaptured3viewports/both languages.7/28visits and real Gem rewards unchanged|
+|Account / Store|Inspected linked, authenticated-unlinked, offline, cloud unavailable, account conflict, deletion pending; catalogue/received/event/no event, long price and pending payment|Typed isolated fixtures, **not Google/UGS/real purchase/ad evidence**. Final state captures corrected fixture navigation so the account page is actually foregrounded|
+|Inventory / crafting / chest / split|Old844 inventory slots≈31px and crafting actions≈23px were too small|Shared SP/MP authoring uses128slots,120high principal actions, larger2-column recipe cards and split dialogs.36slots/9hotbar, four equipment slots, Chest24/36, recipes/reservations/revisions unchanged. Chest has independent left/right scrolling; quick slots remain numbered1–9|
+|Chest touch|New player-side scroll needed the same touch-scroll/drag arbitration as the chest side|InventorySlotDrag finds either parent ScrollRect. New real Input System touch test verifies scrolling without transferring/losing the item|
+|Loading / input|Actually observed new-world5.1197s, Home0.8590s, Continue6.2846s in a controlled Editor flow|Capture probe overhead is included; not Android latency. Floating low/high/center touch, release/cancel, simultaneous attack/interact, hotbar and pause observed. Existing PC adapter retained; actual Android touch remains unverified|
+|Safe area|Reduced the existing safe-area transform in an isolated fixture|HUD/common-tree captures remain inside the simulated region. This is not a physical notch/device test|
+|MP room / gameplay|Actual native Host + separate batch Unity peer joined through the authored menus, showed2/4players and entered Multiplayer|Both processes confirmed local joystick/layout binding. Last completed client reported exactly1HP label, and returned Home. Host Save14 succeeded in isolated `multiplayer-world-v5.json`. These results **precede the last class binding/client scene-loading observer changes**|
+|MP HUD|Screen showed old Camp/Health/Level/XP text over the shared vitals; later class name overlapped Leave|Removed obsolete health field/object/subscription and unused strings; Gold retained separately; save failure remains a localized message. Enlarged Leave. Final authoring binds ClassHud through the Canvas ancestor and places role controls relative to action/control size. **Latest class binding/layout needs actual recapture**|
+|Client loading|A waiting client had only the earlier Join overlay; Host-initiated NGO scene load needed a presentation boundary|Client-only local NGO Load event now opens the existing transient overlay until local actor readiness. Source API was checked in the installed NGO package. No network state, admission authority or Protocol change. **New peer run required to observe this last change**|
+|Copy|`Check again / 다시 확인` was vague|Replaced with `Load ad / 광고 불러오기`; the disabled account/provider gate remains. Pending-purchase recovery stays a tertiary link because it reconciles unconsumed transactions, not restored consumable Gems|
+
+### World / creature investigation
+
+Actual isolated Play gallery: Chicken, Boar, Rabbit, Deer, Sheep, Bat, Stone Crawler, Bog Leech, Wolf, Mountain Goat, Crow, Giant Boar, Crystal Crawler; Zombie; Skeleton and sword variant; Goblin and Slingshot Goblin.4.5–5.5second movement/attack sequences and death frames were recorded; all recorded post-death root displacement samples were0. Undead King was separately observed in phase1 chase/windup. This is a **controlled clearing/spawn fixture**, not natural encounters/progression or a complete boss/obstacle/network stress test. Passives sometimes flee outside the crop. Stone Crawler stayed in its intentional resting camouflage at the sampled distance; a closer awakened-movement check remains.
+
+Seventeen distinct creature prefabs/import assignments were inspected (`creature-imports.json`); sword Skeleton is a variant of the same prefab. All recorded sprite textures use Bilinear; material/tint/PPU/pivot were recorded. Goblin PNG and import meta have no later art changes after `4bee7d4`; current brow/face plus facing-eye overlays are the existing design. The gallery identifies the species before interpreting odd faces. No incorrect sprite/fallback or recent art replacement was established, so no creature sprite/material/speed/balance was reverted.
+
+Water: current Seed9472026 lake/river/coast was observed and compared with `docs/images/world-v2/05-default-lake.png` and Git history. Continental water colors/blending originate at `4502ab8`; chunk pipeline was budgeted at `318ddd6`. Current64unit/128pixel tiles use RGB24/Bilinear with a1pixel border; this coarse sampling is already visible in the older continental capture. No recent water sprite/compression/filter/material/URP regression was established. Legacy non-streamed generation is a different rendering/topology path, not a valid blanket replacement for preserved generation3 saves. **No world/creature product edits were made.**
+
+Invalid intermediate evidence is excluded: the first water attempt retained a dead player after the boss fixture and an invalid direct world regeneration; only the reset, live-player captures are water evidence. A direct-fixture non-durable save warning is not a normal-play save-corruption finding.
+
+### Tests, performance and limits
+
+- Source validator PASS:1872unique GUIDs, landscape/source/sprite/text contracts. ProjectDataValidator errors0. Latest saved SceneContract2/2 PASS.
+- Resume PlayMode first18 =16pass/2fail; corrected NetworkFacility fixture's obsolete5facility expectation to the actual7, and waited for the real asynchronous Home transition in setup/cleanup. Its unfinished Home load had destroyed the following Quality fixture's player. Targeted2/2 passed together in that order; production save/gameplay rules were not weakened.
+- After HUD work, Class9 + Mobile4 + shared network UI1 =14/14. After the last client-overlay/editor-binding changes, Mobile4 + shared network UI1 + Frontend4 =9/9. Resume union: **27unique PlayMode tests passed**. Earlier checkpoint111Edit/67Play results remain historical; this is targeted validation, not a new full-suite claim. Initial failed JSON is retained.
+- Home/achievement180frames each used preallocated sampling arrays: object counts162→162 and200→200; Canvas.BuildBatch p95=0; Layout p95≈0.0046/0.0114ms; main-thread p95≈4.93/6.94ms. Editor-wide GC median≈13.4KB/frame includes Editor overhead. This does not establish Android FPS or zero gameplay GC. Earlier world probe logged strings and cannot be directly compared for GC.
+- Actual LAN attempts exposed QA issues, not hidden product passes: first helper compilation had an ambiguous SessionState alias; the next peer used the same isolated fixed identity and was correctly rejected; another helper timed out while waiting for manual inspection. Fixed helper uses its own ProfileOverride and a longer inspection allowance. Expected failed-connect logging also paused the Editor through Error Pause; Play was resumed. The final completed peer returned Home and exited; no companion process is left running.
+- Six real user files remained identical in SHA256/size/mtime. Main Editor is MainMenu, Play OFF, unpaused, clean scene, QA SessionState cleared. Temporary live-project QA Editor scripts were removed. Helper sources and evidence remain outside product builds.
+- Save14/Profile2/CloudProfile1/Economy2/Protocol23/generation3/IAP1, Item136/Recipe111 and Backend/Ads/IAP OFF remain. No AAB, upload, service deployment or activation.
+
+### Resume from here; do not restart the pass
+
+1. Fetch remote main and read AGENTS/README/current docs/this section. Work main directly. Protect real files again; native ended Play OFF with no QA flag.
+2. Read the latest serialized ClassControls binding through the Canvas ancestor; fresh isolated Play, inspect MP class name/Leave/Gold and role actions at control sizes0.8/1/1.4, including a legitimately configured isolated Warrior/Medic/Explorer fixture. Earlier MP screenshot deliberately shows the overlap **before the last binding fix**. Confirm SP role controls too; do not claim their latest visual check is complete.
+3. Final actual two-process LAN with latest source. Local helper: workspace `ui-rework-20261031/UiLanClient.cs`, companion `C:/UnityProjects/LowfireHealthClient`; batch-only/Exit-capable, never run its Run method on native Editor. It now has distinct ProfileOverride,300second inspection allowance and loadOverlaySeen capture. Read `client-room/gameplay/done` and require client loadOverlaySeen,1HP label, ClassControls binding; signal `client-leave` promptly after captures. Check Host Save/leave/reHost. Prior completed peer result must not substitute for this latest observer/binding verification. `sync_client_delta.py` updates canonical changed assets without blindly resetting imported SDK/cache state.
+4. Capture the latest Profile `Load ad` copy and pending changed HUD states; existing84menu captures/height audit do not need wholesale repetition without a new issue. Use foreground navigation; old account helpers alone can leave the Profile sheet above Account.
+5. One closer Stone Crawler awakened movement observation; any objective issue only. No blanket creature/water redesign. Actual Android/Relay/4physical peers/long-session corner/interpolation stress remain explicit limitations.
+6. Finish the remaining visual/transition quality gate, final report and main commit/push/clean; then STOP. User PC review is still required before a separately requested RC2 AAB. Do not build/upload/activate automatically.
+
+Representative before/observed-stage images and current raw results are in `resume-20261031/`. All84original menu images and the full runtime/world sequences remain at `C:/UnityProjects/LowfireCommercialUi/`. `screens.json` records exact source hashes and stage limits. The full user-requested final30-topic report is deferred until the remaining checks actually finish.

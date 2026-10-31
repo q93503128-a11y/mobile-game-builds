@@ -1,0 +1,72 @@
+{
+  "success": true,
+  "message": "Test job status retrieved.",
+  "error": null,
+  "data": {
+    "job_id": "89ebbc041f7349fb8e28b1e435eae1ba",
+    "status": "failed",
+    "mode": "PlayMode",
+    "started_unix_ms": 1793426747977,
+    "finished_unix_ms": 1793426824570,
+    "last_update_unix_ms": 1793426824570,
+    "progress": {
+      "completed": 18,
+      "total": 18,
+      "current_test_full_name": null,
+      "current_test_started_unix_ms": null,
+      "last_finished_test_full_name": "Wildfolk.Tests.QualityPlayTests.V2MigrationKeepsEquipmentLearnedSkillsDestroyedResourcesAndReservedBatch",
+      "last_finished_unix_ms": 1793426824531,
+      "stuck_suspected": false,
+      "editor_is_focused": false,
+      "run_in_background": true,
+      "focus_nudge_attempts": null,
+      "focus_nudge_limit": null,
+      "focus_nudge_status": null,
+      "blocked_reason": null,
+      "failures_so_far": [
+        {
+          "full_name": "Wildfolk.Tests.NetworkFacilityPlayTests.ExistingUiUsesSharedChestAndHandCraftingWithLocalActorBindings",
+          "message": "SetUp :   Expected: 5\r\n  But was:  7\r\n"
+        },
+        {
+          "full_name": "Wildfolk.Tests.QualityPlayTests.ArmorAndHandsShareActualWalkingMotionRoot",
+          "message": "UnityEngine.MissingReferenceException : The object of type 'Wildfolk.PlayerInventory' has been destroyed but you are still trying to access it.\nYour script should either check if it is null or you should not destroy the object."
+        }
+      ],
+      "failures_capped": false
+    },
+    "error": null,
+    "result": {
+      "mode": "PlayMode",
+      "summary": {
+        "total": 18,
+        "passed": 16,
+        "failed": 2,
+        "skipped": 0,
+        "durationSeconds": 68.8860283,
+        "resultState": "Failed(Child)"
+      },
+      "results": [
+        {
+          "name": "ExistingUiUsesSharedChestAndHandCraftingWithLocalActorBindings",
+          "fullName": "Wildfolk.Tests.NetworkFacilityPlayTests.ExistingUiUsesSharedChestAndHandCraftingWithLocalActorBindings",
+          "state": "Failed",
+          "durationSeconds": 2.8425807,
+          "message": "SetUp :   Expected: 5\r\n  But was:  7\r\n",
+          "stackTrace": "at Wildfolk.Tests.NetworkFacilityPlayTests+<Host>d__8.MoveNext () [0x00348] in C:\\UnityProjects\\Wildfolk\\Assets\\Wildfolk\\Tests\\PlayMode\\NetworkFacilityPlayTests.cs:28\r\nat UnityEngine.TestTools.EnumeratorHelper+<ProgressOnEnumerator>d__5.MoveNext () [0x00017] in .\\Library\\PackageCache\\com.unity.test-framework@bd7f943e9647\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\EnumeratorHelper.cs:35\r\nat UnityEngine.TestTools.BeforeAfterTestCommandBase`1+<ExecuteEnumerable>d__16[T].MoveNext () [0x00132] in .\\Library\\PackageCache\\com.unity.test-framework@bd7f943e9647\\UnityEngine.TestRunner\\NUnitExtensions\\Commands\\BeforeAfterTestCommandBase.cs:155\r\n",
+          "output": ""
+        },
+        {
+          "name": "ArmorAndHandsShareActualWalkingMotionRoot",
+          "fullName": "Wildfolk.Tests.QualityPlayTests.ArmorAndHandsShareActualWalkingMotionRoot",
+          "state": "Failed:Error",
+          "durationSeconds": 3.9682485,
+          "message": "UnityEngine.MissingReferenceException : The object of type 'Wildfolk.PlayerInventory' has been destroyed but you are still trying to access it.\nYour script should either check if it is null or you should not destroy the object.",
+          "stackTrace": "  at UnityEngine.Object+MarshalledUnityObject.TryThrowEditorNullExceptionObject (UnityEngine.Object unityObj, System.String parameterName) [0x0006a] in <987aa4221989419a947e2c4ff5d6829c>:0 \r\n  at UnityEngine.Bindings.ThrowHelper.ThrowNullReferenceException (System.Object obj) [0x00010] in <987aa4221989419a947e2c4ff5d6829c>:0 \r\n  at UnityEngine.Component.GetComponentFastPath (System.Type type, System.IntPtr oneFurtherThanResultValue) [0x00006] in <987aa4221989419a947e2c4ff5d6829c>:0 \r\n  at UnityEngine.Component.GetComponent[T] () [0x00021] in <987aa4221989419a947e2c4ff5d6829c>:0 \r\n  at Wildfolk.Tests.QualityPlayTests+<ArmorAndHandsShareActualWalkingMotionRoot>d__4.MoveNext () [0x00029] in C:\\UnityProjects\\Wildfolk\\Assets\\Wildfolk\\Tests\\PlayMode\\QualityPlayTests.cs:18 \r\n  at UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\\Library\\PackageCache\\com.unity.test-framework@bd7f943e9647\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:44 ",
+          "output": ""
+        }
+      ]
+    }
+  },
+  "hint": null
+}

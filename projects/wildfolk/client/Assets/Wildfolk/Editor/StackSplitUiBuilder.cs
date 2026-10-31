@@ -26,7 +26,19 @@ namespace Wildfolk.Editor
             panel.HalfButton=Control(surface.transform,"ui.split.half",new Vector2(0,-73),new Vector2(180,60),panel.Half);
             panel.CancelButton=Control(surface.transform,"ui.action.cancel",new Vector2(-144,-157),new Vector2(220,68),panel.Cancel);
             panel.ConfirmButton=Control(surface.transform,"ui.split.confirm",new Vector2(144,-157),new Vector2(220,68),panel.Confirm);overlay.gameObject.SetActive(false);
-            var cancel=Control(safe,"ui.action.cancel",new Vector2(250,-128),new Vector2(150,88),drag.Cancel);var rect=(RectTransform)cancel.transform;rect.anchorMin=rect.anchorMax=new Vector2(.5f,1);drag.HeldCancel=cancel.gameObject;drag.HeldCancel.SetActive(false);
+            var cancel=Control(safe,"ui.action.cancel",new Vector2(250,-128),new Vector2(150,88),drag.Cancel);var rect=(RectTransform)cancel.transform;rect.anchorMin=rect.anchorMax=new Vector2(.5f,1);drag.HeldCancel=cancel.gameObject;drag.HeldCancel.SetActive(false);Arrange(panel);
+        }
+        internal static void Arrange(StackSplitPanel panel)
+        {
+            var actions=panel.ActionTitle.transform.parent;((RectTransform)actions).sizeDelta=new Vector2(1000,620);actions.GetComponent<ModalLayout>().ReferenceSize=new Vector2(1000,620);
+            InventoryUiBuilder.Caption(panel.ActionTitle,new Vector2(90,180),new Vector2(650,100),38);InventoryUiBuilder.Position(panel.ActionIcon,new Vector2(-350,180),new Vector2(110,110));
+            InventoryUiBuilder.ActionSize(panel.ActionSplitButton,new Vector2(0,-10),new Vector2(760,120));
+            foreach(var button in actions.GetComponentsInChildren<Button>(true))if(button!=panel.ActionSplitButton)InventoryUiBuilder.ActionSize(button,new Vector2(0,-170),new Vector2(760,120));
+            var surface=panel.Title.transform.parent;((RectTransform)surface).sizeDelta=new Vector2(1000,820);surface.GetComponent<ModalLayout>().ReferenceSize=new Vector2(1000,820);
+            InventoryUiBuilder.Caption(panel.Title,new Vector2(70,290),new Vector2(700,100),38);InventoryUiBuilder.Position(panel.Icon,new Vector2(-365,290),new Vector2(100,110));
+            InventoryUiBuilder.Caption(surface.Find("Instruction").GetComponent<Text>(),new Vector2(0,180),new Vector2(880,100),30);InventoryUiBuilder.Caption(panel.Quantity,new Vector2(0,25),new Vector2(350,120),44);
+            InventoryUiBuilder.ActionSize(panel.Minus,new Vector2(-350,25),new Vector2(220,120));InventoryUiBuilder.ActionSize(panel.Plus,new Vector2(350,25),new Vector2(220,120));InventoryUiBuilder.ActionSize(panel.HalfButton,new Vector2(0,-130),new Vector2(400,120));
+            InventoryUiBuilder.ActionSize(panel.CancelButton,new Vector2(-240,-295),new Vector2(420,120));InventoryUiBuilder.ActionSize(panel.ConfirmButton,new Vector2(240,-295),new Vector2(420,120));
         }
         private static void Fit(Image image,Transform safe,Vector2 size){var fit=image.gameObject.AddComponent<ModalLayout>();fit.SafeArea=(RectTransform)safe;fit.ReferenceSize=size;}
         private static Button Control(Transform parent,string label,Vector2 position,Vector2 size,UnityEngine.Events.UnityAction action)

@@ -55,6 +55,19 @@ namespace Wildfolk.Tests
             for(var i=0;i<tree.NodeViews.Length;i++)Assert.That(tree.NodeViews[i].Locked.activeSelf,Is.EqualTo(!tree.Growth.Unlocked(i)));
             Assert.That(tree.InvestButton.interactable,Is.False);
         }
+        [UnityTest]public IEnumerator ChestPlayerGridAcceptsTouchScrollWithoutMovingTheItem()
+        {
+            var wood=save.Catalog.Item("wood");save.Player.Model.Add(wood,7);
+            var chest=Object.Instantiate(save.Catalog.Item("reinforced_chest").Placement.Prefab,save.Player.transform.position+Vector3.right*2,Quaternion.identity).GetComponent<StorageChest>();yield return null;
+            Assert.That(save.Player.GetComponent<PlayerStorage>().OpenChest(chest),Is.True);yield return null;yield return null;Canvas.ForceUpdateCanvases();
+            var panel=Object.FindFirstObjectByType<ChestPanel>();var scroll=panel.PlayerSlots[0].GetComponentInParent<ScrollRect>();Assert.That(scroll,Is.Not.Null);Assert.That(scroll.content.rect.height,Is.GreaterThan(scroll.viewport.rect.height));
+            var origin=PlayPointerDriver.Point(panel.PlayerSlots[0]);var total=save.Player.Model.CountItem(wood);
+            Touch(1,TouchPhase.Began,origin);yield return null;yield return null;
+            Touch(1,TouchPhase.Moved,origin+Vector2.up*35);yield return null;yield return null;
+            Touch(1,TouchPhase.Moved,origin+Vector2.up*110);yield return null;yield return null;
+            Touch(1,TouchPhase.Ended,origin+Vector2.up*110);yield return null;yield return null;
+            Assert.That(scroll.verticalNormalizedPosition,Is.LessThan(.99f));Assert.That(panel.Drag.IsDragging,Is.False);Assert.That(save.Player.Model.CountItem(wood),Is.EqualTo(total));Assert.That(chest.Model.CountItem(wood),Is.Zero);
+        }
         [UnityTearDown]public IEnumerator Cleanup()
         {
             if(save!=null)save.AutoSaveEnabled=false;if(touch!=null&&touch.added)InputSystem.RemoveDevice(touch);pointer?.Dispose();Time.timeScale=1;WorldGenerator.SelectedGenerationVersion=generation;WorldGenerator.SelectedSeed=seed;

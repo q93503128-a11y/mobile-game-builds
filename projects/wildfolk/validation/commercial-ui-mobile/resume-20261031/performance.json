@@ -1,0 +1,73 @@
+{
+  "kind": "Unity Editor probes, includes Editor overhead, not Android FPS",
+  "samples": [
+    {
+      "state": "achievement-idle",
+      "frames": 180,
+      "objects": "200 -> 200",
+      "metrics": {
+        "frameNs": {
+          "median": 3897848.5,
+          "p95": 6862500,
+          "max": 8058099
+        },
+        "mainThreadNs": {
+          "median": 3911750.0,
+          "p95": 6936900,
+          "max": 8230100
+        },
+        "gcBytes": {
+          "median": 13417.0,
+          "p95": 13469,
+          "max": 19635
+        },
+        "canvasBuildNs": {
+          "median": 0.0,
+          "p95": 0,
+          "max": 0
+        },
+        "layoutNs": {
+          "median": 3000.0,
+          "p95": 11400,
+          "max": 51700
+        }
+      }
+    },
+    {
+      "state": "home-idle",
+      "frames": 180,
+      "objects": "162 -> 162",
+      "metrics": {
+        "frameNs": {
+          "median": 3193803.0,
+          "p95": 4922597,
+          "max": 9305498
+        },
+        "mainThreadNs": {
+          "median": 3171900.0,
+          "p95": 4933400,
+          "max": 9234800
+        },
+        "gcBytes": {
+          "median": 13417.0,
+          "p95": 13469,
+          "max": 19635
+        },
+        "canvasBuildNs": {
+          "median": 0.0,
+          "p95": 0,
+          "max": 0
+        },
+        "layoutNs": {
+          "median": 3200.0,
+          "p95": 4600,
+          "max": 12500
+        }
+      }
+    }
+  ],
+  "notes": [
+    "Preallocated per-frame sample arrays; serialization occurs after recorder disposal.",
+    "World idle probe in runtime-after used string logging; do not compare its GC directly to these UI probes."
+  ]
+}

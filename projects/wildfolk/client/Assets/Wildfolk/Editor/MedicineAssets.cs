@@ -52,8 +52,8 @@ namespace Wildfolk.Editor
                 if(treatmentHud==null)
                 {
                     var profile=UnityEngine.Object.FindFirstObjectByType<ProfileHud>();var arena=UnityEngine.Object.FindFirstObjectByType<MultiplayerArena>();
-                    var reference=profile!=null ? profile.HealthValue : arena.HealthLabel;
-                    var label=UnityEngine.Object.Instantiate(reference,reference.transform.parent);label.name="Treatment";label.text="";label.enabled=false;label.fontSize=22;label.raycastTarget=false;
+                    var reference=profile!=null ? profile.HealthValue : arena.CampLabel;
+                    var label=UnityEngine.Object.Instantiate(reference,reference.transform.parent);label.name="Treatment";label.gameObject.SetActive(true);label.text="";label.enabled=false;label.fontSize=22;label.raycastTarget=false;
                     var hud=label.gameObject.AddComponent<MedicineHud>();hud.Label=label;hud.Player=profile==null ? null : profile.Player.GetComponent<PlayerSurvival>();treatmentHud=hud;
                 }
                 var safe=UnityEngine.Object.FindFirstObjectByType<SafeAreaLayout>();

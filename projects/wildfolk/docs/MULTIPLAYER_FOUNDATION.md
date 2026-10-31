@@ -1,3 +1,7 @@
+## 모바일 표시 체크포인트2 · 2026-10-31
+
+실제 두 Unity 프로세스로 새 메뉴의2/4대기실·게임 진입·로컬 joystick/layout·Host Save14·Client Home 복귀를 확인했다. 중복 HP/Level/XP 문구를 제거하고 공통 vitals와 별도 Gold를 사용한다. 마지막 직업 HUD ancestor 바인딩과 클라이언트 NGO Load event의 로딩 overlay는 후속 실제 재검수가 필요하다. 이벤트는 표시만 담당하며 입장/Host 권위·네트워크 상태·Protocol23은 유지한다. 아래 첫 체크포인트의 LAN 미실행 설명은 당시 기록이다. [최신 검증/한계](../validation/commercial-ui-mobile/REVIEW.md#checkpoint-2--resumed-inspection-user-requested-stop).
+
 ## UI 체크포인트 · 2026-10-31
 
 Create/Join 구역과 Waiting room을 구분한다. Host는 실제 접속 인원/최대4를, Client는 연결/방장 대기를 표시한다. Local route에는 방 코드 복사 버튼을 표시하지 않는다. Class bookmark는 Home으로 통합했고 admission 규칙은 유지한다. 실제 Connecting/Loading/로컬 actor 준비 상태에 로딩 overlay를 연결했다. MP도 같은 floating joystick과 Control Size layout을 로컬 actor에 bind한다. 이번 새 UI의 실제2프로세스 LAN은 아직 실행하지 않았다. 준비된 companion 프로젝트만 있으며 과거 LAN 결과를 이번 결과로 대체하지 않는다. [재개 지점](../validation/commercial-ui-mobile/REVIEW.md#checkpoint--user-requested-stop).

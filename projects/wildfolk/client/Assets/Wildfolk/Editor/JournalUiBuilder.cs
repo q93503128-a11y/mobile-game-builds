@@ -39,9 +39,9 @@ namespace Wildfolk.Editor
         }
         internal static JournalSkillNode Node(Transform parent,string name,Vector2 p,Sprite icon,UnityEngine.Events.UnityAction<int> action,int index,out Button button)
         {
-            var frame=Image(name,parent,"journal_node",Vector2.one*.5f,p,new Vector2(112,112),true);button=Button(frame);button.transition=Selectable.Transition.None;
+            var frame=Image(name,parent,"journal_node",Vector2.one*.5f,p,new Vector2(120,120),true);button=Button(frame);button.transition=Selectable.Transition.None;
             UnityEventTools.AddIntPersistentListener(button.onClick,action,index);var n=frame.gameObject.AddComponent<JournalSkillNode>();n.Frame=frame;
-            n.Focus=Image("Selected Ring",frame.transform,"journal_focus",Vector2.one*.5f,Vector2.zero,new Vector2(128,128)).gameObject;
+            n.Focus=Image("Selected Ring",frame.transform,"journal_focus",Vector2.one*.5f,Vector2.zero,new Vector2(136,136)).gameObject;
             n.Icon=Image("Icon",frame.transform,"white",Vector2.one*.5f,Vector2.zero,new Vector2(54,54));n.Icon.sprite=icon;n.Icon.preserveAspect=true;
             n.Learned=Image("Learned Seal",frame.transform,"journal_seal",Vector2.one*.5f,new Vector2(34,-28),new Vector2(31,31)).gameObject;
             n.Locked=Image("Lock",frame.transform,"journal_lock",Vector2.one*.5f,new Vector2(34,-28),new Vector2(31,31)).gameObject;return n;

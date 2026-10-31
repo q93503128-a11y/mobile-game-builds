@@ -138,7 +138,9 @@ namespace Wildfolk
         {yield return null;if(Manager.IsHost && State==NetworkSessionState.Playing)TrySaveWorld();}
         private void TransportFailed(){if(State==NetworkSessionState.Closing)return;MessageKey="net.connection_failed";Leave(true,true);}
         private void AttachScenes()
-        {Manager.SceneManager.OnLoadEventCompleted+=Loaded;Manager.SceneManager.OnSynchronizeComplete+=Synchronized;}
+        {Manager.SceneManager.OnLoadEventCompleted+=Loaded;Manager.SceneManager.OnSynchronizeComplete+=Synchronized;Manager.SceneManager.OnSceneEvent+=PresentSceneTransition;}
+        private void PresentSceneTransition(SceneEvent progress)
+        {if(!Manager.IsServer&&progress.ClientId==Manager.LocalClientId&&progress.SceneName==SceneFlow.MultiplayerScene&&progress.SceneEventType==SceneEventType.Load)TransitionOverlay.Watch(this,"net.entering");}
         public bool EnterGame()
         {
             if(!Manager.IsHost || State!=NetworkSessionState.Waiting)return false;

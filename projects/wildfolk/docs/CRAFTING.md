@@ -1,3 +1,7 @@
+## 모바일 제작 UI 체크포인트2 · 2026-10-31
+
+현재 Item136/Recipe111이며 비용/Station/처리 시간은 데이터와 CONTENT_EXPANSION이 정본이다. 제작 화면은 큰2열 카드·120높이 주요 조작과 넓은 선택/업그레이드/queue 영역을 쓴다. 가방·상자·분할도 같은 authoring에서 작성하고 SP/MP 로컬 바인딩을 유지한다. Recipe/queue/예약/수령/업그레이드 비용 변경은 없다. 아래2026-10-20 수량은 당시 도입 기록이다. [진행 중 검수](../validation/commercial-ui-mobile/REVIEW.md#checkpoint-2--resumed-inspection-user-requested-stop).
+
 # 제작과 처리 · 현재 정본
 
 2026-10-20. Item132 / Recipe109, Workbench I→II→III, Equipment Wood/Stone/Iron/Steel/Diamond. 전체 실제 비용·출력·Station·시간은 [CONTENT_EXPANSION](CONTENT_EXPANSION.md)의109개 표를 따른다. RecipeDefinition/RecipeCatalog/ContentCatalog가 코드 정본이다.

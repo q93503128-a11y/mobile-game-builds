@@ -18,14 +18,14 @@ namespace Wildfolk.Tests
         private InventoryModel Bag(NetworkPlayer actor)=>actor.GetComponent<PlayerInventory>().Model;
         [UnitySetUp]public IEnumerator Host()
         {
-            Time.timeScale=1;SceneFlow.Home(SaveRepository.Default());yield return null;yield return null;Object.FindFirstObjectByType<HomeScreen>().OpenMultiplayer();
+            Time.timeScale=1;SceneFlow.Home(SaveRepository.Default());yield return HomeReady();Object.FindFirstObjectByType<HomeScreen>().OpenMultiplayer();
             var session=NetworkSession.Instance;session.NewWorldGenerationVersion=1;session.WorldRepository=new SaveRepository(System.IO.Path.Combine(Application.temporaryCachePath,"lowfire-net-"+System.Guid.NewGuid().ToString("N"),"world.json"));session.ProfileOverride=System.Guid.NewGuid().ToString("N");var task=session.Host(ConnectionRoute.LocalNetwork);for(var i=0;i<300 && !task.IsCompleted;i++)yield return null;Assert.That(task.Result,Is.True);Assert.That(session.EnterGame(),Is.True);
             for(var i=0;i<300;i++){yield return new WaitForSecondsRealtime(.02f);player=Object.FindFirstObjectByType<NetworkPlayer>();if(player!=null && player.IsSpawned)break;}
             Assert.That(player,Is.Not.Null);world=NetworkCreatureWorld.Active;world.Clock.enabled=world.Animals.enabled=world.Goblins.enabled=world.Night.enabled=world.World.Renewal.enabled=false;
             other=Object.Instantiate(session.PlayerPrefab,player.transform.position,Quaternion.identity).GetComponent<NetworkPlayer>();other.NetworkObject.Spawn();
             foreach(var actor in new[]{player,other}){actor.GetComponent<PlayerInputAdapter>().enabled=false;actor.GetComponent<NetworkInventory>().enabled=false;actor.Motor.enabled=false;actor.GetComponent<PlayerInteraction>().enabled=false;actor.GetComponent<Rigidbody2D>().bodyType=RigidbodyType2D.Kinematic;}
             yield return null;yield return null;
-            Assert.That(Object.FindObjectsByType<NetworkFacility>(FindObjectsSortMode.None).Length,Is.EqualTo(5));
+            Assert.That(Object.FindObjectsByType<NetworkFacility>(FindObjectsSortMode.None).Length,Is.EqualTo(7));
         }
         private NetworkFacility Facility(string name)
         {var definition=world.Prefabs.Single(e=>e.Source.name==name).Source.GetComponent<WorldPlaceable>().Definition;return Object.FindObjectsByType<NetworkFacility>(FindObjectsSortMode.None).Single(f=>f.GetComponent<WorldPlaceable>().Definition==definition);}
@@ -104,6 +104,12 @@ namespace Wildfolk.Tests
             foreach(var button in chest.View.GetComponentsInChildren<UnityEngine.UI.Button>(true))if(button.name=="Close")button.onClick.Invoke();Assert.That(player.Commands.Session.State,Is.EqualTo(SessionState.Running));yield return null;
             f=Facility("Workbench");Place(player,(Vector2)f.transform.position+Vector2.down);Assert.That(A.Open(f),Is.True);yield return null;ui.GetComponent<CraftingPanel>().InventoryButton.onClick.Invoke();Assert.That(Do(A,FacilityOperation.Upgrade,f),Is.False);Assert.That(A.Crafting.Station,Is.Null);
         }
-        [UnityTearDown]public IEnumerator Cleanup(){if(NetworkSession.Instance!=null && NetworkSession.Instance.State!=NetworkSessionState.Idle){NetworkSession.Instance.Leave();for(var i=0;i<300 && NetworkSession.Instance.State!=NetworkSessionState.Idle;i++)yield return null;}Time.timeScale=1;}
+        private static IEnumerator HomeReady()
+        {
+            var deadline=Time.realtimeSinceStartup+60;
+            while(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name!=SceneFlow.HomeScene||TransitionOverlay.Visible)
+            {Assert.That(Time.realtimeSinceStartup,Is.LessThan(deadline),"Home transition timed out");yield return null;}
+        }
+        [UnityTearDown]public IEnumerator Cleanup(){if(NetworkSession.Instance!=null && NetworkSession.Instance.State!=NetworkSessionState.Idle){NetworkSession.Instance.Leave();for(var i=0;i<300 && NetworkSession.Instance.State!=NetworkSessionState.Idle;i++)yield return null;yield return HomeReady();}Time.timeScale=1;}
     }
 }

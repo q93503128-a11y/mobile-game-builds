@@ -1,0 +1,1134 @@
+[
+  {
+    "prefab": "Assets/Wildfolk/Prefabs/Bat.prefab",
+    "id": "bat",
+    "renderers": [
+      {
+        "name": "Contact Shadow",
+        "sprite": "Assets/Wildfolk/Art/contact_shadow.png",
+        "ppu": 100.0,
+        "pivot": "(128.00, 64.00)",
+        "filter": "Bilinear",
+        "tint": "RGBA(1.000, 1.000, 1.000, 1.000)",
+        "material": "Assets/Wildfolk/Art/WorldSprite.mat",
+        "shader": "Universal Render Pipeline/2D/Sprite-Lit-Default"
+      },
+      {
+        "name": "Body",
+        "sprite": "Assets/Wildfolk/Art/bat.png",
+        "ppu": 100.0,
+        "pivot": "(60.00, 80.00)",
+        "filter": "Bilinear",
+        "tint": "RGBA(1.000, 1.000, 1.000, 1.000)",
+        "material": "Assets/Wildfolk/Art/WorldSprite.mat",
+        "shader": "Universal Render Pipeline/2D/Sprite-Lit-Default"
+      },
+      {
+        "name": "Left appendage",
+        "sprite": "Assets/Wildfolk/Art/bat_wing.png",
+        "ppu": 100.0,
+        "pivot": "(80.00, 62.50)",
+        "filter": "Bilinear",
+        "tint": "RGBA(1.000, 1.000, 1.000, 1.000)",
+        "material": "Assets/Wildfolk/Art/WorldSprite.mat",
+        "shader": "Universal Render Pipeline/2D/Sprite-Lit-Default"
+      },
+      {
+        "name": "Right appendage",
+        "sprite": "Assets/Wildfolk/Art/bat_wing.png",
+        "ppu": 100.0,
+        "pivot": "(80.00, 62.50)",
+        "filter": "Bilinear",
+        "tint": "RGBA(1.000, 1.000, 1.000, 1.000)",
+        "material": "Assets/Wildfolk/Art/WorldSprite.mat",
+        "shader": "Universal Render Pipeline/2D/Sprite-Lit-Default"
+      },
+      {
+        "name": "Warning",
+        "sprite": "Assets/Wildfolk/Art/wildlife_tell.png",
+        "ppu": 100.0,
+        "pivot": "(50.00, 50.00)",
+        "filter": "Bilinear",
+        "tint": "RGBA(1.000, 1.000, 1.000, 1.000)",
+        "material": "Assets/Wildfolk/Art/WorldSprite.mat",
+        "shader": "Universal Render Pipeline/2D/Sprite-Lit-Default"
+      },
+      {
+        "name": "Track",
+        "sprite": "Assets/Wildfolk/Art/white.png",
+        "ppu": 100.0,
+        "pivot": "(4.00, 4.00)",
+        "filter": "Bilinear",
+        "tint": "RGBA(0.102, 0.149, 0.114, 1.000)",
+        "material": "Assets/Wildfolk/Art/WorldSprite.mat",
+        "shader": "Universal Render Pipeline/2D/Sprite-Lit-Default"
+      },
+      {
+        "name": "Fill",
+        "sprite": "Assets/Wildfolk/Art/white.png",
+        "ppu": 100.0,
+        "pivot": "(4.00, 4.00)",
+        "filter": "Bilinear",
+        "tint": "RGBA(0.725, 0.525, 0.333, 1.000)",
+        "material": "Assets/Wildfolk/Art/WorldSprite.mat",
+        "shader": "Universal Render Pipeline/2D/Sprite-Lit-Default"
+      }
+    ]
+  },
+  {
+    "prefab": "Assets/Wildfolk/Prefabs/Boar.prefab",
+    "id": "boar",
+    "renderers": [
+      {
+        "name": "Contact Shadow",
+        "sprite": "Assets/Wildfolk/Art/contact_shadow.png",
+        "ppu": 100.0,
+        "pivot": "(128.00, 64.00)",
+        "filter": "Bilinear",
+        "tint": "RGBA(1.000, 1.000, 1.000, 1.000)",
+        "material": "Assets/Wildfolk/Art/WorldSprite.mat",
+        "shader": "Universal Render Pipeline/2D/Sprite-Lit-Default"
+      },
+      {
+        "name": "Body",
+        "sprite": "Assets/Wildfolk/Art/boar.png",
+        "ppu": 100.0,
+        "pivot": "(95.00, 80.00)",
+        "filter": "Bilinear",
+        "tint": "RGBA(1.000, 1.000, 1.000, 1.000)",
+        "material": "Assets/Wildfolk/Art/WorldSprite.mat",
+        "shader": "Universal Render Pipeline/2D/Sprite-Lit-Default"
+      },
+      {
+        "name": "Track",
+        "sprite": "Assets/Wildfolk/Art/white.png",
+        "ppu": 100.0,
+        "pivot": "(4.00, 4.00)",
+        "filter": "Bilinear",
+        "tint": "RGBA(0.102, 0.149, 0.114, 1.000)",
+        "material": "Assets/Wildfolk/Art/WorldSprite.mat",
+        "shader": "Universal Render Pipeline/2D/Sprite-Lit-Default"
+      },
+      {
+        "name": "Fill",
+        "sprite": "Assets/Wildfolk/Art/white.png",
+        "ppu": 100.0,
+        "pivot": "(4.00, 4.00)",
+        "filter": "Bilinear",
+        "tint": "RGBA(0.725, 0.525, 0.333, 1.000)",
+        "material": "Assets/Wildfolk/Art/WorldSprite.mat",
+        "shader": "Universal Render Pipeline/2D/Sprite-Lit-Default"
+      }
+    ]
+  },
+  {
+    "prefab": "Assets/Wildfolk/Prefabs/BogLeech.prefab",
+    "id": "bog_leech",
+    "renderers": [
+      {
+        "name": "Contact Shadow",
+        "sprite": "Assets/Wildfolk/Art/contact_shadow.png",
+        "ppu": 100.0,
+        "pivot": "(128.00, 64.00)",
+        "filter": "Bilinear",
+        "tint": "RGBA(1.000, 1.000, 1.000, 1.000)",
+        "material": "Assets/Wildfolk/Art/WorldSprite.mat",
+        "shader": "Universal Render Pipeline/2D/Sprite-Lit-Default"
+      },
+      {
+        "name": "Body",
+        "sprite": "Assets/Wildfolk/Art/bog_leech.png",
+        "ppu": 100.0,
+        "pivot": "(55.00, 95.00)",
+        "filter": "Bilinear",
+        "tint": "RGBA(1.000, 1.000, 1.000, 1.000)",
+        "material": "Assets/Wildfolk/Art/WorldSprite.mat",
+        "shader": "Universal Render Pipeline/2D/Sprite-Lit-Default"
+      },
+      {
+        "name": "Warning",
+        "sprite": "Assets/Wildfolk/Art/wildlife_tell.png",
+        "ppu": 100.0,
+        "pivot": "(50.00, 50.00)",
+        "filter": "Bilinear",
+        "tint": "RGBA(1.000, 1.000, 1.000, 1.000)",
+        "material": "Assets/Wildfolk/Art/WorldSprite.mat",
+        "shader": "Universal Render Pipeline/2D/Sprite-Lit-Default"
+      },
+      {
+        "name": "Track",
+        "sprite": "Assets/Wildfolk/Art/white.png",
+        "ppu": 100.0,
+        "pivot": "(4.00, 4.00)",
+        "filter": "Bilinear",
+        "tint": "RGBA(0.102, 0.149, 0.114, 1.000)",
+        "material": "Assets/Wildfolk/Art/WorldSprite.mat",
+        "shader": "Universal Render Pipeline/2D/Sprite-Lit-Default"
+      },
+      {
+        "name": "Fill",
+        "sprite": "Assets/Wildfolk/Art/white.png",
+        "ppu": 100.0,
+        "pivot": "(4.00, 4.00)",
+        "filter": "Bilinear",
+        "tint": "RGBA(0.725, 0.525, 0.333, 1.000)",
+        "material": "Assets/Wildfolk/Art/WorldSprite.mat",
+        "shader": "Universal Render Pipeline/2D/Sprite-Lit-Default"
+      }
+    ]
+  },
+  {
+    "prefab": "Assets/Wildfolk/Prefabs/Chicken.prefab",
+    "id": "chicken",
+    "renderers": [
+      {
+        "name": "Contact Shadow",
+        "sprite": "Assets/Wildfolk/Art/contact_shadow.png",
+        "ppu": 100.0,
+        "pivot": "(128.00, 64.00)",
+        "filter": "Bilinear",
+        "tint": "RGBA(1.000, 1.000, 1.000, 1.000)",
+        "material": "Assets/Wildfolk/Art/WorldSprite.mat",
+        "shader": "Universal Render Pipeline/2D/Sprite-Lit-Default"
+      },
+      {
+        "name": "Body",
+        "sprite": "Assets/Wildfolk/Art/chicken.png",
+        "ppu": 100.0,
+        "pivot": "(85.00, 85.00)",
+        "filter": "Bilinear",
+        "tint": "RGBA(1.000, 1.000, 1.000, 1.000)",
+        "material": "Assets/Wildfolk/Art/WorldSprite.mat",
+        "shader": "Universal Render Pipeline/2D/Sprite-Lit-Default"
+      },
+      {
+        "name": "Track",
+        "sprite": "Assets/Wildfolk/Art/white.png",
+        "ppu": 100.0,
+        "pivot": "(4.00, 4.00)",
+        "filter": "Bilinear",
+        "tint": "RGBA(0.102, 0.149, 0.114, 1.000)",
+        "material": "Assets/Wildfolk/Art/WorldSprite.mat",
+        "shader": "Universal Render Pipeline/2D/Sprite-Lit-Default"
+      },
+      {
+        "name": "Fill",
+        "sprite": "Assets/Wildfolk/Art/white.png",
+        "ppu": 100.0,
+        "pivot": "(4.00, 4.00)",
+        "filter": "Bilinear",
+        "tint": "RGBA(0.725, 0.525, 0.333, 1.000)",
+        "material": "Assets/Wildfolk/Art/WorldSprite.mat",
+        "shader": "Universal Render Pipeline/2D/Sprite-Lit-Default"
+      }
+    ]
+  },
+  {
+    "prefab": "Assets/Wildfolk/Prefabs/Crow.prefab",
+    "id": "crow",
+    "renderers": [
+      {
+        "name": "Contact Shadow",
+        "sprite": "Assets/Wildfolk/Art/contact_shadow.png",
+        "ppu": 100.0,
+        "pivot": "(128.00, 64.00)",
+        "filter": "Bilinear",
+        "tint": "RGBA(1.000, 1.000, 1.000, 1.000)",
+        "material": "Assets/Wildfolk/Art/WorldSprite.mat",
+        "shader": "Universal Render Pipeline/2D/Sprite-Lit-Default"
+      },
+      {
+        "name": "Body",
+        "sprite": "Assets/Wildfolk/Art/crow.png",
+        "ppu": 100.0,
+        "pivot": "(65.00, 90.00)",
+        "filter": "Bilinear",
+        "tint": "RGBA(1.000, 1.000, 1.000, 1.000)",
+        "material": "Assets/Wildfolk/Art/WorldSprite.mat",
+        "shader": "Universal Render Pipeline/2D/Sprite-Lit-Default"
+      },
+      {
+        "name": "Left appendage",
+        "sprite": "Assets/Wildfolk/Art/crow_wing.png",
+        "ppu": 100.0,
+        "pivot": "(65.00, 72.50)",
+        "filter": "Bilinear",
+        "tint": "RGBA(1.000, 1.000, 1.000, 1.000)",
+        "material": "Assets/Wildfolk/Art/WorldSprite.mat",
+        "shader": "Universal Render Pipeline/2D/Sprite-Lit-Default"
+      },
+      {
+        "name": "Right appendage",
+        "sprite": "Assets/Wildfolk/Art/crow_wing.png",
+        "ppu": 100.0,
+        "pivot": "(65.00, 72.50)",
+        "filter": "Bilinear",
+        "tint": "RGBA(1.000, 1.000, 1.000, 1.000)",
+        "material": "Assets/Wildfolk/Art/WorldSprite.mat",
+        "shader": "Universal Render Pipeline/2D/Sprite-Lit-Default"
+      },
+      {
+        "name": "Warning",
+        "sprite": "Assets/Wildfolk/Art/wildlife_tell.png",
+        "ppu": 100.0,
+        "pivot": "(50.00, 50.00)",
+        "filter": "Bilinear",
+        "tint": "RGBA(1.000, 1.000, 1.000, 1.000)",
+        "material": "Assets/Wildfolk/Art/WorldSprite.mat",
+        "shader": "Universal Render Pipeline/2D/Sprite-Lit-Default"
+      },
+      {
+        "name": "Track",
+        "sprite": "Assets/Wildfolk/Art/white.png",
+        "ppu": 100.0,
+        "pivot": "(4.00, 4.00)",
+        "filter": "Bilinear",
+        "tint": "RGBA(0.102, 0.149, 0.114, 1.000)",
+        "material": "Assets/Wildfolk/Art/WorldSprite.mat",
+        "shader": "Universal Render Pipeline/2D/Sprite-Lit-Default"
+      },
+      {
+        "name": "Fill",
+        "sprite": "Assets/Wildfolk/Art/white.png",
+        "ppu": 100.0,
+        "pivot": "(4.00, 4.00)",
+        "filter": "Bilinear",
+        "tint": "RGBA(0.725, 0.525, 0.333, 1.000)",
+        "material": "Assets/Wildfolk/Art/WorldSprite.mat",
+        "shader": "Universal Render Pipeline/2D/Sprite-Lit-Default"
+      }
+    ]
+  },
+  {
+    "prefab": "Assets/Wildfolk/Prefabs/CrystalCrawler.prefab",
+    "id": "crystal_crawler",
+    "renderers": [
+      {
+        "name": "Contact Shadow",
+        "sprite": "Assets/Wildfolk/Art/contact_shadow.png",
+        "ppu": 100.0,
+        "pivot": "(128.00, 64.00)",
+        "filter": "Bilinear",
+        "tint": "RGBA(1.000, 1.000, 1.000, 1.000)",
+        "material": "Assets/Wildfolk/Art/WorldSprite.mat",
+        "shader": "Universal Render Pipeline/2D/Sprite-Lit-Default"
+      },
+      {
+        "name": "Body",
+        "sprite": "Assets/Wildfolk/Art/crystal_crawler.png",
+        "ppu": 100.0,
+        "pivot": "(90.00, 105.00)",
+        "filter": "Bilinear",
+        "tint": "RGBA(1.000, 1.000, 1.000, 1.000)",
+        "material": "Assets/Wildfolk/Art/WorldSprite.mat",
+        "shader": "Universal Render Pipeline/2D/Sprite-Lit-Default"
+      },
+      {
+        "name": "Left appendage",
+        "sprite": "Assets/Wildfolk/Art/crawler_legs.png",
+        "ppu": 100.0,
+        "pivot": "(65.00, 67.50)",
+        "filter": "Bilinear",
+        "tint": "RGBA(1.000, 1.000, 1.000, 1.000)",
+        "material": "Assets/Wildfolk/Art/WorldSprite.mat",
+        "shader": "Universal Render Pipeline/2D/Sprite-Lit-Default"
+      },
+      {
+        "name": "Right appendage",
+        "sprite": "Assets/Wildfolk/Art/crawler_legs.png",
+        "ppu": 100.0,
+        "pivot": "(65.00, 67.50)",
+        "filter": "Bilinear",
+        "tint": "RGBA(1.000, 1.000, 1.000, 1.000)",
+        "material": "Assets/Wildfolk/Art/WorldSprite.mat",
+        "shader": "Universal Render Pipeline/2D/Sprite-Lit-Default"
+      },
+      {
+        "name": "Warning",
+        "sprite": "Assets/Wildfolk/Art/wildlife_tell.png",
+        "ppu": 100.0,
+        "pivot": "(50.00, 50.00)",
+        "filter": "Bilinear",
+        "tint": "RGBA(1.000, 1.000, 1.000, 1.000)",
+        "material": "Assets/Wildfolk/Art/WorldSprite.mat",
+        "shader": "Universal Render Pipeline/2D/Sprite-Lit-Default"
+      },
+      {
+        "name": "Track",
+        "sprite": "Assets/Wildfolk/Art/white.png",
+        "ppu": 100.0,
+        "pivot": "(4.00, 4.00)",
+        "filter": "Bilinear",
+        "tint": "RGBA(0.102, 0.149, 0.114, 1.000)",
+        "material": "Assets/Wildfolk/Art/WorldSprite.mat",
+        "shader": "Universal Render Pipeline/2D/Sprite-Lit-Default"
+      },
+      {
+        "name": "Fill",
+        "sprite": "Assets/Wildfolk/Art/white.png",
+        "ppu": 100.0,
+        "pivot": "(4.00, 4.00)",
+        "filter": "Bilinear",
+        "tint": "RGBA(0.725, 0.525, 0.333, 1.000)",
+        "material": "Assets/Wildfolk/Art/WorldSprite.mat",
+        "shader": "Universal Render Pipeline/2D/Sprite-Lit-Default"
+      }
+    ]
+  },
+  {
+    "prefab": "Assets/Wildfolk/Prefabs/Deer.prefab",
+    "id": "deer",
+    "renderers": [
+      {
+        "name": "Contact Shadow",
+        "sprite": "Assets/Wildfolk/Art/contact_shadow.png",
+        "ppu": 100.0,
+        "pivot": "(128.00, 64.00)",
+        "filter": "Bilinear",
+        "tint": "RGBA(1.000, 1.000, 1.000, 1.000)",
+        "material": "Assets/Wildfolk/Art/WorldSprite.mat",
+        "shader": "Universal Render Pipeline/2D/Sprite-Lit-Default"
+      },
+      {
+        "name": "Body",
+        "sprite": "Assets/Wildfolk/Art/deer.png",
+        "ppu": 100.0,
+        "pivot": "(90.00, 120.00)",
+        "filter": "Bilinear",
+        "tint": "RGBA(1.000, 1.000, 1.000, 1.000)",
+        "material": "Assets/Wildfolk/Art/WorldSprite.mat",
+        "shader": "Universal Render Pipeline/2D/Sprite-Lit-Default"
+      },
+      {
+        "name": "Track",
+        "sprite": "Assets/Wildfolk/Art/white.png",
+        "ppu": 100.0,
+        "pivot": "(4.00, 4.00)",
+        "filter": "Bilinear",
+        "tint": "RGBA(0.102, 0.149, 0.114, 1.000)",
+        "material": "Assets/Wildfolk/Art/WorldSprite.mat",
+        "shader": "Universal Render Pipeline/2D/Sprite-Lit-Default"
+      },
+      {
+        "name": "Fill",
+        "sprite": "Assets/Wildfolk/Art/white.png",
+        "ppu": 100.0,
+        "pivot": "(4.00, 4.00)",
+        "filter": "Bilinear",
+        "tint": "RGBA(0.725, 0.525, 0.333, 1.000)",
+        "material": "Assets/Wildfolk/Art/WorldSprite.mat",
+        "shader": "Universal Render Pipeline/2D/Sprite-Lit-Default"
+      }
+    ]
+  },
+  {
+    "prefab": "Assets/Wildfolk/Prefabs/Enemy.prefab",
+    "id": "zombie",
+    "renderers": [
+      {
+        "name": "Contact Shadow",
+        "sprite": "Assets/Wildfolk/Art/contact_shadow.png",
+        "ppu": 100.0,
+        "pivot": "(128.00, 64.00)",
+        "filter": "Bilinear",
+        "tint": "RGBA(1.000, 1.000, 1.000, 1.000)",
+        "material": "Assets/Wildfolk/Art/WorldSprite.mat",
+        "shader": "Universal Render Pipeline/2D/Sprite-Lit-Default"
+      },
+      {
+        "name": "Body",
+        "sprite": "Assets/Wildfolk/Art/enemy.png",
+        "ppu": 100.0,
+        "pivot": "(80.00, 80.00)",
+        "filter": "Bilinear",
+        "tint": "RGBA(1.000, 1.000, 1.000, 1.000)",
+        "material": "Assets/Wildfolk/Art/WorldSprite.mat",
+        "shader": "Universal Render Pipeline/2D/Sprite-Lit-Default"
+      },
+      {
+        "name": "Left Hand",
+        "sprite": "Assets/Wildfolk/Art/zombie_hand.png",
+        "ppu": 100.0,
+        "pivot": "(32.00, 32.00)",
+        "filter": "Bilinear",
+        "tint": "RGBA(1.000, 1.000, 1.000, 1.000)",
+        "material": "Assets/Wildfolk/Art/WorldSprite.mat",
+        "shader": "Universal Render Pipeline/2D/Sprite-Lit-Default"
+      },
+      {
+        "name": "Right Hand",
+        "sprite": "Assets/Wildfolk/Art/zombie_hand.png",
+        "ppu": 100.0,
+        "pivot": "(32.00, 32.00)",
+        "filter": "Bilinear",
+        "tint": "RGBA(1.000, 1.000, 1.000, 1.000)",
+        "material": "Assets/Wildfolk/Art/WorldSprite.mat",
+        "shader": "Universal Render Pipeline/2D/Sprite-Lit-Default"
+      },
+      {
+        "name": "Left Eye",
+        "sprite": "Assets/Wildfolk/Art/zombie_eye.png",
+        "ppu": 100.0,
+        "pivot": "(16.00, 16.00)",
+        "filter": "Bilinear",
+        "tint": "RGBA(1.000, 1.000, 1.000, 1.000)",
+        "material": "Assets/Wildfolk/Art/WorldSprite.mat",
+        "shader": "Universal Render Pipeline/2D/Sprite-Lit-Default"
+      },
+      {
+        "name": "Right Eye",
+        "sprite": "Assets/Wildfolk/Art/zombie_eye.png",
+        "ppu": 100.0,
+        "pivot": "(16.00, 16.00)",
+        "filter": "Bilinear",
+        "tint": "RGBA(1.000, 1.000, 1.000, 1.000)",
+        "material": "Assets/Wildfolk/Art/WorldSprite.mat",
+        "shader": "Universal Render Pipeline/2D/Sprite-Lit-Default"
+      },
+      {
+        "name": "Track",
+        "sprite": "Assets/Wildfolk/Art/white.png",
+        "ppu": 100.0,
+        "pivot": "(4.00, 4.00)",
+        "filter": "Bilinear",
+        "tint": "RGBA(0.102, 0.149, 0.114, 1.000)",
+        "material": "Assets/Wildfolk/Art/WorldSprite.mat",
+        "shader": "Universal Render Pipeline/2D/Sprite-Lit-Default"
+      },
+      {
+        "name": "Fill",
+        "sprite": "Assets/Wildfolk/Art/white.png",
+        "ppu": 100.0,
+        "pivot": "(4.00, 4.00)",
+        "filter": "Bilinear",
+        "tint": "RGBA(0.725, 0.525, 0.333, 1.000)",
+        "material": "Assets/Wildfolk/Art/WorldSprite.mat",
+        "shader": "Universal Render Pipeline/2D/Sprite-Lit-Default"
+      }
+    ]
+  },
+  {
+    "prefab": "Assets/Wildfolk/Prefabs/GiantBoar.prefab",
+    "id": "giant_boar",
+    "renderers": [
+      {
+        "name": "Contact Shadow",
+        "sprite": "Assets/Wildfolk/Art/contact_shadow.png",
+        "ppu": 100.0,
+        "pivot": "(128.00, 64.00)",
+        "filter": "Bilinear",
+        "tint": "RGBA(1.000, 1.000, 1.000, 1.000)",
+        "material": "Assets/Wildfolk/Art/WorldSprite.mat",
+        "shader": "Universal Render Pipeline/2D/Sprite-Lit-Default"
+      },
+      {
+        "name": "Body",
+        "sprite": "Assets/Wildfolk/Art/giant_boar.png",
+        "ppu": 100.0,
+        "pivot": "(110.00, 115.00)",
+        "filter": "Bilinear",
+        "tint": "RGBA(1.000, 1.000, 1.000, 1.000)",
+        "material": "Assets/Wildfolk/Art/WorldSprite.mat",
+        "shader": "Universal Render Pipeline/2D/Sprite-Lit-Default"
+      },
+      {
+        "name": "Warning",
+        "sprite": "Assets/Wildfolk/Art/wildlife_tell.png",
+        "ppu": 100.0,
+        "pivot": "(50.00, 50.00)",
+        "filter": "Bilinear",
+        "tint": "RGBA(1.000, 1.000, 1.000, 1.000)",
+        "material": "Assets/Wildfolk/Art/WorldSprite.mat",
+        "shader": "Universal Render Pipeline/2D/Sprite-Lit-Default"
+      },
+      {
+        "name": "Track",
+        "sprite": "Assets/Wildfolk/Art/white.png",
+        "ppu": 100.0,
+        "pivot": "(4.00, 4.00)",
+        "filter": "Bilinear",
+        "tint": "RGBA(0.102, 0.149, 0.114, 1.000)",
+        "material": "Assets/Wildfolk/Art/WorldSprite.mat",
+        "shader": "Universal Render Pipeline/2D/Sprite-Lit-Default"
+      },
+      {
+        "name": "Fill",
+        "sprite": "Assets/Wildfolk/Art/white.png",
+        "ppu": 100.0,
+        "pivot": "(4.00, 4.00)",
+        "filter": "Bilinear",
+        "tint": "RGBA(0.725, 0.525, 0.333, 1.000)",
+        "material": "Assets/Wildfolk/Art/WorldSprite.mat",
+        "shader": "Universal Render Pipeline/2D/Sprite-Lit-Default"
+      }
+    ]
+  },
+  {
+    "prefab": "Assets/Wildfolk/Prefabs/Goblin.prefab",
+    "id": "goblin",
+    "renderers": [
+      {
+        "name": "Contact Shadow",
+        "sprite": "Assets/Wildfolk/Art/contact_shadow.png",
+        "ppu": 100.0,
+        "pivot": "(128.00, 64.00)",
+        "filter": "Bilinear",
+        "tint": "RGBA(1.000, 1.000, 1.000, 1.000)",
+        "material": "Assets/Wildfolk/Art/WorldSprite.mat",
+        "shader": "Universal Render Pipeline/2D/Sprite-Lit-Default"
+      },
+      {
+        "name": "Body",
+        "sprite": "Assets/Wildfolk/Art/goblin.png",
+        "ppu": 100.0,
+        "pivot": "(85.00, 85.00)",
+        "filter": "Bilinear",
+        "tint": "RGBA(1.000, 1.000, 1.000, 1.000)",
+        "material": "Assets/Wildfolk/Art/WorldSprite.mat",
+        "shader": "Universal Render Pipeline/2D/Sprite-Lit-Default"
+      },
+      {
+        "name": "Left Hand",
+        "sprite": "Assets/Wildfolk/Art/zombie_hand.png",
+        "ppu": 100.0,
+        "pivot": "(32.00, 32.00)",
+        "filter": "Bilinear",
+        "tint": "RGBA(1.000, 1.000, 1.000, 1.000)",
+        "material": "Assets/Wildfolk/Art/WorldSprite.mat",
+        "shader": "Universal Render Pipeline/2D/Sprite-Lit-Default"
+      },
+      {
+        "name": "Right Hand",
+        "sprite": "Assets/Wildfolk/Art/zombie_hand.png",
+        "ppu": 100.0,
+        "pivot": "(32.00, 32.00)",
+        "filter": "Bilinear",
+        "tint": "RGBA(1.000, 1.000, 1.000, 1.000)",
+        "material": "Assets/Wildfolk/Art/WorldSprite.mat",
+        "shader": "Universal Render Pipeline/2D/Sprite-Lit-Default"
+      },
+      {
+        "name": "Left Eye",
+        "sprite": "Assets/Wildfolk/Art/player_eye.png",
+        "ppu": 100.0,
+        "pivot": "(16.00, 16.00)",
+        "filter": "Bilinear",
+        "tint": "RGBA(1.000, 1.000, 1.000, 1.000)",
+        "material": "Assets/Wildfolk/Art/WorldSprite.mat",
+        "shader": "Universal Render Pipeline/2D/Sprite-Lit-Default"
+      },
+      {
+        "name": "Right Eye",
+        "sprite": "Assets/Wildfolk/Art/player_eye.png",
+        "ppu": 100.0,
+        "pivot": "(16.00, 16.00)",
+        "filter": "Bilinear",
+        "tint": "RGBA(1.000, 1.000, 1.000, 1.000)",
+        "material": "Assets/Wildfolk/Art/WorldSprite.mat",
+        "shader": "Universal Render Pipeline/2D/Sprite-Lit-Default"
+      },
+      {
+        "name": "Track",
+        "sprite": "Assets/Wildfolk/Art/white.png",
+        "ppu": 100.0,
+        "pivot": "(4.00, 4.00)",
+        "filter": "Bilinear",
+        "tint": "RGBA(0.102, 0.149, 0.114, 1.000)",
+        "material": "Assets/Wildfolk/Art/WorldSprite.mat",
+        "shader": "Universal Render Pipeline/2D/Sprite-Lit-Default"
+      },
+      {
+        "name": "Fill",
+        "sprite": "Assets/Wildfolk/Art/white.png",
+        "ppu": 100.0,
+        "pivot": "(4.00, 4.00)",
+        "filter": "Bilinear",
+        "tint": "RGBA(0.725, 0.525, 0.333, 1.000)",
+        "material": "Assets/Wildfolk/Art/WorldSprite.mat",
+        "shader": "Universal Render Pipeline/2D/Sprite-Lit-Default"
+      }
+    ]
+  },
+  {
+    "prefab": "Assets/Wildfolk/Prefabs/MountainGoat.prefab",
+    "id": "mountain_goat",
+    "renderers": [
+      {
+        "name": "Contact Shadow",
+        "sprite": "Assets/Wildfolk/Art/contact_shadow.png",
+        "ppu": 100.0,
+        "pivot": "(128.00, 64.00)",
+        "filter": "Bilinear",
+        "tint": "RGBA(1.000, 1.000, 1.000, 1.000)",
+        "material": "Assets/Wildfolk/Art/WorldSprite.mat",
+        "shader": "Universal Render Pipeline/2D/Sprite-Lit-Default"
+      },
+      {
+        "name": "Body",
+        "sprite": "Assets/Wildfolk/Art/mountain_goat.png",
+        "ppu": 100.0,
+        "pivot": "(80.00, 107.50)",
+        "filter": "Bilinear",
+        "tint": "RGBA(1.000, 1.000, 1.000, 1.000)",
+        "material": "Assets/Wildfolk/Art/WorldSprite.mat",
+        "shader": "Universal Render Pipeline/2D/Sprite-Lit-Default"
+      },
+      {
+        "name": "Warning",
+        "sprite": "Assets/Wildfolk/Art/wildlife_tell.png",
+        "ppu": 100.0,
+        "pivot": "(50.00, 50.00)",
+        "filter": "Bilinear",
+        "tint": "RGBA(1.000, 1.000, 1.000, 1.000)",
+        "material": "Assets/Wildfolk/Art/WorldSprite.mat",
+        "shader": "Universal Render Pipeline/2D/Sprite-Lit-Default"
+      },
+      {
+        "name": "Track",
+        "sprite": "Assets/Wildfolk/Art/white.png",
+        "ppu": 100.0,
+        "pivot": "(4.00, 4.00)",
+        "filter": "Bilinear",
+        "tint": "RGBA(0.102, 0.149, 0.114, 1.000)",
+        "material": "Assets/Wildfolk/Art/WorldSprite.mat",
+        "shader": "Universal Render Pipeline/2D/Sprite-Lit-Default"
+      },
+      {
+        "name": "Fill",
+        "sprite": "Assets/Wildfolk/Art/white.png",
+        "ppu": 100.0,
+        "pivot": "(4.00, 4.00)",
+        "filter": "Bilinear",
+        "tint": "RGBA(0.725, 0.525, 0.333, 1.000)",
+        "material": "Assets/Wildfolk/Art/WorldSprite.mat",
+        "shader": "Universal Render Pipeline/2D/Sprite-Lit-Default"
+      }
+    ]
+  },
+  {
+    "prefab": "Assets/Wildfolk/Prefabs/Rabbit.prefab",
+    "id": "rabbit",
+    "renderers": [
+      {
+        "name": "Contact Shadow",
+        "sprite": "Assets/Wildfolk/Art/contact_shadow.png",
+        "ppu": 100.0,
+        "pivot": "(128.00, 64.00)",
+        "filter": "Bilinear",
+        "tint": "RGBA(1.000, 1.000, 1.000, 1.000)",
+        "material": "Assets/Wildfolk/Art/WorldSprite.mat",
+        "shader": "Universal Render Pipeline/2D/Sprite-Lit-Default"
+      },
+      {
+        "name": "Body",
+        "sprite": "Assets/Wildfolk/Art/rabbit.png",
+        "ppu": 100.0,
+        "pivot": "(75.00, 85.00)",
+        "filter": "Bilinear",
+        "tint": "RGBA(1.000, 1.000, 1.000, 1.000)",
+        "material": "Assets/Wildfolk/Art/WorldSprite.mat",
+        "shader": "Universal Render Pipeline/2D/Sprite-Lit-Default"
+      },
+      {
+        "name": "Track",
+        "sprite": "Assets/Wildfolk/Art/white.png",
+        "ppu": 100.0,
+        "pivot": "(4.00, 4.00)",
+        "filter": "Bilinear",
+        "tint": "RGBA(0.102, 0.149, 0.114, 1.000)",
+        "material": "Assets/Wildfolk/Art/WorldSprite.mat",
+        "shader": "Universal Render Pipeline/2D/Sprite-Lit-Default"
+      },
+      {
+        "name": "Fill",
+        "sprite": "Assets/Wildfolk/Art/white.png",
+        "ppu": 100.0,
+        "pivot": "(4.00, 4.00)",
+        "filter": "Bilinear",
+        "tint": "RGBA(0.725, 0.525, 0.333, 1.000)",
+        "material": "Assets/Wildfolk/Art/WorldSprite.mat",
+        "shader": "Universal Render Pipeline/2D/Sprite-Lit-Default"
+      }
+    ]
+  },
+  {
+    "prefab": "Assets/Wildfolk/Prefabs/Sheep.prefab",
+    "id": "sheep",
+    "renderers": [
+      {
+        "name": "Contact Shadow",
+        "sprite": "Assets/Wildfolk/Art/contact_shadow.png",
+        "ppu": 100.0,
+        "pivot": "(128.00, 64.00)",
+        "filter": "Bilinear",
+        "tint": "RGBA(1.000, 1.000, 1.000, 1.000)",
+        "material": "Assets/Wildfolk/Art/WorldSprite.mat",
+        "shader": "Universal Render Pipeline/2D/Sprite-Lit-Default"
+      },
+      {
+        "name": "Body",
+        "sprite": "Assets/Wildfolk/Art/sheep.png",
+        "ppu": 100.0,
+        "pivot": "(87.50, 95.00)",
+        "filter": "Bilinear",
+        "tint": "RGBA(1.000, 1.000, 1.000, 1.000)",
+        "material": "Assets/Wildfolk/Art/WorldSprite.mat",
+        "shader": "Universal Render Pipeline/2D/Sprite-Lit-Default"
+      },
+      {
+        "name": "Track",
+        "sprite": "Assets/Wildfolk/Art/white.png",
+        "ppu": 100.0,
+        "pivot": "(4.00, 4.00)",
+        "filter": "Bilinear",
+        "tint": "RGBA(0.102, 0.149, 0.114, 1.000)",
+        "material": "Assets/Wildfolk/Art/WorldSprite.mat",
+        "shader": "Universal Render Pipeline/2D/Sprite-Lit-Default"
+      },
+      {
+        "name": "Fill",
+        "sprite": "Assets/Wildfolk/Art/white.png",
+        "ppu": 100.0,
+        "pivot": "(4.00, 4.00)",
+        "filter": "Bilinear",
+        "tint": "RGBA(0.725, 0.525, 0.333, 1.000)",
+        "material": "Assets/Wildfolk/Art/WorldSprite.mat",
+        "shader": "Universal Render Pipeline/2D/Sprite-Lit-Default"
+      }
+    ]
+  },
+  {
+    "prefab": "Assets/Wildfolk/Prefabs/Skeleton.prefab",
+    "id": "skeleton",
+    "renderers": [
+      {
+        "name": "Contact Shadow",
+        "sprite": "Assets/Wildfolk/Art/contact_shadow.png",
+        "ppu": 100.0,
+        "pivot": "(128.00, 64.00)",
+        "filter": "Bilinear",
+        "tint": "RGBA(1.000, 1.000, 1.000, 1.000)",
+        "material": "Assets/Wildfolk/Art/WorldSprite.mat",
+        "shader": "Universal Render Pipeline/2D/Sprite-Lit-Default"
+      },
+      {
+        "name": "Body",
+        "sprite": "Assets/Wildfolk/Art/skeleton.png",
+        "ppu": 100.0,
+        "pivot": "(80.00, 90.00)",
+        "filter": "Bilinear",
+        "tint": "RGBA(1.000, 1.000, 1.000, 1.000)",
+        "material": "Assets/Wildfolk/Art/WorldSprite.mat",
+        "shader": "Universal Render Pipeline/2D/Sprite-Lit-Default"
+      },
+      {
+        "name": "Left Hand",
+        "sprite": "Assets/Wildfolk/Art/bone_hand.png",
+        "ppu": 100.0,
+        "pivot": "(32.00, 41.00)",
+        "filter": "Bilinear",
+        "tint": "RGBA(1.000, 1.000, 1.000, 1.000)",
+        "material": "Assets/Wildfolk/Art/WorldSprite.mat",
+        "shader": "Universal Render Pipeline/2D/Sprite-Lit-Default"
+      },
+      {
+        "name": "Right Hand",
+        "sprite": "Assets/Wildfolk/Art/bone_hand.png",
+        "ppu": 100.0,
+        "pivot": "(32.00, 41.00)",
+        "filter": "Bilinear",
+        "tint": "RGBA(1.000, 1.000, 1.000, 1.000)",
+        "material": "Assets/Wildfolk/Art/WorldSprite.mat",
+        "shader": "Universal Render Pipeline/2D/Sprite-Lit-Default"
+      },
+      {
+        "name": "Rusted Blade",
+        "sprite": "Assets/Wildfolk/Art/rusted_sword.png",
+        "ppu": 100.0,
+        "pivot": "(50.00, 90.00)",
+        "filter": "Bilinear",
+        "tint": "RGBA(1.000, 1.000, 1.000, 1.000)",
+        "material": "Assets/Wildfolk/Art/WorldSprite.mat",
+        "shader": "Universal Render Pipeline/2D/Sprite-Lit-Default"
+      },
+      {
+        "name": "Left Eye",
+        "sprite": "Assets/Wildfolk/Art/zombie_eye.png",
+        "ppu": 100.0,
+        "pivot": "(16.00, 16.00)",
+        "filter": "Bilinear",
+        "tint": "RGBA(1.000, 1.000, 1.000, 1.000)",
+        "material": "Assets/Wildfolk/Art/WorldSprite.mat",
+        "shader": "Universal Render Pipeline/2D/Sprite-Lit-Default"
+      },
+      {
+        "name": "Right Eye",
+        "sprite": "Assets/Wildfolk/Art/zombie_eye.png",
+        "ppu": 100.0,
+        "pivot": "(16.00, 16.00)",
+        "filter": "Bilinear",
+        "tint": "RGBA(1.000, 1.000, 1.000, 1.000)",
+        "material": "Assets/Wildfolk/Art/WorldSprite.mat",
+        "shader": "Universal Render Pipeline/2D/Sprite-Lit-Default"
+      },
+      {
+        "name": "Track",
+        "sprite": "Assets/Wildfolk/Art/white.png",
+        "ppu": 100.0,
+        "pivot": "(4.00, 4.00)",
+        "filter": "Bilinear",
+        "tint": "RGBA(0.102, 0.149, 0.114, 1.000)",
+        "material": "Assets/Wildfolk/Art/WorldSprite.mat",
+        "shader": "Universal Render Pipeline/2D/Sprite-Lit-Default"
+      },
+      {
+        "name": "Fill",
+        "sprite": "Assets/Wildfolk/Art/white.png",
+        "ppu": 100.0,
+        "pivot": "(4.00, 4.00)",
+        "filter": "Bilinear",
+        "tint": "RGBA(0.725, 0.525, 0.333, 1.000)",
+        "material": "Assets/Wildfolk/Art/WorldSprite.mat",
+        "shader": "Universal Render Pipeline/2D/Sprite-Lit-Default"
+      }
+    ]
+  },
+  {
+    "prefab": "Assets/Wildfolk/Prefabs/SlingshotGoblin.prefab",
+    "id": "slingshot_goblin",
+    "renderers": [
+      {
+        "name": "Contact Shadow",
+        "sprite": "Assets/Wildfolk/Art/contact_shadow.png",
+        "ppu": 100.0,
+        "pivot": "(128.00, 64.00)",
+        "filter": "Bilinear",
+        "tint": "RGBA(1.000, 1.000, 1.000, 1.000)",
+        "material": "Assets/Wildfolk/Art/WorldSprite.mat",
+        "shader": "Universal Render Pipeline/2D/Sprite-Lit-Default"
+      },
+      {
+        "name": "Body",
+        "sprite": "Assets/Wildfolk/Art/goblin.png",
+        "ppu": 100.0,
+        "pivot": "(85.00, 85.00)",
+        "filter": "Bilinear",
+        "tint": "RGBA(1.000, 1.000, 1.000, 1.000)",
+        "material": "Assets/Wildfolk/Art/WorldSprite.mat",
+        "shader": "Universal Render Pipeline/2D/Sprite-Lit-Default"
+      },
+      {
+        "name": "Left Hand",
+        "sprite": "Assets/Wildfolk/Art/zombie_hand.png",
+        "ppu": 100.0,
+        "pivot": "(32.00, 32.00)",
+        "filter": "Bilinear",
+        "tint": "RGBA(1.000, 1.000, 1.000, 1.000)",
+        "material": "Assets/Wildfolk/Art/WorldSprite.mat",
+        "shader": "Universal Render Pipeline/2D/Sprite-Lit-Default"
+      },
+      {
+        "name": "Right Hand",
+        "sprite": "Assets/Wildfolk/Art/zombie_hand.png",
+        "ppu": 100.0,
+        "pivot": "(32.00, 32.00)",
+        "filter": "Bilinear",
+        "tint": "RGBA(1.000, 1.000, 1.000, 1.000)",
+        "material": "Assets/Wildfolk/Art/WorldSprite.mat",
+        "shader": "Universal Render Pipeline/2D/Sprite-Lit-Default"
+      },
+      {
+        "name": "Slingshot Frame",
+        "sprite": "Assets/Wildfolk/Art/slingshot.png",
+        "ppu": 100.0,
+        "pivot": "(40.00, 55.00)",
+        "filter": "Bilinear",
+        "tint": "RGBA(1.000, 1.000, 1.000, 1.000)",
+        "material": "Assets/Wildfolk/Art/WorldSprite.mat",
+        "shader": "Universal Render Pipeline/2D/Sprite-Lit-Default"
+      },
+      {
+        "name": "Left Eye",
+        "sprite": "Assets/Wildfolk/Art/player_eye.png",
+        "ppu": 100.0,
+        "pivot": "(16.00, 16.00)",
+        "filter": "Bilinear",
+        "tint": "RGBA(1.000, 1.000, 1.000, 1.000)",
+        "material": "Assets/Wildfolk/Art/WorldSprite.mat",
+        "shader": "Universal Render Pipeline/2D/Sprite-Lit-Default"
+      },
+      {
+        "name": "Right Eye",
+        "sprite": "Assets/Wildfolk/Art/player_eye.png",
+        "ppu": 100.0,
+        "pivot": "(16.00, 16.00)",
+        "filter": "Bilinear",
+        "tint": "RGBA(1.000, 1.000, 1.000, 1.000)",
+        "material": "Assets/Wildfolk/Art/WorldSprite.mat",
+        "shader": "Universal Render Pipeline/2D/Sprite-Lit-Default"
+      },
+      {
+        "name": "Loaded Pebble",
+        "sprite": "Assets/Wildfolk/Art/pebble.png",
+        "ppu": 100.0,
+        "pivot": "(18.00, 18.00)",
+        "filter": "Bilinear",
+        "tint": "RGBA(1.000, 1.000, 1.000, 1.000)",
+        "material": "Assets/Wildfolk/Art/WorldSprite.mat",
+        "shader": "Universal Render Pipeline/2D/Sprite-Lit-Default"
+      },
+      {
+        "name": "Track",
+        "sprite": "Assets/Wildfolk/Art/white.png",
+        "ppu": 100.0,
+        "pivot": "(4.00, 4.00)",
+        "filter": "Bilinear",
+        "tint": "RGBA(0.102, 0.149, 0.114, 1.000)",
+        "material": "Assets/Wildfolk/Art/WorldSprite.mat",
+        "shader": "Universal Render Pipeline/2D/Sprite-Lit-Default"
+      },
+      {
+        "name": "Fill",
+        "sprite": "Assets/Wildfolk/Art/white.png",
+        "ppu": 100.0,
+        "pivot": "(4.00, 4.00)",
+        "filter": "Bilinear",
+        "tint": "RGBA(0.725, 0.525, 0.333, 1.000)",
+        "material": "Assets/Wildfolk/Art/WorldSprite.mat",
+        "shader": "Universal Render Pipeline/2D/Sprite-Lit-Default"
+      }
+    ]
+  },
+  {
+    "prefab": "Assets/Wildfolk/Prefabs/StoneCrawler.prefab",
+    "id": "stone_crawler",
+    "renderers": [
+      {
+        "name": "Contact Shadow",
+        "sprite": "Assets/Wildfolk/Art/contact_shadow.png",
+        "ppu": 100.0,
+        "pivot": "(128.00, 64.00)",
+        "filter": "Bilinear",
+        "tint": "RGBA(1.000, 1.000, 1.000, 1.000)",
+        "material": "Assets/Wildfolk/Art/WorldSprite.mat",
+        "shader": "Universal Render Pipeline/2D/Sprite-Lit-Default"
+      },
+      {
+        "name": "Body",
+        "sprite": "Assets/Wildfolk/Art/stone_crawler.png",
+        "ppu": 100.0,
+        "pivot": "(100.00, 90.00)",
+        "filter": "Bilinear",
+        "tint": "RGBA(1.000, 1.000, 1.000, 1.000)",
+        "material": "Assets/Wildfolk/Art/WorldSprite.mat",
+        "shader": "Universal Render Pipeline/2D/Sprite-Lit-Default"
+      },
+      {
+        "name": "Left appendage",
+        "sprite": "Assets/Wildfolk/Art/crawler_legs.png",
+        "ppu": 100.0,
+        "pivot": "(65.00, 67.50)",
+        "filter": "Bilinear",
+        "tint": "RGBA(1.000, 1.000, 1.000, 1.000)",
+        "material": "Assets/Wildfolk/Art/WorldSprite.mat",
+        "shader": "Universal Render Pipeline/2D/Sprite-Lit-Default"
+      },
+      {
+        "name": "Right appendage",
+        "sprite": "Assets/Wildfolk/Art/crawler_legs.png",
+        "ppu": 100.0,
+        "pivot": "(65.00, 67.50)",
+        "filter": "Bilinear",
+        "tint": "RGBA(1.000, 1.000, 1.000, 1.000)",
+        "material": "Assets/Wildfolk/Art/WorldSprite.mat",
+        "shader": "Universal Render Pipeline/2D/Sprite-Lit-Default"
+      },
+      {
+        "name": "Warning",
+        "sprite": "Assets/Wildfolk/Art/wildlife_tell.png",
+        "ppu": 100.0,
+        "pivot": "(50.00, 50.00)",
+        "filter": "Bilinear",
+        "tint": "RGBA(1.000, 1.000, 1.000, 1.000)",
+        "material": "Assets/Wildfolk/Art/WorldSprite.mat",
+        "shader": "Universal Render Pipeline/2D/Sprite-Lit-Default"
+      },
+      {
+        "name": "Track",
+        "sprite": "Assets/Wildfolk/Art/white.png",
+        "ppu": 100.0,
+        "pivot": "(4.00, 4.00)",
+        "filter": "Bilinear",
+        "tint": "RGBA(0.102, 0.149, 0.114, 1.000)",
+        "material": "Assets/Wildfolk/Art/WorldSprite.mat",
+        "shader": "Universal Render Pipeline/2D/Sprite-Lit-Default"
+      },
+      {
+        "name": "Fill",
+        "sprite": "Assets/Wildfolk/Art/white.png",
+        "ppu": 100.0,
+        "pivot": "(4.00, 4.00)",
+        "filter": "Bilinear",
+        "tint": "RGBA(0.725, 0.525, 0.333, 1.000)",
+        "material": "Assets/Wildfolk/Art/WorldSprite.mat",
+        "shader": "Universal Render Pipeline/2D/Sprite-Lit-Default"
+      }
+    ]
+  },
+  {
+    "prefab": "Assets/Wildfolk/Prefabs/Wolf.prefab",
+    "id": "wolf",
+    "renderers": [
+      {
+        "name": "Contact Shadow",
+        "sprite": "Assets/Wildfolk/Art/contact_shadow.png",
+        "ppu": 100.0,
+        "pivot": "(128.00, 64.00)",
+        "filter": "Bilinear",
+        "tint": "RGBA(1.000, 1.000, 1.000, 1.000)",
+        "material": "Assets/Wildfolk/Art/WorldSprite.mat",
+        "shader": "Universal Render Pipeline/2D/Sprite-Lit-Default"
+      },
+      {
+        "name": "Body",
+        "sprite": "Assets/Wildfolk/Art/wolf.png",
+        "ppu": 100.0,
+        "pivot": "(75.00, 107.50)",
+        "filter": "Bilinear",
+        "tint": "RGBA(1.000, 1.000, 1.000, 1.000)",
+        "material": "Assets/Wildfolk/Art/WorldSprite.mat",
+        "shader": "Universal Render Pipeline/2D/Sprite-Lit-Default"
+      },
+      {
+        "name": "Warning",
+        "sprite": "Assets/Wildfolk/Art/wildlife_tell.png",
+        "ppu": 100.0,
+        "pivot": "(50.00, 50.00)",
+        "filter": "Bilinear",
+        "tint": "RGBA(1.000, 1.000, 1.000, 1.000)",
+        "material": "Assets/Wildfolk/Art/WorldSprite.mat",
+        "shader": "Universal Render Pipeline/2D/Sprite-Lit-Default"
+      },
+      {
+        "name": "Track",
+        "sprite": "Assets/Wildfolk/Art/white.png",
+        "ppu": 100.0,
+        "pivot": "(4.00, 4.00)",
+        "filter": "Bilinear",
+        "tint": "RGBA(0.102, 0.149, 0.114, 1.000)",
+        "material": "Assets/Wildfolk/Art/WorldSprite.mat",
+        "shader": "Universal Render Pipeline/2D/Sprite-Lit-Default"
+      },
+      {
+        "name": "Fill",
+        "sprite": "Assets/Wildfolk/Art/white.png",
+        "ppu": 100.0,
+        "pivot": "(4.00, 4.00)",
+        "filter": "Bilinear",
+        "tint": "RGBA(0.725, 0.525, 0.333, 1.000)",
+        "material": "Assets/Wildfolk/Art/WorldSprite.mat",
+        "shader": "Universal Render Pipeline/2D/Sprite-Lit-Default"
+      }
+    ]
+  }
+]

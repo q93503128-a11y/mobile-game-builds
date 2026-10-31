@@ -37,6 +37,10 @@ namespace Wildfolk.Editor
                 foreach(var hud in UnityEngine.Object.FindObjectsByType<DeathHud>(FindObjectsInactive.Include,FindObjectsSortMode.None))
                 {var modal=hud.DeadView.transform.parent;var safe=hud.DownView.transform.parent;var player=hud.Player;UnityEngine.Object.DestroyImmediate(hud.DeadView);UnityEngine.Object.DestroyImmediate(hud.DownView);DeathUiBuilder.Build(hud.gameObject,modal,safe,player);}
                 GameplayHudBuilder.ConfigureTouchLayout();
+                foreach(var panel in UnityEngine.Object.FindObjectsByType<InventoryPanel>(FindObjectsInactive.Include,FindObjectsSortMode.None))InventoryUiBuilder.Arrange(panel);
+                foreach(var panel in UnityEngine.Object.FindObjectsByType<CraftingPanel>(FindObjectsInactive.Include,FindObjectsSortMode.None))CraftingUiBuilder.Arrange(panel);
+                foreach(var panel in UnityEngine.Object.FindObjectsByType<ChestPanel>(FindObjectsInactive.Include,FindObjectsSortMode.None))ChestUiBuilder.Arrange(panel);
+                foreach(var panel in UnityEngine.Object.FindObjectsByType<StackSplitPanel>(FindObjectsInactive.Include,FindObjectsSortMode.None))StackSplitUiBuilder.Arrange(panel);
                 foreach(var button in UnityEngine.Object.FindObjectsByType<Button>(FindObjectsInactive.Include,FindObjectsSortMode.None))if(button.GetComponent<AudioButton>()==null)button.gameObject.AddComponent<AudioButton>();
                 foreach(var component in UnityEngine.Object.FindObjectsByType<MonoBehaviour>(FindObjectsInactive.Include,FindObjectsSortMode.None))if(PrefabUtility.IsPartOfPrefabInstance(component))PrefabUtility.RecordPrefabInstancePropertyModifications(component);
                 EditorSceneManager.MarkSceneDirty(scene);EditorSceneManager.SaveScene(scene);

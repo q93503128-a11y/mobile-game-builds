@@ -51,7 +51,37 @@ namespace Wildfolk.Editor
             panel.Withdraw=QualityUiBuilder.Action(queue,"Withdraw","",new Vector2(-28,-95),new Vector2(88,64),panel.WithdrawOne,out var minus);minus.text="−1";
             panel.AddAll=QualityUiBuilder.Action(queue,"Add All","ui.action.add_all",new Vector2(101,-95),new Vector2(150,64),panel.EnqueueAll,out var all);
             panel.Collect=QualityUiBuilder.Action(queue,"Collect","ui.action.take",new Vector2(0,-180),new Vector2(350,66),panel.CollectResults,out var collect);
-            panel.View.SetActive(false);
+            Arrange(panel);panel.View.SetActive(false);
+        }
+        internal static void Arrange(CraftingPanel panel)
+        {
+            var surface=panel.Scroll.transform.parent;var size=new Vector2(1900,980);((RectTransform)surface).sizeDelta=size;
+            ((RectTransform)surface.Find("Matte Surface")).sizeDelta=size-Vector2.one*6;
+            var fit=surface.GetComponent<ModalLayout>();fit.ReferenceSize=size;fit.HorizontalReserve=20;fit.TopReserve=fit.BottomReserve=20;
+            InventoryUiBuilder.Caption(panel.Title,new Vector2(-430,410),new Vector2(900,80),40);
+            InventoryUiBuilder.ActionSize(panel.HomeButton,new Vector2(500,410),new Vector2(480,120));InventoryUiBuilder.ActionSize(surface.Find("Close").GetComponent<Button>(),new Vector2(835,410),new Vector2(180,120));
+            InventoryUiBuilder.Position(surface.Find("Categories"),new Vector2(-260,290),new Vector2(1240,120));
+            foreach(var button in panel.CategoryButtons)InventoryUiBuilder.ActionSize(button,Vector2.zero,new Vector2(166,120));
+            InventoryUiBuilder.Position(panel.Scroll,new Vector2(-260,-55),new Vector2(1240,530));
+            panel.Scroll.content.sizeDelta=new Vector2(1220,panel.Scroll.content.sizeDelta.y);
+            foreach(var section in panel.Sections)InventoryUiBuilder.Caption(section.GetComponent<Text>(),Vector2.zero,new Vector2(1220,60),30);
+            foreach(var grid in panel.Grids){var layout=grid.GetComponent<GridLayoutGroup>();layout.cellSize=new Vector2(602,260);layout.spacing=new Vector2(16,16);((RectTransform)grid.transform).sizeDelta=new Vector2(1220,260);}
+            foreach(var card in panel.Cards)
+            {
+                InventoryUiBuilder.Position(card,Vector2.zero,new Vector2(602,260));InventoryUiBuilder.Position(card.Icon,new Vector2(-245,80),new Vector2(70,78));InventoryUiBuilder.Caption(card.Name,new Vector2(42,80),new Vector2(470,72),32);
+                InventoryUiBuilder.Caption(card.Materials,new Vector2(0,2),new Vector2(560,76),24);InventoryUiBuilder.Caption(card.Status,new Vector2(-165,-85),new Vector2(240,70),23);
+                InventoryUiBuilder.ActionSize(card.CraftButton,new Vector2(170,-62),new Vector2(220,120));InventoryUiBuilder.Caption(card.NewLabel,new Vector2(240,112),new Vector2(95,35),20);InventoryUiBuilder.Position(card.Progress,new Vector2(0,-125),new Vector2(570,5));
+            }
+            InventoryUiBuilder.ActionSize(panel.FilterLabel.transform.parent.GetComponent<Button>(),new Vector2(-600,-420),new Vector2(370,120));InventoryUiBuilder.ActionSize(panel.InventoryButton,new Vector2(-190,-420),new Vector2(370,120));
+            InventoryUiBuilder.Caption(panel.SelectedTitle,new Vector2(680,230),new Vector2(450,100),34);InventoryUiBuilder.Position(panel.SelectedIcon,new Vector2(680,115),new Vector2(100,110));
+            InventoryUiBuilder.Position(panel.SummaryScroll,new Vector2(680,-40),new Vector2(450,220));panel.MaterialSummary.fontSize=28;
+            InventoryUiBuilder.Position(panel.UpgradeScroll,new Vector2(680,-245),new Vector2(450,135));panel.UpgradeRequirements.fontSize=27;
+            InventoryUiBuilder.ActionSize(panel.UpgradeButton,new Vector2(680,-415),new Vector2(450,120));
+            InventoryUiBuilder.Position(panel.QueueView.transform,new Vector2(680,-80),new Vector2(450,600));InventoryUiBuilder.Caption(panel.QueueState,new Vector2(0,130),new Vector2(450,100),28);InventoryUiBuilder.Caption(panel.CurrentItem,new Vector2(0,10),new Vector2(450,120),28);
+            InventoryUiBuilder.ActionSize(panel.AddOne,new Vector2(-150,-125),new Vector2(130,120));InventoryUiBuilder.ActionSize(panel.Withdraw,new Vector2(0,-125),new Vector2(130,120));InventoryUiBuilder.ActionSize(panel.AddAll,new Vector2(155,-125),new Vector2(150,120));InventoryUiBuilder.ActionSize(panel.Collect,new Vector2(0,-270),new Vector2(450,120));
+            if(panel.FoodPreview!=null)InventoryUiBuilder.Caption(panel.FoodPreview,new Vector2(680,130),new Vector2(450,150),26);
+            foreach(var line in surface.GetComponentsInChildren<Image>(true))if(line.transform.parent==surface&&line.name=="Connection")Object.DestroyImmediate(line.gameObject);
+            QualityUiBuilder.Line(surface,new Vector2(405,230),new Vector2(405,-470),2);
         }
     }
 }

@@ -1,0 +1,37 @@
+{
+  "startedUtc": "2026-10-31T05:39:35.408569+00:00",
+  "startSha": "e223478640e31551168d8219120db4a95f9f075b",
+  "phases": [
+    {
+      "name": "Menu matrix, setup and review",
+      "start": "2026-10-31T05:39:35.408569+00:00",
+      "end": "2026-10-31T05:45:22.786869+00:00",
+      "seconds": 347.378
+    },
+    {
+      "name": "Gameplay/world observation, touch UI implementation and inspection",
+      "start": "2026-10-31T05:45:22.786869+00:00",
+      "end": "2026-10-31T06:04:26.846967+00:00",
+      "seconds": 1144.06
+    },
+    {
+      "name": "State fixtures, profiling, regression tests and LAN/HUD corrections",
+      "start": "2026-10-31T06:04:26.846967+00:00",
+      "end": "2026-10-31T06:52:30+00:00",
+      "seconds": 2883.153
+    },
+    {
+      "name": "Requested-stop verification, documentation and main checkpoint",
+      "start": "2026-10-31T06:52:30+00:00",
+      "end": "2026-10-31T07:00:15.465613+00:00",
+      "seconds": 465.466
+    }
+  ],
+  "tokenUsage": null,
+  "usageNote": "Exact token/billing usage by phase is not exposed; not estimated. Phase intervals do not overlap; the first few read/fetch preparation calls precede the explicit stopwatch.",
+  "status": "paused_by_user",
+  "previousRunElapsedSeconds": 5415,
+  "checkpointRecordedUtc": "2026-10-31T07:00:15.465613+00:00",
+  "recordedElapsedSeconds": 4840.057,
+  "note": "Intervals measured from explicit resume stopwatch. Git final verification timestamp will be recorded outside Git after push."
+}

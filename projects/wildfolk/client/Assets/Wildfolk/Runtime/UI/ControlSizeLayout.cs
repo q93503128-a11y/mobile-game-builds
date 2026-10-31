@@ -5,6 +5,7 @@ namespace Wildfolk
     {
         public UserPreferences Preferences;
         public GameplaySession Session;
+        public ClassHud ClassControls;
         public RectTransform Joystick, Action, Interact, Dash, Hotbar, InventoryButton;
         private void OnEnable() {Preferences.Changed+=Apply;if(Session!=null)Session.StateChanged+=Apply;}
         private void Start() => Apply();
@@ -23,6 +24,13 @@ namespace Wildfolk
             Action.anchoredPosition=new Vector2(-40-102*scale,160+185*extra);
             Interact.anchoredPosition=Action.anchoredPosition+new Vector2(-35*scale,200*scale);
             Dash.anchoredPosition=Action.anchoredPosition+new Vector2(-175*scale,115*scale);
+            if(ClassControls!=null)
+            {
+                foreach(var view in new[]{ClassControls.ActiveView,ClassControls.MarkerView,ClassControls.MedicineView})view.transform.localScale=Vector3.one*scale;
+                ((RectTransform)ClassControls.ActiveView.transform).anchoredPosition=Action.anchoredPosition+new Vector2(-330,150)*scale;
+                ((RectTransform)ClassControls.MarkerView.transform).anchoredPosition=Action.anchoredPosition+new Vector2(-330,320)*scale;
+                ((RectTransform)ClassControls.MedicineView.transform).anchoredPosition=Action.anchoredPosition+new Vector2(-540,150)*scale;
+            }
         }
     }
 }

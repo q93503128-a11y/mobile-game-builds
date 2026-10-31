@@ -1,3 +1,7 @@
+## 모바일 UI 체크포인트2 · 2026-10-31
+
+SP/MP 가방은36칸/Hotbar9를 유지하며128단위 슬롯과 큰 주요 버튼을 작성한다. Head/Body/Utility/Accessory2×2를 보존한다. Chest24/36은 양쪽6열 스크롤로 표시하며 Player쪽도 빠른 세로 터치는 스크롤, 지연/가로 Drag는 기존 전체/소분 교환을 따른다.1–9번호는 같은 Hotbar 슬롯이다. 모델·수량·Host revision·장착/소분/드롭 규칙은 바꾸지 않았다. 실제 작은 화면과 터치 회귀 결과/남은 작업은 [검증](../validation/commercial-ui-mobile/REVIEW.md#checkpoint-2--resumed-inspection-user-requested-stop)을 따른다.
+
 # Inventory / Hotbar / Storage
 
 PlayerInventory는36칸(Hotbar9+Storage27), Wood Chest는24칸이다. Item ID를 기준으로 합치고 MaxStack은 ItemDefinition이 정본이다. 재료50, 도구/검1, 빈 Wooden Cup20, Raw/Clean Cup1이다.

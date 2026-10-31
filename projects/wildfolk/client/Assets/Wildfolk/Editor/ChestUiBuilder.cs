@@ -31,7 +31,30 @@ namespace Wildfolk.Editor
             for(var i=0;i<panel.ChestSlots.Length;i++)panel.ChestSlots[i]=Create(chest,i,false,true,drag,panel);
             for(var i=0;i<panel.PlayerSlots.Length;i++)panel.PlayerSlots[i]=Create(i<PlayerInventory.HotbarSize ? quick : inventory,i,i<PlayerInventory.HotbarSize,false,drag,panel);
             var split=Image("Split",surface.transform,"panel",new Vector2(.5f,.5f),new Vector2(0,-446),new Vector2(168,58),true);Text("Label",split.transform,"ui.action.split",Vector2.zero,new Vector2(156,50),22);drag.ChestSplitButton=Button(split);UnityEventTools.AddPersistentListener(drag.ChestSplitButton.onClick,drag.OpenSplit);
-            overlay.gameObject.SetActive(false);
+            Arrange(panel);overlay.gameObject.SetActive(false);
+        }
+        internal static void Arrange(ChestPanel panel)
+        {
+            var surface=panel.View.transform.Find("Chest Panel");var size=new Vector2(1900,980);((RectTransform)surface).sizeDelta=size;
+            var fit=surface.GetComponent<ModalLayout>();fit.ReferenceSize=size;fit.HorizontalReserve=20;fit.TopReserve=fit.BottomReserve=20;
+            InventoryUiBuilder.Caption(panel.Title,new Vector2(-480,410),new Vector2(800,80),40);InventoryUiBuilder.ActionSize(surface.Find("Close").GetComponent<Button>(),new Vector2(865,410),new Vector2(120,120));
+            InventoryUiBuilder.Caption(surface.Find("Player Label").GetComponent<Text>(),new Vector2(475,320),new Vector2(800,55),32);surface.Find("Hotbar Label").gameObject.SetActive(false);
+            InventoryUiBuilder.Position(panel.Scroll,new Vector2(-475,-10),new Vector2(850,700));InventoryUiBuilder.Position(panel.Scroll.viewport,new Vector2(-12,0),new Vector2(820,700));
+            panel.SlotsRoot.sizeDelta=new Vector2(808,panel.SlotsRoot.sizeDelta.y);var chestGrid=panel.SlotsRoot.GetComponent<GridLayoutGroup>();chestGrid.constraintCount=6;chestGrid.cellSize=Vector2.one*128;chestGrid.spacing=Vector2.one*8;chestGrid.padding=new RectOffset();
+            var track=panel.Scroll.transform.Find("Scrollbar");InventoryUiBuilder.Position(track,new Vector2(415,0),new Vector2(24,700));
+            var inventory=surface.Find("Player Storage") as RectTransform;
+            var playerScroll=surface.Find("Player Scroll");
+            if(playerScroll==null)
+            {
+                var viewport=Image("Player Scroll",surface,"white",Vector2.one*.5f,new Vector2(475,-30),new Vector2(820,650),true);viewport.color=Color.clear;viewport.gameObject.AddComponent<RectMask2D>();playerScroll=viewport.transform;
+                var scroll=viewport.gameObject.AddComponent<ScrollRect>();scroll.content=inventory;scroll.viewport=viewport.rectTransform;scroll.horizontal=false;scroll.inertia=false;scroll.movementType=ScrollRect.MovementType.Clamped;
+                inventory.SetParent(playerScroll,false);inventory.anchorMin=inventory.anchorMax=new Vector2(.5f,1);inventory.pivot=new Vector2(.5f,1);inventory.anchoredPosition=Vector2.zero;inventory.gameObject.AddComponent<ContentSizeFitter>().verticalFit=ContentSizeFitter.FitMode.PreferredSize;
+            }
+            else inventory=playerScroll.GetComponent<ScrollRect>().content;
+            inventory.sizeDelta=new Vector2(808,808);var playerGrid=inventory.GetComponent<GridLayoutGroup>();playerGrid.constraintCount=6;playerGrid.cellSize=Vector2.one*128;playerGrid.spacing=Vector2.one*8;
+            foreach(var slot in panel.PlayerSlots){slot.transform.SetParent(inventory,false);slot.transform.SetAsLastSibling();InventoryUiBuilder.SlotSize(slot);}
+            foreach(var slot in panel.ChestSlots)InventoryUiBuilder.SlotSize(slot);
+            surface.Find("Player Hotbar").gameObject.SetActive(false);InventoryUiBuilder.ActionSize(panel.Drag.ChestSplitButton,new Vector2(0,-430),new Vector2(500,120));
         }
         private static InventorySlotView Create(Transform parent,int index,bool quick,bool chest,InventoryDragController drag,ChestPanel panel)
         {

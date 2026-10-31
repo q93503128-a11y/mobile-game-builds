@@ -49,7 +49,7 @@ namespace Wildfolk.Editor
             s.Slots=new Button[28];s.SlotLabels=new Text[28];s.SlotMarks=new Image[28];s.SlotIcons=new Image[28];for(var i=0;i<28;i++){s.Slots[i]=JournalUiBuilder.Action(d,"Visit "+(i+1),"",new Vector2(-630+i%7*210,122-i/7*104),new Vector2(196,108),null,out s.SlotLabels[i]);s.SlotLabels[i].fontSize=28;s.SlotLabels[i].rectTransform.sizeDelta=new Vector2(180,86);s.SlotIcons[i]=Image("Gem reward",s.Slots[i].transform,"journal_gem",Vector2.one*.5f,new Vector2(-72,-25),new Vector2(26,26));s.SlotMarks[i]=Image("Received seal",s.Slots[i].transform,"journal_seal",Vector2.one*.5f,new Vector2(72,34),new Vector2(25,25));}
             s.Attend=JournalUiBuilder.Action(d,"Attend","economy.claim",new Vector2(480,-335),new Vector2(530,126),s.ClaimAttendance,out _,true);
             s.ResetLabel=JournalUiBuilder.Label(d,"Next Reset","",new Vector2(-345,-315),new Vector2(775,100),26);
-            s.AttendanceStatus=JournalUiBuilder.Label(d,"Connection","",new Vector2(-355,-395),new Vector2(800,50),26,TextAnchor.MiddleCenter);
+            s.AttendanceStatus=JournalUiBuilder.Label(d,"Connection","",new Vector2(-355,-395),new Vector2(800,105),26,TextAnchor.MiddleCenter);
             foreach(var view in new[]{s.HubView,s.AchievementView,s.AttendanceView})foreach(var label in view.GetComponentsInChildren<Text>(true))if(label.name=="Label"&&label.fontSize==26)label.fontSize=32;
             s.AchievementView.SetActive(false);s.AttendanceView.SetActive(false);StoreUiBuilder.BuildInScene(s);EditorSceneManager.MarkSceneDirty(scene);EditorSceneManager.SaveScene(scene);AssetDatabase.SaveAssets();
         }

@@ -116,9 +116,9 @@ namespace Wildfolk.Editor
                 var x=-660+b*240;JournalUiBuilder.Rule(tree,new Vector2(-420,165),new Vector2(x,133),3);s.Branches[b]=JournalUiBuilder.Label(tree,"Branch "+b,"",new Vector2(x,140),new Vector2(220,48),30,TextAnchor.MiddleCenter);
                 for(var r=0;r<3;r++)
                 {
-                    var i=b*3+r;var p=new Vector2(x,50-r*185);if(r<2)JournalUiBuilder.Rule(tree,p+new Vector2(0,-48),p+new Vector2(0,-135),3);
+                    var i=b*3+r;var p=new Vector2(x,70-r*170);if(r<2)JournalUiBuilder.Rule(tree,p+new Vector2(0,-60),p+new Vector2(0,-110),3);
                     s.NodeViews[i]=JournalUiBuilder.Node(tree,"Class Skill "+i,p,s.SkillIcons[i],s.SelectNode,i,out s.Nodes[i]);s.NodeIcons[i]=s.NodeViews[i].Icon;
-                    s.NodeNames[i]=JournalUiBuilder.Label(tree,"Node Name "+i,"",p+new Vector2(0,-94),new Vector2(224,56),28,TextAnchor.MiddleCenter);
+                    s.NodeNames[i]=JournalUiBuilder.Label(tree,"Node Name "+i,"",p+new Vector2(0,-82),new Vector2(224,52),28,TextAnchor.MiddleCenter);
                 }
             }
             s.NodeDetail=JournalUiBuilder.Label(tree,"Node Detail","",new Vector2(430,20),new Vector2(650,370),36,TextAnchor.UpperLeft);
@@ -146,7 +146,13 @@ namespace Wildfolk.Editor
             var medicine=Image("Ally Medicine",safe,"panel",new Vector2(1,0),new Vector2(-415,320),new Vector2(185,68),true);hud.MedicineView=medicine.gameObject;hud.MedicineButton=Button(medicine);Text("Treat Ally",medicine.transform,"class.heal_ally",Vector2.zero,new Vector2(175,60),21);
             hud.QuarryText=Text("Quarry",safe,"",new Vector2(565,300),new Vector2(520,85),23);
             hud.TeamMarkers=new Text[4];for(var i=0;i<4;i++)hud.TeamMarkers[i]=Text("Team Marker "+i,safe,"",new Vector2(0,390-i*38),new Vector2(650,36),21);
-            active.gameObject.SetActive(false);mark.gameObject.SetActive(false);building.gameObject.SetActive(false);medicine.gameObject.SetActive(false);
+            ArrangeHud(hud);active.gameObject.SetActive(false);mark.gameObject.SetActive(false);building.gameObject.SetActive(false);medicine.gameObject.SetActive(false);
+        }
+        internal static void ArrangeHud(ClassHud hud)
+        {
+            var name=hud.ClassName.rectTransform;name.anchorMin=name.anchorMax=Vector2.one;InventoryUiBuilder.Caption(hud.ClassName,new Vector2(-390,-70),new Vector2(400,60),28);hud.ClassName.alignment=TextAnchor.MiddleRight;
+            InventoryUiBuilder.ActionSize(hud.ActiveButton,new Vector2(-472,310),new Vector2(180,128));InventoryUiBuilder.ActionSize(hud.MarkButton,new Vector2(-472,480),new Vector2(180,128));InventoryUiBuilder.ActionSize(hud.MedicineButton,new Vector2(-682,310),new Vector2(180,128));InventoryUiBuilder.ActionSize(hud.MeaningButton,new Vector2(-210,0),new Vector2(180,128));
+            InventoryUiBuilder.ActionSize(hud.RepairButton,new Vector2(-170,0),new Vector2(300,112));InventoryUiBuilder.ActionSize(hud.DismantleButton,new Vector2(170,0),new Vector2(300,112));InventoryUiBuilder.Caption(hud.BuildingText,new Vector2(0,100),new Vector2(820,65),28);InventoryUiBuilder.Caption(hud.ServiceProgress,new Vector2(0,-95),new Vector2(810,55),26);
         }
     }
 }

@@ -11,7 +11,7 @@ namespace Wildfolk
     {
         private static TransitionOverlay instance;
         private Text title,phase;private RectTransform spinner;private Button cancel;private string key;
-        private NetworkSession network;private Action recovery;private float started;private bool warned,loading;
+        private NetworkSession network;private Action recovery;private float started;private bool warned,loading,awaitingScene;
         public static bool Visible=>instance!=null;
         private static TransitionOverlay Create(string phaseKey)
         {
@@ -58,12 +58,13 @@ namespace Wildfolk
             Close();
         }
         private void Fail(){loading=false;key="loading.failed";spinner.gameObject.SetActive(false);cancel.gameObject.SetActive(true);Refresh();}
-        public static void Watch(NetworkSession session)
-        {var view=Create("net.connecting");view.network=session;session.Changed+=view.NetworkChanged;view.cancel.gameObject.SetActive(true);}
+        public static void Watch(NetworkSession session,string phaseKey="net.connecting")
+        {var view=Create(phaseKey);view.network=session;view.awaitingScene=phaseKey=="net.entering";session.Changed+=view.NetworkChanged;view.cancel.gameObject.SetActive(!view.awaitingScene);}
         private void NetworkChanged()
         {
             if(network==null){Close();return;}
-            if(network.State==NetworkSessionState.Idle||network.State==NetworkSessionState.Waiting){Close();return;}
+            if(network.State==NetworkSessionState.Idle||network.State==NetworkSessionState.Waiting&&!awaitingScene){Close();return;}
+            if(network.State==NetworkSessionState.Waiting){key="net.entering";Refresh();return;}
             key=network.State==NetworkSessionState.Loading?"net.entering":network.State==NetworkSessionState.Playing?"loading.player":"net.connecting";cancel.gameObject.SetActive(network.State==NetworkSessionState.Connecting);Refresh();
         }
         private void Update()

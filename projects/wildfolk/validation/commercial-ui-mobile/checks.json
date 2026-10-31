@@ -3,20 +3,18 @@
     "passed": true,
     "uniqueAssetGuids": 1872
   },
-  "editModeUniquePassed": 111,
-  "playModeUniquePassed": 67,
   "initialRunsRetained": true,
   "targetedRerunPassed": 7,
   "userFilesUnchanged": 6,
   "editorPlay": false,
   "editorScene": "MainMenu",
   "qaSessionFlagCleared": true,
-  "fullVisualMatrix": "PENDING",
-  "twoProcessLan": "PENDING",
-  "waterCreatureObservation": "PENDING",
-  "performance": "PENDING",
+  "fullVisualMatrix": "Principal menu matrix captured; last Profile copy and MP/role HUD recapture pending",
+  "twoProcessLan": "Room/gameplay/local bindings/Host Save/client Home observed before latest client-load observer and class binding; latest peer rerun pending",
+  "waterCreatureObservation": "18 creature presentations + phase1 King; water/history/import comparison; closer awakened crawler pending",
+  "performance": "180-frame Home/achievement Editor probes; Android unverified",
   "rc2": "NOT READY",
-  "status": "USER_REQUESTED_CHECKPOINT",
+  "status": "USER_REQUESTED_CHECKPOINT_2",
   "versions": {
     "save": 14,
     "profile": 2,
@@ -25,5 +23,15 @@
     "protocol": 23,
     "generation": 3,
     "iap": 1
+  },
+  "resumeStartSha": "e223478640e31551168d8219120db4a95f9f075b",
+  "resumePlayModeUniquePassed": 27,
+  "latestPlayModePassed": 9,
+  "latestEditModePassed": 2,
+  "menuMatrixCaptured": 84,
+  "textTruncationsInRecordedMetrics": 0,
+  "previousCheckpointUniquePassed": {
+    "editMode": 111,
+    "playMode": 67
   }
 }

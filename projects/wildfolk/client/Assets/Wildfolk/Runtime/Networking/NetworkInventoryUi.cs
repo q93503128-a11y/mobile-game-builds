@@ -38,7 +38,7 @@ namespace Wildfolk
             if(profile!=null){var button=profile.Level.transform.parent.GetComponent<Button>();button.onClick=new Button.ButtonClickedEvent();button.onClick.AddListener(session.OpenCharacter);}
             gameObject.SetActive(true);Refresh();
         }
-        private void Refresh(){if(owner==null)return;var p=owner.GetComponent<PlayerProgression>();Wallet.text=L.Format("net.wallet",p.Level,p.Experience,p.Gold);AttackIcon.sprite=owner.GetComponent<PlayerPrimaryAction>().ActionIcon(fist);}
+        private void Refresh(){if(owner==null)return;var p=owner.GetComponent<PlayerProgression>();Wallet.text=L.Text("ui.gold")+" "+p.Gold;AttackIcon.sprite=owner.GetComponent<PlayerPrimaryAction>().ActionIcon(fist);}
         private void OnDestroy(){if(owner!=null){owner.GetComponent<PlayerProgression>().Changed-=Refresh;owner.Equipment.Changed-=Refresh;}L.Changed-=Refresh;}
     }
 }

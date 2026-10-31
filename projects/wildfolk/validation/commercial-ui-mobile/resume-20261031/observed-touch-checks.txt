@@ -1,0 +1,20 @@
+PASS QA-only repository new-world
+PASS isolated Save14 before Continue
+PASS Continue shown for actual isolated Save14
+PASS QA-only repository continue
+PASS floating base shows at origin 0
+PASS initial touch deadzone 0
+PASS clamped right drag 0
+PASS release hides 0
+PASS floating base shows at origin 1
+PASS initial touch deadzone 1
+PASS clamped right drag 1
+PASS release hides 1
+PASS floating base shows at origin 2
+PASS initial touch deadzone 2
+PASS clamped right drag 2
+PASS release hides 2
+PASS actual touch move plus attack
+PASS interact touch preserves movement pointer
+PASS hotbar touch does not start movement
+PASS pause blocks joystick

@@ -1,3 +1,7 @@
+## UI 작성/검수 체크포인트2 · 2026-10-31
+
+가방/제작/상자/소분은 각 canonical builder의 공용 Arrange authoring을 신규 작성과 기존 씬 재작성에서 함께 사용한다. runtime patch 계층은 없다. ControlSizeLayout은 Canvas ancestor의 ClassHud를 참조한다. MP client의 로컬 NGO Load event는 기존 TransitionOverlay만 열며 Waiting 중 준비를 유지하고 로컬 actor bind 뒤 닫는다. 네트워크 상태/권한/Schema는 바꾸지 않았다. 마지막 표시 변경의 실제 peer/역할 검수는 [남은 작업](../validation/commercial-ui-mobile/REVIEW.md#checkpoint-2--resumed-inspection-user-requested-stop)이다.
+
 ## UI 전환/작성 체크포인트 · 2026-10-31
 
 UiPresentationBuilder는 기존 canonical UI builders로 세 씬의 UI를 작성하고, 플레이어의 joystick/adapter와 prefab override를 저장한다. Runtime UI override/patch 계층은 없다. VirtualJoystick은 입력 영역과 일시적 base를 분리하고 Session 변경/포인터 종료/취소/Focus 상실에서 입력을 정리한다. MultiplayerArena는 실제 로컬 Session에 입력·크기 layout을 bind한다. SceneFlow의 비동기 경계는 임시 TransitionOverlay가 담당하며 저장·프로토콜·경제 권한을 추가하지 않는다. [진행 중 검수](../validation/commercial-ui-mobile/REVIEW.md).

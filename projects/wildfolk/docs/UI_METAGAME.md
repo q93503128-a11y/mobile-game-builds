@@ -6,7 +6,7 @@ Attendance shows the real catalogue as a non-claimable preview without an accoun
 
 Account uses a flat paper sheet, hides Sign Out/Delete unless linked, separates conflict actions, and removes the creation-date field. Deletion explains cloud/account/economy/support removal, retained local worlds, minimal reviewed financial retention and irreversibility; the transaction is unchanged. Store keeps24/72/144 with real platform prices only. OFF mode allows package inspection, shows availability and existing revive uses, and hides the purchase CTA; recovery/history/support are secondary links. Availability is read from the existing policy, not a second authority.
 
-Implementation and related automatic checks are a checkpoint. Final state/viewport/KO/EN visual verification remains pending. [Research, evidence, remaining work](../validation/commercial-ui-mobile/REVIEW.md).
+Implementation and related automatic checks are a checkpoint. 84 menu captures plus isolated account/reward/store states and text-height checks were recorded. The final Profile ad copy and latest MP/role HUD/client-loading changes still need visual/peer recapture. [Research, evidence, remaining work](../validation/commercial-ui-mobile/REVIEW.md).
 
 ## Historical Foundation3 implementation
 

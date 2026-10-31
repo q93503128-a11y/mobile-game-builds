@@ -22,10 +22,10 @@ namespace Wildfolk
         public void OnPointerClick(PointerEventData data){if(longPressed || scrolling!=null)return;if(Controller.IsHoldingPartial)Controller.PlaceHeld(Index,IsChest);else Controller.Select(Index,IsChest);}
         public void OnBeginDrag(PointerEventData data)
         {
-            pressed=false;if(longPressed)return;var scroll=IsChest ? GetComponentInParent<UnityEngine.UI.ScrollRect>() : null;
+            pressed=false;if(longPressed)return;var scroll=GetComponentInParent<UnityEngine.UI.ScrollRect>();
             var extended=data as UnityEngine.InputSystem.UI.ExtendedPointerEventData;
             var touch=extended!=null ? extended.pointerType==UnityEngine.InputSystem.UI.UIPointerType.Touch : data.pointerId>=0;
-            var delta=data.position-pressedPosition;var empty=IsChest && Controller.Storage.Chest.Model.GetSlot(Index).IsEmpty;
+            var delta=data.position-pressedPosition;var model=IsChest ? Controller.Storage.Chest.Model : Controller.Owner.Model;var empty=model.GetSlot(Index).IsEmpty;
             if(scroll!=null && !Controller.IsHoldingPartial && (empty || touch && Time.unscaledTime-pressedAt<.18f && Mathf.Abs(delta.y)>Mathf.Abs(delta.x)))
             {scrolling=scroll;data.eligibleForClick=false;scroll.OnInitializePotentialDrag(data);scroll.OnBeginDrag(data);return;}
             if(Controller.IsHoldingPartial)Controller.BeginHeld(data);else Controller.Begin(Index,View,data,IsChest);
