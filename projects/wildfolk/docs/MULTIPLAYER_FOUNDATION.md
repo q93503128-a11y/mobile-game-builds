@@ -1,3 +1,7 @@
+## 2026-11-01 체크포인트3
+
+실제 client에서 로딩 overlay 누락을 재현해 Join에도 공유 씬 이벤트 구독을 연결하고 Close에서 해제했다. 새 실제 peer의 overlay·단일 HP·ClassControls·Home 복귀와 Host save/leave/reHost/Continue가 통과했다. Relay/4인 실기 검수는 아니다. [현재 검증/재개](../validation/commercial-ui-mobile/REVIEW.md#checkpoint-3--2026-11-01-user-requested-stop).
+
 ## 모바일 표시 체크포인트2 · 2026-10-31
 
 실제 두 Unity 프로세스로 새 메뉴의2/4대기실·게임 진입·로컬 joystick/layout·Host Save14·Client Home 복귀를 확인했다. 중복 HP/Level/XP 문구를 제거하고 공통 vitals와 별도 Gold를 사용한다. 마지막 직업 HUD ancestor 바인딩과 클라이언트 NGO Load event의 로딩 overlay는 후속 실제 재검수가 필요하다. 이벤트는 표시만 담당하며 입장/Host 권위·네트워크 상태·Protocol23은 유지한다. 아래 첫 체크포인트의 LAN 미실행 설명은 당시 기록이다. [최신 검증/한계](../validation/commercial-ui-mobile/REVIEW.md#checkpoint-2--resumed-inspection-user-requested-stop).

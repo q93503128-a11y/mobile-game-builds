@@ -1,3 +1,7 @@
+## 2026-11-01 체크포인트3
+
+메인 Play/멀티/설정/Profile에 아이콘을 함께 쓰고, Gem·업적·출석은 하나의 캠프 탐색 영역으로 묶었다. 저장 없음/실제 QA Continue와 Profile을 한영3해상도로 재검수했다. 전체 패스 최종 보고는 사용자 요청 중단으로 남았다. [현재 검증/재개](../validation/commercial-ui-mobile/REVIEW.md#checkpoint-3--2026-11-01-user-requested-stop).
+
 ## 실제 검수 체크포인트2 · 2026-10-31
 
 한영14화면×3해상도84캡처와 텍스트 높이를 점검했고, 직업 트리 하단/출석 안내 높이를 교정했다. 실제 New/Continue/Home 전환을 관찰했다. 마지막 Profile 광고 불러오기 문구·MP/역할 HUD·Client scene overlay는 재검수가 남아 전체 패스는 아직 완료가 아니다. [최신 증거/이어받기](../validation/commercial-ui-mobile/REVIEW.md#checkpoint-2--resumed-inspection-user-requested-stop).

@@ -1,41 +1,35 @@
 {
-  "previousRunElapsedSeconds": 5415,
-  "currentResume": {
-    "startedUtc": "2026-10-31T05:39:35.408569+00:00",
-    "startSha": "e223478640e31551168d8219120db4a95f9f075b",
-    "phases": [
-      {
-        "name": "Menu matrix, setup and review",
-        "start": "2026-10-31T05:39:35.408569+00:00",
-        "end": "2026-10-31T05:45:22.786869+00:00",
-        "seconds": 347.378
-      },
-      {
-        "name": "Gameplay/world observation, touch UI implementation and inspection",
-        "start": "2026-10-31T05:45:22.786869+00:00",
-        "end": "2026-10-31T06:04:26.846967+00:00",
-        "seconds": 1144.06
-      },
-      {
-        "name": "State fixtures, profiling, regression tests and LAN/HUD corrections",
-        "start": "2026-10-31T06:04:26.846967+00:00",
-        "end": "2026-10-31T06:52:30+00:00",
-        "seconds": 2883.153
-      },
-      {
-        "name": "Requested-stop verification, documentation and main checkpoint",
-        "start": "2026-10-31T06:52:30+00:00",
-        "end": "2026-10-31T07:00:15.465613+00:00",
-        "seconds": 465.466
-      }
-    ],
-    "tokenUsage": null,
-    "usageNote": "Exact token/billing usage by phase is not exposed; not estimated. Phase intervals do not overlap; the first few read/fetch preparation calls precede the explicit stopwatch.",
-    "status": "paused_by_user",
-    "previousRunElapsedSeconds": 5415,
-    "checkpointRecordedUtc": "2026-10-31T07:00:15.465613+00:00",
-    "recordedElapsedSeconds": 4840.057,
-    "note": "Intervals measured from explicit resume stopwatch. Git final verification timestamp will be recorded outside Git after push."
-  },
-  "exactUsageNote": "Token/billing telemetry unavailable; no per-phase token estimates."
+  "startedUtc": "2026-11-01T02:03:18.182012+00:00",
+  "startSha": "144a56a0b002b614bc6c23dcfe2b75de50eccd25",
+  "tokenUsage": null,
+  "phases": [
+    {
+      "name": "Resume, role HUD and actual LAN investigation; navigation design and authoring",
+      "startedUtc": "2026-11-01T02:03:18.182012+00:00",
+      "endedUtc": "2026-11-01T02:18:53.656286+00:00",
+      "elapsedSeconds": 935.474274,
+      "tokenUsage": null
+    },
+    {
+      "name": "Final menu matrix, crawler observation and scope HUD review",
+      "startedUtc": "2026-11-01T02:18:53.656286+00:00",
+      "endedUtc": "2026-11-01T02:26:13.450870+00:00",
+      "elapsedSeconds": 439.794584,
+      "tokenUsage": null
+    },
+    {
+      "name": "Scope control correction, state/safe-area checks and final idle profiling",
+      "startedUtc": "2026-11-01T02:26:13.450870+00:00",
+      "endedUtc": "2026-11-01T02:31:15.933836+00:00",
+      "elapsedSeconds": 302.482966,
+      "tokenUsage": null
+    },
+    {
+      "name": "Related validation, evidence and safe checkpoint handoff",
+      "startedUtc": "2026-11-01T02:31:15.933836+00:00",
+      "endedUtc": "2026-11-01T02:38:37.598630+00:00",
+      "elapsedSeconds": 441.664794,
+      "tokenUsage": null
+    }
+  ]
 }

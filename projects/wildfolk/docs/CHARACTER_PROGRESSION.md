@@ -1,3 +1,7 @@
+## 2026-11-01 체크포인트3
+
+80/100/140% 실제 역할 HUD 검수에서 의무병 치료의 중앙 가림과 탐험가 의미 선택/망원경 안내 겹침을 교정했다. 치료는 다른 직업의 active와 같은 엄지 위치, 의미 선택은 표식 아래를 사용한다. 수치/해금/노드/프로필 변경은 없다. [현재 검증/재개](../validation/commercial-ui-mobile/REVIEW.md#checkpoint-3--2026-11-01-user-requested-stop).
+
 ## 추가 HUD 검수 · 2026-10-31 체크포인트2
 
 직업 트리 하단 이름을 안쪽으로 옮기고 노드 target을120으로 작성했다. 직업 액션은 공통 Control Size 변경에 따라 공격 옆 별도 위치를 사용하며, MP는 Canvas의 ClassHud를 로컬 layout에 연결한다. 마지막 바인딩/역할별 배치는 실제 재캡처가 남아 있다. 노드 효과/해금/비용/성장/세이브 변경은 없다. [최신 남은 작업](../validation/commercial-ui-mobile/REVIEW.md#checkpoint-2--resumed-inspection-user-requested-stop).

@@ -1,3 +1,7 @@
+## 2026-11-01 체크포인트3
+
+JournalUiBuilder의 authoring vocabulary로 아이콘/탐색 행/캠프 탐색을 작성한다. runtime override는 없다. Join과 Host가 같은 AttachScenes를 사용하고 종료 때 presentation callback을 해제한다. 플레이어/경제/네트워크 권위·schema는 유지한다. [현재 검증/재개](../validation/commercial-ui-mobile/REVIEW.md#checkpoint-3--2026-11-01-user-requested-stop).
+
 ## UI 작성/검수 체크포인트2 · 2026-10-31
 
 가방/제작/상자/소분은 각 canonical builder의 공용 Arrange authoring을 신규 작성과 기존 씬 재작성에서 함께 사용한다. runtime patch 계층은 없다. ControlSizeLayout은 Canvas ancestor의 ClassHud를 참조한다. MP client의 로컬 NGO Load event는 기존 TransitionOverlay만 열며 Waiting 중 준비를 유지하고 로컬 actor bind 뒤 닫는다. 네트워크 상태/권한/Schema는 바꾸지 않았다. 마지막 표시 변경의 실제 peer/역할 검수는 [남은 작업](../validation/commercial-ui-mobile/REVIEW.md#checkpoint-2--resumed-inspection-user-requested-stop)이다.

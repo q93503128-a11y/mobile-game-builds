@@ -1,3 +1,7 @@
+## 2026-11-01 체크포인트3
+
+Profile의 기록/계정은 아이콘 행을 사용한다. Load ad는 계정 연결·cloud 가능 시 표시하며, 기존 eligibility/보상 규칙은 그대로다. 실제 OFF 화면과 연결 fixture를 구분해 확인했다. [현재 검증/재개](../validation/commercial-ui-mobile/REVIEW.md#checkpoint-3--2026-11-01-user-requested-stop).
+
 # Profile / Records · current UI checkpoint
 
 2026-10-31: Home has independent Profile, Achievement, Attendance and Class destinations. Gem Store has a small direct entry; Back returns to the actual origin. Profile retains class/level, confirmed/cached record summary and account management. No rewards, metrics or eligibility rules changed.

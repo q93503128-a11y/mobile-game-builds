@@ -1,0 +1,31 @@
+{
+  "frames": 180,
+  "objects": "170 -> 170",
+  "metrics": {
+    "frameNs": {
+      "median": 2378500,
+      "p95": 3065993,
+      "max": 4359403
+    },
+    "mainThreadNs": {
+      "median": 2361700,
+      "p95": 2897100,
+      "max": 4910000
+    },
+    "gcBytes": {
+      "median": 13417,
+      "p95": 13417,
+      "max": 19635
+    },
+    "canvasBuildNs": {
+      "median": 0,
+      "p95": 0,
+      "max": 0
+    },
+    "layoutNs": {
+      "median": 2100,
+      "p95": 2600,
+      "max": 13200
+    }
+  }
+}

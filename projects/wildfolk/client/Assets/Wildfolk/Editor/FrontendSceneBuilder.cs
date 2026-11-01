@@ -66,7 +66,8 @@ namespace Wildfolk.Editor
         private static readonly Color32 Ink=new Color32(49,63,48,255);
         private static Button JournalAction(Transform parent,string name,string key,Vector2 position,Vector2 size,UnityEngine.Events.UnityAction action,bool primary)
         {
-            var button=JournalUiBuilder.Action(parent,name,key,position,size,action,out var label,primary);label.fontSize=36;return button;
+            var icon=name=="Multiplayer"?"ui_users":name=="Settings"?"ui_settings":"ui_play";
+            var button=JournalUiBuilder.IconAction(parent,name,key,position,size,action,VisualArtImporter.Sprite(icon),out var label,primary);JournalStyle.Action(button,primary);label.fontSize=36;return button;
         }
         private static Button Action(Transform parent,string name,string key,Vector2 position,Vector2 size,UnityEngine.Events.UnityAction action,bool primary)
         {

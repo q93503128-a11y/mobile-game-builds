@@ -94,7 +94,7 @@ namespace Wildfolk
                 ConfigureIdentity();PremiumMessageKey=null;lastClientPremiumAdmission=null;await Connection(route).Join(Transport,destination);
                 if(ticket!=operation || quitting)return false;
                 if(!Manager.StartClient())throw new InvalidOperationException("Client transport did not start.");
-                RegisterPremiumMessages();
+                RegisterPremiumMessages();AttachScenes();
                 RoomCode=route==ConnectionRoute.Internet ? destination : string.Empty;StartCoroutine(JoinTimeout(ticket));return true;
             }
             catch(Exception error){if(ticket==operation)ConnectionFailed(error,"net.connection_failed");return false;}
@@ -184,7 +184,7 @@ namespace Wildfolk
         {
             // Leave NGO callbacks before stopping or loading another scene.
             yield return null;
-            if(Manager.SceneManager!=null){Manager.SceneManager.OnLoadEventCompleted-=Loaded;Manager.SceneManager.OnSynchronizeComplete-=Synchronized;}
+            if(Manager.SceneManager!=null){Manager.SceneManager.OnLoadEventCompleted-=Loaded;Manager.SceneManager.OnSynchronizeComplete-=Synchronized;Manager.SceneManager.OnSceneEvent-=PresentSceneTransition;}
             UnregisterPremiumMessages();premiumPending.Clear();if(Manager.IsListening)Manager.Shutdown();
             while(Manager.ShutdownInProgress)yield return null;
             RoomCode=string.Empty;identities.Clear();spawning.Clear();PreparedWorld=null;State=NetworkSessionState.Idle;Notify();

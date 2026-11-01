@@ -1,0 +1,44 @@
+{
+  "success": true,
+  "message": "Test job status retrieved.",
+  "error": null,
+  "data": {
+    "job_id": "96ce5032f1094763bc8590eecb8d9643",
+    "status": "succeeded",
+    "mode": "EditMode",
+    "started_unix_ms": 1793500532157,
+    "finished_unix_ms": 1793500539756,
+    "last_update_unix_ms": 1793500539756,
+    "progress": {
+      "completed": 4,
+      "total": 4,
+      "current_test_full_name": null,
+      "current_test_started_unix_ms": null,
+      "last_finished_test_full_name": "Wildfolk.Tests.SceneContractTests.SavedSceneRetainsPlayableConnectionsAndNonPushingEnemy",
+      "last_finished_unix_ms": 1793500539583,
+      "stuck_suspected": false,
+      "editor_is_focused": false,
+      "run_in_background": true,
+      "focus_nudge_attempts": null,
+      "focus_nudge_limit": null,
+      "focus_nudge_status": null,
+      "blocked_reason": null,
+      "failures_so_far": [],
+      "failures_capped": false
+    },
+    "error": null,
+    "result": {
+      "mode": "EditMode",
+      "summary": {
+        "total": 4,
+        "passed": 4,
+        "failed": 0,
+        "skipped": 0,
+        "durationSeconds": 2.1496002,
+        "resultState": "Passed"
+      },
+      "results": []
+    }
+  },
+  "hint": null
+}

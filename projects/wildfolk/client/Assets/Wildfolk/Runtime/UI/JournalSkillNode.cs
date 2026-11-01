@@ -16,6 +16,7 @@ namespace Wildfolk
             c.highlightedColor=c.selectedColor=destructive?new Color32(161,72,52,255):primary?new Color32(157,108,73,255):new Color32(229,219,190,255);
             c.pressedColor=new Color32(111,103,75,255);c.disabledColor=new Color32(183,177,153,255);button.colors=c;
             var label=button.GetComponentInChildren<Text>(true);if(label!=null)label.color=primary||destructive?Paper:Ink;
+            var icon=button.transform.Find("Action Icon");if(icon!=null)icon.GetComponent<Image>().color=primary||destructive?Paper:Ink;
         }
     }
     // A small state view shared by class and common-growth diagrams; no polling or gameplay truth.

@@ -16,7 +16,8 @@ namespace Wildfolk.Editor
             var old=meta.GetComponent<StoreScreen>();if(old!=null){if(old.View!=null)UnityEngine.Object.DestroyImmediate(old.View);if(old.Entry!=null)UnityEngine.Object.DestroyImmediate(old.Entry.gameObject);if(old.HomeEntry!=null)UnityEngine.Object.DestroyImmediate(old.HomeEntry.gameObject);UnityEngine.Object.DestroyImmediate(old);}
             var s=meta.gameObject.AddComponent<StoreScreen>();s.Meta=meta;var safe=meta.Home.Menu.transform.parent;var hub=meta.HubView.transform.GetChild(0);
             s.Entry=JournalUiBuilder.Action(hub,"Gem Store Entry","store.title",new Vector2(300,410),new Vector2(430,110),s.Open,out var entryLabel);entryLabel.fontSize=32;
-            s.HomeEntry=JournalUiBuilder.Action(meta.Home.Menu.transform,"Gem Balance","store.title",new Vector2(-650,-190),new Vector2(350,120),s.Open,out s.HomeBalance);var localizedBalance=s.HomeBalance.GetComponent<LocalizedLabel>();if(localizedBalance!=null)UnityEngine.Object.DestroyImmediate(localizedBalance);
+            var previousBalance=meta.Home.Menu.transform.Find("Camp Records/Gem Balance");if(previousBalance!=null)UnityEngine.Object.DestroyImmediate(previousBalance.gameObject);
+            s.HomeEntry=JournalUiBuilder.CampEntry(meta.Home,"Gem Balance","store.title",-320,s.Open,"journal_gem",out s.HomeBalance);var localizedBalance=s.HomeBalance.GetComponent<LocalizedLabel>();if(localizedBalance!=null)UnityEngine.Object.DestroyImmediate(localizedBalance);
             var sheet=JournalUiBuilder.Sheet(safe,"Gem Store",out s.View);
             JournalUiBuilder.Label(sheet,"Title","store.title",new Vector2(-400,410),new Vector2(680,80),42);
             s.Wallet=JournalUiBuilder.Label(sheet,"Wallet","",new Vector2(300,405),new Vector2(430,80),34,TextAnchor.MiddleRight);

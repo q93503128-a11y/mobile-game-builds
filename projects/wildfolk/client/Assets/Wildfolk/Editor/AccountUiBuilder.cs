@@ -17,7 +17,8 @@ namespace Wildfolk.Editor
             if(home.GetComponent<AccountProfileScreen>()!=null)throw new InvalidOperationException("Account journal already authored");
             var screen=home.gameObject.AddComponent<AccountProfileScreen>();screen.Home=home;
             var settings=(RectTransform)home.SettingsButton.transform;settings.anchoredPosition=new Vector2(-140,-355);settings.sizeDelta=new Vector2(260,116);var settingsLabel=home.SettingsButton.GetComponentInChildren<Text>();settingsLabel.rectTransform.anchoredPosition=Vector2.zero;settingsLabel.rectTransform.sizeDelta=new Vector2(240,96);settingsLabel.alignment=TextAnchor.MiddleCenter;settingsLabel.fontSize=32;
-            JournalUiBuilder.Action(home.Menu.transform.Find("Field Journal"),"Account Entry","account.title",new Vector2(140,-355),new Vector2(260,116),screen.Open,out _,false);
+            JournalUiBuilder.IconLayout(home.SettingsButton,VisualArtImporter.Sprite("ui_settings"),40);
+            var accountEntry=JournalUiBuilder.IconAction(home.Menu.transform.Find("Field Journal"),"Account Entry","account.title",new Vector2(140,-355),new Vector2(260,116),screen.Open,VisualArtImporter.Sprite("ui_profile"),out _,false);JournalUiBuilder.IconLayout(accountEntry,VisualArtImporter.Sprite("ui_profile"),40);
             var safe=home.Menu.transform.parent;var page=JournalUiBuilder.Sheet(safe,"Account Journal",out screen.View);
             JournalUiBuilder.Label(page,"Title","account.title",new Vector2(-420,391),new Vector2(600,55),34);
             JournalUiBuilder.Action(page,"Back","ui.action.back",new Vector2(695,394),new Vector2(180,120),screen.Back,out _);

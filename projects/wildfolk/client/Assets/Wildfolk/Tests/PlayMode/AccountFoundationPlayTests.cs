@@ -38,6 +38,14 @@ namespace Wildfolk.Tests
             var save=UnityEngine.Object.FindFirstObjectByType<WorldSaveService>();Assert.That(save,Is.Not.Null);Assert.That(save.Repository.Path,Does.StartWith(directory));Assert.That(save.Save(),Is.True);Assert.That(save.Repository.Read(save.Rules.Validate).Version,Is.EqualTo(14));
             save.SaveAndHome();yield return null;Assert.That(SceneManager.GetActiveScene().name,Is.EqualTo(SceneFlow.HomeScene));
         }
+        [UnityTest]public IEnumerator ProfileAdLoadingFollowsAnExplicitAccountState()
+        {
+            identity.Offline=true;var task=service.Connect();while(!task.IsCompleted)yield return null;
+            var screen=UnityEngine.Object.FindFirstObjectByType<EconomyScreen>();screen.OpenHub();yield return null;
+            Assert.That(service.Linked,Is.False);Assert.That(screen.RetryAd.gameObject.activeSelf,Is.False,"An unlinked account cannot load a reward ad");
+            identity.Offline=false;task=service.Connect();while(!task.IsCompleted)yield return null;screen.OpenHub();yield return null;
+            Assert.That(service.CloudAvailable,Is.True);Assert.That(screen.RetryAd.gameObject.activeSelf,Is.True,"Connecting restores the existing manual load action");
+        }
         [UnityTearDown]public IEnumerator Cleanup()
         {
             Time.timeScale=1;if(SceneManager.GetActiveScene().name!=SceneFlow.HomeScene)yield return SceneManager.LoadSceneAsync(SceneFlow.HomeScene);

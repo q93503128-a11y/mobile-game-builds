@@ -1,6 +1,6 @@
 # Commercial UI / mobile presentation — 2026-10-31
 
-Status: IN PROGRESS — USER-REQUESTED CHECKPOINT 2, NOT COMPLETE. Latest evidence/resume instructions are in Checkpoint 2 below; earlier sections preserve the first checkpoint. Start main `d32c07ce7dd598ac3f607d33fd1c2f75d16bf76c`; remote fetched before inspection. This file separates observed baseline, design decisions and verification still required. No RC2 build/upload or service activation is authorized by this pass.
+Status: IN PROGRESS — USER-REQUESTED CHECKPOINT 3, NOT COMPLETE. Latest evidence/resume instructions are in Checkpoint 3 below; earlier sections preserve the first checkpoint. Start main `d32c07ce7dd598ac3f607d33fd1c2f75d16bf76c`; remote fetched before inspection. This file separates observed baseline, design decisions and verification still required. No RC2 build/upload or service activation is authorized by this pass.
 
 ## Current-run evidence
 
@@ -140,3 +140,41 @@ Invalid intermediate evidence is excluded: the first water attempt retained a de
 6. Finish the remaining visual/transition quality gate, final report and main commit/push/clean; then STOP. User PC review is still required before a separately requested RC2 AAB. Do not build/upload/activate automatically.
 
 Representative before/observed-stage images and current raw results are in `resume-20261031/`. All84original menu images and the full runtime/world sequences remain at `C:/UnityProjects/LowfireCommercialUi/`. `screens.json` records exact source hashes and stage limits. The full user-requested final30-topic report is deferred until the remaining checks actually finish.
+
+
+## Checkpoint 3 — 2026-11-01 user-requested stop
+
+Fetched clean remote main `144a56a0b002b614bc6c23dcfe2b75de50eccd25` before work; dev-playbook main was fetched/read without edits. User asked whether the design was temporary/commercial quality, then requested a safe stop because of usage. This is a further implementation/verification checkpoint, **not the full-pass final report or commercial-quality approval. RC2 NOT READY.** The woodland/field-paper direction is retained; visual refinement is a real part of the pass, not inferred from compilation.
+
+### New actual findings and changes
+
+- Actual two-process LAN first reproduced **client loading overlay absent** (`loadOverlaySeen=false`) while room, gameplay, local controls and one HP label worked. `Join` had never called `AttachScenes`; now Host and Client subscribe through that shared method, and Close also removes the scene presentation callback. The second actual peer observed the overlay (`true`), entered with one HP label and bound ClassControls, left to Home and exited. Host saved its isolated Save14, left, rehosted the saved world, entered, saved and left again. The first failed evidence is retained.
+- A nearby real client plus selected existing medicine exposed the Medic treatment button covering the player at140% control size. Medic treatment now shares the Warrior/Engineer active slot because these actions belong to different classes. KO/EN80/100/140% screenshots show treatment to the right of the player and separate from attack/dash. Host medicine/context state was a deliberately configured isolated fixture, not natural unlock/purchase evidence.
+- Explorer with the actual telescope equipped/viewing exposed the meaning selector covering the scope guidance line at140%. Its canonical authored position is now below the marker and left of dash. Both languages and all three control sizes were recaptured after the fix. Earlier overlap capture remains alongside the correction.
+- Main menu still looked too much like text rectangles. Play/Multiplayer/footer now have consistent labeled icons; Class uses the existing journal emblem and a row affordance. Gem/Achievements/Attendance share one restrained camp navigation strip, with actual reward badges only. Profile record/account links use icon rows. OFF/unlinked Profile hides the unusable Load ad action; the existing action returns when linked/cloud available. No ad or billing activation or eligibility changes.
+- Seven navigation symbols use official Lucide SVGs pinned to `a630cec77eac6568b989e87e4947a8bfe45caacd`, rasterized at128px with resvg2.6.2. Originals, hashes and existing ISC/Feather notices are retained. No game art/layout was extracted and no player dependency was added. See SOURCE_ART.
+
+### Actual observation and evidence
+
+Latest Home without save, Profile and Home with an actual isolated Save14: KO/EN ×844×390/1280×720/1920×1080 =18 captures. Connected Profile fixtures add2; Home claimable badge and simulated58px-left/32px-right insets add2. These22 recorded views have no label preferred-height overflow. Larger views were inspected as saved contact sheets as well as small-phone originals. Main/Profile before/after, MP Medic, Explorer overlap/correction and crawler examples are in `resume-20261101/`; full original sequences/metadata remain at `C:/UnityProjects/LowfireCommercialUi/resume-20261101/`.
+
+Connected/cloud/reward states are explicitly typed local fixtures, not real Google/UGS/ads. The crawler and telescope used a seeded isolated generation3 world9472026, controlled spawning/positioning, supplied equipment and configured class ownership/nodes. They are presentation QA, not natural progression. The crawler was first observed resting at3units, then proximity triggered Warning → Windup/chase → Action → Recovery, active legs/body sprite, followed by death with0 displacement. Sampled path1.318464units; max per-frame displacement0.017739. No creature/world/balance edits were justified. Earlier water/18-presentation findings remain valid within their stated limits.
+
+The very first Home capture after selecting a Game View size returned an old tiny frame and was excluded. Subsequent accepted captures use an Editor-only helper waiting three frames and end-of-frame; helper source stays outside canonical assets and its live-project script/meta were removed. A previous mixed-language stale-frame image is not treated as a product localization defect.
+
+### Validation and protection
+
+- First focused PlayMode job `f98effdb29e848a5923a368beb324079`:12/13 passed. The new navigation test wrongly assumed the preceding economy fixture had left an unlinked account. Its navigation assertions remain, and account visibility moved to a test with explicit fake offline/connected states. The failed JSON is preserved.
+- Targeted account-state + preceding linked-economy UI + actual-pointer navigation job `4734401fca0c40218f766ba8cb7424f2`:3/3 passed. This continuation union is **14unique PlayMode tests passed**, including max class-control geometry, floating/multitouch ownership, chest touch scroll, real menu raycasts and existing UI/reward paths. Earlier checkpoints are history, not a newly rerun full suite.
+- EditMode `96ce5032f1094763bc8590eecb8d9643`: SceneContract2 + FrontendContract2 =4/4. ProjectDataValidator errors0. Source validator PASS,1879unique GUIDs. No window Focus/Show or Windows input was used; test runner reports background execution with zero focus nudges.
+- Final Home idle probe180frames: objects170→170; Canvas.BuildBatch max0; Layout p95.0026ms/max.0132ms; MainThread p952.8971ms; Editor-wide GC median13417bytes. This does not establish Android FPS or zero gameplay GC.
+- Six real user files match initial SHA256/size/mtime. Native Editor returned to saved MainMenu/Edit, Play OFF/unpaused, QA flag cleared. No companion Editor remains. Save14/Profile2/Cloud1/Economy2/Protocol23/generation3/IAP1 and Item136/Recipe111 stay unchanged; Backend/Ads/IAP OFF. No AAB/upload/deployment.
+
+### Resume here
+
+1. Fetch latest main, read AGENTS/README/this section. Preserve user files and current native Editor state; do not repeat the old pending-LAN/crawler list from Checkpoint2.
+2. Implementation and these related checks are saved. Finish the complete requested visual/requirements quality-gate report (30 final response topics/37 validation topics), consolidating accepted before/after provenance and explicit limitations from all three checkpoints. Check any truly unaddressed requirement before declaring the pass complete; avoid repeating passed tests without a related change/failure.
+3. Present the current design honestly as a review candidate; user PC/Unity approval and physical Android feel/readability remain distinct. Relay/4physical peers, real Google/IAP/ads and long-session stress were not performed in this pass. Do not label them passed.
+4. Commit/push/clean after remaining work; then STOP. Do not build RC2, upload or activate services automatically.
+
+Timing phases for this continuation are saved with tokenUsage=null (no per-task token/billing telemetry). Measurement begins11:03:18 KST; the preceding fetch/read setup was not timed and is not silently estimated. Git closing time is included in the final reply's measured elapsed time.

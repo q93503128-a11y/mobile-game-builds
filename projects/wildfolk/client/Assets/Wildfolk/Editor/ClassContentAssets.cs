@@ -79,7 +79,8 @@ namespace Wildfolk.Editor
         internal static void BuildLobby(HomeScreen home)
         {
             var s=home.gameObject.AddComponent<ClassLobbyScreen>();s.Home=home;s.Rules=home.Rules;
-            home.ClassButton=JournalUiBuilder.Action(home.Menu.transform.Find("Field Journal"),"Class Journal Entry","class.title",new Vector2(0,-210),new Vector2(530,120),s.Open,out _);
+            home.ClassButton=JournalUiBuilder.RowAction(home.Menu.transform.Find("Field Journal"),"Class Journal Entry","class.title",new Vector2(0,-210),new Vector2(530,120),s.Open,"class_survivor",out _);
+            var classEntryIcon=home.ClassButton.transform.Find("Action Icon").GetComponent<Image>();classEntryIcon.sprite=JournalSymbolAssets.Sprite("class_survivor");classEntryIcon.color=Color.white;
             var page=JournalUiBuilder.Sheet(home.Menu.transform.parent,"Class Field Journal",out s.View);
             JournalUiBuilder.Label(page,"Heading","journal.classes",new Vector2(-460,405),new Vector2(580,80),44);
             JournalUiBuilder.Action(page,"Back","ui.action.back",new Vector2(690,405),new Vector2(180,120),s.Back,out _);
@@ -151,7 +152,7 @@ namespace Wildfolk.Editor
         internal static void ArrangeHud(ClassHud hud)
         {
             var name=hud.ClassName.rectTransform;name.anchorMin=name.anchorMax=Vector2.one;InventoryUiBuilder.Caption(hud.ClassName,new Vector2(-390,-70),new Vector2(400,60),28);hud.ClassName.alignment=TextAnchor.MiddleRight;
-            InventoryUiBuilder.ActionSize(hud.ActiveButton,new Vector2(-472,310),new Vector2(180,128));InventoryUiBuilder.ActionSize(hud.MarkButton,new Vector2(-472,480),new Vector2(180,128));InventoryUiBuilder.ActionSize(hud.MedicineButton,new Vector2(-682,310),new Vector2(180,128));InventoryUiBuilder.ActionSize(hud.MeaningButton,new Vector2(-210,0),new Vector2(180,128));
+            InventoryUiBuilder.ActionSize(hud.ActiveButton,new Vector2(-472,310),new Vector2(180,128));InventoryUiBuilder.ActionSize(hud.MarkButton,new Vector2(-472,480),new Vector2(180,128));InventoryUiBuilder.ActionSize(hud.MedicineButton,new Vector2(-472,310),new Vector2(180,128));InventoryUiBuilder.ActionSize(hud.MeaningButton,new Vector2(-40,-160),new Vector2(180,128));
             InventoryUiBuilder.ActionSize(hud.RepairButton,new Vector2(-170,0),new Vector2(300,112));InventoryUiBuilder.ActionSize(hud.DismantleButton,new Vector2(170,0),new Vector2(300,112));InventoryUiBuilder.Caption(hud.BuildingText,new Vector2(0,100),new Vector2(820,65),28);InventoryUiBuilder.Caption(hud.ServiceProgress,new Vector2(0,-95),new Vector2(810,55),26);
         }
     }

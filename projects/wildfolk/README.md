@@ -1,4 +1,4 @@
-> **2026-10-31 진행 중 체크포인트:** Commercial UI / Mobile Presentation 체크포인트2: 메뉴84캡처·가방/제작 터치 확대·물/생물 관찰·실제2프로세스 LAN·Editor 성능을 확인했다. 마지막 직업 HUD 바인딩/클라이언트 로딩 변경의 실제 재검수는 남아 **RC2 NOT READY**다. 사용자 요청으로 안전한 지점에서 중단했다. [현재 결과와 재개 순서](validation/commercial-ui-mobile/REVIEW.md#checkpoint-2--resumed-inspection-user-requested-stop). 아래 RC1 서명 아티팩트는 이전 커밋의 역사 기록이며 현재 main의 새 빌드가 아니다.
+> **2026-11-01 사용자 요청 체크포인트3:** 메인/Profile 아이콘·탐색 표현과 역할 HUD를 보정하고, 최신 실제 LAN 로딩·저장·재입장 및 근접 crawler를 확인했다. 관련 Play14개/Edit4개·data/source 검증을 통과했다. 전체 요구사항/최종 보고 정리와 사용자 화면 검수가 남아 **RC2 NOT READY**다. [최신 결과와 재개 순서](validation/commercial-ui-mobile/REVIEW.md#checkpoint-3--2026-11-01-user-requested-stop). AAB/업로드/운영 활성화는 하지 않았다.
 
 # Lowfire
 

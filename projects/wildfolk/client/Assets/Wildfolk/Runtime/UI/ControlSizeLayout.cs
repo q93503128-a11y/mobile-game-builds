@@ -29,7 +29,8 @@ namespace Wildfolk
                 foreach(var view in new[]{ClassControls.ActiveView,ClassControls.MarkerView,ClassControls.MedicineView})view.transform.localScale=Vector3.one*scale;
                 ((RectTransform)ClassControls.ActiveView.transform).anchoredPosition=Action.anchoredPosition+new Vector2(-330,150)*scale;
                 ((RectTransform)ClassControls.MarkerView.transform).anchoredPosition=Action.anchoredPosition+new Vector2(-330,320)*scale;
-                ((RectTransform)ClassControls.MedicineView.transform).anchoredPosition=Action.anchoredPosition+new Vector2(-540,150)*scale;
+                // Guard/overclock and ally medicine belong to different classes and share one thumb slot.
+                ((RectTransform)ClassControls.MedicineView.transform).anchoredPosition=Action.anchoredPosition+new Vector2(-330,150)*scale;
             }
         }
     }

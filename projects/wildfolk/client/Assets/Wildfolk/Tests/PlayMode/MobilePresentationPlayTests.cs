@@ -68,6 +68,24 @@ namespace Wildfolk.Tests
             Touch(1,TouchPhase.Ended,origin+Vector2.up*110);yield return null;yield return null;
             Assert.That(scroll.verticalNormalizedPosition,Is.LessThan(.99f));Assert.That(panel.Drag.IsDragging,Is.False);Assert.That(save.Player.Model.CountItem(wood),Is.EqualTo(total));Assert.That(chest.Model.CountItem(wood),Is.Zero);
         }
+        [UnityTest]public IEnumerator MaximumClassControlsKeepThePlayerCenterClear()
+        {
+            var layout=Object.FindFirstObjectByType<ControlSizeLayout>();Assert.That(layout.ClassControls,Is.Not.Null);
+            var preferences=layout.Preferences;var previous=preferences.Values.ControlSize;
+            try
+            {
+                preferences.SetControl(1.4f);yield return null;Canvas.ForceUpdateCanvases();
+                var role=layout.ClassControls;var safe=(RectTransform)role.MedicineView.transform.parent;
+                var center=RectTransformUtility.WorldToScreenPoint(null,safe.TransformPoint(safe.rect.center));
+                var corners=new Vector3[4];((RectTransform)role.MedicineView.transform).GetWorldCorners(corners);
+                Assert.That(RectTransformUtility.WorldToScreenPoint(null,corners[0]).x,Is.GreaterThan(center.x+Screen.width*.08f),"Contextual ally treatment must stay in the right thumb region at maximum size");
+                Assert.That(RectTransformUtility.RectangleContainsScreenPoint((RectTransform)layout.Action,RectTransformUtility.WorldToScreenPoint(null,role.MedicineView.transform.position)),Is.False,"Treatment must not cover attack");
+                ((RectTransform)role.MeaningButton.transform).GetWorldCorners(corners);
+                var top=RectTransformUtility.WorldToScreenPoint(null,corners[1]).y;var markerBottom=new Vector3[4];((RectTransform)role.MarkerView.transform).GetWorldCorners(markerBottom);
+                Assert.That(top,Is.LessThan(RectTransformUtility.WorldToScreenPoint(null,markerBottom[0]).y),"The meaning selector belongs below the marker, away from the telescope guidance line");
+            }
+            finally{preferences.SetControl(previous);}
+        }
         [UnityTearDown]public IEnumerator Cleanup()
         {
             if(save!=null)save.AutoSaveEnabled=false;if(touch!=null&&touch.added)InputSystem.RemoveDevice(touch);pointer?.Dispose();Time.timeScale=1;WorldGenerator.SelectedGenerationVersion=generation;WorldGenerator.SelectedSeed=seed;

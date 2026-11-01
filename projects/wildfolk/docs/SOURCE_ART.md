@@ -78,3 +78,8 @@ III 원본 아트: tools/generate_tier_three_art.py(Pillow). 기존 Steel/Lanter
 ## Undead King / Royal Tomb (2026-10-23)
 
 `tools/generate_boss_art.py`의 Pillow 원본15PNG: king_head/crown/crown_broken/torso/cloak/arm/legs/sword/ash, royal_tomb/lid, skull_mark/grave_crack, boss_core_t1/undead_kings_crown. 머리/왕관/갑주/양팔/하체/검/비대칭 망토는 별도 sprite/transform 포즈다. 플레이어 Crown은 온전한 작은 왕관, 보스 Phase3은 기울어진 파손 왕관이다. Terraria/Valheim/Core Keeper의 원칙만 조사했으며 그 게임의 이미지/코드/음원을 사용하지 않았다. 신규 외부 BGM/SFX는 없다.
+
+
+## 2026-11-01 탐색 아이콘
+
+메뉴의 ui_play/ui_users/ui_settings/ui_profile/ui_award/ui_calendar/ui_next는 [Lucide](https://lucide.dev/license)의 공식 SVG7개다. 기존 Dash와 같은 ISC/Feather 고지를 Art/Lucide-LICENSE.txt로 유지한다. 원본·정확한 source commit·SHA256·변환 결과는 art-source/navigation-symbols/sources.json에 있다. resvg-js2.6.2로128×128 투명 PNG로 rasterize하고, 단색 stroke는 JournalStyle에서 잉크/종이색으로 tint한다. 엔진·npm package는 제작 환경에만 있고 Unity/player 의존성은 추가하지 않았다. Class는 기존 journal_symbols의 자체 emblem을 재사용한다.

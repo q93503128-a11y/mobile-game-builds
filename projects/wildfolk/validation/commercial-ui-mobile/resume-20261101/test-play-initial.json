@@ -1,0 +1,59 @@
+{
+  "success": true,
+  "message": "Test job status retrieved.",
+  "error": null,
+  "data": {
+    "job_id": "f98effdb29e848a5923a368beb324079",
+    "status": "failed",
+    "mode": "PlayMode",
+    "started_unix_ms": 1793500305828,
+    "finished_unix_ms": 1793500352148,
+    "last_update_unix_ms": 1793500352148,
+    "progress": {
+      "completed": 13,
+      "total": 13,
+      "current_test_full_name": null,
+      "current_test_started_unix_ms": null,
+      "last_finished_test_full_name": "Wildfolk.Tests.RewardedAdsPlayTests.FailedFreshEligibilityClearsPreviouslyEnabledAdButton",
+      "last_finished_unix_ms": 1793500352115,
+      "stuck_suspected": false,
+      "editor_is_focused": false,
+      "run_in_background": true,
+      "focus_nudge_attempts": null,
+      "focus_nudge_limit": null,
+      "focus_nudge_status": null,
+      "blocked_reason": null,
+      "failures_so_far": [
+        {
+          "full_name": "Wildfolk.Tests.FrontendPlayTests.CampNavigationAndProfileRowsReachTheirRealDestinations",
+          "message": "  Unlinked accounts must not present a dead load-ad action\r\n  Expected: False\r\n  But was:  True\r\n"
+        }
+      ],
+      "failures_capped": false
+    },
+    "error": null,
+    "result": {
+      "mode": "PlayMode",
+      "summary": {
+        "total": 13,
+        "passed": 12,
+        "failed": 1,
+        "skipped": 0,
+        "durationSeconds": 39.8390038,
+        "resultState": "Failed(Child)"
+      },
+      "results": [
+        {
+          "name": "CampNavigationAndProfileRowsReachTheirRealDestinations",
+          "fullName": "Wildfolk.Tests.FrontendPlayTests.CampNavigationAndProfileRowsReachTheirRealDestinations",
+          "state": "Failed",
+          "durationSeconds": 0.4943716,
+          "message": "  Unlinked accounts must not present a dead load-ad action\r\n  Expected: False\r\n  But was:  True\r\n",
+          "stackTrace": "at Wildfolk.Tests.FrontendPlayTests+<CampNavigationAndProfileRowsReachTheirRealDestinations>d__17.MoveNext () [0x001d7] in C:\\UnityProjects\\Wildfolk\\Assets\\Wildfolk\\Tests\\PlayMode\\FrontendPlayTests.cs:83\r\nat UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\\Library\\PackageCache\\com.unity.test-framework@bd7f943e9647\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:44\r\n",
+          "output": ""
+        }
+      ]
+    }
+  },
+  "hint": null
+}

@@ -15,16 +15,17 @@ namespace Wildfolk.Editor
             if(EditorApplication.isPlaying||UnityEngine.SceneManagement.SceneManager.GetActiveScene().isDirty)throw new InvalidOperationException("Save scene and stop Play first");
             var scene=EditorSceneManager.OpenScene(FrontendSceneBuilder.ScenePath);var home=UnityEngine.Object.FindFirstObjectByType<HomeScreen>();var existing=home.GetComponent<EconomyScreen>();if(existing!=null){UnityEngine.Object.DestroyImmediate(existing.AchievementView);UnityEngine.Object.DestroyImmediate(existing.AttendanceView);UnityEngine.Object.DestroyImmediate(existing.AchievementEntry.transform.parent.gameObject);UnityEngine.Object.DestroyImmediate(existing.AttendanceEntry.transform.parent.gameObject);UnityEngine.Object.DestroyImmediate(existing.ProfileSummary.gameObject);if(existing.HubView!=null)UnityEngine.Object.DestroyImmediate(existing.HubView);UnityEngine.Object.DestroyImmediate(existing);}var s=home.gameObject.AddComponent<EconomyScreen>();s.Home=home;s.Profile=home.GetComponent<AccountProfileScreen>();var profile=s.Profile.View.transform.GetChild(0);var safe=home.Menu.transform.parent;
             foreach(var name in new[]{"Direct Achievements","Direct Attendance"}){var previous=home.Menu.transform.Find(name);if(previous!=null)UnityEngine.Object.DestroyImmediate(previous.gameObject);}
-            JournalUiBuilder.Action(home.Menu.transform,"Direct Achievements","economy.achievements",new Vector2(-650,-360),new Vector2(350,132),s.OpenAchievements,out s.DirectAchievementEntry);
-            JournalUiBuilder.Action(home.Menu.transform,"Direct Attendance","economy.attendance",new Vector2(-260,-360),new Vector2(350,132),s.OpenAttendance,out s.DirectAttendanceEntry);
+            var oldNavigation=home.Menu.transform.Find("Camp Records");if(oldNavigation!=null)UnityEngine.Object.DestroyImmediate(oldNavigation.gameObject);
+            JournalUiBuilder.CampEntry(home,"Direct Achievements","economy.achievements",0,s.OpenAchievements,"ui_award",out s.DirectAchievementEntry);
+            JournalUiBuilder.CampEntry(home,"Direct Attendance","economy.attendance",320,s.OpenAttendance,"ui_calendar",out s.DirectAttendanceEntry);
             var hub=JournalUiBuilder.Sheet(safe,"Profile and Records",out s.HubView);
             JournalUiBuilder.Label(hub,"Title","meta.title",new Vector2(-400,414),new Vector2(680,74),40);
             JournalUiBuilder.Action(hub,"Back","ui.action.back",new Vector2(690,410),new Vector2(180,126),s.CloseHub,out _);
             s.HubIdentity=JournalUiBuilder.Label(hub,"Identity","",new Vector2(0,285),new Vector2(1450,110),30);
             s.ProfileSummary=JournalUiBuilder.Label(hub,"Record summary","",new Vector2(-370,60),new Vector2(680,260),34);
-            JournalUiBuilder.Action(hub,"Achievements Entry","economy.achievements",new Vector2(405,155),new Vector2(650,142),s.OpenAchievements,out s.AchievementEntry);
-            JournalUiBuilder.Action(hub,"Attendance Entry","economy.attendance",new Vector2(405,-10),new Vector2(650,142),s.OpenAttendance,out s.AttendanceEntry);
-            JournalUiBuilder.Action(hub,"Account Settings","account.title",new Vector2(-385,-130),new Vector2(650,126),s.OpenAccount,out _);
+            JournalUiBuilder.RowAction(hub,"Achievements Entry","economy.achievements",new Vector2(405,155),new Vector2(650,142),s.OpenAchievements,"ui_award",out s.AchievementEntry);
+            JournalUiBuilder.RowAction(hub,"Attendance Entry","economy.attendance",new Vector2(405,-10),new Vector2(650,142),s.OpenAttendance,"ui_calendar",out s.AttendanceEntry);
+            JournalUiBuilder.RowAction(hub,"Account Settings","account.title",new Vector2(-385,-130),new Vector2(650,126),s.OpenAccount,"ui_profile",out _);
             s.WatchAd=JournalUiBuilder.Action(hub,"Optional Gem ad","",new Vector2(405,-160),new Vector2(650,126),s.WatchReward,out s.AdLabel);
             s.AdStatus=JournalUiBuilder.Label(hub,"Ad availability","",new Vector2(-385,-245),new Vector2(720,94),28);
             s.RetryAd=JournalUiBuilder.Action(hub,"Retry reward","ads.retry",new Vector2(580,-350),new Vector2(310,126),s.RetryReward,out _);

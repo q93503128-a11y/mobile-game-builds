@@ -74,5 +74,15 @@ namespace Wildfolk.Tests
             Assert.That(Object.FindObjectsByType<WorldSaveService>(FindObjectsSortMode.None),Is.Empty);Assert.That(Object.FindObjectsByType<CreatureMember>(FindObjectsSortMode.None),Is.Empty);Assert.That(Object.FindObjectsByType<Health>(FindObjectsSortMode.None),Is.Empty);Assert.That(Object.FindObjectsByType<PrefabPool>(FindObjectsSortMode.None),Is.Empty);
             Assert.That(Object.FindObjectsByType<UserPreferences>(FindObjectsSortMode.None).Length,Is.EqualTo(1));Assert.That(SceneManager.GetActiveScene().name,Is.EqualTo(SceneFlow.HomeScene));
         }
+        [UnityTest]public IEnumerator CampNavigationAndProfileRowsReachTheirRealDestinations()
+        {
+            var meta=Home.GetComponent<EconomyScreen>();var store=Home.GetComponent<StoreScreen>();
+            yield return pointer.Click(meta.DirectAchievementEntry.GetComponentInParent<Button>());Assert.That(meta.AchievementView.activeSelf,Is.True);meta.Back();Assert.That(Home.Menu.activeSelf,Is.True);
+            yield return pointer.Click(meta.DirectAttendanceEntry.GetComponentInParent<Button>());Assert.That(meta.AttendanceView.activeSelf,Is.True);meta.Back();
+            yield return pointer.Click(store.HomeEntry);Assert.That(store.View.activeSelf,Is.True);store.Close();Assert.That(Home.Menu.activeSelf,Is.True);
+            yield return pointer.Click(meta.HomeEntry.GetComponentInParent<Button>());Assert.That(meta.HubView.activeSelf,Is.True);
+            yield return pointer.Click(meta.AchievementEntry.GetComponentInParent<Button>());Assert.That(meta.AchievementView.activeSelf,Is.True);meta.Back();Assert.That(meta.HubView.activeSelf,Is.True,"Records entered from Profile return to Profile");
+            meta.CloseHub();yield return pointer.Click(Home.ClassButton);Assert.That(Home.GetComponent<ClassLobbyScreen>().View.activeSelf,Is.True);
+        }
     }
 }

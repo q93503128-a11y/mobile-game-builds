@@ -37,6 +37,36 @@ namespace Wildfolk.Editor
             Rule(image.transform,new Vector2(-size.x*.5f,-size.y*.5f+1),new Vector2(size.x*.5f,-size.y*.5f+1));
             if(action!=null)UnityEventTools.AddPersistentListener(b.onClick,action);return b;
         }
+        internal static Button IconAction(Transform parent,string name,string key,Vector2 p,Vector2 size,UnityEngine.Events.UnityAction action,Sprite icon,out Text label,bool primary=false)
+        {
+            var button=Action(parent,name,key,p,size,action,out label,primary);IconLayout(button,icon);return button;
+        }
+        internal static void IconLayout(Button button,Sprite sprite,float extent=64)
+        {
+            var size=((RectTransform)button.transform).sizeDelta;
+            var previous=button.transform.Find("Action Icon");var icon=previous==null?Image("Action Icon",button.transform,"white",Vector2.one*.5f,Vector2.zero,Vector2.one):previous.GetComponent<Image>();icon.rectTransform.anchoredPosition=new Vector2(-size.x*.5f+32+extent*.5f,0);icon.rectTransform.sizeDelta=new Vector2(extent,extent);icon.sprite=sprite;icon.preserveAspect=true;icon.color=JournalStyle.Ink;
+            var label=button.GetComponentInChildren<Text>(true);label.alignment=TextAnchor.MiddleLeft;label.rectTransform.anchoredPosition=new Vector2((extent+32)*.5f,0);label.rectTransform.sizeDelta=new Vector2(size.x-extent-80,size.y-16);
+        }
+        internal static Button RowAction(Transform parent,string name,string key,Vector2 p,Vector2 size,UnityEngine.Events.UnityAction action,string icon,out Text label)
+        {
+            var button=IconAction(parent,name,key,p,size,action,VisualArtImporter.Sprite(icon),out label);ClearSurface(button);
+            var arrow=Image("Open",button.transform,"ui_next",Vector2.one*.5f,new Vector2(size.x*.5f-28,0),new Vector2(32,32));arrow.color=JournalStyle.Muted;
+            return button;
+        }
+        internal static Transform CampNavigation(HomeScreen home)
+        {
+            var existing=home.Menu.transform.Find("Camp Records");if(existing!=null)return existing;
+            var plate=Image("Camp Records",home.Menu.transform,"panel",Vector2.one*.5f,new Vector2(-400,-360),new Vector2(960,180));return plate.transform;
+        }
+        internal static Button CampEntry(HomeScreen home,string name,string key,float x,UnityEngine.Events.UnityAction action,string icon,out Text label)
+        {
+            var parent=CampNavigation(home);var button=Action(parent,name,key,new Vector2(x,0),new Vector2(300,160),action,out label);ClearSurface(button);
+            var rule=button.transform.Find("Connection");if(rule!=null)Object.DestroyImmediate(rule.gameObject);
+            var art=Image("Navigation Symbol",button.transform,icon,Vector2.one*.5f,new Vector2(0,29),new Vector2(64,64));art.preserveAspect=true;art.color=icon=="journal_gem"?Color.white:JournalStyle.Paper;
+            label.rectTransform.anchoredPosition=new Vector2(0,-45);label.rectTransform.sizeDelta=new Vector2(292,62);label.color=JournalStyle.Paper;label.fontSize=32;return button;
+        }
+        private static void ClearSurface(Button button)
+        {var colors=button.colors;colors.normalColor=colors.disabledColor=Color.clear;colors.highlightedColor=colors.selectedColor=new Color(1,1,1,.08f);colors.pressedColor=new Color(0,0,0,.12f);button.colors=colors;}
         internal static JournalSkillNode Node(Transform parent,string name,Vector2 p,Sprite icon,UnityEngine.Events.UnityAction<int> action,int index,out Button button)
         {
             var frame=Image(name,parent,"journal_node",Vector2.one*.5f,p,new Vector2(120,120),true);button=Button(frame);button.transition=Selectable.Transition.None;
