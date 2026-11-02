@@ -141,3 +141,7 @@ Engineer 실제 가격120Gem, 기본 잔액0/업적·출석으로 획득 가능.
 ## Foundation2.1 admission 현재 경계
 
 Host 로컬과 remote Engineer 모두 실제 서버 ownership을 발급·재검증한다. remote Owned JSON/선택/receipt만으로 승격하지 않는다. 처음 remote Engineer 입장 시 XP0/node빈 값이며 같은 authenticated player의 같은 세션 재접속만 임시 XP를 보존한다. 다른 계정/새 Host session은0부터다. 원격 성장을 account store에 쓰지 않는다. backend unavailable이면 Survivor로 세션만 fallback하고 영구 Engineer 선택/XP는 유지한다. Gold 직업의 기존 local Host 허용/원격 Survivor 정책은 변경하지 않았다. LAN/Relay 공통이며 Protocol23이다. 검증/재개 상태는 [Foundation2.1 REVIEW](../validation/economy-premium-mp-ledger/REVIEW.md)를 따른다.
+
+## 2026-11-02 손/팔 장비 표시 교정
+
+월드의 장갑 renderer는 실제 base-hand sprite 크기에 맞춰 맞추고 CharacterFacing의 손 축과 body/portrait 축의180도 차이를 보정한다. 손 자식 위치0과 기존 공격 pose/무기 socket을 사용하며 Head/Body 방어 수치·헬멧 크기·Portrait는 변경하지 않는다. SP/replicated appearance가 같은 PlayerEquipment.RefreshArmor를 사용한다. 가죽/철/강철/다이아, 방향·걷기·공격·장착/해제의 실제 검수는 [REVIEW](../validation/post-commercial-ui-qa-tools/REVIEW.md)를 따른다.

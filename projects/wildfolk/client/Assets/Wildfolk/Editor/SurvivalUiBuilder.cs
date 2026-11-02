@@ -28,14 +28,16 @@ namespace Wildfolk.Editor
         internal static void ConfigurePauseActions(Transform panel,WorldSaveService save)
         {
             var load=panel.Find("Load Game");if(load!=null)Object.DestroyImmediate(load.gameObject);
-            ((RectTransform)panel).sizeDelta=new Vector2(840,840);
-            ((RectTransform)panel.Find("Title")).anchoredPosition=new Vector2(0,330);
-            foreach(var pair in new[]{("Continue",220f),("Save Game",65f),("Settings",-90f)}){var rect=(RectTransform)panel.Find(pair.Item1);rect.anchoredPosition=new Vector2(0,pair.Item2);rect.sizeDelta=new Vector2(640,126);var label=rect.GetComponentInChildren<Text>();label.rectTransform.sizeDelta=new Vector2(610,110);label.fontSize=36;}
+            ((RectTransform)panel).sizeDelta=new Vector2(670,720);
+            ((RectTransform)panel.Find("Title")).anchoredPosition=new Vector2(0,290);
+            foreach(var pair in new[]{("Continue",174f),("Save Game",38f),("Settings",-98f)}){var rect=(RectTransform)panel.Find(pair.Item1);rect.anchoredPosition=new Vector2(0,pair.Item2);rect.sizeDelta=new Vector2(550,110);var label=rect.GetComponentInChildren<Text>();label.rectTransform.sizeDelta=new Vector2(518,92);label.fontSize=36;}
+            QualityUiBuilder.FieldSurface(panel.GetComponent<Image>());panel.Find("Title").GetComponent<Text>().color=JournalStyle.Paper;
+            foreach(var b in panel.GetComponentsInChildren<Button>(true)){b.image.sprite=VisualArtImporter.Sprite("white");JournalStyle.FieldAction(b,b.name=="Continue");}
             var existing=panel.Find("Save and Home");
-            if(existing!=null){((RectTransform)existing).anchoredPosition=new Vector2(0,-260);((RectTransform)existing).sizeDelta=new Vector2(640,126);var label=existing.GetComponentInChildren<Text>();label.rectTransform.sizeDelta=new Vector2(610,110);label.fontSize=34;return;}
-            var home=Image("Save and Home",panel,"panel",new Vector2(.5f,.5f),new Vector2(0,-260),new Vector2(640,126),true);
-            Text("Label",home.transform,"home.save_exit",Vector2.zero,new Vector2(610,110),34);
-            UnityEventTools.AddPersistentListener(Button(home).onClick,save.SaveAndHome);
+            if(existing!=null){((RectTransform)existing).anchoredPosition=new Vector2(0,-245);((RectTransform)existing).sizeDelta=new Vector2(550,110);var label=existing.GetComponentInChildren<Text>();label.rectTransform.sizeDelta=new Vector2(518,92);label.fontSize=34;return;}
+            var home=Image("Save and Home",panel,"white",new Vector2(.5f,.5f),new Vector2(0,-245),new Vector2(550,110),true);
+            Text("Label",home.transform,"home.save_exit",Vector2.zero,new Vector2(518,92),34);
+            UnityEventTools.AddPersistentListener(Button(home).onClick,save.SaveAndHome);JournalStyle.FieldAction(home.GetComponent<Button>());
         }
         internal static GameObject Settings(Transform parent,UserPreferences preferences,UnityEngine.Events.UnityAction backAction)
         {

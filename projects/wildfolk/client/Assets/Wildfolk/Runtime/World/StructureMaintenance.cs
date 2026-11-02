@@ -33,10 +33,10 @@ namespace Wildfolk
         {
             var role=player.GetComponent<PlayerClass>();if(!SimulationAuthority.Allows(this) || !CanRepair(role))return false;
             if(place.Health.Current>=place.Health.Maximum)
-            {if(role==null || !role.FreeRepair)return false;Buffer=Mathf.FloorToInt(role.BufferCap(place));buffers[place.SaveId]=Buffer;Changed?.Invoke();AudioRuntime.Play(Sound.Repair,transform.position);return true;}
+            {if(role==null || !role.FreeRepair)return false;Buffer=Mathf.FloorToInt(role.BufferCap(place));buffers[place.SaveId]=Buffer;Changed?.Invoke();AudioRuntime.Play(Sound.Repair,transform.position);if(player.GetComponent<NetworkPlayer>()?.IsOwner!=false)PlayerFeedback.ShowKey("maintenance.repaired");return true;}
             if(role?.FreeRepair==true)place.Health.Heal(place.Health.Maximum-place.Health.Current);
             else if(place.Definition.RepairMaterials.Length==0 || !player.Model.TryConsumeCosts(RepairCosts(),()=>{place.Health.Heal(place.Health.Maximum-place.Health.Current);return true;}))return false;
-            Changed?.Invoke();AudioRuntime.Play(Sound.Repair,transform.position);return true;
+            Changed?.Invoke();AudioRuntime.Play(Sound.Repair,transform.position);if(player.GetComponent<NetworkPlayer>()?.IsOwner!=false)PlayerFeedback.ShowKey("maintenance.repaired");return true;
         }
         public bool HasContents()
         {
@@ -53,8 +53,8 @@ namespace Wildfolk
         public bool Dismantle(PlayerInventory player)
         {
             if(!SimulationAuthority.Allows(this) || !place.PlayerBuilt || !place.Health.IsAlive || HasContents())return false;
-            var result=Refund();if(!player.Model.TryAddAmounts(result))return false;
-            buffers.Remove(place.SaveId);Buffer=0;AudioRuntime.Play(Sound.Dismantle,transform.position);PrefabPool.Release(gameObject);return true;
+            var result=Refund();if(!player.Model.TryAddAmounts(result)){if(player.GetComponent<NetworkPlayer>()?.IsOwner!=false)PlayerFeedback.ShowKey("feedback.bag_full");return false;}
+            buffers.Remove(place.SaveId);Buffer=0;AudioRuntime.Play(Sound.Dismantle,transform.position);if(player.GetComponent<NetworkPlayer>()?.IsOwner!=false)PlayerFeedback.ShowMaintenance(result);PrefabPool.Release(gameObject);return true;
         }
     }
 }

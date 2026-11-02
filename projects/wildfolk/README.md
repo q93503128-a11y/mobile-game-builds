@@ -1,3 +1,5 @@
+> **2026-11-02 Post-RC1 Quality #2:** World/Creature Inspector·QA 이동/생성, 수리/해체·HUD·Pause·팔 장비·관련 UI 교정과 검증 완료. **READY FOR USER PC REVIEW**이며 RC2/AAB/운영 활성화는 하지 않았다. [결과·사용법·증거](validation/post-commercial-ui-qa-tools/REVIEW.md).
+
 > **2026-11-02 UI pass 마감:** Commercial UI/Mobile Presentation 저장소 구현·관련 검증 완료. 마지막127개 메뉴 클릭음 누락도 교정했다. 화면은 PC/Unity 검수 후보이며 **사용자·실기기 승인 전 RC2 NOT READY**다. [최종37항목 보고/증거](validation/commercial-ui-mobile/FINAL_REPORT.md). AAB/업로드/운영 활성화는 하지 않았다.
 
 # Lowfire

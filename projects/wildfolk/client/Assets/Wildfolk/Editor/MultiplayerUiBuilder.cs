@@ -30,8 +30,8 @@ namespace Wildfolk.Editor
             ui.PlayersLabel=JournalUiBuilder.Label(room,"Players","",new Vector2(0,20),new Vector2(1400,80),36,TextAnchor.MiddleCenter);
             ui.CopyCodeButton=JournalUiBuilder.Action(room,"Copy code","net.copy_code",new Vector2(-360,-130),new Vector2(620,126),ui.CopyCode,out _);
             ui.EnterButton=JournalUiBuilder.Action(room,"Enter Game","net.enter",new Vector2(360,-130),new Vector2(620,126),ui.Enter,out _,true);
-            ui.StatusLabel=JournalUiBuilder.Label(page,"Session Message","net.intro",new Vector2(0,-270),new Vector2(1400,115),32,TextAnchor.MiddleCenter);
-            ui.SingleButton=JournalUiBuilder.Action(page,"Single Player","home.single",new Vector2(0,-405),new Vector2(650,120),ui.Single,out _);
+            ui.StatusLabel=JournalUiBuilder.Label(page,"Session Message","net.intro",new Vector2(0,-255),new Vector2(1400,100),32,TextAnchor.MiddleCenter);
+            ui.SingleButton=JournalUiBuilder.Action(page,"Single Player","home.single",new Vector2(0,-375),new Vector2(650,110),ui.Single,out _);
             return view;
         }
     }

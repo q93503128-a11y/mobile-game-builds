@@ -24,3 +24,7 @@ Lowfire 표시 이름은 brand.name(en/ko 공통 Lowfire)과 Home의 Krita wordm
 
 
 Multiplayer Foundation 1의 net.*는 Internet/Local Network 구분, Host/Join/Enter/Leave, Room Code/IPv4 입력, 대기·잘못된 입력·접속 실패·정원 초과·Host 종료 안내, HP/야영지 문구의 en/ko 정본이다. raw SDK 오류는 제품 UI에 출력하지 않는다. 익명 Relay 인증 정보/각 기기의 로컬 언어는 다른 Player 상태로 동기화하지 않는다.
+
+## 2026-11-02 현장 UI
+
+maintenance.*의 보유/필요, full-health, 최근 피해, 진행/완료, 반환 요약과 economy.retry_action을 en/ko로 추가했다. 좁은 장비 칸 안내를 짧게 쓰고 해체는 시설 제거 의미를 명시한다. 내부 deployment 상태를 플레이어용 Account 문구에서 빼고 오프라인 이용 가능성을 설명한다. 캡처는 UserPreferences.SetLanguage를 사용하고 실제 L.Language/텍스트 정착을 확인한다. 데이터만 변경하고 통지하지 않은 초기 KO-named/EN-content 캡처는 검증에서 제외했다.

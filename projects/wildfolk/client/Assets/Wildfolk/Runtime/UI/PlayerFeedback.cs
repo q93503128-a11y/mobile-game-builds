@@ -23,6 +23,13 @@ namespace Wildfolk
         public static void ShowPickup(ItemDefinition item,int count)
         {if(current==null || item==null || count<=0)return;current.ClearCatch();current.pickupCount=current.pickupItem==item && Time.unscaledTime<current.until ? current.pickupCount+count : count;current.pickupItem=item;current.requirement=null;current.key=null;current.until=Time.unscaledTime+1.5f;current.Label.transform.SetAsLastSibling();current.Refresh();Presented?.Invoke(Cue.Pickup);AudioRuntime.Play(Sound.Pickup);}
 
+        public static void ShowMaintenance(ItemAmount[] returned)
+        {
+            ShowKey("maintenance.salvaged");if(current==null)return;
+            var shown=new ItemAmount[System.Math.Min(2,returned.Length)];System.Array.Copy(returned,shown,shown.Length);
+            current.Label.text=L.Text("maintenance.salvaged")+(returned.Length==0?" · "+L.Text("maintenance.no_return"):" · "+string.Join(" · ",System.Array.ConvertAll(shown,r=>r.Item.LocalizedName+" ×"+r.Count)))+(returned.Length>shown.Length?" · "+L.Format("maintenance.more",returned.Length-shown.Length):"");
+            current.until=Time.unscaledTime+3;
+        }
         public static void ShowRequirement(ResourceDefinition value)
         {if(current==null || value==null || current.requirement==value && Time.unscaledTime<current.until)return;current.ClearCatch();current.pickupItem=null;current.requirement=value;current.key="feedback.requires_tool";current.Label.text=value.Requirement;current.until=Time.unscaledTime+2.5f;}
         public static void ShowCrafted(RecipeDefinition recipe)

@@ -103,7 +103,7 @@ namespace Wildfolk.Editor
                 var p=new Vector2(-880+i%2*140,-25-i/2*205);Position(buttons[i],p,Vector2.one*120);
                 foreach(var label in surface.GetComponentsInChildren<LocalizedLabel>(true))if(label.Key=="ui.slot."+keys[i])Caption(label.GetComponent<Text>(),p+Vector2.down*92,new Vector2(136,58),27);
             }
-            Caption(surface.Find("Slot Hint").GetComponent<Text>(),new Vector2(-815,-410),new Vector2(255,90),24);
+            Caption(surface.Find("Slot Hint").GetComponent<Text>(),new Vector2(-815,-397),new Vector2(255,140),24);
             Caption(equipment.Details,new Vector2(735,40),new Vector2(370,140),28);Caption(equipment.Comparison,new Vector2(735,-85),new Vector2(370,90),26);
             ActionSize(equipment.EquipButton,new Vector2(735,-195),new Vector2(370,112));ActionSize(equipment.UnequipButton,new Vector2(735,-320),new Vector2(370,112));
             ActionSize(panel.GetComponent<InventoryDragController>().SplitButton,new Vector2(735,-435),new Vector2(370,100));

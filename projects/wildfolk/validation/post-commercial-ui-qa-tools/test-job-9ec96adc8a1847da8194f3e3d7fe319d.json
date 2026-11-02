@@ -1,0 +1,90 @@
+{
+  "success": true,
+  "message": "Test job status retrieved.",
+  "error": null,
+  "data": {
+    "job_id": "9ec96adc8a1847da8194f3e3d7fe319d",
+    "status": "succeeded",
+    "mode": "EditMode",
+    "started_unix_ms": 1793614133618,
+    "finished_unix_ms": 1793614146608,
+    "last_update_unix_ms": 1793614146608,
+    "progress": {
+      "completed": 5,
+      "total": 5,
+      "current_test_full_name": null,
+      "current_test_started_unix_ms": null,
+      "last_finished_test_full_name": "Wildfolk.Tests.SceneContractTests.SavedSceneRetainsPlayableConnectionsAndNonPushingEnemy",
+      "last_finished_unix_ms": 1793614146481,
+      "stuck_suspected": false,
+      "editor_is_focused": false,
+      "run_in_background": true,
+      "focus_nudge_attempts": null,
+      "focus_nudge_limit": null,
+      "focus_nudge_status": null,
+      "blocked_reason": null,
+      "failures_so_far": [],
+      "failures_capped": false
+    },
+    "error": null,
+    "result": {
+      "mode": "EditMode",
+      "summary": {
+        "total": 5,
+        "passed": 5,
+        "failed": 0,
+        "skipped": 0,
+        "durationSeconds": 7.3859917,
+        "resultState": "Passed"
+      },
+      "results": [
+        {
+          "name": "AppStartsAtHomeAndGameplayRemainsEnabled",
+          "fullName": "Wildfolk.Tests.FrontendContractTests.AppStartsAtHomeAndGameplayRemainsEnabled",
+          "state": "Passed",
+          "durationSeconds": 0.0079867,
+          "message": null,
+          "stackTrace": null,
+          "output": ""
+        },
+        {
+          "name": "SaveRulesReferenceGameplayContentAndHomeKeysHaveBothLanguages",
+          "fullName": "Wildfolk.Tests.FrontendContractTests.SaveRulesReferenceGameplayContentAndHomeKeysHaveBothLanguages",
+          "state": "Passed",
+          "durationSeconds": 0.0582191,
+          "message": null,
+          "stackTrace": null,
+          "output": ""
+        },
+        {
+          "name": "OverviewKeepsActualMapMarkersAndDeterministicExport",
+          "fullName": "Wildfolk.Tests.QualityDeveloperTests.OverviewKeepsActualMapMarkersAndDeterministicExport",
+          "state": "Passed",
+          "durationSeconds": 5.8829956,
+          "message": null,
+          "stackTrace": null,
+          "output": ""
+        },
+        {
+          "name": "BalanceDataHasValidCombatRangesAndProgressionItems",
+          "fullName": "Wildfolk.Tests.SceneContractTests.BalanceDataHasValidCombatRangesAndProgressionItems",
+          "state": "Passed",
+          "durationSeconds": 0.1097981,
+          "message": null,
+          "stackTrace": null,
+          "output": ""
+        },
+        {
+          "name": "SavedSceneRetainsPlayableConnectionsAndNonPushingEnemy",
+          "fullName": "Wildfolk.Tests.SceneContractTests.SavedSceneRetainsPlayableConnectionsAndNonPushingEnemy",
+          "state": "Passed",
+          "durationSeconds": 0.7214175,
+          "message": null,
+          "stackTrace": null,
+          "output": ""
+        }
+      ]
+    }
+  },
+  "hint": null
+}

@@ -33,6 +33,8 @@ namespace Wildfolk.Editor
                 var gear=(RectTransform)(side<0 ? portrait.LeftHand : portrait.RightHand).transform;gear.anchoredPosition=position;gear.sizeDelta=size;
             }
         }
+        internal static void FieldSurface(Image surface)
+        {surface.sprite=VisualArtImporter.Sprite("panel");surface.type=UnityEngine.UI.Image.Type.Sliced;surface.color=Color.white;}
         internal static void Matte(Transform parent,Vector2 size)
         {var background=Image("Matte Surface",parent,"white",new Vector2(.5f,.5f),Vector2.zero,size-Vector2.one*6);background.color=new Color32(24,40,32,247);background.transform.SetAsFirstSibling();}
         internal static Image Surface(Transform safe,string name,Vector2 size,out GameObject view)

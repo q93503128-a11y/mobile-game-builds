@@ -140,3 +140,7 @@ WorldChunkRuntime의 active representation만 유지하고 전체 POI별 Update�
 실패 seed-324239329의 주석 rule6 세 번째 중심(y480)은 기존 약78unit 반경의1200후보 모두 유효 RiverGravel이 없었다. 기존 공급 배치를 먼저 그대로 시도하고, panning 공급의 후보 소진 때만 강의 y축을32unit 간격으로 양방향 탐색한다.128step×4bank(±8/±12unit), 최대512개 추가후보다. SourceAllowed의 지형/수면/도로/태그와 기존 간격4unit, supplement/deep의 자연 후보 충돌 배제는 유지한다. 무한 reroll/전역 평준화/태그 완화는 없다.
 
 Build/Supplement와 generation3의 추가 surface panning 예산이 같은 fallback을 사용한다. source ID·POI·동굴·지형 RNG와 기존 성공 배치는 바꾸지 않으며 generation1은 수정하지 않았다.36seed 반복 생성/필수 biome·POI·좌표·경계·동굴·공급 invariant를 검사했고, 수정 전 통과하던33개 world fingerprint는 그대로다. 기존 유효 save의 묘지나 자원을 재생성/이동시키는 migration은 없다. [전체 원인·결과](../validation/post-boss-stabilization/REVIEW.md).
+
+## 2026-11-02 World Inspector 검수
+
+WorldMap/Environment/Roads/Anchors/Caves의 관찰·export·seed batch는 Editor 도구이며 generation3 구현은 바꾸지 않았다.12seed의 네 biome/Spawn/수계/도로/POI/동굴과 variation을 기록했다. 전체 월드의 모든 장애물/모든 가능한 경로를 증명하는 검사는 아니다. [현재 도구 사용법](DEVELOPER_TOOLS.md) · [수치/증거](../validation/post-commercial-ui-qa-tools/REVIEW.md).

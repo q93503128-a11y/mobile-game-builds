@@ -106,8 +106,8 @@ namespace Wildfolk.Editor
             s.Description=JournalUiBuilder.Label(overview,"Identity","",new Vector2(430,60),new Vector2(650,170),34,TextAnchor.UpperLeft);
             s.Progress=JournalUiBuilder.Label(overview,"Class Progress","",new Vector2(430,-100),new Vector2(650,140),30);
             JournalUiBuilder.Action(overview,"Class Skill Tree","ui.skill.title",new Vector2(430,-235),new Vector2(650,120),s.OpenTree,out _);
-            s.SelectButton=JournalUiBuilder.Action(overview,"Select","class.select",new Vector2(430,-375),new Vector2(650,120),s.SelectClass,out s.SelectLabel,true);
-            s.PurchaseButton=JournalUiBuilder.Action(overview,"Purchase","",new Vector2(430,-375),new Vector2(650,120),s.AskPurchase,out s.PurchaseLabel,true);
+            s.SelectButton=JournalUiBuilder.Action(overview,"Select","class.select",new Vector2(430,-365),new Vector2(650,120),s.SelectClass,out s.SelectLabel,true);
+            s.PurchaseButton=JournalUiBuilder.Action(overview,"Purchase","",new Vector2(430,-365),new Vector2(650,120),s.AskPurchase,out s.PurchaseLabel,true);
             var tree=Rect("Class Tree",page,Vector2.one*.5f,Vector2.zero,new Vector2(1720,1000));s.TreeView=tree.gameObject;
             s.TreeTitle=JournalUiBuilder.Label(tree,"Selected Class","",new Vector2(-420,280),new Vector2(650,75),42);s.TreePoints=JournalUiBuilder.Label(tree,"Points","",new Vector2(430,280),new Vector2(650,75),34);
             s.TreeIcon=Image("Class Tree Root",tree,"white",Vector2.one*.5f,new Vector2(-420,200),new Vector2(56,56));
@@ -124,7 +124,7 @@ namespace Wildfolk.Editor
             }
             s.NodeDetail=JournalUiBuilder.Label(tree,"Node Detail","",new Vector2(430,20),new Vector2(650,370),36,TextAnchor.UpperLeft);
             s.InvestButton=JournalUiBuilder.Action(tree,"Invest","class.invest",new Vector2(430,-250),new Vector2(650,120),s.Invest,out s.InvestLabel,true);
-            s.RespecButton=JournalUiBuilder.Action(tree,"Respec","class.respec",new Vector2(430,-390),new Vector2(650,120),s.Respec,out _);
+            s.RespecButton=JournalUiBuilder.Action(tree,"Respec","class.respec",new Vector2(430,-365),new Vector2(650,120),s.Respec,out _);
             s.Status=JournalUiBuilder.Label(page,"Status","",new Vector2(-420,-435),new Vector2(680,45),28,TextAnchor.MiddleCenter);
             var confirm=QualityUiBuilder.Surface(s.View.transform,"Confirm Purchase",new Vector2(1000,540),out s.Confirmation);
             s.ConfirmText=JournalUiBuilder.Label(confirm.transform,"Price","",new Vector2(0,80),new Vector2(850,210),36,TextAnchor.MiddleCenter);
@@ -153,7 +153,7 @@ namespace Wildfolk.Editor
         {
             var name=hud.ClassName.rectTransform;name.anchorMin=name.anchorMax=Vector2.one;InventoryUiBuilder.Caption(hud.ClassName,new Vector2(-390,-70),new Vector2(400,60),28);hud.ClassName.alignment=TextAnchor.MiddleRight;
             InventoryUiBuilder.ActionSize(hud.ActiveButton,new Vector2(-472,310),new Vector2(180,128));InventoryUiBuilder.ActionSize(hud.MarkButton,new Vector2(-472,480),new Vector2(180,128));InventoryUiBuilder.ActionSize(hud.MedicineButton,new Vector2(-472,310),new Vector2(180,128));InventoryUiBuilder.ActionSize(hud.MeaningButton,new Vector2(-40,-160),new Vector2(180,128));
-            InventoryUiBuilder.ActionSize(hud.RepairButton,new Vector2(-170,0),new Vector2(300,112));InventoryUiBuilder.ActionSize(hud.DismantleButton,new Vector2(170,0),new Vector2(300,112));InventoryUiBuilder.Caption(hud.BuildingText,new Vector2(0,100),new Vector2(820,65),28);InventoryUiBuilder.Caption(hud.ServiceProgress,new Vector2(0,-95),new Vector2(810,55),26);
+            InventoryUiBuilder.ActionSize(hud.RepairButton,new Vector2(-170,0),new Vector2(300,112));InventoryUiBuilder.ActionSize(hud.DismantleButton,new Vector2(170,0),new Vector2(300,112));InventoryUiBuilder.Caption(hud.BuildingText,new Vector2(0,100),new Vector2(820,65),28);InventoryUiBuilder.Caption(hud.ServiceProgress,new Vector2(0,-95),new Vector2(810,55),26);MaintenanceUiBuilder.Arrange(hud);
         }
     }
 }

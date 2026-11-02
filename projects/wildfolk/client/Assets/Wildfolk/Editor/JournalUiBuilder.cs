@@ -9,20 +9,20 @@ namespace Wildfolk.Editor
     {
         internal static Transform Book(Transform safe,string name,out GameObject view)
         {
-            var overlay=Scrim(name+" Overlay",safe);overlay.color=new Color(.05f,.07f,.04f,.48f);view=overlay.gameObject;
+            var overlay=Scrim(name+" Overlay",safe);overlay.color=new Color(.035f,.06f,.045f,.36f);view=overlay.gameObject;
             var spread=Rect(name,overlay.transform,Vector2.one*.5f,Vector2.zero,new Vector2(1720,1000));
             var fit=spread.gameObject.AddComponent<ModalLayout>();fit.SafeArea=(RectTransform)safe;fit.ReferenceSize=spread.sizeDelta;fit.HorizontalReserve=40;fit.TopReserve=fit.BottomReserve=30;
             var spine=Image("Cloth Spine",spread,"white",Vector2.one*.5f,Vector2.zero,new Vector2(95,950),true);spine.color=new Color32(100,87,58,255);
             var left=Image("Left Page",spread,"lowfire_journal",Vector2.one*.5f,new Vector2(-420,0),new Vector2(850,980),true);left.transform.localScale=new Vector3(-1,1,1);
-            Image("Right Page",spread,"lowfire_journal",Vector2.one*.5f,new Vector2(420,0),new Vector2(850,980),true);
+            left.color=JournalStyle.FieldPaper;Image("Right Page",spread,"lowfire_journal",Vector2.one*.5f,new Vector2(420,0),new Vector2(850,980),true).color=JournalStyle.FieldPaper;
             return spread;
         }
         internal static Transform Sheet(Transform safe,string name,out GameObject view)
         {
-            var overlay=Scrim(name+" Overlay",safe);overlay.color=new Color(.05f,.07f,.04f,.48f);view=overlay.gameObject;
+            var overlay=Scrim(name+" Overlay",safe);overlay.color=new Color(.035f,.06f,.045f,.36f);view=overlay.gameObject;
             var sheet=Rect(name,overlay.transform,Vector2.one*.5f,Vector2.zero,new Vector2(1720,1000));
             var fit=sheet.gameObject.AddComponent<ModalLayout>();fit.SafeArea=(RectTransform)safe;fit.ReferenceSize=sheet.sizeDelta;fit.HorizontalReserve=40;fit.TopReserve=fit.BottomReserve=20;
-            Image("Field paper",sheet,"lowfire_journal",Vector2.one*.5f,Vector2.zero,new Vector2(1720,980),true);
+            Image("Field paper",sheet,"lowfire_journal",Vector2.one*.5f,Vector2.zero,new Vector2(1720,980),true).color=JournalStyle.FieldPaper;
             return sheet;
         }
         internal static Text Label(Transform parent,string name,string key,Vector2 p,Vector2 size,int font=26,TextAnchor anchor=TextAnchor.MiddleLeft)
@@ -31,6 +31,7 @@ namespace Wildfolk.Editor
         {var i=QualityUiBuilder.Line(parent,from,to,width);i.color=new Color32(136,124,91,180);return i;}
         internal static Button Action(Transform parent,string name,string key,Vector2 p,Vector2 size,UnityEngine.Events.UnityAction action,out Text label,bool primary=false)
         {
+            if(name=="Back"&&parent.Find("Field paper")!=null){p=new Vector2(680,400);size=new Vector2(180,112);}
             var image=Image(name,parent,"white",Vector2.one*.5f,p,size,true);var b=Button(image);
             label=Label(image.transform,"Label",key,Vector2.zero,size-new Vector2(32,16),32,TextAnchor.MiddleCenter);
             JournalStyle.Action(b,primary);

@@ -301,3 +301,9 @@ Runtime RewardedAds/RewardedJournal/IRewardedAdProvider와 AndroidAds assembly�
 ## Foundation4 Store / Billing
 
 StoreService/IStoreBillingClient → Android 전용 PlayBillingClient/Java Billing9.1.0 → LowfirePurchase → LowfirePlayVerify 실제 Google API. Prepared/Granted Private receipt와 scoped pending journal, token hash 전역 owner binding, 기존 Economy2 CAS/archive/source 중복 방지를 사용한다. 소비는 서버 지급 후 별도 bounded 호출, client 완료 이벤트는 재화 권위가 아니다. 원본 MainMenu Profile 아래 Store를 직렬화하며 EconomyUiBuilder가 같은 StoreUiBuilder 정본을 호출한다. Save14/Profile2/CloudProfile1/Economy2/Protocol23/generation3 유지, 별도 IAP Schema1. [상태·보안·복구·설정](IAP.md).
+
+## 2026-11-02 관찰 도구 / UI correction
+
+WorldOverview/OverviewSeedBatch/DeveloperShowcase/DeveloperTraversal은 Editor 정본이다. WorldMap/Continental의 실제 데이터만 읽고 QA 요청 때만 생성/표시/내보낸다. Runtime/Core의 DeveloperMovement와 DeveloperSpawnOwner는 UNITY_EDITOR로 완전히 제외하며 씬·prefab에 직렬화하지 않는다. normal player에 overview/update/teleport/cheat service를 추가하지 않았다.
+
+ClassHud는 기존5Hz bounded context 조회를 유지하고 session change에서 action/card를 즉시 숨긴다. 정적 재료 표시와 상태 text는 바뀔 때만 Canvas를 dirty 처리하며 hold fill만 활성 중 프레임 갱신한다. maintenance scroll은 기존 uGUI 요소를 authoring으로 직렬화한다. 비용/환급/Host transaction/Save14/wire23는 유지한다. PlayerEquipment는 장갑 표현만 base hand bounds/axis에 맞춘다. [검증](../validation/post-commercial-ui-qa-tools/REVIEW.md).

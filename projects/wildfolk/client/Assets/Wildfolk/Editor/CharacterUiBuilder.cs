@@ -20,7 +20,25 @@ namespace Wildfolk.Editor
             needs.Hunger=Need(needsHolder,"Hunger","cooked_meat",new Vector2(-87,0),new Color32(181,154,96,255),out needs.HungerValue);
             needs.Thirst=Need(needsHolder,"Thirst","water",new Vector2(87,0),new Color32(110,162,166,255),out needs.ThirstValue);
             var meter=Rect("Player Stamina",safe,new Vector2(.5f,.5f),Vector2.zero,new Vector2(140,140));var gauge=root.AddComponent<PlayerStaminaHud>();gauge.Player=player.GetComponent<PlayerLocomotion>();gauge.Session=session;gauge.Anchor=meter;gauge.CanvasRect=(RectTransform)safe;gauge.Group=meter.gameObject.AddComponent<CanvasGroup>();gauge.Group.alpha=0;gauge.Group.blocksRaycasts=false;gauge.Arc=meter.gameObject.AddComponent<StaminaArc>();gauge.Arc.raycastTarget=false;gauge.Arc.color=new Color32(196,175,105,255);
-            BuildInformation(root,safe,session,player);BuildTree(root,safe,session,player.GetComponent<PlayerProgression>());
+            BuildInformation(root,safe,session,player);BuildTree(root,safe,session,player.GetComponent<PlayerProgression>());ArrangeHud(hud);
+        }
+        internal static void ArrangeHud(ProfileHud hud)
+        {
+            var track=(RectTransform)hud.HP.transform.parent;track.anchoredPosition=new Vector2(310,-69);track.sizeDelta=new Vector2(300,55);track.GetComponent<Image>().color=JournalStyle.Field;
+            hud.HP.rectTransform.sizeDelta=new Vector2(292,47);hud.HP.color=new Color32(138,83,64,255);
+            hud.HealthValue.rectTransform.SetParent(track,false);hud.HealthValue.rectTransform.anchoredPosition=Vector2.zero;hud.HealthValue.rectTransform.sizeDelta=new Vector2(280,50);hud.HealthValue.fontSize=30;hud.HealthValue.alignment=TextAnchor.MiddleCenter;hud.HealthValue.color=JournalStyle.Paper;
+            var xp=(RectTransform)hud.XP.transform.parent;xp.anchoredPosition=new Vector2(310,-108);xp.sizeDelta=new Vector2(300,7);hud.XP.rectTransform.sizeDelta=new Vector2(296,5);
+            var needs=hud.GetComponentInChildren<SurvivalHud>(true);if(needs!=null)
+            {
+                var holder=(RectTransform)needs.transform;holder.anchoredPosition=new Vector2(310,-158);holder.sizeDelta=new Vector2(320,50);
+                var i=0;foreach(var image in new[]{needs.Hunger,needs.Thirst})
+                {
+                    var group=(RectTransform)image.transform.parent.parent;group.anchoredPosition=new Vector2(i++==0?-83:83,0);group.sizeDelta=new Vector2(158,60);
+                    var icon=group.Find("Icon").GetComponent<Image>();icon.rectTransform.anchoredPosition=new Vector2(-54,0);icon.rectTransform.sizeDelta=new Vector2(34,36);
+                    var bar=(RectTransform)image.transform.parent;bar.anchoredPosition=new Vector2(3,-13);bar.sizeDelta=new Vector2(102,8);image.rectTransform.sizeDelta=new Vector2(100,6);
+                }
+                foreach(var label in new[]{needs.HungerValue,needs.ThirstValue}){label.rectTransform.anchoredPosition=new Vector2(7,7);label.rectTransform.sizeDelta=new Vector2(95,42);label.fontSize=26;label.alignment=TextAnchor.MiddleCenter;}
+            }
         }
         internal static void BuildInformation(GameObject root,Transform safe,GameplaySession session,PlayerInventory player)
         {

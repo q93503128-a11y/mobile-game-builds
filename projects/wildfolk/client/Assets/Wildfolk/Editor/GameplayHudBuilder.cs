@@ -73,7 +73,7 @@ namespace Wildfolk.Editor
             {
                 hud.Interact.Surface.rectTransform.sizeDelta=new Vector2(150,150);((RectTransform)hud.InventoryButton.transform).sizeDelta=new Vector2(112,112);
                 ((RectTransform)hud.PauseButton.transform).sizeDelta=new Vector2(112,112);
-                var profile=hud.GetComponent<ProfileHud>();if(profile!=null){profile.HealthValue.fontSize=32;profile.HealthValue.rectTransform.sizeDelta=new Vector2(330,52);profile.HealthValue.rectTransform.anchoredPosition=new Vector2(0,40);}
+                var profile=hud.GetComponent<ProfileHud>();if(profile!=null)CharacterUiBuilder.ArrangeHud(profile);
             }
             foreach(var arena in Object.FindObjectsByType<MultiplayerArena>(FindObjectsInactive.Include,FindObjectsSortMode.None))
             {
@@ -86,7 +86,7 @@ namespace Wildfolk.Editor
                 var camp=arena.CampLabel.rectTransform;camp.anchorMin=camp.anchorMax=new Vector2(.5f,1);InventoryUiBuilder.Caption(arena.CampLabel,new Vector2(0,-170),new Vector2(1000,90),30);arena.CampLabel.alignment=TextAnchor.MiddleCenter;arena.CampLabel.gameObject.SetActive(false);
                 var leave=arena.CampLabel.transform.parent.Find("Leave Session").GetComponent<Button>();InventoryUiBuilder.ActionSize(leave,new Vector2(-200,-75),new Vector2(360,120));
                 ui.Wallet.rectTransform.anchorMin=ui.Wallet.rectTransform.anchorMax=Vector2.one;InventoryUiBuilder.Caption(ui.Wallet,new Vector2(-220,-150),new Vector2(400,60),28);ui.Wallet.alignment=TextAnchor.MiddleRight;
-                var profile=ui.GetComponent<ProfileHud>();if(profile!=null){profile.HealthValue.fontSize=32;profile.HealthValue.rectTransform.sizeDelta=new Vector2(330,52);profile.HealthValue.rectTransform.anchoredPosition=new Vector2(0,40);}
+                var profile=ui.GetComponent<ProfileHud>();if(profile!=null)CharacterUiBuilder.ArrangeHud(profile);
                 if(layout.ClassControls!=null)InventoryUiBuilder.Position(layout.ClassControls.ClassName,new Vector2(-220,-220),new Vector2(400,60));
             }
         }

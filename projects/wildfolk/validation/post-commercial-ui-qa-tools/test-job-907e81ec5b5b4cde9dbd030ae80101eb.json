@@ -1,0 +1,90 @@
+{
+  "success": true,
+  "message": "Test job status retrieved.",
+  "error": null,
+  "data": {
+    "job_id": "907e81ec5b5b4cde9dbd030ae80101eb",
+    "status": "succeeded",
+    "mode": "PlayMode",
+    "started_unix_ms": 1793611497058,
+    "finished_unix_ms": 1793611590398,
+    "last_update_unix_ms": 1793611590398,
+    "progress": {
+      "completed": 5,
+      "total": 5,
+      "current_test_full_name": null,
+      "current_test_started_unix_ms": null,
+      "last_finished_test_full_name": "Wildfolk.Tests.PostRcQualityPlayTests.RepairAndDismantleUseRealHoldCancellationCostsAndCompletion",
+      "last_finished_unix_ms": 1793611590388,
+      "stuck_suspected": false,
+      "editor_is_focused": false,
+      "run_in_background": true,
+      "focus_nudge_attempts": null,
+      "focus_nudge_limit": null,
+      "focus_nudge_status": null,
+      "blocked_reason": null,
+      "failures_so_far": [],
+      "failures_capped": false
+    },
+    "error": null,
+    "result": {
+      "mode": "PlayMode",
+      "summary": {
+        "total": 5,
+        "passed": 5,
+        "failed": 0,
+        "skipped": 0,
+        "durationSeconds": 46.4323476,
+        "resultState": "Passed"
+      },
+      "results": [
+        {
+          "name": "MetaOpensRefreshAutomaticallyAndOnlyFailureExposesRetry",
+          "fullName": "Wildfolk.Tests.EconomyFoundationPlayTests.MetaOpensRefreshAutomaticallyAndOnlyFailureExposesRetry",
+          "state": "Passed",
+          "durationSeconds": 4.0366048,
+          "message": null,
+          "stackTrace": null,
+          "output": ""
+        },
+        {
+          "name": "EditorSpeedRestoresWithoutChangingStatsAndShowcaseUsesNearPlayerGround",
+          "fullName": "Wildfolk.Tests.PostRcQualityPlayTests.EditorSpeedRestoresWithoutChangingStatsAndShowcaseUsesNearPlayerGround",
+          "state": "Passed",
+          "durationSeconds": 8.3217331,
+          "message": null,
+          "stackTrace": null,
+          "output": ""
+        },
+        {
+          "name": "HandArmorMatchesHandCoverageAndBodyAxisThroughoutFacingAndAttack",
+          "fullName": "Wildfolk.Tests.PostRcQualityPlayTests.HandArmorMatchesHandCoverageAndBodyAxisThroughoutFacingAndAttack",
+          "state": "Passed",
+          "durationSeconds": 11.4885415,
+          "message": null,
+          "stackTrace": null,
+          "output": ""
+        },
+        {
+          "name": "HpTextLivesInsideHealthComponentAndPauseRetainsActions",
+          "fullName": "Wildfolk.Tests.PostRcQualityPlayTests.HpTextLivesInsideHealthComponentAndPauseRetainsActions",
+          "state": "Passed",
+          "durationSeconds": 6.567148,
+          "message": null,
+          "stackTrace": null,
+          "output": ""
+        },
+        {
+          "name": "RepairAndDismantleUseRealHoldCancellationCostsAndCompletion",
+          "fullName": "Wildfolk.Tests.PostRcQualityPlayTests.RepairAndDismantleUseRealHoldCancellationCostsAndCompletion",
+          "state": "Passed",
+          "durationSeconds": 15.831998,
+          "message": null,
+          "stackTrace": null,
+          "output": ""
+        }
+      ]
+    }
+  },
+  "hint": null
+}

@@ -23,3 +23,11 @@ Engineer HP수리는 무료, full HP에서 별도 buffer를 보강한다. 기본
 회수는 HP90%이상 canonical construction100%, 그 미만 각 재료 floor(비용×현재HP비율). WB III는 base+각 upgrade 비용을 정확히 한 번 포함한다. batch 제작 분수 비용은90%이상 portable item1개 반환, 미만0개. 기존 무료/자연 시설은 PlayerBuilt=false라 회수할 수 없다. Creator는 개인 잠금이 아니다. chest/queue/reserved/output/turret 탄약·Loaded·module이 남으면 차단하며 빈 가방 공간이 충분할 때 원자 지급 후 제거한다.
 
 Overclock은 원래 포탑의 reload/rotation만 임시 강화한다. damage/range/AutoAim/Loader/ammo/module을 지급하거나 소비한 탄약을 복원하지 않는다. node 수치는 CHARACTER_PROGRESSION 정본을 따른다.
+
+## 2026-11-02 수리 / 해체 표시
+
+주변 PlayerBuilt 시설의 이름/HP/buffer, 실제 RepairCosts와 보유/필요 수량, 실제 Refund를 왼쪽 소형 현장 카드에 표시한다. 긴 WorkbenchIII 재료는 카드 안에서 스크롤하며 toolbar/조작 영역에 넘치지 않는다. full HP에는 불필요한 최소 수리비를 요구하는 것처럼 표시하지 않는다. 최근 피해·재료 부족·내용물 비우기 조건을 설명한다.
+
+길게 누르는 동안 fill과 수리/해체 문구를 표시하고 release/상태 변경 시 즉시 해제한다. Pause에서 카드를 같은 프레임에 숨긴다. 원래 원자 거래 성공 후 기존 SFX와 완료/반환 안내를 제공한다. 긴 반환 목록은 preview에 전량, 완료 toast에는 최대2종과 나머지 종류 수를 요약한다. 가방 부족으로 회수 실패하면 원본을 유지하고 기존 bag-full 안내를 사용한다. 비용/시간/환급/권위는 위 정본과 동일하다. 원격 hold fill은 기존 요청을 따르는 표현이며 완료 권위를 만들지 않는다.
+
+[실제 검수/남은 범위](../validation/post-commercial-ui-qa-tools/REVIEW.md).

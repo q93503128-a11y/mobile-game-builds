@@ -42,3 +42,17 @@ Editor 전용 `GamefeelQa.Begin()`은 fresh isolated Play에서 command/UI callb
 ## Workbench III 현재 상태 · 2026-10-19
 
 III 콘텐츠 authoring은 Editor의 TierThreeAssets.Build, 기존 씬 카드/컴포넌트 갱신은 TierThreeAssets.RefreshPresentation이다. TierThreeAudit.Export는 실제 recipe 기반1/4인 경제와 seed 공급을 출력한다. TierThreeQa는 격리 generation3에서만 실행하고 도구/재료 지급·teleport·시간 전진을 기록한다. Stage 도구는 Editor 전용이며 플레이어 HUD에 들어가지 않는다.
+
+## 2026-11-02 World / Creature Inspector
+
+기존 `Wildfolk > Developer > Open Test Console`을 사용자가 직접 연다. 창에서 Start Isolated QA Play → Home에서 새 게임 시작 → Inspect actual current seed 순서다. 기존 게임을 연 Play에서는 위치/배속 검사와 WorldMap 관찰을 제공하며, Showcase는 격리 QA profile을 요구한다. Play를 끈 뒤 Return to normal profile로 종료한다. 자동화는 창 Focus/Show 없이 같은 공개 API를 호출한다.
+
+WorldOverview는 현재 WorldMap 인스턴스의 실제 Environment/Coast/Water/Roads/Anchors와 Cave Rooms를 관찰한다. 지도 선택 또는 Actual destination에서 Spawn·Forest·Rocky·Wetlands 표본·강변·동굴 입구/심부·실제 POI로 이동한다. 먼 청크 활성화 후 지면/물/충돌을 다시 확인하고 실패하면 원위치를 복원한다. 표시는 성공/없는 대상/유효 지면 없음으로 명시한다. 별도 free camera는 추가하지 않았다.
+
+Export는 프로젝트 Captures/world-overview에 PNG 지도, Seed/legend가 포함된 self-contained SVG, 정확한 target/count JSON을 기록한다. 얇은 강 중심선/작은 POI 표식은 읽기 위해 확대하며 범례에 명시한다. 지하 좌표를 지상 POI로 위조하지 않는다.12-seed batch는 실제 생성기/validator를 별도로 호출하고 현재 Play 월드를 바꾸지 않는다. 필요할 때만 생성하며 창을 닫으면 overview texture를 폐기한다.
+
+이동1×/4×/10×/25×는 resolved walking velocity만 배율 적용하며 경로의 지면/충돌을 검사한다. GameplaySettings/스태미나/저장 stats/dash 배율을 바꾸지 않는다. 활성 배속은 Game View 상단에 표시하고1×/disable/창 닫기로 해제한다. 공장/창/overview는 Editor assembly, 실행 driver와 spawn lease는 UNITY_EDITOR 전용이다. 출시 UI·씬·prefab에 개발 컴포넌트를 저장하지 않는다.
+
+Showcase는 현재 local prefab을 자동 수집한다: 야생13종, Zombie/Skeleton/검 Skeleton/Goblin/새총 Goblin, 격리 Undead King19항목; Player는 현재 actor다. Spawn selected near player, group×3, Clear only QA spawned를 제공한다. 실제 prefab/AI/공격/피격/사망을 사용한다. 근처 안전 후보/시야 안에 생성하고 종·개수·좌표 또는 실패를 표시한다. Pool release 시 QA 소유 lease를 끝내 자연 개체로 재사용된 인스턴스를 잘못 정리하지 않는다. Goblin Warband/Camp의 기존 좌표 동작은 좌표와 결과를 명시한다. 야간 강제 설정/teleport/재료 지급은 QA이며 자연 progression 증거가 아니다.
+
+[구현·12seed·실제 runtime·제한](../validation/post-commercial-ui-qa-tools/REVIEW.md).

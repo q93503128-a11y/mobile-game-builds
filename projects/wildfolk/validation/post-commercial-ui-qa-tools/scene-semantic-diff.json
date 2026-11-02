@@ -1,0 +1,75 @@
+{
+  "MainMenu": {
+    "beforeObjects": 3514,
+    "afterObjects": 3514,
+    "added": 0,
+    "removed": 0,
+    "modifiedObjects": 72,
+    "properties": {
+      "m_Color": 22,
+      "m_AnchoredPosition": 17,
+      "m_SizeDelta": 27,
+      "m_Name": 2,
+      "m_IsActive": 2,
+      "Key": 2,
+      "m_FontSize": 13,
+      "m_Text": 2,
+      "AchievementRetry": 1,
+      "AttendanceRetry": 1
+    }
+  },
+  "Wildfolk": {
+    "beforeObjects": 10271,
+    "afterObjects": 10303,
+    "added": 32,
+    "removed": 0,
+    "modifiedObjects": 193,
+    "properties": {
+      "m_SizeDelta": 152,
+      "m_AnchoredPosition": 24,
+      "m_Color": 23,
+      "m_Sprite": 6,
+      "m_NormalColor": 6,
+      "m_HighlightedColor": 6,
+      "m_PressedColor": 6,
+      "m_SelectedColor": 6,
+      "m_DisabledColor": 6,
+      "m_FontSize": 5,
+      "m_Alignment": 2,
+      "- {fileID": 5,
+      "m_Father": 1,
+      "BuildingMaterials": 1,
+      "HoldProgress": 1,
+      "m_AnchorMin": 1,
+      "m_AnchorMax": 1,
+      "m_Children": 1
+    }
+  },
+  "Multiplayer": {
+    "beforeObjects": 9970,
+    "afterObjects": 10002,
+    "added": 32,
+    "removed": 0,
+    "modifiedObjects": 165,
+    "properties": {
+      "m_FontSize": 4,
+      "m_Color": 16,
+      "m_SizeDelta": 141,
+      "m_Alignment": 2,
+      "m_AnchoredPosition": 18,
+      "BuildingMaterials": 1,
+      "HoldProgress": 1,
+      "m_Sprite": 2,
+      "- {fileID": 5,
+      "m_Children": 1,
+      "m_NormalColor": 2,
+      "m_HighlightedColor": 2,
+      "m_PressedColor": 2,
+      "m_SelectedColor": 2,
+      "m_DisabledColor": 2,
+      "m_AnchorMin": 1,
+      "m_AnchorMax": 1,
+      "m_Father": 1
+    }
+  }
+}

@@ -53,7 +53,18 @@ namespace Wildfolk
             ArmorVisual.sprite=BodyArmor==null ? null : BodyArmor.Armor.WornSprite;ArmorVisual.enabled=ArmorVisual.sprite!=null;
             HeadVisual.sprite=HeadArmor==null ? null : HeadArmor.Armor.WornSprite;HeadVisual.enabled=HeadVisual.sprite!=null;
             LeftHandGear.sprite=RightHandGear.sprite=BodyArmor==null ? null : BodyArmor.Armor.HandSprite;
+            FitHandGear(LeftHandGear);FitHandGear(RightHandGear);
             LeftHandGear.enabled=RightHandGear.enabled=LeftHandGear.sprite!=null;Changed?.Invoke();
+        }
+        public static void FitHandGear(SpriteRenderer gear)
+        {
+            if(gear.sprite==null)return;
+            var hand=gear.transform.parent.GetComponent<SpriteRenderer>();if(hand==null||hand.sprite==null)return;
+            var baseSize=hand.sprite.bounds.size;var worn=gear.sprite.bounds.size;
+            gear.transform.localPosition=Vector3.zero;
+            gear.transform.localScale=new Vector3(baseSize.x/worn.x,baseSize.y/worn.y,1);
+            // CharacterFacing's hand axis is 180 degrees from the authored body/portrait axis.
+            gear.transform.localRotation=Quaternion.Euler(0,0,180);
         }
         public ToolDefinition ActiveTool { get; private set; }
         public ItemDefinition SelectedItem { get; private set; }

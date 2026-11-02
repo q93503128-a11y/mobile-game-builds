@@ -62,8 +62,8 @@
     {
       "Key": "ui.inventory.slot_hint",
       "Values": [
-        "Tap a slot to find compatible equipment in your bag.",
-        "슬롯을 눌러 가방의 맞는 장비를 확인하세요."
+        "Tap a slot to find matching gear.",
+        "장착 칸을 눌러 맞는 장비를 찾으세요."
       ]
     },
     {
@@ -4479,8 +4479,8 @@
     {
       "Key": "class.dismantle",
       "Values": [
-        "Hold to recover",
-        "길게 눌러 회수"
+        "Hold to dismantle",
+        "길게 눌러 해체"
       ]
     },
     {
@@ -5305,8 +5305,8 @@
     {
       "Key": "account.backend_unavailable",
       "Values": [
-        "Account service setup pending · Offline play available",
-        "계정 서비스 설정 대기 중 · 오프라인 플레이 가능"
+        "Online features unavailable.\nOffline play is available.",
+        "온라인 기능을 사용할 수 없어요.\n오프라인 플레이는 가능합니다."
       ]
     },
     {
@@ -6287,6 +6287,97 @@
       "Values": [
         "Enough for {0} Gem revives",
         "젬 부활 {0}회에 해당"
+      ]
+    },
+    {
+      "Key": "economy.retry_action",
+      "Values": [
+        "Try again",
+        "다시 시도"
+      ]
+    },
+    {
+      "Key": "maintenance.free",
+      "Values": [
+        "Repair · no materials needed",
+        "수리 · 재료 불필요"
+      ]
+    },
+    {
+      "Key": "maintenance.cost",
+      "Values": [
+        "Repair · have / need",
+        "수리 · 보유 / 필요"
+      ]
+    },
+    {
+      "Key": "maintenance.removes",
+      "Values": [
+        "Dismantle removes this structure. Return:",
+        "해체하면 시설이 사라집니다. 반환:"
+      ]
+    },
+    {
+      "Key": "maintenance.no_return",
+      "Values": [
+        "Nothing recovered",
+        "반환 재료 없음"
+      ]
+    },
+    {
+      "Key": "maintenance.repairing",
+      "Values": [
+        "Repairing… Stay still.",
+        "수리 중… 움직이지 마세요."
+      ]
+    },
+    {
+      "Key": "maintenance.salvaging",
+      "Values": [
+        "Dismantling… Release to cancel.",
+        "해체 중… 손을 떼면 취소됩니다."
+      ]
+    },
+    {
+      "Key": "maintenance.recent_damage",
+      "Values": [
+        "Wait a moment after damage before repairing.",
+        "피해를 받은 직후에는 수리할 수 없습니다."
+      ]
+    },
+    {
+      "Key": "maintenance.hold",
+      "Values": [
+        "Hold an action. Release or move to cancel.",
+        "버튼을 길게 누르세요. 손을 떼거나 움직이면 취소됩니다."
+      ]
+    },
+    {
+      "Key": "maintenance.repaired",
+      "Values": [
+        "Repair complete",
+        "수리 완료"
+      ]
+    },
+    {
+      "Key": "maintenance.salvaged",
+      "Values": [
+        "Structure dismantled",
+        "시설 해체 완료"
+      ]
+    },
+    {
+      "Key": "maintenance.healthy",
+      "Values": [
+        "Fully repaired",
+        "수리가 필요 없습니다."
+      ]
+    },
+    {
+      "Key": "maintenance.more",
+      "Values": [
+        "+{0} other types",
+        "외 {0}종"
       ]
     }
   ]

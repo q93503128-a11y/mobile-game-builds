@@ -10,6 +10,14 @@ namespace Wildfolk
         public static readonly Color Paper=new Color32(247,235,203,255);
         public static readonly Color Learned=new Color32(197,204,160,255);
         public static readonly Color Danger=new Color32(137,57,43,255);
+        public static readonly Color Field=new Color32(31,48,39,242);
+        public static readonly Color FieldEdge=new Color32(112,126,91,255);
+        public static readonly Color FieldPaper=new Color32(211,220,183,246);
+        public static void FieldAction(Button button,bool primary=false)
+        {
+            button.image.color=Color.white;Action(button,primary);if(primary)return;var c=button.colors;c.normalColor=new Color32(44,64,49,255);c.highlightedColor=c.selectedColor=new Color32(65,85,61,255);c.pressedColor=new Color32(30,43,33,255);button.colors=c;
+            var label=button.GetComponentInChildren<Text>(true);if(label!=null)label.color=Paper;
+        }
         public static void Action(Button button,bool primary=false,bool destructive=false)
         {
             var c=button.colors;c.normalColor=destructive?Danger:primary?Ember:new Color32(216,205,173,255);

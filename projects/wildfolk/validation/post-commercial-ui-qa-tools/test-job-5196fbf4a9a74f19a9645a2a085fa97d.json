@@ -1,0 +1,117 @@
+{
+  "success": true,
+  "message": "Test job status retrieved.",
+  "error": null,
+  "data": {
+    "job_id": "5196fbf4a9a74f19a9645a2a085fa97d",
+    "status": "succeeded",
+    "mode": "PlayMode",
+    "started_unix_ms": 1793613932184,
+    "finished_unix_ms": 1793613987473,
+    "last_update_unix_ms": 1793613987473,
+    "progress": {
+      "completed": 8,
+      "total": 8,
+      "current_test_full_name": null,
+      "current_test_started_unix_ms": null,
+      "last_finished_test_full_name": "Wildfolk.Tests.PostRcQualityPlayTests.ShowcaseClearDoesNotClaimAnActorAfterItsPooledInstanceIsReused",
+      "last_finished_unix_ms": 1793613987429,
+      "stuck_suspected": false,
+      "editor_is_focused": false,
+      "run_in_background": true,
+      "focus_nudge_attempts": null,
+      "focus_nudge_limit": null,
+      "focus_nudge_status": null,
+      "blocked_reason": null,
+      "failures_so_far": [],
+      "failures_capped": false
+    },
+    "error": null,
+    "result": {
+      "mode": "PlayMode",
+      "summary": {
+        "total": 8,
+        "passed": 8,
+        "failed": 0,
+        "skipped": 0,
+        "durationSeconds": 44.0293917,
+        "resultState": "Passed"
+      },
+      "results": [
+        {
+          "name": "MetaOpensRefreshAutomaticallyAndOnlyFailureExposesRetry",
+          "fullName": "Wildfolk.Tests.EconomyFoundationPlayTests.MetaOpensRefreshAutomaticallyAndOnlyFailureExposesRetry",
+          "state": "Passed",
+          "durationSeconds": 1.3107718,
+          "message": null,
+          "stackTrace": null,
+          "output": ""
+        },
+        {
+          "name": "FloatingDeadzoneOwnershipAndConcurrentAttackUseActualUiInputModule",
+          "fullName": "Wildfolk.Tests.MobilePresentationPlayTests.FloatingDeadzoneOwnershipAndConcurrentAttackUseActualUiInputModule",
+          "state": "Passed",
+          "durationSeconds": 5.474909,
+          "message": null,
+          "stackTrace": null,
+          "output": ""
+        },
+        {
+          "name": "HotbarAndModalDoNotStartOrRetainMovement",
+          "fullName": "Wildfolk.Tests.MobilePresentationPlayTests.HotbarAndModalDoNotStartOrRetainMovement",
+          "state": "Passed",
+          "durationSeconds": 3.3400912,
+          "message": null,
+          "stackTrace": null,
+          "output": ""
+        },
+        {
+          "name": "EditorSpeedRestoresWithoutChangingStatsAndShowcaseUsesNearPlayerGround",
+          "fullName": "Wildfolk.Tests.PostRcQualityPlayTests.EditorSpeedRestoresWithoutChangingStatsAndShowcaseUsesNearPlayerGround",
+          "state": "Passed",
+          "durationSeconds": 3.4936755,
+          "message": null,
+          "stackTrace": null,
+          "output": ""
+        },
+        {
+          "name": "HandArmorMatchesHandCoverageAndBodyAxisThroughoutFacingAndAttack",
+          "fullName": "Wildfolk.Tests.PostRcQualityPlayTests.HandArmorMatchesHandCoverageAndBodyAxisThroughoutFacingAndAttack",
+          "state": "Passed",
+          "durationSeconds": 7.5484849,
+          "message": null,
+          "stackTrace": null,
+          "output": ""
+        },
+        {
+          "name": "HpTextLivesInsideHealthComponentAndPauseRetainsActions",
+          "fullName": "Wildfolk.Tests.PostRcQualityPlayTests.HpTextLivesInsideHealthComponentAndPauseRetainsActions",
+          "state": "Passed",
+          "durationSeconds": 4.280321,
+          "message": null,
+          "stackTrace": null,
+          "output": ""
+        },
+        {
+          "name": "RepairAndDismantleUseRealHoldCancellationCostsAndCompletion",
+          "fullName": "Wildfolk.Tests.PostRcQualityPlayTests.RepairAndDismantleUseRealHoldCancellationCostsAndCompletion",
+          "state": "Passed",
+          "durationSeconds": 14.9534006,
+          "message": null,
+          "stackTrace": null,
+          "output": ""
+        },
+        {
+          "name": "ShowcaseClearDoesNotClaimAnActorAfterItsPooledInstanceIsReused",
+          "fullName": "Wildfolk.Tests.PostRcQualityPlayTests.ShowcaseClearDoesNotClaimAnActorAfterItsPooledInstanceIsReused",
+          "state": "Passed",
+          "durationSeconds": 3.5786996,
+          "message": null,
+          "stackTrace": null,
+          "output": ""
+        }
+      ]
+    }
+  },
+  "hint": null
+}

@@ -17,3 +17,11 @@ Newcomer board retains seven visits and its existing final milestone. Monthly re
 Hub optional ad button displays +1Gem, loading/unavailable/cancelled/pending/received status and manual safe retry. Only achievement/attendance claimability adds a small notification dot, never ad availability. Free Home remains clear in death UI. Ad privacy choices appear only for actual native UMP required state.
 
 [Research/current screen audit/native capture limits](../validation/rewarded-ads-meta-ui/REVIEW.md). Three landscape targets1920×1080/1280×720/844×390 and KO/EN use authored Unity UI. Typed isolated fixtures are explicitly distinct from actual SDK/provider impressions. Captures use a controlled UI-only background; real woodland composition/touch-device/consent-video readability still needs actual device review.
+
+## 2026-11-02 Post-RC1 coherence
+
+정상 Achievement/Attendance의 상시 Sync를 제거했다. Open/claim의 기존 자동 갱신을 유지하고 온라인 실패에서만 Try again을 보인다. Offline catalog는 read-only이며 계정 연결 안내를 유지한다. Account/support의 명시 sync는 별도 맥락으로 보존한다. 계정 설정 대기라는 내부 문구는 온라인 이용 불가/오프라인 가능 안내로 바꿨다.
+
+종이 art의 실제 안쪽 프레임을 기준으로 Back, Class footer, 출석 탭, Multiplayer solo action을 안쪽에 배치한다. 필드의 HUD/Pause/수리 카드는 같은 기존 woodland panel/primary ember/secondary green을 사용하고 paper tint와 scrim은 배경 숲이 남도록 조정했다. 전체 Home/경제 화면을 다시 만들지 않았고 보상/상품/계정 기능은 바꾸지 않았다.
+
+[실제3해상도·KO/EN 결과](../validation/post-commercial-ui-qa-tools/REVIEW.md).

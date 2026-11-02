@@ -68,7 +68,7 @@ namespace Wildfolk.Editor
             selection.color=new Color32(210,183,117,255);view.Selection=selection;
             var inset=Image("Inset",selection.transform,"white",new Vector2(.5f,.5f),Vector2.zero,new Vector2(size-2,size-2));inset.color=new Color32(24,40,33,255);selection.enabled=false;
             view.Icon=Image("Icon",slot.transform,"white",new Vector2(.5f,.5f),new Vector2(0,2),new Vector2(size*.68f,size*.72f));view.Icon.enabled=false;view.Icon.preserveAspect=true;
-            view.Count=Text("Stack Count",slot.transform,string.Empty,new Vector2(size*.24f,-size*.31f),new Vector2(42,26),21,TextAnchor.MiddleRight);
+            view.Count=Text("Stack Count",slot.transform,string.Empty,new Vector2(size*.24f,-size*.31f),new Vector2(48,36),21,TextAnchor.MiddleRight);
             if(quick) Text("Quick Slot",slot.transform,(index+1).ToString(),new Vector2(-size*.31f,size*.32f),new Vector2(24,24),15);
             view.DropMarker=Image("Drop Target",slot.transform,"white",new Vector2(.5f,.5f),Vector2.zero,new Vector2(size,size));view.DropMarker.enabled=false;
             return slot;
