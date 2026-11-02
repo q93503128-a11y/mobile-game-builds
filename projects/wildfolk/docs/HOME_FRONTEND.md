@@ -1,16 +1,8 @@
-## 2026-11-01 체크포인트3
+## 현재 Home / UI · 2026-11-02
 
-메인 Play/멀티/설정/Profile에 아이콘을 함께 쓰고, Gem·업적·출석은 하나의 캠프 탐색 영역으로 묶었다. 저장 없음/실제 QA Continue와 Profile을 한영3해상도로 재검수했다. 전체 패스 최종 보고는 사용자 요청 중단으로 남았다. [현재 검증/재개](../validation/commercial-ui-mobile/REVIEW.md#checkpoint-3--2026-11-01-user-requested-stop).
+검증된 저장은 Continue, 저장 없음은 새 세계를 primary로 표시한다. Play/멀티/설정/Profile의 icon+label, Class 행과 별도 Gem·업적·출석 캠프 탐색을 사용한다. chest/fire 간격과 footer 정렬을 조정했다. Class는 개요→tree, MP는 Create/Join→대기실이며 Class 선택은 Home에서 공통 관리한다.
 
-## 실제 검수 체크포인트2 · 2026-10-31
-
-한영14화면×3해상도84캡처와 텍스트 높이를 점검했고, 직업 트리 하단/출석 안내 높이를 교정했다. 실제 New/Continue/Home 전환을 관찰했다. 마지막 Profile 광고 불러오기 문구·MP/역할 HUD·Client scene overlay는 재검수가 남아 전체 패스는 아직 완료가 아니다. [최신 증거/이어받기](../validation/commercial-ui-mobile/REVIEW.md#checkpoint-2--resumed-inspection-user-requested-stop).
-
-## 현재 UI 체크포인트 · 2026-10-31
-
-유효 저장이 있으면 Continue가 우선이고, 없으면 Continue를 숨기고 새 세계 시작을 primary로 표시한다. Class·Profile·Achievements·Attendance는 독립 진입점이며 Store는 작은 Gem 진입점이다. Settings의 버튼/라벨 폭과 중앙 정렬을 함께 작성한다. 배경의 보급 상자는 불에서 더 떨어뜨렸다. Class는 개요→선택한 직업 트리, Multiplayer는 Create/Join과 대기실을 구분하며 MP Class bookmark는 제거했다.
-
-SceneFlow는 실제 비동기 씬 전환에 임시 TransitionOverlay를 사용한다. 가짜 백분율 없이 단계/회전 표시를 쓰며 SP 초기 지형 준비 동안 기존 Pause/Resume으로 보호한다. Network overlay는 기존 상태/timeout/Leave를 따르고 취소 불가능한 씬 로드 중 취소를 숨긴다. 새 저장 서비스나 schema는 없다. 관련 자동검사는 통과했지만 전체 실제 화면·전환 체감·LAN 검수는 다음 작업이다. [상태/검증 한계](../validation/commercial-ui-mobile/REVIEW.md#checkpoint--user-requested-stop).
+SceneFlow/Network의 실제 경계는 phase+spinner로 표현하고 가짜 진행률은 없다. client Load 구독, 취소/실패 복귀, 실제 LAN save/reHost와 세 viewport/한영을 검수했다. 공통 버튼 작성이 AudioButton을 보존한다. 디자인의 사용자 승인과 물리 Android 검수는 별도다. [최종 검증/한계](../validation/commercial-ui-mobile/FINAL_REPORT.md).
 
 아래는 2026-10-15 최초 Home 제작 기록이다. 당시 여섯 진입점, 비활성 Continue, 빈 오디오와 동기 전환 설명은 현재 구현을 뜻하지 않는다.
 

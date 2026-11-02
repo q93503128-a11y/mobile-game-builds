@@ -1,6 +1,6 @@
 # Commercial UI / mobile presentation — 2026-10-31
 
-Status: IN PROGRESS — USER-REQUESTED CHECKPOINT 3, NOT COMPLETE. Latest evidence/resume instructions are in Checkpoint 3 below; earlier sections preserve the first checkpoint. Start main `d32c07ce7dd598ac3f607d33fd1c2f75d16bf76c`; remote fetched before inspection. This file separates observed baseline, design decisions and verification still required. No RC2 build/upload or service activation is authorized by this pass.
+Status: REPOSITORY IMPLEMENTATION / RELATED VALIDATION COMPLETE — 2026-11-02; user PC/device approval pending; RC2 NOT READY. [Final report](FINAL_REPORT.md) is current. Dated checkpoints below preserve the original observations, failures and user-requested stops.
 
 ## Current-run evidence
 
@@ -178,3 +178,15 @@ The very first Home capture after selecting a Game View size returned an old tin
 4. Commit/push/clean after remaining work; then STOP. Do not build RC2, upload or activate services automatically.
 
 Timing phases for this continuation are saved with tokenUsage=null (no per-task token/billing telemetry). Measurement begins11:03:18 KST; the preceding fetch/read setup was not timed and is not silently estimated. Git closing time is included in the final reply's measured elapsed time.
+
+
+## 2026-11-02 final closure
+
+Fetched clean main8ee7c686f300d0c9d85654daff63eaac72ee7f66 and checked current source. Final requirement audit found a real audio regression: all127 MainMenu buttons lacked AudioButton after the smaller frontend rebuild path; actual Settings produced0cue/0voice. Common GameplayUiFactory.Button now creates through existing AudioButton.Add, existing missing scene components were serialized, and transient loading Cancel uses the same audio component. Actual Settings then produced UiClick1/voice1. Scene geometry and audio content did not change. A new actual-authored-controls test covers click/back/cancel; latest focused Play5/Edit4 passed.
+
+Additional actual isolated Play observed invalid code recovery, visible connecting/cancel, no-server failure returning to an interactive menu in5.08s, rapid retouch, active joystick reset on direct death fixture and rejected new movement touch behind the death modal. Expected no-server transport logging paused the Editor through Error Pause; only this expected QA condition was resumed and is recorded. Native preference was not changed. Death persistence was a QA delegate; this is not a natural combat/save compatibility claim.
+
+Full37-topic validation, evidence selection and remaining user/device approvals are in [FINAL_REPORT](FINAL_REPORT.md). Earlier pending lists are historical and superseded. Repository pass complete; RC2 remains NOT READY and no AAB/upload/activation is performed.
+
+
+Final screenshot inspection also found a stale Connecting status after successful cancellation. NetworkSession.Close now clears only net.connecting/net.entering on cleanup, preserving explicit failure/host-left/save-failed explanations. The actual-controls regression now starts and cancels a real local Join and asserts the cleared status. Final network4checks include invalid input, visible overlay, cancellation with cleared status, and a preserved no-server failure. The prior stale-status screenshot remains as before evidence, not a final accepted view.

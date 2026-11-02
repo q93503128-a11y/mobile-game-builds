@@ -1,10 +1,6 @@
-## 화면 증거/문구 체크포인트2 · 2026-10-31
+## 현재 UI 문구/증거 · 2026-11-02
 
-84메뉴 캡처와 추가 상태/게임플레이 캡처의 기록된 Text box 검사에서 잘림0을 확인했다. 출석 연결 안내는105높이로 교정했다. 모호한 광고 재확인 문구는 Load ad / 광고 불러오기로 바꿨으며 마지막 이 문구의 Profile 캡처는 남아 있다. 중복 MP HUD의 사용하지 않는 net.camp/health/wallet 키를 제거했다. [현재 검수 한계](../validation/commercial-ui-mobile/REVIEW.md#checkpoint-2--resumed-inspection-user-requested-stop).
-
-## UI 가독성 교정 · 2026-10-31
-
-JournalUiBuilder.Label은 실제 Noto Sans KR의 한 줄 높이를 확보하도록 최소 font×1.6 높이를 작성한다. 844×390 캡처에서 font28의 preferredHeight40.16이 높이38/40 박스를 넘어서 라벨이 사라지는 것을 확인했다. 이 규칙은 authoring이며 매 프레임 크기를 덮어쓰지 않는다. 새 메뉴·로딩·스토어 상태 문구는 같은 en/ko 정본에 추가했다. 최종 양언어/전체 viewport after 매트릭스는 아직 미완료다.
+주요 메뉴의 한영3viewport와 최신 Home/Profile/Continue/role 상태를 실제 검수했고 기록된 text-height 잘림0을 확인했다. Load ad/광고 불러오기, flat deletion warning, prerequisite/point shortage와 Store OFF 문구를 실제 상태에 맞춘다. Fake 가격/인증값·raw internal 상태는 표시하지 않는다. 마지막 no-server/death 추가 probe는 EN844이며 KO 전체 재검사로 부풀리지 않는다. [최종 검증/한계](../validation/commercial-ui-mobile/FINAL_REPORT.md).
 
 # English / 한국어
 

@@ -41,7 +41,7 @@ namespace Wildfolk.Editor
         internal static Button Button(Image image)
         {
             image.raycastTarget=true;
-            var button=image.gameObject.AddComponent<Button>();
+            var button=AudioButton.Add(image.gameObject);
             button.targetGraphic=image;
             button.navigation=new Navigation {mode=Navigation.Mode.None};
             var colors=button.colors;

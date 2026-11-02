@@ -1,0 +1,52 @@
+{
+  "sourceValidator": {
+    "passed": true,
+    "uniqueAssetGuids": 1879
+  },
+  "initialRunsRetained": true,
+  "targetedRerunPassed": 7,
+  "userFilesUnchanged": 6,
+  "editorPlay": false,
+  "editorScene": "MainMenu",
+  "qaSessionFlagCleared": true,
+  "fullVisualMatrix": "Previous 84-menu matrix retained; latest Home/Profile/Continue 18 + connected fixtures2 + badges/insets2 verified; final report pending",
+  "twoProcessLan": "Latest actual peer: loading overlay seen, one HP label, ClassControls bound, client Home, Host save/leave/reHost/Continue passed",
+  "waterCreatureObservation": "Previous 18 presentations retained; closer crawler proximity/awake/chase/action/recovery/death observed; no product creature/world changes",
+  "performance": "Final Home 180frames, objects170->170, Canvas.BuildBatch max0, MainThread p95 2.8971ms; Editor only",
+  "rc2": "NOT READY",
+  "status": "USER_REQUESTED_CHECKPOINT_3",
+  "versions": {
+    "save": 14,
+    "profile": 2,
+    "cloudProfile": 1,
+    "economy": 2,
+    "protocol": 23,
+    "generation": 3,
+    "iap": 1
+  },
+  "resumeStartSha": "144a56a0b002b614bc6c23dcfe2b75de50eccd25",
+  "resumePlayModeUniquePassed": 27,
+  "latestPlayModePassed": 9,
+  "latestEditModePassed": 2,
+  "menuMatrixCaptured": 84,
+  "textTruncationsInRecordedMetrics": 0,
+  "previousCheckpointUniquePassed": {
+    "editMode": 111,
+    "playMode": 67
+  },
+  "currentContinuationUniquePlayModePassed": 14,
+  "currentContinuationEditModePassed": 4,
+  "currentContinuationInitialPlayMode": {
+    "total": 13,
+    "passed": 12,
+    "failed": 1
+  },
+  "targetedCorrection": {
+    "total": 3,
+    "passed": 3
+  },
+  "remaining": [
+    "Final complete-pass visual/requirements report and concise full handoff",
+    "User PC/Unity design review before separately requested RC2; physical Android/Relay/4 peers remain unverified"
+  ]
+}

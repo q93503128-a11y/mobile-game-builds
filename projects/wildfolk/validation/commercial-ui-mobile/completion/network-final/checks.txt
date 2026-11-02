@@ -1,0 +1,5 @@
+PASS Invalid code closes overlay and explains correction
+PASS Connecting overlay appears
+PASS Cancel restores Join input and clears Connecting status
+EXPECTED Editor Error Pause resumed for no-server transport log
+PASS No-server connection restores usable menu with localized failure

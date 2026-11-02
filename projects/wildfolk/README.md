@@ -1,4 +1,4 @@
-> **2026-11-01 사용자 요청 체크포인트3:** 메인/Profile 아이콘·탐색 표현과 역할 HUD를 보정하고, 최신 실제 LAN 로딩·저장·재입장 및 근접 crawler를 확인했다. 관련 Play14개/Edit4개·data/source 검증을 통과했다. 전체 요구사항/최종 보고 정리와 사용자 화면 검수가 남아 **RC2 NOT READY**다. [최신 결과와 재개 순서](validation/commercial-ui-mobile/REVIEW.md#checkpoint-3--2026-11-01-user-requested-stop). AAB/업로드/운영 활성화는 하지 않았다.
+> **2026-11-02 UI pass 마감:** Commercial UI/Mobile Presentation 저장소 구현·관련 검증 완료. 마지막127개 메뉴 클릭음 누락도 교정했다. 화면은 PC/Unity 검수 후보이며 **사용자·실기기 승인 전 RC2 NOT READY**다. [최종37항목 보고/증거](validation/commercial-ui-mobile/FINAL_REPORT.md). AAB/업로드/운영 활성화는 하지 않았다.
 
 # Lowfire
 

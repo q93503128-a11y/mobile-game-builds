@@ -18,6 +18,16 @@ namespace Wildfolk.Tests
   [UnitySetUp]public IEnumerator SetUp(){heard.Clear();previous=UnityEditor.SessionState.GetString("Wildfolk.QA.Directory","");UnityEditor.SessionState.SetString("Wildfolk.QA.Directory",Path.Combine(Path.GetTempPath(),"LowfireAudioTests",Guid.NewGuid().ToString("N")));SceneFlow.Repository=SaveRepository.Default();if(AudioRuntime.Current!=null)Object.Destroy(AudioRuntime.Current.gameObject);yield return null;yield return SceneManager.LoadSceneAsync("MainMenu");yield return null;AudioRuntime.Played+=Hear;}
   [UnityTearDown]public IEnumerator TearDown(){AudioRuntime.Played-=Hear;if(AudioRuntime.Current!=null)Object.Destroy(AudioRuntime.Current.gameObject);yield return null;SceneFlow.Repository=null;UnityEditor.SessionState.SetString("Wildfolk.QA.Directory",previous);}
   private void Hear(Sound cue)=>heard.Add(cue);
+  [UnityTest]public IEnumerator ActualHomeNavigationAndTransitionCancelKeepTheirAudio()
+  {
+   var home=Object.FindFirstObjectByType<HomeScreen>();Assert.That(home.GetComponentsInChildren<UnityEngine.UI.Button>(true).All(b=>b.GetComponent<AudioButton>()!=null),Is.True,"Authored home and meta controls must retain their audio bindings");
+   home.SettingsButton.onClick.Invoke();Assert.That(home.Page,Is.EqualTo(FrontendPage.Settings));Assert.That(heard.Count(s=>s==Sound.UiClick),Is.EqualTo(1));
+   yield return new WaitForSecondsRealtime(.12f);home.Settings.GetComponentsInChildren<UnityEngine.UI.Button>().Single(b=>b.name=="Back").onClick.Invoke();Assert.That(home.Page,Is.EqualTo(FrontendPage.Home));Assert.That(heard.Count(s=>s==Sound.UiBack),Is.EqualTo(1));
+   home.OpenMultiplayer();var menu=Object.FindFirstObjectByType<MultiplayerMenu>();menu.ToggleRoute();menu.Destination.text="127.0.0.1:27997";menu.JoinButton.onClick.Invoke();yield return new WaitForSecondsRealtime(.12f);heard.Clear();
+   Object.FindFirstObjectByType<TransitionOverlay>().GetComponentInChildren<UnityEngine.UI.Button>().onClick.Invoke();yield return null;
+   var until=Time.realtimeSinceStartup+10;while(menu.Session.State!=NetworkSessionState.Idle){Assert.That(Time.realtimeSinceStartup,Is.LessThan(until));yield return null;}
+   Assert.That(TransitionOverlay.Visible,Is.False);Assert.That(menu.Session.MessageKey,Is.Null,"Cancelled Join must stop announcing Connecting");Assert.That(menu.JoinButton.interactable,Is.True);Assert.That(heard.Count(s=>s==Sound.UiBack),Is.EqualTo(1));
+  }
   [UnityTest]public IEnumerator AuthoredCategoryButtonUsesPageAndDisabledButtonIsSilent()
   {var go=new GameObject("Category",typeof(RectTransform),typeof(UnityEngine.UI.Button));go.AddComponent<AudioButton>();var button=go.GetComponent<UnityEngine.UI.Button>();button.onClick.Invoke();Assert.That(heard.Count(c=>c==Sound.Page),Is.EqualTo(1));button.interactable=false;button.onClick.Invoke();Assert.That(heard.Count(c=>c==Sound.Page),Is.EqualTo(1));Object.Destroy(go);yield return null;}
   [UnityTest]public IEnumerator MuteAndSettingsDriveRealMixerAndAllSources()

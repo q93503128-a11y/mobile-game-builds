@@ -1,0 +1,90 @@
+{
+  "success": true,
+  "message": "Test job status retrieved.",
+  "error": null,
+  "data": {
+    "job_id": "cf2026f8bb7642748e2ad47cd7469646",
+    "status": "succeeded",
+    "mode": "PlayMode",
+    "started_unix_ms": 1793596047752,
+    "finished_unix_ms": 1793596064714,
+    "last_update_unix_ms": 1793596064714,
+    "progress": {
+      "completed": 5,
+      "total": 5,
+      "current_test_full_name": null,
+      "current_test_started_unix_ms": null,
+      "last_finished_test_full_name": "Wildfolk.Tests.FrontendPlayTests.CampNavigationAndProfileRowsReachTheirRealDestinations",
+      "last_finished_unix_ms": 1793596064632,
+      "stuck_suspected": false,
+      "editor_is_focused": false,
+      "run_in_background": true,
+      "focus_nudge_attempts": null,
+      "focus_nudge_limit": null,
+      "focus_nudge_status": null,
+      "blocked_reason": null,
+      "failures_so_far": [],
+      "failures_capped": false
+    },
+    "error": null,
+    "result": {
+      "mode": "PlayMode",
+      "summary": {
+        "total": 5,
+        "passed": 5,
+        "failed": 0,
+        "skipped": 0,
+        "durationSeconds": 9.2816043,
+        "resultState": "Passed"
+      },
+      "results": [
+        {
+          "name": "ActualHomeNavigationAndTransitionCancelKeepTheirAudio",
+          "fullName": "Wildfolk.Tests.AudioPlayTests.ActualHomeNavigationAndTransitionCancelKeepTheirAudio",
+          "state": "Passed",
+          "durationSeconds": 2.4059187,
+          "message": null,
+          "stackTrace": null,
+          "output": ""
+        },
+        {
+          "name": "AuthoredCategoryButtonUsesPageAndDisabledButtonIsSilent",
+          "fullName": "Wildfolk.Tests.AudioPlayTests.AuthoredCategoryButtonUsesPageAndDisabledButtonIsSilent",
+          "state": "Passed",
+          "durationSeconds": 0.9473907,
+          "message": null,
+          "stackTrace": null,
+          "output": ""
+        },
+        {
+          "name": "MuteAndSettingsDriveRealMixerAndAllSources",
+          "fullName": "Wildfolk.Tests.AudioPlayTests.MuteAndSettingsDriveRealMixerAndAllSources",
+          "state": "Passed",
+          "durationSeconds": 1.1172665,
+          "message": null,
+          "stackTrace": null,
+          "output": ""
+        },
+        {
+          "name": "SceneReloadKeepsOneOwnerAndBoundedSources",
+          "fullName": "Wildfolk.Tests.AudioPlayTests.SceneReloadKeepsOneOwnerAndBoundedSources",
+          "state": "Passed",
+          "durationSeconds": 3.5537818,
+          "message": null,
+          "stackTrace": null,
+          "output": ""
+        },
+        {
+          "name": "CampNavigationAndProfileRowsReachTheirRealDestinations",
+          "fullName": "Wildfolk.Tests.FrontendPlayTests.CampNavigationAndProfileRowsReachTheirRealDestinations",
+          "state": "Passed",
+          "durationSeconds": 1.1689231,
+          "message": null,
+          "stackTrace": null,
+          "output": ""
+        }
+      ]
+    }
+  },
+  "hint": null
+}

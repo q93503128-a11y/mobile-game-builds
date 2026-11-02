@@ -1,16 +1,8 @@
-## 2026-11-01 체크포인트3
+# 현재 Profile / Records · 2026-11-02
 
-Profile의 기록/계정은 아이콘 행을 사용한다. Load ad는 계정 연결·cloud 가능 시 표시하며, 기존 eligibility/보상 규칙은 그대로다. 실제 OFF 화면과 연결 fixture를 구분해 확인했다. [현재 검증/재개](../validation/commercial-ui-mobile/REVIEW.md#checkpoint-3--2026-11-01-user-requested-stop).
+Home에서 Profile/업적/출석/Class로 직접 진입하며 Store Back은 실제 origin을 따른다. Profile은 identity/class/level/기록과 account 중심이고 record/account는 icon 행이다. Load ad는 linked/cloud 가능 시 표시한다. 모든 생성 버튼은 공통 작성 경로에서 기존 audio binding을 갖는다.
 
-# Profile / Records · current UI checkpoint
-
-2026-10-31: Home has independent Profile, Achievement, Attendance and Class destinations. Gem Store has a small direct entry; Back returns to the actual origin. Profile retains class/level, confirmed/cached record summary and account management. No rewards, metrics or eligibility rules changed.
-
-Attendance shows the real catalogue as a non-claimable preview without an account. Newcomer keeps7 visits, monthly keeps7×4 and its existing four Gem milestones; visit-only days never pretend to grant Gem. Received/current/future states are separate. Only the server-authorized claim action is interactive. Empty event and offline status are explicit. Family achievement cards retain22families/58tiers/7categories and add progress/selection treatment.
-
-Account uses a flat paper sheet, hides Sign Out/Delete unless linked, separates conflict actions, and removes the creation-date field. Deletion explains cloud/account/economy/support removal, retained local worlds, minimal reviewed financial retention and irreversibility; the transaction is unchanged. Store keeps24/72/144 with real platform prices only. OFF mode allows package inspection, shows availability and existing revive uses, and hides the purchase CTA; recovery/history/support are secondary links. Availability is read from the existing policy, not a second authority.
-
-Implementation and related automatic checks are a checkpoint. 84 menu captures plus isolated account/reward/store states and text-height checks were recorded. The final Profile ad copy and latest MP/role HUD/client-loading changes still need visual/peer recapture. [Research, evidence, remaining work](../validation/commercial-ui-mobile/REVIEW.md).
+Attendance7/28의 실제 보드·Gem/stamp·수령/현재/미래, achievement22family/58tier/7category, 상태별 account/delete와 Store24/72/144를 보존한다. Offline catalogue는 읽기 전용, 실제 server eligibility만 claim/purchase 권한이다. 양언어/세 viewport와 typed states 검수 완료이며 real provider/기기·사용자 승인은 별도다. [최종 검증/한계](../validation/commercial-ui-mobile/FINAL_REPORT.md).
 
 ## Historical Foundation3 implementation
 

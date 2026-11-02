@@ -1,0 +1,78 @@
+[
+  {
+    "file": "connecting-en-844.png",
+    "sha256": "8f07dee22333dc172ac01a11daad2ea96a2d2af1f6f80331cd7b10ea8b8005f2",
+    "captured": "2026-11-02",
+    "scope": "isolated Editor QA; direct death fixture, no user saves",
+    "accepted": true
+  },
+  {
+    "file": "death-input-en-844.png",
+    "sha256": "ecb69becdd6707503045ec498a9c6d0e5fe7ccbce066e8d4405f279106626efc",
+    "captured": "2026-11-02",
+    "scope": "isolated Editor QA; direct death fixture, no user saves",
+    "accepted": true
+  },
+  {
+    "file": "final-home-en-844.png",
+    "sha256": "0afc3e3fbc900036ec397ac42b816523d2d55e85e754d707ad83ec606c5c2c03",
+    "captured": "2026-11-02",
+    "scope": "isolated Editor QA; direct death fixture, no user saves",
+    "accepted": true
+  },
+  {
+    "file": "invalid-code-en-844.png",
+    "sha256": "1d184a5138eb3a3def5c30ad8eaaf58ddd19bcdb8278e3245a1ba64ea27cce59",
+    "captured": "2026-11-02",
+    "scope": "isolated Editor QA; direct death fixture, no user saves",
+    "accepted": true
+  },
+  {
+    "file": "join-cancelled-en-844.png",
+    "sha256": "e5990abea34f864d5cea09221f2658530e772ef333b299d9febfdc82cd0f93d3",
+    "captured": "2026-11-02",
+    "scope": "isolated Editor QA; direct death fixture, no user saves",
+    "accepted": false,
+    "reason": "Superseded: menu was usable but status still said Connecting; preserved as before evidence"
+  },
+  {
+    "file": "join-failed-en-844.png",
+    "sha256": "f909892bbe7898a621e6ba6011507a59767519542959152c3110eb96cb7d3b03",
+    "captured": "2026-11-02",
+    "scope": "isolated Editor QA; direct death fixture, no user saves",
+    "accepted": true
+  },
+  {
+    "file": "network-final/connecting-en-844.png",
+    "sha256": "613dbddabf5945f2ad71b80290d67057fa59a245d3a4bdbc4dac06b555ae5d75",
+    "captured": "2026-11-02",
+    "accepted": true,
+    "scope": "actual isolated local Join cancellation/failure"
+  },
+  {
+    "file": "network-final/invalid-code-en-844.png",
+    "sha256": "d93fc5e844495d8d040460e474df0b122306a6a755b411caed0239febe3681bf",
+    "captured": "2026-11-02",
+    "accepted": true,
+    "scope": "actual isolated local Join cancellation/failure"
+  },
+  {
+    "file": "network-final/join-cancelled-en-844.png",
+    "sha256": "28718530a9a74e23cb9eb29fe326147b0234300abf10610b0b36f4e1e6276bca",
+    "captured": "2026-11-02",
+    "accepted": true,
+    "scope": "actual isolated local Join cancellation/failure"
+  },
+  {
+    "file": "network-final/join-failed-en-844.png",
+    "sha256": "364090301a286c0aa0a7119b97ce5d6d0577ec74a81671675b320f61756b5df3",
+    "captured": "2026-11-02",
+    "accepted": true,
+    "scope": "actual isolated local Join cancellation/failure"
+  },
+  {
+    "file": "join-cancelled-before-status-fix.png",
+    "accepted": false,
+    "scope": "before correction; connecting status stale after successful cancellation"
+  }
+]

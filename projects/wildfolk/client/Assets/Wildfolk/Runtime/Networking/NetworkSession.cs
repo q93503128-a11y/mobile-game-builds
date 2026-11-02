@@ -187,7 +187,7 @@ namespace Wildfolk
             if(Manager.SceneManager!=null){Manager.SceneManager.OnLoadEventCompleted-=Loaded;Manager.SceneManager.OnSynchronizeComplete-=Synchronized;Manager.SceneManager.OnSceneEvent-=PresentSceneTransition;}
             UnregisterPremiumMessages();premiumPending.Clear();if(Manager.IsListening)Manager.Shutdown();
             while(Manager.ShutdownInProgress)yield return null;
-            RoomCode=string.Empty;identities.Clear();spawning.Clear();PreparedWorld=null;State=NetworkSessionState.Idle;Notify();
+            RoomCode=string.Empty;identities.Clear();spawning.Clear();PreparedWorld=null;if(MessageKey=="net.connecting"||MessageKey=="net.entering")MessageKey=null;State=NetworkSessionState.Idle;Notify();
             if(returnHome && SceneManager.GetActiveScene().name==SceneFlow.MultiplayerScene)
             {SceneFlow.Home(SceneFlow.Repository);yield return null;if(MessageKey=="net.host_left" || MessageKey=="net.connection_failed")FindFirstObjectByType<HomeScreen>()?.OpenMultiplayer();}
         }

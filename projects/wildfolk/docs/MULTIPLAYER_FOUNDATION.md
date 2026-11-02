@@ -1,14 +1,8 @@
-## 2026-11-01 체크포인트3
+## 현재 multiplayer 표시 · 2026-11-02
 
-실제 client에서 로딩 overlay 누락을 재현해 Join에도 공유 씬 이벤트 구독을 연결하고 Close에서 해제했다. 새 실제 peer의 overlay·단일 HP·ClassControls·Home 복귀와 Host save/leave/reHost/Continue가 통과했다. Relay/4인 실기 검수는 아니다. [현재 검증/재개](../validation/commercial-ui-mobile/REVIEW.md#checkpoint-3--2026-11-01-user-requested-stop).
+Create/Join과 Waiting room, 실제 인원/방장/코드를 구분하며 MP Class 진입점은 Home 공통 선택으로 통합한다. 기존 admission/Host authority/Protocol23은 유지한다. 공통 HP 한 곳과 Gold/role, local joystick/layout/ClassControls를 사용한다.
 
-## 모바일 표시 체크포인트2 · 2026-10-31
-
-실제 두 Unity 프로세스로 새 메뉴의2/4대기실·게임 진입·로컬 joystick/layout·Host Save14·Client Home 복귀를 확인했다. 중복 HP/Level/XP 문구를 제거하고 공통 vitals와 별도 Gold를 사용한다. 마지막 직업 HUD ancestor 바인딩과 클라이언트 NGO Load event의 로딩 overlay는 후속 실제 재검수가 필요하다. 이벤트는 표시만 담당하며 입장/Host 권위·네트워크 상태·Protocol23은 유지한다. 아래 첫 체크포인트의 LAN 미실행 설명은 당시 기록이다. [최신 검증/한계](../validation/commercial-ui-mobile/REVIEW.md#checkpoint-2--resumed-inspection-user-requested-stop).
-
-## UI 체크포인트 · 2026-10-31
-
-Create/Join 구역과 Waiting room을 구분한다. Host는 실제 접속 인원/최대4를, Client는 연결/방장 대기를 표시한다. Local route에는 방 코드 복사 버튼을 표시하지 않는다. Class bookmark는 Home으로 통합했고 admission 규칙은 유지한다. 실제 Connecting/Loading/로컬 actor 준비 상태에 로딩 overlay를 연결했다. MP도 같은 floating joystick과 Control Size layout을 로컬 actor에 bind한다. 이번 새 UI의 실제2프로세스 LAN은 아직 실행하지 않았다. 준비된 companion 프로젝트만 있으며 과거 LAN 결과를 이번 결과로 대체하지 않는다. [재개 지점](../validation/commercial-ui-mobile/REVIEW.md#checkpoint--user-requested-stop).
+Host/Join이 같은 AttachScenes를 구독하고 Close가 presentation callback도 해제한다. 최신 실제 두 프로세스 LAN에서 overlay/단일 HP/로컬 controls, client Home, Host save/leave/reHost/Continue를 확인했다. invalid-code/cancel/no-server fallback도 관찰했다. Close는 취소된 connecting/entering 진행 문구만 지우며 실제 failure/Host 종료/저장 실패 안내를 보존한다. Relay/4기기 검수와 운영 활성화는 아니다. [최종 검증/한계](../validation/commercial-ui-mobile/FINAL_REPORT.md).
 
 # Multiplayer Foundation — 자원 템포 / Protocol11
 

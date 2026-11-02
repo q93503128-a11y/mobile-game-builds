@@ -1,0 +1,13 @@
+PASS Invalid code closes overlay and explains correction
+PASS Connecting overlay appears
+PASS Cancel restores Join input
+EXPECTED Editor Error Pause resumed for no-server transport log
+PASS No-server connection restores usable menu with localized failure
+PASS Retouch starts neutral 1
+PASS Retouch release clears 1
+PASS Retouch starts neutral 2
+PASS Retouch release clears 2
+PASS Movement pointer active before death fixture
+PASS Death clears active movement/base
+PASS Death modal rejects new movement touch
+PASS Home usable after fixture cleanup

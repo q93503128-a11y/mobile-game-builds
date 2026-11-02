@@ -1,14 +1,8 @@
-## 2026-11-01 체크포인트3
+## 현재 Class UI · 2026-11-02
 
-80/100/140% 실제 역할 HUD 검수에서 의무병 치료의 중앙 가림과 탐험가 의미 선택/망원경 안내 겹침을 교정했다. 치료는 다른 직업의 active와 같은 엄지 위치, 의미 선택은 표식 아래를 사용한다. 수치/해금/노드/프로필 변경은 없다. [현재 검증/재개](../validation/commercial-ui-mobile/REVIEW.md#checkpoint-3--2026-11-01-user-requested-stop).
+Home의6직업 개요와 별도 실제 prerequisite tree를 제공한다. ownership/price/선택/XP/point/next milestone을 구분하고 prerequisite lock과 point shortage를 구분한다. 효과/해금/비용/수치/Save/Profile 변경은 없다.
 
-## 추가 HUD 검수 · 2026-10-31 체크포인트2
-
-직업 트리 하단 이름을 안쪽으로 옮기고 노드 target을120으로 작성했다. 직업 액션은 공통 Control Size 변경에 따라 공격 옆 별도 위치를 사용하며, MP는 Canvas의 ClassHud를 로컬 layout에 연결한다. 마지막 바인딩/역할별 배치는 실제 재캡처가 남아 있다. 노드 효과/해금/비용/성장/세이브 변경은 없다. [최신 남은 작업](../validation/commercial-ui-mobile/REVIEW.md#checkpoint-2--resumed-inspection-user-requested-stop).
-
-## UI 체크포인트 · 2026-10-31
-
-Home의 직업 개요에서 여섯 직업/현재 소유·선택·가격을 비교하고 별도 직업 스킬 트리를 연다. Back은 트리→개요→Home 순서다. Multiplayer Class 진입점은 제거했으며 기존 선택·입장 loadout lock/admission은 유지한다. 공용/직업 노드의 자물쇠는 선행 조건/소유 잠금만 뜻하며 포인트 부족은 투자 CTA에서 구분한다. 공용 Metabolism과 연결선은 패딩 안으로 재배치했다. 수치·의존성·해금 비용·Save/Profile은 바꾸지 않았다. 관련 검사는 통과했고 최종 모바일 화면 검수는 진행 중이다. [체크포인트](../validation/commercial-ui-mobile/REVIEW.md).
+ClassHud는 실제 로컬 actor/Canvas ancestor에 bind한다.80/100/140% 한영 검수에서 치료 버튼은 active와 같은 엄지 위치, 의미 선택은 표식 아래에 배치해 player/망원경 안내를 가리지 않게 했다. isolated ownership/equipment fixture를 자연 구매/진행으로 보고하지 않는다. [최종 검증/한계](../validation/commercial-ui-mobile/FINAL_REPORT.md).
 
 # Character / Armor / Locomotion
 

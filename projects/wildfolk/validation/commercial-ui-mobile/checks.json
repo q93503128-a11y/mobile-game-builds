@@ -9,12 +9,12 @@
   "editorPlay": false,
   "editorScene": "MainMenu",
   "qaSessionFlagCleared": true,
-  "fullVisualMatrix": "Previous 84-menu matrix retained; latest Home/Profile/Continue 18 + connected fixtures2 + badges/insets2 verified; final report pending",
+  "fullVisualMatrix": "84 principal menu captures plus latest22 menu/state/inset views, role matrices and dated gameplay/creature evidence; final report complete",
   "twoProcessLan": "Latest actual peer: loading overlay seen, one HP label, ClassControls bound, client Home, Host save/leave/reHost/Continue passed",
   "waterCreatureObservation": "Previous 18 presentations retained; closer crawler proximity/awake/chase/action/recovery/death observed; no product creature/world changes",
-  "performance": "Final Home 180frames, objects170->170, Canvas.BuildBatch max0, MainThread p95 2.8971ms; Editor only",
+  "performance": "2026-11-01 Editor Home180frame probe retained; final audio checks keep1owner/30sources. Android FPS unverified.",
   "rc2": "NOT READY",
-  "status": "USER_REQUESTED_CHECKPOINT_3",
+  "status": "REPOSITORY_PASS_COMPLETE_USER_REVIEW_PENDING",
   "versions": {
     "save": 14,
     "profile": 2,
@@ -26,8 +26,8 @@
   },
   "resumeStartSha": "144a56a0b002b614bc6c23dcfe2b75de50eccd25",
   "resumePlayModeUniquePassed": 27,
-  "latestPlayModePassed": 9,
-  "latestEditModePassed": 2,
+  "latestPlayModePassed": 5,
+  "latestEditModePassed": 4,
   "menuMatrixCaptured": 84,
   "textTruncationsInRecordedMetrics": 0,
   "previousCheckpointUniquePassed": {
@@ -46,7 +46,22 @@
     "passed": 3
   },
   "remaining": [
-    "Final complete-pass visual/requirements report and concise full handoff",
-    "User PC/Unity design review before separately requested RC2; physical Android/Relay/4 peers remain unverified"
-  ]
+    "User PC/Unity visual approval",
+    "Physical Android/Relay/4-peer/real providers and release setup remain outside this pass; RC2 requires a separate request"
+  ],
+  "finalResumeStartSha": "8ee7c686f300d0c9d85654daff63eaac72ee7f66",
+  "finalPlayModePassed": 5,
+  "finalEditModePassed": 4,
+  "audioBindings": {
+    "before": 0,
+    "after": 127,
+    "source": "MainMenu serialized buttons"
+  },
+  "lastLiveChecks": "Initial12 checks plus final4 cancellation/failure checks; overlapping cases not summed",
+  "finalReport": "FINAL_REPORT.md",
+  "finalDataValidatorErrors": 0,
+  "finalCompilerErrors": 0,
+  "finalLiveQaChecksPassed": 12,
+  "finalPlayModeJob": "cf2026f8bb7642748e2ad47cd7469646",
+  "finalCancellationChecksPassed": 4
 }
