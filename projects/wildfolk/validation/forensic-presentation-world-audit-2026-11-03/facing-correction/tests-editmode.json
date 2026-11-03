@@ -1,0 +1,189 @@
+{
+  "success": true,
+  "message": "Test job status retrieved.",
+  "error": null,
+  "data": {
+    "job_id": "b75f8260c3a44a09a02dc3824a4a3732",
+    "status": "succeeded",
+    "mode": "EditMode",
+    "started_unix_ms": 1793673363214,
+    "finished_unix_ms": 1793673371013,
+    "last_update_unix_ms": 1793673371013,
+    "progress": {
+      "completed": 16,
+      "total": 16,
+      "current_test_full_name": null,
+      "current_test_started_unix_ms": null,
+      "last_finished_test_full_name": "Wildfolk.Tests.CreatureLootModelTests.VisualFacingDefaultsToZeroAndAllowsFiniteNegativeArtOffsets",
+      "last_finished_unix_ms": 1793673370891,
+      "stuck_suspected": false,
+      "editor_is_focused": false,
+      "run_in_background": true,
+      "focus_nudge_attempts": null,
+      "focus_nudge_limit": null,
+      "focus_nudge_status": null,
+      "blocked_reason": null,
+      "failures_so_far": [],
+      "failures_capped": false
+    },
+    "error": null,
+    "result": {
+      "mode": "EditMode",
+      "summary": {
+        "total": 16,
+        "passed": 16,
+        "failed": 0,
+        "skipped": 0,
+        "durationSeconds": 2.9120173,
+        "resultState": "Passed"
+      },
+      "results": [
+        {
+          "name": "CamouflageFlightAndCrystalHabitatUseDifferentAuthoredShapes",
+          "fullName": "Wildfolk.Tests.CreatureLootModelTests.CamouflageFlightAndCrystalHabitatUseDifferentAuthoredShapes",
+          "state": "Passed",
+          "durationSeconds": 0.015358,
+          "message": null,
+          "stackTrace": null,
+          "output": ""
+        },
+        {
+          "name": "CampRollIsStableByPersistentIdAndNeverRefillsAnOpenedContainer",
+          "fullName": "Wildfolk.Tests.CreatureLootModelTests.CampRollIsStableByPersistentIdAndNeverRefillsAnOpenedContainer",
+          "state": "Passed",
+          "durationSeconds": 0.0097477,
+          "message": null,
+          "stackTrace": null,
+          "output": ""
+        },
+        {
+          "name": "CreatureDropsAvoidUnrelatedGatheringAndPreserveNaturalFeatherSources",
+          "fullName": "Wildfolk.Tests.CreatureLootModelTests.CreatureDropsAvoidUnrelatedGatheringAndPreserveNaturalFeatherSources",
+          "state": "Passed",
+          "durationSeconds": 0.0368257,
+          "message": null,
+          "stackTrace": null,
+          "output": ""
+        },
+        {
+          "name": "DataValidatorRejectsNonfiniteRecoveryWithoutChangingAuthoredAssets",
+          "fullName": "Wildfolk.Tests.CreatureLootModelTests.DataValidatorRejectsNonfiniteRecoveryWithoutChangingAuthoredAssets",
+          "state": "Passed",
+          "durationSeconds": 0.6255642,
+          "message": null,
+          "stackTrace": null,
+          "output": ""
+        },
+        {
+          "name": "DataValidatorRejectsNonfiniteVisualFacingWithoutChangingAuthoredAssets(float.NaN)",
+          "fullName": "Wildfolk.Tests.CreatureLootModelTests.DataValidatorRejectsNonfiniteVisualFacingWithoutChangingAuthoredAssets(float.NaN)",
+          "state": "Passed",
+          "durationSeconds": 0.5276514,
+          "message": null,
+          "stackTrace": null,
+          "output": ""
+        },
+        {
+          "name": "DataValidatorRejectsNonfiniteVisualFacingWithoutChangingAuthoredAssets(float.PositiveInfinity)",
+          "fullName": "Wildfolk.Tests.CreatureLootModelTests.DataValidatorRejectsNonfiniteVisualFacingWithoutChangingAuthoredAssets(float.PositiveInfinity)",
+          "state": "Passed",
+          "durationSeconds": 0.493921,
+          "message": null,
+          "stackTrace": null,
+          "output": ""
+        },
+        {
+          "name": "DataValidatorRejectsNonfiniteVisualFacingWithoutChangingAuthoredAssets(float.NegativeInfinity)",
+          "fullName": "Wildfolk.Tests.CreatureLootModelTests.DataValidatorRejectsNonfiniteVisualFacingWithoutChangingAuthoredAssets(float.NegativeInfinity)",
+          "state": "Passed",
+          "durationSeconds": 0.4981727,
+          "message": null,
+          "stackTrace": null,
+          "output": ""
+        },
+        {
+          "name": "LootNetworkWritesBelongToServerAndRequestsContainNoClientRewards",
+          "fullName": "Wildfolk.Tests.CreatureLootModelTests.LootNetworkWritesBelongToServerAndRequestsContainNoClientRewards",
+          "state": "Passed",
+          "durationSeconds": 0.0061906,
+          "message": null,
+          "stackTrace": null,
+          "output": ""
+        },
+        {
+          "name": "MigrationPreservesOldLivingIdsAndDoesNotPretendToHaveRolledCampLoot",
+          "fullName": "Wildfolk.Tests.CreatureLootModelTests.MigrationPreservesOldLivingIdsAndDoesNotPretendToHaveRolledCampLoot",
+          "state": "Passed",
+          "durationSeconds": 0.0051793,
+          "message": null,
+          "stackTrace": null,
+          "output": ""
+        },
+        {
+          "name": "OriginalFiveRuleIndicesAreStableAndNewActionsHaveReadableWindows",
+          "fullName": "Wildfolk.Tests.CreatureLootModelTests.OriginalFiveRuleIndicesAreStableAndNewActionsHaveReadableWindows",
+          "state": "Passed",
+          "durationSeconds": 0.0116436,
+          "message": null,
+          "stackTrace": null,
+          "output": ""
+        },
+        {
+          "name": "RawMaterialsHaveDistinctImplementedSinks(\"bone\",5)",
+          "fullName": "Wildfolk.Tests.CreatureLootModelTests.RawMaterialsHaveDistinctImplementedSinks(\"bone\",5)",
+          "state": "Passed",
+          "durationSeconds": 0.0065969,
+          "message": null,
+          "stackTrace": null,
+          "output": ""
+        },
+        {
+          "name": "RawMaterialsHaveDistinctImplementedSinks(\"chitin\",3)",
+          "fullName": "Wildfolk.Tests.CreatureLootModelTests.RawMaterialsHaveDistinctImplementedSinks(\"chitin\",3)",
+          "state": "Passed",
+          "durationSeconds": 0.0004659,
+          "message": null,
+          "stackTrace": null,
+          "output": ""
+        },
+        {
+          "name": "RawMaterialsHaveDistinctImplementedSinks(\"medicinal_gland\",2)",
+          "fullName": "Wildfolk.Tests.CreatureLootModelTests.RawMaterialsHaveDistinctImplementedSinks(\"medicinal_gland\",2)",
+          "state": "Passed",
+          "durationSeconds": 0.0003084,
+          "message": null,
+          "stackTrace": null,
+          "output": ""
+        },
+        {
+          "name": "SidegradesPreserveDiamondAndNaturalCrystalRoles",
+          "fullName": "Wildfolk.Tests.CreatureLootModelTests.SidegradesPreserveDiamondAndNaturalCrystalRoles",
+          "state": "Passed",
+          "durationSeconds": 0.0048342,
+          "message": null,
+          "stackTrace": null,
+          "output": ""
+        },
+        {
+          "name": "StationRolesAndNewFoodEffectsAreReal",
+          "fullName": "Wildfolk.Tests.CreatureLootModelTests.StationRolesAndNewFoodEffectsAreReal",
+          "state": "Passed",
+          "durationSeconds": 0.0032726,
+          "message": null,
+          "stackTrace": null,
+          "output": ""
+        },
+        {
+          "name": "VisualFacingDefaultsToZeroAndAllowsFiniteNegativeArtOffsets",
+          "fullName": "Wildfolk.Tests.CreatureLootModelTests.VisualFacingDefaultsToZeroAndAllowsFiniteNegativeArtOffsets",
+          "state": "Passed",
+          "durationSeconds": 0.2273552,
+          "message": null,
+          "stackTrace": null,
+          "output": ""
+        }
+      ]
+    }
+  },
+  "hint": null
+}

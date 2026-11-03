@@ -1,0 +1,117 @@
+{
+  "success": true,
+  "message": "Test job status retrieved.",
+  "error": null,
+  "data": {
+    "job_id": "accca721c86d4cb092022db895e98a38",
+    "status": "succeeded",
+    "mode": "PlayMode",
+    "started_unix_ms": 1793673128145,
+    "finished_unix_ms": 1793673141354,
+    "last_update_unix_ms": 1793673141354,
+    "progress": {
+      "completed": 8,
+      "total": 8,
+      "current_test_full_name": null,
+      "current_test_started_unix_ms": null,
+      "last_finished_test_full_name": "Wildfolk.Tests.WildlifeFacingPlayTests.AuthoredHeadFollowsIntentForLocalAndReplicaInEightDirections(\"CrystalCrawler\",-1)",
+      "last_finished_unix_ms": 1793673141291,
+      "stuck_suspected": false,
+      "editor_is_focused": false,
+      "run_in_background": true,
+      "focus_nudge_attempts": null,
+      "focus_nudge_limit": null,
+      "focus_nudge_status": null,
+      "blocked_reason": null,
+      "failures_so_far": [],
+      "failures_capped": false
+    },
+    "error": null,
+    "result": {
+      "mode": "PlayMode",
+      "summary": {
+        "total": 8,
+        "passed": 8,
+        "failed": 0,
+        "skipped": 0,
+        "durationSeconds": 0.2732271,
+        "resultState": "Passed"
+      },
+      "results": [
+        {
+          "name": "AuthoredHeadFollowsIntentForLocalAndReplicaInEightDirections(\"Bat\",1)",
+          "fullName": "Wildfolk.Tests.WildlifeFacingPlayTests.AuthoredHeadFollowsIntentForLocalAndReplicaInEightDirections(\"Bat\",1)",
+          "state": "Passed",
+          "durationSeconds": 0.1005185,
+          "message": null,
+          "stackTrace": null,
+          "output": ""
+        },
+        {
+          "name": "AuthoredHeadFollowsIntentForLocalAndReplicaInEightDirections(\"StoneCrawler\",-1)",
+          "fullName": "Wildfolk.Tests.WildlifeFacingPlayTests.AuthoredHeadFollowsIntentForLocalAndReplicaInEightDirections(\"StoneCrawler\",-1)",
+          "state": "Passed",
+          "durationSeconds": 0.004431,
+          "message": null,
+          "stackTrace": null,
+          "output": ""
+        },
+        {
+          "name": "AuthoredHeadFollowsIntentForLocalAndReplicaInEightDirections(\"BogLeech\",-1)",
+          "fullName": "Wildfolk.Tests.WildlifeFacingPlayTests.AuthoredHeadFollowsIntentForLocalAndReplicaInEightDirections(\"BogLeech\",-1)",
+          "state": "Passed",
+          "durationSeconds": 0.0034463,
+          "message": null,
+          "stackTrace": null,
+          "output": ""
+        },
+        {
+          "name": "AuthoredHeadFollowsIntentForLocalAndReplicaInEightDirections(\"Wolf\",1)",
+          "fullName": "Wildfolk.Tests.WildlifeFacingPlayTests.AuthoredHeadFollowsIntentForLocalAndReplicaInEightDirections(\"Wolf\",1)",
+          "state": "Passed",
+          "durationSeconds": 0.0031234,
+          "message": null,
+          "stackTrace": null,
+          "output": ""
+        },
+        {
+          "name": "AuthoredHeadFollowsIntentForLocalAndReplicaInEightDirections(\"MountainGoat\",1)",
+          "fullName": "Wildfolk.Tests.WildlifeFacingPlayTests.AuthoredHeadFollowsIntentForLocalAndReplicaInEightDirections(\"MountainGoat\",1)",
+          "state": "Passed",
+          "durationSeconds": 0.0163353,
+          "message": null,
+          "stackTrace": null,
+          "output": ""
+        },
+        {
+          "name": "AuthoredHeadFollowsIntentForLocalAndReplicaInEightDirections(\"Crow\",1)",
+          "fullName": "Wildfolk.Tests.WildlifeFacingPlayTests.AuthoredHeadFollowsIntentForLocalAndReplicaInEightDirections(\"Crow\",1)",
+          "state": "Passed",
+          "durationSeconds": 0.0052109,
+          "message": null,
+          "stackTrace": null,
+          "output": ""
+        },
+        {
+          "name": "AuthoredHeadFollowsIntentForLocalAndReplicaInEightDirections(\"GiantBoar\",-1)",
+          "fullName": "Wildfolk.Tests.WildlifeFacingPlayTests.AuthoredHeadFollowsIntentForLocalAndReplicaInEightDirections(\"GiantBoar\",-1)",
+          "state": "Passed",
+          "durationSeconds": 0.005665,
+          "message": null,
+          "stackTrace": null,
+          "output": ""
+        },
+        {
+          "name": "AuthoredHeadFollowsIntentForLocalAndReplicaInEightDirections(\"CrystalCrawler\",-1)",
+          "fullName": "Wildfolk.Tests.WildlifeFacingPlayTests.AuthoredHeadFollowsIntentForLocalAndReplicaInEightDirections(\"CrystalCrawler\",-1)",
+          "state": "Passed",
+          "durationSeconds": 0.0055855,
+          "message": null,
+          "stackTrace": null,
+          "output": ""
+        }
+      ]
+    }
+  },
+  "hint": null
+}

@@ -23,6 +23,22 @@ namespace Wildfolk.Tests
         {var p=D<AnimalPopulationDefinition>("AnimalPopulation");Assert.That(p.Rules.Take(5).Select(r=>r.Prefab.Member.Definition.Id),Is.EqualTo(new[]{"chicken","boar","rabbit","deer","sheep"}));Assert.That(p.HardCap,Is.EqualTo(80));foreach(var r in p.Rules.Skip(5)){var d=r.Prefab.Member.Definition;var a=d.Actions;Assert.That(a,Is.Not.Null);Assert.That(r.Prefab.GetComponent<WildlifeActionBrain>(),Is.Not.Null);Assert.That(r.ChunkChance,Is.InRange(.01f,1f));Assert.That(r.RegionalTarget,Is.GreaterThan(0));if(a.Attack!=WildlifeAttack.None){Assert.That(a.WarningSeconds+a.WindupSeconds,Is.GreaterThanOrEqualTo(.6f));Assert.That(a.RecoverySeconds,Is.GreaterThan(.5f));Assert.That(a.Leash,Is.GreaterThan(a.Detection));}}}
         [Test]public void CamouflageFlightAndCrystalHabitatUseDifferentAuthoredShapes()
         {var stone=D<CreatureDefinition>("StoneCrawlerCreature");Assert.That(stone.Actions.Camouflage,Is.True);Assert.That(D<CreatureDefinition>("CrystalCrawlerCreature").Actions.Camouflage,Is.False);Assert.That(D<CreatureDefinition>("CrystalCrawlerCreature").Habitat,Is.EqualTo(CreatureHabitat.CrystalPocket));foreach(var name in new[]{"Bat","Crow"})Assert.That(D<CreatureDefinition>(name+"Creature").Actions.Movement,Is.EqualTo(WildlifeMovement.Flight));Assert.That(D<CreatureDefinition>("MountainGoatCreature").Actions.Movement,Is.EqualTo(WildlifeMovement.Hop));}
+        [TestCase(float.NaN)][TestCase(float.PositiveInfinity)][TestCase(float.NegativeInfinity)]
+        public void DataValidatorRejectsNonfiniteVisualFacingWithoutChangingAuthoredAssets(float offset)
+        {
+            var action=D<WildlifeActionDefinition>("CrowAction");var original=action.VisualFacingOffset;
+            try{action.VisualFacingOffset=offset;Assert.That(ValidateData(),Does.Contain("Invalid wildlife action: CrowCreature"));}
+            finally{action.VisualFacingOffset=original;}
+            Assert.That(ValidateData(),Is.Empty);
+        }
+        [Test]public void VisualFacingDefaultsToZeroAndAllowsFiniteNegativeArtOffsets()
+        {
+            var empty=ScriptableObject.CreateInstance<WildlifeActionDefinition>();
+            try{Assert.That(empty.VisualFacingOffset,Is.Zero);}finally{Object.DestroyImmediate(empty);}
+            var action=D<WildlifeActionDefinition>("CrowAction");var original=action.VisualFacingOffset;
+            try{action.VisualFacingOffset=-90;Assert.That(ValidateData(),Is.Empty);}
+            finally{action.VisualFacingOffset=original;}
+        }
         [Test]public void CreatureDropsAvoidUnrelatedGatheringAndPreserveNaturalFeatherSources()
         {
             foreach(var guid in AssetDatabase.FindAssets("t:LootTable",new[]{"Assets/Wildfolk/Data"}))

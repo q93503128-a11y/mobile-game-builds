@@ -201,6 +201,8 @@ III 확장 도입 당시: Save10/Protocol12, 새 world generation3. WorldChunkRu
 
 CreatureDefinition.Actions→WildlifeActionDefinition은 movement/attack/temperament/timing을 조합한다. 신규8종은 NeutralAnimal의 기존 FixedUpdate를 건너뛰고 WildlifeActionScheduler의0.05초/최대32개 round-robin으로 실행한다. Terrain/solid sweep·LOS·접촉을 공유하고 pulse는 고정32 collider buffer와 중복 Health 제거를 쓴다. Group 경보는 가까운 동일 pack에만1회 전달한다. 클라이언트는 NetworkCreature의 기존 phase/timestamp/facing/awakening frame으로 표현하며 행동 frame 최대10Hz·HP 변화 즉시다.
 
+`VisualFacingOffset`은 공용 −Y 머리 기준에 더하는 에셋별 각도이며 기존/미지정 데이터는0°다. `WildlifeActionBrain.Present`가 Host/SP와 `PresentReplica`에 공통 적용한다. +Y 원본4종만180°이고, 휴면 Stone Crawler의 위장 pose는 기존 고정 방향을 유지한다. `CreatureLootAssets`도 같은 값을 작성하며 validator는 비유한 각도를 거부한다. 시각 설정을 로컬 에셋에서 읽으므로 Save14/Protocol23 필드나 AI 권위는 변경하지 않는다.
+
 StreamedAnimalPopulation은 살아 있는+휴면 logical count, chunk sleeper index, deterministic 규칙 순서 분산과 expansion region 표시를 사용한다. 공유 활성80 cap·청크 quota·종 cap을 구분한다. 초기 적합 habitat의 충돌 실패는 회복 ticket으로 이어지며 tick은 최대32 ticket/2 group/24후보다. StreamedGoblinPopulation도 Camp/actor를 청크 index로 조회하고 휴면 거주 수를 유지한다. 전체 영속 상태 수에 비례하는 매 프레임 scan은 없다.
 
 GoblinCamp는 IPlayerInteractable이며 StorageChest와 별개의6칸 보급품 truth를 가진다. NetworkCamp는 server-only Security/Opened/revision/변경 Loot list, NetworkFacilityInteractor는 owner RPC/sequence/가방·상자 revision/range/alive/space를 검사한다. 교환은 기존 InventoryModel.TryExchange와 일회 slot 소모를 사용한다. 개봉·잔량은 Save11이며 active/dormant capture를 deep copy한다. CampLootPanel은 take-only·Safe Area·localized labels와 기존 Inventory 입력 차단을 공유한다.

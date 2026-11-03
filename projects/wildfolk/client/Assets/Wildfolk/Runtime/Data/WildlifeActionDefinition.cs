@@ -10,6 +10,8 @@ namespace Wildfolk
         public WildlifeMovement Movement;
         public WildlifeAttack Attack;
         public bool Camouflage,Defensive;
+        [Tooltip("Degrees added to the shared -Y head basis; +Y-authored sprites use 180.")]
+        public float VisualFacingOffset;
         public float Detection=6,Leash=12,WalkSpeed=1.2f,ChaseSpeed=3,ActionSpeed=5;
         public float WarningSeconds=.5f,WindupSeconds=.5f,ActionSeconds=.3f,RecoverySeconds=1.2f;
         public float Reach=1.5f,EngageRange=2.2f,FleeSpeed=4;

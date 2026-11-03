@@ -1,0 +1,162 @@
+{
+  "success": true,
+  "message": "Test job status retrieved.",
+  "error": null,
+  "data": {
+    "job_id": "f6d6a2cd755647d089d771152907927e",
+    "status": "succeeded",
+    "mode": "PlayMode",
+    "started_unix_ms": 1793673233429,
+    "finished_unix_ms": 1793673290602,
+    "last_update_unix_ms": 1793673290602,
+    "progress": {
+      "completed": 13,
+      "total": 13,
+      "current_test_full_name": null,
+      "current_test_started_unix_ms": null,
+      "last_finished_test_full_name": "Wildfolk.Tests.WildlifeFacingPlayTests.DormantCamouflageKeepsItsRestPoseAndAwakenedPoseUsesFacing",
+      "last_finished_unix_ms": 1793673290517,
+      "stuck_suspected": false,
+      "editor_is_focused": false,
+      "run_in_background": true,
+      "focus_nudge_attempts": null,
+      "focus_nudge_limit": null,
+      "focus_nudge_status": null,
+      "blocked_reason": null,
+      "failures_so_far": [],
+      "failures_capped": false
+    },
+    "error": null,
+    "result": {
+      "mode": "PlayMode",
+      "summary": {
+        "total": 13,
+        "passed": 13,
+        "failed": 0,
+        "skipped": 0,
+        "durationSeconds": 45.4362905,
+        "resultState": "Passed"
+      },
+      "results": [
+        {
+          "name": "AllHostileActionsDamageSolidPlayerOncePerActionAndPulseDeduplicatesColliders",
+          "fullName": "Wildfolk.Tests.CreatureLootPlayTests.AllHostileActionsDamageSolidPlayerOncePerActionAndPulseDeduplicatesColliders",
+          "state": "Passed",
+          "durationSeconds": 17.5642889,
+          "message": null,
+          "stackTrace": null,
+          "output": ""
+        },
+        {
+          "name": "PulseCannotDamageThroughSolidWall",
+          "fullName": "Wildfolk.Tests.CreatureLootPlayTests.PulseCannotDamageThroughSolidWall",
+          "state": "Passed",
+          "durationSeconds": 9.3652914,
+          "message": null,
+          "stackTrace": null,
+          "output": ""
+        },
+        {
+          "name": "AuthoredHeadFollowsIntentForLocalAndReplicaInEightDirections(\"Bat\",1)",
+          "fullName": "Wildfolk.Tests.WildlifeFacingPlayTests.AuthoredHeadFollowsIntentForLocalAndReplicaInEightDirections(\"Bat\",1)",
+          "state": "Passed",
+          "durationSeconds": 0.1102888,
+          "message": null,
+          "stackTrace": null,
+          "output": ""
+        },
+        {
+          "name": "AuthoredHeadFollowsIntentForLocalAndReplicaInEightDirections(\"StoneCrawler\",-1)",
+          "fullName": "Wildfolk.Tests.WildlifeFacingPlayTests.AuthoredHeadFollowsIntentForLocalAndReplicaInEightDirections(\"StoneCrawler\",-1)",
+          "state": "Passed",
+          "durationSeconds": 0.0402679,
+          "message": null,
+          "stackTrace": null,
+          "output": ""
+        },
+        {
+          "name": "AuthoredHeadFollowsIntentForLocalAndReplicaInEightDirections(\"BogLeech\",-1)",
+          "fullName": "Wildfolk.Tests.WildlifeFacingPlayTests.AuthoredHeadFollowsIntentForLocalAndReplicaInEightDirections(\"BogLeech\",-1)",
+          "state": "Passed",
+          "durationSeconds": 0.0362156,
+          "message": null,
+          "stackTrace": null,
+          "output": ""
+        },
+        {
+          "name": "AuthoredHeadFollowsIntentForLocalAndReplicaInEightDirections(\"Wolf\",1)",
+          "fullName": "Wildfolk.Tests.WildlifeFacingPlayTests.AuthoredHeadFollowsIntentForLocalAndReplicaInEightDirections(\"Wolf\",1)",
+          "state": "Passed",
+          "durationSeconds": 0.0227962,
+          "message": null,
+          "stackTrace": null,
+          "output": ""
+        },
+        {
+          "name": "AuthoredHeadFollowsIntentForLocalAndReplicaInEightDirections(\"MountainGoat\",1)",
+          "fullName": "Wildfolk.Tests.WildlifeFacingPlayTests.AuthoredHeadFollowsIntentForLocalAndReplicaInEightDirections(\"MountainGoat\",1)",
+          "state": "Passed",
+          "durationSeconds": 0.0146659,
+          "message": null,
+          "stackTrace": null,
+          "output": ""
+        },
+        {
+          "name": "AuthoredHeadFollowsIntentForLocalAndReplicaInEightDirections(\"Crow\",1)",
+          "fullName": "Wildfolk.Tests.WildlifeFacingPlayTests.AuthoredHeadFollowsIntentForLocalAndReplicaInEightDirections(\"Crow\",1)",
+          "state": "Passed",
+          "durationSeconds": 0.016323,
+          "message": null,
+          "stackTrace": null,
+          "output": ""
+        },
+        {
+          "name": "AuthoredHeadFollowsIntentForLocalAndReplicaInEightDirections(\"GiantBoar\",-1)",
+          "fullName": "Wildfolk.Tests.WildlifeFacingPlayTests.AuthoredHeadFollowsIntentForLocalAndReplicaInEightDirections(\"GiantBoar\",-1)",
+          "state": "Passed",
+          "durationSeconds": 0.0259416,
+          "message": null,
+          "stackTrace": null,
+          "output": ""
+        },
+        {
+          "name": "AuthoredHeadFollowsIntentForLocalAndReplicaInEightDirections(\"CrystalCrawler\",-1)",
+          "fullName": "Wildfolk.Tests.WildlifeFacingPlayTests.AuthoredHeadFollowsIntentForLocalAndReplicaInEightDirections(\"CrystalCrawler\",-1)",
+          "state": "Passed",
+          "durationSeconds": 0.0232492,
+          "message": null,
+          "stackTrace": null,
+          "output": ""
+        },
+        {
+          "name": "CrowHeadFollowsActualWanderAndFleeDisplacement",
+          "fullName": "Wildfolk.Tests.WildlifeFacingPlayTests.CrowHeadFollowsActualWanderAndFleeDisplacement",
+          "state": "Passed",
+          "durationSeconds": 9.8548718,
+          "message": null,
+          "stackTrace": null,
+          "output": "wander displacement=(0.20, 0.14) rendered-head=(0.82, 0.57, 0.00)\r\nflee displacement=(1.06, 0.00) rendered-head=(1.00, 0.00, 0.00)\r\nflee displacement=(-1.16, 0.00) rendered-head=(-1.00, 0.00, 0.00)\r\nflee displacement=(0.00, 1.13) rendered-head=(0.00, 1.00, 0.00)\r\nflee displacement=(0.00, -0.87) rendered-head=(0.00, -1.00, 0.00)\r\nflee displacement=(0.69, 0.60) rendered-head=(0.75, 0.66, 0.00)\r\nflee displacement=(-0.50, 0.62) rendered-head=(-0.63, 0.77, 0.00)\r\nflee displacement=(0.68, -0.66) rendered-head=(0.71, -0.70, 0.00)\r\nflee displacement=(-0.78, -0.78) rendered-head=(-0.71, -0.71, 0.00)\r\n"
+        },
+        {
+          "name": "DeathAndPoolReuseRestoreLivingVisualsForCorrectedSpecies",
+          "fullName": "Wildfolk.Tests.WildlifeFacingPlayTests.DeathAndPoolReuseRestoreLivingVisualsForCorrectedSpecies",
+          "state": "Passed",
+          "durationSeconds": 8.1966542,
+          "message": null,
+          "stackTrace": null,
+          "output": "bat death/reuse: same instance, full HP, living scale, right-facing head\r\nwolf death/reuse: same instance, full HP, living scale, right-facing head\r\nmountain_goat death/reuse: same instance, full HP, living scale, right-facing head\r\ncrow death/reuse: same instance, full HP, living scale, right-facing head\r\n"
+        },
+        {
+          "name": "DormantCamouflageKeepsItsRestPoseAndAwakenedPoseUsesFacing",
+          "fullName": "Wildfolk.Tests.WildlifeFacingPlayTests.DormantCamouflageKeepsItsRestPoseAndAwakenedPoseUsesFacing",
+          "state": "Passed",
+          "durationSeconds": 0.0339004,
+          "message": null,
+          "stackTrace": null,
+          "output": ""
+        }
+      ]
+    }
+  },
+  "hint": null
+}

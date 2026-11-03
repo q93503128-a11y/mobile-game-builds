@@ -1,0 +1,62 @@
+{
+  "status": "SCOPED_FACING_CORRECTION_VERIFIED",
+  "sourceBaseline": "6e75f35721191ccb1c8a91a75dd403d85d4045a4",
+  "tests": {
+    "red": {
+      "total": 8,
+      "passed": 4,
+      "failed": 4,
+      "skipped": 0,
+      "durationSeconds": 0.1306429,
+      "resultState": "Failed(Child)",
+      "jobElapsedSeconds": 11.366
+    },
+    "green-facing": {
+      "total": 8,
+      "passed": 8,
+      "failed": 0,
+      "skipped": 0,
+      "durationSeconds": 0.2732271,
+      "resultState": "Passed",
+      "jobElapsedSeconds": 13.209
+    },
+    "green-regression": {
+      "total": 13,
+      "passed": 13,
+      "failed": 0,
+      "skipped": 0,
+      "durationSeconds": 45.4362905,
+      "resultState": "Passed",
+      "jobElapsedSeconds": 57.173
+    },
+    "data": {
+      "total": 16,
+      "passed": 16,
+      "failed": 0,
+      "skipped": 0,
+      "durationSeconds": 2.9120173,
+      "resultState": "Passed",
+      "jobElapsedSeconds": 7.799
+    }
+  },
+  "testCountsOverlap": true,
+  "finalUniquePlayMode": 13,
+  "finalUniqueEditMode": 16,
+  "mcpMotionSamples": 25,
+  "mcpMotionMinimumHeadVelocityDot": 0.9999981,
+  "mcpFixture": "environment/HUD hidden; AI speed unchanged; player stimulus repositioned to maintain direction; not natural progression",
+  "poolResetCodeChanged": false,
+  "dataValidatorErrors": 0,
+  "staticValidator": "PASS: 1890 unique GUIDs",
+  "protectedUserFiles": 6,
+  "hashSizeMtimeUnchanged": true,
+  "temporaryObserverRemoved": true,
+  "nativeChangedCodeAndDataMatchCanonical": true,
+  "currentConsoleErrors": [],
+  "versionsChanged": false,
+  "save": 14,
+  "profile": 2,
+  "protocol": 23,
+  "generation": 3,
+  "unverified": "remote multiplayer; Android; full progression; original lying species; art-direction quality; matched historical lake/coast"
+}

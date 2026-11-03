@@ -1,6 +1,10 @@
 # Resume forensic audit / scoped correction
 
-**Checkpoint requested by user. Original audit-and-correction request is NOT fully complete. Product fixes implemented: NONE.**
+**Latest resume result · 2026-11-03: the selected facing correction is implemented and relevant verification is complete. User requested stopping after that coherent unit.** Read [facing-correction/REVIEW.md](facing-correction/REVIEW.md) first. Do not implement it again. Repair/salvage, water, roads/anchors/discovery and art REBUILD proposals remain unapproved/unimplemented. Original lying creature is still unidentified. Current lake/coast matched-history, complete commercial imagery, natural discoverability and remote multiplayer limits remain explicit in the new review.
+
+The previous checkpoint instructions below are retained as history. At that checkpoint product fixes were NONE; the subsequently completed work supersedes the implementation checklist below. The20-row audit is a findings/limits report, not commercial release approval.
+
+Current correction's outside-Git scripts/timing/final SHA verification: workspace `facing-correction-20261103/`, including `final-git.json` after push. Original audit logs under `forensic-audit/` refer to the earlier checkpoint. The new temporary FacingVerificationProbe was removed from native Editor before stopping; its source remains outside Git only.
 
 Read `FORENSIC_AUDIT.md`, `IMPLEMENTATION_GATE.md`, `EXTERNAL_REFERENCES.md` first. Do not repeat the12-seed batch or already-completed source/history investigation without a new reason.
 
@@ -19,9 +23,9 @@ Read `FORENSIC_AUDIT.md`, `IMPLEMENTATION_GATE.md`, `EXTERNAL_REFERENCES.md` fir
 - Actual natural bank Tin Pan2Primary→Tin5; actual PlayerLoop repair/cancel/complete/salvage; KO/EN repair at3res, Main/Pause. Earlier Editor-update repair timing failure was rejected/preserved.
 -20-row classification, fresh commercial source comparison and access limits recorded.
 
-## Next authorized objective correction
+## Selected objective correction — historical checkpoint checklist, now completed
 
-Implement ONLY the facing basis defect, using the gate's seven conditions:
+The subsequent resume implemented ONLY the facing basis defect using the gate's seven conditions. The original checklist was:
 
 - `WildlifeActionBrain.Present` currently uses `atan2(direction.y,direction.x)+90`, assuming art nose−Y. Crow/Bat/Wolf/MountainGoat source art noses are+Y and face left for a supplied right direction. Source art generator and actual screenshots prove it; first introduced `3667bae`, not recentUI commits.
 - Prefer a small presentation offset field in existing WildlifeActionDefinition, default0 for existing−Y assets,180 for these proven+Y assets. Update four existing action assets and `CreatureLootAssets` authoring binding. Shared host/replica presentation uses local config; no wire/save changes needed.

@@ -1,5 +1,7 @@
 # FORENSIC AUDIT — 2026-11-03 checkpoint
 
+> Subsequent resume: the facing correction is now implemented and verified. [Section11](#11-subsequent-facing-correction--2026-11-03) and [new correction review](facing-correction/REVIEW.md) supersede only that status. Sections1–10 retain the original audit checkpoint below.
+
 **AUDIT CHECKPOINT — original request NOT fully completed.** User requested a suitable stop before the selected minimal facing correction was implemented. **Product code changes: NONE.** Next steps are explicit in [RESUME.md](RESUME.md). The failed PC review is accepted as a product-quality failure; past test counts are not visual approval.
 
 ## 1. Git baseline / scope
@@ -125,3 +127,9 @@ Evidence index gives exact selected paths/hash/source. Raw captures, full traver
 ## 10. Exact files / checkpoint handoff
 
 `files-changed.txt` lists this audit commit only. No existing product source/data/docs were changed. Audit directory contains this report, decision gate, references, measurements, selected evidence, protection/state/check results and RESUME.md. This is a durable checkpoint, not completed commercial presentation/world repair. Continue using fresh remote main and RESUME.md; original full prompt path is recorded there.
+
+## 11. Subsequent facing correction · 2026-11-03
+
+Sections1–10 above preserve the earlier audit checkpoint, when product fixes were NONE. The subsequent resume fetched clean main `6e75f35721191ccb1c8a91a75dd403d85d4045a4` and implemented ONLY the selected authored-facing correction. See [actual implementation, fresh red/green tests, Play captures and remaining limits](facing-correction/REVIEW.md).
+
+Current updates to the classification: **Flying bird facing = BUGFIX implemented/verified** (also Bat/Wolf/MountainGoat authored basis). **Lying creature = original identity still UNKNOWN**; actual death→same-instance pool reuse passed for those4species, and no reset fix was needed. Other KEEP/REBUILD/UNKNOWN decisions remain unchanged. All REBUILD designs are still proposals only. Original broad visual/commercial approval is not granted by this correction.

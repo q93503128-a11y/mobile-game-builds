@@ -17,6 +17,8 @@
 
 새 행동은 WildlifeActionDefinition의 movement/attack/temperament/timing 조합이다. 모든 이동은 traversable terrain·solid sweep를 지키며 고속 이동은 장애물 앞의 허용 거리까지 진행한다. 물기/급강하/돌진/매복은 이동 구간에서 Player Collider 표면까지의 거리, pulse는 반경과 LOS로 피해를 결정한다. 대상 자체의 solid Collider는 시야 장애물에서 제외하며 벽은 차단한다. 공격당 대상1회, pulse의 중복 hurtbox도1회다. 호흡/날개/hop/위장 해제/돌진/반경 표시를 구분한다. 개체의 Home Anchor·Group·HP는 save/sleep에 보존하며 순간 공격 pose/target은 재진입 시 초기화한다.
 
+2026-11-03 방향 교정: 공용 표현의 머리 기준은 local −Y이며, `WildlifeActionDefinition.VisualFacingOffset`으로 원본 그림의 축 차이만 보정한다. 머리가 +Y인 Bat/Wolf/MountainGoat/Crow는180°, 나머지4종은 기본0°다. Host/SP와 Client replica가 같은 보정을 쓰며 AI의 이동/도주/공격 방향·속도는 바꾸지 않는다. Bat의 급강하 후 뒤로 이탈하는 Recovery는 기존 행동이다. 원래 사용자가 본 ‘누운 동물’의 정확한 종은 여전히 미확정이며, 이 교정을 아트 시점 통일이나 모든 상태의 시각 품질 승인으로 취급하지 않는다. [재현·교정·검증](../validation/forensic-presentation-world-audit-2026-11-03/facing-correction/REVIEW.md).
+
 ## 전체 드랍
 
 비율 미표시는 확정, 범위는 해당 table roll의 정수 범위다. XP/Gold는 Item stack이 아니다.

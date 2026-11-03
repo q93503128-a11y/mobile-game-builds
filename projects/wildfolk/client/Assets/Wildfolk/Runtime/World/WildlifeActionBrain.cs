@@ -142,7 +142,7 @@ namespace Wildfolk
             var height=flight ? .35f+Mathf.Sin(now*7)*.1f : hop ? Mathf.Max(0,Mathf.Sin(now*7))*.24f : 0;
             Pose.localPosition=new Vector3(0,height,0);
             var angle=direction.sqrMagnitude>.01f ? Mathf.Atan2(direction.y,direction.x)*Mathf.Rad2Deg+90 : 0;
-            Pose.localRotation=Quaternion.Euler(0,0,d.Camouflage && !Awakened ? 0 : angle);
+            Pose.localRotation=Quaternion.Euler(0,0,d.Camouflage && !Awakened ? 0 : angle+d.VisualFacingOffset);
             var stretch=active && d.Attack==WildlifeAttack.Charge ? new Vector3(.86f,1.24f,1) : preparing ? new Vector3(1.04f,.94f,1) : Vector3.one;
             if(d.Camouflage && !Awakened)stretch=Vector3.one*(1+Mathf.Sin(now*2)*.008f);
             Pose.localScale=Vector3.Scale(restScale,stretch);

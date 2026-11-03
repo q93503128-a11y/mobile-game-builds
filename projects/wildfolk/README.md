@@ -1,4 +1,6 @@
-> **2026-11-02 Post-RC1 Quality #2:** World/Creature Inspector·QA 이동/생성, 수리/해체·HUD·Pause·팔 장비·관련 UI 교정과 검증 완료. **READY FOR USER PC REVIEW**이며 RC2/AAB/운영 활성화는 하지 않았다. [결과·사용법·증거](validation/post-commercial-ui-qa-tools/REVIEW.md).
+> **2026-11-03 Forensic:** PC 시각 리뷰 실패 후 원인·12seed·실제 화면을 감사했다. Crow/Bat/Wolf/MountainGoat의 원본 머리 축 차이를 최소 교정했으며 관련 검증을 마쳤다. 물/UI/도로·배치/아트 REBUILD는 제안 상태다. [감사·분류표](validation/forensic-presentation-world-audit-2026-11-03/FORENSIC_AUDIT.md) · [실제 교정·검증·한계](validation/forensic-presentation-world-audit-2026-11-03/facing-correction/REVIEW.md).
+
+> **2026-11-02 Post-RC1 Quality #2 당시:** World/Creature Inspector·QA 이동/생성, 수리/해체·HUD·Pause·팔 장비·관련 UI 교정과 검증 완료. 당시 **READY FOR USER PC REVIEW**였으며 후속 PC 시각 리뷰 결과는 위 Forensic 기록을 따른다. RC2/AAB/운영 활성화는 하지 않았다. [당시 결과·사용법·증거](validation/post-commercial-ui-qa-tools/REVIEW.md).
 
 > **2026-11-02 UI pass 마감:** Commercial UI/Mobile Presentation 저장소 구현·관련 검증 완료. 마지막127개 메뉴 클릭음 누락도 교정했다. 화면은 PC/Unity 검수 후보이며 **사용자·실기기 승인 전 RC2 NOT READY**다. [최종37항목 보고/증거](validation/commercial-ui-mobile/FINAL_REPORT.md). AAB/업로드/운영 활성화는 하지 않았다.
 
