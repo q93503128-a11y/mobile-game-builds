@@ -1,5 +1,9 @@
 # Resume forensic audit / scoped correction
 
+**Latest follow-up · 2026-11-03 evening:** [water comparison/evidence](water-followup/REVIEW.md) is complete. Same-seed river/lake/coast Gen2/3 PNGs are identical; retained Gen1 detail/formula provenance and official publisher image inspection are now documented. Current lake/coast runtime capture is no longer pending. Product changes in that follow-up: NONE. Read the concrete [water-only proposal](water-followup/PROPOSAL.md); implementation still requires the user's specific approval under original prompt§19. Do not assume a generic resume has approved every REBUILD. Original lying species, full historical-client execution, broad latest-mobile benchmark and natural discoverability remain unverified.
+
+Latest work logs/final SHA/timing: workspace `water-audit-20261103/`. Temporary WaterAuditProbe was removed, native scene whitespace differences and user saves were preserved, final editor MainMenu/Edit/clean with QA marker erased. Re-fetch main before any next task; do not repeat the water capture batch without a new reason.
+
 **Latest resume result · 2026-11-03: the selected facing correction is implemented and relevant verification is complete. User requested stopping after that coherent unit.** Read [facing-correction/REVIEW.md](facing-correction/REVIEW.md) first. Do not implement it again. Repair/salvage, water, roads/anchors/discovery and art REBUILD proposals remain unapproved/unimplemented. Original lying creature is still unidentified. Current lake/coast matched-history, complete commercial imagery, natural discoverability and remote multiplayer limits remain explicit in the new review.
 
 The previous checkpoint instructions below are retained as history. At that checkpoint product fixes were NONE; the subsequently completed work supersedes the implementation checklist below. The20-row audit is a findings/limits report, not commercial release approval.
@@ -34,7 +38,7 @@ The subsequent resume implemented ONLY the facing basis defect using the gate's 
 - Run only new/focused failing tests first, then relevant wildlife behavior regressions/data validation. No unrelated giant suite.
 - Update canonical creature/presentation docs only for the actual implementation, then source diff review/main commit/push/fetch/equality/clean. Protect user saves and native edits. No RC2/AAB/Console/production activation.
 
-## Audit limits still to close or clearly carry forward
+## Earlier audit limits — current water follow-up above supersedes the lake/coast capture gap
 
 - The original user's lying animal remains unidentified. The user has no seed/location. Gallery reveals Wolf/Goat perspective/basis issues, but do not guess exact original species or invent a pooled-death bug. Add actual death→pool reuse inspection before any reset fix.
 - Finish current lake/coast and matched historical water runtime comparisons if needed; current new river proof + old supplied Gen1/2 images already establish flat rendering is old. Do not rerun the exact same source-hash proof.

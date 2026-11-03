@@ -1,0 +1,322 @@
+[
+  {
+    "name": "g3-river",
+    "seed": 9472026,
+    "generation": 3,
+    "reader": "current continental reader",
+    "center": [
+      626.8638,
+      120.0
+    ],
+    "actor": [
+      634.8638,
+      120.0
+    ],
+    "actorWaterDistance": 3.0,
+    "bankWaterDistance": -5.0,
+    "cameraSize": 9.0,
+    "width": 1920,
+    "height": 1080,
+    "textureWidth": 130,
+    "textureHeight": 130,
+    "filtering": "Bilinear",
+    "format": "RGB24",
+    "mips": 1,
+    "material": "Assets/Wildfolk/Art/WorldSprite.mat",
+    "shader": "Universal Render Pipeline/2D/Sprite-Lit-Default",
+    "sourceStats": {
+      "kind": "CPU source sample, not GPU texture readback or perceptual quality score",
+      "center": [
+        626.8638,
+        120.0
+      ],
+      "samples": 4096,
+      "water": 4096,
+      "deep": 4096,
+      "distinctRgb24": 1,
+      "luminanceMean": 0.32458001006844256,
+      "luminanceStdDev": 0.0
+    },
+    "context": "Actual Unity terrain render. Fixed day/camera, HUD/props hidden. Teleport inspection, not discovery."
+  },
+  {
+    "name": "g3-lake",
+    "seed": 9472026,
+    "generation": 3,
+    "reader": "current continental reader",
+    "center": [
+      -967.077,
+      -850.0
+    ],
+    "actor": [
+      -963.077,
+      -850.0
+    ],
+    "actorWaterDistance": 2.66666651,
+    "bankWaterDistance": 0.0,
+    "cameraSize": 9.0,
+    "width": 1920,
+    "height": 1080,
+    "textureWidth": 130,
+    "textureHeight": 130,
+    "filtering": "Bilinear",
+    "format": "RGB24",
+    "mips": 1,
+    "material": "Assets/Wildfolk/Art/WorldSprite.mat",
+    "shader": "Universal Render Pipeline/2D/Sprite-Lit-Default",
+    "sourceStats": {
+      "kind": "CPU source sample, not GPU texture readback or perceptual quality score",
+      "center": [
+        -1072.077,
+        -850.0
+      ],
+      "samples": 4096,
+      "water": 4096,
+      "deep": 4096,
+      "distinctRgb24": 1,
+      "luminanceMean": 0.32458001006844256,
+      "luminanceStdDev": 0.0
+    },
+    "context": "Actual Unity terrain render. Fixed day/camera, HUD/props hidden. Teleport inspection, not discovery."
+  },
+  {
+    "name": "g3-coast",
+    "seed": 9472026,
+    "generation": 3,
+    "reader": "current continental reader",
+    "center": [
+      -6027.55859,
+      0.0
+    ],
+    "actor": [
+      -6023.55859,
+      0.0
+    ],
+    "actorWaterDistance": 3.999829,
+    "bankWaterDistance": -0.000171051492,
+    "cameraSize": 9.0,
+    "width": 1920,
+    "height": 1080,
+    "textureWidth": 130,
+    "textureHeight": 130,
+    "filtering": "Bilinear",
+    "format": "RGB24",
+    "mips": 1,
+    "material": "Assets/Wildfolk/Art/WorldSprite.mat",
+    "shader": "Universal Render Pipeline/2D/Sprite-Lit-Default",
+    "sourceStats": {
+      "kind": "CPU source sample, not GPU texture readback or perceptual quality score",
+      "center": [
+        -6057.55859,
+        0.0
+      ],
+      "samples": 4096,
+      "water": 4096,
+      "deep": 4096,
+      "distinctRgb24": 1,
+      "luminanceMean": 0.17988300163300588,
+      "luminanceStdDev": 0.0
+    },
+    "context": "Actual Unity terrain render. Fixed day/camera, HUD/props hidden. Teleport inspection, not discovery."
+  },
+  {
+    "name": "g2-river",
+    "seed": 9472026,
+    "generation": 2,
+    "reader": "current continental reader",
+    "center": [
+      626.8638,
+      120.0
+    ],
+    "actor": [
+      634.8638,
+      120.0
+    ],
+    "actorWaterDistance": 3.0,
+    "bankWaterDistance": -5.0,
+    "cameraSize": 9.0,
+    "width": 1920,
+    "height": 1080,
+    "textureWidth": 130,
+    "textureHeight": 130,
+    "filtering": "Bilinear",
+    "format": "RGB24",
+    "mips": 1,
+    "material": "Assets/Wildfolk/Art/WorldSprite.mat",
+    "shader": "Universal Render Pipeline/2D/Sprite-Lit-Default",
+    "sourceStats": {
+      "kind": "CPU source sample, not GPU texture readback or perceptual quality score",
+      "center": [
+        626.8638,
+        120.0
+      ],
+      "samples": 4096,
+      "water": 4096,
+      "deep": 4096,
+      "distinctRgb24": 1,
+      "luminanceMean": 0.32458001006844256,
+      "luminanceStdDev": 0.0
+    },
+    "context": "Actual Unity terrain render. Fixed day/camera, HUD/props hidden. Teleport inspection, not discovery."
+  },
+  {
+    "name": "g2-lake",
+    "seed": 9472026,
+    "generation": 2,
+    "reader": "current continental reader",
+    "center": [
+      -967.077,
+      -850.0
+    ],
+    "actor": [
+      -963.077,
+      -850.0
+    ],
+    "actorWaterDistance": 2.66666651,
+    "bankWaterDistance": 0.0,
+    "cameraSize": 9.0,
+    "width": 1920,
+    "height": 1080,
+    "textureWidth": 130,
+    "textureHeight": 130,
+    "filtering": "Bilinear",
+    "format": "RGB24",
+    "mips": 1,
+    "material": "Assets/Wildfolk/Art/WorldSprite.mat",
+    "shader": "Universal Render Pipeline/2D/Sprite-Lit-Default",
+    "sourceStats": {
+      "kind": "CPU source sample, not GPU texture readback or perceptual quality score",
+      "center": [
+        -1072.077,
+        -850.0
+      ],
+      "samples": 4096,
+      "water": 4096,
+      "deep": 4096,
+      "distinctRgb24": 1,
+      "luminanceMean": 0.32458001006844256,
+      "luminanceStdDev": 0.0
+    },
+    "context": "Actual Unity terrain render. Fixed day/camera, HUD/props hidden. Teleport inspection, not discovery."
+  },
+  {
+    "name": "g2-coast",
+    "seed": 9472026,
+    "generation": 2,
+    "reader": "current continental reader",
+    "center": [
+      -6027.55859,
+      0.0
+    ],
+    "actor": [
+      -6023.55859,
+      0.0
+    ],
+    "actorWaterDistance": 3.999829,
+    "bankWaterDistance": -0.000171051492,
+    "cameraSize": 9.0,
+    "width": 1920,
+    "height": 1080,
+    "textureWidth": 130,
+    "textureHeight": 130,
+    "filtering": "Bilinear",
+    "format": "RGB24",
+    "mips": 1,
+    "material": "Assets/Wildfolk/Art/WorldSprite.mat",
+    "shader": "Universal Render Pipeline/2D/Sprite-Lit-Default",
+    "sourceStats": {
+      "kind": "CPU source sample, not GPU texture readback or perceptual quality score",
+      "center": [
+        -6057.55859,
+        0.0
+      ],
+      "samples": 4096,
+      "water": 4096,
+      "deep": 4096,
+      "distinctRgb24": 1,
+      "luminanceMean": 0.17988300163300588,
+      "luminanceStdDev": 0.0
+    },
+    "context": "Actual Unity terrain render. Fixed day/camera, HUD/props hidden. Teleport inspection, not discovery."
+  },
+  {
+    "name": "g1-river",
+    "seed": 9472026,
+    "generation": 1,
+    "reader": "current retained legacy reader/formula",
+    "center": [
+      29.9692955,
+      0.0
+    ],
+    "actor": [
+      35.9692955,
+      0.0
+    ],
+    "actorWaterDistance": 3.0,
+    "bankWaterDistance": -3.0,
+    "cameraSize": 9.0,
+    "width": 1920,
+    "height": 1080,
+    "textureWidth": 1024,
+    "textureHeight": 768,
+    "filtering": "Bilinear",
+    "format": "RGB24",
+    "mips": 1,
+    "material": "Assets/Wildfolk/Art/WorldSprite.mat",
+    "shader": "Universal Render Pipeline/2D/Sprite-Lit-Default",
+    "sourceStats": {
+      "kind": "CPU source sample, not GPU texture readback or perceptual quality score",
+      "center": [
+        29.9692955,
+        0.0
+      ],
+      "samples": 4096,
+      "water": 4096,
+      "deep": 4096,
+      "distinctRgb24": 102,
+      "luminanceMean": 0.41854887442579186,
+      "luminanceStdDev": 0.0097550583043849934
+    },
+    "context": "Actual Unity terrain render. Fixed day/camera, HUD/props hidden. Teleport inspection, not discovery."
+  },
+  {
+    "name": "g1-lake",
+    "seed": 9472026,
+    "generation": 1,
+    "reader": "current retained legacy reader/formula",
+    "center": [
+      -43.09216,
+      28.8000011
+    ],
+    "actor": [
+      -39.09216,
+      28.8000011
+    ],
+    "actorWaterDistance": 3.00131369,
+    "bankWaterDistance": -4.88169064E-07,
+    "cameraSize": 9.0,
+    "width": 1920,
+    "height": 1080,
+    "textureWidth": 1024,
+    "textureHeight": 768,
+    "filtering": "Bilinear",
+    "format": "RGB24",
+    "mips": 1,
+    "material": "Assets/Wildfolk/Art/WorldSprite.mat",
+    "shader": "Universal Render Pipeline/2D/Sprite-Lit-Default",
+    "sourceStats": {
+      "kind": "CPU source sample, not GPU texture readback or perceptual quality score",
+      "center": [
+        -53.955925,
+        28.8000011
+      ],
+      "samples": 4096,
+      "water": 4096,
+      "deep": 4096,
+      "distinctRgb24": 136,
+      "luminanceMean": 0.420221232880329,
+      "luminanceStdDev": 0.011934115561156894
+    },
+    "context": "Actual Unity terrain render. Fixed day/camera, HUD/props hidden. Teleport inspection, not discovery."
+  }
+]

@@ -1,0 +1,77 @@
+{
+  "preGen2Commit": "cf4ecd689623ea91b2d1815f010e66bcdd5cebe5",
+  "legacySampleBodyEqualIgnoringWhitespaceAndStreamedDispatch": true,
+  "normalizedLegacyBodySha256": "c0afe76111f42e1045e58965be6e11dfd4c3d8b077c447f28219692d48bf0b81",
+  "worldSettings": [
+    {
+      "field": "Size",
+      "before": "{x: 192, y: 144}",
+      "current": "{x: 192, y: 144}",
+      "same": true
+    },
+    {
+      "field": "RiverWidth",
+      "before": "3",
+      "current": "3",
+      "same": true
+    },
+    {
+      "field": "RoadWidth",
+      "before": "2.1",
+      "current": "2.1",
+      "same": true
+    },
+    {
+      "field": "TextureWidth",
+      "before": "1024",
+      "current": "1024",
+      "same": true
+    },
+    {
+      "field": "Biome",
+      "before": "{fileID: 11400000, guid: 88ca94fbce62a574089c6b4c45a10282, type: 2}",
+      "current": "{fileID: 11400000, guid: 88ca94fbce62a574089c6b4c45a10282, type: 2}",
+      "same": true
+    }
+  ],
+  "biomeAsset": "Data/TemperateBiome.asset",
+  "palette": [
+    {
+      "field": "Grass",
+      "before": "{r: 0.39, g: 0.46, b: 0.26, a: 1}",
+      "current": "{r: 0.39, g: 0.46, b: 0.26, a: 1}",
+      "same": true
+    },
+    {
+      "field": "Forest",
+      "before": "{r: 0.29, g: 0.38, b: 0.23, a: 1}",
+      "current": "{r: 0.29, g: 0.38, b: 0.23, a: 1}",
+      "same": true
+    },
+    {
+      "field": "Dirt",
+      "before": "{r: 0.52, g: 0.46, b: 0.32, a: 1}",
+      "current": "{r: 0.52, g: 0.46, b: 0.32, a: 1}",
+      "same": true
+    },
+    {
+      "field": "Water",
+      "before": "{r: 0.28, g: 0.47, b: 0.46, a: 1}",
+      "current": "{r: 0.28, g: 0.47, b: 0.46, a: 1}",
+      "same": true
+    },
+    {
+      "field": "Shallows",
+      "before": "{r: 0.45, g: 0.56, b: 0.43, a: 1}",
+      "current": "{r: 0.45, g: 0.56, b: 0.43, a: 1}",
+      "same": true
+    },
+    {
+      "field": "DensityFrequency",
+      "before": "0.035",
+      "current": "0.035",
+      "same": true
+    }
+  ],
+  "interpretation": "Retained current generation1 formula agrees with preGen2 source. This does not execute an old full client or prove identical historical lighting/postprocessing."
+}
