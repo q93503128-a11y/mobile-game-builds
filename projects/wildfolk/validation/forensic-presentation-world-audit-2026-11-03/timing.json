@@ -1,0 +1,26 @@
+{
+  "startedUtc": "2026-11-02T23:51:54.963821+00:00",
+  "boundaryUtc": "2026-11-03T00:31:20.310101+00:00",
+  "initialReading": "Before measurement; not included in measured total",
+  "tokenUsage": null,
+  "phases": [
+    {
+      "phase": "history-source-and-seed-audit",
+      "startedUtc": "2026-11-02T23:51:54.963821+00:00",
+      "endedUtc": "2026-11-03T00:06:44.566011+00:00",
+      "seconds": 889.60219
+    },
+    {
+      "phase": "runtime-traversal-presentation-and-commercial-research",
+      "startedUtc": "2026-11-03T00:06:44.566011+00:00",
+      "endedUtc": "2026-11-03T00:21:01.676175+00:00",
+      "seconds": 857.110164
+    },
+    {
+      "phase": "checkpoint-report-evidence-and-editor-cleanup",
+      "startedUtc": "2026-11-03T00:21:01.676175+00:00",
+      "endedUtc": "2026-11-03T00:31:20.310101+00:00",
+      "seconds": 618.633926
+    }
+  ]
+}

@@ -1,0 +1,145 @@
+[
+  {
+    "rule": 0,
+    "prefab": "Assets/Wildfolk/Prefabs/Tree.prefab",
+    "definition": "Assets/Wildfolk/Data/TreeResource.asset",
+    "drop": "wood",
+    "count": 6,
+    "name": "Wood",
+    "sprite": "Assets/Wildfolk/Art/tree_oak.png",
+    "harvest": "Strike",
+    "tool": "Axe"
+  },
+  {
+    "rule": 1,
+    "prefab": "Assets/Wildfolk/Prefabs/Stone.prefab",
+    "definition": "Assets/Wildfolk/Data/StoneResource.asset",
+    "drop": "stone",
+    "count": 6,
+    "name": "Stone",
+    "sprite": "Assets/Wildfolk/Art/rock_wide.png",
+    "harvest": "Strike",
+    "tool": "Pickaxe"
+  },
+  {
+    "rule": 2,
+    "prefab": "Assets/Wildfolk/Prefabs/IronOreNode.prefab",
+    "definition": "Assets/Wildfolk/Data/IronOreResource.asset",
+    "drop": "iron_ore",
+    "count": 6,
+    "name": "Iron Ore",
+    "sprite": "Assets/Wildfolk/Art/iron_ore_node.png",
+    "harvest": "Strike",
+    "tool": "Pickaxe"
+  },
+  {
+    "rule": 3,
+    "prefab": "Assets/Wildfolk/Prefabs/FallenLog.prefab",
+    "definition": "Assets/Wildfolk/Data/FallenLogResource.asset",
+    "drop": "wood",
+    "count": 4,
+    "name": "Wood",
+    "sprite": "Assets/Wildfolk/Art/fallen_log.png",
+    "harvest": "Strike",
+    "tool": "Axe"
+  },
+  {
+    "rule": 4,
+    "prefab": "Assets/Wildfolk/Prefabs/SmallPlant.prefab",
+    "definition": "Assets/Wildfolk/Data/SmallPlantResource.asset",
+    "drop": "plant_fiber",
+    "count": 2,
+    "name": "Plant Fiber",
+    "sprite": "Assets/Wildfolk/Art/small_shrub.png",
+    "harvest": "Strike",
+    "tool": "Axe"
+  },
+  {
+    "rule": 5,
+    "prefab": "Assets/Wildfolk/Prefabs/CopperOreNode.prefab",
+    "definition": "Assets/Wildfolk/Data/CopperOreNodeResource.asset",
+    "drop": "copper_ore",
+    "count": 6,
+    "name": "Copper Ore",
+    "sprite": "Assets/Wildfolk/Art/copper_ore_node.png",
+    "harvest": "Strike",
+    "tool": "Pickaxe"
+  },
+  {
+    "rule": 6,
+    "prefab": "Assets/Wildfolk/Prefabs/TinOreNode.prefab",
+    "definition": "Assets/Wildfolk/Data/TinOreNodeResource.asset",
+    "drop": "tin_ore",
+    "count": 5,
+    "name": "Tin Ore",
+    "sprite": "Assets/Wildfolk/Art/tin_ore_node.png",
+    "harvest": "Panning",
+    "tool": "Pan"
+  },
+  {
+    "rule": 7,
+    "prefab": "Assets/Wildfolk/Prefabs/CoalNode.prefab",
+    "definition": "Assets/Wildfolk/Data/CoalNodeResource.asset",
+    "drop": "coal",
+    "count": 10,
+    "name": "Coal",
+    "sprite": "Assets/Wildfolk/Art/coal_node.png",
+    "harvest": "Strike",
+    "tool": "Pickaxe"
+  },
+  {
+    "rule": 8,
+    "prefab": "Assets/Wildfolk/Prefabs/BerryBush.prefab",
+    "definition": "Assets/Wildfolk/Data/BerryBushResource.asset",
+    "drop": "berry",
+    "count": 3,
+    "name": "Berry",
+    "sprite": "Assets/Wildfolk/Art/berry_bush.png",
+    "harvest": "Strike",
+    "tool": "Axe"
+  },
+  {
+    "rule": 9,
+    "prefab": "Assets/Wildfolk/Prefabs/MushroomPatch.prefab",
+    "definition": "Assets/Wildfolk/Data/MushroomPatchResource.asset",
+    "drop": "mushroom",
+    "count": 2,
+    "name": "Mushroom",
+    "sprite": "Assets/Wildfolk/Art/mushroom_patch.png",
+    "harvest": "Strike",
+    "tool": "Axe"
+  },
+  {
+    "rule": 10,
+    "prefab": "Assets/Wildfolk/Prefabs/DiamondNode.prefab",
+    "definition": "Assets/Wildfolk/Data/DiamondNodeResource.asset",
+    "drop": "diamond",
+    "count": 3,
+    "name": "Diamond",
+    "sprite": "Assets/Wildfolk/Art/diamond_node.png",
+    "harvest": "Strike",
+    "tool": "Pickaxe"
+  },
+  {
+    "rule": 11,
+    "prefab": "Assets/Wildfolk/Prefabs/CrystalNode.prefab",
+    "definition": "Assets/Wildfolk/Data/CrystalNodeResource.asset",
+    "drop": "crystal",
+    "count": 6,
+    "name": "Crystal",
+    "sprite": "Assets/Wildfolk/Art/crystal_node.png",
+    "harvest": "Strike",
+    "tool": "Pickaxe"
+  },
+  {
+    "rule": 12,
+    "prefab": "Assets/Wildfolk/Prefabs/MedicinalHerb.prefab",
+    "definition": "Assets/Wildfolk/Data/MedicinalHerbResource.asset",
+    "drop": "medicinal_herb",
+    "count": 2,
+    "name": "Medicinal Herb",
+    "sprite": "Assets/Wildfolk/Art/medicinal_herb_patch.png",
+    "harvest": "Strike",
+    "tool": "Axe"
+  }
+]
