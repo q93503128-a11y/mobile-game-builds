@@ -2,7 +2,7 @@
 
 기준은 fetched main `48d6528758d18bf3df41ed02ad9aa0f268654a51`이다. 이 보고서는 게임 수정 승인이 아니다.
 
-**CHECKPOINT / DRAFT — 사용자 요청으로 중단. 전수 감사 완료본이 아니다.** 자동 추출 목록과 수동 대조 초안이며, 잔여 surface/action 검수와 6개 보고서는 RESUME.md에 남겼다.
+**최종 research-only 감사.** 현재 구현과 미래·미구현·역사 전용을 구분한다. rendered 미확인 상태와 거래 검수는 EVIDENCE_INDEX의 UNVERIFIED 목록을 따른다. 재개 시작 main은82d19b6이며 제품 source는48d6528과 동일하다.
 
 FACT는 현재 source/data 사실, CONFIRMED는 이번 Unity에서 관찰한 해당 화면·행동, SOURCE-INFERRED는 source로 확인했지만 그 상태를 실제 재현하지 않은 항목, HISTORICAL은 과거 캡처/검사, PROPOSAL은 제안, FUTURE GOAL은 사용자의 차기 목표, UNVERIFIED는 추가 증거가 필요한 항목이다. 시각적 평가 자체는 감사자의 판단이며 기능 검증과 구분한다.
 

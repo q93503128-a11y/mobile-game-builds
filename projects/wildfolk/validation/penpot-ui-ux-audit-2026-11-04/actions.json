@@ -340,7 +340,7 @@
     ],
     "origin": "serialized",
     "id": "ACT-063",
-    "service": "EconomyService.ClaimAll",
+    "service": "EconomyService.Claim() → server ClaimAll",
     "effect": "전체 eligible 보상을 같은 CAS에서 확정",
     "gate": "일부 optimistic 지급 금지",
     "source": "[EconomyScreen.ClaimEverything](../../client/Assets/Wildfolk/Runtime/UI/EconomyScreen.cs#L41)",

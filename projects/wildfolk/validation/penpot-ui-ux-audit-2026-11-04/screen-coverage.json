@@ -1,0 +1,562 @@
+[
+  {
+    "id": "H01",
+    "level": "CURRENT rendered subset",
+    "evidence": "home-v2; 해당 empty/OFF/preview 상태만. 상태 전체 합격 아님",
+    "issues": [
+      "UX14",
+      "UX15",
+      "UX22"
+    ],
+    "designDisposition": "문제 UX14,UX15,UX22 참고"
+  },
+  {
+    "id": "H02",
+    "level": "SOURCE; current rendered UNVERIFIED",
+    "evidence": "state/controls 계약 인계; 외관·실기 정상 주장 안 함",
+    "issues": [
+      "UX15"
+    ],
+    "designDisposition": "문제 UX15 참고"
+  },
+  {
+    "id": "H03",
+    "level": "CURRENT rendered subset",
+    "evidence": "settings-v2; 해당 empty/OFF/preview 상태만. 상태 전체 합격 아님",
+    "issues": [
+      "UX02",
+      "UX06",
+      "UX11"
+    ],
+    "designDisposition": "문제 UX02,UX06,UX11 참고"
+  },
+  {
+    "id": "M01",
+    "level": "CURRENT rendered subset",
+    "evidence": "resume-mp; 해당 empty/OFF/preview 상태만. 상태 전체 합격 아님",
+    "issues": [
+      "UX15",
+      "UX16"
+    ],
+    "designDisposition": "문제 UX15,UX16 참고"
+  },
+  {
+    "id": "M02",
+    "level": "SOURCE; current rendered UNVERIFIED",
+    "evidence": "state/controls 계약 인계; 외관·실기 정상 주장 안 함",
+    "issues": [],
+    "designDisposition": "현 기능 보존; per-screen state와 handoff frame variants를 기준으로 재설계/후속 검수"
+  },
+  {
+    "id": "P01",
+    "level": "CURRENT rendered subset",
+    "evidence": "class-overview; 해당 empty/OFF/preview 상태만. 상태 전체 합격 아님",
+    "issues": [
+      "UX07",
+      "UX14"
+    ],
+    "designDisposition": "문제 UX07,UX14 참고"
+  },
+  {
+    "id": "P02",
+    "level": "CURRENT rendered subset",
+    "evidence": "class-tree; 해당 empty/OFF/preview 상태만. 상태 전체 합격 아님",
+    "issues": [
+      "UX02",
+      "UX07",
+      "UX08",
+      "UX13"
+    ],
+    "designDisposition": "문제 UX02,UX07,UX08,UX13 참고"
+  },
+  {
+    "id": "P03",
+    "level": "SOURCE; current rendered UNVERIFIED",
+    "evidence": "state/controls 계약 인계; 외관·실기 정상 주장 안 함",
+    "issues": [],
+    "designDisposition": "현 기능 보존; per-screen state와 handoff frame variants를 기준으로 재설계/후속 검수"
+  },
+  {
+    "id": "A01",
+    "level": "CURRENT rendered subset",
+    "evidence": "profile-ko; 해당 empty/OFF/preview 상태만. 상태 전체 합격 아님",
+    "issues": [
+      "UX07"
+    ],
+    "designDisposition": "문제 UX07 참고"
+  },
+  {
+    "id": "A02",
+    "level": "CURRENT rendered subset",
+    "evidence": "account-ko; 해당 empty/OFF/preview 상태만. 상태 전체 합격 아님",
+    "issues": [
+      "UX01",
+      "UX07"
+    ],
+    "designDisposition": "문제 UX01,UX07 참고"
+  },
+  {
+    "id": "A03",
+    "level": "CURRENT rendered subset",
+    "evidence": "store-help-ko; 해당 empty/OFF/preview 상태만. 상태 전체 합격 아님",
+    "issues": [
+      "UX01"
+    ],
+    "designDisposition": "문제 UX01 참고"
+  },
+  {
+    "id": "A04",
+    "level": "SOURCE; current rendered UNVERIFIED",
+    "evidence": "state/controls 계약 인계; 외관·실기 정상 주장 안 함",
+    "issues": [],
+    "designDisposition": "현 기능 보존; per-screen state와 handoff frame variants를 기준으로 재설계/후속 검수"
+  },
+  {
+    "id": "A05",
+    "level": "CURRENT rendered subset",
+    "evidence": "delete-unconfirmed; 해당 empty/OFF/preview 상태만. 상태 전체 합격 아님",
+    "issues": [],
+    "designDisposition": "현 기능 보존; per-screen state와 handoff frame variants를 기준으로 재설계/후속 검수"
+  },
+  {
+    "id": "A06",
+    "level": "SOURCE; current rendered UNVERIFIED",
+    "evidence": "state/controls 계약 인계; 외관·실기 정상 주장 안 함",
+    "issues": [],
+    "designDisposition": "현 기능 보존; per-screen state와 handoff frame variants를 기준으로 재설계/후속 검수"
+  },
+  {
+    "id": "E01",
+    "level": "CURRENT rendered subset",
+    "evidence": "achievements-v2; 해당 empty/OFF/preview 상태만. 상태 전체 합격 아님",
+    "issues": [
+      "UX02",
+      "UX07",
+      "UX08",
+      "UX09",
+      "UX10"
+    ],
+    "designDisposition": "문제 UX02,UX07,UX08,UX09,UX10 참고"
+  },
+  {
+    "id": "E02",
+    "level": "CURRENT rendered subset",
+    "evidence": "attendance-v2; 해당 empty/OFF/preview 상태만. 상태 전체 합격 아님",
+    "issues": [
+      "UX02",
+      "UX03"
+    ],
+    "designDisposition": "문제 UX02,UX03 참고"
+  },
+  {
+    "id": "E03",
+    "level": "CURRENT rendered subset",
+    "evidence": "attendance-monthly-v2; 해당 empty/OFF/preview 상태만. 상태 전체 합격 아님",
+    "issues": [
+      "UX02",
+      "UX03",
+      "UX07"
+    ],
+    "designDisposition": "문제 UX02,UX03,UX07 참고"
+  },
+  {
+    "id": "E04",
+    "level": "SOURCE; current rendered UNVERIFIED",
+    "evidence": "state/controls 계약 인계; 외관·실기 정상 주장 안 함",
+    "issues": [],
+    "designDisposition": "현 기능 보존; per-screen state와 handoff frame variants를 기준으로 재설계/후속 검수"
+  },
+  {
+    "id": "E05",
+    "level": "CURRENT rendered subset",
+    "evidence": "store-ko; 해당 empty/OFF/preview 상태만. 상태 전체 합격 아님",
+    "issues": [
+      "UX01",
+      "UX08",
+      "UX19"
+    ],
+    "designDisposition": "문제 UX01,UX08,UX19 참고"
+  },
+  {
+    "id": "E06",
+    "level": "SOURCE; current rendered UNVERIFIED",
+    "evidence": "state/controls 계약 인계; 외관·실기 정상 주장 안 함",
+    "issues": [
+      "UX19"
+    ],
+    "designDisposition": "문제 UX19 참고"
+  },
+  {
+    "id": "E07",
+    "level": "SOURCE; current rendered UNVERIFIED",
+    "evidence": "state/controls 계약 인계; 외관·실기 정상 주장 안 함",
+    "issues": [],
+    "designDisposition": "현 기능 보존; per-screen state와 handoff frame variants를 기준으로 재설계/후속 검수"
+  },
+  {
+    "id": "T01",
+    "level": "SOURCE; current rendered UNVERIFIED",
+    "evidence": "state/controls 계약 인계; 외관·실기 정상 주장 안 함",
+    "issues": [
+      "UX20"
+    ],
+    "designDisposition": "문제 UX20 참고"
+  },
+  {
+    "id": "G01",
+    "level": "CURRENT rendered subset",
+    "evidence": "qa-new-world-hud; 해당 empty/OFF/preview 상태만. 상태 전체 합격 아님",
+    "issues": [
+      "UX12"
+    ],
+    "designDisposition": "문제 UX12 참고"
+  },
+  {
+    "id": "G02",
+    "level": "SOURCE; current rendered UNVERIFIED",
+    "evidence": "state/controls 계약 인계; 외관·실기 정상 주장 안 함",
+    "issues": [],
+    "designDisposition": "현 기능 보존; per-screen state와 handoff frame variants를 기준으로 재설계/후속 검수"
+  },
+  {
+    "id": "G03",
+    "level": "SOURCE; current rendered UNVERIFIED",
+    "evidence": "state/controls 계약 인계; 외관·실기 정상 주장 안 함",
+    "issues": [
+      "UX14"
+    ],
+    "designDisposition": "문제 UX14 참고"
+  },
+  {
+    "id": "G04",
+    "level": "SOURCE; current rendered UNVERIFIED",
+    "evidence": "state/controls 계약 인계; 외관·실기 정상 주장 안 함",
+    "issues": [],
+    "designDisposition": "현 기능 보존; per-screen state와 handoff frame variants를 기준으로 재설계/후속 검수"
+  },
+  {
+    "id": "G05",
+    "level": "SOURCE; current rendered UNVERIFIED",
+    "evidence": "state/controls 계약 인계; 외관·실기 정상 주장 안 함",
+    "issues": [],
+    "designDisposition": "현 기능 보존; per-screen state와 handoff frame variants를 기준으로 재설계/후속 검수"
+  },
+  {
+    "id": "G06",
+    "level": "SOURCE; current rendered UNVERIFIED",
+    "evidence": "state/controls 계약 인계; 외관·실기 정상 주장 안 함",
+    "issues": [],
+    "designDisposition": "현 기능 보존; per-screen state와 handoff frame variants를 기준으로 재설계/후속 검수"
+  },
+  {
+    "id": "G07",
+    "level": "SOURCE; current rendered UNVERIFIED",
+    "evidence": "state/controls 계약 인계; 외관·실기 정상 주장 안 함",
+    "issues": [],
+    "designDisposition": "현 기능 보존; per-screen state와 handoff frame variants를 기준으로 재설계/후속 검수"
+  },
+  {
+    "id": "G08",
+    "level": "SOURCE + HISTORICAL",
+    "evidence": "현재 rendered UNVERIFIED; 과거 fixture/행동 화면과 current source 차이를 분리",
+    "issues": [
+      "UX04",
+      "UX10"
+    ],
+    "designDisposition": "문제 UX04,UX10 참고"
+  },
+  {
+    "id": "G09",
+    "level": "SOURCE; current rendered UNVERIFIED",
+    "evidence": "state/controls 계약 인계; 외관·실기 정상 주장 안 함",
+    "issues": [
+      "UX21"
+    ],
+    "designDisposition": "문제 UX21 참고"
+  },
+  {
+    "id": "G10",
+    "level": "SOURCE; current rendered UNVERIFIED",
+    "evidence": "state/controls 계약 인계; 외관·실기 정상 주장 안 함",
+    "issues": [
+      "UX12"
+    ],
+    "designDisposition": "문제 UX12 참고"
+  },
+  {
+    "id": "G11",
+    "level": "SOURCE; current rendered UNVERIFIED",
+    "evidence": "state/controls 계약 인계; 외관·실기 정상 주장 안 함",
+    "issues": [
+      "UX18"
+    ],
+    "designDisposition": "문제 UX18 참고"
+  },
+  {
+    "id": "G12",
+    "level": "SOURCE; current rendered UNVERIFIED",
+    "evidence": "state/controls 계약 인계; 외관·실기 정상 주장 안 함",
+    "issues": [
+      "UX12"
+    ],
+    "designDisposition": "문제 UX12 참고"
+  },
+  {
+    "id": "G13",
+    "level": "SOURCE; current rendered UNVERIFIED",
+    "evidence": "state/controls 계약 인계; 외관·실기 정상 주장 안 함",
+    "issues": [
+      "UX06",
+      "UX21"
+    ],
+    "designDisposition": "문제 UX06,UX21 참고"
+  },
+  {
+    "id": "I01",
+    "level": "CURRENT rendered subset",
+    "evidence": "resume-v2-inventory; 해당 empty/OFF/preview 상태만. 상태 전체 합격 아님",
+    "issues": [
+      "UX02",
+      "UX05"
+    ],
+    "designDisposition": "문제 UX02,UX05 참고"
+  },
+  {
+    "id": "I02",
+    "level": "CURRENT rendered subset",
+    "evidence": "resume-v2-inventory; 해당 empty/OFF/preview 상태만. 상태 전체 합격 아님",
+    "issues": [
+      "UX05"
+    ],
+    "designDisposition": "문제 UX05 참고"
+  },
+  {
+    "id": "I03",
+    "level": "SOURCE + HISTORICAL",
+    "evidence": "현재 rendered UNVERIFIED; 과거 fixture/행동 화면과 current source 차이를 분리",
+    "issues": [],
+    "designDisposition": "현 기능 보존; per-screen state와 handoff frame variants를 기준으로 재설계/후속 검수"
+  },
+  {
+    "id": "I04",
+    "level": "SOURCE + HISTORICAL",
+    "evidence": "현재 rendered UNVERIFIED; 과거 fixture/행동 화면과 current source 차이를 분리",
+    "issues": [],
+    "designDisposition": "현 기능 보존; per-screen state와 handoff frame variants를 기준으로 재설계/후속 검수"
+  },
+  {
+    "id": "I05",
+    "level": "SOURCE; current rendered UNVERIFIED",
+    "evidence": "state/controls 계약 인계; 외관·실기 정상 주장 안 함",
+    "issues": [],
+    "designDisposition": "현 기능 보존; per-screen state와 handoff frame variants를 기준으로 재설계/후속 검수"
+  },
+  {
+    "id": "I06",
+    "level": "SOURCE + HISTORICAL",
+    "evidence": "현재 rendered UNVERIFIED; 과거 fixture/행동 화면과 current source 차이를 분리",
+    "issues": [
+      "UX10"
+    ],
+    "designDisposition": "문제 UX10 참고"
+  },
+  {
+    "id": "I07",
+    "level": "SOURCE; current rendered UNVERIFIED",
+    "evidence": "state/controls 계약 인계; 외관·실기 정상 주장 안 함",
+    "issues": [
+      "UX17"
+    ],
+    "designDisposition": "문제 UX17 참고"
+  },
+  {
+    "id": "C01",
+    "level": "CURRENT rendered subset",
+    "evidence": "resume-v2-hand-crafting; 해당 empty/OFF/preview 상태만. 상태 전체 합격 아님",
+    "issues": [
+      "UX02",
+      "UX05",
+      "UX10"
+    ],
+    "designDisposition": "문제 UX02,UX05,UX10 참고"
+  },
+  {
+    "id": "C02",
+    "level": "SOURCE + HISTORICAL",
+    "evidence": "현재 rendered UNVERIFIED; 과거 fixture/행동 화면과 current source 차이를 분리",
+    "issues": [
+      "UX05"
+    ],
+    "designDisposition": "문제 UX05 참고"
+  },
+  {
+    "id": "C03",
+    "level": "SOURCE + HISTORICAL",
+    "evidence": "현재 rendered UNVERIFIED; 과거 fixture/행동 화면과 current source 차이를 분리",
+    "issues": [
+      "UX05",
+      "UX22"
+    ],
+    "designDisposition": "문제 UX05,UX22 참고"
+  },
+  {
+    "id": "C04",
+    "level": "SOURCE; current rendered UNVERIFIED",
+    "evidence": "state/controls 계약 인계; 외관·실기 정상 주장 안 함",
+    "issues": [],
+    "designDisposition": "현 기능 보존; per-screen state와 handoff frame variants를 기준으로 재설계/후속 검수"
+  },
+  {
+    "id": "C05",
+    "level": "SOURCE; current rendered UNVERIFIED",
+    "evidence": "state/controls 계약 인계; 외관·실기 정상 주장 안 함",
+    "issues": [
+      "UX17"
+    ],
+    "designDisposition": "문제 UX17 참고"
+  },
+  {
+    "id": "C06",
+    "level": "SOURCE; current rendered UNVERIFIED",
+    "evidence": "state/controls 계약 인계; 외관·실기 정상 주장 안 함",
+    "issues": [
+      "UX17"
+    ],
+    "designDisposition": "문제 UX17 참고"
+  },
+  {
+    "id": "C07",
+    "level": "SOURCE; current rendered UNVERIFIED",
+    "evidence": "state/controls 계약 인계; 외관·실기 정상 주장 안 함",
+    "issues": [
+      "UX17"
+    ],
+    "designDisposition": "문제 UX17 참고"
+  },
+  {
+    "id": "C08",
+    "level": "SOURCE; current rendered UNVERIFIED",
+    "evidence": "state/controls 계약 인계; 외관·실기 정상 주장 안 함",
+    "issues": [],
+    "designDisposition": "현 기능 보존; per-screen state와 handoff frame variants를 기준으로 재설계/후속 검수"
+  },
+  {
+    "id": "P04",
+    "level": "CURRENT rendered subset",
+    "evidence": "resume-v2-character; 해당 empty/OFF/preview 상태만. 상태 전체 합격 아님",
+    "issues": [],
+    "designDisposition": "현 기능 보존; per-screen state와 handoff frame variants를 기준으로 재설계/후속 검수"
+  },
+  {
+    "id": "P05",
+    "level": "CURRENT rendered subset",
+    "evidence": "resume-v2-common-tree; 해당 empty/OFF/preview 상태만. 상태 전체 합격 아님",
+    "issues": [
+      "UX13"
+    ],
+    "designDisposition": "문제 UX13 참고"
+  },
+  {
+    "id": "S01",
+    "level": "CURRENT rendered subset",
+    "evidence": "resume-v2-pause-en; 해당 empty/OFF/preview 상태만. 상태 전체 합격 아님",
+    "issues": [],
+    "designDisposition": "현 기능 보존; per-screen state와 handoff frame variants를 기준으로 재설계/후속 검수"
+  },
+  {
+    "id": "S02",
+    "level": "CURRENT rendered subset",
+    "evidence": "resume-v2-pause-settings; 해당 empty/OFF/preview 상태만. 상태 전체 합격 아님",
+    "issues": [
+      "UX06",
+      "UX11"
+    ],
+    "designDisposition": "문제 UX06,UX11 참고"
+  },
+  {
+    "id": "D01",
+    "level": "SOURCE + HISTORICAL",
+    "evidence": "현재 rendered UNVERIFIED; 과거 fixture/행동 화면과 current source 차이를 분리",
+    "issues": [
+      "UX22"
+    ],
+    "designDisposition": "문제 UX22 참고"
+  },
+  {
+    "id": "D02",
+    "level": "SOURCE; current rendered UNVERIFIED",
+    "evidence": "state/controls 계약 인계; 외관·실기 정상 주장 안 함",
+    "issues": [],
+    "designDisposition": "현 기능 보존; per-screen state와 handoff frame variants를 기준으로 재설계/후속 검수"
+  },
+  {
+    "id": "D03",
+    "level": "SOURCE; current rendered UNVERIFIED",
+    "evidence": "state/controls 계약 인계; 외관·실기 정상 주장 안 함",
+    "issues": [],
+    "designDisposition": "현 기능 보존; per-screen state와 handoff frame variants를 기준으로 재설계/후속 검수"
+  },
+  {
+    "id": "F01",
+    "level": "FUTURE / MISSING / HISTORICAL ONLY",
+    "evidence": "현재 구현 frame에 섞지 않음",
+    "issues": [],
+    "designDisposition": "현 기능 보존; per-screen state와 handoff frame variants를 기준으로 재설계/후속 검수"
+  },
+  {
+    "id": "F02",
+    "level": "FUTURE / MISSING / HISTORICAL ONLY",
+    "evidence": "현재 구현 frame에 섞지 않음",
+    "issues": [],
+    "designDisposition": "현 기능 보존; per-screen state와 handoff frame variants를 기준으로 재설계/후속 검수"
+  },
+  {
+    "id": "F03",
+    "level": "FUTURE / MISSING / HISTORICAL ONLY",
+    "evidence": "현재 구현 frame에 섞지 않음",
+    "issues": [],
+    "designDisposition": "현 기능 보존; per-screen state와 handoff frame variants를 기준으로 재설계/후속 검수"
+  },
+  {
+    "id": "F04",
+    "level": "FUTURE / MISSING / HISTORICAL ONLY",
+    "evidence": "현재 구현 frame에 섞지 않음",
+    "issues": [],
+    "designDisposition": "현 기능 보존; per-screen state와 handoff frame variants를 기준으로 재설계/후속 검수"
+  },
+  {
+    "id": "F05",
+    "level": "FUTURE / MISSING / HISTORICAL ONLY",
+    "evidence": "현재 구현 frame에 섞지 않음",
+    "issues": [],
+    "designDisposition": "현 기능 보존; per-screen state와 handoff frame variants를 기준으로 재설계/후속 검수"
+  },
+  {
+    "id": "F06",
+    "level": "FUTURE / MISSING / HISTORICAL ONLY",
+    "evidence": "현재 구현 frame에 섞지 않음",
+    "issues": [],
+    "designDisposition": "현 기능 보존; per-screen state와 handoff frame variants를 기준으로 재설계/후속 검수"
+  },
+  {
+    "id": "F07",
+    "level": "FUTURE / MISSING / HISTORICAL ONLY",
+    "evidence": "현재 구현 frame에 섞지 않음",
+    "issues": [],
+    "designDisposition": "현 기능 보존; per-screen state와 handoff frame variants를 기준으로 재설계/후속 검수"
+  },
+  {
+    "id": "F08",
+    "level": "FUTURE / MISSING / HISTORICAL ONLY",
+    "evidence": "현재 구현 frame에 섞지 않음",
+    "issues": [],
+    "designDisposition": "현 기능 보존; per-screen state와 handoff frame variants를 기준으로 재설계/후속 검수"
+  },
+  {
+    "id": "X01",
+    "level": "FUTURE / MISSING / HISTORICAL ONLY",
+    "evidence": "현재 구현 frame에 섞지 않음",
+    "issues": [],
+    "designDisposition": "현 기능 보존; per-screen state와 handoff frame variants를 기준으로 재설계/후속 검수"
+  }
+]

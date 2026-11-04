@@ -1,0 +1,177 @@
+{
+  "utc": "2026-11-04T04:46:34.9308672Z",
+  "scene": "MainMenu",
+  "screen": [
+    1920,
+    1080
+  ],
+  "language": "en",
+  "labels": [
+    {
+      "name": "Label",
+      "text": "Back",
+      "size": 30,
+      "pixelFont": 30.0,
+      "width": 160.0,
+      "height": 100.0,
+      "preferredHeight": 44.0,
+      "overflow": "Truncate"
+    },
+    {
+      "name": "Placeholder",
+      "text": "127.0.0.1:7777",
+      "size": 32,
+      "pixelFont": 32.0,
+      "width": 600.0,
+      "height": 95.0,
+      "preferredHeight": 46.0,
+      "overflow": "Truncate"
+    },
+    {
+      "name": "Session Message",
+      "text": "Meet at the camp. Choose Internet or Local Network.",
+      "size": 32,
+      "pixelFont": 32.0,
+      "width": 1400.0,
+      "height": 100.0,
+      "preferredHeight": 46.0,
+      "overflow": "Truncate"
+    },
+    {
+      "name": "Label",
+      "text": "Single Player",
+      "size": 30,
+      "pixelFont": 30.0,
+      "width": 630.0,
+      "height": 98.0,
+      "preferredHeight": 44.0,
+      "overflow": "Truncate"
+    },
+    {
+      "name": "Destination Label",
+      "text": "Host IPv4 address",
+      "size": 36,
+      "pixelFont": 36.0,
+      "width": 650.0,
+      "height": 70.0,
+      "preferredHeight": 52.0,
+      "overflow": "Truncate"
+    },
+    {
+      "name": "Label",
+      "text": "Host Game",
+      "size": 32,
+      "pixelFont": 32.0,
+      "width": 618.0,
+      "height": 116.0,
+      "preferredHeight": 46.0,
+      "overflow": "Truncate"
+    },
+    {
+      "name": "Label",
+      "text": "Join",
+      "size": 32,
+      "pixelFont": 32.0,
+      "width": 618.0,
+      "height": 116.0,
+      "preferredHeight": 46.0,
+      "overflow": "Truncate"
+    },
+    {
+      "name": "Create heading",
+      "text": "Create a camp",
+      "size": 40,
+      "pixelFont": 40.0,
+      "width": 650.0,
+      "height": 80.0,
+      "preferredHeight": 58.0,
+      "overflow": "Truncate"
+    },
+    {
+      "name": "Title",
+      "text": "Multiplayer",
+      "size": 44,
+      "pixelFont": 44.0,
+      "width": 630.0,
+      "height": 80.0,
+      "preferredHeight": 64.0,
+      "overflow": "Truncate"
+    },
+    {
+      "name": "Create hint",
+      "text": "Host a shared world for up to four players. The world stays with its host.",
+      "size": 32,
+      "pixelFont": 32.0,
+      "width": 650.0,
+      "height": 130.0,
+      "preferredHeight": 88.0,
+      "overflow": "Truncate"
+    },
+    {
+      "name": "Label",
+      "text": "Local Network",
+      "size": 32,
+      "pixelFont": 32.0,
+      "width": 1368.0,
+      "height": 104.0,
+      "preferredHeight": 46.0,
+      "overflow": "Truncate"
+    }
+  ],
+  "controls": [
+    {
+      "name": "Join Game",
+      "type": "Button",
+      "enabled": false,
+      "width": 650.0,
+      "height": 132.0,
+      "pixelWidth": 650.0,
+      "pixelHeight": 132.0
+    },
+    {
+      "name": "Connection Route",
+      "type": "Button",
+      "enabled": true,
+      "width": 1400.0,
+      "height": 120.0,
+      "pixelWidth": 1400.0,
+      "pixelHeight": 120.0
+    },
+    {
+      "name": "Destination",
+      "type": "InputField",
+      "enabled": true,
+      "width": 650.0,
+      "height": 120.0,
+      "pixelWidth": 650.0,
+      "pixelHeight": 120.0
+    },
+    {
+      "name": "Host Game",
+      "type": "Button",
+      "enabled": true,
+      "width": 650.0,
+      "height": 132.0,
+      "pixelWidth": 650.0,
+      "pixelHeight": 132.0
+    },
+    {
+      "name": "Back",
+      "type": "Button",
+      "enabled": true,
+      "width": 180.0,
+      "height": 112.0,
+      "pixelWidth": 180.0,
+      "pixelHeight": 112.0
+    },
+    {
+      "name": "Single Player",
+      "type": "Button",
+      "enabled": true,
+      "width": 650.0,
+      "height": 110.0,
+      "pixelWidth": 650.0,
+      "pixelHeight": 110.0
+    }
+  ]
+}

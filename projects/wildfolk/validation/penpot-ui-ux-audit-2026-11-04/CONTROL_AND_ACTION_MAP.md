@@ -2,7 +2,7 @@
 
 기준은 fetched main `48d6528758d18bf3df41ed02ad9aa0f268654a51`이다. 이 보고서는 게임 수정 승인이 아니다.
 
-**CHECKPOINT / DRAFT — 사용자 요청으로 중단. 전수 감사 완료본이 아니다.** 자동 추출 목록과 수동 대조 초안이며, 잔여 surface/action 검수와 6개 보고서는 RESUME.md에 남겼다.
+**최종 research-only 감사.** 현재 구현과 미래·미구현·역사 전용을 구분한다. rendered 미확인 상태와 거래 검수는 EVIDENCE_INDEX의 UNVERIFIED 목록을 따른다. 재개 시작 main은82d19b6이며 제품 source는48d6528과 동일하다.
 
 FACT는 현재 source/data 사실, CONFIRMED는 이번 Unity에서 관찰한 해당 화면·행동, SOURCE-INFERRED는 source로 확인했지만 그 상태를 실제 재현하지 않은 항목, HISTORICAL은 과거 캡처/검사, PROPOSAL은 제안, FUTURE GOAL은 사용자의 차기 목표, UNVERIFIED는 추가 증거가 필요한 항목이다. 시각적 평가 자체는 감사자의 판단이며 기능 검증과 구분한다.
 
@@ -72,7 +72,7 @@ FACT는 현재 source/data 사실, CONFIRMED는 이번 Unity에서 관찰한 해
 | ACT-060 | Board 0; Board 1; Board 2 | EconomyScreen.Board | tab/index; event cycle | 신규/월간/Events 전환; 이미 Events이면 eventIndex++ | 타일28은 Refresh에서 interactable=false | [EconomyScreen.Board](../../client/Assets/Wildfolk/Runtime/UI/EconomyScreen.cs#L39) |
 | ACT-061 | Category 0; Category 1; Category 2; Category 3 | EconomyScreen.Category | category=index; selection/reset scroll | 7category 전환, family·detail top으로; claim 없음 | Rows6은 재사용되는 view, family22와 구분 | [EconomyScreen.Category](../../client/Assets/Wildfolk/Runtime/UI/EconomyScreen.cs#L37) |
 | ACT-062 | Attend | EconomyScreen.ClaimAttendance | EconomyService.Attend | server UTC/period/slot eligibility 판단 후 receipt | stamp는 새 currency/item 아님 | [EconomyScreen.ClaimAttendance](../../client/Assets/Wildfolk/Runtime/UI/EconomyScreen.cs#L42) |
-| ACT-063 | Claim All | EconomyScreen.ClaimEverything | EconomyService.ClaimAll | 전체 eligible 보상을 같은 CAS에서 확정 | 일부 optimistic 지급 금지 | [EconomyScreen.ClaimEverything](../../client/Assets/Wildfolk/Runtime/UI/EconomyScreen.cs#L41) |
+| ACT-063 | Claim All | EconomyScreen.ClaimEverything | EconomyService.Claim() → server ClaimAll | 전체 eligible 보상을 같은 CAS에서 확정 | 일부 optimistic 지급 금지 | [EconomyScreen.ClaimEverything](../../client/Assets/Wildfolk/Runtime/UI/EconomyScreen.cs#L41) |
 | ACT-064 | Claim | EconomyScreen.ClaimSelected | EconomyService.Claim | 선택 family의 서버 claimable 보상만 | 클릭/애니메이션으로 보상 grant 금지 | [EconomyScreen.ClaimSelected](../../client/Assets/Wildfolk/Runtime/UI/EconomyScreen.cs#L40) |
 | ACT-065 | Back | EconomyScreen.CloseHub | EconomyScreen presentation / session callback | 화면·선택·수량·hold 표시 상태 변경; 이 조작 자체는 비용·보상·소유권을 확정하지 않음 | offline browse만; server eligibility; 오류-only retry; 일반 UserPreferences.Flush가 있는 Back은 기존 로컬 설정 flush 유지 | [EconomyScreen.CloseHub](../../client/Assets/Wildfolk/Runtime/UI/EconomyScreen.cs#L31) |
 | ACT-066 | DetailScroll (gesture/runtime) | EconomyScreen.DetailScroll | UGUI ScrollRect normalizedPosition | 표시 위치만 변경; 데이터·보상·소비 없음 | 마스크 안 scroll; drag와 gesture 경합은 각각 명시 | [EconomyScreen.DetailScroll](../../client/Assets/Wildfolk/Runtime/UI/EconomyScreen.cs#L7) |

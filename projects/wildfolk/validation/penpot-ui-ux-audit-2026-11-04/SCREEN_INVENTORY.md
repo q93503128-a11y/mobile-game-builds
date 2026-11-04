@@ -2,7 +2,7 @@
 
 기준은 fetched main `48d6528758d18bf3df41ed02ad9aa0f268654a51`이다. 이 보고서는 게임 수정 승인이 아니다.
 
-**CHECKPOINT / DRAFT — 사용자 요청으로 중단. 전수 감사 완료본이 아니다.** 자동 추출 목록과 수동 대조 초안이며, 잔여 surface/action 검수와 6개 보고서는 RESUME.md에 남겼다.
+**최종 research-only 감사.** 현재 구현과 미래·미구현·역사 전용을 구분한다. rendered 미확인 상태와 거래 검수는 EVIDENCE_INDEX의 UNVERIFIED 목록을 따른다. 재개 시작 main은82d19b6이며 제품 source는48d6528과 동일하다.
 
 FACT는 현재 source/data 사실, CONFIRMED는 이번 Unity에서 관찰한 해당 화면·행동, SOURCE-INFERRED는 source로 확인했지만 그 상태를 실제 재현하지 않은 항목, HISTORICAL은 과거 캡처/검사, PROPOSAL은 제안, FUTURE GOAL은 사용자의 차기 목표, UNVERIFIED는 추가 증거가 필요한 항목이다. 시각적 평가 자체는 감사자의 판단이며 기능 검증과 구분한다.
 
@@ -27,7 +27,7 @@ FACT는 현재 source/data 사실, CONFIRMED는 이번 Unity에서 관찰한 해
 | E01 | 업적 | IMPLEMENTED | H01 direct 또는 A01 → Back → 호출 H01 또는 A01 | [EconomyScreen](../../client/Assets/Wildfolk/Runtime/UI/EconomyScreen.cs#L7) |
 | E02 | 신규 출석 | IMPLEMENTED | H01/A01 Attendance; Board0 → Back → 호출 H01/A01 | [EconomyScreen](../../client/Assets/Wildfolk/Runtime/UI/EconomyScreen.cs#L7) |
 | E03 | 월간 출석 | IMPLEMENTED | E02 Board1 → Back → 호출 H01/A01 | [EconomyScreen](../../client/Assets/Wildfolk/Runtime/UI/EconomyScreen.cs#L7) |
-| E04 | 기간 출석 / Events | PARTIAL | Board2; 재선택 시 event index cycle → Back → 호출 H01/A01 | [EconomyScreen](../../client/Assets/Wildfolk/Runtime/UI/EconomyScreen.cs#L7) |
+| E04 | 기간 출석 / Events | IMPLEMENTED | Board2; 재선택 시 event index cycle → Back → 호출 H01/A01 | [EconomyScreen](../../client/Assets/Wildfolk/Runtime/UI/EconomyScreen.cs#L7) |
 | E05 | Gem Store | IMPLEMENTED | H01 Gem 또는 A01 Store → Close → fromHome H01 아니면 A01; Help → A03 | [StoreScreen](../../client/Assets/Wildfolk/Runtime/UI/StoreScreen.cs#L7) |
 | E06 | 구매 내역 | IMPLEMENTED | E05 ToggleHistory → ToggleHistory → E05; Back → origin | [StoreScreen](../../client/Assets/Wildfolk/Runtime/UI/StoreScreen.cs#L7) |
 | E07 | 선택형 광고 상태 | DISABLED_IMPLEMENTED | A01 optional WatchGem/Retry → A01 내 상태; 외부 native ad 후 복귀 | [EconomyScreen](../../client/Assets/Wildfolk/Runtime/UI/EconomyScreen.cs#L7) |
@@ -107,7 +107,7 @@ Sheet/Book/Field는 화면 중앙의 blocking overlay이며 popup 바깥 tap-to-
 |---|---|
 | 구현/신뢰 | IMPLEMENTED / SOURCE-INFERRED; runtime 증거는 아래 링크의 실제 상태만 |
 | 씬·작성 원본 | MainMenu / FrontendSceneBuilder |
-| 구성·modal | fullscreen overlay; parent/caller는 진입·이탈 열과 NAVIGATION 표를 따른다 |
+| 구성·modal | blocking confirmation overlay; parent/caller는 진입·이탈 열과 NAVIGATION 표를 따른다 |
 | 진입 | H01 SinglePlayer: Repository.Exists |
 | Back/종료 | Cancel → H01; BeginNew → T01 |
 | 주·보조·전체 control | Start New World; Cancel |
@@ -115,7 +115,7 @@ Sheet/Book/Field는 화면 중앙의 blocking overlay이며 popup 바깥 tap-to-
 | 동적 데이터 | 기존 단일 저장 교체 경고 |
 | empty/loading/error/disabled | 확인 / 취소 / transition guard |
 | 온라인·MP | local frontend; 세션 요청은 NetworkSession |
-| 현 visual | 1720×1000 종이 한 장, 대부분 동일 사각 action |
+| 현 visual | 1000×620 QualityUiBuilder.Surface 확인 panel |
 | Localization | L / LocalizedLabel EN·KO, 동적 문자열 L.Changed; 고정 Lowfire 브랜드 |
 | 문제/보존 경계 | 해당 ID별 VISUAL_UX_ISSUES 및 CONTROL_AND_ACTION_MAP 참조. rendered 없는 경우 외관 합격을 선언하지 않음 |
 | source | [HomeScreen](../../client/Assets/Wildfolk/Runtime/UI/HomeScreen.cs#L8) · [FrontendSceneBuilder](../../client/Assets/Wildfolk/Editor/FrontendSceneBuilder.cs#L15) |
@@ -425,7 +425,7 @@ Sheet/Book/Field는 화면 중앙의 blocking overlay이며 popup 바깥 tap-to-
 
 | 항목 | 확인 내용 |
 |---|---|
-| 구현/신뢰 | PARTIAL / SOURCE-INFERRED; runtime 증거는 아래 링크의 실제 상태만 |
+| 구현/신뢰 | IMPLEMENTED / SOURCE-INFERRED; runtime 증거는 아래 링크의 실제 상태만 |
 | 씬·작성 원본 | MainMenu / EconomyUiBuilder |
 | 구성·modal | fullscreen overlay; parent/caller는 진입·이탈 열과 NAVIGATION 표를 따른다 |
 | 진입 | Board2; 재선택 시 event index cycle |
@@ -433,7 +433,7 @@ Sheet/Book/Field는 화면 중앙의 blocking overlay이며 popup 바깥 tap-to-
 | 주·보조·전체 control | Board tabs; Attend(정의+eligibility 필요); Back |
 | scroll | 없음 |
 | 동적 데이터 | 현재 배포 Events=[]; 없으면 no-event |
-| empty/loading/error/disabled | 구현됨 empty; 실제 event 보상은 미공개 |
+| empty/loading/error/disabled | 현재 Events=[] empty state; configured board 지원은 source, 실제 보상 미공개 |
 | 온라인·MP | 로컬 presentation; backend/account 서버 상태의 gate 유지 |
 | 현 visual | 1720×1000 종이 한 장, 대부분 동일 사각 action |
 | Localization | L / LocalizedLabel EN·KO, 동적 문자열 L.Changed; 고정 Lowfire 브랜드 |
@@ -518,7 +518,7 @@ Sheet/Book/Field는 화면 중앙의 blocking overlay이며 popup 바깥 tap-to-
 | 현 visual | 별도 차단층/ghost/transition |
 | Localization | L / LocalizedLabel EN·KO, 동적 문자열 L.Changed; 고정 Lowfire 브랜드 |
 | 문제/보존 경계 | 해당 ID별 VISUAL_UX_ISSUES 및 CONTROL_AND_ACTION_MAP 참조. rendered 없는 경우 외관 합격을 선언하지 않음 |
-| source | [TransitionOverlay](../../client/Assets/Wildfolk/Runtime/UI/TransitionOverlay.cs#L10) · 미구현 / 별도 source 없음 |
+| source | [TransitionOverlay](../../client/Assets/Wildfolk/Runtime/UI/TransitionOverlay.cs#L10) · [TransitionOverlay.Create](../../client/Assets/Wildfolk/Runtime/UI/TransitionOverlay.cs#L16) (runtime 생성) |
 | 화면 증거 | 현재 rendered 미확인; source/scene evidence. EVIDENCE_INDEX의 미검증 목록 참조 |
 
 ## G01 · Gameplay HUD
@@ -532,7 +532,7 @@ Sheet/Book/Field는 화면 중앙의 blocking overlay이며 popup 바깥 tap-to-
 | Back/종료 | Bag/Character/Pause 또는 die |
 | 주·보조·전체 control | profile; Bag; hotbar9; Pause 또는 MP Leave; gameplay actions |
 | scroll | 없음 |
-| 동적 데이터 | HP/XP/level/points; hunger/thirst; day/phase; Gold; class |
+| 동적 데이터 | HP/XP/level/points; hunger/thirst; day/phase; class; MP Wallet Gold (SP 상시 Gold/Gem HUD로 일반화 금지) |
 | empty/loading/error/disabled | Running / modal input lock / SP freeze / MP world continues |
 | 온라인·MP | SP 직접 모델 / MP owner request→Host 검증; 표시가 권위 아님 |
 | 현 visual | 투명 world overlay, 수치/작은 icon/원형 touch controls |
@@ -795,11 +795,11 @@ Sheet/Book/Field는 화면 중앙의 blocking overlay이며 popup 바깥 tap-to-
 | 동적 데이터 | Hotbar9+Storage27; portrait; stack/charges; item category |
 | empty/loading/error/disabled | empty / selected / equipment filter / full / dragging |
 | 온라인·MP | SP 직접 모델 / MP owner request→Host 검증; 표시가 권위 아님 |
-| 현 visual | 1900×980 어두운 녹색 matte utility panel |
+| 현 visual | 어두운 녹색 matte utility panel(Inventory/Craft1900×980; 개별 modal 크기는 builder 참조) |
 | Localization | L / LocalizedLabel EN·KO, 동적 문자열 L.Changed; 고정 Lowfire 브랜드 |
 | 문제/보존 경계 | 해당 ID별 VISUAL_UX_ISSUES 및 CONTROL_AND_ACTION_MAP 참조. rendered 없는 경우 외관 합격을 선언하지 않음 |
 | source | [InventoryPanel](../../client/Assets/Wildfolk/Runtime/UI/InventoryPanel.cs#L6) · [InventoryUiBuilder](../../client/Assets/Wildfolk/Editor/InventoryUiBuilder.cs#L8) |
-| 화면 증거 | 현재 rendered 미확인; source/scene evidence. EVIDENCE_INDEX의 미검증 목록 참조 |
+| 화면 증거 | [resume-v2-inventory-en-1280.png](evidence/live/resume-v2-inventory-en-1280.png), [resume-v2-inventory-en-1920.png](evidence/live/resume-v2-inventory-en-1920.png), [resume-v2-inventory-en-844.png](evidence/live/resume-v2-inventory-en-844.png) · metadata 동명 JSON |
 
 ## I02 · Item details / Comparison
 
@@ -815,11 +815,11 @@ Sheet/Book/Field는 화면 중앙의 blocking overlay이며 popup 바깥 tap-to-
 | 동적 데이터 | stat description; Head/Body defense delta; utility/accessory text |
 | empty/loading/error/disabled | equipped / incompatible / insufficient bag space; durability bar 없음 |
 | 온라인·MP | SP 직접 모델 / MP owner request→Host 검증; 표시가 권위 아님 |
-| 현 visual | 1900×980 어두운 녹색 matte utility panel |
+| 현 visual | 어두운 녹색 matte utility panel(Inventory/Craft1900×980; 개별 modal 크기는 builder 참조) |
 | Localization | L / LocalizedLabel EN·KO, 동적 문자열 L.Changed; 고정 Lowfire 브랜드 |
 | 문제/보존 경계 | 해당 ID별 VISUAL_UX_ISSUES 및 CONTROL_AND_ACTION_MAP 참조. rendered 없는 경우 외관 합격을 선언하지 않음 |
 | source | [InventoryEquipment](../../client/Assets/Wildfolk/Runtime/UI/InventoryEquipment.cs#L5) · [InventoryUiBuilder](../../client/Assets/Wildfolk/Editor/InventoryUiBuilder.cs#L8) |
-| 화면 증거 | 현재 rendered 미확인; source/scene evidence. EVIDENCE_INDEX의 미검증 목록 참조 |
+| 화면 증거 | [resume-v2-inventory-en-1280.png](evidence/live/resume-v2-inventory-en-1280.png), [resume-v2-inventory-en-1920.png](evidence/live/resume-v2-inventory-en-1920.png), [resume-v2-inventory-en-844.png](evidence/live/resume-v2-inventory-en-844.png) · metadata 동명 JSON |
 
 ## I03 · Item Actions
 
@@ -835,7 +835,7 @@ Sheet/Book/Field는 화면 중앙의 blocking overlay이며 popup 바깥 tap-to-
 | 동적 데이터 | 아이템 icon/name |
 | empty/loading/error/disabled | 단일 stack은 열리지 않음 |
 | 온라인·MP | SP 직접 모델 / MP owner request→Host 검증; 표시가 권위 아님 |
-| 현 visual | 1900×980 어두운 녹색 matte utility panel |
+| 현 visual | 어두운 녹색 matte utility panel(Inventory/Craft1900×980; 개별 modal 크기는 builder 참조) |
 | Localization | L / LocalizedLabel EN·KO, 동적 문자열 L.Changed; 고정 Lowfire 브랜드 |
 | 문제/보존 경계 | 해당 ID별 VISUAL_UX_ISSUES 및 CONTROL_AND_ACTION_MAP 참조. rendered 없는 경우 외관 합격을 선언하지 않음 |
 | source | [StackSplitPanel](../../client/Assets/Wildfolk/Runtime/UI/StackSplitPanel.cs#L5) · [StackSplitUiBuilder](../../client/Assets/Wildfolk/Editor/StackSplitUiBuilder.cs#L7) |
@@ -855,7 +855,7 @@ Sheet/Book/Field는 화면 중앙의 blocking overlay이며 popup 바깥 tap-to-
 | 동적 데이터 | 1..total−1 선택량/전체량 |
 | empty/loading/error/disabled | min / max / source changed |
 | 온라인·MP | SP 직접 모델 / MP owner request→Host 검증; 표시가 권위 아님 |
-| 현 visual | 1900×980 어두운 녹색 matte utility panel |
+| 현 visual | 어두운 녹색 matte utility panel(Inventory/Craft1900×980; 개별 modal 크기는 builder 참조) |
 | Localization | L / LocalizedLabel EN·KO, 동적 문자열 L.Changed; 고정 Lowfire 브랜드 |
 | 문제/보존 경계 | 해당 ID별 VISUAL_UX_ISSUES 및 CONTROL_AND_ACTION_MAP 참조. rendered 없는 경우 외관 합격을 선언하지 않음 |
 | source | [StackSplitPanel](../../client/Assets/Wildfolk/Runtime/UI/StackSplitPanel.cs#L5) · [StackSplitUiBuilder](../../client/Assets/Wildfolk/Editor/StackSplitUiBuilder.cs#L7) |
@@ -895,7 +895,7 @@ Sheet/Book/Field는 화면 중앙의 blocking overlay이며 popup 바깥 tap-to-
 | 동적 데이터 | Chest24/강화36; Player36; shared model/revisions |
 | empty/loading/error/disabled | empty / full / competing owner / unavailable |
 | 온라인·MP | SP 직접 모델 / MP owner request→Host 검증; 표시가 권위 아님 |
-| 현 visual | 1900×980 어두운 녹색 matte utility panel |
+| 현 visual | 어두운 녹색 matte utility panel(Inventory/Craft1900×980; 개별 modal 크기는 builder 참조) |
 | Localization | L / LocalizedLabel EN·KO, 동적 문자열 L.Changed; 고정 Lowfire 브랜드 |
 | 문제/보존 경계 | 해당 ID별 VISUAL_UX_ISSUES 및 CONTROL_AND_ACTION_MAP 참조. rendered 없는 경우 외관 합격을 선언하지 않음 |
 | source | [ChestPanel](../../client/Assets/Wildfolk/Runtime/UI/ChestPanel.cs#L5) · [ChestUiBuilder](../../client/Assets/Wildfolk/Editor/ChestUiBuilder.cs#L7) |
@@ -918,7 +918,7 @@ Sheet/Book/Field는 화면 중앙의 blocking overlay이며 popup 바깥 tap-to-
 | 현 visual | 런타임 고정 좌표 어두운 사각 panel, 별도 label/button helper |
 | Localization | L / LocalizedLabel EN·KO, 동적 문자열 L.Changed; 고정 Lowfire 브랜드 |
 | 문제/보존 경계 | 해당 ID별 VISUAL_UX_ISSUES 및 CONTROL_AND_ACTION_MAP 참조. rendered 없는 경우 외관 합격을 선언하지 않음 |
-| source | [CampLootPanel](../../client/Assets/Wildfolk/Runtime/UI/CampLootPanel.cs#L5) · 미구현 / 별도 source 없음 |
+| source | [CampLootPanel](../../client/Assets/Wildfolk/Runtime/UI/CampLootPanel.cs#L5) · [CampLootPanel.Build](../../client/Assets/Wildfolk/Runtime/UI/CampLootPanel.cs#L24) (runtime 생성) |
 | 화면 증거 | 현재 rendered 미확인; source/scene evidence. EVIDENCE_INDEX의 미검증 목록 참조 |
 
 ## C01 · Crafting / Station
@@ -935,11 +935,11 @@ Sheet/Book/Field는 화면 중앙의 blocking overlay이며 popup 바깥 tap-to-
 | 동적 데이터 | Hand/WBI/II/III/Campfire/Pot/Furnace/Blast/Turret WB variants; costs; description; NEW |
 | empty/loading/error/disabled | Ready/MissingMaterials/NoSpace/StationRequired/Processing/Collect; selection fallback |
 | 온라인·MP | SP 직접 모델 / MP owner request→Host 검증; 표시가 권위 아님 |
-| 현 visual | 1900×980 어두운 녹색 matte utility panel |
+| 현 visual | 어두운 녹색 matte utility panel(Inventory/Craft1900×980; 개별 modal 크기는 builder 참조) |
 | Localization | L / LocalizedLabel EN·KO, 동적 문자열 L.Changed; 고정 Lowfire 브랜드 |
 | 문제/보존 경계 | 해당 ID별 VISUAL_UX_ISSUES 및 CONTROL_AND_ACTION_MAP 참조. rendered 없는 경우 외관 합격을 선언하지 않음 |
 | source | [CraftingPanel](../../client/Assets/Wildfolk/Runtime/UI/CraftingPanel.cs#L6) · [CraftingUiBuilder](../../client/Assets/Wildfolk/Editor/CraftingUiBuilder.cs#L7) |
-| 화면 증거 | 현재 rendered 미확인; source/scene evidence. EVIDENCE_INDEX의 미검증 목록 참조 |
+| 화면 증거 | [resume-v2-hand-crafting-en-1280.png](evidence/live/resume-v2-hand-crafting-en-1280.png), [resume-v2-hand-crafting-en-1920.png](evidence/live/resume-v2-hand-crafting-en-1920.png), [resume-v2-hand-crafting-en-844.png](evidence/live/resume-v2-hand-crafting-en-844.png) · metadata 동명 JSON |
 
 ## C02 · Sequential processing queue
 
@@ -955,7 +955,7 @@ Sheet/Book/Field는 화면 중앙의 blocking overlay이며 popup 바깥 tap-to-
 | 동적 데이터 | current recipe/input/output/time; waiting count; ready output |
 | empty/loading/error/disabled | idle / waiting / processing / blocked output / bag full |
 | 온라인·MP | SP 직접 모델 / MP owner request→Host 검증; 표시가 권위 아님 |
-| 현 visual | 1900×980 어두운 녹색 matte utility panel |
+| 현 visual | 어두운 녹색 matte utility panel(Inventory/Craft1900×980; 개별 modal 크기는 builder 참조) |
 | Localization | L / LocalizedLabel EN·KO, 동적 문자열 L.Changed; 고정 Lowfire 브랜드 |
 | 문제/보존 경계 | 해당 ID별 VISUAL_UX_ISSUES 및 CONTROL_AND_ACTION_MAP 참조. rendered 없는 경우 외관 합격을 선언하지 않음 |
 | source | [CraftingPanel](../../client/Assets/Wildfolk/Runtime/UI/CraftingPanel.cs#L6) · [CraftingUiBuilder](../../client/Assets/Wildfolk/Editor/CraftingUiBuilder.cs#L7) |
@@ -975,7 +975,7 @@ Sheet/Book/Field는 화면 중앙의 blocking overlay이며 popup 바깥 tap-to-
 | 동적 데이터 | tier-specific actual costs; next tier; chosen Home |
 | empty/loading/error/disabled | insufficient / upgradeable / III no-upgrade; not respawn Home |
 | 온라인·MP | SP 직접 모델 / MP owner request→Host 검증; 표시가 권위 아님 |
-| 현 visual | 1900×980 어두운 녹색 matte utility panel |
+| 현 visual | 어두운 녹색 matte utility panel(Inventory/Craft1900×980; 개별 modal 크기는 builder 참조) |
 | Localization | L / LocalizedLabel EN·KO, 동적 문자열 L.Changed; 고정 Lowfire 브랜드 |
 | 문제/보존 경계 | 해당 ID별 VISUAL_UX_ISSUES 및 CONTROL_AND_ACTION_MAP 참조. rendered 없는 경우 외관 합격을 선언하지 않음 |
 | source | [CraftingPanel](../../client/Assets/Wildfolk/Runtime/UI/CraftingPanel.cs#L6) · [CraftingUiBuilder](../../client/Assets/Wildfolk/Editor/CraftingUiBuilder.cs#L7) |
@@ -1018,7 +1018,7 @@ Sheet/Book/Field는 화면 중앙의 blocking overlay이며 popup 바깥 tap-to-
 | 현 visual | 런타임 고정 좌표 어두운 사각 panel, 별도 label/button helper |
 | Localization | L / LocalizedLabel EN·KO, 동적 문자열 L.Changed; 고정 Lowfire 브랜드 |
 | 문제/보존 경계 | 해당 ID별 VISUAL_UX_ISSUES 및 CONTROL_AND_ACTION_MAP 참조. rendered 없는 경우 외관 합격을 선언하지 않음 |
-| source | [TierThreeHud](../../client/Assets/Wildfolk/Runtime/UI/TierThreeHud.cs#L7) · 미구현 / 별도 source 없음 |
+| source | [TierThreeHud](../../client/Assets/Wildfolk/Runtime/UI/TierThreeHud.cs#L7) · [TierThreeHud.Build](../../client/Assets/Wildfolk/Runtime/UI/TierThreeHud.cs#L36) (runtime 생성) |
 | 화면 증거 | 현재 rendered 미확인; source/scene evidence. EVIDENCE_INDEX의 미검증 목록 참조 |
 
 ## C06 · Beacon controls
@@ -1038,7 +1038,7 @@ Sheet/Book/Field는 화면 중앙의 blocking overlay이며 popup 바깥 tap-to-
 | 현 visual | 런타임 고정 좌표 어두운 사각 panel, 별도 label/button helper |
 | Localization | L / LocalizedLabel EN·KO, 동적 문자열 L.Changed; 고정 Lowfire 브랜드 |
 | 문제/보존 경계 | 해당 ID별 VISUAL_UX_ISSUES 및 CONTROL_AND_ACTION_MAP 참조. rendered 없는 경우 외관 합격을 선언하지 않음 |
-| source | [TierThreeHud](../../client/Assets/Wildfolk/Runtime/UI/TierThreeHud.cs#L7) · 미구현 / 별도 source 없음 |
+| source | [TierThreeHud](../../client/Assets/Wildfolk/Runtime/UI/TierThreeHud.cs#L7) · [TierThreeHud.Build](../../client/Assets/Wildfolk/Runtime/UI/TierThreeHud.cs#L36) (runtime 생성) |
 | 화면 증거 | 현재 rendered 미확인; source/scene evidence. EVIDENCE_INDEX의 미검증 목록 참조 |
 
 ## C07 · Navigation target chooser
@@ -1058,7 +1058,7 @@ Sheet/Book/Field는 화면 중앙의 blocking overlay이며 popup 바깥 tap-to-
 | 현 visual | 런타임 고정 좌표 어두운 사각 panel, 별도 label/button helper |
 | Localization | L / LocalizedLabel EN·KO, 동적 문자열 L.Changed; 고정 Lowfire 브랜드 |
 | 문제/보존 경계 | 해당 ID별 VISUAL_UX_ISSUES 및 CONTROL_AND_ACTION_MAP 참조. rendered 없는 경우 외관 합격을 선언하지 않음 |
-| source | [TierThreeHud](../../client/Assets/Wildfolk/Runtime/UI/TierThreeHud.cs#L7) · 미구현 / 별도 source 없음 |
+| source | [TierThreeHud](../../client/Assets/Wildfolk/Runtime/UI/TierThreeHud.cs#L7) · [TierThreeHud.Build](../../client/Assets/Wildfolk/Runtime/UI/TierThreeHud.cs#L36) (runtime 생성) |
 | 화면 증거 | 현재 rendered 미확인; source/scene evidence. EVIDENCE_INDEX의 미검증 목록 참조 |
 
 ## C08 · Telescope controls
@@ -1078,7 +1078,7 @@ Sheet/Book/Field는 화면 중앙의 blocking overlay이며 popup 바깥 tap-to-
 | 현 visual | 런타임 고정 좌표 어두운 사각 panel, 별도 label/button helper |
 | Localization | L / LocalizedLabel EN·KO, 동적 문자열 L.Changed; 고정 Lowfire 브랜드 |
 | 문제/보존 경계 | 해당 ID별 VISUAL_UX_ISSUES 및 CONTROL_AND_ACTION_MAP 참조. rendered 없는 경우 외관 합격을 선언하지 않음 |
-| source | [TierThreeHud](../../client/Assets/Wildfolk/Runtime/UI/TierThreeHud.cs#L7) · 미구현 / 별도 source 없음 |
+| source | [TierThreeHud](../../client/Assets/Wildfolk/Runtime/UI/TierThreeHud.cs#L7) · [TierThreeHud.Build](../../client/Assets/Wildfolk/Runtime/UI/TierThreeHud.cs#L36) (runtime 생성) |
 | 화면 증거 | 현재 rendered 미확인; source/scene evidence. EVIDENCE_INDEX의 미검증 목록 참조 |
 
 ## P04 · Character Information
@@ -1099,7 +1099,7 @@ Sheet/Book/Field는 화면 중앙의 blocking overlay이며 popup 바깥 tap-to-
 | Localization | L / LocalizedLabel EN·KO, 동적 문자열 L.Changed; 고정 Lowfire 브랜드 |
 | 문제/보존 경계 | 해당 ID별 VISUAL_UX_ISSUES 및 CONTROL_AND_ACTION_MAP 참조. rendered 없는 경우 외관 합격을 선언하지 않음 |
 | source | [CharacterScreen](../../client/Assets/Wildfolk/Runtime/UI/CharacterScreen.cs#L5) · [CharacterUiBuilder](../../client/Assets/Wildfolk/Editor/CharacterUiBuilder.cs#L7) |
-| 화면 증거 | 현재 rendered 미확인; source/scene evidence. EVIDENCE_INDEX의 미검증 목록 참조 |
+| 화면 증거 | [resume-v2-character-en-844.png](evidence/live/resume-v2-character-en-844.png), [resume-v2-character-ko-844.png](evidence/live/resume-v2-character-ko-844.png) · metadata 동명 JSON |
 
 ## P05 · Common growth tree
 
@@ -1119,7 +1119,7 @@ Sheet/Book/Field는 화면 중앙의 blocking overlay이며 popup 바깥 tap-to-
 | Localization | L / LocalizedLabel EN·KO, 동적 문자열 L.Changed; 고정 Lowfire 브랜드 |
 | 문제/보존 경계 | 해당 ID별 VISUAL_UX_ISSUES 및 CONTROL_AND_ACTION_MAP 참조. rendered 없는 경우 외관 합격을 선언하지 않음 |
 | source | [SkillTreeScreen](../../client/Assets/Wildfolk/Runtime/UI/SkillTreeScreen.cs#L5) · [CharacterUiBuilder](../../client/Assets/Wildfolk/Editor/CharacterUiBuilder.cs#L7) |
-| 화면 증거 | 현재 rendered 미확인; source/scene evidence. EVIDENCE_INDEX의 미검증 목록 참조 |
+| 화면 증거 | [resume-v2-common-tree-en-844.png](evidence/live/resume-v2-common-tree-en-844.png), [resume-v2-common-tree-ko-844.png](evidence/live/resume-v2-common-tree-ko-844.png) · metadata 동명 JSON |
 
 ## S01 · Pause
 
@@ -1135,11 +1135,11 @@ Sheet/Book/Field는 화면 중앙의 blocking overlay이며 popup 바깥 tap-to-
 | 동적 데이터 | save result toast; scene/role-specific availability |
 | empty/loading/error/disabled | SP frozen; MP has Leave instead of global pause |
 | 온라인·MP | SP 직접 모델 / MP owner request→Host 검증; 표시가 권위 아님 |
-| 현 visual | 1900×980 어두운 녹색 matte utility panel |
+| 현 visual | 어두운 녹색 matte utility panel(Inventory/Craft1900×980; 개별 modal 크기는 builder 참조) |
 | Localization | L / LocalizedLabel EN·KO, 동적 문자열 L.Changed; 고정 Lowfire 브랜드 |
 | 문제/보존 경계 | 해당 ID별 VISUAL_UX_ISSUES 및 CONTROL_AND_ACTION_MAP 참조. rendered 없는 경우 외관 합격을 선언하지 않음 |
 | source | [PauseMenu](../../client/Assets/Wildfolk/Runtime/UI/PauseMenu.cs#L4) · [SurvivalUiBuilder](../../client/Assets/Wildfolk/Editor/SurvivalUiBuilder.cs#L7) |
-| 화면 증거 | 현재 rendered 미확인; source/scene evidence. EVIDENCE_INDEX의 미검증 목록 참조 |
+| 화면 증거 | [resume-v2-pause-en-844.png](evidence/live/resume-v2-pause-en-844.png) · metadata 동명 JSON |
 
 ## S02 · Pause Settings
 
@@ -1159,7 +1159,7 @@ Sheet/Book/Field는 화면 중앙의 blocking overlay이며 popup 바깥 tap-to-
 | Localization | L / LocalizedLabel EN·KO, 동적 문자열 L.Changed; 고정 Lowfire 브랜드 |
 | 문제/보존 경계 | 해당 ID별 VISUAL_UX_ISSUES 및 CONTROL_AND_ACTION_MAP 참조. rendered 없는 경우 외관 합격을 선언하지 않음 |
 | source | [SettingsPanel](../../client/Assets/Wildfolk/Runtime/UI/SettingsPanel.cs#L5) · [SurvivalUiBuilder](../../client/Assets/Wildfolk/Editor/SurvivalUiBuilder.cs#L7) |
-| 화면 증거 | 현재 rendered 미확인; source/scene evidence. EVIDENCE_INDEX의 미검증 목록 참조 |
+| 화면 증거 | [resume-v2-pause-settings-en-844.png](evidence/live/resume-v2-pause-settings-en-844.png), [resume-v2-pause-settings-ko-844.png](evidence/live/resume-v2-pause-settings-ko-844.png) · metadata 동명 JSON |
 
 ## D01 · Death / Revive choices
 
@@ -1235,7 +1235,7 @@ Sheet/Book/Field는 화면 중앙의 blocking overlay이며 popup 바깥 tap-to-
 | 동적 데이터 | 현재 구현으로 인계 금지 |
 | empty/loading/error/disabled | 해당 없음 |
 | 온라인·MP | local frontend; 세션 요청은 NetworkSession |
-| 현 visual | 1900×980 어두운 녹색 matte utility panel |
+| 현 visual | 어두운 녹색 matte utility panel(Inventory/Craft1900×980; 개별 modal 크기는 builder 참조) |
 | Localization | 설계 미정 |
 | 문제/보존 경계 | 해당 ID별 VISUAL_UX_ISSUES 및 CONTROL_AND_ACTION_MAP 참조. rendered 없는 경우 외관 합격을 선언하지 않음 |
 | source | 요청/현재 source의 부재 대조 |
@@ -1255,7 +1255,7 @@ Sheet/Book/Field는 화면 중앙의 blocking overlay이며 popup 바깥 tap-to-
 | 동적 데이터 | 현재 구현으로 인계 금지 |
 | empty/loading/error/disabled | 해당 없음 |
 | 온라인·MP | local frontend; 세션 요청은 NetworkSession |
-| 현 visual | 1900×980 어두운 녹색 matte utility panel |
+| 현 visual | 어두운 녹색 matte utility panel(Inventory/Craft1900×980; 개별 modal 크기는 builder 참조) |
 | Localization | 설계 미정 |
 | 문제/보존 경계 | 해당 ID별 VISUAL_UX_ISSUES 및 CONTROL_AND_ACTION_MAP 참조. rendered 없는 경우 외관 합격을 선언하지 않음 |
 | source | 요청/현재 source의 부재 대조 |
@@ -1275,7 +1275,7 @@ Sheet/Book/Field는 화면 중앙의 blocking overlay이며 popup 바깥 tap-to-
 | 동적 데이터 | 현재 구현으로 인계 금지 |
 | empty/loading/error/disabled | 해당 없음 |
 | 온라인·MP | local frontend; 세션 요청은 NetworkSession |
-| 현 visual | 1900×980 어두운 녹색 matte utility panel |
+| 현 visual | 어두운 녹색 matte utility panel(Inventory/Craft1900×980; 개별 modal 크기는 builder 참조) |
 | Localization | 설계 미정 |
 | 문제/보존 경계 | 해당 ID별 VISUAL_UX_ISSUES 및 CONTROL_AND_ACTION_MAP 참조. rendered 없는 경우 외관 합격을 선언하지 않음 |
 | source | 요청/현재 source의 부재 대조 |
@@ -1295,7 +1295,7 @@ Sheet/Book/Field는 화면 중앙의 blocking overlay이며 popup 바깥 tap-to-
 | 동적 데이터 | 현재 구현으로 인계 금지 |
 | empty/loading/error/disabled | 해당 없음 |
 | 온라인·MP | local frontend; 세션 요청은 NetworkSession |
-| 현 visual | 1900×980 어두운 녹색 matte utility panel |
+| 현 visual | 어두운 녹색 matte utility panel(Inventory/Craft1900×980; 개별 modal 크기는 builder 참조) |
 | Localization | 설계 미정 |
 | 문제/보존 경계 | 해당 ID별 VISUAL_UX_ISSUES 및 CONTROL_AND_ACTION_MAP 참조. rendered 없는 경우 외관 합격을 선언하지 않음 |
 | source | 요청/현재 source의 부재 대조 |
@@ -1315,7 +1315,7 @@ Sheet/Book/Field는 화면 중앙의 blocking overlay이며 popup 바깥 tap-to-
 | 동적 데이터 | 현재 구현으로 인계 금지 |
 | empty/loading/error/disabled | 해당 없음 |
 | 온라인·MP | local frontend; 세션 요청은 NetworkSession |
-| 현 visual | 1900×980 어두운 녹색 matte utility panel |
+| 현 visual | 어두운 녹색 matte utility panel(Inventory/Craft1900×980; 개별 modal 크기는 builder 참조) |
 | Localization | 설계 미정 |
 | 문제/보존 경계 | 해당 ID별 VISUAL_UX_ISSUES 및 CONTROL_AND_ACTION_MAP 참조. rendered 없는 경우 외관 합격을 선언하지 않음 |
 | source | 요청/현재 source의 부재 대조 |
@@ -1335,7 +1335,7 @@ Sheet/Book/Field는 화면 중앙의 blocking overlay이며 popup 바깥 tap-to-
 | 동적 데이터 | 현재 구현으로 인계 금지 |
 | empty/loading/error/disabled | 해당 없음 |
 | 온라인·MP | local frontend; 세션 요청은 NetworkSession |
-| 현 visual | 1900×980 어두운 녹색 matte utility panel |
+| 현 visual | 어두운 녹색 matte utility panel(Inventory/Craft1900×980; 개별 modal 크기는 builder 참조) |
 | Localization | 설계 미정 |
 | 문제/보존 경계 | 해당 ID별 VISUAL_UX_ISSUES 및 CONTROL_AND_ACTION_MAP 참조. rendered 없는 경우 외관 합격을 선언하지 않음 |
 | source | 요청/현재 source의 부재 대조 |
@@ -1355,7 +1355,7 @@ Sheet/Book/Field는 화면 중앙의 blocking overlay이며 popup 바깥 tap-to-
 | 동적 데이터 | 현재 구현으로 인계 금지 |
 | empty/loading/error/disabled | 해당 없음 |
 | 온라인·MP | local frontend; 세션 요청은 NetworkSession |
-| 현 visual | 1900×980 어두운 녹색 matte utility panel |
+| 현 visual | 어두운 녹색 matte utility panel(Inventory/Craft1900×980; 개별 modal 크기는 builder 참조) |
 | Localization | 설계 미정 |
 | 문제/보존 경계 | 해당 ID별 VISUAL_UX_ISSUES 및 CONTROL_AND_ACTION_MAP 참조. rendered 없는 경우 외관 합격을 선언하지 않음 |
 | source | 요청/현재 source의 부재 대조 |
@@ -1375,7 +1375,7 @@ Sheet/Book/Field는 화면 중앙의 blocking overlay이며 popup 바깥 tap-to-
 | 동적 데이터 | 현재 구현으로 인계 금지 |
 | empty/loading/error/disabled | 해당 없음 |
 | 온라인·MP | local frontend; 세션 요청은 NetworkSession |
-| 현 visual | 1900×980 어두운 녹색 matte utility panel |
+| 현 visual | 어두운 녹색 matte utility panel(Inventory/Craft1900×980; 개별 modal 크기는 builder 참조) |
 | Localization | 설계 미정 |
 | 문제/보존 경계 | 해당 ID별 VISUAL_UX_ISSUES 및 CONTROL_AND_ACTION_MAP 참조. rendered 없는 경우 외관 합격을 선언하지 않음 |
 | source | 요청/현재 source의 부재 대조 |
@@ -1395,7 +1395,7 @@ Sheet/Book/Field는 화면 중앙의 blocking overlay이며 popup 바깥 tap-to-
 | 동적 데이터 | 현재 구현으로 인계 금지 |
 | empty/loading/error/disabled | 해당 없음 |
 | 온라인·MP | local frontend; 세션 요청은 NetworkSession |
-| 현 visual | 1900×980 어두운 녹색 matte utility panel |
+| 현 visual | 어두운 녹색 matte utility panel(Inventory/Craft1900×980; 개별 modal 크기는 builder 참조) |
 | Localization | 설계 미정 |
 | 문제/보존 경계 | 해당 ID별 VISUAL_UX_ISSUES 및 CONTROL_AND_ACTION_MAP 참조. rendered 없는 경우 외관 합격을 선언하지 않음 |
 | source | 요청/현재 source의 부재 대조 |
@@ -1408,3 +1408,76 @@ Sheet/Book/Field는 화면 중앙의 blocking overlay이며 popup 바깥 tap-to-
 - 숨긴 Dropdown Template, 비활성 Attendance tile, 미선택 node, 비가동 death view는 dead UI가 아니다. 실제 조건에서 활성화하거나 표시 전용으로 사용하는 구조다.
 - WorldOverview/Showcase/DeveloperHarness/Combat Sandbox/QA fixture/EditorWindow는 플레이어 화면 수에 포함하지 않는다. 제품 지도·도감·치트 메뉴가 구현됐다는 뜻이 아니다.
 - 각 문서의 옛 Item48/132, Recipe99/109, Save11/13, Protocol21, 실제2인 미수행은 그 절의 당시 기록이다. 현재 Item136/Recipe111/Save14/Profile2/Protocol23과 구분한다.
+
+## 표면별 시각 증거·디자인 인계 판정
+
+현재 rendered subset은21종이며 locale/해상도 반복67장과 다른 단위다. source만으로 외관을 판정하지 않았다. 같은 ID의 모든 상태가 관찰됐다는 뜻이 아니다.
+
+| ID | 검수 수준 | 증거·한계 | 관련 문제 | 인계 판정 |
+|---|---|---|---|---|
+| H01 | CURRENT rendered subset | home-v2; 해당 empty/OFF/preview 상태만. 상태 전체 합격 아님 | UX14,UX15,UX22 | 문제 UX14,UX15,UX22 참고 |
+| H02 | SOURCE; current rendered UNVERIFIED | state/controls 계약 인계; 외관·실기 정상 주장 안 함 | UX15 | 문제 UX15 참고 |
+| H03 | CURRENT rendered subset | settings-v2; 해당 empty/OFF/preview 상태만. 상태 전체 합격 아님 | UX02,UX06,UX11 | 문제 UX02,UX06,UX11 참고 |
+| M01 | CURRENT rendered subset | resume-mp; 해당 empty/OFF/preview 상태만. 상태 전체 합격 아님 | UX15,UX16 | 문제 UX15,UX16 참고 |
+| M02 | SOURCE; current rendered UNVERIFIED | state/controls 계약 인계; 외관·실기 정상 주장 안 함 | 특정 결함 미확정 | 현 기능 보존; per-screen state와 handoff frame variants를 기준으로 재설계/후속 검수 |
+| P01 | CURRENT rendered subset | class-overview; 해당 empty/OFF/preview 상태만. 상태 전체 합격 아님 | UX07,UX14 | 문제 UX07,UX14 참고 |
+| P02 | CURRENT rendered subset | class-tree; 해당 empty/OFF/preview 상태만. 상태 전체 합격 아님 | UX02,UX07,UX08,UX13 | 문제 UX02,UX07,UX08,UX13 참고 |
+| P03 | SOURCE; current rendered UNVERIFIED | state/controls 계약 인계; 외관·실기 정상 주장 안 함 | 특정 결함 미확정 | 현 기능 보존; per-screen state와 handoff frame variants를 기준으로 재설계/후속 검수 |
+| A01 | CURRENT rendered subset | profile-ko; 해당 empty/OFF/preview 상태만. 상태 전체 합격 아님 | UX07 | 문제 UX07 참고 |
+| A02 | CURRENT rendered subset | account-ko; 해당 empty/OFF/preview 상태만. 상태 전체 합격 아님 | UX01,UX07 | 문제 UX01,UX07 참고 |
+| A03 | CURRENT rendered subset | store-help-ko; 해당 empty/OFF/preview 상태만. 상태 전체 합격 아님 | UX01 | 문제 UX01 참고 |
+| A04 | SOURCE; current rendered UNVERIFIED | state/controls 계약 인계; 외관·실기 정상 주장 안 함 | 특정 결함 미확정 | 현 기능 보존; per-screen state와 handoff frame variants를 기준으로 재설계/후속 검수 |
+| A05 | CURRENT rendered subset | delete-unconfirmed; 해당 empty/OFF/preview 상태만. 상태 전체 합격 아님 | 특정 결함 미확정 | 현 기능 보존; per-screen state와 handoff frame variants를 기준으로 재설계/후속 검수 |
+| A06 | SOURCE; current rendered UNVERIFIED | state/controls 계약 인계; 외관·실기 정상 주장 안 함 | 특정 결함 미확정 | 현 기능 보존; per-screen state와 handoff frame variants를 기준으로 재설계/후속 검수 |
+| E01 | CURRENT rendered subset | achievements-v2; 해당 empty/OFF/preview 상태만. 상태 전체 합격 아님 | UX02,UX07,UX08,UX09,UX10 | 문제 UX02,UX07,UX08,UX09,UX10 참고 |
+| E02 | CURRENT rendered subset | attendance-v2; 해당 empty/OFF/preview 상태만. 상태 전체 합격 아님 | UX02,UX03 | 문제 UX02,UX03 참고 |
+| E03 | CURRENT rendered subset | attendance-monthly-v2; 해당 empty/OFF/preview 상태만. 상태 전체 합격 아님 | UX02,UX03,UX07 | 문제 UX02,UX03,UX07 참고 |
+| E04 | SOURCE; current rendered UNVERIFIED | state/controls 계약 인계; 외관·실기 정상 주장 안 함 | 특정 결함 미확정 | 현 기능 보존; per-screen state와 handoff frame variants를 기준으로 재설계/후속 검수 |
+| E05 | CURRENT rendered subset | store-ko; 해당 empty/OFF/preview 상태만. 상태 전체 합격 아님 | UX01,UX08,UX19 | 문제 UX01,UX08,UX19 참고 |
+| E06 | SOURCE; current rendered UNVERIFIED | state/controls 계약 인계; 외관·실기 정상 주장 안 함 | UX19 | 문제 UX19 참고 |
+| E07 | SOURCE; current rendered UNVERIFIED | state/controls 계약 인계; 외관·실기 정상 주장 안 함 | 특정 결함 미확정 | 현 기능 보존; per-screen state와 handoff frame variants를 기준으로 재설계/후속 검수 |
+| T01 | SOURCE; current rendered UNVERIFIED | state/controls 계약 인계; 외관·실기 정상 주장 안 함 | UX20 | 문제 UX20 참고 |
+| G01 | CURRENT rendered subset | qa-new-world-hud; 해당 empty/OFF/preview 상태만. 상태 전체 합격 아님 | UX12 | 문제 UX12 참고 |
+| G02 | SOURCE; current rendered UNVERIFIED | state/controls 계약 인계; 외관·실기 정상 주장 안 함 | 특정 결함 미확정 | 현 기능 보존; per-screen state와 handoff frame variants를 기준으로 재설계/후속 검수 |
+| G03 | SOURCE; current rendered UNVERIFIED | state/controls 계약 인계; 외관·실기 정상 주장 안 함 | UX14 | 문제 UX14 참고 |
+| G04 | SOURCE; current rendered UNVERIFIED | state/controls 계약 인계; 외관·실기 정상 주장 안 함 | 특정 결함 미확정 | 현 기능 보존; per-screen state와 handoff frame variants를 기준으로 재설계/후속 검수 |
+| G05 | SOURCE; current rendered UNVERIFIED | state/controls 계약 인계; 외관·실기 정상 주장 안 함 | 특정 결함 미확정 | 현 기능 보존; per-screen state와 handoff frame variants를 기준으로 재설계/후속 검수 |
+| G06 | SOURCE; current rendered UNVERIFIED | state/controls 계약 인계; 외관·실기 정상 주장 안 함 | 특정 결함 미확정 | 현 기능 보존; per-screen state와 handoff frame variants를 기준으로 재설계/후속 검수 |
+| G07 | SOURCE; current rendered UNVERIFIED | state/controls 계약 인계; 외관·실기 정상 주장 안 함 | 특정 결함 미확정 | 현 기능 보존; per-screen state와 handoff frame variants를 기준으로 재설계/후속 검수 |
+| G08 | SOURCE + HISTORICAL | 현재 rendered UNVERIFIED; 과거 fixture/행동 화면과 current source 차이를 분리 | UX04,UX10 | 문제 UX04,UX10 참고 |
+| G09 | SOURCE; current rendered UNVERIFIED | state/controls 계약 인계; 외관·실기 정상 주장 안 함 | UX21 | 문제 UX21 참고 |
+| G10 | SOURCE; current rendered UNVERIFIED | state/controls 계약 인계; 외관·실기 정상 주장 안 함 | UX12 | 문제 UX12 참고 |
+| G11 | SOURCE; current rendered UNVERIFIED | state/controls 계약 인계; 외관·실기 정상 주장 안 함 | UX18 | 문제 UX18 참고 |
+| G12 | SOURCE; current rendered UNVERIFIED | state/controls 계약 인계; 외관·실기 정상 주장 안 함 | UX12 | 문제 UX12 참고 |
+| G13 | SOURCE; current rendered UNVERIFIED | state/controls 계약 인계; 외관·실기 정상 주장 안 함 | UX06,UX21 | 문제 UX06,UX21 참고 |
+| I01 | CURRENT rendered subset | resume-v2-inventory; 해당 empty/OFF/preview 상태만. 상태 전체 합격 아님 | UX02,UX05 | 문제 UX02,UX05 참고 |
+| I02 | CURRENT rendered subset | resume-v2-inventory; 해당 empty/OFF/preview 상태만. 상태 전체 합격 아님 | UX05 | 문제 UX05 참고 |
+| I03 | SOURCE + HISTORICAL | 현재 rendered UNVERIFIED; 과거 fixture/행동 화면과 current source 차이를 분리 | 특정 결함 미확정 | 현 기능 보존; per-screen state와 handoff frame variants를 기준으로 재설계/후속 검수 |
+| I04 | SOURCE + HISTORICAL | 현재 rendered UNVERIFIED; 과거 fixture/행동 화면과 current source 차이를 분리 | 특정 결함 미확정 | 현 기능 보존; per-screen state와 handoff frame variants를 기준으로 재설계/후속 검수 |
+| I05 | SOURCE; current rendered UNVERIFIED | state/controls 계약 인계; 외관·실기 정상 주장 안 함 | 특정 결함 미확정 | 현 기능 보존; per-screen state와 handoff frame variants를 기준으로 재설계/후속 검수 |
+| I06 | SOURCE + HISTORICAL | 현재 rendered UNVERIFIED; 과거 fixture/행동 화면과 current source 차이를 분리 | UX10 | 문제 UX10 참고 |
+| I07 | SOURCE; current rendered UNVERIFIED | state/controls 계약 인계; 외관·실기 정상 주장 안 함 | UX17 | 문제 UX17 참고 |
+| C01 | CURRENT rendered subset | resume-v2-hand-crafting; 해당 empty/OFF/preview 상태만. 상태 전체 합격 아님 | UX02,UX05,UX10 | 문제 UX02,UX05,UX10 참고 |
+| C02 | SOURCE + HISTORICAL | 현재 rendered UNVERIFIED; 과거 fixture/행동 화면과 current source 차이를 분리 | UX05 | 문제 UX05 참고 |
+| C03 | SOURCE + HISTORICAL | 현재 rendered UNVERIFIED; 과거 fixture/행동 화면과 current source 차이를 분리 | UX05,UX22 | 문제 UX05,UX22 참고 |
+| C04 | SOURCE; current rendered UNVERIFIED | state/controls 계약 인계; 외관·실기 정상 주장 안 함 | 특정 결함 미확정 | 현 기능 보존; per-screen state와 handoff frame variants를 기준으로 재설계/후속 검수 |
+| C05 | SOURCE; current rendered UNVERIFIED | state/controls 계약 인계; 외관·실기 정상 주장 안 함 | UX17 | 문제 UX17 참고 |
+| C06 | SOURCE; current rendered UNVERIFIED | state/controls 계약 인계; 외관·실기 정상 주장 안 함 | UX17 | 문제 UX17 참고 |
+| C07 | SOURCE; current rendered UNVERIFIED | state/controls 계약 인계; 외관·실기 정상 주장 안 함 | UX17 | 문제 UX17 참고 |
+| C08 | SOURCE; current rendered UNVERIFIED | state/controls 계약 인계; 외관·실기 정상 주장 안 함 | 특정 결함 미확정 | 현 기능 보존; per-screen state와 handoff frame variants를 기준으로 재설계/후속 검수 |
+| P04 | CURRENT rendered subset | resume-v2-character; 해당 empty/OFF/preview 상태만. 상태 전체 합격 아님 | 특정 결함 미확정 | 현 기능 보존; per-screen state와 handoff frame variants를 기준으로 재설계/후속 검수 |
+| P05 | CURRENT rendered subset | resume-v2-common-tree; 해당 empty/OFF/preview 상태만. 상태 전체 합격 아님 | UX13 | 문제 UX13 참고 |
+| S01 | CURRENT rendered subset | resume-v2-pause-en; 해당 empty/OFF/preview 상태만. 상태 전체 합격 아님 | 특정 결함 미확정 | 현 기능 보존; per-screen state와 handoff frame variants를 기준으로 재설계/후속 검수 |
+| S02 | CURRENT rendered subset | resume-v2-pause-settings; 해당 empty/OFF/preview 상태만. 상태 전체 합격 아님 | UX06,UX11 | 문제 UX06,UX11 참고 |
+| D01 | SOURCE + HISTORICAL | 현재 rendered UNVERIFIED; 과거 fixture/행동 화면과 current source 차이를 분리 | UX22 | 문제 UX22 참고 |
+| D02 | SOURCE; current rendered UNVERIFIED | state/controls 계약 인계; 외관·실기 정상 주장 안 함 | 특정 결함 미확정 | 현 기능 보존; per-screen state와 handoff frame variants를 기준으로 재설계/후속 검수 |
+| D03 | SOURCE; current rendered UNVERIFIED | state/controls 계약 인계; 외관·실기 정상 주장 안 함 | 특정 결함 미확정 | 현 기능 보존; per-screen state와 handoff frame variants를 기준으로 재설계/후속 검수 |
+| F01 | FUTURE / MISSING / HISTORICAL ONLY | 현재 구현 frame에 섞지 않음 | 특정 결함 미확정 | 현 기능 보존; per-screen state와 handoff frame variants를 기준으로 재설계/후속 검수 |
+| F02 | FUTURE / MISSING / HISTORICAL ONLY | 현재 구현 frame에 섞지 않음 | 특정 결함 미확정 | 현 기능 보존; per-screen state와 handoff frame variants를 기준으로 재설계/후속 검수 |
+| F03 | FUTURE / MISSING / HISTORICAL ONLY | 현재 구현 frame에 섞지 않음 | 특정 결함 미확정 | 현 기능 보존; per-screen state와 handoff frame variants를 기준으로 재설계/후속 검수 |
+| F04 | FUTURE / MISSING / HISTORICAL ONLY | 현재 구현 frame에 섞지 않음 | 특정 결함 미확정 | 현 기능 보존; per-screen state와 handoff frame variants를 기준으로 재설계/후속 검수 |
+| F05 | FUTURE / MISSING / HISTORICAL ONLY | 현재 구현 frame에 섞지 않음 | 특정 결함 미확정 | 현 기능 보존; per-screen state와 handoff frame variants를 기준으로 재설계/후속 검수 |
+| F06 | FUTURE / MISSING / HISTORICAL ONLY | 현재 구현 frame에 섞지 않음 | 특정 결함 미확정 | 현 기능 보존; per-screen state와 handoff frame variants를 기준으로 재설계/후속 검수 |
+| F07 | FUTURE / MISSING / HISTORICAL ONLY | 현재 구현 frame에 섞지 않음 | 특정 결함 미확정 | 현 기능 보존; per-screen state와 handoff frame variants를 기준으로 재설계/후속 검수 |
+| F08 | FUTURE / MISSING / HISTORICAL ONLY | 현재 구현 frame에 섞지 않음 | 특정 결함 미확정 | 현 기능 보존; per-screen state와 handoff frame variants를 기준으로 재설계/후속 검수 |
+| X01 | FUTURE / MISSING / HISTORICAL ONLY | 현재 구현 frame에 섞지 않음 | 특정 결함 미확정 | 현 기능 보존; per-screen state와 handoff frame variants를 기준으로 재설계/후속 검수 |

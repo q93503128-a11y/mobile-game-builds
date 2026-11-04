@@ -1,0 +1,122 @@
+[
+  {
+    "id": "U01",
+    "area": "Android 실제 touch/두 엄지·reach",
+    "reason": "PC Game View와 callback 관찰뿐. joystick/drag/scroll/hold 실제 기기·80/100/140% 필요",
+    "status": "UNVERIFIED"
+  },
+  {
+    "id": "U02",
+    "area": "물리 notch/gesture inset·DPI",
+    "reason": "safe-area source와 옛 fixture만. 세 viewport는 실제 phone 아님",
+    "status": "UNVERIFIED"
+  },
+  {
+    "id": "U03",
+    "area": "Android IME/feedback·room input",
+    "reason": "소프트 키보드·한글 composition/caret/Back 실기 미확인",
+    "status": "UNVERIFIED"
+  },
+  {
+    "id": "U04",
+    "area": "접근성·최종 합성색 contrast",
+    "reason": "TalkBack·색각·동적 글자·광학 glyph/contrast ratio 전수 측정 안 함",
+    "status": "UNVERIFIED"
+  },
+  {
+    "id": "U05",
+    "area": "실 provider IAP·pending/recovery",
+    "reason": "구매 OFF. 과거 fixture 가격·상태는 실제 결제가 아님",
+    "status": "UNVERIFIED"
+  },
+  {
+    "id": "U06",
+    "area": "실 rewarded video/consent·receipt",
+    "reason": "광고 OFF. SDK 영상·닫기/실패·지급 체감 관찰 안 함",
+    "status": "UNVERIFIED"
+  },
+  {
+    "id": "U07",
+    "area": "실 auth/cloud/account conflict",
+    "reason": "backend OFF. source state 계약만 조사",
+    "status": "UNVERIFIED"
+  },
+  {
+    "id": "U08",
+    "area": "실 support submit·privacy/deletion",
+    "reason": "외부 전송/삭제 요청 안 함. deletion warning은 숨긴 callback QA preview",
+    "status": "UNVERIFIED"
+  },
+  {
+    "id": "U09",
+    "area": "4인 Internet/LAN·waiting/client",
+    "reason": "실 Host/Join 세션 안 열음. route entry 화면만 관찰",
+    "status": "UNVERIFIED"
+  },
+  {
+    "id": "U10",
+    "area": "Host save-failure/leave/disconnect",
+    "reason": "source 권위·예외 경로만. 실제 실패 유도/복구 안 함",
+    "status": "UNVERIFIED"
+  },
+  {
+    "id": "U11",
+    "area": "SP death/ad/Gem/save pending",
+    "reason": "현재 사망·소비 안 함. source와 과거 death 화면만",
+    "status": "UNVERIFIED"
+  },
+  {
+    "id": "U12",
+    "area": "MP downed/rescue/interruption",
+    "reason": "동료/24s/4s/late callback 실제 재현 안 함",
+    "status": "UNVERIFIED"
+  },
+  {
+    "id": "U13",
+    "area": "item-heavy bag/장비/분할 commit",
+    "reason": "현재 빈 bag rendered, Chest/split은 역사 화면. transfer/full/stale 실제 거래 안 함",
+    "status": "UNVERIFIED"
+  },
+  {
+    "id": "U14",
+    "area": "Station I–III/queue/upgrade 실제 처리",
+    "reason": "source와 역사 비용/반환 화면. enqueue/withdraw/collect/cost 소비 실행 안 함",
+    "status": "UNVERIFIED"
+  },
+  {
+    "id": "U15",
+    "area": "Camp/POI supplies",
+    "reason": "runtime creator·Host revision source만. 현재 panel 외관/claim 미재현",
+    "status": "UNVERIFIED"
+  },
+  {
+    "id": "U16",
+    "area": "Turret/Beacon/Compass/Telescope",
+    "reason": "희귀 runtime panels source만. 실제 장비·navigation 사용 미재현",
+    "status": "UNVERIFIED"
+  },
+  {
+    "id": "U17",
+    "area": "Boss/야간/음향/자연 progression",
+    "reason": "HUD code와 이전 증거 후보. 이번은 실제 전 구간 플레이·Audio 청취 아님",
+    "status": "UNVERIFIED"
+  },
+  {
+    "id": "U18",
+    "area": "Android 성능/발열/메모리",
+    "reason": "source allocation/texture 위험 조사만. profiler·build·기기 FPS 검증 안 함",
+    "status": "UNVERIFIED"
+  },
+  {
+    "id": "U19",
+    "area": "multi-world migration/Gold source 정책",
+    "reason": "미래 미구현. world index/identity/pending path/solo-host 전환 설계·실험 필요",
+    "status": "UNVERIFIED"
+  },
+  {
+    "id": "U20",
+    "area": "첫 resume loading timeout 및 rare modal 입력 누수",
+    "reason": "전환 중 드라이버 조작 영향 미분리. 깨끗한 재진입은 ready/overlay없음. 일반 route 반복/실기와 rare topmost raycast 별도 검증",
+    "status": "UNVERIFIED"
+  }
+]

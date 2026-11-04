@@ -7,6 +7,7 @@ BASE='48d6528758d18bf3df41ed02ad9aa0f268654a51'
 files=list(a.ASSETS.rglob('*.cs')); byname={p.stem:p for p in files}; sourceCache={}
 def source(cls,method=None):
  p=byname.get(cls)
+ if not p:p=next((f for f in files if re.search(r'\b(?:class|struct|enum)\s+'+re.escape(cls)+r'\b',sourceCache.setdefault(str(f),f.read_text(encoding='utf8')))),None)
  if not p:return '미구현 / 별도 source 없음'
  t=sourceCache.setdefault(str(p),p.read_text(encoding='utf8'));lines=t.splitlines();pattern=r'\b'+re.escape((method or cls).split('.')[0])+r'\s*\('
  found=next((i+1 for i,l in enumerate(lines) if re.search(pattern,l) and any(x in l for x in ['public ','private ','internal ','protected '])),None)
@@ -19,14 +20,18 @@ def write(name,text): (ROOT/(name+'.md')).write_text(text.strip()+'\n',encoding=
 def j(name,v):a.save(name,v)
 COMMON='''기준은 fetched main `48d6528758d18bf3df41ed02ad9aa0f268654a51`이다. 이 보고서는 게임 수정 승인이 아니다.
 
-**CHECKPOINT / DRAFT — 사용자 요청으로 중단. 전수 감사 완료본이 아니다.** 자동 추출 목록과 수동 대조 초안이며, 잔여 surface/action 검수와 6개 보고서는 RESUME.md에 남겼다.
+**최종 research-only 감사.** 현재 구현과 미래·미구현·역사 전용을 구분한다. rendered 미확인 상태와 거래 검수는 EVIDENCE_INDEX의 UNVERIFIED 목록을 따른다. 재개 시작 main은82d19b6이며 제품 source는48d6528과 동일하다.
 
 FACT는 현재 source/data 사실, CONFIRMED는 이번 Unity에서 관찰한 해당 화면·행동, SOURCE-INFERRED는 source로 확인했지만 그 상태를 실제 재현하지 않은 항목, HISTORICAL은 과거 캡처/검사, PROPOSAL은 제안, FUTURE GOAL은 사용자의 차기 목표, UNVERIFIED는 추가 증거가 필요한 항목이다. 시각적 평가 자체는 감사자의 판단이며 기능 검증과 구분한다.
 '''
 
-def screen_sources(s):return source(s['controller'])+' · '+source(s['builder']) if s['controller']!='—' else '요청/현재 source의 부재 대조'
+def screen_sources(s):
+ if s['controller']=='—':return '요청/현재 source의 부재 대조'
+ builder=source(s['builder']) if s['builder'] in byname else source(s['controller'],'Create' if s['controller']=='TransitionOverlay' else 'Build')+' (runtime 생성)'
+ return source(s['controller'])+' · '+builder
 def evidence_for(s):
  patterns={'H01':'home-v2','H03':'settings-v2','E01':'achievements-v2','E02':'attendance-v2','E03':'attendance-monthly-v2','E05':'store-ko','A01':'profile-ko','A02':'account-ko','A03':'store-help-ko','A05':'delete-unconfirmed','P01':'class-overview','P02':'class-tree','M01':'multiplayer-','I01':'inventory-','P04':'character-','P05':'shared-tree-','C01':'hand-crafting-','S01':'pause-','S02':'pause-settings-','I02':'inventory-'}
+ patterns.update({'I01':'resume-v2-inventory-','I02':'resume-v2-inventory-','P04':'resume-v2-character-','P05':'resume-v2-common-tree-','C01':'resume-v2-hand-crafting-','S01':'resume-v2-pause-en-','S02':'resume-v2-pause-settings-'})
  live=sorted((ROOT/'evidence/live').glob('*.png'));p=patterns.get(s['id']);found=[x for x in live if p and x.name.startswith(p)]
  if found:return ', '.join(f'[{x.name}](evidence/live/{x.name})' for x in found[:3])+' · metadata 동명 JSON'
  historical={'I06':'gameplay--chest-en-844.png','G08':'gameplay--hud-repair-ko-844.png','D01':'gameplay--death-ko-844.png','G01':'gameplay--hud-repair-ko-844.png'}
@@ -44,7 +49,7 @@ def inventory():
  for s in S:
   text+=f'## {s["id"]} · {s["name"]}\n\n'
   text+=table(['항목','확인 내용'],[
-   ('구현/신뢰',s['status']+' / '+s['confidence']+'; runtime 증거는 아래 링크의 실제 상태만'),('씬·작성 원본',s['scene']+' / '+s['builder']),('구성·modal',s['composition']+'; parent/caller는 진입·이탈 열과 NAVIGATION 표를 따른다'),('진입',s['entry']),('Back/종료',s['exit']),('주·보조·전체 control',s['controls']),('scroll',s['scroll']),('동적 데이터',s['data']),('empty/loading/error/disabled',s['states']),('온라인·MP',s['network']),('현 visual',{'home':'기존 숲·Krita wordmark + 오른쪽 제본 종이 + 좌하 records','sheet':'1720×1000 종이 한 장, 대부분 동일 사각 action','book':'양면 journal, 도표/초상/상세','field':'1900×980 어두운 녹색 matte utility panel','hud':'투명 world overlay, 수치/작은 icon/원형 touch controls','world':'SpriteRenderer/월드 ghost 및 context feedback','overlay':'별도 차단층/ghost/transition','legacy-runtime':'런타임 고정 좌표 어두운 사각 panel, 별도 label/button helper'}.get(s['style'],s['style'])),('Localization',s['localization']),('문제/보존 경계','해당 ID별 VISUAL_UX_ISSUES 및 CONTROL_AND_ACTION_MAP 참조. rendered 없는 경우 외관 합격을 선언하지 않음'),('source',screen_sources(s)),('화면 증거',evidence_for(s))])+'\n'
+   ('구현/신뢰',s['status']+' / '+s['confidence']+'; runtime 증거는 아래 링크의 실제 상태만'),('씬·작성 원본',s['scene']+' / '+s['builder']),('구성·modal',s['composition']+'; parent/caller는 진입·이탈 열과 NAVIGATION 표를 따른다'),('진입',s['entry']),('Back/종료',s['exit']),('주·보조·전체 control',s['controls']),('scroll',s['scroll']),('동적 데이터',s['data']),('empty/loading/error/disabled',s['states']),('온라인·MP',s['network']),('현 visual',{'home':'기존 숲·Krita wordmark + 오른쪽 제본 종이 + 좌하 records','sheet':'1720×1000 종이 한 장, 대부분 동일 사각 action','book':'양면 journal, 도표/초상/상세','confirmation':'1000×620 QualityUiBuilder.Surface 확인 panel','field':'어두운 녹색 matte utility panel(Inventory/Craft1900×980; 개별 modal 크기는 builder 참조)','hud':'투명 world overlay, 수치/작은 icon/원형 touch controls','world':'SpriteRenderer/월드 ghost 및 context feedback','overlay':'별도 차단층/ghost/transition','legacy-runtime':'런타임 고정 좌표 어두운 사각 panel, 별도 label/button helper'}.get(s['style'],s['style'])),('Localization',s['localization']),('문제/보존 경계','해당 ID별 VISUAL_UX_ISSUES 및 CONTROL_AND_ACTION_MAP 참조. rendered 없는 경우 외관 합격을 선언하지 않음'),('source',screen_sources(s)),('화면 증거',evidence_for(s))])+'\n'
  text+='''## Dead / 역사·도구 분리
 
 - `SkillTreeScreen.Close()`는 API로 존재하지만 현재 Common Tree authoring에는 Back만 연결된다. Close 버튼이 있는 화면으로 인계하지 않는다. P05 → P04 → Close가 실제 UI 경로다.
@@ -113,7 +118,7 @@ special={
  'EconomyScreen.Board':('tab/index; event cycle','신규/월간/Events 전환; 이미 Events이면 eventIndex++','타일28은 Refresh에서 interactable=false'),
  'EconomyScreen.Select':('selected family; detail scroll reset','선택만; 진행/수령 receipt 생성 없음','hidden rows 제외'),
  'EconomyScreen.ClaimSelected':('EconomyService.Claim','선택 family의 서버 claimable 보상만','클릭/애니메이션으로 보상 grant 금지'),
- 'EconomyScreen.ClaimEverything':('EconomyService.ClaimAll','전체 eligible 보상을 같은 CAS에서 확정','일부 optimistic 지급 금지'),
+ 'EconomyScreen.ClaimEverything':('EconomyService.Claim() → server ClaimAll','전체 eligible 보상을 같은 CAS에서 확정','일부 optimistic 지급 금지'),
  'EconomyScreen.ClaimAttendance':('EconomyService.Attend','server UTC/period/slot eligibility 판단 후 receipt','stamp는 새 currency/item 아님'),
  'ClassLobbyScreen.SelectCard':('selected preview index; node0','직업 preview만; 실제 선택 Class 변경 없음','selected seal과 preview highlight 구분'),
  'ClassLobbyScreen.SelectNode':('node preview index','9개 해당 직업 node 상세만; point 소비 없음','54개 전체를 동시 스크린으로 만들지 않음'),
