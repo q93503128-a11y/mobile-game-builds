@@ -1,6 +1,6 @@
 # Penpot Visual Direction Exploration — Resume Checkpoint
 
-Status: **in progress**. This is a handoff checkpoint, not the final review. No direction has been selected.
+Status: **design exploration complete; user direction selection pending**. No direction has been selected, and Unity implementation has not started.
 
 ## Task and repository
 
@@ -53,15 +53,36 @@ The file-local Penpot library contains nine named components: one primary button
 
 ## Work completed
 
+- Current continuation fetched main and confirmed HEAD and origin/main at 9bfc6b05ff1100603d7abef56bb504ca8645f301 before editing Penpot.
+- Three direction summaries, menus, HUDs, inventories, responsive checks, and component comparison have now been rendered and inspected. The B slot contrast was corrected, C menu utility links were given readable touch surfaces, and all HUDs were aligned to the actual resource model.
+- The HUDs keep Health, Hunger, and Thirst visible, use a Level/XP bar, and show Stamina as a transient arc by the player marker rather than a fourth persistent stat.
+- The 844×390 HUDs were updated with Korean Health labeling, Level/XP, day/phase, and a central player/stamina marker.
+- PNG evidence for the 19 inspected boards is saved under previews/. Penpot version “Stage 1 — visual QA checkpoint — 2026-11-04” was saved at revision 23.
+
+## Current visual review
+
+The current saved previews were visually reviewed:
+
+- Three direction summary boards.
+- A/B/C main menus, HUDs, and inventories at 1920×1080.
+- A/B/C HUDs and inventories at 844×390.
+- The component comparison board.
+
+All 19 PNGs are stored in previews/, alongside a comparative review in REVIEW.md. Checks covered hierarchy, Korean text, contrast, major overlap/cropping, control placement, slot/item visibility, and landscape balance. The corrected C menu, A/B/C HUDs, B component slot, and responsive boards were re-exported after fixes.
+
+No major clipping or overlap remains in the inspected exports. Small secondary labels and counts at 844×390 need real-device distance/readability checks. Static Penpot exports do not verify runtime behavior, safe-area adaptation, or touch input.
+
+### Earlier board construction history
+
 - The existing blank page was renamed as the brief page and the six-page structure was created.
 - Brief and A/B/C concept summaries, menus, HUDs, and inventories were created with editable shapes. Existing Lowfire wordmark, UI/navigation icons, item art, player art, and gameplay controls were reused. Prototype environmental backdrops were generated for the concepts.
 - An initial placement used canvas coordinates as board-local coordinates. Children of the off-origin A/B/C boards were subsequently translated into their boards. C2 was exported after this correction and visually inspected with its forest backdrop, resource bars, hotbar, joystick, and action controls visible.
 - The six 844×390 HUD and inventory checks and a component comparison board were added.
-- A/B/C responsive HUDs had an internal annotation removed and the dash affordance moved upward. Responsive inventory internal notes were removed after the last exports. Those corrected versions still need re-export.
-- The Crafted Survival column on the component comparison received a darker contrast panel. Its inventory-slot item image remains weak against the brown slot surface and needs correction from the component main instance, then re-export.
-- A1 was visually inspected before its final repositioning. It needs re-export. Other menus and most full-size screens still need inspection.
+- A/B/C responsive HUDs had an internal annotation removed and the dash affordance moved upward. Responsive inventory internal notes were removed before the current review.
+- The Crafted Survival column first received a darker contrast panel. The current pass later lightened the actual slot component and verified the improved item contrast.
+- A1 was first inspected before repositioning; the current pass re-exported and reviewed all three menus.
 
-## Visual review completed and remaining
+## Historical visual review notes before the current continuation
 
 Previously exported and personally inspected:
 
@@ -79,17 +100,25 @@ Still required:
 
 Exports previously returned by the Penpot tool were viewed in-session; no local PNG evidence bundle has been saved yet.
 
-## Penpot connection and save state
+## Penpot connection and save state — earlier outages, now resolved
+
+The user confirmed the separate MCP indicator was green and kept the canvas visible. Penpot reads, edits, and image exports then succeeded. The live file is Lowfire — UI Redesign, ID c6f51e89-5d00-81ce-8008-e483b7f6725d. A named Penpot version, “Stage 1 — visual QA checkpoint — 2026-11-04,” was saved at revision 23. The old heartbeat failures below are historical.
 
 - The user previously replied `Penpot 탭 깨우기` after being asked to wake the tab.
 - In the previous resumed session, a read-only Penpot MCP request failed with: “The Penpot plugin tab appears to be suspended by the browser (no heartbeat for 470s).” No Penpot changes were made in that session.
 - In the 2026-11-04 follow-up, the user confirmed the file status had been green and refreshed the Penpot tab. The subsequent read and export requests still failed with suspended-tab heartbeat ages of 70s, 131s, and 205s. No design changes were made in this follow-up either.
 - In the next continuation, the user confirmed the canvas was visible and the tab would stay active. A read-only request still failed with “no heartbeat for 555s.” No Penpot edits or exports succeeded in that continuation. The MCP connection dot's state is being checked separately from the file-save indicator.
 - Windows mouse/keyboard/Computer Use and Unity Focus/Show are prohibited by `projects/wildfolk/AGENTS.md`; the agent did not manipulate the browser window.
-- The user reported a green file status before the refresh; status after the refresh has not been read. Do not claim the latest Penpot state is saved or safe to close until the live status is confirmed.
+- The older saved-status caution applied before the current named revision-23 version was created.
 - Penpot documents autosaved versions in its [workspace guide](https://help.penpot.app/user-guide/designing/workspace-basics/) and a file status indicator in its [interface guide](https://help.penpot.app/user-guide/first-steps/the-interface/).
 
-## Next session
+## Next user action
+
+Review REVIEW.md and choose A, B, C, or a hybrid. C is the preliminary recommendation, but no direction is final. Unity work remains a separate approval and implementation pass.
+
+## Earlier next-session notes — superseded
+
+The following reconnection and review tasks are historical; the current pass completed them.
 
 1. Keep the Penpot tab open and in the foreground. The user refreshed after seeing the green saved indicator and confirmed the canvas is visible, but MCP still reported no heartbeat. Check the separate MCP connection indicator and restore the bridge; do not refresh or close the tab while the latest save status is unknown.
 2. Read the current page/board tree and saved status from the existing file before making changes.
@@ -104,4 +133,5 @@ Exports previously returned by the Penpot tool were viewed in-session; no local 
 - Previous resumed session: start **2026-11-04 17:40:43 KST**, checkpoint **2026-11-04 17:44:50 KST**, elapsed **4m 07s**. Work was limited to remote-main verification, handoff update, checkpoint push, and a Penpot reconnection attempt; the Penpot MCP remained suspended.
 - This follow-up session: start **2026-11-04 18:05:48 KST**, checkpoint **2026-11-04 18:11:35 KST**, elapsed **5m 47s**. Work was limited to fetching/reviewing the latest main and existing project/design instructions, attempting read-only Penpot checks/exports after the user's refresh, waiting for a foreground-tab wake, and updating this handoff. The Penpot heartbeat remained unavailable; no design changes were made.
 - Latest continuation: start **2026-11-04 18:14:16 KST**, checkpoint **2026-11-04 18:15:34 KST**, elapsed **1m 18s**. Fetched/reviewed latest main, checked project instructions and design handoff, retried a read-only Penpot request after the user kept the canvas visible, and updated this handoff. MCP remained unavailable; no Penpot changes were made.
+- Current design completion session: start **2026-11-04 18:14:16 KST**, design/evidence checkpoint **2026-11-04 19:17:19 KST**, elapsed **1h 03m 03s**. Final Git persistence time is reported separately; no model token-usage meter was available.
 - Phase-level start/end times were not separately sampled; no per-phase durations are estimated.
