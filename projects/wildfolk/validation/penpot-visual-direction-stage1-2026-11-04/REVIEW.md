@@ -1,9 +1,9 @@
 # Lowfire UI Visual Direction — Stage 1 Review
 
-상태: **시각 방향 비교 완료, 사용자 선택 대기**  
-Penpot 파일: Lowfire — UI Redesign  
-File ID: c6f51e89-5d00-81ce-8008-e483b7f6725d  
-저장 버전: Stage 1 — visual QA checkpoint — 2026-11-04  
+상태: **시각 방향 비교 완료, 사용자 선택 대기**
+Penpot 파일: Lowfire — UI Redesign
+File ID: c6f51e89-5d00-81ce-8008-e483b7f6725d
+저장 버전: Stage 1 — visual QA checkpoint — 2026-11-04
 저장 당시 Penpot revision: 23
 
 ## 결과와 범위
