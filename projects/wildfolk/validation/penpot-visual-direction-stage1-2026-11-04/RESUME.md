@@ -100,5 +100,5 @@ Exports previously returned by the Penpot tool were viewed in-session; no local 
 
 - Previous active session: start **2026-11-04 14:37:25 KST**, checkpoint **2026-11-04 15:19:16 KST**, elapsed **41m 51s**.
 - Previous resumed session: start **2026-11-04 17:40:43 KST**, checkpoint **2026-11-04 17:44:50 KST**, elapsed **4m 07s**. Work was limited to remote-main verification, handoff update, checkpoint push, and a Penpot reconnection attempt; the Penpot MCP remained suspended.
-- This follow-up session: start **2026-11-04 18:05:48 KST**, checkpoint **2026-11-04 18:08:47 KST**, elapsed **2m 59s**. Work was limited to fetching/reviewing the latest main and the existing project/design instructions, attempting read-only Penpot checks/exports after the user's refresh, and updating this handoff. No Penpot design changes were made.
+- This follow-up session: start **2026-11-04 18:05:48 KST**, checkpoint **2026-11-04 18:10:03 KST**, elapsed **4m 15s**. Work was limited to fetching/reviewing the latest main and the existing project/design instructions, attempting read-only Penpot checks/exports after the user's refresh, and updating this handoff. No Penpot design changes were made.
 - Phase-level start/end times were not separately sampled; no per-phase durations are estimated.
