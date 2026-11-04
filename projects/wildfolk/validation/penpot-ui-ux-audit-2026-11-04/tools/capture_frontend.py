@@ -28,4 +28,3 @@ step('multiplayer-invalid-ko-844',m+'.Destination.text="!";'+m+'.Join()')
 step('multiplayer-lan-ko-844',m+'.ToggleRoute()')
 step('home-restored-ko-844',m+'.Back()')
 a.phase('Unity 격리·전면 메뉴 3해상도 한영 관찰 및 소스 대조')
-

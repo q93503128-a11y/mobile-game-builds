@@ -1,6 +1,6 @@
 {
   "startedUtc": "2026-11-04T01:23:13+00:00",
-  "boundaryUtc": "2026-11-04T01:56:50.307710+00:00",
+  "boundaryUtc": "2026-11-04T01:57:31.966515+00:00",
   "initialPreparation": "First prompt/fetch before measurement excluded",
   "tokenOrBillingUsage": null,
   "phases": [
@@ -33,6 +33,12 @@
       "startedUtc": "2026-11-04T01:53:04.034322+00:00",
       "endedUtc": "2026-11-04T01:56:50.307710+00:00",
       "seconds": 226.273388
+    },
+    {
+      "phase": "체크포인트 diff 검토·첫 commit/push 및 형식 정리",
+      "startedUtc": "2026-11-04T01:56:50.307710+00:00",
+      "endedUtc": "2026-11-04T01:57:31.966515+00:00",
+      "seconds": 41.658805
     }
   ]
 }
