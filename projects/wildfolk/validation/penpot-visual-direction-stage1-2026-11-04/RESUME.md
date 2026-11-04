@@ -98,5 +98,5 @@ Exports previously returned by the Penpot tool were viewed in-session; no local 
 ## Time log
 
 - Previous active session: start **2026-11-04 14:37:25 KST**, checkpoint **2026-11-04 15:19:16 KST**, elapsed **41m 51s**.
-- This resumed session: start **2026-11-04 17:40:43 KST**, checkpoint **2026-11-04 17:42:50 KST**, elapsed **2m 07s**. Work was limited to remote-main verification and this handoff update because the Penpot MCP remained suspended.
+- This resumed session: start **2026-11-04 17:40:43 KST**, checkpoint **2026-11-04 17:44:50 KST**, elapsed **4m 07s**. Work was limited to remote-main verification, this handoff update, checkpoint push, and one retry of the Penpot connection; the Penpot MCP remained suspended.
 - Phase-level start/end times were not separately sampled; no per-phase durations are estimated.
