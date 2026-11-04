@@ -1,0 +1,145 @@
+{
+  "utc": "2026-11-04T01:46:43.8101049Z",
+  "scene": "MainMenu",
+  "screen": [
+    844,
+    390
+  ],
+  "language": "ko",
+  "labels": [
+    {
+      "name": "Label",
+      "text": "뒤로",
+      "size": 30,
+      "width": 160.0,
+      "height": 100.0,
+      "preferredHeight": 40.158638,
+      "overflow": "Truncate"
+    },
+    {
+      "name": "Title",
+      "text": "프로필",
+      "size": 44,
+      "width": 680.0,
+      "height": 74.0,
+      "preferredHeight": 62.74787,
+      "overflow": "Truncate"
+    },
+    {
+      "name": "Label",
+      "text": "업적",
+      "size": 32,
+      "width": 506.0,
+      "height": 126.0,
+      "preferredHeight": 42.6685524,
+      "overflow": "Truncate"
+    },
+    {
+      "name": "Label",
+      "text": "보석 상점",
+      "size": 32,
+      "width": 398.0,
+      "height": 94.0,
+      "preferredHeight": 42.6685524,
+      "overflow": "Truncate"
+    },
+    {
+      "name": "Record summary",
+      "text": "Gem  —\n계정을 연결하면 업적과 출석을 확인할 수 있어요.\n",
+      "size": 34,
+      "width": 680.0,
+      "height": 260.0,
+      "preferredHeight": 133.025482,
+      "overflow": "Truncate"
+    },
+    {
+      "name": "Label",
+      "text": "광고 보기 · +1 Gem",
+      "size": 32,
+      "width": 618.0,
+      "height": 110.0,
+      "preferredHeight": 42.6685524,
+      "overflow": "Truncate"
+    },
+    {
+      "name": "Label",
+      "text": "계정",
+      "size": 32,
+      "width": 506.0,
+      "height": 110.0,
+      "preferredHeight": 42.6685524,
+      "overflow": "Truncate"
+    },
+    {
+      "name": "Identity",
+      "text": "레벨 1 · 생존자\nGoogle Play Games 연결 안 됨 · 참여 기록 없음",
+      "size": 30,
+      "width": 1450.0,
+      "height": 110.0,
+      "preferredHeight": 77.80736,
+      "overflow": "Truncate"
+    },
+    {
+      "name": "Ad availability",
+      "text": "Gem 보상은 Google 계정 연결과 인터넷이 필요합니다.",
+      "size": 28,
+      "width": 720.0,
+      "height": 94.0,
+      "preferredHeight": 40.158638,
+      "overflow": "Truncate"
+    },
+    {
+      "name": "Label",
+      "text": "출석",
+      "size": 32,
+      "width": 506.0,
+      "height": 126.0,
+      "preferredHeight": 42.6685524,
+      "overflow": "Truncate"
+    }
+  ],
+  "controls": [
+    {
+      "name": "Account Settings",
+      "type": "Button",
+      "enabled": true,
+      "width": 650.0,
+      "height": 126.0
+    },
+    {
+      "name": "Attendance Entry",
+      "type": "Button",
+      "enabled": true,
+      "width": 650.0,
+      "height": 142.0
+    },
+    {
+      "name": "Back",
+      "type": "Button",
+      "enabled": true,
+      "width": 180.0,
+      "height": 112.0
+    },
+    {
+      "name": "Achievements Entry",
+      "type": "Button",
+      "enabled": true,
+      "width": 650.0,
+      "height": 142.0
+    },
+    {
+      "name": "Gem Store Entry",
+      "type": "Button",
+      "enabled": true,
+      "width": 430.0,
+      "height": 110.0
+    },
+    {
+      "name": "Optional Gem ad",
+      "type": "Button",
+      "enabled": false,
+      "width": 650.0,
+      "height": 126.0
+    }
+  ]
+}

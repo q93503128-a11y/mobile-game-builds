@@ -1,0 +1,548 @@
+[
+  {
+    "name": "home-v2-en-1920",
+    "code": "UnityEngine.Object.FindObjectsByType<Wildfolk.EconomyScreen>(UnityEngine.FindObjectsInactive.Include,UnityEngine.FindObjectsSortMode.None).First().Back();UnityEngine.Object.FindObjectsByType<Wildfolk.EconomyScreen>(UnityEngine.FindObjectsInactive.Include,UnityEngine.FindObjectsSortMode.None).First().CloseHub();UnityEngine.Object.FindObjectsByType<Wildfolk.HomeScreen>(UnityEngine.FindObjectsInactive.Include,UnityEngine.FindObjectsSortMode.None).First().ShowHome();UnityEngine.Object.FindObjectsByType<Wildfolk.HomeScreen>(UnityEngine.FindObjectsInactive.Include,UnityEngine.FindObjectsSortMode.None).First().Preferences.SetLanguage(0);Wildfolk.Editor.VisualGameView.Show(1920,1080)",
+    "result": "navigation-only",
+    "capture": {
+      "label": "home-v2-en-1920",
+      "exists": true,
+      "screen": [
+        1920,
+        1080
+      ]
+    }
+  },
+  {
+    "name": "settings-v2-en-1920",
+    "code": "UnityEngine.Object.FindObjectsByType<Wildfolk.HomeScreen>(UnityEngine.FindObjectsInactive.Include,UnityEngine.FindObjectsSortMode.None).First().OpenSettings()",
+    "result": "navigation-only",
+    "capture": {
+      "label": "settings-v2-en-1920",
+      "exists": true,
+      "screen": [
+        1920,
+        1080
+      ]
+    }
+  },
+  {
+    "name": "achievements-v2-en-1920",
+    "code": "UnityEngine.Object.FindObjectsByType<Wildfolk.HomeScreen>(UnityEngine.FindObjectsInactive.Include,UnityEngine.FindObjectsSortMode.None).First().ShowHome();UnityEngine.Object.FindObjectsByType<Wildfolk.EconomyScreen>(UnityEngine.FindObjectsInactive.Include,UnityEngine.FindObjectsSortMode.None).First().OpenAchievements()",
+    "result": "navigation-only",
+    "capture": {
+      "label": "achievements-v2-en-1920",
+      "exists": true,
+      "screen": [
+        1920,
+        1080
+      ]
+    }
+  },
+  {
+    "name": "attendance-v2-en-1920",
+    "code": "UnityEngine.Object.FindObjectsByType<Wildfolk.EconomyScreen>(UnityEngine.FindObjectsInactive.Include,UnityEngine.FindObjectsSortMode.None).First().Back();UnityEngine.Object.FindObjectsByType<Wildfolk.EconomyScreen>(UnityEngine.FindObjectsInactive.Include,UnityEngine.FindObjectsSortMode.None).First().OpenAttendance();UnityEngine.Object.FindObjectsByType<Wildfolk.EconomyScreen>(UnityEngine.FindObjectsInactive.Include,UnityEngine.FindObjectsSortMode.None).First().Board(0)",
+    "result": "navigation-only",
+    "capture": {
+      "label": "attendance-v2-en-1920",
+      "exists": true,
+      "screen": [
+        1920,
+        1080
+      ]
+    }
+  },
+  {
+    "name": "attendance-monthly-v2-en-1920",
+    "code": "UnityEngine.Object.FindObjectsByType<Wildfolk.EconomyScreen>(UnityEngine.FindObjectsInactive.Include,UnityEngine.FindObjectsSortMode.None).First().Board(1)",
+    "result": "navigation-only",
+    "capture": {
+      "label": "attendance-monthly-v2-en-1920",
+      "exists": true,
+      "screen": [
+        1920,
+        1080
+      ]
+    }
+  },
+  {
+    "name": "home-v2-ko-1920",
+    "code": "UnityEngine.Object.FindObjectsByType<Wildfolk.EconomyScreen>(UnityEngine.FindObjectsInactive.Include,UnityEngine.FindObjectsSortMode.None).First().Back();UnityEngine.Object.FindObjectsByType<Wildfolk.EconomyScreen>(UnityEngine.FindObjectsInactive.Include,UnityEngine.FindObjectsSortMode.None).First().CloseHub();UnityEngine.Object.FindObjectsByType<Wildfolk.HomeScreen>(UnityEngine.FindObjectsInactive.Include,UnityEngine.FindObjectsSortMode.None).First().ShowHome();UnityEngine.Object.FindObjectsByType<Wildfolk.HomeScreen>(UnityEngine.FindObjectsInactive.Include,UnityEngine.FindObjectsSortMode.None).First().Preferences.SetLanguage(1);Wildfolk.Editor.VisualGameView.Show(1920,1080)",
+    "result": "navigation-only",
+    "capture": {
+      "label": "home-v2-ko-1920",
+      "exists": true,
+      "screen": [
+        1920,
+        1080
+      ]
+    }
+  },
+  {
+    "name": "settings-v2-ko-1920",
+    "code": "UnityEngine.Object.FindObjectsByType<Wildfolk.HomeScreen>(UnityEngine.FindObjectsInactive.Include,UnityEngine.FindObjectsSortMode.None).First().OpenSettings()",
+    "result": "navigation-only",
+    "capture": {
+      "label": "settings-v2-ko-1920",
+      "exists": true,
+      "screen": [
+        1920,
+        1080
+      ]
+    }
+  },
+  {
+    "name": "achievements-v2-ko-1920",
+    "code": "UnityEngine.Object.FindObjectsByType<Wildfolk.HomeScreen>(UnityEngine.FindObjectsInactive.Include,UnityEngine.FindObjectsSortMode.None).First().ShowHome();UnityEngine.Object.FindObjectsByType<Wildfolk.EconomyScreen>(UnityEngine.FindObjectsInactive.Include,UnityEngine.FindObjectsSortMode.None).First().OpenAchievements()",
+    "result": "navigation-only",
+    "capture": {
+      "label": "achievements-v2-ko-1920",
+      "exists": true,
+      "screen": [
+        1920,
+        1080
+      ]
+    }
+  },
+  {
+    "name": "attendance-v2-ko-1920",
+    "code": "UnityEngine.Object.FindObjectsByType<Wildfolk.EconomyScreen>(UnityEngine.FindObjectsInactive.Include,UnityEngine.FindObjectsSortMode.None).First().Back();UnityEngine.Object.FindObjectsByType<Wildfolk.EconomyScreen>(UnityEngine.FindObjectsInactive.Include,UnityEngine.FindObjectsSortMode.None).First().OpenAttendance();UnityEngine.Object.FindObjectsByType<Wildfolk.EconomyScreen>(UnityEngine.FindObjectsInactive.Include,UnityEngine.FindObjectsSortMode.None).First().Board(0)",
+    "result": "navigation-only",
+    "capture": {
+      "label": "attendance-v2-ko-1920",
+      "exists": true,
+      "screen": [
+        1920,
+        1080
+      ]
+    }
+  },
+  {
+    "name": "attendance-monthly-v2-ko-1920",
+    "code": "UnityEngine.Object.FindObjectsByType<Wildfolk.EconomyScreen>(UnityEngine.FindObjectsInactive.Include,UnityEngine.FindObjectsSortMode.None).First().Board(1)",
+    "result": "navigation-only",
+    "capture": {
+      "label": "attendance-monthly-v2-ko-1920",
+      "exists": true,
+      "screen": [
+        1920,
+        1080
+      ]
+    }
+  },
+  {
+    "name": "home-v2-en-1280",
+    "code": "UnityEngine.Object.FindObjectsByType<Wildfolk.EconomyScreen>(UnityEngine.FindObjectsInactive.Include,UnityEngine.FindObjectsSortMode.None).First().Back();UnityEngine.Object.FindObjectsByType<Wildfolk.EconomyScreen>(UnityEngine.FindObjectsInactive.Include,UnityEngine.FindObjectsSortMode.None).First().CloseHub();UnityEngine.Object.FindObjectsByType<Wildfolk.HomeScreen>(UnityEngine.FindObjectsInactive.Include,UnityEngine.FindObjectsSortMode.None).First().ShowHome();UnityEngine.Object.FindObjectsByType<Wildfolk.HomeScreen>(UnityEngine.FindObjectsInactive.Include,UnityEngine.FindObjectsSortMode.None).First().Preferences.SetLanguage(0);Wildfolk.Editor.VisualGameView.Show(1280,720)",
+    "result": "navigation-only",
+    "capture": {
+      "label": "home-v2-en-1280",
+      "exists": true,
+      "screen": [
+        1280,
+        720
+      ]
+    }
+  },
+  {
+    "name": "settings-v2-en-1280",
+    "code": "UnityEngine.Object.FindObjectsByType<Wildfolk.HomeScreen>(UnityEngine.FindObjectsInactive.Include,UnityEngine.FindObjectsSortMode.None).First().OpenSettings()",
+    "result": "navigation-only",
+    "capture": {
+      "label": "settings-v2-en-1280",
+      "exists": true,
+      "screen": [
+        1280,
+        720
+      ]
+    }
+  },
+  {
+    "name": "achievements-v2-en-1280",
+    "code": "UnityEngine.Object.FindObjectsByType<Wildfolk.HomeScreen>(UnityEngine.FindObjectsInactive.Include,UnityEngine.FindObjectsSortMode.None).First().ShowHome();UnityEngine.Object.FindObjectsByType<Wildfolk.EconomyScreen>(UnityEngine.FindObjectsInactive.Include,UnityEngine.FindObjectsSortMode.None).First().OpenAchievements()",
+    "result": "navigation-only",
+    "capture": {
+      "label": "achievements-v2-en-1280",
+      "exists": true,
+      "screen": [
+        1280,
+        720
+      ]
+    }
+  },
+  {
+    "name": "attendance-v2-en-1280",
+    "code": "UnityEngine.Object.FindObjectsByType<Wildfolk.EconomyScreen>(UnityEngine.FindObjectsInactive.Include,UnityEngine.FindObjectsSortMode.None).First().Back();UnityEngine.Object.FindObjectsByType<Wildfolk.EconomyScreen>(UnityEngine.FindObjectsInactive.Include,UnityEngine.FindObjectsSortMode.None).First().OpenAttendance();UnityEngine.Object.FindObjectsByType<Wildfolk.EconomyScreen>(UnityEngine.FindObjectsInactive.Include,UnityEngine.FindObjectsSortMode.None).First().Board(0)",
+    "result": "navigation-only",
+    "capture": {
+      "label": "attendance-v2-en-1280",
+      "exists": true,
+      "screen": [
+        1280,
+        720
+      ]
+    }
+  },
+  {
+    "name": "attendance-monthly-v2-en-1280",
+    "code": "UnityEngine.Object.FindObjectsByType<Wildfolk.EconomyScreen>(UnityEngine.FindObjectsInactive.Include,UnityEngine.FindObjectsSortMode.None).First().Board(1)",
+    "result": "navigation-only",
+    "capture": {
+      "label": "attendance-monthly-v2-en-1280",
+      "exists": true,
+      "screen": [
+        1280,
+        720
+      ]
+    }
+  },
+  {
+    "name": "home-v2-ko-1280",
+    "code": "UnityEngine.Object.FindObjectsByType<Wildfolk.EconomyScreen>(UnityEngine.FindObjectsInactive.Include,UnityEngine.FindObjectsSortMode.None).First().Back();UnityEngine.Object.FindObjectsByType<Wildfolk.EconomyScreen>(UnityEngine.FindObjectsInactive.Include,UnityEngine.FindObjectsSortMode.None).First().CloseHub();UnityEngine.Object.FindObjectsByType<Wildfolk.HomeScreen>(UnityEngine.FindObjectsInactive.Include,UnityEngine.FindObjectsSortMode.None).First().ShowHome();UnityEngine.Object.FindObjectsByType<Wildfolk.HomeScreen>(UnityEngine.FindObjectsInactive.Include,UnityEngine.FindObjectsSortMode.None).First().Preferences.SetLanguage(1);Wildfolk.Editor.VisualGameView.Show(1280,720)",
+    "result": "navigation-only",
+    "capture": {
+      "label": "home-v2-ko-1280",
+      "exists": true,
+      "screen": [
+        1280,
+        720
+      ]
+    }
+  },
+  {
+    "name": "settings-v2-ko-1280",
+    "code": "UnityEngine.Object.FindObjectsByType<Wildfolk.HomeScreen>(UnityEngine.FindObjectsInactive.Include,UnityEngine.FindObjectsSortMode.None).First().OpenSettings()",
+    "result": "navigation-only",
+    "capture": {
+      "label": "settings-v2-ko-1280",
+      "exists": true,
+      "screen": [
+        1280,
+        720
+      ]
+    }
+  },
+  {
+    "name": "achievements-v2-ko-1280",
+    "code": "UnityEngine.Object.FindObjectsByType<Wildfolk.HomeScreen>(UnityEngine.FindObjectsInactive.Include,UnityEngine.FindObjectsSortMode.None).First().ShowHome();UnityEngine.Object.FindObjectsByType<Wildfolk.EconomyScreen>(UnityEngine.FindObjectsInactive.Include,UnityEngine.FindObjectsSortMode.None).First().OpenAchievements()",
+    "result": "navigation-only",
+    "capture": {
+      "label": "achievements-v2-ko-1280",
+      "exists": true,
+      "screen": [
+        1280,
+        720
+      ]
+    }
+  },
+  {
+    "name": "attendance-v2-ko-1280",
+    "code": "UnityEngine.Object.FindObjectsByType<Wildfolk.EconomyScreen>(UnityEngine.FindObjectsInactive.Include,UnityEngine.FindObjectsSortMode.None).First().Back();UnityEngine.Object.FindObjectsByType<Wildfolk.EconomyScreen>(UnityEngine.FindObjectsInactive.Include,UnityEngine.FindObjectsSortMode.None).First().OpenAttendance();UnityEngine.Object.FindObjectsByType<Wildfolk.EconomyScreen>(UnityEngine.FindObjectsInactive.Include,UnityEngine.FindObjectsSortMode.None).First().Board(0)",
+    "result": "navigation-only",
+    "capture": {
+      "label": "attendance-v2-ko-1280",
+      "exists": true,
+      "screen": [
+        1280,
+        720
+      ]
+    }
+  },
+  {
+    "name": "attendance-monthly-v2-ko-1280",
+    "code": "UnityEngine.Object.FindObjectsByType<Wildfolk.EconomyScreen>(UnityEngine.FindObjectsInactive.Include,UnityEngine.FindObjectsSortMode.None).First().Board(1)",
+    "result": "navigation-only",
+    "capture": {
+      "label": "attendance-monthly-v2-ko-1280",
+      "exists": true,
+      "screen": [
+        1280,
+        720
+      ]
+    }
+  },
+  {
+    "name": "home-v2-en-844",
+    "code": "UnityEngine.Object.FindObjectsByType<Wildfolk.EconomyScreen>(UnityEngine.FindObjectsInactive.Include,UnityEngine.FindObjectsSortMode.None).First().Back();UnityEngine.Object.FindObjectsByType<Wildfolk.EconomyScreen>(UnityEngine.FindObjectsInactive.Include,UnityEngine.FindObjectsSortMode.None).First().CloseHub();UnityEngine.Object.FindObjectsByType<Wildfolk.HomeScreen>(UnityEngine.FindObjectsInactive.Include,UnityEngine.FindObjectsSortMode.None).First().ShowHome();UnityEngine.Object.FindObjectsByType<Wildfolk.HomeScreen>(UnityEngine.FindObjectsInactive.Include,UnityEngine.FindObjectsSortMode.None).First().Preferences.SetLanguage(0);Wildfolk.Editor.VisualGameView.Show(844,390)",
+    "result": "navigation-only",
+    "capture": {
+      "label": "home-v2-en-844",
+      "exists": true,
+      "screen": [
+        844,
+        390
+      ]
+    }
+  },
+  {
+    "name": "settings-v2-en-844",
+    "code": "UnityEngine.Object.FindObjectsByType<Wildfolk.HomeScreen>(UnityEngine.FindObjectsInactive.Include,UnityEngine.FindObjectsSortMode.None).First().OpenSettings()",
+    "result": "navigation-only",
+    "capture": {
+      "label": "settings-v2-en-844",
+      "exists": true,
+      "screen": [
+        844,
+        390
+      ]
+    }
+  },
+  {
+    "name": "achievements-v2-en-844",
+    "code": "UnityEngine.Object.FindObjectsByType<Wildfolk.HomeScreen>(UnityEngine.FindObjectsInactive.Include,UnityEngine.FindObjectsSortMode.None).First().ShowHome();UnityEngine.Object.FindObjectsByType<Wildfolk.EconomyScreen>(UnityEngine.FindObjectsInactive.Include,UnityEngine.FindObjectsSortMode.None).First().OpenAchievements()",
+    "result": "navigation-only",
+    "capture": {
+      "label": "achievements-v2-en-844",
+      "exists": true,
+      "screen": [
+        844,
+        390
+      ]
+    }
+  },
+  {
+    "name": "attendance-v2-en-844",
+    "code": "UnityEngine.Object.FindObjectsByType<Wildfolk.EconomyScreen>(UnityEngine.FindObjectsInactive.Include,UnityEngine.FindObjectsSortMode.None).First().Back();UnityEngine.Object.FindObjectsByType<Wildfolk.EconomyScreen>(UnityEngine.FindObjectsInactive.Include,UnityEngine.FindObjectsSortMode.None).First().OpenAttendance();UnityEngine.Object.FindObjectsByType<Wildfolk.EconomyScreen>(UnityEngine.FindObjectsInactive.Include,UnityEngine.FindObjectsSortMode.None).First().Board(0)",
+    "result": "navigation-only",
+    "capture": {
+      "label": "attendance-v2-en-844",
+      "exists": true,
+      "screen": [
+        844,
+        390
+      ]
+    }
+  },
+  {
+    "name": "attendance-monthly-v2-en-844",
+    "code": "UnityEngine.Object.FindObjectsByType<Wildfolk.EconomyScreen>(UnityEngine.FindObjectsInactive.Include,UnityEngine.FindObjectsSortMode.None).First().Board(1)",
+    "result": "navigation-only",
+    "capture": {
+      "label": "attendance-monthly-v2-en-844",
+      "exists": true,
+      "screen": [
+        844,
+        390
+      ]
+    }
+  },
+  {
+    "name": "home-v2-ko-844",
+    "code": "UnityEngine.Object.FindObjectsByType<Wildfolk.EconomyScreen>(UnityEngine.FindObjectsInactive.Include,UnityEngine.FindObjectsSortMode.None).First().Back();UnityEngine.Object.FindObjectsByType<Wildfolk.EconomyScreen>(UnityEngine.FindObjectsInactive.Include,UnityEngine.FindObjectsSortMode.None).First().CloseHub();UnityEngine.Object.FindObjectsByType<Wildfolk.HomeScreen>(UnityEngine.FindObjectsInactive.Include,UnityEngine.FindObjectsSortMode.None).First().ShowHome();UnityEngine.Object.FindObjectsByType<Wildfolk.HomeScreen>(UnityEngine.FindObjectsInactive.Include,UnityEngine.FindObjectsSortMode.None).First().Preferences.SetLanguage(1);Wildfolk.Editor.VisualGameView.Show(844,390)",
+    "result": "navigation-only",
+    "capture": {
+      "label": "home-v2-ko-844",
+      "exists": true,
+      "screen": [
+        844,
+        390
+      ]
+    }
+  },
+  {
+    "name": "settings-v2-ko-844",
+    "code": "UnityEngine.Object.FindObjectsByType<Wildfolk.HomeScreen>(UnityEngine.FindObjectsInactive.Include,UnityEngine.FindObjectsSortMode.None).First().OpenSettings()",
+    "result": "navigation-only",
+    "capture": {
+      "label": "settings-v2-ko-844",
+      "exists": true,
+      "screen": [
+        844,
+        390
+      ]
+    }
+  },
+  {
+    "name": "achievements-v2-ko-844",
+    "code": "UnityEngine.Object.FindObjectsByType<Wildfolk.HomeScreen>(UnityEngine.FindObjectsInactive.Include,UnityEngine.FindObjectsSortMode.None).First().ShowHome();UnityEngine.Object.FindObjectsByType<Wildfolk.EconomyScreen>(UnityEngine.FindObjectsInactive.Include,UnityEngine.FindObjectsSortMode.None).First().OpenAchievements()",
+    "result": "navigation-only",
+    "capture": {
+      "label": "achievements-v2-ko-844",
+      "exists": true,
+      "screen": [
+        844,
+        390
+      ]
+    }
+  },
+  {
+    "name": "attendance-v2-ko-844",
+    "code": "UnityEngine.Object.FindObjectsByType<Wildfolk.EconomyScreen>(UnityEngine.FindObjectsInactive.Include,UnityEngine.FindObjectsSortMode.None).First().Back();UnityEngine.Object.FindObjectsByType<Wildfolk.EconomyScreen>(UnityEngine.FindObjectsInactive.Include,UnityEngine.FindObjectsSortMode.None).First().OpenAttendance();UnityEngine.Object.FindObjectsByType<Wildfolk.EconomyScreen>(UnityEngine.FindObjectsInactive.Include,UnityEngine.FindObjectsSortMode.None).First().Board(0)",
+    "result": "navigation-only",
+    "capture": {
+      "label": "attendance-v2-ko-844",
+      "exists": true,
+      "screen": [
+        844,
+        390
+      ]
+    }
+  },
+  {
+    "name": "attendance-monthly-v2-ko-844",
+    "code": "UnityEngine.Object.FindObjectsByType<Wildfolk.EconomyScreen>(UnityEngine.FindObjectsInactive.Include,UnityEngine.FindObjectsSortMode.None).First().Board(1)",
+    "result": "navigation-only",
+    "capture": {
+      "label": "attendance-monthly-v2-ko-844",
+      "exists": true,
+      "screen": [
+        844,
+        390
+      ]
+    }
+  },
+  {
+    "name": "store-ko-844",
+    "code": "UnityEngine.Object.FindObjectsByType<Wildfolk.EconomyScreen>(UnityEngine.FindObjectsInactive.Include,UnityEngine.FindObjectsSortMode.None).First().Back();UnityEngine.Object.FindObjectsByType<Wildfolk.HomeScreen>(UnityEngine.FindObjectsInactive.Include,UnityEngine.FindObjectsSortMode.None).First().ShowHome();UnityEngine.Object.FindObjectsByType<Wildfolk.StoreScreen>(UnityEngine.FindObjectsInactive.Include,UnityEngine.FindObjectsSortMode.None).First().Open()",
+    "result": "navigation-only",
+    "capture": {
+      "label": "store-ko-844",
+      "exists": true,
+      "screen": [
+        844,
+        390
+      ]
+    }
+  },
+  {
+    "name": "store-help-ko-844",
+    "code": "UnityEngine.Object.FindObjectsByType<Wildfolk.StoreScreen>(UnityEngine.FindObjectsInactive.Include,UnityEngine.FindObjectsSortMode.None).First().Contact()",
+    "result": "navigation-only",
+    "capture": {
+      "label": "store-help-ko-844",
+      "exists": true,
+      "screen": [
+        844,
+        390
+      ]
+    }
+  },
+  {
+    "name": "store-help-back-ko-844",
+    "code": "UnityEngine.Object.FindObjectsByType<Wildfolk.AccountProfileScreen>(UnityEngine.FindObjectsInactive.Include,UnityEngine.FindObjectsSortMode.None).First().CloseHelp()",
+    "result": "navigation-only",
+    "capture": {
+      "label": "store-help-back-ko-844",
+      "exists": true,
+      "screen": [
+        844,
+        390
+      ]
+    }
+  },
+  {
+    "name": "profile-ko-844",
+    "code": "UnityEngine.Object.FindObjectsByType<Wildfolk.AccountProfileScreen>(UnityEngine.FindObjectsInactive.Include,UnityEngine.FindObjectsSortMode.None).First().Back()",
+    "result": "navigation-only",
+    "capture": {
+      "label": "profile-ko-844",
+      "exists": true,
+      "screen": [
+        844,
+        390
+      ]
+    }
+  },
+  {
+    "name": "account-ko-844",
+    "code": "UnityEngine.Object.FindObjectsByType<Wildfolk.EconomyScreen>(UnityEngine.FindObjectsInactive.Include,UnityEngine.FindObjectsSortMode.None).First().OpenAccount()",
+    "result": "navigation-only",
+    "capture": {
+      "label": "account-ko-844",
+      "exists": true,
+      "screen": [
+        844,
+        390
+      ]
+    }
+  },
+  {
+    "name": "delete-unconfirmed-ko-844",
+    "code": "UnityEngine.Object.FindObjectsByType<Wildfolk.AccountProfileScreen>(UnityEngine.FindObjectsInactive.Include,UnityEngine.FindObjectsSortMode.None).First().Delete()",
+    "result": "navigation-only",
+    "capture": {
+      "label": "delete-unconfirmed-ko-844",
+      "exists": true,
+      "screen": [
+        844,
+        390
+      ]
+    }
+  },
+  {
+    "name": "class-overview-ko-844",
+    "code": "UnityEngine.Object.FindObjectsByType<Wildfolk.AccountProfileScreen>(UnityEngine.FindObjectsInactive.Include,UnityEngine.FindObjectsSortMode.None).First().CancelDelete();UnityEngine.Object.FindObjectsByType<Wildfolk.AccountProfileScreen>(UnityEngine.FindObjectsInactive.Include,UnityEngine.FindObjectsSortMode.None).First().Back();UnityEngine.Object.FindObjectsByType<Wildfolk.EconomyScreen>(UnityEngine.FindObjectsInactive.Include,UnityEngine.FindObjectsSortMode.None).First().CloseHub();UnityEngine.Object.FindObjectsByType<Wildfolk.ClassLobbyScreen>(UnityEngine.FindObjectsInactive.Include,UnityEngine.FindObjectsSortMode.None).First().Open()",
+    "result": "navigation-only",
+    "capture": {
+      "label": "class-overview-ko-844",
+      "exists": true,
+      "screen": [
+        844,
+        390
+      ]
+    }
+  },
+  {
+    "name": "class-tree-ko-844",
+    "code": "UnityEngine.Object.FindObjectsByType<Wildfolk.ClassLobbyScreen>(UnityEngine.FindObjectsInactive.Include,UnityEngine.FindObjectsSortMode.None).First().OpenTree()",
+    "result": "navigation-only",
+    "capture": {
+      "label": "class-tree-ko-844",
+      "exists": true,
+      "screen": [
+        844,
+        390
+      ]
+    }
+  },
+  {
+    "name": "multiplayer-internet-ko-844",
+    "code": "UnityEngine.Object.FindObjectsByType<Wildfolk.ClassLobbyScreen>(UnityEngine.FindObjectsInactive.Include,UnityEngine.FindObjectsSortMode.None).First().Back();UnityEngine.Object.FindObjectsByType<Wildfolk.ClassLobbyScreen>(UnityEngine.FindObjectsInactive.Include,UnityEngine.FindObjectsSortMode.None).First().Back();UnityEngine.Object.FindObjectsByType<Wildfolk.HomeScreen>(UnityEngine.FindObjectsInactive.Include,UnityEngine.FindObjectsSortMode.None).First().OpenMultiplayer()",
+    "result": "navigation-only",
+    "capture": {
+      "label": "multiplayer-internet-ko-844",
+      "exists": true,
+      "screen": [
+        844,
+        390
+      ]
+    }
+  },
+  {
+    "name": "multiplayer-invalid-ko-844",
+    "code": "UnityEngine.Object.FindObjectsByType<Wildfolk.MultiplayerMenu>(UnityEngine.FindObjectsInactive.Include,UnityEngine.FindObjectsSortMode.None).First().Destination.text=\"!\";UnityEngine.Object.FindObjectsByType<Wildfolk.MultiplayerMenu>(UnityEngine.FindObjectsInactive.Include,UnityEngine.FindObjectsSortMode.None).First().Join()",
+    "result": "navigation-only",
+    "capture": {
+      "label": "multiplayer-invalid-ko-844",
+      "exists": true,
+      "screen": [
+        844,
+        390
+      ]
+    }
+  },
+  {
+    "name": "multiplayer-lan-ko-844",
+    "code": "UnityEngine.Object.FindObjectsByType<Wildfolk.MultiplayerMenu>(UnityEngine.FindObjectsInactive.Include,UnityEngine.FindObjectsSortMode.None).First().ToggleRoute()",
+    "result": "navigation-only",
+    "capture": {
+      "label": "multiplayer-lan-ko-844",
+      "exists": true,
+      "screen": [
+        844,
+        390
+      ]
+    }
+  },
+  {
+    "name": "home-restored-ko-844",
+    "code": "UnityEngine.Object.FindObjectsByType<Wildfolk.MultiplayerMenu>(UnityEngine.FindObjectsInactive.Include,UnityEngine.FindObjectsSortMode.None).First().Back()",
+    "result": "navigation-only",
+    "capture": {
+      "label": "home-restored-ko-844",
+      "exists": true,
+      "screen": [
+        844,
+        390
+      ]
+    }
+  }
+]

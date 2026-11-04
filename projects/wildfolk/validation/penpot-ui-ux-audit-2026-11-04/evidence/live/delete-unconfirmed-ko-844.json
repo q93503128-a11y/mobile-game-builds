@@ -1,0 +1,63 @@
+{
+  "utc": "2026-11-04T01:46:56.9321594Z",
+  "scene": "MainMenu",
+  "screen": [
+    844,
+    390
+  ],
+  "language": "ko",
+  "labels": [
+    {
+      "name": "Label",
+      "text": "취소",
+      "size": 32,
+      "width": 568.0,
+      "height": 104.0,
+      "preferredHeight": 42.6685524,
+      "overflow": "Truncate"
+    },
+    {
+      "name": "Warning",
+      "text": "삭제 요청 대상:\n• 계정·클라우드 프로필·직업 소유 자격\n• 젬·업적·출석 기록\n• 문의 내용과 진단 정보\n\n로컬 월드는 유지됩니다. 최소 구매 기록은 검토된 보존 정책에 따라 남을 수 있습니다.\n\n삭제 후 복구할 수 없습니다. 요청 접수 뒤 처리 완료까지 시간이 걸립니다.",
+      "size": 36,
+      "width": 1400.0,
+      "height": 580.0,
+      "preferredHeight": 366.447571,
+      "overflow": "Truncate"
+    },
+    {
+      "name": "Title",
+      "text": "계정 삭제",
+      "size": 44,
+      "width": 620.0,
+      "height": 70.4,
+      "preferredHeight": 62.74787,
+      "overflow": "Truncate"
+    },
+    {
+      "name": "Label",
+      "text": "삭제 요청 확인",
+      "size": 32,
+      "width": 568.0,
+      "height": 104.0,
+      "preferredHeight": 42.6685524,
+      "overflow": "Truncate"
+    }
+  ],
+  "controls": [
+    {
+      "name": "Cancel",
+      "type": "Button",
+      "enabled": true,
+      "width": 600.0,
+      "height": 120.0
+    },
+    {
+      "name": "Confirm deletion",
+      "type": "Button",
+      "enabled": true,
+      "width": 600.0,
+      "height": 120.0
+    }
+  ]
+}

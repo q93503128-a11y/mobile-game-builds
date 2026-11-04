@@ -1,0 +1,4950 @@
+[
+  {
+    "callback": "SettingsPanel.NextLanguage",
+    "controller": "SettingsPanel",
+    "method": "NextLanguage",
+    "instances": [
+      {
+        "scene": "MainMenu.unity",
+        "path": "Home Canvas/Safe Area/Settings Panel Overlay/Settings Panel/Language Selector",
+        "line": 331,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Pause Overlay/Settings Panel Overlay/Settings Panel/Language Selector",
+        "line": 132845,
+        "type": "UnityEngine.UI.Button"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "StoreScreen.Open",
+    "controller": "StoreScreen",
+    "method": "Open",
+    "instances": [
+      {
+        "scene": "MainMenu.unity",
+        "path": "Home Canvas/Safe Area/Home/Camp Records/Gem Balance",
+        "line": 685,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "MainMenu.unity",
+        "path": "Home Canvas/Safe Area/Profile and Records Overlay/Profile and Records/Gem Store Entry",
+        "line": 69087,
+        "type": "UnityEngine.UI.Button"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "AccountProfileScreen.CloseHelp",
+    "controller": "AccountProfileScreen",
+    "method": "CloseHelp",
+    "instances": [
+      {
+        "scene": "MainMenu.unity",
+        "path": "Home Canvas/Safe Area/Help and Feedback Overlay/Help and Feedback/Back",
+        "line": 1744,
+        "type": "UnityEngine.UI.Button"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "AccountProfileScreen.CopySupport",
+    "controller": "AccountProfileScreen",
+    "method": "CopySupport",
+    "instances": [
+      {
+        "scene": "MainMenu.unity",
+        "path": "Home Canvas/Safe Area/Account Journal Overlay/Account Journal/Copy Support",
+        "line": 2354,
+        "type": "UnityEngine.UI.Button"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "AccountProfileScreen.Enroll",
+    "controller": "AccountProfileScreen",
+    "method": "Enroll",
+    "instances": [
+      {
+        "scene": "MainMenu.unity",
+        "path": "Home Canvas/Safe Area/Account Journal Overlay/Account Journal/Account Actions/Record Alpha",
+        "line": 2686,
+        "type": "UnityEngine.UI.Button"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "MultiplayerMenu.Host",
+    "controller": "MultiplayerMenu",
+    "method": "Host",
+    "instances": [
+      {
+        "scene": "MainMenu.unity",
+        "path": "Home Canvas/Safe Area/Camp Journal Overlay/Camp Journal/Create or Join/Host Game",
+        "line": 2775,
+        "type": "UnityEngine.UI.Button"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "EconomyScreen.OpenAttendance",
+    "controller": "EconomyScreen",
+    "method": "OpenAttendance",
+    "instances": [
+      {
+        "scene": "MainMenu.unity",
+        "path": "Home Canvas/Safe Area/Home/Camp Records/Direct Attendance",
+        "line": 3252,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "MainMenu.unity",
+        "path": "Home Canvas/Safe Area/Profile and Records Overlay/Profile and Records/Attendance Entry",
+        "line": 57577,
+        "type": "UnityEngine.UI.Button"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "EconomyScreen.Category",
+    "controller": "EconomyScreen",
+    "method": "Category",
+    "instances": [
+      {
+        "scene": "MainMenu.unity",
+        "path": "Home Canvas/Safe Area/Achievements Overlay/Achievements/Category 5",
+        "line": 3400,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "MainMenu.unity",
+        "path": "Home Canvas/Safe Area/Achievements Overlay/Achievements/Category 4",
+        "line": 4976,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "MainMenu.unity",
+        "path": "Home Canvas/Safe Area/Achievements Overlay/Achievements/Category 2",
+        "line": 12299,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "MainMenu.unity",
+        "path": "Home Canvas/Safe Area/Achievements Overlay/Achievements/Category 3",
+        "line": 19112,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "MainMenu.unity",
+        "path": "Home Canvas/Safe Area/Achievements Overlay/Achievements/Category 6",
+        "line": 33609,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "MainMenu.unity",
+        "path": "Home Canvas/Safe Area/Achievements Overlay/Achievements/Category 0",
+        "line": 49848,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "MainMenu.unity",
+        "path": "Home Canvas/Safe Area/Achievements Overlay/Achievements/Category 1",
+        "line": 62550,
+        "type": "UnityEngine.UI.Button"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "StoreScreen.Close",
+    "controller": "StoreScreen",
+    "method": "Close",
+    "instances": [
+      {
+        "scene": "MainMenu.unity",
+        "path": "Home Canvas/Safe Area/Gem Store Overlay/Gem Store/Back",
+        "line": 4338,
+        "type": "UnityEngine.UI.Button"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "AccountProfileScreen.Delete",
+    "controller": "AccountProfileScreen",
+    "method": "Delete",
+    "instances": [
+      {
+        "scene": "MainMenu.unity",
+        "path": "Home Canvas/Safe Area/Account Journal Overlay/Account Journal/Account Actions/Delete account",
+        "line": 5484,
+        "type": "UnityEngine.UI.Button"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "EconomyScreen.ClaimAttendance",
+    "controller": "EconomyScreen",
+    "method": "ClaimAttendance",
+    "instances": [
+      {
+        "scene": "MainMenu.unity",
+        "path": "Home Canvas/Safe Area/Attendance Overlay/Attendance/Attend",
+        "line": 6422,
+        "type": "UnityEngine.UI.Button"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "AccountProfileScreen.KeepLocal",
+    "controller": "AccountProfileScreen",
+    "method": "KeepLocal",
+    "instances": [
+      {
+        "scene": "MainMenu.unity",
+        "path": "Home Canvas/Safe Area/Account Journal Overlay/Account Journal/Keep local",
+        "line": 6743,
+        "type": "UnityEngine.UI.Button"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "MultiplayerMenu.ToggleRoute",
+    "controller": "MultiplayerMenu",
+    "method": "ToggleRoute",
+    "instances": [
+      {
+        "scene": "MainMenu.unity",
+        "path": "Home Canvas/Safe Area/Camp Journal Overlay/Camp Journal/Connection Route",
+        "line": 6874,
+        "type": "UnityEngine.UI.Button"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "EconomyScreen.ClaimEverything",
+    "controller": "EconomyScreen",
+    "method": "ClaimEverything",
+    "instances": [
+      {
+        "scene": "MainMenu.unity",
+        "path": "Home Canvas/Safe Area/Achievements Overlay/Achievements/Claim All",
+        "line": 7118,
+        "type": "UnityEngine.UI.Button"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "EconomyScreen.AdPrivacyOptions",
+    "controller": "EconomyScreen",
+    "method": "AdPrivacyOptions",
+    "instances": [
+      {
+        "scene": "MainMenu.unity",
+        "path": "Home Canvas/Safe Area/Profile and Records Overlay/Profile and Records/Ad privacy",
+        "line": 7619,
+        "type": "UnityEngine.UI.Button"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "ClassLobbyScreen.SelectCard",
+    "controller": "ClassLobbyScreen",
+    "method": "SelectCard",
+    "instances": [
+      {
+        "scene": "MainMenu.unity",
+        "path": "Home Canvas/Safe Area/Class Field Journal Overlay/Class Field Journal/Class Overview/Class Entry 1",
+        "line": 8714,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "MainMenu.unity",
+        "path": "Home Canvas/Safe Area/Class Field Journal Overlay/Class Field Journal/Class Overview/Class Entry 0",
+        "line": 12857,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "MainMenu.unity",
+        "path": "Home Canvas/Safe Area/Class Field Journal Overlay/Class Field Journal/Class Overview/Class Entry 3",
+        "line": 30711,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "MainMenu.unity",
+        "path": "Home Canvas/Safe Area/Class Field Journal Overlay/Class Field Journal/Class Overview/Class Entry 4",
+        "line": 34036,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "MainMenu.unity",
+        "path": "Home Canvas/Safe Area/Class Field Journal Overlay/Class Field Journal/Class Overview/Class Entry 5",
+        "line": 45262,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "MainMenu.unity",
+        "path": "Home Canvas/Safe Area/Class Field Journal Overlay/Class Field Journal/Class Overview/Class Entry 2",
+        "line": 48817,
+        "type": "UnityEngine.UI.Button"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "ClassLobbyScreen.SelectNode",
+    "controller": "ClassLobbyScreen",
+    "method": "SelectNode",
+    "instances": [
+      {
+        "scene": "MainMenu.unity",
+        "path": "Home Canvas/Safe Area/Class Field Journal Overlay/Class Field Journal/Class Tree/Class Skill 0",
+        "line": 9277,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "MainMenu.unity",
+        "path": "Home Canvas/Safe Area/Class Field Journal Overlay/Class Field Journal/Class Tree/Class Skill 2",
+        "line": 23372,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "MainMenu.unity",
+        "path": "Home Canvas/Safe Area/Class Field Journal Overlay/Class Field Journal/Class Tree/Class Skill 5",
+        "line": 26646,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "MainMenu.unity",
+        "path": "Home Canvas/Safe Area/Class Field Journal Overlay/Class Field Journal/Class Tree/Class Skill 7",
+        "line": 26905,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "MainMenu.unity",
+        "path": "Home Canvas/Safe Area/Class Field Journal Overlay/Class Field Journal/Class Tree/Class Skill 8",
+        "line": 31403,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "MainMenu.unity",
+        "path": "Home Canvas/Safe Area/Class Field Journal Overlay/Class Field Journal/Class Tree/Class Skill 1",
+        "line": 44002,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "MainMenu.unity",
+        "path": "Home Canvas/Safe Area/Class Field Journal Overlay/Class Field Journal/Class Tree/Class Skill 4",
+        "line": 63635,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "MainMenu.unity",
+        "path": "Home Canvas/Safe Area/Class Field Journal Overlay/Class Field Journal/Class Tree/Class Skill 6",
+        "line": 65488,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "MainMenu.unity",
+        "path": "Home Canvas/Safe Area/Class Field Journal Overlay/Class Field Journal/Class Tree/Class Skill 3",
+        "line": 73764,
+        "type": "UnityEngine.UI.Button"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "HomeScreen.SinglePlayer",
+    "controller": "HomeScreen",
+    "method": "SinglePlayer",
+    "instances": [
+      {
+        "scene": "MainMenu.unity",
+        "path": "Home Canvas/Safe Area/Home/Field Journal/Single Player",
+        "line": 9794,
+        "type": "UnityEngine.UI.Button"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "HomeScreen.OpenSettings",
+    "controller": "HomeScreen",
+    "method": "OpenSettings",
+    "instances": [
+      {
+        "scene": "MainMenu.unity",
+        "path": "Home Canvas/Safe Area/Home/Field Journal/Settings",
+        "line": 11212,
+        "type": "UnityEngine.UI.Button"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "MultiplayerMenu.Join",
+    "controller": "MultiplayerMenu",
+    "method": "Join",
+    "instances": [
+      {
+        "scene": "MainMenu.unity",
+        "path": "Home Canvas/Safe Area/Camp Journal Overlay/Camp Journal/Create or Join/Join Game",
+        "line": 14079,
+        "type": "UnityEngine.UI.Button"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "StoreScreen.Contact",
+    "controller": "StoreScreen",
+    "method": "Contact",
+    "instances": [
+      {
+        "scene": "MainMenu.unity",
+        "path": "Home Canvas/Safe Area/Gem Store Overlay/Gem Store/Purchase help",
+        "line": 15431,
+        "type": "UnityEngine.UI.Button"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "HomeScreen.TryContinue",
+    "controller": "HomeScreen",
+    "method": "TryContinue",
+    "instances": [
+      {
+        "scene": "MainMenu.unity",
+        "path": "Home Canvas/Safe Area/Home/Field Journal/Continue",
+        "line": 17057,
+        "type": "UnityEngine.UI.Button"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "EconomyScreen.Select",
+    "controller": "EconomyScreen",
+    "method": "Select",
+    "instances": [
+      {
+        "scene": "MainMenu.unity",
+        "path": "Home Canvas/Safe Area/Achievements Overlay/Achievements/Family Viewport/Families/Family 4",
+        "line": 18311,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "MainMenu.unity",
+        "path": "Home Canvas/Safe Area/Achievements Overlay/Achievements/Family Viewport/Families/Family 2",
+        "line": 18964,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "MainMenu.unity",
+        "path": "Home Canvas/Safe Area/Achievements Overlay/Achievements/Family Viewport/Families/Family 0",
+        "line": 23921,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "MainMenu.unity",
+        "path": "Home Canvas/Safe Area/Achievements Overlay/Achievements/Family Viewport/Families/Family 5",
+        "line": 24070,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "MainMenu.unity",
+        "path": "Home Canvas/Safe Area/Achievements Overlay/Achievements/Family Viewport/Families/Family 1",
+        "line": 31755,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "MainMenu.unity",
+        "path": "Home Canvas/Safe Area/Achievements Overlay/Achievements/Family Viewport/Families/Family 3",
+        "line": 32275,
+        "type": "UnityEngine.UI.Button"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "ClassLobbyScreen.Respec",
+    "controller": "ClassLobbyScreen",
+    "method": "Respec",
+    "instances": [
+      {
+        "scene": "MainMenu.unity",
+        "path": "Home Canvas/Safe Area/Class Field Journal Overlay/Class Field Journal/Class Tree/Respec",
+        "line": 19466,
+        "type": "UnityEngine.UI.Button"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "StoreScreen.Recover",
+    "controller": "StoreScreen",
+    "method": "Recover",
+    "instances": [
+      {
+        "scene": "MainMenu.unity",
+        "path": "Home Canvas/Safe Area/Gem Store Overlay/Gem Store/Check unfinished",
+        "line": 19879,
+        "type": "UnityEngine.UI.Button"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "StoreScreen.ToggleHistory",
+    "controller": "StoreScreen",
+    "method": "ToggleHistory",
+    "instances": [
+      {
+        "scene": "MainMenu.unity",
+        "path": "Home Canvas/Safe Area/Gem Store Overlay/Gem Store/History",
+        "line": 21029,
+        "type": "UnityEngine.UI.Button"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "EconomyScreen.Board",
+    "controller": "EconomyScreen",
+    "method": "Board",
+    "instances": [
+      {
+        "scene": "MainMenu.unity",
+        "path": "Home Canvas/Safe Area/Attendance Overlay/Attendance/Board 1",
+        "line": 22800,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "MainMenu.unity",
+        "path": "Home Canvas/Safe Area/Attendance Overlay/Attendance/Board 0",
+        "line": 61058,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "MainMenu.unity",
+        "path": "Home Canvas/Safe Area/Attendance Overlay/Attendance/Board 2",
+        "line": 71772,
+        "type": "UnityEngine.UI.Button"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "AccountProfileScreen.Connect",
+    "controller": "AccountProfileScreen",
+    "method": "Connect",
+    "instances": [
+      {
+        "scene": "MainMenu.unity",
+        "path": "Home Canvas/Safe Area/Account Journal Overlay/Account Journal/Account Actions/Connect",
+        "line": 24256,
+        "type": "UnityEngine.UI.Button"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "AccountProfileScreen.CancelDelete",
+    "controller": "AccountProfileScreen",
+    "method": "CancelDelete",
+    "instances": [
+      {
+        "scene": "MainMenu.unity",
+        "path": "Home Canvas/Safe Area/Delete Account Overlay/Delete Account/Cancel",
+        "line": 24366,
+        "type": "UnityEngine.UI.Button"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "StoreScreen.Select",
+    "controller": "StoreScreen",
+    "method": "Select",
+    "instances": [
+      {
+        "scene": "MainMenu.unity",
+        "path": "Home Canvas/Safe Area/Gem Store Overlay/Gem Store/Gem package 0",
+        "line": 25120,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "MainMenu.unity",
+        "path": "Home Canvas/Safe Area/Gem Store Overlay/Gem Store/Gem package 1",
+        "line": 49288,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "MainMenu.unity",
+        "path": "Home Canvas/Safe Area/Gem Store Overlay/Gem Store/Gem package 2",
+        "line": 58529,
+        "type": "UnityEngine.UI.Button"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "AccountProfileScreen.SignOut",
+    "controller": "AccountProfileScreen",
+    "method": "SignOut",
+    "instances": [
+      {
+        "scene": "MainMenu.unity",
+        "path": "Home Canvas/Safe Area/Account Journal Overlay/Account Journal/Account Actions/Sign out",
+        "line": 28635,
+        "type": "UnityEngine.UI.Button"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "EconomyScreen.ClaimSelected",
+    "controller": "EconomyScreen",
+    "method": "ClaimSelected",
+    "instances": [
+      {
+        "scene": "MainMenu.unity",
+        "path": "Home Canvas/Safe Area/Achievements Overlay/Achievements/Claim",
+        "line": 28899,
+        "type": "UnityEngine.UI.Button"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "HomeScreen.ShowHome",
+    "controller": "HomeScreen",
+    "method": "ShowHome",
+    "instances": [
+      {
+        "scene": "MainMenu.unity",
+        "path": "Home Canvas/Safe Area/New World Confirmation Overlay/New World Confirmation/Cancel",
+        "line": 31606,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "MainMenu.unity",
+        "path": "Home Canvas/Safe Area/Settings Panel Overlay/Settings Panel/Back",
+        "line": 73076,
+        "type": "UnityEngine.UI.Button"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "ClassLobbyScreen.Back",
+    "controller": "ClassLobbyScreen",
+    "method": "Back",
+    "instances": [
+      {
+        "scene": "MainMenu.unity",
+        "path": "Home Canvas/Safe Area/Class Field Journal Overlay/Class Field Journal/Back",
+        "line": 32668,
+        "type": "UnityEngine.UI.Button"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "EconomyScreen.OpenAccount",
+    "controller": "EconomyScreen",
+    "method": "OpenAccount",
+    "instances": [
+      {
+        "scene": "MainMenu.unity",
+        "path": "Home Canvas/Safe Area/Profile and Records Overlay/Profile and Records/Account Settings",
+        "line": 34242,
+        "type": "UnityEngine.UI.Button"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "ClassLobbyScreen.AskPurchase",
+    "controller": "ClassLobbyScreen",
+    "method": "AskPurchase",
+    "instances": [
+      {
+        "scene": "MainMenu.unity",
+        "path": "Home Canvas/Safe Area/Class Field Journal Overlay/Class Field Journal/Class Overview/Purchase",
+        "line": 35139,
+        "type": "UnityEngine.UI.Button"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "AccountProfileScreen.Submit",
+    "controller": "AccountProfileScreen",
+    "method": "Submit",
+    "instances": [
+      {
+        "scene": "MainMenu.unity",
+        "path": "Home Canvas/Safe Area/Help and Feedback Overlay/Help and Feedback/Send feedback",
+        "line": 36672,
+        "type": "UnityEngine.UI.Button"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "ClassLobbyScreen.ConfirmPurchase",
+    "controller": "ClassLobbyScreen",
+    "method": "ConfirmPurchase",
+    "instances": [
+      {
+        "scene": "MainMenu.unity",
+        "path": "Home Canvas/Safe Area/Class Field Journal Overlay/Confirm Purchase Overlay/Confirm Purchase/Confirm",
+        "line": 37015,
+        "type": "UnityEngine.UI.Button"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "AccountProfileScreen.Privacy",
+    "controller": "AccountProfileScreen",
+    "method": "Privacy",
+    "instances": [
+      {
+        "scene": "MainMenu.unity",
+        "path": "Home Canvas/Safe Area/Account Journal Overlay/Account Journal/Account Actions/Privacy",
+        "line": 37376,
+        "type": "UnityEngine.UI.Button"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "EconomyScreen.WatchReward",
+    "controller": "EconomyScreen",
+    "method": "WatchReward",
+    "instances": [
+      {
+        "scene": "MainMenu.unity",
+        "path": "Home Canvas/Safe Area/Profile and Records Overlay/Profile and Records/Optional Gem ad",
+        "line": 37828,
+        "type": "UnityEngine.UI.Button"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "AccountProfileScreen.Sync",
+    "controller": "AccountProfileScreen",
+    "method": "Sync",
+    "instances": [
+      {
+        "scene": "MainMenu.unity",
+        "path": "Home Canvas/Safe Area/Account Journal Overlay/Account Journal/Account Actions/Sync",
+        "line": 39421,
+        "type": "UnityEngine.UI.Button"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "ClassLobbyScreen.OpenTree",
+    "controller": "ClassLobbyScreen",
+    "method": "OpenTree",
+    "instances": [
+      {
+        "scene": "MainMenu.unity",
+        "path": "Home Canvas/Safe Area/Class Field Journal Overlay/Class Field Journal/Class Overview/Class Skill Tree",
+        "line": 40977,
+        "type": "UnityEngine.UI.Button"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "StoreScreen.Buy",
+    "controller": "StoreScreen",
+    "method": "Buy",
+    "instances": [
+      {
+        "scene": "MainMenu.unity",
+        "path": "Home Canvas/Safe Area/Gem Store Overlay/Gem Store/Selection/Purchase",
+        "line": 45884,
+        "type": "UnityEngine.UI.Button"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "EconomyScreen.OpenHub",
+    "controller": "EconomyScreen",
+    "method": "OpenHub",
+    "instances": [
+      {
+        "scene": "MainMenu.unity",
+        "path": "Home Canvas/Safe Area/Home/Field Journal/Account Entry",
+        "line": 46167,
+        "type": "UnityEngine.UI.Button"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "ClassLobbyScreen.Invest",
+    "controller": "ClassLobbyScreen",
+    "method": "Invest",
+    "instances": [
+      {
+        "scene": "MainMenu.unity",
+        "path": "Home Canvas/Safe Area/Class Field Journal Overlay/Class Field Journal/Class Tree/Invest",
+        "line": 47981,
+        "type": "UnityEngine.UI.Button"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "HomeScreen.BeginNew",
+    "controller": "HomeScreen",
+    "method": "BeginNew",
+    "instances": [
+      {
+        "scene": "MainMenu.unity",
+        "path": "Home Canvas/Safe Area/New World Confirmation Overlay/New World Confirmation/Start New World",
+        "line": 49095,
+        "type": "UnityEngine.UI.Button"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "ClassLobbyScreen.SelectClass",
+    "controller": "ClassLobbyScreen",
+    "method": "SelectClass",
+    "instances": [
+      {
+        "scene": "MainMenu.unity",
+        "path": "Home Canvas/Safe Area/Class Field Journal Overlay/Class Field Journal/Class Overview/Select",
+        "line": 51085,
+        "type": "UnityEngine.UI.Button"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "MultiplayerMenu.Back",
+    "controller": "MultiplayerMenu",
+    "method": "Back",
+    "instances": [
+      {
+        "scene": "MainMenu.unity",
+        "path": "Home Canvas/Safe Area/Camp Journal Overlay/Camp Journal/Back",
+        "line": 51553,
+        "type": "UnityEngine.UI.Button"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "MultiplayerMenu.CopyCode",
+    "controller": "MultiplayerMenu",
+    "method": "CopyCode",
+    "instances": [
+      {
+        "scene": "MainMenu.unity",
+        "path": "Home Canvas/Safe Area/Camp Journal Overlay/Camp Journal/Room/Copy code",
+        "line": 51798,
+        "type": "UnityEngine.UI.Button"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "AccountProfileScreen.Help",
+    "controller": "AccountProfileScreen",
+    "method": "Help",
+    "instances": [
+      {
+        "scene": "MainMenu.unity",
+        "path": "Home Canvas/Safe Area/Account Journal Overlay/Account Journal/Account Actions/Help",
+        "line": 51967,
+        "type": "UnityEngine.UI.Button"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "ClassLobbyScreen.Open",
+    "controller": "ClassLobbyScreen",
+    "method": "Open",
+    "instances": [
+      {
+        "scene": "MainMenu.unity",
+        "path": "Home Canvas/Safe Area/Home/Field Journal/Class Journal Entry",
+        "line": 53260,
+        "type": "UnityEngine.UI.Button"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "EconomyScreen.Back",
+    "controller": "EconomyScreen",
+    "method": "Back",
+    "instances": [
+      {
+        "scene": "MainMenu.unity",
+        "path": "Home Canvas/Safe Area/Achievements Overlay/Achievements/Back",
+        "line": 54425,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "MainMenu.unity",
+        "path": "Home Canvas/Safe Area/Attendance Overlay/Attendance/Back",
+        "line": 64577,
+        "type": "UnityEngine.UI.Button"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "AccountProfileScreen.Back",
+    "controller": "AccountProfileScreen",
+    "method": "Back",
+    "instances": [
+      {
+        "scene": "MainMenu.unity",
+        "path": "Home Canvas/Safe Area/Account Journal Overlay/Account Journal/Back",
+        "line": 54937,
+        "type": "UnityEngine.UI.Button"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "MultiplayerMenu.Single",
+    "controller": "MultiplayerMenu",
+    "method": "Single",
+    "instances": [
+      {
+        "scene": "MainMenu.unity",
+        "path": "Home Canvas/Safe Area/Camp Journal Overlay/Camp Journal/Single Player",
+        "line": 55955,
+        "type": "UnityEngine.UI.Button"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "EconomyScreen.RetryReward",
+    "controller": "EconomyScreen",
+    "method": "RetryReward",
+    "instances": [
+      {
+        "scene": "MainMenu.unity",
+        "path": "Home Canvas/Safe Area/Profile and Records Overlay/Profile and Records/Retry reward",
+        "line": 56609,
+        "type": "UnityEngine.UI.Button"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "UserPreferences.ResetDefaults",
+    "controller": "UserPreferences",
+    "method": "ResetDefaults",
+    "instances": [
+      {
+        "scene": "MainMenu.unity",
+        "path": "Home Canvas/Safe Area/Settings Panel Overlay/Settings Panel/Reset",
+        "line": 57118,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Pause Overlay/Settings Panel Overlay/Settings Panel/Reset",
+        "line": 107045,
+        "type": "UnityEngine.UI.Button"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "EconomyScreen.Sync",
+    "controller": "EconomyScreen",
+    "method": "Sync",
+    "instances": [
+      {
+        "scene": "MainMenu.unity",
+        "path": "Home Canvas/Safe Area/Attendance Overlay/Attendance/Retry",
+        "line": 58211,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "MainMenu.unity",
+        "path": "Home Canvas/Safe Area/Achievements Overlay/Achievements/Retry",
+        "line": 59654,
+        "type": "UnityEngine.UI.Button"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "EconomyScreen.CloseHub",
+    "controller": "EconomyScreen",
+    "method": "CloseHub",
+    "instances": [
+      {
+        "scene": "MainMenu.unity",
+        "path": "Home Canvas/Safe Area/Profile and Records Overlay/Profile and Records/Back",
+        "line": 60439,
+        "type": "UnityEngine.UI.Button"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "UserPreferences.SetSfx",
+    "controller": "UserPreferences",
+    "method": "SetSfx",
+    "instances": [
+      {
+        "scene": "MainMenu.unity",
+        "path": "Home Canvas/Safe Area/Settings Panel Overlay/Settings Panel/setting.sfx/Slider",
+        "line": 61310,
+        "type": "UnityEngine.UI.Slider"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Pause Overlay/Settings Panel Overlay/Settings Panel/setting.sfx/Slider",
+        "line": 72971,
+        "type": "UnityEngine.UI.Slider"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "MultiplayerMenu.Enter",
+    "controller": "MultiplayerMenu",
+    "method": "Enter",
+    "instances": [
+      {
+        "scene": "MainMenu.unity",
+        "path": "Home Canvas/Safe Area/Camp Journal Overlay/Camp Journal/Room/Enter Game",
+        "line": 61757,
+        "type": "UnityEngine.UI.Button"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "AccountProfileScreen.UseCloud",
+    "controller": "AccountProfileScreen",
+    "method": "UseCloud",
+    "instances": [
+      {
+        "scene": "MainMenu.unity",
+        "path": "Home Canvas/Safe Area/Account Journal Overlay/Account Journal/Use cloud profile",
+        "line": 61964,
+        "type": "UnityEngine.UI.Button"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "ClassLobbyScreen.CancelPurchase",
+    "controller": "ClassLobbyScreen",
+    "method": "CancelPurchase",
+    "instances": [
+      {
+        "scene": "MainMenu.unity",
+        "path": "Home Canvas/Safe Area/Class Field Journal Overlay/Confirm Purchase Overlay/Confirm Purchase/Cancel",
+        "line": 65061,
+        "type": "UnityEngine.UI.Button"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "UserPreferences.SetControl",
+    "controller": "UserPreferences",
+    "method": "SetControl",
+    "instances": [
+      {
+        "scene": "MainMenu.unity",
+        "path": "Home Canvas/Safe Area/Settings Panel Overlay/Settings Panel/setting.control_size/Slider",
+        "line": 65266,
+        "type": "UnityEngine.UI.Slider"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Pause Overlay/Settings Panel Overlay/Settings Panel/setting.control_size/Slider",
+        "line": 70043,
+        "type": "UnityEngine.UI.Slider"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "EconomyScreen.OpenAchievements",
+    "controller": "EconomyScreen",
+    "method": "OpenAchievements",
+    "instances": [
+      {
+        "scene": "MainMenu.unity",
+        "path": "Home Canvas/Safe Area/Home/Camp Records/Direct Achievements",
+        "line": 68245,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "MainMenu.unity",
+        "path": "Home Canvas/Safe Area/Profile and Records Overlay/Profile and Records/Achievements Entry",
+        "line": 69365,
+        "type": "UnityEngine.UI.Button"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "AccountProfileScreen.ConfirmDelete",
+    "controller": "AccountProfileScreen",
+    "method": "ConfirmDelete",
+    "instances": [
+      {
+        "scene": "MainMenu.unity",
+        "path": "Home Canvas/Safe Area/Delete Account Overlay/Delete Account/Confirm deletion",
+        "line": 70019,
+        "type": "UnityEngine.UI.Button"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "UserPreferences.SetMaster",
+    "controller": "UserPreferences",
+    "method": "SetMaster",
+    "instances": [
+      {
+        "scene": "MainMenu.unity",
+        "path": "Home Canvas/Safe Area/Settings Panel Overlay/Settings Panel/setting.master/Slider",
+        "line": 70710,
+        "type": "UnityEngine.UI.Slider"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Pause Overlay/Settings Panel Overlay/Settings Panel/setting.master/Slider",
+        "line": 74851,
+        "type": "UnityEngine.UI.Slider"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "HomeScreen.OpenMultiplayer",
+    "controller": "HomeScreen",
+    "method": "OpenMultiplayer",
+    "instances": [
+      {
+        "scene": "MainMenu.unity",
+        "path": "Home Canvas/Safe Area/Home/Field Journal/Multiplayer",
+        "line": 71583,
+        "type": "UnityEngine.UI.Button"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "UserPreferences.SetMusic",
+    "controller": "UserPreferences",
+    "method": "SetMusic",
+    "instances": [
+      {
+        "scene": "MainMenu.unity",
+        "path": "Home Canvas/Safe Area/Settings Panel Overlay/Settings Panel/setting.music/Slider",
+        "line": 72683,
+        "type": "UnityEngine.UI.Slider"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Pause Overlay/Settings Panel Overlay/Settings Panel/setting.music/Slider",
+        "line": 167902,
+        "type": "UnityEngine.UI.Slider"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "AccountProfileScreen.UseExisting",
+    "controller": "AccountProfileScreen",
+    "method": "UseExisting",
+    "instances": [
+      {
+        "scene": "MainMenu.unity",
+        "path": "Home Canvas/Safe Area/Account Journal Overlay/Account Journal/Use existing account",
+        "line": 73337,
+        "type": "UnityEngine.UI.Button"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "InventoryPanel.Select",
+    "controller": "InventoryPanel",
+    "method": "Select",
+    "instances": [
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Inventory Overlay/Inventory Panel/Storage Slots/Slot 30",
+        "line": 586,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Inventory Overlay/Inventory Panel/Storage Slots/Slot 15",
+        "line": 8509,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Inventory Overlay/Inventory Panel/Storage Slots/Slot 35",
+        "line": 9425,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Inventory Overlay/Inventory Panel/Storage Slots/Slot 12",
+        "line": 13519,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Inventory Overlay/Inventory Panel/Storage Slots/Slot 27",
+        "line": 20001,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Inventory Overlay/Inventory Panel/Hotbar Slots/Slot 1",
+        "line": 25647,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Inventory Overlay/Inventory Panel/Storage Slots/Slot 24",
+        "line": 29924,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Inventory Overlay/Inventory Panel/Storage Slots/Slot 34",
+        "line": 46384,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Inventory Overlay/Inventory Panel/Hotbar Slots/Slot 3",
+        "line": 58672,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Inventory Overlay/Inventory Panel/Hotbar Slots/Slot 7",
+        "line": 72994,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Inventory Overlay/Inventory Panel/Storage Slots/Slot 33",
+        "line": 78054,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Inventory Overlay/Inventory Panel/Storage Slots/Slot 23",
+        "line": 83324,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Inventory Overlay/Inventory Panel/Storage Slots/Slot 11",
+        "line": 83726,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Inventory Overlay/Inventory Panel/Storage Slots/Slot 25",
+        "line": 85022,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Inventory Overlay/Inventory Panel/Storage Slots/Slot 10",
+        "line": 97143,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Inventory Overlay/Inventory Panel/Storage Slots/Slot 18",
+        "line": 98768,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Inventory Overlay/Inventory Panel/Storage Slots/Slot 16",
+        "line": 100238,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Inventory Overlay/Inventory Panel/Hotbar Slots/Slot 8",
+        "line": 107002,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Inventory Overlay/Inventory Panel/Storage Slots/Slot 36",
+        "line": 111940,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Inventory Overlay/Inventory Panel/Storage Slots/Slot 14",
+        "line": 112508,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Inventory Overlay/Inventory Panel/Hotbar Slots/Slot 6",
+        "line": 117660,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Inventory Overlay/Inventory Panel/Storage Slots/Slot 28",
+        "line": 119824,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Inventory Overlay/Inventory Panel/Storage Slots/Slot 26",
+        "line": 125078,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Inventory Overlay/Inventory Panel/Hotbar Slots/Slot 9",
+        "line": 125493,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Inventory Overlay/Inventory Panel/Storage Slots/Slot 21",
+        "line": 127416,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Inventory Overlay/Inventory Panel/Storage Slots/Slot 13",
+        "line": 132932,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Inventory Overlay/Inventory Panel/Storage Slots/Slot 29",
+        "line": 134652,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Inventory Overlay/Inventory Panel/Storage Slots/Slot 17",
+        "line": 135065,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Inventory Overlay/Inventory Panel/Storage Slots/Slot 22",
+        "line": 139215,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Inventory Overlay/Inventory Panel/Hotbar Slots/Slot 4",
+        "line": 151001,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Inventory Overlay/Inventory Panel/Storage Slots/Slot 32",
+        "line": 155895,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Inventory Overlay/Inventory Panel/Storage Slots/Slot 19",
+        "line": 161725,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Inventory Overlay/Inventory Panel/Storage Slots/Slot 31",
+        "line": 176066,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Inventory Overlay/Inventory Panel/Hotbar Slots/Slot 5",
+        "line": 184004,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Inventory Overlay/Inventory Panel/Hotbar Slots/Slot 2",
+        "line": 185281,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Inventory Overlay/Inventory Panel/Storage Slots/Slot 20",
+        "line": 199879,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Inventory Overlay/Inventory Panel/Storage Slots/Slot 12",
+        "line": 1819,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Inventory Overlay/Inventory Panel/Storage Slots/Slot 18",
+        "line": 14766,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Inventory Overlay/Inventory Panel/Storage Slots/Slot 20",
+        "line": 19167,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Inventory Overlay/Inventory Panel/Storage Slots/Slot 16",
+        "line": 26839,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Inventory Overlay/Inventory Panel/Storage Slots/Slot 27",
+        "line": 31197,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Inventory Overlay/Inventory Panel/Hotbar Slots/Slot 1",
+        "line": 31457,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Inventory Overlay/Inventory Panel/Hotbar Slots/Slot 4",
+        "line": 36489,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Inventory Overlay/Inventory Panel/Storage Slots/Slot 25",
+        "line": 36841,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Inventory Overlay/Inventory Panel/Storage Slots/Slot 26",
+        "line": 37567,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Inventory Overlay/Inventory Panel/Storage Slots/Slot 35",
+        "line": 39561,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Inventory Overlay/Inventory Panel/Storage Slots/Slot 31",
+        "line": 49260,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Inventory Overlay/Inventory Panel/Storage Slots/Slot 23",
+        "line": 85282,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Inventory Overlay/Inventory Panel/Hotbar Slots/Slot 3",
+        "line": 86677,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Inventory Overlay/Inventory Panel/Storage Slots/Slot 30",
+        "line": 86861,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Inventory Overlay/Inventory Panel/Hotbar Slots/Slot 5",
+        "line": 92632,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Inventory Overlay/Inventory Panel/Hotbar Slots/Slot 6",
+        "line": 107724,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Inventory Overlay/Inventory Panel/Storage Slots/Slot 29",
+        "line": 112084,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Inventory Overlay/Inventory Panel/Hotbar Slots/Slot 8",
+        "line": 118376,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Inventory Overlay/Inventory Panel/Storage Slots/Slot 24",
+        "line": 120065,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Inventory Overlay/Inventory Panel/Storage Slots/Slot 14",
+        "line": 124181,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Inventory Overlay/Inventory Panel/Storage Slots/Slot 36",
+        "line": 131025,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Inventory Overlay/Inventory Panel/Storage Slots/Slot 19",
+        "line": 131750,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Inventory Overlay/Inventory Panel/Storage Slots/Slot 22",
+        "line": 133000,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Inventory Overlay/Inventory Panel/Storage Slots/Slot 21",
+        "line": 137015,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Inventory Overlay/Inventory Panel/Storage Slots/Slot 17",
+        "line": 139327,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Inventory Overlay/Inventory Panel/Storage Slots/Slot 28",
+        "line": 165156,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Inventory Overlay/Inventory Panel/Hotbar Slots/Slot 9",
+        "line": 166525,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Inventory Overlay/Inventory Panel/Hotbar Slots/Slot 2",
+        "line": 171425,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Inventory Overlay/Inventory Panel/Storage Slots/Slot 33",
+        "line": 175187,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Inventory Overlay/Inventory Panel/Storage Slots/Slot 32",
+        "line": 175989,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Inventory Overlay/Inventory Panel/Storage Slots/Slot 34",
+        "line": 176252,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Inventory Overlay/Inventory Panel/Storage Slots/Slot 13",
+        "line": 180569,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Inventory Overlay/Inventory Panel/Storage Slots/Slot 11",
+        "line": 182249,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Inventory Overlay/Inventory Panel/Storage Slots/Slot 15",
+        "line": 189943,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Inventory Overlay/Inventory Panel/Hotbar Slots/Slot 7",
+        "line": 193669,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Inventory Overlay/Inventory Panel/Storage Slots/Slot 10",
+        "line": 202559,
+        "type": "UnityEngine.UI.Button"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "ChestPanel.Select",
+    "controller": "ChestPanel",
+    "method": "Select",
+    "instances": [
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Chest Overlay/Chest Panel/Player Scroll/Player Storage/Slot 21",
+        "line": 1008,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Chest Overlay/Chest Panel/Player Scroll/Player Storage/Slot 20",
+        "line": 2558,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Chest Overlay/Chest Panel/Player Scroll/Player Storage/Slot 30",
+        "line": 9225,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Chest Overlay/Chest Panel/Player Scroll/Player Storage/Slot 9",
+        "line": 11481,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Chest Overlay/Chest Panel/Player Scroll/Player Storage/Slot 15",
+        "line": 16859,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Chest Overlay/Chest Panel/Player Scroll/Player Storage/Slot 22",
+        "line": 20929,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Chest Overlay/Chest Panel/Player Scroll/Player Storage/Slot 4",
+        "line": 25867,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Chest Overlay/Chest Panel/Player Scroll/Player Storage/Slot 11",
+        "line": 32338,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Chest Overlay/Chest Panel/Player Scroll/Player Storage/Slot 23",
+        "line": 37837,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Chest Overlay/Chest Panel/Player Scroll/Player Storage/Slot 26",
+        "line": 40972,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Chest Overlay/Chest Panel/Player Scroll/Player Storage/Slot 29",
+        "line": 43020,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Chest Overlay/Chest Panel/Player Scroll/Player Storage/Slot 12",
+        "line": 46997,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Chest Overlay/Chest Panel/Player Scroll/Player Storage/Slot 28",
+        "line": 63397,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Chest Overlay/Chest Panel/Player Scroll/Player Storage/Slot 17",
+        "line": 69387,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Chest Overlay/Chest Panel/Player Scroll/Player Storage/Slot 19",
+        "line": 73237,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Chest Overlay/Chest Panel/Player Scroll/Player Storage/Slot 2",
+        "line": 89811,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Chest Overlay/Chest Panel/Player Scroll/Player Storage/Slot 35",
+        "line": 105346,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Chest Overlay/Chest Panel/Player Scroll/Player Storage/Slot 27",
+        "line": 115212,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Chest Overlay/Chest Panel/Player Scroll/Player Storage/Slot 7",
+        "line": 119600,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Chest Overlay/Chest Panel/Player Scroll/Player Storage/Slot 18",
+        "line": 125883,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Chest Overlay/Chest Panel/Player Scroll/Player Storage/Slot 3",
+        "line": 128435,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Chest Overlay/Chest Panel/Player Scroll/Player Storage/Slot 14",
+        "line": 130992,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Chest Overlay/Chest Panel/Player Scroll/Player Storage/Slot 25",
+        "line": 142238,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Chest Overlay/Chest Panel/Player Scroll/Player Storage/Slot 13",
+        "line": 149962,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Chest Overlay/Chest Panel/Player Scroll/Player Storage/Slot 6",
+        "line": 158527,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Chest Overlay/Chest Panel/Player Scroll/Player Storage/Slot 32",
+        "line": 164107,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Chest Overlay/Chest Panel/Player Scroll/Player Storage/Slot 33",
+        "line": 172806,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Chest Overlay/Chest Panel/Player Scroll/Player Storage/Slot 24",
+        "line": 174977,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Chest Overlay/Chest Panel/Player Scroll/Player Storage/Slot 10",
+        "line": 184330,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Chest Overlay/Chest Panel/Player Scroll/Player Storage/Slot 16",
+        "line": 184911,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Chest Overlay/Chest Panel/Player Scroll/Player Storage/Slot 8",
+        "line": 187139,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Chest Overlay/Chest Panel/Player Scroll/Player Storage/Slot 31",
+        "line": 191605,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Chest Overlay/Chest Panel/Player Scroll/Player Storage/Slot 5",
+        "line": 191995,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Chest Overlay/Chest Panel/Player Scroll/Player Storage/Slot 34",
+        "line": 192586,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Chest Overlay/Chest Panel/Player Scroll/Player Storage/Slot 1",
+        "line": 200668,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Chest Overlay/Chest Panel/Player Scroll/Player Storage/Slot 36",
+        "line": 200951,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Chest Overlay/Chest Panel/Player Scroll/Player Storage/Slot 33",
+        "line": 2559,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Chest Overlay/Chest Panel/Player Scroll/Player Storage/Slot 14",
+        "line": 6296,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Chest Overlay/Chest Panel/Player Scroll/Player Storage/Slot 21",
+        "line": 7772,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Chest Overlay/Chest Panel/Player Scroll/Player Storage/Slot 9",
+        "line": 12517,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Chest Overlay/Chest Panel/Player Scroll/Player Storage/Slot 3",
+        "line": 15407,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Chest Overlay/Chest Panel/Player Scroll/Player Storage/Slot 28",
+        "line": 16857,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Chest Overlay/Chest Panel/Player Scroll/Player Storage/Slot 20",
+        "line": 17513,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Chest Overlay/Chest Panel/Player Scroll/Player Storage/Slot 18",
+        "line": 21447,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Chest Overlay/Chest Panel/Player Scroll/Player Storage/Slot 23",
+        "line": 38562,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Chest Overlay/Chest Panel/Player Scroll/Player Storage/Slot 8",
+        "line": 40945,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Chest Overlay/Chest Panel/Player Scroll/Player Storage/Slot 13",
+        "line": 48721,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Chest Overlay/Chest Panel/Player Scroll/Player Storage/Slot 27",
+        "line": 49676,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Chest Overlay/Chest Panel/Player Scroll/Player Storage/Slot 1",
+        "line": 57736,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Chest Overlay/Chest Panel/Player Scroll/Player Storage/Slot 25",
+        "line": 65273,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Chest Overlay/Chest Panel/Player Scroll/Player Storage/Slot 22",
+        "line": 66269,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Chest Overlay/Chest Panel/Player Scroll/Player Storage/Slot 36",
+        "line": 76012,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Chest Overlay/Chest Panel/Player Scroll/Player Storage/Slot 19",
+        "line": 78249,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Chest Overlay/Chest Panel/Player Scroll/Player Storage/Slot 10",
+        "line": 80321,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Chest Overlay/Chest Panel/Player Scroll/Player Storage/Slot 32",
+        "line": 80691,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Chest Overlay/Chest Panel/Player Scroll/Player Storage/Slot 29",
+        "line": 85969,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Chest Overlay/Chest Panel/Player Scroll/Player Storage/Slot 6",
+        "line": 95123,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Chest Overlay/Chest Panel/Player Scroll/Player Storage/Slot 16",
+        "line": 113234,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Chest Overlay/Chest Panel/Player Scroll/Player Storage/Slot 15",
+        "line": 113497,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Chest Overlay/Chest Panel/Player Scroll/Player Storage/Slot 2",
+        "line": 136156,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Chest Overlay/Chest Panel/Player Scroll/Player Storage/Slot 31",
+        "line": 140161,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Chest Overlay/Chest Panel/Player Scroll/Player Storage/Slot 35",
+        "line": 140833,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Chest Overlay/Chest Panel/Player Scroll/Player Storage/Slot 24",
+        "line": 141250,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Chest Overlay/Chest Panel/Player Scroll/Player Storage/Slot 7",
+        "line": 146879,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Chest Overlay/Chest Panel/Player Scroll/Player Storage/Slot 17",
+        "line": 148068,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Chest Overlay/Chest Panel/Player Scroll/Player Storage/Slot 12",
+        "line": 151951,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Chest Overlay/Chest Panel/Player Scroll/Player Storage/Slot 4",
+        "line": 156544,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Chest Overlay/Chest Panel/Player Scroll/Player Storage/Slot 30",
+        "line": 163254,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Chest Overlay/Chest Panel/Player Scroll/Player Storage/Slot 5",
+        "line": 163518,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Chest Overlay/Chest Panel/Player Scroll/Player Storage/Slot 11",
+        "line": 179026,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Chest Overlay/Chest Panel/Player Scroll/Player Storage/Slot 34",
+        "line": 198771,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Chest Overlay/Chest Panel/Player Scroll/Player Storage/Slot 26",
+        "line": 203884,
+        "type": "UnityEngine.UI.Button"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "RecipeCardView.Craft",
+    "controller": "RecipeCardView",
+    "method": "Craft",
+    "instances": [
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 3063,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 3285,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 9983,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe ammo_box/Craft",
+        "line": 11178,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 11893,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 12040,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 12187,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 15824,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 16536,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 17022,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe reinforced_frame/Craft",
+        "line": 22105,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 23376,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe healing_salve/Craft",
+        "line": 31360,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe(Clone)/Craft",
+        "line": 32744,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 34468,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 35157,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe carapace_vest/Craft",
+        "line": 37368,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 37515,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 38884,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 39106,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe diamond_body/Craft",
+        "line": 40804,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe bone_broth/Craft",
+        "line": 44254,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 44856,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 46606,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe diamond_sword/Craft",
+        "line": 46829,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe ballista/Craft",
+        "line": 49314,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 50078,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe(Clone)/Craft",
+        "line": 50623,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe(Clone)/Craft",
+        "line": 52145,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 53150,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 53447,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe diamond_axe/Craft",
+        "line": 53985,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 56370,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 56955,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 57861,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe(Clone)/Craft",
+        "line": 59120,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 59670,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 60680,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 61366,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe(Clone)/Craft",
+        "line": 62522,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 64967,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 66698,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe restorative_broth/Craft",
+        "line": 67622,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe(Clone)/Craft",
+        "line": 68216,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe auto_loader/Craft",
+        "line": 70392,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe mechanical_part/Craft",
+        "line": 74703,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 75435,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe repeater/Craft",
+        "line": 81119,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe(Clone)/Craft",
+        "line": 85169,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 86782,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 87479,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 87982,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 90521,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 98990,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 99137,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe(Clone)/Craft",
+        "line": 101975,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe telescope/Craft",
+        "line": 102308,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 103321,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 103710,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe bone_trap/Craft",
+        "line": 104534,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 107739,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 107886,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 108496,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 110092,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe(Clone)/Craft",
+        "line": 111088,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 112813,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe ballista_bolt/Craft",
+        "line": 116467,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 117250,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 117883,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe(Clone)/Craft",
+        "line": 122548,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 126584,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe barbed_bolt/Craft",
+        "line": 127563,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 132160,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 133233,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 133787,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 133934,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe signal_beacon/Craft",
+        "line": 138193,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe rotation_gear/Craft",
+        "line": 139623,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 139924,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 140253,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe turret_workbench/Craft",
+        "line": 141325,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe crystal_lantern/Craft",
+        "line": 141995,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 145999,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 146877,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe auto_aim/Craft",
+        "line": 153192,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe diamond_head/Craft",
+        "line": 154225,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 158032,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 158961,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe bone_arrow/Craft",
+        "line": 159187,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 160103,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 161097,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe(Clone)/Craft",
+        "line": 161319,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe steel_spear/Craft",
+        "line": 162573,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 163789,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe trail_ration/Craft",
+        "line": 168927,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 169533,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 171264,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 171870,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 174250,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 175458,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 176857,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe diamond_pickaxe/Craft",
+        "line": 177158,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 178096,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 179102,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe diamond_spear/Craft",
+        "line": 179819,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe(Clone)/Craft",
+        "line": 180421,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 182141,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 188195,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 190259,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 192749,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 193700,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe bone_broth/Craft",
+        "line": 2332,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 3146,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe trail_ration/Craft",
+        "line": 3452,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 4345,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 5061,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 5696,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe diamond_sword/Craft",
+        "line": 5918,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 6550,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe(Clone)/Craft",
+        "line": 8530,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe telescope/Craft",
+        "line": 13584,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe barbed_bolt/Craft",
+        "line": 14368,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe(Clone)/Craft",
+        "line": 18454,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 20635,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe(Clone)/Craft",
+        "line": 26462,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 28576,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 29326,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 29616,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 30878,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 33136,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 33658,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 34847,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 40717,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 43449,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe(Clone)/Craft",
+        "line": 45986,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 47029,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe diamond_pickaxe/Craft",
+        "line": 49092,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 52685,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 52832,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 53698,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe auto_loader/Craft",
+        "line": 54078,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 57109,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe(Clone)/Craft",
+        "line": 57583,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 58238,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 59330,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe restorative_broth/Craft",
+        "line": 60487,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 67121,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe bone_arrow/Craft",
+        "line": 69295,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 71115,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 71444,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 72376,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe diamond_head/Craft",
+        "line": 73790,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 74725,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe(Clone)/Craft",
+        "line": 75014,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 75860,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 76191,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe reinforced_frame/Craft",
+        "line": 76982,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 77204,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 80169,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 81817,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 81964,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe bone_trap/Craft",
+        "line": 82713,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 84467,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 85039,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe(Clone)/Craft",
+        "line": 85445,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe repeater/Craft",
+        "line": 87633,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 89353,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 90292,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe ballista/Craft",
+        "line": 90594,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe(Clone)/Craft",
+        "line": 95484,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe signal_beacon/Craft",
+        "line": 96219,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 100381,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 104865,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe steel_spear/Craft",
+        "line": 111239,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 116012,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe diamond_body/Craft",
+        "line": 117683,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe diamond_spear/Craft",
+        "line": 118056,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 119109,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 122547,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe(Clone)/Craft",
+        "line": 126241,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe(Clone)/Craft",
+        "line": 129013,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 130336,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 132113,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 135718,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 138051,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe crystal_lantern/Craft",
+        "line": 138693,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe rotation_gear/Craft",
+        "line": 146018,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe ballista_bolt/Craft",
+        "line": 146651,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 148472,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 148694,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 149702,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 151420,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 156012,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 160166,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe diamond_axe/Craft",
+        "line": 163851,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 166136,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 171163,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 173159,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe(Clone)/Craft",
+        "line": 174452,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 176569,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 177025,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 179531,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 181546,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 183897,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 184274,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 184856,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe ammo_box/Craft",
+        "line": 185185,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 188540,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe carapace_vest/Craft",
+        "line": 190802,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 191379,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 191777,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe mechanical_part/Craft",
+        "line": 191924,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 192150,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 195587,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 196336,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 196590,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe auto_aim/Craft",
+        "line": 196970,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 199431,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe(Clone)/Craft",
+        "line": 199987,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe turret_workbench/Craft",
+        "line": 201224,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe/Craft",
+        "line": 203431,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Recipe Viewport/Recipes/Category Recipes/Recipe healing_salve/Craft",
+        "line": 205627,
+        "type": "UnityEngine.UI.Button"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "InventoryEquipment.Equip",
+    "controller": "InventoryEquipment",
+    "method": "Equip",
+    "instances": [
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Inventory Overlay/Inventory Panel/Equip",
+        "line": 3412,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Inventory Overlay/Inventory Panel/Equip",
+        "line": 149274,
+        "type": "UnityEngine.UI.Button"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "ClassHud.CycleMeaning",
+    "controller": "ClassHud",
+    "method": "CycleMeaning",
+    "instances": [
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Team Marker Action/Meaning",
+        "line": 3696,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Team Marker Action/Meaning",
+        "line": 130665,
+        "type": "UnityEngine.UI.Button"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "CraftingPanel.SelectCategory",
+    "controller": "CraftingPanel",
+    "method": "SelectCategory",
+    "instances": [
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Categories/Category",
+        "line": 6952,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Categories/Category",
+        "line": 22866,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Categories/Category",
+        "line": 27231,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Categories/Category",
+        "line": 28928,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Categories/Category",
+        "line": 123059,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Categories/Category",
+        "line": 161521,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Categories/Category",
+        "line": 189663,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Categories/Category",
+        "line": 20413,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Categories/Category",
+        "line": 27819,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Categories/Category",
+        "line": 28271,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Categories/Category",
+        "line": 29179,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Categories/Category",
+        "line": 97233,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Categories/Category",
+        "line": 109398,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Categories/Category",
+        "line": 206408,
+        "type": "UnityEngine.UI.Button"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "SkillTreeScreen.Select",
+    "controller": "SkillTreeScreen",
+    "method": "Select",
+    "instances": [
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Shared Growth Journal Overlay/Shared Growth Journal/Shared Skill 5",
+        "line": 7234,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Shared Growth Journal Overlay/Shared Growth Journal/Shared Skill 3",
+        "line": 22525,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Shared Growth Journal Overlay/Shared Growth Journal/Shared Skill 0",
+        "line": 32612,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Shared Growth Journal Overlay/Shared Growth Journal/Shared Skill 2",
+        "line": 55580,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Shared Growth Journal Overlay/Shared Growth Journal/Shared Skill 1",
+        "line": 64604,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Shared Growth Journal Overlay/Shared Growth Journal/Shared Skill 4",
+        "line": 182900,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Shared Growth Journal Overlay/Shared Growth Journal/Shared Skill 0",
+        "line": 26198,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Shared Growth Journal Overlay/Shared Growth Journal/Shared Skill 2",
+        "line": 46450,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Shared Growth Journal Overlay/Shared Growth Journal/Shared Skill 3",
+        "line": 136731,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Shared Growth Journal Overlay/Shared Growth Journal/Shared Skill 4",
+        "line": 162571,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Shared Growth Journal Overlay/Shared Growth Journal/Shared Skill 5",
+        "line": 169872,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Shared Growth Journal Overlay/Shared Growth Journal/Shared Skill 1",
+        "line": 200789,
+        "type": "UnityEngine.UI.Button"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "InventoryDragController.Cancel",
+    "controller": "InventoryDragController",
+    "method": "Cancel",
+    "instances": [
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/ui.action.cancel",
+        "line": 7938,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/ui.action.cancel",
+        "line": 158281,
+        "type": "UnityEngine.UI.Button"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "StackSplitPanel.Increase",
+    "controller": "StackSplitPanel",
+    "method": "Increase",
+    "instances": [
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Split Stack/Split Panel/+1",
+        "line": 20415,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Split Stack/Split Panel/+1",
+        "line": 77660,
+        "type": "UnityEngine.UI.Button"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "InventoryDragController.OpenSplit",
+    "controller": "InventoryDragController",
+    "method": "OpenSplit",
+    "instances": [
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Inventory Overlay/Inventory Panel/Split",
+        "line": 28706,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Chest Overlay/Chest Panel/Split",
+        "line": 187634,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Inventory Overlay/Inventory Panel/Split",
+        "line": 157609,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Chest Overlay/Chest Panel/Split",
+        "line": 157831,
+        "type": "UnityEngine.UI.Button"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "MultiplayerArena.Dash",
+    "controller": "MultiplayerArena",
+    "method": "Dash",
+    "instances": [
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Dash",
+        "line": 34040,
+        "type": "UnityEngine.UI.Button"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "CharacterScreen.OpenTree",
+    "controller": "CharacterScreen",
+    "method": "OpenTree",
+    "instances": [
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Character Journal Overlay/Character Journal/Skill Tree",
+        "line": 36315,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Character Journal Overlay/Character Journal/Skill Tree",
+        "line": 142511,
+        "type": "UnityEngine.UI.Button"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "MultiplayerArena.Leave",
+    "controller": "MultiplayerArena",
+    "method": "Leave",
+    "instances": [
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Leave Session",
+        "line": 39804,
+        "type": "UnityEngine.UI.Button"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "CharacterScreen.Close",
+    "controller": "CharacterScreen",
+    "method": "Close",
+    "instances": [
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Character Journal Overlay/Character Journal/Close",
+        "line": 40256,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Character Journal Overlay/Character Journal/Close",
+        "line": 127055,
+        "type": "UnityEngine.UI.Button"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "HotbarView.Select",
+    "controller": "HotbarView",
+    "method": "Select",
+    "instances": [
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Hotbar/Slot 5",
+        "line": 43492,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Hotbar/Slot 9",
+        "line": 65917,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Hotbar/Slot 6",
+        "line": 66231,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Hotbar/Slot 1",
+        "line": 87711,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Hotbar/Slot 4",
+        "line": 149364,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Hotbar/Slot 2",
+        "line": 156860,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Hotbar/Slot 8",
+        "line": 167255,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Hotbar/Slot 7",
+        "line": 184653,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Hotbar/Slot 3",
+        "line": 194080,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Gameplay Layer/Controls/Hotbar/Slot 7",
+        "line": 2174,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Gameplay Layer/Controls/Hotbar/Slot 9",
+        "line": 8226,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Gameplay Layer/Controls/Hotbar/Slot 3",
+        "line": 15243,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Gameplay Layer/Controls/Hotbar/Slot 6",
+        "line": 29773,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Gameplay Layer/Controls/Hotbar/Slot 2",
+        "line": 68077,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Gameplay Layer/Controls/Hotbar/Slot 8",
+        "line": 76348,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Gameplay Layer/Controls/Hotbar/Slot 4",
+        "line": 143951,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Gameplay Layer/Controls/Hotbar/Slot 5",
+        "line": 182923,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Gameplay Layer/Controls/Hotbar/Slot 1",
+        "line": 201066,
+        "type": "UnityEngine.UI.Button"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "SkillTreeScreen.Back",
+    "controller": "SkillTreeScreen",
+    "method": "Back",
+    "instances": [
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Shared Growth Journal Overlay/Shared Growth Journal/Back",
+        "line": 54942,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Shared Growth Journal Overlay/Shared Growth Journal/Back",
+        "line": 187052,
+        "type": "UnityEngine.UI.Button"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "InventoryEquipment.SelectSlot",
+    "controller": "InventoryEquipment",
+    "method": "SelectSlot",
+    "instances": [
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Inventory Overlay/Inventory Panel/Utility",
+        "line": 63229,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Inventory Overlay/Inventory Panel/Accessory",
+        "line": 94020,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Inventory Overlay/Inventory Panel/Equipment Slot",
+        "line": 160478,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Inventory Overlay/Inventory Panel/Equipment Slot",
+        "line": 195365,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Inventory Overlay/Inventory Panel/Equipment Slot",
+        "line": 10678,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Inventory Overlay/Inventory Panel/Accessory",
+        "line": 46728,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Inventory Overlay/Inventory Panel/Equipment Slot",
+        "line": 144786,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Inventory Overlay/Inventory Panel/Utility",
+        "line": 169512,
+        "type": "UnityEngine.UI.Button"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "SkillTreeScreen.Invest",
+    "controller": "SkillTreeScreen",
+    "method": "Invest",
+    "instances": [
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Shared Growth Journal Overlay/Shared Growth Journal/Invest",
+        "line": 71563,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Shared Growth Journal Overlay/Shared Growth Journal/Invest",
+        "line": 177923,
+        "type": "UnityEngine.UI.Button"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "CraftingPanel.ToggleFilter",
+    "controller": "CraftingPanel",
+    "method": "ToggleFilter",
+    "instances": [
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Filter",
+        "line": 100539,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Filter",
+        "line": 93919,
+        "type": "UnityEngine.UI.Button"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "CraftingPanel.EnqueueOne",
+    "controller": "CraftingPanel",
+    "method": "EnqueueOne",
+    "instances": [
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Processing Queue/Add One",
+        "line": 104009,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Processing Queue/Add One",
+        "line": 139490,
+        "type": "UnityEngine.UI.Button"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "CraftingPanel.CollectResults",
+    "controller": "CraftingPanel",
+    "method": "CollectResults",
+    "instances": [
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Processing Queue/Collect",
+        "line": 113803,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Processing Queue/Collect",
+        "line": 30160,
+        "type": "UnityEngine.UI.Button"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "StackSplitPanel.Decrease",
+    "controller": "StackSplitPanel",
+    "method": "Decrease",
+    "instances": [
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Split Stack/Split Panel/\"\\u22121\"",
+        "line": 125753,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Split Stack/Split Panel/\"\\u22121\"",
+        "line": 63291,
+        "type": "UnityEngine.UI.Button"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "StackSplitPanel.ChooseSplit",
+    "controller": "StackSplitPanel",
+    "method": "ChooseSplit",
+    "instances": [
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Item Actions/Item Actions Panel/ui.action.split",
+        "line": 135726,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Item Actions/Item Actions Panel/ui.action.split",
+        "line": 106884,
+        "type": "UnityEngine.UI.Button"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "StackSplitPanel.Cancel",
+    "controller": "StackSplitPanel",
+    "method": "Cancel",
+    "instances": [
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Item Actions/Item Actions Panel/ui.action.cancel",
+        "line": 135972,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Split Stack/Split Panel/ui.action.cancel",
+        "line": 190572,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Split Stack/Split Panel/ui.action.cancel",
+        "line": 39724,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Item Actions/Item Actions Panel/ui.action.cancel",
+        "line": 108761,
+        "type": "UnityEngine.UI.Button"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "CraftingPanel.EnqueueAll",
+    "controller": "CraftingPanel",
+    "method": "EnqueueAll",
+    "instances": [
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Processing Queue/Add All",
+        "line": 142535,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Processing Queue/Add All",
+        "line": 189055,
+        "type": "UnityEngine.UI.Button"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "CraftingPanel.WithdrawOne",
+    "controller": "CraftingPanel",
+    "method": "WithdrawOne",
+    "instances": [
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Processing Queue/Withdraw",
+        "line": 152788,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Processing Queue/Withdraw",
+        "line": 6065,
+        "type": "UnityEngine.UI.Button"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "InventoryEquipment.Unequip",
+    "controller": "InventoryEquipment",
+    "method": "Unequip",
+    "instances": [
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Inventory Overlay/Inventory Panel/Unequip",
+        "line": 168140,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Inventory Overlay/Inventory Panel/Unequip",
+        "line": 55796,
+        "type": "UnityEngine.UI.Button"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "StackSplitPanel.Half",
+    "controller": "StackSplitPanel",
+    "method": "Half",
+    "instances": [
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Split Stack/Split Panel/ui.split.half",
+        "line": 171528,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Split Stack/Split Panel/ui.split.half",
+        "line": 28124,
+        "type": "UnityEngine.UI.Button"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "StackSplitPanel.Confirm",
+    "controller": "StackSplitPanel",
+    "method": "Confirm",
+    "instances": [
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Split Stack/Split Panel/ui.split.confirm",
+        "line": 178281,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Split Stack/Split Panel/ui.split.confirm",
+        "line": 85742,
+        "type": "UnityEngine.UI.Button"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "CraftingPanel.SetHome",
+    "controller": "CraftingPanel",
+    "method": "SetHome",
+    "instances": [
+      {
+        "scene": "Multiplayer.unity",
+        "path": "Camp Canvas/Safe Area/Inventory UI/Crafting Screen Overlay/Crafting Screen/Set Home",
+        "line": 195083,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Set Home",
+        "line": 60111,
+        "type": "UnityEngine.UI.Button"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "GameplaySession.ToggleInventory",
+    "controller": "GameplaySession",
+    "method": "ToggleInventory",
+    "instances": [
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Gameplay Layer/Inventory",
+        "line": 2999,
+        "type": "UnityEngine.UI.Button"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "PauseMenu.Back",
+    "controller": "PauseMenu",
+    "method": "Back",
+    "instances": [
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Pause Overlay/Settings Panel Overlay/Settings Panel/Back",
+        "line": 9633,
+        "type": "UnityEngine.UI.Button"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "PlayerCrafting.OpenHandCrafting",
+    "controller": "PlayerCrafting",
+    "method": "OpenHandCrafting",
+    "instances": [
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Inventory Overlay/Inventory Panel/Crafting",
+        "line": 34179,
+        "type": "UnityEngine.UI.Button"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "GameplaySession.OpenCharacter",
+    "controller": "GameplaySession",
+    "method": "OpenCharacter",
+    "instances": [
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Gameplay Layer/Player Profile",
+        "line": 39951,
+        "type": "UnityEngine.UI.Button"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "PlayerCrafting.UpgradeFromUI",
+    "controller": "PlayerCrafting",
+    "method": "UpgradeFromUI",
+    "instances": [
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Upgrade",
+        "line": 48490,
+        "type": "UnityEngine.UI.Button"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "WorldSaveService.SaveAndHome",
+    "controller": "WorldSaveService",
+    "method": "SaveAndHome",
+    "instances": [
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Pause Overlay/Pause Panel/Save and Home",
+        "line": 52979,
+        "type": "UnityEngine.UI.Button"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "PlayerCrafting.CloseCrafting",
+    "controller": "PlayerCrafting",
+    "method": "CloseCrafting",
+    "instances": [
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Close",
+        "line": 59183,
+        "type": "UnityEngine.UI.Button"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "PlayerLocomotion.DashFromUI",
+    "controller": "PlayerLocomotion",
+    "method": "DashFromUI",
+    "instances": [
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Gameplay Layer/Controls/Dash",
+        "line": 61100,
+        "type": "UnityEngine.UI.Button"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "GameplaySession.Resume",
+    "controller": "GameplaySession",
+    "method": "Resume",
+    "instances": [
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Pause Overlay/Pause Panel/Continue",
+        "line": 116967,
+        "type": "UnityEngine.UI.Button"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "PlayerCrafting.OpenBag",
+    "controller": "PlayerCrafting",
+    "method": "OpenBag",
+    "instances": [
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Crafting Screen Overlay/Crafting Screen/Inventory",
+        "line": 120379,
+        "type": "UnityEngine.UI.Button"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "GameplaySession.CloseInventory",
+    "controller": "GameplaySession",
+    "method": "CloseInventory",
+    "instances": [
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Inventory Overlay/Inventory Panel/Close",
+        "line": 131409,
+        "type": "UnityEngine.UI.Button"
+      },
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Chest Overlay/Chest Panel/Close",
+        "line": 168487,
+        "type": "UnityEngine.UI.Button"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "GameplaySession.OpenPause",
+    "controller": "GameplaySession",
+    "method": "OpenPause",
+    "instances": [
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Gameplay Layer/Pause",
+        "line": 145316,
+        "type": "UnityEngine.UI.Button"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "WorldSaveService.SaveFromMenu",
+    "controller": "WorldSaveService",
+    "method": "SaveFromMenu",
+    "instances": [
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Pause Overlay/Pause Panel/Save Game",
+        "line": 154746,
+        "type": "UnityEngine.UI.Button"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "PauseMenu.OpenSettings",
+    "controller": "PauseMenu",
+    "method": "OpenSettings",
+    "instances": [
+      {
+        "scene": "Wildfolk.unity",
+        "path": "Mobile HUD/Safe Area/Modal Layer/Pause Overlay/Pause Panel/Settings",
+        "line": 200490,
+        "type": "UnityEngine.UI.Button"
+      }
+    ],
+    "origin": "serialized"
+  },
+  {
+    "callback": "VirtualJoystick.OnPointerDown",
+    "controller": "VirtualJoystick",
+    "method": "OnPointerDown",
+    "instances": [],
+    "origin": "runtime / gesture"
+  },
+  {
+    "callback": "VirtualJoystick.OnDrag",
+    "controller": "VirtualJoystick",
+    "method": "OnDrag",
+    "instances": [],
+    "origin": "runtime / gesture"
+  },
+  {
+    "callback": "VirtualJoystick.OnPointerUp",
+    "controller": "VirtualJoystick",
+    "method": "OnPointerUp",
+    "instances": [],
+    "origin": "runtime / gesture"
+  },
+  {
+    "callback": "HoldAttackInput.OnPointerDown",
+    "controller": "HoldAttackInput",
+    "method": "OnPointerDown",
+    "instances": [],
+    "origin": "runtime / gesture"
+  },
+  {
+    "callback": "HoldAttackInput.OnPointerUp",
+    "controller": "HoldAttackInput",
+    "method": "OnPointerUp",
+    "instances": [],
+    "origin": "runtime / gesture"
+  },
+  {
+    "callback": "NetworkAttackInput.OnPointerDown",
+    "controller": "NetworkAttackInput",
+    "method": "OnPointerDown",
+    "instances": [],
+    "origin": "runtime / gesture"
+  },
+  {
+    "callback": "NetworkAttackInput.OnPointerUp",
+    "controller": "NetworkAttackInput",
+    "method": "OnPointerUp",
+    "instances": [],
+    "origin": "runtime / gesture"
+  },
+  {
+    "callback": "InteractButtonView.Click",
+    "controller": "InteractButtonView",
+    "method": "Click",
+    "instances": [],
+    "origin": "runtime / gesture"
+  },
+  {
+    "callback": "InteractButtonView.OnPointerDown",
+    "controller": "InteractButtonView",
+    "method": "OnPointerDown",
+    "instances": [],
+    "origin": "runtime / gesture"
+  },
+  {
+    "callback": "InteractButtonView.OnPointerUp",
+    "controller": "InteractButtonView",
+    "method": "OnPointerUp",
+    "instances": [],
+    "origin": "runtime / gesture"
+  },
+  {
+    "callback": "InteractButtonView.OnPointerExit",
+    "controller": "InteractButtonView",
+    "method": "OnPointerExit",
+    "instances": [],
+    "origin": "runtime / gesture"
+  },
+  {
+    "callback": "InventorySlotDrag.OnPointerClick",
+    "controller": "InventorySlotDrag",
+    "method": "OnPointerClick",
+    "instances": [],
+    "origin": "runtime / gesture"
+  },
+  {
+    "callback": "InventorySlotDrag.OnBeginDrag",
+    "controller": "InventorySlotDrag",
+    "method": "OnBeginDrag",
+    "instances": [],
+    "origin": "runtime / gesture"
+  },
+  {
+    "callback": "InventorySlotDrag.OnDrag",
+    "controller": "InventorySlotDrag",
+    "method": "OnDrag",
+    "instances": [],
+    "origin": "runtime / gesture"
+  },
+  {
+    "callback": "InventorySlotDrag.OnEndDrag",
+    "controller": "InventorySlotDrag",
+    "method": "OnEndDrag",
+    "instances": [],
+    "origin": "runtime / gesture"
+  },
+  {
+    "callback": "InventorySlotDrag.OnDrop",
+    "controller": "InventorySlotDrag",
+    "method": "OnDrop",
+    "instances": [],
+    "origin": "runtime / gesture"
+  },
+  {
+    "callback": "InventorySlotDrag.LongPress",
+    "controller": "InventorySlotDrag",
+    "method": "LongPress",
+    "instances": [],
+    "origin": "runtime / gesture"
+  },
+  {
+    "callback": "EquipmentSlotDrag.OnBeginDrag",
+    "controller": "EquipmentSlotDrag",
+    "method": "OnBeginDrag",
+    "instances": [],
+    "origin": "runtime / gesture"
+  },
+  {
+    "callback": "EquipmentSlotDrag.OnDrop",
+    "controller": "EquipmentSlotDrag",
+    "method": "OnDrop",
+    "instances": [],
+    "origin": "runtime / gesture"
+  },
+  {
+    "callback": "EquipmentSlotDrag.OnEndDrag",
+    "controller": "EquipmentSlotDrag",
+    "method": "OnEndDrag",
+    "instances": [],
+    "origin": "runtime / gesture"
+  },
+  {
+    "callback": "InventoryDropZone.OnDrop",
+    "controller": "InventoryDropZone",
+    "method": "OnDrop",
+    "instances": [],
+    "origin": "runtime / gesture"
+  },
+  {
+    "callback": "InventoryDragController.PlaceHeld",
+    "controller": "InventoryDragController",
+    "method": "PlaceHeld",
+    "instances": [],
+    "origin": "runtime / gesture"
+  },
+  {
+    "callback": "InventoryDragController.DropHeldWorld",
+    "controller": "InventoryDragController",
+    "method": "DropHeldWorld",
+    "instances": [],
+    "origin": "runtime / gesture"
+  },
+  {
+    "callback": "RecipeCardView.OnPointerClick",
+    "controller": "RecipeCardView",
+    "method": "OnPointerClick",
+    "instances": [],
+    "origin": "runtime / gesture"
+  },
+  {
+    "callback": "ClassHud.Overclock",
+    "controller": "ClassHud",
+    "method": "Overclock",
+    "instances": [],
+    "origin": "runtime / gesture"
+  },
+  {
+    "callback": "ClassHud.Mark",
+    "controller": "ClassHud",
+    "method": "Mark",
+    "instances": [],
+    "origin": "runtime / gesture"
+  },
+  {
+    "callback": "ClassHud.Medicine",
+    "controller": "ClassHud",
+    "method": "Medicine",
+    "instances": [],
+    "origin": "runtime / gesture"
+  },
+  {
+    "callback": "ClassHud.Guard",
+    "controller": "ClassHud",
+    "method": "Guard",
+    "instances": [],
+    "origin": "runtime / gesture"
+  },
+  {
+    "callback": "ClassHud.Service",
+    "controller": "ClassHud",
+    "method": "Service",
+    "instances": [],
+    "origin": "runtime / gesture"
+  },
+  {
+    "callback": "ClassHud.MaterialsScroll",
+    "controller": "ClassHud",
+    "method": "MaterialsScroll",
+    "instances": [],
+    "origin": "runtime / gesture"
+  },
+  {
+    "callback": "DeathHud.Reward",
+    "controller": "DeathHud",
+    "method": "Reward",
+    "instances": [],
+    "origin": "runtime / gesture"
+  },
+  {
+    "callback": "DeathHud.Pay",
+    "controller": "DeathHud",
+    "method": "Pay",
+    "instances": [],
+    "origin": "runtime / gesture"
+  },
+  {
+    "callback": "DeathHud.Respawn",
+    "controller": "DeathHud",
+    "method": "Respawn",
+    "instances": [],
+    "origin": "runtime / gesture"
+  },
+  {
+    "callback": "CampLootPanel.Take",
+    "controller": "CampLootPanel",
+    "method": "Take",
+    "instances": [],
+    "origin": "runtime / gesture"
+  },
+  {
+    "callback": "CampLootPanel.CloseFocused",
+    "controller": "CampLootPanel",
+    "method": "CloseFocused",
+    "instances": [],
+    "origin": "runtime / gesture"
+  },
+  {
+    "callback": "TierThreeHud.Close",
+    "controller": "TierThreeHud",
+    "method": "Close",
+    "instances": [],
+    "origin": "runtime / gesture"
+  },
+  {
+    "callback": "TierThreeHud.Deposit",
+    "controller": "TierThreeHud",
+    "method": "Deposit",
+    "instances": [],
+    "origin": "runtime / gesture"
+  },
+  {
+    "callback": "TierThreeHud.Install",
+    "controller": "TierThreeHud",
+    "method": "Install",
+    "instances": [],
+    "origin": "runtime / gesture"
+  },
+  {
+    "callback": "TierThreeHud.Operate.Aim",
+    "controller": "TierThreeHud",
+    "method": "Operate.Aim",
+    "instances": [],
+    "origin": "runtime / gesture"
+  },
+  {
+    "callback": "TierThreeHud.Operate.Fire",
+    "controller": "TierThreeHud",
+    "method": "Operate.Fire",
+    "instances": [],
+    "origin": "runtime / gesture"
+  },
+  {
+    "callback": "TierThreeHud.Operate.Reload",
+    "controller": "TierThreeHud",
+    "method": "Operate.Reload",
+    "instances": [],
+    "origin": "runtime / gesture"
+  },
+  {
+    "callback": "TierThreeHud.Operate.Withdraw",
+    "controller": "TierThreeHud",
+    "method": "Operate.Withdraw",
+    "instances": [],
+    "origin": "runtime / gesture"
+  },
+  {
+    "callback": "TierThreeHud.Operate.Remove",
+    "controller": "TierThreeHud",
+    "method": "Operate.Remove",
+    "instances": [],
+    "origin": "runtime / gesture"
+  },
+  {
+    "callback": "TierThreeHud.Choose.Off",
+    "controller": "TierThreeHud",
+    "method": "Choose.Off",
+    "instances": [],
+    "origin": "runtime / gesture"
+  },
+  {
+    "callback": "TierThreeHud.Choose.Automatic",
+    "controller": "TierThreeHud",
+    "method": "Choose.Automatic",
+    "instances": [],
+    "origin": "runtime / gesture"
+  },
+  {
+    "callback": "TierThreeHud.Choose.Home",
+    "controller": "TierThreeHud",
+    "method": "Choose.Home",
+    "instances": [],
+    "origin": "runtime / gesture"
+  },
+  {
+    "callback": "TierThreeHud.Choose.CaveExit",
+    "controller": "TierThreeHud",
+    "method": "Choose.CaveExit",
+    "instances": [],
+    "origin": "runtime / gesture"
+  },
+  {
+    "callback": "TierThreeHud.Cycle",
+    "controller": "TierThreeHud",
+    "method": "Cycle",
+    "instances": [],
+    "origin": "runtime / gesture"
+  },
+  {
+    "callback": "TierThreeHud.TrackBeacon",
+    "controller": "TierThreeHud",
+    "method": "TrackBeacon",
+    "instances": [],
+    "origin": "runtime / gesture"
+  },
+  {
+    "callback": "TierThreeHud.RecoverBeacon",
+    "controller": "TierThreeHud",
+    "method": "RecoverBeacon",
+    "instances": [],
+    "origin": "runtime / gesture"
+  },
+  {
+    "callback": "TierThreeHud.OpenNavigation",
+    "controller": "TierThreeHud",
+    "method": "OpenNavigation",
+    "instances": [],
+    "origin": "runtime / gesture"
+  },
+  {
+    "callback": "TierThreeHud.TelescopeAim",
+    "controller": "TierThreeHud",
+    "method": "TelescopeAim",
+    "instances": [],
+    "origin": "runtime / gesture"
+  },
+  {
+    "callback": "TierThreeHud.TelescopeExit",
+    "controller": "TierThreeHud",
+    "method": "TelescopeExit",
+    "instances": [],
+    "origin": "runtime / gesture"
+  },
+  {
+    "callback": "TransitionOverlay.Cancel",
+    "controller": "TransitionOverlay",
+    "method": "Cancel",
+    "instances": [],
+    "origin": "runtime / gesture"
+  },
+  {
+    "callback": "MultiplayerMenu.DestinationChanged",
+    "controller": "MultiplayerMenu",
+    "method": "DestinationChanged",
+    "instances": [],
+    "origin": "runtime / gesture"
+  },
+  {
+    "callback": "AccountProfileScreen.CategorySelection",
+    "controller": "AccountProfileScreen",
+    "method": "CategorySelection",
+    "instances": [],
+    "origin": "runtime / gesture"
+  },
+  {
+    "callback": "AccountProfileScreen.DiagnosticConsent",
+    "controller": "AccountProfileScreen",
+    "method": "DiagnosticConsent",
+    "instances": [],
+    "origin": "runtime / gesture"
+  },
+  {
+    "callback": "AccountProfileScreen.MessageInput",
+    "controller": "AccountProfileScreen",
+    "method": "MessageInput",
+    "instances": [],
+    "origin": "runtime / gesture"
+  },
+  {
+    "callback": "EconomyScreen.FamilyScroll",
+    "controller": "EconomyScreen",
+    "method": "FamilyScroll",
+    "instances": [],
+    "origin": "runtime / gesture"
+  },
+  {
+    "callback": "EconomyScreen.DetailScroll",
+    "controller": "EconomyScreen",
+    "method": "DetailScroll",
+    "instances": [],
+    "origin": "runtime / gesture"
+  },
+  {
+    "callback": "CraftingPanel.RecipeScroll",
+    "controller": "CraftingPanel",
+    "method": "RecipeScroll",
+    "instances": [],
+    "origin": "runtime / gesture"
+  },
+  {
+    "callback": "CraftingPanel.SummaryScroll",
+    "controller": "CraftingPanel",
+    "method": "SummaryScroll",
+    "instances": [],
+    "origin": "runtime / gesture"
+  },
+  {
+    "callback": "CraftingPanel.UpgradeScroll",
+    "controller": "CraftingPanel",
+    "method": "UpgradeScroll",
+    "instances": [],
+    "origin": "runtime / gesture"
+  },
+  {
+    "callback": "ChestPanel.PlayerScroll",
+    "controller": "ChestPanel",
+    "method": "PlayerScroll",
+    "instances": [],
+    "origin": "runtime / gesture"
+  },
+  {
+    "callback": "ChestPanel.ChestScroll",
+    "controller": "ChestPanel",
+    "method": "ChestScroll",
+    "instances": [],
+    "origin": "runtime / gesture"
+  },
+  {
+    "callback": "StoreScreen.HistoryScroll",
+    "controller": "StoreScreen",
+    "method": "HistoryScroll",
+    "instances": [],
+    "origin": "runtime / gesture"
+  },
+  {
+    "callback": "EquipmentSlotDrag.OnDrag",
+    "controller": "EquipmentSlotDrag",
+    "method": "OnDrag",
+    "instances": [],
+    "origin": "runtime / gesture"
+  },
+  {
+    "callback": "InventoryDropZone.OnPointerClick",
+    "controller": "InventoryDropZone",
+    "method": "OnPointerClick",
+    "instances": [],
+    "origin": "runtime / gesture"
+  },
+  {
+    "callback": "InventorySlotDrag.OnPointerEnter",
+    "controller": "InventorySlotDrag",
+    "method": "OnPointerEnter",
+    "instances": [],
+    "origin": "runtime / gesture"
+  },
+  {
+    "callback": "InventorySlotDrag.OnPointerExit",
+    "controller": "InventorySlotDrag",
+    "method": "OnPointerExit",
+    "instances": [],
+    "origin": "runtime / gesture"
+  },
+  {
+    "callback": "PlayerPlacement.TryPlace",
+    "controller": "PlayerPlacement",
+    "method": "TryPlace",
+    "instances": [],
+    "origin": "runtime / gesture"
+  },
+  {
+    "callback": "RoyalTomb.Use",
+    "controller": "RoyalTomb",
+    "method": "Use",
+    "instances": [],
+    "origin": "runtime / gesture"
+  }
+]

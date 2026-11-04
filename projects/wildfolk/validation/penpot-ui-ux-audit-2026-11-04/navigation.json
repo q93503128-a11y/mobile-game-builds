@@ -1,0 +1,826 @@
+[
+  {
+    "id": "NAV-001",
+    "src": "App",
+    "event": "launch",
+    "dst": "H01",
+    "condition": "MainMenu build index0",
+    "source": "[HomeScreen.OnEnable](../../client/Assets/Wildfolk/Runtime/UI/HomeScreen.cs#L19)"
+  },
+  {
+    "id": "NAV-002",
+    "src": "H01",
+    "event": "Continue",
+    "dst": "T01",
+    "condition": "유효 검증 save",
+    "source": "[HomeScreen.TryContinue](../../client/Assets/Wildfolk/Runtime/UI/HomeScreen.cs#L26)"
+  },
+  {
+    "id": "NAV-003",
+    "src": "H01",
+    "event": "SinglePlayer",
+    "dst": "H02",
+    "condition": "Repository.Exists",
+    "source": "[HomeScreen.SinglePlayer](../../client/Assets/Wildfolk/Runtime/UI/HomeScreen.cs#L24)"
+  },
+  {
+    "id": "NAV-004",
+    "src": "H01",
+    "event": "SinglePlayer",
+    "dst": "T01",
+    "condition": "save없음",
+    "source": "[HomeScreen.SinglePlayer](../../client/Assets/Wildfolk/Runtime/UI/HomeScreen.cs#L24)"
+  },
+  {
+    "id": "NAV-005",
+    "src": "H02",
+    "event": "Cancel",
+    "dst": "H01",
+    "condition": "새 세계 시작 안 함",
+    "source": "[HomeScreen.ShowHome](../../client/Assets/Wildfolk/Runtime/UI/HomeScreen.cs#L19)"
+  },
+  {
+    "id": "NAV-006",
+    "src": "H02",
+    "event": "BeginNew",
+    "dst": "T01",
+    "condition": "새 seed; 다음 save가 slot교체",
+    "source": "[HomeScreen.BeginNew](../../client/Assets/Wildfolk/Runtime/UI/HomeScreen.cs#L24)"
+  },
+  {
+    "id": "NAV-007",
+    "src": "H01",
+    "event": "Settings",
+    "dst": "H03",
+    "condition": "local",
+    "source": "[HomeScreen.OpenSettings](../../client/Assets/Wildfolk/Runtime/UI/HomeScreen.cs#L22)"
+  },
+  {
+    "id": "NAV-008",
+    "src": "H03",
+    "event": "Back",
+    "dst": "H01",
+    "condition": "설정은 즉시 반영",
+    "source": "[HomeScreen.ShowHome](../../client/Assets/Wildfolk/Runtime/UI/HomeScreen.cs#L19)"
+  },
+  {
+    "id": "NAV-009",
+    "src": "H01",
+    "event": "Multiplayer",
+    "dst": "M01",
+    "condition": "session create/resume",
+    "source": "[HomeScreen.OpenMultiplayer](../../client/Assets/Wildfolk/Runtime/UI/HomeScreen.cs#L23)"
+  },
+  {
+    "id": "NAV-010",
+    "src": "M01",
+    "event": "Back",
+    "dst": "H01",
+    "condition": "Leave(false)",
+    "source": "[MultiplayerMenu.Back](../../client/Assets/Wildfolk/Runtime/Networking/MultiplayerMenu.cs#L30)"
+  },
+  {
+    "id": "NAV-011",
+    "src": "M01",
+    "event": "Single",
+    "dst": "H02/T01",
+    "condition": "SP saveexists에 따름",
+    "source": "[MultiplayerMenu.Single](../../client/Assets/Wildfolk/Runtime/Networking/MultiplayerMenu.cs#L31)"
+  },
+  {
+    "id": "NAV-012",
+    "src": "M01",
+    "event": "Host/valid Join",
+    "dst": "T01",
+    "condition": "Idle; valid destination",
+    "source": "[MultiplayerMenu.Host](../../client/Assets/Wildfolk/Runtime/Networking/MultiplayerMenu.cs#L27)"
+  },
+  {
+    "id": "NAV-013",
+    "src": "M01",
+    "event": "invalid Join",
+    "dst": "M01",
+    "condition": "invalid code/address status",
+    "source": "[MultiplayerMenu.Join](../../client/Assets/Wildfolk/Runtime/Networking/MultiplayerMenu.cs#L28)"
+  },
+  {
+    "id": "NAV-014",
+    "src": "T01",
+    "event": "connection ready",
+    "dst": "M02",
+    "condition": "Waiting",
+    "source": "[TransitionOverlay.Watch](../../client/Assets/Wildfolk/Runtime/UI/TransitionOverlay.cs#L61)"
+  },
+  {
+    "id": "NAV-015",
+    "src": "M02",
+    "event": "Back",
+    "dst": "H01",
+    "condition": "Leave(false) shutdown",
+    "source": "[MultiplayerMenu.Back](../../client/Assets/Wildfolk/Runtime/Networking/MultiplayerMenu.cs#L30)"
+  },
+  {
+    "id": "NAV-016",
+    "src": "M02",
+    "event": "Enter",
+    "dst": "T01",
+    "condition": "Host only",
+    "source": "[MultiplayerMenu.Enter](../../client/Assets/Wildfolk/Runtime/Networking/MultiplayerMenu.cs#L29)"
+  },
+  {
+    "id": "NAV-017",
+    "src": "M02",
+    "event": "Host enters",
+    "dst": "T01",
+    "condition": "Client NGO Load event",
+    "source": "[NetworkSession.PresentSceneTransition](../../client/Assets/Wildfolk/Runtime/Networking/NetworkSession.cs#L142)"
+  },
+  {
+    "id": "NAV-018",
+    "src": "T01",
+    "event": "world ready",
+    "dst": "G01",
+    "condition": "actor+terrain; safe session resume",
+    "source": "[TransitionOverlay.Begin](../../client/Assets/Wildfolk/Runtime/UI/TransitionOverlay.cs#L10)"
+  },
+  {
+    "id": "NAV-019",
+    "src": "T01",
+    "event": "Cancel",
+    "dst": "M01",
+    "condition": "network connecting; operation++",
+    "source": "[TransitionOverlay.Cancel](../../client/Assets/Wildfolk/Runtime/UI/TransitionOverlay.cs#L77)"
+  },
+  {
+    "id": "NAV-020",
+    "src": "T01",
+    "event": "failure/recovery",
+    "dst": "H01/M01",
+    "condition": "scene/network path별",
+    "source": "[TransitionOverlay.Fail](../../client/Assets/Wildfolk/Runtime/UI/TransitionOverlay.cs#L60)"
+  },
+  {
+    "id": "NAV-021",
+    "src": "H01",
+    "event": "Class",
+    "dst": "P01",
+    "condition": "Lobby",
+    "source": "[ClassLobbyScreen.Open](../../client/Assets/Wildfolk/Runtime/UI/ClassLobbyScreen.cs#L17)"
+  },
+  {
+    "id": "NAV-022",
+    "src": "P01",
+    "event": "Back",
+    "dst": "H01",
+    "condition": "overview",
+    "source": "[ClassLobbyScreen.Back](../../client/Assets/Wildfolk/Runtime/UI/ClassLobbyScreen.cs#L22)"
+  },
+  {
+    "id": "NAV-023",
+    "src": "P01",
+    "event": "OpenTree",
+    "dst": "P02",
+    "condition": "선택 class preview",
+    "source": "[ClassLobbyScreen.OpenTree](../../client/Assets/Wildfolk/Runtime/UI/ClassLobbyScreen.cs#L23)"
+  },
+  {
+    "id": "NAV-024",
+    "src": "P02",
+    "event": "Back",
+    "dst": "P01",
+    "condition": "node 선택 유지; Open resets later",
+    "source": "[ClassLobbyScreen.Back](../../client/Assets/Wildfolk/Runtime/UI/ClassLobbyScreen.cs#L22)"
+  },
+  {
+    "id": "NAV-025",
+    "src": "P01",
+    "event": "AskPurchase",
+    "dst": "P03",
+    "condition": "구매 gate",
+    "source": "[ClassLobbyScreen.AskPurchase](../../client/Assets/Wildfolk/Runtime/UI/ClassLobbyScreen.cs#L30)"
+  },
+  {
+    "id": "NAV-026",
+    "src": "P03",
+    "event": "Cancel",
+    "dst": "P01",
+    "condition": "소비없음",
+    "source": "[ClassLobbyScreen.CancelPurchase](../../client/Assets/Wildfolk/Runtime/UI/ClassLobbyScreen.cs#L31)"
+  },
+  {
+    "id": "NAV-027",
+    "src": "P03",
+    "event": "Confirm",
+    "dst": "P01",
+    "condition": "success/failure status",
+    "source": "[ClassLobbyScreen.ConfirmPurchase](../../client/Assets/Wildfolk/Runtime/UI/ClassLobbyScreen.cs#L32)"
+  },
+  {
+    "id": "NAV-028",
+    "src": "H01",
+    "event": "Profile",
+    "dst": "A01",
+    "condition": "OpenHub refresh",
+    "source": "[EconomyScreen.OpenHub](../../client/Assets/Wildfolk/Runtime/UI/EconomyScreen.cs#L30)"
+  },
+  {
+    "id": "NAV-029",
+    "src": "A01",
+    "event": "Back",
+    "dst": "H01",
+    "condition": "CloseHub",
+    "source": "[EconomyScreen.CloseHub](../../client/Assets/Wildfolk/Runtime/UI/EconomyScreen.cs#L31)"
+  },
+  {
+    "id": "NAV-030",
+    "src": "A01",
+    "event": "Account",
+    "dst": "A02",
+    "condition": "hub hidden",
+    "source": "[EconomyScreen.OpenAccount](../../client/Assets/Wildfolk/Runtime/UI/EconomyScreen.cs#L32)"
+  },
+  {
+    "id": "NAV-031",
+    "src": "A02",
+    "event": "Back",
+    "dst": "A01",
+    "condition": "always hub fallback Home",
+    "source": "[AccountProfileScreen.Back](../../client/Assets/Wildfolk/Runtime/UI/AccountProfileScreen.cs#L19)"
+  },
+  {
+    "id": "NAV-032",
+    "src": "A02",
+    "event": "Help",
+    "dst": "A03",
+    "condition": "no external submit",
+    "source": "[AccountProfileScreen.Help](../../client/Assets/Wildfolk/Runtime/UI/AccountProfileScreen.cs#L29)"
+  },
+  {
+    "id": "NAV-033",
+    "src": "A03",
+    "event": "Back",
+    "dst": "A02",
+    "condition": "always Account; caller lost",
+    "source": "[AccountProfileScreen.CloseHelp](../../client/Assets/Wildfolk/Runtime/UI/AccountProfileScreen.cs#L30)"
+  },
+  {
+    "id": "NAV-034",
+    "src": "A03",
+    "event": "Category",
+    "dst": "A04",
+    "condition": "UGUI template",
+    "source": "[AccountProfileScreen.Refresh](../../client/Assets/Wildfolk/Runtime/UI/AccountProfileScreen.cs#L18)"
+  },
+  {
+    "id": "NAV-035",
+    "src": "A04",
+    "event": "choose/dismiss",
+    "dst": "A03",
+    "condition": "framework dropdown",
+    "source": "[AccountUiBuilder.Help](../../client/Assets/Wildfolk/Editor/AccountUiBuilder.cs#L54)"
+  },
+  {
+    "id": "NAV-036",
+    "src": "A02",
+    "event": "Delete",
+    "dst": "A05",
+    "condition": "Linked normal entry",
+    "source": "[AccountProfileScreen.Delete](../../client/Assets/Wildfolk/Runtime/UI/AccountProfileScreen.cs#L36)"
+  },
+  {
+    "id": "NAV-037",
+    "src": "A05",
+    "event": "Cancel",
+    "dst": "A02",
+    "condition": "counter reset next Open",
+    "source": "[AccountProfileScreen.CancelDelete](../../client/Assets/Wildfolk/Runtime/UI/AccountProfileScreen.cs#L37)"
+  },
+  {
+    "id": "NAV-038",
+    "src": "A05",
+    "event": "Confirm×1",
+    "dst": "A05",
+    "condition": "first extra warning only",
+    "source": "[AccountProfileScreen.ConfirmDelete](../../client/Assets/Wildfolk/Runtime/UI/AccountProfileScreen.cs#L38)"
+  },
+  {
+    "id": "NAV-039",
+    "src": "A05",
+    "event": "Confirm×2",
+    "dst": "A05",
+    "condition": "pending/failed text",
+    "source": "[AccountProfileScreen.ConfirmDelete](../../client/Assets/Wildfolk/Runtime/UI/AccountProfileScreen.cs#L38)"
+  },
+  {
+    "id": "NAV-040",
+    "src": "A02",
+    "event": "conflict",
+    "dst": "A06",
+    "condition": "account/cloud conflict",
+    "source": "[AccountProfileScreen.Refresh](../../client/Assets/Wildfolk/Runtime/UI/AccountProfileScreen.cs#L18)"
+  },
+  {
+    "id": "NAV-041",
+    "src": "A06",
+    "event": "UseExisting/UseCloud/KeepLocal",
+    "dst": "A02/A06",
+    "condition": "actual service response",
+    "source": "[AccountProfileScreen.UseCloud](../../client/Assets/Wildfolk/Runtime/UI/AccountProfileScreen.cs#L24)"
+  },
+  {
+    "id": "NAV-042",
+    "src": "H01",
+    "event": "Achievements",
+    "dst": "E01",
+    "condition": "fromProfile=false",
+    "source": "[EconomyScreen.OpenAchievements](../../client/Assets/Wildfolk/Runtime/UI/EconomyScreen.cs#L28)"
+  },
+  {
+    "id": "NAV-043",
+    "src": "A01",
+    "event": "Achievements",
+    "dst": "E01",
+    "condition": "fromProfile=true",
+    "source": "[EconomyScreen.OpenAchievements](../../client/Assets/Wildfolk/Runtime/UI/EconomyScreen.cs#L28)"
+  },
+  {
+    "id": "NAV-044",
+    "src": "E01",
+    "event": "Back",
+    "dst": "H01/A01",
+    "condition": "cached origin",
+    "source": "[EconomyScreen.Back](../../client/Assets/Wildfolk/Runtime/UI/EconomyScreen.cs#L36)"
+  },
+  {
+    "id": "NAV-045",
+    "src": "H01",
+    "event": "Attendance",
+    "dst": "E02/E03/E04",
+    "condition": "tab retains previous; no forced newcomer",
+    "source": "[EconomyScreen.OpenAttendance](../../client/Assets/Wildfolk/Runtime/UI/EconomyScreen.cs#L29)"
+  },
+  {
+    "id": "NAV-046",
+    "src": "A01",
+    "event": "Attendance",
+    "dst": "E02/E03/E04",
+    "condition": "fromProfile=true",
+    "source": "[EconomyScreen.OpenAttendance](../../client/Assets/Wildfolk/Runtime/UI/EconomyScreen.cs#L29)"
+  },
+  {
+    "id": "NAV-047",
+    "src": "E02/E03/E04",
+    "event": "Board",
+    "dst": "E02/E03/E04",
+    "condition": "event reselect cycles index",
+    "source": "[EconomyScreen.Board](../../client/Assets/Wildfolk/Runtime/UI/EconomyScreen.cs#L39)"
+  },
+  {
+    "id": "NAV-048",
+    "src": "E02/E03/E04",
+    "event": "Back",
+    "dst": "H01/A01",
+    "condition": "cached origin",
+    "source": "[EconomyScreen.Back](../../client/Assets/Wildfolk/Runtime/UI/EconomyScreen.cs#L36)"
+  },
+  {
+    "id": "NAV-049",
+    "src": "H01",
+    "event": "Gem Store",
+    "dst": "E05",
+    "condition": "fromHome=true",
+    "source": "[StoreScreen.Open](../../client/Assets/Wildfolk/Runtime/UI/StoreScreen.cs#L16)"
+  },
+  {
+    "id": "NAV-050",
+    "src": "A01",
+    "event": "Gem Store",
+    "dst": "E05",
+    "condition": "fromHome=false",
+    "source": "[StoreScreen.Open](../../client/Assets/Wildfolk/Runtime/UI/StoreScreen.cs#L16)"
+  },
+  {
+    "id": "NAV-051",
+    "src": "E05/E06",
+    "event": "Back",
+    "dst": "H01/A01",
+    "condition": "cached origin",
+    "source": "[StoreScreen.Close](../../client/Assets/Wildfolk/Runtime/UI/StoreScreen.cs#L17)"
+  },
+  {
+    "id": "NAV-052",
+    "src": "E05",
+    "event": "History",
+    "dst": "E06",
+    "condition": "same Store view",
+    "source": "[StoreScreen.ToggleHistory](../../client/Assets/Wildfolk/Runtime/UI/StoreScreen.cs#L21)"
+  },
+  {
+    "id": "NAV-053",
+    "src": "E06",
+    "event": "History toggle",
+    "dst": "E05",
+    "condition": "same origin",
+    "source": "[StoreScreen.ToggleHistory](../../client/Assets/Wildfolk/Runtime/UI/StoreScreen.cs#L21)"
+  },
+  {
+    "id": "NAV-054",
+    "src": "E05/E06",
+    "event": "Purchase help",
+    "dst": "A03",
+    "condition": "Meta.Profile.Open→Help",
+    "source": "[StoreScreen.Contact](../../client/Assets/Wildfolk/Runtime/UI/StoreScreen.cs#L22)"
+  },
+  {
+    "id": "NAV-055",
+    "src": "A01",
+    "event": "Watch/Retry",
+    "dst": "E07",
+    "condition": "inline status; native ad external",
+    "source": "[EconomyScreen.WatchReward](../../client/Assets/Wildfolk/Runtime/UI/EconomyScreen.cs#L33)"
+  },
+  {
+    "id": "NAV-056",
+    "src": "E07",
+    "event": "result",
+    "dst": "A01",
+    "condition": "confirmed/pending/error inline",
+    "source": "[EconomyScreen.Refresh](../../client/Assets/Wildfolk/Runtime/UI/EconomyScreen.cs#L16)"
+  },
+  {
+    "id": "NAV-057",
+    "src": "G01",
+    "event": "Bag",
+    "dst": "I01",
+    "condition": "Running; no context modal",
+    "source": "[GameplaySession.ToggleInventory](../../client/Assets/Wildfolk/Runtime/Core/GameplaySession.cs#L21)"
+  },
+  {
+    "id": "NAV-058",
+    "src": "I01",
+    "event": "Close",
+    "dst": "G01",
+    "condition": "Session.CloseInventory",
+    "source": "[GameplaySession.CloseInventory](../../client/Assets/Wildfolk/Runtime/Core/GameplaySession.cs#L27)"
+  },
+  {
+    "id": "NAV-059",
+    "src": "G01",
+    "event": "Profile",
+    "dst": "P04",
+    "condition": "Running",
+    "source": "[GameplaySession.OpenCharacter](../../client/Assets/Wildfolk/Runtime/Core/GameplaySession.cs#L28)"
+  },
+  {
+    "id": "NAV-060",
+    "src": "P04",
+    "event": "Close",
+    "dst": "G01",
+    "condition": "local session",
+    "source": "[CharacterScreen.Close](../../client/Assets/Wildfolk/Runtime/UI/CharacterScreen.cs#L13)"
+  },
+  {
+    "id": "NAV-061",
+    "src": "P04",
+    "event": "Tree",
+    "dst": "P05",
+    "condition": "Character state",
+    "source": "[CharacterScreen.OpenTree](../../client/Assets/Wildfolk/Runtime/UI/CharacterScreen.cs#L14)"
+  },
+  {
+    "id": "NAV-062",
+    "src": "P05",
+    "event": "Back",
+    "dst": "P04",
+    "condition": "no authored direct Close",
+    "source": "[SkillTreeScreen.Back](../../client/Assets/Wildfolk/Runtime/UI/SkillTreeScreen.cs#L20)"
+  },
+  {
+    "id": "NAV-063",
+    "src": "G01",
+    "event": "Pause",
+    "dst": "S01",
+    "condition": "SP; MP Leave is separate",
+    "source": "[GameplaySession.OpenPause](../../client/Assets/Wildfolk/Runtime/Core/GameplaySession.cs#L33)"
+  },
+  {
+    "id": "NAV-064",
+    "src": "S01",
+    "event": "Resume",
+    "dst": "G01",
+    "condition": "SP unfreeze",
+    "source": "[GameplaySession.Resume](../../client/Assets/Wildfolk/Runtime/Core/GameplaySession.cs#L37)"
+  },
+  {
+    "id": "NAV-065",
+    "src": "S01",
+    "event": "Settings",
+    "dst": "S02",
+    "condition": "Menu hidden",
+    "source": "[PauseMenu.OpenSettings](../../client/Assets/Wildfolk/Runtime/UI/PauseMenu.cs#L9)"
+  },
+  {
+    "id": "NAV-066",
+    "src": "S02",
+    "event": "Back",
+    "dst": "S01",
+    "condition": "prefs Flush",
+    "source": "[PauseMenu.Back](../../client/Assets/Wildfolk/Runtime/UI/PauseMenu.cs#L8)"
+  },
+  {
+    "id": "NAV-067",
+    "src": "S01",
+    "event": "Save & Home",
+    "dst": "T01",
+    "condition": "save success only",
+    "source": "[WorldSaveService.SaveAndHome](../../client/Assets/Wildfolk/Runtime/Persistence/WorldSaveService.cs#L36)"
+  },
+  {
+    "id": "NAV-068",
+    "src": "S01",
+    "event": "save failure",
+    "dst": "S01",
+    "condition": "toast; no transition",
+    "source": "[WorldSaveService.SaveAndHome](../../client/Assets/Wildfolk/Runtime/Persistence/WorldSaveService.cs#L36)"
+  },
+  {
+    "id": "NAV-069",
+    "src": "I01",
+    "event": "Crafting",
+    "dst": "C01",
+    "condition": "hand station",
+    "source": "[PlayerCrafting.OpenHandCrafting](../../client/Assets/Wildfolk/Runtime/Crafting/PlayerCrafting.cs#L23)"
+  },
+  {
+    "id": "NAV-070",
+    "src": "C01",
+    "event": "Bag",
+    "dst": "I01",
+    "condition": "clears station context",
+    "source": "[PlayerCrafting.OpenBag](../../client/Assets/Wildfolk/Runtime/Crafting/PlayerCrafting.cs#L25)"
+  },
+  {
+    "id": "NAV-071",
+    "src": "C01",
+    "event": "Close",
+    "dst": "G01",
+    "condition": "does not reopen bag",
+    "source": "[PlayerCrafting.CloseCrafting](../../client/Assets/Wildfolk/Runtime/Crafting/PlayerCrafting.cs#L24)"
+  },
+  {
+    "id": "NAV-072",
+    "src": "G01",
+    "event": "Station Interact",
+    "dst": "C01",
+    "condition": "in range/LoS",
+    "source": "[PlayerCrafting.OpenStation](../../client/Assets/Wildfolk/Runtime/Crafting/PlayerCrafting.cs#L59)"
+  },
+  {
+    "id": "NAV-073",
+    "src": "C01",
+    "event": "sequential station",
+    "dst": "C02",
+    "condition": "queue display variant",
+    "source": "[CraftingPanel.Refresh](../../client/Assets/Wildfolk/Runtime/UI/CraftingPanel.cs#L16)"
+  },
+  {
+    "id": "NAV-074",
+    "src": "C01",
+    "event": "Workbench I/II",
+    "dst": "C03",
+    "condition": "upgrade/Home area visible",
+    "source": "[CraftingPanel.Refresh](../../client/Assets/Wildfolk/Runtime/UI/CraftingPanel.cs#L16)"
+  },
+  {
+    "id": "NAV-075",
+    "src": "G01",
+    "event": "Chest Interact",
+    "dst": "I06",
+    "condition": "PlayerStorage context",
+    "source": "[PlayerStorage.Open](../../client/Assets/Wildfolk/Runtime/Player/PlayerStorage.cs#L5)"
+  },
+  {
+    "id": "NAV-076",
+    "src": "I06",
+    "event": "Close",
+    "dst": "G01",
+    "condition": "storage clears; no return to bag",
+    "source": "[GameplaySession.CloseInventory](../../client/Assets/Wildfolk/Runtime/Core/GameplaySession.cs#L27)"
+  },
+  {
+    "id": "NAV-077",
+    "src": "I01/I06",
+    "event": "long press",
+    "dst": "I03",
+    "condition": "count>1",
+    "source": "[InventorySlotDrag.Update](../../client/Assets/Wildfolk/Runtime/UI/InventorySlotDrag.cs#L17)"
+  },
+  {
+    "id": "NAV-078",
+    "src": "I01/I06",
+    "event": "Split",
+    "dst": "I04",
+    "condition": "selected count>1",
+    "source": "[InventoryDragController.OpenSplit](../../client/Assets/Wildfolk/Runtime/UI/InventoryDragController.cs#L104)"
+  },
+  {
+    "id": "NAV-079",
+    "src": "I03",
+    "event": "Split",
+    "dst": "I04",
+    "condition": "ChooseSplit",
+    "source": "[StackSplitPanel.ChooseSplit](../../client/Assets/Wildfolk/Runtime/UI/StackSplitPanel.cs#L22)"
+  },
+  {
+    "id": "NAV-080",
+    "src": "I03/I04",
+    "event": "Cancel",
+    "dst": "I01/I06",
+    "condition": "parent remains; no consume",
+    "source": "[StackSplitPanel.Cancel](../../client/Assets/Wildfolk/Runtime/UI/StackSplitPanel.cs#L28)"
+  },
+  {
+    "id": "NAV-081",
+    "src": "I04",
+    "event": "Confirm",
+    "dst": "I05",
+    "condition": "partial held; source unchanged",
+    "source": "[StackSplitPanel.Confirm](../../client/Assets/Wildfolk/Runtime/UI/StackSplitPanel.cs#L27)"
+  },
+  {
+    "id": "NAV-082",
+    "src": "I05",
+    "event": "place/cancel",
+    "dst": "I01/I06",
+    "condition": "commit on valid target only",
+    "source": "[InventoryDragController.PlaceHeld](../../client/Assets/Wildfolk/Runtime/UI/InventoryDragController.cs#L123)"
+  },
+  {
+    "id": "NAV-083",
+    "src": "G01",
+    "event": "Supply Interact",
+    "dst": "I07",
+    "condition": "camp/POI available",
+    "source": "[CampLootPanel.Open](../../client/Assets/Wildfolk/Runtime/UI/CampLootPanel.cs#L18)"
+  },
+  {
+    "id": "NAV-084",
+    "src": "I07",
+    "event": "Close/out of range",
+    "dst": "G01",
+    "condition": "destroy transient panel",
+    "source": "[CampLootPanel.CloseFocused](../../client/Assets/Wildfolk/Runtime/UI/CampLootPanel.cs#L38)"
+  },
+  {
+    "id": "NAV-085",
+    "src": "G01",
+    "event": "Placeable selection",
+    "dst": "C04",
+    "condition": "preview while running",
+    "source": "[PlayerPlacement.LateUpdate](../../client/Assets/Wildfolk/Runtime/World/PlayerPlacement.cs#L21)"
+  },
+  {
+    "id": "NAV-086",
+    "src": "G01",
+    "event": "Turret Interact",
+    "dst": "C05",
+    "condition": "in range",
+    "source": "[TierThreeHud.OpenTurret](../../client/Assets/Wildfolk/Runtime/UI/TierThreeHud.cs#L23)"
+  },
+  {
+    "id": "NAV-087",
+    "src": "G01",
+    "event": "Beacon Interact",
+    "dst": "C06",
+    "condition": "target exists",
+    "source": "[TierThreeHud.OpenBeacon](../../client/Assets/Wildfolk/Runtime/UI/TierThreeHud.cs#L25)"
+  },
+  {
+    "id": "NAV-088",
+    "src": "G01",
+    "event": "Compass Choose",
+    "dst": "C07",
+    "condition": "HasCompass",
+    "source": "[TierThreeHud.OpenNavigation](../../client/Assets/Wildfolk/Runtime/UI/TierThreeHud.cs#L65)"
+  },
+  {
+    "id": "NAV-089",
+    "src": "C05/C06/C07",
+    "event": "Close/context invalid",
+    "dst": "G01",
+    "condition": "CloseInventory",
+    "source": "[TierThreeHud.Close](../../client/Assets/Wildfolk/Runtime/UI/TierThreeHud.cs#L62)"
+  },
+  {
+    "id": "NAV-090",
+    "src": "I01/G01",
+    "event": "Telescope Use",
+    "dst": "C08",
+    "condition": "selected telescope",
+    "source": "[InventoryEquipment.Equip](../../client/Assets/Wildfolk/Runtime/UI/InventoryEquipment.cs#L29)"
+  },
+  {
+    "id": "NAV-091",
+    "src": "C08",
+    "event": "Close/Pause",
+    "dst": "G01",
+    "condition": "Telescope.Exit",
+    "source": "[TierThreeHud.Build](../../client/Assets/Wildfolk/Runtime/UI/TierThreeHud.cs#L36)"
+  },
+  {
+    "id": "NAV-092",
+    "src": "G01",
+    "event": "world context",
+    "dst": "G13",
+    "condition": "tomb/door/water/cave etc",
+    "source": "[PlayerInteraction.TryInteract](../../client/Assets/Wildfolk/Runtime/Player/PlayerInteraction.cs#L52)"
+  },
+  {
+    "id": "NAV-093",
+    "src": "G01",
+    "event": "SP lethal",
+    "dst": "D01",
+    "condition": "durable Dead; freeze",
+    "source": "[PlayerDeath.Lethal](../../client/Assets/Wildfolk/Runtime/Player/PlayerDeath.cs#L54)"
+  },
+  {
+    "id": "NAV-094",
+    "src": "G01",
+    "event": "MP lethal",
+    "dst": "D02",
+    "condition": "not all-down; countdown",
+    "source": "[PlayerDeath.Lethal](../../client/Assets/Wildfolk/Runtime/Player/PlayerDeath.cs#L54)"
+  },
+  {
+    "id": "NAV-095",
+    "src": "G01",
+    "event": "hold teammate",
+    "dst": "D03",
+    "condition": "near downed; Rescuing",
+    "source": "[PlayerInputCommands.HoldInteract](../../client/Assets/Wildfolk/Runtime/Input/PlayerInputCommands.cs#L23)"
+  },
+  {
+    "id": "NAV-096",
+    "src": "D03",
+    "event": "release/interruption",
+    "dst": "G01",
+    "condition": "target still downed",
+    "source": "[PlayerDeath.InterruptRescue](../../client/Assets/Wildfolk/Runtime/Player/PlayerDeath.cs#L49)"
+  },
+  {
+    "id": "NAV-097",
+    "src": "D03/D02",
+    "event": "rescue success",
+    "dst": "G01",
+    "condition": "HP/protection; world continues",
+    "source": "[PlayerDeath.CommitTeammate](../../client/Assets/Wildfolk/Runtime/Player/PlayerDeath.cs#L146)"
+  },
+  {
+    "id": "NAV-098",
+    "src": "D02",
+    "event": "timeout/all-down",
+    "dst": "D01",
+    "condition": "Dead; MP only Home choice",
+    "source": "[PlayerDeath.Lethal](../../client/Assets/Wildfolk/Runtime/Player/PlayerDeath.cs#L54)"
+  },
+  {
+    "id": "NAV-099",
+    "src": "D01",
+    "event": "SP ad/Gem confirmed",
+    "dst": "G01",
+    "condition": "same death revision; actual transaction",
+    "source": "[PlayerDeath.GemRevive](../../client/Assets/Wildfolk/Runtime/Player/PlayerDeath.cs#L160)"
+  },
+  {
+    "id": "NAV-100",
+    "src": "D01",
+    "event": "cancel/failure",
+    "dst": "D01",
+    "condition": "retain death + free Home",
+    "source": "[DeathHud.Refresh](../../client/Assets/Wildfolk/Runtime/UI/DeathHud.cs#L13)"
+  },
+  {
+    "id": "NAV-101",
+    "src": "D01",
+    "event": "Free Home",
+    "dst": "G01",
+    "condition": "same world HomeAnchor; not MainMenu",
+    "source": "[DeathHud.Respawn](../../client/Assets/Wildfolk/Runtime/UI/DeathHud.cs#L18)"
+  },
+  {
+    "id": "NAV-102",
+    "src": "G01",
+    "event": "MP Leave",
+    "dst": "T01",
+    "condition": "Host save success; client shutdown",
+    "source": "[MultiplayerArena.Leave](../../client/Assets/Wildfolk/Runtime/Networking/MultiplayerArena.cs#L28)"
+  },
+  {
+    "id": "NAV-103",
+    "src": "G01/M02",
+    "event": "host disconnect",
+    "dst": "H01/M01",
+    "condition": "session ends; no host migration",
+    "source": "[NetworkSession.Disconnected](../../client/Assets/Wildfolk/Runtime/Networking/NetworkSession.cs#L130)"
+  }
+]

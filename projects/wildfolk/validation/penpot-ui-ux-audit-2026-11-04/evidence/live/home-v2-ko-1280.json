@@ -1,0 +1,159 @@
+{
+  "utc": "2026-11-04T01:45:25.2077293Z",
+  "scene": "MainMenu",
+  "screen": [
+    1280,
+    720
+  ],
+  "language": "ko",
+  "labels": [
+    {
+      "name": "Label",
+      "text": "새 세계 시작",
+      "size": 36,
+      "width": 386.0,
+      "height": 104.0,
+      "preferredHeight": 52.5,
+      "overflow": "Truncate"
+    },
+    {
+      "name": "Label",
+      "text": "업적",
+      "size": 32,
+      "width": 292.0,
+      "height": 62.0,
+      "preferredHeight": 45.0,
+      "overflow": "Truncate"
+    },
+    {
+      "name": "Label",
+      "text": "출석",
+      "size": 32,
+      "width": 292.0,
+      "height": 62.0,
+      "preferredHeight": 45.0,
+      "overflow": "Truncate"
+    },
+    {
+      "name": "Label",
+      "text": "설정",
+      "size": 32,
+      "width": 140.0,
+      "height": 100.0,
+      "preferredHeight": 45.0,
+      "overflow": "Truncate"
+    },
+    {
+      "name": "Label",
+      "text": "멀티플레이",
+      "size": 36,
+      "width": 386.0,
+      "height": 104.0,
+      "preferredHeight": 52.5,
+      "overflow": "Truncate"
+    },
+    {
+      "name": "Label",
+      "text": "보석 상점 · —",
+      "size": 32,
+      "width": 292.0,
+      "height": 62.0,
+      "preferredHeight": 45.0,
+      "overflow": "Truncate"
+    },
+    {
+      "name": "Menu Title",
+      "text": "야영지에서",
+      "size": 32,
+      "width": 530.0,
+      "height": 56.0,
+      "preferredHeight": 45.0,
+      "overflow": "Overflow"
+    },
+    {
+      "name": "Label",
+      "text": "직업",
+      "size": 32,
+      "width": 386.0,
+      "height": 104.0,
+      "preferredHeight": 45.0,
+      "overflow": "Truncate"
+    },
+    {
+      "name": "Label",
+      "text": "프로필",
+      "size": 32,
+      "width": 140.0,
+      "height": 100.0,
+      "preferredHeight": 45.0,
+      "overflow": "Truncate"
+    },
+    {
+      "name": "Saved World",
+      "text": "저장된 세계 없음 · 싱글 플레이로 시작",
+      "size": 28,
+      "width": 530.0,
+      "height": 54.0,
+      "preferredHeight": 39.0,
+      "overflow": "Overflow"
+    }
+  ],
+  "controls": [
+    {
+      "name": "Multiplayer",
+      "type": "Button",
+      "enabled": true,
+      "width": 530.0,
+      "height": 120.0
+    },
+    {
+      "name": "Settings",
+      "type": "Button",
+      "enabled": true,
+      "width": 260.0,
+      "height": 116.0
+    },
+    {
+      "name": "Direct Attendance",
+      "type": "Button",
+      "enabled": true,
+      "width": 300.0,
+      "height": 160.0
+    },
+    {
+      "name": "Direct Achievements",
+      "type": "Button",
+      "enabled": true,
+      "width": 300.0,
+      "height": 160.0
+    },
+    {
+      "name": "Class Journal Entry",
+      "type": "Button",
+      "enabled": true,
+      "width": 530.0,
+      "height": 120.0
+    },
+    {
+      "name": "Account Entry",
+      "type": "Button",
+      "enabled": true,
+      "width": 260.0,
+      "height": 116.0
+    },
+    {
+      "name": "Gem Balance",
+      "type": "Button",
+      "enabled": true,
+      "width": 300.0,
+      "height": 160.0
+    },
+    {
+      "name": "Single Player",
+      "type": "Button",
+      "enabled": true,
+      "width": 530.0,
+      "height": 120.0
+    }
+  ]
+}

@@ -1,0 +1,154 @@
+{
+  "utc": "2026-11-04T01:47:15.9766178Z",
+  "scene": "MainMenu",
+  "screen": [
+    844,
+    390
+  ],
+  "language": "ko",
+  "labels": [
+    {
+      "name": "Session Message",
+      "text": "참가 코드를 확인하고 다시 시도하세요.",
+      "size": 32,
+      "width": 1400.0,
+      "height": 100.0,
+      "preferredHeight": 42.6685524,
+      "overflow": "Truncate"
+    },
+    {
+      "name": "Label",
+      "text": "뒤로",
+      "size": 30,
+      "width": 160.0,
+      "height": 100.0,
+      "preferredHeight": 40.158638,
+      "overflow": "Truncate"
+    },
+    {
+      "name": "Placeholder",
+      "text": "참가 코드 입력",
+      "size": 32,
+      "width": 600.0,
+      "height": 95.0,
+      "preferredHeight": 42.6685524,
+      "overflow": "Truncate"
+    },
+    {
+      "name": "Create hint",
+      "text": "최대 4명이 함께합니다. 월드는 방장 기기에 저장됩니다.",
+      "size": 32,
+      "width": 650.0,
+      "height": 130.0,
+      "preferredHeight": 82.8271942,
+      "overflow": "Truncate"
+    },
+    {
+      "name": "Title",
+      "text": "멀티플레이",
+      "size": 44,
+      "width": 630.0,
+      "height": 80.0,
+      "preferredHeight": 62.74787,
+      "overflow": "Truncate"
+    },
+    {
+      "name": "Destination Label",
+      "text": "호스트 IPv4 주소",
+      "size": 36,
+      "width": 650.0,
+      "height": 70.0,
+      "preferredHeight": 50.1982956,
+      "overflow": "Truncate"
+    },
+    {
+      "name": "Create heading",
+      "text": "야영지 만들기",
+      "size": 40,
+      "width": 650.0,
+      "height": 80.0,
+      "preferredHeight": 52.7082138,
+      "overflow": "Truncate"
+    },
+    {
+      "name": "Label",
+      "text": "로컬 네트워크",
+      "size": 32,
+      "width": 1368.0,
+      "height": 104.0,
+      "preferredHeight": 42.6685524,
+      "overflow": "Truncate"
+    },
+    {
+      "name": "Label",
+      "text": "참가",
+      "size": 32,
+      "width": 618.0,
+      "height": 116.0,
+      "preferredHeight": 42.6685524,
+      "overflow": "Truncate"
+    },
+    {
+      "name": "Label",
+      "text": "방 만들기",
+      "size": 32,
+      "width": 618.0,
+      "height": 116.0,
+      "preferredHeight": 42.6685524,
+      "overflow": "Truncate"
+    },
+    {
+      "name": "Label",
+      "text": "싱글 플레이",
+      "size": 30,
+      "width": 630.0,
+      "height": 98.0,
+      "preferredHeight": 40.158638,
+      "overflow": "Truncate"
+    }
+  ],
+  "controls": [
+    {
+      "name": "Back",
+      "type": "Button",
+      "enabled": true,
+      "width": 180.0,
+      "height": 112.0
+    },
+    {
+      "name": "Join Game",
+      "type": "Button",
+      "enabled": false,
+      "width": 650.0,
+      "height": 132.0
+    },
+    {
+      "name": "Single Player",
+      "type": "Button",
+      "enabled": true,
+      "width": 650.0,
+      "height": 110.0
+    },
+    {
+      "name": "Destination",
+      "type": "InputField",
+      "enabled": true,
+      "width": 650.0,
+      "height": 120.0
+    },
+    {
+      "name": "Connection Route",
+      "type": "Button",
+      "enabled": true,
+      "width": 1400.0,
+      "height": 120.0
+    },
+    {
+      "name": "Host Game",
+      "type": "Button",
+      "enabled": true,
+      "width": 650.0,
+      "height": 132.0
+    }
+  ]
+}

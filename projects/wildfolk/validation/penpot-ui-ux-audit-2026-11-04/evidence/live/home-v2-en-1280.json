@@ -1,0 +1,159 @@
+{
+  "utc": "2026-11-04T01:45:04.1583006Z",
+  "scene": "MainMenu",
+  "screen": [
+    1280,
+    720
+  ],
+  "language": "en",
+  "labels": [
+    {
+      "name": "Label",
+      "text": "Start new world",
+      "size": 36,
+      "width": 386.0,
+      "height": 104.0,
+      "preferredHeight": 52.5,
+      "overflow": "Truncate"
+    },
+    {
+      "name": "Label",
+      "text": "Achievements",
+      "size": 32,
+      "width": 292.0,
+      "height": 62.0,
+      "preferredHeight": 45.0,
+      "overflow": "Truncate"
+    },
+    {
+      "name": "Label",
+      "text": "Attendance",
+      "size": 32,
+      "width": 292.0,
+      "height": 62.0,
+      "preferredHeight": 45.0,
+      "overflow": "Truncate"
+    },
+    {
+      "name": "Label",
+      "text": "Settings",
+      "size": 32,
+      "width": 140.0,
+      "height": 100.0,
+      "preferredHeight": 45.0,
+      "overflow": "Truncate"
+    },
+    {
+      "name": "Label",
+      "text": "Multiplayer",
+      "size": 36,
+      "width": 386.0,
+      "height": 104.0,
+      "preferredHeight": 52.5,
+      "overflow": "Truncate"
+    },
+    {
+      "name": "Label",
+      "text": "Gem Store · —",
+      "size": 32,
+      "width": 292.0,
+      "height": 62.0,
+      "preferredHeight": 45.0,
+      "overflow": "Truncate"
+    },
+    {
+      "name": "Menu Title",
+      "text": "At the camp",
+      "size": 32,
+      "width": 530.0,
+      "height": 56.0,
+      "preferredHeight": 45.0,
+      "overflow": "Overflow"
+    },
+    {
+      "name": "Label",
+      "text": "Class",
+      "size": 32,
+      "width": 386.0,
+      "height": 104.0,
+      "preferredHeight": 45.0,
+      "overflow": "Truncate"
+    },
+    {
+      "name": "Label",
+      "text": "Profile",
+      "size": 32,
+      "width": 140.0,
+      "height": 100.0,
+      "preferredHeight": 45.0,
+      "overflow": "Truncate"
+    },
+    {
+      "name": "Saved World",
+      "text": "No saved world · Start Single Player",
+      "size": 28,
+      "width": 530.0,
+      "height": 54.0,
+      "preferredHeight": 39.0,
+      "overflow": "Overflow"
+    }
+  ],
+  "controls": [
+    {
+      "name": "Multiplayer",
+      "type": "Button",
+      "enabled": true,
+      "width": 530.0,
+      "height": 120.0
+    },
+    {
+      "name": "Settings",
+      "type": "Button",
+      "enabled": true,
+      "width": 260.0,
+      "height": 116.0
+    },
+    {
+      "name": "Direct Attendance",
+      "type": "Button",
+      "enabled": true,
+      "width": 300.0,
+      "height": 160.0
+    },
+    {
+      "name": "Direct Achievements",
+      "type": "Button",
+      "enabled": true,
+      "width": 300.0,
+      "height": 160.0
+    },
+    {
+      "name": "Class Journal Entry",
+      "type": "Button",
+      "enabled": true,
+      "width": 530.0,
+      "height": 120.0
+    },
+    {
+      "name": "Account Entry",
+      "type": "Button",
+      "enabled": true,
+      "width": 260.0,
+      "height": 116.0
+    },
+    {
+      "name": "Gem Balance",
+      "type": "Button",
+      "enabled": true,
+      "width": 300.0,
+      "height": 160.0
+    },
+    {
+      "name": "Single Player",
+      "type": "Button",
+      "enabled": true,
+      "width": 530.0,
+      "height": 120.0
+    }
+  ]
+}

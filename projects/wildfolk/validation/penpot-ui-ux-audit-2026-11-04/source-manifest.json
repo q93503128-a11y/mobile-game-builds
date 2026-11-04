@@ -1,0 +1,5687 @@
+[
+  {
+    "file": "projects/wildfolk/client/Assets/Wildfolk/Editor/AccountUiBuilder.cs",
+    "sha256": "1e454f08f5792d88a4df96169faee211864fbcb0000b118d74325dc490b5ffe9",
+    "lines": 80,
+    "methods": [
+      {
+        "line": 13,
+        "access": "public",
+        "method": "Build"
+      },
+      {
+        "line": 47,
+        "access": "private",
+        "method": "Field"
+      },
+      {
+        "line": 53,
+        "access": "private",
+        "method": "Action"
+      },
+      {
+        "line": 54,
+        "access": "private",
+        "method": "Help"
+      },
+      {
+        "line": 73,
+        "access": "private",
+        "method": "Deletion"
+      }
+    ],
+    "bindings": [
+      {
+        "line": 32,
+        "text": "screen.Character=JournalUiBuilder.Label(page,\"Character\",\"\",new Vector2(-420,355),new Vector2(620,60),30,TextAnchor.MiddleCenter);screen.Character.gameObject.SetActive(false);"
+      },
+      {
+        "line": 44,
+        "text": "page.Find(\"Back\").SetAsLastSibling();Help(safe,screen);Deletion(safe,screen);screen.View.SetActive(false);screen.FeedbackView.SetActive(false);screen.DeleteView.SetActive(false);"
+      },
+      {
+        "line": 65,
+        "text": "var item=Image(\"Item\",content,\"white\",new Vector2(.5f,1),new Vector2(0,-48),new Vector2(560,96),true);item.color=new Color32(218,208,176,255);var toggle=item.gameObject.AddComponent<Toggle>();toggle.targetGraphic=item;toggle.graphic=item;var itemText=JournalUiBuilder.Label(item.transform,\"Item Label\",\"\",Vector2.zero,new Vector2(520,90),32);s.Category.itemText=itemText;s.Category.template=template;template.gameObject.SetActive(false);"
+      }
+    ],
+    "group": "editor-authoring"
+  },
+  {
+    "file": "projects/wildfolk/client/Assets/Wildfolk/Editor/CharacterUiBuilder.cs",
+    "sha256": "ccfbcafdad35750f792d785bd0824f8f53ea49cb63b65e33777bc400d230c4ae",
+    "lines": 111,
+    "methods": [
+      {
+        "line": 9,
+        "access": "internal",
+        "method": "Build"
+      },
+      {
+        "line": 25,
+        "access": "internal",
+        "method": "ArrangeHud"
+      },
+      {
+        "line": 43,
+        "access": "internal",
+        "method": "BuildInformation"
+      },
+      {
+        "line": 70,
+        "access": "private",
+        "method": "BuildTree"
+      },
+      {
+        "line": 100,
+        "access": "private",
+        "method": "Need"
+      },
+      {
+        "line": 105,
+        "access": "private",
+        "method": "Bar"
+      }
+    ],
+    "bindings": [
+      {
+        "line": 13,
+        "text": "UnityEventTools.AddPersistentListener(Button(profile).onClick,session.OpenCharacter);"
+      },
+      {
+        "line": 68,
+        "text": "screen.View.SetActive(false);"
+      },
+      {
+        "line": 98,
+        "text": "tree.InvestButton=JournalUiBuilder.Action(page,\"Invest\",\"\",new Vector2(418,-350),new Vector2(590,82),tree.Invest,out tree.Action,true);tree.View.SetActive(false);"
+      }
+    ],
+    "group": "editor-authoring"
+  },
+  {
+    "file": "projects/wildfolk/client/Assets/Wildfolk/Editor/ChestUiBuilder.cs",
+    "sha256": "bbdfaf03b7d9cd67347e612ad2bdbd3ac883596134bd5daaef4b1be01ffe3e4f",
+    "lines": 66,
+    "methods": [
+      {
+        "line": 9,
+        "access": "internal",
+        "method": "Build"
+      },
+      {
+        "line": 36,
+        "access": "internal",
+        "method": "Arrange"
+      },
+      {
+        "line": 59,
+        "access": "private",
+        "method": "Create"
+      }
+    ],
+    "bindings": [
+      {
+        "line": 17,
+        "text": "Text(\"Symbol\",close.transform,\"×\",Vector2.zero,new Vector2(58,58),40);UnityEventTools.AddPersistentListener(Button(close).onClick,storage.Session.CloseInventory);"
+      },
+      {
+        "line": 33,
+        "text": "var split=Image(\"Split\",surface.transform,\"panel\",new Vector2(.5f,.5f),new Vector2(0,-446),new Vector2(168,58),true);Text(\"Label\",split.transform,\"ui.action.split\",Vector2.zero,new Vector2(156,50),22);drag.ChestSplitButton=Button(split);UnityEventTools.AddPersistentListener(drag.ChestSplitButton.onClick,drag.OpenSplit);"
+      },
+      {
+        "line": 34,
+        "text": "Arrange(panel);overlay.gameObject.SetActive(false);"
+      },
+      {
+        "line": 41,
+        "text": "InventoryUiBuilder.Caption(surface.Find(\"Player Label\").GetComponent<Text>(),new Vector2(475,320),new Vector2(800,55),32);surface.Find(\"Hotbar Label\").gameObject.SetActive(false);"
+      },
+      {
+        "line": 57,
+        "text": "surface.Find(\"Player Hotbar\").gameObject.SetActive(false);InventoryUiBuilder.ActionSize(panel.Drag.ChestSplitButton,new Vector2(0,-430),new Vector2(500,120));"
+      },
+      {
+        "line": 63,
+        "text": "if(!chest)UnityEventTools.AddIntPersistentListener(Button(slot).onClick,panel.Select,index);return view;"
+      }
+    ],
+    "group": "editor-authoring"
+  },
+  {
+    "file": "projects/wildfolk/client/Assets/Wildfolk/Editor/CraftingUiBuilder.cs",
+    "sha256": "7e1d9d8b6844789020f5b2749f84c30c0a66580d2c20f457c241cbfeb9bf52e5",
+    "lines": 87,
+    "methods": [
+      {
+        "line": 9,
+        "access": "internal",
+        "method": "Build"
+      },
+      {
+        "line": 56,
+        "access": "internal",
+        "method": "Arrange"
+      }
+    ],
+    "bindings": [
+      {
+        "line": 16,
+        "text": "panel.CategoryButtons=new Button[7];for(var i=0;i<7;i++){var button=Image(\"Category\",tabs,\"panel\",new Vector2(.5f,.5f),Vector2.zero,new Vector2(128,62),true);Text(\"Label\",button.transform,i==0 ? \"ui.crafting.all\" : \"ui.category.\"+((RecipeCategory)(i-1)),Vector2.zero,new Vector2(118,52),22);panel.CategoryButtons[i]=Button(button);UnityEventTools.AddIntPersistentListener(panel.CategoryButtons[i].onClick,panel.SelectCategory,i-1);}"
+      },
+      {
+        "line": 28,
+        "text": "view.InputIcon=Image(\"Ingredient\",card.transform,\"white\",new Vector2(.5f,.5f),Vector2.zero,new Vector2(28,28));view.InputIcon.gameObject.SetActive(false);"
+      },
+      {
+        "line": 31,
+        "text": "var craft=Image(\"Craft\",card.transform,\"panel\",new Vector2(.5f,.5f),new Vector2(141,-49),new Vector2(144,58),true);view.ButtonLabel=Text(\"Label\",craft.transform,\"\",Vector2.zero,new Vector2(132,50),21);view.CraftButton=Button(craft);UnityEventTools.AddPersistentListener(view.CraftButton.onClick,view.Craft);"
+      },
+      {
+        "line": 54,
+        "text": "Arrange(panel);panel.View.SetActive(false);"
+      }
+    ],
+    "group": "editor-authoring"
+  },
+  {
+    "file": "projects/wildfolk/client/Assets/Wildfolk/Editor/DeathUiBuilder.cs",
+    "sha256": "240f25351a57693f5675c864c12bdc494027e5e92ce20e1e15a728727287b002",
+    "lines": 24,
+    "methods": [
+      {
+        "line": 8,
+        "access": "internal",
+        "method": "Build"
+      },
+      {
+        "line": 21,
+        "access": "private",
+        "method": "Action"
+      }
+    ],
+    "bindings": [
+      {
+        "line": 19,
+        "text": "hud.DeadView.SetActive(false);banner.gameObject.SetActive(false);return hud;"
+      }
+    ],
+    "group": "editor-authoring"
+  },
+  {
+    "file": "projects/wildfolk/client/Assets/Wildfolk/Editor/EconomyUiBuilder.cs",
+    "sha256": "6f0a0487d770a2579f68aa5328460901bffea3acb8bcd203ee3649e4adbbf717",
+    "lines": 60,
+    "methods": [
+      {
+        "line": 13,
+        "access": "public",
+        "method": "Build"
+      },
+      {
+        "line": 57,
+        "access": "private",
+        "method": "Header"
+      }
+    ],
+    "bindings": [
+      {
+        "line": 32,
+        "text": "s.AdPrivacy=JournalUiBuilder.Action(hub,\"Ad privacy\",\"ads.privacy\",new Vector2(-385,-360),new Vector2(650,126),s.AdPrivacyOptions,out _);s.AdPrivacy.gameObject.SetActive(false);"
+      },
+      {
+        "line": 33,
+        "text": "s.HubView.SetActive(false);"
+      },
+      {
+        "line": 36,
+        "text": "var entry=s.HomeEntry.GetComponentInParent<Button>();while(entry.onClick.GetPersistentEventCount()>0)UnityEventTools.RemovePersistentListener(entry.onClick,0);UnityEventTools.AddPersistentListener(entry.onClick,s.OpenHub);"
+      },
+      {
+        "line": 39,
+        "text": "s.Categories=new Button[7];s.CategoryLabels=new Text[7];for(var i=0;i<7;i++){var b=JournalUiBuilder.Action(a,\"Category \"+i,\"\",new Vector2(-660+i*220,231),new Vector2(210,126),null,out s.CategoryLabels[i]);UnityEventTools.AddIntPersistentListener(b.onClick,s.Category,i);s.CategoryLabels[i].fontSize=32;s.Categories[i]=b;}"
+      },
+      {
+        "line": 41,
+        "text": "s.Rows=new Button[6];s.RowLabels=new Text[6];s.RowProgress=new Image[6];for(var i=0;i<6;i++){s.Rows[i]=JournalUiBuilder.Action(content,\"Family \"+i,\"\",new Vector2(0,-64-i*132),new Vector2(680,126),null,out s.RowLabels[i]);s.RowLabels[i].fontSize=30;s.RowLabels[i].rectTransform.sizeDelta=new Vector2(630,95);s.RowLabels[i].rectTransform.anchoredPosition=new Vector2(0,8);var track=Image(\"Progress track\",s.Rows[i].transform,\"white\",Vector2.one*.5f,new Vector2(0,-48),new Vector2(620,8));track.color=JournalStyle.Muted;s.RowProgress[i]=Image(\"Progress\",track.transform,\"white\",Vector2.one*.5f,Vector2.zero,new Vector2(620,8));s.RowProgress[i].color=JournalStyle.Ember;s.RowProgress[i].type=UnityEngine.UI.Image.Type.Filled;s.RowProgress[i].fillMethod=UnityEngine.UI.Image.FillMethod.Horizontal;((RectTransform)s.Rows[i].transform).anchorMin=((RectTransform)s.Rows[i].transform).anchorMax=new Vector2(.5f,1);UnityEventTools.AddIntPersistentListener(s.Rows[i].onClick,s.Select,i);}"
+      },
+      {
+        "line": 48,
+        "text": "s.Tabs=new Button[3];var keys=new[]{\"economy.newcomer_tab\",\"economy.monthly_tab\",\"economy.event\"};for(var i=0;i<3;i++){s.Tabs[i]=JournalUiBuilder.Action(d,\"Board \"+i,keys[i],new Vector2(-510+i*510,295),new Vector2(460,112),null,out _);UnityEventTools.AddIntPersistentListener(s.Tabs[i].onClick,s.Board,i);}"
+      },
+      {
+        "line": 55,
+        "text": "s.AchievementView.SetActive(false);s.AttendanceView.SetActive(false);StoreUiBuilder.BuildInScene(s);EditorSceneManager.MarkSceneDirty(scene);EditorSceneManager.SaveScene(scene);AssetDatabase.SaveAssets();"
+      },
+      {
+        "line": 58,
+        "text": "{JournalUiBuilder.Label(p,\"Title\",title,new Vector2(-420,427),new Vector2(620,70),34);wallet=JournalUiBuilder.Label(p,\"Gem Wallet\",\"\",new Vector2(365,428),new Vector2(320,64),30);JournalUiBuilder.Action(p,\"Back\",\"ui.action.back\",new Vector2(695,400),new Vector2(160,126),back,out _);retry=JournalUiBuilder.Action(p,\"Retry\",\"economy.retry_action\",new Vector2(40,425),new Vector2(270,126),sync,out _);retry.gameObject.SetActive(false);}"
+      }
+    ],
+    "group": "editor-authoring"
+  },
+  {
+    "file": "projects/wildfolk/client/Assets/Wildfolk/Editor/FrontendSceneBuilder.cs",
+    "sha256": "8309a11b84a495cc62897ca9e616857b7f566580839dba29c37faa594b0f9372",
+    "lines": 89,
+    "methods": [
+      {
+        "line": 19,
+        "access": "public",
+        "method": "Build"
+      },
+      {
+        "line": 67,
+        "access": "private",
+        "method": "JournalAction"
+      },
+      {
+        "line": 72,
+        "access": "private",
+        "method": "Action"
+      },
+      {
+        "line": 76,
+        "access": "private",
+        "method": "Background"
+      },
+      {
+        "line": 86,
+        "access": "private",
+        "method": "Prop"
+      }
+    ],
+    "bindings": [
+      {
+        "line": 36,
+        "text": "var camera=new GameObject(\"Main Camera\",typeof(Camera),typeof(AudioListener)).GetComponent<Camera>();camera.tag=\"MainCamera\";camera.orthographic=true;camera.orthographicSize=9;camera.transform.position=new Vector3(0,0,-10);camera.backgroundColor=new Color32(62,80,49,255);"
+      },
+      {
+        "line": 37,
+        "text": "var light=new GameObject(\"Global Light 2D\").AddComponent<Light2D>();light.lightType=Light2D.LightType.Global;light.intensity=.78f;"
+      },
+      {
+        "line": 39,
+        "text": "var services=new GameObject(\"Home Preferences\");var prefs=services.AddComponent<UserPreferences>();var audio=services.AddComponent<GameAudio>();audio.Preferences=prefs;"
+      },
+      {
+        "line": 40,
+        "text": "var canvas=new GameObject(\"Home Canvas\",typeof(RectTransform),typeof(Canvas),typeof(CanvasScaler),typeof(GraphicRaycaster));canvas.GetComponent<Canvas>().renderMode=RenderMode.ScreenSpaceOverlay;"
+      },
+      {
+        "line": 56,
+        "text": "home.Settings=SurvivalUiBuilder.Settings(safe,prefs,home.ShowHome);home.Settings.SetActive(false);"
+      },
+      {
+        "line": 57,
+        "text": "home.Multiplayer=MultiplayerUiBuilder.Build(safe,home);home.Multiplayer.SetActive(false);"
+      },
+      {
+        "line": 62,
+        "text": "Action(confirm.transform,\"Start New World\",\"home.new_action\",new Vector2(190,-205),new Vector2(400,72),home.BeginNew,true);home.Confirm.SetActive(false);"
+      },
+      {
+        "line": 63,
+        "text": "var events=new GameObject(\"EventSystem\",typeof(EventSystem),typeof(InputSystemUIInputModule));events.GetComponent<EventSystem>().sendNavigationEvents=false;var input=events.GetComponent<InputSystemUIInputModule>();input.UnassignActions();input.actionsAsset=uiActions;input.point=point;input.leftClick=click;"
+      },
+      {
+        "line": 78,
+        "text": "WorldArt.SpriteMaterial=AssetDatabase.LoadAssetAtPath<Material>(\"Assets/Wildfolk/Art/WorldSprite.mat\");var root=new GameObject(\"Quiet Woodland\").transform;"
+      }
+    ],
+    "group": "editor-authoring"
+  },
+  {
+    "file": "projects/wildfolk/client/Assets/Wildfolk/Editor/GameplaySceneBuilder.cs",
+    "sha256": "ba59e23d5c7a619345c17a9a4781ddcf70f6878b5b1bc72ced78857241637636",
+    "lines": 64,
+    "methods": [
+      {
+        "line": 14,
+        "access": "public",
+        "method": "Build"
+      }
+    ],
+    "bindings": [
+      {
+        "line": 23,
+        "text": "var session=new GameObject(\"Game Session\").AddComponent<GameplaySession>();session.gameObject.AddComponent<WorldPauseController>().Session=session;"
+      },
+      {
+        "line": 30,
+        "text": "var actors=new GameObject(\"Actors\").transform;var playerObject=GameplayActorBuilder.Player(actors,assets);var player=playerObject.GetComponent<PlayerInventory>();"
+      },
+      {
+        "line": 37,
+        "text": "var camera=new GameObject(\"Main Camera\",typeof(Camera),typeof(AudioListener)).GetComponent<Camera>();camera.tag=\"MainCamera\";camera.transform.position=new Vector3(0,0,-10);camera.orthographic=true;camera.orthographicSize=9;camera.clearFlags=CameraClearFlags.SolidColor;camera.backgroundColor=new Color32(106,126,73,255);camera.GetUniversalAdditionalCameraData().renderPostProcessing=false;"
+      },
+      {
+        "line": 38,
+        "text": "var light=new GameObject(\"Global Light 2D\").AddComponent<Light2D>();light.lightType=Light2D.LightType.Global;light.intensity=1;"
+      },
+      {
+        "line": 40,
+        "text": "var terrain=new GameObject(\"Terrain\").transform;var region=Group(\"Spawn Region\",terrain).gameObject.AddComponent<WorldSpawnRegion>();region.Size=assets.World.Generation.Size-Vector2.one*3;"
+      },
+      {
+        "line": 45,
+        "text": "var world=session.gameObject.AddComponent<WorldGenerator>();world.Definition=assets.World.Generation;world.Region=region;world.Environment=new GameObject(\"Generated Environment\").transform;world.Player=player;world.Session=session;world.Pickup=pickup;world.Settings=assets.Settings;world.Water=assets.Survival.Source;world.SpriteMaterial=SpriteMaterial;world.Grass=VisualArtImporter.Sprite(\"grass\");world.Fern=VisualArtImporter.Sprite(\"fern\");world.PoiSprites=WorldFoundationAssets.PoiArt();"
+      }
+    ],
+    "group": "editor-authoring"
+  },
+  {
+    "file": "projects/wildfolk/client/Assets/Wildfolk/Editor/GameplayUiFactory.cs",
+    "sha256": "f46f26eb643ba709a7f5175b4f2c1b5e1fdd2f893c009e42a3fff87c215fec2f",
+    "lines": 77,
+    "methods": [
+      {
+        "line": 8,
+        "access": "internal",
+        "method": "Rect"
+      },
+      {
+        "line": 19,
+        "access": "internal",
+        "method": "Image"
+      },
+      {
+        "line": 28,
+        "access": "internal",
+        "method": "Text"
+      },
+      {
+        "line": 41,
+        "access": "internal",
+        "method": "Button"
+      },
+      {
+        "line": 54,
+        "access": "internal",
+        "method": "Scrim"
+      },
+      {
+        "line": 63,
+        "access": "internal",
+        "method": "Slot"
+      }
+    ],
+    "bindings": [
+      {
+        "line": 10,
+        "text": "var rect=new GameObject(name,typeof(RectTransform)).GetComponent<RectTransform>();"
+      }
+    ],
+    "group": "editor-authoring"
+  },
+  {
+    "file": "projects/wildfolk/client/Assets/Wildfolk/Editor/InventoryUiBuilder.cs",
+    "sha256": "2fb566bfb0c830c3f264073e20282fd9714d71b65ea4c9d1f1e29351c7ab2c8b",
+    "lines": 128,
+    "methods": [
+      {
+        "line": 10,
+        "access": "internal",
+        "method": "Build"
+      },
+      {
+        "line": 55,
+        "access": "internal",
+        "method": "Grid"
+      },
+      {
+        "line": 64,
+        "access": "internal",
+        "method": "Position"
+      },
+      {
+        "line": 66,
+        "access": "internal",
+        "method": "Caption"
+      },
+      {
+        "line": 68,
+        "access": "internal",
+        "method": "ActionSize"
+      },
+      {
+        "line": 70,
+        "access": "internal",
+        "method": "SlotSize"
+      },
+      {
+        "line": 79,
+        "access": "internal",
+        "method": "Arrange"
+      },
+      {
+        "line": 114,
+        "access": "private",
+        "method": "BuildEquipment"
+      }
+    ],
+    "bindings": [
+      {
+        "line": 20,
+        "text": "UnityEventTools.AddPersistentListener(Button(close).onClick,session.CloseInventory);"
+      },
+      {
+        "line": 30,
+        "text": "UnityEventTools.AddIntPersistentListener(Button(slot).onClick,panel.Select,i);"
+      },
+      {
+        "line": 40,
+        "text": "overlay.gameObject.SetActive(false);"
+      },
+      {
+        "line": 41,
+        "text": "var split=Image(\"Split\",surface.transform,\"panel\",new Vector2(.5f,.5f),new Vector2(541,-281),new Vector2(168,58),true);Text(\"Label\",split.transform,\"ui.action.split\",Vector2.zero,new Vector2(156,50),22);drag.SplitButton=Button(split);UnityEventTools.AddPersistentListener(drag.SplitButton.onClick,drag.OpenSplit);"
+      },
+      {
+        "line": 45,
+        "text": "dropZone.gameObject.AddComponent<InventoryDropZone>().Controller=drag;drag.DropZone=dropZone.gameObject;drag.DropZone.SetActive(false);"
+      },
+      {
+        "line": 52,
+        "text": "ghost.gameObject.SetActive(false);StackSplitUiBuilder.Build(safe,drag);Arrange(panel);"
+      },
+      {
+        "line": 119,
+        "text": "for(var i=0;i<2;i++){var slot=Image(\"Equipment Slot\",surface,\"panel\",new Vector2(.5f,.5f),new Vector2(-618+i*127,-112),new Vector2(100,100),true);var slotButton=Button(slot);var armorDrag=slot.gameObject.AddComponent<EquipmentSlotDrag>();armorDrag.Controller=root.GetComponent<InventoryDragController>();armorDrag.Slot=i==0 ? ArmorSlot.Head : ArmorSlot.Body;if(i==0)equipment.HeadButton=slotButton;else equipment.BodyButton=slotButton;UnityEventTools.AddIntPersistentListener(slotButton.onClick,equipment.SelectSlot,(int)(i==0 ? ArmorSlot.Head : ArmorSlot.Body));var icon=Image(\"Equipped Item\",slot.transform,\"white\",new Vector2(.5f,.5f),Vector2.zero,new Vector2(68,72));icon.preserveAspect=true;if(i==0)equipment.HeadIcon=icon;else equipment.BodyIcon=icon;Text(\"Slot Name\",surface,i==0 ? \"ui.slot.Head\" : \"ui.slot.Body\",new Vector2(-618+i*127,-186),new Vector2(122,32),21);}"
+      }
+    ],
+    "group": "editor-authoring"
+  },
+  {
+    "file": "projects/wildfolk/client/Assets/Wildfolk/Editor/JournalContentAssets.cs",
+    "sha256": "1ef8debe9330bd2010fcbe7c921fda810898b1d6bd116194fb2e80f81fdc832f",
+    "lines": 30,
+    "methods": [
+      {
+        "line": 11,
+        "access": "public",
+        "method": "Rebuild"
+      }
+    ],
+    "bindings": [],
+    "group": "editor-authoring"
+  },
+  {
+    "file": "projects/wildfolk/client/Assets/Wildfolk/Editor/JournalSymbolAssets.cs",
+    "sha256": "00af9ae6c12dded6b53573f67a3ed3c27ba80af56b3e3ec22a784449fde7ce10",
+    "lines": 89,
+    "methods": [
+      {
+        "line": 22,
+        "access": "public",
+        "method": "Import"
+      },
+      {
+        "line": 47,
+        "access": "public",
+        "method": "Sprite"
+      },
+      {
+        "line": 49,
+        "access": "public",
+        "method": "Classes"
+      },
+      {
+        "line": 50,
+        "access": "public",
+        "method": "Nodes"
+      },
+      {
+        "line": 52,
+        "access": "internal",
+        "method": "Ownership"
+      },
+      {
+        "line": 58,
+        "access": "internal",
+        "method": "CommonState"
+      },
+      {
+        "line": 62,
+        "access": "public",
+        "method": "Author"
+      }
+    ],
+    "bindings": [],
+    "group": "editor-authoring"
+  },
+  {
+    "file": "projects/wildfolk/client/Assets/Wildfolk/Editor/JournalUiBuilder.cs",
+    "sha256": "c707ca0b6bd642b067df335fbc7438657a498ac0c91a866bdbf984166fef215d",
+    "lines": 88,
+    "methods": [
+      {
+        "line": 10,
+        "access": "internal",
+        "method": "Book"
+      },
+      {
+        "line": 20,
+        "access": "internal",
+        "method": "Sheet"
+      },
+      {
+        "line": 28,
+        "access": "internal",
+        "method": "Label"
+      },
+      {
+        "line": 30,
+        "access": "internal",
+        "method": "Rule"
+      },
+      {
+        "line": 32,
+        "access": "internal",
+        "method": "Action"
+      },
+      {
+        "line": 41,
+        "access": "internal",
+        "method": "IconAction"
+      },
+      {
+        "line": 45,
+        "access": "internal",
+        "method": "IconLayout"
+      },
+      {
+        "line": 51,
+        "access": "internal",
+        "method": "RowAction"
+      },
+      {
+        "line": 57,
+        "access": "internal",
+        "method": "CampNavigation"
+      },
+      {
+        "line": 62,
+        "access": "internal",
+        "method": "CampEntry"
+      },
+      {
+        "line": 69,
+        "access": "private",
+        "method": "ClearSurface"
+      },
+      {
+        "line": 71,
+        "access": "internal",
+        "method": "Node"
+      },
+      {
+        "line": 80,
+        "access": "internal",
+        "method": "Link"
+      },
+      {
+        "line": 85,
+        "access": "internal",
+        "method": "Detail"
+      }
+    ],
+    "bindings": [
+      {
+        "line": 39,
+        "text": "if(action!=null)UnityEventTools.AddPersistentListener(b.onClick,action);return b;"
+      },
+      {
+        "line": 74,
+        "text": "UnityEventTools.AddIntPersistentListener(button.onClick,action,index);var n=frame.gameObject.AddComponent<JournalSkillNode>();n.Frame=frame;"
+      },
+      {
+        "line": 83,
+        "text": "label=Label(image.transform,\"Label\",key,Vector2.zero,size-new Vector2(24,16),30,TextAnchor.MiddleCenter);Rule(image.transform,new Vector2(-size.x*.32f,-38),new Vector2(size.x*.32f,-38));if(action!=null)UnityEventTools.AddPersistentListener(button.onClick,action);return button;"
+      }
+    ],
+    "group": "editor-authoring"
+  },
+  {
+    "file": "projects/wildfolk/client/Assets/Wildfolk/Editor/MaintenanceUiBuilder.cs",
+    "sha256": "a07bf19f83b32d062c8246faba507880c2d6b6ee55a3a8849a0bf6514462eda8",
+    "lines": 32,
+    "methods": [
+      {
+        "line": 8,
+        "access": "internal",
+        "method": "Arrange"
+      }
+    ],
+    "bindings": [],
+    "group": "editor-authoring"
+  },
+  {
+    "file": "projects/wildfolk/client/Assets/Wildfolk/Editor/MultiplayerSceneBuilder.cs",
+    "sha256": "523a5d02b48d812f0d1c811a15ff79997622e2033adbe8ff26f880a79e48b0da",
+    "lines": 81,
+    "methods": [
+      {
+        "line": 25,
+        "access": "public",
+        "method": "Build"
+      },
+      {
+        "line": 56,
+        "access": "public",
+        "method": "CreatePrefabs"
+      }
+    ],
+    "bindings": [
+      {
+        "line": 31,
+        "text": "var prefs=new GameObject(\"Camp Preferences\").AddComponent<UserPreferences>();"
+      },
+      {
+        "line": 32,
+        "text": "var light=new GameObject(\"Global Light 2D\").AddComponent<Light2D>();light.lightType=Light2D.LightType.Global;light.intensity=.88f;"
+      },
+      {
+        "line": 34,
+        "text": "var camera=new GameObject(\"Main Camera\",typeof(Camera),typeof(AudioListener)).GetComponent<Camera>();camera.tag=\"MainCamera\";camera.orthographic=true;camera.orthographicSize=9;camera.transform.position=new Vector3(0,0,-10);camera.backgroundColor=new Color32(71,87,53,255);"
+      },
+      {
+        "line": 35,
+        "text": "var arena=new GameObject(\"Cooperative Camp\").AddComponent<MultiplayerArena>();"
+      },
+      {
+        "line": 36,
+        "text": "var ecology=(GameObject)PrefabUtility.InstantiatePrefab(AssetDatabase.LoadAssetAtPath<GameObject>(NetworkEcologyBuilder.PrefabPath));ecology.SetActive(true);"
+      },
+      {
+        "line": 40,
+        "text": "var canvas=new GameObject(\"Camp Canvas\",typeof(RectTransform),typeof(Canvas),typeof(CanvasScaler),typeof(GraphicRaycaster));"
+      },
+      {
+        "line": 44,
+        "text": "arena.CampLabel=Text(\"Camp\",safe,\"\",new Vector2(0,370),new Vector2(1000,90),30,TextAnchor.MiddleCenter);arena.CampLabel.gameObject.SetActive(false);"
+      },
+      {
+        "line": 47,
+        "text": "arena.DashButton=Button(dash);UnityEventTools.AddPersistentListener(arena.DashButton.onClick,arena.Dash);"
+      },
+      {
+        "line": 49,
+        "text": "joystick.gameObject.SetActive(false);arena.DashButton.interactable=false;"
+      },
+      {
+        "line": 50,
+        "text": "var leave=Image(\"Leave Session\",safe,\"panel\",new Vector2(1,1),new Vector2(-200,-75),new Vector2(360,120),true);Text(\"Label\",leave.transform,\"net.leave\",Vector2.zero,new Vector2(340,108),30);UnityEventTools.AddPersistentListener(Button(leave).onClick,arena.Leave);"
+      },
+      {
+        "line": 53,
+        "text": "var events=new GameObject(\"EventSystem\",typeof(EventSystem),typeof(InputSystemUIInputModule));events.GetComponent<EventSystem>().sendNavigationEvents=false;var module=events.GetComponent<InputSystemUIInputModule>();module.UnassignActions();module.actionsAsset=actions;module.point=point;module.leftClick=click;"
+      },
+      {
+        "line": 63,
+        "text": "var placement=actor.GetComponent<PlayerPlacement>();GameplayActorBuilder.PlacementPreview(placement,actor.transform,null);placement.Preview.transform.SetParent(actor.transform,false);placement.Preview.SetActive(false);placement.enabled=false;"
+      },
+      {
+        "line": 72,
+        "text": "var marker=WorldArt.Sprite(\"Local Survivor\",\"joystick_base\",actor.transform,Vector2.zero,1.15f,WorldSorting.GroundDecoration);marker.color=new Color32(186,170,115,130);player.LocalMarker=marker.gameObject;marker.gameObject.SetActive(false);actor.AddComponent<NetworkInventory>();actor.AddComponent<NetworkFacilityInteractor>();actor.AddComponent<NetworkConstruction>();actor.AddComponent<NetworkRegionTravel>();"
+      },
+      {
+        "line": 74,
+        "text": "var root=new GameObject(\"Network Session\");var transport=root.AddComponent<UnityTransport>();transport.ConnectTimeoutMS=1000;transport.MaxConnectAttempts=5;transport.DisconnectTimeoutMS=30000;"
+      }
+    ],
+    "group": "editor-authoring"
+  },
+  {
+    "file": "projects/wildfolk/client/Assets/Wildfolk/Editor/MultiplayerUiBuilder.cs",
+    "sha256": "75628a1c42ea037baacd14fc14cd6fc3b7d3f28e1d2a1a1c21c41d042f93fee9",
+    "lines": 38,
+    "methods": [
+      {
+        "line": 10,
+        "access": "internal",
+        "method": "Build"
+      }
+    ],
+    "bindings": [],
+    "group": "editor-authoring"
+  },
+  {
+    "file": "projects/wildfolk/client/Assets/Wildfolk/Editor/NetworkInventoryUiBuilder.cs",
+    "sha256": "02fadf9423bd3e302440147631616e38dad45374ae7fadb3f6d4b064b00ad28f",
+    "lines": 23,
+    "methods": [
+      {
+        "line": 9,
+        "access": "internal",
+        "method": "Build"
+      }
+    ],
+    "bindings": [
+      {
+        "line": 12,
+        "text": "var root=rect.gameObject;root.SetActive(false);var owner=AssetDatabase.LoadAssetAtPath<GameObject>(MultiplayerSceneBuilder.PlayerPrefabPath).GetComponent<PlayerInventory>();var session=owner.GetComponent<GameplaySession>();"
+      },
+      {
+        "line": 16,
+        "text": "for(var i=0;i<view.Slots.Length;i++){var slot=Slot(hotbar,i,112,true);((RectTransform)slot.transform).anchoredPosition=new Vector2((i-4)*120,0);view.Slots[i]=slot.GetComponent<InventorySlotView>();UnityEventTools.AddIntPersistentListener(Button(slot).onClick,view.Select,i);}"
+      }
+    ],
+    "group": "editor-authoring"
+  },
+  {
+    "file": "projects/wildfolk/client/Assets/Wildfolk/Editor/QualityPresentationBuilder.cs",
+    "sha256": "0c55bf46a6b8f0981dc9a485f024663f39f3ff495784275631d7b14f211ac669",
+    "lines": 51,
+    "methods": [
+      {
+        "line": 12,
+        "access": "public",
+        "method": "Apply"
+      },
+      {
+        "line": 45,
+        "access": "private",
+        "method": "Retry"
+      }
+    ],
+    "bindings": [
+      {
+        "line": 48,
+        "text": "{button.name=\"Retry\";var label=button.GetComponentInChildren<Text>(true);var localized=label.GetComponent<LocalizedLabel>();if(localized!=null)localized.Key=\"economy.retry_action\";label.text=L.Text(\"economy.retry_action\");button.gameObject.SetActive(false);return button;}throw new InvalidOperationException(\"Missing existing economy retry action.\");"
+      }
+    ],
+    "group": "editor-authoring"
+  },
+  {
+    "file": "projects/wildfolk/client/Assets/Wildfolk/Editor/QualityUiBuilder.cs",
+    "sha256": "9fe6e50fde5da9ba2c92bcaa7c286519e7c4c7a5208afa2505902eccc8c2b54e",
+    "lines": 43,
+    "methods": [
+      {
+        "line": 9,
+        "access": "internal",
+        "method": "Action"
+      },
+      {
+        "line": 11,
+        "access": "internal",
+        "method": "Line"
+      },
+      {
+        "line": 13,
+        "access": "internal",
+        "method": "Portrait"
+      },
+      {
+        "line": 24,
+        "access": "internal",
+        "method": "AlignHands"
+      },
+      {
+        "line": 36,
+        "access": "internal",
+        "method": "FieldSurface"
+      },
+      {
+        "line": 38,
+        "access": "internal",
+        "method": "Matte"
+      },
+      {
+        "line": 40,
+        "access": "internal",
+        "method": "Surface"
+      }
+    ],
+    "bindings": [
+      {
+        "line": 10,
+        "text": "{var image=Image(name,parent,\"panel\",new Vector2(.5f,.5f),position,size,true);label=Text(\"Label\",image.transform,key,Vector2.zero,size-Vector2.one*12,23);var button=Button(image);UnityEventTools.AddPersistentListener(button.onClick,callback);return button;}"
+      }
+    ],
+    "group": "editor-authoring"
+  },
+  {
+    "file": "projects/wildfolk/client/Assets/Wildfolk/Editor/StackSplitUiBuilder.cs",
+    "sha256": "9684471bdec99eeba618b9964169230e49fa1abb9364041069023df578a4e3b2",
+    "lines": 47,
+    "methods": [
+      {
+        "line": 9,
+        "access": "internal",
+        "method": "Build"
+      },
+      {
+        "line": 31,
+        "access": "internal",
+        "method": "Arrange"
+      },
+      {
+        "line": 43,
+        "access": "private",
+        "method": "Fit"
+      },
+      {
+        "line": 44,
+        "access": "private",
+        "method": "Control"
+      }
+    ],
+    "bindings": [
+      {
+        "line": 17,
+        "text": "Control(actionSurface.transform,\"ui.action.cancel\",new Vector2(0,-100),new Vector2(340,60),panel.Cancel);actions.gameObject.SetActive(false);"
+      },
+      {
+        "line": 28,
+        "text": "panel.ConfirmButton=Control(surface.transform,\"ui.split.confirm\",new Vector2(144,-157),new Vector2(220,68),panel.Confirm);overlay.gameObject.SetActive(false);"
+      },
+      {
+        "line": 29,
+        "text": "var cancel=Control(safe,\"ui.action.cancel\",new Vector2(250,-128),new Vector2(150,88),drag.Cancel);var rect=(RectTransform)cancel.transform;rect.anchorMin=rect.anchorMax=new Vector2(.5f,1);drag.HeldCancel=cancel.gameObject;drag.HeldCancel.SetActive(false);Arrange(panel);"
+      },
+      {
+        "line": 45,
+        "text": "{var surface=Image(label,parent,\"panel\",new Vector2(.5f,.5f),position,size,true);Text(\"Label\",surface.transform,label,Vector2.zero,size-new Vector2(10,10),25);var button=Button(surface);UnityEventTools.AddPersistentListener(button.onClick,action);return button;}"
+      }
+    ],
+    "group": "editor-authoring"
+  },
+  {
+    "file": "projects/wildfolk/client/Assets/Wildfolk/Editor/StoreUiBuilder.cs",
+    "sha256": "9b4859a8ff1d7bcb75bd56fdea941d49ae43f81c1405d6e21d041d182679ce0a",
+    "lines": 44,
+    "methods": [
+      {
+        "line": 13,
+        "access": "public",
+        "method": "Build"
+      },
+      {
+        "line": 14,
+        "access": "internal",
+        "method": "BuildInScene"
+      }
+    ],
+    "bindings": [
+      {
+        "line": 28,
+        "text": "var b=JournalUiBuilder.Action(sheet,\"Gem package \"+i,\"\",new Vector2(-505+i*505,90),new Vector2(465,350),null,out var hidden);UnityEngine.Object.DestroyImmediate(hidden.gameObject);UnityEventTools.AddIntPersistentListener(b.onClick,s.Select,i);s.Cards[i]=b;"
+      },
+      {
+        "line": 41,
+        "text": "s.Status=JournalUiBuilder.Label(sheet,\"Status\",\"\",new Vector2(0,310),new Vector2(1460,90),36,TextAnchor.MiddleCenter);s.HistoryView.SetActive(false);s.View.SetActive(false);"
+      }
+    ],
+    "group": "editor-authoring"
+  },
+  {
+    "file": "projects/wildfolk/client/Assets/Wildfolk/Editor/SurvivalUiBuilder.cs",
+    "sha256": "60b9fef940c43f647922007c5aa293567f9c85121c572780dd3d74de2e5edc98",
+    "lines": 70,
+    "methods": [
+      {
+        "line": 9,
+        "access": "internal",
+        "method": "Pause"
+      },
+      {
+        "line": 28,
+        "access": "internal",
+        "method": "ConfigurePauseActions"
+      },
+      {
+        "line": 42,
+        "access": "internal",
+        "method": "Settings"
+      },
+      {
+        "line": 59,
+        "access": "private",
+        "method": "SliderRow"
+      }
+    ],
+    "bindings": [
+      {
+        "line": 19,
+        "text": "UnityEventTools.AddPersistentListener(Button(resume).onClick,session.Resume);"
+      },
+      {
+        "line": 22,
+        "text": "UnityEventTools.AddPersistentListener(Button(settings).onClick,menu.OpenSettings);"
+      },
+      {
+        "line": 23,
+        "text": "var save=Image(\"Save Game\",panel.transform,\"panel\",new Vector2(.5f,.5f),new Vector2(0,35),new Vector2(280,70),true);Text(\"Label\",save.transform,\"ui.pause.save\",Vector2.zero,new Vector2(260,60),27);UnityEventTools.AddPersistentListener(Button(save).onClick,session.GetComponent<WorldSaveService>().SaveFromMenu);"
+      },
+      {
+        "line": 26,
+        "text": "menu.Settings.SetActive(false);scrim.gameObject.SetActive(false);return scrim.gameObject;"
+      },
+      {
+        "line": 40,
+        "text": "UnityEventTools.AddPersistentListener(Button(home).onClick,save.SaveAndHome);JournalStyle.FieldAction(home.GetComponent<Button>());"
+      },
+      {
+        "line": 53,
+        "text": "UnityEventTools.AddPersistentListener(settings.Control.onValueChanged,preferences.SetControl);UnityEventTools.AddPersistentListener(settings.Master.onValueChanged,preferences.SetMaster);UnityEventTools.AddPersistentListener(settings.Music.onValueChanged,preferences.SetMusic);UnityEventTools.AddPersistentListener(settings.Sfx.onValueChanged,preferences.SetSfx);"
+      }
+    ],
+    "group": "editor-authoring"
+  },
+  {
+    "file": "projects/wildfolk/client/Assets/Wildfolk/Editor/UiPresentationBuilder.cs",
+    "sha256": "320b73a639d474e529149a00866870e0bb0aa1e8ce0708fd5a1e0fd48506efa2",
+    "lines": 51,
+    "methods": [
+      {
+        "line": 12,
+        "access": "public",
+        "method": "Build"
+      }
+    ],
+    "bindings": [
+      {
+        "line": 26,
+        "text": "foreach(var arena in UnityEngine.Object.FindObjectsByType<MultiplayerArena>(FindObjectsInactive.Include,FindObjectsSortMode.None))if(arena.Joystick==old){arena.Joystick=next;next.gameObject.SetActive(false);}"
+      },
+      {
+        "line": 32,
+        "text": "var next=GameplayHudBuilder.BuildHotbar(parent,session,owner);next.gameObject.SetActive(wasActive);"
+      },
+      {
+        "line": 36,
+        "text": "{var parent=pause.Settings.transform.parent;UnityEngine.Object.DestroyImmediate(pause.Settings);pause.Settings=SurvivalUiBuilder.Settings(parent,pause.Preferences,pause.Back);pause.Settings.SetActive(false);}"
+      }
+    ],
+    "group": "editor-authoring"
+  },
+  {
+    "file": "projects/wildfolk/client/Assets/Wildfolk/Editor/VisualArtImporter.cs",
+    "sha256": "1bffcc55bd7696a69cb8b310c3bd56263522e66d807fd75ac3a968be6350e12b",
+    "lines": 38,
+    "methods": [
+      {
+        "line": 11,
+        "access": "internal",
+        "method": "Import"
+      },
+      {
+        "line": 36,
+        "access": "internal",
+        "method": "Sprite"
+      }
+    ],
+    "bindings": [],
+    "group": "editor-authoring"
+  },
+  {
+    "file": "projects/wildfolk/client/Assets/Wildfolk/Editor/WorldArt.cs",
+    "sha256": "474e45c7a38277c88adca827a69733b0b6aac614e2ca1593a5ae90588880c526",
+    "lines": 70,
+    "methods": [
+      {
+        "line": 10,
+        "access": "internal",
+        "method": "Group"
+      },
+      {
+        "line": 18,
+        "access": "internal",
+        "method": "Sprite"
+      },
+      {
+        "line": 29,
+        "access": "internal",
+        "method": "Shadow"
+      },
+      {
+        "line": 35,
+        "access": "internal",
+        "method": "HealthBar"
+      },
+      {
+        "line": 51,
+        "access": "internal",
+        "method": "Feedback"
+      },
+      {
+        "line": 57,
+        "access": "internal",
+        "method": "SavePrefab"
+      }
+    ],
+    "bindings": [
+      {
+        "line": 12,
+        "text": "var root=new GameObject(name).transform;"
+      },
+      {
+        "line": 48,
+        "text": "if(!persistent) view.gameObject.SetActive(false);"
+      }
+    ],
+    "group": "editor-authoring"
+  },
+  {
+    "file": "projects/wildfolk/client/Assets/Wildfolk/Runtime/Accounts/AccountCloudCache.cs",
+    "sha256": "597afde4d39891568e905af7ed0e95c967d0576003320cc2f73ab856ed9c1b15",
+    "lines": 49,
+    "methods": [
+      {
+        "line": 15,
+        "access": "private",
+        "method": "Key"
+      },
+      {
+        "line": 17,
+        "access": "public",
+        "method": "Open"
+      },
+      {
+        "line": 19,
+        "access": "public",
+        "method": "Restore"
+      },
+      {
+        "line": 21,
+        "access": "public",
+        "method": "Materialize"
+      },
+      {
+        "line": 30,
+        "access": "private",
+        "method": "AtomicText"
+      },
+      {
+        "line": 32,
+        "access": "public",
+        "method": "Read"
+      },
+      {
+        "line": 33,
+        "access": "public",
+        "method": "Write"
+      },
+      {
+        "line": 35,
+        "access": "public",
+        "method": "Deselect"
+      },
+      {
+        "line": 36,
+        "access": "public",
+        "method": "ClearForDeletion"
+      }
+    ],
+    "bindings": [],
+    "group": "related-runtime"
+  },
+  {
+    "file": "projects/wildfolk/client/Assets/Wildfolk/Runtime/Accounts/CloudGemReviveWallet.cs",
+    "sha256": "f0d7b192a0c920b8f533796b1ffbc73914b7c6b20db3dba413804ca09339b2d0",
+    "lines": 51,
+    "methods": [
+      {
+        "line": 16,
+        "access": "public",
+        "method": "TryCommitRevive"
+      },
+      {
+        "line": 17,
+        "access": "public",
+        "method": "CommitRevive"
+      },
+      {
+        "line": 31,
+        "access": "private",
+        "method": "Begin"
+      },
+      {
+        "line": 32,
+        "access": "private",
+        "method": "Finish"
+      },
+      {
+        "line": 37,
+        "access": "public",
+        "method": "DiskOutcome"
+      },
+      {
+        "line": 43,
+        "access": "private",
+        "method": "ClearRejected"
+      },
+      {
+        "line": 45,
+        "access": "public",
+        "method": "Reconcile"
+      }
+    ],
+    "bindings": [],
+    "group": "related-runtime"
+  },
+  {
+    "file": "projects/wildfolk/client/Assets/Wildfolk/Runtime/Bosses/RoyalTomb.cs",
+    "sha256": "e762e4121f4b466b6f2bde935d1043aae6675e872716f195c0309f9081b25f93",
+    "lines": 26,
+    "methods": [
+      {
+        "line": 13,
+        "access": "public",
+        "method": "Initialize"
+      },
+      {
+        "line": 14,
+        "access": "public",
+        "method": "CanInteract"
+      },
+      {
+        "line": 15,
+        "access": "public",
+        "method": "Use"
+      },
+      {
+        "line": 17,
+        "access": "private",
+        "method": "Update"
+      }
+    ],
+    "bindings": [],
+    "group": "related-runtime"
+  },
+  {
+    "file": "projects/wildfolk/client/Assets/Wildfolk/Runtime/Core/SceneFlow.cs",
+    "sha256": "a0cb5bfe09a3b052b9e310f4713b5581945bbd2bfa37cc55ec04c29b02c05a87",
+    "lines": 25,
+    "methods": [
+      {
+        "line": 13,
+        "access": "private",
+        "method": "Reset"
+      },
+      {
+        "line": 14,
+        "access": "public",
+        "method": "NewGame"
+      },
+      {
+        "line": 16,
+        "access": "public",
+        "method": "Continue"
+      },
+      {
+        "line": 18,
+        "access": "public",
+        "method": "Home"
+      },
+      {
+        "line": 20,
+        "access": "private",
+        "method": "Go"
+      },
+      {
+        "line": 21,
+        "access": "public",
+        "method": "TakePending"
+      },
+      {
+        "line": 22,
+        "access": "public",
+        "method": "HomeReady"
+      },
+      {
+        "line": 23,
+        "access": "public",
+        "method": "MultiplayerReady"
+      }
+    ],
+    "bindings": [],
+    "group": "related-runtime"
+  },
+  {
+    "file": "projects/wildfolk/client/Assets/Wildfolk/Runtime/Crafting/CraftingStation.cs",
+    "sha256": "735797ea6b2b2011e6d668bd5297528f8feb5a4bb9a32563f7c58460791b656d",
+    "lines": 18,
+    "methods": [
+      {
+        "line": 8,
+        "access": "public",
+        "method": "NotifyChanged"
+      },
+      {
+        "line": 13,
+        "access": "public",
+        "method": "CanInteract"
+      },
+      {
+        "line": 14,
+        "access": "public",
+        "method": "Use"
+      },
+      {
+        "line": 15,
+        "access": "public",
+        "method": "CanInteract"
+      }
+    ],
+    "bindings": [],
+    "group": "related-runtime"
+  },
+  {
+    "file": "projects/wildfolk/client/Assets/Wildfolk/Runtime/Enemies/GoblinCamp.cs",
+    "sha256": "6738168943b65961f86c1020a7006a6972ff980b3f1875231b5825c22804f783",
+    "lines": 65,
+    "methods": [
+      {
+        "line": 16,
+        "access": "public",
+        "method": "RequestTake"
+      },
+      {
+        "line": 24,
+        "access": "public",
+        "method": "InitializeLoot"
+      },
+      {
+        "line": 38,
+        "access": "public",
+        "method": "InRange"
+      },
+      {
+        "line": 39,
+        "access": "public",
+        "method": "CanInteract"
+      },
+      {
+        "line": 40,
+        "access": "public",
+        "method": "Use"
+      },
+      {
+        "line": 47,
+        "access": "public",
+        "method": "Take"
+      },
+      {
+        "line": 61,
+        "access": "public",
+        "method": "Notify"
+      },
+      {
+        "line": 62,
+        "access": "public",
+        "method": "ApplyReplica"
+      }
+    ],
+    "bindings": [],
+    "group": "related-runtime"
+  },
+  {
+    "file": "projects/wildfolk/client/Assets/Wildfolk/Runtime/Input/HoldAttackInput.cs",
+    "sha256": "2fc694164fd161c5b8b3aa6d25558b5701b6345968a78c6ce80f7f837e830278",
+    "lines": 32,
+    "methods": [
+      {
+        "line": 14,
+        "access": "public",
+        "method": "OnPointerDown"
+      },
+      {
+        "line": 22,
+        "access": "public",
+        "method": "OnPointerUp"
+      },
+      {
+        "line": 23,
+        "access": "private",
+        "method": "Update"
+      },
+      {
+        "line": 28,
+        "access": "public",
+        "method": "ResetInput"
+      },
+      {
+        "line": 29,
+        "access": "private",
+        "method": "OnDisable"
+      },
+      {
+        "line": 30,
+        "access": "private",
+        "method": "OnApplicationFocus"
+      }
+    ],
+    "bindings": [],
+    "group": "related-runtime"
+  },
+  {
+    "file": "projects/wildfolk/client/Assets/Wildfolk/Runtime/Input/VirtualJoystick.cs",
+    "sha256": "6fe560efe319f483b52f4b7a156e24f9e0ff84c9c8d40e370ea9c7688c0ea97a",
+    "lines": 41,
+    "methods": [
+      {
+        "line": 14,
+        "access": "private",
+        "method": "Awake"
+      },
+      {
+        "line": 15,
+        "access": "private",
+        "method": "OnEnable"
+      },
+      {
+        "line": 16,
+        "access": "public",
+        "method": "BindSession"
+      },
+      {
+        "line": 21,
+        "access": "public",
+        "method": "OnPointerDown"
+      },
+      {
+        "line": 27,
+        "access": "public",
+        "method": "OnDrag"
+      },
+      {
+        "line": 35,
+        "access": "public",
+        "method": "OnPointerUp"
+      },
+      {
+        "line": 36,
+        "access": "public",
+        "method": "ResetInput"
+      },
+      {
+        "line": 37,
+        "access": "private",
+        "method": "OnDisable"
+      },
+      {
+        "line": 38,
+        "access": "private",
+        "method": "OnApplicationFocus"
+      },
+      {
+        "line": 39,
+        "access": "private",
+        "method": "OnApplicationPause"
+      }
+    ],
+    "bindings": [],
+    "group": "related-runtime"
+  },
+  {
+    "file": "projects/wildfolk/client/Assets/Wildfolk/Runtime/Networking/MultiplayerArena.cs",
+    "sha256": "372cd45cbd58bd69114460089586cf669208da1cb4953ade9251262cc0e53b80",
+    "lines": 33,
+    "methods": [
+      {
+        "line": 15,
+        "access": "private",
+        "method": "Start"
+      },
+      {
+        "line": 16,
+        "access": "private",
+        "method": "OnEnable"
+      },
+      {
+        "line": 17,
+        "access": "private",
+        "method": "OnDisable"
+      },
+      {
+        "line": 18,
+        "access": "private",
+        "method": "OnDestroy"
+      },
+      {
+        "line": 19,
+        "access": "public",
+        "method": "BindLocal"
+      },
+      {
+        "line": 27,
+        "access": "public",
+        "method": "Dash"
+      },
+      {
+        "line": 28,
+        "access": "public",
+        "method": "Leave"
+      },
+      {
+        "line": 29,
+        "access": "private",
+        "method": "RefreshText"
+      },
+      {
+        "line": 30,
+        "access": "private",
+        "method": "RefreshCamp"
+      }
+    ],
+    "bindings": [
+      {
+        "line": 21,
+        "text": "LocalPlayer=player;Follow.Target=player.transform;Joystick.BindSession(player.Commands.Session);player.GetComponent<PlayerInputAdapter>().Joystick=Joystick;Joystick.gameObject.SetActive(true);DashButton.interactable=true;"
+      },
+      {
+        "line": 31,
+        "text": "{var failed=NetworkSession.Instance!=null&&NetworkSession.Instance.MessageKey==\"net.save_failed\";CampLabel.gameObject.SetActive(failed);CampLabel.text=failed?L.Text(\"net.save_failed\"):string.Empty;}"
+      }
+    ],
+    "group": "related-runtime"
+  },
+  {
+    "file": "projects/wildfolk/client/Assets/Wildfolk/Runtime/Networking/MultiplayerMenu.cs",
+    "sha256": "58d58939e91941fab4d115ff5927e6c24dc21a44af7f583cccbc8a00062d5644",
+    "lines": 49,
+    "methods": [
+      {
+        "line": 18,
+        "access": "private",
+        "method": "OnEnable"
+      },
+      {
+        "line": 23,
+        "access": "private",
+        "method": "OnDisable"
+      },
+      {
+        "line": 24,
+        "access": "private",
+        "method": "DestinationChanged"
+      },
+      {
+        "line": 25,
+        "access": "public",
+        "method": "CopyCode"
+      },
+      {
+        "line": 26,
+        "access": "public",
+        "method": "ToggleRoute"
+      },
+      {
+        "line": 27,
+        "access": "public",
+        "method": "Host"
+      },
+      {
+        "line": 28,
+        "access": "public",
+        "method": "Join"
+      },
+      {
+        "line": 29,
+        "access": "public",
+        "method": "Enter"
+      },
+      {
+        "line": 30,
+        "access": "public",
+        "method": "Back"
+      },
+      {
+        "line": 31,
+        "access": "public",
+        "method": "Single"
+      },
+      {
+        "line": 32,
+        "access": "private",
+        "method": "Refresh"
+      }
+    ],
+    "bindings": [
+      {
+        "line": 21,
+        "text": "session.Changed+=Refresh;L.Changed+=Refresh;Destination.onValueChanged.AddListener(DestinationChanged);Refresh();"
+      },
+      {
+        "line": 23,
+        "text": "private void OnDisable(){if(session!=null)session.Changed-=Refresh;L.Changed-=Refresh;Destination.onValueChanged.RemoveListener(DestinationChanged);}"
+      },
+      {
+        "line": 37,
+        "text": "JoinButton.interactable=idle&&!string.IsNullOrWhiteSpace(Destination.text);SetupView.SetActive(!waiting);RoomView.SetActive(waiting);"
+      },
+      {
+        "line": 39,
+        "text": "CopyCodeButton.gameObject.SetActive(route==ConnectionRoute.Internet);"
+      },
+      {
+        "line": 40,
+        "text": "EnterButton.gameObject.SetActive(waiting && session.Manager.IsHost);"
+      }
+    ],
+    "group": "related-runtime"
+  },
+  {
+    "file": "projects/wildfolk/client/Assets/Wildfolk/Runtime/Networking/NetworkAttackInput.cs",
+    "sha256": "a0991009ec1d26259bffddd94c6aaaf8ec815bde7479b7213be6e674a61705bf",
+    "lines": 17,
+    "methods": [
+      {
+        "line": 10,
+        "access": "public",
+        "method": "OnPointerDown"
+      },
+      {
+        "line": 11,
+        "access": "public",
+        "method": "OnPointerUp"
+      },
+      {
+        "line": 12,
+        "access": "private",
+        "method": "Fire"
+      },
+      {
+        "line": 13,
+        "access": "private",
+        "method": "Update"
+      },
+      {
+        "line": 14,
+        "access": "private",
+        "method": "OnDisable"
+      },
+      {
+        "line": 15,
+        "access": "private",
+        "method": "OnApplicationFocus"
+      }
+    ],
+    "bindings": [],
+    "group": "related-runtime"
+  },
+  {
+    "file": "projects/wildfolk/client/Assets/Wildfolk/Runtime/Networking/NetworkInventoryUi.cs",
+    "sha256": "8507a399cdf8855e3a31befd271126d48a54e441a2dcbdfb21a37ecc1234751e",
+    "lines": 44,
+    "methods": [
+      {
+        "line": 13,
+        "access": "public",
+        "method": "Bind"
+      },
+      {
+        "line": 41,
+        "access": "private",
+        "method": "Refresh"
+      },
+      {
+        "line": 42,
+        "access": "private",
+        "method": "OnDestroy"
+      }
+    ],
+    "bindings": [
+      {
+        "line": 26,
+        "text": "if(button.name==\"Close\"){button.onClick=new Button.ButtonClickedEvent();button.onClick.AddListener(panel.Crafting.CloseCrafting);}"
+      },
+      {
+        "line": 27,
+        "text": "if(button==panel.CraftingButton){button.onClick=new Button.ButtonClickedEvent();button.onClick.AddListener(panel.Crafting.OpenHandCrafting);}"
+      },
+      {
+        "line": 28,
+        "text": "if(button==crafting.InventoryButton){button.onClick=new Button.ButtonClickedEvent();button.onClick.AddListener(panel.Crafting.OpenBag);}"
+      },
+      {
+        "line": 29,
+        "text": "if(button==crafting.UpgradeButton){button.onClick=new Button.ButtonClickedEvent();button.onClick.AddListener(panel.Crafting.UpgradeFromUI);}"
+      },
+      {
+        "line": 32,
+        "text": "Bag.onClick.AddListener(session.ToggleInventory);player.GetComponent<PlayerProgression>().Changed+=Refresh;player.Equipment.Changed+=Refresh;L.Changed+=Refresh;"
+      },
+      {
+        "line": 34,
+        "text": "var screen=GetComponent<CharacterScreen>();if(screen!=null){screen.Player=inventory;screen.Session=session;screen.TreeButton.onClick=new Button.ButtonClickedEvent();screen.TreeButton.onClick.AddListener(screen.OpenTree);foreach(var b in screen.View.GetComponentsInChildren<Button>(true))if(b.name==\"Close\"){b.onClick=new Button.ButtonClickedEvent();b.onClick.AddListener(screen.Close);}}"
+      },
+      {
+        "line": 38,
+        "text": "if(profile!=null){var button=profile.Level.transform.parent.GetComponent<Button>();button.onClick=new Button.ButtonClickedEvent();button.onClick.AddListener(session.OpenCharacter);}"
+      },
+      {
+        "line": 39,
+        "text": "gameObject.SetActive(true);Refresh();"
+      }
+    ],
+    "group": "related-runtime"
+  },
+  {
+    "file": "projects/wildfolk/client/Assets/Wildfolk/Runtime/Networking/NetworkSession.cs",
+    "sha256": "bf1fb1864b9e1cc4ab4b226255a74eb287208ac43d2eab9bbac27e6ad6f37871",
+    "lines": 195,
+    "methods": [
+      {
+        "line": 39,
+        "access": "private",
+        "method": "Awake"
+      },
+      {
+        "line": 48,
+        "access": "private",
+        "method": "OnDestroy"
+      },
+      {
+        "line": 53,
+        "access": "private",
+        "method": "CanQuit"
+      },
+      {
+        "line": 54,
+        "access": "private",
+        "method": "OnApplicationQuit"
+      },
+      {
+        "line": 55,
+        "access": "public",
+        "method": "TrySaveWorld"
+      },
+      {
+        "line": 61,
+        "access": "private",
+        "method": "ConfigureIdentity"
+      },
+      {
+        "line": 63,
+        "access": "private",
+        "method": "Connection"
+      },
+      {
+        "line": 64,
+        "access": "private",
+        "method": "Notify"
+      },
+      {
+        "line": 65,
+        "access": "public",
+        "method": "Host"
+      },
+      {
+        "line": 85,
+        "access": "public",
+        "method": "Join"
+      },
+      {
+        "line": 102,
+        "access": "private",
+        "method": "JoinTimeout"
+      },
+      {
+        "line": 104,
+        "access": "private",
+        "method": "ConnectionFailed"
+      },
+      {
+        "line": 106,
+        "access": "private",
+        "method": "Approve"
+      },
+      {
+        "line": 116,
+        "access": "public",
+        "method": "CanApprove"
+      },
+      {
+        "line": 122,
+        "access": "public",
+        "method": "TryRegisterParticipant"
+      },
+      {
+        "line": 124,
+        "access": "private",
+        "method": "Connected"
+      },
+      {
+        "line": 130,
+        "access": "private",
+        "method": "Disconnected"
+      },
+      {
+        "line": 137,
+        "access": "private",
+        "method": "SaveAfterDisconnect"
+      },
+      {
+        "line": 139,
+        "access": "private",
+        "method": "TransportFailed"
+      },
+      {
+        "line": 140,
+        "access": "private",
+        "method": "AttachScenes"
+      },
+      {
+        "line": 142,
+        "access": "private",
+        "method": "PresentSceneTransition"
+      },
+      {
+        "line": 144,
+        "access": "public",
+        "method": "EnterGame"
+      },
+      {
+        "line": 151,
+        "access": "private",
+        "method": "Loaded"
+      },
+      {
+        "line": 153,
+        "access": "private",
+        "method": "Synchronized"
+      },
+      {
+        "line": 154,
+        "access": "public",
+        "method": "SpawnParticipant"
+      },
+      {
+        "line": 164,
+        "access": "private",
+        "method": "SpawnWhenReady"
+      },
+      {
+        "line": 170,
+        "access": "public",
+        "method": "ArenaReady"
+      },
+      {
+        "line": 171,
+        "access": "public",
+        "method": "RetireParticipant"
+      },
+      {
+        "line": 177,
+        "access": "public",
+        "method": "Leave"
+      },
+      {
+        "line": 183,
+        "access": "private",
+        "method": "Close"
+      }
+    ],
+    "bindings": [],
+    "group": "related-runtime"
+  },
+  {
+    "file": "projects/wildfolk/client/Assets/Wildfolk/Runtime/Networking/NetworkSessionPremium.cs",
+    "sha256": "c36b147c5c5f34ecd708bbc9abc5246a1dc21fe8fed0264a660e24f552a9c074",
+    "lines": 93,
+    "methods": [
+      {
+        "line": 20,
+        "access": "public",
+        "method": "DevelopmentPremiumClient"
+      },
+      {
+        "line": 23,
+        "access": "private",
+        "method": "BeginPremiumSession"
+      },
+      {
+        "line": 24,
+        "access": "private",
+        "method": "Challenge"
+      },
+      {
+        "line": 25,
+        "access": "private",
+        "method": "PrepareHostPremium"
+      },
+      {
+        "line": 35,
+        "access": "private",
+        "method": "VerifyHostPremium"
+      },
+      {
+        "line": 37,
+        "access": "private",
+        "method": "RegisterPremiumMessages"
+      },
+      {
+        "line": 38,
+        "access": "private",
+        "method": "UnregisterPremiumMessages"
+      },
+      {
+        "line": 39,
+        "access": "private",
+        "method": "SendPremium"
+      },
+      {
+        "line": 44,
+        "access": "private",
+        "method": "QueuePremium"
+      },
+      {
+        "line": 50,
+        "access": "private",
+        "method": "StartPremiumChallenge"
+      },
+      {
+        "line": 58,
+        "access": "private",
+        "method": "PremiumReceived"
+      },
+      {
+        "line": 69,
+        "access": "private",
+        "method": "IssueRemotePremium"
+      },
+      {
+        "line": 76,
+        "access": "private",
+        "method": "VerifyRemotePremium"
+      },
+      {
+        "line": 87,
+        "access": "private",
+        "method": "CompletePremium"
+      }
+    ],
+    "bindings": [],
+    "group": "related-runtime"
+  },
+  {
+    "file": "projects/wildfolk/client/Assets/Wildfolk/Runtime/Persistence/ClassProfiles.cs",
+    "sha256": "7b2b6b1e71f5154562ef2343eb28bef8da00e5b491050d9cd3aa38caeb6d30a2",
+    "lines": 130,
+    "methods": [
+      {
+        "line": 19,
+        "access": "public",
+        "method": "New"
+      },
+      {
+        "line": 20,
+        "access": "public",
+        "method": "Find"
+      },
+      {
+        "line": 21,
+        "access": "public",
+        "method": "Validate"
+      },
+      {
+        "line": 47,
+        "access": "private",
+        "method": "PathFor"
+      },
+      {
+        "line": 48,
+        "access": "private",
+        "method": "Hash"
+      },
+      {
+        "line": 49,
+        "access": "private",
+        "method": "Decode"
+      },
+      {
+        "line": 50,
+        "access": "public",
+        "method": "Read"
+      },
+      {
+        "line": 56,
+        "access": "public",
+        "method": "Write"
+      },
+      {
+        "line": 66,
+        "access": "public",
+        "method": "Owned"
+      },
+      {
+        "line": 72,
+        "access": "public",
+        "method": "Commit"
+      },
+      {
+        "line": 74,
+        "access": "public",
+        "method": "AttachCloud"
+      },
+      {
+        "line": 81,
+        "access": "public",
+        "method": "Update"
+      },
+      {
+        "line": 83,
+        "access": "public",
+        "method": "Select"
+      },
+      {
+        "line": 84,
+        "access": "public",
+        "method": "Spend"
+      },
+      {
+        "line": 86,
+        "access": "public",
+        "method": "Respec"
+      },
+      {
+        "line": 88,
+        "access": "private",
+        "method": "Payer"
+      },
+      {
+        "line": 89,
+        "access": "public",
+        "method": "GoldAvailable"
+      },
+      {
+        "line": 91,
+        "access": "public",
+        "method": "Reconcile"
+      },
+      {
+        "line": 104,
+        "access": "public",
+        "method": "Purchase"
+      },
+      {
+        "line": 126,
+        "access": "public",
+        "method": "DevelopmentProviders"
+      },
+      {
+        "line": 128,
+        "access": "private",
+        "method": "Reset"
+      }
+    ],
+    "bindings": [],
+    "group": "related-runtime"
+  },
+  {
+    "file": "projects/wildfolk/client/Assets/Wildfolk/Runtime/Persistence/ClassRewardPersistence.cs",
+    "sha256": "042c65150b8f656503a91f0c716afb9a4e36e08756036479d628b7c8ff4ab64a",
+    "lines": 63,
+    "methods": [
+      {
+        "line": 12,
+        "access": "public",
+        "method": "Validate"
+      },
+      {
+        "line": 14,
+        "access": "public",
+        "method": "Same"
+      },
+      {
+        "line": 15,
+        "access": "public",
+        "method": "Committed"
+      },
+      {
+        "line": 27,
+        "access": "public",
+        "method": "Active"
+      },
+      {
+        "line": 28,
+        "access": "private",
+        "method": "Copy"
+      },
+      {
+        "line": 29,
+        "access": "internal",
+        "method": "Recover"
+      },
+      {
+        "line": 42,
+        "access": "public",
+        "method": "Begin"
+      },
+      {
+        "line": 55,
+        "access": "public",
+        "method": "Complete"
+      },
+      {
+        "line": 57,
+        "access": "public",
+        "method": "Rollback"
+      },
+      {
+        "line": 59,
+        "access": "public",
+        "method": "Dispose"
+      },
+      {
+        "line": 61,
+        "access": "private",
+        "method": "Reset"
+      }
+    ],
+    "bindings": [],
+    "group": "related-runtime"
+  },
+  {
+    "file": "projects/wildfolk/client/Assets/Wildfolk/Runtime/Persistence/EconomyJournal.cs",
+    "sha256": "fd0c05c540ae88235561b07472dc5d794b48481512a67ce6aea27538215e76be",
+    "lines": 53,
+    "methods": [
+      {
+        "line": 22,
+        "access": "public",
+        "method": "Hash"
+      },
+      {
+        "line": 24,
+        "access": "public",
+        "method": "Open"
+      },
+      {
+        "line": 26,
+        "access": "private",
+        "method": "Decode"
+      },
+      {
+        "line": 27,
+        "access": "public",
+        "method": "Save"
+      },
+      {
+        "line": 28,
+        "access": "public",
+        "method": "Atomic"
+      },
+      {
+        "line": 29,
+        "access": "public",
+        "method": "Record"
+      },
+      {
+        "line": 41,
+        "access": "public",
+        "method": "Freeze"
+      },
+      {
+        "line": 42,
+        "access": "public",
+        "method": "Acknowledge"
+      },
+      {
+        "line": 43,
+        "access": "public",
+        "method": "Cache"
+      },
+      {
+        "line": 44,
+        "access": "public",
+        "method": "Clear"
+      },
+      {
+        "line": 46,
+        "access": "public",
+        "method": "Adopt"
+      }
+    ],
+    "bindings": [],
+    "group": "related-runtime"
+  },
+  {
+    "file": "projects/wildfolk/client/Assets/Wildfolk/Runtime/Persistence/SaveRepository.cs",
+    "sha256": "89b44e13c9341b32427f188a9e386d1296dff26b622ca9d73c5a32e9051fff5b",
+    "lines": 61,
+    "methods": [
+      {
+        "line": 11,
+        "access": "public",
+        "method": "Default"
+      },
+      {
+        "line": 21,
+        "access": "public",
+        "method": "MultiplayerDefault"
+      },
+      {
+        "line": 26,
+        "access": "private",
+        "method": "Hash"
+      },
+      {
+        "line": 27,
+        "access": "public",
+        "method": "Encode"
+      },
+      {
+        "line": 28,
+        "access": "public",
+        "method": "Decode"
+      },
+      {
+        "line": 35,
+        "access": "public",
+        "method": "Write"
+      },
+      {
+        "line": 49,
+        "access": "public",
+        "method": "Read"
+      }
+    ],
+    "bindings": [],
+    "group": "related-runtime"
+  },
+  {
+    "file": "projects/wildfolk/client/Assets/Wildfolk/Runtime/Persistence/WorldSaveService.cs",
+    "sha256": "a2926198d25538e133c092868e219c1ef00c066a41e43c42f6c9e622c6cb5e57",
+    "lines": 45,
+    "methods": [
+      {
+        "line": 17,
+        "access": "private",
+        "method": "Awake"
+      },
+      {
+        "line": 19,
+        "access": "private",
+        "method": "Start"
+      },
+      {
+        "line": 20,
+        "access": "public",
+        "method": "Validate"
+      },
+      {
+        "line": 21,
+        "access": "public",
+        "method": "Capture"
+      },
+      {
+        "line": 22,
+        "access": "public",
+        "method": "Save"
+      },
+      {
+        "line": 28,
+        "access": "public",
+        "method": "SaveFromMenu"
+      },
+      {
+        "line": 29,
+        "access": "public",
+        "method": "Load"
+      },
+      {
+        "line": 36,
+        "access": "public",
+        "method": "SaveAndHome"
+      },
+      {
+        "line": 37,
+        "access": "public",
+        "method": "Apply"
+      },
+      {
+        "line": 42,
+        "access": "private",
+        "method": "OnApplicationPause"
+      },
+      {
+        "line": 43,
+        "access": "private",
+        "method": "OnApplicationQuit"
+      }
+    ],
+    "bindings": [],
+    "group": "related-runtime"
+  },
+  {
+    "file": "projects/wildfolk/client/Assets/Wildfolk/Runtime/Player/PlayerInteraction.cs",
+    "sha256": "e9bedaf34a829cd5db2b1acc4a9b56b2bfaea0c8bb52bd8ce22ebbd1c1305045",
+    "lines": 55,
+    "methods": [
+      {
+        "line": 19,
+        "access": "private",
+        "method": "Update"
+      },
+      {
+        "line": 20,
+        "access": "private",
+        "method": "Refresh"
+      },
+      {
+        "line": 37,
+        "access": "private",
+        "method": "FacesWater"
+      },
+      {
+        "line": 52,
+        "access": "public",
+        "method": "TryInteract"
+      },
+      {
+        "line": 53,
+        "access": "public",
+        "method": "Use"
+      }
+    ],
+    "bindings": [],
+    "group": "related-runtime"
+  },
+  {
+    "file": "projects/wildfolk/client/Assets/Wildfolk/Runtime/Presentation/AudioButton.cs",
+    "sha256": "91391f3cc6b5f61dbca427c039f36e47cbfd991430d85e7fca9166d1fd46091a",
+    "lines": 12,
+    "methods": [
+      {
+        "line": 7,
+        "access": "public",
+        "method": "Add"
+      },
+      {
+        "line": 8,
+        "access": "private",
+        "method": "Awake"
+      },
+      {
+        "line": 9,
+        "access": "private",
+        "method": "Play"
+      },
+      {
+        "line": 10,
+        "access": "private",
+        "method": "OnDestroy"
+      }
+    ],
+    "bindings": [
+      {
+        "line": 8,
+        "text": "public Sound Cue=Sound.UiClick;private Button button;private void Awake(){button=GetComponent<Button>();var label=gameObject.name.ToLowerInvariant();if(label.Contains(\"back\")||label.Contains(\"close\")||label.Contains(\"cancel\"))Cue=Sound.UiBack;else if(label.Contains(\"category\")||label.Contains(\"tab\")||label.Contains(\"board\"))Cue=Sound.Page;if(button!=null)button.onClick.AddListener(Play);}"
+      },
+      {
+        "line": 10,
+        "text": "private void OnDestroy(){if(button!=null)button.onClick.RemoveListener(Play);}"
+      }
+    ],
+    "group": "related-runtime"
+  },
+  {
+    "file": "projects/wildfolk/client/Assets/Wildfolk/Runtime/UI/AccountProfileScreen.cs",
+    "sha256": "0ccb6780b530ef67c696ebe503197199da88eb829284c40e88abd7e8af48e2e7",
+    "lines": 56,
+    "methods": [
+      {
+        "line": 15,
+        "access": "private",
+        "method": "Awake"
+      },
+      {
+        "line": 16,
+        "access": "private",
+        "method": "OnEnable"
+      },
+      {
+        "line": 17,
+        "access": "private",
+        "method": "OnDisable"
+      },
+      {
+        "line": 18,
+        "access": "public",
+        "method": "Open"
+      },
+      {
+        "line": 19,
+        "access": "public",
+        "method": "Back"
+      },
+      {
+        "line": 20,
+        "access": "public",
+        "method": "Connect"
+      },
+      {
+        "line": 21,
+        "access": "public",
+        "method": "UseExisting"
+      },
+      {
+        "line": 22,
+        "access": "public",
+        "method": "KeepLocal"
+      },
+      {
+        "line": 23,
+        "access": "public",
+        "method": "Sync"
+      },
+      {
+        "line": 24,
+        "access": "public",
+        "method": "UseCloud"
+      },
+      {
+        "line": 25,
+        "access": "public",
+        "method": "Enroll"
+      },
+      {
+        "line": 26,
+        "access": "public",
+        "method": "SignOut"
+      },
+      {
+        "line": 27,
+        "access": "public",
+        "method": "CopySupport"
+      },
+      {
+        "line": 28,
+        "access": "public",
+        "method": "Privacy"
+      },
+      {
+        "line": 29,
+        "access": "public",
+        "method": "Help"
+      },
+      {
+        "line": 30,
+        "access": "public",
+        "method": "CloseHelp"
+      },
+      {
+        "line": 31,
+        "access": "public",
+        "method": "Submit"
+      },
+      {
+        "line": 36,
+        "access": "public",
+        "method": "Delete"
+      },
+      {
+        "line": 37,
+        "access": "public",
+        "method": "CancelDelete"
+      },
+      {
+        "line": 38,
+        "access": "public",
+        "method": "ConfirmDelete"
+      },
+      {
+        "line": 40,
+        "access": "private",
+        "method": "Refresh"
+      }
+    ],
+    "bindings": [
+      {
+        "line": 18,
+        "text": "public void Open(){if(service!=AccountService.Current){service.Changed-=Refresh;service=AccountService.Get();service.Changed+=Refresh;}Home.Menu.SetActive(false);Home.Settings.SetActive(false);View.SetActive(true);FeedbackView.SetActive(false);DeleteView.SetActive(false);Refresh();}"
+      },
+      {
+        "line": 19,
+        "text": "public void Back(){View.SetActive(false);FeedbackView.SetActive(false);DeleteView.SetActive(false);var meta=GetComponent<EconomyScreen>();if(meta!=null&&meta.HubView!=null)meta.OpenHub();else Home.ShowHome();}"
+      },
+      {
+        "line": 29,
+        "text": "public void Help(){View.SetActive(false);FeedbackView.SetActive(true);DeleteView.SetActive(false);FeedbackStatus.text=\"\";}"
+      },
+      {
+        "line": 30,
+        "text": "public void CloseHelp(){FeedbackView.SetActive(false);View.SetActive(true);}"
+      },
+      {
+        "line": 36,
+        "text": "public void Delete(){View.SetActive(false);deletionConfirmation=0;DeleteView.SetActive(true);FeedbackView.SetActive(false);DeleteMessage.text=L.Text(\"account.delete_warning\");}"
+      },
+      {
+        "line": 37,
+        "text": "public void CancelDelete(){DeleteView.SetActive(false);View.SetActive(true);}"
+      },
+      {
+        "line": 48,
+        "text": "NormalActions.SetActive(!conflict);ConnectButton.gameObject.SetActive(!service.Linked);ConnectButton.interactable=idle&&BackendSettings.Current.Enabled;"
+      },
+      {
+        "line": 49,
+        "text": "SyncButton.gameObject.SetActive(service.Linked);SyncButton.interactable=idle&&service.Linked;"
+      },
+      {
+        "line": 50,
+        "text": "SignOutButton.gameObject.SetActive(service.Linked);DeleteButton.gameObject.SetActive(service.Linked);DeleteButton.interactable=idle&&service.Linked;"
+      },
+      {
+        "line": 51,
+        "text": "CopySupportButton.gameObject.SetActive(p!=null);Alpha.transform.parent.gameObject.SetActive(BackendPolicy.AlphaEnrollment&&service.Linked);"
+      },
+      {
+        "line": 52,
+        "text": "ExistingButton.gameObject.SetActive(service.State==AccountConnection.AccountConflict&&service.LastError==\"account_conflict\");KeepLocalButton.gameObject.SetActive(service.State==AccountConnection.AccountConflict);"
+      },
+      {
+        "line": 53,
+        "text": "UseCloudButton.gameObject.SetActive(service.State==AccountConnection.AccountConflict&&service.LastError==\"cloud_conflict\");AlphaButton.gameObject.SetActive(BackendPolicy.AlphaEnrollment&&service.Linked);AlphaButton.interactable=idle&&service.Linked;SignOutButton.interactable=idle&&service.Linked;"
+      }
+    ],
+    "group": "runtime-ui"
+  },
+  {
+    "file": "projects/wildfolk/client/Assets/Wildfolk/Runtime/UI/AttackIconView.cs",
+    "sha256": "a2cbe37df11ac3236b7014b8e42d478fd0da57b318c0205d40abc45e4667d07b",
+    "lines": 15,
+    "methods": [
+      {
+        "line": 11,
+        "access": "private",
+        "method": "Start"
+      },
+      {
+        "line": 12,
+        "access": "private",
+        "method": "OnDestroy"
+      },
+      {
+        "line": 13,
+        "access": "private",
+        "method": "Refresh"
+      }
+    ],
+    "bindings": [],
+    "group": "runtime-ui"
+  },
+  {
+    "file": "projects/wildfolk/client/Assets/Wildfolk/Runtime/UI/BossHud.cs",
+    "sha256": "1c872be8ab28da058a6ff9eb48ffa6773c190678ccb1eff8c9aa5b863c06ee61",
+    "lines": 38,
+    "methods": [
+      {
+        "line": 13,
+        "access": "private",
+        "method": "OnEnable"
+      },
+      {
+        "line": 14,
+        "access": "private",
+        "method": "OnDisable"
+      },
+      {
+        "line": 20,
+        "access": "private",
+        "method": "Bind"
+      },
+      {
+        "line": 28,
+        "access": "private",
+        "method": "Refresh"
+      }
+    ],
+    "bindings": [
+      {
+        "line": 30,
+        "text": "View.SetActive(bound!=null && bound.Health.IsAlive);"
+      }
+    ],
+    "group": "runtime-ui"
+  },
+  {
+    "file": "projects/wildfolk/client/Assets/Wildfolk/Runtime/UI/CampLootPanel.cs",
+    "sha256": "b142d23adaae86809f42e415a1d34ea16e96a344bf3de8f1579465120b66b693",
+    "lines": 45,
+    "methods": [
+      {
+        "line": 11,
+        "access": "private",
+        "method": "Rect"
+      },
+      {
+        "line": 13,
+        "access": "private",
+        "method": "Label"
+      },
+      {
+        "line": 15,
+        "access": "private",
+        "method": "Localized"
+      },
+      {
+        "line": 16,
+        "access": "private",
+        "method": "Button"
+      },
+      {
+        "line": 18,
+        "access": "public",
+        "method": "Open"
+      },
+      {
+        "line": 24,
+        "access": "private",
+        "method": "Build"
+      },
+      {
+        "line": 34,
+        "access": "public",
+        "method": "Take"
+      },
+      {
+        "line": 36,
+        "access": "private",
+        "method": "Refresh"
+      },
+      {
+        "line": 38,
+        "access": "private",
+        "method": "StateChanged"
+      },
+      {
+        "line": 39,
+        "access": "private",
+        "method": "Update"
+      },
+      {
+        "line": 40,
+        "access": "public",
+        "method": "CloseFocused"
+      },
+      {
+        "line": 42,
+        "access": "private",
+        "method": "Unbind"
+      },
+      {
+        "line": 43,
+        "access": "private",
+        "method": "OnDestroy"
+      }
+    ],
+    "bindings": [
+      {
+        "line": 12,
+        "text": "{var r=new GameObject(name,typeof(RectTransform)).GetComponent<RectTransform>();r.SetParent(parent,false);r.anchorMin=r.anchorMax=r.pivot=Vector2.one*.5f;r.anchoredPosition=point;r.sizeDelta=size;return r;}"
+      },
+      {
+        "line": 17,
+        "text": "{var r=Rect(\"Take action\",parent,point,size);var i=r.gameObject.AddComponent<Image>();i.color=new Color32(67,82,62,255);var b=AudioButton.Add(r.gameObject);b.targetGraphic=i;b.navigation=new Navigation{mode=Navigation.Mode.None};b.onClick.AddListener(action);Localized(r,Vector2.zero,size-Vector2.one*8,text,22);return b;}"
+      },
+      {
+        "line": 21,
+        "text": "var go=new GameObject(\"Camp supplies\",typeof(RectTransform));go.transform.SetParent(canvas.transform,false);current=go.AddComponent<CampLootPanel>();current.camp=target;current.player=visitor;current.session=visitor.GetComponent<PlayerInputCommands>().Session;"
+      },
+      {
+        "line": 27,
+        "text": "var panel=Rect(\"Supplies panel\",root,Vector2.zero,new Vector2(1080,760));panel.gameObject.SetActive(false);panel.gameObject.AddComponent<Image>().color=new Color32(31,43,33,255);var existing=canvas.GetComponentInChildren<ModalLayout>(true);var fit=panel.gameObject.AddComponent<ModalLayout>();fit.SafeArea=existing!=null ? existing.SafeArea : root;fit.ReferenceSize=panel.sizeDelta;"
+      },
+      {
+        "line": 32,
+        "text": "status=Label(panel,new Vector2(0,-310),new Vector2(940,70),\"\",22);panel.gameObject.SetActive(true);"
+      }
+    ],
+    "group": "runtime-ui"
+  },
+  {
+    "file": "projects/wildfolk/client/Assets/Wildfolk/Runtime/UI/CharacterScreen.cs",
+    "sha256": "3e60aa0d3b47b90a4a8e79140caa3f471ebd1d8b451cd14b157cf64bf30cec9f",
+    "lines": 28,
+    "methods": [
+      {
+        "line": 10,
+        "access": "private",
+        "method": "Start"
+      },
+      {
+        "line": 11,
+        "access": "private",
+        "method": "OnDestroy"
+      },
+      {
+        "line": 12,
+        "access": "private",
+        "method": "Update"
+      },
+      {
+        "line": 13,
+        "access": "public",
+        "method": "Close"
+      },
+      {
+        "line": 14,
+        "access": "public",
+        "method": "OpenTree"
+      },
+      {
+        "line": 15,
+        "access": "public",
+        "method": "Refresh"
+      }
+    ],
+    "bindings": [
+      {
+        "line": 17,
+        "text": "View.SetActive(Session.State==SessionState.Character);if(!View.activeSelf)return;"
+      }
+    ],
+    "group": "runtime-ui"
+  },
+  {
+    "file": "projects/wildfolk/client/Assets/Wildfolk/Runtime/UI/ChestPanel.cs",
+    "sha256": "973a9bdf758f7548f28d43623bd05cb180ecb7793f6049ec1c522260141cd901",
+    "lines": 46,
+    "methods": [
+      {
+        "line": 16,
+        "access": "private",
+        "method": "Start"
+      },
+      {
+        "line": 17,
+        "access": "private",
+        "method": "OnDestroy"
+      },
+      {
+        "line": 25,
+        "access": "private",
+        "method": "Bind"
+      },
+      {
+        "line": 30,
+        "access": "private",
+        "method": "Refresh"
+      },
+      {
+        "line": 39,
+        "access": "private",
+        "method": "EnsureSlots"
+      },
+      {
+        "line": 44,
+        "access": "public",
+        "method": "Select"
+      }
+    ],
+    "bindings": [
+      {
+        "line": 33,
+        "text": "View.SetActive(visible);if(!visible)return;"
+      },
+      {
+        "line": 36,
+        "text": "for(var i=0;i<ChestSlots.Length;i++){ChestSlots[i].gameObject.SetActive(i<bound.Model.Capacity);if(i<bound.Model.Capacity)ChestSlots[i].Show(bound.Model.GetSlot(i),Drag.IsSelected(i,true));}"
+      },
+      {
+        "line": 37,
+        "text": "for(var i=0;i<PlayerSlots.Length;i++)PlayerSlots[i].Show(Owner.Model.GetSlot(i),Owner.SelectedIndex==i);"
+      }
+    ],
+    "group": "runtime-ui"
+  },
+  {
+    "file": "projects/wildfolk/client/Assets/Wildfolk/Runtime/UI/ClassHoldButton.cs",
+    "sha256": "72b9047ee92e906399668dc7cea11aa8a6a03200d8b50d7db256089e9a9cdbc6",
+    "lines": 18,
+    "methods": [
+      {
+        "line": 10,
+        "access": "private",
+        "method": "Awake"
+      },
+      {
+        "line": 11,
+        "access": "public",
+        "method": "OnPointerDown"
+      },
+      {
+        "line": 12,
+        "access": "public",
+        "method": "OnPointerUp"
+      },
+      {
+        "line": 13,
+        "access": "public",
+        "method": "OnPointerExit"
+      },
+      {
+        "line": 14,
+        "access": "private",
+        "method": "Release"
+      },
+      {
+        "line": 15,
+        "access": "private",
+        "method": "OnDisable"
+      },
+      {
+        "line": 16,
+        "access": "private",
+        "method": "Update"
+      }
+    ],
+    "bindings": [],
+    "group": "runtime-ui"
+  },
+  {
+    "file": "projects/wildfolk/client/Assets/Wildfolk/Runtime/UI/ClassHud.cs",
+    "sha256": "cbb47decc6189f8a9334210ddc22e11e305a40e3bb00efc362324aa3c0448498",
+    "lines": 97,
+    "methods": [
+      {
+        "line": 17,
+        "access": "private",
+        "method": "SessionChanged"
+      },
+      {
+        "line": 18,
+        "access": "private",
+        "method": "OnDestroy"
+      },
+      {
+        "line": 21,
+        "access": "private",
+        "method": "Start"
+      },
+      {
+        "line": 22,
+        "access": "private",
+        "method": "Bind"
+      },
+      {
+        "line": 27,
+        "access": "private",
+        "method": "Guard"
+      },
+      {
+        "line": 28,
+        "access": "private",
+        "method": "Service"
+      },
+      {
+        "line": 35,
+        "access": "public",
+        "method": "Overclock"
+      },
+      {
+        "line": 36,
+        "access": "public",
+        "method": "Medicine"
+      },
+      {
+        "line": 37,
+        "access": "public",
+        "method": "Mark"
+      },
+      {
+        "line": 38,
+        "access": "public",
+        "method": "CycleMeaning"
+      },
+      {
+        "line": 39,
+        "access": "private",
+        "method": "Set"
+      },
+      {
+        "line": 40,
+        "access": "private",
+        "method": "Update"
+      },
+      {
+        "line": 86,
+        "access": "private",
+        "method": "ShowMarker"
+      },
+      {
+        "line": 88,
+        "access": "private",
+        "method": "RefreshQuarry"
+      }
+    ],
+    "bindings": [
+      {
+        "line": 17,
+        "text": "private void SessionChanged(){if(boundSession!=null&&!boundSession.IsRunning){BuildingView.SetActive(false);ActiveView.SetActive(false);MarkerView.SetActive(false);MedicineView.SetActive(false);QuarryText.gameObject.SetActive(false);holding=false;if(HoldProgress!=null)HoldProgress.fillAmount=0;}}"
+      },
+      {
+        "line": 21,
+        "text": "private void Start(){GuardHold.Held+=Guard;RepairHold.Held+=h=>Service(BuildingServiceKind.Repair,h);DismantleHold.Held+=h=>Service(BuildingServiceKind.Dismantle,h);ActiveButton.onClick.AddListener(Overclock);MarkButton.onClick.AddListener(Mark);MedicineButton.onClick.AddListener(Medicine);}"
+      },
+      {
+        "line": 45,
+        "text": "Set(ClassName,role.Definition.Name);ClassName.gameObject.SetActive(running);"
+      },
+      {
+        "line": 47,
+        "text": "ActiveView.SetActive(running && role.HasActive);GuardHold.enabled=role.Has(ClassTrait.Guard);"
+      },
+      {
+        "line": 51,
+        "text": "MarkerView.SetActive(running && marker.Available);MeaningButton.gameObject.SetActive(role.Value(ClassEffect.SignalMeaning)>0);MeaningText.text=L.Text(\"class.meaning.\"+meaning);"
+      },
+      {
+        "line": 62,
+        "text": "BuildingView.SetActive(running && target!=null);"
+      },
+      {
+        "line": 80,
+        "text": "MedicineView.SetActive(running && role.CanHealAlly && ally!=null && Player.SelectedStack.Item?.Consumable?.Kind==ConsumableKind.Medicine);"
+      },
+      {
+        "line": 84,
+        "text": "for(;at<TeamMarkers.Length;at++)TeamMarkers[at].gameObject.SetActive(false);"
+      },
+      {
+        "line": 87,
+        "text": "{var d=point-(Vector2)Player.transform.position;TeamMarkers[index].gameObject.SetActive(true);Set(TeamMarkers[index],L.Text(\"class.meaning.\"+purpose)+\" · \"+L.Text(\"utility.bearing.\"+PlayerExplorationUtility.Bearing(d))+\" · \"+Mathf.RoundToInt(d.magnitude)+\"m\");}"
+      },
+      {
+        "line": 90,
+        "text": "var active=role.Has(ClassTrait.Quarry) && (remote?state.QuarryUntil>role.Now:role.Quarry!=null);QuarryText.gameObject.SetActive(active);if(!active)return;"
+      }
+    ],
+    "group": "runtime-ui"
+  },
+  {
+    "file": "projects/wildfolk/client/Assets/Wildfolk/Runtime/UI/ClassLobbyScreen.cs",
+    "sha256": "6de021fa10fc80b5b83b39b62f734ccce6bb869986f594474b58424a11ae2247",
+    "lines": 64,
+    "methods": [
+      {
+        "line": 15,
+        "access": "private",
+        "method": "OnEnable"
+      },
+      {
+        "line": 16,
+        "access": "private",
+        "method": "OnDisable"
+      },
+      {
+        "line": 17,
+        "access": "public",
+        "method": "Open"
+      },
+      {
+        "line": 22,
+        "access": "public",
+        "method": "Back"
+      },
+      {
+        "line": 23,
+        "access": "public",
+        "method": "OpenTree"
+      },
+      {
+        "line": 24,
+        "access": "public",
+        "method": "CloseTree"
+      },
+      {
+        "line": 25,
+        "access": "public",
+        "method": "SelectCard"
+      },
+      {
+        "line": 26,
+        "access": "public",
+        "method": "SelectNode"
+      },
+      {
+        "line": 27,
+        "access": "public",
+        "method": "Invest"
+      },
+      {
+        "line": 28,
+        "access": "public",
+        "method": "SelectClass"
+      },
+      {
+        "line": 29,
+        "access": "public",
+        "method": "Respec"
+      },
+      {
+        "line": 30,
+        "access": "public",
+        "method": "AskPurchase"
+      },
+      {
+        "line": 31,
+        "access": "public",
+        "method": "CancelPurchase"
+      },
+      {
+        "line": 32,
+        "access": "public",
+        "method": "ConfirmPurchase"
+      },
+      {
+        "line": 33,
+        "access": "private",
+        "method": "Unavailable"
+      },
+      {
+        "line": 34,
+        "access": "public",
+        "method": "Refresh"
+      }
+    ],
+    "bindings": [
+      {
+        "line": 19,
+        "text": "Home.Menu.SetActive(false);Home.Settings.SetActive(false);Home.Multiplayer.SetActive(false);Home.Confirm.SetActive(false);View.SetActive(true);OverviewView.SetActive(true);TreeView.SetActive(false);Confirmation.SetActive(false);"
+      },
+      {
+        "line": 22,
+        "text": "public void Back(){if(TreeView.activeSelf){CloseTree();return;}Confirmation.SetActive(false);View.SetActive(false);Home.ShowHome();}"
+      },
+      {
+        "line": 23,
+        "text": "public void OpenTree(){OverviewView.SetActive(false);TreeView.SetActive(true);Refresh();}"
+      },
+      {
+        "line": 24,
+        "text": "public void CloseTree(){TreeView.SetActive(false);OverviewView.SetActive(true);Refresh();}"
+      },
+      {
+        "line": 25,
+        "text": "public void SelectCard(int index){if(index<0 || index>=Cards.Length)return;selected=index;node=0;Status.text=\"\";Confirmation.SetActive(false);Refresh();}"
+      },
+      {
+        "line": 30,
+        "text": "public void AskPurchase(){var d=ClassCatalog.Current.Classes[selected];if(!ClassProfiles.Lobby || !PurchaseButton.interactable)return;ConfirmText.text=L.Format(\"class.confirm\",d.Name,d.Price,d.Currency==\"Gold\"?L.Text(\"ui.gold\"):L.Text(\"class.gem\"));Confirmation.SetActive(true);}"
+      },
+      {
+        "line": 31,
+        "text": "public void CancelPurchase()=>Confirmation.SetActive(false);"
+      },
+      {
+        "line": 32,
+        "text": "public async void ConfirmPurchase(){Confirmation.SetActive(false);var d=ClassCatalog.Current.Classes[selected];var ok=d.Currency==\"PremiumGem\"?await EconomyService.Get().UnlockEngineer():ClassProfiles.Purchase(d.Id,Rules);if(ok&&d.Currency!=\"PremiumGem\")AudioRuntime.Play(Sound.ClassUnlock);else if(!ok)AudioRuntime.Play(Sound.UiError);Status.text=L.Text(ok?\"class.purchased\":\"class.purchase_failed\");Refresh();}"
+      },
+      {
+        "line": 56,
+        "text": "SelectButton.gameObject.SetActive(owned);"
+      },
+      {
+        "line": 58,
+        "text": "PurchaseButton.gameObject.SetActive(!owned);PurchaseButton.interactable=lobby && (d.Currency==\"Gold\"?ClassProfiles.GoldAvailable(Rules)>=d.Price:d.Price>0 && EconomyService.Get().CanSpend && (EconomyService.Get().Snapshot?.Balance??0)>=d.Price);"
+      }
+    ],
+    "group": "runtime-ui"
+  },
+  {
+    "file": "projects/wildfolk/client/Assets/Wildfolk/Runtime/UI/ClassWorldFeedback.cs",
+    "sha256": "b9165caa5f03923302ca5ad3dee54b3e733539d742dc6c73799fd6fe98738b02",
+    "lines": 16,
+    "methods": [
+      {
+        "line": 7,
+        "access": "private",
+        "method": "Awake"
+      },
+      {
+        "line": 8,
+        "access": "private",
+        "method": "OnDisable"
+      },
+      {
+        "line": 9,
+        "access": "private",
+        "method": "Update"
+      }
+    ],
+    "bindings": [
+      {
+        "line": 7,
+        "text": "private void Awake(){role=GetComponent<PlayerClass>();var go=new GameObject(\"Quarry Mark\");marker=go.AddComponent<SpriteRenderer>();marker.sprite=Icon;marker.sortingOrder=WorldSorting.Overlay;marker.color=new Color32(233,181,103,255);go.transform.SetParent(transform,false);go.transform.localScale=Vector3.one*.35f;go.SetActive(false);}"
+      },
+      {
+        "line": 8,
+        "text": "private void OnDisable(){if(marker!=null)marker.gameObject.SetActive(false);}"
+      },
+      {
+        "line": 13,
+        "text": "var visible=target!=null && target.IsAlive && role.Has(ClassTrait.Quarry) && ClassActionRules.Clear(GetComponent<Health>(),target);marker.gameObject.SetActive(visible);if(visible)marker.transform.position=target.transform.position+Vector3.up*1.4f;"
+      }
+    ],
+    "group": "runtime-ui"
+  },
+  {
+    "file": "projects/wildfolk/client/Assets/Wildfolk/Runtime/UI/ControlSizeLayout.cs",
+    "sha256": "fe18471d8151aa8ed5e410a3536c554917f31a9bcfc3e88ea50d06fdd5c151ea",
+    "lines": 37,
+    "methods": [
+      {
+        "line": 10,
+        "access": "private",
+        "method": "OnEnable"
+      },
+      {
+        "line": 11,
+        "access": "private",
+        "method": "Start"
+      },
+      {
+        "line": 12,
+        "access": "private",
+        "method": "OnDisable"
+      },
+      {
+        "line": 13,
+        "access": "public",
+        "method": "BindSession"
+      },
+      {
+        "line": 14,
+        "access": "private",
+        "method": "Apply"
+      }
+    ],
+    "bindings": [],
+    "group": "runtime-ui"
+  },
+  {
+    "file": "projects/wildfolk/client/Assets/Wildfolk/Runtime/UI/CraftingPanel.cs",
+    "sha256": "31609b27c62fabaff7cd561b2da9288c21c10a8d8c09bd02279244db746a50be",
+    "lines": 91,
+    "methods": [
+      {
+        "line": 16,
+        "access": "public",
+        "method": "SetHome"
+      },
+      {
+        "line": 21,
+        "access": "private",
+        "method": "Update"
+      },
+      {
+        "line": 22,
+        "access": "private",
+        "method": "Start"
+      },
+      {
+        "line": 23,
+        "access": "private",
+        "method": "OnDestroy"
+      },
+      {
+        "line": 24,
+        "access": "public",
+        "method": "SelectCategory"
+      },
+      {
+        "line": 25,
+        "access": "public",
+        "method": "ToggleFilter"
+      },
+      {
+        "line": 26,
+        "access": "public",
+        "method": "EnqueueOne"
+      },
+      {
+        "line": 27,
+        "access": "public",
+        "method": "EnqueueAll"
+      },
+      {
+        "line": 28,
+        "access": "public",
+        "method": "WithdrawOne"
+      },
+      {
+        "line": 29,
+        "access": "public",
+        "method": "CollectResults"
+      },
+      {
+        "line": 30,
+        "access": "private",
+        "method": "RefreshProgress"
+      },
+      {
+        "line": 36,
+        "access": "private",
+        "method": "ProcessingName"
+      },
+      {
+        "line": 37,
+        "access": "private",
+        "method": "HasOperation"
+      },
+      {
+        "line": 41,
+        "access": "public",
+        "method": "Refresh"
+      }
+    ],
+    "bindings": [
+      {
+        "line": 43,
+        "text": "View.SetActive(Owner.ScreenOpen && Owner.Session.State==SessionState.Inventory);if(!View.activeSelf)return;"
+      },
+      {
+        "line": 45,
+        "text": "if(HomeButton!=null){HomeButton.gameObject.SetActive(station==StationKind.Workbench);HomeLabel.text=L.Text(Owner.GetComponent<PlayerNavigation>().HomeId==Owner.Station?.GetComponent<WorldPlaceable>().SaveId ? \"ui.navigation.home_selected\" : \"ui.navigation.set_home\");}if(station!=previousStation){category=-1;craftable=false;previousStation=station;Scroll.verticalNormalizedPosition=1;}"
+      },
+      {
+        "line": 47,
+        "text": "var tabsChanged=false;for(var i=0;i<CategoryButtons.Length;i++){var available=i==0;foreach(var card in Cards)if(card.Recipe.RequiredStation==station && (int)card.Recipe.Category==i-1)available=true;if(CategoryButtons[i].gameObject.activeSelf!=available){CategoryButtons[i].gameObject.SetActive(available);tabsChanged=true;}CategoryButtons[i].image.color=i-1==category ? new Color32(152,145,96,255) : Color.white;}"
+      },
+      {
+        "line": 51,
+        "text": "foreach(var card in Cards){var status=card.Recipe.RequiredStation==station ? Owner.GetStatus(card.Recipe) : CraftStatus.StationRequired;var show=card.Recipe.RequiredStation==station && (category<0 || (int)card.Recipe.Category==category) && (!craftable || status==CraftStatus.Ready || status==CraftStatus.Collect || HasOperation(card.Recipe));if(card.gameObject.activeSelf!=show){card.gameObject.SetActive(show);layoutChanged=true;}if(show)card.Refresh();}"
+      },
+      {
+        "line": 55,
+        "text": "if(Grids[i]!=null && Grids[i].activeSelf!=visible){Grids[i].SetActive(visible);layoutChanged=true;}"
+      },
+      {
+        "line": 56,
+        "text": "var heading=visible && category<0;if(Sections[i]!=null && Sections[i].activeSelf!=heading){Sections[i].SetActive(heading);layoutChanged=true;}"
+      },
+      {
+        "line": 58,
+        "text": "var upgrade=station==StationKind.Workbench && WorkbenchProgression.CanUpgrade(Owner.Station.Definition);UpgradeButton.gameObject.SetActive(upgrade);"
+      },
+      {
+        "line": 59,
+        "text": "UpgradeScroll.gameObject.SetActive(upgrade);"
+      },
+      {
+        "line": 74,
+        "text": "var job=Owner.Processor;var sequential=job!=null && job.Sequential;QueueView.SetActive(sequential);SummaryScroll.gameObject.SetActive(!sequential && recipe!=null);MaterialSummary.gameObject.SetActive(!sequential && recipe!=null);SelectedIcon.gameObject.SetActive(!sequential && recipe!=null);"
+      }
+    ],
+    "group": "runtime-ui"
+  },
+  {
+    "file": "projects/wildfolk/client/Assets/Wildfolk/Runtime/UI/DeathHud.cs",
+    "sha256": "23e08f1705df22c6b7a378d92a5c8d25d88ab6d26acf7e5ab12d7ada79d416c9",
+    "lines": 48,
+    "methods": [
+      {
+        "line": 12,
+        "access": "private",
+        "method": "OnEnable"
+      },
+      {
+        "line": 13,
+        "access": "private",
+        "method": "Start"
+      },
+      {
+        "line": 14,
+        "access": "private",
+        "method": "OnDestroy"
+      },
+      {
+        "line": 15,
+        "access": "public",
+        "method": "Bind"
+      },
+      {
+        "line": 16,
+        "access": "public",
+        "method": "Reward"
+      },
+      {
+        "line": 17,
+        "access": "public",
+        "method": "Pay"
+      },
+      {
+        "line": 18,
+        "access": "public",
+        "method": "Respawn"
+      },
+      {
+        "line": 19,
+        "access": "private",
+        "method": "Refresh"
+      },
+      {
+        "line": 35,
+        "access": "private",
+        "method": "Update"
+      },
+      {
+        "line": 36,
+        "access": "private",
+        "method": "RefreshClock"
+      }
+    ],
+    "bindings": [
+      {
+        "line": 13,
+        "text": "private void Start(){var p=Player;Player=null;if(p!=null)Bind(p);else Refresh();Ad.onClick.AddListener(Reward);Gem.onClick.AddListener(Pay);Home.onClick.AddListener(Respawn);}"
+      },
+      {
+        "line": 14,
+        "text": "private void OnDestroy(){L.Changed-=Refresh;RewardedAds.Get().Changed-=Refresh;if(EconomyService.Current!=null)EconomyService.Current.Changed-=Refresh;if(Player!=null)Player.Changed-=Refresh;Ad.onClick.RemoveListener(Reward);Gem.onClick.RemoveListener(Pay);Home.onClick.RemoveListener(Respawn);}"
+      },
+      {
+        "line": 22,
+        "text": "DeadView.SetActive(dead);var multi=Player!=null && Player.GetComponent<PlayerInputCommands>().Session.Mode==SessionMode.Multiplayer;"
+      },
+      {
+        "line": 23,
+        "text": "Ad.gameObject.SetActive(!multi);Gem.gameObject.SetActive(!multi);"
+      },
+      {
+        "line": 24,
+        "text": "if(Player==null){DownView.SetActive(false);return;}"
+      },
+      {
+        "line": 40,
+        "text": "var show=down || target!=null;DownView.SetActive(show);if(!show)return;"
+      }
+    ],
+    "group": "runtime-ui"
+  },
+  {
+    "file": "projects/wildfolk/client/Assets/Wildfolk/Runtime/UI/DirectionDrag.cs",
+    "sha256": "e6840f3a91c4aaddf5b97adfc5cb6f47145ed2fa0a3d362e066174a96f1011e8",
+    "lines": 13,
+    "methods": [
+      {
+        "line": 9,
+        "access": "public",
+        "method": "OnPointerDown"
+      },
+      {
+        "line": 10,
+        "access": "public",
+        "method": "OnDrag"
+      }
+    ],
+    "bindings": [],
+    "group": "runtime-ui"
+  },
+  {
+    "file": "projects/wildfolk/client/Assets/Wildfolk/Runtime/UI/EconomyScreen.cs",
+    "sha256": "ded326a4ad1102c44f12bf9f4f6b96dafc9e5aa0d3c5b4172d688637e31aa561",
+    "lines": 81,
+    "methods": [
+      {
+        "line": 14,
+        "access": "private",
+        "method": "Awake"
+      },
+      {
+        "line": 16,
+        "access": "private",
+        "method": "OnEnable"
+      },
+      {
+        "line": 17,
+        "access": "private",
+        "method": "OnDisable"
+      },
+      {
+        "line": 18,
+        "access": "private",
+        "method": "ReflowText"
+      },
+      {
+        "line": 27,
+        "access": "private",
+        "method": "SelectService"
+      },
+      {
+        "line": 28,
+        "access": "public",
+        "method": "OpenAchievements"
+      },
+      {
+        "line": 29,
+        "access": "public",
+        "method": "OpenAttendance"
+      },
+      {
+        "line": 30,
+        "access": "public",
+        "method": "OpenHub"
+      },
+      {
+        "line": 31,
+        "access": "public",
+        "method": "CloseHub"
+      },
+      {
+        "line": 32,
+        "access": "public",
+        "method": "OpenAccount"
+      },
+      {
+        "line": 33,
+        "access": "public",
+        "method": "WatchReward"
+      },
+      {
+        "line": 34,
+        "access": "public",
+        "method": "RetryReward"
+      },
+      {
+        "line": 35,
+        "access": "public",
+        "method": "AdPrivacyOptions"
+      },
+      {
+        "line": 36,
+        "access": "public",
+        "method": "Back"
+      },
+      {
+        "line": 37,
+        "access": "public",
+        "method": "Category"
+      },
+      {
+        "line": 38,
+        "access": "public",
+        "method": "Select"
+      },
+      {
+        "line": 39,
+        "access": "public",
+        "method": "Board"
+      },
+      {
+        "line": 40,
+        "access": "public",
+        "method": "ClaimSelected"
+      },
+      {
+        "line": 41,
+        "access": "public",
+        "method": "ClaimEverything"
+      },
+      {
+        "line": 42,
+        "access": "public",
+        "method": "ClaimAttendance"
+      },
+      {
+        "line": 43,
+        "access": "public",
+        "method": "Sync"
+      },
+      {
+        "line": 44,
+        "access": "private",
+        "method": "Families"
+      },
+      {
+        "line": 45,
+        "access": "private",
+        "method": "CurrentBoard"
+      },
+      {
+        "line": 47,
+        "access": "private",
+        "method": "Refresh"
+      },
+      {
+        "line": 78,
+        "access": "private",
+        "method": "Update"
+      },
+      {
+        "line": 79,
+        "access": "private",
+        "method": "RefreshClock"
+      }
+    ],
+    "bindings": [
+      {
+        "line": 28,
+        "text": "public async void OpenAchievements(){SelectService();fromProfile=HubView!=null&&HubView.activeSelf;HubView?.SetActive(false);Profile.View.SetActive(false);Home.Menu.SetActive(false);AchievementView.SetActive(true);AttendanceView.SetActive(false);notice=null;Refresh();await service.Sync();Refresh();}"
+      },
+      {
+        "line": 29,
+        "text": "public async void OpenAttendance(){SelectService();fromProfile=HubView!=null&&HubView.activeSelf;HubView?.SetActive(false);Profile.View.SetActive(false);Home.Menu.SetActive(false);AttendanceView.SetActive(true);AchievementView.SetActive(false);notice=null;Refresh();await service.Sync();Refresh();}"
+      },
+      {
+        "line": 30,
+        "text": "public async void OpenHub(){SelectService();Home.Menu.SetActive(false);Profile.View.SetActive(false);AchievementView.SetActive(false);AttendanceView.SetActive(false);HubView.SetActive(true);Refresh();await service.Sync();await RewardedAds.Get().Refresh();Refresh();}"
+      },
+      {
+        "line": 31,
+        "text": "public void CloseHub(){HubView.SetActive(false);Home.ShowHome();}"
+      },
+      {
+        "line": 32,
+        "text": "public void OpenAccount(){HubView.SetActive(false);Profile.Open();}"
+      },
+      {
+        "line": 36,
+        "text": "public void Back(){AchievementView.SetActive(false);AttendanceView.SetActive(false);if(fromProfile)OpenHub();else Home.ShowHome();}"
+      },
+      {
+        "line": 54,
+        "text": "if(HubView!=null){var account=AccountService.Get();var level=1;try{if(SceneFlow.Repository.Exists)level=SceneFlow.Repository.Read(Home.Rules.Validate).Player.Growth.Level;}catch{}HubIdentity.text=L.Format(\"account.character\",level,ClassCatalog.Current.Find(ClassProfiles.Local.Selected).Name)+\"\\n\"+L.Text(account.Linked?\"account.google_connected\":\"account.google_disconnected\")+\" · \"+L.Text(account.Profile?.AlphaRecorded==true?\"account.alpha_recorded\":\"account.alpha_none\");var ads=RewardedAds.Get();AdLabel.text=L.Format(\"ads.watch_gem\",ads.State?.GemPerRewardedAd??1);WatchAd.interactable=ads.CanGem;RetryAd.gameObject.SetActive(account.CloudAvailable&&account.Linked);RetryAd.interactable=!ads.Busy&&account.CloudAvailable&&account.Linked;AdPrivacy.gameObject.SetActive(ads.PrivacyOptionsRequired);var adKey=ads.Busy?\"ads.wait\":ads.LastError==\"ad_cancelled\"?\"ads.cancelled\":ads.Pending?\"ads.pending\":!account.Linked||!account.CloudAvailable?\"ads.account\":ads.State?.Remaining==0?\"ads.limit\":ads.CanGem?\"ads.optional\":\"ads.unavailable\";var dailyAds=ads.State==null?0:ads.State.DailyRewardedGemLimit/ads.State.GemPerRewardedAd;AdStatus.text=adKey==\"ads.optional\"?L.Format(adKey,ads.State.Remaining,dailyAds):adKey==\"ads.limit\"?L.Format(adKey,dailyAds):L.Text(adKey);}"
+      },
+      {
+        "line": 57,
+        "text": "for(var i=0;i<Rows.Length;i++){var on=i<fs.Length;Rows[i].gameObject.SetActive(on);if(!on)continue;var f=fs[i];var value=s?.Value(f.Metric)??0;var completed=f.Tiers.Count(t=>value>=t.Threshold);var next=f.Tiers.FirstOrDefault(t=>value<t.Threshold);RowLabels[i].text=L.Text(f.NameKey)+\" · \"+completed+\"/\"+f.Tiers.Length+\"\\n\"+(next==null?L.Format(\"economy.tier\",completed,f.Tiers.Length):L.Format(\"meta.next\",Math.Min(value,next.Threshold),next.Threshold,next.GemReward))+(s!=null&&f.Tiers.Where((t,j)=>value>=t.Threshold&&!s.Claimed.Contains(f.Id+\":\"+j)).Any()?\"  •\":\"\");RowLabels[i].fontStyle=i==selection?FontStyle.Bold:FontStyle.Normal;}"
+      },
+      {
+        "line": 60,
+        "text": "if(AchievementRetry!=null)AchievementRetry.gameObject.SetActive(retry);if(AttendanceRetry!=null)AttendanceRetry.gameObject.SetActive(retry);"
+      },
+      {
+        "line": 68,
+        "text": "var visible=i<rewards.Length;Slots[i].gameObject.SetActive(visible);if(!visible)continue;"
+      },
+      {
+        "line": 76,
+        "text": "Attend.gameObject.SetActive(b!=null);Attend.interactable=service.Online&&!service.Busy&&b?.Available==true;RefreshClock();"
+      }
+    ],
+    "group": "runtime-ui"
+  },
+  {
+    "file": "projects/wildfolk/client/Assets/Wildfolk/Runtime/UI/EquipmentSlotDrag.cs",
+    "sha256": "d5d6a98c54a5450cad42c431dbf2d408d2c4c81090f39fd6f0bd06236a5bf47b",
+    "lines": 20,
+    "methods": [
+      {
+        "line": 11,
+        "access": "private",
+        "method": "Awake"
+      },
+      {
+        "line": 12,
+        "access": "public",
+        "method": "OnBeginDrag"
+      },
+      {
+        "line": 13,
+        "access": "public",
+        "method": "OnDrag"
+      },
+      {
+        "line": 14,
+        "access": "public",
+        "method": "OnEndDrag"
+      },
+      {
+        "line": 15,
+        "access": "public",
+        "method": "OnDrop"
+      },
+      {
+        "line": 16,
+        "access": "public",
+        "method": "OnPointerEnter"
+      },
+      {
+        "line": 17,
+        "access": "public",
+        "method": "OnPointerExit"
+      },
+      {
+        "line": 18,
+        "access": "private",
+        "method": "LateUpdate"
+      }
+    ],
+    "bindings": [],
+    "group": "runtime-ui"
+  },
+  {
+    "file": "projects/wildfolk/client/Assets/Wildfolk/Runtime/UI/GameplayHud.cs",
+    "sha256": "aa99c3aa21adf08d45000d83ad58ea76438fb5e3b3b8255e3c584f4362ce6cd9",
+    "lines": 33,
+    "methods": [
+      {
+        "line": 17,
+        "access": "private",
+        "method": "OnEnable"
+      },
+      {
+        "line": 18,
+        "access": "private",
+        "method": "OnDisable"
+      },
+      {
+        "line": 19,
+        "access": "private",
+        "method": "Start"
+      },
+      {
+        "line": 21,
+        "access": "private",
+        "method": "Refresh"
+      }
+    ],
+    "bindings": [
+      {
+        "line": 30,
+        "text": "PausePanel.SetActive(Session.State==SessionState.Paused);"
+      }
+    ],
+    "group": "runtime-ui"
+  },
+  {
+    "file": "projects/wildfolk/client/Assets/Wildfolk/Runtime/UI/GameplayUiLayers.cs",
+    "sha256": "a4108f0eb4591a82dca8c9666a46ce4743db57fd722ec1c2c9c9f58578ae884e",
+    "lines": 13,
+    "methods": [
+      {
+        "line": 8,
+        "access": "private",
+        "method": "OnEnable"
+      },
+      {
+        "line": 9,
+        "access": "private",
+        "method": "OnDisable"
+      },
+      {
+        "line": 10,
+        "access": "private",
+        "method": "Start"
+      },
+      {
+        "line": 11,
+        "access": "private",
+        "method": "Refresh"
+      }
+    ],
+    "bindings": [],
+    "group": "runtime-ui"
+  },
+  {
+    "file": "projects/wildfolk/client/Assets/Wildfolk/Runtime/UI/HomeScreen.cs",
+    "sha256": "a20873ecc09d02ad594ffb784f81d30898eb3b7927b1708d26bcb763820df3fd",
+    "lines": 55,
+    "methods": [
+      {
+        "line": 19,
+        "access": "private",
+        "method": "OnEnable"
+      },
+      {
+        "line": 20,
+        "access": "private",
+        "method": "OnDisable"
+      },
+      {
+        "line": 21,
+        "access": "public",
+        "method": "ShowHome"
+      },
+      {
+        "line": 22,
+        "access": "public",
+        "method": "OpenSettings"
+      },
+      {
+        "line": 23,
+        "access": "public",
+        "method": "OpenMultiplayer"
+      },
+      {
+        "line": 24,
+        "access": "public",
+        "method": "SinglePlayer"
+      },
+      {
+        "line": 25,
+        "access": "public",
+        "method": "BeginNew"
+      },
+      {
+        "line": 26,
+        "access": "public",
+        "method": "TryContinue"
+      },
+      {
+        "line": 31,
+        "access": "public",
+        "method": "RefreshSave"
+      },
+      {
+        "line": 41,
+        "access": "private",
+        "method": "SetPage"
+      },
+      {
+        "line": 43,
+        "access": "private",
+        "method": "RefreshText"
+      }
+    ],
+    "bindings": [
+      {
+        "line": 21,
+        "text": "public void ShowHome(){SetPage(FrontendPage.Home);RefreshSave();}"
+      },
+      {
+        "line": 22,
+        "text": "public void OpenSettings()=>SetPage(FrontendPage.Settings);"
+      },
+      {
+        "line": 23,
+        "text": "public void OpenMultiplayer()=>SetPage(FrontendPage.Multiplayer);"
+      },
+      {
+        "line": 24,
+        "text": "public void SinglePlayer(){if(SceneFlow.IsTransitioning)return;if(SceneFlow.Repository.Exists)SetPage(FrontendPage.ConfirmNew);else BeginNew();}"
+      },
+      {
+        "line": 41,
+        "text": "private void SetPage(FrontendPage page)"
+      },
+      {
+        "line": 42,
+        "text": "{Page=page;Menu.SetActive(page==FrontendPage.Home);Settings.SetActive(page==FrontendPage.Settings);Multiplayer.SetActive(page==FrontendPage.Multiplayer);Confirm.SetActive(page==FrontendPage.ConfirmNew);}"
+      },
+      {
+        "line": 45,
+        "text": "ContinueButton.gameObject.SetActive(saved!=null);"
+      }
+    ],
+    "group": "runtime-ui"
+  },
+  {
+    "file": "projects/wildfolk/client/Assets/Wildfolk/Runtime/UI/HotbarView.cs",
+    "sha256": "1142384ea5f7e876ca23d00b21518d38cb0528d69729899e25e39f5bb3f9c328",
+    "lines": 33,
+    "methods": [
+      {
+        "line": 11,
+        "access": "private",
+        "method": "Start"
+      },
+      {
+        "line": 17,
+        "access": "private",
+        "method": "OnDestroy"
+      },
+      {
+        "line": 22,
+        "access": "public",
+        "method": "Select"
+      },
+      {
+        "line": 27,
+        "access": "private",
+        "method": "Refresh"
+      }
+    ],
+    "bindings": [
+      {
+        "line": 30,
+        "text": "Slots[i].Show(Owner.Model.GetSlot(i), Owner.SelectedIndex == i);"
+      }
+    ],
+    "group": "runtime-ui"
+  },
+  {
+    "file": "projects/wildfolk/client/Assets/Wildfolk/Runtime/UI/InteractButtonView.cs",
+    "sha256": "d6488bbccd21dabe3680eb96302ae00e573c7fdf281f4af423cbb603a6a14030",
+    "lines": 24,
+    "methods": [
+      {
+        "line": 14,
+        "access": "private",
+        "method": "Start"
+      },
+      {
+        "line": 15,
+        "access": "private",
+        "method": "OnDestroy"
+      },
+      {
+        "line": 16,
+        "access": "public",
+        "method": "OnPointerDown"
+      },
+      {
+        "line": 17,
+        "access": "public",
+        "method": "OnPointerUp"
+      },
+      {
+        "line": 18,
+        "access": "public",
+        "method": "OnPointerExit"
+      },
+      {
+        "line": 19,
+        "access": "private",
+        "method": "Click"
+      },
+      {
+        "line": 20,
+        "access": "private",
+        "method": "Update"
+      },
+      {
+        "line": 21,
+        "access": "private",
+        "method": "OnDisable"
+      },
+      {
+        "line": 22,
+        "access": "private",
+        "method": "Refresh"
+      }
+    ],
+    "bindings": [
+      {
+        "line": 14,
+        "text": "private void Start(){Interaction.Changed+=Refresh;Interaction.Equipment.Changed+=Refresh;Interaction.Session.StateChanged+=Refresh;Button.onClick.AddListener(Click);Refresh();}"
+      },
+      {
+        "line": 15,
+        "text": "private void OnDestroy(){if(Interaction!=null){Interaction.Changed-=Refresh;Interaction.Equipment.Changed-=Refresh;Interaction.Session.StateChanged-=Refresh;}Button.onClick.RemoveListener(Click);}"
+      }
+    ],
+    "group": "runtime-ui"
+  },
+  {
+    "file": "projects/wildfolk/client/Assets/Wildfolk/Runtime/UI/InventoryDragController.cs",
+    "sha256": "fbae1a9cffa52e58d37609dde6087f9ded193f22469ddab4c2b82200bcc8a1ab",
+    "lines": 161,
+    "methods": [
+      {
+        "line": 24,
+        "access": "public",
+        "method": "IsSelected"
+      },
+      {
+        "line": 27,
+        "access": "private",
+        "method": "Model"
+      },
+      {
+        "line": 36,
+        "access": "private",
+        "method": "LateUpdate"
+      },
+      {
+        "line": 41,
+        "access": "private",
+        "method": "Start"
+      },
+      {
+        "line": 42,
+        "access": "private",
+        "method": "OnDestroy"
+      },
+      {
+        "line": 49,
+        "access": "public",
+        "method": "Begin"
+      },
+      {
+        "line": 61,
+        "access": "public",
+        "method": "BeginEquipment"
+      },
+      {
+        "line": 69,
+        "access": "public",
+        "method": "DropEquipment"
+      },
+      {
+        "line": 76,
+        "access": "public",
+        "method": "CanEquip"
+      },
+      {
+        "line": 78,
+        "access": "public",
+        "method": "Move"
+      },
+      {
+        "line": 84,
+        "access": "public",
+        "method": "Hover"
+      },
+      {
+        "line": 92,
+        "access": "public",
+        "method": "Leave"
+      },
+      {
+        "line": 93,
+        "access": "private",
+        "method": "ClearHover"
+      },
+      {
+        "line": 94,
+        "access": "public",
+        "method": "Drop"
+      },
+      {
+        "line": 101,
+        "access": "public",
+        "method": "End"
+      },
+      {
+        "line": 102,
+        "access": "public",
+        "method": "Select"
+      },
+      {
+        "line": 104,
+        "access": "public",
+        "method": "OpenSplit"
+      },
+      {
+        "line": 105,
+        "access": "public",
+        "method": "OpenItemActions"
+      },
+      {
+        "line": 106,
+        "access": "private",
+        "method": "OpenSelected"
+      },
+      {
+        "line": 114,
+        "access": "public",
+        "method": "HoldPartial"
+      },
+      {
+        "line": 122,
+        "access": "public",
+        "method": "BeginHeld"
+      },
+      {
+        "line": 123,
+        "access": "public",
+        "method": "PlaceHeld"
+      },
+      {
+        "line": 125,
+        "access": "public",
+        "method": "DropHeldWorld"
+      },
+      {
+        "line": 126,
+        "access": "private",
+        "method": "Transfer"
+      },
+      {
+        "line": 128,
+        "access": "private",
+        "method": "UpdateSplit"
+      },
+      {
+        "line": 133,
+        "access": "public",
+        "method": "DropWorld"
+      },
+      {
+        "line": 135,
+        "access": "private",
+        "method": "Refresh"
+      },
+      {
+        "line": 145,
+        "access": "private",
+        "method": "StateChanged"
+      },
+      {
+        "line": 146,
+        "access": "private",
+        "method": "StorageChanged"
+      },
+      {
+        "line": 147,
+        "access": "public",
+        "method": "Cancel"
+      }
+    ],
+    "bindings": [
+      {
+        "line": 59,
+        "text": "DropZone.transform.SetAsLastSibling();Ghost.SetAsLastSibling();Ghost.gameObject.SetActive(true);DropZone.SetActive(true);Refresh();Move(data);"
+      },
+      {
+        "line": 67,
+        "text": "data.eligibleForClick=false;Ghost.SetAsLastSibling();Ghost.gameObject.SetActive(true);DropZone.SetActive(false);Refresh();Move(data);"
+      },
+      {
+        "line": 120,
+        "text": "Begin(index,view,data,chest);IsHoldingPartial=true;HeldAmount=amount;HeldCancel.transform.SetAsLastSibling();HeldCancel.SetActive(true);Refresh();"
+      },
+      {
+        "line": 151,
+        "text": "sourceModel=null;equipmentSource=null;IsDragging=IsHoldingPartial=false;HeldAmount=0;Ghost.gameObject.SetActive(false);DropZone.SetActive(false);if(HeldCancel!=null)HeldCancel.SetActive(false);ClearHover();"
+      }
+    ],
+    "group": "runtime-ui"
+  },
+  {
+    "file": "projects/wildfolk/client/Assets/Wildfolk/Runtime/UI/InventoryDropZone.cs",
+    "sha256": "9e07111a631db799736ef6187c7962806d55e729a9fae08761bdf5dc500ea1fa",
+    "lines": 11,
+    "methods": [
+      {
+        "line": 8,
+        "access": "public",
+        "method": "OnDrop"
+      },
+      {
+        "line": 9,
+        "access": "public",
+        "method": "OnPointerClick"
+      }
+    ],
+    "bindings": [],
+    "group": "runtime-ui"
+  },
+  {
+    "file": "projects/wildfolk/client/Assets/Wildfolk/Runtime/UI/InventoryEquipment.cs",
+    "sha256": "e2a93a8a387891e8feccf8ac79547f7b4e7a1028a7a6813d556af63376859024",
+    "lines": 54,
+    "methods": [
+      {
+        "line": 19,
+        "access": "private",
+        "method": "Start"
+      },
+      {
+        "line": 20,
+        "access": "private",
+        "method": "OnDestroy"
+      },
+      {
+        "line": 21,
+        "access": "private",
+        "method": "Selection"
+      },
+      {
+        "line": 22,
+        "access": "public",
+        "method": "SelectSlot"
+      },
+      {
+        "line": 28,
+        "access": "private",
+        "method": "Current"
+      },
+      {
+        "line": 29,
+        "access": "public",
+        "method": "Equip"
+      },
+      {
+        "line": 30,
+        "access": "public",
+        "method": "Unequip"
+      },
+      {
+        "line": 31,
+        "access": "public",
+        "method": "Refresh"
+      }
+    ],
+    "bindings": [
+      {
+        "line": 38,
+        "text": "EquipButton.gameObject.SetActive(item!=null && (item.Equippable || item.Telescope) && !equippedSelected);UnequipButton.gameObject.SetActive(item!=null && (item.Equippable) && equippedSelected);Comparison.text=Details.text=\"\";"
+      }
+    ],
+    "group": "runtime-ui"
+  },
+  {
+    "file": "projects/wildfolk/client/Assets/Wildfolk/Runtime/UI/InventoryPanel.cs",
+    "sha256": "f68606da70011209b71760a9548fc54bb375247c3589309b25620465ae90424e",
+    "lines": 50,
+    "methods": [
+      {
+        "line": 19,
+        "access": "private",
+        "method": "Start"
+      },
+      {
+        "line": 27,
+        "access": "private",
+        "method": "OnDestroy"
+      },
+      {
+        "line": 36,
+        "access": "public",
+        "method": "Select"
+      },
+      {
+        "line": 38,
+        "access": "private",
+        "method": "Refresh"
+      }
+    ],
+    "bindings": [
+      {
+        "line": 40,
+        "text": "View.SetActive(!CampLootPanel.IsOpen && !TierThreeHud.IsFocused && Session.State==SessionState.Inventory && (Storage==null || !Storage.IsOpen) && (Crafting==null || !Crafting.ScreenOpen));"
+      },
+      {
+        "line": 42,
+        "text": "for(var i=0;i<Slots.Length;i++) Slots[i].Show(Owner.Model.GetSlot(i),i==selected);"
+      }
+    ],
+    "group": "runtime-ui"
+  },
+  {
+    "file": "projects/wildfolk/client/Assets/Wildfolk/Runtime/UI/InventorySlotDrag.cs",
+    "sha256": "bdddccc51c50483f460aba8ff8ee747d6b1971907336508b0d3474bbf1850e87",
+    "lines": 39,
+    "methods": [
+      {
+        "line": 15,
+        "access": "public",
+        "method": "OnPointerDown"
+      },
+      {
+        "line": 16,
+        "access": "public",
+        "method": "OnPointerUp"
+      },
+      {
+        "line": 17,
+        "access": "private",
+        "method": "Update"
+      },
+      {
+        "line": 22,
+        "access": "public",
+        "method": "OnPointerClick"
+      },
+      {
+        "line": 23,
+        "access": "public",
+        "method": "OnBeginDrag"
+      },
+      {
+        "line": 33,
+        "access": "public",
+        "method": "OnDrag"
+      },
+      {
+        "line": 34,
+        "access": "public",
+        "method": "OnEndDrag"
+      },
+      {
+        "line": 35,
+        "access": "public",
+        "method": "OnDrop"
+      },
+      {
+        "line": 36,
+        "access": "public",
+        "method": "OnPointerEnter"
+      },
+      {
+        "line": 37,
+        "access": "public",
+        "method": "OnPointerExit"
+      }
+    ],
+    "bindings": [],
+    "group": "runtime-ui"
+  },
+  {
+    "file": "projects/wildfolk/client/Assets/Wildfolk/Runtime/UI/InventorySlotView.cs",
+    "sha256": "0e0d7a8abc6000207ae8993ac2d3a7ae02061c69cb4b45c2106f30809339533a",
+    "lines": 22,
+    "methods": [
+      {
+        "line": 13,
+        "access": "public",
+        "method": "Show"
+      }
+    ],
+    "bindings": [
+      {
+        "line": 13,
+        "text": "public void Show(ItemStack stack,bool selected)"
+      },
+      {
+        "line": 19,
+        "text": "Selection.gameObject.SetActive(selected);"
+      }
+    ],
+    "group": "runtime-ui"
+  },
+  {
+    "file": "projects/wildfolk/client/Assets/Wildfolk/Runtime/UI/ItemStats.cs",
+    "sha256": "1cf0721f24aae057c4d99fde06ab3f69b4eb4624986b7892017dad30240b36ef",
+    "lines": 24,
+    "methods": [
+      {
+        "line": 5,
+        "access": "public",
+        "method": "Food"
+      },
+      {
+        "line": 12,
+        "access": "public",
+        "method": "Meal"
+      },
+      {
+        "line": 13,
+        "access": "public",
+        "method": "Armor"
+      },
+      {
+        "line": 14,
+        "access": "public",
+        "method": "Description"
+      }
+    ],
+    "bindings": [],
+    "group": "runtime-ui"
+  },
+  {
+    "file": "projects/wildfolk/client/Assets/Wildfolk/Runtime/UI/JournalSkillNode.cs",
+    "sha256": "7c6a740ee595cfcf278d130af18215e85be794ffe5b959ba4efbb5ee3586d77c",
+    "lines": 41,
+    "methods": [
+      {
+        "line": 16,
+        "access": "public",
+        "method": "FieldAction"
+      },
+      {
+        "line": 21,
+        "access": "public",
+        "method": "Action"
+      },
+      {
+        "line": 34,
+        "access": "public",
+        "method": "SetState"
+      }
+    ],
+    "bindings": [
+      {
+        "line": 36,
+        "text": "Focus.SetActive(selected);Learned.SetActive(learned);Locked.SetActive(!learned && !unlocked);"
+      }
+    ],
+    "group": "runtime-ui"
+  },
+  {
+    "file": "projects/wildfolk/client/Assets/Wildfolk/Runtime/UI/Localization.cs",
+    "sha256": "9502491fb60a0dc072191bdd8c15c844848f6b7472409c45ffbef7c85056969c",
+    "lines": 24,
+    "methods": [
+      {
+        "line": 18,
+        "access": "public",
+        "method": "Has"
+      },
+      {
+        "line": 19,
+        "access": "public",
+        "method": "Text"
+      },
+      {
+        "line": 20,
+        "access": "public",
+        "method": "Format"
+      },
+      {
+        "line": 21,
+        "access": "public",
+        "method": "SetLanguage"
+      }
+    ],
+    "bindings": [],
+    "group": "runtime-ui"
+  },
+  {
+    "file": "projects/wildfolk/client/Assets/Wildfolk/Runtime/UI/LocalizedLabel.cs",
+    "sha256": "43f87d8acdfd50abe24e8cfbccc80034827ef4f83a41c99d59fe8b5f48373907",
+    "lines": 14,
+    "methods": [
+      {
+        "line": 9,
+        "access": "private",
+        "method": "OnEnable"
+      },
+      {
+        "line": 10,
+        "access": "private",
+        "method": "OnDisable"
+      },
+      {
+        "line": 11,
+        "access": "private",
+        "method": "OnDestroy"
+      },
+      {
+        "line": 12,
+        "access": "public",
+        "method": "Refresh"
+      }
+    ],
+    "bindings": [],
+    "group": "runtime-ui"
+  },
+  {
+    "file": "projects/wildfolk/client/Assets/Wildfolk/Runtime/UI/MealHud.cs",
+    "sha256": "6597bc3c8317b5b911d2d6870ae993f6360bddfd8418e84302d0654fb5c21164",
+    "lines": 27,
+    "methods": [
+      {
+        "line": 14,
+        "access": "private",
+        "method": "OnEnable"
+      },
+      {
+        "line": 15,
+        "access": "private",
+        "method": "OnDisable"
+      },
+      {
+        "line": 16,
+        "access": "private",
+        "method": "Language"
+      },
+      {
+        "line": 17,
+        "access": "private",
+        "method": "Update"
+      }
+    ],
+    "bindings": [],
+    "group": "runtime-ui"
+  },
+  {
+    "file": "projects/wildfolk/client/Assets/Wildfolk/Runtime/UI/MedicineHud.cs",
+    "sha256": "1278881edc8c253c5c917e7154b57f8a2c5e9357535a4135679b03c2a5e28359",
+    "lines": 22,
+    "methods": [
+      {
+        "line": 11,
+        "access": "private",
+        "method": "OnEnable"
+      },
+      {
+        "line": 12,
+        "access": "private",
+        "method": "OnDisable"
+      },
+      {
+        "line": 13,
+        "access": "private",
+        "method": "RefreshLanguage"
+      },
+      {
+        "line": 14,
+        "access": "private",
+        "method": "Update"
+      }
+    ],
+    "bindings": [],
+    "group": "runtime-ui"
+  },
+  {
+    "file": "projects/wildfolk/client/Assets/Wildfolk/Runtime/UI/ModalLayout.cs",
+    "sha256": "6d8b967ad41019d53e6013f9e9ebe1537d7b66e21377e59416f5f79605364e2e",
+    "lines": 23,
+    "methods": [
+      {
+        "line": 12,
+        "access": "private",
+        "method": "OnEnable"
+      },
+      {
+        "line": 13,
+        "access": "private",
+        "method": "LateUpdate"
+      },
+      {
+        "line": 14,
+        "access": "private",
+        "method": "Apply"
+      }
+    ],
+    "bindings": [],
+    "group": "runtime-ui"
+  },
+  {
+    "file": "projects/wildfolk/client/Assets/Wildfolk/Runtime/UI/NavigationHud.cs",
+    "sha256": "3d1e81f46217c15442e511bdba719472bee925f61121cfd1e991089c07e534d8",
+    "lines": 72,
+    "methods": [
+      {
+        "line": 16,
+        "access": "private",
+        "method": "Update"
+      },
+      {
+        "line": 42,
+        "access": "private",
+        "method": "SetLabel"
+      },
+      {
+        "line": 43,
+        "access": "private",
+        "method": "UtilityHint"
+      }
+    ],
+    "bindings": [
+      {
+        "line": 23,
+        "text": "var visible=hint || compass;View.SetActive(visible);if(!visible)return;"
+      },
+      {
+        "line": 26,
+        "text": "North.gameObject.SetActive(compass);"
+      },
+      {
+        "line": 27,
+        "text": "if(hint){HomeArrow.gameObject.SetActive(hintArrow);if(hintArrow)HomeArrow.localRotation=Quaternion.Euler(0,0,NavigationBearing.Angle(hintDirection,Camera));SetLabel(hintLabel);return;}"
+      },
+      {
+        "line": 39,
+        "text": "HomeArrow.gameObject.SetActive(valid);if(valid){var delta=target-p;HomeArrow.localRotation=Quaternion.Euler(0,0,NavigationBearing.Angle(delta,Camera));label=delta.magnitude<3 ? label+\" · \"+L.Text(\"ui.navigation.near\") : label+\" · \"+Mathf.RoundToInt(delta.magnitude)+\" m\";}"
+      }
+    ],
+    "group": "runtime-ui"
+  },
+  {
+    "file": "projects/wildfolk/client/Assets/Wildfolk/Runtime/UI/PauseMenu.cs",
+    "sha256": "79fae118ab4e06cd39f325c4dcc71239b00f329e7b3ae4561d11b4c66f9038cd",
+    "lines": 12,
+    "methods": [
+      {
+        "line": 8,
+        "access": "private",
+        "method": "OnEnable"
+      },
+      {
+        "line": 9,
+        "access": "public",
+        "method": "OpenSettings"
+      },
+      {
+        "line": 10,
+        "access": "public",
+        "method": "Back"
+      }
+    ],
+    "bindings": [
+      {
+        "line": 9,
+        "text": "public void OpenSettings() { Menu.SetActive(false);Settings.SetActive(true); }"
+      },
+      {
+        "line": 10,
+        "text": "public void Back() { Preferences.Flush();Settings.SetActive(false);Menu.SetActive(true); }"
+      }
+    ],
+    "group": "runtime-ui"
+  },
+  {
+    "file": "projects/wildfolk/client/Assets/Wildfolk/Runtime/UI/PlayerFeedback.cs",
+    "sha256": "1e7049540a8046d4fe1f67e22e2d14faa7a65e43461ed12e1dd845d9aea2caaf",
+    "lines": 43,
+    "methods": [
+      {
+        "line": 14,
+        "access": "private",
+        "method": "OnEnable"
+      },
+      {
+        "line": 15,
+        "access": "private",
+        "method": "OnDisable"
+      },
+      {
+        "line": 16,
+        "access": "private",
+        "method": "Refresh"
+      },
+      {
+        "line": 17,
+        "access": "private",
+        "method": "Awake"
+      },
+      {
+        "line": 18,
+        "access": "private",
+        "method": "ClearCatch"
+      },
+      {
+        "line": 19,
+        "access": "public",
+        "method": "ShowWater"
+      },
+      {
+        "line": 20,
+        "access": "public",
+        "method": "ShowCatch"
+      },
+      {
+        "line": 21,
+        "access": "private",
+        "method": "OnDestroy"
+      },
+      {
+        "line": 22,
+        "access": "public",
+        "method": "ShowKey"
+      },
+      {
+        "line": 23,
+        "access": "public",
+        "method": "ShowPickup"
+      },
+      {
+        "line": 26,
+        "access": "public",
+        "method": "ShowMaintenance"
+      },
+      {
+        "line": 33,
+        "access": "public",
+        "method": "ShowRequirement"
+      },
+      {
+        "line": 35,
+        "access": "public",
+        "method": "ShowCrafted"
+      },
+      {
+        "line": 37,
+        "access": "public",
+        "method": "ShowOperation"
+      },
+      {
+        "line": 39,
+        "access": "public",
+        "method": "CraftResult"
+      },
+      {
+        "line": 41,
+        "access": "private",
+        "method": "Update"
+      }
+    ],
+    "bindings": [
+      {
+        "line": 17,
+        "text": "private void Awake(){current=this;Label.text=string.Empty;var go=new GameObject(\"Catch icon\",typeof(RectTransform),typeof(CanvasRenderer),typeof(Image));go.transform.SetParent(Label.transform,false);catchIcon=go.GetComponent<Image>();catchIcon.preserveAspect=true;catchIcon.raycastTarget=false;catchIcon.enabled=false;var rect=catchIcon.rectTransform;rect.anchorMin=rect.anchorMax=new Vector2(.5f,.5f);rect.pivot=new Vector2(1,.5f);rect.sizeDelta=new Vector2(40,40);}"
+      }
+    ],
+    "group": "runtime-ui"
+  },
+  {
+    "file": "projects/wildfolk/client/Assets/Wildfolk/Runtime/UI/PlayerPortrait.cs",
+    "sha256": "efa70f806b99b805e72c5507e7f5739d50233bc27f40060144250ad8e693a778",
+    "lines": 15,
+    "methods": [
+      {
+        "line": 9,
+        "access": "private",
+        "method": "OnEnable"
+      },
+      {
+        "line": 10,
+        "access": "private",
+        "method": "OnDisable"
+      },
+      {
+        "line": 11,
+        "access": "public",
+        "method": "Refresh"
+      },
+      {
+        "line": 13,
+        "access": "private",
+        "method": "Show"
+      }
+    ],
+    "bindings": [
+      {
+        "line": 12,
+        "text": "{Show(Head,Equipment.HeadArmor==null ? null : Equipment.HeadArmor.Armor.WornSprite);Show(Body,Equipment.BodyArmor==null ? null : Equipment.BodyArmor.Armor.WornSprite);var hand=Equipment.BodyArmor==null ? null : Equipment.BodyArmor.Armor.HandSprite;Show(LeftHand,hand);Show(RightHand,hand);}"
+      },
+      {
+        "line": 13,
+        "text": "private static void Show(Image image,Sprite sprite){image.sprite=sprite;image.enabled=sprite!=null;}"
+      }
+    ],
+    "group": "runtime-ui"
+  },
+  {
+    "file": "projects/wildfolk/client/Assets/Wildfolk/Runtime/UI/PlayerRescueMarker.cs",
+    "sha256": "c73c8fab9b9258d7b272d1a8b7b5949a17b5c53796d9a4c32278ce257cc10597",
+    "lines": 15,
+    "methods": [
+      {
+        "line": 9,
+        "access": "private",
+        "method": "Awake"
+      },
+      {
+        "line": 10,
+        "access": "private",
+        "method": "OnEnable"
+      },
+      {
+        "line": 11,
+        "access": "private",
+        "method": "OnDisable"
+      },
+      {
+        "line": 12,
+        "access": "private",
+        "method": "Start"
+      },
+      {
+        "line": 13,
+        "access": "private",
+        "method": "Refresh"
+      }
+    ],
+    "bindings": [
+      {
+        "line": 13,
+        "text": "private void Refresh(){View.SetActive(death.State==PlayerLife.Downed || death.State==PlayerLife.Reviving);}"
+      }
+    ],
+    "group": "runtime-ui"
+  },
+  {
+    "file": "projects/wildfolk/client/Assets/Wildfolk/Runtime/UI/PlayerStaminaHud.cs",
+    "sha256": "899d7703311bcf579521e1b0e5ae9a0d39a4f0c115c150ff7613a5da3f078b8b",
+    "lines": 24,
+    "methods": [
+      {
+        "line": 12,
+        "access": "private",
+        "method": "LateUpdate"
+      }
+    ],
+    "bindings": [],
+    "group": "runtime-ui"
+  },
+  {
+    "file": "projects/wildfolk/client/Assets/Wildfolk/Runtime/UI/ProfileHud.cs",
+    "sha256": "4cff739414198239291af477932b5e51bb524c3cab4813ea0e8a05ca31e7938e",
+    "lines": 24,
+    "methods": [
+      {
+        "line": 12,
+        "access": "private",
+        "method": "OnEnable"
+      },
+      {
+        "line": 13,
+        "access": "private",
+        "method": "OnDisable"
+      },
+      {
+        "line": 14,
+        "access": "private",
+        "method": "LanguageChanged"
+      },
+      {
+        "line": 15,
+        "access": "private",
+        "method": "Start"
+      },
+      {
+        "line": 16,
+        "access": "private",
+        "method": "Update"
+      }
+    ],
+    "bindings": [
+      {
+        "line": 21,
+        "text": "if(previousPoints!=growth.SkillPoints){SkillNotice.text=\"+\"+growth.SkillPoints;SkillNotice.gameObject.SetActive(growth.SkillPoints>0);previousPoints=growth.SkillPoints;}"
+      }
+    ],
+    "group": "runtime-ui"
+  },
+  {
+    "file": "projects/wildfolk/client/Assets/Wildfolk/Runtime/UI/RecipeCardView.cs",
+    "sha256": "a3e18f391f5b7329174f9af528deaf6b26e57bd2407b6a3a2c71ac046dad35d5",
+    "lines": 22,
+    "methods": [
+      {
+        "line": 9,
+        "access": "public",
+        "method": "OnPointerClick"
+      },
+      {
+        "line": 10,
+        "access": "public",
+        "method": "Craft"
+      },
+      {
+        "line": 11,
+        "access": "public",
+        "method": "RefreshProgress"
+      },
+      {
+        "line": 12,
+        "access": "public",
+        "method": "Refresh"
+      }
+    ],
+    "bindings": [
+      {
+        "line": 14,
+        "text": "NewLabel.gameObject.SetActive(Crafting.IsNew(Recipe));Icon.sprite=Recipe.OptionalConversion ? Recipe.Ingredients[0].Item.Icon : Recipe.Result.Icon;Name.text=string.IsNullOrEmpty(Recipe.DisplayKey) ? Recipe.Result.LocalizedName : L.Text(Recipe.DisplayKey);"
+      },
+      {
+        "line": 17,
+        "text": "var job=Crafting.Processor;var active=job!=null && job.Recipe==Recipe;Progress.gameObject.SetActive(active);Progress.fillAmount=active ? job.Progress : 0;"
+      }
+    ],
+    "group": "runtime-ui"
+  },
+  {
+    "file": "projects/wildfolk/client/Assets/Wildfolk/Runtime/UI/SettingsPanel.cs",
+    "sha256": "8bec138636c4256f7be75385acb6f9f4ac8f0f411b87b69904ca7174a272a2f3",
+    "lines": 24,
+    "methods": [
+      {
+        "line": 10,
+        "access": "public",
+        "method": "NextLanguage"
+      },
+      {
+        "line": 11,
+        "access": "private",
+        "method": "OnEnable"
+      },
+      {
+        "line": 12,
+        "access": "private",
+        "method": "OnDisable"
+      },
+      {
+        "line": 13,
+        "access": "private",
+        "method": "Refresh"
+      }
+    ],
+    "bindings": [],
+    "group": "runtime-ui"
+  },
+  {
+    "file": "projects/wildfolk/client/Assets/Wildfolk/Runtime/UI/SkillTreeScreen.cs",
+    "sha256": "7f973d5f893bc2a405efb6ba7095dea381276fabc6897260e61ce06791ea1c61",
+    "lines": 35,
+    "methods": [
+      {
+        "line": 16,
+        "access": "private",
+        "method": "Start"
+      },
+      {
+        "line": 17,
+        "access": "private",
+        "method": "OnDestroy"
+      },
+      {
+        "line": 18,
+        "access": "public",
+        "method": "Select"
+      },
+      {
+        "line": 19,
+        "access": "public",
+        "method": "Invest"
+      },
+      {
+        "line": 20,
+        "access": "public",
+        "method": "Back"
+      },
+      {
+        "line": 21,
+        "access": "public",
+        "method": "Close"
+      },
+      {
+        "line": 22,
+        "access": "public",
+        "method": "Refresh"
+      }
+    ],
+    "bindings": [
+      {
+        "line": 24,
+        "text": "View.SetActive(Session.State==SessionState.SkillTree);if(!View.activeSelf)return;"
+      }
+    ],
+    "group": "runtime-ui"
+  },
+  {
+    "file": "projects/wildfolk/client/Assets/Wildfolk/Runtime/UI/StackSplitPanel.cs",
+    "sha256": "d182f3dc9870c0467d8f4549f745ae54abf00225c85c9814b1841fc18e8becef",
+    "lines": 30,
+    "methods": [
+      {
+        "line": 18,
+        "access": "public",
+        "method": "Open"
+      },
+      {
+        "line": 20,
+        "access": "public",
+        "method": "OpenActions"
+      },
+      {
+        "line": 22,
+        "access": "public",
+        "method": "ChooseSplit"
+      },
+      {
+        "line": 23,
+        "access": "public",
+        "method": "Decrease"
+      },
+      {
+        "line": 24,
+        "access": "public",
+        "method": "Increase"
+      },
+      {
+        "line": 25,
+        "access": "public",
+        "method": "Half"
+      },
+      {
+        "line": 26,
+        "access": "private",
+        "method": "Refresh"
+      },
+      {
+        "line": 27,
+        "access": "public",
+        "method": "Confirm"
+      },
+      {
+        "line": 28,
+        "access": "public",
+        "method": "Cancel"
+      }
+    ],
+    "bindings": [
+      {
+        "line": 19,
+        "text": "{if(count<2)return;index=slot;source=view;chest=fromChest;total=count;Amount=count/2;Title.text=item.LocalizedName;Icon.sprite=item.Icon;View.transform.SetAsLastSibling();View.SetActive(true);Refresh();}"
+      },
+      {
+        "line": 21,
+        "text": "{if(count<2)return;Open(slot,view,fromChest,count,item);View.SetActive(false);ActionTitle.text=item.LocalizedName;ActionIcon.sprite=item.Icon;Actions.transform.SetAsLastSibling();Actions.SetActive(true);}"
+      },
+      {
+        "line": 22,
+        "text": "public void ChooseSplit(){Actions.SetActive(false);View.transform.SetAsLastSibling();View.SetActive(true);Refresh();}"
+      },
+      {
+        "line": 27,
+        "text": "public void Confirm(){View.SetActive(false);Drag.HoldPartial(index,source,chest,Amount);}"
+      },
+      {
+        "line": 28,
+        "text": "public void Cancel(){View.SetActive(false);Actions.SetActive(false);}"
+      }
+    ],
+    "group": "runtime-ui"
+  },
+  {
+    "file": "projects/wildfolk/client/Assets/Wildfolk/Runtime/UI/StaminaArc.cs",
+    "sha256": "d3dde54f850d35a339b8632e8a14589db5f7d3911cbc5b51b9aa19f36bd9d890",
+    "lines": 22,
+    "methods": [
+      {
+        "line": 10,
+        "access": "protected",
+        "method": "OnPopulateMesh"
+      }
+    ],
+    "bindings": [],
+    "group": "runtime-ui"
+  },
+  {
+    "file": "projects/wildfolk/client/Assets/Wildfolk/Runtime/UI/StoreScreen.cs",
+    "sha256": "b7cfe829a8c68580363a4613f6f70d0aafa9ff47675723998b7d1172cd8b409f",
+    "lines": 42,
+    "methods": [
+      {
+        "line": 13,
+        "access": "private",
+        "method": "Awake"
+      },
+      {
+        "line": 13,
+        "access": "private",
+        "method": "OnEnable"
+      },
+      {
+        "line": 14,
+        "access": "private",
+        "method": "OnDisable"
+      },
+      {
+        "line": 15,
+        "access": "private",
+        "method": "Bind"
+      },
+      {
+        "line": 16,
+        "access": "public",
+        "method": "Open"
+      },
+      {
+        "line": 17,
+        "access": "public",
+        "method": "Close"
+      },
+      {
+        "line": 18,
+        "access": "public",
+        "method": "Select"
+      },
+      {
+        "line": 19,
+        "access": "public",
+        "method": "Buy"
+      },
+      {
+        "line": 20,
+        "access": "public",
+        "method": "Recover"
+      },
+      {
+        "line": 21,
+        "access": "public",
+        "method": "ToggleHistory"
+      },
+      {
+        "line": 22,
+        "access": "public",
+        "method": "Contact"
+      },
+      {
+        "line": 23,
+        "access": "private",
+        "method": "Refresh"
+      },
+      {
+        "line": 39,
+        "access": "private",
+        "method": "SafeDate"
+      },
+      {
+        "line": 40,
+        "access": "private",
+        "method": "LocalizedState"
+      }
+    ],
+    "bindings": [
+      {
+        "line": 16,
+        "text": "public async void Open(){Bind();selected=-1;history=false;fromHome=Meta.Home.Menu.activeSelf;Meta.HubView.SetActive(false);Meta.Home.Menu.SetActive(false);View.SetActive(true);Refresh();await service.Open();Refresh();}"
+      },
+      {
+        "line": 17,
+        "text": "public void Close(){View.SetActive(false);if(fromHome)Meta.Home.ShowHome();else Meta.OpenHub();}"
+      },
+      {
+        "line": 22,
+        "text": "public void Contact(){View.SetActive(false);Meta.Profile.Open();Meta.Profile.Help();}"
+      },
+      {
+        "line": 25,
+        "text": "if(service==null||Wallet==null)return;var balance=EconomyService.Get().Snapshot?.Balance;Wallet.text=L.Format(\"economy.balance\",balance?.ToString()??\"—\");FixtureNote.gameObject.SetActive(service.IsDevelopment);FixtureNote.text=L.Text(\"store.fixture\");"
+      },
+      {
+        "line": 26,
+        "text": "for(var i=0;i<Cards.Length;i++){var item=service.Catalog.Products[i];Amounts[i].text=L.Format(\"store.amount\",item.GemAmount);var price=Array.Find(service.Prices,p=>p.ProductId==item.ProductId);Prices[i].text=price?.FormattedPrice??L.Text(service.Phase==StorePhase.FetchingProducts?\"store.loading\":\"store.price_unavailable\");Cards[i].gameObject.SetActive(!history);Cards[i].interactable=!service.Busy&&item.Enabled;Amounts[i].fontStyle=i==selected?FontStyle.Bold:FontStyle.Normal;}"
+      },
+      {
+        "line": 27,
+        "text": "HistoryView.SetActive(history);HelpLabel.text=L.Text(history?\"store.products\":\"store.history\");SelectionView.SetActive(!history);Purchase.interactable=!history&&selected>=0&&service.CanBuy;Retry.interactable=!service.Busy&&service.AccountReady;SupportButton.interactable=!service.Busy;"
+      },
+      {
+        "line": 34,
+        "text": "var configured=service.PurchasesConfigured||service.IsDevelopment;Purchase.gameObject.SetActive(configured);Detail.rectTransform.sizeDelta=new Vector2(configured?900:1420,110);Detail.rectTransform.anchoredPosition=new Vector2(configured?-270:0,-155);"
+      }
+    ],
+    "group": "runtime-ui"
+  },
+  {
+    "file": "projects/wildfolk/client/Assets/Wildfolk/Runtime/UI/SurvivalHud.cs",
+    "sha256": "61f38eb27a40723241669321fa5b69004c24330c0a4e35fa267c861553373c9f",
+    "lines": 23,
+    "methods": [
+      {
+        "line": 11,
+        "access": "private",
+        "method": "Update"
+      }
+    ],
+    "bindings": [],
+    "group": "runtime-ui"
+  },
+  {
+    "file": "projects/wildfolk/client/Assets/Wildfolk/Runtime/UI/TierThreeHud.cs",
+    "sha256": "b3ad14c0b3b8b1469b7bf68fd66f27c5d741ad3be0ec147ea55a892d303d4042",
+    "lines": 90,
+    "methods": [
+      {
+        "line": 22,
+        "access": "private",
+        "method": "Awake"
+      },
+      {
+        "line": 23,
+        "access": "public",
+        "method": "OpenTurret"
+      },
+      {
+        "line": 25,
+        "access": "public",
+        "method": "OpenBeacon"
+      },
+      {
+        "line": 27,
+        "access": "private",
+        "method": "Bind"
+      },
+      {
+        "line": 29,
+        "access": "private",
+        "method": "Rect"
+      },
+      {
+        "line": 31,
+        "access": "private",
+        "method": "Label"
+      },
+      {
+        "line": 33,
+        "access": "private",
+        "method": "Button"
+      },
+      {
+        "line": 35,
+        "access": "private",
+        "method": "Button"
+      },
+      {
+        "line": 36,
+        "access": "private",
+        "method": "Build"
+      },
+      {
+        "line": 61,
+        "access": "private",
+        "method": "Open"
+      },
+      {
+        "line": 62,
+        "access": "public",
+        "method": "CloseFocused"
+      },
+      {
+        "line": 63,
+        "access": "public",
+        "method": "Close"
+      },
+      {
+        "line": 64,
+        "access": "private",
+        "method": "Choose"
+      },
+      {
+        "line": 65,
+        "access": "private",
+        "method": "OpenNavigation"
+      },
+      {
+        "line": 67,
+        "access": "private",
+        "method": "Cycle"
+      },
+      {
+        "line": 68,
+        "access": "public",
+        "method": "Operate"
+      },
+      {
+        "line": 70,
+        "access": "private",
+        "method": "Deposit"
+      },
+      {
+        "line": 71,
+        "access": "private",
+        "method": "Install"
+      },
+      {
+        "line": 72,
+        "access": "private",
+        "method": "RefreshTurret"
+      },
+      {
+        "line": 81,
+        "access": "private",
+        "method": "Update"
+      },
+      {
+        "line": 88,
+        "access": "private",
+        "method": "OnDestroy"
+      }
+    ],
+    "bindings": [
+      {
+        "line": 30,
+        "text": "{var r=new GameObject(name,typeof(RectTransform)).GetComponent<RectTransform>();r.SetParent(parent,false);r.anchorMin=r.anchorMax=r.pivot=Vector2.one*.5f;r.anchoredPosition=position;r.sizeDelta=size;return r;}"
+      },
+      {
+        "line": 34,
+        "text": "{var r=Rect(\"Action\",parent,p,size);var image=r.gameObject.AddComponent<Image>();image.sprite=background;image.type=Image.Type.Sliced;image.color=new Color32(52,65,52,255);var b=AudioButton.Add(r.gameObject);b.targetGraphic=image;b.navigation=new Navigation{mode=Navigation.Mode.None};var colors=b.colors;colors.pressedColor=new Color(.65f,.72f,.6f,1);b.colors=colors;b.onClick.AddListener(action);text=Label(r,Vector2.zero,size-Vector2.one*12,key,22);return b;}"
+      },
+      {
+        "line": 45,
+        "text": "Label(scopeView.transform,new Vector2(0,300),new Vector2(700,42),\"ui.telescope.aim\");Button(scopeView.transform,new Vector2(0,-270),new Vector2(220,60),\"ui.telescope.close\",()=>player.GetComponent<PlayerTelescope>().Exit());scopeView.SetActive(false);"
+      },
+      {
+        "line": 47,
+        "text": "panel=Rect(\"Control panel\",mr,Vector2.zero,new Vector2(1100,780));var pi=panel.gameObject.AddComponent<Image>();pi.sprite=white;pi.type=Image.Type.Simple;pi.color=new Color32(32,45,35,255);panel.gameObject.SetActive(false);var fitting=panel.gameObject.AddComponent<ModalLayout>();fitting.SafeArea=(RectTransform)safe;fitting.ReferenceSize=panel.sizeDelta;panel.gameObject.SetActive(true);"
+      },
+      {
+        "line": 59,
+        "text": "navLabel=Label(navView.transform,new Vector2(0,-30),new Vector2(700,80),\"ui.navigation.no_target\",28);Button(navView.transform,new Vector2(-380,-130),new Vector2(100,64),\"‹\",()=>Cycle(-1));Button(navView.transform,new Vector2(380,-130),new Vector2(100,64),\"›\",()=>Cycle(1));Button(navView.transform,new Vector2(0,-130),new Vector2(600,64),\"ui.navigation.track\",()=>{if(choices.Count>0){navigation.SelectNavigation(NavigationMode.Beacon,choices[choice].Id);Close();}});modal.SetActive(false);"
+      },
+      {
+        "line": 61,
+        "text": "private void Open(GameObject view){focused=true;session.OpenInventory();foreach(var mode in modeViews)mode.SetActive(mode==view);modal.SetActive(true);modal.transform.SetAsLastSibling();title.text=turret!=null ? turret.GetComponent<WorldPlaceable>().Definition.Item.LocalizedName : beacon!=null ? L.Text(\"item.signal_beacon.name\") : L.Text(\"ui.navigation.choose\");}"
+      },
+      {
+        "line": 63,
+        "text": "public void Close(){focused=false;if(turret!=null)turret.Changed-=RefreshTurret;if(modal!=null)modal.SetActive(false);if(session!=null)session.CloseInventory();turret=null;beacon=null;}"
+      },
+      {
+        "line": 84,
+        "text": "scopeView.SetActive(player.GetComponent<PlayerTelescope>().IsViewing);navButton.SetActive(navigation.HasCompass && session.IsRunning);"
+      }
+    ],
+    "group": "runtime-ui"
+  },
+  {
+    "file": "projects/wildfolk/client/Assets/Wildfolk/Runtime/UI/TimeHud.cs",
+    "sha256": "1622b0a988fd63b73d5a5de48b7f6dc16e2f59b3d9669e1ed802bd05e1ea8a89",
+    "lines": 28,
+    "methods": [
+      {
+        "line": 13,
+        "access": "private",
+        "method": "OnEnable"
+      },
+      {
+        "line": 14,
+        "access": "private",
+        "method": "OnDisable"
+      },
+      {
+        "line": 15,
+        "access": "private",
+        "method": "Dirty"
+      },
+      {
+        "line": 16,
+        "access": "private",
+        "method": "Update"
+      }
+    ],
+    "bindings": [],
+    "group": "runtime-ui"
+  },
+  {
+    "file": "projects/wildfolk/client/Assets/Wildfolk/Runtime/UI/TransitionOverlay.cs",
+    "sha256": "c8f73127de162800f78b87443900dde487a4cc325c4276351ef7b876dbbeaafe",
+    "lines": 81,
+    "methods": [
+      {
+        "line": 16,
+        "access": "private",
+        "method": "Create"
+      },
+      {
+        "line": 30,
+        "access": "private",
+        "method": "Label"
+      },
+      {
+        "line": 34,
+        "access": "public",
+        "method": "Load"
+      },
+      {
+        "line": 36,
+        "access": "private",
+        "method": "LoadScene"
+      },
+      {
+        "line": 60,
+        "access": "private",
+        "method": "Fail"
+      },
+      {
+        "line": 61,
+        "access": "public",
+        "method": "Watch"
+      },
+      {
+        "line": 63,
+        "access": "private",
+        "method": "NetworkChanged"
+      },
+      {
+        "line": 70,
+        "access": "private",
+        "method": "Update"
+      },
+      {
+        "line": 76,
+        "access": "private",
+        "method": "Refresh"
+      },
+      {
+        "line": 77,
+        "access": "private",
+        "method": "Cancel"
+      },
+      {
+        "line": 78,
+        "access": "private",
+        "method": "Close"
+      },
+      {
+        "line": 79,
+        "access": "private",
+        "method": "OnDestroy"
+      }
+    ],
+    "bindings": [
+      {
+        "line": 19,
+        "text": "var root=new GameObject(\"Journey Transition\",typeof(RectTransform),typeof(Canvas),typeof(CanvasScaler),typeof(GraphicRaycaster));DontDestroyOnLoad(root);"
+      },
+      {
+        "line": 22,
+        "text": "var surface=new GameObject(\"Forest shade\",typeof(RectTransform),typeof(Image));surface.transform.SetParent(root.transform,false);var rect=(RectTransform)surface.transform;rect.anchorMin=Vector2.zero;rect.anchorMax=Vector2.one;rect.offsetMin=rect.offsetMax=Vector2.zero;surface.GetComponent<Image>().color=new Color32(25,42,31,255);"
+      },
+      {
+        "line": 23,
+        "text": "var safe=new GameObject(\"Safe Area\",typeof(RectTransform),typeof(SafeAreaLayout)).GetComponent<RectTransform>();safe.SetParent(root.transform,false);safe.anchorMin=Vector2.zero;safe.anchorMax=Vector2.one;safe.offsetMin=safe.offsetMax=Vector2.zero;"
+      },
+      {
+        "line": 26,
+        "text": "var arc=new GameObject(\"Indeterminate\",typeof(RectTransform),typeof(StaminaArc));arc.transform.SetParent(safe,false);instance.spinner=(RectTransform)arc.transform;instance.spinner.sizeDelta=new Vector2(110,110);instance.spinner.anchoredPosition=new Vector2(0,110);var graphic=arc.GetComponent<StaminaArc>();graphic.Fill=1;graphic.color=JournalStyle.Paper;graphic.raycastTarget=false;"
+      },
+      {
+        "line": 27,
+        "text": "var action=new GameObject(\"Cancel\",typeof(RectTransform),typeof(Image),typeof(Button),typeof(AudioButton));action.transform.SetParent(safe,false);var ar=(RectTransform)action.transform;ar.sizeDelta=new Vector2(650,132);ar.anchoredPosition=new Vector2(0,-230);instance.cancel=action.GetComponent<Button>();instance.cancel.targetGraphic=action.GetComponent<Image>();JournalStyle.Action(instance.cancel);var text=Label(ar,\"Cancel label\",0,36);text.rectTransform.sizeDelta=new Vector2(610,110);text.color=JournalStyle.Ink;text.text=L.Text(\"ui.action.cancel\");instance.cancel.onClick.AddListener(instance.Cancel);action.SetActive(false);"
+      },
+      {
+        "line": 32,
+        "text": "var go=new GameObject(name,typeof(RectTransform),typeof(Text));go.transform.SetParent(parent,false);var text=go.GetComponent<Text>();text.rectTransform.sizeDelta=new Vector2(1500,130);text.rectTransform.anchoredPosition=new Vector2(0,y);text.font=Resources.Load<Font>(\"NotoSansKR\");text.fontSize=size;text.alignment=TextAnchor.MiddleCenter;text.color=JournalStyle.Paper;text.raycastTarget=false;return text;"
+      },
+      {
+        "line": 60,
+        "text": "private void Fail(){loading=false;key=\"loading.failed\";spinner.gameObject.SetActive(false);cancel.gameObject.SetActive(true);Refresh();}"
+      },
+      {
+        "line": 62,
+        "text": "{var view=Create(phaseKey);view.network=session;view.awaitingScene=phaseKey==\"net.entering\";session.Changed+=view.NetworkChanged;view.cancel.gameObject.SetActive(!view.awaitingScene);}"
+      },
+      {
+        "line": 68,
+        "text": "key=network.State==NetworkSessionState.Loading?\"net.entering\":network.State==NetworkSessionState.Playing?\"loading.player\":\"net.connecting\";cancel.gameObject.SetActive(network.State==NetworkSessionState.Connecting);Refresh();"
+      },
+      {
+        "line": 74,
+        "text": "if(!warned&&Time.realtimeSinceStartup-started>20){warned=true;if(network!=null&&network.State==NetworkSessionState.Playing)cancel.gameObject.SetActive(true);Refresh();}"
+      },
+      {
+        "line": 78,
+        "text": "private void Close(){if(instance==this)instance=null;gameObject.SetActive(false);Destroy(gameObject);}"
+      }
+    ],
+    "group": "runtime-ui"
+  },
+  {
+    "file": "projects/wildfolk/client/Assets/Wildfolk/Runtime/World/CavernPortal.cs",
+    "sha256": "6d3be23ca977ec863763fd2ad36722f3bc37d2a9149de7b62fc6487ce97ac7f1",
+    "lines": 20,
+    "methods": [
+      {
+        "line": 9,
+        "access": "public",
+        "method": "CanInteract"
+      },
+      {
+        "line": 10,
+        "access": "public",
+        "method": "Use"
+      },
+      {
+        "line": 12,
+        "access": "public",
+        "method": "Travel"
+      }
+    ],
+    "bindings": [],
+    "group": "related-runtime"
+  },
+  {
+    "file": "projects/wildfolk/client/Assets/Wildfolk/Runtime/World/IPlayerInteractable.cs",
+    "sha256": "8affcdcae76b6bb9e8ac25bf7a8b407b04f36cf1b18f38e42c05debcb3a0f5d2",
+    "lines": 11,
+    "methods": [],
+    "bindings": [],
+    "group": "related-runtime"
+  },
+  {
+    "file": "projects/wildfolk/client/Assets/Wildfolk/Runtime/World/PoiSite.cs",
+    "sha256": "2cbfde3cd26e8a7c929c4c02176db95949873d5b01886224d63c88d870472020",
+    "lines": 63,
+    "methods": [
+      {
+        "line": 19,
+        "access": "public",
+        "method": "Initialize"
+      },
+      {
+        "line": 21,
+        "access": "public",
+        "method": "ApplyReplica"
+      },
+      {
+        "line": 23,
+        "access": "public",
+        "method": "InRange"
+      },
+      {
+        "line": 24,
+        "access": "public",
+        "method": "CanInteract"
+      },
+      {
+        "line": 25,
+        "access": "public",
+        "method": "Use"
+      },
+      {
+        "line": 33,
+        "access": "public",
+        "method": "RequestTake"
+      },
+      {
+        "line": 34,
+        "access": "private",
+        "method": "Allowed"
+      },
+      {
+        "line": 36,
+        "access": "public",
+        "method": "Take"
+      },
+      {
+        "line": 42,
+        "access": "public",
+        "method": "Fill"
+      },
+      {
+        "line": 55,
+        "access": "public",
+        "method": "AdvanceWater"
+      },
+      {
+        "line": 60,
+        "access": "private",
+        "method": "Feedback"
+      },
+      {
+        "line": 61,
+        "access": "public",
+        "method": "Notify"
+      }
+    ],
+    "bindings": [],
+    "group": "related-runtime"
+  },
+  {
+    "file": "projects/wildfolk/client/Assets/Wildfolk/Runtime/World/SignalBeacon.cs",
+    "sha256": "7af5c440b18469eea62f2428e9be40bdc0b6e13106ae27f2c5051aabccf65275",
+    "lines": 29,
+    "methods": [
+      {
+        "line": 12,
+        "access": "public",
+        "method": "Next"
+      },
+      {
+        "line": 13,
+        "access": "public",
+        "method": "Clear"
+      },
+      {
+        "line": 14,
+        "access": "public",
+        "method": "Put"
+      },
+      {
+        "line": 15,
+        "access": "public",
+        "method": "Remove"
+      },
+      {
+        "line": 21,
+        "access": "private",
+        "method": "OnEnable"
+      },
+      {
+        "line": 22,
+        "access": "public",
+        "method": "Publish"
+      },
+      {
+        "line": 23,
+        "access": "public",
+        "method": "Restore"
+      },
+      {
+        "line": 24,
+        "access": "public",
+        "method": "CanInteract"
+      },
+      {
+        "line": 25,
+        "access": "public",
+        "method": "Use"
+      },
+      {
+        "line": 26,
+        "access": "public",
+        "method": "Recover"
+      }
+    ],
+    "bindings": [],
+    "group": "related-runtime"
+  },
+  {
+    "file": "projects/wildfolk/client/Assets/Wildfolk/Runtime/World/StorageChest.cs",
+    "sha256": "82f197eef5e99418ff3c9b76b2f81cd8d552f51c22eb5ef11b1a7fa15a77a184",
+    "lines": 31,
+    "methods": [
+      {
+        "line": 13,
+        "access": "private",
+        "method": "Awake"
+      },
+      {
+        "line": 14,
+        "access": "private",
+        "method": "OnEnable"
+      },
+      {
+        "line": 15,
+        "access": "private",
+        "method": "OnDisable"
+      },
+      {
+        "line": 16,
+        "access": "public",
+        "method": "CanInteract"
+      },
+      {
+        "line": 17,
+        "access": "public",
+        "method": "InRange"
+      },
+      {
+        "line": 18,
+        "access": "public",
+        "method": "Use"
+      },
+      {
+        "line": 19,
+        "access": "public",
+        "method": "BindVisitor"
+      },
+      {
+        "line": 20,
+        "access": "private",
+        "method": "DropContents"
+      }
+    ],
+    "bindings": [],
+    "group": "related-runtime"
+  },
+  {
+    "file": "projects/wildfolk/client/Assets/Wildfolk/Runtime/World/WaterSource.cs",
+    "sha256": "4b0dcb3ab412c7939872e0dc1bfe9968245c9bc752a0f94733cf20823f0817b2",
+    "lines": 22,
+    "methods": [
+      {
+        "line": 10,
+        "access": "public",
+        "method": "CanInteract"
+      },
+      {
+        "line": 11,
+        "access": "public",
+        "method": "Use"
+      },
+      {
+        "line": 12,
+        "access": "public",
+        "method": "CanInteract"
+      },
+      {
+        "line": 13,
+        "access": "public",
+        "method": "Collect"
+      }
+    ],
+    "bindings": [],
+    "group": "related-runtime"
+  },
+  {
+    "file": "projects/wildfolk/client/Assets/Wildfolk/Runtime/World/WorldDoor.cs",
+    "sha256": "131a169b63ee68748e32599f847fa0bae8d5ceb58305e9078caaa8224d710e41",
+    "lines": 36,
+    "methods": [
+      {
+        "line": 18,
+        "access": "public",
+        "method": "CanInteract"
+      },
+      {
+        "line": 19,
+        "access": "public",
+        "method": "Use"
+      },
+      {
+        "line": 21,
+        "access": "public",
+        "method": "Toggle"
+      },
+      {
+        "line": 31,
+        "access": "internal",
+        "method": "Present"
+      },
+      {
+        "line": 32,
+        "access": "private",
+        "method": "Update"
+      },
+      {
+        "line": 33,
+        "access": "private",
+        "method": "ApplyPose"
+      },
+      {
+        "line": 34,
+        "access": "public",
+        "method": "RestoreOpen"
+      }
+    ],
+    "bindings": [],
+    "group": "related-runtime"
+  },
+  {
+    "file": "projects/wildfolk/client/Assets/Wildfolk/Runtime/World/WorldTurret.cs",
+    "sha256": "fec3f242a1a7dc3b7c27ac8a0b733a48610ef05e6a0f8ca18ceb7855d59df7b6",
+    "lines": 115,
+    "methods": [
+      {
+        "line": 25,
+        "access": "internal",
+        "method": "ApplyOverclock"
+      },
+      {
+        "line": 27,
+        "access": "public",
+        "method": "Overclock"
+      },
+      {
+        "line": 37,
+        "access": "private",
+        "method": "Awake"
+      },
+      {
+        "line": 38,
+        "access": "private",
+        "method": "OnEnable"
+      },
+      {
+        "line": 39,
+        "access": "private",
+        "method": "OnDisable"
+      },
+      {
+        "line": 40,
+        "access": "private",
+        "method": "Notify"
+      },
+      {
+        "line": 41,
+        "access": "public",
+        "method": "ResetForSpawn"
+      },
+      {
+        "line": 42,
+        "access": "public",
+        "method": "CanInteract"
+      },
+      {
+        "line": 43,
+        "access": "public",
+        "method": "Use"
+      },
+      {
+        "line": 44,
+        "access": "public",
+        "method": "InRange"
+      },
+      {
+        "line": 45,
+        "access": "public",
+        "method": "Execute"
+      },
+      {
+        "line": 73,
+        "access": "private",
+        "method": "ApplyFrame"
+      },
+      {
+        "line": 74,
+        "access": "public",
+        "method": "AmmoCount"
+      },
+      {
+        "line": 75,
+        "access": "public",
+        "method": "Tick"
+      },
+      {
+        "line": 87,
+        "access": "public",
+        "method": "HasLineOfSight"
+      },
+      {
+        "line": 93,
+        "access": "private",
+        "method": "Acquire"
+      },
+      {
+        "line": 98,
+        "access": "public",
+        "method": "Fire"
+      },
+      {
+        "line": 107,
+        "access": "private",
+        "method": "Present"
+      },
+      {
+        "line": 108,
+        "access": "public",
+        "method": "Capture"
+      },
+      {
+        "line": 109,
+        "access": "public",
+        "method": "Restore"
+      },
+      {
+        "line": 111,
+        "access": "private",
+        "method": "ReleaseCargo"
+      },
+      {
+        "line": 113,
+        "access": "private",
+        "method": "Drop"
+      }
+    ],
+    "bindings": [],
+    "group": "related-runtime"
+  }
+]

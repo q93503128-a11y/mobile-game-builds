@@ -1,0 +1,120 @@
+{
+  "utc": "2026-11-04T01:46:31.9701962Z",
+  "scene": "MainMenu",
+  "screen": [
+    844,
+    390
+  ],
+  "language": "ko",
+  "labels": [
+    {
+      "name": "Consent label",
+      "text": "진단 정보 첨부",
+      "size": 32,
+      "width": 440.0,
+      "height": 112.0,
+      "preferredHeight": 42.6685524,
+      "overflow": "Truncate"
+    },
+    {
+      "name": "Category Heading",
+      "text": "문의 유형",
+      "size": 27,
+      "width": 560.0,
+      "height": 50.0,
+      "preferredHeight": 37.6487236,
+      "overflow": "Truncate"
+    },
+    {
+      "name": "Title",
+      "text": "도움말 및 의견",
+      "size": 44,
+      "width": 650.0,
+      "height": 70.4,
+      "preferredHeight": 62.74787,
+      "overflow": "Truncate"
+    },
+    {
+      "name": "Placeholder",
+      "text": "문제 상황이나 의견을 적어 주세요. (최대 1,500자)",
+      "size": 34,
+      "width": 570.0,
+      "height": 440.0,
+      "preferredHeight": 90.35693,
+      "overflow": "Truncate"
+    },
+    {
+      "name": "Label",
+      "text": "뒤로",
+      "size": 30,
+      "width": 160.0,
+      "height": 100.0,
+      "preferredHeight": 40.158638,
+      "overflow": "Truncate"
+    },
+    {
+      "name": "Label",
+      "text": "보내기",
+      "size": 32,
+      "width": 568.0,
+      "height": 104.0,
+      "preferredHeight": 42.6685524,
+      "overflow": "Truncate"
+    },
+    {
+      "name": "Caption",
+      "text": "버그 신고",
+      "size": 34,
+      "width": 530.0,
+      "height": 100.0,
+      "preferredHeight": 47.68838,
+      "overflow": "Truncate"
+    },
+    {
+      "name": "Consent explanation",
+      "text": "동의 시 기기·버전·연결 상태를 첨부합니다. 월드 저장 파일은 첨부하지 않습니다.",
+      "size": 32,
+      "width": 570.0,
+      "height": 180.0,
+      "preferredHeight": 82.8271942,
+      "overflow": "Truncate"
+    }
+  ],
+  "controls": [
+    {
+      "name": "Send feedback",
+      "type": "Button",
+      "enabled": true,
+      "width": 600.0,
+      "height": 120.0
+    },
+    {
+      "name": "Diagnostic Consent",
+      "type": "Toggle",
+      "enabled": true,
+      "width": 112.0,
+      "height": 112.0
+    },
+    {
+      "name": "Message",
+      "type": "InputField",
+      "enabled": true,
+      "width": 620.0,
+      "height": 490.0
+    },
+    {
+      "name": "Back",
+      "type": "Button",
+      "enabled": true,
+      "width": 180.0,
+      "height": 112.0
+    },
+    {
+      "name": "Category",
+      "type": "Dropdown",
+      "enabled": true,
+      "width": 570.0,
+      "height": 120.0
+    }
+  ]
+}

@@ -1,0 +1,158 @@
+{
+  "utc": "2026-11-04T01:46:50.1200173Z",
+  "scene": "MainMenu",
+  "screen": [
+    844,
+    390
+  ],
+  "language": "ko",
+  "labels": [
+    {
+      "name": "Cloud heading",
+      "text": "클라우드",
+      "size": 28,
+      "width": 610.0,
+      "height": 44.8,
+      "preferredHeight": 40.158638,
+      "overflow": "Truncate"
+    },
+    {
+      "name": "Provider heading",
+      "text": "로그인 연결",
+      "size": 28,
+      "width": 610.0,
+      "height": 44.8,
+      "preferredHeight": 40.158638,
+      "overflow": "Truncate"
+    },
+    {
+      "name": "Account state",
+      "text": "오프라인",
+      "size": 32,
+      "width": 610.0,
+      "height": 62.0,
+      "preferredHeight": 42.6685524,
+      "overflow": "Truncate"
+    },
+    {
+      "name": "Label",
+      "text": "도움말 및 의견",
+      "size": 32,
+      "width": 568.0,
+      "height": 104.0,
+      "preferredHeight": 42.6685524,
+      "overflow": "Truncate"
+    },
+    {
+      "name": "Label",
+      "text": "Google Play Games 연결",
+      "size": 32,
+      "width": 568.0,
+      "height": 104.0,
+      "preferredHeight": 42.6685524,
+      "overflow": "Truncate"
+    },
+    {
+      "name": "Support ID",
+      "text": "—",
+      "size": 28,
+      "width": 610.0,
+      "height": 62.0,
+      "preferredHeight": 40.158638,
+      "overflow": "Truncate"
+    },
+    {
+      "name": "Label",
+      "text": "뒤로",
+      "size": 30,
+      "width": 160.0,
+      "height": 100.0,
+      "preferredHeight": 40.158638,
+      "overflow": "Truncate"
+    },
+    {
+      "name": "Support ID heading",
+      "text": "문의 ID",
+      "size": 28,
+      "width": 610.0,
+      "height": 44.8,
+      "preferredHeight": 40.158638,
+      "overflow": "Truncate"
+    },
+    {
+      "name": "Title",
+      "text": "계정",
+      "size": 44,
+      "width": 600.0,
+      "height": 70.4,
+      "preferredHeight": 62.74787,
+      "overflow": "Truncate"
+    },
+    {
+      "name": "Provider",
+      "text": "Google Play Games 연결 안 됨",
+      "size": 32,
+      "width": 610.0,
+      "height": 62.0,
+      "preferredHeight": 42.6685524,
+      "overflow": "Truncate"
+    },
+    {
+      "name": "Label",
+      "text": "개인정보 처리방침",
+      "size": 32,
+      "width": 248.0,
+      "height": 104.0,
+      "preferredHeight": 42.6685524,
+      "overflow": "Truncate"
+    },
+    {
+      "name": "Cloud",
+      "text": "온라인 기능을 사용할 수 없어요.\n오프라인 플레이는 가능합니다.",
+      "size": 32,
+      "width": 620.0,
+      "height": 100.0,
+      "preferredHeight": 82.8271942,
+      "overflow": "Truncate"
+    },
+    {
+      "name": "Account state heading",
+      "text": "계정 상태",
+      "size": 28,
+      "width": 610.0,
+      "height": 44.8,
+      "preferredHeight": 40.158638,
+      "overflow": "Truncate"
+    }
+  ],
+  "controls": [
+    {
+      "name": "Help",
+      "type": "Button",
+      "enabled": true,
+      "width": 600.0,
+      "height": 120.0
+    },
+    {
+      "name": "Back",
+      "type": "Button",
+      "enabled": true,
+      "width": 180.0,
+      "height": 112.0
+    },
+    {
+      "name": "Connect",
+      "type": "Button",
+      "enabled": false,
+      "width": 600.0,
+      "height": 120.0
+    },
+    {
+      "name": "Privacy",
+      "type": "Button",
+      "enabled": true,
+      "width": 280.0,
+      "height": 120.0
+    }
+  ]
+}
