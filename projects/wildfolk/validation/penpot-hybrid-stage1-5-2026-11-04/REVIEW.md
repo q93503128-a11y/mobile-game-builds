@@ -21,6 +21,7 @@ The candidate is to use Modern Adventure's structure, Forest Utility's legibilit
 - Re-fetched `origin/main`; local and remote were both `58c56328d7ac4f09209dd733c567fb2c69318fc3` at start.
 - Re-read the Stage 1.5 attachment, project instructions, README, Stage 1 review/resume, and UI design handoff. Ran the Product Design user-context preflight; no saved plugin context exists, so the repository and supplied screenshots remain the grounding sources.
 - Added a token/component proposal, current input contract, two 844×390 combat-layout principles, future control-editor state and persistence spec, and Unity handoff boundaries in the companion documents.
+- The documentation-only checkpoint was pushed to `main` as `1494c02c9510f2ab91891745daed9fa45cfb56ec`; local and remote matched and the worktree was clean at 20:59:31 KST. This is not the final design commit.
 - Penpot read-only calls after the initial successful read repeatedly returned `The Penpot plugin tab appears to be suspended by the browser (no heartbeat for 52s)`. The user had already reported a green MCP dot and visible canvas. This design checkpoint did not manipulate the browser or call Windows input tools.
 
 ## Planned boards still required

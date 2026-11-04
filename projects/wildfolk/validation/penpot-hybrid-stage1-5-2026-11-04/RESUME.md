@@ -43,6 +43,6 @@ Status: **IN PROGRESS.** Do not treat this checkpoint as an approved or complete
 
 ## Time and usage
 
-- Current continuation start: **2026-11-04 20:24:19 KST** (recorded at handoff).
-- Checkpoint time and elapsed duration must be updated from the clock when the session ends; do not estimate.
+- Current continuation: **2026-11-04 20:24:19–20:59:31 KST**, elapsed **35m 12s**.
+- Documentation checkpoint `1494c02c9510f2ab91891745daed9fa45cfb56ec` was pushed to `main`; local `HEAD == origin/main` and the worktree was clean at **2026-11-04 20:59:31 KST**. This records the documentation checkpoint only, not completion of the Penpot design.
 - Per-phase model token usage is not exposed by the available tools; do not invent counts.
