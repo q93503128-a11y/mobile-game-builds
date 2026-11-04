@@ -8,6 +8,7 @@ Status: **in progress**. This is a handoff checkpoint, not the final review. No 
 - Project: `projects/wildfolk/`
 - The requested deliverable is three distinct editable Penpot directions (Forest Utility, Crafted Survival, Modern Adventure), with main menu, HUD, inventory, 844×390 checks, reusable local components, comparative review, and an explicit user selection at the end.
 - Remote `main` was fetched at the start of the earlier resumed session at `51bf83a9967e81d0c8b33d61e1d93b8ba069aeff`. Its handoff checkpoint is now committed as `b760594eb4910cb35192ca4166ea280425b2fa57`; this follow-up fetched `main` and confirmed both `HEAD` and `origin/main` at that SHA before work.
+- The latest continuation fetched `main` again and confirmed `HEAD` and `origin/main` both at `31ecdb763bc612764d451e3c4312578840236201` before checking Penpot.
 - Unity/game source and content were not changed.
 - Working directly on `main`; no branch or PR.
 
@@ -83,13 +84,14 @@ Exports previously returned by the Penpot tool were viewed in-session; no local 
 - The user previously replied `Penpot 탭 깨우기` after being asked to wake the tab.
 - In the previous resumed session, a read-only Penpot MCP request failed with: “The Penpot plugin tab appears to be suspended by the browser (no heartbeat for 470s).” No Penpot changes were made in that session.
 - In the 2026-11-04 follow-up, the user confirmed the file status had been green and refreshed the Penpot tab. The subsequent read and export requests still failed with suspended-tab heartbeat ages of 70s, 131s, and 205s. No design changes were made in this follow-up either.
+- In the next continuation, the user confirmed the canvas was visible and the tab would stay active. A read-only request still failed with “no heartbeat for 555s.” No Penpot edits or exports succeeded in that continuation. The MCP connection dot's state is being checked separately from the file-save indicator.
 - Windows mouse/keyboard/Computer Use and Unity Focus/Show are prohibited by `projects/wildfolk/AGENTS.md`; the agent did not manipulate the browser window.
 - The user reported a green file status before the refresh; status after the refresh has not been read. Do not claim the latest Penpot state is saved or safe to close until the live status is confirmed.
 - Penpot documents autosaved versions in its [workspace guide](https://help.penpot.app/user-guide/designing/workspace-basics/) and a file status indicator in its [interface guide](https://help.penpot.app/user-guide/first-steps/the-interface/).
 
 ## Next session
 
-1. Keep the Penpot tab open and in the foreground. The user has already refreshed after seeing the green saved indicator, but MCP still reported no heartbeat; wake the tab again and keep it active until the MCP responds. Do not refresh or close it while the latest save status is unknown.
+1. Keep the Penpot tab open and in the foreground. The user refreshed after seeing the green saved indicator and confirmed the canvas is visible, but MCP still reported no heartbeat. Check the separate MCP connection indicator and restore the bridge; do not refresh or close the tab while the latest save status is unknown.
 2. Read the current page/board tree and saved status from the existing file before making changes.
 3. Correct the B inventory-slot component's item contrast, then export and visually inspect the full-size and responsive boards listed above.
 4. Save preview exports and a concise evidence manifest under this validation folder. Do not claim screens were reviewed unless the exported pixels were actually inspected.
@@ -101,4 +103,5 @@ Exports previously returned by the Penpot tool were viewed in-session; no local 
 - Previous active session: start **2026-11-04 14:37:25 KST**, checkpoint **2026-11-04 15:19:16 KST**, elapsed **41m 51s**.
 - Previous resumed session: start **2026-11-04 17:40:43 KST**, checkpoint **2026-11-04 17:44:50 KST**, elapsed **4m 07s**. Work was limited to remote-main verification, handoff update, checkpoint push, and a Penpot reconnection attempt; the Penpot MCP remained suspended.
 - This follow-up session: start **2026-11-04 18:05:48 KST**, checkpoint **2026-11-04 18:11:35 KST**, elapsed **5m 47s**. Work was limited to fetching/reviewing the latest main and existing project/design instructions, attempting read-only Penpot checks/exports after the user's refresh, waiting for a foreground-tab wake, and updating this handoff. The Penpot heartbeat remained unavailable; no design changes were made.
+- Latest continuation: start **2026-11-04 18:14:16 KST**, checkpoint **2026-11-04 18:15:34 KST**, elapsed **1m 18s**. Fetched/reviewed latest main, checked project instructions and design handoff, retried a read-only Penpot request after the user kept the canvas visible, and updated this handoff. MCP remained unavailable; no Penpot changes were made.
 - Phase-level start/end times were not separately sampled; no per-phase durations are estimated.
