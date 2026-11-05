@@ -1,0 +1,88 @@
+{
+  "project": "Lowfire / Wildfolk",
+  "phase": "2A.2 World-Art Harmony",
+  "generatedOn": "2026-11-05",
+  "baseMainSha": "07219ed5edf050666d80253cc6027cc6f80b417f",
+  "sharedDevPlaybookMainSha": "e022e9e4ff3947fcbd7f5b0237c5905d7c0409c7",
+  "previewsAreUnityCaptures": false,
+  "previewBackground": "Reconstructed from canonical current MainMenu sprites and FrontendSceneBuilder.Background() placement; no Phase 2A/2A.1 generated concept background used.",
+  "currentMainMenuSource": [
+    {
+      "path": "projects/wildfolk/client/Assets/Wildfolk/Editor/FrontendSceneBuilder.cs",
+      "sha256": "8309a11b84a495cc62897ca9e616857b7f566580839dba29c37faa594b0f9372"
+    },
+    {
+      "path": "projects/wildfolk/client/Assets/Wildfolk/Editor/WorldArt.cs",
+      "sha256": "474e45c7a38277c88adca827a69733b0b6aac614e2ca1593a5ae90588880c526"
+    },
+    {
+      "path": "projects/wildfolk/client/Assets/Wildfolk/Runtime/UI/HomeScreen.cs",
+      "sha256": "a20873ecc09d02ad594ffb784f81d30898eb3b7927b1708d26bcb763820df3fd"
+    },
+    {
+      "path": "projects/wildfolk/client/Assets/Wildfolk/Editor/VisualArtImporter.cs",
+      "sha256": "1bffcc55bd7696a69cb8b310c3bd56263522e66d807fd75ac3a968be6350e12b"
+    }
+  ],
+  "directUnityGameViewEvidence": [
+    {
+      "path": "projects/wildfolk/validation/penpot-ui-ux-audit-2026-11-04/evidence/live/home-v2-ko-1920.png",
+      "sha256": "b097fa104558e81de6daf18d35fb942aa8328c594bcf3dcff7ebcfe69d4de98c",
+      "capturedUtc": "2026-11-04T01:44:44.4506764Z",
+      "viewport": [1920, 1080],
+      "locale": "ko",
+      "scene": "MainMenu",
+      "saveState": "No saved world; actual legacy journal UI visible"
+    },
+    {
+      "path": "projects/wildfolk/validation/penpot-ui-ux-audit-2026-11-04/evidence/live/home-v2-ko-1280.png",
+      "sha256": "fdd5563673d29d8130032449327448836b53e31f1331284c705ee431dc892e7e",
+      "capturedUtc": "2026-11-04T01:45:25.2077293Z",
+      "viewport": [1280, 720],
+      "locale": "ko",
+      "scene": "MainMenu",
+      "saveState": "No saved world; actual legacy journal UI visible"
+    },
+    {
+      "path": "projects/wildfolk/validation/penpot-ui-ux-audit-2026-11-04/evidence/live/home-v2-ko-844.png",
+      "sha256": "e4e1e6b172a94a87f93b55215ffda071ebb3c2cb5d028bc21c53cb5fde9db8d2",
+      "capturedUtc": "2026-11-04T01:46:05.5535966Z",
+      "viewport": [844, 390],
+      "locale": "ko",
+      "scene": "MainMenu",
+      "saveState": "No saved world; actual legacy journal UI visible"
+    }
+  ],
+  "worldAndBrandAssets": [
+    {"path":"projects/wildfolk/client/Assets/Wildfolk/Art/ground.png","sha256":"3c783ae065dac2f84fb2b56d6261ab3a565ff6ac6852a1779242e192f535a17f"},
+    {"path":"projects/wildfolk/client/Assets/Wildfolk/Art/tree_oak.png","sha256":"f23e31d2bd72bdbde7dbcdcf6641cba9104ee31702247635ca2b378beaad5072"},
+    {"path":"projects/wildfolk/client/Assets/Wildfolk/Art/tree_olive.png","sha256":"74091ef4a8c2676f273d93e063638e0e8f4838036bc2c87fc385a5515ccba49c"},
+    {"path":"projects/wildfolk/client/Assets/Wildfolk/Art/campfire.png","sha256":"678317e5fce565ae0925771bd6ff1102fef5af90a55950484278c6dea87b5a2a"},
+    {"path":"projects/wildfolk/client/Assets/Wildfolk/Art/fallen_log.png","sha256":"dcae75bce8d7d053f579e650a0aea9ec1f9ad92b723adceafc85d2e6d30fbfbe"},
+    {"path":"projects/wildfolk/client/Assets/Wildfolk/Art/storage_chest.png","sha256":"7773735ae6858aa1e2c1669d653580faba42ecb24415ac8e4599f80845298b0c"},
+    {"path":"projects/wildfolk/client/Assets/Wildfolk/Art/workbench.png","sha256":"9e9ae13ba9a515369ada0ff59a435c07bd9eff620a81886f25c7543a2a35efd5"},
+    {"path":"projects/wildfolk/client/Assets/Wildfolk/Art/rock_wide.png","sha256":"1af0adcf8c33a01f0d545a34acf609ac421703a2ace214af7d76d3061bac2fa5"},
+    {"path":"projects/wildfolk/client/Assets/Wildfolk/Art/rock_split.png","sha256":"8b65a82b43d8f38619415a36bccf1af27be69b5a7b0cd4e157cbc90f1aa24a70"},
+    {"path":"projects/wildfolk/client/Assets/Wildfolk/Art/grass.png","sha256":"f1df0428c4f5c7962a0367643a31eb7ca8d2421d3f99eb42e94ccecec39ca614"},
+    {"path":"projects/wildfolk/client/Assets/Wildfolk/Art/contact_shadow.png","sha256":"7cfb3e8509862ae6c00aaa60e6f2388b2b2dddd06529ad637ece4793b0e96ed3"},
+    {"path":"projects/wildfolk/client/Assets/Wildfolk/Art/lowfire_wordmark.png","sha256":"bb217dae25eef6429cd8f5ecd1cf79d5856d0a3bafc66335fa4c8c6c300e3bd6"},
+    {"path":"projects/wildfolk/client/Assets/Wildfolk/Art/ui_play.png","sha256":"e0cf99fde5250c3b2bb43044d82bbdd4f27b4d0d7dd2c689540ebb7e41c635e2"},
+    {"path":"projects/wildfolk/client/Assets/Wildfolk/Art/ui_next.png","sha256":"f085faf95b0e45597009fd62d95cedd49a0ba6a0e503c192d9ec721169f62a73"},
+    {"path":"projects/wildfolk/client/Assets/Wildfolk/Art/ui_users.png","sha256":"5b317faa43a274c598a1684acf4ef4609382923d68b32659f840b91b5b59b91c"},
+    {"path":"projects/wildfolk/client/Assets/Wildfolk/Art/ui_settings.png","sha256":"229c6f3b77e591300ef94bd618d94f7f98446305fdccbe56c6e3dbafe0cf4df6"},
+    {"path":"projects/wildfolk/client/Assets/Wildfolk/Art/ui_profile.png","sha256":"cfd96e1793dfa4a6b50080c6f1b1ff7ee3d6a88f212218e2c0040ed3edb4c3a9"},
+    {"path":"projects/wildfolk/client/Assets/Wildfolk/Art/ui_award.png","sha256":"7ddf5ad7e98f08293ab77ba741c1129327af0a3e0e9b52f59dc7d7b295771d0a"},
+    {"path":"projects/wildfolk/client/Assets/Wildfolk/Art/ui_calendar.png","sha256":"76ebb660c2b9827a120e94728a0d828c7f242e65f8fccea87cc129fd71b9505a"},
+    {"path":"projects/wildfolk/client/Assets/Wildfolk/Art/journal_gem.png","sha256":"5da8bea18c60247fae624a6d24a74846c4be44082212860cd77dd30ed1d6c88b"}
+  ],
+  "outputs": {
+    "editableSvgCount": 16,
+    "pngSurfaceCount": 16,
+    "screenSimulationCount": 36,
+    "abComparisonCount": 6,
+    "buttonStateComparisonCount": 1
+  },
+  "font": "System NotoSansKR-VF.ttf via System.Drawing; not bundled",
+  "phase2aGeneratedConceptBackgroundUsed": false,
+  "unityProjectModified": false
+}
