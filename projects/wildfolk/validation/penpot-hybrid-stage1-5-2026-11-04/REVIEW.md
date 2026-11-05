@@ -62,3 +62,9 @@ The user's screenshot showed the Penpot file open on Page 06 and the MCP indicat
 ## 2026-11-05 resumed batch read / markup
 
 After the user reopened the Penpot MCP plugin, a single batched read succeeded: revision 28, all 10 pages, 9 existing components, and the three Page 06 Korean menu boards (56 objects each). `generateMarkup()` produced 79,379 characters for the existing 844×390 board, but later calls to persist/render that markup again failed with no-heartbeat errors. No local SVG/PNG preview or new Penpot object was created; pixels and save status remain unverified.
+
+## 2026-11-05 mobile menu pixel review
+
+`previews/hybrid-main-menu-844.png` is a corrected 844×390 render from Penpot's SVG markup with the actual concept backdrop and wordmark inlined from Penpot `ImageData`. Pixel review confirms the narrow menu's text and 44px lower action targets fit within the board; the Single Player sublabel was removed at this width to prevent overlap. This is a local render of Penpot markup, not an `export_shape` artifact or Android-device verification.
+
+`previews/hybrid-main-menu-1920.png` and `previews/hybrid-main-menu-1280.png` are intermediate renders of the existing larger boards. They exposed excessive lower panel space, overlapping Single Player title/subtitle, a platform-specific Multiplayer command glyph, and dark-green Achievements/Attendance buttons that imply selection. The corrective call did not run when MCP suspended. The larger boards are not final candidates, and the overall Stage 1.5 design remains in progress.
