@@ -1,0 +1,11 @@
+{
+  "source": "assets/svg",
+  "exporter": "source/export-menu-surfaces.ps1",
+  "rasterScale": 2,
+  "buttonCanvasPx": [720, 240],
+  "buttonSliceBorderPx": { "left": 96, "right": 96, "top": 56, "bottom": 56 },
+  "dialogCanvasPx": [720, 520],
+  "dialogSliceBorderPx": { "left": 64, "right": 64, "top": 64, "bottom": 64 },
+  "states": ["primary-default", "primary-pressed", "primary-disabled", "secondary-default", "secondary-selected", "secondary-pressed", "secondary-disabled"],
+  "textBakedIntoAssets": false
+}
