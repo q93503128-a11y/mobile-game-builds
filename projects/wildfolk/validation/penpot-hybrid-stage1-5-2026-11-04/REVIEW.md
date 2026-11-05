@@ -51,3 +51,6 @@ The Penpot API was responsive for several read/import calls and menu-board creat
 ## 2026-11-05 reconnect/export retry
 
 After the user reconnected Penpot, a read confirmed file revision 28, all 10 pages, the 9 original components, and the three Stage 1.5 menu boards (56 children each). The PNG export attempt for the 1920×1080 board and a separate SVG export attempt for the 844×390 board each timed out after 120 seconds. The plugin then returned to suspended/no-heartbeat state. No export artifact was saved and no visual inspection was performed. Avoid further `export_shape` attempts until a different rendering path is verified. The menu frames remain server-visible at revn 28, but the file save indicator was not inspected.
+## 2026-11-05 reconnect status
+
+A fresh Git fetch confirmed `main == origin/main == ec34f0f0bf849ab20a32015a0f0274e66b2b7e03` before this checkpoint. The user reconnected Penpot, but its MCP `execute_code` endpoint still returned `browser suspended / no heartbeat for 150s`. This attempt was read-only and made no Penpot changes. The three existing menu boards remain the last confirmed design state; their save state and rendered pixels remain unverified. Resume only after a read-only Penpot query succeeds, and re-query the current file before creating or changing any objects.

@@ -82,3 +82,10 @@ Status: **IN PROGRESS.** Do not treat this checkpoint as an approved or complete
 - No Penpot geometry was changed during this retry. Menu boards remain server-visible at revision 28; file save indicator was not read.
 - Possible next render path to investigate: `penpot.generateMarkup([board], { type: 'svg' })` (official API returns markup string), then render the returned SVG offline only if the output preserves the actual Penpot frame and assets. Do not claim it is an official PNG export unless it is.
 - The current reconnect turn's start time was not separately sampled; do not estimate elapsed time.
+## 2026-11-05 reconnect check — 09:21 KST
+
+- The user requested continuation after reconnecting Penpot. Git was fetched first; local `main` and `origin/main` both matched `ec34f0f0bf849ab20a32015a0f0274e66b2b7e03`, with a clean worktree.
+- The Penpot high-level API overview was available, but a read-only `execute_code` query failed: `browser suspended / no heartbeat for 150s`. The project/file/page/revision state could not be re-read in this attempt.
+- No Penpot calls that mutate the design were made in this reconnect check. No screen or component was created, edited, exported, or visually verified. Do not infer save status or create duplicates. The last confirmed state remains the three menu boards at revision 28, with no Stage 1.5 preview exports.
+- The Penpot bridge still needs to be actively restarted/reconnected so an `execute_code` read-only query succeeds. Then re-read file revision, pages, Page 06 boards, and library before continuing. Do not use Windows input/Computer Use to wake or manipulate the tab.
+- Phase start: 2026-11-05 09:21:37 KST. Model token usage is unavailable. Record the end time after this checkpoint is committed; do not estimate elapsed time.
