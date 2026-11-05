@@ -5,7 +5,7 @@
 저장소 기준: mobile-game-builds main 3ce07a31f03ac90a9edf5c93e877a2f03cc4ff0a
 공통 규칙 기준: dev-playbook main e022e9e4ff3947fcbd7f5b0237c5905d7c0409c7
 작업 시작: 2026-11-05 13:43:44 KST
-문서 작성·검증 완료: 2026-11-05 14:08:51 KST (시작부터 25분 07초; Git 전송 제외)
+문서 작성·검증 완료: 2026-11-05 14:10:54 KST (시작부터 27분 10초; Git 전송 제외)
 
 ## 결정 요약
 
@@ -44,6 +44,15 @@ Penpot A/B/C 전체 주요 미리보기와 Stage 1.5 미리보기를 열어 비�
 4. 파일럿은 실제 기기에서 터치, 가독성, 안전영역, 장시간 UI 열림 동작을 확인합니다.
 5. 세 파일럿 승인 전 전체 화면 이관이나 컨트롤 저장 스키마 추가를 시작하지 않습니다.
 
-## 다음 단계 권고
+## 다음 단계 — Codex Luna 구현 범위 제안
 
-Codex Luna의 다음 작업 범위는 **새 Unity UI 구현이 아니라 세 파일럿의 구현용 화면 명세와 정적 와이어 검토본**으로 제한합니다. 각 화면에 실제 상태/전이를 연결해 844×390, 1280×720, 1920×1080을 한 세트로 검토하고, 주요 텍스트·터치 영역·safe-area·버튼 우선순위를 확인합니다. 이 제안 자체에 대한 사용자 승인이 먼저 필요합니다.
+사용자가 이 방향과 파일럿 기준을 승인하면 Luna의 첫 구현 작업을 다음으로 제한합니다.
+
+- Main Menu: H01/H02, 기존 FrontendSceneBuilder와 HomeScreen의 표현층
+- Gameplay HUD: G01의 레이아웃 및 G02–G08 컨트롤 배치·시각 상태. 기존 입력 계약은 유지
+- Inventory: I01의 레이아웃/아이템 표시. 기존 36칸·4 장비 슬롯과 I02–I05 상호작용 회귀 확인
+- 정본 작성 지점: FrontendSceneBuilder, GameplayHudBuilder, InventoryUiBuilder와 관련 Runtime UI view. 필요 아트는 ASSET_PRODUCTION_PLAN의 라이선스·원본·9-slice 규칙을 따라 새로 연결
+- 완료 조건: 844×390, 1280×720, 1920×1080 및 EN/KO, 주요 빈/선택/오류/확인 상태; Unity compile 및 해당 기존 회귀; 승인된 Android 기기에서 터치·safe-area 확인
+- 제외: 전체 UI 일괄 이관, 새 컨트롤 편집/저장 schema, 새 기능, Save/Profile/Protocol/Economy/Multiplayer 동작 변경, 배포
+
+이 범위의 구현은 이번 단계에 포함되지 않습니다. 방향·토큰·파일럿 명세에 대한 사용자 승인을 받은 뒤에만 시작합니다.
