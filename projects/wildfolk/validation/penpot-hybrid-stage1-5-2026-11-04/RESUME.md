@@ -74,3 +74,11 @@ Status: **IN PROGRESS.** Do not treat this checkpoint as an approved or complete
 4. Build HUD (1920/1280/844, including actual forest capture on 844), inventory (1920/1280/844), both 844 controls layouts, settings/edit/drag/size/restore states, and component/QA boards.
 5. Create native library components using `penpot.library.local.createComponent(shapes)`. Continue using `shape.resize(w,h)` and attach children with `board.appendChild(shape)`. `createBoard()` already inserts a board at the current page root.
 6. Export the nine requested PNGs, inspect the pixels, update the reports, commit/push on main, verify remote and clean tree. No Unity implementation.
+
+## 2026-11-05 reconnect retry
+
+- The user reconnected Penpot. A successful read reported file `Lowfire — UI Redesign`, `revn=28`, current page 06, 10 total pages, 9 existing library components, and the three KO menu boards with 56 children each. No other Stage 1.5 pages had boards.
+- `mcp__penpot__export_shape` timed out after 120 seconds for both PNG (1920×1080) and SVG (844×390); subsequent `execute_code` calls again reported a suspended tab. No preview files exist. Do not repeat this export path without a reason to expect recovery.
+- No Penpot geometry was changed during this retry. Menu boards remain server-visible at revision 28; file save indicator was not read.
+- Possible next render path to investigate: `penpot.generateMarkup([board], { type: 'svg' })` (official API returns markup string), then render the returned SVG offline only if the output preserves the actual Penpot frame and assets. Do not claim it is an official PNG export unless it is.
+- The current reconnect turn's start time was not separately sampled; do not estimate elapsed time.

@@ -47,3 +47,7 @@ Continue from the existing Stage 1.5 pages when Penpot MCP is responsive. Page 0
 ## 2026-11-05 continuation checkpoint
 
 The Penpot API was responsive for several read/import calls and menu-board creation, then suspended during PNG export. The three menu frames were confirmed with 56 child objects each before the export attempt. The 1920×1080 export timed out after 120 seconds; no Stage 1.5 PNG was saved or visually inspected. The remote main SHA was `7b84cb75ee110372e295be0b1776816793c84782` at start. See `RESUME.md` for current board IDs and continuation steps.
+
+## 2026-11-05 reconnect/export retry
+
+After the user reconnected Penpot, a read confirmed file revision 28, all 10 pages, the 9 original components, and the three Stage 1.5 menu boards (56 children each). The PNG export attempt for the 1920×1080 board and a separate SVG export attempt for the 844×390 board each timed out after 120 seconds. The plugin then returned to suspended/no-heartbeat state. No export artifact was saved and no visual inspection was performed. Avoid further `export_shape` attempts until a different rendering path is verified. The menu frames remain server-visible at revn 28, but the file save indicator was not inspected.
