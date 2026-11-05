@@ -89,3 +89,11 @@ Status: **IN PROGRESS.** Do not treat this checkpoint as an approved or complete
 - No Penpot calls that mutate the design were made in this reconnect check. No screen or component was created, edited, exported, or visually verified. Do not infer save status or create duplicates. The last confirmed state remains the three menu boards at revision 28, with no Stage 1.5 preview exports.
 - The Penpot bridge still needs to be actively restarted/reconnected so an `execute_code` read-only query succeeds. Then re-read file revision, pages, Page 06 boards, and library before continuing. Do not use Windows input/Computer Use to wake or manipulate the tab.
 - Phase start: 2026-11-05 09:21:37 KST. Model token usage is unavailable. Record the end time after this checkpoint is committed; do not estimate elapsed time.
+
+## 2026-11-05 user screenshot — intermittent Penpot MCP
+
+- At 09:27:58 KST, I recorded the connection check: the user's screenshot showed the Lowfire Penpot file open on Page 06 with the MCP indicator green. A read-only `execute_code` query had succeeded and returned file `Lowfire — UI Redesign`, `revn=28`, current page `06 — Stage 1.5 Hybrid Direction`, and all 10 page names.
+- The next read-only query failed with `no heartbeat for 100s`; a batched query for the existing 844×390 menu board plus `generateMarkup()` then failed with `no heartbeat for 135s`.
+- So the screenshot did show an active connection and one API query succeeded; subsequent API heartbeats were intermittent. No Penpot object was changed, no markup/export artifact was produced, and save status/rendered pixels remain unverified.
+- On resume, acknowledge the user's connected state. Re-open/activate the Penpot MCP plugin bridge if needed, then make one batched state read before any mutations. Do not imply that the Penpot file itself is disconnected or ask for a full page reload without checking save state.
+- This continuation's start time was not sampled; elapsed time is intentionally not estimated. Model token usage is unavailable.

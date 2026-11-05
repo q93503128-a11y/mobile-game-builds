@@ -54,3 +54,7 @@ After the user reconnected Penpot, a read confirmed file revision 28, all 10 pag
 ## 2026-11-05 reconnect status
 
 A fresh Git fetch confirmed `main == origin/main == ec34f0f0bf849ab20a32015a0f0274e66b2b7e03` before this checkpoint. The user reconnected Penpot, but its MCP `execute_code` endpoint still returned `browser suspended / no heartbeat for 150s`. This attempt was read-only and made no Penpot changes. The three existing menu boards remain the last confirmed design state; their save state and rendered pixels remain unverified. Resume only after a read-only Penpot query succeeds, and re-query the current file before creating or changing any objects.
+
+## 2026-11-05 connected screenshot / intermittent API
+
+The user's screenshot showed the Penpot file open on Page 06 and the MCP indicator green. A read-only Penpot call succeeded once, confirming `Lowfire — UI Redesign`, revision 28, Page 06, and all 10 pages. The subsequent board-state read and `generateMarkup()` attempt failed with no-heartbeat errors (100s and 135s). This indicates intermittent MCP responsiveness; it does not establish that the user failed to connect. No Penpot edit or export occurred in this retry, and the file save state and pixel rendering are still unverified.
