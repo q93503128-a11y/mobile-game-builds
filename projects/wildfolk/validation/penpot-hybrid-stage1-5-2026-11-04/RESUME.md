@@ -97,3 +97,11 @@ Status: **IN PROGRESS.** Do not treat this checkpoint as an approved or complete
 - So the screenshot did show an active connection and one API query succeeded; subsequent API heartbeats were intermittent. No Penpot object was changed, no markup/export artifact was produced, and save status/rendered pixels remain unverified.
 - On resume, acknowledge the user's connected state. Re-open/activate the Penpot MCP plugin bridge if needed, then make one batched state read before any mutations. Do not imply that the Penpot file itself is disconnected or ask for a full page reload without checking save state.
 - This continuation's start time was not sampled; elapsed time is intentionally not estimated. Model token usage is unavailable.
+
+## 2026-11-05 resumed Penpot batch read
+
+- After the user reopened the MCP plugin, one batched `execute_code` call succeeded in about 8 seconds. It confirmed `revn=28`, Page 06, all 10 pages, 9 library components, and the three existing Korean menu boards (1920×1080, 1280×720, 844×390), each with 56 objects and the same IDs listed above.
+- The same call generated 79,379 characters of SVG markup for the existing 844×390 menu. The markup references hosted Penpot media. This proves the API markup route runs, but the response was not persisted to a local file and no PNG was rendered or inspected.
+- Follow-up calls to save the SVG failed with no-heartbeat errors (145s, then 105s). Do not claim an SVG/PNG artifact exists. The earlier `export_shape` PNG/SVG timeouts remain unresolved.
+- A Node runtime with local filesystem write access is available. On the next live Penpot window, combine markup generation, writing the SVG to temp, and any state read in one outer execution so time is not spent between Penpot calls; render with local headless Chrome and inspect the pixels. Avoid `export_shape` unless there is a new reason to expect it to work.
+- No Penpot design objects were changed in this resumed attempt. Page 06 remains the last confirmed content; Pages 07–09 still need creation work.

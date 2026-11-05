@@ -58,3 +58,7 @@ A fresh Git fetch confirmed `main == origin/main == ec34f0f0bf849ab20a32015a0f02
 ## 2026-11-05 connected screenshot / intermittent API
 
 The user's screenshot showed the Penpot file open on Page 06 and the MCP indicator green. A read-only Penpot call succeeded once, confirming `Lowfire — UI Redesign`, revision 28, Page 06, and all 10 pages. The subsequent board-state read and `generateMarkup()` attempt failed with no-heartbeat errors (100s and 135s). This indicates intermittent MCP responsiveness; it does not establish that the user failed to connect. No Penpot edit or export occurred in this retry, and the file save state and pixel rendering are still unverified.
+
+## 2026-11-05 resumed batch read / markup
+
+After the user reopened the Penpot MCP plugin, a single batched read succeeded: revision 28, all 10 pages, 9 existing components, and the three Page 06 Korean menu boards (56 objects each). `generateMarkup()` produced 79,379 characters for the existing 844×390 board, but later calls to persist/render that markup again failed with no-heartbeat errors. No local SVG/PNG preview or new Penpot object was created; pixels and save status remain unverified.
