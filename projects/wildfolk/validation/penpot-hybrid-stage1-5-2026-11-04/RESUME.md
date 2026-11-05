@@ -6,7 +6,7 @@ Status: **IN PROGRESS.** Do not treat this checkpoint as an approved or complete
 
 - `q93503128-a11y/mobile-game-builds`, `projects/wildfolk/`
 - Current local branch: `main`
-- Remote main at session start: `58c56328d7ac4f09209dd733c567fb2c69318fc3`
+- Remote main at this continuation start: `7b84cb75ee110372e295be0b1776816793c84782`
 - This checkpoint is documentation-only. No Unity/game source, art, save, or runtime settings changed.
 
 ## Penpot
@@ -18,10 +18,10 @@ Status: **IN PROGRESS.** Do not treat this checkpoint as an approved or complete
   - `07 — Mobile Control UX` (`c4251c16-02fe-807f-8008-e4dc49c4f5c1`)
   - `08 — Hybrid Components` (`c4251c16-02fe-807f-8008-e4dc49cb7e2a`)
   - `09 — Stage 1.5 QA` (`c4251c16-02fe-807f-8008-e4dc49cf73b9`)
-- At the last successful read, all four had zero board children. Re-read file/page tree before edits.
-- `storage.hybrid` persists helpers for board, rectangle, text, ellipse, image fills, item-image reuse, icons, and buttons. Existing helpers were inspected and present. A helper lookup using `penpot.library.local.getComponents()` failed because that method does not exist; use the local library `components` property when the bridge is available.
-- The imported Unity capture media is `c6f51e89-5d00-81ce-8008-e4dbd9dc326a`; verify and use it as the actual-forest contrast backdrop after reconnecting.
-- The current toolbar dot was reported green, but API calls failed with a suspended-browser/no-heartbeat error. No browser refresh, tab focus, or computer input was attempted by Codex.
+- At the first successful read of this continuation, all four had zero board children. A first aborted attempt left two empty root objects, which were removed. Three menu boards were then created; IDs and counts are recorded below. Re-read Page 06 before continuing.
+- `storage.hybrid` was empty when this continuation began. A new helper library was attempted, but its shape helpers incorrectly assigned read-only `width`/`height` instead of calling `.resize(width, height)`. Rebuild helpers with `resize`; `penpot.createBoard()` already creates a top-level board, so do not append the returned board to the page root again. Shapes must be resized before `board.appendChild(shape)`. The supported component list is `penpot.library.local.components`; `getComponents()` does not exist.
+- Existing imported Unity capture media is `c6f51e89-5d00-81ce-8008-e4dbd9dc326a`. This continuation uploaded the same raw Unity screenshot again as `542abcb8-15f9-80f7-8008-e582c31d88bd`; it has not been placed on a board. Use either media fill for the 844×390 HUD after reconnecting.
+- At the start of this continuation, Penpot reads succeeded and the user said `continue`. After several calls, the MCP again reported a suspended-browser/no-heartbeat error. Do not use Windows input or Computer Use; ask the user to reconnect the bridge if it remains unavailable.
 
 ## Local files created
 
@@ -46,3 +46,31 @@ Status: **IN PROGRESS.** Do not treat this checkpoint as an approved or complete
 - Current continuation: **2026-11-04 20:24:19–20:59:31 KST**, elapsed **35m 12s**.
 - Documentation checkpoint `1494c02c9510f2ab91891745daed9fa45cfb56ec` was pushed to `main`; local `HEAD == origin/main` and the worktree was clean at **2026-11-04 20:59:31 KST**. This records the documentation checkpoint only, not completion of the Penpot design.
 - Per-phase model token usage is not exposed by the available tools; do not invent counts.
+
+## 2026-11-05 continuation
+
+- Start: **2026-11-05 08:50:43 KST**.
+- Initial repository fetch: `HEAD == origin/main == 7b84cb75ee110372e295be0b1776816793c84782`; worktree clean.
+- The first successful Penpot read this continuation confirmed 10 pages and the original nine library components. Page 06 was subsequently cleaned and now has three menu boards; Pages 07–09 remain empty.
+- `uploadMediaUrl(name, url)` is the correct parameter order. The actual Unity capture upload succeeded with ID `542abcb8-15f9-80f7-8008-e582c31d88bd` using the raw GitHub `main` URL.
+- Current continuation: **2026-11-05 08:50:43–09:06:31 KST**, elapsed **15m 48s**. Model token usage is not available from the tools; do not estimate it.
+### Penpot state at 2026-11-05 checkpoint
+
+- Page 06 `Stage 1.5 Hybrid Direction` has three KO main-menu boards, each with 56 child objects:
+  - 1920×1080: `30c64dc0-bf08-8034-8008-e58395b4c4fc`, position (0, 0).
+  - 1280×720: `30c64dc0-bf08-8034-8008-e58519e44871`, position (0, 1120).
+  - 844×390: `30c64dc0-bf08-8034-8008-e5852defbe15`, position (0, 1900).
+- The menu design uses the existing generated Modern Adventure forest concept image; this is not shipping game art. Menu exports have not been inspected, so layout and text fit are UNVERIFIED.
+- The `mcp__penpot__export_shape` request for the 1920×1080 frame timed out after 120 seconds. No preview PNG was written. Afterward, Penpot calls again reported browser suspended/no heartbeat.
+- No new components exist yet; the 9 existing A/B/C components are intact. Page 07–09 remain empty.
+- The 2026-11-05 capture media upload ID is `542abcb8-15f9-80f7-8008-e582c31d88bd`; use as a `fillImage` after reopening the active session if storage did not persist.
+- Page 06 currently has only the menu boards; the accidental 100×100 root objects from the failed helper were removed.
+
+### Resume sequence
+
+1. Re-fetch `origin/main`, read `AGENTS.md`/README and confirm worktree.
+2. Re-read Penpot page 06 and component library. Confirm save status and current menu board IDs; do not create menu duplicates.
+3. Export a small frame first or use a supported lower-cost export path; visually inspect and correct menu at all three sizes before relying on it. Then save a named recovery version.
+4. Build HUD (1920/1280/844, including actual forest capture on 844), inventory (1920/1280/844), both 844 controls layouts, settings/edit/drag/size/restore states, and component/QA boards.
+5. Create native library components using `penpot.library.local.createComponent(shapes)`. Continue using `shape.resize(w,h)` and attach children with `board.appendChild(shape)`. `createBoard()` already inserts a board at the current page root.
+6. Export the nine requested PNGs, inspect the pixels, update the reports, commit/push on main, verify remote and clean tree. No Unity implementation.
