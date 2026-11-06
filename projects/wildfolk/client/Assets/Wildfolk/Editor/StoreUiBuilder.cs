@@ -38,7 +38,7 @@ namespace Wildfolk.Editor
             s.Retry=JournalUiBuilder.Link(sheet,"Check unfinished","store.recover",new Vector2(-500,-350),new Vector2(480,120),s.Recover,out var retryLabel);retryLabel.fontSize=30;
             s.HelpButton=JournalUiBuilder.Link(sheet,"History","store.history",new Vector2(10,-350),new Vector2(400,120),s.ToggleHistory,out s.HelpLabel);s.HelpLabel.fontSize=30;
             s.SupportButton=JournalUiBuilder.Link(sheet,"Purchase help","store.help",new Vector2(530,-350),new Vector2(400,120),s.Contact,out var supportLabel);supportLabel.fontSize=30;
-            s.Status=JournalUiBuilder.Label(sheet,"Status","",new Vector2(0,310),new Vector2(1460,90),36,TextAnchor.MiddleCenter);s.HistoryView.SetActive(false);s.View.SetActive(false);
+            s.Status=JournalUiBuilder.Label(sheet,"Status","",new Vector2(0,310),new Vector2(1460,90),36,TextAnchor.MiddleCenter);s.HistoryView.SetActive(false);s.View.SetActive(false);FrontendSceneBuilder.ApplyMenuVisuals(meta.Home);
         }
     }
 }

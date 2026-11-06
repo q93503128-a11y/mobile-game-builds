@@ -83,3 +83,22 @@ III 원본 아트: tools/generate_tier_three_art.py(Pillow). 기존 Steel/Lanter
 ## 2026-11-01 탐색 아이콘
 
 메뉴의 ui_play/ui_users/ui_settings/ui_profile/ui_award/ui_calendar/ui_next는 [Lucide](https://lucide.dev/license)의 공식 SVG7개다. 기존 Dash와 같은 ISC/Feather 고지를 Art/Lucide-LICENSE.txt로 유지한다. 원본·정확한 source commit·SHA256·변환 결과는 art-source/navigation-symbols/sources.json에 있다. resvg-js2.6.2로128×128 투명 PNG로 rasterize하고, 단색 stroke는 JournalStyle에서 잉크/종이색으로 tint한다. 엔진·npm package는 제작 환경에만 있고 Unity/player 의존성은 추가하지 않았다. Class는 기존 journal_symbols의 자체 emblem을 재사용한다.
+
+## Main Menu Phase 2B — A Soft Forest · 2026-11-06
+
+`art-source/ui-redesign/main-menu-phase2a2-world-harmony-2026-11-05/`의 편집 가능한 A — Soft Forest SVG와 기존 2× PNG 출력을 그대로 사용했다. 새 픽셀이나 텍스트 베이크는 만들지 않았다. Unity `Art/menu_a_*.png`는 정본 PNG의 이름만 명확히 한 복사본이며, Stage 2A.2 source manifest와 export script를 원본으로 둔다.
+
+| Unity asset | 정본 PNG |
+|---|---|
+| `menu_a_primary_default.png` | `button-primary-default.png` |
+| `menu_a_primary_pressed.png` | `button-primary-pressed.png` |
+| `menu_a_primary_disabled.png` | `button-primary-disabled.png` |
+| `menu_a_secondary_default.png` | `button-secondary-default.png` |
+| `menu_a_secondary_selected.png` | `button-secondary-selected.png` |
+| `menu_a_secondary_pressed.png` | `button-secondary-pressed.png` |
+| `menu_a_secondary_disabled.png` | `button-secondary-disabled.png` |
+| `menu_a_dialog_frame.png` | `dialog-frame.png` |
+
+버튼 표면은 720×240px, 버튼 slice 경계는 좌우96px·상하56px다. 확인 프레임은720×520px, 각 변64px다. SVG/PNG와 manifest는 별도로 남아 있으며, Unity importer는 Sprite/Single, Full Rect mesh, PPU200, alpha, bilinear/clamp, mipmap off, Compressed HQ를 적용한다. Canvas 기준 PPU100에서 2× raster art의 slice가 맞도록 한다. 3× resolution Unity Game View에서 9-slice의 중앙/모서리, frame, KO/EN overflow를 검토했다. 실제 Android 기기 DP/safe area는 미검증이다.
+
+문구와 아이콘은 이미지 안에 굽지 않았다. 기존 `lowfire_wordmark`와 Lucide 계열 navigation sprite, Class emblem, Unity Text/localization, Button callbacks 및 Unity 월드 배경을 유지했다. 이 패스는 외부 게임 asset이나 외부 글꼴/새 라이선스 의존성을 추가하지 않는다. 상세 증거는 [Phase 2B review](../validation/ui-redesign-phase2b-main-menu-2026-11-06/REVIEW.md)다.

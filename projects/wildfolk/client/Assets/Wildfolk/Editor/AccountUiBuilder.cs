@@ -42,7 +42,7 @@ namespace Wildfolk.Editor
             screen.UseCloudButton=Action(page,"Use cloud profile","account.use_cloud",new Vector2(430,100),screen.UseCloud);
             screen.KeepLocalButton=Action(page,"Keep local","account.keep_local",new Vector2(430,-50),screen.KeepLocal);
             page.Find("Back").SetAsLastSibling();Help(safe,screen);Deletion(safe,screen);screen.View.SetActive(false);screen.FeedbackView.SetActive(false);screen.DeleteView.SetActive(false);
-            EditorSceneManager.MarkSceneDirty(scene);EditorSceneManager.SaveScene(scene);AssetDatabase.SaveAssets();
+            FrontendSceneBuilder.ApplyMenuVisuals(home);EditorSceneManager.MarkSceneDirty(scene);EditorSceneManager.SaveScene(scene);AssetDatabase.SaveAssets();
         }
         private static Text Field(Transform page,string name,string heading,float y,out Text label)
         {

@@ -1,3 +1,4 @@
+using System;
 using System.IO;
 using UnityEditor;
 using UnityEngine;
@@ -16,19 +17,27 @@ namespace Wildfolk.Editor
                 var path = file.Replace('\\', '/');
                 if(path==JournalSymbolAssets.Path){JournalSymbolAssets.Import();continue;}
                 var importer = (TextureImporter)AssetImporter.GetAtPath(path);
-                var ppu=Path.GetFileName(path)=="ground.png" ? 2560f/48f : 100f;
-                var border=Path.GetFileName(path)=="panel.png" ? new Vector4(18,18,18,18) : Vector4.zero;
-                if(importer.textureType==TextureImporterType.Sprite && importer.spriteImportMode==SpriteImportMode.Single && Mathf.Approximately(importer.spritePixelsPerUnit,ppu) && importer.alphaIsTransparency && !importer.mipmapEnabled && importer.filterMode==FilterMode.Bilinear && importer.wrapMode==TextureWrapMode.Clamp && importer.textureCompression==TextureImporterCompression.CompressedHQ && importer.maxTextureSize==4096 && importer.spriteBorder==border)continue;
+                var fileName=Path.GetFileName(path);
+                var menuSurface=fileName.StartsWith("menu_a_",StringComparison.Ordinal);
+                // These PNGs are 2x exports. PPU 200 against the Canvas reference PPU 100 keeps their UI-unit borders at half the raster pixels.
+                var ppu=fileName=="ground.png" ? 2560f/48f : menuSurface ? 200f : 100f;
+                var border=fileName=="panel.png" ? new Vector4(18,18,18,18)
+                    : menuSurface && fileName=="menu_a_dialog_frame.png" ? new Vector4(64,64,64,64)
+                    : menuSurface ? new Vector4(96,56,96,56) : Vector4.zero;
+                var settings=new TextureImporterSettings();importer.ReadTextureSettings(settings);
+                var meshReady=!menuSurface||settings.spriteMeshType==SpriteMeshType.FullRect;
+                if(importer.textureType==TextureImporterType.Sprite && importer.spriteImportMode==SpriteImportMode.Single && Mathf.Approximately(importer.spritePixelsPerUnit,ppu) && importer.alphaIsTransparency && !importer.mipmapEnabled && importer.filterMode==FilterMode.Bilinear && importer.wrapMode==TextureWrapMode.Clamp && importer.textureCompression==TextureImporterCompression.CompressedHQ && importer.maxTextureSize==4096 && importer.spriteBorder==border && meshReady)continue;
                 importer.textureType = TextureImporterType.Sprite;
                 importer.spriteImportMode = SpriteImportMode.Single;
-                importer.spritePixelsPerUnit = Path.GetFileName(path) == "ground.png" ? 2560f / 48f : 100f;
+                importer.spritePixelsPerUnit = ppu;
                 importer.alphaIsTransparency = true;
                 importer.mipmapEnabled = false;
                 importer.filterMode = FilterMode.Bilinear;
                 importer.wrapMode = TextureWrapMode.Clamp;
                 importer.textureCompression = TextureImporterCompression.CompressedHQ;
                 importer.maxTextureSize = 4096;
-                if (Path.GetFileName(path) == "panel.png") importer.spriteBorder = new Vector4(18, 18, 18, 18);
+                importer.spriteBorder = border;
+                if(menuSurface){importer.ReadTextureSettings(settings);settings.spriteMeshType=SpriteMeshType.FullRect;importer.SetTextureSettings(settings);}
                 importer.SaveAndReimport();
             }
         }

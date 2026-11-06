@@ -129,7 +129,7 @@ namespace Wildfolk.Editor
             var confirm=QualityUiBuilder.Surface(s.View.transform,"Confirm Purchase",new Vector2(1000,540),out s.Confirmation);
             s.ConfirmText=JournalUiBuilder.Label(confirm.transform,"Price","",new Vector2(0,80),new Vector2(850,210),36,TextAnchor.MiddleCenter);
             JournalUiBuilder.Action(confirm.transform,"Confirm","class.buy",new Vector2(-220,-140),new Vector2(400,126),s.ConfirmPurchase,out _,true);JournalUiBuilder.Action(confirm.transform,"Cancel","ui.action.back",new Vector2(220,-140),new Vector2(400,126),s.CancelPurchase,out _);
-            s.Confirmation.SetActive(false);s.TreeView.SetActive(false);s.View.SetActive(false);
+            s.Confirmation.SetActive(false);s.TreeView.SetActive(false);s.View.SetActive(false);FrontendSceneBuilder.ApplyMenuVisuals(home);
         }
 
         public static void BuildHud(GameObject root,Transform safe,PlayerInventory player)

@@ -1,3 +1,11 @@
+## Main Menu Phase 2B — A Soft Forest · 2026-11-06
+
+MainMenu H01/H02에 승인된 구현 후보 A — Soft Forest의 표면 PNG와 9-slice 규칙을 연결했다. 기존 MainMenu의 실제 Unity 캠프 배경, Lowfire 워드마크, 버튼 오브젝트와 route callback은 유지했다. H01은 저장이 검증되면 Continue를 primary로, 저장이 없으면 Start new world를 primary로 보이며 Single Player·Multiplayer·Class·Settings·Profile·Gem Store·Achievements·Attendance로 이어진다. H02는 기존 세계 교체 확인을 유지하고 취소와 새 세계 시작을 각각 보조/강조 버튼으로 표시한다.
+
+버튼 문구는 기존 `Text`/`LocalizedLabel`을 유지해 KO/EN 실시간 전환을 사용한다. Primary/Secondary/Selected/Pressed/Disabled sprite state를 각각 연결했다. 1000px 미만 화면에는 세로로 쌓인 별도 배치를 적용하고, 844×390·1280×720·1920×1080 Unity Game View에서 H01 no-save/saved와 H02, 두 언어를 캡처했다. 메뉴 경로를 추가하는 account/class/store/economy authoring builder는 공통 비주얼 적용 함수를 호출한다.
+
+실제 QA 저장은 `C:\UnityProjects\Wildfolk\Captures\phase2b-main-menu\world-v1.json`에만 두고 version14를 읽었다. 저장된 H02 취소 후 Home과 같은 저장 파일을 확인했다. 테스트 중 Unity Editor `is_focused=false`였으며 Focus/Show/Windows GUI 입력은 사용하지 않았다. EditMode 2개, 메뉴 PlayMode 회귀 5개와 audio/navigation 회귀 1개가 통과했다. Android 실제 터치·safe-area·실기기 글자 크기는 확인하지 않았다. 이 화면은 사용자의 최종 시각 승인이 남아 있으며 HUD/Inventory는 이 패스에서 바꾸지 않았다. [전체 구현·검증 및 캡처](../validation/ui-redesign-phase2b-main-menu-2026-11-06/REVIEW.md).
+
 ## 현재 Home / UI · 2026-11-02
 
 검증된 저장은 Continue, 저장 없음은 새 세계를 primary로 표시한다. Play/멀티/설정/Profile의 icon+label, Class 행과 별도 Gem·업적·출석 캠프 탐색을 사용한다. chest/fire 간격과 footer 정렬을 조정했다. Class는 개요→tree, MP는 Create/Join→대기실이며 Class 선택은 Home에서 공통 관리한다.

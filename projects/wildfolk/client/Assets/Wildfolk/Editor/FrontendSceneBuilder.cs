@@ -19,6 +19,7 @@ namespace Wildfolk.Editor
         public static void Build()
         {
             if(EditorApplication.isPlaying || SceneManager.GetActiveScene().isDirty)throw new InvalidOperationException("Stop Play Mode and save the scene first.");
+            VisualArtImporter.Import();
             if(SceneManager.GetActiveScene().path!=GameplaySceneBuilder.ScenePath)EditorSceneManager.OpenScene(GameplaySceneBuilder.ScenePath);
             var saves=UnityEngine.Object.FindFirstObjectByType<WorldSaveService>();
             var rules=AssetDatabase.LoadAssetAtPath<SaveGameRules>("Assets/Wildfolk/Resources/SaveGameRules.asset");
@@ -61,8 +62,106 @@ namespace Wildfolk.Editor
             Action(confirm.transform,"Cancel","ui.action.cancel",new Vector2(-230,-205),new Vector2(340,72),home.ShowHome,false);
             Action(confirm.transform,"Start New World","home.new_action",new Vector2(190,-205),new Vector2(400,72),home.BeginNew,true);home.Confirm.SetActive(false);
             var events=new GameObject("EventSystem",typeof(EventSystem),typeof(InputSystemUIInputModule));events.GetComponent<EventSystem>().sendNavigationEvents=false;var input=events.GetComponent<InputSystemUIInputModule>();input.UnassignActions();input.actionsAsset=uiActions;input.point=point;input.leftClick=click;
+            ApplyMenuVisuals(home);
             EditorSceneManager.SaveScene(scene,ScenePath);EditorBuildSettings.scenes=new[]{new EditorBuildSettingsScene(ScenePath,true),new EditorBuildSettingsScene(GameplaySceneBuilder.ScenePath,true),new EditorBuildSettingsScene(MultiplayerSceneBuilder.ScenePath,true)};AssetDatabase.SaveAssets();AccountUiBuilder.Build();
         }
+        [MenuItem("Wildfolk/Apply Main Menu Visual Pilot")]
+        public static void ApplyVisualPilot()
+        {
+            if(EditorApplication.isPlaying||SceneManager.GetActiveScene().isDirty)throw new InvalidOperationException("Stop Play Mode and save the scene first.");
+            var scene=EditorSceneManager.OpenScene(ScenePath);var home=UnityEngine.Object.FindFirstObjectByType<HomeScreen>(FindObjectsInactive.Include);
+            if(home==null)throw new InvalidOperationException("MainMenu has no HomeScreen.");
+            VisualArtImporter.Import();ApplyMenuVisuals(home);EditorSceneManager.MarkSceneDirty(scene);EditorSceneManager.SaveScene(scene);AssetDatabase.SaveAssets();
+        }
+        internal static void ApplyMenuVisuals(HomeScreen home)
+        {
+            if(home==null||home.Menu==null)throw new InvalidOperationException("Home menu references are missing.");
+            home.PrimaryDefault=VisualArtImporter.Sprite("menu_a_primary_default");home.PrimaryPressed=VisualArtImporter.Sprite("menu_a_primary_pressed");home.PrimaryDisabled=VisualArtImporter.Sprite("menu_a_primary_disabled");
+            home.SecondaryDefault=VisualArtImporter.Sprite("menu_a_secondary_default");home.SecondarySelected=VisualArtImporter.Sprite("menu_a_secondary_selected");home.SecondaryPressed=VisualArtImporter.Sprite("menu_a_secondary_pressed");home.SecondaryDisabled=VisualArtImporter.Sprite("menu_a_secondary_disabled");home.DialogFrame=VisualArtImporter.Sprite("menu_a_dialog_frame");
+            var menu=home.Menu.transform;var field=menu.Find("Field Journal") as RectTransform;var records=menu.Find("Camp Records") as RectTransform;
+            if(field==null)throw new InvalidOperationException("MainMenu is missing the Home action container.");
+            ConfigureContainer(field,new Vector2(.51f,.11f),new Vector2(.985f,.89f));
+            var fieldImage=field.GetComponent<Image>();if(fieldImage!=null){fieldImage.enabled=false;fieldImage.raycastTarget=false;}
+            if(records!=null)
+            {
+                ConfigureContainer(records,new Vector2(.04f,.035f),new Vector2(.49f,.19f));
+                var recordsImage=records.GetComponent<Image>();if(recordsImage!=null){recordsImage.enabled=false;recordsImage.raycastTarget=false;}
+            }
+            foreach(Transform child in field)if(child.name=="Page Rule")child.gameObject.SetActive(false);
+
+            var brand=menu.Find("Lowfire")?.GetComponent<Image>();
+            if(brand!=null)
+            {
+                var rect=(RectTransform)brand.transform;rect.anchorMin=rect.anchorMax=new Vector2(.145f,.89f);rect.pivot=Vector2.one*.5f;
+                rect.anchoredPosition=Vector2.zero;rect.sizeDelta=new Vector2(440,132);brand.preserveAspect=true;brand.raycastTarget=false;
+            }
+            var heading=field.Find("Menu Title")??menu.Find("Menu Title");
+            if(heading!=null)
+            {
+                heading.SetParent(field,false);
+                var rect=heading as RectTransform;rect.anchorMin=rect.anchorMax=new Vector2(.5f,1f);rect.pivot=new Vector2(.5f,1f);rect.anchoredPosition=new Vector2(0,-12);rect.sizeDelta=new Vector2(780,58);
+                var text=heading.GetComponent<Text>();text.alignment=TextAnchor.MiddleLeft;text.fontSize=34;text.color=new Color32(245,238,210,255);text.resizeTextForBestFit=true;text.resizeTextMinSize=26;text.resizeTextMaxSize=34;text.verticalOverflow=VerticalWrapMode.Truncate;text.raycastTarget=false;
+            }
+            if(home.Status!=null)
+            {
+                home.Status.transform.SetParent(field,false);var rect=home.Status.rectTransform;rect.anchorMin=rect.anchorMax=new Vector2(.5f,.72f);rect.pivot=Vector2.one*.5f;rect.anchoredPosition=Vector2.zero;rect.sizeDelta=new Vector2(780,46);
+                home.Status.color=new Color32(255,206,164,255);home.Status.fontSize=26;home.Status.alignment=TextAnchor.MiddleCenter;home.Status.resizeTextForBestFit=true;home.Status.resizeTextMinSize=21;home.Status.resizeTextMaxSize=26;home.Status.raycastTarget=false;
+            }
+            if(home.SaveSummary!=null)
+            {home.SaveSummary.color=new Color32(245,238,210,255);home.SaveSummary.alignment=TextAnchor.MiddleCenter;home.SaveSummary.fontSize=30;home.SaveSummary.raycastTarget=false;}
+
+            if(home.ClassButton==null)home.ClassButton=FindButton(field,"Class Journal Entry");
+            home.ProfileButton=FindButton(field,"Account Entry");
+            home.GemStoreButton=records==null?null:FindButton(records,"Gem Balance");
+            home.AchievementButton=records==null?null:FindButton(records,"Direct Achievements");
+            home.AttendanceButton=records==null?null:FindButton(records,"Direct Attendance");
+            ApplyMenuButton(home,home.ContinueButton,true,"ui_next");ApplyMenuButton(home,home.SingleButton,false,"ui_play");
+            ApplyMenuButton(home,home.MultiplayerButton,false,"ui_users");ApplyMenuButton(home,home.SettingsButton,false,"ui_settings");
+            ApplyMenuButton(home,home.ClassButton,false,"class_survivor");ApplyMenuButton(home,home.ProfileButton,false,"ui_profile");
+            ApplyMenuButton(home,home.GemStoreButton,false,"journal_gem");ApplyMenuButton(home,home.AchievementButton,false,"ui_award");ApplyMenuButton(home,home.AttendanceButton,false,"ui_calendar");
+            ApplyConfirmation(home);
+            home.RefreshMenuLayout();
+        }
+        private static void ConfigureContainer(RectTransform rect,Vector2 min,Vector2 max)
+        {rect.anchorMin=min;rect.anchorMax=max;rect.offsetMin=rect.offsetMax=Vector2.zero;rect.pivot=Vector2.one*.5f;}
+        private static Button FindButton(Transform parent,string name)=>parent.Find(name)?.GetComponent<Button>();
+        private static void ApplyMenuButton(HomeScreen home,Button button,bool primary,string iconName)
+        {
+            if(button==null)return;home.SetButtonSurface(button,primary);
+            var surface=button.GetComponent<Image>();if(surface!=null)surface.raycastTarget=true;
+            var icon=button.transform.Find("Action Icon")??button.transform.Find("Navigation Symbol");
+            if(icon!=null)
+            {
+                var image=icon.GetComponent<Image>();if(image!=null){var sprite=VisualArtImporter.Sprite(iconName);if(sprite!=null)image.sprite=sprite;image.color=new Color32(244,238,211,255);image.preserveAspect=true;image.raycastTarget=false;}
+            }
+            var connection=button.transform.Find("Connection");if(connection!=null)connection.gameObject.SetActive(false);
+            var arrow=button.transform.Find("Open");if(arrow!=null)arrow.gameObject.SetActive(false);
+            var label=button.GetComponentInChildren<Text>(true);if(label!=null){label.color=new Color32(244,238,211,255);label.raycastTarget=false;}
+        }
+        private static void ApplyConfirmation(HomeScreen home)
+        {
+            if(home.Confirm==null)return;
+            var frame=FindDeep(home.Confirm.transform,"New World Confirmation");if(frame==null)return;
+            var image=frame.GetComponent<Image>();if(image!=null&&home.DialogFrame!=null){image.sprite=home.DialogFrame;image.type=UnityEngine.UI.Image.Type.Sliced;image.color=Color.white;image.raycastTarget=true;}
+            var matte=FindDeep(frame,"Matte Surface");if(matte!=null){var matteImage=matte.GetComponent<Image>();if(matteImage!=null)matteImage.enabled=false;}
+            var safe=home.Menu.transform.parent as RectTransform;var modal=frame.GetComponent<ModalLayout>();
+            if(modal!=null){modal.SafeArea=safe;modal.ReferenceSize=new Vector2(1760,840);modal.HorizontalReserve=40;modal.TopReserve=32;modal.BottomReserve=32;}
+            var panel=(RectTransform)frame;panel.sizeDelta=new Vector2(1760,840);
+            var title=FindDeep(frame,"Title")?.GetComponent<Text>();
+            if(title!=null){var rect=title.rectTransform;rect.anchorMin=rect.anchorMax=Vector2.one*.5f;rect.anchoredPosition=new Vector2(0,290);rect.sizeDelta=new Vector2(1580,96);title.alignment=TextAnchor.MiddleCenter;title.color=new Color32(245,238,210,255);title.fontSize=54;title.resizeTextForBestFit=true;title.resizeTextMinSize=42;title.resizeTextMaxSize=54;title.verticalOverflow=VerticalWrapMode.Truncate;title.raycastTarget=false;}
+            var body=FindDeep(frame,"Message")?.GetComponent<Text>();
+            if(body!=null){var rect=body.rectTransform;rect.anchorMin=rect.anchorMax=Vector2.one*.5f;rect.anchoredPosition=new Vector2(0,50);rect.sizeDelta=new Vector2(1580,250);body.alignment=TextAnchor.MiddleCenter;body.color=new Color32(245,238,210,255);body.fontSize=36;body.resizeTextForBestFit=true;body.resizeTextMinSize=28;body.resizeTextMaxSize=36;body.verticalOverflow=VerticalWrapMode.Overflow;body.horizontalOverflow=HorizontalWrapMode.Wrap;body.raycastTarget=false;}
+            var cancel=FindDeep(frame,"Cancel")?.GetComponent<Button>();var start=FindDeep(frame,"Start New World")?.GetComponent<Button>();
+            ApplyMenuButton(home,cancel,false,string.Empty);ApplyMenuButton(home,start,true,string.Empty);
+            PlaceDialogButton(cancel,new Vector2(-292,-300),new Vector2(560,132));PlaceDialogButton(start,new Vector2(292,-300),new Vector2(640,132));
+            ArrangeDialogButton(cancel,34);ArrangeDialogButton(start,36);
+        }
+        private static Transform FindDeep(Transform root,string name)
+        {if(root==null)return null;if(root.name==name)return root;foreach(Transform child in root){var result=FindDeep(child,name);if(result!=null)return result;}return null;}
+        private static void PlaceDialogButton(Button button,Vector2 position,Vector2 size)
+        {if(button==null)return;var rect=(RectTransform)button.transform;rect.anchorMin=rect.anchorMax=Vector2.one*.5f;rect.pivot=Vector2.one*.5f;rect.anchoredPosition=position;rect.sizeDelta=size;}
+        private static void ArrangeDialogButton(Button button,int fontSize)
+        {if(button==null)return;var label=button.GetComponentInChildren<Text>(true);if(label==null)return;var rect=label.rectTransform;rect.anchorMin=Vector2.zero;rect.anchorMax=Vector2.one;rect.offsetMin=new Vector2(38,8);rect.offsetMax=new Vector2(-24,-8);label.alignment=TextAnchor.MiddleCenter;label.color=new Color32(245,238,210,255);label.fontSize=fontSize;label.resizeTextForBestFit=true;label.resizeTextMinSize=28;label.resizeTextMaxSize=fontSize;label.horizontalOverflow=HorizontalWrapMode.Overflow;label.verticalOverflow=VerticalWrapMode.Truncate;label.raycastTarget=false;}
         private static readonly Color32 Ink=new Color32(49,63,48,255);
         private static Button JournalAction(Transform parent,string name,string key,Vector2 position,Vector2 size,UnityEngine.Events.UnityAction action,bool primary)
         {
