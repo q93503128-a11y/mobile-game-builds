@@ -1,0 +1,127 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="440" viewBox="0 0 900 440">
+<defs>
+<linearGradient id="woodFace" x1="0" y1="0" x2=".8" y2="1"><stop stop-color="#b17a44"/><stop offset=".42" stop-color="#8a592f"/><stop offset="1" stop-color="#644022"/></linearGradient>
+<linearGradient id="raisedWood" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#c08a50"/><stop offset=".45" stop-color="#986436"/><stop offset="1" stop-color="#704829"/></linearGradient>
+<linearGradient id="plankRun" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#a46e3c"/><stop offset=".32" stop-color="#986136"/><stop offset=".34" stop-color="#7e4e2b"/><stop offset=".68" stop-color="#82512d"/><stop offset=".7" stop-color="#744728"/><stop offset="1" stop-color="#6e4326"/></linearGradient>
+<linearGradient id="slotFace" x1="0" y1="0" x2=".3" y2="1"><stop stop-color="#4a301e"/><stop offset="1" stop-color="#21150e"/></linearGradient>
+<filter id="shadow" x="-20%" y="-20%" width="140%" height="155%"><feGaussianBlur in="SourceAlpha" stdDeviation="2"/><feOffset dy="2"/><feComponentTransfer><feFuncA type="linear" slope=".35"/></feComponentTransfer><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+</defs>
+<rect width="900" height="440" fill="#182019"/>
+<text x="32" y="42" font-family="Segoe UI,sans-serif" font-size="17" font-weight="800" fill="#f0d5a7">LOWFIRE · CARVED WOOD INVENTORY KIT</text>
+<text x="32" y="62" font-family="Segoe UI,sans-serif" font-size="10" fill="#c6a77b">Plank relief, recessed wells, state edge; original vector surfaces for the reference reconstruction</text>
+<path d="M35 87 L416 86 L425 94 L426 401 L418 408 L36 407 L28 399 L29 94 Z" fill="url(#woodFace)" stroke="#170e09" stroke-width="2.2" filter="url(#shadow)"/>
+<path d="M33 93 L39 90 H414 L421 96 V397 L414 403 H40 L33 396 Z" fill="url(#plankRun)" stroke="#cf9a60" stroke-width=".9"/>
+<path d="M35 94 H419 V400 H35 Z" fill="url(#woodgrain)" opacity=".8"/>
+<path d="M36 96 H416" fill="none" stroke="#e0b47a" stroke-width="1.1" opacity=".78"/>
+<path d="M36 398 H416" fill="none" stroke="#382216" stroke-width="1.1" opacity=".85"/>
+<path d="M38 123.455 H416" stroke="#3f2819" stroke-width=".55" opacity=".32"/>
+<path d="M38 150.909 H416" stroke="#3f2819" stroke-width=".55" opacity=".32"/>
+<path d="M38 178.364 H416" stroke="#3f2819" stroke-width=".55" opacity=".32"/>
+<path d="M38 205.818 H416" stroke="#3f2819" stroke-width=".55" opacity=".32"/>
+<path d="M38 233.273 H416" stroke="#3f2819" stroke-width=".55" opacity=".32"/>
+<path d="M38 260.727 H416" stroke="#3f2819" stroke-width=".55" opacity=".32"/>
+<path d="M38 288.182 H416" stroke="#3f2819" stroke-width=".55" opacity=".32"/>
+<path d="M38 315.636 H416" stroke="#3f2819" stroke-width=".55" opacity=".32"/>
+<path d="M38 343.091 H416" stroke="#3f2819" stroke-width=".55" opacity=".32"/>
+<path d="M38 370.545 H416" stroke="#3f2819" stroke-width=".55" opacity=".32"/>
+<path d="M46 101 q7 -2 13 0 t12 0" fill="none" stroke="#342014" stroke-width=".6" opacity=".32"/>
+<path d="M93 120 q7 -2 13 0 t12 0" fill="none" stroke="#342014" stroke-width=".6" opacity=".32"/>
+<path d="M140 139 q7 -2 13 0 t12 0" fill="none" stroke="#342014" stroke-width=".6" opacity=".32"/>
+<path d="M187 158 q7 -2 13 0 t12 0" fill="none" stroke="#342014" stroke-width=".6" opacity=".32"/>
+<circle cx="37" cy="96" r="2.1" fill="#432a19" stroke="#d7a76b" stroke-width=".65"/>
+<path d="M36 96 l2 .4" stroke="#f0c58a" stroke-width=".45" opacity=".7"/>
+<circle cx="416" cy="96" r="2.1" fill="#432a19" stroke="#d7a76b" stroke-width=".65"/>
+<path d="M415 96 l2 .4" stroke="#f0c58a" stroke-width=".45" opacity=".7"/>
+<circle cx="37" cy="398" r="2.1" fill="#432a19" stroke="#d7a76b" stroke-width=".65"/>
+<path d="M36 398 l2 .4" stroke="#f0c58a" stroke-width=".45" opacity=".7"/>
+<circle cx="416" cy="398" r="2.1" fill="#432a19" stroke="#d7a76b" stroke-width=".65"/>
+<path d="M415 398 l2 .4" stroke="#f0c58a" stroke-width=".45" opacity=".7"/>
+<path d="M59 77 H187 L192 81 V92 L187 96 H59 L54 92 V81 Z" fill="url(#raisedWood)" stroke="#170e09" stroke-width="1.3" filter="url(#shadowLite)"/>
+<path d="M59 80 H186" stroke="#e1b77f" stroke-width=".8" opacity=".7"/>
+<text x="123" y="90" font-family="Lowfire" font-size="10" font-weight="800" fill="#f0d5a7" text-anchor="middle" >패널 · 목재 프레임</text>
+<path d="M57 132 H99 L104 137 V179 L99 184 H57 L52 179 V137 Z" fill="#52351f" stroke="#1b100a" stroke-width="1.35"/>
+<path d="M54 137 L58 134 H97 L102 138" fill="none" stroke="#d1a06a" stroke-width="1.35"/>
+<path d="M56 137 H100 V179 H56 Z" fill="#291a10" stroke="#180f09" stroke-width=".8"/>
+<path d="M58 177 q7 -2 13 0 t12 0" fill="none" stroke="#9e7146" stroke-width=".55" opacity=".23"/>
+<path d="M93 142 v3 m-2 0 h4" stroke="#d1a06a" stroke-width=".65" opacity=".42"/>
+<text x="78" y="196" font-family="Segoe UI,sans-serif" font-size="7.2" font-weight="700" fill="#f0d5a7" text-anchor="middle">NORMAL</text>
+<path d="M127 132 H169 L174 137 V179 L169 184 H127 L122 179 V137 Z" fill="#a5582c" stroke="#1b100a" stroke-width="1.35"/>
+<path d="M124 137 L128 134 H167 L172 138" fill="none" stroke="#f2c176" stroke-width="1.35"/>
+<path d="M126 137 H170 V179 H126 Z" fill="#422317" stroke="#180f09" stroke-width=".8"/>
+<path d="M128 177 q7 -2 13 0 t12 0" fill="none" stroke="#9e7146" stroke-width=".55" opacity=".23"/>
+<path d="M163 142 v3 m-2 0 h4" stroke="#d1a06a" stroke-width=".65" opacity=".42"/>
+<path d="M127 132 H169 L174 137 V179 L169 184 H127 L122 179 V137 Z" fill="none" stroke="#f6c976" stroke-width="1.5" filter="url(#amberGlow)"/>
+<path d="M127 136 H168" stroke="#ffe0a5" stroke-width=".8"/>
+<text x="148" y="196" font-family="Segoe UI,sans-serif" font-size="7.2" font-weight="700" fill="#f0d5a7" text-anchor="middle">SELECTED</text>
+<path d="M197 132 H239 L244 137 V179 L239 184 H197 L192 179 V137 Z" fill="#536d3e" stroke="#1b100a" stroke-width="1.35"/>
+<path d="M194 137 L198 134 H237 L242 138" fill="none" stroke="#a7cd79" stroke-width="1.35"/>
+<path d="M196 137 H240 V179 H196 Z" fill="#243520" stroke="#180f09" stroke-width=".8"/>
+<path d="M198 177 q7 -2 13 0 t12 0" fill="none" stroke="#9e7146" stroke-width=".55" opacity=".23"/>
+<path d="M233 142 v3 m-2 0 h4" stroke="#d1a06a" stroke-width=".65" opacity=".42"/>
+<path d="M197 132 H239 L244 137 V179 L239 184 H197 L192 179 V137 Z" fill="none" stroke="#a9d785" stroke-width="1.5" stroke-dasharray="3 1.5"/>
+<text x="218" y="196" font-family="Segoe UI,sans-serif" font-size="7.2" font-weight="700" fill="#f0d5a7" text-anchor="middle">COMPATIBLE</text>
+<path d="M267 133 H309 L314 138 V180 L309 185 H267 L262 180 V138 Z" fill="#2a1b12" stroke="#1b100a" stroke-width="1.35"/>
+<path d="M264 138 L268 135 H307 L312 139" fill="none" stroke="#98704d" stroke-width="1.35"/>
+<path d="M266 138 H310 V180 H266 Z" fill="#1b110b" stroke="#180f09" stroke-width=".8"/>
+<path d="M268 178 q7 -2 13 0 t12 0" fill="none" stroke="#9e7146" stroke-width=".55" opacity=".23"/>
+<path d="M303 143 v3 m-2 0 h4" stroke="#d1a06a" stroke-width=".65" opacity=".42"/>
+<text x="288" y="196" font-family="Segoe UI,sans-serif" font-size="7.2" font-weight="700" fill="#f0d5a7" text-anchor="middle">PRESSED</text>
+<path d="M337 132 H379 L384 137 V179 L379 184 H337 L332 179 V137 Z" fill="#51473c" stroke="#1b100a" stroke-width="1.35"/>
+<path d="M334 137 L338 134 H377 L382 138" fill="none" stroke="#8f806a" stroke-width="1.35"/>
+<path d="M336 137 H380 V179 H336 Z" fill="#342d25" stroke="#180f09" stroke-width=".8"/>
+<path d="M338 177 q7 -2 13 0 t12 0" fill="none" stroke="#9e7146" stroke-width=".55" opacity=".23"/>
+<path d="M373 142 v3 m-2 0 h4" stroke="#d1a06a" stroke-width=".65" opacity=".42"/>
+<path d="M337 132 H379 L384 137 V179 L379 184 H337 L332 179 V137 Z" fill="#80725f" opacity=".28"/>
+<text x="358" y="196" font-family="Segoe UI,sans-serif" font-size="7.2" font-weight="700" fill="#f0d5a7" text-anchor="middle">DISABLED</text>
+<text x="54" y="228" font-family="Segoe UI,sans-serif" font-size="10" font-weight="700" fill="#f0d5a7">CUT PLANK EDGE · RECESSED SLOT BED · STATE OUTLINE</text>
+<path d="M54 244 H390" stroke="#3b2517" stroke-width="1"/>
+<path d="M54 263 Q83 256 116 261 T180 261 M223 276 Q249 271 277 275 T390 275 M66 292 Q93 286 120 291" fill="none" stroke="#e4b77d" stroke-width="1.1" opacity=".38"/>
+<path d="M54 315 H390 M54 341 H390 M54 367 H390" stroke="#4a2e1c" stroke-width=".75" opacity=".58"/>
+<text x="54" y="395" font-family="Segoe UI,sans-serif" font-size="8.4" fill="#c6a77b">Warm wood is functional hierarchy, not rarity: selection is ember; valid drop target is leaf.</text>
+<path d="M463 87 L862 86 L871 94 L872 401 L864 408 L464 407 L456 399 L457 94 Z" fill="url(#woodFace)" stroke="#170e09" stroke-width="2.2" filter="url(#shadow)"/>
+<path d="M461 93 L467 90 H860 L867 96 V397 L860 403 H468 L461 396 Z" fill="url(#plankRun)" stroke="#cf9a60" stroke-width=".9"/>
+<path d="M463 94 H865 V400 H463 Z" fill="url(#woodgrain)" opacity=".8"/>
+<path d="M464 96 H862" fill="none" stroke="#e0b47a" stroke-width="1.1" opacity=".78"/>
+<path d="M464 398 H862" fill="none" stroke="#382216" stroke-width="1.1" opacity=".85"/>
+<path d="M466 123.455 H862" stroke="#3f2819" stroke-width=".55" opacity=".32"/>
+<path d="M466 150.909 H862" stroke="#3f2819" stroke-width=".55" opacity=".32"/>
+<path d="M466 178.364 H862" stroke="#3f2819" stroke-width=".55" opacity=".32"/>
+<path d="M466 205.818 H862" stroke="#3f2819" stroke-width=".55" opacity=".32"/>
+<path d="M466 233.273 H862" stroke="#3f2819" stroke-width=".55" opacity=".32"/>
+<path d="M466 260.727 H862" stroke="#3f2819" stroke-width=".55" opacity=".32"/>
+<path d="M466 288.182 H862" stroke="#3f2819" stroke-width=".55" opacity=".32"/>
+<path d="M466 315.636 H862" stroke="#3f2819" stroke-width=".55" opacity=".32"/>
+<path d="M466 343.091 H862" stroke="#3f2819" stroke-width=".55" opacity=".32"/>
+<path d="M466 370.545 H862" stroke="#3f2819" stroke-width=".55" opacity=".32"/>
+<path d="M474 101 q7 -2 13 0 t12 0" fill="none" stroke="#342014" stroke-width=".6" opacity=".32"/>
+<path d="M521 120 q7 -2 13 0 t12 0" fill="none" stroke="#342014" stroke-width=".6" opacity=".32"/>
+<path d="M568 139 q7 -2 13 0 t12 0" fill="none" stroke="#342014" stroke-width=".6" opacity=".32"/>
+<path d="M615 158 q7 -2 13 0 t12 0" fill="none" stroke="#342014" stroke-width=".6" opacity=".32"/>
+<circle cx="465" cy="96" r="2.1" fill="#432a19" stroke="#d7a76b" stroke-width=".65"/>
+<path d="M464 96 l2 .4" stroke="#f0c58a" stroke-width=".45" opacity=".7"/>
+<circle cx="862" cy="96" r="2.1" fill="#432a19" stroke="#d7a76b" stroke-width=".65"/>
+<path d="M861 96 l2 .4" stroke="#f0c58a" stroke-width=".45" opacity=".7"/>
+<circle cx="465" cy="398" r="2.1" fill="#432a19" stroke="#d7a76b" stroke-width=".65"/>
+<path d="M464 398 l2 .4" stroke="#f0c58a" stroke-width=".45" opacity=".7"/>
+<circle cx="862" cy="398" r="2.1" fill="#432a19" stroke="#d7a76b" stroke-width=".65"/>
+<path d="M861 398 l2 .4" stroke="#f0c58a" stroke-width=".45" opacity=".7"/>
+<path d="M485 77 H637 L642 81 V92 L637 96 H485 L480 92 V81 Z" fill="url(#raisedWood)" stroke="#170e09" stroke-width="1.3" filter="url(#shadowLite)"/>
+<path d="M485 80 H636" stroke="#e1b77f" stroke-width=".8" opacity=".7"/>
+<text x="561" y="90" font-family="Lowfire" font-size="10" font-weight="800" fill="#f0d5a7" text-anchor="middle" >동작 표면 · low profile</text>
+<path d="M494 132 H646 L652 138 V176 L647 182 H493 L488 177 V138 Z" fill="url(#buttonFire)" stroke="#452615" stroke-width="1.4" filter="url(#shadowLite)"/>
+<path d="M495 136 H644" stroke="#f0c68c" stroke-width=".85" opacity=".75"/>
+<text x="570" y="161.08" font-family="Lowfire" font-size="12" font-weight="800" fill="#f0d5a7" text-anchor="middle" >장착</text>
+<path d="M681 132 H837 L843 138 V176 L838 182 H680 L675 177 V138 Z" fill="url(#buttonWood)" stroke="#352215" stroke-width="1.4" filter="url(#shadowLite)"/>
+<path d="M682 136 H835" stroke="#f0c68c" stroke-width=".85" opacity=".75"/>
+<text x="759" y="161.08" font-family="Lowfire" font-size="12" font-weight="800" fill="#f2d7aa" text-anchor="middle" >나누기</text>
+<path d="M494 209 H646 L652 215 V253 L647 259 H493 L488 254 V215 Z" fill="url(#buttonDown)" stroke="#22160d" stroke-width="1.4" filter="url(#shadowLite)"/>
+<path d="M495 213 H644" stroke="#f0c68c" stroke-width=".85" opacity=".75"/>
+<text x="570" y="238.08" font-family="Lowfire" font-size="12" font-weight="800" fill="#f2d7aa" text-anchor="middle" >눌림</text>
+<path d="M681 208 H837 L843 214 V252 L838 258 H680 L675 253 V214 Z" fill="url(#buttonDisabled)" stroke="#70604f" stroke-width="1.4" filter="url(#shadowLite)"/>
+<path d="M682 212 H835" stroke="#f0c68c" stroke-width=".85" opacity=".75"/>
+<text x="759" y="237.08" font-family="Lowfire" font-size="12" font-weight="800" fill="#f2d7aa" text-anchor="middle" >비활성</text>
+<text x="488" y="292" font-family="Segoe UI,sans-serif" font-size="9" fill="#f0d5a7">Primary/secondary actions use the same carved face.</text>
+<text x="488" y="311" font-family="Segoe UI,sans-serif" font-size="9" fill="#c6a77b">Pressed sinks into the wood; disabled removes edge contrast.</text>
+<text x="488" y="330" font-family="Segoe UI,sans-serif" font-size="9" fill="#c6a77b">No rarity meaning is attached to slot colors or rim tones.</text>
+<text x="488" y="366" font-family="Segoe UI,sans-serif" font-size="8" fill="#dfc296">Source: Lowfire-specific SVG; no Core Keeper texture or icon copied.</text>
+</svg>
