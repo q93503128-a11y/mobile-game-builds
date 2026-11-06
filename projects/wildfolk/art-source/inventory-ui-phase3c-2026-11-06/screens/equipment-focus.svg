@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="844" height="390" viewBox="0 0 844 390">
+<defs>
+<linearGradient id="canvas" x1="0" y1="0" x2="0.9" y2="1"><stop stop-color="#f2e9ce"/><stop offset=".52" stop-color="#e7d9b4"/><stop offset="1" stop-color="#d9c79e"/></linearGradient>
+<linearGradient id="wood" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#a77b50"/><stop offset=".45" stop-color="#865d3c"/><stop offset="1" stop-color="#64452f"/></linearGradient>
+<linearGradient id="well" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#607354"/><stop offset="1" stop-color="#435840"/></linearGradient>
+<linearGradient id="wellSelected" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#795239"/><stop offset="1" stop-color="#553f31"/></linearGradient>
+<linearGradient id="creamButton" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#f4e8c6"/><stop offset="1" stop-color="#d9c59a"/></linearGradient>
+<linearGradient id="primaryButton" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#d97d4c"/><stop offset="1" stop-color="#aa5337"/></linearGradient>
+<pattern id="canvasGrain" width="28" height="20" patternUnits="userSpaceOnUse"><path d="M1 4h6M15 13h8M5 18h2" stroke="#b7a47c" stroke-width=".65" opacity=".25"/><circle cx="19" cy="5" r=".7" fill="#fbf1d3" opacity=".55"/></pattern>
+<pattern id="woodGrain" width="42" height="14" patternUnits="userSpaceOnUse"><path d="M0 4C8 2 15 6 23 4s12-2 19 0M6 10c7-2 13 1 20 0" fill="none" stroke="#3f3024" stroke-width=".7" opacity=".28"/></pattern>
+<filter id="shadow" x="-30%" y="-30%" width="160%" height="170%"><feGaussianBlur in="SourceAlpha" stdDeviation="3"/><feOffset dy="2"/><feComponentTransfer><feFuncA type="linear" slope=".24"/></feComponentTransfer><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+<filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="2.4" result="blur"/><feColorMatrix in="blur" type="matrix" values="1 0 0 0 .65 0 1 0 0 .27 0 0 1 0 .08 0 0 0 .45 0" result="tint"/><feMerge><feMergeNode in="tint"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+<style>@font-face{font-family:Lowfire;src:url("../../../client/Assets/Wildfolk/Resources/NotoSansKR.ttf") format("truetype");font-weight:100 900} text{font-family:Lowfire,"Malgun Gothic","Segoe UI",sans-serif}</style>
+</defs>
+<image href="../../../docs/images/lowfire-player-world-armor.png" x="0" y="0" width="844" height="390" preserveAspectRatio="xMidYMid slice" opacity="1"/>
+<rect width="844" height="390" fill="#17241d" opacity=".32"/>
+<rect width="844" height="390" fill="url(#canvasGrain)" opacity=".13"/>
+<path d="M24 8 Q28 5 38 7 L277 7 Q282 8 282 14 L282 46 Q278 51 270 51 L35 51 Q25 49 24 43 Z" fill="url(#canvas)" stroke="#354737" stroke-width="1.6" filter="url(#shadow)"/>
+<path d="M30 12 Q38 10 44 11 H267 Q275 12 275 16 V41 Q273 46 265 46 H38 Q30 45 30 40 Z" fill="none" stroke="#b39c6b" stroke-width="0.8" stroke-dasharray="2.2 3.1" opacity=".84"/>
+<image href="../../../client/Assets/Wildfolk/Art/campfire.png" x="36" y="14" width="28" height="28" preserveAspectRatio="xMidYMid meet" opacity="1"/>
+<text x="70" y="31" font-size="16" fill="#27372e" font-weight="800" text-anchor="start" letter-spacing="0">야영 배낭</text>
+<text x="71" y="44" font-size="9.5" fill="#7a8064" font-weight="650" text-anchor="start" letter-spacing="0">가방 27  ·  빠른 슬롯 9</text>
+<path d="M320 15 Q323 13 328 15 H540 Q546 16 546 22 V36 Q545 42 540 42 H327 Q320 41 320 36 Z" fill="url(#creamButton)" stroke="#8c7652" stroke-width="1" />
+<text x="433" y="32" font-size="9.5" fill="#27372e" font-weight="700" text-anchor="middle" letter-spacing="0">정적 시안 · 조작 미검증</text>
+<path d="M591 9 H659 Q666 10 665 17 V44 Q664 52 657 51 H592 Q584 50 585 43 V16 Q586 9 591 9 Z" fill="url(#creamButton)" stroke="#77533a" stroke-width="1.4" filter="url(#shadow)"/>
+<path d="M591 9 H659 Q666 10 665 17 V44 Q664 52 657 51 H592 Q584 50 585 43 V16 Q586 9 591 9 Z" fill="url(#canvasGrain)" stroke="none" stroke-width="0" opacity=".38"/>
+<text x="625" y="34" font-size="12" fill="#27372e" font-weight="750" text-anchor="middle" letter-spacing="0">가방</text>
+<path d="M679 9 H747 Q754 10 753 17 V44 Q752 52 745 51 H680 Q672 50 673 43 V16 Q674 9 679 9 Z" fill="url(#wood)" stroke="#c96b43" stroke-width="1.4" filter="url(#shadow)"/>
+<path d="M679 9 H747 Q754 10 753 17 V44 Q752 52 745 51 H680 Q672 50 673 43 V16 Q674 9 679 9 Z" fill="url(#woodGrain)" stroke="none" stroke-width="0" opacity=".38"/>
+<text x="713" y="34" font-size="12" fill="#f0e6c9" font-weight="750" text-anchor="middle" letter-spacing="0">장비</text>
+<path d="M780 8 H812 Q820 8 820 16 V44 Q820 52 812 52 H780 Q772 52 772 44 V16 Q772 8 780 8 Z" fill="url(#creamButton)" stroke="#77533a" stroke-width="1.4" filter="url(#shadow)"/>
+<path d="M780 8 H812 Q820 8 820 16 V44 Q820 52 812 52 H780 Q772 52 772 44 V16 Q772 8 780 8 Z" fill="url(#canvasGrain)" stroke="none" stroke-width="0" opacity=".34"/>
+<path d="M779 13 H813" stroke="#fff3d4" stroke-width=".9" opacity=".44"/>
+<text x="796" y="34" font-size="22" fill="#27372e" font-weight="750" text-anchor="middle" letter-spacing="0">×</text>
+<path d="M34 65 Q41 62 53 65 L324 65 Q334 66 334 76 L335 361 Q334 372 323 373 L39 374 Q27 373 26 363 L25 77 Q25 67 34 65 Z" fill="url(#canvas)" stroke="#27372e" stroke-width="1.4" filter="url(#shadow)"/>
+<path d="M34 65 Q41 62 53 65 L324 65 Q334 66 334 76 L335 361 Q334 372 323 373 L39 374 Q27 373 26 363 L25 77 Q25 67 34 65 Z" fill="url(#canvasGrain)" stroke="none" stroke-width="0" opacity=".52"/>
+<path d="M32 72 L328 72 L329 366 L33 367 Z" fill="none" stroke="#77533a" stroke-width=".8" stroke-dasharray="2.5 4" opacity=".8"/>
+<circle cx="34" cy="75" r="2.1" fill="#a77a4f" stroke="#e8dbb7" stroke-width=".6"/>
+<circle cx="326" cy="75" r="2.1" fill="#a77a4f" stroke="#e8dbb7" stroke-width=".6"/>
+<text x="180" y="83" font-size="11" fill="#27372e" font-weight="800" text-anchor="middle" letter-spacing="0">현재 장비</text>
+<text x="322" y="83" font-size="9" fill="#7a8064" font-weight="700" text-anchor="end" letter-spacing="0">방어 6</text>
+<circle cx="180" cy="190" r="42" fill="#e5d4aa" stroke="#77533a" stroke-width="2.2" filter="url(#shadow)"/>
+<circle cx="180" cy="190" r="36" fill="#617252" stroke="#e8dbb7" stroke-width="1.3"/>
+<defs><clipPath id="avatar-144-154"><circle cx="180" cy="190" r="34"/></clipPath></defs>
+<image href="../../../docs/images/lowfire-player-world-armor.png" x="-354.462" y="-106.308" width="1063.38" height="598.154" preserveAspectRatio="none" clip-path="url(#avatar-144-154)"/>
+<circle cx="180" cy="190" r="35" fill="none" stroke="#e8dbb7" stroke-width="2.2"/>
+<path d="M158 101 H203 L208 107 V151 L202 157 H157 L152 151 V107 Z" fill="#93a36a" stroke="#3d583d" stroke-width="1.5" filter="url(#shadow)"/>
+<path d="M158 104 H201 L205 108 V150 L201 154 H159 L155 150 V108 Z" fill="#405a42" stroke="#d6deaa" stroke-width="0.75" />
+<path d="M160 106 H198" stroke="#fff4d7" stroke-width=".8" opacity=".42"/>
+<path d="M156 112v4m48 30v4" stroke="#c6ad7c" stroke-width=".8" opacity=".46"/>
+<image href="../../../client/Assets/Wildfolk/Art/iron_head.png" x="162" y="106" width="36" height="36" preserveAspectRatio="xMidYMid meet" opacity="1"/>
+<text x="180" y="96" font-size="9.5" fill="#27372e" font-weight="750" text-anchor="middle" letter-spacing="0">머리</text>
+<path d="M252 157 H297 L302 163 V207 L296 213 H251 L246 207 V163 Z" fill="url(#wood)" stroke="#593d2c" stroke-width="1.5" filter="url(#shadow)"/>
+<path d="M252 160 H295 L299 164 V206 L295 210 H253 L249 206 V164 Z" fill="url(#well)" stroke="#ddcfaa" stroke-width="0.75" />
+<path d="M254 162 H292" stroke="#fff4d7" stroke-width=".8" opacity=".42"/>
+<path d="M250 168v4m48 30v4" stroke="#c6ad7c" stroke-width=".8" opacity=".46"/>
+<image href="../../../client/Assets/Wildfolk/Art/iron_body.png" x="256" y="162" width="36" height="36" preserveAspectRatio="xMidYMid meet" opacity="1"/>
+<text x="274" y="152" font-size="9.5" fill="#27372e" font-weight="750" text-anchor="middle" letter-spacing="0">몸</text>
+<path d="M158 244 H203 L208 250 V294 L202 300 H157 L152 294 V250 Z" fill="url(#wood)" stroke="#593d2c" stroke-width="1.5" filter="url(#shadow)"/>
+<path d="M158 247 H201 L205 251 V293 L201 297 H159 L155 293 V251 Z" fill="url(#well)" stroke="#ddcfaa" stroke-width="0.75" />
+<path d="M160 249 H198" stroke="#fff4d7" stroke-width=".8" opacity=".42"/>
+<path d="M156 255v4m48 30v4" stroke="#c6ad7c" stroke-width=".8" opacity=".46"/>
+<image href="../../../client/Assets/Wildfolk/Art/lantern.png" x="162" y="249" width="36" height="36" preserveAspectRatio="xMidYMid meet" opacity="1"/>
+<text x="180" y="311" font-size="9.5" fill="#27372e" font-weight="750" text-anchor="middle" letter-spacing="0">도구</text>
+<path d="M64 157 H109 L114 163 V207 L108 213 H63 L58 207 V163 Z" fill="url(#wood)" stroke="#593d2c" stroke-width="1.5" filter="url(#shadow)"/>
+<path d="M64 160 H107 L111 164 V206 L107 210 H65 L61 206 V164 Z" fill="url(#well)" stroke="#ddcfaa" stroke-width="0.75" />
+<path d="M66 162 H104" stroke="#fff4d7" stroke-width=".8" opacity=".42"/>
+<path d="M62 168v4m48 30v4" stroke="#c6ad7c" stroke-width=".8" opacity=".46"/>
+<path d="M75 186h24" fill="none" stroke="paper3" stroke-width="1.4" stroke-linecap="round" opacity=".9"/>
+<text x="86" y="152" font-size="9.5" fill="#27372e" font-weight="750" text-anchor="middle" letter-spacing="0">장신구</text>
+<path d="M180 157 L180 154" fill="none" stroke="#77533a" stroke-width="1.2" opacity="1"/>
+<path d="M216 190 L246 185" fill="none" stroke="#77533a" stroke-width="1.1" opacity="1"/>
+<path d="M144 190 L114 174" fill="none" stroke="#77533a" stroke-width="1.1" opacity="1"/>
+<path d="M180 226 L180 244" fill="none" stroke="#77533a" stroke-width="1.1" opacity="1"/>
+<path d="M360 65 Q367 62 379 65 L808 65 Q818 66 818 76 L819 205 Q818 216 807 217 L365 218 Q353 217 352 207 L351 77 Q351 67 360 65 Z" fill="url(#canvas)" stroke="#27372e" stroke-width="1.4" filter="url(#shadow)"/>
+<path d="M360 65 Q367 62 379 65 L808 65 Q818 66 818 76 L819 205 Q818 216 807 217 L365 218 Q353 217 352 207 L351 77 Q351 67 360 65 Z" fill="url(#canvasGrain)" stroke="none" stroke-width="0" opacity=".52"/>
+<path d="M358 72 L812 72 L813 210 L359 211 Z" fill="none" stroke="#77533a" stroke-width=".8" stroke-dasharray="2.5 4" opacity=".8"/>
+<circle cx="360" cy="75" r="2.1" fill="#a77a4f" stroke="#e8dbb7" stroke-width=".6"/>
+<circle cx="810" cy="75" r="2.1" fill="#a77a4f" stroke="#e8dbb7" stroke-width=".6"/>
+<text x="368" y="88" font-size="11" fill="#27372e" font-weight="800" text-anchor="start" letter-spacing="0">가방에서 선택한 장비</text>
+<circle cx="403" cy="147" r="32" fill="#52654a" stroke="#77533a" stroke-width="1.4"/>
+<image href="../../../client/Assets/Wildfolk/Art/steel_head.png" x="380" y="124" width="46" height="46" preserveAspectRatio="xMidYMid meet" opacity="1"/>
+<text x="439" y="137" font-size="15" fill="#27372e" font-weight="800" text-anchor="start" letter-spacing="0">강철 투구</text>
+<text x="439" y="156" font-size="9.5" fill="#7a8064" font-weight="700" text-anchor="start" letter-spacing="0">머리 장비  ·  1개</text>
+<text x="439" y="179" font-size="11" fill="#27372e" font-weight="750" text-anchor="start" letter-spacing="0">방어력  2  →  3</text>
+<text x="439" y="197" font-size="9" fill="#526a4f" font-weight="800" text-anchor="start" letter-spacing="0">현재 철 투구보다 +1</text>
+<path d="M360 231 Q367 228 379 231 L808 231 Q818 232 818 242 L819 361 Q818 372 807 373 L365 374 Q353 373 352 363 L351 243 Q351 233 360 231 Z" fill="url(#wood)" stroke="#27372e" stroke-width="1.4" filter="url(#shadow)"/>
+<path d="M360 231 Q367 228 379 231 L808 231 Q818 232 818 242 L819 361 Q818 372 807 373 L365 374 Q353 373 352 363 L351 243 Q351 233 360 231 Z" fill="url(#woodGrain)" stroke="none" stroke-width="0" opacity=".52"/>
+<path d="M358 238 L812 238 L813 366 L359 367 Z" fill="none" stroke="#c6ad7c" stroke-width=".8" stroke-dasharray="2.5 4" opacity=".8"/>
+<circle cx="360" cy="241" r="2.1" fill="#a77a4f" stroke="#e8dbb7" stroke-width=".6"/>
+<circle cx="810" cy="241" r="2.1" fill="#a77a4f" stroke="#e8dbb7" stroke-width=".6"/>
+<text x="362" y="255" font-size="10" fill="#f0e6c9" font-weight="750" text-anchor="start" letter-spacing="0">머리 슬롯 대상</text>
+<text x="812" y="255" font-size="8.5" fill="#e8dbb7" font-weight="600" text-anchor="end" letter-spacing="0">선택 유지 · 가방으로 돌아가도 후보 보존</text>
+<path d="M368 276 H548 Q556 276 556 284 V316 Q556 324 548 324 H368 Q360 324 360 316 V284 Q360 276 368 276 Z" fill="url(#primaryButton)" stroke="#713e2e" stroke-width="1.4" filter="url(#shadow)"/>
+<path d="M368 276 H548 Q556 276 556 284 V316 Q556 324 548 324 H368 Q360 324 360 316 V284 Q360 276 368 276 Z" fill="url(#woodGrain)" stroke="none" stroke-width="0" opacity=".34"/>
+<path d="M367 281 H549" stroke="#fff3d4" stroke-width=".9" opacity=".44"/>
+<text x="458" y="299" font-size="13" fill="#f0e6c9" font-weight="750" text-anchor="middle" letter-spacing="0">장착</text>
+<text x="458" y="312" font-size="8.5" fill="#f0e6c9" font-weight="600" text-anchor="middle" letter-spacing="0">선택한 강철 투구</text>
+<path d="M578 276 H798 Q806 276 806 284 V316 Q806 324 798 324 H578 Q570 324 570 316 V284 Q570 276 578 276 Z" fill="url(#creamButton)" stroke="#77533a" stroke-width="1.4" filter="url(#shadow)"/>
+<path d="M578 276 H798 Q806 276 806 284 V316 Q806 324 798 324 H578 Q570 324 570 316 V284 Q570 276 578 276 Z" fill="url(#canvasGrain)" stroke="none" stroke-width="0" opacity=".34"/>
+<path d="M577 281 H799" stroke="#fff3d4" stroke-width=".9" opacity=".44"/>
+<text x="688" y="299" font-size="10.5" fill="#27372e" font-weight="750" text-anchor="middle" letter-spacing="0">현재 머리 슬롯 해제</text>
+<text x="688" y="312" font-size="8.5" fill="#27372e" font-weight="600" text-anchor="middle" letter-spacing="0">빈 가방 칸이 필요합니다</text>
+<text x="360" y="350" font-size="9" fill="#f0e6c9" font-weight="650" text-anchor="start" letter-spacing="0">장착: 가방 아이템을 선택 → 장비 화면 → 장착</text>
+<text x="360" y="365" font-size="8.5" fill="#e8dbb7" font-weight="600" text-anchor="start" letter-spacing="0">해제: 장착 슬롯을 선택 → 해제  ·  드래그 해제도 지원</text>
+</svg>

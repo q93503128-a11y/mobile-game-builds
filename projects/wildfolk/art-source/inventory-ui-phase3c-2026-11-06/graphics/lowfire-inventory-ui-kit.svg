@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="430" viewBox="0 0 900 430">
+<defs><linearGradient id="canvas" x1="0" y1="0" x2=".8" y2="1"><stop stop-color="#f2e9ce"/><stop offset=".55" stop-color="#e7d9b4"/><stop offset="1" stop-color="#d9c79e"/></linearGradient><linearGradient id="wood" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#a77b50"/><stop offset="1" stop-color="#64452f"/></linearGradient><linearGradient id="well" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#607354"/><stop offset="1" stop-color="#435840"/></linearGradient><linearGradient id="wellSelected" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#795239"/><stop offset="1" stop-color="#553f31"/></linearGradient><linearGradient id="primaryButton" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#d97d4c"/><stop offset="1" stop-color="#aa5337"/></linearGradient><filter id="shadow" x="-30%" y="-30%" width="160%" height="170%"><feGaussianBlur in="SourceAlpha" stdDeviation="3"/><feOffset dy="2"/><feComponentTransfer><feFuncA type="linear" slope=".24"/></feComponentTransfer><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter><filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="2.4" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter><pattern id="canvasGrain" width="28" height="20" patternUnits="userSpaceOnUse"><path d="M1 4h6M15 13h8M5 18h2" stroke="#b7a47c" stroke-width=".65" opacity=".25"/></pattern><pattern id="woodGrain" width="42" height="14" patternUnits="userSpaceOnUse"><path d="M0 4C8 2 15 6 23 4s12-2 19 0M6 10c7-2 13 1 20 0" fill="none" stroke="#3f3024" stroke-width=".7" opacity=".28"/></pattern></defs>
+<rect width="900" height="430" fill="#405343"/>
+<text x="32" y="44" font-size="17" fill="#f0e6c9" font-weight="800" text-anchor="start" letter-spacing="1.4">LOWFIRE · FIELD KIT MATERIALS</text>
+<text x="32" y="68" font-size="11" fill="#e8dbb7" font-weight="600" text-anchor="start" letter-spacing="0">One tactile language across trays, item wells, selection and action</text>
+<path d="M42 95 Q49 92 61 95 L410 95 Q420 96 420 106 L421 365 Q420 376 409 377 L47 378 Q35 377 34 367 L33 107 Q33 97 42 95 Z" fill="url(#canvas)" stroke="#27372e" stroke-width="1.4" filter="url(#shadow)"/>
+<path d="M42 95 Q49 92 61 95 L410 95 Q420 96 420 106 L421 365 Q420 376 409 377 L47 378 Q35 377 34 367 L33 107 Q33 97 42 95 Z" fill="url(#canvasGrain)" stroke="none" stroke-width="0" opacity=".52"/>
+<path d="M40 102 L414 102 L415 370 L41 371 Z" fill="none" stroke="#77533a" stroke-width=".8" stroke-dasharray="2.5 4" opacity=".8"/>
+<circle cx="42" cy="105" r="2.1" fill="#a77a4f" stroke="#e8dbb7" stroke-width=".6"/>
+<circle cx="412" cy="105" r="2.1" fill="#a77a4f" stroke="#e8dbb7" stroke-width=".6"/>
+<text x="58" y="127" font-size="10" fill="#27372e" font-weight="800" text-anchor="start" letter-spacing="0">CAMP CANVAS / 9-SLICE PANEL</text>
+<text x="58" y="150" font-size="9" fill="#7a8064" font-weight="600" text-anchor="start" letter-spacing="0">Inset stitching · asymmetrical shoulder · visible grain</text>
+<text x="58" y="190" font-size="12" fill="#27372e" font-weight="800" text-anchor="start" letter-spacing="0">Item wells</text>
+<path d="M64 204 H103 L108 210 V248 L102 254 H63 L58 248 V210 Z" fill="url(#wood)" stroke="#593d2c" stroke-width="1.5" filter="url(#shadow)"/>
+<path d="M64 207 H101 L105 211 V247 L101 251 H65 L61 247 V211 Z" fill="url(#well)" stroke="#ddcfaa" stroke-width="0.75" />
+<path d="M66 209 H98" stroke="#fff4d7" stroke-width=".8" opacity=".42"/>
+<path d="M62 215v4m42 24v4" stroke="#c6ad7c" stroke-width=".8" opacity=".46"/>
+<text x="83" y="265" font-size="7.5" fill="#27372e" font-weight="700" text-anchor="middle" letter-spacing="0">NORMAL</text>
+<path d="M130 204 H169 L174 210 V248 L168 254 H129 L124 248 V210 Z" fill="url(#primaryButton)" stroke="#783f2d" stroke-width="1.5" filter="url(#glow)"/>
+<path d="M130 207 H167 L171 211 V247 L167 251 H131 L127 247 V211 Z" fill="url(#wellSelected)" stroke="#f0bd78" stroke-width="0.75" />
+<path d="M132 209 H164" stroke="#fff4d7" stroke-width=".8" opacity=".42"/>
+<path d="M128 215v4m42 24v4" stroke="#c6ad7c" stroke-width=".8" opacity=".46"/>
+<text x="149" y="265" font-size="7.5" fill="#27372e" font-weight="700" text-anchor="middle" letter-spacing="0">SELECTED</text>
+<path d="M196 204 H235 L240 210 V248 L234 254 H195 L190 248 V210 Z" fill="#93a36a" stroke="#3d583d" stroke-width="1.5" filter="url(#shadow)"/>
+<path d="M196 207 H233 L237 211 V247 L233 251 H197 L193 247 V211 Z" fill="#405a42" stroke="#d6deaa" stroke-width="0.75" />
+<path d="M198 209 H230" stroke="#fff4d7" stroke-width=".8" opacity=".42"/>
+<path d="M194 215v4m42 24v4" stroke="#c6ad7c" stroke-width=".8" opacity=".46"/>
+<text x="215" y="265" font-size="7.5" fill="#27372e" font-weight="700" text-anchor="middle" letter-spacing="0">TARGET</text>
+<path d="M262 204 H301 L306 210 V248 L300 254 H261 L256 248 V210 Z" fill="#74563c" stroke="#4c3b2d" stroke-width="1.5" filter="url(#shadow)"/>
+<path d="M262 207 H299 L303 211 V247 L299 251 H263 L259 247 V211 Z" fill="#304434" stroke="#ad9b71" stroke-width="0.75" />
+<path d="M264 209 H296" stroke="#fff4d7" stroke-width=".8" opacity=".42"/>
+<path d="M260 215v4m42 24v4" stroke="#c6ad7c" stroke-width=".8" opacity=".46"/>
+<text x="281" y="265" font-size="7.5" fill="#27372e" font-weight="700" text-anchor="middle" letter-spacing="0">PRESSED</text>
+<path d="M328 204 H367 L372 210 V248 L366 254 H327 L322 248 V210 Z" fill="#abae98" stroke="#868c74" stroke-width="1.5" opacity=".58"/>
+<path d="M328 207 H365 L369 211 V247 L365 251 H329 L325 247 V211 Z" fill="#c6c2a5" stroke="#d7d2b7" stroke-width="0.75" />
+<path d="M330 209 H362" stroke="#fff4d7" stroke-width=".8" opacity=".42"/>
+<path d="M326 215v4m42 24v4" stroke="#c6ad7c" stroke-width=".8" opacity=".46"/>
+<text x="347" y="265" font-size="7.5" fill="#27372e" font-weight="700" text-anchor="middle" letter-spacing="0">DISABLED</text>
+<text x="58" y="302" font-size="8.7" fill="#7a8064" font-weight="650" text-anchor="start" letter-spacing="0">Cut-stone corners · recessed moss · quantity overlay</text>
+<text x="58" y="319" font-size="8" fill="#7a8064" font-weight="600" text-anchor="start" letter-spacing="0">Selected and target states change material depth as well as color.</text>
+<path d="M466 95 Q473 92 485 95 L856 95 Q866 96 866 106 L867 365 Q866 376 855 377 L471 378 Q459 377 458 367 L457 107 Q457 97 466 95 Z" fill="url(#wood)" stroke="#27372e" stroke-width="1.4" filter="url(#shadow)"/>
+<path d="M466 95 Q473 92 485 95 L856 95 Q866 96 866 106 L867 365 Q866 376 855 377 L471 378 Q459 377 458 367 L457 107 Q457 97 466 95 Z" fill="url(#woodGrain)" stroke="none" stroke-width="0" opacity=".52"/>
+<path d="M464 102 L860 102 L861 370 L465 371 Z" fill="none" stroke="#c6ad7c" stroke-width=".8" stroke-dasharray="2.5 4" opacity=".8"/>
+<circle cx="466" cy="105" r="2.1" fill="#a77a4f" stroke="#e8dbb7" stroke-width=".6"/>
+<circle cx="858" cy="105" r="2.1" fill="#a77a4f" stroke="#e8dbb7" stroke-width=".6"/>
+<text x="481" y="127" font-size="10" fill="#f0e6c9" font-weight="800" text-anchor="start" letter-spacing="0">CARVED WOOD / ACTION SURFACES</text>
+<text x="481" y="150" font-size="9" fill="#e8dbb7" font-weight="600" text-anchor="start" letter-spacing="0">Warm edge + quiet etched grain; no ornamental gold frame</text>
+<path d="M492 180 H640 Q648 180 648 188 V220 Q648 228 640 228 H492 Q484 228 484 220 V188 Q484 180 492 180 Z" fill="url(#primaryButton)" stroke="#713e2e" stroke-width="1.4" filter="url(#shadow)"/>
+<path d="M492 180 H640 Q648 180 648 188 V220 Q648 228 640 228 H492 Q484 228 484 220 V188 Q484 180 492 180 Z" fill="url(#woodGrain)" stroke="none" stroke-width="0" opacity=".34"/>
+<path d="M491 185 H641" stroke="#fff3d4" stroke-width=".9" opacity=".44"/>
+<text x="566" y="203" font-size="13" fill="#f0e6c9" font-weight="750" text-anchor="middle" letter-spacing="0">장착</text>
+<text x="566" y="216" font-size="8.5" fill="#f0e6c9" font-weight="600" text-anchor="middle" letter-spacing="0">선택한 장비</text>
+<path d="M668 180 H824 Q832 180 832 188 V220 Q832 228 824 228 H668 Q660 228 660 220 V188 Q660 180 668 180 Z" fill="url(#creamButton)" stroke="#77533a" stroke-width="1.4" filter="url(#shadow)"/>
+<path d="M668 180 H824 Q832 180 832 188 V220 Q832 228 824 228 H668 Q660 228 660 220 V188 Q660 180 668 180 Z" fill="url(#canvasGrain)" stroke="none" stroke-width="0" opacity=".34"/>
+<path d="M667 185 H825" stroke="#fff3d4" stroke-width=".9" opacity=".44"/>
+<text x="746" y="208" font-size="10.5" fill="#27372e" font-weight="750" text-anchor="middle" letter-spacing="0">월드에 버리기</text>
+<path d="M492 245 H640 Q648 245 648 253 V285 Q648 293 640 293 H492 Q484 293 484 285 V253 Q484 245 492 245 Z" fill="url(#wellSelected)" stroke="#47362c" stroke-width="1.4" filter="url(#shadow)"/>
+<path d="M492 245 H640 Q648 245 648 253 V285 Q648 293 640 293 H492 Q484 293 484 285 V253 Q484 245 492 245 Z" fill="url(#woodGrain)" stroke="none" stroke-width="0" opacity=".34"/>
+<path d="M491 250 H641" stroke="#fff3d4" stroke-width=".9" opacity=".44"/>
+<text x="566" y="273" font-size="11" fill="#f0e6c9" font-weight="750" text-anchor="middle" letter-spacing="0">눌림 상태</text>
+<path d="M668 244 H824 Q832 244 832 252 V284 Q832 292 824 292 H668 Q660 292 660 284 V252 Q660 244 668 244 Z" fill="#b8b5a0" stroke="#898a71" stroke-width="1.4" filter="url(#shadow)"/>
+<path d="M668 244 H824 Q832 244 832 252 V284 Q832 292 824 292 H668 Q660 292 660 284 V252 Q660 244 668 244 Z" fill="url(#canvasGrain)" stroke="none" stroke-width="0" opacity=".34"/>
+<path d="M667 249 H825" stroke="#fff3d4" stroke-width=".9" opacity=".44"/>
+<text x="746" y="272" font-size="11" fill="#6e7565" font-weight="750" text-anchor="middle" letter-spacing="0">비활성 상태</text>
+<text x="484" y="329" font-size="8.5" fill="#f0e6c9" font-weight="600" text-anchor="start" letter-spacing="0">Pressed: 1 px inset / lower value</text>
+<text x="484" y="346" font-size="8.5" fill="#e8dbb7" font-weight="600" text-anchor="start" letter-spacing="0">Disabled: lower contrast / no response implied</text>
+<text x="484" y="364" font-size="8.5" fill="#e8dbb7" font-weight="600" text-anchor="start" letter-spacing="0">All control labels describe existing Lowfire actions.</text>
+</svg>
