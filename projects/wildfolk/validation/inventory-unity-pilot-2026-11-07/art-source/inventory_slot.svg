@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128">
+  <defs>
+    <linearGradient id="edge" x2="0" y2="1"><stop stop-color="#9b704b"/><stop offset=".52" stop-color="#705039"/><stop offset="1" stop-color="#493022"/></linearGradient>
+    <linearGradient id="well" x2="0" y2="1"><stop stop-color="#2c211b"/><stop offset=".55" stop-color="#352820"/><stop offset="1" stop-color="#241a15"/></linearGradient>
+  </defs>
+  <path d="M13 3H115L125 13V115L115 125H13L3 115V13Z" fill="#17110e" fill-opacity=".72"/>
+  <path d="M13 3H115L125 13V115L115 125H13L3 115V13Z" fill="url(#edge)" stroke="#b18255" stroke-width="2"/>
+  <path d="M16 10H112L118 16V112L112 118H16L10 112V16Z" fill="#201711" stroke="#4b3425" stroke-width="2"/>
+  <path d="M21 16H107L112 21V107L107 112H21L16 107V21Z" fill="url(#well)" stroke="#7a593c" stroke-width="1.4"/>
+  <path d="M22 18H106" stroke="#d0a071" stroke-opacity=".16" stroke-width="1"/>
+  <path d="M22 110H106" stroke="#100b08" stroke-opacity=".6" stroke-width="2"/>
+  <path d="M7 18l9-9m96 0 9 9M7 110l9 9m96 0 9-9" fill="none" stroke="#c6925d" stroke-opacity=".55" stroke-width="1.5"/>
+</svg>

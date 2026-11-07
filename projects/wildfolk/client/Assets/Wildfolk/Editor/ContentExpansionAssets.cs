@@ -134,18 +134,8 @@ namespace Wildfolk.Editor
         }
         private static void ConfigureUtilityUi(InventoryEquipment ui)
         {
-            if(ui.UtilityButton==null)
-            {
-                var clone=UnityEngine.Object.Instantiate(ui.HeadButton.gameObject,ui.HeadButton.transform.parent);clone.name="Utility";
-                ui.UtilityButton=clone.GetComponent<Button>();ui.UtilityButton.onClick=new Button.ButtonClickedEvent();UnityEventTools.AddIntPersistentListener(ui.UtilityButton.onClick,ui.SelectSlot,2);
-                var path=AnimationUtility.CalculateTransformPath(ui.HeadIcon.transform,ui.HeadButton.transform);ui.UtilityIcon=clone.transform.Find(path).GetComponent<Image>();ui.UtilityIcon.sprite=null;
-                var drag=clone.GetComponent<EquipmentSlotDrag>();if(drag!=null)drag.Slot=ArmorSlot.Utility;
-            }
-            var buttons=new[]{ui.HeadButton,ui.BodyButton,ui.UtilityButton};for(var i=0;i<3;i++){var rect=(RectTransform)buttons[i].transform;rect.anchoredPosition=new Vector2(-662+i*106,-112);rect.sizeDelta=new Vector2(88,100);}
-            var parent=ui.HeadButton.transform.parent;var labels=parent.GetComponentsInChildren<LocalizedLabel>(true);
-            foreach(var pair in new[]{new {Key="ui.slot.Head",X=-662},new {Key="ui.slot.Body",X=-556},new {Key="ui.slot.Utility",X=-450}})
-            {var label=Array.Find(labels,l=>l.Key==pair.Key);var text=label==null ? GameplayUiFactory.Text("Slot Name",parent,pair.Key,new Vector2(pair.X,-186),new Vector2(100,32),18) : label.GetComponent<Text>();text.rectTransform.anchoredPosition=new Vector2(pair.X,-186);text.rectTransform.sizeDelta=new Vector2(100,32);text.fontSize=18;}
-            ui.Details.rectTransform.sizeDelta=new Vector2(324,190);ui.Details.rectTransform.anchoredPosition=new Vector2(544,-30);ui.Details.alignment=TextAnchor.UpperLeft;ui.Details.fontSize=22;
+            InventoryUiBuilder.EnsureEquipmentControls(ui);
+            if(ui.Panel!=null)InventoryUiBuilder.Arrange(ui.Panel);
         }
         private static void AddSource(WorldGenerationDefinition world,string name,string art,ItemDefinition drop,int hp,int yield,bool cave)
         {

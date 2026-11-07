@@ -121,20 +121,8 @@ namespace Wildfolk.Editor
         }
         private static void EquipmentUi(InventoryEquipment ui)
         {
-            if(ui.AccessoryButton==null)
-            {
-                var clone=Object.Instantiate(ui.HeadButton.gameObject,ui.HeadButton.transform.parent);clone.name="Accessory";ui.AccessoryButton=clone.GetComponent<Button>();ui.AccessoryButton.onClick=new Button.ButtonClickedEvent();UnityEventTools.AddIntPersistentListener(ui.AccessoryButton.onClick,ui.SelectSlot,3);
-                ui.AccessoryIcon=clone.transform.Find(AnimationUtility.CalculateTransformPath(ui.HeadIcon.transform,ui.HeadButton.transform)).GetComponent<Image>();ui.AccessoryIcon.sprite=null;clone.GetComponent<EquipmentSlotDrag>().Slot=ArmorSlot.Accessory;
-            }
-            var buttons=new[]{ui.HeadButton,ui.BodyButton,ui.UtilityButton,ui.AccessoryButton};
-            var labels=ui.HeadButton.transform.parent.GetComponentsInChildren<LocalizedLabel>(true);
-            for(var i=0;i<4;i++)
-            {
-                var x=-640+(i%2)*155;var y=-70-(i/2)*150;var rect=(RectTransform)buttons[i].transform;rect.anchoredPosition=new Vector2(x,y);rect.sizeDelta=new Vector2(88,88);
-                var key="ui.slot."+new[]{"Head","Body","Utility","Accessory"}[i];var old=Array.Find(labels,l=>l.Key==key);
-                var label=old==null?Text("Slot Name",ui.HeadButton.transform.parent,key,new Vector2(x,y-63),new Vector2(104,32),18):old.GetComponent<Text>();label.rectTransform.anchoredPosition=new Vector2(x,y-63);label.rectTransform.sizeDelta=new Vector2(122,32);
-            }
-            var hint=Array.Find(labels,l=>l.Key=="ui.inventory.slot_hint");if(hint!=null){var text=hint.GetComponent<Text>();text.rectTransform.anchoredPosition=new Vector2(-554,-330);text.rectTransform.sizeDelta=new Vector2(290,48);text.fontSize=18;}
+            InventoryUiBuilder.EnsureEquipmentControls(ui);
+            if(ui.Panel!=null)InventoryUiBuilder.Arrange(ui.Panel);
         }
     }
 }

@@ -40,6 +40,11 @@ namespace Wildfolk
             View.SetActive(!CampLootPanel.IsOpen && !TierThreeHud.IsFocused && Session.State==SessionState.Inventory && (Storage==null || !Storage.IsOpen) && (Crafting==null || !Crafting.ScreenOpen));
             var selected=Owner.SelectedIndex;
             for(var i=0;i<Slots.Length;i++) Slots[i].Show(Owner.Model.GetSlot(i),i==selected);
+            RefreshSelection();
+        }
+
+        public void RefreshSelection()
+        {
             var stack=Owner.SelectedStack;
             SelectedIcon.enabled=!stack.IsEmpty;
             SelectedIcon.sprite=stack.IsEmpty ? null : stack.Item.Icon;

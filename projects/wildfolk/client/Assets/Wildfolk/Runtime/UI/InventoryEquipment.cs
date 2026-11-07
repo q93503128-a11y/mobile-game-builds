@@ -9,6 +9,8 @@ namespace Wildfolk
         public InventoryPanel Panel;
         public Image HeadIcon,BodyIcon,UtilityIcon,AccessoryIcon;
         public Button UtilityButton,AccessoryButton;
+        public Text[] SlotItemNames,SlotStatusLabels;
+        public Image[] SlotSelectionImages;
         public Text Comparison,Details;
         public Button EquipButton,UnequipButton;
         public Button HeadButton,BodyButton;
@@ -48,7 +50,35 @@ namespace Wildfolk
             if(item!=null && item.Ammo!=AmmoKind.None)Details.text=L.Format("ui.ammo.info",item.AmmoDamage);
             if(item!=null && item.WaterCapacity>0)Details.text=stack.Charges+"/"+item.WaterCapacity+" · "+L.Text("water."+stack.Quality)+"\n"+L.Text("ui.waterskin.info");
             if(equippedSelected){Panel.SelectedName.text=item==null ? L.Text("ui.inventory.empty") : item.LocalizedName;Panel.SelectedIcon.sprite=item==null ? null : item.Icon;Panel.SelectedIcon.enabled=item!=null;Panel.SelectedCategory.text=L.Text("ui.slot."+selectedSlot);}
-            for(var i=0;i<Panel.Slots.Length;i++){var owned=Player.Model.GetSlot(i);var compatible=SlotFilter<0 || !owned.IsEmpty && owned.Item.Equippable && (int)PlayerEquipment.Slot(owned.Item)==SlotFilter;Panel.Slots[i].GetComponent<Image>().color=compatible ? Color.white : new Color(.52f,.58f,.52f,1);}
+            for(var i=0;i<EquipmentSlots.Length;i++)
+            {
+                var slot=EquipmentSlots[i];
+                var current=Equipment.Equipped(slot);
+                var selectedStack=Player.SelectedStack;
+                var candidate=SlotFilter==(int)slot && !selectedStack.IsEmpty && selectedStack.Item.Equippable && PlayerEquipment.Slot(selectedStack.Item)==slot;
+                if(SlotItemNames!=null && i<SlotItemNames.Length && SlotItemNames[i]!=null)SlotItemNames[i].text=current==null ? "—" : current.LocalizedName;
+                if(SlotStatusLabels!=null && i<SlotStatusLabels.Length && SlotStatusLabels[i]!=null)
+                {
+                    var key=candidate ? current==null ? "ui.inventory.equip_candidate" : "ui.inventory.replace_candidate" : current==null ? "ui.inventory.empty" : "ui.inventory.equipped";
+                    SlotStatusLabels[i].text=L.Text(key);
+                    SlotStatusLabels[i].color=candidate ? new Color32(255,204,129,255) : new Color32(220,175,124,255);
+                }
+                if(SlotSelectionImages!=null && i<SlotSelectionImages.Length && SlotSelectionImages[i]!=null)
+                {
+                    var selected=SlotFilter==(int)slot;
+                    SlotSelectionImages[i].enabled=selected;
+                    SlotSelectionImages[i].gameObject.SetActive(selected);
+                }
+            }
+            for(var i=0;i<Panel.Slots.Length;i++)
+            {
+                var owned=Player.Model.GetSlot(i);
+                var compatible=SlotFilter<0 || !owned.IsEmpty && owned.Item.Equippable && (int)PlayerEquipment.Slot(owned.Item)==SlotFilter;
+                Panel.Slots[i].GetComponent<Image>().color=compatible ? Color.white : new Color32(143,119,96,255);
+            }
+            if(!equippedSelected)Panel.RefreshSelection();
         }
+
+        private static readonly ArmorSlot[] EquipmentSlots={ArmorSlot.Head,ArmorSlot.Body,ArmorSlot.Utility,ArmorSlot.Accessory};
     }
 }

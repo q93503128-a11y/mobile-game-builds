@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="192" viewBox="0 0 320 192">
+  <defs>
+    <linearGradient id="rim" x2="0" y2="1"><stop stop-color="#bd8758"/><stop offset=".48" stop-color="#8b5d3d"/><stop offset="1" stop-color="#5a3826"/></linearGradient>
+    <linearGradient id="field" x2="0" y2="1"><stop stop-color="#3d2d23"/><stop offset=".52" stop-color="#37291f"/><stop offset="1" stop-color="#30231b"/></linearGradient>
+    <linearGradient id="light" x2="1" y2="0"><stop stop-color="#e0b37b" stop-opacity=".36"/><stop offset=".28" stop-color="#e0b37b" stop-opacity=".04"/><stop offset="1" stop-color="#120d0a" stop-opacity=".18"/></linearGradient>
+  </defs>
+  <path d="M12 2H308L318 12V180L308 190H12L2 180V12Z" fill="#201713" stroke="#1b120e" stroke-width="2"/>
+  <path d="M14 5H306L315 14V178L306 187H14L5 178V14Z" fill="url(#rim)" stroke="#d5a16a" stroke-width="1.5"/>
+  <path d="M20 11H300L309 20V172L300 181H20L11 172V20Z" fill="#281d17" stroke="#4d3325" stroke-width="2"/>
+  <path d="M28 18H292L302 28V164L292 174H28L18 164V28Z" fill="url(#field)" stroke="#98704d" stroke-width="1.2"/>
+  <path d="M28 18H292L302 28V164L292 174H28L18 164V28Z" fill="url(#light)"/>
+  <path d="M36 28H284M36 164H284" fill="none" stroke="#e0bb8d" stroke-opacity=".075" stroke-width="1"/>
+  <path d="M14 8l7 7m285-7-7 7M14 184l7-7m285 7-7-7" fill="none" stroke="#d4a06b" stroke-opacity=".58" stroke-width="1.4"/>
+  <circle cx="17" cy="17" r="2" fill="#d2a16e"/><circle cx="303" cy="17" r="2" fill="#d2a16e"/>
+  <circle cx="17" cy="175" r="2" fill="#8b5d3d"/><circle cx="303" cy="175" r="2" fill="#8b5d3d"/>
+</svg>

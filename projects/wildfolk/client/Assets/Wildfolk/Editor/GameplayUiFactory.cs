@@ -20,7 +20,7 @@ namespace Wildfolk.Editor
         {
             var image=Rect(name,parent,anchor,position,size).gameObject.AddComponent<Image>();
             image.sprite=VisualArtImporter.Sprite(sprite);
-            image.type=sprite=="panel" ? UnityEngine.UI.Image.Type.Sliced : UnityEngine.UI.Image.Type.Simple;
+            image.type=sprite=="panel" || !string.IsNullOrEmpty(sprite) && sprite.StartsWith("inventory_",System.StringComparison.Ordinal) ? UnityEngine.UI.Image.Type.Sliced : UnityEngine.UI.Image.Type.Simple;
             image.raycastTarget=raycast;
             return image;
         }
