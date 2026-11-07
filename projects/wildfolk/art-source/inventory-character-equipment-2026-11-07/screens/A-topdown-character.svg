@@ -1,0 +1,461 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="844" height="390" viewBox="0 0 844 390">
+<defs>
+<linearGradient id="woodFace" x1="0" y1="0" x2=".8" y2="1"><stop stop-color="#b17a44"/><stop offset=".42" stop-color="#8a592f"/><stop offset="1" stop-color="#644022"/></linearGradient>
+<linearGradient id="raisedWood" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#c08a50"/><stop offset=".45" stop-color="#986436"/><stop offset="1" stop-color="#704829"/></linearGradient>
+<linearGradient id="plankRun" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#a46e3c"/><stop offset=".32" stop-color="#986136"/><stop offset=".34" stop-color="#7e4e2b"/><stop offset=".68" stop-color="#82512d"/><stop offset=".7" stop-color="#744728"/><stop offset="1" stop-color="#6e4326"/></linearGradient>
+<linearGradient id="slotFace" x1="0" y1="0" x2=".3" y2="1"><stop stop-color="#4a301e"/><stop offset=".42" stop-color="#312015"/><stop offset="1" stop-color="#21150e"/></linearGradient>
+<linearGradient id="buttonFire" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#d58143"/><stop offset=".46" stop-color="#b46332"/><stop offset="1" stop-color="#874725"/></linearGradient>
+<linearGradient id="buttonWood" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#a57242"/><stop offset="1" stop-color="#704727"/></linearGradient>
+<linearGradient id="buttonDown" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#694327"/><stop offset="1" stop-color="#4b2d1b"/></linearGradient>
+<linearGradient id="buttonDisabled" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#756451"/><stop offset="1" stop-color="#554737"/></linearGradient>
+<radialGradient id="night" cx="50%" cy="48%" r="75%"><stop offset="0" stop-color="#11150f" stop-opacity=".34"/><stop offset="1" stop-color="#090b08" stop-opacity=".66"/></radialGradient>
+<pattern id="woodgrain" width="44" height="24" patternUnits="userSpaceOnUse"><path d="M1 5 C9 2 15 7 24 4 S37 3 43 5 M7 14 C17 12 22 16 31 14 S37 12 43 14 M2 21 Q11 18 17 21" fill="none" stroke="#392416" stroke-width=".75" opacity=".28"/><path d="M0 9 Q7 8 13 9" fill="none" stroke="#e4b77d" stroke-width=".55" opacity=".24"/></pattern>
+<filter id="shadow" x="-25%" y="-25%" width="150%" height="165%"><feGaussianBlur in="SourceAlpha" stdDeviation="2.5"/><feOffset dy="2.2"/><feComponentTransfer><feFuncA type="linear" slope=".43"/></feComponentTransfer><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+<filter id="shadowLite" x="-20%" y="-20%" width="140%" height="150%"><feGaussianBlur in="SourceAlpha" stdDeviation="1.4"/><feOffset dy="1.2"/><feComponentTransfer><feFuncA type="linear" slope=".3"/></feComponentTransfer><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+<filter id="amberGlow" x="-35%" y="-35%" width="170%" height="170%"><feGaussianBlur stdDeviation="1.4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+<style>@font-face{font-family:Lowfire;src:url("../../../client/Assets/Wildfolk/Resources/NotoSansKR.ttf") format("truetype");font-weight:100 900} text{font-family:Lowfire,"Malgun Gothic","Segoe UI",sans-serif}</style>
+</defs>
+<image href="../../../docs/images/lowfire-player-world-armor.png" x="0" y="0" width="844" height="390" preserveAspectRatio="xMidYMid slice" opacity="1" />
+<rect width="844" height="390" fill="url(#night)"/>
+<circle cx="812" cy="29" r="19" fill="#24170e" stroke="#170e09" stroke-width="1.4" filter="url(#shadowLite)"/>
+<circle cx="812" cy="28" r="15" fill="url(#raisedWood)" stroke="#e0b77f" stroke-width="1.1"/>
+<circle cx="812" cy="28" r="11" fill="url(#buttonWood)" stroke="#55361f" stroke-width=".8"/>
+<path d="M808 24 L816 32 M816 24 L808 32" stroke="#f0d5a7" stroke-width="2.2" stroke-linecap="round"/>
+<path d="M154 92 L286 91 L295 99 L296 190 L288 197 L155 196 L147 188 L148 99 Z" fill="url(#woodFace)" stroke="#170e09" stroke-width="2.2" filter="url(#shadow)"/>
+<path d="M152 98 L158 95 H284 L291 101 V186 L284 192 H159 L152 185 Z" fill="url(#plankRun)" stroke="#cf9a60" stroke-width=".9"/>
+<path d="M154 99 H289 V189 H154 Z" fill="url(#woodgrain)" opacity=".8"/>
+<path d="M155 101 H286" fill="none" stroke="#e0b47a" stroke-width="1.1" opacity=".78"/>
+<path d="M155 187 H286" fill="none" stroke="#382216" stroke-width="1.1" opacity=".85"/>
+<path d="M157 129.667 H286" stroke="#3f2819" stroke-width=".55" opacity=".32"/>
+<path d="M157 158.333 H286" stroke="#3f2819" stroke-width=".55" opacity=".32"/>
+<path d="M165 106 q7 -2 13 0 t12 0" fill="none" stroke="#342014" stroke-width=".6" opacity=".32"/>
+<path d="M212 125 q7 -2 13 0 t12 0" fill="none" stroke="#342014" stroke-width=".6" opacity=".32"/>
+<path d="M259 144 q7 -2 13 0 t12 0" fill="none" stroke="#342014" stroke-width=".6" opacity=".32"/>
+<path d="M207 163 q7 -2 13 0 t12 0" fill="none" stroke="#342014" stroke-width=".6" opacity=".32"/>
+<circle cx="156" cy="101" r="2.1" fill="#432a19" stroke="#d7a76b" stroke-width=".65"/>
+<path d="M155 101 l2 .4" stroke="#f0c58a" stroke-width=".45" opacity=".7"/>
+<circle cx="286" cy="101" r="2.1" fill="#432a19" stroke="#d7a76b" stroke-width=".65"/>
+<path d="M285 101 l2 .4" stroke="#f0c58a" stroke-width=".45" opacity=".7"/>
+<circle cx="156" cy="187" r="2.1" fill="#432a19" stroke="#d7a76b" stroke-width=".65"/>
+<path d="M155 187 l2 .4" stroke="#f0c58a" stroke-width=".45" opacity=".7"/>
+<circle cx="286" cy="187" r="2.1" fill="#432a19" stroke="#d7a76b" stroke-width=".65"/>
+<path d="M285 187 l2 .4" stroke="#f0c58a" stroke-width=".45" opacity=".7"/>
+<path d="M190 82 H254 L259 86 V97 L254 101 H190 L185 97 V86 Z" fill="url(#raisedWood)" stroke="#170e09" stroke-width="1.3" filter="url(#shadowLite)"/>
+<path d="M190 85 H253" stroke="#e1b77f" stroke-width=".8" opacity=".7"/>
+<text x="222" y="95" font-family="Lowfire" font-size="10" font-weight="800" fill="#f0d5a7" text-anchor="middle" >제작</text>
+<path d="M158 104 H191 L196 109 V139 L191 144 H158 L153 139 V109 Z" fill="#52351f" stroke="#1b100a" stroke-width="1.35"/>
+<path d="M155 109 L159 106 H189 L194 110" fill="none" stroke="#d1a06a" stroke-width="1.35"/>
+<path d="M157 109 H192 V139 H157 Z" fill="#291a10" stroke="#180f09" stroke-width=".8"/>
+<path d="M159 137 q7 -2 13 0 t12 0" fill="none" stroke="#9e7146" stroke-width=".55" opacity=".23"/>
+<path d="M185 114 v3 m-2 0 h4" stroke="#d1a06a" stroke-width=".65" opacity=".42"/>
+<image href="../../../client/Assets/Wildfolk/Art/campfire.png" x="160.1" y="108.6" width="28.8" height="28.8" preserveAspectRatio="xMidYMid meet" opacity="1" />
+<circle cx="191" cy="108" r="2.7" fill="#84ad66" stroke="#d4e6ad" stroke-width=".7"/>
+<path d="M203 104 H236 L241 109 V139 L236 144 H203 L198 139 V109 Z" fill="#52351f" stroke="#1b100a" stroke-width="1.35"/>
+<path d="M200 109 L204 106 H234 L239 110" fill="none" stroke="#d1a06a" stroke-width="1.35"/>
+<path d="M202 109 H237 V139 H202 Z" fill="#291a10" stroke="#180f09" stroke-width=".8"/>
+<path d="M204 137 q7 -2 13 0 t12 0" fill="none" stroke="#9e7146" stroke-width=".55" opacity=".23"/>
+<path d="M230 114 v3 m-2 0 h4" stroke="#d1a06a" stroke-width=".65" opacity=".42"/>
+<image href="../../../client/Assets/Wildfolk/Art/torch.png" x="205.1" y="108.6" width="28.8" height="28.8" preserveAspectRatio="xMidYMid meet" opacity="1" />
+<circle cx="236" cy="108" r="2.7" fill="#84ad66" stroke="#d4e6ad" stroke-width=".7"/>
+<path d="M248 104 H281 L286 109 V139 L281 144 H248 L243 139 V109 Z" fill="#52351f" stroke="#1b100a" stroke-width="1.35"/>
+<path d="M245 109 L249 106 H279 L284 110" fill="none" stroke="#d1a06a" stroke-width="1.35"/>
+<path d="M247 109 H282 V139 H247 Z" fill="#291a10" stroke="#180f09" stroke-width=".8"/>
+<path d="M249 137 q7 -2 13 0 t12 0" fill="none" stroke="#9e7146" stroke-width=".55" opacity=".23"/>
+<path d="M275 114 v3 m-2 0 h4" stroke="#d1a06a" stroke-width=".65" opacity=".42"/>
+<image href="../../../client/Assets/Wildfolk/Art/workbench.png" x="250.1" y="108.6" width="28.8" height="28.8" preserveAspectRatio="xMidYMid meet" opacity="1" />
+<circle cx="281" cy="108" r="2.7" fill="#84ad66" stroke="#d4e6ad" stroke-width=".7"/>
+<path d="M158 148 H191 L196 153 V183 L191 188 H158 L153 183 V153 Z" fill="#52351f" stroke="#1b100a" stroke-width="1.35"/>
+<path d="M155 153 L159 150 H189 L194 154" fill="none" stroke="#d1a06a" stroke-width="1.35"/>
+<path d="M157 153 H192 V183 H157 Z" fill="#291a10" stroke="#180f09" stroke-width=".8"/>
+<path d="M159 181 q7 -2 13 0 t12 0" fill="none" stroke="#9e7146" stroke-width=".55" opacity=".23"/>
+<path d="M185 158 v3 m-2 0 h4" stroke="#d1a06a" stroke-width=".65" opacity=".42"/>
+<image href="../../../client/Assets/Wildfolk/Art/empty_cup.png" x="160.1" y="152.6" width="28.8" height="28.8" preserveAspectRatio="xMidYMid meet" opacity="1" />
+<circle cx="191" cy="152" r="2.7" fill="#84ad66" stroke="#d4e6ad" stroke-width=".7"/>
+<path d="M203 148 H236 L241 153 V183 L236 188 H203 L198 183 V153 Z" fill="#52351f" stroke="#1b100a" stroke-width="1.35"/>
+<path d="M200 153 L204 150 H234 L239 154" fill="none" stroke="#d1a06a" stroke-width="1.35"/>
+<path d="M202 153 H237 V183 H202 Z" fill="#291a10" stroke="#180f09" stroke-width=".8"/>
+<path d="M204 181 q7 -2 13 0 t12 0" fill="none" stroke="#9e7146" stroke-width=".55" opacity=".23"/>
+<path d="M230 158 v3 m-2 0 h4" stroke="#d1a06a" stroke-width=".65" opacity=".42"/>
+<image href="../../../client/Assets/Wildfolk/Art/field_dressing.png" x="205.1" y="152.6" width="28.8" height="28.8" preserveAspectRatio="xMidYMid meet" opacity="1" />
+<circle cx="236" cy="152" r="2.7" fill="#84ad66" stroke="#d4e6ad" stroke-width=".7"/>
+<path d="M248 148 H281 L286 153 V183 L281 188 H248 L243 183 V153 Z" fill="#52351f" stroke="#1b100a" stroke-width="1.35"/>
+<path d="M245 153 L249 150 H279 L284 154" fill="none" stroke="#d1a06a" stroke-width="1.35"/>
+<path d="M247 153 H282 V183 H247 Z" fill="#291a10" stroke="#180f09" stroke-width=".8"/>
+<path d="M249 181 q7 -2 13 0 t12 0" fill="none" stroke="#9e7146" stroke-width=".55" opacity=".23"/>
+<path d="M275 158 v3 m-2 0 h4" stroke="#d1a06a" stroke-width=".65" opacity=".42"/>
+<image href="../../../client/Assets/Wildfolk/Art/healing_salve.png" x="250.1" y="152.6" width="28.8" height="28.8" preserveAspectRatio="xMidYMid meet" opacity="1" />
+<circle cx="281" cy="152" r="2.7" fill="#84ad66" stroke="#d4e6ad" stroke-width=".7"/>
+<path d="M390 21 L581 20 L590 28 L591 189 L583 196 L391 195 L383 187 L384 28 Z" fill="url(#woodFace)" stroke="#170e09" stroke-width="2.2" filter="url(#shadow)"/>
+<path d="M388 27 L394 24 H579 L586 30 V185 L579 191 H395 L388 184 Z" fill="url(#plankRun)" stroke="#cf9a60" stroke-width=".9"/>
+<path d="M390 28 H584 V188 H390 Z" fill="url(#woodgrain)" opacity=".8"/>
+<path d="M391 30 H581" fill="none" stroke="#e0b47a" stroke-width="1.1" opacity=".78"/>
+<path d="M391 186 H581" fill="none" stroke="#382216" stroke-width="1.1" opacity=".85"/>
+<path d="M393 56 H581" stroke="#3f2819" stroke-width=".55" opacity=".32"/>
+<path d="M393 82 H581" stroke="#3f2819" stroke-width=".55" opacity=".32"/>
+<path d="M393 108 H581" stroke="#3f2819" stroke-width=".55" opacity=".32"/>
+<path d="M393 134 H581" stroke="#3f2819" stroke-width=".55" opacity=".32"/>
+<path d="M393 160 H581" stroke="#3f2819" stroke-width=".55" opacity=".32"/>
+<path d="M401 35 q7 -2 13 0 t12 0" fill="none" stroke="#342014" stroke-width=".6" opacity=".32"/>
+<path d="M448 54 q7 -2 13 0 t12 0" fill="none" stroke="#342014" stroke-width=".6" opacity=".32"/>
+<path d="M495 73 q7 -2 13 0 t12 0" fill="none" stroke="#342014" stroke-width=".6" opacity=".32"/>
+<path d="M542 92 q7 -2 13 0 t12 0" fill="none" stroke="#342014" stroke-width=".6" opacity=".32"/>
+<circle cx="392" cy="30" r="2.1" fill="#432a19" stroke="#d7a76b" stroke-width=".65"/>
+<path d="M391 30 l2 .4" stroke="#f0c58a" stroke-width=".45" opacity=".7"/>
+<circle cx="581" cy="30" r="2.1" fill="#432a19" stroke="#d7a76b" stroke-width=".65"/>
+<path d="M580 30 l2 .4" stroke="#f0c58a" stroke-width=".45" opacity=".7"/>
+<circle cx="392" cy="186" r="2.1" fill="#432a19" stroke="#d7a76b" stroke-width=".65"/>
+<path d="M391 186 l2 .4" stroke="#f0c58a" stroke-width=".45" opacity=".7"/>
+<circle cx="581" cy="186" r="2.1" fill="#432a19" stroke="#d7a76b" stroke-width=".65"/>
+<path d="M580 186 l2 .4" stroke="#f0c58a" stroke-width=".45" opacity=".7"/>
+<path d="M456 11 H524 L529 15 V26 L524 30 H456 L451 26 V15 Z" fill="url(#raisedWood)" stroke="#170e09" stroke-width="1.3" filter="url(#shadowLite)"/>
+<path d="M456 14 H523" stroke="#e1b77f" stroke-width=".8" opacity=".7"/>
+<text x="490" y="24" font-family="Lowfire" font-size="10" font-weight="800" fill="#f0d5a7" text-anchor="middle" >장비 · 4</text>
+<defs><clipPath id="actualLowfireActorCapture"><rect x="434.0" y="68.0" width="110.0" height="90.0" rx="3"/></clipPath></defs>
+<image href="../../../docs/images/lowfire-player-world-armor.png" x="99.9259" y="-122.227" width="782.222" height="441.818" preserveAspectRatio="none" clip-path="url(#actualLowfireActorCapture)"/>
+<rect x="434.0" y="68.0" width="110.0" height="90.0" rx="3" fill="none" stroke="#2a1b11" stroke-width="1.1"/>
+<path d="M425 66 Q447 73 469 84" fill="none" stroke="#c28a50" stroke-width="1" stroke-opacity=".7"/>
+<path d="M547 66 Q530.5 76.5 514 91" fill="none" stroke="#c28a50" stroke-width="1" stroke-opacity=".7"/>
+<path d="M425 157 Q448.5 133.5 472 114" fill="none" stroke="#c28a50" stroke-width="1" stroke-opacity=".7"/>
+<path d="M547 157 Q530.5 133.5 514 114" fill="none" stroke="#c28a50" stroke-width="1" stroke-opacity=".7"/>
+<path d="M394 49 H420 L425 54 V80 L420 85 H394 L389 80 V54 Z" fill="#536d3e" stroke="#1b100a" stroke-width="1.35"/>
+<path d="M391 54 L395 51 H418 L423 55" fill="none" stroke="#a7cd79" stroke-width="1.35"/>
+<path d="M393 54 H421 V80 H393 Z" fill="#243520" stroke="#180f09" stroke-width=".8"/>
+<path d="M395 78 q7 -2 13 0 t12 0" fill="none" stroke="#9e7146" stroke-width=".55" opacity=".23"/>
+<path d="M414 59 v3 m-2 0 h4" stroke="#d1a06a" stroke-width=".65" opacity=".42"/>
+<path d="M394 49 H420 L425 54 V80 L420 85 H394 L389 80 V54 Z" fill="none" stroke="#a9d785" stroke-width="1.5" stroke-dasharray="3 1.5"/>
+<image href="../../../client/Assets/Wildfolk/Art/iron_head.png" x="394.4" y="53.4" width="25.2" height="25.2" preserveAspectRatio="xMidYMid meet" opacity="1" />
+<text x="407" y="46" font-family="Lowfire" font-size="8" font-weight="750" fill="#f2d9ad" text-anchor="middle" stroke="#27190f" stroke-width="1.3" paint-order="stroke">머리</text>
+<path d="M552 49 H578 L583 54 V80 L578 85 H552 L547 80 V54 Z" fill="#52351f" stroke="#1b100a" stroke-width="1.35"/>
+<path d="M549 54 L553 51 H576 L581 55" fill="none" stroke="#d1a06a" stroke-width="1.35"/>
+<path d="M551 54 H579 V80 H551 Z" fill="#291a10" stroke="#180f09" stroke-width=".8"/>
+<path d="M553 78 q7 -2 13 0 t12 0" fill="none" stroke="#9e7146" stroke-width=".55" opacity=".23"/>
+<path d="M572 59 v3 m-2 0 h4" stroke="#d1a06a" stroke-width=".65" opacity=".42"/>
+<image href="../../../client/Assets/Wildfolk/Art/iron_body.png" x="552.4" y="53.4" width="25.2" height="25.2" preserveAspectRatio="xMidYMid meet" opacity="1" />
+<text x="565" y="46" font-family="Lowfire" font-size="8" font-weight="750" fill="#f2d9ad" text-anchor="middle" stroke="#27190f" stroke-width="1.3" paint-order="stroke">몸</text>
+<path d="M394 140 H420 L425 145 V171 L420 176 H394 L389 171 V145 Z" fill="#52351f" stroke="#1b100a" stroke-width="1.35"/>
+<path d="M391 145 L395 142 H418 L423 146" fill="none" stroke="#d1a06a" stroke-width="1.35"/>
+<path d="M393 145 H421 V171 H393 Z" fill="#291a10" stroke="#180f09" stroke-width=".8"/>
+<path d="M395 169 q7 -2 13 0 t12 0" fill="none" stroke="#9e7146" stroke-width=".55" opacity=".23"/>
+<path d="M414 150 v3 m-2 0 h4" stroke="#d1a06a" stroke-width=".65" opacity=".42"/>
+<image href="../../../client/Assets/Wildfolk/Art/lantern.png" x="394.4" y="144.4" width="25.2" height="25.2" preserveAspectRatio="xMidYMid meet" opacity="1" />
+<text x="407" y="137" font-family="Lowfire" font-size="8" font-weight="750" fill="#f2d9ad" text-anchor="middle" stroke="#27190f" stroke-width="1.3" paint-order="stroke">보조 장비</text>
+<path d="M552 140 H578 L583 145 V171 L578 176 H552 L547 171 V145 Z" fill="#52351f" stroke="#1b100a" stroke-width="1.35"/>
+<path d="M549 145 L553 142 H576 L581 146" fill="none" stroke="#d1a06a" stroke-width="1.35"/>
+<path d="M551 145 H579 V171 H551 Z" fill="#291a10" stroke="#180f09" stroke-width=".8"/>
+<path d="M553 169 q7 -2 13 0 t12 0" fill="none" stroke="#9e7146" stroke-width=".55" opacity=".23"/>
+<path d="M572 150 v3 m-2 0 h4" stroke="#d1a06a" stroke-width=".65" opacity=".42"/>
+<text x="565" y="137" font-family="Lowfire" font-size="8" font-weight="750" fill="#f2d9ad" text-anchor="middle" stroke="#27190f" stroke-width="1.3" paint-order="stroke">장신구</text>
+<path d="M154 200 L579 199 L588 207 L589 243 L581 250 L155 249 L147 241 L148 207 Z" fill="url(#woodFace)" stroke="#170e09" stroke-width="2.2" filter="url(#shadow)"/>
+<path d="M152 206 L158 203 H577 L584 209 V239 L577 245 H159 L152 238 Z" fill="url(#plankRun)" stroke="#cf9a60" stroke-width=".9"/>
+<path d="M154 207 H582 V242 H154 Z" fill="url(#woodgrain)" opacity=".8"/>
+<path d="M155 209 H579" fill="none" stroke="#e0b47a" stroke-width="1.1" opacity=".78"/>
+<path d="M155 240 H579" fill="none" stroke="#382216" stroke-width="1.1" opacity=".85"/>
+<path d="M157 240 H579" stroke="#3f2819" stroke-width=".55" opacity=".32"/>
+<path d="M165 214 q7 -2 13 0 t12 0" fill="none" stroke="#342014" stroke-width=".6" opacity=".32"/>
+<path d="M212 233 q7 -2 13 0 t12 0" fill="none" stroke="#342014" stroke-width=".6" opacity=".32"/>
+<path d="M259 229 q7 -2 13 0 t12 0" fill="none" stroke="#342014" stroke-width=".6" opacity=".32"/>
+<path d="M306 225 q7 -2 13 0 t12 0" fill="none" stroke="#342014" stroke-width=".6" opacity=".32"/>
+<path d="M154 254 L579 253 L588 261 L589 378 L581 385 L155 384 L147 376 L148 261 Z" fill="url(#woodFace)" stroke="#170e09" stroke-width="2.2" filter="url(#shadow)"/>
+<path d="M152 260 L158 257 H577 L584 263 V374 L577 380 H159 L152 373 Z" fill="url(#plankRun)" stroke="#cf9a60" stroke-width=".9"/>
+<path d="M154 261 H582 V377 H154 Z" fill="url(#woodgrain)" opacity=".8"/>
+<path d="M155 263 H579" fill="none" stroke="#e0b47a" stroke-width="1.1" opacity=".78"/>
+<path d="M155 375 H579" fill="none" stroke="#382216" stroke-width="1.1" opacity=".85"/>
+<path d="M157 291 H579" stroke="#3f2819" stroke-width=".55" opacity=".32"/>
+<path d="M157 319 H579" stroke="#3f2819" stroke-width=".55" opacity=".32"/>
+<path d="M157 347 H579" stroke="#3f2819" stroke-width=".55" opacity=".32"/>
+<path d="M165 268 q7 -2 13 0 t12 0" fill="none" stroke="#342014" stroke-width=".6" opacity=".32"/>
+<path d="M212 287 q7 -2 13 0 t12 0" fill="none" stroke="#342014" stroke-width=".6" opacity=".32"/>
+<path d="M259 306 q7 -2 13 0 t12 0" fill="none" stroke="#342014" stroke-width=".6" opacity=".32"/>
+<path d="M306 325 q7 -2 13 0 t12 0" fill="none" stroke="#342014" stroke-width=".6" opacity=".32"/>
+<circle cx="156" cy="263" r="2.1" fill="#432a19" stroke="#d7a76b" stroke-width=".65"/>
+<path d="M155 263 l2 .4" stroke="#f0c58a" stroke-width=".45" opacity=".7"/>
+<circle cx="579" cy="263" r="2.1" fill="#432a19" stroke="#d7a76b" stroke-width=".65"/>
+<path d="M578 263 l2 .4" stroke="#f0c58a" stroke-width=".45" opacity=".7"/>
+<circle cx="156" cy="375" r="2.1" fill="#432a19" stroke="#d7a76b" stroke-width=".65"/>
+<path d="M155 375 l2 .4" stroke="#f0c58a" stroke-width=".45" opacity=".7"/>
+<circle cx="579" cy="375" r="2.1" fill="#432a19" stroke="#d7a76b" stroke-width=".65"/>
+<path d="M578 375 l2 .4" stroke="#f0c58a" stroke-width=".45" opacity=".7"/>
+<path d="M161 184 H245 L250 188 V199 L245 203 H161 L156 199 V188 Z" fill="url(#raisedWood)" stroke="#170e09" stroke-width="1.3" filter="url(#shadowLite)"/>
+<path d="M161 187 H244" stroke="#e1b77f" stroke-width=".8" opacity=".7"/>
+<text x="203" y="197" font-family="Lowfire" font-size="8.8" font-weight="800" fill="#f0d5a7" text-anchor="middle" >핫바 · 9</text>
+<path d="M161 236 H263 L268 240 V251 L263 255 H161 L156 251 V240 Z" fill="url(#raisedWood)" stroke="#170e09" stroke-width="1.3" filter="url(#shadowLite)"/>
+<path d="M161 239 H262" stroke="#e1b77f" stroke-width=".8" opacity=".7"/>
+<text x="212" y="249" font-family="Lowfire" font-size="8.8" font-weight="800" fill="#f0d5a7" text-anchor="middle" >가방 · 보관 27</text>
+<path d="M153 204 H191 L196 209 V242 L191 247 H153 L148 242 V209 Z" fill="#52351f" stroke="#1b100a" stroke-width="1.35"/>
+<path d="M150 209 L154 206 H189 L194 210" fill="none" stroke="#d1a06a" stroke-width="1.35"/>
+<path d="M152 209 H192 V242 H152 Z" fill="#291a10" stroke="#180f09" stroke-width=".8"/>
+<path d="M154 240 q7 -2 13 0 t12 0" fill="none" stroke="#9e7146" stroke-width=".55" opacity=".23"/>
+<path d="M185 214 v3 m-2 0 h4" stroke="#d1a06a" stroke-width=".65" opacity=".42"/>
+<image href="../../../client/Assets/Wildfolk/Art/icon_wood.png" x="156.52" y="209.02" width="30.96" height="30.96" preserveAspectRatio="xMidYMid meet" opacity="1" />
+<path d="M179.2 236 H194 V245 H179.2 Z" fill="#17100b" opacity=".92"/>
+<text x="193" y="244" font-family="Lowfire" font-size="9.2" font-weight="800" fill="#fff0ce" text-anchor="end" stroke="#1b110b" stroke-width="1.5" paint-order="stroke">10</text>
+<text x="152" y="214" font-family="Lowfire" font-size="7.6" font-weight="800" fill="#f5dbaf" stroke="#22160d" stroke-width="1.2" paint-order="stroke">1</text>
+<path d="M202 204 H240 L245 209 V242 L240 247 H202 L197 242 V209 Z" fill="#52351f" stroke="#1b100a" stroke-width="1.35"/>
+<path d="M199 209 L203 206 H238 L243 210" fill="none" stroke="#d1a06a" stroke-width="1.35"/>
+<path d="M201 209 H241 V242 H201 Z" fill="#291a10" stroke="#180f09" stroke-width=".8"/>
+<path d="M203 240 q7 -2 13 0 t12 0" fill="none" stroke="#9e7146" stroke-width=".55" opacity=".23"/>
+<path d="M234 214 v3 m-2 0 h4" stroke="#d1a06a" stroke-width=".65" opacity=".42"/>
+<image href="../../../client/Assets/Wildfolk/Art/iron_sword.png" x="205.52" y="209.02" width="30.96" height="30.96" preserveAspectRatio="xMidYMid meet" opacity="1" />
+<text x="201" y="214" font-family="Lowfire" font-size="7.6" font-weight="800" fill="#f5dbaf" stroke="#22160d" stroke-width="1.2" paint-order="stroke">2</text>
+<path d="M251 204 H289 L294 209 V242 L289 247 H251 L246 242 V209 Z" fill="#52351f" stroke="#1b100a" stroke-width="1.35"/>
+<path d="M248 209 L252 206 H287 L292 210" fill="none" stroke="#d1a06a" stroke-width="1.35"/>
+<path d="M250 209 H290 V242 H250 Z" fill="#291a10" stroke="#180f09" stroke-width=".8"/>
+<path d="M252 240 q7 -2 13 0 t12 0" fill="none" stroke="#9e7146" stroke-width=".55" opacity=".23"/>
+<path d="M283 214 v3 m-2 0 h4" stroke="#d1a06a" stroke-width=".65" opacity=".42"/>
+<image href="../../../client/Assets/Wildfolk/Art/torch.png" x="254.52" y="209.02" width="30.96" height="30.96" preserveAspectRatio="xMidYMid meet" opacity="1" />
+<path d="M280 236 H292 V245 H280 Z" fill="#17100b" opacity=".92"/>
+<text x="291" y="244" font-family="Lowfire" font-size="9.2" font-weight="800" fill="#fff0ce" text-anchor="end" stroke="#1b110b" stroke-width="1.5" paint-order="stroke">8</text>
+<text x="250" y="214" font-family="Lowfire" font-size="7.6" font-weight="800" fill="#f5dbaf" stroke="#22160d" stroke-width="1.2" paint-order="stroke">3</text>
+<path d="M300 204 H338 L343 209 V242 L338 247 H300 L295 242 V209 Z" fill="#52351f" stroke="#1b100a" stroke-width="1.35"/>
+<path d="M297 209 L301 206 H336 L341 210" fill="none" stroke="#d1a06a" stroke-width="1.35"/>
+<path d="M299 209 H339 V242 H299 Z" fill="#291a10" stroke="#180f09" stroke-width=".8"/>
+<path d="M301 240 q7 -2 13 0 t12 0" fill="none" stroke="#9e7146" stroke-width=".55" opacity=".23"/>
+<path d="M332 214 v3 m-2 0 h4" stroke="#d1a06a" stroke-width=".65" opacity=".42"/>
+<image href="../../../client/Assets/Wildfolk/Art/waterskin.png" x="303.52" y="209.02" width="30.96" height="30.96" preserveAspectRatio="xMidYMid meet" opacity="1" />
+<text x="299" y="214" font-family="Lowfire" font-size="7.6" font-weight="800" fill="#f5dbaf" stroke="#22160d" stroke-width="1.2" paint-order="stroke">4</text>
+<path d="M349 204 H387 L392 209 V242 L387 247 H349 L344 242 V209 Z" fill="#52351f" stroke="#1b100a" stroke-width="1.35"/>
+<path d="M346 209 L350 206 H385 L390 210" fill="none" stroke="#d1a06a" stroke-width="1.35"/>
+<path d="M348 209 H388 V242 H348 Z" fill="#291a10" stroke="#180f09" stroke-width=".8"/>
+<path d="M350 240 q7 -2 13 0 t12 0" fill="none" stroke="#9e7146" stroke-width=".55" opacity=".23"/>
+<path d="M381 214 v3 m-2 0 h4" stroke="#d1a06a" stroke-width=".65" opacity=".42"/>
+<image href="../../../client/Assets/Wildfolk/Art/berry.png" x="352.52" y="209.02" width="30.96" height="30.96" preserveAspectRatio="xMidYMid meet" opacity="1" />
+<path d="M375.2 236 H390 V245 H375.2 Z" fill="#17100b" opacity=".92"/>
+<text x="389" y="244" font-family="Lowfire" font-size="9.2" font-weight="800" fill="#fff0ce" text-anchor="end" stroke="#1b110b" stroke-width="1.5" paint-order="stroke">12</text>
+<text x="348" y="214" font-family="Lowfire" font-size="7.6" font-weight="800" fill="#f5dbaf" stroke="#22160d" stroke-width="1.2" paint-order="stroke">5</text>
+<path d="M398 204 H436 L441 209 V242 L436 247 H398 L393 242 V209 Z" fill="#52351f" stroke="#1b100a" stroke-width="1.35"/>
+<path d="M395 209 L399 206 H434 L439 210" fill="none" stroke="#d1a06a" stroke-width="1.35"/>
+<path d="M397 209 H437 V242 H397 Z" fill="#291a10" stroke="#180f09" stroke-width=".8"/>
+<path d="M399 240 q7 -2 13 0 t12 0" fill="none" stroke="#9e7146" stroke-width=".55" opacity=".23"/>
+<path d="M430 214 v3 m-2 0 h4" stroke="#d1a06a" stroke-width=".65" opacity=".42"/>
+<image href="../../../client/Assets/Wildfolk/Art/iron_axe.png" x="401.52" y="209.02" width="30.96" height="30.96" preserveAspectRatio="xMidYMid meet" opacity="1" />
+<text x="397" y="214" font-family="Lowfire" font-size="7.6" font-weight="800" fill="#f5dbaf" stroke="#22160d" stroke-width="1.2" paint-order="stroke">6</text>
+<path d="M447 204 H485 L490 209 V242 L485 247 H447 L442 242 V209 Z" fill="#52351f" stroke="#1b100a" stroke-width="1.35"/>
+<path d="M444 209 L448 206 H483 L488 210" fill="none" stroke="#d1a06a" stroke-width="1.35"/>
+<path d="M446 209 H486 V242 H446 Z" fill="#291a10" stroke="#180f09" stroke-width=".8"/>
+<path d="M448 240 q7 -2 13 0 t12 0" fill="none" stroke="#9e7146" stroke-width=".55" opacity=".23"/>
+<path d="M479 214 v3 m-2 0 h4" stroke="#d1a06a" stroke-width=".65" opacity=".42"/>
+<image href="../../../client/Assets/Wildfolk/Art/arrow.png" x="450.52" y="209.02" width="30.96" height="30.96" preserveAspectRatio="xMidYMid meet" opacity="1" />
+<path d="M473.2 236 H488 V245 H473.2 Z" fill="#17100b" opacity=".92"/>
+<text x="487" y="244" font-family="Lowfire" font-size="9.2" font-weight="800" fill="#fff0ce" text-anchor="end" stroke="#1b110b" stroke-width="1.5" paint-order="stroke">18</text>
+<text x="446" y="214" font-family="Lowfire" font-size="7.6" font-weight="800" fill="#f5dbaf" stroke="#22160d" stroke-width="1.2" paint-order="stroke">7</text>
+<path d="M496 204 H534 L539 209 V242 L534 247 H496 L491 242 V209 Z" fill="#52351f" stroke="#1b100a" stroke-width="1.35"/>
+<path d="M493 209 L497 206 H532 L537 210" fill="none" stroke="#d1a06a" stroke-width="1.35"/>
+<path d="M495 209 H535 V242 H495 Z" fill="#291a10" stroke="#180f09" stroke-width=".8"/>
+<path d="M497 240 q7 -2 13 0 t12 0" fill="none" stroke="#9e7146" stroke-width=".55" opacity=".23"/>
+<path d="M528 214 v3 m-2 0 h4" stroke="#d1a06a" stroke-width=".65" opacity=".42"/>
+<image href="../../../client/Assets/Wildfolk/Art/mushroom_stew.png" x="499.52" y="209.02" width="30.96" height="30.96" preserveAspectRatio="xMidYMid meet" opacity="1" />
+<text x="495" y="214" font-family="Lowfire" font-size="7.6" font-weight="800" fill="#f5dbaf" stroke="#22160d" stroke-width="1.2" paint-order="stroke">8</text>
+<path d="M545 204 H583 L588 209 V242 L583 247 H545 L540 242 V209 Z" fill="#52351f" stroke="#1b100a" stroke-width="1.35"/>
+<path d="M542 209 L546 206 H581 L586 210" fill="none" stroke="#d1a06a" stroke-width="1.35"/>
+<path d="M544 209 H584 V242 H544 Z" fill="#291a10" stroke="#180f09" stroke-width=".8"/>
+<path d="M546 240 q7 -2 13 0 t12 0" fill="none" stroke="#9e7146" stroke-width=".55" opacity=".23"/>
+<path d="M577 214 v3 m-2 0 h4" stroke="#d1a06a" stroke-width=".65" opacity=".42"/>
+<image href="../../../client/Assets/Wildfolk/Art/iron_pickaxe.png" x="548.52" y="209.02" width="30.96" height="30.96" preserveAspectRatio="xMidYMid meet" opacity="1" />
+<text x="544" y="214" font-family="Lowfire" font-size="7.6" font-weight="800" fill="#f5dbaf" stroke="#22160d" stroke-width="1.2" paint-order="stroke">9</text>
+<path d="M153 258 H191 L196 263 V294 L191 299 H153 L148 294 V263 Z" fill="#52351f" stroke="#1b100a" stroke-width="1.35"/>
+<path d="M150 263 L154 260 H189 L194 264" fill="none" stroke="#d1a06a" stroke-width="1.35"/>
+<path d="M152 263 H192 V294 H152 Z" fill="#291a10" stroke="#180f09" stroke-width=".8"/>
+<path d="M154 292 q7 -2 13 0 t12 0" fill="none" stroke="#9e7146" stroke-width=".55" opacity=".23"/>
+<path d="M185 268 v3 m-2 0 h4" stroke="#d1a06a" stroke-width=".65" opacity=".42"/>
+<image href="../../../client/Assets/Wildfolk/Art/icon_wood.png" x="157.24" y="262.74" width="29.52" height="29.52" preserveAspectRatio="xMidYMid meet" opacity="1" />
+<path d="M179.2 288 H194 V297 H179.2 Z" fill="#17100b" opacity=".92"/>
+<text x="193" y="296" font-family="Lowfire" font-size="9.2" font-weight="800" fill="#fff0ce" text-anchor="end" stroke="#1b110b" stroke-width="1.5" paint-order="stroke">24</text>
+<path d="M202 258 H240 L245 263 V294 L240 299 H202 L197 294 V263 Z" fill="#52351f" stroke="#1b100a" stroke-width="1.35"/>
+<path d="M199 263 L203 260 H238 L243 264" fill="none" stroke="#d1a06a" stroke-width="1.35"/>
+<path d="M201 263 H241 V294 H201 Z" fill="#291a10" stroke="#180f09" stroke-width=".8"/>
+<path d="M203 292 q7 -2 13 0 t12 0" fill="none" stroke="#9e7146" stroke-width=".55" opacity=".23"/>
+<path d="M234 268 v3 m-2 0 h4" stroke="#d1a06a" stroke-width=".65" opacity=".42"/>
+<image href="../../../client/Assets/Wildfolk/Art/icon_stone.png" x="206.24" y="262.74" width="29.52" height="29.52" preserveAspectRatio="xMidYMid meet" opacity="1" />
+<path d="M228.2 288 H243 V297 H228.2 Z" fill="#17100b" opacity=".92"/>
+<text x="242" y="296" font-family="Lowfire" font-size="9.2" font-weight="800" fill="#fff0ce" text-anchor="end" stroke="#1b110b" stroke-width="1.5" paint-order="stroke">18</text>
+<path d="M251 258 H289 L294 263 V294 L289 299 H251 L246 294 V263 Z" fill="#52351f" stroke="#1b100a" stroke-width="1.35"/>
+<path d="M248 263 L252 260 H287 L292 264" fill="none" stroke="#d1a06a" stroke-width="1.35"/>
+<path d="M250 263 H290 V294 H250 Z" fill="#291a10" stroke="#180f09" stroke-width=".8"/>
+<path d="M252 292 q7 -2 13 0 t12 0" fill="none" stroke="#9e7146" stroke-width=".55" opacity=".23"/>
+<path d="M283 268 v3 m-2 0 h4" stroke="#d1a06a" stroke-width=".65" opacity=".42"/>
+<image href="../../../client/Assets/Wildfolk/Art/plant_fiber.png" x="255.24" y="262.74" width="29.52" height="29.52" preserveAspectRatio="xMidYMid meet" opacity="1" />
+<path d="M277.2 288 H292 V297 H277.2 Z" fill="#17100b" opacity=".92"/>
+<text x="291" y="296" font-family="Lowfire" font-size="9.2" font-weight="800" fill="#fff0ce" text-anchor="end" stroke="#1b110b" stroke-width="1.5" paint-order="stroke">12</text>
+<path d="M300 258 H338 L343 263 V294 L338 299 H300 L295 294 V263 Z" fill="#52351f" stroke="#1b100a" stroke-width="1.35"/>
+<path d="M297 263 L301 260 H336 L341 264" fill="none" stroke="#d1a06a" stroke-width="1.35"/>
+<path d="M299 263 H339 V294 H299 Z" fill="#291a10" stroke="#180f09" stroke-width=".8"/>
+<path d="M301 292 q7 -2 13 0 t12 0" fill="none" stroke="#9e7146" stroke-width=".55" opacity=".23"/>
+<path d="M332 268 v3 m-2 0 h4" stroke="#d1a06a" stroke-width=".65" opacity=".42"/>
+<image href="../../../client/Assets/Wildfolk/Art/coal.png" x="304.24" y="262.74" width="29.52" height="29.52" preserveAspectRatio="xMidYMid meet" opacity="1" />
+<path d="M329 288 H341 V297 H329 Z" fill="#17100b" opacity=".92"/>
+<text x="340" y="296" font-family="Lowfire" font-size="9.2" font-weight="800" fill="#fff0ce" text-anchor="end" stroke="#1b110b" stroke-width="1.5" paint-order="stroke">6</text>
+<path d="M349 258 H387 L392 263 V294 L387 299 H349 L344 294 V263 Z" fill="#52351f" stroke="#1b100a" stroke-width="1.35"/>
+<path d="M346 263 L350 260 H385 L390 264" fill="none" stroke="#d1a06a" stroke-width="1.35"/>
+<path d="M348 263 H388 V294 H348 Z" fill="#291a10" stroke="#180f09" stroke-width=".8"/>
+<path d="M350 292 q7 -2 13 0 t12 0" fill="none" stroke="#9e7146" stroke-width=".55" opacity=".23"/>
+<path d="M381 268 v3 m-2 0 h4" stroke="#d1a06a" stroke-width=".65" opacity=".42"/>
+<image href="../../../client/Assets/Wildfolk/Art/medicinal_herb.png" x="353.24" y="262.74" width="29.52" height="29.52" preserveAspectRatio="xMidYMid meet" opacity="1" />
+<path d="M378 288 H390 V297 H378 Z" fill="#17100b" opacity=".92"/>
+<text x="389" y="296" font-family="Lowfire" font-size="9.2" font-weight="800" fill="#fff0ce" text-anchor="end" stroke="#1b110b" stroke-width="1.5" paint-order="stroke">4</text>
+<path d="M398 258 H436 L441 263 V294 L436 299 H398 L393 294 V263 Z" fill="#52351f" stroke="#1b100a" stroke-width="1.35"/>
+<path d="M395 263 L399 260 H434 L439 264" fill="none" stroke="#d1a06a" stroke-width="1.35"/>
+<path d="M397 263 H437 V294 H397 Z" fill="#291a10" stroke="#180f09" stroke-width=".8"/>
+<path d="M399 292 q7 -2 13 0 t12 0" fill="none" stroke="#9e7146" stroke-width=".55" opacity=".23"/>
+<path d="M430 268 v3 m-2 0 h4" stroke="#d1a06a" stroke-width=".65" opacity=".42"/>
+<image href="../../../client/Assets/Wildfolk/Art/medicinal_gland.png" x="402.24" y="262.74" width="29.52" height="29.52" preserveAspectRatio="xMidYMid meet" opacity="1" />
+<path d="M427 288 H439 V297 H427 Z" fill="#17100b" opacity=".92"/>
+<text x="438" y="296" font-family="Lowfire" font-size="9.2" font-weight="800" fill="#fff0ce" text-anchor="end" stroke="#1b110b" stroke-width="1.5" paint-order="stroke">2</text>
+<path d="M447 258 H485 L490 263 V294 L485 299 H447 L442 294 V263 Z" fill="#a5582c" stroke="#1b100a" stroke-width="1.35"/>
+<path d="M444 263 L448 260 H483 L488 264" fill="none" stroke="#f2c176" stroke-width="1.35"/>
+<path d="M446 263 H486 V294 H446 Z" fill="#422317" stroke="#180f09" stroke-width=".8"/>
+<path d="M448 292 q7 -2 13 0 t12 0" fill="none" stroke="#9e7146" stroke-width=".55" opacity=".23"/>
+<path d="M479 268 v3 m-2 0 h4" stroke="#d1a06a" stroke-width=".65" opacity=".42"/>
+<path d="M447 258 H485 L490 263 V294 L485 299 H447 L442 294 V263 Z" fill="none" stroke="#f6c976" stroke-width="1.5" filter="url(#amberGlow)"/>
+<path d="M447 262 H484" stroke="#ffe0a5" stroke-width=".8"/>
+<image href="../../../client/Assets/Wildfolk/Art/steel_head.png" x="451.24" y="262.74" width="29.52" height="29.52" preserveAspectRatio="xMidYMid meet" opacity="1" />
+<path d="M496 258 H534 L539 263 V294 L534 299 H496 L491 294 V263 Z" fill="#52351f" stroke="#1b100a" stroke-width="1.35"/>
+<path d="M493 263 L497 260 H532 L537 264" fill="none" stroke="#d1a06a" stroke-width="1.35"/>
+<path d="M495 263 H535 V294 H495 Z" fill="#291a10" stroke="#180f09" stroke-width=".8"/>
+<path d="M497 292 q7 -2 13 0 t12 0" fill="none" stroke="#9e7146" stroke-width=".55" opacity=".23"/>
+<path d="M528 268 v3 m-2 0 h4" stroke="#d1a06a" stroke-width=".65" opacity=".42"/>
+<image href="../../../client/Assets/Wildfolk/Art/leather_body.png" x="500.24" y="262.74" width="29.52" height="29.52" preserveAspectRatio="xMidYMid meet" opacity="1" />
+<path d="M545 258 H583 L588 263 V294 L583 299 H545 L540 294 V263 Z" fill="#52351f" stroke="#1b100a" stroke-width="1.35"/>
+<path d="M542 263 L546 260 H581 L586 264" fill="none" stroke="#d1a06a" stroke-width="1.35"/>
+<path d="M544 263 H584 V294 H544 Z" fill="#291a10" stroke="#180f09" stroke-width=".8"/>
+<path d="M546 292 q7 -2 13 0 t12 0" fill="none" stroke="#9e7146" stroke-width=".55" opacity=".23"/>
+<path d="M577 268 v3 m-2 0 h4" stroke="#d1a06a" stroke-width=".65" opacity=".42"/>
+<image href="../../../client/Assets/Wildfolk/Art/iron_ore.png" x="549.24" y="262.74" width="29.52" height="29.52" preserveAspectRatio="xMidYMid meet" opacity="1" />
+<path d="M574 288 H586 V297 H574 Z" fill="#17100b" opacity=".92"/>
+<text x="585" y="296" font-family="Lowfire" font-size="9.2" font-weight="800" fill="#fff0ce" text-anchor="end" stroke="#1b110b" stroke-width="1.5" paint-order="stroke">8</text>
+<path d="M153 300 H191 L196 305 V336 L191 341 H153 L148 336 V305 Z" fill="#52351f" stroke="#1b100a" stroke-width="1.35"/>
+<path d="M150 305 L154 302 H189 L194 306" fill="none" stroke="#d1a06a" stroke-width="1.35"/>
+<path d="M152 305 H192 V336 H152 Z" fill="#291a10" stroke="#180f09" stroke-width=".8"/>
+<path d="M154 334 q7 -2 13 0 t12 0" fill="none" stroke="#9e7146" stroke-width=".55" opacity=".23"/>
+<path d="M185 310 v3 m-2 0 h4" stroke="#d1a06a" stroke-width=".65" opacity=".42"/>
+<image href="../../../client/Assets/Wildfolk/Art/copper_ore.png" x="157.24" y="304.74" width="29.52" height="29.52" preserveAspectRatio="xMidYMid meet" opacity="1" />
+<path d="M182 330 H194 V339 H182 Z" fill="#17100b" opacity=".92"/>
+<text x="193" y="338" font-family="Lowfire" font-size="9.2" font-weight="800" fill="#fff0ce" text-anchor="end" stroke="#1b110b" stroke-width="1.5" paint-order="stroke">7</text>
+<path d="M202 300 H240 L245 305 V336 L240 341 H202 L197 336 V305 Z" fill="#52351f" stroke="#1b100a" stroke-width="1.35"/>
+<path d="M199 305 L203 302 H238 L243 306" fill="none" stroke="#d1a06a" stroke-width="1.35"/>
+<path d="M201 305 H241 V336 H201 Z" fill="#291a10" stroke="#180f09" stroke-width=".8"/>
+<path d="M203 334 q7 -2 13 0 t12 0" fill="none" stroke="#9e7146" stroke-width=".55" opacity=".23"/>
+<path d="M234 310 v3 m-2 0 h4" stroke="#d1a06a" stroke-width=".65" opacity=".42"/>
+<image href="../../../client/Assets/Wildfolk/Art/tin_ore.png" x="206.24" y="304.74" width="29.52" height="29.52" preserveAspectRatio="xMidYMid meet" opacity="1" />
+<path d="M231 330 H243 V339 H231 Z" fill="#17100b" opacity=".92"/>
+<text x="242" y="338" font-family="Lowfire" font-size="9.2" font-weight="800" fill="#fff0ce" text-anchor="end" stroke="#1b110b" stroke-width="1.5" paint-order="stroke">5</text>
+<path d="M251 300 H289 L294 305 V336 L289 341 H251 L246 336 V305 Z" fill="#52351f" stroke="#1b100a" stroke-width="1.35"/>
+<path d="M248 305 L252 302 H287 L292 306" fill="none" stroke="#d1a06a" stroke-width="1.35"/>
+<path d="M250 305 H290 V336 H250 Z" fill="#291a10" stroke="#180f09" stroke-width=".8"/>
+<path d="M252 334 q7 -2 13 0 t12 0" fill="none" stroke="#9e7146" stroke-width=".55" opacity=".23"/>
+<path d="M283 310 v3 m-2 0 h4" stroke="#d1a06a" stroke-width=".65" opacity=".42"/>
+<image href="../../../client/Assets/Wildfolk/Art/iron_ingot.png" x="255.24" y="304.74" width="29.52" height="29.52" preserveAspectRatio="xMidYMid meet" opacity="1" />
+<path d="M280 330 H292 V339 H280 Z" fill="#17100b" opacity=".92"/>
+<text x="291" y="338" font-family="Lowfire" font-size="9.2" font-weight="800" fill="#fff0ce" text-anchor="end" stroke="#1b110b" stroke-width="1.5" paint-order="stroke">4</text>
+<path d="M300 300 H338 L343 305 V336 L338 341 H300 L295 336 V305 Z" fill="#52351f" stroke="#1b100a" stroke-width="1.35"/>
+<path d="M297 305 L301 302 H336 L341 306" fill="none" stroke="#d1a06a" stroke-width="1.35"/>
+<path d="M299 305 H339 V336 H299 Z" fill="#291a10" stroke="#180f09" stroke-width=".8"/>
+<path d="M301 334 q7 -2 13 0 t12 0" fill="none" stroke="#9e7146" stroke-width=".55" opacity=".23"/>
+<path d="M332 310 v3 m-2 0 h4" stroke="#d1a06a" stroke-width=".65" opacity=".42"/>
+<image href="../../../client/Assets/Wildfolk/Art/leather.png" x="304.24" y="304.74" width="29.52" height="29.52" preserveAspectRatio="xMidYMid meet" opacity="1" />
+<path d="M329 330 H341 V339 H329 Z" fill="#17100b" opacity=".92"/>
+<text x="340" y="338" font-family="Lowfire" font-size="9.2" font-weight="800" fill="#fff0ce" text-anchor="end" stroke="#1b110b" stroke-width="1.5" paint-order="stroke">6</text>
+<path d="M349 300 H387 L392 305 V336 L387 341 H349 L344 336 V305 Z" fill="#52351f" stroke="#1b100a" stroke-width="1.35"/>
+<path d="M346 305 L350 302 H385 L390 306" fill="none" stroke="#d1a06a" stroke-width="1.35"/>
+<path d="M348 305 H388 V336 H348 Z" fill="#291a10" stroke="#180f09" stroke-width=".8"/>
+<path d="M350 334 q7 -2 13 0 t12 0" fill="none" stroke="#9e7146" stroke-width=".55" opacity=".23"/>
+<path d="M381 310 v3 m-2 0 h4" stroke="#d1a06a" stroke-width=".65" opacity=".42"/>
+<image href="../../../client/Assets/Wildfolk/Art/mushroom.png" x="353.24" y="304.74" width="29.52" height="29.52" preserveAspectRatio="xMidYMid meet" opacity="1" />
+<path d="M378 330 H390 V339 H378 Z" fill="#17100b" opacity=".92"/>
+<text x="389" y="338" font-family="Lowfire" font-size="9.2" font-weight="800" fill="#fff0ce" text-anchor="end" stroke="#1b110b" stroke-width="1.5" paint-order="stroke">5</text>
+<path d="M398 300 H436 L441 305 V336 L436 341 H398 L393 336 V305 Z" fill="#52351f" stroke="#1b100a" stroke-width="1.35"/>
+<path d="M395 305 L399 302 H434 L439 306" fill="none" stroke="#d1a06a" stroke-width="1.35"/>
+<path d="M397 305 H437 V336 H397 Z" fill="#291a10" stroke="#180f09" stroke-width=".8"/>
+<path d="M399 334 q7 -2 13 0 t12 0" fill="none" stroke="#9e7146" stroke-width=".55" opacity=".23"/>
+<path d="M430 310 v3 m-2 0 h4" stroke="#d1a06a" stroke-width=".65" opacity=".42"/>
+<image href="../../../client/Assets/Wildfolk/Art/berry.png" x="402.24" y="304.74" width="29.52" height="29.52" preserveAspectRatio="xMidYMid meet" opacity="1" />
+<path d="M427 330 H439 V339 H427 Z" fill="#17100b" opacity=".92"/>
+<text x="438" y="338" font-family="Lowfire" font-size="9.2" font-weight="800" fill="#fff0ce" text-anchor="end" stroke="#1b110b" stroke-width="1.5" paint-order="stroke">6</text>
+<path d="M447 300 H485 L490 305 V336 L485 341 H447 L442 336 V305 Z" fill="#52351f" stroke="#1b100a" stroke-width="1.35"/>
+<path d="M444 305 L448 302 H483 L488 306" fill="none" stroke="#d1a06a" stroke-width="1.35"/>
+<path d="M446 305 H486 V336 H446 Z" fill="#291a10" stroke="#180f09" stroke-width=".8"/>
+<path d="M448 334 q7 -2 13 0 t12 0" fill="none" stroke="#9e7146" stroke-width=".55" opacity=".23"/>
+<path d="M479 310 v3 m-2 0 h4" stroke="#d1a06a" stroke-width=".65" opacity=".42"/>
+<image href="../../../client/Assets/Wildfolk/Art/iron_spear.png" x="451.24" y="304.74" width="29.52" height="29.52" preserveAspectRatio="xMidYMid meet" opacity="1" />
+<path d="M496 300 H534 L539 305 V336 L534 341 H496 L491 336 V305 Z" fill="#52351f" stroke="#1b100a" stroke-width="1.35"/>
+<path d="M493 305 L497 302 H532 L537 306" fill="none" stroke="#d1a06a" stroke-width="1.35"/>
+<path d="M495 305 H535 V336 H495 Z" fill="#291a10" stroke="#180f09" stroke-width=".8"/>
+<path d="M497 334 q7 -2 13 0 t12 0" fill="none" stroke="#9e7146" stroke-width=".55" opacity=".23"/>
+<path d="M528 310 v3 m-2 0 h4" stroke="#d1a06a" stroke-width=".65" opacity=".42"/>
+<image href="../../../client/Assets/Wildfolk/Art/bow.png" x="500.24" y="304.74" width="29.52" height="29.52" preserveAspectRatio="xMidYMid meet" opacity="1" />
+<path d="M545 300 H583 L588 305 V336 L583 341 H545 L540 336 V305 Z" fill="#52351f" stroke="#1b100a" stroke-width="1.35"/>
+<path d="M542 305 L546 302 H581 L586 306" fill="none" stroke="#d1a06a" stroke-width="1.35"/>
+<path d="M544 305 H584 V336 H544 Z" fill="#291a10" stroke="#180f09" stroke-width=".8"/>
+<path d="M546 334 q7 -2 13 0 t12 0" fill="none" stroke="#9e7146" stroke-width=".55" opacity=".23"/>
+<path d="M577 310 v3 m-2 0 h4" stroke="#d1a06a" stroke-width=".65" opacity=".42"/>
+<path d="M153 342 H191 L196 347 V378 L191 383 H153 L148 378 V347 Z" fill="#52351f" stroke="#1b100a" stroke-width="1.35"/>
+<path d="M150 347 L154 344 H189 L194 348" fill="none" stroke="#d1a06a" stroke-width="1.35"/>
+<path d="M152 347 H192 V378 H152 Z" fill="#291a10" stroke="#180f09" stroke-width=".8"/>
+<path d="M154 376 q7 -2 13 0 t12 0" fill="none" stroke="#9e7146" stroke-width=".55" opacity=".23"/>
+<path d="M185 352 v3 m-2 0 h4" stroke="#d1a06a" stroke-width=".65" opacity=".42"/>
+<path d="M202 342 H240 L245 347 V378 L240 383 H202 L197 378 V347 Z" fill="#52351f" stroke="#1b100a" stroke-width="1.35"/>
+<path d="M199 347 L203 344 H238 L243 348" fill="none" stroke="#d1a06a" stroke-width="1.35"/>
+<path d="M201 347 H241 V378 H201 Z" fill="#291a10" stroke="#180f09" stroke-width=".8"/>
+<path d="M203 376 q7 -2 13 0 t12 0" fill="none" stroke="#9e7146" stroke-width=".55" opacity=".23"/>
+<path d="M234 352 v3 m-2 0 h4" stroke="#d1a06a" stroke-width=".65" opacity=".42"/>
+<path d="M251 342 H289 L294 347 V378 L289 383 H251 L246 378 V347 Z" fill="#52351f" stroke="#1b100a" stroke-width="1.35"/>
+<path d="M248 347 L252 344 H287 L292 348" fill="none" stroke="#d1a06a" stroke-width="1.35"/>
+<path d="M250 347 H290 V378 H250 Z" fill="#291a10" stroke="#180f09" stroke-width=".8"/>
+<path d="M252 376 q7 -2 13 0 t12 0" fill="none" stroke="#9e7146" stroke-width=".55" opacity=".23"/>
+<path d="M283 352 v3 m-2 0 h4" stroke="#d1a06a" stroke-width=".65" opacity=".42"/>
+<path d="M300 342 H338 L343 347 V378 L338 383 H300 L295 378 V347 Z" fill="#52351f" stroke="#1b100a" stroke-width="1.35"/>
+<path d="M297 347 L301 344 H336 L341 348" fill="none" stroke="#d1a06a" stroke-width="1.35"/>
+<path d="M299 347 H339 V378 H299 Z" fill="#291a10" stroke="#180f09" stroke-width=".8"/>
+<path d="M301 376 q7 -2 13 0 t12 0" fill="none" stroke="#9e7146" stroke-width=".55" opacity=".23"/>
+<path d="M332 352 v3 m-2 0 h4" stroke="#d1a06a" stroke-width=".65" opacity=".42"/>
+<path d="M349 342 H387 L392 347 V378 L387 383 H349 L344 378 V347 Z" fill="#52351f" stroke="#1b100a" stroke-width="1.35"/>
+<path d="M346 347 L350 344 H385 L390 348" fill="none" stroke="#d1a06a" stroke-width="1.35"/>
+<path d="M348 347 H388 V378 H348 Z" fill="#291a10" stroke="#180f09" stroke-width=".8"/>
+<path d="M350 376 q7 -2 13 0 t12 0" fill="none" stroke="#9e7146" stroke-width=".55" opacity=".23"/>
+<path d="M381 352 v3 m-2 0 h4" stroke="#d1a06a" stroke-width=".65" opacity=".42"/>
+<path d="M398 342 H436 L441 347 V378 L436 383 H398 L393 378 V347 Z" fill="#52351f" stroke="#1b100a" stroke-width="1.35"/>
+<path d="M395 347 L399 344 H434 L439 348" fill="none" stroke="#d1a06a" stroke-width="1.35"/>
+<path d="M397 347 H437 V378 H397 Z" fill="#291a10" stroke="#180f09" stroke-width=".8"/>
+<path d="M399 376 q7 -2 13 0 t12 0" fill="none" stroke="#9e7146" stroke-width=".55" opacity=".23"/>
+<path d="M430 352 v3 m-2 0 h4" stroke="#d1a06a" stroke-width=".65" opacity=".42"/>
+<path d="M447 342 H485 L490 347 V378 L485 383 H447 L442 378 V347 Z" fill="#52351f" stroke="#1b100a" stroke-width="1.35"/>
+<path d="M444 347 L448 344 H483 L488 348" fill="none" stroke="#d1a06a" stroke-width="1.35"/>
+<path d="M446 347 H486 V378 H446 Z" fill="#291a10" stroke="#180f09" stroke-width=".8"/>
+<path d="M448 376 q7 -2 13 0 t12 0" fill="none" stroke="#9e7146" stroke-width=".55" opacity=".23"/>
+<path d="M479 352 v3 m-2 0 h4" stroke="#d1a06a" stroke-width=".65" opacity=".42"/>
+<path d="M496 342 H534 L539 347 V378 L534 383 H496 L491 378 V347 Z" fill="#52351f" stroke="#1b100a" stroke-width="1.35"/>
+<path d="M493 347 L497 344 H532 L537 348" fill="none" stroke="#d1a06a" stroke-width="1.35"/>
+<path d="M495 347 H535 V378 H495 Z" fill="#291a10" stroke="#180f09" stroke-width=".8"/>
+<path d="M497 376 q7 -2 13 0 t12 0" fill="none" stroke="#9e7146" stroke-width=".55" opacity=".23"/>
+<path d="M528 352 v3 m-2 0 h4" stroke="#d1a06a" stroke-width=".65" opacity=".42"/>
+<path d="M545 342 H583 L588 347 V378 L583 383 H545 L540 378 V347 Z" fill="#52351f" stroke="#1b100a" stroke-width="1.35"/>
+<path d="M542 347 L546 344 H581 L586 348" fill="none" stroke="#d1a06a" stroke-width="1.35"/>
+<path d="M544 347 H584 V378 H544 Z" fill="#291a10" stroke="#180f09" stroke-width=".8"/>
+<path d="M546 376 q7 -2 13 0 t12 0" fill="none" stroke="#9e7146" stroke-width=".55" opacity=".23"/>
+<path d="M577 352 v3 m-2 0 h4" stroke="#d1a06a" stroke-width=".65" opacity=".42"/>
+<path d="M603 102 L791 101 L800 109 L801 202 L793 209 L604 208 L596 200 L597 109 Z" fill="url(#woodFace)" stroke="#170e09" stroke-width="2.2" filter="url(#shadow)"/>
+<path d="M601 108 L607 105 H789 L796 111 V198 L789 204 H608 L601 197 Z" fill="url(#plankRun)" stroke="#cf9a60" stroke-width=".9"/>
+<path d="M603 109 H794 V201 H603 Z" fill="url(#woodgrain)" opacity=".8"/>
+<path d="M604 111 H791" fill="none" stroke="#e0b47a" stroke-width="1.1" opacity=".78"/>
+<path d="M604 199 H791" fill="none" stroke="#382216" stroke-width="1.1" opacity=".85"/>
+<path d="M606 140.333 H791" stroke="#3f2819" stroke-width=".55" opacity=".32"/>
+<path d="M606 169.667 H791" stroke="#3f2819" stroke-width=".55" opacity=".32"/>
+<path d="M614 116 q7 -2 13 0 t12 0" fill="none" stroke="#342014" stroke-width=".6" opacity=".32"/>
+<path d="M661 135 q7 -2 13 0 t12 0" fill="none" stroke="#342014" stroke-width=".6" opacity=".32"/>
+<path d="M708 154 q7 -2 13 0 t12 0" fill="none" stroke="#342014" stroke-width=".6" opacity=".32"/>
+<path d="M755 173 q7 -2 13 0 t12 0" fill="none" stroke="#342014" stroke-width=".6" opacity=".32"/>
+<circle cx="605" cy="111" r="2.1" fill="#432a19" stroke="#d7a76b" stroke-width=".65"/>
+<path d="M604 111 l2 .4" stroke="#f0c58a" stroke-width=".45" opacity=".7"/>
+<circle cx="791" cy="111" r="2.1" fill="#432a19" stroke="#d7a76b" stroke-width=".65"/>
+<path d="M790 111 l2 .4" stroke="#f0c58a" stroke-width=".45" opacity=".7"/>
+<circle cx="605" cy="199" r="2.1" fill="#432a19" stroke="#d7a76b" stroke-width=".65"/>
+<path d="M604 199 l2 .4" stroke="#f0c58a" stroke-width=".45" opacity=".7"/>
+<circle cx="791" cy="199" r="2.1" fill="#432a19" stroke="#d7a76b" stroke-width=".65"/>
+<path d="M790 199 l2 .4" stroke="#f0c58a" stroke-width=".45" opacity=".7"/>
+<image href="../../../client/Assets/Wildfolk/Art/steel_head.png" x="605" y="109" width="40" height="40" preserveAspectRatio="xMidYMid meet" opacity="1" />
+<text x="653" y="121" font-family="Lowfire" font-size="11.1" font-weight="800" fill="#f0d5a7" text-anchor="start" >강철 투구</text>
+<text x="653" y="138" font-family="Lowfire" font-size="9.4" font-weight="750" fill="#c6a77b" text-anchor="start" >방어력 2 → 3</text>
+<text x="653" y="151" font-family="Lowfire" font-size="8.5" font-weight="650" fill="#c6a77b" text-anchor="start" >현재 철 투구 · 슬롯 선택으로 해제</text>
+<path d="M610 160 H786 L792 166 V198 L787 204 H609 L604 199 V166 Z" fill="url(#buttonFire)" stroke="#452615" stroke-width="1.4" filter="url(#shadowLite)"/>
+<path d="M611 164 H784" stroke="#f0c68c" stroke-width=".85" opacity=".75"/>
+<text x="698" y="185.57" font-family="Lowfire" font-size="10.5" font-weight="800" fill="#f0d5a7" text-anchor="middle" >장착</text>
+</svg>
