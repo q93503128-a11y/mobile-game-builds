@@ -102,3 +102,9 @@ III 원본 아트: tools/generate_tier_three_art.py(Pillow). 기존 Steel/Lanter
 버튼 표면은 720×240px, 버튼 slice 경계는 좌우96px·상하56px다. 확인 프레임은720×520px, 각 변64px다. SVG/PNG와 manifest는 별도로 남아 있으며, Unity importer는 Sprite/Single, Full Rect mesh, PPU200, alpha, bilinear/clamp, mipmap off, Compressed HQ를 적용한다. Canvas 기준 PPU100에서 2× raster art의 slice가 맞도록 한다. 3× resolution Unity Game View에서 9-slice의 중앙/모서리, frame, KO/EN overflow를 검토했다. 실제 Android 기기 DP/safe area는 미검증이다.
 
 문구와 아이콘은 이미지 안에 굽지 않았다. 기존 `lowfire_wordmark`와 Lucide 계열 navigation sprite, Class emblem, Unity Text/localization, Button callbacks 및 Unity 월드 배경을 유지했다. 이 패스는 외부 게임 asset이나 외부 글꼴/새 라이선스 의존성을 추가하지 않는다. 상세 증거는 [Phase 2B review](../validation/ui-redesign-phase2b-main-menu-2026-11-06/REVIEW.md)다.
+
+## Inventory Phase 4C — Flat UI Assets · 2026-11-07
+
+`tools/InventoryUiArtGenerator.cs`와 `tools/generate_inventory_phase4c_art.ps1`가 Inventory용 panel, rail, button, slot, selected-slot의 절제된 flat 2D 표면을 결정적으로 생성한다. 기존 Lowfire 월드 배경, Item/Equipment 아이콘, 글꼴과 Unity UI 텍스트는 재사용한다. 외부 게임 스크린샷·텍스처·폰트는 프로젝트에 포함하지 않았다.
+
+`VisualArtImporter.cs`는 각 Sprite를 9-slice로 가져오며 얇은 가장자리로 모서리와 중앙을 유지한다. 해당 PNG와 편집 가능한 C# 생성 원본은 `client/Assets/Wildfolk/Art/` 및 `tools/`에 있다. 재생성 방법, 비교, 실제 Unity 캡처, 라이선스·실기기 한계는 [Inventory Phase 4C 기록](../validation/inventory-phase4c-commercial-ui-2026-11-07/README.md)을 따른다.

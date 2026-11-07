@@ -49,3 +49,11 @@ Waterskin은 item 하나와 Charges/Quality를 가지는 MaxStack1 용기다. �
 ## Accessory 한 칸
 
 ArmorSlot.Accessory는 기존 enum 뒤 index3으로 추가했다. Head/Body/Utility/Accessory는 장비 영역2×2이며 Storage/Hotbar와 겹치지 않는다. Equippable 경계로 슬롯 강조·Primary·Equip·Drag·교체·해제를 공유한다. 장착은 가방에서 제거, 교체는 이전1개 반환, 공간이 없으면 원본 유지다. Crown은 HeadArmor와 동시에 장착된다. accessory ID는 Save14, appearance index는 Protocol21에서 복제한다. HP≤35% 조건은 현재 살아 있는 Health에서 계산하고 회복/해제 즉시 풀리며 저장한 지속 buff를 누적하지 않는다. 시각은 Anchor 설정과 별도 SpriteRenderer1개로 표현한다.
+
+## Inventory Phase 4C — 2026-11-07 UI 교정
+
+기능 구조는 기존과 같고 표현만 교정했다. Hotbar9 + Storage27(총36), Head/Body/Utility/Accessory, 이동·드래그·스택 소분·장착/교체/해제·제작 진입·월드 드롭은 그대로 유지한다. Save/Profile/Protocol 및 multiplayer authority는 변경하지 않았다.
+
+Inventory 창의 장비 레일은 2×2 아이콘 우선 셀로 바꿨다. 빈 장비는 유형명과 `미장착` 상태, 보유 후보는 `장착 후보`/`교체 후보`, 선택한 장착품은 그 셀에만 `장착 중`을 표시한다. 비선택 장비 셀은 아이콘으로 장착 상태를 나타내 중복 문구를 줄인다. 선택 아이템 이름·설명·비교와 Equip/Unequip 버튼은 세부 영역에서 제공한다. 분할/아이템 행동 모달은 불투명 matte를 사용해 뒤의 슬롯 글자가 읽기를 방해하지 않게 한다.
+
+실제 Game View 캡처, 구조/텍스트 경계 검사, 남은 영어 상세 문구 크기와 Android DP·Safe Area 한계는 [Phase 4C 검수](../validation/inventory-phase4c-commercial-ui-2026-11-07/README.md)를 따른다. Android 실기기 검증은 아직 없다.

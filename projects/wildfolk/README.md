@@ -4,6 +4,8 @@
 
 > **2026-11-02 UI pass 마감:** Commercial UI/Mobile Presentation 저장소 구현·관련 검증 완료. 마지막127개 메뉴 클릭음 누락도 교정했다. 화면은 PC/Unity 검수 후보이며 **사용자·실기기 승인 전 RC2 NOT READY**다. [최종37항목 보고/증거](validation/commercial-ui-mobile/FINAL_REPORT.md). AAB/업로드/운영 활성화는 하지 않았다.
 
+> **2026-11-07 Inventory Phase 4C:** Inventory 기능을 유지하며 장비 레일을 2×2 아이콘 우선 슬롯으로 바꾸고, 실제 Unity Game View 12개와 관련 Edit/Play 회귀를 검증했다. Android 실기기·터치 DP 검증과 사용자 디자인 승인은 남아 있다. [조사·전후 화면·캡처·검증](validation/inventory-phase4c-commercial-ui-2026-11-07/README.md).
+
 # Lowfire
 
 Internal Test RC1: **signed AAB 업로드 준비 READY** (`1.0.0-rc1 / code2`, IL2CPP/ARM64, offline Alpha). 실제 Android 기기·Console 업로드는 UNVERIFIED이며 계정/광고/현금 구매 OFF를 유지한다. [검증·아티팩트](validation/internal-test-rc1/REVIEW.md) · [수동 업로드](validation/internal-test-rc1/UPLOAD_CHECKLIST.md).

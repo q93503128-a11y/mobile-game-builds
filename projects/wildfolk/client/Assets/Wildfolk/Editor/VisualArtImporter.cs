@@ -24,11 +24,11 @@ namespace Wildfolk.Editor
                 var ppu=fileName=="ground.png" ? 2560f/48f : menuSurface ? 200f : 100f;
                 var border=fileName=="panel.png" ? new Vector4(18,18,18,18)
                     : menuSurface && fileName=="menu_a_dialog_frame.png" ? new Vector4(64,64,64,64)
-                    : inventorySurface && fileName=="inventory_panel.png" ? new Vector4(30,30,30,30)
-                    : inventorySurface && fileName=="inventory_slot.png" ? new Vector4(18,18,18,18)
-                    : inventorySurface && fileName=="inventory_selected_slot.png" ? new Vector4(22,22,22,22)
-                    : inventorySurface && fileName=="inventory_button.png" ? new Vector4(26,18,26,18)
-                    : inventorySurface && fileName=="inventory_rail.png" ? new Vector4(20,20,20,20)
+                    : inventorySurface && fileName=="inventory_panel.png" ? new Vector4(16,16,16,16)
+                    : inventorySurface && fileName=="inventory_slot.png" ? new Vector4(10,10,10,10)
+                    : inventorySurface && fileName=="inventory_selected_slot.png" ? new Vector4(10,10,10,10)
+                    : inventorySurface && fileName=="inventory_button.png" ? new Vector4(14,10,14,10)
+                    : inventorySurface && fileName=="inventory_rail.png" ? new Vector4(10,10,10,10)
                     : menuSurface ? new Vector4(96,56,96,56) : Vector4.zero;
                 var settings=new TextureImporterSettings();importer.ReadTextureSettings(settings);
                 var meshReady=!menuSurface&&!inventorySurface||settings.spriteMeshType==SpriteMeshType.FullRect;

@@ -25,8 +25,9 @@ namespace Wildfolk
         {
             SlotFilter=SlotFilter==slot ? -1 : slot;selectedSlot=(ArmorSlot)slot;equippedSelected=SlotFilter>=0;
             var drag=GetComponent<InventoryDragController>();
-            var selectingEquipment=equippedSelected;var selectedCandidate=false;
-            if(selectingEquipment && Current()==null)
+            var selectingEquipment=equippedSelected;var selectedStack=Player.SelectedStack;
+            var selectedCandidate=selectingEquipment && !selectedStack.IsEmpty && selectedStack.Item.Equippable && PlayerEquipment.Slot(selectedStack.Item)==selectedSlot;
+            if(selectingEquipment && !selectedCandidate && Current()==null)
             {
                 for(var i=0;i<Player.Model.Capacity;i++)
                 {
@@ -35,8 +36,9 @@ namespace Wildfolk
                     Panel.Select(i);drag?.Select(i,false);selectedCandidate=true;break;
                 }
             }
-            if(selectingEquipment && !selectedCandidate)drag?.Select(-1,false);
-            else if(!selectingEquipment)drag?.Select(Player.SelectedIndex,false);
+            if(selectingEquipment && !selectedCandidate){drag?.Select(-1,false);equippedSelected=SlotFilter>=0;}
+            else if(selectingEquipment)equippedSelected=false;
+            else{drag?.Select(Player.SelectedIndex,false);equippedSelected=false;}
             Refresh();
         }
         private ItemDefinition Current()=>Equipment.Equipped(selectedSlot);
@@ -71,9 +73,11 @@ namespace Wildfolk
                 if(SlotItemNames!=null && i<SlotItemNames.Length && SlotItemNames[i]!=null)SlotItemNames[i].text=current==null ? "—" : current.LocalizedName;
                 if(SlotStatusLabels!=null && i<SlotStatusLabels.Length && SlotStatusLabels[i]!=null)
                 {
-                    var key=candidate ? current==null ? "ui.inventory.equip_candidate" : "ui.inventory.replace_candidate" : current==null ? "ui.inventory.empty" : "ui.inventory.equipped";
-                    SlotStatusLabels[i].text=L.Text(key);
-                    SlotStatusLabels[i].color=candidate ? new Color32(255,204,129,255) : new Color32(220,175,124,255);
+                    var key=candidate ? current==null ? "ui.inventory.equip_candidate" : "ui.inventory.replace_candidate" :
+                        current==null ? "ui.inventory.empty" : equippedSelected && selectedSlot==slot ? "ui.inventory.equipped" : null;
+                    SlotStatusLabels[i].text=key==null ? string.Empty : L.Text(key);
+                    SlotStatusLabels[i].color=candidate ? new Color32(255,204,129,255) : current==null ?
+                        new Color32(220,175,124,255) : new Color32(157,192,129,255);
                 }
                 if(SlotSelectionImages!=null && i<SlotSelectionImages.Length && SlotSelectionImages[i]!=null)
                 {

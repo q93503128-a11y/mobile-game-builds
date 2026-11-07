@@ -21,6 +21,9 @@ namespace Wildfolk.Editor
         private const float GridX = -312f;
         private const float EquipmentX = 686f;
         private const float EquipmentWidth = 590f;
+        private const float EquipmentCellWidth = 272f;
+        private const float EquipmentCellHeight = 192f;
+        private const float EquipmentSlotSize = 112f;
 
         internal static void Build(GameObject root, Transform safe, GameplaySession session, PlayerInventory owner, PlayerCrafting crafting, int count)
         {
@@ -247,11 +250,18 @@ namespace Wildfolk.Editor
 
             if (panel.SelectedIcon != null)
             {
-                Position(panel.SelectedIcon, new Vector2(470, -200), new Vector2(72, 68));
+                Position(panel.SelectedIcon, new Vector2(470, -213), new Vector2(76, 72));
                 panel.SelectedIcon.preserveAspect = true;
             }
-            if (panel.SelectedName != null) Caption(panel.SelectedName, new Vector2(708, -185), new Vector2(424, 40), 31);
-            if (panel.SelectedCategory != null) Caption(panel.SelectedCategory, new Vector2(708, -219), new Vector2(424, 26), 24);
+            if (panel.SelectedName != null)
+            {
+                Caption(panel.SelectedName, new Vector2(708, -176), new Vector2(424, 48), 30);
+                panel.SelectedName.horizontalOverflow = HorizontalWrapMode.Wrap;
+                panel.SelectedName.verticalOverflow = VerticalWrapMode.Truncate;
+                panel.SelectedName.resizeTextForBestFit = false;
+                panel.SelectedName.fontStyle = FontStyle.Bold;
+            }
+            if (panel.SelectedCategory != null) Caption(panel.SelectedCategory, new Vector2(708, -221), new Vector2(424, 38), 24);
 
             ArrangeEquipment(surface, equipment);
             if (panel.CraftingButton != null)
@@ -266,7 +276,7 @@ namespace Wildfolk.Editor
                 if (drag.SplitButton != null)
                 {
                     SetButtonArt(drag.SplitButton, "inventory_button");
-                    ActionSize(drag.SplitButton, new Vector2(820, -360), new Vector2(244, 92));
+                    ActionSize(drag.SplitButton, new Vector2(820, -371), new Vector2(244, 74));
                     SetButtonColors(drag.SplitButton);
                 }
                 if (drag.DropZone != null)
@@ -296,7 +306,7 @@ namespace Wildfolk.Editor
             equipment.Player = player;
             equipment.Panel = panel;
             equipment.Equipment = player.GetComponent<PlayerEquipment>();
-            Text("Equipment Title", surface, "ui.inventory.equipment", new Vector2(EquipmentX, 342), new Vector2(EquipmentWidth, 42), 31, TextAnchor.MiddleLeft);
+            Text("Equipment Title", surface, "ui.inventory.equipment", new Vector2(EquipmentX, 342), new Vector2(EquipmentWidth, 50), 31, TextAnchor.MiddleLeft);
 
             for (var i = 0; i < 2; i++)
             {
@@ -313,10 +323,10 @@ namespace Wildfolk.Editor
                 if (i == 0) { equipment.HeadButton = button; equipment.HeadIcon = icon; }
                 else { equipment.BodyButton = button; equipment.BodyIcon = icon; }
             }
-            equipment.Details = Text("Armor Details", surface, string.Empty, new Vector2(EquipmentX, -266), new Vector2(520, 50), 23, TextAnchor.MiddleLeft);
-            equipment.Comparison = Text("Comparison", surface, string.Empty, new Vector2(EquipmentX, -309), new Vector2(520, 28), 23, TextAnchor.MiddleLeft);
-            equipment.EquipButton = QualityUiBuilder.Action(surface, "Equip", "ui.action.equip", new Vector2(534, -368), new Vector2(244, 82), equipment.Equip, out equipment.EquipLabel);
-            equipment.UnequipButton = QualityUiBuilder.Action(surface, "Unequip", "ui.action.unequip", new Vector2(534, -368), new Vector2(244, 82), equipment.Unequip, out _);
+            equipment.Details = Text("Armor Details", surface, string.Empty, new Vector2(EquipmentX, -270), new Vector2(552, 46), 23, TextAnchor.MiddleLeft);
+            equipment.Comparison = Text("Comparison", surface, string.Empty, new Vector2(EquipmentX, -308), new Vector2(552, 26), 22, TextAnchor.MiddleLeft);
+            equipment.EquipButton = QualityUiBuilder.Action(surface, "Equip", "ui.action.equip", new Vector2(534, -370), new Vector2(244, 74), equipment.Equip, out equipment.EquipLabel);
+            equipment.UnequipButton = QualityUiBuilder.Action(surface, "Unequip", "ui.action.unequip", new Vector2(534, -370), new Vector2(244, 74), equipment.Unequip, out _);
             for (var i = 0; i < 2; i++)
             {
                 var slotType = i == 0 ? ArmorSlot.Head : ArmorSlot.Body;
@@ -342,46 +352,65 @@ namespace Wildfolk.Editor
                 if (button == null) continue;
                 button.name = EquipmentNames[i] + " Equipment";
                 var image = button.GetComponent<Image>();
-                SetNineSlice(image, "inventory_rail");
+                image.sprite = VisualArtImporter.Sprite("white");
+                image.type = UnityEngine.UI.Image.Type.Simple;
+                image.color = new Color(1f, 1f, 1f, 0f);
+                image.raycastTarget = true;
                 SetButtonColors(button);
+                var cell = (RectTransform)button.transform;
+                cell.pivot = new Vector2(.5f, .5f);
+                cell.anchorMin = cell.anchorMax = new Vector2(.5f, .5f);
+                cell.sizeDelta = new Vector2(EquipmentCellWidth, EquipmentCellHeight);
+
+                var frame = FindImage(button.transform, "Equipment Slot Surface") ?? Image("Equipment Slot Surface", button.transform, "inventory_slot", new Vector2(.5f, .5f), Vector2.zero, Vector2.one * EquipmentSlotSize);
+                Position(frame, Vector2.zero, Vector2.one * EquipmentSlotSize);
+                SetNineSlice(frame, "inventory_slot");
+                frame.raycastTarget = false;
+                frame.transform.SetAsFirstSibling();
+                button.targetGraphic = frame;
+
                 var icon = icons[i];
                 if (icon != null)
                 {
                     icon.preserveAspect = true;
-                    Position(icon, new Vector2(-220, 0), new Vector2(64, 68));
+                    Position(icon, new Vector2(0, 1), new Vector2(88, 92));
+                    icon.raycastTarget = false;
                 }
                 var key = "ui.slot." + EquipmentNames[i];
                 var category = EnsureEquipmentText(parent, key);
                 category.transform.SetParent(button.transform, false);
-                Position(category, new Vector2(-48, 22), new Vector2(256, 34));
-                category.fontSize = 27;
-                category.alignment = TextAnchor.MiddleLeft;
+                Position(category, new Vector2(0, 74), new Vector2(EquipmentCellWidth - 12, 42));
+                category.fontSize = 29;
+                category.alignment = TextAnchor.MiddleCenter;
+                category.fontStyle = FontStyle.Bold;
+                category.horizontalOverflow = HorizontalWrapMode.Wrap;
+                category.verticalOverflow = VerticalWrapMode.Truncate;
+                category.resizeTextForBestFit = false;
+                category.raycastTarget = false;
+                category.transform.SetAsLastSibling();
 
                 var itemName = FindText(button.transform, "Equipped Item Name") ?? Text("Equipped Item Name", button.transform, "—", new Vector2(0, -20), new Vector2(290, 36), 27, TextAnchor.MiddleLeft);
-                Position(itemName, new Vector2(-48, -20), new Vector2(256, 36));
-                itemName.fontSize = 27;
-                itemName.resizeTextForBestFit = true;
-                itemName.resizeTextMinSize = 20;
-                itemName.resizeTextMaxSize = 27;
-                itemName.horizontalOverflow = HorizontalWrapMode.Overflow;
-                itemName.color = new Color32(237, 221, 194, 255);
-                itemName.raycastTarget = false;
-                equipment.SlotItemNames[i] = itemName;
+                itemName.text = string.Empty;
+                itemName.gameObject.SetActive(false);
+                equipment.SlotItemNames[i] = null;
 
-                var status = FindText(button.transform, "Equipment Status") ?? Text("Equipment Status", button.transform, string.Empty, new Vector2(189, 0), new Vector2(112, 42), 22, TextAnchor.MiddleCenter);
-                Position(status, new Vector2(189, 0), new Vector2(112, 42));
-                status.fontSize = 22;
-                status.resizeTextForBestFit = true;
-                status.resizeTextMinSize = 18;
-                status.resizeTextMaxSize = 22;
-                status.color = new Color32(222, 174, 120, 255);
+                var status = FindText(button.transform, "Equipment Status") ?? Text("Equipment Status", button.transform, string.Empty, new Vector2(0, -76), new Vector2(EquipmentCellWidth - 8, 38), 25, TextAnchor.MiddleCenter);
+                Position(status, new Vector2(0, -76), new Vector2(EquipmentCellWidth - 8, 38));
+                status.fontSize = 25;
+                status.resizeTextForBestFit = false;
+                status.horizontalOverflow = HorizontalWrapMode.Wrap;
+                status.verticalOverflow = VerticalWrapMode.Truncate;
+                status.color = new Color32(226, 197, 157, 255);
                 status.raycastTarget = false;
+                status.text = string.Empty;
                 equipment.SlotStatusLabels[i] = status;
+                status.transform.SetAsLastSibling();
 
-                var selected = FindImage(button.transform, "Equipment Selection") ?? Image("Equipment Selection", button.transform, "inventory_selected_slot", new Vector2(.5f, .5f), Vector2.zero, new Vector2(EquipmentWidth + 8, 116));
-                Position(selected, Vector2.zero, new Vector2(EquipmentWidth + 8, 116));
+                var selected = FindImage(button.transform, "Equipment Selection") ?? Image("Equipment Selection", button.transform, "inventory_selected_slot", new Vector2(.5f, .5f), Vector2.zero, new Vector2(EquipmentSlotSize + 14, EquipmentSlotSize + 14));
+                Position(selected, Vector2.zero, new Vector2(EquipmentSlotSize + 14, EquipmentSlotSize + 14));
                 SetNineSlice(selected, "inventory_selected_slot");
                 selected.raycastTarget = false;
+                selected.transform.SetSiblingIndex(frame.transform.GetSiblingIndex() + 1);
                 equipment.SlotSelectionImages[i] = selected;
             }
         }
@@ -406,27 +435,34 @@ namespace Wildfolk.Editor
 
         private static void ArrangeEquipment(Transform surface, InventoryEquipment equipment)
         {
-            Caption(surface.Find("Equipment Title").GetComponent<Text>(), new Vector2(EquipmentX, 342), new Vector2(EquipmentWidth, 42), 31);
+            Caption(surface.Find("Equipment Title").GetComponent<Text>(), new Vector2(EquipmentX, 342), new Vector2(EquipmentWidth, 50), 31);
             var buttons = new[] { equipment.HeadButton, equipment.BodyButton, equipment.UtilityButton, equipment.AccessoryButton };
+            var positions = new[]
+            {
+                new Vector2(EquipmentX - 145, 144),
+                new Vector2(EquipmentX + 145, 144),
+                new Vector2(EquipmentX - 145, -55),
+                new Vector2(EquipmentX + 145, -55)
+            };
             for (var i = 0; i < buttons.Length; i++)
             {
                 if (buttons[i] == null) continue;
-                Position(buttons[i], new Vector2(EquipmentX, 250 - i * 112), new Vector2(EquipmentWidth, 100));
+                Position(buttons[i], positions[i], new Vector2(EquipmentCellWidth, EquipmentCellHeight));
             }
-            Position(equipment.Details, new Vector2(EquipmentX, -266), new Vector2(520, 50));
-            Position(equipment.Comparison, new Vector2(EquipmentX, -309), new Vector2(520, 28));
+            Position(equipment.Details, new Vector2(EquipmentX, -275), new Vector2(552, 66));
+            Position(equipment.Comparison, new Vector2(EquipmentX, -326), new Vector2(552, 32));
             equipment.Details.fontSize = 23;
-            equipment.Comparison.fontSize = 23;
-            equipment.Details.resizeTextForBestFit = true;
-            equipment.Details.resizeTextMinSize = 19;
-            equipment.Details.resizeTextMaxSize = 23;
-            equipment.Comparison.resizeTextForBestFit = true;
-            equipment.Comparison.resizeTextMinSize = 19;
-            equipment.Comparison.resizeTextMaxSize = 23;
+            equipment.Details.resizeTextForBestFit = false;
+            equipment.Details.horizontalOverflow = HorizontalWrapMode.Wrap;
+            equipment.Details.verticalOverflow = VerticalWrapMode.Truncate;
+            equipment.Comparison.fontSize = 22;
+            equipment.Comparison.resizeTextForBestFit = false;
+            equipment.Comparison.horizontalOverflow = HorizontalWrapMode.Wrap;
+            equipment.Comparison.verticalOverflow = VerticalWrapMode.Truncate;
             SetButtonArt(equipment.EquipButton, "inventory_button");
             SetButtonArt(equipment.UnequipButton, "inventory_button");
-            ActionSize(equipment.EquipButton, new Vector2(534, -368), new Vector2(244, 82));
-            ActionSize(equipment.UnequipButton, new Vector2(534, -368), new Vector2(244, 82));
+            ActionSize(equipment.EquipButton, new Vector2(534, -371), new Vector2(244, 74));
+            ActionSize(equipment.UnequipButton, new Vector2(534, -371), new Vector2(244, 74));
             SetButtonColors(equipment.EquipButton);
             SetButtonColors(equipment.UnequipButton);
             equipment.EquipLabel.fontSize = 27;
@@ -434,7 +470,7 @@ namespace Wildfolk.Editor
             if (split != null)
             {
                 SetButtonArt(split.GetComponent<Button>(), "inventory_button");
-                ActionSize(split.GetComponent<Button>(), new Vector2(820, -368), new Vector2(244, 82));
+                ActionSize(split.GetComponent<Button>(), new Vector2(820, -371), new Vector2(244, 74));
             }
         }
 
@@ -443,7 +479,7 @@ namespace Wildfolk.Editor
             EnsureRegion(surface, "Storage Region", "inventory_rail", new Vector2(GridX, 24), new Vector2(GridWidth, 454), 1);
             EnsureRegion(surface, "Hotbar Region", "inventory_rail", new Vector2(GridX, -307), new Vector2(GridWidth, 192), 2);
             EnsureRegion(surface, "Equipment Region", "inventory_rail", new Vector2(EquipmentX, 42), new Vector2(EquipmentWidth, 620), 3);
-            EnsureRegion(surface, "Selected Item Region", "inventory_panel", new Vector2(EquipmentX, -287), new Vector2(EquipmentWidth, 250), 4);
+            EnsureRegion(surface, "Selected Item Region", "inventory_panel", new Vector2(EquipmentX, -278), new Vector2(EquipmentWidth, 260), 4);
         }
 
         private static void EnsureRegion(Transform parent, string name, string sprite, Vector2 position, Vector2 size, int sibling)
@@ -452,7 +488,7 @@ namespace Wildfolk.Editor
             if (image == null) image = Image(name, parent, sprite, new Vector2(.5f, .5f), position, size);
             Position(image, position, size);
             SetNineSlice(image, sprite);
-            image.color = name == "Selected Item Region" ? new Color32(232, 211, 183, 255) : Color.white;
+            image.color = name == "Selected Item Region" ? new Color32(246, 231, 207, 255) : new Color32(245, 237, 222, 255);
             image.raycastTarget = false;
             image.transform.SetSiblingIndex(Mathf.Min(sibling, parent.childCount - 1));
         }
@@ -479,7 +515,7 @@ namespace Wildfolk.Editor
             }
             if (slot.Count != null)
             {
-                Caption(slot.Count, new Vector2(39, -46), new Vector2(58, 34), 29);
+                Caption(slot.Count, new Vector2(39, -46), new Vector2(58, 44), 29);
                 slot.Count.resizeTextForBestFit = true;
                 slot.Count.resizeTextMinSize = 22;
                 slot.Count.resizeTextMaxSize = 29;
@@ -490,7 +526,7 @@ namespace Wildfolk.Editor
             if (quick != null)
             {
                 var label = quick.GetComponent<Text>();
-                Caption(label, new Vector2(-44, 44), new Vector2(30, 28), 23);
+                Caption(label, new Vector2(-44, 44), new Vector2(30, 36), 23);
                 label.fontStyle = FontStyle.Bold;
                 label.color = new Color32(232, 196, 150, 255);
             }
@@ -500,6 +536,7 @@ namespace Wildfolk.Editor
         private static void ArrangeSplitArt(StackSplitPanel split)
         {
             if (split == null) return;
+            StackSplitUiBuilder.Arrange(split);
             foreach (var button in split.GetComponentsInChildren<Button>(true))
             {
                 var image = button.GetComponent<Image>();
