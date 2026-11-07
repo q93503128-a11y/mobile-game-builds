@@ -1,6 +1,14 @@
 # Visual QA
 
-## Status: UNVERIFIED
+## 2026-11-07 Phase 4B review addendum
+
+The earlier Phase 4A statement below records the status at implementation time. It is superseded for desktop Unity Game View review by [Phase 4B visual QA](../inventory-unity-visual-qa-2026-11-07/README.md). Live captures now cover Korean 844×390 inventory, selected detail, empty/equipped/candidate/replacement equipment states, split modal, all 27 storage slots, plus English long-name checks at 844×390 and English 1280×720 / 1920×1080 layout comparisons.
+
+The first visual review found equipment category/item text overlapping its icon at 1280×720 and 1920×1080. The canonical builder and both gameplay scenes were corrected, then captured again. An empty equipment slot could also keep a stale selected stack's Split action enabled; runtime selection synchronization was corrected and checked live.
+
+The 844×390 interface fits without observed clipping, but quantity and equipment status text remain small. Android safe area, dp sizing, and physical touch targets are still UNVERIFIED. This is a visual review, not user design approval.
+
+## Original Phase 4A checkpoint — historical
 
 No Unity Game View image is included because no rendered capture was successfully produced. This report does not claim a visual inspection or visual approval.
 

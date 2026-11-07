@@ -353,12 +353,12 @@ namespace Wildfolk.Editor
                 var key = "ui.slot." + EquipmentNames[i];
                 var category = EnsureEquipmentText(parent, key);
                 category.transform.SetParent(button.transform, false);
-                Position(category, new Vector2(-142, 22), new Vector2(280, 34));
+                Position(category, new Vector2(-48, 22), new Vector2(256, 34));
                 category.fontSize = 27;
                 category.alignment = TextAnchor.MiddleLeft;
 
                 var itemName = FindText(button.transform, "Equipped Item Name") ?? Text("Equipped Item Name", button.transform, "—", new Vector2(0, -20), new Vector2(290, 36), 27, TextAnchor.MiddleLeft);
-                Position(itemName, new Vector2(-142, -20), new Vector2(290, 36));
+                Position(itemName, new Vector2(-48, -20), new Vector2(256, 36));
                 itemName.fontSize = 27;
                 itemName.resizeTextForBestFit = true;
                 itemName.resizeTextMinSize = 20;

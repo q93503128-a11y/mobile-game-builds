@@ -1,29 +1,29 @@
 # Lowfire Phase 4B — Unity Inventory Visual QA
 
-## Result
+## Current result — resumed on 2026-11-07
 
-**CAPTURE BLOCKED / VISUAL QA UNVERIFIED.** No Phase 4A Unity Game View PNG was captured in this pass. No static mockup or previous-phase image is substituted for a current Unity render. No game code, scene, save, or project setting was changed, and the seven passing Phase 4A PlayMode tests were not rerun.
+**VERIFIED:** The Unity MCP instance was connected to the exact canonical project requested: C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\client (Unity 6000.3.19f1). The previous stale-project checkpoint below is historical and no longer describes the current session.
 
-## Source and project identity
+Actual Unity Game View screenshots were captured in Play Mode and inspected at original PNG pixels. Korean 844×390 was the primary target. English 844×390, 1280×720, and 1920×1080 were also reviewed. The selected evidence is in [screenshots](screenshots/README.md); statuses and image mapping are in [CAPTURE_INDEX.md](CAPTURE_INDEX.md).
 
-- `mobile-game-builds` main at start: `2904becc94215f82bbf116cf50463f15139ec855`
-- `dev-playbook` main at start: `e022e9e4ff3947fcbd7f5b0237c5905d7c0409c7`
-- Unity Editor process: Unity `6000.3.19f1`; window title identifies `MainMenu`.
-- The running Editor project path is `C:\UnityProjects\Wildfolk`; active scene is `MainMenu`, Play Mode is off, and the Editor remains unfocused.
-- That project copy does not contain Phase 4A: its `InventoryUiBuilder.cs` is 13,311 bytes and lacks the Phase 4A markers; its inventory art directory has zero `inventory_*.png` files. The canonical source copy is `C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\client`, where the builder is 32,024 bytes and all five pilot PNGs exist.
+**FIXED and rechecked:**
 
-## MCP and capture findings
+- Equipment category/item labels overlapped the equipment icon at 1280×720 and 1920×1080. Their layout now starts beside the icon; before/after Unity captures show the correction. The same canonical builder change was applied to both single-player and multiplayer scenes.
+- Selecting an empty equipment slot could retain the prior drag-controller item selection, so Split could remain enabled for an unrelated stack. Equipment selection now clears or synchronizes that selection. In the live QA session, selecting an empty Head slot left Split disabled and did not open the split panel; equipment candidate, equip, replacement, and replacement-applied states were also exercised.
 
-- Unity MCP is configured in Codex for `http://127.0.0.1:8080/mcp`.
-- The Unity Editor log reports the local server ready at `127.0.0.1:8080` and `Session connected`; the port is listening locally.
-- Unity MCP tools and resources became available during this pass. The Editor state, project, instances, windows, and custom tools resources were read; the Unity Console returned zero error/warning entries. The connected instance is still the stale `C:\UnityProjects\Wildfolk` project.
-- The Unity skill documents `manage_camera(action="screenshot", capture_source="game_view", include_image=True)` as the Game View capture path. The Phase 2B report confirms 18 actual Unity MCP captures with `editor_is_focused=false`, but does not record the exact tool call. The existing `VisualGameView.Show(width,height)` helper sets a Game View resolution and uses `PlayUnfocused` without focusing the Editor.
-- A read-only Computer Use fallback could not read the Unity window: its accessibility lookup failed, and the screenshot fallback returned the Codex window. No input, Focus, or Show call was used.
+No P0 remains in the inspected scope. The small 844×390 labels/counts and dimmed gameplay HUD visible behind the modal are recorded as P2 observations. Android safe area, device dp sizing, and physical touch behavior remain **UNVERIFIED**. This visual QA is not a design approval.
 
-## Required next step
+The existing seven passing Phase 4A PlayMode tests were not rerun. The modified C# scripts compiled in the live Editor, direct inventory interactions were checked in the isolated QA session, and the final Unity Console query returned zero error/warning entries. No Save/Profile/Protocol/data/economy/network changes were made. QA used a temporary profile path with autosave disabled; no user save was opened or modified. C:\UnityProjects\Wildfolk was not modified.
 
-To open the correct project manually, use Unity Hub's **Projects → Add → Add project from disk** and select `C:\Users\User\Documents\ChatGPT\문승준 모바일\canonical\projects\wildfolk\client`. Leave the current editor unfocused if desired; no GUI focus change is needed for this QA. Once it loads, the MCP project path must report that exact `client` directory. If both editors are listed, select the canonical instance through the available Unity MCP instance selector before capturing.
+## Changes in this resumed pass
 
-The user selected restarting Codex and opening the canonical Unity project. Unity tools have now appeared, but the connected instance still reports the stale project path. After the canonical project is open, verify the connected instance and project path before capturing. Do not capture from the stale `C:\UnityProjects\Wildfolk` copy as evidence for Phase 4A.
+- Canonical source: client/Assets/Wildfolk/Editor/InventoryUiBuilder.cs, client/Assets/Wildfolk/Runtime/UI/InventoryEquipment.cs.
+- Serialized layout coordinates only: client/Assets/Wildfolk/Scenes/Wildfolk.unity, client/Assets/Wildfolk/Scenes/Multiplayer.unity.
+- This report and actual Game View PNG evidence.
+- No new item, scene flow, save schema, or inventory data model.
 
-The seven Phase 4A PlayMode tests remain valid evidence for their functional scope; they were not repeated. Actual visual states, resolutions, language variants, Android touch sizing, and current Play Mode remain unverified. See [CAPTURE_INDEX.md](CAPTURE_INDEX.md), [MCP_DIAGNOSIS.md](MCP_DIAGNOSIS.md), and [screenshots/README.md](screenshots/README.md).
+## Earlier checkpoint — historical
+
+The earlier checkpoint reported **CAPTURE BLOCKED** because Unity MCP was attached to C:\UnityProjects\Wildfolk, a stale copy without Phase 4A. That statement was accurate for that checkpoint. After the user reopened the canonical project and Unity MCP attached to it, this resumed pass captured and reviewed the actual Phase 4A Game View. The earlier finding is superseded by the current result above, not erased as history.
+
+See [MCP_DIAGNOSIS.md](MCP_DIAGNOSIS.md) for capture/recovery details and transient failures. See [TIME_LOG.md](TIME_LOG.md) for measured work intervals.

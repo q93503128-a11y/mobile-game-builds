@@ -9,7 +9,7 @@
 | Four equipment rows | IMPLEMENTED | Head, Body, Utility, Accessory; each scene has four button references and four named rows |
 | Item details and equipment state | IMPLEMENTED | runtime `InventoryEquipment` refresh and KO/EN localization keys |
 | Existing gameplay contracts | PRESERVED | no inventory data model, item catalog, Save14/Profile2/Protocol23, economy, or authority edits |
-| Actual on-screen appearance | UNVERIFIED | no Unity Game View screenshot was produced |
+| Actual on-screen appearance | VERIFIED for listed desktop states | See the 2026-11-07 Phase 4B Unity Game View captures; Android touch/safe-area review remains unverified |
 | Android touch behavior | UNVERIFIED | no device/touch run was performed |
 
 ## Layout

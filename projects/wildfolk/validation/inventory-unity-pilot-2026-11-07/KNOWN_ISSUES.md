@@ -1,5 +1,16 @@
 # Known Issues and Deferred QA
 
+## 2026-11-07 Phase 4B disposition
+
+- The former **P1 — Actual visual review is outstanding** was resolved for the listed desktop Unity Game View states. A label/icon overlap was found at 1280×720 and 1920×1080, fixed in the canonical inventory builder and both gameplay scenes, and re-captured. Empty-equipment stale Split activation was also corrected and checked in live QA. Evidence: [Phase 4B result](../inventory-unity-visual-qa-2026-11-07/README.md) and [capture index](../inventory-unity-visual-qa-2026-11-07/CAPTURE_INDEX.md).
+- Android device touch targets and Safe Area remain **UNVERIFIED**. The original P1 platform QA concern remains open until a physical Android check.
+- **P2 — Visual design approval remains pending.** Desktop QA did not constitute user approval of the visual design.
+- **P2 — 844×390 text/count size.** Equipment status and quantity text are visible but small at native landscape dimensions.
+- **P2 — Modal background treatment.** Dimmed gameplay HUD remains visible around the modal; no control overlap was observed, but the presentation may need polish after user review.
+
+## Historical Phase 4A issues
+
+The following issue descriptions document the state before actual Game View captures became available. Use the disposition above and the Phase 4B evidence for current desktop status.
 ## P1 — Actual visual review is outstanding
 
 - **Where:** inventory modal at 844×390, 1280×720, and 1920×1080.

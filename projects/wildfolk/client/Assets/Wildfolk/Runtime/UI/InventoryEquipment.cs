@@ -24,7 +24,19 @@ namespace Wildfolk
         public void SelectSlot(int slot)
         {
             SlotFilter=SlotFilter==slot ? -1 : slot;selectedSlot=(ArmorSlot)slot;equippedSelected=SlotFilter>=0;
-            if(equippedSelected && Current()==null)for(var i=0;i<Player.Model.Capacity;i++){var stack=Player.Model.GetSlot(i);if(!stack.IsEmpty && (stack.Item.Equippable) && PlayerEquipment.Slot(stack.Item)==selectedSlot){Panel.Select(i);break;}}
+            var drag=GetComponent<InventoryDragController>();
+            var selectingEquipment=equippedSelected;var selectedCandidate=false;
+            if(selectingEquipment && Current()==null)
+            {
+                for(var i=0;i<Player.Model.Capacity;i++)
+                {
+                    var stack=Player.Model.GetSlot(i);
+                    if(stack.IsEmpty || !stack.Item.Equippable || PlayerEquipment.Slot(stack.Item)!=selectedSlot)continue;
+                    Panel.Select(i);drag?.Select(i,false);selectedCandidate=true;break;
+                }
+            }
+            if(selectingEquipment && !selectedCandidate)drag?.Select(-1,false);
+            else if(!selectingEquipment)drag?.Select(Player.SelectedIndex,false);
             Refresh();
         }
         private ItemDefinition Current()=>Equipment.Equipped(selectedSlot);
