@@ -11,7 +11,8 @@ All timestamps UTC on 2026-11-07. Wall time includes tool waits and Unity editor
 | Visual discrepancy investigation and equipment-selection correction | 14:00:07–14:18:10 | 18m 03s | Captured state mismatch, added explicit assertions, corrected gear/candidate selection handling, and prepared isolated final capture. |
 | Final capture and focused regression rerun | 14:18:10–14:20:05 | 1m 55s | Final fixture capture 12/12; EditMode 2/2 (7.062s wall); PlayMode 4/4 (21.647s wall). |
 | Final document, capture and repository review | 14:20:05–14:22:08 | 2m 03s | Updated evidence to final verified run. |
-| **Total elapsed** | **12:08:51–14:22:08** | **2h 13m 17s** | Design approval remains pending. |
+| Final staged review, main commit/push, remote SHA and clean-tree verification | 14:22:08–14:29:46 | 7m 38s | Commit `a68b1d32a3ea381808a827bad01609776e77c84d` pushed to `main`; remote SHA matched and worktree was clean. |
+| **Total elapsed** | **12:08:51–14:29:46** | **2h 20m 55s** | The short time-log archival commit/push follows this marker and is excluded. Design approval remains pending. |
 
 ## Usage accounting
 
