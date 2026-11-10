@@ -40,9 +40,9 @@
 
 ## 5. 추가 비교: 거리·스테이지 진행 비례 환생과 고급 시작 (2026-11-10)
 
-- **Endless Frontier**: 자동 전진하며 높은 스테이지에 도달할수록 부활 메달 증가. 보석 상점에 'Post Revive Stage' 증가와 진행 속도 강화가 언급되고, 특정 유닛의 부활 이후 시작 스테이지 증가/스테이지 건너뛰기 기능도 알려짐. 사용자 게임의 **보석 고급 시작**과 직접 비교할 만한 사례. [초보 공략](https://endless-frontier.fandom.com/wiki/Guides/Newbie_Starter_Guide), [시작 거리·스킵](https://endless-frontier.fandom.com/wiki/Tips_and_Tricks), [메달 계산기](https://www.endlessfrontierdata.com/revivemedals.php). **한계:** 거리(m)가 아닌 스테이지 기반, 팬 공략 자료이며 버전 최신성은 미확인.
+- **Endless Frontier**: 자동 전진하며 높은 스테이지에 도달할수록 부활 메달 증가. 보석 상점에 'Post Revive Stage' 증가와 진행 속도 강화가 언급되고, 특정 유닛의 부활 이후 시작 스테이지 증가/스테이지 건너뛰기 기능도 알려짐. 일반 환생 후 시작 위치 선택과 비교할 만한 별도의 사례이며, **우리 게임의 진행도 보존형 특수 환생과는 다른 기능**이다. [초보 공략](https://endless-frontier.fandom.com/wiki/Guides/Newbie_Starter_Guide), [시작 거리·스킵](https://endless-frontier.fandom.com/wiki/Tips_and_Tricks), [메달 계산기](https://www.endlessfrontierdata.com/revivemedals.php). **한계:** 거리(m)가 아닌 스테이지 기반, 팬 공략 자료이며 버전 최신성은 미확인.
 - **Almost a Hero**: Adventure에서 스테이지 80 이후 환생 가능. 달성 스테이지에 따라 Mythstones 지급·유물 강화. [Adventure 위키](https://almostahero.wiki.gg/wiki/Adventure). **한계:** 다인 영웅과 단계형 전투, 실제 미터 거리와는 다름.
-- **Fantasy Idle**: 해당 게임 위키에 '한 탐험의 최고 도달 스테이지'로 환생 토큰 계산, 재시작은 전체 최고 스테이지의 10%, 기존 구간 빠른 돌파, 토큰 계산 함수의 지수 1.5 예시가 기록됨. [프레스티지 설명](https://wiki.fantasyidle.com/prestige) (게시된 게임 데이터 기준 2026-11-04). **한계:** 신생/상대적으로 덜 검증된 게임의 자체 위키 주장, 우리 게임은 기본 0m에 보석 고급 시작을 사용하기로 함.
+- **Fantasy Idle**: 해당 게임 위키에 '한 탐험의 최고 도달 스테이지'로 환생 토큰 계산, 재시작은 전체 최고 스테이지의 10%, 기존 구간 빠른 돌파, 토큰 계산 함수의 지수 1.5 예시가 기록됨. [프레스티지 설명](https://wiki.fantasyidle.com/prestige) (게시된 게임 데이터 기준 2026-11-04). **한계:** 신생/상대적으로 덜 검증된 게임의 자체 위키 주장, 우리 게임의 일반 환생은 기본 0m, 특수 환생은 보석을 사용한 진행도 보존형임.
 - **환생용병단 보상형 광고**: 귀환 후 광고 시청으로 귀환 재화 보너스를 받는 전략이 일본 GameWith에 안내됨. [귀환 젬 수급](https://gamewith.jp/roguewithdead/564332). 일부 광고 이용 방식으로 스킬 쿨타임 재설정·가챠 재추첨/추가 보상도 있음. [광고 제외 패키지](https://gamewith.jp/roguewithdead/501621), [일본 위키 광고 기능](https://wikiwiki.jp/rwtd_db/%E3%81%8A%E5%BA%97%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6). **주의:** 환생 재화 1.5배는 현재 우리 기획안이며 원작의 고정 광고 배율이라고 확정한 것이 아님. 같은 게임의 시즌 한정 1.5배 캠페인과 광고 배율도 혼동하지 않는다.
 
 ## 5-1. 환생 타이밍과 달성 마일스톤 사례 (2026-11-10)
@@ -57,6 +57,18 @@
 - **Idle Dice** 팬 위키: Bonus Points Shop에 `Prestige Without Reset` 기능이 기록되어 있다. 특정 보너스 포인트를 지불하면 기존 업그레이드·콤보 배율·카드를 초기화하지 않고 prestige할 수 있다. 출처: https://idle-dice.fandom.com/wiki/Bonus_Points_Shop . **팬 위키 기록**이므로 원작 게임의 현재 버전과 변경 여부는 별도 검증 필요.
 - 유사 원리는 확인되나, '대부분의 키우기 게임에 같은 기능이 있다'거나 보석 가격·반복 시 보상 구조까지 같다고 단정하지 않는다.
 - **우리 기획 확정 차이:** 특수 환생은 보석을 소비해 거리·골드·골드 강화 등 모든 기존 탐험 진행 상태를 초기화하지 않고 환생 보상을 얻는다. 보석 가격과 동일 거리 반복 수령 경제는 아직 미정.
+
+## 5-3. 진행도 보존형 특수 환생의 연속 사용 제한 비교 (2026-11-10)
+
+| 작품 | 확인된 실제 기능 | 연속 이용을 조절하는 방식 | 확인 한계 |
+|---|---|---|---|
+| Idle Skilling | 보석 상점 'Rebirth Coupons' 3장/450보석, 아직 받지 않은 BP를 일반 환생 없이 수령 | 쿠폰 묶음 구매는 **실제 일반 환생 1회당 1회**; 새 회차 이전 반복 구매 제한 | 팬 위키 기준으로 실게임 현재 버전·쿠폰 각각의 사용 간격 별도 확인 필요 |
+| Idle Dice | 'Prestige Without Reset'으로 카드/업그레이드 등을 유지한 채 환생 | 첫 가격 5 Bonus Points, **구매할 때마다 +1**. 별도 고정 횟수 제한은 확인되지 않음 | 팬 위키 기준. 비용이 영구 누적인지, 리셋되는지 명시 확인되지 않음 |
+| Rogue with the Dead | 귀환 보옥과 유물, 상점의 영구 강화가 다음 회차를 더 빠르게 진행하게 함 | 진행도 보존형 특수 환생의 동일 기능/연속 사용 제한 사례는 확인되지 않음 | 아예 같은 특수 환생이 있다고 추정하지 말 것 |
+
+근거 링크: [Idle Skilling 보석 상점](https://idle-skilling.fandom.com/wiki/Gem_Shop), [Idle Skilling Rebirth](https://idle-skilling.fandom.com/wiki/Rebirth), [Idle Dice Bonus Points](https://idle-dice.fandom.com/wiki/Bonus_Points_Shop), [환생용병단 원작 성장 공략](https://gamewith.jp/roguewithdead/501900).
+
+**우리 게임의 잠정 비교안 (확정 아님):** A. 일반 환생당 고정 사용 제한 / B. 동일 탐험의 연속 사용에 따라 보석 비용 증가 / C. 반복 및 비용 제한 없이 허용. 먼저 B를 검토하되 실제 경제는 '특수 환생 1회 수령량 대비 보석 가치, 영구 성장, 광고 1.5배 중첩'을 같이 검증한다. 일반 환생의 유물·환생 상점 효율이 충분히 강한 구조라는 사용자의 설계 의도를 존중하고, 일반 환생을 인위적으로 약화시켜 차별화하지 않는다.
 
 ## 6. 앞으로 기록할 검증 항목
 새로운 참고 수치/룰마다 다음 정보를 붙인다: **항목명 / 작품·버전 / 확인일(KST) / 1차 출처 URL / 직접 확인 또는 추정 / 상충 자료 / 우리 설계에 반영할 부분과 제외할 부분**.
