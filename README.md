@@ -29,6 +29,7 @@ mobile-game-builds/
 ## 현재 프로젝트
 
 - [`Wildfolk`](./projects/wildfolk/README.md): Unity 6000.3.19f1 LTS / Universal 2D, 모바일 가로형 탑다운 생존 게임. 36칸 인벤토리/드래그·맨손 채집·작업대 제작/설치·목재 도구/검의 초반 루프를 제공한다.
+- [`Forward RPG (가제)`](./projects/forward-rpg/README.md): Godot 기반 개인형 자동 전진 RPG 기획 중. 자동 전투·직접 스킬, 지역별 수집품, 영구 성장과 탐험 성장의 구조를 설계 중이며 구현 코드는 아직 없다.
 
 ## 정본 우선순위
 
