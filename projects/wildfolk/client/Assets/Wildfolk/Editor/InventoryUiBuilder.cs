@@ -22,8 +22,8 @@ namespace Wildfolk.Editor
         private const float EquipmentX = 686f;
         private const float EquipmentWidth = 590f;
         private const float EquipmentCellWidth = 272f;
-        private const float EquipmentCellHeight = 188f;
-        private const float EquipmentSlotSize = 122f;
+        private const float EquipmentCellHeight = 200f;
+        private const float EquipmentSlotSize = 92f;
 
         internal static void Build(GameObject root, Transform safe, GameplaySession session, PlayerInventory owner, PlayerCrafting crafting, int count)
         {
@@ -379,14 +379,14 @@ namespace Wildfolk.Editor
                 if (icon != null)
                 {
                     icon.preserveAspect = true;
-                    Position(icon, Vector2.zero, new Vector2(104, 100));
+                    Position(icon, Vector2.zero, new Vector2(80, 80));
                     icon.raycastTarget = false;
                 }
                 var key = "ui.slot." + EquipmentNames[i];
                 var category = EnsureEquipmentText(parent, key);
                 category.transform.SetParent(button.transform, false);
-                Position(category, new Vector2(0, 72), new Vector2(EquipmentCellWidth - 12, 44));
-                category.fontSize = 30;
+                Position(category, new Vector2(0, 76), new Vector2(EquipmentCellWidth - 12, 44));
+                category.fontSize = 28;
                 category.alignment = TextAnchor.MiddleCenter;
                 category.fontStyle = FontStyle.Bold;
                 category.horizontalOverflow = HorizontalWrapMode.Wrap;
@@ -400,9 +400,9 @@ namespace Wildfolk.Editor
                 itemName.gameObject.SetActive(false);
                 equipment.SlotItemNames[i] = null;
 
-                var status = FindText(button.transform, "Equipment Status") ?? Text("Equipment Status", button.transform, string.Empty, new Vector2(0, -72), new Vector2(EquipmentCellWidth - 8, 42), 28, TextAnchor.MiddleCenter);
-                Position(status, new Vector2(0, -72), new Vector2(EquipmentCellWidth - 8, 42));
-                status.fontSize = 28;
+                var status = FindText(button.transform, "Equipment Status") ?? Text("Equipment Status", button.transform, string.Empty, new Vector2(0, -78), new Vector2(EquipmentCellWidth - 8, 40), 24, TextAnchor.MiddleCenter);
+                Position(status, new Vector2(0, -78), new Vector2(EquipmentCellWidth - 8, 40));
+                status.fontSize = 24;
                 status.resizeTextForBestFit = false;
                 status.fontStyle = FontStyle.Bold;
                 status.horizontalOverflow = HorizontalWrapMode.Wrap;
@@ -413,8 +413,8 @@ namespace Wildfolk.Editor
                 equipment.SlotStatusLabels[i] = status;
                 status.transform.SetAsLastSibling();
 
-                var selected = FindImage(button.transform, "Equipment Selection") ?? Image("Equipment Selection", button.transform, "inventory_selected_slot", new Vector2(.5f, .5f), Vector2.zero, new Vector2(EquipmentSlotSize + 14, EquipmentSlotSize + 14));
-                Position(selected, Vector2.zero, new Vector2(EquipmentSlotSize + 14, EquipmentSlotSize + 14));
+                var selected = FindImage(button.transform, "Equipment Selection") ?? Image("Equipment Selection", button.transform, "inventory_selected_slot", new Vector2(.5f, .5f), Vector2.zero, new Vector2(EquipmentSlotSize + 8, EquipmentSlotSize + 8));
+                Position(selected, Vector2.zero, new Vector2(EquipmentSlotSize + 8, EquipmentSlotSize + 8));
                 SetNineSlice(selected, "inventory_selected_slot");
                 selected.raycastTarget = false;
                 selected.transform.SetSiblingIndex(frame.transform.GetSiblingIndex() + 1);
@@ -448,8 +448,8 @@ namespace Wildfolk.Editor
             {
                 new Vector2(EquipmentX - 145, 260),
                 new Vector2(EquipmentX + 145, 260),
-                new Vector2(EquipmentX - 145, 64),
-                new Vector2(EquipmentX + 145, 64)
+                new Vector2(EquipmentX - 145, 60),
+                new Vector2(EquipmentX + 145, 60)
             };
             for (var i = 0; i < buttons.Length; i++)
             {

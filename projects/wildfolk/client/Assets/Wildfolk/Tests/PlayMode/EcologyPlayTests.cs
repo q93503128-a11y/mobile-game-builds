@@ -66,6 +66,11 @@ namespace Wildfolk.Tests
             Assert.That(ui.SlotFilter,Is.EqualTo((int)ArmorSlot.Head));Assert.That(drag.IsDragging,Is.False);
             Assert.That(ui.EquipLabel.text,Is.EqualTo(L.Text("ui.action.replace")));Assert.That(ui.SelectionState.text,Does.Contain(leather.LocalizedName));Assert.That(ui.Comparison.text,Does.Contain("↑"));
             ui.EquipButton.onClick.Invoke();Assert.That(equipment.HeadArmor,Is.SameAs(iron));
+            Assert.That(ui.SelectionState.text,Is.EqualTo(L.Text("ui.inventory.equipped")),"successful replacement immediately focuses the newly equipped item");
+            Assert.That(panel.SelectedName.text,Is.EqualTo(iron.LocalizedName),"the replacement result is named in the selected-item panel");
+            Assert.That(ui.UnequipButton.gameObject.activeSelf,Is.True,"the completed replacement exposes Unequip");
+            Assert.That(ui.EquipButton.gameObject.activeSelf,Is.False,"the completed replacement does not suggest replacing back immediately");
+            Assert.That(ui.SlotStatusLabels[0].text,Is.Empty,"the selected equipment result is not also labeled as a replacement candidate");
             var leatherIndex=System.Linq.Enumerable.Range(0,player.Model.Capacity).First(i=>player.Model.GetSlot(i).Item==leather);
             panel.Select(leatherIndex);
             Assert.That(ui.SlotFilter,Is.EqualTo((int)ArmorSlot.Head),"selecting a bag item preserves the equipment filter while clearing the equipped-item selection state");

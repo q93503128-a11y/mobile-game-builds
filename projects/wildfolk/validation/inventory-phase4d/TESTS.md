@@ -52,3 +52,32 @@ Android 실기기·Safe Area·dp/터치 검증, Android 빌드, 전체 회귀, �
 - projects/wildfolk/validation/inventory-phase4d/의 보고서와 최종 캡처 16장
 
 다른 UI와 저장/네트워크/게임플레이 시스템은 수정하지 않았다.
+
+## 2026-11-14 최종 시각 교정 회귀
+
+**EditMode 2/2 통과** — job `38bb9632e1b240e4b3552ac1d8cca5f4`.
+
+- `Wildfolk.Tests.InventoryEquipmentLayoutTests.EquipmentTargetsAndLabelsFitSharedInventoryLayout("Assets/Wildfolk/Scenes/Wildfolk.unity")`
+- `Wildfolk.Tests.InventoryEquipmentLayoutTests.EquipmentTargetsAndLabelsFitSharedInventoryLayout("Assets/Wildfolk/Scenes/Multiplayer.unity")`
+
+카테고리 텍스트 영역과 프레임·선택 외곽선·상태 문구의 실제 RectTransform 간격, 2×2 타깃 유지와 장비 셀 배치가 두 씬에서 통과했다.
+
+**PlayMode 5/5 통과** — job `6fe7c4e3686f4e76bbc00dc3a77a6b66`.
+
+- `Wildfolk.Tests.EcologyPlayTests.InventoryReplacementLabelsShowCurrentGearDirectionAndResetSelection`
+- `Wildfolk.Tests.EcologyPlayTests.ActualPointerArmorDragSwapUnequipAndUse`
+- `Wildfolk.Tests.EcologyPlayTests.InventorySplitButtonInitializesWhenInventoryWasAlreadyOpen`
+- `Wildfolk.Tests.StabilityPlayTests.LongPressSplitHoldsChosenAmountUntilExplicitPlacementOrCancel`
+- `Wildfolk.Tests.WorldPassPlayTests.SplitHalfViaTouchButtonAndExplicitDropZonePreserveItems`
+
+교체 직후 새 장착품 선택/역방향 안내 초기화, 기존 후보를 다시 선택하는 흐름, 포인터 장착·해제, 빈 선택에서 Split 비활성화, 터치/롱프레스 분할을 확인했다.
+
+### 최종 Game View QA
+
+- 정본 Editor에서 `ScreenCapture.CaptureScreenshot`으로 PNG 46장(3개 기본 해상도 KO/EN, 10개 상태의 844×390/1280×720 KO/EN)을 생성했다. 크기별 수량은 844×390 22장, 1280×720 22장, 1920×1080 2장, 총 10,564,171 bytes다.
+- QA 시작 시 사용자 저장 경로 대신 고유 임시 프로필을 검증했고 AutoSave 비활성 및 월드 저장 미기록을 확인했다. 종료 후 프로필 오버라이드를 비우고 기본 SaveRepository로 복원했으며 `client/UserData`는 생성되지 않았다.
+- 런타임 검사는 빈 선택에서 `SplitButton.interactable == false`, 30 Wood 선택에서 true, disabled tint의 명도 차이를 확인했다.
+- 자동 텍스트 preferred-height 경고 2개는 모두 `Armor Details`(rect 86, preferred 124.5)에서 영어 긴 설명과 빈 장비 상태에서 기록됐다. 이 두 경고는 숨기거나 PASS로 바꾸지 않았다. 각 화면은 원본 PNG에서 확인했으며, 실제 이미지에 텍스트와 버튼/프레임의 중첩은 보이지 않았다. 자동 텍스트 높이 상태는 **PARTIAL**로 기록한다.
+- 캡처 인덱스에는 844×390/1280×720의 10개 상태와 KO/EN 각각의 원본 PNG 링크가 있다. Android 기기 검증은 **UNVERIFIED**다.
+
+이 변경은 지정된 인벤토리 파일, SP/MP 두 씬, QA 도구와 검증 자료에만 한정했다. Phase 4E와 다른 UI는 시작하거나 수정하지 않았다.

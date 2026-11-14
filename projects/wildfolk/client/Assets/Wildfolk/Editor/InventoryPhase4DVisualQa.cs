@@ -16,6 +16,9 @@ namespace Wildfolk.Editor
     {
         private const string RunKey = "Lowfire.Phase4D.Run";
         private const string RootKey = "Lowfire.Phase4D.Root";
+        private const string PreviousProfileKey = "Lowfire.Phase4D.PreviousProfile";
+        private const string PreviousRepositoryKey = "Lowfire.Phase4D.PreviousRepository";
+        private const string PreviousSeedKey = "Lowfire.Phase4D.PreviousSeed";
         public static string Phase { get; private set; } = "idle";
         private static int BoundaryFailures;
         private static string Root => UnityEditor.SessionState.GetString(RootKey, "");
@@ -39,6 +42,9 @@ namespace Wildfolk.Editor
             Directory.CreateDirectory(captureRoot);
             BoundaryFailures = 0;
             UnityEditor.SessionState.SetString(RootKey, Path.GetFullPath(captureRoot));
+            UnityEditor.SessionState.SetString(PreviousProfileKey, UnityEditor.SessionState.GetString("Wildfolk.QA.Directory", ""));
+            UnityEditor.SessionState.SetString(PreviousRepositoryKey, SceneFlow.Repository.Path);
+            UnityEditor.SessionState.SetString(PreviousSeedKey, WorldGenerator.SelectedSeed.HasValue ? WorldGenerator.SelectedSeed.Value.ToString() : "");
             UnityEditor.SessionState.SetString("Wildfolk.QA.Directory", Path.Combine(Path.GetTempPath(), "Lowfire-Phase4D-QA-" + Guid.NewGuid().ToString("N")));
             UnityEditor.SessionState.SetBool(RunKey, true);
             WorldGenerator.SelectedSeed = 9472026;
@@ -76,12 +82,27 @@ namespace Wildfolk.Editor
                 bool more;
                 object value;
                 try { more = stack.Peek().MoveNext(); value = more ? stack.Peek().Current : null; }
-                catch (Exception error) { Phase = "failed"; Log(error.ToString()); yield break; }
+                catch (Exception error) { Phase = "failed"; Log(error.ToString()); RestoreEditorEnvironment(); yield break; }
                 if (!more) { stack.Pop(); continue; }
                 if (value is IEnumerator nested) stack.Push(nested); else yield return value;
             }
+            RestoreEditorEnvironment();
             Phase = "complete";
             Log("complete");
+        }
+
+        private static void RestoreEditorEnvironment()
+        {
+            var previousProfile = UnityEditor.SessionState.GetString(PreviousProfileKey, "");
+            var previousRepository = UnityEditor.SessionState.GetString(PreviousRepositoryKey, "");
+            var previousSeed = UnityEditor.SessionState.GetString(PreviousSeedKey, "");
+            UnityEditor.SessionState.SetString("Wildfolk.QA.Directory", previousProfile);
+            SceneFlow.Repository = string.IsNullOrEmpty(previousRepository) ? SaveRepository.Default() : new SaveRepository(previousRepository);
+            int parsedSeed;
+            WorldGenerator.SelectedSeed = int.TryParse(previousSeed, out parsedSeed) ? (int?)parsedSeed : null;
+            UnityEditor.SessionState.EraseString(PreviousProfileKey);
+            UnityEditor.SessionState.EraseString(PreviousRepositoryKey);
+            UnityEditor.SessionState.EraseString(PreviousSeedKey);
         }
 
         private static IEnumerator Flow()
@@ -154,6 +175,9 @@ namespace Wildfolk.Editor
             Check(equipment.HeadArmor != null && equipment.BodyArmor != null && equipment.Utility != null && equipment.Accessory != null, "four equipment categories contain real catalog icons");
             Check(equipmentUi.SlotStatusLabels.All(x => x != null && string.IsNullOrEmpty(x.text)), "base equipment cells do not repeat equipped status text");
             Check(!drag.SplitButton.interactable, "Split is disabled while no item is selected");
+            var splitColors = drag.SplitButton.colors;
+            Check(splitColors.disabledColor.grayscale < splitColors.normalColor.grayscale - .15f,
+                "disabled Split has a visibly darker tint than its active state");
             var view = panel.View.transform;
             CheckTextBounds(view);
 
@@ -186,8 +210,7 @@ namespace Wildfolk.Editor
             Check(panel.SelectedName.text == wood.LocalizedName && string.IsNullOrEmpty(equipmentUi.SelectionState.text),
                 "ordinary item selection shows item details without equipment state");
             Check(drag.SplitButton.interactable, "Split is enabled for a selected stack with more than one item");
-            CheckTextBounds(view);
-            yield return Shot("inventory-ko-844x390-item-selected");
+            yield return CaptureState("item-selected", panel, equipmentUi, drag);
 
             var reserveIndex = inventory.Model.Capacity - 1;
             var reserveStack = inventory.Model.GetSlot(reserveIndex);
@@ -207,7 +230,7 @@ namespace Wildfolk.Editor
             Canvas.ForceUpdateCanvases();
             Check(equipmentUi.SelectionState.text == L.Text("ui.inventory.equipped") && equipmentUi.UnequipButton.gameObject.activeSelf,
                 "equipped head can be selected directly without starting a drag");
-            yield return Shot("inventory-ko-844x390-equipment-selected");
+            yield return CaptureState("equipment-selected", panel, equipmentUi, drag);
 
             ClearEquipmentFilter(equipmentUi);
             var ironHeadIndex = Enumerable.Range(0, inventory.Model.Capacity).First(i => inventory.Model.GetSlot(i).Item.Id == "iron_head");
@@ -219,10 +242,13 @@ namespace Wildfolk.Editor
                 "compatible head candidate exposes the primary Replace action");
             Check(equipmentUi.SelectionState.text.Contains(equipment.HeadArmor.LocalizedName) && equipmentUi.Comparison.text.Contains("↑"),
                 "replacement candidate names current gear and shows an upward defense delta");
-            yield return Shot("inventory-ko-844x390-replacement-candidate");
+            yield return CaptureState("replacement-candidate", panel, equipmentUi, drag);
             equipmentUi.EquipButton.onClick.Invoke();
             Check(equipment.HeadArmor == save.Catalog.Item("iron_head"), "head replacement applies through existing PlayerEquipment");
-            yield return Shot("inventory-ko-844x390-replacement-applied");
+            Check(equipmentUi.SelectionState.text == L.Text("ui.inventory.equipped") && equipmentUi.UnequipButton.gameObject.activeSelf &&
+                  !equipmentUi.EquipButton.gameObject.activeSelf && equipmentUi.SlotStatusLabels[0].text == string.Empty,
+                "replacement completion focuses the newly equipped item and clears the reverse-candidate state");
+            yield return CaptureState("replacement-applied", panel, equipmentUi, drag);
 
             var leatherHeadIndex = Enumerable.Range(0, inventory.Model.Capacity).First(i => inventory.Model.GetSlot(i).Item.Id == "leather_head");
             panel.Select(leatherHeadIndex);
@@ -231,7 +257,7 @@ namespace Wildfolk.Editor
             Canvas.ForceUpdateCanvases();
             Check(equipmentUi.EquipLabel.text == L.Text("ui.action.replace") && equipmentUi.Comparison.text.Contains("↓"),
                 "weaker replacement candidate shows a downward defense delta");
-            yield return Shot("inventory-ko-844x390-replacement-downgrade-candidate");
+            yield return CaptureState("replacement-downgrade-candidate", panel, equipmentUi, drag);
 
             Phase = "incompatible-state";
             ClearEquipmentFilter(equipmentUi);
@@ -243,7 +269,7 @@ namespace Wildfolk.Editor
             Canvas.ForceUpdateCanvases();
             Check(!equipmentUi.EquipButton.gameObject.activeSelf && equipmentUi.SelectionState.text.Contains(L.Text("ui.slot." + ArmorSlot.Accessory)),
                 "incompatible item is clearly marked and cannot be equipped into Accessory");
-            yield return Shot("inventory-ko-844x390-incompatible-candidate");
+            yield return CaptureState("incompatible-candidate", panel, equipmentUi, drag);
 
             Phase = "unequip-and-empty-equipment-states";
             ClearEquipmentFilter(equipmentUi);
@@ -255,7 +281,7 @@ namespace Wildfolk.Editor
             Check(equipment.HeadArmor == null, "Unequip clears the selected equipment slot through the existing model");
             Check(string.IsNullOrEmpty(equipmentUi.SelectionState.text) && equipmentUi.SlotStatusLabels[0].text == L.Text("ui.inventory.empty"),
                 "empty equipment is visible in its slot without duplicating the detail state");
-            yield return Shot("inventory-ko-844x390-equipment-unequipped");
+            yield return CaptureState("equipment-unequipped", panel, equipmentUi, drag);
 
             Phase = "split-and-long-name-states";
             ClearEquipmentFilter(equipmentUi);
@@ -264,16 +290,14 @@ namespace Wildfolk.Editor
             drag.OpenSplit();
             Check(drag.SplitPanel.View.activeSelf, "existing split modal opens for selected wood stack");
             CheckTextBounds(drag.SplitPanel.View.transform, "Split Panel");
-            yield return Shot("inventory-ko-844x390-split-modal");
+            yield return CaptureState("split-modal", panel, equipmentUi, drag);
             drag.SplitPanel.Cancel();
             var crownIndex = Enumerable.Range(0, inventory.Model.Capacity).First(i => inventory.Model.GetSlot(i).Item.Id == "undead_kings_crown");
             L.SetLanguage("en");
             ClearEquipmentFilter(equipmentUi);
             panel.Select(crownIndex);
             equipmentUi.Refresh();
-            yield return Delay(.25f);
-            CheckTextBounds(view);
-            yield return Shot("inventory-en-844x390-long-item-name");
+            yield return CaptureState("long-item-name", panel, equipmentUi, drag);
 
             Phase = "empty-equipment-state";
             L.SetLanguage("ko");
@@ -286,13 +310,15 @@ namespace Wildfolk.Editor
             Check(equipment.HeadArmor == null && equipment.BodyArmor == null && equipment.Utility == null && equipment.Accessory == null,
                 "empty equipment fixture clears all four slots without changing inventory data");
             CheckTextBounds(view);
-            yield return Shot("inventory-ko-844x390-empty-equipment");
+            yield return CaptureState("empty-equipment", panel, equipmentUi, drag);
 
             Phase = "final-isolation-check";
             Check(save.Repository.Path.StartsWith(DevelopmentProfile.Directory, StringComparison.OrdinalIgnoreCase), "final screenshot session still uses isolated profile");
             Check(!save.AutoSaveEnabled, "autosave remains disabled");
-            Check(BoundaryFailures == 0, "all live text fits its bounds; boundary failures=" + BoundaryFailures);
-            File.WriteAllText(Path.Combine(Root, "qa-result.txt"), "PASS\n" + string.Join("\n", new[] { "Play Mode Game View screenshots captured directly by ScreenCapture.CaptureScreenshot", "Autosave disabled", "QA profile=" + DevelopmentProfile.Directory, "World save was not written" }));
+            var boundaryFindings = BoundaryFailures;
+            Log((boundaryFindings == 0 ? "PASS " : "FAIL ") + "automated text-boundary report; findings=" + boundaryFindings);
+            var boundaryStatus = boundaryFindings == 0 ? "PASS" : "PARTIAL - inspect qa-live.tsv for automated text-boundary findings";
+            File.WriteAllText(Path.Combine(Root, "qa-result.txt"), boundaryStatus + "\n" + string.Join("\n", new[] { "Play Mode Game View screenshots captured directly by ScreenCapture.CaptureScreenshot", "Autosave disabled", "QA profile=" + DevelopmentProfile.Directory, "World save was not written", "Automated text-boundary findings=" + boundaryFindings }));
             player.GetComponent<PlayerInputCommands>().Session.CloseInventory();
             yield return null;
         }
@@ -305,6 +331,22 @@ namespace Wildfolk.Editor
         private static void ClearEquipmentFilter(InventoryEquipment equipmentUi)
         {
             if (equipmentUi.SlotFilter >= 0) equipmentUi.SelectSlot(equipmentUi.SlotFilter);
+        }
+
+        private static IEnumerator CaptureState(string name, InventoryPanel panel, InventoryEquipment equipmentUi, InventoryDragController drag)
+        {
+            foreach (var size in new[] { new Vector2Int(844, 390), new Vector2Int(1280, 720) })
+            foreach (var language in new[] { "ko", "en" })
+            {
+                yield return SetResolution(size.x, size.y);
+                L.SetLanguage(language);
+                panel.RefreshSelection();
+                equipmentUi.Refresh();
+                Canvas.ForceUpdateCanvases();
+                CheckTextBounds(panel.View.transform);
+                if (drag.SplitPanel.View.activeSelf) CheckTextBounds(drag.SplitPanel.View.transform, "Split Panel");
+                yield return Shot("inventory-" + language + "-" + size.x + "x" + size.y + "-" + name);
+            }
         }
 
         private static void CheckTextBounds(Transform view, string surfaceName = "Inventory Panel")

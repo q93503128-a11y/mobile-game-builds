@@ -1,6 +1,6 @@
 # Lowfire Phase 4D — 인벤토리 UI 상용 품질 검수
 
-**상태:** 구현 및 Unity Editor 검증 완료. 최종 디자인 승인은 사용자 캡처 검토 대기이며, Android 실기기 터치 검증은 미수행이다.
+**상태:** Phase 4D 구현과 이번 최종 시각 교정 구현·기능 회귀 검증 완료. 최종 디자인 승인은 사용자 캡처 검토 대기이며, 자동 텍스트 높이 검사는 긴 설명 2개 상태에서 PARTIAL, Android 실기기 터치 검증은 미수행이다.
 
 ## 기준과 보호
 
@@ -59,3 +59,30 @@ Phase 4C의 데이터·조작 구조를 유지하고 선택 아이템 정보와 
 - 실제 캡처 목록 및 비교: CAPTURE_INDEX.md
 - 회귀 검사와 범위: TESTS.md
 - 측정된 작업 시간: TIME_LOG.md
+
+## 최종 시각 결함 교정 — 2026-11-14
+
+최신 `main`과 실제 Phase 4D 소스를 확인한 뒤 아래 세 문제만 교정했다. 작업 시작 기준은 `a57a04eb754eaea46c19027b8d6a8f04c0fb0eda`였고, 수정 전후 `origin/main`은 같은 커밋이었다.
+
+- 장비 2×2 셀의 카테고리 제목은 고정 글꼴 크기를 유지한 44 단위 제목 띠에 배치했다. 아이콘 프레임은 92, 아이콘은 80으로 조정하고 선택 테두리는 프레임 바깥에 두었다. 상태 문구는 40 단위 별도 줄에 배치하고 아래 행 중심을 4 단위 조정해 위·아래 터치 타깃은 겹치지 않게 유지했다.
+- 성공적으로 장착/교체하면 새 장착 아이템을 즉시 선택 상태로 보여준다. `장착 중`과 해제 동작을 노출하고, 반납된 이전 아이템의 역방향 교체 제안은 완료 화면에서 지운다. 사용자가 다른 후보를 선택하면 기존 교체 흐름은 계속 가능하다.
+- 빈 선택에서는 분할 버튼의 `interactable`이 실제로 꺼지고, 버튼의 disabled 색도 활성 색보다 충분히 어두운지 QA에서 확인했다. 2개 이상 스택을 선택하면 다시 활성화된다.
+
+Storage 27, Hotbar 9, 장비 4종, 드래그/합치기/분할/장착·교체·해제, 저장·멀티플레이 계약에는 변경이 없다. Phase 4E는 시작하지 않았다.
+
+### 실제 Game View 증거
+
+[새 Unity Game View 캡처 모음](captures/visual-correction-20261114-final-v2/)에는 기본 화면 6장(844×390, 1280×720, 1920×1080의 KO/EN)과 10개 상호작용 상태의 844×390/1280×720 KO/EN 캡처 40장이 있다. PNG 46장 모두 헤더 해상도를 확인했다(844×390 22장, 1280×720 22장, 1920×1080 2장, 합계 10,564,171 bytes). [자동 QA 결과 요약](captures/visual-correction-20261114-final-v2/qa-result.txt)
+
+각 PNG를 원본 크기로 직접 확인했다. 제목과 프레임, 아이콘과 상태 문구의 충돌은 보이지 않았고, 교체 완료 화면은 새 장착품·장착 상태·해제 동작으로 읽힌다. 분할 버튼도 빈 선택에서 어둡고, 다중 수량 아이템 선택 시 활성화된 화면과 구분된다. 전 상태와 언어별 링크는 [캡처 인덱스](CAPTURE_INDEX.md)에서 확인할 수 있다.
+
+자동 preferred-height 검사는 `Armor Details` 영역에서 영어 긴 설명/빈 장비 캡처 2회(실제 RectTransform 86, preferred 124.5)를 경고했다. 원본 화면 검토에서 텍스트와 액션의 겹침은 보이지 않았지만, 자동 높이 검사 PASS로 처리하지 않았다. 따라서 자동 경계 결과는 **PARTIAL**, 지정된 장비 슬롯 및 교체/분할 상태의 시각 검수는 **PASS**다.
+
+### 교정 회귀 검사
+
+- EditMode **2/2 통과** — `Wildfolk.Tests.InventoryEquipmentLayoutTests.EquipmentTargetsAndLabelsFitSharedInventoryLayout` (Wildfolk/Multiplayer 씬, job `38bb9632e1b240e4b3552ac1d8cca5f4`).
+- PlayMode **5/5 통과** — 교체 완료 후 선택 초기화, 장비 드래그·해제, 빈 선택 분할 비활성화, 롱프레스 분할, 터치 분할/드롭 (job `6fe7c4e3686f4e76bbc00dc3a77a6b66`).
+- 격리 QA 프로필의 AutoSave는 꺼졌고 QA 결과에서 월드 저장 미기록을 확인했다. 종료 후 QA 경로를 지우고 기본 SaveRepository 경로로 복구했다. `client/UserData`는 생성되지 않았다. Unity Play Mode 테스트 후 Editor는 비포커스 Edit Mode로 돌아왔다.
+- Android 실기기/DPI/Safe Area 검증은 **UNVERIFIED**. Console의 기존 Google.IOSResolver 로드 문제와 기존 C# 경고 2개는 남아 있으며, 이번 코드 변경으로 인한 컴파일 오류는 없었다.
+
+보호된 로컬 변경 100개(미커밋 `.meta` 88개, `DefaultNetworkPrefabs.asset` 변경, 기존 미추적 파일 11개)의 SHA-256은 재검증 시 불일치 0개였다. 추가로 이미 남아 있던 `ProjectSettings/EditorSettings.asset`의 로컬 변경도 별도 해시로 추적해 커밋에서 제외했다. 최종 디자인 승인은 캡처를 본 사용자가 결정한다.

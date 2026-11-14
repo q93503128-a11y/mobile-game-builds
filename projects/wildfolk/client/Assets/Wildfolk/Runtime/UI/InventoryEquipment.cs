@@ -43,7 +43,20 @@ namespace Wildfolk
             Refresh();
         }
         private ItemDefinition Current()=>Equipment.Equipped(selectedSlot);
-        public void Equip(){var stack=Player.SelectedStack;if(!stack.IsEmpty && stack.Item.Telescope){Player.GetComponent<PlayerInputCommands>().Session.CloseInventory();Player.GetComponent<PlayerTelescope>().Use();return;}if(!stack.IsEmpty && (stack.Item.Equippable))Equipment.TryEquip(stack.Item);Refresh();}
+        public void Equip()
+        {
+            var stack=Player.SelectedStack;
+            if(stack.IsEmpty){Refresh();return;}
+            if(stack.Item.Telescope){Player.GetComponent<PlayerInputCommands>().Session.CloseInventory();Player.GetComponent<PlayerTelescope>().Use();return;}
+            if(stack.Item.Equippable && Equipment.TryEquip(stack.Item))
+            {
+                selectedSlot=PlayerEquipment.Slot(stack.Item);
+                SlotFilter=(int)selectedSlot;
+                equippedSelected=true;
+                GetComponent<InventoryDragController>()?.Select(-1,false);
+            }
+            Refresh();
+        }
         public void Unequip(){if(equippedSelected)Equipment.Unequip(selectedSlot);else{var stack=Player.SelectedStack;if(!stack.IsEmpty && (stack.Item.Equippable))Equipment.Unequip(PlayerEquipment.Slot(stack.Item));}Refresh();}
         public void Refresh()
         {
@@ -104,7 +117,7 @@ namespace Wildfolk
                 var selectedStack=Player.SelectedStack;
                 var matching= !selectedStack.IsEmpty && selectedStack.Item.Equippable && PlayerEquipment.Slot(selectedStack.Item)==slot;
                 var selectedCurrent=SlotFilter==(int)slot && matching && current==selectedStack.Item;
-                var candidate=SlotFilter==(int)slot && matching && !selectedCurrent;
+                var candidate=!equippedSelected && SlotFilter==(int)slot && matching && !selectedCurrent;
                 var showingCurrent=SlotFilter==(int)slot && equippedSelected && selectedSlot==slot && current!=null;
                 var mismatch=!equippedSelected && SlotFilter==(int)slot && !selectedStack.IsEmpty && !matching;
                 if(SlotItemNames!=null && i<SlotItemNames.Length && SlotItemNames[i]!=null)SlotItemNames[i].text=current==null ? "—" : current.LocalizedName;

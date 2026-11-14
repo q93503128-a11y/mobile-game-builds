@@ -66,19 +66,29 @@ namespace Wildfolk.Tests
                         Assert.That(Contains(targetLocal, LocalRect(frame)), Is.True, "item frame stays within its hit target " + i);
                         Assert.That(icons[i], Is.Not.Null, "equipment icon binding " + i);
                         Assert.That(Contains(targetLocal, LocalRect(icons[i].rectTransform)), Is.True, "equipment icon stays within its hit target " + i);
-                        Assert.That(icons[i].rectTransform.sizeDelta.x, Is.GreaterThanOrEqualTo(100f), "equipment icon grows without covering the selection frame " + i);
-                        Assert.That(frame.sizeDelta.x, Is.GreaterThanOrEqualTo(120f), "equipment frame grows around the icon " + i);
+                        Assert.That(icons[i].rectTransform.sizeDelta.x, Is.GreaterThanOrEqualTo(80f), "equipment icon stays large within its frame " + i);
+                        Assert.That(frame.sizeDelta.x, Is.GreaterThanOrEqualTo(92f), "equipment frame has room around the icon " + i);
 
                         Assert.That(equipment.SlotStatusLabels, Has.Length.EqualTo(4));
                         Assert.That(equipment.SlotStatusLabels[i], Is.Not.Null, "equipment state label " + i);
-                        Assert.That(equipment.SlotStatusLabels[i].rectTransform.sizeDelta.y, Is.GreaterThanOrEqualTo(42f), "equipment states fit their fixed readable type size " + i);
-                        Assert.That(equipment.SlotStatusLabels[i].fontSize, Is.GreaterThanOrEqualTo(28), "equipment states do not use best-fit shrinking " + i);
+                        Assert.That(equipment.SlotStatusLabels[i].rectTransform.sizeDelta.y, Is.GreaterThanOrEqualTo(40f), "equipment state has a separate readable line below the icon frame " + i);
+                        Assert.That(equipment.SlotStatusLabels[i].fontSize, Is.GreaterThanOrEqualTo(24), "equipment status keeps a readable fixed font " + i);
                         Assert.That(Contains(targetLocal, LocalRect(equipment.SlotStatusLabels[i].rectTransform)), Is.True, "equipment state label stays in its hit target " + i);
                         Assert.That(equipment.SlotStatusLabels[i].text, Is.Empty, "unselected equipment has no repeated equipped caption " + i);
                         var category = buttons[i].GetComponentInChildren<LocalizedLabel>(true);
                         Assert.That(category, Is.Not.Null, "equipment kind label " + i);
-                        Assert.That(category.GetComponent<RectTransform>().sizeDelta.y, Is.GreaterThanOrEqualTo(44f), "equipment kind text fits its fixed readable type size " + i);
+                        Assert.That(category.GetComponent<RectTransform>().sizeDelta.y, Is.GreaterThanOrEqualTo(44f), "equipment kind text has a dedicated title band " + i);
                         Assert.That(Contains(targetLocal, LocalRect(category.GetComponent<RectTransform>()), 0.01f), Is.True, "equipment kind label stays in its hit target " + i);
+                        Assert.That(category.GetComponent<Text>().fontSize, Is.GreaterThanOrEqualTo(28), "equipment category stays fixed-size and readable " + i);
+                        var frameRect = LocalRect(frame);
+                        var categoryRect = LocalRect(category.GetComponent<RectTransform>());
+                        var statusRect = LocalRect(equipment.SlotStatusLabels[i].rectTransform);
+                        var selectionRect = LocalRect(equipment.SlotSelectionImages[i].rectTransform);
+                        Assert.That(categoryRect.yMin - frameRect.yMax, Is.GreaterThanOrEqualTo(8f), "category text band is visibly separated from the icon frame " + i);
+                        Assert.That(frameRect.yMin - statusRect.yMax, Is.GreaterThanOrEqualTo(10f), "status text band is visibly separated from the icon frame " + i);
+                        Assert.That(categoryRect.yMin - selectionRect.yMax, Is.GreaterThanOrEqualTo(4f), "category text stays outside the selected frame outline " + i);
+                        Assert.That(selectionRect.yMin - statusRect.yMax, Is.GreaterThanOrEqualTo(8f), "status text stays outside the selected frame outline " + i);
+                        Assert.That(Contains(frameRect, LocalRect(icons[i].rectTransform)), Is.True, "equipment icon stays within its visible frame " + i);
 
                         var rootImage = buttons[i].GetComponent<Image>();
                         Assert.That(rootImage.raycastTarget, Is.True, "the complete cell remains a pointer target " + i);
