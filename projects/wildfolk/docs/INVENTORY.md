@@ -57,3 +57,13 @@ ArmorSlot.Accessory는 기존 enum 뒤 index3으로 추가했다. Head/Body/Util
 Inventory 창의 장비 레일은 2×2 아이콘 우선 셀로 바꿨다. 빈 장비는 유형명과 `미장착` 상태, 보유 후보는 `장착 후보`/`교체 후보`, 선택한 장착품은 그 셀에만 `장착 중`을 표시한다. 비선택 장비 셀은 아이콘으로 장착 상태를 나타내 중복 문구를 줄인다. 선택 아이템 이름·설명·비교와 Equip/Unequip 버튼은 세부 영역에서 제공한다. 분할/아이템 행동 모달은 불투명 matte를 사용해 뒤의 슬롯 글자가 읽기를 방해하지 않게 한다.
 
 실제 Game View 캡처, 구조/텍스트 경계 검사, 남은 영어 상세 문구 크기와 Android DP·Safe Area 한계는 [Phase 4C 검수](../validation/inventory-phase4c-commercial-ui-2026-11-07/README.md)를 따른다. Android 실기기 검증은 아직 없다.
+
+## Inventory Phase 4D — 2026-11-14 선택 정보·장비 교체 UI 개선
+
+Phase 4C의 데이터와 행동 규칙을 유지하며 선택 아이템 세부 정보와 장비 상태·교체 행동을 더 분명하게 했다.
+
+- 844×390을 기준으로 선택 이름/카테고리/설명 영역을 재배치해 고정 글자 크기로 여러 줄 설명을 보여준다. 영어 장비 설명도 줄바꿈한다.
+- Head / Body / Utility / Accessory 2×2, Storage 27, Hotbar 9를 유지한다. 장비 아이콘·프레임·라벨과 버튼 간격을 개선하고 선택 테두리가 아이콘을 가리지 않게 한다.
+- 교체 후보에는 현재 장착품, 교체 문구, 이전→이후 방어력과 상승/하락 차이를 나타낸다. 비호환 후보는 빨간 상태로 표시하고 장착 버튼을 숨긴다. 장착 중 항목에는 해제를, 빈 슬롯에는 슬롯 안에 빈 상태를 표시한다.
+- 모델/저장/멀티플레이 규칙과 분할·드래그 기능은 바꾸지 않았다. 관련 화면, 테스트, 근거는 [Phase 4D 검수 기록](../validation/inventory-phase4d/README.md), [캡처 인덱스](../validation/inventory-phase4d/CAPTURE_INDEX.md), [회귀 결과](../validation/inventory-phase4d/TESTS.md)를 참조한다.
+- 자동 텍스트 경계 검사 및 Editor 테스트는 통과했다. Android 실기기 터치 검증은 UNVERIFIED; 최종 디자인 승인은 사용자의 캡처 검토를 기다린다.

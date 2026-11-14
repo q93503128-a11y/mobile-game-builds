@@ -66,13 +66,18 @@ namespace Wildfolk.Tests
                         Assert.That(Contains(targetLocal, LocalRect(frame)), Is.True, "item frame stays within its hit target " + i);
                         Assert.That(icons[i], Is.Not.Null, "equipment icon binding " + i);
                         Assert.That(Contains(targetLocal, LocalRect(icons[i].rectTransform)), Is.True, "equipment icon stays within its hit target " + i);
+                        Assert.That(icons[i].rectTransform.sizeDelta.x, Is.GreaterThanOrEqualTo(100f), "equipment icon grows without covering the selection frame " + i);
+                        Assert.That(frame.sizeDelta.x, Is.GreaterThanOrEqualTo(120f), "equipment frame grows around the icon " + i);
 
                         Assert.That(equipment.SlotStatusLabels, Has.Length.EqualTo(4));
                         Assert.That(equipment.SlotStatusLabels[i], Is.Not.Null, "equipment state label " + i);
+                        Assert.That(equipment.SlotStatusLabels[i].rectTransform.sizeDelta.y, Is.GreaterThanOrEqualTo(42f), "equipment states fit their fixed readable type size " + i);
+                        Assert.That(equipment.SlotStatusLabels[i].fontSize, Is.GreaterThanOrEqualTo(28), "equipment states do not use best-fit shrinking " + i);
                         Assert.That(Contains(targetLocal, LocalRect(equipment.SlotStatusLabels[i].rectTransform)), Is.True, "equipment state label stays in its hit target " + i);
                         Assert.That(equipment.SlotStatusLabels[i].text, Is.Empty, "unselected equipment has no repeated equipped caption " + i);
                         var category = buttons[i].GetComponentInChildren<LocalizedLabel>(true);
                         Assert.That(category, Is.Not.Null, "equipment kind label " + i);
+                        Assert.That(category.GetComponent<RectTransform>().sizeDelta.y, Is.GreaterThanOrEqualTo(44f), "equipment kind text fits its fixed readable type size " + i);
                         Assert.That(Contains(targetLocal, LocalRect(category.GetComponent<RectTransform>()), 0.01f), Is.True, "equipment kind label stays in its hit target " + i);
 
                         var rootImage = buttons[i].GetComponent<Image>();
@@ -84,17 +89,29 @@ namespace Wildfolk.Tests
                             Assert.That(targets[a].Overlaps(targets[b]), Is.False, "equipment touch targets do not overlap " + a + "/" + b);
 
                     var selectedName = RelativeRect(panel.SelectedName.rectTransform, surface as RectTransform);
-                    Assert.That(panel.SelectedCategory.rectTransform.sizeDelta.y, Is.GreaterThanOrEqualTo(38f), "selected item category has enough height for its actual type size");
+                    Assert.That(equipment.SelectionState, Is.Not.Null, "selected item has a dedicated equipment state line");
+                    var selectedState = RelativeRect(equipment.SelectionState.rectTransform, surface as RectTransform);
+                    Assert.That(panel.SelectedCategory.rectTransform.sizeDelta.y, Is.GreaterThanOrEqualTo(40f), "selected item category has enough height for its actual type size");
                     var selectedCategory = RelativeRect(panel.SelectedCategory.rectTransform, surface as RectTransform);
                     Assert.That(selectedCategory.Overlaps(selectedName), Is.False, "selected item name and category have separate bounds");
+                    Assert.That(equipment.SelectionState.fontSize, Is.GreaterThanOrEqualTo(27), "equipment state remains readable without best-fit shrinking");
+                    Assert.That(equipment.SelectionState.rectTransform.sizeDelta.y, Is.GreaterThanOrEqualTo(42f), "equipment state allows the full fixed font line height");
+                    Assert.That(selectedState.Overlaps(selectedName), Is.False, "equipment state does not collide with selected item name");
+                    Assert.That(selectedState.Overlaps(selectedCategory), Is.False, "equipment state does not collide with item category");
                     foreach (var status in equipment.SlotStatusLabels)
                         Assert.That(RelativeRect(status.rectTransform, surface as RectTransform).Overlaps(selectedName), Is.False,
                             "equipment status text does not collide with selected item name");
                     var details = RelativeRect(equipment.Details.rectTransform, surface as RectTransform);
                     var comparison = RelativeRect(equipment.Comparison.rectTransform, surface as RectTransform);
                     Assert.That(selectedCategory.Overlaps(details), Is.False, "selected item category does not collide with item details");
+                    Assert.That(selectedState.Overlaps(details), Is.False, "equipment state does not collide with item details");
                     Assert.That(details.Overlaps(comparison), Is.False, "item details and armor comparison have separate bounds");
+                    Assert.That(equipment.Details.fontSize, Is.GreaterThanOrEqualTo(29), "item details use a readable fixed type size");
+                    Assert.That(equipment.Details.rectTransform.sizeDelta.y, Is.GreaterThanOrEqualTo(84f), "item details retain a multi-line description area");
                     var drag = panel.GetComponent<InventoryDragController>();
+                    Assert.That(equipment.EquipButton.GetComponent<RectTransform>().sizeDelta.x,
+                        Is.GreaterThan(drag.SplitButton.GetComponent<RectTransform>().sizeDelta.x),
+                        "the primary equipment action has more visual weight than Split");
                     foreach (var modalSurface in new[]
                     {
                         drag.SplitPanel.View.transform.Find("Split Panel"),

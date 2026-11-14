@@ -48,8 +48,8 @@
     {
       "Key": "ui.inventory.compare",
       "Values": [
-        "Defense {0} → {1} ({2:+#;-#;0})",
-        "방어력 {0} → {1} ({2:+#;-#;0})"
+        "Defense {0} → {1} · {2} {3:+#;-#;0}",
+        "방어력 {0} → {1} · {2} {3:+#;-#;0}"
       ]
     },
     {
@@ -95,6 +95,27 @@
       ]
     },
     {
+      "Key": "ui.inventory.incompatible",
+      "Values": [
+        "Doesn't fit {0}",
+        "{0} 슬롯용 장비가 아닙니다"
+      ]
+    },
+    {
+      "Key": "ui.inventory.current_item",
+      "Values": [
+        "Currently equipped: {0}",
+        "현재 장착: {0}"
+      ]
+    },
+    {
+      "Key": "ui.inventory.already_equipped",
+      "Values": [
+        "Already equipped",
+        "이미 장착 중"
+      ]
+    },
+    {
       "Key": "ui.inventory.drop",
       "Values": [
         "Drop to ground",
@@ -106,6 +127,13 @@
       "Values": [
         "Equip",
         "장착"
+      ]
+    },
+    {
+      "Key": "ui.action.replace",
+      "Values": [
+        "Replace",
+        "교체"
       ]
     },
     {

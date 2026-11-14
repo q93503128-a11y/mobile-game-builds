@@ -45,6 +45,49 @@ namespace Wildfolk.Tests
             var body=save.Catalog.Item("leather_body");player.Model.Add(body,1);for(var i=0;i<36;i++)if(player.Model.GetSlot(i).Item==body){player.SelectSlot(i);break;}yield return null;Assert.That(player.GetComponent<PlayerPrimaryAction>().TryUse(),Is.True);Assert.That(equipment.BodyArmor,Is.SameAs(body));
             player.Model.Add(save.Catalog.Item("wood"),1800);var before=player.Model.Capture();Assert.That(equipment.Unequip(ArmorSlot.Head),Is.False);Assert.That(equipment.HeadArmor,Is.SameAs(iron));Assert.That(JsonUtility.ToJson(new StackFixture{Slots=player.Model.Capture()}),Is.EqualTo(JsonUtility.ToJson(new StackFixture{Slots=before})));
         }
+        [UnityTest]public IEnumerator InventorySplitButtonInitializesWhenInventoryWasAlreadyOpen()
+        {
+            save.World.Session.OpenInventory();yield return null;
+            var buttonObject=new GameObject("Isolated Split Button",typeof(RectTransform),typeof(CanvasRenderer),typeof(UnityEngine.UI.Image),typeof(UnityEngine.UI.Button));
+            var button=buttonObject.GetComponent<UnityEngine.UI.Button>();var drag=buttonObject.AddComponent<InventoryDragController>();drag.Owner=player;drag.Session=save.World.Session;drag.SplitButton=button;button.interactable=true;
+            yield return null;
+            Assert.That(button.interactable,Is.False,"The split action starts disabled when inventory is already open and no slot is selected");
+            Object.Destroy(buttonObject);yield return null;save.World.Session.CloseInventory();yield return null;
+        }
+        [UnityTest]public IEnumerator InventoryReplacementLabelsShowCurrentGearDirectionAndResetSelection()
+        {
+            var panel=Object.FindFirstObjectByType<InventoryPanel>();var equipment=player.GetComponent<PlayerEquipment>();var ui=Object.FindFirstObjectByType<InventoryEquipment>();var drag=Object.FindFirstObjectByType<InventoryDragController>();
+            var leather=save.Catalog.Item("leather_head");var iron=save.Catalog.Item("iron_head");var body=save.Catalog.Item("leather_body");var crown=save.Catalog.Item("undead_kings_crown");var ironBody=save.Catalog.Item("iron_body");
+            Assert.That(player.Model.Add(leather,1),Is.EqualTo(1));Assert.That(equipment.TryEquip(leather),Is.True);Assert.That(player.Model.Add(body,1),Is.EqualTo(1));Assert.That(equipment.TryEquip(body),Is.True);
+            Assert.That(player.Model.Add(crown,1),Is.EqualTo(1));Assert.That(equipment.TryEquip(crown),Is.True);Assert.That(player.Model.Add(iron,1),Is.EqualTo(1));Assert.That(player.Model.Add(ironBody,1),Is.EqualTo(1));
+            save.World.Session.OpenInventory();yield return null;yield return null;
+            var ironIndex=System.Linq.Enumerable.Range(0,player.Model.Capacity).First(i=>player.Model.GetSlot(i).Item==iron);
+            panel.Select(ironIndex);ui.HeadButton.onClick.Invoke();
+            Assert.That(ui.SlotFilter,Is.EqualTo((int)ArmorSlot.Head));Assert.That(drag.IsDragging,Is.False);
+            Assert.That(ui.EquipLabel.text,Is.EqualTo(L.Text("ui.action.replace")));Assert.That(ui.SelectionState.text,Does.Contain(leather.LocalizedName));Assert.That(ui.Comparison.text,Does.Contain("↑"));
+            ui.EquipButton.onClick.Invoke();Assert.That(equipment.HeadArmor,Is.SameAs(iron));
+            var leatherIndex=System.Linq.Enumerable.Range(0,player.Model.Capacity).First(i=>player.Model.GetSlot(i).Item==leather);
+            panel.Select(leatherIndex);
+            Assert.That(ui.SlotFilter,Is.EqualTo((int)ArmorSlot.Head),"selecting a bag item preserves the equipment filter while clearing the equipped-item selection state");
+            Assert.That(ui.EquipLabel.text,Is.EqualTo(L.Text("ui.action.replace")));Assert.That(ui.Comparison.text,Does.Contain("↓"));Assert.That(ui.EquipButton.gameObject.activeSelf,Is.True);
+
+            if(ui.SlotFilter>=0)ui.SelectSlot(ui.SlotFilter);
+            var wood=save.Catalog.Item("wood");player.Model.Add(wood,1);var woodIndex=System.Linq.Enumerable.Range(0,player.Model.Capacity).First(i=>player.Model.GetSlot(i).Item==wood);
+            panel.Select(woodIndex);ui.HeadButton.onClick.Invoke();
+            Assert.That(ui.SelectionState.text,Is.EqualTo(L.Text("ui.inventory.equipped")));Assert.That(ui.SlotStatusLabels[0].text,Is.Empty,"equipped state is stated once in the item details");
+            Assert.That(ui.UnequipButton.gameObject.activeSelf,Is.True);Assert.That(drag.IsDragging,Is.False);
+            ui.UnequipButton.onClick.Invoke();Assert.That(equipment.HeadArmor,Is.Null);Assert.That(player.Model.CountItem(iron),Is.EqualTo(1));
+            Assert.That(ui.SelectionState.text,Is.Empty,"the slot label carries the empty state without repeating it in the detail status");
+            Assert.That(ui.SlotStatusLabels[0].text,Is.EqualTo(L.Text("ui.inventory.empty")));
+
+            if(ui.SlotFilter>=0)ui.SelectSlot(ui.SlotFilter);
+            var ironBodyIndex=System.Linq.Enumerable.Range(0,player.Model.Capacity).First(i=>player.Model.GetSlot(i).Item==ironBody);
+            panel.Select(ironBodyIndex);ui.AccessoryButton.onClick.Invoke();panel.Select(ironBodyIndex);
+            Assert.That(ui.SlotFilter,Is.EqualTo((int)ArmorSlot.Accessory));Assert.That(ui.SelectionState.text,Does.Contain(L.Text("ui.slot."+ArmorSlot.Accessory)));
+            Assert.That(ui.SlotStatusLabels[3].text,Is.Empty,"the selected item detail is the single incompatibility message");
+            Assert.That(ui.EquipButton.gameObject.activeSelf,Is.False,"incompatible equipment cannot be equipped");
+            save.World.Session.CloseInventory();yield return null;
+        }
         [System.Serializable]private sealed class StackFixture{public SavedStack[] Slots;}
         [UnityTest]public IEnumerator ModalLayerIsCenteredAndBlocksBagAndGameplay()
         {

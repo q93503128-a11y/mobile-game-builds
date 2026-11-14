@@ -22,8 +22,8 @@ namespace Wildfolk.Editor
         private const float EquipmentX = 686f;
         private const float EquipmentWidth = 590f;
         private const float EquipmentCellWidth = 272f;
-        private const float EquipmentCellHeight = 192f;
-        private const float EquipmentSlotSize = 112f;
+        private const float EquipmentCellHeight = 188f;
+        private const float EquipmentSlotSize = 122f;
 
         internal static void Build(GameObject root, Transform safe, GameplaySession session, PlayerInventory owner, PlayerCrafting crafting, int count)
         {
@@ -250,18 +250,18 @@ namespace Wildfolk.Editor
 
             if (panel.SelectedIcon != null)
             {
-                Position(panel.SelectedIcon, new Vector2(470, -213), new Vector2(76, 72));
+                Position(panel.SelectedIcon, new Vector2(444, -65), new Vector2(80, 80));
                 panel.SelectedIcon.preserveAspect = true;
             }
             if (panel.SelectedName != null)
             {
-                Caption(panel.SelectedName, new Vector2(708, -176), new Vector2(424, 48), 30);
+                Caption(panel.SelectedName, new Vector2(724, -65), new Vector2(458, 66), 34);
                 panel.SelectedName.horizontalOverflow = HorizontalWrapMode.Wrap;
                 panel.SelectedName.verticalOverflow = VerticalWrapMode.Truncate;
                 panel.SelectedName.resizeTextForBestFit = false;
                 panel.SelectedName.fontStyle = FontStyle.Bold;
             }
-            if (panel.SelectedCategory != null) Caption(panel.SelectedCategory, new Vector2(708, -221), new Vector2(424, 38), 24);
+            if (panel.SelectedCategory != null) Caption(panel.SelectedCategory, new Vector2(724, -119), new Vector2(458, 40), 27);
 
             ArrangeEquipment(surface, equipment);
             if (panel.CraftingButton != null)
@@ -276,8 +276,11 @@ namespace Wildfolk.Editor
                 if (drag.SplitButton != null)
                 {
                     SetButtonArt(drag.SplitButton, "inventory_button");
-                    ActionSize(drag.SplitButton, new Vector2(820, -371), new Vector2(244, 74));
-                    SetButtonColors(drag.SplitButton);
+                    ActionSize(drag.SplitButton, new Vector2(850, -366), new Vector2(206, 92));
+                    SetSecondaryButtonColors(drag.SplitButton);
+                    var splitLabel=drag.SplitButton.GetComponentInChildren<Text>(true);
+                    splitLabel.fontSize=28;
+                    splitLabel.resizeTextForBestFit=false;
                 }
                 if (drag.DropZone != null)
                 {
@@ -325,6 +328,7 @@ namespace Wildfolk.Editor
             }
             equipment.Details = Text("Armor Details", surface, string.Empty, new Vector2(EquipmentX, -270), new Vector2(552, 46), 23, TextAnchor.MiddleLeft);
             equipment.Comparison = Text("Comparison", surface, string.Empty, new Vector2(EquipmentX, -308), new Vector2(552, 26), 22, TextAnchor.MiddleLeft);
+            equipment.SelectionState = Text("Equipment Selection State", surface, string.Empty, new Vector2(EquipmentX, -162), new Vector2(552, 42), 28, TextAnchor.MiddleLeft);
             equipment.EquipButton = QualityUiBuilder.Action(surface, "Equip", "ui.action.equip", new Vector2(534, -370), new Vector2(244, 74), equipment.Equip, out equipment.EquipLabel);
             equipment.UnequipButton = QualityUiBuilder.Action(surface, "Unequip", "ui.action.unequip", new Vector2(534, -370), new Vector2(244, 74), equipment.Unequip, out _);
             for (var i = 0; i < 2; i++)
@@ -341,6 +345,8 @@ namespace Wildfolk.Editor
             if (equipment.UtilityButton == null) equipment.UtilityButton = CloneEquipmentButton(equipment, "Utility", ArmorSlot.Utility, out equipment.UtilityIcon);
             if (equipment.AccessoryButton == null) equipment.AccessoryButton = CloneEquipmentButton(equipment, "Accessory", ArmorSlot.Accessory, out equipment.AccessoryIcon);
             var parent = equipment.HeadButton.transform.parent;
+            if (equipment.SelectionState == null)
+                equipment.SelectionState = FindText(parent, "Equipment Selection State") ?? Text("Equipment Selection State", parent, string.Empty, new Vector2(EquipmentX, -162), new Vector2(552, 42), 28, TextAnchor.MiddleLeft);
             equipment.SlotItemNames = new Text[4];
             equipment.SlotStatusLabels = new Text[4];
             equipment.SlotSelectionImages = new Image[4];
@@ -373,14 +379,14 @@ namespace Wildfolk.Editor
                 if (icon != null)
                 {
                     icon.preserveAspect = true;
-                    Position(icon, new Vector2(0, 1), new Vector2(88, 92));
+                    Position(icon, Vector2.zero, new Vector2(104, 100));
                     icon.raycastTarget = false;
                 }
                 var key = "ui.slot." + EquipmentNames[i];
                 var category = EnsureEquipmentText(parent, key);
                 category.transform.SetParent(button.transform, false);
-                Position(category, new Vector2(0, 74), new Vector2(EquipmentCellWidth - 12, 42));
-                category.fontSize = 29;
+                Position(category, new Vector2(0, 72), new Vector2(EquipmentCellWidth - 12, 44));
+                category.fontSize = 30;
                 category.alignment = TextAnchor.MiddleCenter;
                 category.fontStyle = FontStyle.Bold;
                 category.horizontalOverflow = HorizontalWrapMode.Wrap;
@@ -394,10 +400,11 @@ namespace Wildfolk.Editor
                 itemName.gameObject.SetActive(false);
                 equipment.SlotItemNames[i] = null;
 
-                var status = FindText(button.transform, "Equipment Status") ?? Text("Equipment Status", button.transform, string.Empty, new Vector2(0, -76), new Vector2(EquipmentCellWidth - 8, 38), 25, TextAnchor.MiddleCenter);
-                Position(status, new Vector2(0, -76), new Vector2(EquipmentCellWidth - 8, 38));
-                status.fontSize = 25;
+                var status = FindText(button.transform, "Equipment Status") ?? Text("Equipment Status", button.transform, string.Empty, new Vector2(0, -72), new Vector2(EquipmentCellWidth - 8, 42), 28, TextAnchor.MiddleCenter);
+                Position(status, new Vector2(0, -72), new Vector2(EquipmentCellWidth - 8, 42));
+                status.fontSize = 28;
                 status.resizeTextForBestFit = false;
+                status.fontStyle = FontStyle.Bold;
                 status.horizontalOverflow = HorizontalWrapMode.Wrap;
                 status.verticalOverflow = VerticalWrapMode.Truncate;
                 status.color = new Color32(226, 197, 157, 255);
@@ -435,51 +442,51 @@ namespace Wildfolk.Editor
 
         private static void ArrangeEquipment(Transform surface, InventoryEquipment equipment)
         {
-            Caption(surface.Find("Equipment Title").GetComponent<Text>(), new Vector2(EquipmentX, 342), new Vector2(EquipmentWidth, 50), 31);
+            Caption(surface.Find("Equipment Title").GetComponent<Text>(), new Vector2(EquipmentX, 393), new Vector2(EquipmentWidth, 44), 31);
             var buttons = new[] { equipment.HeadButton, equipment.BodyButton, equipment.UtilityButton, equipment.AccessoryButton };
             var positions = new[]
             {
-                new Vector2(EquipmentX - 145, 144),
-                new Vector2(EquipmentX + 145, 144),
-                new Vector2(EquipmentX - 145, -55),
-                new Vector2(EquipmentX + 145, -55)
+                new Vector2(EquipmentX - 145, 260),
+                new Vector2(EquipmentX + 145, 260),
+                new Vector2(EquipmentX - 145, 64),
+                new Vector2(EquipmentX + 145, 64)
             };
             for (var i = 0; i < buttons.Length; i++)
             {
                 if (buttons[i] == null) continue;
                 Position(buttons[i], positions[i], new Vector2(EquipmentCellWidth, EquipmentCellHeight));
             }
-            Position(equipment.Details, new Vector2(EquipmentX, -275), new Vector2(552, 66));
-            Position(equipment.Comparison, new Vector2(EquipmentX, -326), new Vector2(552, 32));
-            equipment.Details.fontSize = 23;
+            Position(equipment.Details, new Vector2(EquipmentX, -227), new Vector2(552, 86));
+            Position(equipment.Comparison, new Vector2(EquipmentX, -296), new Vector2(552, 50));
+            Position(equipment.SelectionState, new Vector2(EquipmentX, -162), new Vector2(552, 42));
+            equipment.Details.fontSize = 30;
             equipment.Details.resizeTextForBestFit = false;
             equipment.Details.horizontalOverflow = HorizontalWrapMode.Wrap;
-            equipment.Details.verticalOverflow = VerticalWrapMode.Truncate;
-            equipment.Comparison.fontSize = 22;
+            equipment.Details.verticalOverflow = VerticalWrapMode.Overflow;
+            equipment.Comparison.fontSize = 28;
             equipment.Comparison.resizeTextForBestFit = false;
             equipment.Comparison.horizontalOverflow = HorizontalWrapMode.Wrap;
-            equipment.Comparison.verticalOverflow = VerticalWrapMode.Truncate;
+            equipment.Comparison.verticalOverflow = VerticalWrapMode.Overflow;
+            equipment.SelectionState.fontSize = 28;
+            equipment.SelectionState.resizeTextForBestFit = false;
+            equipment.SelectionState.horizontalOverflow = HorizontalWrapMode.Wrap;
+            equipment.SelectionState.verticalOverflow = VerticalWrapMode.Truncate;
             SetButtonArt(equipment.EquipButton, "inventory_button");
             SetButtonArt(equipment.UnequipButton, "inventory_button");
-            ActionSize(equipment.EquipButton, new Vector2(534, -371), new Vector2(244, 74));
-            ActionSize(equipment.UnequipButton, new Vector2(534, -371), new Vector2(244, 74));
+            ActionSize(equipment.EquipButton, new Vector2(572, -366), new Vector2(340, 92));
+            ActionSize(equipment.UnequipButton, new Vector2(572, -366), new Vector2(340, 92));
             SetButtonColors(equipment.EquipButton);
             SetButtonColors(equipment.UnequipButton);
-            equipment.EquipLabel.fontSize = 27;
-            var split = surface.Find("Split");
-            if (split != null)
-            {
-                SetButtonArt(split.GetComponent<Button>(), "inventory_button");
-                ActionSize(split.GetComponent<Button>(), new Vector2(820, -371), new Vector2(244, 74));
-            }
+            equipment.EquipLabel.fontSize = 34;
+            equipment.EquipLabel.resizeTextForBestFit = false;
         }
 
         private static void CreateRegions(Transform surface)
         {
             EnsureRegion(surface, "Storage Region", "inventory_rail", new Vector2(GridX, 24), new Vector2(GridWidth, 454), 1);
             EnsureRegion(surface, "Hotbar Region", "inventory_rail", new Vector2(GridX, -307), new Vector2(GridWidth, 192), 2);
-            EnsureRegion(surface, "Equipment Region", "inventory_rail", new Vector2(EquipmentX, 42), new Vector2(EquipmentWidth, 620), 3);
-            EnsureRegion(surface, "Selected Item Region", "inventory_panel", new Vector2(EquipmentX, -278), new Vector2(EquipmentWidth, 260), 4);
+            EnsureRegion(surface, "Equipment Region", "inventory_rail", new Vector2(EquipmentX, 170), new Vector2(EquipmentWidth, 500), 3);
+            EnsureRegion(surface, "Selected Item Region", "inventory_panel", new Vector2(EquipmentX, -215), new Vector2(EquipmentWidth, 392), 4);
         }
 
         private static void EnsureRegion(Transform parent, string name, string sprite, Vector2 position, Vector2 size, int sibling)
@@ -593,6 +600,17 @@ namespace Wildfolk.Editor
             colors.pressedColor = new Color32(191, 131, 79, 255);
             colors.selectedColor = new Color32(244, 205, 147, 255);
             colors.disabledColor = new Color32(123, 104, 87, 210);
+            button.colors = colors;
+        }
+
+        private static void SetSecondaryButtonColors(Button button)
+        {
+            SetButtonColors(button);
+            if (button == null) return;
+            var colors = button.colors;
+            colors.normalColor = new Color32(208, 176, 142, 255);
+            colors.highlightedColor = new Color32(255, 226, 189, 255);
+            colors.pressedColor = new Color32(181, 131, 91, 255);
             button.colors = colors;
         }
     }

@@ -38,7 +38,7 @@ namespace Wildfolk
         private InventorySlotView hoveredView;
         private int hoveredIndex;
 
-        private void Start() { Owner.Model.Changed += Refresh; Session.StateChanged += StateChanged;if(Storage!=null)Storage.Changed+=StorageChanged; }
+        private void Start() { Owner.Model.Changed += Refresh; Session.StateChanged += StateChanged;if(Storage!=null)Storage.Changed+=StorageChanged;UpdateSplit(); }
         private void OnDestroy()
         {
             if (Owner != null && Owner.Model != null) Owner.Model.Changed -= Refresh;
