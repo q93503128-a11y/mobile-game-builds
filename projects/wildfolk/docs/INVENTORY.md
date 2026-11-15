@@ -66,4 +66,5 @@ Phase 4C의 데이터와 행동 규칙을 유지하며 선택 아이템 세부 �
 - Head / Body / Utility / Accessory 2×2, Storage 27, Hotbar 9를 유지한다. 장비 아이콘·프레임·라벨과 버튼 간격을 개선하고 선택 테두리가 아이콘을 가리지 않게 한다.
 - 교체 후보에는 현재 장착품, 교체 문구, 이전→이후 방어력과 상승/하락 차이를 나타낸다. 비호환 후보는 빨간 상태로 표시하고 장착 버튼을 숨긴다. 장착 중 항목에는 해제를, 빈 슬롯에는 슬롯 안에 빈 상태를 표시한다.
 - 모델/저장/멀티플레이 규칙과 분할·드래그 기능은 바꾸지 않았다. 관련 화면, 테스트, 근거는 [Phase 4D 검수 기록](../validation/inventory-phase4d/README.md), [캡처 인덱스](../validation/inventory-phase4d/CAPTURE_INDEX.md), [회귀 결과](../validation/inventory-phase4d/TESTS.md)를 참조한다.
-- 자동 텍스트 경계 검사 및 Editor 테스트는 통과했다. Android 실기기 터치 검증은 UNVERIFIED; 최종 디자인 승인은 사용자의 캡처 검토를 기다린다.
+- 2026-11-14의 두 긴 설명 preferred-height 경고(86 할당 / 124.5 필요)는 2026-11-15 후속 작업에서 내용 기반 상세 영역 재배치로 해결했다. 글자 크기 축소·텍스트 잘라내기 없이 비교 문구가 없는 경우 빈 비교 행을 사용하며, 3개 해상도×2개 언어의 실제 Game View 검사와 원본 픽셀 검토를 통과했다. [원인·캡처·검사 결과](../validation/inventory-phase4d/REMAINING_TEXT_LAYOUT.md).
+- EditMode 2/2 및 PlayMode 5/5 집중 회귀 검사는 통과했다. Android 실기기 터치 검증은 UNVERIFIED; 최종 디자인 승인은 사용자의 캡처 검토를 기다린다.

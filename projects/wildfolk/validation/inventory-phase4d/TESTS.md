@@ -81,3 +81,17 @@ Android 실기기·Safe Area·dp/터치 검증, Android 빌드, 전체 회귀, �
 - 캡처 인덱스에는 844×390/1280×720의 10개 상태와 KO/EN 각각의 원본 PNG 링크가 있다. Android 기기 검증은 **UNVERIFIED**다.
 
 이 변경은 지정된 인벤토리 파일, SP/MP 두 씬, QA 도구와 검증 자료에만 한정했다. Phase 4E와 다른 UI는 시작하거나 수정하지 않았다.
+
+## 2026-11-15 남은 Armor Details 높이 결함 재검증
+
+**상태: PASS.** 2026-11-14의 두 `Armor Details` 실패(높이 86, preferred 124.5)를 수정한 뒤 focused tests와 Unity Game View QA를 다시 실행했다. 상세한 원인·레이아웃 동작·화면 링크는 [후속 교정 기록](REMAINING_TEXT_LAYOUT.md)에 있다.
+
+- EditMode **2/2 통과** — job `93c4a80f555845319a31c9cb432609ad`. Wildfolk/Multiplayer 장비 레이아웃 두 테스트 케이스. 상세 텍스트 크기 축소 금지, `VerticalWrapMode.Overflow`, 기본 상세 배치도 검사한다.
+- PlayMode **5/5 통과** — job `c6169967e05d4204a7ca716c67a2fa71`. `ActualPointerArmorDragSwapUnequipAndUse`, `InventoryReplacementLabelsShowCurrentGearDirectionAndResetSelection`, `InventorySplitButtonInitializesWhenInventoryWasAlreadyOpen`, `LongPressSplitHoldsChosenAmountUntilExplicitPlacementOrCancel`, `SplitHalfViaTouchButtonAndExplicitDropZonePreserveItems`.
+- Unity Play Mode Game View QA: **50 PNG**, 844×390 22장·1280×720 22장·1920×1080 6장, 합계 12,924,450 bytes. 긴 영어 왕관 설명 및 네 장비 슬롯 비움 상태를 KO/EN 각각 세 해상도에서 캡처했다. PNG 헤더 크기 오류 **0**, 자동 `preferredHeight` 실패 **0**, 텍스트·슬롯·액션 간 사각 영역 겹침 실패 **0**.
+- 문제 상태의 EN 설명 수치: 844×390 `77.80736 / 86`, 1280×720 `124.5 / 130.5`, 1920×1080 `124 / 130` (preferred / allocated). KO 상태는 세 해상도 모두 86 할당 영역 안에 들었다.
+- 독립 시각 검수: 문제 상태 캡처 12장을 원본 픽셀로 직접 확인했다. 설명 문구와 이름·카테고리·상태·장비 프레임·Equip/Unequip/Split 사이 충돌이 없었다.
+- 격리 QA 임시 프로필에서 AutoSave 비활성 및 월드 저장 미기록. Unity 컴파일 오류는 새로 발생하지 않았다. 기존 `Google.IOSResolver.dll` assembly-load 항목은 환경에 남아 있다.
+- PlayMode 테스트가 ignored `client/UserData`에 테스트 저장 파일 3개를 만들거나 갱신한 것을 확인했다. 외부 보존 복사본을 SHA-256으로 검증한 뒤, 작업 전 부재 상태를 복구하기 위해 그 테스트 생성 파일만 제거했다. 복사본은 `D:\Lowfire-Phase4D-test-side-effects-20261115\UserData`에 남아 있다. `ProjectSettings/EditorSettings.asset`의 테스트 실행 설정도 기존 해시로 복구했다.
+
+기존 사용자 변경과 `ProjectSettings/EditorSettings.asset`은 작업 전 스냅샷 SHA-256과 종료 시점의 SHA-256을 비교해 보존 여부를 확인했다.

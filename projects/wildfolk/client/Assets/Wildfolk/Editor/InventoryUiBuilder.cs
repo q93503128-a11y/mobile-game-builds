@@ -456,7 +456,8 @@ namespace Wildfolk.Editor
                 if (buttons[i] == null) continue;
                 Position(buttons[i], positions[i], new Vector2(EquipmentCellWidth, EquipmentCellHeight));
             }
-            Position(equipment.Details, new Vector2(EquipmentX, -227), new Vector2(552, 86));
+            Position(equipment.Details, new Vector2(EquipmentX, InventoryEquipment.DefaultDetailsCenterY),
+                new Vector2(552, InventoryEquipment.DefaultDetailsHeight));
             Position(equipment.Comparison, new Vector2(EquipmentX, -296), new Vector2(552, 50));
             Position(equipment.SelectionState, new Vector2(EquipmentX, -162), new Vector2(552, 42));
             equipment.Details.fontSize = 30;

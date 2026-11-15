@@ -118,6 +118,10 @@ namespace Wildfolk.Tests
                     Assert.That(details.Overlaps(comparison), Is.False, "item details and armor comparison have separate bounds");
                     Assert.That(equipment.Details.fontSize, Is.GreaterThanOrEqualTo(29), "item details use a readable fixed type size");
                     Assert.That(equipment.Details.rectTransform.sizeDelta.y, Is.GreaterThanOrEqualTo(84f), "item details retain a multi-line description area");
+                    Assert.That(equipment.Details.resizeTextForBestFit, Is.False, "item detail text is never shrunk to fit");
+                    Assert.That(equipment.Details.verticalOverflow, Is.EqualTo(VerticalWrapMode.Overflow), "item detail text is not truncated or clipped");
+                    Assert.That(equipment.Details.rectTransform.anchoredPosition.y, Is.EqualTo(InventoryEquipment.DefaultDetailsCenterY),
+                        "short details retain the approved baseline position");
                     var drag = panel.GetComponent<InventoryDragController>();
                     Assert.That(equipment.EquipButton.GetComponent<RectTransform>().sizeDelta.x,
                         Is.GreaterThan(drag.SplitButton.GetComponent<RectTransform>().sizeDelta.x),

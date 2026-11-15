@@ -74,3 +74,14 @@ Phase 4B에서는 장비 이름/아이콘의 겹침과 소형 해상도에서 �
 | 4개 장비 슬롯 비우기 | [PNG](captures/visual-correction-20261114-final-v2/inventory-ko-844x390-empty-equipment.png) | [PNG](captures/visual-correction-20261114-final-v2/inventory-en-844x390-empty-equipment.png) | [PNG](captures/visual-correction-20261114-final-v2/inventory-ko-1280x720-empty-equipment.png) | [PNG](captures/visual-correction-20261114-final-v2/inventory-en-1280x720-empty-equipment.png) |
 
 기본 캡처에서 선택하지 않은 분할 버튼은 어둡고, 30개 Wood 선택 캡처에서 버튼이 활성화된다. 자동 높이 검사에서 `Armor Details` 2회가 PARTIAL로 남았으며, 해당 PNG들은 별도 원본 픽셀 검토에서도 확인했다. [QA 요약](captures/visual-correction-20261114-final-v2/qa-result.txt)
+
+## Armor Details 남은 높이 결함 — 2026-11-15
+
+아래 실제 Unity Game View 캡처는 긴 영어 왕관 설명과 네 장비 슬롯 비움 상태를 844×390, 1280×720, 1920×1080에서 KO/EN으로 다시 촬영한 결과다. 두 상태 모두 선택된 왕관의 전체 설명을 유지한다. 12개 원본 PNG를 직접 확인했다.
+
+| 상태 | KO 844×390 | EN 844×390 | KO 1280×720 | EN 1280×720 | KO 1920×1080 | EN 1920×1080 |
+|---|---|---|---|---|---|---|
+| 긴 왕관 설명 | [PNG](captures/armor-details-reflow-20261115-final/inventory-ko-844x390-long-item-name.png) | [PNG](captures/armor-details-reflow-20261115-final/inventory-en-844x390-long-item-name.png) | [PNG](captures/armor-details-reflow-20261115-final/inventory-ko-1280x720-long-item-name.png) | [PNG](captures/armor-details-reflow-20261115-final/inventory-en-1280x720-long-item-name.png) | [PNG](captures/armor-details-reflow-20261115-final/inventory-ko-1920x1080-long-item-name.png) | [PNG](captures/armor-details-reflow-20261115-final/inventory-en-1920x1080-long-item-name.png) |
+| 네 슬롯 비움 | [PNG](captures/armor-details-reflow-20261115-final/inventory-ko-844x390-empty-equipment.png) | [PNG](captures/armor-details-reflow-20261115-final/inventory-en-844x390-empty-equipment.png) | [PNG](captures/armor-details-reflow-20261115-final/inventory-ko-1280x720-empty-equipment.png) | [PNG](captures/armor-details-reflow-20261115-final/inventory-en-1280x720-empty-equipment.png) | [PNG](captures/armor-details-reflow-20261115-final/inventory-ko-1920x1080-empty-equipment.png) | [PNG](captures/armor-details-reflow-20261115-final/inventory-en-1920x1080-empty-equipment.png) |
+
+최종 자동 QA 요약: [PASS](captures/armor-details-reflow-20261115-final/qa-result.txt), 전체 기록: [qa-live.tsv](captures/armor-details-reflow-20261115-final/qa-live.tsv). 선호 높이·겹침 검사는 모두 통과했다. [원인, 배치 수정, 수치 및 테스트](REMAINING_TEXT_LAYOUT.md).

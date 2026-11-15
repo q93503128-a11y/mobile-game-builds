@@ -4,6 +4,10 @@ namespace Wildfolk
 {
     public sealed class InventoryEquipment : MonoBehaviour
     {
+        public const float DefaultDetailsCenterY = -227f;
+        public const float DefaultDetailsHeight = 86f;
+        private const float DetailsExpansionGap = 3f;
+        private const float DetailsTextPadding = 6f;
         public PlayerInventory Player;
         public PlayerEquipment Equipment;
         public InventoryPanel Panel;
@@ -19,8 +23,58 @@ namespace Wildfolk
         public int SlotFilter {get;private set;}=-1;
         private bool equippedSelected;
         private ArmorSlot selectedSlot;
+        private int detailsLayoutScreenWidth;
+        private int detailsLayoutScreenHeight;
+        private float detailsLayoutCanvasScale;
+        private bool detailsLayoutViewportInitialized;
         private void Start(){Player.Model.Changed+=Refresh;Player.SelectionChanged+=Selection;Panel.ItemSelected+=Selection;Equipment.Changed+=Refresh;L.Changed+=Refresh;Refresh();}
         private void OnDestroy(){L.Changed-=Refresh;Player.Model.Changed-=Refresh;Player.SelectionChanged-=Selection;Panel.ItemSelected-=Selection;Equipment.Changed-=Refresh;}
+        private void LateUpdate()
+        {
+            if(Details==null)return;
+            var canvas=Details.canvas;
+            var scale=canvas==null ? 1f : canvas.scaleFactor;
+            if(detailsLayoutViewportInitialized && detailsLayoutScreenWidth==Screen.width &&
+               detailsLayoutScreenHeight==Screen.height && Mathf.Approximately(detailsLayoutCanvasScale,scale))return;
+            RefreshDetailsLayout();
+        }
+
+        public void RefreshDetailsLayout()
+        {
+            if(Details==null || Comparison==null || SelectionState==null || EquipButton==null)return;
+            var detailsRect=Details.rectTransform;
+            var preferredHeight=Details.preferredHeight;
+            var hasComparison=!string.IsNullOrEmpty(Comparison.text);
+            var expanded=false;
+            if(!hasComparison && preferredHeight>DefaultDetailsHeight+2f)
+            {
+                var stateRect=SelectionState.rectTransform;
+                var actionRect=EquipButton.transform as RectTransform;
+                var detailsTop=stateRect.anchoredPosition.y-stateRect.rect.height*stateRect.pivot.y-DetailsExpansionGap;
+                var detailsBottom=actionRect.anchoredPosition.y+actionRect.rect.height*(1f-actionRect.pivot.y)+DetailsExpansionGap;
+                var availableHeight=detailsTop-detailsBottom;
+                var targetHeight=Mathf.Min(availableHeight,preferredHeight+DetailsTextPadding);
+                if(targetHeight>=preferredHeight)
+                {
+                    detailsRect.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical,targetHeight);
+                    detailsRect.anchoredPosition=new Vector2(detailsRect.anchoredPosition.x,(detailsTop+detailsBottom)*.5f);
+                    Comparison.gameObject.SetActive(false);
+                    expanded=true;
+                }
+            }
+            if(!expanded)
+            {
+                detailsRect.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical,DefaultDetailsHeight);
+                detailsRect.anchoredPosition=new Vector2(detailsRect.anchoredPosition.x,DefaultDetailsCenterY);
+                Comparison.gameObject.SetActive(true);
+            }
+            var canvas=Details.canvas;
+            detailsLayoutScreenWidth=Screen.width;
+            detailsLayoutScreenHeight=Screen.height;
+            detailsLayoutCanvasScale=canvas==null ? 1f : canvas.scaleFactor;
+            detailsLayoutViewportInitialized=true;
+        }
+
         private void Selection(){equippedSelected=false;Refresh();}
         public void SelectSlot(int slot)
         {
@@ -96,6 +150,7 @@ namespace Wildfolk
             if(item!=null && item.Consumable!=null && L.Has("item."+item.Id+".description"))Details.text+="\n"+L.Text("item."+item.Id+".description");
             if(item!=null && item.Ammo!=AmmoKind.None)Details.text=L.Format("ui.ammo.info",item.AmmoDamage);
             if(item!=null && item.WaterCapacity>0)Details.text=stack.Charges+"/"+item.WaterCapacity+" · "+L.Text("water."+stack.Quality)+"\n"+L.Text("ui.waterskin.info");
+            RefreshDetailsLayout();
             if(equippedSelected){Panel.SelectedName.text=item==null ? L.Text("ui.inventory.empty") : item.LocalizedName;Panel.SelectedIcon.sprite=item==null ? null : item.Icon;Panel.SelectedIcon.enabled=item!=null;Panel.SelectedCategory.text=L.Text("ui.slot."+selectedSlot);}
             if(SelectionState!=null)
             {

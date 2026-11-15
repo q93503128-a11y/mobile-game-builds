@@ -297,7 +297,7 @@ namespace Wildfolk.Editor
             ClearEquipmentFilter(equipmentUi);
             panel.Select(crownIndex);
             equipmentUi.Refresh();
-            yield return CaptureState("long-item-name", panel, equipmentUi, drag);
+            yield return CaptureState("long-item-name", panel, equipmentUi, drag, true);
 
             Phase = "empty-equipment-state";
             L.SetLanguage("ko");
@@ -309,8 +309,12 @@ namespace Wildfolk.Editor
             yield return Delay(.25f);
             Check(equipment.HeadArmor == null && equipment.BodyArmor == null && equipment.Utility == null && equipment.Accessory == null,
                 "empty equipment fixture clears all four slots without changing inventory data");
+            var crown = save.Catalog.Item("undead_kings_crown");
+            Check(panel.SelectedName.text == crown.LocalizedName &&
+                  equipmentUi.Details.text == L.Text("item.undead_kings_crown.description"),
+                "empty equipment fixture retains the selected crown's complete localized description");
             CheckTextBounds(view);
-            yield return CaptureState("empty-equipment", panel, equipmentUi, drag);
+            yield return CaptureState("empty-equipment", panel, equipmentUi, drag, true);
 
             Phase = "final-isolation-check";
             Check(save.Repository.Path.StartsWith(DevelopmentProfile.Directory, StringComparison.OrdinalIgnoreCase), "final screenshot session still uses isolated profile");
@@ -333,15 +337,19 @@ namespace Wildfolk.Editor
             if (equipmentUi.SlotFilter >= 0) equipmentUi.SelectSlot(equipmentUi.SlotFilter);
         }
 
-        private static IEnumerator CaptureState(string name, InventoryPanel panel, InventoryEquipment equipmentUi, InventoryDragController drag)
+        private static IEnumerator CaptureState(string name, InventoryPanel panel, InventoryEquipment equipmentUi, InventoryDragController drag,
+            bool include1920 = false)
         {
-            foreach (var size in new[] { new Vector2Int(844, 390), new Vector2Int(1280, 720) })
+            var sizes = include1920
+                ? new[] { new Vector2Int(844, 390), new Vector2Int(1280, 720), new Vector2Int(1920, 1080) }
+                : new[] { new Vector2Int(844, 390), new Vector2Int(1280, 720) };
+            foreach (var size in sizes)
             foreach (var language in new[] { "ko", "en" })
             {
-                yield return SetResolution(size.x, size.y);
                 L.SetLanguage(language);
                 panel.RefreshSelection();
                 equipmentUi.Refresh();
+                yield return SetResolution(size.x, size.y);
                 Canvas.ForceUpdateCanvases();
                 CheckTextBounds(panel.View.transform);
                 if (drag.SplitPanel.View.activeSelf) CheckTextBounds(drag.SplitPanel.View.transform, "Split Panel");
@@ -364,7 +372,8 @@ namespace Wildfolk.Editor
             {
                 if (!text.isActiveAndEnabled || string.IsNullOrEmpty(text.text)) continue;
                 CheckBoundary(text.preferredHeight <= text.rectTransform.rect.height + 2,
-                    "text height fits " + text.name + " actual=" + text.rectTransform.rect.height + " preferred=" + text.preferredHeight);
+                    "text height fits " + text.name + " actual=" + text.rectTransform.rect.height + " preferred=" + text.preferredHeight +
+                    " screen=" + Screen.width + "x" + Screen.height);
                 var corners = new Vector3[4];
                 text.rectTransform.GetWorldCorners(corners);
                 foreach (var corner in corners)
@@ -374,6 +383,43 @@ namespace Wildfolk.Editor
                         "text stays inside inventory panel " + text.name + " at " + local);
                 }
             }
+            if (surfaceName == "Inventory Panel") CheckDetailsDoNotOverlap(view, bounds);
+        }
+
+        private static void CheckDetailsDoNotOverlap(Transform view, RectTransform surface)
+        {
+            var equipment = Object.FindFirstObjectByType<InventoryEquipment>();
+            var panel = Object.FindFirstObjectByType<InventoryPanel>();
+            var drag = Object.FindFirstObjectByType<InventoryDragController>();
+            if (equipment == null || panel == null || drag == null || equipment.Details == null) return;
+            var details = RelativeRect(equipment.Details.rectTransform, surface);
+            CheckNoOverlap(details, equipment.SelectionState.rectTransform, surface, "Armor Details and equipment selection state");
+            CheckNoOverlap(details, panel.SelectedName.rectTransform, surface, "Armor Details and selected item name");
+            CheckNoOverlap(details, panel.SelectedCategory.rectTransform, surface, "Armor Details and selected item category");
+            if (equipment.Comparison.gameObject.activeInHierarchy && !string.IsNullOrEmpty(equipment.Comparison.text))
+                CheckNoOverlap(details, equipment.Comparison.rectTransform, surface, "Armor Details and armor comparison");
+            foreach (var slot in new[] { equipment.HeadButton, equipment.BodyButton, equipment.UtilityButton, equipment.AccessoryButton })
+                if (slot != null && slot.gameObject.activeInHierarchy)
+                    CheckNoOverlap(details, slot.transform as RectTransform, surface, "Armor Details and " + slot.name);
+            foreach (var action in new[] { equipment.EquipButton, equipment.UnequipButton, drag.SplitButton })
+                if (action != null && action.gameObject.activeInHierarchy)
+                    CheckNoOverlap(details, action.transform as RectTransform, surface, "Armor Details and " + action.name);
+        }
+
+        private static void CheckNoOverlap(Rect source, RectTransform other, RectTransform ancestor, string description)
+        {
+            if (other == null) return;
+            CheckBoundary(!source.Overlaps(RelativeRect(other, ancestor)), description + " do not overlap");
+        }
+
+        private static Rect RelativeRect(RectTransform rect, RectTransform ancestor)
+        {
+            var corners = new Vector3[4];
+            rect.GetWorldCorners(corners);
+            var first = ancestor.InverseTransformPoint(corners[0]);
+            var third = ancestor.InverseTransformPoint(corners[2]);
+            return Rect.MinMaxRect(Mathf.Min(first.x, third.x), Mathf.Min(first.y, third.y),
+                Mathf.Max(first.x, third.x), Mathf.Max(first.y, third.y));
         }
 
         private static IEnumerator Delay(float seconds)

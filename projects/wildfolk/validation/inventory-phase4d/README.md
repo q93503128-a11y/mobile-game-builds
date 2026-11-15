@@ -1,6 +1,6 @@
 # Lowfire Phase 4D — 인벤토리 UI 상용 품질 검수
 
-**상태:** Phase 4D 구현과 이번 최종 시각 교정 구현·기능 회귀 검증 완료. 최종 디자인 승인은 사용자 캡처 검토 대기이며, 자동 텍스트 높이 검사는 긴 설명 2개 상태에서 PARTIAL, Android 실기기 터치 검증은 미수행이다.
+**현재 상태:** Phase 4D 구현과 남은 Armor Details 레이아웃 QA **PASS**. 최종 디자인 승인은 사용자 캡처 검토 대기이며, Android 실기기 터치 검증은 미수행이다. 2026-11-14의 두 preferred-height 실패는 [후속 교정 기록](REMAINING_TEXT_LAYOUT.md)에 따라 2026-11-15 해결했다.
 
 ## 기준과 보호
 
@@ -76,7 +76,7 @@ Storage 27, Hotbar 9, 장비 4종, 드래그/합치기/분할/장착·교체·�
 
 각 PNG를 원본 크기로 직접 확인했다. 제목과 프레임, 아이콘과 상태 문구의 충돌은 보이지 않았고, 교체 완료 화면은 새 장착품·장착 상태·해제 동작으로 읽힌다. 분할 버튼도 빈 선택에서 어둡고, 다중 수량 아이템 선택 시 활성화된 화면과 구분된다. 전 상태와 언어별 링크는 [캡처 인덱스](CAPTURE_INDEX.md)에서 확인할 수 있다.
 
-자동 preferred-height 검사는 `Armor Details` 영역에서 영어 긴 설명/빈 장비 캡처 2회(실제 RectTransform 86, preferred 124.5)를 경고했다. 원본 화면 검토에서 텍스트와 액션의 겹침은 보이지 않았지만, 자동 높이 검사 PASS로 처리하지 않았다. 따라서 자동 경계 결과는 **PARTIAL**, 지정된 장비 슬롯 및 교체/분할 상태의 시각 검수는 **PASS**다.
+2026-11-14 당시 자동 preferred-height 검사는 `Armor Details` 영역에서 영어 긴 설명/빈 장비 캡처 2회(실제 RectTransform 86, preferred 124.5)를 경고했다. 그 시점 결과는 자동 경계 **PARTIAL**이었다. 이 결함은 [2026-11-15 후속 작업](REMAINING_TEXT_LAYOUT.md)에서 실제 내용에 맞춰 설명 영역을 재배치해 해결했고, 3개 해상도×2개 언어의 두 대상 상태에서 최종 경계 실패 0건을 확인했다.
 
 ### 교정 회귀 검사
 
@@ -86,3 +86,7 @@ Storage 27, Hotbar 9, 장비 4종, 드래그/합치기/분할/장착·교체·�
 - Android 실기기/DPI/Safe Area 검증은 **UNVERIFIED**. Console의 기존 Google.IOSResolver 로드 문제와 기존 C# 경고 2개는 남아 있으며, 이번 코드 변경으로 인한 컴파일 오류는 없었다.
 
 보호된 로컬 변경 100개(미커밋 `.meta` 88개, `DefaultNetworkPrefabs.asset` 변경, 기존 미추적 파일 11개)의 SHA-256은 재검증 시 불일치 0개였다. 추가로 이미 남아 있던 `ProjectSettings/EditorSettings.asset`의 로컬 변경도 별도 해시로 추적해 커밋에서 제외했다. 최종 디자인 승인은 캡처를 본 사용자가 결정한다.
+
+## 남은 텍스트 레이아웃 결함 교정 — 2026-11-15
+
+긴 설명의 실제 preferred height가 고정 86 높이를 넘던 두 상태를 재현하고, 빈 비교 행을 이용한 내용 기반 상세 영역 재배치를 구현했다. 한국어/영어, 844×390/1280×720/1920×1080 캡처 12장을 직접 검토했고, 집중 EditMode 2/2·PlayMode 5/5 및 자동 텍스트/겹침 QA가 통과했다. 원인·수정·수치·증거는 [후속 교정 기록](REMAINING_TEXT_LAYOUT.md), [캡처 인덱스](CAPTURE_INDEX.md), [검사 결과](TESTS.md)를 참조한다.
