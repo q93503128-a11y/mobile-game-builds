@@ -19,14 +19,29 @@ namespace Wildfolk.Editor
         private const string PreviousProfileKey = "Lowfire.Phase4D.PreviousProfile";
         private const string PreviousRepositoryKey = "Lowfire.Phase4D.PreviousRepository";
         private const string PreviousSeedKey = "Lowfire.Phase4D.PreviousSeed";
+        private const string RestoreAfterPlayModeKey = "Lowfire.Phase4D.RestoreAfterPlayMode";
         public static string Phase { get; private set; } = "idle";
         private static int BoundaryFailures;
         private static string Root => UnityEditor.SessionState.GetString(RootKey, "");
+
+        [MenuItem("Wildfolk/QA/Prepare Character-centered Inventory Review")]
+        public static void PrepareCharacterCenteredInventoryReview()
+        {
+            var captureRoot = Path.GetFullPath(Path.Combine(Application.dataPath, "..", "..", "validation", "inventory-character-centered", "captures", "unity-final"));
+            Prepare(captureRoot);
+        }
 
         static InventoryPhase4DVisualQa()
         {
             EditorApplication.playModeStateChanged += state =>
             {
+                if (state == PlayModeStateChange.EnteredEditMode && UnityEditor.SessionState.GetBool(RestoreAfterPlayModeKey, false))
+                {
+                    UnityEditor.SessionState.SetBool(RestoreAfterPlayModeKey, false);
+                    RestoreEditorEnvironment();
+                    Log("editor environment restored after Play Mode exit");
+                    return;
+                }
                 if (state != PlayModeStateChange.EnteredPlayMode || !UnityEditor.SessionState.GetBool(RunKey, false)) return;
                 UnityEditor.SessionState.SetBool(RunKey, false);
                 var runner = new GameObject("Phase 4D isolated visual QA").AddComponent<DevelopmentCoroutineHost>();
@@ -82,13 +97,25 @@ namespace Wildfolk.Editor
                 bool more;
                 object value;
                 try { more = stack.Peek().MoveNext(); value = more ? stack.Peek().Current : null; }
-                catch (Exception error) { Phase = "failed"; Log(error.ToString()); RestoreEditorEnvironment(); yield break; }
+                catch (Exception error)
+                {
+                    Phase = "failed";
+                    Log(error.ToString());
+                    ExitPlayModeBeforeRestore();
+                    yield break;
+                }
                 if (!more) { stack.Pop(); continue; }
                 if (value is IEnumerator nested) stack.Push(nested); else yield return value;
             }
-            RestoreEditorEnvironment();
             Phase = "complete";
             Log("complete");
+            ExitPlayModeBeforeRestore();
+        }
+
+        private static void ExitPlayModeBeforeRestore()
+        {
+            UnityEditor.SessionState.SetBool(RestoreAfterPlayModeKey, true);
+            EditorApplication.isPlaying = false;
         }
 
         private static void RestoreEditorEnvironment()
@@ -173,6 +200,7 @@ namespace Wildfolk.Editor
             panel.RefreshSelection();
             equipmentUi.Refresh();
             Check(equipment.HeadArmor != null && equipment.BodyArmor != null && equipment.Utility != null && equipment.Accessory != null, "four equipment categories contain real catalog icons");
+            CheckPortrait(equipmentUi.CharacterPreview, equipment, "all equipped appearance");
             Check(equipmentUi.SlotStatusLabels.All(x => x != null && string.IsNullOrEmpty(x.text)), "base equipment cells do not repeat equipped status text");
             Check(!drag.SplitButton.interactable, "Split is disabled while no item is selected");
             var splitColors = drag.SplitButton.colors;
@@ -195,6 +223,9 @@ namespace Wildfolk.Editor
                 Check(Screen.width == size.x && Screen.height == size.y, "Game View rendered at requested " + size.x + "x" + size.y + " " + language);
                 CheckTextBounds(view);
             }
+
+            Phase = "character-equipment-appearance-states";
+            yield return CaptureCharacterAppearanceStates(panel, equipmentUi, drag, equipment);
 
             Check(inventory.Model.Add(baseItem, 1) == 1, "restore the equipment candidate after the unselected base captures");
             inventory.SelectSlot(0);
@@ -297,7 +328,7 @@ namespace Wildfolk.Editor
             ClearEquipmentFilter(equipmentUi);
             panel.Select(crownIndex);
             equipmentUi.Refresh();
-            yield return CaptureState("long-item-name", panel, equipmentUi, drag, true);
+            yield return CaptureState("long-item-name", panel, equipmentUi, drag);
 
             Phase = "empty-equipment-state";
             L.SetLanguage("ko");
@@ -309,12 +340,13 @@ namespace Wildfolk.Editor
             yield return Delay(.25f);
             Check(equipment.HeadArmor == null && equipment.BodyArmor == null && equipment.Utility == null && equipment.Accessory == null,
                 "empty equipment fixture clears all four slots without changing inventory data");
+            CheckPortrait(equipmentUi.CharacterPreview, equipment, "empty equipment appearance");
             var crown = save.Catalog.Item("undead_kings_crown");
             Check(panel.SelectedName.text == crown.LocalizedName &&
                   equipmentUi.Details.text == L.Text("item.undead_kings_crown.description"),
                 "empty equipment fixture retains the selected crown's complete localized description");
             CheckTextBounds(view);
-            yield return CaptureState("empty-equipment", panel, equipmentUi, drag, true);
+            yield return CaptureState("empty-equipment", panel, equipmentUi, drag);
 
             Phase = "final-isolation-check";
             Check(save.Repository.Path.StartsWith(DevelopmentProfile.Directory, StringComparison.OrdinalIgnoreCase), "final screenshot session still uses isolated profile");
@@ -322,9 +354,48 @@ namespace Wildfolk.Editor
             var boundaryFindings = BoundaryFailures;
             Log((boundaryFindings == 0 ? "PASS " : "FAIL ") + "automated text-boundary report; findings=" + boundaryFindings);
             var boundaryStatus = boundaryFindings == 0 ? "PASS" : "PARTIAL - inspect qa-live.tsv for automated text-boundary findings";
-            File.WriteAllText(Path.Combine(Root, "qa-result.txt"), boundaryStatus + "\n" + string.Join("\n", new[] { "Play Mode Game View screenshots captured directly by ScreenCapture.CaptureScreenshot", "Autosave disabled", "QA profile=" + DevelopmentProfile.Directory, "World save was not written", "Automated text-boundary findings=" + boundaryFindings }));
+            File.WriteAllText(Path.Combine(Root, "qa-result.txt"), boundaryStatus + "\n" + string.Join("\n", new[] { "Play Mode Game View screenshots captured directly by ScreenCapture.CaptureScreenshot", "Autosave disabled", "QA profile=" + DevelopmentProfile.Directory, "World save was not written", "Character appearance states=head/body/utility/accessory/empty", "Capture matrix=all named states at 844x390, 1280x720, 1920x1080 in ko and en", "Automated text-boundary findings=" + boundaryFindings }));
             player.GetComponent<PlayerInputCommands>().Session.CloseInventory();
             yield return null;
+        }
+
+        private static IEnumerator CaptureCharacterAppearanceStates(InventoryPanel panel, InventoryEquipment equipmentUi,
+            InventoryDragController drag, PlayerEquipment equipment)
+        {
+            var head = equipment.HeadArmor;
+            var body = equipment.BodyArmor;
+            var utility = equipment.Utility;
+            var accessory = equipment.Accessory;
+            foreach (var only in new[] { "head", "body", "utility", "accessory" })
+            {
+                equipment.RestoreArmor(only == "head" ? head : null, only == "body" ? body : null);
+                equipment.RestoreUtility(only == "utility" ? utility : null);
+                equipment.RestoreAccessory(only == "accessory" ? accessory : null);
+                equipmentUi.Refresh();
+                CheckPortrait(equipmentUi.CharacterPreview, equipment, only + " only");
+                yield return CaptureState("character-" + only + "-only", panel, equipmentUi, drag);
+            }
+            equipment.RestoreArmor(head, body);
+            equipment.RestoreUtility(utility);
+            equipment.RestoreAccessory(accessory);
+            equipmentUi.Refresh();
+            CheckPortrait(equipmentUi.CharacterPreview, equipment, "restored full appearance");
+        }
+
+        private static void CheckPortrait(PlayerPortrait preview, PlayerEquipment equipment, string state)
+        {
+            Check(preview != null && preview.Equipment == equipment, state + " preview is bound to the live equipment model");
+            if (preview == null || preview.Equipment != equipment) return;
+            var head = equipment.HeadArmor == null ? null : equipment.HeadArmor.Armor.WornSprite;
+            var body = equipment.BodyArmor == null ? null : equipment.BodyArmor.Armor.WornSprite;
+            var hand = equipment.BodyArmor == null ? null : equipment.BodyArmor.Armor.HandSprite;
+            var utility = equipment.UtilityVisual == null || equipment.Utility == null || !equipment.UtilityVisual.enabled ? null : equipment.UtilityVisual.sprite;
+            var accessory = equipment.Accessory == null ? null : equipment.Accessory.Accessory.Visual;
+            Check(preview.Head.enabled == (head != null) && preview.Head.sprite == head, state + " head appearance matches equipped armor");
+            Check(preview.Body.enabled == (body != null) && preview.Body.sprite == body, state + " body appearance matches equipped armor");
+            Check(preview.LeftHand.sprite == hand && preview.RightHand.sprite == hand, state + " both hand appearances match equipped armor");
+            Check(preview.Utility.enabled == (utility != null) && preview.Utility.sprite == utility, state + " utility appearance matches the live player visual");
+            Check(preview.Accessory.enabled == (accessory != null) && preview.Accessory.sprite == accessory, state + " accessory appearance matches the equipped definition");
         }
 
         private static void Put(SavedStack[] states, int index, ItemDefinition item, int count)
@@ -337,12 +408,9 @@ namespace Wildfolk.Editor
             if (equipmentUi.SlotFilter >= 0) equipmentUi.SelectSlot(equipmentUi.SlotFilter);
         }
 
-        private static IEnumerator CaptureState(string name, InventoryPanel panel, InventoryEquipment equipmentUi, InventoryDragController drag,
-            bool include1920 = false)
+        private static IEnumerator CaptureState(string name, InventoryPanel panel, InventoryEquipment equipmentUi, InventoryDragController drag)
         {
-            var sizes = include1920
-                ? new[] { new Vector2Int(844, 390), new Vector2Int(1280, 720), new Vector2Int(1920, 1080) }
-                : new[] { new Vector2Int(844, 390), new Vector2Int(1280, 720) };
+            var sizes = new[] { new Vector2Int(844, 390), new Vector2Int(1280, 720), new Vector2Int(1920, 1080) };
             foreach (var size in sizes)
             foreach (var language in new[] { "ko", "en" })
             {
@@ -401,6 +469,11 @@ namespace Wildfolk.Editor
             foreach (var slot in new[] { equipment.HeadButton, equipment.BodyButton, equipment.UtilityButton, equipment.AccessoryButton })
                 if (slot != null && slot.gameObject.activeInHierarchy)
                     CheckNoOverlap(details, slot.transform as RectTransform, surface, "Armor Details and " + slot.name);
+            if (equipment.CharacterPreview != null && equipment.CharacterPreview.gameObject.activeInHierarchy)
+                foreach (var slot in new[] { equipment.HeadButton, equipment.BodyButton, equipment.UtilityButton, equipment.AccessoryButton })
+                    if (slot != null && slot.gameObject.activeInHierarchy)
+                        CheckNoOverlap(RelativeRect(equipment.CharacterPreview.transform as RectTransform, surface), slot.transform as RectTransform, surface,
+                            "character preview and " + slot.name);
             foreach (var action in new[] { equipment.EquipButton, equipment.UnequipButton, drag.SplitButton })
                 if (action != null && action.gameObject.activeInHierarchy)
                     CheckNoOverlap(details, action.transform as RectTransform, surface, "Armor Details and " + action.name);

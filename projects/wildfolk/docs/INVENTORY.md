@@ -68,3 +68,9 @@ Phase 4C의 데이터와 행동 규칙을 유지하며 선택 아이템 세부 �
 - 모델/저장/멀티플레이 규칙과 분할·드래그 기능은 바꾸지 않았다. 관련 화면, 테스트, 근거는 [Phase 4D 검수 기록](../validation/inventory-phase4d/README.md), [캡처 인덱스](../validation/inventory-phase4d/CAPTURE_INDEX.md), [회귀 결과](../validation/inventory-phase4d/TESTS.md)를 참조한다.
 - 2026-11-14의 두 긴 설명 preferred-height 경고(86 할당 / 124.5 필요)는 2026-11-15 후속 작업에서 내용 기반 상세 영역 재배치로 해결했다. 글자 크기 축소·텍스트 잘라내기 없이 비교 문구가 없는 경우 빈 비교 행을 사용하며, 3개 해상도×2개 언어의 실제 Game View 검사와 원본 픽셀 검토를 통과했다. [원인·캡처·검사 결과](../validation/inventory-phase4d/REMAINING_TEXT_LAYOUT.md).
 - EditMode 2/2 및 PlayMode 5/5 집중 회귀 검사는 통과했다. Android 실기기 터치 검증은 UNVERIFIED; 최종 디자인 승인은 사용자의 캡처 검토를 기다린다.
+
+## Phase 4D — 승인된 캐릭터 중심 장비 화면 (2026-11-15)
+
+사용자가 승인한 캐릭터 중심 레이아웃을 기존 SP/MP 인벤토리에 적용했다. 장비 Head/Body/Utility/Accessory 2×2 슬롯은 캐릭터 프리뷰 주위에 배치하고, Storage 27·Hotbar 9·제작·아이템 상세/행동·드래그·분할은 기존 컨트롤러와 모델을 재사용한다. `PlayerPortrait`는 실제 `PlayerEquipment`를 읽어 방어구·손 장비·Utility·Accessory Sprite를 갱신하며 저장·멀티플레이 계약은 그대로 둔다.
+
+제공된 참고 이미지의 전신 인간형 캐릭터는 현재 프로젝트 아트에 없다. Lowfire의 실제 위에서 내려다보는 캐릭터 스프라이트와 장착 비주얼을 프리뷰에 사용해 외부 캐릭터 아트를 새로 섞지 않았다. 구현과 캡처, 전후 비교, 원본 해상도 검수 및 검사 결과는 [Phase 4D 캐릭터 중심 UI 검수](../validation/inventory-character-centered/README.md)와 [Unity 캡처 인덱스](../validation/inventory-character-centered/CAPTURE_INDEX.csv)를 따른다.

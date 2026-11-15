@@ -55,8 +55,8 @@ namespace Wildfolk.Tests
                         Assert.That(buttons[i], Is.Not.Null, "equipment slot " + i + " is bound");
                         var target = buttons[i].transform as RectTransform;
                         targets[i] = LocalRect(target);
-                        Assert.That(target.sizeDelta.x, Is.GreaterThanOrEqualTo(250f), "equipment touch width " + i);
-                        Assert.That(target.sizeDelta.y, Is.GreaterThanOrEqualTo(180f), "equipment touch height " + i);
+                        Assert.That(target.sizeDelta.x, Is.GreaterThanOrEqualTo(128f), "equipment touch width " + i);
+                        Assert.That(target.sizeDelta.y, Is.GreaterThanOrEqualTo(188f), "equipment touch height " + i);
                         Assert.That(Contains(regionRect, targets[i]), Is.True, "equipment target stays within its panel " + i);
 
                         var frame = target.Find("Equipment Slot Surface") as RectTransform;
@@ -71,15 +71,15 @@ namespace Wildfolk.Tests
 
                         Assert.That(equipment.SlotStatusLabels, Has.Length.EqualTo(4));
                         Assert.That(equipment.SlotStatusLabels[i], Is.Not.Null, "equipment state label " + i);
-                        Assert.That(equipment.SlotStatusLabels[i].rectTransform.sizeDelta.y, Is.GreaterThanOrEqualTo(40f), "equipment state has a separate readable line below the icon frame " + i);
-                        Assert.That(equipment.SlotStatusLabels[i].fontSize, Is.GreaterThanOrEqualTo(24), "equipment status keeps a readable fixed font " + i);
+                        Assert.That(equipment.SlotStatusLabels[i].rectTransform.sizeDelta.y, Is.GreaterThanOrEqualTo(36f), "equipment state has a separate readable line below the icon frame " + i);
+                        Assert.That(equipment.SlotStatusLabels[i].fontSize, Is.GreaterThanOrEqualTo(20), "equipment status keeps a readable fixed font " + i);
                         Assert.That(Contains(targetLocal, LocalRect(equipment.SlotStatusLabels[i].rectTransform)), Is.True, "equipment state label stays in its hit target " + i);
                         Assert.That(equipment.SlotStatusLabels[i].text, Is.Empty, "unselected equipment has no repeated equipped caption " + i);
                         var category = buttons[i].GetComponentInChildren<LocalizedLabel>(true);
                         Assert.That(category, Is.Not.Null, "equipment kind label " + i);
-                        Assert.That(category.GetComponent<RectTransform>().sizeDelta.y, Is.GreaterThanOrEqualTo(44f), "equipment kind text has a dedicated title band " + i);
+                        Assert.That(category.GetComponent<RectTransform>().sizeDelta.y, Is.GreaterThanOrEqualTo(36f), "equipment kind text has a dedicated title band " + i);
                         Assert.That(Contains(targetLocal, LocalRect(category.GetComponent<RectTransform>()), 0.01f), Is.True, "equipment kind label stays in its hit target " + i);
-                        Assert.That(category.GetComponent<Text>().fontSize, Is.GreaterThanOrEqualTo(28), "equipment category stays fixed-size and readable " + i);
+                        Assert.That(category.GetComponent<Text>().fontSize, Is.GreaterThanOrEqualTo(24), "equipment category stays fixed-size and readable " + i);
                         var frameRect = LocalRect(frame);
                         var categoryRect = LocalRect(category.GetComponent<RectTransform>());
                         var statusRect = LocalRect(equipment.SlotStatusLabels[i].rectTransform);
@@ -97,6 +97,18 @@ namespace Wildfolk.Tests
                     for (var a = 0; a < targets.Length; a++)
                         for (var b = a + 1; b < targets.Length; b++)
                             Assert.That(targets[a].Overlaps(targets[b]), Is.False, "equipment touch targets do not overlap " + a + "/" + b);
+
+                    Assert.That(equipment.CharacterPreview, Is.Not.Null, "inventory has a dedicated player-character preview");
+                    Assert.That(equipment.CharacterPreview.Equipment, Is.SameAs(equipment.Equipment), "preview reads the real player equipment model");
+                    Assert.That(equipment.CharacterPreview.Utility, Is.Not.Null, "preview has the real utility appearance layer");
+                    Assert.That(equipment.CharacterPreview.Accessory, Is.Not.Null, "preview has the real accessory appearance layer");
+                    var previewTransform=equipment.CharacterPreview.transform as RectTransform;
+                    Assert.That(previewTransform.parent,Is.SameAs(surface),"character preview shares the equipment region coordinate space");
+                    var previewRect=ScaledLocalRect(previewTransform,surface as RectTransform);
+                    Assert.That(Contains(regionRect,previewRect),Is.True,$"character preview stays inside the equipment region; region={regionRect} preview={previewRect}");
+                    foreach(var target in buttons)
+                        Assert.That(previewRect.Overlaps(ScaledLocalRect(target.transform as RectTransform,surface as RectTransform)),Is.False,
+                            "character preview does not collide with an equipment touch target");
 
                     var selectedName = RelativeRect(panel.SelectedName.rectTransform, surface as RectTransform);
                     Assert.That(equipment.SelectionState, Is.Not.Null, "selected item has a dedicated equipment state line");
@@ -160,6 +172,13 @@ namespace Wildfolk.Tests
             var min = ancestor.InverseTransformPoint(corners[0]);
             var max = ancestor.InverseTransformPoint(corners[2]);
             return Rect.MinMaxRect(min.x, min.y, max.x, max.y);
+        }
+
+        private static Rect ScaledLocalRect(RectTransform rect, RectTransform ancestor)
+        {
+            var scale=new Vector2(Mathf.Abs(rect.localScale.x/ancestor.localScale.x),Mathf.Abs(rect.localScale.y/ancestor.localScale.y));
+            var size=Vector2.Scale(rect.sizeDelta,scale);
+            return new Rect(rect.anchoredPosition-Vector2.Scale(size,rect.pivot),size);
         }
 
         private static bool Contains(Rect outer, Rect inner, float epsilon = 0.01f) =>

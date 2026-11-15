@@ -21,6 +21,28 @@ namespace Wildfolk.Editor
             portrait.LeftHand=Image("Left Hand Gear",root,"white",new Vector2(.5f,.5f),new Vector2(-85,-38),new Vector2(34,38));portrait.RightHand=Image("Right Hand Gear",root,"white",new Vector2(.5f,.5f),new Vector2(85,-38),new Vector2(34,38));
             portrait.Head=Image("Head",root,"white",new Vector2(.5f,.5f),Vector2.zero,new Vector2(150,150));Image("Left Eye",root,"player_eye",new Vector2(.5f,.5f),new Vector2(-18,-28),new Vector2(10,13));Image("Right Eye",root,"player_eye",new Vector2(.5f,.5f),new Vector2(18,-28),new Vector2(10,13));AlignHands(portrait,player);return portrait;
         }
+        internal static PlayerPortrait InventoryPortrait(Transform parent,PlayerInventory player,Vector2 position,float scale)
+        {
+            var found=parent.Find("Survivor Preview");
+            var portrait=found==null ? Portrait(parent,player,position,scale) : found.GetComponent<PlayerPortrait>();
+            if(portrait==null)portrait=Portrait(parent,player,position,scale);
+            var root=(RectTransform)portrait.transform;
+            root.anchoredPosition=position;root.sizeDelta=new Vector2(230,250);root.localScale=Vector3.one*scale;
+            var backdrop=root.Find("Backdrop");if(backdrop!=null)backdrop.gameObject.SetActive(false);
+            portrait.Equipment=player.GetComponent<PlayerEquipment>();
+            portrait.Utility=Layer(portrait,"Utility");
+            portrait.Accessory=Layer(portrait,"Accessory");
+            AlignHands(portrait,player);
+            portrait.Refresh();
+            return portrait;
+        }
+        private static Image Layer(PlayerPortrait portrait,string name)
+        {
+            var found=portrait.transform.Find(name);
+            var image=found==null ? Image(name,portrait.transform,"white",new Vector2(.5f,.5f),Vector2.zero,new Vector2(32,32)) : found.GetComponent<Image>();
+            image.preserveAspect=true;image.raycastTarget=false;
+            return image;
+        }
         internal static void AlignHands(PlayerPortrait portrait,PlayerInventory player)
         {
             var facing=player.GetComponent<CharacterFacing>();var body=player.GetComponent<PlayerAvatar>().Body.Find("Body").GetComponent<SpriteRenderer>();

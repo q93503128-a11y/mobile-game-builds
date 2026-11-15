@@ -10,6 +10,7 @@ namespace Wildfolk
         private const float DetailsTextPadding = 6f;
         public PlayerInventory Player;
         public PlayerEquipment Equipment;
+        public PlayerPortrait CharacterPreview;
         public InventoryPanel Panel;
         public Image HeadIcon,BodyIcon,UtilityIcon,AccessoryIcon;
         public Button UtilityButton,AccessoryButton;
@@ -180,7 +181,8 @@ namespace Wildfolk
                 {
                     var key=candidate ? current==null ? "ui.inventory.equip_candidate" : "ui.inventory.replace_candidate" :
                         selectedCurrent || showingCurrent || mismatch ? null : current==null ? "ui.inventory.empty" : null;
-                    SlotStatusLabels[i].text=key==null ? string.Empty : mismatch ? L.Format(key,L.Text("ui.slot."+slot)) : L.Text(key);
+                    SlotStatusLabels[i].text=key==null ? string.Empty : mismatch ? L.Format(key,L.Text("ui.slot."+slot)) :
+                        candidate && current!=null ? L.Text("ui.action.replace") : L.Text(key);
                     SlotStatusLabels[i].color=mismatch ? new Color32(238,145,121,255) : candidate ? new Color32(255,204,129,255) : current==null ?
                         new Color32(220,175,124,255) : new Color32(157,192,129,255);
                 }

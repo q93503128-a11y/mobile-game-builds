@@ -21,8 +21,8 @@ namespace Wildfolk.Editor
         private const float GridX = -312f;
         private const float EquipmentX = 686f;
         private const float EquipmentWidth = 590f;
-        private const float EquipmentCellWidth = 272f;
-        private const float EquipmentCellHeight = 200f;
+        private const float EquipmentCellWidth = 128f;
+        private const float EquipmentCellHeight = 188f;
         private const float EquipmentSlotSize = 92f;
 
         internal static void Build(GameObject root, Transform safe, GameplaySession session, PlayerInventory owner, PlayerCrafting crafting, int count)
@@ -296,8 +296,11 @@ namespace Wildfolk.Editor
             }
             var hint = surface.Find("Slot Hint");
             if (hint != null) hint.gameObject.SetActive(false);
-            var portrait = surface.Find("Survivor Preview");
-            if (portrait != null) UnityEngine.Object.DestroyImmediate(portrait.gameObject);
+            equipment.CharacterPreview=QualityUiBuilder.InventoryPortrait(surface,equipment.Player,new Vector2(EquipmentX,160),1.2f);
+            Position(equipment.CharacterPreview,new Vector2(EquipmentX,160),new Vector2(230,250));
+            equipment.CharacterPreview.transform.localScale=Vector3.one*1.2f;
+            var equipmentRegion=surface.Find("Equipment Region");
+            if(equipmentRegion!=null)equipment.CharacterPreview.transform.SetSiblingIndex(equipmentRegion.GetSiblingIndex()+1);
 
             foreach (var line in surface.GetComponentsInChildren<Image>(true))
                 if (line.transform.parent == surface && line.name == "Connection") UnityEngine.Object.DestroyImmediate(line.gameObject);
@@ -385,8 +388,8 @@ namespace Wildfolk.Editor
                 var key = "ui.slot." + EquipmentNames[i];
                 var category = EnsureEquipmentText(parent, key);
                 category.transform.SetParent(button.transform, false);
-                Position(category, new Vector2(0, 76), new Vector2(EquipmentCellWidth - 12, 44));
-                category.fontSize = 28;
+                Position(category, new Vector2(0, 76), new Vector2(124, 36));
+                category.fontSize = 24;
                 category.alignment = TextAnchor.MiddleCenter;
                 category.fontStyle = FontStyle.Bold;
                 category.horizontalOverflow = HorizontalWrapMode.Wrap;
@@ -400,9 +403,9 @@ namespace Wildfolk.Editor
                 itemName.gameObject.SetActive(false);
                 equipment.SlotItemNames[i] = null;
 
-                var status = FindText(button.transform, "Equipment Status") ?? Text("Equipment Status", button.transform, string.Empty, new Vector2(0, -78), new Vector2(EquipmentCellWidth - 8, 40), 24, TextAnchor.MiddleCenter);
-                Position(status, new Vector2(0, -78), new Vector2(EquipmentCellWidth - 8, 40));
-                status.fontSize = 24;
+                var status = FindText(button.transform, "Equipment Status") ?? Text("Equipment Status", button.transform, string.Empty, new Vector2(0, -76), new Vector2(142, 36), 20, TextAnchor.MiddleCenter);
+                Position(status, new Vector2(0, -76), new Vector2(124, 36));
+                status.fontSize = 20;
                 status.resizeTextForBestFit = false;
                 status.fontStyle = FontStyle.Bold;
                 status.horizontalOverflow = HorizontalWrapMode.Wrap;
@@ -446,10 +449,10 @@ namespace Wildfolk.Editor
             var buttons = new[] { equipment.HeadButton, equipment.BodyButton, equipment.UtilityButton, equipment.AccessoryButton };
             var positions = new[]
             {
-                new Vector2(EquipmentX - 145, 260),
-                new Vector2(EquipmentX + 145, 260),
-                new Vector2(EquipmentX - 145, 60),
-                new Vector2(EquipmentX + 145, 60)
+                new Vector2(EquipmentX - 228, 254),
+                new Vector2(EquipmentX + 228, 254),
+                new Vector2(EquipmentX - 228, 58),
+                new Vector2(EquipmentX + 228, 58)
             };
             for (var i = 0; i < buttons.Length; i++)
             {
