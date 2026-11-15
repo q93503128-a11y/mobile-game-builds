@@ -71,10 +71,11 @@ EditMode 레이아웃 검사는 중첩된 슬롯 자식 글자의 `RectTransform
 - Unity Editor: `6000.3.19f1`; Unity MCP 인스턴스 `client@33b387e077436073`가 이 프로젝트 경로에 연결됐다.
 - QA 종료 후 Play Mode를 끝내고 MainMenu 편집 상태로 복귀했다. Unity Focus/Show 호출은 하지 않았다.
 - 변경 코드의 컴파일과 집중 테스트는 통과했다. Console에는 기존 `Google.IOSResolver.dll` 오류 1건이 남아 있다. `UnityEditor.iOS.Extensions.Xcode`가 설치된 Windows Editor에서 해석되지 않는 플러그인 참조다.
-- 시작 기준 `main`과 GitHub `origin/main`은 `7aa8625afee42b47f1700696583f3ed0e8f2910e`로 일치했다. 최종 구현·문서·증거 변경은 이 `main` 작업 트리에 있으며 사용자 캡처 검수와 최종 디자인 승인은 별도로 대기한다.
+- 변경 전 `main`과 GitHub `origin/main`은 `7aa8625afee42b47f1700696583f3ed0e8f2910e`로 일치했다. 검증된 구현·문서·최종 캡처 111개 파일은 `a3620c6d8bb61d4ed2630744e235d860f6d7e684` (`feat(inventory): add equipment-linked full-body preview`)로 `main`에 커밋했고 push 후 원격 ref가 같은 SHA인지 확인했다. 보호된 로컬 변경은 이 커밋에 포함되지 않았다. 사용자 캡처 검수와 최종 디자인 승인은 별도로 대기한다.
 
 ## 작업 시간
 
 - 시작 기준: 2026-11-15 20:06:37 KST — 보호 스냅샷 파일의 실제 생성 시각. 원래 요청 도착 시각은 별도 기록되지 않았다.
 - 최종 시각 검증 완료: 2026-11-15 22:57:40 KST — 최종 90장 Game View QA 완료 로그.
-- 보호 스냅샷부터 기능·시각 검증 완료까지: 2시간 51분 03초.
+- 최종 원격 반영 확인: 2026-11-15 23:14:33 KST.
+- 보호 스냅샷부터 원격 반영 확인까지 총 경과: 3시간 07분 56초.
