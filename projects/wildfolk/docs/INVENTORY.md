@@ -73,4 +73,6 @@ Phase 4C의 데이터와 행동 규칙을 유지하며 선택 아이템 세부 �
 
 사용자가 승인한 캐릭터 중심 레이아웃을 기존 SP/MP 인벤토리에 적용했다. 장비 Head/Body/Utility/Accessory 2×2 슬롯은 캐릭터 프리뷰 주위에 배치하고, Storage 27·Hotbar 9·제작·아이템 상세/행동·드래그·분할은 기존 컨트롤러와 모델을 재사용한다. `PlayerPortrait`는 실제 `PlayerEquipment`를 읽어 방어구·손 장비·Utility·Accessory Sprite를 갱신하며 저장·멀티플레이 계약은 그대로 둔다.
 
-제공된 참고 이미지의 전신 인간형 캐릭터는 현재 프로젝트 아트에 없다. Lowfire의 실제 위에서 내려다보는 캐릭터 스프라이트와 장착 비주얼을 프리뷰에 사용해 외부 캐릭터 아트를 새로 섞지 않았다. 구현과 캡처, 전후 비교, 원본 해상도 검수 및 검사 결과는 [Phase 4D 캐릭터 중심 UI 검수](../validation/inventory-character-centered/README.md)와 [Unity 캡처 인덱스](../validation/inventory-character-centered/CAPTURE_INDEX.csv)를 따른다.
+월드 캐릭터는 기존 탑뷰 렌더링과 아트를 그대로 유지한다. 인벤토리 전용 정면 전신 일러스트를 별도 에셋으로 추가하고, Head/Body/Utility 아이콘과 Accessory의 실제 Visual을 `PlayerEquipment` 상태에서 갱신한다. Accessory는 Head 방어구 슬롯·스탯과 분리된 채 자체 앵커로 표시된다.
+
+최종 시각 검수에서는 선택 정보와 장비 상태 글자가 슬롯 행과 붙는 문제가 확인되어 장비 2×2 셀을 위로 재배치했다. 머리 위 Accessory와 겹치지 않게 Equipment 제목을 왼쪽으로 옮기고, 아이템 미선택 상태에서는 장착 요약으로 상세 영역을 채운다. Storage 27·Hotbar 9, 장착·교체·해제·드래그·분할 및 저장·멀티플레이 계약은 유지했다. 최신 원본 픽셀 캡처, 구조화된 캡처 해시, 원인·수정 및 검사 결과는 [2026-11-15 최종 캐릭터 중심 UI 검수](../validation/inventory-character-centered/FINAL_REVIEW_20261115.md)와 해당 문서의 [최종 Game View 인덱스](../validation/inventory-character-centered/captures/character-centered-review-20261115-final-v3/capture-index.csv)를 따른다.

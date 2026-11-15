@@ -13,13 +13,13 @@ namespace Wildfolk.Editor
         internal static PlayerPortrait Portrait(Transform parent,PlayerInventory player,Vector2 position,float scale)
         {
             var root=Rect("Survivor Preview",parent,new Vector2(.5f,.5f),position,new Vector2(230,250));root.localScale=Vector3.one*scale;
-            var portrait=root.gameObject.AddComponent<PlayerPortrait>();portrait.Equipment=player.GetComponent<PlayerEquipment>();
+            var portrait=root.gameObject.AddComponent<PlayerPortrait>();portrait.BindEquipment(player.GetComponent<PlayerEquipment>());
             var ground=Image("Backdrop",root,"joystick_base",new Vector2(.5f,.5f),Vector2.zero,new Vector2(248,248));ground.color=new Color32(88,105,75,255);
             Image("Skin",root,"player_body",new Vector2(.5f,.5f),Vector2.zero,new Vector2(150,150));
             portrait.Body=Image("Body",root,"white",new Vector2(.5f,.5f),Vector2.zero,new Vector2(150,150));
             Image("Left Hand",root,"player_hand",new Vector2(.5f,.5f),new Vector2(-85,-38),new Vector2(36,36));Image("Right Hand",root,"player_hand",new Vector2(.5f,.5f),new Vector2(85,-38),new Vector2(36,36));
             portrait.LeftHand=Image("Left Hand Gear",root,"white",new Vector2(.5f,.5f),new Vector2(-85,-38),new Vector2(34,38));portrait.RightHand=Image("Right Hand Gear",root,"white",new Vector2(.5f,.5f),new Vector2(85,-38),new Vector2(34,38));
-            portrait.Head=Image("Head",root,"white",new Vector2(.5f,.5f),Vector2.zero,new Vector2(150,150));Image("Left Eye",root,"player_eye",new Vector2(.5f,.5f),new Vector2(-18,-28),new Vector2(10,13));Image("Right Eye",root,"player_eye",new Vector2(.5f,.5f),new Vector2(18,-28),new Vector2(10,13));AlignHands(portrait,player);return portrait;
+            portrait.Head=Image("Head",root,"white",new Vector2(.5f,.5f),Vector2.zero,new Vector2(150,150));Image("Left Eye",root,"player_eye",new Vector2(.5f,.5f),new Vector2(-18,-28),new Vector2(10,13));Image("Right Eye",root,"player_eye",new Vector2(.5f,.5f),new Vector2(18,-28),new Vector2(10,13));AlignHands(portrait,player);portrait.Refresh();return portrait;
         }
         internal static PlayerPortrait InventoryPortrait(Transform parent,PlayerInventory player,Vector2 position,float scale)
         {
@@ -27,12 +27,33 @@ namespace Wildfolk.Editor
             var portrait=found==null ? Portrait(parent,player,position,scale) : found.GetComponent<PlayerPortrait>();
             if(portrait==null)portrait=Portrait(parent,player,position,scale);
             var root=(RectTransform)portrait.transform;
-            root.anchoredPosition=position;root.sizeDelta=new Vector2(230,250);root.localScale=Vector3.one*scale;
+            root.anchoredPosition=position;root.sizeDelta=new Vector2(230,400);root.localScale=Vector3.one*scale;
             var backdrop=root.Find("Backdrop");if(backdrop!=null)backdrop.gameObject.SetActive(false);
-            portrait.Equipment=player.GetComponent<PlayerEquipment>();
+            portrait.BindEquipment(player.GetComponent<PlayerEquipment>());
+            foreach(var name in new[]{"Skin","Left Hand","Right Hand","Left Eye","Right Eye"})
+            {
+                var old=root.Find(name);if(old!=null)old.gameObject.SetActive(false);
+            }
+            if(portrait.LeftHand!=null)portrait.LeftHand.enabled=false;
+            if(portrait.RightHand!=null)portrait.RightHand.enabled=false;
+            portrait.FullBody=Layer(portrait,"Full Body");
+            portrait.FullBody.sprite=VisualArtImporter.Sprite("player_inventory_fullbody");
+            portrait.FullBody.enabled=portrait.FullBody.sprite!=null;
+            portrait.FullBody.preserveAspect=true;
+            InventoryUiBuilder.Position(portrait.FullBody,Vector2.zero,new Vector2(155,400));
+            portrait.FullBody.transform.SetAsFirstSibling();
+            if(backdrop!=null)backdrop.SetAsLastSibling();
+            portrait.Head.preserveAspect=true;portrait.Head.raycastTarget=false;
+            InventoryUiBuilder.Position(portrait.Head,new Vector2(0,132),new Vector2(68,62));
+            portrait.Body.preserveAspect=true;portrait.Body.raycastTarget=false;
+            InventoryUiBuilder.Position(portrait.Body,new Vector2(0,14),new Vector2(78,88));
             portrait.Utility=Layer(portrait,"Utility");
+            InventoryUiBuilder.Position(portrait.Utility,new Vector2(59,-68),new Vector2(48,56));
             portrait.Accessory=Layer(portrait,"Accessory");
-            AlignHands(portrait,player);
+            portrait.Head.transform.SetAsLastSibling();
+            portrait.Body.transform.SetAsLastSibling();
+            portrait.Utility.transform.SetAsLastSibling();
+            portrait.Accessory.transform.SetAsLastSibling();
             portrait.Refresh();
             return portrait;
         }

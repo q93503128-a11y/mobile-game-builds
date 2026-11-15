@@ -100,17 +100,30 @@ namespace Wildfolk.Tests
 
                     Assert.That(equipment.CharacterPreview, Is.Not.Null, "inventory has a dedicated player-character preview");
                     Assert.That(equipment.CharacterPreview.Equipment, Is.SameAs(equipment.Equipment), "preview reads the real player equipment model");
+                    Assert.That(equipment.CharacterPreview.FullBody, Is.Not.Null, "inventory preview uses a separate full-body illustration");
+                    Assert.That(equipment.CharacterPreview.FullBody.sprite, Is.Not.Null, "full-body illustration asset is imported");
                     Assert.That(equipment.CharacterPreview.Utility, Is.Not.Null, "preview has the real utility appearance layer");
                     Assert.That(equipment.CharacterPreview.Accessory, Is.Not.Null, "preview has the real accessory appearance layer");
                     var previewTransform=equipment.CharacterPreview.transform as RectTransform;
                     Assert.That(previewTransform.parent,Is.SameAs(surface),"character preview shares the equipment region coordinate space");
-                    var previewRect=ScaledLocalRect(previewTransform,surface as RectTransform);
+                    var fullBodyRect=equipment.CharacterPreview.FullBody.rectTransform;
+                    Assert.That(fullBodyRect.parent,Is.SameAs(previewTransform),"full-body art is layered on the inventory preview root");
+                    var previewScale=new Vector2(Mathf.Abs(previewTransform.localScale.x*fullBodyRect.localScale.x),Mathf.Abs(previewTransform.localScale.y*fullBodyRect.localScale.y));
+                    var previewSize=Vector2.Scale(fullBodyRect.sizeDelta,previewScale);
+                    var previewPosition=previewTransform.anchoredPosition+Vector2.Scale(fullBodyRect.anchoredPosition,new Vector2(Mathf.Abs(previewTransform.localScale.x),Mathf.Abs(previewTransform.localScale.y)));
+                    var previewRect=new Rect(previewPosition-Vector2.Scale(previewSize,fullBodyRect.pivot),previewSize);
                     Assert.That(Contains(regionRect,previewRect),Is.True,$"character preview stays inside the equipment region; region={regionRect} preview={previewRect}");
-                    foreach(var target in buttons)
-                        Assert.That(previewRect.Overlaps(ScaledLocalRect(target.transform as RectTransform,surface as RectTransform)),Is.False,
-                            "character preview does not collide with an equipment touch target");
+                    foreach(var target in targets)
+                        Assert.That(previewRect.Overlaps(target),Is.False,
+                            "full-body illustration does not collide with an equipment touch target");
+                    var close=surface.Find("Close") as RectTransform;
+                    var bodyTarget=LocalRect(equipment.BodyButton.transform as RectTransform);
+                    var closeRect=LocalRect(close);
+                    Assert.That(bodyTarget.Overlaps(closeRect),Is.False,"Body equipment target stays clear of the inventory close button");
+                    Assert.That(closeRect.xMin-bodyTarget.xMax,Is.GreaterThanOrEqualTo(28f),"Body target has a visible gap from Close");
 
                     var selectedName = RelativeRect(panel.SelectedName.rectTransform, surface as RectTransform);
+                    var selectedNameAnchored = AnchoredRectInAncestor(panel.SelectedName.rectTransform, surface as RectTransform);
                     Assert.That(equipment.SelectionState, Is.Not.Null, "selected item has a dedicated equipment state line");
                     var selectedState = RelativeRect(equipment.SelectionState.rectTransform, surface as RectTransform);
                     Assert.That(panel.SelectedCategory.rectTransform.sizeDelta.y, Is.GreaterThanOrEqualTo(40f), "selected item category has enough height for its actual type size");
@@ -121,8 +134,21 @@ namespace Wildfolk.Tests
                     Assert.That(selectedState.Overlaps(selectedName), Is.False, "equipment state does not collide with selected item name");
                     Assert.That(selectedState.Overlaps(selectedCategory), Is.False, "equipment state does not collide with item category");
                     foreach (var status in equipment.SlotStatusLabels)
-                        Assert.That(RelativeRect(status.rectTransform, surface as RectTransform).Overlaps(selectedName), Is.False,
-                            "equipment status text does not collide with selected item name");
+                        Assert.That(AnchoredRectInAncestor(status.rectTransform, surface as RectTransform).Overlaps(selectedNameAnchored), Is.False,
+                            "rendered equipment status text does not collide with selected item name");
+                    var titleBounds=AnchoredRectInAncestor(surface.Find("Equipment Title").GetComponent<RectTransform>(),surface as RectTransform);
+                    var categoryBounds=new Rect[4];
+                    for(var i=0;i<equipment.SlotStatusLabels.Length;i++)
+                    {
+                        Text category=null;
+                        foreach(var label in buttons[i].GetComponentsInChildren<LocalizedLabel>(true))
+                            if(label.Key.StartsWith("ui.slot.")){category=label.GetComponent<Text>();break;}
+                        Assert.That(category,Is.Not.Null,"equipment slot has a localized category label "+i);
+                        categoryBounds[i]=AnchoredRectInAncestor(category.rectTransform,surface as RectTransform);
+                        if(i<2)Assert.That(categoryBounds[i].Overlaps(titleBounds),Is.False,"top equipment category text clears the equipment title "+i);
+                        if(i>=2)Assert.That(categoryBounds[i].Overlaps(AnchoredRectInAncestor(equipment.SlotStatusLabels[i-2].rectTransform,surface as RectTransform)),Is.False,
+                            "equipment slot rows keep category and status text visually separate "+i);
+                    }
                     var details = RelativeRect(equipment.Details.rectTransform, surface as RectTransform);
                     var comparison = RelativeRect(equipment.Comparison.rectTransform, surface as RectTransform);
                     Assert.That(selectedCategory.Overlaps(details), Is.False, "selected item category does not collide with item details");
@@ -164,6 +190,28 @@ namespace Wildfolk.Tests
 
         private static Rect LocalRect(RectTransform rect) => new Rect(rect.anchoredPosition - Vector2.Scale(rect.sizeDelta, rect.pivot), rect.sizeDelta);
         private static Rect CenteredRect(RectTransform rect) => new Rect(-Vector2.Scale(rect.sizeDelta, rect.pivot), rect.sizeDelta);
+
+        private static Rect AnchoredRectInAncestor(RectTransform rect, RectTransform ancestor)
+        {
+            var chain=new List<RectTransform>();
+            var current=rect;
+            while(current!=ancestor)
+            {
+                chain.Add(current);
+                current=current.parent as RectTransform;
+                Assert.That(current,Is.Not.Null,"text bounds resolve through RectTransform parents");
+            }
+            var position=Vector2.zero;
+            var scale=Vector2.one;
+            for(var i=chain.Count-1;i>=0;i--)
+            {
+                var node=chain[i];
+                position+=Vector2.Scale(node.anchoredPosition,scale);
+                scale=Vector2.Scale(scale,new Vector2(Mathf.Abs(node.localScale.x),Mathf.Abs(node.localScale.y)));
+            }
+            var size=Vector2.Scale(rect.sizeDelta,scale);
+            return new Rect(position-Vector2.Scale(size,rect.pivot),size);
+        }
 
         private static Rect RelativeRect(RectTransform rect, RectTransform ancestor)
         {

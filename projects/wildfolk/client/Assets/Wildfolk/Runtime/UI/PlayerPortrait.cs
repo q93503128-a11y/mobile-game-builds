@@ -5,12 +5,37 @@ namespace Wildfolk
     public sealed class PlayerPortrait : MonoBehaviour
     {
         public PlayerEquipment Equipment;
-        public Image Head,Body,LeftHand,RightHand,Utility,Accessory;
-        private void OnEnable(){if(Equipment!=null){Equipment.Changed+=Refresh;Refresh();}}
-        private void OnDisable(){if(Equipment!=null)Equipment.Changed-=Refresh;}
+        public Image FullBody,Head,Body,LeftHand,RightHand,Utility,Accessory;
+        private PlayerEquipment boundEquipment;
+        private void OnEnable(){BindEquipment(Equipment);}
+        private void OnDisable(){UnbindEquipment();}
+        public void BindEquipment(PlayerEquipment equipment)
+        {
+            if(boundEquipment==equipment){Equipment=equipment;Refresh();return;}
+            UnbindEquipment();
+            Equipment=boundEquipment=equipment;
+            if(isActiveAndEnabled&&boundEquipment!=null)boundEquipment.Changed+=Refresh;
+            Refresh();
+        }
+        private void UnbindEquipment()
+        {
+            if(boundEquipment!=null)boundEquipment.Changed-=Refresh;
+            boundEquipment=null;
+        }
         public void Refresh()
         {
             if(Equipment==null)return;
+            if(FullBody!=null)
+            {
+                FullBody.enabled=FullBody.sprite!=null;
+                Show(Head,Equipment.HeadArmor==null ? null : Equipment.HeadArmor.Icon);
+                Show(Body,Equipment.BodyArmor==null ? null : Equipment.BodyArmor.Icon);
+                if(LeftHand!=null)LeftHand.enabled=false;
+                if(RightHand!=null)RightHand.enabled=false;
+                Show(Utility,Equipment.Utility==null ? null : Equipment.Utility.Icon);
+                RefreshInventoryAccessory();
+                return;
+            }
             Show(Head,Equipment.HeadArmor==null ? null : Equipment.HeadArmor.Armor.WornSprite);
             Show(Body,Equipment.BodyArmor==null ? null : Equipment.BodyArmor.Armor.WornSprite);
             var hand=Equipment.BodyArmor==null ? null : Equipment.BodyArmor.Armor.HandSprite;
@@ -18,6 +43,19 @@ namespace Wildfolk
             var scale=WorldToUiScale();
             RefreshUtility(scale);
             RefreshAccessory(scale);
+        }
+        private void RefreshInventoryAccessory()
+        {
+            if(Accessory==null)return;
+            var definition=Equipment.Accessory==null ? null : Equipment.Accessory.Accessory;
+            var sprite=definition==null ? null : definition.Visual;
+            Show(Accessory,sprite);
+            if(sprite==null)return;
+            var rect=Accessory.rectTransform;
+            rect.anchoredPosition=definition.Anchor==AccessoryAnchor.BodySide ? new Vector2(66,28) :
+                definition.Anchor==AccessoryAnchor.Waist ? new Vector2(0,-94) :
+                definition.Anchor==AccessoryAnchor.AroundActor ? new Vector2(-68,50) : new Vector2(0,204);
+            rect.sizeDelta=new Vector2(54,50);
         }
         private float WorldToUiScale()
         {

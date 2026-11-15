@@ -201,6 +201,11 @@ namespace Wildfolk.Editor
             equipmentUi.Refresh();
             Check(equipment.HeadArmor != null && equipment.BodyArmor != null && equipment.Utility != null && equipment.Accessory != null, "four equipment categories contain real catalog icons");
             CheckPortrait(equipmentUi.CharacterPreview, equipment, "all equipped appearance");
+            Check(equipmentUi.SelectionState.text == L.Text("ui.inventory.gear_summary") &&
+                  equipmentUi.Details.text == L.Format("ui.inventory.character_summary", equipment.Defense,
+                      equipment.Utility.LocalizedName, equipment.Accessory.LocalizedName),
+                "unselected details summarize defense, utility and accessory without merging categories");
+            Check(string.IsNullOrEmpty(panel.SelectedName.text), "redundant no-selection prompt stays clear of the character and gear slots");
             Check(equipmentUi.SlotStatusLabels.All(x => x != null && string.IsNullOrEmpty(x.text)), "base equipment cells do not repeat equipped status text");
             Check(!drag.SplitButton.interactable, "Split is disabled while no item is selected");
             var splitColors = drag.SplitButton.colors;
@@ -386,16 +391,18 @@ namespace Wildfolk.Editor
         {
             Check(preview != null && preview.Equipment == equipment, state + " preview is bound to the live equipment model");
             if (preview == null || preview.Equipment != equipment) return;
-            var head = equipment.HeadArmor == null ? null : equipment.HeadArmor.Armor.WornSprite;
-            var body = equipment.BodyArmor == null ? null : equipment.BodyArmor.Armor.WornSprite;
-            var hand = equipment.BodyArmor == null ? null : equipment.BodyArmor.Armor.HandSprite;
-            var utility = equipment.UtilityVisual == null || equipment.Utility == null || !equipment.UtilityVisual.enabled ? null : equipment.UtilityVisual.sprite;
+            var head = equipment.HeadArmor == null ? null : equipment.HeadArmor.Icon;
+            var body = equipment.BodyArmor == null ? null : equipment.BodyArmor.Icon;
+            var utility = equipment.Utility == null ? null : equipment.Utility.Icon;
             var accessory = equipment.Accessory == null ? null : equipment.Accessory.Accessory.Visual;
+            Check(preview.FullBody != null && preview.FullBody.enabled && preview.FullBody.sprite != null &&
+                  preview.FullBody.sprite.name == "player_inventory_fullbody", state + " front-facing full-body base remains visible");
             Check(preview.Head.enabled == (head != null) && preview.Head.sprite == head, state + " head appearance matches equipped armor");
             Check(preview.Body.enabled == (body != null) && preview.Body.sprite == body, state + " body appearance matches equipped armor");
-            Check(preview.LeftHand.sprite == hand && preview.RightHand.sprite == hand, state + " both hand appearances match equipped armor");
-            Check(preview.Utility.enabled == (utility != null) && preview.Utility.sprite == utility, state + " utility appearance matches the live player visual");
+            Check(!preview.LeftHand.enabled && !preview.RightHand.enabled, state + " inventory portrait does not expose top-down hand gear");
+            Check(preview.Utility.enabled == (utility != null) && preview.Utility.sprite == utility, state + " utility appearance matches its equipped item");
             Check(preview.Accessory.enabled == (accessory != null) && preview.Accessory.sprite == accessory, state + " accessory appearance matches the equipped definition");
+            Check(preview.Accessory != preview.Head, state + " accessory remains a separate layer from head armor");
         }
 
         private static void Put(SavedStack[] states, int index, ItemDefinition item, int count)
@@ -469,11 +476,11 @@ namespace Wildfolk.Editor
             foreach (var slot in new[] { equipment.HeadButton, equipment.BodyButton, equipment.UtilityButton, equipment.AccessoryButton })
                 if (slot != null && slot.gameObject.activeInHierarchy)
                     CheckNoOverlap(details, slot.transform as RectTransform, surface, "Armor Details and " + slot.name);
-            if (equipment.CharacterPreview != null && equipment.CharacterPreview.gameObject.activeInHierarchy)
+            if (equipment.CharacterPreview != null && equipment.CharacterPreview.gameObject.activeInHierarchy && equipment.CharacterPreview.FullBody != null)
                 foreach (var slot in new[] { equipment.HeadButton, equipment.BodyButton, equipment.UtilityButton, equipment.AccessoryButton })
                     if (slot != null && slot.gameObject.activeInHierarchy)
-                        CheckNoOverlap(RelativeRect(equipment.CharacterPreview.transform as RectTransform, surface), slot.transform as RectTransform, surface,
-                            "character preview and " + slot.name);
+                        CheckNoOverlap(RelativeRect(equipment.CharacterPreview.FullBody.rectTransform, surface),
+                            slot.transform.Find("Equipment Slot Surface") as RectTransform, surface, "full-body character art and " + slot.name + " item frame");
             foreach (var action in new[] { equipment.EquipButton, equipment.UnequipButton, drag.SplitButton })
                 if (action != null && action.gameObject.activeInHierarchy)
                     CheckNoOverlap(details, action.transform as RectTransform, surface, "Armor Details and " + action.name);

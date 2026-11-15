@@ -18,7 +18,7 @@ namespace Wildfolk
             var chest=GetComponent<ChestPanel>();chest.Owner=inventory;chest.Storage=panel.Storage;
             var drag=GetComponent<InventoryDragController>();drag.Owner=inventory;drag.Session=session;drag.Storage=panel.Storage;drag.Equipment=player.Equipment;drag.ItemDrop=player.GetComponent<PlayerItemDrop>();
             var equipment=GetComponent<InventoryEquipment>();equipment.Player=inventory;equipment.Equipment=player.Equipment;
-            foreach(var portrait in GetComponentsInChildren<PlayerPortrait>(true))portrait.Equipment=player.Equipment;
+            foreach(var portrait in GetComponentsInChildren<PlayerPortrait>(true))portrait.BindEquipment(player.Equipment);
             var hotbar=GetComponentInChildren<HotbarView>(true);hotbar.Owner=inventory;hotbar.Session=session;
             // Scene-authored close actions are bound to the local actor at runtime.
             foreach(var button in GetComponentsInChildren<Button>(true))

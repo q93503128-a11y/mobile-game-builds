@@ -22,6 +22,7 @@ namespace Wildfolk
         public Button HeadButton,BodyButton;
         public Text EquipLabel;
         public int SlotFilter {get;private set;}=-1;
+        public bool ShowsGearSummary=>Player!=null && Player.Model!=null && SlotFilter<0 && !equippedSelected && Player.SelectedStack.IsEmpty;
         private bool equippedSelected;
         private ArmorSlot selectedSlot;
         private int detailsLayoutScreenWidth;
@@ -126,6 +127,7 @@ namespace Wildfolk
             var alreadyEquipped=item!=null && item.Equippable && currentItem==item;
             var canEquip=item!=null && item.Equippable && selectedCompatible && !equippedSelected && !alreadyEquipped;
             var canUse=item!=null && item.Telescope && SlotFilter<0;
+            var showGearSummary=item==null && SlotFilter<0 && !equippedSelected;
             EquipButton.gameObject.SetActive(canEquip || canUse);EquipButton.interactable=canEquip || canUse;
             UnequipButton.gameObject.SetActive(item!=null && item.Equippable && equippedSelected);Comparison.text=Details.text="";
             Comparison.color=new Color32(226,222,193,255);
@@ -151,12 +153,16 @@ namespace Wildfolk
             if(item!=null && item.Consumable!=null && L.Has("item."+item.Id+".description"))Details.text+="\n"+L.Text("item."+item.Id+".description");
             if(item!=null && item.Ammo!=AmmoKind.None)Details.text=L.Format("ui.ammo.info",item.AmmoDamage);
             if(item!=null && item.WaterCapacity>0)Details.text=stack.Charges+"/"+item.WaterCapacity+" · "+L.Text("water."+stack.Quality)+"\n"+L.Text("ui.waterskin.info");
+            if(showGearSummary)Details.text=L.Format("ui.inventory.character_summary",Equipment.Defense,
+                Equipment.Utility==null ? L.Text("ui.inventory.empty") : Equipment.Utility.LocalizedName,
+                Equipment.Accessory==null ? L.Text("ui.inventory.empty") : Equipment.Accessory.LocalizedName);
             RefreshDetailsLayout();
             if(equippedSelected){Panel.SelectedName.text=item==null ? L.Text("ui.inventory.empty") : item.LocalizedName;Panel.SelectedIcon.sprite=item==null ? null : item.Icon;Panel.SelectedIcon.enabled=item!=null;Panel.SelectedCategory.text=L.Text("ui.slot."+selectedSlot);}
             if(SelectionState!=null)
             {
                 var state="";var color=new Color32(226,222,193,255);
-                if(equippedSelected){state=item==null ? string.Empty : L.Text("ui.inventory.equipped");color=item==null ? new Color32(220,175,124,255) : new Color32(157,212,143,255);}
+                if(showGearSummary){state=L.Text("ui.inventory.gear_summary");color=new Color32(220,175,124,255);}
+                else if(equippedSelected){state=item==null ? string.Empty : L.Text("ui.inventory.equipped");color=item==null ? new Color32(220,175,124,255) : new Color32(157,212,143,255);}
                 else if(SlotFilter>=0 && item!=null && !selectedCompatible){state=L.Format("ui.inventory.incompatible",L.Text("ui.slot."+(ArmorSlot)SlotFilter));color=new Color32(238,145,121,255);}
                 else if(alreadyEquipped){state=L.Text("ui.inventory.already_equipped");color=new Color32(157,212,143,255);}
                 else if(item!=null && item.Equippable)
@@ -202,6 +208,11 @@ namespace Wildfolk
                 Panel.Slots[i].GetComponent<Image>().color=compatible ? Color.white : new Color32(143,119,96,255);
             }
             if(!equippedSelected)Panel.RefreshSelection();
+            if(showGearSummary)
+            {
+                Panel.SelectedName.text=string.Empty;
+                Panel.SelectedCategory.text=string.Empty;
+            }
         }
 
         private static readonly ArmorSlot[] EquipmentSlots={ArmorSlot.Head,ArmorSlot.Body,ArmorSlot.Utility,ArmorSlot.Accessory};

@@ -46,9 +46,11 @@ namespace Wildfolk
         public void RefreshSelection()
         {
             var stack=Owner.SelectedStack;
+            var equipment=GetComponent<InventoryEquipment>();
+            var suppressEmptyPrompt=stack.IsEmpty && equipment!=null && equipment.ShowsGearSummary;
             SelectedIcon.enabled=!stack.IsEmpty;
             SelectedIcon.sprite=stack.IsEmpty ? null : stack.Item.Icon;
-            SelectedName.text=stack.IsEmpty ? L.Text("ui.inventory.select") : stack.Item.LocalizedName;
+            SelectedName.text=stack.IsEmpty ? suppressEmptyPrompt ? string.Empty : L.Text("ui.inventory.select") : stack.Item.LocalizedName;
             SelectedCategory.text=stack.IsEmpty ? string.Empty : L.Text("ui.item_category."+stack.Item.Category);
         }
     }
