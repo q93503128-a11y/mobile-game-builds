@@ -87,6 +87,6 @@ Unity Console에는 이 작업 전부터 있던 `Google.IOSResolver.dll` 로드 
 
 ## Git 반영 및 시간
 
-- 시작 기준 `main`과 `origin/main`: `43c37eac3cc31d95b79e03e939a856f65c73b41f`; 이 기준부터 Phase 4D 관련 변경만 허용 목록으로 staging/commit/push한다. commit ID와 최종 push 결과는 반영 후 여기에 기록한다.
+- 시작 기준 `main`과 `origin/main`: `43c37eac3cc31d95b79e03e939a856f65c73b41f`. 구현·회귀 검사·캡처와 최초 검수 보고서는 `ecf101677168b1888e77f3cbddf124d98bb1ba82`에 커밋했고 `origin/main` push를 확인했다. 이 커밋은 구현/테스트/문서 11개와 검수 자료 101개만 포함하며 `.meta`, `DefaultNetworkPrefabs.asset`, 다른 기존 미추적 파일은 포함하지 않는다.
 - 작업 시작 기준: 2026-11-15 20:06:32 KST (보호 스냅샷이 생성된 첫 확인 시각; 요청 도착 시각은 별도 보존되지 않음).
-- 작업 종료 및 총 경과: main push 후 기록한다.
+- 구현 및 검수 완료 시각: 2026-11-15 21:24:00 KST. 시작 기준부터 1시간 17분 28초. 이후 보고서에 테스트 경계, 기존 로컬 변경 보호 확인, 로컬 QA 텔레메트리 부작용 및 Git 결과를 보완했다.
