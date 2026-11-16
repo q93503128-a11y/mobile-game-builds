@@ -157,7 +157,13 @@ namespace Wildfolk
             var name=Equipment.UtilityVisual==source?"Utility":TargetName(source.name);
             var existing=transform.Find(name);
             var image=existing==null?null:existing.GetComponent<Image>();
-            if(image!=null)return image;
+            if(image!=null)
+            {
+                // Placeholder layers can be inactive in the prefab. Enabling only
+                // their Image component leaves them outside the rendered hierarchy.
+                if(!image.gameObject.activeSelf)image.gameObject.SetActive(true);
+                return image;
+            }
 
             var target=new GameObject(name,typeof(RectTransform),typeof(CanvasRenderer),typeof(Image));
             target.transform.SetParent(transform,false);

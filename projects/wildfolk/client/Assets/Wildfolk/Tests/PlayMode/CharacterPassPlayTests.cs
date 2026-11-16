@@ -34,6 +34,19 @@ namespace Wildfolk.Tests
             var view=UnityEngine.Object.FindFirstObjectByType<InventoryEquipment>();var preview=view.CharacterPreview;
             Assert.That(preview,Is.Not.Null);Assert.That(preview.Equipment,Is.SameAs(equipment));Assert.That(preview.UsesWorldAppearance,Is.True);
             var bodyRenderer=avatar.Body.Find("Body").GetComponent<SpriteRenderer>();
+            foreach(var source in avatar.Body.GetComponentsInChildren<SpriteRenderer>(true))
+            {
+                var image=preview.ImageFor(source);var shouldRender=source.sprite!=null&&source.enabled&&source.gameObject.activeInHierarchy;
+                Assert.That(image,Is.Not.Null,"preview layer exists for "+source.name);
+                if(source.sprite!=null)Assert.That(image.sprite,Is.SameAs(source.sprite),"preview sprite matches "+source.name);
+                Assert.That(image.enabled,Is.EqualTo(shouldRender),"preview enabled state matches "+source.name);
+                if(shouldRender)
+                {
+                    Assert.That(image.gameObject.activeInHierarchy,Is.True,"visible world layer is active in the inventory hierarchy: "+source.name);
+                    Assert.That(image.isActiveAndEnabled,Is.True,"visible world layer Image is enabled: "+source.name);
+                    Assert.That(image.depth,Is.GreaterThanOrEqualTo(0),"visible world layer is submitted to its Canvas: "+source.name);
+                }
+            }
             Assert.That(preview.ImageFor(bodyRenderer),Is.Not.Null);Assert.That(preview.ImageFor(bodyRenderer).sprite,Is.SameAs(bodyRenderer.sprite));
             Assert.That(preview.transform.Find("Full Body"),Is.Null,"legacy front-facing art has been removed from the preview");
             Assert.That(view.SelectionState.text,Is.EqualTo(L.Text("ui.inventory.gear_summary")));

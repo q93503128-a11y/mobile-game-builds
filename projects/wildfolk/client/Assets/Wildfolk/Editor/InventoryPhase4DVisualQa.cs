@@ -403,14 +403,17 @@ namespace Wildfolk.Editor
             foreach(var source in sources)
             {
                 var image=preview.ImageFor(source);
-                Check(image!=null&&image.sprite==source.sprite&&image.enabled==(source.sprite!=null&&source.enabled&&source.gameObject.activeInHierarchy),
+                var shouldRender=source.sprite!=null&&source.enabled&&source.gameObject.activeInHierarchy;
+                var submittedToCanvas=!shouldRender||image!=null&&image.gameObject.activeInHierarchy&&image.isActiveAndEnabled&&image.depth>=0;
+                Check(image!=null&&image.sprite==source.sprite&&image.enabled==shouldRender&&submittedToCanvas,
                     state+" preview layer matches world SpriteRenderer "+source.name);
             }
             if(equipment.UtilityVisual!=null)
             {
                 var utilityImage=preview.ImageFor(equipment.UtilityVisual);
-                Check(utilityImage!=null&&utilityImage.sprite==equipment.UtilityVisual.sprite&&
-                      utilityImage.enabled==(equipment.UtilityVisual.enabled&&equipment.UtilityVisual.sprite!=null),
+                var shouldRender=equipment.UtilityVisual.enabled&&equipment.UtilityVisual.sprite!=null&&equipment.UtilityVisual.gameObject.activeInHierarchy;
+                var submittedToCanvas=!shouldRender||utilityImage!=null&&utilityImage.gameObject.activeInHierarchy&&utilityImage.isActiveAndEnabled&&utilityImage.depth>=0;
+                Check(utilityImage!=null&&utilityImage.sprite==equipment.UtilityVisual.sprite&&utilityImage.enabled==shouldRender&&submittedToCanvas,
                     state+" utility appearance matches its world SpriteRenderer");
             }
             Check(preview.ImageFor(equipment.HeadVisual)?.sprite==equipment.HeadVisual.sprite&&
