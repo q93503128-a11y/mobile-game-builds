@@ -1,3 +1,4 @@
+> 2026-11-16 update: This report preserves the earlier front-facing concept review as history. The active inventory preview now mirrors the actual top-down world character and no longer uses the generated front-view sprite. See [the current implementation and verification](REVIEW_20261116.md).
 # Lowfire — 캐릭터 중심 인벤토리 최종 시각 검수
 
 ## 결과

@@ -100,22 +100,15 @@ namespace Wildfolk.Tests
 
                     Assert.That(equipment.CharacterPreview, Is.Not.Null, "inventory has a dedicated player-character preview");
                     Assert.That(equipment.CharacterPreview.Equipment, Is.SameAs(equipment.Equipment), "preview reads the real player equipment model");
-                    Assert.That(equipment.CharacterPreview.FullBody, Is.Not.Null, "inventory preview uses a separate full-body illustration");
-                    Assert.That(equipment.CharacterPreview.FullBody.sprite, Is.Not.Null, "full-body illustration asset is imported");
+                    Assert.That(equipment.CharacterPreview.MirrorWorldAppearance, Is.True, "inventory preview mirrors the existing world avatar");
+                    Assert.That(equipment.CharacterPreview.transform.Find("Full Body"), Is.Null, "front-facing replacement art is absent");
                     Assert.That(equipment.CharacterPreview.Utility, Is.Not.Null, "preview has the real utility appearance layer");
                     Assert.That(equipment.CharacterPreview.Accessory, Is.Not.Null, "preview has the real accessory appearance layer");
                     var previewTransform=equipment.CharacterPreview.transform as RectTransform;
                     Assert.That(previewTransform.parent,Is.SameAs(surface),"character preview shares the equipment region coordinate space");
-                    var fullBodyRect=equipment.CharacterPreview.FullBody.rectTransform;
-                    Assert.That(fullBodyRect.parent,Is.SameAs(previewTransform),"full-body art is layered on the inventory preview root");
-                    var previewScale=new Vector2(Mathf.Abs(previewTransform.localScale.x*fullBodyRect.localScale.x),Mathf.Abs(previewTransform.localScale.y*fullBodyRect.localScale.y));
-                    var previewSize=Vector2.Scale(fullBodyRect.sizeDelta,previewScale);
-                    var previewPosition=previewTransform.anchoredPosition+Vector2.Scale(fullBodyRect.anchoredPosition,new Vector2(Mathf.Abs(previewTransform.localScale.x),Mathf.Abs(previewTransform.localScale.y)));
-                    var previewRect=new Rect(previewPosition-Vector2.Scale(previewSize,fullBodyRect.pivot),previewSize);
+                    Assert.That(previewTransform.sizeDelta,Is.EqualTo(new Vector2(180,180)),"world avatar mirror keeps a bounded inventory preview surface");
+                    var previewRect=LocalRect(previewTransform);
                     Assert.That(Contains(regionRect,previewRect),Is.True,$"character preview stays inside the equipment region; region={regionRect} preview={previewRect}");
-                    foreach(var target in targets)
-                        Assert.That(previewRect.Overlaps(target),Is.False,
-                            "full-body illustration does not collide with an equipment touch target");
                     var close=surface.Find("Close") as RectTransform;
                     var bodyTarget=LocalRect(equipment.BodyButton.transform as RectTransform);
                     var closeRect=LocalRect(close);

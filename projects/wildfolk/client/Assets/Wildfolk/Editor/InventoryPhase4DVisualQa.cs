@@ -27,7 +27,7 @@ namespace Wildfolk.Editor
         [MenuItem("Wildfolk/QA/Prepare Character-centered Inventory Review")]
         public static void PrepareCharacterCenteredInventoryReview()
         {
-            var captureRoot = Path.GetFullPath(Path.Combine(Application.dataPath, "..", "..", "validation", "inventory-character-centered", "captures", "unity-final"));
+            var captureRoot = Path.GetFullPath(Path.Combine(Application.dataPath, "..", "..", "validation", "inventory-character-centered", "captures", "world-avatar-20261116-final"));
             Prepare(captureRoot);
         }
 
@@ -191,6 +191,10 @@ namespace Wildfolk.Editor
             Check(inventory.Model.ConsumeSlot(0, baseItem, 1),
                 "empty the selected hotbar slot for the unselected base inventory capture");
             inventory.SelectSlot(0);
+            L.SetLanguage("ko");
+            yield return SetResolution(844,390);
+            yield return Delay(.35f);
+            yield return Shot("world-avatar-ko-844x390-equipped");
             var panel = Object.FindFirstObjectByType<InventoryPanel>();
             var equipmentUi = Object.FindFirstObjectByType<InventoryEquipment>();
             var drag = Object.FindFirstObjectByType<InventoryDragController>();
@@ -359,7 +363,7 @@ namespace Wildfolk.Editor
             var boundaryFindings = BoundaryFailures;
             Log((boundaryFindings == 0 ? "PASS " : "FAIL ") + "automated text-boundary report; findings=" + boundaryFindings);
             var boundaryStatus = boundaryFindings == 0 ? "PASS" : "PARTIAL - inspect qa-live.tsv for automated text-boundary findings";
-            File.WriteAllText(Path.Combine(Root, "qa-result.txt"), boundaryStatus + "\n" + string.Join("\n", new[] { "Play Mode Game View screenshots captured directly by ScreenCapture.CaptureScreenshot", "Autosave disabled", "QA profile=" + DevelopmentProfile.Directory, "World save was not written", "Character appearance states=head/body/utility/accessory/empty", "Capture matrix=all named states at 844x390, 1280x720, 1920x1080 in ko and en", "Automated text-boundary findings=" + boundaryFindings }));
+            File.WriteAllText(Path.Combine(Root, "qa-result.txt"), boundaryStatus + "\n" + string.Join("\n", new[] { "Play Mode Game View screenshots captured directly by ScreenCapture.CaptureScreenshot", "World avatar reference=equipped world player at 844x390 ko", "Autosave disabled", "QA profile=" + DevelopmentProfile.Directory, "World save was not written", "Character appearance states=head/body/utility/accessory/empty", "Inventory capture matrix=all named states at 844x390, 1280x720, 1920x1080 in ko and en", "Automated text-boundary findings=" + boundaryFindings }));
             player.GetComponent<PlayerInputCommands>().Session.CloseInventory();
             yield return null;
         }
@@ -391,18 +395,33 @@ namespace Wildfolk.Editor
         {
             Check(preview != null && preview.Equipment == equipment, state + " preview is bound to the live equipment model");
             if (preview == null || preview.Equipment != equipment) return;
-            var head = equipment.HeadArmor == null ? null : equipment.HeadArmor.Icon;
-            var body = equipment.BodyArmor == null ? null : equipment.BodyArmor.Icon;
-            var utility = equipment.Utility == null ? null : equipment.Utility.Icon;
-            var accessory = equipment.Accessory == null ? null : equipment.Accessory.Accessory.Visual;
-            Check(preview.FullBody != null && preview.FullBody.enabled && preview.FullBody.sprite != null &&
-                  preview.FullBody.sprite.name == "player_inventory_fullbody", state + " front-facing full-body base remains visible");
-            Check(preview.Head.enabled == (head != null) && preview.Head.sprite == head, state + " head appearance matches equipped armor");
-            Check(preview.Body.enabled == (body != null) && preview.Body.sprite == body, state + " body appearance matches equipped armor");
-            Check(!preview.LeftHand.enabled && !preview.RightHand.enabled, state + " inventory portrait does not expose top-down hand gear");
-            Check(preview.Utility.enabled == (utility != null) && preview.Utility.sprite == utility, state + " utility appearance matches its equipped item");
-            Check(preview.Accessory.enabled == (accessory != null) && preview.Accessory.sprite == accessory, state + " accessory appearance matches the equipped definition");
-            Check(preview.Accessory != preview.Head, state + " accessory remains a separate layer from head armor");
+            var avatar=equipment.GetComponent<PlayerAvatar>();
+            Check(preview.UsesWorldAppearance&&avatar!=null&&avatar.Body!=null,state+" preview mirrors the existing top-down PlayerAvatar renderers");
+            if(avatar==null||avatar.Body==null)return;
+            Check(preview.transform.Find("Full Body")==null,state+" legacy front-facing art has been removed from the preview");
+            var sources=avatar.Body.GetComponentsInChildren<SpriteRenderer>(true);
+            foreach(var source in sources)
+            {
+                var image=preview.ImageFor(source);
+                Check(image!=null&&image.sprite==source.sprite&&image.enabled==(source.sprite!=null&&source.enabled&&source.gameObject.activeInHierarchy),
+                    state+" preview layer matches world SpriteRenderer "+source.name);
+            }
+            if(equipment.UtilityVisual!=null)
+            {
+                var utilityImage=preview.ImageFor(equipment.UtilityVisual);
+                Check(utilityImage!=null&&utilityImage.sprite==equipment.UtilityVisual.sprite&&
+                      utilityImage.enabled==(equipment.UtilityVisual.enabled&&equipment.UtilityVisual.sprite!=null),
+                    state+" utility appearance matches its world SpriteRenderer");
+            }
+            Check(preview.ImageFor(equipment.HeadVisual)?.sprite==equipment.HeadVisual.sprite&&
+                  preview.ImageFor(equipment.ArmorVisual)?.sprite==equipment.ArmorVisual.sprite,
+                state+" head and body armor use their worn world sprites");
+            Check(preview.ImageFor(equipment.LeftHandGear)?.sprite==equipment.LeftHandGear.sprite&&
+                  preview.ImageFor(equipment.RightHandGear)?.sprite==equipment.RightHandGear.sprite,
+                state+" hand armor uses its world sprites");
+            var accessory=equipment.GetComponentInChildren<AccessoryVisual>(true);
+            Check(accessory!=null&&preview.ImageFor(accessory.Renderer)?.sprite==accessory.Renderer.sprite,
+                state+" accessory mirrors the world visual independently from head armor");
         }
 
         private static void Put(SavedStack[] states, int index, ItemDefinition item, int count)
@@ -476,11 +495,17 @@ namespace Wildfolk.Editor
             foreach (var slot in new[] { equipment.HeadButton, equipment.BodyButton, equipment.UtilityButton, equipment.AccessoryButton })
                 if (slot != null && slot.gameObject.activeInHierarchy)
                     CheckNoOverlap(details, slot.transform as RectTransform, surface, "Armor Details and " + slot.name);
-            if (equipment.CharacterPreview != null && equipment.CharacterPreview.gameObject.activeInHierarchy && equipment.CharacterPreview.FullBody != null)
-                foreach (var slot in new[] { equipment.HeadButton, equipment.BodyButton, equipment.UtilityButton, equipment.AccessoryButton })
-                    if (slot != null && slot.gameObject.activeInHierarchy)
-                        CheckNoOverlap(RelativeRect(equipment.CharacterPreview.FullBody.rectTransform, surface),
-                            slot.transform.Find("Equipment Slot Surface") as RectTransform, surface, "full-body character art and " + slot.name + " item frame");
+            if (equipment.CharacterPreview != null && equipment.CharacterPreview.gameObject.activeInHierarchy)
+            {
+                foreach(var image in equipment.CharacterPreview.RenderedImages)
+                {
+                    if(image==null||!image.enabled||image.sprite==null||!image.gameObject.activeInHierarchy)continue;
+                    foreach(var slot in new[]{equipment.HeadButton,equipment.BodyButton,equipment.UtilityButton,equipment.AccessoryButton})
+                        if(slot!=null&&slot.gameObject.activeInHierarchy)
+                            CheckNoOverlap(RelativeRect(image.rectTransform,surface),slot.transform.Find("Equipment Slot Surface") as RectTransform,
+                                surface,"world sprite "+image.name+" and "+slot.name+" equipment frame");
+                }
+            }
             foreach (var action in new[] { equipment.EquipButton, equipment.UnequipButton, drag.SplitButton })
                 if (action != null && action.gameObject.activeInHierarchy)
                     CheckNoOverlap(details, action.transform as RectTransform, surface, "Armor Details and " + action.name);

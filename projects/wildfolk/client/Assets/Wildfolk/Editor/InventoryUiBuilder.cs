@@ -297,7 +297,7 @@ namespace Wildfolk.Editor
             var hint = surface.Find("Slot Hint");
             if (hint != null) hint.gameObject.SetActive(false);
             equipment.CharacterPreview=QualityUiBuilder.InventoryPortrait(surface,equipment.Player,new Vector2(EquipmentX,160),1f);
-            Position(equipment.CharacterPreview,new Vector2(EquipmentX,160),new Vector2(230,400));
+            Position(equipment.CharacterPreview,new Vector2(EquipmentX,160),new Vector2(180,180));
             equipment.CharacterPreview.transform.localScale=Vector3.one;
             var equipmentRegion=surface.Find("Equipment Region");
             if(equipmentRegion!=null)equipment.CharacterPreview.transform.SetSiblingIndex(equipmentRegion.GetSiblingIndex()+1);

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="6" result="Failed(Child)" total="6" passed="5" failed="1" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-11-15 16:46:57Z" end-time="2026-11-15 16:47:23Z" duration="25.9358706">
+  <test-suite type="TestSuite" id="1322" name="Lowfire-QA-Inventory-20261116-R2" fullname="Lowfire-QA-Inventory-20261116-R2" runstate="Runnable" testcasecount="263" result="Failed" site="Child" start-time="2026-11-15 16:46:57Z" end-time="2026-11-15 16:47:23Z" duration="25.935871" total="6" passed="5" failed="1" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <failure>
+      <message><![CDATA[One or more child tests had errors]]></message>
+    </failure>
+    <test-suite type="Assembly" id="1319" name="Wildfolk.Tests.PlayMode.dll" fullname="D:/Lowfire-CharacterInventory-QA-20261116/client/Library/ScriptAssemblies/Wildfolk.Tests.PlayMode.dll" runstate="Runnable" testcasecount="263" result="Failed" site="Child" start-time="2026-11-15 16:46:57Z" end-time="2026-11-15 16:47:23Z" duration="25.915130" total="6" passed="5" failed="1" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="32732" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <failure>
+        <message><![CDATA[One or more child tests had errors]]></message>
+      </failure>
+      <test-suite type="TestSuite" id="1320" name="Wildfolk" fullname="Wildfolk" runstate="Runnable" testcasecount="263" result="Failed" site="Child" start-time="2026-11-15 16:46:57Z" end-time="2026-11-15 16:47:23Z" duration="25.908854" total="6" passed="5" failed="1" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <failure>
+          <message><![CDATA[One or more child tests had errors]]></message>
+        </failure>
+        <test-suite type="TestSuite" id="1321" name="Tests" fullname="Wildfolk.Tests" runstate="Runnable" testcasecount="263" result="Failed" site="Child" start-time="2026-11-15 16:46:57Z" end-time="2026-11-15 16:47:23Z" duration="25.902421" total="6" passed="5" failed="1" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <failure>
+            <message><![CDATA[One or more child tests had errors]]></message>
+          </failure>
+          <test-suite type="TestFixture" id="1023" name="CharacterPassPlayTests" fullname="Wildfolk.Tests.CharacterPassPlayTests" classname="Wildfolk.Tests.CharacterPassPlayTests" runstate="Runnable" testcasecount="11" result="Passed" start-time="2026-11-15 16:46:57Z" end-time="2026-11-15 16:47:15Z" duration="17.535915" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1025" name="GrowthSkillsEquipmentAndStaminaSurviveValidatedSaveRoundTrip" fullname="Wildfolk.Tests.CharacterPassPlayTests.GrowthSkillsEquipmentAndStaminaSurviveValidatedSaveRoundTrip" methodname="GrowthSkillsEquipmentAndStaminaSurviveValidatedSaveRoundTrip" classname="Wildfolk.Tests.CharacterPassPlayTests" runstate="Runnable" seed="369037041" result="Passed" start-time="2026-11-15 16:46:57Z" end-time="2026-11-15 16:47:10Z" duration="12.309667" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1028" name="InventoryCharacterPreviewTracksRealEquipmentWithoutChangingGameplayState" fullname="Wildfolk.Tests.CharacterPassPlayTests.InventoryCharacterPreviewTracksRealEquipmentWithoutChangingGameplayState" methodname="InventoryCharacterPreviewTracksRealEquipmentWithoutChangingGameplayState" classname="Wildfolk.Tests.CharacterPassPlayTests" runstate="Runnable" seed="373581973" result="Passed" start-time="2026-11-15 16:47:10Z" end-time="2026-11-15 16:47:15Z" duration="5.196202" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1076" name="EcologyPlayTests" fullname="Wildfolk.Tests.EcologyPlayTests" classname="Wildfolk.Tests.EcologyPlayTests" runstate="Runnable" testcasecount="14" result="Passed" start-time="2026-11-15 16:47:15Z" end-time="2026-11-15 16:47:23Z" duration="8.312459" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1078" name="ActualPointerArmorDragSwapUnequipAndUse" fullname="Wildfolk.Tests.EcologyPlayTests.ActualPointerArmorDragSwapUnequipAndUse" methodname="ActualPointerArmorDragSwapUnequipAndUse" classname="Wildfolk.Tests.EcologyPlayTests" runstate="Runnable" seed="654228973" result="Passed" start-time="2026-11-15 16:47:15Z" end-time="2026-11-15 16:47:18Z" duration="3.038120" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1080" name="InventoryReplacementLabelsShowCurrentGearDirectionAndResetSelection" fullname="Wildfolk.Tests.EcologyPlayTests.InventoryReplacementLabelsShowCurrentGearDirectionAndResetSelection" methodname="InventoryReplacementLabelsShowCurrentGearDirectionAndResetSelection" classname="Wildfolk.Tests.EcologyPlayTests" runstate="Runnable" seed="2132616698" result="Passed" start-time="2026-11-15 16:47:18Z" end-time="2026-11-15 16:47:20Z" duration="2.577623" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1079" name="InventorySplitButtonInitializesWhenInventoryWasAlreadyOpen" fullname="Wildfolk.Tests.EcologyPlayTests.InventorySplitButtonInitializesWhenInventoryWasAlreadyOpen" methodname="InventorySplitButtonInitializesWhenInventoryWasAlreadyOpen" classname="Wildfolk.Tests.EcologyPlayTests" runstate="Runnable" seed="1090922947" result="Passed" start-time="2026-11-15 16:47:20Z" end-time="2026-11-15 16:47:23Z" duration="2.676297" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1180" name="NetworkItemPlayTests" fullname="Wildfolk.Tests.NetworkItemPlayTests" classname="Wildfolk.Tests.NetworkItemPlayTests" runstate="Runnable" testcasecount="5" result="Failed" site="Child" start-time="2026-11-15 16:47:23Z" end-time="2026-11-15 16:47:23Z" duration="0.024821" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <failure>
+              <message><![CDATA[One or more child tests had errors]]></message>
+            </failure>
+            <test-case id="1185" name="ExistingInventoryUiSplitsMovesSelectsAndEquipsThroughHost" fullname="Wildfolk.Tests.NetworkItemPlayTests.ExistingInventoryUiSplitsMovesSelectsAndEquipsThroughHost" methodname="ExistingInventoryUiSplitsMovesSelectsAndEquipsThroughHost" classname="Wildfolk.Tests.NetworkItemPlayTests" runstate="Runnable" seed="1057163053" result="Failed" label="Error" start-time="2026-11-15 16:47:23Z" end-time="2026-11-15 16:47:23Z" duration="0.020705" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[SetUp : System.NullReferenceException : Object reference not set to an instance of an object]]></message>
+                <stack-trace><![CDATA[--SetUp
+  at Wildfolk.Tests.NetworkItemPlayTests+<Host>d__2.MoveNext () [0x0007b] in D:\Lowfire-CharacterInventory-QA-20261116\client\Assets\Wildfolk\Tests\PlayMode\NetworkItemPlayTests.cs:14
+  at UnityEngine.TestTools.EnumeratorHelper+<ProgressOnEnumerator>d__5.MoveNext () [0x00017] in .\Library\PackageCache\com.unity.test-framework@bd7f943e9647\UnityEngine.TestRunner\NUnitExtensions\Attributes\EnumeratorHelper.cs:35
+  at UnityEngine.TestTools.BeforeAfterTestCommandBase`1+<ExecuteEnumerable>d__16[T].MoveNext () [0x00132] in .\Library\PackageCache\com.unity.test-framework@bd7f943e9647\UnityEngine.TestRunner\NUnitExtensions\Commands\BeforeAfterTestCommandBase.cs:155 ]]></stack-trace>
+              </failure>
+              <output><![CDATA[<b><color=#2EA3FF>MCP-FOR-UNITY</color></b>: [TestRunnerNoThrottle] Restored Interaction Mode after test run.
+Saving results to: C:/Users/skanya/AppData/LocalLow/DefaultCompany/Lowfire-QA-Inventory-20261116-R2\TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

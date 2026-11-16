@@ -28,27 +28,44 @@ namespace Wildfolk.Tests
         {player.Model.Add(save.Catalog.Item("leather_head"),1);growth.SetValues(35,0);var hud=UnityEngine.Object.FindFirstObjectByType<ProfileHud>();yield return input.Click(hud.Level.transform.parent.GetComponent<Button>());var screen=UnityEngine.Object.FindFirstObjectByType<CharacterScreen>();Assert.That(session.State,Is.EqualTo(SessionState.Character));Assert.That(move.TryDash(),Is.False);yield return input.Click(screen.TreeButton);var tree=UnityEngine.Object.FindFirstObjectByType<SkillTreeScreen>();Assert.That(session.State,Is.EqualTo(SessionState.SkillTree));yield return input.Click(tree.Nodes[0]);yield return input.Click(tree.InvestButton);Assert.That(growth.Rank(0),Is.EqualTo(1));tree.Close();session.OpenInventory();var equipmentView=UnityEngine.Object.FindFirstObjectByType<InventoryEquipment>();for(var i=0;i<player.Model.Capacity;i++)if(!player.Model.GetSlot(i).IsEmpty && player.Model.GetSlot(i).Item.Id=="leather_head")player.SelectSlot(i);yield return null;Assert.That(equipmentView.Comparison.text,Does.Contain("0 → 1"));yield return input.Click(equipmentView.EquipButton);Assert.That(equipment.HeadArmor.Id,Is.EqualTo("leather_head"));yield return input.Click(equipmentView.HeadButton);Assert.That(equipmentView.SlotFilter,Is.EqualTo((int)ArmorSlot.Head));Assert.That(equipmentView.Panel.SelectedName.text,Is.EqualTo(save.Catalog.Item("leather_head").LocalizedName));yield return input.Click(equipmentView.UnequipButton);Assert.That(equipment.HeadArmor,Is.Null);Assert.That(player.Model.CountItem(save.Catalog.Item("leather_head")),Is.EqualTo(1));yield return input.Click(equipmentView.Panel.Slots[0]);Assert.That(equipmentView.Panel.SelectedName.text,Is.EqualTo(save.Catalog.Item("leather_head").LocalizedName));Assert.That(equipmentView.EquipButton.gameObject.activeSelf,Is.True);session.CloseInventory();}
         [UnityTest]public IEnumerator InventoryCharacterPreviewTracksRealEquipmentWithoutChangingGameplayState()
         {
-            var avatar=player.GetComponent<PlayerAvatar>();var direction=new Vector2(-1,.35f).normalized;avatar.Facing.Face(direction);var worldPosition=player.transform.position;
+            var avatar=player.GetComponent<PlayerAvatar>();var previousMovingOverride=avatar.MovingOverride;var direction=new Vector2(-1,.35f).normalized;avatar.Facing.Face(direction);avatar.MovingOverride=false;yield return new WaitUntil(()=>Vector2.Dot(avatar.Facing.DisplayDirection,direction)>.9999f);
             var emptyIndex=Enumerable.Range(0,player.Model.Capacity).First(i=>player.Model.GetSlot(i).IsEmpty);player.SelectSlot(emptyIndex);
             session.OpenInventory();yield return null;
             var view=UnityEngine.Object.FindFirstObjectByType<InventoryEquipment>();var preview=view.CharacterPreview;
-            Assert.That(preview,Is.Not.Null);Assert.That(preview.Equipment,Is.SameAs(equipment));Assert.That(preview.FullBody,Is.Not.Null);Assert.That(preview.FullBody.sprite.name,Is.EqualTo("player_inventory_fullbody"));Assert.That(preview.Utility,Is.Not.Null);Assert.That(preview.Accessory,Is.Not.Null);
+            Assert.That(preview,Is.Not.Null);Assert.That(preview.Equipment,Is.SameAs(equipment));Assert.That(preview.UsesWorldAppearance,Is.True);
+            var bodyRenderer=avatar.Body.Find("Body").GetComponent<SpriteRenderer>();
+            Assert.That(preview.ImageFor(bodyRenderer),Is.Not.Null);Assert.That(preview.ImageFor(bodyRenderer).sprite,Is.SameAs(bodyRenderer.sprite));
+            Assert.That(preview.transform.Find("Full Body"),Is.Null,"legacy front-facing art has been removed from the preview");
             Assert.That(view.SelectionState.text,Is.EqualTo(L.Text("ui.inventory.gear_summary")));
             Assert.That(view.Details.text,Is.EqualTo(L.Format("ui.inventory.character_summary",equipment.Defense,L.Text("ui.inventory.empty"),L.Text("ui.inventory.empty"))));
             Assert.That(view.Panel.SelectedName.text,Is.Empty);
+            var worldPosition=player.transform.position;var bodyPosition=avatar.Body.localPosition;var bodyScale=avatar.Body.localScale;
+            var leftHandPosition=avatar.Facing.LeftHand.localPosition;var rightHandPosition=avatar.Facing.RightHand.localPosition;
+            var leftHandRotation=avatar.Facing.LeftHand.localRotation;var rightHandRotation=avatar.Facing.RightHand.localRotation;
             Equip("leather_head");Equip("leather_body");Equip("lantern");Equip("undead_kings_crown");yield return null;
-            Assert.That(preview.Head.sprite,Is.SameAs(equipment.HeadArmor.Icon));Assert.That(preview.Head.enabled,Is.True);
-            Assert.That(preview.Body.sprite,Is.SameAs(equipment.BodyArmor.Icon));Assert.That(preview.LeftHand.enabled,Is.False);Assert.That(preview.RightHand.enabled,Is.False);
-            Assert.That(preview.Utility.sprite,Is.SameAs(equipment.Utility.Icon));Assert.That(preview.Utility.enabled,Is.True);
-            Assert.That(preview.Accessory.sprite,Is.SameAs(equipment.Accessory.Accessory.Visual));Assert.That(preview.Accessory.enabled,Is.True);
+            var accessory=equipment.GetComponentInChildren<AccessoryVisual>(true);
+            Assert.That(preview.ImageFor(equipment.HeadVisual).sprite,Is.SameAs(equipment.HeadVisual.sprite));Assert.That(preview.ImageFor(equipment.HeadVisual).enabled,Is.True);
+            Assert.That(preview.ImageFor(equipment.ArmorVisual).sprite,Is.SameAs(equipment.ArmorVisual.sprite));Assert.That(preview.ImageFor(equipment.ArmorVisual).enabled,Is.True);
+            Assert.That(preview.ImageFor(equipment.LeftHandGear).sprite,Is.SameAs(equipment.LeftHandGear.sprite));Assert.That(preview.ImageFor(equipment.RightHandGear).sprite,Is.SameAs(equipment.RightHandGear.sprite));
+            Assert.That(preview.ImageFor(equipment.UtilityVisual).sprite,Is.SameAs(equipment.UtilityVisual.sprite));Assert.That(preview.ImageFor(equipment.UtilityVisual).enabled,Is.True);
+            Assert.That(accessory,Is.Not.Null);Assert.That(preview.ImageFor(accessory.Renderer).sprite,Is.SameAs(accessory.Renderer.sprite));Assert.That(preview.ImageFor(accessory.Renderer).enabled,Is.True);
             Assert.That(view.Details.text,Is.EqualTo(L.Format("ui.inventory.character_summary",equipment.Defense,equipment.Utility.LocalizedName,equipment.Accessory.LocalizedName)));
-            var crown=equipment.Accessory.Accessory;Assert.That(crown.Anchor,Is.EqualTo(AccessoryAnchor.AboveHead));
-            Assert.That(preview.Accessory.rectTransform.anchoredPosition.y,Is.GreaterThan(preview.Head.rectTransform.anchoredPosition.y+preview.Head.rectTransform.rect.height*.5f));
-            Equip("iron_head");yield return null;Assert.That(preview.Head.sprite,Is.SameAs(equipment.HeadArmor.Icon));Assert.That(equipment.HeadArmor.Id,Is.EqualTo("iron_head"));
-            Assert.That(equipment.Unequip(ArmorSlot.Head),Is.True);yield return null;Assert.That(preview.Head.enabled,Is.False);
+            Assert.That(equipment.Accessory.Accessory.Anchor,Is.EqualTo(AccessoryAnchor.AboveHead));
+            var accessoryImage=preview.ImageFor(accessory.Renderer);
+            var expectedAccessoryPosition=player.transform.InverseTransformPoint(accessory.Renderer.transform.position);
+            var bodyScaleX=bodyRenderer.transform.lossyScale.x/equipment.transform.lossyScale.x;
+            var previewScale=preview.InventoryBodyWidth/(bodyRenderer.sprite.bounds.size.x*Mathf.Abs(bodyScaleX));
+            Assert.That(Vector2.Distance(accessoryImage.rectTransform.anchoredPosition,(Vector2)expectedAccessoryPosition*previewScale),Is.LessThan(2f));
+            Equip("iron_head");yield return null;Assert.That(preview.ImageFor(equipment.HeadVisual).sprite,Is.SameAs(equipment.HeadVisual.sprite));Assert.That(equipment.HeadArmor.Id,Is.EqualTo("iron_head"));
+            Assert.That(preview.ImageFor(equipment.HeadVisual).sprite,Is.SameAs(equipment.HeadVisual.sprite));
+            Assert.That(equipment.Unequip(ArmorSlot.Head),Is.True);yield return null;Assert.That(preview.ImageFor(equipment.HeadVisual).enabled,Is.False);
             var beforeClose=preview;session.CloseInventory();yield return null;session.OpenInventory();yield return null;
             var inventorySurface=view.Panel.View.transform.Find("Inventory Panel");Assert.That(view.CharacterPreview,Is.SameAs(beforeClose));Assert.That(inventorySurface.Find("Survivor Preview").GetComponent<PlayerPortrait>(),Is.SameAs(beforeClose));Assert.That(inventorySurface.GetComponentsInChildren<PlayerPortrait>(true).Length,Is.EqualTo(1));
-            Assert.That(player.transform.position,Is.EqualTo(worldPosition));Assert.That(avatar.Facing.Direction.x,Is.EqualTo(direction.x).Within(.0001f));Assert.That(avatar.Facing.Direction.y,Is.EqualTo(direction.y).Within(.0001f));
+            Assert.That(Vector3.Distance(player.transform.position,worldPosition),Is.LessThan(.0001f));Assert.That(avatar.Body.localPosition,Is.EqualTo(bodyPosition));Assert.That(avatar.Body.localScale,Is.EqualTo(bodyScale));
+            Assert.That(avatar.Facing.LeftHand.localPosition,Is.EqualTo(leftHandPosition));Assert.That(avatar.Facing.RightHand.localPosition,Is.EqualTo(rightHandPosition));
+            Assert.That(avatar.Facing.LeftHand.localRotation,Is.EqualTo(leftHandRotation));Assert.That(avatar.Facing.RightHand.localRotation,Is.EqualTo(rightHandRotation));
+            Assert.That(avatar.Facing.Direction.x,Is.EqualTo(direction.x).Within(.0001f));Assert.That(avatar.Facing.Direction.y,Is.EqualTo(direction.y).Within(.0001f));
+            avatar.MovingOverride=previousMovingOverride;
         }
         [UnityTest]public IEnumerator SprintThroughInputDrainsStopsAtCriticalNeedsAndHUDHidesAfterRecovery()
         {var source=new MoveSource{Direction=Vector2.right};player.GetComponent<PlayerInputAdapter>().Source=source;yield return new WaitForSeconds(.48f);Assert.That(move.Stamina.IsSprinting,Is.True);Assert.That(move.Stamina.Current,Is.LessThan(100));var hud=UnityEngine.Object.FindFirstObjectByType<PlayerStaminaHud>();Assert.That(hud.Group.alpha,Is.GreaterThan(0));player.GetComponent<PlayerSurvival>().Model.SetMeters(20,80);yield return null;Assert.That(move.Stamina.IsSprinting,Is.False);source.Direction=Vector2.zero;move.Restore(100,0);yield return new WaitForSeconds(1.1f);Assert.That(hud.Group.alpha,Is.Zero);}

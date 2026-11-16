@@ -27,33 +27,16 @@ namespace Wildfolk.Editor
             var portrait=found==null ? Portrait(parent,player,position,scale) : found.GetComponent<PlayerPortrait>();
             if(portrait==null)portrait=Portrait(parent,player,position,scale);
             var root=(RectTransform)portrait.transform;
-            root.anchoredPosition=position;root.sizeDelta=new Vector2(230,400);root.localScale=Vector3.one*scale;
+            root.anchoredPosition=position;root.sizeDelta=new Vector2(180,180);root.localScale=Vector3.one*scale;
             var backdrop=root.Find("Backdrop");if(backdrop!=null)backdrop.gameObject.SetActive(false);
+            var legacyFullBody=root.Find("Full Body");
+            if(legacyFullBody!=null)UnityEngine.Object.DestroyImmediate(legacyFullBody.gameObject);
+            portrait.MirrorWorldAppearance=true;portrait.InventoryBodyWidth=90f;
             portrait.BindEquipment(player.GetComponent<PlayerEquipment>());
-            foreach(var name in new[]{"Skin","Left Hand","Right Hand","Left Eye","Right Eye"})
-            {
-                var old=root.Find(name);if(old!=null)old.gameObject.SetActive(false);
-            }
-            if(portrait.LeftHand!=null)portrait.LeftHand.enabled=false;
-            if(portrait.RightHand!=null)portrait.RightHand.enabled=false;
-            portrait.FullBody=Layer(portrait,"Full Body");
-            portrait.FullBody.sprite=VisualArtImporter.Sprite("player_inventory_fullbody");
-            portrait.FullBody.enabled=portrait.FullBody.sprite!=null;
-            portrait.FullBody.preserveAspect=true;
-            InventoryUiBuilder.Position(portrait.FullBody,Vector2.zero,new Vector2(155,400));
-            portrait.FullBody.transform.SetAsFirstSibling();
-            if(backdrop!=null)backdrop.SetAsLastSibling();
-            portrait.Head.preserveAspect=true;portrait.Head.raycastTarget=false;
-            InventoryUiBuilder.Position(portrait.Head,new Vector2(0,132),new Vector2(68,62));
-            portrait.Body.preserveAspect=true;portrait.Body.raycastTarget=false;
-            InventoryUiBuilder.Position(portrait.Body,new Vector2(0,14),new Vector2(78,88));
             portrait.Utility=Layer(portrait,"Utility");
-            InventoryUiBuilder.Position(portrait.Utility,new Vector2(59,-68),new Vector2(48,56));
             portrait.Accessory=Layer(portrait,"Accessory");
-            portrait.Head.transform.SetAsLastSibling();
-            portrait.Body.transform.SetAsLastSibling();
-            portrait.Utility.transform.SetAsLastSibling();
-            portrait.Accessory.transform.SetAsLastSibling();
+            portrait.Head.preserveAspect=true;portrait.Head.raycastTarget=false;
+            portrait.Body.preserveAspect=true;portrait.Body.raycastTarget=false;
             portrait.Refresh();
             return portrait;
         }
